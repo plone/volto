@@ -839,6 +839,15 @@ importers:
 
   packages/volto:
     dependencies:
+      '@dnd-kit/core':
+        specifier: 6.0.8
+        version: 6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@dnd-kit/sortable':
+        specifier: 7.0.2
+        version: 7.0.2(@dnd-kit/core@6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+      '@dnd-kit/utilities':
+        specifier: 3.2.2
+        version: 3.2.2(react@18.2.0)
       '@loadable/component':
         specifier: 5.14.1
         version: 5.14.1(react@18.2.0)
@@ -884,6 +893,9 @@ importers:
       filesize:
         specifier: '6'
         version: 6.4.0
+      full-icu:
+        specifier: 1.4.0
+        version: 1.4.0
       github-slugger:
         specifier: 1.4.0
         version: 1.4.0
@@ -1146,15 +1158,6 @@ importers:
       '@babel/types':
         specifier: 7.20.5
         version: 7.20.5
-      '@dnd-kit/core':
-        specifier: 6.0.8
-        version: 6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@dnd-kit/sortable':
-        specifier: 7.0.2
-        version: 7.0.2(@dnd-kit/core@6.0.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
-      '@dnd-kit/utilities':
-        specifier: 3.2.2
-        version: 3.2.2(react@18.2.0)
       '@fiverr/afterbuild-webpack-plugin':
         specifier: ^1.0.0
         version: 1.0.0
@@ -1236,12 +1239,18 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.7(@types/react@18.3.24)
+      '@types/react-intl-redux':
+        specifier: ^0.1.19
+        version: 0.1.19(@types/react@18.3.24)(react@18.2.0)
       '@types/react-router-dom':
         specifier: ^5.3.3
         version: 5.3.3
       '@types/react-test-renderer':
         specifier: 18.0.7
         version: 18.0.7
+      '@types/redux-mock-store':
+        specifier: ^1.5.0
+        version: 1.5.0
       '@types/uuid':
         specifier: ^9.0.2
         version: 9.0.8
@@ -1335,9 +1344,6 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^4.6.0
         version: 4.6.2(eslint@8.57.1)
-      full-icu:
-        specifier: 1.4.0
-        version: 1.4.0
       html-webpack-plugin:
         specifier: 5.5.0
         version: 5.5.0(webpack@5.90.1)
@@ -1488,9 +1494,6 @@ importers:
       webpack-node-externals:
         specifier: 3.0.0
         version: 3.0.0
-      why:
-        specifier: 0.6.2
-        version: 0.6.2
 
   packages/volto-slate:
     dependencies:
@@ -5245,6 +5248,9 @@ packages:
     peerDependencies:
       '@types/react': ^18.0.0
 
+  '@types/react-intl-redux@0.1.19':
+    resolution: {integrity: sha512-upa3MY7MiskgTAHBza0nS/D/a4YmnKol7ieHOpkgds8AQBEEXHwP0MKDGni7TcsjWekqYnXSExiTj/jg1pNhDg==}
+
   '@types/react-redux@7.1.34':
     resolution: {integrity: sha512-GdFaVjEbYv4Fthm2ZLvj1VSCedV7TqE5y1kNwnjSdBOTXuRSgowux6J8TAct15T3CKBr63UMk+2CO7ilRhyrAQ==}
 
@@ -5259,6 +5265,9 @@ packages:
 
   '@types/react@18.3.24':
     resolution: {integrity: sha512-0dLEBsA1kI3OezMBF8nSsb7Nk19ZnsyE1LLhB8r27KbgU5H4pvuqZLdtE+aUkJVoXgTVuA+iLIwmZ0TuK4tx6A==}
+
+  '@types/redux-mock-store@1.5.0':
+    resolution: {integrity: sha512-jcscBazm6j05Hs6xYCca6psTUBbFT2wqMxT7wZEHAYFxHB/I8jYk7d5msrHUlDiSL02HdTqTmkK2oIV8i3C8DA==}
 
   '@types/resolve@1.20.6':
     resolution: {integrity: sha512-A4STmOXPhMUtHH+S6ymgE2GiBSMqf4oTvcQZMcHzokuTLVYzXTB8ttjcgxOVaAp2lGwEdzZ0J+cRbbeevQj1UQ==}
@@ -11925,7 +11934,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   qs@6.11.0:
@@ -14622,10 +14630,6 @@ packages:
   why-is-node-running@2.3.0:
     resolution: {integrity: sha512-hUrmaWBdVDcxvYqnyh09zunKzROWjbZTiNy8dBEjkS7ehEDQibXJ7XvlmtbwuTclUiIyN+CyXQD4Vmko8fNm8w==}
     engines: {node: '>=8'}
-    hasBin: true
-
-  why@0.6.2:
-    resolution: {integrity: sha512-7M43dnp3p+5HRMYS5ImUftNAQQSIZmwnAd8yyjEj3cpK+6nbBfikwTvxXRUFvydaPJmgu+EofRnJKNDMbIuzXg==}
     hasBin: true
 
   widest-line@4.0.1:
@@ -19626,6 +19630,15 @@ snapshots:
     dependencies:
       '@types/react': 18.3.24
 
+  '@types/react-intl-redux@0.1.19(@types/react@18.3.24)(react@18.2.0)':
+    dependencies:
+      '@types/react-redux': 7.1.34
+      react-intl: 3.12.1(@types/react@18.3.24)(react@18.2.0)
+      redux: 4.2.1
+    transitivePeerDependencies:
+      - '@types/react'
+      - react
+
   '@types/react-redux@7.1.34':
     dependencies:
       '@types/hoist-non-react-statics': 3.3.7(@types/react@18.3.24)
@@ -19652,6 +19665,10 @@ snapshots:
     dependencies:
       '@types/prop-types': 15.7.15
       csstype: 3.1.3
+
+  '@types/redux-mock-store@1.5.0':
+    dependencies:
+      redux: 4.2.1
 
   '@types/resolve@1.20.6': {}
 
@@ -31816,8 +31833,6 @@ snapshots:
     dependencies:
       siginfo: 2.0.0
       stackback: 0.0.2
-
-  why@0.6.2: {}
 
   widest-line@4.0.1:
     dependencies:

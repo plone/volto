@@ -49,7 +49,7 @@ start: ## Starts Volto, allowing reloading of the add-on during development
 
 .PHONY: build
 build: ## Build a production bundle for distribution
-	pnpm i && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build
+	pnpm i && pnpm build
 
 .PHONY: test
 test: ## Run unit tests
@@ -118,7 +118,7 @@ frontend-docker-start: ## Starts a Docker-based frontend for development
 
 .PHONY: acceptance-frontend-dev-start
 acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 ######### Core Acceptance tests
 
@@ -138,7 +138,7 @@ ci-acceptance-backend-start: ## Start backend acceptance server in headless mode
 
 .PHONY: acceptance-frontend-prod-start
 acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	pnpm build && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start:prod
 
 .PHONY: acceptance-test
 acceptance-test: ## Start Cypress in interactive mode
@@ -174,11 +174,11 @@ deployment-ci-acceptance-test-run-all: ## With a single command, run the backend
 
 .PHONY: cookieplone-acceptance-frontend-prod-start
 cookieplone-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for cookieplone tests
-	(cd ../../volto-add-on && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
+	(cd ../../volto-add-on && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 .PHONY: project-acceptance-frontend-prod-start
 project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests
-	(cd ../../my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod)
+	(cd ../../my-volto-app && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod)
 
 ######### Core Sandbox Acceptance tests
 
@@ -188,11 +188,11 @@ coresandbox-acceptance-backend-start: ## Start backend acceptance server for cor
 
 .PHONY: coresandbox-acceptance-frontend-prod-start
 coresandbox-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for core sandbox tests
-	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: coresandbox-acceptance-frontend-dev-start
 coresandbox-acceptance-frontend-dev-start: build-deps ## Start acceptance frontend in development mode for core sandbox tests
-	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	ADDONS=@plone/volto-coresandbox RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 .PHONY: coresandbox-acceptance-test
 coresandbox-acceptance-test: ## Start Cypress in interactive mode for core sandbox tests
@@ -214,7 +214,7 @@ multilingual-acceptance-backend-start: ## Start backend acceptance server for mu
 
 .PHONY: multilingual-acceptance-frontend-prod-start
 multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for multilingual tests
-	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: multilingual-acceptance-test
 multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests
@@ -258,7 +258,7 @@ working-copy-acceptance-backend-start: ## Start backend acceptance server for wo
 
 .PHONY: working-copy-acceptance-frontend-prod-start
 working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for working copy tests
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: working-copy-acceptance-test
 working-copy-acceptance-test: ## Start Cypress in interactive mode for working copy tests
@@ -272,6 +272,48 @@ working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(NODEBIN)/start-test "make working-copy-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make working-copy-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make working-copy-ci-acceptance-test"
 
+######### Prefixed Core Acceptance tests
+
+.PHONY: subpath-acceptance-frontend-prod-start
+subpath-acceptance-frontend-prod-start: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+
+.PHONY: subpath-ci-acceptance-test-run-all
+subpath-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://localhost:55001/plone "make subpath-acceptance-frontend-prod-start" http://localhost:3000 "make ci-acceptance-test"
+
+.PHONY: subpath-acceptance-test
+subpath-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost/foo' --env subpathPrefix="/foo"
+
+.PHONY: subpath-acceptance-frontend-dev-start
+subpath-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start
+
+.PHONY: deployment-subpath-acceptance-web-server-start
+deployment-subpath-acceptance-web-server-start: ## Start the prefixed webserver
+	cd cypress/docker && docker compose -f prefixed.yml up
+
+######### Prefixed Multilingual Acceptance tests
+
+.PHONY: subpath-multilingual-acceptance-frontend-prod-start
+subpath-multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for prefixed multilingual tests
+	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+
+.PHONY: subpath-multilingual-acceptance-test
+subpath-multilingual-acceptance-test: ## Start Cypress in interactive mode for prefixed multilingual tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}' baseUrl='http://localhost/foo' --env subpathPrefix="/foo"
+
+######### Prefixed Working Copy Acceptance tests
+
+.PHONY: subpath-working-copy-acceptance-frontend-prod-start
+subpath-working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for prefixed working copy tests
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+
+.PHONY: subpath-working-copy-acceptance-test
+subpath-working-copy-acceptance-test: ## Start Cypress in interactive mode for prefixed working copy tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}' --config baseUrl='http://localhost/foo' --env subpathPrefix='/foo'
+
 ######### Guillotina Acceptance tests
 
 .PHONY: guillotina-acceptance-backend-start
@@ -280,7 +322,7 @@ guillotina-acceptance-backend-start: ## Start backend acceptance server for Guil
 
 .PHONY: guillotina-acceptance-frontend-prod-start
 guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	ADDONS=volto-guillotina RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod
+	ADDONS=volto-guillotina RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod
 
 .PHONY: guillotina-acceptance-test
 guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests

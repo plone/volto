@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.3 (2025-10-21)
+
+### Bugfix
+
+- Escape double quotes in POT / PO files @erral [#7476](https://github.com/plone/volto/issues/7476)
+
+### Internal
+
+- upgrade execa to address a security vulnerability @nileshgulia1 [#7435](https://github.com/plone/volto/issues/7435)
+
 ## 4.0.0-alpha.2 (2025-09-14)
 
 ### Internal
