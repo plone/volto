@@ -124,6 +124,10 @@ describe('Content', () => {
       };
       expect(flattenStaticBehaviors(input)).toEqual({
         title: 'Example',
+        '@static_behaviors': [
+          'guillotina_cms.interfaces.blocks.IBlocks',
+          'guillotina_cms.interfaces.dublin_core.IDublinCore',
+        ],
         'guillotina_cms.interfaces.blocks.IBlocks.blocks': 'blocks',
         'guillotina_cms.interfaces.blocks.IBlocks.blocks_layout':
           'blocks_layout',
