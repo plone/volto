@@ -45,7 +45,8 @@ const CreateTranslation = (props) => {
 
   return (
     translationLocation &&
-    translationObject && (
+    translationObject.data &&
+    translationObject.loaded > 0 && (
       <Redirect
         to={{
           pathname: `${flattenToAppURL(translationLocation)}/add`,
@@ -53,7 +54,7 @@ const CreateTranslation = (props) => {
           state: {
             translationOf: props.location.state.translationOf,
             language: props.location.state.language,
-            translationObject: translationObject,
+            translationObject: translationObject.data,
             languageFrom,
           },
         }}
