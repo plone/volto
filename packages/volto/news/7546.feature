@@ -1,0 +1,1 @@
+Enhanced diff reducer to process static behaviors in the result object. @rboixaderg
