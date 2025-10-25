@@ -27,7 +27,7 @@ jobs:
       - name: Generate Cookieplone-based frontend addon
         run: |
           pipx install cookieplone
-          pipx run --no-cache cookieplone frontend_addon --no-input
+          pipx run --no-cache cookieplone frontend_addon use_prerelease_versions=Yes --no-input
 
       - name: Install generated package
         working-directory: ${{env.project-directory}}
