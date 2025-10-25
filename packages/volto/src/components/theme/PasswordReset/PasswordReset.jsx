@@ -227,7 +227,7 @@ class PasswordReset extends Component {
     }
     if (this.props.token) {
       const errmsg = this.props.error
-        ? this.props.error.response.body.error
+        ? this.props.error.response?.body?.error
         : null;
       return (
         <div id="page-password-reset">
@@ -240,7 +240,7 @@ class PasswordReset extends Component {
               description={this.props.intl.formatMessage(messages.description)}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
-              error={this.state.error || errmsg}
+              error={errmsg || this.props.error}
               schema={{
                 fieldsets: [
                   {
