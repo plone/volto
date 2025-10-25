@@ -34,7 +34,7 @@ jobs:
       - name: Generate Cookieplone-based frontend addon
         run: |
           pipx install cookieplone
-          pipx run --no-cache cookieplone frontend_addon --no-input __version_plone_volto=${{ steps.vars.outputs.volto-version }}
+          pipx run --no-cache cookieplone frontend_addon --no-input volto_version=${{ steps.vars.outputs.volto-version }}
 
       - name: Install generated package
         working-directory: ${{env.project-directory}}
