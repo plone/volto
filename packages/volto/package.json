@@ -369,7 +369,7 @@
     "postcss-overrides": "3.1.4",
     "postcss-scss": "4.0.6",
     "prettier": "3.2.5",
-    "razzle": "4.2.18",
+    "@volto/razzle": "workspace:*",
     "razzle-dev-utils": "4.2.18",
     "razzle-plugin-scss": "4.2.18",
     "react-docgen-typescript-plugin": "^1.0.5",

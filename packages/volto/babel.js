@@ -2,7 +2,7 @@ module.exports = function (api) {
   api.cache(true);
   const presets = [
     [
-      'razzle/babel',
+      '@volto/razzle/babel',
       {
         '@babel/preset-react': { runtime: 'automatic' },
       },
