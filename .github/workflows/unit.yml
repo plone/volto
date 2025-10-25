@@ -12,7 +12,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: ["@plone/registry", "@plone/components", "@plone/helpers"]
+        name:
+          # - '@plone/blocks'
+          - '@plone/cmsui'
+          - '@plone/components'
+          - '@plone/helpers'
+          - '@plone/layout'
+          - '@plone/react-router'
+          - '@plone/registry'
         node-version: [22.x]
     steps:
       - uses: actions/checkout@v4

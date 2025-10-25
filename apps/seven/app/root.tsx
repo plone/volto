@@ -6,6 +6,7 @@ import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
+import type { Content } from '@plone/types';
 import {
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -34,7 +35,16 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   const rootLoaderDataUtilities = config.getUtilities({
     type: 'rootLoaderData',
-  });
+  }) as Array<{
+    method: (args: {
+      cli: PloneClient;
+      content: Content;
+      request: typeof request;
+      path: string;
+      params: typeof params;
+      locale: string;
+    }) => Promise<{ status: number; data: unknown }>;
+  }>;
 
   try {
     const [content, site] = await Promise.all([
@@ -44,7 +54,14 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
     const rootLoaderDataUtilitiesData = await Promise.all([
       ...rootLoaderDataUtilities.map((utility) =>
-        utility.method({ cli, content, request, path, params, locale }),
+        utility.method({
+          cli,
+          content: content.data,
+          request,
+          path,
+          params,
+          locale,
+        }),
       ),
     ]);
 
@@ -89,16 +106,27 @@ export function Layout({
   return children;
 }
 
+// ToDo: improve error page and error handling
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404
-        ? 'The requested page could not be found.'
-        : error.statusText || details;
+    switch (error.status) {
+      case 404:
+        message = '404';
+        details = 'The requested page could not be found.';
+        break;
+      case 500:
+        message = '500';
+        details =
+          'The server encountered an internal error. Did you start the backend?';
+        break;
+      default:
+        message = 'Error';
+        details = error.statusText || details;
+        break;
+    }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;

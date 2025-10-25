@@ -5,7 +5,13 @@ import { parse, stringify } from 'comment-json';
 let vscodeSettingsJSON;
 let vscodeExtensionsJSON;
 if (fs.existsSync('.vscode')) {
+  if (!fs.existsSync('.vscode/settings.json')) {
+    fs.writeFileSync('.vscode/settings.json', '{}');
+  }
   vscodeSettingsJSON = parse(fs.readFileSync('.vscode/settings.json', 'utf8'));
+  if (!fs.existsSync('.vscode/extensions.json')) {
+    fs.writeFileSync('.vscode/extensions.json', '{}');
+  }
   vscodeExtensionsJSON = parse(
     fs.readFileSync('.vscode/extensions.json', 'utf8'),
   );
@@ -33,7 +39,7 @@ if (!vscodeSettingsJSON['[markdown]']) {
 
 if (!vscodeSettingsJSON['tailwindCSS.experimental.configFile']) {
   vscodeSettingsJSON['tailwindCSS.experimental.configFile'] =
-    'apps/seven/publicui.css';
+    'apps/seven/.plone/publicui.css';
 }
 
 if (!vscodeSettingsJSON['tailwindCSS.classFunctions']) {

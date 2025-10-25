@@ -19,9 +19,9 @@ import { clsx } from 'clsx';
 import config from '@plone/registry';
 
 // eslint-disable-next-line import/no-unresolved
-import publicStylesheet from 'seven/publicui.css?url';
+import publicStylesheet from 'seven/.plone/publicui.css?url';
 // eslint-disable-next-line import/no-unresolved
-import stylesheet from 'seven/cmsui.css?url';
+import stylesheet from 'seven/.plone/cmsui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -89,7 +89,7 @@ export default function Index() {
       </head>
       <body className="cmsui">
         {/* We pre-define here the @layer before tailwind does, adding our own layers in a React 19 managed <link> tag */}
-        <link rel="stylesheet" href="layers.css" precedence="first" />
+        <link rel="stylesheet" href="/layers.css" precedence="first" />
         <PluggablesProvider>
           <div
             className={clsx(

@@ -18,7 +18,8 @@ const Logo = (props: SlotComponentProps) => {
     type: 'factory',
   }).method;
 
-  const navRootPath = content['@components'].navroot?.navroot?.['@id'] || '/';
+  const navRootPath =
+    content?.['@components']?.navroot?.navroot?.['@id'] || '/';
   const site = rootData?.site;
   const siteTitle = site?.['plone.site_title'] || '';
   const logoUrl = site?.['plone.site_logo']

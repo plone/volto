@@ -14,7 +14,10 @@ import betterTailwind from 'eslint-plugin-better-tailwindcss';
 import { getDefaultCallees } from 'eslint-plugin-better-tailwindcss/api/defaults';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const tailwindEntryPoint = path.resolve(__dirname, 'apps/seven/publicui.css');
+const tailwindEntryPoint = path.resolve(
+  __dirname,
+  'apps/seven/.plone/publicui.css',
+);
 const tailwindCallees = [...getDefaultCallees(), 'composeTailwindRenderProps'];
 
 const JS_GLOB = ['**/*.{ts,tsx,js,jsx}'];

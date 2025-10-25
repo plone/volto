@@ -27,7 +27,7 @@ export interface ContainedItem {
   description: string;
   image_field: string;
   image_scales: Record<string, Image> | null;
-  review_state: string;
+  review_state: string | null;
   title: string;
 }
 
