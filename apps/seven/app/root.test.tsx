@@ -17,7 +17,7 @@ async function renderStub() {
             content: {} as any,
             site: {} as any,
             isAuthenticated: false,
-        }}
+          }}
           matches={[{} as any]}
         >
           <p>Root Layout</p>
