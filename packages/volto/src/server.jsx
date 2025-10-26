@@ -320,8 +320,8 @@ server.get('/*', (req, res) => {
                 markup={markup}
                 store={store}
                 criticalCss={readCriticalCss(req)}
-                apiPath={res.locals.detectedHost || config.settings.apiPath}
-                publicURL={res.locals.detectedHost || config.settings.publicURL}
+                apiPath={config.settings.apiPath}
+                publicURL={config.settings.publicURL}
               />
               ,
             </IntlProvider>
