@@ -8,42 +8,36 @@ import {
   getLocalTimeZone,
 } from '@internationalized/date';
 import { Button } from '../Button/Button.quanta';
-import { Label, Description, FieldError } from '../Field/Field.quanta';
-import { DateInput } from './DateInput.quanta';
 import { DateField } from '../DateField/DateField.quanta';
 
-// DateInput Stories
-const meta = {
-  title: 'Quanta/DateInput',
-  component: DateInput,
+const meta: Meta<typeof DateField> = {
+  title: 'Quanta/DateField',
+  component: DateField,
   parameters: {
     layout: 'centered',
-    backgrounds: { disable: true },
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof DateInput>;
+} satisfies Meta<typeof DateField>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Basic Stories
 export const Default: Story = {
-  render: (args) => <DateInput {...args} />,
+  render: (args) => <DateField {...args} />,
   args: {},
 };
 
 export const WithDefaultValue: Story = {
-  render: (args) => (
-    <DateField defaultValue={new CalendarDate(2024, 12, 25)}>
-      <Label>Christmas Date</Label>
-      <DateInput {...args} />
-      <Description>Date input with default value (Christmas 2024)</Description>
-    </DateField>
-  ),
-  args: {},
+  render: (args) => <DateField {...args} />,
+  args: {
+    defaultValue: new CalendarDate(2024, 12, 25),
+    label: 'Christmas Date',
+    description: 'Date input with default value (Christmas 2024)',
+  },
 };
 
-// Controlled Example
+// // Controlled Example
 const ControlledExample = (args: any) => {
   const [value, setValue] = useState<CalendarDate | null>(
     today(getLocalTimeZone()),
@@ -51,11 +45,7 @@ const ControlledExample = (args: any) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <DateField value={value} onChange={setValue}>
-        <Label>Controlled Date Input</Label>
-        <DateInput {...args} />
-        <Description>Value managed by parent component</Description>
-      </DateField>
+      <DateField {...args} value={value} onChange={setValue} />
 
       <div className="text-sm text-gray-600">
         Current value: {value ? value.toString() : 'null'}
@@ -90,10 +80,13 @@ const ControlledExample = (args: any) => {
 
 export const Controlled: Story = {
   render: ControlledExample,
-  args: {},
+  args: {
+    label: 'Controlled Date Input',
+    description: 'Value managed by parent component',
+  },
 };
 
-// DateTime Example
+// // DateTime Example
 const DateTimeExample = (args: any) => {
   const [value, setValue] = useState<CalendarDateTime | null>(
     new CalendarDateTime(2024, 6, 15, 14, 30),
@@ -101,13 +94,12 @@ const DateTimeExample = (args: any) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <DateField value={value} onChange={setValue} granularity="minute">
-        <Label>Date & Time Input</Label>
-        <DateInput {...args} />
-        <Description>
-          Date input with time segments (granularity: minute)
-        </Description>
-      </DateField>
+      <DateField
+        {...args}
+        value={value}
+        onChange={setValue}
+        granularity="minute"
+      />
 
       <div className="text-sm text-gray-600">
         Current value: {value ? value.toString() : 'null'}
@@ -136,10 +128,13 @@ const DateTimeExample = (args: any) => {
 
 export const DateTime: Story = {
   render: DateTimeExample,
-  args: {},
+  args: {
+    label: 'Date & Time Input',
+    description: 'Date input with time segments (granularity: minute)',
+  },
 };
 
-// States Example
+// // States Example
 const StatesExample = () => {
   const [value, setValue] = useState<CalendarDate | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -169,45 +164,44 @@ const StatesExample = () => {
   return (
     <div className="flex flex-col gap-6">
       {/* Required Field */}
-      <DateField isRequired>
-        <Label>Required Date</Label>
-        <DateInput />
-        <Description>This field is required</Description>
-      </DateField>
+      <DateField
+        isRequired
+        label="Required Date"
+        description="This field is required"
+      ></DateField>
 
       {/* Invalid Field */}
-      <DateField isInvalid>
-        <Label>Invalid Date</Label>
-        <DateInput />
-        <Description>This field is invalid</Description>
-      </DateField>
+      <DateField
+        isInvalid
+        label="Invalid Date"
+        description="This field is invalid"
+      ></DateField>
 
       {/* Disabled Field */}
-      <DateField isDisabled defaultValue={new CalendarDate(2024, 5, 17)}>
-        <Label>Disabled Date</Label>
-        <DateInput />
-        <Description>This field is disabled</Description>
-      </DateField>
+      <DateField
+        isDisabled
+        label="Disabled Date"
+        description="This field is disabled"
+        defaultValue={new CalendarDate(2024, 5, 17)}
+      ></DateField>
 
       {/* Read-only Field */}
-      <DateField isReadOnly defaultValue={new CalendarDate(2024, 5, 17)}>
-        <Label>Read-only Date</Label>
-        <DateInput />
-        <Description>This field is read-only</Description>
-      </DateField>
+      <DateField
+        label="Read-only Date"
+        description="This field is read-only"
+        isReadOnly
+        defaultValue={new CalendarDate(2024, 5, 17)}
+      ></DateField>
 
       {/* Invalid Field with Custom Validation */}
       <DateField
+        label="Future Dates Only"
+        description="Only future dates are allowed"
         value={value}
         onChange={handleChange}
         isInvalid={!!error}
         isRequired
-      >
-        <Label>Future Dates Only</Label>
-        <DateInput />
-        <Description>Only future dates are allowed</Description>
-        {error && <FieldError>{error}</FieldError>}
-      </DateField>
+      ></DateField>
 
       {value && !error && (
         <div className="text-sm text-green-600">
@@ -222,16 +216,17 @@ export const States: Story = {
   render: StatesExample,
 };
 
-// Form Integration
+// // Form Integration
 const FormExample = () => {
   return (
     <Form>
-      <DateField name="birth-date" isRequired className="flex flex-col gap-4">
-        <Label>Birth Date</Label>
-        <DateInput />
-        <Description>Enter your date of birth</Description>
-        <FieldError />
-      </DateField>
+      <DateField
+        name="birth-date"
+        label="Birth Date"
+        description="Enter your date of birth"
+        isRequired
+        className="flex flex-col gap-4"
+      ></DateField>
 
       <Button type="submit" variant="primary">
         Submit Form
@@ -247,17 +242,14 @@ export const FormIntegration: Story = {
 // Custom Styling
 export const CustomStyling: Story = {
   render: (args) => (
-    <DateField>
-      <Label>Custom Styled Date Input</Label>
-      <DateInput
-        {...args}
-        className={`
-          rounded-lg border-2 border-purple-300 bg-purple-50 px-4 py-2
-          focus-within:border-purple-500
-        `}
-      />
-      <Description>Date input with custom styling</Description>
-    </DateField>
+    <DateField
+      label="Custom Styled Date Input"
+      description="Date input with custom styling"
+      className={`
+        rounded-lg border-2 border-purple-300 bg-purple-50 px-4 py-2
+        focus-within:border-purple-500
+      `}
+    ></DateField>
   ),
   args: {},
 };
