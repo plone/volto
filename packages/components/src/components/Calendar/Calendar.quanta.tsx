@@ -16,7 +16,7 @@ import {
   useLocale,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.quanta';
 import { focusRing } from '../utils';
 
 const cellStyles = tv({
