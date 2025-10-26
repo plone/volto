@@ -161,26 +161,6 @@ class Html extends Component {
                 dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}
               />
             )}
-
-            <link rel="icon" href="/favicon.ico" sizes="any" />
-            <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-            <link
-              rel="apple-touch-icon"
-              sizes="180x180"
-              href="/apple-touch-icon.png"
-            />
-            <link rel="manifest" href="/site.webmanifest" />
-            <meta name="generator" content="Plone 6 - https://plone.org" />
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1"
-            />
-            <meta name="mobile-web-app-capable" content="yes" />
-            {process.env.NODE_ENV === 'production' && criticalCss && (
-              <style
-                dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}
-              />
-            )}
             {/* Add the crossorigin while in development */}
             {extractor.getLinkElements().map((elem) =>
               React.cloneElement(elem, {
