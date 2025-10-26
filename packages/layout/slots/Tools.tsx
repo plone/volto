@@ -1,28 +1,37 @@
 import { Link } from 'react-aria-components';
-import { useLocation } from 'react-router';
+import { useLocation, useRouteLoaderData } from 'react-router';
+import type { RootLoader } from 'seven/app/root';
 
 const HeaderTools = () => {
   const location = useLocation();
+  const rootData = useRouteLoaderData<RootLoader>('root');
+
+  const isLoggedIn = !!rootData?.isAuthenticated;
 
   const links = [
-    {
-      id: '3',
-      label: 'edit',
-      icon: '🛠️',
-      url: `/@@edit${location.pathname.replace(/^\/$/, '')}`,
-    },
-    {
-      id: '1',
-      label: 'login',
-      icon: '🔧',
-      url: '/login',
-    },
-    {
-      id: '2',
-      label: 'logout',
-      icon: '🔨',
-      url: '/logout',
-    },
+    ...(isLoggedIn
+      ? [
+          {
+            id: '3',
+            label: 'edit',
+            icon: '🛠️',
+            url: `/@@edit${location.pathname.replace(/^\/$/, '')}`,
+          },
+          {
+            id: '2',
+            label: 'logout',
+            icon: '🔨',
+            url: '/logout',
+          },
+        ]
+      : [
+          {
+            id: '1',
+            label: 'login',
+            icon: '🔧',
+            url: '/login',
+          },
+        ]),
   ];
   // Inline styles since this is temporary during seven development
   return import.meta.env.DEV ? (

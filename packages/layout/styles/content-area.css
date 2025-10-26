@@ -64,6 +64,10 @@ main {
       --block-width: var(--narrow-container-width);
     }
   }
+
+  .documentDescription {
+    color: var(--text-color-base);
+  }
 }
 
 /* Blocks & Inner containers */

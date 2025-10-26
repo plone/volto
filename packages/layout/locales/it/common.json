@@ -13,6 +13,12 @@
       "file": {
         "download": "Clicca per scaricare il file"
       }
+    },
+    "views": {
+      "link": {
+        "linkLabel": "L'indirizzo del link è:",
+        "externalLinkLabel": "L'indirizzo del link esterno è:"
+      }
     }
   }
 }
