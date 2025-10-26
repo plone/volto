@@ -118,7 +118,7 @@ describe('Folder Contents Tests', () => {
     // then we should have a slide play or pause button
     cy.get('.image-gallery-play-button')
       .should('have.attr', 'aria-label')
-      .and('eq', 'Play or Pause Slideshow');
+      .and('eq', 'Play or pause slideshow');
 
     cy.get('.image-gallery-slides img.image-gallery-image')
       .should('be.visible')
@@ -154,7 +154,7 @@ describe('Folder Contents Tests', () => {
     // then we should have a slide play or pause button
     cy.get('.image-gallery-play-button')
       .should('have.attr', 'aria-label')
-      .and('eq', 'Play or Pause Slideshow');
+      .and('eq', 'Play or pause slideshow');
     cy.get('.image-gallery-slides img.image-gallery-image')
       .should('be.visible')
       .and(($img) => {
