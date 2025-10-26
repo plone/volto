@@ -410,9 +410,9 @@ msgstr ""
 msgid "Numbered list"
 msgstr ""
 
-#. Default: "On Windows, the MOD key is CTRL, on macOS X it's CMD."
+#. Default: "On Windows, the MOD key is CTRL, on macOS it's CMD."
 #: blocks/Text/ShortcutListing
-msgid "On Windows, the MOD key is CTRL, on macOS X it's CMD."
+msgid "On Windows, the MOD key is CTRL, on macOS it's CMD."
 msgstr ""
 
 #. Default: "Open in new window"
