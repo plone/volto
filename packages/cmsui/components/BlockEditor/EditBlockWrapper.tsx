@@ -69,7 +69,7 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
     <div
       role="group"
       aria-label={`${t('cmsui.blocksEditor.block')} ${title}. ${props.extraAriaDescription || ''}`}
-      className={clsx('ebw', { 'outline-quanta-sapphire outline-2': selected })}
+      className={clsx('ebw', { 'outline-2 outline-quanta-sapphire': selected })}
       {...pressProps}
       {...focusWithinProps}
     >

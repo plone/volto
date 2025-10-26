@@ -3,7 +3,7 @@ import { PlateEditor, type Value } from '@plone/plate/components/editor';
 import plateBlockConfig from '@plone/plate/config/presets/block';
 
 const TextBlockEdit = (props: BlockEditProps) => {
-  const { data, setBlock } = props;
+  const { data, setBlock, onFocusNextBlock, onFocusPreviousBlock } = props;
 
   return (
     <PlateEditor
@@ -12,6 +12,9 @@ const TextBlockEdit = (props: BlockEditProps) => {
       onChange={(options) => {
         setBlock({ ...data, value: options.value });
       }}
+      onFocusNextBlock={onFocusNextBlock}
+      onFocusPreviousBlock={onFocusPreviousBlock}
+      onFocusSidebar={props.onFocusSidebar}
     />
   );
 };
