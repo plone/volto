@@ -30,8 +30,8 @@ const ShortcutListing = (props) => {
         </List>
         <div>
           <FormattedMessage
-            id="On Windows, the MOD key is CTRL, on macOS X it's CMD."
-            defaultMessage="On Windows, the MOD key is CTRL, on macOS X it's CMD."
+            id="On Windows, the MOD key is CTRL, on macOS it's CMD."
+            defaultMessage="On Windows, the MOD key is CTRL, on macOS it's CMD."
           />
         </div>
       </Segment>
