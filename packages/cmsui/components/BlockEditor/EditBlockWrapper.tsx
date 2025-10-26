@@ -1,13 +1,21 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { atom, useAtom, useSetAtom } from 'jotai';
-import { selectedBlockAtom } from './BlockEditor';
+import { BlockEditorContext, selectedBlockAtom } from './BlockEditor';
 import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import BlockSettingsForm from './BlockSettingsForm';
 import BlockWrapper from '@plone/layout/blocks/BlockWrapper';
-import { Plug, Pluggable } from '@plone/layout/components/Pluggable';
+import { Pluggable } from '@plone/layout/components/Pluggable';
 import { blockAtomFamily } from '../../routes/atoms';
 import config from '@plone/registry';
+import {
+  BinIcon,
+  ChevrondownIcon,
+  ChevronupIcon,
+} from '@plone/components/Icons';
+import { Button } from '@plone/components';
+import { Toolbar } from '@plone/components/quanta';
+import { Group } from 'react-aria-components';
 
 type EditBlockWrapperProps = {
   block: string;
@@ -33,10 +41,15 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
     config.blocks.blocksConfig;
   const schema = blocksconfig[type]?.blockSchema;
 
+  const { moveBlockUp, moveBlockDown, deleteBlock } =
+    useContext(BlockEditorContext) ?? {};
+
   return (
     <div
       role="presentation"
-      className={clsx('ebw', { 'outline-2 outline-quanta-sapphire': selected })}
+      className={clsx('ebw relative', {
+        'outline-2 outline-quanta-sapphire': selected,
+      })}
       onClick={() => onSelectBlock(props.block)}
     >
       {/* @ts-expect-error Volto's EditBlockWrapper passes RenderBlocksProps down. We need to revisit which props do we really need to pass down to the block Edit component */}
@@ -62,11 +75,52 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
           />,
           document.getElementById('sidebar') as HTMLElement,
         )}
+      <div
+        className={clsx(
+          'absolute top-1/2 right-1 z-10 translate-y-[-50%] rounded-2xl p-1 pb-2 transition-opacity',
+          {
+            hidden: !selected,
+            'flex bg-quanta-arctic opacity-50 hover:opacity-100': selected,
+          },
+        )}
+      >
+        <Toolbar
+          aria-label="Block actions"
+          orientation="vertical"
+          className="gap-0.5"
+        >
+          <Group aria-label="Move up/Move down">
+            <Button
+              aria-label="Move block up"
+              onPress={(event) => {
+                // event.stopPropagation();
+                moveBlockUp?.(props.block);
+              }}
+            >
+              <ChevronupIcon className="size-5" />
+            </Button>
+            <Button
+              aria-label="Move block down"
+              onPress={(event) => {
+                // event.stopPropagation();
+                moveBlockDown?.(props.block);
+              }}
+            >
+              <ChevrondownIcon className="size-5" />
+            </Button>
+            <Button
+              aria-label="Delete block"
+              onPress={() => {
+                deleteBlock?.(props.block);
+              }}
+            >
+              <BinIcon className="size-5" />
+            </Button>
+          </Group>
+        </Toolbar>
+      </div>
       {/* TODO: Re-evaluate if this has any sense */}
       <Pluggable name="block-helpers" />
-      <Plug pluggable="block-helpers" id="button-settings">
-        <div className="helpers">Helpers</div>
-      </Plug>
     </div>
   );
 };

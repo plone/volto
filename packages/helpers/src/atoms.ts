@@ -5,7 +5,7 @@ import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import type { PrimitiveAtom, WritableAtom } from 'jotai';
 import { focusAtom } from 'jotai-optics';
 import type { OpticFor } from 'optics-ts';
-import type { DeepKeys } from '@tanstack/react-form';
+import type { DeepKeys, DeepValue } from '@tanstack/react-form';
 
 /**
  * Initialises atoms with the provided values.
@@ -41,58 +41,67 @@ export const InitAtoms = ({
 
 // Returns the Readable/Writeable focused Atom of a field
 // given a formAtom and a field name
-export function useFieldFocusAtom<T>(
+export function useFieldFocusAtom<T, K extends DeepKeys<T>>(
   anAtom: PrimitiveAtom<T>,
-  field: DeepKeys<T>,
+  field: K,
 ) {
-  return focusAtom(
+  return focusAtom<T, DeepValue<T, K>, void>(
     anAtom,
     // @ts-expect-error https://github.com/jotaijs/jotai-optics/issues/6
-    useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
+    useCallback((optic: OpticFor<T>) => optic.prop(field as keyof T), [field]),
   );
 }
 
 // Returns the [value, setter] (`useAtom`-ed) ready to use focused atom of a field
 // (when referring to a Seven Form)
-export function useFieldFocusedAtom<T>(
+export function useFieldFocusedAtom<T, K extends DeepKeys<T>>(
   atom: PrimitiveAtom<T>,
-  field: DeepKeys<T>,
+  field: K,
 ) {
   return useAtom(
-    focusAtom(
+    focusAtom<T, DeepValue<T, K>, void>(
       atom,
       // @ts-expect-error https://github.com/jotaijs/jotai-optics/issues/6
-      useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
+      useCallback(
+        (optic: OpticFor<T>) => optic.prop(field as keyof T),
+        [field],
+      ),
     ),
   );
 }
 
 // Returns the setter of a focused atom of a field
 // given a formAtom and a field name
-export function useSetFieldFocusedAtom<T>(
+export function useSetFieldFocusedAtom<T, K extends DeepKeys<T>>(
   atom: PrimitiveAtom<T>,
-  field: DeepKeys<T>,
+  field: K,
 ) {
   return useSetAtom(
-    focusAtom(
+    focusAtom<T, DeepValue<T, K>, void>(
       atom,
       // @ts-expect-error https://github.com/jotaijs/jotai-optics/issues/6
-      useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
+      useCallback(
+        (optic: OpticFor<T>) => optic.prop(field as keyof T),
+        [field],
+      ),
     ),
   );
 }
 
 // Returns the value of focused atom of a field
 // given a formAtom and a field name
-export function useFieldValueFocusedAtom<T>(
+export function useFieldValueFocusedAtom<T, K extends DeepKeys<T>>(
   atom: PrimitiveAtom<T>,
-  field: DeepKeys<T>,
+  field: K,
 ) {
   return useAtomValue(
-    focusAtom(
+    focusAtom<T, DeepValue<T, K>, void>(
       atom,
       // @ts-expect-error https://github.com/jotaijs/jotai-optics/issues/6
-      useCallback((optic: OpticFor<T>) => optic.prop(field), [field]),
+      useCallback(
+        (optic: OpticFor<T>) => optic.prop(field as keyof T),
+        [field],
+      ),
     ),
   );
 }
