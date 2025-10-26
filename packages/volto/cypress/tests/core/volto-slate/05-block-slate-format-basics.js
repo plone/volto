@@ -210,15 +210,15 @@ describe('Block Tests: Basic text format', () => {
 
     // Blockquote
     cy.setSlateSelection('sleep', 'furiously');
-    cy.clickSlateButton('Blockquote');
+    cy.clickSlateButton('Block quote');
 
     // Un-Blockquote
     cy.setSlateSelection('furiously');
-    cy.clickSlateButton('Blockquote');
+    cy.clickSlateButton('Block quote');
 
     // Blockquote
     cy.setSlateSelection('furiously');
-    cy.clickSlateButton('Blockquote');
+    cy.clickSlateButton('Block quote');
 
     // Save
     cy.toolbarSave();
