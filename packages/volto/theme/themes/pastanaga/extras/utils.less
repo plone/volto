@@ -61,3 +61,16 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
   }
 }
+
+.visually-hidden {
+  position: 'absolute';
+  overflow: 'hidden';
+  width: '1px';
+  height: '1px';
+  padding: 0;
+  border: 0;
+  margin: '-1px';
+  clip: 'rect(1px 1px 1px 1px)'; // IE-style CSS for compatibility
+  white-space: 'nowrap';
+  word-wrap: 'normal';
+}
