@@ -1476,6 +1476,11 @@ msgstr "இந்த உருப்படிக்கு தற்போது�
 msgid "Expand sidebar"
 msgstr "பக்கப்பட்டியை விரிவாக்குங்கள்"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr ""
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
