@@ -26,7 +26,7 @@ export type ButtonsWidgetProps = {
   /**
    * List of actions available for the widget.
    */
-  actions: Array<StyleDefinition | string>;
+  actions?: Array<StyleDefinition | string>;
 
   /**
    * Map containing additional the information (icon and i18n string) for each action.
@@ -71,7 +71,7 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
     disabled,
     id,
     onChange,
-    actions,
+    actions = [],
     actionsInfoMap,
     value,
     isDisabled,
