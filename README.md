@@ -148,6 +148,7 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Humboldt Labor](https://www.humboldtforum.org/de/programm/dauerangebot/ausstellung/nach-der-natur-14144/) (The Humboldt Lab is a website where the Humboldt University Berlin presents its latest research projects and findings. Developed by [WLDX](https://wldx.de/) and [kitconcept GmbH](https://kitconcept.com/en), 2020)
 - [ILPO](https://ilpo.jyu.fi/) (the registration portal of continuous learning at the University of Jyväskylä. Developed by University of Jyväskylä, 2022)
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://eaudeweb.ro/), 2020)
+- [Interpretare.ro](https://www.interpretare.ro) (Romanian medical imaging interpretation service allowing patients to submit MRI, CT, and other diagnostic imaging for professional evaluation by medical specialists, 2022)
 - [iTlent - Basque Institute of Talent in VET](https://www.itlent.eus/en) (developed by [CodeSyntax](https://www.codesyntax.com/en), 2024)
 - [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Carrer website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
 - [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
