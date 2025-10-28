@@ -38,7 +38,7 @@ context('Widgets Acceptance Tests', () => {
       cy.findByLabelText('Add item').click();
       cy.findByLabelText('Enter a URL to an image').click();
       cy.get('input[placeholder="Enter a URL to an image"]').type(
-        '/plone/document/my-image{enter}',
+        '/document/my-image{enter}',
       );
 
       cy.get('.image-upload-widget-image > img')

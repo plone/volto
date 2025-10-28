@@ -1,10 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import loadable from '@loadable/component';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { Button } from 'semantic-ui-react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import {
+  addSubpathPrefix,
+  flattenToAppURL,
+} from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
 
 import galleryLeftSVG from '@plone/volto/icons/left-key.svg';
@@ -81,10 +83,10 @@ const ImageGalleryTemplate = ({ items }) => {
   );
   const imagesInfo = renderItems.map((item) => {
     return {
-      original: `${flattenToAppURL(item['@id'])}/@@images/${
+      original: `${addSubpathPrefix(flattenToAppURL(item['@id']))}/@@images/${
         item.image_field
       }/large`,
-      thumbnail: `${flattenToAppURL(item['@id'])}/@@images/${
+      thumbnail: `${addSubpathPrefix(flattenToAppURL(item['@id']))}/@@images/${
         item.image_field
       }/thumb`,
     };

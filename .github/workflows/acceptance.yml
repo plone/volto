@@ -533,3 +533,411 @@ jobs:
         with:
           name: cypress-videos
           path: packages/volto/cypress/videos
+
+  subpath-core:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Basic Subpath Site
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/basic/**/*.js
+          config: baseUrl=http://localhost/foo
+          env: subpathPrefix=/foo
+          start: |
+            make ci-acceptance-backend-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-subpath-core
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-subpath-core
+          path: packages/volto/cypress/videos
+
+  subpath-corecontent:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Content Subpath Site
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/content/**/*.js
+          config: baseUrl=http://localhost/foo
+          env: subpathPrefix=/foo
+          start: |
+            make ci-acceptance-backend-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-subpath-corecontent
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-subpath-corecontent
+          path: packages/volto/cypress/videos
+
+  subpath-corecontrolpanels:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Control Panels Subpath Site
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/controlpanels/**/*.js
+          config: baseUrl=http://localhost/foo
+          env: subpathPrefix=/foo
+          start: |
+            make ci-acceptance-backend-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-subpath-corecontrolpanels
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-subpath-corecontrolpanels
+          path: packages/volto/cypress/videos
+
+  subpath-coreblocks:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Blocks Subpath Site
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/blocks/*.js
+          config: baseUrl=http://localhost/foo
+          env: subpathPrefix=/foo
+          start: |
+            make ci-acceptance-backend-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-subpath-coreblocks
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-subpath-coreblocks
+          path: packages/volto/cypress/videos
+
+  subpath-coreblockslisting:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Blocks - Listing Subpath Site
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/blocks/listing/*.js
+          config: baseUrl=http://localhost/foo
+          env: subpathPrefix=/foo
+          start: |
+            make ci-acceptance-backend-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-subpath-coreblockslisting
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-subpath-coreblockslisting
+          path: packages/volto/cypress/videos
+
+  subpath-corevoltoslate:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Core Volto Slate Subpath Site
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/core/volto-slate/**/*.js
+          config: baseUrl=http://localhost/foo
+          env: subpathPrefix=/foo
+          start: |
+            make ci-acceptance-backend-start
+            make subpath-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-subpath-corevoltoslate
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-subpath-corevoltoslate
+          path: packages/volto/cypress/videos
+
+  subpath-multilingual:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: Multilingual Subpath Site
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/multilingual/**/*.js
+          config: baseUrl=http://localhost/foo
+          env: subpathPrefix=/foo
+          start: |
+            make deployment-multilingual-acceptance-backend-start
+            make subpath-multilingual-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-subpath-multilingual
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-subpath-multilingual
+          path: packages/volto/cypress/videos
+
+  subpath-workingcopy:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: Working Copy Subpath Site
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cypress acceptance tests
+        uses: cypress-io/github-action@v6
+        env:
+          BABEL_ENV: production
+          CYPRESS_RETRIES: 2
+          # Recommended: pass the GitHub token lets this action correctly
+          # determine the unique run id necessary to re-run the checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          install: false
+          working-directory: packages/volto
+          browser: chrome
+          spec: cypress/tests/workingCopy/**/*.js
+          config: baseUrl=http://localhost/foo
+          env: subpathPrefix=/foo
+          start: |
+            make working-copy-acceptance-backend-start
+            make subpath-working-copy-acceptance-frontend-prod-start
+            make deployment-subpath-acceptance-web-server-start
+          wait-on: 'npx wait-on --httpTimeout 20000 http-get://127.0.0.1:55001/plone http://localhost/foo'
+
+      # Upload Cypress screenshots
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots-subpath-workingcopy
+          path: packages/volto/cypress/screenshots
+      # Upload Cypress videos
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-videos-subpath-workingcopy
+          path: packages/volto/cypress/videos

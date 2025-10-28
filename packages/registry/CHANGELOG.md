@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.6 (2025-10-21)
+
+### Breaking
+
+- Renamed main.css -> publicui.css for placing the publicui CSS in add-ons. @sneridagh [#7426](https://github.com/plone/volto/issues/7426)
+
 ## 3.0.0-alpha.5 (2025-09-29)
 
 ### Feature
