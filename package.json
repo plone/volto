@@ -54,6 +54,7 @@
       "cypress",
       "esbuild",
       "lightningcss-cli",
+      "msgpackr-extract",
       "unrs-resolver"
     ]
   }

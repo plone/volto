@@ -30,7 +30,7 @@ const button = tv({
         focus:bg-quanta-snow
         active:bg-quanta-silver
         has-[svg]:text-quanta-iron
-        pressed:bg-quanta-cobalt
+        pressed:bg-quanta-silver
       `,
       primary: `
         focus:bg-quanta-artic focus:text-quanta-royal

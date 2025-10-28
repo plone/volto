@@ -1,10 +1,10 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
+  "style": "new-york",
   "rsc": false,
   "tsx": true,
   "tailwind": {
-    "baseColor": "slate",
+    "baseColor": "neutral",
     "config": "../theming/styles/main.css",
     "css": "../theming/styles/main.css",
     "cssVariables": true,
