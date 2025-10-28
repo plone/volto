@@ -10,8 +10,8 @@ export const getVideoIDAndPlaceholder = (url: string) => {
   let listID: string | null = null;
   let thumbnailURL: string | null = null;
 
-  if (url.match('youtu')) {
-    if (url.match('list')) {
+  if (url.includes('youtu')) {
+    if (url.includes('list')) {
       const matches = url.match(/^.*\?list=(.*)|^.*&list=(.*)$/);
       listID = matches?.[1] || matches?.[2] || null;
 
@@ -40,7 +40,7 @@ export const getVideoIDAndPlaceholder = (url: string) => {
       }
       thumbnailURL = `https://img.youtube.com/vi/${thumbnailID}/sddefault.jpg`;
     }
-  } else if (url.match('vimeo')) {
+  } else if (url.includes('vimeo')) {
     videoID = url.match(/^.*\.com\/(.*)/)?.[1] ?? null;
     if (videoID) {
       let thumbnailID = videoID;
@@ -93,8 +93,8 @@ export const VideoBlockBody = ({
 
   let content: ReactNode = null;
 
-  if (data.url.match('youtu')) {
-    if (data.url.match('list') && listID) {
+  if (data.url.includes('youtu')) {
+    if (data.url.includes('list') && listID) {
       content = (
         <iframe
           src={`https://www.youtube.com/embed/videoseries?list=${listID}`}
@@ -111,7 +111,7 @@ export const VideoBlockBody = ({
         />
       );
     }
-  } else if (data.url.match('vimeo') && videoID) {
+  } else if (data.url.includes('vimeo') && videoID) {
     content = (
       <iframe
         src={`https://player.vimeo.com/video/${videoID}`}
@@ -132,12 +132,13 @@ export const VideoBlockBody = ({
   }
 
   if (!content) {
-    const message = isEditMode
-      ? 'Please enter a valid URL by deleting the block and adding a new video block.'
-      : '';
+    if (!isEditMode) {
+      return null;
+    }
+
     return (
       <div className="invalid-video-format" aria-live="polite">
-        {message}
+        Please enter a valid URL.
       </div>
     );
   }
