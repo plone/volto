@@ -31,11 +31,13 @@ import paginationRightSVG from '@plone/volto/icons/right-key.svg';
  * @returns {Object} Converted options
  */
 const convertSortOptions = (options) => {
-  if (options.sort_order && options.sort_on === 'effective') {
-    options.sort_reverse = options.sort_order === 'descending' ? '1' : '0';
-    delete options.sort_order;
+  const converted = { ...options };
+  // Convert sort_order to sort_reverse for Plone compatibility when use_site_search_settings=1
+  if (converted.sort_order && converted.sort_on === 'effective') {
+    converted.sort_reverse = converted.sort_order === 'descending' ? '1' : '0';
+    delete converted.sort_order;
   }
-  return options;
+  return converted;
 };
 
 const messages = defineMessages({
@@ -122,67 +124,77 @@ class Search extends Component {
    */
 
   doSearch = () => {
-    const options = qs.parse(this.props.history.location.search);
+    const urlOptions = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
-    options['use_site_search_settings'] = 1;
 
     // Ensure default sort order for date fields
-    if (options.sort_on && !options.sort_order) {
-      options.sort_order = 'descending';
+    if (urlOptions.sort_on && !urlOptions.sort_order) {
+      urlOptions.sort_order = 'descending';
     }
 
-    // Convert sort options for Plone compatibility
-    convertSortOptions(options);
-
-    this.props.searchContent('', {
+    const searchOptions = {
+      use_site_search_settings: 1,
       b_size: this.defaultPageSize,
-      ...options,
-    });
+      ...urlOptions,
+    };
+
+    const apiOptions = convertSortOptions(searchOptions);
+
+    this.props.searchContent('', apiOptions);
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
     window.scrollTo(0, 0);
-    let options = qs.parse(this.props.history.location.search);
-    options['use_site_search_settings'] = 1;
+    const urlOptions = qs.parse(this.props.history.location.search);
 
-    // Convert sort options for Plone compatibility
-    convertSortOptions(options);
+    const searchOptions = {
+      use_site_search_settings: 1,
+      b_size: this.defaultPageSize,
+      ...urlOptions,
+    };
+
+    const apiOptions = convertSortOptions(searchOptions);
 
     this.setState({ currentPage: activePage }, () => {
       this.props.searchContent('', {
-        b_size: this.defaultPageSize,
-        ...options,
+        ...apiOptions,
         b_start:
           (this.state.currentPage - 1) *
-          (options.b_size || this.defaultPageSize),
+          (apiOptions.b_size || this.defaultPageSize),
       });
     });
   };
 
   onSortChange = (event, sort_order) => {
-    let options = qs.parse(this.props.history.location.search);
+    const urlOptions = qs.parse(this.props.history.location.search);
     const sortOn = event.currentTarget?.name || event.target?.name;
 
     if (
       sortOn === 'effective' &&
-      options.sort_on === 'effective' &&
-      (options.sort_order === 'descending' || options.sort_reverse === '1')
+      urlOptions.sort_on === 'effective' &&
+      urlOptions.sort_order === 'descending'
     ) {
       return;
     }
-    options.sort_on = sortOn;
+
+    const searchOptions = {
+      ...urlOptions,
+      sort_on: sortOn,
+    };
 
     if (sortOn === 'effective') {
-      options.sort_order = 'descending';
+      searchOptions.sort_order = 'descending';
     } else {
-      options.sort_order = sort_order || 'descending';
+      searchOptions.sort_order = sort_order || 'descending';
     }
 
     if (sortOn === 'relevance') {
-      delete options.sort_on;
-      delete options.sort_order;
+      delete searchOptions.sort_on;
+      delete searchOptions.sort_order;
     }
-    let searchParams = qs.stringify(options);
+
+    const apiOptions = convertSortOptions(searchOptions);
+    let searchParams = qs.stringify(apiOptions);
     this.setState({ currentPage: 1, active: event.target.name }, () => {
       // eslint-disable-next-line no-restricted-globals
       this.props.history.replace({
@@ -197,7 +209,7 @@ class Search extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const options = qs.parse(this.props.history.location.search);
+    const urlOptions = qs.parse(this.props.history.location.search);
 
     return (
       <Container id="page-search">
@@ -332,7 +344,7 @@ class Search extends Component {
                     activePage={this.state.currentPage}
                     totalPages={Math.ceil(
                       this.props.search.items_total /
-                        (options.b_size || this.defaultPageSize),
+                        (urlOptions.b_size || this.defaultPageSize),
                     )}
                     onPageChange={this.handleQueryPaginationChange}
                     firstItem={null}
@@ -399,13 +411,17 @@ export default compose(
     {
       key: 'search',
       promise: ({ location, store: { dispatch } }) => {
-        const options = qs.parse(location.search);
-        options.use_site_search_settings = 1;
+        const urlOptions = qs.parse(location.search);
 
-        // Convert sort options for Plone compatibility
-        convertSortOptions(options);
+        const searchOptions = {
+          use_site_search_settings: 1,
+          b_size: config.settings.defaultPageSize,
+          ...urlOptions,
+        };
 
-        return dispatch(searchContent('', options));
+        const apiOptions = convertSortOptions(searchOptions);
+
+        return dispatch(searchContent('', apiOptions));
       },
     },
   ]),
