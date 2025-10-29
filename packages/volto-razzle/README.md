@@ -31,7 +31,7 @@ Please see our [CONTRIBUTING.md](../../CONTRIBUTING.md).
 
 - [jaredpalmer/backpack](https://github.com/jaredpalmer/backpack)
 - [nytimes/kyt](https://github.com/nytimes/kyt)
-- [facebookincubator/create-react-app](https://github.com/facebookincubator/create-react-app)
+- [facebookincubator/create-react-app](https://github.com/facebook/create-react-app)
 - [humblespark/sambell](https://github.com/ndreckshage/sambell)
 - [zeit/next.js](https://github.com/vercel/next.js)
 
@@ -67,7 +67,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
   - **Contributions:** code, example, plugin
 <!-- END contributors generated instructions please keep comment here to allow auto update -->
 
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors.github.io) specification. Contributions of any kind welcome!
 
 ---
 
