@@ -7,7 +7,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@volto/razzle.svg)](https://www.npmjs.com/package/@volto/razzle) [![npm](https://img.shields.io/npm/dm/@volto/razzle)](https://www.npmjs.com/package/@volto/razzle)
 
-Universal JavaScript applications are tough to setup. Either you buy into a framework like Next.js or Nuxt, fork a boilerplate, or set things up yourself. Aiming to fill this void, Razzle is a tool that abstracts all the complex configuration needed for building SPA's and SSR applications into a single dependency--giving you the awesome developer experience of [create-react-app](https://github.com/facebookincubator/create-react-app), but then leaving the rest of your app's architectural decisions about frameworks, routing, and data fetching up to you. With this approach, Razzle not only works with React, but also Preact, Vue, Svelte, and Angular, and most importantly......whatever comes next.
+Universal JavaScript applications are tough to setup. Either you buy into a framework like Next.js or Nuxt, fork a boilerplate, or set things up yourself. Aiming to fill this void, Razzle is a tool that abstracts all the complex configuration needed for building SPA's and SSR applications into a single dependency--giving you the awesome developer experience of [create-react-app](https://github.com/facebook/create-react-app), but then leaving the rest of your app's architectural decisions about frameworks, routing, and data fetching up to you. With this approach, Razzle not only works with React, but also Preact, Vue, Svelte, and Angular, and most importantly......whatever comes next.
 
 ## Getting Started
 
@@ -32,8 +32,8 @@ Please see our [CONTRIBUTING.md](../../CONTRIBUTING.md).
 - [jaredpalmer/backpack](https://github.com/jaredpalmer/backpack)
 - [nytimes/kyt](https://github.com/nytimes/kyt)
 - [facebookincubator/create-react-app](https://github.com/facebookincubator/create-react-app)
-- [humblespark/sambell](https://github.com/humblespark/sambell)
-- [zeit/next.js](https://github.com/zeit/next.js)
+- [humblespark/sambell](https://github.com/ndreckshage/sambell)
+- [zeit/next.js](https://github.com/vercel/next.js)
 
 ### Author
 
@@ -41,11 +41,11 @@ Please see our [CONTRIBUTING.md](../../CONTRIBUTING.md).
 
 ## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors.github.io#emoji-key)):
 
 <!-- START contributors generated instructions please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN yarn build-docs TO UPDATE -->
-- **Jared Palmer** - [@jaredpalmer](http://jaredpalmer.com)
+- **Jared Palmer** - [@jaredpalmer](https://jaredpalmer.com)
   - **Contributions:** question, code, design, doc, example, ideas, review, test, tool
 - **Nima Arefi** - [@Nimaa77](https://github.com/Nimaa77)
   - **Contributions:** question, code, doc, example, ideas, review, test, tool
