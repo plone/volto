@@ -4,7 +4,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import SidebarPortal from './SidebarPortal';
 
 describe('SidebarPortal', () => {
-  let portalRoot;
+  let portalRoot: HTMLDivElement | null;
 
   beforeEach(() => {
     portalRoot = document.createElement('div');
