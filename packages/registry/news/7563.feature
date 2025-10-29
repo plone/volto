@@ -1,1 +1,1 @@
-nable detection of `theme` key in add-ons. @sneridagh
+Enable detection of `theme` key in add-ons. @sneridagh
