@@ -76,7 +76,7 @@ describe('ButtonsWidget', () => {
       />,
     );
 
-    expect(screen.getByRole('button', { name: 'missing' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'missing' })).toBeInTheDocument();
   });
 
   it('normalizes style definitions when an action is pressed', () => {
@@ -103,7 +103,7 @@ describe('ButtonsWidget', () => {
       />,
     );
 
-    fireEvent.click(screen.getByRole('button', { name: 'Wide width' }));
+    fireEvent.click(screen.getByRole('radio', { name: 'Wide width' }));
 
     expect(handleChange).toHaveBeenCalledWith('align', {
       '--layout-width': 'wide',

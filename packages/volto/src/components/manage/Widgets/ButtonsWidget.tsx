@@ -1,7 +1,7 @@
 import React from 'react';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { Button } from '@plone/components';
+import { Radio, RadioGroup } from '@plone/components';
 import isEqual from 'lodash/isEqual';
 import type { StyleDefinition } from '@plone/types';
 
@@ -90,6 +90,25 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
     [actions],
   );
 
+  const selectedActionName = React.useMemo(
+    () =>
+      normalizedActions.find((action) => isEqual(value, action.value))?.name,
+    [normalizedActions, value],
+  );
+
+  const handleChange = React.useCallback(
+    (selectedName: string) => {
+      const selectedAction = normalizedActions.find(
+        ({ name }) => name === selectedName,
+      );
+
+      if (selectedAction) {
+        onChange(id, selectedAction.value);
+      }
+    },
+    [id, normalizedActions, onChange],
+  );
+
   React.useEffect(() => {
     if (!value && defaultValue) {
       const nextValue =
@@ -104,7 +123,14 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
 
   return (
     <FormFieldWrapper {...props} className="widget">
-      <div className="buttons buttons-widget">
+      <RadioGroup
+        aria-label={props.title || props.label || id}
+        orientation="horizontal"
+        value={selectedActionName}
+        onChange={handleChange}
+        isDisabled={disabled || isDisabled}
+        className="buttons buttons-widget"
+      >
         {normalizedActions.map((action) => {
           const actionInfo = actionsInfoMap?.[action.name];
           const [iconOrText, ariaLabel] = actionInfo ?? [
@@ -113,16 +139,11 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
           ];
 
           return (
-            <Button
+            <Radio
               key={action.name}
               aria-label={ariaLabel}
-              onPress={() => onChange(id, action.value)}
-              className={
-                isEqual(value, action.value)
-                  ? 'react-aria-Button active'
-                  : 'react-aria-Button'
-              }
-              isDisabled={disabled || isDisabled}
+              value={action.name}
+              className="buttons-widget-option"
             >
               {typeof iconOrText === 'string' ? (
                 <div className="image-sizes-text">{iconOrText}</div>
@@ -131,12 +152,13 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
                   name={iconOrText}
                   title={ariaLabel || action.name}
                   size="24px"
+                  ariaHidden={true}
                 />
               )}
-            </Button>
+            </Radio>
           );
         })}
-      </div>
+      </RadioGroup>
     </FormFieldWrapper>
   );
 };

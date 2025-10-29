@@ -44,15 +44,15 @@ describe('Size widget', () => {
   it('renders the default size options', () => {
     renderWidget();
 
-    expect(screen.getByRole('button', { name: 'Small' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Medium' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Large' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Small' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Medium' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Large' })).toBeInTheDocument();
   });
 
   it('returns the selected size name', () => {
     const { onChange } = renderWidget();
 
-    fireEvent.click(screen.getByRole('button', { name: 'Medium' }));
+    fireEvent.click(screen.getByRole('radio', { name: 'Medium' }));
 
     expect(onChange).toHaveBeenCalledWith('size', 'm');
   });

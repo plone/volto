@@ -45,15 +45,15 @@ describe('BlockAlignment', () => {
   it('renders default alignment buttons', () => {
     renderWidget();
 
-    expect(screen.getByRole('button', { name: 'Left' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Center' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Right' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Left' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Center' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Right' })).toBeInTheDocument();
   });
 
   it('filters actions when filterActions is provided', () => {
     renderWidget({ filterActions: ['center'] });
 
-    expect(screen.getByRole('button', { name: 'Center' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Center' })).toBeInTheDocument();
     expect(
       screen.queryByRole('button', { name: 'Left' }),
     ).not.toBeInTheDocument();
@@ -70,9 +70,9 @@ describe('BlockAlignment', () => {
       },
     });
 
-    expect(screen.getByRole('button', { name: 'Left' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Left' })).toBeInTheDocument();
     expect(
-      screen.getByRole('button', { name: 'Custom alignment' }),
+      screen.getByRole('radio', { name: 'Custom alignment' }),
     ).toBeInTheDocument();
   });
 
@@ -89,13 +89,13 @@ describe('BlockAlignment', () => {
       ],
     });
 
-    expect(screen.getByRole('button', { name: 'wide' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'wide' })).toBeInTheDocument();
   });
 
   it('invokes onChange with styles when default actions are used', () => {
     const { onChange } = renderWidget();
 
-    fireEvent.click(screen.getByRole('button', { name: 'Center' }));
+    fireEvent.click(screen.getByRole('radio', { name: 'Center' }));
 
     expect(onChange).toHaveBeenCalledWith('alignment', {
       '--block-alignment': 'var(--align-center)',

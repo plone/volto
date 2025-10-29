@@ -44,16 +44,16 @@ describe('BlockWidth', () => {
   it('renders the default action buttons provided by the widget', () => {
     renderWidget();
 
-    expect(screen.getByRole('button', { name: 'Narrow' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Default' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Layout' })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Full' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Narrow' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Default' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Layout' })).toBeInTheDocument();
+    expect(screen.getByRole('radio', { name: 'Full' })).toBeInTheDocument();
   });
 
   it('emits the correct value for the default actions', () => {
     const { onChange } = renderWidget();
 
-    fireEvent.click(screen.getByRole('button', { name: 'Layout' }));
+    fireEvent.click(screen.getByRole('radio', { name: 'Layout' }));
 
     expect(onChange).toHaveBeenCalledWith('blockWidth', {
       '--block-width': 'var(--layout-container-width)',
