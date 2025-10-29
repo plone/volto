@@ -4,6 +4,7 @@
  */
 
 import { GET_DIFF } from '@plone/volto/constants/ActionTypes';
+import { flattenStaticBehaviors } from '@plone/volto/helpers/Content/Content';
 
 const initialState = {
   error: null,
@@ -29,10 +30,13 @@ export default function diff(state = initialState, action = {}) {
         loading: true,
       };
     case `${GET_DIFF}_SUCCESS`:
+      const first_result = flattenStaticBehaviors(action.result[0]);
+      const second_result = flattenStaticBehaviors(action.result[1]);
+
       return {
         ...state,
         error: null,
-        data: action.result,
+        data: [first_result, second_result],
         loaded: true,
         loading: false,
       };
