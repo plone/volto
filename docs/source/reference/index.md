@@ -3,7 +3,7 @@ myst:
   html_meta:
     "description": "Volto reference guides"
     "property=og:description": "Volto reference guides"
-    "property=og:title": "reference guides"
+    "property=og:title": "Volto reference guides"
     "keywords": "Volto, user interface, frontend, Plone, reference guides"
 ---
 

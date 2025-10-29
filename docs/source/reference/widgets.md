@@ -9,11 +9,11 @@ myst:
 
 # Widgets
 
-Volto provides a set of widgets that provide structural features.
+This chapter describes the set of widgets that provide structural features in Volto.
 
 ## `ButtonsWidget`
 
-This component is a helper for building widgets that have a list of buttons that can be toggled in order to select a single value.
+This component is a helper for building widgets that have a list of buttons that can be toggled similar to a radio input, allowing the selection of a single value only.
 It is not a widget on itself, but it allows other widgets to build up using its base functionality.
 You can pass as props a configurable list of buttons, with a configurable list of actions that each button has assigned.
 You can configure the icons and the i18n message used for each button as well.
@@ -75,26 +75,41 @@ export type ButtonsWidgetProps = {
 ## `blockWidth`
 
 `blockWidth` is a widget to select a width from the defined `config.blocks.widths`.
-It's based on the `ButtonsWidget` under the hood, so the actions and the styles to be applied are configurable.
+It's based on the `ButtonsWidget`, so the actions and the styles to be applied are configurable.
 
-```{image} /_static/blockWidth.png
+````{card}
+```{image} ../_static/blockWidth.png
 :alt: blockWidth
+:target: ../_static/blockWidth.png
 ```
++++
+_`blockWidth`_
+````
 
 ## `blockAlignment`
 
 `blockAlignment` is a widget to select the block alignment, one of either `left`, `right`, or `center`.
-It's based on the `ButtonsWidget` under the hood, so the actions and the styles to be applied are configurable.
+It's based on the `ButtonsWidget`, so the actions and the styles to be applied are configurable.
 
-```{image} /_static/blockAlignment.png
+````{card}
+```{image} ../_static/BlockAlignment.png
 :alt: BlockAlignment
+:target: ../_static/BlockAlignment.png
 ```
++++
+_`BlockAlignment`_
+````
 
 ## `size`
 
 `size` is a widget to select the block size from a default list of values, one of either `small`, `medium`, or `large`.
-It's based on the `ButtonsWidget` under the hood, so the actions and the styles to be applied are configurable.
+It's based on the `ButtonsWidget`, so the actions and the styles to be applied are configurable.
 
-```{image} /_static/size.png
+````{card}
+```{image} ../_static/size.png
 :alt: size
+:target: ../_static/size.png
 ```
++++
+_`size`_
+````
