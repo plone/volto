@@ -89,8 +89,15 @@ context('Test Field Type in form block', () => {
       cy.get('p[data-slate-node="element"]')
         .click({ force: true })
         .type('Plone{selectall}');
-      cy.get('a[title="Bold"]').click();
-      cy.get('a[title="Italic"]').click();
+      cy.get('a[title="Bold"]')
+        .should('be.visible')
+        .should('not.be.disabled')
+        .click();
+
+      cy.get('a[title="Italic"]')
+        .should('be.visible')
+        .should('not.be.disabled')
+        .click();
       cy.get('.slate_wysiwyg_box').click();
     });
     it('Missing required field error', function () {
