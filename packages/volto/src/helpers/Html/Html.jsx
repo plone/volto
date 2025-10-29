@@ -11,7 +11,10 @@ import join from 'lodash/join';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { addSubpathPrefix } from '@plone/volto/helpers/Url/Url';
 import { runtimeConfig } from '@plone/volto/runtime_config';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
+import { injectIntl } from 'react-intl';
+import { IntlProvider } from 'react-intl';
 
 const CRITICAL_CSS_TEMPLATE = `function alter() {
   document.querySelectorAll("head link[rel='prefetch']").forEach(function(el) { el.rel = 'stylesheet'});
@@ -80,6 +83,9 @@ class Html extends Component {
     store: PropTypes.shape({
       getState: PropTypes.func,
     }).isRequired,
+    intl: PropTypes.shape({
+      formatMessage: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   /**
@@ -88,132 +94,145 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store, criticalCss, apiPath, publicURL } =
+    const { extractor, markup, store, criticalCss, apiPath, publicURL, intl } =
       this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
     const htmlAttributes = head.htmlAttributes.toComponent();
 
     return (
-      <html lang={htmlAttributes.lang}>
-        <head>
-          <meta charSet="utf-8" />
-          {head.base.toComponent()}
-          {head.title.toComponent()}
-          {head.meta.toComponent()}
-          {head.link.toComponent()}
-          {head.script.toComponent()}
+      <IntlProvider>
+        <html lang={htmlAttributes.lang}>
+          <head>
+            <meta charSet="utf-8" />
+            {head.base.toComponent()}
+            {head.title.toComponent()}
+            {head.meta.toComponent()}
+            {head.link.toComponent()}
+            {head.script.toComponent()}
 
-          {config.settings.cssLayers && (
-            // Load the CSS layers from config, if any
-            <style>{`@layer ${config.settings.cssLayers.join(', ')};`}</style>
-          )}
+            {config.settings.cssLayers && (
+              // Load the CSS layers from config, if any
+              <style>{`@layer ${config.settings.cssLayers.join(', ')};`}</style>
+            )}
 
-          {head.style.toComponent()}
+            {head.style.toComponent()}
 
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.env = ${serialize({
-                ...runtimeConfig,
-                // Seamless mode requirement, the client need to know where the API is located
-                // if not set in the API_PATH
-                ...(apiPath && {
-                  apiPath,
-                }),
-                ...(publicURL && {
-                  publicURL,
-                }),
-              })};`,
-            }}
-          />
-
-          <link
-            rel="icon"
-            href={addSubpathPrefix('/favicon.ico')}
-            sizes="any"
-          />
-          <link
-            rel="icon"
-            href={addSubpathPrefix('/icon.svg')}
-            type="image/svg+xml"
-          />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href={addSubpathPrefix('/apple-touch-icon.png')}
-          />
-          <link rel="manifest" href={addSubpathPrefix('/site.webmanifest')} />
-          <meta name="generator" content="Plone 6 - https://plone.org" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="mobile-web-app-capable" content="yes" />
-          {process.env.NODE_ENV === 'production' && criticalCss && (
-            <style
-              dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.env = ${serialize({
+                  ...runtimeConfig,
+                  // Seamless mode requirement, the client need to know where the API is located
+                  // if not set in the API_PATH
+                  ...(apiPath && {
+                    apiPath,
+                  }),
+                  ...(publicURL && {
+                    publicURL,
+                  }),
+                })};`,
+              }}
             />
-          )}
-          {/* Add the crossorigin while in development */}
-          {extractor.getLinkElements().map((elem) =>
-            React.cloneElement(elem, {
-              crossOrigin:
-                process.env.NODE_ENV === 'production' ? undefined : 'true',
-              rel: !criticalCss
-                ? elem.props.rel
-                : elem.props.as === 'style'
-                  ? 'prefetch'
-                  : elem.props.rel,
-            }),
-          )}
-          {/* Styles in development are loaded with Webpack's style-loader, in production,
+
+            <link
+              rel="icon"
+              href={addSubpathPrefix('/favicon.ico')}
+              sizes="any"
+            />
+            <link
+              rel="icon"
+              href={addSubpathPrefix('/icon.svg')}
+              type="image/svg+xml"
+            />
+            <link
+              rel="apple-touch-icon"
+              sizes="180x180"
+              href={addSubpathPrefix('/apple-touch-icon.png')}
+            />
+            <link rel="manifest" href={addSubpathPrefix('/site.webmanifest')} />
+            <meta name="generator" content="Plone 6 - https://plone.org" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+            <meta name="mobile-web-app-capable" content="yes" />
+            {process.env.NODE_ENV === 'production' && criticalCss && (
+              <style
+                dangerouslySetInnerHTML={{ __html: this.props.criticalCss }}
+              />
+            )}
+            {/* Add the crossorigin while in development */}
+            {extractor.getLinkElements().map((elem) =>
+              React.cloneElement(elem, {
+                crossOrigin:
+                  process.env.NODE_ENV === 'production' ? undefined : 'true',
+                rel: !criticalCss
+                  ? elem.props.rel
+                  : elem.props.as === 'style'
+                    ? 'prefetch'
+                    : elem.props.rel,
+              }),
+            )}
+            {/* Styles in development are loaded with Webpack's style-loader, in production,
               they need to be static*/}
-          {process.env.NODE_ENV === 'production' ? (
-            criticalCss ? (
-              <>
-                <script
-                  dangerouslySetInnerHTML={{
-                    __html: CRITICAL_CSS_TEMPLATE,
-                  }}
-                ></script>
-                {extractor.getStyleElements().map((elem) => (
-                  // eslint-disable-next-line react/jsx-key
-                  <noscript>
-                    {React.cloneElement(elem, {
-                      rel: 'stylesheet',
-                      crossOrigin:
-                        process.env.NODE_ENV === 'production'
-                          ? undefined
-                          : 'true',
-                    })}
-                  </noscript>
-                ))}
-              </>
-            ) : (
-              extractor.getStyleElements()
-            )
-          ) : undefined}
-        </head>
-        <body className={bodyClass}>
-          <div role="navigation" aria-label="Toolbar" id="toolbar" />
-          <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
-          <div role="complementary" aria-label="Sidebar" id="sidebar" />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `window.__data=${serialize(
-                loadReducers(store.getState()),
-              )};`,
-            }}
-            charSet="UTF-8"
-          />
-          {/* Add the crossorigin while in development */}
-          {extractor.getScriptElements().map((elem) =>
-            React.cloneElement(elem, {
-              crossOrigin:
-                process.env.NODE_ENV === 'production' ? undefined : 'true',
-            }),
-          )}
-        </body>
-      </html>
+            {process.env.NODE_ENV === 'production' ? (
+              criticalCss ? (
+                <>
+                  <script
+                    dangerouslySetInnerHTML={{
+                      __html: CRITICAL_CSS_TEMPLATE,
+                    }}
+                  ></script>
+                  {extractor.getStyleElements().map((elem) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <noscript>
+                      {React.cloneElement(elem, {
+                        rel: 'stylesheet',
+                        crossOrigin:
+                          process.env.NODE_ENV === 'production'
+                            ? undefined
+                            : 'true',
+                      })}
+                    </noscript>
+                  ))}
+                </>
+              ) : (
+                extractor.getStyleElements()
+              )
+            ) : undefined}
+          </head>
+          <body className={bodyClass}>
+            <div
+              role="navigation"
+              aria-label={intl.formatMessage(messages.toolbar)}
+              id="toolbar"
+            />
+            <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
+            <div
+              role="complementary"
+              aria-label={intl.formatMessage(messages.sidebar)}
+              id="sidebar"
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.__data=${serialize(
+                  loadReducers(store.getState()),
+                )};`,
+              }}
+              charSet="UTF-8"
+            />
+            {/* Add the crossorigin while in development */}
+            {extractor.getScriptElements().map((elem) =>
+              React.cloneElement(elem, {
+                crossOrigin:
+                  process.env.NODE_ENV === 'production' ? undefined : 'true',
+              }),
+            )}
+          </body>
+        </html>
+      </IntlProvider>
     );
   }
 }
 
-export default Html;
+export default injectIntl(Html);

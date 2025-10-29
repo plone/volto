@@ -49,6 +49,10 @@ const messages = defineMessages({
     id: 'Success',
     defaultMessage: 'Success',
   },
+  alternativeUrl: {
+    id: '/example',
+    defaultMessage: '/example',
+  },
   successAdd: {
     id: 'Alias has been added',
     defaultMessage: 'Alias has been added',
@@ -260,7 +264,9 @@ class Aliases extends Component {
                 <Input
                   id="alternative-url-input"
                   name="alternative-url"
-                  placeholder="/example"
+                  placeholder={this.props.intl.formatMessage(
+                    messages.alternativeUrl,
+                  )}
                   value={this.state.newAlias}
                   onChange={(e) => this.handleAltChange(e.target.value)}
                 />
