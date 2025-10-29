@@ -1,3 +1,5 @@
+> **Important:** This package is a maintained fork of the original [Razzle](https://github.com/jaredpalmer/razzle). The upstream project is currently unmaintained, so we forked it in the Volto monorepo to keep its dependencies updated and address security issues. All upstream attributions are preserved below.
+
 ![repo-banner](https://user-images.githubusercontent.com/4060187/28923990-050a32d4-782e-11e7-9da7-574ce5a8b455.png)
 
 [![npm version](https://img.shields.io/npm/v/@volto/razzle.svg)](https://www.npmjs.com/package/@volto/razzle) [![npm](https://img.shields.io/npm/dm/@volto/razzle)](https://www.npmjs.com/package/@volto/razzle)
