@@ -246,7 +246,7 @@ class View extends Component {
         />
         <SlotRenderer name="aboveContent" content={this.props.content} />
         <RenderedView
-          key={this.props.content['@id']}
+          key={flattenToAppURL(this.props.content['@id'])}
           content={this.props.content}
           location={this.props.location}
           token={this.props.token}
