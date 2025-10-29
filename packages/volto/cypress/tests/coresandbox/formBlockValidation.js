@@ -84,20 +84,14 @@ context('Test Field Type in form block', () => {
         )
         .should('be.visible');
     });
-
     it('Test RichText Field Type', function () {
       cy.get('p[data-slate-node="element"]')
         .click({ force: true })
         .type('Plone{selectall}');
-      cy.get('a[title="Bold"]')
-        .should('be.visible')
-        .should('not.be.disabled')
-        .click();
-      cy.wait(100);
-      cy.get('a[title="Italic"]')
-        .should('be.visible')
-        .should('not.be.disabled')
-        .click();
+      cy.get('p[data-slate-node="element"]').type('{selectall}');
+      cy.get('a[title="Bold"]').click();
+      cy.get('p[data-slate-node="element"]').type('{selectall}');
+      cy.get('a[title="Italic"]').click();
       cy.get('.slate_wysiwyg_box').click();
     });
     it('Missing required field error', function () {
