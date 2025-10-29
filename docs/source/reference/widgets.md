@@ -9,14 +9,19 @@ myst:
 
 # Widgets
 
-This chapter describes the set of widgets that provide structural features in Volto.
+This chapter describes the set of widgets available in Volto.
 
 ## `ButtonsWidget`
 
 This component is a helper for building widgets that have a list of buttons that can be toggled similar to a radio input, allowing the selection of a single value only.
-It is not a widget on itself, but it allows other widgets to build up using its base functionality.
-You can pass as props a configurable list of buttons, with a configurable list of actions that each button has assigned.
-You can configure the icons and the i18n message used for each button as well.
+A minimal, extensible base widget used by other widgets. It renders a set of mutually exclusive toggle buttons.
+
+You can:
+- Supply a configurable list of actions (strings or style definitions).
+- Customize per-action icon and label via actionsInfoMap.
+- Filter out default actions with filterActions.
+- Provide default and current value (value / default).
+- Pass disabled or isDisabled to prevent interaction.
 
 ```ts
 type ActionInfo = [React.ReactElement<any>, string] | [string, string];
