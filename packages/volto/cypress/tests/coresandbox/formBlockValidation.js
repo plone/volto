@@ -93,7 +93,7 @@ context('Test Field Type in form block', () => {
         .should('be.visible')
         .should('not.be.disabled')
         .click();
-
+      cy.wait(100);
       cy.get('a[title="Italic"]')
         .should('be.visible')
         .should('not.be.disabled')
