@@ -1,26 +1,42 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { cleanup, render, screen } from '@testing-library/react';
 
 import SidebarPortal from './SidebarPortal';
 
-test('sidebar portal is rendered when the block is selected', () => {
-  const renderer = new ShallowRenderer();
-  renderer.render(
-    <SidebarPortal selected={true}>
-      <p>Tested!</p>
-    </SidebarPortal>,
-  );
-  const component = renderer.getRenderOutput();
-  expect(component).toMatchSnapshot();
-});
+describe('SidebarPortal', () => {
+  let portalRoot;
 
-test('sidebar portal is not rendered when the block is not selected', () => {
-  const renderer = new ShallowRenderer();
-  renderer.render(
-    <SidebarPortal selected={false}>
-      <p>Tested, but you shouldn't see this in the snapshot!</p>
-    </SidebarPortal>,
-  );
-  const component = renderer.getRenderOutput();
-  expect(component).toMatchSnapshot();
+  beforeEach(() => {
+    portalRoot = document.createElement('div');
+    portalRoot.setAttribute('id', 'sidebar-properties');
+    document.body.appendChild(portalRoot);
+  });
+
+  afterEach(() => {
+    cleanup();
+    portalRoot?.remove();
+    portalRoot = null;
+  });
+
+  test('renders the sidebar portal when the block is selected', async () => {
+    render(
+      <SidebarPortal selected={true}>
+        <p>Tested!</p>
+      </SidebarPortal>,
+    );
+
+    expect(await screen.findByText('Tested!')).toBeInTheDocument();
+  });
+
+  test('does not render the sidebar portal when the block is not selected', () => {
+    render(
+      <SidebarPortal selected={false}>
+        <p>Tested, but you should not see this!</p>
+      </SidebarPortal>,
+    );
+
+    expect(
+      screen.queryByText('Tested, but you should not see this!'),
+    ).not.toBeInTheDocument();
+  });
 });
