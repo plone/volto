@@ -22,7 +22,7 @@ jobs:
       - name: Compute several vars needed for the CI
         id: vars
         run: |
-          python3 -c 'import json; data = json.load(open("./packages/volto/package.json")); print("volto-version=" + (data.get("version") or "19.0.0-alpha.0"))' >> $GITHUB_OUTPUT
+          python3 -c 'import json; data = json.load(open("./packages/volto/package.json")); print("volto-version=" + data["version"])' >> $GITHUB_OUTPUT
 
       - run: echo "Volto version is ${{ steps.vars.outputs.volto-version }}"
       - run: echo "Current branch is ${GITHUB_REF#refs/heads/}"
