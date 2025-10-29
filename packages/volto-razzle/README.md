@@ -32,8 +32,8 @@ Please see our [CONTRIBUTING.md](../../CONTRIBUTING.md).
 - [jaredpalmer/backpack](https://github.com/jaredpalmer/backpack)
 - [nytimes/kyt](https://github.com/nytimes/kyt)
 - [facebookincubator/create-react-app](https://github.com/facebook/create-react-app)
-- [humblespark/sambell](https://github.com/ndreckshage/sambell)
-- [zeit/next.js](https://github.com/vercel/next.js)
+- [ndreckshage/sambell](https://github.com/ndreckshage/sambell)
+- [vercel/next.js](https://github.com/vercel/next.js)
 
 ### Author
 
