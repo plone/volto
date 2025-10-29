@@ -614,9 +614,10 @@ describe('Search Block Tests', () => {
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
 
-    cy.get('#select-search-sort-on')
-      .click()
-      .within(() => cy.findByText('Effective date').click());
+    cy.get('#select-search-sort-on').click();
+    // Wait for the dropdown to be visible in the DOM
+    cy.get('.react-select__menu').should('be.visible');
+    cy.findByText('Effective date').click();
 
     // Verify the presence of Ascending button
     cy.get('button[title="Ascending"]').should('be.visible');
