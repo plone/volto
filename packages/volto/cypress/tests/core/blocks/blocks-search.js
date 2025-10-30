@@ -611,9 +611,9 @@ describe('Search Block Tests', () => {
     //save page
     cy.get('#toolbar-save').click();
     // then we are able to see label and sort option
-    cy.get('.search-react-select-container')
-      .click()
-      .should('contain', 'Effective date');
+    cy.get('.search-react-select-container').as('selectContainer').click();
+    cy.get('@selectContainer').should('contain', 'Effective date');
+
     cy.findByText('Effective date').click();
 
     cy.get(
@@ -656,11 +656,12 @@ describe('Search Block Tests', () => {
     cy.get('#toolbar-save').click();
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('.search-react-select-container')
-      .click()
-      .should('contain', 'Effective date');
+
+    cy.get('.search-react-select-container').as('selectContainer').click();
+    cy.get('@selectContainer').should('contain', 'Effective date');
 
     cy.findByText('Effective date').click();
+
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
     ).contains('Effective date');
