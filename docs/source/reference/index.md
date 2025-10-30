@@ -12,8 +12,7 @@ myst:
 This section of the documentation contains reference guides for various aspects of Volto.
 
 ```{toctree}
-:hidden:
-:maxdepth: 2
+:maxdepth: 1
 
 widgets
 ```

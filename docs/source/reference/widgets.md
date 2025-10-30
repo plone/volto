@@ -1,8 +1,8 @@
 ---
 myst:
   html_meta:
-    "description": "Volto provides a set of widgets that provide structural features."
-    "property=og:description": "Volto provides a set of widgets that provide structural features."
+    "description": "Volto widgets"
+    "property=og:description": "Volto widgets"
     "property=og:title": "Volto widgets"
     "keywords": "Plone, Volto, widgets"
 ---
@@ -13,15 +13,19 @@ This chapter describes the set of widgets available in Volto.
 
 ## `ButtonsWidget`
 
-This component is a helper for building widgets that have a list of buttons that can be toggled similar to a radio input, allowing the selection of a single value only.
-A minimal, extensible base widget used by other widgets. It renders a set of mutually exclusive toggle buttons.
+`ButtonsWidget` is a helper component for building widgets that have a list of buttons which can be toggled, allowing the selection of a single value only.
+It's a minimal, extensible base widget used by other widgets.
+It renders a set of mutually exclusive toggle buttons, and functions similarly to a radio input.
 
-You can:
-- Supply a configurable list of actions (strings or style definitions).
-- Customize per-action icon and label via actionsInfoMap.
-- Filter out default actions with filterActions.
-- Provide default and current value (value / default).
-- Pass disabled or isDisabled to prevent interaction.
+With `ButtonsWidget`, you can do the following things.
+
+-   Supply a configurable list of actions, including strings or style definitions.
+-   Customize a per-action icon and label via the `actionsInfoMap` prop.
+-   Filter out default actions with the `filterActions` prop.
+-   Provide default and current values via `default` and `value` props.
+-   Pass `disabled` or `isDisabled` props to prevent interaction.
+
+The following code example demonstrates the complete options for `ButtonsWidget`.
 
 ```ts
 type ActionInfo = [React.ReactElement<any>, string] | [string, string];
@@ -97,12 +101,12 @@ _`blockWidth`_
 It's based on the `ButtonsWidget`, so the actions and the styles to be applied are configurable.
 
 ````{card}
-```{image} ../_static/BlockAlignment.png
-:alt: BlockAlignment
-:target: ../_static/BlockAlignment.png
+```{image} ../_static/blockAlignment.png
+:alt: blockAlignment
+:target: ../_static/blockAlignment.png
 ```
 +++
-_`BlockAlignment`_
+_`blockAlignment`_
 ````
 
 ## `size`
