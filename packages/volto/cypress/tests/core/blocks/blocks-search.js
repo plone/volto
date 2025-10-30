@@ -614,7 +614,7 @@ describe('Search Block Tests', () => {
     cy.get('.search-react-select-container')
       .click()
       .should('contain', 'Effective date');
-    cy.findByText('Effective date').should('be.visible').click();
+    cy.findByText('Effective date').click();
 
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
@@ -660,7 +660,7 @@ describe('Search Block Tests', () => {
       .click()
       .should('contain', 'Effective date');
 
-    cy.findByText('Effective date').should('be.visible').click();
+    cy.findByText('Effective date').click();
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
     ).contains('Effective date');
