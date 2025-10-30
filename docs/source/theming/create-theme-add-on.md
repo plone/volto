@@ -54,13 +54,13 @@ This approach is best when you want to reuse the same theme across multiple proj
 
 For both of the foregoing methods to create a Volto theme add-on, you'll next need to declare the active theme.
 
-You can declare the active theme in either of the three following ways.
+You can declare the active theme in any of the three following ways.
 They are listed here in order of precedence, from lowest to highest.
 The last one has the highest precedence and is the one that prevails.
 The value you provide for your theme must be the package name of the add-on that contains the theme.
 The add-on theme must also be declared in `addons` key, as any other add-on.
 
-1. In the file {file}`packages/<add-on-name>/package.json` of your add-on.
+1.  In the file {file}`packages/<add-on-name>/package.json` of your add-on.
 
     ```json
     {
