@@ -1158,8 +1158,10 @@ You can consider removing it if you were shadowing it in your project.
 ### Grid block migration from `@kitconcept/volto-blocks-grid`
 
 ```{versionadded} Volto 17.0.0-alpha.16
-  It is based on the @kitconcept/volto-blocks-grid add-on version 7.x.x..
 ```
+
+The grid block was added to Volto in version 17.0.0-alpha.16.
+It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
 
 If you previously used `@kitconcept/volto-blocks-grid` in your project based on a Volto version before 17.0.0-alpha.16, then your site will show two available block types both named `Grid`.
 You need to disable one of them based on the following information.
