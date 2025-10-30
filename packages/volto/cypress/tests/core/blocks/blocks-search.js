@@ -612,8 +612,8 @@ describe('Search Block Tests', () => {
     // Save the page
     cy.get('#toolbar-save > .icon').click();
 
-    cy.wait('@content');
     cy.visit('/my-search-page');
+    cy.wait('@content');
     // then we are able to see label and sort option
     cy.get('.search-react-select-container').as('selectContainer').click();
     cy.get('@selectContainer').should('contain', 'Effective date');
@@ -660,8 +660,8 @@ describe('Search Block Tests', () => {
     // save page
     cy.get('#toolbar-save > .icon').click();
 
-    cy.wait('@content');
     cy.visit('/my-search-page');
+    cy.wait('@content');
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
 
