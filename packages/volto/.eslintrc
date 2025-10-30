@@ -50,6 +50,7 @@
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
       },
+      "node": { "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"] },
       "babel-plugin-root-import": {
         "rootPathSuffix": "src",
       },
@@ -87,6 +88,17 @@
       "files": ["**/*.stories.js", "**/*.stories.jsx"],
       "rules": {
         "import/no-anonymous-default-export": "off",
+      },
+    },
+    {
+      "files": [
+        "**/*.stories.js",
+        "**/*.stories.jsx",
+        "**/*.test.js",
+        "**/*.test.jsx",
+      ],
+      "rules": {
+        "no-restricted-syntax": "off",
       },
     },
   ],
