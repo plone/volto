@@ -46,9 +46,6 @@ You must provide a function as default export in your `src/config.js`:
 export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
-    isMultilingual: true,
-    supportedLanguages: ['en', 'de'],
-    defaultLanguage: 'de',
     navDepth: 3,
   };
 
@@ -72,7 +69,7 @@ a Volto project.
 
 ## settings
 
-The `settings` object of the configruration registry is a big registry of miscellaneous settings.
+The `settings` object of the configuration registry is a big registry of miscellaneous settings.
 See {doc}`settings-reference` for details.
 
 ## widgets

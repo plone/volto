@@ -8,6 +8,72 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.7 (2025-10-22)
+
+### Feature
+
+- Complete expanders typings, include `translations`. @sneridagh [#7531](https://github.com/plone/volto/issues/7531)
+
+## 2.0.0-alpha.6 (2025-10-21)
+
+### Bugfix
+
+- Fix plone.available_languages typing. @sneridagh [#7429](https://github.com/plone/volto/issues/7429)
+
+## 2.0.0-alpha.5 (2025-09-29)
+
+### Feature
+
+- Add controlpanel overview and schema driven control panels. @ksuess [#6657](https://github.com/plone/volto/issues/6657)
+- Added typings for `settings.hideBreadcrumbs`. @sneridagh [#7196](https://github.com/plone/volto/issues/7196)
+- Improve Block JSONSchema typings. @sneridagh [#7228](https://github.com/plone/volto/issues/7228)
+- Support typings for `@plone/plate`. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+- Added language switcher in Seven. @nileshgulia1 [#7352](https://github.com/plone/volto/issues/7352)
+- Backport Seven updates. @sneridagh [#7407](https://github.com/plone/volto/issues/7407)
+
+### Bugfix
+
+- Fixed Widgets typings. @sneridagh [#6999](https://github.com/plone/volto/issues/6999)
+- Update widget config typings for better inference. @deodorhunter [#7141](https://github.com/plone/volto/issues/7141)
+- Improved widgets typings.
+  Exported missing intl typings helpers.
+  Added BlockSchemaProps typings. @sneridagh 
+
+### Internal
+
+- Update Widgets types. @deodorhunter [#7334](https://github.com/plone/volto/issues/7334)
+
+## 2.0.0-alpha.4 (2025-06-25)
+
+### Bugfix
+
+- Removed the `isMultilingual` and `defaultLanguage` settings. @davisagli [#7125](https://github.com/plone/volto/issues/7125)
+- Improved widgets typings.
+  Exported missing intl typings helpers.
+  Added BlockSchemaProps typings. @sneridagh 
+
+## 2.0.0-alpha.3 (2025-05-16)
+
+### Bugfix
+
+- Fix image scales typings.
+  Added `dataAdapter` key in `BlockConfigBase`.
+  `category` as optional in `BlockConfigBase`. @sneridagh [#7079](https://github.com/plone/volto/issues/7079)
+
+## 2.0.0-alpha.2 (2025-05-13)
+
+### Feature
+
+- Better Site extender and endpoint typings, add it to the default extenders typings. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+- Fixed `groupBlocksOrder` typing. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
+### Bugfix
+
+- Fix boolean in blocks edit config BlockEditProps in key selected type. @sneridagh [#6994](https://github.com/plone/volto/issues/6994)
+- Better typing for `apiExpandersType` introduced in #7012. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+- `blockModel` should be optional. @sneridagh [#7033](https://github.com/plone/volto/issues/7033)
+- Improve typings of brains and objectBrowser references. @sneridagh [#7047](https://github.com/plone/volto/issues/7047)
+
 ## 2.0.0-alpha.1 (2025-04-12)
 
 ### Feature

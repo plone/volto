@@ -32,7 +32,40 @@ It is usually better and quicker to move your items into new locations and copy 
 
 ## Upgrading to Volto 19.x.x
 
+(nodejs-20-removed-label)=
+
+### Removed support of Node.js 20
+```{versionremoved} Volto 19.0.0-alpha.7
+```
+
+Support and CI testing for Node.js 20 was removed in Volto 19.0.0-alpha.7.
+While the code base may still work on Node.js 20 in some cases, it is no longer guaranteed or tested.
+
+You should take the following actions for your Volto 19 projects.
+
+-   Upgrade your development and CI environments to a supported Node.js LTS version, such as Node.js 22 or 24.
+-   Update any Docker images, build agents, and project documentation that reference Node.js 20.
+
+If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.
+
 (19-removed-support-for-loading-configuration-from-project-label)=
+
+### New utility class `visually-hidden`
+
+```{versionadded} Volto 19.0.0-alpha.10
+```
+
+A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
+
+This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
+
+If your project, add-on, or custom theme already defines a `visually-hidden` class, or uses similar accessibility helpers, the new global definition may override or conflict with existing custom styles.
+In which case, you should rename your custom implementation, or override Volto's default, as needed.
+Also review any components that depend on hidden accessibility elements to ensure visual and functional consistency.
+
+```{seealso}
+[Add visually-hidden class #6356](https://github.com/plone/volto/pull/6356)
+```
 
 ### Removed support for loading configuration from project
 ```{versionremoved} Volto 19
@@ -53,6 +86,43 @@ See {ref}`upgrade-18-cookieplone-label` for details.
 Volto 19 no longer includes automated tests for compatibility with Plone 5.
 While it may still work with Plone 5 backends in some cases, we recommend upgrading to Plone 6 for full compatibility and support.
 
+### Image component migration required
+```{versionchanged} Volto 19
+```
+
+Raw `<img>` tags are now restricted in favor of the centralized `Image` component.
+
+#### What changed
+
+- All `<img>` tags in Volto core have been replaced with the `Image` component from `@plone/volto/components/theme/Image/Image`.
+- A new ESLint rule (`no-restricted-syntax`) now prevents the use of raw `<img>` tags.
+- This change prepares the code base for future image URL prefixing functionality.
+
+#### Required action for add-ons
+
+Replace all `<img>` tags with the `Image` component, as shown in the following example.
+
+❌ Before. This code form will now trigger an ESLint error.
+
+```jsx
+<img src={imageUrl} alt="Description" className="my-image" />
+```
+
+✅ After
+
+```jsx
+import Image from '@plone/volto/components/theme/Image/Image';
+
+<Image src={imageUrl} alt="Description" className="my-image" />
+```
+
+#### ESLint rule error message
+
+The new ESLint rule will show the following error message when you use the `<img>` tag.
+
+```console
+Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag.
+```
 
 ### Removed packages `@plone/generator-volto`, `@plone/volto-guillotina`, and `@plone/volto-testing`
 ```{versionremoved} Volto 19
@@ -64,6 +134,47 @@ These packages have been removed from the Volto repository as they are no longer
 - `@plone/volto-guillotina`: No longer actively maintained
 - `@plone/volto-testing`: Testing functionality is now integrated directly in Volto core
 
+### Removed language settings
+```{versionremoved} Volto 19
+```
+
+The `defaultLanguage` and `isMultilingual` settings have been removed.
+Instead, these values are fetched from the backend API.
+The `supportedLanguages` setting now only controls which locales are included in the build.
+
+### Related items are shown by default
+
+The default value of the `showRelatedItems` setting was changed to `true`,
+which means that a component showing related items will be shown below content.
+
+If you'd like to keep it disabled (perhaps because you already have a custom component that does the same thing), you can set it to `false` in your add-on configuration:
+
+```js
+config.settings.showRelatedItems = false;
+```
+
+
+### Renamed literal "Head title" to "Kicker" in Teaser block
+```{versionadded} Volto 19.0.0-alpha.3
+```
+
+The default (English) literal "Head title" in the `teaser` block has been renamed to "Kicker" for accuracy and clarity.
+The `head_title` property and the translation id (`head_title`) in the `teaser` block settings has been kept for backwards compatibility.
+
+### `@plone/components` and `@plone/client` were updated to the latest alphas developed for Seven
+```{versionadded} Volto 19.0.0-alpha.6
+```
+`@plone/components` and `@plone/client` are in active development for Seven and they have been updated to the latest alphas.
+You can still use them in Volto using the `workspace` protocol in your `package.json` file.
+However, check the breaking changes issued for these packages in the respective changelogs.
+It is recommended that you use the released versions of these packages instead of the workspace protocol, unless you need a specific feature or fix that is released yet.
+
+### `pnpm` 10 no longer runs lifecycle scripts
+```{versionadded} Volto 19.0.0-alpha.7
+```
+Volto now uses pnpm 10.
+
+If you have packages that use lifecycle scripts (such as `preinstall` or `postinstall`) in {file}`package.json`, you must configure `pnpm`'s [`onlyBuiltDependencies` setting](https://pnpm.io/settings#onlybuiltdependencies) to allow them.
 
 (upgrading-to-volto-18-x-x)=
 
@@ -359,7 +470,7 @@ Finally, in your project's or add-on's {file}`package.json` file, update the `sc
 ```
 
 ```{seealso}
-[Migration guide from Storybook 6.x to 8.0](https://storybook.js.org/docs/migration-guide/from-older-version)
+[Migration guide from Storybook 6.x to 8.0](https://storybook.js.org/docs/8/migration-guide/from-older-version)
 ```
 
 If you haven't customized the configuration, the migration is straightforward.
@@ -2098,7 +2209,6 @@ import config from '@plone/volto/registry'
 ...
 
 console.log(config.settings.apiPath)
-config.settings.isMultilingual = true
 ...
 ```
 
@@ -2215,9 +2325,6 @@ Let's show it in an example. Let's say you have this config in your project's `s
 ```js
 export const settings = {
   ...defaultSettings,
-  isMultilingual: true,
-  supportedLanguages: ['en', 'de'],
-  defaultLanguage: 'de',
   navDepth: 3,
 };
 ```
@@ -2228,9 +2335,6 @@ then you'll add the `applyConfig()` function as default export and copy that set
 export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
-    isMultilingual: true,
-    supportedLanguages: ['en', 'de'],
-    defaultLanguage: 'de',
     navDepth: 3,
   };
   return config;
@@ -2322,9 +2426,6 @@ showing in the diff the default ones, you should have your configuration inside 
 ```js
 export const settings = {
   ...defaultSettings,
-  isMultilingual: true,
-  supportedLanguages: ['en', 'de'],
-  defaultLanguage: 'de',
   navDepth: 3,
 };
 ```
@@ -2360,9 +2461,6 @@ the end of `src/config.js`:
 +function applyConfig(config) {
 +  config.settings = {
 +    ...config.settings,
-+    isMultilingual: true,
-+    supportedLanguages: ['en', 'de'],
-+    defaultLanguage: 'de',
 +    navDepth: 3,
 +  };
 ```

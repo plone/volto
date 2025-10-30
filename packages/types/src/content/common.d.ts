@@ -7,6 +7,7 @@ import type { GetSiteResponse } from '../services/site';
 import type { GetAliasesResponse } from '../services/aliases';
 import type { ContextNavigationResponse } from '../services/contextnavigation';
 import type { WorkflowResponse } from '../services/workflow';
+import type { GetTranslationResponse } from '../services/translations';
 
 export interface Expanders {
   [key: string]: unknown;
@@ -16,7 +17,8 @@ export interface Expanders {
   contextnavigation: ContextNavigationResponse;
   navigation: NavigationResponse;
   navroot: GetNavrootResponse;
-  site: GetSiteResponse;
+  site?: GetSiteResponse;
+  translations?: GetTranslationResponse;
   types: GetTypesResponse;
   workflow: WorkflowResponse;
 }
@@ -53,7 +55,8 @@ export type Image = {
   download: string;
   filename: string;
   height: number;
-  scales: {
+  scales: Partial<{
+    [key: string]: ImageScale;
     great: ImageScale;
     huge: ImageScale;
     icon: ImageScale;
@@ -64,7 +67,7 @@ export type Image = {
     teaser: ImageScale;
     thumb: ImageScale;
     title: ImageScale;
-  };
+  }>;
   size: number;
   width: number;
 };

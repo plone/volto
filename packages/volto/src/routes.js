@@ -52,6 +52,8 @@ import {
   UpgradeControlPanel,
 } from '@plone/volto/components/manage/Controlpanels';
 
+import withClientSideContent from '@plone/volto/helpers/Content/withClientSideContent';
+
 import App from '@plone/volto/components/theme/App/App';
 import View from '@plone/volto/components/theme/View/View';
 
@@ -127,7 +129,7 @@ export function getExternalRoutes() {
 export const defaultRoutes = [
   // redirect to external links if path is in blacklist
   ...getExternalRoutes(),
-  ...((config.settings?.isMultilingual && multilingualRoutes) || []),
+  ...(config.settings?.isMultilingual !== false ? multilingualRoutes : []),
   {
     path: '/',
     component: View,
@@ -244,7 +246,7 @@ export const defaultRoutes = [
   },
   {
     path: ['/edit', '/**/edit'],
-    component: Edit,
+    component: withClientSideContent(Edit),
   },
   {
     path: ['/contents', '/**/contents'],

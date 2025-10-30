@@ -500,15 +500,15 @@ class AddonRegistry {
   }
 
   /**
-   * Returns the list of add-on style files (<addon-path>/styles/main.css) that contain styles
+   * Returns the list of add-on style files (<addon-path>/${styleSheetPath}) that contain styles
    */
-  getAddonStyles() {
+  getAddonStyles(styleSheetPath: string) {
     const addonsStylesInfo: Array<string> = [];
 
     this.getAddonDependencies().forEach((addon) => {
       const normalizedAddonName = addon.split(':')[0] as string;
 
-      const addonStyleFile = `${this.packages[normalizedAddonName]?.modulePath}/styles/main.css`;
+      const addonStyleFile = `${this.packages[normalizedAddonName]?.modulePath}/${styleSheetPath}`;
       if (fs.existsSync(addonStyleFile)) {
         addonsStylesInfo.push(normalizedAddonName);
       }

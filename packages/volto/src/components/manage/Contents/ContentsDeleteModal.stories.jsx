@@ -36,11 +36,11 @@ Default.args = {
   locale: 'en',
   open: true,
   items: [
-    { '@id': '/news', UID: '123', title: 'News' },
-    { '@id': '/blog', UID: '456', title: 'Blog' },
-    { '@id': '/extra', UID: '789', title: 'Extra' },
+    { '@id': '/news', UID: '123', Title: 'News' },
+    { '@id': '/blog', UID: '456', Title: 'Blog' },
+    { '@id': '/extra', UID: '789', Title: 'Extra' },
   ],
-  itemsToDelete: [{ UID: '456' }],
+  itemsToDelete: ['/blog'],
   linkIntegrityResult: [
     {
       '@id': '/blog',
@@ -57,7 +57,7 @@ Default.args = {
 export const DeleteMoreThanOne = StoryComponent.bind({});
 DeleteMoreThanOne.args = {
   ...Default.args,
-  itemsToDelete: [{ UID: '456' }, { UID: '789' }],
+  itemsToDelete: ['/blog', '/extra'],
 };
 
 export const NoContainedItems = StoryComponent.bind({});
@@ -76,7 +76,7 @@ NoContainedItems.args = {
 export const MultipleLinkIntegrityResults = StoryComponent.bind({});
 MultipleLinkIntegrityResults.args = {
   ...Default.args,
-  itemsToDelete: [{ UID: '456' }, { UID: '789' }],
+  itemsToDelete: ['/blog', '/extra'],
   linkIntegrityResult: [
     {
       '@id': '/blog',
@@ -96,7 +96,7 @@ MultipleLinkIntegrityResults.args = {
 export const MultipleBreaches = StoryComponent.bind({});
 MultipleBreaches.args = {
   ...Default.args,
-  itemsToDelete: [{ UID: '789' }],
+  itemsToDelete: ['/extra'],
   linkIntegrityResult: [
     {
       '@id': '/extra',
@@ -128,7 +128,25 @@ export default {
   ],
   argTypes: {
     locale: {
-      options: ['en', 'fr', 'de', 'it', 'eu'],
+      options: [
+        'ca',
+        'de',
+        'en',
+        'es',
+        'eu',
+        'fi',
+        'fr',
+        'hi',
+        'it',
+        'ja',
+        'nl',
+        'pt',
+        'pt-BR',
+        'ro',
+        'ru',
+        'sv',
+        'zh-CN',
+      ],
       control: {
         type: 'radio',
       },

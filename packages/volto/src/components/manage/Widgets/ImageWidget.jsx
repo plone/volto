@@ -9,11 +9,14 @@ import { compose } from 'redux';
 import { toast } from 'react-toastify';
 import useLinkEditor from '@plone/volto/components/manage/AnchorPlugin/useLinkEditor';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
+import config from '@plone/volto/registry';
 
 import {
   flattenToAppURL,
   getBaseUrl,
   isInternalURL,
+  normalizeUrl,
+  removeProtocol,
 } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
@@ -28,6 +31,9 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import uploadSVG from '@plone/volto/icons/upload.svg';
+import Image from '../../theme/Image/Image';
+import { urlValidator } from '@plone/volto/helpers/FormValidation/validators';
+import { searchContent } from '@plone/volto/actions/search/search';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -70,6 +76,14 @@ const messages = defineMessages({
     id: 'imageUploadErrorMessage',
     defaultMessage: 'Please upload an image instead.',
   },
+  externalURLsNotAllowed: {
+    id: 'externalURLsNotAllowed',
+    defaultMessage: 'External URLs are not allowed in this field.',
+  },
+  internalImageNotFoundErrorMessage: {
+    id: 'internalImageNotFoundErrorMessage',
+    defaultMessage: 'No image was found in the internal path you provided.',
+  },
 });
 
 const UnconnectedImageInput = (props) => {
@@ -89,7 +103,7 @@ const UnconnectedImageInput = (props) => {
     placeholderLinkInput = '',
     onSelectItem,
   } = props;
-  const imageValue = value?.[0]?.['@id'] || value;
+  const imageValue = value?.[0]?.['@id'] || value?.['@id'] || value;
 
   const intl = useIntl();
   const linkEditor = useLinkEditor();
@@ -109,16 +123,34 @@ const UnconnectedImageInput = (props) => {
   const imageId = content?.['@id'];
   const image = content?.image;
   let loading = false;
+  const isRelationChoice = props.factory === 'Relation Choice';
 
   useEffect(() => {
     if (uploading && loading && loaded) {
       setUploading(false);
-      onChange(id, imageId, {
-        image_field: 'image',
-        image_scales: { image: [image] },
-      });
+      if (isRelationChoice) {
+        onChange(id, content, {
+          image_field: 'image',
+          image_scales: { image: [image] },
+        });
+      } else {
+        onChange(id, imageId, {
+          image_field: 'image',
+          image_scales: { image: [image] },
+        });
+      }
     }
-  }, [loading, loaded, uploading, imageId, image, id, onChange]); // Explicitly list all dependencies
+  }, [
+    loading,
+    loaded,
+    uploading,
+    imageId,
+    image,
+    id,
+    content,
+    isRelationChoice,
+    onChange,
+  ]);
 
   loading = usePrevious(props.request?.loading);
 
@@ -131,7 +163,10 @@ const UnconnectedImageInput = (props) => {
       const file = eventOrFile.target
         ? eventOrFile.target.files[0]
         : eventOrFile[0];
-      if (!validateFileUploadSize(file, intl.formatMessage)) return;
+      if (!validateFileUploadSize(file, intl.formatMessage)) {
+        setUploading(false);
+        return;
+      }
       readAsDataURL(file).then((fileData) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
@@ -167,6 +202,83 @@ const UnconnectedImageInput = (props) => {
   }, [restrictFileUpload]);
   const onDragLeave = React.useCallback(() => setDragging(false), []);
 
+  const validateManualLink = React.useCallback(
+    (url) => {
+      if (!url.startsWith('/')) {
+        const error = urlValidator({
+          value: url,
+          formatMessage: intl.formatMessage,
+        });
+        // if (error && url !== '') {
+        //   this.setState({ errors: [error] });
+        // } else {
+        //   this.setState({ errors: [] });
+        // }
+        return !Boolean(error);
+      } else {
+        return isInternalURL(url);
+      }
+    },
+    [intl.formatMessage],
+  );
+
+  const onSubmitURL = React.useCallback(
+    (url) => {
+      if (validateManualLink(url)) {
+        if (isInternalURL(url)) {
+          // convert it into an internal on if possible
+          props
+            .searchContent(
+              '/',
+              {
+                portal_type: config.settings.imageObjects,
+                'path.query': flattenToAppURL(url),
+                'path.depth': '0',
+                sort_on: 'getObjPositionInParent',
+                metadata_fields: '_all',
+                b_size: 1000,
+              },
+              `${props.block}-${props.mode}`,
+            )
+            .then((resp) => {
+              if (resp.items?.length > 0) {
+                onChange(props.id, resp.items[0], {});
+              } else {
+                toast.error(
+                  <Toast
+                    error
+                    title={intl.formatMessage(messages.Error)}
+                    content={intl.formatMessage(
+                      messages.internalImageNotFoundErrorMessage,
+                    )}
+                  />,
+                );
+              }
+            });
+        } else {
+          if (isRelationChoice) {
+            toast.error(
+              <Toast
+                error
+                title={intl.formatMessage(messages.Error)}
+                content={intl.formatMessage(messages.imageUploadErrorMessage)}
+              />,
+            );
+          } else {
+            // if it's an external link, we save it as is
+            onChange(props.id, [
+              {
+                '@id': normalizeUrl(url),
+                title: removeProtocol(url),
+              },
+            ]);
+          }
+        }
+      }
+    },
+    [validateManualLink, props, intl, isRelationChoice, onChange],
+  );
+
   return imageValue ? (
     <div
       className="image-upload-widget-image"
@@ -175,15 +287,20 @@ const UnconnectedImageInput = (props) => {
       role="toolbar"
     >
       {selected && <ImageToolbar {...props} />}
-      <img
-        className={props.className}
-        src={
-          isInternalURL(imageValue)
-            ? `${flattenToAppURL(imageValue)}/@@images/image/${imageSize}`
-            : imageValue
-        }
-        alt=""
-      />
+      {/* If it's relation choice (preview_image_link) */}
+      {isRelationChoice ? (
+        <Image item={value} width="fit-content" height="auto" loading="lazy" />
+      ) : (
+        <Image
+          className={props.className}
+          src={
+            isInternalURL(imageValue)
+              ? `${flattenToAppURL(imageValue)}/@@images/image/${imageSize}`
+              : imageValue
+          }
+          alt=""
+        />
+      )}
     </div>
   ) : (
     <div
@@ -196,10 +313,10 @@ const UnconnectedImageInput = (props) => {
         noClick
         accept="image/*"
         onDrop={(acceptedFiles) => {
+          setDragging(false);
           if (acceptedFiles.length > 0) {
             handleUpload(acceptedFiles);
           } else {
-            setDragging(false);
             toast.error(
               <Toast
                 error
@@ -224,7 +341,7 @@ const UnconnectedImageInput = (props) => {
                   </Loader>
                 </Dimmer>
               )}
-              <img src={imageBlockSVG} alt="" className="placeholder" />
+              <Image src={imageBlockSVG} alt="" className="placeholder" />
               <p>{description || intl.formatMessage(messages.addImage)}</p>
               <div className="toolbar-wrapper">
                 <div className="toolbar-inner" ref={linkEditor.anchorNode}>
@@ -239,15 +356,24 @@ const UnconnectedImageInput = (props) => {
                           e.preventDefault();
                           openObjectBrowser({
                             mode: objectBrowserPickerType,
-                            onSelectItem: onSelectItem
-                              ? onSelectItem
-                              : (url, { title, image_field, image_scales }) => {
-                                  onChange(props.id, flattenToAppURL(url), {
-                                    title,
-                                    image_field,
-                                    image_scales,
-                                  });
-                                },
+                            onSelectItem: isRelationChoice
+                              ? (url, item) => {
+                                  // we save the whole item if it's a relation choice
+                                  onChange(props.id, item);
+                                }
+                              : onSelectItem
+                                ? onSelectItem
+                                : // else we save the url along with the image field and scales
+                                  (
+                                    url,
+                                    { title, image_field, image_scales },
+                                  ) => {
+                                    onChange(props.id, flattenToAppURL(url), {
+                                      title,
+                                      image_field,
+                                      image_scales,
+                                    });
+                                  },
                             currentPath: contextUrl,
                           });
                         }}
@@ -308,13 +434,14 @@ const UnconnectedImageInput = (props) => {
                       intl.formatMessage(messages.linkAnImage)
                     }
                     objectBrowserPickerType={objectBrowserPickerType}
-                    onChange={(_, e) =>
-                      onChange(
-                        props.id,
-                        isInternalURL(e) ? flattenToAppURL(e) : e,
-                        {},
-                      )
-                    }
+                    onChange={(_, e) => {
+                      onSubmitURL(e);
+                      // onChange(
+                      //   props.id,
+                      //   isInternalURL(e) ? flattenToAppURL(e) : e,
+                      //   {},
+                      // );
+                    }}
                     id={id}
                   />
                 )}
@@ -328,6 +455,8 @@ const UnconnectedImageInput = (props) => {
 };
 
 export const ImageInput = compose(
+  // This HOC goes first because it injects block in case that it's not present (not a block, but a DX field)
+  withObjectBrowser,
   connect(
     (state, ownProps) => {
       const requestId = `image-upload-${ownProps.id}`;
@@ -336,9 +465,9 @@ export const ImageInput = compose(
         content: state.content.subrequests[ownProps.block || requestId]?.data,
       };
     },
-    { createContent },
+    { createContent, searchContent },
   ),
-)(withObjectBrowser(UnconnectedImageInput));
+)(UnconnectedImageInput);
 
 const ImageUploadWidget = (props) => {
   const { fieldSet, id, title } = props;

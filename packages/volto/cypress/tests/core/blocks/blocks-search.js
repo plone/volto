@@ -1,4 +1,5 @@
 describe('Search Block Tests', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   var results_number = 3;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
@@ -254,7 +255,7 @@ describe('Search Block Tests', () => {
       () =>
         cy
           .get('#page-document .listing-item:first-of-type a')
-          .should('have.attr', 'href', '/my-event'),
+          .should('have.attr', 'href', `${subpathPrefix}/my-event`),
       () =>
         cy
           .get('.search-results-count-sort .search-details em')
@@ -314,7 +315,7 @@ describe('Search Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-event',
+      `${subpathPrefix}/my-event`,
     );
     cy.get('.search-results-count-sort .search-details em').should(
       'contain',
@@ -407,7 +408,7 @@ describe('Search Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-event',
+      `${subpathPrefix}/my-event`,
     );
     cy.get('.search-results-count-sort .search-details em').should(
       'contain',
@@ -455,7 +456,7 @@ describe('Search Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-event',
+      `${subpathPrefix}/my-event`,
     );
     cy.get('.search-results-count-sort .search-details em').should(
       'contain',

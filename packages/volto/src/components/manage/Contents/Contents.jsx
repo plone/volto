@@ -264,6 +264,10 @@ const messages = defineMessages({
     id: 'All',
     defaultMessage: 'All',
   },
+  resultCount: {
+    id: 'resultCount',
+    defaultMessage: 'Result count',
+  },
 });
 
 /**
@@ -1161,6 +1165,9 @@ class Contents extends Component {
                     onOk={this.onDeleteOk}
                     items={this.state.items}
                     itemsToDelete={this.state.itemsToDelete}
+                    hasMultiplePages={
+                      Math.ceil(this.props.total / this.state.pageSize) > 1
+                    }
                   />
                   <ContentsUploadModal
                     open={this.state.showUpload}
@@ -1215,8 +1222,9 @@ class Contents extends Component {
                                 as={Button}
                                 onClick={this.upload}
                                 className="upload"
+                                aria-controls="contents-table-wrapper"
                                 aria-label={this.props.intl.formatMessage(
-                                  messages.upload,
+                                  messages.filter,
                                 )}
                               >
                                 <Icon
@@ -1548,7 +1556,20 @@ class Contents extends Component {
                           </Dropdown.Menu>
                         </Dropdown>
                       </Segment>
-                      <div className="contents-table-wrapper">
+                      <div
+                        id="contents-table-wrapper"
+                        className="contents-table-wrapper"
+                        role="region"
+                      >
+                        <span
+                          aria-live="polite"
+                          className="search-feedback"
+                          role="status"
+                        >
+                          {`${this.props.intl.formatMessage(
+                            messages.resultCount,
+                          )}: ${this.props.total || 0}`}
+                        </span>
                         <Table selectable compact singleLine attached>
                           <Table.Header>
                             <Table.Row>

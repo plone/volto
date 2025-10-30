@@ -8,6 +8,28 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.3 (2025-10-21)
+
+### Bugfix
+
+- Escape double quotes in POT / PO files @erral [#7476](https://github.com/plone/volto/issues/7476)
+
+### Internal
+
+- upgrade execa to address a security vulnerability @nileshgulia1 [#7435](https://github.com/plone/volto/issues/7435)
+
+## 4.0.0-alpha.2 (2025-09-14)
+
+### Internal
+
+- Upgrade `glob` to a modern version. Adjust scripts. @sneridagh [#7321](https://github.com/plone/volto/issues/7321)
+
+## 4.0.0-alpha.1 (2025-05-16)
+
+### Feature
+
+- Support not publishing a package on NPM if `plonePrePublish.publish` is set to false. @ericof [#7068](https://github.com/plone/volto/issues/7068)
+
 ## 4.0.0-alpha.0 (2025-03-27)
 
 ### Breaking

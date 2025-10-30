@@ -75,6 +75,7 @@ We recommend using the current LTS version.
 
 | Node.js | Volto       |
 | ------- | ----------- |
+| 22, 24  | Volto 19    |
 | 20, 22  | Volto 18    |
 | 18, 20  | Volto 17    |
 | 16, 18  | Volto 16    |
