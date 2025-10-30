@@ -58,7 +58,7 @@ You can declare the active theme in any of the three following ways.
 They are listed here in order of precedence, from lowest to highest.
 The last one has the highest precedence and is the one that prevails.
 The value you provide for your theme must be the package name of the add-on that contains the theme.
-The add-on theme must also be declared in `addons` key, as any other add-on.
+The add-on theme must also be declared in the `addons` key, as any other add-on.
 
 1.  In the file {file}`packages/<add-on-name>/package.json` of your add-on.
 
