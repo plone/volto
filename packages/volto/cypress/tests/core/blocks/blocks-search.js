@@ -613,10 +613,12 @@ describe('Search Block Tests', () => {
     cy.get('#toolbar-save').click();
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
-
     cy.get('#select-search-sort-on').click();
+    cy.wait(300);
     cy.findByText('Effective date').click({ force: true });
-
+    cy.get(
+      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
+    ).contains('Effective date');
     // Verify the presence of Ascending button
     cy.get('button[title="Ascending"]').should('be.visible');
     // Verify the presence of Descending button
@@ -655,6 +657,7 @@ describe('Search Block Tests', () => {
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
     cy.get('#select-search-sort-on').click();
+    cy.wait(300);
     cy.findByText('Effective date').click({ force: true });
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
