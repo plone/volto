@@ -306,11 +306,10 @@ export const EMPTY_STYLES_SCHEMA = {
 /**
  * Adds the `styles` field and 'styling' fieldset in a given schema
  * @param {object} params Helper params
- * @param {object} params.schema Schema to enhance
- * @param {import('@plone/types').BlocksFormData} [params.formData] Current block data
+ * @param {import('@plone/types').JSONSchema} params.schema Schema to enhance
  * @param {import('react-intl').IntlShape} params.intl intl helper for translations
  */
-export const addStyling = ({ schema, formData, intl }) => {
+export const addStyling = ({ schema, intl }) => {
   if (isEmpty(find(schema.fieldsets, { id: 'styling' }))) {
     schema.fieldsets.push({
       id: 'styling',
