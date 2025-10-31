@@ -1,0 +1,1 @@
+Avoid re-rendering a content item view while hydrating server-side rendered components. @reebalazs
