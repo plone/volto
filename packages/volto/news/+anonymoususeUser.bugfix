@@ -1,0 +1,1 @@
+Fix infinite @users requests caused by anonymous useUser hook. @iFlameing
