@@ -1,0 +1,1 @@
+Fix image upload inside `ImageWidget` component when used inside a non-folderish object. [@jnptk]
