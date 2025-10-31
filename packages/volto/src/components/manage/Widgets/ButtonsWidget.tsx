@@ -77,6 +77,7 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
     isDisabled,
     default: defaultValue,
   } = props;
+
   const normalizedActions = React.useMemo<NormalizedAction[]>(
     () =>
       actions.map((action) =>
@@ -96,6 +97,35 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
     [normalizedActions, value],
   );
 
+  const defaultSelectedActionName = React.useMemo(() => {
+    if (!defaultValue) {
+      return undefined;
+    }
+
+    if (typeof defaultValue === 'string') {
+      const matchedByName = normalizedActions.find(
+        ({ name }) => name === defaultValue,
+      );
+
+      if (matchedByName) {
+        return matchedByName.name;
+      }
+    }
+
+    return normalizedActions.find(({ value: actionValue }) =>
+      isEqual(defaultValue, actionValue),
+    )?.name;
+  }, [defaultValue, normalizedActions]);
+
+  const radioGroupValueProps: {
+    value?: string;
+    defaultValue?: string;
+  } = selectedActionName
+    ? { value: selectedActionName }
+    : defaultSelectedActionName
+      ? { defaultValue: defaultSelectedActionName }
+      : {};
+
   const handleChange = React.useCallback(
     (selectedName: string) => {
       const selectedAction = normalizedActions.find(
@@ -109,24 +139,12 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
     [id, normalizedActions, onChange],
   );
 
-  React.useEffect(() => {
-    if (!value && defaultValue) {
-      const nextValue =
-        typeof defaultValue === 'string'
-          ? normalizedActions.find(({ name }) => name === defaultValue)
-              ?.value ?? defaultValue
-          : defaultValue;
-
-      onChange(id, nextValue);
-    }
-  }, [defaultValue, id, normalizedActions, onChange, value]);
-
   return (
     <FormFieldWrapper {...props} className="widget">
       <RadioGroup
         aria-label={props.title || props.label || id}
         orientation="horizontal"
-        value={selectedActionName}
+        {...radioGroupValueProps}
         onChange={handleChange}
         isDisabled={disabled || isDisabled}
         className="buttons buttons-widget"
