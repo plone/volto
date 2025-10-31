@@ -1,5 +1,1 @@
-[bugfix]
-title = "Fix reset password error handling"
-module = "volto"
-author = "suhaibfida"
-issue = 7533
+Fixed the reset password page to display "not found" error message when an invalid user attempts to reset their password. @suhaibfida

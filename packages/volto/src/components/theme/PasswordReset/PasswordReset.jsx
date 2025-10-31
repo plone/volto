@@ -240,7 +240,21 @@ class PasswordReset extends Component {
               description={this.props.intl.formatMessage(messages.description)}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
-              error={errmsg || this.props.error}
+              error={
+                this.state.error ||
+                (errmsg
+                  ? typeof errmsg === 'string'
+                    ? { message: errmsg }
+                    : errmsg.message
+                      ? errmsg
+                      : { message: JSON.stringify(errmsg) }
+                  : this.props.error &&
+                    (typeof this.props.error === 'string'
+                      ? { message: this.props.error }
+                      : this.props.error.message
+                        ? this.props.error
+                        : { message: JSON.stringify(this.props.error) }))
+              }
               schema={{
                 fieldsets: [
                   {
