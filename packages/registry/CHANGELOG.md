@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.7 (2025-10-31)
+
+### Feature
+
+- Enable detection of `theme` key in add-ons. @sneridagh [#7563](https://github.com/plone/volto/issues/7563)
+
+### Internal
+
+- Update to node 24 @sneridagh [#7538](https://github.com/plone/volto/issues/7538)
+
 ## 3.0.0-alpha.6 (2025-10-21)
 
 ### Breaking
