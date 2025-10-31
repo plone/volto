@@ -102,7 +102,7 @@
     "@plone/types": "workspace:*",
     "@types/debug": "^4.1.12",
     "@types/glob": "^8.1.0",
-    "@types/node": "^20",
+    "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/tmp": "^0.2.6",
