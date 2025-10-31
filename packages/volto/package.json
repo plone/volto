@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.28.2",
+  "version": "18.29.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"

@@ -1,1 +1,0 @@
-Update Japanese translations @terapyon
