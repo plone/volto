@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.8 (2025-10-31)
+
+### Bugfix
+
+- Better `BlockViewProps` typings, include `isEditMode`. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+
 ## 2.0.0-alpha.7 (2025-10-22)
 
 ### Feature
