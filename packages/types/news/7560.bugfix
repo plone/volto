@@ -1,0 +1,1 @@
+Better `BlockViewProps` typings, include `isEditMode`. @sneridagh

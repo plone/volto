@@ -1186,10 +1186,6 @@ You can consider removing it if you were shadowing it in your project.
 ```{versionadded} Volto 17.0.0-alpha.16
 ```
 
-```{seealso}
-{doc}`../blocks/core/grid`
-```
-
 The grid block was added to Volto in version 17.0.0-alpha.16.
 It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
 
@@ -1217,6 +1213,9 @@ config.blocks.blocksConfig.gridBlock.restricted = true;
 As long as you keep the add-on in place, your existing blocks will work as expected, even if you restrict the block.
 We recommend that you disable the `@kitconcept/volto-blocks-grid` block and use the new Volto core grid block for new content.
 
+```{seealso}
+{doc}`../blocks/core/grid`
+```
 
 (volto-upgrade-guide-16.x.x)=
 
