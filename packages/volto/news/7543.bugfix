@@ -1,1 +1,0 @@
-Get translationObject from the store instead of directly from the response in CreateTranslation component. @rboixaderg

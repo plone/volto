@@ -39,11 +39,10 @@ export namespace EMPTY_STYLES_SCHEMA {
     let properties: {};
     let required: any[];
 }
-export function addStyling({ schema, formData, intl }: {
-    schema: object;
-    formData?: import("@plone/types").BlocksFormData;
+export function addStyling({ schema, intl }: {
+    schema: import("@plone/types").JSONSchema;
     intl: import("react-intl").IntlShape;
-}): any;
+}): import("@plone/types").JSONSchema;
 /**
  * Sets the field name as first field in schema
  */
