@@ -104,7 +104,7 @@
     "deepmerge": "^4.3.1",
     "dependency-graph": "0.10.0",
     "glob": "^10.4.5",
-    "tmp": "0.2.1"
+    "tmp": "0.2.4"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
