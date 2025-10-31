@@ -3,13 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2025-10-22 07:02+0000\n"
+"Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/plone/volto-18/ta/>\n"
+"Language: ta\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -19,7 +20,7 @@ msgstr "<p> சில உஉகுமொ ஐ இங்கே சேர்க்�
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "குழுவிற்கான ஒரு தனித்துவமான அடையாளங்காட்டி. உருவாக்கிய பிறகு மாற்ற முடியாது. இடைவெளிகள் அனுமதிக்கப்படாது."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -424,7 +425,7 @@ msgstr "ஏறுதல்"
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr "{role} பாத்திரத்தை {நுழைவு க்கு க்கு ஒதுக்குங்கள்"
+msgstr "{role} பாத்திரத்தை {entry} க்கு ஒதுக்குங்கள்"
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -671,7 +672,7 @@ msgstr "தெளிவான"
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
-msgstr ""
+msgstr "தேதி/நேரத்தை அழி"
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
@@ -3195,7 +3196,7 @@ msgstr "தேடல்"
 #. Default: "Search SVG"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search SVG"
-msgstr "எச்.வி.சி."
+msgstr "எச்விசி தேடு"
 
 #. Default: "Search Site"
 #: components/theme/SearchWidget/SearchWidget
@@ -3262,7 +3263,7 @@ msgstr "பயனர்களைத் தேடுங்கள்…"
 #. Default: "Searched for: <em>{searchedtext}</em>."
 #: components/manage/Blocks/Search/components/SearchDetails
 msgid "Searched for: <em>{searchedtext}</em>."
-msgstr "தேடப்பட்டது: <me> {searchedtext} </em>."
+msgstr "தேடப்பட்டது: <em>{searchedtext} </em>."
 
 #. Default: "Second"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -4452,7 +4453,7 @@ msgstr "பணிப்பாய்வு புதுப்பிக்கப�
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
-msgstr "ஆண்டு"
+msgstr "ஆண்டும்"
 
 #. Default: "Yes"
 #: components/manage/Contents/ContentsItem
@@ -4579,7 +4580,7 @@ msgstr "பிளாக்ச்ஃபீல்ட்ச்ரார்டிட
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
-msgstr "box_forgot_password_option"
+msgstr "உங்கள் கடவுச்சொல்லை மறந்து விட்டீர்களா?"
 
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
@@ -4704,7 +4705,7 @@ msgstr "எடுத்துக்காட்டு"
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "இந்தப் புலத்தில் வெளிப்புற URLகள் அனுமதிக்கப்படவில்லை."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4724,12 +4725,12 @@ msgstr "flushandrebuildrelationshints"
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr "head_title"
+msgstr "தலைப்புத் தலைப்பு"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "heading_sent_password"
-msgstr "heading_sent_password"
+msgstr "கடவுச்சொல் மீட்டமைப்பு உறுதிப்படுத்தல் அனுப்பப்பட்டது."
 
 #. Default: "Hero"
 #: config/Blocks
@@ -4754,12 +4755,12 @@ msgstr "ImageUploadermage"
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
-msgstr "image_block_clear"
+msgstr "தெளிவான படம்"
 
 #. Default: "Image preview"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_preview"
-msgstr "image_block_preview"
+msgstr "பட முன்னோட்டம்"
 
 #. Default: "Input must be integer"
 #: helpers/MessageLabels/MessageLabels
@@ -4769,7 +4770,7 @@ msgstr "முழு எண்"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "நீங்கள் வழங்கிய உள் பாதையில் எந்த படமும் காணப்படவில்லை."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4794,7 +4795,7 @@ msgstr "label_my_email_is"
 #. Default: "My user name is"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "label_my_username_is"
-msgstr "label_my_username_is"
+msgstr "என்னுடைய பயனர் பெயர்"
 
 #. Default: "Lead Image Field"
 #: config/Blocks
@@ -4928,7 +4929,7 @@ msgstr "வெளியிடப்பட்டது"
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
-msgstr "querystring-widget-select"
+msgstr "தேர்ந்தெடு…"
 
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
@@ -4953,7 +4954,7 @@ msgstr "குறிக்கிறது"
 #. Default: "Result count"
 #: components/manage/Contents/Contents
 msgid "resultCount"
-msgstr ""
+msgstr "முடிவு எண்ணிக்கை"
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -4968,17 +4969,17 @@ msgstr "தள மூலத்திற்குத் திரும்பு"
 #. Default: "and"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_and"
-msgstr "rrule_and"
+msgstr "மற்றும்"
 
 #. Default: "(~approximate)"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_approximate"
-msgstr "rrule_approximate"
+msgstr "(~தோராயமாக)"
 
 #. Default: "at"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_at"
-msgstr "rrule_at"
+msgstr "இல்"
 
 #. Default: "[month] [day], [year]"
 #: components/manage/Widgets/RecurrenceWidget/Utils
@@ -4988,142 +4989,142 @@ msgstr "rrule_dateformat"
 #. Default: "day"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_day"
-msgstr "rrule_day"
+msgstr "நாள்"
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_days"
-msgstr "rrule_days"
+msgstr "நாள்கள்"
 
 #. Default: "every"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_every"
-msgstr "rrule_every"
+msgstr "ஒவ்வொரு"
 
 #. Default: "for"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_for"
-msgstr "rrule_for"
+msgstr "இதற்கான"
 
 #. Default: "hour"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_hour"
-msgstr "rrule_hour"
+msgstr "மணி"
 
 #. Default: "hours"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_hours"
-msgstr "rrule_hours"
+msgstr "மணிகள்"
 
 #. Default: "in"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_in"
-msgstr "rrule_in"
+msgstr "உள்"
 
 #. Default: "last"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_last"
-msgstr "rrule_last"
+msgstr "கடைசி"
 
 #. Default: "minutes"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_minutes"
-msgstr "rrule_minutes"
+msgstr "நிமையங்கள்"
 
 #. Default: "month"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_month"
-msgstr "rrule_month"
+msgstr "திங்கள்"
 
 #. Default: "months"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_months"
-msgstr "rrule_months"
+msgstr "திங்கள்கள்"
 
 #. Default: "nd"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_nd"
-msgstr "rrule_nd"
+msgstr "வது"
 
 #. Default: "on"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_on"
-msgstr "rrule_on"
+msgstr "மேல்"
 
 #. Default: "on the"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_on the"
-msgstr "rrule_on the"
+msgstr "அதன் மேல்"
 
 #. Default: "or"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_or"
-msgstr "rrule_or"
+msgstr "அல்லது"
 
 #. Default: "rd"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_rd"
-msgstr "rrule_rd"
+msgstr "வது"
 
 #. Default: "st"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_st"
-msgstr "rrule_st"
+msgstr "வது"
 
 #. Default: "th"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_th"
-msgstr "rrule_th"
+msgstr "வது"
 
 #. Default: "the"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_the"
-msgstr "rrule_the"
+msgstr "அந்த"
 
 #. Default: "time"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_time"
-msgstr "rrule_time"
+msgstr "நேரம்"
 
 #. Default: "times"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_times"
-msgstr "rrule_times"
+msgstr "முறை"
 
 #. Default: "until"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_until"
-msgstr "rrule_until"
+msgstr "வரை"
 
 #. Default: "week"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_week"
-msgstr "rrule_week"
+msgstr "வாரம்"
 
 #. Default: "weekday"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weekday"
-msgstr "rrule_weekday"
+msgstr "வாரநாள்"
 
 #. Default: "weekdays"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weekdays"
-msgstr "rrule_weekdays"
+msgstr "வாரநாள்கள்"
 
 #. Default: "weeks"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_weeks"
-msgstr "rrule_weeks"
+msgstr "வாரங்கள்"
 
 #. Default: "year"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_year"
-msgstr "rrule_year"
+msgstr "ஆண்டு"
 
 #. Default: "years"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
-msgstr "rrule_years"
+msgstr "ஆண்டுகள்"
 
 #. Default: "Select"
 #: config/Blocks
@@ -5229,7 +5230,7 @@ msgstr "காட்சிகள்"
 #. Default: "Visit external website"
 #: components/theme/EventDetails/EventDetails
 msgid "visit_external_website"
-msgstr "visit_external_website"
+msgstr "வெளிப்புற வலைத்தளத்தைப் பார்வையிடு"
 
 #. Default: "You are not authorized to perform this operation."
 #: components/manage/Toolbar/More
