@@ -74,6 +74,7 @@ context('Blocks Acceptance Tests', () => {
     cy.get('#toolbar-save').click();
 
     cy.visit('/document');
+
     cy.get('.block.teaser .content h2').contains('Blue Orchids');
     cy.get('.block.teaser .content p').contains(
       'are growing on the mountain tops',
@@ -88,7 +89,8 @@ context('Blocks Acceptance Tests', () => {
 
     cy.get('.documentFirstHeading').contains('Blue Orchids and Tulips');
     // THEN I can see the updated content in the teaser
-    cy.navigate('/document');
+    cy.visit('/document');
+    cy.wait('@content');
     cy.get('.block.teaser .content h2').contains('Blue Orchids and Tulips');
     cy.get('.block.teaser .content p').contains(
       'are beautifully growing on the mountain tops',
