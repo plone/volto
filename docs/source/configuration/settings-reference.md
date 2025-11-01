@@ -19,319 +19,42 @@ This list is still incomplete, contributions are welcomed!
 
 They are exposed in `config.settings`.
 
-### `navDepth`
+### `additionalToolbarComponents`
 
-`navDepth` is the navigation levels depth used in the navigation endpoint calls.
-Increasing this is useful for implementing fat navigation menus.
-Defaults to `1`.
+The `additionalToolbarComponents` setting adds additional toolbar menus.
+The menu body component needs to be added to the on-demand loaded components, as shown in the following example.
 
-### `defaultBlockType`
-
-`defaultBlockType` is the name of the default block type used when a new block is added.
-The default value of this setting is `slate`, which uses the current Slate-based implementation for the rich text editor.
-If you change this to a different type of block, make sure the block configuration includes the {ref}`blockHasValue` function.
-
-### `sentryOptions`
-
-In Volto 16.0.0.alpha.45, Sentry integration via `sentryOptions` was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
-
-```{seealso}
-See {doc}`../deploying/sentry`.
-```
-
-### `contentIcons`
-
-The `contentIcons` property configures content types icons.
-Those are visible in the contents view, such as "Folder contents".
-The default ones are in [`config/ContentIcons.jsx`](https://github.com/plone/volto/blob/main/packages/volto/src/config/ContentIcons.jsx).
-You can extend them in your project's configuration for custom content types using `settings.contentIcons`.
-
-In Volto projects, you can configure this for custom content types as shown in the following example.
-
-```js
-import * as config from '@plone/volto/config';
-import courseSVG from './icons/course.svg';
-
-export const settings = {
-  ...config.settings,
-  contentIcons: {
-    ...config.settings.contentIcons,
-    Course: courseSVG,
-  }
+```jsx
+config.settings.additionalToolbarComponents = {
+  bookmarksMenu: {
+    component: BookmarksEditorComponent,
+    wrapper: null,
+  },
 };
 ```
 
-### `bbb_getContentFetchesFullobjects`
-
-Before Volto 10, the main content-grabbing request, triggered as a result of `getContent` action, always used the `fullobjects` flag, which fully serialized the immediate children of the context request.
-If your code depends on this behavior, set the `bbb_getContentFetchesFullobjects` flag to `true` in the `settings` object.
-
-```{note}
-You should probably refactor your code to avoid depending on this behavior.
-It can cause performance issues when you have large children, for example, content with lots of text, and you need to batch requests anyway, if you want to be sure to display all the children.
-```
-
-### `persistentReducers`
-
-`persistentReducers` is a list of reducer names that should use the browser's local storage to persist their data.
-
-### `maxResponseSize`
-
-The library that Volto uses to get files and images from the backend called superagent has a response size limit of 200Mb.
-If you want to get a file bigger than 200Mb from Plone, the {term}`SSR` will throw an error.
-
-You can edit this limit in the `settings` object setting a new value for `maxResponseSize` in bytes.
-For example, to set 500Mb, write `5000000000`.
-
-### `maxFileUploadSize`
-
-`maxFileUploadSize` is the maximum allowed size of file uploads in bytes.
-The default is `null`, meaning no limit is enforced by Volto.
-
-### `initialReducersBlacklist`
-
-The initial state passed from server to browser needs to be minimal to optimize the resultant generated HTML.
-This state gets stored in `window.__data` and received in the client.
-
-You can blacklist a few reducers that you don't want to be part of `window.__data`, thus decreasing the initial HTML size for performance gains by setting `initialReducersBlacklist`.
-
-```js
-import * as config from '@plone/volto/config';
-
-export const settings = {
-  ...config.settings,
-  initialReducersBlacklist: [
-    ...config.settings.initialReducersBlacklist,
-    'yourReducer',
-  ]
-};
-```
-
-### `loadables`
-
-`loadables` is a mapping of loadable libraries that can be injected into components using the `injectLazyLibs` HOC wrapper.
-See the {doc}`../development/lazyload` page for more details.
-
-### `lazyBundles`
-
-`lazyBundles` is a mapping of bundles to a list of lazy library names.
-Create new bundles, or change the already provided `cms` bundle, to preload multiple lazy libraries with `preloadLazyLibs`  or quickly load them with `injectLazyLibs`.
-
-### `storeExtenders`
-
-`storeExtenders` is a list of callables with signature `(middlewaresList) => middlewaresList`.
-These callables receive the whole stack of middlewares used in Volto and they can add new middleware or tweak this list.
-
-### `asyncPropsExtenders`
-
-`asyncPropsExtenders` is a per-route customizable `asyncConnect` action dispatcher.
-These enable proper {term}`server-side rendering` of content that depends on additional async props coming from backend calls.
-It is a list of route-like configuration objects, which are matched using
-[`matchRoutes`](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
-
-Instead of the `component` key, you should provide an `extend` method with signature `asyncItems => asyncItems`.
-Thus, it receives a list of `asyncConnect` "prop" objects, and returns a similar list.
-You can add new `asyncConnected` props, as well as remove them.
-The following example demonstrates this, excluding the breadcrumbs from being requested.
-
-```js
-config.settings.asyncPropsExtenders = [
-  ...config.settings.asyncPropsExtenders,
-  {
-    path: '/',
-    extend: (dispatchActions) => dispatchActions.filter(asyncAction=> asyncAction.key !== 'breadcrumb')
-  }
-]
-```
-
-### `externalRoutes`
-
-If another application is published under the same top domain as Volto, `externalRoutes` lets you configure a route such as `/abc` which should be not rendered by Volto.
-
-This could be achieved by a rule in the reverse proxy, such as Apache or nginx, but when navigating client side, you may have references to that route.
-Volto handles that as an internal URL, and fetching the content will break.
-You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link, as shown in the following example.
-
-```js
-config.settings.externalRoutes = [
-  {
-    match: {
-      path: '/news',
-      exact: false,
-      strict: false,
-    },
-    url(payload) {
-      return payload.location.pathname;
-    },
-  },
-];
-```
-
-The foregoing example can be simplified as shown.
-
-```js
-config.settings.externalRoutes = [
-  { match: "/news" },
-  { match: "/events" },
-];
-```
-
-### `contentMetadataTagsImageField`
-
-`contentMetadataTagsImageField` setting is the OpenGraph image that will represent this content item.
-It will be used in the `metadata` tag in the `head` as `og:image` for SEO purposes.
-It defaults to `image`.
-See the [OpenGraph Protocol(https://ogp.me/) for more details.
-
-### `hasWorkingCopySupport`
-
-```{versionremoved} Volto 18.8.0
-This setting is unnecessary since Volto 18.8.0.
-Working copy support is now based on whether the `plone.app.iterate` add-on is installed in the backend.
-```
-
-For Plone sites using a Volto version prior to 18.8.0, the `hasWorkingCopySupport` setting enables working copy support.
-
-```{seealso}
-See {doc}`workingcopy` for configuration.
-```
-
-### `controlpanels`
-
-The `controlpanels` setting registers a component as a control panel.
-
-The following is an example configuration in the {file}`config.js` file of your project or add-on:
-
-```js
-config.settings.controlpanels = [
-  ...config.settings.controlpanels,
-  {
-    '@id': '/manage-myaddon-subscriptions',
-    group: 'Add-on Configuration',
-    title: 'Breaking News Manage Subscriptions',
-  },
-];
-
-config.addonRoutes = [
-  ...config.addonRoutes,
-  {
-    path: '/controlpanel/manage-myaddon-subscriptions',
-    component: ManageSubscriptions,
-  },
-];
-```
-
-The group can be one of the default groups `General`, `Content`, `Security`, `Add-on Configuration`, `Users and Groups`, or a custom group.
-
-### `filterControlPanelsSchema`
-
-`filterControlPanelsSchema` is a schema factory for a control panel.
-It is used internally, to tweak the schemas provided by the `@controlpanels` endpoint, making them fit for Volto.
-It uses the `unwantedControlPanelsFields` setting.
-
-### `unwantedControlPanelsFields`
-
-`unwantedControlPanelsFields` is the control panel fields that are not used in Volto.
-It is used internally by the `filterControlPanelsSchema` function.
-
-### `errorHandlers`
-
-`errorHandlers` is a list of error handlers that will be called when there is an unhandled exception.
-Each error handler is a function that receives a single argument, the `error` object.
-
-### `workflowMapping`
-
-`workflowMapping` is an object that defines the mapping between workflow states or transitions and the color that should show in the {guilabel}`change workflow` select menu.
-The following code is the default.
-
-```js
-export const workflowMapping = {
-  published: { value: 'published', color: '#007bc1' },
-  publish: { value: 'publish', color: '#007bc1' },
-  private: { value: 'private', color: '#ed4033' },
-  pending: { value: 'pending', color: '#f6a808' },
-  send_back: { value: 'private', color: '#ed4033' },
-  retract: { value: 'private', color: '#ed4033' },
-  reject: { value: 'private', color: '#ed4033' },
-  submit: { value: 'review', color: '#f4e037' },
-};
-```
-
-It's meant to be extended with your own workflows or transitions.
-It's recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning.
-
-### `styleClassNameConverters`
-
-`styleClassNameConverters` is an object with functions used by the style wrapper helpers to convert style data to actual class names.
-You can customize the generated class name by registering field names with names, such as `<fieldname>:<converterName>`, where the converter is registered here.
-
-### `styleClassNameExtenders`
-
-`styleClassNameExtenders` is an array containing functions that extend how the `StyleWrapper` builds a list of styles.
-These functions have the signature `({ block, content, data, classNames }) => classNames`.
-
-The following examples show useful functions.
-For simplicity, they're compacted into one extender.
-
-```js
-  import { getPreviousNextBlock } from '@plone/volto/helpers';
-
-  config.settings.styleClassNameExtenders = [
-    ({ block, content, data, classNames }) => {
-      let styles = [];
-      const [previousBlock, nextBlock] = getPreviousNextBlock({
-        content,
-        block,
-      });
-
-      // Inject a class depending of which type is the next block
-      if (nextBlock?.['@type']) {
-        styles.push(`next--is--${nextBlock['@type']}`);
-      }
-
-      // Inject a class depending if previous is the same type of block
-      if (data?.['@type'] === previousBlock?.['@type']) {
-        styles.push('previous--is--same--block-type');
-      }
-
-      // Inject a class depending if next is the same type of block
-      if (data?.['@type'] === nextBlock?.['@type']) {
-        styles.push('next--is--same--block-type');
-      }
-
-      // Inject a class depending if it's the first of block type
-      if (data?.['@type'] !== previousBlock?.['@type']) {
-        styles.push('is--first--of--block-type');
-      }
-
-      // Inject a class depending if it's the last of block type
-      if (data?.['@type'] !== nextBlock?.['@type']) {
-        styles.push('is--last--of--block-type');
-      }
-
-      // Given a StyleWrapper defined `backgroundColor` style
-      const previousColor =
-        previousBlock?.styles?.backgroundColor ?? 'transparent';
-      const currentColor = data?.styles?.backgroundColor ?? 'transparent';
-      const nextColor = nextBlock?.styles?.backgroundColor ?? 'transparent';
-
-      // Inject a class depending if the previous block has the same `backgroundColor`
-      if (currentColor === previousColor) {
-        styles.push('previous--has--same--backgroundColor');
-      } else if (currentColor !== previousColor) {
-        styles.push('previous--has--different--backgroundColor');
-      }
-
-      // Inject a class depending if the next block has the same `backgroundColor`
-      if (currentColor === nextColor) {
-        styles.push('next--has--same--backgroundColor');
-      } else if (currentColor !== nextColor) {
-        styles.push('next--has--different--backgroundColor');
-      }
-
-      return [...classNames, ...styles];
-    },
-  ];
+Then add the plug, as shown.
+
+```jsx
+<Plug pluggable="main.toolbar.bottom" id="bookmarks-menu">
+  {({ onClickHandler }) => {
+    return (
+      <button
+        className="show-bookmarks"
+        aria-label={intl.formatMessage(messages.label_showbookmarksmenu)}
+        onClick={(e) => onClickHandler(e, 'bookmarksMenu')}
+        tabIndex={0}
+        id="toolbar-show-bookmarks"
+      >
+        <Icon
+          name={bookSVG}
+          size="30px"
+          title={intl.formatMessage(messages.label_showbookmarksmenu)}
+        />
+      </button>
+    );
+  }}
+</Plug>
 ```
 
 ### `apiExpanders`
@@ -408,42 +131,36 @@ export default function applyConfig (config) {
 
 This is used to pass current—as in resultant, in place—configuration options to the querystring object.
 
-### `additionalToolbarComponents`
+### `asyncPropsExtenders`
 
-The `additionalToolbarComponents` setting adds additional toolbar menus.
-The menu body component needs to be added to the on-demand loaded components, as shown in the following example.
+`asyncPropsExtenders` is a per-route customizable `asyncConnect` action dispatcher.
+These enable proper {term}`server-side rendering` of content that depends on additional async props coming from backend calls.
+It is a list of route-like configuration objects, which are matched using
+[`matchRoutes`](https://github.com/remix-run/react-router/blob/ea44618e68f6a112e48404b2ea0da3e207daf4f0/packages/react-router-config/modules/matchRoutes.js).
 
-```jsx
-config.settings.additionalToolbarComponents = {
-  bookmarksMenu: {
-    component: BookmarksEditorComponent,
-    wrapper: null,
-  },
-};
+Instead of the `component` key, you should provide an `extend` method with signature `asyncItems => asyncItems`.
+Thus, it receives a list of `asyncConnect` "prop" objects, and returns a similar list.
+You can add new `asyncConnected` props, as well as remove them.
+The following example demonstrates this, excluding the breadcrumbs from being requested.
+
+```js
+config.settings.asyncPropsExtenders = [
+  ...config.settings.asyncPropsExtenders,
+  {
+    path: '/',
+    extend: (dispatchActions) => dispatchActions.filter(asyncAction=> asyncAction.key !== 'breadcrumb')
+  }
+]
 ```
 
-Then add the plug, as shown.
+### `bbb_getContentFetchesFullobjects`
 
-```jsx
-<Plug pluggable="main.toolbar.bottom" id="bookmarks-menu">
-  {({ onClickHandler }) => {
-    return (
-      <button
-        className="show-bookmarks"
-        aria-label={intl.formatMessage(messages.label_showbookmarksmenu)}
-        onClick={(e) => onClickHandler(e, 'bookmarksMenu')}
-        tabIndex={0}
-        id="toolbar-show-bookmarks"
-      >
-        <Icon
-          name={bookSVG}
-          size="30px"
-          title={intl.formatMessage(messages.label_showbookmarksmenu)}
-        />
-      </button>
-    );
-  }}
-</Plug>
+Before Volto 10, the main content-grabbing request, triggered as a result of `getContent` action, always used the `fullobjects` flag, which fully serialized the immediate children of the context request.
+If your code depends on this behavior, set the `bbb_getContentFetchesFullobjects` flag to `true` in the `settings` object.
+
+```{note}
+You should probably refactor your code to avoid depending on this behavior.
+It can cause performance issues when you have large children, for example, content with lots of text, and you need to batch requests anyway, if you want to be sure to display all the children.
 ```
 
 ### `blockSettingsTabFieldsetsInitialStateOpen`
@@ -451,6 +168,95 @@ Then add the plug, as shown.
 `blockSettingsTabFieldsetsInitialStateOpen` is a boolean, and is `true` by default.
 The fieldsets in the blocks settings tab start as non-collapsed or opened by default.
 To collapse or close them, set `blockSettingsTabFieldsetsInitialStateOpen` to `false`.
+
+### `contentIcons`
+
+The `contentIcons` property configures content types icons.
+Those are visible in the contents view, such as "Folder contents".
+The default ones are in [`config/ContentIcons.jsx`](https://github.com/plone/volto/blob/main/packages/volto/src/config/ContentIcons.jsx).
+You can extend them in your project's configuration for custom content types using `settings.contentIcons`.
+
+In Volto projects, you can configure this for custom content types as shown in the following example.
+
+```js
+import * as config from '@plone/volto/config';
+import courseSVG from './icons/course.svg';
+
+export const settings = {
+  ...config.settings,
+  contentIcons: {
+    ...config.settings.contentIcons,
+    Course: courseSVG,
+  }
+};
+```
+
+### `contentMetadataTagsImageField`
+
+`contentMetadataTagsImageField` setting is the OpenGraph image that will represent this content item.
+It will be used in the `metadata` tag in the `head` as `og:image` for SEO purposes.
+It defaults to `image`.
+See the [OpenGraph Protocol(https://ogp.me/) for more details.
+
+### `controlpanels`
+
+The `controlpanels` setting registers a component as a control panel.
+
+The following is an example configuration in the {file}`config.js` file of your project or add-on:
+
+```js
+config.settings.controlpanels = [
+  ...config.settings.controlpanels,
+  {
+    '@id': '/manage-myaddon-subscriptions',
+    group: 'Add-on Configuration',
+    title: 'Breaking News Manage Subscriptions',
+  },
+];
+
+config.addonRoutes = [
+  ...config.addonRoutes,
+  {
+    path: '/controlpanel/manage-myaddon-subscriptions',
+    component: ManageSubscriptions,
+  },
+];
+```
+
+The group can be one of the default groups `General`, `Content`, `Security`, `Add-on Configuration`, `Users and Groups`, or a custom group.
+
+### `cssLayers`
+
+To use CSS layers when styling Volto, you can define and apply them at the very top level of the page, where they appear in the `<head>` tag.
+By using the `cssLayers` configuration, you can pass the layer list definition as an array, as shown in the following example
+
+```js
+config.settings.cssLayers = ['reset', 'plone-components', 'layout', 'addons', 'theme'];
+```
+
+### `defaultBlockType`
+
+`defaultBlockType` is the name of the default block type used when a new block is added.
+The default value of this setting is `slate`, which uses the current Slate-based implementation for the rich text editor.
+If you change this to a different type of block, make sure the block configuration includes the {ref}`blockHasValue` function.
+
+### `defaultLanguage`
+
+`defaultLanguage` sets the default language of the site.
+
+````{versionremoved} Volto 19
+This setting was removed in Volto 19.
+Instead, the default language is loaded from the backend.
+
+```{seealso}
+See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
+```
+````
+
+### `errorHandlers`
+
+`errorHandlers` is a list of error handlers that will be called when there is an unhandled exception.
+Each error handler is a function that receives a single argument, the `error` object.
 
 ### `excludeLinksAndReferencesMenuItem`
 
@@ -461,6 +267,119 @@ Exclude this menu item by setting `excludeLinksAndReferencesMenuItem` to `true`.
 ```{seealso}
 {doc}`../user-manual/links-to-item`
 ```
+
+### `externalRoutes`
+
+If another application is published under the same top domain as Volto, `externalRoutes` lets you configure a route such as `/abc` which should be not rendered by Volto.
+
+This could be achieved by a rule in the reverse proxy, such as Apache or nginx, but when navigating client side, you may have references to that route.
+Volto handles that as an internal URL, and fetching the content will break.
+You can disable that path in `config.settings.externalRoutes` so it will be handled as an external link, as shown in the following example.
+
+```js
+config.settings.externalRoutes = [
+  {
+    match: {
+      path: '/news',
+      exact: false,
+      strict: false,
+    },
+    url(payload) {
+      return payload.location.pathname;
+    },
+  },
+];
+```
+
+The foregoing example can be simplified as shown.
+
+```js
+config.settings.externalRoutes = [
+  { match: "/news" },
+  { match: "/events" },
+];
+```
+
+### `filterControlPanelsSchema`
+
+`filterControlPanelsSchema` is a schema factory for a control panel.
+It is used internally, to tweak the schemas provided by the `@controlpanels` endpoint, making them fit for Volto.
+It uses the `unwantedControlPanelsFields` setting.
+
+### `hasWorkingCopySupport`
+
+```{versionremoved} Volto 18.8.0
+This setting is unnecessary since Volto 18.8.0.
+Working copy support is now based on whether the `plone.app.iterate` add-on is installed in the backend.
+```
+
+For Plone sites using a Volto version prior to 18.8.0, the `hasWorkingCopySupport` setting enables working copy support.
+
+```{seealso}
+See {doc}`workingcopy` for configuration.
+```
+
+### `initialReducersBlacklist`
+
+The initial state passed from server to browser needs to be minimal to optimize the resultant generated HTML.
+This state gets stored in `window.__data` and received in the client.
+
+You can blacklist a few reducers that you don't want to be part of `window.__data`, thus decreasing the initial HTML size for performance gains by setting `initialReducersBlacklist`.
+
+```js
+import * as config from '@plone/volto/config';
+
+export const settings = {
+  ...config.settings,
+  initialReducersBlacklist: [
+    ...config.settings.initialReducersBlacklist,
+    'yourReducer',
+  ]
+};
+```
+
+### `isMultilingual`
+
+If `isMultilingual` is `true`, then features for translating content to multiple languages are available.
+Its default value is `false`.
+
+````{versionremoved} Volto 19
+This setting was removed in Volto 19.
+Instead, Volto checks whether the backend has multilingual features enabled.
+
+```{seealso}
+See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
+```
+````
+
+### `lazyBundles`
+
+`lazyBundles` is a mapping of bundles to a list of lazy library names.
+Create new bundles, or change the already provided `cms` bundle, to preload multiple lazy libraries with `preloadLazyLibs`  or quickly load them with `injectLazyLibs`.
+
+### `loadables`
+
+`loadables` is a mapping of loadable libraries that can be injected into components using the `injectLazyLibs` HOC wrapper.
+See the {doc}`../development/lazyload` page for more details.
+
+### `maxFileUploadSize`
+
+`maxFileUploadSize` is the maximum allowed size of file uploads in bytes.
+The default is `null`, meaning no limit is enforced by Volto.
+
+### `maxResponseSize`
+
+The library that Volto uses to get files and images from the backend called superagent has a response size limit of 200Mb.
+If you want to get a file bigger than 200Mb from Plone, the {term}`SSR` will throw an error.
+
+You can edit this limit in the `settings` object setting a new value for `maxResponseSize` in bytes.
+For example, to set 500Mb, write `5000000000`.
+
+### `navDepth`
+
+`navDepth` is the navigation levels depth used in the navigation endpoint calls.
+Increasing this is useful for implementing fat navigation menus.
+Defaults to `1`.
 
 ### `okRoute`
 
@@ -474,21 +393,9 @@ The provided default URL matches the existing Plone Classic UI URL.
 config.settings.okRoute = '/site-is-ok'
 ```
 
-### `siteTitleFormat`
+### `persistentReducers`
 
-The `siteTitleFormat` setting in Volto lets you modify how the site title is built.
-By default, the site title only includes the title of the current page.
-
-By modifying the `siteTitleFormat` configuration setting, you can decide whether to use the title of the navigation root, either the site root or the language root folder, as the second part of the title.
-
-You can also choose the separator character between the current page title and the site title, as shown in the following example.
-
-```jsx
-siteTitleFormat: {
-  includeSiteTitle: true,
-  titleAndSiteTitleSeparator: '-',
-}
-```
+`persistentReducers` is a list of reducer names that should use the browser's local storage to persist their data.
 
 ### `querystringSearchGet`
 
@@ -502,13 +409,12 @@ Please be aware that this could break some other functionality in your site, or 
 [See an explanation of character limits in URLs](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417184#417184).
 Please test this setting properly before enabling in a production site.
 
-### `cssLayers`
+### `sentryOptions`
 
-To use CSS layers when styling Volto, you can define and apply them at the very top level of the page, where they appear in the `<head>` tag.
-By using the `cssLayers` configuration, you can pass the layer list definition as an array, as shown in the following example
+In Volto 16.0.0.alpha.45, Sentry integration via `sentryOptions` was moved from core to the add-on [`@plone-collective/volto-sentry`](https://www.npmjs.com/package/@plone-collective/volto-sentry).
 
-```js
-config.settings.cssLayers = ['reset', 'plone-components', 'layout', 'addons', 'theme'];
+```{seealso}
+See {doc}`../deploying/sentry`.
 ```
 
 ### `showRelatedItems`
@@ -528,37 +434,130 @@ In Volto 19, the default was changed to `true`.
 If `showTags` is true, then the `Tags` component will show tags from the `subjects` field.
 Its default value is `true`.
 
-### `isMultilingual`
+### `siteTitleFormat`
 
-If `isMultilingual` is `true`, then features for translating content to multiple languages are available.
-Its default value is `false`.
+The `siteTitleFormat` setting in Volto lets you modify how the site title is built.
+By default, the site title only includes the title of the current page.
 
-````{versionremoved} Volto 19
-This setting was removed in Volto 19.
-Instead, Volto checks whether the backend has multilingual features enabled.
+By modifying the `siteTitleFormat` configuration setting, you can decide whether to use the title of the navigation root, either the site root or the language root folder, as the second part of the title.
 
-```{seealso}
-See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
+You can also choose the separator character between the current page title and the site title, as shown in the following example.
+
+```jsx
+siteTitleFormat: {
+  includeSiteTitle: true,
+  titleAndSiteTitleSeparator: '-',
+}
 ```
-````
 
-### `defaultLanguage`
+### `storeExtenders`
 
-`defaultLanguage` sets the default language of the site.
+`storeExtenders` is a list of callables with signature `(middlewaresList) => middlewaresList`.
+These callables receive the whole stack of middlewares used in Volto and they can add new middleware or tweak this list.
 
-````{versionremoved} Volto 19
-This setting was removed in Volto 19.
-Instead, the default language is loaded from the backend.
+### `styleClassNameConverters`
 
-```{seealso}
-See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
+`styleClassNameConverters` is an object with functions used by the style wrapper helpers to convert style data to actual class names.
+You can customize the generated class name by registering field names with names, such as `<fieldname>:<converterName>`, where the converter is registered here.
+
+### `styleClassNameExtenders`
+
+`styleClassNameExtenders` is an array containing functions that extend how the `StyleWrapper` builds a list of styles.
+These functions have the signature `({ block, content, data, classNames }) => classNames`.
+
+The following examples show useful functions.
+For simplicity, they're compacted into one extender.
+
+```js
+import { getPreviousNextBlock } from '@plone/volto/helpers';
+
+config.settings.styleClassNameExtenders = [
+  ({ block, content, data, classNames }) => {
+    let styles = [];
+    const [previousBlock, nextBlock] = getPreviousNextBlock({
+      content,
+      block,
+    });
+
+    // Inject a class depending of which type is the next block
+    if (nextBlock?.['@type']) {
+      styles.push(`next--is--${nextBlock['@type']}`);
+    }
+
+    // Inject a class depending if previous is the same type of block
+    if (data?.['@type'] === previousBlock?.['@type']) {
+      styles.push('previous--is--same--block-type');
+    }
+
+    // Inject a class depending if next is the same type of block
+    if (data?.['@type'] === nextBlock?.['@type']) {
+      styles.push('next--is--same--block-type');
+    }
+
+    // Inject a class depending if it's the first of block type
+    if (data?.['@type'] !== previousBlock?.['@type']) {
+      styles.push('is--first--of--block-type');
+    }
+
+    // Inject a class depending if it's the last of block type
+    if (data?.['@type'] !== nextBlock?.['@type']) {
+      styles.push('is--last--of--block-type');
+    }
+
+    // Given a StyleWrapper defined `backgroundColor` style
+    const previousColor =
+      previousBlock?.styles?.backgroundColor ?? 'transparent';
+      const currentColor = data?.styles?.backgroundColor ?? 'transparent';
+      const nextColor = nextBlock?.styles?.backgroundColor ?? 'transparent';
+
+    // Inject a class depending if the previous block has the same `backgroundColor`
+    if (currentColor === previousColor) {
+      styles.push('previous--has--same--backgroundColor');
+    } else if (currentColor !== previousColor) {
+      styles.push('previous--has--different--backgroundColor');
+    }
+
+    // Inject a class depending if the next block has the same `backgroundColor`
+    if (currentColor === nextColor) {
+      styles.push('next--has--same--backgroundColor');
+    } else if (currentColor !== nextColor) {
+      styles.push('next--has--different--backgroundColor');
+    }
+
+    return [...classNames, ...styles];
+  },
+];
 ```
-````
 
 ### `supportedLanguages`
 
 `supportedLanguages` is a list of locales which are included in the bundled code.
 
+### `unwantedControlPanelsFields`
+
+`unwantedControlPanelsFields` is the control panel fields that are not used in Volto.
+It is used internally by the `filterControlPanelsSchema` function.
+
+### `workflowMapping`
+
+`workflowMapping` is an object that defines the mapping between workflow states or transitions and the color that should show in the {guilabel}`change workflow` select menu.
+The following code is the default.
+
+```js
+export const workflowMapping = {
+  published: { value: 'published', color: '#007bc1' },
+  publish: { value: 'publish', color: '#007bc1' },
+  private: { value: 'private', color: '#ed4033' },
+  pending: { value: 'pending', color: '#f6a808' },
+  send_back: { value: 'private', color: '#ed4033' },
+  retract: { value: 'private', color: '#ed4033' },
+  reject: { value: 'private', color: '#ed4033' },
+  submit: { value: 'review', color: '#f4e037' },
+};
+```
+
+It's meant to be extended with your own workflows or transitions.
+It's recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning.
 
 ## Views settings
 
@@ -609,11 +608,6 @@ defineMessages({
 Settings that are relevant to the Express-powered Volto {term}`SSR` server are stored
 in the `config.settings.serverConfig` object.
 
-### `expressMiddleware`
-
-`expressMiddleware` is a list of Express.js middleware that can extend the built-in functionality of Volto's server.
-See the [Express](../development/express) section for more details.
-
 ### `criticalCssPath`
 
 `criticalCssPath` is  path relative to the project root that points to an optional CSS file.
@@ -621,4 +615,11 @@ If this file exists, it is loaded, and its content is embedded inline into the
 generated HTML.
 By default this path is `public/critical.css`.
 See the {doc}`../deploying/performance` section for more details.
+
+### `expressMiddleware`
+
+`expressMiddleware` is a list of Express.js middleware that can extend the built-in functionality of Volto's server.
+See the [Express](../development/express) section for more details.
+
+
 
