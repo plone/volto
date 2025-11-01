@@ -2,7 +2,7 @@
   "cmsui": {
     "edit": "Modifica",
     "save": "Salva",
-    "controlpanel": "Control Panel",
+    "controlpanel": "Pannello di controllo",
     "objectbrowserwidget": {
       "openDialog": "Seleziona contenuti",
       "dialogTitle": "Seleziona Contenuti",
@@ -23,6 +23,38 @@
         "list": "elenco",
         "grid": "griglia"
       }
+    },
+    "panelgroups": {
+      "general": "Generale",
+      "content": "Contenuto",
+      "security": "Sicurezza",
+      "users": "Utenti",
+      "site": "Sito",
+      "addons": "Configurazione prodotti aggiuntivi",
+      "maintenance": "Manutenzione"
+    },
+    "paneltitles": {
+      "addons": "Prodotti aggiuntivi",
+      "database": "Database",
+      "contentRules": "Regole di contenuto",
+      "undo": "Annulla operazioni",
+      "urlmanagement": "Gestione URL",
+      "relations": "Relazioni",
+      "moderatecomments": "Moderazione dei commenti",
+      "users": "Utenti",
+      "groupMembership": "Appartenenza ai gruppi",
+      "groups": "Gruppi"
+    },
+    "blocksEditor": {
+      "explanation": "Sei nell'editor di blocchi. Naviga normalmente tra i blocchi, premi Tab in un blocco per spostarti nella sua finestra di configurazione.",
+      "extraAriaDescription": "Elemento {{ index }} di {{ length }}.",
+      "block": "Blocco",
+      "backToBlock": "Torna al blocco",
+      "blocksTab": "Blocchi",
+      "contentTab": "Contenuto"
+    },
+    "sidebar": {
+      "label": "Barra laterale destra"
     }
   }
 }
