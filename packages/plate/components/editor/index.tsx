@@ -37,33 +37,7 @@ export function PlateEditor(props: {
       {/* Provides editor context */}
       <EditorContainer className="">
         {/* Styles the editor area */}
-        <Editor
-          variant="none"
-          placeholder="Type text..."
-          onKeyDownCapture={(e) => {
-            if (e.key === 'Tab') {
-              e.preventDefault();
-              if (!e.shiftKey) props.onFocusSidebar?.();
-              else {
-                console.log('Shift+Tab pressed, TODO move to helpers');
-              }
-            }
-            if (
-              e.key === 'ArrowDown' &&
-              !editor?.selection &&
-              editor?.getApi().isAt({ end: true })
-            ) {
-              props.onFocusNextBlock?.();
-            }
-            if (
-              e.key === 'ArrowUp' &&
-              !editor?.selection &&
-              editor?.getApi().isAt({ start: true })
-            ) {
-              props.onFocusPreviousBlock?.();
-            }
-          }}
-        />
+        <Editor variant="none" placeholder="Type text..." />
       </EditorContainer>
     </Plate>
   );

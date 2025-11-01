@@ -75,6 +75,7 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
     >
       {/* @ts-expect-error Volto's EditBlockWrapper passes RenderBlocksProps down. We need to revisit which props do we really need to pass down to the block Edit component */}
       <BlockWrapper data={blockData} blocksConfig={blocksconfig}>
+        {/* @ts-expect-error Updated types for Seven */}
         <EditComponent
           ref={blockRef}
           block={props.block}
