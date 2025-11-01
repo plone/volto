@@ -11,7 +11,7 @@ overrides:
 
 patchedDependencies:
   jest-resolve@26.6.2:
-    hash: 65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7
+    hash: tmr5fnfjpir3crfu6ze44v7tue
     path: patches/jest-resolve@26.6.2.patch
 
 importers:
@@ -16458,7 +16458,7 @@ snapshots:
       jest-haste-map: 26.6.2
       jest-message-util: 26.6.2
       jest-regex-util: 26.0.0
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue)
       jest-resolve-dependencies: 26.6.3
       jest-runner: 26.6.3
       jest-runtime: 26.6.3
@@ -16554,7 +16554,7 @@ snapshots:
       istanbul-lib-source-maps: 4.0.1
       istanbul-reports: 3.2.0
       jest-haste-map: 26.6.2
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue)
       jest-util: 26.6.2
       jest-worker: 26.6.2
       slash: 3.0.0
@@ -24828,7 +24828,7 @@ snapshots:
       jest-get-type: 26.3.0
       jest-jasmine2: 26.6.3
       jest-regex-util: 26.0.0
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue)
       jest-util: 26.6.2
       jest-validate: 26.6.2
       micromatch: 4.0.8
@@ -25019,9 +25019,9 @@ snapshots:
       '@types/node': 24.9.1
       jest-util: 29.7.0
 
-  jest-pnp-resolver@1.2.3(jest-resolve@26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)):
+  jest-pnp-resolver@1.2.3(jest-resolve@26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue)):
     optionalDependencies:
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue)
 
   jest-regex-util@26.0.0: {}
 
@@ -25035,12 +25035,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-resolve@26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7):
+  jest-resolve@26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue):
     dependencies:
       '@jest/types': 26.6.2
       chalk: 4.1.2
       graceful-fs: 4.2.11
-      jest-pnp-resolver: 1.2.3(jest-resolve@26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7))
+      jest-pnp-resolver: 1.2.3(jest-resolve@26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue))
       jest-util: 26.6.2
       read-pkg-up: 7.0.1
       resolve: 1.22.10
@@ -25062,7 +25062,7 @@ snapshots:
       jest-haste-map: 26.6.2
       jest-leak-detector: 26.6.2
       jest-message-util: 26.6.2
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue)
       jest-runtime: 26.6.3
       jest-util: 26.6.2
       jest-worker: 26.6.2
@@ -25097,7 +25097,7 @@ snapshots:
       jest-message-util: 26.6.2
       jest-mock: 26.6.2
       jest-regex-util: 26.0.0
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue)
       jest-snapshot: 26.6.2
       jest-util: 26.6.2
       jest-validate: 26.6.2
@@ -25130,7 +25130,7 @@ snapshots:
       jest-haste-map: 26.6.2
       jest-matcher-utils: 26.6.2
       jest-message-util: 26.6.2
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2(patch_hash=tmr5fnfjpir3crfu6ze44v7tue)
       natural-compare: 1.4.0
       pretty-format: 26.6.2
       semver: 7.7.2
