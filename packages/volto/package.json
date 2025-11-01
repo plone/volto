@@ -183,6 +183,7 @@
     "@dnd-kit/utilities": "3.2.2",
     "@loadable/component": "5.14.1",
     "@loadable/server": "5.14.0",
+    "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/scripts": "workspace:*",
     "@plone/volto-slate": "workspace:*",

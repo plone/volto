@@ -9,4 +9,5 @@
  */
 // import '../theme/themes/pastanaga-cms-ui/extras/cms-ui.semantic.less';
 import 'semantic-ui-less/semantic.less';
+import '@plone/components/dist/basic.css';
 import '../theme/themes/pastanaga/extras/extras.less';

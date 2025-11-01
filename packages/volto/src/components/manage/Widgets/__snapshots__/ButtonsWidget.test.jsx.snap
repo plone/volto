@@ -1,9 +1,9 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`renders an align widget component > basic 1`] = `
+exports[`ButtonsWidget > renders actions info provided via props 1`] = `
 <DocumentFragment>
   <div
-    class="inline field align-widget field-wrapper-align"
+    class="inline field widget field-wrapper-align"
   >
     <div
       class="ui grid"
@@ -29,112 +29,333 @@ exports[`renders an align widget component > basic 1`] = `
           class="eight wide column"
         >
           <div
-            class="align-buttons"
+            class="buttons buttons-widget"
           >
-            <div
-              class="ui buttons"
+            <button
+              aria-label="Additional action title"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r8:"
+              tabindex="0"
+              type="button"
             >
-              <button
-                aria-label="Text Left"
-                class="ui basic icon button"
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  class="icon"
-                  style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox="0 0 36 36"
-                  xmlns="http://www.w3.org/2000/svg"
+                <title>
+                  Additional action title
+                </title>
+                <g
+                  fill-rule="evenodd"
                 >
-                  <title>
-                    Text Left
-                  </title>
-                  <g
-                    fill-rule="evenodd"
-                  >
-                    <path
-                      d="M3 7 33 7 33 5 3 5zM3 15 27 15 27 13 3 13zM3 23 33 23 33 21 3 21zM3 31 21 31 21 29 3 29z"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
-            <div
-              class="ui buttons"
+                  <path
+                    d="M3,7 L5,5 L5,25 L3,23 L33,23 L31,25 L31,5 L33,7 L3,7 Z M33,5 L33,25 L3,25 L3,5 L33,5 Z"
+                    fill-rule="nonzero"
+                  />
+                  <path
+                    d="M7 31 29 31 29 29 7 29zM25.314 10.757 28.557 14 7.444 14 10.687 10.757 9.272 9.343 3.616 15 9.272 20.657 10.687 19.243 7.444 16 28.557 16 25.314 19.243 26.728 20.657 32.385 15 26.728 9.343z"
+                  />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ButtonsWidget > renders string-based actions 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
             >
-              <button
-                aria-label="Text Right"
-                class="ui basic icon button"
-              >
-                <svg
-                  class="icon"
-                  style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox="0 0 36 36"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>
-                    Text Right
-                  </title>
-                  <g
-                    fill-rule="evenodd"
-                  >
-                    <path
-                      d="M3 7 33 7 33 5 3 5zM9 15 32.999 15 32.999 13 9 13zM3 23 33 23 33 21 3 21zM15 31 33 31 33 29 15 29z"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
-            <div
-              class="ui buttons"
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="buttons buttons-widget"
+          >
+            <button
+              aria-label="Text Left"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r0:"
+              tabindex="0"
+              type="button"
             >
-              <button
-                aria-label="Text Centered"
-                class="ui basic icon button"
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  class="icon"
-                  style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox="0 0 36 36"
-                  xmlns="http://www.w3.org/2000/svg"
+                <title>
+                  Text Left
+                </title>
+                <g
+                  fill-rule="evenodd"
                 >
-                  <title>
-                    Text Centered
-                  </title>
-                  <g
-                    fill-rule="evenodd"
-                  >
-                    <path
-                      d="M3 7 33 7 33 5 3 5zM6 15 30 15 30 13 6 13zM3 23 33 23 33 21 3 21zM9 31 27 31 27 29 9 29z"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
-            <div
-              class="ui buttons"
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM3 15 27 15 27 13 3 13zM3 23 33 23 33 21 3 21zM3 31 21 31 21 29 3 29z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <button
+              aria-label="Text Right"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r2:"
+              tabindex="0"
+              type="button"
             >
-              <button
-                aria-label="Text Justified"
-                class="ui basic icon button"
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  class="icon"
-                  style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox="0 0 36 36"
-                  xmlns="http://www.w3.org/2000/svg"
+                <title>
+                  Text Right
+                </title>
+                <g
+                  fill-rule="evenodd"
                 >
-                  <title>
-                    Text Justified
-                  </title>
-                  <g
-                    fill-rule="evenodd"
-                  >
-                    <path
-                      d="M3 7 33 7 33 5 3 5zM3 15 33 15 33 13 3 13zM3 23 33 23 33 21 3 21zM3 31 33 31 33 29 3 29z"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM9 15 32.999 15 32.999 13 9 13zM3 23 33 23 33 21 3 21zM15 31 33 31 33 29 15 29z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <button
+              aria-label="Text Centered"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r4:"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Centered
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM6 15 30 15 30 13 6 13zM3 23 33 23 33 21 3 21zM9 31 27 31 27 29 9 29z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <button
+              aria-label="Text Justified"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r6:"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Justified
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM3 15 33 15 33 13 3 13zM3 23 33 23 33 21 3 21zM3 31 33 31 33 29 3 29z"
+                  />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`renders an align widget component > basic 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="buttons buttons-widget"
+          >
+            <button
+              aria-label="Text Left"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r0:"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Left
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM3 15 27 15 27 13 3 13zM3 23 33 23 33 21 3 21zM3 31 21 31 21 29 3 29z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <button
+              aria-label="Text Right"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r2:"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Right
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM9 15 32.999 15 32.999 13 9 13zM3 23 33 23 33 21 3 21zM15 31 33 31 33 29 15 29z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <button
+              aria-label="Text Centered"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r4:"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Centered
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM6 15 30 15 30 13 6 13zM3 23 33 23 33 21 3 21zM9 31 27 31 27 29 9 29z"
+                  />
+                </g>
+              </svg>
+            </button>
+            <button
+              aria-label="Text Justified"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r6:"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Justified
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM3 15 33 15 33 13 3 13zM3 23 33 23 33 21 3 21zM3 31 33 31 33 29 3 29z"
+                  />
+                </g>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -146,7 +367,7 @@ exports[`renders an align widget component > basic 1`] = `
 exports[`renders an align widget component > extended with actions and actionsInfoMap props 1`] = `
 <DocumentFragment>
   <div
-    class="inline field align-widget field-wrapper-align"
+    class="inline field widget field-wrapper-align"
   >
     <div
       class="ui grid"
@@ -172,38 +393,39 @@ exports[`renders an align widget component > extended with actions and actionsIn
           class="eight wide column"
         >
           <div
-            class="align-buttons"
+            class="buttons buttons-widget"
           >
-            <div
-              class="ui buttons"
+            <button
+              aria-label="Additional action title"
+              class="react-aria-Button"
+              data-rac=""
+              data-react-aria-pressable="true"
+              id="react-aria-:r8:"
+              tabindex="0"
+              type="button"
             >
-              <button
-                aria-label="Additional action title"
-                class="ui basic icon button"
+              <svg
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  class="icon"
-                  style="height: 24px; width: auto; fill: currentColor;"
-                  viewBox="0 0 36 36"
-                  xmlns="http://www.w3.org/2000/svg"
+                <title>
+                  Additional action title
+                </title>
+                <g
+                  fill-rule="evenodd"
                 >
-                  <title>
-                    Additional action title
-                  </title>
-                  <g
-                    fill-rule="evenodd"
-                  >
-                    <path
-                      d="M3,7 L5,5 L5,25 L3,23 L33,23 L31,25 L31,5 L33,7 L3,7 Z M33,5 L33,25 L3,25 L3,5 L33,5 Z"
-                      fill-rule="nonzero"
-                    />
-                    <path
-                      d="M7 31 29 31 29 29 7 29zM25.314 10.757 28.557 14 7.444 14 10.687 10.757 9.272 9.343 3.616 15 9.272 20.657 10.687 19.243 7.444 16 28.557 16 25.314 19.243 26.728 20.657 32.385 15 26.728 9.343z"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </div>
+                  <path
+                    d="M3,7 L5,5 L5,25 L3,23 L33,23 L31,25 L31,5 L33,7 L3,7 Z M33,5 L33,25 L3,25 L3,5 L33,5 Z"
+                    fill-rule="nonzero"
+                  />
+                  <path
+                    d="M7 31 29 31 29 29 7 29zM25.314 10.757 28.557 14 7.444 14 10.687 10.757 9.272 9.343 3.616 15 9.272 20.657 10.687 19.243 7.444 16 28.557 16 25.314 19.243 26.728 20.657 32.385 15 26.728 9.343z"
+                  />
+                </g>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

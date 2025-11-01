@@ -43,7 +43,9 @@ context('Blocks Acceptance Tests', () => {
     ).click();
     cy.get('[aria-label="Select Blue Orchids"]').dblclick();
     cy.wait(500);
-    cy.get('.align-buttons .ui.buttons button[aria-label="Center"]').click();
+    cy.get(
+      '[class*="field-wrapper-align-"] .buttons input[aria-label="Center"]',
+    ).click({ force: true });
     cy.get('#toolbar-save').click();
 
     // THEN I can see the Teaser block

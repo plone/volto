@@ -292,3 +292,48 @@ body.babel-view .field.language-independent-field {
     margin-left: 8px;
   }
 }
+
+// ButtonsWidget and friends 2025
+:root {
+  --border-color-hover: var(--quanta-sapphire);
+  --border-color-pressed: var(--quanta-sapphire);
+  --border-color-disabled: #d4d4d5;
+  --text-color-disabled: #a8a8a8;
+}
+
+.field.widget {
+  .buttons-widget {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .buttons-widget-option {
+      padding: 5px;
+      border-radius: 3px;
+      aspect-ratio: 1/1;
+      font-size: 1em;
+      line-height: initial;
+
+      &[data-hovered='true'] {
+        box-shadow: inset 0 0 0 1px var(--border-color-hover, #2996da);
+      }
+
+      &[data-selected='true'] {
+        box-shadow: inset 0 0 0 1px var(--border-color-pressed, #2996da);
+      }
+
+      svg.icon {
+        margin: 0 !important;
+        opacity: 0.9;
+        vertical-align: top;
+      }
+    }
+  }
+}
+
+.buttons-widget-option {
+  &[data-disabled='true'] {
+    border-color: var(--border-color-disabled);
+    color: var(--text-color-disabled);
+  }
+}
