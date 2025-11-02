@@ -1,16 +1,19 @@
 import type { RouteConfig } from '@react-router/dev/routes';
+import type { ReactRouterRouteEntry } from '@plone/types';
 import { route } from '@react-router/dev/routes';
 import { getAddonRoutesConfig } from '@plone/react-router';
-import config from '@plone/registry';
-// eslint-disable-next-line import/no-unresolved
-import applyAddonConfiguration, { addonsInfo } from '../.plone/registry.loader';
 
-applyAddonConfiguration(config);
+// eslint-disable-next-line import/no-unresolved
+import addonsRoutes from '../.plone/registry.routes.json';
+import addonsInfo from '../.plone/registry.addonsInfo.json';
 
 const routes: RouteConfig = [
   route('ok', 'okroute.tsx', { id: 'ok' }),
   route('reset-fetcher', 'reset-fetcher.tsx', { id: 'reset-fetcher' }),
-  ...getAddonRoutesConfig(config.routes || [], addonsInfo),
+  ...getAddonRoutesConfig(
+    (addonsRoutes as ReactRouterRouteEntry[]) || [],
+    addonsInfo,
+  ),
 ];
 
 export default routes;

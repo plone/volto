@@ -6,6 +6,7 @@ import { createAddonsServerLoader } from '@plone/registry/create-addons-loader-s
 import { createThemeAddonsLoader } from '@plone/registry/create-theme-loader';
 import { createAddonsStyleLoader } from '@plone/registry/create-addons-styles-loader';
 import { createAddonsLocalesLoader } from '@plone/registry/create-addons-locales-loader';
+import config from '@plone/registry';
 
 export function relativeToAbsoluteImportPlugin(options) {
   const { packages } = options;
@@ -129,6 +130,26 @@ export const PloneRegistryVitePlugin = () => {
           ],
         },
       }),
+    },
+    {
+      name: 'plone-registry-after',
+      enforce: 'pre',
+      async configureServer(server) {
+        // This is needed to ensure that all the build plugins are in place
+        await server.environments.client.pluginContainer.buildStart();
+
+        const { default: loader, addonsInfo } =
+          await server.ssrLoadModule(addonsLoaderPath);
+
+        fs.writeFileSync(
+          path.join(ploneDir, 'registry.routes.json'),
+          JSON.stringify(loader(config).routes, null, 2),
+        );
+        fs.writeFileSync(
+          path.join(ploneDir, 'registry.addonsInfo.json'),
+          JSON.stringify(addonsInfo, null, 2),
+        );
+      },
     },
   ];
 };
