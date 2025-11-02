@@ -903,7 +903,7 @@ describe('Slots registry', () => {
     ]);
   });
 
-  it('unRegisterSlotComponent - remove one registered slot', () => {
+  it('unregisterSlotComponent - remove one registered slot', () => {
     config.registerSlotComponent({
       name: 'Colophon',
       slot: 'postFooter',
@@ -914,7 +914,7 @@ describe('Slots registry', () => {
     expect(
       config.getSlotComponent('postFooter', 'Colophon')[0].component,
     ).toEqual('The colophon component');
-    config.unRegisterSlotComponent('postFooter', 'Colophon', 0);
+    config.unregisterSlotComponent('postFooter', 'Colophon', 0);
     expect(config.getSlotComponent('postFooter', 'Colophon').length).toEqual(0);
 
     expect(config.getSlotComponents('postFooter')).toEqual([]);

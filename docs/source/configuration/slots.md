@@ -400,7 +400,7 @@ config.reorderSlotComponent({ slot, name, position, action, target }: {
 This is the signature:
 
 ```ts
-config.unRegisterSlotComponent(slot: string, name: string, position: number): void
+config.unregisterSlotComponent(slot: string, name: string, position: number): void
 ```
 
 `slot`

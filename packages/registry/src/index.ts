@@ -437,7 +437,7 @@ class Config {
     currentSlot.slots = result;
   }
 
-  unRegisterSlotComponent(slot: string, name: string, position: number) {
+  unregisterSlotComponent(slot: string, name: string, position: number) {
     const currentSlot = this._data.slots[slot];
     if (!slot || !currentSlot) {
       throw new Error(`No slot ${slot} found`);

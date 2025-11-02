@@ -1,1 +1,5 @@
-Converted the structure of the "Settings Reference" page from a glossary to headings for easier navigation. @Abhishek-17h
+changed the occurrence of unRegisterSlotComponent to unregisterSlotComponent in 4 files
+1.packages/registry/src/index.ts in line 440
+2.docs/source/configuration/slots.md in line 403
+3.packages/registry/CHANGELOG.md in line 65 and 66
+4.packages/registry/src/registry.test.tsx in line 906 and 907
