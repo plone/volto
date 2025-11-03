@@ -130,9 +130,8 @@ export default preloadLazyLibs('cms')(SomeComponent);
 
 ### Testing with lazy loaded libraries integrated
 
-Sometimes you'll find that it's difficult to get the lazy loaded libraries
-properly loaded in your vitest tests. In that case, add this to the top of your
-test:
+Sometimes you'll find that it's difficult to get the lazy loaded libraries properly loaded in your {term}`Vitest` tests.
+In that case, add the following code to the top of your test.
 
 ```javascript
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
