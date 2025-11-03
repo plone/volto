@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.9 (2025-11-03)
+
+### Feature
+
+- New typings for plate config. @sneridagh [#7393](https://github.com/plone/volto/issues/7393)
+- Make review_state nullable in ContainedItem - @ebrehault [#7513](https://github.com/plone/volto/issues/7513)
+
+### Bugfix
+
+- Fixed typings for `blocks` in `Content`. @sneridagh [#7432](https://github.com/plone/volto/issues/7432)
+
 ## 2.0.0-alpha.8 (2025-10-31)
 
 ### Bugfix
