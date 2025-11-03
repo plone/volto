@@ -59,18 +59,10 @@ We recommend using `@volto/razzle` in your Volto 19 projects either when you nee
 
 Recommended steps to switch:
 
-1.  Remove the existing `razzle` dependency and install `@volto/razzle` as a development dependency.
-    For example, with `pnpm`:
-
-    ```shell
-    pnpm remove razzle
-    pnpm add -D @volto/razzle
-    ```
-
-2.  In most cases, you don't need to change your scripts—for example `razzle start`, `razzle build`, or `razzle test`—because the fork preserves the original CLI entrypoints.
+1.  In most cases, you don't need to change your scripts—for example `razzle start`, `razzle build`, or `razzle test`—because the fork preserves the original CLI entrypoints.
     If you have code that imports internal modules from the `razzle` package, for example, `require('razzle/some/path')`, then update those imports to reference `@volto/razzle` instead.
 
-3.  Search your project for any direct or indirect references to `razzle` to ensure nothing was left behind, including imports, requires, and configuration presets or plugins:
+2.  Search your project for any direct or indirect references to `razzle` to ensure nothing was left behind, including imports, requires, and configuration presets or plugins:
 
     ```shell
     grep -R "razzle" -n --exclude-dir=node_modules || true
