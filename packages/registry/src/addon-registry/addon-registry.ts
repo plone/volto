@@ -17,6 +17,7 @@ export type Package = {
   isPublishedPackage: boolean;
   isRegisteredAddon: boolean;
   modulePath: string;
+  hasServerConfig?: boolean;
   packageJson: string;
   basePath?: string;
   tsConfigPaths?: [string, any] | null;
@@ -425,6 +426,10 @@ class AddonRegistry {
       const pkg = JSON.parse(fs.readFileSync(packageJson, 'utf-8'));
       const main = pkg.main || 'src/index.js';
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
+      let hasServerConfig = false;
+      if (fs.existsSync(`${basePath}/config/server.ts`)) {
+        hasServerConfig = true;
+      }
       const innerAddons: Array<string> = pkg.addons || [];
       const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
       if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
@@ -445,6 +450,7 @@ class AddonRegistry {
         isPublishedPackage: true,
         isRegisteredAddon: this.addonNames.includes(name),
         modulePath,
+        hasServerConfig,
         packageJson,
         basePath,
         tsConfigPaths: packageTSConfig[1] ? packageTSConfig : null,

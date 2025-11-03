@@ -100,6 +100,7 @@ describe('AddonRegistry - Project', () => {
       },
       'test-released-addon': {
         basePath: `${base}/node_modules/test-released-addon`,
+        hasServerConfig: false,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
@@ -112,6 +113,7 @@ describe('AddonRegistry - Project', () => {
       },
       'test-released-source-addon': {
         basePath: `${base}/node_modules/test-released-source-addon`,
+        hasServerConfig: false,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         name: 'test-released-source-addon',
@@ -126,6 +128,7 @@ describe('AddonRegistry - Project', () => {
       'test-released-unmentioned': {
         addons: [],
         basePath: `${base}/node_modules/test-released-unmentioned`,
+        hasServerConfig: false,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-unmentioned`,
         name: 'test-released-unmentioned',
