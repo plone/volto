@@ -17,6 +17,18 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.29.1 (2025-11-03)
+
+### Bugfix
+
+- Fix image upload inside `ImageWidget` component when used inside a non-folderish object. [@jnptk] [#7576](https://github.com/plone/volto/issues/7576)
+- Fix failing cypress test on updating to Cypress 13.17.0 @Tishasoumya-02 
+
+### Internal
+
+- Convert UsersControlpanel component from class to functional with hooks. @wesleybl [#7450](https://github.com/plone/volto/issues/7450)
+- Update to @types/node 22 and cypress to 13.17.0 @sneridagh @wesleybl [#7538](https://github.com/plone/volto/issues/7538)
+
 ## 18.29.0 (2025-10-31)
 
 ### Feature
