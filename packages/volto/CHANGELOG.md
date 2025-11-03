@@ -17,6 +17,31 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.29.0 (2025-10-31)
+
+### Feature
+
+- Update Japanese translations @terapyon [#7368](https://github.com/plone/volto/issues/7368)
+- Internationalizes help for the `Group Name` field. @wesleybl [#7481](https://github.com/plone/volto/issues/7481)
+- Enhanced diff reducer to process static behaviors in the result object. @rboixaderg [#7546](https://github.com/plone/volto/issues/7546)
+
+### Bugfix
+
+- Fix `InlineForm` to always pass the error prop as an array, preventing prop type errors in widgets that use `InlineForm`. @alexandreIFB [#7267](https://github.com/plone/volto/issues/7267)
+- Get translationObject from the store instead of directly from the response in CreateTranslation component. @rboixaderg [#7543](https://github.com/plone/volto/issues/7543)
+- Avoid re-rendering a content item view while hydrating server-side rendered components. @reebalazs 
+- Fix infinite @users requests caused by anonymous useUser hook. @iFlameing 
+- Reset fieldset.invisible class definition in order to prevent clashes with other CSS frameworks that might have `invisible` as utility. @sneridagh 
+
+### Internal
+
+- Modernize and update `tsconfig.json` settings for core. @sneridagh [#7531.1](https://github.com/plone/volto/issues/7531.1)
+- Refactor `LanguageSelector` into TypeScript. @sneridagh [#7531.2](https://github.com/plone/volto/issues/7531.2)
+- Makes the Cypress commands `getSlateEditorAndType` and `getSlateEditorSelectorAndType` more robust. @wesleybl [#7503](https://github.com/plone/volto/issues/7503)
+- Enhance Cypress commands to trigger focus before typing in Slate editor. @wesleybl [#7506](https://github.com/plone/volto/issues/7506)
+- Fix error and rename test to "should save typed content in the Slate editor". @wesleybl [#7507](https://github.com/plone/volto/issues/7507)
+- Move to `dependencies` some bad categorized dependencies in `devDependencies`. @sneridagh 
+
 ## 18.28.2 (2025-10-10)
 
 ### Bugfix

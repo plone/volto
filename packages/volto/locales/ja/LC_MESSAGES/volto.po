@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2021-09-08 20:50+0900\n"
+"PO-Revision-Date: 2025-09-17 20:57+0900\n"
 "Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
 "Language: ja\n"
 "Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
@@ -44,12 +44,12 @@ msgstr "アクション"
 #. Default: "Action changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action changed"
-msgstr ""
+msgstr "アクションが変更されました"
 
 #. Default: "Action:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Action: "
-msgstr ""
+msgstr "アクション: "
 
 #. Default: "Actions"
 #: components/manage/Actions/Actions
@@ -69,12 +69,12 @@ msgstr "以下のリストにあるアドオンを有効にしたり無効にし
 #. Default: "Active"
 #: components/manage/Rules/Rules
 msgid "Active"
-msgstr ""
+msgstr "アクティブ"
 
 #. Default: "Active content rules in this Page"
 #: components/manage/Rules/Rules
 msgid "Active content rules in this Page"
-msgstr ""
+msgstr "このページのアクティブなコンテンツルール"
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
@@ -100,7 +100,7 @@ msgstr "以下のリストに新しいアドオンが表示されるようにす
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "代替URLを追加"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -110,12 +110,12 @@ msgstr "新規追加"
 #. Default: "Add Content Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Content Rule"
-msgstr ""
+msgstr "コンテンツルールを追加"
 
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
-msgstr ""
+msgstr "ルールを追加"
 
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
@@ -135,22 +135,22 @@ msgstr "説明を追加…"
 #. Default: "Add a new alternative url"
 #: components/manage/Aliases/Aliases
 msgid "Add a new alternative url"
-msgstr ""
+msgstr "新しい代替URLを追加"
 
 #. Default: "Action added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add action"
-msgstr ""
+msgstr "アクションを追加"
 
 #. Default: "Add block"
 #: components/manage/BlockChooser/BlockChooserButton
 msgid "Add block"
-msgstr ""
+msgstr "ブロックを追加"
 
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "位置 {index} にブロックを追加"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
@@ -160,12 +160,12 @@ msgstr "ブロックを追加…"
 #. Default: "Condition added"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Add condition"
-msgstr ""
+msgstr "条件を追加"
 
 #. Default: "Add content rule"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Add content rule"
-msgstr ""
+msgstr "コンテンツルールを追加"
 
 #. Default: "Add criteria"
 #: components/manage/Widgets/QueryWidget
@@ -180,7 +180,7 @@ msgstr "日付を追加"
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "コンテナに要素を追加"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
@@ -220,12 +220,12 @@ msgstr "グループに追加"
 #. Default: "Add users to group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add users to group"
-msgstr ""
+msgstr "ユーザをグループに追加"
 
 #. Default: "Add term"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Add vocabulary term"
-msgstr ""
+msgstr "用語を追加"
 
 #. Default: "Add {type}"
 #: components/manage/Add/Add
@@ -235,17 +235,17 @@ msgstr "{type} を追加"
 #. Default: "Add-Ons"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-Ons"
-msgstr ""
+msgstr "アドオン"
 
 #. Default: "Add-on Configuration"
 #: components/manage/Controlpanels/Controlpanels
 msgid "Add-on Configuration"
-msgstr ""
+msgstr "アドオン設定"
 
 #. Default: "Add-ons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add-ons"
-msgstr ""
+msgstr "アドオン"
 
 #. Default: "Add-ons Settings"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -255,7 +255,7 @@ msgstr "アドオン設定"
 #. Default: "Added"
 #: components/manage/Rules/Rules
 msgid "Added"
-msgstr ""
+msgstr "追加されました"
 
 #. Default: "Additional date"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -265,32 +265,32 @@ msgstr "追加日"
 #. Default: "Addon could not be installed"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be installed"
-msgstr ""
+msgstr "アドオンをインストールできませんでした"
 
 #. Default: "Addon could not be uninstalled"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be uninstalled"
-msgstr ""
+msgstr "アドオンをアンインストールできませんでした"
 
 #. Default: "Addon could not be upgraded"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon could not be upgraded"
-msgstr ""
+msgstr "アドオンをアップグレードできませんでした"
 
 #. Default: "Addon installed succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "アドオンが正常にインストールされました"
 
 #. Default: "Addon uninstalled succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "アドオンが正常にアンインストールされました"
 
 #. Default: "Addon upgraded succesfuly"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "アドオンが正常にアップグレードされました"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -305,28 +305,28 @@ msgstr ""
 #. Default: "Album view"
 #: config/Views
 msgid "Album view"
-msgstr ""
+msgstr "アルバムビュー"
 
 #. Default: "Alias"
 #: components/manage/Controlpanels/Aliases
 msgid "Alias"
-msgstr ""
+msgstr "エイリアス"
 
 #. Default: "Alias has been added"
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alias has been added"
-msgstr ""
+msgstr "エイリアスが追加されました"
 
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "エイリアスが削除されました"
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "エイリアスがアップロードされました"
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -345,12 +345,12 @@ msgstr "すべて"
 #. Default: "All content"
 #: config/Views
 msgid "All content"
-msgstr ""
+msgstr "すべてのコンテンツ"
 
 #. Default: "Existing alternative URLs for this site"
 #: components/manage/Controlpanels/Aliases
 msgid "All existing alternative urls for this site"
-msgstr ""
+msgstr "このサイトのすべての既存の代替URL"
 
 #. Default: "Alphabetically"
 #: components/theme/Search/Search
@@ -367,43 +367,43 @@ msgstr "代替テキスト"
 #. Default: "Leave empty if the image is purely decorative."
 #: components/manage/Blocks/Image/schema
 msgid "Alt text hint"
-msgstr ""
+msgstr "画像が装飾的な場合は空白のままにしてください。"
 
 #. Default: "Describe the purpose of the image."
 #: components/manage/Blocks/Image/schema
 msgid "Alt text hint link text"
-msgstr ""
+msgstr "画像の目的を説明してください。"
 
 #. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path (Required)"
-msgstr ""
+msgstr "代替URLパス（必須）"
 
 #. Default: "Alternative url path must start with a slash."
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr ""
+msgstr "代替URLパスは /（スラッシュ）で始まる必要があります。"
 
 #. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
-msgstr ""
+msgstr "代替URLパス → ターゲットURLパス（作成日時、手動作成か yes/no）"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
-msgstr ""
+msgstr "下位フォルダに適用"
 
 #. Default: "Applies to subfolders?"
 #: components/manage/Rules/Rules
 msgid "Applies to subfolders?"
-msgstr ""
+msgstr "下位フォルダに適用しますか？"
 
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr ""
+msgstr "下位フォルダに適用"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
@@ -2358,12 +2358,12 @@ msgstr ""
 #. Default: "Move to bottom of folder"
 #: components/manage/Contents/ContentsItem
 msgid "Move to bottom of folder"
-msgstr "フォルダーの一番下に移動"
+msgstr "フォルダの一番下に移動"
 
 #. Default: "Move to top of folder"
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr "フォルダーの一番上に移動"
+msgstr "フォルダの一番上に移動"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
