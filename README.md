@@ -165,6 +165,9 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [VisitModena](https://www.visitmodena.it/it) (Tourist website of the Municipality of Modena, developed by [RedTurtle](https://www.redturtle.it), 2020)
 - [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
 - [Zeelandia](https://www.zeelandia.de/) (Corporate website for one of the leading bakery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2019)
+- [Copernicus In-Situ](https://insitu.copernicus.eu) (Copernicus In-Situ compiles and provides high-quality ground, sea and airborne observation and geospatial reference data to support the Copernicus services. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2025)
+- [Copernicus Land Monitoring Service](https://land.copernicus.eu) (The Copernicus Land Monitoring Service (CLMS) delivers high-quality geospatial information on land cover, land use changes, vegetation state, the water cycle and Earth's surface energy variables. Developed by [CodeSyntax](https://www.codesyntax.com/en) and [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2023)
+- [Study in Denmark](https://studyindenmark.dk) (Study in Denmark a Plone6 website promoting higher education opportunities in Denmark. Developed by [Eau de web](https://eaudeweb.ro) for the Danish Ministry of Higher Education and Science, 2025)
 
 
 ### Open-source websites built with Volto
