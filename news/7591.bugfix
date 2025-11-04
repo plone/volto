@@ -1,0 +1,1 @@
+Removed `react-hooks` plugin from eslint config being duplicated by `eslint-config-react-app`. @ichim-david
