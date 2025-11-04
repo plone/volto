@@ -181,8 +181,8 @@ You should check the dependencies in their `package.json` for more details.
 
 - [2022.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2022) - Volto project for [Plone Conference 2022 site](https://2022.ploneconf.org)
 - [2023.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2023) - Volto project for [Plone Conference 2023 site](https://2023.ploneconf.org)
-- [2024.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2024) - Volto project for [Plone Conference 2024 site](https://2024.ploneconf.org)
-- [2025.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2025) - Volto project for [Plone Conference 2025 site](https://2025.ploneconf.org)
+- [2024.ploneconf.org](https://github.com/plone/2024.ploneconf.org) - Volto project for [Plone Conference 2024 site](https://2024.ploneconf.org)
+- [2025.ploneconf.org](https://github.com/plone/2025.ploneconf.org) - Volto project for [Plone Conference 2025 site](https://2025.ploneconf.org)
 - [Biodiversity Information System for Europe](https://github.com/eea/bise-frontend) - Volto project for [Biodiversity Information System for Europe website](https://biodiversity.europa.eu)
 - [design-volto-theme](https://github.com/RedTurtle/design-volto-theme) Volto theme for Italian Public Administration
 - [EEA Main Website frontend](https://github.com/eea/eea-website-frontend) - Plone 6 Volto frontend for [European Environment Agency](https://www.eea.europa.eu/en)
