@@ -55,11 +55,11 @@ If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20
 ```
 
 `@volto/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
-We recommend using `@volto/razzle` in your Volto 19 projects either when you need the Volto-compatible build behavior or when we provide temporary patches that are not yet merged upstream.
+Use `@volto/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
 
-Recommended steps to switch:
+To switch, follow these steps.
 
-1.  In most cases, you don't need to change your scripts—for example `razzle start`, `razzle build`, or `razzle test`—because the fork preserves the original CLI entrypoints.
+1.  In most cases, you don't need to change your scripts—for example `razzle start`, `razzle build`, or `razzle test`—because the fork preserves the original CLI entry points.
     If you have code that imports internal modules from the `razzle` package, for example, `require('razzle/some/path')`, then update those imports to reference `@volto/razzle` instead.
 
 2.  Search your project for any direct or indirect references to `razzle` to ensure nothing was left behind, including imports, requires, and configuration presets or plugins:
