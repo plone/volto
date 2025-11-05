@@ -1,4 +1,5 @@
 describe('Listing Block Tests', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.intercept('GET', '/**/Document').as('schema');
@@ -112,7 +113,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -292,7 +293,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -420,7 +421,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/page-two',
+      subpathPrefix + '/my-page/page-two',
     );
   });
 
@@ -474,7 +475,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page',
+      subpathPrefix + '/my-page',
     );
   });
 
@@ -565,7 +566,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -846,7 +847,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-folder',
+      subpathPrefix + '/my-page/my-folder',
     );
     cy.get('.listing-item').should(($els) => {
       expect($els).to.have.length(2);
@@ -996,7 +997,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-folder',
+      subpathPrefix + '/my-page/my-folder',
     );
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder' });
     cy.get('.listing-item').should(($els) => {
@@ -1126,7 +1127,7 @@ describe('Listing Block Tests', () => {
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
 
-    cy.navigate('/my-page');
+    cy.visit('/my-page');
     cy.wait('@content');
     cy.wait('@querySearch');
     cy.wait('@querySearch');
@@ -1151,6 +1152,7 @@ describe('Listing Block Tests', () => {
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('not.include', '=3');
     cy.go(-1);
+    cy.wait(300); // I couldn't make it work without wait
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 2' });
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
@@ -1218,7 +1220,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-news-item-test',
+      subpathPrefix + '/my-page/my-news-item-test',
     );
   });
 

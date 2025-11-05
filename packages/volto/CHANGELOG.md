@@ -17,6 +17,96 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.11 (2025-11-05)
+
+### Documentation
+
+- Converted the structure of the "Settings Reference" page from a glossary to headings for easier navigation. @Abhishek-17h [#7565](https://github.com/plone/volto/issues/7565)
+
+## 19.0.0-alpha.10 (2025-10-31)
+
+### Feature
+
+- Added `visually-hidden` utility CSS class that integrators and core developers can use. @JeffersonBledsoe @Wagner3UB [#6356](https://github.com/plone/volto/issues/6356)
+- Enhanced diff reducer to process static behaviors in the result object. @rboixaderg [#7546](https://github.com/plone/volto/issues/7546)
+
+### Bugfix
+
+- Get translationObject from the store instead of directly from the response in CreateTranslation component. @rboixaderg [#7543](https://github.com/plone/volto/issues/7543)
+- Move '.visually-hidden' class to 'main.less' and remove unused 'utils.less' and references @Wagner3UB [#7552](https://github.com/plone/volto/issues/7552)
+- Improve some JSDocs for better typing. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Fix image upload inside `ImageWidget` component when used inside a non-folderish object. [@jnptk] [#7573](https://github.com/plone/volto/issues/7573)
+- Avoid re-rendering a content item view while hydrating server-side rendered components. @reebalazs 
+- Fix failing cypress test on updating to Cypress 15 @Tishasoumya-02 
+- Fix infinite @users requests caused by anonymous useUser hook. @iFlameing 
+
+### Internal
+
+- Convert UsersControlpanel component from class to functional with hooks. @wesleybl [#7450](https://github.com/plone/volto/issues/7450)
+- Update to node 24 and cypress to 15 @sneridagh [#7538](https://github.com/plone/volto/issues/7538)
+- Refactor `SidebarPortal` to TypeScript. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Enable ESlint detection of '.only' in unit and cypress tests. @sneridagh [#7567](https://github.com/plone/volto/issues/7567)
+
+## 19.0.0-alpha.9 (2025-10-22)
+
+### Feature
+
+- Add Cypress for a subpath. @wesleybl [#6976](https://github.com/plone/volto/issues/6976)
+- Serve API requests from a subpath. @davisagli [#7326](https://github.com/plone/volto/issues/7326)
+- Add option to serve a Volto site on a subpath using the `RAZZLE_SUBPATH_PREFIX` environment variable. @nileshgulia1, @wesleybl, @davisagli 
+
+### Internal
+
+- Expires the cache if the root `package.json` is changed. @wesleybl [#7536](https://github.com/plone/volto/issues/7536)
+- Move to `dependencies` some bad categorized dependencies in `devDependencies`. @sneridagh 
+- Run Cookieplone acceptance test with Node 24. @davisagli 
+
+## 19.0.0-alpha.8 (2025-10-22)
+
+### Internal
+
+- Modernize and update `tsconfig.json` settings for core. @sneridagh [#7531.1](https://github.com/plone/volto/issues/7531.1)
+- Refactor `LanguageSelector` into TypeScript. @sneridagh [#7531.2](https://github.com/plone/volto/issues/7531.2)
+- Re-enable scripts pnpm build. Remove why. @sneridagh [#7532](https://github.com/plone/volto/issues/7532)
+
+## 19.0.0-alpha.7 (2025-10-21)
+
+### Breaking
+
+- Update pnpm to 10.18.3. @wesleybl [#7239](https://github.com/plone/volto/issues/7239)
+- Drop support of Node.js 20. @wesleybl [#7509](https://github.com/plone/volto/issues/7509)
+
+### Feature
+
+- Internationalizes help for the `Group Name` field. @wesleybl [#7481](https://github.com/plone/volto/issues/7481)
+- Add support to Node.js 24. @wesleybl [#7508](https://github.com/plone/volto/issues/7508)
+
+### Bugfix
+
+- Refactored the fix for #7238: corner case when coming from SSR in edit route, where the teasers where overwriten with bogus URLs after save if INTERNAL_API_PATH is set. @sneridagh [#7317](https://github.com/plone/volto/issues/7317)
+- The cancel/clear "X" button inside the DatetimeWidget now includes an accessible label when active. @Wagner3UB [#7414](https://github.com/plone/volto/issues/7414)
+- The delete and drag buttons for blocks in edit mode now have an accessible aria-label for screen readers. @sabrina-bongiovanni [#7424](https://github.com/plone/volto/issues/7424)
+- Fix api middleware possible empty values error. @robgietema [#7433](https://github.com/plone/volto/issues/7433)
+- Escape double quotes in POT / PO files @erral [#7476](https://github.com/plone/volto/issues/7476)
+- Fixed corner case where RAZZLE_INTERNAL_API_PATH is set and id is still undefined on first SSR load. @sneridagh [#7478](https://github.com/plone/volto/issues/7478)
+- Reset fieldset.invisible class definition in order to prevent clashes with other CSS frameworks that might have `invisible` as utility. @sneridagh 
+- Set type="button" for more widget buttons to prevent them from triggering when Enter is pressed elsewhere in the form. @davisagli 
+
+### Internal
+
+- Added Cypress test for backspace behavior in slate blocks. @aryan7081 [#7373](https://github.com/plone/volto/issues/7373)
+- Update slate libraries in volto package. @sneridagh [#7482](https://github.com/plone/volto/issues/7482)
+- Makes the Cypress commands `getSlateEditorAndType` and `getSlateEditorSelectorAndType` more robust. @wesleybl [#7503](https://github.com/plone/volto/issues/7503)
+- Enhance Cypress commands to trigger focus before typing in Slate editor. @wesleybl [#7506](https://github.com/plone/volto/issues/7506)
+- Fix error and rename test to "should save typed content in the Slate editor". @wesleybl [#7507](https://github.com/plone/volto/issues/7507)
+- Skip link check for URL which blocks traffic from GitHub. @davisagli 
+- Use Plone 6.1.3. @sneridagh 
+
+### Documentation
+
+- Add a note to the upgrade guide about related items being shown by default. @davisagli [#7430](https://github.com/plone/volto/issues/7430)
+- Fix images path in Volto README. @wesleybl [#7446](https://github.com/plone/volto/issues/7446)
+
 ## 19.0.0-alpha.6 (2025-09-29)
 
 ### Breaking
