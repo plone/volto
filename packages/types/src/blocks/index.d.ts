@@ -29,6 +29,7 @@ export interface BlockViewProps {
   path: string;
   className: string;
   style: Record<`--${string}`, string>;
+  isEditMode?: boolean;
 }
 
 type SearchMetadataResultItem = {};

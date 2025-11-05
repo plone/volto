@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.0 (2025-10-31)
+
+### Feature
+
+- Complete expanders typings, include `translations`. @sneridagh [#7531](https://github.com/plone/volto/issues/7531)
+
 ## 1.4.5 (2025-05-16)
 
 ### Bugfix
