@@ -65,7 +65,6 @@
   "peerDependencies": {
     "babel-preset-razzle": "4.2.18",
     "html-webpack-plugin": "~4||~5",
-    "mini-css-extract-plugin": "2.7.2",
     "razzle-dev-utils": "4.2.18",
     "webpack": "~4||~5",
     "webpack-dev-server": "^3.11.0||~4"
