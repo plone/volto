@@ -1560,6 +1560,9 @@ importers:
       jest:
         specifier: ^26.4.2
         version: 26.6.3
+      mini-css-extract-plugin:
+        specifier: 2.7.2
+        version: 2.7.2(webpack@5.90.1)
       mri:
         specifier: ^1.1.4
         version: 1.2.0
