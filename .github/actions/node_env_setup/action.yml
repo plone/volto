@@ -23,7 +23,7 @@ runs:
       name: Setup pnpm cache
       with:
         path: ${{ env.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
 
@@ -32,7 +32,7 @@ runs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/Cypress
-        key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
+        key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml', 'package.json') }}
 
     - name: Install Volto dependencies
       shell: bash
