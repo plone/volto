@@ -5,12 +5,13 @@ import { getParentUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import debounce from 'lodash/debounce';
 import { useClient } from '@plone/volto/hooks';
 import config from '@plone/volto/registry';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+import { listRoles } from '@plone/volto/actions/roles/roles';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
@@ -34,13 +35,12 @@ type RouteProps = {
 
 const BlockTypeControlpanel = (props: RouteProps) => {
   const { location } = props;
+  const [isUserManager, setIsUserManager] = useState(false);
   const params = useParams<{ id: string }>();
   const id = params.id;
   const intl = useIntl();
-  const token = useSelector((state) => state.userSession.token);
-  const controlpanels = useSelector(
-    (state) => state.controlpanels.controlpanels,
-  );
+  const roles = useSelector((state) => state.roles.roles);
+  const blockTypes = useSelector((state) => state.blockTypes);
   const isClient = useClient();
   const dispatch = useDispatch();
   const pathname = location.pathname;
@@ -48,18 +48,15 @@ const BlockTypeControlpanel = (props: RouteProps) => {
     config.blocks.blocksConfig[id as keyof typeof config.blocks.blocksConfig];
 
   useEffect(() => {
-    dispatch(getBlockTypes(id));
-  }, [id, dispatch]);
+    dispatch(listRoles());
+  }, []);
 
-  const items = useSelector(
-    (state: {
-      blockTypes: {
-        items: {
-          items: Array<{ '@id': string; title: string; count: number }>;
-        };
-      };
-    }) => state.blockTypes.items.items,
-  );
+  useEffect(() => {
+    if (roles.length > 0 && roles.map((role) => role.id === 'Manager')) {
+      setIsUserManager(true);
+      dispatch(getBlockTypes(id));
+    }
+  }, [roles, id]);
 
   const onChangeSearch = (value: string) => {
     dispatch(getBlockTypes(id, value));
@@ -67,7 +64,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
 
   const debouncedSearch = debounce(onChangeSearch, 600);
 
-  return token && controlpanels?.length > 0 ? (
+  return isUserManager ? (
     <div id="page-block_type" className="ui container controlpanel-block_type">
       <h1>
         <FormattedMessage
@@ -88,7 +85,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
           title={intl.formatMessage(messages.search)}
         />
       </form>
-      {items?.length > 0 ? (
+      {blockTypes.items?.length > 0 ? (
         <table className="table">
           <thead className="table-header">
             <tr className="table-row">
@@ -101,12 +98,11 @@ const BlockTypeControlpanel = (props: RouteProps) => {
             </tr>
           </thead>
           <tbody className="table-body">
-            {items.map((item) => (
+            {blockTypes.items.map((item) => (
               <tr key={item['@id']} className="table-row">
                 <td className="table-cell">
-                  <a href={item['@id']}>
-                    {flattenToAppURL(item['@id']) || 'Home'}
-                  </a>
+                  <a href={item['@id']}>{item.title}</a>
+                  <span>{flattenToAppURL(item['@id']) || '/'}</span>
                 </td>
                 <td className="table-cell">{item.count}</td>
               </tr>

@@ -6,10 +6,11 @@ import config from '@plone/volto/registry';
 import { createPortal } from 'react-dom';
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+import { listRoles } from '@plone/volto/actions/roles/roles';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import type { Location } from 'history';
@@ -29,33 +30,31 @@ type RouteProps = {
 const BlockTypesControlpanel = (props: RouteProps) => {
   const { location } = props;
   const intl = useIntl();
-  const token = useSelector((state) => state.userSession.token);
-  const controlpanels = useSelector(
-    (state) => state.controlpanels.controlpanels,
-  );
+  const [isUserManager, setIsUserManager] = useState(false);
+  const roles = useSelector((state) => state.roles.roles);
+  const blockTypes = useSelector((state) => state.blockTypes);
   const blocksConfig = config.blocks.blocksConfig;
   const dispatch = useDispatch();
   const pathname = location.pathname;
   const isClient = useClient();
   const blocks = [];
 
+  useEffect(() => {
+    dispatch(listRoles());
+  }, []);
+
+  useEffect(() => {
+    if (roles.length > 0 && roles.map((role) => role.id === 'Manager')) {
+      setIsUserManager(true);
+      dispatch(getBlockTypes());
+    }
+  }, [roles]);
+
   for (const block of Object.values(blocksConfig)) {
     blocks.push(block);
   }
 
-  useEffect(() => {
-    dispatch(getBlockTypes());
-  }, [dispatch]);
-
-  const items = useSelector(
-    (state: {
-      blockTypes: {
-        items: { summary: Record<string, number> };
-      };
-    }) => state.blockTypes.items.summary,
-  );
-
-  return token && controlpanels?.length > 0 ? (
+  return isUserManager ? (
     <div
       id="page-block_types"
       className="ui container controlpanel-block_types"
@@ -82,7 +81,9 @@ const BlockTypesControlpanel = (props: RouteProps) => {
                   {block.title}
                 </a>
               </td>
-              <td className="table-cell">{items?.[block.id] || 0}</td>
+              <td className="table-cell">
+                {blockTypes.items?.[block.id] || 0}
+              </td>
             </tr>
           ))}
         </tbody>
