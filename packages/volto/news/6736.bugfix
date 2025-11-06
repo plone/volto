@@ -1,0 +1,1 @@
+Fix protected pages and control panels showing blank screen instead of error page for unauthenticated users. @ravi-aman
