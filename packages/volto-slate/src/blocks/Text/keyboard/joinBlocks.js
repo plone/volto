@@ -48,8 +48,7 @@ export function joinWithPreviousBlock({ editor, event }, intl) {
   const [otherBlock = {}, otherBlockId] = prev;
 
   // Don't join with required blocks
-  if (data?.required || otherBlock?.required || otherBlock['@type'] !== 'slate')
-    return;
+  if (data?.required || otherBlock?.required) return;
 
   event.stopPropagation();
   event.preventDefault();
@@ -130,30 +129,31 @@ export function joinWithNextBlock({ editor, event }, intl) {
   event.stopPropagation();
   event.preventDefault();
 
-  mergeSlateWithBlockForward(editor, otherBlock);
-
-  // const cursor = JSON.parse(JSON.stringify(editor.selection));
-  const combined = JSON.parse(JSON.stringify(editor.children));
-
-  // TODO: don't remove undo history, etc Should probably save both undo
-  // histories, so that the blocks are split, the undos can be restored??
-
   const blocksFieldname = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
 
-  const formData = changeBlock(properties, otherBlockId, {
-    // TODO: use a constant specified in src/constants.js instead of 'slate'
+  // If next block is not a slate text block, do nothing
+  if (otherBlock['@type'] !== 'slate') {
+    return;
+  }
+
+  // Merge next text block into current one and delete the next block
+  mergeSlateWithBlockForward(editor, otherBlock);
+
+  const combined = JSON.parse(JSON.stringify(editor.children));
+
+  const formData = changeBlock(properties, block, {
     '@type': 'slate',
     value: combined,
     plaintext: serializeNodesToText(combined || []),
   });
-  const newFormData = deleteBlock(formData, block, intl);
+
+  const newFormData = deleteBlock(formData, otherBlockId, intl);
 
   ReactDOM.unstable_batchedUpdates(() => {
-    // saveSlateBlockSelection(otherBlockId, cursor);
     onChangeField(blocksFieldname, newFormData[blocksFieldname]);
     onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
-    onSelectBlock(otherBlockId);
+    onSelectBlock(block);
   });
   return true;
 }
