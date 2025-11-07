@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Button, Dimmer, Loader, Message } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { connect } from 'react-redux';
@@ -14,6 +14,7 @@ import config from '@plone/volto/registry';
 import {
   flattenToAppURL,
   getBaseUrl,
+  getParentUrl,
   isInternalURL,
   normalizeUrl,
   removeProtocol,
@@ -109,6 +110,9 @@ const UnconnectedImageInput = (props) => {
   const linkEditor = useLinkEditor();
   const location = useLocation();
   const dispatch = useDispatch();
+  const isFolderish = useSelector(
+    (state) => state?.content?.data?.is_folderish,
+  );
   const contextUrl = location.pathname;
 
   const [uploading, setUploading] = React.useState(false);
@@ -156,6 +160,8 @@ const UnconnectedImageInput = (props) => {
 
   const handleUpload = React.useCallback(
     (eventOrFile) => {
+      let uploadUrl = getBaseUrl(contextUrl);
+      if (!isFolderish) uploadUrl = getParentUrl(uploadUrl);
       if (restrictFileUpload === true) return;
       eventOrFile.target && eventOrFile.stopPropagation();
 
@@ -171,7 +177,7 @@ const UnconnectedImageInput = (props) => {
         const fields = fileData.match(/^data:(.*);(.*),(.*)$/);
         dispatch(
           createContent(
-            getBaseUrl(contextUrl),
+            uploadUrl,
             {
               '@type': 'Image',
               title: file.name,
@@ -188,11 +194,12 @@ const UnconnectedImageInput = (props) => {
       });
     },
     [
+      contextUrl,
+      isFolderish,
       restrictFileUpload,
       intl.formatMessage,
       dispatch,
-      props,
-      contextUrl,
+      props.block,
       requestId,
     ],
   );

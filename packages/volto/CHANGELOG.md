@@ -17,6 +17,36 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.11 (2025-11-05)
+
+### Documentation
+
+- Converted the structure of the "Settings Reference" page from a glossary to headings for easier navigation. @Abhishek-17h [#7565](https://github.com/plone/volto/issues/7565)
+
+## 19.0.0-alpha.10 (2025-10-31)
+
+### Feature
+
+- Added `visually-hidden` utility CSS class that integrators and core developers can use. @JeffersonBledsoe @Wagner3UB [#6356](https://github.com/plone/volto/issues/6356)
+- Enhanced diff reducer to process static behaviors in the result object. @rboixaderg [#7546](https://github.com/plone/volto/issues/7546)
+
+### Bugfix
+
+- Get translationObject from the store instead of directly from the response in CreateTranslation component. @rboixaderg [#7543](https://github.com/plone/volto/issues/7543)
+- Move '.visually-hidden' class to 'main.less' and remove unused 'utils.less' and references @Wagner3UB [#7552](https://github.com/plone/volto/issues/7552)
+- Improve some JSDocs for better typing. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Fix image upload inside `ImageWidget` component when used inside a non-folderish object. [@jnptk] [#7573](https://github.com/plone/volto/issues/7573)
+- Avoid re-rendering a content item view while hydrating server-side rendered components. @reebalazs 
+- Fix failing cypress test on updating to Cypress 15 @Tishasoumya-02 
+- Fix infinite @users requests caused by anonymous useUser hook. @iFlameing 
+
+### Internal
+
+- Convert UsersControlpanel component from class to functional with hooks. @wesleybl [#7450](https://github.com/plone/volto/issues/7450)
+- Update to node 24 and cypress to 15 @sneridagh [#7538](https://github.com/plone/volto/issues/7538)
+- Refactor `SidebarPortal` to TypeScript. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Enable ESlint detection of '.only' in unit and cypress tests. @sneridagh [#7567](https://github.com/plone/volto/issues/7567)
+
 ## 19.0.0-alpha.9 (2025-10-22)
 
 ### Feature
