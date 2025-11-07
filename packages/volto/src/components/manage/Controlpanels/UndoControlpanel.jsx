@@ -35,6 +35,14 @@ const messages = defineMessages({
     id: 'Error',
     defaultMessage: 'Error',
   },
+  prev: {
+    id: 'Prev',
+    defaultMessage: 'Prev',
+  },
+  next: {
+    id: 'Next',
+    defaultMessage: 'Next',
+  },
   undo: {
     id: 'Undo',
     defaultMessage: 'Undo',
@@ -525,7 +533,7 @@ class UndoControlpanel extends Component {
 
     return (
       <Container id="page-undo" className="controlpanel-undo">
-        <Helmet title="Undo" />
+        <Helmet title={this.props.intl.formatMessage(messages.undo)} />
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage
@@ -673,7 +681,9 @@ class UndoControlpanel extends Component {
                             <Icon
                               onClick={this.onPrev}
                               name={prevIcon}
-                              title="Prev"
+                              title={this.props.intl.formatMessage(
+                                messages.prev,
+                              )}
                             />
                           ) : (
                             <div style={{ width: '36px' }}></div>
@@ -694,7 +704,9 @@ class UndoControlpanel extends Component {
                             <Icon
                               onClick={this.onNext}
                               name={nextIcon}
-                              title="Next"
+                              title={this.props.intl.formatMessage(
+                                messages.next,
+                              )}
                             />
                           ) : (
                             <div style={{ width: '36px' }}></div>

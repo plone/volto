@@ -93,6 +93,14 @@ const messages = defineMessages({
     id: 'Move down',
     defaultMessage: 'Move down',
   },
+  selectCondition: {
+    id: 'Select condition',
+    defaultMessage: 'Select condition',
+  },
+  selectAction: {
+    id: 'Select action',
+    defaultMessage: 'Select action',
+  },
 });
 
 /**
@@ -625,7 +633,9 @@ class ConfigureRule extends Component {
                         </h4>
                         <Dropdown
                           style={{ margin: '5px 0' }}
-                          placeholder="Select condition"
+                          placeholder={this.props.intl.formatMessage(
+                            messages.selectCondition,
+                          )}
                           fluid
                           selection
                           options={conditions_options}
@@ -742,7 +752,9 @@ class ConfigureRule extends Component {
                         </h4>
                         <Dropdown
                           style={{ margin: '5px 0' }}
-                          placeholder="Select action"
+                          placeholder={this.props.intl.formatMessage(
+                            messages.selectAction,
+                          )}
                           fluid
                           selection
                           options={actions_options}

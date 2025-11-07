@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import {
   isInternalURL,
   flattenToAppURL,
@@ -40,6 +41,7 @@ export const InternalUrlWidget = (props) => {
     placeholder,
     isDisabled,
     value,
+    intl,
   } = props;
   const inputId = `field-${id}`;
 
@@ -103,7 +105,7 @@ export const InternalUrlWidget = (props) => {
               type="button"
               basic
               className="cancel"
-              aria-label="clearUrlBrowser"
+              aria-label={intl.formatMessage(messages.clearUrlBrowser)}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -119,7 +121,7 @@ export const InternalUrlWidget = (props) => {
               type="button"
               basic
               icon
-              aria-label="openUrlBrowser"
+              aria-label={intl.formatMessage(messages.openUrlBrowser)}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();

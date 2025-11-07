@@ -56,8 +56,9 @@ const InlineForm = (props) => {
     intl,
   } = props;
   const _ = intl.formatMessage;
-  const defaultFieldset = schema.fieldsets.find((o) => o.id === 'default');
-  const other = schema.fieldsets.filter((o) => o.id !== 'default');
+  const defaultFieldset =
+    schema?.fieldsets?.find((o) => o.id === 'default') || {};
+  const other = schema?.fieldsets?.filter((o) => o.id !== 'default') || [];
 
   React.useEffect(() => {
     // Will set field values from schema, by matching the default values
