@@ -50,6 +50,7 @@
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
       },
+      "node": { "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"] },
       "babel-plugin-root-import": {
         "rootPathSuffix": "src",
       },
@@ -70,9 +71,34 @@
       "parser": "@typescript-eslint/parser",
     },
     {
+      "files": [
+        "**/*.test.js",
+        "**/*.test.jsx",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/cypress/**/*.js",
+        "**/cypress/**/*.ts",
+      ],
+      "plugins": ["no-only-tests"],
+      "rules": {
+        "no-only-tests/no-only-tests": "error",
+      },
+    },
+    {
       "files": ["**/*.stories.js", "**/*.stories.jsx"],
       "rules": {
         "import/no-anonymous-default-export": "off",
+      },
+    },
+    {
+      "files": [
+        "**/*.stories.js",
+        "**/*.stories.jsx",
+        "**/*.test.js",
+        "**/*.test.jsx",
+      ],
+      "rules": {
+        "no-restricted-syntax": "off",
       },
     },
   ],
