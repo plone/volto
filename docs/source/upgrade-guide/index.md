@@ -50,6 +50,23 @@ If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20
 
 (19-removed-support-for-loading-configuration-from-project-label)=
 
+### New utility class `visually-hidden`
+
+```{versionadded} Volto 19.0.0-alpha.10
+```
+
+A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
+
+This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
+
+If your project, add-on, or custom theme already defines a `visually-hidden` class, or uses similar accessibility helpers, the new global definition may override or conflict with existing custom styles.
+In which case, you should rename your custom implementation, or override Volto's default, as needed.
+Also review any components that depend on hidden accessibility elements to ensure visual and functional consistency.
+
+```{seealso}
+[Add visually-hidden class #6356](https://github.com/plone/volto/pull/6356)
+```
+
 ### Removed support for loading configuration from project
 ```{versionremoved} Volto 19
 ```
@@ -1143,10 +1160,6 @@ You can consider removing it if you were shadowing it in your project.
 ```{versionadded} Volto 17.0.0-alpha.16
 ```
 
-```{seealso}
-{doc}`../blocks/core/grid`
-```
-
 The grid block was added to Volto in version 17.0.0-alpha.16.
 It is based on the `@kitconcept/volto-blocks-grid` add-on version 7.x.x.
 
@@ -1174,6 +1187,9 @@ config.blocks.blocksConfig.gridBlock.restricted = true;
 As long as you keep the add-on in place, your existing blocks will work as expected, even if you restrict the block.
 We recommend that you disable the `@kitconcept/volto-blocks-grid` block and use the new Volto core grid block for new content.
 
+```{seealso}
+{doc}`../blocks/core/grid`
+```
 
 (volto-upgrade-guide-16.x.x)=
 

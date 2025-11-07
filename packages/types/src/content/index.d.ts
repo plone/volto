@@ -12,9 +12,7 @@ export interface Content {
         title: string;
         token: boolean;
       };
-  blocks: {
-    [k in string]: BlocksFormData;
-  };
+  blocks: Record<string, BlocksFormData>;
   blocks_layout: {
     items: string[];
   };
