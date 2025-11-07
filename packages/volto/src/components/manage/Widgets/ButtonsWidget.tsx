@@ -78,26 +78,20 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
     default: defaultValue,
   } = props;
 
-  const normalizedActions = React.useMemo<NormalizedAction[]>(
-    () =>
-      actions.map((action) =>
-        typeof action === 'string'
-          ? { name: action, value: action }
-          : {
-              name: action.name,
-              value: action.style ?? action.name,
-            },
-      ),
-    [actions],
+  const normalizedActions: NormalizedAction[] = actions.map((action) =>
+    typeof action === 'string'
+      ? { name: action, value: action }
+      : {
+          name: action.name,
+          value: action.style ?? action.name,
+        },
   );
 
-  const selectedActionName = React.useMemo(
-    () =>
-      normalizedActions.find((action) => isEqual(value, action.value))?.name,
-    [normalizedActions, value],
-  );
+  const selectedActionName = normalizedActions.find((action) =>
+    isEqual(value, action.value),
+  )?.name;
 
-  const defaultSelectedActionName = React.useMemo(() => {
+  const defaultSelectedActionName = (() => {
     if (!defaultValue) {
       return undefined;
     }
@@ -115,7 +109,7 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
     return normalizedActions.find(({ value: actionValue }) =>
       isEqual(defaultValue, actionValue),
     )?.name;
-  }, [defaultValue, normalizedActions]);
+  })();
 
   const radioGroupValueProps: {
     value?: string;
@@ -126,18 +120,15 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
       ? { defaultValue: defaultSelectedActionName }
       : {};
 
-  const handleChange = React.useCallback(
-    (selectedName: string) => {
-      const selectedAction = normalizedActions.find(
-        ({ name }) => name === selectedName,
-      );
+  const handleChange = (selectedName: string) => {
+    const selectedAction = normalizedActions.find(
+      ({ name }) => name === selectedName,
+    );
 
-      if (selectedAction) {
-        onChange(id, selectedAction.value);
-      }
-    },
-    [id, normalizedActions, onChange],
-  );
+    if (selectedAction) {
+      onChange(id, selectedAction.value);
+    }
+  };
 
   return (
     <FormFieldWrapper {...props} className="widget">
