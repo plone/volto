@@ -1,6 +1,6 @@
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
-import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import imageFullSVG from '@plone/volto/icons/image-full.svg';
@@ -110,15 +110,13 @@ describe('ButtonsWidget', () => {
     });
   });
 
-  it('computes default value from string names', async () => {
-    const handleChange = vi.fn();
-
+  it('selects default value from string names', () => {
     renderWidget(
       <ButtonsWidget
         id="align"
         title="Alignment"
         fieldSet="default"
-        onChange={handleChange}
+        onChange={() => {}}
         actions={[
           {
             name: 'justified',
@@ -135,10 +133,6 @@ describe('ButtonsWidget', () => {
       />,
     );
 
-    await waitFor(() =>
-      expect(handleChange).toHaveBeenCalledWith('align', {
-        '--layout-width': 'wide',
-      }),
-    );
+    expect(screen.getByRole('radio', { name: 'Text Justified' })).toBeChecked();
   });
 });
