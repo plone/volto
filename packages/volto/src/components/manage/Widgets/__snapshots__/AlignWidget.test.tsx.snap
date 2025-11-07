@@ -145,7 +145,7 @@ exports[`AlignWidget > renders with default actions 1`] = `
                   aria-label="Left"
                   data-react-aria-pressable="true"
                   name="react-aria-:r5:"
-                  tabindex="0"
+                  tabindex="-1"
                   title=""
                   type="radio"
                   value="left"
@@ -181,12 +181,14 @@ exports[`AlignWidget > renders with default actions 1`] = `
               class="buttons-widget-option"
               data-rac=""
               data-react-aria-pressable="true"
+              data-selected="true"
             >
               <span
                 style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
               >
                 <input
                   aria-label="Center"
+                  checked=""
                   data-react-aria-pressable="true"
                   name="react-aria-:r5:"
                   tabindex="0"
@@ -230,7 +232,7 @@ exports[`AlignWidget > renders with default actions 1`] = `
                   aria-label="Right"
                   data-react-aria-pressable="true"
                   name="react-aria-:r5:"
-                  tabindex="0"
+                  tabindex="-1"
                   title=""
                   type="radio"
                   value="right"
@@ -274,7 +276,7 @@ exports[`AlignWidget > renders with default actions 1`] = `
                   aria-label="Full"
                   data-react-aria-pressable="true"
                   name="react-aria-:r5:"
-                  tabindex="0"
+                  tabindex="-1"
                   title=""
                   type="radio"
                   value="full"

@@ -15,6 +15,7 @@ const renderAlignWidget = (
 ): {
   onChange: ButtonsWidgetProps['onChange'];
   asFragment: () => DocumentFragment;
+  getByRole: ReturnType<typeof render>['getByRole'];
 } => {
   const { onChange: providedOnChange, ...restProps } = props;
   const onChange = providedOnChange ?? vi.fn();
@@ -46,6 +47,7 @@ const renderAlignWidget = (
   return {
     onChange,
     asFragment: rendered.asFragment,
+    getByRole: rendered.getByRole,
   };
 };
 
@@ -66,20 +68,20 @@ describe('AlignWidget', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('uses defaultAction when value is missing', () => {
-    const { onChange } = renderAlignWidget({
+  it('selects the defaultAction when value is missing', () => {
+    const { getByRole } = renderAlignWidget({
       defaultAction: 'left',
     });
 
-    expect(onChange).toHaveBeenCalledWith('align', 'left');
+    expect(getByRole('radio', { name: 'Left' })).toBeChecked();
   });
 
-  it('uses default when value is missing', () => {
-    const { onChange } = renderAlignWidget({
+  it('selects the default when value is missing', () => {
+    const { getByRole } = renderAlignWidget({
       default: 'left',
     });
 
-    expect(onChange).toHaveBeenCalledWith('align', 'left');
+    expect(getByRole('radio', { name: 'Left' })).toBeChecked();
   });
 
   it('does not override provided value with default', () => {
