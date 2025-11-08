@@ -6,7 +6,7 @@ import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
-import type { Content } from '@plone/types';
+import type { Content, ListingBlockFormData } from '@plone/types';
 import {
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -51,6 +51,18 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       cli.getContent({ path, expand }),
       cli.getSite(),
     ]);
+
+    const listingBlocks: { id: string; block: ListingBlockFormData }[] =
+      Object.entries(content.data.blocks)
+        .filter(([, block]) => block['@type'] === 'listing')
+        .map(([id, block]) => ({ id, block: block as ListingBlockFormData }));
+    for (let i = 0; i < listingBlocks.length; i++) {
+      const { id, block } = listingBlocks[i];
+      if (block.querystring) {
+        const results = await cli.querystringSearch(block.querystring);
+        content.data.blocks[id].items = results.data.items;
+      }
+    }
 
     const rootLoaderDataUtilitiesData = await Promise.all([
       ...rootLoaderDataUtilities.map((utility) =>
