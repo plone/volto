@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 
 import PreviewImage from './PreviewImage';
 
@@ -26,11 +26,8 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(
-      <PreviewImage item={item} alt={item.title} />,
-    );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<PreviewImage item={item} alt={item.title} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a preview image with extra props', () => {
@@ -55,11 +52,10 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(
+    const { container } = render(
       <PreviewImage item={item} alt={item.title} className="extra" />,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a fallback image', () => {
@@ -67,11 +63,8 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(
-      <PreviewImage item={item} alt={item.title} />,
-    );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<PreviewImage item={item} alt={item.title} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a fallback image with extra props', () => {
@@ -79,11 +72,10 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(
+    const { container } = render(
       <PreviewImage item={item} alt={item.title} className="extra" />,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a fallback image with alt prop empty', () => {
@@ -91,11 +83,10 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(
+    const { container } = render(
       <PreviewImage item={item} className="extra" alt="" />,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders a fallback image with alt prop', () => {
@@ -103,11 +94,10 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(
+    const { container } = render(
       <PreviewImage item={item} className="extra" alt="Alt prop" />,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('not renders a fallback image if showDefault prop is false', () => {
@@ -115,7 +105,7 @@ describe('PreviewImage', () => {
       title: 'Item title',
       '@id': 'http://localhost:3000/something',
     };
-    const component = renderer.create(
+    const { container } = render(
       <PreviewImage
         item={item}
         className="extra"
@@ -123,7 +113,6 @@ describe('PreviewImage', () => {
         alt={item.title}
       />,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
