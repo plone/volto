@@ -96,9 +96,4 @@ EmailWidget.propTypes = {
   placeholder: PropTypes.string,
 };
 
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
 export default EmailWidget;

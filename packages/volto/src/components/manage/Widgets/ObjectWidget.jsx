@@ -125,9 +125,4 @@ ObjectWidget.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
 export default ObjectWidget;

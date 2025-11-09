@@ -289,9 +289,4 @@ FileWidget.propTypes = {
   wrapped: PropTypes.bool,
 };
 
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
 export default injectIntl(FileWidget);

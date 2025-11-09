@@ -99,9 +99,4 @@ ImageSizeWidget.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
 export default injectIntl(ImageSizeWidget);

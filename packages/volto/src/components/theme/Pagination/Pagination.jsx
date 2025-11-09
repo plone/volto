@@ -141,9 +141,4 @@ Pagination.propTypes = {
   onChangePageSize: PropTypes.func,
 };
 
-/**
- * Default props.
- * @property {Object} defaultProps Default properties.
- * @static
- */
 export default injectIntl(Pagination);

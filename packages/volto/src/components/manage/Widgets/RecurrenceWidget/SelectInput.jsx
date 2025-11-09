@@ -74,9 +74,4 @@ SelectInput.propTypes = {
   onChange: PropTypes.func,
 };
 
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
 export default injectLazyLibs('reactSelect')(SelectInput);
