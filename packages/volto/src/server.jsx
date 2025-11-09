@@ -5,7 +5,7 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import express from 'express';
-import { renderToString } from 'react-dom/server';
+import { renderToPipeableStream } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
 import keys from 'lodash/keys';
@@ -65,6 +65,64 @@ function reactIntlErrorHandler(error) {
 
 const supported = new locale.Locales(keys(languages), 'en');
 
+const ABORT_DELAY = 10000;
+
+const streamHtmlResponse = ({
+  req,
+  res,
+  statusCode,
+  extractor,
+  app,
+  store,
+  criticalCss,
+  apiPath,
+  publicURL,
+}) => {
+  const element = (
+    <Html
+      extractor={extractor}
+      markup={app}
+      store={store}
+      criticalCss={criticalCss}
+      apiPath={apiPath}
+      publicURL={publicURL}
+    />
+  );
+
+  let didError = false;
+  const stream = renderToPipeableStream(element, {
+    onShellReady() {
+      res.status(didError ? 500 : statusCode);
+      res.set('Content-Type', 'text/html; charset=utf-8');
+      res.write('<!doctype html>');
+      stream.pipe(res);
+    },
+    onShellError(error) {
+      didError = true;
+      console.error(error);
+      res
+        .status(500)
+        .set('Content-Type', 'text/html; charset=utf-8')
+        .send('<!doctype html><p>Something went wrong.</p>');
+    },
+    onError(error) {
+      didError = true;
+      console.error(error);
+    },
+  });
+
+  req.on('close', () => stream.abort());
+  setTimeout(() => stream.abort(), ABORT_DELAY);
+};
+
+const createChunkExtractor = () => {
+  const buildDir = process.env.BUILD_DIR || 'build';
+  return new ChunkExtractor({
+    statsFile: path.resolve(path.join(buildDir, 'loadable-stats.json')),
+    entrypoints: ['client'],
+  });
+};
+
 const server = express()
   .disable('x-powered-by')
   .head('/*', function (req, res) {
@@ -101,12 +159,17 @@ server.use('/', okMiddleware());
 server.use(function (err, req, res, next) {
   if (err) {
     const { store } = res.locals;
+    const extractor = createChunkExtractor();
     const errorPage = (
-      <Provider store={store} onError={reactIntlErrorHandler}>
-        <StaticRouter context={{}} location={req.url}>
-          <ErrorPage message={err.message} />
-        </StaticRouter>
-      </Provider>
+      <ChunkExtractorManager extractor={extractor}>
+        <CookiesProvider cookies={req.universalCookies}>
+          <Provider store={store} onError={reactIntlErrorHandler}>
+            <StaticRouter context={{}} location={req.url}>
+              <ErrorPage message={err.message} />
+            </StaticRouter>
+          </Provider>
+        </CookiesProvider>
+      </ChunkExtractorManager>
     );
 
     res.set({
@@ -120,9 +183,20 @@ server.use(function (err, req, res, next) {
     const ignoredErrors = [301, 302, 401, 404];
     if (!ignoredErrors.includes(err.status)) console.error(err);
 
-    res
-      .status(err.status || 500) // If error happens in Volto code itself error status is undefined
-      .send(`<!doctype html> ${renderToString(errorPage)}`);
+    const readCriticalCss =
+      config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+
+    streamHtmlResponse({
+      req,
+      res,
+      statusCode: err.status || 500,
+      extractor,
+      app: errorPage,
+      store,
+      criticalCss: readCriticalCss(req),
+      apiPath: config.settings.apiPath,
+      publicURL: config.settings.publicURL,
+    });
   }
 });
 
@@ -156,12 +230,17 @@ function setupServer(req, res, next) {
   const store = configureStore(initialState, history, api);
 
   function errorHandler(error) {
+    const extractor = createChunkExtractor();
     const errorPage = (
-      <Provider store={store} onError={reactIntlErrorHandler}>
-        <StaticRouter context={{}} location={req.url}>
-          <ErrorPage message={error.message} />
-        </StaticRouter>
-      </Provider>
+      <ChunkExtractorManager extractor={extractor}>
+        <CookiesProvider cookies={req.universalCookies}>
+          <Provider store={store} onError={reactIntlErrorHandler}>
+            <StaticRouter context={{}} location={req.url}>
+              <ErrorPage message={error.message} />
+            </StaticRouter>
+          </Provider>
+        </CookiesProvider>
+      </ChunkExtractorManager>
     );
 
     res.set({
@@ -175,9 +254,20 @@ function setupServer(req, res, next) {
     const ignoredErrors = [301, 302, 401, 404];
     if (!ignoredErrors.includes(error.status)) console.error(error);
 
-    res
-      .status(error.status || 500) // If error happens in Volto code itself error status is undefined
-      .send(`<!doctype html> ${renderToString(errorPage)}`);
+    const readCriticalCss =
+      config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+
+    streamHtmlResponse({
+      req,
+      res,
+      statusCode: error.status || 500,
+      extractor,
+      app: errorPage,
+      store,
+      criticalCss: readCriticalCss(req),
+      apiPath: config.settings.apiPath,
+      publicURL: config.settings.publicURL,
+    });
   }
 
   if (!process.env.RAZZLE_API_PATH && req.headers.host) {
@@ -238,11 +328,7 @@ server.get('/*', (req, res) => {
   persistAuthToken(store, req);
 
   // @loadable/server extractor
-  const buildDir = process.env.BUILD_DIR || 'build';
-  const extractor = new ChunkExtractor({
-    statsFile: path.resolve(path.join(buildDir, 'loadable-stats.json')),
-    entrypoints: ['client'],
-  });
+  const extractor = createChunkExtractor();
 
   const url = req.originalUrl || req.url;
   const location = parseUrl(url);
@@ -275,7 +361,7 @@ server.get('/*', (req, res) => {
 
       const context = {};
       resetServerContext();
-      const markup = renderToString(
+      const app = (
         <ChunkExtractorManager extractor={extractor}>
           <CookiesProvider cookies={req.universalCookies}>
             <Provider store={store} onError={reactIntlErrorHandler}>
@@ -288,11 +374,12 @@ server.get('/*', (req, res) => {
               </StaticRouter>
             </Provider>
           </CookiesProvider>
-        </ChunkExtractorManager>,
+        </ChunkExtractorManager>
       );
 
       const readCriticalCss =
         config.settings.serverConfig.readCriticalCss || defaultReadCriticalCss;
+      const criticalCss = readCriticalCss(req);
 
       // If we are showing an "old browser" warning,
       // make sure it doesn't get cached in a shared cache
@@ -303,30 +390,18 @@ server.get('/*', (req, res) => {
         });
       }
 
-      const sendHtmlResponse = (
-        res,
-        statusCode,
-        extractor,
-        markup,
-        store,
-        req,
-        config,
-      ) => {
-        res.status(statusCode).send(
-          `<!doctype html>
-        ${renderToString(
-          <Html
-            extractor={extractor}
-            markup={markup}
-            store={store}
-            criticalCss={readCriticalCss(req)}
-            apiPath={config.settings.apiPath}
-            publicURL={config.settings.publicURL}
-          />,
-        )}
-      `,
-        );
-      };
+      const sendStreamResponse = (statusCode) =>
+        streamHtmlResponse({
+          req,
+          res,
+          statusCode,
+          extractor,
+          app,
+          store,
+          criticalCss,
+          apiPath: config.settings.apiPath,
+          publicURL: config.settings.publicURL,
+        });
 
       if (context.url) {
         res.redirect(flattenToAppURL(context.url));
@@ -334,17 +409,9 @@ server.get('/*', (req, res) => {
         res.set({
           'Cache-Control': 'no-cache',
         });
-        sendHtmlResponse(
-          res,
-          context.error_code,
-          extractor,
-          markup,
-          store,
-          req,
-          config,
-        );
+        sendStreamResponse(context.error_code);
       } else {
-        sendHtmlResponse(res, 200, extractor, markup, store, req, config);
+        sendStreamResponse(200);
       }
     }, errorHandler)
     .catch(errorHandler);

@@ -8,8 +8,12 @@ import Logo from '@plone/volto/components/theme/Logo/Logo';
 import Navigation from '@plone/volto/components/theme/Navigation/Navigation';
 import SearchWidget from '@plone/volto/components/theme/SearchWidget/SearchWidget';
 
-const Header = ({ pathname }) => {
-  const token = useSelector((state) => state.userSession.token, shallowEqual);
+const Header = ({ pathname, token: tokenProp = null }) => {
+  const sessionToken = useSelector(
+    (state) => state.userSession.token,
+    shallowEqual,
+  );
+  const token = sessionToken ?? tokenProp;
 
   return (
     <Segment basic className="header-wrapper" role="banner">
@@ -43,10 +47,4 @@ export default Header;
 Header.propTypes = {
   token: PropTypes.string,
   pathname: PropTypes.string.isRequired,
-  content: PropTypes.objectOf(PropTypes.any),
-};
-
-Header.defaultProps = {
-  token: null,
-  content: null,
 };
