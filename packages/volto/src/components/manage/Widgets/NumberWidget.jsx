@@ -24,6 +24,24 @@ import { injectIntl } from 'react-intl';
 const NumberWidget = (props) => {
   const {
     id,
+    value = null,
+    onChange = () => {},
+    onBlur = () => {},
+    onClick = () => {},
+    isDisabled,
+    maximum = null,
+    minimum = null,
+    placeholder,
+    step,
+    description = null,
+    required = false,
+    error = [],
+    ...rest
+  } = props;
+
+  const wrapperProps = {
+    ...rest,
+    id,
     value,
     onChange,
     onBlur,
@@ -33,10 +51,13 @@ const NumberWidget = (props) => {
     minimum,
     placeholder,
     step,
-  } = props;
+    description,
+    required,
+    error,
+  };
 
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper {...wrapperProps}>
       <Input
         id={`field-${id}`}
         name={id}
@@ -84,14 +105,4 @@ NumberWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-NumberWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-};
-
 export default injectIntl(NumberWidget);

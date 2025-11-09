@@ -65,7 +65,7 @@ const FieldSet = ({
 const ObjectWidget = ({
   block,
   schema,
-  value, // not checked to not contain unknown fields
+  value = null, // not checked to not contain unknown fields
   onChange,
   errors = {},
   id,
@@ -130,8 +130,4 @@ ObjectWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-ObjectWidget.defaultProps = {
-  value: null,
-};
-
 export default ObjectWidget;

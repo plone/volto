@@ -18,11 +18,11 @@ import WeekdayOfTheMonthField from './WeekdayOfTheMonthField';
  */
 const ByMonthField = ({
   label,
-  value,
-  bymonthday,
-  weekdayOfTheMonthIndex,
-  weekdayOfTheMonth,
-  onChange,
+  value = null,
+  bymonthday = null,
+  weekdayOfTheMonthIndex = null,
+  weekdayOfTheMonth = null,
+  onChange = null,
   intl,
 }) => {
   return (
@@ -102,13 +102,4 @@ ByMonthField.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-ByMonthField.defaultProps = {
-  label: null,
-  value: null,
-  bymonthday: null,
-  weekdayOfTheMonthIndex: null,
-  weekdayOfTheMonth: null,
-  onChange: null,
-};
-
 export default injectIntl(ByMonthField);

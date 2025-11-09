@@ -3,10 +3,24 @@ import PropTypes from 'prop-types';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 
 const StaticTextWidget = (props) => {
-  const { id, value } = props;
+  const {
+    id,
+    value = null,
+    minLength = null,
+    maxLength = null,
+    ...rest
+  } = props;
+
+  const wrapperProps = {
+    ...rest,
+    id,
+    value,
+    minLength,
+    maxLength,
+  };
 
   return (
-    <FormFieldWrapper {...props} className="text" columns={1}>
+    <FormFieldWrapper {...wrapperProps} className="text" columns={1}>
       <div id={id} className="wrapper">
         <p
           dangerouslySetInnerHTML={{
@@ -25,10 +39,4 @@ StaticTextWidget.propTypes = {
   value: PropTypes.string,
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
-};
-
-StaticTextWidget.defaultProps = {
-  value: null,
-  minLength: null,
-  maxLength: null,
 };

@@ -74,16 +74,20 @@ const defaultTimeDateOnly = {
 const DatetimeWidgetComponent = (props) => {
   const {
     id,
-    resettable,
+    resettable = true,
     reactDates,
     widgetOptions,
     moment,
-    value,
+    value = null,
     onChange,
-    dateOnly,
+    dateOnly = false,
     widget,
-    noPastDates: propNoPastDates,
+    noPastDates: propNoPastDates = false,
     isDisabled,
+    description = null,
+    required = false,
+    error = [],
+    ...rest
   } = props;
 
   const intl = useIntl();
@@ -155,8 +159,21 @@ const DatetimeWidgetComponent = (props) => {
   const datetime = getInternalValue();
   const isDateOnly = getDateOnly();
 
+  const wrapperProps = {
+    ...rest,
+    id,
+    resettable,
+    value,
+    dateOnly,
+    noPastDates: propNoPastDates,
+    description,
+    required,
+    error,
+    isDisabled,
+  };
+
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper {...wrapperProps}>
       <div className="date-time-widget-wrapper">
         <div
           className={cx('ui input date-input', {
@@ -233,16 +250,6 @@ DatetimeWidgetComponent.propTypes = {
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
   resettable: PropTypes.bool,
-};
-
-DatetimeWidgetComponent.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  dateOnly: false,
-  noPastDates: false,
-  value: null,
-  resettable: true,
 };
 
 export default injectLazyLibs(['reactDates', 'moment'])(

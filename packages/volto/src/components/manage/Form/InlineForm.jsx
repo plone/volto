@@ -39,20 +39,20 @@ const messages = defineMessages({
 
 const InlineForm = (props) => {
   const {
-    block,
-    description,
-    error, // Such as {message: "It's not good"}
+    block = null,
+    description = null,
+    error = null, // Such as {message: "It's not good"}
     errors = {},
-    formData,
+    formData = null,
     onChangeFormData,
-    onChangeField,
-    schema,
+    onChangeField = null,
+    schema = {},
     title,
     icon,
     headerActions,
     actionButton,
     footer,
-    focusIndex,
+    focusIndex = null,
     intl,
   } = props;
   const _ = intl.formatMessage;
@@ -212,17 +212,6 @@ const InlineForm = (props) => {
       {footer}
     </div>
   );
-};
-
-InlineForm.defaultProps = {
-  block: null,
-  description: null,
-  formData: null,
-  onChangeField: null,
-  error: null,
-  errors: {},
-  schema: {},
-  focusIndex: null,
 };
 
 InlineForm.propTypes = {

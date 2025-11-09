@@ -9,7 +9,7 @@ import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
-const LinkView = ({ content }) => {
+const LinkView = ({ content = null }) => {
   const history = useHistory();
   const userCanEdit = useSelector(
     (state) =>
@@ -67,11 +67,6 @@ LinkView.propTypes = {
     remoteUrl: PropTypes.string,
   }),
   token: PropTypes.string,
-};
-
-LinkView.defaultProps = {
-  content: null,
-  token: null,
 };
 
 export default LinkView;

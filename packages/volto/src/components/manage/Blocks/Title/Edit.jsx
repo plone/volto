@@ -34,8 +34,8 @@ export const TitleBlockEdit = (props) => {
     block,
     blockNode,
     data,
-    detached,
-    editable,
+    detached = false,
+    editable = true,
     index,
     metadata,
     onAddBlock,
@@ -179,11 +179,6 @@ TitleBlockEdit.propTypes = {
   editable: PropTypes.bool,
   detached: PropTypes.bool,
   blockNode: PropTypes.any,
-};
-
-TitleBlockEdit.defaultProps = {
-  detached: false,
-  editable: true,
 };
 
 export default TitleBlockEdit;

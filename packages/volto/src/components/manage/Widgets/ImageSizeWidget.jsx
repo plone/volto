@@ -20,10 +20,28 @@ const messages = defineMessages({
 });
 
 const ImageSizeWidget = (props) => {
-  const { onChange, id, disabled, intl, value, isDisabled } = props;
+  const {
+    onChange = () => {},
+    id,
+    disabled,
+    intl,
+    value,
+    isDisabled,
+    ...rest
+  } = props;
+
+  const wrapperProps = {
+    ...rest,
+    onChange,
+    id,
+    disabled,
+    intl,
+    value,
+    isDisabled,
+  };
 
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper {...wrapperProps}>
       <Grid>
         <Grid.Row>
           <Grid.Column width="8" className="field-image_size">
@@ -86,8 +104,4 @@ ImageSizeWidget.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-ImageSizeWidget.defaultProps = {
-  onChange: () => {},
-};
-
 export default injectIntl(ImageSizeWidget);

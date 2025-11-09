@@ -16,7 +16,12 @@ import { useSelector } from 'react-redux';
  * @function ByDayField
  * @returns {string} Markup of the component.
  */
-const ByDayField = ({ label, value, onChange, moment: momentlib }) => {
+const ByDayField = ({
+  label,
+  value = null,
+  onChange = null,
+  moment: momentlib,
+}) => {
   const lang = useSelector((state) => state.intl.locale);
   const moment = momentlib.default;
   moment.locale(toBackendLang(lang));
@@ -80,10 +85,4 @@ ByDayField.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-ByDayField.defaultProps = {
-  label: null,
-  value: null,
-  onChange: null,
-};
-
 export default injectLazyLibs(['moment'])(ByDayField);

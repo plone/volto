@@ -74,7 +74,15 @@ const messages = defineMessages({
  *
  */
 const RegistryImageWidget = (props) => {
-  const { id, value, onChange, isDisabled } = props;
+  const {
+    id,
+    value = null,
+    onChange,
+    isDisabled,
+    description = null,
+    required = false,
+    error = [],
+  } = props;
   const intl = useIntl();
 
   // State to manage the preview image source
@@ -113,7 +121,13 @@ const RegistryImageWidget = (props) => {
   };
 
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper
+      {...props}
+      description={description}
+      required={required}
+      error={error}
+      value={value}
+    >
       <Dropzone onDrop={onDrop}>
         {({ getRootProps, getInputProps, isDragActive }) => (
           <div className="file-widget-dropzone" {...getRootProps()}>
@@ -194,18 +208,6 @@ RegistryImageWidget.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-RegistryImageWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
 };
 
 export default injectIntl(RegistryImageWidget);

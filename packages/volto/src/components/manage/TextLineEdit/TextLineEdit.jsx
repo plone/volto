@@ -23,8 +23,8 @@ export const TextLineEdit = (props) => {
     block,
     blockNode,
     data,
-    detached,
-    editable,
+    detached = false,
+    editable = true,
     index,
     metadata,
     onAddBlock,
@@ -205,11 +205,6 @@ TextLineEdit.propTypes = {
   renderTag: PropTypes.string,
   renderClassName: PropTypes.string,
   fieldDataName: PropTypes.string,
-};
-
-TextLineEdit.defaultProps = {
-  detached: false,
-  editable: true,
 };
 
 export default TextLineEdit;

@@ -46,10 +46,3 @@ Anontools.propTypes = {
     '@id': PropTypes.string,
   }),
 };
-
-Anontools.defaultProps = {
-  token: null,
-  content: {
-    '@id': null,
-  },
-};

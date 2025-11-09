@@ -24,18 +24,27 @@ import { injectIntl } from 'react-intl';
 const PasswordWidget = (props) => {
   const {
     id,
-    value,
-    onChange,
-    onBlur,
-    onClick,
-    minLength,
-    maxLength,
+    value = null,
+    onChange = () => {},
+    onBlur = () => {},
+    onClick = () => {},
+    minLength = null,
+    maxLength = null,
     placeholder,
     isDisabled,
+    description = null,
+    required = false,
+    error = [],
   } = props;
 
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper
+      {...props}
+      description={description}
+      required={required}
+      error={error}
+      value={value}
+    >
       <Input
         id={`field-${id}`}
         name={id}
@@ -76,23 +85,6 @@ PasswordWidget.propTypes = {
   maxLength: PropTypes.number,
   wrapped: PropTypes.bool,
   placeholder: PropTypes.string,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-PasswordWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  minLength: null,
-  maxLength: null,
 };
 
 export default injectIntl(PasswordWidget);

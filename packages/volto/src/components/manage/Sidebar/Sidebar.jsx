@@ -47,9 +47,9 @@ const Sidebar = (props) => {
   const {
     cookies,
     content,
-    documentTab,
-    blockTab,
-    settingsTab,
+    documentTab = true,
+    blockTab = true,
+    settingsTab = false,
     orderTab = true,
   } = props;
   const [expanded, setExpanded] = useState(
@@ -230,12 +230,6 @@ Sidebar.propTypes = {
   documentTab: PropTypes.bool,
   blockTab: PropTypes.bool,
   settingsTab: PropTypes.bool,
-};
-
-Sidebar.defaultProps = {
-  documentTab: true,
-  blockTab: true,
-  settingsTab: false,
 };
 
 export default compose(withCookies)(Sidebar);

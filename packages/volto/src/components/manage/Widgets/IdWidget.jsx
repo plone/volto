@@ -31,8 +31,30 @@ const messages = defineMessages({
   },
 });
 
-const IdWidget = (props) => {
+const IdWidget = (initialProps) => {
   const {
+    id,
+    onClick = () => {},
+    icon = null,
+    iconAction = null,
+    minLength = null,
+    maxLength = null,
+    onBlur = () => {},
+    value = null,
+    focus = false,
+    isDisabled,
+    placeholder,
+    onChange = () => {},
+    description = null,
+    required = false,
+    error = [],
+    onEdit = null,
+    onDelete = null,
+    ...rest
+  } = initialProps;
+
+  const baseProps = {
+    ...rest,
     id,
     onClick,
     icon,
@@ -45,7 +67,12 @@ const IdWidget = (props) => {
     isDisabled,
     placeholder,
     onChange,
-  } = props;
+    description,
+    required,
+    error,
+    onEdit,
+    onDelete,
+  };
 
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -112,13 +139,13 @@ const IdWidget = (props) => {
     onBlur(id, target.value === '' ? undefined : target.value);
   };
 
-  props = {
-    ...props,
-    error: concat(props.error, errors),
+  const widgetProps = {
+    ...baseProps,
+    error: concat(error, errors),
   };
 
   return (
-    <FormFieldWrapper {...props} className="text">
+    <FormFieldWrapper {...widgetProps} className="text">
       <Input
         id={`field-${id}`}
         name={id}
@@ -167,21 +194,4 @@ IdWidget.propTypes = {
   maxLength: PropTypes.number,
   wrapped: PropTypes.bool,
   placeholder: PropTypes.string,
-};
-
-IdWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  onEdit: null,
-  onDelete: null,
-  focus: false,
-  icon: null,
-  iconAction: null,
-  minLength: null,
-  maxLength: null,
 };

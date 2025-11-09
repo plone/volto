@@ -22,10 +22,9 @@ const messages = defineMessages({
   },
 });
 
-const CommentEditModal = (props) => {
+const CommentEditModal = ({ onOk, open, onCancel, id = '', text = '' }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const { onOk, open, onCancel } = props;
   const request = useSelector((state) => state.comments.update, shallowEqual);
 
   const prevRequestLoading = usePrevious(request.loading);
@@ -37,16 +36,16 @@ const CommentEditModal = (props) => {
   }, [onOk, prevRequestLoading, request.loaded]);
 
   const onSubmit = (data) => {
-    dispatch(updateComment(props.id, data.text));
+    dispatch(updateComment(id, data.text));
   };
 
   return (
-    props.open && (
+    open && (
       <ModalForm
         open={open}
         onSubmit={onSubmit}
         onCancel={onCancel}
-        formData={{ text: props.text }}
+        formData={{ text }}
         title={intl.formatMessage(messages.editComment)}
         schema={{
           fieldsets: [
@@ -81,11 +80,6 @@ CommentEditModal.propTypes = {
   open: PropTypes.bool.isRequired,
   onOk: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-};
-
-CommentEditModal.defaultProps = {
-  id: '',
-  text: '',
 };
 
 export default CommentEditModal;

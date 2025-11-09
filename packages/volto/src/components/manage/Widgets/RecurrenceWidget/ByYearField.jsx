@@ -22,12 +22,12 @@ const messages = defineMessages({
  */
 const ByYearField = ({
   label,
-  value,
-  bymonthday,
-  monthOfTheYear,
-  weekdayOfTheMonthIndex,
-  weekdayOfTheMonth,
-  onChange,
+  value = null,
+  bymonthday = null,
+  monthOfTheYear = null,
+  weekdayOfTheMonthIndex = null,
+  weekdayOfTheMonth = null,
+  onChange = null,
   intl,
 }) => {
   return (
@@ -127,14 +127,4 @@ ByYearField.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-ByYearField.defaultProps = {
-  label: null,
-  value: null,
-  bymonthday: null,
-  monthOfTheYear: null,
-  weekdayOfTheMonthIndex: null,
-  weekdayOfTheMonth: null,
-  onChange: null,
-};
-
 export default injectIntl(ByYearField);

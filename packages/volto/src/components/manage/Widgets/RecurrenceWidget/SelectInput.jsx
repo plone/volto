@@ -20,11 +20,11 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
  * @returns {string} Markup of the component.
  */
 const SelectInput = ({
-  name,
-  disabled,
-  options,
-  value,
-  onChange,
+  name = 'select',
+  disabled = false,
+  options = [],
+  value = null,
+  onChange = null,
   reactSelect,
 }) => {
   const Select = reactSelect.default;
@@ -79,12 +79,4 @@ SelectInput.propTypes = {
  * @property {Object} defaultProps Default properties.
  * @static
  */
-SelectInput.defaultProps = {
-  name: 'select',
-  options: [],
-  disabled: false,
-  value: null,
-  onChange: null,
-};
-
 export default injectLazyLibs('reactSelect')(SelectInput);

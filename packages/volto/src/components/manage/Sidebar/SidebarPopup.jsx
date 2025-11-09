@@ -7,7 +7,7 @@ import doesNodeContainClick from 'semantic-ui-react/dist/commonjs/lib/doesNodeCo
 const DEFAULT_TIMEOUT = 500;
 
 const SidebarPopup = (props) => {
-  const { children, open, onClose, overlay } = props;
+  const { children, open = false, onClose = () => {}, overlay = false } = props;
 
   const asideElement = React.useRef();
 
@@ -90,12 +90,6 @@ SidebarPopup.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
   overlay: PropTypes.bool,
-};
-
-SidebarPopup.defaultProps = {
-  open: false,
-  onClose: () => {},
-  overlay: false,
 };
 
 export default SidebarPopup;

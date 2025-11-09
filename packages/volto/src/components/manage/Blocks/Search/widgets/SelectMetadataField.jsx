@@ -38,7 +38,30 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const SelectWidget = (props) => {
-  const { choices, vocabBaseUrl, getVocabulary } = props;
+  const {
+    choices = [],
+    vocabBaseUrl,
+    getVocabulary,
+    id,
+    value = null,
+    onChange = () => {},
+    placeholder,
+    querystring,
+    filterOptions = identity,
+    description = null,
+    required = false,
+    error = [],
+    loading = false,
+    onBlur = () => {},
+    onClick = () => {},
+    onEdit = null,
+    onDelete = null,
+    items = { vocabulary: null },
+    widgetOptions = { vocabulary: null },
+    reactSelect,
+    intl,
+    ...rest
+  } = props;
 
   useEffect(() => {
     if (!choices && vocabBaseUrl) {
@@ -46,25 +69,39 @@ const SelectWidget = (props) => {
     }
   }, [choices, vocabBaseUrl, getVocabulary]);
 
-  const {
+  const isDisabled = false;
+  const { indexes = [] } = querystring;
+  const Select = reactSelect.default;
+
+  const wrapperProps = {
+    ...rest,
     id,
     value,
     onChange,
     placeholder,
     querystring,
-    filterOptions = identity,
-  } = props;
-
-  const isDisabled = false;
-  const { indexes = [] } = querystring;
-  const Select = props.reactSelect.default;
+    filterOptions,
+    description,
+    required,
+    error,
+    loading,
+    onBlur,
+    onClick,
+    onEdit,
+    onDelete,
+    items,
+    widgetOptions,
+    reactSelect,
+    intl,
+    choices,
+  };
 
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper {...wrapperProps}>
       <Select
         id={`field-${id}`}
         name={id}
-        placeholder={placeholder ?? props.intl.formatMessage(messages.select)}
+        placeholder={placeholder ?? intl.formatMessage(messages.select)}
         isDisabled={isDisabled}
         className="react-select-container"
         classNamePrefix="react-select"
@@ -124,26 +161,6 @@ SelectWidget.propTypes = {
   onDelete: PropTypes.func,
   wrapped: PropTypes.bool,
   querystring: PropTypes.object,
-};
-
-SelectWidget.defaultProps = {
-  description: null,
-  required: false,
-  items: {
-    vocabulary: null,
-  },
-  widgetOptions: {
-    vocabulary: null,
-  },
-  error: [],
-  choices: [],
-  loading: false,
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  onEdit: null,
-  onDelete: null,
 };
 
 export default compose(
