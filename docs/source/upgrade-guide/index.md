@@ -176,6 +176,32 @@ Volto now uses pnpm 10.
 
 If you have packages that use lifecycle scripts (such as `preinstall` or `postinstall`) in {file}`package.json`, you must configure `pnpm`'s [`onlyBuiltDependencies` setting](https://pnpm.io/settings#onlybuiltdependencies) to allow them.
 
+### `AlignWidget` and `ButtonsWidget` are now Semantic UI-free
+```{versionadded} Volto 19.0.0-alpha.10
+```
+
+The `AlignWidget` and `ButtonsWidget` components have been refactored to remove their dependency on Semantic UI.
+They are now based on the `@plone/components` library and refactored into TypeScript.
+To differentiate them from the old Semantic UI-based widgets, they use different `classNames`, too.
+This allows you to continue using the old widgets in either a shadow or customized version, if needed, without CSS conflicts.
+
+### `Size`, `blockWidth`, and `blockAlignment` widgets added
+```{versionadded} Volto 19.0.0-alpha.10
+```
+
+Three new widgets have been added based on the `ButtonsWidget` from `@plone/components`:
+`size` widget
+:   For selecting size options of either `small`, `medium`, or `large`.
+
+`blockWidth` widget
+:   For selecting block width options of either `narrow`, `default`, `layout`, or `full`.
+
+`blockAlignment` widget
+:   For selecting block alignment options of either `left`, `center`, or `right`.
+
+They are available in the global widgets configuration and can be used in your add-ons.
+They all are meant to be used using the `StyleWrapper` with custom CSS properties.
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
