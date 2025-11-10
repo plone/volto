@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { findBlocks } from '@plone/volto/helpers/Blocks/Blocks';
 import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
+const EMPTY_BLOCKS = {};
+
 /**
  * @function useCreatePageQueryStringKey
  * @description A hook that creates a key with an id if there are multiple blocks with pagination.
@@ -12,7 +14,8 @@ import { slugify } from '@plone/volto/helpers/Utils/Utils';
  */
 const useCreatePageQueryStringKey = (id) => {
   const blockTypesWithPagination = ['search', 'listing'];
-  const blocks = useSelector((state) => state?.content?.data?.blocks) || [];
+  const blocks =
+    useSelector((state) => state?.content?.data?.blocks) ?? EMPTY_BLOCKS;
   const hasMultiplePaginations =
     findBlocks(blocks, blockTypesWithPagination).length > 1;
 
@@ -20,7 +23,8 @@ const useCreatePageQueryStringKey = (id) => {
 };
 
 const useGetBlockType = (id) => {
-  const blocks = useSelector((state) => state?.content?.data?.blocks) || [];
+  const blocks =
+    useSelector((state) => state?.content?.data?.blocks) ?? EMPTY_BLOCKS;
   const block = blocks[id];
   return block ? block?.['@type'] : null;
 };

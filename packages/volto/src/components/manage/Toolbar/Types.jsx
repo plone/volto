@@ -12,10 +12,12 @@ import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 
+const EMPTY_LANGUAGES = [];
+
 const Types = ({ types, pathname, content, currentLanguage }) => {
-  const availableLanguages = useSelector(
-    (state) => state.site?.data?.['plone.available_languages'] || [],
-  );
+  const availableLanguages =
+    useSelector((state) => state.site?.data?.['plone.available_languages']) ??
+    EMPTY_LANGUAGES;
   return types.length > 0 || content?.['@components']?.translations ? (
     <div className="menu-more pastanaga-menu">
       {types.length > 0 && (

@@ -25,6 +25,8 @@ import UserGroupMembershipMatrix from '@plone/volto/components/manage/Controlpan
 import backSVG from '@plone/volto/icons/back.svg';
 import settingsSVG from '@plone/volto/icons/settings.svg';
 
+const EMPTY_ACTIONS = {};
+
 const UserGroupMembershipPanel = () => {
   const intl = useIntl();
   const history = useHistory();
@@ -43,7 +45,8 @@ const UserGroupMembershipPanel = () => {
   const can_use_group_membership_panel = systeminformation
     ? parseFloat(systeminformation?.plone_restapi_version.slice(0, 4)) >= 8.24
     : false;
-  const actions = useSelector((state) => state.actions?.actions ?? {});
+  const actions =
+    useSelector((state) => state.actions?.actions) ?? EMPTY_ACTIONS;
   const ploneSetupAction = find(actions.user, {
     id: 'plone_setup',
   });

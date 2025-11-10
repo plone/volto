@@ -156,25 +156,25 @@ const ContactFormComponent = () => {
             required: ['from', 'message'],
           }}
         />
-        {isClient &&
-          createPortal(
-            <Toolbar
-              pathname={pathname}
-              hideDefaultViewButtons
-              inner={
-                <Link to={`${getBaseUrl(pathname)}`} className="item">
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={intl.formatMessage(messages.back)}
-                  />
-                </Link>
-              }
-            />,
-            document.getElementById('toolbar'),
-          )}
       </Container>
+      {isClient &&
+        createPortal(
+          <Toolbar
+            pathname={pathname}
+            hideDefaultViewButtons
+            inner={
+              <Link to={`${getBaseUrl(pathname)}`} className="item">
+                <Icon
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
+                  title={intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />,
+          document.getElementById('toolbar'),
+        )}
     </div>
   );
 };

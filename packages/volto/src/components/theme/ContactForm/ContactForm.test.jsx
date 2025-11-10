@@ -20,7 +20,7 @@ describe('Contact form', () => {
   it('renders a contact form', () => {
     const store = mockStore({
       emailNotification: {
-        error: {},
+        error: null,
         loaded: false,
         loading: false,
       },
