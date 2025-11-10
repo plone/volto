@@ -174,7 +174,7 @@ deployment-ci-acceptance-test-run-all: ## With a single command, run the backend
 
 .PHONY: cookieplone-acceptance-frontend-prod-start
 cookieplone-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for cookieplone tests
-	(cd ../../volto-add-on && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
+	(cd ../../volto-add-on && pnpm -v && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 .PHONY: project-acceptance-frontend-prod-start
 project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests
