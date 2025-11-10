@@ -9,6 +9,8 @@ overrides:
   immer@8: 10.1.3
   react-refresh: 0.14.0
 
+pnpmfileChecksum: sha256-WUpdqnyQl6o6FiaFJwVm56xjaWIronnBe1XtXkplmyQ=
+
 patchedDependencies:
   jest-resolve@26.6.2:
     hash: 65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7
