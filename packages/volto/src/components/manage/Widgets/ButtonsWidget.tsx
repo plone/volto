@@ -158,7 +158,8 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
                 <div className="image-sizes-text">{iconOrText}</div>
               ) : (
                 <Icon
-                  name={iconOrText}
+                  // TODO: Refactor Icon component and type it correctly
+                  name={iconOrText as any}
                   title={ariaLabel || action.name}
                   size="24px"
                   ariaHidden={true}
