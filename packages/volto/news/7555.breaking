@@ -1,2 +1,0 @@
-`AlignWidget` and `ButtonsWidget` are now Semantic UI-free, and they are now based in `@plone/components`.
-See upgrade guide for more information. @sneridagh
