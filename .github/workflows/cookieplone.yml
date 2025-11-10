@@ -65,6 +65,14 @@ jobs:
         working-directory: ${{env.project-directory}}
         run: make ci-test
 
+      - name: Check pnpm version
+        working-directory: packages/volto
+        run: pnpm -v
+
+      - name: Check pnpm version in addon
+        working-directory: ${{env.project-directory}}
+        run: pnpm -v
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
