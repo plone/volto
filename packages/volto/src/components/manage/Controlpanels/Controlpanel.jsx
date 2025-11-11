@@ -21,6 +21,7 @@ import { toast } from 'react-toastify';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
+import NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 import { Form } from '@plone/volto/components/manage/Form';
 import {
   updateControlpanel,
@@ -256,7 +257,7 @@ class Controlpanel extends Component {
         </div>
       );
     }
-    return <div />;
+    return <NotFound />;
   }
 }
 
