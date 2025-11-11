@@ -135,6 +135,25 @@ export function joinWithNextBlock({ editor, event }, intl) {
     return;
   }
 
+  const nextValue = otherBlock?.value;
+  const nextPlaintext =
+    otherBlock?.plaintext ?? serializeNodesToText(nextValue || []);
+  const isEmptySlateBlock =
+    !Array.isArray(nextValue) ||
+    nextValue.length === 0 ||
+    !nextPlaintext ||
+    nextPlaintext.trim().length === 0;
+
+  if (isEmptySlateBlock) {
+    const newFormData = deleteBlock(properties, otherBlockId, intl);
+    ReactDOM.unstable_batchedUpdates(() => {
+      onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+      onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+      onSelectBlock(block);
+    });
+    return true;
+  }
+
   // Merge next text block into current one and delete the next block
   mergeSlateWithBlockForward(editor, otherBlock);
 
