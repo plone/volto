@@ -1,1 +1,0 @@
-Added RSC compatibility. @pnicolli
