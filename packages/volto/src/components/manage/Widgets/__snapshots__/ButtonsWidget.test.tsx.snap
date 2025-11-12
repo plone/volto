@@ -1,0 +1,290 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ButtonsWidget > renders actions info provided via props 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            aria-label="Alignment"
+            aria-labelledby="react-aria-:r6: react-aria-:r7:"
+            aria-orientation="horizontal"
+            class="buttons buttons-widget"
+            data-orientation="horizontal"
+            data-rac=""
+            id="react-aria-:r6:"
+            role="radiogroup"
+          >
+            <span
+              class="react-aria-Label"
+              id="react-aria-:r7:"
+            />
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Additional action title"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:rb:"
+                  tabindex="0"
+                  title=""
+                  type="radio"
+                  value="additional"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Additional action title
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3,7 L5,5 L5,25 L3,23 L33,23 L31,25 L31,5 L33,7 L3,7 Z M33,5 L33,25 L3,25 L3,5 L33,5 Z"
+                    fill-rule="nonzero"
+                  />
+                  <path
+                    d="M7 31 29 31 29 29 7 29zM25.314 10.757 28.557 14 7.444 14 10.687 10.757 9.272 9.343 3.616 15 9.272 20.657 10.687 19.243 7.444 16 28.557 16 25.314 19.243 26.728 20.657 32.385 15 26.728 9.343z"
+                  />
+                </g>
+              </svg>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ButtonsWidget > renders string-based actions 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            aria-label="Alignment"
+            aria-labelledby="react-aria-:r0: react-aria-:r1:"
+            aria-orientation="horizontal"
+            class="buttons buttons-widget"
+            data-orientation="horizontal"
+            data-rac=""
+            id="react-aria-:r0:"
+            role="radiogroup"
+          >
+            <span
+              class="react-aria-Label"
+              id="react-aria-:r1:"
+            />
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Text Left"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:r5:"
+                  tabindex="0"
+                  title=""
+                  type="radio"
+                  value="left"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Left
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM3 15 27 15 27 13 3 13zM3 23 33 23 33 21 3 21zM3 31 21 31 21 29 3 29z"
+                  />
+                </g>
+              </svg>
+            </label>
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Text Right"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:r5:"
+                  tabindex="0"
+                  title=""
+                  type="radio"
+                  value="right"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Right
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM9 15 32.999 15 32.999 13 9 13zM3 23 33 23 33 21 3 21zM15 31 33 31 33 29 15 29z"
+                  />
+                </g>
+              </svg>
+            </label>
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Text Centered"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:r5:"
+                  tabindex="0"
+                  title=""
+                  type="radio"
+                  value="centered"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Centered
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM6 15 30 15 30 13 6 13zM3 23 33 23 33 21 3 21zM9 31 27 31 27 29 9 29z"
+                  />
+                </g>
+              </svg>
+            </label>
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Text Justified"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:r5:"
+                  tabindex="0"
+                  title=""
+                  type="radio"
+                  value="justified"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Text Justified
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 33 7 33 5 3 5zM3 15 33 15 33 13 3 13zM3 23 33 23 33 21 3 21zM3 31 33 31 33 29 3 29z"
+                  />
+                </g>
+              </svg>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

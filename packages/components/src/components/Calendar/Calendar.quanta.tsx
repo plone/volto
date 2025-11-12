@@ -16,20 +16,37 @@ import {
   useLocale,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.quanta';
 import { focusRing } from '../utils';
 
 const cellStyles = tv({
   extend: focusRing,
-  base: 'm-px flex h-9 w-9 cursor-default items-center justify-center rounded-full text-sm forced-color-adjust-none',
+  base: `
+    m-px flex h-9 w-9 cursor-default items-center justify-center rounded-full text-sm
+    forced-color-adjust-none
+  `,
   variants: {
     isSelected: {
-      false:
-        'pressed:bg-gray-200 dark:pressed:bg-zinc-600 text-zinc-900 hover:bg-gray-100 dark:text-zinc-200 dark:hover:bg-zinc-700',
-      true: 'bg-blue-600 text-white invalid:bg-red-600 forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-colors:invalid:bg-[Mark]',
+      false: `
+        text-zinc-900
+        hover:bg-gray-100
+        dark:text-zinc-200 dark:hover:bg-zinc-700
+        pressed:bg-gray-200
+        dark:pressed:bg-zinc-600
+      `,
+      true: `
+        bg-blue-600 text-white
+        invalid:bg-red-600
+        forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]
+        forced-colors:invalid:bg-[Mark]
+      `,
     },
     isDisabled: {
-      true: 'text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]',
+      true: `
+        text-gray-300
+        dark:text-zinc-600
+        forced-colors:text-[GrayText]
+      `,
     },
   },
 });
@@ -73,7 +90,12 @@ export function CalendarHeader() {
           <ChevronleftIcon aria-hidden />
         )}
       </Button>
-      <Heading className="mx-2 flex-1 text-center text-xl font-semibold text-zinc-900 dark:text-zinc-200" />
+      <Heading
+        className={`
+          mx-2 flex-1 text-center text-xl font-semibold text-zinc-900
+          dark:text-zinc-200
+        `}
+      />
       <Button slot="next">
         {direction === 'rtl' ? (
           <ChevronleftIcon aria-hidden />

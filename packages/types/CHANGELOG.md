@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.10 (2025-11-10)
+
+### Feature
+
+- Added new widgets config typings. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
+
 ## 2.0.0-alpha.9 (2025-11-03)
 
 ### Feature

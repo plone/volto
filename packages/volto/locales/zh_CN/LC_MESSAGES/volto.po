@@ -605,6 +605,7 @@ msgstr "单元格"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Center"
 msgstr "中间"
 
@@ -1014,6 +1015,7 @@ msgstr "日期（最新在前）"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/BlockWidth
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/theme/Comments/CommentEditModal
@@ -1667,6 +1669,7 @@ msgstr ""
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Full"
 msgstr ""
 
@@ -2052,6 +2055,7 @@ msgstr ""
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Large"
 msgstr "大"
 
@@ -2082,6 +2086,7 @@ msgstr "最新版本"
 
 #. Default: "Layout"
 #: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Widgets/BlockWidth
 msgid "Layout"
 msgstr "布局"
 
@@ -2094,6 +2099,7 @@ msgstr "首图"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Left"
 msgstr ""
 
@@ -2292,6 +2298,7 @@ msgstr "最大值为{len}。"
 
 #. Default: "Medium"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Medium"
 msgstr "中等"
 
@@ -2404,6 +2411,7 @@ msgstr "名字"
 
 #. Default: "Narrow"
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Narrow"
 msgstr ""
 
@@ -3120,6 +3128,7 @@ msgstr "富文本"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Right"
 msgstr ""
 
@@ -3516,6 +3525,7 @@ msgstr "大小：{size}"
 
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Small"
 msgstr "小"
 
