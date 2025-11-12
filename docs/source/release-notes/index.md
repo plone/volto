@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.13 (2025-11-12)
+
+### Internal
+
+- Release with `@plone/components` 4a3. @sneridagh 
+
 ## 19.0.0-alpha.12 (2025-11-10)
 
 ### Breaking
