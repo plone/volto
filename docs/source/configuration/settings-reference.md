@@ -169,7 +169,8 @@ It can cause performance issues when you have large children, for example, conte
 The fieldsets in the blocks settings tab start as non-collapsed or opened by default.
 To collapse or close them, set `blockSettingsTabFieldsetsInitialStateOpen` to `false`.
 
-### `contentIcons`
+(contentIcons)=
+### contentIcons
 
 The `contentIcons` property configures content types icons.
 Those are visible in the contents view, such as "Folder contents".
@@ -258,7 +259,8 @@ See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-
 `errorHandlers` is a list of error handlers that will be called when there is an unhandled exception.
 Each error handler is a function that receives a single argument, the `error` object.
 
-### `excludeLinksAndReferencesMenuItem`
+(excludeLinksAndReferencesMenuItem)=
+### excludeLinksAndReferencesMenuItem
 
 `excludeLinksAndReferencesMenuItem` is a boolean, and is `false` by default.
 The content menu links to the {guilabel}`Links and references` view per default.
