@@ -2705,6 +2705,8 @@ notice anything strange.
 Helper method `getIcon` from `Url` has been removed in favor of `getContentIcon`
 from `Content` which is now configurable.
 
+See `contentIcons`.
+
 ## Upgrading to Volto 8.x.x
 
 ### Upgrade package.json testing configuration
