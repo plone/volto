@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.3 (2025-11-12)
+
+### Bugfix
+
+- Fixed `Icon` component return type since it was breaking in some builds. @sneridagh 
+
 ## 4.0.0-alpha.2 (2025-11-12)
 
 ### Feature
