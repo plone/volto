@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Breadcrumbs } from './Breadcrumbs.quanta';
-import { Menu, MenuItem } from '../Menu/Menu.quanta';
+import { Menu } from '../Menu/Menu.quanta';
 import {
   FolderIcon,
   HomeIcon,
