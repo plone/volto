@@ -260,7 +260,7 @@ See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-
 Each error handler is a function that receives a single argument, the `error` object.
 
 (excludeLinksAndReferencesMenuItem)=
-### excludeLinksAndReferencesMenuItem
+### `excludeLinksAndReferencesMenuItem`
 
 `excludeLinksAndReferencesMenuItem` is a boolean, and is `false` by default.
 The content menu links to the {guilabel}`Links and references` view per default.
