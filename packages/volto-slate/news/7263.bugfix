@@ -1,0 +1,2 @@
+Avoid errors when deleting at the end of a Slate block with an empty Slate block after it and remove the empty block instead. @aryan7081
+
