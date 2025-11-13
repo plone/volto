@@ -122,6 +122,10 @@ export function joinWithNextBlock({ editor, event }, intl) {
   const { properties, onChangeField } = editor.getBlockProps();
   const [otherBlock = {}, otherBlockId] = getNextVoltoBlock(index, properties);
 
+  if (!otherBlockId) {
+    return false;
+  }
+
   // Don't join with required blocks
   if (data?.required || otherBlock?.required || otherBlock['@type'] !== 'slate')
     return;
@@ -137,6 +141,26 @@ export function joinWithNextBlock({ editor, event }, intl) {
     return;
   }
 
+  const nextValue = otherBlock?.value;
+  const nextPlaintext =
+    otherBlock?.plaintext ?? serializeNodesToText(nextValue || []);
+  // Treat the next block as empty if both its structured value and plaintext representation
+  // indicate no content. In that case we can delete it instead of attempting a merge.
+  const isEmptySlateBlock =
+    !Array.isArray(nextValue) ||
+    nextValue.length === 0 ||
+    !nextPlaintext ||
+    nextPlaintext.trim().length === 0;
+
+  if (isEmptySlateBlock) {
+    const newFormData = deleteBlock(properties, otherBlockId, intl);
+    ReactDOM.unstable_batchedUpdates(() => {
+      onChangeField(blocksFieldname, newFormData[blocksFieldname]);
+      onChangeField(blocksLayoutFieldname, newFormData[blocksLayoutFieldname]);
+      onSelectBlock(block);
+    });
+    return true;
+  }
   // Merge next text block into current one and delete the next block
   mergeSlateWithBlockForward(editor, otherBlock);
 
