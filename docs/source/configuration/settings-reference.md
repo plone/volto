@@ -170,7 +170,7 @@ The fieldsets in the blocks settings tab start as non-collapsed or opened by def
 To collapse or close them, set `blockSettingsTabFieldsetsInitialStateOpen` to `false`.
 
 (contentIcons)=
-### contentIcons
+### `contentIcons`
 
 The `contentIcons` property configures content types icons.
 Those are visible in the contents view, such as "Folder contents".
