@@ -108,17 +108,6 @@ module.exports = function (api, options) {
           lib: true,
         },
       ],
-      require('@babel/plugin-syntax-dynamic-import'),
-      options['class-properties'] !== false && [
-        require('@babel/plugin-proposal-class-properties'),
-        options['class-properties'] || {},
-      ],
-      [
-        require('@babel/plugin-proposal-object-rest-spread'),
-        {
-          useBuiltIns: true,
-        },
-      ],
       !isServer && [
         require('@babel/plugin-transform-runtime'),
         Object.assign(
