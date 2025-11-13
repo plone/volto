@@ -121,6 +121,10 @@ export function joinWithNextBlock({ editor, event }, intl) {
   const { properties, onChangeField } = editor.getBlockProps();
   const [otherBlock = {}, otherBlockId] = getNextVoltoBlock(index, properties);
 
+  if (!otherBlockId) {
+    return false;
+  }
+
   // Don't join with required blocks
   if (data?.required || otherBlock?.required) return;
 
@@ -138,6 +142,8 @@ export function joinWithNextBlock({ editor, event }, intl) {
   const nextValue = otherBlock?.value;
   const nextPlaintext =
     otherBlock?.plaintext ?? serializeNodesToText(nextValue || []);
+  // Treat the next block as empty if both its structured value and plaintext representation
+  // indicate no content. In that case we can delete it instead of attempting a merge.
   const isEmptySlateBlock =
     !Array.isArray(nextValue) ||
     nextValue.length === 0 ||
