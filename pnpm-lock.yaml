@@ -1494,9 +1494,6 @@ importers:
       '@babel/plugin-syntax-bigint':
         specifier: ^7.8.3
         version: 7.8.3(@babel/core@7.28.5)
-      '@babel/plugin-syntax-dynamic-import':
-        specifier: ^7.8.3
-        version: 7.8.3(@babel/core@7.28.5)
       '@babel/plugin-transform-modules-commonjs':
         specifier: ^7.10.4
         version: 7.27.1(@babel/core@7.28.5)
@@ -1539,9 +1536,6 @@ importers:
       autoprefixer:
         specifier: ^10.2.3
         version: 10.4.8(postcss@8.4.31)
-      babel-jest:
-        specifier: ^26.3.0
-        version: 26.6.3(@babel/core@7.28.5)
       babel-loader:
         specifier: ^8.0.6
         version: 8.4.1(@babel/core@7.28.5)(webpack@5.90.1)
@@ -1587,9 +1581,6 @@ importers:
       inquirer:
         specifier: ^7.3.3
         version: 7.3.3
-      jest:
-        specifier: ^26.4.2
-        version: 26.6.3
       mini-css-extract-plugin:
         specifier: 2.7.2
         version: 2.7.2(webpack@5.90.1)
@@ -22609,7 +22600,7 @@ snapshots:
       sirv: 3.0.1
       tinyglobby: 0.2.14
       tinyrainbow: 1.2.0
-      vitest: 2.1.9(@types/node@24.9.1)(@vitest/ui@2.1.9)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.30.1)(sass@1.91.0)(terser@5.43.1)
+      vitest: 2.1.9(@types/node@24.9.1)(@vitest/ui@2.1.9)(jsdom@21.1.2)(less@3.11.1)(lightningcss@1.30.1)(sass@1.91.0)(terser@5.43.1)
     optional: true
 
   '@vitest/ui@2.1.9(vitest@3.2.4)':

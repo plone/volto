@@ -4,12 +4,13 @@
 const isHook = /^use[A-Z]/;
 
 // matches only built-in hooks provided by React et al
-const isBuiltInHook = /^use(Callback|Context|DebugValue|Effect|ImperativeHandle|LayoutEffect|Memo|Reducer|Ref|State)$/;
+const isBuiltInHook =
+  /^use(Callback|Context|DebugValue|Effect|ImperativeHandle|LayoutEffect|Memo|Reducer|Ref|State)$/;
 
-module.exports = function(opts) {
+module.exports = function (opts) {
   const t = opts.types;
   const visitor = {
-    CallExpression: function(path, state) {
+    CallExpression: function (path, state) {
       const onlyBuiltIns = state.opts.onlyBuiltIns;
 
       // if specified, options.lib is a list of libraries that provide hook functions
@@ -35,7 +36,7 @@ module.exports = function(opts) {
 
         const specifier = binding.path.parent.source.value;
         // not a match
-        if (!libs.some(lib => lib === specifier)) return;
+        if (!libs.some((lib) => lib === specifier)) return;
       }
 
       // only match function calls with names that look like a hook
@@ -48,9 +49,9 @@ module.exports = function(opts) {
           }
 
           return patterns.concat(
-            t.objectProperty(t.numericLiteral(i), element)
+            t.objectProperty(t.numericLiteral(i), element),
           );
-        }, [])
+        }, []),
       );
     },
   };
@@ -59,7 +60,7 @@ module.exports = function(opts) {
     name: 'optimize-hook-destructuring',
     visitor: {
       // this is a workaround to run before preset-env destroys destructured assignments
-      Program: function(path, state) {
+      Program: function (path, state) {
         path.traverse(visitor, state);
       },
     },

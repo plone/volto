@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(opts) {
+module.exports = function (opts) {
   const t = opts.types;
   return {
     inherits: require('babel-plugin-syntax-jsx'),
@@ -40,8 +40,8 @@ module.exports = function(opts) {
                   pragma,
                   t.memberExpression(
                     importAs,
-                    t.identifier(state.opts.property)
-                  )
+                    t.identifier(state.opts.property),
+                  ),
                 ),
               ]);
 
@@ -55,9 +55,8 @@ module.exports = function(opts) {
                 t.isIdentifier(existingBinding.path.node.init.callee) &&
                 existingBinding.path.node.init.callee.name === 'require'
               ) {
-                [newPath] = existingBinding.path.parentPath.insertAfter(
-                  mapping
-                );
+                [newPath] =
+                  existingBinding.path.parentPath.insertAfter(mapping);
               } else {
                 // @ts-ignore
                 [newPath] = path.unshiftContainer('body', mapping);
@@ -75,14 +74,14 @@ module.exports = function(opts) {
                     ? // import { $import as _pragma } from '$module'
                       t.importSpecifier(
                         importAs,
-                        t.identifier(state.opts.import)
+                        t.identifier(state.opts.import),
                       )
                     : state.opts.importNamespace
-                    ? t.importNamespaceSpecifier(importAs)
-                    : // import _pragma from '$module'
-                      t.importDefaultSpecifier(importAs),
+                      ? t.importNamespaceSpecifier(importAs)
+                      : // import _pragma from '$module'
+                        t.importDefaultSpecifier(importAs),
                 ],
-                t.stringLiteral(state.opts.module || 'react')
+                t.stringLiteral(state.opts.module || 'react'),
               );
 
               const [newPath] = path.unshiftContainer('body', importSpecifier);

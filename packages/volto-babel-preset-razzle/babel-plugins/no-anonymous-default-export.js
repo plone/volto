@@ -1,9 +1,9 @@
 const chalk = require('chalk');
 
-module.exports = function(opts) {
+module.exports = function (opts) {
   const t = opts.types;
   let onWarning = null;
-  opts.caller(caller => {
+  opts.caller((caller) => {
     onWarning = caller.onWarning;
     return ''; // Intentionally empty to not invalidate cache
   });
@@ -15,7 +15,7 @@ module.exports = function(opts) {
   const warn = onWarning;
   return {
     visitor: {
-      ExportDefaultDeclaration: function(path) {
+      ExportDefaultDeclaration: function (path) {
         const def = path.node.declaration;
 
         if (
@@ -32,7 +32,7 @@ module.exports = function(opts) {
             warn(
               [
                 chalk.yellow.bold(
-                  'Anonymous arrow functions cause Fast Refresh to not preserve local component state.'
+                  'Anonymous arrow functions cause Fast Refresh to not preserve local component state.',
                 ),
                 'Please add a name to your function, for example:',
                 '',
@@ -42,7 +42,7 @@ module.exports = function(opts) {
                 chalk.bold('After'),
                 chalk.cyan('const Named = () => <div />;'),
                 chalk.cyan('export default Named;'),
-              ].join('\n')
+              ].join('\n'),
             );
             break;
           }
@@ -52,7 +52,7 @@ module.exports = function(opts) {
               warn(
                 [
                   chalk.yellow.bold(
-                    'Anonymous function declarations cause Fast Refresh to not preserve local component state.'
+                    'Anonymous function declarations cause Fast Refresh to not preserve local component state.',
                   ),
                   'Please add a name to your function, for example:',
                   '',
@@ -61,7 +61,7 @@ module.exports = function(opts) {
                   '',
                   chalk.bold('After'),
                   chalk.cyan('export default function Named() { /* ... */ }'),
-                ].join('\n')
+                ].join('\n'),
               );
             }
             break;
