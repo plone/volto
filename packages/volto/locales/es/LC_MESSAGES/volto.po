@@ -23,6 +23,11 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Añadir algo de HTML aquí</p>"
 
+#. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+#: helpers/MessageLabels/MessageLabels
+msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+msgstr ""
+
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
@@ -601,6 +606,7 @@ msgstr "Celda"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Center"
 msgstr "Centro"
 
@@ -679,6 +685,11 @@ msgstr "Seleccionar Archivo"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Limpiar"
+
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
@@ -1005,6 +1016,7 @@ msgstr "Fecha (primero los más recientes)"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/BlockWidth
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/theme/Comments/CommentEditModal
@@ -1096,9 +1108,9 @@ msgstr "¿Eliminar este elemento?"
 msgid "Deleted"
 msgstr "Eliminado"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Deleting this item breaks {brokenReferences} {variation}."
+msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
 #. Default: "Depth"
@@ -1658,6 +1670,7 @@ msgstr "De"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Full"
 msgstr "Completo"
 
@@ -2043,6 +2056,7 @@ msgstr ""
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Large"
 msgstr "Grande"
 
@@ -2073,6 +2087,7 @@ msgstr "Última versión"
 
 #. Default: "Layout"
 #: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Widgets/BlockWidth
 msgid "Layout"
 msgstr "Plantilla"
 
@@ -2085,6 +2100,7 @@ msgstr "Imagen principal"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Left"
 msgstr "Izquierda"
 
@@ -2283,6 +2299,7 @@ msgstr "El valor máximo es {len}."
 
 #. Default: "Medium"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Medium"
 msgstr "Mediano"
 
@@ -2395,6 +2412,7 @@ msgstr "Nombre"
 
 #. Default: "Narrow"
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Narrow"
 msgstr "Filtrar"
 
@@ -2465,7 +2483,7 @@ msgstr "No se han encontrado complementos"
 msgid "No broken relations found."
 msgstr "No se encontraron relaciones rotas."
 
-#. Default: "There is no connection to the server, due to a timeout o no network connection."
+#. Default: "There is no connection to the server, due to a timeout or no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
 msgstr "No hay conexión con el servidor"
@@ -2572,8 +2590,12 @@ msgstr "Sin flujo de trabajo"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr "Ninguno"
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr "Ninguno"
 
 #. Default: "Note"
@@ -2606,9 +2628,9 @@ msgstr "Apariciones"
 msgid "Ok"
 msgstr "Ok"
 
-#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
 #. Default: "Open in a new tab"
@@ -2908,7 +2930,7 @@ msgstr "Hacer referencia a este elemento como elemento relacionado"
 msgid "Referencing this item with {relationship}"
 msgstr "Hacer referencia a este elemento con {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""
@@ -3107,6 +3129,7 @@ msgstr "Texto formateado"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Right"
 msgstr "Derecha"
 
@@ -3503,18 +3526,19 @@ msgstr "Tamaño: {size}"
 
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Small"
 msgstr "Pequeño"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr "Algunos elementos están referenciados por otros contenidos. Al eliminarlos, {brokenReferences} {variation} se romperá."
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+msgstr ""
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3802,6 +3826,11 @@ msgstr "La siguiente lista muestra los pasos de actualización que se ejecutará
 msgid "The item could not be deleted."
 msgstr "El elemento no se ha podido eliminar."
 
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
+
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
@@ -3915,9 +3944,9 @@ msgstr "Es un nombre reservado y no se puede utilizar"
 msgid "This is a working copy of {title}"
 msgstr "Es una copia de trabajo de {title}"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 msgstr ""
 
 #. Default: "This item was locked by {creator} on {date}"
@@ -4457,6 +4486,11 @@ msgstr "Mensaje de cargar un cambio del flujo de trabajo"
 msgid "Workflow updated."
 msgstr "Flujo de trabajo actualizado."
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "Copia de trabajo"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4468,14 +4502,14 @@ msgstr "Anualmente"
 msgid "Yes"
 msgstr "Sí"
 
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr ""
+
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
-
-#. Default: "You are about to delete all items in this folder."
-#: components/manage/Contents/ContentsDeleteModal
-msgid "You are about to delete all items in this folder."
 msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
@@ -4568,10 +4602,15 @@ msgstr "Introduzca su nombre completo, por ejemplo José Pérez."
 msgid "addUserFormPasswordDescription"
 msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 
-#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
+#. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como "jperez" o "jose_perez". No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
+msgstr ""
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4629,9 +4668,9 @@ msgstr "{countofrelation} roto {countofrelation, plural, one {relation} other {r
 msgid "daterangeFacet"
 msgstr "Rango de fechas"
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
+msgid "delete_block"
 msgstr "eliminar"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
@@ -4658,6 +4697,11 @@ msgstr "Se han enviado las instrucciones para restablecer su contraseña. Deben 
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Borrador"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4709,6 +4753,11 @@ msgstr "Dónde"
 msgid "examplePath"
 msgstr ""
 
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4724,7 +4773,7 @@ msgstr "vaciar intIds y reconstruir relaciones"
 msgid "flushAndRebuildRelationsHints"
 msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaciones)</li><li>Reconstruir relaciones</li></ul><p>¡Consulte el registro para obtener más detalles!</p><p><b>Advertencia</b>: Si tiene complementos que dependen de intIds, no debería eliminarlos.</p>"
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr "Encabezado"
@@ -4768,6 +4817,11 @@ msgstr "Vista previa de la imagen"
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
 msgstr "El valor introducido debe ser un número entero"
+
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4947,6 +5001,11 @@ msgstr "referencias"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr ""
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr "Cantidad de resultados"
 
 #. Default: "results"
 #: components/theme/Search/Search

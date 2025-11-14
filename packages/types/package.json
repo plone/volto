@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.10",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -29,6 +29,7 @@
     "access": "public"
   },
   "types": "src/index.d.ts",
+  "type": "module",
   "scripts": {
     "check-ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
@@ -37,8 +38,8 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
@@ -48,7 +49,7 @@
   "devDependencies": {
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "release-it": "^17.1.1",
+    "release-it": "^19.0.5",
     "tsconfig": "workspace:*",
     "typescript": "^5.7.3"
   }
