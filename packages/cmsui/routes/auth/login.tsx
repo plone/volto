@@ -44,14 +44,14 @@ export default function Login() {
   const actionResult = useActionData<typeof action>();
 
   return (
-    <div className="mx-4 flex h-screen flex-1 flex-col justify-center">
+    <main className="mx-4 flex h-screen flex-1 flex-col justify-center">
       <div
         className={`
           flex flex-col items-center
           sm:mx-auto sm:w-full sm:max-w-md
         `}
       >
-        <div className="flex h-32 w-32 flex-col items-center rounded-full bg-quanta-sapphire p-8">
+        <div className="bg-quanta-sapphire flex h-32 w-32 flex-col items-center rounded-full p-8">
           <img src={ploneSvg} alt="" />
         </div>
         <h2
@@ -93,6 +93,6 @@ export default function Login() {
           </Form>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

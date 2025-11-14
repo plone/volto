@@ -1,19 +1,26 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
+import { useFocusManager, useFocusWithin, usePress } from 'react-aria';
+import { useTranslation } from 'react-i18next';
 import { atom, useAtom, useSetAtom } from 'jotai';
 import { selectedBlockAtom } from './BlockEditor';
 import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import BlockSettingsForm from './BlockSettingsForm';
 import BlockWrapper from '@plone/layout/blocks/BlockWrapper';
+import { Button } from '@plone/components/quanta';
 import { Plug, Pluggable } from '@plone/layout/components/Pluggable';
 import { blockAtomFamily } from '../../routes/atoms';
+import DefaultEditBlock from './DefaultEditBlock';
 import config from '@plone/registry';
 
 type EditBlockWrapperProps = {
   block: string;
+  extraAriaDescription?: string;
 };
 
 const EditBlockWrapper = (props: EditBlockWrapperProps) => {
+  const { t } = useTranslation();
+  const blockRef = useRef<HTMLDivElement>(null);
   // Handle the block selection state
   const onSelectBlock = useSetAtom(selectedBlockAtom);
   const currentSelectedAtom = useMemo(
@@ -26,40 +33,82 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
   const blockAtom = blockAtomFamily(props.block);
   const [blockData, setBlock] = useAtom(blockAtom);
 
+  const focusManager = useFocusManager();
+
+  const { pressProps } = usePress({
+    onPress: () => {
+      if (!selected) {
+        blockRef.current?.focus();
+        // focusing is enough,
+        // selecting will be triggered by useFocusWithin below
+      }
+    },
+  });
+
+  const { focusWithinProps } = useFocusWithin({
+    onFocusWithin: () => {
+      if (!selected) {
+        blockRef.current?.focus();
+        onSelectBlock(props.block);
+      }
+    },
+  });
+
   const type = blockData['@type'];
-  const EditComponent = config.blocks.blocksConfig?.[type]?.edit;
+  const EditComponent =
+    config.blocks.blocksConfig?.[type]?.edit ?? DefaultEditBlock;
   const blocksconfig =
     config.blocks.blocksConfig?.[type]?.blocksConfig ||
     config.blocks.blocksConfig;
+  const title = blocksconfig[type]?.title || type;
   const schema = blocksconfig[type]?.blockSchema;
+  // TODO handle non editable or readonly blocks
+  // packages/volto/src/components/manage/Blocks/Block/Edit.jsx#L130
 
   return (
     <div
-      role="presentation"
+      role="group"
+      aria-label={`${t('cmsui.blocksEditor.block')} ${title}. ${props.extraAriaDescription || ''}`}
       className={clsx('ebw', { 'outline-2 outline-quanta-sapphire': selected })}
-      onClick={() => onSelectBlock(props.block)}
+      {...pressProps}
+      {...focusWithinProps}
     >
       {/* @ts-expect-error Volto's EditBlockWrapper passes RenderBlocksProps down. We need to revisit which props do we really need to pass down to the block Edit component */}
       <BlockWrapper data={blockData} blocksConfig={blocksconfig}>
-        {EditComponent ? (
-          // @ts-expect-error same as above, we need to use the proper Seven types once all is settled
-          <EditComponent
-            block={props.block}
-            data={blockData}
-            setBlock={setBlock}
-          />
-        ) : (
-          <>{type}</>
-        )}
+        {/* @ts-expect-error Updated types for Seven */}
+        <EditComponent
+          ref={blockRef}
+          block={props.block}
+          data={blockData}
+          setBlock={setBlock}
+          onFocusNextBlock={() => {
+            focusManager?.focusNext();
+          }}
+          onFocusPreviousBlock={() => {
+            focusManager?.focusPrevious();
+          }}
+          onFocusSidebar={() => {
+            document.getElementById('sidebar')?.focus();
+          }}
+        />
       </BlockWrapper>
       {selected &&
         schema &&
         createPortal(
-          <BlockSettingsForm
-            schema={schema}
-            block={props.block}
-            // data={props.data}
-          />,
+          <div>
+            <BlockSettingsForm
+              schema={schema}
+              block={props.block}
+              // data={props.data}
+            />
+            <Button
+              onClick={() => {
+                blockRef.current?.focus();
+              }}
+            >
+              {t('cmsui.blocksEditor.backToBlock')}
+            </Button>
+          </div>,
           document.getElementById('sidebar') as HTMLElement,
         )}
       {/* TODO: Re-evaluate if this has any sense */}
