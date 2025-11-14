@@ -11,11 +11,6 @@ overrides:
 
 pnpmfileChecksum: sha256-WUpdqnyQl6o6FiaFJwVm56xjaWIronnBe1XtXkplmyQ=
 
-patchedDependencies:
-  jest-resolve@26.6.2:
-    hash: 65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7
-    path: patches/jest-resolve@26.6.2.patch
-
 importers:
 
   .:
@@ -1163,9 +1158,6 @@ importers:
       '@fiverr/afterbuild-webpack-plugin':
         specifier: ^1.0.0
         version: 1.0.0
-      '@jest/globals':
-        specifier: ^29.7.0
-        version: 29.7.0
       '@loadable/babel-plugin':
         specifier: 5.13.2
         version: 5.13.2(@babel/core@7.28.3)
@@ -1213,7 +1205,7 @@ importers:
         version: 10.1.0(cypress@15.5.0)
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.14)(jest@26.6.3)(vitest@3.2.4)
+        version: 6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.14)(vitest@3.2.4)
       '@testing-library/react':
         specifier: 14.3.1
         version: 14.3.1(@types/react@18.3.24)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1223,9 +1215,6 @@ importers:
       '@types/history':
         specifier: ^4.7.11
         version: 4.7.11
-      '@types/jest':
-        specifier: ^29.5.8
-        version: 29.5.14
       '@types/loadable__component':
         specifier: ^5.13.9
         version: 5.13.10
@@ -1324,7 +1313,7 @@ importers:
         version: 9.1.2(eslint@8.57.1)
       eslint-config-react-app:
         specifier: ^7.0.1
-        version: 7.0.1(@babel/plugin-syntax-flow@7.27.1(@babel/core@7.28.3))(@babel/plugin-transform-react-jsx@7.27.1(@babel/core@7.28.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)(jest@26.6.3)(typescript@5.9.2)
+        version: 7.0.1(@babel/plugin-syntax-flow@7.27.1(@babel/core@7.28.3))(@babel/plugin-transform-react-jsx@7.27.1(@babel/core@7.28.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)(typescript@5.9.2)
       eslint-import-resolver-alias:
         specifier: ^1.1.2
         version: 1.1.2(eslint-plugin-import@2.32.0)
@@ -1358,15 +1347,6 @@ importers:
       identity-obj-proxy:
         specifier: 3.0.0
         version: 3.0.0
-      jest:
-        specifier: 26.6.3
-        version: 26.6.3
-      jest-environment-jsdom:
-        specifier: ^26
-        version: 26.6.2
-      jest-file:
-        specifier: 1.0.0
-        version: 1.0.0
       jiti:
         specifier: ^2.4.2
         version: 2.5.1
@@ -1469,9 +1449,6 @@ importers:
       tmp:
         specifier: 0.2.1
         version: 0.2.1
-      ts-jest:
-        specifier: ^26.4.2
-        version: 26.5.6(jest@26.6.3)(typescript@5.9.2)
       ts-loader:
         specifier: 9.4.4
         version: 9.4.4(typescript@5.9.2)(webpack@5.90.1)
@@ -7026,10 +7003,6 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
-  bs-logger@0.2.6:
-    resolution: {integrity: sha512-pd8DCoxmbgc7hyPKOvxtqNcjYoOsABPQdcCUjGp3d42VR2CX1ORhk2A87oqqu5R1kk+76nsxZupkmyd+MVtCog==}
-    engines: {node: '>= 6'}
-
   bser@2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
 
@@ -10151,9 +10124,6 @@ packages:
     resolution: {integrity: sha512-zhtMio3Exty18dy8ee8eJ9kjnRyZC1N4C1Nt/VShN1apyXc8rWGtJ9lI7vqiWcyyXS4BVSEn9lxAM2D+07/Tag==}
     engines: {node: '>= 10.14.2'}
 
-  jest-file@1.0.0:
-    resolution: {integrity: sha512-QqcbPCfpVCxixoF0gia825AGBGXYWVi4cQpLsXBQVxkWswnZ39XHpT490NvTMtokY6v6BM+vw8rlhtjORabplA==}
-
   jest-get-type@26.3.0:
     resolution: {integrity: sha512-TpfaviN1R2pQWkIihlfEanwOXK0zcxrKEE4MlU6Tn7keoXdN6/3gK/xl0yEh8DOunn5pOVGKf8hB4R9gVh04ig==}
     engines: {node: '>= 10.14.2'}
@@ -11008,9 +10978,6 @@ packages:
   make-dir@4.0.0:
     resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
     engines: {node: '>=10'}
-
-  make-error@1.3.6:
-    resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
 
   makeerror@1.0.12:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==}
@@ -14349,14 +14316,6 @@ packages:
 
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
-
-  ts-jest@26.5.6:
-    resolution: {integrity: sha512-rua+rCP8DxpA8b4DQD/6X2HQS8Zy/xzViVYfEs2OQu68tkCuKLV0Md8pmX55+W24uRIyAsf/BajRfxOs+R2MKA==}
-    engines: {node: '>= 10'}
-    hasBin: true
-    peerDependencies:
-      jest: '>=26 <27'
-      typescript: '>=3.8 <5.0'
 
   ts-loader@9.4.4:
     resolution: {integrity: sha512-MLukxDHBl8OJ5Dk3y69IsKVFRA/6MwzEqBgh+OXMPB/OD01KQuWPFd1WAQP8a5PeSCAxfnkhiuWqfmFJzJQt9w==}
@@ -17737,7 +17696,7 @@ snapshots:
       jest-haste-map: 26.6.2
       jest-message-util: 26.6.2
       jest-regex-util: 26.0.0
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2
       jest-resolve-dependencies: 26.6.3
       jest-runner: 26.6.3
       jest-runtime: 26.6.3
@@ -17770,6 +17729,7 @@ snapshots:
       '@jest/types': 29.6.3
       '@types/node': 24.9.1
       jest-mock: 29.7.0
+    optional: true
 
   '@jest/expect-utils@29.7.0':
     dependencies:
@@ -17781,6 +17741,7 @@ snapshots:
       jest-snapshot: 29.7.0
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   '@jest/fake-timers@26.6.2':
     dependencies:
@@ -17799,6 +17760,7 @@ snapshots:
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
+    optional: true
 
   '@jest/globals@26.6.2':
     dependencies:
@@ -17814,6 +17776,7 @@ snapshots:
       jest-mock: 29.7.0
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   '@jest/reporters@26.6.2':
     dependencies:
@@ -17833,7 +17796,7 @@ snapshots:
       istanbul-lib-source-maps: 4.0.1
       istanbul-reports: 3.2.0
       jest-haste-map: 26.6.2
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2
       jest-util: 26.6.2
       jest-worker: 26.6.2
       slash: 3.0.0
@@ -17901,7 +17864,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.4
       '@jest/types': 29.6.3
-      '@jridgewell/trace-mapping': 0.3.30
+      '@jridgewell/trace-mapping': 0.3.31
       babel-plugin-istanbul: 6.1.1
       chalk: 4.1.2
       convert-source-map: 2.0.0
@@ -17916,6 +17879,7 @@ snapshots:
       write-file-atomic: 4.0.2
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   '@jest/types@26.6.2':
     dependencies:
@@ -20794,10 +20758,12 @@ snapshots:
   '@sinonjs/commons@3.0.1':
     dependencies:
       type-detect: 4.0.8
+    optional: true
 
   '@sinonjs/fake-timers@10.3.0':
     dependencies:
       '@sinonjs/commons': 3.0.1
+    optional: true
 
   '@sinonjs/fake-timers@6.0.1':
     dependencies:
@@ -21364,22 +21330,6 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/jest-dom@6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.14)(jest@26.6.3)(vitest@3.2.4)':
-    dependencies:
-      '@adobe/css-tools': 4.4.4
-      '@babel/runtime': 7.20.6
-      aria-query: 5.3.2
-      chalk: 3.0.0
-      css.escape: 1.5.1
-      dom-accessibility-api: 0.6.3
-      lodash: 4.17.21
-      redent: 3.0.0
-    optionalDependencies:
-      '@jest/globals': 29.7.0
-      '@types/jest': 29.5.14
-      jest: 26.6.3
-      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@24.9.1)(@vitest/ui@2.1.9)(jsdom@16.7.0)(less@3.11.1)(lightningcss@1.30.1)(sass@1.91.0)(terser@5.43.1)
-
   '@testing-library/jest-dom@6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.14)(vitest@2.1.9)':
     dependencies:
       '@adobe/css-tools': 4.4.4
@@ -21409,6 +21359,21 @@ snapshots:
       '@jest/globals': 29.7.0
       '@types/jest': 29.5.14
       vitest: 3.2.4(@types/debug@4.1.12)(@types/node@24.9.1)(jsdom@22.1.0)(less@3.11.1)(lightningcss@1.30.1)(sass@1.91.0)(terser@5.43.1)
+
+  '@testing-library/jest-dom@6.4.2(@jest/globals@29.7.0)(@types/jest@29.5.14)(vitest@3.2.4)':
+    dependencies:
+      '@adobe/css-tools': 4.4.4
+      '@babel/runtime': 7.20.6
+      aria-query: 5.3.2
+      chalk: 3.0.0
+      css.escape: 1.5.1
+      dom-accessibility-api: 0.6.3
+      lodash: 4.17.21
+      redent: 3.0.0
+    optionalDependencies:
+      '@jest/globals': 29.7.0
+      '@types/jest': 29.5.14
+      vitest: 3.2.4(@types/debug@4.1.12)(@types/node@24.9.1)(@vitest/ui@2.1.9)(jsdom@16.7.0)(less@3.11.1)(lightningcss@1.30.1)(sass@1.91.0)(terser@5.43.1)
 
   '@testing-library/jest-dom@6.5.0':
     dependencies:
@@ -23266,10 +23231,6 @@ snapshots:
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.4)
 
-  bs-logger@0.2.6:
-    dependencies:
-      fast-json-stable-stringify: 2.1.0
-
   bser@2.1.1:
     dependencies:
       node-int64: 0.4.0
@@ -24931,7 +24892,7 @@ snapshots:
     dependencies:
       eslint: 8.57.1
 
-  eslint-config-react-app@7.0.1(@babel/plugin-syntax-flow@7.27.1(@babel/core@7.28.3))(@babel/plugin-transform-react-jsx@7.27.1(@babel/core@7.28.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)(jest@26.6.3)(typescript@5.9.2):
+  eslint-config-react-app@7.0.1(@babel/plugin-syntax-flow@7.27.1(@babel/core@7.28.3))(@babel/plugin-transform-react-jsx@7.27.1(@babel/core@7.28.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)(typescript@5.9.2):
     dependencies:
       '@babel/core': 7.28.3
       '@babel/eslint-parser': 7.22.15(@babel/core@7.28.3)(eslint@8.57.1)
@@ -24943,7 +24904,7 @@ snapshots:
       eslint: 8.57.1
       eslint-plugin-flowtype: 8.0.3(@babel/plugin-syntax-flow@7.27.1(@babel/core@7.28.3))(@babel/plugin-transform-react-jsx@7.27.1(@babel/core@7.28.3))(eslint@8.57.1)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
-      eslint-plugin-jest: 25.7.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(jest@26.6.3)(typescript@5.9.2)
+      eslint-plugin-jest: 25.7.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(typescript@5.9.2)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@8.57.1)
       eslint-plugin-react: 7.37.5(eslint@8.57.1)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.1)
@@ -25145,13 +25106,12 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-jest@25.7.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(jest@26.6.3)(typescript@5.9.2):
+  eslint-plugin-jest@25.7.0(@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(typescript@5.9.2):
     dependencies:
       '@typescript-eslint/experimental-utils': 5.62.0(eslint@8.57.1)(typescript@5.9.2)
       eslint: 8.57.1
     optionalDependencies:
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.2))(eslint@8.57.1)(typescript@5.9.2)
-      jest: 26.6.3
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -27078,7 +27038,7 @@ snapshots:
       jest-get-type: 26.3.0
       jest-jasmine2: 26.6.3
       jest-regex-util: 26.0.0
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2
       jest-util: 26.6.2
       jest-validate: 26.6.2
       micromatch: 4.0.8
@@ -27139,8 +27099,6 @@ snapshots:
       jest-mock: 26.6.2
       jest-util: 26.6.2
 
-  jest-file@1.0.0: {}
-
   jest-get-type@26.3.0: {}
 
   jest-get-type@29.6.3: {}
@@ -27180,6 +27138,7 @@ snapshots:
       walker: 1.0.8
     optionalDependencies:
       fsevents: 2.3.3
+    optional: true
 
   jest-jasmine2@26.6.3:
     dependencies:
@@ -27268,14 +27227,16 @@ snapshots:
       '@jest/types': 29.6.3
       '@types/node': 24.9.1
       jest-util: 29.7.0
+    optional: true
 
-  jest-pnp-resolver@1.2.3(jest-resolve@26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)):
+  jest-pnp-resolver@1.2.3(jest-resolve@26.6.2):
     optionalDependencies:
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2
 
   jest-regex-util@26.0.0: {}
 
-  jest-regex-util@29.6.3: {}
+  jest-regex-util@29.6.3:
+    optional: true
 
   jest-resolve-dependencies@26.6.3:
     dependencies:
@@ -27285,12 +27246,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  jest-resolve@26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7):
+  jest-resolve@26.6.2:
     dependencies:
       '@jest/types': 26.6.2
       chalk: 4.1.2
       graceful-fs: 4.2.11
-      jest-pnp-resolver: 1.2.3(jest-resolve@26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7))
+      jest-pnp-resolver: 1.2.3(jest-resolve@26.6.2)
       jest-util: 26.6.2
       read-pkg-up: 7.0.1
       resolve: 1.22.10
@@ -27312,7 +27273,7 @@ snapshots:
       jest-haste-map: 26.6.2
       jest-leak-detector: 26.6.2
       jest-message-util: 26.6.2
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2
       jest-runtime: 26.6.3
       jest-util: 26.6.2
       jest-worker: 26.6.2
@@ -27347,7 +27308,7 @@ snapshots:
       jest-message-util: 26.6.2
       jest-mock: 26.6.2
       jest-regex-util: 26.0.0
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2
       jest-snapshot: 26.6.2
       jest-util: 26.6.2
       jest-validate: 26.6.2
@@ -27380,7 +27341,7 @@ snapshots:
       jest-haste-map: 26.6.2
       jest-matcher-utils: 26.6.2
       jest-message-util: 26.6.2
-      jest-resolve: 26.6.2(patch_hash=65a4e7abff36f2542e1c02ca2d50f557422b14a9fb65329ccc5796d20c1440d7)
+      jest-resolve: 26.6.2
       natural-compare: 1.4.0
       pretty-format: 26.6.2
       semver: 7.7.2
@@ -27411,6 +27372,7 @@ snapshots:
       semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   jest-util@26.6.2:
     dependencies:
@@ -27472,6 +27434,7 @@ snapshots:
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
+    optional: true
 
   jest@26.6.3:
     dependencies:
@@ -28188,8 +28151,6 @@ snapshots:
   make-dir@4.0.0:
     dependencies:
       semver: 7.7.2
-
-  make-error@1.3.6: {}
 
   makeerror@1.0.12:
     dependencies:
@@ -32593,21 +32554,6 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-jest@26.5.6(jest@26.6.3)(typescript@5.9.2):
-    dependencies:
-      bs-logger: 0.2.6
-      buffer-from: 1.1.2
-      fast-json-stable-stringify: 2.1.0
-      jest: 26.6.3
-      jest-util: 26.6.2
-      json5: 2.2.3
-      lodash: 4.17.21
-      make-error: 1.3.6
-      mkdirp: 1.0.4
-      semver: 7.7.2
-      typescript: 5.9.2
-      yargs-parser: 20.2.9
-
   ts-loader@9.4.4(typescript@5.9.2)(webpack@5.90.1):
     dependencies:
       chalk: 4.1.2
@@ -33877,6 +33823,7 @@ snapshots:
     dependencies:
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
+    optional: true
 
   write-file-atomic@5.0.1:
     dependencies:
