@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
  * @function Error
  * @returns {string} Markup of the error page.
  */
-const Error = ({ message, stackTrace }) => {
+const Error = ({ message, stackTrace = null }) => {
   let history = useHistory();
 
   return (
@@ -67,10 +67,6 @@ const Error = ({ message, stackTrace }) => {
 Error.propTypes = {
   message: PropTypes.string.isRequired,
   stackTrace: PropTypes.string,
-};
-
-Error.defaultProps = {
-  stackTrace: null,
 };
 
 export default injectIntl(Error);

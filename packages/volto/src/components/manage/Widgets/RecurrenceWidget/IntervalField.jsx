@@ -12,7 +12,12 @@ import { Form, Grid, Input } from 'semantic-ui-react';
  * @function IntervalField
  * @returns {string} Markup of the component.
  */
-const IntervalField = ({ label, labelAfter, value, onChange }) => {
+const IntervalField = ({
+  label,
+  labelAfter = null,
+  value = null,
+  onChange = null,
+}) => {
   return (
     <Form.Field inline className="text">
       <Grid>
@@ -54,17 +59,6 @@ IntervalField.propTypes = {
   labelAfter: PropTypes.string,
   value: PropTypes.any,
   onChange: PropTypes.func,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-IntervalField.defaultProps = {
-  label: null,
-  labelAfter: null,
-  onChange: null,
 };
 
 export default IntervalField;

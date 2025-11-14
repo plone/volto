@@ -35,8 +35,8 @@ export const DescriptionBlockEdit = (props) => {
     block,
     blockNode,
     data,
-    detached,
-    editable,
+    detached = false,
+    editable = true,
     index,
     metadata,
     onAddBlock,
@@ -192,11 +192,6 @@ DescriptionBlockEdit.propTypes = {
   editable: PropTypes.bool,
   detached: PropTypes.bool,
   blockNode: PropTypes.any,
-};
-
-DescriptionBlockEdit.defaultProps = {
-  detached: false,
-  editable: true,
 };
 
 export default DescriptionBlockEdit;

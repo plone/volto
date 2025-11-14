@@ -22,6 +22,24 @@ import { Input } from 'semantic-ui-react';
 const EmailWidget = (props) => {
   const {
     id,
+    value = null,
+    onChange = () => {},
+    onBlur = () => {},
+    onClick = () => {},
+    minLength = null,
+    maxLength = null,
+    placeholder,
+    isDisabled,
+    description = null,
+    required = false,
+    error = [],
+    ...rest
+  } = props;
+  const inputId = `field-${id}`;
+
+  const wrapperProps = {
+    ...rest,
+    id,
     value,
     onChange,
     onBlur,
@@ -30,11 +48,13 @@ const EmailWidget = (props) => {
     maxLength,
     placeholder,
     isDisabled,
-  } = props;
-  const inputId = `field-${id}`;
+    description,
+    required,
+    error,
+  };
 
   return (
-    <FormFieldWrapper {...props} className="email">
+    <FormFieldWrapper {...wrapperProps} className="email">
       <Input
         id={inputId}
         name={id}
@@ -74,23 +94,6 @@ EmailWidget.propTypes = {
   minLength: PropTypes.number,
   maxLength: PropTypes.number,
   placeholder: PropTypes.string,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-EmailWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  minLength: null,
-  maxLength: null,
 };
 
 export default EmailWidget;

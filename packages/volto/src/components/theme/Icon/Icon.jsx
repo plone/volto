@@ -34,11 +34,11 @@ const defaultSize = '36px';
  */
 const Icon = ({
   name,
-  size,
-  color,
-  className,
-  title,
-  onClick,
+  size = defaultSize,
+  color = null,
+  className = null,
+  title = null,
+  onClick = null,
   style = {},
   id,
   ariaHidden,
@@ -78,19 +78,6 @@ Icon.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   onClick: PropTypes.func,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-Icon.defaultProps = {
-  size: defaultSize,
-  color: null,
-  className: null,
-  title: null,
-  onClick: null,
 };
 
 export default Icon;

@@ -16,7 +16,7 @@ import config from '@plone/registry';
  * @param {Array} [props.content.subjects] Optional array of tags (subjects).
  * @returns {JSX.Element|null} Markup of the component or null if no tags are available.
  */
-const Tags = ({ content }) => {
+const Tags = ({ content = { subjects: [] } }) => {
   const tags = content?.subjects || [];
 
   if (!config.settings.showTags || !tags.length) return null;
@@ -41,17 +41,6 @@ Tags.propTypes = {
   content: PropTypes.shape({
     subjects: PropTypes.arrayOf(PropTypes.string),
   }),
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-Tags.defaultProps = {
-  content: {
-    subjects: [],
-  },
 };
 
 export default Tags;

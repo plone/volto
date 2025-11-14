@@ -18,10 +18,10 @@ const messages = defineMessages({
  * @returns {string} Markup of the component.
  */
 const ByMonthDayField = ({
-  value,
-  disabled,
-  onChange,
-  hideAfterLabel,
+  value = null,
+  disabled = false,
+  onChange = null,
+  hideAfterLabel = false,
   intl,
 }) => {
   return (
@@ -62,18 +62,6 @@ ByMonthDayField.propTypes = {
   value: PropTypes.any,
   onChange: PropTypes.func,
   hideAfterLabel: PropTypes.bool,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-ByMonthDayField.defaultProps = {
-  disabled: false,
-  value: null,
-  onChange: null,
-  hideAfterLabel: false,
 };
 
 export default injectIntl(ByMonthDayField);

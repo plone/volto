@@ -20,7 +20,13 @@ const messages = defineMessages({
  * @function EndField
  * @returns {string} Markup of the component.
  */
-const EndField = ({ value, count, until, onChange, intl }) => {
+const EndField = ({
+  value = null,
+  count = null,
+  until = null,
+  onChange = null,
+  intl,
+}) => {
   return (
     <Form.Field inline className="text">
       <Grid>
@@ -112,18 +118,6 @@ EndField.propTypes = {
   count: PropTypes.any,
   until: PropTypes.any,
   onChange: PropTypes.func,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-EndField.defaultProps = {
-  value: null,
-  count: null,
-  until: null,
-  onChange: null,
 };
 
 export default injectIntl(EndField);

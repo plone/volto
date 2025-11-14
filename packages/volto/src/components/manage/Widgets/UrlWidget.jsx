@@ -33,17 +33,22 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
 export const UrlWidget = (props) => {
   const {
     id,
-    onChange,
-    onBlur,
-    onClick,
-    minLength,
-    maxLength,
+    onChange = () => {},
+    onBlur = () => {},
+    onClick = () => {},
+    minLength = null,
+    maxLength = null,
     placeholder,
     isDisabled,
+    value: initialValue = null,
+    description = null,
+    required = false,
+    error = [],
+    ...rest
   } = props;
   const inputId = `field-${id}`;
 
-  const [value, setValue] = useState(flattenToAppURL(props.value));
+  const [value, setValue] = useState(flattenToAppURL(initialValue));
   const [isInvalid, setIsInvalid] = useState(false);
   /**
    * Clear handler
@@ -83,8 +88,24 @@ export const UrlWidget = (props) => {
     onChange(id, newValue === '' ? undefined : newValue);
   };
 
+  const wrapperProps = {
+    ...rest,
+    id,
+    onChange,
+    onBlur,
+    onClick,
+    minLength,
+    maxLength,
+    placeholder,
+    isDisabled,
+    value: initialValue,
+    description,
+    required,
+    error,
+  };
+
   return (
-    <FormFieldWrapper {...props} className="url wide">
+    <FormFieldWrapper {...wrapperProps} className="url wide">
       <div className="wrapper">
         <Input
           id={inputId}
@@ -165,23 +186,6 @@ UrlWidget.propTypes = {
   maxLength: PropTypes.number,
   openObjectBrowser: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-UrlWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  minLength: null,
-  maxLength: null,
 };
 
 export default withObjectBrowser(UrlWidget);

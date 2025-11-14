@@ -8,17 +8,18 @@ import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWr
 const TextWidget = (props) => {
   const {
     id,
-    value,
-    onChange,
-    onBlur,
-    onClick,
-    icon,
-    iconAction,
-    minLength,
-    maxLength,
+    value = null,
+    onChange = () => {},
+    onBlur = () => {},
+    onClick = () => {},
+    icon = null,
+    iconAction = null,
+    minLength = null,
+    maxLength = null,
     placeholder,
     isDisabled,
-    focus,
+    focus = false,
+    ...rest
   } = props;
 
   const ref = useRef();
@@ -30,8 +31,23 @@ const TextWidget = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const wrapperProps = {
+    ...rest,
+    id,
+    value,
+    onChange,
+    onBlur,
+    onClick,
+    icon,
+    iconAction,
+    minLength,
+    maxLength,
+    isDisabled,
+    focus,
+  };
+
   return (
-    <FormFieldWrapper {...props} className="text">
+    <FormFieldWrapper {...wrapperProps} className="text">
       <Input
         id={`field-${id}`}
         name={id}
@@ -84,21 +100,4 @@ TextWidget.propTypes = {
   maxLength: PropTypes.number,
   wrapped: PropTypes.bool,
   placeholder: PropTypes.string,
-};
-
-TextWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  onEdit: null,
-  onDelete: null,
-  focus: false,
-  icon: null,
-  iconAction: null,
-  minLength: null,
-  maxLength: null,
 };

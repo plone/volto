@@ -59,12 +59,12 @@ const formatDate = (d, moment) => {
  * @returns {string} Markup of the component.
  */
 const Occurences_ = ({
-  rruleSet,
+  rruleSet = null,
   exclude,
   undoExclude,
   intl,
-  showTitle,
-  editOccurences,
+  showTitle = true,
+  editOccurences = true,
   moment: momentlib,
 }) => {
   const moment = momentlib.default;
@@ -198,17 +198,6 @@ Occurences.propTypes = {
   rruleSet: PropTypes.any,
   showTitle: PropTypes.bool,
   editOccurences: PropTypes.bool,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-Occurences.defaultProps = {
-  rruleSet: null,
-  showTitle: true,
-  editOccurences: true,
 };
 
 export default injectIntl(Occurences);

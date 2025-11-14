@@ -26,10 +26,10 @@ import rightChevron from '@plone/volto/icons/right-key.svg';
 const Pagination = ({
   current,
   total,
-  pageSize,
-  pageSizes,
+  pageSize = null,
+  pageSizes = [],
   onChangePage,
-  onChangePageSize,
+  onChangePageSize = null,
 }) => (
   <Menu secondary attached>
     <Menu.Menu>
@@ -139,17 +139,6 @@ Pagination.propTypes = {
    * Handler called when changing the pagesize
    */
   onChangePageSize: PropTypes.func,
-};
-
-/**
- * Default props.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-Pagination.defaultProps = {
-  pageSize: null,
-  pageSizes: [],
-  onChangePageSize: null,
 };
 
 export default injectIntl(Pagination);

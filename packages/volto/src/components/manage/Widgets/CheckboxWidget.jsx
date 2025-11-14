@@ -25,10 +25,36 @@ import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWr
  * ```
  */
 const CheckboxWidget = (props) => {
-  const { id, title, value, onChange, isDisabled } = props;
+  const {
+    id,
+    title,
+    value = null,
+    onChange = null,
+    isDisabled,
+    description = null,
+    required = false,
+    error = [],
+    onEdit = null,
+    onDelete = null,
+    ...rest
+  } = props;
+
+  const wrapperProps = {
+    ...rest,
+    id,
+    title,
+    value,
+    onChange,
+    isDisabled,
+    description,
+    required,
+    error,
+    onEdit,
+    onDelete,
+  };
 
   return (
-    <FormFieldWrapper {...props} columns={1}>
+    <FormFieldWrapper {...wrapperProps} columns={1}>
       <div className="wrapper">
         <Checkbox
           id={`field-${id}`}
@@ -61,21 +87,6 @@ CheckboxWidget.propTypes = {
   onEdit: PropTypes.func,
   onDelete: PropTypes.func,
   wrapped: PropTypes.bool,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-CheckboxWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: null,
-  onEdit: null,
-  onDelete: null,
 };
 
 export default injectIntl(CheckboxWidget);

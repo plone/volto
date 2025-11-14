@@ -21,7 +21,18 @@ const messages = defineMessages({
 });
 
 const TimeWidgetComponent = (props) => {
-  const { id, resettable, moment, value, onChange, isDisabled } = props;
+  const {
+    id,
+    resettable = true,
+    moment,
+    value = null,
+    onChange,
+    isDisabled,
+    description = null,
+    required = false,
+    error = [],
+    ...rest
+  } = props;
 
   const intl = useIntl();
   const lang = intl.locale;
@@ -36,8 +47,19 @@ const TimeWidgetComponent = (props) => {
     onChange(id, null);
   };
 
+  const wrapperProps = {
+    ...rest,
+    id,
+    resettable,
+    value,
+    description,
+    required,
+    error,
+    isDisabled,
+  };
+
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper {...wrapperProps}>
       <div className="date-time-widget-wrapper">
         <div className="ui input time-input">
           <TimePicker
@@ -81,16 +103,6 @@ TimeWidgetComponent.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   resettable: PropTypes.bool,
-};
-
-TimeWidgetComponent.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  dateOnly: false,
-  noPastDates: false,
-  value: null,
-  resettable: true,
 };
 
 export default injectLazyLibs(['reactDates', 'moment'])(TimeWidgetComponent);

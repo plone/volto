@@ -85,7 +85,18 @@ const messages = defineMessages({
  *
  */
 const FileWidget = (props) => {
-  const { id, value, onChange, isDisabled } = props;
+  const {
+    id,
+    value = null,
+    onChange,
+    isDisabled,
+    description = null,
+    required = false,
+    error = [],
+    size,
+    accept,
+    ...rest
+  } = props;
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
 
@@ -167,12 +178,25 @@ const FileWidget = (props) => {
     reader.readAsDataURL(files[0]);
   };
 
+  const wrapperProps = {
+    ...rest,
+    id,
+    value,
+    onChange,
+    isDisabled,
+    description,
+    required,
+    error,
+    size,
+    accept,
+  };
+
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper {...wrapperProps}>
       <Dropzone
         onDrop={onDrop}
-        {...(props.size ? { maxSize: props.size } : {})}
-        {...(props.accept ? { accept: props.accept } : {})}
+        {...(size ? { maxSize: size } : {})}
+        {...(accept ? { accept } : {})}
       >
         {({ getRootProps, getInputProps, isDragActive }) => (
           <div className="file-widget-dropzone" {...getRootProps()}>
@@ -263,18 +287,6 @@ FileWidget.propTypes = {
   }),
   onChange: PropTypes.func.isRequired,
   wrapped: PropTypes.bool,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-FileWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
 };
 
 export default injectIntl(FileWidget);

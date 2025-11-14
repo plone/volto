@@ -29,7 +29,16 @@ const messages = defineMessages({
 });
 
 const ReferenceWidget = (props) => {
-  const { id, title, value, multiple, onChange } = props;
+  const {
+    id,
+    title,
+    value = null,
+    multiple = true,
+    onChange,
+    description = null,
+    required = false,
+    error = [],
+  } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
   const search = useSelector((state) => state.search.items);
@@ -146,7 +155,13 @@ const ReferenceWidget = (props) => {
   };
 
   return (
-    <FormFieldWrapper {...props}>
+    <FormFieldWrapper
+      {...props}
+      description={description}
+      required={required}
+      error={error}
+      value={value}
+    >
       <Dropdown
         options={values(choices)}
         placeholder={title}
@@ -196,11 +211,4 @@ ReferenceWidget.propTypes = {
   wrapped: PropTypes.bool,
 };
 
-ReferenceWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  multiple: true,
-};
 export default ReferenceWidget;

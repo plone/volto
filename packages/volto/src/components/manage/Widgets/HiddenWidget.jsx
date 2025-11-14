@@ -8,6 +8,37 @@ import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWr
 const HiddenWidget = (props) => {
   const {
     id,
+    value = null,
+    onChange = () => {},
+    onBlur = () => {},
+    onClick = () => {},
+    icon = null,
+    iconAction = null,
+    minLength = null,
+    maxLength = null,
+    placeholder,
+    isDisabled,
+    focus = false,
+    onEdit = null,
+    description = null,
+    required = false,
+    error = [],
+    onDelete = null,
+    ...rest
+  } = props;
+
+  const ref = useRef();
+
+  useEffect(() => {
+    if (focus) {
+      ref.current.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const wrapperProps = {
+    ...rest,
+    id,
     value,
     onChange,
     onBlur,
@@ -20,19 +51,14 @@ const HiddenWidget = (props) => {
     isDisabled,
     focus,
     onEdit,
-  } = props;
-
-  const ref = useRef();
-
-  useEffect(() => {
-    if (focus) {
-      ref.current.focus();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    description,
+    required,
+    error,
+    onDelete,
+  };
 
   return onEdit ? (
-    <FormFieldWrapper {...props} className="text">
+    <FormFieldWrapper {...wrapperProps} className="text">
       <Input
         id={`field-${id}`}
         name={id}
@@ -94,21 +120,4 @@ HiddenWidget.propTypes = {
   maxLength: PropTypes.number,
   wrapped: PropTypes.bool,
   placeholder: PropTypes.string,
-};
-
-HiddenWidget.defaultProps = {
-  description: null,
-  required: false,
-  error: [],
-  value: null,
-  onChange: () => {},
-  onBlur: () => {},
-  onClick: () => {},
-  onEdit: null,
-  onDelete: null,
-  focus: false,
-  icon: null,
-  iconAction: null,
-  minLength: null,
-  maxLength: null,
 };

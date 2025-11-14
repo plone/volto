@@ -239,12 +239,31 @@ const UnconnectedField = (props, { intl }) => {
 
 const DndConnectedField = injectLazyLibs(['reactDnd'])(UnconnectedField);
 
-const Field = (props) =>
-  props.onOrder ? (
-    <DndConnectedField {...props} />
+const Field = ({
+  widget = null,
+  vocabulary = null,
+  choices = null,
+  type = 'string',
+  focus = false,
+  onOrder = null,
+  ...rest
+}) => {
+  const fieldProps = {
+    widget,
+    vocabulary,
+    choices,
+    type,
+    focus,
+    onOrder,
+    ...rest,
+  };
+
+  return onOrder ? (
+    <DndConnectedField {...fieldProps} />
   ) : (
-    <UnconnectedField {...props} />
+    <UnconnectedField {...fieldProps} />
   );
+};
 
 /**
  * Property types.
@@ -259,20 +278,6 @@ Field.propTypes = {
   id: PropTypes.string.isRequired,
   focus: PropTypes.bool,
   onOrder: PropTypes.func,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-Field.defaultProps = {
-  widget: null,
-  vocabulary: null,
-  choices: null,
-  type: 'string',
-  focus: false,
-  onOrder: null,
 };
 
 export default injectIntl(Field);

@@ -18,10 +18,10 @@ import { useSelector } from 'react-redux';
  * @returns {string} Markup of the component.
  */
 const MonthOfTheYearField = ({
-  value,
-  disabled,
-  inline,
-  onChange,
+  value = null,
+  disabled = false,
+  inline = false,
+  onChange = null,
   moment: momentlib,
 }) => {
   const moment = momentlib.default;
@@ -57,18 +57,6 @@ MonthOfTheYearField.propTypes = {
   disabled: PropTypes.bool,
   inline: PropTypes.bool,
   onChange: PropTypes.func,
-};
-
-/**
- * Default properties.
- * @property {Object} defaultProps Default properties.
- * @static
- */
-MonthOfTheYearField.defaultProps = {
-  value: null,
-  disabled: false,
-  inline: false,
-  onChange: null,
 };
 
 export default injectLazyLibs(['moment'])(MonthOfTheYearField);

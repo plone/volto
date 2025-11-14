@@ -10,23 +10,6 @@ exports[`Contact form > renders a contact form 1`] = `
       id="view"
     >
       <div
-        class="ui icon negative attached message"
-      >
-        <i
-          aria-hidden="true"
-          class="warning icon"
-        />
-        <div
-          class="content"
-        >
-          <div
-            class="header"
-          >
-            Error
-          </div>
-        </div>
-      </div>
-      <div
         data-schema="{
   "fieldsets": [
     {
