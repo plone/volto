@@ -380,7 +380,7 @@
     "react-is": "^18.2.0",
     "release-it": "^17.1.1",
     "resolve-url-loader": "^3.1.2",
-    "sass": "1.29.0",
+    "sass": "1.32.0",
     "sass-loader": "^10.0.3",
     "release-it": "^19.0.4",
     "semver": "^7.5.4",
