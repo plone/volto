@@ -40,10 +40,9 @@
     "start:coresandbox": "make build-deps && ADDONS=coresandbox razzle start",
     "build": "make build-deps && razzle build --noninteractive",
     "build:types": "tsc --project tsconfig.declarations.json",
-    "vitest": "vitest",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
-    "test": "razzle test --maxWorkers=${MAX_WORKERS:-50%}",
-    "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
+    "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu vitest run",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "prettier --single-quote --check '{src,cypress}/**/*.{js,jsx,ts,tsx}' --check '*.js'",
@@ -71,58 +70,6 @@
         "path": "build/public/static/js/*.js",
         "maxSize": "700kB"
       }
-    ]
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.js(x)?$": "babel-jest",
-      "^.+\\.ts(x)?$": "ts-jest",
-      "^.+\\.(png)$": "jest-file",
-      "^.+\\.(jpg)$": "jest-file",
-      "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
-    },
-    "moduleNameMapper": {
-      "@plone/volto/package.json": "<rootDir>/package.json",
-      "@plone/volto/babel": "<rootDir>/babel.js",
-      "@plone/volto/(.*)$": "<rootDir>/src/$1",
-      "@plone/volto-slate/(.*)$": "<rootDir>/../volto-slate/src/$1",
-      "@plone/registry/addon-registry$": "<rootDir>/node_modules/@plone/registry/dist/addon-registry/addon-registry.js",
-      "@plone/registry/create-addons-loader$": "<rootDir>/node_modules/@plone/registry/dist/addon-registry/create-addons-loader.js",
-      "@plone/registry": "<rootDir>/../registry/src",
-      "@plone/registry/(.*)$": "<rootDir>/../registry/src/$1",
-      "@plone/volto": "<rootDir>/src/index.js",
-      "~/config": "<rootDir>/src/config",
-      "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
-      "(.*)/locales/(.*)": "<rootDir>/locales/$2",
-      "load-volto-addons": "<rootDir>/jest-addons-loader.js",
-      "@package/(.*)$": "<rootDir>/src/$1",
-      "@root/config": "<rootDir>/jest-addons-loader.js",
-      "@root/(.*)$": "<rootDir>/src/$1",
-      "@voltoconfig": "<rootDir>/jest-addons-loader.js",
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-    },
-    "coverageThreshold": {
-      "global": {
-        "branches": 10,
-        "functions": 10,
-        "lines": 10,
-        "statements": 10
-      }
-    },
-    "setupFiles": [
-      "./test-setup-globals.js",
-      "./test-setup-config.jsx"
-    ],
-    "globalSetup": "./global-test-setup.js",
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest-setup-afterenv.js"
-    ],
-    "globals": {
-      "__DEV__": true
-    },
-    "testMatch": [
-      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/../**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
     ]
   },
   "stylelint": {
@@ -288,7 +235,6 @@
     "@babel/runtime": "7.20.6",
     "@babel/types": "7.20.5",
     "@fiverr/afterbuild-webpack-plugin": "^1.0.0",
-    "@jest/globals": "^29.7.0",
     "@loadable/babel-plugin": "5.13.2",
     "@loadable/webpack-plugin": "5.15.2",
     "@plone/types": "workspace:*",
@@ -308,7 +254,6 @@
     "@testing-library/react": "14.3.1",
     "@testing-library/react-hooks": "8.0.1",
     "@types/history": "^4.7.11",
-    "@types/jest": "^29.5.8",
     "@types/loadable__component": "^5.13.9",
     "@types/lodash": "^4.14.201",
     "@types/node": "^24",
@@ -352,9 +297,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "5.5.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "26.6.3",
-    "jest-environment-jsdom": "^26",
-    "jest-file": "1.0.0",
     "jiti": "^2.4.2",
     "jsdom": "^16.7.0",
     "jsonwebtoken": "9.0.0",
@@ -390,7 +332,6 @@
     "svgo-loader": "3.0.3",
     "terser-webpack-plugin": "5.3.6",
     "tmp": "0.2.1",
-    "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
     "typescript": "^5.7.3",
     "use-trace-update": "1.3.2",

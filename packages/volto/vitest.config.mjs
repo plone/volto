@@ -54,8 +54,8 @@ export default defineConfig({
     setupFiles: [
       `${projectRoot}/test-setup-globals-vitest.js`,
       `${projectRoot}/test-setup-config.jsx`,
-      `${projectRoot}/jest-setup-afterenv.js`,
-      `${projectRoot}/jest-addons-loader.js`,
+      `${projectRoot}/test-setup-afterenv.js`,
+      `${projectRoot}/test-addons-loader.js`,
     ],
     globalSetup: `${projectRoot}/global-test-setup.js`,
     coverage: {
