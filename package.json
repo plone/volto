@@ -50,8 +50,7 @@
       "react-refresh": "0.14.0"
     },
     "ignoredBuiltDependencies": [
-      "@parcel/watcher",
-      "@swc/core"
+      "@parcel/watcher"
     ],
     "onlyBuiltDependencies": [
       "@tailwindcss/oxide",
