@@ -1,1 +1,1 @@
-Adopt Razzke SCSS plugin and silence the deprecation warnings. @sneridagh
+Adopt SCSS plugin from Razzle and silence the deprecation warnings. @sneridagh
