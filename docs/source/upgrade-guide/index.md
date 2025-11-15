@@ -48,6 +48,37 @@ You should take the following actions for your Volto 19 projects.
 
 If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.
 
+(replace-razzle-with-volto-razzle)=
+
+### Replace `razzle` with `@volto/razzle` (fork)
+```{versionchanged} Volto 19.0.0-alpha.10
+```
+
+`@volto/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
+Use `@volto/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
+
+To switch, follow these steps.
+
+1.  In most cases, you don't need to change your scripts—for example `razzle start`, `razzle build`, or `razzle test`—because the fork preserves the original CLI entry points.
+    If you have code that imports internal modules from the `razzle` package, for example, `require('razzle/some/path')`, then update those imports to reference `@volto/razzle` instead.
+
+2.  Search your project for any direct or indirect references to `razzle` to ensure nothing was left behind, including imports, requires, and configuration presets or plugins:
+
+    ```shell
+    grep -R "razzle" -n --exclude-dir=node_modules || true
+    ```
+
+    Check in particular:
+
+    -   build and Babel configurations, including {file}`babel.config.js`, {file}`.babelrc`, {file}`jest.config.js`, {file}`webpack.config.js`, and {file}`razzle.config.js`
+    -   any presets or plugins sections referencing `razzle`
+    -   scripts in {file}`package.json` that invoke the Razzle CLI
+
+```{note}
+The fork exists so we can ship fixes and compatibility patches required by Volto, since the upstream is no longer maintained.
+Our goal is to keep `@volto/razzle` compatible with the `razzle` public API.
+```
+
 ### `pnpm` has been upgraded to version 10
 ```{versionchanged} Volto 19.0.0-alpha.7
 ```
