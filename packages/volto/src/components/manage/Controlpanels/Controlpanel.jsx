@@ -86,6 +86,7 @@ class Controlpanel extends Component {
       title: PropTypes.string,
     }),
     pathname: PropTypes.string.isRequired,
+    staticContext: PropTypes.object,
   };
 
   /**
@@ -201,7 +202,12 @@ class Controlpanel extends Component {
       this.props.getRequest?.loaded === false &&
       this.props.getRequest?.error
     ) {
-      return <Error error={this.props.getRequest.error} />;
+      return (
+        <Error
+          error={this.props.getRequest.error}
+          staticContext={this.props.staticContext}
+        />
+      );
     }
 
     if (this.props.controlpanel) {

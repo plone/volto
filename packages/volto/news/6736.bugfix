@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Fix protected pages and control panels showing blank screen instead of error page for unauthenticated users. @ravi-aman
+=======
+Fixed HTTP status code for protected pages - now returns proper 401 status instead of 200 when unauthenticated users access control panels. @ravi-aman
+>>>>>>> 9662db893 (Fix HTTP 200 status code on protected pages)
