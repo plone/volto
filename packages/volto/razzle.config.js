@@ -121,6 +121,7 @@ const defaultModify = ({
     // Using the default provided (cssnano) by css-minimizer-webpack-plugin
     // should be enough see:
     // (https://github.com/clean-css/clean-css/discussions/1209)
+    // TODO: remove this before merging the Razzle fork into Volto 19
     delete options.webpackOptions.terserPluginOptions?.sourceMap;
     if (!dev) {
       config.optimization = Object.assign({}, config.optimization, {
