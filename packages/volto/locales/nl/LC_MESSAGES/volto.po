@@ -1974,6 +1974,11 @@ msgstr "Herhaal jaarlijks"
 msgid "Invalid Block"
 msgstr "Ongeldig blok - wordt verwijderd bij opslaan"
 
+#. Default: "Invalid password. Minimum 8 characters required."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Invalid password. Minimum 8 characters required."
+msgstr ""
+
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"

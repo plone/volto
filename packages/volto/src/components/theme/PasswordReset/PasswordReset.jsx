@@ -57,6 +57,10 @@ const messages = defineMessages({
     id: 'Confirm password',
     defaultMessage: 'Confirm password',
   },
+  passwordNotValid: {
+    id: 'Invalid password. Minimum 8 characters required.',
+    defaultMessage: 'Invalid password. Minimum 8 characters required.',
+  },
   passwordsDoNotMatch: {
     id: 'Passwords do not match.',
     defaultMessage: 'Passwords do not match.',
@@ -157,6 +161,27 @@ class PasswordReset extends Component {
     if (this.props.loading && nextProps.loaded) {
       this.setState({ isSuccessful: true });
     }
+    if (this.props.loading && nextProps.error) {
+      const status = nextProps.error?.response?.status;
+
+      let message = 'Something went wrong.';
+
+      if (status === 404) {
+        message = 'Username is invalid.';
+      } else if (status === 400) {
+        message = 'Bad request.';
+      } else if (status === 401) {
+        message = 'Unauthorized.';
+      } else if (status === 500) {
+        message = 'Server error.';
+      }
+
+      this.setState({
+        error: {
+          message,
+        },
+      });
+    }
   }
 
   /**
@@ -167,6 +192,14 @@ class PasswordReset extends Component {
    * @returns {undefined}
    */
   onSubmit(data) {
+    if (data.password.length < 8 || data.passwordRepeat.length < 8) {
+      this.setState({
+        error: {
+          message: this.props.intl.formatMessage(messages.passwordNotValid),
+        },
+      });
+      return;
+    }
     if (data.password === data.passwordRepeat) {
       this.props.setInitialPassword(
         data[this.identifierField],
@@ -226,9 +259,6 @@ class PasswordReset extends Component {
       );
     }
     if (this.props.token) {
-      const errmsg = this.props.error
-        ? this.props.error.response.body.error
-        : null;
       return (
         <div id="page-password-reset">
           <Helmet
@@ -240,7 +270,7 @@ class PasswordReset extends Component {
               description={this.props.intl.formatMessage(messages.description)}
               onSubmit={this.onSubmit}
               onCancel={this.onCancel}
-              error={this.state.error || errmsg}
+              error={this.state.error}
               schema={{
                 fieldsets: [
                   {
