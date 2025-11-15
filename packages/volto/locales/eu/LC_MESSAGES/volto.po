@@ -1977,6 +1977,11 @@ msgstr "urtean behin"
 msgid "Invalid Block"
 msgstr "Bloke okerra"
 
+#. Default: "Invalid password. Minimum 8 characters required."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Invalid password. Minimum 8 characters required."
+msgstr ""
+
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"

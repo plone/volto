@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-10-28T09:22:24.223Z\n"
+"POT-Creation-Date: 2025-11-15T12:02:17.751Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1970,6 +1970,11 @@ msgstr ""
 #: components/manage/Blocks/Block/DefaultView
 #: components/theme/View/RenderBlocks
 msgid "Invalid Block"
+msgstr ""
+
+#. Default: "Invalid password. Minimum 8 characters required."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Invalid password. Minimum 8 characters required."
 msgstr ""
 
 #. Default: "Invalid teaser source"
