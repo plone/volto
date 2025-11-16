@@ -70,7 +70,7 @@ To switch, follow these steps.
 
     Check in particular:
 
-    -   build and Babel configurations, including {file}`babel.config.js`, {file}`.babelrc`, {file}`jest.config.js`, {file}`webpack.config.js`, and {file}`razzle.config.js`
+    -   build and Babel configurations, including {file}`babel.config.js`, {file}`.babelrc`, {file}`webpack.config.js`, and {file}`razzle.config.js`
     -   any presets or plugins sections referencing `razzle`
     -   scripts in {file}`package.json` that invoke the Razzle CLI
 
