@@ -53,9 +53,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: [
-      `${projectRoot}/test-setup-globals-vitest.js`,
+      `${projectRoot}/test-setup-globals.js`,
       `${projectRoot}/test-setup-config.jsx`,
-      `${projectRoot}/test-setup-afterenv.js`,
       `${projectRoot}/test-addons-loader.js`
     ],
     globalSetup: `${projectRoot}/global-test-setup.js`,
