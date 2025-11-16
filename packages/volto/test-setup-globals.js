@@ -1,10 +1,4 @@
 import '@testing-library/jest-dom';
-import { expect, describe, it, vi } from 'vitest';
-
-global.describe = describe;
-global.it = it;
-global.expect = expect;
-global.vi = vi;
 
 global.__CLIENT__ = true;
 global.__DEVELOPMENT__ = false;
