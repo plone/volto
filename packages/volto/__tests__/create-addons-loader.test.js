@@ -7,6 +7,8 @@ import {
 } from '@plone/registry/create-addons-loader';
 import jiti from 'jiti';
 
+vi.mock('@volto/razzle/babel', () => ({}));
+
 describe('create-addons-loader code generation', () => {
   test('no addon creates simple loader, default = no loadProjectConfig', () => {
     const code = getAddonsLoaderCode([]);
