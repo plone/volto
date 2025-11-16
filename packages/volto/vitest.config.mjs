@@ -69,7 +69,6 @@ export default defineConfig({
         'node_modules/**',
         '**/dist/**',
         '**/*.config.{js,ts}',
-        '**/jest-*.js',
       ],
     },
     css: true,
