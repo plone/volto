@@ -42,6 +42,31 @@ describe('Slate Delete key behavior', () => {
       .and('contain', 'Second block text');
   });
 
+  it('Delete at end of A removes empty next slate block', () => {
+    cy.getSlateEditorAndType('Keep me');
+
+    cy.addNewBlock('slate');
+
+    cy.get(
+      '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
+      { timeout: 8000 },
+    ).should('have.length', 2);
+
+    cy.get(
+      '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
+    )
+      .first()
+      .type('{moveToEnd}{del}');
+
+    cy.get(
+      '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
+      { timeout: 8000 },
+    )
+      .should('have.length', 1)
+      .first()
+      .should('contain', 'Keep me');
+  });
+
   it('Delete at end of A does nothing when next block is non-text (Description)', () => {
     cy.getSlateEditorAndType('Alpha text');
 

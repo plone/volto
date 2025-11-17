@@ -1,1 +1,2 @@
-Add Cypress coverage for Delete-key behavior in text blocks: merge next text block into current and do nothing to non-text (Description) block when pressed at end of a text block. @aryan7081
+Add Cypress test to cover deleting at end of Slate block when next block is empty. @aryan7081
+

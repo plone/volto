@@ -7,6 +7,32 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 4.0.0-alpha.3 (2025-11-12)
+
+### Bugfix
+
+- Fixed `Icon` component return type since it was breaking in some builds. @sneridagh 
+
+## 4.0.0-alpha.2 (2025-11-12)
+
+### Feature
+
+- Added ESlint Tailwind plugin for prettifying and wrapping up the classNames in components.
+  Amended components classNames by applying the plugin. @sneridagh [#7434](https://github.com/plone/volto/issues/7434)
+- Added `Radio` component to basic set of components, proxied from RAC. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
+- Added RSC compatibility. @pnicolli 
+
+### Bugfix
+
+- Review and check CSS for "grouped fields". @sneridagh [#7469](https://github.com/plone/volto/issues/7469)
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395 copy](https://github.com/plone/volto/issues/7395 copy)
+- Remove unused imports present, due to missing rule in ESlint. @sneridagh [#7395](https://github.com/plone/volto/issues/7395)
+- Linting for remaining TW classNames under callees due to missconfiguration. @sneridagh [#7467](https://github.com/plone/volto/issues/7467)
+
 ## 4.0.0-alpha.1 (2025-09-29)
 
 ### Breaking
@@ -130,7 +156,7 @@
 
 ### Internal
 
-- Improve packaging and bring back the export for `src` folder. @sneridagh
+- Improve packaging and bring back the export for `src` folder. @sneridagh 
 
 ## 2.1.0 (2024-11-05)
 
@@ -142,7 +168,7 @@
 
 ### Internal
 
-- Release 2.0.0 @sneridagh
+- Release 2.0.0 @sneridagh 
 
 ## 2.0.0-alpha.16 (2024-10-18)
 

@@ -37,7 +37,7 @@ If you do not see {guilabel}`Links and references`, then you either have a versi
 In either case, contact your site administrator for assistance.
 
 ```{seealso}
-{term}`excludeLinksAndReferencesMenuItem`
+{ref}`excludeLinksAndReferencesMenuItem`
 ```
 ````
 
