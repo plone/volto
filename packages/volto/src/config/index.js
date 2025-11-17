@@ -95,7 +95,7 @@ let config = {
     proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8000', // for Volto reference
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
-    actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
+    actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT', 'LOGIN'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.

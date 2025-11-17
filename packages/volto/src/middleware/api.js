@@ -306,7 +306,9 @@ const apiMiddlewareFactory =
           // Make sure an error during hydration
           // (for example when serving an archived page)
           // doesn't hide the SSR content.
-          if (isHydrating && !hasExistingError) {
+          // However, user-initiated actions like LOGIN should always
+          // dispatch _FAIL to stop loaders and show errors.
+          if (isHydrating && !hasExistingError && type === GET_CONTENT) {
             isHydrating = false;
             return;
           }
