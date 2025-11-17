@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> This package is a maintained fork of the original [Razzle](https://github.com/jaredpalmer/razzle).
+> This package is a maintained fork of the original [babel-preset-razzle](https://github.com/jaredpalmer/razzle/tree/master/packages/babel-preset-razzle).
 > The upstream project is currently unmaintained, so we forked it into the Volto monorepo to keep its dependencies updated and address security issues.
 > All upstream attributions are preserved below.
 
