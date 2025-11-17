@@ -13,10 +13,8 @@ myst:
 ```
 
 ```{deprecated} 18.0.0-alpha.43
-The Volto app approach is deprecated. For production deployments, use [Cookieplone](https://github.com/plone/cookieplone) with the `sub/frontend_project` template instead.
+The Volto app approach for production deployments is deprecated.
 ```
-
-## Overview
 
 For production deployments of Volto, the recommended approach is to use [Cookieplone](https://github.com/plone/cookieplone) with the `sub/frontend_project` template. This creates a production-ready project structure that uses Volto as a library rather than as a standalone app.
 
@@ -151,32 +149,39 @@ As with any Volto deployment, you should use a reverse proxy (like nginx) to:
 See {doc}`simple` for detailed reverse proxy configuration examples.
 
 ```{important}
-Always serve both Volto and the Plone API from the same domain to avoid CORS issues. For example:
-- Volto: `https://mywebsite.com`
-- API: `https://mywebsite.com/api`
+Always serve both Volto and the Plone API from the same domain to avoid CORS issues, as shown in the following example.
+-   Volto: `https://mywebsite.com`
+-   API: `https://mywebsite.com/api`
 ```
 
 ## Process management
 
-For production deployments, use a process manager to ensure your application stays running:
+For production deployments, use a process manager to ensure your application stays running.
 
-- **PM2**: See {doc}`pm2` for PM2 configuration
-- **systemd**: Create a systemd service file
-- **Docker**: Use Docker's built-in process management
-- **Kubernetes**: Use Kubernetes deployments and services
+PM2
+:   See {doc}`pm2` for PM2 configuration.
+
+systemd
+:   Create a systemd service file.
+
+Docker
+:   Use Docker's built-in process management.
+
+Kubernetes
+:   Use Kubernetes deployments and services.
 
 ## Migration from Volto app
 
-If you're currently using the deprecated Volto app approach:
+To migrate your project from the deprecated Volto app approach to the Cookieplone approach, perform the following steps.
 
-1. Generate a new project using `cookieplone sub/frontend_project`
-2. Copy your customizations (configuration, add-ons, etc.) to the new project
-3. Update your deployment scripts to use the new structure
-4. Test thoroughly before deploying to production
+1.  Generate a new project using `cookieplone sub/frontend_project`.
+2.  Copy your customizations (configuration, add-ons, and other files) to the new project.
+3.  Update your deployment scripts to use the new structure.
+4.  Test thoroughly before deploying to production.
 
-```{seealso}
-- {doc}`simple` for basic deployment steps
-- {doc}`plone:install/create-project-cookieplone` for creating full Plone projects with backend
-- [Cookieplone documentation](https://github.com/plone/cookieplone) for more template options
-```
+## Related topics
+
+- {doc}`simple` for basic deployment steps.
+- {doc}`plone:install/create-project-cookieplone` for creating full Plone projects with backend.
+- [Cookieplone documentation](https://github.com/plone/cookieplone) for more template options.
 
