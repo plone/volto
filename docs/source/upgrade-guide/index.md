@@ -57,22 +57,23 @@ If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20
 `@volto/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
 Use `@volto/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
 
-To switch, follow these steps.
+For most projects, no action is required.
+The fork maintains full compatibility with the original `razzle` package, preserving all CLI entry points such as `razzle start`, `razzle build`, and `razzle test`.
 
-1.  In most cases, you don't need to change your scripts—for example `razzle start`, `razzle build`, or `razzle test`—because the fork preserves the original CLI entry points.
-    If you have code that imports internal modules from the `razzle` package, for example, `require('razzle/some/path')`, then update those imports to reference `@volto/razzle` instead.
+However, if you have customized Volto's internals in your project—for example, by importing internal modules directly from the `razzle` package such as `require('razzle/some/path')`—then you need to update those imports to reference `@volto/razzle` instead.
 
-2.  Search your project for any direct or indirect references to `razzle` to ensure nothing was left behind, including imports, requires, and configuration presets or plugins:
+To verify whether your project requires updates, search for any direct references to internal `razzle` modules:
 
-    ```shell
-    grep -R "razzle" -n --exclude-dir=node_modules || true
-    ```
+```shell
+grep -R "require.*razzle/" -n --exclude-dir=node_modules || true
+grep -R "from.*razzle/" -n --exclude-dir=node_modules || true
+```
 
-    Check in particular:
+If you find any matches, check in particular:
 
-    -   build and Babel configurations, including {file}`babel.config.js`, {file}`.babelrc`, {file}`webpack.config.js`, and {file}`razzle.config.js`
-    -   any presets or plugins sections referencing `razzle`
-    -   scripts in {file}`package.json` that invoke the Razzle CLI
+-   build and Babel configurations, including {file}`babel.config.js`, {file}`.babelrc`, {file}`webpack.config.js`, and {file}`razzle.config.js`
+-   any presets or plugins sections that import internal `razzle` modules
+-   custom build scripts that reference `razzle` internals
 
 ```{note}
 The fork exists so we can ship fixes and compatibility patches required by Volto, since the upstream is no longer maintained.
