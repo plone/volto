@@ -51,7 +51,7 @@ If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20
 (replace-razzle-with-volto-razzle)=
 
 ### Replace `razzle` with `@volto/razzle` (fork)
-```{versionchanged} Volto 19.0.0-alpha.10
+```{versionchanged} Volto 19.0.0-alpha.14
 ```
 
 `@volto/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
