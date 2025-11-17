@@ -21,6 +21,9 @@ export function PlateEditor(props: {
     editor: TPlateEditor<Value, AnyPluginConfig>;
     value: TElement[];
   }) => void;
+  onFocusPreviousBlock?: () => void;
+  onFocusNextBlock?: () => void;
+  onFocusSidebar?: () => void;
 }) {
   const editor = usePlateEditor({ ...props.editorConfig, value: props.value });
 

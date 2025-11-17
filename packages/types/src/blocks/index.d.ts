@@ -84,6 +84,8 @@ export interface BlockEditProps {
     blockNode: React.ReactNode,
     isMultipleSelection: boolean,
   ) => void;
+  onFocusHelpers?: () => void;
+  onFocusSidebar?: () => void;
   onInsertBlock: (id: string, value: any, current: any) => string; // Not sure what current is
   onMoveBlock: (dragIndex: number, hoverIndex: number) => void;
   onMutateBlock: (id: string, value: any) => void;

@@ -12,8 +12,7 @@ import { useTranslation } from 'react-i18next';
 import type { RootLoader } from 'seven/app/root';
 import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import Toolbar from '../components/Toolbar/Toolbar';
-import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
-import TopNavBar from '../components/Layout/TopNavBar';
+import { sidebarAtom } from '../components/Sidebar/Sidebar';
 import { useAtom } from 'jotai';
 import { clsx } from 'clsx';
 import config from '@plone/registry';
@@ -101,11 +100,7 @@ export default function Index() {
             )}
           >
             <Toolbar />
-            <div id="main">
-              <TopNavBar />
-              <Outlet />
-            </div>
-            <Sidebar />
+            <Outlet />
           </div>
         </PluggablesProvider>
         <ScrollRestoration />
