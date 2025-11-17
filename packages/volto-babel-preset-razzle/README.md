@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> This package is a maintained fork of the original [babel-preset-razzle](https://github.com/jaredpalmer/razzle/tree/master/packages/babel-preset-razzle).
+> This package is a maintained fork of the original [`babel-preset-razzle`](https://github.com/jaredpalmer/razzle/tree/master/packages/babel-preset-razzle).
 > The upstream project is currently unmaintained, so we forked it into the Volto monorepo to keep its dependencies updated and address security issues.
 > All upstream attributions are preserved below.
 
@@ -17,7 +17,7 @@ If you want to use this Babel preset in a project not built with Razzle, you can
 
 First, [install Babel](https://babeljs.io/docs/setup/).
 
-Then create a file named `.babelrc` with following contents in the root folder of your project:
+Then create a file named `.babelrc` with the following contents in the root folder of your project:
 
 ```js
 {
