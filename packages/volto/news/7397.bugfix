@@ -1,0 +1,2 @@
+Fix login 401 error handling - stop loader and display error message. The hydration check was blocking LOGIN_FAIL dispatch during login errors, causing the loader to spin indefinitely. Modified hydration check to only apply to GET_CONTENT actions and added LOGIN to actions_raising_api_errors config. @aryan7081
+
