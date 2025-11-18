@@ -55,7 +55,8 @@ export default defineConfig({
     setupFiles: [
       `${projectRoot}/test-setup-globals.js`,
       `${projectRoot}/test-setup-config.jsx`,
-      `${projectRoot}/test-addons-loader.js`
+      `${projectRoot}/test-addons-loader.js`,
+      `${projectRoot}/global-test-setup.js`
     ],
     globalSetup: `${projectRoot}/global-test-setup.js`,
     coverage: {
