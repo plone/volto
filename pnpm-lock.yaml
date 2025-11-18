@@ -1421,9 +1421,6 @@ importers:
       razzle-dev-utils:
         specifier: 4.2.18
         version: 4.2.18(eslint@8.57.1)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack@5.90.1)
-      razzle-plugin-scss:
-        specifier: 4.2.18
-        version: 4.2.18(mini-css-extract-plugin@2.7.2(webpack@5.90.1))(postcss@8.4.31)(razzle-dev-utils@4.2.18(eslint@8.57.1)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack@5.90.1))(razzle@4.2.18(@babel/core@7.28.3)(babel-preset-razzle@4.2.18)(eslint@8.57.1)(html-webpack-plugin@5.5.0(webpack@5.90.1))(mini-css-extract-plugin@2.7.2(webpack@5.90.1))(razzle-dev-utils@4.2.18(eslint@8.57.1)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack@5.90.1))(sockjs-client@1.4.0)(type-fest@4.41.0)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack-hot-middleware@2.26.1)(webpack@5.90.1))(webpack@5.90.1)
       react-docgen-typescript-plugin:
         specifier: ^1.0.5
         version: 1.0.8(typescript@5.9.2)(webpack@5.90.1)
@@ -12093,10 +12090,6 @@ packages:
     peerDependencies:
       postcss: ^8.4.31
 
-  postcss-scss@3.0.5:
-    resolution: {integrity: sha512-3e0qYk87eczfzg5P73ZVuuxEGCBfatRhPze6KrSaIbEKVtmnFI1RYp1Fv+AyZi+w8kcNRSPeNX6ap4b65zEkiA==}
-    engines: {node: '>=10.0'}
-
   postcss-scss@4.0.6:
     resolution: {integrity: sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==}
     engines: {node: '>=12.0'}
@@ -12372,13 +12365,6 @@ packages:
     peerDependencies:
       webpack: ~4||~5
       webpack-dev-server: ~3||~4
-
-  razzle-plugin-scss@4.2.18:
-    resolution: {integrity: sha512-G3Vwunt3kWJk117fS9hue7+cDNVIUyJrGLY0qdHwJPgceRggZR9XlKT9U09lCZan0UoaASLVfQmZVITiLIGodA==}
-    peerDependencies:
-      mini-css-extract-plugin: '>=0.9.0 <1.0.0'
-      razzle: 4.2.18
-      razzle-dev-utils: 4.2.18
 
   razzle-start-server-webpack-plugin@4.2.18:
     resolution: {integrity: sha512-yR86/T7hmfseBFOQYZDiDfLNxIvws7wBvRoQNz7aw4cT6cX8JFDPpMDHQQNdnESRDencDozMtFLX0jECJJi/CA==}
@@ -28716,10 +28702,6 @@ snapshots:
     dependencies:
       postcss: 8.5.6
 
-  postcss-scss@3.0.5:
-    dependencies:
-      postcss: 8.4.31
-
   postcss-scss@4.0.6(postcss@8.4.31):
     dependencies:
       postcss: 8.4.31
@@ -29041,27 +29023,6 @@ snapshots:
       - supports-color
       - typescript
       - vue-template-compiler
-
-  razzle-plugin-scss@4.2.18(mini-css-extract-plugin@2.7.2(webpack@5.90.1))(postcss@8.4.31)(razzle-dev-utils@4.2.18(eslint@8.57.1)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack@5.90.1))(razzle@4.2.18(@babel/core@7.28.3)(babel-preset-razzle@4.2.18)(eslint@8.57.1)(html-webpack-plugin@5.5.0(webpack@5.90.1))(mini-css-extract-plugin@2.7.2(webpack@5.90.1))(razzle-dev-utils@4.2.18(eslint@8.57.1)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack@5.90.1))(sockjs-client@1.4.0)(type-fest@4.41.0)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack-hot-middleware@2.26.1)(webpack@5.90.1))(webpack@5.90.1):
-    dependencies:
-      autoprefixer: 10.4.8(postcss@8.4.31)
-      css-loader: 5.2.7(webpack@5.90.1)
-      deepmerge: 4.3.1
-      mini-css-extract-plugin: 2.7.2(webpack@5.90.1)
-      postcss-load-config: 3.1.4(postcss@8.4.31)
-      postcss-loader: 4.3.0(postcss@8.4.31)(webpack@5.90.1)
-      postcss-scss: 3.0.5
-      razzle: 4.2.18(@babel/core@7.28.3)(babel-preset-razzle@4.2.18)(eslint@8.57.1)(html-webpack-plugin@5.5.0(webpack@5.90.1))(mini-css-extract-plugin@2.7.2(webpack@5.90.1))(razzle-dev-utils@4.2.18(eslint@8.57.1)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack@5.90.1))(sockjs-client@1.4.0)(type-fest@4.41.0)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack-hot-middleware@2.26.1)(webpack@5.90.1)
-      razzle-dev-utils: 4.2.18(eslint@8.57.1)(typescript@5.9.2)(vue-template-compiler@2.7.16)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack@5.90.1)
-      resolve-url-loader: 3.1.5
-      sass: 1.32.0
-      sass-loader: 10.5.2(sass@1.32.0)(webpack@5.90.1)
-    transitivePeerDependencies:
-      - fibers
-      - node-sass
-      - postcss
-      - ts-node
-      - webpack
 
   razzle-start-server-webpack-plugin@4.2.18(webpack@5.90.1):
     dependencies:
