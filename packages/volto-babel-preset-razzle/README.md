@@ -5,7 +5,7 @@
 
 # @volto/babel-preset-razzle
 
-This package includes the [Babel](https://babeljs.io) preset used by [Razzle](https://github/com/palmerhq/razzle).
+This package includes the [Babel](https://babeljs.io) preset used by [Razzle](https://github.com/jaredpalmer/razzle).
 
 ## Usage in Razzle projects
 
