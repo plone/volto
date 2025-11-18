@@ -1,3 +1,10 @@
+/* Razzle SCSS Webpack Plugin `razzle-plugin-scss`
+    Forked from https://github.com/jaredpalmer/razzle/blob/master/packages/razzle-plugin-scss/index.js
+    version 4.2.18
+    See Volto's upgrade guide for more information:
+    https://6.docs.plone.org/volto/upgrade-guide/index.html
+*/
+
 const autoprefixer = require('autoprefixer');
 const merge = require('deepmerge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
