@@ -31,7 +31,7 @@ This approach provides:
 To create a production-ready Volto project, use Cookieplone's `sub/frontend_project` template:
 
 ```shell
-pipx run cookieplone sub/frontend_project
+uvx cookieplone sub/frontend_project
 ```
 
 ```{note}
@@ -174,7 +174,7 @@ Kubernetes
 
 To migrate your project from the deprecated Volto app approach to the Cookieplone approach, perform the following steps.
 
-1.  Generate a new project using `cookieplone sub/frontend_project`.
+1.  Generate a new project using `uvx cookieplone sub/frontend_project`.
 2.  Copy your customizations (configuration, add-ons, and other files) to the new project.
 3.  Update your deployment scripts to use the new structure.
 4.  Test thoroughly before deploying to production.
