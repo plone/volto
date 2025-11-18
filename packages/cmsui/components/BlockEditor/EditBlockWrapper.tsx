@@ -1,6 +1,6 @@
 import { useContext, useMemo } from 'react';
 import { atom, useAtom, useSetAtom } from 'jotai';
-import { BlockEditorContext, selectedBlockAtom } from './BlockEditor';
+import { BlockEditorContext, selectedBlockAtom } from './BlockEditorContext';
 import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import BlockSettingsForm from './BlockSettingsForm';
