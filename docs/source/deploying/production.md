@@ -131,10 +131,12 @@ These images demonstrate the multi-stage build process.
 After building, start your production server by using one of the following commands, depending on how you manage processes.
 
 `pnpm start:prod`
-:   Runs the `start:prod` script defined in `package.json`, which sets `NODE_ENV=production` and then starts the server. Use this when you want to rely on the package manager scripts, such as for local verification or simple deployments.
+:   Runs the `start:prod` script defined in {file}`package.json`, which sets `NODE_ENV=production` and then starts the server.
+    Use this when you want to rely on the package manager scripts, such as for local verification or simple deployments.
 
 `NODE_ENV=production node build/server.js`
-:   Calls the Node.js entry point directly. Use this when integrating with a process manager (for example, systemd, {doc}`pm2`, Docker entrypoints, or Kubernetes) and you prefer to set environment variables outside of `pnpm`.
+:   Calls the Node.js entry point directly.
+    Use this when integrating with a process manager (for example, systemd, {doc}`pm2`, Docker entrypoints, or Kubernetes) and you prefer to set environment variables outside of `pnpm`.
 
 ## Environment configuration
 
@@ -193,7 +195,6 @@ To migrate your project from the deprecated Volto app approach to the Cookieplon
 3.  Update your deployment scripts to use the new structure.
 4.  Test thoroughly before deploying to production.
 
-## Related topics
 
 ## Related topics
 
