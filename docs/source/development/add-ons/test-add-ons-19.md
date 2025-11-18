@@ -9,10 +9,6 @@ myst:
 
 # Test add-ons in Volto 19
 
-```{warning}
-This guide assumes that you've used {term}`Cookieplone` to create your add-on boilerplate.
-```
-
 In Volto 19, Jest has been completely removed, and add-ons that rely on Jest-based test suites are no longer supported.
 You must migrate your add-on tests to Vitest.
 
