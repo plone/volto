@@ -9,8 +9,21 @@ myst:
 
 # Production deployment
 
+This chapter describes how to deploy a Volto application to a production environment.
+
 ```{versionadded} Volto 18.0.0-alpha.43
+Cookieplone deployment option.
 ```
+
+For production deployments, use [Cookieplone](https://github.com/plone/cookieplone) with the `sub/frontend_project` template.
+This creates a production-ready project structure that uses Volto as a library rather than as a standalone app.
+
+This approach provides:
+- a clean, minimal boilerplate project structure
+- better separation of concerns
+- easier maintenance and upgrades
+- production-ready deployment configuration
+
 
 ```{deprecated} 18.0.0-alpha.43
 The Volto app approach for production deployments is deprecated.
@@ -18,15 +31,8 @@ The Volto app approach for production deployments is deprecated.
 
 For production deployments of Volto, the recommended approach is to use [Cookieplone](https://github.com/plone/cookieplone) with the `sub/frontend_project` template. This creates a production-ready project structure that uses Volto as a library rather than as a standalone app.
 
-This approach provides:
-- A clean, minimal boilerplate project structure
-- Better separation of concerns
-- Easier maintenance and upgrades
-- Production-ready deployment configuration
 
-## Creating a production project
-
-### Using Cookieplone with the frontend_project template
+## Cookieplone `frontend_project` template
 
 To create a production-ready Volto project, use Cookieplone's `sub/frontend_project` template:
 
@@ -35,22 +41,25 @@ uvx cookieplone sub/frontend_project
 ```
 
 ```{note}
-The `sub/frontend_project` template creates a minimal boilerplate project structure for production deployments. This is different from the `frontend_addon` template, which is used for creating Volto add-ons. For full-stack Plone projects (with both frontend and backend), use the `project` template instead.
+The `sub/frontend_project` template creates a minimal boilerplate project structure for production deployments.
+This is different from the `frontend_addon` template, which is used for creating Volto add-ons.
+For full-stack Plone projects (with both frontend and backend), use the `project` template instead.
 ```
 
 This command will:
-1. Prompt you for project details (project name, description, etc.)
-2. Generate a boilerplate project structure
-3. Set up a `package.json` that depends on Volto
-4. Include deployment scripts and configuration
+1.  Prompt you for project details, including project name, description, and other information.
+2.  Generate a boilerplate project structure.
+3.  Set up a {file}`package.json` that depends on Volto.
+4.  Include deployment scripts and configuration.
 
-The generated project will have a minimal structure, with most functionality coming from Volto as a dependency. The project essentially becomes a thin wrapper around Volto, defining your specific configuration and customizations.
+The generated project will have a minimal structure, with most functionality coming from Volto as a dependency.
+The project essentially becomes a thin wrapper around Volto, defining your specific configuration and customizations.
 
 ### Project structure
 
-After generation, your project will have a structure similar to:
+After generation, your project will have a structure similar to the following file tree diagram.
 
-```
+```console
 my-volto-project/
 ├── package.json          # Defines Volto as a dependency
 ├── src/
@@ -63,77 +72,86 @@ my-volto-project/
 
 Once you have your project structure, build it for production:
 
-```bash
+```shell
 pnpm install
 pnpm build
 ```
 
 For production builds with specific environment variables:
 
-```bash
+```shell
 PORT=3000 RAZZLE_API_PATH=https://mywebsite.com/api pnpm build
 ```
 
-The build process will:
-- Compile your React application
-- Bundle all dependencies
-- Create optimized production assets in the `build` directory
+The build process will perform the following tasks.
+
+-   Compile your React application.
+-   Bundle all dependencies.
+-   Create optimized production assets in the `build` directory.
 
 ## Deployment options
 
-### Using a Node.js base image
+There are several options when deploying a Volto app to production.
+Choose from the following sections for the one appropriate to your situation.
 
-If you need to use your own Node.js base image (rather than the official `plone-frontend` images), you can:
+### Node.js base image
 
-1. **Build the project** in your CI/CD pipeline or locally
-2. **Copy the built project** to your production image
-3. **Start the production server** using the built files
+To use your own Node.js base image, instead of the official `plone-frontend` images, use following workflow.
 
-Example workflow:
+1.  Build the project in your CI/CD pipeline or locally.
 
-```bash
-# Build the project
-pnpm install
-PORT=3000 RAZZLE_API_PATH=https://mywebsite.com/api pnpm build
+    ```shell
+    pnpm install
+    PORT=3000 RAZZLE_API_PATH=https://mywebsite.com/api pnpm build
+    ```
 
-# The build output is in the ./build directory
-# Copy this to your production image and run:
-NODE_ENV=production node build/server.js
-```
+2.  Copy the built project from the {file}`./build` directory to your production image.
+3.  Start the production server using the built files.
 
-### Using plone-frontend Docker images
+    ```shell
+    NODE_ENV=production node build/server.js
+    ```
+    
 
-The official `plone-frontend` Docker images use the `sub/frontend_project` template approach internally. You can reference these images as examples:
+### `plone-frontend` Docker images
 
-- [Dockerfile.builder](https://github.com/plone/plone-frontend/blob/main/pnpm/Dockerfile.builder) - Build stage
-- [Dockerfile.prod](https://github.com/plone/plone-frontend/blob/main/pnpm/Dockerfile.prod) - Production stage
+The official `plone-frontend` Docker images use the `sub/frontend_project` template approach internally.
+You can reference the following images as examples.
 
-These images demonstrate the multi-stage build process:
-1. Install dependencies and build the project
-2. Copy only the necessary files to a production image
-3. Run the production server
+- [Dockerfile.builder](https://github.com/plone/plone-frontend/blob/18.x/pnpm/Dockerfile.builder) - Build stage
+- [Dockerfile.prod](https://github.com/plone/plone-frontend/blob/18.x/pnpm/Dockerfile.prod) - Production stage
 
-### Starting the production server
+These images demonstrate the multi-stage build process.
+1.  Install dependencies and build the project.
+2.  Copy only the necessary files to a production image.
+3.  Run the production server.
+
+### Start the production server
 
 After building, start your production server:
 
-```bash
+```shell
 pnpm start:prod
 ```
 
 Or directly with Node.js:
 
-```bash
+```shell
 NODE_ENV=production node build/server.js
 ```
 
 ## Environment configuration
 
-Configure your production environment using environment variables:
+Configure your production environment using environment variables.
 
-- `PORT`: The port on which the Node.js server will listen (default: 3000)
-- `RAZZLE_API_PATH`: The API endpoint URL (e.g., `https://mywebsite.com/api`)
-- `NODE_ENV`: Should be set to `production` for production deployments
+`PORT`
+:   The port on which the Node.js server will listen. Default: `3000`.
+
+`RAZZLE_API_PATH`
+:   The API endpoint URL, for example, `https://mywebsite.com/api`.
+
+`NODE_ENV`
+:   This should be set to `production` for production deployments.
 
 ```{warning}
 Make sure to set `RAZZLE_API_PATH` during the build process, as it's baked into the bundle at build time.
@@ -141,10 +159,10 @@ Make sure to set `RAZZLE_API_PATH` during the build process, as it's baked into 
 
 ## Reverse proxy setup
 
-As with any Volto deployment, you should use a reverse proxy (like nginx) to:
-- Handle SSL/TLS termination
-- Route API requests to the Plone backend
-- Serve static assets efficiently
+As with any Volto deployment, you should use a reverse proxy, such as nginx, to perform the following tasks.
+-   Handle SSL/TLS termination.
+-   Route API requests to the Plone backend.
+-   Serve static assets efficiently, including caching.
 
 See {doc}`simple` for detailed reverse proxy configuration examples.
 
@@ -178,6 +196,8 @@ To migrate your project from the deprecated Volto app approach to the Cookieplon
 2.  Copy your customizations (configuration, add-ons, and other files) to the new project.
 3.  Update your deployment scripts to use the new structure.
 4.  Test thoroughly before deploying to production.
+
+## Related topics
 
 ## Related topics
 
