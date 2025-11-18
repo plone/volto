@@ -40,6 +40,7 @@ import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { hasBlocksData } from '@plone/volto/helpers/Blocks/Blocks';
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
 import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation';
+import { getLanguageToken } from '@plone/volto/helpers/Content/Content';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -316,8 +317,8 @@ class Edit extends Component {
         title={
           this.props?.schema?.title
             ? this.props.intl.formatMessage(messages.edit, {
-                title: this.props.schema.title,
-              })
+              title: this.props.schema.title,
+            })
             : null
         }
         loading={this.props.updateRequest.loading}
@@ -343,18 +344,19 @@ class Edit extends Component {
                   title={
                     this.props?.content?.title
                       ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props?.content?.title,
-                        })
+                        title: this.props?.content?.title,
+                      })
                       : this.props?.schema?.title
                         ? this.props.intl.formatMessage(messages.edit, {
-                            title: this.props.schema.title,
-                          })
+                          title: this.props.schema.title,
+                        })
                         : null
                   }
                 >
-                  {this.props.content?.language && (
-                    <html lang={this.props.content.language.token} />
-                  )}
+                  {(() => {
+                    const languageToken = getLanguageToken(this.props.content?.language);
+                    return languageToken ? <html lang={languageToken} /> : null;
+                  })()}
                 </Helmet>
 
                 {this.state.comparingLanguage && this.state.compareTo ? (
@@ -384,10 +386,10 @@ class Edit extends Component {
                       <div className="new-translation">
                         <Menu pointing secondary attached tabular>
                           <Menu.Item
-                            name={this.props.content.language?.token.toUpperCase()}
+                            name={getLanguageToken(this.props.content.language)?.toUpperCase()}
                             active={true}
                           >
-                            {this.props.content.language?.token.toUpperCase()}
+                            {getLanguageToken(this.props.content.language)?.toUpperCase()}
                           </Menu.Item>
                         </Menu>
 
