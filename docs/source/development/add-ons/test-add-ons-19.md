@@ -14,12 +14,6 @@ This guide assumes that you've used {term}`Cookieplone` to create your add-on bo
 ```
 
 In Volto 19, Jest has been completely removed, and add-ons that rely on Jest-based test suites are no longer supported.
-It is recommended to migrate your add-on tests to Vitest as soon as possible.
+You must migrate your add-on tests to Vitest.
 
-See the migration guide {doc}`test-add-ons-18`.
-
-
-
-
-
-
+See the guide {doc}`test-add-ons-18` for how to migrate your add-on tests from Jest to Vitest.
