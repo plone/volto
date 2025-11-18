@@ -29,7 +29,6 @@ This approach provides:
 The Volto app approach for production deployments is deprecated.
 ```
 
-For production deployments of Volto, the recommended approach is to use [Cookieplone](https://github.com/plone/cookieplone) with the `sub/frontend_project` template. This creates a production-ready project structure that uses Volto as a library rather than as a standalone app.
 
 
 ## Cookieplone `frontend_project` template
@@ -43,13 +42,13 @@ uvx cookieplone sub/frontend_project
 ```{note}
 The `sub/frontend_project` template creates a minimal boilerplate project structure for production deployments.
 This is different from the `frontend_addon` template, which is used for creating Volto add-ons.
-For full-stack Plone projects (with both frontend and backend), use the `project` template instead.
+For full-stack Plone projects with both frontend and backend, use the `project` template instead.
 ```
 
 This command will:
 1.  Prompt you for project details, including project name, description, and other information.
 2.  Generate a boilerplate project structure.
-3.  Set up a {file}`package.json` that depends on Volto.
+3.  Set up a {file}`package.json` file that depends on Volto.
 4.  Include deployment scripts and configuration.
 
 The generated project will have a minimal structure, with most functionality coming from Volto as a dependency.
