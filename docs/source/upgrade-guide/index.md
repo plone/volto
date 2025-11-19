@@ -48,6 +48,38 @@ You should take the following actions for your Volto 19 projects.
 
 If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.
 
+(replace-razzle-with-volto-razzle)=
+
+### Replace `razzle` with `@volto/razzle` (fork)
+```{versionchanged} Volto 19.0.0-alpha.14
+```
+
+`@volto/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
+Use `@volto/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
+
+For most projects, no action is required.
+The fork maintains full compatibility with the original `razzle` package, preserving all CLI entry points such as `razzle start`, `razzle build`, and `razzle test`.
+
+However, if you have customized Volto's internals in your project—for example, by importing internal modules directly from the `razzle` package such as `require('razzle/some/path')`—then you need to update those imports to reference `@volto/razzle` instead.
+
+To verify whether your project requires updates, search for any direct references to internal `razzle` modules:
+
+```shell
+grep -R "require.*razzle/" -n --exclude-dir=node_modules || true
+grep -R "from.*razzle/" -n --exclude-dir=node_modules || true
+```
+
+If you find any matches, check in particular:
+
+-   build and Babel configurations, including {file}`babel.config.js`, {file}`.babelrc`, {file}`webpack.config.js`, and {file}`razzle.config.js`
+-   any presets or plugins sections that import internal `razzle` modules
+-   custom build scripts that reference `razzle` internals
+
+```{note}
+The fork exists so we can ship fixes and compatibility patches required by Volto, since the upstream is no longer maintained.
+Our goal is to keep `@volto/razzle` compatible with the `razzle` public API.
+```
+
 ### `pnpm` has been upgraded to version 10
 ```{versionchanged} Volto 19.0.0-alpha.7
 ```

@@ -10,7 +10,7 @@
     "jsx": "react-jsx",
     "preserveSymlinks": true,
     "downlevelIteration": true,
-    "types": ["vitest/globals", "jest"],
+    "types": ["vitest/globals"],
     "paths": {
       "@plone/volto/*": ["./src/*"],
       "react": ["./node_modules/@types/react"],
