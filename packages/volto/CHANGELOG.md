@@ -17,6 +17,31 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.14 (2025-11-19)
+
+### Breaking
+
+- Add package `@plone/razzle`. It's a fork of `razzle`. @wesleybl [#7542](https://github.com/plone/volto/issues/7542)
+- Fork `babel-razzle-preset` from Razzle. Update dependencies. @sneridagh [#7619](https://github.com/plone/volto/issues/7619)
+- Removed Jest from build. @sneridagh [#7620](https://github.com/plone/volto/issues/7620)
+
+### Feature
+
+- Forked Razzle SCSS plugin, pin the version to one that does not flood the log with useless deprecation warnings. @sneridagh [#7188](https://github.com/plone/volto/issues/7188)
+
+### Bugfix
+
+- Replaced `{term}` with `{ref}` to link to headings. @pratyush07-hub [#fix-glossary-terms](https://github.com/plone/volto/issues/fix-glossary-terms)
+
+### Internal
+
+- Add Cypress test to cover deleting at end of Slate block when next block is empty. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
+### Documentation
+
+- Added missing steps for `babel-preset-razzle` in the upgrade guide. @sneridagh 
+- Added missing upgrade steps for 19 projects. @sneridagh 
+
 ## 19.0.0-alpha.13 (2025-11-12)
 
 ### Internal
