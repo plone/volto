@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.8 (2025-11-19)
+
+### Bugfix
+
+- Avoid errors when deleting at the end of a Slate block with an empty Slate block after it and remove the empty block instead. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
 ## 19.0.0-alpha.7 (2025-11-10)
 
 ### Bugfix
