@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.4 (2025-11-19)
+
+### Bugfix
+
+- Fixed Basic Select styling. @sneridagh [#7632](https://github.com/plone/volto/issues/7632)
+
 ## 4.0.0-alpha.3 (2025-11-12)
 
 ### Bugfix
