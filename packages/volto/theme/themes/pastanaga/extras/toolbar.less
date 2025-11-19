@@ -258,9 +258,12 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
           opacity: 0.65;
         }
 
-        &:hover::before {
-          opacity: 1;
-          transition: opacity 0.3s;
+        &:hover,
+        &:focus {
+          &::before {
+            opacity: 1;
+            transition: opacity 0.3s;
+          }
         }
       }
     }
