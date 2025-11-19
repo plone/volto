@@ -440,7 +440,6 @@ const defaultPlugins = [
   { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
   { object: require('./webpack-plugins/webpack-svg-plugin') },
   { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
-  { object: require('./jest-extender-plugin') },
   'scss',
 ];
 

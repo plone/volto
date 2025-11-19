@@ -200,14 +200,7 @@ exports[`renders an object list widget component 1`] = `
                 </div>
                 <div
                   class="ui bottom attached segment active tab"
-                >
-                  <div
-                    class="Field"
-                    id="internal_link-0-my-widget-0"
-                  >
-                    Internal link
-                  </div>
-                </div>
+                />
               </div>
             </div>
           </div>
@@ -316,14 +309,7 @@ exports[`renders an object list widget component 1`] = `
                 </div>
                 <div
                   class="ui bottom attached segment active tab"
-                >
-                  <div
-                    class="Field"
-                    id="internal_link-0-my-widget-1"
-                  >
-                    Internal link
-                  </div>
-                </div>
+                />
               </div>
             </div>
           </div>
