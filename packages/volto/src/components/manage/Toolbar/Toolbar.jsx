@@ -622,9 +622,6 @@ class Toolbar extends Component {
             </div>
             <div className="toolbar-handler">
               <button
-                aria-label={this.props.intl.formatMessage(
-                  messages.shrinkToolbar,
-                )}
                 className={cx('toolbar-handler-button', {
                   [this.props.content?.review_state]:
                     this.props.content?.review_state,
