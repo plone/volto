@@ -86,14 +86,16 @@ Our goal is to keep `@volto/razzle` compatible with the `razzle` public API.
 
 `@plone/babel-preset-razzle` is a maintained fork of the original `babel-preset-razzle` package that contains Volto-specific fixes and patches.
 
-in {file}`frontend/.npmrc` update:
+You'll need to update the following files.
+
+Update the npm configuration file {file}`frontend/.npmrc`.
 
 ```diff
 - public-hoist-pattern[]=babel-preset-razzle
 + public-hoist-pattern[]=*babel-preset-razzle
 ```
 
-in Storybook configuration files, {file}`.storybook/main.js`, update:
+Update the Storybook configuration file {file}`.storybook/main.js`.
 
 ```diff
 - const scssPlugin = require('razzle-plugin-scss');
@@ -102,7 +104,7 @@ in Storybook configuration files, {file}`.storybook/main.js`, update:
 + const createConfig = require('@plone/razzle/config/createConfigAsync.js');
 ```
 
-in your add-on {file}`babel.config.js`, update:
+Finally, update your add-on file {file}`babel.config.js`.
 
 ```diff
 -  const presets = ['razzle'];
