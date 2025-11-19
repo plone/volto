@@ -80,6 +80,37 @@ The fork exists so we can ship fixes and compatibility patches required by Volto
 Our goal is to keep `@volto/razzle` compatible with the `razzle` public API.
 ```
 
+### Replace `babel-preset-razzle` with `@plone/babel-preset-razzle`
+```{versionchanged} Volto 19.0.0-alpha.14
+```
+
+`@plone/babel-preset-razzle` is a maintained fork of the original `babel-preset-razzle` package that contains Volto-specific fixes and patches.
+
+You'll need to update the following files.
+
+Update the npm configuration file {file}`frontend/.npmrc`.
+
+```diff
+- public-hoist-pattern[]=babel-preset-razzle
++ public-hoist-pattern[]=*babel-preset-razzle
+```
+
+Update the Storybook configuration file {file}`.storybook/main.js`.
+
+```diff
+- const scssPlugin = require('razzle-plugin-scss');
++ const scssPlugin = require('@plone/babel-preset-razzle/webpack-plugins/webpack-scss-plugin');
+- const createConfig = require('razzle/config/createConfigAsync.js');
++ const createConfig = require('@plone/razzle/config/createConfigAsync.js');
+```
+
+Finally, update your add-on file {file}`babel.config.js`.
+
+```diff
+-  const presets = ['razzle'];
++  const presets = ['@plone/razzle'];
+```
+
 ### `pnpm` has been upgraded to version 10
 ```{versionchanged} Volto 19.0.0-alpha.7
 ```
@@ -139,6 +170,9 @@ index c469fe9..c39a324 100644
      make install
      pnpm build
      # This is necessary because the build is trying to recreate the node_modules folder
+     # by telling it to CI=1 it will just recreate them
+-    pnpm install --prod
++    CI=1 pnpm install --prod
 ```
 
 ### New utility class `visually-hidden`
