@@ -85,26 +85,7 @@ exports[`renders a dictionary widget component 1`] = `
                 </div>
                 <div
                   class="ui drag block inner"
-                >
-                  <div
-                    class="Field"
-                    id="en-0-test-dict-talk"
-                  >
-                    English
-                  </div>
-                  <div
-                    class="Field"
-                    id="de-1-test-dict-talk"
-                  >
-                    Deutsch
-                  </div>
-                  <div
-                    class="Field"
-                    id="it-2-test-dict-talk"
-                  >
-                    Italiano
-                  </div>
-                </div>
+                />
                 <div>
                   <button
                     aria-label="Remove term #talk"
@@ -163,26 +144,7 @@ exports[`renders a dictionary widget component 1`] = `
                 </div>
                 <div
                   class="ui drag block inner"
-                >
-                  <div
-                    class="Field"
-                    id="en-0-test-dict-keynote"
-                  >
-                    English
-                  </div>
-                  <div
-                    class="Field"
-                    id="de-1-test-dict-keynote"
-                  >
-                    Deutsch
-                  </div>
-                  <div
-                    class="Field"
-                    id="it-2-test-dict-keynote"
-                  >
-                    Italiano
-                  </div>
-                </div>
+                />
                 <div>
                   <button
                     aria-label="Remove term #keynote"
@@ -241,26 +203,7 @@ exports[`renders a dictionary widget component 1`] = `
                 </div>
                 <div
                   class="ui drag block inner"
-                >
-                  <div
-                    class="Field"
-                    id="en-0-test-dict-lightning-talk"
-                  >
-                    English
-                  </div>
-                  <div
-                    class="Field"
-                    id="de-1-test-dict-lightning-talk"
-                  >
-                    Deutsch
-                  </div>
-                  <div
-                    class="Field"
-                    id="it-2-test-dict-lightning-talk"
-                  >
-                    Italiano
-                  </div>
-                </div>
+                />
                 <div>
                   <button
                     aria-label="Remove term #lightning-talk"

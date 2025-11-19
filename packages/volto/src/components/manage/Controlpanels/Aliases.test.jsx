@@ -10,11 +10,7 @@ import { MemoryRouter } from 'react-router';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-vi.mock('@plone/volto/components/manage/Widgets', async () => {
-  return await import(
-    '@plone/volto/components/manage/Widgets/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Widgets');
 
 vi.mock('../../Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
