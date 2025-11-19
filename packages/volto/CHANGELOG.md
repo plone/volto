@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.15 (2025-11-19)
+
+### Bugfix
+
+- Pin the sass dependency to 1.58.0 @sneridagh 
+
 ## 19.0.0-alpha.14 (2025-11-19)
 
 ### Breaking
