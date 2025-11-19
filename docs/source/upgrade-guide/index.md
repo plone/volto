@@ -320,6 +320,17 @@ Three new widgets have been added based on the `ButtonsWidget` from `@plone/comp
 They are available in the global widgets configuration and can be used in your add-ons.
 They all are meant to be used using the `StyleWrapper` with custom CSS properties.
 
+### Forked Razzle SCSS plugin to avoid the log to be flooded with deprecation warnings
+```{versionadded} Volto 19.0.0-alpha.14
+```
+
+The `sass` package maintainers decided include a variety of deprecations during the last years in preparation for the future `sass` 2.0 release, based on `dart-sass`.
+These deprecation warnings are shown during the build process, flooding the log (once per future violation in your code) with useless information that does not help developers to identify real problems.
+To avoid this, we have forked the `razzle-plugin-scss` package and removed the deprecation warnings from the build log.
+We pinned the version of `sass` to `1.32.0`, which is the one before they introduced the deprecation warnings.
+It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
+In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
