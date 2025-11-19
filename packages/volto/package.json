@@ -317,7 +317,7 @@
     "react-is": "^18.2.0",
     "release-it": "^19.0.4",
     "resolve-url-loader": "^3.1.2",
-    "sass": "1.32.0",
+    "sass": "1.87.0",
     "sass-loader": "^10.0.3",
     "semver": "^7.5.4",
     "start-server-and-test": "1.14.0",
