@@ -3,7 +3,7 @@
 > The upstream project is currently unmaintained, so we forked it into the Volto monorepo to keep its dependencies updated and address security issues.
 > All upstream attributions are preserved below.
 
-# @volto/babel-preset-razzle
+# @plone/babel-preset-razzle
 
 This package includes the [Babel](https://babeljs.io) preset used by [Razzle](https://github.com/jaredpalmer/razzle).
 

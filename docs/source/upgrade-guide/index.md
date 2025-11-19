@@ -90,7 +90,7 @@ If you have packages that use lifecycle scripts (such as `preinstall` or `postin
 
 Update your local `pnpm` installation to version 10 to ensure compatibility with the new project setup.
 
-in {file}`frontend/package.json` update:
+First, in {file}`frontend/package.json`, update as shown.
 
 ```diff
   "pnpm": {
@@ -116,7 +116,7 @@ in {file}`frontend/package.json` update:
 +  "packageManager": "pnpm@10.20.0",
 ```
 
-in {file}`frontend/Dockerfile` (in case of a project) update:
+For a project, in {file}`frontend/Dockerfile`, update as shown.
 
 ```diff
 diff --git a/frontend/Dockerfile b/frontend/Dockerfile

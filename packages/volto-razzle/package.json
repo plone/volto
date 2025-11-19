@@ -1,5 +1,5 @@
 {
-  "name": "@volto/razzle",
+  "name": "@plone/razzle",
   "description": "A Volto fork of Razzle - Create server-rendered universal JavaScript applications with no configuration",
   "license": "MIT",
   "author": "Jared Palmer <jared@palmer.net>",
@@ -61,7 +61,7 @@
     "webpackbar": "~4||~5"
   },
   "peerDependencies": {
-    "@volto/babel-preset-razzle": "workspace:*",
+    "@plone/babel-preset-razzle": "workspace:*",
     "html-webpack-plugin": "~4||~5",
     "mini-css-extract-plugin": "2.7.2",
     "razzle-dev-utils": "4.2.18",

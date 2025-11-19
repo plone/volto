@@ -708,7 +708,7 @@ importers:
       '@babel/core':
         specifier: ^7.0.0
         version: 7.28.3
-      '@volto/babel-preset-razzle':
+      '@plone/babel-preset-razzle':
         specifier: workspace:^
         version: link:../volto-babel-preset-razzle
       babel-plugin-react-intl:
@@ -1158,6 +1158,12 @@ importers:
       '@loadable/webpack-plugin':
         specifier: 5.15.2
         version: 5.15.2(webpack@5.90.1)
+      '@plone/babel-preset-razzle':
+        specifier: workspace:^
+        version: link:../volto-babel-preset-razzle
+      '@plone/razzle':
+        specifier: workspace:*
+        version: link:../volto-razzle
       '@plone/types':
         specifier: workspace:*
         version: link:../types
@@ -1254,12 +1260,6 @@ importers:
       '@vitest/ui':
         specifier: ^2.1.8
         version: 2.1.9(vitest@3.2.4)
-      '@volto/babel-preset-razzle':
-        specifier: workspace:^
-        version: link:../volto-babel-preset-razzle
-      '@volto/razzle':
-        specifier: workspace:*
-        version: link:../volto-razzle
       autoprefixer:
         specifier: 10.4.8
         version: 10.4.8(postcss@8.4.31)
@@ -1531,12 +1531,12 @@ importers:
       '@babel/plugin-transform-modules-commonjs':
         specifier: ^7.12.1
         version: 7.27.1(@babel/core@7.28.5)
+      '@plone/babel-preset-razzle':
+        specifier: workspace:*
+        version: link:../volto-babel-preset-razzle
       '@pmmmwh/react-refresh-webpack-plugin':
         specifier: 0.5.11
         version: 0.5.11(react-refresh@0.14.0)(sockjs-client@1.4.0)(type-fest@4.41.0)(webpack-dev-server@4.11.1(webpack@5.90.1))(webpack-hot-middleware@2.26.1)(webpack@5.90.1)
-      '@volto/babel-preset-razzle':
-        specifier: workspace:*
-        version: link:../volto-babel-preset-razzle
       autoprefixer:
         specifier: ^10.2.3
         version: 10.4.8(postcss@8.4.31)
@@ -12528,7 +12528,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   qs@6.11.0:

@@ -1,5 +1,5 @@
 {
-  "name": "@volto/babel-preset-razzle",
+  "name": "@plone/babel-preset-razzle",
   "version": "1.0.0-alpha.0",
   "description": "Babel presets for Razzle",
   "main": "index.js",

@@ -17,13 +17,13 @@
     "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
     "requireUpstream": false,
     "requireCleanWorkingDir": false,
-    "commitMessage": "Release @volto/babel-preset-razzle ${version}",
+    "commitMessage": "Release @plone/babel-preset-razzle ${version}",
     "tagName": "plone-slate-${version}",
-    "tagAnnotation": "Release @volto/babel-preset-razzle ${version}"
+    "tagAnnotation": "Release @plone/babel-preset-razzle ${version}"
   },
   "github": {
     "release": true,
-    "releaseName": "@volto/babel-preset-razzle ${version}",
+    "releaseName": "@plone/babel-preset-razzle ${version}",
     "releaseNotes": "cat .changelog.draft"
   }
 }
