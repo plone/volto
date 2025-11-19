@@ -15,8 +15,9 @@ This chapter describes how to deploy a Volto application to a production environ
 Cookieplone deployment option.
 ```
 
-For production deployments, use [Cookieplone](https://github.com/plone/cookieplone) with the `sub/frontend_project` template.
-This creates a production-ready project structure that uses Volto as a library rather than as a standalone app.
+For production deployments, use the standard [Cookieplone](https://github.com/plone/cookieplone) `project` template.
+It scaffolds the full Plone stack (backend + Volto frontend) that integrators customize and deploy.
+Inside the generated project you will find a `frontend/` folder that contains the Volto application used in production.
 
 This approach provides:
 - a clean, minimal boilerplate project structure
@@ -31,35 +32,36 @@ The Volto app approach for production deployments is deprecated.
 
 
 
-## Cookieplone `frontend_project` template
+## Generate a project with Cookieplone
 
-To create a production-ready Volto project, use Cookieplone's `sub/frontend_project` template:
+To create a production-ready Volto project, run Cookieplone's user-facing `project` template:
 
 ```shell
-uvx cookieplone sub/frontend_project
+uvx cookieplone project
 ```
 
 ```{note}
-The `sub/frontend_project` template creates a minimal boilerplate project structure for production deployments.
-This is different from the `frontend_addon` template, which is used for creating Volto add-ons.
-For full-stack Plone projects with both frontend and backend, use the `project` template instead.
+The interactive prompts let you choose add-ons and other options. The resulting repository contains both the backend configuration and a `frontend/` folder that houses the Volto app you will build and deploy.
 ```
 
 This command will:
 1.  Prompt you for project details, including project name, description, and other information.
-2.  Generate a boilerplate project structure.
-3.  Set up a {file}`package.json` file that depends on Volto.
-4.  Include deployment scripts and configuration.
+2.  Generate a boilerplate project structure with backend and frontend folders.
+3.  Set up a {file}`package.json` file in `frontend/` that depends on Volto.
+4.  Include deployment scripts and configuration to build and run the frontend.
 
-The generated project will have a minimal structure, with most functionality coming from Volto as a dependency.
-The project essentially becomes a thin wrapper around Volto, defining your specific configuration and customizations.
+The generated `frontend/` project uses Volto as a dependency while remaining a thin wrapper where you add site-specific configuration, add-ons, and styling.
+
+```{tip}
+Cookieplone also ships an internal template `sub/frontend_project` that is used to build the official `plone-frontend` Docker images. It is not meant to be invoked directly by integrators because it lacks the backend plumbing and policy add-ons that a real project requires.
+```
 
 ### Project structure
 
-After generation, your project will have a structure similar to the following file tree diagram.
+After generation, the frontend portion of your project will have a structure similar to the following file tree diagram.
 
 ```console
-my-volto-project/
+my-volto-project/frontend/
 ├── package.json          # Defines Volto as a dependency
 ├── src/
 │   └── config.js         # Your Volto configuration
@@ -114,7 +116,7 @@ To use your own Node.js base image, instead of the official `plone-frontend` ima
 
 ### `plone-frontend` Docker images
 
-The official `plone-frontend` Docker images use the `sub/frontend_project` template approach internally.
+The official `plone-frontend` Docker images are built from the internal `sub/frontend_project` template mentioned earlier.
 You can reference the following images as examples.
 
 - [Dockerfile.builder](https://github.com/plone/plone-frontend/blob/18.x/pnpm/Dockerfile.builder) - Build stage
@@ -189,7 +191,7 @@ Kubernetes
 
 To migrate your project from the deprecated Volto app approach to the Cookieplone approach, perform the following steps.
 
-1.  Generate a new project using `uvx cookieplone sub/frontend_project`.
+1.  Generate a new project using `uvx cookieplone project`.
 2.  Copy your customizations (configuration, add-ons, and other files) to the new project.
 3.  Update your deployment scripts to use the new structure.
 4.  Test thoroughly before deploying to production.
