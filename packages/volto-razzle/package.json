@@ -1,5 +1,5 @@
 {
-  "name": "@volto/razzle",
+  "name": "@plone/razzle",
   "description": "A Volto fork of Razzle - Create server-rendered universal JavaScript applications with no configuration",
   "license": "MIT",
   "author": "Jared Palmer <jared@palmer.net>",
