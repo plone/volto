@@ -17,6 +17,63 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.13 (2025-11-12)
+
+### Internal
+
+- Release with `@plone/components` 4a3. @sneridagh 
+
+## 19.0.0-alpha.12 (2025-11-10)
+
+### Breaking
+
+- `AlignWidget` and `ButtonsWidget` are now Semantic UI-free, and they are now based in `@plone/components`.
+  See upgrade guide for more information. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
+
+### Feature
+
+- New `@plone/components`-based widgets: `Size`, `blockWidth`, and `blockAlignment`. All of them are `ButtonsWidget`-based. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
+
+### Bugfix
+
+- Remove container cage on relations control panel. @ksuess [#6633](https://github.com/plone/volto/issues/6633)
+
+### Internal
+
+- Add Cypress coverage for Delete-key behavior in text blocks: merge next text block into current and do nothing to non-text (Description) block when pressed at end of a text block. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+- Use 19 as version for cookieplone CI checks. @sneridagh [#7548](https://github.com/plone/volto/issues/7548)
+- Introduce `pnpm` catalog feature in core. @sneridagh [#7562](https://github.com/plone/volto/issues/7562)
+
+## 19.0.0-alpha.11 (2025-11-05)
+
+### Documentation
+
+- Converted the structure of the "Settings Reference" page from a glossary to headings for easier navigation. @Abhishek-17h [#7565](https://github.com/plone/volto/issues/7565)
+
+## 19.0.0-alpha.10 (2025-10-31)
+
+### Feature
+
+- Added `visually-hidden` utility CSS class that integrators and core developers can use. @JeffersonBledsoe @Wagner3UB [#6356](https://github.com/plone/volto/issues/6356)
+- Enhanced diff reducer to process static behaviors in the result object. @rboixaderg [#7546](https://github.com/plone/volto/issues/7546)
+
+### Bugfix
+
+- Get translationObject from the store instead of directly from the response in CreateTranslation component. @rboixaderg [#7543](https://github.com/plone/volto/issues/7543)
+- Move '.visually-hidden' class to 'main.less' and remove unused 'utils.less' and references @Wagner3UB [#7552](https://github.com/plone/volto/issues/7552)
+- Improve some JSDocs for better typing. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Fix image upload inside `ImageWidget` component when used inside a non-folderish object. [@jnptk] [#7573](https://github.com/plone/volto/issues/7573)
+- Avoid re-rendering a content item view while hydrating server-side rendered components. @reebalazs 
+- Fix failing cypress test on updating to Cypress 15 @Tishasoumya-02 
+- Fix infinite @users requests caused by anonymous useUser hook. @iFlameing 
+
+### Internal
+
+- Convert UsersControlpanel component from class to functional with hooks. @wesleybl [#7450](https://github.com/plone/volto/issues/7450)
+- Update to node 24 and cypress to 15 @sneridagh [#7538](https://github.com/plone/volto/issues/7538)
+- Refactor `SidebarPortal` to TypeScript. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Enable ESlint detection of '.only' in unit and cypress tests. @sneridagh [#7567](https://github.com/plone/volto/issues/7567)
+
 ## 19.0.0-alpha.9 (2025-10-22)
 
 ### Feature
