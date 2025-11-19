@@ -15,9 +15,9 @@ This chapter describes how to deploy a Volto application to a production environ
 Cookieplone deployment option.
 ```
 
-For production deployments, use the standard [Cookieplone](https://github.com/plone/cookieplone) `project` template.
-It scaffolds the full Plone stack (backend + Volto frontend) that integrators customize and deploy.
-Inside the generated project you will find a `frontend/` folder that contains the Volto application used in production.
+For production deployments, use the [Cookieplone](https://github.com/plone/cookieplone) `project` template.
+It scaffolds the full Plone stack that integrators may customize and deploy.
+Inside the generated project, a {file}`frontend/` folder contains the Volto application used in production.
 
 This approach provides:
 - a clean, minimal boilerplate project structure
@@ -34,15 +34,12 @@ The Volto app approach for production deployments is deprecated.
 
 ## Generate a project with Cookieplone
 
-To create a production-ready Volto project, run Cookieplone's user-facing `project` template:
+To create a production-ready Volto project, run Cookieplone's `project` template.
 
 ```shell
 uvx cookieplone project
 ```
 
-```{note}
-The interactive prompts let you choose add-ons and other options. The resulting repository contains both the backend configuration and a `frontend/` folder that houses the Volto app you will build and deploy.
-```
 
 This command will:
 1.  Prompt you for project details, including project name, description, and other information.
@@ -50,7 +47,7 @@ This command will:
 3.  Set up a {file}`package.json` file in `frontend/` that depends on Volto.
 4.  Include deployment scripts and configuration to build and run the frontend.
 
-The generated `frontend/` project uses Volto as a dependency while remaining a thin wrapper where you add site-specific configuration, add-ons, and styling.
+The generated {file}`frontend/` project uses Volto as a dependency while remaining a thin wrapper where you add site-specific configuration, add-ons, and styling.
 
 ```{tip}
 Cookieplone also ships an internal template `sub/frontend_project` that is used to build the official `plone-frontend` Docker images. It is not meant to be invoked directly by integrators because it lacks the backend plumbing and policy add-ons that a real project requires.
