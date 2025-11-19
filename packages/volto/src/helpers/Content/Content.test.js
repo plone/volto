@@ -155,7 +155,9 @@ describe('Content', () => {
     it('returns token when language is an object with token property', () => {
       expect(getLanguageToken({ token: 'en', title: 'English' })).toBe('en');
       expect(getLanguageToken({ token: 'de' })).toBe('de');
-      expect(getLanguageToken({ token: 'pt-br', title: 'Portuguese (Brazil)' })).toBe('pt-br');
+      expect(
+        getLanguageToken({ token: 'pt-br', title: 'Portuguese (Brazil)' }),
+      ).toBe('pt-br');
     });
 
     it('returns null when language is an object without token property', () => {

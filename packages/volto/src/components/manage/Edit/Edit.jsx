@@ -317,8 +317,8 @@ class Edit extends Component {
         title={
           this.props?.schema?.title
             ? this.props.intl.formatMessage(messages.edit, {
-              title: this.props.schema.title,
-            })
+                title: this.props.schema.title,
+              })
             : null
         }
         loading={this.props.updateRequest.loading}
@@ -344,17 +344,19 @@ class Edit extends Component {
                   title={
                     this.props?.content?.title
                       ? this.props.intl.formatMessage(messages.edit, {
-                        title: this.props?.content?.title,
-                      })
+                          title: this.props?.content?.title,
+                        })
                       : this.props?.schema?.title
                         ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
-                        })
+                            title: this.props.schema.title,
+                          })
                         : null
                   }
                 >
                   {(() => {
-                    const languageToken = getLanguageToken(this.props.content?.language);
+                    const languageToken = getLanguageToken(
+                      this.props.content?.language,
+                    );
                     return languageToken ? <html lang={languageToken} /> : null;
                   })()}
                 </Helmet>
@@ -386,10 +388,14 @@ class Edit extends Component {
                       <div className="new-translation">
                         <Menu pointing secondary attached tabular>
                           <Menu.Item
-                            name={getLanguageToken(this.props.content.language)?.toUpperCase()}
+                            name={getLanguageToken(
+                              this.props.content.language,
+                            )?.toUpperCase()}
                             active={true}
                           >
-                            {getLanguageToken(this.props.content.language)?.toUpperCase()}
+                            {getLanguageToken(
+                              this.props.content.language,
+                            )?.toUpperCase()}
                           </Menu.Item>
                         </Menu>
 
