@@ -1164,6 +1164,9 @@ importers:
       '@loadable/webpack-plugin':
         specifier: 5.15.2
         version: 5.15.2(webpack@5.90.1)
+      '@plone/razzle':
+        specifier: workspace:*
+        version: link:../volto-razzle
       '@plone/types':
         specifier: workspace:*
         version: link:../types
@@ -1257,9 +1260,6 @@ importers:
       '@vitest/ui':
         specifier: ^2.1.8
         version: 2.1.9(vitest@3.2.4)
-      '@volto/razzle':
-        specifier: workspace:*
-        version: link:../volto-razzle
       autoprefixer:
         specifier: 10.4.8
         version: 10.4.8(postcss@8.4.31)
