@@ -48,6 +48,38 @@ You should take the following actions for your Volto 19 projects.
 
 If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.
 
+(replace-razzle-with-volto-razzle)=
+
+### Replace `razzle` with `@volto/razzle` (fork)
+```{versionchanged} Volto 19.0.0-alpha.14
+```
+
+`@volto/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
+Use `@volto/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
+
+For most projects, no action is required.
+The fork maintains full compatibility with the original `razzle` package, preserving all CLI entry points such as `razzle start`, `razzle build`, and `razzle test`.
+
+However, if you have customized Volto's internals in your project—for example, by importing internal modules directly from the `razzle` package such as `require('razzle/some/path')`—then you need to update those imports to reference `@volto/razzle` instead.
+
+To verify whether your project requires updates, search for any direct references to internal `razzle` modules:
+
+```shell
+grep -R "require.*razzle/" -n --exclude-dir=node_modules || true
+grep -R "from.*razzle/" -n --exclude-dir=node_modules || true
+```
+
+If you find any matches, check in particular:
+
+-   build and Babel configurations, including {file}`babel.config.js`, {file}`.babelrc`, {file}`webpack.config.js`, and {file}`razzle.config.js`
+-   any presets or plugins sections that import internal `razzle` modules
+-   custom build scripts that reference `razzle` internals
+
+```{note}
+The fork exists so we can ship fixes and compatibility patches required by Volto, since the upstream is no longer maintained.
+Our goal is to keep `@volto/razzle` compatible with the `razzle` public API.
+```
+
 ### `pnpm` has been upgraded to version 10
 ```{versionchanged} Volto 19.0.0-alpha.7
 ```
@@ -255,6 +287,17 @@ Three new widgets have been added based on the `ButtonsWidget` from `@plone/comp
 
 They are available in the global widgets configuration and can be used in your add-ons.
 They all are meant to be used using the `StyleWrapper` with custom CSS properties.
+
+### Forked Razzle SCSS plugin to avoid the log to be flooded with deprecation warnings
+```{versionadded} Volto 19.0.0-alpha.14
+```
+
+The `sass` package maintainers decided include a variety of deprecations during the last years in preparation for the future `sass` 2.0 release, based on `dart-sass`.
+These deprecation warnings are shown during the build process, flooding the log (once per future violation in your code) with useless information that does not help developers to identify real problems.
+To avoid this, we have forked the `razzle-plugin-scss` package and removed the deprecation warnings from the build log.
+We pinned the version of `sass` to `1.32.0`, which is the one before they introduced the deprecation warnings.
+It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
+In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
 
 (upgrading-to-volto-18-x-x)=
 
