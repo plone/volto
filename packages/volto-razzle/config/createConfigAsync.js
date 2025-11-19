@@ -262,8 +262,6 @@ module.exports = (
               ascii_only: true,
             },
           },
-          // @todo add flag for sourcemaps
-          sourceMap: razzleOptions.enableSourceMaps,
         };
       }
     }

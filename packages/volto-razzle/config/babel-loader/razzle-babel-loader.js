@@ -10,7 +10,7 @@ const join = path.join;
 // increment 'm' to invalidate cache
 // eslint-disable-razzle-line no-useless-concat
 const cacheKey = 'babel-cache-' + 'm' + '-';
-const razzleBabelPreset = require('babel-preset-razzle');
+const razzleBabelPreset = require('@plone/babel-preset-razzle');
 
 const getModernOptions = function (babelOptions) {
   babelOptions = babelOptions || {};
@@ -47,7 +47,7 @@ module.exports = babelLoader.custom(function (babel) {
     type: 'preset',
   });
   const applyCommonJs = babel.createConfigItem(
-    require('babel-preset-razzle/babel-plugins/commonjs'),
+    require('@plone/babel-preset-razzle/babel-plugins/commonjs'),
     { type: 'plugin' },
   );
   const commonJsItem = babel.createConfigItem(
@@ -166,7 +166,7 @@ module.exports = babelLoader.custom(function (babel) {
         if (!isServer) {
           const noAnonymousDefaultExportPlugin = babel.createConfigItem(
             [
-              require('babel-preset-razzle/babel-plugins/no-anonymous-default-export'),
+              require('@plone/babel-preset-razzle/babel-plugins/no-anonymous-default-export'),
               {},
             ],
             { type: 'plugin' },
