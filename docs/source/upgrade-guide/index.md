@@ -50,17 +50,17 @@ If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20
 
 (replace-razzle-with-volto-razzle)=
 
-### Replace `razzle` with `@volto/razzle` (fork)
+### Replace `razzle` with `@plone/razzle` (fork)
 ```{versionchanged} Volto 19.0.0-alpha.14
 ```
 
-`@volto/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
-Use `@volto/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
+`@plone/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
+Use `@plone/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
 
 For most projects, no action is required.
 The fork maintains full compatibility with the original `razzle` package, preserving all CLI entry points such as `razzle start`, `razzle build`, and `razzle test`.
 
-However, if you have customized Volto's internals in your project—for example, by importing internal modules directly from the `razzle` package such as `require('razzle/some/path')`—then you need to update those imports to reference `@volto/razzle` instead.
+However, if you have customized Volto's internals in your project—for example, by importing internal modules directly from the `razzle` package such as `require('razzle/some/path')`—then you need to update those imports to reference `@plone/razzle` instead.
 
 To verify whether your project requires updates, search for any direct references to internal `razzle` modules:
 
@@ -77,7 +77,7 @@ If you find any matches, check in particular:
 
 ```{note}
 The fork exists so we can ship fixes and compatibility patches required by Volto, since the upstream is no longer maintained.
-Our goal is to keep `@volto/razzle` compatible with the `razzle` public API.
+Our goal is to keep `@plone/razzle` compatible with the `razzle` public API.
 ```
 
 ### Replace `babel-preset-razzle` with `@plone/babel-preset-razzle`
