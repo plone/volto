@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.16 (2025-11-20)
+
+### Bugfix
+
+- Fixed missing deepmerge in prod build and add it as a direct dep in Volto core. @sneridagh 
+
 ## 19.0.0-alpha.15 (2025-11-19)
 
 ### Bugfix
