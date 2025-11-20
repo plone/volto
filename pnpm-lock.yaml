@@ -873,6 +873,9 @@ importers:
       decorate-component-with-props:
         specifier: 1.2.1
         version: 1.2.1(react@18.2.0)
+      deepmerge:
+        specifier: ^4.2.2
+        version: 4.3.1
       dependency-graph:
         specifier: 0.10.0
         version: 0.10.0
@@ -1291,9 +1294,6 @@ importers:
       deep-freeze:
         specifier: 0.0.1
         version: 0.0.1
-      deepmerge:
-        specifier: ^4.2.2
-        version: 4.3.1
       eslint:
         specifier: ^8.57.0
         version: 8.57.1
