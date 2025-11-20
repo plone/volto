@@ -17,7 +17,7 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
   </div>,
   <div
     className="toolbar expanded"
-    id="toolbar"
+    id="toolbar-body"
   >
     <div
       className="toolbar-body"
@@ -183,7 +183,7 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
       className="toolbar-handler"
     >
       <button
-        aria-controls="toolbar"
+        aria-controls="toolbar-body"
         aria-expanded={true}
         className="toolbar-handler-button"
         onClick={[Function]}
@@ -220,7 +220,7 @@ exports[`Toolbar > renders the Toolbar component with lock 1`] = `
   </div>,
   <div
     className="toolbar expanded"
-    id="toolbar"
+    id="toolbar-body"
   >
     <div
       className="toolbar-body"
@@ -386,7 +386,7 @@ exports[`Toolbar > renders the Toolbar component with lock 1`] = `
       className="toolbar-handler"
     >
       <button
-        aria-controls="toolbar"
+        aria-controls="toolbar-body"
         aria-expanded={true}
         className="toolbar-handler-button"
         onClick={[Function]}
