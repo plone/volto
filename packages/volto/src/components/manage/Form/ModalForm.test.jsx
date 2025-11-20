@@ -8,11 +8,7 @@ import ModalForm from './ModalForm';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ModalForm', () => {
   it('renders a modal form component', () => {

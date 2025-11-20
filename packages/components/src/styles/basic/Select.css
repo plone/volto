@@ -7,15 +7,21 @@
 @layer plone-components.base {
   .react-aria-Select {
     color: var(--text-color);
-
     .react-aria-Button {
       display: flex;
+      min-width: var(--rac-select-min-width);
       max-width: 250px;
       align-items: center;
+      justify-content: space-between;
       padding: 0.286rem 0.286rem 0.286rem 0.571rem;
       border-radius: 6px;
       box-shadow: 0 1px 2px rgba(0 0 0 / 0.1);
       font-size: 1.072rem;
+      text-align: initial;
+
+      &:has(.icon) {
+        line-height: initial;
+      }
 
       &[data-focus-visible] {
         outline: 2px solid var(--focus-ring-color);
@@ -55,8 +61,6 @@
       padding: 1px;
       border-radius: 4px;
       margin-left: 1rem;
-      background: var(--highlight-background);
-      color: var(--highlight-foreground);
       font-size: 0.857rem;
       forced-color-adjust: none;
       line-height: 1.375rem;
@@ -70,6 +74,13 @@
 
   .react-aria-Popover[data-trigger='Select'] {
     min-width: var(--trigger-width);
+    box-shadow:
+      0 3px 6px 0 rgba(2, 19, 34, 0.12),
+      0 2px 4px 0 rgba(2, 19, 34, 0.06);
+
+    .react-aria-Dialog {
+      padding: 0;
+    }
 
     .react-aria-ListBox {
       display: block;
@@ -130,7 +141,6 @@
         border-color: var(--border-color-disabled);
         color: var(--text-color-disabled);
         span[aria-hidden] {
-          background: var(--border-color-disabled);
           color: var(--text-color-disabled);
         }
 

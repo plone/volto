@@ -27,4 +27,4 @@ make backend-docker-start
 
 ## About this app
 
-- [Remix Docs](https://v2.remix.run/docs/)
+- [Remix Docs](https://reactrouter.com/home)
