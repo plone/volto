@@ -6,7 +6,32 @@ exports[`Comments > renders a comments component 1`] = `
 >
   <div
     id="comment-add-id"
-  />
+  >
+    <div
+      data-schema="{
+  "fieldsets": [
+    {
+      "fields": [
+        "comment"
+      ],
+      "id": "default",
+      "title": "Default"
+    }
+  ],
+  "properties": {
+    "comment": {
+      "title": "Comment",
+      "type": "string",
+      "widget": "textarea"
+    }
+  },
+  "required": [
+    "comment1"
+  ]
+}"
+      id="Form"
+    />
+  </div>
   <div
     className="ui threaded comments"
     id="discussion"
