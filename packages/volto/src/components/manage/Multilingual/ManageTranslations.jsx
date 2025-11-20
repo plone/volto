@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container, Segment, Table } from 'semantic-ui-react';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { getLanguageToken } from '@plone/volto/helpers/Content/Content';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
 import reduce from 'lodash/reduce';
 import { Link, useLocation } from 'react-router-dom';
@@ -122,9 +123,12 @@ const ManageTranslations = (props) => {
     /* eslint-disable react-hooks/exhaustive-deps */
   }, [isObjectBrowserOpen]);
 
+  const languageToken = getLanguageToken(content?.language);
+
   const translations = content &&
-    content['@components'].translations.items && {
-      [content.language.token]: {
+    content['@components'].translations.items &&
+    languageToken && {
+      [languageToken]: {
         url: content['@id'],
       },
       ...reduce(
@@ -194,7 +198,7 @@ const ManageTranslations = (props) => {
               {availableLanguages.map((lang) => (
                 <Table.Row key={lang}>
                   <Table.Cell collapsing>
-                    {lang === content.language.token ? (
+                    {lang === languageToken ? (
                       <strong>{langmap[lang].nativeName}</strong>
                     ) : (
                       langmap[lang].nativeName
@@ -214,8 +218,7 @@ const ManageTranslations = (props) => {
                         basic
                         icon
                         disabled={
-                          lang === content.language.token ||
-                          translations?.[lang]
+                          lang === languageToken || translations?.[lang]
                         }
                         as={Link}
                         to={{
@@ -238,15 +241,11 @@ const ManageTranslations = (props) => {
                           )} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
-                          disabled={lang === content.language.token}
+                          disabled={lang === languageToken}
                           onClick={() => onDeleteTranslation(lang)}
                         >
                           <Icon
-                            name={
-                              lang === content.language.token
-                                ? linkSVG
-                                : unlinkSVG
-                            }
+                            name={lang === languageToken ? linkSVG : unlinkSVG}
                             size="24px"
                           />
                         </Button>
@@ -259,7 +258,7 @@ const ManageTranslations = (props) => {
                           )} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
-                          disabled={lang === content.language.token}
+                          disabled={lang === languageToken}
                           onClick={() =>
                             openObjectBrowser({
                               mode: 'link',
