@@ -15,6 +15,9 @@
     "paths": {
       "seven/*": ["../../apps/seven/*"],
       "@plone/plate/*": ["./*"],
+      "@plone/volto-slate/*": ["./node_modules/@plone/volto-slate/src/*"],
+      "@plone/volto/*": ["../../../node_modules/@plone/volto/src/*"],
+      "@root/*": ["../../../node_modules/@plone/volto/src/*"],
       "@/*": ["./*"]
     }
   }

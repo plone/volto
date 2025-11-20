@@ -1,7 +1,11 @@
 import './storybook-base.css';
 import '../../theming/styles/tailwind.css';
-import config from '@plone/registry';
+import config from '@plone/volto/registry';
 import installPlate from '../index';
+import installVoltoSlate from '@plone/volto-slate/editor';
+import installVoltoSlateConfigLite from '../stories/liteSlateConfig';
+
+installVoltoSlateConfigLite(installVoltoSlate(config));
 
 installPlate(config);
 
