@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "19.0.0-alpha.13",
+  "version": "19.0.0-alpha.16",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -40,10 +40,9 @@
     "start:coresandbox": "make build-deps && ADDONS=coresandbox razzle start",
     "build": "make build-deps && razzle build --noninteractive",
     "build:types": "tsc --project tsconfig.declarations.json",
-    "vitest": "vitest",
+    "test": "vitest",
     "coverage": "vitest run --coverage",
-    "test": "razzle test --maxWorkers=${MAX_WORKERS:-50%}",
-    "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu razzle test",
+    "test:ci": "CI=true NODE_ICU_DATA=node_modules/full-icu vitest run",
     "test:husky": "CI=true yarn test --bail --findRelatedTests",
     "start:prod": "NODE_ENV=production node build/server.js",
     "prettier": "prettier --single-quote --check '{src,cypress}/**/*.{js,jsx,ts,tsx}' --check '*.js'",
@@ -71,58 +70,6 @@
         "path": "build/public/static/js/*.js",
         "maxSize": "700kB"
       }
-    ]
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.js(x)?$": "babel-jest",
-      "^.+\\.ts(x)?$": "ts-jest",
-      "^.+\\.(png)$": "jest-file",
-      "^.+\\.(jpg)$": "jest-file",
-      "^.+\\.(svg)$": "./jest-svgsystem-transform.js"
-    },
-    "moduleNameMapper": {
-      "@plone/volto/package.json": "<rootDir>/package.json",
-      "@plone/volto/babel": "<rootDir>/babel.js",
-      "@plone/volto/(.*)$": "<rootDir>/src/$1",
-      "@plone/volto-slate/(.*)$": "<rootDir>/../volto-slate/src/$1",
-      "@plone/registry/addon-registry$": "<rootDir>/node_modules/@plone/registry/dist/addon-registry/addon-registry.js",
-      "@plone/registry/create-addons-loader$": "<rootDir>/node_modules/@plone/registry/dist/addon-registry/create-addons-loader.js",
-      "@plone/registry": "<rootDir>/../registry/src",
-      "@plone/registry/(.*)$": "<rootDir>/../registry/src/$1",
-      "@plone/volto": "<rootDir>/src/index.js",
-      "~/config": "<rootDir>/src/config",
-      "~/../locales/${lang}.json": "<rootDir>/locales/en.json",
-      "(.*)/locales/(.*)": "<rootDir>/locales/$2",
-      "load-volto-addons": "<rootDir>/jest-addons-loader.js",
-      "@package/(.*)$": "<rootDir>/src/$1",
-      "@root/config": "<rootDir>/jest-addons-loader.js",
-      "@root/(.*)$": "<rootDir>/src/$1",
-      "@voltoconfig": "<rootDir>/jest-addons-loader.js",
-      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-    },
-    "coverageThreshold": {
-      "global": {
-        "branches": 10,
-        "functions": 10,
-        "lines": 10,
-        "statements": 10
-      }
-    },
-    "setupFiles": [
-      "./test-setup-globals.js",
-      "./test-setup-config.jsx"
-    ],
-    "globalSetup": "./global-test-setup.js",
-    "setupFilesAfterEnv": [
-      "<rootDir>/jest-setup-afterenv.js"
-    ],
-    "globals": {
-      "__DEV__": true
-    },
-    "testMatch": [
-      "<rootDir>/__tests__/**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}",
-      "<rootDir>/../**/?(*.)(spec|test).{js,jsx,mjs,ts,tsx}"
     ]
   },
   "stylelint": {
@@ -193,6 +140,7 @@
     "debug": "4.3.4",
     "decorate-component-with-props": "1.2.1",
     "dependency-graph": "0.10.0",
+    "deepmerge": "^4.2.2",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
     "express": "4.19.2",
@@ -277,20 +225,17 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/eslint-parser": "7.22.15",
-    "@babel/plugin-proposal-export-default-from": "7.18.10",
-    "@babel/plugin-proposal-export-namespace-from": "7.18.9",
-    "@babel/plugin-proposal-json-strings": "7.18.6",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "7.18.6",
-    "@babel/plugin-proposal-throw-expressions": "7.18.6",
-    "@babel/plugin-syntax-export-namespace-from": "7.8.3",
-    "@babel/runtime": "7.20.6",
+    "@babel/core": "^7.28.5",
+    "@babel/eslint-parser": "^7.28.5",
+    "@babel/plugin-proposal-export-default-from": "^7.27.1",
+    "@babel/plugin-proposal-throw-expressions": "^7.27.1",
+    "@babel/runtime": "^7.28.4",
     "@babel/types": "7.20.5",
     "@fiverr/afterbuild-webpack-plugin": "^1.0.0",
-    "@jest/globals": "^29.7.0",
     "@loadable/babel-plugin": "5.13.2",
     "@loadable/webpack-plugin": "5.15.2",
+    "@plone/babel-preset-razzle": "workspace:^",
+    "@plone/razzle": "workspace:*",
     "@plone/types": "workspace:*",
     "@plone/volto-coresandbox": "workspace:*",
     "@sinonjs/fake-timers": "^6.0.1",
@@ -308,7 +253,6 @@
     "@testing-library/react": "14.3.1",
     "@testing-library/react-hooks": "8.0.1",
     "@types/history": "^4.7.11",
-    "@types/jest": "^29.5.8",
     "@types/loadable__component": "^5.13.9",
     "@types/lodash": "^4.14.201",
     "@types/node": "^24",
@@ -330,7 +274,6 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-react-intl": "5.1.17",
     "babel-plugin-root-import": "6.1.0",
-    "babel-preset-razzle": "4.2.18",
     "bundlewatch": "0.3.3",
     "circular-dependency-plugin": "5.2.2",
     "css-loader": "5.2.7",
@@ -352,9 +295,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "5.5.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "26.6.3",
-    "jest-environment-jsdom": "^26",
-    "jest-file": "1.0.0",
     "jiti": "^2.4.2",
     "jsdom": "^16.7.0",
     "jsonwebtoken": "9.0.0",
@@ -371,13 +311,14 @@
     "postcss-overrides": "3.1.4",
     "postcss-scss": "4.0.6",
     "prettier": "3.2.5",
-    "razzle": "4.2.18",
     "razzle-dev-utils": "4.2.18",
-    "razzle-plugin-scss": "4.2.18",
     "react-docgen-typescript-plugin": "^1.0.5",
     "react-error-overlay": "6.0.9",
     "react-is": "^18.2.0",
     "release-it": "^19.0.4",
+    "resolve-url-loader": "^3.1.2",
+    "sass": "1.58.0",
+    "sass-loader": "^10.0.3",
     "semver": "^7.5.4",
     "start-server-and-test": "1.14.0",
     "storybook": "^8.0.4",
@@ -390,7 +331,6 @@
     "svgo-loader": "3.0.3",
     "terser-webpack-plugin": "5.3.6",
     "tmp": "0.2.1",
-    "ts-jest": "^26.4.2",
     "ts-loader": "9.4.4",
     "typescript": "^5.7.3",
     "use-trace-update": "1.3.2",
