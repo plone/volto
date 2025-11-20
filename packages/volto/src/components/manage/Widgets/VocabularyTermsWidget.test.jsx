@@ -5,6 +5,7 @@ import { Provider } from 'react-intl-redux';
 import VocabularyTermsWidget from './VocabularyTermsWidget';
 
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
+vi.mock('@plone/volto/components/manage/Form');
 beforeAll(async () => {
   const { __setLoadables } = await import(
     '@plone/volto/helpers/Loadable/Loadable'
