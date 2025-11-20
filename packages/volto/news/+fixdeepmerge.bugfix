@@ -1,0 +1,1 @@
+Fixed missing deepmerge in prod build and add it as a direct dep in Volto core. @sneridagh
