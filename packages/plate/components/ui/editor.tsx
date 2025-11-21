@@ -68,7 +68,10 @@ export function EditorContainer({
 export const editorVariants = cva(
   cn(
     'group/editor',
-    'relative w-full cursor-text overflow-x-hidden overflow-y-hidden break-words whitespace-pre-wrap select-text',
+    `
+      relative w-full cursor-text overflow-x-hidden overflow-y-hidden break-words
+      whitespace-pre-wrap select-text
+    `,
     `
       rounded-md ring-offset-background
       focus-visible:outline-none
