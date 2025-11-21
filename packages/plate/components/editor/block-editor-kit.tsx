@@ -65,7 +65,7 @@ export const BlockEditorKit = [
   ...SlashKit,
   ...AutoformatKit,
   ...CursorOverlayKit,
-  ...DndKit,
+  // ...DndKit,
   ...ExitBreakKit,
   TrailingBlockPlugin,
 

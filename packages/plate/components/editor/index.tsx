@@ -34,7 +34,7 @@ export function PlateEditor(props: {
       {/* Provides editor context */}
       <EditorContainer className="">
         {/* Styles the editor area */}
-        <Editor variant="none" placeholder="Type text..." />
+        <Editor variant="block" placeholder="Type text..." />
       </EditorContainer>
     </Plate>
   );
@@ -59,7 +59,7 @@ export function PlateRenderer(
     value: props.value,
   }) as SlateEditor; // EditorView likes it more
 
-  return <EditorView {...rest} editor={editor} />;
+  return <EditorView {...rest} editor={editor} variant="none" />;
 }
 
 PlateRenderer.displayName = 'PlateRenderer';
