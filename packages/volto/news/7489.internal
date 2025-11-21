@@ -1,0 +1,1 @@
+Updated Cypress test for search date sorting to verify newest-first ordering behavior. Added proper wait for search requests to ensure test reliability. @aryan7081
