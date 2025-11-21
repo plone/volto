@@ -78,7 +78,7 @@ overrides:
   react-dom: ^19.1.0
   jotai: ^2.12.5
 
-pnpmfileChecksum: sha256-YQGedB3IrCeBMAvU8RxeSwbc6jsJEM3HijPhsk8sdzw=
+pnpmfileChecksum: sha256-WUpdqnyQl6o6FiaFJwVm56xjaWIronnBe1XtXkplmyQ=
 
 importers:
 
