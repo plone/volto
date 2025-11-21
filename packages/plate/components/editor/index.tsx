@@ -5,6 +5,7 @@ import {
   type TPlateEditor,
   type PlateViewProps,
 } from 'platejs/react';
+import { useMemo } from 'react';
 
 import {
   Editor,
@@ -13,6 +14,7 @@ import {
   editorVariants,
 } from '../ui/editor';
 import type { VariantProps } from 'class-variance-authority';
+import { normalizeLegacyValue } from './plugins/normalize-legacy';
 
 export function PlateEditor(props: {
   editorConfig: Parameters<typeof usePlateEditor>[0];
@@ -22,7 +24,15 @@ export function PlateEditor(props: {
     value: TElement[];
   }) => void;
 }) {
-  const editor = usePlateEditor({ ...props.editorConfig, value: props.value });
+  const sanitizedValue = useMemo(
+    () => normalizeLegacyValue(props.value),
+    [props.value],
+  );
+
+  const editor = usePlateEditor({
+    ...props.editorConfig,
+    value: sanitizedValue,
+  });
 
   return (
     <Plate
@@ -54,9 +64,14 @@ export function PlateRenderer(
 ) {
   const { editorConfig, ...rest } = props;
 
+  const sanitizedValue = useMemo(
+    () => normalizeLegacyValue(props.value),
+    [props.value],
+  );
+
   const editor = usePlateEditor({
     ...editorConfig,
-    value: props.value,
+    value: sanitizedValue,
   }) as SlateEditor; // EditorView likes it more
 
   return <EditorView {...rest} editor={editor} variant="none" />;
