@@ -6,7 +6,7 @@ on:
       - seven
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
   towncrier:
