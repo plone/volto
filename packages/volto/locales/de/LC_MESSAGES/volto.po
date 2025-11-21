@@ -1975,6 +1975,11 @@ msgstr "Jährliches Intervall"
 msgid "Invalid Block"
 msgstr "Ungültiger Block - Wird beim Speichern entfernt"
 
+#. Default: "Invalid password. Minimum 8 characters required."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Invalid password. Minimum 8 characters required."
+msgstr ""
+
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
