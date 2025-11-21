@@ -143,63 +143,73 @@ type ToolbarButtonProps = {
   VariantProps<typeof toolbarButtonVariants>;
 
 export const ToolbarButton = withTooltip(
-  React.forwardRef<HTMLButtonElement, ToolbarButtonProps>(function ToolbarButton(
-    { children, className, isDropdown, pressed, size = 'sm', variant, ...props },
-    ref,
-  ) {
-    return typeof pressed === 'boolean' ? (
-      <ToolbarToggleGroup
-        disabled={props.disabled}
-        value="single"
-        type="single"
-      >
-        <ToolbarToggleItem
+  React.forwardRef<HTMLButtonElement, ToolbarButtonProps>(
+    function ToolbarButton(
+      {
+        children,
+        className,
+        isDropdown,
+        pressed,
+        size = 'sm',
+        variant,
+        ...props
+      },
+      ref,
+    ) {
+      return typeof pressed === 'boolean' ? (
+        <ToolbarToggleGroup
+          disabled={props.disabled}
+          value="single"
+          type="single"
+        >
+          <ToolbarToggleItem
+            className={cn(
+              toolbarButtonVariants({
+                size,
+                variant,
+              }),
+              isDropdown && 'justify-between gap-1 pr-1',
+              className,
+            )}
+            value={pressed ? 'single' : ''}
+            ref={ref}
+            {...props}
+          >
+            {isDropdown ? (
+              <>
+                <div className="flex flex-1 items-center gap-2 whitespace-nowrap">
+                  {children}
+                </div>
+                <div>
+                  <ChevronDown
+                    className="size-3.5 text-muted-foreground"
+                    data-icon
+                  />
+                </div>
+              </>
+            ) : (
+              children
+            )}
+          </ToolbarToggleItem>
+        </ToolbarToggleGroup>
+      ) : (
+        <ToolbarPrimitive.Button
           className={cn(
             toolbarButtonVariants({
               size,
               variant,
             }),
-            isDropdown && 'justify-between gap-1 pr-1',
+            isDropdown && 'pr-1',
             className,
           )}
-          value={pressed ? 'single' : ''}
           ref={ref}
           {...props}
         >
-          {isDropdown ? (
-            <>
-              <div className="flex flex-1 items-center gap-2 whitespace-nowrap">
-                {children}
-              </div>
-              <div>
-                <ChevronDown
-                  className="size-3.5 text-muted-foreground"
-                  data-icon
-                />
-              </div>
-            </>
-          ) : (
-            children
-          )}
-        </ToolbarToggleItem>
-      </ToolbarToggleGroup>
-    ) : (
-      <ToolbarPrimitive.Button
-        className={cn(
-          toolbarButtonVariants({
-            size,
-            variant,
-          }),
-          isDropdown && 'pr-1',
-          className,
-        )}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </ToolbarPrimitive.Button>
-    );
-  }),
+          {children}
+        </ToolbarPrimitive.Button>
+      );
+    },
+  ),
 );
 
 export function ToolbarSplitButton({
