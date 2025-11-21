@@ -80,10 +80,3 @@
     }
   }
 }
-
-.breadcrumbs-menu .react-aria-MenuItem {
-  display: block;
-  .menu-item-link {
-    display: block;
-  }
-}
