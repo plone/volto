@@ -14,4 +14,16 @@ describe('Login Tests', () => {
     cy.get('#login-form-submit').click();
     cy.get('body').should('have.class', 'has-toolbar');
   });
+
+  it('Shows an error when logging in with wrong credentials', function () {
+    cy.get('#login').type('wrong-user');
+    cy.get('#password').type('wrong-password');
+    cy.get('#login-form-submit').click();
+
+    cy.contains('.toast-inner-content h4', 'Login Failed', {
+      timeout: 10000,
+    }).should('be.visible');
+
+    cy.get('#login-form-submit').should('not.have.class', 'loading');
+  });
 });
