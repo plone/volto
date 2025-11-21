@@ -14,7 +14,7 @@ import { ColumnKit } from './plugins/column-kit';
 import { CommentKit } from './plugins/comment-kit';
 import { CursorOverlayKit } from './plugins/cursor-overlay-kit';
 import { DiscussionKit } from './plugins/discussion-kit';
-import { DndKit } from './plugins/dnd-kit';
+// import { DndKit } from './plugins/dnd-kit';
 import { DocxKit } from './plugins/docx-kit';
 import { ExitBreakKit } from './plugins/exit-break-kit';
 import { FloatingToolbarKit } from './plugins/floating-toolbar-kit';
@@ -65,7 +65,7 @@ export const BlockEditorKit = [
   ...SlashKit,
   ...AutoformatKit,
   ...CursorOverlayKit,
-  ...DndKit,
+  // ...DndKit,
   ...ExitBreakKit,
   TrailingBlockPlugin,
 
