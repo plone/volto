@@ -2,7 +2,7 @@ name: Unit Tests
 on: [push, pull_request]
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
   unitTests:
@@ -20,7 +20,7 @@ jobs:
           - '@plone/layout'
           - '@plone/react-router'
           - '@plone/registry'
-        node-version: [22.x]
+        node-version: [24.x]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js environment
@@ -39,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js environment
@@ -74,7 +74,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Node.js environment
