@@ -138,7 +138,7 @@ ci-acceptance-backend-start: ## Start backend acceptance server in headless mode
 
 .PHONY: acceptance-frontend-prod-start
 acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode
-	pnpm build && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start:prod
+	pnpm build && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start:prod && pnpm install --prod
 
 .PHONY: acceptance-test
 acceptance-test: ## Start Cypress in interactive mode
