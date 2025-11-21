@@ -1,0 +1,1 @@
+Prevent login failures during hydration from being swallowed by GET_CONTENT-only guard and treat LOGIN as an action that should surface API errors. @aryan7081
