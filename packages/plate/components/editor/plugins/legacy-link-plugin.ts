@@ -1,5 +1,6 @@
 import { ElementApi, KEYS, createSlatePlugin } from 'platejs';
 import type { Path, SlateEditor, Value } from 'platejs';
+import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
 
 export type LegacyLinkData = {
   url?: string;
@@ -45,6 +46,8 @@ export const migrateLegacyLinksInValueStatic = (
   linkType = KEYS.link,
 ) => {
   // For SSR/offline usage: caller provides the link type; operates without an editor instance.
+  const mutableNodes = cloneValueToWritable(nodes);
+
   const visit = (node: LegacyLinkElement) => {
     if (!ElementApi.isElement(node)) {
       return;
@@ -74,7 +77,9 @@ export const migrateLegacyLinksInValueStatic = (
     }
   };
 
-  nodes.forEach(visit);
+  mutableNodes.forEach(visit);
+  applyNormalizedValue(nodes, mutableNodes);
+  return mutableNodes;
 };
 
 export const migrateLegacyLinksInValue = (
@@ -82,6 +87,7 @@ export const migrateLegacyLinksInValue = (
   nodes: Value,
 ) => {
   // Editor-aware: resolves the configured link type from the plugin before normalizing.
+  const mutableNodes = cloneValueToWritable(nodes);
   const plateLinkType = editor.getType(KEYS.link);
   const visit = (node: LegacyLinkElement) => {
     if (!ElementApi.isElement(node)) {
@@ -115,7 +121,9 @@ export const migrateLegacyLinksInValue = (
     }
   };
 
-  nodes.forEach(visit);
+  mutableNodes.forEach(visit);
+  applyNormalizedValue(nodes, mutableNodes);
+  return mutableNodes;
 };
 
 /**
@@ -131,7 +139,8 @@ export const LegacyLinkPlugin = [
       type: 'link',
     },
     normalizeInitialValue: ({ editor, value }) => {
-      migrateLegacyLinksInValue(editor, value);
+      const normalized = migrateLegacyLinksInValue(editor, value);
+      applyNormalizedValue(value, normalized);
     },
     extendEditor: ({ editor }) => {
       const { normalizeNode } = editor;

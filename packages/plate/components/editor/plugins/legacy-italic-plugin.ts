@@ -2,18 +2,18 @@ import { ElementApi, TextApi, createSlatePlugin } from 'platejs';
 import type { Path, SlateEditor, Value } from 'platejs';
 import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
 
-export type LegacyBoldNode = {
+export type LegacyItalicNode = {
   type?: string;
   text?: string;
-  bold?: boolean;
-  children?: LegacyBoldNode[];
+  italic?: boolean;
+  children?: LegacyItalicNode[];
   [key: string]: unknown;
 };
 
-export const migrateLegacyBold = (editor: SlateEditor, path: Path) => {
-  // Mark all text descendants as bold, then unwrap the legacy element.
+export const migrateLegacyItalic = (editor: SlateEditor, path: Path) => {
+  // Mark all text descendants as italic, then unwrap the legacy element.
   editor.tf.setNodes(
-    { bold: true },
+    { italic: true },
     {
       at: path,
       match: TextApi.isText,
@@ -23,19 +23,19 @@ export const migrateLegacyBold = (editor: SlateEditor, path: Path) => {
 
   editor.tf.unwrapNodes({
     at: path,
-    match: (n) => ElementApi.isElement(n) && n.type === 'strong',
+    match: (n) => ElementApi.isElement(n) && n.type === 'em',
   });
 };
 
-export const migrateLegacyBoldInValue = (nodes: Value) => {
+export const migrateLegacyItalicInValue = (nodes: Value) => {
   const mutableNodes = cloneValueToWritable(nodes);
 
-  const visit = (node: LegacyBoldNode, isBold = false): LegacyBoldNode[] => {
-    const nextIsBold = isBold || node?.type === 'strong';
+  const visit = (node: LegacyItalicNode, isItalic = false): LegacyItalicNode[] => {
+    const nextIsItalic = isItalic || node?.type === 'em';
 
     if (typeof node?.text === 'string') {
-      if (nextIsBold) {
-        node.bold = node.bold ?? true;
+      if (nextIsItalic) {
+        node.italic = node.italic ?? true;
       }
       return [node];
     }
@@ -44,11 +44,11 @@ export const migrateLegacyBoldInValue = (nodes: Value) => {
       return [node];
     }
 
-    const normalizedChildren = node.children.flatMap((child: LegacyBoldNode) =>
-      visit(child, nextIsBold),
+    const normalizedChildren = node.children.flatMap((child: LegacyItalicNode) =>
+      visit(child, nextIsItalic),
     );
 
-    if (node.type === 'strong') {
+    if (node.type === 'em') {
       return normalizedChildren;
     }
 
@@ -56,25 +56,27 @@ export const migrateLegacyBoldInValue = (nodes: Value) => {
     return [node];
   };
 
-  const normalized = mutableNodes.flatMap((node: any) => visit(node));
+  const normalized = (mutableNodes as LegacyItalicNode[]).flatMap((node) =>
+    visit(node),
+  );
   mutableNodes.splice(0, mutableNodes.length, ...normalized);
   applyNormalizedValue(nodes, mutableNodes);
   return mutableNodes;
 };
 
 /**
- * Converts legacy Slate bold nodes (`type: "strong"`) into Plate bold marks.
+ * Converts legacy Slate italic nodes (`type: "em"`) into Plate italic marks.
  */
-export const LegacyBoldPlugin = [
+export const LegacyItalicPlugin = [
   createSlatePlugin({
-    key: 'legacyBoldNormalizer',
+    key: 'legacyItalicNormalizer',
     node: {
       isElement: true,
-      type: 'strong',
+      type: 'em',
       isInline: true,
     },
     normalizeInitialValue: ({ value }) => {
-      const normalized = migrateLegacyBoldInValue(value);
+      const normalized = migrateLegacyItalicInValue(value);
       applyNormalizedValue(value, normalized);
     },
     extendEditor: ({ editor }) => {
@@ -83,8 +85,8 @@ export const LegacyBoldPlugin = [
       editor.normalizeNode = (entry) => {
         const [node, path] = entry;
 
-        if (ElementApi.isElement(node) && node.type === 'strong') {
-          migrateLegacyBold(editor, path);
+        if (ElementApi.isElement(node) && node.type === 'em') {
+          migrateLegacyItalic(editor, path);
           return;
         }
 

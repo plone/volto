@@ -261,13 +261,14 @@ export function ToolbarSplitButtonPrimary({
   );
 }
 
-export function ToolbarSplitButtonSecondary({
-  className,
-  size,
-  variant,
-  ...props
-}: React.ComponentPropsWithoutRef<'span'> &
-  VariantProps<typeof dropdownArrowVariants>) {
+export const ToolbarSplitButtonSecondary = React.forwardRef<
+  HTMLSpanElement,
+  React.ComponentPropsWithoutRef<'span'> &
+    VariantProps<typeof dropdownArrowVariants>
+>(function ToolbarSplitButtonSecondary(
+  { className, size, variant, ...props },
+  ref,
+) {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus
     <span
@@ -281,12 +282,14 @@ export function ToolbarSplitButtonSecondary({
       )}
       onClick={(e) => e.stopPropagation()}
       role="button"
+      tabIndex={0}
+      ref={ref}
       {...props}
     >
       <ChevronDown className="size-3.5 text-muted-foreground" data-icon />
     </span>
   );
-}
+});
 
 export const ToolbarToggleItem = React.forwardRef<
   React.ElementRef<typeof ToolbarPrimitive.ToggleItem>,
