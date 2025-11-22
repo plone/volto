@@ -6,7 +6,10 @@ import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
-import type { Content } from '@plone/types';
+import type {
+  LoaderDataUtilityMethod,
+  ContentSubRequestUtilityMethod,
+} from '@plone/types';
 import {
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -33,24 +36,31 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const rootLoaderDataUtilities = config.getUtilities({
+  const rootLoaderDataUtilities = config.getUtilities<LoaderDataUtilityMethod>({
     type: 'rootLoaderData',
-  }) as Array<{
-    method: (args: {
-      cli: PloneClient;
-      content: Content;
-      request: typeof request;
-      path: string;
-      params: typeof params;
-      locale: string;
-    }) => Promise<{ status: number; data: unknown }>;
-  }>;
+  });
+
+  const rootContentSubRequests =
+    config.getUtilities<ContentSubRequestUtilityMethod>({
+      type: 'rootContentSubRequest',
+    });
 
   try {
     const [content, site] = await Promise.all([
       cli.getContent({ path, expand }),
       cli.getSite(),
     ]);
+
+    for (const utility of rootContentSubRequests) {
+      await utility.method({
+        cli,
+        content: content.data,
+        request,
+        path,
+        params,
+        locale,
+      });
+    }
 
     const rootLoaderDataUtilitiesData = await Promise.all([
       ...rootLoaderDataUtilities.map((utility) =>
