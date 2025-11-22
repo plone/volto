@@ -1,3 +1,7 @@
+import { Content } from '../content';
+import type { Params } from 'react-router';
+import type PloneClient from '@plone/client';
+
 /**
  * Map utility "type" to its method signature.
  * Extend via module augmentation:
@@ -35,3 +39,19 @@ type UtilitiesByMap = {
 };
 
 export type UtilitiesConfig = UtilitiesByMap & Record<string, Utility>;
+
+export type LoaderDataUtilityMethod = (
+  args: LoaderUtilityArgs,
+) => Promise<{ status: number; data: unknown }>;
+export type ContentSubRequestUtilityMethod = (
+  args: LoaderUtilityArgs,
+) => Promise<undefined>;
+
+export interface LoaderUtilityArgs {
+  cli: PloneClient;
+  content: Content;
+  request: Request;
+  path: string;
+  params: Params;
+  locale: string;
+}
