@@ -6,7 +6,10 @@ import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
-import type { Content, ListingBlockFormData } from '@plone/types';
+import type {
+  LoaderDataUtilityMethod,
+  ContentSubRequestUtilityMethod,
+} from '@plone/types';
 import {
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -33,18 +36,14 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   const path = `/${params['*'] || ''}`;
 
-  const rootLoaderDataUtilities = config.getUtilities({
+  const rootLoaderDataUtilities = config.getUtilities<LoaderDataUtilityMethod>({
     type: 'rootLoaderData',
-  }) as Array<{
-    method: (args: {
-      cli: PloneClient;
-      content: Content;
-      request: typeof request;
-      path: string;
-      params: typeof params;
-      locale: string;
-    }) => Promise<{ status: number; data: unknown }>;
-  }>;
+  });
+
+  const rootContentSubRequests =
+    config.getUtilities<ContentSubRequestUtilityMethod>({
+      type: 'rootContentSubRequest',
+    });
 
   try {
     const [content, site] = await Promise.all([
@@ -52,16 +51,15 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       cli.getSite(),
     ]);
 
-    const listingBlocks: { id: string; block: ListingBlockFormData }[] =
-      Object.entries(content.data.blocks)
-        .filter(([, block]) => block['@type'] === 'listing')
-        .map(([id, block]) => ({ id, block: block as ListingBlockFormData }));
-    for (let i = 0; i < listingBlocks.length; i++) {
-      const { id, block } = listingBlocks[i];
-      if (block.querystring) {
-        const results = await cli.querystringSearch(block.querystring);
-        content.data.blocks[id].items = results.data.items;
-      }
+    for (const utility of rootContentSubRequests) {
+      await utility.method({
+        cli,
+        content: content.data,
+        request,
+        path,
+        params,
+        locale,
+      });
     }
 
     const rootLoaderDataUtilitiesData = await Promise.all([

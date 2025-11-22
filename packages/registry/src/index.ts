@@ -15,6 +15,8 @@ import type {
   WidgetsConfig,
   ReactRouterRouteEntry,
   WidgetKey,
+  UtilityMethod,
+  DummyUtilityMethod,
 } from '@plone/types';
 
 export type ConfigData = {
@@ -33,10 +35,6 @@ export type ConfigData = {
 
 type GetComponentResult = {
   component: React.ComponentType<any>;
-};
-
-type GetUtilityResult = {
-  method: (...args: any[]) => any;
 };
 
 export type ConfigType = InstanceType<typeof Config>;
@@ -459,11 +457,11 @@ class Config {
     }
   }
 
-  registerUtility(options: {
+  registerUtility<T extends UtilityMethod = DummyUtilityMethod>(options: {
     name: string;
     type: string;
     dependencies?: Record<string, string>;
-    method: (args: any) => any;
+    method: T;
   }) {
     const { name, type, method, dependencies = {} } = options;
     let depsString: string = '';
@@ -485,11 +483,11 @@ class Config {
     utilityType[utilityName] = { method };
   }
 
-  getUtility(options: {
+  getUtility<T extends UtilityMethod = DummyUtilityMethod>(options: {
     name: string;
     type: string;
     dependencies?: Record<string, string>;
-  }): GetUtilityResult | Record<string, never> {
+  }): { method: T } | Record<string, never> {
     const { name, type, dependencies = {} } = options;
 
     if (!name || !type) return {};
@@ -501,13 +499,13 @@ class Config {
 
     const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
 
-    return this._data.utilities[type]?.[utilityName] || {};
+    return (this._data.utilities[type]?.[utilityName] as { method: T }) || {};
   }
 
-  getUtilities(options: {
+  getUtilities<T extends UtilityMethod = DummyUtilityMethod>(options: {
     type: string;
     dependencies?: Record<string, string>;
-  }): Array<GetUtilityResult> | [] {
+  }): Array<{ method: T }> | [] {
     const { type, dependencies = {} } = options;
 
     if (!type) return [];
@@ -525,7 +523,7 @@ class Config {
       (key) => this._data.utilities[type][key],
     );
 
-    return utilities;
+    return utilities as Array<{ method: T }>;
   }
 
   registerRoute(options: ReactRouterRouteEntry) {
