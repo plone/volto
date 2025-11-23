@@ -91,6 +91,26 @@ const messages = defineMessages({
     id: 'Password reset',
     defaultMessage: 'Password reset',
   },
+  errorDefault: {
+    id: 'Something went wrong.',
+    defaultMessage: 'Something went wrong',
+  },
+  errorInvalidUsername: {
+    id: 'Username is invalid.',
+    defaultMessage: 'Username is invalid',
+  },
+  errorBadRequest: {
+    id: 'Bad request.',
+    defaultMessage: 'Bad request',
+  },
+  errorUnauthorized: {
+    id: 'Unauthorized.',
+    defaultMessage: 'Unauthorized',
+  },
+  errorServerError: {
+    id: 'Server error.',
+    defaultMessage: 'Server error',
+  },
 });
 
 /**
@@ -164,16 +184,16 @@ class PasswordReset extends Component {
     if (this.props.loading && nextProps.error) {
       const status = nextProps.error?.response?.status;
 
-      let message = 'Something went wrong.';
+      let message = this.props.intl.formatMessage(messages.errorDefault);
 
       if (status === 404) {
-        message = 'Username is invalid.';
+        message = this.props.intl.formatMessage(messages.errorInvalidUsername);
       } else if (status === 400) {
-        message = 'Bad request.';
+        message = this.props.intl.formatMessage(messages.errorBadRequest);
       } else if (status === 401) {
-        message = 'Unauthorized.';
+        message = this.props.intl.formatMessage(messages.errorUnauthorized);
       } else if (status === 500) {
-        message = 'Server error.';
+        message = this.props.intl.formatMessage(messages.errorServerError);
       }
 
       this.setState({
