@@ -2,7 +2,7 @@ name: Code Analysis Check
 on: [push, pull_request]
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
   prettier:
