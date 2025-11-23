@@ -9,11 +9,7 @@ vi.mock('../../manage/Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
 }));
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 
 const mockStore = configureStore();
 describe('Contact form', () => {

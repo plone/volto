@@ -7,11 +7,7 @@ import ContentsWorkflowModal from './ContentsWorkflowModal';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ContentsWorkflowModal', () => {
   it('renders a contents workflow modal component', () => {
