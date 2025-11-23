@@ -19,6 +19,7 @@ import {
   Square,
   Table,
   TableOfContentsIcon,
+  ImageIcon,
 } from 'lucide-react';
 import { type TComboboxInputElement, KEYS } from 'platejs';
 import { PlateElement } from 'platejs/react';
@@ -70,6 +71,15 @@ const groups: Group[] = [
         keywords: ['paragraph'],
         label: 'Text',
         value: KEYS.p,
+      },
+      {
+        icon: <ImageIcon />,
+        keywords: ['img', 'picture', 'photo'],
+        label: 'Image',
+        value: KEYS.img,
+        onSelect: (editor, value) => {
+          insertBlock(editor, value);
+        },
       },
       {
         icon: <Heading1Icon />,
