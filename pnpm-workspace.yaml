@@ -8,3 +8,4 @@ packages:
 catalog:
   tailwindcss: ^4.1.17
   typescript: ^5.9.3
+  react-i18next: 15.7.4
