@@ -1,7 +1,7 @@
 import type { BlockEditProps } from '@plone/types';
 import { PlateEditor, type Value } from '@plone/plate/components/editor';
 import plateBlockConfig from '@plone/plate/config/presets/block';
-import { useStablePlateValue } from '@plone/volto-plate';
+import { useStablePlateValue } from '../hooks/use-stable-plate-value';
 
 const TextBlockEdit = (props: BlockEditProps) => {
   const { data, setBlock } = props;
