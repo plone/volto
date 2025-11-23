@@ -11,6 +11,7 @@ import type {
   SlotPredicate,
   SlotsConfig,
   UtilitiesConfig,
+  UtilityTypeSignatures,
   ViewsConfig,
   WidgetsConfig,
   ReactRouterRouteEntry,
@@ -459,12 +460,21 @@ class Config {
     }
   }
 
-  registerUtility(options: {
-    name: string;
-    type: string;
-    dependencies?: Record<string, string>;
-    method: (args: any) => any;
-  }) {
+  registerUtility<T extends string>(
+    options: T extends keyof UtilityTypeSignatures
+      ? {
+          name: string;
+          type: T;
+          dependencies?: Record<string, string>;
+          method: UtilityTypeSignatures[T];
+        }
+      : {
+          name: string;
+          type: T;
+          dependencies?: Record<string, string>;
+          method: (...args: any[]) => any;
+        },
+  ): void {
     const { name, type, method, dependencies = {} } = options;
     let depsString: string = '';
     if (!method) {
