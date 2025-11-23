@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-11-15T12:02:17.751Z\n"
+"POT-Creation-Date: 2025-11-23T15:34:17.493Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -490,6 +490,11 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Back"
+msgstr ""
+
+#. Default: "Bad request"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Bad request."
 msgstr ""
 
 #. Default: "Base"
@@ -3388,6 +3393,11 @@ msgstr ""
 msgid "Server Error"
 msgstr ""
 
+#. Default: "Server error"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Server error."
+msgstr ""
+
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
@@ -3543,6 +3553,11 @@ msgstr ""
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
+msgstr ""
+
+#. Default: "Something went wrong"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Something went wrong."
 msgstr ""
 
 #. Default: "Sorry, something went wrong with your request"
@@ -4128,6 +4143,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
+#. Default: "Unauthorized"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Unauthorized."
+msgstr ""
+
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UndoControlpanel
@@ -4303,6 +4323,11 @@ msgstr ""
 #. Default: "Username"
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
+msgstr ""
+
+#. Default: "Username is invalid"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Username is invalid."
 msgstr ""
 
 #. Default: "Users"

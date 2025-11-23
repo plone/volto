@@ -497,6 +497,11 @@ msgstr "Reglas de contenido disponibles:"
 msgid "Back"
 msgstr "Volver"
 
+#. Default: "Bad request"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Bad request."
+msgstr ""
+
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -3393,6 +3398,11 @@ msgstr "Enviar un correo de confirmación con un enlace para establecer la contr
 msgid "Server Error"
 msgstr "Error del Servidor"
 
+#. Default: "Server error"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Server error."
+msgstr ""
+
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
@@ -3549,6 +3559,11 @@ msgstr ""
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
 msgstr "Algunas relaciones están rotas. Por favor, arréglelas."
+
+#. Default: "Something went wrong"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Something went wrong."
+msgstr ""
 
 #. Default: "Sorry, something went wrong with your request"
 #: error
@@ -4133,6 +4148,11 @@ msgstr "Desasignado"
 msgid "Unauthorized"
 msgstr "No autorizado"
 
+#. Default: "Unauthorized"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Unauthorized."
+msgstr ""
+
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UndoControlpanel
@@ -4309,6 +4329,11 @@ msgstr "Usuario actualizado correctamente"
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "Nombre de usuario"
+
+#. Default: "Username is invalid"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Username is invalid."
+msgstr ""
 
 #. Default: "Users"
 #: components/manage/Controlpanels/Controlpanels

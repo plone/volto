@@ -496,6 +496,11 @@ msgstr "可用的内容规则"
 msgid "Back"
 msgstr "返回"
 
+#. Default: "Bad request"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Bad request."
+msgstr ""
+
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -3392,6 +3397,11 @@ msgstr "发送一条带设置密码链接的确认邮件"
 msgid "Server Error"
 msgstr ""
 
+#. Default: "Server error"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Server error."
+msgstr ""
+
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
@@ -3547,6 +3557,11 @@ msgstr ""
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
+msgstr ""
+
+#. Default: "Something went wrong"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Something went wrong."
 msgstr ""
 
 #. Default: "Sorry, something went wrong with your request"
@@ -4132,6 +4147,11 @@ msgstr "取消分配"
 msgid "Unauthorized"
 msgstr "未身份验证"
 
+#. Default: "Unauthorized"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Unauthorized."
+msgstr ""
+
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UndoControlpanel
@@ -4308,6 +4328,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "用户名"
+
+#. Default: "Username is invalid"
+#: components/theme/PasswordReset/PasswordReset
+msgid "Username is invalid."
+msgstr ""
 
 #. Default: "Users"
 #: components/manage/Controlpanels/Controlpanels
