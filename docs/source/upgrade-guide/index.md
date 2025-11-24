@@ -333,6 +333,18 @@ We pinned the version of `sass` to `1.32.0`, which is the one before they introd
 It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
 In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
 
+### The image component now includes the original image only if necessary
+```{versionadded} Volto 19.0.0-alpha.18
+```
+
+The `Image` component has been optimized to include the original image URL only when necessary.
+Now it is only included if the image does not have all the defined scales present, which could happen if the image is smaller than the defined scales.
+In other scenarios where all the scales are present, including the original image forced the browser to choose it over the scaled versions, impacting performance.
+This happened specially in high-density screens where the `large` scale was not enough for the browser to pick a scaled version.
+It is a breaking change for projects that relied on the original image always being present, for example, those projects that wanted to use the original image always in big screens (not necessarily high-density, eg TV screens, etc).
+We are adding an additional scale to cover that use cases, enough to cover the highest density screens at the largest common resolutions.
+This is a breaking change, because if your project relied on the original image being always present, you need to add an additional scale to cover your use case, or run the upgrade steps defined in `plone.volto>=6.0.0a0` or in Plone 6.2 to use the new image scale named `humongous`
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
