@@ -3,8 +3,8 @@ import * as React from 'react';
 import type { PlateEditor, PlateElementProps } from 'platejs/react';
 
 import { AIChatPlugin } from '@platejs/ai/react';
-import config from '@plone/volto/registry';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import config from '@plone/registry';
+import Icon from '../../legacy/Icon';
 import {
   ChevronRightIcon,
   Code2,
