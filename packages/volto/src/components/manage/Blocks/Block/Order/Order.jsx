@@ -69,9 +69,13 @@ export function Order({
   };
 
   const flattenedItems = useMemo(
-    () => removeChildrenOf(flattenTree(items), activeId ? [activeId] : []),
+    () =>
+      removeChildrenOf(flattenTree(items), activeId ? [activeId] : []).filter(
+        (item) => item.depth < 2,
+      ),
     [activeId, items],
   );
+
   const projected =
     activeId && overId
       ? getProjection(
