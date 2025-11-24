@@ -20,6 +20,7 @@ export function PlateEditor(props: {
   editorConfig: Parameters<typeof usePlateEditor>[0];
   value?: Value;
   blocksApi?: any;
+  intl?: any;
   onChange: (options: {
     editor: TPlateEditor<Value, AnyPluginConfig>;
     value: TElement[];
@@ -36,6 +37,7 @@ export function PlateEditor(props: {
   });
 
   (editor as any).blocksApi = props.blocksApi;
+  (editor as any).intl = props.intl ?? props.blocksApi?.intl;
 
   return (
     <Plate

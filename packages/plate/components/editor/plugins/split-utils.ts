@@ -2,7 +2,7 @@ import config from '@plone/registry';
 import { KEYS, PathApi } from 'platejs';
 import type { PlateEditor } from 'platejs/react';
 
-const getBlocksApi = (editor: PlateEditor) => {
+export const getBlocksApi = (editor: PlateEditor) => {
   const editorApi = (editor as any)?.blocksApi;
 
   if (editorApi) return editorApi;
@@ -17,6 +17,8 @@ const getBlocksApi = (editor: PlateEditor) => {
     return null;
   }
 };
+
+export const getIntl = (editor: PlateEditor) => (editor as any)?.intl ?? null;
 
 export const splitEditorAtCursor = (editor: PlateEditor) => {
   const api = getBlocksApi(editor);

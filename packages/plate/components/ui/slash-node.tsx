@@ -3,6 +3,8 @@ import * as React from 'react';
 import type { PlateEditor, PlateElementProps } from 'platejs/react';
 
 import { AIChatPlugin } from '@platejs/ai/react';
+import config from '@plone/volto/registry';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   ChevronRightIcon,
   Code2,
@@ -14,6 +16,7 @@ import {
   LightbulbIcon,
   ListIcon,
   ListOrdered,
+  PlusSquareIcon,
   PilcrowIcon,
   Quote,
   SparklesIcon,
@@ -25,7 +28,11 @@ import {
 import { type TComboboxInputElement, KEYS } from 'platejs';
 import { PlateElement } from 'platejs/react';
 import { insertBlock } from '../editor/transforms';
-import { splitEditorAtCursor } from '../editor/plugins/split-utils';
+import {
+  getBlocksApi,
+  getIntl,
+  splitEditorAtCursor,
+} from '../editor/plugins/split-utils';
 
 import {
   InlineCombobox,
@@ -60,6 +67,22 @@ const baseGroups: Group[] = [
         value: 'AI',
         onSelect: (editor) => {
           editor.getApi(AIChatPlugin).aiChat.show();
+        },
+      },
+      {
+        focusEditor: true,
+        icon: <PlusSquareIcon />,
+        keywords: ['block', 'add', 'insert'],
+        label: 'New block',
+        value: 'action_new_block',
+        onSelect: (editor) => {
+          const api = getBlocksApi(editor);
+          if (!api?.onInsertBlock) return;
+
+          setTimeout(() => {
+            const newId = api.onInsertBlock(api.id, { '@type': 'slate' });
+            api.onSelectBlock?.(newId ?? api.id);
+          }, 0);
         },
       },
     ],
@@ -194,6 +217,48 @@ export function SlashInputElement(
 ) {
   const { editor, element } = props;
   const { split, enabled: canSplit } = useSplitEditorAtCursor(editor);
+  const intl = React.useMemo(() => getIntl(editor), [editor]);
+  const voltoBlockItems = React.useMemo(() => {
+    const blocksConfig = config?.blocks?.blocksConfig;
+    if (!blocksConfig) return [];
+
+    return Object.entries(blocksConfig)
+      .map(([id, block]: any) => {
+        if (typeof block.restricted === 'boolean' && block.restricted) {
+          return null;
+        }
+
+        const format =
+          intl?.formatMessage?.bind(intl) ||
+          ((msg: any) => msg?.defaultMessage ?? msg?.id ?? String(msg));
+
+        const label =
+          typeof block.title === 'string' ? block.title : format(block.title);
+        const iconNode = block.icon ? (
+          <Icon name={block.icon} size="16px" />
+        ) : (
+          <Square />
+        );
+
+        return {
+          icon: iconNode,
+          keywords: [id, label?.toString()?.toLowerCase?.()].filter(Boolean),
+          label,
+          value: `volto_${id}`,
+          onSelect: (plateEditor: PlateEditor) => {
+            const api = getBlocksApi(plateEditor);
+            if (!api?.onInsertBlock) return;
+
+            setTimeout(() => {
+              const newId = api.onInsertBlock(api.id, { '@type': id });
+              api.onSelectBlock?.(newId ?? api.id);
+            }, 0);
+          },
+        };
+      })
+      .filter(Boolean);
+  }, [intl]);
+
   const groups = React.useMemo(() => {
     if (!canSplit) return baseGroups;
     const splitItem = {
@@ -215,8 +280,15 @@ export function SlashInputElement(
         : group,
     );
 
+    if (voltoBlockItems.length) {
+      nextGroups.push({
+        group: 'Volto Blocks',
+        items: voltoBlockItems,
+      });
+    }
+
     return nextGroups;
-  }, [canSplit, split]);
+  }, [canSplit, split, voltoBlockItems]);
 
   return (
     <PlateElement {...props} as="span">
