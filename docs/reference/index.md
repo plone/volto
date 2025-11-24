@@ -16,4 +16,5 @@ This section of the documentation contains reference guides for developing with 
 
 conventions
 react-19
+slate-to-plate-converters
 ```

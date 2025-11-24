@@ -14,10 +14,7 @@ import {
   migrateLegacyStrikethrough,
   migrateLegacyStrikethroughInValue,
 } from './legacy-strikethrough-plugin';
-import {
-  migrateLegacyListsInValue,
-  LegacyListPlugin,
-} from './legacy-list-plugin';
+import { migrateLegacyListsInValue } from './legacy-list-plugin';
 import {
   migrateLegacyLink,
   migrateLegacyLinksInValue,

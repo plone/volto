@@ -10,10 +10,7 @@ export type LegacyStrikethroughNode = {
   [key: string]: unknown;
 };
 
-export const migrateLegacyStrikethrough = (
-  editor: SlateEditor,
-  path: Path,
-) => {
+export const migrateLegacyStrikethrough = (editor: SlateEditor, path: Path) => {
   // Mark all text descendants as strikethrough, then unwrap the legacy element.
   editor.tf.setNodes(
     { strikethrough: true },
@@ -62,8 +59,8 @@ export const migrateLegacyStrikethroughInValue = (nodes: Value) => {
     return [node];
   };
 
-  const normalized = (mutableNodes as LegacyStrikethroughNode[]).flatMap((node) =>
-    visit(node),
+  const normalized = (mutableNodes as LegacyStrikethroughNode[]).flatMap(
+    (node) => visit(node),
   );
   mutableNodes.splice(0, mutableNodes.length, ...normalized);
   applyNormalizedValue(nodes, mutableNodes);
