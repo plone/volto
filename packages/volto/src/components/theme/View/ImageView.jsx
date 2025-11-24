@@ -38,6 +38,7 @@ const ImageView = ({ content }) => {
             imageField="image"
             alt={content.title}
             responsive={true}
+            sizes="(max-width: 940px) 100vw, 940px"
           />
           <figcaption>
             <FormattedMessage
