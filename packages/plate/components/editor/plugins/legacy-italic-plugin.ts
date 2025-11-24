@@ -30,7 +30,10 @@ export const migrateLegacyItalic = (editor: SlateEditor, path: Path) => {
 export const migrateLegacyItalicInValue = (nodes: Value) => {
   const mutableNodes = cloneValueToWritable(nodes);
 
-  const visit = (node: LegacyItalicNode, isItalic = false): LegacyItalicNode[] => {
+  const visit = (
+    node: LegacyItalicNode,
+    isItalic = false,
+  ): LegacyItalicNode[] => {
     const nextIsItalic = isItalic || node?.type === 'em';
 
     if (typeof node?.text === 'string') {
@@ -44,8 +47,8 @@ export const migrateLegacyItalicInValue = (nodes: Value) => {
       return [node];
     }
 
-    const normalizedChildren = node.children.flatMap((child: LegacyItalicNode) =>
-      visit(child, nextIsItalic),
+    const normalizedChildren = node.children.flatMap(
+      (child: LegacyItalicNode) => visit(child, nextIsItalic),
     );
 
     if (node.type === 'em') {

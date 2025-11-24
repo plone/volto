@@ -1,4 +1,4 @@
-import { ElementApi, KEYS, PathApi, createSlatePlugin } from 'platejs';
+import { ElementApi, KEYS, createSlatePlugin } from 'platejs';
 import type { Path, SlateEditor, Value } from 'platejs';
 
 import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
