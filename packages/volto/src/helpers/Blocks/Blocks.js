@@ -839,7 +839,9 @@ export const getBlocksHierarchy = (properties) => {
     title: properties[blocksFieldName][n]?.['@type'],
     data: properties[blocksFieldName][n],
     children: isBlockContainer(properties[blocksFieldName][n])
-      ? getBlocksHierarchy(properties[blocksFieldName][n])
+      ? properties[blocksFieldName][n].data
+        ? getBlocksHierarchy(properties[blocksFieldName][n].data)
+        : getBlocksHierarchy(properties[blocksFieldName][n])
       : [],
   }));
 };
@@ -934,7 +936,12 @@ export function moveBlockEnhanced(formData, { source, destination }) {
         containerId: destination.parent,
       });
       destinationContainer[blocksFieldName][source.id] =
-        formData[blocksFieldName][source.parent][blocksFieldName][source.id];
+        formData[blocksFieldName][source.parent][blocksFieldName]?.[
+          source.id
+        ] ||
+        formData[blocksFieldName][source.parent].data?.[blocksFieldName][
+          source.id
+        ];
 
       destinationContainer[blocksLayoutFieldname].items = insertInArray(
         destinationContainer[blocksLayoutFieldname].items,
@@ -979,23 +986,25 @@ export function moveBlockEnhanced(formData, { source, destination }) {
  * @returns {object|undefined} - The container object if found, otherwise undefined.
  */
 export const findContainer = (formData, { containerId }) => {
+  const block =
+    formData.blocks[containerId]?.data || formData.blocks[containerId];
   if (
-    formData.blocks[containerId] &&
-    Object.keys(formData.blocks[containerId]).includes('blocks') &&
-    Object.keys(formData.blocks[containerId]).includes('blocks_layout')
+    block &&
+    Object.keys(block).includes('blocks') &&
+    Object.keys(block).includes('blocks_layout')
   ) {
-    return formData.blocks[containerId];
+    return block;
   }
 
   let container;
   Object.keys(formData.blocks).every((blockId) => {
-    const block = formData.blocks[blockId];
+    const subBlock = formData.blocks[blockId].data || formData.blocks[blockId];
     if (
-      formData.blocks[blockId] &&
-      Object.keys(formData.blocks[blockId]).includes('blocks') &&
-      Object.keys(formData.blocks[blockId]).includes('blocks_layout')
+      subBlock &&
+      Object.keys(subBlock).includes('blocks') &&
+      Object.keys(subBlock).includes('blocks_layout')
     ) {
-      container = findContainer(block, { containerId });
+      container = findContainer(subBlock, { containerId });
     }
     if (container) {
       return false;
