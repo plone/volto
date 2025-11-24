@@ -14,14 +14,9 @@
       vertical-align: middle;
     }
 
-    .react-aria-Breadcrumb {
-      display: flex;
-      align-items: center;
-    }
-
-    .react-aria-Breadcrumb .react-aria-Link button {
+    .react-aria-Breadcrumb > .react-aria-Link:has(button) + svg {
       position: relative;
-      top: -2px;
+      top: 2px;
     }
 
     .react-aria-Breadcrumb svg {
