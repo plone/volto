@@ -22,10 +22,10 @@ import {
   Table,
   TableOfContentsIcon,
 } from 'lucide-react';
-import { type TComboboxInputElement, KEYS, PathApi } from 'platejs';
+import { type TComboboxInputElement, KEYS } from 'platejs';
 import { PlateElement } from 'platejs/react';
-import config from '@plone/registry';
 import { insertBlock } from '../editor/transforms';
+import { splitEditorAtCursor } from '../editor/plugins/split-utils';
 
 import {
   InlineCombobox,
@@ -52,7 +52,7 @@ type Group = {
 
 const baseGroups: Group[] = [
   {
-    group: 'AI',
+    group: 'Actions',
     items: [
       {
         focusEditor: false,
@@ -178,102 +178,14 @@ const baseGroups: Group[] = [
   },
 ];
 
-const getBlocksApiHook = () => {
-  try {
-    const utility = config.getUtility({
-      name: 'useBlocksApi',
-      type: 'blocksApiContext',
-    });
-    return (utility as any)?.method as (() => any) | undefined;
-  } catch (error) {
-    return undefined;
-  }
-};
-
 const useSplitEditorAtCursor = (editor: PlateEditor) => {
-  const blocksApiHook = React.useMemo(() => getBlocksApiHook(), []);
-  const blocksApi = blocksApiHook ? blocksApiHook() : null;
-  const blocksApiRef = React.useRef(blocksApi);
-
-  blocksApiRef.current = blocksApi;
-
   const split = React.useCallback(() => {
-    const api = blocksApiRef.current;
-
-    if (!api) return;
-    if (!editor.selection || !editor.api.isCollapsed()) return;
-
-    const slashType = editor.getType(KEYS.slashInput);
-
-    // Remove the slash input node and its trailing space to avoid leaving
-    // artifacts in either block.
-    editor.tf.withoutNormalizing(() => {
-      editor.tf.removeNodes({
-        match: (node) => (node as any)?.type === slashType,
-      });
-      editor.tf.deleteBackward({ unit: 'character' });
-    });
-
-    const block = editor.api.block();
-
-    if (!block) return;
-
-    const blockPath = block[1];
-
-    editor.tf.splitNodes({
-      at: editor.selection,
-      match: (node) => editor.api.isBlock(node),
-      always: true,
-    });
-
-    const splitIndex = PathApi.next(blockPath)[0];
-    const lower = editor.children.slice(splitIndex);
-
-    if (!lower.length) return;
-
-    editor.tf.withoutNormalizing(() => {
-      while (editor.children.length > splitIndex) {
-        editor.tf.removeNodes({ at: [splitIndex] });
-      }
-    });
-
-    const { id, data, type, onInsertBlock, onSelectBlock } = api;
-    const blockType = (data as any)['@type'] || type || 'slate';
-    const upperData = { ...data, '@type': blockType, value: editor.children };
-    const cleanLower = lower
-      .map((node: any) => {
-        if (Array.isArray(node?.children)) {
-          const keptChildren = node.children.filter(
-            (child: any) =>
-              !(typeof child.text === 'string' && child.text.trim() === ''),
-          );
-          return keptChildren.length
-            ? { ...node, children: keptChildren }
-            : null;
-        }
-        return node;
-      })
-      .filter(Boolean);
-
-    if (!cleanLower.length) return;
-    const lowerData = {
-      ...data,
-      '@type': blockType,
-      value: JSON.parse(JSON.stringify(cleanLower)),
-    };
-
-    // Defer to the next tick so Plate's pending change cycle completes first.
-    setTimeout(() => {
-      const newId = onInsertBlock(id, lowerData, upperData);
-      if (onSelectBlock && newId) {
-        onSelectBlock(newId);
-      }
-    }, 0);
-  }, [blocksApiHook, editor]);
+    splitEditorAtCursor(editor);
+  }, [editor]);
 
   return {
     split,
-    enabled: Boolean(blocksApiHook),
+    enabled: Boolean(editor),
   };
 };
 
@@ -284,22 +196,26 @@ export function SlashInputElement(
   const { split, enabled: canSplit } = useSplitEditorAtCursor(editor);
   const groups = React.useMemo(() => {
     if (!canSplit) return baseGroups;
+    const splitItem = {
+      icon: <SplitSquareHorizontalIcon />,
+      keywords: ['split', 'divide', 'new block'],
+      label: 'Split editor here',
+      value: 'action_split_editor',
+      onSelect: split,
+    };
 
-    return [
-      {
-        group: 'Volto',
-        items: [
-          {
-            icon: <SplitSquareHorizontalIcon />,
-            keywords: ['split', 'divide', 'new block'],
-            label: 'Split editor here',
-            value: 'action_split_editor',
-            onSelect: split,
-          },
-        ],
-      },
-      ...baseGroups,
-    ];
+    const nextGroups = baseGroups.map((group) =>
+      group.group === 'Actions'
+        ? {
+            ...group,
+            items: group.items.some((item) => item.value === splitItem.value)
+              ? group.items
+              : [...group.items, splitItem],
+          }
+        : group,
+    );
+
+    return nextGroups;
   }, [canSplit, split]);
 
   return (

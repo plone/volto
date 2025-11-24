@@ -19,6 +19,7 @@ import { normalizeLegacyValue } from './plugins/normalize-legacy';
 export function PlateEditor(props: {
   editorConfig: Parameters<typeof usePlateEditor>[0];
   value?: Value;
+  blocksApi?: any;
   onChange: (options: {
     editor: TPlateEditor<Value, AnyPluginConfig>;
     value: TElement[];
@@ -33,6 +34,8 @@ export function PlateEditor(props: {
     ...props.editorConfig,
     value: sanitizedValue,
   });
+
+  (editor as any).blocksApi = props.blocksApi;
 
   return (
     <Plate
