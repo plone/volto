@@ -495,11 +495,6 @@ msgstr "Verfügbare Inhaltsregeln:"
 msgid "Back"
 msgstr "Zurück"
 
-#. Default: "Bad request"
-#: components/theme/PasswordReset/PasswordReset
-msgid "Bad request."
-msgstr ""
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -2205,6 +2200,7 @@ msgstr "Anmelden"
 #. Default: "Log in"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
+#: components/theme/PasswordReset/PasswordReset
 msgid "Log in"
 msgstr "Anmelden"
 
@@ -3396,9 +3392,9 @@ msgstr "Eine Bestätigungsmail mit dem Link zum Passwort setzen schicken."
 msgid "Server Error"
 msgstr "Serverfehler"
 
-#. Default: "Server error"
+#. Default: "Server error. Please contact the website admin {site_admin}."
 #: components/theme/PasswordReset/PasswordReset
-msgid "Server error."
+msgid "Server error. Please contact the website admin {site_admin}."
 msgstr ""
 
 #. Default: "Set my password"
@@ -3516,6 +3512,7 @@ msgstr "Loggen Sie sich ein"
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "Website-Administrator"
@@ -3558,9 +3555,9 @@ msgstr "Einige Elemente enthalten Unterelemente. Das Löschen dieser Elemente wi
 msgid "Some relations are broken. Please fix."
 msgstr "Ein paar Relationen sind kaputt."
 
-#. Default: "Something went wrong"
+#. Default: "Something went wrong. Please contact the website admin {site_admin}."
 #: components/theme/PasswordReset/PasswordReset
-msgid "Something went wrong."
+msgid "Something went wrong. Please contact the website admin {site_admin}."
 msgstr ""
 
 #. Default: "Sorry, something went wrong with your request"
@@ -4146,11 +4143,6 @@ msgstr "Ohne Zuweisung"
 msgid "Unauthorized"
 msgstr "Nicht autorisiert"
 
-#. Default: "Unauthorized"
-#: components/theme/PasswordReset/PasswordReset
-msgid "Unauthorized."
-msgstr ""
-
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UndoControlpanel
@@ -4328,9 +4320,9 @@ msgstr "Benutzer erfolgreich aktualisiert"
 msgid "Username"
 msgstr "Benutzername"
 
-#. Default: "Username is invalid"
+#. Default: "Username is invalid. Please check and try again."
 #: components/theme/PasswordReset/PasswordReset
-msgid "Username is invalid."
+msgid "Username is invalid. Please check and try again."
 msgstr ""
 
 #. Default: "Users"
@@ -4442,6 +4434,11 @@ msgstr "Wir entschuldigen uns für die Unannehmlichkeiten, aber es gab einen une
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Entschuldigen Sie die Unannehmlichkeiten, aber Sie besitzen nicht die erforderlichen Rechte um diese Seite anzuzeigen."
 
+#. Default: "We couldn’t process your request. Please check your input and try again."
+#: components/theme/PasswordReset/PasswordReset
+msgid "We couldn’t process your request. Please check your input and try again."
+msgstr ""
+
 #. Default: "The"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
@@ -4541,6 +4538,7 @@ msgid "You are about to delete all items in the current pagination of this folde
 msgstr "Sie sind dabei alle Objekte in der aktuellen Paginierung dieses Ordners zu löschen."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Sie versuchen eine geschützte Seite aufzurufen, bitte zuerst {login}."

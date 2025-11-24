@@ -490,11 +490,6 @@ msgstr "उपलब्ध कंटेंट नियम:"
 msgid "Back"
 msgstr "पिछले"
 
-#. Default: "Bad request"
-#: components/theme/PasswordReset/PasswordReset
-msgid "Bad request."
-msgstr ""
-
 #. Default: "Base"
 #: components/manage/Diff/Diff
 msgid "Base"
@@ -2200,6 +2195,7 @@ msgstr "लॉग इन"
 #. Default: "Log in"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
+#: components/theme/PasswordReset/PasswordReset
 msgid "Log in"
 msgstr "लॉग इन"
 
@@ -3391,9 +3387,9 @@ msgstr "पासवर्ड सेट करने के लिए एक प
 msgid "Server Error"
 msgstr "सर्वर त्रुटि"
 
-#. Default: "Server error"
+#. Default: "Server error. Please contact the website admin {site_admin}."
 #: components/theme/PasswordReset/PasswordReset
-msgid "Server error."
+msgid "Server error. Please contact the website admin {site_admin}."
 msgstr ""
 
 #. Default: "Set my password"
@@ -3511,6 +3507,7 @@ msgstr "अधिवेशन शुरू करने के लिए सा�
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "साइट प्रशासन"
@@ -3553,9 +3550,9 @@ msgstr ""
 msgid "Some relations are broken. Please fix."
 msgstr "कुछ संबंध टूटे हुए हैं। कृपया ठीक करें।"
 
-#. Default: "Something went wrong"
+#. Default: "Something went wrong. Please contact the website admin {site_admin}."
 #: components/theme/PasswordReset/PasswordReset
-msgid "Something went wrong."
+msgid "Something went wrong. Please contact the website admin {site_admin}."
 msgstr ""
 
 #. Default: "Sorry, something went wrong with your request"
@@ -4141,11 +4138,6 @@ msgstr "असाइन नहीं किया गया"
 msgid "Unauthorized"
 msgstr "अनधिकृत"
 
-#. Default: "Unauthorized"
-#: components/theme/PasswordReset/PasswordReset
-msgid "Unauthorized."
-msgstr ""
-
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UndoControlpanel
@@ -4323,9 +4315,9 @@ msgstr "उपयोगकर्ता सफलतापूर्वक अप�
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
-#. Default: "Username is invalid"
+#. Default: "Username is invalid. Please check and try again."
 #: components/theme/PasswordReset/PasswordReset
-msgid "Username is invalid."
+msgid "Username is invalid. Please check and try again."
 msgstr ""
 
 #. Default: "Users"
@@ -4437,6 +4429,11 @@ msgstr "हम आपको परेशानी के लिए खेद अ
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "हम आपको परेशानी के लिए खेद अभिव्यक्त करते हैं, लेकिन आपके पास इस संसाधन पर अनुमतियाँ नहीं हैं।"
 
+#. Default: "We couldn’t process your request. Please check your input and try again."
+#: components/theme/PasswordReset/PasswordReset
+msgid "We couldn’t process your request. Please check your input and try again."
+msgstr ""
+
 #. Default: "The"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
@@ -4536,6 +4533,7 @@ msgid "You are about to delete all items in the current pagination of this folde
 msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
+#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "आप एक संरक्षित संसाधन तक पहुँचने का प्रयास कर रहे हैं, कृपया पहले {लॉगिन} करें।"
