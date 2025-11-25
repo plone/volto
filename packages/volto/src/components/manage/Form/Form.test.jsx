@@ -9,11 +9,7 @@ const mockStore = configureStore();
 const errorMessage =
   "[{'message': 'The specified email is not valid.', 'field': 'contact_email', 'error': 'ValidationError'}";
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('Form', () => {
   it('renders a form component', () => {

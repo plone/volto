@@ -136,7 +136,7 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Comune di Vaiano](https://www.comune.vaiano.po.it/) (Website of the Municipality of Vaiano. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Vernio](https://www.comune.vernio.po.it/) (Website of the Municipality of Vernio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Copernicus In-Situ](https://insitu.copernicus.eu) (Copernicus In-Situ compiles and provides high-quality ground, sea and airborne observation and geospatial reference data to support the Copernicus services. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2025)
-- [Copernicus Land Monitoring Service](https://land.copernicus.eu) (The Copernicus Land Monitoring Service (CLMS) delivers high-quality geospatial information on land cover, land use changes, vegetation state, the water cycle and Earth's surface energy variables. Developed by [CodeSyntax](https://www.codesyntax.com/en) and [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2023)
+- [Copernicus Land Monitoring Service](https://land.copernicus.eu/en) (The Copernicus Land Monitoring Service (CLMS) delivers high-quality geospatial information on land cover, land use changes, vegetation state, the water cycle and Earth's surface energy variables. Developed by [CodeSyntax](https://www.codesyntax.com/en) and [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2023)
 - [Debabarreneko mankomunitatea](https://debabarrena.eus/eu) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus/eu) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [European Environment Agency](https://www.eea.europa.eu/en) (Website of the European Environment Agency. Developed by [Eau de Web](https://eaudeweb.ro), 2023)
@@ -181,7 +181,7 @@ You should check the dependencies in their `package.json` for more details.
 
 - [2022.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2022) - Volto project for [Plone Conference 2022 site](https://2022.ploneconf.org)
 - [2023.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2023) - Volto project for [Plone Conference 2023 site](https://2023.ploneconf.org)
-- [2024.ploneconf.org](https://github.com/plone/2024.ploneconf.org) - Volto project for [Plone Conference 2024 site](https://2024.ploneconf.org)
+- [2024.ploneconf.org](https://github.com/plone/2024.ploneconf.org) - Volto project for [Plone Conference 2024 site](https://2024.ploneconf.org/en)
 - [2025.ploneconf.org](https://github.com/plone/2025.ploneconf.org) - Volto project for [Plone Conference 2025 site](https://2025.ploneconf.org)
 - [Biodiversity Information System for Europe](https://github.com/eea/bise-frontend) - Volto project for [Biodiversity Information System for Europe website](https://biodiversity.europa.eu)
 - [design-volto-theme](https://github.com/RedTurtle/design-volto-theme) Volto theme for Italian Public Administration
