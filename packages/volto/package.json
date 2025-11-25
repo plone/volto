@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "19.0.0-alpha.16",
+  "version": "19.0.0-alpha.17",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -164,6 +164,7 @@
     "object-assign": "4.1.1",
     "prepend-http": "2",
     "pretty-bytes": "5.3.0",
+    "prettier": "3.2.5",
     "prismjs": "1.27.0",
     "process": "^0.11.10",
     "promise-file-reader": "1.0.2",
@@ -310,7 +311,6 @@
     "postcss-loader": "7.0.2",
     "postcss-overrides": "3.1.4",
     "postcss-scss": "4.0.6",
-    "prettier": "3.2.5",
     "razzle-dev-utils": "4.2.18",
     "react-docgen-typescript-plugin": "^1.0.5",
     "react-error-overlay": "6.0.9",

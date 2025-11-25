@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.17 (2025-11-21)
+
+### Bugfix
+
+- Added `prettier` as a direct dependency of Volto, since is used by HTML block, to prevent the removal from the production build. @sneridagh 
+
 ## 19.0.0-alpha.16 (2025-11-20)
 
 ### Bugfix
