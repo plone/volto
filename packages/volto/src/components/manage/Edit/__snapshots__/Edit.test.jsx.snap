@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Edit renders an edit component 1`] = `
+exports[`Edit > renders an edit component 1`] = `
 <div>
   <div
     id="toolbar"
@@ -13,7 +13,10 @@ exports[`Edit renders an edit component 1`] = `
     id="page-edit"
   >
     <div
-      class="Form"
+      data-schema="{
+  "some": "field"
+}"
+      id="Form"
     />
   </div>
   <div
@@ -26,7 +29,7 @@ exports[`Edit renders an edit component 1`] = `
 </div>
 `;
 
-exports[`Edit renders an empty edit component 1`] = `
+exports[`Edit > renders an empty edit component 1`] = `
 <div>
   <div
     id="toolbar"
@@ -39,7 +42,8 @@ exports[`Edit renders an empty edit component 1`] = `
     id="page-edit"
   >
     <div
-      class="Form"
+      data-schema="null"
+      id="Form"
     />
   </div>
   <div

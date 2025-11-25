@@ -1,41 +1,27 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
-import {
-  PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { fixRelationsDataSchema } from '../../validation/relations';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const fixRelationsArgsSchema = z.object({
   data: fixRelationsDataSchema.optional(),
-  config: PloneClientConfigSchema,
 });
 
 export type FixRelationsArgs = z.infer<typeof fixRelationsArgsSchema>;
 
-export const fixRelations = async ({
-  data,
-  config,
-}: FixRelationsArgs): Promise<undefined> => {
+export async function fixRelations(
+  this: PloneClient,
+  { data }: FixRelationsArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = fixRelationsArgsSchema.parse({
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   return apiRequest('post', '@relations/rebuild', options);
-};
-
-export const fixRelationsMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['post', 'relations'],
-  mutationFn: ({ data }: Omit<FixRelationsArgs, 'config'>) =>
-    fixRelations({ data, config }),
-});
+}

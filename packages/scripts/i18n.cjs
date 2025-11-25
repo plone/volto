@@ -6,17 +6,26 @@
  */
 
 const { find, keys, map, concat, reduce } = require('lodash');
-const glob = require('glob').sync;
+const glob = require('glob').globSync;
 const fs = require('fs');
 const Pofile = require('pofile');
 const babel = require('@babel/core');
 
 const path = require('path');
 const projectRootPath = path.resolve('.');
-const packageJson = require(path.join(projectRootPath, 'package.json'));
 
 const { program } = require('commander');
 const chalk = require('chalk');
+
+/**
+ * Replace appearances of " to convert to \"
+ * to keep gettext compatibility in PO files
+ * @function escapeDoubleQuotes
+ * @return {string}
+ */
+function escapeDoubleQuotes(value) {
+  return value.replaceAll('"', '\\"');
+}
 
 /**
  * Extract messages into separate JSON files
@@ -63,7 +72,7 @@ function getMessages() {
             'build/messages/src/customizations/**',
             'build/messages/src/addons/**',
           ],
-        }),
+        }).sort((a, b) => a.localeCompare(b, 'en')),
         (filename) =>
           map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
             ...message,
@@ -104,9 +113,9 @@ function getMessages() {
 function messagesToPot(messages) {
   return map(keys(messages).sort(), (key) =>
     [
-      `#. Default: "${messages[key].defaultMessage.trim()}"`,
+      `#. Default: "${escapeDoubleQuotes(messages[key].defaultMessage.trim())}"`,
       ...map(messages[key].filenames, (filename) => `#: ${filename}`),
-      `msgid "${key}"`,
+      `msgid "${escapeDoubleQuotes(key)}"`,
       'msgstr ""',
     ].join('\n'),
   ).join('\n\n');
@@ -155,9 +164,9 @@ function poToJson({ registry, addonMode }) {
               (item.comments[0] && item.comments[0].startsWith('. Default: ')
                 ? item.comments[0].replace('. Default: ', '')
                 : item.comments[0] &&
-                  item.comments[0].startsWith('defaultMessage:')
-                ? item.comments[0].replace('defaultMessage: ', '')
-                : '')
+                    item.comments[0].startsWith('defaultMessage:')
+                  ? item.comments[0].replace('defaultMessage: ', '')
+                  : '')
             : item.msgstr[0];
       }
     });
@@ -182,9 +191,14 @@ function poToJson({ registry, addonMode }) {
     }
 
     if (!addonMode) {
-      // Merge addons locales
-      if (packageJson.addons) {
-        registry.getAddonDependencies().forEach((addon) => {
+      // Merge addons locales - using getAddonDependencies because it preserves
+      // the order of the addons in the registry, even if they are add-on dependencies
+      // of an add-on
+      registry.getAddonDependencies().forEach((addonDep) => {
+        // What comes from getAddonDependencies is in the form of `@package/addon:profile`
+        const addon = addonDep.split(':')[0];
+        // Check if the addon is available in the registry, just in case
+        if (registry.packages[addon]) {
           const addonlocale = `${registry.packages[addon].modulePath}/../${filename}`;
           if (fs.existsSync(addonlocale)) {
             const addonItems = Pofile.parse(
@@ -197,9 +211,10 @@ function poToJson({ registry, addonMode }) {
               console.log(`Merging ${addon} locales for ${lang}`);
             }
           }
-        });
-      }
+        }
+      });
     }
+
     // Merge project locales, the project customization wins
     mergeMessages(result, projectLocalesItems, lang);
     fs.writeFileSync(`locales/${lang}.json`, JSON.stringify(result));
@@ -241,7 +256,7 @@ ${map(pot.items, (item) => {
   return [
     `#. ${item.extractedComments[0]}`,
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
-    `msgid "${item.msgid}"`,
+    `msgid "${escapeDoubleQuotes(item.msgid)}"`,
     `msgstr "${poItem ? poItem.msgstr : ''}"`,
   ].join('\n');
 }).join('\n\n')}\n`,
@@ -271,10 +286,25 @@ function main({ addonMode }) {
   console.log('Synchronizing messages to po files...');
   syncPoByPot();
   if (!addonMode) {
-    let AddonConfigurationRegistry;
+    let AddonRegistry, AddonConfigurationRegistry, registry;
     try {
       // Detect where is the registry (if we are in Volto 18 or above for either core and projects)
       if (
+        fs.existsSync(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/dist/addon-registry/addon-registry.cjs',
+          ),
+        )
+      ) {
+        AddonRegistry = require(
+          path.join(
+            projectRootPath,
+            '/node_modules/@plone/registry/dist/addon-registry/addon-registry.cjs',
+          ),
+        ).AddonRegistry;
+        // Detect where is the registry (if we are in Volto 18-alpha.46 or below)
+      } else if (
         fs.existsSync(
           path.join(
             projectRootPath,
@@ -319,7 +349,11 @@ function main({ addonMode }) {
       process.exit();
     }
     console.log('Generating the language JSON files...');
-    const registry = new AddonConfigurationRegistry(projectRootPath);
+    if (AddonConfigurationRegistry) {
+      registry = new AddonConfigurationRegistry(projectRootPath);
+    } else if (AddonRegistry) {
+      registry = AddonRegistry.init(projectRootPath).registry;
+    }
     poToJson({ registry, addonMode });
   }
   console.log('done!');

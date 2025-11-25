@@ -21,17 +21,14 @@ describe('Blocks Tests', () => {
     cy.wait('@schema');
   });
 
-  afterEach(() => {
-    // Wait a bit to previous teardown to complete correctly because Heisenbug in this point
-    // cy.wait(2000);
-  });
-
   it('Add image block', () => {
     // when I add an image block
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
-    cy.get('.block.image .ui.input input[type="text"]').type(
+    cy.get('.block-editor-image [tabindex="0"]').last().focus();
+    cy.findByLabelText('Enter a URL to an image').click();
+    cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
       `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
     );
     cy.get('#toolbar-save').click();
@@ -50,6 +47,118 @@ describe('Blocks Tests', () => {
         // "naturalWidth" and "naturalHeight" are set when the image loads
         expect($img[0].naturalWidth).to.be.greaterThan(0);
       });
+  });
+
+  it('Add image via upload', () => {
+    // when I add an image block via upload
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+
+    cy.get('input[type="file"]').attachFile('image.png', {
+      subjectType: 'input',
+      encoding: 'utf8',
+    });
+    cy.waitForResourceToLoad('image.png/@@images/image');
+    cy.get('#toolbar-save').click();
+
+    cy.wait('@saveImage');
+    cy.wait('@getImage');
+
+    // then image src must be equal to image name
+    cy.get('.block img')
+      .should('have.attr', 'src')
+      .and('contains', '/my-page/image.png/@@images/image-');
+
+    cy.get('.block img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
+  });
+
+  it('Create a image block using an existing content image', () => {
+    cy.createContent({
+      contentType: 'Image',
+      contentId: 'my-image',
+      contentTitle: 'My Image',
+      path: '/my-page',
+    });
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+
+    cy.findByLabelText('Enter a URL to an image').click();
+    cy.get('input[placeholder="Enter a URL to an image"]').type(
+      '/my-page/my-image{enter}',
+    );
+    cy.get('.block img.responsive')
+      .should('have.attr', 'src')
+      .and('contains', '/my-page/my-image/@@images/image');
+
+    cy.get('#toolbar-save').click();
+    cy.wait('@saveImage');
+
+    cy.get('.block img')
+      .should('have.attr', 'src')
+      .and('contains', '/my-page/my-image/@@images/image-');
+    cy.get('.block img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
+  });
+
+  it('Create a image block document in edit mode', () => {
+    cy.visit('/');
+    cy.url().should('eq', Cypress.config().baseUrl + '/');
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+
+    cy.get('input[type="file"]').attachFile('image.png', {
+      subjectType: 'input',
+      encoding: 'utf8',
+    });
+
+    cy.wait('@saveImage');
+    cy.wait('@getImage');
+
+    cy.get('.block img')
+      .should('have.attr', 'src')
+      .and('contains', '/image.png/@@images/image-');
+
+    cy.get('.block img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
+  });
+
+  it('Create an image block and initially alt attr is empty', () => {
+    // when I add an image block via upload
+    cy.get('.content-area .slate-editor [contenteditable=true]', {
+      timeout: 10000,
+    }).click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+
+    cy.get('input[type="file"]').attachFile('image.png', {
+      subjectType: 'input',
+      encoding: 'utf8',
+    });
+    cy.wait('@saveImage');
+    cy.wait('@getImage');
+
+    // then in sidebar alt attr should be empty
+    cy.get('#sidebar-properties .field-wrapper-alt input#field-alt')
+      .should('have.attr', 'value')
+      .and('eq', '');
   });
 
   // OLD ADD IMAGE VIA DRAG AND DROP
@@ -100,82 +209,4 @@ describe('Blocks Tests', () => {
   //   cy.wait(5000);
   //   cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
   // });
-  it('Add image via upload', () => {
-    // when I add an image block via upload
-    cy.getSlate().click();
-    cy.get('.ui.basic.icon.button.block-add-button').click();
-    cy.get('.ui.basic.icon.button.image').contains('Image').click();
-
-    cy.get('input[type="file"]').attachFile('image.png', {
-      subjectType: 'input',
-      encoding: 'utf8',
-    });
-    cy.waitForResourceToLoad('image.png/@@images/image');
-    cy.get('#toolbar-save').click();
-
-    cy.wait('@saveImage');
-    cy.wait('@getImage');
-
-    // then image src must be equal to image name
-    cy.get('.block img')
-      .should('have.attr', 'src')
-      .and('contains', '/my-page/image.png/@@images/image-');
-
-    cy.get('.block img')
-      .should('be.visible')
-      .and(($img) => {
-        // "naturalWidth" and "naturalHeight" are set when the image loads
-        expect($img[0].naturalWidth).to.be.greaterThan(0);
-      });
-  });
-
-  it('Create a image block document in edit mode', () => {
-    cy.visit('/');
-    cy.url().should('eq', Cypress.config().baseUrl + '/');
-    cy.get('#toolbar-add').click();
-    cy.get('#toolbar-add-document').click();
-    cy.getSlate().click();
-    cy.get('.ui.basic.icon.button.block-add-button').click();
-    cy.get('.ui.basic.icon.button.image').contains('Image').click();
-
-    cy.get('input[type="file"]').attachFile('image.png', {
-      subjectType: 'input',
-      encoding: 'utf8',
-    });
-
-    cy.wait('@saveImage');
-    cy.wait('@getImage');
-
-    cy.get('.block img')
-      .should('have.attr', 'src')
-      .and('contains', '/image.png/@@images/image-');
-
-    cy.get('.block img')
-      .should('be.visible')
-      .and(($img) => {
-        // "naturalWidth" and "naturalHeight" are set when the image loads
-        expect($img[0].naturalWidth).to.be.greaterThan(0);
-      });
-  });
-
-  it.only('Create an image block and initially alt attr is empty', () => {
-    // when I add an image block via upload
-    cy.get('.content-area .slate-editor [contenteditable=true]', {
-      timeout: 10000,
-    }).click();
-    cy.get('.ui.basic.icon.button.block-add-button').click();
-    cy.get('.ui.basic.icon.button.image').contains('Image').click();
-
-    cy.get('input[type="file"]').attachFile('image.png', {
-      subjectType: 'input',
-      encoding: 'utf8',
-    });
-    cy.wait('@saveImage');
-    cy.wait('@getImage');
-
-    // then in sidebar alt attr should be empty
-    cy.get('#sidebar-properties .field-wrapper-alt input#field-alt')
-      .should('have.attr', 'value')
-      .and('eq', '');
-  });
 });

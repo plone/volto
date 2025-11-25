@@ -1,46 +1,31 @@
 import { z } from 'zod';
-import { apiRequest, ApiRequestParams } from '../../API';
-import {
-  PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { linkTranslationDataSchema } from '../../validation/translations';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const linkTranslationArgsSchema = z.object({
   path: z.string(),
   data: linkTranslationDataSchema,
-  config: PloneClientConfigSchema,
 });
 
 export type LinkTranslationArgs = z.infer<typeof linkTranslationArgsSchema>;
 
-export const linkTranslation = async ({
-  path,
-  data,
-  config,
-}: LinkTranslationArgs): Promise<undefined> => {
+export async function linkTranslation(
+  this: PloneClient,
+  { path, data }: LinkTranslationArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = linkTranslationArgsSchema.parse({
     path,
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const translationsPath = `${validatedArgs.path}/@translations`;
 
   return apiRequest('post', translationsPath, options);
-};
-
-export const linkTranslationMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['post', 'translations'],
-  mutationFn: ({ path, data }: Omit<LinkTranslationArgs, 'config'>) =>
-    linkTranslation({ path, data, config }),
-});
+}

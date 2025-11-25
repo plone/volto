@@ -1,33 +1,49 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
-import { getSearchSchema } from '../../validation/search';
-import { GetSearchResponse } from '@plone/types';
-import { flattenToDottedNotation } from '../../utils/misc';
+import { searchSchema } from '../../validation/search';
+import type { SearchResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type SearchArgs = z.infer<typeof getSearchSchema> & {
-  config: PloneClientConfig;
+const flattenToDottedNotation = (
+  obj: Record<string, any>,
+  prefix = '',
+): Record<string, any> => {
+  const result: Record<string, any> = {};
+
+  for (const key of Object.keys(obj)) {
+    const value = obj[key];
+    const newKey = prefix ? `${prefix}.${key}` : key;
+
+    if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
+      Object.assign(result, flattenToDottedNotation(value, newKey));
+    } else {
+      result[newKey] = value;
+    }
+  }
+
+  return result;
 };
 
-export const getSearch = async ({
-  query,
-  config,
-}: SearchArgs): Promise<GetSearchResponse> => {
-  const validatedArgs = getSearchSchema.parse({
+export type SearchArgs = z.infer<typeof searchSchema>;
+
+export async function search(
+  this: PloneClient,
+  { query }: SearchArgs,
+): Promise<RequestResponse<SearchResponse>> {
+  const validatedArgs = searchSchema.parse({
     query,
   });
 
   const flattenedQuery = flattenToDottedNotation(validatedArgs.query);
 
   const options: ApiRequestParams = {
-    config,
-    params: flattenedQuery,
+    config: this.config,
+    params: {
+      ...flattenedQuery,
+      'path.query': undefined,
+    },
   };
 
-  return apiRequest('get', '/@search', options);
-};
-
-export const getSearchQuery = ({ query, config }: SearchArgs) => ({
-  queryKey: [query, 'get', 'search'],
-  queryFn: () => getSearch({ query, config }),
-});
+  return apiRequest('get', `${query.path?.query ?? ''}/@search`, options);
+}

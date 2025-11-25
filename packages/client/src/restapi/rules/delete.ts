@@ -1,43 +1,29 @@
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
-import {
-  PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
 import { deleteRulesDataSchema } from '../../validation/rules';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 export const deleteRulesArgsSchema = z.object({
   data: deleteRulesDataSchema,
-  config: PloneClientConfigSchema,
 });
 
 type DeleteRulesArgs = z.infer<typeof deleteRulesArgsSchema>;
 
-export const deleteRules = async ({
-  data,
-  config,
-}: DeleteRulesArgs): Promise<undefined> => {
+export async function deleteRules(
+  this: PloneClient,
+  { data }: DeleteRulesArgs,
+): Promise<RequestResponse<undefined>> {
   const validatedArgs = deleteRulesArgsSchema.parse({
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
 
   const deleteRulesPath = `/@content-rules`;
 
   return apiRequest('delete', deleteRulesPath, options);
-};
-
-export const deleteRulesMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['delete', 'rules'],
-  mutationFn: ({ data }: Omit<DeleteRulesArgs, 'config'>) =>
-    deleteRules({ data, config }),
-});
+}

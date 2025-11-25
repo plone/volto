@@ -8,9 +8,7 @@ import Actions from './Actions';
 
 const mockStore = configureStore();
 
-jest.mock('../Contents/ContentsRenameModal', () =>
-  jest.fn(() => <div className="RenameModal" />),
-);
+vi.mock('@plone/volto/components/manage/Contents');
 
 describe('Actions', () => {
   it('renders an actions component', () => {

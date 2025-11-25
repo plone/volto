@@ -14,9 +14,9 @@ import routes from '@root/routes';
 import config from '@plone/volto/registry';
 
 import configureStore from '@plone/volto/store';
-import { Api, persistAuthToken, ScrollToTop } from '@plone/volto/helpers';
-
-export const history = createBrowserHistory();
+import Api from '@plone/volto/helpers/Api/Api';
+import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
+import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
@@ -24,6 +24,15 @@ function reactIntlErrorHandler(error) {
 
 export default function client() {
   const api = new Api();
+
+  if (window.env.RAZZLE_SUBPATH_PREFIX) {
+    config.settings.subpathPrefix = window.env.RAZZLE_SUBPATH_PREFIX;
+  }
+  const history = createBrowserHistory({
+    basename: config.settings.subpathPrefix
+      ? config.settings.subpathPrefix
+      : '/',
+  });
 
   const store = configureStore(window.__data, history, api);
   persistAuthToken(store);

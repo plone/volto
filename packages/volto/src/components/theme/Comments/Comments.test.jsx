@@ -2,23 +2,31 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-
 import Comments from './Comments';
+
+vi.mock('@plone/volto/components/theme/Comments/CommentEditModal', () => ({
+  default: vi.fn(({ id, text, ...props }) => (
+    <div data-testid="comment-edit-modal">Mocked CommentEditModal</div>
+  )),
+}));
 
 const mockStore = configureStore();
 
-jest.mock('moment', () =>
-  jest.fn(() => ({
-    format: jest.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
-    fromNow: jest.fn(() => 'a few seconds ago'),
+vi.mock('moment', () => ({
+  default: vi.fn(() => ({
+    format: vi.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
+    fromNow: vi.fn(() => 'a few seconds ago'),
   })),
-);
+}));
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+vi.mock('@plone/volto/components/manage/Form');
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 describe('Comments', () => {
   it('renders a comments component', () => {
@@ -65,11 +73,13 @@ describe('Comments', () => {
         },
       },
     });
+
     const component = renderer.create(
       <Provider store={store}>
         <Comments pathname="/blog" />
       </Provider>,
     );
+
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });

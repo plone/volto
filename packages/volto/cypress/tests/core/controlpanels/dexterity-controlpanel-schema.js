@@ -1,4 +1,5 @@
 describe('ControlPanel: Dexterity Content-Types Schema', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
@@ -17,10 +18,9 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.get('input[id="field-description"]').type('Bike content-type');
     cy.get('[title=Save]').click();
 
-    cy.get('a[href="/controlpanel/dexterity-types/bike"]').should(
-      'have.text',
-      'Bike',
-    );
+    cy.get(
+      `a[href="${subpathPrefix}/controlpanel/dexterity-types/bike"]`,
+    ).should('have.text', 'Bike');
 
     // Go to schema
     cy.visit('/controlpanel/dexterity-types/bike/schema');
@@ -29,7 +29,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     // Add field
     cy.get('button[id=addfield]').click();
     cy.wait(2000);
-    cy.get('.modal .react-select-container').click().type('Choice{enter}');
+    cy.get('.modal div[id="field-factory"]').click().type('Choice{enter}');
     cy.get('.modal input[id="field-title"]')
       .type('Color')
       .should('have.value', 'Color');

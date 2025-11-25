@@ -4,10 +4,10 @@ export default Icon;
  * @function Field
  * @param {Object} props Component properties.
  * @param {string} props.name Name source object.
- * @param {string} props.size Size of the Icon (in px).
- * @param {string} props.color Color of the Icon.
- * @param {string} props.className className to add to the component.
- * @param {string} props.title Title (a11y).
+ * @param {string} [props.size] Size of the Icon (in px).
+ * @param {string} [props.color] Color of the Icon.
+ * @param {string} [props.className] className to add to the component.
+ * @param {string} [props.title] Title (a11y).
  * @returns {string} Markup of the component.
  *
  * Use:
@@ -26,10 +26,10 @@ export default Icon;
  */
 declare function Icon({ name, size, color, className, title, onClick, style, id, ariaHidden, }: {
     name: string;
-    size: string;
-    color: string;
-    className: string;
-    title: string;
+    size?: string;
+    color?: string;
+    className?: string;
+    title?: string;
 }): string;
 declare namespace Icon {
     namespace propTypes {

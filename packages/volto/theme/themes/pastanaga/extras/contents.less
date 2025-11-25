@@ -107,6 +107,18 @@
       top: auto;
       bottom: 100%;
     }
+
+    .search-feedback {
+      position: absolute;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      border: 0;
+      margin: -1px;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
   }
 
   .ui.table .icon-align,
@@ -149,8 +161,12 @@
   .ui.table .button-margin {
     padding: 4px;
     margin-right: 1em;
-    background-color: rgb(228, 1, 102);
+    background-color: #007eb1;
     color: white;
+
+    &.expired-past {
+      background-color: rgb(228, 1, 102);
+    }
   }
 }
 
@@ -185,10 +201,6 @@
     white-space: normal;
     word-break: break-all;
   }
-
-  .broken-links-list {
-    margin-top: 30px;
-  }
 }
 
 .contenttype-event {
@@ -212,4 +224,46 @@
       padding: 0.67857143em 1em;
     }
   }
+
+  .ui.progress:first-child {
+    margin: 0 0 2.5em;
+  }
+
+  .progress-container {
+    padding: 35px;
+    background: white;
+    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.43);
+  }
+
+  .progress-bar {
+    width: 300px;
+    height: 15px;
+    border-radius: 0;
+
+    .bar {
+      height: 15px;
+      border-radius: 0;
+      background: #0074a3;
+    }
+
+    .label {
+      position: relative;
+      margin: 0;
+      background: white;
+      color: grey;
+      font-size: small;
+      font-weight: normal;
+      line-height: 18px;
+      text-align: left;
+
+      .uploaded-files {
+        color: #0074a3;
+      }
+    }
+  }
+}
+
+.contents-upload-modal > .content {
+  overflow: auto;
+  max-height: 75vh;
 }

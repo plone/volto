@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
+exports[`datetime widget converts UTC date and adapts to local datetime 1`] = `
 <div>
   <div
     class="inline field field-wrapper-my-field"
@@ -85,15 +85,21 @@ exports[`datetime widget converts UTC date and adapt to local datetime 1`] = `
               </span>
             </div>
             <button
+              aria-label="Clear date and time"
               class="item ui noborder button"
               type="button"
             >
               <svg
                 class="icon close"
                 style="height: 24px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"
+                  fill-rule="evenodd"
+                />
+              </svg>
             </button>
           </div>
         </div>
@@ -188,15 +194,21 @@ exports[`renders a datetime widget component 1`] = `
               </span>
             </div>
             <button
+              aria-label="Clear date and time"
               class="item ui noborder button"
               type="button"
             >
               <svg
                 class="icon close"
                 style="height: 24px; width: auto; fill: currentColor;"
-                viewBox=""
-                xmlns=""
-              />
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"
+                  fill-rule="evenodd"
+                />
+              </svg>
             </button>
           </div>
         </div>

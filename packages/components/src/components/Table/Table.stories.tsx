@@ -1,13 +1,14 @@
 import React from 'react';
-import { Table, TableHeader, Row, Column } from './Table';
+import { Table } from './Table';
+import { TableHeader } from './TableHeader';
+import { Column } from './Column';
+import { Row } from './Row';
 import { Cell, TableBody } from 'react-aria-components';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Table.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Table> = {
-  title: 'Components/Table',
+  title: 'Basic/Table',
   component: Table,
   parameters: {
     layout: 'centered',
@@ -46,7 +47,7 @@ export const Default: Story = {
     </Table>
   ),
   args: {
-    onRowAction: null,
+    onRowAction: undefined,
     // selectionMode: "multiple",
   },
 };

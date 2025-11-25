@@ -5,6 +5,8 @@ import { Provider } from 'react-intl-redux';
 import { render, fireEvent } from '@testing-library/react';
 import ObjectWidget from './ObjectWidget';
 
+vi.mock('@plone/volto/components/manage/Form');
+
 const mockStore = configureStore();
 
 const LinkSchema = {

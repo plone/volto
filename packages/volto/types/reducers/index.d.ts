@@ -18,6 +18,7 @@ declare namespace reducers {
     export { form };
     export { groups };
     export { history };
+    export { linkIntegrity };
     export { messages };
     export { navigation };
     export { querystring };
@@ -49,6 +50,7 @@ declare namespace reducers {
     export { site };
     export { navroot };
 }
+import { intlReducer } from 'react-intl-redux';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
 import actions from '@plone/volto/reducers/actions/actions';
 import addons from '@plone/volto/reducers/addons/addons';
@@ -66,6 +68,7 @@ import emailSend from '@plone/volto/reducers/emailSend/emailSend';
 import form from '@plone/volto/reducers/form/form';
 import groups from '@plone/volto/reducers/groups/groups';
 import history from '@plone/volto/reducers/history/history';
+import linkIntegrity from '@plone/volto/reducers/linkIntegrity/linkIntegrity';
 import messages from '@plone/volto/reducers/messages/messages';
 import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';

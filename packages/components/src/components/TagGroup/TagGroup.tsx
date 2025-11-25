@@ -4,10 +4,10 @@ import {
   Label,
   Tag as RACTag,
   TagGroup as RACTagGroup,
-  TagGroupProps as RACTagGroupProps,
+  type TagGroupProps as RACTagGroupProps,
   TagList,
-  TagListProps,
-  TagProps,
+  type TagListProps,
+  type TagProps,
   Text,
 } from 'react-aria-components';
 
@@ -41,7 +41,7 @@ export function TagGroup<T extends object>({
 }
 
 export function Tag({ children, ...props }: TagProps) {
-  let textValue = typeof children === 'string' ? children : undefined;
+  const textValue = typeof children === 'string' ? children : undefined;
   return (
     <RACTag textValue={textValue} {...props}>
       {({ allowsRemoving }) => (

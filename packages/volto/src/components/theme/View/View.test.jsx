@@ -22,24 +22,29 @@ beforeAll(() => {
   });
   config.settings.publicURL = 'https://plone.org';
 });
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="Portal" />),
-);
+vi.mock('../../manage/Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('../SocialSharing/SocialSharing', () =>
-  jest.fn(() => <div id="SocialSharing" />),
-);
-jest.mock('../Comments/Comments', () => jest.fn(() => <div id="Comments" />));
-jest.mock('../Tags/Tags', () => jest.fn(() => <div id="Tags" />));
-jest.mock('../SlotRenderer/SlotRenderer', () =>
-  jest.fn(() => <div id="SlotRenderer" />),
-);
-jest.mock('../ContentMetadataTags/ContentMetadataTags', () =>
-  jest.fn(() => <div id="ContentMetadataTags" />),
-);
+vi.mock('../Comments/Comments', () => ({
+  default: vi.fn(() => <div id="Comments" />),
+}));
+
+vi.mock('../Tags/Tags', () => ({
+  default: vi.fn(() => <div id="Tags" />),
+}));
+
+vi.mock('../SlotRenderer/SlotRenderer', () => ({
+  default: vi.fn(() => <div id="SlotRenderer" />),
+}));
+
+vi.mock('../ContentMetadataTags/ContentMetadataTags', () => ({
+  default: vi.fn(() => <div id="ContentMetadataTags" />),
+}));
 
 const actions = {
   document_actions: [],
@@ -153,8 +158,10 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/test' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
@@ -174,8 +181,10 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/test' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
@@ -195,8 +204,10 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/test' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
@@ -216,8 +227,10 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/test' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 
@@ -245,16 +258,20 @@ describe('View', () => {
     });
     const { rerender } = render(
       <Provider store={store}>
-        <View location={{ pathname: '/a' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
     expect(instanceCount).toBe(1);
     store.getState().content.data['@id'] = '/b';
     rerender(
       <Provider store={store}>
-        <View location={{ pathname: '/b' }} />
-        <div id="toolbar"></div>
+        <>
+          <View location={{ pathname: '/test' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
     expect(instanceCount).toBe(2);

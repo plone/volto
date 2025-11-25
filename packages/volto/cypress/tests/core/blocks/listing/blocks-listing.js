@@ -1,4 +1,5 @@
 describe('Listing Block Tests', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.intercept('GET', '/**/Document').as('schema');
@@ -112,7 +113,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -292,7 +293,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -420,7 +421,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/page-two',
+      subpathPrefix + '/my-page/page-two',
     );
   });
 
@@ -444,7 +445,6 @@ describe('Listing Block Tests', () => {
     );
 
     //add listing block
-    cy.scrollTo('bottom');
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.listing').contains('Listing').click();
@@ -475,7 +475,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page',
+      subpathPrefix + '/my-page',
     );
   });
 
@@ -566,7 +566,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -847,7 +847,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-folder',
+      subpathPrefix + '/my-page/my-folder',
     );
     cy.get('.listing-item').should(($els) => {
       expect($els).to.have.length(2);
@@ -863,7 +863,11 @@ describe('Listing Block Tests', () => {
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
     cy.get('#field-b_size-4-querystring').click().type('2');
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.get('.listing-item h3').first().contains('My Folder 3');
   });
@@ -921,8 +925,16 @@ describe('Listing Block Tests', () => {
 
     cy.get('.ui.pagination.menu a[value="1"][type="pageItem"]')
       .first()
-      .click({ force: true });
-    cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     cy.wait(1000);
     cy.url().should('include', '?page=2');
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
@@ -985,7 +997,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-folder',
+      subpathPrefix + '/my-page/my-folder',
     );
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder' });
     cy.get('.listing-item').should(($els) => {
@@ -1002,14 +1014,22 @@ describe('Listing Block Tests', () => {
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
     cy.get('#field-b_size-4-querystring').click().type('2');
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.get('.listing-item h3').first().contains('My Folder 3');
     cy.get('#toolbar-save').click();
     cy.wait('@save');
     cy.wait('@content');
     //test second pagination click
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     //test f5
@@ -1023,6 +1043,7 @@ describe('Listing Block Tests', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     cy.intercept('GET', '/**/@types/Document').as('schema');
+    cy.intercept('POST', '**/my-page/@querystring-search').as('querySearch');
 
     cy.createContent({
       contentType: 'Document',
@@ -1077,39 +1098,61 @@ describe('Listing Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
 
-    // const listing1 = cy.get('.ui.pagination.menu').first();
-    // cy.log('listing1', listing1);
-    // The wait is needed to solve the flakyness introduced because that component
-    // is removed momentarilly from the DOM when saving
-    cy.wait(2000);
     //test second pagination click
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     //test f5
     cy.reload();
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('include', '=2');
     // const listing2 = cy.get('.ui.pagination.menu').last();
     //test third pagination click on second listing
-    cy.get('.ui.pagination.menu a[value="3"]').first().click();
+    cy.get('.ui.pagination.menu a[value="3"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     //test f5
     cy.reload();
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('include', '=2');
     cy.url().should('include', '=3');
     //on logo click go to home page and remove ?page=2 from path
-    cy.get('.logo').first().click();
+    cy.get('.logo').first().should('be.visible').click();
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
-    //test back button
-    cy.navigate('/my-page');
-    cy.wait(1000);
-    cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
-    cy.get('.ui.pagination.menu a[value="3"]').first().click({ force: true });
+
+    cy.visit('/my-page');
+    cy.wait('@content');
+    cy.wait('@querySearch');
+    cy.wait('@querySearch');
+    cy.get('.ui.small.indeterminate.text.loader').should('not.exist');
+    cy.wait(500);
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+    cy.wait('@querySearch');
+    cy.wait('@querySearch');
+    cy.get('.ui.small.indeterminate.text.loader').should('not.exist');
+    cy.wait(500);
+    cy.get('.ui.pagination.menu a[value="3"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
     cy.go(-1);
-    cy.wait(1000);
+    cy.wait('@content');
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('not.include', '=3');
     cy.go(-1);
+    cy.wait(300); // I couldn't make it work without wait
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 2' });
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
@@ -1177,7 +1220,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-news-item-test',
+      subpathPrefix + '/my-page/my-news-item-test',
     );
   });
 

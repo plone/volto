@@ -9,7 +9,11 @@ import ChangePassword from './ChangePassword';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('@plone/volto/components/manage/Form');
+
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('ChangePassword', () => {
   it('renders a change password component', () => {

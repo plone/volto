@@ -9,6 +9,12 @@ myst:
 
 # Theming
 
+This section of the documentation describes theming in Volto.
+
+```{include} ../_inc/_semantic-ui-deprecation.md
+```
+
+## Conceptual guides
 
 ```{toctree}
 :maxdepth: 1
@@ -17,6 +23,16 @@ about-semantic
 semanticui-theming
 theming-engine
 theming-strategy
+```
+
+
+## How-to guides
+
+```{toctree}
+:maxdepth: 1
+
+create-theme-add-on
 custom-styling
 using-third-party-themes
+theming-a-base-theme
 ```

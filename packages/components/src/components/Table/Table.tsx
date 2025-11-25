@@ -1,83 +1,90 @@
-import React from 'react';
+import React, { type ReactNode, type ComponentProps } from 'react';
 import {
-  Button,
-  Cell,
-  Collection,
-  Column as RACColumn,
-  ColumnProps,
-  Row as RACRow,
-  RowProps,
+  type TableProps as RACTableProps,
+  ResizableTableContainer,
+  ColumnResizer,
   Table as RACTable,
-  TableHeader as RACTableHeader,
-  TableHeaderProps,
-  TableProps,
-  useTableOptions,
+  TableBody,
+  Cell,
 } from 'react-aria-components';
+import { TableHeader } from './TableHeader';
+import { Column } from './Column';
+import { Row } from './Row';
 
-import { Checkbox } from '../Checkbox/Checkbox';
-
-export function Table(props: TableProps) {
-  return <RACTable {...props} />;
+interface ColumnType {
+  id: string;
+  name: ReactNode;
+  isRowHeader?: boolean;
+  // TODO support width constraints for resizable columns
 }
 
-export function Column(props: ColumnProps) {
-  return (
-    <RACColumn {...props}>
-      {({ allowsSorting, sortDirection }) => (
-        <>
-          {props.children}
-          {allowsSorting && (
-            <span aria-hidden="true" className="sort-indicator">
-              {sortDirection === 'ascending' ? '▲' : '▼'}
-            </span>
-          )}
-        </>
-      )}
-    </RACColumn>
-  );
+interface RowType {
+  id: string;
+  textValue?: string;
+  [key: string]: ReactNode; // TODO can we make this more specific?
 }
 
-export function TableHeader<T extends object>({
+interface TableProps<C, R> extends RACTableProps {
+  columns?: C[];
+  rows?: R[];
+  resizableColumns?: boolean;
+  dragColumnHeader?: ComponentProps<typeof TableHeader>['dragColumnHeader'];
+  // TODO maybe a custom "selectall" component? Is it doable with react-aria-components?
+}
+
+/**
+ * A wrapper around the `react-aria-components` Table component.
+ *
+ * See https://react-spectrum.adobe.com/react-aria/Table.html
+ */
+export function Table<C extends ColumnType, R extends RowType>({
   columns,
-  children,
-}: TableHeaderProps<T>) {
-  let { selectionBehavior, selectionMode, allowsDragging } = useTableOptions();
-
-  return (
-    <RACTableHeader>
-      {/* Add extra columns for drag and drop and selection. */}
-      {allowsDragging && <RACColumn />}
-      {selectionBehavior === 'toggle' && (
-        <RACColumn>
-          {selectionMode === 'multiple' && <Checkbox slot="selection" />}
-        </RACColumn>
-      )}
-      <Collection items={columns}>{children}</Collection>
-    </RACTableHeader>
-  );
-}
-
-export function Row<T extends object>({
-  id,
-  columns,
-  children,
+  rows,
+  resizableColumns,
+  dragColumnHeader,
   ...otherProps
-}: RowProps<T>) {
-  let { selectionBehavior, allowsDragging } = useTableOptions();
+}: TableProps<C, R>) {
+  let table = null;
+  if (Array.isArray(columns) && Array.isArray(rows)) {
+    table = (
+      <RACTable {...otherProps}>
+        <TableHeader columns={columns} dragColumnHeader={dragColumnHeader}>
+          {(column) => (
+            <Column isRowHeader={column.isRowHeader}>
+              {resizableColumns && (
+                <div className="flex-wrapper">
+                  <span tabIndex={-1} className="column-name">
+                    {column.name}
+                  </span>
+                  <ColumnResizer />
+                </div>
+              )}
+              {!resizableColumns && column.name}
+            </Column>
+          )}
+        </TableHeader>
+        <TableBody items={rows}>
+          {(item) => (
+            <Row columns={columns} textValue={item.textValue}>
+              {(column) => <Cell>{item[column.id]}</Cell>}
+            </Row>
+          )}
+        </TableBody>
+      </RACTable>
+    );
+  } else {
+    table = <RACTable {...otherProps} />;
 
-  return (
-    <RACRow id={id} {...otherProps}>
-      {allowsDragging && (
-        <Cell>
-          <Button slot="drag">≡</Button>
-        </Cell>
-      )}
-      {selectionBehavior === 'toggle' && (
-        <Cell>
-          <Checkbox slot="selection" />
-        </Cell>
-      )}
-      <Collection items={columns}>{children}</Collection>
-    </RACRow>
-  );
+    if (Array.isArray(columns)) {
+      console.warn('The Table component was given columns but no rows');
+    } else if (Array.isArray(rows)) {
+      console.warn('The Table component was given rows but no columns');
+    }
+  }
+
+  if (resizableColumns) {
+    return <ResizableTableContainer>{table}</ResizableTableContainer>;
+  } else {
+    return table;
+  }
 }

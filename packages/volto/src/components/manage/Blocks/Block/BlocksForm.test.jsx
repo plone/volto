@@ -3,24 +3,45 @@ import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import BlocksForm from './BlocksForm';
 import { render } from '@testing-library/react';
-
 import config from '@plone/volto/registry';
 
 config.experimental = { addBlockButton: { enabled: false } };
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 let mockSerial = 0;
-
-jest.mock('uuid', () => {
+vi.mock('uuid', () => {
   return {
-    v4: jest.fn().mockImplementation(() => `id-${mockSerial++}`),
+    v4: vi.fn().mockImplementation(() => `id-${mockSerial++}`),
   };
 });
+
+vi.mock('react-beautiful-dnd', () => ({
+  DragDropContext: ({ children }) => <div>{children}</div>,
+  Droppable: ({ children }) =>
+    children({
+      innerRef: () => {},
+      droppableProps: {},
+      placeholder: <div />,
+    }),
+  Draggable: ({ children }) =>
+    children({
+      innerRef: () => {},
+      draggableProps: {},
+      dragHandleProps: {},
+    }),
+}));
+
+vi.mock('./Order/Order', () => ({
+  default: () => <div>Order Component</div>,
+}));
 
 const mockStore = configureStore();
 
@@ -29,6 +50,9 @@ test('Allow override of blocksConfig', () => {
     intl: {
       locale: 'en',
       messages: {},
+    },
+    form: {
+      ui: {},
     },
   });
 
@@ -67,9 +91,13 @@ test('Allow override of blocksConfig', () => {
 
   const { container } = render(
     <Provider store={store}>
-      <BlocksForm {...data} />
+      <div>
+        <BlocksForm {...data} />
+        <div id="sidebar-order"></div>
+      </div>
     </Provider>,
   );
+
   expect(container).toMatchSnapshot();
 });
 
@@ -79,9 +107,12 @@ test('Removes invalid blocks on saving', () => {
       locale: 'en',
       messages: {},
     },
+    form: {
+      ui: {},
+    },
   });
 
-  const onChangeFormData = jest.fn(() => {});
+  const onChangeFormData = vi.fn(() => {});
 
   const data = {
     pathname: '/test',
@@ -119,17 +150,22 @@ test('Removes invalid blocks on saving', () => {
 
   render(
     <Provider store={store}>
-      <BlocksForm {...data} />
+      <div>
+        <BlocksForm {...data} />
+        <div id="sidebar-order"></div>
+      </div>
     </Provider>,
   );
-  expect(onChangeFormData).toBeCalledWith({
+
+  expect(onChangeFormData).toHaveBeenCalledWith({
     blocks: {
       a: { '@type': 'custom', text: 'a' },
       b: { '@type': 'custom', text: 'b' },
     },
     blocks_layout: { items: ['a', 'b', 'MISSING-YOU-1'] },
   });
-  expect(onChangeFormData).toBeCalledWith({
+
+  expect(onChangeFormData).toHaveBeenCalledWith({
     blocks: {
       a: { '@type': 'custom', text: 'a' },
       b: { '@type': 'custom', text: 'b' },

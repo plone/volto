@@ -2,20 +2,17 @@
 import config from '@plone/volto/registry';
 import Api from './Api';
 
-// jest.mock('react-cookie', () => ({
-//   load: jest.fn(() => 'token'),
-// }));
-//
-
-jest.mock('superagent', () => ({
-  get: jest.fn((url) => ({
-    url,
-    query: jest.fn(),
-    set: jest.fn(),
-    type: jest.fn(),
-    send: jest.fn(),
-    end: jest.fn(),
-  })),
+vi.mock('superagent', () => ({
+  default: {
+    get: vi.fn((url) => ({
+      url,
+      query: vi.fn(),
+      set: vi.fn(),
+      type: vi.fn(),
+      send: vi.fn(),
+      end: vi.fn(),
+    })),
+  },
 }));
 
 beforeAll(() => {
@@ -24,6 +21,7 @@ beforeAll(() => {
 
 const api = new Api();
 const { settings } = config;
+global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
 
 test('get request', () => {});
 

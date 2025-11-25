@@ -1,4 +1,5 @@
-export function TeaserSchema({ intl }: {
+export function TeaserSchema({ data, intl }: {
+    data: any;
     intl: any;
 }): {
     title: any;
@@ -15,11 +16,18 @@ export function TeaserSchema({ intl }: {
             selectedItemAttrs: string[];
             allowExternals: boolean;
         };
+        overwrite: {
+            title: any;
+            description: any;
+            type: string;
+            default: boolean;
+        };
         title: {
             title: any;
         };
         head_title: {
             title: any;
+            description: any;
         };
         description: {
             title: any;
@@ -37,7 +45,7 @@ export function TeaserSchema({ intl }: {
             type: string;
         };
     };
-    required: any[];
+    required: string[];
 };
 export function gridTeaserDisableStylingSchema({ schema, formData, intl }: {
     schema: any;

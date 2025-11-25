@@ -1,18 +1,20 @@
 import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { waitFor, render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import config from '@plone/volto/registry';
-
 import Workflow from './Workflow';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/components/manage/Widgets');
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 beforeEach(() => {
   config.settings.workflowMapping = {
@@ -46,7 +48,6 @@ describe('Workflow', () => {
         <Workflow pathname="/test" />
       </Provider>,
     );
-    await waitFor(() => screen.getByText(/Published/));
     expect(container).toMatchSnapshot();
   });
 
@@ -70,7 +71,6 @@ describe('Workflow', () => {
         <Workflow pathname="/test" />
       </Provider>,
     );
-    await waitFor(() => screen.getByText('Private'));
     expect(container).toMatchSnapshot();
   });
 });

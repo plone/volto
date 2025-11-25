@@ -1,3 +1,269 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentsUploadModal renders a contents upload modal component 1`] = `null`;
+exports[`ContentsUploadModal > renders a contents upload modal component 1`] = `
+<body
+  class="dimmable dimmed"
+>
+  <div />
+  <div
+    class="ui page modals dimmer transition visible active"
+    style="display: flex;"
+  >
+    <div
+      class="ui modal transition visible active contents-upload-modal"
+    >
+      <div
+        class="ui header"
+      >
+        Upload files
+      </div>
+      <div
+        class="ui dimmer"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="progress-container"
+          >
+            <div
+              class="ui progress progress-bar"
+              data-percent="0"
+            >
+              <div
+                class="bar"
+                style="width: 0%;"
+              />
+              <div
+                class="label"
+              >
+                Files uploaded: 
+                <br />
+                Total files to upload: 0
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="content"
+      />
+      <div
+        class="actions"
+      >
+        <button
+          aria-label="Cancel"
+          class="ui big basic circular icon secondary right floated button"
+          title="Cancel"
+        >
+          <i
+            aria-hidden="true"
+            class="remove icon"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`ContentsUploadModal > renders a contents upload modal component that only allows 1 file 1`] = `
+<body
+  class="dimmable dimmed"
+>
+  <div />
+  <div
+    class="ui page modals dimmer transition visible active"
+    style="display: flex;"
+  >
+    <div
+      class="ui modal transition visible active contents-upload-modal"
+    >
+      <div
+        class="ui header"
+      >
+        Upload files
+      </div>
+      <div
+        class="ui dimmer"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="progress-container"
+          >
+            <div
+              class="ui progress progress-bar"
+              data-percent="0"
+            >
+              <div
+                class="bar"
+                style="width: 0%;"
+              />
+              <div
+                class="label"
+              >
+                Files uploaded: 
+                <br />
+                Total files to upload: 0
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="content"
+      />
+      <div
+        class="actions"
+      >
+        <button
+          aria-label="Cancel"
+          class="ui big basic circular icon secondary right floated button"
+          title="Cancel"
+        >
+          <i
+            aria-hidden="true"
+            class="remove icon"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`ContentsUploadModal > renders a contents upload modal component that only allows 10MB files 1`] = `
+<body
+  class="dimmable dimmed"
+>
+  <div />
+  <div
+    class="ui page modals dimmer transition visible active"
+    style="display: flex;"
+  >
+    <div
+      class="ui modal transition visible active contents-upload-modal"
+    >
+      <div
+        class="ui header"
+      >
+        Upload files
+      </div>
+      <div
+        class="ui dimmer"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="progress-container"
+          >
+            <div
+              class="ui progress progress-bar"
+              data-percent="0"
+            >
+              <div
+                class="bar"
+                style="width: 0%;"
+              />
+              <div
+                class="label"
+              >
+                Files uploaded: 
+                <br />
+                Total files to upload: 0
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="content"
+      />
+      <div
+        class="actions"
+      >
+        <button
+          aria-label="Cancel"
+          class="ui big basic circular icon secondary right floated button"
+          title="Cancel"
+        >
+          <i
+            aria-hidden="true"
+            class="remove icon"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`ContentsUploadModal > renders a contents upload modal component that only allows images 1`] = `
+<body
+  class="dimmable dimmed"
+>
+  <div />
+  <div
+    class="ui page modals dimmer transition visible active"
+    style="display: flex;"
+  >
+    <div
+      class="ui modal transition visible active contents-upload-modal"
+    >
+      <div
+        class="ui header"
+      >
+        Upload files
+      </div>
+      <div
+        class="ui dimmer"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="progress-container"
+          >
+            <div
+              class="ui progress progress-bar"
+              data-percent="0"
+            >
+              <div
+                class="bar"
+                style="width: 0%;"
+              />
+              <div
+                class="label"
+              >
+                Files uploaded: 
+                <br />
+                Total files to upload: 0
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="content"
+      />
+      <div
+        class="actions"
+      >
+        <button
+          aria-label="Cancel"
+          class="ui big basic circular icon secondary right floated button"
+          title="Cancel"
+        >
+          <i
+            aria-hidden="true"
+            class="remove icon"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;

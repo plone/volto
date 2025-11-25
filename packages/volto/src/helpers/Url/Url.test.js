@@ -19,6 +19,8 @@ import {
   normaliseMail,
   normalizeTelephone,
   flattenScales,
+  addSubpathPrefix,
+  stripSubpathPrefix,
 } from './Url';
 
 beforeEach(() => {
@@ -66,7 +68,7 @@ describe('Url', () => {
     it('return empty string if no url is empty string', () => {
       expect(getBaseUrl('')).toBe('');
     });
-    it('return a null/undefined mailto adress ', () => {
+    it('return a null/undefined mailto address ', () => {
       expect(normaliseMail(null)).toBe('mailto:null');
       expect(normaliseMail(undefined)).toBe('mailto:undefined');
     });
@@ -151,26 +153,40 @@ describe('Url', () => {
   describe('isCmsUi', () => {
     [...settings.nonContentRoutes, '/controlpanel/mypanel'].forEach((route) => {
       if (typeof route === 'string') {
-        it(`matches non-content-route ${route}`, () => {
-          expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
-        });
+        if (settings.nonContentRoutesPublic.includes(route)) {
+          it(`matches non-content-route-public ${route}`, () => {
+            expect(isCmsUi(route)).toBe(false);
+          });
+        } else {
+          it(`matches non-content-route ${route}`, () => {
+            expect(isCmsUi(`/mycontent/${route}`)).toBe(true);
+          });
+        }
       }
     });
 
     it('returns false on non-cms-ui views', () => {
       expect(isCmsUi('/mycontent')).toBe(false);
     });
+
+    it('returns true on non content routes', () => {
+      expect(isCmsUi('/mycontent/historyview')).toBe(true);
+    });
+
+    it('returns false on public non content routes', () => {
+      expect(isCmsUi('/mycontent/login')).toBe(false);
+    });
   });
 
   describe('flattenHTMLToAppURL', () => {
-    it('flattens all occurences of the api URL from an html snippet', () => {
+    it('flattens all occurrences of the api URL from an html snippet', () => {
       const html = `<a href="${settings.apiPath}/foo/bar">An internal link</a><a href="${settings.apiPath}/foo/baz">second link</a>`;
       expect(flattenHTMLToAppURL(html)).toBe(
         '<a href="/foo/bar">An internal link</a><a href="/foo/baz">second link</a>',
       );
     });
 
-    it('flattens all occurences of the api URL from an html snippet, with settings.internalApiPath', () => {
+    it('flattens all occurrences of the api URL from an html snippet, with settings.internalApiPath', () => {
       const html = `<a href="http://plone:8080/Plone/foo/bar">An internal link</a><a href="http://plone:8080/Plone/foo/baz">second link</a>`;
       const saved = settings.internalApiPath;
       settings.internalApiPath = 'http://plone:8080/Plone';
@@ -228,7 +244,7 @@ describe('Url', () => {
       const href = undefined;
       expect(isInternalURL(href)).toBe(undefined);
     });
-    it('tells if an  URL is external if settings.externalroutes is persent.', () => {
+    it('tells if an  URL is external if settings.externalroutes is present.', () => {
       const url = `https://localhost:3000/fb/my-page/contents`;
       const blacklistedurl = '/blacklisted';
       settings.externalRoutes = [
@@ -255,11 +271,24 @@ describe('Url', () => {
     });
     it('isUrl test 4', () => {
       const href = `https://www`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
     });
     it('isUrl test 5', () => {
+      const href = `https://www/foo/bar`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 6', () => {
+      // at the end of the day, this is a strange, but valid, URL
       const href = `www.e`;
-      expect(isUrl(href)).toBe(false);
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 7', () => {
+      const href = `file://server/folder/file.txt`;
+      expect(isUrl(href)).toBe(true);
+    });
+    it('isUrl test 8', () => {
+      const href = `file://server.dir.internal/folder/file.txt`;
+      expect(isUrl(href)).toBe(true);
     });
   });
   describe('getFieldURL', () => {
@@ -503,6 +532,66 @@ describe('Url', () => {
         },
         size: 319364,
         width: 1182,
+      });
+    });
+  });
+
+  describe('Subpath tests', () => {
+    beforeEach(() => {
+      settings.subpathPrefix = '/site';
+    });
+    describe('addSubpathPrefix', () => {
+      it('adds subpath prefix to internal URLs', () => {
+        expect(addSubpathPrefix('/some-page')).toBe('/site/some-page');
+        expect(addSubpathPrefix('/news/article')).toBe('/site/news/article');
+      });
+
+      it('does not add subpath prefix to URLs that already have it', () => {
+        expect(addSubpathPrefix('/site/some-page')).toBe('/site/some-page');
+      });
+
+      it('does not add subpath prefix to external URLs', () => {
+        expect(addSubpathPrefix('https://example.com/page')).toBe(
+          'https://example.com/page',
+        );
+      });
+
+      it('handles empty subpath prefix', () => {
+        settings.subpathPrefix = '';
+        expect(addSubpathPrefix('/some-page')).toBe('/some-page');
+      });
+
+      it('handles undefined subpath prefix', () => {
+        settings.subpathPrefix = undefined;
+        expect(addSubpathPrefix('/some-page')).toBe('/some-page');
+      });
+    });
+
+    describe('stripSubpathPrefix', () => {
+      beforeEach(() => {
+        settings.subpathPrefix = '/site';
+      });
+      it('removes subpath prefix from URLs that have it', () => {
+        expect(stripSubpathPrefix('/site/some-page')).toBe('/some-page');
+        expect(stripSubpathPrefix('/site/news/article')).toBe('/news/article');
+      });
+
+      it('leaves URLs unchanged if they do not have the prefix', () => {
+        expect(stripSubpathPrefix('/other/some-page')).toBe('/other/some-page');
+      });
+
+      it('handles the case where URL is exactly the subpath prefix', () => {
+        expect(stripSubpathPrefix('/site')).toBe('');
+      });
+
+      it('handles empty subpath prefix', () => {
+        settings.subpathPrefix = '';
+        expect(stripSubpathPrefix('/some-page')).toBe('/some-page');
+      });
+
+      it('handles undefined subpath prefix', () => {
+        settings.subpathPrefix = undefined;
+        expect(stripSubpathPrefix('/some-page')).toBe('/some-page');
       });
     });
   });

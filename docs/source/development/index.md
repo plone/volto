@@ -21,8 +21,10 @@ Or jump in to any topic listed below.
 
 overview
 creating-project
+add-ons/index
 folder-structure
 environment-variables
+shadowing
 customizing-components
 customizing-views
 creating-views
@@ -36,5 +38,4 @@ pluggables
 widget
 how-to-restrict-blocks
 color-picker-widget
-ie11compat
 ```

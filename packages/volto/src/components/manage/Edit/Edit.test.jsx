@@ -8,10 +8,13 @@ import { __test__ as Edit } from './Edit';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-jest.mock('../Sidebar/Sidebar', () => jest.fn(() => <div id="Sidebar" />));
-
-jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
+vi.mock('@plone/volto/components/manage/Form');
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
+vi.mock('../Sidebar/Sidebar', () => ({
+  default: vi.fn(() => <div id="Sidebar" />),
+}));
 
 describe('Edit', () => {
   it('renders an empty edit component', () => {

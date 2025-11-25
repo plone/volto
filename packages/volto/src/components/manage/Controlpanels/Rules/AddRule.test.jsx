@@ -9,7 +9,11 @@ import AddRule from './AddRule';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Toolbar" />));
+vi.mock('@plone/volto/components/manage/Form');
+
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Toolbar" />),
+}));
 
 describe('AddRule', () => {
   it('renders rules add interface', () => {
@@ -21,8 +25,10 @@ describe('AddRule', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <AddRule location={{ pathname: '/controlpanel/rules/add' }} />
-        <div id="toolbar"></div>
+        <>
+          <AddRule location={{ pathname: '/controlpanel/rules/add' }} />
+          <div id="toolbar"></div>
+        </>
       </Provider>,
     );
 

@@ -5,49 +5,44 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { extractInvariantErrors } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { asyncConnect, hasApiExpander } from '@plone/volto/helpers';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { createPortal } from 'react-dom';
 import qs from 'query-string';
-import { find } from 'lodash';
+import find from 'lodash/find';
 import { toast } from 'react-toastify';
 
-import {
-  Forbidden,
-  Form,
-  Icon,
-  Sidebar,
-  Toast,
-  Toolbar,
-  Unauthorized,
-  CompareLanguages,
-  TranslationObject,
-} from '@plone/volto/components';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+import CompareLanguages from '@plone/volto/components/manage/Multilingual/CompareLanguages';
+import TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
+import { Form } from '@plone/volto/components/manage/Form';
 import {
   updateContent,
   getContent,
   lockContent,
   unlockContent,
-  getSchema,
-  listActions,
-  setFormData,
-} from '@plone/volto/actions';
-import {
-  flattenToAppURL,
-  getBaseUrl,
-  hasBlocksData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/actions/content/content';
+import { getSchema } from '@plone/volto/actions/schema/schema';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import { setFormData } from '@plone/volto/actions/form/form';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { hasBlocksData } from '@plone/volto/helpers/Blocks/Blocks';
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
-import { tryParseJSON } from '@plone/volto/helpers';
+import { tryParseJSON } from '@plone/volto/helpers/FormValidation/FormValidation';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-
-import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   edit: {
@@ -208,9 +203,7 @@ class Edit extends Component {
       const errorsList = tryParseJSON(error);
       let erroMessage;
       if (Array.isArray(errorsList)) {
-        const invariantErrors = errorsList
-          .filter((errorItem) => !('field' in errorItem))
-          .map((errorItem) => errorItem['message']);
+        const invariantErrors = extractInvariantErrors(errorsList);
         if (invariantErrors.length > 0) {
           // Plone invariant validation message.
           erroMessage = invariantErrors.join(' - ');
@@ -333,6 +326,10 @@ class Edit extends Component {
           this.setState({ formSelected: 'editForm' });
         }}
         global
+        // Properties to pass to the BlocksForm to match the View ones
+        history={this.props.history}
+        location={this.props.location}
+        token={this.props.token}
       />
     );
 
@@ -344,11 +341,15 @@ class Edit extends Component {
               <>
                 <Helmet
                   title={
-                    this.props?.schema?.title
+                    this.props?.content?.title
                       ? this.props.intl.formatMessage(messages.edit, {
-                          title: this.props.schema.title,
+                          title: this.props?.content?.title,
                         })
-                      : null
+                      : this.props?.schema?.title
+                        ? this.props.intl.formatMessage(messages.edit, {
+                            title: this.props.schema.title,
+                          })
+                        : null
                   }
                 >
                   {this.props.content?.language && (
@@ -444,6 +445,7 @@ class Edit extends Component {
                     />
                   </Button>
                   <Button
+                    type="button"
                     className="cancel"
                     aria-label={this.props.intl.formatMessage(messages.cancel)}
                     onClick={() => this.onCancel()}
@@ -456,7 +458,7 @@ class Edit extends Component {
                     />
                   </Button>
 
-                  {config.settings.isMultilingual && (
+                  {this.props.isMultilingual && (
                     <CompareLanguages
                       content={this.props.content}
                       visual={this.state.visual}
@@ -541,6 +543,7 @@ export default compose(
       updateRequest: state.content.update,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
+      isMultilingual: state.site.data.features?.multilingual,
     }),
     {
       updateContent,

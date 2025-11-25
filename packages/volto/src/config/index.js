@@ -1,23 +1,10 @@
+import ConfigRegistry from '@plone/volto/registry';
 import { parse as parseUrl } from 'url';
-import { defaultWidget, widgetMapping } from './Widgets';
-import {
-  layoutViews,
-  contentTypesViews,
-  defaultView,
-  errorViews,
-  layoutViewsNamesMapping,
-} from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
-import {
-  groupBlocksOrder,
-  requiredBlocks,
-  blocksConfig,
-  initialBlocks,
-  initialBlocksFocus,
-} from './Blocks';
-import { components } from './Components';
+import { nonContentRoutesPublic } from './NonContentRoutesPublic';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
+import slots from './slots';
 
 import { contentIcons } from './ContentIcons';
 import { styleClassNameConverters, styleClassNameExtenders } from './Style';
@@ -25,20 +12,23 @@ import {
   controlPanelsIcons,
   filterControlPanels,
   filterControlPanelsSchema,
+  unwantedControlPanelsFields,
 } from './ControlPanels';
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
-import ConfigRegistry from '@plone/volto/registry';
+import { installDefaultComponents } from './Components';
+import { installDefaultWidgets } from './Widgets';
+import { installDefaultViews } from './Views';
+import { installDefaultBlocks } from './Blocks';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
+import { registerValidators } from './validation';
+
+import languages from '@plone/volto/constants/Languages.cjs';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
-
-const apiPath =
-  process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
   if (!url) return;
@@ -52,12 +42,14 @@ const getServerURL = (url) => {
 // if RAZZLE_PUBLIC_URL is present, use it
 // if in DEV, use the host/port combination by default
 // if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
-// to DEV settings if RAZZLE_API_PATH is not present
+// to DEV settings if RAZZLE_API_PATH is not present.
+// Finally, add the subpath, if there is one.
 const publicURL =
-  process.env.RAZZLE_PUBLIC_URL ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}`
-    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
+  (process.env.RAZZLE_PUBLIC_URL ||
+    (__DEVELOPMENT__
+      ? `http://${host}:${port}`
+      : getServerURL(process.env.RAZZLE_API_PATH) ||
+        `http://${host}:${port}`)) + (process.env.RAZZLE_SUBPATH_PREFIX || '');
 
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
@@ -71,7 +63,10 @@ let config = {
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
     okRoute: '/ok',
-    apiPath,
+    // Base URL for API requests from the browser.
+    // If not explicitly set, use the publicURL (seamless mode) --
+    // but in that case it will be updated in server.jsx for each request.
+    apiPath: process.env.RAZZLE_API_PATH || publicURL,
     apiExpanders: [
       // Added here for documentation purposes, added at the end because it
       // depends on a value of this object.
@@ -97,7 +92,7 @@ let config = {
       process.env.RAZZLE_INTERNAL_API_PATH ||
       process.env.RAZZLE_API_PATH ||
       'http://localhost:8080/Plone', // Set it to '' for disabling the proxy
-    // proxyRewriteTarget Set it for set a custom target for the proxy or overide the internal VHM rewrite
+    // proxyRewriteTarget Set it for set a custom target for the proxy or override the internal VHM rewrite
     // proxyRewriteTarget: '/VirtualHostBase/http/localhost:8080/Plone/VirtualHostRoot/_vh_api'
     // proxyRewriteTarget: 'https://myvoltositeinproduction.com'
     proxyRewriteTarget: process.env.RAZZLE_PROXY_REWRITE_TARGET || undefined,
@@ -105,11 +100,13 @@ let config = {
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
+    subpathPrefix: process.env.RAZZLE_SUBPATH_PREFIX || '',
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
     nonContentRoutes,
+    nonContentRoutesPublic,
     imageObjects: ['Image'],
     reservedIds: ['login', 'layout', 'plone', 'zip', 'properties'],
     downloadableObjects: ['File'], //list of content-types for which the direct download of the file will be carried out if the user is not authenticated
@@ -118,9 +115,7 @@ let config = {
     openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
-    defaultLanguage: 'en',
+    supportedLanguages: Object.keys(languages),
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
@@ -148,10 +143,12 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    showRelatedItems: true,
     controlpanels: [],
     controlPanelsIcons,
     filterControlPanels,
     filterControlPanelsSchema,
+    unwantedControlPanelsFields,
     externalRoutes: [
       // URL to be considered as external
       // {
@@ -167,7 +164,7 @@ let config = {
     ],
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
-    hasWorkingCopySupport: false,
+    contentPropertiesSchemaEnhancer: null,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
     workflowMapping,
@@ -178,7 +175,6 @@ let config = {
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,
     excludeLinksAndReferencesMenuItem: false,
-    containerBlockTypes: ['gridBlock'],
     siteTitleFormat: {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
@@ -189,29 +185,14 @@ let config = {
       enabled: true,
     },
   },
-  widgets: {
-    ...widgetMapping,
-    default: defaultWidget,
-  },
-  views: {
-    layoutViews,
-    contentTypesViews,
-    defaultView,
-    errorViews,
-    layoutViewsNamesMapping,
-  },
-  blocks: {
-    requiredBlocks,
-    blocksConfig,
-    groupBlocksOrder,
-    initialBlocks,
-    initialBlocksFocus,
-    showEditBlocksInBabelView: false,
-  },
+  widgets: {},
+  views: {},
+  blocks: {},
   addonRoutes: [],
   addonReducers: {},
+  components: {},
   slots: {},
-  components,
+  utilities: {},
 };
 
 // The apiExpanders depends on a config of the object, so it's done here
@@ -219,7 +200,8 @@ config.settings.apiExpanders = [
   ...config.settings.apiExpanders,
   {
     match: '',
-    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
+    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot', 'translations'],
+    // Note: translations is removed in the API middleware if the site is not multilingual.
   },
   {
     match: '',
@@ -239,5 +221,24 @@ ConfigRegistry.addonRoutes = config.addonRoutes;
 ConfigRegistry.addonReducers = config.addonReducers;
 ConfigRegistry.components = config.components;
 ConfigRegistry.slots = config.slots;
+ConfigRegistry.utilities = config.utilities;
+
+// Register slots
+Object.entries(slots).forEach(([slotName, components]) => {
+  components.forEach(({ name, component, predicates = [] }) => {
+    ConfigRegistry.registerSlotComponent({
+      slot: slotName,
+      name,
+      component,
+      predicates,
+    });
+  });
+});
+
+registerValidators(ConfigRegistry);
+installDefaultComponents(ConfigRegistry);
+installDefaultWidgets(ConfigRegistry);
+installDefaultViews(ConfigRegistry);
+installDefaultBlocks(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);

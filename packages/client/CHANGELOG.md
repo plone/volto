@@ -8,6 +8,125 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.1 (2025-09-29)
+
+### Bugfix
+
+- Fix Zod schema for `update` endpoint. @sneridagh [#7118](https://github.com/plone/volto/pull/7118)
+- Fixed related items payload schema. @deodorhunter [#7201](https://github.com/plone/volto/pull/7201)
+- Fixed some lint/prettier issues. @sneridagh [#7346](https://github.com/plone/volto/pull/7346)
+
+### Internal
+
+- Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/pull/7372)
+- Remove not needed `vite`. @sneridagh 
+
+## 2.0.0-alpha.0 (2025-05-24)
+
+### Feature
+
+- Refactor plone client. @robgietema [#6889](https://github.com/plone/volto/pull/6889)
+
+### Bugfix
+
+- Fixed handling of errors that are not coming from the backend @pnicolli [#6901](https://github.com/plone/volto/pull/6901)
+- Fixed name of the getType parameter @pnicolli [#6906](https://github.com/plone/volto/pull/6906)
+- Fixed client test in `@types` endpoint. @sneridagh
+
+### Internal
+
+- Use ESlint 9, fix code. @sneridagh [#6775](https://github.com/plone/volto/pull/6775)
+- Update vitest packages to match the catalog. @sneridagh [#6777](https://github.com/plone/volto/pull/6777)
+- Update `vitest` version to catalog. @sneridagh [#6916](https://github.com/plone/volto/pull/6916)
+- Remove no longer required dependency on glob. @sneridagh [#6944](https://github.com/plone/volto/pull/6944)
+
+### Documentation
+
+- Clean up `README.md`. @stevepiercy [#6894](https://github.com/plone/volto/pull/6894)
+
+## 1.0.0-alpha.23 (2025-02-08)
+
+### Internal
+
+- Update Vite version. @sneridagh [#6640](https://github.com/plone/volto/pull/6640)
+- Update internal `peerDependencies` to include React 19.
+  Update TS version. @sneridagh [#6641](https://github.com/plone/volto/pull/6641)
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/pull/6682)
+- Remove hard dependencies on `react`, use `peerDependencies` instead. @sneridagh [#6728](https://github.com/plone/volto/pull/6728)
+
+## 1.0.0-alpha.22 (2025-01-24)
+
+### Documentation
+
+- Fix typo in README. @sneridagh [#6599](https://github.com/plone/volto/pull/6599)
+
+## 1.0.0-alpha.21 (2025-01-15)
+
+### Feature
+
+- Import `getContent` bare fetcher. @sneridagh [#6594](https://github.com/plone/volto/pull/6594)
+
+## 1.0.0-alpha.20 (2024-11-05)
+
+### Internal
+
+- Bump local `typescript` version. @sneridagh [#6461](https://github.com/plone/volto/pull/6461)
+- Replace `parcel` with `tsup`. @sneridagh [#6466](https://github.com/plone/volto/pull/6466)
+
+## 1.0.0-alpha.19 (2024-10-18)
+
+### Feature
+
+- Add support for the `depth` parameter on `getNavigationQuery`. @ebrehault [#6400](https://github.com/plone/volto/pull/6400)
+
+### Internal
+
+- Upgrade `@tanstack/react-query`. @sneridagh [#6069](https://github.com/plone/volto/pull/6069)
+- Update Vite and vitest versions @sneridagh [#6373](https://github.com/plone/volto/pull/6373)
+- Added watch script to package.json @pnicolli @deodorhunter [#6382](https://github.com/plone/volto/pull/6382)
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/pull/6407)
+
+## 1.0.0-alpha.18 (2024-10-03)
+
+### Bugfix
+
+- Fixed client copy mutation, cleanup up move mutation for consistency @pnicolli [#6349](https://github.com/plone/volto/pull/6349)
+
+## 1.0.0-alpha.17 (2024-09-13)
+
+### Documentation
+
+- Add documentation about optional `token` parameter for `ploneClient` initialization. @MAX-786 [#6076](https://github.com/plone/volto/pull/6076)
+
+## 1.0.0-alpha.16 (2024-06-06)
+
+### Bugfix
+
+- Fixed querystring search query type @pnicolli [#6034](https://github.com/plone/volto/pull/6034)
+- Fixed login mutation @sneridagh [#6053](https://github.com/plone/volto/pull/6053)
+
+### Internal
+
+- Remove custom test runner, using `vitest` config instead @sneridagh [#6056](https://github.com/plone/volto/pull/6056)
+
+## 1.0.0-alpha.15 (2024-05-23)
+
+### Breaking
+
+- Provider has been moved to `@plone/providers` @sneridagh [#5887](https://github.com/plone/volto/pull/5887)
+
+### Bugfix
+
+- Update `vite` to 5.1.5. @davisagli [#5942](https://github.com/plone/volto/pull/5942)
+- Fixed path search bug @pnicolli [#6029](https://github.com/plone/volto/pull/6029)
+
+### Internal
+
+- Sync TypeScript version @sneridagh [#5912](https://github.com/plone/volto/pull/5912)
+- Improvements to the monorepo setup with utilities, especially ESLint. Build cached option to speedup operations. @sneridagh [#5969](https://github.com/plone/volto/pull/5969)
+- Saner defaults for building deps, switch default to cached, add `build:force` command @sneridagh [#5980](https://github.com/plone/volto/pull/5980)
+- Un-pin `@tanstack/react-query` dependency @sneridagh [#6045](https://github.com/plone/volto/pull/6045)
+
 ## 1.0.0-alpha.14 (2024-03-05)
 
 ### Internal

@@ -1,4 +1,4 @@
-import { slateBeforeEach } from '../../../support/commands';
+import { slateBeforeEach } from '../../../support/helpers';
 
 describe('Block Tests: paste external images', () => {
   beforeEach(slateBeforeEach);

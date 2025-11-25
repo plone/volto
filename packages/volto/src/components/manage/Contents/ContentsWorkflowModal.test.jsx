@@ -7,7 +7,7 @@ import ContentsWorkflowModal from './ContentsWorkflowModal';
 
 const mockStore = configureStore();
 
-jest.mock('../Form/ModalForm', () => jest.fn(() => <div id="modalform" />));
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ContentsWorkflowModal', () => {
   it('renders a contents workflow modal component', () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
-import { toBackendLang } from '@plone/volto/helpers';
+import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 
 const DateWidget = ({ value, children, className, format = 'll' }) => {
   const lang = useSelector((state) => state.intl.locale);

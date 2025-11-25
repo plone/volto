@@ -37,10 +37,10 @@ As is the case with similar modern JavaScript-based applications, you should be 
 
 ## Basic Volto development
 
-Once you've {doc}`bootstrapped your Volto project <plone:install/create-project>`, you can immediately start hacking.
+Once you've {doc}`bootstrapped your Volto project <plone:install/create-project-cookieplone>`, you can immediately start hacking.
 The following is a list of some the things you can do at this stage.
 
--   Configure your text editor for JavaScript and Volto development
+-   {ref}`Configure your text editor for JavaScript and Volto development <linting-editor-integration-label>`
 -   Volto project-based development
 -   Understand and debug React errors
 -   Understand the React component lifecycle
@@ -68,8 +68,8 @@ While developing a project using Volto, you might perform the following routine 
 -   Integrate an add-on's LESS statements with Volto's theme variables
 -   Use schema-based forms to write block components
 -   Write new form widgets
--   Write tests in Jest
--   Write integration tests in Cypress
+-   {doc}`Write tests in Vitest <../contributing/testing>`
+-   {doc}`Write integration tests in Cypress <../contributing/acceptance-tests>`
 -   Split your code and lazy-load libraries to improve performance
 -   Use more advanced React concepts, including hooks, context providers, and other topics
 -   Make your code reusable by separating business logic and repeated behaviors as Higher Order Components (HOCs)
@@ -98,5 +98,5 @@ Add your code and customizations to this add-on, and Volto will load them on sta
 This add-on is configured as a theme add-on, so you are able to customize the look and feel of your site as well.
 
 ```{seealso}
-For more information about how to develop a Volto project as an add-on, see {doc}`training:voltoaddons/index`.
+For more information about how to develop a Volto project as an add-on, see {doc}`training-2024:voltoaddons/index`.
 ```

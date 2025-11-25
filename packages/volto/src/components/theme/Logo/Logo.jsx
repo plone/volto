@@ -4,16 +4,13 @@
  */
 import { defineMessages, useIntl } from 'react-intl';
 import { useEffect } from 'react';
-import { Image } from 'semantic-ui-react';
 import LogoImage from '@plone/volto/components/theme/Logo/Logo.svg';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { getNavroot } from '@plone/volto/actions';
-import {
-  flattenToAppURL,
-  hasApiExpander,
-  getBaseUrl,
-} from '@plone/volto/helpers';
+import { Link, useLocation } from 'react-router-dom';
+import { getNavroot } from '@plone/volto/actions/navroot/navroot';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 /**
  * Logo component class.
@@ -48,8 +45,9 @@ const Logo = () => {
   const navRootPath = flattenToAppURL(navroot?.navroot?.['@id']) || '/';
 
   return (
-    <a href={navRootPath} aria-label={intl.formatMessage(messages.home)}>
+    <Link to={navRootPath} aria-label={intl.formatMessage(messages.home)}>
       <Image
+        className="ui image"
         src={
           site['plone.site_logo']
             ? flattenToAppURL(site['plone.site_logo'])
@@ -59,7 +57,7 @@ const Logo = () => {
           intl.formatMessage(messages.logoOf) + ' ' + site['plone.site_title']
         }
       />
-    </a>
+    </Link>
   );
 };
 

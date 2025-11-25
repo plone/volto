@@ -1,16 +1,9 @@
-import type { Options } from 'tsup';
+import { defineConfig } from 'tsup';
 
-const config: Options = {
-  entry: ['src/index.ts', 'src/provider.tsx'],
-  dts: true,
-  clean: true,
-  minify: true,
-  bundle: true,
-  sourcemap: true,
+export default defineConfig({
+  entryPoints: ['src/index.ts', 'src/bla.ts'],
   format: ['cjs', 'esm'],
-  target: 'es2020',
-  skipNodeModulesBundle: true,
-  tsconfig: './tsconfig.json',
-};
-
-export default config;
+  dts: true,
+  outDir: 'dist',
+  clean: true,
+});

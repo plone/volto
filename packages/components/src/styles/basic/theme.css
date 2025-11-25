@@ -48,7 +48,7 @@
   --text-color: var(--basic-950); /* --gray-600 */
   --text-color-base: var(--basic-600); /* --gray-500 */
   --text-color-hover: var(--basic-950); /* --gray-600 */
-  --text-color-disabled: var(--basic-400); /* --gray-200 */
+  --text-color-disabled: var(--basic-500); /* --gray-200 */
   --text-color-placeholder: var(--gray-400);
   /* Link */
   --link-color: var(--quanta-sapphire);

@@ -1,6 +1,5 @@
-.parcel-cache/
 dist
+/lib
+/include
 
-# yarn 3
-.pnp.*
-.yarn/*
+docs/_build/

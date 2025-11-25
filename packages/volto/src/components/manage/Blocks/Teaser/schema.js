@@ -22,9 +22,13 @@ const messages = defineMessages({
     id: 'Description',
     defaultMessage: 'Description',
   },
-  head_title: {
+  kicker: {
     id: 'head_title',
-    defaultMessage: 'Head title',
+    defaultMessage: 'Kicker',
+  },
+  kicker_description: {
+    id: 'The kicker is a line of text shown above the title.',
+    defaultMessage: 'The kicker is a line of text shown above the title.',
   },
   teaser: {
     id: 'Teaser',
@@ -34,16 +38,31 @@ const messages = defineMessages({
     id: 'Alignment',
     defaultMessage: 'Alignment',
   },
+  overwrite: {
+    id: 'Customize teaser content',
+    defaultMessage: 'Customize teaser content',
+  },
+  overwriteDescription: {
+    id: 'Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later.',
+    defaultMessage:
+      'Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later.',
+  },
 });
 
-export const TeaserSchema = ({ intl }) => {
+export const TeaserSchema = ({ data, intl }) => {
   const schema = {
     title: intl.formatMessage(messages.teaser),
     fieldsets: [
       {
         id: 'default',
         title: 'Default',
-        fields: ['href', 'title', 'head_title', 'description', 'preview_image'],
+        fields: [
+          'href',
+          'overwrite',
+          ...(data?.overwrite
+            ? ['title', 'head_title', 'description', 'preview_image']
+            : []),
+        ],
       },
     ],
 
@@ -63,11 +82,18 @@ export const TeaserSchema = ({ intl }) => {
         ],
         allowExternals: true,
       },
+      overwrite: {
+        title: intl.formatMessage(messages.overwrite),
+        description: intl.formatMessage(messages.overwriteDescription),
+        type: 'boolean',
+        default: false,
+      },
       title: {
         title: intl.formatMessage(messages.title),
       },
       head_title: {
-        title: intl.formatMessage(messages.head_title),
+        title: intl.formatMessage(messages.kicker),
+        description: intl.formatMessage(messages.kicker_description),
       },
       description: {
         title: intl.formatMessage(messages.description),
@@ -85,7 +111,7 @@ export const TeaserSchema = ({ intl }) => {
         type: 'boolean',
       },
     },
-    required: [],
+    required: ['href'],
   };
 
   addStyling({ schema, intl });
