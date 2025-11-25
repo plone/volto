@@ -4461,6 +4461,11 @@ msgstr "Vous pouvez ajouter un commentaire en remplissant le formulaire ci-desso
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Vous pouvez contrôler qui peut afficher et modifier votre élément à l'aide de la liste ci-dessous."
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."

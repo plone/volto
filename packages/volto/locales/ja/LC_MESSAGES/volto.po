@@ -4459,6 +4459,11 @@ msgstr "You can add a comment by filling out the form below. Plain text formatti
 msgid "You can control who can view and edit your item using the list below."
 msgstr "You can control who can view and edit your item using the list below. (未翻訳)"
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."

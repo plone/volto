@@ -4461,6 +4461,11 @@ msgstr "Erantzun bat utzi dezakezu. Testu hutsez idatzi."
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Zure elementua nork ikusi eta aldatu dezakeen kontrolatu dezakezu."
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."

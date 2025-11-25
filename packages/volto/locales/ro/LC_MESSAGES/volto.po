@@ -4460,6 +4460,11 @@ msgstr "Puteți adăuga un comentariu completând formularul de mai jos. Formata
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Puteți controla cine vă poate vizualiza și edita elementul folosind lista de mai jos."
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."

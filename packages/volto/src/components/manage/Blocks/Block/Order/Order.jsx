@@ -1,12 +1,23 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
+import { toast } from 'react-toastify';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import find from 'lodash/find';
 import min from 'lodash/min';
+import { messages as defaultMessages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 
 import { flattenTree, getProjection, removeChildrenOf } from './utilities';
 import SortableItem from './SortableItem';
 
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+
+const messages = defineMessages({
+  invalidBlockType: {
+    id: 'You can not move this type of block to the new location',
+    defaultMessage: 'You can not move this type of block to the new location',
+  },
+});
 
 export function Order({
   items = [],
@@ -24,6 +35,7 @@ export function Order({
   const [overId, setOverId] = useState(null);
   const [offsetLeft, setOffsetLeft] = useState(0);
   const [currentPosition, setCurrentPosition] = useState(null);
+  const intl = useIntl();
 
   const {
     DndContext,
@@ -139,11 +151,12 @@ export function Order({
       onDragCancel={handleDragCancel}
     >
       <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
-        {flattenedItems.map(({ id, parentId, depth, data }) => (
+        {flattenedItems.map(({ id, parentId, parentType, depth, data }) => (
           <SortableItem
             key={id}
             id={id}
             parentId={parentId}
+            parentType={parentType}
             data={data}
             depth={min([
               id === activeId && projected ? projected.depth : depth,
@@ -182,6 +195,7 @@ export function Order({
     if (activeItem) {
       setCurrentPosition({
         parentId: activeItem.parentId,
+        parentType: activeItem.parentType,
         overId: activeId,
       });
     }
@@ -199,18 +213,24 @@ export function Order({
 
   function handleDragEnd({ active, over }) {
     if (projected && over) {
-      const { depth, parentId } = projected;
+      const { depth, parentId, parentType } = projected;
       const clonedItems = JSON.parse(JSON.stringify(flattenedItems));
       const overIndex = clonedItems.findIndex(({ id }) => id === over.id);
       const activeIndex = clonedItems.findIndex(({ id }) => id === active.id);
       const activeTreeItem = clonedItems[activeIndex];
       const oldParentId = activeTreeItem.parentId;
+      const oldParentType = activeTreeItem.parentType;
 
-      clonedItems[activeIndex] = { ...activeTreeItem, depth, parentId };
+      clonedItems[activeIndex] = {
+        ...activeTreeItem,
+        depth,
+        parentId,
+        parentType,
+      };
 
       // Translate position depending on parent
       if (parentId === oldParentId) {
-        // Move from and to toplevel or move within the same grid block
+        // Move from and to toplevel or move within the same sub block
 
         let destIndex = clonedItems[overIndex].index;
         if (clonedItems[overIndex].depth > clonedItems[activeIndex].depth) {
@@ -230,66 +250,97 @@ export function Order({
           },
         });
       } else if (parentId && oldParentId) {
-        // Move from one gridblock to another
+        // Move from one subblock to another
 
-        onMoveBlock({
-          source: {
-            position: clonedItems[activeIndex].index,
-            parent: oldParentId,
-            id: active.id,
-          },
-          destination: {
-            position:
-              overIndex < activeIndex
-                ? clonedItems[overIndex - 1].parentId
-                  ? clonedItems[overIndex - 1].index + 1
-                  : clonedItems[overIndex].index
-                : overIndex + 1 < clonedItems.length
-                  ? clonedItems[overIndex + 1].index
-                  : clonedItems[overIndex].index + 1,
-            parent: parentId,
-          },
-        });
+        if (parentType === oldParentType) {
+          // Moving within the same type of subblock
+          onMoveBlock({
+            source: {
+              position: clonedItems[activeIndex].index,
+              parent: oldParentId,
+              id: active.id,
+            },
+            destination: {
+              position:
+                overIndex < activeIndex
+                  ? clonedItems[overIndex - 1].parentId
+                    ? clonedItems[overIndex - 1].index + 1
+                    : clonedItems[overIndex].index
+                  : overIndex + 1 < clonedItems.length
+                    ? clonedItems[overIndex + 1].index
+                    : clonedItems[overIndex].index + 1,
+              parent: parentId,
+            },
+          });
+        } else {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(defaultMessages.error)}
+              content={intl.formatMessage(messages.invalidBlockType)}
+            />,
+          );
+        }
       } else if (oldParentId) {
-        // Moving to the main container from a gridblock
+        // Moving to the main container from a subblock
 
-        onMoveBlock({
-          source: {
-            position: clonedItems[activeIndex].index,
-            parent: oldParentId,
-            id: active.id,
-          },
-          destination: {
-            position:
-              overIndex > activeIndex
-                ? overIndex + 1 < clonedItems.length
-                  ? clonedItems[overIndex + 1].index
-                  : clonedItems[overIndex].index + 1
-                : clonedItems[overIndex].index,
-            parent: parentId,
-          },
-        });
+        if (oldParentType === 'gridBlock') {
+          onMoveBlock({
+            source: {
+              position: clonedItems[activeIndex].index,
+              parent: oldParentId,
+              id: active.id,
+            },
+            destination: {
+              position:
+                overIndex > activeIndex
+                  ? overIndex + 1 < clonedItems.length
+                    ? clonedItems[overIndex + 1].index
+                    : clonedItems[overIndex].index + 1
+                  : clonedItems[overIndex].index,
+              parent: parentId,
+            },
+          });
+        } else {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(defaultMessages.error)}
+              content={intl.formatMessage(messages.invalidBlockType)}
+            />,
+          );
+        }
       } else {
-        // Moving from the main container to a gridblock
+        // Moving from the main container to a subblock
 
-        onMoveBlock({
-          source: {
-            position: clonedItems[activeIndex].index,
-            parent: oldParentId,
-            id: active.id,
-          },
-          destination: {
-            position:
-              overIndex < activeIndex
-                ? clonedItems[overIndex - 1].parentId
-                  ? clonedItems[overIndex - 1].index + 1
-                  : clonedItems[overIndex].index
-                : overIndex + 1 < clonedItems.length
-                  ? clonedItems[overIndex + 1].index
-                  : clonedItems[overIndex].index + 1,
-            parent: parentId,
-          },
-        });
+        if (parentType === 'gridBlock') {
+          onMoveBlock({
+            source: {
+              position: clonedItems[activeIndex].index,
+              parent: oldParentId,
+              id: active.id,
+            },
+            destination: {
+              position:
+                overIndex < activeIndex
+                  ? clonedItems[overIndex - 1].parentId
+                    ? clonedItems[overIndex - 1].index + 1
+                    : clonedItems[overIndex].index
+                  : overIndex + 1 < clonedItems.length
+                    ? clonedItems[overIndex + 1].index
+                    : clonedItems[overIndex].index + 1,
+              parent: parentId,
+            },
+          });
+        } else {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(defaultMessages.error)}
+              content={intl.formatMessage(messages.invalidBlockType)}
+            />,
+          );
+        }
       }
     }
 
@@ -325,6 +376,7 @@ export function Order({
         } else {
           setCurrentPosition({
             parentId: projected.parentId,
+            parentType: projected.parentType,
             overId,
           });
         }
