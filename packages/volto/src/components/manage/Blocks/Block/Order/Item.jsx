@@ -25,6 +25,7 @@ export const Item = forwardRef(
       onRemove,
       onSelectBlock,
       parentId,
+      parentType,
       style,
       value,
       wrapperRef,
