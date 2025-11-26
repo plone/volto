@@ -296,7 +296,13 @@ const UnconnectedImageInput = (props) => {
       {selected && <ImageToolbar {...props} />}
       {/* If it's relation choice (preview_image_link) */}
       {isRelationChoice ? (
-        <Image item={value} width="fit-content" height="auto" loading="lazy" />
+        <Image
+          item={value}
+          width="fit-content"
+          height="auto"
+          loading="lazy"
+          sizes="320px"
+        />
       ) : (
         <Image
           className={props.className}

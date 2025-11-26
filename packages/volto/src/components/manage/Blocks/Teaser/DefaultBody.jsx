@@ -64,7 +64,7 @@ const TeaserDefaultTemplate = (props) => {
                       alt=""
                       loading="lazy"
                       responsive={true}
-                      sizes="(max-width: 940px) 100vw, 940px"
+                      sizes="auto, (max-width: 940px) 100vw, 940px"
                     />
                   </div>
                 )
