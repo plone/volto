@@ -381,6 +381,7 @@ export function flattenScales(path, image) {
   const basePath = image.base_path || path;
   const imageInfo = {
     ...image,
+    scales: image.scales || {},
     download: flattenToAppURL(removeObjectIdFromURL(basePath, image.download)),
   };
 

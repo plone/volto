@@ -1,0 +1,1 @@
+Fixed a TypeError in `flattenScales` that occurred when `image.scales` was missing. @pratyush07-hub
