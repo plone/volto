@@ -222,6 +222,13 @@ class View extends Component {
       }
       return (
         <div id="view">
+          <BodyClass
+            className={
+              FoundView.displayName
+                ? `view-${this.cleanViewName(FoundView.displayName)}`
+                : null
+            }
+          />
           <FoundView {...this.props} />
         </div>
       );

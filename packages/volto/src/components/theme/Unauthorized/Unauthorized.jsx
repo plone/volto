@@ -13,7 +13,7 @@ const Unauthorized = () => {
 
   return (
     <Container className="view-wrapper">
-      <BodyClass className="unauthorized-page" />
+      <BodyClass className="view-unauthorized" />
       <h1>
         <FormattedMessage id="Unauthorized" defaultMessage="Unauthorized" />
       </h1>
@@ -64,5 +64,6 @@ const Unauthorized = () => {
     </Container>
   );
 };
-
-export default withServerErrorCode(401)(Unauthorized);
+const UnauthorizedWithCode = withServerErrorCode(401)(Unauthorized);
+UnauthorizedWithCode.displayName = 'unauthorized';
+export default UnauthorizedWithCode;
