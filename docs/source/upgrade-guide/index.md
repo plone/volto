@@ -340,10 +340,12 @@ In case that you need a later version of `sass` in your project or add-on, you c
 The `Image` component has been optimized to include the original image URL only when necessary.
 Now it is only included if the image does not have all the defined scales present, which could happen if the image is smaller than the defined scales.
 In other scenarios where all the scales are present, including the original image forced the browser to choose it over the scaled versions, impacting performance.
-This happened specially in high-density screens where the `large` scale was not enough for the browser to pick a scaled version.
-It is a breaking change for projects that relied on the original image always being present, for example, those projects that wanted to use the original image always in big screens (not necessarily high-density, eg TV screens, etc).
-We are adding an additional scale to cover that use cases, enough to cover the highest density screens at the largest common resolutions.
-This is a breaking change, because if your project relied on the original image being always present, you need to add an additional scale to cover your use case, or run the upgrade steps defined in `plone.volto>=6.0.0a0` or in Plone 6.2 to use the new image scale named `humongous`
+This happened especially in high-density resolution screens where the `large` scale was not enough for the browser to pick a scaled version.
+
+This is a breaking change for projects that relied on the original image always being present, for example, in those projects where the original image was always included for large displays, such as televisions or wide-screen displays.
+An additional scale was added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
+Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scale named `humongous`.
+
 
 (upgrading-to-volto-18-x-x)=
 
