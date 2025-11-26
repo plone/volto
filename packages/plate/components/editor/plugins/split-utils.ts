@@ -13,7 +13,7 @@ export const getBlocksApi = (editor: PlateEditor) => {
       type: 'blocksApiContext',
     });
     return (utility as any)?.method?.();
-  } catch (error) {
+  } catch {
     return null;
   }
 };

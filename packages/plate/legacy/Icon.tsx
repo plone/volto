@@ -3,6 +3,7 @@
  * @module components/theme/Icon/Icon
  */
 import React from 'react';
+import clsx from 'clsx';
 
 const defaultSize = '36px';
 
@@ -54,7 +55,7 @@ const Icon: React.FC<IconProps> = ({
       fill: color || 'currentColor',
       ...style,
     }}
-    className={className ? `icon ${className}` : 'icon'}
+    className={clsx('icon', className)}
     onClick={onClick ?? undefined}
     id={id}
     aria-hidden={ariaHidden}

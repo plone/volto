@@ -1,6 +1,5 @@
 import { createPlatePlugin } from 'platejs/react';
 
-import { KEYS } from 'platejs';
 import { splitEditorAtCursor } from './split-utils';
 
 const isHotkeyEvent = (
