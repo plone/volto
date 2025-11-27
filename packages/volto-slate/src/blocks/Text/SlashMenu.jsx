@@ -120,7 +120,7 @@ const PersistentSlashMenu = ({ editor }) => {
   const slashCommand = data.plaintext
     ?.toLowerCase()
     .trim()
-    .match(/^\/([a-zäöüß]*)$/);
+    .match(/^\/([\p{L}]*)$/u);
 
   const availableBlocks = React.useMemo(
     () =>
