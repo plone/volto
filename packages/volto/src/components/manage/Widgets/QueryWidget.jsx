@@ -47,10 +47,6 @@ const messages = defineMessages({
     id: 'querystring-widget-select',
     defaultMessage: 'Select…',
   },
-  no_items_selected: {
-    id: 'No items selected',
-    defaultMessage: 'No items selected',
-  },
   currentPath: {
     id: 'query-widget-currentPath',
     defaultMessage: 'Current path (./)',
@@ -140,7 +136,8 @@ export class QuerystringWidgetComponent extends Component {
   }
 
   loadReferenceWidgetItem(v) {
-    const loading = this.props.reference_request?.loading ?? false;
+    const loading =
+      this.props.reference[`${v}_query_reference`]?.loading ?? false;
     if (!loading && v?.length > 0) {
       this.props.getQueryStringResults(
         '/',
@@ -154,7 +151,7 @@ export class QuerystringWidgetComponent extends Component {
             },
           ],
         },
-        this.props.block + '_query_reference',
+        v + '_query_reference',
       );
     }
   }
@@ -266,11 +263,15 @@ export class QuerystringWidgetComponent extends Component {
           </Form.Field>
         );
       case 'ReferenceWidget':
-        if (!this.props.reference) {
-          this.loadReferenceWidgetItem(props.value);
-        }
         const { uid: uidValue, depth: depthValue } = parseUidDepth(props.value);
-
+        if (!this.props.reference[`${uidValue}_query_reference`]) {
+          this.loadReferenceWidgetItem(uidValue);
+        }
+        const referenceItem = this.props.reference[
+          `${uidValue}_query_reference`
+        ]
+          ? this.props.reference[`${uidValue}_query_reference`].items[0]
+          : null;
         return (
           <div className="location-object-browser">
             <Form.Field className="object-browser-field">
@@ -282,10 +283,7 @@ export class QuerystringWidgetComponent extends Component {
                   this.onChangeValue(index, uid ? `${uid}::${depthValue}` : '');
                   this.loadReferenceWidgetItem(uid);
                 }}
-                placeholder={intl.formatMessage(messages.no_items_selected)}
-                value={
-                  uidValue && this.props.reference ? [this.props.reference] : []
-                }
+                value={uidValue && this.props.reference ? [referenceItem] : []}
                 wrapped={false}
               />
             </Form.Field>
@@ -629,11 +627,7 @@ export default compose(
   connect(
     (state, props) => ({
       indexes: state.querystring.indexes,
-      reference_request:
-        state.querystringsearch.subrequests[props.block + '_query_reference'],
-      reference:
-        state.querystringsearch.subrequests[props.block + '_query_reference']
-          ?.items?.[0],
+      reference: state.querystringsearch.subrequests,
     }),
     { getQuerystring, getQueryStringResults },
   ),
