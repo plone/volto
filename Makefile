@@ -213,7 +213,7 @@ frontend-docker-start: ## Starts a Docker-based frontend for development
 
 .PHONY: acceptance-frontend-dev-start
 acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm --filter seven start
+	PLONE_API_PATH=http://localhost:55001/plone pnpm --filter seven start
 
 ######### Seven Acceptance tests
 
@@ -227,7 +227,7 @@ ci-acceptance-backend-start: ## Start backend acceptance server in headless mode
 
 .PHONY: acceptance-frontend-prod-start
 acceptance-frontend-prod-start: ## Start acceptance frontend in production mode
-	pnpm --filter seven build && PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm --filter seven start:prod
+	pnpm --filter seven build && PLONE_API_PATH=http://localhost:55001/plone pnpm --filter seven start:prod
 
 .PHONY: acceptance-test
 acceptance-test: ## Start Cypress in interactive mode
@@ -239,7 +239,7 @@ ci-acceptance-test: ## Run cypress tests in headless mode for CI
 
 .PHONY: ci-acceptance-test-run-all
 ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
-	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
+	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://localhost:55001/plone "make acceptance-frontend-prod-start" http://localhost:3000 "make ci-acceptance-test"
 
 ######### @plone/cmsui Acceptance tests
 

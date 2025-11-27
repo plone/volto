@@ -46,11 +46,13 @@ const insertBlockMap: Record<
   [KEYS.callout]: (editor) => insertCallout(editor, { select: true }),
   [KEYS.codeBlock]: (editor) => insertCodeBlock(editor, { select: true }),
   [KEYS.file]: (editor) => insertFilePlaceholder(editor, { select: true }),
-  [KEYS.img]: (editor) =>
-    insertMedia(editor, {
-      select: true,
-      type: KEYS.img,
-    }),
+  // We don't want to support direct image insertions via alert menu
+  // We should do the same in the other media types for consistency
+  // [KEYS.img]: (editor) =>
+  //   insertMedia(editor, {
+  //     select: true,
+  //     type: KEYS.img,
+  //   }),
   [KEYS.mediaEmbed]: (editor) =>
     insertMedia(editor, {
       select: true,

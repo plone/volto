@@ -25,4 +25,5 @@ jobs:
           --exclude https://github.com/kitconcept/volto-blocks-grid.git
           --exclude https://my-server-DNS-name.tld/api
           --exclude 2021.ploneconf.org
+          --exclude https://medium.com/
           '**/README.md'

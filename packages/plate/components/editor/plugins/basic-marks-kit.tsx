@@ -13,8 +13,14 @@ import {
 import { CodeLeaf } from '../../ui/code-node';
 import { HighlightLeaf } from '../../ui/highlight-node';
 import { KbdLeaf } from '../../ui/kbd-node';
+import { LegacyBoldPlugin } from './legacy-bold-plugin';
+import { LegacyItalicPlugin } from './legacy-italic-plugin';
+import { LegacyStrikethroughPlugin } from './legacy-strikethrough-plugin';
 
 export const BasicMarksKit = [
+  ...LegacyBoldPlugin,
+  ...LegacyItalicPlugin,
+  ...LegacyStrikethroughPlugin,
   BoldPlugin,
   ItalicPlugin,
   UnderlinePlugin,

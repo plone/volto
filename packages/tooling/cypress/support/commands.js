@@ -2,6 +2,7 @@
 import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
+import { cookie } from '@plone/react-router';
 
 const HOSTNAME = Cypress.env('BACKEND_HOST') || '127.0.0.1';
 const GUILLOTINA_API_URL = `http://${HOSTNAME}:8081/db/web`;
@@ -83,7 +84,28 @@ Cypress.Commands.add('autologin', (usr, pass) => {
       headers: { Accept: 'application/json' },
       body: { login: user, password: password },
     })
-    .then((response) => cy.setCookie('auth_token', response.body.token));
+    .then(({ body }) =>
+      // Sign the token exactly like the server does so it passes cookie.parse on requests.
+      cookie.serialize(body.token).then((serialized) => {
+        const match = serialized.match(/^auth_seven=([^;]+);?/);
+        if (!match) {
+          throw new Error('Failed to serialize auth cookie');
+        }
+
+        const signedToken = match[1];
+        const httpOnly = /; ?HttpOnly/i.test(serialized);
+        const secure = /; ?Secure/i.test(serialized);
+        const sameSite =
+          /; ?SameSite=([^;]+)/i.exec(serialized)?.[1]?.toLowerCase() || 'lax';
+
+        return cy.setCookie('auth_seven', signedToken, {
+          httpOnly,
+          secure,
+          sameSite,
+          path: '/',
+        });
+      }),
+    );
 });
 
 // --- CREATE CONTENT --------------------------------------------------------
@@ -811,7 +833,7 @@ Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
 Cypress.Commands.add(
   'setSlateSelection',
   (subject, query, endQuery, wait = 1000) => {
-    cy.get('.slate-editor.selected [contenteditable=true]')
+    cy.get('.slate-editor[contenteditable=true]')
       .focus()
       // .click()
       .setSelection(subject, query, endQuery)
