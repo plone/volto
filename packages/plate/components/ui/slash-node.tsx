@@ -3,6 +3,8 @@ import * as React from 'react';
 import type { PlateEditor, PlateElementProps } from 'platejs/react';
 
 import { AIChatPlugin } from '@platejs/ai/react';
+import config from '@plone/registry';
+import Icon from '../../legacy/Icon';
 import {
   ChevronRightIcon,
   Code2,
@@ -10,21 +12,27 @@ import {
   Heading1Icon,
   Heading2Icon,
   Heading3Icon,
+  ImageIcon,
   LightbulbIcon,
   ListIcon,
   ListOrdered,
+  PlusSquareIcon,
   PilcrowIcon,
   Quote,
   SparklesIcon,
+  SplitSquareHorizontalIcon,
   Square,
   Table,
   TableOfContentsIcon,
-  ImageIcon,
 } from 'lucide-react';
 import { type TComboboxInputElement, KEYS } from 'platejs';
 import { PlateElement } from 'platejs/react';
-
 import { insertBlock } from '../editor/transforms';
+import {
+  getBlocksApi,
+  getIntl,
+  splitEditorAtCursor,
+} from '../editor/plugins/split-utils';
 
 import {
   InlineCombobox,
@@ -49,9 +57,9 @@ type Group = {
   }[];
 };
 
-const groups: Group[] = [
+const baseGroups: Group[] = [
   {
-    group: 'AI',
+    group: 'Actions',
     items: [
       {
         focusEditor: false,
@@ -59,6 +67,22 @@ const groups: Group[] = [
         value: 'AI',
         onSelect: (editor) => {
           editor.getApi(AIChatPlugin).aiChat.show();
+        },
+      },
+      {
+        focusEditor: true,
+        icon: <PlusSquareIcon />,
+        keywords: ['block', 'add', 'insert'],
+        label: 'New block',
+        value: 'action_new_block',
+        onSelect: (editor) => {
+          const api = getBlocksApi(editor);
+          if (!api?.onInsertBlock) return;
+
+          setTimeout(() => {
+            const newId = api.onInsertBlock(api.id, { '@type': 'slate' });
+            api.onSelectBlock?.(newId ?? api.id);
+          }, 0);
         },
       },
     ],
@@ -177,10 +201,94 @@ const groups: Group[] = [
   },
 ];
 
+const useSplitEditorAtCursor = (editor: PlateEditor) => {
+  const split = React.useCallback(() => {
+    splitEditorAtCursor(editor);
+  }, [editor]);
+
+  return {
+    split,
+    enabled: Boolean(editor),
+  };
+};
+
 export function SlashInputElement(
   props: PlateElementProps<TComboboxInputElement>,
 ) {
   const { editor, element } = props;
+  const { split, enabled: canSplit } = useSplitEditorAtCursor(editor);
+  const intl = React.useMemo(() => getIntl(editor), [editor]);
+  const voltoBlockItems = React.useMemo(() => {
+    const blocksConfig = config?.blocks?.blocksConfig;
+    if (!blocksConfig) return [];
+
+    return Object.entries(blocksConfig)
+      .map(([id, block]: any) => {
+        if (typeof block.restricted === 'boolean' && block.restricted) {
+          return null;
+        }
+
+        const format =
+          intl?.formatMessage?.bind(intl) ||
+          ((msg: any) => msg?.defaultMessage ?? msg?.id ?? String(msg));
+
+        const label =
+          typeof block.title === 'string' ? block.title : format(block.title);
+        const iconNode = block.icon ? (
+          <Icon name={block.icon} size="16px" />
+        ) : (
+          <Square />
+        );
+
+        return {
+          icon: iconNode,
+          keywords: [id, label?.toString()?.toLowerCase?.()].filter(Boolean),
+          label,
+          value: `volto_${id}`,
+          onSelect: (plateEditor: PlateEditor) => {
+            const api = getBlocksApi(plateEditor);
+            if (!api?.onInsertBlock) return;
+
+            setTimeout(() => {
+              const newId = api.onInsertBlock(api.id, { '@type': id });
+              api.onSelectBlock?.(newId ?? api.id);
+            }, 0);
+          },
+        };
+      })
+      .filter(Boolean);
+  }, [intl]);
+
+  const groups = React.useMemo(() => {
+    if (!canSplit) return baseGroups;
+    const splitItem = {
+      icon: <SplitSquareHorizontalIcon />,
+      keywords: ['split', 'divide', 'new block'],
+      label: 'Split editor here',
+      value: 'action_split_editor',
+      onSelect: split,
+    };
+
+    const nextGroups = baseGroups.map((group) =>
+      group.group === 'Actions'
+        ? {
+            ...group,
+            items: group.items.some((item) => item.value === splitItem.value)
+              ? group.items
+              : [...group.items, splitItem],
+          }
+        : group,
+    );
+
+    if (voltoBlockItems.length) {
+      nextGroups.push({
+        group: 'Volto Blocks',
+        items: voltoBlockItems,
+      });
+    }
+
+    return nextGroups;
+  }, [canSplit, split, voltoBlockItems]);
 
   return (
     <PlateElement {...props} as="span">
