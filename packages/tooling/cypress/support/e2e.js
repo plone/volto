@@ -2,6 +2,7 @@ import '@testing-library/cypress/add-commands';
 import 'cypress-axe';
 import 'cypress-file-upload';
 import './commands';
+import './plate';
 import { setupGuillotina, tearDownGuillotina } from './guillotina';
 import { setup, teardown } from './reset-fixture';
 
