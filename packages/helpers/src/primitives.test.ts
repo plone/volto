@@ -13,7 +13,7 @@ describe('primitives', () => {
   });
 
   it('should return true for an empty array', () => {
-    const arr = [];
+    const arr: unknown[] = [];
     const result = isEmpty(arr);
     expect(result).toBe(true);
   });
@@ -25,7 +25,7 @@ describe('primitives', () => {
   });
 
   it('should return false for a non-empty array', () => {
-    const arr = [1, 2, 3];
+    const arr: number[] = [1, 2, 3];
     const result = isEmpty(arr);
     expect(result).toBe(false);
   });
