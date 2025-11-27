@@ -145,8 +145,8 @@ const PersistentSlashMenu = ({ editor }) => {
           return (
             block.id !== 'slate' &&
             slashCommand &&
-            (title.indexOf(slashCommand[1]) !== -1 ||
-              originalTitle.indexOf(slashCommand[1]) !== -1)
+            (title.includes(slashCommand[1]) ||
+              originalTitle.includes(slashCommand[1]))
           );
         })
         .sort((a, b) => {
