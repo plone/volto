@@ -141,12 +141,12 @@ const PersistentSlashMenu = ({ editor }) => {
         .filter((block) => {
           // typed text is a substring of the title or id
           const title = translateBlockTitle(block, intl).toLowerCase();
-          const blockId = block.id.toLowerCase();
+          const originalTitle = block.title.toLowerCase();
           return (
             block.id !== 'slate' &&
             slashCommand &&
             (title.indexOf(slashCommand[1]) !== -1 ||
-              blockId.indexOf(slashCommand[1]) !== -1)
+              originalTitle.indexOf(slashCommand[1]) !== -1)
           );
         })
         .sort((a, b) => {
