@@ -120,7 +120,7 @@ const PersistentSlashMenu = ({ editor }) => {
   const slashCommand = data.plaintext
     ?.toLowerCase()
     .trim()
-    .match(/^\/([a-z]*)$/);
+    .match(/^\/([a-zäöüß]*)$/);
 
   const availableBlocks = React.useMemo(
     () =>
@@ -141,10 +141,12 @@ const PersistentSlashMenu = ({ editor }) => {
         .filter((block) => {
           // typed text is a substring of the title or id
           const title = translateBlockTitle(block, intl).toLowerCase();
+          const blockId = block.id.toLowerCase();
           return (
             block.id !== 'slate' &&
             slashCommand &&
-            title.indexOf(slashCommand[1]) !== -1
+            (title.indexOf(slashCommand[1]) !== -1 ||
+              blockId.indexOf(slashCommand[1]) !== -1)
           );
         })
         .sort((a, b) => {
