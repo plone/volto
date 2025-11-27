@@ -164,6 +164,46 @@ describe('Add Content Tests', () => {
     );
   });
 
+  it('As editor I toggle whole_day and open_end checkboxes and date/time fields disappear', function () {
+    // when I add an Event
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-event').click();
+    cy.get('#field-title').clear().type('Event checkbox test');
+
+    // then the time fields should be visible initially
+    cy.get('#start-time').should('be.visible');
+    cy.get('#end-time').should('be.visible');
+    cy.get('#end-date').should('be.visible');
+
+    // when I check the whole_day checkbox
+    cy.get('label[for="field-whole_day"]').click({ scrollBehavior: false });
+
+    // then the time fields should disappear
+    cy.get('#start-time').should('not.exist');
+    cy.get('#end-time').should('not.exist');
+
+    // when I uncheck the whole_day checkbox
+    cy.get('label[for="field-whole_day"]').click({ scrollBehavior: false });
+
+    // then the time fields should be visible again
+    cy.get('#start-time').should('be.visible');
+    cy.get('#end-time').should('be.visible');
+
+    // when I check the open_end checkbox
+    cy.get('label[for="field-open_end"]').click({ scrollBehavior: false });
+
+    // then the end-date and end-time fields should disappear
+    cy.get('#end-date').should('not.exist');
+    cy.get('#end-time').should('not.exist');
+
+    // when I uncheck the open_end checkbox
+    cy.get('label[for="field-open_end"]').click({ scrollBehavior: false });
+
+    // then the end-date and end-time fields should be visible again
+    cy.get('#end-date').should('be.visible');
+    cy.get('#end-time').should('be.visible');
+  });
+
   it('As editor I can add a Link (with an external link)', function () {
     cy.intercept('POST', '*').as('saveLink');
     // When I add a link
