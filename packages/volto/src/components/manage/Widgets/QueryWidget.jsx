@@ -276,6 +276,7 @@ export class QuerystringWidgetComponent extends Component {
           <div className="location-object-browser">
             <Form.Field className="object-browser-field">
               <ObjectBrowserWidget
+                id={`query-reference-widget-${index}`}
                 mode="link"
                 onChange={(id, data) => {
                   const itemSelected = data.length > 0 ? data[0] : {};
