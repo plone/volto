@@ -211,15 +211,14 @@ class Controlpanel extends Component {
       );
     }
 
-if (!controlpanel) {
-  return (
-    <>
-      <Helmet title="Not Found" />
-      <NotFound />
-    </>
-  );
-}
-
+    if (!controlpanel) {
+      return (
+        <>
+          <Helmet title="Not Found" />
+          <NotFound />
+        </>
+      );
+    }
 
     return (
       <div id="page-controlpanel">
