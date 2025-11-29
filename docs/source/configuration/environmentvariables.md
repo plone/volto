@@ -38,18 +38,24 @@ pnpm build && RAZZLE_API_PATH=https://plone.org pnpm start:prod
 
 `RAZZLE_API_PATH`
     Used to configure the API path for the application.
+    Setting this is not usually necessary, because the Volto client will access the API at the same location where the frontend is served, and proxy the requests to the backend API.
+    You can set this to make the Volto client connect directly to the API on a different host, but this can be complicated because of cross-origin restrictions.
 
 `RAZZLE_PUBLIC_URL`
     Used to specify the base URL or path where static assets—such as images, stylesheets, and other resources—are hosted or served.
+    Defaults to the location where the Volto client was accessed.
 
 `RAZZLE_DEV_PROXY_API_PATH`
-    Used during development to configure a proxy for API requests.
+    Used to configure the URL where the Volto API proxy will connect to the backend API.
+    Usually you don't need to set this; it defaults to the same value as `RAZZLE_INTERNAL_API_PATH`.
 
 `RAZZLE_INTERNAL_API_PATH`
     Used to specify the path to an internal API that the server-rendered application should use.
 
 `RAZZLE_PROXY_REWRITE_TARGET`
-    Used to specify the target URL for a proxy server.
+    Used to specify the base path where the Volto API proxy will connect to the backend API.
+    Defaults to a Zope VirtualHostMonster path based on the external API path, for example, `/VirtualHostBase/http/localhost:3000/Plone/++api++/VirtualHostRoot`.
+    You might need to change this if you're connecting to a backend that handles its own virtual host rewriting, or to a backend that is not Zope.
 ```
 
 This brings you a lot of power since you don't have to rebuild on every configuration change.
