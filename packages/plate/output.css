@@ -3737,6 +3737,22 @@
       }
     }
   }
+  .\*\*\:\[\.hljs-built_in\,\.hljs-symbol\]\:text-\[\#e36209\] {
+    :is(& *) {
+      &:is(.hljs-built in,.hljs-symbol) {
+        color: #e36209;
+      }
+    }
+  }
+  .dark\:\*\*\:\[\.hljs-built_in\,\.hljs-symbol\]\:text-\[\#c3854e\] {
+    &:is(.dark *) {
+      :is(& *) {
+        &:is(.hljs-built in,.hljs-symbol) {
+          color: #c3854e;
+        }
+      }
+    }
+  }
   .\*\*\:\[\.hljs-built\\\\\\\\_in\,\.hljs-symbol\]\:text-\[\#e36209\] {
     :is(& *) {
       &:is(.hljs-built\\\_in,.hljs-symbol) {
@@ -3812,6 +3828,22 @@
     :is(& *) {
       &:is(.hljs-emphasis) {
         font-style: italic;
+      }
+    }
+  }
+  .\*\*\:\[\.hljs-keyword\,\.hljs-doctag\,\.hljs-template-tag\,\.hljs-template-variable\,\.hljs-type\,\.hljs-variable\.language_\]\:text-\[\#d73a49\] {
+    :is(& *) {
+      &:is(.hljs-keyword,.hljs-doctag,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language ) {
+        color: #d73a49;
+      }
+    }
+  }
+  .dark\:\*\*\:\[\.hljs-keyword\,\.hljs-doctag\,\.hljs-template-tag\,\.hljs-template-variable\,\.hljs-type\,\.hljs-variable\.language_\]\:text-\[\#ee6960\] {
+    &:is(.dark *) {
+      :is(& *) {
+        &:is(.hljs-keyword,.hljs-doctag,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language ) {
+          color: #ee6960;
+        }
       }
     }
   }
@@ -3892,6 +3924,22 @@
       &:is(.hljs-strong) {
         --tw-font-weight: var(--font-weight-bold);
         font-weight: var(--font-weight-bold);
+      }
+    }
+  }
+  .\*\*\:\[\.hljs-title\,\.hljs-title\.class_\,\.hljs-title\.class_\.inherited__\,\.hljs-title\.function_\]\:text-\[\#6f42c1\] {
+    :is(& *) {
+      &:is(.hljs-title,.hljs-title.class ,.hljs-title.class .inherited  ,.hljs-title.function ) {
+        color: #6f42c1;
+      }
+    }
+  }
+  .dark\:\*\*\:\[\.hljs-title\,\.hljs-title\.class_\,\.hljs-title\.class_\.inherited__\,\.hljs-title\.function_\]\:text-\[\#a77bfa\] {
+    &:is(.dark *) {
+      :is(& *) {
+        &:is(.hljs-title,.hljs-title.class ,.hljs-title.class .inherited  ,.hljs-title.function ) {
+          color: #a77bfa;
+        }
       }
     }
   }
