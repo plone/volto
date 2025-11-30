@@ -1,0 +1,1 @@
+Rename plugin to CypressPlugin. Removed support for using registry based useBlocksAPI, using the embedded editor instead. Removed dep on @platejs/playwright. Added Cypress Plate helpers and documentation. @sneridagh
