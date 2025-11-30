@@ -1032,29 +1032,17 @@ module.exports = (
                 sourceMap: razzleOptions.enableSourceMaps,
                 minimizerOptions: {
                   sourceMap: razzleOptions.enableSourceMaps,
+                  // Removed the calc option because it causes issues with some modern CSS
+                  // Let's allow the browsers do the calc() work and the minification to gzip
+                  preset: ['default', { calc: false }],
                 },
-                minify: async (data, inputMap, minimizerOptions) => {
-                  // eslint-disable-next-line global-require
-                  const CleanCSS = require('clean-css');
-
-                  const [[filename, input]] = Object.entries(data);
-                  const minifiedCss = await new CleanCSS({
-                    sourceMap: minimizerOptions.sourceMap,
-                  }).minify({
-                    [filename]: {
-                      styles: input,
-                      sourceMap: inputMap,
-                    },
-                  });
-
-                  return {
-                    css: minifiedCss.styles,
-                    map: minifiedCss.sourceMap
-                      ? minifiedCss.sourceMap.toJSON()
-                      : '',
-                    warnings: minifiedCss.warnings,
-                  };
-                },
+                // Removed the original `minify` option here, moved from razzle.config.js
+                // after Razzle fork. Reasoning:
+                // This is needed to override Razzle use of the unmaintained CleanCSS
+                // which does not have support for recently CSS features (container queries).
+                // Using the default provided (cssnano) by css-minimizer-webpack-plugin
+                // should be enough see:
+                // (https://github.com/clean-css/clean-css/discussions/1209)
               }),
             ],
           };

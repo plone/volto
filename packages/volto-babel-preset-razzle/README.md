@@ -15,7 +15,7 @@ The easiest way to use this configuration is with Razzle, which includes it by d
 
 If you want to use this Babel preset in a project not built with Razzle, you can install it through the following steps.
 
-First, [install Babel](https://babeljs.io/docs/setup/).
+First, [install Babel](https://babeljs.io/setup/).
 
 Then create a file named `.babelrc` with the following contents in the root folder of your project:
 
@@ -25,4 +25,4 @@ Then create a file named `.babelrc` with the following contents in the root fold
 }
 ```
 
-This preset uses the `useBuiltIns` option with [`transform-object-rest-spread`](http://babeljs.io/docs/plugins/transform-object-rest-spread/), which assumes that `Object.assign` is available or polyfilled.
+This preset uses the `useBuiltIns` option with [`transform-object-rest-spread`](https://babeljs.io/docs/babel-plugin-transform-object-rest-spread/), which assumes that `Object.assign` is available or polyfilled.
