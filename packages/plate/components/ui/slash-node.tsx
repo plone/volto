@@ -201,6 +201,16 @@ const baseGroups: Group[] = [
   },
 ];
 
+const filteredBlocksConfig = (blocksConfig: Record<string, any>) =>
+  Object.entries(blocksConfig ?? {}).filter(([, block]) => {
+    // Check if the block is well formed (has at least id and title)
+    const blockIsWellFormed = Boolean(block?.title && block?.id);
+    if (!blockIsWellFormed) return false;
+    if (typeof block?.restricted === 'boolean' && block.restricted)
+      return false;
+    return true;
+  });
+
 const useSplitEditorAtCursor = (editor: PlateEditor) => {
   const split = React.useCallback(() => {
     splitEditorAtCursor(editor);
@@ -222,41 +232,35 @@ export function SlashInputElement(
     const blocksConfig = config?.blocks?.blocksConfig;
     if (!blocksConfig) return [];
 
-    return Object.entries(blocksConfig)
-      .map(([id, block]: any) => {
-        if (typeof block.restricted === 'boolean' && block.restricted) {
-          return null;
-        }
+    return filteredBlocksConfig(blocksConfig).map(([id, block]: any) => {
+      const format =
+        intl?.formatMessage?.bind(intl) ||
+        ((msg: any) => msg?.defaultMessage ?? msg?.id ?? String(msg));
 
-        const format =
-          intl?.formatMessage?.bind(intl) ||
-          ((msg: any) => msg?.defaultMessage ?? msg?.id ?? String(msg));
+      const label =
+        typeof block.title === 'string' ? block.title : format(block.title);
+      const iconNode = block.icon ? (
+        <Icon name={block.icon} size="16px" />
+      ) : (
+        <Square />
+      );
 
-        const label =
-          typeof block.title === 'string' ? block.title : format(block.title);
-        const iconNode = block.icon ? (
-          <Icon name={block.icon} size="16px" />
-        ) : (
-          <Square />
-        );
+      return {
+        icon: iconNode,
+        keywords: [id, label?.toString()?.toLowerCase?.()].filter(Boolean),
+        label,
+        value: `volto_${id}`,
+        onSelect: (plateEditor: PlateEditor) => {
+          const api = getBlocksApi(plateEditor);
+          if (!api?.onInsertBlock) return;
 
-        return {
-          icon: iconNode,
-          keywords: [id, label?.toString()?.toLowerCase?.()].filter(Boolean),
-          label,
-          value: `volto_${id}`,
-          onSelect: (plateEditor: PlateEditor) => {
-            const api = getBlocksApi(plateEditor);
-            if (!api?.onInsertBlock) return;
-
-            setTimeout(() => {
-              const newId = api.onInsertBlock(api.id, { '@type': id });
-              api.onSelectBlock?.(newId ?? api.id);
-            }, 0);
-          },
-        };
-      })
-      .filter(Boolean);
+          setTimeout(() => {
+            const newId = api.onInsertBlock(api.id, { '@type': id });
+            api.onSelectBlock?.(newId ?? api.id);
+          }, 0);
+        },
+      };
+    });
   }, [intl]);
 
   const groups = React.useMemo(() => {

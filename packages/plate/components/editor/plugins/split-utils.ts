@@ -1,21 +1,10 @@
-import config from '@plone/registry';
 import { KEYS, PathApi } from 'platejs';
 import type { PlateEditor } from 'platejs/react';
 
 export const getBlocksApi = (editor: PlateEditor) => {
   const editorApi = (editor as any)?.blocksApi;
 
-  if (editorApi) return editorApi;
-
-  try {
-    const utility = config.getUtility({
-      name: 'useBlocksApi',
-      type: 'blocksApiContext',
-    });
-    return (utility as any)?.method?.();
-  } catch {
-    return null;
-  }
+  return editorApi ?? null;
 };
 
 export const getIntl = (editor: PlateEditor) => (editor as any)?.intl ?? null;
