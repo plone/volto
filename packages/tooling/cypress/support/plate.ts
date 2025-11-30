@@ -19,7 +19,7 @@ const getPlateAdapter = () =>
     }
 
     return adapter;
-});
+  });
 
 /**
  * Clicks/focuses the first element inside the editable and returns the Plate editor instance.
