@@ -17,6 +17,17 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.18 (2025-11-30)
+
+### Bugfix
+
+- Fixed a TypeError in `flattenScales` that occurred when `image.scales` was missing. @pratyush07-hub [#7568](https://github.com/plone/volto/issues/7568)
+- Moved hitorical amendment for the CssMinimizerPlugin to the Razzle fork, removed calc processing. @sneridagh [#7667](https://github.com/plone/volto/issues/7667)
+
+### Internal
+
+- Revert #7646 Makefile, removing --prod experiment. @sneridagh 
+
 ## 19.0.0-alpha.17 (2025-11-21)
 
 ### Bugfix
