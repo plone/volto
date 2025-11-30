@@ -10,7 +10,7 @@ describe('Basic Cypress Test', () => {
     cy.visit('/');
   });
 
-  it('should visit the @@edit URL', () => {
+  it('should visit the @@edit URL, plate editor should be present and show the plate toolbar', () => {
     cy.visit('/@@edit/page');
     cy.url().should('eq', Cypress.config().baseUrl + '/@@edit/page');
     cy.get('h1[data-placeholder="Type a title…"]')
