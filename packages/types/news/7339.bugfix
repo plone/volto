@@ -1,0 +1,1 @@
+Corrected the typings for `contentIcons` and `controlPanelsIcons` in `SettingsConfig` to use strings instead of React components, matching actual SVG usage. @vigneshshiv28
