@@ -1493,6 +1493,11 @@ msgstr "इस आइटम के लिए मौजूदा वैकल्�
 msgid "Expand sidebar"
 msgstr "साइडबार का विस्तार करें"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "टूलबार फैलाएँ"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
