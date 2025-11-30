@@ -1,3 +1,12 @@
+---
+myst:
+  html_meta:
+    "description": "Use the Plate Cypress adapter to drive Slate-based editors in Seven end-to-end tests."
+    "property=og:description": "Use the Plate Cypress adapter to drive Slate-based editors in Seven end-to-end tests."
+    "property=og:title": "Plate Cypress adapter reference for Seven"
+    "keywords": "Plone, Seven, Plate, Slate, Cypress, editor testing, reference"
+---
+
 # Plate editor helpers in Cypress
 
 This project wires the Plate Playwright adapter into Cypress so you can control editors in tests while keeping support for multiple editors on the page.
