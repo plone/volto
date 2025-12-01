@@ -23,16 +23,16 @@ As is the case with similar modern JavaScript-based applications, you should be 
 
 -   Modern JavaScript development.
     Volto uses next-generation JavaScript.
-    Follow the [ES6 guide](https://flaviocopes.com/es6/) to get up to speed.
+    Follow the [ES6 guide](https://thevalleyofcode.com/es6/) to get up to speed.
 -   [Basic React knowledge](https://react.dev/learn/tutorial-tic-tac-toe) to start.
     You'll progress along the way.
     React itself is a simple and well documented framework.
 -   A basic understanding of JavaScript.
-    [CommonJS](https://flaviocopes.com/commonjs/),
-    [npm packages](https://flaviocopes.com/npm/),
-    [Yarn](https://flaviocopes.com/yarn/),
-    [Babel](https://flaviocopes.com/babel/), and
-    [Webpack](https://flaviocopes.com/webpack/).
+    [CommonJS](https://thevalleyofcode.com/commonjs/),
+    [npm packages](https://thevalleyofcode.com/npm/),
+    [Yarn](https://thevalleyofcode.com/yarn/),
+    [Babel](https://thevalleyofcode.com/babel/), and
+    [Webpack](https://thevalleyofcode.com/webpack/).
 
 
 ## Basic Volto development
