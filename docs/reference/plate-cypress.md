@@ -13,8 +13,9 @@ This project wires the Plate Playwright adapter into Cypress so you can control 
 
 ## Prerequisites
 
-- The editor must render with `CypressPlugin` so `window.plateCypressAdapter` exists.
-- The default editable selector is `.slate-editor[data-slate-editor]`; pass `options.editable` when multiple editors are on the page.
+-   The editor must render with `CypressPlugin` so that `window.plateCypressAdapter` exists.
+-   The default editable selector is `.slate-editor[data-slate-editor]`.
+    Pass `options.editable` when multiple editors are on the page.
 
 ## Command reference
 
@@ -32,14 +33,21 @@ This project wires the Plate Playwright adapter into Cypress so you can control 
 
 `cy.plateSetSelection(at, options?)`
 
-:   Builds a range with `editor.api.range(at)` and applies it via `editor.tf.setSelection`. Accepts `options.editable` to target a specific editor.
+:   Builds a range with `editor.api.range(at)` and applies it via `editor.tf.setSelection`.
+    Accepts `options.editable` to target a specific editor.
 
     Selection shapes for `at`:
-    - Point (cursor): `{ path: [blockIndex, textIndex], offset: number }`
-    - Range: `{ anchor: Point, focus: Point }`
-    - Node path: `[blockIndex]` or `[blockIndex, textIndex]`
+    
+    Point (cursor)
+    :   `{ path: [blockIndex, textIndex], offset: number }`
+    
+    Range
+    :   `{ anchor: Point, focus: Point }`
+    
+    Node path
+    :   `[blockIndex]` or `[blockIndex, textIndex]`
 
-    Example (select the first word in the first block):
+    The following example selects the first word in the first block.
 
     ```ts
     cy.plateSetSelection({
@@ -51,7 +59,8 @@ This project wires the Plate Playwright adapter into Cypress so you can control 
 
 `cy.plateClickAtPath(path, options?)`
 
-:   Resolves the Slate node at `path`, converts it to a DOM node, scrolls it into view, and clicks it (forced). Handy before typing.
+:   Resolves the Slate node at `path`, converts it to a DOM node, scrolls it into view, and clicks it (forced).
+    Handy before typing.
 
     Example:
 
@@ -83,7 +92,8 @@ This project wires the Plate Playwright adapter into Cypress so you can control 
 
 `cy.plateTypeAtPath(path, text, options?)`
 
-:   Clicks the node at `path` and types `text` into it in one chain. Forwards `options.typeOptions` to `cy.type`.
+:   Clicks the node at `path` and types `text` into it in one chain.
+    Forwards `options.typeOptions` to `cy.type`.
 
     Example:
 
@@ -99,7 +109,7 @@ This project wires the Plate Playwright adapter into Cypress so you can control 
 
 :   Merges `newProperties` into the node at `path` using `editor.api.setNodes`.
 
-    Example (promote the first block to an h2):
+    The following example promotes the first block to an `h2`.
 
     ```ts
     cy.plateSetNode([0], { type: 'h2' });
@@ -108,7 +118,7 @@ This project wires the Plate Playwright adapter into Cypress so you can control 
 
 `cy.plateFocus(options?)`
 
-:   Clicks the first element node inside the editable (or a provided selector) to focus the editor.
+:   Clicks the first element node inside either the editable, or a provided selector, to focus the editor.
 
     Example:
 
