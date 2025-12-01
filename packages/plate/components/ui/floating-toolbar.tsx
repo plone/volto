@@ -74,9 +74,10 @@ export function FloatingToolbar({
         ref={ref}
         className={cn(
           `
-            scrollbar-hide absolute z-50 overflow-x-auto rounded-md border bg-popover p-1
+            scrollbar-hide absolute overflow-x-auto rounded-md border bg-popover p-1
             whitespace-nowrap opacity-100 shadow-md
             print:hidden
+            z-100
           `,
           'max-w-[80vw]',
           className,
