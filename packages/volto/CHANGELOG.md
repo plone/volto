@@ -26,25 +26,25 @@ myst:
 
 ### Internal
 
-- Revert #7646 Makefile, removing --prod experiment. @sneridagh 
+- Revert #7646 Makefile, removing --prod experiment. @sneridagh
 
 ## 19.0.0-alpha.17 (2025-11-21)
 
 ### Bugfix
 
-- Added `prettier` as a direct dependency of Volto, since is used by HTML block, to prevent the removal from the production build. @sneridagh 
+- Added `prettier` as a direct dependency of Volto, since is used by HTML block, to prevent the removal from the production build. @sneridagh
 
 ## 19.0.0-alpha.16 (2025-11-20)
 
 ### Bugfix
 
-- Fixed missing deepmerge in prod build and add it as a direct dep in Volto core. @sneridagh 
+- Fixed missing deepmerge in prod build and add it as a direct dep in Volto core. @sneridagh
 
 ## 19.0.0-alpha.15 (2025-11-19)
 
 ### Bugfix
 
-- Pin the sass dependency to 1.58.0 @sneridagh 
+- Pin the sass dependency to 1.58.0 @sneridagh
 
 ## 19.0.0-alpha.14 (2025-11-19)
 
@@ -245,7 +245,7 @@ myst:
 - Fix random failure in 'renders a file widget component with value' test of RegistryImageWidget. @wesleybl [#7292](https://github.com/plone/volto/issues/7292)
 - Fixes random error in Listing Block tests 2. @wesleybl [#7293](https://github.com/plone/volto/issues/7293)
 - Fixed random failure in Cypress 'Index Text Block' test. @wesleybl [#7304](https://github.com/plone/volto/issues/7304)
-- 2021.ploneconf.org is no longer a Volto site, but just a redirect to YouTube. Also reverts #6627 and replaces code examples with `2022.ploneconf.org`. @stevepiercy [#7314](https://github.com/plone/volto/issues/7314)
+- `2021.ploneconf.org` is no longer a Volto site, but just a redirect to YouTube. Also reverts #6627 and replaces code examples with `2022.ploneconf.org`. @stevepiercy [#7314](https://github.com/plone/volto/issues/7314)
 
 ## 19.0.0-alpha.4 (2025-08-25)
 
