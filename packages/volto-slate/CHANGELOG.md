@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 18.8.0 (2025-12-02)
+
+### Feature
+
+- cross language support and umlaut fix for slash menu @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
+
+### Bugfix
+
+- Ensure Delete at end of a text block merges the next text block and removes it; if the next block is non-text (e.g., Description), do nothing. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
 ## 18.7.1 (2025-10-10)
 
 ### Bugfix
