@@ -338,23 +338,32 @@ body.babel-view .field.language-independent-field {
   }
 }
 
-.location-object-browser {
-  display: flex;
-  flex-flow: column;
-  flex-grow: 1;
+.ui.form .query-widget {
+  .location-object-browser {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
 
-  .object-browser-field {
-    flex: 1 0 auto;
-    min-height: 48px;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
+    .object-browser-field {
+      min-height: 60px;
+      flex: 1 0 auto;
+      padding-right: 1em;
+      padding-left: 1em;
+      margin-bottom: 0px;
+    }
 
-  .object-browser-field + .field {
-    margin-bottom: 0px !important;
-  }
+    .object-browser-field + .field {
+      margin-bottom: 0px;
+    }
 
-  .objectbrowser-field {
-    height: 100%;
+    .objectbrowser-field {
+      height: 100%;
+    }
+
+    .reference-widget-depth {
+      .field {
+        margin-bottom: 0px;
+      }
+    }
   }
 }

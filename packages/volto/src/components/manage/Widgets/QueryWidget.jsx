@@ -290,7 +290,7 @@ export class QuerystringWidgetComponent extends Component {
             </Form.Field>
 
             {uidValue && (
-              <Form.Field style={{ marginTop: '8px' }}>
+              <Form.Field className="reference-widget-depth">
                 <NumberWidget
                   title={intl.formatMessage({
                     id: 'Depth',
