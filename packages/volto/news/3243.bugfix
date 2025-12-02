@@ -1,1 +1,1 @@
-Hide date/time fields when whole_day or open_end is checked in Event form. @wesleybl
+Hide date and time fields when either "Whole Day" or "Open End" is checked in the Event form. @wesleybl
