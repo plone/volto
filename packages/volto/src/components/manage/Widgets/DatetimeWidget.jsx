@@ -117,7 +117,9 @@ const DatetimeWidgetComponent = (props) => {
   };
 
   const getDateOnly = () => {
-    return dateOnly || widget === 'date' || formData?.whole_day;
+    return (
+      dateOnly || widget === 'date' || (id === 'start' && formData?.whole_day)
+    );
   };
 
   const onDateChange = (date) => {
