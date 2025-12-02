@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.5.1 (2025-12-02)
+
+### Bugfix
+
+- Better `BlockViewProps` typings, include `isEditMode`. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Fixed types for SchemaEnhancers, export new `SchemaEnhancerArgs`. @sneridagh [#7627](https://github.com/plone/volto/issues/7627)
+
 ## 1.5.0 (2025-10-31)
 
 ### Feature
