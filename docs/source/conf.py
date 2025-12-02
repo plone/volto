@@ -94,6 +94,7 @@ linkcheck_ignore = [
     r"https://browsersl.ist/#",
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
+    r"https://medium.com",
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 5
