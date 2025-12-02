@@ -48,6 +48,36 @@ declare global {
         at: any,
         options?: { editable?: string },
       ): Chainable<any>;
+      plateFocus(options?: { editable?: string }): Chainable<any>;
+      plateClickAtPath(
+        path: number[],
+        options?: { editable?: string },
+      ): Chainable<any>;
+      /** Click at a path and type text, keeping focus on that node. */
+      plateTypeAtPath(
+        path: number[],
+        text: string,
+        options?: {
+          editable?: string;
+          typeOptions?: Parameters<Cypress.Chainable['type']>[1];
+        },
+      ): Chainable<any>;
+      /** Merge properties into a node at the given path. */
+      plateSetNode(
+        path: number[],
+        newProperties: Record<string, any>,
+        options?: { editable?: string },
+      ): Chainable<any>;
+      /** Get a Slate node at a path via the Plate Cypress adapter. */
+      plateGetNode(
+        path: number[],
+        options?: { editable?: string },
+      ): Chainable<any>;
+      /** Get the DOM node for a Slate node at a given path. */
+      plateGetDOMNode(
+        path: number[],
+        options?: { editable?: string },
+      ): Chainable<any>;
     }
   }
 }
