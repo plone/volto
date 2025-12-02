@@ -182,3 +182,13 @@ export const DatabaseInformation = loadable(
   () =>
     import('@plone/volto/components/manage/Controlpanels/DatabaseInformation'),
 );
+
+// BLOCKTYPES CONTROLPANEL
+
+export const BlockTypesControlpanel = loadable(
+  () => import('@plone/volto/components/manage/Controlpanels/BlockTypes'),
+);
+
+export const BlockTypeControlpanel = loadable(
+  () => import('@plone/volto/components/manage/Controlpanels/BlockType'),
+);

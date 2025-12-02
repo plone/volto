@@ -1,0 +1,56 @@
+#main .controlpanel-block_types,
+#main .controlpanel-block_type {
+  .search {
+    display: flex;
+    width: 251px;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    gap: 18px;
+
+    input {
+      width: 100%;
+      padding: 0;
+      border: none;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .table,
+  .table-heading,
+  .table-cell {
+    border: 1px solid #000;
+    border-collapse: collapse;
+  }
+
+  .table {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .table-header {
+    border-bottom: 2px solid #000;
+    background: #f5f5f5;
+  }
+
+  .table-heading,
+  .table-cell {
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: left;
+
+    &:first-child {
+      width: 100%;
+    }
+
+    &:last-child {
+      width: 1%;
+      text-align: right;
+    }
+  }
+}

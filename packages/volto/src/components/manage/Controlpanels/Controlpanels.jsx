@@ -75,6 +75,10 @@ const messages = defineMessages({
     id: 'Add-Ons',
     defaultMessage: 'Add-Ons',
   },
+  blockTypes: {
+    id: 'Block Types',
+    defaultMessage: 'Block Types',
+  },
   database: {
     id: 'Database',
     defaultMessage: 'Database',
@@ -145,6 +149,11 @@ export default function Controlpanels({ location }) {
         '@id': '/addons',
         group: intl.formatMessage(messages.general),
         title: intl.formatMessage(messages.addons),
+      },
+      {
+        '@id': '/block-types',
+        group: intl.formatMessage(messages.content),
+        title: intl.formatMessage(messages.blockTypes),
       },
       {
         '@id': '/database',
