@@ -135,6 +135,8 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Comune di San Possidonio](https://www.comune.sanpossidonio.mo.it/) (Website of the Municipality of San Possidonio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Vaiano](https://www.comune.vaiano.po.it/) (Website of the Municipality of Vaiano. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Vernio](https://www.comune.vernio.po.it/) (Website of the Municipality of Vernio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
+- [Copernicus In-Situ](https://insitu.copernicus.eu) (Copernicus In-Situ compiles and provides high-quality ground, sea and airborne observation and geospatial reference data to support the Copernicus services. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2025)
+- [Copernicus Land Monitoring Service](https://land.copernicus.eu/en) (The Copernicus Land Monitoring Service (CLMS) delivers high-quality geospatial information on land cover, land use changes, vegetation state, the water cycle and Earth's surface energy variables. Developed by [CodeSyntax](https://www.codesyntax.com/en) and [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2023)
 - [Debabarreneko mankomunitatea](https://debabarrena.eus/eu) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus/eu) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [European Environment Agency](https://www.eea.europa.eu/en) (Website of the European Environment Agency. Developed by [Eau de Web](https://eaudeweb.ro), 2023)
@@ -155,15 +157,18 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Leibniz Institute for Science and Mathematics Education (IPN)](https://www.leibniz-ipn.de/de) (Website of the IPN, a research institute dedicated to issues related to learning and teaching of science, mathematics and computer science in and outside of schools, developed by [Starzel](https://www.starzel.de), 2023)
 - [Nuova Voce Ecologista](https://nuovavoceecologista.it) (Website of Nuova Voce Ecologista, an Italian green Party, 2020)
 - [Osaka University](https://www.osaka-u.ac.jp/en) (Osaka University is considered one of the most prestigious universities in Japan. Developed by [CMScom](https://www.cmscom.jp), 2021)
+- [Portknox.net](https://portknox.net/de) (Portknox.net is a specialized Nextcloud hosting provider from Germany, developed by [Starzel](https://www.starzel.de/), 2025)
 - [ResOU](https://resou.osaka-u.ac.jp/ja) (ResOU is introducing official researched releases by the University of Osaka, Japan. Developed by [CMScom](https://www.cmscom.jp), 2020)
 - [Stradanove](https://www.stradanove.it/) (Website of the Department of Youth Policies of the Municipality of Modena, developed by [RedTurtle](https://www.redturtle.it), 2020)
 - [Study guide at University of Jyväskylä](https://studyguide.jyu.fi/2020/en/) (Static website where [Volto is used as a headless CMS for authoring additional content](https://tech.blog.jyu.fi/2020/06/plone-volto-hasura-gatsbyjs-mashup/), 2020)
+- [Study in Denmark](https://studyindenmark.dk) (Study in Denmark is a Plone 6 website promoting higher education opportunities in Denmark. Developed by [Eau de web](https://eaudeweb.ro) for the Danish Ministry of Higher Education and Science, 2025)
 - [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2020)
 - [UEU](https://www.ueu.eus) (Website for Udako Euskal Unibertsitatea, a non-profit University offering all its service only in Basque: courses, publications, ... developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 - [Unione dei Comuni della Val Bisenzio](https://www.bisenzio.it/) (Website of the Municipality union of Val Bisenzio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.volkshochschule.de/), developed by [kitconcept GmbH](https://kitconcept.com/en), 2018)
 - [VisitModena](https://www.visitmodena.it/it) (Tourist website of the Municipality of Modena, developed by [RedTurtle](https://www.redturtle.it), 2020)
 - [WISE-Freshwater](https://water.europa.eu/freshwater) (WISE-Freshwater, the Freshwater Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2021)
+- [WISE-Marine](https://water.europa.eu/marine) (WISE-Marine, the Marine Information System for Europe. Developed by [Eau de web](https://eaudeweb.ro) for the European Environmental Agency, 2023)
 - [Zeelandia](https://www.zeelandia.de/) (Corporate website for one of the leading bakery ingredients manufacturers in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2019)
 
 
@@ -174,17 +179,19 @@ You can find their complete source code by following their links.
 Please note that complex websites are built on top of Volto add-ons, and most of the time they're just an empty shell for the add-ons.
 You should check the dependencies in their `package.json` for more details.
 
-- [Forest Information System for Europe](https://github.com/eea/fise-frontend) - Volto project for [Forest Information System for Europe website](https://forest.eea.europa.eu)
-- [Freshwater Information System for Europe](https://github.com/eea/freshwater-frontend) - Volto project for [Freshwater Information System for Europe website](https://water.europa.eu/freshwater)
-- [European Industrial Emissions Portal](https://github.com/eea/industry-frontend ) - Volto project for [European Industrial Emissions Portal website](https://industry.eea.europa.eu)
-- [Biodiversity Information System for Europe](https://github.com/eea/bise-frontend) - Volto project for [Biodiversity Information System for Europe website](https://biodiversity.europa.eu)
-- [EEA Main Website frontend](https://github.com/eea/eea-website-frontend) - Plone 6 Volto frontend for [European Environment Agency](https://www.eea.europa.eu/en)
-- [volto-bise](https://github.com/eea/volto-bise) - A Volto project packaged as an addon. It provides Theming using a razzle.extend.js provided alias.
-- [design-volto-theme](https://github.com/RedTurtle/design-volto-theme) Volto theme for Italian Public Administration
 - [2022.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2022) - Volto project for [Plone Conference 2022 site](https://2022.ploneconf.org)
 - [2023.ploneconf.org](https://github.com/plone/ploneconf.org/tree/2023) - Volto project for [Plone Conference 2023 site](https://2023.ploneconf.org)
-- [plone.org.br](https://github.com/plonegovbr/plone.org.br) - Volto project for the [Brazilian Plone Community](https://plone.org.br)
+- [2024.ploneconf.org](https://github.com/plone/2024.ploneconf.org) - Volto project for [Plone Conference 2024 site](https://2024.ploneconf.org/en)
+- [2025.ploneconf.org](https://github.com/plone/2025.ploneconf.org) - Volto project for [Plone Conference 2025 site](https://2025.ploneconf.org)
+- [Biodiversity Information System for Europe](https://github.com/eea/bise-frontend) - Volto project for [Biodiversity Information System for Europe website](https://biodiversity.europa.eu)
+- [design-volto-theme](https://github.com/RedTurtle/design-volto-theme) Volto theme for Italian Public Administration
+- [EEA Main Website frontend](https://github.com/eea/eea-website-frontend) - Plone 6 Volto frontend for [European Environment Agency](https://www.eea.europa.eu/en)
+- [European Industrial Emissions Portal](https://github.com/eea/industry-frontend ) - Volto project for [European Industrial Emissions Portal website](https://industry.eea.europa.eu)
+- [Forest Information System for Europe](https://github.com/eea/fise-frontend) - Volto project for [Forest Information System for Europe website](https://forest.eea.europa.eu)
+- [Freshwater Information System for Europe](https://github.com/eea/freshwater-frontend) - Volto project for [Freshwater Information System for Europe website](https://water.europa.eu/freshwater)
 - [nsw-design-system-plone6-kit](https://github.com/pretagov/nsw-design-system-plone6-kit) - NSW Design System Plone 6 Kit Volto project for [NSW.gov.au sites](https://digitalnsw.pretagov.com.au/)
+- [plone.org.br](https://github.com/plonegovbr/plone.org.br) - Volto project for the [Brazilian Plone Community](https://plone.org.br)
+- [volto-bise](https://github.com/eea/volto-bise) - A Volto project packaged as an add-on. It provides Theming using a razzle.extend.js provided alias.
 - [volto-eea-design-system](https://github.com/eea/volto-eea-design-system) - EEA Design System Plone 6 Kit Volto project for [European Environment Agency web sites](https://eea.github.io/volto-eea-design-system/)
 - [volto-eea-kitkat](https://github.com/eea/volto-eea-kitkat) - A known good set of Volto add-ons to be used within all EEA projects and beyond, made for [European Environment Agency](https://www.eea.europa.eu/en)
 - [volto-zeeuwsmuseum-theme](https://github.com/intk/volto-zeeuwsmuseum-theme) - Volto project for the [Zeeuws Museum](https://www.zeeuwsmuseum.nl/en) made for [INTK](https://www.intk.com/en).
