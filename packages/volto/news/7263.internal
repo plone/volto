@@ -1,1 +1,0 @@
-Add Cypress coverage for Delete-key behavior in text blocks: merge next text block into current and do nothing to non-text (Description) block when pressed at end of a text block. @aryan7081

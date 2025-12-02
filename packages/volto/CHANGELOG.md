@@ -17,6 +17,26 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.30.0 (2025-12-02)
+
+### Feature
+
+- cross language support for blocks chooser search @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
+
+### Bugfix
+
+- Remove container cage on relations control panel. @ksuess [#6633](https://github.com/plone/volto/issues/6633)
+- Adjusted the opacity of the CMS UI toolbar’s expand/collapse button and enhanced its label to clearly convey to screen readers whether the toolbar is open or closed. @Wagner3UB [#7551](https://github.com/plone/volto/issues/7551)
+- Improve some JSDocs for better typing. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Fixed a TypeError in `flattenScales` that occurred when `image.scales` was missing. @pratyush07-hub [#7568](https://github.com/plone/volto/issues/7568)
+
+### Internal
+
+- Add Cypress coverage for Delete-key behavior in text blocks: merge next text block into current and do nothing to non-text (Description) block when pressed at end of a text block. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+- Use 18 as version for cookieplone CI checks. @sneridagh [#7548](https://github.com/plone/volto/issues/7548)
+- Refactor `SidebarPortal` to TypeScript. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+- Enable ESlint detection of '.only' in unit and cypress tests. @sneridagh [#7567](https://github.com/plone/volto/issues/7567)
+
 ## 18.29.1 (2025-11-03)
 
 ### Bugfix
