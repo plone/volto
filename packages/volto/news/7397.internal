@@ -1,0 +1,1 @@
+Add Cypress regression test ensuring login failures stop the loader and show the toast notification. @aryan7081
