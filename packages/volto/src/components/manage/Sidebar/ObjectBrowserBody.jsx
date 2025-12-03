@@ -86,6 +86,7 @@ class ObjectBrowserBody extends Component {
     maximumSelectionSize: PropTypes.number,
     contextURL: PropTypes.string,
     searchableTypes: PropTypes.arrayOf(PropTypes.string),
+    isFolderish: PropTypes.bool,
   };
 
   /**
@@ -101,6 +102,7 @@ class ObjectBrowserBody extends Component {
     selectableTypes: [],
     searchableTypes: null,
     maximumSelectionSize: null,
+    isFolderish: false,
   };
 
   /**
@@ -329,7 +331,12 @@ class ObjectBrowserBody extends Component {
   };
 
   isSelectable = (item) => {
-    const { maximumSelectionSize, data, mode, selectableTypes } = this.props;
+    const { maximumSelectionSize, data, mode, selectableTypes, isFolderish } =
+      this.props;
+
+    if (isFolderish && !item.is_folderish) {
+      return false;
+    }
     if (
       maximumSelectionSize &&
       data &&

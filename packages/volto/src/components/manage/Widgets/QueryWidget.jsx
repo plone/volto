@@ -286,6 +286,7 @@ export class QuerystringWidgetComponent extends Component {
                 }}
                 value={uidValue && this.props.reference ? [referenceItem] : []}
                 wrapped={false}
+                isFolderish={true}
               />
             </Form.Field>
 
