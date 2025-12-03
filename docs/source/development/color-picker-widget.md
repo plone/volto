@@ -154,8 +154,8 @@ You can also use this selector, where an element with class names `block` and `t
 ```{seealso}
 See the MDN CSS Reference for selectors.
 
-- [Attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)
-- [`&` nesting selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector)
+- [Attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Attribute_selectors)
+- [`&` nesting selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/Nesting_selector)
 ```
 
 
