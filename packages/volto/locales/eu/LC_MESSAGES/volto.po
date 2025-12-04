@@ -577,6 +577,7 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1243,6 +1244,11 @@ msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
 msgid "Drop files here ..."
 msgstr "Arrastatu fitxategiak hona..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1572,6 +1578,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Fitxategiaren tamaina"
 
@@ -1582,11 +1589,13 @@ msgstr "Fitxategiaren bista"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Fitxategi izena"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Igotako fitxategiak: {uploadedFiles}"
 
@@ -2072,6 +2081,7 @@ msgstr "Azken komentarioaren data"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Azken aldaketa"
 
@@ -2834,6 +2844,7 @@ msgstr "Garbitu zure kodea"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Aurreikusi"
 
@@ -2973,6 +2984,11 @@ msgstr ""
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
+msgstr ""
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
 msgstr ""
 
 #. Default: "Relevance"
@@ -4006,6 +4022,7 @@ msgstr "Erantzun kopurua"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Igotzeko fitxategiak guztira: {totalFiles} "
 
@@ -4226,6 +4243,11 @@ msgstr "Eguneraketa pausoak"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Kargatu"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -5302,6 +5324,7 @@ msgstr "bai"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, one {Kargatu fitxategi {count}} othe"
 
