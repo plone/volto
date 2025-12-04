@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 
 const Unauthorized = () => {
   const error_message = useSelector((state) => state.apierror?.message);
@@ -12,6 +13,7 @@ const Unauthorized = () => {
 
   return (
     <Container className="view-wrapper">
+      <BodyClass className="view-unauthorized" />
       <h1>
         <FormattedMessage id="Unauthorized" defaultMessage="Unauthorized" />
       </h1>
@@ -62,5 +64,6 @@ const Unauthorized = () => {
     </Container>
   );
 };
-
-export default withServerErrorCode(401)(Unauthorized);
+const UnauthorizedWithCode = withServerErrorCode(401)(Unauthorized);
+UnauthorizedWithCode.displayName = 'unauthorized';
+export default UnauthorizedWithCode;
