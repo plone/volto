@@ -22,6 +22,7 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { Form } from '@plone/volto/components/manage/Form';
+import Error from '@plone/volto/components/theme/Error/Error';
 import {
   updateControlpanel,
   getControlpanel,
@@ -85,6 +86,7 @@ class Controlpanel extends Component {
       title: PropTypes.string,
     }),
     pathname: PropTypes.string.isRequired,
+    staticContext: PropTypes.object,
   };
 
   /**
@@ -195,6 +197,19 @@ class Controlpanel extends Component {
   render() {
     const { filterControlPanelsSchema } = config.settings;
 
+    // Check for authentication/authorization errors
+    if (
+      this.props.getRequest?.loaded === false &&
+      this.props.getRequest?.error
+    ) {
+      return (
+        <Error
+          error={this.props.getRequest.error}
+          staticContext={this.props.staticContext}
+        />
+      );
+    }
+
     if (this.props.controlpanel) {
       return (
         <div id="page-controlpanel">
@@ -266,6 +281,7 @@ export default compose(
     (state, props) => ({
       controlpanel: state.controlpanels.controlpanel,
       updateRequest: state.controlpanels.update,
+      getRequest: state.controlpanels.get,
       id: props.match.params.id,
       pathname: props.location.pathname,
     }),
