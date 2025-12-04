@@ -1,1 +1,0 @@
-Fixed `Icon` component return type since it was breaking in some builds. @sneridagh

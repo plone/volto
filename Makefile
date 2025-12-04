@@ -162,7 +162,7 @@ packages/helpers/dist: $(shell find packages/helpers/src -type f)
 	pnpm build:helpers
 
 .PHONY: build-deps
-build-deps: packages/registry/dist ## Build dependencies
+build-deps: packages/registry/dist packages/components/dist ## Build dependencies
 
 .PHONY: build-all-deps
 build-all-deps: packages/registry/dist packages/components/dist packages/client/dist packages/providers/dist packages/helpers/dist ## Build all dependencies

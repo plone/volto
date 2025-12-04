@@ -1,5 +1,7 @@
-export declare const AlignWidget: import("@loadable/component").LoadableComponent<any>;
-export declare const ButtonsWidget: import("@loadable/component").LoadableComponent<any>;
+export declare const AlignWidget: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ButtonsWidget").ButtonsWidgetProps & {
+    defaultAction?: string;
+}>;
+export declare const ButtonsWidget: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ButtonsWidget").ButtonsWidgetProps>;
 export declare const ArrayWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const CheckboxWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
 export declare const CheckboxGroupWidget: import("@loadable/component").LoadableClassComponent<any>;
@@ -122,3 +124,6 @@ export declare const DatetimeWidget: import("@loadable/component").LoadableClass
 export declare const TimeWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const RecurrenceWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const FormFieldWrapper: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export declare const Size: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ButtonsWidget").ButtonsWidgetProps>;
+export declare const BlockAlignment: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ButtonsWidget").ButtonsWidgetProps>;
+export declare const BlockWidth: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ButtonsWidget").ButtonsWidgetProps>;

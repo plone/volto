@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronrightIcon, HomeIcon } from '../../components/icons';
+import { ChevronrightIcon } from '../../components/icons';
 import {
   Breadcrumbs as RACBreadcrumbs,
   Breadcrumb as RACBreadcrumb,
@@ -29,7 +29,10 @@ export function Breadcrumb(
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'flex items-center gap-1 [&_a>svg]:mx-1 [&_a>svg]:inline [&_a>svg]:align-text-top',
+        `
+          flex items-center gap-1
+          [&_a>svg]:mx-1 [&_a>svg]:inline [&_a>svg]:align-text-top
+        `,
       )}
     >
       {({ isCurrent }) => (
@@ -59,6 +62,7 @@ interface BreadcrumbsProps<T extends Breadcrumb = Breadcrumb>
 }
 
 export function Breadcrumbs<T extends Breadcrumb>(props: BreadcrumbsProps<T>) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { root, items, homeIcon } = props;
   let itemsWithRoot: typeof items;
   // if (root && items) {

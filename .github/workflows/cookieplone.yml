@@ -18,6 +18,13 @@ jobs:
       project-directory: volto-add-on
     steps:
       - uses: actions/checkout@v4
+
+      - name: Compute several vars needed for the CI
+        id: vars
+        run: |
+          python3 -c 'import json; data = json.load(open("./packages/volto/package.json")); print("volto-version=" + data["version"])' >> $GITHUB_OUTPUT
+
+      - run: echo "Volto version is ${{ steps.vars.outputs.volto-version }}"
       - run: echo "Current branch is ${GITHUB_REF#refs/heads/}"
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -27,7 +34,7 @@ jobs:
       - name: Generate Cookieplone-based frontend addon
         run: |
           pipx install cookieplone
-          pipx run --no-cache cookieplone frontend_addon --no-input
+          pipx run --no-cache cookieplone frontend_addon --no-input volto_version=${{ steps.vars.outputs.volto-version }}
 
       - name: Install generated package
         working-directory: ${{env.project-directory}}
