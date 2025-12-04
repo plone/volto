@@ -108,3 +108,23 @@ export function flattenStaticBehaviors(result) {
 
   return flattened;
 }
+
+/**
+ * Get language token from content language field.
+ * Handles cases where language might be undefined, a string, or an object.
+ * This is useful for content that has plone.translatable behavior but not
+ * plone.dublincore behavior, where language field format may vary.
+ * @function getLanguageToken
+ * @param {Object|string|undefined} language - Language field from content
+ * @returns {string|null} Language token (e.g., 'en', 'de') or null if not available
+ * @example
+ * getLanguageToken(undefined) // returns null
+ * getLanguageToken('en') // returns 'en'
+ * getLanguageToken({ token: 'en', title: 'English' }) // returns 'en'
+ */
+export function getLanguageToken(language) {
+  if (!language) return null;
+  if (typeof language === 'string') return language;
+  if (typeof language === 'object' && language.token) return language.token;
+  return null;
+}

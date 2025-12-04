@@ -3,6 +3,7 @@ import {
   getContentIcon,
   getLanguageIndependentFields,
   flattenStaticBehaviors,
+  getLanguageToken,
 } from './Content';
 import contentExistingSVG from '@plone/volto/icons/content-existing.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
@@ -133,6 +134,46 @@ describe('Content', () => {
           'blocks_layout',
         'guillotina_cms.interfaces.dublin_core.IDublinCore.creator': 'creator',
       });
+    });
+  });
+
+  describe('getLanguageToken', () => {
+    it('returns null when language is undefined', () => {
+      expect(getLanguageToken(undefined)).toBe(null);
+    });
+
+    it('returns null when language is null', () => {
+      expect(getLanguageToken(null)).toBe(null);
+    });
+
+    it('returns the string when language is a string', () => {
+      expect(getLanguageToken('en')).toBe('en');
+      expect(getLanguageToken('pt-br')).toBe('pt-br');
+      expect(getLanguageToken('de')).toBe('de');
+    });
+
+    it('returns token when language is an object with token property', () => {
+      expect(getLanguageToken({ token: 'en', title: 'English' })).toBe('en');
+      expect(getLanguageToken({ token: 'de' })).toBe('de');
+      expect(
+        getLanguageToken({ token: 'pt-br', title: 'Portuguese (Brazil)' }),
+      ).toBe('pt-br');
+    });
+
+    it('returns null when language is an object without token property', () => {
+      expect(getLanguageToken({ title: 'English' })).toBe(null);
+      expect(getLanguageToken({})).toBe(null);
+    });
+
+    it('returns null for other types', () => {
+      expect(getLanguageToken(123)).toBe(null);
+      expect(getLanguageToken(true)).toBe(null);
+      expect(getLanguageToken(false)).toBe(null);
+      expect(getLanguageToken([])).toBe(null);
+    });
+
+    it('handles empty string', () => {
+      expect(getLanguageToken('')).toBe(null);
     });
   });
 });

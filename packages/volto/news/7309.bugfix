@@ -1,0 +1,1 @@
+Fixed crash when accessing language token on content without plone.dublincore behavior in multilingual sites. @ravi-aman
