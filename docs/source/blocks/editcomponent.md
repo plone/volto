@@ -364,6 +364,59 @@ form.widget(
 );
 ```
 
+#### `onlyFolderishSelectable`
+
+If `onlyFolderishSelectable` is set to `true` in `widgetOptions.pattern_options`, only folderish (container) items can be selected. This is useful when you want users to select only folders or other container-type content.
+
+```jsx
+<ObjectBrowserWidget ... widgetOptions={{pattern_options:{onlyFolderishSelectable:true}}}>
+```
+
+You can also set the `onlyFolderishSelectable` from `plone` when declaring a field for `contenttype`:
+
+```jsx
+form.widget(
+  'location',
+  RelatedItemsFieldWidget,
+  (vocabulary = 'plone.app.vocabularies.Catalog'),
+  (pattern_options = {
+    onlyFolderishSelectable: true,
+  }),
+);
+```
+
+You can combine `onlyFolderishSelectable` with other options like `selectableTypes` and `maximumSelectionSize`:
+
+```jsx
+form.widget(
+  'location',
+  RelatedItemsFieldWidget,
+  (vocabulary = 'plone.app.vocabularies.Catalog'),
+  (pattern_options = {
+    onlyFolderishSelectable: true,
+    selectableTypes: ['Folder'],
+    maximumSelectionSize: 1,
+  }),
+);
+```
+
+#### Direct prop passing to ObjectBrowserWidget
+
+You can also pass `onlyFolderishSelectable`, `selectableTypes`, and `maximumSelectionSize` directly as props to the `ObjectBrowserWidget` component (in addition to or instead of using `widgetOptions.pattern_options`):
+
+```jsx
+<ObjectBrowserWidget
+  id="location"
+  mode="link"
+  onChange={(id, data) => console.log(data)}
+  onlyFolderishSelectable={true}
+  selectableTypes={['Folder']}
+  maximumSelectionSize={1}
+/>
+```
+
+This approach is useful when you're using `ObjectBrowserWidget` directly in your components rather than through the schema-driven form system. The widget will prioritize values from `widgetOptions.pattern_options` if both are provided.
+
 ## Reusing the blocks engine in your components
 
 You can render a blocks engine form with the `BlocksForm` component.

@@ -697,6 +697,12 @@ describe('Listing Block Tests', () => {
       contentTitle: 'Document within Folder',
       path: 'my-page/my-folder',
     });
+    cy.createContent({
+      contentType: 'Image',
+      contentId: 'my-image',
+      contentTitle: 'My Image',
+      path: 'my-page/my-folder',
+    });
 
     cy.navigate('/my-page/my-folder');
     cy.wait('@content');
@@ -724,6 +730,10 @@ describe('Listing Block Tests', () => {
     cy.get(
       '#sidebar-properties #default-query-0-querystring div[aria-labelledby="fieldset-default-field-label-query-reference-widget-0"] button[aria-label="Open object browser"]',
     ).click({ force: true });
+
+    cy.get(
+      '.sidebar-container.sidebar-container-enter-done .object-listing li[aria-label="Select My Image"]',
+    ).should('have.class', 'disabled');
 
     //insert absolute path
     cy.get('.sidebar-container button[aria-label="Search SVG"]').click();
