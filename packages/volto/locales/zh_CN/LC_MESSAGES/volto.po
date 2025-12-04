@@ -1243,6 +1243,11 @@ msgstr "在此处放置文件来上传新文件"
 msgid "Drop files here ..."
 msgstr "在此处放置文件 ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -2980,6 +2985,11 @@ msgstr ""
 msgid "Relations updated"
 msgstr ""
 
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
+
 #. Default: "Relevance"
 #: components/theme/Search/Search
 msgid "Relevance"
@@ -4232,6 +4242,11 @@ msgstr "升级步骤"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "上传"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit

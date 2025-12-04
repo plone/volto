@@ -1241,6 +1241,11 @@ msgstr "Zet bestand hier neer om een nieuw bestand op te laden"
 msgid "Drop files here ..."
 msgstr "Zet bestanden hier neer..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -2978,6 +2983,11 @@ msgstr "Relaties zijn aanpasbaar met plone.api >= 2.0.3."
 msgid "Relations updated"
 msgstr "Relaties zijn bijgewerkt"
 
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
+
 #. Default: "Relevance"
 #: components/theme/Search/Search
 msgid "Relevance"
@@ -4230,6 +4240,11 @@ msgstr "Upgrade stappen"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Opladen"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit

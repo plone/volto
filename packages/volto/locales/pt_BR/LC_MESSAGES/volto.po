@@ -1243,6 +1243,11 @@ msgstr "Solte um arquivo aqui para enviar um novo arquivo"
 msgid "Drop files here ..."
 msgstr "Soltar aquivos aqui…"
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -2980,6 +2985,11 @@ msgstr "Relacionamentos são editáveis com uso da plone.api versão 2.0.3 ou su
 msgid "Relations updated"
 msgstr "Relacionamentos atualizados"
 
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
+
 #. Default: "Relevance"
 #: components/theme/Search/Search
 msgid "Relevance"
@@ -4232,6 +4242,11 @@ msgstr "Passos de atualização"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Enviar"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit

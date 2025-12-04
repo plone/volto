@@ -38,9 +38,21 @@ const messages = defineMessages({
     id: 'Files uploaded: {uploadedFiles}',
     defaultMessage: 'Files uploaded: {uploadedFiles}',
   },
+  dropFiles: {
+    id: 'Drop files here to upload',
+    defaultMessage: 'Drop files here to upload',
+  },
+  releaseToAdd: {
+    id: 'Release to add file(s) to this folder',
+    defaultMessage: 'Release to add file(s) to this folder',
+  },
   totalFilesToUpload: {
     id: 'Total files to upload: {totalFiles}',
     defaultMessage: 'Total files to upload: {totalFiles}',
+  },
+  uploadFiles: {
+    id: 'Upload Files ({count})',
+    defaultMessage: 'Upload Files ({count})',
   },
 });
 
@@ -101,8 +113,8 @@ const DropZoneContent = (props) => {
         validFiles.push(newFiles[i]);
       }
     }
-    setDroppedFiles(droppedFiles.concat(validFiles));
-    setTotalFiles(validFiles.length);
+    setDroppedFiles((prev) => prev.concat(newFiles));
+    setTotalFiles((prev) => prev + validFiles.length);
     setShowModal(true);
   };
 
@@ -176,8 +188,8 @@ const DropZoneContent = (props) => {
           <div className="dropzone-overlay">
             <div className="dropzone-content">
               <Icon name={uploadSVG} size="48px" />
-              <h3>Drop files here to upload</h3>
-              <p>Release to add file(s) to this folder</p>
+              <h3>{intl.formatMessage(messages.dropFiles)}</h3>
+              <p>{intl.formatMessage(messages.releaseToAdd)}</p>
             </div>
           </div>
         )}
@@ -187,7 +199,11 @@ const DropZoneContent = (props) => {
         onClose={handleCloseModal}
         className="contents-upload-modal"
       >
-        <Modal.Header>Upload Files ({droppedFiles.length})</Modal.Header>
+        <Modal.Header>
+          {intl.formatMessage(messages.uploadFiles, {
+            count: droppedFiles.length,
+          })}
+        </Modal.Header>
         <Dimmer active={request.loading}>
           <div className="progress-container">
             <Progress

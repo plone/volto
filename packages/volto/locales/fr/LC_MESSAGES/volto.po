@@ -1244,6 +1244,11 @@ msgstr "Déposez le fichier ici pour télécharger un nouveau fichier"
 msgid "Drop files here ..."
 msgstr "Déposez les fichiers ici ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -2981,6 +2986,11 @@ msgstr ""
 msgid "Relations updated"
 msgstr ""
 
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
+
 #. Default: "Relevance"
 #: components/theme/Search/Search
 msgid "Relevance"
@@ -4233,6 +4243,11 @@ msgstr "Étapes de mise à niveau"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Téléchargé"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit

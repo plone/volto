@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-12-03T14:10:50.520Z\n"
+"POT-Creation-Date: 2025-12-04T08:02:09.676Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1237,6 +1237,11 @@ msgstr ""
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop files here ..."
+msgstr ""
+
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
 msgstr ""
 
 #. Default: "Dry run selected, transaction aborted."
@@ -2976,6 +2981,11 @@ msgstr ""
 msgid "Relations updated"
 msgstr ""
 
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
+
 #. Default: "Relevance"
 #: components/theme/Search/Search
 msgid "Relevance"
@@ -4227,6 +4237,11 @@ msgstr ""
 #. Default: "Upload"
 #: components/manage/Contents/Contents
 msgid "Upload"
+msgstr ""
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
 msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."

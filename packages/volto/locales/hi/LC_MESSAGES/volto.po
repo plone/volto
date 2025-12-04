@@ -1237,6 +1237,11 @@ msgstr "नई फ़ाइल अपलोड करने के लिए य
 msgid "Drop files here ..."
 msgstr "यहाँ फ़ाइलें ड्रॉप करें ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -2974,6 +2979,11 @@ msgstr "plone.api >= 2.0.3 के साथ संबंध संपादन�
 msgid "Relations updated"
 msgstr "संबंध अपडेट किए गए"
 
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
+
 #. Default: "Relevance"
 #: components/theme/Search/Search
 msgid "Relevance"
@@ -4226,6 +4236,11 @@ msgstr "अपग्रेड कदम"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "अपलोड"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
