@@ -1,0 +1,1 @@
+ModalForm should handle empty schemas, rendering an empty form with just the submit and cancel buttons. @tedw87
