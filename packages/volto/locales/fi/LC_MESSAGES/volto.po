@@ -575,6 +575,7 @@ msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1241,6 +1242,11 @@ msgstr "Pudota tiedosto tähän ladataksesi uuden tiedoston"
 msgid "Drop files here ..."
 msgstr "Pudota tiedosto tänne... "
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1570,6 +1576,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Tiedoston koko"
 
@@ -1580,11 +1587,13 @@ msgstr "Tiedostonäkymä"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Tiedostonimi"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Lähetetyt tiedostot: {uploadedFiles} "
 
@@ -2070,6 +2079,7 @@ msgstr "Viimeisin kommentti"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Muokattu viimeksi"
 
@@ -2832,6 +2842,7 @@ msgstr "Siisti koodisi"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Esikatselu"
 
@@ -2971,6 +2982,11 @@ msgstr ""
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
+msgstr ""
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
 msgstr ""
 
 #. Default: "Relevance"
@@ -4004,6 +4020,7 @@ msgstr "Kommentteja"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Kaikkien ladattavien tiedostojen määrä: {totalFiles} "
 
@@ -4224,6 +4241,11 @@ msgstr "Päivityksen vaiheet"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Siirrä palvelimelle"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4975,6 +4997,16 @@ msgstr "yksityinen"
 msgid "published"
 msgstr "julkaistu"
 
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
+
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -5300,6 +5332,7 @@ msgstr "Kyllä"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
