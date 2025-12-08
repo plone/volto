@@ -267,3 +267,66 @@
   overflow: auto;
   max-height: 75vh;
 }
+
+.contents-dropzone {
+  position: relative;
+
+  &.drag-over {
+    overflow: hidden;
+  }
+}
+
+.dropzone-overlay {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed black;
+  animation: fadeIn 0.3s ease-in;
+  backdrop-filter: blur(2px);
+  inset: 0;
+}
+
+.dropzone-content {
+  animation: scaleIn 0.3s ease-out;
+  color: black;
+  text-align: center;
+
+  h3 {
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  h3,
+  p {
+    color: black;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
