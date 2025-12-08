@@ -213,15 +213,17 @@ class ModalForm extends Component {
     const { schema, onCancel } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
-    const fields = map(currentFieldset.fields, (field) => ({
-      ...schema.properties[field],
-      id: field,
-      value: this.state.formData[field],
-      required: schema.required.indexOf(field) !== -1,
-      onChange: this.onChangeField,
-      onBlur: this.onBlurField,
-      onClick: this.onClickInput,
-    }));
+    const fields = currentFieldset
+      ? map(currentFieldset.fields, (field) => ({
+          ...schema.properties[field],
+          id: field,
+          value: this.state.formData[field],
+          required: schema.required.indexOf(field) !== -1,
+          onChange: this.onChangeField,
+          onBlur: this.onBlurField,
+          onClick: this.onClickInput,
+        }))
+      : [];
 
     const state_errors = keys(this.state.errors).length > 0;
     return (
@@ -255,7 +257,7 @@ class ModalForm extends Component {
               )}
               <div>{this.props.submitError}</div>
             </Message>
-            {schema.fieldsets.length > 1 && (
+            {schema.fieldsets?.length > 1 && (
               <Menu tabular stackable>
                 {map(schema.fieldsets, (item, index) => (
                   <Menu.Item
