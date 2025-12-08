@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-22 07:02+0000\n"
+"PO-Revision-Date: 2025-11-27 05:02+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
-"Language: ta\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/plone/volto-18/ta/>\n"
+"Language: ta\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1480,7 +1480,7 @@ msgstr "பக்கப்பட்டியை விரிவாக்கு�
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr ""
+msgstr "கருவிப்பட்டியை விரிவாக்கு"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
