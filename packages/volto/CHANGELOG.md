@@ -17,6 +17,13 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.30.1 (2025-12-08)
+
+### Bugfix
+
+- Add classname for unauthorized page @iRohitSingh 
+- Added `prettier` as a direct dependency of Volto, since is used by HTML block, to prevent the removal from the production build. @sneridagh 
+
 ## 18.30.0 (2025-12-02)
 
 ### Feature
