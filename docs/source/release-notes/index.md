@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.23.0 (2025-12-08)
+
+### Feature
+
+- ModalForm should handle empty schemas, rendering an empty form with just the submit and cancel buttons. @tedw87 [#7681](https://github.com/plone/volto/issues/7681)
+
 ## 17.22.3 (2025-10-01)
 
 ### Bugfix
