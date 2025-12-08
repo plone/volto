@@ -873,6 +873,9 @@ importers:
       decorate-component-with-props:
         specifier: 1.2.1
         version: 1.2.1(react@18.2.0)
+      deepmerge:
+        specifier: ^4.2.2
+        version: 4.3.1
       dependency-graph:
         specifier: 0.10.0
         version: 0.10.0
@@ -942,6 +945,9 @@ importers:
       prepend-http:
         specifier: '2'
         version: 2.0.0
+      prettier:
+        specifier: 3.2.5
+        version: 3.2.5
       pretty-bytes:
         specifier: 5.3.0
         version: 5.3.0
@@ -1291,9 +1297,6 @@ importers:
       deep-freeze:
         specifier: 0.0.1
         version: 0.0.1
-      deepmerge:
-        specifier: ^4.2.2
-        version: 4.3.1
       eslint:
         specifier: ^8.57.0
         version: 8.57.1
@@ -1381,9 +1384,6 @@ importers:
       postcss-scss:
         specifier: 4.0.6
         version: 4.0.6(postcss@8.4.31)
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
       razzle-dev-utils:
         specifier: 4.2.18
         version: 4.2.18(eslint@8.57.1)(typescript@5.9.2)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1))(webpack@5.90.1)
