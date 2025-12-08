@@ -81,7 +81,6 @@
     "@platejs/media": "^49.0.0",
     "@platejs/mention": "^49.0.0",
     "@platejs/resizable": "^49.0.0",
-    "@platejs/playwright": "^52.0.1",
     "@platejs/selection": "^50.3.4",
     "@platejs/slash-command": "^49.0.0",
     "@platejs/suggestion": "^50.3.3",
