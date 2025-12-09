@@ -146,9 +146,6 @@ function ModalForm(props) {
     setCurrentTab(index);
   };
 
-  /**
-   * Handle onChangeFormData callback when formDataState changes
-   */
   useEffect(() => {
     if (
       onChangeFormData &&
@@ -159,9 +156,6 @@ function ModalForm(props) {
     prevFormDataStateRef.current = formDataState;
   }, [formDataState, onChangeFormData]);
 
-  /**
-   * Handle formData prop changes - merge only changed fields into state
-   */
   useEffect(() => {
     if (!isEqual(prevFormDataRef.current, formData)) {
       const newFormData = {};
