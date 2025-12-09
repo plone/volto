@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.9 (2025-12-08)
+
+### Feature
+
+- cross language support and umlaut fix for slash menu @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
+
 ## 19.0.0-alpha.8 (2025-11-19)
 
 ### Bugfix
