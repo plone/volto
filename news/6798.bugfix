@@ -1,0 +1,1 @@
+Improved the accessibility of the ‘FileWidget’ component by adding ‘aria-labelledby’ and ‘aria-describedby’ to the dropzone area. @Wagner3UB
