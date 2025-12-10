@@ -20,6 +20,7 @@ const createStore = () =>
       locale: 'en',
       messages: {},
     },
+    site: { data: { 'plone.image_scales': { preview: {}, listing: {} } } },
   });
 
 describe('RegistryImageWidget', () => {

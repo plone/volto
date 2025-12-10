@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useSelector } from 'react-redux';
 import {
   flattenToAppURL,
   flattenScales,
@@ -26,6 +27,9 @@ export default function Image({
   className = '',
   ...imageProps
 }) {
+  const site = useSelector((state) => state.site.data);
+  const siteImageScales = site?.['plone.image_scales'] || {};
+
   if (!item && !src) return null;
 
   // TypeScript hints for editor autocomplete :)
@@ -61,11 +65,16 @@ export default function Image({
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
       const sortedScales = Object.values({
         ...image.scales,
-        original: {
-          download: `${image.download}`,
-          width: image.width,
-          height: image.height,
-        },
+        ...(Object.keys(siteImageScales).length >
+        Object.keys(image.scales).length
+          ? {
+              original: {
+                download: `${image.download}`,
+                width: image.width,
+                height: image.height,
+              },
+            }
+          : {}),
       }).sort((a, b) => {
         if (a.width > b.width) return 1;
         else if (a.width < b.width) return -1;

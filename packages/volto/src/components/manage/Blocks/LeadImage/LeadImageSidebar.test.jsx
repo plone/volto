@@ -16,6 +16,7 @@ test('renders a Lead Image block Sidebar component', () => {
       locale: 'en',
       messages: {},
     },
+    site: { data: { 'plone.image_scales': { preview: {}, listing: {} } } },
   });
 
   const component = renderer.create(
