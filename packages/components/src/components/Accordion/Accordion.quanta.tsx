@@ -26,7 +26,10 @@ const Accordion = ({ children, ref, className, ...props }: AccordionProps) => {
       {...props}
       className={composeTailwindRenderProps(
         className,
-        'peer cursor-pointer disabled:cursor-not-allowed disabled:opacity-75',
+        `
+          peer cursor-pointer
+          disabled:cursor-not-allowed disabled:opacity-75
+        `,
       )}
     >
       {(values) => (
@@ -49,7 +52,10 @@ const AccordionItem = ({ className, ref, ...props }: AccordionItemProps) => {
       {...props}
       className={composeTailwindRenderProps(
         className,
-        'peer group/disclosure border-border w-full min-w-60 border-b disabled:opacity-60',
+        `
+          peer group/disclosure w-full min-w-60 border-b border-border
+          disabled:opacity-60
+        `,
       )}
     >
       {props.children}
@@ -72,7 +78,21 @@ const AccordionItemTrigger = ({
         slot="trigger"
         className={composeTailwindRenderProps(
           className,
-          'group/trigger open:text-fg focus:text-fg **:data-[slot=icon]:text-muted-fg flex w-full items-center justify-between gap-x-2 py-3 text-left font-medium focus:outline-hidden disabled:cursor-default disabled:opacity-50 **:data-[slot=disclosure-chevron]:size-5 **:data-[slot=icon]:-mx-0.5 **:data-[slot=icon]:shrink-0 sm:text-sm forced-colors:disabled:text-[GrayText] **:[span]:flex **:[span]:items-center **:[span]:gap-x-1 **:[span]:*:data-[slot=icon]:mr-1 [&[aria-expanded=true]_[data-slot=disclosure-chevron]]:-rotate-90',
+          `
+            group/trigger flex w-full items-center justify-between gap-x-2 py-3 text-left
+            font-medium
+            open:text-fg
+            focus:text-fg focus:outline-hidden
+            **:data-[slot=icon]:text-muted-fg **:data-[slot=icon]:-mx-0.5
+            **:data-[slot=icon]:shrink-0
+            disabled:cursor-default disabled:opacity-50
+            **:data-[slot=disclosure-chevron]:size-5
+            sm:text-sm
+            forced-colors:disabled:text-[GrayText]
+            **:[span]:flex **:[span]:items-center **:[span]:gap-x-1
+            **:[span]:*:data-[slot=icon]:mr-1
+            [&[aria-expanded=true]_[data-slot=disclosure-chevron]]:-rotate-90
+          `,
         )}
         {...props}
       >
@@ -102,13 +122,22 @@ const AccordionPanel = ({ className, ref, ...props }: AccordionPanelProps) => {
       data-slot="disclosure-panel"
       className={composeTailwindRenderProps(
         className,
-        'text-muted-fg overflow-hidden text-sm transition-all **:data-[slot=disclosure-group]:border-t **:data-[slot=disclosure-group]:**:[.internal-chevron]:hidden has-data-[slot=disclosure-group]:**:[button]:px-4',
+        `
+          text-muted-fg overflow-hidden text-sm transition-all
+          **:data-[slot=disclosure-group]:border-t
+          **:data-[slot=disclosure-group]:**:[.internal-chevron]:hidden
+          has-data-[slot=disclosure-group]:**:[button]:px-4
+        `,
       )}
       {...props}
     >
       <div
         data-slot="disclosure-panel-content"
-        className="pt-0 not-has-data-[slot=disclosure-group]:group-data-expanded/disclosure:pb-3 [&:has([data-slot=disclosure-group])_&]:px-11"
+        className={`
+          pt-0
+          not-has-data-[slot=disclosure-group]:group-data-expanded/disclosure:pb-3
+          [&:has([data-slot=disclosure-group])_&]:px-11
+        `}
       >
         {props.children}
       </div>

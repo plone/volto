@@ -47,7 +47,7 @@ const RelationsControlPanel = () => {
 
   return (
     <>
-      <div className="ui container">
+      <div className="">
         <div className="relations-control-panel">
           <Helmet title={intl.formatMessage(messages.relations)} />
           {can_edit ? (

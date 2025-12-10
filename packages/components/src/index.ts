@@ -31,7 +31,7 @@ export { Modal } from './components/Modal/Modal';
 export { NumberField } from './components/NumberField/NumberField';
 export { Popover, type PopoverProps } from './components/Popover/Popover';
 export { ProgressBar } from './components/ProgressBar/ProgressBar';
-export { RadioGroup } from './components/RadioGroup/RadioGroup';
+export { Radio, RadioGroup } from './components/RadioGroup/RadioGroup';
 export { RangeCalendar } from './components/RangeCalendar/RangeCalendar';
 export { SearchField } from './components/SearchField/SearchField';
 export { Select, SelectItem } from './components/Select/Select';

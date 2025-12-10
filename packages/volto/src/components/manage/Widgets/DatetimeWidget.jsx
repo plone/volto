@@ -84,6 +84,7 @@ const DatetimeWidgetComponent = (props) => {
     widget,
     noPastDates: propNoPastDates,
     isDisabled,
+    formData,
   } = props;
 
   const intl = useIntl();
@@ -106,12 +107,21 @@ const DatetimeWidgetComponent = (props) => {
     );
   }, [value, lang, moment]);
 
+  // If open_end is checked and this is the end field, don't render
+  if (id === 'end' && formData?.open_end) {
+    return null;
+  }
+
   const getInternalValue = () => {
     return parseDateTime(toBackendLang(lang), value, undefined, moment.default);
   };
 
   const getDateOnly = () => {
-    return dateOnly || widget === 'date';
+    return (
+      dateOnly ||
+      widget === 'date' ||
+      ((id === 'start' || id === 'end') && formData?.whole_day)
+    );
   };
 
   const onDateChange = (date) => {

@@ -28,7 +28,13 @@ export function RadioGroup(props: RadioGroupProps) {
       )}
     >
       <Label>{props.label}</Label>
-      <div className="group-orientation-vertical:flex-col group-orientation-horizontal:gap-4 flex gap-2">
+      <div
+        className={`
+          flex gap-2
+          group-orientation-horizontal:gap-4
+          group-orientation-vertical:flex-col
+        `}
+      >
         {props.children}
       </div>
       {props.description && <Description>{props.description}</Description>}
@@ -39,18 +45,38 @@ export function RadioGroup(props: RadioGroupProps) {
 
 const styles = tv({
   extend: focusRing,
-  base: 'h-5 w-5 rounded-full border-2 bg-white transition-all dark:bg-zinc-900',
+  base: `
+    h-5 w-5 rounded-full border-2 bg-white transition-all
+    dark:bg-zinc-900
+  `,
   variants: {
     isSelected: {
-      false:
-        'group-pressed:border-gray-500 dark:group-pressed:border-zinc-300 border-gray-400 dark:border-zinc-400',
-      true: 'group-pressed:border-gray-800 dark:group-pressed:border-slate-200 border-[7px] border-gray-700 dark:border-slate-300 forced-colors:border-[Highlight]!',
+      false: `
+        border-gray-400
+        group-pressed:border-gray-500
+        dark:border-zinc-400 dark:group-pressed:border-zinc-300
+      `,
+      true: `
+        border-[7px] border-gray-700
+        group-pressed:border-gray-800
+        dark:border-slate-300 dark:group-pressed:border-slate-200
+        forced-colors:border-[Highlight]!
+      `,
     },
     isInvalid: {
-      true: 'group-pressed:border-red-800 dark:group-pressed:border-red-700 border-red-700 dark:border-red-600 forced-colors:border-[Mark]!',
+      true: `
+        border-red-700
+        group-pressed:border-red-800
+        dark:border-red-600 dark:group-pressed:border-red-700
+        forced-colors:border-[Mark]!
+      `,
     },
     isDisabled: {
-      true: 'border-gray-200 dark:border-zinc-700 forced-colors:border-[GrayText]!',
+      true: `
+        border-gray-200
+        dark:border-zinc-700
+        forced-colors:border-[GrayText]!
+      `,
     },
   },
 });
@@ -61,7 +87,12 @@ export function Radio(props: RadioProps) {
       {...props}
       className={composeTailwindRenderProps(
         props.className,
-        'group flex items-center gap-2 text-sm text-gray-800 transition disabled:text-gray-300 dark:text-zinc-200 dark:disabled:text-zinc-600 forced-colors:disabled:text-[GrayText]',
+        `
+          group flex items-center gap-2 text-sm text-gray-800 transition
+          disabled:text-gray-300
+          dark:text-zinc-200 dark:disabled:text-zinc-600
+          forced-colors:disabled:text-[GrayText]
+        `,
       )}
     >
       {(renderProps) => (
@@ -76,18 +107,34 @@ export function Radio(props: RadioProps) {
 
 const customRadioButton = tv({
   extend: focusRing,
-  base: 'text-quanta-iron flex h-10 w-10 cursor-pointer items-center justify-center rounded-md font-medium transition',
+  base: `
+    flex h-10 w-10 cursor-pointer items-center justify-center rounded-md font-medium
+    text-quanta-iron transition
+  `,
   variants: {
     isSelected: {
-      false:
-        'bg-quanta-air hover:bg-quanta-sky active:bg-quanta-silver focus:bg-quanta-snow',
-      true: 'pressed:bg-quanta-sky bg-quanta-sky hover:bg-quanta-sky active:bg-quanta-sky focus:bg-quanta-sky',
+      false: `
+        bg-quanta-air
+        hover:bg-quanta-sky
+        focus:bg-quanta-snow
+        active:bg-quanta-silver
+      `,
+      true: `
+        bg-quanta-sky
+        hover:bg-quanta-sky
+        focus:bg-quanta-sky
+        active:bg-quanta-sky
+        pressed:bg-quanta-sky
+      `,
     },
     isPressed: {
       true: 'pressed:bg-quanta-cobalt',
     },
     isInvalid: {
-      true: 'border border-red-700 text-red-700 dark:border-red-600 dark:text-red-600',
+      true: `
+        border border-red-700 text-red-700
+        dark:border-red-600 dark:text-red-600
+      `,
     },
     isDisabled: {
       true: 'text-quanta-smoke',

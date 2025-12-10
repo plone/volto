@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.4 (2025-11-19)
+
+### Breaking
+
+- Fork `babel-razzle-preset` from Razzle. Update dependencies. @sneridagh [#7619](https://github.com/plone/volto/issues/7619)
+
 ## 4.0.0-alpha.3 (2025-10-21)
 
 ### Bugfix
