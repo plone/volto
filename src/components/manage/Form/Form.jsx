@@ -176,6 +176,7 @@ class Form extends Component {
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
     if (
+      formData &&
       formData.hasOwnProperty(blocksFieldname) &&
       formData.hasOwnProperty(blocksLayoutFieldname)
     ) {
@@ -201,8 +202,9 @@ class Form extends Component {
 
     let selectedBlock = null;
     if (
+      formData &&
       formData.hasOwnProperty(blocksLayoutFieldname) &&
-      formData[blocksLayoutFieldname].items.length > 0
+      formData[blocksLayoutFieldname]?.items?.length > 0
     ) {
       if (config.blocks?.initialBlocksFocus === null) {
         selectedBlock = null;
@@ -785,7 +787,7 @@ class Form extends Component {
         >
           <fieldset className="invisible">
             <Segment.Group raised>
-              {schema && schema.fieldsets.length > 1 && (
+              {schema && schema.fieldsets?.length > 1 && (
                 <>
                   {settings.verticalFormTabs && this.props.title && (
                     <Segment secondary attached key={this.props.title}>
@@ -839,7 +841,7 @@ class Form extends Component {
                   />
                 </>
               )}
-              {schema && schema.fieldsets.length === 1 && (
+              {schema && schema.fieldsets?.length === 1 && (
                 <Segment>
                   {this.props.title && (
                     <Segment className="primary">
