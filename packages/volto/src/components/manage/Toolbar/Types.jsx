@@ -60,7 +60,6 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
             availableLanguages,
             (lang) =>
               lang &&
-              lang &&
               !Boolean(
                 content['@components'].translations &&
                   find(content['@components'].translations.items, {

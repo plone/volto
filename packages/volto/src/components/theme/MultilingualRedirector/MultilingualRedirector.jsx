@@ -23,63 +23,31 @@ const MultilingualRedirector = (props) => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     let mounted = true;
-    if (isMultilingual) {
-      if (pathname === '/') {
-        const langFileName = toGettextLang(redirectToLanguage);
+    if (isMultilingual && pathname !== '/') {
+      const lang = pathname.split('/')[1];
+      if (
+        availableLanguages?.includes(lang) &&
+        lang !== currentLanguage &&
+        mounted
+      ) {
+        const langFileName = toGettextLang(lang);
         import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
           .then((locale) => {
             if (mounted) {
-              dispatch(changeLanguage(redirectToLanguage, locale.default));
+              dispatch(changeLanguage(lang, locale.default));
             }
           })
           .catch(() => {
-            // eslint-disable-next-line no-console
-            console.warn(
-              `Locale file for ${redirectToLanguage} not found. Fallback to default.`,
-            );
             if (mounted) {
-              dispatch(changeLanguage(redirectToLanguage, {}));
+              dispatch(changeLanguage(lang, {}));
             }
           });
-      } else {
-        const lang = pathname.split('/')[1];
-        if (
-          availableLanguages?.includes(lang) &&
-          lang !== currentLanguage &&
-          mounted
-        ) {
-          const langFileName = toGettextLang(lang);
-          import(
-            /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-          )
-            .then((locale) => {
-              if (mounted) {
-                dispatch(changeLanguage(lang, locale.default));
-              }
-            })
-            .catch(() => {
-              // eslint-disable-next-line no-console
-              console.warn(
-                `Locale file for ${lang} not found. Fallback to default.`,
-              );
-              if (mounted) {
-                dispatch(changeLanguage(lang, {}));
-              }
-            });
-        }
       }
     }
     return () => {
       mounted = false;
     };
-  }, [
-    pathname,
-    dispatch,
-    redirectToLanguage,
-    isMultilingual,
-    availableLanguages,
-    currentLanguage,
-  ]);
+  }, [pathname, dispatch, isMultilingual, availableLanguages, currentLanguage]);
 
   return pathname === '/' && isMultilingual ? (
     <Redirect to={`/${toBackendLang(redirectToLanguage)}`} />
