@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { changeLanguage } from '@plone/volto/actions/language/language';
-
 import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
 
 const MultilingualRedirector = (props) => {
@@ -23,32 +22,53 @@ const MultilingualRedirector = (props) => {
     // ToDo: Add means to support language negotiation (with config)
     // const detectedLang = (navigator.language || navigator.userLanguage).substring(0, 2);
     let mounted = true;
-    if (isMultilingual && pathname !== '/') {
-      const lang = pathname.split('/')[1];
-      if (
-        availableLanguages?.includes(lang) &&
-        lang !== currentLanguage &&
-        mounted
-      ) {
-        const langFileName = toGettextLang(lang);
+    if (isMultilingual) {
+      if (pathname === '/') {
+        const langFileName = toGettextLang(redirectToLanguage);
         import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
           .then((locale) => {
             if (mounted) {
-              dispatch(changeLanguage(lang, locale.default));
+              dispatch(changeLanguage(redirectToLanguage, locale.default));
             }
           })
           .catch(() => {
+            // If locale file doesn't exist, still switch language with empty locale
             if (mounted) {
-              dispatch(changeLanguage(lang, {}));
+              dispatch(changeLanguage(redirectToLanguage, {}));
             }
           });
+      } else {
+        const lang = pathname.split('/')[1];
+        if (availableLanguages?.includes(lang) && lang !== currentLanguage) {
+          const langFileName = toGettextLang(lang);
+          import(
+            /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
+          )
+            .then((locale) => {
+              if (mounted) {
+                dispatch(changeLanguage(lang, locale.default));
+              }
+            })
+            .catch(() => {
+              // If locale file doesn't exist, still switch language with empty locale
+              if (mounted) {
+                dispatch(changeLanguage(lang, {}));
+              }
+            });
+        }
       }
     }
     return () => {
       mounted = false;
     };
-  }, [pathname, dispatch, isMultilingual, availableLanguages, currentLanguage]);
-
+  }, [
+    pathname,
+    dispatch,
+    redirectToLanguage,
+    isMultilingual,
+    availableLanguages,
+    currentLanguage,
+  ]); // <-- Updated Dependencies
   return pathname === '/' && isMultilingual ? (
     <Redirect to={`/${redirectToLanguage}`} />
   ) : (
