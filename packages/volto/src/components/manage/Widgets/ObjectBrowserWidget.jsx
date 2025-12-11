@@ -152,7 +152,7 @@ const ObjectBrowserWidgetComponent = (props) => {
 
     const maxSize = widgetOptions?.pattern_options?.maximumSelectionSize || -1;
     if (maxSize === 1 && valueArray.length === 1) {
-      valueArray = []; //enable replace of selected item with another value, if maxsize is 1
+      valueArray = [];
     }
     let exists = false;
     let index = -1;
@@ -164,16 +164,9 @@ const ObjectBrowserWidgetComponent = (props) => {
     });
 
     if (!exists) {
-      // add item
-      // Check if we want to filter the attributes of the selected item
       let resultantItem = item;
       if (selectedItemAttrs) {
-        const allowedItemKeys = [
-          ...selectedItemAttrs,
-          // Add the required attributes for the widget to work
-          '@id',
-          'title',
-        ];
+        const allowedItemKeys = [...selectedItemAttrs, '@id', 'title'];
         resultantItem = Object.keys(item)
           .filter((key) => allowedItemKeys.includes(key))
           .reduce((obj, key) => {
@@ -182,7 +175,6 @@ const ObjectBrowserWidgetComponent = (props) => {
           }, {});
       }
 
-      // Add required @id field, just in case
       resultantItem = { ...resultantItem, '@id': item['@id'] };
       valueArray.push(resultantItem);
 
@@ -229,7 +221,7 @@ const ObjectBrowserWidgetComponent = (props) => {
     if (validateManualLink(manualLinkInput)) {
       if (isInternalURL(manualLinkInput)) {
         const link = manualLinkInput;
-        // convert it into an internal on if possible
+
         searchContentAction(
           '/',
           {
@@ -273,7 +265,6 @@ const ObjectBrowserWidgetComponent = (props) => {
     } else if (e.key === 'Escape') {
       e.preventDefault();
       e.stopPropagation();
-      // TODO: Do something on ESC key
     }
   };
 
@@ -298,7 +289,8 @@ const ObjectBrowserWidgetComponent = (props) => {
     if (isDisabled) {
       return;
     }
-    // Fix: Check if the clicked element is contained within the ref elements
+
+    if (e.target.tagName === 'INPUT' || e.target.closest('input')) return;
     if (
       selectedItemsRef.current?.contains(e.target) ||
       placeholderRef.current?.contains(e.target)
@@ -322,7 +314,6 @@ const ObjectBrowserWidgetComponent = (props) => {
   return (
     <FormFieldWrapper
       {...props}
-      // At the moment, OBW handles its own errors and validation
       error={errors}
       className={description ? 'help text' : 'text'}
     >
