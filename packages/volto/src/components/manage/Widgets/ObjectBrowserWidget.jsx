@@ -336,12 +336,12 @@ const ObjectBrowserWidgetComponent = (props) => {
           onKeyDown={handleSelectedItemsRefClick}
           role="searchbox"
           tabIndex={0}
-          ref={selectedItemsRef}
+          ref={selectedItemsRef.current}
         >
           {items.map((item) => renderLabel(item))}
 
           {items.length === 0 && mode === 'multiple' && (
-            <div className="placeholder" ref={placeholderRef}>
+            <div className="placeholder" ref={placeholderRef.current}>
               {placeholder ?? intl.formatMessage(messages.placeholder)}
             </div>
           )}
