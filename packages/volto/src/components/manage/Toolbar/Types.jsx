@@ -59,14 +59,12 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
           const translationsLeft = filter(
             availableLanguages,
             (lang) =>
-              lang &&
               !Boolean(
                 content['@components'].translations &&
                   find(content['@components'].translations.items, {
                     language: lang,
                   }),
-              ) &&
-              toBackendLang(currentLanguage) !== lang,
+              ) && toBackendLang(currentLanguage) !== lang,
           );
 
           return (
