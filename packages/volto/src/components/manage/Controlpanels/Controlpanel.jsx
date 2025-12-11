@@ -17,6 +17,7 @@ import { createPortal } from 'react-dom';
 import { Button, Container } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
+import NotFound from '@plone/volto/components/theme/NotFound/NotFound';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
@@ -256,7 +257,7 @@ class Controlpanel extends Component {
         </div>
       );
     }
-    return <div />;
+    return <NotFound />;
   }
 }
 
