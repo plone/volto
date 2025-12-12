@@ -13,6 +13,10 @@ Use [`mrs-developer`](https://www.npmjs.com/package/mrs-developer) to manage the
 This tool pulls the remote code and configures the current project, making the add-on available for the build.
 By doing this, you can develop both the project and the add-on product as if they were both part of the current codebase.
 
+```{note}
+The add-on installation process is the same for Volto 18 and 19. This guide provides Volto 19-specific workspace configuration examples.
+```
+
 `mrs-developer` is included and installed by default when you generate a project with Cookieplone.
 Use the following command to install the configuration of `mrs.developer.json` in your project.
 
