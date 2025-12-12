@@ -361,7 +361,6 @@ To migrate your projects to the new setup, take the following steps.
 1.  Take the contents of the {file}`src` folder in the old structure, and copy them over to `packages/<your-addon-name>/src/`.
 
 ```{seealso}
--   {doc}`../development/add-ons/create-an-add-on-19`
 -   {doc}`../development/add-ons/create-an-add-on-18`
 -   [update for Volto 18 codesyntax/volto-maplibre-block#4](https://github.com/codesyntax/volto-maplibre-block/pull/4)
 -   [update for volto 18 codesyntax/volto-countup-block#5](https://github.com/codesyntax/volto-countup-block/pull/5)
