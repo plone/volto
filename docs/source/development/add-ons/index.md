@@ -13,9 +13,11 @@ myst:
 :maxdepth: 1
 
 install-an-add-on
+install-an-add-on-dev-19
 install-an-add-on-dev-18
 install-an-add-on-dev-17
 load-add-on-configuration
+create-an-add-on-19
 create-an-add-on-18
 create-an-add-on-17
 theme-add-on
