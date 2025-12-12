@@ -95,7 +95,9 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                             id="Translate to {lang}"
                             defaultMessage="Translate to {lang}"
                             values={{
-                              lang: langmap[lang].nativeName.toLowerCase(),
+                              lang: (
+                                langmap[lang]?.nativeName || lang
+                              ).toLowerCase(),
                             }}
                           />
                         </Link>
