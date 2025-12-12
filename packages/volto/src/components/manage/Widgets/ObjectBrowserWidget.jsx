@@ -81,6 +81,7 @@ const ObjectBrowserWidgetComponent = (props) => {
     maximumSelectionSize,
     selectedItemAttrs,
     block,
+    onlyFolderishSelectable,
   } = props;
 
   const intl = useIntl();
@@ -282,6 +283,7 @@ const ObjectBrowserWidgetComponent = (props) => {
       maximumSelectionSize:
         widgetOptions?.pattern_options?.maximumSelectionSize ||
         maximumSelectionSize,
+      onlyFolderishSelectable: onlyFolderishSelectable,
     });
   };
 
@@ -408,6 +410,7 @@ ObjectBrowserWidgetComponent.propTypes = {
   openObjectBrowser: PropTypes.func.isRequired,
   allowExternals: PropTypes.bool,
   placeholder: PropTypes.string,
+  onlyFolderishSelectable: PropTypes.bool,
 };
 
 ObjectBrowserWidgetComponent.defaultProps = {
