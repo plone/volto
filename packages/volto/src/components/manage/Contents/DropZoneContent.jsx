@@ -113,7 +113,7 @@ const DropZoneContent = (props) => {
         validFiles.push(newFiles[i]);
       }
     }
-    setDroppedFiles((prev) => prev.concat(newFiles));
+    setDroppedFiles((prev) => prev.concat(validFiles));
     setTotalFiles((prev) => prev + validFiles.length);
     setShowModal(true);
   };
@@ -195,7 +195,7 @@ const DropZoneContent = (props) => {
         )}
       </div>
       <Modal
-        open={showModal}
+        open={totalFiles > 0 && showModal}
         onClose={handleCloseModal}
         className="contents-upload-modal"
       >
