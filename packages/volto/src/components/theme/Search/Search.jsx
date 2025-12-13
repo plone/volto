@@ -58,7 +58,7 @@ function Search(props) {
         ...options,
       }),
     );
-  }, [dispatch, defaultPageSize, props.history.location.search]);
+  }, [dispatch, defaultPageSize, props.history]);
 
   useEffect(() => {
     doSearch();
