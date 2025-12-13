@@ -74,7 +74,8 @@ context('Test Field Type in form ', () => {
     });
     it('Test Link Document/News/Event Field Type', function () {
       cy.get('.objectbrowser-field > .selected-values').click();
-      cy.get('svg.icon.home-icon').click();
+      cy.get('.ui.breadcrumb', { timeout: 10000 }).should('be.visible');
+      cy.get('svg.icon.home-icon').should('be.visible').click();
       cy.get('li').last().click();
       cy.findAllByText('Link to Document/Event/News').click();
       cy.get('.objectbrowser-field > .selected-values > div.ui.label').should(
