@@ -123,7 +123,7 @@ export declare const ColorPickerWidget: import("@loadable/component").LoadableCo
 export declare const DatetimeWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const TimeWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const RecurrenceWidget: import("@loadable/component").LoadableClassComponent<any>;
-export declare const FormFieldWrapper: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export declare const FormFieldWrapper: import("@loadable/component").LoadableComponent<any>;
 export declare const Size: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ButtonsWidget").ButtonsWidgetProps>;
 export declare const BlockAlignment: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ButtonsWidget").ButtonsWidgetProps>;
 export declare const BlockWidth: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Widgets/ButtonsWidget").ButtonsWidgetProps>;
