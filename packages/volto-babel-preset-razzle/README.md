@@ -21,7 +21,7 @@ Then create a file named `.babelrc` with the following contents in the root fold
 
 ```js
 {
-  "presets": ["@volto/razzle"]
+  "presets": ["@plone/razzle"]
 }
 ```
 
