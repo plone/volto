@@ -3,14 +3,14 @@
  * @module components/theme/PasswordReset/PasswordReset
  */
 
-import React, { Component } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { Container } from 'semantic-ui-react';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { Form } from '@plone/volto/components/manage/Form';
 import { setInitialPassword } from '@plone/volto/actions/users/users';
@@ -90,213 +90,156 @@ const messages = defineMessages({
 });
 
 /**
- * PasswordReset class.
- * @class PasswordReset
- * @extends Component
+ * @function PasswordReset
+ * @param {Object} props
+ * @returns {JSX.Element}
  */
-class PasswordReset extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    loading: PropTypes.bool.isRequired,
-    loaded: PropTypes.bool.isRequired,
-    error: PropTypes.string,
-    token: PropTypes.string.isRequired,
-    setInitialPassword: PropTypes.func.isRequired,
-  };
+function PasswordReset(props) {
+  const { loading, loaded, error, token, setInitialPassword, history } = props;
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    error: null,
-  };
+  const [localError, setLocalError] = useState(null);
+  const [isSuccessful, setIsSuccessful] = useState(false);
+  const intl = useIntl();
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs Controlpanel
-   */
-  constructor(props) {
-    super(props);
-    this.onCancel = this.onCancel.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.state = {
-      error: null,
-      isSuccessful: false,
-    };
+  const identifierField = config.settings.useEmailAsLogin
+    ? 'email'
+    : 'username';
 
-    this.identifierField = config.settings.useEmailAsLogin
-      ? 'email'
-      : 'username';
+  const identifierTitle =
+    identifierField === 'email'
+      ? intl.formatMessage(messages.emailTitle)
+      : intl.formatMessage(messages.usernameTitle);
 
-    this.identifierTitle =
-      this.identifierField === 'email'
-        ? this.props.intl.formatMessage(messages.emailTitle)
-        : this.props.intl.formatMessage(messages.usernameTitle);
+  const identifierDescription =
+    identifierField === 'email'
+      ? intl.formatMessage(messages.emailDescription)
+      : intl.formatMessage(messages.usernameDescription);
 
-    this.identifierDescription =
-      this.identifierField === 'email'
-        ? this.props.intl.formatMessage(messages.emailDescription)
-        : this.props.intl.formatMessage(messages.usernameDescription);
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.loading && nextProps.loaded) {
-      this.setState({ isSuccessful: true });
+  useEffect(() => {
+    if (!loading && loaded) {
+      setIsSuccessful(true);
     }
-  }
+  }, [loading, loaded]);
 
   /**
    * Submit handler
    * @method onSubmit
    * @param {object} data Form data.
-   * @param {object} event Form data.
    * @returns {undefined}
    */
-  onSubmit(data) {
+  const onSubmit = (data) => {
     if (data.password === data.passwordRepeat) {
-      this.props.setInitialPassword(
-        data[this.identifierField],
-        this.props.token,
-        data.password,
-      );
-      this.setState({
-        error: null,
-      });
+      setInitialPassword(data[identifierField], token, data.password);
+      setLocalError(null);
     } else {
-      this.setState({
-        error: {
-          message: this.props.intl.formatMessage(messages.passwordsDoNotMatch),
-        },
+      setLocalError({
+        message: intl.formatMessage(messages.passwordsDoNotMatch),
       });
     }
-  }
+  };
 
   /**
    * Cancel handler
    * @method onCancel
    * @returns {undefined}
    */
-  onCancel() {
-    this.props.history.goBack();
+  const onCancel = () => {
+    history.goBack();
+  };
+
+  if (isSuccessful) {
+    return (
+      <Container>
+        <h1 className="documentFirstHeading">
+          <FormattedMessage
+            id="Account activation completed"
+            defaultMessage="Account activation completed"
+          />
+        </h1>
+        <p className="description">
+          <FormattedMessage
+            id="Your password has been set successfully. You may now {link} with your new password."
+            defaultMessage="Your password has been set successfully. You may now {link} with your new password."
+            values={{
+              link: (
+                <Link to="/login">{intl.formatMessage({ id: 'Log In' })}</Link>
+              ),
+            }}
+          />
+        </p>
+      </Container>
+    );
   }
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    if (this.state.isSuccessful) {
-      return (
+  if (token) {
+    const errmsg = error ? error.response?.body?.error || error : null;
+    return (
+      <div id="page-password-reset">
+        <Helmet title={intl.formatMessage(messages.passwordReset)} />
         <Container>
-          <h1 className="documentFirstHeading">
-            <FormattedMessage
-              id="Account activation completed"
-              defaultMessage="Account activation completed"
-            />
-          </h1>
-          <p className="description">
-            <FormattedMessage
-              id="Your password has been set successfully. You may now {link} with your new password."
-              defaultMessage="Your password has been set successfully. You may now {link} with your new password."
-              values={{
-                link: (
-                  <Link to="/login">
-                    {this.props.intl.formatMessage({ id: 'Log In' })}
-                  </Link>
-                ),
-              }}
-            />
-          </p>
-        </Container>
-      );
-    }
-    if (this.props.token) {
-      const errmsg = this.props.error
-        ? this.props.error.response.body.error
-        : null;
-      return (
-        <div id="page-password-reset">
-          <Helmet
-            title={this.props.intl.formatMessage(messages.passwordReset)}
-          />
-          <Container>
-            <Form
-              title={this.props.intl.formatMessage(messages.title)}
-              description={this.props.intl.formatMessage(messages.description)}
-              onSubmit={this.onSubmit}
-              onCancel={this.onCancel}
-              error={this.state.error || errmsg}
-              schema={{
-                fieldsets: [
-                  {
-                    id: 'default',
-                    title: this.props.intl.formatMessage(messages.default),
-                    fields: [
-                      this.identifierField,
-                      'password',
-                      'passwordRepeat',
-                    ],
-                  },
-                ],
-                properties: {
-                  [this.identifierField]: {
-                    type: 'string',
-                    title: this.identifierTitle,
-                    description: this.identifierDescription,
-                  },
-                  password: {
-                    description: this.props.intl.formatMessage(
-                      messages.passwordDescription,
-                    ),
-                    title: this.props.intl.formatMessage(
-                      messages.passwordTitle,
-                    ),
-                    type: 'string',
-                    widget: 'password',
-                  },
-                  passwordRepeat: {
-                    description: this.props.intl.formatMessage(
-                      messages.passwordRepeatDescription,
-                    ),
-                    title: this.props.intl.formatMessage(
-                      messages.passwordRepeatTitle,
-                    ),
-                    type: 'string',
-                    widget: 'password',
-                  },
+          <Form
+            title={intl.formatMessage(messages.title)}
+            description={intl.formatMessage(messages.description)}
+            onSubmit={onSubmit}
+            onCancel={onCancel}
+            error={localError || errmsg}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: intl.formatMessage(messages.default),
+                  fields: [identifierField, 'password', 'passwordRepeat'],
                 },
-                submitLabel: this.props.intl.formatMessage(
-                  messages.setMyPassword,
-                ),
-                required: [this.identifierField, 'password', 'passwordRepeat'],
-              }}
-            />
-          </Container>
-        </div>
-      );
-    }
-    return <div />;
+              ],
+              properties: {
+                [identifierField]: {
+                  type: 'string',
+                  title: identifierTitle,
+                  description: identifierDescription,
+                },
+                password: {
+                  description: intl.formatMessage(messages.passwordDescription),
+                  title: intl.formatMessage(messages.passwordTitle),
+                  type: 'string',
+                  widget: 'password',
+                },
+                passwordRepeat: {
+                  description: intl.formatMessage(
+                    messages.passwordRepeatDescription,
+                  ),
+                  title: intl.formatMessage(messages.passwordRepeatTitle),
+                  type: 'string',
+                  widget: 'password',
+                },
+              },
+              submitLabel: intl.formatMessage(messages.setMyPassword),
+              required: [identifierField, 'password', 'passwordRepeat'],
+            }}
+          />
+        </Container>
+      </div>
+    );
   }
+
+  return <div />;
 }
+
+PasswordReset.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  loaded: PropTypes.bool.isRequired,
+  error: PropTypes.object,
+  token: PropTypes.string.isRequired,
+  setInitialPassword: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+};
+
+PasswordReset.defaultProps = {
+  error: null,
+};
 
 export default compose(
   withRouter,
-  injectIntl,
   connect(
     (state, props) => ({
       loading: state.users.initial.loading,
