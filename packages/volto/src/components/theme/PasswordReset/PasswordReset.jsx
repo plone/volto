@@ -91,29 +91,9 @@ const messages = defineMessages({
     id: 'Password reset',
     defaultMessage: 'Password reset',
   },
-  errorDefault: {
-    id: 'Something went wrong. Please contact the website admin {site_admin}.',
-    defaultMessage:
-      'Something went wrong. Please contact the website admin {site_admin}.',
-  },
   errorInvalidUsername: {
     id: 'Username is invalid. Please check and try again.',
     defaultMessage: 'Username is invalid. Please check and try again.',
-  },
-  errorBadRequest: {
-    id: 'We couldn’t process your request. Please check your input and try again.',
-    defaultMessage:
-      'We couldn’t process your request. Please check your input and try again.',
-  },
-  errorUnauthorized: {
-    id: 'You are trying to access a protected resource, please {login} first.',
-    defaultMessage:
-      'You are trying to access a protected resource, please {login} first.',
-  },
-  errorServerError: {
-    id: 'Server error. Please contact the website admin {site_admin}.',
-    defaultMessage:
-      'Server error. Please contact the website admin {site_admin}.',
   },
 });
 
@@ -187,41 +167,10 @@ class PasswordReset extends Component {
     }
     if (this.props.loading && nextProps.error) {
       const status = nextProps.error?.response?.status;
-
-      let message = this.props.intl.formatMessage(messages.errorDefault, {
-        site_admin: (
-          <Link to="/contact-form">
-            <FormattedMessage
-              id="Site Administration"
-              defaultMessage="Site Administration"
-            />
-          </Link>
-        ),
-      });
+      let message = nextProps.error.response?.body?.error?.message;
 
       if (status === 404) {
         message = this.props.intl.formatMessage(messages.errorInvalidUsername);
-      } else if (status === 400) {
-        message = this.props.intl.formatMessage(messages.errorBadRequest);
-      } else if (status === 401) {
-        message = this.props.intl.formatMessage(messages.errorUnauthorized, {
-          login: (
-            <Link to="/login">
-              <FormattedMessage id="Log in" defaultMessage="Log in" />
-            </Link>
-          ),
-        });
-      } else if (status === 500) {
-        message = this.props.intl.formatMessage(messages.errorServerError, {
-          site_admin: (
-            <Link to="/contact-form">
-              <FormattedMessage
-                id="Site Administration"
-                defaultMessage="Site Administration"
-              />
-            </Link>
-          ),
-        });
       }
 
       this.setState({

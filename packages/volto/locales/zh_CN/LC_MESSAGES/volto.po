@@ -2201,7 +2201,6 @@ msgstr "登录"
 #. Default: "Log in"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
-#: components/theme/PasswordReset/PasswordReset
 msgid "Log in"
 msgstr "登录"
 
@@ -3393,11 +3392,6 @@ msgstr "发送一条带设置密码链接的确认邮件"
 msgid "Server Error"
 msgstr ""
 
-#. Default: "Server error. Please contact the website admin {site_admin}."
-#: components/theme/PasswordReset/PasswordReset
-msgid "Server error. Please contact the website admin {site_admin}."
-msgstr ""
-
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
@@ -3513,7 +3507,6 @@ msgstr "登录以开始session会话"
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "网站管理员"
@@ -3554,11 +3547,6 @@ msgstr ""
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
-msgstr ""
-
-#. Default: "Something went wrong. Please contact the website admin {site_admin}."
-#: components/theme/PasswordReset/PasswordReset
-msgid "Something went wrong. Please contact the website admin {site_admin}."
 msgstr ""
 
 #. Default: "Sorry, something went wrong with your request"
@@ -4435,11 +4423,6 @@ msgstr ""
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "很抱歉，您没有访问该资源的权限。"
 
-#. Default: "We couldn’t process your request. Please check your input and try again."
-#: components/theme/PasswordReset/PasswordReset
-msgid "We couldn’t process your request. Please check your input and try again."
-msgstr ""
-
 #. Default: "The"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
@@ -4539,7 +4522,6 @@ msgid "You are about to delete all items in the current pagination of this folde
 msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "你正在尝试访问受保护的资源，请先{login}"

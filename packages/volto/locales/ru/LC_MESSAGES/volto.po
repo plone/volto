@@ -2200,7 +2200,6 @@ msgstr "Войти"
 #. Default: "Log in"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
-#: components/theme/PasswordReset/PasswordReset
 msgid "Log in"
 msgstr "Войти"
 
@@ -3392,11 +3391,6 @@ msgstr "Отправить письмо с подтверждением и сс�
 msgid "Server Error"
 msgstr "Ошибка сервера"
 
-#. Default: "Server error. Please contact the website admin {site_admin}."
-#: components/theme/PasswordReset/PasswordReset
-msgid "Server error. Please contact the website admin {site_admin}."
-msgstr ""
-
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
@@ -3512,7 +3506,6 @@ msgstr "Войдите, чтобы начать сеанс"
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
 msgstr "Администрирование сайта"
@@ -3554,11 +3547,6 @@ msgstr ""
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
 msgstr "Некоторые связи нарушены. Пожалуйста, исправьте."
-
-#. Default: "Something went wrong. Please contact the website admin {site_admin}."
-#: components/theme/PasswordReset/PasswordReset
-msgid "Something went wrong. Please contact the website admin {site_admin}."
-msgstr ""
 
 #. Default: "Sorry, something went wrong with your request"
 #: error
@@ -4434,11 +4422,6 @@ msgstr "Приносим извинения за неудобства, но на
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "Приносим извинения за неудобства, но у вас нет прав на доступ к этому ресурсу."
 
-#. Default: "We couldn’t process your request. Please check your input and try again."
-#: components/theme/PasswordReset/PasswordReset
-msgid "We couldn’t process your request. Please check your input and try again."
-msgstr ""
-
 #. Default: "The"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"
@@ -4538,7 +4521,6 @@ msgid "You are about to delete all items in the current pagination of this folde
 msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/PasswordReset/PasswordReset
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Вы пытаетесь получить доступ к защищенному ресурсу, пожалуйста, сначала выполните {login}."
