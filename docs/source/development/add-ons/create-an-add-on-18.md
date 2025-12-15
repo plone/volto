@@ -12,7 +12,8 @@ myst:
 This chapter describes how you can create an add-on using Volto 18 and 19 for the Plone user interface, while having full control over its development and deployment.
 
 ```{note}
-As of December 2024, Cookieplone defaults to the latest stable Volto version (currently 18.30.1). To create an add-on for a specific version like Volto 19, you can specify the version when prompted during the generation process.
+As of December 2024, Cookieplone defaults to the latest stable Volto version.
+To create an add-on for a specific version, you can specify the version when prompted during the generation process.
 ```
 
 ```{versionadded} Volto 18.0.0-alpha.43
