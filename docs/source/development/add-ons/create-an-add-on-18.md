@@ -190,7 +190,7 @@ Proxying API requests from http://localhost:3000/++api++ to http://localhost:808
 Note that the Plone frontend uses an internal proxy server to connect with the Plone backend.
 Open a browser at the following URL to visit your Plone site.
 
-[http://localhost:3000](http://localhost:3000)
+http://localhost:3000
 
 You will see a page similar to the following.
 
