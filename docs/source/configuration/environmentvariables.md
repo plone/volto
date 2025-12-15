@@ -252,3 +252,9 @@ In the frontend, you can access this variable in your code with the following.
 ```shell
 window.env.RAZZLE_MY_VARIABLE
 ```
+## Related content
+
+- [Volto configuration overview](index.md)
+- [volto.config.js](volto-config-js.md)
+- [Settings reference](settings-reference.md)
+- [Multilingual configuration](multilingual.md)
