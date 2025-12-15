@@ -254,7 +254,8 @@ window.env.RAZZLE_MY_VARIABLE
 ```
 ## Related content
 
-- [Volto configuration overview](index.md)
-- [volto.config.js](volto-config-js.md)
-- [Settings reference](settings-reference.md)
-- [Multilingual configuration](multilingual.md)
+- {doc}`index`
+- {doc}`volto-config-js`
+- {doc}`settings-reference`
+- {doc}`multilingual`
+
