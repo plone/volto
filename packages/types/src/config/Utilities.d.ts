@@ -1,6 +1,9 @@
-// Define method signatures for known utility types
-// Users can extend this interface via declaration merging to add custom utility types
-export interface UtilityTypeSignatures {
+/**
+ * Map utility "type" to its method signature.
+ * Extend via module augmentation:
+ * declare module '@plone/types' { interface UtilityTypeMap { foo: (id: string) => string } }
+ */
+export interface UtilityTypeMap {
   validator: (
     id: string,
     value: any,
@@ -13,8 +16,17 @@ export interface UtilityTypeSignatures {
   fieldFactoryProperties: (intl: any) => Record<string, any>;
 }
 
-// Base utility type for unknown utility types
-export type Utility = Record<string, { method: (...args: any[]) => any }>;
+type UtilityMethodFor<Type extends string> = Type extends keyof UtilityTypeMap
+  ? UtilityTypeMap[Type]
+  : (...args: any[]) => any;
 
-// Typed utility configuration that enforces method signatures for known types
-export type UtilitiesConfig = Record<string, Utility>;
+export type Utility<Type extends string = string> = Record<
+  string,
+  { method: UtilityMethodFor<Type> }
+>;
+
+type UtilitiesByMap = {
+  [Type in keyof UtilityTypeMap]: Utility<Type>;
+};
+
+export type UtilitiesConfig = UtilitiesByMap & Record<string, Utility>;
