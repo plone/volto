@@ -1,29 +1,21 @@
 import React from 'react';
 import { BlockToolbar } from './BlockToolbar';
-import {
-  Button,
-  Checkbox,
-  Group,
-  Separator,
-  Text,
-  ToggleButton,
-} from 'react-aria-components';
+import { Group, Separator, Text, ToggleButton } from 'react-aria-components';
 import { Menu, MenuItem } from '../Menu/Menu';
 
-import { BoldIcon } from '../Icons/BoldIcon';
-import { ItalicIcon } from '../Icons/ItalicIcon';
-import { LinkIcon } from '../Icons/LinkIcon';
+import { BoldIcon } from '../icons/BoldIcon';
+import { ItalicIcon } from '../icons/ItalicIcon';
+import { LinkIcon } from '../icons/LinkIcon';
 
-import type { Meta } from '@storybook/react';
-import { SettingsIcon } from '../Icons/SettingsIcon';
-import { RowbeforeIcon } from '../Icons/RowbeforeIcon';
-import { RowafterIcon } from '../Icons/RowafterIcon';
-import { MoreoptionsIcon } from '../Icons/MoreoptionsIcon';
-import { BinIcon } from '../Icons/BinIcon';
-
-import '../../styles/basic/BlockToolbar.css';
+import type { Meta } from '@storybook/react-vite';
+import { SettingsIcon } from '../icons/SettingsIcon';
+import { RowbeforeIcon } from '../icons/RowbeforeIcon';
+import { RowafterIcon } from '../icons/RowafterIcon';
+import { MoreoptionsIcon } from '../icons/MoreoptionsIcon';
+import { BinIcon } from '../icons/BinIcon';
 
 const meta: Meta<typeof BlockToolbar> = {
+  title: 'Basic/BlockToolbar',
   component: BlockToolbar,
   parameters: {
     layout: 'centered',

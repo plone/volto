@@ -19,7 +19,7 @@ afterEach(async () => {
 
 describe('Get Type', () => {
   test('Successful', async () => {
-    const result = await cli.getType({ contentPath: 'Document' });
+    const result = await cli.getType({ contentType: 'Document' });
 
     expect(result.data).toHaveProperty('title');
     expect(result.data).toHaveProperty('type');
@@ -27,7 +27,7 @@ describe('Get Type', () => {
 
   test('Failure', async () => {
     try {
-      await cli.getType({ contentPath: 'blah' });
+      await cli.getType({ contentType: 'blah' });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

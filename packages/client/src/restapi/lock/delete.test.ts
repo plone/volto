@@ -1,8 +1,7 @@
-import { setup, teardown } from '../../utils/test';
+import { loginWithCreate, setup, teardown } from '../../utils/test';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 import PloneClient from '../../client';
 import { v4 as uuid } from 'uuid';
-import { loginWithCreate } from '../../utils/test';
 import type { RequestError } from '../types';
 
 const cli = PloneClient.initialize({

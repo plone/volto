@@ -1,22 +1,31 @@
-# Check links in all README.mds with awesome_bot
-# https://github.com/dkhamsing/awesome_bot
-name: readme-link-check
+# Check links in all README.mds with Lychee
+# https://github.com/lycheeverse/lychee-action
+name: README.md link check
 
 on:
   push:
-    branches: ['*']
+    branches: [ '*' ]
 
 jobs:
-  build:
+  readme-link-checker:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Ruby 3.2
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2
-      - name: Check links in README.md with awesome_bot
-        run: |
-          gem install awesome_bot
-          awesome_bot --request-delay 1 --allow-dupe --white-list http://localhost:8080/Plone,http://localhost:8080,http://localhost:3000,https://github.com/kitconcept/volto-blocks-grid.git,https://my-server-DNS-name.tld/api --files PACKAGES.md,README.md,packages/blocks/README.md,packages/client/README.md,packages/components/README.md,packages/registry/README.md,packages/scripts/README.md,packages/tsconfig/README.md,packages/types/README.md,packages/volto-slate/README.md,apps/nextjs/README.md
+    - uses: actions/checkout@v4
+    - name: Check links in README.md with Lychee
+      id: lychee
+      uses: lycheeverse/lychee-action@v2
+      with:
+        fail: true
+        args: >-
+          --timeout 5
+          --max-retries 2
+          --exclude https://www.npmjs.com/
+          --exclude http://localhost:8080
+          --exclude http://localhost:3000
+          --exclude https://github.com/kitconcept/volto-blocks-grid.git
+          --exclude https://my-server-DNS-name.tld/api
+          --exclude 2021.ploneconf.org
+          --exclude https://www.lanku.eus/
+          --exclude https://medium.com/
+          '**/README.md'
+          'PACKAGES.md'

@@ -13,6 +13,7 @@ import videoBlockSVG from '@plone/volto/components/manage/Blocks/Video/block-vid
 import Body from '@plone/volto/components/manage/Blocks/Video/Body';
 import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 import config from '@plone/volto/registry';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   VideoFormDescription: {
@@ -91,7 +92,7 @@ const Edit = (props) => {
       ) : (
         <Message>
           <center>
-            <img src={videoBlockSVG} alt="" />
+            <Image src={videoBlockSVG} alt="" />
             <p>
               {intl.formatMessage(messages.allowedURLs, {
                 sources:
@@ -100,6 +101,7 @@ const Edit = (props) => {
                     : 'Youtube, Vimeo',
               })}
             </p>
+
             <div className="toolbar-inner">
               <Input
                 onKeyDown={onKeyDownVariantMenuForm}
