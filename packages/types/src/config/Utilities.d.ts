@@ -4,17 +4,22 @@
  * declare module '@plone/types' { interface UtilityTypeMap { foo: (id: string) => string } }
  */
 export interface UtilityTypeMap {
-  validator: (
-    id: string,
-    value: any,
-    intl: any,
-    formatMessage: any,
-    schema: any,
-  ) => string | undefined;
+  validator: ValidatorUtility;
   transform: (data: any) => any;
   fieldFactoryInitialData: (intl: any) => Record<string, any>;
   fieldFactoryProperties: (intl: any) => Record<string, any>;
 }
+
+export type ValidatorUtilityArgs = {
+  value: any;
+  field: Record<string, any>;
+  formData: any;
+  formatMessage: (...args: any[]) => any;
+};
+
+export type ValidatorUtility = (
+  options: ValidatorUtilityArgs,
+) => string | null | undefined;
 
 type UtilityMethodFor<Type extends string> = Type extends keyof UtilityTypeMap
   ? UtilityTypeMap[Type]
