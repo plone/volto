@@ -6,9 +6,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { Link, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Container as SemanticContainer,
   Dropdown,
@@ -22,7 +21,6 @@ import reverse from 'lodash/reverse';
 import find from 'lodash/find';
 import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import IconNext from '@plone/volto/components/theme/Icon/Icon';
@@ -57,27 +55,24 @@ const messages = defineMessages({
  * @returns {JSX.Element} 
  */
 const History = (props) => {
+  const { staticContext } = props;
   const [isClient, setIsClient] = useState(false);
-
-  const {
-    getHistory: getHistoryAction,
-    revertHistory: revertHistoryAction,
-    revertRequest,
-    pathname,
-    entries: entriesProp,
-    title,
-    objectActions,
-    token,
-    staticContext,
-  } = props;
-
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const pathname = location.pathname;
   const intl = useIntl();
+
+  const objectActions = useSelector((state) => state.actions.actions.object);
+  const token = useSelector((state) => state.userSession.token);
+  const entriesProp = useSelector((state) => state.history.entries);
+  const title = useSelector((state) => state.content.data?.title);
+  const revertRequest = useSelector((state) => state.history.revert);
 
   const onRevert = useCallback(
     (event, { value }) => {
-      revertHistoryAction(getBaseUrl(pathname), value);
+      dispatch(revertHistory(getBaseUrl(pathname), value));
     },
-    [revertHistoryAction, pathname],
+    [dispatch, pathname],
   );
 
   const processHistoryEntries = useCallback(() => {
@@ -101,15 +96,16 @@ const History = (props) => {
   }, [entriesProp]);
 
   useEffect(() => {
-    getHistoryAction(getBaseUrl(pathname));
+    dispatch(listActions(getBaseUrl(pathname)));
+    dispatch(getHistory(getBaseUrl(pathname)));
     setIsClient(true);
-  }, [getHistoryAction, pathname]);
+  }, [dispatch, pathname]);
 
   useEffect(() => {
     if (revertRequest.loading && revertRequest.loaded) {
-      getHistoryAction(getBaseUrl(pathname));
+      dispatch(getHistory(getBaseUrl(pathname)));
     }
-  }, [revertRequest.loading, revertRequest.loaded, getHistoryAction, pathname]);
+  }, [dispatch, revertRequest.loading, revertRequest.loaded, pathname]);
 
   const historyAction = find(objectActions, {
     id: 'history',
@@ -323,25 +319,4 @@ History.defaultProps = {
   staticContext: null,
 };
 
-export default compose(
-  asyncConnect([
-    {
-      key: 'actions',
-      // Dispatch async/await to make the operation synchronous, otherwise it returns
-      // before the promise is resolved
-      promise: async ({ location, store: { dispatch } }) =>
-        await dispatch(listActions(getBaseUrl(location.pathname))),
-    },
-  ]),
-  connect(
-    (state, props) => ({
-      objectActions: state.actions.actions.object,
-      token: state.userSession.token,
-      entries: state.history.entries,
-      pathname: props.location.pathname,
-      title: state.content.data?.title,
-      revertRequest: state.history.revert,
-    }),
-    { getHistory, revertHistory },
-  ),
-)(History);
+export default History;
