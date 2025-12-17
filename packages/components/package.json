@@ -1,0 +1,146 @@
+{
+  "name": "@plone/components",
+  "description": "ReactJS components for Plone",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "http://plone.org"
+    }
+  ],
+  "license": "MIT",
+  "version": "4.0.0-alpha.4",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/plone/volto.git",
+    "directory": "packages/components"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "vite-plugin.*"
+  ],
+  "main": "./dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    "./icons": {
+      "types": "./src/icons.d.ts"
+    },
+    "./icons/*": "./src/icons/*",
+    "./Icons": {
+      "import": "./dist/components/icons/index.js",
+      "default": "./dist/components/icons/index.cjs"
+    },
+    "./vite-plugin-svgr": {
+      "import": "./vite-plugin-svgr.js",
+      "types": "./vite-plugin-svgr.d.ts"
+    },
+    "./dist/*.css": "./dist/*.css",
+    "./src/*": "./src/*",
+    "./quanta": {
+      "import": "./dist/quanta/index.js",
+      "default": "./dist/quanta/index.cjs"
+    },
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "react",
+    "cms",
+    "components",
+    "quanta",
+    "icons"
+  ],
+  "scripts": {
+    "build": "tsup && pnpm build:css",
+    "build:watch": "tsup --watch && pnpm build:css",
+    "build:force": "tsup && pnpm build:css",
+    "build:css": "pnpm build:basic && pnpm build:quanta",
+    "build:basic": "lightningcss --browserslist --bundle --sourcemap src/styles/basic/main.css -o basic.css && mv basic.css* dist/.",
+    "build:quanta": "lightningcss --browserslist --bundle --sourcemap src/styles/quanta/main.css -o quanta.css && mv quanta.css* dist/.",
+    "check:exports": "attw --pack .",
+    "check:ts": "tsc --project tsconfig.json",
+    "test": "vitest --passWithNoTests",
+    "coverage": "vitest run --coverage --no-threads",
+    "lint": "pnpm eslint && pnpm prettier && pnpm stylelint && pnpm check:ts",
+    "format": "pnpm eslint:fix && pnpm prettier:fix && pnpm stylelint:fix",
+    "eslint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
+    "eslint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+    "prettier": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'",
+    "prettier:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "stylelint": "stylelint 'src/**/*.{css,scss,less}'",
+    "stylelint:fix": "stylelint 'src/**/*.{css,scss,less}' --fix",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "browserslist": [
+    ">0.5%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "@react-aria/utils": "^3.31.0",
+    "@react-spectrum/utils": "^3.12.9",
+    "clsx": "^2.1.1",
+    "react-aria": "^3.44.0",
+    "react-aria-components": "^1.13.0",
+    "react-stately": "^3.42.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwind-variants": "^1.0.0",
+    "tailwindcss": "^4.1.12",
+    "tailwindcss-animate": "^1.0.7",
+    "@internationalized/date": "^3.10.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.16.4",
+    "@plone/types": "workspace: *",
+    "@react-types/shared": "^3.32.1",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@tailwindcss/vite": "^4.1.4",
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest-axe": "^3.5.7",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^5.0.2",
+    "@vitest/coverage-v8": "^3.2.4",
+    "browserslist": "^4.23.0",
+    "jest-axe": "^8.0.0",
+    "jsdom": "^22.1.0",
+    "lightningcss": "^1.29.0",
+    "lightningcss-cli": "^1.29.1",
+    "release-it": "^19.0.5",
+    "tailwindcss-react-aria-components": "^2.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vite": "^6.3.3",
+    "vite-plugin-svgr": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4",
+    "vitest-axe": "^0.1.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  }
+}

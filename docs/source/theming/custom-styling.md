@@ -7,9 +7,10 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Custom, Styling, Semantic UI, LESS, Pastanaga"
 ---
 
-# Custom Styling
+# Semantic UI custom styling
 
-## Semantic UI
+```{include} ../_inc/_semantic-ui-deprecation.md
+```
 
 For styling our website in Volto we use Semantic UI. It uses LESS as
 the underlying technology. By default Volto uses the Pastanaga theme but any
@@ -55,7 +56,7 @@ both) files (including the matching folder structure) in your theme folder.
 ## Pastanaga UI Theme
 
 Volto implements Pastanaga UI theme, a new theme for Content Management Systems
-created and designed by [Albert Casado](https://twitter.com/albertcasado).
+created and designed by [Albert Casado](https://github.com/albertcasado).
 For more info:
 
 * https://pastanaga.io
@@ -69,7 +70,7 @@ Volto look and feel is a Semantic UI theme that implements Pastanaga UI, called
 You can find it in the source code:
 `node_modules/@plone/volto/theme/themes/pastanaga`
 or on Github:
-https://github.com/plone/volto/tree/master/theme/themes/pastanaga
+https://github.com/plone/volto/tree/main/packages/volto/theme/themes/pastanaga
 ```
 
 Pastanaga Theme is an example on how to customize the default Semantic UI look

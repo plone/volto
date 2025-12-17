@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FilterList > renders filters listing component for search block 1`] = `
+<div
+  className="accordion ui filter-listing"
+>
+  <div
+    className="title filter-list-header"
+    onClick={[Function]}
+  >
+    <div
+      className="filter-list-title"
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "currentColor",
+            "height": "18px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+      Current filters applied
+      : 
+      1
+    </div>
+    <button
+      className="ui small basic compact icon button"
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        aria-hidden="true"
+        className="trash icon"
+        onClick={[Function]}
+      />
+      Clear filters
+    </button>
+  </div>
+  <div
+    className="content filter-list-content"
+  >
+    <div
+      className="filter-list"
+    >
+      <div>
+        <div
+          className="filter-list-group"
+        >
+          <span
+            className="label-title"
+          >
+            Portal type
+          </span>
+          <div
+            className="ui small label"
+            onClick={[Function]}
+          >
+            Document
+            <i
+              aria-hidden="true"
+              className="delete icon"
+              onClick={[Function]}
+            />
+          </div>
+          <div
+            className="ui small label"
+            onClick={[Function]}
+          >
+            Folder
+            <i
+              aria-hidden="true"
+              className="delete icon"
+              onClick={[Function]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

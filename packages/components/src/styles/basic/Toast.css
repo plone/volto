@@ -1,0 +1,84 @@
+.react-aria-ToastRegion {
+  --toast-bg: #021322;
+  --toast-fg: #fff;
+
+  position: fixed;
+
+  bottom: 8px;
+  left: 50%;
+
+  display: flex;
+  flex-direction: column-reverse;
+
+  border-radius: 8px;
+  gap: 8px;
+  outline: none;
+  transform: translateX(-50%);
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--toast-bg);
+    outline-offset: 2px;
+  }
+}
+
+.react-aria-Toast {
+  &.error {
+    --toast-bg: #6d030a;
+  }
+
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  background: var(--toast-bg);
+  box-shadow: 0px 2px 4px 0px #f0f1f2;
+  color: var(--toast-fg);
+  gap: 16px;
+  outline: none;
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--toast-bg);
+    outline-offset: 2px;
+  }
+
+  .react-aria-ToastContent {
+    display: flex;
+    min-width: 0px;
+    flex: 1 1 auto;
+    flex-direction: column;
+
+    [slot='title'] {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  .react-aria-Button[slot='close'] {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border: none;
+    border-radius: 50%;
+    appearance: none;
+    background: none;
+    color: var(--toast-fg);
+    cursor: pointer;
+    font-size: 1rem;
+    outline: none;
+
+    &[data-focus-visible] {
+      box-shadow:
+        0 0 0 2px var(--toast-bg),
+        0 0 0 4px var(--toast-fg);
+    }
+
+    &[data-pressed] {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}

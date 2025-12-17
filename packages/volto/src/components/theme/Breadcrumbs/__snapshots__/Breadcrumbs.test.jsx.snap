@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Breadcrumbs > renders a breadcrumbs component 1`] = `
+<div
+  aria-label="Breadcrumbs"
+  className="ui secondary vertical segment breadcrumbs"
+  role="navigation"
+>
+  <div
+    className="ui container"
+  >
+    <div
+      className="ui breadcrumb"
+    >
+      <a
+        className="section"
+        href="/"
+        onClick={[Function]}
+        title="Home"
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<g fill-rule="evenodd"><path d="M18 4.826 4.476 13.148 5.524 14.851 18 7.174 30.476 14.851 31.524 13.148zM25 27 21 27 21 19 15 19 15 27 11 27 11 15 9 15 9 29 17 29 17 21 19 21 19 29 27 29 27 15 25 15z"/></g>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "18px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </a>
+      <div
+        className="divider"
+      >
+        /
+      </div>
+      <a
+        className="section"
+        href="/blog"
+        onClick={[Function]}
+      >
+        Blog
+      </a>
+      <div
+        className="divider"
+      >
+        /
+      </div>
+      <div
+        className="active section"
+        onClick={[Function]}
+      >
+        My first blog
+      </div>
+    </div>
+  </div>
+</div>
+`;

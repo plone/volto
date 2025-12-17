@@ -26,9 +26,11 @@ Volto also allows the selection of multiple contiguous blocks.
 This feature can be used by selecting a start block and an end block while holding the {kbd}`shift` key.
 This will select all the blocks between the start and end blocks, allowing you to copy, cut, or delete multiple blocks at once.
 
-```{video} /_static/user-manual/blocks/block-copy-cut.mp4
-    :width: 100%
+````{only} not text
+```{video} ../_static/user-manual/blocks/block-copy-cut.mp4
+:alt: Copy or cut a block in Volto
 ```
+````
 
 
 (paste-blocks-label)=
@@ -41,6 +43,8 @@ You can click the paste option <img alt="Paste icon" src="../_static/paste.svg" 
 
 Also if you hold the {kbd}`ctrl` key while clicking the paste button, it keeps the clipboard buffer, allowing you to repeatedly paste it.
 
-```{video} /_static/user-manual/blocks/block-paste.mp4
-    :width: 100%
+````{only} not text
+```{video} ../_static/user-manual/blocks/block-paste.mp4
+:alt: Paste a block in Volto
 ```
+````

@@ -7,14 +7,16 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Semantic UI, semantic-ui, third, party, libraries, themes"
 ---
 
+(volto-custom-theming-strategy)=
+
 # Using third party libraries and themes other than `semantic-ui`
 
-You can use Volto with third party libraries or themes written in SASS and avoid applying `semantic-ui` on public facing views.
+You can use Volto with third party libraries or themes written in Sass and avoid applying `semantic-ui` on public facing views.
 This is made possible by code splitting, where interfaces have a marker CSS class to encapsulate styles and avoid conflicts between `semantic-ui` and the custom theme you would use.
 
 ## The problem
 
-The main purpose could be to use a sass based theme like Bootstrap.
+The main purpose could be to use a Sass based theme like Bootstrap.
 If you want to load a different styling library using the base Volto configuration, you will load a huge bundle with both having weight and performance issues thus this would likely imply conflicts on base elements as containers.
 
 ## The solution
@@ -33,27 +35,34 @@ An example of this behavior is the blocks view: you are in a public view because
 
 ## Setting up the theme
 
-In your Volto project, customize the file `src/theme.js`:
+Customizing the base theme is a special use case in Volto.
+The original file is in Volto at {file}`volto/src/theme.js`.
+This is the file to be customized.
+In the {file}`customizations` folder, override it as {file}`customizations/@root/theme.js`, using the `@root` alias to avoid writing the full path.
+Edit the imports in this file to align with the following code.
 
-```diff
-- import 'semantic-ui-less/semantic.less';
-+ import '@plone/volto/../theme/themes/pastanaga-cms-ui/extras/cms-ui.semantic.less';
-import '@plone/volto/../theme/themes/pastanaga/extras/extras.less'
-
-+ // Import your site styles, i.e.:
-+ import '../theme/site.scss';
+```js
+import 'semantic-ui-less/semantic.less';
+import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
+// You can add more entry points for theming
+import '@kitconcept/volto-light-theme/theme/main.scss';
 ```
 
-Then, in your `theme.config` change the following and the needed variables:
+Then, copy the {file}`theme.config` file from core Volto ({file}`core/packages/volto/theme/theme.config`) to your add-on's {file}`src/theme/` folder.
+Change the following variable as shown.
 
 ```diff
 - @container   : 'pastanaga';
 + @container   : 'pastanaga-cms-ui';
 ```
 
-### Use sass loader
+### Use Sass loader
 
-If you have to load sass, you will need `razzle-plugin-scss` and you will have to customize `razzle.config.js` integrating that plugin into razzle configuration.
+```{versionremoved} Volto 18
+This section is no longer required since Volto 18.
+```
+
+If you have to load Sass, you will need `razzle-plugin-scss` and you will have to customize `razzle.config.js` integrating that plugin into Razzle configuration.
 
 Example:
 
@@ -89,7 +98,7 @@ module.exports = Object.assign({}, volto_config, {
 Complete example in an active project:
 https://github.com/RedTurtle/design-volto-theme/blob/master/razzle.config.js
 
-In that project, there is the sass loader and the svg loader, too.
+In that project, there is the Sass loader and the SVG loader, too.
 
 ### Including custom styles
 
@@ -118,3 +127,4 @@ For any other customization, you can put styles in your site theme and override 
 ## Example themes using this approach
 
 https://github.com/RedTurtle/design-volto-theme
+

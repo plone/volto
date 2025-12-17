@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { filter, isEmpty } from 'lodash';
+import filter from 'lodash/filter';
+import isEmpty from 'lodash/isEmpty';
 import { Menu } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import useUser from '@plone/volto/hooks/user/useUser';
 
 const emptySlateBlock = () => ({
   value: [
@@ -105,33 +107,46 @@ const PersistentSlashMenu = ({ editor }) => {
     selected,
     allowedBlocks,
     detached,
+    navRoot,
+    contentType,
   } = props;
   const disableNewBlocks = data?.disableNewBlocks || detached;
 
+  const user = useUser();
+
   const [slashMenuSelected, setSlashMenuSelected] = React.useState(0);
 
-  const useAllowedBlocks = !isEmpty(allowedBlocks);
+  const hasAllowedBlocks = !isEmpty(allowedBlocks);
   const slashCommand = data.plaintext
     ?.toLowerCase()
     .trim()
-    .match(/^\/([a-z]*)$/);
+    .match(/^\/([\p{L}]*)$/u);
 
   const availableBlocks = React.useMemo(
     () =>
       filter(blocksConfig, (item) =>
-        useAllowedBlocks
+        hasAllowedBlocks
           ? allowedBlocks.includes(item.id)
           : typeof item.restricted === 'function'
-          ? !item.restricted({ properties, block: item })
-          : !item.restricted,
+            ? !item.restricted({
+                properties,
+                block: item,
+                navRoot,
+                contentType,
+                user,
+              })
+            : !item.restricted,
       )
+        .filter((block) => Boolean(block.title && block.id))
         .filter((block) => {
           // typed text is a substring of the title or id
           const title = translateBlockTitle(block, intl).toLowerCase();
+          const originalTitle = block.title.toLowerCase();
           return (
             block.id !== 'slate' &&
             slashCommand &&
-            title.indexOf(slashCommand[1]) !== -1
+            (title.includes(slashCommand[1]) ||
+              originalTitle.includes(slashCommand[1]))
           );
         })
         .sort((a, b) => {
@@ -150,7 +165,10 @@ const PersistentSlashMenu = ({ editor }) => {
       intl,
       properties,
       slashCommand,
-      useAllowedBlocks,
+      hasAllowedBlocks,
+      navRoot,
+      contentType,
+      user,
     ],
   );
 

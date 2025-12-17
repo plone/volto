@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "types",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "preserveSymlinks": true,
+    "downlevelIteration": true,
+    "types": ["vitest/globals"],
+    "paths": {
+      "@plone/volto/*": ["./src/*"],
+      "react": ["./node_modules/@types/react"],
+      "react-dom": ["./node_modules/@types/react-dom"]
+    }
+  },
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.tsx"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "coverage",
+    "dist",
+    "types",
+    "**/*.test.js",
+    "**/*.test.tsx",
+    "**/*.test.ts"
+  ]
+}

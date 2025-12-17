@@ -1,4 +1,15 @@
-# Component Registry
+---
+myst:
+  html_meta:
+    "description": "Volto provides an integrated component registry that stores named references to components, allowing them to be queried programmatically."
+    "property=og:description": "Volto provides an integrated component registry that stores named references to components, allowing them to be queried programmatically."
+    "property=og:title": "Component registry in Volto"
+    "keywords": "Volto, Plone, frontend, React, registry, component"
+---
+
+(component-registry)=
+
+# Component registry
 
 The {term}`configuration registry` has a component registry integrated on itself.
 These registry stores by a given name the components.
@@ -23,7 +34,7 @@ config.registerComponent({
 
 ## Retrieving a component from the component registry
 
-You can programatically retrieve a component from the registry using `config.getComponent`:
+You can programmatically retrieve a component from the registry using `config.getComponent`:
 
 ```js
 const Toolbar = config.getComponent('Toolbar').component
@@ -78,7 +89,7 @@ config.registerComponent({
   });
 ```
 
-and then retrieve them both, depending on the use case (in the example, given a content type value comming from `content` prop):
+and then retrieve them both, depending on the use case (in the example, given a content type value coming from `content` prop):
 
 ```jsx
 <Component componentName="Toolbar" dependencies={[props.content['@type']]} {...props} />

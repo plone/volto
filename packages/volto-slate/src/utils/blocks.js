@@ -4,9 +4,13 @@ import config from '@plone/volto/registry';
 import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
-} from '@plone/volto/helpers';
-import _ from 'lodash';
+} from '@plone/volto/helpers/Blocks/Blocks';
+import find from 'lodash/find';
+import includes from 'lodash/includes';
+import some from 'lodash/some';
+import first from 'lodash/first';
 import { makeEditor } from './editor';
+import { safeEditorNodes } from './safe.js';
 
 // case sensitive; first in an inner array is the default and preffered format
 // in that array of formats
@@ -73,7 +77,10 @@ export const normalizeExternalData = (editor, nodes) => {
   // put all the non-blocks (e.g. images which are inline Elements) inside p-s
   Editor.withoutNormalizing(fakeEditor, () => {
     //for htmlSlateWidget compatibility
-    if (nodes && !Editor.isBlock(fakeEditor, nodes[0]))
+    if (
+      nodes &&
+      (!Editor.isBlock(fakeEditor, nodes[0]) || Text.isText(nodes[0]))
+    )
       Transforms.wrapNodes(
         fakeEditor,
         { type: 'p' },
@@ -81,7 +88,8 @@ export const normalizeExternalData = (editor, nodes) => {
           at: [],
           match: (node, path) =>
             (!Editor.isEditor(node) && !Editor.isBlock(fakeEditor, node)) ||
-            fakeEditor.isInline(node),
+            fakeEditor.isInline(node) ||
+            Text.isText(node),
           mode: 'highest',
         },
       );
@@ -125,8 +133,15 @@ export function createEmptyParagraph() {
   };
 }
 
+export function createParagraph(text) {
+  return {
+    type: config.settings.slate.defaultBlockType,
+    children: [{ text }],
+  };
+}
+
 export const isSingleBlockTypeActive = (editor, format) => {
-  const [match] = Editor.nodes(editor, {
+  const [match] = safeEditorNodes(editor, {
     match: (n) => n.type === format,
   });
 
@@ -134,10 +149,10 @@ export const isSingleBlockTypeActive = (editor, format) => {
 };
 
 export const isBlockActive = (editor, format) => {
-  const aliasList = _.find(formatAliases, (x) => _.includes(x, format));
+  const aliasList = find(formatAliases, (x) => includes(x, format));
 
   if (aliasList) {
-    const aliasFound = _.some(aliasList, (y) => {
+    const aliasFound = some(aliasList, (y) => {
       return isSingleBlockTypeActive(editor, y);
     });
 
@@ -152,17 +167,17 @@ export const isBlockActive = (editor, format) => {
 export const getBlockTypeContextData = (editor, format) => {
   let isActive, defaultFormat, matcher;
 
-  const aliasList = _.find(formatAliases, (x) => _.includes(x, format));
+  const aliasList = find(formatAliases, (x) => includes(x, format));
 
   if (aliasList) {
-    const aliasFound = _.some(aliasList, (y) => {
+    const aliasFound = some(aliasList, (y) => {
       return isSingleBlockTypeActive(editor, y);
     });
 
     if (aliasFound) {
       isActive = true;
-      defaultFormat = _.first(aliasList);
-      matcher = (n) => _.includes(aliasList, n.type);
+      defaultFormat = first(aliasList);
+      matcher = (n) => includes(aliasList, n.type);
 
       return { isActive, defaultFormat, matcher };
     }
@@ -253,7 +268,7 @@ export const toggleBlock = (editor, format, allowedChildren) => {
   } else if (!isListItem && !wantsList) {
     toggleFormat(editor, format, allowedChildren);
   } else if (isListItem && wantsList && isActive) {
-    clearFormatting(editor);
+    clearList(editor);
   } else {
     console.warn('toggleBlock case not covered, please examine:', {
       wantsList,
@@ -285,6 +300,21 @@ export const switchListType = (editor, format) => {
   });
   const block = { type: format, children: [] };
   Transforms.wrapNodes(editor, block);
+};
+
+/*
+ * Clear list by exploding the block
+ */
+export const clearList = (editor) => {
+  const { slate } = config.settings;
+  Transforms.unwrapNodes(editor, {
+    match: (n) => slate.listTypes.includes(n.type),
+    split: true,
+  });
+  Transforms.setNodes(editor, {
+    type: 'p',
+  });
+  Editor.normalize(editor);
 };
 
 export const changeBlockToList = (editor, format) => {

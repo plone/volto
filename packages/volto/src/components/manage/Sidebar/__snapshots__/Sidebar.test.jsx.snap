@@ -1,0 +1,121 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a sidebar component 1`] = `
+[
+  <div
+    className="sidebar-container"
+    style={null}
+  >
+    <button
+      aria-label="Shrink sidebar"
+      className="ui button trigger"
+      onClick={[Function]}
+      type="button"
+    />
+    <button
+      aria-label="full-screen-sidenav"
+      className="ui button full-size-sidenav-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        className="icon full-size-icon"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "currentColor",
+            "height": "36px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+    </button>
+    <div
+      className="tabs-wrapper"
+    >
+      <div
+        className="ui pointing secondary attached tabular formtabs menu"
+      >
+        <button
+          className="active item ui button"
+          onClick={[Function]}
+        >
+          Document
+        </button>
+        <button
+          className="item ui button"
+          onClick={[Function]}
+        >
+          Block
+        </button>
+        <a
+          className="item"
+          onClick={[Function]}
+        >
+          Order
+        </a>
+      </div>
+      <div
+        className="ui bottom attached segment active tab tab-wrapper"
+        id="sidebar-metadata"
+      />
+      <div
+        className="ui bottom attached segment tab tab-wrapper"
+        id="sidebar-properties"
+      >
+        <svg
+          className="icon tab-forbidden"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<path fill-rule="evenodd" d="M18,31 C14.775,31 11.827,29.813 9.553,27.861 L27.861,9.553 C29.813,11.827 31,14.775 31,18 C31,25.168 25.168,31 18,31 M18,5 C21.225,5 24.173,6.187 26.447,8.139 L8.139,26.447 C6.187,24.173 5,21.225 5,18 C5,10.832 10.832,5 18,5 M18,3 C9.729,3 3,9.729 3,18 C3,26.271 9.729,33 18,33 C26.271,33 33,26.271 33,18 C33,9.729 26.271,3 18,3"/>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "48px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </div>
+      <div
+        className="ui bottom attached segment tab tab-wrapper"
+        id="sidebar-order"
+      >
+        <svg
+          className="icon tab-forbidden"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<path fill-rule="evenodd" d="M18,31 C14.775,31 11.827,29.813 9.553,27.861 L27.861,9.553 C29.813,11.827 31,14.775 31,18 C31,25.168 25.168,31 18,31 M18,5 C21.225,5 24.173,6.187 26.447,8.139 L8.139,26.447 C6.187,24.173 5,21.225 5,18 C5,10.832 10.832,5 18,5 M18,3 C9.729,3 3,9.729 3,18 C3,26.271 9.729,33 18,33 C26.271,33 33,26.271 33,18 C33,9.729 26.271,3 18,3"/>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "48px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </div>
+    </div>
+  </div>,
+  <div
+    className="pusher expanded"
+  />,
+]
+`;

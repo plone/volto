@@ -6,21 +6,20 @@ import { defineMessages, useIntl } from 'react-intl';
 import { useInView } from 'react-intersection-observer';
 import { Dimmer, Loader, Message, Segment } from 'semantic-ui-react';
 
-import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers';
+import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import config from '@plone/volto/registry';
-import {
-  BlockDataForm,
-  SidebarPortal,
-  BlockChooserButton,
-} from '@plone/volto/components';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import BlockChooserButton from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
 
 import { SlateEditor } from '@plone/volto-slate/editor';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import {
   createImageBlock,
-  parseDefaultSelection,
   deconstructToVoltoBlocks,
-} from '@plone/volto-slate/utils';
+} from '@plone/volto-slate/utils/volto-blocks';
+import { parseDefaultSelection } from '@plone/volto-slate/utils/selection';
 import { Transforms } from 'slate';
 
 import PersistentSlashMenu from './SlashMenu';
@@ -30,6 +29,7 @@ import { handleKey } from './keyboard';
 import TextBlockSchema from './schema';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 import './css/editor.css';
 
@@ -66,11 +66,14 @@ export const DefaultTextBlockEditor = (props) => {
     allowedBlocks,
     formTitle,
     formDescription,
+    navRoot,
+    contentType,
   } = props;
 
   const { slate } = config.settings;
   const { textblockExtensions } = slate;
   const { value } = data;
+  const intl = useIntl();
 
   // const [addNewBlockOpened, setAddNewBlockOpened] = React.useState();
   const [showDropzone, setShowDropzone] = React.useState(false);
@@ -106,6 +109,7 @@ export const DefaultTextBlockEditor = (props) => {
       files.forEach((file) => {
         const [mime] = file.type.split('/');
         if (mime !== 'image') return;
+        if (!validateFileUploadSize(file, intl.formatMessage)) return;
 
         readAsDataURL(file).then((data) => {
           const fields = data.match(/^data:(.*);(.*),(.*)$/);
@@ -127,7 +131,7 @@ export const DefaultTextBlockEditor = (props) => {
       });
       setShowDropzone(false);
     },
-    [pathname, uploadContent, block],
+    [pathname, uploadContent, block, intl.formatMessage],
   );
 
   const { loaded, loading } = uploadRequest;
@@ -139,10 +143,10 @@ export const DefaultTextBlockEditor = (props) => {
       const url = flattenToAppURL(imageId);
       setNewImageId(imageId);
 
-      createImageBlock(url, index, props);
+      createImageBlock(url, index, props, intl);
     }
     prevReq.current = loaded;
-  }, [props, loaded, loading, prevLoaded, imageId, newImageId, index]);
+  }, [props, loaded, loading, prevLoaded, imageId, newImageId, index, intl]);
 
   const handleUpdate = React.useCallback(
     (editor) => {
@@ -178,7 +182,6 @@ export const DefaultTextBlockEditor = (props) => {
     instructions = formDescription;
   }
 
-  const intl = useIntl();
   const placeholder =
     data.placeholder || formTitle || intl.formatMessage(messages.text);
   const schema = TextBlockSchema(data);
@@ -215,7 +218,7 @@ export const DefaultTextBlockEditor = (props) => {
                 ) : (
                   <Message>
                     <center>
-                      <img src={imageBlockSVG} alt="" />
+                      <Image src={imageBlockSVG} alt="" />
                     </center>
                   </Message>
                 )}
@@ -262,6 +265,8 @@ export const DefaultTextBlockEditor = (props) => {
               blocksConfig={blocksConfig}
               size="24px"
               properties={properties}
+              navRoot={navRoot}
+              contentType={contentType}
             />
           )}
 
