@@ -14,7 +14,7 @@ import map from 'lodash/map';
 import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
 import { getDiff } from '@plone/volto/actions/diff/diff';
@@ -76,11 +76,11 @@ function Diff(props) {
     title,
     type,
     history,
-    intl,
   } = props;
 
   const isClient = useClient();
   const isInitialMount = useRef(true);
+  const intl = useIntl();
 
   useEffect(() => {
     getSchema(type);
@@ -316,7 +316,6 @@ Diff.propTypes = {
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
-  intl: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 /**
@@ -329,7 +328,6 @@ Diff.defaultProps = {
 
 export default compose(
   withRouter,
-  injectIntl,
   connect(
     (state, props) => ({
       data: state.diff.data,
