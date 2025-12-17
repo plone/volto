@@ -57,7 +57,7 @@ export default function userSession(state = initialState, action = {}) {
         login: {
           loading: false,
           loaded: false,
-          error: action.error.response.error,
+          error: action.error.response.text,
         },
       };
     case `${LOGOUT}_FAIL`:
