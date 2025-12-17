@@ -15,7 +15,7 @@ You can find the self-documented Storybook in:
 
 https://plone-components.readthedocs.io/latest/
 
-`@plone/components` is based on [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html), the documentation there applies also to all the components in this package.
+`@plone/components` is based on [React Aria Components](https://react-aria.adobe.com/), the documentation there applies also to all the components in this package.
 
 ## Design decisions and assumptions
 
@@ -26,7 +26,7 @@ This package provides a set of simple, ready to use components with the followin
 - Theme-able (they can be themed, using both the provided basic theme as a baseline and custom CSS properties)
 - Data-driven-less (they are dumb, presentational components)
 - i18n-less (they do not provide i18n machinery or attached to any i18n framework or library)
-- Built on a renowned headless CMS components library: [React Aria Components (RAC)](https://react-spectrum.adobe.com/react-aria/components.html)
+- Built on a renowned headless CMS components library: [React Aria Components (RAC)](https://react-aria.adobe.com/)
 
 Since we are using RAC as the base, the styling of this package components are done via the [RAC styling options](https://react-spectrum.adobe.com/react-aria/styling.html).
 See the `react-aria-components` section below for more information about RAC.
