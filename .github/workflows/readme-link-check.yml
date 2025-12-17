@@ -1,4 +1,4 @@
-# Check links in all README.mds with Lychee
+# Check links in all README.mds and other *.mds at the repo root with Lychee
 # https://github.com/lycheeverse/lychee-action
 name: README.md link check
 
@@ -26,4 +26,6 @@ jobs:
           --exclude https://my-server-DNS-name.tld/api
           --exclude 2021.ploneconf.org
           --exclude https://medium.com/
-          '**/README.md'
+          'apps/**/README.md'
+          'packages/**/README.md'
+          '*.md'
