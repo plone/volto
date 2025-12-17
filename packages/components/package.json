@@ -76,11 +76,11 @@
     "not dead"
   ],
   "dependencies": {
-    "@react-aria/utils": "^3.27.0",
-    "@react-spectrum/utils": "^3.12.1",
+    "@react-aria/utils": "^3.32.0",
+    "@react-spectrum/utils": "^3.12.10",
     "@storybook/test": "^8.5.3",
     "clsx": "^2.1.1",
-    "react-aria-components": "^1.6.0"
+    "react-aria-components": "^1.14.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
