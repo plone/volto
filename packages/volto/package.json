@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "19.0.0-alpha.15",
+  "version": "19.0.0-alpha.19",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -140,6 +140,7 @@
     "debug": "4.3.4",
     "decorate-component-with-props": "1.2.1",
     "dependency-graph": "0.10.0",
+    "deepmerge": "^4.2.2",
     "detect-browser": "5.1.0",
     "diff": "3.5.0",
     "express": "4.19.2",
@@ -163,6 +164,7 @@
     "object-assign": "4.1.1",
     "prepend-http": "2",
     "pretty-bytes": "5.3.0",
+    "prettier": "3.2.5",
     "prismjs": "1.27.0",
     "process": "^0.11.10",
     "promise-file-reader": "1.0.2",
@@ -280,7 +282,6 @@
     "cypress-axe": "1.7.0",
     "cypress-file-upload": "5.0.8",
     "deep-freeze": "0.0.1",
-    "deepmerge": "^4.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.2",
     "eslint-config-react-app": "^7.0.1",
@@ -310,7 +311,6 @@
     "postcss-loader": "7.0.2",
     "postcss-overrides": "3.1.4",
     "postcss-scss": "4.0.6",
-    "prettier": "3.2.5",
     "razzle-dev-utils": "4.2.18",
     "react-docgen-typescript-plugin": "^1.0.5",
     "react-error-overlay": "6.0.9",
