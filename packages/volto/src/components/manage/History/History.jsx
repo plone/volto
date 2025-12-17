@@ -314,7 +314,6 @@ History.propTypes = {
   title: PropTypes.string.isRequired,
   objectActions: PropTypes.array,
   token: PropTypes.string,
-  intl: PropTypes.object.isRequired,
   staticContext: PropTypes.object,
 };
 
