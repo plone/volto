@@ -1,6 +1,6 @@
 # Releasing
 
-To ease the release process, we use the utility [`release-it`](https://www.npmjs.com/package/release-it) which helps with the process, and [`towncrier`](https://towncrier.readthedocs.io) for creating and maintaining change logs.
+To ease the release process, we use the utility [`release-it`](https://www.npmjs.com/package/release-it) which helps with the process, and [`towncrier`](https://towncrier.readthedocs.io/en/stable/) for creating and maintaining change logs.
 
 ## Release requirements
 
