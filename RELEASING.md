@@ -1,6 +1,6 @@
 # Releasing
 
-To ease the release process, we use the utility [`release-it`](https://www.npmjs.com/package/release-it) which helps with the process, and [`towncrier`](https://towncrier.readthedocs.io) for creating and maintaining change logs.
+To ease the release process, we use the utility [`release-it`](https://www.npmjs.com/package/release-it) which helps with the process, and [`towncrier`](https://towncrier.readthedocs.io/en/stable/) for creating and maintaining change logs.
 
 ## Release requirements
 
@@ -9,7 +9,7 @@ To start a release, you must fulfill the following requirements:
 - Have permission to push to `main` branch
 - Have permission on the [`@plone` organization on npm](https://www.npmjs.com/org/plone).
 - Have an environment variable `GITHUB_TOKEN` with a GitHub personal token with permissions to write to the [Volto Release page on GitHub](https://github.com/plone/volto/releases).
-- Install [`pipx`](https://pypa.github.io/pipx/) in your system.
+- Install [`pipx`](https://pipx.pypa.io/stable/) in your system.
 
 To request these permissions, on GitHub tag `@plone/release-team`, or in Discord post to the [`release-team` channel](https://discord.com/channels/786421998426521600/897549410521714760).
 
