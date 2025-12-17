@@ -94,17 +94,17 @@
     "not dead"
   ],
   "dependencies": {
-    "@react-aria/utils": "^3.31.0",
-    "@react-spectrum/utils": "^3.12.9",
+    "@react-aria/utils": "^3.32.0",
+    "@react-spectrum/utils": "^3.12.10",
     "clsx": "^2.1.1",
-    "react-aria": "^3.44.0",
-    "react-aria-components": "^1.13.0",
-    "react-stately": "^3.42.0",
+    "react-aria": "^3.45.0",
+    "react-aria-components": "^1.14.0",
+    "react-stately": "^3.43.0",
     "tailwind-merge": "^3.0.1",
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "^4.1.12",
     "tailwindcss-animate": "^1.0.7",
-    "@internationalized/date": "^3.10.0"
+    "@internationalized/date": "^3.10.1"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
@@ -125,7 +125,7 @@
     "lightningcss": "^1.29.0",
     "lightningcss-cli": "^1.29.1",
     "release-it": "^19.0.5",
-    "tailwindcss-react-aria-components": "^2.0.0",
+    "tailwindcss-react-aria-components": "^2.0.1",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
     "vite": "^6.3.3",
