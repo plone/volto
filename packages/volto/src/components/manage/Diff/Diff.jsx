@@ -3,7 +3,7 @@
  * @module components/manage/Diff/Diff
  */
 
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { connect } from 'react-redux';
@@ -31,6 +31,7 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import DiffField from '@plone/volto/components/manage/Diff/DiffField';
+import { useClient } from '@plone/volto/hooks/client/useClient';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -54,100 +55,47 @@ const messages = defineMessages({
 });
 
 /**
- * Diff class.
- * @class Diff
- * @extends Component
+ * Diff component.
+ * @function Diff
+ * @param {Object} props
+ * @returns {JSX.Element}
  */
-class Diff extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    getDiff: PropTypes.func.isRequired,
-    getSchema: PropTypes.func.isRequired,
-    getHistory: PropTypes.func.isRequired,
-    schema: PropTypes.objectOf(PropTypes.any),
-    error: PropTypes.objectOf(PropTypes.any),
-    pathname: PropTypes.string.isRequired,
-    one: PropTypes.string.isRequired,
-    two: PropTypes.string.isRequired,
-    view: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(
-      PropTypes.shape({
-        '@id': PropTypes.string,
-      }),
-    ).isRequired,
-    historyEntries: PropTypes.arrayOf(
-      PropTypes.shape({
-        version: PropTypes.number,
-        time: PropTypes.string,
-        actor: PropTypes.shape({ fullname: PropTypes.string }),
-      }),
-    ).isRequired,
-    title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-  };
+function Diff(props) {
+  const {
+    getDiff,
+    getSchema,
+    getHistory,
+    schema,
+    error,
+    pathname,
+    one,
+    two,
+    view,
+    data,
+    historyEntries,
+    title,
+    type,
+    history,
+    intl,
+  } = props;
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    schema: null,
-  };
+  const isClient = useClient();
+  const isInitialMount = useRef(true);
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   * @constructs DiffComponent
-   */
-  constructor(props) {
-    super(props);
-    this.onChangeOne = this.onChangeOne.bind(this);
-    this.onChangeTwo = this.onChangeTwo.bind(this);
-    this.onSelectView = this.onSelectView.bind(this);
-    this.state = { isClient: false };
-  }
+  useEffect(() => {
+    getSchema(type);
+    getHistory(getBaseUrl(pathname));
+    getDiff(getBaseUrl(pathname), one, two);
+    isInitialMount.current = false;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  /**
-   * Component did mount
-   * @method componentDidMount
-   * @returns {undefined}
-   */
-  componentDidMount() {
-    this.props.getSchema(this.props.type);
-    this.props.getHistory(getBaseUrl(this.props.pathname));
-    this.props.getDiff(
-      getBaseUrl(this.props.pathname),
-      this.props.one,
-      this.props.two,
-    );
-    this.setState({ isClient: true });
-  }
-
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      this.props.pathname !== nextProps.pathname ||
-      this.props.one !== nextProps.one ||
-      this.props.two !== nextProps.two
-    ) {
-      this.props.getDiff(
-        getBaseUrl(nextProps.pathname),
-        nextProps.one,
-        nextProps.two,
-      );
+  useEffect(() => {
+    if (isInitialMount.current) {
+      return;
     }
-  }
+    getDiff(getBaseUrl(pathname), one, two);
+  }, [pathname, one, two, getDiff]);
 
   /**
    * On select view handler
@@ -156,11 +104,9 @@ class Diff extends Component {
    * @param {string} value Value
    * @returns {undefined}
    */
-  onSelectView(event, { value }) {
-    this.props.history.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${this.props.two}&view=${value}`,
-    );
-  }
+  const onSelectView = (event, { value }) => {
+    history.push(`${pathname}?one=${one}&two=${two}&view=${value}`);
+  };
 
   /**
    * On change one handler
@@ -169,11 +115,9 @@ class Diff extends Component {
    * @param {string} value Value
    * @returns {undefined}
    */
-  onChangeOne(event, { value }) {
-    this.props.history.push(
-      `${this.props.pathname}?one=${value}&two=${this.props.two}&view=${this.props.view}`,
-    );
-  }
+  const onChangeOne = (event, { value }) => {
+    history.push(`${pathname}?one=${value}&two=${two}&view=${view}`);
+  };
 
   /**
    * On change two handler
@@ -182,185 +126,206 @@ class Diff extends Component {
    * @param {string} value Value
    * @returns {undefined}
    */
-  onChangeTwo(event, { value }) {
-    this.props.history.push(
-      `${this.props.pathname}?one=${this.props.one}&two=${value}&view=${this.props.view}`,
-    );
-  }
+  const onChangeTwo = (event, { value }) => {
+    history.push(`${pathname}?one=${one}&two=${value}&view=${view}`);
+  };
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const versions = map(
-      filter(this.props.historyEntries, (entry) => 'version' in entry),
-      (entry, index) => ({
-        text: (
-          <>
-            {index === 0 ? 'Current' : entry.version}&nbsp;(
-            <FormattedDate date={entry.time} long className="text" />, &nbsp;
-            {entry.actor.fullname})
-          </>
-        ),
-        value: `${entry.version}`,
-        key: `${entry.version}`,
-      }),
-    );
+  const versions = map(
+    filter(historyEntries, (entry) => 'version' in entry),
+    (entry, index) => ({
+      text: (
+        <>
+          {index === 0 ? 'Current' : entry.version}&nbsp;(
+          <FormattedDate date={entry.time} long className="text" />, &nbsp;
+          {entry.actor.fullname})
+        </>
+      ),
+      value: `${entry.version}`,
+      key: `${entry.version}`,
+    }),
+  );
 
-    return this.props.error?.status === 401 ? (
-      <Unauthorized />
-    ) : (
-      <Container id="page-diff">
-        <Helmet title={this.props.intl.formatMessage(messages.diff)} />
-        <h1>
-          <FormattedMessage
-            id="Difference between revision {one} and {two} of {title}"
-            defaultMessage="Difference between revision {one} and {two} of {title}"
-            values={{
-              one: this.props.one,
-              two: this.props.two,
-              title: this.props.title,
-            }}
-          />
-        </h1>
-        <Grid>
-          <Grid.Column width={9}>
-            <p className="description">
-              <FormattedMessage
-                id="You can view the difference of the revisions below."
-                defaultMessage="You can view the difference of the revisions below."
-              />
-            </p>
-          </Grid.Column>
-          <Grid.Column width={3} textAlign="right">
-            <Button.Group>
-              {map(
-                [
-                  {
-                    id: 'split',
-                    label: this.props.intl.formatMessage(messages.split),
-                  },
-                  {
-                    id: 'unified',
-                    label: this.props.intl.formatMessage(messages.unified),
-                  },
-                ],
-                (view) => (
-                  <Button
-                    type="button"
-                    key={view.id}
-                    value={view.id}
-                    active={this.props.view === view.id}
-                    onClick={this.onSelectView}
-                  >
-                    {view.label}
-                  </Button>
-                ),
-              )}
-            </Button.Group>
-          </Grid.Column>
-        </Grid>
-        {this.props.historyEntries.length > 0 && (
-          <Table basic="very">
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell width={6}>
-                  <FormattedMessage id="Base" defaultMessage="Base" />
-                  <Dropdown
-                    onChange={this.onChangeOne}
-                    value={this.props.one}
-                    selection
-                    fluid
-                    options={versions}
-                  />
-                </Table.HeaderCell>
-                <Table.HeaderCell width={6}>
-                  <FormattedMessage id="Compare" defaultMessage="Compare" />
-                  <Dropdown
-                    onChange={this.onChangeTwo}
-                    value={this.props.two}
-                    selection
-                    fluid
-                    options={versions}
-                  />
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-          </Table>
-        )}
-        {this.props.schema &&
-          this.props.data.length > 0 &&
-          map(this.props.schema.fieldsets, (fieldset) =>
-            map(
-              fieldset.fields,
-              (field) =>
-                !isEqual(
-                  this.props.data[0][field],
-                  this.props.data[1][field],
-                ) &&
-                field !== getBlocksFieldname(this.props.data[0]) &&
-                field !== getBlocksLayoutFieldname(this.props.data[0]) && (
-                  <DiffField
-                    key={field}
-                    one={this.props.data[0][field]}
-                    two={this.props.data[1][field]}
-                    schema={this.props.schema.properties[field]}
-                    view={this.props.view}
-                  />
-                ),
-            ),
-          )}
-        {this.props.schema &&
-          this.props.data.length > 0 &&
-          hasBlocksData(this.props.data[0]) &&
-          (!isEqual(
-            this.props.data[0][getBlocksFieldname(this.props.data[0])],
-            this.props.data[1][getBlocksFieldname(this.props.data[1])],
-          ) ||
-            !isEqual(
-              this.props.data[0][getBlocksLayoutFieldname(this.props.data[0])],
-              this.props.data[1][getBlocksLayoutFieldname(this.props.data[1])],
-            )) && (
-            <DiffField
-              one={this.props.data[0][getBlocksFieldname(this.props.data[0])]}
-              two={this.props.data[1][getBlocksFieldname(this.props.data[1])]}
-              contentOne={this.props.data[0]}
-              contentTwo={this.props.data[1]}
-              schema={
-                this.props.schema.properties[
-                  getBlocksFieldname(this.props.data[0])
-                ]
-              }
-              view={this.props.view}
+  return error?.status === 401 ? (
+    <Unauthorized />
+  ) : (
+    <Container id="page-diff">
+      <Helmet title={intl.formatMessage(messages.diff)} />
+      <h1>
+        <FormattedMessage
+          id="Difference between revision {one} and {two} of {title}"
+          defaultMessage="Difference between revision {one} and {two} of {title}"
+          values={{
+            one,
+            two,
+            title,
+          }}
+        />
+      </h1>
+      <Grid>
+        <Grid.Column width={9}>
+          <p className="description">
+            <FormattedMessage
+              id="You can view the difference of the revisions below."
+              defaultMessage="You can view the difference of the revisions below."
             />
-          )}
-        {this.state.isClient &&
-          createPortal(
-            <Toolbar
-              pathname={this.props.pathname}
-              hideDefaultViewButtons
-              inner={
-                <Link
-                  to={`${getBaseUrl(this.props.pathname)}/historyview`}
-                  className="item"
+          </p>
+        </Grid.Column>
+        <Grid.Column width={3} textAlign="right">
+          <Button.Group>
+            {map(
+              [
+                {
+                  id: 'split',
+                  label: intl.formatMessage(messages.split),
+                },
+                {
+                  id: 'unified',
+                  label: intl.formatMessage(messages.unified),
+                },
+              ],
+              (viewOption) => (
+                <Button
+                  type="button"
+                  key={viewOption.id}
+                  value={viewOption.id}
+                  active={view === viewOption.id}
+                  onClick={onSelectView}
                 >
-                  <Icon
-                    name={backSVG}
-                    className="contents circled"
-                    size="30px"
-                    title={this.props.intl.formatMessage(messages.back)}
-                  />
-                </Link>
-              }
-            />,
-            document.getElementById('toolbar'),
-          )}
-      </Container>
-    );
-  }
+                  {viewOption.label}
+                </Button>
+              ),
+            )}
+          </Button.Group>
+        </Grid.Column>
+      </Grid>
+      {historyEntries.length > 0 && (
+        <Table basic="very">
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell width={6}>
+                <FormattedMessage id="Base" defaultMessage="Base" />
+                <Dropdown
+                  onChange={onChangeOne}
+                  value={one}
+                  selection
+                  fluid
+                  options={versions}
+                />
+              </Table.HeaderCell>
+              <Table.HeaderCell width={6}>
+                <FormattedMessage id="Compare" defaultMessage="Compare" />
+                <Dropdown
+                  onChange={onChangeTwo}
+                  value={two}
+                  selection
+                  fluid
+                  options={versions}
+                />
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+        </Table>
+      )}
+      {schema &&
+        data.length > 0 &&
+        map(schema.fieldsets, (fieldset) =>
+          map(
+            fieldset.fields,
+            (field) =>
+              !isEqual(data[0][field], data[1][field]) &&
+              field !== getBlocksFieldname(data[0]) &&
+              field !== getBlocksLayoutFieldname(data[0]) && (
+                <DiffField
+                  key={field}
+                  one={data[0][field]}
+                  two={data[1][field]}
+                  schema={schema.properties[field]}
+                  view={view}
+                />
+              ),
+          ),
+        )}
+      {schema &&
+        data.length > 0 &&
+        hasBlocksData(data[0]) &&
+        (!isEqual(
+          data[0][getBlocksFieldname(data[0])],
+          data[1][getBlocksFieldname(data[1])],
+        ) ||
+          !isEqual(
+            data[0][getBlocksLayoutFieldname(data[0])],
+            data[1][getBlocksLayoutFieldname(data[1])],
+          )) && (
+          <DiffField
+            one={data[0][getBlocksFieldname(data[0])]}
+            two={data[1][getBlocksFieldname(data[1])]}
+            contentOne={data[0]}
+            contentTwo={data[1]}
+            schema={schema.properties[getBlocksFieldname(data[0])]}
+            view={view}
+          />
+        )}
+      {isClient &&
+        createPortal(
+          <Toolbar
+            pathname={pathname}
+            hideDefaultViewButtons
+            inner={
+              <Link to={`${getBaseUrl(pathname)}/historyview`} className="item">
+                <Icon
+                  name={backSVG}
+                  className="contents circled"
+                  size="30px"
+                  title={intl.formatMessage(messages.back)}
+                />
+              </Link>
+            }
+          />,
+          document.getElementById('toolbar'),
+        )}
+    </Container>
+  );
 }
+
+/**
+ * Property types.
+ * @property {Object} propTypes Property types.
+ */
+Diff.propTypes = {
+  getDiff: PropTypes.func.isRequired,
+  getSchema: PropTypes.func.isRequired,
+  getHistory: PropTypes.func.isRequired,
+  schema: PropTypes.objectOf(PropTypes.any),
+  error: PropTypes.objectOf(PropTypes.any),
+  pathname: PropTypes.string.isRequired,
+  one: PropTypes.string.isRequired,
+  two: PropTypes.string.isRequired,
+  view: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      '@id': PropTypes.string,
+    }),
+  ).isRequired,
+  historyEntries: PropTypes.arrayOf(
+    PropTypes.shape({
+      version: PropTypes.number,
+      time: PropTypes.string,
+      actor: PropTypes.shape({ fullname: PropTypes.string }),
+    }),
+  ).isRequired,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  intl: PropTypes.objectOf(PropTypes.any).isRequired,
+};
+
+/**
+ * Default properties
+ * @property {Object} defaultProps Default properties.
+ */
+Diff.defaultProps = {
+  schema: null,
+};
 
 export default compose(
   withRouter,
