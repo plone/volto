@@ -191,9 +191,14 @@ exports[`renders an object list widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                   </div>
                   <div
                     class="content active"
@@ -210,10 +215,10 @@ exports[`renders an object list widget component 1`] = `
                           class="ui segment attached"
                         >
                           <div
-                            class="mocked-default-widget"
-                            id="mocked-field-internal_link-0-my-widget-0"
+                            class="Field"
+                            id="internal_link-0-my-widget-0"
                           >
-                            Internal link - No description
+                            Internal link
                           </div>
                         </div>
                       </div>
@@ -234,9 +239,14 @@ exports[`renders an object list widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                   </div>
                   <div
                     class="content"
@@ -253,10 +263,10 @@ exports[`renders an object list widget component 1`] = `
                           class="ui segment attached"
                         >
                           <div
-                            class="mocked-default-widget"
-                            id="mocked-field-external_link-0-my-widget-0"
+                            class="Field"
+                            id="external_link-0-my-widget-0"
                           >
-                            External URL (can be relative within this site or absolute if it starts with http:// or https://) - No description
+                            External URL (can be relative within this site or absolute if it starts with http:// or https://)
                           </div>
                         </div>
                       </div>
@@ -277,9 +287,14 @@ exports[`renders an object list widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                   </div>
                   <div
                     class="content"
@@ -296,16 +311,16 @@ exports[`renders an object list widget component 1`] = `
                           class="ui segment attached"
                         >
                           <div
-                            class="mocked-default-widget"
-                            id="mocked-field-email_address-0-my-widget-0"
+                            class="Field"
+                            id="email_address-0-my-widget-0"
                           >
-                            Email address - No description
+                            Email address
                           </div>
                           <div
-                            class="mocked-default-widget"
-                            id="mocked-field-email_subject-1-my-widget-0"
+                            class="Field"
+                            id="email_subject-1-my-widget-0"
                           >
-                            Email subject (optional) - No description
+                            Email subject (optional)
                           </div>
                         </div>
                       </div>
@@ -411,9 +426,14 @@ exports[`renders an object list widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                   </div>
                   <div
                     class="content active"
@@ -430,10 +450,10 @@ exports[`renders an object list widget component 1`] = `
                           class="ui segment attached"
                         >
                           <div
-                            class="mocked-default-widget"
-                            id="mocked-field-internal_link-0-my-widget-1"
+                            class="Field"
+                            id="internal_link-0-my-widget-1"
                           >
-                            Internal link - No description
+                            Internal link
                           </div>
                         </div>
                       </div>
@@ -454,9 +474,14 @@ exports[`renders an object list widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                   </div>
                   <div
                     class="content"
@@ -473,10 +498,10 @@ exports[`renders an object list widget component 1`] = `
                           class="ui segment attached"
                         >
                           <div
-                            class="mocked-default-widget"
-                            id="mocked-field-external_link-0-my-widget-1"
+                            class="Field"
+                            id="external_link-0-my-widget-1"
                           >
-                            External URL (can be relative within this site or absolute if it starts with http:// or https://) - No description
+                            External URL (can be relative within this site or absolute if it starts with http:// or https://)
                           </div>
                         </div>
                       </div>
@@ -497,9 +522,14 @@ exports[`renders an object list widget component 1`] = `
                     <svg
                       class="icon"
                       style="height: 20px; width: auto; fill: currentColor;"
-                      viewBox=""
-                      xmlns=""
-                    />
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
                   </div>
                   <div
                     class="content"
@@ -516,16 +546,16 @@ exports[`renders an object list widget component 1`] = `
                           class="ui segment attached"
                         >
                           <div
-                            class="mocked-default-widget"
-                            id="mocked-field-email_address-0-my-widget-1"
+                            class="Field"
+                            id="email_address-0-my-widget-1"
                           >
-                            Email address - No description
+                            Email address
                           </div>
                           <div
-                            class="mocked-default-widget"
-                            id="mocked-field-email_subject-1-my-widget-1"
+                            class="Field"
+                            id="email_subject-1-my-widget-1"
                           >
-                            Email subject (optional) - No description
+                            Email subject (optional)
                           </div>
                         </div>
                       </div>

@@ -15,9 +15,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content active"
@@ -34,10 +39,10 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-internal_link-0-my-widget"
+                class="Field"
+                id="internal_link-0-my-widget"
               >
-                Internal link - No description
+                Internal link
               </div>
             </div>
           </div>
@@ -58,9 +63,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content"
@@ -77,10 +87,10 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-external_link-0-my-widget"
+                class="Field"
+                id="external_link-0-my-widget"
               >
-                External URL (can be relative within this site or absolute if it starts with http:// or https://) - No description
+                External URL (can be relative within this site or absolute if it starts with http:// or https://)
               </div>
             </div>
           </div>
@@ -101,9 +111,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content"
@@ -120,16 +135,16 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-email_address-0-my-widget"
+                class="Field"
+                id="email_address-0-my-widget"
               >
-                Email address - No description
+                Email address
               </div>
               <div
-                class="mocked-default-widget"
-                id="mocked-field-email_subject-1-my-widget"
+                class="Field"
+                id="email_subject-1-my-widget"
               >
-                Email subject (optional) - No description
+                Email subject (optional)
               </div>
             </div>
           </div>
@@ -155,9 +170,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content"
@@ -174,10 +194,10 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-internal_link-0-my-widget"
+                class="Field"
+                id="internal_link-0-my-widget"
               >
-                Internal link - No description
+                Internal link
               </div>
             </div>
           </div>
@@ -198,9 +218,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content active"
@@ -217,10 +242,10 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-external_link-0-my-widget"
+                class="Field"
+                id="external_link-0-my-widget"
               >
-                External URL (can be relative within this site or absolute if it starts with http:// or https://) - No description
+                External URL (can be relative within this site or absolute if it starts with http:// or https://)
               </div>
             </div>
           </div>
@@ -241,9 +266,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content"
@@ -260,16 +290,16 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-email_address-0-my-widget"
+                class="Field"
+                id="email_address-0-my-widget"
               >
-                Email address - No description
+                Email address
               </div>
               <div
-                class="mocked-default-widget"
-                id="mocked-field-email_subject-1-my-widget"
+                class="Field"
+                id="email_subject-1-my-widget"
               >
-                Email subject (optional) - No description
+                Email subject (optional)
               </div>
             </div>
           </div>
@@ -295,9 +325,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content"
@@ -314,10 +349,10 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-internal_link-0-my-widget"
+                class="Field"
+                id="internal_link-0-my-widget"
               >
-                Internal link - No description
+                Internal link
               </div>
             </div>
           </div>
@@ -338,9 +373,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content"
@@ -357,10 +397,10 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-external_link-0-my-widget"
+                class="Field"
+                id="external_link-0-my-widget"
               >
-                External URL (can be relative within this site or absolute if it starts with http:// or https://) - No description
+                External URL (can be relative within this site or absolute if it starts with http:// or https://)
               </div>
             </div>
           </div>
@@ -381,9 +421,14 @@ exports[`renders an object widget component with clicks on each tab in root leve
         <svg
           class="icon"
           style="height: 20px; width: auto; fill: currentColor;"
-          viewBox=""
-          xmlns=""
-        />
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
         class="content active"
@@ -400,16 +445,16 @@ exports[`renders an object widget component with clicks on each tab in root leve
               class="ui segment attached"
             >
               <div
-                class="mocked-default-widget"
-                id="mocked-field-email_address-0-my-widget"
+                class="Field"
+                id="email_address-0-my-widget"
               >
-                Email address - No description
+                Email address
               </div>
               <div
-                class="mocked-default-widget"
-                id="mocked-field-email_subject-1-my-widget"
+                class="Field"
+                id="email_subject-1-my-widget"
               >
-                Email subject (optional) - No description
+                Email subject (optional)
               </div>
             </div>
           </div>
@@ -421,7 +466,7 @@ exports[`renders an object widget component with clicks on each tab in root leve
 `;
 
 exports[`renders an object widget component with invalid field in value 1`] = `
-Array [
+[
   <div
     className="accordion ui fluid styled form"
   >
@@ -436,20 +481,20 @@ Array [
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
+            {
+              "__html": "<path fill-rule="evenodd" d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"/>",
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "currentColor",
               "height": "20px",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         />
       </div>
       <div
@@ -459,7 +504,7 @@ Array [
           aria-hidden={false}
           className="rah-static rah-static--height-auto"
           style={
-            Object {
+            {
               "height": "auto",
               "overflow": "visible",
             }
@@ -467,7 +512,7 @@ Array [
         >
           <div
             style={
-              Object {
+              {
                 "WebkitTransition": "opacity 500ms ease 0ms",
                 "transition": "opacity 500ms ease 0ms",
               }
@@ -477,12 +522,10 @@ Array [
               className="ui segment attached"
             >
               <div
-                className="mocked-default-widget"
-                id="mocked-field-internal_link-0-my-widget"
+                className="Field"
+                id="internal_link-0-my-widget"
               >
                 Internal link
-                 - 
-                No description
               </div>
             </div>
           </div>
@@ -504,20 +547,20 @@ Array [
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
+            {
+              "__html": "<path fill-rule="evenodd" d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"/>",
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "currentColor",
               "height": "20px",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         />
       </div>
       <div
@@ -527,7 +570,7 @@ Array [
           aria-hidden={true}
           className="rah-static rah-static--height-zero"
           style={
-            Object {
+            {
               "height": 0,
               "overflow": "hidden",
             }
@@ -535,7 +578,7 @@ Array [
         >
           <div
             style={
-              Object {
+              {
                 "WebkitTransition": "opacity 500ms ease 0ms",
                 "opacity": 0,
                 "transition": "opacity 500ms ease 0ms",
@@ -546,12 +589,10 @@ Array [
               className="ui segment attached"
             >
               <div
-                className="mocked-default-widget"
-                id="mocked-field-external_link-0-my-widget"
+                className="Field"
+                id="external_link-0-my-widget"
               >
                 External URL (can be relative within this site or absolute if it starts with http:// or https://)
-                 - 
-                No description
               </div>
             </div>
           </div>
@@ -573,20 +614,20 @@ Array [
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
+            {
+              "__html": "<path fill-rule="evenodd" d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"/>",
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "currentColor",
               "height": "20px",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         />
       </div>
       <div
@@ -596,7 +637,7 @@ Array [
           aria-hidden={true}
           className="rah-static rah-static--height-zero"
           style={
-            Object {
+            {
               "height": 0,
               "overflow": "hidden",
             }
@@ -604,7 +645,7 @@ Array [
         >
           <div
             style={
-              Object {
+              {
                 "WebkitTransition": "opacity 500ms ease 0ms",
                 "opacity": 0,
                 "transition": "opacity 500ms ease 0ms",
@@ -615,20 +656,16 @@ Array [
               className="ui segment attached"
             >
               <div
-                className="mocked-default-widget"
-                id="mocked-field-email_address-0-my-widget"
+                className="Field"
+                id="email_address-0-my-widget"
               >
                 Email address
-                 - 
-                No description
               </div>
               <div
-                className="mocked-default-widget"
-                id="mocked-field-email_subject-1-my-widget"
+                className="Field"
+                id="email_subject-1-my-widget"
               >
                 Email subject (optional)
-                 - 
-                No description
               </div>
             </div>
           </div>
