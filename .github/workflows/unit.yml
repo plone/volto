@@ -14,7 +14,7 @@ jobs:
       matrix:
         node-version: [20.x, 22.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -42,7 +42,7 @@ jobs:
       matrix:
         node-version: [20.x, 22.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -78,7 +78,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ env.node-version }}
@@ -111,7 +111,7 @@ jobs:
     name: '@plone/client'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
@@ -151,7 +151,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ env.node-version }}
