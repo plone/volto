@@ -5006,12 +5006,12 @@ msgstr "Veröffentlicht"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Aktueller Pfad (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Übergeordneter Pfad (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
