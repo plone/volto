@@ -1505,6 +1505,11 @@ msgstr ""
 msgid "Expand sidebar"
 msgstr "Amplieu la barra lateral"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Amplieu la barra d’eines"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
