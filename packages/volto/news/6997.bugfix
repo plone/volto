@@ -1,0 +1,1 @@
+Stopped persisting the `blocksClipboard` state for anonymous users to reduce unnecessary `localStorage` storage and improve GDPR compliance, and added unit tests. @pratyush07-hub

@@ -17,6 +17,17 @@ import {
 } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
+  const saveMiddleware = save({
+    states: config.settings.persistentReducers,
+    debounce: 500,
+  });
+  const conditionalSave = (store) => (next) => (action) => {
+    const state = store.getState();
+    if (state.userSession?.token) {
+      return saveMiddleware(store)(next)(action);
+    }
+    return next(action);
+  };
   let stack = [
     blacklistRoutes,
     protectLoadStart,
@@ -25,9 +36,7 @@ const configureStore = (initialState, history, apiHelper) => {
     ...(apiHelper ? [api(apiHelper)] : []),
     userSessionReset,
     protectLoadEnd,
-    ...(__CLIENT__
-      ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
-      : []),
+    ...(__CLIENT__ ? [conditionalSave] : []),
   ];
   stack = config.settings.storeExtenders.reduce(
     (acc, extender) => extender(acc),
@@ -43,7 +52,7 @@ const configureStore = (initialState, history, apiHelper) => {
     }),
     {
       ...initialState,
-      ...(__CLIENT__
+      ...(__CLIENT__ && initialState?.userSession?.token
         ? load({ states: config.settings.persistentReducers })
         : {}),
     },
