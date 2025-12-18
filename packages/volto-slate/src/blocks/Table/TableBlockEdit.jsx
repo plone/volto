@@ -6,7 +6,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty, map, remove } from 'lodash';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Table, Popup } from 'semantic-ui-react';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 
@@ -498,80 +498,126 @@ class Edit extends Component {
         {this.props.selected && (
           <div className="toolbar">
             <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onInsertRowBefore}
-                title={this.props.intl.formatMessage(messages.insertRowBefore)}
-                aria-label={this.props.intl.formatMessage(
+              <Popup
+                trigger={
+                  <Button
+                    icon
+                    basic
+                    onClick={this.onInsertRowBefore}
+                    aria-label={this.props.intl.formatMessage(
+                      messages.insertRowBefore,
+                    )}
+                  >
+                    <Icon name={rowBeforeSVG} size="24px" />
+                  </Button>
+                }
+                position="top center"
+                content={this.props.intl.formatMessage(
                   messages.insertRowBefore,
                 )}
-              >
-                <Icon name={rowBeforeSVG} size="24px" />
-              </Button>
+                size="mini"
+              />
             </Button.Group>
             <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onInsertRowAfter}
-                title={this.props.intl.formatMessage(messages.insertRowAfter)}
-                aria-label={this.props.intl.formatMessage(
-                  messages.insertRowAfter,
-                )}
-              >
-                <Icon name={rowAfterSVG} size="24px" />
-              </Button>
+              <Popup
+                trigger={
+                  <Button
+                    icon
+                    basic
+                    onClick={this.onInsertRowAfter}
+                    aria-label={this.props.intl.formatMessage(
+                      messages.insertRowAfter,
+                    )}
+                  >
+                    <Icon name={rowAfterSVG} size="24px" />
+                  </Button>
+                }
+                position="top center"
+                content={this.props.intl.formatMessage(messages.insertRowAfter)}
+                size="mini"
+              />
             </Button.Group>
             <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onDeleteRow}
-                disabled={this.props.data.table?.rows?.length === 1}
-                title={this.props.intl.formatMessage(messages.deleteRow)}
-                aria-label={this.props.intl.formatMessage(messages.deleteRow)}
-              >
-                <Icon name={rowDeleteSVG} size="24px" />
-              </Button>
+              <Popup
+                trigger={
+                  <Button
+                    icon
+                    basic
+                    onClick={this.onDeleteRow}
+                    disabled={this.props.data.table?.rows?.length === 1}
+                    aria-label={this.props.intl.formatMessage(
+                      messages.deleteRow,
+                    )}
+                  >
+                    <Icon name={rowDeleteSVG} size="24px" />
+                  </Button>
+                }
+                position="top center"
+                content={this.props.intl.formatMessage(messages.deleteRow)}
+                size="mini"
+              />
             </Button.Group>
             <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onInsertColBefore}
-                title={this.props.intl.formatMessage(messages.insertColBefore)}
-                aria-label={this.props.intl.formatMessage(
+              <Popup
+                trigger={
+                  <Button
+                    icon
+                    basic
+                    onClick={this.onInsertColBefore}
+                    aria-label={this.props.intl.formatMessage(
+                      messages.insertColBefore,
+                    )}
+                  >
+                    <Icon name={colBeforeSVG} size="24px" />
+                  </Button>
+                }
+                position="top center"
+                content={this.props.intl.formatMessage(
                   messages.insertColBefore,
                 )}
-              >
-                <Icon name={colBeforeSVG} size="24px" />
-              </Button>
+                size="mini"
+              />
             </Button.Group>
             <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onInsertColAfter}
-                title={this.props.intl.formatMessage(messages.insertColAfter)}
-                aria-label={this.props.intl.formatMessage(
-                  messages.insertColAfter,
-                )}
-              >
-                <Icon name={colAfterSVG} size="24px" />
-              </Button>
+              <Popup
+                trigger={
+                  <Button
+                    icon
+                    basic
+                    onClick={this.onInsertColAfter}
+                    aria-label={this.props.intl.formatMessage(
+                      messages.insertColAfter,
+                    )}
+                  >
+                    <Icon name={colAfterSVG} size="24px" />
+                  </Button>
+                }
+                position="top center"
+                content={this.props.intl.formatMessage(messages.insertColAfter)}
+                size="mini"
+              />
             </Button.Group>
             <Button.Group>
-              <Button
-                icon
-                basic
-                onClick={this.onDeleteCol}
-                disabled={this.props.data.table?.rows?.[0].cells.length === 1}
-                title={this.props.intl.formatMessage(messages.deleteCol)}
-                aria-label={this.props.intl.formatMessage(messages.deleteCol)}
-              >
-                <Icon name={colDeleteSVG} size="24px" />
-              </Button>
+              <Popup
+                trigger={
+                  <Button
+                    icon
+                    basic
+                    onClick={this.onDeleteCol}
+                    disabled={
+                      this.props.data.table?.rows?.[0].cells.length === 1
+                    }
+                    aria-label={this.props.intl.formatMessage(
+                      messages.deleteCol,
+                    )}
+                  >
+                    <Icon name={colDeleteSVG} size="24px" />
+                  </Button>
+                }
+                position="top center"
+                content={this.props.intl.formatMessage(messages.deleteCol)}
+                size="mini"
+              />
             </Button.Group>
           </div>
         )}

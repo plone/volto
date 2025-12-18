@@ -187,4 +187,7 @@ config.set('experimental', {
   addBlockButton: {
     enabled: false,
   },
+  hideShowBlocks: {
+    enabled: false,
+  },
 });

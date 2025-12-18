@@ -129,6 +129,7 @@ export { default as ManageTranslations } from '@plone/volto/components/manage/Mu
 export { default as Form } from '@plone/volto/components/manage/Form/Form';
 export { default as BlocksToolbar } from '@plone/volto/components/manage/Form/BlocksToolbar';
 export { default as UndoToolbar } from '@plone/volto/components/manage/Form/UndoToolbar';
+export { default as ShowHideBlocksToolbar } from '@plone/volto/components/manage/Form/ShowHideBlocksToolbar';
 export { default as Field } from '@plone/volto/components/manage/Form/Field';
 export { default as SearchTags } from '@plone/volto/components/theme/Search/SearchTags';
 export { default as CommentEditModal } from '@plone/volto/components/theme/Comments/CommentEditModal';

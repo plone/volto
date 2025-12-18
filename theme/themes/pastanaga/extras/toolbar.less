@@ -278,6 +278,18 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       .divider {
         display: none;
       }
+
+      .redo {
+        order: 3;
+      }
+
+      .undo {
+        order: 2;
+      }
+
+      .hideBlocks {
+        order: 1;
+      }
     }
   }
 
@@ -407,8 +419,8 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
 
       &-bottom {
         flex: 1;
-        flex-direction: column-reverse;
-        justify-content: flex-start;
+        flex-direction: column;
+        justify-content: flex-end;
 
         .user {
           display: block;
