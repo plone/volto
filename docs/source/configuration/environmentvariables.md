@@ -252,6 +252,8 @@ In the frontend, you can access this variable in your code with the following.
 ```shell
 window.env.RAZZLE_MY_VARIABLE
 ```
+
+
 ## Related content
 
 - {doc}`index`
