@@ -12,7 +12,12 @@ async function renderStub() {
       Component: () => (
         <Layout
           params={{}}
-          loaderData={{ locale: 'en', content: {} as any, site: {} as any }}
+          loaderData={{
+            locale: 'en',
+            content: {} as any,
+            site: {} as any,
+            isAuthenticated: false,
+          }}
           matches={[{} as any]}
         >
           <p>Root Layout</p>
@@ -51,6 +56,7 @@ describe('loader', () => {
       method: () => ({
         getContent: getContentMock,
         getSite: getSiteMock,
+        config: {},
       }),
     });
     const request = new Request('http://example.com');
@@ -78,6 +84,7 @@ describe('loader', () => {
       method: () => ({
         getContent: getContentMock,
         getSite: getSiteMock,
+        config: {},
       }),
     });
     const request = new Request('http://example.com/test-content');
@@ -111,6 +118,7 @@ describe('loader', () => {
       method: () => ({
         getContent: getContentMock,
         getSite: getSiteMock,
+        config: {},
       }),
     });
     const request = new Request('http://example.com');
@@ -137,6 +145,7 @@ describe('loader', () => {
       method: () => ({
         getContent: getContentMock,
         getSite: getSiteMock,
+        config: {},
       }),
     });
     const request = new Request('http://example.com');
