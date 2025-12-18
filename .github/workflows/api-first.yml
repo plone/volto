@@ -15,7 +15,7 @@ jobs:
       tss: ${{ steps.filter.outputs.tss }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set Env Vars
         id: vars
@@ -44,7 +44,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ env.node-version }}
@@ -106,7 +106,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ env.node-version }}
