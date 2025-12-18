@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.19 (2025-12-08)
+
+### Feature
+
+- cross language support for blocks chooser search @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
+- Added support for selecting Path and Depth in the Listing Block’s Location criteria using the ObjectBrowserWidget and NumberWidget. @iFlameing @giuliaghisini [#7661](https://github.com/plone/volto/issues/7661)
+- ModalForm should handle empty schemas, rendering an empty form with just the submit and cancel buttons. @tedw87 [#7677](https://github.com/plone/volto/issues/7677)
+- Add feature of drag and drop files in folder contents. @Tishasoumya-02 
+
+### Internal
+
+- Add classname for unauthorized page @iRohitSingh 
+
+### Documentation
+
+- Document environment variables and link the Razzle documentation. @Manas-Kenge [#5319](https://github.com/plone/volto/issues/5319)
+
 ## 19.0.0-alpha.18 (2025-11-30)
 
 ### Bugfix
