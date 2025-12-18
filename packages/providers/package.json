@@ -64,7 +64,7 @@
     "@plone/client": "workspace:*",
     "@plone/registry": "workspace:*",
     "@tanstack/react-query": "^5.59.0",
-    "react-aria-components": "^1.6.0"
+    "react-aria-components": "^1.14.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
