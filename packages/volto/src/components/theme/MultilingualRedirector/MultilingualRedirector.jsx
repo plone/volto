@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { changeLanguage } from '@plone/volto/actions/language/language';
-import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
+import { toGettextLang, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 
 const MultilingualRedirector = (props) => {
   const { pathname, children } = props;
@@ -11,7 +11,8 @@ const MultilingualRedirector = (props) => {
   const site = useSelector((state) => state.site.data);
   const isMultilingual = site.features?.multilingual;
   const redirectToLanguage =
-    cookies['I18N_LANGUAGE'] || site['plone.default_language'];
+    (cookies['I18N_LANGUAGE'] && toBackendLang(cookies['I18N_LANGUAGE'])) ||
+    site['plone.default_language'];
   const dispatch = useDispatch();
 
   React.useEffect(() => {
