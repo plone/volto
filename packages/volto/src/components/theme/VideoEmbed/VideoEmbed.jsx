@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Image from '@plone/volto/components/theme/Image/Image';
 import cx from 'classnames';
 
 import PlayIcon from '@plone/volto/icons/play.svg';
@@ -67,7 +68,7 @@ const VideoEmbed = (props) => {
       ) : (
         <>
           {placeholder ? (
-            <img className="placeholder" src={placeholder} alt="" />
+            <Image className="placeholder" src={placeholder} alt="" />
           ) : (
             <div className="fallback-placeholder"></div>
           )}
