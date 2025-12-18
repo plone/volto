@@ -1,6 +1,6 @@
-# Check links in all README.mds with Lychee
+# Check links in all README.mds and other *.mds at the repo root with Lychee
 # https://github.com/lycheeverse/lychee-action
-name: README.md link checker
+name: README.md link check
 
 on:
   push:
@@ -20,7 +20,6 @@ jobs:
           --timeout 5
           --max-retries 2
           --exclude https://www.npmjs.com/
-          --exclude http://localhost:8080/Plone
           --exclude http://localhost:8080
           --exclude http://localhost:3000
           --exclude https://github.com/kitconcept/volto-blocks-grid.git
@@ -28,5 +27,6 @@ jobs:
           --exclude 2021.ploneconf.org
           --exclude https://www.lanku.eus/
           --exclude https://medium.com/
-          '**/README.md'
-          'PACKAGES.md'
+          'apps/**/README.md'
+          'packages/**/README.md'
+          '*.md'
