@@ -342,9 +342,16 @@ const apiMiddlewareFactory =
           // Make sure an error during hydration
           // (for example when serving an archived page)
           // doesn't hide the SSR content.
-          if (isHydrating && !hasExistingError) {
+          // BUT: We should still dispatch errors for control panels and other
+          // protected routes so they can show proper error messages
+          if (isHydrating && !hasExistingError && type === GET_CONTENT) {
             isHydrating = false;
             return;
+          }
+
+          // Set isHydrating to false if we got an error
+          if (isHydrating) {
+            isHydrating = false;
           }
 
           // Only SSR can set ECONNREFUSED
