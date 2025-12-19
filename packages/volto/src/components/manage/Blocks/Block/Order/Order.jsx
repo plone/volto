@@ -4,7 +4,6 @@ import { createPortal } from 'react-dom';
 import { toast } from 'react-toastify';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import find from 'lodash/find';
-import min from 'lodash/min';
 import { messages as defaultMessages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 
 import { flattenTree, getProjection, removeChildrenOf } from './utilities';
@@ -81,10 +80,7 @@ export function Order({
   };
 
   const flattenedItems = useMemo(
-    () =>
-      removeChildrenOf(flattenTree(items), activeId ? [activeId] : []).filter(
-        (item) => item.depth < 2,
-      ),
+    () => removeChildrenOf(flattenTree(items), activeId ? [activeId] : []),
     [activeId, items],
   );
 
@@ -158,10 +154,7 @@ export function Order({
             parentId={parentId}
             parentType={parentType}
             data={data}
-            depth={min([
-              id === activeId && projected ? projected.depth : depth,
-              1,
-            ])}
+            depth={id === activeId && projected ? projected.depth : depth}
             indentationWidth={indentationWidth}
             onRemove={removable ? () => handleRemove(id) : undefined}
             onSelectBlock={onSelectBlock}
