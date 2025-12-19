@@ -129,11 +129,17 @@ export function deleteBlock(formData, blockId, intl) {
 
   let newFormData = {
     ...formData,
-    [blocksLayoutFieldname]: {
-      items: without(formData[blocksLayoutFieldname].items, blockId),
-    },
-    [blocksFieldname]: omit(formData[blocksFieldname], [blockId]),
   };
+
+  let container = findParent(newFormData, {
+    blockId,
+  });
+
+  container[blocksLayoutFieldname].items = without(
+    container[blocksLayoutFieldname].items,
+    blockId,
+  );
+  container[blocksFieldname] = omit(container[blocksFieldname], [blockId]);
 
   if (newFormData[blocksLayoutFieldname].items.length === 0) {
     newFormData = addBlock(
@@ -913,13 +919,13 @@ export function moveBlockEnhanced(formData, { source, destination }) {
       const destinationContainer = findContainer(clonedFormData, {
         containerId: destination.parent,
       });
+      const sourceContainer = findContainer(clonedFormData, {
+        containerId: source.parent,
+      });
+
       destinationContainer[blocksFieldName][source.id] =
-        formData[blocksFieldName][source.parent][blocksFieldName]?.[
-          source.id
-        ] ||
-        formData[blocksFieldName][source.parent].data?.[blocksFieldName][
-          source.id
-        ];
+        sourceContainer[blocksFieldName]?.[source.id] ||
+        sourceContainer.data?.[blocksFieldName][source.id];
 
       destinationContainer[blocksLayoutFieldname].items = insertInArray(
         destinationContainer[blocksLayoutFieldname].items,
@@ -928,9 +934,6 @@ export function moveBlockEnhanced(formData, { source, destination }) {
       );
 
       // Remove the source block from the source parent
-      const sourceContainer = findContainer(clonedFormData, {
-        containerId: source.parent,
-      });
       delete sourceContainer[blocksFieldName][source.id];
       sourceContainer[blocksLayoutFieldname].items = removeFromArray(
         sourceContainer[blocksLayoutFieldname].items,
@@ -992,6 +995,47 @@ export const findContainer = (formData, { containerId }) => {
   });
 
   return container;
+};
+
+/**
+ * Finds parent container of the specified blockId in the given formData.
+ *
+ * @param {object} formData - The form data object.
+ * @param {object} options - The options object.
+ * @param {string} options.blockId - The ID of the block to find.
+ * @returns {object|undefined} - The container object if found, otherwise undefined.
+ */
+export const findParent = (formData, { blockId }) => {
+  const block = formData.data || formData;
+
+  if (block && block.blocks && Object.keys(block.blocks).includes(blockId)) {
+    return block;
+  }
+
+  let found = false;
+
+  if (block && block.blocks) {
+    Object.keys(block.blocks).every((subBlockId) => {
+      const subBlock =
+        block.blocks[subBlockId].data || block.blocks[subBlockId];
+      if (subBlock && subBlock.blocks) {
+        if (Object.keys(subBlock.blocks).includes(blockId)) {
+          found = subBlock;
+        }
+        const parent = findParent(subBlock, { blockId });
+        if (parent) {
+          found = parent;
+        }
+      }
+      if (found) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  }
+
+  return found;
 };
 
 const _dummyIntl = {
