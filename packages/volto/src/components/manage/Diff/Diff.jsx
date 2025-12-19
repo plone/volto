@@ -6,13 +6,12 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { useSelector, useDispatch } from 'react-redux';
 import filter from 'lodash/filter';
 import isEqual from 'lodash/isEqual';
 import map from 'lodash/map';
 import { Container, Button, Dropdown, Grid, Table } from 'semantic-ui-react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
@@ -57,35 +56,39 @@ const messages = defineMessages({
 /**
  * Diff component.
  * @function Diff
- * @param {Object} props
  * @returns {JSX.Element}
  */
 function Diff(props) {
-  const {
-    getDiff,
-    getSchema,
-    getHistory,
-    schema,
-    error,
-    pathname,
-    one,
-    two,
-    view,
-    data,
-    historyEntries,
-    title,
-    type,
-    history,
-  } = props;
-
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
   const isClient = useClient();
   const isInitialMount = useRef(true);
   const intl = useIntl();
 
+  const data = useSelector((state) => state.diff.data);
+  const historyEntries = useSelector((state) => state.history.entries);
+  const schema = useSelector((state) => state.schema.schema);
+  const error = useSelector((state) => state.diff.error);
+  const title = useSelector((state) => state.content.data?.title);
+  const type = useSelector((state) => state.content.data?.['@type']);
+
+  const pathname = location.pathname;
+  const searchParams = qs.parse(location.search);
+  const one = searchParams.one;
+  const two = searchParams.two;
+  const view = searchParams.view || 'split';
+
   useEffect(() => {
-    getSchema(type);
-    getHistory(getBaseUrl(pathname));
-    getDiff(getBaseUrl(pathname), one, two);
+    if (type) {
+      dispatch(getSchema(type));
+    }
+    if (pathname) {
+      dispatch(getHistory(getBaseUrl(pathname)));
+    }
+    if (pathname && one && two) {
+      dispatch(getDiff(getBaseUrl(pathname), one, two));
+    }
     isInitialMount.current = false;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -94,8 +97,10 @@ function Diff(props) {
     if (isInitialMount.current) {
       return;
     }
-    getDiff(getBaseUrl(pathname), one, two);
-  }, [pathname, one, two, getDiff]);
+    if (pathname && one && two) {
+      dispatch(getDiff(getBaseUrl(pathname), one, two));
+    }
+  }, [pathname, one, two, dispatch]);
 
   /**
    * On select view handler
@@ -326,21 +331,4 @@ Diff.defaultProps = {
   schema: null,
 };
 
-export default compose(
-  withRouter,
-  connect(
-    (state, props) => ({
-      data: state.diff.data,
-      historyEntries: state.history.entries,
-      schema: state.schema.schema,
-      error: state.diff.error,
-      pathname: props.location.pathname,
-      one: qs.parse(props.location.search).one,
-      two: qs.parse(props.location.search).two,
-      view: qs.parse(props.location.search).view || 'split',
-      title: state.content.data?.title,
-      type: state.content.data?.['@type'],
-    }),
-    { getDiff, getSchema, getHistory },
-  ),
-)(Diff);
+export default Diff;
