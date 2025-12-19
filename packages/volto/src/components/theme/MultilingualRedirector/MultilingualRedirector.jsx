@@ -11,8 +11,7 @@ const MultilingualRedirector = (props) => {
   const site = useSelector((state) => state.site.data);
   const isMultilingual = site.features?.multilingual;
   const redirectToLanguage =
-    (cookies['I18N_LANGUAGE'] && toBackendLang(cookies['I18N_LANGUAGE'])) ||
-    site['plone.default_language'];
+    cookies['I18N_LANGUAGE'] || site['plone.default_language'];
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -35,7 +34,7 @@ const MultilingualRedirector = (props) => {
   }, [pathname, dispatch, redirectToLanguage, isMultilingual]);
 
   return pathname === '/' && isMultilingual ? (
-    <Redirect to={`/${redirectToLanguage}`} />
+    <Redirect to={`/${toBackendLang(redirectToLanguage)}`} />
   ) : (
     <>{children}</>
   );
