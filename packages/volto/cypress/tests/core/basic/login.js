@@ -16,6 +16,7 @@ describe('Login Tests', () => {
   });
 
   it('Shows an error when logging in with wrong credentials', function () {
+    cy.reload();
     cy.get('#login').type('wrong-user');
     cy.get('#password').type('wrong-password');
     cy.get('#login-form-submit').click();
