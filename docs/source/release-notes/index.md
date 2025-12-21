@@ -17,6 +17,31 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.20 (2025-12-21)
+
+### Bugfix
+
+- Hide date and time fields when either "Whole Day" or "Open End" is checked in the Event form. @wesleybl [#3243](https://github.com/plone/volto/issues/3243)
+- Fixed a bug in the login form where the user could see a spinner instead of an error message after a failed login, when the login form was loaded via server-side rendering. @aryan7081 [#7397](https://github.com/plone/volto/issues/7397)
+- Fix max filesize upload issue in drag and drop @Tishasoumya-02 [#7695](https://github.com/plone/volto/issues/7695)
+- Fix multilingual redirect for languages using locale-specific formats. @Shyam-Raghuwanshi [#7725](https://github.com/plone/volto/issues/7725)
+- Add German translations for the current and parent paths. @iFlameing 
+- Add support for typing and pasting URLs in the ObjectBrowserWidget for location selection in the Listing block. @iFlameing 
+
+### Internal
+
+- Refactored the `FormFieldWrapper` widget by converting it from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7672](https://github.com/plone/volto/issues/7672)
+- Update TypeScript types for Volto. @wesleybl [#7703](https://github.com/plone/volto/issues/7703)
+- Include other *.md files in the repo root for link checking, fix redirecting links, and remove non-responsive server. @stevepiercy [#7712](https://github.com/plone/volto/issues/7712)
+- Update actions/checkout to v5 in all GitHub Actions workflows. @wesleybl [#7724](https://github.com/plone/volto/issues/7724)
+- Update actions/cache from v4 to v5 in GitHub Actions workflow files. @wesleybl [#7731](https://github.com/plone/volto/issues/7731)
+- Sync react-aria-components to 1.14.0 in catalog.json and nextjs package.json. @wesleybl [#7733](https://github.com/plone/volto/issues/7733)
+
+### Documentation
+
+- Add Volto 19 add-on development documentation. @Shyam-Raghuwanshi [#7694](https://github.com/plone/volto/issues/7694)
+- Exclude linkedin.com from link checker. @davisagli 
+
 ## 19.0.0-alpha.19 (2025-12-08)
 
 ### Feature
