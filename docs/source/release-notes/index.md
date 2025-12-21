@@ -17,6 +17,25 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.31.0 (2025-12-21)
+
+### Feature
+
+- ModalForm should handle empty schemas, rendering an empty form with just the submit and cancel buttons. @tedw87 [#7687](https://github.com/plone/volto/issues/7687)
+
+### Bugfix
+
+- Hide date and time fields when either "Whole Day" or "Open End" is checked in the Event form. @wesleybl [#3243](https://github.com/plone/volto/issues/3243)
+- Fixed a bug in the login form where the user could see a spinner instead of an error message after a failed login, when the login form was loaded via server-side rendering. @aryan7081 [#7397](https://github.com/plone/volto/issues/7397)
+- Udpated translations (ta) @TamilNeram
+  Updated translations (it) @yurj [#7659](https://github.com/plone/volto/issues/7659)
+
+### Internal
+
+- Backport #7712. Include other *.md files in the repo root for link checking, fix redirecting links, and remove non-responsive server. @stevepiercy [#7721](https://github.com/plone/volto/issues/7721)
+- Update actions/checkout to v5 in all GitHub Actions workflows. @wesleybl [#7724](https://github.com/plone/volto/issues/7724)
+- Refactored the `FormFieldWrapper` widget by converting it from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7734](https://github.com/plone/volto/issues/7734)
+
 ## 18.30.1 (2025-12-08)
 
 ### Bugfix
