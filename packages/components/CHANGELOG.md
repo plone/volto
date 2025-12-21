@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.3 (2025-12-21)
+
+### Internal
+
+- Fixed update to RAC 1.14.0 DTS problems. @sneridagh 
+
 ## 3.0.2 (2025-02-08)
 
 ### Internal
