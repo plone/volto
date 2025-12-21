@@ -25,8 +25,8 @@ myst:
 - Fixed a bug in the login form where the user could see a spinner instead of an error message after a failed login, when the login form was loaded via server-side rendering. @aryan7081 [#7397](https://github.com/plone/volto/issues/7397)
 - Fix max filesize upload issue in drag and drop @Tishasoumya-02 [#7695](https://github.com/plone/volto/issues/7695)
 - Fix multilingual redirect for languages using locale-specific formats. @Shyam-Raghuwanshi [#7725](https://github.com/plone/volto/issues/7725)
-- Add German translations for the current and parent paths. @iFlameing 
-- Add support for typing and pasting URLs in the ObjectBrowserWidget for location selection in the Listing block. @iFlameing 
+- Add German translations for the current and parent paths. @iFlameing
+- Add support for typing and pasting URLs in the ObjectBrowserWidget for location selection in the Listing block. @iFlameing
 
 ### Internal
 
@@ -40,7 +40,7 @@ myst:
 ### Documentation
 
 - Add Volto 19 add-on development documentation. @Shyam-Raghuwanshi [#7694](https://github.com/plone/volto/issues/7694)
-- Exclude linkedin.com from link checker. @davisagli 
+- Exclude `linkedin.com` from link checker. @davisagli
 
 ## 19.0.0-alpha.19 (2025-12-08)
 
@@ -49,11 +49,11 @@ myst:
 - cross language support for blocks chooser search @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
 - Added support for selecting Path and Depth in the Listing Block’s Location criteria using the ObjectBrowserWidget and NumberWidget. @iFlameing @giuliaghisini [#7661](https://github.com/plone/volto/issues/7661)
 - ModalForm should handle empty schemas, rendering an empty form with just the submit and cancel buttons. @tedw87 [#7677](https://github.com/plone/volto/issues/7677)
-- Add feature of drag and drop files in folder contents. @Tishasoumya-02 
+- Add feature of drag and drop files in folder contents. @Tishasoumya-02
 
 ### Internal
 
-- Add classname for unauthorized page @iRohitSingh 
+- Add classname for unauthorized page @iRohitSingh
 
 ### Documentation
 
