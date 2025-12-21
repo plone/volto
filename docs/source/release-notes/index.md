@@ -40,7 +40,7 @@ myst:
 ### Documentation
 
 - Add Volto 19 add-on development documentation. @Shyam-Raghuwanshi [#7694](https://github.com/plone/volto/issues/7694)
-- Exclude linkedin.com from link checker. @davisagli 
+- Exclude `linkedin.com` from link checker. @davisagli 
 
 ## 19.0.0-alpha.19 (2025-12-08)
 
