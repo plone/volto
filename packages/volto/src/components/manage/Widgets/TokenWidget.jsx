@@ -5,8 +5,7 @@
 
 import React, { useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
 import {
   getVocabFromHint,
@@ -57,31 +56,53 @@ const TokenWidget = (props) => {
     reactSelectCreateable,
     isDisabled,
     fieldSet,
-    choices: propChoices,
-    vocabLoading,
-    vocabLoaded,
-    vocabBaseUrl,
-    lang,
-    getVocabulary,
   } = props;
 
   const intl = useIntl();
+  const dispatch = useDispatch();
 
-  const choices = useMemo(() => propChoices || [], [propChoices]);
+  const vocabBaseUrl = useMemo(
+    () =>
+      getVocabFromHint(props) ||
+      getVocabFromField(props) ||
+      getVocabFromItems(props),
+    [props],
+  );
+
+  const lang = useSelector((state) => state.intl.locale);
+
+  const vocabState = useSelector((state) => {
+    if (!vocabBaseUrl) return null;
+    return state.vocabularies?.[vocabBaseUrl]?.subrequests?.[lang];
+  });
+
+  const choices = useMemo(() => {
+    if (vocabState?.items) {
+      return vocabState.items.map((item) => ({
+        label: item.label || item.value,
+        value: item.value,
+      }));
+    }
+    return [];
+  }, [vocabState]);
+
+  const vocabLoading = vocabState?.loading;
+  const vocabLoaded = vocabState?.loaded;
 
   useEffect(() => {
     if (
       !choices?.length &&
       vocabLoading === undefined &&
       !vocabLoaded &&
-      vocabBaseUrl &&
-      getVocabulary
+      vocabBaseUrl
     ) {
-      getVocabulary({
-        vocabNameOrURL: vocabBaseUrl,
-        size: -1,
-        subrequest: lang,
-      });
+      dispatch(
+        getVocabulary({
+          vocabNameOrURL: vocabBaseUrl,
+          size: -1,
+          subrequest: lang,
+        }),
+      );
     }
   }, [
     choices?.length,
@@ -89,7 +110,7 @@ const TokenWidget = (props) => {
     vocabLoaded,
     vocabBaseUrl,
     lang,
-    getVocabulary,
+    dispatch,
   ]);
 
   const handleChange = useCallback(
@@ -158,12 +179,7 @@ TokenWidget.propTypes = {
   description: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.arrayOf(PropTypes.string),
-  getVocabulary: PropTypes.func.isRequired,
   choices: PropTypes.arrayOf(PropTypes.object),
-  vocabLoading: PropTypes.bool,
-  vocabLoaded: PropTypes.bool,
-  vocabBaseUrl: PropTypes.string,
-  lang: PropTypes.string,
   items: PropTypes.shape({
     vocabulary: PropTypes.object,
   }),
@@ -193,34 +209,4 @@ TokenWidget.defaultProps = {
   value: null,
 };
 
-export default compose(
-  injectLazyLibs(['reactSelectCreateable']),
-  connect(
-    (state, props) => {
-      const vocabBaseUrl =
-        getVocabFromHint(props) ||
-        getVocabFromField(props) ||
-        getVocabFromItems(props);
-
-      const vocabState =
-        state.vocabularies?.[vocabBaseUrl]?.subrequests?.[state.intl.locale];
-
-      if (vocabState) {
-        return {
-          choices: vocabState.items
-            ? vocabState.items.map((item) => ({
-                label: item.label || item.value,
-                value: item.value,
-              }))
-            : [],
-          vocabLoading: vocabState.loading,
-          vocabLoaded: vocabState.loaded,
-          vocabBaseUrl,
-          lang: state.intl.locale,
-        };
-      }
-      return { vocabBaseUrl, lang: state.intl.locale };
-    },
-    { getVocabulary },
-  ),
-)(TokenWidget);
+export default injectLazyLibs(['reactSelectCreateable'])(TokenWidget);
