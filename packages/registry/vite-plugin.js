@@ -53,7 +53,7 @@ export const PloneRegistryVitePlugin = () => {
   const projectRootPath = path.resolve('.');
   const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
 
-  const ploneDir = path.join(process.cwd(), '.plone');
+  const ploneDir = path.join(projectRootPath, '.plone');
   if (!fs.existsSync(ploneDir)) {
     fs.mkdirSync(ploneDir, { recursive: true });
   }

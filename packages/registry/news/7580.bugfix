@@ -1,1 +1,0 @@
-Fixed problem on how `routes.ts` loaded the add-ons config for routes, in case that there's more than one add-on in the setup. @sneridagh
