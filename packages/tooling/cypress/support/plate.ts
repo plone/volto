@@ -137,6 +137,7 @@ Cypress.Commands.add(
         return cy
           .wrap(domNode)
           .scrollIntoView()
+          .wait(10)
           .click({ force: true, log: false });
       }),
     ),
