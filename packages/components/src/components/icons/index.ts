@@ -104,3 +104,4 @@ export { VideoIcon } from './VideoIcon';
 export { VoltoIcon } from './VoltoIcon';
 export { WindowedIcon } from './WindowedIcon';
 export { WorldIcon } from './WorldIcon';
+export { SlashIcon } from './SlashIcon';
