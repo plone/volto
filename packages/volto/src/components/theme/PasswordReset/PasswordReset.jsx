@@ -4,10 +4,8 @@
  */
 
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Link, withRouter } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
@@ -91,11 +89,16 @@ const messages = defineMessages({
 
 /**
  * @function PasswordReset
- * @param {Object} props
  * @returns {JSX.Element}
  */
-function PasswordReset(props) {
-  const { loading, loaded, error, token, setInitialPassword, history } = props;
+function PasswordReset() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { token } = useParams();
+
+  const loading = useSelector((state) => state.users.initial.loading);
+  const loaded = useSelector((state) => state.users.initial.loaded);
+  const error = useSelector((state) => state.users.initial.error);
 
   const [localError, setLocalError] = useState(null);
   const [isSuccessful, setIsSuccessful] = useState(false);
@@ -129,7 +132,7 @@ function PasswordReset(props) {
    */
   const onSubmit = (data) => {
     if (data.password === data.passwordRepeat) {
-      setInitialPassword(data[identifierField], token, data.password);
+      dispatch(setInitialPassword(data[identifierField], token, data.password));
       setLocalError(null);
     } else {
       setLocalError({
@@ -224,29 +227,4 @@ function PasswordReset(props) {
   return <div />;
 }
 
-PasswordReset.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  loaded: PropTypes.bool.isRequired,
-  error: PropTypes.object,
-  token: PropTypes.string.isRequired,
-  setInitialPassword: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired,
-};
-
-PasswordReset.defaultProps = {
-  error: null,
-};
-
-export default compose(
-  withRouter,
-  connect(
-    (state, props) => ({
-      loading: state.users.initial.loading,
-      loaded: state.users.initial.loaded,
-      error: state.users.initial.error,
-      token: props.match.params.token,
-    }),
-    { setInitialPassword },
-  ),
-)(PasswordReset);
+export default PasswordReset;
