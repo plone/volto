@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.5 (2025-12-23)
+
+### Feature
+
+- Quanta, Tailwind styled `Toolbar` component. @sneridagh [#7549](https://github.com/plone/volto/issues/7549)
+
+### Internal
+
+- Include other *.md files in the repo root for link checking, fix redirecting links, and remove non-responsive server. @stevepiercy [#7712](https://github.com/plone/volto/issues/7712)
+- Add storybook for lots of items with custom separator. @iFlameing 
+- Fixed update to RAC 1.14.0 DTS problems. @sneridagh 
+
 ## 4.0.0-alpha.4 (2025-11-19)
 
 ### Bugfix
