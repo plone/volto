@@ -1,1 +1,0 @@
-Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh
