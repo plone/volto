@@ -8,6 +8,21 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2025-12-23)
+
+### Feature
+
+- Added `--color-brand` since it's used by some libraries (platejs). @sneridagh [#7393](https://github.com/plone/volto/issues/7393)
+
+### Bugfix
+
+- Fixed styles when the main theme is tailwind-based. @pnicolli 
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395](https://github.com/plone/volto/issues/7395)
+- Added `styles/colors.css` to eventually centralize the definition of colors in there. @sneridagh 
+
 ## 1.0.0-alpha.2 (2025-09-29)
 
 ### Feature
