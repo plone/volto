@@ -1,1 +1,0 @@
-View for the Image content type @ebrehault
