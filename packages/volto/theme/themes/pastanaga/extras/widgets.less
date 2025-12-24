@@ -292,3 +292,37 @@ body.babel-view .field.language-independent-field {
     margin-left: 8px;
   }
 }
+
+.ui.form .query-widget {
+  .location-object-browser {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
+
+    .object-browser-field {
+      min-height: 60px;
+      flex: 1 0 auto;
+      padding-right: 1em;
+      padding-left: 1em;
+      margin-bottom: 0px;
+    }
+
+    .object-browser-field + .field {
+      margin-bottom: 0px;
+    }
+
+    .objectbrowser-field {
+      height: 100%;
+    }
+
+    .reference-widget-depth {
+      .field {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  .location-object-browser + button.ui.button {
+    padding-top: 0;
+  }
+}
