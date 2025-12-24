@@ -63,7 +63,7 @@ const MultilingualRedirector = (props) => {
     isMultilingual,
     availableLanguages,
     currentLanguage,
-  ]); // <-- Updated Dependencies
+  ]);
   return pathname === '/' && isMultilingual ? (
     <Redirect to={`/${toBackendLang(redirectToLanguage)}`} />
   ) : (
