@@ -560,6 +560,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1219,6 +1220,11 @@ msgstr "नई फ़ाइल अपलोड करने के लिए य
 msgid "Drop files here ..."
 msgstr "यहाँ फ़ाइलें ड्रॉप करें ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1553,6 +1559,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "फ़ाइल का आकार"
 
@@ -1563,11 +1570,13 @@ msgstr "फ़ाइल दृश्य"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "फ़ाइल का नाम"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
@@ -2051,6 +2060,7 @@ msgstr "अंतिम टिप्पणी की तारीख"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "अंतिम संशोधन"
 
@@ -2809,6 +2819,7 @@ msgstr "अपना कोड सुंदर बनाएं"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "पूर्वावलोकन"
 
@@ -2949,6 +2960,11 @@ msgstr "plone.api >= 2.0.3 के साथ संबंध संपादन�
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "संबंध अपडेट किए गए"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3974,6 +3990,7 @@ msgstr "कुल टिप्पणियाँ"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "अपलोड करने के लिए कुल फ़ाइलें: {totalFiles}"
 
@@ -4194,6 +4211,11 @@ msgstr "अपग्रेड कदम"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "अपलोड"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -5255,6 +5277,7 @@ msgstr "हाँ"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
