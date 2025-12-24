@@ -15,7 +15,6 @@ import {
   startEventDateRangeValidator,
   endEventDateRangeValidator,
   patternValidator,
-  defaultLanguageControlPanelValidator,
 } from '@plone/volto/helpers/FormValidation/validators';
 
 const registerValidators = (config: ConfigType) => {
@@ -150,13 +149,6 @@ const registerValidators = (config: ConfigType) => {
     type: 'validator',
     dependencies: { behaviorName: 'plone.eventbasic', fieldName: 'end' },
     method: endEventDateRangeValidator,
-  });
-
-  config.registerUtility({
-    name: 'default_language',
-    type: 'validator',
-    dependencies: { format: 'default_language' },
-    method: defaultLanguageControlPanelValidator,
   });
 };
 

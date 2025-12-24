@@ -89,12 +89,25 @@ export function listControlpanels() {
  */
 export function updateControlpanel(url, data) {
   return (dispatch) => {
+    const normalizedData = { ...data };
+    if (
+      normalizedData.default_language &&
+      Array.isArray(normalizedData.available_languages) &&
+      !normalizedData.available_languages.includes(
+        normalizedData.default_language,
+      )
+    ) {
+      normalizedData.available_languages = [
+        ...normalizedData.available_languages,
+        normalizedData.default_language,
+      ];
+    }
     dispatch({
       type: UPDATE_CONTROLPANEL,
       request: {
         op: 'patch',
         path: url,
-        data,
+        data: normalizedData,
       },
     }).then(() => {
       dispatch(getSite());
