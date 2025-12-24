@@ -3,7 +3,6 @@
  * @module components/manage/Blocks/HTML/Edit
  */
 
-import { compose } from 'redux';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
@@ -12,7 +11,7 @@ import loadable from '@loadable/component';
 import isEqual from 'lodash/isEqual';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { useLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import showSVG from '@plone/volto/icons/show.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import codeSVG from '@plone/volto/icons/code.svg';
@@ -61,18 +60,42 @@ function Edit(props) {
   const { selected, data, onChangeBlock, editable } = props;
 
   const [isPreview, setisPreview] = useState(false);
+  const [prismMarkupLoaded, setPrismMarkupLoaded] = useState(false);
   const intl = useIntl();
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
 
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   */
+  const lazyLibs = useLazyLibs(
+    ['prettierStandalone', 'prettierParserHtml', 'prismCore'],
+    {
+      shouldRerender: true,
+    },
+  );
+
+  const librariesLoaded =
+    lazyLibs.prettierStandalone &&
+    lazyLibs.prettierParserHtml &&
+    lazyLibs.prismCore;
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadPrismMarkup = async () => {
+      try {
+        await import('prismjs/components/prism-markup');
+        if (!cancelled) {
+          setPrismMarkupLoaded(true);
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setPrismMarkupLoaded(true);
+        }
+      }
+    };
+
+    loadPrismMarkup();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const codeEditorRef = useRef(null);
   const savedSelection = useRef({});
@@ -171,11 +194,15 @@ function Edit(props) {
    * @returns {undefined}
    */
   const onPreview = async () => {
+    if (!lazyLibs.prettierStandalone || !lazyLibs.prettierParserHtml) {
+      return;
+    }
+
     try {
       const code = (
-        await props.prettierStandalone.format(getValue(), {
+        await lazyLibs.prettierStandalone.format(getValue(), {
           parser: 'html',
-          plugins: [props.prettierParserHtml],
+          plugins: [lazyLibs.prettierParserHtml],
         })
       ).trim();
       setisPreview(!isPreview);
@@ -192,11 +219,15 @@ function Edit(props) {
    * @returns {undefined}
    */
   const onPrettify = async () => {
+    if (!lazyLibs.prettierStandalone || !lazyLibs.prettierParserHtml) {
+      return;
+    }
+
     try {
       const code = (
-        await props.prettierStandalone.format(getValue(), {
+        await lazyLibs.prettierStandalone.format(getValue(), {
           parser: 'html',
-          plugins: [props.prettierParserHtml],
+          plugins: [lazyLibs.prettierParserHtml],
         })
       ).trim();
       onChangeCode(code);
@@ -220,6 +251,10 @@ function Edit(props) {
    * @method render
    * @returns {string} Markup for the component.
    */
+
+  if (!librariesLoaded || !prismMarkupLoaded) {
+    return null;
+  }
 
   const placeholder =
     data.placeholder || intl.formatMessage(messages.placeholder);
@@ -307,11 +342,11 @@ function Edit(props) {
           placeholder={placeholder}
           onValueChange={(code) => onChangeCode(code)}
           highlight={
-            props.prismCore?.highlight && props.prismCore?.languages?.html
+            lazyLibs.prismCore?.highlight && lazyLibs.prismCore?.languages?.html
               ? (code) =>
-                  props.prismCore.highlight(
+                  lazyLibs.prismCore.highlight(
                     code,
-                    props.prismCore.languages.html,
+                    lazyLibs.prismCore.languages.html,
                     'html',
                   )
               : () => {}
@@ -346,27 +381,4 @@ Edit.defaultProps = {
   editable: true,
 };
 
-const withPrismMarkup = (WrappedComponent) => (props) => {
-  const [loaded, setLoaded] = useState();
-  const promise = useRef(null);
-  const cancelled = useRef(false);
-
-  useEffect(() => {
-    promise.current = import('prismjs/components/prism-markup');
-    promise.current.then(() => {
-      if (!cancelled.current) {
-        setLoaded(true);
-      }
-    });
-    return () => {
-      cancelled.current = true;
-    };
-  }, []);
-
-  return loaded ? <WrappedComponent {...props} /> : null;
-};
-
-export default compose(
-  injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
-  withPrismMarkup,
-)(Edit);
+export default Edit;
