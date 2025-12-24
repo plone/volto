@@ -1,0 +1,1 @@
+Fixed issue where adding or removing languages in the Language control panel would fail with validation error "The selected default language must be in the list of the field 'Available languages'" when the default language is English. @Shyam-Raghuwanshi
