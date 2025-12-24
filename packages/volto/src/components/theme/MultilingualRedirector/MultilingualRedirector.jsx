@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import { changeLanguage } from '@plone/volto/actions/language/language';
-
 import { toGettextLang, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 
 const MultilingualRedirector = (props) => {
