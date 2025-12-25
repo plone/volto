@@ -1,0 +1,1 @@
+Support setting VALEFILES as an environment variable. See https://github.com/plone/volto/pull/7752. @stevepiercy
