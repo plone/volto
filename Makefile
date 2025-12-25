@@ -17,13 +17,13 @@ include variables.mk
 # You can set these variables from the command line.
 SPHINXOPTS      ?=
 VALEOPTS        ?=
+VALEFILES       ?= $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 # Internal variables.
 SPHINXBUILD     = "$(realpath bin/sphinx-build)"
 SPHINXAUTOBUILD = "$(realpath bin/sphinx-autobuild)"
 DOCS_DIR        = ./docs/source/
 BUILDDIR        = ../_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
-VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 
 # Recipe snippets for reuse
 
