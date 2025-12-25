@@ -1,3 +1,4 @@
 [^.]js
 NodeJS
+(?i)node
 [Pp]re-requisite
