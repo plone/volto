@@ -92,16 +92,30 @@ export function updateControlpanel(url, data) {
     const normalizedData = { ...data };
     if (
       normalizedData.default_language &&
-      Array.isArray(normalizedData.available_languages) &&
-      !normalizedData.available_languages.includes(
-        normalizedData.default_language,
-      )
+      Array.isArray(normalizedData.available_languages)
     ) {
-      normalizedData.available_languages = [
-        ...normalizedData.available_languages,
-        normalizedData.default_language,
-      ];
+      const defaultLangCode =
+        typeof normalizedData.default_language === 'string'
+          ? normalizedData.default_language
+          : normalizedData.default_language?.token ||
+            normalizedData.default_language?.value;
+
+      const isDefaultInAvailable = normalizedData.available_languages.some(
+        (lang) => {
+          const langCode =
+            typeof lang === 'string' ? lang : lang?.token || lang?.value;
+          return langCode === defaultLangCode;
+        },
+      );
+
+      if (!isDefaultInAvailable && defaultLangCode) {
+        normalizedData.available_languages = [
+          ...normalizedData.available_languages,
+          defaultLangCode,
+        ];
+      }
     }
+
     dispatch({
       type: UPDATE_CONTROLPANEL,
       request: {
