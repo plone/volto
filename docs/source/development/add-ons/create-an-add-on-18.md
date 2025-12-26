@@ -80,7 +80,7 @@ Is it okay to delete and re-download it? [y/n] (y):
 │ Sanity check results:                                                        │
 │                                                                              │
 │                                                                              │
-│   - Node.js: ✓                                                                  │
+│   - Node: ✓                                                                  │
 │   - git: ✓                                                                   │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯

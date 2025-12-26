@@ -2898,7 +2898,7 @@ This release includes a number of changes to the internal dependencies. If you h
 
 ### Upgrade to Node.js 12
 
-We have now dependencies that requires `Node.js >=10.19.0`. Although Node.js 10 has still LTS
+We have now dependencies that requires `node >=10.19.0`. Although Node.js 10 has still LTS
 "maintenance" treatment (see https://github.com/nodejs/release#release-schedule) the recommended path
 is that you use from now on Node.js 12 which is LTS since last October.
 
