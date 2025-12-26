@@ -291,6 +291,41 @@ export const withVariationSchemaEnhancer = (FormComponent) => (props) => {
   return <FormComponent {...props} schema={schema} />;
 };
 
+/**
+ * A HOC that enhances the incoming schema prop with styling widget support
+ * by:
+ *
+ * - adds the variation selection input (as a choice widget)
+ */
+export const withStylingSchemaEnhancer = (FormComponent) => (props) => {
+  const { formData, schema } = props;
+  const intl = useIntl();
+
+  const blocksConfig = getBlocksConfig(props);
+
+  const blockType = formData['@type'];
+  const enableStyling = blocksConfig[blockType]?.enableStyling;
+
+  if (enableStyling) {
+    const stylesSchema = blocksConfig[blockType]?.stylesSchema;
+    const tabsView = blocksConfig[blockType]?.stylesSchemaTabsView || false;
+
+    schema.fieldsets.push({
+      id: 'styling',
+      title: intl.formatMessage(messages.styling),
+      fields: ['styles'],
+    });
+
+    schema.properties.styles = {
+      widget: 'object',
+      title: intl.formatMessage(messages.styling),
+      tabsView,
+      schema: stylesSchema,
+    };
+  }
+  return <FormComponent {...props} schema={schema} />;
+};
+
 export const EMPTY_STYLES_SCHEMA = {
   fieldsets: [
     {
