@@ -11,6 +11,16 @@ myst:
 
 This page describes environment variables and their usage for configuration of your Volto application at runtime.
 
+## Razzle environment variables
+
+Volto is built on top of Razzle. In addition to the Volto-specific environment variables documented on this page, Volto also supports environment variables provided by Razzle.
+
+For example, you can customize the port used by the development server using the `PORT` environment variable, which is handled by Razzle.
+
+For a complete and up-to-date list of supported variables, refer to the Razzle documentation:
+https://razzlejs.org/docs/environment-variables
+
+
 For more detailed information about environment variables and other configurations, you can refer to the [Razzle Documentation](https://razzlejs.org/docs/environment-variables).
 
 
