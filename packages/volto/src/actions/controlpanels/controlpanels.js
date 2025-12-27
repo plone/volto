@@ -91,6 +91,7 @@ export function updateControlpanel(url, data) {
   return (dispatch) => {
     const normalizedData = { ...data };
     if (
+      url.includes('@controlpanels/language') &&
       normalizedData.default_language &&
       Array.isArray(normalizedData.available_languages)
     ) {
@@ -99,7 +100,6 @@ export function updateControlpanel(url, data) {
           ? normalizedData.default_language
           : normalizedData.default_language?.token ||
             normalizedData.default_language?.value;
-
       const isDefaultInAvailable = normalizedData.available_languages.some(
         (lang) => {
           const langCode =
@@ -109,9 +109,18 @@ export function updateControlpanel(url, data) {
       );
 
       if (!isDefaultInAvailable && defaultLangCode) {
+        // Preserve the existing format (string vs object) when appending
+        const firstItem = normalizedData.available_languages[0];
+        const isObjectFormat =
+          firstItem && typeof firstItem === 'object' && firstItem !== null;
+
+        const newLangEntry = isObjectFormat
+          ? { token: defaultLangCode }
+          : defaultLangCode;
+
         normalizedData.available_languages = [
           ...normalizedData.available_languages,
-          defaultLangCode,
+          newLangEntry,
         ];
       }
     }
