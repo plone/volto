@@ -12,6 +12,10 @@ export interface UtilityTypeMap {
   transform: (data: any) => any;
   fieldFactoryInitialData: (intl: any) => Record<string, any>;
   fieldFactoryProperties: (intl: any) => Record<string, any>;
+  rootContentSubRequest: (args: LoaderUtilityArgs) => Promise<unknown>;
+  rootLoaderData: (
+    args: LoaderUtilityArgs,
+  ) => Promise<{ status: number; data: unknown }>;
 }
 
 export type ValidatorUtilityArgs = {
@@ -39,13 +43,6 @@ type UtilitiesByMap = {
 };
 
 export type UtilitiesConfig = UtilitiesByMap & Record<string, Utility>;
-
-export type LoaderDataUtilityMethod = (
-  args: LoaderUtilityArgs,
-) => Promise<{ status: number; data: unknown }>;
-export type ContentSubRequestUtilityMethod = (
-  args: LoaderUtilityArgs,
-) => Promise<undefined>;
 
 export interface LoaderUtilityArgs {
   cli: PloneClient;

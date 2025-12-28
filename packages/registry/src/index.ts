@@ -537,7 +537,7 @@ class Config {
     );
     const utilities = utilitiesKeys.map((key) => utilitiesForType[key]);
 
-    return utilities as Array<{ method: T }>;
+    return utilities;
   }
 
   registerRoute(options: ReactRouterRouteEntry) {
