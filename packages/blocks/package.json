@@ -52,7 +52,8 @@
     "@plone/plate": "workspace:*",
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1",
-    "lodash.clonedeep": "^4.5.0"
+    "lodash.clonedeep": "^4.5.0",
+    "react-i18next": "catalog:"
   },
   "devDependencies": {
     "@plone/helpers": "workspace:*",

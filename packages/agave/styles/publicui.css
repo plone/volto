@@ -100,6 +100,18 @@
           }
         }
       }
+      /* Listing block */
+      &.block-listing {
+        .item {
+          @apply p-1;
+        }
+        .summary {
+          @apply flex;
+          img {
+            @apply mr-1;
+          }
+        }
+      }
 
       h2 {
         @apply text-3xl font-normal pb-4 pt-6;
