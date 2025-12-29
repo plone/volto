@@ -59,7 +59,8 @@ When running any of the documentation Make commands, you may safely ignore warni
 ```
 
 These warnings only check each of the changelog entries for valid MyST syntax.
-We do not want to include them in the documentation through a toctree entry, because the release process copies them into the {doc}`../release-notes/index` and deletes them.
+We do not want to include them in the documentation through a toctree entry, because the release process copies them into the {doc}`../../release-notes/index`
+ and deletes them.
 Thus it is safe to ignore warnings of this specific type, but you should heed all others.
 
 
