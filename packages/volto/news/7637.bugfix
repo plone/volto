@@ -1,0 +1,1 @@
+Fixed a bug in Toolbar Types where the "Add Translation…" menu crashed if a language in Plone was not in Volto's language map. Now it shows the language code instead of crashing. @pratyush07-hub
