@@ -1,10 +1,10 @@
 ---
 myst:
   html_meta:
-    'description': 'Volto has a centralized configuration registry used to parameterize Volto.'
-    'property=og:description': 'Volto has a centralized configuration registry used to parameterize Volto.'
-    'property=og:title': 'The configuration registry'
-    'keywords': 'Volto, Plone, frontend, React, configuration, registry'
+    "description": "Volto has a centralized configuration registry used to parameterize Volto."
+    "property=og:description": "Volto has a centralized configuration registry used to parameterize Volto."
+    "property=og:title": "The configuration registry"
+    "keywords": "Volto, Plone, frontend, React, configuration, registry"
 ---
 
 # The configuration registry
@@ -32,17 +32,13 @@ a pipe would be:
 
 Both use the same method, using a function as the default export. This function takes a
 `config` and should return the `config` once you've ended your modifications. For
-add-ons, it must be provided in the main `index.js` module of the add-on.
+add-ons, it must be provided in the main {file}`index.js` module of the add-on.
 
-```{warning}
-**Deprecation Notice**
+```{versiondeprecated} Volto 18
 
-As of Volto 18, the project configuration approach using `src/config.js` is deprecated and will be removed in Volto 19.
-New projects created with Cookieplone now use a `config/` folder approach.
-Please refer to the [Volto Customization Training](https://training.plone.org/volto-customization/voltosettings.html) for the most up-to-date configuration patterns.
+As of Volto 18, the project configuration approach using {file}`src/config.js` is deprecated and will be removed in Volto 19.
+New projects created with Cookieplone now use a {file}`config/` folder approach.
 ```
-
-For older projects, configuration is provided in the `src/config.js` module of the project.
 
 See the {doc}`../conceptual-guides/add-ons` and {doc}`../development/add-ons/index` sections for extended information on how to work with add-ons.
 
