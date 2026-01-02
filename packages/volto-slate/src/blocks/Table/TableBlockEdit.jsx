@@ -3,7 +3,13 @@
  * @module volto-slate/blocks/Table/Edit
  */
 
-import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
@@ -163,8 +169,8 @@ const messages = defineMessages({
 /**
  * Edit component for the Slate Table block type in Volto.
  * @function Edit
- * @param {Object} props 
- * @returns {JSX.Element} 
+ * @param {Object} props
+ * @returns {JSX.Element}
  */
 const Edit = (props) => {
   const {
@@ -182,19 +188,16 @@ const Edit = (props) => {
   const intl = useIntl();
   const prevSelectedRef = useRef(selected);
 
-
   const [selectedCell, setSelectedCell] = useState({
     row: 0,
     cell: 0,
   });
   const [isClient, setIsClient] = useState(false);
 
- 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  
   useEffect(() => {
     if (!data.table || isEmpty(data.table)) {
       onChangeBlock(block, {
@@ -204,7 +207,6 @@ const Edit = (props) => {
     }
   }, [data.table, data, block, onChangeBlock]);
 
- 
   useEffect(() => {
     if (prevSelectedRef.current && !selected) {
       setSelectedCell(null);
@@ -212,7 +214,6 @@ const Edit = (props) => {
     prevSelectedRef.current = selected;
   }, [selected]);
 
-  
   const headers = useMemo(
     () => data.table?.rows?.[0]?.cells || [],
     [data.table],
@@ -225,7 +226,7 @@ const Edit = (props) => {
 
   const schema = useMemo(() => TableSchema(props), [props]);
 
-  
+  // eslint-disable-next-line no-unused-vars
   const onChange = useCallback(
     (id, value) => {
       const table = data.table;
@@ -259,10 +260,10 @@ const Edit = (props) => {
     [data, block, onChangeBlock],
   );
 
+  // eslint-disable-next-line no-unused-vars
   const toggleCellType = useCallback(() => {
     const table = { ...data.table };
-    const type =
-      table.rows[selectedCell.row].cells[selectedCell.cell].type;
+    const type = table.rows[selectedCell.row].cells[selectedCell.cell].type;
     table.rows[selectedCell.row].cells[selectedCell.cell].type =
       type === 'header' ? 'data' : 'header';
     onChangeBlock(block, {
@@ -384,16 +385,12 @@ const Edit = (props) => {
       ...data,
       table: {
         ...table,
-        rows: remove(
-          table.rows,
-          (row, index) => index !== selectedCell.row,
-        ),
+        rows: remove(table.rows, (row, index) => index !== selectedCell.row),
       },
     });
   }, [data, block, onChangeBlock, selectedCell]);
 
   return (
- 
     <div className={cx('block table', { selected })}>
       {selected && (
         <div className="toolbar">
