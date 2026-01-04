@@ -2,7 +2,7 @@ name: Unit Tests
 on: [push, pull_request]
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
   volto:
@@ -12,9 +12,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [20.x, 22.x]
+        node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -40,9 +40,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [20.x, 22.x]
+        node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -58,11 +58,11 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -81,7 +81,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ env.node-version }}
@@ -97,11 +97,11 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -114,7 +114,7 @@ jobs:
     name: '@plone/client'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
@@ -129,11 +129,11 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -154,7 +154,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ env.node-version }}
@@ -170,11 +170,11 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 

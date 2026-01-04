@@ -31,7 +31,7 @@ declare function withObjectBrowser(WrappedComponent: any): {
          *     }),
          *   });
          */
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;

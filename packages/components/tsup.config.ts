@@ -10,4 +10,9 @@ export default defineConfig({
   dts: true,
   outDir: 'dist',
   clean: true,
+  esbuildOptions(options) {
+    options.banner = {
+      js: '"use client"',
+    };
+  },
 });

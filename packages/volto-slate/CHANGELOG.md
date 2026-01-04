@@ -8,6 +8,34 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.9 (2025-12-08)
+
+### Feature
+
+- cross language support and umlaut fix for slash menu @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
+
+## 19.0.0-alpha.8 (2025-11-19)
+
+### Bugfix
+
+- Avoid errors when deleting at the end of a Slate block with an empty Slate block after it and remove the empty block instead. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
+## 19.0.0-alpha.7 (2025-11-10)
+
+### Bugfix
+
+- Ensure Delete at end of a text block merges the next text block and removes it; if the next block is non-text (e.g., Description), do nothing. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
+## 19.0.0-alpha.6 (2025-10-21)
+
+### Bugfix
+
+- Fix Backspace at start of a text block: merge current block into previous inline (no extra newline), delete the current block, and place the caret before the first character of the merged content. Also handle Enter immediately after such inline merge by splitting back into two blocks. @aryan7081 [#7373](https://github.com/plone/volto/issues/7373)
+
+### Internal
+
+- Update slate libraries. @sneridagh [#7477](https://github.com/plone/volto/issues/7477)
+
 ## 19.0.0-alpha.5 (2025-09-29)
 
 ### Feature
