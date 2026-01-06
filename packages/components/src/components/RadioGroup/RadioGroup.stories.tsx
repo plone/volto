@@ -1,6 +1,5 @@
 import React from 'react';
-import { RadioGroup } from './RadioGroup';
-import { Radio } from 'react-aria-components';
+import { Radio, RadioGroup } from './RadioGroup';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
