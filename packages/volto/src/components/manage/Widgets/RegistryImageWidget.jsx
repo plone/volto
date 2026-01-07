@@ -36,6 +36,10 @@ const messages = defineMessages({
     id: 'Drop file here to replace the existing file',
     defaultMessage: 'Drop file here to replace the existing file',
   },
+  deleteFile: {
+    id: 'Delete file',
+    defaultMessage: 'Delete file',
+  },
   fileDrag: {
     id: 'Drop file here to upload a new file',
     defaultMessage: 'Drop file here to upload a new file',
@@ -165,7 +169,7 @@ const RegistryImageWidget = (props) => {
             icon
             basic
             className="delete-button"
-            aria-label="delete file"
+            aria-label={intl.formatMessage(messages.deleteFile)}
             disabled={isDisabled}
             onClick={() => {
               onChange(id, '');

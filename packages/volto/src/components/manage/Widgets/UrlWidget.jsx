@@ -6,8 +6,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'semantic-ui-react';
+import { useIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import {
   addAppURL,
   isInternalURL,
@@ -31,6 +33,7 @@ import navTreeSVG from '@plone/volto/icons/nav.svg';
  * ```
  */
 export const UrlWidget = (props) => {
+  const intl = useIntl();
   const {
     id,
     onChange,
@@ -108,7 +111,7 @@ export const UrlWidget = (props) => {
               type="button"
               basic
               className="cancel"
-              aria-label="clearUrlBrowser"
+              aria-label={intl.formatMessage(messages.clearUrlBrowser)}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -124,7 +127,7 @@ export const UrlWidget = (props) => {
               type="button"
               basic
               icon
-              aria-label="openUrlBrowser"
+              aria-label={intl.formatMessage(messages.openUrlBrowser)}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -165,6 +168,9 @@ UrlWidget.propTypes = {
   maxLength: PropTypes.number,
   openObjectBrowser: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }),
 };
 
 /**
