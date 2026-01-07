@@ -14,6 +14,8 @@ import type {
   ViewsConfig,
   WidgetsConfig,
   ReactRouterRouteEntry,
+  UtilityTypeMap,
+  Utility,
 } from '@plone/types';
 
 export type ConfigData = {
@@ -34,8 +36,12 @@ type GetComponentResult = {
   component: React.ComponentType<any>;
 };
 
-type GetUtilityResult = {
-  method: (...args: any[]) => any;
+type UtilityMethodFor<Type extends string> = Type extends keyof UtilityTypeMap
+  ? UtilityTypeMap[Type]
+  : (...args: any[]) => any;
+
+type GetUtilityResult<Type extends string = string> = {
+  method: UtilityMethodFor<Type>;
 };
 
 export type ConfigType = InstanceType<typeof Config>;
@@ -452,11 +458,11 @@ class Config {
     }
   }
 
-  registerUtility(options: {
+  registerUtility<Type extends string>(options: {
     name: string;
-    type: string;
+    type: Type;
     dependencies?: Record<string, string>;
-    method: (args: any) => any;
+    method: UtilityMethodFor<Type>;
   }) {
     const { name, type, method, dependencies = {} } = options;
     let depsString: string = '';
@@ -470,19 +476,19 @@ class Config {
     }
     const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
 
-    let utilityType = this._data.utilities[type];
+    let utilityType = this._data.utilities[type] as Utility<Type> | undefined;
     if (!utilityType) {
-      this._data.utilities[type] = {};
-      utilityType = this._data.utilities[type];
+      this._data.utilities[type] = {} as Utility<Type>;
+      utilityType = this._data.utilities[type] as Utility<Type>;
     }
     utilityType[utilityName] = { method };
   }
 
-  getUtility(options: {
+  getUtility<Type extends string>(options: {
     name: string;
-    type: string;
+    type: Type;
     dependencies?: Record<string, string>;
-  }): GetUtilityResult | Record<string, never> {
+  }): GetUtilityResult<Type> | Record<string, never> {
     const { name, type, dependencies = {} } = options;
 
     if (!name || !type) return {};
@@ -493,14 +499,17 @@ class Config {
       .join('+');
 
     const utilityName = `${depsString ? `|${depsString}` : ''}${name}`;
+    const utilitiesForType = this._data.utilities[type] as
+      | Utility<Type>
+      | undefined;
 
-    return this._data.utilities[type]?.[utilityName] || {};
+    return utilitiesForType?.[utilityName] || {};
   }
 
-  getUtilities(options: {
-    type: string;
+  getUtilities<Type extends string>(options: {
+    type: Type;
     dependencies?: Record<string, string>;
-  }): Array<GetUtilityResult> | [] {
+  }): Array<GetUtilityResult<Type>> | [] {
     const { type, dependencies = {} } = options;
 
     if (!type) return [];
@@ -510,13 +519,16 @@ class Config {
       .map((key) => `${key}:${dependencies[key]}`)
       .join('+');
 
+    const utilitiesForType = this._data.utilities[type] as
+      | Utility<Type>
+      | undefined;
+    if (!utilitiesForType) return [];
+
     const utilityName = `${depsString ? `|${depsString}` : ''}`;
-    const utilitiesKeys = Object.keys(this._data.utilities[type] || {}).filter(
-      (key) => key.startsWith(utilityName),
+    const utilitiesKeys = Object.keys(utilitiesForType).filter((key) =>
+      key.startsWith(utilityName),
     );
-    const utilities = utilitiesKeys.map(
-      (key) => this._data.utilities[type][key],
-    );
+    const utilities = utilitiesKeys.map((key) => utilitiesForType[key]);
 
     return utilities;
   }
