@@ -32,11 +32,15 @@ a pipe would be:
 
 Both use the same method, using a function as the default export. This function takes a
 `config` and should return the `config` once you've ended your modifications. For
-add-ons, it must be provided in the main `index.js` module of the add-on. For project's
-it must be provided in the `src/config.js` module of the project.
+add-ons, it must be provided in the main {file}`index.js` module of the add-on.
+
+```{versiondeprecated} Volto 18
+
+As of Volto 18, the project configuration approach using {file}`src/config.js` is deprecated and will be removed in Volto 19.
+New projects created with Cookieplone now use a {file}`config/` folder approach.
+```
 
 See the {doc}`../conceptual-guides/add-ons` and {doc}`../development/add-ons/index` sections for extended information on how to work with add-ons.
-
 
 ## Extending configuration in a project
 
