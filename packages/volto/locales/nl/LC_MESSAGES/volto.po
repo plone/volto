@@ -1503,6 +1503,11 @@ msgstr "Bestaande alternatieve URLs voor dit item"
 msgid "Expand sidebar"
 msgstr "Zijbalk uitvouwen"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Werkbalk uitbreiden"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
