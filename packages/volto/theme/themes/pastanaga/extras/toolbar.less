@@ -104,15 +104,15 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     &.expanded {
       height: 100px;
 
-      .toolbar-actions {
-        opacity: 1;
-        transition: @opacity-transition;
+      // .toolbar-actions {
+      //   opacity: 1;
+      //   transition: @opacity-transition;
 
-        &.hidden {
-          opacity: 0;
-          transition: @opacity-transition;
-        }
-      }
+      //   &.hidden {
+      //     opacity: 0;
+      //     transition: @opacity-transition;
+      //   }
+      // }
 
       .toolbar-body {
         height: 100px;
@@ -205,8 +205,8 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
       flex-direction: row-reverse;
       align-items: center;
       padding: 0 20px;
-      opacity: 0;
-      transition: @opacity-transition;
+      opacity: 1;
+      // transition: @opacity-transition;
 
       .contents {
         color: @teal-blue;
