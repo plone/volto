@@ -263,13 +263,15 @@ const BlocksForm = (props) => {
   // Note they are alreaady filtered by DragDropList, but we also want them
   // to be removed when the user saves the page next. Otherwise the invalid
   // blocks would linger for ever.
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
+  const blocksFieldname = getBlocksFieldname(properties);
 
-  for (const [n, v] of blockList) {
-    if (!v) {
+  (properties[blocksLayoutFieldname]?.items || []).forEach((n) => {
+    if (!properties[blocksFieldname]?.[n]) {
       const newFormData = deleteBlock(properties, n, intl);
       onChangeFormData(newFormData);
     }
-  }
+  });
 
   useEvent('voltoClickBelowContent', () => {
     if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
