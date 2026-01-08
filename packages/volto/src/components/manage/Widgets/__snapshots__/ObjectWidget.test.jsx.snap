@@ -2,34 +2,153 @@
 
 exports[`renders an object widget component with clicks on each tab in root level to load all of them 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="accordion ui fluid styled form"
+  >
     <div
-      class="ui attached tabular menu"
-    >
-      <a
-        class="active item"
-      >
-        Internal
-      </a>
-      <a
-        class="item"
-      >
-        External
-      </a>
-      <a
-        class="item"
-      >
-        Email
-      </a>
-    </div>
-    <div
-      class="ui bottom attached segment active tab"
+      id="blockform-fieldset-internal"
     >
       <div
-        class="Field"
-        id="internal_link-0-my-widget"
+        class="active title"
       >
-        Internal link
+        Internal
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="content active"
+      >
+        <div
+          aria-hidden="false"
+          class="rah-static rah-static--height-auto"
+          style="height: auto; overflow: visible;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="internal_link-0-my-widget"
+              >
+                Internal link
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-external"
+    >
+      <div
+        class="title"
+      >
+        External
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="content"
+      >
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="external_link-0-my-widget"
+              >
+                External URL (can be relative within this site or absolute if it starts with http:// or https://)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-email"
+    >
+      <div
+        class="title"
+      >
+        Email
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="content"
+      >
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="email_address-0-my-widget"
+              >
+                Email address
+              </div>
+              <div
+                class="Field"
+                id="email_subject-1-my-widget"
+              >
+                Email subject (optional)
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -38,34 +157,153 @@ exports[`renders an object widget component with clicks on each tab in root leve
 
 exports[`renders an object widget component with clicks on each tab in root level to load all of them 2`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="accordion ui fluid styled form"
+  >
     <div
-      class="ui attached tabular menu"
-    >
-      <a
-        class="item"
-      >
-        Internal
-      </a>
-      <a
-        class="active item"
-      >
-        External
-      </a>
-      <a
-        class="item"
-      >
-        Email
-      </a>
-    </div>
-    <div
-      class="ui bottom attached segment active tab"
+      id="blockform-fieldset-internal"
     >
       <div
-        class="Field"
-        id="external_link-0-my-widget"
+        class="title"
       >
-        External URL (can be relative within this site or absolute if it starts with http:// or https://)
+        Internal
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="content"
+      >
+        <div
+          aria-hidden="true"
+          class="rah-animating rah-animating--up rah-animating--to-height-zero"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms; opacity: 0;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="internal_link-0-my-widget"
+              >
+                Internal link
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-external"
+    >
+      <div
+        class="active title"
+      >
+        External
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="content active"
+      >
+        <div
+          aria-hidden="true"
+          class="rah-animating rah-animating--down rah-animating--to-height-auto"
+          style="height: 0px; overflow: hidden; transition: height 500ms ease 0ms;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms; opacity: 0;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="external_link-0-my-widget"
+              >
+                External URL (can be relative within this site or absolute if it starts with http:// or https://)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-email"
+    >
+      <div
+        class="title"
+      >
+        Email
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="content"
+      >
+        <div
+          aria-hidden="true"
+          class="rah-static rah-static--height-zero"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="email_address-0-my-widget"
+              >
+                Email address
+              </div>
+              <div
+                class="Field"
+                id="email_subject-1-my-widget"
+              >
+                Email subject (optional)
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -74,40 +312,153 @@ exports[`renders an object widget component with clicks on each tab in root leve
 
 exports[`renders an object widget component with clicks on each tab in root level to load all of them 3`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="accordion ui fluid styled form"
+  >
     <div
-      class="ui attached tabular menu"
+      id="blockform-fieldset-internal"
     >
-      <a
-        class="item"
+      <div
+        class="title"
       >
         Internal
-      </a>
-      <a
-        class="item"
-      >
-        External
-      </a>
-      <a
-        class="active item"
-      >
-        Email
-      </a>
-    </div>
-    <div
-      class="ui bottom attached segment active tab"
-    >
-      <div
-        class="Field"
-        id="email_address-0-my-widget"
-      >
-        Email address
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
       </div>
       <div
-        class="Field"
-        id="email_subject-1-my-widget"
+        class="content"
       >
-        Email subject (optional)
+        <div
+          aria-hidden="true"
+          class="rah-animating rah-animating--up rah-animating--to-height-zero"
+          style="height: 0px; overflow: hidden;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms; opacity: 0;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="internal_link-0-my-widget"
+              >
+                Internal link
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-external"
+    >
+      <div
+        class="title"
+      >
+        External
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="content"
+      >
+        <div
+          aria-hidden="true"
+          class="rah-animating rah-animating--up rah-animating--to-height-zero"
+          style="height: 0px; overflow: hidden; transition: height 500ms ease 0ms;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms; opacity: 0;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="external_link-0-my-widget"
+              >
+                External URL (can be relative within this site or absolute if it starts with http:// or https://)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-email"
+    >
+      <div
+        class="active title"
+      >
+        Email
+        <svg
+          class="icon"
+          style="height: 20px; width: auto; fill: currentColor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div
+        class="content active"
+      >
+        <div
+          aria-hidden="true"
+          class="rah-animating rah-animating--down rah-animating--to-height-auto"
+          style="height: 0px; overflow: hidden; transition: height 500ms ease 0ms;"
+        >
+          <div
+            style="transition: opacity 500ms ease 0ms; opacity: 0;"
+          >
+            <div
+              class="ui segment attached"
+            >
+              <div
+                class="Field"
+                id="email_address-0-my-widget"
+              >
+                Email address
+              </div>
+              <div
+                class="Field"
+                id="email_subject-1-my-widget"
+              >
+                Email subject (optional)
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -115,38 +466,212 @@ exports[`renders an object widget component with clicks on each tab in root leve
 `;
 
 exports[`renders an object widget component with invalid field in value 1`] = `
-<div>
+[
   <div
-    className="ui attached tabular menu"
-  >
-    <a
-      className="active item"
-      onClick={[Function]}
-    >
-      Internal
-    </a>
-    <a
-      className="item"
-      onClick={[Function]}
-    >
-      External
-    </a>
-    <a
-      className="item"
-      onClick={[Function]}
-    >
-      Email
-    </a>
-  </div>
-  <div
-    className="ui bottom attached segment active tab"
+    className="accordion ui fluid styled form"
   >
     <div
-      className="Field"
-      id="internal_link-0-my-widget"
+      id="blockform-fieldset-internal"
     >
-      Internal link
+      <div
+        className="active title"
+        onClick={[Function]}
+      >
+        Internal
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<path fill-rule="evenodd" d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"/>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </div>
+      <div
+        className="content active"
+      >
+        <div
+          aria-hidden={false}
+          className="rah-static rah-static--height-auto"
+          style={
+            {
+              "height": "auto",
+              "overflow": "visible",
+            }
+          }
+        >
+          <div
+            style={
+              {
+                "WebkitTransition": "opacity 500ms ease 0ms",
+                "transition": "opacity 500ms ease 0ms",
+              }
+            }
+          >
+            <div
+              className="ui segment attached"
+            >
+              <div
+                className="Field"
+                id="internal_link-0-my-widget"
+              >
+                Internal link
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </div>,
+  <div
+    className="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-external"
+    >
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        External
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<path fill-rule="evenodd" d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"/>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </div>
+      <div
+        className="content"
+      >
+        <div
+          aria-hidden={true}
+          className="rah-static rah-static--height-zero"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <div
+            style={
+              {
+                "WebkitTransition": "opacity 500ms ease 0ms",
+                "opacity": 0,
+                "transition": "opacity 500ms ease 0ms",
+              }
+            }
+          >
+            <div
+              className="ui segment attached"
+            >
+              <div
+                className="Field"
+                id="external_link-0-my-widget"
+              >
+                External URL (can be relative within this site or absolute if it starts with http:// or https://)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="accordion ui fluid styled form"
+  >
+    <div
+      id="blockform-fieldset-email"
+    >
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        Email
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<path fill-rule="evenodd" d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"/>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "currentColor",
+              "height": "20px",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </div>
+      <div
+        className="content"
+      >
+        <div
+          aria-hidden={true}
+          className="rah-static rah-static--height-zero"
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <div
+            style={
+              {
+                "WebkitTransition": "opacity 500ms ease 0ms",
+                "opacity": 0,
+                "transition": "opacity 500ms ease 0ms",
+              }
+            }
+          >
+            <div
+              className="ui segment attached"
+            >
+              <div
+                className="Field"
+                id="email_address-0-my-widget"
+              >
+                Email address
+              </div>
+              <div
+                className="Field"
+                id="email_subject-1-my-widget"
+              >
+                Email subject (optional)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
 `;

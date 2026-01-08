@@ -5,8 +5,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Accordion, Segment } from 'semantic-ui-react';
+import AnimateHeight from 'react-animate-height';
 import { Tab } from 'semantic-ui-react';
+
+import upSVG from '@plone/volto/icons/up-key.svg';
+import downSVG from '@plone/volto/icons/down-key.svg';
 import { Field } from '@plone/volto/components/manage/Form';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 /**
  * Renders a field set. Passes some of the values in the schema to the Field
@@ -24,7 +30,6 @@ import { Field } from '@plone/volto/components/manage/Form';
 const FieldSet = ({
   block,
   data,
-  index,
   schema,
   value,
   errors,
@@ -69,8 +74,17 @@ const ObjectWidget = ({
   onChange,
   errors = {},
   id,
+  tabsView,
   ...props
 }) => {
+  const [currentActiveFieldset, setCurrentActiveFieldset] = React.useState(0);
+  function handleCurrentActiveFieldset(e, blockProps) {
+    const { index } = blockProps;
+    const newIndex = currentActiveFieldset === index ? -1 : index;
+
+    setCurrentActiveFieldset(newIndex);
+  }
+
   const createTab = React.useCallback(
     (fieldset, index) => {
       return {
@@ -107,8 +121,47 @@ const ObjectWidget = ({
         id={id}
       />
     </>
+  ) : tabsView ? (
+    <Tab panes={schema.fieldsets.map(createTab)} />
   ) : (
-    <Tab panes={schema.fieldsets.map(createTab)} /> // lazy loading
+    schema.fieldsets.map((fieldset, index) => (
+      <Accordion fluid styled className="form" key={fieldset.id}>
+        <div key={fieldset.id} id={`blockform-fieldset-${fieldset.id}`}>
+          <Accordion.Title
+            active={currentActiveFieldset === index}
+            index={index}
+            onClick={handleCurrentActiveFieldset}
+          >
+            {fieldset.title && <>{fieldset.title}</>}
+            {currentActiveFieldset === index ? (
+              <Icon name={upSVG} size="20px" />
+            ) : (
+              <Icon name={downSVG} size="20px" />
+            )}
+          </Accordion.Title>
+          <Accordion.Content active={currentActiveFieldset === index}>
+            <AnimateHeight
+              animateOpacity
+              duration={500}
+              height={currentActiveFieldset === index ? 'auto' : 0}
+            >
+              <Segment className="attached">
+                <FieldSet
+                  block={block}
+                  data={fieldset}
+                  index={index}
+                  schema={schema}
+                  errors={errors}
+                  value={value}
+                  onChange={onChange}
+                  id={id}
+                />
+              </Segment>
+            </AnimateHeight>
+          </Accordion.Content>
+        </div>
+      </Accordion>
+    ))
   );
 };
 
