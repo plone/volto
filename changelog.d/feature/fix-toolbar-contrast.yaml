@@ -1,4 +1,5 @@
 ---
 'volto':
   - Fix toolbar button contrast by removing opacity (#7765)
+  
 
