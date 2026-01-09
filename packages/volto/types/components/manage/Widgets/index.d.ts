@@ -121,4 +121,4 @@ export declare const ColorPickerWidget: import("@loadable/component").LoadableCo
 export declare const DatetimeWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const TimeWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const RecurrenceWidget: import("@loadable/component").LoadableClassComponent<any>;
-export declare const FormFieldWrapper: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
+export declare const FormFieldWrapper: import("@loadable/component").LoadableComponent<any>;

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useCookies } from 'react-cookie';
 import config from '@plone/volto/registry';
 import { changeLanguage } from '@plone/volto/actions/language/language';
-import { toGettextLang } from '@plone/volto/helpers/Utils/Utils';
+import { toGettextLang, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 
 const MultilingualRedirector = (props) => {
   const { settings } = config;
@@ -38,7 +38,7 @@ const MultilingualRedirector = (props) => {
   }, [pathname, dispatch, redirectToLanguage, settings.isMultilingual]);
 
   return pathname === '/' && settings.isMultilingual ? (
-    <Redirect to={`/${redirectToLanguage}`} />
+    <Redirect to={`/${toBackendLang(redirectToLanguage)}`} />
   ) : (
     <>{children}</>
   );

@@ -3,13 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2025-12-01 09:00+0000\n"
+"Last-Translator: Yuri <yuri.carrer@unipd.it>\n"
+"Language: it\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/plone/volto-18/it/>\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1485,7 +1486,7 @@ msgstr "Espandi la sidebar"
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr "Espandi barra degli strumenti"
+msgstr "Espandi la barra degli strumenti"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -4951,6 +4952,16 @@ msgstr "Privato"
 #: components/manage/Contents/ContentsItem
 msgid "published"
 msgstr "Pubblicato"
+
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
