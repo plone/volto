@@ -561,6 +561,7 @@ msgstr "<strong> {type} </strong> உள்ளடக்க வகைக்கு
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1220,6 +1221,11 @@ msgstr "புதிய கோப்பைப் பதிவேற்ற இங
 msgid "Drop files here ..."
 msgstr "கோப்புகளை இங்கே விடுங்கள் ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1554,6 +1560,7 @@ msgstr "கோப்பு ஏற்றுக்கொள்ளப்பட்�
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "கோப்பு அளவு"
 
@@ -1564,11 +1571,13 @@ msgstr "கோப்பு பார்வை"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "கோப்புப்பெயர்"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "கோப்புகள் பதிவேற்றப்பட்டன: {uploadedFiles}"
 
@@ -2052,6 +2061,7 @@ msgstr "கடைசி கருத்து தேதி"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "கடைசியாக மாற்றப்பட்டது"
 
@@ -2810,6 +2820,7 @@ msgstr "உங்கள் குறியீட்டை முன்னுர�
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "முன்னோட்டம்"
 
@@ -2950,6 +2961,11 @@ msgstr "உறவுகள் plone.api> = 2.0.3 உடன் திருத்
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "உறவுகள் புதுப்பிக்கப்பட்டன"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3975,6 +3991,7 @@ msgstr "மொத்த கருத்துகள்"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "பதிவேற்ற மொத்த கோப்புகள்: {totalFiles}"
 
@@ -4195,6 +4212,11 @@ msgstr "படிகளை மேம்படுத்தவும்"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "பதிவேற்றும்"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -5266,6 +5288,7 @@ msgstr "ஆம்"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{எண்ணிக்கை, பன்மை, ஒன்று {பதிவேற்றம் {count} கோப்பு} பிற {பதிவேற்றம் {count} கோப்புகள்}}"
 

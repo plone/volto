@@ -566,6 +566,7 @@ msgstr "Layout für <strong>{type}</strong> kann nicht verändert werden, da das
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1225,6 +1226,11 @@ msgstr "Datei hier ablegen um eine neue Datei hochzuladen"
 msgid "Drop files here ..."
 msgstr "Datei hier ablegen um die bestehende Datei zu ersetzen"
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1559,6 +1565,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Dateigröße"
 
@@ -1569,11 +1576,13 @@ msgstr "Datei"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Dateiname"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Hochgeladene Dateien: {uploadedFiles}"
 
@@ -2057,6 +2066,7 @@ msgstr "Letztes Kommentierdatum"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Letzte Änderung"
 
@@ -2815,6 +2825,7 @@ msgstr "Quellcode aufräumen"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Vorschau"
 
@@ -2955,6 +2966,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "Relationen aktualisiert"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3980,6 +3996,7 @@ msgstr "Anzahl Komentare"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Gesamtzahl der hochzuladenden Dateien: {totalFiles}"
 
@@ -4200,6 +4217,11 @@ msgstr "Aktualisierungsschritte"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Hochladen"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -5271,6 +5293,7 @@ msgstr "Ja"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "Lade {count, plural, one {# Datei} other {# Dateien}} hoch"
 
