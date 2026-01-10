@@ -11,7 +11,7 @@
 
 ## Introduction
 
-[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System.
+[Volto](https://github.com/plone/volto) is a React-based frontend for the [Plone](https://plone.org) Content Management System.
 It is the default frontend starting with the Plone 6 release.
 
 [Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
