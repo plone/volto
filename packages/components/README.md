@@ -5,7 +5,7 @@
 [![Build Status](https://github.com/plone/components/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/components/actions)
 [![Build Status](https://app.readthedocs.org/projects/plone-components/badge/?version=latest)](https://plone-components.readthedocs.io/latest/)
 
-This package contains ReactJS components for using Plone as a headless CMS.
+This package contains React components for using Plone as a headless CMS.
 
 The purpose of this package is to provide an agnostic set of baseline components to build sites upon.
 
