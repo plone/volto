@@ -27,4 +27,4 @@ make backend-docker-start
 
 ## About this app
 
-- [Remix Docs](https://reactrouter.com/home)
+- [React Router v7 Docs](https://reactrouter.com/home)
