@@ -46,6 +46,7 @@ import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopy
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 import RouteAnnouncer from '@plone/volto/components/theme/RouteAnnouncer/RouteAnnouncer';
 import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
+import ScrollToTopButton from '@plone/volto/components/theme/ScrollToTopButton/ScrollToTopButton';
 
 /**
  * @export
@@ -192,6 +193,7 @@ export class App extends Component {
         </MultilingualRedirector>
         <RouteAnnouncer />
         <Footer />
+        <ScrollToTopButton />
         <LockingToastsFactory
           content={this.props.content}
           user={this.props.userId}

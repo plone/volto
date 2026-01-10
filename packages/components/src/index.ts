@@ -34,6 +34,7 @@ export { ProgressBar } from './components/ProgressBar/ProgressBar';
 export { Radio, RadioGroup } from './components/RadioGroup/RadioGroup';
 export { RangeCalendar } from './components/RangeCalendar/RangeCalendar';
 export { SearchField } from './components/SearchField/SearchField';
+export { ScrollToTopButton } from './components/ScrollToTopButton/ScrollToTopButton';
 export { Select, SelectItem } from './components/Select/Select';
 export { Slider } from './components/Slider/Slider';
 export { Switch } from './components/Switch/Switch';
