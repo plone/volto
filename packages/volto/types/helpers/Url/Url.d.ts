@@ -93,12 +93,20 @@ export function addSubpathPrefix(src: string): string;
  */
 export function stripSubpathPrefix(src: string): string;
 /**
+ * Check if URL contains template variables that should be preserved
+ * @method hasTemplateVariables
+ * @param {string} url URL of the object
+ * @returns {boolean} True if URL contains template variables
+ */
+export function hasTemplateVariables(url: string): boolean;
+/**
  * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
+ * Skips normalization if URL contains template variables to preserve them
  * @method normalizeUrl
  * @param {string} url URL of the object
- * @returns {boolean} URL with the protocol
+ * @returns {string} URL with the protocol (or original if contains template variables)
  */
-export function normalizeUrl(url: string): boolean;
+export function normalizeUrl(url: string): string;
 /**
  * Removes protocol from URL (for display)
  * @method removeProtocol
@@ -156,4 +164,5 @@ export namespace URLUtils {
     export { isMail };
     export { isUrl };
     export { checkAndNormalizeUrl };
+    export { hasTemplateVariables };
 }
