@@ -698,6 +698,7 @@ msgstr "Curațați filtrele"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Controlpanels/Controlpanels
 msgid "Clear search"
 msgstr "Ștergeți căutarea"
 
@@ -2562,6 +2563,7 @@ msgstr "Nu s-a găsit nicio relație"
 
 #. Default: "No results found"
 #: components/manage/BlockChooser/BlockChooser
+#: components/manage/Controlpanels/Controlpanels
 #: components/theme/Search/Search
 msgid "No results found"
 msgstr "Nu s-au găsit rezultate"
@@ -3267,6 +3269,11 @@ msgstr "Eticheta butonului de căutare"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
 msgstr "Căutare conținut"
+
+#. Default: "Search control panels"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Search control panels"
+msgstr ""
 
 #. Default: "Search for user or group"
 #: components/manage/Sharing/Sharing

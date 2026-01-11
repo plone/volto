@@ -697,6 +697,7 @@ msgstr "Filter entfernen"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Controlpanels/Controlpanels
 msgid "Clear search"
 msgstr "Suche zurücksetzen"
 
@@ -2561,6 +2562,7 @@ msgstr "Keine Relationen gefunden"
 
 #. Default: "No results found"
 #: components/manage/BlockChooser/BlockChooser
+#: components/manage/Controlpanels/Controlpanels
 #: components/theme/Search/Search
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
@@ -3266,6 +3268,11 @@ msgstr "Label Such-Button"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
 msgstr "Inhalte suchen"
+
+#. Default: "Search control panels"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Search control panels"
+msgstr ""
 
 #. Default: "Search for user or group"
 #: components/manage/Sharing/Sharing

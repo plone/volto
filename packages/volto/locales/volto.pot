@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-12-04T08:02:09.676Z\n"
+"POT-Creation-Date: 2026-01-11T14:56:02.241Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -694,6 +694,7 @@ msgstr ""
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Controlpanels/Controlpanels
 msgid "Clear search"
 msgstr ""
 
@@ -2558,6 +2559,7 @@ msgstr ""
 
 #. Default: "No results found"
 #: components/manage/BlockChooser/BlockChooser
+#: components/manage/Controlpanels/Controlpanels
 #: components/theme/Search/Search
 msgid "No results found"
 msgstr ""
@@ -3262,6 +3264,11 @@ msgstr ""
 #. Default: "Search content"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
+msgstr ""
+
+#. Default: "Search control panels"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Search control panels"
 msgstr ""
 
 #. Default: "Search for user or group"

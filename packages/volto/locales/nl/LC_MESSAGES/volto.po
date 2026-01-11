@@ -696,6 +696,7 @@ msgstr "Filters leegmaken"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Controlpanels/Controlpanels
 msgid "Clear search"
 msgstr "Zoek leegmaken"
 
@@ -2560,6 +2561,7 @@ msgstr "Geen relaties gevonden"
 
 #. Default: "No results found"
 #: components/manage/BlockChooser/BlockChooser
+#: components/manage/Controlpanels/Controlpanels
 #: components/theme/Search/Search
 msgid "No results found"
 msgstr "Geen resultaten gevonden"
@@ -3265,6 +3267,11 @@ msgstr "Zoek knop label"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
 msgstr "Inhoud doorzoeken"
+
+#. Default: "Search control panels"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Search control panels"
+msgstr ""
 
 #. Default: "Search for user or group"
 #: components/manage/Sharing/Sharing
