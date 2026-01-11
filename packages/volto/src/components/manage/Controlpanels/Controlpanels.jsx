@@ -10,12 +10,21 @@ import last from 'lodash/last';
 import map from 'lodash/map';
 import sortBy from 'lodash/sortBy';
 import uniqBy from 'lodash/uniqBy';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import {
+  Container,
+  Grid,
+  Header,
+  Message,
+  Segment,
+  Input,
+  Button,
+  Form,
+} from 'semantic-ui-react';
 
 import Error from '@plone/volto/components/theme/Error/Error';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -25,6 +34,8 @@ import VersionOverview from '@plone/volto/components/manage/Controlpanels/Versio
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import zoomSVG from '@plone/volto/icons/zoom.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
   sitesetup: {
@@ -99,6 +110,18 @@ const messages = defineMessages({
     id: 'Relations',
     defaultMessage: 'Relations',
   },
+  searchControlPanels: {
+    id: 'Search control panels',
+    defaultMessage: 'Search control panels',
+  },
+  clear: {
+    id: 'Clear search',
+    defaultMessage: 'Clear search',
+  },
+  noResults: {
+    id: 'No results found',
+    defaultMessage: 'No results found',
+  },
 });
 
 /**
@@ -107,6 +130,8 @@ const messages = defineMessages({
 export default function Controlpanels({ location }) {
   const intl = useIntl();
   const [isClient, setIsClient] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchInputRef = useRef(null);
 
   const { pathname } = location;
   const controlpanels = useSelector(
@@ -200,6 +225,28 @@ export default function Controlpanels({ location }) {
   const groups = map(uniqBy(filteredControlPanels, 'group'), 'group');
   const { controlPanelsIcons: icons } = config.settings;
 
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const searchResults = normalizedQuery
+    ? filteredControlPanels.filter((panel) => {
+        return panel.title?.toLowerCase().startsWith(normalizedQuery);
+      })
+    : [];
+
+  const hasSearchQuery = normalizedQuery.length > 0;
+  const showSearchResults = hasSearchQuery && searchResults.length > 0;
+  const showNoResults = hasSearchQuery && searchResults.length === 0;
+
+  const handleSearchChange = (event, { value }) => {
+    setSearchQuery(value);
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery('');
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  };
+
   return (
     <div className="view-wrapper">
       <Helmet title={intl.formatMessage(messages.sitesetup)} />
@@ -207,6 +254,43 @@ export default function Controlpanels({ location }) {
         <Segment.Group raised>
           <Segment className="primary">
             <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
+          </Segment>
+          <Segment attached>
+            <Form>
+              <Form.Field style={{ position: 'relative' }}>
+                <Input
+                  ref={searchInputRef}
+                  icon={<Icon name={zoomSVG} size="18px" />}
+                  iconPosition="left"
+                  placeholder={intl.formatMessage(messages.searchControlPanels)}
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  autoComplete="off"
+                  aria-label={intl.formatMessage(messages.searchControlPanels)}
+                  fluid
+                />
+                {searchQuery && (
+                  <Button
+                    type="button"
+                    icon
+                    basic
+                    onClick={handleClearSearch}
+                    aria-label={intl.formatMessage(messages.clear)}
+                    style={{
+                      position: 'absolute',
+                      right: '0.5em',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      border: 'none',
+                      boxShadow: 'none',
+                      padding: '0.5em',
+                    }}
+                  >
+                    <Icon name={clearSVG} size="18px" />
+                  </Button>
+                )}
+              </Form.Field>
+            </Form>
           </Segment>
           {systemInformation && systemInformation.upgrade && (
             <Message attached warning>
@@ -222,18 +306,13 @@ export default function Controlpanels({ location }) {
               </Link>
             </Message>
           )}
-          {map(groups, (group) => [
-            <Segment key={`header-${group}`} secondary>
-              {group}
-            </Segment>,
-            <Segment key={`body-${group}`} attached>
+
+          {showSearchResults && (
+            <Segment attached>
               <Grid doubling columns={6}>
                 <Grid.Row>
                   {map(
-                    sortBy(
-                      filter(filteredControlPanels, { group }),
-                      (controlpanel) => controlpanel.title,
-                    ),
+                    sortBy(searchResults, (controlpanel) => controlpanel.title),
                     (controlpanel) => (
                       <Grid.Column key={controlpanel.id}>
                         <Link to={`/controlpanel/${controlpanel.id}`}>
@@ -244,6 +323,9 @@ export default function Controlpanels({ location }) {
                             />
                             <Header.Content>
                               {controlpanel.title}
+                              <Header.Subheader>
+                                {controlpanel.group}
+                              </Header.Subheader>
                             </Header.Content>
                           </Header>
                         </Link>
@@ -252,8 +334,54 @@ export default function Controlpanels({ location }) {
                   )}
                 </Grid.Row>
               </Grid>
-            </Segment>,
-          ])}
+            </Segment>
+          )}
+
+          {showNoResults && (
+            <Segment attached>
+              <Message info>
+                <FormattedMessage
+                  id="No results found"
+                  defaultMessage="No results found"
+                />
+              </Message>
+            </Segment>
+          )}
+
+          {!hasSearchQuery &&
+            !showNoResults &&
+            map(groups, (group) => [
+              <Segment key={`header-${group}`} secondary>
+                {group}
+              </Segment>,
+              <Segment key={`body-${group}`} attached>
+                <Grid doubling columns={6}>
+                  <Grid.Row>
+                    {map(
+                      sortBy(
+                        filter(filteredControlPanels, { group }),
+                        (controlpanel) => controlpanel.title,
+                      ),
+                      (controlpanel) => (
+                        <Grid.Column key={controlpanel.id}>
+                          <Link to={`/controlpanel/${controlpanel.id}`}>
+                            <Header as="h3" icon textAlign="center">
+                              <Icon
+                                name={icons?.[controlpanel.id] || icons.default}
+                                size="48px"
+                              />
+                              <Header.Content>
+                                {controlpanel.title}
+                              </Header.Content>
+                            </Header>
+                          </Link>
+                        </Grid.Column>
+                      ),
+                    )}
+                  </Grid.Row>
+                </Grid>
+              </Segment>,
+            ])}
         </Segment.Group>
         <Segment.Group raised>
           <Segment className="primary">
