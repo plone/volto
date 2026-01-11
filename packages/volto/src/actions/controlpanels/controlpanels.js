@@ -89,12 +89,48 @@ export function listControlpanels() {
  */
 export function updateControlpanel(url, data) {
   return (dispatch) => {
+    const normalizedData = { ...data };
+    if (
+      url.includes('@controlpanels/language') &&
+      normalizedData.default_language &&
+      Array.isArray(normalizedData.available_languages)
+    ) {
+      const defaultLangCode =
+        typeof normalizedData.default_language === 'string'
+          ? normalizedData.default_language
+          : normalizedData.default_language?.token ||
+            normalizedData.default_language?.value;
+      const isDefaultInAvailable = normalizedData.available_languages.some(
+        (lang) => {
+          const langCode =
+            typeof lang === 'string' ? lang : lang?.token || lang?.value;
+          return langCode === defaultLangCode;
+        },
+      );
+
+      if (!isDefaultInAvailable && defaultLangCode) {
+        // Preserve the existing format (string vs object) when appending
+        const firstItem = normalizedData.available_languages[0];
+        const isObjectFormat =
+          firstItem && typeof firstItem === 'object' && firstItem !== null;
+
+        const newLangEntry = isObjectFormat
+          ? { token: defaultLangCode }
+          : defaultLangCode;
+
+        normalizedData.available_languages = [
+          ...normalizedData.available_languages,
+          newLangEntry,
+        ];
+      }
+    }
+
     dispatch({
       type: UPDATE_CONTROLPANEL,
       request: {
         op: 'patch',
         path: url,
-        data,
+        data: normalizedData,
       },
     }).then(() => {
       dispatch(getSite());
