@@ -244,9 +244,9 @@ Browse to the frontend running at http://localhost:3000.
 ## Run commands for pnpm workspaces
 
 As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of {term}`workspace`.
-Every package or app located in the `packages` folder is declared as a pnpm workspace.
+Every package located in the {file}`packages` folder is declared as a pnpm workspace.
 
-When developing Volto, you can run pnpm commands from either the repository root or inside the package's or app's workspace in `packages/<package_name>` or `apps/<app_name>`.
+When developing Volto, you can run pnpm commands from either the repository root or inside the package's workspace in {file}`packages/<package_name>`.
 
 pnpm commands will apply in the context from which they are run.
 That means when you run a pnpm command from the repository root, it will apply to all workspaces.
