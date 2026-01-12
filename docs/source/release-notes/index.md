@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.32.0 (2026-01-12)
+
+### Feature
+
+- Add feature of drag and drop files in folder contents. @Tishasoumya-02 [#draganddrop](https://github.com/plone/volto/issues/draganddrop)
+- Added support for selecting Path and Depth in the Listing Block’s Location criteria using the ObjectBrowserWidget and NumberWidget. @iFlameing @giuliaghisini [#7661](https://github.com/plone/volto/issues/7661)
+
+### Bugfix
+
+- Fix multilingual redirect for languages with locale variants in Volto 18. @Shyam-Raghuwanshi [#7738](https://github.com/plone/volto/issues/7738)
+- Fix rearrangement of files in drag-and-drop of folderish content. @Tishasoumya-02 [#7782](https://github.com/plone/volto/issues/7782)
+- Add support for typing and pasting URLs in the ObjectBrowserWidget for location selection in the Listing block. @iFlameing 
+
+### Internal
+
+- Update actions/cache from v4 to v5 in GitHub Actions workflow files. @wesleybl [#7731](https://github.com/plone/volto/issues/7731)
+
 ## 18.31.0 (2025-12-21)
 
 ### Feature

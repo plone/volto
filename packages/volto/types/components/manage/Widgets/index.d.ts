@@ -7,7 +7,7 @@ export declare const FileWidget: import("@loadable/component").LoadableComponent
 export declare const HiddenWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const IdWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const PasswordWidget: import("@loadable/component").LoadableComponent<import("react-intl").WithIntlProps<any>>;
-export declare const QueryWidget: import("@loadable/component").LoadableClassComponent<any>;
+export declare const QueryWidget: import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
 export declare const QuerySortOnWidget: import("@loadable/component").LoadableClassComponent<any>;
 export declare const QuerystringWidget: import("@loadable/component").LoadableComponent<any>;
 export declare const RadioGroupWidget: import("@loadable/component").LoadableClassComponent<any>;
@@ -23,7 +23,7 @@ export declare const UrlWidget: import("@loadable/component").LoadableClassCompo
         state: {
             isObjectBrowserOpen: boolean;
         };
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;
@@ -63,7 +63,7 @@ export declare const InternalUrlWidget: import("@loadable/component").LoadableCl
         state: {
             isObjectBrowserOpen: boolean;
         };
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;
