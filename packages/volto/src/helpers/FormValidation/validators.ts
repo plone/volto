@@ -15,6 +15,13 @@ type Validator = {
   formatMessage: Function;
 };
 
+type FileValidator = {
+  value: Record<string, any>;
+  field: Record<string, any>;
+  formData: any;
+  formatMessage: Function;
+};
+
 export const isMaxPropertyValid = ({
   value,
   fieldSpec,
@@ -219,4 +226,15 @@ export const defaultLanguageControlPanelValidator = ({
     ) ||
       formData.available_languages.includes(value));
   return !isValid ? formatMessage(messages.defaultLanguage) : null;
+};
+
+export const sizeValidator = ({
+  value,
+  field,
+  formatMessage,
+}: FileValidator) => {
+  const maxSize = field.size ? parseInt(field.size, 10) : 7000000; // default 7MB
+  return value.size > maxSize
+    ? formatMessage(messages.maxSize, { maxSize, size: value.size })
+    : null;
 };
