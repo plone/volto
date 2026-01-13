@@ -1504,6 +1504,11 @@ msgstr "Voimassaolevat vaihtoehtoiset URL:t tälle kohteelle"
 msgid "Expand sidebar"
 msgstr "Laajenna sivupalkki"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Laajenna työkalupalkkia"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"

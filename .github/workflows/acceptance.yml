@@ -11,7 +11,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -59,7 +59,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -107,7 +107,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -155,7 +155,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -203,7 +203,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -251,7 +251,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -299,7 +299,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -347,7 +347,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -396,7 +396,7 @@ jobs:
         node-version: [22.x, 24.x]
         # python-version: [3.7]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -444,7 +444,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -494,7 +494,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -544,7 +544,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -595,7 +595,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -646,7 +646,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -697,7 +697,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -748,7 +748,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -799,7 +799,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -850,7 +850,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -901,7 +901,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
