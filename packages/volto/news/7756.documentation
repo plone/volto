@@ -1,1 +1,0 @@
-Update configuration documentation to reflect that {file}`src/config.js` is deprecated in Volto 18+ in favor of the {file}`config/` folder structure. @gummybearansh
