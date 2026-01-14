@@ -1499,6 +1499,11 @@ msgstr "Url alternativi esistenti per questo elemento"
 msgid "Expand sidebar"
 msgstr "Espandi la sidebar"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Espandi barra degli strumenti"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
