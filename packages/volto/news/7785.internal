@@ -1,0 +1,2 @@
+Removed apps folder from main branch, and related Plone's modular architecture packages (helpers, blocks, providers, theming, layout).
+These packages are now only in `seven` branch. @sneridagh
