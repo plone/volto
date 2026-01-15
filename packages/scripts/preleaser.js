@@ -1,6 +1,5 @@
 import { globSync as glob } from 'glob';
-import lodash from 'lodash';
-const { map } = lodash;
+import { map } from 'es-toolkit/compat';
 
 // const voltoCorePackages = [
 //   'packages/volto-slate',

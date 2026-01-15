@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import includes from 'lodash/includes';
+import includes from 'es-toolkit/compat/includes';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { setUIState } from '@plone/volto/actions/form/form';

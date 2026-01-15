@@ -9,7 +9,6 @@ module.exports = function (api) {
     ],
   ];
   const plugins = [
-    'lodash',
     '@babel/plugin-proposal-export-default-from', // Stage 1
     '@babel/plugin-proposal-throw-expressions', // Stage 2
     [

@@ -11,7 +11,7 @@ import {
 import messages from './messages';
 import ToolbarButton from './ToolbarButton';
 import SchemaProvider from './SchemaProvider';
-import omit from 'lodash/omit';
+import omit from 'es-toolkit/compat/omit';
 
 import tagSVG from '@plone/volto/icons/tag.svg';
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import { defineMessages, useIntl } from 'react-intl';
 import { Form as UiForm, Menu, Segment } from 'semantic-ui-react';
 import { Provider } from 'react-intl-redux';

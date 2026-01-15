@@ -3,7 +3,7 @@
  * @module routes
  */
 import debug from 'debug';
-import compact from 'lodash/compact';
+import compact from 'es-toolkit/compat/compact';
 
 import Add from '@plone/volto/components/manage/Add/Add';
 import Aliases from '@plone/volto/components/manage/Aliases/Aliases';

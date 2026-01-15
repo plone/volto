@@ -15,7 +15,7 @@ export default ObjectListWidget;
  *    schema: SomeItemSchema,
  *    widget: 'object_list',
  *    schemaExtender: (schema, data) => {
- *      const mutated = lodash.cloneDeep(schema);
+ *      const mutated = cloneDeep(schema);
  *      mutated.properties.extraField = {
  *        title: 'Extra field',
  *      }

@@ -3,13 +3,13 @@
  * @module reducers/schema/schema
  */
 
-import flatten from 'lodash/flatten';
-import keys from 'lodash/keys';
-import pickBy from 'lodash/pickBy';
-import isArray from 'lodash/isArray';
-import map from 'lodash/map';
-import mapKeys from 'lodash/mapKeys';
-import merge from 'lodash/merge';
+import flatten from 'es-toolkit/compat/flatten';
+import keys from 'es-toolkit/compat/keys';
+import pickBy from 'es-toolkit/compat/pickBy';
+import isArray from 'es-toolkit/compat/isArray';
+import map from 'es-toolkit/compat/map';
+import mapKeys from 'es-toolkit/compat/mapKeys';
+import merge from 'es-toolkit/compat/merge';
 
 import {
   GET_SCHEMA,

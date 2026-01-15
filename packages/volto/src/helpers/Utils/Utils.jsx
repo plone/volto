@@ -1,14 +1,14 @@
-import cloneDeepWith from 'lodash/cloneDeepWith';
-import flatten from 'lodash/flatten';
-import isEqual from 'lodash/isEqual';
-import isObject from 'lodash/isObject';
-import transform from 'lodash/transform';
+import cloneDeepWith from 'es-toolkit/compat/cloneDeepWith';
+import flatten from 'es-toolkit/compat/flatten';
+import isEqual from 'es-toolkit/compat/isEqual';
+import isObject from 'es-toolkit/compat/isObject';
+import transform from 'es-toolkit/compat/transform';
 import React from 'react';
 import { matchPath } from 'react-router';
 import config from '@plone/volto/registry';
 
 /**
- * Deep diff between two object, using lodash
+ * Deep diff between two object, using es-toolkit/compat
  * @param  {Object} object Object compared
  * @param  {Object} base   Object to compare with
  * @return {Object}        Return a new object who represent the diff

@@ -4,8 +4,8 @@
  */
 
 import React from 'react';
-import join from 'lodash/join';
-import map from 'lodash/map';
+import join from 'es-toolkit/compat/join';
+import map from 'es-toolkit/compat/map';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 import ReactDOMServer from 'react-dom/server';

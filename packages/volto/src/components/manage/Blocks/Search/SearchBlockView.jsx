@@ -8,8 +8,8 @@ import config from '@plone/volto/registry';
 import { withSearch, withQueryString } from './hocs';
 import { compose } from 'redux';
 import { useSelector } from 'react-redux';
-import isEqual from 'lodash/isEqual';
-import isFunction from 'lodash/isFunction';
+import isEqual from 'es-toolkit/compat/isEqual';
+import isFunction from 'es-toolkit/compat/isFunction';
 import cx from 'classnames';
 
 const getListingBodyVariation = (data) => {

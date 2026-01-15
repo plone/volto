@@ -1,10 +1,10 @@
 import React from 'react';
 import useUser from '@plone/volto/hooks/user/useUser';
 import PropTypes from 'prop-types';
-import filter from 'lodash/filter';
-import map from 'lodash/map';
-import groupBy from 'lodash/groupBy';
-import isEmpty from 'lodash/isEmpty';
+import filter from 'es-toolkit/compat/filter';
+import map from 'es-toolkit/compat/map';
+import groupBy from 'es-toolkit/compat/groupBy';
+import isEmpty from 'es-toolkit/compat/isEmpty';
 import { Accordion, Button } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';

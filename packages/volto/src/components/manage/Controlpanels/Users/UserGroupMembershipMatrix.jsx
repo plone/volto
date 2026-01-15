@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 import { Checkbox, Form, Input } from 'semantic-ui-react';
 
-import isEqual from 'lodash/isEqual';
-import debounce from 'lodash/debounce';
+import isEqual from 'es-toolkit/compat/isEqual';
+import debounce from 'es-toolkit/compat/debounce';
 
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import { listGroups } from '@plone/volto/actions/groups/groups'; // getRegistry

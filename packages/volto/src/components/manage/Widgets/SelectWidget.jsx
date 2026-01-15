@@ -7,9 +7,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import filter from 'lodash/filter';
-import map from 'lodash/map';
-import sortBy from 'lodash/sortBy';
+import filter from 'es-toolkit/compat/filter';
+import map from 'es-toolkit/compat/map';
+import sortBy from 'es-toolkit/compat/sortBy';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   getVocabFromHint,

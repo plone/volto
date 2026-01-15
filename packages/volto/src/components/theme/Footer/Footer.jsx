@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Container, List, Segment } from 'semantic-ui-react';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { useSelector, shallowEqual } from 'react-redux';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';

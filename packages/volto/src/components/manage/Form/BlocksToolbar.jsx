@@ -11,9 +11,9 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
 import { v4 as uuid } from 'uuid';
 import { load } from 'redux-localstorage-simple';
-import isEqual from 'lodash/isEqual';
-import omit from 'lodash/omit';
-import without from 'lodash/without';
+import isEqual from 'es-toolkit/compat/isEqual';
+import omit from 'es-toolkit/compat/omit';
+import without from 'es-toolkit/compat/without';
 
 import {
   setBlocksClipboard,

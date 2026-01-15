@@ -5,7 +5,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import cx from 'classnames';
 import { defineMessages, useIntl } from 'react-intl';
 import LanguageSVG from '@plone/volto/icons/language.svg';

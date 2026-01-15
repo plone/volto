@@ -2,7 +2,7 @@ import React from 'react';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Radio, RadioGroup } from '@plone/components';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'es-toolkit/compat/isEqual';
 import type { StyleDefinition } from '@plone/types';
 
 /**

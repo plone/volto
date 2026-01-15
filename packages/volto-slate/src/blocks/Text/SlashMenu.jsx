@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import filter from 'lodash/filter';
-import isEmpty from 'lodash/isEmpty';
+import filter from 'es-toolkit/compat/filter';
+import isEmpty from 'es-toolkit/compat/isEmpty';
 import { Menu } from 'semantic-ui-react';
 import { useIntl, FormattedMessage } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';

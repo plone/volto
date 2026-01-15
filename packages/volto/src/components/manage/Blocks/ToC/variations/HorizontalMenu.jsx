@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import { Menu, Dropdown } from 'semantic-ui-react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Slugger from 'github-slugger';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import cloneDeep from 'lodash/cloneDeep';
-import uniqBy from 'lodash/uniqBy';
-import debounce from 'lodash/debounce';
+import cloneDeep from 'es-toolkit/compat/cloneDeep';
+import uniqBy from 'es-toolkit/compat/uniqBy';
+import debounce from 'es-toolkit/compat/debounce';
 import { useIntl } from 'react-intl';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import jwtDecode from 'jwt-decode';

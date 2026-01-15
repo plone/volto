@@ -4,12 +4,12 @@
  */
 
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
-import concat from 'lodash/concat';
-import filter from 'lodash/filter';
-import last from 'lodash/last';
-import map from 'lodash/map';
-import sortBy from 'lodash/sortBy';
-import uniqBy from 'lodash/uniqBy';
+import concat from 'es-toolkit/compat/concat';
+import filter from 'es-toolkit/compat/filter';
+import last from 'es-toolkit/compat/last';
+import map from 'es-toolkit/compat/map';
+import sortBy from 'es-toolkit/compat/sortBy';
+import uniqBy from 'es-toolkit/compat/uniqBy';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';

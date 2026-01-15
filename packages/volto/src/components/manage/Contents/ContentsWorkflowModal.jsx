@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import concat from 'lodash/concat';
-import filter from 'lodash/filter';
-import last from 'lodash/last';
-import map from 'lodash/map';
-import uniqBy from 'lodash/uniqBy';
+import concat from 'es-toolkit/compat/concat';
+import filter from 'es-toolkit/compat/filter';
+import last from 'es-toolkit/compat/last';
+import map from 'es-toolkit/compat/map';
+import uniqBy from 'es-toolkit/compat/uniqBy';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
