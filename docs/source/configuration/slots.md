@@ -39,7 +39,7 @@ interface SlotRendererProps {
 }
 ```
 
-They are passed by to evaluate the predicates of the slot components and for passing it down to the rendered slot component.
+The props are passed both to evaluate the predicates of the slot components and for passing them down to the rendered slot component.
 
 `content`
 :   The current content object.
