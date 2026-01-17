@@ -27,6 +27,33 @@ You can add slot insertion points in your code, as shown in the following exampl
 <SlotRenderer name="aboveContent" content={content} />
 ```
 
+These are the props that you can pass to the `SlotRenderer` component.
+
+```ts
+interface SlotRendererProps {
+  name: string;
+  content: Content;
+  navRoot?: Content;
+  data?: BlocksFormData;
+  [key: string]: unknown;
+}
+```
+
+The props are passed both to evaluate the predicates of the slot components and for passing them down to the rendered slot component.
+
+`content`
+:   The current content object.
+    Required.
+`navRoot`
+:   The current navigation root content object.
+    Optional.
+`data`
+:   The current blocks form data.
+    Optional.
+`<arbitrary-prop>`
+:   You can pass any other prop that you want to be available to the predicates and the rendered slot component.
+    Optional.
+
 Slot components are registered in the {ref}`configuration registry using a specific API for slots <configuration-registry-for-slot-components>`.
 
 The rendering of a slot component is controlled by the presence or absence of a list of conditions called {term}`predicates`.
