@@ -46,13 +46,13 @@ export async function fetchControlpanelSchemas(ids, currentSchemas, dispatch) {
 }
 
 /**
- * @function bfsSearchSchema
+ * @function searchSchemaFields
  * @param {Object} schema
  * @param {string} query
  * @param {string} schemaId
  * @returns {Array}
  */
-function bfsSearchSchema(schema, query, schemaId) {
+function searchSchemaFields(schema, query, schemaId) {
   if (
     !schema ||
     typeof schema !== 'object' ||
@@ -62,76 +62,53 @@ function bfsSearchSchema(schema, query, schemaId) {
     return [];
   }
 
+  const actualSchema = schema.schema || schema;
   const searchTerm = query.trim().toLowerCase();
-  const queue = [];
   const matches = [];
+  const properties = actualSchema.properties || {};
+  const fieldsets = actualSchema.fieldsets || [];
 
-  const rootKeys = Object.keys(schema);
-  rootKeys.forEach((key) => {
-    queue.push({
-      key,
-      value: schema[key],
-      path: key,
-    });
-  });
+  fieldsets.forEach((fieldset) => {
+    const fieldsetFeilds = fieldset.fields;
 
-  while (queue.length > 0) {
-    const { key, value, path } = queue.shift();
+    fieldsetFeilds.forEach((fieldName) => {
+      if (typeof fieldName !== 'string') {
+        return;
+      }
 
-    if (typeof value === 'string') {
-      if (value.toLowerCase().includes(searchTerm)) {
+      const fieldNameLower = fieldName.toLowerCase();
+      let isMatch = fieldNameLower.includes(searchTerm);
+
+      const fieldProperty = properties[fieldName];
+      let matchedValue = fieldName;
+
+      if (fieldProperty) {
+        const title = fieldProperty.title || '';
+        const description = fieldProperty.description || '';
+
+        if (title.toLowerCase().includes(searchTerm)) {
+          isMatch = true;
+          matchedValue = title;
+        } else if (description.toLowerCase().includes(searchTerm)) {
+          isMatch = true;
+          matchedValue = description;
+        } else if (isMatch) {
+          matchedValue = title || fieldName;
+        }
+      }
+
+      if (isMatch) {
         matches.push({
-          id: `${schemaId}-${path}`,
-          path,
-          key,
-          value,
-          url: `/controlpanel/${schemaId}#${path}`,
+          id: `${schemaId}-${fieldName}`,
+          title: fieldName.toUpperCase(),
+          key: fieldName,
+          value: matchedValue,
+          url: `/controlpanel/${schemaId}#${fieldName}`,
           schemaId,
         });
       }
-      continue;
-    }
-
-    if (value === null || value === undefined || typeof value !== 'object') {
-      continue;
-    }
-
-    if (Array.isArray(value)) {
-      value.forEach((item, index) => {
-        if (item && typeof item === 'object') {
-          const itemKeys = Object.keys(item);
-          itemKeys.forEach((itemKey) => {
-            queue.push({
-              key: itemKey,
-              value: item[itemKey],
-              path: `${path}[${index}].${itemKey}`,
-            });
-          });
-        } else if (typeof item === 'string') {
-          if (item.toLowerCase().includes(searchTerm)) {
-            matches.push({
-              id: `${schemaId}-${path}[${index}]`,
-              path: `${path}[${index}]`,
-              key: `${path}[${index}]`,
-              value: item,
-              url: `/controlpanel/${schemaId}#${path}[${index}]`,
-              schemaId,
-            });
-          }
-        }
-      });
-      continue;
-    }
-
-    const objKeys = Object.keys(value);
-    objKeys.forEach((objKey) => {
-      queue.push({
-        key: objKey,
-        value: value[objKey],
-        path: `${path}.${objKey}`,
-      });
     });
-  }
+  });
 
   return matches;
 }
@@ -149,7 +126,7 @@ export function searchSettings(controlpanels, schemas, query) {
     return [];
   }
 
-  const allMatches = [];
+  const groupedMatches = {};
 
   for (const panel of controlpanels) {
     const panelId = last(panel['@id']?.split('/')) || panel.id;
@@ -159,16 +136,29 @@ export function searchSettings(controlpanels, schemas, query) {
       continue;
     }
 
-    const matches = bfsSearchSchema(schema, query, panelId);
+    const matches = searchSchemaFields(schema, query, panelId);
 
-    matches.forEach((match) => {
-      allMatches.push({
-        ...match,
-        type: 'field',
-        panelId,
+    if (matches.length > 0) {
+      if (!groupedMatches[panelId]) {
+        groupedMatches[panelId] = {
+          title: panel.title || panelId,
+          group: panel.group || '',
+          panelId,
+          url: `/controlpanel/${panelId}`,
+          matches: [],
+        };
+      }
+
+      matches.forEach((match) => {
+        groupedMatches[panelId].matches.push({
+          key: match.key,
+          value: match.value,
+          title: match.title,
+          url: match.url,
+        });
       });
-    });
+    }
   }
 
-  return allMatches;
+  return Object.values(groupedMatches);
 }

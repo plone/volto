@@ -206,16 +206,7 @@ class Search extends Component {
 
     const settingsResults = searchSettings(controlpanels, schemas, query);
 
-    const formattedSettingsResults = settingsResults.map((result) => ({
-      '@id': result.url,
-      '@type': result.type === 'panel' ? 'ControlPanel' : 'ControlPanelField',
-      title: result.title || result.key || result.path,
-      description: result.value || result.group || '',
-      url: result.url,
-      isSettingsResult: true,
-    }));
-
-    this.setState({ settingsResults: formattedSettingsResults });
+    this.setState({ settingsResults });
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
@@ -363,37 +354,41 @@ class Search extends Component {
                   <h2 className="settings-results-header">
                     <FormattedMessage id="Settings" defaultMessage="Settings" />
                   </h2>
-                  {this.state.settingsResults.map((item) => (
-                    <article
-                      className="tileItem settings-item"
-                      key={item['@id']}
-                    >
-                      <h2 className="tileHeadline">
+                  {this.state.settingsResults.map((panel) => (
+                    <div className="settings-panel-group" key={panel.panelId}>
+                      <h3 className="settings-panel-title">
                         <UniversalLink
-                          item={item}
+                          href={panel.url}
                           className="summary url"
-                          title={item['@type']}
+                          title={panel.group}
                         >
-                          {item.title}
+                          {panel.title}
                         </UniversalLink>
-                      </h2>
-                      {item.description && (
-                        <div className="tileBody">
-                          <span className="description">
-                            {item.description}
-                          </span>
-                        </div>
-                      )}
-                      <div className="tileFooter">
-                        <UniversalLink item={item}>
-                          <FormattedMessage
-                            id="Read More…"
-                            defaultMessage="Read More…"
-                          />
-                        </UniversalLink>
-                      </div>
-                      <div className="visualClear" />
-                    </article>
+                      </h3>
+                      <ul className="settings-matches-list">
+                        {panel.matches.map((match, index) => (
+                          <li
+                            key={`${panel.panelId}-${index}`}
+                            className="settings-match-item"
+                          >
+                            <UniversalLink
+                              href={match.url}
+                              className="settings-match-link"
+                              style={{ display: 'block', width: '100%' }}
+                            >
+                              <div className="settings-match-row mb-10 ">
+                                <h3 className="settings-match-key">
+                                  {match.title}:
+                                </h3>
+                                <div className="settings-match-value">
+                                  {match.value}
+                                </div>
+                              </div>
+                            </UniversalLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
                 </div>
               )}
