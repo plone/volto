@@ -196,6 +196,10 @@ Volto comes with the following default slots.
 
 -   `aboveContent`
 -   `belowContent`
+-   `aboveListingBlockItems`
+
+Slots can be also added to specific blocks, like the `aboveListingBlockItems`, where the `data` object of the block can be passed down to the slot component as `data={data}` for further processing and usage. This slot renders above the listing items, after the headline (if present), and can be used to display custom content such as listing disclaimers.
+
 
 
 (configuration-registry-for-slot-components)=
