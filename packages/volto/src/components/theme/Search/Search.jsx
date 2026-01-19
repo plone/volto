@@ -18,9 +18,16 @@ import { defineMessages, injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { searchContent } from '@plone/volto/actions/search/search';
+import {
+  getControlpanelSchemas,
+  listControlpanels,
+} from '@plone/volto/actions/controlpanels/controlpanels';
+import { searchSettings } from '@plone/volto/components/manage/Controlpanels/utils';
 import SearchTags from '@plone/volto/components/theme/Search/SearchTags';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import last from 'lodash/last';
+import debounce from 'lodash/debounce';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
@@ -45,6 +52,8 @@ class Search extends Component {
    */
   static propTypes = {
     searchContent: PropTypes.func.isRequired,
+    listControlpanels: PropTypes.func.isRequired,
+    getControlpanelSchemas: PropTypes.func.isRequired,
     searchableText: PropTypes.string,
     subject: PropTypes.string,
     path: PropTypes.string,
@@ -57,6 +66,8 @@ class Search extends Component {
       }),
     ),
     pathname: PropTypes.string.isRequired,
+    controlpanels: PropTypes.array,
+    schemas: PropTypes.object,
   };
 
   /**
@@ -74,7 +85,16 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.defaultPageSize = config.settings.defaultPageSize;
-    this.state = { currentPage: 1, isClient: false, active: 'relevance' };
+    this.state = {
+      currentPage: 1,
+      isClient: false,
+      active: 'relevance',
+      settingsResults: [],
+    };
+
+    this.debouncedPerformSettingsSearch = debounce((query) => {
+      this.performSettingsSearch(query);
+    }, 300);
   }
 
   /**
@@ -83,9 +103,40 @@ class Search extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    this.loadControlpanelsAndSchemas();
     this.doSearch();
     this.setState({ isClient: true });
   }
+
+  /**
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    this.debouncedPerformSettingsSearch.cancel();
+  }
+
+  /**
+   * Load controlpanels and schemas for settings search
+   * @method loadControlpanelsAndSchemas
+   * @returns {undefined}
+   */
+  loadControlpanelsAndSchemas = () => {
+    const { controlpanels, schemas } = this.props;
+
+    if (!controlpanels || controlpanels.length === 0) {
+      this.props.listControlpanels();
+      return;
+    }
+
+    if (controlpanels.length > 0 && Object.keys(schemas || {}).length === 0) {
+      const panelIds = controlpanels.map((panel) => {
+        const id = last(panel['@id']?.split('/')) || panel.id;
+        return id;
+      });
+      this.props.getControlpanelSchemas(panelIds);
+    }
+  };
 
   /**
    * Component will receive props
@@ -96,6 +147,20 @@ class Search extends Component {
   UNSAFE_componentWillReceiveProps = (nextProps) => {
     if (this.props.location.search !== nextProps.location.search) {
       this.doSearch();
+    }
+
+    if (
+      nextProps.controlpanels &&
+      nextProps.controlpanels.length > 0 &&
+      Object.keys(nextProps.schemas || {}).length === 0 &&
+      (!this.props.controlpanels || this.props.controlpanels.length === 0)
+    ) {
+      const panelIds = nextProps.controlpanels.map((panel) => {
+        const id = last(panel['@id']?.split('/')) || panel.id;
+        return id;
+      });
+
+      this.props.getControlpanelSchemas(panelIds);
     }
   };
 
@@ -110,12 +175,47 @@ class Search extends Component {
 
   doSearch = () => {
     const options = qs.parse(this.props.history.location.search);
+    const searchableText = options.SearchableText || '';
     this.setState({ currentPage: 1 });
     options['use_site_search_settings'] = 1;
     this.props.searchContent('', {
       b_size: this.defaultPageSize,
       ...options,
     });
+
+    if (searchableText && searchableText.trim().length >= 2) {
+      this.debouncedPerformSettingsSearch.cancel();
+      this.debouncedPerformSettingsSearch(searchableText);
+    } else {
+      this.debouncedPerformSettingsSearch.cancel();
+      this.setState({ settingsResults: [] });
+    }
+  };
+  /**
+   * @method performSettingsSearch
+   * @param {string}
+   * @returns {undefined}
+   */
+  performSettingsSearch = (query) => {
+    const { controlpanels, schemas } = this.props;
+
+    if (!controlpanels || !schemas || controlpanels.length === 0) {
+      this.setState({ settingsResults: [] });
+      return;
+    }
+
+    const settingsResults = searchSettings(controlpanels, schemas, query);
+
+    const formattedSettingsResults = settingsResults.map((result) => ({
+      '@id': result.url,
+      '@type': result.type === 'panel' ? 'ControlPanel' : 'ControlPanelField',
+      title: result.title || result.key || result.path,
+      description: result.value || result.group || '',
+      url: result.url,
+      isSettingsResult: true,
+    }));
+
+    this.setState({ settingsResults: formattedSettingsResults });
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
@@ -258,6 +358,46 @@ class Search extends Component {
               )}
             </header>
             <section id="content-core">
+              {this.state.settingsResults.length > 0 && (
+                <div className="settings-search-results">
+                  <h2 className="settings-results-header">
+                    <FormattedMessage id="Settings" defaultMessage="Settings" />
+                  </h2>
+                  {this.state.settingsResults.map((item) => (
+                    <article
+                      className="tileItem settings-item"
+                      key={item['@id']}
+                    >
+                      <h2 className="tileHeadline">
+                        <UniversalLink
+                          item={item}
+                          className="summary url"
+                          title={item['@type']}
+                        >
+                          {item.title}
+                        </UniversalLink>
+                      </h2>
+                      {item.description && (
+                        <div className="tileBody">
+                          <span className="description">
+                            {item.description}
+                          </span>
+                        </div>
+                      )}
+                      <div className="tileFooter">
+                        <UniversalLink item={item}>
+                          <FormattedMessage
+                            id="Read More…"
+                            defaultMessage="Read More…"
+                          />
+                        </UniversalLink>
+                      </div>
+                      <div className="visualClear" />
+                    </article>
+                  ))}
+                </div>
+              )}
+
               {this.props.items.map((item) => (
                 <article className="tileItem" key={item['@id']}>
                   <h2 className="tileHeadline">
@@ -352,8 +492,14 @@ export default compose(
       items: state.search.items,
       searchableText: qs.parse(props.history.location.search).SearchableText,
       pathname: props.location.pathname,
+      controlpanels: state.controlpanels?.controlpanels || [],
+      schemas: state.controlpanels?.schemas || {},
     }),
-    { searchContent },
+    {
+      searchContent,
+      listControlpanels,
+      getControlpanelSchemas,
+    },
   ),
   asyncConnect([
     {
