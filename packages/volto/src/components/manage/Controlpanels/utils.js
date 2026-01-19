@@ -63,6 +63,7 @@ function searchSchemaFields(schema, query, schemaId) {
   }
 
   const actualSchema = schema.schema || schema;
+  const panelTitle = (schema.title || schema.id).toLowerCase().trim();
   const searchTerm = query.trim().toLowerCase();
   const matches = [];
   const properties = actualSchema.properties || {};
@@ -78,6 +79,7 @@ function searchSchemaFields(schema, query, schemaId) {
 
       const fieldNameLower = fieldName.toLowerCase();
       let isMatch = fieldNameLower.includes(searchTerm);
+      isMatch = isMatch || panelTitle.includes(searchTerm);
 
       const fieldProperty = properties[fieldName];
       let matchedValue = fieldName;
@@ -100,8 +102,8 @@ function searchSchemaFields(schema, query, schemaId) {
       if (isMatch) {
         matches.push({
           id: `${schemaId}-${fieldName}`,
-          title: fieldName.toUpperCase(),
-          key: fieldName,
+          title: fieldName.toUpperCase().replace(/_/g, ' '),
+          key: fieldName.replace(/_/g, ' '),
           value: matchedValue,
           url: `/controlpanel/${schemaId}#${fieldName}`,
           schemaId,
