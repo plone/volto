@@ -1,8 +1,11 @@
-import React from 'react';
 import cx from 'classnames';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import config from '@plone/volto/registry';
-import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import {
+  isInternalURL,
+  flattenToAppURL,
+  URLUtils,
+} from '@plone/volto/helpers/Url/Url';
 
 const ViewLink = ({ url, target, download, children }) => {
   const { openExternalLinkInNewTab } = config.settings;
@@ -22,6 +25,8 @@ const ViewLink = ({ url, target, download, children }) => {
 export const LinkElement = (props) => {
   const { attributes, children, element, mode = 'edit' } = props;
   const isInternalUrl = isInternalURL(element.data?.url);
+  const checkedURL = URLUtils.checkAndNormalizeUrl(element.data?.url);
+  const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
   const linkUrl = element.data?.url;
 
   return mode === 'view' ? (
@@ -29,7 +34,10 @@ export const LinkElement = (props) => {
   ) : (
     <a
       {...attributes}
-      className={cx('slate-editor-link', { external: !isInternalUrl })}
+      className={cx('slate-editor-link', {
+        external: !isTelephoneOrMail && !isInternalUrl,
+        mail: isTelephoneOrMail,
+      })}
       href={isInternalUrl ? flattenToAppURL(linkUrl) : linkUrl}
       onClick={(e) => e.preventDefault()}
     >

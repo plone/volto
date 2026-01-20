@@ -164,7 +164,6 @@ const UniversalLink = React.memo(
           { external: !isTelephoneOrMail, mail: isTelephoneOrMail },
           className,
         );
-
         tag = (
           <a
             href={url}
