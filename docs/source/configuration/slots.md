@@ -200,7 +200,7 @@ Volto comes with the following default slots.
 
 Additionally, slots can be added to specific blocks, where the `data` object of the block can be passed down to the slot component as `data={data}` for further processing and usage.
 
-Taking the `aboveListingBlockItems` as an example, adding a slot to it would render  after the headline, if present, and above the listing items.
+Taking the `aboveListingBlockItems` as an example, adding a slot to it would render after the headline, if present, and above the listing items.
 This would be useful to display custom content, such as a disclaimer prior to the listing.
 
 
