@@ -84,6 +84,7 @@ const SearchBlockEdit = (props) => {
       />
       <SidebarPortal selected={selected}>
         <BlockDataForm
+          block={block}
           schema={schema}
           onChangeField={(id, value) => {
             onChangeBlock(block, {
