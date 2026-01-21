@@ -149,6 +149,7 @@ export class ObjectBrowserWidgetComponent extends Component {
                   className="right"
                   onClick={(event) => {
                     event.preventDefault();
+                    event.stopPropagation();
                     this.removeItem(item);
                   }}
                 />
@@ -328,10 +329,26 @@ export class ObjectBrowserWidgetComponent extends Component {
       return;
     }
 
+    const selected = this.selectedItemsRef.current;
+    const placeholder = this.placeholderRef.current;
+
+    if (!selected) return;
+
     if (
-      e.target.contains(this.selectedItemsRef.current) ||
-      e.target.contains(this.placeholderRef.current)
+      selected === e.target ||
+      selected.contains(e.target) ||
+      (placeholder &&
+        (placeholder === e.target || placeholder.contains(e.target)))
     ) {
+      this.showObjectBrowser(e);
+    }
+  };
+
+  handleSelectedItemsKeyDown = (e) => {
+    if (this.props.isDisabled) return;
+
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
       this.showObjectBrowser(e);
     }
   };
@@ -373,7 +390,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           <div
             className="selected-values"
             onClick={this.handleSelectedItemsRefClick}
-            onKeyDown={this.handleSelectedItemsRefClick}
+            onKeyDown={this.handleSelectedItemsKeyDown}
             role="searchbox"
             tabIndex={0}
             ref={this.selectedItemsRef}
