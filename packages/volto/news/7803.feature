@@ -1,0 +1,1 @@
+Add 'mail' classname for mailto links @Tishasoumya-02
