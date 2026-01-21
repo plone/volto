@@ -1,0 +1,31 @@
+{
+  "layout": {
+    "slots": {
+      "tools": {
+        "languageSwitcher": {
+          "switchTo": "Zu {{ lang }} wechseln"
+        },
+        "anontools": {
+          "edit": "Bearbeiten",
+          "logout": "Abmelden",
+          "login": "Anmelden",
+          "register": "Registrieren"
+        },
+        "searchwidget": {
+          "searchSite": "Seite durchsuchen"
+        }
+      }
+    },
+    "contenttypes": {
+      "common": {
+        "size": "Größe:"
+      },
+      "image": {
+        "download": "Klicke, um das Bild in voller Größe herunterzuladen"
+      },
+      "file": {
+        "download": "Datei herunterladen"
+      }
+    }
+  }
+}

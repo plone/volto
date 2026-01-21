@@ -1,0 +1,49 @@
+@layer custom {
+  .anontools {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .searchwidget {
+    display: flex;
+    flex-direction: row-reverse;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    gap: 2px;
+
+    &:focus-within,
+    &:hover {
+      border: 2px solid var(--border);
+    }
+
+    input {
+      max-width: 200px;
+      height: 100%;
+      padding: 2px 8px;
+      border-radius: 0 8px 8px 0;
+      border-left: 2px solid transparent;
+
+      &:focus-visible {
+        outline: 2px solid var(--quanta-cobalt);
+      }
+    }
+
+    button {
+      box-sizing: content-box;
+      padding: 8px;
+      border-radius: 8px 0 0 8px;
+      background-color: transparent;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: 2px solid var(--quanta-cobalt);
+        outline-offset: 0;
+      }
+    }
+  }
+}
