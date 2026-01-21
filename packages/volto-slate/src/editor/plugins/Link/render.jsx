@@ -25,9 +25,9 @@ const ViewLink = ({ url, target, download, children }) => {
 export const LinkElement = (props) => {
   const { attributes, children, element, mode = 'edit' } = props;
   const isInternalUrl = isInternalURL(element.data?.url);
-  const checkedURL = URLUtils.checkAndNormalizeUrl(element.data?.url);
-  const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
   const linkUrl = element.data?.url;
+  const checkedURL = URLUtils.checkAndNormalizeUrl(linkUrl);
+  const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
 
   return mode === 'view' ? (
     <ViewLink {...(element.data || {})}>{children}</ViewLink>
