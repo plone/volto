@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button } from './Button.quanta';
 import { BinIcon } from '../../components/icons/BinIcon';
+import { CloseIcon } from '../../components/icons/CloseIcon';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
@@ -165,4 +166,63 @@ export const WithTWClassName: Story = {
     variant: 'destructive',
     accent: true,
   },
+};
+
+export const LinkBehavior: Story = {
+  args: {
+    href: 'https://plone.org',
+    target: '_blank',
+  } as any,
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center gap-3">
+        <span className="w-36 text-right">Neutral link</span>
+        <Button {...args} variant="neutral">
+          Go to Plone
+        </Button>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span className="w-36 text-right">Primary link</span>
+        <Button {...args} variant="primary">
+          Plone (Primary)
+        </Button>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span className="w-36 text-right">Destructive link</span>
+        <Button {...args} variant="destructive">
+          Danger (Destructive)
+        </Button>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span className="w-36 text-right">Disabled link</span>
+        <Button {...args} isDisabled>
+          Disabled Link
+        </Button>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span className="w-36 text-right">Small primary link</span>
+        <Button {...args} variant="primary" size="S" accent>
+          Plone Small
+        </Button>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span className="w-36 text-right">Large primary link</span>
+        <Button {...args} variant="primary" size="L" accent>
+          Plone Large
+        </Button>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span className="w-36 text-right">Large primary link</span>
+        <Button {...args} variant="primary" size="L" accent>
+          <CloseIcon />
+        </Button>
+      </div>
+    </div>
+  ),
 };

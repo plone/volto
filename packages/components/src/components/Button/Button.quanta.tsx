@@ -1,17 +1,28 @@
 import React from 'react';
 import {
   composeRenderProps,
+  Link,
   Button as RACButton,
   type ButtonProps as RACButtonProps,
+  type LinkProps as AriaLinkProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { focusRing } from '../utils';
 
-export interface ButtonProps extends RACButtonProps {
+// Use a discriminated union to avoid conflicting keys between RAC Button and Link props
+// - Button variant: no `href`
+// - Link variant: requires `href`
+export type ButtonProps = (
+  | (RACButtonProps & { href?: never })
+  | (AriaLinkProps & { href: string })
+) & {
+  /** Visual variant (style only) */
   variant?: 'neutral' | 'primary' | 'destructive' | 'icon';
+  /** Size variant (style only) */
   size?: 'S' | 'L';
+  /** Accent state (style only) */
   accent?: boolean;
-}
+};
 
 const button = tv({
   extend: focusRing,
@@ -138,17 +149,22 @@ const button = tv({
 });
 
 export function Button(props: ButtonProps) {
+  const isLink = !!props.href;
+  const Element = isLink ? Link : RACButton;
   return (
-    <RACButton
-      {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        button({
-          ...renderProps,
-          variant: props.variant,
-          size: props.size,
-          accent: props.accent,
-          className,
-        }),
+    <Element
+      {...(isLink ? (({ type, ...rest }) => rest)(props as any) : props)}
+      isDisabled={props.isDisabled}
+      className={composeRenderProps(
+        props.className as any,
+        (className, renderProps) =>
+          button({
+            ...renderProps,
+            variant: props.variant,
+            size: props.size,
+            accent: props.accent,
+            className,
+          }),
       )}
     />
   );
