@@ -181,7 +181,7 @@ myst:
 ### Internal
 
 - Convert UsersControlpanel component from class to functional with hooks. @wesleybl [#7450](https://github.com/plone/volto/issues/7450)
-- Update to node 24 and cypress to 15 @sneridagh [#7538](https://github.com/plone/volto/issues/7538)
+- Update to Node.js 24 and cypress to 15 @sneridagh [#7538](https://github.com/plone/volto/issues/7538)
 - Refactor `SidebarPortal` to TypeScript. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
 - Enable ESlint detection of '.only' in unit and cypress tests. @sneridagh [#7567](https://github.com/plone/volto/issues/7567)
 
@@ -197,7 +197,7 @@ myst:
 
 - Expires the cache if the root `package.json` is changed. @wesleybl [#7536](https://github.com/plone/volto/issues/7536)
 - Move to `dependencies` some bad categorized dependencies in `devDependencies`. @sneridagh
-- Run Cookieplone acceptance test with Node 24. @davisagli
+- Run Cookieplone acceptance test with Node.js 24. @davisagli
 
 ## 19.0.0-alpha.8 (2025-10-22)
 
@@ -1306,7 +1306,7 @@ myst:
 - Fixed broken links after monorepo merge. @stevepiercy [#5459](https://github.com/plone/volto/issues/5459)
 - Added `volto-generator` compatibility with Volto to documentation. @stevepiercy [#5467](https://github.com/plone/volto/issues/5467)
 - Updated the symlink from `docs/source/news` to point to `packages/volto/news`. @stevepiercy [#5471](https://github.com/plone/volto/issues/5471)
-- Remove outdated note from upgrade guide for 17 related to ipv6 preferred by Node 18 @sneridagh [#5481](https://github.com/plone/volto/issues/5481)
+- Remove outdated note from upgrade guide for 17 related to ipv6 preferred by Node.js 18 @sneridagh [#5481](https://github.com/plone/volto/issues/5481)
 - Remove mention of LTS in Volto #4905. @stevepiercy [#4905](https://github.com/plone/volto/issues/4905)
 - Added documentation to contributing. @stevepiercy [#5377](https://github.com/plone/volto/issues/5377)
 - Remove orphans and move branch, version, and support policies into better locations in documentation. @stevepiercy [#5385](https://github.com/plone/volto/issues/5385)
@@ -2246,7 +2246,7 @@ myst:
 - Fixed broken links after monorepo merge. @stevepiercy [#5459](https://github.com/plone/volto/issues/5459)
 - Added `volto-generator` compatibility with Volto to documentation. @stevepiercy [#5467](https://github.com/plone/volto/issues/5467)
 - Updated the symlink from `docs/source/news` to point to `packages/volto/news`. @stevepiercy [#5471](https://github.com/plone/volto/issues/5471)
-- Remove outdated note from upgrade guide for 17 related to ipv6 preferred by Node 18 @sneridagh [#5481](https://github.com/plone/volto/issues/5481)
+- Remove outdated note from upgrade guide for 17 related to ipv6 preferred by Node.js 18 @sneridagh [#5481](https://github.com/plone/volto/issues/5481)
 
 ## 18.0.0-alpha.3 (2023-11-27)
 
@@ -2447,7 +2447,7 @@ myst:
 
 ### Breaking
 
-- Volto 17 drops support for NodeJS 14, and adds support for Node.js 18.
+- Volto 17 drops support for Node.js 14, and adds support for Node.js 18.
   Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
   for more information.
 
@@ -2729,7 +2729,7 @@ myst:
 - Fix grammar in PR #4542. @stevepiercy [#4555](https://github.com/plone/volto/issues/4555)
 - Fix broken links at `ReactJS.org`. @stevepiercy [#4569](https://github.com/plone/volto/issues/4569)
 - Fix video warnings and link errors. @stevepiercy [#4578](https://github.com/plone/volto/issues/4578)
-- Added `JavaScript` and `NodeJS` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
+- Added `JavaScript` and `Node.js` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
 - Fix documentation build, add pins @sneridagh [#4626](https://github.com/plone/volto/issues/4626)
 - Update Volto contributing to align with and refer to the new Plone core code contributing requirements. @stevepiercy [#4634](https://github.com/plone/volto/issues/4634)
 - Improve creating views documentation page. @rboixaderg [#4636](https://github.com/plone/volto/issues/4636)
@@ -3277,7 +3277,7 @@ myst:
 
 ### Documentation
 
-- Added `JavaScript` and `NodeJS` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
+- Added `JavaScript` and `Node.js` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
 - Fix documentation build, add pins @sneridagh [#4626](https://github.com/plone/volto/issues/4626)
 - Update Volto contributing to align with and refer to the new Plone core code contributing requirements. @stevepiercy [#4634](https://github.com/plone/volto/issues/4634)
 - Improve creating views documentation page. @rboixaderg [#4636](https://github.com/plone/volto/issues/4636)
@@ -3371,7 +3371,7 @@ myst:
 
 ### Breaking
 
-- Volto 17 drops support for NodeJS 14, and adds support for Node.js 18.
+- Volto 17 drops support for Node.js 14, and adds support for Node.js 18.
   Please see the [upgrade guide](https://6.docs.plone.org/volto/upgrade-guide/index.html)
   for more information.
 
@@ -3549,7 +3549,7 @@ myst:
 
 ### Documentation
 
-- Added `JavaScript` and `NodeJS` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
+- Added `JavaScript` and `Node.js` as accepted spellings, and deviations of them as rejected spellings. @utkkkarshhh [#3092](https://github.com/plone/volto/issues/3092)
 - Fix documentation build, add pins @sneridagh [#4626](https://github.com/plone/volto/issues/4626)
 
 
@@ -3929,7 +3929,7 @@ myst:
 
 ### Breaking
 
-- Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
+- Deprecate Node.js 12 since it's out of LTS since April 30, 2022 @sneridagh
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 - Remove `div` as default if `as` prop from `RenderBlocks`. Now the default is a `React.Fragment` instead. This could lead to CSS inconsistencies if taken this div into account, specially if used in custom add-ons without. In order to avoid them, set the `as` property always in your add-ons. @sneridagh
 - Removed `date-fns` from dependencies, this was in the build because `Cypress` depended on it. After the `Cypress` upgrade it no longer depends on it. If your project still depends on it, add it as a dependency of your project. @sneridagh
@@ -5215,7 +5215,7 @@ Use next release instead: https://github.com/plone/volto/releases/tag/16.0.0-alp
 
 ### Breaking
 
-- Deprecate NodeJS 12 since it's out of LTS since April 30, 2022 @sneridagh
+- Deprecate Node.js 12 since it's out of LTS since April 30, 2022 @sneridagh
 - Move all cypress actions to the main `Makefile`, providing better meaningful names. Remove them from `package.json` script section. @sneridagh
 
 ### Feature
@@ -5916,7 +5916,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Feature
 
-- Support Node 16 @timo
+- Support Node.js 16 @timo
 - Content locking support for Plone (`plone.locking`) @avoinea
 - Add the new search block @tiberiuichim @kreafox @sneridagh
 - Provide server-side rendering capabilities for blocks with async-based content (such as the listing block). A block needs to provide its own `getAsyncData` implementation, which is similar to an `asyncConnect` wrapper promise. @tiberiuichim @sneridagh
@@ -6295,7 +6295,7 @@ See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information
 
 ### Feature
 
-- Support Node 16 @timo
+- Support Node.js 16 @timo
 
 ### Bugfix
 
@@ -6854,7 +6854,7 @@ https://6.docs.plone.org/volto/upgrade-guide/index.html
   worth to notice on its own. No change required in your deployments if you suply
   currently `RAZZLE_API_PATH` in build time. See documentation for more information.
   @sneridagh
-- Deprecate Node 10 since it's out of LTS since April 30th, 2021 @sneridagh
+- Deprecate Node.js 10 since it's out of LTS since April 30th, 2021 @sneridagh
 - Remove the "inverted" option in Table Block since it was useless with the current CSS
   set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required. @iFlameing
 - Get rid of the font icons in the control panels overview @sneridagh
@@ -7020,7 +7020,7 @@ https://6.docs.plone.org/volto/upgrade-guide/index.html
   Not an strictly breaking change, but it's a default behavior change worth to notice on
   its own. No change required in your deployments if you suply currently
   `RAZZLE_API_PATH` in build time. See documentation for more information. @sneridagh
-- Deprecate Node 10 since it's out of LTS since April 30th, 2021 @sneridagh
+- Deprecate Node.js 10 since it's out of LTS since April 30th, 2021 @sneridagh
 - Remove the "inverted" option in Table Block since it was useless with the current CSS
   set. Better naming of options and labels in table block (English). Updating the i18n messages for the used translations is advisable, but not required. @iFlameing
 - Get rid of the font icons in the control panels overview @sneridagh
@@ -7787,7 +7787,7 @@ https://6.docs.plone.org/volto/upgrade-guide/index.html
 
 ### Feature
 
-- Add support for the new active LTS NodeJS version 14. NodeJS 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://github.com/nodejs/release#release-schedule @sneridagh
+- Add support for the new active LTS Node.js version 14. Node.js 10 eol will happen on 2021-04-30 and Volto will update accordingly. More information on https://github.com/nodejs/release#release-schedule @sneridagh
 
 ## 8.7.1 (2020-10-29)
 
@@ -9206,7 +9206,7 @@ refer to all of them in https://github.com/plone/volto/releases
 
 ### Added
 
-- Add Node 12 support @timo
+- Add Node.js 12 support @timo
 
 ### Changes
 
@@ -9723,7 +9723,7 @@ refer to all of them in https://github.com/plone/volto/releases
 
 ### Changes
 
-- Upgrade to Node 10.14.2 @nileshgulia1
+- Upgrade to Node.js 10.14.2 @nileshgulia1
 
 ## 1.1.0 (2018-12-24)
 
@@ -9736,7 +9736,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - First field in a form will get the focus @robgietema
 - Fix download file links @mikejmets
 - Fix HMR missbehaving on both server and client @sneridagh
-- Upgrade to Node 8.14.0 @timo
+- Upgrade to Node.js 8.14.0 @timo
 - Relaxed node runtime constraints @sneridagh
 - Update to latest LESS and Semantic UI version @sneridagh
 
@@ -9868,7 +9868,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Group actions and reducers @robgietema
 - Roles actions and reducers @robgietema
 - Move combineReducers to the store creation level. This will ease the extensibility of them in Plone-React apps. @sneridagh
-- Upgrade node to 8.11.2 @sneridagh
+- Upgrade Node.js to 8.11.2 @sneridagh
 - Basic user listing in users controlpanel @robgietema
 - Add missing FileWidget import @sneridagh
 - Option to delete tiles @robgietema
@@ -9889,7 +9889,7 @@ refer to all of them in https://github.com/plone/volto/releases
 
 - Styled wysiwyg widget @robgietema
 - Switch from accordion to tabs in forms @robgietema
-- Upgrade to Node 8.11.1 @tisto
+- Upgrade to Node.js 8.11.1 @tisto
 - Replace ExtractionTextCSSPlugin with the new mini-css-extract-plugin, adapt universal-webpack config @sneridagh
 - Removed flow @robgietema
 - Fix eslint prettier config @robgietema
@@ -9902,7 +9902,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Sync i18n translations @sneridagh
 - Fix CSS .input class scope intrusion on the project introduced by the AnchorLink plugin fork @sneridagh
 - Improve search reducer by adding the batching property in the search store.
-- Upgrade to Node 8.11.3 @sneridagh
+- Upgrade to Node.js 8.11.3 @sneridagh
 
 ## 0.5.0 (2018-03-23)
 
@@ -9937,7 +9937,7 @@ refer to all of them in https://github.com/plone/volto/releases
 - Update plone api versions / bootstrap process @thet
 - Fix textwidget proptypes @cekk
 - Remove phantomjs @tulikavijay
-- Upgrade to node 8 @robgietema
+- Upgrade to Node.js 8 @robgietema
 - Switched to draft js plugins editor @robgietema
 - Fix paragraph styling in draftjs @robgietema
 - Fixed summary and tabular views @robgietema

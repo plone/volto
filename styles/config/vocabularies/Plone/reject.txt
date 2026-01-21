@@ -1,3 +1,5 @@
 [^.]js
-NodeJS
+(?i)node\s
+node\.
+(?i)NodeJS
 [Pp]re-requisite

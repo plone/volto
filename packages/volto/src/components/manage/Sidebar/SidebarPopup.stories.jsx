@@ -17,7 +17,7 @@ const SidebarComponent = ({ children, ...args }) => {
             <p>
               Volto is a React-based frontend for content management systems,
               currently supporting three backend implementations: Plone,
-              Guillotina and a NodeJS reference implementation.
+              Guillotina and a Node.js reference implementation.
             </p>
             <p>
               Plone is a powerful, flexible Content Management Solution that is
