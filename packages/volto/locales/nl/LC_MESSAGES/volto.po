@@ -5355,6 +5355,11 @@ msgstr "{id} contenttype"
 msgid "{id} Schema"
 msgstr "{id} schema"
 
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
+
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
 msgid "{title} copied."
