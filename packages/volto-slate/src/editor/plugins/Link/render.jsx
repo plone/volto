@@ -35,8 +35,7 @@ export const LinkElement = (props) => {
     <a
       {...attributes}
       className={cx('slate-editor-link', {
-        external: !isTelephoneOrMail && !isInternalUrl,
-        mail: isTelephoneOrMail,
+        external: !isInternalUrl,
       })}
       href={isInternalUrl ? flattenToAppURL(linkUrl) : linkUrl}
       onClick={(e) => e.preventDefault()}

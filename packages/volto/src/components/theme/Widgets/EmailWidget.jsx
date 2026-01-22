@@ -4,7 +4,10 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 
 const EmailWidget = ({ value, children, className }) =>
   value ? (
-    <UniversalLink href={'mailto:' + value} className={cx(className, 'widget')}>
+    <UniversalLink
+      href={'mailto:' + value}
+      className={cx(className, 'email', 'widget')}
+    >
       {children ? children(value) : value}
     </UniversalLink>
   ) : (

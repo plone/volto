@@ -160,10 +160,7 @@ const UniversalLink = React.memo(
 
       if (isExternal) {
         const isTelephoneOrMail = checkedURL.isMail || checkedURL.isTelephone;
-        const getClassName = cx(
-          { external: !isTelephoneOrMail, mail: isTelephoneOrMail },
-          className,
-        );
+        const getClassName = cx({ external: !isTelephoneOrMail }, className);
         tag = (
           <a
             href={url}
