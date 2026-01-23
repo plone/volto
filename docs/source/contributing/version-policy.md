@@ -47,6 +47,7 @@ The versions of Python that are supported in Volto depend on the version of Plon
 
 | Plone | Python       | Volto            |
 | ----- | ------------ | ---------------- |
+| 6.2   | 3.10-3.13    | 19.0.0           |
 | 6.1   | 3.10-3.13    | 18.0.0           |
 | 6.0   | 3.9-3.13     | 16.0.0 or 17.0.0 |
 
