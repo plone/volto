@@ -9,7 +9,7 @@ exports[`Anontools > renders an anontools component when no token is specified 1
     onClick={[Function]}
   >
     <a
-      aria-label="login"
+      aria-label="Login"
       href="/login?return_url=myid"
       onClick={[Function]}
     >

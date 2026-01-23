@@ -11,9 +11,19 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. Default: "/example"
+#: components/manage/Aliases/Aliases
+msgid "/example"
+msgstr ""
+
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
+msgstr ""
+
+#. Default: "A short hint that describes the expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "A short hint that describes the expected value within this block"
 msgstr ""
 
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
@@ -653,6 +663,11 @@ msgstr ""
 msgid "Checkbox"
 msgstr ""
 
+#. Default: "Checked"
+#: components/manage/Contents/ContentsItem
+msgid "Checked"
+msgstr ""
+
 #. Default: "Choices"
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
@@ -678,6 +693,11 @@ msgstr ""
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
+msgstr ""
+
+#. Default: "Clear URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Clear URL browser"
 msgstr ""
 
 #. Default: "Clear date and time"
@@ -1003,6 +1023,7 @@ msgid "Date (newest first)"
 msgstr ""
 
 #. Default: "Default"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -1082,6 +1103,12 @@ msgstr ""
 msgid "Delete condition"
 msgstr ""
 
+#. Default: "Delete file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Delete file"
+msgstr ""
+
 #. Default: "Delete row"
 #: config/Blocks
 msgid "Delete row"
@@ -1128,6 +1155,11 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+#. Default: "Detailed expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Detailed expected value within this block"
+msgstr ""
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1146,6 +1178,31 @@ msgstr ""
 #. Default: "Disable apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Disable apply to subfolders"
+msgstr ""
+
+#. Default: "Disable creation of new blocks after this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable creation of new blocks after this block"
+msgstr ""
+
+#. Default: "Disable deletion of this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable deletion of this block"
+msgstr ""
+
+#. Default: "Disable drag and drop on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable drag and drop on this block"
+msgstr ""
+
+#. Default: "Disable editing on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable editing on this block"
+msgstr ""
+
+#. Default: "Disable new blocks"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable new blocks"
 msgstr ""
 
 #. Default: "Disabled"
@@ -1311,6 +1368,7 @@ msgid "Edit {title}"
 msgstr ""
 
 #. Default: "Email"
+#: components/manage/Widgets/VocabularyTermsWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Email"
 msgstr ""
@@ -1638,6 +1696,11 @@ msgstr ""
 msgid "Fix relations"
 msgstr ""
 
+#. Default: "Fixed position"
+#: components/manage/Blocks/Block/Schema
+msgid "Fixed position"
+msgstr ""
+
 #. Default: "Fixed width columns"
 #: config/Blocks
 msgid "Fixed width table cells"
@@ -1656,6 +1719,11 @@ msgstr ""
 #. Default: "Folder listing"
 #: config/Views
 msgid "Folder listing"
+msgstr ""
+
+#. Default: "Footer"
+#: components/theme/Footer/Footer
+msgid "Footer"
 msgstr ""
 
 #. Default: "Forbidden"
@@ -1684,6 +1752,11 @@ msgstr ""
 #. Default: "Full Name"
 #: components/theme/Register/Register
 msgid "Full Name"
+msgstr ""
+
+#. Default: "Full screen sidenav"
+#: components/manage/Sidebar/Sidebar
+msgid "Full screen sidenav"
 msgstr ""
 
 #. Default: "Fullname"
@@ -1769,6 +1842,11 @@ msgstr ""
 #. Default: "Headline level"
 #: components/manage/Blocks/Listing/schema
 msgid "Headline level"
+msgstr ""
+
+#. Default: "Helper text"
+#: components/manage/Blocks/Block/Schema
+msgid "Helper text"
 msgstr ""
 
 #. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
@@ -1956,6 +2034,11 @@ msgstr ""
 #. Default: "Installing a third party add-on"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
+msgstr ""
+
+#. Default: "Instructions"
+#: components/manage/Blocks/Block/Schema
+msgid "Instructions"
 msgstr ""
 
 #. Default: "days"
@@ -2215,6 +2298,7 @@ msgstr ""
 
 #. Default: "Login"
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Login"
 msgstr ""
 
@@ -2455,6 +2539,11 @@ msgstr ""
 msgid "News item view"
 msgstr ""
 
+#. Default: "Next"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Next"
+msgstr ""
+
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2641,6 +2730,16 @@ msgstr ""
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
+#. Default: "Open URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Open URL browser"
+msgstr ""
+
+#. Default: "Open full screen"
+#: components/manage/Blocks/Listing/ImageGallery
+msgid "Open full screen"
+msgstr ""
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2759,6 +2858,11 @@ msgstr ""
 msgid "Placeholder"
 msgstr ""
 
+#. Default: "Play or pause slideshow"
+#: components/manage/Blocks/Listing/ImageGallery
+msgid "Play or pause slideshow"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2839,6 +2943,11 @@ msgstr ""
 msgid "Prettify your code"
 msgstr ""
 
+#. Default: "Prev"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Prev"
+msgstr ""
+
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -2892,6 +3001,11 @@ msgstr ""
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
+msgstr ""
+
+#. Default: "Read only"
+#: components/manage/Blocks/Block/Schema
+msgid "Read only"
 msgstr ""
 
 #. Default: "Read only for this type of relation."
@@ -2948,6 +3062,7 @@ msgstr ""
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
+#: helpers/MessageLabels/MessageLabels
 msgid "Register"
 msgstr ""
 
@@ -3077,6 +3192,7 @@ msgid "Reply"
 msgstr ""
 
 #. Default: "Required"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Required"
@@ -3332,9 +3448,24 @@ msgstr ""
 msgid "Select a date to add to recurrence"
 msgstr ""
 
+#. Default: "Select action"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Select action"
+msgstr ""
+
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
+msgstr ""
+
+#. Default: "Select condition"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Select condition"
+msgstr ""
+
+#. Default: "Select criteria"
+#: components/manage/Widgets/QuerySortOnWidget
+msgid "Select criteria"
 msgstr ""
 
 #. Default: "Select relation"
@@ -3510,9 +3641,19 @@ msgstr ""
 msgid "Shrink toolbar"
 msgstr ""
 
+#. Default: "Sidebar"
+#: helpers/MessageLabels/MessageLabels
+msgid "Sidebar"
+msgstr ""
+
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
 msgid "Sign in to start session"
+msgstr ""
+
+#. Default: "Site"
+#: components/theme/Navigation/Navigation
+msgid "Site"
 msgstr ""
 
 #. Default: "Site Administration"
@@ -3786,6 +3927,11 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+#. Default: "Text block settings"
+#: components/manage/Blocks/Block/Schema
+msgid "Text block settings"
+msgstr ""
+
 #. Default: "Thank you."
 #: components/theme/ConnectionRefused/ConnectionRefused
 #: components/theme/CorsError/CorsError
@@ -4008,6 +4154,16 @@ msgstr ""
 msgid "Title field error. Value not provided or already existing."
 msgstr ""
 
+#. Default: "Token"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Token"
+msgstr ""
+
+#. Default: "Toolbar"
+#: helpers/MessageLabels/MessageLabels
+msgid "Toolbar"
+msgstr ""
+
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
@@ -4073,6 +4229,11 @@ msgstr ""
 #. Default: "Translation linking removed"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linking removed"
+msgstr ""
+
+#. Default: "Translation of term"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Translation of term"
 msgstr ""
 
 #. Default: "Triggering event field error. Please select a value"
@@ -4141,6 +4302,12 @@ msgstr ""
 #: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
+msgstr ""
+
+#. Default: "Unchecked"
+#: components/manage/Contents/ContentsItem
+#: helpers/Utils/withSaveAsDraft
+msgid "Unchecked"
 msgstr ""
 
 #. Default: "Undo"
@@ -5235,6 +5402,11 @@ msgstr ""
 #. Default: "Skip to navigation"
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-navigation"
+msgstr ""
+
+#. Default: "Skip links"
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplinks"
 msgstr ""
 
 #. Default: "sort"

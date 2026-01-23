@@ -16,6 +16,10 @@ const messages = defineMessages({
     id: 'Copyright',
     defaultMessage: 'Copyright',
   },
+  footer: {
+    id: 'Footer',
+    defaultMessage: 'Footer',
+  },
 });
 
 /**
@@ -41,7 +45,7 @@ const Footer = ({ intl }) => {
       color="grey"
       textAlign="center"
       id="footer"
-      aria-label="Footer"
+      aria-label={intl.formatMessage(messages.footer)}
       tabIndex="-1"
     >
       <Container>
