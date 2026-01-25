@@ -1,11 +1,12 @@
 packages:
-  - packages/*
-  - apps/seven
+  # all packages in direct subdirs of packages/
+  - 'packages/*'
+  - 'apps/seven'
+  # exclude packages that are inside test directories
   - '!**/test/**'
+  # exclude Volto packages, leaving them as reference
   - '!packages/volto*'
   - '!packages/coresandbox'
 
-catalog:
-  tailwindcss: ^4.1.17
-  typescript: ^5.9.3
-  react-i18next: 15.7.4
+# The default pnpm catalog is loaded from `catalog.json` using `.pnpmfile.cjs`.
+# If you want to customize the versions of the catalog, do it in there.
