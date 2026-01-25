@@ -1,0 +1,1079 @@
+[33md2b03011c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfix-controlpanel-not-found[m[33m, [m[1;31morigin/fix-controlpanel-not-found[m[33m)[m fix(controlpanel): Render <NotFound /> when control panel does not exist docs: add changelog entry for controlpanel NotFound enhancement
+[33m46d65dc9d[m docs: add changelog entry for controlpanel NotFound enhancement
+[33m56dede515[m fix(controlpanel): Render <NotFound /> when control panel does not exist
+[33mf0926382d[m Merge branch 'fix-controlpanel-not-found' of https://github.com/VibhuGupta-dev/volto into fix-controlpanel-not-found
+[33m99c6f44a4[m Fix: show NotFound when control panel does not exist
+[33m9bf27c140[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix TypeError in flattenScales caused by missing image.scales (#7568) (#7630)
+[33m6471d0f6e[m Fix @plone/razzle package name in upgrade guide (#7644)
+[33ma9972bdd5[m Release 19.0.0-alpha.17
+[33mb1e3d41f7[m Fixed production build add prettier as direct dependency, added tests.  (#7646)
+[33m4720d5b41[m Release 19.0.0-alpha.16
+[33m66f871723[m Fixed missing deepmerge in prod build and add it as a direct dep in Volto core. (#7645)
+[33m40223e03c[m fix snapshots changed due to Jest remove pr (#7643)
+[33mc3b64fcc0[m Fix redirecting links (#7622)
+[33m742d48acf[m Release 19.0.0-alpha.15
+[33m6fd73f9a8[m Settle pinning `sass` to 1.58.0 (#7642)
+[33me3326c65a[m Pined the sass dependency to 1.87.0 (#7641)
+[33m649ad2646[m Slight changelog amendment
+[33m631216093[m Release 19.0.0-alpha.14
+[33m04bcb3a99[m Release @plone/slate 19.0.0-alpha.8
+[33md34fa0675[m Release @plone/scripts 4.0.0-alpha.4
+[33m24fde0d54[m Release @plone/types 2.0.0-alpha.11
+[33m35157e009[m Missing upgrade docs for latest changes (#7639)
+[33m8c1da624d[m Adopted SCSS plugin and silence the deprecation warnings. (#7188)
+[33md5146a7bb[m Fixed Basic select in components (#7632) (#7638)
+[33m78ec3737e[m Fork `razzle` into `@plone/razzle` (#7542)
+[33m829f0a61b[m Fixed types for SchemaEnhancers (#7627)
+[33mc57653e91[m[33m ([m[1;31morigin/fix-myst-ref-contentIcons[m[33m, [m[1;32mfix-myst-ref-contentIcons[m[33m)[m Grammar fixes for #7615 (#7621)
+[33mbff1af5e0[m Improve upgrade guide19 (#7615)
+[33mf49ffd04f[m Fix: Replaced {term} with {ref} for missing glossary terms in Volto docs (#7616)
+[33maaefdd14b[m Fix delete merge for empty Slate block (#7611)
+[33mce095f712[m Release 19.0.0-alpha.13
+[33mb7c445f73[m Forwardport @plone/components 4a3 (#7614)
+[33m71348a982[m Release 19.0.0-alpha.12
+[33m79229c8c4[m Quick fix typings in ButtonsWidget because Icon has the wrong typings in JSDoc...
+[33m494c4a29e[m Release @plone/slate 19.0.0-alpha.7
+[33m8b7efa2cf[m Release @plone/types 2.0.0-alpha.10
+[33mcd02a99cb[m Introduce the pnpm catalog feature in core (#7562)
+[33mdc30cf0b2[m Refactored `ButtonsWidget` and `AlignWidget`. New `blockWidth`, `blockAlignment` and `size` widgets based on ButtonsWidget. (#7555)
+[33m901f98790[m Remove container cage on relations control panel (#7599)
+[33m5bfe0a17f[m Force cookieplone CI job to use 19 (#7548)
+[33m821f968a6[m[33m ([m[1;32mmain[m[33m)[m Fixed issue of merging block contents upon pressing delete at end of first block with some content  (#7473)
+[33m55d1c507f[m Release 19.0.0-alpha.11
+[33m3a7d181da[m Fix icon return (#7597)
+[33m95526f968[m Add recent Plone Conference sites and sort OSS listings (#7596)
+[33m4da0d45f3[m Update README with new website entries and sort (#7595)
+[33mb612e7b15[m Sync readme with Awesome Volto (#7594)
+[33macb8405bf[m Release @plone/registry 3.0.0-alpha.8
+[33m6d8fa17dd[m Release @plone/types 2.0.0-alpha.9
+[33mc0f4a63cd[m Remove news item from blocks
+[33md3ba4782d[m update docs for vitest (#7582)
+[33m727fe944a[m Forwardport #7393, #7432, #7513 (#7586)
+[33m52a6449c1[m Forwardport of several new additions in the Seven side. (#7584)
+[33ma5e2e3573[m Added TOC to settings reference page (#7578)
+[33m01a5e41a8[m Release 19.0.0-alpha.10
+[33m621978625[m Release @plone/registry 3.0.0-alpha.7
+[33m9b0f793a9[m Release @plone/types 2.0.0-alpha.8
+[33m01d03aa8c[m fix ImageWidget inside non folderish items (#7573)
+[33m17fbe8c31[m Convert UsersControlpanel component from class to functional with hooks (#7450)
+[33m412b61e44[m Fix infinite @users requests caused by anonymous useUser hook. (#7571)
+[33m8db92f2db[m Update Cypress to 15 (#7538)
+[33m3310a016d[m Enable detection of `theme` key in add-ons. (#7563)
+[33m303ff9631[m Enable ESlint detection of '.only' in unit and cypress tests (#7567)
+[33me894c0654[m Improve typings, refactor `SidebarPortal` to TS (#7560)
+[33m9d1b0a595[m Fixed bogus behavior in when running prettier with the blocks add-on (#7564)
+[33m84cc053fb[m move seealso and replace plain text with a versionadded block (#7028)
+[33m29a1bbb6e[m Fix destroy/recreate bug of the block hierarchy  (#7558)
+[33m30860ba98[m Fixed visually-hidden class being added to an unused file (#7552)
+[33m207a52896[m Add interpretare.ro to Volto in production README section (#7554)
+[33m4f91e37e1[m Added visually-hidden class (#6356)
+[33mb871c129a[m Update CreateTranslation Component (#7543)
+[33m8979a40f9[m feat: enhanced diff reducer to process static behaviors (#7546)
+[33m3eb6eeb4c[m Added RSC support to plone components (#7502)
+[33me028406b8[m Release 19.0.0-alpha.9
+[33m35973cfa1[m prefix-path with minimal changes (#6897)
+[33meea78757e[m Move to `dependencies` some bad categorized dependencies in `devDependencies` (#7539)
+[33m736d8e724[m Run cookieplone acceptance test with Node 24 (#7537)
+[33mdbefca26a[m Expires the cache if the root package.json is changed (#7536)
+[33m9e545f16b[m Release 19.0.0-alpha.8
+[33mdc11c1ca8[m Release @plone/types 2.0.0-alpha.7
+[33m58d51fa5c[m Refactor `LanguageSelector` into TypeScript. Modernize `tsconfig.json` settings in core. (#7531)
+[33mdee442243[m Re-enable scripts pnpm build. Remove `why`. (#7532)
+[33m89212bb64[m Release 19.0.0-alpha.7
+[33mb92197a7c[m Release @plone/slate 19.0.0-alpha.6
+[33m5bad102ad[m Release @plone/scripts 4.0.0-alpha.3
+[33mebf7c9f44[m Release @plone/registry 3.0.0-alpha.6
+[33m42a30ff15[m Release @plone/types 2.0.0-alpha.6
+[33m918070df2[m Update how-to.md fix-typo in confriguration (#7524)
+[33m21ca484c9[m Reset `fieldset.invisible` class definition in order to prevent clashes with other CSS frameworks that might have `invisible` as utility. (#7523)
+[33m0c0c539c7[m Add support to Node.js 24 (#7517)
+[33m239402630[m Fix markdown formatting in upgrade guide (#7514)
+[33maccf5bfa3[m Update pnpm to 10 (#7239)
+[33mfb32fbfa7[m Drop support to Node 20 (#7509)
+[33me14fa8176[m Fix error and rename test to "should save typed content in the Slate editor" (#7507)
+[33m54e1a119d[m Enhance Cypress commands to trigger focus before typing in Slate editor (#7506)
+[33m8c4d3a74a[m Makes the Cypress commands `getSlateEditorAndType` and `getSlateEditorSelectorAndType` more robust (#7503)
+[33mfcda46a21[m Warn for all environments, not just WSL (#7497)
+[33m52ac08f53[m Add warning about not using `root` in WSL2 (#7496)
+[33m6a2f3649d[m Internationalizes help for the `Group Name` field. (#7481)
+[33mc4809969a[m Missed update slate libraries in volto package itself (#7482)
+[33m75efa96fa[m fix: add a function to escape double quotes in pot files (#7476)
+[33m4db66a3d8[m Fixed corner case where RAZZLE_INTERNAL_API_PATH is set and id is still undefined on first SSR load. (#7478)
+[33m3f5dc5ffb[m Update slate to latest (#7477)
+[33m7158ebd53[m fix: aria-label for edit and drag block button (#7424)
+[33mbeadc5cb9[m Revert "Add underline to formtabs items for proper link identification" (#7465)
+[33me64bf693a[m chore(@plone/scripts): upgrade execa to avoid security vulnerability (#7435)
+[33m4df770a95[m Add underline to formtabs items for proper link identification (#7419)
+[33mb8862a880[m Skip link check for lanku.eus (#7454)
+[33m2552810cf[m Refactor fix for #7238 (#7317)
+[33mad1d22276[m Update README.md
+[33m445bef992[m Update README.md
+[33md567706da[m Fix images path in Volto README (#7446)
+[33m2aa3de0e9[m Fixed issue of merging block contents upon pressing backspace at start of second block with some content (#7373)
+[33m0aef55f15[m use Plone 6.1.3 (#7439)
+[33m01e7726e2[m Fix api middleware possible empty values error. (#7433)
+[33m7898cf12a[m Add type=button to more widget buttons (#7311)
+[33m2b32a1f19[m Rename main.css -> publicui.css for placing the publicui CSS in add-ons. (#7426) (#7431)
+[33mc7988ac7d[m Add note about the new showRelatedItems default to the upgrade guide (#7430)
+[33mf15033b20[m Datetime widget clear button (#7414)
+[33mfa45ddd8b[m Fix plone.available_languages typing (#7429)
+[33mc72f17d3c[m Sync'd with released @plone/components 4.0.0-alpha.1
+[33m84509c596[m Sync'd with released @plone/client 2.0.0-alpha.1
+[33m65e975053[m Release 19.0.0-alpha.6
+[33m3018ce562[m Quickly write a breaking notice for #7407 - cc/ @stevepiercy
+[33m48b5eb163[m Release @plone/slate 19.0.0-alpha.5
+[33m45fb3c0c0[m Release housecleaning
+[33m9025a2343[m Fix npm name in prepublish script
+[33m5c04a591c[m Release @plone/registry 3.0.0-alpha.5
+[33m9457f86a3[m Release @plone/types 2.0.0-alpha.5
+[33mbbc025eaf[m Sync core packages seven->main branch Sept2025 (#7407)
+[33m58d9f82d2[m Added guard in API REDUX middleware (#7412) (#7413)
+[33mc4f9477a3[m Enhance theme docs (#7406)
+[33md5a9e60ed[m StyleWrapper docs enhancement. (#7405)
+[33m66acb1593[m Upgrade note to replace `<img>` tags with `Image` component and introduce ESLint rule (#7402)
+[33m81ea097b8[m Check if we are editing a content type before rendering the Content Type control panel form (#7403)
+[33m5047d5ede[m Ensure the Refresh Content button correctly loads the preview image w… (#7392)
+[33m0c8d37ff7[m Use immer 10.1.3 (#7359)
+[33mc1ee09f78[m Replace img tags with Image component to enable future src prefixing (#7363)
+[33m525806fc8[m Minor cleanup of name and excluded URLs for ease of spotting the name… (#7382)
+[33mc664b9a0e[m Replace readme link checker of awesome_bot with Lychee (#7378)
+[33m566104516[m Convert RenderUsers component from class to functional with hooks (#7313)
+[33m5f798de18[m fix: added the number of results when using the content folder search for screen readers (#7364)
+[33md0b0fd2f4[m Add sphinx-reredirects to docs requirements-docs.txt to support moved… (#7376)
+[33mcbfe16c6d[m Cleanup and update shadowing information. (#7357)
+[33mb5f2b9ab0[m Fix image rereder on page edit (#7347)
+[33m0b4abf276[m Update 3_PLIP.md (#7367)
+[33m390526b1c[m Update release instructions in README (#7366)
+[33m733571b15[m Update pt_BR translation (#7362)
+[33m87738d4a8[m Fix problems with release-it in Volto core
+[33m3d2baee42[m Release 19.0.0-alpha.5
+[33m339b1d5e6[m Release @plone/scripts 4.0.0-alpha.2
+[33mbbcfd43da[m Search block: fix 'Clear filters' overriding the base query. (#7312)
+[33m6541f5204[m Update DE translation for Related Items
+[33m4bdfaa13d[m Improve teaser block reset button text (#7336)
+[33m26c4f485b[m Fix german translations of "Order" from "Reihung" to "Reihenfolge" (#7331)
+[33m67b754385[m Add stale check exemptions for Plone 7 milestone and PLIPs (#7325)
+[33m689466945[m Revert "Fix widgets"
+[33m1dd5b505a[m Fix widgets
+[33m524b1581f[m Improve grammar from #7322 (#7323)
+[33mfdbc5899e[m Update warning notices in Plone's modular package architecture for 19… (#7322)
+[33m225665d8c[m Update glob to a modern version (#7321)
+[33m841e6c59d[m 2021.ploneconf.org is no longer a Volto site, but just a redirect to … (#7314)
+[33mdfce34913[m Fixed random failure in Cypress 'Index Text Block' test (#7304)
+[33me8cf92181[m Remove vitest dependencies from root to prevent confusion (#7274)
+[33ma905a2ef8[m Fix ImageWidget to support DX fields and Relation Choice images (preview_image_link) (#7099)
+[33mb4a122d3f[m Fix test storeProtectLoadUtils.test.js > storeProtectLoadUtils > loadProtector store > pass when not counting (#7287)
+[33mb0b76e43a[m Fixes random error in Listing Block tests 2 (#7293)
+[33me8dcd8ccb[m Fix random failure in 'renders a file widget component with value' test of RegistryImageWidget (#7292)
+[33mfd0fa8e74[m Update package versions in pnpm-lock.yaml (#7291)
+[33m835e9f173[m Fixed a random failure in Cypress tests when using `getSlateEditorAndType` or `getSlateEditorSelectorAndType` (#7290)
+[33m15e58da7f[m Fixes random error in Listing Block tests (#7286)
+[33mf99d6bf00[m Make Jest maxWorkers configurable via MAX_WORKERS env var (#7282)
+[33mb8bd16eaf[m Remove MEDICE website entry from `Volto in production` (#7283)
+[33m9eb220dd5[m Fix InlineForm to always pass error as array to prevent prop type errors (#7268)
+[33m4a410fdf9[m Release 19.0.0-alpha.4
+[33m3214ae4d3[m Release @plone/slate 19.0.0-alpha.4
+[33m2c5e67b9e[m Add support for single autocomplete selection in SelectAutoComplete Widget (#7270)
+[33m2789a287a[m Fix corner case in devproxy when pathname is null (#7276)
+[33m7e0961105[m Update PULL_REQUEST_TEMPLATE.md
+[33m1737c4a0c[m Update @testing-library/react to 14.3.1 (#7260)
+[33ma93dcaa2c[m hide the webstats_head_js field in the site control panel (main) (#7246)
+[33m0c33eab7a[m Fix widget reference in schema for boolean fields toggle_widget (#7261)
+[33m0b0644740[m update eslint-config-version (#7254)
+[33m3e4b0efc4[m Fixed corner case when coming from SSR in `edit` route, where the teasers where overwriten with bogus URLs after save if `INTERNAL_API_PATH` is set. (#7238)
+[33m341e35038[m Pass on onClick to Link component in UniversalLink (#7240) (#7247)
+[33madcc4f590[m Contents view: Label 'None' for deselecting needs to be different fro… (#7234)
+[33m0228f66c5[m Update to Plone 6.1.2 (#7223)
+[33m6a4b0bf7d[m Fix copy and paste error
+[33m1fb5a5f47[m Enable showRelatedItems by default in Volto 19 (#7212)
+[33mb1ff9ac19[m Release 19.0.0-alpha.3
+[33m73ad443ba[m Release @plone/slate 19.0.0-alpha.3
+[33m196249113[m Release @plone/registry 3.0.0-alpha.4
+[33mf4fdb4b56[m Release @plone/types 2.0.0-alpha.4
+[33maa67fe30f[m Synchronizes versions of Volto dependencies with other packages in the monorepo (#7184)
+[33m4f2986b4e[m Show link integrity breaches in contents delete modal. (#7101)
+[33m978167b74[m Update "Configuring a new block" (#3272)
+[33mc32b7c62e[m prevent crash when selection points to deleted node (#7203)
+[33ma24f461bb[m Merge branch 'main' into working-copy-pill
+[33m22c566de2[m Rename literal for `head_title` to Kicker in Teaser block (#7191)
+[33mf9c682a4b[m Small improvements and solved bugs in the volto-slate package (#7179)
+[33m4bd9cb1f3[m Contents: Add a pill to indicate working copies
+[33m92cf6dade[m Add instructions for navigating and viewing diffs in PULL_REQUEST_TEM… (#7173)
+[33m34b6eb7c5[m add default if no filename is supplied in FileView (#7175)
+[33m73b4a9d96[m Add .error class to block Edit (#7139)
+[33m5260da2dd[m Remove trailing whitespace in package.json script (#7166)
+[33m0ff15d903[m Update README.md per awesome-volto update (#7160)
+[33m4ef468c57[m Get language settings from backend (#7125)
+[33mee56c9bc7[m Added some of the missing languagemap languages (#7146)
+[33m70f9f3fea[m Git is capitalized (#7156)
+[33m88a1cfab6[m Don't render an error during hydration unless there was also one on the server (#7148)
+[33m623847c04[m Fix getUtility when called with a utility type that hasn't been registered (#7113)
+[33m9bd80ad1e[m Add detailed list with links to contents delete modal (#7055)
+[33m206d09e3c[m [Documentation] Write custom widget (additions to #7075) (#7086)
+[33mea4a36893[m Use schema title in Helmet for `Add` page component. (#7067)
+[33me8fac8543[m fix(fetchContent): correctly handle undefined blocksType in async fet… (#7096)
+[33medd47aed2[m Improve typings in blocks and widgets. (#7103)
+[33m95012fc5f[m Release 19.0.0-alpha.2
+[33mcf7a0fcfe[m Release @plone/slate 19.0.0-alpha.2
+[33md79395cd9[m Fix discordant version of @vitejs/plugin-react in main and 18.x.x
+[33mb72a419ce[m fix: Focus on the Title block only works the first time you edit a content (#6880) (#7093)
+[33mab6702f6f[m Accessibility for sortable table headers in slate table (#6358)
+[33m555dee62f[m (feat): Autosave using localStorage (#6864)
+[33m592b0fc2c[m Add isClearable prop to SelectWidget component (#7084)
+[33mba10a4413[m Release 19.0.0-alpha.1
+[33m4d3953914[m Fix types declarations generation.
+[33mc207e1ea1[m Release @plone/slate 19.0.0-alpha.1
+[33me315f7961[m Release @plone/scripts 4.0.0-alpha.1
+[33mabff0fc22[m Release @plone/types 2.0.0-alpha.3
+[33m96c8bbe26[m Fix types for image scales (#7079)
+[33me42cbfb38[m Add component accept an optional initialFormData prop (#7073)
+[33m6be2100b0[m Release @plone/registry 3.0.0-alpha.3
+[33ma49388725[m Release @plone/types 2.0.0-alpha.2
+[33m3dd7985a5[m Support not publishing a package on NPM if plonePrePublish.publish is set to false (#7069)
+[33m3833aa16e[m Improve typings in ConditionalLink component, add TS tests to catch the bad typings (#7057)
+[33m04210c557[m Fix types of #6826 (#7052) (#7053)
+[33mfbf06ff04[m feat: refactor UniversalLink component using typescript (#6826)
+[33ma1636e0d8[m fix ImageWidget state handling in upload and drag-and-drop functional. (#7046)
+[33m0e02978c8[m Improve typings of brains and objectBrowser references (#7047)
+[33ma63010b4d[m Added `contained` class if `isContainer` prop is passed (from containers) (#7043)
+[33m523da5e8d[m Improve vitest setup (#7035)
+[33medee46498[m Add missing changelog for #7033
+[33m2d0c0ab96[m `blockModel` type is optional (#7033)
+[33ma1bb22648[m Remove the slot registration from the array if it is the last in `unRegisterSlotComponent` (#7031)
+[33m91ba0d8ae[m Fixed `groupBlocksOrder` typing and move `MaybeWrap` to TS (#7029)
+[33m1053c4557[m Remove circular link
+[33mcf4ce387e[m documentation for gridBlock upgrade guide (#7027)
+[33m91471d785[m Fix title to "Microsoft Writing Style Guide" (#7026)
+[33m47f6bbebd[m Better Redux-related docs, word wrapping (#7023)
+[33m60db13786[m updated docs for vitest in bundle-size-optimiazation (#7025)
+[33m1c36161d5[m Fixed `unRegisterSlotComponent` method (#7016)
+[33m3acfe73a2[m Fix __mocks__ folder which breaks addon testing (#7001)
+[33m4b104bca0[m Pin plone-sphinx-theme to prepare for PLIP 4097 (#7015)
+[33m4259ba2c4[m Added current evaluated `querystring` as a parameter in expander `querystring` key when it is a function (#7012)
+[33m1f02d1af6[m Linkcheck 2025 04 22 part 2 (#7011)
+[33m20cd602d7[m Linkcheck 2025 04 22 (#7010)
+[33m90dc44944[m Allow `object_list` widget to receive a `schemaName` prop, mapped to an utility (#7007)
+[33mfe4b6b4d6[m Fix boolean in blocks edit config `BlockEditProps`  `selected` type (#6995)
+[33m4310b8dfd[m Fix/addon break in volto (#6992)
+[33m152c1e166[m Feature/Jest to Vitest migration (#6605)
+[33m7346d1387[m Release 19.0.0-alpha.0
+[33ma660b3210[m Release @plone/slate 19.0.0-alpha.0
+[33mffca48469[m Release @plone/registry 3.0.0-alpha.2
+[33m1f58bd726[m Release @plone/types 2.0.0-alpha.1
+[33m01d9281cf[m Improve typings in `getAddonRoutesConfig` for `@plone/react-router` (#6796) (#6978)
+[33m0a178c297[m Add eslint rule to avoid importing Image from semantic-ui-react (#6974)
+[33m7cb66de55[m Remove make command whose packages no longer exist (#6975)
+[33mbccbfb752[m Fix Cypress "Test Yearly recurrence" test (#6971)
+[33m226459f78[m Fix translations default of ContentsDeleteModal: 'linkintegrity: delete' -> 'delete' if no link to break.  (#6964)
+[33m25f4eed23[m Fixes Cypress "Index Text Block" test (#6965)
+[33m610bf9bde[m Makes the cypress getSlateEditorAndType and getSlateEditorSelectorAndType commands more robust (#6957)
+[33m00478fabc[m Fix: Consistent initialValue call on block insertion (#6958)
+[33m954abe15e[m Use Image from @plone/volto/components/theme/Image/Image instead of semantic-ui-react (#6754)
+[33mc2c4f0f2d[m Update or remove broken links (#6953)
+[33mb2ecd13ac[m Only accept images in ImageInput component (#6926)
+[33m66127a48c[m Bump vite from 5.4.15 to 5.4.16 (#6932)
+[33m9adf09e56[m Fetch vocabularies and querystring config in the current context (#6935)
+[33m8726d7303[m Remove the build from netlify for @plone/components
+[33m21e8fbfbc[m Complete missing german translations and Storybook story for 'ContentsDeleteModal' (#6881)
+[33m337c9b4df[m Remove duplicate configuration item `html_title` (#6933)
+[33m9f7291edb[m Forwardport hand-cherrypicking the changes happened in Seven for `@plone/registry` relevant for be reintegrated in alpha (`main`). (#6929)
+[33mc05a92cab[m Fixed regression on brown bag minor version of `@storybook/addon-webpack5-compiler-babel` (#6930)
+[33me6900fcb5[m Amend PR #6885 changelog to be breaking
+[33mf9600519b[m s/Seven/Volto on `main` (#6925)
+[33m4a6c33ce9[m Release @plone/registry 3.0.0-alpha.1
+[33ma398f29b2[m Release @plone/types 2.0.0-alpha.0
+[33mcf107dda5[m Remove news from packages that won't be released from main
+[33me1ffc0bbb[m Fixed merge public folder from addons regression (#6919)
+[33m98e063d10[m Fixed handling of errors that are not coming from the backend (#6903)
+[33me93c79893[m Move _hardware-requirements.md include from documentation to volto (#6918)
+[33me9408b9b4[m Move includes from `plone/documentation` to `plone/volto` (#6917)
+[33mcebfdf1bd[m Fix typo in Appextras documentation (#6083)
+[33m8185db641[m Fix gray placeholder on horizontal scroll (#6877)
+[33md4c018e5c[m Add Russian translation in Volto (#6874)
+[33md1279bf14[m Don't reformat Markdown or MyST in VSCode (#6893)
+[33m94d743fcb[m fix Form error handling to show field title in Toast (#6834)
+[33mbaddb8547[m Revert reformating and clean up client README.md #6889 (#6894)
+[33m281ecc46b[m Refactor plone client (#6889)
+[33ma58c2384e[m prevent submit form from ImageWidget (#6879)
+[33mf0e1a2fb5[m Allow to override slots with no predicate with the same name. (#6887)
+[33m051e92392[m Make the title block non required (#6885)
+[33m8798453b9[m Fixed redirection logic which now checks for edit permission (#6843)
+[33m3b3ab093c[m Release @plone/scripts 4.0.0-alpha.0
+[33mfa47c0127[m Release @plone/registry 3.0.0-alpha.0
+[33m6e6188a89[m Moved new workflow action to the correct folder (#6875)
+[33mbe8a4bae7[m Bump vite from 5.4.14 to 5.4.15 (#6873)
+[33m2d00cde50[m Remove SemanticUI CSS declaration `overflow-x: hidden` in BODY tag. (#6513)
+[33m889ee5114[m Deprecations for Volto 19 (#6848)
+[33m37483c467[m Update Plone 6.1.1 final (#6868)
+[33m4983b6f23[m Added stale checker (#6867)
+[33mfafce27fa[m Aria label for search and cancel button for the input on search block (#6859)
+[33m8d19d7150[m Update `SITE_DEFAULT_LANGUAGE` in Makefile commands and docs (#6825)
+[33m2399d1b46[m Remove support for loading config from project. (#6842)
+[33m5d541beaf[m Volto form block fixes (#6370)
+[33m93391e588[m Update to use Plone 6.1.1rc1 (#6844)
+[33m0b39c0f82[m fix toolbar icon for back navigation in contact form (#6852)
+[33ma9d375aca[m Check first if the destination (build public directory) exists before trying to create it in `AfterBuildPlugin` (#6853)
+[33m8efe7b8cc[m Fix error when saving content with ObjectBrowserNav open (#6846)
+[33m580472855[m Add more checks to Cookieplone tests (#6850)
+[33mc44b24846[m Fix redirect in client for readthedocs badge (#6849)
+[33m88d6e032d[m Add `--dry-run` to prepublish script (#6847)
+[33m2d0bab573[m Release 18.10.1
+[33m4520cfa8f[m Fix validation allowing relative URLs when  prop is set. (#6840)
+[33m570407f05[m Fix redirects and 404s (#6835)
+[33mfb65888c7[m Release 18.10.0
+[33m00748ba91[m Release @plone/volto-testing 5.0.0-alpha.1
+[33m11cfb0444[m Stylewrapper `buildStyleObjectFromData` fixes accounting for container blocks (#6832)
+[33m8c646b3a2[m Fix Form validation ignores backend validator props passed to fields (#6817)
+[33m4d80bb1a7[m Remove https://www.centraalmuseum.nl/nl
+[33m50e5e3c9c[m Allow setting the default language via a RUNTIME environment variable (#6830)
+[33m7bf844515[m Add validator for `default_language` in language control panel (#6811)
+[33mbacb417ab[m Bump axios from 1.6.8 to 1.8.2 (#6815)
+[33m588a65bd8[m Use Cookieplone for installation and project generation (#6820)
+[33mde0741895[m Release 18.9.2
+[33mf7626461c[m Release @plone/slate 18.2.3
+[33mb7f8231b1[m Leaking React19 in `volto-testing` package (#6813)
+[33m1dcc1d47c[m Fix warnings in Sphinx 8 (#6812)
+[33m1608a85df[m HtmlSlateWidget to proper identify the field to screen readers (#6803)
+[33maf291ac56[m Added id to Checkbox component to proper a11y identification (#6802)
+[33m4b2d542ba[m Merge remote-tracking branch 'origin/main'
+[33mca3aa3894[m Try block notation for YAML syntax, and replace <br> with double newlines. https://yaml.org/spec/1.2.2/#23-scalars
+[33m3f0ca582e[m Fixed button types in forms (#6791)
+[33meb785b1fa[m Does not show empty class attribute when rendering img tag with Image component (#6789)
+[33mfef3e4841[m Fix deployment issue, flattenToAppURL needed (#6799)
+[33m461aa2d86[m improve the wording of theming docs (#6767)
+[33m91b2258d6[m Release 18.9.1
+[33m1b37356a5[m Move Seven to its own branch (#6769)
+[33ma121c2b54[m Fiddle with syntax of boring-cyborg admonition
+[33m3b46e82bb[m Fix broken references (#6760)
+[33m8a4cd22f7[m Fix load more comments link (#6759)
+[33mbef2234ef[m Release 18.9.0
+[33m774f75285[m fix: block chooser position in experimental.addBlockButton (#6751)
+[33ma060c4c24[m Fix redirect for MDN's Using CSS custom properties (variables) (#6758)
+[33m995bdbd8d[m Fixes intermittent error in cypress "Index Text Block" test (#6755)
+[33m6155ad78e[m docs: document slate heading as anchor links in user-manual (#6750)
+[33m2599c72ca[m Stop generating sitemap.xml.gz (#6561) (#6562)
+[33mb77a7b0fc[m Attempt to fix PR admonition comment syntax (#6749)
+[33m9d9918d21[m Alternate hreflang v2 (#6744)
+[33mf627f6a21[m Sync content from Awesome Volto (#6745)
+[33m97f34bf5f[m Add new Volto site (#6741)
+[33m3330285b2[m Fix the '30 needs: triage' label for bug reports template (#6737)
+[33m63b2f63c3[m Fix typings for Vite Plugin. Fix dev in Seven projects. (#6733)
+[33mfd185a1ae[m Use 6.1.0 final (#6731)
+[33m741df5dc7[m Release 18.8.2
+[33mcd143f802[m Release @plone/slate 18.2.2
+[33m75f5311aa[m Release @plone/scripts 3.8.2
+[33mb3068a981[m Release @plone/react-router 1.0.1
+[33m6bb4d3a83[m Release generate-volto 9.0.1
+[33mf96e24999[m Release @plone/slots 1.0.0-alpha.1
+[33ma301a5685[m Release @plone/providers 1.0.0-alpha.8
+[33mc51ea60bb[m Release @plone/helpers 1.0.2
+[33m80d5d8414[m Release @plone/blocks 1.0.0-alpha.3
+[33mf60a9d522[m Release @plone/components 3.0.2
+[33m0ac062022[m Release @plone/client 1.0.0-alpha.23
+[33m99c552e02[m Release @plone/registry 2.4.1
+[33me3394bcfe[m Release @plone/types 1.3.2
+[33m8521c5bdd[m Remove hard dependencies on specific `react` versions in monorepo packages. (#6728)
+[33m7424d0bbe[m Jotai 2.11.3 (#6686)
+[33m7cdcabd82[m Fix slate RichTextwidget to allow support slate extensions refs#6570 (#6586)
+[33m4c5c9adc7[m Update Dutch translations. (#6688)
+[33m43df0e961[m Use Plone 6.1.0rc1 (#6682)
+[33m26fb702a1[m Fix docs build in readthedocs (#6684)
+[33m928d751d7[m Add block group name in block configuration (#6681)
+[33mb8f6cc35c[m Add commented instructions to keep the admonition when submitting.
+[33m8180d75ec[m Description was too long, this is fine
+[33m6a49e35b9[m Try to fix PLIP template
+[33m0c208f79c[m Try to fix PLIP template
+[33m0e1aaeb36[m Try to fix PLIP template
+[33mc0b32eed0[m Revise the existing issue templates and create a new one for PLIP tasks (#6683)
+[33mbcc199570[m Fix editing frontend_domain setting (#6647)
+[33m5205179bc[m Release 18.8.1
+[33m53b970eae[m Fix regression in moving blocks from Grid block (#6642)
+[33m80e3d7726[m Update more versions for API-first apps (#6641)
+[33me16f74f8f[m Fix `corepack` in CI. Update Storybook versions for packages (#6640)
+[33maaa767f1c[m Release 18.8.0
+[33m2b8bfa7bd[m Release @plone/slate 18.2.1
+[33me39a855cf[m Release @plone/registry 2.4.0
+[33md8d28639b[m Release @plone/types 1.3.1
+[33m08b4499e5[m Simplify Seven data fetching, add addons styles loader (#6636)
+[33mf000a749b[m Remove dangling file .registry.loader.js
+[33mafcb3cfaa[m Pass intl object to initialValue function (#6538)
+[33m3a8d8a464[m Add acceptance test for non-manager user editing group memberships (c… (#6635)
+[33mfcdcdc54b[m Fix blurry images (#6634)
+[33mc421af5b0[m [registry] Addons styles loader (#6630)
+[33mb270d2569[m Ionlizarazu pattern validation message (#6632)
+[33m12c187a0d[m Show working copy links based on backend actions (#6393)
+[33mb9344b19f[m fix broken releations control panel (#6629)
+[33m5ff058b59[m Fix some typos in NL translations (#6531)
+[33mffd061af8[m Document how to migrate projects to Cookieplone (#6626)
+[33m409decac1[m Ignore awesome bot check 2021.ploneconf.org (#6627)
+[33m005b8b520[m Fix link to feature request voting in issue tracker (#6625)
+[33maf4d32366[m Linkcheck fixes (#6622)
+[33mfb7e98466[m Enhance Volto contributing guidelines (#6613)
+[33m305e03bc0[m Amend version policy docs (#6541)
+[33m9c09b4552[m Add robots.txt setting. (#5584)
+[33me7f195aa4[m Split RTD PR preview builds between Volto and plone/registry (#6617)
+[33m03c3a813d[m Release 18.7.0
+[33m6f731ed27[m Release @plone/slate 18.2.0
+[33m1c5d9b1cb[m Release @plone/react-router 1.0.0
+[33m4616db2ed[m Release @plone/theming 1.0.0-alpha.0
+[33m87aef3ac2[m Release @plone/slots 1.0.0-alpha.0
+[33m00bed2b91[m Release @plone/blocks 1.0.0-alpha.2
+[33mee5cf744c[m Release @plone/helpers 1.0.1
+[33m5f026c35d[m Release @plone/providers 1.0.0-alpha.7
+[33me786dbf74[m Release @plone/registry 2.3.0
+[33m4db62a577[m Release @plone/client 1.0.0-alpha.22
+[33mf79052138[m Release @plone/types 1.3.0
+[33m2e893fc02[m Initial push of the Plone 7 base package (#6599)
+[33m1a194df1a[m Add custom checkAccessibility command in cypress (#6611)
+[33m33ae1a1be[m Fix lint-staged throwing warnings when a file is checked-in and ignored (#6614)
+[33m6a8f3bdec[m feat: provide an Alternate language content links (#6603)
+[33ma5353d36a[m Restore pull request previews on Read the Docs (#6612)
+[33m3ce617697[m Enhancements of the upgrade guide for 18, since we detected some inconsistencies (#6609)
+[33mcfb678216[m Document routes API (#6604)
+[33m5c88b0b76[m Improve the usability of the ObjectBrowser when inputting a manual value, checking it on blur, and adding a local validator (#6576)
+[33m892a1d16e[m fixing Markdown heading (#6588)
+[33mae58c675d[m fix site logo issue (#6591)
+[33m5c71a35d1[m Route registry (#6600)
+[33m5dc98e1d2[m Release @plone/client 1.0.0-alpha.21
+[33m552260e94[m Export the getContent bare fetcher (#6594)
+[33m6f6f98f68[m fix: incorrect copied state useClipboard (#6585)
+[33m7c2a6de7e[m [RR7] Update to latest RR7 and conventions, fix index page (#6589)
+[33m1c88feb0b[m Release 18.6.0
+[33m8b1674f0a[m Release @plone/slate 18.1.0
+[33mafe82661f[m Revert "added swedish translation" (#6578)
+[33m467e0a3fe[m Slate Italian translations (#6563)
+[33m5c31f9ca4[m Release 18.5.0
+[33m0204951e5[m Fix robots.txt in devmode (#6571)
+[33me55b4a651[m added swedish translation (#6557)
+[33m6c670dafb[m Depth search issue (#6558)
+[33m6d4682049[m Block examples documentation (#6560)
+[33mede64b40f[m Fixed folder contents issues with persistent selection (#6554)
+[33m374dfbcfe[m Fix redirects to MDN responsive images (#6552)
+[33me499f034b[m Bugfix remove query string inclusion in body class generation logic (#6547)
+[33m928afbd1c[m Show related items (#4381)
+[33m0450e508f[m Update links to kitconcept.com
+[33m09b88e6ea[m Release 18.4.0
+[33m3f6582a0a[m Release @plone/components 3.0.1
+[33m821f716d2[m Release @plone/types 1.2.0
+[33me0f106a97[m Fix precedence of the quanta layer by adding a base layer for all the… (#6539)
+[33me9cbf8125[m Add monorepo structure to the README (#6542)
+[33m086f9500e[m `tsconfig` centralization + Update RAC everywhere (#6536)
+[33m4dff6bdd2[m Fixed types declaration extractor from Volto core, re-enable it on release (#6534)
+[33m42101658c[m Release 18.3.0
+[33mdc4701cbe[m Release @plone/slate 18.0.4
+[33m5dd45410f[m Release @plone/helpers 1.0.0
+[33mc35ac4e1f[m Make helpers release-able
+[33mfc490f642[m Release @plone/registry 2.2.0
+[33maabb8d402[m Release @plone/components 3.0.0
+[33m031af5271[m Release @plone/types 1.1.0
+[33m5df544394[m [slots] @plone/slots first developments (#6409)
+[33mbe462d2c4[m improve link integrity popup (#6516)
+[33mfa9a79321[m Add missing styleWrapper style builder information in container/Grid (#6527)
+[33m08893abb6[m update: skip scroll to top on inital SSR completion. (#6523)
+[33m0987c96db[m Release 18.2.3
+[33md9e786705[m Fixed circular import error in dev with HMR in core Views and Widgets shadow customizations (#6526)
+[33m6b78429bd[m Release 18.2.2
+[33m1cfdda666[m Fixed circular import error in dev with HMR in core Blocks shadow customizations (#6525)
+[33m638431285[m Release 18.2.1
+[33md5f0c5114[m Release @plone/slate 18.0.3
+[33m64213359f[m Fixed circular import error in dev with HMR in `App` component when imported in the main default config (#6524)
+[33mcfea4d988[m Update @plone/* packages info (#6521)
+[33m48fbd0189[m Fix extension in JSX files (#6520)
+[33m7c853ee3b[m Fixes ICS download in non-public event content (#6515)
+[33mda4496581[m Commit missing README from release
+[33md4d00d58d[m Release 18.2.0
+[33mb77775533[m Release @plone/slate 18.0.2
+[33mdd35efb7a[m Removed all imports from barrel files for components, actions, helpers, hooks and lodash (#6509)
+[33mc80322612[m Release 18.1.2
+[33md4f38f3d8[m Remove devserver settings for HMR of volto (#6511)
+[33mbb531a83a[m Release @plone/components 2.2.1
+[33md33d3391a[m [components] Fix color picker usability (#6512)
+[33m0c352db03[m Fix README in npm by copying it from the root of the monorepo. (#6510)
+[33m596ae97cc[m Add Accessibility acceptance tests for content-types (#6339)
+[33m2d479891b[m Fix linkcheck (#6502)
+[33m17ab4b26f[m Update browserslist (#6501)
+[33m1aff8d045[m Add new Volto trainings to tutorials (#6499)
+[33m1c26bab30[m Release 18.1.1
+[33mbda7f1f09[m Release @plone/providers 1.0.0-alpha.6
+[33md35e94028[m Release @plone/components 2.2.0
+[33m08e087f7f[m [components] Update RAC to 1.5.0, fix Disclosure import (#6498)
+[33m33bb9b177[m Update instructions to install pipx in `RELEASING.md` (#6496)
+[33m4dc81eda2[m Refactor documentation includes to align with main documentation pattern (#6495)
+[33m761363546[m More privacy concerning youtube links and fixing link check warnings for youtube playlist links (#6494)
+[33m3eb23a4e9[m fix: BodyClass depending on sections (#6487)
+[33md320bfe47[m Do not break toolbar if layout id is not registerd in layoutViewsNamesMapping (#6485)
+[33mde98f083f[m Add support for sphinxcontrib-youtube and alt tags for videos (#6486)
+[33m8ea12152d[m Remove conflicting searchtools.js file for documentation (#6482)
+[33m157df05e5[m Release 18.1.0
+[33m07bf07008[m Release @plone/slate 18.0.1
+[33m58961cbaf[m Add missing style Helmet serialization in the HTML component to make it work in SSR too (#6480)
+[33m4aecd1c86[m fix locales
+[33mee572e07a[m Dutch Translations update.  (#6476)
+[33m71a0a9d9d[m Docs 6472 tidy (#6475)
+[33m5c0dd143f[m React Router 7 experimental PoC (#6472)
+[33m5d08348bf[m First batch of the overhaul of the add-ons section (#6397)
+[33md6f2b4667[m URL Management control panel: show errors from CSV upload (#6473)
+[33m0a7bd484b[m Release 18.0.3
+[33m3ce85c631[m Release @plone/registry 2.1.2
+[33m427c60209[m Preparing for 18.0.3
+[33m81f9a2ab5[m Fix weird issue in images build with typings (#6471)
+[33m38aab6d16[m Release 18.0.2
+[33mf7514b89d[m Release @plone/providers 1.0.0-alpha.5
+[33m98ab5e852[m Release @plone/scripts 3.8.1
+[33m743b1902d[m Release @plone/components 2.1.1
+[33mba55450f0[m Fix packaging and plone/components src export (#6470)
+[33m1ce478fcb[m Release @plone/registry 2.1.1
+[33mb139107ed[m Repackage registry
+[33m4f52faf31[m Release 18.0.1
+[33mec3732cce[m Release @plone/providers 1.0.0-alpha.4
+[33m2480f4842[m Release @plone/components 2.1.0
+[33m1a53887a2[m Release @plone/client 1.0.0-alpha.20
+[33m28223ca3a[m Release @plone/scripts 3.8.0
+[33mc37e4cec9[m Release @plone/registry 2.1.0
+[33m147799bc7[m Get rid of all appearances of parcel in core. (#6469)
+[33mac52b6bc7[m Replace parcel with tsup. Better types, better tsconfig. Move to ESM. (#6468)
+[33mbb03e8fae[m Replace `parcel` with `tsup`. Better types, better tsconfig. Move to ESM. (#6467)
+[33m57731c761[m [client] Replace `parcel` with `tsup` (#6466)
+[33m60440ecd3[m Fix types, better exports and use tsup for build, remove parcel (#6461)
+[33m9075021ee[m Changelog
+[33m278ca6c38[m Fix display of nvm version when installing it for Contributing to Volto. (#6460)
+[33mc9e6264d6[m Fix require load of CJS config from ESM module (#6458)
+[33mc6a522d88[m Fix redirects (#6457)
+[33m430db455f[m Clean up add-on-registry.md docs (#6456)
+[33mf202ed9d3[m Release generate-volto 9.0.0
+[33mec6499646[m Changelog
+[33m6da3c095e[m Release 18.0.0
+[33m049c33514[m Preparations for 18.0.0 final release (#6281)
+[33m92e50ee11[m Release @plone/slate 18.0.0
+[33mdb4f6d499[m Changelog
+[33m742d2572d[m Release @plone/components 2.0.0
+[33m7974eae98[m Changelog
+[33m7ddbac1ec[m Release @plone/registry 2.0.0
+[33mca0685349[m Changelog
+[33m976e1bf6d[m Release @plone/types 1.0.0
+[33md2a68d289[m Changelog
+[33mb6d42554f[m Release 18.0.0-alpha.49
+[33mf5755936c[m Update browserlist (#6455)
+[33m138231179[m Update Romanian translation (#6454)
+[33m3a81500bf[m Update pt_BR translation (#6453)
+[33m85d339db9[m Release 18.0.0-alpha.48
+[33m8a6038242[m Fix declaration emits for wrong JSDocs
+[33me09587447[m Release @plone/slate 18.0.0-alpha.20
+[33m97abaef0f[m Release @plone/types 1.0.0-alpha.22
+[33mec4dc83bb[m Moved `applyBlockDefaults` one component up so the style is computed correctly (#6451)
+[33mec89ad8e6[m Fix useSelector is returned a different result when called with the s… (#6450)
+[33me5b8a404f[m Fix page changes not being announced by assistive technology when navigating using the client-side router (#5288)
+[33mee3c972a9[m BlockStyleWrapper aware of block themes (#6445)
+[33m416615fa2[m A11y: Wrap ToC Block within nav tag (#6084)
+[33m8fee114eb[m Fix backend error when there is no query supplied (#6423)
+[33m907f5a48b[m Added upgrade guide fix for HMR (#6446)
+[33me05970d2b[m Fix CSS lint in Volto Slate (#6444)
+[33m82e4f7b51[m Release 18.0.0-alpha.47
+[33m2f7b7608a[m Release generate-volto 9.0.0-alpha.20
+[33mf96fe5b83[m Release @plone/scripts 3.7.0
+[33m4802225f0[m Release @plone/registry 2.0.0-alpha.0
+[33m1ff127ccb[m Improve @plone/registry release-it config
+[33m83e2a6ab7[m `@plone/registry` as ESM module, move to TS, complete documentation (#6399)
+[33mf576c1385[m [Next.js] Better Vercel deployment (#6441)
+[33m715503dcd[m Replace all `yarn` appearences with `pnpm` (#6433)
+[33m523e750a6[m Add deprecation notices to the Upgrade guide (#6426)
+[33m3ff2f2711[m Clean up #6422 (#6443)
+[33mbd591ca11[m Rename page title from Frontend to Volto UI (#6438)
+[33m42daabae0[m URL-Management control panel: Add missing translations (#6436)
+[33m885b16a21[m Fix broken links (#6440)
+[33m8427cfb08[m Fix broken links (#6439)
+[33m6b9986a17[m Used resource title instead of resource type in page title. (#6402)
+[33m67a4446a2[m Client transforms for reducer data (#6422)
+[33m4b690be37[m (fix): Enable Volto Login to Redirect Back to Original Route After Authentication  (#6419)
+[33md8727abcf[m Test with plone.restapi 9.8.0 (#6430)
+[33mb8bed6f68[m Add German translations for URL management control panel (#6429)
+[33mc7badcc41[m URL Management control panel: add Edit feature (#6425)
+[33mfc7757f04[m Remove SEAMLESS mention in bootstrap (#6424)
+[33m7694b0f23[m Aliases control panel: Improve layout and add CSV upload (#6421)
+[33m27120d94b[m Fix site setup access at toolbar by using @actions endpoint. (#6413)
+[33m3a9844700[m Remove last CI tests still in 18 (#6418)
+[33me60fe1e5e[m Node 22 as LTS, main and recommended Volto version (#6371)
+[33mac87fd779[m Refactor Aliases control panel and support new filters (#6414)
+[33m636cdde91[m Remove the Plone app from apps folder (#6415)
+[33m3371c8477[m Release generate-volto 9.0.0-alpha.19
+[33m644bb6263[m Release @plone/providers 1.0.0-alpha.3
+[33mfb2dee6ae[m Release @plone/components 2.0.0-alpha.16
+[33m17f8fdaff[m Release @plone/client 1.0.0-alpha.19
+[33m018e25661[m Release @plone/types 1.0.0-alpha.21
+[33maeea3edfc[m Some types improvements/fixes (#6412)
+[33m5660ae42b[m [providers] Improve and group providers (#6069)
+[33m04402e53c[m Adjust the path to perform a proper `git diff` between the cached and… (#6410)
+[33m4d0a701a8[m Test whether commenting out the `ignore` command has any affect on the Netlify build.
+[33m2046e91af[m support depth in getNavigationQuery (#6400)
+[33m85a1555bf[m Update caniuse Oct24 (#6408)
+[33m9a47ba6cd[m Upgraded nextjs deps and configuration (#6388)
+[33m65abdb709[m Update `typescript` and `vitest` everywhere (#6407)
+[33m9f0159cc4[m Remove all traces of Jest 24 in core (#6406)
+[33m36bd6da47[m Release @plone/components 2.0.0-alpha.15
+[33m00ade66e2[m [components] Fix Select component logic to support `items` use case (#6405)
+[33ma74ec0c81[m Fix clean make command (#6403)
+[33mb79ef9d9c[m Release 18.0.0-alpha.46
+[33m3ba942514[m Release @plone/components 2.0.0-alpha.14
+[33m7f97e0a7f[m Add missing export for new components (#6391)
+[33mf131c9237[m Revert "Fix block chooser search is not focusable when clicked on add button" (#6390)
+[33mc962404dd[m Replace unhelpful words with helpful ones (#6386)
+[33m6e8fffc66[m Added missing improvement to the build-deps Makefile command (#6383)
+[33m0dcfb588e[m Added rule for ESlint to detect missing key property in iterators. (#6387)
+[33m436c45d45[m Fix syntax of `html_meta` under `myst` field. (#6385)
+[33md18a4e5ae[m Release 18.0.0-alpha.45
+[33me71c49ada[m Release @plone/components 2.0.0-alpha.13
+[33m4fc90a797[m Release @plone/types 1.0.0-alpha.20
+[33m1639de355[m Add chapter: theming a base theme (#6328)
+[33m447020a0d[m Upgrade vite to latest (#6373)
+[33m779497f42[m Porting a few minor fixes upstream (#6382)
+[33mca155f245[m Added missing arg for `buildStyleClassNamesExtenders` (#6381)
+[33m78ae6dd10[m Remove pin on Vale, and upgrade to v3.x configuration (#6376)
+[33mfeeac07b2[m Change formatting from blob of text to definition list. (#6378)
+[33me83d9a3fc[m Release generate-volto 9.0.0-alpha.18
+[33m30ce8a7ce[m Fix the boilerplate for old generator and add a missing upgrade guide… (#6368)
+[33m29a8b55e0[m Add a reference label (#6372)
+[33m2e03204e6[m Release 18.0.0-alpha.44
+[33m8ad447d19[m Release @plone/components 2.0.0-alpha.12
+[33m7d7f90833[m Release @plone/slate 18.0.0-alpha.19
+[33m83b2d04b0[m Fix changelog volto-slate
+[33md1acac9e6[m Update to RAC 1.4.0, add new components in there + update storybook (#6364)
+[33m4d927863a[m Release @plone/client 1.0.0-alpha.18
+[33mb0bb51e4a[m fix(SideBarPopup): close sidebarPopup on ESC keypress (#6315)
+[33m1b8328cc0[m Add a pull request template as a checklist before submitting a PR (#6365)
+[33mdbdb5971a[m improve DiffField.jsx with better support for displaying HTML elements such as images (#6309)
+[33mdc787b181[m Fix links to Vite website (#6366)
+[33m52a23bd2d[m Fix lexer language in upgrade guide for Field validation in blocks ex… (#6367)
+[33m6e498dec4[m Fetch user before pass it to the restricted function (#6293)
+[33mff84416d6[m Fixed client copy mutation, cleanup up move mutation for consistency (#6349)
+[33m913a084ff[m Add outline to toolbar buttons (#6313)
+[33mc3e5be1db[m vscode/settings.json markdown added (#6357)
+[33m1af4acef9[m Fix spelling of prerequisites (#6362)
+[33m78a26aa73[m fix: build_classnames in edit mode (#6259)
+[33m8aff340d8[m Fix the syntax for the label `upgrade-18-cookieplone-label` (#6360)
+[33mef34ef2d3[m Update refs to old cookiecutter in docs (#6352)
+[33m430c99573[m Updated Italian translations (#6342)
+[33m51375d59d[m Add language independent field icon. (#6298)
+[33m6fbd4146b[m Join validation errors in one single toast and update api error resp (#6295)
+[33m47886f841[m Increased contrast in table block for a11y reasons (#6333)
+[33md81a0d339[m Labels accessibility for ArrayWidget, SelectWidget, TokenWidget (#6332)
+[33ma2d997b3e[m Use consistent text colour for accordion titles to improve contrast and CMS consistency (#6330)
+[33meb14b612b[m Updated #2573 to Volto 18: Change text color to black for input:focus (#6307)
+[33m0e4f5083a[m Update Brazilian Portuguese translations (#6292)
+[33m2dcf6841a[m Updated publicUi routes to not have cms-ui in public nonContentRoutes (#6173)
+[33m2c55abb80[m Fixed find blocks method if fieldname is similiar to 'blocks' (#6299)
+[33m6429d49ca[m Add missing for-attribute  (#6249)
+[33m08aab5a37[m Upgrade Guide Cookieplone review (#6290)
+[33m1e0107017[m Release 18.0.0-alpha.43
+[33m6584d620a[m Release @plone/slate 18.0.0-alpha.18
+[33m88eb9d80f[m Release @plone/client 1.0.0-alpha.17
+[33m30db865db[m Added a notice in the upgrade guide for CookiePlone as the recommended way for generating projects and add-on boilerplate (#6286)
+[33mf789b9083[m Fix typo in Changelog for #6285 (#6287)
+[33m29d9cfd71[m Update to Volto 6.0.13 (#6285)
+[33m2f583a888[m Fix order component (#6284)
+[33ma34da0bdf[m Remove dangling `.only` in Cypress test (#6282)
+[33mccf31d3bf[m Empty GridBlocks will not be rendered in 'View' (#6280)
+[33m769067758[m Refactor Content upload modal  (#5047)
+[33m3a3b56d79[m Passes the `user` to the `restricted` function of the block settings (#6271)
+[33m8c4c15670[m Refactored SelectMetadataField.jsx to functional component (#5570)
+[33m3be1e6bfc[m Remove "Generate tabs for items other than folders" field from navigation control panel (#6278)
+[33m41da257ed[m Refactor DatetimeWidget (#6213)
+[33me49fb93c0[m Added make i18n to volto (#6274)
+[33m3df04990a[m Place the actions-storybook in correct folder (#6275)
+[33m15387de22[m Refactor ReferenceWidget (#5093)
+[33ma1120fb49[m Fix error in SortOn component when there is no sort selected. (#6273)
+[33m64b7d04f0[m When user changes location, set the userSession.token value based on cookie (#6079)
+[33m29f130cd2[m Trivial MyST syntax enhancement
+[33mc8506159b[m Move Tags component to the slot belowContent (#6269)
+[33m84b7ee825[m Fix initialValue block setting (#5978)
+[33ma79ebb495[m Add setting unwantedControlPanelsFields and use it in the function filterControlPanelsSchema (#4819)
+[33m73ebaca29[m Revert rename of .gitkeep for consistency (#6232)
+[33m913670f0d[m Refactor Change password  (#5044)
+[33m16b61471d[m Fix redirect (#6262)
+[33mfdcc8740d[m Fix edge case in ContentsPropertiesModal (#6258)
+[33m840029382[m Allow enhancing the ContentsPropertiesModal schema (#6248)
+[33mcbc1cb338[m Actions storybook test (#5049)
+[33md1c88d6ff[m fix: disable save button upon submitting - Volto 18 (#6252)
+[33mfdfa84cf8[m Refactor Personal Preferences  (#5045)
+[33me5f2e2cce[m Refactor Personal Information (#5046)
+[33meff11817a[m ContentBreadcrumbs storybook test (#5048)
+[33ma5063171d[m Refactor AlbumView (#4877)
+[33m8acb3b6da[m Refactor Blocks/LeadImage/Edit component (#4959)
+[33m1710f8bf4[m Refactor Blocks/Video/Edit component  (#4960)
+[33m861554273[m Set the `LANGUAGE` environment variable in the Docker backend (#6231)
+[33mf651bf69c[m Refactor Register (#4861)
+[33m86d9a5035[m Refactor RenderGroups (#4993)
+[33m4050e50f7[m Refactor Toolbar/More component (#4955)
+[33m5d97f9fcb[m Refactor DatabaseInformation  (#4986)
+[33m0576b479d[m Refactor  AddonsControlPanel (#4995)
+[33m27e8956b4[m Refactor Display Component (#5066)
+[33m24552f51e[m Refactor ControlPanel Aliases (#4985)
+[33mdab9fe5ac[m Refactored Blocks/ToC/Edits.jsx to functional component (#6167)
+[33m8e17e1f52[m Fixes imports to avoid type errors in addons tests (#6245)
+[33m790cd3d93[m Allow aliases that redirect to an external URL (#6247)
+[33meb611a848[m Complete upgrade to Cypress 13.13.2 (#6242)
+[33m468317c0a[m Upgrade Cypress to 13.13.2 (#6241)
+[33mac85e20d8[m fix: handle form.ui.hovered (#6240)
+[33m1d58a3062[m Fix linkcheckbroken in docs (#6239)
+[33m65e95471f[m Fix loading .cjs in webpack (#6237)
+[33ma462acf25[m Return 302 response from SSR link view for logged out users (#6235)
+[33mbe9caf743[m improve url regex (#6186)
+[33ma92471473[m Displays validation error messages on control panel forms (#5950)
+[33m9e312ed0b[m Remove unused i18n message (#6230)
+[33mbca10eafc[m Add Cypress test for search block sort on property (#6224)
+[33m4e5ecfde9[m Update volto.blocks behavior name (#6222)
+[33m932962e04[m Teaser Block Image Overide (#6147)
+[33m82481e4d4[m Fix search block showing no option select in sort on property (#5055)
+[33md056fcc44[m Release 18.0.0-alpha.42
+[33m19e0ea8c0[m Fix build types
+[33m47dc3680a[m Release @plone/registry 1.8.0
+[33m9ec1cf829[m Release @plone/types 1.0.0-alpha.19
+[33m9f8c1e939[m Extensible validation support in Volto forms (#6181)
+[33m88e1894fb[m Allow Image Widget value to be an object in which case we use the '@id' for value of the Image Sidebar preview (#6156)
+[33m85302345e[m fix: state and styles for toolbar handler for hp (#6126)
+[33m2c53ebfa9[m Release @plone/types 1.0.0-alpha.18
+[33ma4476e26e[m Refactor: Change content types to interfaces to make them extendable (#6191)
+[33mef4331c97[m Release @plone/blocks 1.0.0-alpha.1
+[33m5485667ae[m Prepare for release @plone/blocks
+[33mce7a1393f[m fix: pass the pagination size explicitly in all the search calls (#5496)
+[33m211d9bea1[m [Search Block] do not send sorting information by default (#5339)
+[33m808bdcf90[m Add references for contributing to latest and earlier versions of Volto (#6184)
+[33m1771f2070[m Polish upgrade docs and news items for `SchemaWidget` (#6193)
+[33m3c29308fb[m Add a label and minor grammar fixes to i18n (#6192)
+[33m911b68c95[m Improved i18n docs for customizations (#6188)
+[33m188b36191[m `SchemaWidget` CSS and registration (#6189)
+[33m4472262be[m Added data folder as volume for backend-docker-start (#6168)
+[33ma937f98dd[m Debounced searching for users and groups in controlpanel (#6153)
+[33mb958cb251[m Update the link to the new PLIP page (#6176)
+[33m8a2e52815[m Clean up upgrade guide for `react-share` library and `SocialSharing` … (#6175)
+[33mf7adcdc08[m Use relative links to ensure static files get copied during documenta… (#6174)
+[33m6c4442415[m fix: fixed utc problems in RecurrenceWidget (#5002)
+[33m8915be36f[m Remove `react-share` library and `SocialSharing` component (#6162)
+[33m38844e5e6[m Fixing Typos (#6109)
+[33mb9ebf670d[m Release 18.0.0-alpha.41
+[33m38aee903b[m Release @plone/slate 18.0.0-alpha.17
+[33mc4a98cdb2[m Revisit login/logout process, better catching of edge cases (unauthor… (#6155)
+[33m81476439d[m Fixes for Image widget (#6151)
+[33m7137bd410[m Release 18.0.0-alpha.40
+[33me352d826c[m Release @plone/slate 18.0.0-alpha.16
+[33mc32b2b69c[m Fix aria-label in ObjectBrowserNav component (#6150)
+[33m6cb749ff5[m Fix dependencies in `volto-slate` (#6148)
+[33m17ab60738[m Revert
+[33m938ae3520[m Testing array of events
+[33m0bf3ceeb5[m Add link to pull request preview builds in the pull request description only when documentation-related files change
+[33m51bdfa0bd[m Automatically add the PLIP to the PLIP project board (#6134)
+[33m3d782c986[m Fix link to renamed `src/constants/Languages.cjs` (#6135)
+[33mca3c293b2[m Release 18.0.0-alpha.39
+[33m07bb1dc3a[m Release generate-volto 9.0.0-alpha.17
+[33m3c56a1494[m rename test-setup-config.js to test-setup-config.jsx (#6133)
+[33me4b1b2238[m Cleanup Image widget and pass down `onSelectItem` prop if any (#6132)
+[33mc50c1b3f4[m Release 18.0.0-alpha.38
+[33m577a2400c[m Release @plone/slate 18.0.0-alpha.15
+[33m502c0f766[m Rename `constants/Language` module to the right suffix, and other actions to make ESM bundlers happy. (#6130)
+[33m5144d2dcd[m Release 18.0.0-alpha.37
+[33mcf6330bef[m Release @plone/types 1.0.0-alpha.17
+[33m7904d85ed[m fix(teaser): reset button undefined when no target (#6121)
+[33mda7f4e290[m (feat): Add loading visual and succes message in controlpanel when deleting users and groups (#6127)
+[33mb0ea7326a[m Upgrade `react-intl` to maximum 3.x series.  (#6128)
+[33m3f3d0c425[m Added three missing German translations. (#6124)
+[33m47b27bf16[m Fritz hoing Github actions improvements (#6120)
+[33m128bb8203[m Release 18.0.0-alpha.36
+[33m56901210c[m Rename missing command
+[33m71aba2663[m Image widget PR as breaking (#6125)
+[33m04f8d281b[m Release @plone/slate 18.0.0-alpha.14
+[33m91869c325[m Release @plone/registry 1.7.0
+[33m14c1ddb18[m Rename Makefile targets (#6104)
+[33mddbf70497[m fix: nonContentRoutes diff path (#6102)
+[33md091fcede[m Automatically set the label to `03 type: feature (plip)` for PLIPs (#6122)
+[33m13012ae35[m Add ImageWidget with upload/drop/external and inline/widget capabilities (#5607)
+[33m50bba48a5[m Ensure that sidebar field will not steal focus when metadata is edited (#5983)
+[33m78dc98beb[m Prevent duplicated UUUIDs in inner blocks when copying container blocks (#6112)
+[33mb3a4b8e77[m feat: handle breakList in detached TextBlockEditor (#6106)
+[33m3c93951a1[m Make dynamic/live teaser without additional requests (#6024)
+[33m331168680[m Fix issue of duplicated blocks upon pasting an image into the Slate E… (#5818)
+[33m75403e321[m Remove `api` folder. Add `backend` folder using latest backend best practices (#6110)
+[33m449df2fe0[m Rename files with wrong extension `js->jsx` when they contain JSX. (#6114)
+[33mb844f3149[m Improve shadowing by including the support for `js->jsx` extensions in… (#6113)
+[33m826d5fd6f[m issue-5452 markdown shortcut (#5495)
+[33mb629e5acb[m Release 18.0.0-alpha.35
+[33me38d7ac3d[m Release @plone/types 1.0.0-alpha.16
+[33m4d104d766[m (fix): export getFieldURL from Url.js in helpers (#6100)
+[33md0e2773e0[m Improve container detection, `config.settings.containerBlockTypes` is no longer needed (#6099)
+[33mf44cd9939[m Support nested directories in public folder add-on sync folders both … (#6098)
+[33m422f6d1ae[m Release 18.0.0-alpha.34
+[33mb1a16b94e[m Add generated new declarations for a34, just in case (#6097)
+[33m5b9681fc7[m Release @plone/slate 18.0.0-alpha.13
+[33m51dc8a148[m Release @plone/registry 1.6.0
+[33m67448bbbb[m Release @plone/types 1.0.0-alpha.15
+[33mc48debb57[m Add support for reading the add-ons `tsconfig.json` paths (#6096)
+[33m780d7843e[m Fixes #6046 pass proper defaults to align and size fields of Image block (#6093)
+[33m6869e7177[m bug fix. relations control panel. Restrict eglible relation targets a… (#6092)
+[33m190afc9e3[m Fix Uncaught RangeError: date value is not finite in DateTimeFormat.format (#6088)
+[33ma5b126680[m Add optional `token` parameter to ploneClient initialization (#6077)
+[33m2d4f5eb20[m Blocks Layout Navigator (#5642)
+[33ma2b42ff08[m Fix internalUrl  Widget to Reflect Prop Changes via onChangeBlock (#6036)
+[33ma923fab18[m [types] Improve styleClassNameExtenders types, Icon component JSDoc t… (#6095)
+[33mc08e7a38b[m Fix link in pop-up RelationsMatrix.jsx (#6085)
+[33mf9e862aa9[m Fix deselecting lists. (#6080)
+[33m4a2da7822[m Fix public folder in dev mode, now it starts by default with the default Volto core defined public files  (#6081)
+[33m02fb83c81[m Release 18.0.0-alpha.33
+[33m653992600[m Release @plone/components 2.0.0-alpha.11
+[33m17e9f05fe[m Release @plone/client 1.0.0-alpha.16
+[33mcb5c69b76[m Release @plone/scripts 3.6.2
+[33m7721beaab[m Release @plone/types 1.0.0-alpha.14
+[33m5d1a5420a[m Add tabindex to each of the skiplink elements to better handle focus (#5959)
+[33mb3cde7596[m Byday and byyear-byday buttons padding in recurrence form (#6070)
+[33me0364c36b[m  Fix js events association on error pages (#6057)
+[33m3d8d3b3e0[m Support for configurable `public` directory defined per add-on (#6072)
+[33m46b9d76ce[m Fix `poToJson` script, making it support `volto.config.js` (#6073)
+[33ma2f8d5997[m Improved image typings (#6064)
+[33m57c97e762[m Make css layer more specific (#6065)
+[33mf17cb4c35[m Support for slots to get the full location instead of only the pathname. (#6063)
+[33m6b493b439[m Pass class into breadcrumbs RAC (#6018)
+[33m6765579f2[m Release @plone/components 2.0.0-alpha.10
+[33mb5aa2dd77[m [components] Fix `align-items: start` to make autoprefixer happy (#6062)
+[33m1018359f9[m Object browser icon view v2 (#6054)
+[33m524a712bb[m Refactor TextWidget (#6020)
+[33mf77357f1f[m [client] Remove the custom runner with bare vitest config (#6056)
+[33m386dc7f62[m [client] Fix login mutation (#6053)
+[33m6aae6031c[m Fix test script in monorepo root (#6051)
+[33me87d129c8[m Fix block chooser search is not focusable when clicked on add button (#5867)
+[33mac06432dc[m [@plone/types] BlockExtension as Interface types (#6049)
+[33m1fa4a901d[m Fixed querystring search query type (#6034)
+[33me0bd9cf85[m Id widget refactor (#6027)
+[33m66fb6c21d[m Release 18.0.0-alpha.32
+[33m5e8ca04f5[m Release @plone/providers 1.0.0-alpha.1
+[33mc84e68c4d[m Release @plone/components 2.0.0-alpha.9
+[33md1cf06e0c[m Release @plone/client 1.0.0-alpha.15
+[33md95021502[m Release @plone/types 1.0.0-alpha.13
+[33m796dd29da[m Fix @plone/client deps (#6045)
+[33mb1797b4c2[m Allow X-Robots-Tag header in images/files middleware (#6043)
+[33m03fbeba65[m Fixed showRestricted not applying when rendering a custom BlocksForm (#6026)
+[33m88663c046[m change relative import to alias import (#6041)
+[33m6e50c82df[m Build documentation and Storybook only when their files change (#6037)
+[33ma81fa5456[m Use pnpm corepack instead of installing it in CI (#6038)
+[33mf03e4b7c6[m Replace Netlify pull request preview builds with RTD (#6030)
+[33mbc9417aae[m Add hindi translation in Volto (#6016)
+[33m015658f80[m Improve scoping of separator class (#6010)
+[33m214f63a8c[m Improve types and components, minor improvements to the others (#6029)
+[33m96cc4b150[m Server-side redirects for plone.app.redirector aliases (#4854)
+[33m93c30b2f2[m Removes navigation settings that are not used by Volto (#5964)
+[33m87740caa4[m Fix duplication of build deps (#6022)
+[33mad4f127c6[m Release 18.0.0-alpha.31
+[33mac663e1ac[m Release generate-volto 9.0.0-alpha.16
+[33m4490ee8dd[m Release @plone/registry 1.5.7
+[33m1824efbbe[m Release @plone/types 1.0.0-alpha.12
+[33m948857b16[m Use pnpm 9.1.1 (#6017)
+[33m96eb4fa4c[m Add Sphinx examples, align doc requirements with main documentation (#6011)
+[33m3aa82cfaa[m Fix typo in @plone/providers release config
+[33mfffddd3f5[m Release @plone/providers 1.0.0-alpha.0
+[33mcd37382f5[m Release @plone/components 2.0.0-alpha.8
+[33m5b915b6e5[m Update to RAC 1.2.0 (#6014)
+[33m09239bfde[m Revert "Fix 301 and 302 redirects. (#5999)" (#6008)
+[33m9e4f05fba[m Pin eslint-plugin-jsx-a11y to ^6.7.1 everywhere it's referenced (#5794)
+[33m092c6d503[m Allow Makefile to be modified by Makefile.local if present (#5997)
+[33m46569c4a8[m Cypress replaced wait with assertions (#5998)
+[33m0307e861d[m Replace spinner with Progress bar and fix it's position . (#5620) (#5929)
+[33m883d25a9d[m Fix type for component registry components (#6002)
+[33m0fbeea4ec[m Fix 301 and 302 redirects. (#5999)
+[33mca286aadd[m Release 18.0.0-alpha.30
+[33m8b5447c3b[m Force add .d.ts files to releaser
+[33m0ef8ba1be[m Release generate-volto 9.0.0-alpha.15
+[33m481b9957b[m Fix server side sidebar rendering (#5993)
+[33mf86727392[m Cleaned up useless injectIntl in DefaultView (#5995)
+[33m01cbe72d7[m Fix image disappears after pressing the Enter key on title field in i… (#5975)
+[33m466a358f4[m Update to Plone 6.0.11 (#5989)
+[33m6e3341ee6[m Defines the last 4 parameters of the `asyncConnect` function with optional (#5986)
+[33me1e6fa895[m Flexibilize the pins for all ESlint deps, in Volto and generators (#5991)
+[33me7d6f1c0b[m Release 18.0.0-alpha.29
+[33m45261d7b8[m Release @plone/types 1.0.0-alpha.11
+[33m6dec399c4[m fix: pass down locale to IntlProvider (#5976)
+[33m5d4338f79[m Add Vite (client only, no SSR) build. Update Next.js 14.2.2 and Remix to 2.8.0 (#5970)
+[33m8c37e24f9[m Fix no router link in logo (#5981)
+[33m03bcf2e48[m Improve postinstall script, building all the deps (#5980)
+[33m1ce0d1ecb[m Better BlocksData types (#5979)
+[33m459dd59bc[m Add missing types ts fields
+[33m738551938[m Release 18.0.0-alpha.28
+[33mb9363503c[m Release @plone/slate 18.0.0-alpha.12
+[33mef9caadcd[m Release @plone/registry 1.5.6
+[33m2add6cd79[m Improvements to the monorepo setup with utilities, especially ESLint.… (#5969)
+[33mc7de2e985[m DEV: put nvm installation section into a separate include file (#5968)
+[33m6f18663d0[m Bundle optimization (#5295)
+[33m1596de2ca[m [client] Move provider to own package - Use parcel - `@plone/providers` (#5887)
+[33m4b056a8fe[m Fix flaky test 'As editor I can add links' by using getSlateEditorAndType (#5966)
+[33mc664f338c[m Fix rendering if ConditionalLink has no children (#5963)
+[33m72bc90981[m Fix broken link to portrait (#5960)
+[33m5bd9a60a9[m Bump vite from 5.1.5 to 5.1.7 (#5946)
+[33ma863b459c[m Fix pt_BR translation of invalid email message (#5953)
+[33m131a332a4[m Fix markup shortcuts for bold, italic and strikethough fix (#5606)
+[33m8aa167a6d[m Release 18.0.0-alpha.27
+[33m139eb64f0[m Release @plone/types 1.0.0-alpha.10
+[33m7eaf92a58[m Improve color widget picker and types (#5948)
+[33m0630a6e76[m Enhanced navigation reducer in Volto (#5817)
+[33mf40646471[m Release 18.0.0-alpha.26
+[33mda49e72a2[m Rename news item
+[33maba61deae[m Release @plone/slate 18.0.0-alpha.11
+[33m732d6335e[m Release @plone/registry 1.5.5
+[33m4537e7f93[m Release @plone/types 1.0.0-alpha.9
+[33m80dd7e35a[m docs: Cleanup obsolete EEA projects and update info about EEA main website (#5943)
+[33ma2c683095[m Bump vite from 5.1.4 to 5.1.5 (#5942)
+[33mf60d83e2b[m Add a new label `needs: triage` to new bug reports (#5940)
+[33mc990fc8a9[m Fix redirect of `https://sustainability.eionet.europa.eu` to `https:/… (#5941)
+[33m13d5d60e9[m Does not show borders in addon block inputs (#5898)
+[33mc256e4ee3[m Fix edge case in search options mangling when the options are false-ish (#5869)
+[33m6d5089648[m Add additional parameters to ContentsUploadModal to be reusable in different scenarios (#5881)
+[33m77a7a280f[m fix(slate): fix insert/remove element edgecase bug in slate (#5926)
+[33mce930b6d1[m Bump express from 4.17.3 to 4.19.2 (#5930)
+[33m93ea1214b[m Fix self-registration (#5935)
+[33m7adc5456c[m Update DefaultView.jsx with Absolute Path for RenderBlocks (#5917)
+[33me4d4ee091[m Fix `error is null` in `FormFieldWrapper.jsx`. (#5920)
+[33m8d5734ab8[m Fix Navigate to different pages on two different listings test (#5934)
+[33m5e1cf2ade[m Update volto.po "yes" translation si -> sì (#5924)
+[33m58af5aeda[m Fix cypress test "As editor, I can unlock a locked page" (#5933)
+[33md22c5e82e[m Print error message from request, if clipboardRequest return an error (#5932)
+[33mca6449431[m Use fieldset `id` instead of the fieldset `title` in Form when rendering the Field component (#5921)
+[33m800102241[m Fix registry wrong default primitive type (#5925)
+[33m9317e498e[m Release @plone/types 1.0.0-alpha.8
+[33mdebefe229[m Improve types for APIExpanders, export all (#5918)
+[33mc1366916c[m Missing step in storybook migration (#5913)
+[33m49d8e0b77[m Push missing .d.ts files
+[33m6a11d8495[m Release 18.0.0-alpha.25
+[33m6d26eade6[m Release generate-volto 9.0.0-alpha.14
+[33m40526aaa8[m Update Docs: Pastanaga UI and Quanta (#5903)
+[33m8063f111c[m Upgrade to StoryBook 8 (#5912)
+[33m1853f9248[m Fix Storybook in app gen for Volto 18 (#5911)
+[33m6796dc1b6[m Release 18.0.0-alpha.24
+[33m1877d99f8[m Upgrade `@typescript-eslint` (#5910)
+[33m50f9d32cd[m Add new cypress helper for slate `getSlateEditorAndType` (#5909)
+[33m00ff9ed29[m Add id attributes to discussions container and individual comments (#5905)
+[33m45fa3a20b[m Move testing-library cypress commands import to inner commands so it can be imported (#5906)
+[33mf89c52313[m Release 18.0.0-alpha.23
+[33m21b743abc[m Release @plone/registry 1.5.4
+[33mbd73dddf6[m Improve the usage of RAZZLE_JEST_CONFIG (#5901)
+[33m482bced02[m fix reordering of slots function (#5840)
+[33m6f49e38c0[m #5341 code analysis documentation (#5882)
+[33medf2af327[m Add new types generator, don't know why they don't get included when releasing
+[33m9e5edf1ef[m Release 18.0.0-alpha.22
+[33me1b495cc2[m Release @plone/registry 1.5.3
+[33m23f071ee3[m Cross-package manager Volto path resolver in webpack-relative-resolver (#5893)
+[33mf81d86f0a[m New `volto-update-deps` documentation (#5892)
+[33me9c1e9848[m Release generate-volto 9.0.0-alpha.13
+[33md8348d6a7[m Release @plone/scripts 3.6.1
+[33m7af12a76b[m Improve and fix volto-update-deps (#5889)
+[33mc8683f0ff[m Sort facet values if they are numbers (#5865)
+[33m5e1e03b74[m Release generate-volto 9.0.0-alpha.12
+[33maba3cc0f4[m Bump @plone/scripts and @plone/types to latests (#5888)
+[33m058e3af74[m Release 18.0.0-alpha.21
+[33m56845fcda[m Release @plone/scripts 3.6.0
+[33mbed2d2230[m Release @plone/types 1.0.0-alpha.7
+[33m27e84b5fa[m Notify in documentation useLinkedHeadings setting change after changes from #5225 (#5885)
+[33m57d8948a3[m Add dependencies syncronizer utility (#5879)
+[33m43a9c521b[m Update volto-slate configuration to indicate it is now part of the core. (#5886)
+[33me1418f690[m Bump all the versions in GitHub workflows (#5873)
+[33m6b57f7d53[m Added download link to filename in file widget (#5880)
+[33m29631addc[m Improve `@plone/types` - Block*Props - Widgets (#5876)
+[33m0deb876b3[m Release 18.0.0-alpha.20
+[33m2fa72d11e[m Add BBB code for removed WysiwygWidget (#5874)
+[33m82aaa5207[m Release 18.0.0-alpha.19
+[33m158a26767[m Release @plone/components 2.0.0-alpha.7
+[33m8dd420b59[m Release @plone/slate 18.0.0-alpha.10
+[33mb390fec85[m Release generate-volto 9.0.0-alpha.11
+[33m281b1bc95[m Release @plone/types 1.0.0-alpha.6
+[33m79f5244f2[m Improve deps in project generator (#5872)
+[33m2db7d9704[m Fix broken link to TanStack Query (#5871)
+[33m690a5b068[m Add missing nextjs install step (#5857)
+[33m45600fa07[m (Fix): Sorting Order and Sorting On are not working in Search Block edit mode (#5262)
+[33m03b30f981[m Update docs for defaultBlockType setting (#5862)
+[33m16ffad6a6[m Add reference to Docker installation for some Linux distributions (#5861)
+[33ma4965580f[m Fix further internal `blocksConfig` pass by reference present in core (related to #5850) (#5859)
+[33m7bc30cb15[m The proper name is Semantic UI (#5855)
+[33m90c7320c0[m Update link to cssnano docs (#5853)
+[33m8239d4f13[m [components] Container css (#5849)
+[33mc91d265bf[m Do not display options for Site Administrator to create, modify, or delete Manager users (#5244)
+[33mf856ca72c[m Fix the introduction of a mutable (referenced) object when assigning … (#5850)
+[33m364a91adb[m Remove draftJS (and related legacy blocks `text`, `table` and `hero`) from core and cleanup dependencies (#5846)
+[33m5947c16b0[m Release @plone/volto-testing 5.0.0-alpha.0
+[33m82daeccd9[m Prepare for release @plone/volto-testing
+[33m3d080373f[m Release @plone/components 2.0.0-alpha.6
+[33m45e669ae5[m [components] Provide superpowers to the `Container` component (#5848)
+[33mffef3f0f0[m Upgrade Cypress to latest in 18 (#5845)
+[33m4dda90b7b[m Upgrade the versions in generators (#5844)
+[33m69b934d4b[m Release 18.0.0-alpha.18
+[33m5e6a395e9[m Do not break if the element to be focused does not have an input (#5843)
+[33mf188c20d8[m Pass down content, pathname and navRoot to the `SlotComponent` for convenience (#5841)
+[33m8967cd8ae[m Add new readmes to CI (#5837)
+[33m4cba5f807[m Release generate-volto 9.0.0-alpha.10
+[33md8e3597fe[m Add new forced resolutions to projects too (#5839)
+[33m7e439f02b[m Fix translation error message. (#5835)
+[33m57fe5b9e5[m Release generate-volto 9.0.0-alpha.9
+[33m37d9d8462[m Ensure hidden files get added to new addon projects in generator-volto (#5724)
+[33ma346f27c3[m `@plone/helpers` package (#5831)
+[33m950546a09[m Packages READMEs and rules (#5826)
+[33ma2fff7ff4[m Fix linkcheckbroken of `README.md` upstream of the docs (#5834)
+[33md2ad25e48[m Release 18.0.0-alpha.17
+[33m510f7af1a[m Release @plone/scripts 3.5.0
+[33m87aa71e62[m Release @plone/registry 1.5.2
+[33me2ac11b89[m Release @plone/components 2.0.0-alpha.5
+[33m790854580[m Release @plone/client 1.0.0-alpha.14
+[33m9bb5dffaa[m Removed word-break:break-word from contents table tbody (#5749)
+[33m8b4afef1b[m Fix Link to Item and Aliases view not updating content in multilingua… (#5821)
+[33m98256ea88[m Fix HMR problems, upgrade react-refresh and @pmmmwh/react-refresh-web… (#5833)
+[33m0baba22c1[m Uses Plone 6.0.10.1 in tests (#5830)
+[33m8e08d5ae3[m Improve wayfinding for various Volto audiences (#5809)
+[33m4f7885192[m Fix issue with HMR and register the same predicate-less component again (#5832)
+[33m64e7cf28a[m Reset global Form state onSubmit and onCancel in Add and Edit forms. (#5827)
+[33m511550f99[m Show validation error message as string instead of list (#5808)
+[33m65ec519c2[m Updated build-deps command to check if registry is newer than dist to force rebuild (#5825)
+[33m441f1426a[m Upgrade TSQ to latest, testing deployments (#5824)
+[33m7c74a4302[m Release 18.0.0-alpha.16
+[33mb68a817c1[m Release @plone/slate 18.0.0-alpha.9
+[33m567de64c4[m Release @plone/scripts 3.4.0
+[33m1e03b874f[m Release @plone/registry 1.5.1
+[33m054a1b2bd[m Release generate-volto 9.0.0-alpha.8
+[33me957c9edb[m Release @plone/components 2.0.0-alpha.4
+[33m4e00bf98d[m Release @plone/client 1.0.0-alpha.13
+[33m0edcd8083[m Several dependencies updates to 18 (#5815)
+[33m570a771b5[m [components] Pass down the Popover context, if any, in Select (#5823)
+[33m0e754b826[m [Components] Improve build, get rid of lodash, renaming Views directory, deps cleaning, upgrade StoryBook and Vite (#5822)
+[33mfe35958ba[m Linkcheck thinks `README.md` is `http://README.md`. Bad linkcheck, no… (#5816)
+[33m4e5f1d0d9[m Release 18.0.0-alpha.15
+[33m715f80b42[m Changes to Volto autogenerated types
+[33m63a7997a1[m Release @plone/slate 18.0.0-alpha.8
+[33m6a33a84f1[m Release @plone/types 1.0.0-alpha.5
+[33m4ee84b0a4[m Add missing @ in the literal of the prepublish script
+[33mf8971d613[m Release @plone/registry 1.5.0
+[33m70ed65757[m React 18.2.0 in Volto core - and all that fun (#3221)
+[33m5dc9cea67[m Release 18.0.0-alpha.14
+[33me15b222ca[m Fix types for latest build, check if CI is happy (#5814)
+[33mf2f3c7fa3[m Release generate-volto 9.0.0-alpha.7
+[33mdee3c2f72[m Release @plone/types 1.0.0-alpha.4
+[33m95186d616[m Release @plone/registry 1.4.0
+[33mc08e85cef[m Release @plone/components 2.0.0-alpha.3
+[33mb65b54a33[m Slots in core (#5775)
+[33m4de0ce2ff[m Delete develop a project docs (#5759)
+[33m97f830a4c[m 5645 toolbar buttons toggle when clicking same toolbar button (#5795)
+[33m28c30589d[m fix: array widget sort (#5805)
+[33m85e314753[m Fix a11y logo issue (#5776)
+[33m42d221ea7[m Improve Vite PoC - Add BlockRenderer and `@plone/blocks` to the party (#5798)
+[33ma078c6e6f[m Removed memori websites that give 404 since they are no longer using Volto (#5803)
+[33m351da3363[m Release Management Notes (#5358)
+[33mfa88c2222[m Enhance findBlocks to check for blocks in data for add-ons (#5797)
+[33m2901c72e4[m Release @plone/components 2.0.0-alpha.2
+[33mb4c0fcfcf[m Move basic default CSS out of theme. Improve StoryBook intro page (#5791)
+[33ma9f88daa5[m Switch peerDependencies to Volto 18 for generator-volto alpha's/latest. (#5781)
+[33m6eea1edec[m Release 18.0.0-alpha.13
+[33m137f90cec[m Release @plone/slate 18.0.0-alpha.7
+[33mdafdd8944[m Fix sidebar form update. (#5779)
+[33m4e0f9097c[m Add uncommited types for release??
+[33m5d656f02a[m Release 18.0.0-alpha.12
+[33m4e0b708bc[m Add accordion to metadata form. (#5760)
+[33m3a6bbdd42[m Release @plone/registry 1.3.1
+[33me7788b335[m [registry] Export Config type as ConfigType, amend coresandbox (#5774)
+[33m4e5d508d9[m Release @plone/components 2.0.0-alpha.1
+[33mb5500e17e[m Add import path for compiled CSS (#5770)
+[33m1cb5291c9[m Release 18.0.0-alpha.11
+[33mf60f407ad[m Release @plone/registry 1.3.0
+[33m9f7b36636[m Release generate-volto 9.0.0-alpha.6
+[33mdd7cd168c[m Add include for use in main docs and Develop Volto core (#5769)
+[33m27fa95575[m Components - Fix minification problem on Icons Story. Fix CSS missing Menu CSS in Toolbars.
+[33m6704b9e8f[m Release @plone/components 2.0.0-alpha.0
+[33m0c207
