@@ -20,7 +20,7 @@ msgstr "<p>Aggiungi dell'HTML qui</p>"
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "Identificativo unico del gruppo. Non può essere modificato dopo la creazione. Non sono ammessi spazi."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -1224,7 +1224,7 @@ msgstr "Rilascia file qui..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Trascina qui i file da caricare"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2617,7 +2617,7 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Sono ammessi solo 7-bit bytes di caratteri. Non può contenere lettere maiuscole, caratteris speciali come: <, >, &, #, /, ?, o altri che non sono ammessi negli URLs. Non può iniziare con: _, aq_, @@, ++. Non può finire con: __. Non può essere: request,contributors, ., .., "" Non può contenere nuove righe."
+msgstr "Sono ammessi solo 7-bit bytes di caratteri. Non può contenere lettere maiuscole, caratteris speciali come: <, >, &, #, /, ?, o altri che non sono ammessi negli URLs. Non può iniziare con: _, aq_, @@, ++. Non può finire con: __. Non può essere: request,contributors, ., .., \"\" Non può contenere nuove righe."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2858,7 +2858,7 @@ msgstr "Query"
 #. Default: "Query Parameter Name"
 #: components/manage/Widgets/SchemaWidget
 msgid "Query Parameter Name"
-msgstr ""
+msgstr "Nome del parametro"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -2965,7 +2965,7 @@ msgstr "Relazioni aggiornate"
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Rilascia per aggiungere i file in questa cartella"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -4571,7 +4571,7 @@ msgstr "Il tuo username è richiesto per reimpostare la tua password."
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "Tipi di file ammessi"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4649,10 +4649,10 @@ msgstr "{countofrelation} {countofrelation, plural, one {relazione rotta} other 
 msgid "daterangeFacet"
 msgstr "Intervallo date"
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
-msgstr "Elimina"
+msgid "delete_block"
+msgstr "Elimina il blocco {type}"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4678,6 +4678,11 @@ msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovreb
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Bozza"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr "Trascina il blocco {type}"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4732,7 +4737,7 @@ msgstr ""
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "Gli URL esterni non sono ammessi in questo campo"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4777,7 +4782,7 @@ msgstr "Immagine"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Perfavore, carica un'immagine"
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4797,7 +4802,7 @@ msgstr "intero"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Non sono state trovate immagini nel percorso selezionato."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4956,12 +4961,12 @@ msgstr "Pubblicato"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Posizione corrente (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Un livello sopra (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
