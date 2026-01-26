@@ -91,11 +91,11 @@ export function getUrl(
   }
 
   const mimeType = item.mime_type?.split(';')[0];
-  const knownMime =
+  const isKnownMime =
     mimeType &&
     (config.settings.downloadableObjects.includes(mimeType) ||
       config.settings.viewableInBrowserObjects.includes(mimeType));
-  const typeToCheck = knownMime ? mimeType : item['@type'];
+  const typeToCheck = isKnownMime ? mimeType : item['@type'];
 
   if (
     !token &&
