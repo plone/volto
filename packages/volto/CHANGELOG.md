@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.22 (2026-01-26)
+
+### Feature
+
+- Add `aboveListingItems` slot to allow displaying custom listing disclamers. @danalvrz 
+- Enhanced `SlotRenderer`'s `GetSlotArgs` typings. @sneridagh 
+
+### Bugfix
+
+- Remove '__ac' cookie when authtoken expires @Tishasoumya-02 [#7783](https://github.com/plone/volto/issues/7783)
+
+### Internal
+
+- Removed apps folder from main branch, and related Plone's modular architecture packages (helpers, blocks, providers, theming, layout).
+  These packages are now only in `seven` branch. @sneridagh [#7785](https://github.com/plone/volto/issues/7785)
+- Fixed CI test call. Fixed missing tests fixed since then. @sneridagh [#7795](https://github.com/plone/volto/issues/7795)
+
 ## 19.0.0-alpha.21 (2026-01-14)
 
 ### Bugfix
