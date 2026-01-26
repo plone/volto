@@ -27,6 +27,9 @@ import styles from '@plone/layout/slots/App/App.module.css';
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/.plone/publicui.css?url';
 
+import { EmbeddedDevTools } from 'react-router-devtools/client';
+import { TanStackDevtools } from '@tanstack/react-devtools';
+
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
 }) => {
@@ -125,6 +128,18 @@ export default function Index() {
         <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />
         <Scripts />
+        <TanStackDevtools
+          plugins={[
+            {
+              name: 'React Router Devtools',
+              render: <EmbeddedDevTools />,
+              defaultOpen: true,
+            },
+          ]}
+          eventBusConfig={{
+            connectToServerBus: true,
+          }}
+        />
       </body>
     </html>
   );
