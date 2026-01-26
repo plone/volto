@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import cx from 'classnames';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import config from '@plone/volto/registry';
@@ -6,11 +7,22 @@ import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 const ViewLink = ({ url, target, download, children }) => {
   const { openExternalLinkInNewTab } = config.settings;
+  const token = useSelector((state) => state.userSession?.token);
+  let href = url;
+
+  if (
+    !token &&
+    config.settings.viewableInBrowserObjects?.includes('File') &&
+    url.includes('/@@download/file')
+  ) {
+    href = url.replace('/@@download/file', '/@@display-file/file');
+  }
+
   return (
     <UniversalLink
-      href={url}
+      href={href}
       openLinkInNewTab={
-        (openExternalLinkInNewTab && !isInternalURL(url)) || target === '_blank'
+        (openExternalLinkInNewTab && !isInternalURL(href)) || target === '_blank'
       }
       download={download}
     >
@@ -35,19 +47,19 @@ export const LinkElement = (props) => {
     >
       {Array.isArray(children)
         ? children.map((child, i) => {
-            if (child?.props?.decorations) {
-              const isSelection =
-                child.props.decorations.findIndex((deco) => deco.isSelection) >
-                -1;
-              if (isSelection)
-                return (
-                  <span className="highlight-selection" key={`${i}-sel`}>
-                    {child}
-                  </span>
-                );
-            }
-            return child;
-          })
+          if (child?.props?.decorations) {
+            const isSelection =
+              child.props.decorations.findIndex((deco) => deco.isSelection) >
+              -1;
+            if (isSelection)
+              return (
+                <span className="highlight-selection" key={`${i}-sel`}>
+                  {child}
+                </span>
+              );
+          }
+          return child;
+        })
         : children}
     </a>
   );
