@@ -1,0 +1,1 @@
+fixed aria-label for delete and drag&drop buttons for blocks in editmode - backport of #7424
