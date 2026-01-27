@@ -3,17 +3,17 @@
  * @module components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import map from 'lodash/map';
 import { Form } from 'semantic-ui-react';
 import SelectInput from './SelectInput';
 
 /**
- * WeekdayOfTheMonthIndexField component class.
+ * WeekdayOfTheMonthIndexField component.
  * @function WeekdayOfTheMonthIndexField
- * @returns {string} Markup of the component.
+ * @returns {JSX.Element} Markup of the component.
  */
 
 const messages = defineMessages({
@@ -34,53 +34,59 @@ const ORDINAL_NUMBERS = {
   '-1': 'last',
 };
 
-class WeekdayOfTheMonthIndexField extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    disabled: PropTypes.bool,
-    value: PropTypes.any,
-    onChange: PropTypes.func,
-  };
+const WeekdayOfTheMonthIndexField = ({
+  disabled,
+  value,
+  onChange,
+  ...otherProps
+}) => {
+  const intl = useIntl();
+  const weekdayOfTheMonthIndexList = [
+    ...map(Object.keys(ORDINAL_NUMBERS), (option) => ({
+      value: parseInt(option),
+      label: intl.formatMessage(messages[ORDINAL_NUMBERS[option]]),
+    })),
+  ];
+  return (
+    <>
+      <Form.Field disabled={disabled}>
+        {intl.formatMessage(messages.bymonthDayNumber)}
+      </Form.Field>
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    disabled: false,
-    value: null,
-    onChange: null,
-  };
+      <Form.Field disabled={disabled}>
+        <SelectInput
+          name="weekdayOfTheMonthIndex"
+          options={weekdayOfTheMonthIndexList}
+          disabled={disabled}
+          value={value}
+          onChange={onChange}
+          {...otherProps}
+        />
+      </Form.Field>
+    </>
+  );
+};
 
-  render() {
-    const { intl, disabled } = this.props;
-    const weekdayOfTheMonthIndexList = [
-      ...map(Object.keys(ORDINAL_NUMBERS), (option) => ({
-        value: parseInt(option),
-        label: intl.formatMessage(messages[ORDINAL_NUMBERS[option]]),
-      })),
-    ];
-    return (
-      <>
-        <Form.Field disabled={disabled}>
-          {intl.formatMessage(messages.bymonthDayNumber)}
-        </Form.Field>
+/**
+ * Property types.
+ * @property {Object} propTypes
+ * @static
+ */
+WeekdayOfTheMonthIndexField.propTypes = {
+  disabled: PropTypes.bool,
+  value: PropTypes.any,
+  onChange: PropTypes.func,
+};
 
-        <Form.Field disabled={disabled}>
-          <SelectInput
-            name="weekdayOfTheMonthIndex"
-            options={weekdayOfTheMonthIndexList}
-            {...this.props}
-          />
-        </Form.Field>
-      </>
-    );
-  }
-}
+/**
+ * Default properties.
+ * @property {Object} defaultProps
+ * @static
+ */
+WeekdayOfTheMonthIndexField.defaultProps = {
+  disabled: false,
+  value: null,
+  onChange: null,
+};
 
-export default injectIntl(WeekdayOfTheMonthIndexField);
+export default WeekdayOfTheMonthIndexField;
