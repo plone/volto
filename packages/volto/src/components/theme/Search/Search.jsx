@@ -27,19 +27,13 @@ import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
 /**
  * Convert sort_order to sort_reverse for Plone compatibility (search page only)
- * Only converts when use_site_search_settings=1 is present, as that's when
- * the backend expects sort_reverse instead of sort_order for the effective field
  * @param {Object} options Search options
  * @returns {Object} Converted options
  */
 const convertSortOptions = (options) => {
   const converted = { ...options };
   // Convert sort_order to sort_reverse for Plone compatibility when use_site_search_settings=1
-  if (
-    converted.use_site_search_settings &&
-    converted.sort_order &&
-    converted.sort_on === 'effective'
-  ) {
+  if (converted.sort_order && converted.sort_on === 'effective') {
     converted.sort_reverse = converted.sort_order === 'descending' ? '1' : '0';
     delete converted.sort_order;
   }
@@ -138,12 +132,8 @@ class Search extends Component {
       urlOptions.sort_order = 'descending';
     }
 
-    // If user explicitly selected a sort option, don't use use_site_search_settings
-    // as it would override the user's choice with control panel settings
-    const hasExplicitSort = urlOptions.sort_on;
-
     const searchOptions = {
-      ...(!hasExplicitSort && { use_site_search_settings: 1 }),
+      use_site_search_settings: 1,
       b_size: this.defaultPageSize,
       ...urlOptions,
     };
@@ -157,12 +147,8 @@ class Search extends Component {
     window.scrollTo(0, 0);
     const urlOptions = qs.parse(this.props.history.location.search);
 
-    // If user explicitly selected a sort option, don't use use_site_search_settings
-    // as it would override the user's choice with control panel settings
-    const hasExplicitSort = urlOptions.sort_on;
-
     const searchOptions = {
-      ...(!hasExplicitSort && { use_site_search_settings: 1 }),
+      use_site_search_settings: 1,
       b_size: this.defaultPageSize,
       ...urlOptions,
     };
@@ -427,17 +413,8 @@ export default compose(
       promise: ({ location, store: { dispatch } }) => {
         const urlOptions = qs.parse(location.search);
 
-        // Ensure default sort order for date fields
-        if (urlOptions.sort_on && !urlOptions.sort_order) {
-          urlOptions.sort_order = 'descending';
-        }
-
-        // If user explicitly selected a sort option, don't use use_site_search_settings
-        // as it would override the user's choice with control panel settings
-        const hasExplicitSort = urlOptions.sort_on;
-
         const searchOptions = {
-          ...(!hasExplicitSort && { use_site_search_settings: 1 }),
+          use_site_search_settings: 1,
           b_size: config.settings.defaultPageSize,
           ...urlOptions,
         };
