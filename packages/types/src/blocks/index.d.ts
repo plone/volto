@@ -6,27 +6,12 @@ import type {
 } from '../config/Blocks';
 import type { IntlShape } from '../i18n';
 import type { Location, History } from '../router';
-import { Brain, QuerystringParameter } from '../services';
 
-export interface BaseBlockFormData {
+export interface BlocksFormData {
   '@type': AvailableBlocks;
   variation?: string;
   [x: string]: unknown;
 }
-
-export interface ListingBlockFormData extends BaseBlockFormData {
-  '@type': 'listing';
-  variation?: string;
-  headline?: string;
-  headlineTag?: 'h2' | 'h3';
-  querystring?: QuerystringParameter;
-  items?: Brain[];
-}
-
-// This type must be removed once each block will have been properly typed
-export type DummyBlockFormData = BaseBlockFormData;
-
-export type BlocksFormData = ListingBlockFormData | DummyBlockFormData;
 
 export interface BlockViewProps {
   blocksConfig: BlocksConfigData;
