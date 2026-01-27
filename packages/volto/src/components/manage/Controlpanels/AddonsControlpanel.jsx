@@ -23,10 +23,12 @@ import {
   uninstallAddon,
   upgradeAddon,
 } from '@plone/volto/actions/addons/addons';
+import { listControlpanels } from '@plone/volto/actions/controlpanels/controlpanels';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
+import Error from '@plone/volto/components/theme/Error/Error';
 import circleBottomSVG from '@plone/volto/icons/circle-bottom.svg';
 import circleTopSVG from '@plone/volto/icons/circle-top.svg';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -148,8 +150,10 @@ const AddonsControlpanel = (props) => {
     shallowEqual,
   );
   const loadingAddons = useSelector((state) => state.addons.loading);
+  const controlpanelsRequest = useSelector((state) => state.controlpanels.list);
 
   useEffect(() => {
+    dispatch(listControlpanels());
     dispatch(listAddons());
   }, [dispatch]);
 
@@ -244,6 +248,11 @@ const AddonsControlpanel = (props) => {
     const newIndex = activeIndex === item.index ? -1 : item.index;
     setactiveIndex(newIndex);
   };
+
+  // Error handling for unauthorized access
+  if (controlpanelsRequest?.error) {
+    return <Error error={controlpanelsRequest.error} />;
+  }
 
   return (
     <Container id="page-addons" className="controlpanel-addons">

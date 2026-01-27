@@ -6,10 +6,12 @@ import { Container, Divider, Message, Segment, Table } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
 import { getDatabaseInformation } from '@plone/volto/actions/controlpanels/controlpanels';
+import { listControlpanels } from '@plone/volto/actions/controlpanels/controlpanels';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { useClient } from '@plone/volto/hooks/client/useClient';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Error from '@plone/volto/components/theme/Error/Error';
 import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
@@ -31,10 +33,17 @@ const DatabaseInformation = () => {
   const databaseInformation = useSelector(
     (state) => state.controlpanels.databaseinformation,
   );
+  const controlpanelsRequest = useSelector((state) => state.controlpanels.list);
 
   useEffect(() => {
+    dispatch(listControlpanels());
     dispatch(getDatabaseInformation());
   }, [dispatch]);
+
+  // Error handling for unauthorized access
+  if (controlpanelsRequest?.error) {
+    return <Error error={controlpanelsRequest.error} />;
+  }
 
   return databaseInformation ? (
     <Container id="database-page" className="controlpanel-database">
