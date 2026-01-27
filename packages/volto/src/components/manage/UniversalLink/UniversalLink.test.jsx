@@ -239,7 +239,7 @@ describe('UniversalLink', () => {
         <MemoryRouter>
           <UniversalLink
             item={{
-              '@id': 'http://localhost:3000/en/welcome-to-volto',
+              '@id': 'http://localhost:3000/en/my-document',
               mime_type: 'application/pdf',
             }}
           >
