@@ -254,6 +254,37 @@ See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-
 ```
 ````
 
+### `downloadableObjects`
+
+This setting defines which content types or MIME types should be treated as downloadable. 
+When a content type or MIME type matches an entry in this list, the system will download it instead of displaying it inline.
+
+**Default:**
+
+```js
+config.settings.downloadableObjects = ['File'];
+```
+
+**Example:**
+
+```js
+// If you have a custom content type (e.g. "MyCustomContentType") 
+// that stores files, you can list it here to make those files downloadable.
+config.settings.downloadableObjects = ['File', 'MyCustomContentType'];
+
+// or
+config.settings.downloadableObjects.append('MyCustomContentType')
+```
+
+**Notes:**
+
+- The MIME type takes precedence over content type if present and recognized.
+- Objects not listed here but included in `viewableInBrowserObjects` will be displayed inline in the browser.
+
+```{seealso}
+The `viewableInBrowserObjects` setting to configure which content/mime-types should be opened inline in the browser.
+```
+
 ### `errorHandlers`
 
 `errorHandlers` is a list of error handlers that will be called when there is an unhandled exception.
@@ -540,6 +571,29 @@ config.settings.styleClassNameExtenders = [
 `unwantedControlPanelsFields` is the control panel fields that are not used in Volto.
 It is used internally by the `filterControlPanelsSchema` function.
 
+### `viewableInBrowserObjects`
+
+This setting defines which content types or MIME types should be displayed inline in the browser instead of being downloaded.
+When an content type or MIME type matches an entry in this list, the system will open it inline in a new browser tab.
+
+**Default:**
+
+```js
+config.settings.viewableInBrowserObjects = [];
+```
+
+**Example:**
+
+```js
+// Only PDFs will be viewable inline
+config.settings.viewableInBrowserObjects = ['application/pdf'];
+```
+
+**Notes:**
+
+- The MIME type takes precedence over content type if present and recognized.
+- Objects not listed here but included in `downloadableObjects` will be downloaded instead.
+
 ### `workflowMapping`
 
 `workflowMapping` is an object that defines the mapping between workflow states or transitions and the color that should show in the {guilabel}`change workflow` select menu.
@@ -622,6 +676,3 @@ See the {doc}`../deploying/performance` section for more details.
 
 `expressMiddleware` is a list of Express.js middleware that can extend the built-in functionality of Volto's server.
 See the [Express](../development/express) section for more details.
-
-
-

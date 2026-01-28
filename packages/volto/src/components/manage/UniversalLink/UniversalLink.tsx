@@ -90,18 +90,25 @@ export function getUrl(
     url = remoteUrl;
   }
 
+  const mimeType = item.mime_type?.split(';')[0];
+  const isKnownMime =
+    mimeType &&
+    (config.settings.downloadableObjects.includes(mimeType) ||
+      config.settings.viewableInBrowserObjects.includes(mimeType));
+  const typeToCheck = isKnownMime ? mimeType : item['@type'];
+
   if (
     !token &&
-    item['@type'] &&
-    config.settings.downloadableObjects.includes(item['@type'])
+    typeToCheck &&
+    config.settings.downloadableObjects.includes(typeToCheck)
   ) {
     url = `${url}/@@download/file`;
   }
 
   if (
     !token &&
-    item['@type'] &&
-    config.settings.viewableInBrowserObjects.includes(item['@type'])
+    typeToCheck &&
+    config.settings.viewableInBrowserObjects.includes(typeToCheck)
   ) {
     url = `${url}/@@display-file/file`;
   }
