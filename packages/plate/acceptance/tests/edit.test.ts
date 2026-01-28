@@ -8,15 +8,12 @@ import {
   setSelection,
 } from '@platejs/playwright';
 
-test('GET / shows Plone', async ({ page }) => {
-  await login(page);
+test('GET / shows Homepage', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('Home')).toBeVisible();
-  await page.getByRole('link', { name: '🛠️edit' }).click();
 });
 
-test('GET /page shows a document', async ({ page }) => {
-  await login(page);
+test('GET /mypage shows a document', async ({ page }) => {
   await createContent(page, {
     contentType: 'Document',
     contentId: 'mypage',
@@ -27,7 +24,9 @@ test('GET /page shows a document', async ({ page }) => {
   await expect(page.locator('h1', { hasText: 'My page' })).toBeVisible();
 });
 
-test('I can edit /mypage and interact with the editor', async ({ page }) => {
+test('As an editor, I can edit /mypage and interact with the editor', async ({
+  page,
+}) => {
   await login(page);
   await createContent(page, {
     contentType: 'Document',
@@ -43,7 +42,7 @@ test('I can edit /mypage and interact with the editor', async ({ page }) => {
   await page.keyboard.type('Hello world!');
 });
 
-test('I can edit /mypage and interact with the editor - Selects a text and the toolbar shows up', async ({
+test('As an editor, I can edit /mypage and interact with the editor - Selects a text and the floating toolbar shows up', async ({
   page,
 }) => {
   await login(page);
