@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/TextareaWidget
  */
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Label, TextArea } from 'semantic-ui-react';
 
@@ -25,27 +25,44 @@ import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWr
 const TextareaWidget = (props) => {
   const { id, maxLength, value, onChange, placeholder, isDisabled } = props;
   const [lengthError, setlengthError] = useState('');
+  const textareaRef = useRef(null);
 
   const onhandleChange = (id, value) => {
-    if (maxLength & value?.length) {
-      let remlength = maxLength - value.length;
+    if (maxLength && value?.length) {
+      const remlength = maxLength - value.length;
       if (remlength < 0) {
         setlengthError(`You have exceed word limit by ${Math.abs(remlength)}`);
       } else {
         setlengthError('');
       }
     }
-    onChange(id, value);
+    if (onChange) {
+      onChange(id, value);
+    }
   };
+
+  const autoGrow = () => {
+    const el = textareaRef.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = `${el.scrollHeight}px`;
+  };
+
+  useEffect(() => {
+    autoGrow();
+  }, [value]);
 
   return (
     <FormFieldWrapper {...props} className="textarea">
       <TextArea
+        ref={textareaRef}
         id={`field-${id}`}
         name={id}
+        rows={10}
         value={value || ''}
         disabled={isDisabled}
         placeholder={placeholder}
+        onInput={autoGrow}
         onChange={({ target }) =>
           onhandleChange(id, target.value === '' ? undefined : target.value)
         }
@@ -77,6 +94,7 @@ TextareaWidget.propTypes = {
   onDelete: PropTypes.func,
   wrapped: PropTypes.bool,
   placeholder: PropTypes.string,
+  isDisabled: PropTypes.bool,
 };
 
 /**
