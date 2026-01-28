@@ -3,7 +3,7 @@ import useDeepCompareEffect from 'use-deep-compare-effect';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import uniqBy from 'lodash/uniqBy';
+import uniqBy from 'es-toolkit/compat/uniqBy';
 import { Checkbox, Message } from 'semantic-ui-react';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import Toast from '@plone/volto/components/manage/Toast/Toast';

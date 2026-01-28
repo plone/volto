@@ -29,10 +29,10 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
-import find from 'lodash/find';
-import map from 'lodash/map';
-import pull from 'lodash/pull';
-import difference from 'lodash/difference';
+import find from 'es-toolkit/compat/find';
+import map from 'es-toolkit/compat/map';
+import pull from 'es-toolkit/compat/pull';
+import difference from 'es-toolkit/compat/difference';
 
 import { useState, useEffect, useCallback } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';

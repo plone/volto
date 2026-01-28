@@ -5,9 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import isEmpty from 'lodash/isEmpty';
-import map from 'lodash/map';
-import remove from 'lodash/remove';
+import isEmpty from 'es-toolkit/compat/isEmpty';
+import map from 'es-toolkit/compat/map';
+import remove from 'es-toolkit/compat/remove';
 import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';

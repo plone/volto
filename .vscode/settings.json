@@ -1,5 +1,10 @@
 {
   "[markdown]": {
     "editor.formatOnSave": false
-  }
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ]
 }

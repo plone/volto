@@ -13,9 +13,9 @@ import {
   Progress,
 } from 'semantic-ui-react';
 import loadable from '@loadable/component';
-import concat from 'lodash/concat';
-import filter from 'lodash/filter';
-import map from 'lodash/map';
+import concat from 'es-toolkit/compat/concat';
+import filter from 'es-toolkit/compat/filter';
+import map from 'es-toolkit/compat/map';
 import filesize from 'filesize';
 import { readAsDataURL } from 'promise-file-reader';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';

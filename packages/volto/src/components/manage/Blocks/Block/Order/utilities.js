@@ -1,4 +1,4 @@
-import isArray from 'lodash/isArray';
+import isArray from 'es-toolkit/compat/isArray';
 
 import { getBlocksLayoutFieldname } from '@plone/volto/helpers/Blocks/Blocks';
 

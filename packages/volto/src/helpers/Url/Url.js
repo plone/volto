@@ -3,11 +3,11 @@
  * @module helpers/Url
  */
 
-import last from 'lodash/last';
-import memoize from 'lodash/memoize';
-import isArray from 'lodash/isArray';
-import isObject from 'lodash/isObject';
-import isString from 'lodash/isString';
+import last from 'es-toolkit/compat/last';
+import memoize from 'es-toolkit/compat/memoize';
+import isArray from 'es-toolkit/compat/isArray';
+import isObject from 'es-toolkit/compat/isObject';
+import isString from 'es-toolkit/compat/isString';
 import { urlRegex, telRegex, mailRegex } from './urlRegex';
 import prependHttp from 'prepend-http';
 import config from '@plone/volto/registry';

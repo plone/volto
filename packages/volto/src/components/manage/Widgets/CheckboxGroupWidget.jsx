@@ -6,10 +6,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import filter from 'lodash/filter';
-import includes from 'lodash/includes';
-import map from 'lodash/map';
-import without from 'lodash/without';
+import filter from 'es-toolkit/compat/filter';
+import includes from 'es-toolkit/compat/includes';
+import map from 'es-toolkit/compat/map';
+import without from 'es-toolkit/compat/without';
 import { injectIntl } from 'react-intl';
 import {
   getVocabFromHint,

@@ -21,7 +21,7 @@ import { hasBlocksData } from '@plone/volto/helpers/Blocks/Blocks';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { useDispatch, useSelector } from 'react-redux';
 
-import isEqual from 'lodash/isEqual';
+import isEqual from 'es-toolkit/compat/isEqual';
 
 /**
  * Component to display the default view.

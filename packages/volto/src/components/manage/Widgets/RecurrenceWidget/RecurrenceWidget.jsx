@@ -9,11 +9,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import cx from 'classnames';
-import isEqual from 'lodash/isEqual';
-import map from 'lodash/map';
-import find from 'lodash/find';
-import concat from 'lodash/concat';
-import remove from 'lodash/remove';
+import isEqual from 'es-toolkit/compat/isEqual';
+import map from 'es-toolkit/compat/map';
+import find from 'es-toolkit/compat/find';
+import concat from 'es-toolkit/compat/concat';
+import remove from 'es-toolkit/compat/remove';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
   Form,

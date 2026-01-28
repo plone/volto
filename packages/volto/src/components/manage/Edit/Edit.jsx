@@ -15,7 +15,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { createPortal } from 'react-dom';
 import qs from 'query-string';
-import find from 'lodash/find';
+import find from 'es-toolkit/compat/find';
 import { toast } from 'react-toastify';
 
 import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';

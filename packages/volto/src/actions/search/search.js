@@ -3,13 +3,13 @@
  * @module actions/search/search
  */
 
-import compact from 'lodash/compact';
-import concat from 'lodash/concat';
-import isArray from 'lodash/isArray';
-import join from 'lodash/join';
-import map from 'lodash/map';
-import pickBy from 'lodash/pickBy';
-import toPairs from 'lodash/toPairs';
+import compact from 'es-toolkit/compat/compact';
+import concat from 'es-toolkit/compat/concat';
+import isArray from 'es-toolkit/compat/isArray';
+import join from 'es-toolkit/compat/join';
+import map from 'es-toolkit/compat/map';
+import pickBy from 'es-toolkit/compat/pickBy';
+import toPairs from 'es-toolkit/compat/toPairs';
 
 import {
   RESET_SEARCH_CONTENT,

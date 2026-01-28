@@ -3,8 +3,8 @@
  * @module reducers/search/search
  */
 
-import map from 'lodash/map';
-import omit from 'lodash/omit';
+import map from 'es-toolkit/compat/map';
+import omit from 'es-toolkit/compat/omit';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 import {

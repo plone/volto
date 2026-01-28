@@ -5,10 +5,10 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers/Blocks/Blocks';
-import find from 'lodash/find';
-import includes from 'lodash/includes';
-import some from 'lodash/some';
-import first from 'lodash/first';
+import find from 'es-toolkit/compat/find';
+import includes from 'es-toolkit/compat/includes';
+import some from 'es-toolkit/compat/some';
+import first from 'es-toolkit/compat/first';
 import { makeEditor } from './editor';
 import { safeEditorNodes } from './safe.js';
 

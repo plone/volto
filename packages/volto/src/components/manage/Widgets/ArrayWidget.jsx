@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import find from 'lodash/find';
-import isObject from 'lodash/isObject';
+import find from 'es-toolkit/compat/find';
+import isObject from 'es-toolkit/compat/isObject';
 
 import {
   getVocabFromHint,

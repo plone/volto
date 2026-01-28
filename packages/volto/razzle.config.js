@@ -3,7 +3,6 @@ const path = require('path');
 const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
@@ -125,24 +124,6 @@ const defaultModify = ({
       // restrict moment.js locales to supported languages
       // see https://momentjs.com/docs/#/use-it/webpack/ for details
       new MomentLocalesPlugin({ localesToKeep: Object.keys(languages) }),
-      new LodashModuleReplacementPlugin({
-        shorthands: true,
-        cloning: true,
-        currying: true,
-        caching: true,
-        collections: true,
-        exotics: true,
-        guards: true,
-        metadata: true,
-        deburring: true,
-        unicode: true,
-        chaining: true,
-        memoizing: true,
-        coercions: true,
-        flattening: true,
-        paths: true,
-        placeholders: true,
-      }),
     );
 
     // This copies the publicPath files set in voltoConfigJS with the local `public`
@@ -302,9 +283,6 @@ const defaultModify = ({
     '@root': `${projectRootPath}/src`,
     // we're incorporating redux-connect
     'redux-connect': `${registry.voltoPath}/src/helpers/AsyncConnect`,
-    // avoids including lodash multiple times.
-    // semantic-ui-react uses lodash-es, everything else uses lodash
-    'lodash-es': path.dirname(require.resolve('lodash')),
   };
 
   const [addonsThemeLoaderVariablesPath, addonsThemeLoaderMainPath] =

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'es-toolkit/compat/isEqual';
 
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import { default as ListingBody } from '@plone/volto/components/manage/Blocks/Listing/ListingBody';

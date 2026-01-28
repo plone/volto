@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import concat from 'lodash/concat';
-import merge from 'lodash/merge';
-import map from 'lodash/map';
+import concat from 'es-toolkit/compat/concat';
+import merge from 'es-toolkit/compat/merge';
+import map from 'es-toolkit/compat/map';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';

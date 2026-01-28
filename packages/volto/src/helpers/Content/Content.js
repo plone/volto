@@ -3,15 +3,15 @@
  * @module helpers/Content
  */
 
-import omitBy from 'lodash/omitBy';
-import mapKeys from 'lodash/mapKeys';
-import pickBy from 'lodash/pickBy';
-import map from 'lodash/map';
-import keys from 'lodash/keys';
-import endsWith from 'lodash/endsWith';
-import find from 'lodash/find';
+import omitBy from 'es-toolkit/compat/omitBy';
+import mapKeys from 'es-toolkit/compat/mapKeys';
+import pickBy from 'es-toolkit/compat/pickBy';
+import map from 'es-toolkit/compat/map';
+import keys from 'es-toolkit/compat/keys';
+import endsWith from 'es-toolkit/compat/endsWith';
+import find from 'es-toolkit/compat/find';
 import config from '@plone/volto/registry';
-import omit from 'lodash/omit';
+import omit from 'es-toolkit/compat/omit';
 
 /**
  * Nest content.

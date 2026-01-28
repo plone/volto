@@ -4,8 +4,8 @@
  */
 
 import React from 'react';
-import isUndefined from 'lodash/isUndefined';
-import isString from 'lodash/isString';
+import isUndefined from 'es-toolkit/compat/isUndefined';
+import isString from 'es-toolkit/compat/isString';
 import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import { handleKeyDetached } from '@plone/volto-slate/blocks/Text/keyboard';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
