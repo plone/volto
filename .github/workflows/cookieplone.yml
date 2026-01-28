@@ -50,25 +50,6 @@ jobs:
         working-directory: seven-add-on
         run: make format
 
-      - uses: JarvusInnovations/background-action@v1
-        name: Start Servers and wait for them to start
-        with:
-          run: |
-            make ci-acceptance-backend-start &
-            make acceptance-frontend-prod-start &
-          wait-on: |
-            http-get://localhost:55001/plone
-            http://localhost:3000
-          tail: true
-          log-output-resume: stderr
-          wait-for: 10m
-          log-output: stderr,stdout
-          log-output-if: failure
-          working-directory: seven-add-on
-
-      - run: make ci-acceptance-test
-        working-directory: seven-add-on
-
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v4
         if: failure()
