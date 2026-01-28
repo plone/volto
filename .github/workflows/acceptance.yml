@@ -27,7 +27,7 @@ jobs:
             make acceptance-frontend-prod-start &
           wait-on: |
             http-get://localhost:55001/plone
-            http://localhost:3000
+            http-get://localhost:3000
 
           tail: true # true = stderr,stdout
 
