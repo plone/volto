@@ -311,6 +311,9 @@ importers:
       react-dom:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
+      react-i18next:
+        specifier: 'catalog:'
+        version: 15.7.3(i18next@24.2.3(typescript@5.9.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.2)
     devDependencies:
       '@plone/helpers':
         specifier: workspace:*
@@ -1604,6 +1607,9 @@ importers:
 
   packages/types:
     dependencies:
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -1617,6 +1623,9 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.2.3(@types/react@19.2.6)
+      react-router:
+        specifier: 'catalog:'
+        version: 7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       release-it:
         specifier: 'catalog:'
         version: 19.0.5(@types/node@24.10.1)(magicast@0.3.5)

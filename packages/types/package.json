@@ -49,8 +49,12 @@
   "devDependencies": {
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "react-router": "catalog:",
     "release-it": "catalog:",
     "tsconfig": "workspace:*",
     "typescript": "catalog:"
+  },
+  "dependencies": {
+    "@plone/client": "workspace:*"
   }
 }
