@@ -24,7 +24,7 @@ jobs:
         with:
           run: |
             make acceptance-backend-start &
-            make acceptance-frontend-prod-start &
+# make acceptance-frontend-prod-start &
           wait-on: |
             http-get://localhost:55001/plone
             http-get://localhost:3000
