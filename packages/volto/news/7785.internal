@@ -1,0 +1,2 @@
+Removed references to apps folder and Plone's modular architecture packages (helpers, blocks, providers, theming, layout) that were already removed from the codebase.
+These packages exist only in the seven branch. @sneridagh
