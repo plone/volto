@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: test
-        run: make acceptance-backend-start
-
       - name: Set up Node.js environment
         uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
@@ -26,11 +23,11 @@ jobs:
         name: Start Servers - Volto and Plone
         with:
           run: |
-            make acceptance-backend-start &
-# make acceptance-frontend-prod-start &
+            make ci-acceptance-backend-start &
+            make acceptance-frontend-prod-start &
           wait-on: |
             http-get://localhost:55001/plone
-            http-get://localhost:3000
+            http://localhost:3000
 
           tail: true # true = stderr,stdout
 
