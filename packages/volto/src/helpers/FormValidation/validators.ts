@@ -206,17 +206,3 @@ export const minItemsValidator = ({
     ? formatMessage(messages.minItems, { minItems: field.minItems })
     : null;
 };
-
-export const defaultLanguageControlPanelValidator = ({
-  value,
-  formData,
-  formatMessage,
-}: Validator) => {
-  const isValid =
-    value &&
-    (formData.available_languages.find(
-      (lang: { token: string }) => lang.token === value,
-    ) ||
-      formData.available_languages.includes(value));
-  return !isValid ? formatMessage(messages.defaultLanguage) : null;
-};
