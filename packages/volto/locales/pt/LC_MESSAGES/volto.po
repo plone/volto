@@ -4648,10 +4648,10 @@ msgstr "{countofrelation} quebra {countofrelation, plural, one {relation} outras
 msgid "daterangeFacet"
 msgstr "Intervalo de datas"
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
-msgstr "eliminar"
+msgid "delete_block"
+msgstr ""
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4677,6 +4677,11 @@ msgstr "descrição_senha_enviada"
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Rascunho"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
