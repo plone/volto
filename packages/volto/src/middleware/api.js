@@ -251,9 +251,13 @@ const apiMiddlewareFactory =
               const langFileName = toGettextLang(lang);
               import(
                 /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-              ).then((locale) => {
-                dispatch(changeLanguage(lang, locale.default));
-              });
+              )
+                .then((locale) => {
+                  dispatch(changeLanguage(lang, locale.default));
+                })
+                .catch(() => {
+                  dispatch(changeLanguage(lang, {}));
+                });
             }
           }
 

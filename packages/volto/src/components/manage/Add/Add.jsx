@@ -241,11 +241,13 @@ class Add extends Component {
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
       const langFileName = toGettextLang(language);
-      import(
-        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-      ).then((locale) => {
-        this.props.changeLanguage(language, locale.default);
-      });
+      import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+        .then((locale) => {
+          this.props.changeLanguage(language, locale.default);
+        })
+        .catch(() => {
+          this.props.changeLanguage(language, {});
+        });
       this.props.history.push(this.props.location?.state?.translationOf);
     } else {
       this.props.history.push(getBaseUrl(this.props.pathname));
