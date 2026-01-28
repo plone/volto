@@ -52,6 +52,7 @@ export type ImageScale = {
 
 export type Image = {
   'content-type': string;
+  base_path?: string;
   download: string;
   filename: string;
   height: number;
