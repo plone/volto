@@ -1,5 +1,13 @@
 import type { Image } from '../content/common';
 
+export interface Batching {
+  '@id': string;
+  first: string;
+  last: string;
+  prev?: string;
+  next?: string;
+}
+
 export interface Brain {
   '@id': string;
   '@type': string;
