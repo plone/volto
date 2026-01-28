@@ -1,0 +1,1 @@
+Fixed an issue where Cmd/Ctrl + backspace behaved inconsistently in slate block across browsers, due to relying on native browser deletion behaviour. @aryan7081

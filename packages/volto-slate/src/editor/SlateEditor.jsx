@@ -354,6 +354,15 @@ class SlateEditor extends Component {
                 }, 200);
               }}
               onKeyDown={(event) => {
+                if (
+                  (event.metaKey || event.ctrlKey) &&
+                  event.key === 'Backspace'
+                ) {
+                  event.preventDefault();
+
+                  Editor.deleteBackward(editor, { unit: 'word' });
+                  return;
+                }
                 const handled = handleHotKeys(editor, event, slateSettings);
                 if (handled) return;
                 onKeyDown && onKeyDown({ editor, event });
