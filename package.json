@@ -31,7 +31,9 @@
     "lockhook": "node packages/scripts/lockhook.js",
     "prepare": "husky",
     "husky:uninstall": "husky uninstall",
-    "prereleaser": "node packages/scripts/preleaser.js"
+    "prereleaser": "node packages/scripts/preleaser.js",
+    "acceptance-test": "pnpm exec playwright test --config=playwright.config.ts",
+    "acceptance-test:open": "pnpm exec playwright test --ui --config=playwright.config.ts"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
