@@ -63,10 +63,6 @@ clean: ## Clean development environment
 
 ##### Build
 
-.PHONY: cypress-install
-cypress-install: ## Install Cypress for acceptance tests
-	$(NODEBIN)/cypress install
-
 ../../packages/registry/dist: $(shell find ../../packages/registry/src -type f)
 	(cd ../../ && pnpm build:registry)
 
@@ -102,52 +98,3 @@ storybook-build: build-deps ## Build Storybook
 release-notes-copy-to-docs: ## Copy release notes into documentation
 	cp CHANGELOG.md ../../docs/source/release-notes/index.md
 	git add ../../docs/source/release-notes/index.md
-
-##### Docker containers
-
-.PHONY: backend-docker-start
-backend-docker-start: ## Starts a Docker-based backend for development
-	docker run -it --rm --name=backend -p 8080:8080 -v volto-backend-data:/data -e SITE=Plone -e ADDONS='$(KGS)' -e LANGUAGE='$(LANGUAGE)' $(DOCKER_IMAGE)
-
-.PHONY: frontend-docker-start
-frontend-docker-start: ## Starts a Docker-based frontend for development
-	echo "Starts a Docker-based frontend for demo purposes..."
-
-##### Acceptance tests (Cypress)
-######### Dev mode Acceptance tests
-
-.PHONY: acceptance-frontend-dev-start
-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm start
-
-######### Core Acceptance tests
-
-.PHONY: acceptance-backend-start
-acceptance-backend-start: ## Start backend acceptance server
-	# docker run -it --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
-	docker run -it --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default $(DOCKER_IMAGE_ACCEPTANCE)
-	# Uncomment next line and comment line above to use a custom image with the acceptance server (in case you need to use an specific backend add-on or version)
-	# docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
-
-.PHONY: ci-acceptance-backend-start
-ci-acceptance-backend-start: ## Start backend acceptance server in headless mode for CI
-	# docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default $(DOCKER_IMAGE_ACCEPTANCE)
-	# Uncomment next line and comment line above to use a custom image with the acceptance server (in case you need to use an specific backend add-on or version)
-	# docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
-
-.PHONY: acceptance-frontend-prod-start
-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode
-	pnpm build && PLONE_API_PATH=http://127.0.0.1:55001/plone pnpm start:prod
-
-.PHONY: acceptance-test
-acceptance-test: ## Start Cypress in interactive mode
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open
-
-.PHONY: ci-acceptance-test
-ci-acceptance-test: ## Run cypress tests in headless mode for CI
-	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress run --config specPattern='cypress/tests/core/**/*.{ts,tsx}'
-
-.PHONY: ci-acceptance-test-run-all
-ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
-	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"

@@ -71,6 +71,7 @@ export function FloatingToolbar({
       <Toolbar
         {...props}
         {...rootProps}
+        aria-label="Editor toolbar"
         ref={ref}
         className={cn(
           `

@@ -2,12 +2,12 @@ import type { PlateConfig } from '@plone/types';
 import { BlockEditorKit } from '../../components/editor/block-editor-kit';
 import { BlockBaseEditorKit } from '../../components/editor/block-editor-base-kit';
 import { BlockFloatingToolbarButtons } from '../../components/ui/preset-block-floating-toolbar-buttons';
-import { CypressPlugin } from '../../components/editor/plugins/cypress-plugin';
+import { PlaywrightPlugin } from '@platejs/playwright';
 
-// Include Cypress plugin only during e2e tests
-if (typeof window !== 'undefined' && (window as any).Cypress) {
+// Include Playwright plugin only during e2e tests
+if (typeof window !== 'undefined') {
   // @ts-ignore
-  BlockEditorKit.push(CypressPlugin.configure({ enabled: true }));
+  BlockEditorKit.push(PlaywrightPlugin.configure({ enabled: true }));
 }
 
 const block: PlateConfig = {

@@ -78,7 +78,6 @@
     "@storybook/addon-links": "^9.1.7",
     "@storybook/react-vite": "^9.1.7",
     "@tailwindcss/vite": "catalog:",
-    "@testing-library/cypress": "^10.0.3",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.7",

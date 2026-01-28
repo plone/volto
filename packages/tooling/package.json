@@ -6,6 +6,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "scripts": {
     "storybook:components": "storybook dev -p 6001 -c ../components/.storybook",
     "storybook:blocks": "storybook dev -p 6002 -c ../blocks/.storybook",
@@ -16,26 +17,25 @@
     "build-storybook": "storybook build"
   },
   "devDependencies": {
-    "@plone/react-router": "workspace:*",
     "@eslint/js": "^9.20.0",
+    "@platejs/playwright": "catalog:",
+    "@playwright/test": "catalog:",
+    "@plone/react-router": "workspace:*",
     "@storybook/addon-docs": "^9.1.7",
     "@storybook/addon-links": "^9.1.7",
     "@storybook/react-vite": "^9.1.7",
     "@types/react": "catalog:",
-    "cypress": "catalog:",
-    "cypress-axe": "1.7.0",
-    "cypress-file-upload": "5.0.8",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-better-tailwindcss": "^3.7.9",
-    "eslint-plugin-cypress": "^4.1.0",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.1",
     "eslint-plugin-storybook": "^9.1.7",
+    "playwright": "catalog:",
     "prettier": "^3.5.2",
     "storybook": "^9.1.7",
     "stylelint": "^16.14.1",

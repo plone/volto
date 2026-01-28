@@ -39,15 +39,3 @@ all: help
 .PHONY: help
 help: ## This help message
 	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
-
-.PHONY: cypress-install
-cypress-install: ## Install Cypress for acceptance tests
-	$(NODEBIN)/cypress install
-
-.PHONY: ci-acceptance-backend-start
-ci-acceptance-backend-start: ## Start backend acceptance server in headless mode for CI
-	$(MAKE) -C "../../" ci-acceptance-backend-start
-
-.PHONY: acceptance-frontend-prod-start
-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode
-	$(MAKE) -C "../../" acceptance-frontend-prod-start
