@@ -2777,7 +2777,7 @@ msgstr "कृपया अपग्रेड करने से पहले �
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr "कृपया ब्लॉक को हटाकर एक वैध URL दर्ज करें और एक नया वीडियो ब्लॉक जोड़ें।"
+msgstr ""
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
@@ -3886,6 +3886,11 @@ msgstr "साइट कॉन्फ़िगरेशन पुरानी ह
 msgid "The value does not match the pattern {pattern}"
 msgstr ""
 
+#. Default: "The videos title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "The videos title is not displayed, but only used for accessibility reason to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty."
+msgstr ""
+
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
 msgid "The working copy was discarded"
@@ -3992,6 +3997,7 @@ msgstr "समय"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -5350,6 +5356,11 @@ msgstr "{id} की कंटेंट प्रकार"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} स्कीमा"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

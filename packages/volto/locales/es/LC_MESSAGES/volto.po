@@ -2784,7 +2784,7 @@ msgstr "Por favor, asegúrese de que tiene una copia de seguridad de su sitio an
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr "Por favor, introduzca una URL válida eliminando el bloque y agregando un nuevo bloque de vídeo."
+msgstr ""
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
@@ -3893,6 +3893,11 @@ msgstr "La configuración del sitio está anticuada y debe ser actualizada."
 msgid "The value does not match the pattern {pattern}"
 msgstr ""
 
+#. Default: "The videos title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "The videos title is not displayed, but only used for accessibility reason to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty."
+msgstr ""
+
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
 msgid "The working copy was discarded"
@@ -3999,6 +4004,7 @@ msgstr "Hora"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4099,7 +4105,7 @@ msgstr "Tipo"
 #. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr "Escriba la URL de un vídeo (YouTube, Vimeo o mp4)"
+msgstr "Escriba una URL válida"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
@@ -5357,6 +5363,11 @@ msgstr "{id} Tipo de Contenido"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} Esquema"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
