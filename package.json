@@ -52,7 +52,6 @@
     "onlyBuiltDependencies": [
       "@swc/core",
       "@tailwindcss/oxide",
-      "cypress",
       "esbuild",
       "lightningcss-cli",
       "msgpackr-extract",

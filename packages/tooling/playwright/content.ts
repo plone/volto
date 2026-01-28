@@ -83,7 +83,7 @@ function normalizePath(value?: string) {
 
 function getFixturesDir() {
   const here = dirname(fileURLToPath(import.meta.url));
-  return join(here, '../../cypress/fixtures');
+  return join(here, '../../playwright/fixtures');
 }
 
 async function readFixtureAsBase64(filename: string) {
@@ -267,7 +267,6 @@ export async function createContent(
   }
 
   if (transition && api === 'plone') {
-    // Keep parity with Cypress helper: it calls setWorkflow({ path: path || contentId, ... }).
     await setWorkflowSeven(
       request,
       { path: path || contentId, review_state: transition },
