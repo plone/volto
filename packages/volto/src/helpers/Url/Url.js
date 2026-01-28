@@ -98,6 +98,11 @@ export function getView(url) {
  * @returns {string} Flattened URL to the app server
  */
 export function flattenToAppURL(url) {
+  // Preserve template variables. Don't process URLs containing them
+  if (hasTemplateVariables(url)) {
+    return url;
+  }
+
   const { settings } = config;
   return (
     url &&
@@ -220,6 +225,12 @@ export function expandToBackendURL(path) {
  * @returns {boolean} True if internal url
  */
 export function isInternalURL(url) {
+  // Template variables should not be treated as internal URLs
+  // They need to be resolved by the backend first
+  if (hasTemplateVariables(url)) {
+    return false;
+  }
+
   const { settings } = config;
 
   const isMatch = (config.settings.externalRoutes ?? []).find((route) => {
@@ -310,12 +321,29 @@ export const getFieldURL = (data) => {
 };
 
 /**
+ * Check if URL contains template variables that should be preserved
+ * @method hasTemplateVariables
+ * @param {string} url URL of the object
+ * @returns {boolean} True if URL contains template variables
+ */
+export function hasTemplateVariables(url) {
+  if (!url || typeof url !== 'string') return false;
+  // Check for template variables like ${portal_url} or ${navigation_root_url}
+  return /\$\{[^}]+\}/.test(url);
+}
+
+/**
  * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
+ * Skips normalization if URL contains template variables to preserve them
  * @method normalizeUrl
  * @param {string} url URL of the object
- * @returns {boolean} URL with the protocol
+ * @returns {string} URL with the protocol (or original if contains template variables)
  */
 export function normalizeUrl(url) {
+  // Preserve template variables - don't normalize URLs containing them
+  if (hasTemplateVariables(url)) {
+    return url;
+  }
   return prependHttp(url);
 }
 
@@ -358,6 +386,12 @@ export function checkAndNormalizeUrl(url) {
     url: url,
     isValid: true,
   };
+
+  // Preserve template variables - skip all normalization if present
+  if (hasTemplateVariables(url)) {
+    return res;
+  }
+
   if (URLUtils.isMail(URLUtils.normaliseMail(url))) {
     //Mail
     res.isMail = true;
@@ -391,6 +425,7 @@ export const URLUtils = {
   isMail,
   isUrl,
   checkAndNormalizeUrl,
+  hasTemplateVariables,
 };
 
 /**
