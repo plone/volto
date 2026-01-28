@@ -18,6 +18,27 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - uses: JarvusInnovations/background-action@v1
+        if: ${{ inputs.storybook == false || inputs.storybook == 'false' || inputs.storybook == null }}
+        name: Start Servers - Volto and Plone
+        with:
+          run: |
+            make acceptance-backend-start &
+            make acceptance-frontend-prod-start &
+          wait-on: |
+            http-get://localhost:55001/plone
+            http://localhost:3000
+
+          tail: true # true = stderr,stdout
+
+          log-output-resume: stderr
+
+          wait-for: 10m
+
+          log-output: stderr,stdout # same as true
+
+          log-output-if: failure
+
       - name: Run Playwright Acceptance Tests
         shell: bash
         run: pnpm exec playwright test --reporter=list,html
