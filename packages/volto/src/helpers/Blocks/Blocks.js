@@ -90,10 +90,9 @@ export const getBlocks = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
   return (
-    properties[blocksLayoutFieldname]?.items?.map((n) => [
-      n,
-      properties[blocksFieldName][n],
-    ]) || []
+    properties?.[blocksLayoutFieldname]?.items
+      ?.map((n) => [n, properties?.[blocksFieldName]?.[n]])
+      .filter(([, block]) => block !== undefined) || []
   );
 };
 
@@ -812,12 +811,12 @@ export function findBlocks(blocks = {}, types, result = []) {
 export const getBlocksHierarchy = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  return properties[blocksLayoutFieldname]?.items?.map((n) => ({
+  return properties?.[blocksLayoutFieldname]?.items?.map((n) => ({
     id: n,
-    title: properties[blocksFieldName][n]?.['@type'],
-    data: properties[blocksFieldName][n],
-    children: isBlockContainer(properties[blocksFieldName][n])
-      ? getBlocksHierarchy(properties[blocksFieldName][n])
+    title: properties?.[blocksFieldName]?.[n]?.['@type'],
+    data: properties?.[blocksFieldName]?.[n],
+    children: isBlockContainer(properties?.[blocksFieldName]?.[n])
+      ? getBlocksHierarchy(properties?.[blocksFieldName]?.[n])
       : [],
   }));
 };
