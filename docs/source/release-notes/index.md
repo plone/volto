@@ -17,6 +17,41 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.22 (2026-01-26)
+
+### Feature
+
+- Add `aboveListingItems` slot to allow displaying custom listing disclamers. @danalvrz 
+- Enhanced `SlotRenderer`'s `GetSlotArgs` typings. @sneridagh 
+
+### Bugfix
+
+- Remove '__ac' cookie when authtoken expires @Tishasoumya-02 [#7783](https://github.com/plone/volto/issues/7783)
+
+### Internal
+
+- Removed apps folder from main branch, and related Plone's modular architecture packages (helpers, blocks, providers, theming, layout).
+  These packages are now only in `seven` branch. @sneridagh [#7785](https://github.com/plone/volto/issues/7785)
+- Fixed CI test call. Fixed missing tests fixed since then. @sneridagh [#7795](https://github.com/plone/volto/issues/7795)
+
+## 19.0.0-alpha.21 (2026-01-14)
+
+### Bugfix
+
+- Adjusted the opacity of the CMS UI toolbar’s expand/collapse button and enhanced its label to clearly convey to screen readers whether the toolbar is open or closed. @Wagner3UB [#7500](https://github.com/plone/volto/issues/7500)
+- Fixed a bug in Toolbar Types where the "Add Translation…" menu crashed if a language in Plone was not in Volto's language map. Now it shows the language code instead of crashing. @pratyush07-hub [#7637](https://github.com/plone/volto/issues/7637)
+- Fix rearrangement of files in drag-and-drop of folderish content. @Tishasoumya-02 [#7784](https://github.com/plone/volto/issues/7784)
+
+### Internal
+
+- Prevent VSCode from mangling the `html_meta` header of documentation files. @stevepiercy [#7758](https://github.com/plone/volto/issues/7758)
+- Corrected the label of a README link that pointed to the React Router v7 docs. @Manik-Khajuria-5 [#7776](https://github.com/plone/volto/issues/7776)
+
+### Documentation
+
+- Update configuration documentation to reflect that {file}`src/config.js` is deprecated in Volto 18+ in favor of the {file}`config/` folder structure. @gummybearansh [#7756](https://github.com/plone/volto/issues/7756)
+- Added version requirement for Plone 6.2. @stevepiercy [#7772](https://github.com/plone/volto/issues/7772)
+
 ## 19.0.0-alpha.20 (2025-12-21)
 
 ### Bugfix
@@ -25,8 +60,8 @@ myst:
 - Fixed a bug in the login form where the user could see a spinner instead of an error message after a failed login, when the login form was loaded via server-side rendering. @aryan7081 [#7397](https://github.com/plone/volto/issues/7397)
 - Fix max filesize upload issue in drag and drop @Tishasoumya-02 [#7695](https://github.com/plone/volto/issues/7695)
 - Fix multilingual redirect for languages using locale-specific formats. @Shyam-Raghuwanshi [#7725](https://github.com/plone/volto/issues/7725)
-- Add German translations for the current and parent paths. @iFlameing 
-- Add support for typing and pasting URLs in the ObjectBrowserWidget for location selection in the Listing block. @iFlameing 
+- Add German translations for the current and parent paths. @iFlameing
+- Add support for typing and pasting URLs in the ObjectBrowserWidget for location selection in the Listing block. @iFlameing
 
 ### Internal
 
@@ -40,7 +75,7 @@ myst:
 ### Documentation
 
 - Add Volto 19 add-on development documentation. @Shyam-Raghuwanshi [#7694](https://github.com/plone/volto/issues/7694)
-- Exclude `linkedin.com` from link checker. @davisagli 
+- Exclude `linkedin.com` from link checker. @davisagli
 
 ## 19.0.0-alpha.19 (2025-12-08)
 
@@ -49,11 +84,11 @@ myst:
 - cross language support for blocks chooser search @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
 - Added support for selecting Path and Depth in the Listing Block’s Location criteria using the ObjectBrowserWidget and NumberWidget. @iFlameing @giuliaghisini [#7661](https://github.com/plone/volto/issues/7661)
 - ModalForm should handle empty schemas, rendering an empty form with just the submit and cancel buttons. @tedw87 [#7677](https://github.com/plone/volto/issues/7677)
-- Add feature of drag and drop files in folder contents. @Tishasoumya-02 
+- Add feature of drag and drop files in folder contents. @Tishasoumya-02
 
 ### Internal
 
-- Add classname for unauthorized page @iRohitSingh 
+- Add classname for unauthorized page @iRohitSingh
 
 ### Documentation
 

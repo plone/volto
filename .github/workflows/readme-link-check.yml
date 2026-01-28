@@ -28,6 +28,5 @@ jobs:
           --exclude https://www.lanku.eus/
           --exclude https://medium.com/
           --exclude https://www.linkedin.com/
-          'apps/**/README.md'
           'packages/**/README.md'
           '*.md'
