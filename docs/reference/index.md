@@ -18,5 +18,5 @@ conventions
 react-19
 utilities
 slate-to-plate-converters
-plate-cypress
+plate-playwright
 ```

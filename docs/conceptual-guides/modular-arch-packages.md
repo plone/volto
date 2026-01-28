@@ -129,7 +129,7 @@ These packages are used today to develop Seven core.
 
 `@plone/tooling` centralizes the configuration and dependencies for tooling around the Plone frontend modular architecture.
 
-It provides shared Storybook, Cypress, ESLint, and other configurations.
+It provides shared Storybook, Playwright, ESLint, and other configurations.
 
 They are used in Seven projects and add-ons as well, so they can share the same setup and tooling as Seven core.
 
