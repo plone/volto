@@ -3,10 +3,15 @@ import { useHistory } from 'react-router-dom';
 import { Form, Input } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
+import last from 'lodash/last';
 
 import { getNavroot } from '@plone/volto/actions/navroot/navroot';
 import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import {
+  listControlpanels,
+  getControlpanelSchemas,
+} from '@plone/volto/actions/controlpanels/controlpanels';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import zoomSVG from '@plone/volto/icons/zoom.svg';
 
@@ -27,8 +32,41 @@ const SearchWidget = (props) => {
 
   const [text, setText] = useState('');
   const history = useHistory();
+
+  const controlpanels = useSelector(
+    (state) => state.controlpanels?.controlpanels || [],
+  );
+  const schemas = useSelector((state) => state.controlpanels?.schemas || {});
+  const controlpanelsLoaded = useSelector(
+    (state) => state.controlpanels?.list?.loaded || false,
+  );
+
+  const loadControlpanelsAndSchemas = () => {
+    if (Object.keys(schemas).length > 0) {
+      return;
+    }
+
+    if (controlpanelsLoaded && controlpanels.length > 0) {
+      const panelIds = controlpanels.map((panel) => {
+        const id = last(panel['@id']?.split('/')) || panel.id;
+        return id;
+      });
+      dispatch(getControlpanelSchemas(panelIds));
+    } else {
+      dispatch(listControlpanels());
+    }
+  };
+
   const onChangeText = (event, { value }) => {
     setText(value);
+
+    if (
+      value &&
+      value.trim().length >= 2 &&
+      Object.keys(schemas).length === 0
+    ) {
+      loadControlpanelsAndSchemas();
+    }
   };
   const pathname = props.pathname;
   const onSubmit = (event) => {
