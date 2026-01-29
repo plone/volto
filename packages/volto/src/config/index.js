@@ -185,6 +185,10 @@ let config = {
       tabletBreakpoint: 768,
       defaultContainerWidth: 1200,
     },
+    lcpEligibleBlocks: {
+      image: (block) => !!block.url,
+      listing: (block) => block.variation === 'imageGallery',
+    },
   },
   experimental: {
     addBlockButton: {
@@ -202,10 +206,6 @@ let config = {
   components: {},
   slots: {},
   utilities: {},
-  lcpEligibleBlocks: {
-    image: (block) => !!block.url,
-    listing: (block) => block.variation === 'imageGallery',
-  },
 };
 
 // The apiExpanders depends on a config of the object, so it's done here
