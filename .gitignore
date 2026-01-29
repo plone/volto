@@ -44,6 +44,9 @@ lib64
 # locales
 locales/*.json
 
+# VSCode
+.vscode/settings.json
+
 # Tests
 /tests/bin
 /tests/develop-eggs
