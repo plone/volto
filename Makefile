@@ -152,10 +152,6 @@ docs-test: docs-clean docs-linkcheckbroken docs-vale  ## Clean docs build, then 
 
 ##### Build
 
-.PHONY: cypress-install
-cypress-install: ## Install Cypress for acceptance tests
-	$(NODEBIN)/cypress install
-
 packages/registry/dist: $(shell find packages/registry/src -type f)
 	pnpm build:registry
 
@@ -208,7 +204,7 @@ backend-docker-start-no-cors: ## Starts the Docker-based backend without CORS in
 frontend-docker-start: ## Starts a Docker-based frontend for development
 	echo "This should start a container with the Seven frontend for demo purposes..."
 
-##### Acceptance tests (Cypress)
+##### Acceptance tests
 ######### Dev mode Acceptance tests
 
 .PHONY: acceptance-frontend-dev-start
@@ -231,23 +227,15 @@ acceptance-frontend-prod-start: ## Start acceptance frontend in production mode
 
 .PHONY: acceptance-test
 acceptance-test: ## Start Cypress in interactive mode
-	pnpm --filter @plone/tooling exec cypress open --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/apps/seven/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
+	pnpm exec playwright test --ui
 
 .PHONY: ci-acceptance-test
 ci-acceptance-test: ## Run cypress tests in headless mode for CI
-	pnpm --filter @plone/tooling exec cypress run --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/apps/seven/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
+	pnpm exec playwright test
 
 .PHONY: ci-acceptance-test-run-all
 ci-acceptance-test-run-all: ## With a single command, start both the acceptance frontend and backend acceptance server, and run Cypress tests in headless mode
 	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://localhost:55001/plone "make acceptance-frontend-prod-start" http://localhost:3000 "make ci-acceptance-test"
-
-######### @plone/cmsui Acceptance tests
-
-cmsui-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tests
-	pnpm --filter @plone/tooling exec cypress open --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/packages/cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
-
-cmsui-ci-acceptance-test: ## Start Cypress in interactive mode for @plone/cmsui tests
-	pnpm --filter @plone/tooling exec cypress run --config-file $(CURRENT_DIR)/packages/tooling/cypress.config.js --config specPattern=$(CURRENT_DIR)'/packages/cmsui/cypress/tests/**/*.cy.{js,jsx,ts,tsx}'
 
 # include local overrides if present
 -include Makefile.local
