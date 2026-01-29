@@ -1000,15 +1000,9 @@ export function getLCPBlockId(content) {
       if (!block) return false;
 
       const blockType = block['@type'];
-      if (blockType === 'image' && block.url) {
-        return true;
-      }
+      const isEligible = config.settings.lcpEligibleBlocks[blockType];
 
-      if (blockType === 'listing' && block.variation === 'imageGallery') {
-        return true;
-      }
-
-      return false;
+      return typeof isEligible === 'function' && isEligible(block);
     }) || null
   );
 }
