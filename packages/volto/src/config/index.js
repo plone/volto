@@ -179,6 +179,10 @@ let config = {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
     },
+    lcpEligibleBlocks: {
+      image: (block) => !!block.url,
+      listing: (block) => block.variation === 'imageGallery',
+    },
   },
   experimental: {
     addBlockButton: {
@@ -193,10 +197,6 @@ let config = {
   components: {},
   slots: {},
   utilities: {},
-  lcpEligibleBlocks: {
-    image: (block) => !!block.url,
-    listing: (block) => block.variation === 'imageGallery',
-  },
 };
 
 // The apiExpanders depends on a config of the object, so it's done here
