@@ -1000,7 +1000,10 @@ export function getLCPBlockId(content) {
       if (!block) return false;
 
       const blockType = block['@type'];
-      const isEligible = config.settings.lcpEligibleBlocks[blockType];
+      const lcpEligibleBlocks = config.settings.lcpEligibleBlocks;
+      if (!lcpEligibleBlocks) return false;
+
+      const isEligible = lcpEligibleBlocks[blockType];
 
       return typeof isEligible === 'function' && isEligible(block);
     }) || null
