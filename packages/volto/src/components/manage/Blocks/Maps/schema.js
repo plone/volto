@@ -33,13 +33,16 @@ export const MapsSchema = (props) => ({
     url: {
       title: props.intl.formatMessage(messages.MapsURL),
       widget: 'url',
+      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
     title: {
       title: props.intl.formatMessage(messages.AltText),
+      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
     align: {
       title: props.intl.formatMessage(messages.Alignment),
       widget: 'align',
+      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
   },
   required: [],

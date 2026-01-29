@@ -81,23 +81,28 @@ export const TeaserSchema = ({ data, intl }) => {
           '@type',
         ],
         allowExternals: true,
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       overwrite: {
         title: intl.formatMessage(messages.overwrite),
         description: intl.formatMessage(messages.overwriteDescription),
         type: 'boolean',
         default: false,
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       title: {
         title: intl.formatMessage(messages.title),
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       head_title: {
         title: intl.formatMessage(messages.kicker),
         description: intl.formatMessage(messages.kicker_description),
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       description: {
         title: intl.formatMessage(messages.description),
         widget: 'textarea',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       preview_image: {
         title: intl.formatMessage(messages.imageOverride),
@@ -105,10 +110,12 @@ export const TeaserSchema = ({ data, intl }) => {
         mode: 'image',
         allowExternals: true,
         selectedItemAttrs: ['image_field', 'image_scales'],
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       openLinkInNewTab: {
         title: intl.formatMessage(messages.openLinkInNewTab),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
     },
     required: ['href'],
@@ -121,6 +128,7 @@ export const TeaserSchema = ({ data, intl }) => {
     title: intl.formatMessage(messages.align),
     actions: ['left', 'right', 'center'],
     default: 'left',
+    helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
   };
 
   schema.properties.styles.schema.fieldsets[0].fields = ['align'];

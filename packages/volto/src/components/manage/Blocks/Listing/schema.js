@@ -69,19 +69,23 @@ export const schemaListing = (props) => {
     properties: {
       headline: {
         title: intl.formatMessage(messages.headline),
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       headlineTag: {
         title: intl.formatMessage(messages.headlineTag),
         choices: allowed_headline_tags,
         default: 'h2',
         noValueOption: false,
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       querystring: {
         title: intl.formatMessage(messages.querystring),
         widget: 'querystring',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       linkTitle: {
         title: intl.formatMessage(messages.LinkTitle),
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       linkHref: {
         title: intl.formatMessage(messages.LinkTo),
@@ -89,6 +93,7 @@ export const schemaListing = (props) => {
         mode: 'link',
         selectedItemAttrs: ['Title', 'Description'],
         allowExternals: true,
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
     },
     required: [],

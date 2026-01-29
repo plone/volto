@@ -67,34 +67,42 @@ function TableSchema(props) {
       hideHeaders: {
         title: intl.formatMessage(messages.hideHeaders),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       sortable: {
         title: intl.formatMessage(messages.sortable),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       fixed: {
         title: intl.formatMessage(messages.fixed),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       celled: {
         title: intl.formatMessage(messages.celled),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       striped: {
         title: intl.formatMessage(messages.striped),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       compact: {
         title: intl.formatMessage(messages.compact),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       basic: {
         title: intl.formatMessage(messages.basic),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       inverted: {
         title: intl.formatMessage(messages.inverted),
         type: 'boolean',
+        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
     },
     required: [],
