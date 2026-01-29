@@ -1,0 +1,1 @@
+Move vscode settings setup to pnpm postinstall hook. @wesleybl
