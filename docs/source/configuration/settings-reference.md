@@ -572,6 +572,49 @@ The `layoutViewsNamesMapping` object maps this string with a nice literal, in En
 These view names are exposed in the `Display` component in the toolbar's {guilabel}`more` menu.
 The keys of `layoutViewsNamesMapping` are the name of the Plone layout, and the values are the i18n string `id`, as shown in the following example.
 
+#### Available layout views
+album_view
+:Album view
+
+event_listing
+:Event listing
+
+full_view
+:All content
+
+listing_view
+:Listing view
+
+tabular_view
+:Tabular view
+
+layout_view
+:Mosaic view
+
+document_view
+:Document view
+
+folder_listing
+:Folder listing
+
+newsitem_view
+:News item view
+
+link_redirect_view
+:Link redirect view
+
+file_view
+:File view
+
+image_view
+:Image view
+
+event_view
+:Event view
+
+view
+:Default view
+
 ```js
 export const layoutViewsNamesMapping = {
   album_view: 'Album view',
