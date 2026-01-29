@@ -249,15 +249,20 @@ class History extends Component {
                       </Link>
                     )) || (
                       <span>
-                        {entry.transition_title}
-                        {entry.type === 'workflow' &&
-                          ` (${
-                            entry.action ? `${entry.prev_state_title} → ` : ''
-                          }${entry.state_title})`}
+                        {entry.type === 'workflow' ? (
+                          <>
+                            <strong>Workflow:</strong>{' '}
+                            {entry.prev_state_title
+                              ? `${entry.prev_state_title} → ${entry.state_title}`
+                              : entry.state_title}
+                          </>
+                        ) : (
+                          entry.transition_title
+                        )}
                       </span>
                     )}
                   </Table.Cell>
-                  <Table.Cell>{entry.actor.fullname}</Table.Cell>
+                  <Table.Cell>{entry.actor?.fullname || '—'}</Table.Cell>
                   <Table.Cell>
                     <FormattedDate date={entry.time} />
                   </Table.Cell>
