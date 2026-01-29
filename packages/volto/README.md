@@ -11,7 +11,7 @@
 
 ## Introduction
 
-[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System.
+[Volto](https://github.com/plone/volto) is a React-based frontend for the [Plone](https://plone.org) Content Management System.
 It is the default frontend starting with the Plone 6 release.
 
 [Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
@@ -47,8 +47,6 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 |---|---|
 | [`@plone/client`](https://www.npmjs.com/package/@plone/client) | [`packages/client`](https://github.com/plone/volto/tree/main/packages/client#readme) |
 | [`@plone/components`](https://www.npmjs.com/package/@plone/components) | [`packages/components`](https://github.com/plone/volto/tree/main/packages/components#readme) |
-| [`@plone/helpers`](https://www.npmjs.com/package/@plone/helpers) | [`packages/helpers`](https://github.com/plone/volto/tree/main/packages/helpers#readme) |
-| [`@plone/providers`](https://www.npmjs.com/package/@plone/providers) | [`packages/providers`](https://github.com/plone/volto/tree/main/packages/providers#readme) |
 | [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme) |
 | [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts) | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme) |
 | [`@plone/types`](https://www.npmjs.com/package/@plone/types) | [`packages/types`](https://github.com/plone/volto/tree/main/packages/types#readme) |
@@ -140,7 +138,6 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Debabarreneko mankomunitatea](https://debabarrena.eus/eu) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus/eu) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [European Environment Agency](https://www.eea.europa.eu/en) (Website of the European Environment Agency. Developed by [Eau de Web](https://eaudeweb.ro), 2023)
-- Excellence at Humboldt-Universität zu Berlin (Website for the excellence initiative of the [Humboldt University Berlin](https://www.hu-berlin.de/de), developed by [kitconcept GmbH](https://kitconcept.com/en), 2019)
 - [Film Basque Country](https://www.filmbasquecountry.eus/en) (Website to attract, guide, and support international productions, making it easier for them to film in the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2025)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://eaudeweb.ro/), 2019)
 - [Forschungszentrum Jülich](https://www.fz-juelich.de/de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com/en), 2022)
@@ -152,7 +149,7 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://eaudeweb.ro/), 2020)
 - [Interpretare.ro](https://www.interpretare.ro) (Romanian medical imaging interpretation service allowing patients to submit MRI, CT, and other diagnostic imaging for professional evaluation by medical specialists, 2022)
 - [iTlent - Basque Institute of Talent in VET](https://www.itlent.eus/en) (developed by [CodeSyntax](https://www.codesyntax.com/en), 2024)
-- [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Carrer website for MEDICE Arzneimittel Pütter GmbH & Co. KG), developed by [Werkbank GmbH](https://werkbank.de/), 2020)
+- [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Career website for MEDICE Arzneimittel Pütter GmbH & Co. KG, developed by [Werkbank GmbH](https://werkbank.de/), 2020)
 - [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 - [Leibniz Institute for Science and Mathematics Education (IPN)](https://www.leibniz-ipn.de/de) (Website of the IPN, a research institute dedicated to issues related to learning and teaching of science, mathematics and computer science in and outside of schools, developed by [Starzel](https://www.starzel.de), 2023)
 - [Nuova Voce Ecologista](https://nuovavoceecologista.it) (Website of Nuova Voce Ecologista, an Italian green Party, 2020)
@@ -162,7 +159,7 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Stradanove](https://www.stradanove.it/) (Website of the Department of Youth Policies of the Municipality of Modena, developed by [RedTurtle](https://www.redturtle.it), 2020)
 - [Study guide at University of Jyväskylä](https://studyguide.jyu.fi/2020/en/) (Static website where [Volto is used as a headless CMS for authoring additional content](https://tech.blog.jyu.fi/2020/06/plone-volto-hasura-gatsbyjs-mashup/), 2020)
 - [Study in Denmark](https://studyindenmark.dk) (Study in Denmark is a Plone 6 website promoting higher education opportunities in Denmark. Developed by [Eau de web](https://eaudeweb.ro) for the Danish Ministry of Higher Education and Science, 2025)
-- [Talke Carrer Website](https://karriere.talke.com/) (Carrer website for [Talke](https://www.talke.com), one of the leading a chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2020)
+- [Talke Career Website](https://karriere.talke.com/) (Career website for [Talke](https://www.talke.com), one of the leading chemical and petrochemical logistics companies in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2020)
 - [UEU](https://www.ueu.eus) (Website for Udako Euskal Unibertsitatea, a non-profit University offering all its service only in Basque: courses, publications, ... developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 - [Unione dei Comuni della Val Bisenzio](https://www.bisenzio.it/) (Website of the Municipality union of Val Bisenzio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [VHS Ehrenamtsportal](https://vhs-ehrenamtsportal.de) (Website to help volunteers that help refugees for the [German Adult Education Association](https://www.volkshochschule.de/), developed by [kitconcept GmbH](https://kitconcept.com/en), 2018)
