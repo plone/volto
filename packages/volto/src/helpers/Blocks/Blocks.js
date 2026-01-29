@@ -984,6 +984,35 @@ export const findContainer = (formData, { containerId }) => {
   return container;
 };
 
+export function getLCPBlockId(content) {
+  if (!hasBlocksData(content)) {
+    return null;
+  }
+
+  const blocksFieldname = getBlocksFieldname(content);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+  const blocks = content[blocksFieldname];
+  const layoutItems = content[blocksLayoutFieldname]?.items || [];
+
+  return (
+    find(layoutItems, (blockId) => {
+      const block = blocks?.[blockId];
+      if (!block) return false;
+
+      const blockType = block['@type'];
+      if (blockType === 'image' && block.url) {
+        return true;
+      }
+
+      if (blockType === 'listing' && block.variation === 'imageGallery') {
+        return true;
+      }
+
+      return false;
+    }) || null
+  );
+}
+
 const _dummyIntl = {
   formatMessage() {},
 };
