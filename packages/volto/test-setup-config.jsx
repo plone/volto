@@ -6,6 +6,7 @@
  * Views, Widgets and Blocks are mocked already, to keep
  * snapshot consistency and readability.
  */
+import '@plone/volto/config';
 import React from 'react';
 import config from '@plone/volto/registry';
 import { loadables } from '@plone/volto/config/Loadables';
@@ -60,6 +61,10 @@ config.set('settings', {
   styleClassNameExtenders,
   blockSettingsTabFieldsetsInitialStateOpen: true,
   containerBlockTypes: [],
+  lcpEligibleBlocks: {
+    image: (block) => !!block.url,
+    listing: (block) => block.variation === 'imageGallery',
+  },
 });
 config.set('blocks', {
   blocksConfig: {
@@ -151,10 +156,11 @@ config.set('widgets', {
 
 config.set('components', {
   PreviewImage: {
+    // eslint-disable-next-line no-restricted-syntax
     component: (props) => <img alt="PreviewImage component mock" {...props} />,
   },
   Image: {
-    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt, no-restricted-syntax
     component: (props) => <img alt="Image component mock" {...props} />,
   },
 });
