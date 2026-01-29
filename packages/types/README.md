@@ -38,3 +38,27 @@ declare module '@plone/types' {
 You can use this package from Volto 17 onwards.
 In Volto 17, you should declare it as dependency.
 In Volto 18 and later, it is included by default.
+
+
+## Using without React
+
+This package can be used without React for API type definitions (content types, REST API services).
+The `react` and `react-dom` peer dependencies are optional. If you only need API response types
+(e.g., in Astro, SvelteKit, or other non-React frameworks), you can install this package without React:
+
+```bash
+npm install @plone/types
+```
+
+Types in `@plone/types/content` and `@plone/types/services` are React-agnostic and can be used
+for typing REST API responses:
+
+```ts
+import type { NavigationResponse } from '@plone/types';
+
+const response = await fetch('http://localhost:8080/Plone/++api++/@navigation');
+const result: NavigationResponse = await response.json();
+```
+
+Note: If you need block-related or config-related types that reference React components,
+you'll need React installed.
