@@ -284,6 +284,7 @@ const BlocksForm = (props) => {
     <>
       {isMainForm &&
         isClient &&
+        document.getElementById('sidebar-order') &&
         createPortal(
           <div>
             <Order
@@ -382,5 +383,4 @@ const BlocksForm = (props) => {
     </>
   );
 };
-
 export default BlocksForm;
