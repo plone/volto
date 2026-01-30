@@ -256,8 +256,8 @@ See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-
 
 ### `downloadableObjects`
 
-This setting defines which content types or MIME types should be treated as downloadable. 
-When a content type or MIME type matches an entry in this list, the system will download it instead of displaying it inline.
+This setting defines which content types or MIME types should be treated as downloadable instead of going to the default view when a logged-out user clicks a link to the item.
+When a content type or MIME type matches an entry in this list, the system will download it using the `@@download` view.
 
 **Default:**
 
@@ -574,8 +574,8 @@ It is used internally by the `filterControlPanelsSchema` function.
 
 ### `viewableInBrowserObjects`
 
-This setting defines which content types or MIME types should be displayed inline in the browser instead of being downloaded.
-When an content type or MIME type matches an entry in this list, the system will open it inline in a new browser tab.
+This setting defines which content types or MIME types should be displayed inline in the browser instead of going to the default view when a logged-out user clicks a link to the item.
+When an content type or MIME type matches an entry in this list, the system will open it inline in a new browser tab using the `@@display-file` view.
 
 **Default:**
 
