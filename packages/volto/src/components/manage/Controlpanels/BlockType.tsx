@@ -5,13 +5,12 @@ import { getParentUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import debounce from 'lodash/debounce';
 import { useClient } from '@plone/volto/hooks';
 import config from '@plone/volto/registry';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
-import { listRoles } from '@plone/volto/actions/roles/roles';
+import Error from '@plone/volto/components/theme/Error/Error';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
@@ -35,11 +34,9 @@ type RouteProps = {
 
 const BlockTypeControlpanel = (props: RouteProps) => {
   const { location } = props;
-  const [isUserManager, setIsUserManager] = useState(false);
   const params = useParams<{ id: string }>();
   const id = params.id;
   const intl = useIntl();
-  const roles = useSelector((state) => state.roles.roles);
   const blockTypes = useSelector((state) => state.blockTypes);
   const isClient = useClient();
   const dispatch = useDispatch();
@@ -48,15 +45,8 @@ const BlockTypeControlpanel = (props: RouteProps) => {
     config.blocks.blocksConfig[id as keyof typeof config.blocks.blocksConfig];
 
   useEffect(() => {
-    dispatch(listRoles());
-  }, []);
-
-  useEffect(() => {
-    if (roles.length > 0 && roles.map((role) => role.id === 'Manager')) {
-      setIsUserManager(true);
-      dispatch(getBlockTypes(id));
-    }
-  }, [roles, id]);
+    dispatch(getBlockTypes(id));
+  }, [dispatch, id]);
 
   const onChangeSearch = (value: string) => {
     dispatch(getBlockTypes(id, value));
@@ -64,79 +54,93 @@ const BlockTypeControlpanel = (props: RouteProps) => {
 
   const debouncedSearch = debounce(onChangeSearch, 600);
 
-  return isUserManager ? (
-    <div id="page-block_type" className="ui container controlpanel-block_type">
-      <h1>
-        <FormattedMessage
-          id="block-type"
-          defaultMessage="{title}"
-          values={{ title: block.title }}
-        />
-      </h1>
-      <form className="search" onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={(e) => debouncedSearch(e.target.value)}
-        />
-        <Icon
-          name={searchSVG}
-          size="16px"
-          title={intl.formatMessage(messages.search)}
-        />
-      </form>
-      {blockTypes.items?.length > 0 ? (
-        <table className="table">
-          <thead className="table-header">
-            <tr className="table-row">
-              <th className="table-heading">
-                <FormattedMessage id="Title" defaultMessage="Title" />
-              </th>
-              <th className="table-heading">
-                <FormattedMessage id="Occurrence" defaultMessage="Occurrence" />
-              </th>
-            </tr>
-          </thead>
-          <tbody className="table-body">
-            {blockTypes.items.map((item) => (
-              <tr key={item['@id']} className="table-row">
-                <td className="table-cell">
-                  <a href={item['@id']}>{item.title}</a>
-                  <span>{flattenToAppURL(item['@id']) || '/'}</span>
-                </td>
-                <td className="table-cell">{item.count}</td>
+  if (blockTypes.loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (blockTypes?.error?.status) {
+    return <Error error={blockTypes.error} />;
+  }
+
+  return (
+    blockTypes.loaded && (
+      <div
+        id="page-block_type"
+        className="ui container controlpanel-block_type"
+      >
+        <h1>
+          <FormattedMessage
+            id="block-type"
+            defaultMessage="{title}"
+            values={{ title: block.title }}
+          />
+        </h1>
+        <form className="search" onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={(e) => debouncedSearch(e.target.value)}
+          />
+          <Icon
+            name={searchSVG}
+            size="16px"
+            title={intl.formatMessage(messages.search)}
+          />
+        </form>
+        {blockTypes.items?.length > 0 ? (
+          <table className="table">
+            <thead className="table-header">
+              <tr className="table-row">
+                <th className="table-heading">
+                  <FormattedMessage id="Title" defaultMessage="Title" />
+                </th>
+                <th className="table-heading">
+                  <FormattedMessage
+                    id="Occurrence"
+                    defaultMessage="Occurrence"
+                  />
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <FormattedMessage
-          id="no-blocks-found"
-          defaultMessage="No items found for type: {type}."
-          values={{ type: id }}
-        />
-      )}
-      {isClient &&
-        createPortal(
-          <Toolbar
-            pathname={pathname}
-            hideDefaultViewButtons
-            inner={
-              <Link to={getParentUrl(pathname)} className="item">
-                <Icon
-                  name={backSVG}
-                  className="contents circled"
-                  size="30px"
-                  title={intl.formatMessage(messages.back)}
-                />
-              </Link>
-            }
-          />,
-          document.getElementById('toolbar') as HTMLElement,
+            </thead>
+            <tbody className="table-body">
+              {blockTypes.items.map((item) => (
+                <tr key={item['@id']} className="table-row">
+                  <td className="table-cell">
+                    <a href={item['@id']}>{item.title}</a>
+                    <span>{flattenToAppURL(item['@id']) || '/'}</span>
+                  </td>
+                  <td className="table-cell">{item.count}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <FormattedMessage
+            id="no-blocks-found"
+            defaultMessage="No items found for type: {type}."
+            values={{ type: id }}
+          />
         )}
-    </div>
-  ) : (
-    <Unauthorized pathname={pathname} staticContext={props.staticContext} />
+        {isClient &&
+          createPortal(
+            <Toolbar
+              pathname={pathname}
+              hideDefaultViewButtons
+              inner={
+                <Link to={getParentUrl(pathname)} className="item">
+                  <Icon
+                    name={backSVG}
+                    className="contents circled"
+                    size="30px"
+                    title={intl.formatMessage(messages.back)}
+                  />
+                </Link>
+              }
+            />,
+            document.getElementById('toolbar') as HTMLElement,
+          )}
+      </div>
+    )
   );
 };
 
