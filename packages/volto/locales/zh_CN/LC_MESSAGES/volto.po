@@ -467,6 +467,8 @@ msgstr "可用的内容规则"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -510,6 +512,11 @@ msgstr "基本搜索查询"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "块"
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -2637,6 +2644,12 @@ msgstr "对象大小"
 msgid "Occurences"
 msgstr ""
 
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrence"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -3237,6 +3250,7 @@ msgstr "模式更新"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
+#: components/manage/Controlpanels/BlockType
 #: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
@@ -4000,6 +4014,7 @@ msgstr "时间"
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
+#: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -4088,6 +4103,7 @@ msgid "Triggering event field error. Please select a value"
 msgstr "触发了事件字段错误。请选择一个值"
 
 #. Default: "Type"
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
@@ -4643,6 +4659,16 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
+#. Default: "{title}"
+#: components/manage/Controlpanels/BlockType
+msgid "block-type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+msgid "block-types"
+msgstr ""
+
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4961,6 +4987,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "无工作流状态"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
