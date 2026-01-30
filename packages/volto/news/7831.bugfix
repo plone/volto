@@ -1,0 +1,1 @@
+Add configurable `includeWebManifest` setting to fix Cloudflare JS challenge compatibility. @mohanakatari119-bit
