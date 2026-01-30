@@ -1,1 +1,0 @@
-cross language support and umlaut fix for slash menu @Tishasoumya-02

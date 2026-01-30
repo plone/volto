@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.13 (2026-01-26)
+
+### Feature
+
+- Enhanced `SlotRenderer`'s `GetSlotArgs` typings. @sneridagh 
+
+## 2.0.0-alpha.12 (2025-12-22)
+
+### Feature
+
+- Enhance registry utilities type definitions with typed method signatures. @ompharate @sneridagh [#7652](https://github.com/plone/volto/issues/7652)
+
 ## 2.0.0-alpha.11 (2025-11-19)
 
 ### Bugfix

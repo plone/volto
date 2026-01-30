@@ -583,6 +583,7 @@ msgstr "Não é possível editar layout para o tipo de conteúdo <strong>{type}<
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1249,6 +1250,11 @@ msgstr "Solte um arquivo aqui para enviar um novo arquivo"
 msgid "Drop files here ..."
 msgstr "Soltar aquivos aqui…"
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1506,6 +1512,11 @@ msgstr "URLs alternativas existentes para este item"
 msgid "Expand sidebar"
 msgstr "Expandir barra lateral"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Expandir barra de ferramentas"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
@@ -1578,6 +1589,7 @@ msgstr "O arquivo não é do tipo aceito {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Tamanho do arquivo"
 
@@ -1588,11 +1600,13 @@ msgstr "Visão de Arquivo"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Nome do arquivo"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Arquivos carregados: {uploadedFiles}"
 
@@ -2078,6 +2092,7 @@ msgstr "Data do último comentário"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Última modificação"
 
@@ -2846,6 +2861,7 @@ msgstr "Re-formatar seu código"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Pré-visualização"
 
@@ -2986,6 +3002,11 @@ msgstr "Relacionamentos são editáveis com uso da plone.api versão 2.0.3 ou su
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "Relacionamentos atualizados"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -4020,6 +4041,7 @@ msgstr "Total de comentários"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Total de arquivos para upload: {totalFiles}"
 
@@ -4241,6 +4263,11 @@ msgstr "Passos de atualização"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Enviar"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -5007,6 +5034,16 @@ msgstr "Privado"
 msgid "published"
 msgstr "Publicado"
 
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
+
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -5332,6 +5369,7 @@ msgstr "Sim"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, one {Enviar {count} arquivo} ou {Enviar {count} arquivos}}"
 

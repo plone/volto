@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "19.0.0-alpha.18",
+  "version": "19.0.0-alpha.22",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -248,6 +248,7 @@
     "@storybook/addon-webpack5-compiler-babel": "3.0.3",
     "@storybook/react": "^8.0.4",
     "@storybook/react-webpack5": "^8.0.4",
+    "@storybook/test": "^8.0.4",
     "@storybook/theming": "^8.0.4",
     "@testing-library/cypress": "10.1.0",
     "@testing-library/jest-dom": "6.4.2",
@@ -321,7 +322,7 @@
     "sass-loader": "^10.0.3",
     "semver": "^7.5.4",
     "start-server-and-test": "1.14.0",
-    "storybook": "^8.0.4",
+    "storybook": "^8.6.15",
     "style-loader": "3.3.1",
     "stylelint": "^16.3.1",
     "stylelint-config-idiomatic-order": "10.0.0",
