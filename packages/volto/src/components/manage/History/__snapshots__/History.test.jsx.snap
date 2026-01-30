@@ -135,8 +135,11 @@ exports[`History > renders a history component 1`] = `
               class=""
             >
               <span>
-                Publish
-                 (Private → Published)
+                <strong>
+                  Workflow:
+                </strong>
+                 
+                Private → Published
               </span>
             </td>
             <td
@@ -227,8 +230,11 @@ exports[`History > renders a history component 1`] = `
               class=""
             >
               <span>
-                Create
-                 (Private)
+                <strong>
+                  Workflow:
+                </strong>
+                 
+                Private
               </span>
             </td>
             <td
