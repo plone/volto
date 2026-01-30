@@ -113,6 +113,7 @@ let config = {
     viewableInBrowserObjects: [], //ex: ['File']. List of content-types for which the file will be displayed in browser if the user is not authenticated
     listingPreviewImageField: 'image', // deprecated from Volto 14 onwards
     openExternalLinkInNewTab: false,
+    includeWebManifest: true, // Set to false to disable the site.webmanifest link (useful when Cloudflare JS challenge is enabled)
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
     supportedLanguages: Object.keys(languages),

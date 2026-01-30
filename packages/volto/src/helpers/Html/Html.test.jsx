@@ -41,6 +41,7 @@ vi.mock('../BodyClass/BodyClass', () => ({
 
 config.settings = {};
 config.settings.initialReducersBlacklist = ['navigation'];
+config.settings.includeWebManifest = true;
 
 describe('Html', () => {
   it('renders a html component', () => {

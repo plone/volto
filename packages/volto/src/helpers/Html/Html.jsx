@@ -142,7 +142,9 @@ class Html extends Component {
             sizes="180x180"
             href={addSubpathPrefix('/apple-touch-icon.png')}
           />
-          <link rel="manifest" href={addSubpathPrefix('/site.webmanifest')} />
+          {config.settings.includeWebManifest && (
+            <link rel="manifest" href={addSubpathPrefix('/site.webmanifest')} />
+          )}
           <meta name="generator" content="Plone 6 - https://plone.org" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="mobile-web-app-capable" content="yes" />
