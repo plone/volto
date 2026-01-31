@@ -994,7 +994,7 @@ module.exports = (
 
         config.plugins = [
           ...config.plugins,
-          // Define production environment vars
+          // Define production environment variables
           new webpack.DefinePlugin(webpackOptions.definePluginOptions),
           miniCssExtractPlugin,
           IS_DEV_ENV || webpackMajor === 5
@@ -1002,23 +1002,39 @@ module.exports = (
             : new webpack.HashedModuleIdsPlugin(),
           IS_DEV_ENV ? null : new webpack.optimize.AggressiveMergingPlugin(),
           hasPublicDir &&
-            new CopyPlugin({
-              patterns: [
-                {
-                  from: paths.appPublic.replace(/\\/g, '/') + '/**/*',
-                  to: paths.appBuild,
-                  context: paths.appPath,
-                  globOptions: {
-                    ignore: [
-                      paths.appPublic.replace(/\\/g, '/') + '/index.html',
-                    ],
-                  },
+          new CopyPlugin({
+            patterns: [
+              // Copy all files from public/, ignoring dotfiles by default.
+              // Dotfiles are ignored to avoid unintentionally publishing hidden files.
+              {
+                from: paths.appPublic.replace(/\\/g, '/') + '/**/*',
+                to: paths.appBuild,
+                context: paths.appPath,
+                globOptions: {
+                  dot: false,
+                  ignore: [
+                    paths.appPublic.replace(/\\/g, '/') + '/index.html',
+                    // Exclude .well-known here so it can be handled explicitly below
+                    paths.appPublic.replace(/\\/g, '/') + '/.well-known/**/*',
+                  ],
                 },
-              ],
-            }),
-        ].filter((x) => x);
+              },
 
-        // make sure the key exists
+              // Explicitly handle the .well-known directory.
+              // This directory is commonly used for standardized discovery endpoints
+              // (for example, security.txt) and must be preserved in the build output.
+              {
+                from: paths.appPublic.replace(/\\/g, '/') + '/.well-known/**/*',
+                to: paths.appBuild,
+                context: paths.appPath,
+                globOptions: {
+                  dot: true,
+                },
+                noErrorOnMissing: true,
+              },
+            ],
+          }),
+        ].filter((x) => x);
         config.optimization = {};
 
         if (!IS_DEV_ENV) {
