@@ -1,1 +1,0 @@
-When editing content, a small help icon can now appear next to some form fields (for example when configuring an image or video block). Clicking it opens the relevant documentation page in a new tab, so editors can get guidance without leaving the editor. @aryan7081
