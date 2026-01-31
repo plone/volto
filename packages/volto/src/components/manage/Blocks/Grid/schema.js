@@ -28,7 +28,6 @@ export const GridBlockSchema = (props) => {
     properties: {
       headline: {
         title: intl.formatMessage(messages.headline),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
     },
     required: [],

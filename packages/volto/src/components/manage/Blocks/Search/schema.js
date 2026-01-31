@@ -144,7 +144,6 @@ const FacetSchema = ({ intl }) => ({
   properties: {
     title: {
       title: intl.formatMessage(messages.label),
-      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
     field: {
       title: intl.formatMessage(messages.field),
@@ -166,27 +165,23 @@ const FacetSchema = ({ intl }) => ({
           ),
         );
       },
-      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
     multiple: {
       type: 'boolean',
       title: intl.formatMessage(messages.multipleChoices),
       default: false,
-      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
     hidden: {
       type: 'boolean',
       title: intl.formatMessage(messages.hideFacetTitle),
       default: false,
       description: intl.formatMessage(messages.hideFacetDescription),
-      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
     advanced: {
       type: 'boolean',
       title: intl.formatMessage(messages.advancedFacetTitle),
       default: false,
       description: intl.formatMessage(messages.advancedFacetDescription),
-      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
     type: {
       title: intl.formatMessage(messages.facetWidget),
@@ -201,7 +196,6 @@ const FacetSchema = ({ intl }) => ({
         config.blocks.blocksConfig.search.extensions.facetWidgets.types.find(
           ({ isDefault }) => isDefault,
         ).id,
-      helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
     },
   },
   required: ['field'],
@@ -248,59 +242,48 @@ const SearchSchema = ({ data = {}, intl }) => {
     properties: {
       headline: {
         title: intl.formatMessage(messages.headline),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       searchInputPrompt: {
         title: intl.formatMessage(messages.searchInputPrompt),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       showSearchInput: {
         type: 'boolean',
         title: intl.formatMessage(messages.showSearchInput),
         default: true,
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       showSearchButton: {
         type: 'boolean',
         title: intl.formatMessage(messages.showSearchButtonTitle),
         description: intl.formatMessage(messages.showSearchButtonDescription),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       showTotalResults: {
         type: 'boolean',
         title: intl.formatMessage(messages.showTotalResults),
         default: true,
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       searchButtonLabel: {
         title: intl.formatMessage(messages.searchButtonLabel),
         placeholder: intl.formatMessage(messages.searchButtonPlaceholder),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       showSortOn: {
         type: 'boolean',
         title: intl.formatMessage(messages.showSortOn),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       sortOnOptions: {
         title: intl.formatMessage(messages.sortOnOptions),
         widget: 'array',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       facets: {
         title: intl.formatMessage(messages.facets),
         widget: 'object_list',
         schema: FacetSchema({ intl }),
         schemaExtender: enhanceSchema,
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       facetsTitle: {
         title: intl.formatMessage(messages.sectionTitle),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       query: {
         title: 'Query',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       availableViews: {
         title: intl.formatMessage(messages.availableViews),
@@ -308,7 +291,6 @@ const SearchSchema = ({ data = {}, intl }) => {
           ({ id, title }) => [id, title],
         ),
         widget: 'array',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
     },
     required: [],

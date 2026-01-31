@@ -47,12 +47,10 @@ const TableOfContentsSchema = ({ data, intl }) => {
     properties: {
       title: {
         title: intl.formatMessage(messages.Title),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       hide_title: {
         title: intl.formatMessage(messages.HideTitle),
         type: 'boolean',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       levels: {
         title: intl.formatMessage(messages.Entries),
@@ -65,17 +63,14 @@ const TableOfContentsSchema = ({ data, intl }) => {
           ['h5', 'h5'],
           ['h6', 'h6'],
         ],
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       ordered: {
         title: intl.formatMessage(messages.Ordered),
         type: 'boolean',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       sticky: {
         title: intl.formatMessage(messages.Sticky),
         type: 'boolean',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
     },
     required: [],

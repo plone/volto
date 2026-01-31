@@ -73,19 +73,16 @@ export function ImageSchema({ formData, intl }) {
             {intl.formatMessage(messages.AltTextHint)}
           </>
         ),
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       align: {
         title: intl.formatMessage(messages.Align),
         widget: 'align',
         default: 'center',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       size: {
         title: intl.formatMessage(messages.size),
         widget: 'image_size',
         default: 'l',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       href: {
         title: intl.formatMessage(messages.LinkTo),
@@ -93,12 +90,10 @@ export function ImageSchema({ formData, intl }) {
         mode: 'link',
         selectedItemAttrs: ['Title', 'Description', 'hasPreviewImage'],
         allowExternals: true,
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
       openLinkInNewTab: {
         title: intl.formatMessage(messages.openLinkInNewTab),
         type: 'boolean',
-        helpUrl: 'https://6.docs.plone.org/user-manual/blocks.html',
       },
     },
     required: [],
