@@ -6,7 +6,6 @@
  * Views, Widgets and Blocks are mocked already, to keep
  * snapshot consistency and readability.
  */
-import '@plone/volto/config';
 import React from 'react';
 import config from '@plone/volto/registry';
 import { loadables } from '@plone/volto/config/Loadables';
