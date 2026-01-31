@@ -10,7 +10,7 @@ jobs:
   readme-link-checker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Check links in README.md with Lychee
       id: lychee
       uses: lycheeverse/lychee-action@v2
@@ -27,6 +27,6 @@ jobs:
           --exclude 2021.ploneconf.org
           --exclude https://www.lanku.eus/
           --exclude https://medium.com/
-          'apps/**/README.md'
+          --exclude https://www.linkedin.com/
           'packages/**/README.md'
           '*.md'
