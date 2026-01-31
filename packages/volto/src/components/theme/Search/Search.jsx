@@ -25,21 +25,6 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
 
-/**
- * Convert sort_order to sort_reverse for Plone compatibility (search page only)
- * @param {Object} options Search options
- * @returns {Object} Converted options
- */
-const convertSortOptions = (options) => {
-  const converted = { ...options };
-  // Convert sort_order to sort_reverse for Plone compatibility when use_site_search_settings=1
-  if (converted.sort_order && converted.sort_on === 'effective') {
-    converted.sort_reverse = converted.sort_order === 'descending' ? '1' : '0';
-    delete converted.sort_order;
-  }
-  return converted;
-};
-
 const messages = defineMessages({
   Search: {
     id: 'Search',
@@ -124,77 +109,40 @@ class Search extends Component {
    */
 
   doSearch = () => {
-    const urlOptions = qs.parse(this.props.history.location.search);
+    const options = qs.parse(this.props.history.location.search);
     this.setState({ currentPage: 1 });
-
-    // Ensure default sort order for date fields
-    if (urlOptions.sort_on && !urlOptions.sort_order) {
-      urlOptions.sort_order = 'descending';
-    }
-
-    const searchOptions = {
-      use_site_search_settings: 1,
+    options['use_site_search_settings'] = 1;
+    this.props.searchContent('', {
       b_size: this.defaultPageSize,
-      ...urlOptions,
-    };
-
-    const apiOptions = convertSortOptions(searchOptions);
-
-    this.props.searchContent('', apiOptions);
+      ...options,
+    });
   };
 
   handleQueryPaginationChange = (e, { activePage }) => {
     window.scrollTo(0, 0);
-    const urlOptions = qs.parse(this.props.history.location.search);
-
-    const searchOptions = {
-      use_site_search_settings: 1,
-      b_size: this.defaultPageSize,
-      ...urlOptions,
-    };
-
-    const apiOptions = convertSortOptions(searchOptions);
+    let options = qs.parse(this.props.history.location.search);
+    options['use_site_search_settings'] = 1;
 
     this.setState({ currentPage: activePage }, () => {
       this.props.searchContent('', {
-        ...apiOptions,
+        b_size: this.defaultPageSize,
+        ...options,
         b_start:
           (this.state.currentPage - 1) *
-          (apiOptions.b_size || this.defaultPageSize),
+          (options.b_size || this.defaultPageSize),
       });
     });
   };
 
   onSortChange = (event, sort_order) => {
-    const urlOptions = qs.parse(this.props.history.location.search);
-    const sortOn = event.currentTarget?.name || event.target?.name;
-
-    if (
-      sortOn === 'effective' &&
-      urlOptions.sort_on === 'effective' &&
-      urlOptions.sort_order === 'descending'
-    ) {
-      return;
+    let options = qs.parse(this.props.history.location.search);
+    options.sort_on = event.target.name;
+    options.sort_order = sort_order || 'ascending';
+    if (event.target.name === 'relevance') {
+      delete options.sort_on;
+      delete options.sort_order;
     }
-
-    const searchOptions = {
-      ...urlOptions,
-      sort_on: sortOn,
-    };
-
-    if (sortOn === 'effective') {
-      searchOptions.sort_order = 'descending';
-    } else {
-      searchOptions.sort_order = sort_order || 'descending';
-    }
-
-    if (sortOn === 'relevance') {
-      delete searchOptions.sort_on;
-      delete searchOptions.sort_order;
-    }
-
-    const apiOptions = convertSortOptions(searchOptions);
-    let searchParams = qs.stringify(apiOptions);
+    let searchParams = qs.stringify(options);
     this.setState({ currentPage: 1, active: event.target.name }, () => {
       // eslint-disable-next-line no-restricted-globals
       this.props.history.replace({
@@ -209,7 +157,7 @@ class Search extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const urlOptions = qs.parse(this.props.history.location.search);
+    const options = qs.parse(this.props.history.location.search);
 
     return (
       <Container id="page-search">
@@ -284,7 +232,7 @@ class Search extends Component {
                       </Button>
                       <Button
                         onClick={(event) => {
-                          this.onSortChange(event, 'descending');
+                          this.onSortChange(event, 'reverse');
                         }}
                         name="effective"
                         size="tiny"
@@ -344,7 +292,7 @@ class Search extends Component {
                     activePage={this.state.currentPage}
                     totalPages={Math.ceil(
                       this.props.search.items_total /
-                        (urlOptions.b_size || this.defaultPageSize),
+                        (options.b_size || this.defaultPageSize),
                     )}
                     onPageChange={this.handleQueryPaginationChange}
                     firstItem={null}
@@ -410,19 +358,13 @@ export default compose(
   asyncConnect([
     {
       key: 'search',
-      promise: ({ location, store: { dispatch } }) => {
-        const urlOptions = qs.parse(location.search);
-
-        const searchOptions = {
-          use_site_search_settings: 1,
-          b_size: config.settings.defaultPageSize,
-          ...urlOptions,
-        };
-
-        const apiOptions = convertSortOptions(searchOptions);
-
-        return dispatch(searchContent('', apiOptions));
-      },
+      promise: ({ location, store: { dispatch } }) =>
+        dispatch(
+          searchContent('', {
+            ...qs.parse(location.search),
+            use_site_search_settings: 1,
+          }),
+        ),
     },
   ]),
 )(Search);
