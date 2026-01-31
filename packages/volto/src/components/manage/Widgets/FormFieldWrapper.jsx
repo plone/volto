@@ -9,7 +9,7 @@ import map from 'lodash/map';
 import cx from 'classnames';
 import { defineMessages, useIntl } from 'react-intl';
 import LanguageSVG from '@plone/volto/icons/language.svg';
-import infoSVG from '@plone/volto/icons/info.svg';
+import helpSVG from '@plone/volto/icons/help.svg';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 const messages = defineMessages({
@@ -111,7 +111,7 @@ const FormFieldWrapper = ({
                       }}
                     >
                       <Icon
-                        name={infoSVG}
+                        name={helpSVG}
                         size="18px"
                         color="#666"
                         title={`Documentation for ${title}`}
