@@ -124,12 +124,12 @@ class Search extends Component {
   loadControlpanelsAndSchemas = () => {
     const { controlpanels, schemas } = this.props;
 
-    if (!controlpanels || controlpanels.length === 0) {
-      this.props.listControlpanels();
-      return;
-    }
+    const controlpanelsArray = Object.values(controlpanels || {});
 
-    if (controlpanels.length > 0 && Object.keys(schemas || {}).length === 0) {
+    if (
+      controlpanelsArray.length > 0 &&
+      Object.keys(schemas || {}).length === 0
+    ) {
       const panelIds = controlpanels.map((panel) => {
         const id = last(panel['@id']?.split('/')) || panel.id;
         return id;
