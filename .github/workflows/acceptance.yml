@@ -19,7 +19,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - uses: JarvusInnovations/background-action@v1
-        if: ${{ inputs.storybook == false || inputs.storybook == 'false' || inputs.storybook == null }}
         name: Start Servers - Volto and Plone
         with:
           run: |

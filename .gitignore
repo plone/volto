@@ -64,6 +64,7 @@ selenium-screenshot-*.png
 public/critical.css
 packages/volto/data
 storybook-static/
+/playwright
 
 # Documentation
 _build/
