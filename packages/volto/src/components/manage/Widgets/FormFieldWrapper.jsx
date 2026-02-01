@@ -114,31 +114,46 @@ const FormFieldWrapper = ({
             </Grid.Column>
           )}
           <Grid.Column width={columns === 2 ? 8 : 12}>
-            {onEdit && !isDisabled && (
-              <div className="toolbar" style={{ zIndex: '2' }}>
-                <button
-                  aria-label={intl.formatMessage(messages.edit)}
-                  className="item ui noborder button"
-                  onClick={(evt) => {
-                    evt.preventDefault();
-                    onEdit(id);
+            {onEdit && !isDisabled ? (
+              <div
+                className="field-wrapper-with-toolbar"
+                style={{ display: 'flex', position: 'relative' }}
+              >
+                <div style={{ flexGrow: 1, minWidth: 0 }}>{wdg}</div>
+                <div
+                  className="toolbar"
+                  style={{
+                    zIndex: '2',
+                    position: 'relative',
+                    marginLeft: '8px',
+                    marginRight: 0,
                   }}
                 >
-                  <IconOld name="write square" size="large" color="blue" />
-                </button>
-                <button
-                  aria-label={intl.formatMessage(messages.delete)}
-                  className="item ui noborder button"
-                  onClick={(evt) => {
-                    evt.preventDefault();
-                    onDelete(id);
-                  }}
-                >
-                  <IconOld name="close" size="large" color="red" />
-                </button>
+                  <button
+                    aria-label={intl.formatMessage(messages.edit)}
+                    className="item ui noborder button"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onEdit(id);
+                    }}
+                  >
+                    <IconOld name="write square" size="large" color="blue" />
+                  </button>
+                  <button
+                    aria-label={intl.formatMessage(messages.delete)}
+                    className="item ui noborder button"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      onDelete(id);
+                    }}
+                  >
+                    <IconOld name="close" size="large" color="red" />
+                  </button>
+                </div>
               </div>
+            ) : (
+              wdg
             )}
-            {wdg}
           </Grid.Column>
         </Grid.Row>
         {description && (

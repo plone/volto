@@ -31,48 +31,57 @@ exports[`renders an object list widget component 1`] = `
             class="eight wide column"
           >
             <div
-              class="toolbar"
-              style="z-index: 2;"
+              class="field-wrapper-with-toolbar"
+              style="display: flex; position: relative;"
             >
-              <button
-                aria-label="Edit"
-                class="item ui noborder button"
+              <div
+                style="flex-grow: 1; min-width: 0;"
               >
-                <i
-                  aria-hidden="true"
-                  class="blue write square large icon"
-                />
-              </button>
-              <button
-                aria-label="Delete"
-                class="item ui noborder button"
-              >
-                <i
-                  aria-hidden="true"
-                  class="red close large icon"
-                />
-              </button>
-            </div>
-            <div
-              class="add-item-button-wrapper"
-            >
-              <button
-                aria-label="Add Link"
-                class="ui compact icon button"
-              >
-                <svg
-                  class="icon"
-                  style="height: 18px; width: auto; fill: currentColor;"
-                  viewBox="0 0 36 36"
-                  xmlns="http://www.w3.org/2000/svg"
+                <div
+                  class="add-item-button-wrapper"
                 >
-                  <path
-                    d="M31 17 19 17 19 5 17 5 17 17 5 17 5 19 17 19 17 31 19 31 19 19 31 19z"
-                    fill-rule="evenodd"
+                  <button
+                    aria-label="Add Link"
+                    class="ui compact icon button"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 18px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M31 17 19 17 19 5 17 5 17 17 5 17 5 19 17 19 17 31 19 31 19 19 31 19z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                     Add Link
+                  </button>
+                </div>
+              </div>
+              <div
+                class="toolbar"
+                style="z-index: 2; position: relative; margin-left: 8px; margin-right: 0px;"
+              >
+                <button
+                  aria-label="Edit"
+                  class="item ui noborder button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="blue write square large icon"
                   />
-                </svg>
-                 Add Link
-              </button>
+                </button>
+                <button
+                  aria-label="Delete"
+                  class="item ui noborder button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="red close large icon"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>
