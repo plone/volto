@@ -11,8 +11,10 @@ import {
   UPDATE_CONTROLPANEL,
   SYSTEM_INFORMATION,
   DATABASE_INFORMATION,
+  GET_CONTROLPANEL_SCHEMAS,
 } from '@plone/volto/constants/ActionTypes';
 import { getSite } from '@plone/volto/actions/site/site';
+import { fetchControlpanelSchemas } from '@plone/volto/components/manage/Controlpanels/utils';
 
 /**
  * Get controlpanel function.
@@ -119,5 +121,22 @@ export function getDatabaseInformation() {
       op: 'get',
       path: '/@database',
     },
+  };
+}
+
+export function getControlpanelSchemas(ids) {
+  return async (dispatch, getState) => {
+    const currentSchemas = getState().controlpanels?.schemas || {};
+
+    const schemasObject = await fetchControlpanelSchemas(
+      ids,
+      currentSchemas,
+      dispatch,
+    );
+
+    return dispatch({
+      type: `${GET_CONTROLPANEL_SCHEMAS}_SUCCESS`,
+      result: schemasObject,
+    });
   };
 }
