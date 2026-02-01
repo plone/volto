@@ -1,0 +1,1 @@
+Add expandable "More…" submenu for secondary addable types in Add Content menu. Secondary types (immediately_addable === false from API) are shown only when user expands "More…", matching Plone Classic behavior. @aryan7081
