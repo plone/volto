@@ -2365,6 +2365,7 @@ msgstr "Mensalmente"
 
 #. Default: "More"
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/Types
 msgid "More"
 msgstr "Mais"
 

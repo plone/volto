@@ -2364,6 +2364,7 @@ msgstr "毎月"
 
 #. Default: "More"
 #: components/manage/Toolbar/Toolbar
+#: components/manage/Toolbar/Types
 msgid "More"
 msgstr "もっと見る"
 
