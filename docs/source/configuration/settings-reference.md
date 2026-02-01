@@ -544,7 +544,7 @@ It is used internally by the `filterControlPanelsSchema` function.
 
 `workflowMapping` is an object that defines the mapping between workflow states or transitions and the color that should show in the {guilabel}`change workflow` select menu.
 The following code is the default.
-
+<!-- 
 ```js
 export const workflowMapping = {
   published: { value: 'published', color: '#007bc1' },
@@ -556,7 +556,31 @@ export const workflowMapping = {
   reject: { value: 'private', color: '#ed4033' },
   submit: { value: 'review', color: '#f4e037' },
 };
-```
+``` -->
+
+`pending`
+: Pending state
+
+`private`
+: Private state
+
+`publish`
+: Publish transition
+
+`published`
+: Published state
+
+`reject`
+: Reject transition
+
+`retract`
+: Retract transition
+
+`send_back`
+: Send back transition
+
+`submit`
+: Submit transition
 
 It's meant to be extended with your own workflows or transitions.
 It's recommended to assign the same color to the transition as the destination state, so the user can have the visual hint to which state are they transitioning.
@@ -572,7 +596,7 @@ The `layoutViewsNamesMapping` object maps this string with a nice literal, in En
 These view names are exposed in the `Display` component in the toolbar's {guilabel}`more` menu.
 The keys of `layoutViewsNamesMapping` are the name of the Plone layout, and the values are the i18n string `id`, as shown in the following example.
 
-```js
+<!-- ```js
 export const layoutViewsNamesMapping = {
   album_view: 'Album view',
   event_listing: 'Event listing',
@@ -590,7 +614,43 @@ export const layoutViewsNamesMapping = {
   event_view: 'Event view',
   view: 'Default view',
 };
-```
+``` -->
+
+`album_view`
+: Album view
+
+`document_view`
+: Document view
+
+`event_listing`
+: Event listing
+
+`event_view`
+: Event view
+
+`file_view`
+: File view
+
+`folder_listing`
+: Folder listing
+
+`full_view`
+: All content
+
+`image_view`
+: Image view
+
+`link_redirect_view`
+: Link redirect view
+
+`listing_view`
+: Listing view
+
+`newsitem_view`
+: News item view
+
+`tabular_view`
+: Tabular view
 
 You can customize this object to add or modify the existing entries.
 They are i18n aware, so you can add the corresponding i18n message in your project's {file}`src/config.js` or your add-on's {file}`src/index.js`, as shown in the following example.
