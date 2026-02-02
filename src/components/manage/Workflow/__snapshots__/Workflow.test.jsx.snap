@@ -18,7 +18,7 @@ exports[`Workflow renders a workflow component 1`] = `
             class="wrapper"
           >
             <label
-              for="field-state-select"
+              for="fieldset-undefined-field-label-state-select"
               id="fieldset-undefined-field-label-state-select"
             >
               State
@@ -110,7 +110,7 @@ exports[`Workflow renders an empty workflow component 1`] = `
             class="wrapper"
           >
             <label
-              for="field-state-select"
+              for="fieldset-undefined-field-label-state-select"
               id="fieldset-undefined-field-label-state-select"
             >
               State
