@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import cx from 'classnames';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import config from '@plone/volto/registry';
@@ -7,22 +6,12 @@ import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 const ViewLink = ({ url, target, download, children }) => {
   const { openExternalLinkInNewTab } = config.settings;
-  const token = useSelector((state) => state.userSession?.token);
-  let href = url;
-
-  if (
-    !token &&
-    config.settings.viewableInBrowserObjects?.includes('File') &&
-    url.includes('/@@download/file')
-  ) {
-    href = url.replace('/@@download/file', '/@@display-file/file');
-  }
 
   return (
     <UniversalLink
-      href={href}
+      href={url}
       openLinkInNewTab={
-        (openExternalLinkInNewTab && !isInternalURL(href)) || target === '_blank'
+        (openExternalLinkInNewTab && !isInternalURL(url)) || target === '_blank'
       }
       download={download}
     >
