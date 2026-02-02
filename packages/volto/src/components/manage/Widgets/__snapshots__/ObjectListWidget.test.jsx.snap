@@ -32,10 +32,9 @@ exports[`renders an object list widget component 1`] = `
           >
             <div
               class="field-wrapper-with-toolbar"
-              style="display: flex; position: relative;"
             >
               <div
-                style="flex-grow: 1; min-width: 0;"
+                class="field-container"
               >
                 <div
                   class="add-item-button-wrapper"
@@ -61,7 +60,6 @@ exports[`renders an object list widget component 1`] = `
               </div>
               <div
                 class="toolbar"
-                style="z-index: 2; position: relative; margin-left: 8px; margin-right: 0px;"
               >
                 <button
                   aria-label="Edit"
