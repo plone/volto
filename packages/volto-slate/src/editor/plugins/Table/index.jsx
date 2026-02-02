@@ -35,16 +35,20 @@ const messages = defineMessages({
     defaultMessage: 'Delete row',
   },
   insertColBefore: {
-    id: 'Insert col before',
-    defaultMessage: 'Insert col before',
+    id: 'Insert column before',
+    defaultMessage: 'Insert column before',
   },
   insertColAfter: {
-    id: 'Insert col after',
-    defaultMessage: 'Insert col after',
+    id: 'Insert column after',
+    defaultMessage: 'Insert column after',
   },
   deleteCol: {
-    id: 'Delete col',
-    defaultMessage: 'Delete col',
+    id: 'Delete column',
+    defaultMessage: 'Delete column',
+  },
+  table: {
+    id: 'Table',
+    defaultMessage: 'Table',
   },
 });
 
@@ -380,7 +384,9 @@ export default function install(config) {
 
 export const installTableButton = (config) => {
   const { slate } = config.settings;
-  slate.buttons.table = (props) => <TableButton {...props} title="Table" />;
+  slate.buttons.table = (props) => (
+    <TableButton {...props} title={messages.table} />
+  );
   slate.toolbarButtons = [...(slate.toolbarButtons || []), 'table'];
   slate.expandedToolbarButtons = [
     ...(slate.expandedToolbarButtons || []),

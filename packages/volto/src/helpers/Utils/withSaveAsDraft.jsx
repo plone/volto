@@ -15,6 +15,10 @@ const messages = defineMessages({
     id: 'Autosaved content found',
     defaultMessage: 'Autosaved content found',
   },
+  unchecked: {
+    id: 'Unchecked',
+    defaultMessage: 'Unchecked',
+  },
   loadData: {
     id: 'Do you want to restore your autosaved content?',
     defaultMessage: 'Do you want to restore your autosaved content?',
@@ -67,13 +71,14 @@ const getFormId = (props, location) => {
 const ConfirmAutoSave = ({ onUpdate, onClose, userMessage }) => {
   const handleClickOK = () => onUpdate();
   const handleClickCancel = () => onClose();
+  const intl = useIntl();
 
   return (
     <div className="toast-box-center">
       <div>{userMessage}</div>
       <Button
         icon
-        aria-label="Unchecked"
+        aria-label={intl.formatMessage(messages.unchecked)}
         className="save toast-box"
         onClick={handleClickOK}
       >
@@ -85,7 +90,7 @@ const ConfirmAutoSave = ({ onUpdate, onClose, userMessage }) => {
       </Button>
       <Button
         icon
-        aria-label="Unchecked"
+        aria-label={intl.formatMessage(messages.unchecked)}
         className="save toast-box"
         onClick={handleClickCancel}
       >

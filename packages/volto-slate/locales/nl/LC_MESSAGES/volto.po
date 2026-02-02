@@ -11,138 +11,575 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. Default: "## Heading"
+#: blocks/Text/MarkdownIntroduction
+msgid "## Heading"
+msgstr ""
+
+#. Default: "### Subheading"
+#: blocks/Text/MarkdownIntroduction
+msgid "### Subheading"
+msgstr ""
+
+#. Default: "* Unordered list item"
+#: blocks/Text/MarkdownIntroduction
+msgid "* Unordered list item"
+msgstr ""
+
+#. Default: "**Bold text**"
+#: blocks/Text/MarkdownIntroduction
+msgid "**Bold text**"
+msgstr ""
+
+#. Default: "*Italic text*"
+#: blocks/Text/MarkdownIntroduction
+msgid "*Italic text*"
+msgstr ""
+
+#. Default: "+ Unordered list item"
+#: blocks/Text/MarkdownIntroduction
+msgid "+ Unordered list item"
+msgstr ""
+
+#. Default: "- Unordered list item"
+#: blocks/Text/MarkdownIntroduction
+msgid "- Unordered list item"
+msgstr ""
+
+#. Default: "1) Ordered list item"
+#: blocks/Text/MarkdownIntroduction
+msgid "1) Ordered list item"
+msgstr ""
+
+#. Default: "1. Ordered list item"
+#: blocks/Text/MarkdownIntroduction
+msgid "1. Ordered list item"
+msgstr ""
+
+#. Default: "> Block quote"
+#: blocks/Text/MarkdownIntroduction
+msgid "> Block quote"
+msgstr ""
+
+#. Default: "A short hint that describes the expected value within this block"
+#: blocks/Text/TextBlockSchema
+msgid "A short hint that describes the expected value within this block"
+msgstr ""
+
+#. Default: "Add link"
 #: editor/plugins/Link/index
 msgid "Add link"
 msgstr "Koppeling toevoegen"
 
+#. Default: "Additional styles"
+#: editor/plugins/StyleMenu/StyleMenu
+msgid "Additional styles"
+msgstr ""
+
+#. Default: "Advanced settings"
+#: blocks/Text/schema
+msgid "Advanced settings"
+msgstr ""
+
+#. Default: "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
 msgstr "Er is een fout opgetreden bij het bewerken van het "{name}" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Bewaar je werk en probeer opnieuw aub. Indien het probleem blijft, contacteer dan de site beheerder."
 
+#. Default: "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
 msgstr "Er is een fout opgetreden bij het weergeven van het "{name}" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Indien het probleem blijft, contacteer dan de site beheerder."
 
+#. Default: "Block quote"
+#: editor/plugins/Blockquote/index
+msgid "Block quote"
+msgstr ""
+
+#. Default: "Bold"
+#: editor/config
+msgid "Bold"
+msgstr ""
+
+#. Default: "Bottom"
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
 msgstr "Onderaan"
 
+#. Default: "Bulleted list"
+#: editor/config
+msgid "Bulleted list"
+msgstr ""
+
+#. Default: "Callout"
+#: editor/plugins/Callout/index
+msgid "Callout"
+msgstr ""
+
+#. Default: "Center"
 #: blocks/Table/TableBlockEdit
 msgid "Center"
 msgstr "Centreren"
 
+#. Default: "Clear formatting"
+#: editor/config
+msgid "Clear formatting"
+msgstr ""
+
+#. Default: "Code"
+#: editor/config
+msgid "Code"
+msgstr ""
+
+#. Default: "Default"
+#: blocks/Text/TextBlockSchema
+msgid "Default"
+msgstr ""
+
+#. Default: "Delete column"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
-msgid "Delete col"
-msgstr "Kolom verwijderen"
+msgid "Delete column"
+msgstr ""
 
+#. Default: "Delete row"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete row"
 msgstr "Rij verwijderen"
 
+#. Default: "Delete table"
 #: editor/plugins/Table/index
 msgid "Delete table"
 msgstr "Tabel verwijderen"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "Detailed expected value within this block"
+#: blocks/Text/TextBlockSchema
+msgid "Detailed expected value within this block"
+msgstr ""
+
+#. Default: "Disable creation of new blocks after this block"
+#: blocks/Text/TextBlockSchema
+msgid "Disable creation of new blocks after this block"
+msgstr ""
+
+#. Default: "Disable deletion of this block"
+#: blocks/Text/TextBlockSchema
+msgid "Disable deletion of this block"
+msgstr ""
+
+#. Default: "Disable drag and drop on this block"
+#: blocks/Text/TextBlockSchema
+msgid "Disable drag and drop on this block"
+msgstr ""
+
+#. Default: "Disable editing on this block"
+#: blocks/Text/TextBlockSchema
+msgid "Disable editing on this block"
+msgstr ""
+
+#. Default: "Disable new blocks"
+#: blocks/Text/TextBlockSchema
+msgid "Disable new blocks"
+msgstr ""
+
+#. Default: "Divide each row into separate cells"
+#: blocks/Table/schema
 msgid "Divide each row into separate cells"
 msgstr "Verdeel elke rij in meerdere cellen"
 
+#. Default: "Edit element"
 #: elementEditor/messages
 msgid "Edit element"
 msgstr "Element bewerken"
 
+#. Default: "Edit link"
 #: editor/plugins/AdvancedLink/index
 #: editor/plugins/Link/index
 msgid "Edit link"
 msgstr "Koppeling bewerken"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "Editor shortcuts"
+#: blocks/Text/ShortcutListing
+msgid "Editor shortcuts"
+msgstr ""
+
+#. Default: "Email"
+#: editor/plugins/AdvancedLink/schema
+msgid "Email"
+msgstr ""
+
+#. Default: "Email address"
+#: editor/plugins/AdvancedLink/schema
+msgid "Email address"
+msgstr ""
+
+#. Default: "Email subject"
+#: editor/plugins/AdvancedLink/schema
+msgid "Email subject"
+msgstr ""
+
+#. Default: "Entry text for TOC"
+#: blocks/Text/schema
+msgid "Entry text for TOC"
+msgstr ""
+
+#. Default: "External"
+#: editor/plugins/AdvancedLink/schema
+msgid "External"
+msgstr ""
+
+#. Default: "External URL"
+#: editor/plugins/AdvancedLink/schema
+msgid "External URL"
+msgstr ""
+
+#. Default: "External link"
+#: editor/plugins/AdvancedLink/schema
+msgid "External link"
+msgstr ""
+
+#. Default: "Fixed position"
+#: blocks/Text/TextBlockSchema
+msgid "Fixed position"
+msgstr ""
+
+#. Default: "Fixed width table cells"
+#: blocks/Table/schema
 msgid "Fixed width table cells"
 msgstr "Tabelcellen met vaste breedte"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "H1"
+#: blocks/Text/schema
+msgid "H1"
+msgstr ""
+
+#. Default: "H2"
+#: blocks/Text/schema
+msgid "H2"
+msgstr ""
+
+#. Default: "H3"
+#: blocks/Text/schema
+msgid "H3"
+msgstr ""
+
+#. Default: "H4"
+#: blocks/Text/schema
+msgid "H4"
+msgstr ""
+
+#. Default: "H5"
+#: blocks/Text/schema
+msgid "H5"
+msgstr ""
+
+#. Default: "H6"
+#: blocks/Text/schema
+msgid "H6"
+msgstr ""
+
+#. Default: "Heading 4"
+#: editor/config
+msgid "Heading 4"
+msgstr ""
+
+#. Default: "Helper text"
+#: blocks/Text/TextBlockSchema
+msgid "Helper text"
+msgstr ""
+
+#. Default: "Hide headers"
+#: blocks/Table/schema
 msgid "Hide headers"
 msgstr "Koppen verbergen"
 
+#. Default: "Inline style"
+#: editor/plugins/StyleMenu/StyleMenu
+msgid "Inline style"
+msgstr ""
+
+#. Default: "Insert column after"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
-msgid "Insert col after"
-msgstr "Kolom rechts invoegen"
+msgid "Insert column after"
+msgstr ""
 
+#. Default: "Insert column before"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
-msgid "Insert col before"
-msgstr "Kolom links invoegen"
+msgid "Insert column before"
+msgstr ""
 
+#. Default: "Insert link"
+#: editor/plugins/AdvancedLink/schema
+msgid "Insert link"
+msgstr ""
+
+#. Default: "Insert row after"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
 msgstr "Rij onder toevoegen"
 
+#. Default: "Insert row before"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row before"
 msgstr "Rij boven invoegen"
 
+#. Default: "Instructions"
+#: blocks/Text/TextBlockSchema
+msgid "Instructions"
+msgstr ""
+
+#. Default: "Internal"
+#: editor/plugins/AdvancedLink/schema
+msgid "Internal"
+msgstr ""
+
+#. Default: "Internal link"
+#: editor/plugins/AdvancedLink/schema
+msgid "Internal link"
+msgstr ""
+
+#. Default: "Italic"
+#: editor/config
+msgid "Italic"
+msgstr ""
+
+#. Default: "Left"
 #: blocks/Table/TableBlockEdit
 msgid "Left"
 msgstr "Links"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "Less"
+#: editor/ui/SlateToolbar
+msgid "Less"
+msgstr ""
+
+#. Default: "Link"
+#: editor/plugins/AdvancedLink/schema
+msgid "Link"
+msgstr ""
+
+#. Default: "Link title"
+#: editor/plugins/AdvancedLink/schema
+msgid "Link title"
+msgstr ""
+
+#. Default: "Make the table compact"
+#: blocks/Table/schema
 msgid "Make the table compact"
 msgstr "Maak tabel compacter"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "Make the table sortable"
+#: blocks/Table/schema
 msgid "Make the table sortable"
 msgstr "Maak tabel sorteerbaar"
 
+#. Default: "Markdown shortcuts"
+#: blocks/Text/MarkdownIntroduction
+msgid "Markdown shortcuts"
+msgstr ""
+
+#. Default: "Middle"
 #: blocks/Table/TableBlockEdit
 msgid "Middle"
 msgstr "Midden"
 
+#. Default: "More"
+#: editor/ui/SlateToolbar
+msgid "More"
+msgstr ""
+
+#. Default: "No matching blocks"
 #: blocks/Text/SlashMenu
 msgid "No matching blocks"
 msgstr "Geen overeenkomstige blokken"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "Numbered list"
+#: editor/config
+msgid "Numbered list"
+msgstr ""
+
+#. Default: "On Windows, the MOD key is CTRL, on macOS it's CMD."
+#: blocks/Text/ShortcutListing
+msgid "On Windows, the MOD key is CTRL, on macOS it's CMD."
+msgstr ""
+
+#. Default: "Open in new window"
+#: editor/plugins/AdvancedLink/schema
+msgid "Open in new window"
+msgstr ""
+
+#. Default: "Open in parent window or frame"
+#: editor/plugins/AdvancedLink/schema
+msgid "Open in parent window or frame"
+msgstr ""
+
+#. Default: "Open in this window or frame"
+#: editor/plugins/AdvancedLink/schema
+msgid "Open in this window or frame"
+msgstr ""
+
+#. Default: "Open in top frame (replaces all frames)"
+#: editor/plugins/AdvancedLink/schema
+msgid "Open in top frame (replaces all frames)"
+msgstr ""
+
+#. Default: "Optional"
+#: editor/plugins/AdvancedLink/schema
+msgid "Optional"
+msgstr ""
+
+#. Default: "Override TOC entry"
+#: blocks/Text/schema
+msgid "Override TOC entry"
+msgstr ""
+
+#. Default: "Paragraph style"
+#: editor/plugins/StyleMenu/StyleMenu
+msgid "Paragraph style"
+msgstr ""
+
+#. Default: "Read only"
+#: blocks/Text/TextBlockSchema
+msgid "Read only"
+msgstr ""
+
+#. Default: "Reduce complexity"
+#: blocks/Table/schema
 msgid "Reduce complexity"
 msgstr "Complexiteit verminderen"
 
+#. Default: "Remove element"
 #: elementEditor/messages
 msgid "Remove element"
 msgstr "Element verwijderen"
 
+#. Default: "Remove link"
 #: editor/plugins/AdvancedLink/index
 msgid "Remove link"
 msgstr "Koppeling verwijderen"
 
+#. Default: "Required"
+#: blocks/Text/TextBlockSchema
+msgid "Required"
+msgstr ""
+
+#. Default: "Right"
 #: blocks/Table/TableBlockEdit
 msgid "Right"
 msgstr "Rechts"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "Strikethrough"
+#: editor/config
+msgid "Strikethrough"
+msgstr ""
+
+#. Default: "Stripe alternate rows with color"
+#: blocks/Table/schema
 msgid "Stripe alternate rows with color"
 msgstr "Markeer afwisselend rijen met kleur"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "Styles"
+#: editor/plugins/StyleMenu/index
+msgid "Styles"
+msgstr ""
+
+#. Default: "Subscript"
+#: editor/config
+msgid "Subscript"
+msgstr ""
+
+#. Default: "Subtitle"
+#: editor/config
+msgid "Subtitle"
+msgstr ""
+
+#. Default: "Superscript"
+#: editor/config
+msgid "Superscript"
+msgstr ""
+
+#. Default: "TOC entry level"
+#: blocks/Text/schema
+msgid "TOC entry level"
+msgstr ""
+
+#. Default: "Table"
+#: editor/plugins/Table/index
 msgid "Table"
 msgstr "Tabel"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "Table block"
+#: blocks/Table/schema
+msgid "Table block"
+msgstr ""
+
+#. Default: "Table color inverted"
+#: blocks/Table/schema
 msgid "Table color inverted"
 msgstr "Tabelkleur omgekeerd"
 
+#. Default: "Target"
+#: editor/plugins/AdvancedLink/schema
+msgid "Target"
+msgstr ""
+
+#. Default: "Text block settings"
+#: blocks/Text/TextBlockSchema
+msgid "Text block settings"
+msgstr ""
+
+#. Default: "Title"
+#: editor/config
+msgid "Title"
+msgstr ""
+
+#. Default: "Top"
 #: blocks/Table/TableBlockEdit
 msgid "Top"
 msgstr "Top"
 
+#. Default: "Type a slash (<em>/</em>) to change block type"
+#: blocks/Text/ShortcutListing
+msgid "Type a slash (<em>/</em>) to change block type"
+msgstr ""
+
+#. Default: "Type text…"
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
 msgstr "Typ tekst…"
 
-#: blocks/Table/TableBlockEdit
+#. Default: "URL can be relative within this site or absolute if it starts with http:// or https://"
+#: editor/plugins/AdvancedLink/schema
+msgid "URL can be relative within this site or absolute if it starts with http:// or https://"
+msgstr ""
+
+#. Default: "Underline"
+#: editor/config
+msgid "Underline"
+msgstr ""
+
+#. Default: "Visible only in view mode"
+#: blocks/Table/schema
 msgid "Visible only in view mode"
 msgstr "Enkel zichtbaar in weergavemodus"
+
+#. Default: "_Italic text_"
+#: blocks/Text/MarkdownIntroduction
+msgid "_Italic text_"
+msgstr ""
+
+#. Default: "__Bold text__"
+#: blocks/Text/MarkdownIntroduction
+msgid "__Bold text__"
+msgstr ""
+
+#. Default: "~~Strikethrough text~~"
+#: blocks/Text/MarkdownIntroduction
+msgid "~~Strikethrough text~~"
+msgstr ""

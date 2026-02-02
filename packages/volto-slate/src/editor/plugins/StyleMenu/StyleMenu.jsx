@@ -11,16 +11,16 @@ import paintSVG from '@plone/volto/icons/paint.svg';
 
 const messages = defineMessages({
   inlineStyle: {
-    id: 'Inline Style',
-    defaultMessage: 'Inline Style',
+    id: 'Inline style',
+    defaultMessage: 'Inline style',
   },
   paragraphStyle: {
-    id: 'Paragraph Style',
-    defaultMessage: 'Paragraph Style',
+    id: 'Paragraph style',
+    defaultMessage: 'Paragraph style',
   },
   additionalStyles: {
-    id: 'Additional Styles',
-    defaultMessage: 'Additional Styles',
+    id: 'Additional styles',
+    defaultMessage: 'Additional styles',
   },
 });
 

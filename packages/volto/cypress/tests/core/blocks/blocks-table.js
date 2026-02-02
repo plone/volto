@@ -55,10 +55,10 @@ describe('Table Block Tests', () => {
       .focus()
       .click()
       .type('column 2 / row 2');
-    cy.get('button[title="Insert col after"]').click();
+    cy.get('button[title="Insert column after"]').click();
     cy.get('button[title="Insert row after"]').click();
     cy.get('button[title="Insert row before"]').click();
-    cy.get('button[title="Insert col before"]').click();
+    cy.get('button[title="Insert column before"]').click();
 
     // Save
     cy.get('#toolbar-save').click();
@@ -97,11 +97,11 @@ describe('Table Block Tests', () => {
       '.celled.fixed.table thead tr:first-child() th:nth-child(2)',
     ).click();
 
-    cy.get('button[title="Delete col"]').click();
+    cy.get('button[title="Delete column"]').click();
     cy.get(
       '.celled.fixed.table thead tr:first-child() th:nth-child(3)',
     ).click();
-    cy.get('button[title="Delete col"]').click();
+    cy.get('button[title="Delete column"]').click();
     cy.get(
       '.celled.fixed.table tbody tr:first-child() td:first-child()',
     ).click();

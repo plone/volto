@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import { defineMessages } from 'react-intl';
 import cx from 'classnames';
 
 import toggleIcon from '@plone/volto/icons/more.svg';
@@ -16,6 +17,17 @@ import ExpandedToolbar from './ExpandedToolbar';
 import ToolbarButton from './ToolbarButton';
 
 import config from '@plone/volto/registry';
+
+const messages = defineMessages({
+  More: {
+    id: 'More',
+    defaultMessage: 'More',
+  },
+  Less: {
+    id: 'Less',
+    defaultMessage: 'Less',
+  },
+});
 
 const SlateToolbar = (props) => {
   const {
@@ -50,7 +62,7 @@ const SlateToolbar = (props) => {
           toggleButton={
             enableExpando && (
               <ToolbarButton
-                title="More..."
+                title={messages.More}
                 onMouseDown={(event) => {
                   setShowExpandedToolbar(!showExpandedToolbar);
                   event.preventDefault();
@@ -75,7 +87,7 @@ const SlateToolbar = (props) => {
             show={show}
             toggleButton={
               <ToolbarButton
-                title="Less..."
+                title={messages.Less}
                 onMouseDown={(event) => {
                   setShowExpandedToolbar(!showExpandedToolbar);
                   event.preventDefault();

@@ -65,7 +65,7 @@ const LinkEditor = (props) => {
     <PositionedToolbar className="add-link" position={savedPosition.current}>
       <AddLinkForm
         block="draft-js"
-        placeholder={'Add link'}
+        placeholder={messages.add}
         data={{ url: node?.data?.url || '' }}
         theme={{}}
         onChangeValue={(url) => {

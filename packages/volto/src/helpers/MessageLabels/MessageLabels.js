@@ -54,13 +54,21 @@ export const messages = defineMessages({
     defaultMessage:
       'Input must be valid url (www.something.com or http(s)://www.something.com)',
   },
+  error: {
+    id: 'Error',
+    defaultMessage: 'Error',
+  },
   cancel: {
     id: 'Cancel',
     defaultMessage: 'Cancel',
   },
-  error: {
-    id: 'Error',
-    defaultMessage: 'Error',
+  clearUrlBrowser: {
+    id: 'Clear URL browser',
+    defaultMessage: 'Clear URL browser',
+  },
+  openUrlBrowser: {
+    id: 'Open URL browser',
+    defaultMessage: 'Open URL browser',
   },
   thereWereSomeErrors: {
     id: 'There were some errors.',
@@ -180,6 +188,22 @@ export const messages = defineMessages({
   addUserFormRolesTitle: {
     id: 'Roles',
     defaultMessage: 'Roles',
+  },
+  login: {
+    id: 'Login',
+    defaultMessage: 'Login',
+  },
+  register: {
+    id: 'Register',
+    defaultMessage: 'Register',
+  },
+  toolbar: {
+    id: 'Toolbar',
+    defaultMessage: 'Toolbar',
+  },
+  sidebar: {
+    id: 'Sidebar',
+    defaultMessage: 'Sidebar',
   },
   addUserFormPasswordAndSendPasswordTogetherNotAllowed: {
     id: 'It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them.',

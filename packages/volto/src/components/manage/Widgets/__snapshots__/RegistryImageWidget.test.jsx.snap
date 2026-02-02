@@ -58,7 +58,7 @@ exports[`RegistryImageWidget > renders a file widget component with value 1`] = 
             class="field-file-name"
           >
             <button
-              aria-label="delete file"
+              aria-label="Delete file"
               class="ui basic icon button delete-button"
             >
               <svg

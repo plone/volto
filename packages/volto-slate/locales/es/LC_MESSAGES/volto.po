@@ -1,15 +1,22 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
-"Content-Type: \n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"PO-Revision-Date: 2025-10-17 22:16+0200\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
+"Language: es\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-slate-18/es/>\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Preferred-Encodings: utf-8\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
+"Domain: volto\n"
+"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
+"X-Generator: Poedit 3.7\n"
 
 #. Default: "## Heading"
 #: blocks/Text/MarkdownIntroduction
@@ -69,7 +76,7 @@ msgstr ""
 #. Default: "Add link"
 #: editor/plugins/Link/index
 msgid "Add link"
-msgstr "Link hinzufügen"
+msgstr ""
 
 #. Default: "Additional styles"
 #: editor/plugins/StyleMenu/StyleMenu
@@ -146,7 +153,7 @@ msgstr ""
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete row"
-msgstr "Zeile löschen"
+msgstr ""
 
 #. Default: "Delete table"
 #: editor/plugins/Table/index
@@ -186,18 +193,18 @@ msgstr ""
 #. Default: "Divide each row into separate cells"
 #: blocks/Table/schema
 msgid "Divide each row into separate cells"
-msgstr "Jede Zeile in einzelne Zellen teilen"
+msgstr ""
 
 #. Default: "Edit element"
 #: elementEditor/messages
 msgid "Edit element"
-msgstr "Element bearbeiten"
+msgstr ""
 
 #. Default: "Edit link"
 #: editor/plugins/AdvancedLink/index
 #: editor/plugins/Link/index
 msgid "Edit link"
-msgstr "Link bearbeiten"
+msgstr ""
 
 #. Default: "Editor shortcuts"
 #: blocks/Text/ShortcutListing
@@ -247,7 +254,7 @@ msgstr ""
 #. Default: "Fixed width table cells"
 #: blocks/Table/schema
 msgid "Fixed width table cells"
-msgstr "Zellen mit fester Breite"
+msgstr ""
 
 #. Default: "H1"
 #: blocks/Text/schema
@@ -320,13 +327,13 @@ msgstr ""
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr "Zeile dahinter einfügen"
+msgstr ""
 
 #. Default: "Insert row before"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row before"
-msgstr "Zeile davor einfügen"
+msgstr ""
 
 #. Default: "Instructions"
 #: blocks/Text/TextBlockSchema
@@ -371,7 +378,7 @@ msgstr ""
 #. Default: "Make the table compact"
 #: blocks/Table/schema
 msgid "Make the table compact"
-msgstr "Tabelle komprimieren"
+msgstr ""
 
 #. Default: "Make the table sortable"
 #: blocks/Table/schema
@@ -451,17 +458,17 @@ msgstr ""
 #. Default: "Reduce complexity"
 #: blocks/Table/schema
 msgid "Reduce complexity"
-msgstr "Komplexität vereinfachen"
+msgstr ""
 
 #. Default: "Remove element"
 #: elementEditor/messages
 msgid "Remove element"
-msgstr "Element entfernen"
+msgstr ""
 
 #. Default: "Remove link"
 #: editor/plugins/AdvancedLink/index
 msgid "Remove link"
-msgstr "Link entferenen"
+msgstr ""
 
 #. Default: "Required"
 #: blocks/Text/TextBlockSchema
@@ -481,7 +488,7 @@ msgstr ""
 #. Default: "Stripe alternate rows with color"
 #: blocks/Table/schema
 msgid "Stripe alternate rows with color"
-msgstr "Zeilen im Wechsel einfärben"
+msgstr ""
 
 #. Default: "Styles"
 #: editor/plugins/StyleMenu/index
@@ -511,7 +518,7 @@ msgstr ""
 #. Default: "Table"
 #: editor/plugins/Table/index
 msgid "Table"
-msgstr "Tabelle"
+msgstr ""
 
 #. Default: "Table block"
 #: blocks/Table/schema
@@ -521,7 +528,7 @@ msgstr ""
 #. Default: "Table color inverted"
 #: blocks/Table/schema
 msgid "Table color inverted"
-msgstr "Tabellenfarbe invertiert"
+msgstr ""
 
 #. Default: "Target"
 #: editor/plugins/AdvancedLink/schema
@@ -552,7 +559,7 @@ msgstr ""
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
-msgstr "Text eingeben"
+msgstr ""
 
 #. Default: "URL can be relative within this site or absolute if it starts with http:// or https://"
 #: editor/plugins/AdvancedLink/schema

@@ -3,7 +3,7 @@
 exports[`App > renders a app component 1`] = `
 [
   <div
-    aria-label="Skiplinks"
+    aria-label="Skip links"
     className="skiplinks-wrapper"
     role="complementary"
   >

@@ -144,7 +144,7 @@ const RelationsMatrix = (props) => {
           <Toast
             success
             title={intl.formatMessage(messages.success)}
-            content="Relations updated"
+            content={intl.formatMessage(messages.relationsUpdated)}
           />,
         );
       })
@@ -239,7 +239,7 @@ const RelationsMatrix = (props) => {
                             <Button
                               basic
                               className="cancel"
-                              aria-label="cancel"
+                              aria-label={intl.formatMessage(messages.cancel)}
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
@@ -276,7 +276,9 @@ const RelationsMatrix = (props) => {
                               <Button
                                 basic
                                 className="cancel"
-                                aria-label="clearUrlBrowser"
+                                aria-label={intl.formatMessage(
+                                  messages.clearUrlBrowser,
+                                )}
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
@@ -291,7 +293,9 @@ const RelationsMatrix = (props) => {
                               <Button
                                 basic
                                 icon
-                                aria-label="openUrlBrowser"
+                                aria-label={intl.formatMessage(
+                                  messages.openUrlBrowser,
+                                )}
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
@@ -338,7 +342,7 @@ const RelationsMatrix = (props) => {
                             <Button
                               basic
                               className="cancel"
-                              aria-label="cancel"
+                              aria-label={intl.formatMessage(messages.cancel)}
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
@@ -375,7 +379,9 @@ const RelationsMatrix = (props) => {
                               <Button
                                 basic
                                 className="cancel"
-                                aria-label="clearUrlBrowser"
+                                aria-label={intl.formatMessage(
+                                  messages.clearUrlBrowser,
+                                )}
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
@@ -390,7 +396,9 @@ const RelationsMatrix = (props) => {
                               <Button
                                 basic
                                 icon
-                                aria-label="openUrlBrowser"
+                                aria-label={intl.formatMessage(
+                                  messages.openUrlBrowser,
+                                )}
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();

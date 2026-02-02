@@ -17,10 +17,20 @@ msgstr ""
 "Domain: volto\n"
 "X-Generator: Poedit 3.5\n"
 
+#. Default: "/example"
+#: components/manage/Aliases/Aliases
+msgid "/example"
+msgstr ""
+
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Adăugați HTML aici</p>"
+
+#. Default: "A short hint that describes the expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "A short hint that describes the expected value within this block"
+msgstr ""
 
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
@@ -659,6 +669,11 @@ msgstr "Selectați pentru a personaliza titlul, descrierea sau imaginea acestui 
 msgid "Checkbox"
 msgstr "Checkbox"
 
+#. Default: "Checked"
+#: components/manage/Contents/ContentsItem
+msgid "Checked"
+msgstr ""
+
 #. Default: "Choices"
 #: components/manage/Widgets/SelectWidget
 msgid "Choices"
@@ -685,6 +700,11 @@ msgstr "Alegeți un fișier"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Curațați"
+
+#. Default: "Clear URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Clear URL browser"
+msgstr ""
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -1009,6 +1029,7 @@ msgid "Date (newest first)"
 msgstr "Data (cea mai recentă mai întâi)"
 
 #. Default: "Default"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Contents/ContentsPropertiesModal
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Contents/ContentsTagsModal
@@ -1088,6 +1109,12 @@ msgstr "Șterge coloană"
 msgid "Delete condition"
 msgstr "Ștergeți condiția"
 
+#. Default: "Delete file"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Delete file"
+msgstr ""
+
 #. Default: "Delete row"
 #: config/Blocks
 msgid "Delete row"
@@ -1134,6 +1161,11 @@ msgstr "Descrescător"
 msgid "Description"
 msgstr "Descriere"
 
+#. Default: "Detailed expected value within this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Detailed expected value within this block"
+msgstr ""
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -1153,6 +1185,31 @@ msgstr "Dezactivați"
 #: components/manage/Rules/Rules
 msgid "Disable apply to subfolders"
 msgstr "Dezactivați aplicarea la subdirectoare"
+
+#. Default: "Disable creation of new blocks after this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable creation of new blocks after this block"
+msgstr ""
+
+#. Default: "Disable deletion of this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable deletion of this block"
+msgstr ""
+
+#. Default: "Disable drag and drop on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable drag and drop on this block"
+msgstr ""
+
+#. Default: "Disable editing on this block"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable editing on this block"
+msgstr ""
+
+#. Default: "Disable new blocks"
+#: components/manage/Blocks/Block/Schema
+msgid "Disable new blocks"
+msgstr ""
 
 #. Default: "Disabled"
 #: components/manage/Rules/Rules
@@ -1317,6 +1374,7 @@ msgid "Edit {title}"
 msgstr "Editează {title}"
 
 #. Default: "Email"
+#: components/manage/Widgets/VocabularyTermsWidget
 #: helpers/MessageLabels/MessageLabels
 msgid "Email"
 msgstr "Email"
@@ -1644,6 +1702,11 @@ msgstr "Primul"
 msgid "Fix relations"
 msgstr "Corectează relațiile"
 
+#. Default: "Fixed position"
+#: components/manage/Blocks/Block/Schema
+msgid "Fixed position"
+msgstr ""
+
 #. Default: "Fixed width columns"
 #: config/Blocks
 msgid "Fixed width table cells"
@@ -1663,6 +1726,11 @@ msgstr "Director"
 #: config/Views
 msgid "Folder listing"
 msgstr "Listare director"
+
+#. Default: "Footer"
+#: components/theme/Footer/Footer
+msgid "Footer"
+msgstr ""
 
 #. Default: "Forbidden"
 #: components/theme/Forbidden/Forbidden
@@ -1691,6 +1759,11 @@ msgstr "Complet"
 #: components/theme/Register/Register
 msgid "Full Name"
 msgstr "Numele complet"
+
+#. Default: "Full screen sidenav"
+#: components/manage/Sidebar/Sidebar
+msgid "Full screen sidenav"
+msgstr ""
 
 #. Default: "Fullname"
 #: helpers/MessageLabels/MessageLabels
@@ -1776,6 +1849,11 @@ msgstr "Titlu"
 #: components/manage/Blocks/Listing/schema
 msgid "Headline level"
 msgstr "Nivel titlu"
+
+#. Default: "Helper text"
+#: components/manage/Blocks/Block/Schema
+msgid "Helper text"
+msgstr ""
 
 #. Default: "Hidden facets will still filter the results if proper parameters are passed in URLs"
 #: components/manage/Blocks/Search/schema
@@ -1963,6 +2041,11 @@ msgstr "Versiunea instalată"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "Instalarea unui modul add-on"
+
+#. Default: "Instructions"
+#: components/manage/Blocks/Block/Schema
+msgid "Instructions"
+msgstr ""
 
 #. Default: "days"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -2221,6 +2304,7 @@ msgstr "Deconectat"
 
 #. Default: "Login"
 #: components/theme/Login/Login
+#: helpers/MessageLabels/MessageLabels
 msgid "Login"
 msgstr "Autentificare"
 
@@ -2461,6 +2545,11 @@ msgstr "Articol de știri"
 msgid "News item view"
 msgstr "Vizualizare articol de știri"
 
+#. Default: "Next"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Next"
+msgstr ""
+
 #. Default: "No"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
@@ -2647,6 +2736,16 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Doar caractere de 7 biți sunt permise. Nu poate conține caractere majuscule, caractere speciale: <, >, &, #, /, ?, sau alte caractere care sunt interzise în URL-uri. Nu poate începe cu: _, aq_, @@, ++. Nu poate să se termine cu __. Nu poate fi: request, contributors, ., .., "". Nu poate conține linii noi."
 
+#. Default: "Open URL browser"
+#: helpers/MessageLabels/MessageLabels
+msgid "Open URL browser"
+msgstr ""
+
+#. Default: "Open full screen"
+#: components/manage/Blocks/Listing/ImageGallery
+msgid "Open full screen"
+msgstr ""
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2765,6 +2864,11 @@ msgstr "Persoane responsabile de crearea conținutului acestui articol. Vă rug�
 msgid "Placeholder"
 msgstr ""
 
+#. Default: "Play or pause slideshow"
+#: components/manage/Blocks/Listing/ImageGallery
+msgid "Play or pause slideshow"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2845,6 +2949,11 @@ msgstr "Preferințe"
 msgid "Prettify your code"
 msgstr "Îmbunătățiți-vă codul"
 
+#. Default: "Prev"
+#: components/manage/Controlpanels/UndoControlpanel
+msgid "Prev"
+msgstr ""
+
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
@@ -2900,6 +3009,11 @@ msgstr "Reintroduceți parola. Asigurați-vă că parolele sunt identice."
 msgid "Read More…"
 msgstr "Citește mai mult …"
 
+#. Default: "Read only"
+#: components/manage/Blocks/Block/Schema
+msgid "Read only"
+msgstr ""
+
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Read only for this type of relation."
@@ -2954,6 +3068,7 @@ msgstr "Reîncarcă conținutul sursă"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
+#: helpers/MessageLabels/MessageLabels
 msgid "Register"
 msgstr "Înregistrare"
 
@@ -3083,6 +3198,7 @@ msgid "Reply"
 msgstr "Răspuns"
 
 #. Default: "Required"
+#: components/manage/Blocks/Block/Schema
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Required"
@@ -3338,10 +3454,25 @@ msgstr "Selectați"
 msgid "Select a date to add to recurrence"
 msgstr "Selectați o dată de adăugat la recurență"
 
+#. Default: "Select action"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Select action"
+msgstr ""
+
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
 msgstr "Selectați coloane de afișat"
+
+#. Default: "Select condition"
+#: components/manage/Controlpanels/Rules/ConfigureRule
+msgid "Select condition"
+msgstr ""
+
+#. Default: "Select criteria"
+#: components/manage/Widgets/QuerySortOnWidget
+msgid "Select criteria"
+msgstr ""
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
@@ -3516,10 +3647,20 @@ msgstr "Reduceți bara laterală"
 msgid "Shrink toolbar"
 msgstr "Reduceti bara de instrumente"
 
+#. Default: "Sidebar"
+#: helpers/MessageLabels/MessageLabels
+msgid "Sidebar"
+msgstr ""
+
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
 msgid "Sign in to start session"
 msgstr "Conectați-vă pentru a începe sesiunea"
+
+#. Default: "Site"
+#: components/theme/Navigation/Navigation
+msgid "Site"
+msgstr ""
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
@@ -3792,6 +3933,11 @@ msgstr "Teaser"
 msgid "Text"
 msgstr "Text"
 
+#. Default: "Text block settings"
+#: components/manage/Blocks/Block/Schema
+msgid "Text block settings"
+msgstr ""
+
 #. Default: "Thank you."
 #: components/theme/ConnectionRefused/ConnectionRefused
 #: components/theme/CorsError/CorsError
@@ -4014,6 +4160,16 @@ msgstr "Titlu"
 msgid "Title field error. Value not provided or already existing."
 msgstr "Eroare a câmpului Titlu. Valoarea nu a fost furnizată sau este deja existentă."
 
+#. Default: "Token"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Token"
+msgstr ""
+
+#. Default: "Toolbar"
+#: helpers/MessageLabels/MessageLabels
+msgid "Toolbar"
+msgstr ""
+
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
@@ -4080,6 +4236,11 @@ msgstr "Link-ul către traducere creat"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linking removed"
 msgstr "Link-ul către traducere a fost șters"
+
+#. Default: "Translation of term"
+#: components/manage/Widgets/VocabularyTermsWidget
+msgid "Translation of term"
+msgstr ""
 
 #. Default: "Triggering event field error. Please select a value"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -4148,6 +4309,12 @@ msgstr "Anulat"
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
 msgstr "Neautorizat"
+
+#. Default: "Unchecked"
+#: components/manage/Contents/ContentsItem
+#: helpers/Utils/withSaveAsDraft
+msgid "Unchecked"
+msgstr ""
 
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
@@ -5242,6 +5409,11 @@ msgstr "Sari la conținutul principal"
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-navigation"
 msgstr "Sari la navigare"
+
+#. Default: "Skip links"
+#: components/theme/SkipLinks/SkipLinks
+msgid "skiplinks"
+msgstr ""
 
 #. Default: "sort"
 #: components/manage/Contents/Contents
