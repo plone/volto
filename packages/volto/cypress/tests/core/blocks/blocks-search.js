@@ -1,4 +1,5 @@
 describe('Search Block Tests', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   var results_number = 3;
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
@@ -42,7 +43,6 @@ describe('Search Block Tests', () => {
     cy.removeContent({ path: 'my-event' });
     cy.removeContent({ path: 'my-search-page' });
   });
-
   it('Search block - test checkbox facet', () => {
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
@@ -254,7 +254,7 @@ describe('Search Block Tests', () => {
       () =>
         cy
           .get('#page-document .listing-item:first-of-type a')
-          .should('have.attr', 'href', '/my-event'),
+          .should('have.attr', 'href', `${subpathPrefix}/my-event`),
       () =>
         cy
           .get('.search-results-count-sort .search-details em')
@@ -314,7 +314,7 @@ describe('Search Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-event',
+      `${subpathPrefix}/my-event`,
     );
     cy.get('.search-results-count-sort .search-details em').should(
       'contain',
@@ -407,7 +407,7 @@ describe('Search Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-event',
+      `${subpathPrefix}/my-event`,
     );
     cy.get('.search-results-count-sort .search-details em').should(
       'contain',
@@ -455,7 +455,7 @@ describe('Search Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-event',
+      `${subpathPrefix}/my-event`,
     );
     cy.get('.search-results-count-sort .search-details em').should(
       'contain',
@@ -608,15 +608,22 @@ describe('Search Block Tests', () => {
       '#field-sortOnOptions > .react-select__control > .react-select__value-container ',
     ).click();
     cy.findByText('Effective date').click();
-    //save page
-    cy.get('#toolbar-save').click();
+
+    // Save the page
+    cy.get('#toolbar-save > .icon').click();
+
+    cy.visit('/my-search-page');
+    cy.wait('@content');
     // then we are able to see label and sort option
-    cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('#select-search-sort-on').click();
-    cy.findByText('Effective date').click({ force: true });
-    cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
-    ).contains('Effective date');
+    cy.get('.search-react-select-container').as('selectContainer').click();
+    cy.get('@selectContainer').should('contain', 'Effective date');
+
+    cy.findByText('Effective date').click();
+
+    cy.get('div#select-search-sort-on.search-react-select-container').contains(
+      'Effective date',
+    );
+
     // Verify the presence of Ascending button
     cy.get('button[title="Ascending"]').should('be.visible');
     // Verify the presence of Descending button
@@ -651,11 +658,18 @@ describe('Search Block Tests', () => {
     cy.get('#field-sortOnOptions').click();
     cy.findByText('Effective date').click();
     // save page
-    cy.get('#toolbar-save').click();
+    cy.get('#toolbar-save > .icon').click();
+
+    cy.visit('/my-search-page');
+    cy.wait('@content');
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('#select-search-sort-on').click();
-    cy.findByText('Effective date').click({ force: true });
+
+    cy.get('.search-react-select-container').as('selectContainer').click();
+    cy.get('@selectContainer').should('contain', 'Effective date');
+
+    cy.findByText('Effective date').click();
+
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
     ).contains('Effective date');

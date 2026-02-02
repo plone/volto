@@ -1,0 +1,90 @@
+{
+  "name": "@plone/razzle",
+  "description": "A Volto fork of Razzle - Create server-rendered universal JavaScript applications with no configuration",
+  "license": "MIT",
+  "author": "Jared Palmer <jared@palmer.net>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git",
+    "directory": "packages/volto-razzle"
+  },
+  "version": "1.0.0-alpha.0",
+  "bin": {
+    "razzle": "./bin/razzle.js"
+  },
+  "files": [
+    "babel.js",
+    "bin",
+    "config",
+    "scripts",
+    "template"
+  ],
+  "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
+    "autoprefixer": "^10.2.3",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-define": "^2.0.0",
+    "buffer": "^6.0.3",
+    "chalk": "^4.1.0",
+    "clean-css": "^5.0.1",
+    "copy-webpack-plugin": "^6.1.1",
+    "css-loader": "^5.0.0",
+    "css-minimizer-webpack-plugin": "^1.2.0",
+    "deepmerge": "^4.2.2",
+    "dotenv": "^8.2.0",
+    "dotenv-expand": "^5.1.0",
+    "esbuild": "0.25.12",
+    "file-loader": "^4.3.0",
+    "fs-extra": "^9.1.0",
+    "inquirer": "^7.3.3",
+    "mri": "^1.1.4",
+    "null-loader": "^4.0.1",
+    "pnp-webpack-plugin": "^1.6.4",
+    "postcss": "^8.2.4",
+    "postcss-load-config": "3.1.4",
+    "postcss-loader": "7.0.2",
+    "process": "^0.11.10",
+    "razzle-start-server-webpack-plugin": "4.2.18",
+    "react-dev-utils": "^11.0.4",
+    "react-refresh": "0.14.0",
+    "release-it": "^19.0.4",
+    "resolve": "^1.17.0",
+    "sade": "^1.4.2",
+    "source-map-support": "^0.5.16",
+    "string-hash": "^1.1.3",
+    "style-loader": "3.3.1",
+    "terminate": "^2.1.2",
+    "terser-webpack-plugin": "5.3.6",
+    "tiny-async-pool": "^1.1.0",
+    "url-loader": "^2.3.0",
+    "webpack-manifest-plugin": "^3.1.1",
+    "webpackbar": "~4||~5"
+  },
+  "peerDependencies": {
+    "@plone/babel-preset-razzle": "workspace:*",
+    "html-webpack-plugin": "~4||~5",
+    "mini-css-extract-plugin": "2.7.2",
+    "razzle-dev-utils": "4.2.18",
+    "webpack": "~4||~5",
+    "webpack-dev-server": "^3.11.0||~4"
+  },
+  "keywords": [
+    "inferno",
+    "isomorphic",
+    "preact",
+    "razzle",
+    "react",
+    "reason",
+    "reasonml",
+    "ssr",
+    "universal",
+    "webpack"
+  ],
+  "scripts": {
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  }
+}

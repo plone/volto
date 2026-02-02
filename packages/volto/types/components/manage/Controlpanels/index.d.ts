@@ -4,7 +4,7 @@ export declare const RulesControlpanel: import("@loadable/component").LoadableCl
 export declare const AddRuleControlpanel: import("@loadable/component").LoadableClassComponent<any>;
 export declare const EditRuleControlpanel: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ConfigureRuleControlpanel: import("@loadable/component").LoadableClassComponent<any>;
-export declare const UsersControlpanel: import("@loadable/component").LoadableClassComponent<any>;
+export declare const UsersControlpanel: import("@loadable/component").LoadableComponent<unknown>;
 export declare const RenderUsers: import("@loadable/component").LoadableComponent<any>;
 export declare const UserGroupMembershipControlPanel: import("@loadable/component").LoadableComponent<unknown>;
 export declare const GroupsControlpanel: import("@loadable/component").LoadableClassComponent<any>;

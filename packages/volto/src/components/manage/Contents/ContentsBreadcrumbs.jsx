@@ -44,11 +44,11 @@ const ContentsBreadcrumbs = (props) => {
           </Link>
           <Breadcrumb.Divider />
           <Link
-            to={`${navroot['@id']}/contents`}
+            to={`${navroot?.['@id']}/contents`}
             className="section"
-            title={navroot.title}
+            title={navroot?.title}
           >
-            {navroot.title}
+            {navroot?.title}
           </Link>
         </>
       )}

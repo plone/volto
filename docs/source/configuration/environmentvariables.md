@@ -11,6 +11,8 @@ myst:
 
 This page describes environment variables and their usage for configuration of your Volto application at runtime.
 
+For more detailed information about environment variables and other configurations, you can refer to the [Razzle Documentation](https://razzlejs.org/docs/environment-variables).
+
 
 ## Runtime environment variables
 
@@ -24,13 +26,45 @@ You could, for example, build your Volto application, then start it in productio
 pnpm build && RAZZLE_API_PATH=https://plone.org pnpm start:prod
 ```
 
+```{glossary}
+:sorted:
+`HOST`
+    Represents the host or IP address on which a server should listen.
+    Default is `0.0.0.0`.
+
+`PORT`
+    Used to specify the port on which a web server should listen for incoming requests.
+    Default is `3000`.
+
+`RAZZLE_API_PATH`
+    Used to configure the API path for the application.
+    Setting this is not usually necessary, because the Volto client will access the API at the same location where the frontend is served, and proxy the requests to the backend API.
+    You can set this to make the Volto client connect directly to the API on a different host, but this can be complicated because of cross-origin restrictions.
+
+`RAZZLE_PUBLIC_URL`
+    Used to specify the base URL or path where static assets—such as images, stylesheets, and other resources—are hosted or served.
+    Defaults to the location where the Volto client was accessed.
+
+`RAZZLE_DEV_PROXY_API_PATH`
+    Used to configure the URL where the Volto API proxy will connect to the backend API.
+    Usually you don't need to set this; it defaults to the same value as `RAZZLE_INTERNAL_API_PATH`.
+
+`RAZZLE_INTERNAL_API_PATH`
+    Used to specify the path to an internal API that the server-rendered application should use.
+
+`RAZZLE_PROXY_REWRITE_TARGET`
+    Used to specify the base path where the Volto API proxy will connect to the backend API.
+    Defaults to a Zope VirtualHostMonster path based on the external API path, for example, `/VirtualHostBase/http/localhost:3000/Plone/++api++/VirtualHostRoot`.
+    You might need to change this if you're connecting to a backend that handles its own virtual host rewriting, or to a backend that is not Zope.
+```
+
 This brings you a lot of power since you don't have to rebuild on every configuration change.
 You can also generate builds on your continuous integration, then deploy them anywhere.
 
 
 ## Environment variable reference
 
-````{glossary}
+```{glossary}
 :sorted:
 `RAZZLE_LEGACY_TRAVERSE`
     If `true`, Volto will construct API URLs without the `/++api++` prefix.
@@ -201,7 +235,7 @@ You can also generate builds on your continuous integration, then deploy them an
     ```shell
     SITE_DEFAULT_LANGUAGE=ca pnpm start
     ```
-````
+```
 
 
 ## Access environment variables in a browser

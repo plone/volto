@@ -6,13 +6,13 @@ on:
       - main
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
   towncrier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # Fetch all history
           fetch-depth: '0'
