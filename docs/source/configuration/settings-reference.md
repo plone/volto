@@ -276,11 +276,10 @@ config.settings.downloadableObjects = ['File', 'MyCustomContentType'];
 config.settings.downloadableObjects.append('MyCustomContentType')
 ```
 
-**Notes:**
-
+```{note}
 - The MIME type takes precedence over content type if present and recognized.
 - Types (content type and MIME type) included in `viewableInBrowserObjects` will be displayed inline in the browser.
-  Setting `viewableInBrowserObjects` overrides `downloadableObjects`.
+    Setting `viewableInBrowserObjects` overrides `downloadableObjects`.
 
 ```{seealso}
 The :ref:`viewableInBrowserObjects` setting to configure which content or MIME types should be opened inline in the browser.
@@ -592,8 +591,7 @@ The following example will display only PDFs inline.
 config.settings.viewableInBrowserObjects = ['application/pdf'];
 ```
 
-**Notes:**
-
+```{note}
 - The MIME type takes precedence over content type if present and recognized.
 - Objects not listed here but included in `downloadableObjects` will be downloaded instead.
 
