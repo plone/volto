@@ -1,0 +1,1 @@
+Fixed an issue where the `.well-known` directory placed in `public/` was not included in production builds due to dotfile exclusion. This ensures standard discovery endpoints are correctly deployed. @Kathrina-dev
