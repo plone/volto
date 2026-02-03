@@ -112,13 +112,11 @@ const Login = (props) => {
         toast.dismiss('loggedOut');
       }
       if (!toast.isActive('loginFailed')) {
-        const errMessage =
-          JSON.parse(error)?.error?.message || JSON.parse(error)?.message || '';
         toast.error(
           <Toast
             error
             title={intl.formatMessage(messages.loginFailed)}
-            content={errMessage}
+            content={intl.formatMessage(messages.loginFailedContent)}
           />,
           { autoClose: false, toastId: 'loginFailed' },
         );
