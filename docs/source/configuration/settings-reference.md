@@ -259,13 +259,13 @@ See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-
 This setting defines which content types or MIME types should be treated as downloadable instead of going to the default view when a logged-out user clicks a link to the item.
 When a content type or MIME type matches an entry in this list, the system will download it using the `@@download` view.
 
-**Default:**
+Default setting:
 
 ```js
 config.settings.downloadableObjects = ['File'];
 ```
 
-**Example:**
+If you have a custom content type that stores files such as `MyCustomContentType`, you can use a list to make those files downloadable.
 
 ```js
 // If you have a custom content type (e.g. "MyCustomContentType") 
@@ -283,7 +283,7 @@ config.settings.downloadableObjects.append('MyCustomContentType')
   Setting `viewableInBrowserObjects` overrides `downloadableObjects`.
 
 ```{seealso}
-The `viewableInBrowserObjects` setting to configure which content/mime-types should be opened inline in the browser.
+The :ref:`viewableInBrowserObjects` setting to configure which content or MIME types should be opened inline in the browser.
 ```
 
 ### `errorHandlers`
@@ -572,18 +572,20 @@ config.settings.styleClassNameExtenders = [
 `unwantedControlPanelsFields` is the control panel fields that are not used in Volto.
 It is used internally by the `filterControlPanelsSchema` function.
 
+(viewableInBrowserObjects)=
+
 ### `viewableInBrowserObjects`
 
 This setting defines which content types or MIME types should be displayed inline in the browser instead of going to the default view when a logged-out user clicks a link to the item.
-When an content type or MIME type matches an entry in this list, the system will open it inline in a new browser tab using the `@@display-file` view.
+When a content type or MIME type matches an entry in this list, the system will open it inline in a new browser tab using the `@@display-file` view.
 
-**Default:**
+Default setting:
 
 ```js
 config.settings.viewableInBrowserObjects = [];
 ```
 
-**Example:**
+The following example will display only PDFs inline.
 
 ```js
 // Only PDFs will be viewable inline
