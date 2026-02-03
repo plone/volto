@@ -92,6 +92,9 @@
     Focused Input
 --------------------*/
 
+@innerFocusShadow: #fff;
+@outerFocusOutline: #000;
+
 /* Used on inputs, textarea etc */
 @focusedFormBorderColor: #85B7D9;
 
