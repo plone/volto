@@ -383,10 +383,12 @@ export function ensureBlocksLayoutSync(formData) {
 
   const blocks = formData[blocksFieldname];
   const currentLayout = formData[blocksLayoutFieldname];
+  // Handle case where blocks_layout is {} or items is undefined (from migration)
+  const layoutItems = currentLayout.items || [];
   const blockIds = Object.keys(blocks).filter((id) => blocks[id] !== null);
 
   // If blocks_layout is empty but blocks has content, sync it
-  if (currentLayout.items.length === 0 && blockIds.length > 0) {
+  if (layoutItems.length === 0 && blockIds.length > 0) {
     return {
       ...formData,
       [blocksLayoutFieldname]: {
@@ -396,17 +398,17 @@ export function ensureBlocksLayoutSync(formData) {
   }
 
   // If blocks_layout has items that don't exist in blocks, remove them
-  const validItems = currentLayout.items.filter(
+  const validItems = layoutItems.filter(
     (id) => blocks[id] !== null && blocks[id] !== undefined,
   );
 
   // If blocks has new items not in layout, add them
-  const newItems = blockIds.filter((id) => !currentLayout.items.includes(id));
+  const newItems = blockIds.filter((id) => !layoutItems.includes(id));
   const allItems = [...validItems, ...newItems];
 
   if (
-    allItems.length !== currentLayout.items.length ||
-    !allItems.every((id, index) => currentLayout.items[index] === id)
+    allItems.length !== layoutItems.length ||
+    !allItems.every((id, index) => layoutItems[index] === id)
   ) {
     return {
       ...formData,
