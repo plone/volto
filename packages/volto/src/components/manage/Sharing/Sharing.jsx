@@ -458,6 +458,7 @@ class SharingComponent extends Component {
               </Table>
               <Segment attached>
                 <Form.Field>
+                  {/* CHECKBOX ABAIXO DA TABELA */}
                   <Checkbox
                     id="inherit-permissions-checkbox"
                     name="inherit-permissions-checkbox"
