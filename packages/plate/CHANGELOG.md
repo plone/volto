@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.2 (2026-02-03)
+
+### Breaking
+
+- Removed Cypress support.
+  Added Playwright support. Move all existing Cypress tests to Playwright. @sneridagh [#7827](https://github.com/plone/volto/issues/7827)
+
 ## 1.0.0-alpha.1 (2025-12-23)
 
 ### Feature
