@@ -98,16 +98,30 @@ const HtmlSlateWidget = (props) => {
     [editor],
   );
 
-  const valueFromHtml = React.useMemo(() => {
-    return fromHtml(value);
-  }, [value, fromHtml]);
+  // const valueFromHtml = React.useMemo(() => {
+  //   console.log('fromhtml', value, '--->', fromHtml(value));
+  //   return fromHtml(value);
+  // }, [value, fromHtml]);
 
-  const handleChange = React.useCallback(
-    (newValue) => {
-      onChange(id, toHtml(newValue));
-    },
-    [onChange, toHtml, id],
-  );
+  // fix for cursor moving at the end of text after each keystroke:
+  // useState does not trigger "fromHtml" at each keystroke like previous function did (110-113)
+  // that caused the internal Slate tree to re-render after each keystroke
+
+  // React does not replace slateValue unless you call setSlateValue() yourself.
+  // With useState Slate gets the same object reference between renders.
+  // As you type, only internal Slate ops change the document — React doesn’t rebuild it from HTML.
+
+  // handleChange does call setSlateValue but:
+  // - The object identity of slateValue remains stable within Slate’s internal lifecycle
+  // - React re-renders, but Slate’s Editable sees the same node tree reference,
+  //   so it doesn’t reset the selection.
+
+  const [slateValue, setSlateValue] = React.useState(() => fromHtml(value));
+
+  const handleChange = (newValue) => {
+    setSlateValue(newValue);
+    onChange(id, toHtml(newValue));
+  };
 
   const handleClick = React.useCallback(() => {
     setSelected(true);
@@ -128,7 +142,7 @@ const HtmlSlateWidget = (props) => {
             className={className}
             id={id}
             name={id}
-            value={valueFromHtml}
+            value={slateValue}
             fieldSet={fieldSet}
             onChange={handleChange}
             block={block}
