@@ -51,7 +51,7 @@
     "fs-extra": "10.1.0",
     "git-url-parse": "^13.1.0",
     "glob": "^10.4.5",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "mrs-developer": "^2.1.1",
     "pofile": "1.0.10",
     "wait-on": "^7.2.0"
