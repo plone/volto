@@ -311,7 +311,7 @@ class ContentTypeSchema extends Component {
                       />
                     </Button>
                     <Button
-                      className="Cancel"
+                      className="cancel"
                       aria-label={this.props.intl.formatMessage(
                         messages.cancel,
                       )}
