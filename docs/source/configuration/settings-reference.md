@@ -268,11 +268,12 @@ config.settings.downloadableObjects = ['File'];
 If you have a custom content type that stores files such as `MyCustomContentType`, you can use a list to make those files downloadable.
 
 ```js
-// If you have a custom content type (e.g. "MyCustomContentType") 
-// that stores files, you can list it here to make those files downloadable.
 config.settings.downloadableObjects = ['File', 'MyCustomContentType'];
+```
 
-// or
+Alternatively, you can append it to the list.
+
+```js
 config.settings.downloadableObjects.append('MyCustomContentType')
 ```
 
@@ -587,7 +588,6 @@ config.settings.viewableInBrowserObjects = [];
 The following example will display only PDFs inline.
 
 ```js
-// Only PDFs will be viewable inline
 config.settings.viewableInBrowserObjects = ['application/pdf'];
 ```
 
