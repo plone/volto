@@ -283,7 +283,7 @@
     "cypress-axe": "1.7.0",
     "cypress-file-upload": "5.0.8",
     "deep-freeze": "0.0.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.26.0",
     "eslint-config-prettier": "^9.1.2",
     "eslint-config-react-app": "^7.0.1",
     "eslint-import-resolver-alias": "^1.1.2",
