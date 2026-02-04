@@ -1,0 +1,1 @@
+Implement CSP through config @nileshgulia1

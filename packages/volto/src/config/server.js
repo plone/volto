@@ -5,6 +5,10 @@ import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 import staticsMiddleware from '@plone/volto/express-middleware/static';
 import devProxyMiddleware from '@plone/volto/express-middleware/devproxy';
 
+const devSource = __DEVELOPMENT__
+  ? ` http://localhost:${parseInt(process.env.PORT || '3000') + 1}`
+  : '';
+
 const settings = {
   expressMiddleware: [
     devProxyMiddleware(),
@@ -15,6 +19,9 @@ const settings = {
     staticsMiddleware(),
   ],
   criticalCssPath: 'public/critical.css',
+  csp: {
+    'script-src': `'self' {nonce}${devSource}`,
+  },
   readCriticalCss: null, // so it will be defaultReadCriticalCss
   staticFiles: [
     {
