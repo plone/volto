@@ -50,9 +50,7 @@ The bundle of these packages must work on both CommonJS and ECMAScript Module (E
 
 ## Utilities packages
 
--   `@plone/providers`
--   `@plone/helpers`
--   `@plone/react-router`
+- None for now.
 
 
 ### Rules

@@ -1,0 +1,1 @@
+Remove references to @plone/providers and @plone/helpers packages that don't exist in Volto 18 branch. @wesleybl
