@@ -746,14 +746,14 @@ importers:
         specifier: 3.1.0
         version: 3.1.0
       slate:
-        specifier: 0.100.0
-        version: 0.100.0
+        specifier: 0.118.1
+        version: 0.118.1
       slate-hyperscript:
-        specifier: 0.100.0
-        version: 0.100.0(slate@0.100.0)
+        specifier: 0.115.0
+        version: 0.115.0(slate@0.118.1)
       slate-react:
-        specifier: 0.98.4
-        version: 0.98.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(slate@0.100.0)
+        specifier: 0.117.4
+        version: 0.117.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(slate-dom@0.118.1(slate@0.118.1))(slate@0.118.1)
       superagent:
         specifier: 3.8.2
         version: 3.8.2
@@ -1203,17 +1203,20 @@ importers:
         specifier: 2.1.5
         version: 2.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       slate:
-        specifier: 0.100.0
-        version: 0.100.0
+        specifier: 0.118.1
+        version: 0.118.1
+      slate-dom:
+        specifier: 0.118.1
+        version: 0.118.1(slate@0.118.1)
       slate-history:
-        specifier: 0.100.0
-        version: 0.100.0(slate@0.100.0)
+        specifier: 0.113.1
+        version: 0.113.1(slate@0.118.1)
       slate-hyperscript:
-        specifier: 0.100.0
-        version: 0.100.0(slate@0.100.0)
+        specifier: 0.115.0
+        version: 0.115.0(slate@0.118.1)
       slate-react:
-        specifier: 0.98.4
-        version: 0.98.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(slate@0.100.0)
+        specifier: 0.117.4
+        version: 0.117.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(slate-dom@0.118.1(slate@0.118.1))(slate@0.118.1)
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
@@ -4659,9 +4662,6 @@ packages:
   '@types/invariant@2.2.37':
     resolution: {integrity: sha512-IwpIMieE55oGWiXkQPSBY1nw1nFs6bsKXTFskNY8sdS17K24vyEBRQZEwlRS7ZmXCWnJcQtbxWzly+cODWGs2A==}
 
-  '@types/is-hotkey@0.1.10':
-    resolution: {integrity: sha512-RvC8KMw5BCac1NvRRyaHgMMEtBaZ6wh0pyPTBu7izn4Sj/AX9Y4aXU5c7rX8PnM/knsuUpC1IeoBkANtxBypsQ==}
-
   '@types/istanbul-lib-coverage@2.0.6':
     resolution: {integrity: sha512-2QF/t/auWm0lsy8XtKVPG19v3sSOQlJe/YHZgfjb/KBBHOGSV+J2q/S671rcq9uTBrLAXmZpqJiaQbMT+zNU1w==}
 
@@ -6468,8 +6468,8 @@ packages:
     resolution: {integrity: sha512-9mAqGPHLakhCLeNyxPkK4xVo746zQ/czLH1Ky+vkitMnWfWZps8r0qXuwhwizagCRttsL4lfG4pIOvaWLpAP0w==}
     engines: {node: '>= 0.8.0'}
 
-  compute-scroll-into-view@1.0.20:
-    resolution: {integrity: sha512-UCB0ioiyj8CRjtrvaceBLqqhZCVP+1B8+NWQhmdsm0VXOJtobBCf1dBQmebCCo34qZmUwZfIH2MZLqNHazrfjg==}
+  compute-scroll-into-view@3.1.1:
+    resolution: {integrity: sha512-VRhuHOLoKYOy4UbilLbUzbYg93XLjv2PncJC50EuTWPA3gaja1UjBsUP/D/9/juV3vQFr6XBEzn9KCAHdUvOHw==}
 
   computeds@0.0.1:
     resolution: {integrity: sha512-7CEBgcMjVmitjYo5q8JTJVra6X5mQ20uTThdK+0kR7UEaDrAWEQcRiBtWJzga4eRpP6afNwwLsX2SET2JhVB1Q==}
@@ -8943,9 +8943,6 @@ packages:
   is-glob@4.0.3:
     resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
     engines: {node: '>=0.10.0'}
-
-  is-hotkey@0.1.8:
-    resolution: {integrity: sha512-qs3NZ1INIS+H+yeo7cD9pDfwYV/jqRh1JG9S9zYrNudkoUQg7OL7ziXqRKu+InFjUIDoP2o6HIkLYMh1pcWgyQ==}
 
   is-hotkey@0.2.0:
     resolution: {integrity: sha512-UknnZK4RakDmTgz4PI1wIph5yxSs/mvChWs9ifnlXsKuXgWmOkY/hAE0H/k2MIqH0RlRye0i1oC07MCRSD28Mw==}
@@ -12600,8 +12597,8 @@ packages:
     resolution: {integrity: sha512-g3WxHrqSWCZHGHlSrF51VXFdjImhwvH8ZO/pryFH56Qi0cDsZfylQa/t0jCzVQFNbNvM00HfHjkDPEuarKDSWQ==}
     engines: {node: '>=8'}
 
-  scroll-into-view-if-needed@2.2.31:
-    resolution: {integrity: sha512-dGCXy99wZQivjmjIqihaBQNjryrz5rueJY7eHfTdyWEiR4ttYpsajb14rn9s5d4DY4EcY6+4+U/maARBXJedkA==}
+  scroll-into-view-if-needed@3.1.0:
+    resolution: {integrity: sha512-49oNpRjWRvnU8NyGVmUaYG4jtTkNonFZI86MmGRDqBphEK2EXT9gdEUoQPZhuBM8yWHxCWbobltqYO5M4XrUvQ==}
 
   seamless-immutable@7.1.4:
     resolution: {integrity: sha512-XiUO1QP4ki4E2PHegiGAlu6r82o5A+6tRh7IkGGTVg/h+UoeX4nFBeCGPOhb4CYjvkqsfm/TUtvOMYC1xmV30A==}
@@ -12814,25 +12811,31 @@ packages:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
 
-  slate-history@0.100.0:
-    resolution: {integrity: sha512-x5rUuWLNtH97hs9PrFovGgt3Qc5zkTm/5mcUB+0NR/TK923eLax4HsL6xACLHMs245nI6aJElyM1y6hN0y5W/Q==}
+  slate-dom@0.118.1:
+    resolution: {integrity: sha512-D6J0DF9qdJrXnRDVhYZfHzzpVxzqKRKFfS0Wcin2q0UC+OnQZ0lbCGJobatVbisOlbSe7dYFHBp9OZ6v1lEcbQ==}
+    peerDependencies:
+      slate: '>=0.99.0'
+
+  slate-history@0.113.1:
+    resolution: {integrity: sha512-J9NSJ+UG2GxoW0lw5mloaKcN0JI0x2IA5M5FxyGiInpn+QEutxT1WK7S/JneZCMFJBoHs1uu7S7e6pxQjubHmQ==}
     peerDependencies:
       slate: '>=0.65.3'
 
-  slate-hyperscript@0.100.0:
-    resolution: {integrity: sha512-fb2KdAYg6RkrQGlqaIi4wdqz3oa0S4zKNBJlbnJbNOwa23+9FLD6oPVx9zUGqCSIpy+HIpOeqXrg0Kzwh/Ii4A==}
+  slate-hyperscript@0.115.0:
+    resolution: {integrity: sha512-aaQ1XSfUhw0Lf4cwVLeNFYnnPsC9iX9aEmKvT5PAaGTNVe1LaBCAXB+CFuqp7YPExPj9hYuS5CsIu8dAh9JX2w==}
     peerDependencies:
-      slate: '>=0.65.3'
+      slate: '>=0.114.3'
 
-  slate-react@0.98.4:
-    resolution: {integrity: sha512-8Of3v9hFuX8rIRc86LuuBhU9t8ps+9ARKL4yyhCrKQYZ93Ep/LFA3GvPGvtf3zYuVadZ8tkhRH8tbHOGNAndLw==}
+  slate-react@0.117.4:
+    resolution: {integrity: sha512-9ckilyUzQS1VHJnstIpgInhcWnTDgv2Cd7m1HOQVl3zasChoapPSMftzT/wl/48grZaZYZIi4xVuzGTcFRUWFg==}
     peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-      slate: '>=0.65.3'
+      react: '>=18.2.0'
+      react-dom: '>=18.2.0'
+      slate: '>=0.114.0'
+      slate-dom: '>=0.116.0'
 
-  slate@0.100.0:
-    resolution: {integrity: sha512-cK+xwLBrbQof4rEfTzgC8loBWsDFEXq8nOBY7QahwY59Zq4bsBNcwiMw2VIzTv+WGNsmyHp4eAk/HJbz2aAUkQ==}
+  slate@0.118.1:
+    resolution: {integrity: sha512-6H1DNgnSwAFhq/pIgf+tLvjNzH912M5XrKKhP9Frmbds2zFXdSJ6L/uFNyVKxQIkPzGWPD0m+wdDfmEuGFH5Tg==}
 
   sleep-promise@9.1.0:
     resolution: {integrity: sha512-UHYzVpz9Xn8b+jikYSD6bqvf754xL2uBUzDFwiU6NcdZeifPr6UfgU43xpkPu67VMS88+TI2PSI7Eohgqf2fKA==}
@@ -13434,8 +13437,8 @@ packages:
   tiny-async-pool@1.3.0:
     resolution: {integrity: sha512-01EAw5EDrcVrdgyCLgoSPvqznC0sVxDSVeiOz09FUpjh71G79VCqneOr+xvt7T1r76CF6ZZfPjHorN2+d+3mqA==}
 
-  tiny-invariant@1.0.6:
-    resolution: {integrity: sha512-FOyLWWVjG+aC0UqG76V53yAWdXfH8bO6FNmyZOuUrzDzK8DI3/JRY25UD7+g49JWM1LXwymsKERB+DzI0dTEQA==}
+  tiny-invariant@1.3.1:
+    resolution: {integrity: sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==}
 
   tiny-invariant@1.3.3:
     resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
@@ -19497,8 +19500,6 @@ snapshots:
 
   '@types/invariant@2.2.37': {}
 
-  '@types/is-hotkey@0.1.10': {}
-
   '@types/istanbul-lib-coverage@2.0.6': {}
 
   '@types/istanbul-lib-report@3.0.3':
@@ -21792,7 +21793,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  compute-scroll-into-view@1.0.20: {}
+  compute-scroll-into-view@3.1.1: {}
 
   computeds@0.0.1: {}
 
@@ -24941,8 +24942,6 @@ snapshots:
   is-glob@4.0.3:
     dependencies:
       is-extglob: 2.1.1
-
-  is-hotkey@0.1.8: {}
 
   is-hotkey@0.2.0: {}
 
@@ -29906,9 +29905,9 @@ snapshots:
 
   scoped-regex@2.1.0: {}
 
-  scroll-into-view-if-needed@2.2.31:
+  scroll-into-view-if-needed@3.1.0:
     dependencies:
-      compute-scroll-into-view: 1.0.20
+      compute-scroll-into-view: 3.1.1
 
   seamless-immutable@7.1.4: {}
 
@@ -30175,35 +30174,42 @@ snapshots:
 
   slash@5.1.0: {}
 
-  slate-history@0.100.0(slate@0.100.0):
-    dependencies:
-      is-plain-object: 5.0.0
-      slate: 0.100.0
-
-  slate-hyperscript@0.100.0(slate@0.100.0):
-    dependencies:
-      is-plain-object: 5.0.0
-      slate: 0.100.0
-
-  slate-react@0.98.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(slate@0.100.0):
+  slate-dom@0.118.1(slate@0.118.1):
     dependencies:
       '@juggle/resize-observer': 3.4.0
-      '@types/is-hotkey': 0.1.10
-      '@types/lodash': 4.17.20
       direction: 1.0.4
-      is-hotkey: 0.1.8
+      is-hotkey: 0.2.0
       is-plain-object: 5.0.0
+      lodash: 4.17.21
+      scroll-into-view-if-needed: 3.1.0
+      slate: 0.118.1
+      tiny-invariant: 1.3.1
+
+  slate-history@0.113.1(slate@0.118.1):
+    dependencies:
+      is-plain-object: 5.0.0
+      slate: 0.118.1
+
+  slate-hyperscript@0.115.0(slate@0.118.1):
+    dependencies:
+      slate: 0.118.1
+
+  slate-react@0.117.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(slate-dom@0.118.1(slate@0.118.1))(slate@0.118.1):
+    dependencies:
+      '@juggle/resize-observer': 3.4.0
+      direction: 1.0.4
+      is-hotkey: 0.2.0
       lodash: 4.17.21
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      scroll-into-view-if-needed: 2.2.31
-      slate: 0.100.0
-      tiny-invariant: 1.0.6
+      scroll-into-view-if-needed: 3.1.0
+      slate: 0.118.1
+      slate-dom: 0.118.1(slate@0.118.1)
+      tiny-invariant: 1.3.1
 
-  slate@0.100.0:
+  slate@0.118.1:
     dependencies:
       immer: 10.1.3
-      is-plain-object: 5.0.0
       tiny-warning: 1.0.3
 
   sleep-promise@9.1.0: {}
@@ -30947,7 +30953,7 @@ snapshots:
     dependencies:
       semver: 5.7.2
 
-  tiny-invariant@1.0.6: {}
+  tiny-invariant@1.3.1: {}
 
   tiny-invariant@1.3.3: {}
 
