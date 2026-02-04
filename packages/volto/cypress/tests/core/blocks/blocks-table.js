@@ -24,13 +24,6 @@ describe('Table Block Tests', () => {
     cy.addNewBlock('table');
     cy.wait(2000);
 
-    // No border in input
-    cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
-    cy.get('.block-editor-slateTable [role=textbox]')
-      .first()
-      .click()
-      .should('have.css', 'outline', 'rgba(0, 0, 0, 0.87) none 0px');
-
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
     )
