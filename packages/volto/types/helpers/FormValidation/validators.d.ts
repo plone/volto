@@ -13,13 +13,13 @@ type Validator = {
 type Choice = {
     token: string;
     label: string;
-}
+};
 type ChoiceValidator = {
     value: string | Choice;
     field: Record<string, any>;
     formData: any;
     formatMessage: Function;
-}
+};
 export declare const isMaxPropertyValid: ({ value, fieldSpec, criterion, formatMessage, }: MinMaxValidator) => any;
 export declare const isMinPropertyValid: ({ value, fieldSpec, criterion, formatMessage, }: MinMaxValidator) => any;
 export declare const minLengthValidator: ({ value, field, formatMessage, }: Validator) => any;
