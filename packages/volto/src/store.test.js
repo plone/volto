@@ -1,10 +1,21 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import configureStore from './store';
 
-const mockSaveMiddleware = vi.fn((store) => (next) => (action) => next(action));
+const mockAuthOnlySaveMiddleware = vi.fn(
+  (store) => (next) => (action) => next(action),
+);
+const mockAlwaysSaveMiddleware = vi.fn(
+  (store) => (next) => (action) => next(action),
+);
 
 vi.mock('redux-localstorage-simple', () => ({
-  save: vi.fn(() => mockSaveMiddleware),
+  save: vi.fn(({ states }) => {
+    // Return different mock middlewares based on which reducers are being saved
+    if (states.includes('blocksClipboard')) {
+      return mockAuthOnlySaveMiddleware;
+    }
+    return mockAlwaysSaveMiddleware;
+  }),
   load: vi.fn(() => ({})),
 }));
 
@@ -14,9 +25,10 @@ vi.mock(
   () => ({
     default: {
       settings: {
-        persistentReducers: ['testReducer'],
+        // Include both blocksClipboard (auth-only) and testReducer (always-persist)
+        persistentReducers: ['blocksClipboard', 'testReducer'],
         storeExtenders: [],
-        addonReducers: {}, // Ensure this exists
+        addonReducers: {},
       },
       addonReducers: {},
     },
@@ -27,7 +39,7 @@ vi.mock(
 vi.mock(
   '@root/reducers',
   () => ({
-    default: { userSession: (state = {}, action) => state }, // reducers is usually an object of reducers
+    default: { userSession: (state = {}, action) => state },
   }),
   { virtual: true },
 );
@@ -57,7 +69,6 @@ const mockHistory = {
 describe('Store Persistence', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    // Define global __CLIENT__
     global.__CLIENT__ = true;
   });
 
@@ -65,35 +76,55 @@ describe('Store Persistence', () => {
     delete global.__CLIENT__;
   });
 
-  it('should NOT invoke save middleware when user is anonymous (no token)', () => {
-    // Reducers need to be an object for combineReducers?
-    // In store.js: import reducers from '@root/reducers'; ... combineReducers({ ...reducers })
-    // So @root/reducers mock should export an object containing reducers.
+  describe('blocksClipboard (auth-only reducer)', () => {
+    it('should NOT persist for anonymous users (no token)', () => {
+      const store = configureStore(
+        { userSession: { token: null } },
+        mockHistory,
+      );
 
-    const store = configureStore(
-      {
-        userSession: { token: null },
-      },
-      mockHistory,
-    );
+      store.dispatch({ type: 'TEST_ACTION' });
 
-    store.dispatch({ type: 'TEST_ACTION' });
+      // blocksClipboard middleware should NOT be called for anonymous users
+      expect(mockAuthOnlySaveMiddleware).not.toHaveBeenCalled();
+    });
 
-    // Before fix: This will fail (it will be called)
-    // After fix: This should pass
-    expect(mockSaveMiddleware).not.toHaveBeenCalled();
+    it('should persist for authenticated users (has token)', () => {
+      const store = configureStore(
+        { userSession: { token: 'valid-token' } },
+        mockHistory,
+      );
+
+      store.dispatch({ type: 'TEST_ACTION' });
+
+      // blocksClipboard middleware SHOULD be called for authenticated users
+      expect(mockAuthOnlySaveMiddleware).toHaveBeenCalled();
+    });
   });
 
-  it('should invoke save middleware when user is authenticated (has token)', () => {
-    const store = configureStore(
-      {
-        userSession: { token: 'valid-token' },
-      },
-      mockHistory,
-    );
+  describe('other reducers (always-persist)', () => {
+    it('should persist for anonymous users', () => {
+      const store = configureStore(
+        { userSession: { token: null } },
+        mockHistory,
+      );
 
-    store.dispatch({ type: 'TEST_ACTION' });
+      store.dispatch({ type: 'TEST_ACTION' });
 
-    expect(mockSaveMiddleware).toHaveBeenCalled();
+      // testReducer middleware SHOULD be called even for anonymous users
+      expect(mockAlwaysSaveMiddleware).toHaveBeenCalled();
+    });
+
+    it('should persist for authenticated users', () => {
+      const store = configureStore(
+        { userSession: { token: 'valid-token' } },
+        mockHistory,
+      );
+
+      store.dispatch({ type: 'TEST_ACTION' });
+
+      // testReducer middleware SHOULD be called for authenticated users
+      expect(mockAlwaysSaveMiddleware).toHaveBeenCalled();
+    });
   });
 });

@@ -17,17 +17,38 @@ import {
 } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
-  const saveMiddleware = save({
-    states: config.settings.persistentReducers,
-    debounce: 500,
-  });
-  const conditionalSave = (store) => (next) => (action) => {
+  // Reducers that should only persist for authenticated users
+  const authOnlyReducers = ['blocksClipboard'];
+
+  // Filter out auth-only reducers to get always-persist reducers
+  const alwaysReducers = config.settings.persistentReducers.filter(
+    (r) => !authOnlyReducers.includes(r),
+  );
+
+  // Filter auth-only reducers to only include those in persistentReducers
+  const activeAuthOnlyReducers = authOnlyReducers.filter((r) =>
+    config.settings.persistentReducers.includes(r),
+  );
+
+  // Save middleware for always-persist reducers (unconditional)
+  const alwaysSaveMiddleware = alwaysReducers.length
+    ? save({ states: alwaysReducers, debounce: 500 })
+    : null;
+
+  // Save middleware for auth-only reducers (conditional on authentication)
+  const authOnlySaveMiddleware = activeAuthOnlyReducers.length
+    ? save({ states: activeAuthOnlyReducers, debounce: 500 })
+    : null;
+
+  // Conditional middleware that only saves auth-only reducers when user is authenticated
+  const conditionalAuthOnlySave = (store) => (next) => (action) => {
     const state = store.getState();
-    if (state.userSession?.token) {
-      return saveMiddleware(store)(next)(action);
+    if (state.userSession?.token && authOnlySaveMiddleware) {
+      return authOnlySaveMiddleware(store)(next)(action);
     }
     return next(action);
   };
+
   let stack = [
     blacklistRoutes,
     protectLoadStart,
@@ -36,7 +57,12 @@ const configureStore = (initialState, history, apiHelper) => {
     ...(apiHelper ? [api(apiHelper)] : []),
     userSessionReset,
     protectLoadEnd,
-    ...(__CLIENT__ ? [conditionalSave] : []),
+    // Always-persist reducers save unconditionally
+    ...(__CLIENT__ && alwaysSaveMiddleware ? [alwaysSaveMiddleware] : []),
+    // Auth-only reducers save conditionally
+    ...(__CLIENT__ && activeAuthOnlyReducers.length
+      ? [conditionalAuthOnlySave]
+      : []),
   ];
   stack = config.settings.storeExtenders.reduce(
     (acc, extender) => extender(acc),
@@ -52,8 +78,16 @@ const configureStore = (initialState, history, apiHelper) => {
     }),
     {
       ...initialState,
-      ...(__CLIENT__ && initialState?.userSession?.token
-        ? load({ states: config.settings.persistentReducers })
+      ...(__CLIENT__
+        ? {
+            // Always load always-persist reducers
+            ...(alwaysReducers.length ? load({ states: alwaysReducers }) : {}),
+            // Only load auth-only reducers if user has token
+            ...(initialState?.userSession?.token &&
+            activeAuthOnlyReducers.length
+              ? load({ states: activeAuthOnlyReducers })
+              : {}),
+          }
         : {}),
     },
     middlewares,
