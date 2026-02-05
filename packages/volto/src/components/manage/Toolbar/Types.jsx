@@ -15,7 +15,7 @@ import config from '@plone/volto/registry';
 const Types = ({ types, pathname, content, currentLanguage }) => {
   const { settings } = config;
   return types.length > 0 ||
-    (settings.isMultilingual && content['@components'].translations) ? (
+    (settings.isMultilingual && content?.['@components']?.translations) ? (
     <div className="menu-more pastanaga-menu">
       {types.length > 0 && (
         <>
@@ -54,14 +54,14 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
         </>
       )}
       {settings.isMultilingual &&
-        content['@components'].translations &&
+        content?.['@components']?.translations &&
         (() => {
           const translationsLeft = filter(
             settings.supportedLanguages,
             (lang) =>
               !Boolean(
-                content['@components'].translations &&
-                  find(content['@components'].translations.items, {
+                content?.['@components']?.translations &&
+                  find(content?.['@components']?.translations?.items, {
                     language: lang,
                   }),
               ) && toBackendLang(currentLanguage) !== lang,
@@ -95,7 +95,9 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                             id="Translate to {lang}"
                             defaultMessage="Translate to {lang}"
                             values={{
-                              lang: langmap[lang].nativeName.toLowerCase(),
+                              lang: (
+                                langmap[lang]?.nativeName || lang
+                              ).toLowerCase(),
                             }}
                           />
                         </Link>
