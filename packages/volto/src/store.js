@@ -14,6 +14,7 @@ import {
   protectLoadEnd,
   loadProtector,
   userSessionReset,
+  preloadQuerystringForBlocks,
 } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
@@ -25,6 +26,7 @@ const configureStore = (initialState, history, apiHelper) => {
     ...(apiHelper ? [api(apiHelper)] : []),
     userSessionReset,
     protectLoadEnd,
+    preloadQuerystringForBlocks,
     ...(__CLIENT__
       ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
       : []),

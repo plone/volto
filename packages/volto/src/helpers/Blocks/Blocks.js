@@ -81,6 +81,14 @@ export function blockHasValue(data) {
 }
 
 /**
+ * Block id is valid (not undefined/null or the string "undefined" from object[undefined])
+ * @param {*} id Block id
+ * @return {boolean}
+ */
+const isValidBlockId = (id) =>
+  id != null && id !== 'undefined' && (typeof id !== 'string' || id.length > 0);
+
+/**
  * Get block pairs of [id, block] from content properties
  * @function getBlocks
  * @param {Object} properties
@@ -89,12 +97,13 @@ export function blockHasValue(data) {
 export const getBlocks = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  return (
-    properties[blocksLayoutFieldname]?.items?.map((n) => [
-      n,
-      properties[blocksFieldName][n],
-    ]) || []
-  );
+  const blocks = properties?.[blocksFieldName];
+  const items = properties?.[blocksLayoutFieldname]?.items;
+  if (!items) return [];
+  return items
+    .filter((n) => isValidBlockId(n))
+    .map((n) => [n, blocks?.[n]])
+    .filter(([, block]) => block !== undefined && block !== null);
 };
 
 /**
@@ -385,33 +394,51 @@ export function ensureBlocksLayoutSync(formData) {
   const currentLayout = formData[blocksLayoutFieldname];
   // Handle case where blocks_layout is {} or items is undefined (from migration)
   const layoutItems = currentLayout.items || [];
-  const blockIds = Object.keys(blocks).filter((id) => blocks[id] !== null);
+  const blockIds = Object.keys(blocks).filter(
+    (id) => isValidBlockId(id) && blocks[id] !== null,
+  );
 
   // If blocks_layout is empty but blocks has content, sync it
   if (layoutItems.length === 0 && blockIds.length > 0) {
     return {
       ...formData,
+      [blocksFieldname]: omit(
+        blocks,
+        Object.keys(blocks).filter((id) => !isValidBlockId(id)),
+      ),
       [blocksLayoutFieldname]: {
         items: blockIds,
       },
     };
   }
 
-  // If blocks_layout has items that don't exist in blocks, remove them
+  // If blocks_layout has items that don't exist in blocks, remove them (exclude invalid ids)
   const validItems = layoutItems.filter(
-    (id) => blocks[id] !== null && blocks[id] !== undefined,
+    (id) =>
+      isValidBlockId(id) && blocks[id] !== null && blocks[id] !== undefined,
   );
 
   // If blocks has new items not in layout, add them
   const newItems = blockIds.filter((id) => !layoutItems.includes(id));
   const allItems = [...validItems, ...newItems];
 
+  const hasInvalidBlocks = Object.keys(blocks).some(
+    (id) => !isValidBlockId(id),
+  );
+
   if (
+    hasInvalidBlocks ||
     allItems.length !== layoutItems.length ||
     !allItems.every((id, index) => layoutItems[index] === id)
   ) {
     return {
       ...formData,
+      [blocksFieldname]: hasInvalidBlocks
+        ? omit(
+            blocks,
+            Object.keys(blocks).filter((id) => !isValidBlockId(id)),
+          )
+        : blocks,
       [blocksLayoutFieldname]: {
         items: allItems,
       },
