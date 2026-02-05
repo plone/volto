@@ -48,6 +48,10 @@ const messages = defineMessages({
     id: 'Choose a file',
     defaultMessage: 'Choose a file',
   },
+  requiredField: {
+    id: 'This field is required.',
+    defaultMessage: 'This field is required.',
+  },
 });
 
 /**
@@ -141,11 +145,19 @@ const RegistryImageWidget = (props) => {
                 )}
               </div>
             )}
-            <label className="label-file-widget-input">
+            <Button
+              className="label-file-widget-input"
+              aria-required={props.required}
+              aria-label={
+                props.required
+                  ? intl.formatMessage(messages.requiredField)
+                  : null
+              }
+            >
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
-            </label>
+            </Button>
             <input
               {...getInputProps({
                 type: 'file',

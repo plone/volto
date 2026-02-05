@@ -3947,6 +3947,12 @@ msgstr ""
 msgid "Third"
 msgstr "Derde"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "This field is required."
+msgstr ""
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
