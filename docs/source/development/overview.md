@@ -19,7 +19,7 @@ As a reference, here's an overview of knowledge and frameworks, to give a more c
 
 ## Foundation
 
-As is the case with similar modern JavaScript-based applications, you should be familiar the following foundational topics.
+As is the case with similar modern JavaScript-based applications, you should be familiar with the following foundational topics.
 
 -   Modern JavaScript development.
     Volto uses next-generation JavaScript.
