@@ -42,3 +42,14 @@ Run the following command.
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
+
+## Solution for macOS
+
+macOS uses a different file watching mechanism than Linux.
+
+If you encounter file watcher limits, you can try increasing the maximum number
+of open files.
+
+```bash
+ulimit -n 1048576
+```
