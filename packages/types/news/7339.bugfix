@@ -1,1 +1,0 @@
-Fix typing for `contentIcons` and `controlPanelsIcons` in Settings config. Changed from `Record<string, React.ComponentType>` to `Record<string, string>` as they contain SVG paths. @YourGitHubUsername
