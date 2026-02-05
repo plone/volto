@@ -2,12 +2,7 @@
  * FormFieldWrapper component.
  * @module components/manage/Widgets/FormFieldWrapper
  */
-import React, {
-  Component,
-  Children,
-  isValidElement,
-  cloneElement,
-} from 'react';
+import React, { Children, isValidElement, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
 import map from 'lodash/map';
@@ -62,21 +57,17 @@ const FormFieldWrapper = ({
   const intl = useIntl();
   const languageIndependent = multilingual_options?.language_independent;
 
-    const wdg = (
-      <>
-        {Children.map(this.props.children, (child) => {
-          if (
-            isValidElement(child) &&
-            required &&
-            child.type.name === 'Input'
-          ) {
-            return cloneElement(child, {
-              'aria-required': true,
-              'aria-invalid': error && error.length > 0,
-            });
-          }
-          return child;
-        })}
+  const wdg = (
+    <>
+      {Children.map(children, (child) => {
+        if (isValidElement(child) && required && child.type.name === 'Input') {
+          return cloneElement(child, {
+            'aria-required': true,
+            'aria-invalid': !!(error && error.length > 0),
+          });
+        }
+        return child;
+      })}
 
       {map(error, (message) => (
         <Label key={message} basic color="red" className="form-error-label">
