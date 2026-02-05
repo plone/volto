@@ -39,4 +39,5 @@ pluggables
 widget
 how-to-restrict-blocks
 color-picker-widget
+known-dev-watcher-issue
 ```

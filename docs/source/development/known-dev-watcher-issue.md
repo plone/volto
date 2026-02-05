@@ -1,29 +1,44 @@
 ---
-title: Known development watcher issue
+myst:
+  html_meta:
+    "description": "Known development watcher issues in Volto"
+    "property=og:description": "Known development watcher issues in Volto"
+    "property=og:title": "Known development watcher issues"
+    "keywords": "Volto, development, watcher, inotify, webpack"
 ---
 
-This document describes a known file watcher issue that can occur during Volto development.
-It explains what you will observe when the issue happens.
-It also provides guidance on how to resolve the problem.
+# Known development watcher issues
 
-## What you will see
+When developing Volto locally, you might encounter file watcher errors.
+These errors are caused by operating system limits on the number of files that can be watched simultaneously.
 
-When this issue occurs, the development server may stop unexpectedly.
-File changes may no longer trigger rebuilds.
-An error related to the file watcher limit can appear in the terminal.
+The issue usually appears when running Volto in development mode.
+It is more common on large projects or monorepos.
 
-## Why this happens
+## Symptoms
 
-Operating systems enforce a limit on the number of files that can be watched simultaneously.
-Larger Volto projects can exceed this limit during development.
-When the limit is reached, the file watcher fails.
+You might see errors similar to the following.
 
-## How to fix the issue
+```text
+Error: ENOSPC: System limit for number of file watchers reached
+```
 
-The issue can be resolved by increasing the file watcher limit on your system.
-After updating the limit, restart the development server.
+Volto might stop recompiling changes.
+Hot reloading might stop working.
 
-## Increasing the watcher limit
+## Cause
 
-On Linux and macOS, the watcher limit can be increased by adjusting system configuration values.
-This is commonly done by increasing the maximum number of file watchers allowed by the operating system.
+Volto uses file watchers to detect file changes during development.
+Operating systems limit the number of files that can be watched at the same time.
+When the limit is reached, new file watchers cannot be created.
+
+## Solution for Linux
+
+Increase the inotify watcher limit.
+
+Run the following command.
+
+```bash
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
