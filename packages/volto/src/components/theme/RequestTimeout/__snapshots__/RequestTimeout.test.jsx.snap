@@ -22,7 +22,7 @@ exports[`RequestTimeout > renders a request timeout or no connection component 1
       }
     }
   >
-    There is no connection to the server, due to a timeout o no network connection.
+    There is no connection to the server, due to a timeout or no network connection.
     <br />
     <a
       href="http://localhost:8080/Plone"

@@ -6,11 +6,7 @@ import { Provider } from 'react-intl-redux';
 import LeadImageSidebar from './LeadImageSidebar';
 
 vi.mock('@plone/volto/components/manage/Widgets');
-vi.mock('@plone/volto/components/manage/Widgets', async () => {
-  return await import(
-    '@plone/volto/components/manage/Widgets/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Widgets');
 
 const mockStore = configureStore();
 

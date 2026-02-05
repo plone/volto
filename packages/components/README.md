@@ -5,7 +5,7 @@
 [![Build Status](https://github.com/plone/components/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/components/actions)
 [![Build Status](https://app.readthedocs.org/projects/plone-components/badge/?version=latest)](https://plone-components.readthedocs.io/latest/)
 
-This package contains ReactJS components for using Plone as a headless CMS.
+This package contains React components for using Plone as a headless CMS.
 
 The purpose of this package is to provide an agnostic set of baseline components to build sites upon.
 
@@ -15,7 +15,7 @@ You can find the self-documented Storybook in:
 
 https://plone-components.readthedocs.io/latest/
 
-`@plone/components` is based on [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html), the documentation there applies also to all the components in this package.
+`@plone/components` is based on [React Aria Components](https://react-aria.adobe.com/), the documentation there applies also to all the components in this package.
 
 ## Design decisions and assumptions
 
@@ -26,9 +26,9 @@ This package provides a set of simple, ready to use components with the followin
 - Theme-able (they can be themed, using both the provided basic theme as a baseline and custom CSS properties)
 - Data-driven-less (they are dumb, presentational components)
 - i18n-less (they do not provide i18n machinery or attached to any i18n framework or library)
-- Built on a renowned headless CMS components library: [React Aria Components (RAC)](https://react-spectrum.adobe.com/react-aria/components.html)
+- Built on a renowned headless CMS components library: [React Aria Components (RAC)](https://react-aria.adobe.com/)
 
-Since we are using RAC as the base, the styling of this package components are done via the [RAC styling options](https://react-spectrum.adobe.com/react-aria/styling.html).
+Since we are using RAC as the base, the styling of this package components are done via the [RAC styling options](https://react-aria.adobe.com/styling).
 See the `react-aria-components` section below for more information about RAC.
 This package provides a simple and basic set of CSS rules to build upon.
 Alternatively, you can bring your own styles, removing the basic styling or complementing it, and build on top of it.
@@ -294,7 +294,7 @@ https://medium.com/@nirbenyair/headless-components-in-react-and-why-i-stopped-us
 
 ### `react-aria-components`
 
-`@plone/components` is based on Adobe's [`react-aria-components` library](https://react-spectrum.adobe.com/react-aria/react-aria-components.html).
+`@plone/components` is based on Adobe's [`react-aria-components` library](https://react-aria.adobe.com/).
 React Aria Components is a library of unstyled components built on top of the React Aria library.
 It provides a simpler way to build accessible components with custom styles, while offering the flexibility to drop down to hooks for even more customizability where needed.
 

@@ -87,7 +87,11 @@ export function mergeSlateWithBlockForward(editor, nextBlock, event) {
   // with current block value, then use this result for next block, delete
   // current block
 
-  const next = nextBlock.value;
+  const next = nextBlock?.value;
+  // Safeguard: if next block has no value or an empty value, there is nothing to merge
+  if (!Array.isArray(next) || next.length === 0) {
+    return;
+  }
 
   // collapse the selection to its start point
   Transforms.collapse(editor, { edge: 'end' });

@@ -41,9 +41,9 @@
       "error",
       {
         "selector": "JSXElement[openingElement.name.name='img']",
-        "message": "Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag."
-      }
-    ]
+        "message": "Use the Image component from '@plone/volto/components/theme/Image/Image' instead of <img> tag.",
+      },
+    ],
   },
   "settings": {
     "import/resolver": {
@@ -57,6 +57,7 @@
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
       },
+      "node": { "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"] },
       "babel-plugin-root-import": {
         "rootPathSuffix": "src",
       },
@@ -77,6 +78,20 @@
       "parser": "@typescript-eslint/parser",
     },
     {
+      "files": [
+        "**/*.test.js",
+        "**/*.test.jsx",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/cypress/**/*.js",
+        "**/cypress/**/*.ts",
+      ],
+      "plugins": ["no-only-tests"],
+      "rules": {
+        "no-only-tests/no-only-tests": "error",
+      },
+    },
+    {
       "files": ["**/*.stories.js", "**/*.stories.jsx"],
       "rules": {
         "import/no-anonymous-default-export": "off",
@@ -84,17 +99,17 @@
     },
     {
       "files": [
-        "**/Image/Image.jsx", 
+        "**/Image/Image.jsx",
         "**/Image/Image.js",
         "**/*.stories.js",
-        "**/*.stories.jsx", 
+        "**/*.stories.jsx",
         "**/*.test.js",
-        "**/*.test.jsx"
+        "**/*.test.jsx",
       ],
       "rules": {
-        "no-restricted-syntax": "off"
-      }
-    }
+        "no-restricted-syntax": "off",
+      },
+    },
   ],
   "globals": {
     "root": true,
@@ -108,10 +123,9 @@
     "__SENTRY__": true,
     "cy": true,
     "Cypress": true,
-    "jest": true,
     "socket": true,
     "webpackIsomorphicTools": true,
-    "vitest":true,
-    "vi":true
+    "vitest": true,
+    "vi": true,
   },
 }
