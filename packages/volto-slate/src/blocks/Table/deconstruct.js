@@ -19,7 +19,7 @@ import {
 export function syncCreateTableBlock(rows) {
   const id = uuid();
   const block = {
-    '@type': 'table',
+    '@type': 'slateTable',
     table: {
       rows,
     },
