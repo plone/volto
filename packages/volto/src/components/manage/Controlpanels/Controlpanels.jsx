@@ -13,7 +13,7 @@ import uniqBy from 'lodash/uniqBy';
 import { useEffect, useState } from 'react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Header, Message, Segment } from 'semantic-ui-react';
 
@@ -21,10 +21,10 @@ import Error from '@plone/volto/components/theme/Error/Error';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import VersionOverview from '@plone/volto/components/manage/Controlpanels/VersionOverview';
-
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
+import { listAddons } from '@plone/volto/actions/addons/addons';
 
 const messages = defineMessages({
   sitesetup: {
@@ -106,8 +106,8 @@ const messages = defineMessages({
  */
 export default function Controlpanels({ location }) {
   const intl = useIntl();
+  const dispatch = useDispatch();
   const [isClient, setIsClient] = useState(false);
-
   const { pathname } = location;
   const controlpanels = useSelector(
     (state) => state.controlpanels.controlpanels,
@@ -116,10 +116,19 @@ export default function Controlpanels({ location }) {
   const systemInformation = useSelector(
     (state) => state.controlpanels.systeminformation,
   );
+  const installedAddons = useSelector(
+    (state) => state.addons.installedAddons,
+    shallowEqual,
+  );
 
   useEffect(() => {
+    dispatch(listAddons());
     setIsClient(true);
-  }, []);
+  }, [dispatch]);
+
+  const isDiscussionInstalled = installedAddons?.some(
+    (addon) => addon.id === 'plone.app.discussion',
+  );
 
   const error = controlpanelsRequest?.error;
 
@@ -171,11 +180,15 @@ export default function Controlpanels({ location }) {
         group: intl.formatMessage(messages.content),
         title: intl.formatMessage(messages.relations),
       },
-      {
-        '@id': '/moderate-comments',
-        group: intl.formatMessage(messages.content),
-        title: intl.formatMessage(messages.moderatecomments),
-      },
+      ...(isDiscussionInstalled
+        ? [
+            {
+              '@id': '/moderate-comments',
+              group: intl.formatMessage(messages.content),
+              title: intl.formatMessage(messages.moderatecomments),
+            },
+          ]
+        : []),
       {
         '@id': '/users',
         group: intl.formatMessage(messages.usersControlPanelCategory),
