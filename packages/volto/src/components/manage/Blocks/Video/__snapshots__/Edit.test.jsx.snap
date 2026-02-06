@@ -8,20 +8,37 @@ exports[`renders an edit video block component 1`] = `
     className="video-inner"
   >
     <div
-      className="ui 16:9 embed"
-      onClick={[Function]}
-      onKeyPress={[Function]}
-      tabIndex={0}
+      className="ui embed video-embed 16:9"
     >
-      <i
-        aria-hidden="true"
-        className="play icon"
-        onClick={[Function]}
-      />
       <img
+        alt=""
         className="placeholder"
         src="https://img.youtube.com/vi/KqjeO_ekW3g/sddefault.jpg"
       />
+      <button
+        aria-label="Play video"
+        className="video-play-button"
+        onClick={[Function]}
+      >
+        <svg
+          className="icon"
+          dangerouslySetInnerHTML={
+            {
+              "__html": "<path fill-rule="evenodd" d="M11,10.71 L11,25.29 L23.96,18 L11,10.71 Z M9,28.71 L9,7.29 L28.04,18 L9,28.71 Z"/>",
+            }
+          }
+          onClick={null}
+          style={
+            {
+              "fill": "white",
+              "height": "100%",
+              "width": "auto",
+            }
+          }
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        />
+      </button>
     </div>
   </div>
 </div>
