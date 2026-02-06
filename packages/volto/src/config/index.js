@@ -179,6 +179,10 @@ let config = {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
     },
+    lcpEligibleBlocks: {
+      image: (block) => !!block.url,
+      listing: (block) => block.variation === 'imageGallery',
+    },
   },
   experimental: {
     addBlockButton: {

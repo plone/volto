@@ -8,6 +8,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
+  getLCPBlockId,
 } from '@plone/volto/helpers/Blocks/Blocks';
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
@@ -32,6 +33,7 @@ const RenderBlocks = (props) => {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
   const CustomTag = props.as || React.Fragment;
+  const lcpBlockId = getLCPBlockId(content);
 
   return hasBlocksData(content) ? (
     <CustomTag>
@@ -81,6 +83,7 @@ const RenderBlocks = (props) => {
                   data={blockData}
                   path={getBaseUrl(location?.pathname || '')}
                   blocksConfig={blocksConfig}
+                  isLCPBlock={block === lcpBlockId}
                 />
               </StyleWrapper>
             </MaybeWrap>

@@ -6,7 +6,13 @@ import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 import config from '@plone/volto/registry';
 
-export const View = ({ className, data, detached, properties, style }) => {
+export const View = ({
+  className,
+  data,
+  detached,
+  style,
+  isLCPBlock = false,
+}) => {
   const href = data?.href?.[0]?.['@id'] || '';
 
   const Image = config.getComponent({ name: 'Image' }).component;
@@ -66,7 +72,8 @@ export const View = ({ className, data, detached, properties, style }) => {
                 }
                 sizes={config.blocks.blocksConfig.image.getSizes(data)}
                 alt={data.alt || ''}
-                loading="lazy"
+                loading={isLCPBlock ? 'eager' : 'lazy'}
+                fetchpriority={isLCPBlock ? 'high' : 'low'}
                 responsive={true}
               />
             );
@@ -96,6 +103,7 @@ export const View = ({ className, data, detached, properties, style }) => {
  */
 View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
+  isLCPBlock: PropTypes.bool,
 };
 
 export default withBlockExtensions(View);
