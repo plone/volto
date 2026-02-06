@@ -9,11 +9,6 @@ myst:
 
 # React
 
-```{note}
-This documentation is a work in progress.
-Any help is welcome to fill in the gaps!
-```
-
 Volto, the frontend for Plone, is built with {term}`React`.
 Understanding React fundamentals is essential for developing with Volto.
 This chapter provides an introduction to React concepts relevant to Volto development.
@@ -99,3 +94,19 @@ See {doc}`redux` for details on how Volto handles global state.
 
 Volto also provides custom hooks for common tasks, such as `useClient` for detecting client-side rendering and `usePrevious` for tracking previous values.
 You can find these in the {file}`packages/volto/src/hooks` and {file}`packages/volto/src/helpers/Utils` directories.
+
+
+## React patterns in Volto
+
+Volto uses several React patterns that you should be aware of.
+
+Higher-Order Components (HOCs)
+:   Functions that wrap components to add functionality.
+    Examples include `withRouter` and `injectIntl`.
+
+Context API
+:   Used for the pluggable system that allows components to be inserted at specific locations.
+    See {file}`packages/volto/src/components/manage/Pluggable` for the implementation.
+
+React Portals
+:   Used for rendering modals, sidebars, and toolbars outside the normal DOM hierarchy.
