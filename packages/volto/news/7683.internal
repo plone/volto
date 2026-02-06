@@ -1,0 +1,1 @@
+Refactored the TokenWidget component by converting it from a class-based implementation to a modern functional component using React hooks. @Manik-Khajuria-5
