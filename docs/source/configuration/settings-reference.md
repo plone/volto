@@ -254,6 +254,38 @@ See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-
 ```
 ````
 
+### `downloadableObjects`
+
+This setting defines which content types or MIME types should be treated as downloadable instead of going to the default view when a logged-out user clicks a link to the item.
+When a content type or MIME type matches an entry in this list, the system will download it using the `@@download` view.
+
+Default setting:
+
+```js
+config.settings.downloadableObjects = ['File'];
+```
+
+If you have a custom content type that stores files such as `MyCustomContentType`, you can use a list to make those files downloadable.
+
+```js
+config.settings.downloadableObjects = ['File', 'MyCustomContentType'];
+```
+
+Alternatively, you can append it to the list.
+
+```js
+config.settings.downloadableObjects.append('MyCustomContentType')
+```
+
+```{note}
+- The MIME type takes precedence over content type if present and recognized.
+- Types (content type and MIME type) included in `viewableInBrowserObjects` will be displayed inline in the browser.
+    Setting `viewableInBrowserObjects` overrides `downloadableObjects`.
+
+```{seealso}
+The :ref:`viewableInBrowserObjects` setting to configure which content or MIME types should be opened inline in the browser.
+```
+
 ### `errorHandlers`
 
 `errorHandlers` is a list of error handlers that will be called when there is an unhandled exception.
@@ -540,6 +572,29 @@ config.settings.styleClassNameExtenders = [
 `unwantedControlPanelsFields` is the control panel fields that are not used in Volto.
 It is used internally by the `filterControlPanelsSchema` function.
 
+(viewableInBrowserObjects)=
+
+### `viewableInBrowserObjects`
+
+This setting defines which content types or MIME types should be displayed inline in the browser instead of going to the default view when a logged-out user clicks a link to the item.
+When a content type or MIME type matches an entry in this list, the system will open it inline in a new browser tab using the `@@display-file` view.
+
+Default setting:
+
+```js
+config.settings.viewableInBrowserObjects = [];
+```
+
+The following example will display only PDFs inline.
+
+```js
+config.settings.viewableInBrowserObjects = ['application/pdf'];
+```
+
+```{note}
+- The MIME type takes precedence over content type if present and recognized.
+- Objects not listed here but included in `downloadableObjects` will be downloaded instead.
+
 ### `workflowMapping`
 
 `workflowMapping` is an object that defines the mapping between workflow states or transitions and the color that should show in the {guilabel}`change workflow` select menu.
@@ -622,6 +677,3 @@ See the {doc}`../deploying/performance` section for more details.
 
 `expressMiddleware` is a list of Express.js middleware that can extend the built-in functionality of Volto's server.
 See the [Express](../development/express) section for more details.
-
-
-

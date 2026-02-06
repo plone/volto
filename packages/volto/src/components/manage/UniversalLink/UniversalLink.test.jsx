@@ -231,6 +231,96 @@ describe('UniversalLink', () => {
     expect(json).toMatchSnapshot();
   });
 
+  it('returns @@display-file/file URL when mime_type is in viewableInBrowserObjects & the user is not authenticated', () => {
+    config.settings.viewableInBrowserObjects = ['application/pdf'];
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              '@id': 'http://localhost:3000/en/my-document',
+              mime_type: 'application/pdf',
+            }}
+          >
+            <span>Title</span>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    const link = container.querySelector('a');
+    expect(link.getAttribute('href')).toBe(
+      '/en/my-document/@@display-file/file',
+    );
+    expect(link.getAttribute('href')).not.toContain('@@download');
+    expect(link.getAttribute('target')).toBe('_blank');
+    expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+  });
+
+  it('does not return @@display-file/file URL when user is authenticated', () => {
+    const authenticatedStore = mockStore({
+      userSession: {
+        token: 'some-auth-token',
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    config.settings.viewableInBrowserObjects = ['application/pdf'];
+
+    const { container } = render(
+      <Provider store={authenticatedStore}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              '@id': 'http://localhost:3000/en/my-document',
+              mime_type: 'application/pdf',
+            }}
+          >
+            <span>Title</span>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    const link = container.querySelector('a');
+    expect(link.getAttribute('href')).toBe('/en/my-document');
+    expect(link.getAttribute('href')).not.toContain('@@display-file');
+  });
+
+  it('returns @@display-file/file URL when mime_type is in viewableInBrowserObjects even if @type is in downloadableObjects', () => {
+    // mime_type should take precedence over @type
+    config.settings.downloadableObjects = ['File'];
+    config.settings.viewableInBrowserObjects = ['application/pdf'];
+
+    const { container } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink
+            item={{
+              '@id': 'http://localhost:3000/en/my-document',
+              '@type': 'File',
+              mime_type: 'application/pdf',
+            }}
+          >
+            <span>Title</span>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    const link = container.querySelector('a');
+    expect(link.getAttribute('href')).toBe(
+      '/en/my-document/@@display-file/file',
+    );
+    expect(link.getAttribute('href')).not.toContain('@@download');
+    expect(link.getAttribute('target')).toBe('_blank');
+    expect(link.getAttribute('rel')).toBe('noopener noreferrer');
+  });
+
   test('only one UniversalLink re-renders when prop changes (stable references)', () => {
     const renderCounter = vi.fn();
     __test.renderCounter = renderCounter;
