@@ -142,7 +142,7 @@
     "deepmerge": "^4.2.2",
     "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
-    "diff": "3.5.0",
+    "diff": "3.5.1",
     "express": "4.19.2",
     "filesize": "6",
     "full-icu": "1.4.0",
