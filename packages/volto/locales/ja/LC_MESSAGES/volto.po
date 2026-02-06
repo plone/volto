@@ -2204,6 +2204,7 @@ msgstr "読み込み中"
 
 #. Default: "Loading…"
 #: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Blocks/Search/SearchBlockEdit
 msgid "Loading…"
 msgstr ""
 
