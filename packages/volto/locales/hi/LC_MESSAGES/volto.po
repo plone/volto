@@ -2197,6 +2197,11 @@ msgstr "अधिक लोड करें"
 msgid "Loading"
 msgstr "लोड हो रहा है"
 
+#. Default: "Loading…"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Loading…"
+msgstr ""
+
 #. Default: "Login"
 #: components/theme/Login/Login
 msgid "Log In"

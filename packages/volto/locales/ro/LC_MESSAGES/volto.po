@@ -2203,6 +2203,11 @@ msgstr "Incarcă mai mult"
 msgid "Loading"
 msgstr "Se încarcă"
 
+#. Default: "Loading…"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Loading…"
+msgstr ""
+
 #. Default: "Login"
 #: components/theme/Login/Login
 msgid "Log In"

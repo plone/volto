@@ -34,6 +34,10 @@ const messages = defineMessages({
     id: 'Sorted on',
     defaultMessage: 'Sorted on',
   },
+  loading: {
+    id: 'Loading…',
+    defaultMessage: 'Loading…',
+  },
 });
 
 const SortOn = (props) => {
@@ -48,7 +52,7 @@ const SortOn = (props) => {
     querystring = {},
     intl,
   } = props;
-  const { sortable_indexes } = querystring;
+  const { sortable_indexes = {}, loaded: querystringLoaded } = querystring;
   const Select = reactSelect.default;
 
   const defaultSortOn = data?.query?.sort_on || '';
@@ -62,13 +66,31 @@ const SortOn = (props) => {
   if (!showSelectField && !activeSortOn) {
     return null;
   }
+
+  // Avoid showing raw index key (e.g. "effective") before @querystring labels load
+  const labelsLoading =
+    activeSortOn &&
+    !sortable_indexes?.[activeSortOn]?.title &&
+    !querystringLoaded;
+
   const value = {
     value: activeSortOn || intl.formatMessage(messages.noSelection),
-    label:
-      activeSortOn && sortable_indexes
+    label: labelsLoading
+      ? intl.formatMessage(messages.loading)
+      : activeSortOn && sortable_indexes
         ? sortable_indexes[activeSortOn]?.title
         : activeSortOn || intl.formatMessage(messages.noSelection),
   };
+
+  const options = labelsLoading
+    ? []
+    : sortOnOptions.map((k) => ({
+        value: k,
+        label:
+          sortable_indexes[k]?.title ||
+          k ||
+          intl.formatMessage(messages.noSelection),
+      }));
 
   return (
     <div className="search-sort-wrapper">
@@ -87,15 +109,7 @@ const SortOn = (props) => {
               styles={sortOnSelectStyles}
               theme={selectTheme}
               components={{ DropdownIndicator, Option }}
-              options={[
-                ...sortOnOptions.map((k) => ({
-                  value: k,
-                  label:
-                    sortable_indexes[k]?.title ||
-                    k ||
-                    intl.formatMessage(messages.noSelection),
-                })),
-              ]}
+              options={options}
               isSearchable={false}
               value={value}
               onChange={(data) => {

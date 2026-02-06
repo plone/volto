@@ -12,3 +12,4 @@ export {
   loadProtector,
 } from '@plone/volto/middleware/storeProtectLoadUtils';
 export { default as userSessionReset } from './userSessionReset';
+export { default as preloadQuerystringForBlocks } from './preloadQuerystringForBlocks';

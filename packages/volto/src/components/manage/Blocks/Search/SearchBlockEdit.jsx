@@ -65,6 +65,7 @@ const SearchBlockEdit = (props) => {
   const { query = {} } = data || {};
   // We don't need deep compare here, as this is just json serializable data.
   const deepQuery = JSON.stringify(query);
+  const deepFacets = JSON.stringify(data?.facets);
 
   useEffect(() => {
     onTriggerSearch(
@@ -73,7 +74,16 @@ const SearchBlockEdit = (props) => {
       data?.query?.sort_on,
       data?.query?.sort_order,
     );
-  }, [deepQuery, onTriggerSearch, data]);
+    // We use serialized values (deepQuery, deepFacets) in dependencies to prevent
+    // unnecessary re-renders when data object reference changes but values don't
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    deepQuery,
+    deepFacets,
+    data?.query?.sort_on,
+    data?.query?.sort_order,
+    onTriggerSearch,
+  ]);
 
   return (
     <>
