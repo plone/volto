@@ -1,0 +1,1 @@
+Preload @querystring when content with blocks is loaded so Search block sort dropdown shows labels (e.g. "Effective date") instead of raw keys (e.g. "effective"). Show "Loading…" in SortOn until labels are available. @aryan7081

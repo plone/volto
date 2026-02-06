@@ -6,6 +6,7 @@
 
 export { default as api } from '@plone/volto/middleware/api';
 export { default as blacklistRoutes } from './blacklistRoutes';
+export { default as preloadQuerystringForBlocks } from './preloadQuerystringForBlocks';
 export {
   protectLoadStart,
   protectLoadEnd,
