@@ -1,0 +1,2 @@
+Fix URL widgets to preserve template variables like ${portal_url} and ${navigation_root_url} without normalization or validation errors. @aryan7081
+
