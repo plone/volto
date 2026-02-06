@@ -1,0 +1,1 @@
+Documented a known Volto development issue where OS file watcher limits may cause hot reload to stop functioning.
