@@ -86,3 +86,16 @@ class Counter extends Component {
 
 export default Counter;
 ```
+
+
+## React hooks in Volto
+
+Volto uses React hooks extensively for state management and side effects.
+
+Common hooks you will encounter include `useState`, `useEffect`, `useRef`, `useMemo`, and `useCallback`.
+
+For global state management, Volto uses Redux hooks such as `useSelector` and `useDispatch`.
+See {doc}`redux` for details on how Volto handles global state.
+
+Volto also provides custom hooks for common tasks, such as `useClient` for detecting client-side rendering and `usePrevious` for tracking previous values.
+You can find these in the {file}`packages/volto/src/hooks` and {file}`packages/volto/src/helpers/Utils` directories.
