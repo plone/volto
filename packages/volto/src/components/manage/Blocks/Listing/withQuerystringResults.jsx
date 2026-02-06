@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import useDeepCompareEffect from 'use-deep-compare-effect';
 
-import { getContent } from '@plone/volto/actions/content/content';
 import { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 import { usePagination } from '@plone/volto/helpers/Utils/usePagination';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
@@ -116,8 +115,6 @@ export default function withQuerystringResults(WrappedComponent) {
             subrequestID,
           ),
         );
-      } else {
-        dispatch(getContent(initialPath, null, null, currentPage));
       }
       adaptedQueryRef.current = adaptedQuery;
       currentPageRef.current = currentPage;
