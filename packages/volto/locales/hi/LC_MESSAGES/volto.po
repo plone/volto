@@ -912,6 +912,11 @@ msgstr "{date} को {creator} द्वारा बनाया गया"
 msgid "Created on"
 msgstr "बनाया गया"
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1309,6 +1314,11 @@ msgstr "मान संपादित करें"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "संपादित करें {title}"
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
+msgstr ""
 
 #. Default: "Email"
 #: helpers/MessageLabels/MessageLabels
@@ -1823,6 +1833,7 @@ msgid "Home"
 msgstr "होम"
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "आईडी"
@@ -2348,6 +2359,11 @@ msgstr "टिप्पणियों को मध्यम बनाएं"
 msgid "Moderate comments"
 msgstr "टिप्पणियों को मध्यम बनाएं"
 
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
+
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
@@ -2626,6 +2642,11 @@ msgstr "ध्यान दें कि यहां सेट किए गए
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
 msgstr "सक्रिय ऑब्जेक्ट्स की संख्या"
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
+msgstr ""
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
@@ -3996,6 +4017,7 @@ msgid "Time"
 msgstr "समय"
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents

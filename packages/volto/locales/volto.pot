@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-02-06T19:37:16.333Z\n"
+"POT-Creation-Date: 2026-02-07T17:50:27.744Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -914,6 +914,11 @@ msgstr ""
 msgid "Created on"
 msgstr ""
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1310,6 +1315,11 @@ msgstr ""
 #. Default: "Edit {title}"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
+msgstr ""
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
 msgstr ""
 
 #. Default: "Email"
@@ -1825,6 +1835,7 @@ msgid "Home"
 msgstr ""
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr ""
@@ -2350,6 +2361,11 @@ msgstr ""
 msgid "Moderate comments"
 msgstr ""
 
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
+
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
@@ -2627,6 +2643,11 @@ msgstr ""
 #. Default: "Number of active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
+msgstr ""
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
 msgstr ""
 
 #. Default: "Object Size"
@@ -3998,6 +4019,7 @@ msgid "Time"
 msgstr ""
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents

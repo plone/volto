@@ -912,6 +912,11 @@ msgstr "Creato da {creator} il {date}"
 msgid "Created on"
 msgstr "Creato il"
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1309,6 +1314,11 @@ msgstr "Modifica i valori"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Modifica {title}"
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
+msgstr ""
 
 #. Default: "Email"
 #: helpers/MessageLabels/MessageLabels
@@ -1823,6 +1833,7 @@ msgid "Home"
 msgstr "Home"
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
@@ -2348,6 +2359,11 @@ msgstr "Modera i commenti"
 msgid "Moderate comments"
 msgstr "Moderazione dei commenti"
 
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
+
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
@@ -2626,6 +2642,11 @@ msgstr "Tieni presente che i ruoli qui impostati si applicano direttamente a un 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
 msgstr "Numero degli oggetti attivi"
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
+msgstr ""
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
@@ -3996,6 +4017,7 @@ msgid "Time"
 msgstr "Ora"
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents

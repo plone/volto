@@ -912,6 +912,11 @@ msgstr ""
 msgid "Created on"
 msgstr ""
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1308,6 +1313,11 @@ msgstr ""
 #. Default: "Edit {title}"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
+msgstr ""
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
 msgstr ""
 
 #. Default: "Email"
@@ -1823,6 +1833,7 @@ msgid "Home"
 msgstr ""
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr ""
@@ -2348,6 +2359,11 @@ msgstr ""
 msgid "Moderate comments"
 msgstr ""
 
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
+
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
@@ -2625,6 +2641,11 @@ msgstr ""
 #. Default: "Number of active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
+msgstr ""
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
 msgstr ""
 
 #. Default: "Object Size"
@@ -3996,6 +4017,7 @@ msgid "Time"
 msgstr ""
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents

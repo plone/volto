@@ -918,6 +918,11 @@ msgstr "由{creator}在{date}时创建"
 msgid "Created on"
 msgstr "创建于"
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1315,6 +1320,11 @@ msgstr "编辑值"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "编辑 {title}"
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
+msgstr ""
 
 #. Default: "Email"
 #: helpers/MessageLabels/MessageLabels
@@ -1829,6 +1839,7 @@ msgid "Home"
 msgstr "首页"
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr ""
@@ -2354,6 +2365,11 @@ msgstr "审核评论"
 msgid "Moderate comments"
 msgstr "审核评论"
 
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
+
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
@@ -2632,6 +2648,11 @@ msgstr "请注意这里设置的角色将直接应用于用户。符号{plone_sv
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
 msgstr "活动对象的数量"
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
+msgstr ""
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
@@ -4002,6 +4023,7 @@ msgid "Time"
 msgstr "时间"
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents

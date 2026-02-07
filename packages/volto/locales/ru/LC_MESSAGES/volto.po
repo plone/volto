@@ -917,6 +917,11 @@ msgstr "Создано {creator} {date}"
 msgid "Created on"
 msgstr "Создано"
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1314,6 +1319,11 @@ msgstr "Редактировать значения"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Редактировать {title}"
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
+msgstr ""
 
 #. Default: "Email"
 #: helpers/MessageLabels/MessageLabels
@@ -1828,6 +1838,7 @@ msgid "Home"
 msgstr "Главная"
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
@@ -2353,6 +2364,11 @@ msgstr "Модерировать комментарии"
 msgid "Moderate comments"
 msgstr "Модерировать комментарии"
 
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
+
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Monday and Friday"
@@ -2631,6 +2647,11 @@ msgstr "Обратите внимание, что роли, установлен
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
 msgstr "Количество активных объектов"
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
+msgstr ""
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
@@ -4001,6 +4022,7 @@ msgid "Time"
 msgstr "Время"
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents

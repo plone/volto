@@ -38,6 +38,30 @@ const messages = defineMessages({
     id: 'Loading…',
     defaultMessage: 'Loading…',
   },
+  effectiveDate: {
+    id: 'Effective date',
+    defaultMessage: 'Effective date',
+  },
+  creationDate: {
+    id: 'Creation date',
+    defaultMessage: 'Creation date',
+  },
+  modificationDate: {
+    id: 'Modification date',
+    defaultMessage: 'Modification date',
+  },
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  id: {
+    id: 'ID',
+    defaultMessage: 'ID',
+  },
+  numberOfItems: {
+    id: 'Number of items',
+    defaultMessage: 'Number of items',
+  },
 });
 
 const SortOn = (props) => {
@@ -60,13 +84,13 @@ const SortOn = (props) => {
   const activeSortOn = sortOn || defaultSortOn;
 
   // Fallback labels when backend returns raw key (e.g. "effective") as title
-  const FALLBACK_LABELS = {
-    effective: 'Effective date',
-    created: 'Creation date',
-    modified: 'Modification date',
-    sortable_title: 'Title',
-    id: 'ID',
-    getRawCount: 'Number of items',
+  const fallbackLabels = {
+    effective: intl.formatMessage(messages.effectiveDate),
+    created: intl.formatMessage(messages.creationDate),
+    modified: intl.formatMessage(messages.modificationDate),
+    sortable_title: intl.formatMessage(messages.title),
+    id: intl.formatMessage(messages.id),
+    getRawCount: intl.formatMessage(messages.numberOfItems),
   };
 
   const getLabel = (key) => {
@@ -75,7 +99,7 @@ const SortOn = (props) => {
     if (title && String(title).toLowerCase() !== String(key).toLowerCase()) {
       return title;
     }
-    return FALLBACK_LABELS[key] || title || null;
+    return fallbackLabels[key] || title || null;
   };
 
   let { sortOnOptions = [] } = data;
