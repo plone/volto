@@ -1,0 +1,1 @@
+Fix vscodesettings.js to properly check if settings.json exists before reading. @wesleybl
