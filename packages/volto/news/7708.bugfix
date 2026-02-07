@@ -1,0 +1,1 @@
+Fix viewableInBrowserObjects configuration for links in Slate text blocks by centralizing URL rewriting logic in UniversalLink component.

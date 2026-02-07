@@ -68,7 +68,19 @@ export function getUrl(
   children: React.ReactNode,
 ): string {
   if ('href' in props && typeof props.href === 'string') {
-    return props.href;
+    let url = props.href;
+    // If user is anonymous and viewableInBrowserObjects is configured,
+    // replace @@download with @@display-file for href-based links
+    // This handles cases where we don't have the item (content type) available
+    if (
+      !token &&
+      config.settings.viewableInBrowserObjects &&
+      config.settings.viewableInBrowserObjects.length > 0 &&
+      url.includes('@@download')
+    ) {
+      url = url.replace('@@download', '@@display-file');
+    }
+    return url;
   }
 
   if (!item || item['@id'] === '') return config.settings.publicURL;

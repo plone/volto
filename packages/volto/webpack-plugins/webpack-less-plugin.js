@@ -139,10 +139,13 @@ module.exports = (userOptions = {}) => ({
         include: [
           path.resolve('./theme'),
           path.resolve('./src'),
-          /node_modules\/@plone\/volto\/theme/,
-          /packages\/volto\/theme/,
-          /plone\.volto\/theme/,
-          /node_modules\/semantic-ui-less/,
+          /node_modules[\\/]@plone[\\/]volto[\\/]theme/,
+          /packages[\\/]volto[\\/]theme/,
+          /plone\.volto[\\/]theme/,
+          /node_modules[\\/]semantic-ui-less/,
+          // This is a hack to make sure semantic-ui-less is included in the build
+          // even if it is a symlink (pnpm)
+          path.dirname(require.resolve('semantic-ui-less/package.json')),
           ...Object.values(registry.getResolveAliases()),
         ],
         use: isServer

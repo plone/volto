@@ -6,6 +6,7 @@ import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 const ViewLink = ({ url, target, download, children }) => {
   const { openExternalLinkInNewTab } = config.settings;
+
   return (
     <UniversalLink
       href={url}
@@ -35,19 +36,19 @@ export const LinkElement = (props) => {
     >
       {Array.isArray(children)
         ? children.map((child, i) => {
-            if (child?.props?.decorations) {
-              const isSelection =
-                child.props.decorations.findIndex((deco) => deco.isSelection) >
-                -1;
-              if (isSelection)
-                return (
-                  <span className="highlight-selection" key={`${i}-sel`}>
-                    {child}
-                  </span>
-                );
-            }
-            return child;
-          })
+          if (child?.props?.decorations) {
+            const isSelection =
+              child.props.decorations.findIndex((deco) => deco.isSelection) >
+              -1;
+            if (isSelection)
+              return (
+                <span className="highlight-selection" key={`${i}-sel`}>
+                  {child}
+                </span>
+              );
+          }
+          return child;
+        })
         : children}
     </a>
   );
