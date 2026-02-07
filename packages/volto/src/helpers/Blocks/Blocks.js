@@ -103,7 +103,7 @@ export const getBlocks = (properties) => {
   return items
     .filter((n) => isValidBlockId(n))
     .map((n) => [n, blocks?.[n]])
-    .filter(([, block]) => block !== undefined && block !== null);
+    .filter(([, block]) => block != null);
 };
 
 /**
