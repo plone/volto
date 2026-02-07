@@ -19,6 +19,7 @@ jobs:
         args: >-
           --timeout 5
           --max-retries 2
+          --retry-wait-time 10
           --exclude https://www.npmjs.com/
           --exclude http://localhost:8080
           --exclude http://localhost:3000
