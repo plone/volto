@@ -123,6 +123,23 @@
   text-transform: @labelTextTransform;
 }
 
+.ui.form .field-wrapper-with-toolbar {
+  position: relative;
+  display: flex;
+
+  .field-container {
+    min-width: 0;
+    flex: 1 1 0%;
+  }
+
+  .toolbar {
+    position: relative;
+    z-index: 2;
+    margin-right: 0;
+    margin-left: 8px;
+  }
+}
+
 .ui.form .toolbar {
   position: absolute;
   z-index: 1;
