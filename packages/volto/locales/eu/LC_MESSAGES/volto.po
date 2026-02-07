@@ -3421,6 +3421,7 @@ msgstr "Ezarri zure pasahitza"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
+#: components/theme/Search/Search
 msgid "Settings"
 msgstr "Ezarpenak"
 

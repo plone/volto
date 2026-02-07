@@ -31,6 +31,7 @@ describe('Controlpanels reducer', () => {
         loading: false,
         error: null,
       },
+      schemas: {},
       update: {
         loaded: false,
         loading: false,

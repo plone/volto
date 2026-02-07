@@ -3414,6 +3414,7 @@ msgstr "अपना पासवर्ड सेट करें"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
+#: components/theme/Search/Search
 msgid "Settings"
 msgstr "सेटिंग्स"
 
