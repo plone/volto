@@ -1,0 +1,1 @@
+Refactored the `WeekdayOfTheMonthIndexField` component by converting it from a class-based component to a modern functional component. @Manik-Khajuria-5
