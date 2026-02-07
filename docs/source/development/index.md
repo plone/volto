@@ -19,6 +19,7 @@ Or jump in to any topic listed below.
 :caption: Table of Contents
 :maxdepth: 1
 
+known-dev-watcher-issue
 overview
 creating-project
 add-ons/index
@@ -38,4 +39,5 @@ pluggables
 widget
 how-to-restrict-blocks
 color-picker-widget
+known-dev-watcher-issue
 ```
