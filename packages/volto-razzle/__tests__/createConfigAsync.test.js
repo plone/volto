@@ -1,4 +1,4 @@
-const createConfigAsync = require('../createConfigAsync');
+const createConfigAsync = require('../config/createConfigAsync');
 
 // Mock fs to simulate presence of the public directory
 jest.mock('fs-extra', () => ({
