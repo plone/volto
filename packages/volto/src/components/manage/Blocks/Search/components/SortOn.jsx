@@ -34,6 +34,34 @@ const messages = defineMessages({
     id: 'Sorted on',
     defaultMessage: 'Sorted on',
   },
+  loading: {
+    id: 'Loading…',
+    defaultMessage: 'Loading…',
+  },
+  effectiveDate: {
+    id: 'Effective date',
+    defaultMessage: 'Effective date',
+  },
+  creationDate: {
+    id: 'Creation date',
+    defaultMessage: 'Creation date',
+  },
+  modificationDate: {
+    id: 'Modification date',
+    defaultMessage: 'Modification date',
+  },
+  title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  id: {
+    id: 'ID',
+    defaultMessage: 'ID',
+  },
+  numberOfItems: {
+    id: 'Number of items',
+    defaultMessage: 'Number of items',
+  },
 });
 
 const SortOn = (props) => {
@@ -48,11 +76,31 @@ const SortOn = (props) => {
     querystring = {},
     intl,
   } = props;
-  const { sortable_indexes } = querystring;
+  const { sortable_indexes = {}, loaded: querystringLoaded = false } =
+    querystring;
   const Select = reactSelect.default;
 
   const defaultSortOn = data?.query?.sort_on || '';
   const activeSortOn = sortOn || defaultSortOn;
+
+  // Fallback labels when backend returns raw key (e.g. "effective") as title
+  const fallbackLabels = {
+    effective: intl.formatMessage(messages.effectiveDate),
+    created: intl.formatMessage(messages.creationDate),
+    modified: intl.formatMessage(messages.modificationDate),
+    sortable_title: intl.formatMessage(messages.title),
+    id: intl.formatMessage(messages.id),
+    getRawCount: intl.formatMessage(messages.numberOfItems),
+  };
+
+  const getLabel = (key) => {
+    if (!key) return null;
+    const title = sortable_indexes?.[key]?.title;
+    if (title && String(title).toLowerCase() !== String(key).toLowerCase()) {
+      return title;
+    }
+    return fallbackLabels[key] || title || null;
+  };
 
   let { sortOnOptions = [] } = data;
   sortOnOptions = [defaultSortOn, ...sortOnOptions];
@@ -62,13 +110,25 @@ const SortOn = (props) => {
   if (!showSelectField && !activeSortOn) {
     return null;
   }
+
+  // Show "Loading…" only while querystring is not loaded yet; once loaded use getLabel (or fallback)
+  const labelsLoading =
+    activeSortOn && !querystringLoaded && !getLabel(activeSortOn);
+  const loadingMsg = intl.formatMessage(messages.loading);
+  const noSelectionMsg = intl.formatMessage(messages.noSelection);
+
   const value = {
-    value: activeSortOn || intl.formatMessage(messages.noSelection),
+    value: activeSortOn || noSelectionMsg,
     label:
-      activeSortOn && sortable_indexes
-        ? sortable_indexes[activeSortOn]?.title
-        : activeSortOn || intl.formatMessage(messages.noSelection),
+      getLabel(activeSortOn) || (labelsLoading ? loadingMsg : noSelectionMsg),
   };
+
+  const options = labelsLoading
+    ? [{ value: activeSortOn, label: loadingMsg }]
+    : sortOnOptions.map((k) => ({
+        value: k,
+        label: getLabel(k) || noSelectionMsg,
+      }));
 
   return (
     <div className="search-sort-wrapper">
@@ -78,30 +138,32 @@ const SortOn = (props) => {
             <span className="sort-label">
               {intl.formatMessage(messages.sortOn)}
             </span>
-            <Select
-              id="select-search-sort-on"
-              name="select-searchblock-sort-on"
-              className="search-react-select-container"
-              classNamePrefix="react-select"
-              placeholder={intl.formatMessage(messages.sortOn)}
-              styles={sortOnSelectStyles}
-              theme={selectTheme}
-              components={{ DropdownIndicator, Option }}
-              options={[
-                ...sortOnOptions.map((k) => ({
-                  value: k,
-                  label:
-                    sortable_indexes[k]?.title ||
-                    k ||
-                    intl.formatMessage(messages.noSelection),
-                })),
-              ]}
-              isSearchable={false}
-              value={value}
-              onChange={(data) => {
-                !isEditMode && setSortOn(data.value);
-              }}
-            />
+            {labelsLoading ? (
+              <span
+                id="select-search-sort-on"
+                className="search-react-select-container sorted-label-value"
+                aria-label={intl.formatMessage(messages.sortOn)}
+              >
+                {intl.formatMessage(messages.loading)}
+              </span>
+            ) : (
+              <Select
+                id="select-search-sort-on"
+                name="select-searchblock-sort-on"
+                className="search-react-select-container"
+                classNamePrefix="react-select"
+                placeholder={intl.formatMessage(messages.sortOn)}
+                styles={sortOnSelectStyles}
+                theme={selectTheme}
+                components={{ DropdownIndicator, Option }}
+                options={options}
+                isSearchable={false}
+                value={value}
+                onChange={(data) => {
+                  !isEditMode && setSortOn(data.value);
+                }}
+              />
+            )}
           </>
         ) : (
           <span className="sorted-label">

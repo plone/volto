@@ -917,6 +917,11 @@ msgstr "Erstellt von {creator} am {date}"
 msgid "Created on"
 msgstr "Erstellt am"
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1314,6 +1319,11 @@ msgstr "Werte bearbeiten"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "{title} bearbeiten"
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
+msgstr ""
 
 #. Default: "Email"
 #: helpers/MessageLabels/MessageLabels
@@ -1828,6 +1838,7 @@ msgid "Home"
 msgstr "Startseite"
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
@@ -2202,6 +2213,12 @@ msgstr "Mehr laden"
 msgid "Loading"
 msgstr "lädt"
 
+#. Default: "Loading…"
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Blocks/Search/SearchBlockEdit
+msgid "Loading…"
+msgstr ""
+
 #. Default: "Login"
 #: components/theme/Login/Login
 msgid "Log In"
@@ -2346,6 +2363,11 @@ msgstr "Kommentare moderieren"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
 msgstr "Kommentare moderieren"
+
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
 
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -2625,6 +2647,11 @@ msgstr "Rollen gelten für diesen Nutzer. Das Zeichen {plone_svg} zeigt an dass 
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
 msgstr "Anzahl aktive Objekte"
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
+msgstr ""
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
@@ -3995,6 +4022,7 @@ msgid "Time"
 msgstr "Zeit"
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents

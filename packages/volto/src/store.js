@@ -10,6 +10,7 @@ import reducers from '@root/reducers';
 import {
   api,
   blacklistRoutes,
+  preloadQuerystringForBlocks,
   protectLoadStart,
   protectLoadEnd,
   loadProtector,
@@ -23,6 +24,7 @@ const configureStore = (initialState, history, apiHelper) => {
     routerMiddleware(history),
     thunk,
     ...(apiHelper ? [api(apiHelper)] : []),
+    preloadQuerystringForBlocks,
     userSessionReset,
     protectLoadEnd,
     ...(__CLIENT__

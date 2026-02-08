@@ -18,6 +18,10 @@ const messages = defineMessages({
     id: 'Results template',
     defaultMessage: 'Results template',
   },
+  loading: {
+    id: 'Loading…',
+    defaultMessage: 'Loading…',
+  },
 });
 
 const SearchBlockEdit = (props) => {
@@ -34,6 +38,23 @@ const SearchBlockEdit = (props) => {
     querystring = {},
   } = props;
   const { sortable_indexes = {} } = querystring;
+
+  const choicesFromIndexes = Object.keys(sortable_indexes).map((k) => [
+    k,
+    sortable_indexes[k].title,
+  ]);
+  const currentSortKeys = [
+    ...(Array.isArray(data?.sortOnOptions) ? data.sortOnOptions : []),
+    data?.query?.sort_on,
+  ].filter(Boolean);
+  const keysWithoutLabel = [...new Set(currentSortKeys)].filter(
+    (k) => !sortable_indexes[k]?.title,
+  );
+  const loadingChoices = keysWithoutLabel.map((k) => [
+    k,
+    intl.formatMessage(messages.loading),
+  ]);
+  const sortOnChoices = [...loadingChoices, ...choicesFromIndexes];
 
   let schema = Schema({ data, intl });
 
@@ -56,10 +77,7 @@ const SearchBlockEdit = (props) => {
       intl,
     });
   schema.properties.sortOnOptions.items = {
-    choices: Object.keys(sortable_indexes).map((k) => [
-      k,
-      sortable_indexes[k].title,
-    ]),
+    choices: sortOnChoices,
   };
 
   const { query = {} } = data || {};

@@ -918,6 +918,11 @@ msgstr "Creat per {creator} el {date}"
 msgid "Created on"
 msgstr "Creat el"
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1315,6 +1320,11 @@ msgstr "Edita valors"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Edita {title}"
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
+msgstr ""
 
 #. Default: "Email"
 #: helpers/MessageLabels/MessageLabels
@@ -1829,6 +1839,7 @@ msgid "Home"
 msgstr "Inici"
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "Id"
@@ -2203,6 +2214,12 @@ msgstr "Carrega més..."
 msgid "Loading"
 msgstr "Carregant."
 
+#. Default: "Loading…"
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Blocks/Search/SearchBlockEdit
+msgid "Loading…"
+msgstr ""
+
 #. Default: "Login"
 #: components/theme/Login/Login
 msgid "Log In"
@@ -2347,6 +2364,11 @@ msgstr "Comentaris moderats"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
 msgstr "Modera els comentaris"
+
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
 
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -2626,6 +2648,11 @@ msgstr "Tingueu en compte que els rols establerts aquí s'apliquen directament a
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
 msgstr "Nombre d'objectes actius"
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
+msgstr ""
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
@@ -3996,6 +4023,7 @@ msgid "Time"
 msgstr "Hora"
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents

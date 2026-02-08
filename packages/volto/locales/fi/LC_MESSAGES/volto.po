@@ -917,6 +917,11 @@ msgstr "Luotu {creator} toimesta {date} "
 msgid "Created on"
 msgstr "Luotu"
 
+#. Default: "Creation date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Creation date"
+msgstr ""
+
 #. Default: "Creator"
 #: components/manage/Contents/Contents
 msgid "Creator"
@@ -1314,6 +1319,11 @@ msgstr "Muokkaa arvoja"
 #: components/manage/Edit/Edit
 msgid "Edit {title}"
 msgstr "Muokkaa {title}"
+
+#. Default: "Effective date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Effective date"
+msgstr ""
 
 #. Default: "Email"
 #: helpers/MessageLabels/MessageLabels
@@ -1828,6 +1838,7 @@ msgid "Home"
 msgstr "Etusivu"
 
 #. Default: "ID"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
 msgid "ID"
 msgstr "ID"
@@ -2202,6 +2213,12 @@ msgstr "Lataa lisää"
 msgid "Loading"
 msgstr "Ladataan"
 
+#. Default: "Loading…"
+#: components/manage/Blocks/Search/components/SortOn
+#: components/manage/Blocks/Search/SearchBlockEdit
+msgid "Loading…"
+msgstr ""
+
 #. Default: "Login"
 #: components/theme/Login/Login
 msgid "Log In"
@@ -2346,6 +2363,11 @@ msgstr "Kommenttien moderointi"
 #: components/manage/Controlpanels/ModerateComments
 msgid "Moderate comments"
 msgstr "Kommenttien moderointi"
+
+#. Default: "Modification date"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Modification date"
+msgstr ""
 
 #. Default: "Monday and Friday"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -2625,6 +2647,11 @@ msgstr "Huomioi, että tässä määritellyt roolit kohdistuvat suoraan käyttä
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
 msgstr "Aktiivisten kohteiden määrä"
+
+#. Default: "Number of items"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Number of items"
+msgstr ""
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
@@ -3995,6 +4022,7 @@ msgid "Time"
 msgstr "Aika"
 
 #. Default: "Title"
+#: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
