@@ -1,1 +1,1 @@
-Allow other sources like peertube instances in Video block via blocks configuration. @ionlizarazu
+Allow other sources, including Peertube instances, in the Video block via blocks configuration. @ionlizarazu
