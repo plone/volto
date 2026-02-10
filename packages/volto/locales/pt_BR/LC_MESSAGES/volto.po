@@ -3953,7 +3953,7 @@ msgstr "Terceiro"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "This field is required."
-msgstr ""
+msgstr "Este campo é obrigatório"
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
