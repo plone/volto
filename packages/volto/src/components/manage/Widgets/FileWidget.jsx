@@ -207,10 +207,9 @@ const FileWidget = (props) => {
 
             <Button
               className="label-file-widget-input"
-              aria-required={props.required}
               aria-label={
                 props.required
-                  ? intl.formatMessage(messages.requiredField)
+                  ? `${value ? intl.formatMessage(messages.replaceFile) : intl.formatMessage(messages.addNewFile)} (${intl.formatMessage(messages.requiredField)})`
                   : null
               }
             >
@@ -222,6 +221,7 @@ const FileWidget = (props) => {
               {...getInputProps({
                 type: 'file',
                 style: { display: 'none' },
+                'aria-required': props.required, // ← AQUI!
               })}
               id={`field-${id}`}
               name={id}

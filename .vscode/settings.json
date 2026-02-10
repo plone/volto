@@ -1,5 +1,10 @@
 {
   "[markdown]": {
     "editor.formatOnSave": false
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#56161F",
+    "titleBar.activeBackground": "#791E2C",
+    "titleBar.activeForeground": "#FEFBFB"
   }
 }
