@@ -2,7 +2,7 @@ import React from 'react';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
-import cloneDeep from 'lodash/cloneDeep';
+import cloneDeep from 'es-toolkit/compat/cloneDeep';
 
 import {
   goDown,

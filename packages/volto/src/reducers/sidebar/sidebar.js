@@ -3,7 +3,7 @@
  * @module reducers/sidebar/sidebar
  */
 
-import union from 'lodash/union';
+import union from 'es-toolkit/compat/union';
 
 import {
   SET_METADATA_FIELDSETS,

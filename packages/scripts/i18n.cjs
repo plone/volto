@@ -5,7 +5,7 @@
  * @module scripts/i18n
  */
 
-const { find, keys, map, concat, reduce } = require('lodash');
+const { find, keys, map, concat, reduce } = require('es-toolkit/compat');
 const glob = require('glob').globSync;
 const fs = require('fs');
 const Pofile = require('pofile');

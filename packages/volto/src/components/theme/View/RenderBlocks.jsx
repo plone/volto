@@ -1,7 +1,7 @@
 import React from 'react';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { defineMessages, useIntl } from 'react-intl';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 import {
   applyBlockDefaults,

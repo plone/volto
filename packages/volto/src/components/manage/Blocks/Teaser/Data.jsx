@@ -9,7 +9,7 @@ import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { messages as defaultMessages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import { getContent } from '@plone/volto/actions/content/content';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from 'es-toolkit/compat/isEmpty';
 
 import reloadSVG from '@plone/volto/icons/reload.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';

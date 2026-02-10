@@ -5,7 +5,7 @@
 
 import { getSchema, putSchema } from '@plone/volto/actions/schema/schema';
 import { getParentUrl } from '@plone/volto/helpers/Url/Url';
-import nth from 'lodash/nth';
+import nth from 'es-toolkit/compat/nth';
 import Error from '@plone/volto/components/theme/Error/Error';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';

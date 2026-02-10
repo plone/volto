@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import loadable from '@loadable/component';
-import isEqual from 'lodash/isEqual';
+import isEqual from 'es-toolkit/compat/isEqual';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';

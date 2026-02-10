@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import isEmpty from 'lodash/isEmpty';
-import map from 'lodash/map';
+import isEmpty from 'es-toolkit/compat/isEmpty';
+import map from 'es-toolkit/compat/map';
 import { defineMessages, useIntl } from 'react-intl';
 
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';

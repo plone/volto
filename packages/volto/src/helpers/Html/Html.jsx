@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import serialize from 'serialize-javascript';
-import join from 'lodash/join';
+import join from 'es-toolkit/compat/join';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { addSubpathPrefix } from '@plone/volto/helpers/Url/Url';
 import { runtimeConfig } from '@plone/volto/runtime_config';

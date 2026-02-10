@@ -7,11 +7,11 @@ import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { Input } from 'semantic-ui-react';
-import compact from 'lodash/compact';
-import concat from 'lodash/concat';
-import map from 'lodash/map';
-import union from 'lodash/union';
-import uniq from 'lodash/uniq';
+import compact from 'es-toolkit/compat/compact';
+import concat from 'es-toolkit/compat/concat';
+import map from 'es-toolkit/compat/map';
+import union from 'es-toolkit/compat/union';
+import uniq from 'es-toolkit/compat/uniq';
 
 import { defineMessages, useIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';

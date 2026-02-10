@@ -4,7 +4,7 @@
  */
 
 import PropTypes from 'prop-types';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import { List } from 'semantic-ui-react';
 import Slugger from 'github-slugger';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';

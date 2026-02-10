@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import uniqBy from 'lodash/uniqBy';
+import uniqBy from 'es-toolkit/compat/uniqBy';
 import { FormattedMessage } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { Divider, Segment, Table } from 'semantic-ui-react';

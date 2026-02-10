@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Label, Dropdown, Popup, Icon } from 'semantic-ui-react';
-import compact from 'lodash/compact';
-import concat from 'lodash/concat';
-import fromPairs from 'lodash/fromPairs';
-import map from 'lodash/map';
-import values from 'lodash/values';
-import uniqBy from 'lodash/uniqBy';
+import compact from 'es-toolkit/compat/compact';
+import concat from 'es-toolkit/compat/concat';
+import fromPairs from 'es-toolkit/compat/fromPairs';
+import map from 'es-toolkit/compat/map';
+import values from 'es-toolkit/compat/values';
+import uniqBy from 'es-toolkit/compat/uniqBy';
 import { defineMessages, useIntl } from 'react-intl';
 
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';

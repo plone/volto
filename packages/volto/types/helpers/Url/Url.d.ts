@@ -5,6 +5,15 @@
  * @return {string} Id of content object.
  */
 export function getId(url: string): string;
+type MemoizedFunction = {
+    cache: {
+        delete(key: any): boolean;
+        get(key: any): any;
+        has(key: any): boolean;
+        set(key: any, value: any): any;
+        clear?: () => void;
+    };
+};
 /**
  * Get view of an url.
  * @function getView
@@ -132,21 +141,21 @@ export function flattenScales(path: string, image: object): object;
  * @param {string} url Url to be parsed.
  * @return {string} Base url of content object.
  */
-export const getBaseUrl: ((url: any) => any) & import("lodash").MemoizedFunction;
+export const getBaseUrl: ((url: any) => any) & MemoizedFunction;
 /**
  * Get parent url.
  * @function getParentUrl
  * @param {string} url Url to be parsed.
  * @return {string} Parent url of content object.
  */
-export const getParentUrl: ((url: any) => any) & import("lodash").MemoizedFunction;
+export const getParentUrl: ((url: any) => any) & MemoizedFunction;
 /**
  * Returns true if the current view is a cms ui view
  * @method isCmsUi
  * @param {string} currentPathname pathname of the current view
  * @returns {boolean} true if the current view is a cms ui view
  */
-export const isCmsUi: ((currentPathname: any) => boolean) & import("lodash").MemoizedFunction;
+export const isCmsUi: ((currentPathname: any) => boolean) & MemoizedFunction;
 export function getFieldURL(data: object): string | any;
 export namespace URLUtils {
     export { normalizeTelephone };

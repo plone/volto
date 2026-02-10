@@ -36,7 +36,7 @@ import { useClient } from '@plone/volto/hooks/client/useClient';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import editingSVG from '@plone/volto/icons/editing.svg';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import { toast } from 'react-toastify';
 
 const messages = defineMessages({

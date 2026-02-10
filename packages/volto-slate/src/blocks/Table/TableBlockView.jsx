@@ -6,7 +6,7 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import {
   serializeNodes,
   serializeNodesToText,

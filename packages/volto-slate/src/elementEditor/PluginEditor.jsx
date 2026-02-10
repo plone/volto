@@ -1,5 +1,5 @@
 /* eslint no-console: ["error", { allow: ["error"] }] */
-import isEqual from 'lodash/isEqual';
+import isEqual from 'es-toolkit/compat/isEqual';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { ReactEditor } from 'slate-react';

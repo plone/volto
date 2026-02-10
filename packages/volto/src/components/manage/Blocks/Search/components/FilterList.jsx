@@ -1,7 +1,7 @@
 import React from 'react';
 import { Accordion, Button, Icon } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from 'es-toolkit/compat/isEmpty';
 
 import { default as VoltoIcon } from '@plone/volto/components/theme/Icon/Icon';
 import { resolveExtension } from '@plone/volto/helpers/Extensions';

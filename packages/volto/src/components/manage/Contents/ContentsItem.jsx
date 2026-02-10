@@ -7,7 +7,7 @@ import React from 'react';
 import { Button, Table, Menu, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import Circle from '@plone/volto/components/manage/Contents/circle';
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';

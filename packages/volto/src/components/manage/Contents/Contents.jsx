@@ -16,14 +16,14 @@ import {
   Loader,
   Dimmer,
 } from 'semantic-ui-react';
-import concat from 'lodash/concat';
-import filter from 'lodash/filter';
-import find from 'lodash/find';
-import indexOf from 'lodash/indexOf';
-import keys from 'lodash/keys';
-import map from 'lodash/map';
-import mapValues from 'lodash/mapValues';
-import pull from 'lodash/pull';
+import concat from 'es-toolkit/compat/concat';
+import filter from 'es-toolkit/compat/filter';
+import find from 'es-toolkit/compat/find';
+import indexOf from 'es-toolkit/compat/indexOf';
+import keys from 'es-toolkit/compat/keys';
+import map from 'es-toolkit/compat/map';
+import mapValues from 'es-toolkit/compat/mapValues';
+import pull from 'es-toolkit/compat/pull';
 import move from 'lodash-move';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';

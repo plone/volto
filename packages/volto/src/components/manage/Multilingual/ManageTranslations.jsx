@@ -3,7 +3,7 @@ import { Button, Container, Segment, Table } from 'semantic-ui-react';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
-import reduce from 'lodash/reduce';
+import reduce from 'es-toolkit/compat/reduce';
 import { Link, useLocation } from 'react-router-dom';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';

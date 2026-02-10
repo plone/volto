@@ -11,8 +11,8 @@ import {
 } from '@plone/volto/helpers/Blocks/Blocks';
 import dragSVG from '@plone/volto/icons/drag.svg';
 import { Button } from 'semantic-ui-react';
-import includes from 'lodash/includes';
-import isBoolean from 'lodash/isBoolean';
+import includes from 'es-toolkit/compat/includes';
+import isBoolean from 'es-toolkit/compat/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import config from '@plone/volto/registry';

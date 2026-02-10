@@ -17,7 +17,7 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import map from 'lodash/map';
+import map from 'es-toolkit/compat/map';
 
 import { getSystemInformation } from '@plone/volto/actions/controlpanels/controlpanels';
 import {

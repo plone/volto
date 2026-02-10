@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from 'es-toolkit/compat/isEmpty';
 
 export const TeaserBlockDataAdapter = ({
   block,

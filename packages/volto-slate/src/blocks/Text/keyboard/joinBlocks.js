@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep';
+import cloneDeep from 'es-toolkit/compat/cloneDeep';
 import ReactDOM from 'react-dom';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import { Editor } from 'slate';

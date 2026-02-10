@@ -10,7 +10,7 @@ import {
 } from '@plone/volto/helpers/Blocks/Blocks';
 import { Transforms, Editor, Node } from 'slate';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
-import omit from 'lodash/omit';
+import omit from 'es-toolkit/compat/omit';
 import config from '@plone/volto/registry';
 
 function fromEntries(pairs) {

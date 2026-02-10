@@ -5,9 +5,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
-import keys from 'lodash/keys';
-import map from 'lodash/map';
+import isEqual from 'es-toolkit/compat/isEqual';
+import keys from 'es-toolkit/compat/keys';
+import map from 'es-toolkit/compat/map';
 import {
   Button,
   Form as UiForm,

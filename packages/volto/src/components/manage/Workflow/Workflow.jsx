@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import uniqBy from 'lodash/uniqBy';
+import uniqBy from 'es-toolkit/compat/uniqBy';
 import { toast } from 'react-toastify';
 import { defineMessages, useIntl } from 'react-intl';
 

@@ -1,5 +1,5 @@
-import map from 'lodash/map';
-import omit from 'lodash/omit';
+import map from 'es-toolkit/compat/map';
+import omit from 'es-toolkit/compat/omit';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 const GET_QUERYSTRING_RESULTS = 'GET_QUERYSTRING_RESULTS';
