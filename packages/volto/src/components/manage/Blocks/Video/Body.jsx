@@ -8,7 +8,7 @@ import VideoEmbed from '@plone/volto/components/theme/VideoEmbed/VideoEmbed';
 import config from '@plone/volto/registry';
 
 //Extracting videoID, listID and thumbnailURL from the video URL
-const getVideoIDAndPlaceholder = (url) => {
+const getVideoIDAndPlaceholder = (url, peertubeInstances) => {
   let hasMatch = false;
   let videoID = null;
   let listID = null;
@@ -66,6 +66,20 @@ const getVideoIDAndPlaceholder = (url) => {
         }
         thumbnailURL = 'https://vumbnail.com/' + thumbnailID + '.jpg';
       }
+    } else if (
+      url &&
+      Array.isArray(peertubeInstances) &&
+      url.match(new RegExp(peertubeInstances.join('|'), 'gi'))
+    ) {
+      const peertubeRegex = /^(https?:\/\/[^/]+)\/w\/([A-Za-z0-9_-]+)/i;
+      const match = url.match(peertubeRegex);
+      if (match) {
+        hasMatch = true;
+        videoSource = 'peertube';
+        const instance = match[1];
+        videoID = match[2];
+        videoUrl = `${instance}/videos/embed/${videoID}`;
+      }
     }
   }
   return { videoID, videoUrl, thumbnailURL, videoSource, hasMatch };
@@ -76,12 +90,11 @@ const Body = ({ data, isEditMode }) => {
       ? `${flattenToAppURL(data.preview_image)}/@@images/image`
       : data.preview_image
     : null;
-  let iframeSettings = {};
   const peertubeInstances =
     config.blocks.blocksConfig.video.allowedPeertubeInstances;
 
   const { videoID, videoUrl, thumbnailURL, videoSource, hasMatch, listID } =
-    getVideoIDAndPlaceholder(data.url);
+    getVideoIDAndPlaceholder(data.url, peertubeInstances);
 
   placeholder = !placeholder ? thumbnailURL : placeholder;
   const ref = React.createRef();
@@ -105,20 +118,6 @@ const Body = ({ data, isEditMode }) => {
     url: videoUrl,
   };
 
-  if (
-    data.url &&
-    Array.isArray(peertubeInstances) &&
-    data.url.match(new RegExp(peertubeInstances.join('|'), 'gi'))
-  ) {
-    const peertubeRegex = /^(https?:\/\/[^/]+)\/w\/([A-Za-z0-9_-]+)/i;
-    const match = data.url.match(peertubeRegex);
-    if (match) {
-      const instance = match[1];
-      const videoID = match[2];
-      iframeSettings['src'] = `${instance}/videos/embed/${videoID}`;
-      iframeSettings['style'] = { aspectRatio: '16/9', width: '100%' };
-    }
-  }
   return (
     <>
       {data.url && (
@@ -135,46 +134,38 @@ const Body = ({ data, isEditMode }) => {
                   {...embedSettings}
                 />
               ) : (
-                <VideoEmbed id={videoID} source="youtube" {...embedSettings} />
+                <VideoEmbed id={videoID} {...embedSettings} />
               )}
             </>
-          ) : Object.keys(iframeSettings).length > 0 ? (
-            <iframe title="Peertube video iframe" {...iframeSettings}></iframe>
           ) : (
             <>
-              {data.url.match('vimeo') ? (
-                <VideoEmbed id={videoID} source="vimeo" {...embedSettings} />
+              {data.url.match('.mp4') ? (
+                // eslint-disable-next-line jsx-a11y/media-has-caption
+                <video
+                  src={
+                    isInternalURL(data.url)
+                      ? data.url.includes('@@download')
+                        ? data.url
+                        : `${flattenToAppURL(data.url)}/@@download/file`
+                      : data.url
+                  }
+                  controls
+                  poster={placeholder}
+                  type="video/mp4"
+                />
+              ) : isEditMode ? (
+                <div>
+                  <Message>
+                    <center>
+                      <FormattedMessage
+                        id="Please enter a valid URL by deleting the block and adding a new video block."
+                        defaultMessage="Please enter a valid URL by deleting the block and adding a new video block."
+                      />
+                    </center>
+                  </Message>
+                </div>
               ) : (
-                <>
-                  {data.url.match('.mp4') ? (
-                    // eslint-disable-next-line jsx-a11y/media-has-caption
-                    <video
-                      src={
-                        isInternalURL(data.url)
-                          ? data.url.includes('@@download')
-                            ? data.url
-                            : `${flattenToAppURL(data.url)}/@@download/file`
-                          : data.url
-                      }
-                      controls
-                      poster={placeholder}
-                      type="video/mp4"
-                    />
-                  ) : isEditMode ? (
-                    <div>
-                      <Message>
-                        <center>
-                          <FormattedMessage
-                            id="Please enter a valid URL by deleting the block and adding a new video block."
-                            defaultMessage="Please enter a valid URL by deleting the block and adding a new video block."
-                          />
-                        </center>
-                      </Message>
-                    </div>
-                  ) : (
-                    <div className="invalidVideoFormat" />
-                  )}
-                </>
+                <div className="invalidVideoFormat" />
               )}
             </>
           )}

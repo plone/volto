@@ -22,9 +22,9 @@ const messages = defineMessages({
     defaultMessage: 'Title',
   },
   TitleDescription: {
-    id: 'The videos title is not displayed, but only used for accessibility reason to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty.',
+    id: 'VideoTitleDescription',
     defaultMessage:
-      'The videos title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the Video is already sufficiently titled by a headline above, please leave this field empty.',
+      "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty.",
   },
 });
 export const VideoBlockSchema = (props) => ({

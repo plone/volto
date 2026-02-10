@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Image from '@plone/volto/components/theme/Image/Image';
 import cx from 'classnames';
@@ -17,13 +17,15 @@ const VideoEmbed = (props) => {
     placeholder,
     source,
     title,
+    url,
   } = props;
 
   const [isActive, setIsActive] = useState(false);
   const PlayVideo = () => {
     setIsActive(true);
   };
-  const getSrc = () => {
+
+  const getSrc = useCallback(() => {
     if (source === 'youtube') {
       return [
         `https://www.youtube.com/embed/${id}`,
@@ -50,7 +52,17 @@ const VideoEmbed = (props) => {
         `&title=false`,
       ].join('');
     }
-  };
+
+    if (source === 'peertube') {
+      return [
+        `${url}`,
+        `?autoplay=${isActive || autoplay ? 1 : 0}`,
+        `&muted=${autoplay ? 1 : 0}`,
+      ].join('');
+    }
+
+    return '';
+  }, [source, id, isActive, autoplay, color, hd, brandedUI, url]);
 
   return (
     <div className={cx('ui embed video-embed', aspectRatio, className)}>
@@ -74,9 +86,7 @@ const VideoEmbed = (props) => {
           )}
           <button
             className="video-play-button"
-            onClick={() => {
-              PlayVideo();
-            }}
+            onClick={PlayVideo}
             aria-label={title ? `Play video ${title}` : 'Play video'}
           >
             <Icon name={PlayIcon} color="white" size="100%" />
