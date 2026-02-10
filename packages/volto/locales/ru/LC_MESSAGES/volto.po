@@ -1504,6 +1504,11 @@ msgstr "Существующие альтернативные URL для это�
 msgid "Expand sidebar"
 msgstr "Развернуть боковую панель"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Развернуть панель инструментов"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"

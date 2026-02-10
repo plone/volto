@@ -10,7 +10,7 @@ jobs:
   readme-link-checker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Check links in README.md with Lychee
       id: lychee
       uses: lycheeverse/lychee-action@v2
@@ -19,6 +19,7 @@ jobs:
         args: >-
           --timeout 5
           --max-retries 2
+          --retry-wait-time 10
           --exclude https://www.npmjs.com/
           --exclude http://localhost:8080
           --exclude http://localhost:3000
@@ -28,6 +29,5 @@ jobs:
           --exclude https://www.lanku.eus/
           --exclude https://medium.com/
           --exclude https://www.linkedin.com/
-          'apps/**/README.md'
           'packages/**/README.md'
           '*.md'

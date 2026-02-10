@@ -81,6 +81,14 @@ export function blockHasValue(data) {
 }
 
 /**
+ * Block id is valid (not undefined/null or the string "undefined" from object[undefined])
+ * @param {*} id Block id
+ * @return {boolean}
+ */
+const isValidBlockId = (id) =>
+  id != null && id !== 'undefined' && (typeof id !== 'string' || id.length > 0);
+
+/**
  * Get block pairs of [id, block] from content properties
  * @function getBlocks
  * @param {Object} properties
@@ -89,12 +97,13 @@ export function blockHasValue(data) {
 export const getBlocks = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  return (
-    properties[blocksLayoutFieldname]?.items?.map((n) => [
-      n,
-      properties[blocksFieldName][n],
-    ]) || []
-  );
+  const blocks = properties?.[blocksFieldName];
+  const items = properties?.[blocksLayoutFieldname]?.items;
+  if (!items) return [];
+  return items
+    .filter((n) => isValidBlockId(n))
+    .map((n) => [n, blocks?.[n]])
+    .filter(([, block]) => block != null);
 };
 
 /**
@@ -812,12 +821,12 @@ export function findBlocks(blocks = {}, types, result = []) {
 export const getBlocksHierarchy = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  return properties[blocksLayoutFieldname]?.items?.map((n) => ({
+  return properties?.[blocksLayoutFieldname]?.items?.map((n) => ({
     id: n,
-    title: properties[blocksFieldName][n]?.['@type'],
-    data: properties[blocksFieldName][n],
-    children: isBlockContainer(properties[blocksFieldName][n])
-      ? getBlocksHierarchy(properties[blocksFieldName][n])
+    title: properties?.[blocksFieldName]?.[n]?.['@type'],
+    data: properties?.[blocksFieldName]?.[n],
+    children: isBlockContainer(properties?.[blocksFieldName]?.[n])
+      ? getBlocksHierarchy(properties?.[blocksFieldName]?.[n])
       : [],
   }));
 };

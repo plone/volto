@@ -14,7 +14,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
@@ -25,7 +25,7 @@ jobs:
       - run: pnpm --filter @plone/volto i18n
 
       - name: Run unit tests Volto
-        run: pnpm --filter @plone/volto vitest
+        run: pnpm --filter @plone/volto test
 
       # Bundlewatch
       # - run: yarn build
@@ -42,7 +42,7 @@ jobs:
       matrix:
         node-version: [22.x, 24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
@@ -58,7 +58,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -81,7 +81,7 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # node setup
       - name: Use Node.js ${{ env.node-version }}
@@ -97,7 +97,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -114,7 +114,7 @@ jobs:
     name: '@plone/client'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
@@ -129,7 +129,7 @@ jobs:
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
@@ -145,40 +145,3 @@ jobs:
         working-directory: packages/client
 
       - run: make acceptance-server-detached-stop
-
-
-  helpers:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
-    name: '@plone/helpers'
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v4
-
-      # node setup
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - run: pnpm i
-
-      - name: Run unit tests @plone/helpers
-        run: pnpm --filter @plone/helpers test
