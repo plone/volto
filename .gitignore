@@ -30,6 +30,7 @@ lighthouse-report.html
 *~
 /.settings/
 .*project
+.vscode/
 
 # Python
 /bin/
