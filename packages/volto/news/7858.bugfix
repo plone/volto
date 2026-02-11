@@ -1,0 +1,1 @@
+Filter invalid block IDs (null, undefined, 'undefined') in getBlocks() to prevent duplicate elements in DOM and test failures. @aryan7081
