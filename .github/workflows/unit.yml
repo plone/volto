@@ -145,3 +145,24 @@ jobs:
         working-directory: packages/client
 
       - run: make acceptance-server-detached-stop
+
+  volto-razzle:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: '@plone/volto-razzle'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22.x, 24.x]
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run unit tests @plone/volto-razzle
+        run: pnpm --filter @plone/volto-razzle test
+

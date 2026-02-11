@@ -1,114 +1,113 @@
-const createConfigAsync = require('../config/createConfigAsync');
+import { describe, it, expect, vi } from 'vitest';
 
-// Mock fs to simulate presence of the public directory
-jest.mock('fs-extra', () => ({
+// Import createConfigAsync to test
+import createConfigAsync from '../config/createConfigAsync';
+
+// Mock env.js
+vi.mock('../config/env', () => ({
+  getClientEnv: () => ({
+    raw: {
+      HOST: 'localhost',
+      CLIENT_PUBLIC_PATH: '/',
+      PUBLIC_PATH: '/',
+    },
+    stringified: {},
+  }),
+}));
+
+// Mock paths
+vi.mock('../config/paths', () => ({
+  appPath: '/app',
+  appPublic: '/app/public',
+  appBuild: '/app/build',
+  appBuildPublic: '/app/build/public',
+  appAssetsManifest: '/app/build/assets.json',
+  appClientIndexJs: '/app/src/client.js',
+}));
+
+// Mock fs so public dir exists
+vi.mock('fs-extra', () => ({
   existsSync: () => true,
 }));
 
-// Mock 'paths' to ensure consistent test behavior on any machine
-jest.mock('../paths', () => ({
-  appPublic: '/mock/root/public',
-  appBuild: '/mock/root/build',
-  appPath: '/mock/root',
-  appNodeModules: '/mock/root/node_modules',
-  appHtml: '/mock/root/public/index.html', // Added to satisfy template check if needed
-  appAssetsManifest: '/mock/root/build/assets.json',
-}));
-
-// Mock Webpack to prevent plugins from crashing the test
-jest.mock('webpack', () => ({
-  DefinePlugin: class {},
-  HashedModuleIdsPlugin: class {},
-  optimize: {
-    AggressiveMergingPlugin: class {},
-    LimitChunkCountPlugin: class {},
-  },
+vi.mock('webpack', () => ({
   WatchIgnorePlugin: class {},
-  HotModuleReplacementPlugin: class {},
+  DefinePlugin: class {},
+  ProvidePlugin: class {},
 }));
 
-// Mock other plugins to avoid load errors
-jest.mock(
-  'mini-css-extract-plugin',
-  () =>
-    class {
-      static loader = 'css-loader';
-    },
-);
-jest.mock('webpack-manifest-plugin', () => ({
+vi.mock('mini-css-extract-plugin', () => ({
+  default: class {
+    static loader = 'mini-css';
+  },
+}));
+
+vi.mock('webpack-manifest-plugin', () => ({
   WebpackManifestPlugin: class {},
 }));
-jest.mock('webpackbar', () => class {});
 
-describe('createConfigAsync - CopyPlugin Logic', () => {
-  let config;
-  let patterns;
+vi.mock('webpackbar', () => ({
+  default: class {},
+}));
 
-  beforeAll(async () => {
-    // Generate the production configuration
-    config = await createConfigAsync(
+vi.mock('html-webpack-plugin', () => ({
+  default: class {},
+}));
+
+vi.mock('terser-webpack-plugin', () => ({
+  default: class {},
+}));
+
+vi.mock('css-minimizer-webpack-plugin', () => ({
+  default: class {},
+}));
+
+vi.mock('@pmmmwh/react-refresh-webpack-plugin', () => ({
+  default: class {},
+}));
+
+vi.mock('razzle-start-server-webpack-plugin', () => ({
+  default: class {},
+}));
+
+vi.mock('razzle-dev-utils/webpackMajor', () => 5);
+vi.mock('razzle-dev-utils/devServerMajor', () => 4);
+
+describe('createConfigAsync – .well-known handling', () => {
+  it('blocks dotfiles except .well-known', async () => {
+    const config = await createConfigAsync(
       'web',
       'prod',
-      {
-        // Use 'prod' to match Razzle environment checks
-        plugins: [],
-        module: { rules: [] },
-        resolve: { alias: {} },
-      },
       {},
+      { version: '5' },
       false,
-    ); // Added missing args to match function signature
-
-    // Extract the patterns from CopyPlugin
-    const copyPlugin = config.plugins.find(
-      (p) => p.constructor.name === 'CopyPlugin',
+      undefined,
+      [],
+      {
+        forceRuntimeEnvVars: [],
+        debug: { options: false },
+      },
     );
 
-    // Safety check to ensure the mock worked
-    if (!copyPlugin)
-      throw new Error(
-        'CopyPlugin not found! fs.existsSync mock might have failed.',
-      );
+    // Find CopyPlugin in the returned config
+    const copyPlugin = config.plugins.find((p) => p.patterns);
+    expect(copyPlugin).toBeDefined();
 
-    patterns = copyPlugin.patterns || copyPlugin.options.patterns;
-  });
+    const patterns = copyPlugin.patterns;
+    expect(patterns).toBeDefined();
+    expect(patterns).toHaveLength(2);
 
-  it('Pattern 1: Should copy general assets but IGNORE dotfiles and .well-known', () => {
-    // Find the general pattern (copies from public root)
-    const generalPattern = patterns.find(
-      (p) =>
-        p.from.includes('/mock/root/public') && !p.from.includes('.well-known'),
-    );
+    const [general, wellKnown] = patterns;
 
-    expect(generalPattern).toBeDefined();
+    // Test 1: General public copy blocks dotfiles
+    expect(general.globOptions.dot).toBe(false);
+    expect(
+      general.globOptions.ignore.some((p) => p.includes('.well-known')),
+    ).toBe(true);
 
-    // Requirement 1: Block dotfiles like .env, .git, .DS_Store
-    expect(generalPattern.globOptions.dot).toBe(false);
-
-    // Explicitly ignore .well-known (so Pattern 2 can handle it)
-    const ignoresWellKnown = generalPattern.globOptions.ignore.some(
-      (ignoreItem) => ignoreItem.includes('.well-known/**/*'),
-    );
-    expect(ignoresWellKnown).toBe(true);
-  });
-
-  it('Pattern 2: Should explicitly copy .well-known and ALLOW dotfiles inside it', () => {
-    // Find the specific pattern targeting .well-known
-    const wellKnownPattern = patterns.find((p) =>
-      p.from.includes('.well-known'),
-    );
-
-    expect(wellKnownPattern).toBeDefined();
-
-    // Requirement 2: .well-known files are explicitly allowed
-    expect(wellKnownPattern.from).toContain(
-      '/mock/root/public/.well-known/**/*',
-    );
-
-    // Requirement 3: Allow hidden files (like .verification-code) inside .well-known
-    expect(wellKnownPattern.globOptions.dot).toBe(true);
-
-    // Requirement 4: Ensure build doesn't crash if folder is missing
-    expect(wellKnownPattern.noErrorOnMissing).toBe(true);
+    // Test 2: Explicit .well-known rule allows dotfiles
+    expect(wellKnown.from).toContain('.well-known');
+    expect(wellKnown.globOptions.dot).toBe(true);
+    expect(wellKnown.noErrorOnMissing).toBe(true);
   });
 });
