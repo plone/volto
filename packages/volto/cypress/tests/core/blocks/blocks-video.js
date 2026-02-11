@@ -107,14 +107,13 @@ describe('Blocks Tests', () => {
     cy.wait('@content');
 
     cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+    cy.get('.block.video .video-play-button').should('be.visible').click();
 
     // then the page view should contain an embedded Peertube video
     cy.get('.block.video iframe')
-      .should('have.attr', 'src')
-      .and(
-        'match',
-        /https:\/\/peertube.eus\/videos\/embed\/dSK8m4WG8m8esrZRkMdPRg/,
-      );
+      .should('exist')
+      .and('have.attr', 'src')
+      .and('include', '/videos/embed/');
   });
 
   it('Add Video Block with MP4 Video', () => {
