@@ -17,6 +17,14 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.23 (2026-02-03)
+
+### Bugfix
+
+- Language control panel: fix validation of default language. @davisagli [#7720](https://github.com/plone/volto/issues/7720)
+- Set HTTP 503 status code for ConnectionRefused error page. @Shyam-Raghuwanshi [#7754](https://github.com/plone/volto/issues/7754)
+- Fix default case selection in ButtonsWidget. @iFlameing 
+
 ## 19.0.0-alpha.22 (2026-01-26)
 
 ### Feature
