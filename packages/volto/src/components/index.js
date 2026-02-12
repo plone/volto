@@ -98,7 +98,6 @@ export {
   UpgradeControlPanel,
   ModerateComments,
   DatabaseInformation,
-  BlockTypesControlpanel,
 } from '@plone/volto/components/manage/Controlpanels';
 
 export { default as Circle } from '@plone/volto/components/manage/Contents/circle';

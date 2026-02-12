@@ -50,9 +50,9 @@ import {
   RelationsControlpanel,
   UndoControlpanel,
   UpgradeControlPanel,
-  BlockTypesControlpanel,
-  BlockTypeControlpanel,
 } from '@plone/volto/components/manage/Controlpanels';
+import BlockTypesControlpanel from './components/manage/Controlpanels/BlockTypes';
+import BlockTypeControlpanel from './components/manage/Controlpanels/BlockType';
 
 import withClientSideContent from '@plone/volto/helpers/Content/withClientSideContent';
 
