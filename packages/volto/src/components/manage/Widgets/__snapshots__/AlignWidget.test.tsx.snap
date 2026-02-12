@@ -1,0 +1,314 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AlignWidget > renders with custom actions 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            aria-label="Alignment"
+            aria-labelledby="react-aria-:r6: react-aria-:r7:"
+            aria-orientation="horizontal"
+            class="buttons buttons-widget"
+            data-orientation="horizontal"
+            data-rac=""
+            id="react-aria-:r6:"
+            role="radiogroup"
+          >
+            <span
+              class="react-aria-Label"
+              id="react-aria-:r7:"
+            />
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Additional action title"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:rb:"
+                  tabindex="0"
+                  title=""
+                  type="radio"
+                  value="additional"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Additional action title
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3,7 L5,5 L5,25 L3,23 L33,23 L31,25 L31,5 L33,7 L3,7 Z M33,5 L33,25 L3,25 L3,5 L33,5 Z"
+                    fill-rule="nonzero"
+                  />
+                  <path
+                    d="M7 31 29 31 29 29 7 29zM25.314 10.757 28.557 14 7.444 14 10.687 10.757 9.272 9.343 3.616 15 9.272 20.657 10.687 19.243 7.444 16 28.557 16 25.314 19.243 26.728 20.657 32.385 15 26.728 9.343z"
+                  />
+                </g>
+              </svg>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`AlignWidget > renders with default actions 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field widget field-wrapper-align"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-align"
+              id="fieldset-default-field-label-align"
+            >
+              Alignment
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            aria-label="Alignment"
+            aria-labelledby="react-aria-:r0: react-aria-:r1:"
+            aria-orientation="horizontal"
+            class="buttons buttons-widget"
+            data-orientation="horizontal"
+            data-rac=""
+            id="react-aria-:r0:"
+            role="radiogroup"
+          >
+            <span
+              class="react-aria-Label"
+              id="react-aria-:r1:"
+            />
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Left"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:r5:"
+                  tabindex="-1"
+                  title=""
+                  type="radio"
+                  value="left"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Left
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M23 7 33 7 33 5 23 5z"
+                  />
+                  <path
+                    d="M3,7 L5,5 L5,19 L3,17 L19,17 L17,19 L17,5 L19,7 L3,7 Z M19,5 L19,19 L3,19 L3,5 L19,5 Z"
+                    fill-rule="nonzero"
+                  />
+                  <path
+                    d="M23 13 33 13 33 11 23 11zM23 19 33 19 33 17 23 17zM3 31 33 31 33 29 3 29zM3 25 33 25 33 23 3 23z"
+                  />
+                </g>
+              </svg>
+            </label>
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+              data-selected="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Center"
+                  checked=""
+                  data-react-aria-pressable="true"
+                  name="react-aria-:r5:"
+                  tabindex="0"
+                  title=""
+                  type="radio"
+                  value="center"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Center
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M7,13 L9,11 L9,25 L7,23 L29,23 L27,25 L27,11 L29,13 L7,13 Z M29,11 L29,25 L7,25 L7,11 L29,11 Z"
+                    fill-rule="nonzero"
+                  />
+                  <path
+                    d="M7 31 29 31 29 29 7 29zM7 7 29 7 29 5 7 5z"
+                  />
+                </g>
+              </svg>
+            </label>
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Right"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:r5:"
+                  tabindex="-1"
+                  title=""
+                  type="radio"
+                  value="right"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Right
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3 7 13 7 13 5 3 5z"
+                  />
+                  <path
+                    d="M17,7 L19,5 L19,19 L17,17 L33,17 L31,19 L31,5 L33,7 L17,7 Z M33,5 L33,19 L17,19 L17,5 L33,5 Z"
+                    fill-rule="nonzero"
+                  />
+                  <path
+                    d="M3 13 13 13 13 11 3 11zM3 19 13 19 13 17 3 17zM3 31 33 31 33 29 3 29zM3 25 33 25 33 23 3 23z"
+                  />
+                </g>
+              </svg>
+            </label>
+            <label
+              class="buttons-widget-option"
+              data-rac=""
+              data-react-aria-pressable="true"
+            >
+              <span
+                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+              >
+                <input
+                  aria-label="Full"
+                  data-react-aria-pressable="true"
+                  name="react-aria-:r5:"
+                  tabindex="-1"
+                  title=""
+                  type="radio"
+                  value="full"
+                />
+              </span>
+              <svg
+                aria-hidden="true"
+                class="icon"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Full
+                </title>
+                <g
+                  fill-rule="evenodd"
+                >
+                  <path
+                    d="M3,7 L5,5 L5,25 L3,23 L33,23 L31,25 L31,5 L33,7 L3,7 Z M33,5 L33,25 L3,25 L3,5 L33,5 Z"
+                    fill-rule="nonzero"
+                  />
+                  <path
+                    d="M7 31 29 31 29 29 7 29zM25.314 10.757 28.557 14 7.444 14 10.687 10.757 9.272 9.343 3.616 15 9.272 20.657 10.687 19.243 7.444 16 28.557 16 25.314 19.243 26.728 20.657 32.385 15 26.728 9.343z"
+                  />
+                </g>
+              </svg>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

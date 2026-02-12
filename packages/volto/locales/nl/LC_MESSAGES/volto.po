@@ -574,6 +574,7 @@ msgstr "Kan lay-out niet bewerken voor het <strong>{type}</strong>-contenttype o
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -603,6 +604,7 @@ msgstr "Cel"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Center"
 msgstr "Centreren"
 
@@ -1012,6 +1014,7 @@ msgstr "Datum (nieuwste eerst)"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/BlockWidth
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/theme/Comments/CommentEditModal
@@ -1237,6 +1240,11 @@ msgstr "Zet bestand hier neer om een nieuw bestand op te laden"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop files here ..."
 msgstr "Zet bestanden hier neer..."
+
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1495,6 +1503,11 @@ msgstr "Bestaande alternatieve URLs voor dit item"
 msgid "Expand sidebar"
 msgstr "Zijbalk uitvouwen"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Werkbalk uitbreiden"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
@@ -1567,6 +1580,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Bestandsgrootte"
 
@@ -1577,11 +1591,13 @@ msgstr "Bestand weergave"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Bestandsnaam"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Opgeladen bestanden: {uploadedFiles}"
 
@@ -1665,6 +1681,7 @@ msgstr "Van"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Full"
 msgstr "Volledig"
 
@@ -2050,6 +2067,7 @@ msgstr "Dit is een taalonafhankelijk veld. Elke hier ingevoerde waarde, overschr
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Large"
 msgstr "Groot"
 
@@ -2065,6 +2083,7 @@ msgstr "Laatste commentaardatum"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Laatst gewijzigd"
 
@@ -2080,6 +2099,7 @@ msgstr "Laatste versie"
 
 #. Default: "Layout"
 #: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Widgets/BlockWidth
 msgid "Layout"
 msgstr "Lay-out"
 
@@ -2092,6 +2112,7 @@ msgstr "Leidende afbeelding"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Left"
 msgstr "Links"
 
@@ -2290,6 +2311,7 @@ msgstr "Maximum lengte is {len}."
 
 #. Default: "Medium"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Medium"
 msgstr "Gemiddeld"
 
@@ -2402,6 +2424,7 @@ msgstr "Naam"
 
 #. Default: "Narrow"
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Narrow"
 msgstr "Smal"
 
@@ -2823,6 +2846,7 @@ msgstr "Maak je code netter"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Voorvertoning"
 
@@ -2963,6 +2987,11 @@ msgstr "Relaties zijn aanpasbaar met plone.api >= 2.0.3."
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "Relaties zijn bijgewerkt"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3118,6 +3147,7 @@ msgstr "Opgemaakte tekst"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Right"
 msgstr "Rechts"
 
@@ -3514,6 +3544,7 @@ msgstr "Grootte: {size}"
 
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Small"
 msgstr "Klein"
 
@@ -3993,6 +4024,7 @@ msgstr "Totaal aantal commentaren"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Totaal aantal te uploaden bestanden: {totalFiles}"
 
@@ -4213,6 +4245,11 @@ msgstr "Upgrade stappen"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Opladen"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4964,6 +5001,16 @@ msgstr "Privé"
 msgid "published"
 msgstr "Gepubliceerd"
 
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
+
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -5289,6 +5336,7 @@ msgstr "Ja"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, one {{count} bestand opladen} other {{count} bestanden opladen}}"
 

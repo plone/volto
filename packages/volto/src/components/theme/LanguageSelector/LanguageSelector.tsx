@@ -65,16 +65,16 @@ const LanguageSelector = ({
           <Link
             aria-label={`${intl.formatMessage(
               messages.switchLanguageTo,
-            )} ${langmap[langKey].nativeName.toLowerCase()}`}
+            )} ${(langmap[langKey]?.nativeName || langKey).toLowerCase()}`}
             className={cx({ selected: toReactIntlLang(lang) === currentLang })}
             to={translation ? flattenToAppURL(translation['@id']) : `/${lang}`}
-            title={langmap[langKey].nativeName}
+            title={langmap[langKey]?.nativeName || langKey}
             onClick={() => {
               onClickAction();
             }}
             key={`language-selector-${lang}`}
           >
-            {langmap[langKey].nativeName}
+            {langmap[langKey]?.nativeName || langKey}
           </Link>
         );
       })}

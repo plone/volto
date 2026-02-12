@@ -1,0 +1,43 @@
+{
+  "name": "@plone/babel-preset-razzle",
+  "version": "1.0.0-alpha.0",
+  "description": "Babel presets for Razzle",
+  "main": "index.js",
+  "author": "jaredpalmer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:jaredpalmer/razzle.git",
+    "directory": "packages/babel-preset-razzle"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "babel-plugins/amp-attributes.js",
+    "babel-plugins/commonjs.js",
+    "babel-plugins/jsx-pragma.js",
+    "babel-plugins/no-anonymous-default-export.js",
+    "babel-plugins/optimize-hook-destructuring.js"
+  ],
+  "scripts": {
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha"
+  },
+  "dependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/plugin-syntax-bigint": "^7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@babel/runtime": "^7.28.4",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "chalk": "^5.6.2"
+  },
+  "devDependencies": {
+    "release-it": "^19.0.5"
+  }
+}

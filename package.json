@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
+    "postinstall": "node packages/scripts/vscodesettings.js",
     "watch": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers watch",
     "build:deps": "pnpm --filter @plone/registry build",
     "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
@@ -19,7 +20,7 @@
     "start:project": "pnpm --filter plone run start",
     "lint": "make build-all-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "lint:volto": "pnpm --filter @plone/volto run lint",
-    "test": "pnpm --filter @plone/volto run vitest",
+    "test": "pnpm --filter @plone/volto run test",
     "test:ci": "pnpm --filter @plone/volto run test:ci",
     "i18n": "pnpm --filter @plone/volto run i18n",
     "i18n:ci": "pnpm --filter @plone/volto i18n:ci",
@@ -42,19 +43,13 @@
     "tsconfig": "workspace:*",
     "typescript": "^5.7.3"
   },
-  "packageManager": "pnpm@10.18.3",
+  "packageManager": "pnpm@10.20.0",
   "pnpm": {
     "overrides": {
-      "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
-      "immer@8": "10.1.3",
-      "react-refresh": "0.14.0"
-    },
-    "patchedDependencies": {
-      "jest-resolve@26.6.2": "patches/jest-resolve@26.6.2.patch"
+      "immer@8": "10.1.3"
     },
     "ignoredBuiltDependencies": [
-      "@parcel/watcher",
-      "@swc/core"
+      "@parcel/watcher"
     ],
     "onlyBuiltDependencies": [
       "@tailwindcss/oxide",
