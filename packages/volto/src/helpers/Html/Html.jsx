@@ -76,7 +76,7 @@ class Html extends Component {
       getScriptElements: PropTypes.func.isRequired,
       getStyleElements: PropTypes.func.isRequired,
     }).isRequired,
-    markup: PropTypes.string.isRequired,
+    markup: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
     store: PropTypes.shape({
       getState: PropTypes.func,
     }).isRequired,
@@ -193,7 +193,11 @@ class Html extends Component {
         </head>
         <body className={bodyClass}>
           <div role="navigation" aria-label="Toolbar" id="toolbar" />
-          <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
+          {typeof markup === 'string' ? (
+            <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
+          ) : (
+            <div id="main">{markup}</div>
+          )}
           <div role="complementary" aria-label="Sidebar" id="sidebar" />
           <script
             dangerouslySetInnerHTML={{
