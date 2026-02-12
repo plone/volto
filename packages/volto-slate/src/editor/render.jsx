@@ -22,18 +22,36 @@ const OMITTED = ['editor', 'path'];
 
 // TODO: read, see if relevant
 // https://reactjs.org/docs/higher-order-components.html#dont-use-hocs-inside-the-render-method
-export const Element = ({ element, attributes = {}, extras, ...rest }) => {
+
+// fix: heading node does not receive Slate attributes
+// solution:  Element replaces headings with native DOM node that receives {...attributes}
+export const Element = ({
+  element,
+  attributes = {},
+  extras,
+  children,
+  ...rest
+}) => {
+  const type = element?.type;
+
+  // Render native heading tag so Slate attrs (ref, data-*, contentEditable...) land on the actual DOM node
+  if (/^h[1-6]$/.test(type)) {
+    const Tag = type;
+    return <Tag {...attributes}>{children}</Tag>;
+  }
+
   const { slate } = config.settings;
   const { elements } = slate;
-  const El = elements[element.type] || elements['default'];
+  const El = elements[type] || elements['default'];
 
-  const attrs = Object.assign(
-    element.styleName ? { className: element.styleName } : {},
-    ...Object.keys(attributes || {}).map((k) =>
-      !isEmpty(attributes[k]) ? { [k]: attributes[k] } : {},
-    ),
-  );
-  attrs.ref = attributes?.ref; // never remove the ref
+  // preserve attributes (and merge className with element.styleName if any)
+  const attrs = {
+    ...attributes,
+    className:
+      [attributes?.className, element?.styleName].filter(Boolean).join(' ') ||
+      undefined,
+  };
+  if (attributes?.ref) attrs.ref = attributes.ref;
 
   return (
     <El
@@ -41,7 +59,9 @@ export const Element = ({ element, attributes = {}, extras, ...rest }) => {
       {...omit(rest, OMITTED)}
       attributes={attrs}
       extras={extras}
-    />
+    >
+      {children}
+    </El>
   );
 };
 
