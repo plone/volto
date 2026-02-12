@@ -1,2 +1,0 @@
-Continue to prevent editors from automatically reformatting Markdown files by moving this configuration from VSCode to prettier.
-Move the VSCode settings setup from `make install` to a pnpm post-install hook. @wesleybl
