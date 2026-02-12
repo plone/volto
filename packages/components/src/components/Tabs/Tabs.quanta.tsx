@@ -54,12 +54,28 @@ const tabProps = tv({
   base: 'flex cursor-default items-center px-4 py-1.5 text-sm font-medium transition',
   variants: {
     isSelected: {
-      false:
-        'pressed:text-gray-700 dark:pressed:text-zinc-200 pressed:bg-gray-200 dark:pressed:bg-zinc-800 text-gray-600 hover:bg-gray-200 hover:text-gray-700 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-200',
-      true: 'bg-gray-800 text-white dark:bg-zinc-200 dark:text-black forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
+      false: `
+        text-gray-600
+        hover:bg-gray-200 hover:text-gray-700
+        dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-200
+        pressed:bg-gray-200 pressed:text-gray-700
+        dark:pressed:bg-zinc-800 dark:pressed:text-zinc-200
+      `,
+      true: `
+        bg-gray-800 text-white
+        dark:bg-zinc-200 dark:text-black
+        forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]
+      `,
     },
     isDisabled: {
-      true: 'selected:text-gray-300 dark:selected:text-zinc-500 forced-colors:selected:text-[HighlightText] selected:bg-gray-200 dark:selected:bg-zinc-600 forced-colors:selected:bg-[GrayText] text-gray-200 dark:text-zinc-600 forced-colors:text-[GrayText]',
+      true: `
+        text-gray-200
+        dark:text-zinc-600
+        forced-colors:text-[GrayText]
+        selected:bg-gray-200 selected:text-gray-300
+        dark:selected:bg-zinc-600 dark:selected:text-zinc-500
+        forced-colors:selected:bg-[GrayText] forced-colors:selected:text-[HighlightText]
+      `,
     },
   },
 });
@@ -77,7 +93,10 @@ export function Tab(props: RACTabProps) {
 
 const tabPanelStyles = tv({
   extend: focusRing,
-  base: 'flex-1 p-4 text-sm text-gray-900 dark:text-zinc-100',
+  base: `
+    flex-1 p-4 text-sm text-gray-900
+    dark:text-zinc-100
+  `,
 });
 
 export function TabPanel(props: RACTabPanelProps) {

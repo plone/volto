@@ -99,13 +99,6 @@ The following code is boilerplate setup for Vitest.
 
 ```javascript
 import '@testing-library/jest-dom';
-import { expect, describe, it, vi } from 'vitest';
-
-// Make Vitest globals available throughout the test suite
-global.describe = describe;
-global.it = it;
-global.expect = expect;
-global.vi = vi;
 
 // Stub the global fetch API to prevent actual network requests in tests
 vi.stubGlobal('fetch', vi.fn(() =>

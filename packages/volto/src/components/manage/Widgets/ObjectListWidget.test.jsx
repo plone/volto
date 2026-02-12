@@ -4,17 +4,8 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import ObjectListWidget from './ObjectListWidget';
 
-vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
-  return await import(
-    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
-  );
-});
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
-
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+vi.mock('@plone/volto/components/manage/Form');
 beforeAll(async () => {
   const { __setLoadables } = await import(
     '@plone/volto/helpers/Loadable/Loadable'

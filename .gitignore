@@ -21,7 +21,6 @@ build
 !.yarn/versions
 
 # Other
-.vscode
 /cache
 .yarn/
 .DS_Store
@@ -44,6 +43,9 @@ lib64
 
 # locales
 locales/*.json
+
+# VSCode
+.vscode/settings.json
 
 # Tests
 /tests/bin

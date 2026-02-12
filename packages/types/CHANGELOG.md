@@ -8,6 +8,36 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.14 (2026-02-03)
+
+### Bugfix
+
+- Fix typing for `contentIcons` and `controlPanelsIcons` in Settings config. Changed from `Record<string, React.ComponentType>` to `Record<string, string>` as they contain SVG paths. @YourGitHubUsername [#7339](https://github.com/plone/volto/issues/7339)
+
+## 2.0.0-alpha.13 (2026-01-26)
+
+### Feature
+
+- Enhanced `SlotRenderer`'s `GetSlotArgs` typings. @sneridagh 
+
+## 2.0.0-alpha.12 (2025-12-22)
+
+### Feature
+
+- Enhance registry utilities type definitions with typed method signatures. @ompharate @sneridagh [#7652](https://github.com/plone/volto/issues/7652)
+
+## 2.0.0-alpha.11 (2025-11-19)
+
+### Bugfix
+
+- Fixed types for SchemaEnhancers, export new `SchemaEnhancerArgs`. @sneridagh [#7627](https://github.com/plone/volto/issues/7627)
+
+## 2.0.0-alpha.10 (2025-11-10)
+
+### Feature
+
+- Added new widgets config typings. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
+
 ## 2.0.0-alpha.9 (2025-11-03)
 
 ### Feature

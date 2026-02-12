@@ -15,7 +15,6 @@ const {
 const { AddonRegistry } = require('@plone/registry/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const AfterBuildPlugin = require('@fiverr/afterbuild-webpack-plugin');
 
@@ -116,25 +115,11 @@ const defaultModify = ({
       },
     });
 
-    // This is needed to override Razzle use of the unmaintained CleanCSS
-    // which does not have support for recently CSS features (container queries).
-    // Using the default provided (cssnano) by css-minimizer-webpack-plugin
-    // should be enough see:
-    // (https://github.com/clean-css/clean-css/discussions/1209)
+    // TODO: remove this before merging the Razzle fork into Volto 19
+    // @sneridagh: Tried to remove this now that we have forked Razzle
+    // but I cannot pinpoint where this comes from, and it seems undefined
+    // always.
     delete options.webpackOptions.terserPluginOptions?.sourceMap;
-    if (!dev) {
-      config.optimization = Object.assign({}, config.optimization, {
-        minimizer: [
-          new TerserPlugin(options.webpackOptions.terserPluginOptions),
-          new CssMinimizerPlugin({
-            sourceMap: options.razzleOptions.enableSourceMaps,
-            minimizerOptions: {
-              sourceMap: options.razzleOptions.enableSourceMaps,
-            },
-          }),
-        ],
-      });
-    }
 
     config.plugins.unshift(
       // restrict moment.js locales to supported languages
@@ -439,8 +424,7 @@ const defaultPlugins = [
   { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
   { object: require('./webpack-plugins/webpack-svg-plugin') },
   { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
-  { object: require('./jest-extender-plugin') },
-  'scss',
+  { object: require('./webpack-plugins/webpack-scss-plugin') },
 ];
 
 const plugins = addonExtenders.reduce(
