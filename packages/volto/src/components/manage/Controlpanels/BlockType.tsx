@@ -106,7 +106,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
               {blockTypes.items.map((item) => (
                 <tr key={item['@id']} className="table-row">
                   <td className="table-cell">
-                    <a href={item['@id']}>{item.title}</a>
+                    <a href={item['@id']}>{item.title}</a>{' '}
                     <span>{flattenToAppURL(item['@id']) || '/'}</span>
                   </td>
                   <td className="table-cell">{item.count}</td>
