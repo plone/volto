@@ -38,7 +38,6 @@ export default defineConfig({
       '@plone/volto': path.resolve(__dirname, 'src'),
       '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
       '@root': path.resolve(__dirname, 'src'),
-      '@plone/components': path.resolve(__dirname, '../components/src'),
       'promise-file-reader': require.resolve('promise-file-reader'),
       'react-dropzone': require.resolve('react-dropzone'),
       'prop-types': require.resolve('prop-types'),
@@ -53,10 +52,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: [
-      `${projectRoot}/test-setup-globals.js`,
+      `${projectRoot}/test-setup-globals-vitest.js`,
       `${projectRoot}/test-setup-config.jsx`,
-      `${projectRoot}/test-addons-loader.js`,
-      `${projectRoot}/global-test-setup.js`
+      `${projectRoot}/jest-setup-afterenv.js`,
+      `${projectRoot}/jest-addons-loader.js`,
     ],
     globalSetup: `${projectRoot}/global-test-setup.js`,
     coverage: {
@@ -70,6 +69,7 @@ export default defineConfig({
         'node_modules/**',
         '**/dist/**',
         '**/*.config.{js,ts}',
+        '**/jest-*.js',
       ],
     },
     css: true,

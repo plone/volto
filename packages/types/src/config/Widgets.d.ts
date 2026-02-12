@@ -49,10 +49,7 @@ export type WidgetByWidgetTypes =
   | 'static_text'
   | 'hidden'
   | 'radio_group'
-  | 'checkbox_group'
-  | 'blockAlignment'
-  | 'blockWidth'
-  | 'size';
+  | 'checkbox_group';
 
 export type WidgetsConfigByWidget<
   K extends WidgetByWidgetTypes = WidgetByWidgetTypes,

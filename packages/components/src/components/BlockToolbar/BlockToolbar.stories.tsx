@@ -1,6 +1,13 @@
 import React from 'react';
 import { BlockToolbar } from './BlockToolbar';
-import { Group, Separator, Text, ToggleButton } from 'react-aria-components';
+import {
+  Button,
+  Checkbox,
+  Group,
+  Separator,
+  Text,
+  ToggleButton,
+} from 'react-aria-components';
 import { Menu, MenuItem } from '../Menu/Menu';
 
 import { BoldIcon } from '../icons/BoldIcon';

@@ -5,6 +5,7 @@
 
 import Cookies from 'universal-cookie';
 import jwtDecode from 'jwt-decode';
+
 import { loginRenew } from '@plone/volto/actions/userSession/userSession';
 import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
 import { push } from 'connected-react-router';
@@ -34,6 +35,7 @@ export function persistAuthToken(store, req) {
   } else {
     currentValue = cookies.get('auth_token');
   }
+
   /**
    * handleChange method.
    * @method handleChange
@@ -44,6 +46,7 @@ export function persistAuthToken(store, req) {
     const previousValue = currentValue;
     const state = store.getState();
     currentValue = state.userSession.token;
+
     if (
       module.hot &&
       module.hot.data &&
@@ -52,11 +55,11 @@ export function persistAuthToken(store, req) {
     ) {
       currentValue = previousValue;
     }
+
     if (previousValue !== currentValue || initial) {
       if (!currentValue) {
         if (previousValue) {
           cookies.remove('auth_token', { path: '/' });
-          cookies.remove('__ac', { path: '/' });
         }
       } else {
         if (previousValue !== currentValue) {
@@ -94,9 +97,11 @@ export function persistAuthToken(store, req) {
       }
     }
   }
+
   store.subscribe(handleChange);
   handleChange(true);
 }
+
 if (module?.hot) {
   module.hot.dispose((data) => {
     data.reloaded = true;

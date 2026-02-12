@@ -123,6 +123,7 @@
     "__SENTRY__": true,
     "cy": true,
     "Cypress": true,
+    "jest": true,
     "socket": true,
     "webpackIsomorphicTools": true,
     "vitest": true,

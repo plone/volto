@@ -3,12 +3,10 @@ import fs from 'fs';
 import { parse, stringify } from 'comment-json';
 
 let vscodeSettingsJSON;
-if (fs.existsSync('.vscode') && fs.existsSync('.vscode/settings.json')) {
+if (fs.existsSync('.vscode')) {
   vscodeSettingsJSON = parse(fs.readFileSync('.vscode/settings.json', 'utf8'));
 } else {
-  if (!fs.existsSync('.vscode')) {
-    fs.mkdirSync('.vscode');
-  }
+  fs.mkdirSync('.vscode');
   fs.writeFileSync('.vscode/settings.json', '{}');
   vscodeSettingsJSON = parse(fs.readFileSync('.vscode/settings.json', 'utf8'));
 }

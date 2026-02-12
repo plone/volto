@@ -1,8 +1,9 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { CalendarIcon } from '../../components/icons/CalendarIcon';
 import { CloseIcon } from '../../components/icons/CloseIcon';
 import {
   DatePicker as AriaDatePicker,
+  Group,
   type DatePickerProps as AriaDatePickerProps,
   type DateValue,
   type ValidationResult,
@@ -158,7 +159,7 @@ export function DateTimePicker({
         {label && <Label>{label}</Label>}
         <div className="flex items-center gap-2">
           <FieldGroup className="w-auto min-w-[208px]">
-            <DateInput className="flex h-10 min-w-[150px] flex-1 items-center text-sm" />
+            <DateInput className="min-w-[150px] flex-1 border-0 px-2 py-1.5 text-sm" />
             <Button
               variant="icon"
               className="mr-1 w-7 rounded-xs outline-offset-0"

@@ -4,14 +4,25 @@ import {
   type TextFieldProps as AriaTextFieldProps,
   type ValidationResult,
 } from 'react-aria-components';
+import { tv } from 'tailwind-variants';
 import {
   Description,
   FieldError,
   Input,
   Label,
-  inputStyles,
+  fieldBorderStyles,
 } from '../Field/Field.quanta';
-import { composeTailwindRenderProps } from '../utils';
+import { composeTailwindRenderProps, focusRing } from '../utils';
+
+const inputStyles = tv({
+  extend: focusRing,
+  base: 'rounded-md',
+  variants: {
+    isFocused: fieldBorderStyles.variants.isFocusWithin,
+    isInvalid: fieldBorderStyles.variants.isInvalid,
+    isDisabled: fieldBorderStyles.variants.isDisabled,
+  },
+});
 
 export interface TextFieldProps extends AriaTextFieldProps {
   label?: string;

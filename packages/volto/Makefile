@@ -61,6 +61,8 @@ clean: ## Clean development environment
 
 .PHONY: install
 install: ## Set up development environment
+	# Setup ESlint for VSCode
+	node packages/scripts/vscodesettings.js
 	pnpm i
 	make build-deps
 
@@ -77,7 +79,7 @@ cypress-install: ## Install Cypress for acceptance tests
 	(cd ../../ && pnpm build:components)
 
 .PHONY: build-deps
-build-deps: ../registry/dist ../components/dist ## Build dependencies
+build-deps: ../registry/dist ## Build dependencies
 
 .PHONY: i18n
 i18n: ## Extract and compile translations
@@ -168,11 +170,15 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(NODEBIN)/start-test "make acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
-######### Cookieplone Acceptance tests
+######### Cookieplone / (deprecated) Project Acceptance tests
 
 .PHONY: cookieplone-acceptance-frontend-prod-start
 cookieplone-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for cookieplone tests
 	(cd ../../volto-add-on && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
+
+.PHONY: project-acceptance-frontend-prod-start
+project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests
+	(cd ../../my-volto-app && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod)
 
 ######### Core Sandbox Acceptance tests
 

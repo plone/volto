@@ -612,34 +612,7 @@ describe('Listing Block Tests', () => {
     cy.addNewBlock('listing');
 
     //********  add relative location criteria filter
-    // cy.addLocationQuerystring('Relative path', '../my-folder');
-    cy.get('.block-editor-listing').click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get('.querystring-widget .react-select__menu .react-select__option')
-      .contains('Location')
-      .click();
-
-    cy.get(
-      '#sidebar-properties #default-query-0-querystring #field-query-0-querystring',
-    )
-      .eq(1)
-      .click();
-
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Relative path')
-      .click();
-
-    //insert relative path
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field:last-of-type',
-    ).click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field:last-of-type .react-select__menu .react-select__option',
-    )
-      .contains('./')
-      .click();
+    cy.addLocationQuerystring('Relative path', '../my-folder');
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -697,12 +670,6 @@ describe('Listing Block Tests', () => {
       contentTitle: 'Document within Folder',
       path: 'my-page/my-folder',
     });
-    cy.createContent({
-      contentType: 'Image',
-      contentId: 'my-image',
-      contentTitle: 'My Image',
-      path: 'my-page/my-folder',
-    });
 
     cy.navigate('/my-page/my-folder');
     cy.wait('@content');
@@ -718,29 +685,7 @@ describe('Listing Block Tests', () => {
     cy.addNewBlock('listing');
 
     //********  add absolute location criteria filter
-    // cy.addLocationQuerystring('Absolute path', '/my-page/my-folder');
-    cy.get('.block-editor-listing').click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get('.querystring-widget .react-select__menu .react-select__option')
-      .contains('Location')
-      .click();
-
-    cy.get('.querystring-widget .fields').contains('Absolute path').click();
-
-    cy.get(
-      '#sidebar-properties #default-query-0-querystring div[aria-labelledby="fieldset-default-field-label-query-reference-widget-0"] button[aria-label="Open object browser"]',
-    ).click({ force: true });
-
-    cy.get(
-      '.sidebar-container.sidebar-container-enter-done .object-listing li[aria-label="Select My Image"]',
-    ).should('have.class', 'disabled');
-
-    //insert absolute path
-    cy.get('.sidebar-container button[aria-label="Search SVG"]').click();
-    cy.get(
-      '.sidebar-container .input.search input[placeholder="Search content"]',
-    ).type('My Folder');
-    cy.get('[aria-label="Select My Folder"]').dblclick();
+    cy.addLocationQuerystring('Absolute path', '/my-page/my-folder');
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -815,33 +760,7 @@ describe('Listing Block Tests', () => {
     cy.addNewBlock('listing');
 
     //********  add location criteria filter
-    cy.get('.block-editor-listing').click();
-    cy.get('.querystring-widget .fields').contains('Add criteria').click();
-    cy.get('.querystring-widget .react-select__menu .react-select__option')
-      .contains('Location')
-      .click();
-
-    cy.get(
-      '#sidebar-properties #default-query-0-querystring #field-query-0-querystring',
-    )
-      .eq(1)
-      .click();
-
-    cy.get(
-      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
-    )
-      .contains('Relative path')
-      .click();
-
-    //insert relative path
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field:last-of-type',
-    ).click();
-    cy.get(
-      '.querystring-widget .fields:first-of-type > .field:last-of-type .react-select__menu .react-select__option',
-    )
-      .contains('./')
-      .click();
+    cy.addLocationQuerystring('Relative path', '.');
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(

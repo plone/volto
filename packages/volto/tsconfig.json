@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2022",
     "lib": ["es2022", "dom", "dom.iterable"],
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals", "jest"],
     "module": "preserve",
     "allowJs": true,
     "skipLibCheck": true,

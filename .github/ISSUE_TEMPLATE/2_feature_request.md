@@ -2,7 +2,7 @@
 name: '🦄 Feature request'
 about: 'Suggest an idea for Volto'
 title: ''
-labels: ['04 type: enhancement', '30 needs: triage']
+labels: '04 type: enhancement'
 assignees: ''
 ---
 

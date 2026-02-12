@@ -15,17 +15,6 @@ type Validator = {
   formatMessage: Function;
 };
 
-type Choice = {
-  token: string;
-  label: string;
-};
-type ChoiceValidator = {
-  value: string | Choice;
-  field: Record<string, any>;
-  formData: any;
-  formatMessage: Function;
-};
-
 export const isMaxPropertyValid = ({
   value,
   fieldSpec,
@@ -222,13 +211,12 @@ export const defaultLanguageControlPanelValidator = ({
   value,
   formData,
   formatMessage,
-}: ChoiceValidator) => {
-  const token = typeof value === 'object' ? value.token : value;
+}: Validator) => {
   const isValid =
-    token &&
+    value &&
     (formData.available_languages.find(
-      (lang: { token: string }) => lang.token === token,
+      (lang: { token: string }) => lang.token === value,
     ) ||
-      formData.available_languages.includes(token));
+      formData.available_languages.includes(value));
   return !isValid ? formatMessage(messages.defaultLanguage) : null;
 };

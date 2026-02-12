@@ -195,9 +195,9 @@ const ManageTranslations = (props) => {
                 <Table.Row key={lang}>
                   <Table.Cell collapsing>
                     {lang === content.language.token ? (
-                      <strong>{langmap[lang]?.nativeName || lang}</strong>
+                      <strong>{langmap[lang].nativeName}</strong>
                     ) : (
-                      langmap[lang]?.nativeName || lang
+                      langmap[lang].nativeName
                     )}
                   </Table.Cell>
                   <Table.Cell>
@@ -235,9 +235,7 @@ const ManageTranslations = (props) => {
                         <Button
                           aria-label={`${intl.formatMessage(
                             messages.unlink,
-                          )} ${(
-                            langmap[lang]?.nativeName || lang
-                          ).toLowerCase()}`}
+                          )} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}
@@ -256,9 +254,9 @@ const ManageTranslations = (props) => {
                     ) : (
                       <Button.Group>
                         <Button
-                          aria-label={`${intl.formatMessage(messages.link)} ${(
-                            langmap[lang]?.nativeName || lang
-                          ).toLowerCase()}`}
+                          aria-label={`${intl.formatMessage(
+                            messages.link,
+                          )} ${langmap[lang].nativeName.toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}

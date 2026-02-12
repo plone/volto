@@ -10,7 +10,7 @@ export const ImageInput: {
         state: {
             isObjectBrowserOpen: boolean;
         };
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;

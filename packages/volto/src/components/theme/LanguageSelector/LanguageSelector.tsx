@@ -63,18 +63,18 @@ const LanguageSelector = ({
         );
         return (
           <Link
-            aria-label={`${intl.formatMessage(messages.switchLanguageTo)} ${(
-              langmap[langKey]?.nativeName || langKey
-            ).toLowerCase()}`}
+            aria-label={`${intl.formatMessage(
+              messages.switchLanguageTo,
+            )} ${langmap[langKey].nativeName.toLowerCase()}`}
             className={cx({ selected: toReactIntlLang(lang) === currentLang })}
             to={translation ? flattenToAppURL(translation['@id']) : `/${lang}`}
-            title={langmap[langKey]?.nativeName || langKey}
+            title={langmap[langKey].nativeName}
             onClick={() => {
               onClickAction();
             }}
             key={`language-selector-${lang}`}
           >
-            {langmap[langKey]?.nativeName || langKey}
+            {langmap[langKey].nativeName}
           </Link>
         );
       })}

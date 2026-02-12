@@ -30,17 +30,10 @@ export default function querystring(state = initialState, action = {}) {
         loading: true,
       };
     case `${GET_QUERYSTRING}_SUCCESS`:
-      let indexes = action.result.indexes;
-      if (indexes?.path?.operations) {
-        //remove path operation, to remove unhandled 'Navigation path' option from QueryWidget
-        indexes.path.operations = indexes.path.operations.filter(
-          (o) => o !== 'plone.app.querystring.operation.string.path',
-        );
-      }
       return {
         ...state,
         error: null,
-        indexes: indexes,
+        indexes: action.result.indexes,
         sortable_indexes: action.result.sortable_indexes,
         loaded: true,
         loading: false,

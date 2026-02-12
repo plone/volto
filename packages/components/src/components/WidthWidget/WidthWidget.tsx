@@ -27,7 +27,6 @@ export const defaultActionsInfo: Record<
 
 export function WidthWidget(props: WidthWidgetProps) {
   const {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     id,
     onChange,
     actions = ['narrow', 'default', 'layout', 'full'],

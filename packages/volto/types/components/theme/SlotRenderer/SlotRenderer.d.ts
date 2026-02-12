@@ -1,6 +1,7 @@
-import type { GetSlotArgs } from '@plone/types';
-export interface SlotRendererProps extends GetSlotArgs {
+import type { Content } from '@plone/types';
+declare const SlotRenderer: ({ name, content, navRoot, }: {
     name: string;
-}
-declare const SlotRenderer: ({ name, content, navRoot, data, ...rest }: SlotRendererProps) => import("react/jsx-runtime").JSX.Element;
+    content: Content;
+    navRoot?: Content;
+}) => import("react/jsx-runtime").JSX.Element;
 export default SlotRenderer;

@@ -7,15 +7,6 @@ export const Align = WidgetStory.bind({
   widget: AlignWidget,
 });
 
-export const AlignDefaultLeft = WidgetStory.bind({
-  props: {
-    id: 'align-default-left',
-    title: 'Align (default left)',
-    default: 'left',
-  },
-  widget: AlignWidget,
-});
-
 export default {
   title: 'Edit Widgets/Align',
   component: AlignWidget,

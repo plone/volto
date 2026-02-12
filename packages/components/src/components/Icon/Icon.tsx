@@ -75,7 +75,7 @@ export function Icon(props: IconProps): JSX.Element {
     'aria-hidden': ariaLabel ? ariaHidden || undefined : true,
     role: 'img',
     className: icon({
-      size,
+      size: props.size,
       className: clsx(children.props.className, props.className),
     }),
     style: { fill: color, ...otherProps.style },

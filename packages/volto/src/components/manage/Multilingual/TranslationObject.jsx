@@ -83,7 +83,7 @@ const TranslationObject = ({
             active={activeMenu === 'language'}
             onClick={handleMenuClick}
           >
-            {langmap[lang]?.nativeName || lang}
+            {langmap[lang].nativeName}
           </Menu.Item>
           {visual && (
             <Menu.Item
@@ -107,7 +107,7 @@ const TranslationObject = ({
             hideActions
             pathname={flattenToAppURL(translationObject['@id'])}
             visual={visual}
-            title={langmap[lang]?.nativeName || lang}
+            title={langmap[lang].nativeName}
             loading={false}
             isFormSelected={isFormSelected}
             onSelectForm={onSelectForm}

@@ -110,7 +110,6 @@ const BlockChooser = ({
         getFormatMessage(block.title)
           .toLowerCase()
           .includes(filterValue.toLowerCase()) ||
-        block.title.toLowerCase().includes(filterValue.toLowerCase()) ||
         filterVariations(block)?.length,
     );
   }

@@ -268,8 +268,7 @@ class Add extends Component {
       const translationObject = this.props.location?.state?.translationObject;
 
       const translateTo = translationObject
-        ? langmap?.[this.props.location?.state?.language]?.nativeName ||
-          this.props.location?.state?.language
+        ? langmap?.[this.props.location?.state?.language]?.nativeName
         : null;
 
       // Get initial blocks from local config, if any
@@ -481,12 +480,9 @@ class Add extends Component {
             <Grid.Column>
               <div className="new-translation">
                 <Menu pointing secondary attached tabular>
-                  <Menu.Item
-                    name={translateTo?.toUpperCase() || ''}
-                    active={true}
-                  >
+                  <Menu.Item name={translateTo.toUpperCase()} active={true}>
                     {`${this.props.intl.formatMessage(messages.translateTo, {
-                      lang: translateTo || '',
+                      lang: translateTo,
                     })}`}
                   </Menu.Item>
                 </Menu>

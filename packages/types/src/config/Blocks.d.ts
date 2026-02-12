@@ -124,7 +124,13 @@ export interface BlockConfigBase {
    * It can be either be at block level (it's applied always), at a variation level
    * or both. It's up to the developer to make them work nicely (not conflict) between them
    */
-  schemaEnhancer?: (args: SchemaEnhancerArgs) => JSONSchema;
+  schemaEnhancer?: (args: {
+    schema: JSONSchema;
+    formData: BlockConfigBase; // Not sure, if so, has to be extendable
+    intl: IntlShape;
+    navRoot: Content;
+    contentType: string;
+  }) => JSONSchema;
   /**
    * A block can define variations (it should include the stock, default one)
    */
@@ -136,14 +142,6 @@ export interface BlockConfigBase {
   extensions?: Record<string, BlockExtension>;
   blocksConfig?: Partial<BlocksConfigData>;
 }
-
-export type SchemaEnhancerArgs = {
-  schema: JSONSchema;
-  formData?: BlocksFormData;
-  intl?: IntlShape;
-  navRoot?: Content;
-  contentType?: string;
-};
 
 export interface BlockExtension {
   id: string;

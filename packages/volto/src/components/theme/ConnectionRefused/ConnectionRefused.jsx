@@ -1,5 +1,5 @@
 /**
- * Connection refused error page.
+ * Home container.
  * @module components/theme/ConnectionRefused/ConnectionRefused
  */
 
@@ -7,7 +7,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Container } from 'semantic-ui-react';
 import config from '@plone/volto/registry';
-import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
 
 const ConnectionRefused = () => (
   <Container
@@ -72,4 +71,4 @@ const ConnectionRefused = () => (
   </Container>
 );
 
-export default withServerErrorCode(503)(ConnectionRefused);
+export default ConnectionRefused;

@@ -54,14 +54,14 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
           </div>
         </>
       )}
-      {content?.['@components']?.translations &&
+      {content['@components'].translations &&
         (() => {
           const translationsLeft = filter(
             availableLanguages,
             (lang) =>
               !Boolean(
-                content?.['@components']?.translations &&
-                  find(content?.['@components']?.translations?.items, {
+                content['@components'].translations &&
+                  find(content['@components'].translations.items, {
                     language: lang,
                   }),
               ) && toBackendLang(currentLanguage) !== lang,
@@ -95,9 +95,7 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
                             id="Translate to {lang}"
                             defaultMessage="Translate to {lang}"
                             values={{
-                              lang: (
-                                langmap[lang]?.nativeName || lang
-                              ).toLowerCase(),
+                              lang: langmap[lang].nativeName.toLowerCase(),
                             }}
                           />
                         </Link>

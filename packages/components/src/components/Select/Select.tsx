@@ -15,17 +15,11 @@ import {
   useContextProps,
   type ValidationResult,
 } from 'react-aria-components';
-// import { Popover } from '../Popover/Popover';
 
 import { ChevrondownIcon } from '../icons/ChevrondownIcon';
 import { ChevronupIcon } from '../icons/ChevronupIcon';
 
-export interface SelectItemObject {
-  label: string;
-  value: string;
-}
-
-export interface SelectProps<T extends SelectItemObject = SelectItemObject>
+export interface SelectProps<T extends object>
   extends Omit<RACSelectProps<T>, 'children'> {
   label?: string;
   description?: string;
@@ -74,7 +68,7 @@ export function Select<T extends SelectItemObject>({
           </Button>
           {description && <Text slot="description">{description}</Text>}
           <FieldError>{errorMessage}</FieldError>
-          <Popover offset={0} {...popoverProps}>
+          <Popover {...popoverProps}>
             {children ? (
               <ListBox items={items}>{children}</ListBox>
             ) : (
@@ -90,6 +84,11 @@ export function Select<T extends SelectItemObject>({
     </RACSelect>
   );
 }
+
+export type SelectItemObject = {
+  label: string;
+  value: string;
+};
 
 export function SelectItem(props: ListBoxItemProps) {
   return <ListBoxItem {...props} />;

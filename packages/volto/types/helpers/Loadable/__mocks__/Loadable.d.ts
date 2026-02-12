@@ -1,3 +1,3 @@
 export function __setLoadables(): Promise<void>;
-export const injectLazyLibs: any;
-export const preloadLazyLibs: any;
+export const injectLazyLibs: jest.Mock<any, any, any>;
+export const preloadLazyLibs: jest.Mock<any, any, any>;

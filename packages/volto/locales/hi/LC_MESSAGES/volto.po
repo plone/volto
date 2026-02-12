@@ -570,7 +570,6 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -600,7 +599,6 @@ msgstr "सेल"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/BlockAlignment
 msgid "Center"
 msgstr "केंद्र"
 
@@ -1010,7 +1008,6 @@ msgstr "तारीख (नवीनतम पहले)"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
-#: components/manage/Widgets/BlockWidth
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/theme/Comments/CommentEditModal
@@ -1236,11 +1233,6 @@ msgstr "नई फ़ाइल अपलोड करने के लिए य
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop files here ..."
 msgstr "यहाँ फ़ाइलें ड्रॉप करें ..."
-
-#. Default: "Drop files here to upload"
-#: components/manage/Contents/DropZoneContent
-msgid "Drop files here to upload"
-msgstr ""
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1499,11 +1491,6 @@ msgstr "इस आइटम के लिए मौजूदा वैकल्�
 msgid "Expand sidebar"
 msgstr "साइडबार का विस्तार करें"
 
-#. Default: "Expand toolbar"
-#: components/manage/Toolbar/Toolbar
-msgid "Expand toolbar"
-msgstr "टूलबार फैलाएँ"
-
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
@@ -1576,7 +1563,6 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "फ़ाइल का आकार"
 
@@ -1587,13 +1573,11 @@ msgstr "फ़ाइल दृश्य"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "फ़ाइल का नाम"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
@@ -1677,7 +1661,6 @@ msgstr "से"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/BlockWidth
 msgid "Full"
 msgstr "पूरा"
 
@@ -2063,7 +2046,6 @@ msgstr ""
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
-#: components/manage/Widgets/Size
 msgid "Large"
 msgstr "बड़ा"
 
@@ -2079,7 +2061,6 @@ msgstr "अंतिम टिप्पणी की तारीख"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "अंतिम संशोधन"
 
@@ -2095,7 +2076,6 @@ msgstr "नवीनतम संस्करण"
 
 #. Default: "Layout"
 #: components/manage/Controlpanels/ContentTypesActions
-#: components/manage/Widgets/BlockWidth
 msgid "Layout"
 msgstr "लेआउट"
 
@@ -2108,7 +2088,6 @@ msgstr "प्रमुख छवि"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/BlockAlignment
 msgid "Left"
 msgstr "बाएँ"
 
@@ -2307,7 +2286,6 @@ msgstr "अधिकतम मूल्य {len} है।"
 
 #. Default: "Medium"
 #: components/manage/Widgets/ImageSizeWidget
-#: components/manage/Widgets/Size
 msgid "Medium"
 msgstr "मध्यम"
 
@@ -2420,7 +2398,6 @@ msgstr "नाम"
 
 #. Default: "Narrow"
 #: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/BlockWidth
 msgid "Narrow"
 msgstr "संकीर्ण"
 
@@ -2842,7 +2819,6 @@ msgstr "अपना कोड सुंदर बनाएं"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "पूर्वावलोकन"
 
@@ -2983,11 +2959,6 @@ msgstr "plone.api >= 2.0.3 के साथ संबंध संपादन�
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "संबंध अपडेट किए गए"
-
-#. Default: "Release to add file(s) to this folder"
-#: components/manage/Contents/DropZoneContent
-msgid "Release to add file(s) to this folder"
-msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3143,7 +3114,6 @@ msgstr "रिचटेक्स्ट"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
-#: components/manage/Widgets/BlockAlignment
 msgid "Right"
 msgstr "दाईं ओर"
 
@@ -3540,7 +3510,6 @@ msgstr "साइज: {size}"
 
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
-#: components/manage/Widgets/Size
 msgid "Small"
 msgstr "छोटा"
 
@@ -4020,7 +3989,6 @@ msgstr "कुल टिप्पणियाँ"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "अपलोड करने के लिए कुल फ़ाइलें: {totalFiles}"
 
@@ -4241,11 +4209,6 @@ msgstr "अपग्रेड कदम"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "अपलोड"
-
-#. Default: "Upload Files ({count})"
-#: components/manage/Contents/DropZoneContent
-msgid "Upload Files ({count})"
-msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4997,16 +4960,6 @@ msgstr "निजी"
 msgid "published"
 msgstr "प्रकाशित"
 
-#. Default: "Current path (./)"
-#: components/manage/Widgets/QueryWidget
-msgid "query-widget-currentPath"
-msgstr ""
-
-#. Default: "Parent path (../)"
-#: components/manage/Widgets/QueryWidget
-msgid "query-widget-parentPath"
-msgstr ""
-
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -5332,7 +5285,6 @@ msgstr "हाँ"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
-#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 

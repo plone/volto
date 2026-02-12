@@ -129,6 +129,10 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
 
     .toolbar-handler {
+      .toolbar-handler-button {
+        opacity: 0.3;
+      }
+
       // State colors
       .published:before {
         background: @teal-blue;
@@ -255,15 +259,6 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
           height: 4px;
           background-color: red;
           content: '';
-          opacity: 0.65;
-        }
-
-        &:hover,
-        &:focus {
-          &::before {
-            opacity: 1;
-            transition: opacity 0.3s;
-          }
         }
       }
     }
@@ -719,7 +714,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
 
     .compare-languages {
-      @media (max-width: calc(@largestMobileScreen - 1px)) {
+      @media (max-width: @largestMobileScreen - 1) {
         position: fixed;
         top: 101px;
         left: 0;

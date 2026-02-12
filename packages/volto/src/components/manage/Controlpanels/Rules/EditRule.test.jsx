@@ -13,7 +13,11 @@ vi.mock('../../Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
 }));
 
-vi.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
 
 describe('EditRule', () => {
   it('renders rules edit interface', () => {

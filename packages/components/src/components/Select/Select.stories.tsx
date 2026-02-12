@@ -12,14 +12,7 @@ const meta = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div
-        style={
-          {
-            width: '400px',
-            '--rac-select-min-width': '200px',
-          } as React.CSSProperties
-        }
-      >
+      <div style={{ width: '400px' }}>
         <Story />
       </div>
     ),

@@ -35,9 +35,6 @@ import {
   RecurrenceWidget,
   RadioGroupWidget,
   CheckboxGroupWidget,
-  Size,
-  BlockAlignment,
-  BlockWidth,
 } from '@plone/volto/components/manage/Widgets';
 
 import ArrayViewWidget from '@plone/volto/components/theme/Widgets/ArrayWidget';
@@ -105,10 +102,6 @@ export const widgetMapping = {
     hidden: HiddenWidget,
     radio_group: RadioGroupWidget,
     checkbox_group: CheckboxGroupWidget,
-    // SemanticUI Free widgets
-    blockAlignment: BlockAlignment,
-    blockWidth: BlockWidth,
-    size: Size,
   },
   vocabulary: {
     'plone.app.vocabularies.Catalog': ObjectBrowserWidget,

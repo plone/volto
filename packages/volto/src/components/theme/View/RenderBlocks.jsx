@@ -5,7 +5,8 @@ import map from 'lodash/map';
 import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 import {
   applyBlockDefaults,
-  getBlocks,
+  getBlocksFieldname,
+  getBlocksLayoutFieldname,
   hasBlocksData,
 } from '@plone/volto/helpers/Blocks/Blocks';
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
@@ -27,25 +28,26 @@ const messages = defineMessages({
 const RenderBlocks = (props) => {
   const { blockWrapperTag, content, location, isContainer, metadata } = props;
   const intl = useIntl();
+  const blocksFieldname = getBlocksFieldname(content);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
   const CustomTag = props.as || React.Fragment;
 
-  const blockList = getBlocks(content);
-
   return hasBlocksData(content) ? (
     <CustomTag>
-      {map(blockList, ([block, rawBlockData]) => {
+      {map(content[blocksLayoutFieldname].items, (block) => {
         const Block =
-          blocksConfig[rawBlockData?.['@type']]?.view || ViewDefaultBlock;
+          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view ||
+          ViewDefaultBlock;
 
         const blockData = applyBlockDefaults({
-          data: rawBlockData,
+          data: content[blocksFieldname][block],
           intl,
           metadata,
           properties: content,
         });
 
-        if (rawBlockData?.['@type'] === 'empty') {
+        if (content[blocksFieldname]?.[block]?.['@type'] === 'empty') {
           return (
             <MaybeWrap
               key={block}
@@ -89,7 +91,7 @@ const RenderBlocks = (props) => {
           return (
             <div key={block}>
               {intl.formatMessage(messages.unknownBlock, {
-                block: rawBlockData?.['@type'],
+                block: content[blocksFieldname]?.[block]?.['@type'],
               })}
             </div>
           );

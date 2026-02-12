@@ -56,33 +56,33 @@ const CompareLanguagesMenu = ({
                 {comparingLanguage === t.language ? (
                   <button
                     aria-label={`${intl.formatMessage(messages.stop_compare)} ${
-                      langmap[t.language]?.nativeName || t.language
+                      langmap[t.language].nativeName
                     }`}
                     title={`${intl.formatMessage(messages.stop_compare)} ${
-                      langmap[t.language]?.nativeName || t.language
+                      langmap[t.language].nativeName
                     }`}
                     onClick={() => {
                       setComparingLanguage(null);
                       closeMenu();
                     }}
                   >
-                    {langmap[t.language]?.nativeName || t.language}
+                    {langmap[t.language].nativeName}
                     <Icon name={clearSVG} size="30px" />
                   </button>
                 ) : (
                   <button
-                    aria-label={`${intl.formatMessage(messages.compare_to)} ${(
-                      langmap[t.language]?.nativeName || t.language
-                    ).toLowerCase()}`}
-                    title={`${intl.formatMessage(messages.compare_to)} ${(
-                      langmap[t.language]?.nativeName || t.language
-                    ).toLowerCase()}`}
+                    aria-label={`${intl.formatMessage(
+                      messages.compare_to,
+                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
+                    title={`${intl.formatMessage(
+                      messages.compare_to,
+                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
                     onClick={() => {
                       setComparingLanguage(t.language);
                       closeMenu();
                     }}
                   >
-                    {langmap[t.language]?.nativeName || t.language}
+                    {langmap[t.language].nativeName}
                   </button>
                 )}
               </li>
