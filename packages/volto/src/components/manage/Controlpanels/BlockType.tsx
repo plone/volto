@@ -69,11 +69,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
         className="ui container controlpanel-block_type"
       >
         <h1>
-          <FormattedMessage
-            id="block-type"
-            defaultMessage="{title}"
-            values={{ title: block.title }}
-          />
+          {intl.formatMessage({ id: block.title, defaultMessage: block.title })}
         </h1>
         <form className="search" onSubmit={(e) => e.preventDefault()}>
           <input
@@ -118,7 +114,12 @@ const BlockTypeControlpanel = (props: RouteProps) => {
           <FormattedMessage
             id="no-blocks-found"
             defaultMessage="No items found for type: {type}."
-            values={{ type: id }}
+            values={{
+              type: intl.formatMessage({
+                id: block.title,
+                defaultMessage: block.title,
+              }),
+            }}
           />
         )}
         {isClient &&

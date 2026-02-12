@@ -2640,7 +2640,6 @@ msgstr "आयोजनएं"
 
 #. Default: "Occurrence"
 #: components/manage/Controlpanels/BlockType
-#: components/manage/Controlpanels/BlockTypes
 msgid "Occurrence"
 msgstr ""
 
@@ -4097,7 +4096,6 @@ msgid "Triggering event field error. Please select a value"
 msgstr "त्रिगर करने वाली आयोजन फ़ील्ड त्रुटि। कृपया एक मान चुनें"
 
 #. Default: "Type"
-#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
@@ -4653,8 +4651,8 @@ msgstr ""
 msgid "availableViews"
 msgstr "उपलब्ध दृश्य"
 
-#. Default: "{title}"
-#: components/manage/Controlpanels/BlockType
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
 msgid "block-type"
 msgstr ""
 
@@ -4991,6 +4989,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
 msgstr "इनपुट संख्या होनी चाहिए"
+
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockTypes
+msgid "occurrence"
+msgstr ""
 
 #. Default: "of the month"
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField

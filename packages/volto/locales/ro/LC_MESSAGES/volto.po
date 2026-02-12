@@ -2646,7 +2646,6 @@ msgstr "Apariții"
 
 #. Default: "Occurrence"
 #: components/manage/Controlpanels/BlockType
-#: components/manage/Controlpanels/BlockTypes
 msgid "Occurrence"
 msgstr ""
 
@@ -4103,7 +4102,6 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Eroare la declanșarea câmpului evenimentului. Selectați o valoare"
 
 #. Default: "Type"
-#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
@@ -4659,8 +4657,8 @@ msgstr ""
 msgid "availableViews"
 msgstr "Vizualizări disponibile"
 
-#. Default: "{title}"
-#: components/manage/Controlpanels/BlockType
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
 msgid "block-type"
 msgstr ""
 
@@ -4997,6 +4995,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
 msgstr "număr"
+
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockTypes
+msgid "occurrence"
+msgstr ""
 
 #. Default: "of the month"
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField

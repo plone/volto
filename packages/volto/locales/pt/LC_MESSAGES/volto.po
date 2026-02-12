@@ -2645,7 +2645,6 @@ msgstr ""
 
 #. Default: "Occurrence"
 #: components/manage/Controlpanels/BlockType
-#: components/manage/Controlpanels/BlockTypes
 msgid "Occurrence"
 msgstr ""
 
@@ -4102,7 +4101,6 @@ msgid "Triggering event field error. Please select a value"
 msgstr ""
 
 #. Default: "Type"
-#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
@@ -4658,8 +4656,8 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
-#. Default: "{title}"
-#: components/manage/Controlpanels/BlockType
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
 msgid "block-type"
 msgstr ""
 
@@ -4995,6 +4993,11 @@ msgstr ""
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
+msgstr ""
+
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockTypes
+msgid "occurrence"
 msgstr ""
 
 #. Default: "of the month"

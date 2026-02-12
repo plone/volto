@@ -2645,7 +2645,6 @@ msgstr "Toistuminen"
 
 #. Default: "Occurrence"
 #: components/manage/Controlpanels/BlockType
-#: components/manage/Controlpanels/BlockTypes
 msgid "Occurrence"
 msgstr ""
 
@@ -4102,7 +4101,6 @@ msgid "Triggering event field error. Please select a value"
 msgstr "Käynnistä tapahtumakentän virhe. Valtse arvo"
 
 #. Default: "Type"
-#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Widgets/SchemaWidget
@@ -4658,8 +4656,8 @@ msgstr ""
 msgid "availableViews"
 msgstr "Saatavilla olevat näkymät"
 
-#. Default: "{title}"
-#: components/manage/Controlpanels/BlockType
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
 msgid "block-type"
 msgstr ""
 
@@ -4996,6 +4994,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
 msgstr "numero"
+
+#. Default: "Occurrence"
+#: components/manage/Controlpanels/BlockTypes
+msgid "occurrence"
+msgstr ""
 
 #. Default: "of the month"
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField

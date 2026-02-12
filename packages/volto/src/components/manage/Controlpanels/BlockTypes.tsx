@@ -65,10 +65,10 @@ const BlockTypesControlpanel = (props: RouteProps) => {
           <thead className="table-header">
             <tr className="table-row">
               <th className="table-heading">
-                <FormattedMessage id="Type" defaultMessage="Type" />
+                <FormattedMessage id="block-type" defaultMessage="Block Type" />
               </th>
               <th className="table-heading">
-                <FormattedMessage id="Occurrence" defaultMessage="Occurrence" />
+                <FormattedMessage id="occurrence" defaultMessage="Occurrence" />
               </th>
             </tr>
           </thead>
