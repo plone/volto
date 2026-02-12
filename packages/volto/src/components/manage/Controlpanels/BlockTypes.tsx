@@ -34,15 +34,13 @@ const BlockTypesControlpanel = (props: RouteProps) => {
   const dispatch = useDispatch();
   const pathname = location.pathname;
   const isClient = useClient();
-  const blocks = [];
+  const blocks = Object.values(blocksConfig).sort((a, b) =>
+    a.title === b.title ? 0 : a.title > b.title ? 1 : -1,
+  );
 
   useEffect(() => {
     dispatch(getBlockTypes());
   }, [dispatch]);
-
-  for (const block of Object.values(blocksConfig)) {
-    blocks.push(block);
-  }
 
   if (blockTypes.loading) {
     return <div>Loading...</div>;
