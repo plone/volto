@@ -20,7 +20,7 @@ import {
   PilcrowIcon,
   Quote,
   SparklesIcon,
-  SplitSquareHorizontalIcon,
+  SquareSplitVertical,
   Square,
   Table,
   TableOfContentsIcon,
@@ -266,7 +266,7 @@ export function SlashInputElement(
   const groups = React.useMemo(() => {
     if (!canSplit) return baseGroups;
     const splitItem = {
-      icon: <SplitSquareHorizontalIcon />,
+      icon: <SquareSplitVertical />,
       keywords: ['split', 'divide', 'new block'],
       label: 'Split editor here',
       value: 'action_split_editor',

@@ -87,6 +87,7 @@
     "@platejs/table": "^49.1.13",
     "@platejs/toc": "^49.0.0",
     "@platejs/toggle": "^49.0.0",
+    "@plone/components": "workspace:*",
     "@plone/helpers": "workspace:*",
     "@plone/registry": "workspace:*",
     "@radix-ui/react-alert-dialog": "^1.1.15",
