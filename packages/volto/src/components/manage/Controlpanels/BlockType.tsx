@@ -11,6 +11,7 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Error from '@plone/volto/components/theme/Error/Error';
+import { Table } from '@plone/components';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import searchSVG from '@plone/volto/icons/zoom.svg';
@@ -84,32 +85,37 @@ const BlockTypeControlpanel = (props: RouteProps) => {
           />
         </form>
         {blockTypes.items?.length > 0 ? (
-          <table className="table">
-            <thead className="table-header">
-              <tr className="table-row">
-                <th className="table-heading">
-                  <FormattedMessage id="Title" defaultMessage="Title" />
-                </th>
-                <th className="table-heading">
-                  <FormattedMessage
-                    id="Occurrence"
-                    defaultMessage="Occurrence"
-                  />
-                </th>
-              </tr>
-            </thead>
-            <tbody className="table-body">
-              {blockTypes.items.map((item) => (
-                <tr key={item['@id']} className="table-row">
-                  <td className="table-cell">
-                    <a href={item['@id']}>{item.title}</a>{' '}
-                    <span>{flattenToAppURL(item['@id']) || '/'}</span>
-                  </td>
-                  <td className="table-cell">{item.count}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <Table
+            columns={[
+              {
+                id: 'title',
+                name: intl.formatMessage({
+                  id: 'Title',
+                  defaultMessage: 'Title',
+                }),
+                isRowHeader: true,
+              },
+              {
+                id: 'occurrence',
+                name: intl.formatMessage({
+                  id: 'Occurrence',
+                  defaultMessage: 'Occurrence',
+                }),
+                isRowHeader: true,
+              },
+            ]}
+            rows={blockTypes.items.map((item) => ({
+              id: item['@id'],
+              textValue: item.title,
+              title: (
+                <>
+                  <a href={item['@id']}>{item.title}</a>{' '}
+                  <span>{flattenToAppURL(item['@id']) || '/'}</span>
+                </>
+              ),
+              occurrence: item.count,
+            }))}
+          />
         ) : (
           <FormattedMessage
             id="no-blocks-found"
