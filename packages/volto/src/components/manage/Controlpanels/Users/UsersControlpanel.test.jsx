@@ -20,7 +20,10 @@ describe('UsersControlpanel', () => {
       },
       roles: { roles: [] },
       users: {
-        users: [],
+        users: {
+          items: [],
+          items_total: 0,
+        },
         create: { loading: false },
         user: {
           roles: ['Manager'],
