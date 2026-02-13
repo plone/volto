@@ -11,6 +11,7 @@ import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import Error from '@plone/volto/components/theme/Error/Error';
 import { Table } from '@plone/components';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import type { Location } from 'history';
@@ -19,6 +20,18 @@ const messages = defineMessages({
   back: {
     id: 'Back',
     defaultMessage: 'Back',
+  },
+  loading: {
+    id: 'loading',
+    defaultMessage: 'Loading',
+  },
+  blockType: {
+    id: 'Block Type',
+    defaultMessage: 'Block Type',
+  },
+  occurrences: {
+    id: 'Occurrences',
+    defaultMessage: 'Occurrences',
   },
 });
 
@@ -35,16 +48,25 @@ const BlockTypesControlpanel = (props: RouteProps) => {
   const dispatch = useDispatch();
   const pathname = location.pathname;
   const isClient = useClient();
-  const blocks = Object.values(blocksConfig).sort((a, b) =>
-    a.title === b.title ? 0 : a.title > b.title ? 1 : -1,
-  );
+
+  const blocks = Object.values(blocksConfig)
+    .map((blockConfig) => ({
+      ...blockConfig,
+      title: blockConfig.title
+        ? intl.formatMessage({
+            id: blockConfig.title,
+            defaultMessage: blockConfig.title,
+          })
+        : blockConfig.id,
+    }))
+    .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
 
   useEffect(() => {
     dispatch(getBlockTypes());
   }, [dispatch]);
 
   if (blockTypes.loading) {
-    return <div>Loading...</div>;
+    return <div>{intl.formatMessage(messages.loading)}&hellip;</div>;
   }
 
   if (blockTypes?.error?.status) {
@@ -58,35 +80,29 @@ const BlockTypesControlpanel = (props: RouteProps) => {
         className="ui container controlpanel-block_types"
       >
         <h1>
-          <FormattedMessage id="block-types" defaultMessage="Block Types" />
+          <FormattedMessage id="Block Types" defaultMessage="Block Types" />
         </h1>
         <Table
           columns={[
             {
               id: 'blockType',
-              name: intl.formatMessage({
-                id: 'block-type',
-                defaultMessage: 'Block Type',
-              }),
+              name: intl.formatMessage(messages.blockType),
               isRowHeader: true,
             },
             {
-              id: 'occurrence',
-              name: intl.formatMessage({
-                id: 'occurrence',
-                defaultMessage: 'Occurrence',
-              }),
+              id: 'occurrences',
+              name: intl.formatMessage(messages.occurrences),
             },
           ]}
           rows={blocks.map((block) => ({
             id: block.id,
             textValue: block.title,
             blockType: (
-              <a href={`${pathname}/${block.id}`} className="table-link">
+              <UniversalLink href={`${pathname}/${block.id}`}>
                 {block.title}
-              </a>
+              </UniversalLink>
             ),
-            occurrence: blockTypes.items?.[block.id] || 0,
+            occurrences: blockTypes.items?.[block.id] || 0,
           }))}
         />
         {isClient &&

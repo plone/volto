@@ -513,7 +513,13 @@ msgstr "Base da consulta para busca"
 msgid "Block"
 msgstr "Bloco"
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
 #. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/Controlpanels
 msgid "Block Types"
 msgstr ""
@@ -2007,6 +2013,11 @@ msgstr "Fonte do destaque inválida"
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Não é permitido definir a senha e solicitar o envio da mensagem de redefinição de senha por e-mail. Por favor, selecione um deles."
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2644,9 +2655,10 @@ msgstr "Tamanho do objeto"
 msgid "Occurences"
 msgstr "Ocorrências"
 
-#. Default: "Occurrence"
+#. Default: "Occurrences"
 #: components/manage/Controlpanels/BlockType
-msgid "Occurrence"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
 msgstr ""
 
 #. Default: "Ok"
@@ -2734,6 +2746,11 @@ msgstr "Colar"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "Colar blocos"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3249,7 +3266,6 @@ msgstr "Atualizações do esquema"
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
-#: components/manage/Controlpanels/BlockType
 #: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
@@ -4013,7 +4029,6 @@ msgstr "Hora"
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
-#: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -4657,16 +4672,6 @@ msgstr "e mais {count}…"
 msgid "availableViews"
 msgstr "Visões disponíveis"
 
-#. Default: "Block Type"
-#: components/manage/Controlpanels/BlockTypes
-msgid "block-type"
-msgstr ""
-
-#. Default: "Block Types"
-#: components/manage/Controlpanels/BlockTypes
-msgid "block-types"
-msgstr ""
-
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4707,6 +4712,11 @@ msgstr "Padrão"
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
 msgstr "Comparar com"
+
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4926,6 +4936,8 @@ msgstr "Listagem"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Carregando"
 
@@ -4995,11 +5007,6 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
 msgstr "O valor deve ser numérico"
-
-#. Default: "Occurrence"
-#: components/manage/Controlpanels/BlockTypes
-msgid "occurrence"
-msgstr ""
 
 #. Default: "of the month"
 #: components/manage/Widgets/RecurrenceWidget/ByMonthDayField

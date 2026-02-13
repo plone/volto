@@ -2,7 +2,6 @@ import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { getParentUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
-import debounce from 'lodash/debounce';
 import { useClient } from '@plone/volto/hooks';
 import config from '@plone/volto/registry';
 import { useEffect } from 'react';
@@ -12,9 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Error from '@plone/volto/components/theme/Error/Error';
 import { Table } from '@plone/components';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import searchSVG from '@plone/volto/icons/zoom.svg';
 import type { Location } from 'history';
 
 const messages = defineMessages({
@@ -22,9 +21,25 @@ const messages = defineMessages({
     id: 'Back',
     defaultMessage: 'Back',
   },
-  search: {
-    id: 'Search',
-    defaultMessage: 'Search',
+  controlpanelTitle: {
+    id: 'controlpanel_block_type',
+    defaultMessage: 'Block: {title}',
+  },
+  item: {
+    id: 'Item',
+    defaultMessage: 'Item',
+  },
+  path: {
+    id: 'Path',
+    defaultMessage: 'Path',
+  },
+  occurrences: {
+    id: 'Occurrences',
+    defaultMessage: 'Occurrences',
+  },
+  loading: {
+    id: 'loading',
+    defaultMessage: 'Loading',
   },
 });
 
@@ -49,19 +64,17 @@ const BlockTypeControlpanel = (props: RouteProps) => {
     dispatch(getBlockTypes(id));
   }, [dispatch, id]);
 
-  const onChangeSearch = (value: string) => {
-    dispatch(getBlockTypes(id, value));
-  };
-
-  const debouncedSearch = debounce(onChangeSearch, 600);
-
   if (blockTypes.loading) {
-    return <div>Loading...</div>;
+    return <div>{intl.formatMessage(messages.loading)}&hellip;</div>;
   }
 
   if (blockTypes?.error?.status) {
     return <Error error={blockTypes.error} />;
   }
+
+  const translatedTitle = block?.title
+    ? intl.formatMessage({ id: block.title, defaultMessage: block.title })
+    : id;
 
   return (
     blockTypes.loaded && (
@@ -70,37 +83,26 @@ const BlockTypeControlpanel = (props: RouteProps) => {
         className="ui container controlpanel-block_type"
       >
         <h1>
-          {intl.formatMessage({ id: block.title, defaultMessage: block.title })}
+          {intl.formatMessage(messages.controlpanelTitle, {
+            title: translatedTitle,
+          })}
         </h1>
-        <form className="search" onSubmit={(e) => e.preventDefault()}>
-          <input
-            type="text"
-            placeholder="Search"
-            onChange={(e) => debouncedSearch(e.target.value)}
-          />
-          <Icon
-            name={searchSVG}
-            size="16px"
-            title={intl.formatMessage(messages.search)}
-          />
-        </form>
         {blockTypes.items?.length > 0 ? (
           <Table
             columns={[
               {
                 id: 'title',
-                name: intl.formatMessage({
-                  id: 'Title',
-                  defaultMessage: 'Title',
-                }),
+                name: intl.formatMessage(messages.item),
                 isRowHeader: true,
               },
               {
-                id: 'occurrence',
-                name: intl.formatMessage({
-                  id: 'Occurrence',
-                  defaultMessage: 'Occurrence',
-                }),
+                id: 'path',
+                name: intl.formatMessage(messages.path),
+                isRowHeader: true,
+              },
+              {
+                id: 'occurrences',
+                name: intl.formatMessage(messages.occurrences),
                 isRowHeader: true,
               },
             ]}
@@ -108,12 +110,10 @@ const BlockTypeControlpanel = (props: RouteProps) => {
               id: item['@id'],
               textValue: item.title,
               title: (
-                <>
-                  <a href={item['@id']}>{item.title}</a>{' '}
-                  <span>{flattenToAppURL(item['@id']) || '/'}</span>
-                </>
+                <UniversalLink href={item['@id']}>{item.title}</UniversalLink>
               ),
-              occurrence: item.count,
+              path: flattenToAppURL(item['@id']) || '/',
+              occurrences: item.count,
             }))}
           />
         ) : (
@@ -121,10 +121,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
             id="no-blocks-found"
             defaultMessage="No items found for type: {type}."
             values={{
-              type: intl.formatMessage({
-                id: block.title,
-                defaultMessage: block.title,
-              }),
+              type: translatedTitle,
             }}
           />
         )}

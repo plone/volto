@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-02-12T09:35:35.408Z\n"
+"POT-Creation-Date: 2026-02-13T22:29:59.034Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -509,7 +509,13 @@ msgstr ""
 msgid "Block"
 msgstr ""
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
 #. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/Controlpanels
 msgid "Block Types"
 msgstr ""
@@ -2003,6 +2009,11 @@ msgstr ""
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr ""
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2640,9 +2651,10 @@ msgstr ""
 msgid "Occurences"
 msgstr ""
 
-#. Default: "Occurrence"
+#. Default: "Occurrences"
 #: components/manage/Controlpanels/BlockType
-msgid "Occurrence"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
 msgstr ""
 
 #. Default: "Ok"
@@ -2729,6 +2741,11 @@ msgstr ""
 #. Default: "Paste blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
 msgstr ""
 
 #. Default: "Perform the following actions:"
@@ -3245,7 +3262,6 @@ msgstr ""
 #: components/manage/Blocks/Search/layout/RightColumnFacets
 #: components/manage/Blocks/Search/layout/TopSideFacets
 #: components/manage/Blocks/Search/schema
-#: components/manage/Controlpanels/BlockType
 #: components/manage/Sharing/Sharing
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
@@ -4009,7 +4025,6 @@ msgstr ""
 #: components/manage/Blocks/ToC/Schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
-#: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
@@ -4653,16 +4668,6 @@ msgstr ""
 msgid "availableViews"
 msgstr ""
 
-#. Default: "Block Type"
-#: components/manage/Controlpanels/BlockTypes
-msgid "block-type"
-msgstr ""
-
-#. Default: "Block Types"
-#: components/manage/Controlpanels/BlockTypes
-msgid "block-types"
-msgstr ""
-
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
@@ -4702,6 +4707,11 @@ msgstr ""
 #. Default: "Compare to language"
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
+msgstr ""
+
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
 msgstr ""
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
@@ -4922,6 +4932,8 @@ msgstr ""
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr ""
 
@@ -4990,11 +5002,6 @@ msgstr ""
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
-msgstr ""
-
-#. Default: "Occurrence"
-#: components/manage/Controlpanels/BlockTypes
-msgid "occurrence"
 msgstr ""
 
 #. Default: "of the month"
