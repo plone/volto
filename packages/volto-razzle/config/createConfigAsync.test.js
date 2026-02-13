@@ -28,8 +28,7 @@ describe('createConfigAsync .well-known handling', () => {
 
   it('should configure CopyPlugin to allow .well-known dotfiles in production', async () => {
     // Import after setting up the directory
-    const createConfigAsync = (await import('../config/createConfigAsync'))
-      .default;
+    const createConfigAsync = (await import('./createConfigAsync')).default;
 
     const config = await createConfigAsync(
       'web',
