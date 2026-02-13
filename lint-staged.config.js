@@ -23,8 +23,15 @@ module.exports = {
       return [];
     }
 
+    // Filter out files ignored by ESLint (e.g., files in hidden directories like .storybook)
+    const filesToLint = await removeIgnoredFiles(filteredFiles);
+
+    if (filesToLint.length === 0) {
+      return [];
+    }
+
     return [
-      `pnpm --filter @plone/volto lint:husky ${filteredFiles.join(' ')}`,
+      `pnpm --filter @plone/volto lint:husky ${filesToLint}`,
       `pnpm --filter @plone/volto prettier:husky ${filteredFiles.join(' ')}`,
     ];
   },
