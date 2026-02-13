@@ -16,7 +16,6 @@ import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
 import { deleteComment } from '@plone/volto/actions/comments/comments';
 import { searchContent } from '@plone/volto/actions/search/search';
-import { listControlpanels } from '@plone/volto/actions/controlpanels/controlpanels';
 import FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
@@ -50,7 +49,6 @@ class ModerateComments extends Component {
   static propTypes = {
     searchContent: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
-    listControlpanels: PropTypes.func.isRequired,
     items: PropTypes.arrayOf(
       PropTypes.shape({
         '@id': PropTypes.string,
@@ -68,9 +66,7 @@ class ModerateComments extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     pathname: PropTypes.string.isRequired,
-    controlpanelsRequest: PropTypes.shape({
-      error: PropTypes.object,
-    }),
+    searchError: PropTypes.object,
   };
 
   /**
@@ -99,7 +95,6 @@ class ModerateComments extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.listControlpanels();
     this.props.searchContent('', {
       portal_type: 'Discussion Item',
       fullobjects: true,
@@ -194,8 +189,8 @@ class ModerateComments extends Component {
    */
   render() {
     // Error handling for unauthorized access
-    if (this.props.controlpanelsRequest?.error) {
-      return <Error error={this.props.controlpanelsRequest.error} />;
+    if (this.props.searchError) {
+      return <Error error={this.props.searchError} />;
     }
 
     return (
@@ -309,8 +304,8 @@ export default compose(
       items: state.search.items,
       deleteRequest: state.comments.delete,
       pathname: props.location.pathname,
-      controlpanelsRequest: state.controlpanels.list,
+      searchError: state.search.error,
     }),
-    { deleteComment, searchContent, listControlpanels },
+    { deleteComment, searchContent },
   ),
 )(ModerateComments);
