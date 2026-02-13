@@ -23,7 +23,6 @@ import {
   uninstallAddon,
   upgradeAddon,
 } from '@plone/volto/actions/addons/addons';
-import { listControlpanels } from '@plone/volto/actions/controlpanels/controlpanels';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
@@ -150,10 +149,9 @@ const AddonsControlpanel = (props) => {
     shallowEqual,
   );
   const loadingAddons = useSelector((state) => state.addons.loading);
-  const controlpanelsRequest = useSelector((state) => state.controlpanels.list);
+  const addonsError = useSelector((state) => state.addons.error);
 
   useEffect(() => {
-    dispatch(listControlpanels());
     dispatch(listAddons());
   }, [dispatch]);
 
@@ -250,8 +248,8 @@ const AddonsControlpanel = (props) => {
   };
 
   // Error handling for unauthorized access
-  if (controlpanelsRequest?.error) {
-    return <Error error={controlpanelsRequest.error} />;
+  if (addonsError) {
+    return <Error error={addonsError} />;
   }
 
   return (
