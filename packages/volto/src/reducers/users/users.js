@@ -18,7 +18,10 @@ import {
 
 const initialState = {
   user: {},
-  users: [],
+  users: {
+    items: [],
+    items_total: 0,
+  },
   create: {
     error: null,
     loaded: false,
@@ -117,7 +120,9 @@ export default function users(state = initialState, action = {}) {
     case `${LIST_USERS}_SUCCESS`:
       return {
         ...state,
-        users: action.result,
+        users: action.result.items
+          ? action.result
+          : { items: action.result, items_total: action.result.length },
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,

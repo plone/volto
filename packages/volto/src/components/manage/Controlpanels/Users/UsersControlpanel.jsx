@@ -140,7 +140,7 @@ const UsersControlpanel = () => {
     if (!many_users) {
       listGroupsAction();
       await listUsersAction();
-      setEntries(users);
+      setEntries(users.items);
     }
     await getUserSchemaAction();
     await getUserAction(userId);
@@ -457,7 +457,7 @@ const UsersControlpanel = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    setEntries(users);
+    setEntries(users.items);
   }, [users]);
 
   useEffect(() => {
