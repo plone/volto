@@ -41,7 +41,7 @@ const ListingTemplate = ({
   const isUserManager = isManager(user);
 
   // y axis
-  let items = useSelector((state) => state.users.users);
+  let items = useSelector((state) => state.users.users.items);
   let show_users =
     !many_users ||
     (many_users && query_user.length > 1) ||
