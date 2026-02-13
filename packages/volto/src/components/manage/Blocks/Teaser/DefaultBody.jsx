@@ -18,7 +18,7 @@ const messages = defineMessages({
 });
 
 const TeaserDefaultTemplate = (props) => {
-  const { className, data, isEditMode, style } = props;
+  const { className, data, isEditMode, style, loading, fetchpriority } = props;
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
@@ -53,7 +53,13 @@ const TeaserDefaultTemplate = (props) => {
             <div className="teaser-item default">
               {url && !image?.image_field ? (
                 <div className="image-wrapper">
-                  <Image src={url} alt="" loading="lazy" responsive={true} />
+                  <Image
+                    src={url}
+                    alt=""
+                    loading={loading || 'lazy'}
+                    fetchpriority={fetchpriority}
+                    responsive={true}
+                  />
                 </div>
               ) : (
                 (href.hasPreviewImage || href.image_field || image) && (
@@ -62,7 +68,8 @@ const TeaserDefaultTemplate = (props) => {
                       item={image || href}
                       imageField={image ? image.image_field : href.image_field}
                       alt=""
-                      loading="lazy"
+                      loading={loading || 'lazy'}
+                      fetchpriority={fetchpriority}
                       responsive={true}
                     />
                   </div>
@@ -86,6 +93,8 @@ const TeaserDefaultTemplate = (props) => {
 TeaserDefaultTemplate.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   isEditMode: PropTypes.bool,
+  loading: PropTypes.string,
+  fetchpriority: PropTypes.string,
 };
 
 export default TeaserDefaultTemplate;
