@@ -157,7 +157,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-
+      
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
       # node setup
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
