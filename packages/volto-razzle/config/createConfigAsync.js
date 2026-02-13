@@ -1004,15 +1004,31 @@ module.exports = (
           hasPublicDir &&
             new CopyPlugin({
               patterns: [
+                // Copy all files from public/, ignoring dotfiles by default.
                 {
                   from: paths.appPublic.replace(/\\/g, '/') + '/**/*',
                   to: paths.appBuild,
                   context: paths.appPath,
                   globOptions: {
+                    dot: false,
                     ignore: [
                       paths.appPublic.replace(/\\/g, '/') + '/index.html',
+                      // Exclude .well-known here so it can be handled explicitly below
+                      paths.appPublic.replace(/\\/g, '/') + '/.well-known/**/*',
                     ],
                   },
+                },
+
+                // Explicitly handle the .well-known directory.
+                {
+                  from:
+                    paths.appPublic.replace(/\\/g, '/') + '/.well-known/**/*',
+                  to: paths.appBuild,
+                  context: paths.appPath,
+                  globOptions: {
+                    dot: true,
+                  },
+                  noErrorOnMissing: true,
                 },
               ],
             }),

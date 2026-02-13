@@ -1,1 +1,0 @@
-Add `aboveListingItems` slot to allow displaying custom listing disclamers. @danalvrz

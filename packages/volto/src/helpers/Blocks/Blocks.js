@@ -81,6 +81,14 @@ export function blockHasValue(data) {
 }
 
 /**
+ * Block id is valid (not undefined/null or the string "undefined" from object[undefined])
+ * @param {*} id Block id
+ * @return {boolean}
+ */
+const isValidBlockId = (id) =>
+  id != null && id !== 'undefined' && (typeof id !== 'string' || id.length > 0);
+
+/**
  * Get block pairs of [id, block] from content properties
  * @function getBlocks
  * @param {Object} properties
@@ -89,11 +97,26 @@ export function blockHasValue(data) {
 export const getBlocks = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  return (
-    properties?.[blocksLayoutFieldname]?.items
-      ?.map((n) => [n, properties?.[blocksFieldName]?.[n]])
-      .filter(([, block]) => block !== undefined) || []
-  );
+  const blocks = properties?.[blocksFieldName];
+  const items = properties?.[blocksLayoutFieldname]?.items;
+  if (!items) return [];
+  return items
+    .filter((n) => isValidBlockId(n))
+    .map((n) => [n, blocks?.[n]])
+    .filter(([, block]) => block != null);
+};
+
+/**
+ * Get layout item IDs that are valid but have no block data (orphaned refs).
+ * @param {Object} properties Content form properties
+ * @return {string[]} IDs that should be removed from layout
+ */
+export const getInvalidBlockLayoutIds = (properties) => {
+  const blocksFieldName = getBlocksFieldname(properties);
+  const blocksLayoutFieldName = getBlocksLayoutFieldname(properties);
+  const blocks = properties?.[blocksFieldName] ?? {};
+  const layoutItems = properties?.[blocksLayoutFieldName]?.items ?? [];
+  return layoutItems.filter((id) => isValidBlockId(id) && blocks[id] == null);
 };
 
 /**

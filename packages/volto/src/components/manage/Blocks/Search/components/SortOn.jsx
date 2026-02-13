@@ -75,10 +75,11 @@ const SortOn = (props) => {
       <div className="search-sort-on">
         {showSelectField ? (
           <>
-            <span className="sort-label">
+            <span id="sort-on-label" className="sort-label">
               {intl.formatMessage(messages.sortOn)}
             </span>
             <Select
+              aria-labelledby="sort-on-label"
               id="select-search-sort-on"
               name="select-searchblock-sort-on"
               className="search-react-select-container"

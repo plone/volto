@@ -176,7 +176,9 @@ export class App extends Component {
             <main ref={this.mainRef}>
               <OutdatedBrowser />
               {this.props.connectionRefused ? (
-                <ConnectionRefusedView />
+                <ConnectionRefusedView
+                  staticContext={this.props.staticContext}
+                />
               ) : this.state.hasError ? (
                 <Error
                   message={this.state.error.message}

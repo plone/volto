@@ -17,6 +17,68 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.25 (2026-02-13)
+
+### Feature
+
+- If a delete operation fails, display the error message returned by the API (if any). @cekk [#7888](https://github.com/plone/volto/issues/7888)
+
+### Bugfix
+
+- Fix a11y error `missing aria-label` in search block facets widget. @iFlameing 
+
+### Internal
+
+- Reinstalled all dependencies to latest compatible versions. @wesleybl [#7871](https://github.com/plone/volto/issues/7871)
+
+## 19.0.0-alpha.24 (2026-02-12)
+
+### Bugfix
+
+- Changed the order of the "Save" and "Cancel" buttons on the sharing page to improve accessibility. @Wagner3UB [#7835](https://github.com/plone/volto/issues/7835)
+- Filter invalid block IDs (null, undefined, 'undefined') in getBlocks() to prevent duplicate elements in DOM and test failures. @aryan7081 [#7858](https://github.com/plone/volto/issues/7858)
+- BlocksForm: remove invalid block layout items on save by iterating raw blocks_layout (using isValidBlockId) instead of relying on getBlocks(). @aryan7081 [#7859](https://github.com/plone/volto/issues/7859)
+- Fix href override in UniversalLink component. @iFlameing 
+
+### Internal
+
+- Continue to prevent editors from automatically reformatting Markdown files by moving this configuration from VSCode to prettier.
+  Move the VSCode settings setup from `make install` to a pnpm post-install hook. @wesleybl [#7834](https://github.com/plone/volto/issues/7834)
+- Increase wait time between link check retries with Lychee. @wesleybl [#7872](https://github.com/plone/volto/issues/7872)
+- Update browserlist Feb2026. @sneridagh 
+- Upgrade Plone to use 6.2.0a1. @sneridagh 
+
+### Documentation
+
+- Document known development watcher issues and how to resolve them. @shivaansh0610-LUFFY [#7836](https://github.com/plone/volto/issues/7836)
+- Updated links to old deprecated third-party theme in the documentation. @pnicolli [#7857](https://github.com/plone/volto/issues/7857)
+- Removed add-on packages that no longer exist in the `main` branch from documentation. @wesleybl [#7887](https://github.com/plone/volto/issues/7887)
+
+## 19.0.0-alpha.23 (2026-02-03)
+
+### Bugfix
+
+- Language control panel: fix validation of default language. @davisagli [#7720](https://github.com/plone/volto/issues/7720)
+- Set HTTP 503 status code for ConnectionRefused error page. @Shyam-Raghuwanshi [#7754](https://github.com/plone/volto/issues/7754)
+- Fix default case selection in ButtonsWidget. @iFlameing 
+
+## 19.0.0-alpha.22 (2026-01-26)
+
+### Feature
+
+- Add `aboveListingItems` slot to allow displaying custom listing disclamers. @danalvrz 
+- Enhanced `SlotRenderer`'s `GetSlotArgs` typings. @sneridagh 
+
+### Bugfix
+
+- Remove '__ac' cookie when authtoken expires @Tishasoumya-02 [#7783](https://github.com/plone/volto/issues/7783)
+
+### Internal
+
+- Removed apps folder from main branch, and related Plone's modular architecture packages (helpers, blocks, providers, theming, layout).
+  These packages are now only in `seven` branch. @sneridagh [#7785](https://github.com/plone/volto/issues/7785)
+- Fixed CI test call. Fixed missing tests fixed since then. @sneridagh [#7795](https://github.com/plone/volto/issues/7795)
+
 ## 19.0.0-alpha.21 (2026-01-14)
 
 ### Bugfix
