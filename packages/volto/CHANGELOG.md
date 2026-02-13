@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.25 (2026-02-13)
+
+### Feature
+
+- If a delete operation fails, display the error message returned by the API (if any). @cekk [#7888](https://github.com/plone/volto/issues/7888)
+
+### Bugfix
+
+- Fix a11y error `missing aria-label` in search block facets widget. @iFlameing 
+
+### Internal
+
+- Reinstalled all dependencies to latest compatible versions. @wesleybl [#7871](https://github.com/plone/volto/issues/7871)
+
 ## 19.0.0-alpha.24 (2026-02-12)
 
 ### Bugfix
