@@ -175,7 +175,7 @@ const UsersControlpanel = () => {
 
   const getUserFromProps = useCallback(
     (value) => {
-      return find(users, ['@id', value]);
+      return find(users.items, ['@id', value]);
     },
     [users],
   );
