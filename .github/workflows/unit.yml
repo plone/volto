@@ -158,11 +158,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Set up Node.js environment
-        uses: ./.github/actions/node_env_setup
-        with:
-          node-version: ${{ matrix.node-version }}
-
       - name: Run unit tests @plone/razzle
         run: pnpm --filter @plone/razzle test
 
