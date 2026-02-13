@@ -21,6 +21,7 @@ const SelectFacet = (props) => {
   return (
     <Select
       placeholder={facet?.title ?? (facet?.field?.label || 'select...')}
+      aria-label={facet?.title ?? facet?.field?.label ?? 'Select option'}
       className="react-select-container"
       classNamePrefix="react-select"
       options={choices}
