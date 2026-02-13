@@ -1,0 +1,22 @@
+.video-block {
+  width: 100%;
+  margin: 0;
+}
+
+.block.video.align,
+.block.video.align .video-block,
+.block.video.align .video-inner {
+  width: 100%;
+}
+
+.video-block video,
+.video-block iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video-block iframe {
+  border: 0;
+  aspect-ratio: 16 / 9;
+}
