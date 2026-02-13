@@ -28,7 +28,11 @@ const View = (props) => {
         className,
       )}
     >
-      <Body data={data} />
+      <Body
+        data={data}
+        loading={props.isLCPBlock ? 'eager' : 'lazy'}
+        fetchpriority={props.isLCPBlock ? 'high' : 'low'}
+      />
     </div>
   );
 };
@@ -40,6 +44,7 @@ const View = (props) => {
  */
 View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
+  isLCPBlock: PropTypes.bool,
 };
 
 export default withBlockExtensions(View);
