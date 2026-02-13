@@ -1,97 +1,112 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import fs from 'fs-extra';
 import path from 'path';
 
-describe('.well-known handling', () => {
-  it('should have correct glob patterns for .well-known directory', () => {
-    // This is the actual pattern configuration from the code
-    const appPublic = '/app/public';
-    const appBuild = '/app/build';
-    const appPath = '/app';
+describe('createConfigAsync .well-known handling', () => {
+  let originalNodeEnv;
+  const publicDir = path.resolve(process.cwd(), 'public');
+  const createdPublicDir = !fs.existsSync(publicDir);
 
-    const patterns = [
-      // General public copy blocks dotfiles
-      {
-        from: appPublic.replace(/\\/g, '/') + '/**/*',
-        to: appBuild,
-        context: appPath,
-        globOptions: {
-          dot: false,
-          ignore: [
-            appPublic.replace(/\\/g, '/') + '/index.html',
-            appPublic.replace(/\\/g, '/') + '/.well-known/**/*',
-          ],
-        },
-      },
-      // Explicit .well-known rule allows dotfiles
-      {
-        from: appPublic.replace(/\\/g, '/') + '/.well-known/**/*',
-        to: appBuild,
-        context: appPath,
-        globOptions: {
-          dot: true,
-        },
-        noErrorOnMissing: true,
-      },
-    ];
+  beforeAll(async () => {
+    originalNodeEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
 
-    const [general, wellKnown] = patterns;
-
-    // Test 1: General public copy blocks dotfiles
-    expect(general.globOptions.dot).toBe(false);
-    expect(general.globOptions.ignore).toContain(
-      '/app/public/.well-known/**/*',
-    );
-    expect(
-      general.globOptions.ignore.some((p) => p.includes('.well-known')),
-    ).toBe(true);
-
-    // Test 2: Explicit .well-known rule allows dotfiles
-    expect(wellKnown.from).toBe('/app/public/.well-known/**/*');
-    expect(wellKnown.from).toContain('.well-known');
-    expect(wellKnown.globOptions.dot).toBe(true);
-    expect(wellKnown.noErrorOnMissing).toBe(true);
-
-    // Test 3: Verify the logic - general pattern excludes .well-known
-    expect(general.globOptions.ignore).toContain(
-      '/app/public/.well-known/**/*',
-    );
-
-    // Test 4: Verify .well-known pattern is separate and explicit
-    expect(wellKnown.from).not.toBe(general.from);
-    expect(wellKnown.globOptions.dot).not.toBe(general.globOptions.dot);
+    // Create public directory if it doesn't exist
+    if (createdPublicDir) {
+      await fs.ensureDir(publicDir);
+    }
   });
 
-  it('should demonstrate the pattern behavior', () => {
-    // This test documents the intended behavior:
-    // 1. The general pattern copies from /app/public/**/* but:
-    //    - Does NOT copy dotfiles (dot: false)
-    //    - Explicitly ignores .well-known directory
-    // 2. A separate pattern handles .well-known:
-    //    - Copies from /app/public/.well-known/**/*
-    //    - DOES copy dotfiles (dot: true)
-    //    - Won't error if .well-known doesn't exist
+  afterAll(async () => {
+    process.env.NODE_ENV = originalNodeEnv;
 
-    const generalPattern = {
-      from: '/app/public/**/*',
-      globOptions: {
-        dot: false,
-        ignore: ['/app/public/.well-known/**/*'],
+    // Only remove if we created it
+    if (createdPublicDir) {
+      await fs.remove(publicDir);
+    }
+  });
+
+  it('should configure CopyPlugin to allow .well-known dotfiles in production', async () => {
+    // Import after setting up the directory
+    const createConfigAsync = (await import('../config/createConfigAsync'))
+      .default;
+
+    const config = await createConfigAsync(
+      'web',
+      'prod',
+      {},
+      { version: '5' },
+      false,
+      undefined, // Use default paths
+      [],
+      {
+        forceRuntimeEnvVars: [],
+        debug: { options: false, config: false },
+        browserslist: ['>1%'],
+        mediaPrefix: 'static/media',
+        cssPrefix: 'static/css',
+        jsPrefix: 'static/js',
+        emitOnErrors: false,
       },
-    };
-
-    const wellKnownPattern = {
-      from: '/app/public/.well-known/**/*',
-      globOptions: {
-        dot: true,
-      },
-      noErrorOnMissing: true,
-    };
-
-    expect(generalPattern.globOptions.dot).toBe(false);
-    expect(wellKnownPattern.globOptions.dot).toBe(true);
-    expect(generalPattern.globOptions.ignore).toContain(
-      '/app/public/.well-known/**/*',
     );
+
+    // Find CopyPlugin
+    const copyPlugin = config.plugins.find(
+      (p) => p && p.constructor && p.constructor.name === 'CopyPlugin',
+    );
+
+    if (!copyPlugin) {
+      console.log(
+        'Available plugins:',
+        config.plugins.map((p) => p?.constructor?.name),
+      );
+      throw new Error(
+        'CopyPlugin not found in webpack config. Make sure NODE_ENV=production and public directory exists.',
+      );
+    }
+
+    // Debug: log the plugin structure
+    console.log('CopyPlugin keys:', Object.keys(copyPlugin));
+    console.log('CopyPlugin.options:', copyPlugin.options);
+    console.log('CopyPlugin.patterns:', copyPlugin.patterns);
+
+    // Try different ways to access patterns
+    const patterns =
+      copyPlugin.patterns ||
+      copyPlugin.options?.patterns ||
+      copyPlugin.pluginOptions?.patterns;
+
+    if (!patterns) {
+      console.log('Full copyPlugin:', JSON.stringify(copyPlugin, null, 2));
+      throw new Error('Could not find patterns in CopyPlugin');
+    }
+
+    expect(patterns).toBeDefined();
+    expect(patterns.length).toBeGreaterThanOrEqual(2);
+
+    // Find the .well-known specific pattern
+    const wellKnownPattern = patterns.find(
+      (p) => p.from && p.from.includes('.well-known'),
+    );
+
+    // Find the general public pattern
+    const generalPattern = patterns.find(
+      (p) =>
+        p.from && !p.from.includes('.well-known') && p.from.includes('public'),
+    );
+
+    // Assert .well-known pattern exists and allows dotfiles
+    expect(wellKnownPattern).toBeDefined();
+    expect(wellKnownPattern.globOptions.dot).toBe(true);
     expect(wellKnownPattern.noErrorOnMissing).toBe(true);
+
+    // Assert general pattern blocks dotfiles and excludes .well-known
+    expect(generalPattern).toBeDefined();
+    expect(generalPattern.globOptions.dot).toBe(false);
+    expect(
+      generalPattern.globOptions.ignore.some((ignore) =>
+        ignore.includes('.well-known'),
+      ),
+    ).toBe(true);
   });
 });
