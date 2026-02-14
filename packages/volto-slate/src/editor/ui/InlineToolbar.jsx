@@ -29,11 +29,17 @@ const InlineToolbar = (props) => {
     const toggleToolbar = () => {
       const selection = window.getSelection();
       const { activeElement } = window.document;
-      if (activeElement !== el) return;
-      if (!selection.isCollapsed && !showMainToolbar) {
+      if (activeElement !== el) {
+        // Hide toolbar when editor loses focus
+        if (showMainToolbar) {
+          setShowMainToolbar(false);
+        }
+        return;
+      }
+      // Show toolbar when editor has focus, regardless of selection state
+      // This allows block-level buttons (headings) to work even without text selection
+      if (!showMainToolbar) {
         setShowMainToolbar(true);
-      } else if (selection.isCollapsed && showMainToolbar) {
-        setShowMainToolbar(false);
       }
     };
     window.document.addEventListener('selectionchange', toggleToolbar);
