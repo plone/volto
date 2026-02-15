@@ -3419,6 +3419,7 @@ msgstr "パスワードを設定"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
+#: components/theme/Search/Search
 msgid "Settings"
 msgstr "設定"
 
