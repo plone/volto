@@ -1990,6 +1990,11 @@ msgstr ""
 msgid "Invalid Block"
 msgstr "无效的块"
 
+#. Default: "Invalid password. Minimum 8 characters required."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Invalid password. Minimum 8 characters required."
+msgstr ""
+
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
@@ -4330,6 +4335,11 @@ msgstr ""
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "用户名"
+
+#. Default: "Username is invalid. Please check and try again."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Username is invalid. Please check and try again."
+msgstr ""
 
 #. Default: "Users"
 #: components/manage/Controlpanels/Controlpanels

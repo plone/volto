@@ -1984,6 +1984,11 @@ msgstr "अंतराल वार्षिक"
 msgid "Invalid Block"
 msgstr "अमान्य ब्लॉक - सहेजते समय हटा दिया जाएगा"
 
+#. Default: "Invalid password. Minimum 8 characters required."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Invalid password. Minimum 8 characters required."
+msgstr ""
+
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
@@ -4324,6 +4329,11 @@ msgstr "उपयोगकर्ता सफलतापूर्वक अप�
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
+
+#. Default: "Username is invalid. Please check and try again."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Username is invalid. Please check and try again."
+msgstr ""
 
 #. Default: "Users"
 #: components/manage/Controlpanels/Controlpanels

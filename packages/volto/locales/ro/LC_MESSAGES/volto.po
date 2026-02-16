@@ -1990,6 +1990,11 @@ msgstr "Interval Anual"
 msgid "Invalid Block"
 msgstr "Bloc invalid - va fi eliminat la salvare"
 
+#. Default: "Invalid password. Minimum 8 characters required."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Invalid password. Minimum 8 characters required."
+msgstr ""
+
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
@@ -4330,6 +4335,11 @@ msgstr "Utilizator actualizat cu succes"
 #: helpers/MessageLabels/MessageLabels
 msgid "Username"
 msgstr "Nume utilizator"
+
+#. Default: "Username is invalid. Please check and try again."
+#: components/theme/PasswordReset/PasswordReset
+msgid "Username is invalid. Please check and try again."
+msgstr ""
 
 #. Default: "Users"
 #: components/manage/Controlpanels/Controlpanels
