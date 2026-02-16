@@ -3343,6 +3343,11 @@ msgstr ""
 msgid "Select columns to show"
 msgstr "选择要显示的列"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -4013,6 +4018,11 @@ msgstr "标题"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "标题字段错误。未提供值或已存在。"
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -5211,6 +5221,11 @@ msgstr ""
 #. Default: "years"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
+msgstr ""
+
+#. Default: "select..."
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "select..."
 msgstr ""
 
 #. Default: "Select"

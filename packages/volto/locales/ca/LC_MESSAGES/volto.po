@@ -3343,6 +3343,11 @@ msgstr "Seleccioneu una data per afegir a la recurrència"
 msgid "Select columns to show"
 msgstr "Seleccioneu les columnes per mostrar"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -4012,6 +4017,11 @@ msgstr "Títol"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
+msgstr ""
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
 msgstr ""
 
 #. Default: "Total active and non-active objects"
@@ -5212,6 +5222,11 @@ msgstr "Curs"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "Anys"
+
+#. Default: "select..."
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "select..."
+msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

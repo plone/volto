@@ -3342,6 +3342,11 @@ msgstr "繰り返しに追加する日を選択"
 msgid "Select columns to show"
 msgstr "表示する列を選択"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -4011,6 +4016,11 @@ msgstr "タイトル"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
+msgstr ""
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
 msgstr ""
 
 #. Default: "Total active and non-active objects"
@@ -5211,6 +5221,11 @@ msgstr "年"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "年"
+
+#. Default: "select..."
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "select..."
+msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

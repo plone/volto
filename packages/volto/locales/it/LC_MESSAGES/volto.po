@@ -3337,6 +3337,11 @@ msgstr "Seleziona una data da aggiungere alla ricorrenza"
 msgid "Select columns to show"
 msgstr "Seleziona le colonne da mostrare"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -4007,6 +4012,11 @@ msgstr "Titolo"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "Errore nel campo titolo. Nessun valore inserito o valore già esistente."
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -5206,6 +5216,11 @@ msgstr "anno"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "anni"
+
+#. Default: "select..."
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "select..."
+msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

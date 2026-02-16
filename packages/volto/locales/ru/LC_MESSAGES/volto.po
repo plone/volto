@@ -3342,6 +3342,11 @@ msgstr "Выберите дату для добавления повторени
 msgid "Select columns to show"
 msgstr "Выберите столбцы для отображения"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -4012,6 +4017,11 @@ msgstr "Заголовок"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "Ошибка в поле заголовка. Значение отсутствует или уже существует."
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -5211,6 +5221,11 @@ msgstr "год"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "годы"
+
+#. Default: "select..."
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "select..."
+msgstr ""
 
 #. Default: "Select"
 #: config/Blocks
