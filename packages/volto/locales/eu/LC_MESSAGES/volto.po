@@ -2204,6 +2204,11 @@ msgstr "Kargatu gehiago"
 msgid "Loading"
 msgstr "Kargatzen"
 
+#. Default: "Loading…"
+#: components/manage/Blocks/Search/components/SortOn
+msgid "Loading…"
+msgstr ""
+
 #. Default: "Login"
 #: components/theme/Login/Login
 msgid "Log In"

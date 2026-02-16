@@ -390,6 +390,78 @@ export function insertBlock(
 }
 
 /**
+ * Ensure blocks_layout is synchronized with blocks
+ * @function ensureBlocksLayoutSync
+ * @param {Object} formData Form data
+ * @return {Object} New form data with synchronized blocks_layout
+ */
+export function ensureBlocksLayoutSync(formData) {
+  const blocksFieldname = getBlocksFieldname(formData);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+
+  if (!formData[blocksFieldname] || !formData[blocksLayoutFieldname]) {
+    return formData;
+  }
+
+  const blocks = formData[blocksFieldname];
+  const currentLayout = formData[blocksLayoutFieldname];
+  // Handle case where blocks_layout is {} or items is undefined (from migration)
+  const layoutItems = currentLayout.items || [];
+  const blockIds = Object.keys(blocks).filter(
+    (id) => isValidBlockId(id) && blocks[id] !== null,
+  );
+
+  // If blocks_layout is empty but blocks has content, sync it
+  if (layoutItems.length === 0 && blockIds.length > 0) {
+    return {
+      ...formData,
+      [blocksFieldname]: omit(
+        blocks,
+        Object.keys(blocks).filter((id) => !isValidBlockId(id)),
+      ),
+      [blocksLayoutFieldname]: {
+        items: blockIds,
+      },
+    };
+  }
+
+  // If blocks_layout has items that don't exist in blocks, remove them (exclude invalid ids)
+  const validItems = layoutItems.filter(
+    (id) =>
+      isValidBlockId(id) && blocks[id] !== null && blocks[id] !== undefined,
+  );
+
+  // If blocks has new items not in layout, add them
+  const newItems = blockIds.filter((id) => !layoutItems.includes(id));
+  const allItems = [...validItems, ...newItems];
+
+  const hasInvalidBlocks = Object.keys(blocks).some(
+    (id) => !isValidBlockId(id),
+  );
+
+  if (
+    hasInvalidBlocks ||
+    allItems.length !== layoutItems.length ||
+    !allItems.every((id, index) => layoutItems[index] === id)
+  ) {
+    return {
+      ...formData,
+      [blocksFieldname]: hasInvalidBlocks
+        ? omit(
+            blocks,
+            Object.keys(blocks).filter((id) => !isValidBlockId(id)),
+          )
+        : blocks,
+      [blocksLayoutFieldname]: {
+        items: allItems,
+      },
+    };
+  }
+
+  return formData;
+}
+
+/**
  * Change block
  * @function changeBlock
  * @param {Object} formData Form data
@@ -399,13 +471,16 @@ export function insertBlock(
  */
 export function changeBlock(formData, id, value) {
   const blocksFieldname = getBlocksFieldname(formData);
-  return {
+  const newFormData = {
     ...formData,
     [blocksFieldname]: {
       ...formData[blocksFieldname],
       [id]: value || null,
     },
   };
+
+  // Ensure blocks_layout is synchronized with blocks
+  return ensureBlocksLayoutSync(newFormData);
 }
 
 /**
