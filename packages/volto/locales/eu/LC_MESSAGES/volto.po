@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-21 10:02+0000\n"
+"PO-Revision-Date: 2026-02-16 20:09+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language: eu\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\n"
+"Language: eu\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.16\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1224,7 +1224,7 @@ msgstr "Arrastatu fitxategiak hona..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2965,7 +2965,7 @@ msgstr "Erlazioak eguneratu egin dira"
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Askatu fitxategia(k) karpeta honetara gehitzeko"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -4216,7 +4216,7 @@ msgstr "Kargatu"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Kargatu fitxategiak ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4961,12 +4961,12 @@ msgstr "Argitaratuta"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Uneko bidea (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Aitaren bidea (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
