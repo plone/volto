@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+import '@testing-library/cypress/add-commands';
 import { getIfExists } from '../helpers';
 import { ploneAuth } from './constants';
 
@@ -20,8 +22,6 @@ const ploneAuthObj = {
   pass: ploneAuth[1],
 };
 
-export * from './volto-slate';
-
 // --- isInViewport ----------------------------------------------------------
 Cypress.Commands.add('isInViewport', (element) => {
   cy.get(element).then(($el) => {
@@ -36,6 +36,30 @@ Cypress.Commands.add('isInViewport', (element) => {
     expect(rect.left).to.be.at.least(0);
     expect(rect.right).to.be.lessThan(rightBoundOfWindow);
     expect(rect.bottom).to.be.lessThan(bottomBoundOfWindow);
+  });
+});
+
+// --- isInHTML ----------------------------------------------------------
+Cypress.Commands.add('isInHTML', ({ parent = 'body', content }) => {
+  cy.url().then((currentUrl) => {
+    // sometimes the cy command is called when the url is still at content/edit
+    // we want to query the html markup of the content, not the edit form
+    const url =
+      currentUrl.indexOf('/edit') !== -1
+        ? currentUrl.split('/edit')[0]
+        : currentUrl;
+    cy.request({
+      method: 'GET',
+      url: url,
+    }).then((response) => {
+      const html = Cypress.$(response.body);
+      if (content.startsWith('.') || content.startsWith('#')) {
+        return expect(html.find(parent)).to.have.descendants(content);
+      } else {
+        // check if parent contains the content text string in its HTML output
+        return expect(html.find(parent)).to.contain(content);
+      }
+    });
   });
 });
 
@@ -75,6 +99,7 @@ Cypress.Commands.add(
     transition = '',
     bodyModifier = (body) => body,
     image = false,
+    preview_image_link = null,
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
@@ -103,6 +128,10 @@ Cypress.Commands.add(
         allow_discussion: allow_discussion,
       },
     };
+
+    if (preview_image_link) {
+      defaultParams.body.preview_image_link = preview_image_link;
+    }
 
     if (contentType === 'File') {
       const params = {
@@ -678,10 +707,7 @@ Cypress.Commands.add(
   'pasteClipboard',
   { prevSubject: true },
   (query, htmlContent) => {
-    return cy
-      .wrap(query)
-      .type(' {backspace}')
-      .trigger('paste', createHtmlPasteEvent(htmlContent));
+    return cy.wrap(query).trigger('paste', createHtmlPasteEvent(htmlContent));
   },
 );
 
@@ -695,11 +721,10 @@ Cypress.Commands.add('clearSlate', (selector) => {
   return cy
     .get(selector)
     .focus()
-    .click()
-    .wait(1000)
-    .type('{selectAll}')
-    .wait(1000)
-    .type('{backspace}');
+    .click({ force: true })
+    .type('{selectAll}', { delay: 20 })
+    .type('{backspace}', { delay: 20 })
+    .wait(200);
 });
 
 Cypress.Commands.add('getSlate', (createNewSlate = false) => {
@@ -710,10 +735,13 @@ Cypress.Commands.add('getSlate', (createNewSlate = false) => {
   cy.getIfExists(
     SLATE_SELECTOR,
     () => {
-      slate = cy.get(SLATE_SELECTOR).last();
+      slate = cy.get(SLATE_SELECTOR).last().should('be.visible');
     },
     () => {
-      slate = cy.get(SLATE_SELECTOR, { timeout: 10000 }).last();
+      slate = cy
+        .get(SLATE_SELECTOR, { timeout: 10000 })
+        .last()
+        .should('be.visible');
     },
   );
   return slate;
@@ -763,6 +791,15 @@ Cypress.Commands.add('typeInSlate', { prevSubject: true }, (subject, text) => {
   );
 });
 
+Cypress.Commands.add(
+  'typeWithDelay',
+  { prevSubject: 'element' },
+  (subject, text, options) => {
+    const delay = options && options.delay ? options.delay : 20;
+    cy.wrap(subject).type(text, { delay });
+  },
+);
+
 Cypress.Commands.add('lineBreakInSlate', { prevSubject: true }, (subject) => {
   return (
     cy
@@ -790,12 +827,30 @@ Cypress.Commands.add(
   },
 );
 
+// Helper function to check if it is normal text or special command
+function shouldVerifyContent(type) {
+  return !type.includes('{');
+}
+
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
-  cy.getSlate().focus().click().type(type);
+  cy.getSlate().click().trigger('focus').type(type);
+
+  if (shouldVerifyContent(type)) {
+    return cy.getSlate().should('contain', type);
+  }
+
+  return cy.getSlate();
 });
 
 Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
-  cy.getSlateSelector(selector).focus().click().type(type);
+  cy.wait(100);
+  cy.getSlateSelector(selector).click().trigger('focus').type(type);
+
+  if (shouldVerifyContent(type)) {
+    return cy.getSlateSelector(selector).should('contain', type);
+  }
+
+  return cy.getSlateSelector(selector);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {
@@ -819,7 +874,6 @@ function getTextNode(el, match) {
     return walk.nextNode();
   }
 
-  const nodes = [];
   let node;
   while ((node = walk.nextNode())) {
     if (node.wholeText.includes(match)) {
@@ -848,12 +902,14 @@ function createHtmlPasteEvent(htmlContent) {
 
 Cypress.Commands.add('addNewBlock', (blockName, createNewSlate = false) => {
   let block;
-  block = cy.getSlate(createNewSlate).type(`/${blockName}{enter}`);
+  block = cy.getSlate(createNewSlate).click().type(`/${blockName}{enter}`);
   return block;
 });
 
 Cypress.Commands.add('navigate', (route = '') => {
-  return cy.window().its('appHistory').invoke('push', route);
+  cy.intercept('GET', '**/*').as('navGetCall');
+  cy.window().its('appHistory').invoke('push', route);
+  cy.wait('@navGetCall');
 });
 
 Cypress.Commands.add('store', () => {
@@ -902,8 +958,32 @@ Cypress.Commands.add('configureListingWith', (contentType) => {
     '.querystring-widget .fields:first-of-type > .field .react-select__menu .react-select__option',
   )
     .contains(contentType)
+
     .click();
 });
+
+Cypress.Commands.add(
+  'addLocationQuerystring',
+  (option = 'Relative path', value) => {
+    cy.get('.block-editor-listing').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .react-select__menu .react-select__option')
+      .contains('Location')
+      .click();
+
+    cy.get('.querystring-widget .fields').contains('Absolute path').click();
+    cy.get(
+      '.querystring-widget .fields .react-select__menu .react-select__option',
+    )
+      .contains(option)
+      .click();
+    if (value) {
+      cy.get('.querystring-widget .fields .input')
+        .click()
+        .type(`${value}{enter}`);
+    }
+  },
+);
 
 Cypress.Commands.add('queryCounter', (path, steps, number = 1) => {
   cy.intercept(path, cy.spy().as('counterName'));
@@ -913,3 +993,25 @@ Cypress.Commands.add('queryCounter', (path, steps, number = 1) => {
 
   cy.get('@counterName').its('callCount').should('equal', number);
 });
+
+// Print cypress-axe violations to the terminal
+function printAccessibilityViolations(violations) {
+  cy.task(
+    'table',
+    violations.map(({ id, impact, description, nodes }) => ({
+      impact,
+      description: `${description} (${id})`,
+      nodes: nodes.length,
+    })),
+  );
+}
+
+Cypress.Commands.add(
+  'checkAccessibility',
+  (subject, { skipFailures = false } = {}) => {
+    cy.checkA11y(subject, null, printAccessibilityViolations, skipFailures);
+  },
+  {
+    prevSubject: 'optional',
+  },
+);

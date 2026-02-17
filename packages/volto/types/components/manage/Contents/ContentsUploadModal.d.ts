@@ -1,5 +1,14 @@
-declare const _default: React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & React.RefAttributes<React.ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
-export default _default;
-import React from 'react';
+export default ContentsUploadModal;
+declare function ContentsUploadModal(props: any): import("react/jsx-runtime").JSX.Element;
+declare namespace ContentsUploadModal {
+    namespace propTypes {
+        let pathname: any;
+        let open: any;
+        let onOk: any;
+        let onCancel: any;
+        let multiple: any;
+        let minSize: any;
+        let maxSize: any;
+        let accept: any;
+    }
+}

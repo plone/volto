@@ -25,6 +25,12 @@
     &.upper {
       transform: translateY(-100%);
     }
+
+    .link-form-container {
+      display: flex;
+      align-items: center;
+      margin-left: 2px;
+    }
   }
 
   .toolbar-wrapper.active {
@@ -38,11 +44,12 @@
 
   .slate-toolbar {
     display: flex;
+    min-width: 300px; // needed for image widget slate toolbar
     box-sizing: border-box;
     padding: 3px;
     border: none;
-    background: #fff;
     border-radius: 2px;
+    background: #fff;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-size: 1rem;
@@ -74,8 +81,8 @@
         box-sizing: border-box;
         padding: 4px !important;
         border: 0;
-        background: rgba(255, 255, 255, 0.975);
         border-radius: 1px;
+        background: rgba(255, 255, 255, 0.975);
         color: @brown;
         font-size: 18px;
         vertical-align: bottom;
@@ -91,9 +98,9 @@
         }
 
         &.active {
+          border-radius: 3px;
           // TODO: stop using !important, use smth better
           background: #efefef !important;
-          border-radius: 3px;
           box-shadow: inset 0 0 0 1px @blue !important;
           color: @blue !important;
 
@@ -151,9 +158,11 @@
   top: 29px;
   left: -9px;
   width: 210px;
-  background-color: rgba(255, 255, 255, 0.975);
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.975);
+  box-shadow:
+    0 0 8px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05);
 
   .ui.menu {
     border: 0;

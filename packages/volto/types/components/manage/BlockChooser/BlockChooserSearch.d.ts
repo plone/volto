@@ -2,4 +2,4 @@ export default BlockChooserSearch;
 declare function BlockChooserSearch({ onChange, searchValue }: {
     onChange: any;
     searchValue: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

@@ -8,5 +8,6 @@ declare class ErrorBoundary extends React.Component<any, any, any> {
         hasError: boolean;
     };
     componentDidCatch(error: any, errorInfo: any): void;
+    render(): any;
 }
 import React from 'react';

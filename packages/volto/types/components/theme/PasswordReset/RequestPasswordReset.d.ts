@@ -1,2 +1,2 @@
 export default RequestPasswordReset;
-declare function RequestPasswordReset(): JSX.Element;
+declare function RequestPasswordReset(): import("react/jsx-runtime").JSX.Element;

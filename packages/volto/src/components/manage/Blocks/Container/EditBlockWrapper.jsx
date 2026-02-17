@@ -1,10 +1,10 @@
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import NewBlockAddButton from './NewBlockAddButton';
 import cx from 'classnames';
-import { isInteractiveElement } from '@plone/volto/helpers';
-
+import { isInteractiveElement } from '@plone/volto/helpers/Utils/Utils';
+import { buildStyleObjectFromData } from '@plone/volto/helpers/Blocks/Blocks';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
@@ -32,16 +32,32 @@ const EditBlockWrapper = (props) => {
     onSelectBlock,
     data,
     index,
+    properties,
   } = blockProps;
 
   function onResetBlock() {
     onChangeBlock(block, { '@type': 'empty' });
   }
 
+  const style = buildStyleObjectFromData(
+    data,
+    '',
+    // in a container, we have the parent container data in the properties prop
+    // passing the data of the container too
+    // This is needed in order to calculate properly the styles for the blocks inside the container
+    properties.blocks ? properties : {},
+  );
+
+  // We need to merge the StyleWrapper styles with the draggable props from b-D&D
+  const styleMergedWithDragProps = {
+    ...draginfo.draggableProps,
+    style: { ...style, ...draginfo.draggableProps.style },
+  };
+
   return (
     <div
       ref={draginfo.innerRef}
-      {...draginfo.draggableProps}
+      {...styleMergedWithDragProps}
       {...draginfo.dragHandleProps}
       className={cx(`block-editor-${data['@type']} contained`, { selected })}
     >
@@ -58,6 +74,7 @@ const EditBlockWrapper = (props) => {
             aria-label={intl.formatMessage(messages.reset, {
               index,
             })}
+            type="button"
             basic
             icon
             onClick={(e) => onResetBlock(block, {})}
@@ -67,6 +84,7 @@ const EditBlockWrapper = (props) => {
           </Button>
         ) : (
           <Button
+            type="button"
             basic
             icon
             className="remove-block-button"

@@ -18,8 +18,8 @@ const userSchema = {
   loading: false,
 };
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
 }));
 
 describe('PersonalInformation', () => {
@@ -41,6 +41,13 @@ describe('PersonalInformation', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
       },
     });
     const component = renderer.create(
@@ -75,6 +82,13 @@ describe('PersonalInformation', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      content: {
+        data: {},
+        create: {
+          loading: false,
+          loaded: true,
+        },
       },
     });
     const component = renderer.create(

@@ -2,12 +2,24 @@ import ListingBlockVariationTeaserContent from './components/Blocks/Listing/List
 import NewsAndEvents from './components/Views/NewsAndEvents';
 import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import InputBlockView from './components/Blocks/InputBlock/View';
+import InputBlockEdit from './components/Blocks/InputBlock/Edit';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
+import { inputBlockSchema } from './components/Blocks/InputBlock/schema';
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
 import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
 import codeSVG from '@plone/volto/icons/code.svg';
-import type { BlockConfigBase, ConfigData } from '@plone/types';
+import type { BlockConfigBase } from '@plone/types';
+import type { ConfigType } from '@plone/registry';
+import SlotComponentTest from './components/Slots/SlotTest';
+import { ContentTypeCondition } from '@plone/volto/helpers/Slots';
+import { RouteCondition } from '@plone/volto/helpers/Slots';
+import TestForm from './components/TestForm';
+import FormBlockView from './components/Blocks/FormBlock/View';
+import FormBlockEdit from './components/Blocks/FormBlock/Edit';
+import { formBlockSchema } from './components/Blocks/FormBlock/schema';
+import Login from '@plone/volto/components/theme/Login/Login';
 
 const testBlock: BlockConfigBase = {
   id: 'testBlock',
@@ -31,6 +43,20 @@ const testBlock: BlockConfigBase = {
       title: 'Custom',
     },
   ],
+  extensions: {},
+};
+const inputBlock: BlockConfigBase = {
+  id: 'inputBlock',
+  title: 'Input Block',
+  icon: codeSVG,
+  group: 'common',
+  view: InputBlockView,
+  edit: InputBlockEdit,
+  blockSchema: inputBlockSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
+
   extensions: {},
 };
 
@@ -112,8 +138,22 @@ const testBlockDefaultView: BlockConfigBase = {
   ],
   extensions: {},
 };
+const testformBlock: BlockConfigBase = {
+  id: 'testformBlock',
+  title: 'Form Block',
+  icon: codeSVG,
+  group: 'common',
+  view: FormBlockView,
+  edit: FormBlockEdit,
+  blockSchema: formBlockSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
 
-const listing = (config: ConfigData) => {
+  extensions: {},
+};
+
+const listing = (config: ConfigType) => {
   return {
     ...config.blocks.blocksConfig.listing,
     variations: [
@@ -133,15 +173,8 @@ const listing = (config: ConfigData) => {
   };
 };
 
-export const multilingualFixture = (config: ConfigData) => {
-  config.settings.isMultilingual = true;
+export const multilingualFixture = (config: ConfigType) => {
   config.settings.supportedLanguages = ['en', 'it'];
-
-  return config;
-};
-
-export const workingCopyFixture = (config: ConfigData) => {
-  config.settings.hasWorkingCopySupport = true;
 
   return config;
 };
@@ -150,16 +183,33 @@ export const workingCopyFixture = (config: ConfigData) => {
 declare module '@plone/types' {
   export interface BlocksConfigData {
     testBlock: BlockConfigBase;
+    inputBlock: BlockConfigBase;
     testBlockConditional: BlockConfigBase;
     testBlockWithConditionalVariations: BlockConfigBase;
     testBlockMultipleFieldsets: BlockConfigBase;
     testBlockDefaultEdit: BlockConfigBase;
     testBlockDefaultView: BlockConfigBase;
+    testformBlock: BlockConfigBase;
   }
 }
 
-const applyConfig = (config: ConfigData) => {
+const applyConfig = (config: ConfigType) => {
+  config.addonRoutes = [
+    ...config.addonRoutes,
+    {
+      path: '/form',
+      component: TestForm,
+      exact: false,
+    },
+  ];
+
+  config.addonRoutes.push({
+    path: '/fallback_login',
+    component: Login,
+    exact: false,
+  });
   config.blocks.blocksConfig.testBlock = testBlock;
+  config.blocks.blocksConfig.inputBlock = inputBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;
   config.blocks.blocksConfig.testBlockWithConditionalVariations =
     testBlockWithConditionalVariations;
@@ -167,8 +217,26 @@ const applyConfig = (config: ConfigData) => {
     testBlockMultipleFieldsets;
   config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
+  config.blocks.blocksConfig.testformBlock = testformBlock;
   config.blocks.blocksConfig.listing = listing(config);
   config.views.contentTypesViews.Folder = NewsAndEvents;
+
+  config.registerSlotComponent({
+    slot: 'aboveContent',
+    name: 'testSlotComponent',
+    component: SlotComponentTest,
+    predicates: [ContentTypeCondition(['Document']), RouteCondition('/hello')],
+  });
+
+  config.registerRoute({
+    type: 'route',
+    path: '/hello',
+    file: 'src/components/Views/NewsAndEvents/asd.tsx',
+    options: {
+      id: 'hello',
+      index: true,
+    },
+  });
 
   return config;
 };

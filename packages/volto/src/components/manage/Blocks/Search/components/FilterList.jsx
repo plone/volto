@@ -1,10 +1,10 @@
 import React from 'react';
 import { Accordion, Button, Icon } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 
-import { Icon as VoltoIcon } from '@plone/volto/components';
-import { resolveExtension } from '@plone/volto/helpers';
+import { default as VoltoIcon } from '@plone/volto/components/theme/Icon/Icon';
+import { resolveExtension } from '@plone/volto/helpers/Extensions';
 import config from '@plone/volto/registry';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
@@ -53,6 +53,7 @@ const FilterList = (props) => {
           {intl.formatMessage(messages.currentFilters)}: {totalFilters}
         </div>
         <Button
+          type="button"
           icon
           basic
           compact

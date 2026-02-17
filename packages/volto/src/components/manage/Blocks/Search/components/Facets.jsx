@@ -22,6 +22,18 @@ const defaultShowFacet = (index) => {
     : values && Object.keys(values).length > 0;
 };
 
+export const sortFacetChoices = (choices) => {
+  const sorted_choices = choices.sort((a, b) =>
+    typeof a.label === 'string' && typeof b.label === 'string'
+      ? a.label.localeCompare(b.label, 'en', { sensitivity: 'base' })
+      : typeof a.label === 'number' && typeof b.label == 'number'
+        ? a.label - b.label
+        : 0,
+  );
+
+  return sorted_choices;
+};
+
 const Facets = (props) => {
   const [hidden, setHidden] = useState(true);
   const {
@@ -81,9 +93,7 @@ const Facets = (props) => {
                 : true,
             );
 
-          choices = choices.sort((a, b) =>
-            a.label.localeCompare(b.label, 'en', { sensitivity: 'base' }),
-          );
+          choices = sortFacetChoices(choices);
 
           const isMulti = facetSettings.multiple;
           const selectedValue = facets[facetSettings?.field?.value];
@@ -135,6 +145,7 @@ const Facets = (props) => {
           className="toggle-advanced-facets"
         >
           <Button
+            type="button"
             onClick={() => {
               setHidden((prevHidden) => !prevHidden);
             }}
@@ -144,8 +155,8 @@ const Facets = (props) => {
                 ? intl.formatMessage(messages.showFilters)
                 : intl.formatMessage(messages.moreFilters)
               : advancedFilters === 2
-              ? intl.formatMessage(messages.hideFilters)
-              : intl.formatMessage(messages.lessFilters)}
+                ? intl.formatMessage(messages.hideFilters)
+                : intl.formatMessage(messages.lessFilters)}
           </Button>
         </Grid.Column>
       )}

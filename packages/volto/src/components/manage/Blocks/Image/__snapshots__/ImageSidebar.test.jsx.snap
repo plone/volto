@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an Image Block Sidebar component 1`] = `
-Array [
+[
   <header
     className="header pulled"
   >
@@ -15,24 +15,25 @@ Array [
         className="ui basic button"
         onClick={[Function]}
         title="Clear image"
+        type="button"
       >
         <svg
           className="icon"
           dangerouslySetInnerHTML={
-            Object {
-              "__html": undefined,
+            {
+              "__html": "<g fill-rule="evenodd"><path d="M27,30 C27,30.552 26.551,31 26,31 L12,31 C11.449,31 11,30.552 11,30 L11,9 L27,9 L27,30 Z M19,5 C20.103,5 21,5.897 21,7 L17,7 C17,5.897 17.897,5 19,5 L19,5 Z M31,7 L23,7 C23,4.794 21.206,3 19,3 C16.794,3 15,4.794 15,7 L7,7 L7,9 L9,9 L9,30 C9,31.654 10.346,33 12,33 L26,33 C27.654,33 29,31.654 29,30 L29,9 L31,9 L31,7 Z"/><path d="M15 28 17 28 17 12 15 12zM21 28 23 28 23 12 21 12z"/></g>",
             }
           }
           onClick={null}
           style={
-            Object {
+            {
               "fill": "red",
               "height": "24px",
               "width": "auto",
             }
           }
-          viewBox=""
-          xmlns=""
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         />
       </button>
     </div>
@@ -51,132 +52,66 @@ Array [
       sizes="188px"
       src="image"
       style={
-        Object {
+        {
           "width": "50%",
         }
       }
     />
   </div>,
   <div
-    className="ui form"
-  >
-    <div
-      id="blockform-fieldset-default"
-    >
-      <div
-        className="ui segment form attached"
-      >
-        <div
-          className="mocked-default-widget"
-          id="mocked-field-alt"
-        >
-          Alt text
-           - 
-          <a
-            href="https://www.w3.org/WAI/tutorials/images/decision-tree/"
-            rel="noopener noreferrer"
-            target="_blank"
-            title="Open in a new tab"
-          >
-            Describe the purpose of the image.
-          </a>
-           
-          Leave empty if the image is purely decorative.
-        </div>
-        <div
-          className="mocked-align-widget"
-          id="mocked-field-align"
-        >
-          Alignment
-           - 
-          No description
-        </div>
-        <div
-          className="mocked-default-widget"
-          id="mocked-field-size"
-        >
-          Image size
-           - 
-          No description
-        </div>
-      </div>
-    </div>
-    <div
-      className="accordion ui fluid styled form"
-    >
-      <div
-        id="blockform-fieldset-link_settings"
-      >
-        <div
-          className="active title"
-          onClick={[Function]}
-        >
-          Link settings
-          <svg
-            className="icon"
-            dangerouslySetInnerHTML={
-              Object {
-                "__html": undefined,
-              }
-            }
-            onClick={null}
-            style={
-              Object {
-                "fill": "currentColor",
-                "height": "20px",
-                "width": "auto",
-              }
-            }
-            viewBox=""
-            xmlns=""
-          />
-        </div>
-        <div
-          className="content active"
-        >
-          <div
-            aria-hidden={false}
-            className="rah-static rah-static--height-auto"
-            style={
-              Object {
-                "height": "auto",
-                "overflow": "visible",
-              }
-            }
-          >
-            <div
-              style={
-                Object {
-                  "WebkitTransition": "opacity 500ms ease 0ms",
-                  "transition": "opacity 500ms ease 0ms",
-                }
-              }
-            >
-              <div
-                className="ui segment attached"
-              >
-                <div
-                  className="mocked-object_browser-widget"
-                  id="mocked-field-href"
-                >
-                  Link to
-                   - 
-                  No description
-                </div>
-                <div
-                  className="mocked-boolean-widget"
-                  id="mocked-field-openLinkInNewTab"
-                >
-                  Open in a new tab
-                   - 
-                  No description
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>,
+    data-schema="{
+  "fieldsets": [
+    {
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "alt",
+        "align",
+        "size"
+      ]
+    },
+    {
+      "id": "link_settings",
+      "title": "Link settings",
+      "fields": [
+        "href",
+        "openLinkInNewTab"
+      ]
+    }
+  ],
+  "properties": {
+    "alt": {
+      "title": "Alt text"
+    },
+    "align": {
+      "title": "Alignment",
+      "widget": "align",
+      "default": "center"
+    },
+    "size": {
+      "title": "Image size",
+      "widget": "image_size",
+      "default": "l"
+    },
+    "href": {
+      "title": "Link to",
+      "widget": "object_browser",
+      "mode": "link",
+      "selectedItemAttrs": [
+        "Title",
+        "Description",
+        "hasPreviewImage"
+      ],
+      "allowExternals": true
+    },
+    "openLinkInNewTab": {
+      "title": "Open in a new tab",
+      "type": "boolean"
+    }
+  },
+  "required": []
+}"
+    id="BlockDataForm"
+  />,
 ]
 `;

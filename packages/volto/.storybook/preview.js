@@ -7,7 +7,8 @@ import enMessages from '@root/../locales/en.json';
 import '@root/theme';
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  // Removed while upgrading to SB8
+  // actions: { argTypesRegex: '^on[A-Z].*' },
 };
 
 export const decorators = [

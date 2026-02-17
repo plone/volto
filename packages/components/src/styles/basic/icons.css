@@ -1,0 +1,105 @@
+@import './theme.css';
+
+@layer plone-components.base {
+  :root {
+    --quanta-icon-size: 0.25rem;
+  }
+
+  .q.icon {
+    display: inline-block;
+
+    /* Inherit the text color */
+    color: inherit;
+
+    /* Fill should match the current text color */
+    fill: currentColor;
+
+    /* Hide the svg overflow in IE. */
+    &:not(:root) {
+      overflow: hidden;
+    }
+
+    /* Don't catch clicks or hover, otherwise they may not escape the SVG */
+    pointer-events: none;
+  }
+  @media (forced-colors: active) {
+    .q.icon {
+      /* Automatically adjust the SVG to pick up the text color for High Contrast mode */
+      forced-color-adjust: auto;
+    }
+  }
+
+  .q {
+    &.icon-2xs {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 3);
+        height: calc(var(--quanta-icon-size) * 3);
+      }
+    }
+
+    &.icon-xs {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 4);
+        height: calc(var(--quanta-icon-size) * 4);
+      }
+    }
+
+    &.icon-sm {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 5);
+        height: calc(var(--quanta-icon-size) * 5);
+      }
+    }
+
+    &.icon-base {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 6);
+        height: calc(var(--quanta-icon-size) * 6);
+      }
+    }
+
+    &.icon-lg {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 7);
+        height: calc(var(--quanta-icon-size) * 7);
+      }
+    }
+
+    &.icon-xl {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 8);
+        height: calc(var(--quanta-icon-size) * 8);
+      }
+    }
+
+    &.icon-2xl {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 9);
+        height: calc(var(--quanta-icon-size) * 9);
+      }
+    }
+
+    &.icon3xl {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 10);
+        height: calc(var(--quanta-icon-size) * 10);
+      }
+    }
+  }
+}

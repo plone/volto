@@ -1,5 +1,5 @@
 import { GET_SITE } from '@plone/volto/constants/ActionTypes';
-import { getSite } from '@plone/volto/actions';
+import { getSite } from '@plone/volto/actions/site/site';
 
 const getSiteAsyncPropExtender = {
   path: '/',

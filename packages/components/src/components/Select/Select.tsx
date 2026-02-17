@@ -1,23 +1,35 @@
-import type { SelectProps as RACSelectProps } from 'react-aria-components';
+import React from 'react';
 import {
   Button,
   FieldError,
   Label,
   ListBox,
+  ListBoxItem,
+  type ListBoxItemProps,
   Popover,
+  PopoverContext,
   Select as RACSelect,
+  type SelectProps as RACSelectProps,
   SelectValue,
   Text,
+  useContextProps,
+  type ValidationResult,
 } from 'react-aria-components';
-import cx from 'classnames';
-import ChevrondownIcon from '../Icons/ChevrondownIcon';
-import ChevronupIcon from '../Icons/ChevronupIcon';
+// import { Popover } from '../Popover/Popover';
 
-interface SelectProps<T extends object>
+import { ChevrondownIcon } from '../icons/ChevrondownIcon';
+import { ChevronupIcon } from '../icons/ChevronupIcon';
+
+export interface SelectItemObject {
+  label: string;
+  value: string;
+}
+
+export interface SelectProps<T extends SelectItemObject = SelectItemObject>
   extends Omit<RACSelectProps<T>, 'children'> {
-  title?: string;
+  label?: string;
   description?: string;
-  error?: string[];
+  errorMessage?: string | ((validation: ValidationResult) => string);
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
 }
@@ -37,39 +49,48 @@ interface SelectProps<T extends object>
  * the data.
  *
  */
-export default function Select<T extends object>({
-  title,
+export function Select<T extends SelectItemObject>({
+  label,
   description,
-  error,
+  errorMessage,
   children,
   items,
   ...props
 }: SelectProps<T>) {
+  // In case that we want to customize the Popover, we proxy the PopoverContext props down
+  const [popoverProps] = useContextProps({}, null, PopoverContext);
+
   return (
-    <RACSelect {...props} className={cx('q field', `field-${props.name}`)}>
+    <RACSelect {...props}>
       {({ isOpen }) => (
         <>
-          <Button className={cx('q input', { error: error })}>
+          <Label>{label}</Label>
+          <Button>
             <SelectValue />
             {/* Next span is flexed to position the icon just in the middle */}
             <span aria-hidden="true" style={{ display: 'flex' }}>
               {isOpen ? <ChevronupIcon /> : <ChevrondownIcon />}
             </span>
           </Button>
-          <Label className="q label">{title}</Label>
-          <FieldError className="q assist">{error}</FieldError>
-          {description && (
-            <Text slot="description" className="q hint">
-              {description}
-            </Text>
-          )}
-          <Popover offset={1}>
-            <ListBox className="q dropdown" items={items}>
-              {children}
-            </ListBox>
+          {description && <Text slot="description">{description}</Text>}
+          <FieldError>{errorMessage}</FieldError>
+          <Popover offset={0} {...popoverProps}>
+            {children ? (
+              <ListBox items={items}>{children}</ListBox>
+            ) : (
+              <ListBox items={items}>
+                {(item) => (
+                  <SelectItem id={item.label}>{item.value}</SelectItem>
+                )}
+              </ListBox>
+            )}
           </Popover>
         </>
       )}
     </RACSelect>
   );
+}
+
+export function SelectItem(props: ListBoxItemProps) {
+  return <ListBoxItem {...props} />;
 }

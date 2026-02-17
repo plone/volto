@@ -7,12 +7,12 @@ export const SplitParts: any;
 declare namespace _default {
     export let title: string;
     export { FormattedDate as component };
-    export let decorators: ((Story: any) => JSX.Element)[];
+    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
     export namespace argTypes {
         namespace locale {
+            let options: string[];
             namespace control {
                 let type: string;
-                let options: string[];
             }
         }
     }

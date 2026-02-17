@@ -23,6 +23,7 @@ export class ObjectBrowserWidgetComponent extends React.Component<any, any, any>
         openObjectBrowser: any;
         allowExternals: any;
         placeholder: any;
+        onlyFolderishSelectable: any;
     };
     /**
      * Default properties
@@ -38,15 +39,17 @@ export class ObjectBrowserWidgetComponent extends React.Component<any, any, any>
         return: string;
         initialPath: string;
         allowExternals: boolean;
+        onlyFolderishSelectable: boolean;
     };
     constructor(props: any);
     state: {
         manualLinkInput: string;
         validURL: boolean;
+        errors: any[];
     };
     selectedItemsRef: React.RefObject<any>;
     placeholderRef: React.RefObject<any>;
-    renderLabel(item: any): JSX.Element;
+    renderLabel(item: any): import("react/jsx-runtime").JSX.Element;
     removeItem: (item: any) => void;
     onChange: (item: any) => void;
     onManualLinkInput: (e: any) => void;

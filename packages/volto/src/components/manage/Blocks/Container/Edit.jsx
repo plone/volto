@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { pickBy } from 'lodash';
-import { BlocksForm, SidebarPortal } from '@plone/volto/components';
+import pickBy from 'lodash/pickBy';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
+import { BlocksForm } from '@plone/volto/components/manage/Form';
 import PropTypes from 'prop-types';
 import ContainerData from './Data';
 import DefaultEditBlockWrapper from './EditBlockWrapper';
 import SimpleContainerToolbar from './SimpleContainerToolbar';
 import { v4 as uuid } from 'uuid';
-import { blocksFormGenerator } from '@plone/volto/helpers';
+import { blocksFormGenerator } from '@plone/volto/helpers/Blocks/Blocks';
 
 import DefaultTemplateChooser from '@plone/volto/components/manage/TemplateChooser/TemplateChooser';
 
@@ -128,6 +129,7 @@ const ContainerBlockEdit = (props) => {
         blocksConfig={allowedBlocksConfig}
         title={data.placeholder}
         isContainer
+        isMainForm={false}
         stopPropagation={selectedBlock}
         disableAddBlockOnEnterKey
         onSelectBlock={(id) => {

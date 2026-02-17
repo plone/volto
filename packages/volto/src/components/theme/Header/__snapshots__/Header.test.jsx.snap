@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Header renders a header component - auth 1`] = `
+exports[`Header > renders a header component - auth 1`] = `
 <div
   className="ui basic segment header-wrapper"
   role="banner"
@@ -44,7 +44,7 @@ exports[`Header renders a header component - auth 1`] = `
 </div>
 `;
 
-exports[`Header renders a header component 1`] = `
+exports[`Header > renders a header component 1`] = `
 <div
   className="ui basic segment header-wrapper"
   role="banner"

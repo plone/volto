@@ -7,14 +7,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getParentUrl } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { getParentUrl } from '@plone/volto/helpers/Url/Url';
+import { createPortal } from 'react-dom';
 import { Button, Header } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-import { last, nth, join } from 'lodash';
-import { Error, Form, Icon, Toolbar, Toast } from '@plone/volto/components';
-import { getControlpanel, updateControlpanel } from '@plone/volto/actions';
+import last from 'lodash/last';
+import nth from 'lodash/nth';
+import join from 'lodash/join';
+import Error from '@plone/volto/components/theme/Error/Error';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import { Form } from '@plone/volto/components/manage/Form';
+import {
+  getControlpanel,
+  updateControlpanel,
+} from '@plone/volto/actions/controlpanels/controlpanels';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -173,7 +182,7 @@ class ContentType extends Component {
       return <Error error={this.state.error} />;
     }
 
-    if (this.props.controlpanel) {
+    if (this.props.controlpanel?.data) {
       let controlpanel = this.props.controlpanel;
       if (controlpanel?.data?.filter_content_types === false) {
         controlpanel.data.filter_content_types = { title: 'all', token: 'all' };
@@ -210,8 +219,8 @@ class ContentType extends Component {
             hideActions
             loading={this.props.cpanelRequest.update.loading}
           />
-          {this.state.isClient && (
-            <Portal node={document.getElementById('toolbar')}>
+          {this.state.isClient &&
+            createPortal(
               <Toolbar
                 pathname={this.props.pathname}
                 hideDefaultViewButtons
@@ -248,9 +257,9 @@ class ContentType extends Component {
                     </Button>
                   </>
                 }
-              />
-            </Portal>
-          )}
+              />,
+              document.getElementById('toolbar'),
+            )}
         </div>
       );
     }

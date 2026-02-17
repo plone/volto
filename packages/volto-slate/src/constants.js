@@ -12,7 +12,7 @@ export const SIMPLELINK = 'link';
 export const TABLE = 'table';
 export const THEAD = 'thead';
 export const TBODY = 'tbody';
-export const TFOOT = 'tbody';
+export const TFOOT = 'tfoot';
 export const TR = 'tr';
 export const TH = 'th';
 export const TD = 'td';
@@ -22,6 +22,9 @@ export const P = 'p';
 export const LI = 'li';
 export const UL = 'ul';
 export const OL = 'ol';
+export const H2 = 'h2';
+export const H3 = 'h3';
+export const BLOCKQUOTE = 'blockquote';
 
 // dom parsing node information
 export const TEXT_NODE = 3;

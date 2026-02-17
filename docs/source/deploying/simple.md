@@ -12,7 +12,7 @@ myst:
 Volto is a Node.js application that runs on your machine/server and listens to a port. Once you are ready to deploy it, you should build it running:
 
 ```bash
-$ yarn build
+$ pnpm build
 ```
 
 The Volto configuration determines the external URL Volto will be served, so if you just issue this command, the build will get that values and build an static bundle with that values (PORT=3000, API_PATH=http://localhost:8080/Plone).
@@ -20,13 +20,13 @@ The Volto configuration determines the external URL Volto will be served, so if 
 In order to make Volto work on a server under an specific DNS name, you must parametrize the build like:
 
 ```bash
-$ PORT=volto_node_process_port RAZZLE_API_PATH=https://mywebsite.com/api yarn build
+$ PORT=volto_node_process_port RAZZLE_API_PATH=https://mywebsite.com/api pnpm build
 ```
 
 After the build, the bundle is created in `/build` folder, then in order to launch your application you can run:
 
 ```bash
-$ yarn start:prod
+$ pnpm start:prod
 ```
 or
 ```bash
@@ -72,4 +72,8 @@ location ~ / {
 
 ### Understanding CORS errors
 
-If you're getting [CORS errors](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue) you need to understand the nature of these errors: the backend server (usually Plone) needs to be configured to "know" the final domain where the content is fetched. This is done for security purposes, to protect the information in the backend server from being loaded by client browsers on unknown domains. So make sure that the backend server is properly configured for your purposes. When using Plone with Docker, check the [CORS](https://github.com/plone/plone.docker#for-basic-usage) documentation section, otherwise the [CORS section of `plone.rest`](https://github.com/plone/plone.rest#cors).
+If you're getting [CORS errors](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS/Errors#identifying_a_cors_issue), you need to understand the nature of these errors.
+The backend server (usually Plone) needs to be configured to "know" the final domain where the content is fetched.
+This is done for security purposes, to protect the information in the backend server from being loaded by client browsers on unknown domains.
+So make sure that the backend server is properly configured for your purposes.
+When using Plone with Docker, check the [CORS](https://github.com/plone/plone.docker#for-basic-usage) documentation section, otherwise the [CORS section of `plone.rest`](https://github.com/plone/plone.rest#cors).

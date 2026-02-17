@@ -1,7 +1,7 @@
 import React from 'react';
 import ObjectBrowserBody from '@plone/volto/components/manage/Sidebar/ObjectBrowserBody';
 import SidebarPopup from '@plone/volto/components/manage/Sidebar/SidebarPopup';
-import { getBaseUrl } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 
 const withObjectBrowser = (WrappedComponent) =>
   class extends React.Component {
@@ -58,6 +58,7 @@ const withObjectBrowser = (WrappedComponent) =>
       selectableTypes,
       maximumSelectionSize,
       currentPath,
+      onlyFolderishSelectable,
     } = {}) =>
       this.setState(() => ({
         isObjectBrowserOpen: true,
@@ -70,6 +71,7 @@ const withObjectBrowser = (WrappedComponent) =>
         selectableTypes,
         maximumSelectionSize,
         currentPath,
+        onlyFolderishSelectable,
       }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
@@ -98,7 +100,7 @@ const withObjectBrowser = (WrappedComponent) =>
               <ObjectBrowserBody
                 {...this.props}
                 data={
-                  this.state.propDataName
+                  this.state.propDataName && this.props[this.state.propDataName]
                     ? this.props[this.state.propDataName]
                     : this.props.data
                 }
@@ -110,6 +112,7 @@ const withObjectBrowser = (WrappedComponent) =>
                 searchableTypes={this.state.searchableTypes}
                 selectableTypes={this.state.selectableTypes}
                 maximumSelectionSize={this.state.maximumSelectionSize}
+                onlyFolderishSelectable={this.state.onlyFolderishSelectable}
               />
             </SidebarPopup>
           </>

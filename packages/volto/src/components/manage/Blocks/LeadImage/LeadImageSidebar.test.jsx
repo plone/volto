@@ -5,6 +5,9 @@ import { Provider } from 'react-intl-redux';
 
 import LeadImageSidebar from './LeadImageSidebar';
 
+vi.mock('@plone/volto/components/manage/Widgets');
+vi.mock('@plone/volto/components/manage/Widgets');
+
 const mockStore = configureStore();
 
 test('renders a Lead Image block Sidebar component', () => {
@@ -14,6 +17,7 @@ test('renders a Lead Image block Sidebar component', () => {
       messages: {},
     },
   });
+
   const component = renderer.create(
     <Provider store={store}>
       <LeadImageSidebar
@@ -43,6 +47,7 @@ test('renders a Lead Image block Sidebar component', () => {
       />
     </Provider>,
   );
+
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });

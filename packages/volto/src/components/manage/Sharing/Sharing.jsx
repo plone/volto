@@ -5,12 +5,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Plug, Pluggable } from '@plone/volto/components/manage/Pluggable';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
-import { find, isEqual, map } from 'lodash';
-import { Portal } from 'react-portal';
+import find from 'lodash/find';
+import isEqual from 'lodash/isEqual';
+import map from 'lodash/map';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Checkbox,
@@ -24,9 +26,14 @@ import {
 import jwtDecode from 'jwt-decode';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import { updateSharing, getSharing } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { Icon, Toolbar, Toast } from '@plone/volto/components';
+import {
+  updateSharing,
+  getSharing,
+} from '@plone/volto/actions/sharing/sharing';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import { toast } from 'react-toastify';
 import config from '@plone/volto/registry';
 
@@ -478,11 +485,19 @@ class SharingComponent extends Component {
                   />
                 </p>
               </Segment>
-              <Segment className="actions" attached clearing>
+              <Segment className="right aligned actions" attached clearing>
+                <Button
+                  basic
+                  secondary
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
+                  title={this.props.intl.formatMessage(messages.cancel)}
+                  onClick={this.onCancel}
+                >
+                  <Icon className="circled" name={clearSVG} size="30px" />
+                </Button>
                 <Button
                   basic
                   primary
-                  floated="right"
                   type="submit"
                   aria-label={this.props.intl.formatMessage(messages.save)}
                   title={this.props.intl.formatMessage(messages.save)}
@@ -491,22 +506,12 @@ class SharingComponent extends Component {
                 >
                   <Icon className="circled" name={aheadSVG} size="30px" />
                 </Button>
-                <Button
-                  basic
-                  secondary
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  title={this.props.intl.formatMessage(messages.cancel)}
-                  floated="right"
-                  onClick={this.onCancel}
-                >
-                  <Icon className="circled" name={clearSVG} size="30px" />
-                </Button>
               </Segment>
             </Form>
           </Plug>
         </Segment.Group>
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -523,9 +528,9 @@ class SharingComponent extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </Container>
     );
   }

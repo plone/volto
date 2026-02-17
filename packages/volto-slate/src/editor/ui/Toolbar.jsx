@@ -1,11 +1,12 @@
 import cx from 'classnames';
 import React, { useRef, useEffect } from 'react';
-import { Portal } from 'react-portal';
 import { useSlate } from 'slate-react';
 import Separator from './Separator';
 import BasicToolbar from './BasicToolbar';
-import { Editor, Node } from 'slate';
+import { Node } from 'slate';
 import { ReactEditor } from 'slate-react';
+import { createPortal } from 'react-dom';
+import { safeEditorNodes } from '../../utils/safe.js';
 
 const Toolbar = ({
   elementType,
@@ -45,7 +46,7 @@ const Toolbar = ({
     }
 
     if (elementType) {
-      const [element] = Editor.nodes(editor, {
+      const [element] = safeEditorNodes(editor, {
         at: editor.selection || editor.getSavedSelection(),
         match: (n) => n.type === elementType,
       });
@@ -82,21 +83,20 @@ const Toolbar = ({
     )}px`;
   });
 
-  return (
-    <Portal>
-      <BasicToolbar
-        className={cx('slate-inline-toolbar', { [className]: className })}
-        ref={ref}
-      >
-        {children}
-        {enableExpando && toggleButton && (
-          <>
-            <Separator />
-            {toggleButton}
-          </>
-        )}
-      </BasicToolbar>
-    </Portal>
+  return createPortal(
+    <BasicToolbar
+      className={cx('slate-inline-toolbar', { [className]: className })}
+      ref={ref}
+    >
+      {children}
+      {enableExpando && toggleButton && (
+        <>
+          <Separator />
+          {toggleButton}
+        </>
+      )}
+    </BasicToolbar>,
+    document.body,
   );
 };
 

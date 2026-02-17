@@ -22,7 +22,7 @@ The Plone 5.2 documentation for Classic UI is well structured, and should be emu
 Additional sources of content may be used to fill out the Volto User Manual.
 Note that the audience for these sources may be a Developer, not an Editor, and therefore might need to be retargeted.
 
--   [Volto Hands-On](https://training.plone.org/voltohandson/index.html)
+-   {doc}`training:volto-customization/index`
 -   [Plone 6 Demo](https://demo.plone.org/) for screen shots and videos.
 ```
 

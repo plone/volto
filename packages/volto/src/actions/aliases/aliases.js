@@ -7,6 +7,7 @@ import {
   GET_ALIASES,
   ADD_ALIASES,
   REMOVE_ALIASES,
+  UPLOAD_ALIASES,
 } from '@plone/volto/constants/ActionTypes';
 
 /**
@@ -16,17 +17,19 @@ import {
  * @param {Object} options Options data.
  * @returns {Object} Get aliases action.
  */
-export function getAliases(url, options) {
-  const { query, manual, datetime, batchSize, batchStart } = options || {};
+export function getAliases(url, options = {}) {
+  const { query, batchSize, batchStart, ...rest } = options;
+  const params = new URLSearchParams({
+    q: query ?? '',
+    b_start: batchStart ?? 0,
+    b_size: batchSize ?? 99999999999,
+    ...rest,
+  });
   return {
     type: GET_ALIASES,
     request: {
       op: 'get',
-      path: `${url}/@aliases?q=${query ? query : ''}&manual=${
-        manual ? manual : ''
-      }&datetime=${datetime !== null ? datetime : ''}&b_size=${
-        batchSize ? batchSize : 99999999999
-      }&b_start=${batchStart ? batchStart : 0}`,
+      path: `${url}/@aliases?${params.toString()}`,
     },
   };
 }
@@ -63,6 +66,23 @@ export function removeAliases(url, data) {
       op: 'del',
       path: `${url}/@aliases`,
       data,
+    },
+  };
+}
+
+/**
+ * Upload aliases function.
+ * @function uploadAliases
+ * @param {Object} file CSV file.
+ * @returns {Object} Upload aliases action.
+ */
+export function uploadAliases(file) {
+  return {
+    type: UPLOAD_ALIASES,
+    request: {
+      op: 'post',
+      path: '/@aliases',
+      attach: [['file', file]],
     },
   };
 }

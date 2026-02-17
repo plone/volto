@@ -1,27 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useIntl } from 'react-intl';
+import cloneDeep from 'lodash/cloneDeep';
+import map from 'lodash/map';
 import EditBlock from './Edit';
-import { DragDropList } from '@plone/volto/components';
+import DragDropList from '@plone/volto/components/manage/DragDropList/DragDropList';
 import {
   getBlocks,
   getBlocksFieldname,
+  getBlocksLayoutFieldname,
+  getInvalidBlockLayoutIds,
   applyBlockDefaults,
-} from '@plone/volto/helpers';
-import {
+  getBlocksHierarchy,
   addBlock,
   insertBlock,
   changeBlock,
   deleteBlock,
   moveBlock,
+  moveBlockEnhanced,
   mutateBlock,
   nextBlockId,
   previousBlockId,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
+import { useDetectClickOutside } from '@plone/volto/helpers/Utils/useDetectClickOutside';
+import { useEvent } from '@plone/volto/helpers/Utils/useEvent';
 import EditBlockWrapper from './EditBlockWrapper';
-import { setSidebarTab } from '@plone/volto/actions';
+import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
+import { setUIState } from '@plone/volto/actions/form/form';
 import { useDispatch } from 'react-redux';
-import { useDetectClickOutside, useEvent } from '@plone/volto/helpers';
 import config from '@plone/volto/registry';
+import { createPortal } from 'react-dom';
+
+import Order from './Order/Order';
 
 const BlocksForm = (props) => {
   const {
@@ -48,7 +57,18 @@ const BlocksForm = (props) => {
     blocksConfig = config.blocks.blocksConfig,
     editable = true,
     direction = 'vertical',
+    history,
+    location,
+    token,
+    errors,
+    blocksErrors,
   } = props;
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const blockList = getBlocks(properties);
 
@@ -88,7 +108,11 @@ const BlocksForm = (props) => {
       onFocusNextBlock(block, node, isMultipleSelection);
       e.preventDefault();
     }
-    if (e.key === 'Enter' && !disableEnter) {
+
+    const blockConfig =
+      blocksConfig[properties[getBlocksFieldname(properties)][block]['@type']];
+
+    if (e.key === 'Enter' && !disableEnter && !blockConfig.disableEnter) {
       if (!disableAddBlockOnEnterKey) {
         onSelectBlock(onAddBlock(config.settings.defaultBlockType, index + 1));
       }
@@ -119,7 +143,7 @@ const BlocksForm = (props) => {
   };
 
   const onMutateBlock = (id, value) => {
-    const newFormData = mutateBlock(properties, id, value);
+    const newFormData = mutateBlock(properties, id, value, null, intl);
     onChangeFormData(newFormData);
   };
 
@@ -130,6 +154,8 @@ const BlocksForm = (props) => {
       value,
       current,
       config.experimental.addBlockButton.enabled ? 1 : 0,
+      null,
+      intl,
     );
 
     const blocksFieldname = getBlocksFieldname(newFormData);
@@ -147,7 +173,7 @@ const BlocksForm = (props) => {
 
   const onAddBlock = (type, index) => {
     if (editable) {
-      const [id, newFormData] = addBlock(properties, type, index);
+      const [id, newFormData] = addBlock(properties, type, index, null, intl);
       const blocksFieldname = getBlocksFieldname(newFormData);
       const blockData = newFormData[blocksFieldname][id];
       newFormData[blocksFieldname][id] = applyBlockDefaults({
@@ -169,7 +195,7 @@ const BlocksForm = (props) => {
   const onDeleteBlock = (id, selectPrev) => {
     const previous = previousBlockId(properties, id);
 
-    const newFormData = deleteBlock(properties, id);
+    const newFormData = deleteBlock(properties, id, intl);
     onChangeFormData(newFormData);
 
     onSelectBlock(selectPrev ? previous : null);
@@ -178,6 +204,52 @@ const BlocksForm = (props) => {
   const onMoveBlock = (dragIndex, hoverIndex) => {
     const newFormData = moveBlock(properties, dragIndex, hoverIndex);
     onChangeFormData(newFormData);
+  };
+
+  const onMoveBlockEnhanced = ({ source, destination }) => {
+    const newFormData = moveBlockEnhanced(cloneDeep(properties), {
+      source,
+      destination,
+    });
+    const blocksFieldname = getBlocksFieldname(newFormData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(newFormData);
+    let error = false;
+
+    const allowedBlocks = Object.keys(blocksConfig);
+
+    map(newFormData[blocksLayoutFieldname].items, (id) => {
+      const block = newFormData[blocksFieldname][id];
+      if (!allowedBlocks.includes(block['@type'])) {
+        error = true;
+      }
+      if (Array.isArray(block[blocksLayoutFieldname]?.items)) {
+        const size = block[blocksLayoutFieldname].items.length;
+        const allowedSubBlocks = [
+          ...(blocksConfig[block['@type']].allowedBlocks || allowedBlocks),
+          'empty',
+        ] || ['empty'];
+        if (size < 1 || size > (blocksConfig[block['@type']].maxLength || 4)) {
+          error = true;
+        }
+        map(block[blocksLayoutFieldname].items, (subId) => {
+          const subBlock = block[blocksFieldname][subId];
+          if (!allowedSubBlocks.includes(subBlock['@type'])) {
+            error = true;
+          }
+        });
+      }
+    });
+
+    if (!error) {
+      onChangeFormData(newFormData);
+      dispatch(
+        setUIState({
+          selected: null,
+          multiSelected: [],
+          gridSelected: null,
+        }),
+      );
+    }
   };
 
   const defaultBlockWrapper = ({ draginfo }, editBlock, blockProps) => (
@@ -189,15 +261,18 @@ const BlocksForm = (props) => {
   const editBlockWrapper = children || defaultBlockWrapper;
 
   // Remove invalid blocks on saving
-  // Note they are alreaady filtered by DragDropList, but we also want them
+  // Note they are already filtered by DragDropList, but we also want them
   // to be removed when the user saves the page next. Otherwise the invalid
   // blocks would linger for ever.
-  for (const [n, v] of blockList) {
-    if (!v) {
-      const newFormData = deleteBlock(properties, n);
-      onChangeFormData(newFormData);
+  useEffect(() => {
+    const invalidBlockIds = getInvalidBlockLayoutIds(properties);
+    if (invalidBlockIds.length === 0) return;
+    let newFormData = properties;
+    for (const id of invalidBlockIds) {
+      newFormData = deleteBlock(newFormData, id, intl);
     }
-  }
+    onChangeFormData(newFormData);
+  }, [properties, intl, onChangeFormData]);
 
   useEvent('voltoClickBelowContent', () => {
     if (!config.experimental.addBlockButton.enabled || !isMainForm) return;
@@ -207,80 +282,105 @@ const BlocksForm = (props) => {
   });
 
   return (
-    <div
-      className="blocks-form"
-      role="presentation"
-      ref={ref}
-      onKeyDown={(e) => {
-        if (stopPropagation) {
-          e.stopPropagation();
-        }
-      }}
-    >
-      <fieldset className="invisible" disabled={!editable}>
-        <DragDropList
-          childList={blockList}
-          onMoveItem={(result) => {
-            const { source, destination } = result;
-            if (!destination) {
-              return;
-            }
-            const newFormData = moveBlock(
-              properties,
-              source.index,
-              destination.index,
-            );
-            onChangeFormData(newFormData);
-            return true;
-          }}
-          direction={direction}
-        >
-          {(dragProps) => {
-            const { child, childId, index } = dragProps;
-            const blockProps = {
-              allowedBlocks,
-              showRestricted,
-              block: childId,
-              data: child,
-              handleKeyDown,
-              id: childId,
-              formTitle: title,
-              formDescription: description,
-              index,
-              manage,
-              onAddBlock,
-              onInsertBlock,
-              onChangeBlock,
-              onChangeField,
-              onChangeFormData,
-              onDeleteBlock,
-              onFocusNextBlock,
-              onFocusPreviousBlock,
-              onMoveBlock,
-              onMutateBlock,
-              onSelectBlock,
-              pathname,
-              metadata,
-              properties,
-              contentType: type,
-              navRoot,
-              blocksConfig,
-              selected: selectedBlock === childId,
-              multiSelected: multiSelected?.includes(childId),
-              type: child['@type'],
-              editable,
-              showBlockChooser: selectedBlock === childId,
-              detached: isContainer,
-            };
-            return editBlockWrapper(
-              dragProps,
-              <EditBlock key={childId} {...blockProps} />,
-              blockProps,
-            );
-          }}
-        </DragDropList>
-      </fieldset>
-    </div>
+    <>
+      {isMainForm &&
+        isClient &&
+        createPortal(
+          <div>
+            <Order
+              items={getBlocksHierarchy(properties)}
+              onMoveBlock={onMoveBlockEnhanced}
+              onDeleteBlock={onDeleteBlock}
+              onSelectBlock={onSelectBlock}
+              removable
+              errors={blocksErrors}
+            />
+          </div>,
+          document.getElementById('sidebar-order'),
+        )}
+      <div
+        className="blocks-form"
+        role="presentation"
+        ref={ref}
+        onKeyDown={(e) => {
+          if (stopPropagation) {
+            e.stopPropagation();
+          }
+        }}
+      >
+        <fieldset className="invisible" disabled={!editable}>
+          <DragDropList
+            childList={blockList}
+            onMoveItem={(result) => {
+              const { source, destination } = result;
+              if (!destination) {
+                return;
+              }
+              const newFormData = moveBlock(
+                properties,
+                source.index,
+                destination.index,
+              );
+              onChangeFormData(newFormData);
+              return true;
+            }}
+            direction={direction}
+          >
+            {(dragProps) => {
+              const { child, childId, index } = dragProps;
+              const blockProps = {
+                allowedBlocks,
+                showRestricted,
+                block: childId,
+                data: child,
+                handleKeyDown,
+                id: childId,
+                formTitle: title,
+                formDescription: description,
+                index,
+                manage,
+                onAddBlock,
+                onInsertBlock,
+                onChangeBlock,
+                onChangeField,
+                onChangeFormData,
+                onDeleteBlock,
+                onFocusNextBlock,
+                onFocusPreviousBlock,
+                onMoveBlock,
+                onMutateBlock,
+                onSelectBlock,
+                pathname,
+                metadata,
+                properties,
+                contentType: type,
+                navRoot,
+                blocksConfig,
+                selected: selectedBlock === childId,
+                multiSelected: multiSelected?.includes(childId),
+                type: child['@type'],
+                editable,
+                showBlockChooser: selectedBlock === childId,
+                detached: isContainer,
+                isContainer,
+                // Properties to pass to the BlocksForm to match the View ones
+                content: properties,
+                history,
+                location,
+                token,
+                errors,
+                blocksErrors,
+              };
+              return editBlockWrapper(
+                dragProps,
+                <EditBlock key={childId} {...blockProps} />,
+                blockProps,
+              );
+            }}
+          </DragDropList>
+        </fieldset>
+      </div>
+    </>
   );
 };
 

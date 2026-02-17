@@ -4,11 +4,13 @@ import type {
   BlockExtension,
   BlocksConfigData,
 } from '../config/Blocks';
-import type { IntlShape } from 'react-intl';
-import type { Location, History } from 'history';
+import type { IntlShape } from '../i18n';
+import type { Location, History } from '../router';
 
 export interface BlocksFormData {
   '@type': AvailableBlocks;
+  variation?: string;
+  [x: string]: unknown;
 }
 
 export interface BlockViewProps {
@@ -27,6 +29,7 @@ export interface BlockViewProps {
   path: string;
   className: string;
   style: Record<`--${string}`, string>;
+  isEditMode?: boolean;
 }
 
 type SearchMetadataResultItem = {};
@@ -65,6 +68,9 @@ export interface BlockEditProps {
   navRoot: Content;
   onAddBlock: (type: string, index: number) => string;
   onChangeBlock: (id: string, newData: any) => void;
+  // `setBlock` is part of Seven's API but not used in Volto
+  // Should we move it to @plone/registry (as decided with @pnicolli during the Salamina Sprint 2025)
+  setBlock: (value: any) => void;
   onChangeField: (id: string, newData: any) => void;
   onChangeFormData: (newFormData: any) => void; // Not really FormData, the `data` inside the blocks settings
   onDeleteBlock: (id: string, selectPrev: boolean) => void;
@@ -102,7 +108,7 @@ export interface BlockEditProps {
   }) => void;
   pathname: string;
   properties: Content;
-  selected: Boolean;
+  selected: boolean;
   setSidebarTab: boolean | 0 | 1;
   showBlockChooser: boolean;
   showRestricted: boolean;
@@ -111,4 +117,29 @@ export interface BlockEditProps {
   path: string;
   className: string;
   style: Record<`--${string}`, string>;
+  content: Content;
+  history: History;
+  location: Location;
+  token: string;
+  errors: Record<string, Array<string>>;
+  blocksErrors: Record<string, Record<string, Array<string>>>;
 }
+
+export type StyleDefinition =
+  | {
+      name: string;
+      label: string;
+      style: Record<`--${string}`, string>;
+    }
+  | {
+      name: string;
+      label: string;
+      style: undefined;
+    };
+
+export interface BlockSchemaProps {
+  props: BlockEditProps;
+  intl: IntlShape;
+}
+
+export * from './objectBrowser';

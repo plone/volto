@@ -1,14 +1,15 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl';
+import { MemoryRouter } from 'react-router-dom';
 
 import Logout from './Logout';
 
 const mockStore = configureStore();
 
-jest.mock('../Login/Login', () => jest.fn(() => <div />));
+vi.mock('../Login/Login', () => ({ default: vi.fn(() => <div />) }));
 
 describe('Logout', () => {
   it('renders a logout component', () => {
@@ -21,14 +22,16 @@ describe('Logout', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <IntlProvider locale="en">
-          <Logout location={{ pathname: '' }} />
+          <MemoryRouter>
+            <Logout location={{ pathname: '' }} />
+          </MemoryRouter>
         </IntlProvider>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

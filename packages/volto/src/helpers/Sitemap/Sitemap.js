@@ -4,9 +4,9 @@
  */
 
 import superagent from 'superagent';
-import { map } from 'lodash';
+import map from 'lodash/map';
 import zlib from 'zlib';
-import { toPublicURL } from '@plone/volto/helpers';
+import { toPublicURL } from '@plone/volto/helpers/Url/Url';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 import config from '@plone/volto/registry';
@@ -22,10 +22,10 @@ export const SITEMAP_BATCH_SIZE = 5000;
 export const generateSitemap = (_req, start = 0, size = undefined) =>
   new Promise((resolve) => {
     const { settings } = config;
-    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+    const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
     const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
-      `${apiPath}${APISUFIX}/@search?metadata_fields=modified&b_start=${start}&b_size=${
+      `${apiPath}${apiSuffix}/@search?metadata_fields=modified&b_start=${start}&b_size=${
         size !== undefined ? size : 100000000
       }&use_site_search_settings=1`,
     );
@@ -61,13 +61,13 @@ export const generateSitemap = (_req, start = 0, size = undefined) =>
  * @param {Object} _req Request object
  * @return {string} Generated sitemap index
  */
-export const generateSitemapIndex = (_req) =>
+export const generateSitemapIndex = (_req, gzip = false) =>
   new Promise((resolve) => {
     const { settings } = config;
-    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+    const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
     const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
-      `${apiPath}${APISUFIX}/@search?metadata_fields=modified&b_size=0&use_site_search_settings=1`,
+      `${apiPath}${apiSuffix}/@search?metadata_fields=modified&b_size=0&use_site_search_settings=1`,
     );
     request.set('Accept', 'application/json');
     const authToken = _req.universalCookies.get('auth_token');
@@ -88,7 +88,14 @@ export const generateSitemapIndex = (_req) =>
         const result = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${items.join('\n')}\n</sitemapindex>`;
-        resolve(result);
+
+        if (gzip) {
+          zlib.gzip(Buffer.from(result, 'utf8'), (_err, buffer) => {
+            resolve(buffer);
+          });
+        } else {
+          resolve(result);
+        }
       }
     });
   });

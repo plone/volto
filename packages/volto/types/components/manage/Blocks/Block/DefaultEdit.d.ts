@@ -1,2 +1,2 @@
 export default DefaultBlockEdit;
-declare function DefaultBlockEdit(props: any): JSX.Element;
+declare function DefaultBlockEdit(props: any): import("react/jsx-runtime").JSX.Element;

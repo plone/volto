@@ -1,4 +1,4 @@
-export function TextLineEdit(props: any): JSX.Element;
+export function TextLineEdit(props: any): import("react/jsx-runtime").JSX.Element;
 export namespace TextLineEdit {
     namespace propTypes {
         let properties: any;

@@ -49,6 +49,7 @@ const itemSchema: BlockConfigBase['blockSchema'] = ({ intl }) => {
           'title',
           'description',
           'preview_image',
+          'another_image',
           'extraDefault',
         ],
       },
@@ -78,6 +79,10 @@ const itemSchema: BlockConfigBase['blockSchema'] = ({ intl }) => {
         widget: 'object_browser',
         mode: 'image',
         allowExternals: true,
+      },
+      another_image: {
+        title: 'Another image',
+        widget: 'image',
       },
       extraDefault: {
         title: 'Extra',
@@ -182,6 +187,11 @@ export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
       title: 'fourth',
       fields: ['href', 'firstWithDefault', 'style'],
     },
+    {
+      id: 'fifth',
+      title: 'fifth',
+      fields: ['fieldRequiredInFieldset'],
+    },
   ],
   properties: {
     slides: {
@@ -232,6 +242,9 @@ export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
       title: 'HTML',
       widget: 'richtext',
     },
+    fieldRequiredInFieldset: {
+      title: 'Field required in fieldset',
+    },
   },
-  required: [],
+  required: ['fieldRequiredInFieldset'],
 });

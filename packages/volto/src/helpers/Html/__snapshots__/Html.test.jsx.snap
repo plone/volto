@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Html renders a html component 1`] = `
+exports[`Html > renders a html component 1`] = `
 <html
   lang="en"
 >
@@ -8,14 +8,9 @@ exports[`Html renders a html component 1`] = `
     <meta
       charSet="utf-8"
     />
-    
-    
-    
-    
-    
     <script
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "window.env = {};",
         }
       }
@@ -49,7 +44,7 @@ exports[`Html renders a html component 1`] = `
     />
     <meta
       content="yes"
-      name="apple-mobile-web-app-capable"
+      name="mobile-web-app-capable"
     />
     <link
       as="script"
@@ -69,7 +64,7 @@ exports[`Html renders a html component 1`] = `
     />
     <div
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "<div />",
         }
       }
@@ -83,8 +78,8 @@ exports[`Html renders a html component 1`] = `
     <script
       charSet="UTF-8"
       dangerouslySetInnerHTML={
-        Object {
-          "__html": "window.__data={\\"content\\":{\\"@id\\":\\"http:\\\\u002F\\\\u002Fdummy\\"}};",
+        {
+          "__html": "window.__data={"content":{"@id":"http:\\u002F\\u002Fdummy"}};",
         }
       }
     />
@@ -97,7 +92,7 @@ exports[`Html renders a html component 1`] = `
 </html>
 `;
 
-exports[`Html renders a html component with apiPath present 1`] = `
+exports[`Html > renders a html component with apiPath present 1`] = `
 <html
   lang="en"
 >
@@ -105,15 +100,10 @@ exports[`Html renders a html component with apiPath present 1`] = `
     <meta
       charSet="utf-8"
     />
-    
-    
-    
-    
-    
     <script
       dangerouslySetInnerHTML={
-        Object {
-          "__html": "window.env = {\\"apiPath\\":\\"https:\\\\u002F\\\\u002Fplone.org\\"};",
+        {
+          "__html": "window.env = {"apiPath":"https:\\u002F\\u002Fplone.org"};",
         }
       }
     />
@@ -146,7 +136,7 @@ exports[`Html renders a html component with apiPath present 1`] = `
     />
     <meta
       content="yes"
-      name="apple-mobile-web-app-capable"
+      name="mobile-web-app-capable"
     />
     <link
       as="script"
@@ -166,7 +156,7 @@ exports[`Html renders a html component with apiPath present 1`] = `
     />
     <div
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "<div />",
         }
       }
@@ -180,8 +170,8 @@ exports[`Html renders a html component with apiPath present 1`] = `
     <script
       charSet="UTF-8"
       dangerouslySetInnerHTML={
-        Object {
-          "__html": "window.__data={\\"content\\":{\\"@id\\":\\"http:\\\\u002F\\\\u002Fdummy\\"}};",
+        {
+          "__html": "window.__data={"content":{"@id":"http:\\u002F\\u002Fdummy"}};",
         }
       }
     />

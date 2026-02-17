@@ -2,7 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import qs from 'query-string';
 import { useSelector } from 'react-redux';
-import { findBlocks, slugify } from '@plone/volto/helpers';
+import { findBlocks } from '@plone/volto/helpers/Blocks/Blocks';
+import { slugify } from '@plone/volto/helpers/Utils/Utils';
 
 /**
  * @function useCreatePageQueryStringKey

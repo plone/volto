@@ -14,6 +14,16 @@
  * with the "object promises" and that's our "object promises" (which it calls
  * internally "asyncItems").
  */
-export function asyncConnect(asyncItems: any, mapStateToProps: any, mapDispatchToProps: any, mergeProps: any, options: any): (Component: any) => any;
+/**
+ * Higher-order function that enhances a React component with asynchronous data fetching and Redux integration.
+ *
+ * @param {Array} asyncItems - An array of async items to fetch.
+ * @param {Function} [mapStateToProps] - A function that maps the Redux state to component props.
+ * @param {Function} [mapDispatchToProps] - A function that maps Redux dispatch to component props.
+ * @param {Function} [mergeProps] - A function that merges the props from mapStateToProps, mapDispatchToProps, and the component's own props.
+ * @param {Object} [options] - Additional options for configuring the async connect behavior.
+ * @returns {Function} - A function that takes a React component and returns an enhanced component with async connect functionality.
+ */
+export function asyncConnect(asyncItems: any[], mapStateToProps?: Function, mapDispatchToProps?: Function, mergeProps?: Function, options?: any): Function;
 export const ReduxAsyncConnect: any;
 export { loadOnServer, loadAsyncConnect } from "./ssr";

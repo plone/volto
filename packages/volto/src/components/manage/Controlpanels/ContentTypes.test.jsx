@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
@@ -8,10 +8,11 @@ import ContentTypes from './ContentTypes';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
 }));
-jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
+
+vi.mock('../Form/Form', () => ({ default: vi.fn(() => <div id="form" />) }));
 
 describe('ContentTypes', () => {
   it('renders dexterity content-types controlpanel component', () => {
@@ -59,15 +60,37 @@ describe('ContentTypes', () => {
         locale: 'en',
         messages: {},
       },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
-    const component = renderer.create(
+    store.dispatch = vi.fn(() => Promise.resolve());
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter initialEntries={['/controlpanel/dexterity-types']}>
           <Route path={'/controlpanel/:id'} component={ContentTypes} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

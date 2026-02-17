@@ -1,5 +1,14 @@
-declare const _default: React.FC<import("react-intl").WithIntlProps<any>> & {
-    WrappedComponent: React.ComponentType<any>;
-};
-export default _default;
-import React from 'react';
+export default Edit;
+declare function Edit(props: any): import("react/jsx-runtime").JSX.Element;
+declare namespace Edit {
+    namespace propTypes {
+        let properties: any;
+        let selected: any;
+        let block: any;
+        let index: any;
+        let data: any;
+        let pathname: any;
+        let onChangeBlock: any;
+        let openObjectBrowser: any;
+    }
+}

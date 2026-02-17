@@ -2,22 +2,25 @@
  * User Control Panel [user group membership management]
  * TODO Enrich with features of user control panel. Then replace user control panel.
  */
-import React, { useEffect } from 'react';
-import { find } from 'lodash';
-import { Portal } from 'react-portal';
+import React, { useEffect, useState } from 'react';
+import find from 'lodash/find';
+import { createPortal } from 'react-dom';
 import { useHistory } from 'react-router';
 import { Link, useLocation } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Segment } from 'semantic-ui-react';
-import { Helmet, messages } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import {
   getControlpanel,
   getSystemInformation,
-  listActions,
-} from '@plone/volto/actions';
-import { Icon, Toolbar, Unauthorized } from '@plone/volto/components';
-import { getParentUrl } from '@plone/volto/helpers';
+} from '@plone/volto/actions/controlpanels/controlpanels';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
+import { getParentUrl } from '@plone/volto/helpers/Url/Url';
 import UserGroupMembershipMatrix from '@plone/volto/components/manage/Controlpanels/Users/UserGroupMembershipMatrix';
 import backSVG from '@plone/volto/icons/back.svg';
 import settingsSVG from '@plone/volto/icons/settings.svg';
@@ -45,6 +48,12 @@ const UserGroupMembershipPanel = () => {
     id: 'plone_setup',
   });
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   useEffect(() => {
     dispatch(listActions('/'));
   }, [dispatch]);
@@ -57,7 +66,7 @@ const UserGroupMembershipPanel = () => {
     dispatch(getSystemInformation());
   }, [dispatch]);
 
-  if (__CLIENT__ && !ploneSetupAction) {
+  if (isClient && !ploneSetupAction) {
     return <Unauthorized />;
   }
 
@@ -108,8 +117,8 @@ const UserGroupMembershipPanel = () => {
         </Segment.Group>
       </div>
 
-      {__CLIENT__ && (
-        <Portal node={document.getElementById('toolbar')}>
+      {isClient &&
+        createPortal(
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
@@ -139,9 +148,9 @@ const UserGroupMembershipPanel = () => {
                 </Link>
               </>
             }
-          />
-        </Portal>
-      )}
+          />,
+          document.getElementById('toolbar'),
+        )}
     </>
   );
 };

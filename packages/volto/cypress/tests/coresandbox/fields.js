@@ -105,6 +105,33 @@ context('Special fields Acceptance Tests', () => {
         '<p>   hello   world   </p>',
       );
     });
+
+    it('break list on empty li element', () => {
+      cy.intercept('PATCH', '/**/document').as('save');
+      cy.getSlate().click();
+      cy.get('.button .block-add-button').click({ force: true });
+      cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
+      cy.get('#fieldset-default-field-label-html').click();
+      cy.get('.slate_wysiwyg_box [contenteditable=true]')
+        .type('hello welcome to plone')
+        .scrollIntoView();
+
+      cy.setSlateSelection('hello');
+
+      cy.wait(1000); // th
+      cy.get('.slate-inline-toolbar').should('be.visible');
+      cy.clickSlateButton('Bulleted list');
+      cy.get('.slate_wysiwyg_box [contenteditable=true]').should(
+        'have.descendants',
+        'ul li',
+      );
+      cy.setSlateCursor('plone').type('{enter}').type('{enter}');
+
+      cy.get('#toolbar-save').click();
+      cy.wait('@save');
+
+      cy.get('.test-block').should('contain.text', '<p></p>');
+    });
   });
 
   describe('ObjectListWidget', () => {

@@ -1,14 +1,15 @@
 import React from 'react';
 
 import ListingBody from '@plone/volto/components/manage/Blocks/Listing/ListingBody';
-import { withBlockExtensions } from '@plone/volto/helpers';
+import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 
 import config from '@plone/volto/registry';
 
 import { withSearch, withQueryString } from './hocs';
 import { compose } from 'redux';
 import { useSelector } from 'react-redux';
-import { isEqual, isFunction } from 'lodash';
+import isEqual from 'lodash/isEqual';
+import isFunction from 'lodash/isFunction';
 import cx from 'classnames';
 
 const getListingBodyVariation = (data) => {
@@ -41,7 +42,7 @@ const blockPropsAreChanged = (prevProps, nextProps) => {
   return isEqual(prev, next);
 };
 
-const applyDefaults = (data, root) => {
+const applyDefaults = (data, root, blockQuery) => {
   const defaultQuery = [
     {
       i: 'path',
@@ -49,11 +50,44 @@ const applyDefaults = (data, root) => {
       v: root || '/',
     },
   ];
+
+  const dataQuery = data?.query?.length ? data.query : [];
+  const searchBySearchableText = dataQuery.filter(
+    (item) => item['i'] === 'SearchableText',
+  ).length;
+
+  const sort_on = data?.sort_on
+    ? { sort_on: data.sort_on }
+    : searchBySearchableText === 0
+      ? { sort_on: 'effective' }
+      : {};
+  const sort_order = data?.sort_order
+    ? { sort_order: data.sort_order }
+    : searchBySearchableText === 0
+      ? { sort_order: 'descending' }
+      : {};
+
+  // We start with the base query from the block.
+  // We enhance it with the query from the facets (filters).
+  // We fall back to the default query.
+  let query = blockQuery?.length ? blockQuery : [];
+  if (!query.length) {
+    query = dataQuery.length ? dataQuery : defaultQuery;
+  } else if (dataQuery.length) {
+    // We have both a base query and a filter.  Combine them.
+    // Items in the filter win over items in the base query.
+    const filterKeys = new Set(dataQuery.map((obj) => obj.i));
+    query = [
+      ...dataQuery,
+      ...blockQuery.filter((item) => !filterKeys.has(item.i)),
+    ];
+  }
+
   return {
     ...data,
-    sort_on: data?.sort_on || 'effective',
-    sort_order: data?.sort_order || 'descending',
-    query: data?.query?.length ? data.query : defaultQuery,
+    ...sort_on,
+    ...sort_order,
+    query,
   };
 };
 
@@ -76,7 +110,7 @@ const SearchBlockView = (props) => {
   }, [dataListingBodyVariation, mode]);
 
   const root = useSelector((state) => state.breadcrumbs.root);
-  const listingBodyData = applyDefaults(searchData, root);
+  const listingBodyData = applyDefaults(searchData, root, data.query?.query);
 
   const { variations } = config.blocks.blocksConfig.listing;
   const listingBodyVariation = variations.find(({ id }) => id === selectedView);

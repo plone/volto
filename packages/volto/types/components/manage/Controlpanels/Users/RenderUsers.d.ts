@@ -1,5 +1,18 @@
-declare const _default: React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & React.RefAttributes<React.ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
-    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
-export default _default;
-import React from 'react';
+export default RenderUsers;
+/**
+ * RenderUsers functional component.
+ * @function RenderUsers
+ */
+declare function RenderUsers(props: any): import("react/jsx-runtime").JSX.Element;
+declare namespace RenderUsers {
+    namespace propTypes {
+        let user: any;
+        let roles: any;
+        let onDelete: any;
+        let isUserManager: any;
+        let listUsers: any;
+        let updateUser: any;
+        let inheritedRole: any;
+        let userschema: any;
+    }
+}

@@ -4,4 +4,4 @@ declare function UndoToolbar({ state, onUndoRedo, maxUndoLevels, enableHotKeys }
     onUndoRedo: any;
     maxUndoLevels: any;
     enableHotKeys: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

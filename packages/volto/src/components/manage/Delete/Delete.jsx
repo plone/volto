@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Portal } from 'react-portal';
+import { createPortal } from 'react-dom';
 import { Button, Container, List, Segment } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 import qs from 'query-string';
 
-import { Toolbar } from '@plone/volto/components';
-import { Helmet, usePrevious } from '@plone/volto/helpers';
-import { deleteContent, getContent } from '@plone/volto/actions';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import {
+  deleteContent,
+  getContent,
+} from '@plone/volto/actions/content/content';
 
 const messages = defineMessages({
   delete: {
@@ -97,6 +101,7 @@ const Delete = () => {
                 onClick={onSubmit}
               />
               <Button
+                type="button"
                 basic
                 circular
                 secondary
@@ -110,15 +115,15 @@ const Delete = () => {
             </Segment>
           </Segment.Group>
         </Container>
-        {isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {isClient &&
+          createPortal(
             <Toolbar
               pathname={pathname}
               hideDefaultViewButtons
               inner={<span />}
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }

@@ -6,7 +6,7 @@ declare function Avatar({ src, title, text, size, color, className }: {
     size: any;
     color: any;
     className: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;
 declare namespace Avatar {
     namespace propTypes {
         let src: any;

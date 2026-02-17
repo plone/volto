@@ -52,6 +52,7 @@ describe('Groups Control Panel Test', () => {
 
     // select first group with name, delete it and search if its exists or not!
     cy.get('div[role="listbox"]').first().click();
+    cy.get('div[role="option"]').should('be.visible');
     cy.get('div[role="option"]').first().click();
     cy.contains('Delete Group');
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();

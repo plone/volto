@@ -1,10 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Navigation renders a navigation component including external links 1`] = `
+exports[`Navigation > renders a navigation component including external links 1`] = `
 <nav
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabIndex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -57,11 +58,12 @@ exports[`Navigation renders a navigation component including external links 1`] 
 </nav>
 `;
 
-exports[`Navigation renders a navigation component with an active item 1`] = `
+exports[`Navigation > renders a navigation component with an active item 1`] = `
 <nav
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabIndex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -91,7 +93,7 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
       className="item active"
       href="/blog"
       onClick={[Function]}
-      style={Object {}}
+      style={{}}
     >
       Blog
     </a>
@@ -107,11 +109,12 @@ exports[`Navigation renders a navigation component with an active item 1`] = `
 </nav>
 `;
 
-exports[`Navigation renders a navigation component with an active item when its subchildren are accessed 1`] = `
+exports[`Navigation > renders a navigation component with an active item when its subchildren are accessed 1`] = `
 <nav
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabIndex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -141,7 +144,7 @@ exports[`Navigation renders a navigation component with an active item when its 
       className="item active"
       href="/blog"
       onClick={[Function]}
-      style={Object {}}
+      style={{}}
     >
       Blog
     </a>
@@ -157,11 +160,12 @@ exports[`Navigation renders a navigation component with an active item when its 
 </nav>
 `;
 
-exports[`Navigation renders a navigation component with only one active item even if there are similar item names 1`] = `
+exports[`Navigation > renders a navigation component with only one active item even if there are similar item names 1`] = `
 <nav
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabIndex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"
@@ -191,7 +195,7 @@ exports[`Navigation renders a navigation component with only one active item eve
       className="item active"
       href="/blog"
       onClick={[Function]}
-      style={Object {}}
+      style={{}}
     >
       Blog
     </a>
@@ -215,11 +219,12 @@ exports[`Navigation renders a navigation component with only one active item eve
 </nav>
 `;
 
-exports[`Navigation renders a navigation component without active items 1`] = `
+exports[`Navigation > renders a navigation component without active items 1`] = `
 <nav
   aria-label="Site"
   className="navigation"
   id="navigation"
+  tabIndex="-1"
 >
   <div
     className="hamburger-wrapper mobile tablet only"

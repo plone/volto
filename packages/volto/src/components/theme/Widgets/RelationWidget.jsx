@@ -1,9 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
-import { flattenToAppURL } from '@plone/volto/helpers';
-import { getContentIcon } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
-import { UniversalLink } from '@plone/volto/components';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { getContentIcon } from '@plone/volto/helpers/Content/Content';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 const RelationWidget = ({ value, children, className }) => {
   if (!value) {

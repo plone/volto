@@ -52,7 +52,7 @@ export const urlRegex = (_opts) => {
   })\\.?`;
   const port = '(?::\\d{2,5})?';
   const path = '(?:[/?#][^\\s"]*)?';
-  const regex = `(?:${protocol}|www\\.)${auth}(?:localhost|${ip}|${host}${domain}${tld})${port}${path}`;
+  const regex = `(?:${protocol}|www\\.)${auth}(?:localhost|${ip}|${host}${domain}${tld}|${host})${port}${path}`;
 
   return opts.exact
     ? new RegExp(`(?:^${regex}$)`, 'i')

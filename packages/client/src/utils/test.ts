@@ -1,6 +1,6 @@
 import PloneClient from '../client';
-import { createUser } from '../restapi/users/add';
 import { v4 as uuid } from 'uuid';
+import axios from 'axios';
 
 export const loginWithCreate = async (
   cli: PloneClient,
@@ -21,9 +21,8 @@ export const loginWithCreate = async (
   }
 
   try {
-    await createUser({
+    await cli.createUser({
       data: { username, password, email, roles },
-      config: cli.config,
     });
   } catch (e) {
     // handle error if the user has already been creatd in previous invocations
@@ -43,3 +42,41 @@ export const stripExtraSlash = (path: string) => {
 
 export const getPathFromPageTitle = (title: string) =>
   stripExtraSlash(`/${title.toLocaleLowerCase().split(' ').join('-')}`);
+
+export async function setup() {
+  const APIPATH = 'http://localhost:55001/plone';
+  const data =
+    '<?xml version="1.0"?><methodCall><methodName>run_keyword</methodName><params><param><value><string>remote_zodb_setup</string></value></param><param><value><array><data><value><string>plone.app.robotframework.testing.PLONE_ROBOT_TESTING</string></value></data></array></value></param></params></methodCall>';
+
+  try {
+    const response = await axios.post(`${APIPATH}/RobotRemote`, data, {
+      headers: {
+        Accept: 'text/xml',
+        'Content-Type': 'text/xml',
+      },
+    });
+
+    return response;
+  } catch (error) {
+    throw error as Error;
+  }
+}
+
+export async function teardown() {
+  const APIPATH = 'http://localhost:55001/plone';
+  const data =
+    '<?xml version="1.0"?><methodCall><methodName>run_keyword</methodName><params><param><value><string>remote_zodb_teardown</string></value></param><param><value><array><data><value><string>plone.app.robotframework.testing.PLONE_ROBOT_TESTING</string></value></data></array></value></param></params></methodCall>';
+
+  try {
+    const response = await axios.post(`${APIPATH}/RobotRemote`, data, {
+      headers: {
+        Accept: 'text/xml',
+        'Content-Type': 'text/xml',
+      },
+    });
+
+    return response;
+  } catch (error) {
+    throw error as Error;
+  }
+}

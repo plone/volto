@@ -20,34 +20,36 @@ then access any of its internal configuration to retrieve the configuration you 
 like:
 
 ```js
-const absoluteUrl = `${config.settings.apiPath}/${content.url}`
+const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
 ```
 
 Both the main project and individual add-ons can extend Volto's configuration registry.
 First the add-ons configuration is applied, in the order they are defined in
-`package.json`, then finally the project configuration is applied. Visualized like
+{file}`package.json`, then finally the project configuration is applied. Visualized like
 a pipe would be:
 
 > Default Volto configuration -> Add-on 1 -> Add-on 2 -> ... -> Add-on n -> Project
 
 Both use the same method, using a function as the default export. This function takes a
 `config` and should return the `config` once you've ended your modifications. For
-add-ons, it must be provided in the main `index.js` module of the add-on. For project's
-it must be provided in the `src/config.js` module of the project.
+add-ons, it must be provided in the main {file}`index.js` module of the add-on.
 
-See the {doc}`../addons/index` section for extended information on how to work with add-ons.
+```{deprecated} Volto 18
+
+As of Volto 18, the project configuration approach using {file}`src/config.js` is deprecated and will be removed in Volto 19.
+New projects created with Cookieplone now use a {file}`config/` folder approach.
+```
+
+See the {doc}`../conceptual-guides/add-ons` and {doc}`../development/add-ons/index` sections for extended information on how to work with add-ons.
 
 ## Extending configuration in a project
 
-You must provide a function as default export in your `src/config.js`:
+You must provide a function as default export in your {file}`src/config.js`:
 
 ```js
 export default function applyConfig(config) {
   config.settings = {
     ...config.settings,
-    isMultilingual: true,
-    supportedLanguages: ['en', 'de'],
-    defaultLanguage: 'de',
     navDepth: 3,
   };
 
@@ -71,7 +73,7 @@ a Volto project.
 
 ## settings
 
-The `settings` object of the configruration registry is a big registry of miscellaneous settings.
+The `settings` object of the configuration registry is a big registry of miscellaneous settings.
 See {doc}`settings-reference` for details.
 
 ## widgets
@@ -83,7 +85,7 @@ but also the [lookup
 mechanism](https://github.com/plone/volto/blob/212026a39fd9aa0e1d6c324f967b51a3daa10b01/packages/volto/src/components/manage/Form/Field.jsx#L151)
 to understand how things work.
 
-See {doc}`../recipes/widget` for more information.
+See {doc}`../development/widget` for more information.
 
 ## views
 
@@ -150,3 +152,31 @@ export default function applyConfig(config) {
 
   return config;
 }
+```
+
+## `nonContentRoutes` and `nonContentRoutesPublic`
+
+`nonContentRoutes` is a list of routes reserved in Volto for its functionality as a content management system.
+These functions include user authentication and registration, changing settings through control panels, generating a site map, and other functions.
+Examples of these routes include `/login`, `/register`, and `/\/controlpanel\/.*$/`.
+Editors can't use them for content.
+The HTML attribute class value `cms-ui` is applied to members of `nonContentRoutes`.
+You can configure `nonContentRoutes` with either a regular expression or a string representing the end of the URI.
+
+`nonContentRoutesPublic` is a subset of `nonContentRoutes`.
+These routes are used for public sections of a Volto site that do not require authentication.
+This subset includes `/login`, `/search`, and `/sitemap`.
+
+The following example shows how to configure settings for `nonContentRoutes` and `nonContentRoutesPublic`.
+
+```js
+export default function applyConfig(config) {
+  config.settings = {
+    ...config.settings,
+    nonContentRoutes:[....],
+    nonContentRoutesPublic: [....]
+  };
+
+  return config;
+}
+```

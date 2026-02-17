@@ -1,15 +1,17 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
 import SchemaWidget from './SchemaWidget';
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 const mockStore = configureStore();
 
@@ -21,7 +23,7 @@ test('renders a schema widget component', () => {
     },
   });
 
-  const component = renderer.create(
+  const { container } = render(
     <Provider store={store}>
       <SchemaWidget
         id="my-field"
@@ -31,6 +33,6 @@ test('renders a schema widget component', () => {
       />
     </Provider>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+
+  expect(container).toMatchSnapshot();
 });

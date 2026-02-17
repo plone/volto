@@ -4,3 +4,4 @@ export * from './breakList';
 export * from './withLists';
 export * from './isSelected';
 export * from './normalizeExternalData';
+export * from './breakListInWidget';

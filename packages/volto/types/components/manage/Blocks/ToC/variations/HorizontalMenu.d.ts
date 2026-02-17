@@ -1,5 +1,10 @@
-declare const _default: React.FC<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>> & {
-    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
-};
-export default _default;
-import React from 'react';
+export default View;
+declare function View({ data, tocEntries }: {
+    data: any;
+    tocEntries: any;
+}): import("react/jsx-runtime").JSX.Element;
+declare namespace View {
+    namespace propTypes {
+        let properties: any;
+    }
+}

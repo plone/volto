@@ -1,2 +1,2 @@
 export default Messages;
-declare function Messages(): JSX.Element;
+declare function Messages(): import("react/jsx-runtime").JSX.Element;

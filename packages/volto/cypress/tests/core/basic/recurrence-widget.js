@@ -4,7 +4,9 @@ const createEvent = () => {
   cy.get('#field-title').type('Test recurrence');
 
   cy.get('input#start-date').type('{selectall}05/04/2020{esc}'); //May,4 2020
+  cy.get('input#start-time').type('{selectall}01:00 AM{esc}');
   cy.get('input#end-date').type('{selectall}05/16/2020{esc}'); //May,16 2020
+  cy.get('input#end-time').type('{selectall}01:00 AM{esc}');
 };
 
 const openRecurrenceModal = () => {

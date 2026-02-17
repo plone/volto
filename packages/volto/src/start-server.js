@@ -18,17 +18,20 @@ export default function server() {
 
   server
     .listen(port, bind_address, () => {
-      if (app.apiPath === app.publicURL || !app.apiPath) {
-        console.log(`Volto is running in SEAMLESS mode`);
-      } else {
-        console.log(`API server (API_PATH) is set to: ${app.apiPath}`);
-      }
-      if (app.devProxyToApiPath)
+      console.log(
+        `The Volto server will make API requests to: ${app.internalApiPath || app.apiPath}/++api++`,
+      );
+      console.log(
+        `The Volto client will make API requests to: ${app.apiPath}/++api++`,
+      );
+
+      if (app.devProxyToApiPath) {
         console.log(
           `Proxying API requests from ${app.publicURL}/++api++ to ${
             app.devProxyToApiPath
           }${app.proxyRewriteTarget || ''}`,
         );
+      }
       console.log(`🎭 Volto started at ${bind_address}:${port} 🚀`);
 
       if (!process.env.RAZZLE_PUBLIC_URL)

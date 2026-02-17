@@ -1,9 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import config from '@plone/volto/registry';
-
 import Add from './Add';
 
 const mockStore = configureStore();
@@ -16,10 +15,13 @@ beforeAll(() => {
   config.settings.loadables = {};
 });
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
 }));
-jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
+
+vi.mock('../Form/Form', () => ({
+  default: vi.fn(() => <div className="Form" />),
+}));
 
 describe('Add', () => {
   it('renders an empty add component', () => {
@@ -39,13 +41,12 @@ describe('Add', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('renders an add component', () => {
@@ -67,13 +68,13 @@ describe('Add', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('renders an add component with schema', () => {
@@ -106,12 +107,12 @@ describe('Add', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

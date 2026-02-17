@@ -5,7 +5,7 @@
  * @param {Object} options Options data.
  * @returns {Object} Get aliases action.
  */
-export function getAliases(url: string, options: any): any;
+export function getAliases(url: string, options?: any): any;
 /**
  * Add alias function.
  * @function addAliases
@@ -22,3 +22,10 @@ export function addAliases(url: string, data: any): any;
  * @returns {Object} Remove alias action.
  */
 export function removeAliases(url: string, data: any): any;
+/**
+ * Upload aliases function.
+ * @function uploadAliases
+ * @param {Object} file CSV file.
+ * @returns {Object} Upload aliases action.
+ */
+export function uploadAliases(file: any): any;

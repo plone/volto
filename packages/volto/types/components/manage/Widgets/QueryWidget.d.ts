@@ -60,7 +60,8 @@ export class QuerystringWidgetComponent extends React.Component<any, any, any> {
      * @param {number} index Row index.
      * @returns {Object} Widget.
      */
-    getWidget(row: any, index: number, Select: any): any;
+    getWidget(row: any, index: number, Select: any, intl: any): any;
+    loadReferenceWidgetItem(v: any): void;
     /**
      * Component did mount lifecycle method
      * @method componentDidMount

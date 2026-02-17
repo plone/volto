@@ -4,9 +4,10 @@ import { useHistory } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 
-import { Helmet, usePrevious } from '@plone/volto/helpers';
-import { Form } from '@plone/volto/components';
-import { resetPassword } from '@plone/volto/actions';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { Form } from '@plone/volto/components/manage/Form';
+import { resetPassword } from '@plone/volto/actions/users/users';
 import config from '@plone/volto/registry';
 
 const messages = defineMessages({

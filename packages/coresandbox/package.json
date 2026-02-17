@@ -26,16 +26,17 @@
     "react"
   ],
   "peerDependencies": {
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-intl": "3.8.0",
-    "react-redux": "7.2.4",
-    "semantic-ui-react": "2.0.3"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-intl": "3.12.1",
+    "react-redux": "8.1.2",
+    "semantic-ui-react": "2.1.5"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
-    "@types/react": "^17.0.52",
-    "@types/react-dom": "^17",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@plone/registry": "workspace:*",
     "@types/react-redux": "^7.1.33"
   }
 }

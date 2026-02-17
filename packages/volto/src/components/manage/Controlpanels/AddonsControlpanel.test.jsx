@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 
@@ -7,8 +7,8 @@ import AddonsControlpanel from './AddonsControlpanel';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
 }));
 
 describe('AddonsControlpanel', () => {
@@ -56,13 +56,37 @@ describe('AddonsControlpanel', () => {
         locale: 'en',
         messages: {},
       },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
-    const component = renderer.create(
+    store.dispatch = vi.fn(() => Promise.resolve());
+    const { container } = render(
       <Provider store={store}>
-        <AddonsControlpanel location={{ pathname: '/blog' }} />
+        <div>
+          <AddonsControlpanel location={{ pathname: '/blog' }} />
+          <div id="toolbar"></div>
+        </div>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

@@ -8,8 +8,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
-import { getBaseUrl, getParentUrl, Helmet } from '@plone/volto/helpers';
-import { Portal } from 'react-portal';
+import { getBaseUrl, getParentUrl } from '@plone/volto/helpers/Url/Url';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { createPortal } from 'react-dom';
 import {
   Button,
   Card,
@@ -19,7 +20,9 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { Icon, Toolbar, UniversalLink } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import {
   getControlPanelRule,
   removeCondition,
@@ -32,9 +35,9 @@ import {
   getAction,
   moveRuleCondition,
   moveRuleAction,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/rules/rules';
 import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 import backSVG from '@plone/volto/icons/back.svg';
 import upSVG from '@plone/volto/icons/up.svg';
@@ -847,8 +850,8 @@ class ConfigureRule extends Component {
             action="edit"
           />
         )}
-        {this.state.isClient && (
-          <Portal node={document.getElementById('toolbar')}>
+        {this.state.isClient &&
+          createPortal(
             <Toolbar
               pathname={this.props.pathname}
               hideDefaultViewButtons
@@ -862,9 +865,9 @@ class ConfigureRule extends Component {
                   />
                 </Link>
               }
-            />
-          </Portal>
-        )}
+            />,
+            document.getElementById('toolbar'),
+          )}
       </div>
     );
   }

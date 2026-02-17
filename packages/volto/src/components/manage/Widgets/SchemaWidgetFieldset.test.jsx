@@ -1,16 +1,18 @@
 import React from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import SchemaWidgetFieldsetComponent from './SchemaWidgetFieldset';
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 test('renders a contents item component', () => {
-  const component = renderer.create(
+  const { container } = render(
     <DragDropContext onDragEnd={(x) => x}>
       <Droppable droppableId="tabs-schema-edit" direction="horizontal">
         {(provided, snapshot) => (
@@ -28,7 +30,7 @@ test('renders a contents item component', () => {
               onShowEditFieldset={(x) => x}
               onShowDeleteFieldset={(x) => x}
               onClick={(x) => x}
-              getItemStyle={(x) => x}
+              getItemStyle={(x) => ({})}
               isDraggable={false}
               isDisabled={false}
             />
@@ -38,6 +40,6 @@ test('renders a contents item component', () => {
       </Droppable>
     </DragDropContext>,
   );
-  const json = component.toJSON();
-  expect(json).toMatchSnapshot();
+
+  expect(container).toMatchSnapshot();
 });

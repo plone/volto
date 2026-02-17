@@ -19,7 +19,7 @@ export function applyConfig(configMethods: any[], config: any): any;
  *
  * @param {} code HTTP return code
  */
-export function withServerErrorCode(code: any): (WrappedComponent: any) => (props: any) => JSX.Element;
+export function withServerErrorCode(code: any): (WrappedComponent: any) => (props: any) => import("react/jsx-runtime").JSX.Element;
 /**
  * Normalize (unicode) string to a normalized plain ascii string
  * @method normalizeString
@@ -48,6 +48,6 @@ export function insertInArray(array: any[], element: any, index: number): any[];
 export function replaceItemOfArray(array: any[], index: number, value: any): any[];
 export function removeFromArray(array: any[], index: number): any[];
 export function reorderArray(array: any[], origin: number, target: number): any[];
-export function slugify(string: string): string;
+export function slugify(string: string, slugs?: any[]): string;
 export function cloneDeepSchema(object: object): object;
 export function arrayRange(start: number, stop: number, step: number): any[];

@@ -2,9 +2,12 @@ import type { BreadcrumbsResponse } from '../services/breadcrumbs';
 import type { NavigationResponse } from '../services/navigation';
 import type { ActionsResponse } from '../services/actions';
 import type { GetTypesResponse } from '../services/types';
+import type { GetNavrootResponse } from '../services/navroot';
+import type { GetSiteResponse } from '../services/site';
 import type { GetAliasesResponse } from '../services/aliases';
 import type { ContextNavigationResponse } from '../services/contextnavigation';
 import type { WorkflowResponse } from '../services/workflow';
+import type { GetTranslationResponse } from '../services/translations';
 
 export interface Expanders {
   [key: string]: unknown;
@@ -13,30 +16,33 @@ export interface Expanders {
   breadcrumbs: BreadcrumbsResponse;
   contextnavigation: ContextNavigationResponse;
   navigation: NavigationResponse;
+  navroot: GetNavrootResponse;
+  site?: GetSiteResponse;
+  translations?: GetTranslationResponse;
   types: GetTypesResponse;
   workflow: WorkflowResponse;
 }
 
-export type ContainedItem = {
+export interface ContainedItem {
   '@id': string;
   '@type': string;
   description: string;
-  image_field: null;
-  image_scales: null;
-  review_state: string;
+  image_field: string;
+  image_scales: Record<string, Image> | null;
+  review_state: string | null;
   title: string;
-};
+}
 
-export type RelatedItem = {
+export interface RelatedItem {
   '@id': string;
   '@type': string;
   UID: string;
   description: string;
-  image_field: unknown;
-  image_scales: unknown;
+  image_field: string;
+  image_scales: Record<string, Image> | null;
   review_state: string;
   title: string;
-};
+}
 
 export type ImageScale = {
   download: string;
@@ -44,12 +50,13 @@ export type ImageScale = {
   width: number;
 };
 
-export type PreviewImage = {
+export type Image = {
   'content-type': string;
   download: string;
   filename: string;
   height: number;
-  scales: {
+  scales: Partial<{
+    [key: string]: ImageScale;
     great: ImageScale;
     huge: ImageScale;
     icon: ImageScale;
@@ -60,7 +67,7 @@ export type PreviewImage = {
     teaser: ImageScale;
     thumb: ImageScale;
     title: ImageScale;
-  };
+  }>;
   size: number;
   width: number;
 };

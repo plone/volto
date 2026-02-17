@@ -3,20 +3,18 @@ declare const _default: {
         state: {
             isObjectBrowserOpen: boolean;
         };
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;
             overlay: string;
         }) => void;
         closeObjectBrowser: () => void;
-        render(): JSX.Element;
-        context: any;
+        render(): import("react/jsx-runtime").JSX.Element;
+        context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;
-        readonly props: Readonly<any> & Readonly<{
-            children?: any;
-        }>;
+        readonly props: Readonly<any>;
         refs: {
             [key: string]: React.ReactInstance;
         };
@@ -38,7 +36,7 @@ declare const _default: {
         data: {};
         block: string;
     };
-    contextType?: React.Context<any>;
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 import React from 'react';

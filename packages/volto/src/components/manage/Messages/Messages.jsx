@@ -1,8 +1,8 @@
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Message, Container } from 'semantic-ui-react';
-import { map } from 'lodash';
+import map from 'lodash/map';
 
-import { removeMessage } from '@plone/volto/actions';
+import { removeMessage } from '@plone/volto/actions/messages/messages';
 
 const Messages = () => {
   const dispatch = useDispatch();

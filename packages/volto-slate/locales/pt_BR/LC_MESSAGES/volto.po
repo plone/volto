@@ -1,0 +1,205 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Érico Andrei <ericof@plone.org>\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+"X-Generator: Poedit 3.5\n"
+
+# defaultMessage: Add link
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr "Adicionar link"
+
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+#: widgets/HtmlSlateWidget
+#, fuzzy
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr "Ocorreu um erro ao editar o campo \"{name}\". Fomos notificados e estamos analisando o problema. Salve seu trabalho e tente novamente. Se o problema persistir, entre em contato com o administrador do site."
+
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+#: widgets/RichTextWidgetView
+#, fuzzy
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr "Ocorreu um erro ao renderizar o campo \"{name}\". Fomos notificados e estamos analisando o problema. Se o problema persistir, entre em contato com o administrador do site."
+
+# defaultMessage: Bottom
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr "Base"
+
+# defaultMessage: Center
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Center"
+msgstr "Centro"
+
+# defaultMessage: Delete col
+#: blocks/Table/TableBlockEdit editor/plugins/Table/index
+#, fuzzy
+msgid "Delete col"
+msgstr "Excluir coluna"
+
+# defaultMessage: Delete row
+#: blocks/Table/TableBlockEdit editor/plugins/Table/index
+#, fuzzy
+msgid "Delete row"
+msgstr "Excluir linha"
+
+# defaultMessage: Delete table
+#: editor/plugins/Table/index
+#, fuzzy
+msgid "Delete table"
+msgstr "Excluir tabela"
+
+# defaultMessage: Divide each row into separate cells
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Divide each row into separate cells"
+msgstr "Dividir cada linha em células separadas"
+
+# defaultMessage: Edit element
+#: elementEditor/messages
+#, fuzzy
+msgid "Edit element"
+msgstr "Editar elemento"
+
+# defaultMessage: Edit link
+#: editor/plugins/AdvancedLink/index editor/plugins/Link/index
+#, fuzzy
+msgid "Edit link"
+msgstr "Editar link"
+
+# defaultMessage: Fixed width table cells
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Fixed width table cells"
+msgstr "Células de tabela de largura fixa"
+
+# defaultMessage: Hide headers
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Hide headers"
+msgstr "Ocultar cabeçalhos"
+
+# defaultMessage: Insert col after
+#: blocks/Table/TableBlockEdit editor/plugins/Table/index
+#, fuzzy
+msgid "Insert col after"
+msgstr "Inserir coluna após"
+
+# defaultMessage: Insert col before
+#: blocks/Table/TableBlockEdit editor/plugins/Table/index
+#, fuzzy
+msgid "Insert col before"
+msgstr "Inserir coluna antes"
+
+# defaultMessage: Insert row after
+#: blocks/Table/TableBlockEdit editor/plugins/Table/index
+#, fuzzy
+msgid "Insert row after"
+msgstr "Inserir linha após"
+
+# defaultMessage: Insert row before
+#: blocks/Table/TableBlockEdit editor/plugins/Table/index
+#, fuzzy
+msgid "Insert row before"
+msgstr "Inserir linha antes"
+
+# defaultMessage: Left
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Left"
+msgstr "Esquerda"
+
+# defaultMessage: Make the table compact
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Make the table compact"
+msgstr "Compactar a tabela"
+
+# defaultMessage: Make the table sortable
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr "Tornar a tabela ordenável"
+
+# defaultMessage: Middle
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr "Meio"
+
+# defaultMessage: No matching blocks
+#: blocks/Text/SlashMenu
+#, fuzzy
+msgid "No matching blocks"
+msgstr "Não há blocos correspondentes"
+
+# defaultMessage: Reduce complexity
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Reduce complexity"
+msgstr "Reduzir complexidade"
+
+# defaultMessage: Remove element
+#: elementEditor/messages
+#, fuzzy
+msgid "Remove element"
+msgstr "Remover elemento"
+
+# defaultMessage: Remove link
+#: editor/plugins/AdvancedLink/index
+#, fuzzy
+msgid "Remove link"
+msgstr "Remover link"
+
+# defaultMessage: Right
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Right"
+msgstr "Direita"
+
+# defaultMessage: Stripe alternate rows with color
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Stripe alternate rows with color"
+msgstr "Alternar cores das linhas"
+
+# defaultMessage: Table
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Table"
+msgstr "Tabela"
+
+# defaultMessage: Table color inverted
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Table color inverted"
+msgstr "Cor da tabela invertida"
+
+# defaultMessage: Top
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Top"
+msgstr "Topo"
+
+# defaultMessage: Type text…
+#: blocks/Text/DefaultTextBlockEditor blocks/Text/DetachedTextBlockEditor
+#, fuzzy
+msgid "Type text…"
+msgstr "Digite texto…"
+
+# defaultMessage: Visible only in view mode
+#: blocks/Table/TableBlockEdit
+#, fuzzy
+msgid "Visible only in view mode"
+msgstr "Visível apenas no modo de visualização"

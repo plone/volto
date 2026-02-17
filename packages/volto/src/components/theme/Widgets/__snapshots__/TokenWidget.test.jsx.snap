@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TokenWidget > renders an empty tags view widget component 1`] = `null`;
+
+exports[`TokenWidget > renders tags view widget component 1`] = `
+<span
+  className="meta tags token widget"
+>
+  <a
+    className="ui label"
+    href="/search?Subject=foo"
+    onClick={[Function]}
+  >
+    foo
+  </a>
+  <a
+    className="ui label"
+    href="/search?Subject=bar"
+    onClick={[Function]}
+  >
+    bar
+  </a>
+</span>
+`;
+
+exports[`TokenWidget > renders tags view widget component with children 1`] = `
+<span
+  className="meta tags token widget"
+>
+  <a
+    className="ui label"
+    href="/search?Subject=foo"
+    onClick={[Function]}
+  >
+    <strong>
+      foo
+    </strong>
+  </a>
+  <a
+    className="ui label"
+    href="/search?Subject=bar"
+    onClick={[Function]}
+  >
+    <strong>
+      bar
+    </strong>
+  </a>
+</span>
+`;

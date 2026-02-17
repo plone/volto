@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
@@ -8,10 +8,11 @@ import ContentTypeLayout from './ContentTypeLayout';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
 }));
-jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
+
+vi.mock('../Form/Form', () => ({ default: vi.fn(() => <div id="form" />) }));
 
 describe('ContentTypeLayout', () => {
   it('renders dexterity content-type layout component', () => {
@@ -38,7 +39,7 @@ describe('ContentTypeLayout', () => {
         schema: null,
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter
           initialEntries={['/controlpanel/dexterity-types/Document/layout']}
@@ -47,10 +48,11 @@ describe('ContentTypeLayout', () => {
             path={'/controlpanel/dexterity-types/:id/layout'}
             component={ContentTypeLayout}
           />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

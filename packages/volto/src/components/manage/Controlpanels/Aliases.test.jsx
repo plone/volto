@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-intl-redux';
@@ -10,8 +10,10 @@ import { MemoryRouter } from 'react-router';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
+vi.mock('@plone/volto/components/manage/Widgets');
+
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
 }));
 
 describe('Aliases', () => {
@@ -56,17 +58,50 @@ describe('Aliases', () => {
       },
       intl: {
         locale: 'en',
-        messages: {},
+        messages: {
+          Both: 'Both',
+          Automatically: 'Automatically',
+          Manually: 'Manually',
+        },
+      },
+      site: {
+        data: {
+          features: {
+            filter_aliases_by_date: true,
+          },
+        },
+      },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
       },
     });
-    const component = renderer.create(
+    store.dispatch = vi.fn(() => Promise.resolve());
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <Aliases location={{ pathname: '/blog' }} />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

@@ -9,7 +9,7 @@ beforeAll(() => {
       match: {
         path: '',
       },
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="everywhere">{props.pathname}</div>
       )),
     },
@@ -17,7 +17,7 @@ beforeAll(() => {
       match: {
         path: '/all-blogs/*',
       },
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="blog-listing" one={props.one} three={props.three} />
       )),
       props: {
@@ -29,21 +29,28 @@ beforeAll(() => {
       match: {
         path: '/blog/edit',
       },
-      component: jest.fn((props) => <div className="blog-edit" />),
+      component: vi.fn((props) => <div className="blog-edit" />),
     },
     {
       match: {
         path: '/blog',
         exact: true,
       },
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="blog-view">{JSON.stringify(props.match)}</div>
       )),
     },
     {
       match: '/something',
-      component: jest.fn((props) => (
+      component: vi.fn((props) => (
         <div className="something">{JSON.stringify(props.match)}</div>
+      )),
+    },
+    {
+      match: '/frontpage',
+      ignore: '/frontpage/images',
+      component: vi.fn((props) => (
+        <div className="frontpage-content">{JSON.stringify(props.match)}</div>
       )),
     },
   ];
@@ -84,5 +91,18 @@ describe('AppExtras', () => {
     );
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
+  });
+  it('ignore property works', () => {
+    const componentView = renderer.create(
+      <AppExtras pathname="/frontpage"></AppExtras>,
+    );
+    const componentEdit = renderer.create(
+      <AppExtras pathname="/frontpage/images"></AppExtras>,
+    );
+
+    const jsonView = componentView.toJSON();
+    expect(jsonView).toMatchSnapshot();
+    const jsonEdit = componentEdit.toJSON();
+    expect(jsonEdit).toMatchSnapshot();
   });
 });

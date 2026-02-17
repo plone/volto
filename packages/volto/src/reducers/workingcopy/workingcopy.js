@@ -8,7 +8,7 @@ import {
   CREATE_WORKING_COPY,
   REMOVE_WORKING_COPY,
 } from '@plone/volto/constants/ActionTypes';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 const initialState = {
   info: {},

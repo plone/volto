@@ -2,4 +2,4 @@ export default function Style({ data, detached, children }: {
     data: any;
     detached: any;
     children: any;
-}): JSX.Element;
+}): import("react/jsx-runtime").JSX.Element;

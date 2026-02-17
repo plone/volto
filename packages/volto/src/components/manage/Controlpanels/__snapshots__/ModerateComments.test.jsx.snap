@@ -1,68 +1,72 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ModerateComments renders a moderate comments component 1`] = `
-<div
-  id="page-moderate-comments"
->
-  <div
-    id="modal"
-  />
-  <div
-    className="ui container"
-  >
-    <article
-      id="content"
+exports[`ModerateComments > renders a moderate comments component 1`] = `
+<div>
+  <div>
+    <div
+      id="page-moderate-comments"
     >
-      <header>
-        <h1
-          className="documentFirstHeading"
-        >
-          Moderate comments
-        </h1>
-      </header>
-      <section
-        id="content-core"
+      <div
+        id="modal"
+      />
+      <div
+        class="ui container"
       >
-        <table
-          className="ui single line striped compact table"
+        <article
+          id="content"
         >
-          <thead
-            className=""
-          >
-            <tr
-              className=""
+          <header>
+            <h1
+              class="documentFirstHeading"
             >
-              <th
-                className=""
+              Moderate comments
+            </h1>
+          </header>
+          <section
+            id="content-core"
+          >
+            <table
+              class="ui single line striped compact table"
+            >
+              <thead
+                class=""
               >
-                Commenter
-              </th>
-              <th
-                className=""
-              >
-                Date
-              </th>
-              <th
-                className=""
-              >
-                Comment
-              </th>
-              <th
-                className=""
-              >
-                Action
-              </th>
-            </tr>
-          </thead>
-          <tbody
-            className=""
-          />
-        </table>
-      </section>
-    </article>
+                <tr
+                  class=""
+                >
+                  <th
+                    class=""
+                  >
+                    Commenter
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Date
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Comment
+                  </th>
+                  <th
+                    class=""
+                  >
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody
+                class=""
+              />
+            </table>
+          </section>
+        </article>
+      </div>
+    </div>
+    <div
+      id="toolbar"
+    />
   </div>
-  <div
-    id="Portal"
-  />
 </div>
 `;

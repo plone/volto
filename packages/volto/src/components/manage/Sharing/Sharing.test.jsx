@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
@@ -10,8 +10,8 @@ import Sharing from './Sharing';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
 }));
 
 describe('Sharing', () => {
@@ -57,16 +57,18 @@ describe('Sharing', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+
+    const { container } = render(
       <Provider store={store}>
         <PluggablesProvider>
           <MemoryRouter>
             <Sharing location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
           </MemoryRouter>
         </PluggablesProvider>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

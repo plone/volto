@@ -8,15 +8,17 @@ import Diff from './Diff';
 
 const mockStore = configureStore();
 
-jest.mock('react-portal', () => ({
-  Portal: jest.fn(() => <div id="Portal" />),
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
 }));
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 describe('Diff', () => {
   it('renders a diff component', async () => {
@@ -75,6 +77,7 @@ describe('Diff', () => {
       <Provider store={store}>
         <MemoryRouter initialEntries={['/blog?one=0&two=1']}>
           <Diff />
+          <div id="toolbar"></div>
         </MemoryRouter>
       </Provider>,
     );

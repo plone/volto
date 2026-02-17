@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { searchContent } from '@plone/volto/actions';
+import { searchContent } from '@plone/volto/actions/search/search';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 

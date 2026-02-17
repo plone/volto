@@ -53,7 +53,10 @@ The steps for this approach are as follows:
 3. Render the component to string on the server
 4. Pass the data from collected queries to TanStack Query cache hydration
 
-Refer to official docs for more information: https://tanstack.com/query/v4/docs/framework/react/guides/ssr
+```{seealso}
+[TanStack Query Server Rendering & Hydration documentation](https://tanstack.com/query/latest/docs/framework/react/guides/ssr)
+```
+
 
 ### Automatic caching approach
 

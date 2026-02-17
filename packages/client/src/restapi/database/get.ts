@@ -1,23 +1,15 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { DatabaseResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { DatabaseResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type DatabaseArgs = {
-  config: PloneClientConfig;
-};
-
-export const getDatabase = async ({
-  config,
-}: DatabaseArgs): Promise<DatabaseResponse> => {
+export async function getDatabase(
+  this: PloneClient,
+): Promise<RequestResponse<DatabaseResponse>> {
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   return apiRequest('get', '/@database', options);
-};
-
-export const getDatabaseQuery = ({ config }: DatabaseArgs) => ({
-  queryKey: ['get', 'database'],
-  queryFn: () => getDatabase({ config }),
-});
+}

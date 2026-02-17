@@ -3,13 +3,12 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 
 import ModalForm from './ModalForm';
 
 const mockStore = configureStore();
 
-jest.mock('./Field', () => jest.fn(() => <div className="Field" />));
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ModalForm', () => {
   it('renders a modal form component', () => {
@@ -89,5 +88,31 @@ describe('ModalForm', () => {
 
     const loadingMessage = getByText(/renaming items.../i);
     expect(loadingMessage).toBeInTheDocument();
+  });
+
+  it('renders with empty fieldsets array', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <ModalForm
+          schema={{
+            fieldsets: [],
+            properties: {},
+            required: [],
+          }}
+          onSubmit={() => {}}
+          onCancel={() => {}}
+          open={false}
+          title="Action without form"
+        />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

@@ -1,25 +1,23 @@
-import { Login } from '@plone/types';
-import { apiRequest, ApiRequestParams } from '../../API';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type PloneClient from '../../client';
 import { z } from 'zod';
-import { PloneClientConfigSchema } from '../../validation/config';
+import type { Login } from '@plone/types';
+import type { RequestResponse } from '../types';
 
 export const loginArgsSchema = z.object({
   username: z.string(),
   password: z.string(),
-  config: PloneClientConfigSchema,
 });
 
 export type LoginArgs = z.infer<typeof loginArgsSchema>;
 
-export const login = ({
-  username,
-  password,
-  config,
-}: LoginArgs): Promise<Login> => {
+export async function login(
+  this: PloneClient,
+  { username, password }: LoginArgs,
+): Promise<RequestResponse<Login>> {
   const validatedArgs = loginArgsSchema.parse({
     username,
     password,
-    config,
   });
 
   const options: ApiRequestParams = {
@@ -27,12 +25,7 @@ export const login = ({
       login: validatedArgs.username,
       password: validatedArgs.password,
     },
-    config: validatedArgs.config,
+    config: this.config,
   };
   return apiRequest('post', '/@login', options);
-};
-
-export const loginQuery = ({ username, password, config }: LoginArgs) => ({
-  queryKey: [username, 'login'],
-  queryFn: () => login({ username, password, config }),
-});
+}

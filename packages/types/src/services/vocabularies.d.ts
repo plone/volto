@@ -1,11 +1,11 @@
-interface Vocabularies {
+interface Vocabulary {
   '@id': string;
   title: string;
 }
 
-export interface GetVocabulariesListResponse extends Array<Vocabularies> {}
+export interface GetVocabulariesResponse extends Array<Vocabulary> {}
 
-export interface GetVocabulariesResponse {
+export interface GetVocabularyResponse {
   '@id': string;
   items: Array<{
     title: string;
