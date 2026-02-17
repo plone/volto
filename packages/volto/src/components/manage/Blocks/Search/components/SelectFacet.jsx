@@ -19,8 +19,8 @@ const messages = defineMessages({
     defaultMessage: 'Select option',
   },
   select: {
-    id: 'select...',
-    defaultMessage: 'select...',
+    id: 'Select…',
+    defaultMessage: 'Select…',
   },
 });
 

@@ -3383,6 +3383,7 @@ msgid "Selection"
 msgstr "चयन"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -5216,11 +5217,6 @@ msgstr "वर्ष"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "वर्ष"
-
-#. Default: "select..."
-#: components/manage/Blocks/Search/components/SelectFacet
-msgid "select..."
-msgstr ""
 
 #. Default: "Select"
 #: config/Blocks

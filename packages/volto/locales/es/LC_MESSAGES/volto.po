@@ -3390,6 +3390,7 @@ msgid "Selection"
 msgstr "Selección"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -5223,11 +5224,6 @@ msgstr "año"
 #: components/manage/Widgets/RecurrenceWidget/Utils
 msgid "rrule_years"
 msgstr "años"
-
-#. Default: "select..."
-#: components/manage/Blocks/Search/components/SelectFacet
-msgid "select..."
-msgstr ""
 
 #. Default: "Select"
 #: config/Blocks
