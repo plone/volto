@@ -9,13 +9,14 @@ import {
   ListBoxSection,
   type SectionProps,
   composeRenderProps,
+  type ListBoxItemRenderProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from '../utils';
 import { CheckboxIcon } from '../icons/CheckboxIcon';
 
 interface ListBoxProps<T>
-  extends Omit<AriaListBoxProps<T>, 'layout' | 'orientation'> {}
+  extends Omit<AriaListBoxProps<T>, 'layout' | 'orientation'> { }
 
 export function ListBox<T extends object>({
   children,
@@ -72,18 +73,21 @@ export function ListBoxItem(props: ListBoxItemProps) {
     (typeof props.children === 'string' ? props.children : undefined);
   return (
     <AriaListBoxItem {...props} textValue={textValue} className={itemStyles}>
-      {composeRenderProps(props.children, (children) => (
-        <>
-          {children}
-          <div
-            className={`
+      {composeRenderProps(
+        props.children,
+        (children: React.ReactNode, renderProps: ListBoxItemRenderProps) => (
+          <>
+            {children}
+            <div
+              className={`
               absolute right-4 bottom-0 left-4 hidden h-px bg-white/20
               forced-colors:bg-[HighlightText]
               [.group[data-selected]:has(+[data-selected])_&]:block
             `}
-          />
-        </>
-      ))}
+            />
+          </>
+        ),
+      )}
     </AriaListBoxItem>
   );
 }
@@ -134,21 +138,24 @@ export function DropdownItem(props: ListBoxItemProps) {
       textValue={textValue}
       className={dropdownItemStyles}
     >
-      {composeRenderProps(props.children, (children, { isSelected }) => (
-        <>
-          <span
-            className={`
+      {composeRenderProps(
+        props.children,
+        (children: React.ReactNode, { isSelected }: ListBoxItemRenderProps) => (
+          <>
+            <span
+              className={`
               flex flex-1 items-center gap-2 truncate font-normal
               group-selected:font-semibold
             `}
-          >
-            {children}
-          </span>
-          <span className="flex w-5 items-center">
-            {isSelected && <CheckboxIcon className="h-4 w-4" />}
-          </span>
-        </>
-      ))}
+            >
+              {children}
+            </span>
+            <span className="flex w-5 items-center">
+              {isSelected && <CheckboxIcon className="h-4 w-4" />}
+            </span>
+          </>
+        ),
+      )}
     </AriaListBoxItem>
   );
 }
