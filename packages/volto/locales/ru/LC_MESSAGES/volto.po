@@ -2782,7 +2782,7 @@ msgstr "Пожалуйста, убедитесь, что у вас есть ре
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "Пожалуйста, введите валидный URL, удалив блок и добавив новый блок видео."
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit

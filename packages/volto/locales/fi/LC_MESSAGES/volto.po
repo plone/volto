@@ -2782,7 +2782,7 @@ msgstr "Varmista, että sinulla on varmuuskopio sivustosta ennen päivityksen su
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "Syötä toimiva osoite poistamalla tämä palikka ja lisäämällä sitten uusi videopalikka."
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit

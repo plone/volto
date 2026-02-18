@@ -21,9 +21,9 @@ const VideoEmbed = (props) => {
   } = props;
 
   const [isActive, setIsActive] = useState(false);
-  const PlayVideo = () => {
+  const PlayVideo = useCallback(() => {
     setIsActive(true);
-  };
+  }, []);
 
   const getSrc = useCallback(() => {
     if (source === 'youtube') {

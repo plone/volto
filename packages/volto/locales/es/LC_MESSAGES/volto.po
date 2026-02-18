@@ -2784,7 +2784,7 @@ msgstr "Por favor, asegúrese de que tiene una copia de seguridad de su sitio an
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "Por favor, introduzca una URL válida eliminando el bloque y agregando un nuevo bloque de vídeo."
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
@@ -4100,7 +4100,7 @@ msgstr "Tipo"
 #. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr "Escriba una URL válida"
+msgstr "Escriba la URL de un vídeo (YouTube, Vimeo o mp4)"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete

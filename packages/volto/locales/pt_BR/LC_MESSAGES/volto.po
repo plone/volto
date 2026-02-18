@@ -2783,7 +2783,7 @@ msgstr "Certifique-se de ter um backup do seu site antes de executar a atualiza�
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "Digite uma URL válida excluindo o bloco e adicionando um novo bloco de vídeo."
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
