@@ -349,7 +349,6 @@ To support horizontal scrolling of tables on small viewports, the table block is
 </div>
 ```
 
-It follows the block model 3 style wrappers and anatomy.
 In the past, the table block was a direct child of the content area.
 If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
 
