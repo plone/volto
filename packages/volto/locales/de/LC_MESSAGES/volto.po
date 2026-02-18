@@ -4384,7 +4384,7 @@ msgstr "Video URL"
 #. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
 #: components/manage/Blocks/Video/schema
 msgid "VideoTitleDescription"
-msgstr ""
+msgstr "Der Videotitel wird nicht angezeigt, sondern dient lediglich der Barrierefreiheit, um Nutzern von Bildschirmleseprogrammen das Video zu identifizieren. Falls der Videotitel bereits durch die obige Überschrift ausreichend beschrieben ist, lassen Sie dieses Feld bitte leer."
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -5376,7 +5376,7 @@ msgstr "{id} Schema"
 #. Default: "{sources} or mp4 URL allowed"
 #: components/manage/Blocks/Video/Edit
 msgid "{sources} or mp4 URL allowed"
-msgstr ""
+msgstr "{sources} oder eine MP4-URL sind erlaubt."
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
