@@ -12,11 +12,14 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const wrapperStyles = tv({
-  base: 'inline-flex items-center gap-2 text-quanta-sapphire',
+  base: 'inline-flex items-center gap-2 text-quanta-iron',
 });
 
 const spinnerStyles = tv({
-  base: 'animate-spin motion-reduce:animate-none',
+  base: `
+    animate-spin
+    motion-reduce:animate-none
+  `,
   variants: {
     size: {
       xs: 'size-4',
