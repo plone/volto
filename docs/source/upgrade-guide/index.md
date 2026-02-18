@@ -337,7 +337,7 @@ In case that you need a later version of `sass` in your project or add-on, you c
 ```{versionadded} Volto 19.0.0-alpha.26
 ```
 
-In order to support horizontal scrolling of tables on small viewports, the `table` block is now wrapped with containers that allow horizontal scrolling when the table width exceeds the viewport width.
+To support horizontal scrolling of tables on small viewports, the table block is now wrapped with containers that allow horizontal scrolling when the table width exceeds the viewport width.
 
 ```html
 <div className="block slate-table">
@@ -351,7 +351,7 @@ In order to support horizontal scrolling of tables on small viewports, the `tabl
 
 It follows the block model 3 style wrappers and anatomy.
 In the past, the table block was a direct child of the content area.
-Adjust your CSS styles if you had custom styles for the table block that assumed it was a direct child of the content area.
+If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
 
 (upgrading-to-volto-18-x-x)=
 
