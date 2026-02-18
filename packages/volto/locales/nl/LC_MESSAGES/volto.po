@@ -3341,6 +3341,11 @@ msgstr "Selecteer een datum om een gebeurtenis toe te voegen"
 msgid "Select columns to show"
 msgstr "Selecteer de te tonen kolommen"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -3382,6 +3387,7 @@ msgid "Selection"
 msgstr "Selectie"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -4012,6 +4018,11 @@ msgstr "Titel"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "Titelveld fout. Waarde niet ingesteld of deze bestaat reeds."
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation

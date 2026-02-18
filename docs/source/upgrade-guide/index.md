@@ -333,6 +333,25 @@ We pinned the version of `sass` to `1.32.0`, which is the one before they introd
 It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
 In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
 
+### Table block is now wrapped with containers to support horizontal scrolling on small viewports
+```{versionadded} Volto 19.0.0-alpha.26
+```
+
+To support horizontal scrolling of tables on small viewports, the table block is now wrapped with containers that allow horizontal scrolling when the table width exceeds the viewport width.
+
+```html
+<div className="block slate-table">
+  <div className="block-inner-container">
+    <table>
+      <!-- table content -->
+    </table>
+  </div>
+</div>
+```
+
+In the past, the table block was a direct child of the content area.
+If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x

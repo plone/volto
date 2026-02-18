@@ -3343,6 +3343,11 @@ msgstr "Selectați o dată de adăugat la recurență"
 msgid "Select columns to show"
 msgstr "Selectați coloane de afișat"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -3384,6 +3389,7 @@ msgid "Selection"
 msgstr "Selecție"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -4014,6 +4020,11 @@ msgstr "Titlu"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "Eroare a câmpului Titlu. Valoarea nu a fost furnizată sau este deja existentă."
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation

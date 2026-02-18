@@ -7,6 +7,7 @@ import {
   getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  getInvalidBlockLayoutIds,
   hasBlocksData,
   insertBlock,
   moveBlock,
@@ -538,6 +539,48 @@ describe('Blocks', () => {
       // Should only return valid block
       expect(result).toStrictEqual([['valid-id', { '@type': 'search' }]]);
       expect(result.length).toBe(1);
+    });
+  });
+
+  describe('getInvalidBlockLayoutIds', () => {
+    it('returns layout IDs that are valid but have no block data', () => {
+      const result = getInvalidBlockLayoutIds({
+        blocks: {
+          a: { '@type': 'custom', text: 'a' },
+          b: { '@type': 'custom', text: 'b' },
+        },
+        blocks_layout: {
+          items: ['a', 'b', 'MISSING-1', 'MISSING-2'],
+        },
+      });
+      expect(result).toStrictEqual(['MISSING-1', 'MISSING-2']);
+    });
+
+    it('returns empty when all layout items have block data', () => {
+      const result = getInvalidBlockLayoutIds({
+        blocks: { a: { '@type': 'custom' }, b: { '@type': 'custom' } },
+        blocks_layout: { items: ['a', 'b'] },
+      });
+      expect(result).toStrictEqual([]);
+    });
+
+    it('filters out invalid IDs (null, undefined, "undefined")', () => {
+      const result = getInvalidBlockLayoutIds({
+        blocks: {},
+        blocks_layout: {
+          items: [null, undefined, 'undefined', 'valid-missing'],
+        },
+      });
+      expect(result).toStrictEqual(['valid-missing']);
+    });
+
+    it('returns empty when items is missing or empty', () => {
+      expect(
+        getInvalidBlockLayoutIds({ blocks: {}, blocks_layout: {} }),
+      ).toStrictEqual([]);
+      expect(
+        getInvalidBlockLayoutIds({ blocks: {}, blocks_layout: { items: [] } }),
+      ).toStrictEqual([]);
     });
   });
 
