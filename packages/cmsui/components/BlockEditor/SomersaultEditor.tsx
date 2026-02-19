@@ -1,12 +1,10 @@
-import { useEffect } from 'react';
-import { useAtom, useSetAtom, type PrimitiveAtom } from 'jotai';
+import { useAtom, type PrimitiveAtom } from 'jotai';
 import { useFieldFocusAtom } from '@plone/helpers';
-import EditBlockWrapper from './EditBlockWrapper';
 import type { Content } from '@plone/types';
-import { BlockEditorContext, selectedBlockAtom } from './BlockEditorContext';
+import { BlockEditorContext } from './BlockEditorContext';
 import { useBlockEditorContextValue } from './useBlockEditorContextValue';
 import { PlateEditor, type Value } from '@plone/plate/components/editor';
-import plateBlockConfig from '@plone/plate/config/presets/block';
+import plateBlockNativeConfig from '@plone/blocks/plate/native';
 
 type BlockEditorProps = {
   formAtom: PrimitiveAtom<Content>;
@@ -15,6 +13,7 @@ type BlockEditorProps = {
 const BlockEditor = (props: BlockEditorProps) => {
   const blocksAtom = useFieldFocusAtom(props.formAtom, 'blocks');
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [blocks, setBlocks] = useAtom(blocksAtom);
 
   const blockEditorContextValue = useBlockEditorContextValue({
@@ -24,7 +23,7 @@ const BlockEditor = (props: BlockEditorProps) => {
   return (
     <BlockEditorContext.Provider value={blockEditorContextValue}>
       <PlateEditor
-        editorConfig={plateBlockConfig.editorConfig}
+        editorConfig={plateBlockNativeConfig.editorConfig}
         value={[]}
         onChange={(options) => {
           setBlocks(options.value as Value[]);
