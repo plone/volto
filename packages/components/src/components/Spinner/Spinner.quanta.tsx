@@ -6,8 +6,7 @@ type SpinnerSize = 'xs' | 'sm' | 'lg';
 
 export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: SpinnerSize | number | string;
-  label?: string;
-  showLabel?: boolean;
+  label?: string | null;
   isDecorative?: boolean;
 }
 
@@ -46,13 +45,19 @@ function resolveCustomSize(size: SpinnerProps['size']) {
 
 export function Spinner({
   size = 'sm',
-  label = 'Loading',
-  showLabel = false,
+  label = null,
   isDecorative = false,
   className,
   style,
+  'aria-label': ariaLabelProp,
   ...props
 }: SpinnerProps) {
+  const hasLabel =
+    !isDecorative && typeof label === 'string' && label.length > 0;
+  const ariaLabel = isDecorative
+    ? undefined
+    : (ariaLabelProp ??
+      (typeof label === 'string' && label.length > 0 ? label : 'Loading'));
   const customSize = resolveCustomSize(size);
   const presetSize = isPresetSize(size) ? size : 'sm';
 
@@ -61,6 +66,7 @@ export function Spinner({
       {...props}
       className={wrapperStyles({ className: clsx(className) })}
       style={style}
+      aria-label={ariaLabel}
       {...(isDecorative
         ? { 'aria-hidden': true }
         : { role: 'status', 'aria-live': 'polite' })}
@@ -95,8 +101,7 @@ export function Spinner({
           strokeDasharray="42 57"
         />
       </svg>
-      {!isDecorative && showLabel && <span className="text-sm">{label}</span>}
-      {!isDecorative && !showLabel && <span className="sr-only">{label}</span>}
+      {hasLabel && <span className="text-sm">{label}</span>}
     </div>
   );
 }

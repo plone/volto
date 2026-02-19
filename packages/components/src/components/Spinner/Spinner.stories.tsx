@@ -21,7 +21,6 @@ export const Default: Story = {
 
 export const WithLabel: Story = {
   args: {
-    showLabel: true,
     label: 'Loading content',
   },
 };
