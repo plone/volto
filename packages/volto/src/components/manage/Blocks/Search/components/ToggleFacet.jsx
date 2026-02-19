@@ -1,9 +1,21 @@
 import React from 'react';
 import { Radio, Header } from 'semantic-ui-react';
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  toggleOption: {
+    id: 'Toggle option',
+    defaultMessage: 'Toggle option',
+  },
+});
 
 const ToggleFacet = (props) => {
+  const intl = useIntl();
   const { facet, isEditMode, onChange, value } = props; // value, choices, isMulti, onChange,
-  const labelText = facet?.title ?? facet?.field?.label ?? 'Toggle option';
+  const labelText =
+    facet?.title ??
+    facet?.field?.label ??
+    intl.formatMessage(messages.toggleOption);
 
   return (
     <div className="checkbox-facet">
