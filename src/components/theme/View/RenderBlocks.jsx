@@ -46,6 +46,10 @@ const RenderBlocks = (props) => {
           properties: content,
         });
 
+        if (blockData?.hidden) {
+          return null;
+        }
+
         if (content[blocksFieldname]?.[block]?.['@type'] === 'empty') {
           return (
             <MaybeWrap

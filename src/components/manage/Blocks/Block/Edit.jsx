@@ -161,6 +161,9 @@ export class Edit extends Component {
             className={cx('block', type, this.props.data.variation, {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
+              hidden: this.props.data.hidden,
+              collapsed:
+                this.props.data.hidden && this.props.toggleBlocksPreviewState,
             })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
@@ -218,5 +221,12 @@ export class Edit extends Component {
 export default compose(
   injectIntl,
   withObjectBrowser,
-  connect(null, { setSidebarTab }),
+  connect(
+    (state) => {
+      return {
+        toggleBlocksPreviewState: state?.toggleBlocksPreview || false,
+      };
+    },
+    { setSidebarTab },
+  ),
 )(Edit);
