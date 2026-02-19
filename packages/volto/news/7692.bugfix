@@ -1,0 +1,1 @@
+Fix ContentTypeSchema error toast to display only error message instead of stringified JSON object. @Shyam-Raghuwanshi
