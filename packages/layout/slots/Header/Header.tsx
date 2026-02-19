@@ -26,12 +26,7 @@ const Header = (props: HeaderProps) => {
       <SlotRenderer name="navigation" content={content} location={location} />
       <div className={clsx(styles['header-tools'], 'header-tools')}>
         <SlotRenderer
-          name="headertools"
-          content={content}
-          location={location}
-        />
-        <SlotRenderer
-          name="language-switcher"
+          name="headerTools"
           content={content}
           location={location}
         />
