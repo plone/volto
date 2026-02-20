@@ -31,8 +31,9 @@ describe('Querystring reducer', () => {
       querystring(undefined, {
         type: `${GET_QUERYSTRING}_SUCCESS`,
         result: {
-          indexes: {
-            Creator: {
+          indexes: [
+            {
+              id: 'Creator',
               description: 'The person that created an item',
               enabled: true,
               group: 'Metadata',
@@ -59,9 +60,10 @@ describe('Querystring reducer', () => {
               values: {},
               vocabulary: 'plone.app.vocabularies.Users',
             },
-          },
-          sortable_indexes: {
-            Creator: {
+          ],
+          sortable_indexes: [
+            {
+              id: 'Creator',
               description: 'The person that created an item',
               enabled: true,
               group: 'Metadata',
@@ -88,13 +90,14 @@ describe('Querystring reducer', () => {
               values: {},
               vocabulary: 'plone.app.vocabularies.Users',
             },
-          },
+          ],
         },
       }),
     ).toEqual({
       error: null,
       indexes: {
         Creator: {
+          id: 'Creator',
           description: 'The person that created an item',
           enabled: true,
           group: 'Metadata',
@@ -126,6 +129,7 @@ describe('Querystring reducer', () => {
       loading: false,
       sortable_indexes: {
         Creator: {
+          id: 'Creator',
           description: 'The person that created an item',
           enabled: true,
           group: 'Metadata',

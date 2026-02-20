@@ -30,18 +30,29 @@ export default function querystring(state = initialState, action = {}) {
         loading: true,
       };
     case `${GET_QUERYSTRING}_SUCCESS`:
-      let indexes = action.result.indexes;
-      if (indexes?.path?.operations) {
-        //remove path operation, to remove unhandled 'Navigation path' option from QueryWidget
-        indexes.path.operations = indexes.path.operations.filter(
-          (o) => o !== 'plone.app.querystring.operation.string.path',
-        );
-      }
+      // Safe normalization: Handles both legacy Object and new List formats
+      const normalize = (data) => {
+        if (Array.isArray(data)) {
+          return Object.fromEntries(
+            data
+              .filter((item) => item && item.id) // Avoid crashing on empty items
+              .map((item) => [item.id, item]),
+          );
+        }
+        return data;
+      };
+
+      let indexes = normalize(action.result.indexes);
+      let sortable_indexes = normalize(action.result.sortable_indexes);
+
       return {
         ...state,
         error: null,
-        indexes: indexes,
-        sortable_indexes: action.result.sortable_indexes,
+        //remove path operation, to remove unhandled 'Navigation path' option from QueryWidget
+        indexes: Object.fromEntries(
+          Object.entries(indexes).filter(([key]) => key !== 'path'),
+        ),
+        sortable_indexes: sortable_indexes,
         loaded: true,
         loading: false,
       };
