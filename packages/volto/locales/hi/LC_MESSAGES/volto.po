@@ -3366,6 +3366,11 @@ msgstr "पुनरावृत्ति में जोड़ने के �
 msgid "Select columns to show"
 msgstr "प्रदर्शित करने के लिए स्तंभ चुनें"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -3407,6 +3412,7 @@ msgid "Selection"
 msgstr "चयन"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -4021,6 +4027,7 @@ msgstr "समय"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4036,6 +4043,11 @@ msgstr "शीर्षक"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "शीर्षक फील्ड त्रुटि। मान उपलब्ध नहीं है या पहले से मौजूद है।"
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4392,6 +4404,11 @@ msgstr "वीडियो"
 #: components/manage/Blocks/Video/schema
 msgid "Video URL"
 msgstr "वीडियो URL"
+
+#. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "VideoTitleDescription"
+msgstr ""
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -5391,6 +5408,11 @@ msgstr "{id} की कंटेंट प्रकार"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} स्कीमा"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
