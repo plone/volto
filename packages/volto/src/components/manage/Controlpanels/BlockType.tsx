@@ -80,7 +80,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
     blockTypes.loaded && (
       <div
         id="page-block_type"
-        className="ui container controlpanel-block_type"
+        className="ui container controlpanel-block-type"
       >
         <h1>
           {intl.formatMessage(messages.controlpanelTitle, {

@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import Error from '@plone/volto/components/theme/Error/Error';
-import { Table } from '@plone/components';
+import { Spinner, Table } from '@plone/components';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -66,7 +66,7 @@ const BlockTypesControlpanel = (props: RouteProps) => {
   }, [dispatch]);
 
   if (blockTypes.loading) {
-    return <div>{intl.formatMessage(messages.loading)}&hellip;</div>;
+    return <Spinner label={intl.formatMessage(messages.loading)} />;
   }
 
   if (blockTypes?.error?.status) {
@@ -77,7 +77,7 @@ const BlockTypesControlpanel = (props: RouteProps) => {
     blockTypes.loaded && (
       <div
         id="page-block_types"
-        className="ui container controlpanel-block_types"
+        className="ui container controlpanel-block-types"
       >
         <h1>
           <FormattedMessage id="Block Types" defaultMessage="Block Types" />
