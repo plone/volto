@@ -1,0 +1,1 @@
+Added Vitest coverage for `.well-known` public asset handling and corrected a test import path in volto-razzle. @Kathrina-dev
