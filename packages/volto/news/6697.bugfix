@@ -1,0 +1,1 @@
+Avoid storing empty blocks clipboard in localstorage until blocks are cut or copied. @davisagli
