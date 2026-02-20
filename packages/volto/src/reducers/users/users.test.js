@@ -14,10 +14,7 @@ describe('Users reducer', () => {
   it('should return the initial state', () => {
     expect(users()).toEqual({
       user: {},
-      users: {
-        items: [],
-        items_total: 0,
-      },
+      users: [],
       create: {
         error: null,
         loaded: false,
@@ -219,9 +216,7 @@ describe('Users reducer', () => {
         result: 'result',
       }),
     ).toMatchObject({
-      users: {
-        items: 'result',
-      },
+      users: 'result',
       list: {
         error: null,
         loaded: true,

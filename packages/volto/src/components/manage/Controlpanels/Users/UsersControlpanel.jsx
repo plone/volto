@@ -140,7 +140,7 @@ const UsersControlpanel = () => {
     if (!many_users) {
       listGroupsAction();
       await listUsersAction();
-      setEntries(users.items);
+      setEntries(users);
     }
     await getUserSchemaAction();
     await getUserAction(userId);
@@ -175,7 +175,7 @@ const UsersControlpanel = () => {
 
   const getUserFromProps = useCallback(
     (value) => {
-      return find(users.items, ['@id', value]);
+      return find(users, ['@id', value]);
     },
     [users],
   );
@@ -457,7 +457,7 @@ const UsersControlpanel = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    setEntries(users.items);
+    setEntries(users);
   }, [users]);
 
   useEffect(() => {
