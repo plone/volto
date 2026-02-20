@@ -17,6 +17,28 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.26 (2026-02-20)
+
+### Breaking
+
+- Created a new `VideoEmbed` component for usage in a video block, helping to fix accessibility issues with the Semantic UI one. @jackahl @iRohitSingh [#6359](https://github.com/plone/volto/issues/6359)
+- Table block is now responsive and can scroll horizontally for non-fixed tables. @sneridagh [#7916](https://github.com/plone/volto/issues/7916)
+
+### Feature
+
+- Allow other sources, including Peertube instances, in the Video block via blocks configuration. @ionlizarazu [#6870](https://github.com/plone/volto/issues/6870)
+
+### Bugfix
+
+- Fix ContentTypeSchema error toast to display only error message instead of stringified JSON object. @Shyam-Raghuwanshi [#7692](https://github.com/plone/volto/issues/7692)
+- Fix missing i18n and a11y id for facet widget of Search block. @IFlameing 
+
+### Internal
+
+- Added Vitest coverage for `.well-known` public asset handling and corrected a test import path in volto-razzle. @Kathrina-dev [#7868](https://github.com/plone/volto/issues/7868)
+- Use `getSlateEditorAndType` in `03-block-slate.js` to make the test more robust. @wesleybl [#7924](https://github.com/plone/volto/issues/7924)
+- Add CI check for volto-razzle changelog. @davisagli 
+
 ## 19.0.0-alpha.25 (2026-02-13)
 
 ### Feature
