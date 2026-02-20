@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.6 (2026-02-20)
+
+### Feature
+
+- Added Spinner component. @sneridagh [#7918](https://github.com/plone/volto/issues/7918)
+- Added width (layout) icon components (and related SVGs). @sneridagh 
+
 ## 4.0.0-alpha.5 (2025-12-23)
 
 ### Feature

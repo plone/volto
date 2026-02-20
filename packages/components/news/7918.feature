@@ -1,1 +1,0 @@
-Added Spinner component. @sneridagh
