@@ -109,3 +109,92 @@ describe('createConfigAsync .well-known handling', () => {
     ).toBe(true);
   });
 });
+
+describe('createConfigAsync css minimizer sourceMap option', () => {
+  it('should propagate razzleOptions.enableSourceMaps to CssMinimizerPlugin.minimizerOptions.sourceMap', async () => {
+    const createConfigAsync = (await import('./createConfigAsync')).default;
+
+    const commonRazzleOptions = {
+      forceRuntimeEnvVars: [],
+      debug: { options: false, config: false },
+      browserslist: ['>1%'],
+      mediaPrefix: 'static/media',
+      cssPrefix: 'static/css',
+      jsPrefix: 'static/js',
+      emitOnErrors: false,
+    };
+
+    // When enableSourceMaps = true
+    const configWithMaps = await createConfigAsync(
+      'web',
+      'prod',
+      {},
+      { version: '5' },
+      false,
+      undefined,
+      [],
+      { ...commonRazzleOptions, enableSourceMaps: true },
+    );
+
+    const minimizersTrue = configWithMaps.optimization?.minimizer || [];
+    const cssMinimizerTrue = minimizersTrue.find(
+      (m) =>
+        m && m.constructor && /CssMinimizerPlugin/.test(m.constructor.name),
+    );
+    expect(cssMinimizerTrue).toBeDefined();
+    // plugin may store options in different properties depending on plugin implementation
+    const findSourceMap = (obj, depth = 4) => {
+      if (!obj || typeof obj !== 'object' || depth < 0) return undefined;
+      if (Object.prototype.hasOwnProperty.call(obj, 'sourceMap'))
+        return obj.sourceMap;
+      for (const k of Object.keys(obj)) {
+        try {
+          const v = obj[k];
+          const found = findSourceMap(v, depth - 1);
+          if (found !== undefined) return found;
+        } catch (e) {
+          // ignore
+        }
+      }
+      return undefined;
+    };
+
+    const sourceMapTrue =
+      findSourceMap(cssMinimizerTrue) ??
+      findSourceMap(cssMinimizerTrue?.options);
+    if (sourceMapTrue === undefined) {
+      console.log(
+        'cssMinimizerTrue keys:',
+        Object.keys(cssMinimizerTrue || {}),
+      );
+      console.log(
+        'cssMinimizerTrue (shallow):',
+        Object.entries(cssMinimizerTrue || {}).slice(0, 10),
+      );
+    }
+    expect(sourceMapTrue).toBe(true);
+
+    // When enableSourceMaps = false
+    const configWithoutMaps = await createConfigAsync(
+      'web',
+      'prod',
+      {},
+      { version: '5' },
+      false,
+      undefined,
+      [],
+      { ...commonRazzleOptions, enableSourceMaps: false },
+    );
+
+    const minimizersFalse = configWithoutMaps.optimization?.minimizer || [];
+    const cssMinimizerFalse = minimizersFalse.find(
+      (m) =>
+        m && m.constructor && /CssMinimizerPlugin/.test(m.constructor.name),
+    );
+    expect(cssMinimizerFalse).toBeDefined();
+    const sourceMapFalse =
+      findSourceMap(cssMinimizerFalse) ??
+      findSourceMap(cssMinimizerFalse?.options);
+    expect(sourceMapFalse).toBe(false);
+  });
+});

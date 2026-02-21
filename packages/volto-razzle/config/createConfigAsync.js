@@ -1045,7 +1045,6 @@ module.exports = (
             minimizer: [
               new TerserPlugin(webpackOptions.terserPluginOptions),
               new CssMinimizerPlugin({
-                sourceMap: razzleOptions.enableSourceMaps,
                 minimizerOptions: {
                   sourceMap: razzleOptions.enableSourceMaps,
                   // Removed the calc option because it causes issues with some modern CSS
