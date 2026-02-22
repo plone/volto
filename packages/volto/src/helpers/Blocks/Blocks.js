@@ -157,11 +157,13 @@ export function deleteBlock(formData, blockId, intl) {
     blockId,
   });
 
-  container[blocksLayoutFieldname].items = without(
-    container[blocksLayoutFieldname].items,
-    blockId,
-  );
-  container[blocksFieldname] = omit(container[blocksFieldname], [blockId]);
+  if (container) {
+    container[blocksLayoutFieldname].items = without(
+      container[blocksLayoutFieldname].items,
+      blockId,
+    );
+    container[blocksFieldname] = omit(container[blocksFieldname], [blockId]);
+  }
 
   if (newFormData[blocksLayoutFieldname].items.length === 0) {
     newFormData = addBlock(
