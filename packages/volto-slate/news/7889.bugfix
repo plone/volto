@@ -1,0 +1,1 @@
+Fix heading buttons not working in RichText Slate fields within custom content types by preserving editor context through portal rendering. @SurbhiAgarwal1

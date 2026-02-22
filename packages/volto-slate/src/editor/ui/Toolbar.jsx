@@ -7,6 +7,7 @@ import { Node } from 'slate';
 import { ReactEditor } from 'slate-react';
 import { createPortal } from 'react-dom';
 import { safeEditorNodes } from '../../utils/safe.js';
+import EditorContext from '../EditorContext';
 
 const Toolbar = ({
   elementType,
@@ -84,18 +85,20 @@ const Toolbar = ({
   });
 
   return createPortal(
-    <BasicToolbar
-      className={cx('slate-inline-toolbar', { [className]: className })}
-      ref={ref}
-    >
-      {children}
-      {enableExpando && toggleButton && (
-        <>
-          <Separator />
-          {toggleButton}
-        </>
-      )}
-    </BasicToolbar>,
+    <EditorContext.Provider value={editor}>
+      <BasicToolbar
+        className={cx('slate-inline-toolbar', { [className]: className })}
+        ref={ref}
+      >
+        {children}
+        {enableExpando && toggleButton && (
+          <>
+            <Separator />
+            {toggleButton}
+          </>
+        )}
+      </BasicToolbar>
+    </EditorContext.Provider>,
     document.body,
   );
 };

@@ -4,11 +4,14 @@ import {
   isBlockActive,
   toggleInlineFormat,
 } from '@plone/volto-slate/utils/blocks';
+import EditorContext from '../EditorContext';
 
 import ToolbarButton from './ToolbarButton';
 
 const MarkElementButton = ({ format, icon, ...props }) => {
-  const editor = useSlate();
+  const slateEditor = useSlate();
+  const contextEditor = React.useContext(EditorContext);
+  const editor = slateEditor || contextEditor;
 
   const isActive = isBlockActive(editor, format);
 
