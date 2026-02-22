@@ -1237,6 +1237,13 @@ importers:
       webpackbar:
         specifier: ~4||~5
         version: 5.0.2(webpack@5.90.1(esbuild@0.25.12))
+    devDependencies:
+      jsdom:
+        specifier: ^16.7.0
+        version: 16.7.0
+      vitest:
+        specifier: ^3.0.4
+        version: 3.2.4(@types/debug@4.1.12)(@types/node@24.10.13)(@vitest/ui@2.1.9)(jiti@2.6.1)(jsdom@16.7.0)(less@3.11.1)(lightningcss@1.31.1)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2)
 
   packages/volto-slate:
     dependencies:

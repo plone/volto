@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.6 (2026-02-20)
+
+### Feature
+
+- Added Spinner component. @sneridagh [#7918](https://github.com/plone/volto/issues/7918)
+- Added width (layout) icon components (and related SVGs). @sneridagh
+
+## 4.0.0-alpha.5 (2025-12-23)
+
+### Feature
+
+- Quanta, Tailwind styled `Toolbar` component. @sneridagh [#7549](https://github.com/plone/volto/issues/7549)
+
+### Internal
+
+- Include other *.md files in the repo root for link checking, fix redirecting links, and remove non-responsive server. @stevepiercy [#7712](https://github.com/plone/volto/issues/7712)
+- Add storybook for lots of items with custom separator. @iFlameing
+- Fixed update to RAC 1.14.0 DTS problems. @sneridagh
+
 ## 4.0.0-alpha.4 (2025-11-19)
 
 ### Bugfix
@@ -18,7 +37,7 @@
 
 ### Bugfix
 
-- Fixed `Icon` component return type since it was breaking in some builds. @sneridagh 
+- Fixed `Icon` component return type since it was breaking in some builds. @sneridagh
 
 ## 4.0.0-alpha.2 (2025-11-12)
 
@@ -27,7 +46,7 @@
 - Added ESlint Tailwind plugin for prettifying and wrapping up the classNames in components.
   Amended components classNames by applying the plugin. @sneridagh [#7434](https://github.com/plone/volto/issues/7434)
 - Added `Radio` component to basic set of components, proxied from RAC. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
-- Added RSC compatibility. @pnicolli 
+- Added RSC compatibility. @pnicolli
 
 ### Bugfix
 
@@ -162,7 +181,7 @@
 
 ### Internal
 
-- Improve packaging and bring back the export for `src` folder. @sneridagh 
+- Improve packaging and bring back the export for `src` folder. @sneridagh
 
 ## 2.1.0 (2024-11-05)
 
@@ -174,7 +193,7 @@
 
 ### Internal
 
-- Release 2.0.0 @sneridagh 
+- Release 2.0.0 @sneridagh
 
 ## 2.0.0-alpha.16 (2024-10-18)
 
