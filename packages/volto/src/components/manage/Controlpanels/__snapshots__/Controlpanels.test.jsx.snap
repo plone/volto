@@ -233,6 +233,37 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                 class="column"
               >
                 <a
+                  href="/controlpanel/block-types"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M13 10 29 10 29 8 13 8zM13 14 33 14 33 12 13 12zM3 16 11 16 11 8 3 8 3 16ZM5 14.001 9.001 14.001 9.001 10 5 10 5 14.001ZM13 22 29 22 29 20 13 20zM13 26 33 26 33 24 13 24zM3 28 11 28 11 20 3 20 3 28ZM5 26 9.001 26 9.001 22 5 22 5 26Z"
+                        />
+                      </g>
+                    </svg>
+                    <div
+                      class="content"
+                    >
+                      Block Types
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
                   href="/controlpanel/rules"
                 >
                   <h3
@@ -792,6 +823,37 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
             <div
               class="row"
             >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/block-types"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M13 10 29 10 29 8 13 8zM13 14 33 14 33 12 13 12zM3 16 11 16 11 8 3 8 3 16ZM5 14.001 9.001 14.001 9.001 10 5 10 5 14.001ZM13 22 29 22 29 20 13 20zM13 26 33 26 33 24 13 24zM3 28 11 28 11 20 3 20 3 28ZM5 26 9.001 26 9.001 22 5 22 5 26Z"
+                        />
+                      </g>
+                    </svg>
+                    <div
+                      class="content"
+                    >
+                      Block Types
+                    </div>
+                  </h3>
+                </a>
+              </div>
               <div
                 class="column"
               >
