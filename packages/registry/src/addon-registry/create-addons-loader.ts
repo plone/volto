@@ -104,7 +104,7 @@ export function createAddonsLoader(
   // the `tempInProject` allows to place it inside
   let addonsLoaderPath: string;
   if (tempInProject) {
-    addonsLoaderPath = path.join(process.cwd(), 'registry.loader.js');
+    addonsLoaderPath = path.join(process.cwd(), '.plone', 'registry.loader.js');
   } else {
     addonsLoaderPath = tmp.tmpNameSync({ postfix: '.js' });
   }

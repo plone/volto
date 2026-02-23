@@ -18,8 +18,9 @@ import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
-import routes from '@root/routes';
+import routes from '@plone/volto/routes';
 import config from '@plone/volto/registry';
+import okMiddleware from '@plone/volto/express-middleware/ok';
 
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import Html from '@plone/volto/helpers/Html/Html';
@@ -39,7 +40,10 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages.cjs';
 
 import configureStore from '@plone/volto/store';
-import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
+import {
+  ReduxAsyncConnect,
+  loadOnServer,
+} from '@plone/volto/helpers/AsyncConnect';
 
 let locales = {};
 
@@ -69,10 +73,30 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
+// If Volto is being served under a subpath,
+// make sure the static files are available there too.
+// (The static middleware loads too early to access the config.)
+if (config.settings.subpathPrefix) {
+  server.use(
+    config.settings.subpathPrefix,
+    express.static(
+      process.env.BUILD_DIR
+        ? path.join(process.env.BUILD_DIR, 'public')
+        : process.env.RAZZLE_PUBLIC_DIR,
+      {
+        redirect: false, // Avoid /my-prefix from being redirected to /my-prefix/
+      },
+    ),
+  );
+}
+
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
 server.all('*', setupServer);
-if (middleware.length) server.use('/', middleware);
+if (middleware.length) {
+  server.use(config.settings.subpathPrefix || '/', middleware);
+}
+server.use('/', okMiddleware());
 
 server.use(function (err, req, res, next) {
   if (err) {
@@ -160,8 +184,10 @@ function setupServer(req, res, next) {
     res.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;
-    config.settings.apiPath = res.locals.detectedHost;
-    config.settings.publicURL = res.locals.detectedHost;
+    config.settings.apiPath =
+      res.locals.detectedHost + config.settings.subpathPrefix;
+    config.settings.publicURL =
+      res.locals.detectedHost + config.settings.subpathPrefix;
   }
 
   res.locals = {
@@ -253,7 +279,11 @@ server.get('/*', (req, res) => {
         <ChunkExtractorManager extractor={extractor}>
           <CookiesProvider cookies={req.universalCookies}>
             <Provider store={store} onError={reactIntlErrorHandler}>
-              <StaticRouter context={context} location={req.url}>
+              <StaticRouter
+                context={context}
+                location={req.url}
+                basename={config.settings.subpathPrefix}
+              >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>
             </Provider>
@@ -290,8 +320,8 @@ server.get('/*', (req, res) => {
             markup={markup}
             store={store}
             criticalCss={readCriticalCss(req)}
-            apiPath={res.locals.detectedHost || config.settings.apiPath}
-            publicURL={res.locals.detectedHost || config.settings.publicURL}
+            apiPath={config.settings.apiPath}
+            publicURL={config.settings.publicURL}
           />,
         )}
       `,
@@ -334,6 +364,8 @@ export const defaultReadCriticalCss = () => {
 
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
+server.internalApiPath = config.settings.internalApiPath;
+server.subpathPrefix = config.settings.subpathPrefix;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
 server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;

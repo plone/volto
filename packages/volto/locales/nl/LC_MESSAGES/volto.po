@@ -20,6 +20,11 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Voeg hier HTML toe</p>"
 
+#. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+#: helpers/MessageLabels/MessageLabels
+msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+msgstr ""
+
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
@@ -569,6 +574,7 @@ msgstr "Kan lay-out niet bewerken voor het <strong>{type}</strong>-contenttype o
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -598,6 +604,7 @@ msgstr "Cel"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Center"
 msgstr "Centreren"
 
@@ -676,6 +683,11 @@ msgstr "Kies een bestand"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Leegmaken"
+
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
@@ -1002,6 +1014,7 @@ msgstr "Datum (nieuwste eerst)"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/BlockWidth
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/theme/Comments/CommentEditModal
@@ -1227,6 +1240,11 @@ msgstr "Zet bestand hier neer om een nieuw bestand op te laden"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop files here ..."
 msgstr "Zet bestanden hier neer..."
+
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1485,6 +1503,11 @@ msgstr "Bestaande alternatieve URLs voor dit item"
 msgid "Expand sidebar"
 msgstr "Zijbalk uitvouwen"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Werkbalk uitbreiden"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
@@ -1557,6 +1580,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Bestandsgrootte"
 
@@ -1567,11 +1591,13 @@ msgstr "Bestand weergave"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Bestandsnaam"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Opgeladen bestanden: {uploadedFiles}"
 
@@ -1655,6 +1681,7 @@ msgstr "Van"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Full"
 msgstr "Volledig"
 
@@ -2040,6 +2067,7 @@ msgstr "Dit is een taalonafhankelijk veld. Elke hier ingevoerde waarde, overschr
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Large"
 msgstr "Groot"
 
@@ -2055,6 +2083,7 @@ msgstr "Laatste commentaardatum"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Laatst gewijzigd"
 
@@ -2070,6 +2099,7 @@ msgstr "Laatste versie"
 
 #. Default: "Layout"
 #: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Widgets/BlockWidth
 msgid "Layout"
 msgstr "Lay-out"
 
@@ -2082,6 +2112,7 @@ msgstr "Leidende afbeelding"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Left"
 msgstr "Links"
 
@@ -2280,6 +2311,7 @@ msgstr "Maximum lengte is {len}."
 
 #. Default: "Medium"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Medium"
 msgstr "Gemiddeld"
 
@@ -2392,6 +2424,7 @@ msgstr "Naam"
 
 #. Default: "Narrow"
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Narrow"
 msgstr "Smal"
 
@@ -2462,7 +2495,7 @@ msgstr "Geen modules gevonden"
 msgid "No broken relations found."
 msgstr "Geen gebroken relaties gevonden."
 
-#. Default: "There is no connection to the server, due to a timeout o no network connection."
+#. Default: "There is no connection to the server, due to a timeout or no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
 msgstr "Er is geen verbinding naar de server, wegens een timeout of geen netwerkverbinding."
@@ -2607,9 +2640,9 @@ msgstr "Gebeurtenissen"
 msgid "Ok"
 msgstr "Ok"
 
-#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Enkel 7-bit byte-karakters zijn toegestaan. Kan geen hoofdletters, speciale tekens: <, >, &, #, /, ?, of andere bevatten die niet in URLs mogen voorkomen. Mag niet beginnen met: _, aq_, @@, ++. Mag niet eindigen met __. Kan geen: request,contributors, ., .., "" zijn. Mag geen regelomloop (newline) bevatten."
 
 #. Default: "Open in a new tab"
@@ -2813,6 +2846,7 @@ msgstr "Maak je code netter"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Voorvertoning"
 
@@ -2909,7 +2943,7 @@ msgstr "Refereer naar dit item als gerelateerd item"
 msgid "Referencing this item with {relationship}"
 msgstr "Refereen naar dit item met {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Broninhoud vernieuwen"
@@ -2953,6 +2987,11 @@ msgstr "Relaties zijn aanpasbaar met plone.api >= 2.0.3."
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "Relaties zijn bijgewerkt"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3108,6 +3147,7 @@ msgstr "Opgemaakte tekst"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Right"
 msgstr "Rechts"
 
@@ -3301,6 +3341,11 @@ msgstr "Selecteer een datum om een gebeurtenis toe te voegen"
 msgid "Select columns to show"
 msgstr "Selecteer de te tonen kolommen"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -3342,6 +3387,7 @@ msgid "Selection"
 msgstr "Selectie"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -3504,6 +3550,7 @@ msgstr "Grootte: {size}"
 
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Small"
 msgstr "Klein"
 
@@ -3955,6 +4002,7 @@ msgstr "Tijd"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3971,6 +4019,11 @@ msgstr "Titel"
 msgid "Title field error. Value not provided or already existing."
 msgstr "Titelveld fout. Waarde niet ingesteld of deze bestaat reeds."
 
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
+
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
@@ -3983,6 +4036,7 @@ msgstr "Totaal aantal commentaren"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Totaal aantal te uploaden bestanden: {totalFiles}"
 
@@ -4204,6 +4258,11 @@ msgstr "Upgrade stappen"
 msgid "Upload"
 msgstr "Opladen"
 
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
+
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
@@ -4320,6 +4379,11 @@ msgstr "Video"
 #: components/manage/Blocks/Video/schema
 msgid "Video URL"
 msgstr "Video URL"
+
+#. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "VideoTitleDescription"
+msgstr ""
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4579,7 +4643,7 @@ msgstr "Voer volledige naam in, bvb. Jan Smit."
 msgid "addUserFormPasswordDescription"
 msgstr "Voer een nieuw wahtwoord in. Minimum 8 karakters."
 
-#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
+#. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Voer een gebruikersnaam in, doorgaans iets zoals 'jsmit'. Geen spaties of speciale tekens. Gebruikersnamen en wachtwoorden zijn hoofdlettergevoelig, zorg dat de hoofdletterknop uit staat. Dit is de naam die je gebruikt om aan te melden."
@@ -4645,9 +4709,9 @@ msgstr "{countofrelation} gebroken {countofrelation, plural, one {relation} othe
 msgid "daterangeFacet"
 msgstr "Datumbereik"
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
+msgid "delete_block"
 msgstr "verwijderen"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
@@ -4674,6 +4738,11 @@ msgstr "Jouw aanvraag voor het opnieuw instellen van ouw wachtwoord is verzonden
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "voorlopige versie"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4724,6 +4793,11 @@ msgstr "Waar"
 #: components/manage/Controlpanels/Aliases
 msgid "examplePath"
 msgstr "/voorbeeld"
+
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4784,6 +4858,11 @@ msgstr "Voorvertoning afbeelding"
 #: helpers/MessageLabels/MessageLabels
 msgid "integer"
 msgstr "Invoer moet een integer zijn"
+
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4939,6 +5018,16 @@ msgstr "Privé"
 msgid "published"
 msgstr "Gepubliceerd"
 
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
+
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -4962,6 +5051,11 @@ msgstr "referenties"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
+msgstr ""
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
 msgstr ""
 
 #. Default: "results"
@@ -5259,6 +5353,7 @@ msgstr "Ja"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, one {{count} bestand opladen} other {{count} bestanden opladen}}"
 
@@ -5276,6 +5371,11 @@ msgstr "{id} contenttype"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} schema"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

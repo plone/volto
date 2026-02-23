@@ -1,12 +1,10 @@
 import React from 'react';
 import { Switch } from './Switch';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Switch.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Switch> = {
-  title: 'Widgets/Switch',
+  title: 'Basic/Forms/Switch',
   component: Switch,
   parameters: {
     layout: 'centered',

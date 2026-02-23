@@ -18,4 +18,5 @@ seamless-mode
 apache
 sentry
 performance
+subpath
 ```

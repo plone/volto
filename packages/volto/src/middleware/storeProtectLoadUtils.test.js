@@ -445,9 +445,9 @@ describe('storeProtectLoadUtils', () => {
           isCounting: false,
         });
       };
-      test('pending', expectPass({ type: 'ANY_PENDING' }), 2);
-      test('success', expectPass({ type: 'ANY_SUCCESS' }), 2);
-      test('failure', expectPass({ type: 'ANY_FAIL' }), 2);
+      test('pending', expectPass({ type: 'ANY_PENDING' }, 2));
+      test('success', expectPass({ type: 'ANY_SUCCESS' }, 2));
+      test('failure', expectPass({ type: 'ANY_FAIL' }, 2));
     });
     describe('counting', () => {
       const expectCount = (action, from, to) => () => {

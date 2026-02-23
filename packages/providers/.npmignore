@@ -1,6 +1,0 @@
-news
-towncrier.toml
-.changelog.draft
-node_modules/
-.release-it.json
-.eslintrc.js

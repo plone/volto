@@ -25,7 +25,7 @@ function PreviewImage({ item, alt, image_field, showDefault = true, ...rest }) {
     return image;
   } else {
     return (
-      <img
+      <Image
         src={
           config.getComponent({
             name: 'DefaultImage',

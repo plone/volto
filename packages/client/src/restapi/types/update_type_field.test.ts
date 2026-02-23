@@ -65,12 +65,12 @@ describe('Update Type', () => {
       ],
     };
 
-    const result = await cli.updateTypeField({
+    await cli.updateTypeField({
       contentPath: 'Document',
       data: updateTypeFieldData,
     });
 
-    const type = await cli.getType({ contentPath: 'Document' });
+    const type = await cli.getType({ contentType: 'Document' });
     const lastIndex = type.data.fieldsets.length - 1;
 
     expect(type.data.fieldsets?.[lastIndex].id).toBe(

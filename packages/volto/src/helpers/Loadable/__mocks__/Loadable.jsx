@@ -1,19 +1,4 @@
-/* TODO: When the Volto Team removes Jest configuration support from Volto core, update this file with the Vitest version of the mock.
-Then, in the tests, we need to replace:
-
-vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
-  return await import(
-    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
-  );
-});
-
-with the following:
-
-vi.mock('@plone/volto/helpers/Loadable/Loadable');
-
-Finally, remove this comment.
-*/
-
+import React from 'react';
 import config from '@plone/volto/registry';
 const loadables = config.settings.loadables;
 
@@ -33,21 +18,21 @@ export const __setLoadables = async () => {
 };
 
 // TODO: filter mockAllLoadables
-export const injectLazyLibs = jest.fn().mockImplementation(function ([
+export const injectLazyLibs = vi.fn().mockImplementation(function ([
   libraries,
 ]) {
-  return jest.fn((WrappedComponent) =>
-    jest.fn((props) => {
+  return vi.fn((WrappedComponent) =>
+    vi.fn((props) => {
       return <WrappedComponent {...props} {...mockAllLoadables} />;
     }),
   );
 });
 
-export const preloadLazyLibs = jest.fn().mockImplementation(function ([
+export const preloadLazyLibs = vi.fn().mockImplementation(function ([
   libraries,
 ]) {
-  return jest.fn((WrappedComponent) =>
-    jest.fn((props) => {
+  return vi.fn((WrappedComponent) =>
+    vi.fn((props) => {
       return <WrappedComponent {...props} />;
     }),
   );
