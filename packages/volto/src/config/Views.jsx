@@ -138,3 +138,13 @@ export const layoutViewsNamesMapping = {
   view: 'Default view',
   default: 'Default view',
 };
+
+export function installDefaultViews(config) {
+  config.views.layoutViews = layoutViews;
+  config.views.contentTypesViews = contentTypesViews;
+  config.views.defaultView = defaultView;
+  config.views.errorViews = errorViews;
+  config.views.layoutViewsNamesMapping = layoutViewsNamesMapping;
+
+  return config;
+}

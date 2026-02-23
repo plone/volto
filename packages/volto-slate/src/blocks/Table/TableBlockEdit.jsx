@@ -5,13 +5,16 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty, map, remove } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import map from 'lodash/map';
+import remove from 'lodash/remove';
 import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
 import { defineMessages, injectIntl } from 'react-intl';
 
 import Cell from './Cell';
-import { Icon, SidebarPortal } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import TableSchema from './schema';
 
@@ -585,6 +588,7 @@ class Edit extends Component {
             inverted={this.props.data.table.inverted}
             striped={this.props.data.table.striped}
             className="slate-table-block"
+            unstackable
           >
             {!this.props.data.table.hideHeaders ? (
               <Table.Header>

@@ -1,41 +1,38 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
 import { z } from 'zod';
-import { querystringSearchDataSchema as getQuerystringSearchSchema } from '../../validation/querystring-search';
-import { QuerystringSearchResponse as GetQuerystringSearchResponse } from '@plone/types';
+import { querystringSearchDataSchema } from '../../validation/querystring-search';
+import type { QuerystringSearchResponse } from '@plone/types';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
-export type QuerystringSearchArgs = z.infer<
-  typeof getQuerystringSearchSchema
-> & {
-  config: PloneClientConfig;
-};
+export type QuerystringSearchArgs = z.infer<typeof querystringSearchDataSchema>;
 
-export const getQuerystringSearch = async ({
-  query,
-  config,
-}: QuerystringSearchArgs): Promise<GetQuerystringSearchResponse> => {
-  const validatedArgs = getQuerystringSearchSchema.parse({
+export async function querystringSearch(
+  this: PloneClient,
+  { query, post }: QuerystringSearchArgs,
+): Promise<RequestResponse<QuerystringSearchResponse>> {
+  const validatedArgs = querystringSearchDataSchema.parse({
     query,
   });
+  if (post) {
+    const options: ApiRequestParams = {
+      data: { query: validatedArgs.query },
+      config: this.config,
+    };
 
-  const queryObject = { query: validatedArgs.query };
-  const querystring = JSON.stringify(queryObject);
-  const encodedQuery = encodeURIComponent(querystring);
+    return apiRequest('post', '/@querystring-search', options);
+  } else {
+    const queryObject = { query: validatedArgs.query };
+    const querystring = JSON.stringify(queryObject);
+    const encodedQuery = encodeURIComponent(querystring);
 
-  const options: ApiRequestParams = {
-    config,
-    params: {
-      ...(encodedQuery && { query: encodedQuery }),
-    },
-  };
+    const options: ApiRequestParams = {
+      config: this.config,
+      params: {
+        ...(encodedQuery && { query: encodedQuery }),
+      },
+    };
 
-  return apiRequest('get', '/@querystring-search', options);
-};
-
-export const getQuerystringSearchQuery = ({
-  query,
-  config,
-}: QuerystringSearchArgs) => ({
-  queryKey: ['get', 'querystringSearch'],
-  queryFn: () => getQuerystringSearch({ query, config }),
-});
+    return apiRequest('get', '/@querystring-search', options);
+  }
+}

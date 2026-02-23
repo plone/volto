@@ -152,6 +152,11 @@ export const messages = defineMessages({
     id: 'Groupname',
     defaultMessage: 'Groupname',
   },
+  addGroupsFormGroupNameDescription: {
+    id: 'A unique identifier for the group. Cannot be changed after creation. No spaces allowed.',
+    defaultMessage:
+      'A unique identifier for the group. Cannot be changed after creation. No spaces allowed.',
+  },
   addGroupsFormDescriptionTitle: {
     id: 'Description',
     defaultMessage: 'Description',
@@ -402,5 +407,10 @@ export const messages = defineMessages({
     id: 'The number of items must be greater than or equal to {minItems}',
     defaultMessage:
       'The number of items must be greater than or equal to {minItems}',
+  },
+  defaultLanguage: {
+    id: "The selected default language must be in the list of the field 'Available languages'",
+    defaultMessage:
+      "The selected default language must be in the list of the field 'Available languages'",
   },
 });

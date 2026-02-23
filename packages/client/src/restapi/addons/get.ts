@@ -1,34 +1,28 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { GetAddonResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { GetAddonResponse } from '@plone/types';
+import type PloneClient from '../../client';
 import { z } from 'zod';
+import type { RequestResponse } from '../types';
 
 const getAddonSchema = z.object({
   addonId: z.string(),
 });
 
-export type AddonArgs = z.infer<typeof getAddonSchema> & {
-  config: PloneClientConfig;
-};
+export type AddonArgs = z.infer<typeof getAddonSchema> & {};
 
-export const getAddon = async ({
-  addonId,
-  config,
-}: AddonArgs): Promise<GetAddonResponse> => {
+export async function getAddon(
+  this: PloneClient,
+  { addonId }: AddonArgs,
+): Promise<RequestResponse<GetAddonResponse>> {
   const validatedArgs = getAddonSchema.parse({
     addonId,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
   const addonName = `@addons/${validatedArgs.addonId}`;
 
   return apiRequest('get', addonName, options);
-};
-
-export const getAddonQuery = ({ addonId, config }: AddonArgs) => ({
-  queryKey: [addonId, 'get', 'addons'],
-  queryFn: () => getAddon({ addonId, config }),
-});
+}

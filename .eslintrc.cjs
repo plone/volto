@@ -56,6 +56,7 @@ const config = {
       ],
       rules: {
         '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/ban-ts-comment': 0,
       },
     },
     {
@@ -71,6 +72,13 @@ const config = {
       rules: {
         'react/prop-types': 0,
         'react/no-unescaped-entities': 0,
+      },
+    },
+    {
+      files: ['**/*.test.js', '**/*.test.jsx', '**/*.test.ts', '**/*.test.tsx'],
+      plugins: ['no-only-tests'],
+      rules: {
+        'no-only-tests/no-only-tests': 'error',
       },
     },
   ],

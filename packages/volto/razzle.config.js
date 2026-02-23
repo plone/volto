@@ -8,12 +8,13 @@ const fs = require('fs');
 const RootResolverPlugin = require('./webpack-plugins/webpack-root-resolver');
 const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resolver');
 const { poToJson } = require('@plone/scripts/i18n.cjs');
-const createAddonsLoader = require('@plone/registry/src/create-addons-loader');
-const createThemeAddonsLoader = require('@plone/registry/src/create-theme-addons-loader');
-const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
+const { createAddonsLoader } = require('@plone/registry/create-addons-loader');
+const {
+  createThemeAddonsLoader,
+} = require('@plone/registry/create-theme-loader');
+const { AddonRegistry } = require('@plone/registry/addon-registry');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const AfterBuildPlugin = require('@fiverr/afterbuild-webpack-plugin');
 
@@ -23,8 +24,7 @@ const projectRootPath = path.resolve('.');
 const languages = require('./src/constants/Languages.cjs');
 
 const packageJson = require(path.join(projectRootPath, 'package.json'));
-
-const registry = new AddonConfigurationRegistry(projectRootPath);
+const { registry } = AddonRegistry.init(projectRootPath);
 
 const defaultModify = ({
   env: { target, dev },
@@ -115,25 +115,11 @@ const defaultModify = ({
       },
     });
 
-    // This is needed to override Razzle use of the unmaintained CleanCSS
-    // which does not have support for recently CSS features (container queries).
-    // Using the default provided (cssnano) by css-minimizer-webpack-plugin
-    // should be enough see:
-    // (https://github.com/clean-css/clean-css/discussions/1209)
+    // TODO: remove this before merging the Razzle fork into Volto 19
+    // @sneridagh: Tried to remove this now that we have forked Razzle
+    // but I cannot pinpoint where this comes from, and it seems undefined
+    // always.
     delete options.webpackOptions.terserPluginOptions?.sourceMap;
-    if (!dev) {
-      config.optimization = Object.assign({}, config.optimization, {
-        minimizer: [
-          new TerserPlugin(options.webpackOptions.terserPluginOptions),
-          new CssMinimizerPlugin({
-            sourceMap: options.razzleOptions.enableSourceMaps,
-            minimizerOptions: {
-              sourceMap: options.razzleOptions.enableSourceMaps,
-            },
-          }),
-        ],
-      });
-    }
 
     config.plugins.unshift(
       // restrict moment.js locales to supported languages
@@ -200,7 +186,7 @@ const defaultModify = ({
               `${registry.packages[addon].modulePath}/../.`,
             );
             if (fs.existsSync(path.join(p, 'public'))) {
-              if (!dev) {
+              if (!dev && fs.existsSync(paths.appBuildPublic)) {
                 mergeDirectories(path.join(p, 'public'), paths.appBuildPublic);
               }
               if (
@@ -290,6 +276,8 @@ const defaultModify = ({
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
     registry.getAddons(),
+    // The load of the project config is deprecated and will be removed in Volto 19.
+    { loadProjectConfig: true },
   );
 
   config.resolve.plugins = [
@@ -411,26 +399,38 @@ const defaultModify = ({
         ]
       : [];
 
-  if (config.devServer) {
-    config.devServer.static.watch.ignored = /node_modules\/(?!@plone\/volto)/;
-    config.snapshot = {
-      managedPaths: [
-        /^(.+?[\\/]node_modules[\\/](?!(@plone[\\/]volto))(@.+?[\\/])?.+?)[\\/]/,
-      ],
-    };
+  // If Volto is served under a subpath,
+  // we have to adjust where Webpack assets are served too.
+  const subpathPrefix = process.env.RAZZLE_SUBPATH_PREFIX || '';
+  if (subpathPrefix) {
+    if (target === 'web' && dev) {
+      if (config.devServer.devMiddleware) {
+        config.devServer.devMiddleware.publicPath = subpathPrefix;
+      } else {
+        config.devServer.publicPath += `${subpathPrefix.slice(1)}/`;
+      }
+    }
+    const publicPath = config.output.publicPath;
+    if (publicPath.indexOf(subpathPrefix) === -1) {
+      config.output.publicPath = `${publicPath}${subpathPrefix.slice(1)}/`;
+    }
   }
-
   return config;
 };
 
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
-  { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-plugins/webpack-svg-plugin') },
-  { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
-  { object: require('./jest-extender-plugin') },
-  'scss',
+  {
+    name: 'less',
+    object: require('./webpack-plugins/webpack-less-plugin')({ registry }),
+  },
+  { name: 'svg', object: require('./webpack-plugins/webpack-svg-plugin') },
+  {
+    name: 'bundle-analyze',
+    object: require('./webpack-plugins/webpack-bundle-analyze-plugin'),
+  },
+  { name: 'scss', object: require('./webpack-plugins/webpack-scss-plugin') },
 ];
 
 const plugins = addonExtenders.reduce(

@@ -1,44 +1,29 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import {
-  PloneClientConfig,
-  PloneClientConfigSchema,
-} from '../../validation/config';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type PloneClient from '../../client';
 import { z } from 'zod';
 import { updateContentDataSchema } from '../../validation/content';
-import { UpdateContentResponse } from '@plone/types';
+import type { UpdateContentResponse } from '@plone/types';
+import type { RequestResponse } from '../types';
 
 export const updateContentArgsSchema = z.object({
   path: z.string(),
   data: updateContentDataSchema,
-  config: PloneClientConfigSchema,
 });
 
 export type UpdateContentArgs = z.infer<typeof updateContentArgsSchema>;
 
-export const updateContent = async ({
-  path,
-  data,
-  config,
-}: UpdateContentArgs): Promise<UpdateContentResponse> => {
+export async function updateContent(
+  this: PloneClient,
+  { path, data }: UpdateContentArgs,
+): Promise<RequestResponse<UpdateContentResponse>> {
   const validatedArgs = updateContentArgsSchema.parse({
     path,
     data,
-    config,
   });
 
   const options: ApiRequestParams = {
     data: validatedArgs.data,
-    config: validatedArgs.config,
+    config: this.config,
   };
   return apiRequest('patch', validatedArgs.path, options);
-};
-
-export const updateContentMutation = ({
-  config,
-}: {
-  config: PloneClientConfig;
-}) => ({
-  mutationKey: ['patch', 'content'],
-  mutationFn: ({ path, data }: Omit<UpdateContentArgs, 'config'>) =>
-    updateContent({ path, data, config }),
-});
+}

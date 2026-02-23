@@ -1,22 +1,7 @@
+import ConfigRegistry from '@plone/volto/registry';
 import { parse as parseUrl } from 'url';
-import { defaultWidget, widgetMapping } from './Widgets';
-import {
-  layoutViews,
-  contentTypesViews,
-  defaultView,
-  errorViews,
-  layoutViewsNamesMapping,
-} from './Views';
 import { nonContentRoutes } from './NonContentRoutes';
 import { nonContentRoutesPublic } from './NonContentRoutesPublic';
-import {
-  groupBlocksOrder,
-  requiredBlocks,
-  blocksConfig,
-  initialBlocks,
-  initialBlocksFocus,
-} from './Blocks';
-import { components } from './Components';
 import { loadables } from './Loadables';
 import { workflowMapping } from './Workflows';
 import slots from './slots';
@@ -32,17 +17,18 @@ import {
 
 import applyAddonConfiguration, { addonsInfo } from 'load-volto-addons';
 
-import ConfigRegistry from '@plone/volto/registry';
+import { installDefaultComponents } from './Components';
+import { installDefaultWidgets } from './Widgets';
+import { installDefaultViews } from './Views';
+import { installDefaultBlocks } from './Blocks';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers';
+import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
+
+import languages from '@plone/volto/constants/Languages.cjs';
 
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
-
-const apiPath =
-  process.env.RAZZLE_API_PATH ||
-  (__DEVELOPMENT__ ? `http://${host}:${port}` : '');
 
 const getServerURL = (url) => {
   if (!url) return;
@@ -56,12 +42,14 @@ const getServerURL = (url) => {
 // if RAZZLE_PUBLIC_URL is present, use it
 // if in DEV, use the host/port combination by default
 // if in PROD, assume it's RAZZLE_API_PATH server name (no /api or alikes) or fallback
-// to DEV settings if RAZZLE_API_PATH is not present
+// to DEV settings if RAZZLE_API_PATH is not present.
+// Finally, add the subpath, if there is one.
 const publicURL =
-  process.env.RAZZLE_PUBLIC_URL ||
-  (__DEVELOPMENT__
-    ? `http://${host}:${port}`
-    : getServerURL(process.env.RAZZLE_API_PATH) || `http://${host}:${port}`);
+  (process.env.RAZZLE_PUBLIC_URL ||
+    (__DEVELOPMENT__
+      ? `http://${host}:${port}`
+      : getServerURL(process.env.RAZZLE_API_PATH) ||
+        `http://${host}:${port}`)) + (process.env.RAZZLE_SUBPATH_PREFIX || '');
 
 const serverConfig =
   typeof __SERVER__ !== 'undefined' && __SERVER__
@@ -75,7 +63,10 @@ let config = {
     // The URL Volto is going to be served (see sensible defaults above)
     publicURL,
     okRoute: '/ok',
-    apiPath,
+    // Base URL for API requests from the browser.
+    // If not explicitly set, use the publicURL (seamless mode) --
+    // but in that case it will be updated in server.jsx for each request.
+    apiPath: process.env.RAZZLE_API_PATH || publicURL,
     apiExpanders: [
       // Added here for documentation purposes, added at the end because it
       // depends on a value of this object.
@@ -109,6 +100,7 @@ let config = {
     // apiPath: process.env.RAZZLE_API_PATH || 'http://localhost:8081/db/web', // for guillotina
     actions_raising_api_errors: ['GET_CONTENT', 'UPDATE_CONTENT'],
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
+    subpathPrefix: process.env.RAZZLE_SUBPATH_PREFIX || '',
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
@@ -123,15 +115,13 @@ let config = {
     openExternalLinkInNewTab: false,
     notSupportedBrowsers: ['ie'],
     defaultPageSize: 25,
-    isMultilingual: false,
-    supportedLanguages: ['en'],
-    defaultLanguage: 'en',
+    supportedLanguages: Object.keys(languages),
     navDepth: 1,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
     verticalFormTabs: false,
     useEmailAsLogin: false,
-    persistentReducers: ['blocksClipboard'],
+    persistentReducers: ['blocksClipboard.cut', 'blocksClipboard.copy'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
     contentIcons: contentIcons,
@@ -153,6 +143,7 @@ let config = {
     serverConfig,
     storeExtenders: [],
     showTags: true,
+    showRelatedItems: true,
     controlpanels: [],
     controlPanelsIcons,
     filterControlPanels,
@@ -174,7 +165,6 @@ let config = {
     showSelfRegistration: false,
     contentMetadataTagsImageField: 'image',
     contentPropertiesSchemaEnhancer: null,
-    hasWorkingCopySupport: false,
     maxUndoLevels: 200, // undo history size for the main form
     addonsInfo: addonsInfo,
     workflowMapping,
@@ -195,28 +185,12 @@ let config = {
       enabled: true,
     },
   },
-  widgets: {
-    ...widgetMapping,
-    default: defaultWidget,
-  },
-  views: {
-    layoutViews,
-    contentTypesViews,
-    defaultView,
-    errorViews,
-    layoutViewsNamesMapping,
-  },
-  blocks: {
-    requiredBlocks,
-    blocksConfig,
-    groupBlocksOrder,
-    initialBlocks,
-    initialBlocksFocus,
-    showEditBlocksInBabelView: false,
-  },
+  widgets: {},
+  views: {},
+  blocks: {},
   addonRoutes: [],
   addonReducers: {},
-  components,
+  components: {},
   slots: {},
   utilities: {},
 };
@@ -226,7 +200,8 @@ config.settings.apiExpanders = [
   ...config.settings.apiExpanders,
   {
     match: '',
-    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot'],
+    GET_CONTENT: ['breadcrumbs', 'actions', 'types', 'navroot', 'translations'],
+    // Note: translations is removed in the API middleware if the site is not multilingual.
   },
   {
     match: '',
@@ -261,5 +236,9 @@ Object.entries(slots).forEach(([slotName, components]) => {
 });
 
 registerValidators(ConfigRegistry);
+installDefaultComponents(ConfigRegistry);
+installDefaultWidgets(ConfigRegistry);
+installDefaultViews(ConfigRegistry);
+installDefaultBlocks(ConfigRegistry);
 
 applyAddonConfiguration(ConfigRegistry);

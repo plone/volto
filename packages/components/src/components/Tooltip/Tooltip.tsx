@@ -2,7 +2,7 @@ import React from 'react';
 import {
   OverlayArrow,
   Tooltip as RACTooltip,
-  TooltipProps as RACTooltipProps,
+  type TooltipProps as RACTooltipProps,
 } from 'react-aria-components';
 
 export interface TooltipProps extends Omit<RACTooltipProps, 'children'> {

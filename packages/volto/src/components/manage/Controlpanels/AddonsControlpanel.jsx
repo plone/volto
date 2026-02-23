@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { useClient } from '@plone/volto/hooks';
+import { useClient } from '@plone/volto/hooks/client/useClient';
 import {
   Accordion,
   Button,
@@ -22,9 +22,11 @@ import {
   listAddons,
   uninstallAddon,
   upgradeAddon,
-} from '@plone/volto/actions';
-import { Helmet } from '@plone/volto/helpers';
-import { Icon, Toolbar, Toast } from '@plone/volto/components';
+} from '@plone/volto/actions/addons/addons';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import circleBottomSVG from '@plone/volto/icons/circle-bottom.svg';
 import circleTopSVG from '@plone/volto/icons/circle-top.svg';
 import backSVG from '@plone/volto/icons/back.svg';

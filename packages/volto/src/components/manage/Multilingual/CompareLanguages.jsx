@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import config from '@plone/volto/registry';
-import { langmap, useDetectClickOutside } from '@plone/volto/helpers';
+import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
+import { useDetectClickOutside } from '@plone/volto/helpers/Utils/useDetectClickOutside';
 
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Button } from 'semantic-ui-react';
 import translateSVG from '@plone/volto/icons/translate.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -56,33 +56,33 @@ const CompareLanguagesMenu = ({
                 {comparingLanguage === t.language ? (
                   <button
                     aria-label={`${intl.formatMessage(messages.stop_compare)} ${
-                      langmap[t.language].nativeName
+                      langmap[t.language]?.nativeName || t.language
                     }`}
                     title={`${intl.formatMessage(messages.stop_compare)} ${
-                      langmap[t.language].nativeName
+                      langmap[t.language]?.nativeName || t.language
                     }`}
                     onClick={() => {
                       setComparingLanguage(null);
                       closeMenu();
                     }}
                   >
-                    {langmap[t.language].nativeName}
+                    {langmap[t.language]?.nativeName || t.language}
                     <Icon name={clearSVG} size="30px" />
                   </button>
                 ) : (
                   <button
                     aria-label={`${intl.formatMessage(
                       messages.compare_to,
-                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
+                    )} ${(langmap[t.language]?.nativeName || t.language).toLowerCase()}`}
                     title={`${intl.formatMessage(
                       messages.compare_to,
-                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
+                    )} ${(langmap[t.language]?.nativeName || t.language).toLowerCase()}`}
                     onClick={() => {
                       setComparingLanguage(t.language);
                       closeMenu();
                     }}
                   >
-                    {langmap[t.language].nativeName}
+                    {langmap[t.language]?.nativeName || t.language}
                   </button>
                 )}
               </li>
@@ -105,16 +105,14 @@ const CompareLanguages = React.forwardRef((props, ref) => {
 
   const intl = useIntl();
   const [viewMenu, setViewMenu] = useState(false);
-  const translations = config.settings.isMultilingual
-    ? content?.['@components']?.translations?.items || []
-    : [];
+  const translations = content?.['@components']?.translations?.items || [];
 
   const translationsObject = {};
   translations.forEach((t) => {
     translationsObject[t.language] = t['@id'];
   });
 
-  if (config.settings.isMultilingual && translations.length > 0) {
+  if (translations.length > 0) {
     return (
       <div className="toolbar-compare-translations-wrapper">
         <div className="toolbar-button-spacer" />

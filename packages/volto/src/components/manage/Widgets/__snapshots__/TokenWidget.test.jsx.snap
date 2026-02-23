@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a token widget component 1`] = `
 <div
@@ -44,7 +44,7 @@ exports[`renders a token widget component 1`] = `
             onTouchEnd={[Function]}
           >
             <div
-              className="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
+              className="react-select__value-container react-select__value-container--is-multi css-1dvrfad"
             >
               <div
                 className="react-select__placeholder css-1wa3eu0-placeholder"
@@ -52,18 +52,19 @@ exports[`renders a token widget component 1`] = `
                 Select…
               </div>
               <div
-                className="css-b8ldur-Input"
+                className="css-1g6gooi"
               >
                 <div
                   className="react-select__input"
                   style={
-                    Object {
+                    {
                       "display": "inline-block",
                     }
                   }
                 >
                   <input
                     aria-autocomplete="list"
+                    aria-labelledby="fieldset-default-field-label-my-field"
                     autoCapitalize="none"
                     autoComplete="off"
                     autoCorrect="off"
@@ -74,7 +75,7 @@ exports[`renders a token widget component 1`] = `
                     onFocus={[Function]}
                     spellCheck="false"
                     style={
-                      Object {
+                      {
                         "background": 0,
                         "border": 0,
                         "boxSizing": "content-box",
@@ -93,7 +94,7 @@ exports[`renders a token widget component 1`] = `
                   />
                   <div
                     style={
-                      Object {
+                      {
                         "height": 0,
                         "left": 0,
                         "overflow": "scroll",
@@ -108,34 +109,34 @@ exports[`renders a token widget component 1`] = `
               </div>
             </div>
             <div
-              className="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+              className="react-select__indicators css-1wy0on6"
             >
               <span
                 className="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
               />
               <div
                 aria-hidden="true"
-                className="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
+                className="react-select__indicator react-select__dropdown-indicator css-9t8fgp"
                 onMouseDown={[Function]}
                 onTouchEnd={[Function]}
               >
                 <svg
                   className="icon"
                   dangerouslySetInnerHTML={
-                    Object {
-                      "__html": undefined,
+                    {
+                      "__html": "<path fill-rule="evenodd" d="M9.293 14.707 10.707 13.293 18 20.586 25.293 13.293 26.707 14.707 18 23.414z"/>",
                     }
                   }
                   onClick={null}
                   style={
-                    Object {
+                    {
                       "fill": "#007bc1",
                       "height": "24px",
                       "width": "auto",
                     }
                   }
-                  viewBox=""
-                  xmlns=""
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
                 />
               </div>
             </div>

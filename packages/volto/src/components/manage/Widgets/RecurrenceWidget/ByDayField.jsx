@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import { Days } from './Utils';
-import { toBackendLang } from '@plone/volto/helpers';
+import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
 

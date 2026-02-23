@@ -36,7 +36,7 @@ You can find the complete `@loadable/component` documentation here: https://load
 You can check the code splitting state by using the included bundle analyzer:
 
 ```shell
-yarn analyze
+pnpm --filter=volto analyze
 ```
 
 A browser will open with the bundle inspector.
@@ -130,16 +130,15 @@ export default preloadLazyLibs('cms')(SomeComponent);
 
 ### Testing with lazy loaded libraries integrated
 
-Sometimes you'll find that it's difficult to get the lazy loaded libraries
-properly loaded in your jest tests. In that case, add this to the top of your
-test:
+Sometimes you'll find that it's difficult to get the lazy loaded libraries properly loaded in your {term}`Vitest` tests.
+In that case, add the following code to the top of your test.
 
-```
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+```javascript
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(async () => {
+  const { __setLoadables } = await import('@plone/volto/helpers/Loadable/Loadable');
+  await __setLoadables();
+});
 ```
 
 This ensures that all libraries are loaded and injected into a mock before any

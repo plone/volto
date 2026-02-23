@@ -10,11 +10,10 @@ import {
   TextField,
 } from 'react-aria-components';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Dialog.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
+  title: 'Basic/Dialog',
   component: Dialog,
   parameters: {
     layout: 'centered',

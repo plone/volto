@@ -1,0 +1,25 @@
+import React from 'react';
+import { Icon } from '../Icon/Icon';
+import type { IconPropsWithoutChildren } from '../Icon/Icon';
+
+export const ImagewideIcon = (props: IconPropsWithoutChildren) => {
+  return (
+    <Icon {...props}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <g fillRule="evenodd">
+          <path
+            fillRule="nonzero"
+            d="M2,9 L3,7 L3,17 L2,15 L22,15 L21,17 L21,7 L22,9 L2,9 Z M22,7 L22,17 L2,17 L2,7 L22,7 Z"
+          />
+          <polygon points="5 21 19 21 19 19 5 19" />
+          <polygon points="5 5 19 5 19 3 5 3" />
+        </g>
+      </svg>
+    </Icon>
+  );
+};

@@ -17,7 +17,7 @@ In the past (before Volto 13), Volto was configured in build time using several
 environment variables, commonly supplied via the command line, such as the following:
 
 ```shell
-PORT=11001 RAZZLE_API_PATH=https://plone.org/api yarn build`
+PORT=11001 RAZZLE_API_PATH=https://plone.org/api pnpm build`
 ```
 
 and since Razzle is an isomorphic application, some of these values passed on build time, were

@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { isBoolean } from 'lodash';
+import isBoolean from 'lodash/isBoolean';
 import { defineMessages, injectIntl } from 'react-intl';
 
 const messages = defineMessages({

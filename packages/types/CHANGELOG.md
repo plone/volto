@@ -1,4 +1,4 @@
-# @plone/volto-types Release Notes
+# @plone/types Release Notes
 
 <!-- Do *NOT* add new change log entries to this file.
      Instead create a file in the news directory.
@@ -7,6 +7,190 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 2.0.0-alpha.14 (2026-02-03)
+
+### Bugfix
+
+- Fix typing for `contentIcons` and `controlPanelsIcons` in Settings config. Changed from `Record<string, React.ComponentType>` to `Record<string, string>` as they contain SVG paths. @YourGitHubUsername [#7339](https://github.com/plone/volto/issues/7339)
+
+## 2.0.0-alpha.13 (2026-01-26)
+
+### Feature
+
+- Enhanced `SlotRenderer`'s `GetSlotArgs` typings. @sneridagh 
+
+## 2.0.0-alpha.12 (2025-12-22)
+
+### Feature
+
+- Enhance registry utilities type definitions with typed method signatures. @ompharate @sneridagh [#7652](https://github.com/plone/volto/issues/7652)
+
+## 2.0.0-alpha.11 (2025-11-19)
+
+### Bugfix
+
+- Fixed types for SchemaEnhancers, export new `SchemaEnhancerArgs`. @sneridagh [#7627](https://github.com/plone/volto/issues/7627)
+
+## 2.0.0-alpha.10 (2025-11-10)
+
+### Feature
+
+- Added new widgets config typings. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
+
+## 2.0.0-alpha.9 (2025-11-03)
+
+### Feature
+
+- New typings for plate config. @sneridagh [#7393](https://github.com/plone/volto/issues/7393)
+- Make review_state nullable in ContainedItem - @ebrehault [#7513](https://github.com/plone/volto/issues/7513)
+
+### Bugfix
+
+- Fixed typings for `blocks` in `Content`. @sneridagh [#7432](https://github.com/plone/volto/issues/7432)
+
+## 2.0.0-alpha.8 (2025-10-31)
+
+### Bugfix
+
+- Better `BlockViewProps` typings, include `isEditMode`. @sneridagh [#7560](https://github.com/plone/volto/issues/7560)
+
+## 2.0.0-alpha.7 (2025-10-22)
+
+### Feature
+
+- Complete expanders typings, include `translations`. @sneridagh [#7531](https://github.com/plone/volto/issues/7531)
+
+## 2.0.0-alpha.6 (2025-10-21)
+
+### Bugfix
+
+- Fix plone.available_languages typing. @sneridagh [#7429](https://github.com/plone/volto/issues/7429)
+
+## 2.0.0-alpha.5 (2025-09-29)
+
+### Feature
+
+- Add controlpanel overview and schema driven control panels. @ksuess [#6657](https://github.com/plone/volto/issues/6657)
+- Added typings for `settings.hideBreadcrumbs`. @sneridagh [#7196](https://github.com/plone/volto/issues/7196)
+- Improve Block JSONSchema typings. @sneridagh [#7228](https://github.com/plone/volto/issues/7228)
+- Support typings for `@plone/plate`. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+- Added language switcher in Seven. @nileshgulia1 [#7352](https://github.com/plone/volto/issues/7352)
+- Backport Seven updates. @sneridagh [#7407](https://github.com/plone/volto/issues/7407)
+
+### Bugfix
+
+- Fixed Widgets typings. @sneridagh [#6999](https://github.com/plone/volto/issues/6999)
+- Update widget config typings for better inference. @deodorhunter [#7141](https://github.com/plone/volto/issues/7141)
+- Improved widgets typings.
+  Exported missing intl typings helpers.
+  Added BlockSchemaProps typings. @sneridagh 
+
+### Internal
+
+- Update Widgets types. @deodorhunter [#7334](https://github.com/plone/volto/issues/7334)
+
+## 2.0.0-alpha.4 (2025-06-25)
+
+### Bugfix
+
+- Removed the `isMultilingual` and `defaultLanguage` settings. @davisagli [#7125](https://github.com/plone/volto/issues/7125)
+- Improved widgets typings.
+  Exported missing intl typings helpers.
+  Added BlockSchemaProps typings. @sneridagh 
+
+## 2.0.0-alpha.3 (2025-05-16)
+
+### Bugfix
+
+- Fix image scales typings.
+  Added `dataAdapter` key in `BlockConfigBase`.
+  `category` as optional in `BlockConfigBase`. @sneridagh [#7079](https://github.com/plone/volto/issues/7079)
+
+## 2.0.0-alpha.2 (2025-05-13)
+
+### Feature
+
+- Better Site extender and endpoint typings, add it to the default extenders typings. @sneridagh [#7007](https://github.com/plone/volto/issues/7007)
+- Fixed `groupBlocksOrder` typing. @sneridagh [#7029](https://github.com/plone/volto/issues/7029)
+
+### Bugfix
+
+- Fix boolean in blocks edit config BlockEditProps in key selected type. @sneridagh [#6994](https://github.com/plone/volto/issues/6994)
+- Better typing for `apiExpandersType` introduced in #7012. @sneridagh [#7016](https://github.com/plone/volto/issues/7016)
+- `blockModel` should be optional. @sneridagh [#7033](https://github.com/plone/volto/issues/7033)
+- Improve typings of brains and objectBrowser references. @sneridagh [#7047](https://github.com/plone/volto/issues/7047)
+
+## 2.0.0-alpha.1 (2025-04-12)
+
+### Feature
+
+- Improve typings in `getAddonRoutesConfig` for `@plone/react-router`. @sneridagh [#6796](https://github.com/plone/volto/issues/6796)
+
+## 2.0.0-alpha.0 (2025-03-31)
+
+### Breaking
+
+- Update types to match plone client rewrite. @robgietema [#6889](https://github.com/plone/volto/issues/6889)
+
+## 1.3.2 (2025-02-08)
+
+### Internal
+
+- Update TS version. @sneridagh [#6641](https://github.com/plone/volto/issues/6641)
+- Remove hard dependencies on react-intl and history in @plone/types @sneridagh [#6728](https://github.com/plone/volto/issues/6728)
+
+## 1.3.1 (2025-01-31)
+
+### Bugfix
+
+- Remove `hasWorkingCopySupport` setting. @davisagli [#6393](https://github.com/plone/volto/issues/6393)
+
+## 1.3.0 (2025-01-24)
+
+### Feature
+
+- Added typings for the route registry. @sneridagh [#6600](https://github.com/plone/volto/issues/6600)
+
+## 1.2.0 (2024-12-17)
+
+### Feature
+
+- Added the typing for the new `cssLayers` configuration object setting. @sneridagh [#6539](https://github.com/plone/volto/issues/6539)
+
+## 1.1.0 (2024-12-12)
+
+### Feature
+
+- Added block category type. @sneridagh [#6409](https://github.com/plone/volto/issues/6409)
+
+## 1.0.0 (2024-10-31)
+
+### Internal
+
+- Release 1.0.0 @sneridagh
+
+## 1.0.0-alpha.22 (2024-10-30)
+
+### Feature
+
+- `StyleDefinitions` in types. @sneridagh [#6445](https://github.com/plone/volto/issues/6445)
+
+## 1.0.0-alpha.21 (2024-10-18)
+
+### Bugfix
+
+- Some improvements and fixes in blocks and settings types. @sneridagh [#6412](https://github.com/plone/volto/issues/6412)
+
+### Internal
+
+- Update typescript and vitest everywhere @sneridagh [#6407](https://github.com/plone/volto/issues/6407)
+
+## 1.0.0-alpha.20 (2024-10-08)
+
+### Bugfix
+
+- Fixed types for image fields and BlocksFormData @pnicolli @deodorhunter [#6382](https://github.com/plone/volto/issues/6382)
 
 ## 1.0.0-alpha.19 (2024-07-30)
 

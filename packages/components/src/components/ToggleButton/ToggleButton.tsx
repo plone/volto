@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   ToggleButton as RACToggleButton,
-  ToggleButtonProps,
+  type ToggleButtonProps,
 } from 'react-aria-components';
 
 export function ToggleButton(props: ToggleButtonProps) {

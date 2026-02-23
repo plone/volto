@@ -77,8 +77,14 @@ export const TitleBlockEdit = (props) => {
         ReactEditor.focus(editor);
       } else {
         // nothing is selected, move focus to end
-        ReactEditor.focus(editor);
-        Transforms.select(editor, Editor.end(editor, []));
+        // make sure that the editor is focused
+        setTimeout(() => {
+          const focused = ReactEditor.focus(editor);
+          if (!focused) {
+            ReactEditor.focus(editor);
+            Transforms.select(editor, Editor.end(editor, []));
+          }
+        }, 0);
       }
     }
   }, [prevSelected, selected, editor]);

@@ -41,7 +41,7 @@ declare const _default: {
         state: {
             isObjectBrowserOpen: boolean;
         };
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;
@@ -74,7 +74,7 @@ declare const _default: {
         data: {};
         block: string;
     };
-    contextType?: React.Context<any>;
+    contextType?: React.Context<any> | undefined;
 };
 export default _default;
 import React from 'react';

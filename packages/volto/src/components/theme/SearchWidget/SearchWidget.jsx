@@ -4,9 +4,10 @@ import { Form, Input } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getNavroot } from '@plone/volto/actions';
-import { hasApiExpander, getBaseUrl } from '@plone/volto/helpers';
-import { Icon } from '@plone/volto/components';
+import { getNavroot } from '@plone/volto/actions/navroot/navroot';
+import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import zoomSVG from '@plone/volto/icons/zoom.svg';
 
 const messages = defineMessages({

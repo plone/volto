@@ -2,21 +2,23 @@ import React from 'react';
 import {
   Menu as RACMenu,
   MenuItem as RACMenuItem,
-  MenuItemProps,
-  MenuProps,
+  type MenuItemProps,
+  type MenuProps,
   MenuTrigger,
-  MenuTriggerProps,
+  type MenuTriggerProps,
   Popover,
-  PressEvent,
+  type PressEvent,
 } from 'react-aria-components';
 
 import { Button } from '../Button/Button';
+import type { Placement } from 'react-aria';
 
 export interface MenuButtonProps<T>
   extends MenuProps<T>,
     Omit<MenuTriggerProps, 'children'> {
   button?: React.ReactNode;
   onPress?: (e: PressEvent) => void;
+  placement?: Placement;
 }
 
 export function Menu<T extends object>({
@@ -28,7 +30,7 @@ export function Menu<T extends object>({
   return (
     <MenuTrigger {...props}>
       <Button onPress={onPress}>{button}</Button>
-      <Popover>
+      <Popover placement={props.placement || 'bottom start'}>
         <RACMenu {...props}>{children}</RACMenu>
       </Popover>
     </MenuTrigger>

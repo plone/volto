@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Checkbox as RACCheckbox,
-  CheckboxProps as RACCheckboxProps,
+  type CheckboxProps as RACCheckboxProps,
 } from 'react-aria-components';
 
 interface CheckboxProps extends RACCheckboxProps {

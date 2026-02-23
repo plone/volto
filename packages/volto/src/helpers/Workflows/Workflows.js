@@ -4,7 +4,8 @@
  */
 
 import config from '@plone/volto/registry';
-import { last, split } from 'lodash';
+import last from 'lodash/last';
+import split from 'lodash/split';
 
 /**
  * Maps the available transitions to the current list of colors and returns a

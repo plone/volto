@@ -1,8 +1,9 @@
+export function installDefaultBlocks(config: any): void;
 export const groupBlocksOrder: {
     id: string;
     title: string;
 }[];
-export const requiredBlocks: string[];
+export const requiredBlocks: any[];
 export namespace blocksConfig {
     namespace gridBlock {
         namespace blocksConfig {

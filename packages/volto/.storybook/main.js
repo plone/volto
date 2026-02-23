@@ -5,7 +5,7 @@ const path = require('path');
 const projectRootPath = path.resolve('.');
 const lessPlugin = require('../webpack-plugins/webpack-less-plugin');
 
-const createConfig = require('../node_modules/razzle/config/createConfigAsync.js');
+const createConfig = require('../node_modules/@plone/razzle/config/createConfigAsync.js');
 const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
 
 const SVGLOADER = {
@@ -102,8 +102,8 @@ module.exports = {
       [],
       defaultRazzleOptions,
     );
-    const AddonConfigurationRegistry = require('@plone/registry/src/addon-registry');
-    const registry = new AddonConfigurationRegistry(projectRootPath);
+    const { AddonRegistry } = require('@plone/registry/addon-registry');
+    const { registry } = AddonRegistry.init(projectRootPath);
     config = lessPlugin({
       registry,
     }).modifyWebpackConfig({

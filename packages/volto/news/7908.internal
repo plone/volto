@@ -1,0 +1,1 @@
+Fix razzle.config.js defaultPlugins missing name property to ensure addon SCSS plugin replacement works correctly. @Manik-Khajuria-5

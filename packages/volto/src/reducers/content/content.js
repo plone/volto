@@ -3,9 +3,10 @@
  * @module reducers/content/content
  */
 
-import { map, mapKeys, omit } from 'lodash';
+import omit from 'lodash/omit';
 
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { flattenStaticBehaviors } from '@plone/volto/helpers/Content/Content';
 
 import {
   CREATE_CONTENT,
@@ -19,6 +20,8 @@ import {
   UPDATECOLUMNS_CONTENT,
   UPDATE_UPLOADED_FILES,
 } from '@plone/volto/constants/ActionTypes';
+
+import config from '@plone/volto/registry';
 
 const initialState = {
   create: {
@@ -127,14 +130,7 @@ export default function content(state = initialState, action = {}) {
             },
           };
     case `${CREATE_CONTENT}_SUCCESS`:
-      if (result['@static_behaviors']) {
-        map(result['@static_behaviors'], (behavior) => {
-          result = {
-            ...omit(result, behavior),
-            ...mapKeys(result[behavior], (value, key) => `${behavior}.${key}`),
-          };
-        });
-      }
+      result = flattenStaticBehaviors(result);
       const data = action.subrequest
         ? Array.isArray(result)
           ? result.map((item) => ({
@@ -184,14 +180,17 @@ export default function content(state = initialState, action = {}) {
             },
           };
     case `${GET_CONTENT}_SUCCESS`:
-      if (result['@static_behaviors']) {
-        map(result['@static_behaviors'], (behavior) => {
-          result = {
-            ...omit(result, behavior),
-            ...mapKeys(result[behavior], (value, key) => `${behavior}.${key}`),
-          };
-        });
-      }
+      result = flattenStaticBehaviors(result);
+
+      const transforms = config.getUtilities({
+        type: 'transform',
+        dependencies: { reducer: 'content' },
+      });
+
+      transforms.forEach(({ method }) => {
+        method(result);
+      });
+
       return action.subrequest
         ? {
             ...state,

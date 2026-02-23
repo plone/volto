@@ -4,11 +4,11 @@
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
+import { toast } from 'react-toastify';
 import {
   Button,
   Checkbox,
@@ -24,15 +24,17 @@ import {
   removeAliases,
   addAliases,
   getAliases,
-  getContent,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/aliases/aliases';
+import { getContent } from '@plone/volto/actions/content/content';
 
-import { Icon, Toolbar } from '@plone/volto/components';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+
+import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 
 import backSVG from '@plone/volto/icons/back.svg';
-import { getBaseUrl } from '@plone/volto/helpers';
-import { toast } from 'react-toastify';
-import { Toast } from '@plone/volto/components';
 
 const messages = defineMessages({
   back: {

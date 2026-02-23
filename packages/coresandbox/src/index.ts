@@ -4,7 +4,7 @@ import TestBlockView from './components/Blocks/TestBlock/View';
 import TestBlockEdit from './components/Blocks/TestBlock/Edit';
 import InputBlockView from './components/Blocks/InputBlock/View';
 import InputBlockEdit from './components/Blocks/InputBlock/Edit';
-import { flattenToAppURL } from '@plone/volto/helpers';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
 import { inputBlockSchema } from './components/Blocks/InputBlock/schema';
 import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
@@ -13,12 +13,14 @@ import codeSVG from '@plone/volto/icons/code.svg';
 import type { BlockConfigBase } from '@plone/types';
 import type { ConfigType } from '@plone/registry';
 import SlotComponentTest from './components/Slots/SlotTest';
-import { ContentTypeCondition } from '@plone/volto/helpers';
+import { ContentTypeCondition } from '@plone/volto/helpers/Slots';
 import { RouteCondition } from '@plone/volto/helpers/Slots';
 import TestForm from './components/TestForm';
 import FormBlockView from './components/Blocks/FormBlock/View';
 import FormBlockEdit from './components/Blocks/FormBlock/Edit';
 import { formBlockSchema } from './components/Blocks/FormBlock/schema';
+import Login from '@plone/volto/components/theme/Login/Login';
+
 const testBlock: BlockConfigBase = {
   id: 'testBlock',
   title: 'testBlock',
@@ -172,14 +174,7 @@ const listing = (config: ConfigType) => {
 };
 
 export const multilingualFixture = (config: ConfigType) => {
-  config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['en', 'it'];
-
-  return config;
-};
-
-export const workingCopyFixture = (config: ConfigType) => {
-  config.settings.hasWorkingCopySupport = true;
 
   return config;
 };
@@ -207,6 +202,12 @@ const applyConfig = (config: ConfigType) => {
       exact: false,
     },
   ];
+
+  config.addonRoutes.push({
+    path: '/fallback_login',
+    component: Login,
+    exact: false,
+  });
   config.blocks.blocksConfig.testBlock = testBlock;
   config.blocks.blocksConfig.inputBlock = inputBlock;
   config.blocks.blocksConfig.testBlockConditional = testBlockConditional;
@@ -225,6 +226,16 @@ const applyConfig = (config: ConfigType) => {
     name: 'testSlotComponent',
     component: SlotComponentTest,
     predicates: [ContentTypeCondition(['Document']), RouteCondition('/hello')],
+  });
+
+  config.registerRoute({
+    type: 'route',
+    path: '/hello',
+    file: 'src/components/Views/NewsAndEvents/asd.tsx',
+    options: {
+      id: 'hello',
+      index: true,
+    },
   });
 
   return config;

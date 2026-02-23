@@ -40,6 +40,10 @@ declare const routes: {
     component: any;
     routes: ({
         path: string;
+        component: React.ComponentType;
+        exact?: boolean;
+    } | {
+        path: string;
         component: any;
         exact?: undefined;
     } | {

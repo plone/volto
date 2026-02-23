@@ -3,10 +3,10 @@ import {
   Button,
   CalendarCell,
   CalendarGrid,
-  DateValue,
+  type DateValue,
   Heading,
   RangeCalendar as RACRangeCalendar,
-  RangeCalendarProps as RACRangeCalendarProps,
+  type RangeCalendarProps as RACRangeCalendarProps,
   Text,
 } from 'react-aria-components';
 

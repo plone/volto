@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
+import isEqual from 'lodash/isEqual';
 import { Transforms, Editor } from 'slate'; // , Transforms
 import { Slate, Editable, ReactEditor } from 'slate-react';
 import React, { Component } from 'react'; // , useState
@@ -11,12 +11,10 @@ import config from '@plone/volto/registry';
 import { Element, Leaf } from './render';
 
 import withTestingFeatures from './extensions/withTestingFeatures';
-import {
-  makeEditor,
-  toggleInlineFormat,
-  toggleMark,
-  parseDefaultSelection,
-} from '@plone/volto-slate/utils';
+import { makeEditor } from '@plone/volto-slate/utils/editor';
+import { toggleInlineFormat } from '@plone/volto-slate/utils/blocks';
+import { toggleMark } from '@plone/volto-slate/utils/marks';
+import { parseDefaultSelection } from '@plone/volto-slate/utils/selection';
 import { InlineToolbar } from './ui';
 import EditorContext from './EditorContext';
 
@@ -58,6 +56,7 @@ class SlateEditor extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.getSavedSelection = this.getSavedSelection.bind(this);
     this.setSavedSelection = this.setSavedSelection.bind(this);
+    this.scheduleFocus = this.scheduleFocus.bind(this);
 
     this.savedSelection = null;
 
@@ -162,8 +161,7 @@ class SlateEditor extends Component {
           editor,
           this.props.defaultSelection,
         );
-
-        ReactEditor.focus(editor);
+        this.scheduleFocus(editor);
         Transforms.select(editor, selection);
       } else {
         try {
@@ -195,12 +193,30 @@ class SlateEditor extends Component {
         );
       }
 
-      ReactEditor.focus(this.state.editor);
+      this.scheduleFocus(this.state.editor);
     }
 
     if (this.props.selected && this.props.onUpdate) {
       this.props.onUpdate(editor);
     }
+  }
+
+  scheduleFocus(editor) {
+    if (!editor) return;
+
+    const schedule =
+      typeof window !== 'undefined' && window.requestAnimationFrame
+        ? (fn) => window.requestAnimationFrame(fn)
+        : (fn) => setTimeout(fn, 0);
+
+    schedule(() => {
+      if (this.isUnmounted) return;
+      try {
+        ReactEditor.focus(editor);
+      } catch {
+        // ignore focus errors; selection might no longer be valid
+      }
+    });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -215,6 +231,7 @@ class SlateEditor extends Component {
 
   render() {
     const {
+      id,
       selected,
       placeholder,
       onKeyDown,
@@ -342,6 +359,7 @@ class SlateEditor extends Component {
                 onKeyDown && onKeyDown({ editor, event });
               }}
               {...editableProps}
+              aria-labelledby={`field-${id}`}
             />
             {selected &&
               slateSettings.persistentHelpers.map((Helper, i) => {

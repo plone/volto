@@ -5,7 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Helmet } from '@plone/volto/helpers';
+import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -16,20 +16,25 @@ import {
   Segment,
   Table,
 } from 'semantic-ui-react';
-import { concat, map, reverse, find } from 'lodash';
+import concat from 'lodash/concat';
+import map from 'lodash/map';
+import reverse from 'lodash/reverse';
+import find from 'lodash/find';
 import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { asyncConnect } from '@plone/volto/helpers';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 
+import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
+import IconNext from '@plone/volto/components/theme/Icon/Icon';
+import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import {
-  FormattedDate,
-  Icon as IconNext,
-  Toolbar,
-  Forbidden,
-  Unauthorized,
-} from '@plone/volto/components';
-import { getHistory, revertHistory, listActions } from '@plone/volto/actions';
-import { getBaseUrl } from '@plone/volto/helpers';
+  getHistory,
+  revertHistory,
+} from '@plone/volto/actions/history/history';
+import { listActions } from '@plone/volto/actions/actions/actions';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';

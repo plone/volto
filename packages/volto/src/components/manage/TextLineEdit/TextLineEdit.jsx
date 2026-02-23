@@ -3,7 +3,7 @@ import { Editor, Node, Transforms, Range, createEditor } from 'slate';
 import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import { usePrevious } from '@plone/volto/helpers';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import config from '@plone/volto/registry';
 import { P } from '@plone/volto-slate/constants';
 import cx from 'classnames';

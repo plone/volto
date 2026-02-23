@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import ContainerEdit from '../Container/Edit';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUIState } from '@plone/volto/actions';
+import { setUIState } from '@plone/volto/actions/form/form';
 
 const GridBlockEdit = (props) => {
   const { data } = props;

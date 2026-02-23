@@ -2,7 +2,7 @@ import React from 'react';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash/cloneDeep';
 
 import {
   goDown,
@@ -19,9 +19,11 @@ import {
   slashMenu,
   cancelEsc,
 } from './keyboard';
+import { splitAtSeam } from './keyboard/splitAtSeam';
 import { withDeleteSelectionOnEnter } from '@plone/volto-slate/editor/extensions';
 import {
   breakList,
+  breakListInWidget,
   withDeserializers,
   withLists,
   withSplitBlocksOnBreak,
@@ -47,6 +49,7 @@ export default function applyConfig(config) {
       breakList,
       normalizeExternalData,
     ],
+    slateWidgetExtensions: [breakListInWidget],
 
     // Pluggable handlers for the onKeyDown event of <Editable />
     // Order matters here. A handler can return `true` to stop executing any
@@ -64,6 +67,7 @@ export default function applyConfig(config) {
       Enter: [
         slashMenu,
         unwrapEmptyString,
+        splitAtSeam,
         softBreak, // Handles shift+Enter as a newline (<br/>)
       ],
       ArrowUp: [

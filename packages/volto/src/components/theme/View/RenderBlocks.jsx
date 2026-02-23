@@ -1,16 +1,16 @@
 import React from 'react';
-import { getBaseUrl, applyBlockDefaults } from '@plone/volto/helpers';
+import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { defineMessages, useIntl } from 'react-intl';
-import { map } from 'lodash';
-import { MaybeWrap } from '@plone/volto/components';
+import map from 'lodash/map';
+import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 import {
-  getBlocksFieldname,
-  getBlocksLayoutFieldname,
+  applyBlockDefaults,
+  getBlocks,
   hasBlocksData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 import StyleWrapper from '@plone/volto/components/manage/Blocks/Block/StyleWrapper';
 import config from '@plone/volto/registry';
-import { ViewDefaultBlock } from '@plone/volto/components';
+import ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
 import RenderEmptyBlock from './RenderEmptyBlock';
 
 const messages = defineMessages({
@@ -25,28 +25,27 @@ const messages = defineMessages({
 });
 
 const RenderBlocks = (props) => {
-  const { content, location, metadata, blockWrapperTag } = props;
+  const { blockWrapperTag, content, location, isContainer, metadata } = props;
   const intl = useIntl();
-  const blocksFieldname = getBlocksFieldname(content);
-  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
   const CustomTag = props.as || React.Fragment;
 
+  const blockList = getBlocks(content);
+
   return hasBlocksData(content) ? (
     <CustomTag>
-      {map(content[blocksLayoutFieldname].items, (block) => {
+      {map(blockList, ([block, rawBlockData]) => {
         const Block =
-          blocksConfig[content[blocksFieldname]?.[block]?.['@type']]?.view ||
-          ViewDefaultBlock;
+          blocksConfig[rawBlockData?.['@type']]?.view || ViewDefaultBlock;
 
         const blockData = applyBlockDefaults({
-          data: content[blocksFieldname][block],
+          data: rawBlockData,
           intl,
           metadata,
           properties: content,
         });
 
-        if (content[blocksFieldname]?.[block]?.['@type'] === 'empty') {
+        if (rawBlockData?.['@type'] === 'empty') {
           return (
             <MaybeWrap
               key={block}
@@ -71,6 +70,7 @@ const RenderBlocks = (props) => {
                 id={block}
                 block={block}
                 data={blockData}
+                isContainer={isContainer}
               >
                 <Block
                   id={block}
@@ -89,7 +89,7 @@ const RenderBlocks = (props) => {
           return (
             <div key={block}>
               {intl.formatMessage(messages.unknownBlock, {
-                block: content[blocksFieldname]?.[block]?.['@type'],
+                block: rawBlockData?.['@type'],
               })}
             </div>
           );

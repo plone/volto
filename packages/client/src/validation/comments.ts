@@ -1,5 +1,5 @@
 import { z } from 'zod';
 
-export const newCommentDataSchema = z.object({
+export const createCommentDataSchema = z.object({
   text: z.string(),
 });

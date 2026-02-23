@@ -1,8 +1,9 @@
+import { useId } from 'react';
 import { Button } from 'semantic-ui-react';
 import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { compose } from 'redux';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
   Option,
   DropdownIndicator,
@@ -48,6 +49,10 @@ const SortOn = (props) => {
     querystring = {},
     intl,
   } = props;
+  const uniqueId = useId();
+  const sortOnLabelId = `sort-on-label-${uniqueId}`;
+  const selectId = `select-search-sort-on-${uniqueId}`;
+
   const { sortable_indexes } = querystring;
   const Select = reactSelect.default;
 
@@ -75,11 +80,12 @@ const SortOn = (props) => {
       <div className="search-sort-on">
         {showSelectField ? (
           <>
-            <span className="sort-label">
+            <span id={sortOnLabelId} className="sort-label">
               {intl.formatMessage(messages.sortOn)}
             </span>
             <Select
-              id="select-search-sort-on"
+              aria-labelledby={sortOnLabelId}
+              id={selectId}
               name="select-searchblock-sort-on"
               className="search-react-select-container"
               classNamePrefix="react-select"
@@ -113,6 +119,7 @@ const SortOn = (props) => {
       {activeSortOn ? (
         <>
           <Button
+            type="button"
             icon
             basic
             compact
@@ -127,6 +134,7 @@ const SortOn = (props) => {
             <Icon name={downSVG} size="25px" />
           </Button>
           <Button
+            type="button"
             icon
             basic
             compact

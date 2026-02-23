@@ -1,29 +1,19 @@
 import React from 'react';
 import { Icon } from './Icon';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/icons.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Components/Icon',
+  title: 'Basic/Icon',
   component: Icon,
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div style={{ width: '400px' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  parameters: {
+    layout: 'centered',
+  },
   argTypes: {
     size: {
-      options: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      control: { type: 'radio' },
-    },
-    color: {
-      options: ['informative', 'negative', 'notice', 'positive'],
+      options: ['2xs', 'xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl'],
       control: { type: 'radio' },
     },
   },
@@ -32,14 +22,42 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
+const svgIcon = (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M18 10C18 11.1046 17.1046 12 16 12C14.8954 12 14 11.1046 14 10C14 8.89543 14.8954 8 16 8C17.1046 8 18 8.89543 18 10Z" />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M2 20V4H22V20H2ZM4 6H20V17.5857L16.0001 13.5858L14.0001 15.5858L8.00008 9.58582L4 13.5859V6ZM4 16.4143V18H13.5858L8.00008 12.4142L4 16.4143ZM14.4143 18H17.5858L16.0001 16.4142L14.4143 18Z"
+    />
+  </svg>
+);
+
 export const Default: Story = {
   args: {
-    size: 'L',
-    children: (
-      <svg viewBox="0 0 36 36">
-        <path d="M18.477.593,22.8,12.029l12.212.578a.51.51,0,0,1,.3.908l-9.54,7.646,3.224,11.793a.51.51,0,0,1-.772.561L18,26.805,7.78,33.515a.51.51,0,0,1-.772-.561l3.224-11.793L.692,13.515a.51.51,0,0,1,.3-.908L13.2,12.029,17.523.593A.51.51,0,0,1,18.477.593Z" />
-      </svg>
-    ),
+    size: 'lg',
+    children: svgIcon,
+  },
+};
+
+export const WithCSSCustomPropertyColor: Story = {
+  args: {
+    size: '2xl',
+    color: '--quanta-sapphire',
+    children: svgIcon,
+  },
+};
+
+export const WithHEXColor: Story = {
+  args: {
+    size: '3xl',
+    color: '#aaa',
+    children: svgIcon,
   },
 };

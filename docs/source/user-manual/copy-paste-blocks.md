@@ -28,6 +28,7 @@ This will select all the blocks between the start and end blocks, allowing you t
 
 ````{only} not text
 ```{video} ../_static/user-manual/blocks/block-copy-cut.mp4
+:alt: Copy or cut a block in Volto
 ```
 ````
 
@@ -44,5 +45,6 @@ Also if you hold the {kbd}`ctrl` key while clicking the paste button, it keeps t
 
 ````{only} not text
 ```{video} ../_static/user-manual/blocks/block-paste.mp4
+:alt: Paste a block in Volto
 ```
 ````

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs as RACTabs, TabsProps } from 'react-aria-components';
+import { Tabs as RACTabs, type TabsProps } from 'react-aria-components';
 
 export function Tabs(props: TabsProps) {
   return <RACTabs {...props} />;

@@ -19,25 +19,25 @@ As a reference, here's an overview of knowledge and frameworks, to give a more c
 
 ## Foundation
 
-As is the case with similar modern JavaScript-based applications, you should be familiar the following foundational topics.
+As is the case with similar modern JavaScript-based applications, you should be familiar with the following foundational topics.
 
 -   Modern JavaScript development.
     Volto uses next-generation JavaScript.
-    Follow the [ES6 guide](https://flaviocopes.com/es6/) to get up to speed.
+    Follow the [ES6 guide](https://thevalleyofcode.com/es6/) to get up to speed.
 -   [Basic React knowledge](https://react.dev/learn/tutorial-tic-tac-toe) to start.
     You'll progress along the way.
     React itself is a simple and well documented framework.
 -   A basic understanding of JavaScript.
-    [CommonJS](https://flaviocopes.com/commonjs/),
-    [npm packages](https://flaviocopes.com/npm/),
-    [Yarn](https://flaviocopes.com/yarn/),
-    [Babel](https://flaviocopes.com/babel/), and
-    [Webpack](https://flaviocopes.com/webpack/).
+    [CommonJS](https://thevalleyofcode.com/commonjs/),
+    [npm packages](https://thevalleyofcode.com/npm/),
+    [Yarn](https://thevalleyofcode.com/yarn/),
+    [Babel](https://thevalleyofcode.com/babel/), and
+    [Webpack](https://thevalleyofcode.com/webpack/).
 
 
 ## Basic Volto development
 
-Once you've {doc}`bootstrapped your Volto project <plone:install/create-project>`, you can immediately start hacking.
+Once you've {doc}`bootstrapped your Volto project <plone:install/create-project-cookieplone>`, you can immediately start hacking.
 The following is a list of some the things you can do at this stage.
 
 -   {ref}`Configure your text editor for JavaScript and Volto development <linting-editor-integration-label>`
@@ -68,7 +68,7 @@ While developing a project using Volto, you might perform the following routine 
 -   Integrate an add-on's LESS statements with Volto's theme variables
 -   Use schema-based forms to write block components
 -   Write new form widgets
--   {doc}`Write tests in Jest <../contributing/testing>`
+-   {doc}`Write tests in Vitest <../contributing/testing>`
 -   {doc}`Write integration tests in Cypress <../contributing/acceptance-tests>`
 -   Split your code and lazy-load libraries to improve performance
 -   Use more advanced React concepts, including hooks, context providers, and other topics
@@ -98,5 +98,5 @@ Add your code and customizations to this add-on, and Volto will load them on sta
 This add-on is configured as a theme add-on, so you are able to customize the look and feel of your site as well.
 
 ```{seealso}
-For more information about how to develop a Volto project as an add-on, see {doc}`training:voltoaddons/index`.
+For more information about how to develop a Volto project as an add-on, see {doc}`training-2024:voltoaddons/index`.
 ```

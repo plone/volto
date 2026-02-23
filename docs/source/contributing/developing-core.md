@@ -21,7 +21,7 @@ Additionally you can build each version of Volto documentation by running `make 
 ```
 
 ```{seealso}
-To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project` instead.
+To create a full Plone project with both frontend and backend, see {doc}`plone:install/create-project-cookieplone` instead.
 ```
 
 
@@ -36,50 +36,39 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 
 This monorepo uses pnpm as a package manager, extensively using its {term}`workspace` feature.
 It's organized in two folders, depending on whether it's a library (package) or an app.
-The workspaces are located in the `packages` or `apps` folder.
+The workspaces are located in the `packages` folder.
 
 
 ### Folder layout
 
 Volto has the following folder structure.
+The package `volto` is the core code of Volto.
 
 ```text
-(volto-monorepo)/
-├─ apps/
-│  ├─ plone
-│  ├─ nextjs
-│  └─ remix
+/
 ├─ packages/
-│  ├─ volto
 │  ├─ client
 │  ├─ components
-│  ├─ registry
-│  ├─ types
 │  ├─ coresandbox
-│  ├─ generator-volto
+│  ├─ registry
 │  ├─ scripts
 │  ├─ tsconfig
-│  ├─ volto-guillotina
-│  ├─ volto-slate
-│  └─ volto-testing
-├─ .gitignore
-├─ package.json
-├─ pnpm-workspace.yaml
-├─ turbo.json
-├─ tsconfig.json
+│  ├─ types
+│  ├─ volto
+│  └─ volto-slate
 ├─ ...
 ```
 
 
-## Development pre-requisites
+## Development prerequisites
 
-To set up a Volto core development environment, your system must satisfy the following pre-requisites.
+To set up a Volto core development environment, your system must satisfy the following prerequisites.
 
-```{include} ./install-operating-system.md
+```{include} ../_inc/_install-operating-system.md
 ```
 
 -   {term}`nvm`
--   {term}`Node.js` LTS 20.x
+-   {term}`Node.js` LTS 22.x
 -   {term}`pnpm`
 -   {term}`GNU make`
 -   {term}`Docker`
@@ -93,16 +82,13 @@ When developing a project using Plone, Yarn or other package managers may be use
 
 ### nvm
 
-```{include} ./install-nvm.md
+```{include} ../_inc/_install-nvm.md
 ```
 
 
 ### Node.js
 
-We recommend that you install Node.js using nvm.
-Alternatively you can install Node.js using Homebrew or other package installer.
-
-```{include} ./install-nodejs.md
+```{include} ../_inc/_install-nodejs.md
 ```
 
 
@@ -135,19 +121,19 @@ Compare the output to the [latest pnpm release number](https://www.npmjs.com/pac
 
 ### Make
 
-```{include} ./install-make.md
+```{include} ../_inc/_install-make.md
 ```
 
 
 ### Docker
 
-```{include} ./install-docker.md
+```{include} ../_inc/_install-docker.md
 ```
 
 
 ### Git
 
-```{include} ../contributing/install-git.md
+```{include} ../_inc/_install-git.md
 ```
 
 
@@ -165,7 +151,7 @@ cd volto
 Install the frontend dependencies.
 
 ```shell
-pnpm install
+make install
 ```
 
 
@@ -222,7 +208,7 @@ Then run `make backend-docker-start` again to start the backend with a clean dat
 
 #### Configure backend language
 
-If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `LANGUAGE` environment variable, overriding the default of `en`, when you start it.
+If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `SITE_DEFAULT_LANGUAGE` environment variable, overriding the default of `en`, when you start it.
 
 This variable is applied only when the Plone site is created.
 If you persist data through restarts, you only need to do this once.
@@ -232,10 +218,10 @@ You can either pass an environment variable into the make command to start the b
 
 ```shell
 # pass method
-LANGUAGE=pt-br make backend-docker-start
+SITE_DEFAULT_LANGUAGE=pt-br make backend-docker-start
 
 # export method
-export LANGUAGE=pt-br
+export SITE_DEFAULT_LANGUAGE=pt-br
 make backend-docker-start
 ```
 
@@ -258,9 +244,9 @@ Browse to the frontend running at http://localhost:3000.
 ## Run commands for pnpm workspaces
 
 As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of {term}`workspace`.
-Every package or app located in the `packages` or `apps` folders is declared as a pnpm workspace.
+Every package located in the {file}`packages` folder is declared as a pnpm workspace.
 
-When developing Volto, you can run pnpm commands from either the repository root or inside the package's or app's workspace in `packages/<package_name>` or `apps/<app_name>`.
+When developing Volto, you can run pnpm commands from either the repository root or inside the package's workspace in {file}`packages/<package_name>`.
 
 pnpm commands will apply in the context from which they are run.
 That means when you run a pnpm command from the repository root, it will apply to all workspaces.
@@ -330,13 +316,6 @@ By default, the use of TypeScript is required in Plone frontend libraries, Volto
 
 The monorepository consists of several core libraries.
 
-### Volto project generator
-
-`@plone/generator-volto` is a Yeoman generator that helps you set up Volto via command line.
-It generates all the boilerplate needed to start developing a Plone Volto project.
-It is used by [CookieCutter Plone Starter](https://github.com/collective/cookiecutter-plone-starter), the recommended way to set up Plone projects.
-The generator features an `addon` template for scaffolding Volto add-ons in your projects.
-
 ### Registry
 
 `@plone/registry` provides support for building an add-on registry and infrastructure for JavaScript and TypeScript-based apps.
@@ -354,6 +333,17 @@ Used by Volto, you can also use it in other JavaScript frameworks and environmen
 
 `@plone/volto-slate` is the glue package that provides support for the Slate library in Volto.
 
+### Volto project generator
+
+```{deprecated} 18.0.0-alpha.43
+For Volto 18, `@plone/generator-volto` is replaced by [Cookieplone](https://github.com/plone/cookieplone).
+```
+
+`@plone/generator-volto` was a Yeoman generator that helps you set up Volto via command line.
+It generated all the boilerplate needed to start developing a Plone Volto project.
+It was used by `cookiecutter-plone-starter`, the deprecated way to set up Plone projects.
+The generator featured an `addon` template for scaffolding Volto add-ons in your projects.
+
 
 ## Supported frontends
 
@@ -361,62 +351,8 @@ Plone 6 comes with two frontend {term}`reference implementation`s.
 Volto is the default frontend, and is React-based.
 Classic UI is the Python-based, server-side rendered frontend.
 
-In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
-This is the same as that which you'll have when you run the Volto generator or `cookiecutter-plone-starter`.
+This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project-cookieplone`).
 
-
-## Experimental frontends
-
-Other frontends are currently under heavy development.
-They are marked as experimental and, for now, they are a proof of concept demonstrating that other frontends are possible.
-Although they do work now in an acceptable way, the implementation might change in the future.
-These implementations only show how to access the public Plone content in the current site, dealing with data fetching and routing.
-All implementations are located in the `apps` directory in a subdirectory according to their implementation name.
-They use the Plone frontend strategic packages, including `@plone/registry`, `@plone/client`, and `@plone/components`.
-
-
-### Next.js
-
-This frontend is a proof of concept using Next.js with Plone.
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-nextjs dev
-```
-
-### Remix
-
-This frontend is a proof of concept using Remix with Plone.
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-remix dev
-```
-
-### Vite build (client only)
-
-This frontend is a proof of concept using a custom client build based in Vite with Plone.
-It uses `@tanstack/router` in combination with `@plone/client`, which in turns uses `@tanstack/query`.
-This build is suitable for applications that do not need server side generation, and it's client only.
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-vite dev
-```
-
-### Vite SSR build
-
-This frontend is a proof of concept using a custom build, based in Vite with SSR with Plone.
-It uses `@tanstack/router` in combination with `@plone/client` (which in turns uses `@tanstack/query`).
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-vite-ssr dev
-```
 
 ## Support libraries
 
@@ -427,12 +363,3 @@ Volto uses several libraries to support development.
 `@plone/volto-coresandbox` is a support library used mainly for testing purposes.
 It provides fixtures to bootstrap projects with configurations different than the default one.
 It is used by the acceptance tests to set up different test fixtures, such as `multilingual` or `workingcopy`.
-
-### Volto testing package
-
-The `@plone/testing` stub library helps set up the testing libraries used by Volto without having to install the whole Volto package.
-It is mainly used in CI to reduce installation times.
-
-### Volto Guillotina
-
-`@plone/volto-guillotina` is the support library used to interact with Guillotina as the Plone backend.

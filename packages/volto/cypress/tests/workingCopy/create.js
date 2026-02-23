@@ -19,8 +19,11 @@ describe('Working Copy Tests - Create', () => {
   it('Basic create operation', function () {
     cy.get('#toolbar-more').click();
     cy.findByLabelText('Create working copy').click();
-    cy.findByRole('alert').contains('This is a working copy of');
-    cy.findByRole('alert')
+    cy.get('.Toastify')
+      .findByRole('alert')
+      .contains('This is a working copy of');
+    cy.get('.Toastify')
+      .findByRole('alert')
       .get('.toast-inner-content a')
       .should('have.attr', 'href')
       .and('include', '/document');
@@ -37,11 +40,17 @@ describe('Working Copy Tests - Create', () => {
   it('Navigation through baseline-working copy', function () {
     cy.get('#toolbar-more').click();
     cy.findByLabelText('Create working copy').click();
-    cy.findByRole('alert').get('.toast-inner-content a').click();
+    cy.get('.Toastify')
+      .findByRole('alert')
+      .get('.toast-inner-content a')
+      .click();
 
     cy.url().should('eq', Cypress.config().baseUrl + '/document');
-    cy.findByRole('alert').contains('This has an ongoing working copy in');
-    cy.findByRole('alert')
+    cy.get('.Toastify')
+      .findByRole('alert')
+      .contains('This has an ongoing working copy in');
+    cy.get('.Toastify')
+      .findByRole('alert')
       .get('.toast-inner-content a')
       .should('have.attr', 'href')
       .and('include', '/working_copy_of_document');
@@ -50,9 +59,9 @@ describe('Working Copy Tests - Create', () => {
     cy.findByText('View working copy');
   });
 
-  it('Portal root does not have create option', function () {
+  it('Portal root has create option', function () {
     cy.visit('/');
     cy.get('#toolbar-more').click();
-    cy.get('.menu-more').contains('Create working copy').should('not.exist');
+    cy.get('.menu-more').contains('Create working copy').should('exist');
   });
 });

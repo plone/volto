@@ -3,14 +3,16 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { Pagination, Dimmer, Loader } from 'semantic-ui-react';
 import Slugger from 'github-slugger';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { renderLinkElement } from '@plone/volto-slate/editor/render';
 import config from '@plone/volto/registry';
 import withQuerystringResults from './withQuerystringResults';
-import { normalizeString } from '@plone/volto/helpers';
+import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
 
 import paginationLeftSVG from '@plone/volto/icons/left-key.svg';
 import paginationRightSVG from '@plone/volto/icons/right-key.svg';
+
+import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
 
 const Headline = ({ headlineTag, id, data = {}, listingItems, isEditMode }) => {
   let attr = { id };
@@ -46,6 +48,7 @@ const ListingBody = withQuerystringResults((props) => {
     isFolderContentsListing,
     hasLoaded,
     id,
+    content,
   } = props;
 
   let ListingBodyTemplate;
@@ -82,6 +85,7 @@ const ListingBody = withQuerystringResults((props) => {
           isEditMode={isEditMode}
         />
       )}
+      <SlotRenderer name="aboveListingItems" content={content} data={data} />
       {listingItems?.length > 0 ? (
         <div ref={listingRef}>
           <ListingBodyTemplate

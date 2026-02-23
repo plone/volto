@@ -1,35 +1,29 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { ActionsResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { ActionsResponse } from '@plone/types';
 import { z } from 'zod';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getActionsSchema = z.object({
   path: z.string(),
 });
 
-export type ActionsArgs = z.infer<typeof getActionsSchema> & {
-  config: PloneClientConfig;
-};
+export type ActionsArgs = z.infer<typeof getActionsSchema>;
 
-export const getActions = async ({
-  path,
-  config,
-}: ActionsArgs): Promise<ActionsResponse> => {
+export async function getActions(
+  this: PloneClient,
+  { path }: ActionsArgs,
+): Promise<RequestResponse<ActionsResponse>> {
   const validatedArgs = getActionsSchema.parse({
     path,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   const actionsPath = `${validatedArgs.path}/@actions`;
 
   return apiRequest('get', actionsPath, options);
-};
-
-export const getActionsQuery = ({ path, config }: ActionsArgs) => ({
-  queryKey: [path, 'get', 'actions'],
-  queryFn: () => getActions({ path, config }),
-});
+}

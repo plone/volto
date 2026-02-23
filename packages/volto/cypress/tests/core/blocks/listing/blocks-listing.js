@@ -1,4 +1,5 @@
 describe('Listing Block Tests', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     cy.intercept('GET', '/**/Document').as('schema');
@@ -112,7 +113,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -292,7 +293,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -420,7 +421,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/page-two',
+      subpathPrefix + '/my-page/page-two',
     );
   });
 
@@ -444,7 +445,6 @@ describe('Listing Block Tests', () => {
     );
 
     //add listing block
-    cy.scrollTo('bottom');
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
     cy.get('.ui.basic.icon.button.listing').contains('Listing').click();
@@ -475,7 +475,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page',
+      subpathPrefix + '/my-page',
     );
   });
 
@@ -566,7 +566,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-page-test',
+      subpathPrefix + '/my-page/my-page-test',
     );
   });
 
@@ -612,7 +612,34 @@ describe('Listing Block Tests', () => {
     cy.addNewBlock('listing');
 
     //********  add relative location criteria filter
-    cy.addLocationQuerystring('Relative path', '../my-folder');
+    // cy.addLocationQuerystring('Relative path', '../my-folder');
+    cy.get('.block-editor-listing').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .react-select__menu .react-select__option')
+      .contains('Location')
+      .click();
+
+    cy.get(
+      '#sidebar-properties #default-query-0-querystring #field-query-0-querystring',
+    )
+      .eq(1)
+      .click();
+
+    cy.get(
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Relative path')
+      .click();
+
+    //insert relative path
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field:last-of-type',
+    ).click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field:last-of-type .react-select__menu .react-select__option',
+    )
+      .contains('./')
+      .click();
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -670,6 +697,12 @@ describe('Listing Block Tests', () => {
       contentTitle: 'Document within Folder',
       path: 'my-page/my-folder',
     });
+    cy.createContent({
+      contentType: 'Image',
+      contentId: 'my-image',
+      contentTitle: 'My Image',
+      path: 'my-page/my-folder',
+    });
 
     cy.navigate('/my-page/my-folder');
     cy.wait('@content');
@@ -685,7 +718,29 @@ describe('Listing Block Tests', () => {
     cy.addNewBlock('listing');
 
     //********  add absolute location criteria filter
-    cy.addLocationQuerystring('Absolute path', '/my-page/my-folder');
+    // cy.addLocationQuerystring('Absolute path', '/my-page/my-folder');
+    cy.get('.block-editor-listing').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .react-select__menu .react-select__option')
+      .contains('Location')
+      .click();
+
+    cy.get('.querystring-widget .fields').contains('Absolute path').click();
+
+    cy.get(
+      '#sidebar-properties #default-query-0-querystring div[aria-labelledby="fieldset-default-field-label-query-reference-widget-0"] button[aria-label="Open object browser"]',
+    ).click({ force: true });
+
+    cy.get(
+      '.sidebar-container.sidebar-container-enter-done .object-listing li[aria-label="Select My Image"]',
+    ).should('have.class', 'disabled');
+
+    //insert absolute path
+    cy.get('.sidebar-container button[aria-label="Search SVG"]').click();
+    cy.get(
+      '.sidebar-container .input.search input[placeholder="Search content"]',
+    ).type('My Folder');
+    cy.get('[aria-label="Select My Folder"]').dblclick();
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -760,7 +815,33 @@ describe('Listing Block Tests', () => {
     cy.addNewBlock('listing');
 
     //********  add location criteria filter
-    cy.addLocationQuerystring('Relative path', '.');
+    cy.get('.block-editor-listing').click();
+    cy.get('.querystring-widget .fields').contains('Add criteria').click();
+    cy.get('.querystring-widget .react-select__menu .react-select__option')
+      .contains('Location')
+      .click();
+
+    cy.get(
+      '#sidebar-properties #default-query-0-querystring #field-query-0-querystring',
+    )
+      .eq(1)
+      .click();
+
+    cy.get(
+      '.querystring-widget .fields:first-of-type .main-fields-wrapper .field:last-of-type .react-select__menu .react-select__option',
+    )
+      .contains('Relative path')
+      .click();
+
+    //insert relative path
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field:last-of-type',
+    ).click();
+    cy.get(
+      '.querystring-widget .fields:first-of-type > .field:last-of-type .react-select__menu .react-select__option',
+    )
+      .contains('./')
+      .click();
 
     // verify if in list there's a page with name "Document within Folder"
     cy.get(`.block.listing .listing-body:first-of-type`).contains(
@@ -847,7 +928,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-folder',
+      subpathPrefix + '/my-page/my-folder',
     );
     cy.get('.listing-item').should(($els) => {
       expect($els).to.have.length(2);
@@ -863,7 +944,11 @@ describe('Listing Block Tests', () => {
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
     cy.get('#field-b_size-4-querystring').click().type('2');
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.get('.listing-item h3').first().contains('My Folder 3');
   });
@@ -921,8 +1006,16 @@ describe('Listing Block Tests', () => {
 
     cy.get('.ui.pagination.menu a[value="1"][type="pageItem"]')
       .first()
-      .click({ force: true });
-    cy.get('.ui.pagination.menu a[value="2"]').first().click({ force: true });
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     cy.wait(1000);
     cy.url().should('include', '?page=2');
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
@@ -985,7 +1078,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-folder',
+      subpathPrefix + '/my-page/my-folder',
     );
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder' });
     cy.get('.listing-item').should(($els) => {
@@ -1002,14 +1095,22 @@ describe('Listing Block Tests', () => {
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
     cy.get('#field-b_size-4-querystring').click().type('2');
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.get('.listing-item h3').first().contains('My Folder 3');
     cy.get('#toolbar-save').click();
     cy.wait('@save');
     cy.wait('@content');
     //test second pagination click
-    cy.get('.ui.pagination.menu a[value="2"]').first().click();
+    cy.get('.ui.pagination.menu a[value="2"]')
+      .first()
+      .should('be.visible')
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
 
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     //test f5
@@ -1023,6 +1124,7 @@ describe('Listing Block Tests', () => {
     cy.intercept('PATCH', '/**/my-page').as('save');
     cy.intercept('GET', '/**/my-page').as('content');
     cy.intercept('GET', '/**/@types/Document').as('schema');
+    cy.intercept('POST', '**/my-page/@querystring-search').as('querySearch');
 
     cy.createContent({
       contentType: 'Document',
@@ -1081,7 +1183,9 @@ describe('Listing Block Tests', () => {
     cy.get('.ui.pagination.menu a[value="2"]')
       .first()
       .should('be.visible')
-      .click();
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     //test f5
     cy.reload();
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
@@ -1091,7 +1195,9 @@ describe('Listing Block Tests', () => {
     cy.get('.ui.pagination.menu a[value="3"]')
       .first()
       .should('be.visible')
-      .click();
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+
     //test f5
     cy.reload();
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
@@ -1102,20 +1208,32 @@ describe('Listing Block Tests', () => {
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
 
-    cy.navigate('/my-page');
+    cy.visit('/my-page');
+    cy.wait('@content');
+    cy.wait('@querySearch');
+    cy.wait('@querySearch');
+    cy.get('.ui.small.indeterminate.text.loader').should('not.exist');
+    cy.wait(500);
     cy.get('.ui.pagination.menu a[value="2"]')
       .first()
       .should('be.visible')
-      .click({ force: true });
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
+    cy.wait('@querySearch');
+    cy.wait('@querySearch');
+    cy.get('.ui.small.indeterminate.text.loader').should('not.exist');
+    cy.wait(500);
     cy.get('.ui.pagination.menu a[value="3"]')
       .first()
       .should('be.visible')
-      .click({ force: true });
+      .as('paginationItem');
+    cy.get('@paginationItem').click();
     cy.go(-1);
     cy.wait('@content');
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 3' });
     cy.url().should('not.include', '=3');
     cy.go(-1);
+    cy.wait(300); // I couldn't make it work without wait
     cy.isInHTML({ parent: '.listing-item', content: 'My Folder 2' });
     cy.url().should('not.include', '=2');
     cy.url().should('not.include', '=3');
@@ -1183,7 +1301,7 @@ describe('Listing Block Tests', () => {
     cy.get('#page-document .listing-item:first-of-type a').should(
       'have.attr',
       'href',
-      '/my-page/my-news-item-test',
+      subpathPrefix + '/my-page/my-news-item-test',
     );
   });
 

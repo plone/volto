@@ -1,3 +1,4 @@
+export function installDefaultViews(config: any): any;
 export namespace layoutViews {
     export { DefaultView as document_view };
     export { SummaryView as summary_view };
@@ -41,7 +42,7 @@ export const errorViews: {
     403: (props: any) => import("react/jsx-runtime").JSX.Element;
     408: () => string;
     500: (props: any) => import("react/jsx-runtime").JSX.Element;
-    ECONNREFUSED: () => import("react/jsx-runtime").JSX.Element;
+    ECONNREFUSED: (props: any) => import("react/jsx-runtime").JSX.Element;
     corsError: () => string;
 };
 export namespace layoutViewsNamesMapping {

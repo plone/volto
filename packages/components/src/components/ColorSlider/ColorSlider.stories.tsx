@@ -1,0 +1,25 @@
+import * as React from 'react';
+import { ColorSlider } from './ColorSlider';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
+const meta = {
+  title: 'Basic/Forms/ColorSlider',
+  component: ColorSlider,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+} satisfies Meta<typeof ColorSlider>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  render: (args: any) => <ColorSlider {...args} />,
+  args: {
+    label: 'Red Opacity',
+    defaultValue: '#f00',
+    channel: 'alpha',
+  },
+};

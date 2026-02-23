@@ -1,6 +1,6 @@
 import { Brain } from './common';
 
-export interface GetSearchResponse {
+export interface SearchResponse {
   '@id': string;
   items: Brain[];
   items_total: number;

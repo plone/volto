@@ -14,7 +14,7 @@ MAKEFLAGS+=--no-builtin-rules
 include ../../variables.mk
 
 # Allow setting the language for backend-docker-start. Default is `en`.
-LANGUAGE ?=en
+SITE_DEFAULT_LANGUAGE ?=en
 
 # Recipe snippets for reuse
 
@@ -49,7 +49,7 @@ start: ## Starts Volto, allowing reloading of the add-on during development
 
 .PHONY: build
 build: ## Build a production bundle for distribution
-	pnpm i && RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build
+	pnpm i && pnpm build
 
 .PHONY: test
 test: ## Run unit tests
@@ -61,8 +61,6 @@ clean: ## Clean development environment
 
 .PHONY: install
 install: ## Set up development environment
-	# Setup ESlint for VSCode
-	node packages/scripts/vscodesettings.js
 	pnpm i
 	make build-deps
 
@@ -72,14 +70,14 @@ install: ## Set up development environment
 cypress-install: ## Install Cypress for acceptance tests
 	$(NODEBIN)/cypress install
 
-../registry/dist: ../registry/src
+../registry/dist: $(shell find ../registry/src -type f)
 	(cd ../../ && pnpm build:registry)
 
-../components/dist: ../components/src
+../components/dist: $(shell find ../components/src -type f)
 	(cd ../../ && pnpm build:components)
 
 .PHONY: build-deps
-build-deps: ../registry/dist ## Build dependencies
+build-deps: ../registry/dist ../components/dist ## Build dependencies
 
 .PHONY: i18n
 i18n: ## Extract and compile translations
@@ -107,7 +105,7 @@ release-notes-copy-to-docs: ## Copy release notes into documentation
 
 .PHONY: backend-docker-start
 backend-docker-start: ## Starts a Docker-based backend for development
-	docker run -it --rm --name=backend -p 8080:8080 -v volto-backend-data:/data -e SITE=Plone -e ADDONS='$(KGS)' -e LANGUAGE='$(LANGUAGE)' $(DOCKER_IMAGE)
+	docker run -it --rm --name=backend -p 8080:8080 -v volto-backend-data:/data -e SITE=Plone -e ADDONS='$(KGS)' -e SITE_DEFAULT_LANGUAGE='$(SITE_DEFAULT_LANGUAGE)' $(DOCKER_IMAGE)
 
 .PHONY: frontend-docker-start
 frontend-docker-start: ## Starts a Docker-based frontend for development
@@ -118,25 +116,27 @@ frontend-docker-start: ## Starts a Docker-based frontend for development
 
 .PHONY: acceptance-frontend-dev-start
 acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 ######### Core Acceptance tests
 
 .PHONY: acceptance-backend-start
 acceptance-backend-start: ## Start backend acceptance server
-	#docker run -it --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	# docker run -it --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -it --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.app.discussion:default $(DOCKER_IMAGE_ACCEPTANCE)
 	# Uncomment next line and comment line above to use a custom image with the acceptance server (in case you need to use an specific backend add-on or version)
-	docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	# docker run -it --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: ci-acceptance-backend-start
 ci-acceptance-backend-start: ## Start backend acceptance server in headless mode for CI
-	#docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	# docker run -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.app.discussion:default $(DOCKER_IMAGE_ACCEPTANCE)
 	# Uncomment next line and comment line above to use a custom image with the acceptance server (in case you need to use an specific backend add-on or version)
-	docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
+	# docker run -i --rm -e ZSERVER_HOST=0.0.0.0 -e ZSERVER_PORT=55001 -p 55001:55001 -e ADDONS='$(KGS) $(TESTING_ADDONS)' -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors $(DOCKER_IMAGE) ./bin/robot-server plone.app.robotframework.testing.VOLTO_ROBOT_TESTING
 
 .PHONY: acceptance-frontend-prod-start
 acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode
-	RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	pnpm build && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start:prod
 
 .PHONY: acceptance-test
 acceptance-test: ## Start Cypress in interactive mode
@@ -168,25 +168,25 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(NODEBIN)/start-test "make acceptance-backend-start" http-get://127.0.0.1:55001/plone "make deployment-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make ci-acceptance-test"
 
-######### Project Acceptance tests
+######### Cookieplone Acceptance tests
 
-.PHONY: project-acceptance-frontend-prod-start
-project-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for project tests
-	(cd ../../my-volto-app && RAZZLE_API_PATH=http://127.0.0.1:55001/plone yarn build && yarn start:prod)
+.PHONY: cookieplone-acceptance-frontend-prod-start
+cookieplone-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for cookieplone tests
+	(cd ../../volto-add-on && RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod)
 
 ######### Core Sandbox Acceptance tests
 
 .PHONY: coresandbox-acceptance-backend-start
 coresandbox-acceptance-backend-start: ## Start backend acceptance server for core sandbox tests
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default-homepage,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.volto:coresandbox -e CONFIGURE_PACKAGES=plone.app.contenttypes,plone.restapi,plone.volto,plone.volto.cors,plone.volto.coresandbox $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: coresandbox-acceptance-frontend-prod-start
 coresandbox-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for core sandbox tests
-	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: coresandbox-acceptance-frontend-dev-start
 coresandbox-acceptance-frontend-dev-start: build-deps ## Start acceptance frontend in development mode for core sandbox tests
-	ADDONS=@plone/volto-coresandbox RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm start
+	ADDONS=@plone/volto-coresandbox RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start
 
 .PHONY: coresandbox-acceptance-test
 coresandbox-acceptance-test: ## Start Cypress in interactive mode for core sandbox tests
@@ -208,7 +208,7 @@ multilingual-acceptance-backend-start: ## Start backend acceptance server for mu
 
 .PHONY: multilingual-acceptance-frontend-prod-start
 multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for multilingual tests
-	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: multilingual-acceptance-test
 multilingual-acceptance-test: ## Start Cypress in interactive mode for multilingual tests
@@ -248,11 +248,11 @@ deployment-multilingual-ci-acceptance-test-run-all: ## With a single command, ru
 
 .PHONY: working-copy-acceptance-backend-start
 working-copy-acceptance-backend-start: ## Start backend acceptance server for working copy tests
-	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default-homepage $(DOCKER_IMAGE_ACCEPTANCE)
+	docker run -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.app.iterate:default,plone.volto:default $(DOCKER_IMAGE_ACCEPTANCE)
 
 .PHONY: working-copy-acceptance-frontend-prod-start
 working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for working copy tests
-	ADDONS=@plone/volto-coresandbox:workingCopyFixture RAZZLE_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+	RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
 
 .PHONY: working-copy-acceptance-test
 working-copy-acceptance-test: ## Start Cypress in interactive mode for working copy tests
@@ -266,6 +266,48 @@ working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(NODEBIN)/start-test "make working-copy-acceptance-backend-start" http-get://127.0.0.1:55001/plone "make working-copy-acceptance-frontend-prod-start" http://127.0.0.1:3000 "make working-copy-ci-acceptance-test"
 
+######### Prefixed Core Acceptance tests
+
+.PHONY: subpath-acceptance-frontend-prod-start
+subpath-acceptance-frontend-prod-start: build-deps ## Start the prefixed Core Acceptance Frontend Fixture
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm build && pnpm start:prod
+
+.PHONY: subpath-ci-acceptance-test-run-all
+subpath-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(NODEBIN)/start-test "make ci-acceptance-backend-start" http-get://localhost:55001/plone "make subpath-acceptance-frontend-prod-start" http://localhost:3000 "make ci-acceptance-test"
+
+.PHONY: subpath-acceptance-test
+subpath-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config baseUrl='http://localhost/foo' --env subpathPrefix="/foo"
+
+.PHONY: subpath-acceptance-frontend-dev-start
+subpath-acceptance-frontend-dev-start: ## Start acceptance frontend in development mode
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:55001/plone pnpm start
+
+.PHONY: deployment-subpath-acceptance-web-server-start
+deployment-subpath-acceptance-web-server-start: ## Start the prefixed webserver
+	cd cypress/docker && docker compose -f prefixed.yml up
+
+######### Prefixed Multilingual Acceptance tests
+
+.PHONY: subpath-multilingual-acceptance-frontend-prod-start
+subpath-multilingual-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for prefixed multilingual tests
+	ADDONS=@plone/volto-coresandbox:multilingualFixture RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+
+.PHONY: subpath-multilingual-acceptance-test
+subpath-multilingual-acceptance-test: ## Start Cypress in interactive mode for prefixed multilingual tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/multilingual/**/*.{js,jsx,ts,tsx}' baseUrl='http://localhost/foo' --env subpathPrefix="/foo"
+
+######### Prefixed Working Copy Acceptance tests
+
+.PHONY: subpath-working-copy-acceptance-frontend-prod-start
+subpath-working-copy-acceptance-frontend-prod-start: build-deps ## Start acceptance frontend in production mode for prefixed working copy tests
+	RAZZLE_SUBPATH_PREFIX=/foo RAZZLE_INTERNAL_API_PATH=http://localhost/foo pnpm build && pnpm start:prod
+
+.PHONY: subpath-working-copy-acceptance-test
+subpath-working-copy-acceptance-test: ## Start Cypress in interactive mode for prefixed working copy tests
+	NODE_ENV=production CYPRESS_API=plone $(NODEBIN)/cypress open --config specPattern='cypress/tests/workingCopy/**/*.{js,jsx,ts,tsx}' --config baseUrl='http://localhost/foo' --env subpathPrefix='/foo'
+
 ######### Guillotina Acceptance tests
 
 .PHONY: guillotina-acceptance-backend-start
@@ -274,7 +316,7 @@ guillotina-acceptance-backend-start: ## Start backend acceptance server for Guil
 
 .PHONY: guillotina-acceptance-frontend-prod-start
 guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	ADDONS=volto-guillotina RAZZLE_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod
+	ADDONS=volto-guillotina RAZZLE_INTERNAL_API_PATH=http://127.0.0.1:8081/db/web RAZZLE_LEGACY_TRAVERSE=true pnpm build && pnpm start:prod
 
 .PHONY: guillotina-acceptance-test
 guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests

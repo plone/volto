@@ -2,7 +2,7 @@ import React from 'react';
 import {
   OverlayArrow,
   Popover as RACPopover,
-  PopoverProps as RACPopoverProps,
+  type PopoverProps as RACPopoverProps,
 } from 'react-aria-components';
 import { Dialog } from '../Dialog/Dialog';
 

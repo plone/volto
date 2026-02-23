@@ -3,9 +3,10 @@ import {
   FieldError,
   Label,
   RadioGroup as RACRadioGroup,
-  RadioGroupProps as RACRadioGroupProps,
+  type RadioGroupProps as RACRadioGroupProps,
+  Radio,
   Text,
-  ValidationResult,
+  type ValidationResult,
 } from 'react-aria-components';
 
 export interface RadioGroupProps extends Omit<RACRadioGroupProps, 'children'> {
@@ -31,3 +32,5 @@ export function RadioGroup({
     </RACRadioGroup>
   );
 }
+
+export { Radio };

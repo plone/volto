@@ -5,8 +5,8 @@ import {
   Label,
   Text,
   TextField as RACTextField,
-  TextFieldProps as RACTextFieldProps,
-  ValidationResult,
+  type TextFieldProps as RACTextFieldProps,
+  type ValidationResult,
 } from 'react-aria-components';
 
 export interface TextFieldProps extends RACTextFieldProps {

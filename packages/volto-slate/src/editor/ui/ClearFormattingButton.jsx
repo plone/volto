@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSlate } from 'slate-react';
-import { clearFormatting } from '@plone/volto-slate/utils';
+import { clearFormatting } from '@plone/volto-slate/utils/blocks';
 
 import ToolbarButton from './ToolbarButton';
 

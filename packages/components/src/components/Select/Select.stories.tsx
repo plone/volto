@@ -1,17 +1,10 @@
 import React from 'react';
 import { Select, SelectItem } from './Select';
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Select.css';
-
-export interface SelectItemObject {
-  label: string;
-  value: string;
-}
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/react/writing-stories/introduction
 const meta = {
-  title: 'Forms/Select',
+  title: 'Basic/Forms/Select',
   component: Select,
   parameters: {
     layout: 'centered',
@@ -19,7 +12,14 @@ const meta = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <div style={{ width: '400px' }}>
+      <div
+        style={
+          {
+            width: '400px',
+            '--rac-select-min-width': '200px',
+          } as React.CSSProperties
+        }
+      >
         <Story />
       </div>
     ),
@@ -51,14 +51,6 @@ export const Default: Story = {
  * Select renders options via render props `(item)=> React.ReactNode`
  */
 export const Items: Story = {
-  render: (args) => (
-    // @ts-ignore I assume this is a storybook bug when passing args
-    <Select {...args}>
-      {(item: SelectItemObject) => (
-        <SelectItem id={item.label}>{item.value}</SelectItem>
-      )}
-    </Select>
-  ),
   args: {
     name: 'field-empty',
     label: 'field 1 title',
@@ -81,14 +73,6 @@ export const Items: Story = {
 };
 
 export const LotsOfItems: Story = {
-  render: (args) => (
-    // @ts-ignore I assume this is a storybook bug when passing args
-    <Select {...args}>
-      {(item: SelectItemObject) => (
-        <SelectItem id={item.label}>{item.value}</SelectItem>
-      )}
-    </Select>
-  ),
   args: {
     name: 'field-empty',
     label: 'field 1 title',

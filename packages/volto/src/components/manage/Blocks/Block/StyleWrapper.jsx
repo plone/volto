@@ -4,12 +4,18 @@ import {
   buildStyleClassNamesFromData,
   buildStyleClassNamesExtenders,
   buildStyleObjectFromData,
-} from '@plone/volto/helpers';
+} from '@plone/volto/helpers/Blocks/Blocks';
 
 const StyleWrapper = (props) => {
   let classNames,
     style = [];
-  const { children, content, data = {}, block } = props;
+  const {
+    block,
+    children,
+    content,
+    data = {},
+    isContainer: parentIsContainer,
+  } = props;
   classNames = buildStyleClassNamesFromData(data.styles);
 
   classNames = buildStyleClassNamesExtenders({
@@ -19,13 +25,21 @@ const StyleWrapper = (props) => {
     classNames,
   });
 
-  style = buildStyleObjectFromData(data.styles);
+  style = buildStyleObjectFromData(
+    data,
+    '',
+    // If we are rendering blocks inside a container, then pass also the data from the container
+    // This is needed in order to calculate properly the styles for the blocks inside the container
+    parentIsContainer && content.blocks ? content : {},
+  );
 
   const rewrittenChildren = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
       const childProps = {
         ...props,
-        className: cx([child.props.className, ...classNames]),
+        className: cx([child.props.className, ...classNames], {
+          contained: parentIsContainer,
+        }),
         style: { ...child.props.style, ...style },
       };
       return React.cloneElement(child, childProps);

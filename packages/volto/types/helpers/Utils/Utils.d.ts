@@ -48,6 +48,6 @@ export function insertInArray(array: any[], element: any, index: number): any[];
 export function replaceItemOfArray(array: any[], index: number, value: any): any[];
 export function removeFromArray(array: any[], index: number): any[];
 export function reorderArray(array: any[], origin: number, target: number): any[];
-export function slugify(string: string): string;
+export function slugify(string: string, slugs?: any[]): string;
 export function cloneDeepSchema(object: object): object;
 export function arrayRange(start: number, stop: number, step: number): any[];

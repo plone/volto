@@ -34,6 +34,23 @@ Block transformers
 Search and indexing integration
 :   By providing the right adapters, you can extract searchable text from blocks.
 
+Client reducer content transforms
+:   These transforms run in the client when the response from the backend is received.
+    These are useful when you need to modify the response from the backend on-the-fly for amending the backend data, such as a data migration of any kind.
+    You can register a utility that mutates the response at your convenience.
+
+    ```ts
+    import { upgradeV20241023 } from './upgrades/upgradeV20241023';
+
+    config.registerUtility({
+      name: 'upgradeV20241023',
+      type: 'transform',
+      dependencies: { reducer: 'content' },
+      method: upgradeV20241023,
+    });
+    ```
+
+    The `type` of the utility needs to be `transform`, and the `dependencies` set to `{reducer: 'content'}`.
 
 ## Proxied backend routes
 
@@ -51,8 +68,5 @@ Thus the Node.js Express server takes care of proxying and enhancing them at the
 Volto can also be used with other backend systems if they provide an API that is compatible with `plone.restapi`.
 
 [Nick](https://nickcms.org/) is a headless CMS built with Node.js that supports Volto as a frontend.
-
-[Guillotina](https://guillotina.io/) is a resource management system built with Python.
-It was inspired by Plone, using its same basic concepts, such as traversal, content types, and its permissions model.
 
 There is also a [Volto Node.js-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that demonstrates how other systems could also use Volto to display and create content through it.

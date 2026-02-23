@@ -41,8 +41,8 @@ describe('Document locking', () => {
     cy.visit('/document');
     cy.wait('@content');
 
-    cy.findByRole('alert')
-      .get('.toast-inner-content')
+    cy.get('.Toastify')
+      .findByRole('alert')
       .contains('This item was locked by Editor 1 on');
   });
 

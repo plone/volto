@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment, Breadcrumb } from 'semantic-ui-react';
 
-import { join } from 'lodash';
+import join from 'lodash/join';
 
 // These absolute imports (without using the corresponding centralized index.js) are required
 // to cut circular import problems, this file should never use them. This is because of
@@ -86,6 +86,7 @@ class ObjectBrowserBody extends Component {
     maximumSelectionSize: PropTypes.number,
     contextURL: PropTypes.string,
     searchableTypes: PropTypes.arrayOf(PropTypes.string),
+    onlyFolderishSelectable: PropTypes.bool,
   };
 
   /**
@@ -101,6 +102,7 @@ class ObjectBrowserBody extends Component {
     selectableTypes: [],
     searchableTypes: null,
     maximumSelectionSize: null,
+    onlyFolderishSelectable: false,
   };
 
   /**
@@ -329,7 +331,17 @@ class ObjectBrowserBody extends Component {
   };
 
   isSelectable = (item) => {
-    const { maximumSelectionSize, data, mode, selectableTypes } = this.props;
+    const {
+      maximumSelectionSize,
+      data,
+      mode,
+      selectableTypes,
+      onlyFolderishSelectable,
+    } = this.props;
+
+    if (onlyFolderishSelectable && !item.is_folderish) {
+      return false;
+    }
     if (
       maximumSelectionSize &&
       data &&

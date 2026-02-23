@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import loadable from '@loadable/component';
 import cx from 'classnames';
-import { Icon } from '@plone/volto/components';
+import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { parseDateTime, toBackendLang } from '@plone/volto/helpers';
+import { parseDateTime, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import leftKey from '@plone/volto/icons/left-key.svg';
@@ -26,6 +26,10 @@ const messages = defineMessages({
   time: {
     id: 'Time',
     defaultMessage: 'Time',
+  },
+  clearDateTime: {
+    id: 'Clear date/time',
+    defaultMessage: 'Clear date and time',
   },
 });
 
@@ -80,6 +84,7 @@ const DatetimeWidgetComponent = (props) => {
     widget,
     noPastDates: propNoPastDates,
     isDisabled,
+    formData,
   } = props;
 
   const intl = useIntl();
@@ -102,12 +107,21 @@ const DatetimeWidgetComponent = (props) => {
     );
   }, [value, lang, moment]);
 
+  // If open_end is checked and this is the end field, don't render
+  if (id === 'end' && formData?.open_end) {
+    return null;
+  }
+
   const getInternalValue = () => {
     return parseDateTime(toBackendLang(lang), value, undefined, moment.default);
   };
 
   const getDateOnly = () => {
-    return dateOnly || widget === 'date';
+    return (
+      dateOnly ||
+      widget === 'date' ||
+      ((id === 'start' || id === 'end') && formData?.whole_day)
+    );
   };
 
   const onDateChange = (date) => {
@@ -207,6 +221,7 @@ const DatetimeWidgetComponent = (props) => {
             disabled={isDisabled || !datetime}
             onClick={onResetDates}
             className="item ui noborder button"
+            aria-label={intl.formatMessage(messages.clearDateTime)}
           >
             <Icon name={clearSVG} size="24px" className="close" />
           </button>

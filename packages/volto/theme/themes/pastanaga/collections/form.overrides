@@ -50,7 +50,12 @@
 
   &:focus {
     border-radius: 0;
+    color: @textColor;
   }
+}
+
+.ui.form .ui.checkbox {
+  margin: @8px 0;
 }
 
 .ui.form .fields.error .field textarea,

@@ -1,29 +1,27 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { GetNavrootResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { GetNavrootResponse } from '@plone/types';
 import { z } from 'zod';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getNavrootSchema = z.object({
   path: z.string(),
   language: z.string().optional(),
 });
 
-export type NavrootArgs = z.infer<typeof getNavrootSchema> & {
-  config: PloneClientConfig;
-};
+export type NavrootArgs = z.infer<typeof getNavrootSchema>;
 
-export const getNavroot = async ({
-  path,
-  language,
-  config,
-}: NavrootArgs): Promise<GetNavrootResponse> => {
+export async function getNavroot(
+  this: PloneClient,
+  { path, language }: NavrootArgs,
+): Promise<RequestResponse<GetNavrootResponse>> {
   const validatedArgs = getNavrootSchema.parse({
     path,
     language,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
@@ -32,9 +30,4 @@ export const getNavroot = async ({
     : `/${validatedArgs.path}/@navroot`;
 
   return apiRequest('get', navrootPath, options);
-};
-
-export const getNavrootQuery = ({ path, config }: NavrootArgs) => ({
-  queryKey: [path, 'get', 'navroot'],
-  queryFn: () => getNavroot({ path, config }),
-});
+}

@@ -1,4 +1,4 @@
-export interface GetQuerysourceResponse {
+export interface GetQuerysourcesResponse {
   '@id': string;
   items: unknown;
   items_total: number;

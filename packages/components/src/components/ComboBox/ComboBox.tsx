@@ -2,16 +2,16 @@ import React from 'react';
 import {
   Button,
   ComboBox as RACComboBox,
-  ComboBoxProps as RACComboBoxProps,
+  type ComboBoxProps as RACComboBoxProps,
   FieldError,
   Input,
   Label,
   ListBox,
   ListBoxItem,
-  ListBoxItemProps,
+  type ListBoxItemProps,
   Popover,
   Text,
-  ValidationResult,
+  type ValidationResult,
 } from 'react-aria-components';
 
 export interface ComboBoxProps<T extends object>

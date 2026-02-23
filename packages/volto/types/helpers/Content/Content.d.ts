@@ -29,3 +29,10 @@ export function getContentIcon(type: string, isFolderish: boolean): any;
  * @returns {array} List of language independent fields
  */
 export function getLanguageIndependentFields(schema: string): any[];
+/**
+ * Flattens static behaviors into the parent object with dot-notation keys.
+ * @function flattenStaticBehaviors
+ * @param {Object} result The result object containing static behaviors.
+ * @returns {Object} Result object with flattened static behaviors.
+ */
+export function flattenStaticBehaviors(result: any): any;

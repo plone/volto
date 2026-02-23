@@ -1,35 +1,34 @@
-import { apiRequest, ApiRequestParams } from '../../API';
-import { PloneClientConfig } from '../../validation/config';
-import { NavigationResponse } from '@plone/types';
+import { apiRequest, type ApiRequestParams } from '../../api';
+import type { NavigationResponse } from '@plone/types';
 import { z } from 'zod';
+import type PloneClient from '../../client';
+import type { RequestResponse } from '../types';
 
 const getNavigationSchema = z.object({
   path: z.string(),
+  depth: z.number().optional(),
 });
 
-export type NavigationArgs = z.infer<typeof getNavigationSchema> & {
-  config: PloneClientConfig;
-};
+export type NavigationArgs = z.infer<typeof getNavigationSchema>;
 
-export const getNavigation = async ({
-  path,
-  config,
-}: NavigationArgs): Promise<NavigationResponse> => {
+export async function getNavigation(
+  this: PloneClient,
+  { path, depth }: NavigationArgs,
+): Promise<RequestResponse<NavigationResponse>> {
   const validatedArgs = getNavigationSchema.parse({
     path,
+    depth,
   });
 
   const options: ApiRequestParams = {
-    config,
+    config: this.config,
     params: {},
   };
 
   const navigationPath = `${validatedArgs.path}/@navigation`;
+  if (validatedArgs.depth) {
+    options.params['expand.navigation.depth'] = validatedArgs.depth;
+  }
 
   return apiRequest('get', navigationPath, options);
-};
-
-export const getNavigationQuery = ({ path, config }: NavigationArgs) => ({
-  queryKey: [path, 'get', 'navigation'],
-  queryFn: () => getNavigation({ path, config }),
-});
+}

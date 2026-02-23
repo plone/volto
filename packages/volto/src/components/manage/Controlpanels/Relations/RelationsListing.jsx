@@ -3,17 +3,20 @@ import useDeepCompareEffect from 'use-deep-compare-effect';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { uniqBy } from 'lodash';
+import uniqBy from 'lodash/uniqBy';
 import { Checkbox, Message } from 'semantic-ui-react';
-import { messages } from '@plone/volto/helpers';
-import { Toast, UniversalLink } from '@plone/volto/components';
+import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import {
   createRelations,
   deleteRelations,
   queryRelations,
+} from '@plone/volto/actions/relations/relations';
+import {
   resetSearchContent,
   searchContent,
-} from '@plone/volto/actions';
+} from '@plone/volto/actions/search/search';
 
 const RelationsListing = ({
   relationtype,

@@ -11,6 +11,8 @@ myst:
 
 This page describes environment variables and their usage for configuration of your Volto application at runtime.
 
+For more detailed information about environment variables and other configurations, you can refer to the [Razzle Documentation](https://razzlejs.org/docs/environment-variables).
+
 
 ## Runtime environment variables
 
@@ -21,7 +23,39 @@ All configurable environment variables work at runtime, not only at build time.
 You could, for example, build your Volto application, then start it in production with the `RAZZLE_API_PATH` environment variable.
 
 ```shell
-yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+pnpm build && RAZZLE_API_PATH=https://plone.org pnpm start:prod
+```
+
+```{glossary}
+:sorted:
+`HOST`
+    Represents the host or IP address on which a server should listen.
+    Default is `0.0.0.0`.
+
+`PORT`
+    Used to specify the port on which a web server should listen for incoming requests.
+    Default is `3000`.
+
+`RAZZLE_API_PATH`
+    Used to configure the API path for the application.
+    Setting this is not usually necessary, because the Volto client will access the API at the same location where the frontend is served, and proxy the requests to the backend API.
+    You can set this to make the Volto client connect directly to the API on a different host, but this can be complicated because of cross-origin restrictions.
+
+`RAZZLE_PUBLIC_URL`
+    Used to specify the base URL or path where static assets—such as images, stylesheets, and other resources—are hosted or served.
+    Defaults to the location where the Volto client was accessed.
+
+`RAZZLE_DEV_PROXY_API_PATH`
+    Used to configure the URL where the Volto API proxy will connect to the backend API.
+    Usually you don't need to set this; it defaults to the same value as `RAZZLE_INTERNAL_API_PATH`.
+
+`RAZZLE_INTERNAL_API_PATH`
+    Used to specify the path to an internal API that the server-rendered application should use.
+
+`RAZZLE_PROXY_REWRITE_TARGET`
+    Used to specify the base path where the Volto API proxy will connect to the backend API.
+    Defaults to a Zope VirtualHostMonster path based on the external API path, for example, `/VirtualHostBase/http/localhost:3000/Plone/++api++/VirtualHostRoot`.
+    You might need to change this if you're connecting to a backend that handles its own virtual host rewriting, or to a backend that is not Zope.
 ```
 
 This brings you a lot of power since you don't have to rebuild on every configuration change.
@@ -30,7 +64,7 @@ You can also generate builds on your continuous integration, then deploy them an
 
 ## Environment variable reference
 
-````{glossary}
+```{glossary}
 :sorted:
 `RAZZLE_LEGACY_TRAVERSE`
     If `true`, Volto will construct API URLs without the `/++api++` prefix.
@@ -40,7 +74,7 @@ You can also generate builds on your continuous integration, then deploy them an
     However, if you are not able to upgrade the packages `plone.restapi` (8.12.1 or greater) and `plone.rest` (2.0.0a1 or greater) in the backend, you can adjust your web server configuration and use the `RAZZLE_LEGACY_TRAVERSE` flag.
 
     ```shell
-    RAZZLE_LEGACY_TRAVERSE=true yarn start:prod
+    RAZZLE_LEGACY_TRAVERSE=true pnpm start:prod
     ```
 
 `VOLTO_ROBOTSTXT`
@@ -50,7 +84,7 @@ You can also generate builds on your continuous integration, then deploy them an
 
     ```shell
     VOLTO_ROBOTSTXT="User-agent: *
-    Disallow: /" yarn start
+    Disallow: /" pnpm start
     ```
 
     ```{note}
@@ -67,19 +101,19 @@ You can also generate builds on your continuous integration, then deploy them an
     It helps you identify problems with a customization that does not work as you expect.
 
     ```shell
-    DEBUG=volto:shadowing yarn start
+    DEBUG=volto:shadowing pnpm start
     ```
 
     `i18n` enables the log of missing internationalization messages in the console.
 
     ```shell
-    DEBUG=volto:i18n yarn start
+    DEBUG=volto:i18n pnpm start
     ```
 
     `*` enables logging everywhere it exists in Volto.
 
     ```shell
-    DEBUG=volto:* yarn start
+    DEBUG=volto:* pnpm start
     ```
 
 `DEBUG_ADDONS_LOADER`
@@ -107,34 +141,34 @@ You can also generate builds on your continuous integration, then deploy them an
     `ADDONS` can be used to temporarily add an add-on to your build for testing purposes.
 
     ```shell
-    yarn add volto-slate
-    ADDONS=volto-slate:asDefault yarn start
+    pnpm add @kitconcept/volto-light-theme
+    ADDONS=@kitconcept/volto-light-theme pnpm start
     ```
 
     `ADDONS` can also be used to temporarily enable a feature or a set of customizations.
 
     ```shell
     # given a folder './packages/coresandbox', like in vanilla Volto
-    ADDONS=coresandbox:multilingualFixture yarn start
+    ADDONS=coresandbox:multilingualFixture pnpm start
     ```
 
     If you need to specify several add-ons, separate them with a semicolon (`;`):
 
     ```shell
-    ADDONS="test-addon;test-addon2" yarn start
+    ADDONS="test-addon;test-addon2" pnpm start
     ```
 
-    
+
     You can specify profiles for installation:
-    
+
     ```shell
-    ADDONS="test-addon:profile1;test-addon2:profile2" yarn start
+    ADDONS="test-addon:profile1;test-addon2:profile2" pnpm start
     ```
 
     The following code snippets demonstrate how to configure add-ons.
 
     First in `package.json`:
-    
+
     ```json
     "addons": [
         "@kitconcept/volto-blocks-grid"
@@ -152,8 +186,8 @@ You can also generate builds on your continuous integration, then deploy them an
     And finally using `ADDONS`:
 
     ```shell
-    yarn add volto-slate
-    ADDONS=volto-slate:asDefault yarn start
+    pnpm add volto-slate
+    ADDONS=volto-slate:asDefault pnpm start
     ```
 
     As a result, your app will load the add-ons in the following order:
@@ -165,14 +199,14 @@ You can also generate builds on your continuous integration, then deploy them an
     ```{important}
     The `ADDONS` key is a Volto specific configuration.
     Simply setting `ADDONS` doesn't download the JavaScript package.
-    This has to be covered another way, by either installing the add-on package (with `yarn add`), or loading it as a development package with `mrs-developer`.
+    This has to be covered another way, by either installing the add-on package (with `pnpm add`), or loading it as a development package with `mrs-developer`.
     ```
 
 `BUILD_DIR`
     This is a runtime-only environment variable that directs the build to run Volto from a specific location, other than the default folder `build`.
 
     ```shell
-    yarn
+    pnpm install
     BUILD_DIR=dist node dist/server.js
     ```
 
@@ -182,9 +216,26 @@ You can also generate builds on your continuous integration, then deploy them an
     It can be relative to the current project or absolute.
 
     ```shell
-    VOLTOCONFIG=../../volto.config.js yarn start
+    VOLTOCONFIG=../../volto.config.js pnpm start
     ```
-````
+
+`SITE_DEFAULT_LANGUAGE`
+    ```{versionremoved} Volto 19
+    This environment variable was removed in Volto 19.
+    Instead, Volto uses the default language configured in the backend.
+    ```
+
+    ```{seealso}
+    See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-label>`.
+    ```    
+
+    This is a runtime environment variable that sets the `config.settings.defaultLanguage`, allowing you to specify the default language of a site.
+    It needs to match the default language that is configured in the backend's {guilabel}`Language` control panel in {guilabel}`Site Setup`.
+
+    ```shell
+    SITE_DEFAULT_LANGUAGE=ca pnpm start
+    ```
+```
 
 
 ## Access environment variables in a browser

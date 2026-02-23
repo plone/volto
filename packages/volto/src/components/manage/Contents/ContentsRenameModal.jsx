@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { concat, merge, map } from 'lodash';
+import concat from 'lodash/concat';
+import merge from 'lodash/merge';
+import map from 'lodash/map';
 import { defineMessages, useIntl } from 'react-intl';
 
-import { usePrevious } from '@plone/volto/helpers';
-import { updateContent } from '@plone/volto/actions';
+import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { updateContent } from '@plone/volto/actions/content/content';
 import { ModalForm } from '@plone/volto/components/manage/Form';
 
 const messages = defineMessages({

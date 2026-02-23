@@ -22,6 +22,11 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "在此处添加一些HTML"
 
+#. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+#: helpers/MessageLabels/MessageLabels
+msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+msgstr ""
+
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
@@ -74,7 +79,6 @@ msgstr "在此页面中活动的内容规则"
 
 #. Default: "Add"
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/Rules/ConfigureRule
 #: components/manage/Rules/Rules
@@ -93,6 +97,11 @@ msgstr "添加（对象列表）"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Add Addons"
 msgstr "添加附件"
+
+#. Default: "Add Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Add Alternative URL"
+msgstr ""
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -310,6 +319,16 @@ msgstr "别名"
 msgid "Alias has been added"
 msgstr "别名已添加"
 
+#. Default: "Aliases have been removed."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been removed."
+msgstr ""
+
+#. Default: "Aliases have been uploaded."
+#: components/manage/Controlpanels/Aliases
+msgid "Aliases have been uploaded."
+msgstr ""
+
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -329,7 +348,7 @@ msgstr "所有"
 msgid "All content"
 msgstr "所有内容"
 
-#. Default: "All existing alternative urls for this site"
+#. Default: "Existing alternative URLs for this site"
 #: components/manage/Controlpanels/Aliases
 msgid "All existing alternative urls for this site"
 msgstr "此网站所有的替代 urls"
@@ -356,7 +375,7 @@ msgstr "替换文本提示"
 msgid "Alt text hint link text"
 msgstr "替换文本提示链接文本"
 
-#. Default: "Alternative url path (Required)"
+#. Default: "Alternative URL path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path (Required)"
 msgstr "替代 URL 路径（必选）"
@@ -367,10 +386,15 @@ msgstr "替代 URL 路径（必选）"
 msgid "Alternative url path must start with a slash."
 msgstr "替代 URL 路径必须以斜杠开头。"
 
-#. Default: "Alternative url path → target url path (date and time of creation, manually created yes/no)"
+#. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path → target url path (date and time of creation, manually created yes/no)"
 msgstr "替代 URL 路径 → 目标 URL 路径（创建的日期和时间，手动创建 yes/no）"
+
+#. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
+msgstr ""
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -417,6 +441,16 @@ msgstr ""
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Assignments"
 msgstr "分配"
+
+#. Default: "Automatically"
+#: components/manage/Controlpanels/Aliases
+msgid "Automatically"
+msgstr ""
+
+#. Default: "Autosaved content found"
+#: helpers/Utils/withSaveAsDraft
+msgid "Autosaved content found"
+msgstr ""
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -477,6 +511,11 @@ msgstr "基本搜索查询"
 msgid "Block"
 msgstr "块"
 
+#. Default: "Both"
+#: components/manage/Controlpanels/Aliases
+msgid "Both"
+msgstr ""
+
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
 msgid "Both email address and password are case sensitive, check that caps lock is not enabled."
@@ -503,10 +542,20 @@ msgstr "浏览"
 msgid "Browse the site, drop an image, or type a URL"
 msgstr "浏览网站，放入一张图片，或者输入一个URL"
 
+#. Default: "Bulk upload CSV"
+#: components/manage/Controlpanels/Aliases
+msgid "BulkUploadAltUrls"
+msgstr ""
+
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "默认情况下，条目的权限从父文件夹继承，您可以禁用继承，明确设置权限。总体来说，${inherited}符号表示这是一个继承的值，${global}符号表示这是一个由网站管理员管理的全局角色。"
+
+#. Default: "CSV file"
+#: components/manage/Controlpanels/Aliases
+msgid "CSVFile"
+msgstr ""
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -525,7 +574,9 @@ msgstr ""
 
 #. Default: "Cancel"
 #: components/manage/Add/Add
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -541,6 +592,11 @@ msgstr ""
 msgid "Cancel"
 msgstr "取消"
 
+#. Default: "Cancel search"
+#: components/manage/Blocks/Search/components/SearchInput
+msgid "Cancel search"
+msgstr "取消搜索"
+
 #. Default: "Cell"
 #: config/Blocks
 msgid "Cell"
@@ -550,6 +606,7 @@ msgstr "单元格"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Center"
 msgstr "中间"
 
@@ -628,6 +685,11 @@ msgstr "选择一个文件"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "清除"
+
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
@@ -836,6 +898,16 @@ msgstr ""
 msgid "Create working copy"
 msgstr "创建工作副本"
 
+#. Default: "Created after"
+#: components/manage/Controlpanels/Aliases
+msgid "Created after"
+msgstr ""
+
+#. Default: "Created before"
+#: components/manage/Controlpanels/Aliases
+msgid "Created before"
+msgstr ""
+
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "Created by {creator} on {date}"
@@ -944,6 +1016,7 @@ msgstr "日期（最新在前）"
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Preferences/ChangePassword
 #: components/manage/Preferences/PersonalPreferences
+#: components/manage/Widgets/BlockWidth
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 #: components/theme/Comments/CommentEditModal
@@ -955,6 +1028,11 @@ msgstr "日期（最新在前）"
 msgid "Default"
 msgstr "默认"
 
+#. Default: "Default value"
+#: components/manage/Widgets/SchemaWidget
+msgid "Default value"
+msgstr ""
+
 #. Default: "Default view"
 #: config/Views
 msgid "Default view"
@@ -962,6 +1040,7 @@ msgstr "默认视图"
 
 #. Default: "Delete"
 #: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypesActions
 #: components/manage/Controlpanels/Groups/RenderGroups
@@ -1015,12 +1094,12 @@ msgid "Delete row"
 msgstr "删除条件"
 
 #. Default: "Delete selected items?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
 msgstr ""
 
 #. Default: "Delete this item?"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
 msgstr ""
 
@@ -1029,9 +1108,9 @@ msgstr ""
 msgid "Deleted"
 msgstr "已删除"
 
-#. Default: "Deleting this item breaks {brokenReferences} {variation}."
-#: components/manage/Contents/Contents
-msgid "Deleting this item breaks {brokenReferences} {variation}."
+#. Default: "Deleting this item will break {brokenReferences} {variation}."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
 #. Default: "Depth"
@@ -1115,6 +1194,11 @@ msgstr "确定要删除这个用户 {username}吗？"
 msgid "Do you really want to delete this item?"
 msgstr "确定要删除这个条目吗"
 
+#. Default: "Do you want to restore your autosaved content?"
+#: helpers/Utils/withSaveAsDraft
+msgid "Do you want to restore your autosaved content?"
+msgstr ""
+
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
 #: components/manage/Sidebar/Sidebar
@@ -1130,6 +1214,11 @@ msgstr "文档视图"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "下载事件"
+
+#. Default: "Download file"
+#: components/theme/View/FileView
+msgid "Download file"
+msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1153,6 +1242,11 @@ msgstr "在此处放置文件来上传新文件"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop files here ..."
 msgstr "在此处放置文件 ..."
+
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1181,6 +1275,11 @@ msgstr "邮箱地址不匹配"
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "编辑"
+
+#. Default: "Edit Alternative URL"
+#: components/manage/Controlpanels/Aliases
+msgid "Edit Alternative URL"
+msgstr ""
 
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
@@ -1293,14 +1392,18 @@ msgstr "输入您的姓名，如：张三"
 msgid "Enter map Embed Code"
 msgstr "输入 map 嵌入代码"
 
-#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
+#. Default: "Enter the absolute path of the target. Target must exist or be an existing alternative URL path to the target."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path of the target. Target must exist or be an existing alternative url path to the target."
 msgstr "输入目标的绝对路径。目标必须存在，或者是指向目标的现有可选的url路径。"
 
+#. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+#: components/manage/Controlpanels/Aliases
+msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
+msgstr ""
+
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
-#: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 msgstr "输入已存在替代 URL 的绝对路径。路径必须以 '/' 开头。只有导致404 未找到页面的url才会发生重定向。"
 
@@ -1339,17 +1442,13 @@ msgstr ""
 #: components/manage/Edit/Edit
 #: components/manage/Form/InlineForm
 #: components/manage/Toolbar/More
+#: components/manage/Widgets/ImageWidget
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/ContactForm/ContactForm
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Error"
 msgstr "错误"
-
-#. Default: "Error"
-#: components/manage/Controlpanels/Aliases
-msgid "ErrorHeader"
-msgstr ""
 
 #. Default: "Event"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1376,6 +1475,11 @@ msgstr ""
 msgid "Event view"
 msgstr "事件视图"
 
+#. Default: "Example"
+#: components/manage/Controlpanels/Aliases
+msgid "Example"
+msgstr ""
+
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Exclude from navigation"
@@ -1400,6 +1504,11 @@ msgstr "此项目现有可选的urls"
 #: components/manage/Sidebar/Sidebar
 msgid "Expand sidebar"
 msgstr "扩大侧边栏"
+
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "展开工具栏"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1466,8 +1575,14 @@ msgstr "字段"
 msgid "File"
 msgstr "文件"
 
+#. Default: "File is not of the accepted type {accept}"
+#: components/manage/Widgets/FileWidget
+msgid "File is not of the accepted type {accept}"
+msgstr ""
+
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "文件大小"
 
@@ -1478,15 +1593,23 @@ msgstr "文件视图"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "文件名"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "已上载的文件：{uploadedFiles}"
 
+#. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+#: components/manage/Widgets/SchemaWidget
+msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
+msgstr ""
+
 #. Default: "Filter"
+#: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
 msgstr ""
@@ -1496,7 +1619,7 @@ msgstr ""
 msgid "Filter Rules:"
 msgstr "过滤规则"
 
-#. Default: "Filter by prefix"
+#. Default: "Filter by path"
 #: components/manage/Controlpanels/Aliases
 msgid "Filter by prefix"
 msgstr "按前缀过滤"
@@ -1560,6 +1683,7 @@ msgstr ""
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Full"
 msgstr ""
 
@@ -1938,8 +2062,14 @@ msgstr "语言"
 msgid "Language independent field."
 msgstr "语言独立字段"
 
+#. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
+#: components/manage/Widgets/FormFieldWrapper
+msgid "Language independent icon title"
+msgstr ""
+
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Large"
 msgstr "大"
 
@@ -1955,6 +2085,7 @@ msgstr "最后备注日期"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "最后修改日期"
 
@@ -1970,6 +2101,7 @@ msgstr "最新版本"
 
 #. Default: "Layout"
 #: components/manage/Controlpanels/ContentTypesActions
+#: components/manage/Widgets/BlockWidth
 msgid "Layout"
 msgstr "布局"
 
@@ -1982,6 +2114,7 @@ msgstr "首图"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Left"
 msgstr ""
 
@@ -2142,6 +2275,11 @@ msgstr "管理{title}的翻译"
 msgid "Manual"
 msgstr ""
 
+#. Default: "Manually"
+#: components/manage/Controlpanels/Aliases
+msgid "Manually"
+msgstr ""
+
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
 msgid "Manually or automatically added?"
@@ -2175,6 +2313,7 @@ msgstr "最大值为{len}。"
 
 #. Default: "Medium"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Medium"
 msgstr "中等"
 
@@ -2287,6 +2426,7 @@ msgstr "名字"
 
 #. Default: "Narrow"
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockWidth
 msgid "Narrow"
 msgstr ""
 
@@ -2294,6 +2434,11 @@ msgstr ""
 #: error
 msgid "Navigate back"
 msgstr "导航返回"
+
+#. Default: "Navigate to this item"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Navigate to this item"
+msgstr ""
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
@@ -2352,7 +2497,7 @@ msgstr "没有找到附件"
 msgid "No broken relations found."
 msgstr ""
 
-#. Default: "There is no connection to the server, due to a timeout o no network connection."
+#. Default: "There is no connection to the server, due to a timeout or no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "No connection to the server"
 msgstr "与服务器无连接"
@@ -2459,8 +2604,12 @@ msgstr "没有工作流"
 
 #. Default: "None"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsItem
 msgid "None"
+msgstr ""
+
+#. Default: "None"
+#: components/manage/Contents/ContentsItem
+msgid "Not available"
 msgstr ""
 
 #. Default: "Note"
@@ -2493,9 +2642,9 @@ msgstr ""
 msgid "Ok"
 msgstr ""
 
-#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
 #. Default: "Open in a new tab"
@@ -2611,6 +2760,11 @@ msgstr "个人工具"
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 msgstr "负责创建此条目内容的人员。请输入用户名列表，每行一个。主要创建者应放在首位。"
 
+#. Default: "Placeholder"
+#: components/manage/Widgets/SchemaWidget
+msgid "Placeholder"
+msgstr ""
+
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
@@ -2694,6 +2848,7 @@ msgstr "美化你的代码"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "预览"
 
@@ -2726,6 +2881,11 @@ msgstr "发布日期"
 #. Default: "Query"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
+msgstr ""
+
+#. Default: "Query Parameter Name"
+#: components/manage/Widgets/SchemaWidget
+msgid "Query Parameter Name"
 msgstr ""
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
@@ -2785,7 +2945,7 @@ msgstr ""
 msgid "Referencing this item with {relationship}"
 msgstr ""
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr ""
@@ -2801,6 +2961,11 @@ msgstr "注册"
 #: components/theme/Register/Register
 msgid "Registration form"
 msgstr "注册表单"
+
+#. Default: "Related Items"
+#: components/theme/RelatedItems/RelatedItems
+msgid "Related Items"
+msgstr ""
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2823,6 +2988,11 @@ msgstr ""
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
+msgstr ""
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
 msgstr ""
 
 #. Default: "Relevance"
@@ -2979,6 +3149,7 @@ msgstr "富文本"
 #: components/manage/Blocks/Maps/Edit
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
+#: components/manage/Widgets/BlockAlignment
 msgid "Right"
 msgstr ""
 
@@ -3172,9 +3343,19 @@ msgstr ""
 msgid "Select columns to show"
 msgstr "选择要显示的列"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
+msgstr ""
+
+#. Default: "Select rule"
+#: components/manage/Rules/Rules
+msgid "Select rule"
 msgstr ""
 
 #. Default: "Select the transition to be used for modifying the items state."
@@ -3208,6 +3389,7 @@ msgid "Selection"
 msgstr "选择"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -3370,17 +3552,18 @@ msgstr "大小：{size}"
 
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
+#: components/manage/Widgets/Size
 msgid "Small"
 msgstr "小"
 
-#. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-#: components/manage/Contents/Contents
-msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
+#. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-#: components/manage/Contents/Contents
-msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
+#. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 msgstr ""
 
 #. Default: "Some relations are broken. Please fix."
@@ -3558,8 +3741,7 @@ msgid "Table"
 msgstr "表格"
 
 #. Default: "Table of Contents"
-#: components/manage/Blocks/ToC/variations/DefaultTocRenderer
-#: components/manage/Blocks/ToC/variations/HorizontalMenu
+#: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
 msgstr "表格内容"
 
@@ -3586,7 +3768,6 @@ msgstr "移除关键词"
 
 #. Default: "Target"
 #: components/manage/Blocks/Teaser/schema
-#: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Target"
@@ -3651,6 +3832,11 @@ msgstr "您网站的后端服务器没有响应，对此我们感到抱歉。请
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr "该按钮不支持动态搜索，查询请求在您按下ENTER时发出"
 
+#. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+#: components/manage/Widgets/FileWidget
+msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
+msgstr ""
+
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
@@ -3665,6 +3851,11 @@ msgstr "如下列表显示了将要运行的升级步骤。有时升级会执行
 #: components/manage/Contents/Contents
 msgid "The item could not be deleted."
 msgstr "此条目无法被删除。"
+
+#. Default: "The kicker is a line of text shown above the title."
+#: components/manage/Blocks/Teaser/schema
+msgid "The kicker is a line of text shown above the title."
+msgstr ""
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -3690,6 +3881,11 @@ msgstr "提供的替代url已经存在!"
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 msgstr "注册过程成功完成。请在您的电子邮箱中查看有关如何激活账户的信息。"
+
+#. Default: "The selected default language must be in the list of the field 'Available languages'"
+#: helpers/MessageLabels/MessageLabels
+msgid "The selected default language must be in the list of the field 'Available languages'"
+msgstr ""
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3749,6 +3945,11 @@ msgstr "这里出现了一些错误"
 msgid "There were some errors."
 msgstr "这里出现了一些错误。"
 
+#. Default: "These items will have broken links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "These items will have broken links"
+msgstr ""
+
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
@@ -3769,9 +3970,9 @@ msgstr "这是一个保留名字，不能使用"
 msgid "This is a working copy of {title}"
 msgstr "这是{title}的一个工作副本"
 
-#. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-#: components/manage/Contents/Contents
-msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
+#. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 msgstr ""
 
 #. Default: "This item was locked by {creator} on {date}"
@@ -3796,12 +3997,14 @@ msgstr "此规则已被分配到下列位置："
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
+#: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "时间"
 
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3818,6 +4021,11 @@ msgstr "标题"
 msgid "Title field error. Value not provided or already existing."
 msgstr "标题字段错误。未提供值或已存在。"
 
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
+
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
@@ -3830,6 +4038,7 @@ msgstr "全部评论"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "总计需上传的文件：{totalFiles}"
 
@@ -4051,6 +4260,11 @@ msgstr "升级步骤"
 msgid "Upload"
 msgstr "上传"
 
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
+
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
@@ -4168,6 +4382,11 @@ msgstr "视频"
 msgid "Video URL"
 msgstr "视频URL"
 
+#. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "VideoTitleDescription"
+msgstr ""
+
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -4179,7 +4398,7 @@ msgid "View changes"
 msgstr ""
 
 #. Default: "View links and references to this item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "View links and references to this item"
 msgstr ""
 
@@ -4310,6 +4529,11 @@ msgstr "工作流变更加载信息"
 msgid "Workflow updated."
 msgstr "工作流已更新"
 
+#. Default: "Working copy"
+#: components/manage/Contents/ContentsItem
+msgid "Working copy"
+msgstr "工作副本"
+
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
@@ -4319,6 +4543,16 @@ msgstr "每年"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
+msgstr ""
+
+#. Default: "You are about to delete all items and all its subitems."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items and all its subitems."
+msgstr ""
+
+#. Default: "You are about to delete all items in the current pagination of this folder."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
 #. Default: "You are trying to access a protected resource, please {login} first."
@@ -4340,6 +4574,11 @@ msgstr "您可以通过填写以下表单发表评论，使用纯文本格式。
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
 msgstr "您可以在下面的清单里控制谁可以访问或编辑您的条目。"
+
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4391,6 +4630,11 @@ msgstr "您的网站是最新的。"
 msgid "Your usernaame is required for reset your password."
 msgstr "重置密码需要您的用户名。"
 
+#. Default: "File types allowed"
+#: components/manage/Widgets/SchemaWidget
+msgid "accept"
+msgstr ""
+
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormEmailDescription"
@@ -4406,9 +4650,14 @@ msgstr ""
 msgid "addUserFormPasswordDescription"
 msgstr ""
 
-#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
+#. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
+msgstr ""
+
+#. Default: "and {count} more…"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "and {count} more…"
 msgstr ""
 
 #. Default: "Available views"
@@ -4426,6 +4675,11 @@ msgstr ""
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
 msgstr "忘记了密码？"
+
+#. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
+#: components/manage/Controlpanels/Aliases
+msgid "bulkUploadUrlsHelp"
+msgstr ""
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4462,9 +4716,9 @@ msgstr ""
 msgid "daterangeFacet"
 msgstr ""
 
-#. Default: "delete"
+#. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
-msgid "delete"
+msgid "delete_block"
 msgstr "删除"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
@@ -4491,6 +4745,11 @@ msgstr "您的密码重置请求邮件已发送。稍后它将到达您的邮箱
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "草案"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4537,6 +4796,16 @@ msgstr ""
 msgid "event_where"
 msgstr ""
 
+#. Default: "/example"
+#: components/manage/Controlpanels/Aliases
+msgid "examplePath"
+msgstr ""
+
+#. Default: "External URLs are not allowed in this field."
+#: components/manage/Widgets/ImageWidget
+msgid "externalURLsNotAllowed"
+msgstr ""
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
@@ -4552,7 +4821,7 @@ msgstr ""
 msgid "flushAndRebuildRelationsHints"
 msgstr ""
 
-#. Default: "Head title"
+#. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
 msgstr ""
@@ -4577,6 +4846,11 @@ msgstr ""
 msgid "image"
 msgstr "图片"
 
+#. Default: "Please upload an image instead."
+#: components/manage/Widgets/ImageWidget
+msgid "imageUploadErrorMessage"
+msgstr ""
+
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
@@ -4592,18 +4866,23 @@ msgstr ""
 msgid "integer"
 msgstr "整数"
 
+#. Default: "No image was found in the internal path you provided."
+#: components/manage/Widgets/ImageWidget
+msgid "internalImageNotFoundErrorMessage"
+msgstr ""
+
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
 msgid "intranet"
 msgstr "内部"
 
 #. Default: "item"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "item"
 msgstr ""
 
 #. Default: "items"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "items"
 msgstr ""
 
@@ -4620,6 +4899,16 @@ msgstr "我的用户名是"
 #. Default: "Lead Image Field"
 #: config/Blocks
 msgid "leadimage"
+msgstr ""
+
+#. Default: "Delete item and break links"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: Delete item and break links"
+msgstr ""
+
+#. Default: "Checking references..."
+#: components/manage/Contents/ContentsDeleteModal
+msgid "link-integrity: loading references"
 msgstr ""
 
 #. Default: "Enter a URL to an image"
@@ -4736,6 +5025,16 @@ msgstr "保密"
 msgid "published"
 msgstr "已发布"
 
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
+
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -4747,13 +5046,23 @@ msgid "rebuild relations"
 msgstr ""
 
 #. Default: "reference"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
 msgstr ""
 
 #. Default: "references"
-#: components/manage/Contents/Contents
+#: components/manage/Contents/ContentsDeleteModal
 msgid "references"
+msgstr ""
+
+#. Default: "refers to"
+#: components/manage/Contents/ContentsDeleteModal
+msgid "refers to"
+msgstr ""
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
 msgstr ""
 
 #. Default: "results"
@@ -4936,6 +5245,11 @@ msgstr ""
 msgid "selectView"
 msgstr "选择视图"
 
+#. Default: "Maximum size of the file in bytes"
+#: components/manage/Widgets/SchemaWidget
+msgid "size"
+msgstr ""
+
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
 msgid "skiplink-footer"
@@ -5046,6 +5360,7 @@ msgstr ""
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
@@ -5062,6 +5377,11 @@ msgstr "{id}内容类型"
 #. Default: "{id} Schema"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
+msgstr ""
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
 msgstr ""
 
 #. Default: "{title} copied."

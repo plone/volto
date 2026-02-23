@@ -3,7 +3,7 @@
  * @module reducers/users/users
  */
 
-import { startsWith } from 'lodash';
+import startsWith from 'lodash/startsWith';
 
 import {
   CREATE_USER,
@@ -117,7 +117,7 @@ export default function users(state = initialState, action = {}) {
     case `${LIST_USERS}_SUCCESS`:
       return {
         ...state,
-        users: action.result,
+        users: action.result.items ? action.result.items : action.result,
         [getRequestKey(action.type)]: {
           loading: false,
           loaded: true,

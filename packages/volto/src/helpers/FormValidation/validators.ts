@@ -15,6 +15,17 @@ type Validator = {
   formatMessage: Function;
 };
 
+type Choice = {
+  token: string;
+  label: string;
+};
+type ChoiceValidator = {
+  value: string | Choice;
+  field: Record<string, any>;
+  formData: any;
+  formatMessage: Function;
+};
+
 export const isMaxPropertyValid = ({
   value,
   fieldSpec,
@@ -74,7 +85,10 @@ export const urlValidator = ({ value, formatMessage }: Validator) => {
   return !isValid ? formatMessage(messages.isValidURL) : null;
 };
 
-export const emailValidator = ({ value, formatMessage }: Validator): string => {
+export const emailValidator = ({
+  value,
+  formatMessage,
+}: Validator): string | null => {
   // Email Regex taken from from WHATWG living standard:
   // https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
   const emailRegex =
@@ -171,7 +185,9 @@ export const patternValidator = ({
   }
   const regex = new RegExp(field.pattern);
   const isValid = regex.test(value);
-  return !isValid ? formatMessage(messages.pattern) : null;
+  return !isValid
+    ? formatMessage(messages.pattern, { pattern: field.pattern })
+    : null;
 };
 
 export const maxItemsValidator = ({
@@ -200,4 +216,19 @@ export const minItemsValidator = ({
   return !isValid
     ? formatMessage(messages.minItems, { minItems: field.minItems })
     : null;
+};
+
+export const defaultLanguageControlPanelValidator = ({
+  value,
+  formData,
+  formatMessage,
+}: ChoiceValidator) => {
+  const token = typeof value === 'object' ? value.token : value;
+  const isValid =
+    token &&
+    (formData.available_languages.find(
+      (lang: { token: string }) => lang.token === token,
+    ) ||
+      formData.available_languages.includes(token));
+  return !isValid ? formatMessage(messages.defaultLanguage) : null;
 };

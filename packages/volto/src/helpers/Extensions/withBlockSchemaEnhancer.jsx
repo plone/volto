@@ -1,7 +1,8 @@
 import React from 'react';
 import { defineMessages } from 'react-intl';
 import { useIntl } from 'react-intl';
-import { find, isEmpty } from 'lodash';
+import find from 'lodash/find';
+import isEmpty from 'lodash/isEmpty';
 import config from '@plone/volto/registry';
 import { cloneDeepSchema } from '@plone/volto/helpers/Utils/Utils';
 
@@ -304,8 +305,11 @@ export const EMPTY_STYLES_SCHEMA = {
 
 /**
  * Adds the `styles` field and 'styling' fieldset in a given schema
+ * @param {object} params Helper params
+ * @param {import('@plone/types').JSONSchema} params.schema Schema to enhance
+ * @param {import('react-intl').IntlShape} params.intl intl helper for translations
  */
-export const addStyling = ({ schema, formData, intl }) => {
+export const addStyling = ({ schema, intl }) => {
   if (isEmpty(find(schema.fieldsets, { id: 'styling' }))) {
     schema.fieldsets.push({
       id: 'styling',

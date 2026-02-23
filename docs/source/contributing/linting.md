@@ -20,6 +20,11 @@ Volto uses {term}`ESLint`, the advanced JavaScript linting and formatting tool, 
 
 For Visual Studio Code, you'll need to install [VS Code ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
+```{note}
+When you run `make install` to develop with or contribute to Volto, it creates a workspace file {file}`.vscode/settings.json` that contains preferences for Visual Studio Code.
+This file is ignored by git, so you can add more preferences specific to the workspace. 
+```
+
 For Vim and NeoVim, you can use [Asynchronous Lint Engine (ALE)](https://github.com/dense-analysis/ale)
 It provides out-of-the box integration with all the tooling provided by Volto.
 
@@ -27,10 +32,25 @@ PyCharm Professional includes [ESLint](https://www.jetbrains.com/help/pycharm/es
 
 Use this checklist to make sure you have correctly configured your editor, most importantly for `.js` and `.jsx` files, the editor should automatically:
 
--  flag syntax errors
--  flag unused imports
--  properly flag imported modules that are not found
--  format code on save
+-   flag syntax errors
+-   flag unused imports
+-   properly flag imported modules that are not found
+-   format code on save
+
+
+## Don't lint documentation
+
+You must configure your editor not to reformat or lint files with the extension `.md`.
+Volto's documentation uses MyST syntax with this extension.
+MyST is a superset of Commonmark, which is in turn a superset of Markdown.
+Thus reformatting the MyST `.md` files may cause documentation build errors, warnings, or undetected visual issues when rendered to HTML.
+
+For Visual Studio Code, this bit of editor configuration is handled when you run `make install`.
+
+See your editor's documentation for specific configuration.
+
+The Volto and Documentation Teams are not aware of any tool that can lint MyST syntax effectively.
+If you find one, [create a feature request](https://github.com/plone/volto/issues/new?template=2_feature_request.md) to let us know.
 
 
 ## Lint Volto core
@@ -76,7 +96,7 @@ From here we will have access to the commands to check for errors and to fix the
 You can run the pnpm `eslint`, `prettier`, and `stylelint` commands from the Volto package folder:
 
 ```shell
-pnpm lint 
+pnpm lint
 pnpm prettier
 pnpm stylelint
 ```
@@ -89,8 +109,13 @@ pnpm prettier:fix
 pnpm stylelint:fix
 ```
 
-````{note}
-The same commands can be found in your Volto add-on projects, as seen in the [`package.json.tpl`](https://github.com/plone/volto/blob/main/packages/generator-volto/generators/app/templates/package.json.tpl#L10) file.
+```{versionadded} Volto 18.0.0-alpha.43
+[Cookieplone](https://github.com/plone/cookieplone) is now the recommended way to develop Volto projects, using it as a boilerplate generator.
+Cookieplone uses the frontend code installed using `pnpm` instead of `yarn`.
+```
+
+````{deprecated} Volto 18.0.0
+The same commands can be found in your Volto legacy add-ons and projects created with `@plone/generator-volto`, as seen in the [`package.json.tpl`](https://github.com/plone/volto/blob/main/packages/generator-volto/generators/app/templates/package.json.tpl#L10) file.
 
 You will use similar commands to run the linting commands, but with `yarn` instead of `pnpm`:
 
