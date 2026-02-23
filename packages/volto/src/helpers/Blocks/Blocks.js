@@ -151,11 +151,27 @@ export function deleteBlock(formData, blockId, intl) {
 
   let newFormData = {
     ...formData,
-    [blocksLayoutFieldname]: {
-      items: without(formData[blocksLayoutFieldname].items, blockId),
-    },
-    [blocksFieldname]: omit(formData[blocksFieldname], [blockId]),
   };
+
+  let container = findParent(newFormData, {
+    blockId,
+  });
+
+  if (container) {
+    container[blocksLayoutFieldname].items = without(
+      container[blocksLayoutFieldname].items,
+      blockId,
+    );
+    container[blocksFieldname] = omit(container[blocksFieldname], [blockId]);
+  } else {
+    newFormData[blocksLayoutFieldname].items = without(
+      newFormData[blocksLayoutFieldname].items,
+      blockId,
+    );
+    newFormData[blocksFieldname] = omit(newFormData[blocksFieldname], [
+      blockId,
+    ]);
+  }
 
   if (newFormData[blocksLayoutFieldname].items.length === 0) {
     newFormData = addBlock(
@@ -836,10 +852,12 @@ export const getBlocksHierarchy = (properties) => {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
   return properties?.[blocksLayoutFieldname]?.items?.map((n) => ({
     id: n,
-    title: properties?.[blocksFieldName]?.[n]?.['@type'],
-    data: properties?.[blocksFieldName]?.[n],
-    children: isBlockContainer(properties?.[blocksFieldName]?.[n])
-      ? getBlocksHierarchy(properties?.[blocksFieldName]?.[n])
+    title: properties[blocksFieldName][n]?.['@type'],
+    data: properties[blocksFieldName][n],
+    children: isBlockContainer(properties[blocksFieldName][n])
+      ? properties[blocksFieldName][n].data
+        ? getBlocksHierarchy(properties[blocksFieldName][n].data)
+        : getBlocksHierarchy(properties[blocksFieldName][n])
       : [],
   }));
 };
@@ -933,8 +951,13 @@ export function moveBlockEnhanced(formData, { source, destination }) {
       const destinationContainer = findContainer(clonedFormData, {
         containerId: destination.parent,
       });
+      const sourceContainer = findContainer(clonedFormData, {
+        containerId: source.parent,
+      });
+
       destinationContainer[blocksFieldName][source.id] =
-        formData[blocksFieldName][source.parent][blocksFieldName][source.id];
+        sourceContainer[blocksFieldName]?.[source.id] ||
+        sourceContainer.data?.[blocksFieldName][source.id];
 
       destinationContainer[blocksLayoutFieldname].items = insertInArray(
         destinationContainer[blocksLayoutFieldname].items,
@@ -943,9 +966,6 @@ export function moveBlockEnhanced(formData, { source, destination }) {
       );
 
       // Remove the source block from the source parent
-      const sourceContainer = findContainer(clonedFormData, {
-        containerId: source.parent,
-      });
       delete sourceContainer[blocksFieldName][source.id];
       sourceContainer[blocksLayoutFieldname].items = removeFromArray(
         sourceContainer[blocksLayoutFieldname].items,
@@ -979,23 +999,25 @@ export function moveBlockEnhanced(formData, { source, destination }) {
  * @returns {object|undefined} - The container object if found, otherwise undefined.
  */
 export const findContainer = (formData, { containerId }) => {
+  const block =
+    formData.blocks[containerId]?.data || formData.blocks[containerId];
   if (
-    formData.blocks[containerId] &&
-    Object.keys(formData.blocks[containerId]).includes('blocks') &&
-    Object.keys(formData.blocks[containerId]).includes('blocks_layout')
+    block &&
+    Object.keys(block).includes('blocks') &&
+    Object.keys(block).includes('blocks_layout')
   ) {
-    return formData.blocks[containerId];
+    return block;
   }
 
   let container;
   Object.keys(formData.blocks).every((blockId) => {
-    const block = formData.blocks[blockId];
+    const subBlock = formData.blocks[blockId].data || formData.blocks[blockId];
     if (
-      formData.blocks[blockId] &&
-      Object.keys(formData.blocks[blockId]).includes('blocks') &&
-      Object.keys(formData.blocks[blockId]).includes('blocks_layout')
+      subBlock &&
+      Object.keys(subBlock).includes('blocks') &&
+      Object.keys(subBlock).includes('blocks_layout')
     ) {
-      container = findContainer(block, { containerId });
+      container = findContainer(subBlock, { containerId });
     }
     if (container) {
       return false;
@@ -1005,6 +1027,47 @@ export const findContainer = (formData, { containerId }) => {
   });
 
   return container;
+};
+
+/**
+ * Finds parent container of the specified blockId in the given formData.
+ *
+ * @param {object} formData - The form data object.
+ * @param {object} options - The options object.
+ * @param {string} options.blockId - The ID of the block to find.
+ * @returns {object|undefined} - The container object if found, otherwise undefined.
+ */
+export const findParent = (formData, { blockId }) => {
+  const block = formData.data || formData;
+
+  if (block && block.blocks && Object.keys(block.blocks).includes(blockId)) {
+    return block;
+  }
+
+  let found = false;
+
+  if (block && block.blocks) {
+    Object.keys(block.blocks).every((subBlockId) => {
+      const subBlock =
+        block.blocks[subBlockId].data || block.blocks[subBlockId];
+      if (subBlock && subBlock.blocks) {
+        if (Object.keys(subBlock.blocks).includes(blockId)) {
+          found = subBlock;
+        }
+        const parent = findParent(subBlock, { blockId });
+        if (parent) {
+          found = parent;
+        }
+      }
+      if (found) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  }
+
+  return found;
 };
 
 const _dummyIntl = {
