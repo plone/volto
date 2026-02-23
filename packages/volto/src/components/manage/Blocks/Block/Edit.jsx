@@ -149,15 +149,6 @@ export class Edit extends Component {
                 this.props.setUIState({ hovered: this.props.id });
               }
             }}
-            onFocus={(e) => {
-              // TODO: This `onFocus` steals somehow the focus from the slate block
-              // we have to investigate why this is happening
-              // Apparently, I can't see any difference in the behavior
-              // If any, we can fix it in successive iterations
-              // if (this.props.hovered !== this.props.id) {
-              //   this.props.setUIState({ hovered: this.props.id });
-              // }
-            }}
             onMouseLeave={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -172,6 +163,15 @@ export class Edit extends Component {
                   e,
                 );
             }}
+            // onFocus={(e) => {
+            //   // TODO: This `onFocus` steals somehow the focus from the slate block
+            //   // we have to investigate why this is happening
+            //   // Apparently, I can't see any difference in the behavior
+            //   // If any, we can fix it in successive iterations
+            //   // if (this.props.hovered !== this.props.id) {
+            //   //   this.props.setUIState({ hovered: this.props.id });
+            //   // }
+            // }}
             onFocus={(e) => {
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
@@ -227,6 +227,7 @@ export class Edit extends Component {
               e.stopPropagation();
               this.props.setUIState({ hovered: this.props.id });
             }}
+            // Mantenha apenas este onFocus ou remova se não for necessário
             onFocus={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -254,7 +255,6 @@ export class Edit extends Component {
             className={cx(`block ${type}`, { selected: this.props.selected })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
-            // The tabIndex is required for the keyboard navigation
             tabIndex={-1}
           >
             {this.props.intl.formatMessage(messages.unknownBlock, {
