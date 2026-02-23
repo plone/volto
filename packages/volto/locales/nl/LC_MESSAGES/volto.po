@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-13 10:07+0000\n"
+"PO-Revision-Date: 2026-02-23 10:09+0000\n"
 "Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
-"Language: nl\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-18/nl/>\n"
+"Language: nl\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -399,7 +399,7 @@ msgstr "Van toepassing op submappen?"
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr "Toepassen op submappen?"
+msgstr "Toepassen op submappen"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
@@ -1224,7 +1224,7 @@ msgstr "Zet bestanden hier neer..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Zet hier bestanden neer om te uploaden"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2100,7 +2100,7 @@ msgstr "Minder filters"
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr "Koppeling"
+msgstr "Link"
 
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
@@ -4091,7 +4091,7 @@ msgstr "UID"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 msgid "URL Management"
-msgstr "URL beheer"
+msgstr "URL-beheer"
 
 #. Default: "URL Management for {title}"
 #: components/manage/Aliases/Aliases
@@ -4216,7 +4216,7 @@ msgstr "Opladen"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Uploaden bestanden ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4576,7 +4576,7 @@ msgstr "Jouw gebruikersnaam is vereist om je wachtwoord opnieuw in te stellen."
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "Toegelaten bestandstypes"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4961,7 +4961,7 @@ msgstr "Gepubliceerd"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Huidig pad (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
@@ -4976,7 +4976,7 @@ msgstr "Selecteer…"
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "rebuild relations"
-msgstr "hetbouw relaties"
+msgstr "herbouw relaties"
 
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
@@ -4996,7 +4996,7 @@ msgstr "verwijst naar"
 #. Default: "Result count"
 #: components/manage/Contents/Contents
 msgid "resultCount"
-msgstr ""
+msgstr "Totaal resultaten"
 
 #. Default: "results"
 #: components/theme/Search/Search
