@@ -111,7 +111,7 @@ describe('createConfigAsync .well-known handling', () => {
 });
 
 describe('createConfigAsync css minimizer sourceMap option', () => {
-  it('should propagate razzleOptions.enableSourceMaps to CssMinimizerPlugin.minimizerOptions.sourceMap', async () => {
+  it('should configure CssMinimizerPlugin with the expected preset (calc:false)', async () => {
     const createConfigAsync = (await import('./createConfigAsync')).default;
 
     const commonRazzleOptions = {
@@ -124,8 +124,7 @@ describe('createConfigAsync css minimizer sourceMap option', () => {
       emitOnErrors: false,
     };
 
-    // When enableSourceMaps = true
-    const configWithMaps = await createConfigAsync(
+    const config = await createConfigAsync(
       'web',
       'prod',
       {},
@@ -136,21 +135,21 @@ describe('createConfigAsync css minimizer sourceMap option', () => {
       { ...commonRazzleOptions, enableSourceMaps: true },
     );
 
-    const minimizersTrue = configWithMaps.optimization?.minimizer || [];
-    const cssMinimizerTrue = minimizersTrue.find(
+    const minimizers = config.optimization?.minimizer || [];
+    const cssMinimizer = minimizers.find(
       (m) =>
         m && m.constructor && /CssMinimizerPlugin/.test(m.constructor.name),
     );
-    expect(cssMinimizerTrue).toBeDefined();
-    // plugin may store options in different properties depending on plugin implementation
-    const findSourceMap = (obj, depth = 4) => {
+    expect(cssMinimizer).toBeDefined();
+
+    const findPreset = (obj, depth = 6) => {
       if (!obj || typeof obj !== 'object' || depth < 0) return undefined;
-      if (Object.prototype.hasOwnProperty.call(obj, 'sourceMap'))
-        return obj.sourceMap;
+      if (Object.prototype.hasOwnProperty.call(obj, 'preset'))
+        return obj.preset;
       for (const k of Object.keys(obj)) {
         try {
           const v = obj[k];
-          const found = findSourceMap(v, depth - 1);
+          const found = findPreset(v, depth - 1);
           if (found !== undefined) return found;
         } catch (e) {
           // ignore
@@ -159,42 +158,12 @@ describe('createConfigAsync css minimizer sourceMap option', () => {
       return undefined;
     };
 
-    const sourceMapTrue =
-      findSourceMap(cssMinimizerTrue) ??
-      findSourceMap(cssMinimizerTrue?.options);
-    if (sourceMapTrue === undefined) {
-      console.log(
-        'cssMinimizerTrue keys:',
-        Object.keys(cssMinimizerTrue || {}),
-      );
-      console.log(
-        'cssMinimizerTrue (shallow):',
-        Object.entries(cssMinimizerTrue || {}).slice(0, 10),
-      );
-    }
-    expect(sourceMapTrue).toBe(true);
-
-    // When enableSourceMaps = false
-    const configWithoutMaps = await createConfigAsync(
-      'web',
-      'prod',
-      {},
-      { version: '5' },
-      false,
-      undefined,
-      [],
-      { ...commonRazzleOptions, enableSourceMaps: false },
-    );
-
-    const minimizersFalse = configWithoutMaps.optimization?.minimizer || [];
-    const cssMinimizerFalse = minimizersFalse.find(
-      (m) =>
-        m && m.constructor && /CssMinimizerPlugin/.test(m.constructor.name),
-    );
-    expect(cssMinimizerFalse).toBeDefined();
-    const sourceMapFalse =
-      findSourceMap(cssMinimizerFalse) ??
-      findSourceMap(cssMinimizerFalse?.options);
-    expect(sourceMapFalse).toBe(false);
+    const preset =
+      findPreset(cssMinimizer) ?? findPreset(cssMinimizer?.options);
+    expect(preset).toBeDefined();
+    expect(Array.isArray(preset)).toBe(true);
+    expect(preset[0]).toBe('default');
+    const presetOptions = preset[1] || {};
+    expect(presetOptions.calc).toBe(false);
   });
 });

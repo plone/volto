@@ -1046,7 +1046,6 @@ module.exports = (
               new TerserPlugin(webpackOptions.terserPluginOptions),
               new CssMinimizerPlugin({
                 minimizerOptions: {
-                  sourceMap: razzleOptions.enableSourceMaps,
                   // Removed the calc option because it causes issues with some modern CSS
                   // Let's allow the browsers do the calc() work and the minification to gzip
                   preset: ['default', { calc: false }],
