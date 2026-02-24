@@ -1,8 +1,8 @@
-import type { PlateConfig } from '@plone/types';
-import { BlockEditorKit } from '../../components/editor/block-editor-kit';
-import { BlockBaseEditorKit } from '../../components/editor/block-editor-base-kit';
-import { BlockFloatingToolbarButtons } from '../../components/ui/preset-block-floating-toolbar-buttons';
 import { PlaywrightPlugin } from '@platejs/playwright';
+import type { PlateConfig } from '../../types';
+
+import { BlockEditorKit } from '../../components/editor/block-editor-kit';
+import { BlockFloatingToolbarButtons } from '../../components/ui/preset-block-floating-toolbar-buttons';
 
 // Include Playwright plugin only during e2e tests
 if (typeof window !== 'undefined') {
@@ -10,14 +10,9 @@ if (typeof window !== 'undefined') {
   BlockEditorKit.push(PlaywrightPlugin.configure({ enabled: true }));
 }
 
-const block: PlateConfig = {
-  editorConfig: {
-    plugins: [...BlockEditorKit],
-  },
-  rendererConfig: {
-    plugins: [...BlockBaseEditorKit],
-  },
+const blockEditor: PlateConfig = {
+  plugins: [...BlockEditorKit],
   floatingToolbarButtons: BlockFloatingToolbarButtons,
 };
 
-export default block;
+export default blockEditor;

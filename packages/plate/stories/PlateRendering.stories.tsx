@@ -2,7 +2,8 @@ import { PlateEditor, PlateRenderer, type Value } from '../components/editor';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import plateBlockConfig from '../config/presets/block';
+import plateBlockEditorConfig from '../config/presets/block-editor';
+import plateBlockRendererConfig from '../config/presets/block-renderer';
 
 const meta = {
   title: 'Basic Rendering',
@@ -30,7 +31,7 @@ const PlateStory = (props: React.ComponentProps<typeof PlateEditor>) => {
       <div className="w-[600px] rounded-2xl border border-quanta-azure p-4">
         <PlateRenderer
           value={(value as Value) || (props.value as Value)}
-          editorConfig={plateBlockConfig.rendererConfig}
+          editorConfig={plateBlockRendererConfig}
           variant="none"
         />
       </div>
@@ -41,7 +42,7 @@ const PlateStory = (props: React.ComponentProps<typeof PlateEditor>) => {
 export const Default: Story = {
   render: (args: any) => <PlateStory {...args} />,
   args: {
-    editorConfig: plateBlockConfig.editorConfig,
+    editorConfig: plateBlockEditorConfig,
     onChange: () => {},
     value: [
       {
