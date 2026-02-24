@@ -1,8 +1,19 @@
+import type { ComponentType } from 'react';
 import { createPlatePlugin } from 'platejs/react';
 
 import { FloatingToolbar } from '../../ui/floating-toolbar';
 import { FloatingToolbarButtons as DefaultFloatingToolbarButtons } from '../../ui/floating-toolbar-buttons';
-import plateBlockConfig from '../../../config/presets/block';
+
+type FloatingToolbarButtonsComponent = ComponentType;
+
+let floatingToolbarButtonsOverride: FloatingToolbarButtonsComponent | null =
+  null;
+
+export const setFloatingToolbarButtons = (
+  component: FloatingToolbarButtonsComponent | null,
+) => {
+  floatingToolbarButtonsOverride = component;
+};
 
 export const FloatingToolbarKit = [
   createPlatePlugin({
@@ -10,8 +21,7 @@ export const FloatingToolbarKit = [
     render: {
       afterEditable: () => {
         const FloatingToolbarButtons =
-          plateBlockConfig.floatingToolbarButtons ||
-          DefaultFloatingToolbarButtons;
+          floatingToolbarButtonsOverride ?? DefaultFloatingToolbarButtons;
         return (
           <FloatingToolbar>
             <FloatingToolbarButtons />
