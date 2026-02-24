@@ -1,0 +1,2 @@
+Fix the Moderate Comments control panel to only appear when Discussion support is available from the backend, avoiding incorrect visibility when plone.app.discussion is not installed.
+@Kathrina-dev
