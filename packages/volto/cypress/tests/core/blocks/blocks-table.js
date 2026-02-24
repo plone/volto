@@ -22,10 +22,10 @@ describe('Table Block Tests', () => {
 
     // Edit
     cy.addNewBlock('table');
-    cy.wait(2000);
+
+    cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
 
     // No border in input
-    cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
     cy.get('.block-editor-slateTable [role=textbox]')
       .first()
       .click()
@@ -36,25 +36,33 @@ describe('Table Block Tests', () => {
     )
       .focus()
       .click()
-      .type('column 1 / row 1');
+      .type('column 1 / row 1')
+      .should('have.text', 'column 1 / row 1');
+
     cy.get(
       '.celled.fixed.table thead tr th:nth-child(2) [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 2 / row 1');
+      .type('column 2 / row 1')
+      .should('have.text', 'column 2 / row 1');
+
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 1 / row 2');
+      .type('column 1 / row 2')
+      .should('have.text', 'column 1 / row 2');
+
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:nth-child(2) [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 2 / row 2');
+      .type('column 2 / row 2')
+      .should('have.text', 'column 2 / row 2');
+
     cy.get('button[title="Insert col after"]').click();
     cy.get('button[title="Insert row after"]').click();
     cy.get('button[title="Insert row before"]').click();
@@ -65,28 +73,41 @@ describe('Table Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
 
+    cy.get('.celled.fixed.table').should('be.visible');
+
     // View
-    cy.get('.celled.fixed.table thead tr th:first-child()').contains(
+    cy.get('.celled.fixed.table thead tr th:first-child()').should(
+      'contain',
       'column 1 / row 1',
     );
-    cy.get('.celled.fixed.table thead tr th:nth-child(3)').contains(
+    cy.get('.celled.fixed.table thead tr th:nth-child(3)').should(
+      'contain',
       'column 2 / row 1',
     );
-    cy.get(
-      '.celled.fixed.table tbody tr:nth-child(2) td:first-child()',
-    ).contains('column 1 / row 2');
-    cy.get(
-      '.celled.fixed.table tbody tr:nth-child(2) td:nth-child(3)',
-    ).contains('column 2 / row 2');
+    cy.get('.celled.fixed.table tbody tr:nth-child(2) td:first-child()').should(
+      'contain',
+      'column 1 / row 2',
+    );
+    cy.get('.celled.fixed.table tbody tr:nth-child(2) td:nth-child(3)').should(
+      'contain',
+      'column 2 / row 2',
+    );
 
-    // Edit
+    cy.intercept('GET', `/**/*?expand*`).as('content2');
+    cy.intercept('GET', '/**/Document').as('schema2');
+    cy.intercept('GET', '**/Widgets.chunk.js').as('widgets');
+
     cy.visit('/my-page/edit');
-    cy.wait('@schema');
+    cy.wait('@schema2');
+    cy.wait('@content2');
+
+    cy.wait('@widgets');
 
     cy.get('#toolbar-save').should('be.visible');
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').should(
-      'be.visible',
-    );
+    cy.get('.celled.fixed.table').should('be.visible');
+    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)')
+      .should('be.visible')
+      .and('not.be.disabled');
 
     cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click({
       waitForAnimations: false,
@@ -114,7 +135,8 @@ describe('Table Block Tests', () => {
     // Save
     cy.get('#toolbar-save').click();
     cy.wait('@save');
-    cy.wait('@content');
+    cy.wait('@content2');
+    cy.get('.celled.fixed.table').should('be.visible');
 
     // View
     cy.get('.celled.fixed.table thead tr th:first-child()').should(
@@ -127,9 +149,10 @@ describe('Table Block Tests', () => {
     );
     cy.get(
       '.celled.fixed.table tbody tr:first-child() td:first-child()',
-    ).contains('column 1 / row 2');
-    cy.get(
-      '.celled.fixed.table tbody tr:first-child() td:nth-child(2)',
-    ).contains('column 2 / row 2');
+    ).should('contain', 'column 1 / row 2');
+    cy.get('.celled.fixed.table tbody tr:first-child() td:nth-child(2)').should(
+      'contain',
+      'column 2 / row 2',
+    );
   });
 });
