@@ -17,6 +17,65 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.26 (2026-02-20)
+
+### Breaking
+
+- Created a new `VideoEmbed` component for usage in a video block, helping to fix accessibility issues with the Semantic UI one. @jackahl @iRohitSingh [#6359](https://github.com/plone/volto/issues/6359)
+- Table block is now responsive and can scroll horizontally for non-fixed tables. @sneridagh [#7916](https://github.com/plone/volto/issues/7916)
+
+### Feature
+
+- Allow other sources, including Peertube instances, in the Video block via blocks configuration. @ionlizarazu [#6870](https://github.com/plone/volto/issues/6870)
+
+### Bugfix
+
+- Fix ContentTypeSchema error toast to display only error message instead of stringified JSON object. @Shyam-Raghuwanshi [#7692](https://github.com/plone/volto/issues/7692)
+- Fix missing i18n and a11y id for facet widget of Search block. @IFlameing 
+
+### Internal
+
+- Added Vitest coverage for `.well-known` public asset handling and corrected a test import path in volto-razzle. @Kathrina-dev [#7868](https://github.com/plone/volto/issues/7868)
+- Use `getSlateEditorAndType` in `03-block-slate.js` to make the test more robust. @wesleybl [#7924](https://github.com/plone/volto/issues/7924)
+- Add CI check for volto-razzle changelog. @davisagli 
+
+## 19.0.0-alpha.25 (2026-02-13)
+
+### Feature
+
+- If a delete operation fails, display the error message returned by the API (if any). @cekk [#7888](https://github.com/plone/volto/issues/7888)
+
+### Bugfix
+
+- Fix a11y error `missing aria-label` in search block facets widget. @iFlameing 
+
+### Internal
+
+- Reinstalled all dependencies to latest compatible versions. @wesleybl [#7871](https://github.com/plone/volto/issues/7871)
+
+## 19.0.0-alpha.24 (2026-02-12)
+
+### Bugfix
+
+- Changed the order of the "Save" and "Cancel" buttons on the sharing page to improve accessibility. @Wagner3UB [#7835](https://github.com/plone/volto/issues/7835)
+- Filter invalid block IDs (null, undefined, 'undefined') in getBlocks() to prevent duplicate elements in DOM and test failures. @aryan7081 [#7858](https://github.com/plone/volto/issues/7858)
+- BlocksForm: remove invalid block layout items on save by iterating raw blocks_layout (using isValidBlockId) instead of relying on getBlocks(). @aryan7081 [#7859](https://github.com/plone/volto/issues/7859)
+- Fix href override in UniversalLink component. @iFlameing 
+
+### Internal
+
+- Continue to prevent editors from automatically reformatting Markdown files by moving this configuration from VSCode to prettier.
+  Move the VSCode settings setup from `make install` to a pnpm post-install hook. @wesleybl [#7834](https://github.com/plone/volto/issues/7834)
+- Increase wait time between link check retries with Lychee. @wesleybl [#7872](https://github.com/plone/volto/issues/7872)
+- Update browserlist Feb2026. @sneridagh 
+- Upgrade Plone to use 6.2.0a1. @sneridagh 
+
+### Documentation
+
+- Document known development watcher issues and how to resolve them. @shivaansh0610-LUFFY [#7836](https://github.com/plone/volto/issues/7836)
+- Updated links to old deprecated third-party theme in the documentation. @pnicolli [#7857](https://github.com/plone/volto/issues/7857)
+- Removed add-on packages that no longer exist in the `main` branch from documentation. @wesleybl [#7887](https://github.com/plone/volto/issues/7887)
+
 ## 19.0.0-alpha.23 (2026-02-03)
 
 ### Bugfix

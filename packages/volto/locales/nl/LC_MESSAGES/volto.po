@@ -3341,6 +3341,11 @@ msgstr "Selecteer een datum om een gebeurtenis toe te voegen"
 msgid "Select columns to show"
 msgstr "Selecteer de te tonen kolommen"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -3382,6 +3387,7 @@ msgid "Selection"
 msgstr "Selectie"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -3996,6 +4002,7 @@ msgstr "Tijd"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4011,6 +4018,11 @@ msgstr "Titel"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "Titelveld fout. Waarde niet ingesteld of deze bestaat reeds."
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4368,6 +4380,11 @@ msgstr "Video"
 msgid "Video URL"
 msgstr "Video URL"
 
+#. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "VideoTitleDescription"
+msgstr ""
+
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -4555,6 +4572,11 @@ msgstr "Je kunt commentaar toevoegen door onderstaand formulier in te vullen. Te
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Je kunt in de onderstaande lijst beheren wie de content kan bekijken en bewerken."
+
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -5354,6 +5376,11 @@ msgstr "{id} contenttype"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} schema"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
