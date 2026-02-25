@@ -301,6 +301,23 @@ const UsersControlpanel = () => {
   );
 
   /**
+   * Extract a readable error message from several possible error shapes
+   * @param {object} error
+   * @returns {string} message
+   */
+  const getErrorMessage = (error) => {
+    const respBody = error.response?.body;
+    if (respBody?.error?.message) return respBody.error.message;
+    if (respBody?.message) return respBody.message;
+    if (error.message) return error.message;
+    try {
+      return JSON.stringify(error);
+    } catch (e) {
+      return String(error);
+    }
+  };
+
+  /**
    * Callback to be called by the ModalForm when the form is submitted.
    *
    * @param {object} data Form data from the ModalForm.
@@ -351,9 +368,7 @@ const UsersControlpanel = () => {
           })
           .catch((error) => {
             // Handle error
-            setAddUserError(
-              error.response?.body?.error?.message || 'Error creating user',
-            );
+            setAddUserError(getErrorMessage(error));
           });
       }
     },
@@ -417,11 +432,11 @@ const UsersControlpanel = () => {
   /**
    * Handle Errors after createUser()
    *
-   * @param {object} error object. Requires the property .message
+   * @param {object} error object
    * @returns {undefined}
    */
   const onAddUserError = useCallback((error) => {
-    setAddUserError(error.response.body.error.message);
+    setAddUserError(getErrorMessage(error));
   }, []);
 
   /**
