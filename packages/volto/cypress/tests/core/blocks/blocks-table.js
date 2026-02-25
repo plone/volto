@@ -23,6 +23,7 @@ describe('Table Block Tests', () => {
     // Edit
     cy.addNewBlock('table');
 
+    // Wait for table editor to appear instead of hardcoded wait
     cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
 
     // No border in input
@@ -68,11 +69,15 @@ describe('Table Block Tests', () => {
     cy.get('button[title="Insert row before"]').click();
     cy.get('button[title="Insert col before"]').click();
 
+    // Redefine intercept before save to capture the post-save redirect request
+    cy.intercept('GET', `/**/*?expand*`).as('contentAfterSave');
+
     // Save
     cy.get('#toolbar-save').click();
     cy.wait('@save');
-    cy.wait('@content');
+    cy.wait('@contentAfterSave');
 
+    // Wait for table to be visible before asserting
     cy.get('.celled.fixed.table').should('be.visible');
 
     // View
@@ -93,16 +98,22 @@ describe('Table Block Tests', () => {
       'column 2 / row 2',
     );
 
+    // Redefine all intercepts before the second visit to avoid alias conflicts
     cy.intercept('GET', `/**/*?expand*`).as('content2');
     cy.intercept('GET', '/**/Document').as('schema2');
+    // Intercept chunks that block the table from rendering in edit mode
     cy.intercept('GET', '**/Widgets.chunk.js').as('widgets');
+    cy.intercept('GET', '**/my-page/@types/Document').as('types');
 
     cy.visit('/my-page/edit');
     cy.wait('@schema2');
     cy.wait('@content2');
 
+    // Wait for critical chunks that block the table rendering
     cy.wait('@widgets');
+    cy.wait('@types');
 
+    // Wait for toolbar and table to be ready before interacting
     cy.get('#toolbar-save').should('be.visible');
     cy.get('.celled.fixed.table').should('be.visible');
     cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)')
@@ -132,10 +143,15 @@ describe('Table Block Tests', () => {
     ).click();
     cy.get('button[title="Delete row"]').click();
 
+    // Redefine intercept before second save
+    cy.intercept('GET', `/**/*?expand*`).as('contentAfterSave2');
+
     // Save
     cy.get('#toolbar-save').click();
     cy.wait('@save');
-    cy.wait('@content2');
+    cy.wait('@contentAfterSave2');
+
+    // Wait for table to be visible before asserting
     cy.get('.celled.fixed.table').should('be.visible');
 
     // View
