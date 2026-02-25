@@ -637,7 +637,7 @@ describe('Search Block Tests', () => {
 
     cy.findByText('Effective date').click();
 
-    cy.get('div#select-search-sort-on.search-react-select-container').contains(
+    cy.get('.search-sort-on .search-react-select-container').contains(
       'Effective date',
     );
 
@@ -688,11 +688,11 @@ describe('Search Block Tests', () => {
     cy.findByText('Effective date').click();
 
     cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
+      '.search-sort-on .search-react-select-container.css-2b097c-container',
     ).contains('Effective date');
-    cy.get('#select-search-sort-on').click();
+    cy.get('.search-sort-on .search-react-select-container').click();
     cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
+      '.search-sort-on .search-react-select-container.css-2b097c-container',
     ).contains('Order in folder');
     // Verify the presence of Ascending button
     cy.get('button[title="Ascending"]').should('be.visible');
