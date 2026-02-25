@@ -98,11 +98,12 @@ describe('Table Block Tests', () => {
       'column 2 / row 2',
     );
 
-    // Redefine all intercepts before the second visit to avoid alias conflicts
+    // Redefine all intercepts before the second visit to avoid alias conflicts.
+    // Note: in production builds, chunk filenames include a content hash
+    // (e.g. Widgets.22d9ce1a.chunk.js), so we use a glob that matches any hash.
     cy.intercept('GET', `/**/*?expand*`).as('content2');
     cy.intercept('GET', '/**/Document').as('schema2');
-    // Intercept chunks that block the table from rendering in edit mode
-    cy.intercept('GET', '**/Widgets.chunk.js').as('widgets');
+    cy.intercept('GET', '**/Widgets.*.chunk.js').as('widgets');
     cy.intercept('GET', '**/my-page/@types/Document').as('types');
 
     cy.visit('/my-page/edit');
