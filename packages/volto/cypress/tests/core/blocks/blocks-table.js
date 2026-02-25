@@ -98,26 +98,24 @@ describe('Table Block Tests', () => {
       'column 2 / row 2',
     );
 
-    // Redefine all intercepts before the second visit to avoid alias conflicts.
-    // Note: in production builds, chunk filenames include a content hash
-    // (e.g. Widgets.22d9ce1a.chunk.js), so we use a glob that matches any hash.
+    // Redefine all intercepts before the second visit to avoid alias conflicts
     cy.intercept('GET', `/**/*?expand*`).as('content2');
     cy.intercept('GET', '/**/Document').as('schema2');
-    cy.intercept('GET', '**/Widgets.*.chunk.js').as('widgets');
-    cy.intercept('GET', '**/my-page/@types/Document').as('types');
 
     cy.visit('/my-page/edit');
     cy.wait('@schema2');
     cy.wait('@content2');
 
-    // Wait for critical chunks that block the table rendering
-    cy.wait('@widgets');
-    cy.wait('@types');
-
-    // Wait for toolbar and table to be ready before interacting
+    // Wait for toolbar to be visible — this is the last reliable signal
+    // that all async chunks (Widgets, dnd-kit, etc.) have finished loading
     cy.get('#toolbar-save').should('be.visible');
-    cy.get('.celled.fixed.table').should('be.visible');
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)')
+
+    // Wait for the table and the target cell to be fully interactive.
+    // Using a generous timeout since chunk loading in CI can be slow.
+    cy.get('.celled.fixed.table', { timeout: 15000 }).should('be.visible');
+    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)', {
+      timeout: 15000,
+    })
       .should('be.visible')
       .and('not.be.disabled');
 
