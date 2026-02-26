@@ -499,11 +499,17 @@ class Contents extends Component {
     }
 
     if (this.props.deleteRequest.loading && nextProps.deleteRequest.error) {
+      const deleteErrorMessageTitle = this.props.intl.formatMessage(
+        messages.deleteError,
+      );
+      const deleteErrorMessageContent =
+        nextProps.deleteRequest.error?.response?.body?.message ||
+        deleteErrorMessageTitle;
       this.props.toastify.toast.error(
         <Toast
           error
-          title={this.props.intl.formatMessage(messages.deleteError)}
-          content={this.props.intl.formatMessage(messages.deleteError)}
+          title={deleteErrorMessageTitle}
+          content={deleteErrorMessageContent}
         />,
       );
     }

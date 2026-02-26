@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Radio, RadioGroup } from '@plone/components';
@@ -129,6 +129,25 @@ const ButtonsWidget = (props: ButtonsWidgetProps) => {
       onChange(id, selectedAction.value);
     }
   };
+
+  // Synchronize default value if no value is set to data prop.
+  useEffect(() => {
+    // If `value` already matches any normalized action value, do nothing.
+    const existingMatch = normalizedActions.find(({ value: actionValue }) =>
+      isEqual(value, actionValue),
+    );
+
+    if (existingMatch) return;
+
+    // Otherwise, if there's a default value set the default style.
+    if (!defaultSelectedActionName) return;
+    const selected = normalizedActions.find(
+      ({ name }) => name === defaultSelectedActionName,
+    );
+    if (!selected) return;
+
+    onChange(id, selected.value);
+  }, [value, defaultSelectedActionName, onChange, normalizedActions, id]);
 
   return (
     <FormFieldWrapper {...props} className="widget">

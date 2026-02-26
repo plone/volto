@@ -1,0 +1,1 @@
+Exclude `.storybook` from ESLint's default hidden directory ignore list via `.eslintignore` to allow linting of Storybook configuration files. @Shyam-Raghuwanshi

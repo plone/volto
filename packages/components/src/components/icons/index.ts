@@ -103,4 +103,8 @@ export { UserIcon } from './UserIcon';
 export { VideoIcon } from './VideoIcon';
 export { VoltoIcon } from './VoltoIcon';
 export { WindowedIcon } from './WindowedIcon';
+export { WidthDefaultIcon } from './WidthDefaultIcon';
+export { WidthFullIcon } from './WidthFullIcon';
+export { WidthLayoutIcon } from './WidthLayoutIcon';
+export { WidthNarrowIcon } from './WidthNarrowIcon';
 export { WorldIcon } from './WorldIcon';
