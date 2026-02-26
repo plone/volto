@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-02-25 13:09+0000\n"
+"PO-Revision-Date: 2026-02-26 13:09+0000\n"
 "Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
 "Language: gl\n"
@@ -2598,315 +2598,315 @@ msgstr "Nota"
 #. Default: "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
 #: components/manage/Controlpanels/Users/UsersControlpanel
 msgid "Note that roles set here apply directly to a user. The symbol{plone_svg}indicates a role inherited from membership in a group."
-msgstr ""
+msgstr "Ten en conta que os roles definidos aquí aplícanse directamente a un usuario. O símbolo {plone_svg} indica un rol herdado da pertenza a un grupo."
 
 #. Default: "Number of active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Number of active objects"
-msgstr ""
+msgstr "Número de obxectos activos"
 
 #. Default: "Object Size"
 #: components/manage/Contents/Contents
 msgid "Object Size"
-msgstr ""
+msgstr "Tamaño do obxecto"
 
 #. Default: "occurrence(s)"
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Occurences"
-msgstr ""
+msgstr "Repeticións"
 
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr ""
+msgstr "Só se permiten caracteres de 7 bits. Non pode conter maiúsculas nin caracteres especiais: <, >, &, #, /, ?, ou outros que son ilegais nas URL. Non se pode comezar con: _, aq_, @@, ++. Non pode acabar con __. Non pode ser: request,contributors, ., .., \"\". Non pode conter novas líneas."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
-msgstr ""
+msgstr "Abrir nunha nova lapela"
 
 #. Default: "Open menu"
 #: components/theme/Navigation/Navigation
 msgid "Open menu"
-msgstr ""
+msgstr "Abrir menú"
 
 #. Default: "Open object browser"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Widgets/ObjectBrowserWidget
 msgid "Open object browser"
-msgstr ""
+msgstr "Abrir o navegador de obxectos"
 
 #. Default: "Order"
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
-msgstr ""
+msgstr "Ordenar"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
-msgstr ""
+msgstr "Ordenado"
 
 #. Default: "Origin"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Origin"
-msgstr ""
+msgstr "Orixe"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
-msgstr ""
+msgstr "Visión xeral das relacións de todos os elementos de contido"
 
 #. Default: "Page"
 #: components/manage/Toolbar/Toolbar
 msgid "Page"
-msgstr ""
+msgstr "Páxina"
 
 #. Default: "Parent fieldset"
 #: components/manage/Widgets/SchemaWidget
 msgid "Parent fieldset"
-msgstr ""
+msgstr "Campo de campos pai"
 
 #. Default: "Password"
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Password"
-msgstr ""
+msgstr "Contrasinal"
 
 #. Default: "Password reset"
 #: components/theme/PasswordReset/PasswordReset
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Password reset"
-msgstr ""
+msgstr "Restablecer contrasinal"
 
 #. Default: "Passwords do not match."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Passwords do not match."
-msgstr ""
+msgstr "Os contrasinais non coinciden."
 
 #. Default: "Paste"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Paste"
-msgstr ""
+msgstr "Pegar"
 
 #. Default: "Paste blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
-msgstr ""
+msgstr "Pegar bloques"
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Perform the following actions:"
-msgstr ""
+msgstr "Realiza as seguintes accións:"
 
 #. Default: "Permissions have been updated successfully"
 #: components/manage/Sharing/Sharing
 msgid "Permissions have been updated successfully"
-msgstr ""
+msgstr "Os permisos actualizáronse correctamente"
 
 #. Default: "Permissions updated"
 #: components/manage/Sharing/Sharing
 msgid "Permissions updated"
-msgstr ""
+msgstr "Permisos actualizados"
 
 #. Default: "Personal Information"
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Information"
-msgstr ""
+msgstr "Información Persoal"
 
 #. Default: "Personal Preferences"
 #: components/manage/Preferences/PersonalPreferences
 #: components/manage/Toolbar/Toolbar
 msgid "Personal Preferences"
-msgstr ""
+msgstr "Preferencias Persoais"
 
 #. Default: "Personal tools"
 #: components/manage/Toolbar/More
 #: components/manage/Toolbar/Toolbar
 msgid "Personal tools"
-msgstr ""
+msgstr "Ferramentas persoais"
 
 #. Default: "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Persons responsible for creating the content of this item. Please enter a list of user names, one per line. The principal creator should come first."
-msgstr ""
+msgstr "Persoas responsables da creación do contido deste elemento. Introduza unha lista de nomes de usuario, un por liña. O creador principal debe ir primeiro."
 
 #. Default: "Placeholder"
 #: components/manage/Widgets/SchemaWidget
 msgid "Placeholder"
-msgstr ""
+msgstr "Marcador de posición"
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
-msgstr ""
+msgstr "Escolle un contido existente como fonte para este elemento"
 
 #. Default: "Please continue with the upgrade."
 #: components/manage/Controlpanels/Controlpanels
 msgid "Please continue with the upgrade."
-msgstr ""
+msgstr "Por favor, continúa coa actualización."
 
 #. Default: "Please ensure you have a backup of your site before performing the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Please ensure you have a backup of your site before performing the upgrade."
-msgstr ""
+msgstr "Asegúrate de ter unha copia de seguridade do teu sitio antes de realizar a actualización."
 
 #. Default: "Please enter a valid URL by deleting the block and adding a new video block."
 #: components/manage/Blocks/Video/Body
 msgid "Please enter a valid URL by deleting the block and adding a new video block."
-msgstr ""
+msgstr "Introduza unha URL válida eliminando o bloque e engadindo un novo bloque de vídeo."
 
 #. Default: "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
 #: components/manage/Blocks/Maps/Edit
 msgid "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it."
-msgstr ""
+msgstr "Introduza o código de inserción proporcionado por Google Maps -> Share -> Embed map. Debería conter o código <iframe>."
 
 #. Default: "Please fill out the form below to set your password."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Please fill out the form below to set your password."
-msgstr ""
+msgstr "Por favor, completa o formulario seguinte para configurar o teu contrasinal."
 
 #. Default: "Please search for users or use the filters on the side."
 #: helpers/MessageLabels/MessageLabels
 msgid "Please search for users or use the filters on the side."
-msgstr ""
+msgstr "Busca usuarios ou usa os filtros do lateral."
 
 #. Default: "Please upgrade to plone.restapi >= 8.24.0."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 msgid "Please upgrade to plone.restapi >= 8.24.0."
-msgstr ""
+msgstr "Por favor, actualiza á plone.restapi >= 8.24.0."
 
 #. Default: "Please upgrade to plone.restapi >= 8.39.0."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Please upgrade to plone.restapi >= 8.39.0."
-msgstr ""
+msgstr "Por favor, actualiza a plone.restapi >= 8.39.0."
 
 #. Default: "Plone Foundation"
 #: components/theme/Footer/Footer
 msgid "Plone Foundation"
-msgstr ""
+msgstr "Fundación Plone"
 
 #. Default: "Plone{reg} Open Source CMS/WCM"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
-msgstr ""
+msgstr "Plone{reg} Open Source CMS/WCM"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
-msgstr ""
+msgstr "Posición cambiada"
 
 #. Default: "Possible values (Enter allowed choices one per line)."
 #: components/manage/Widgets/SchemaWidget
 msgid "Possible values"
-msgstr ""
+msgstr "Posibles valores"
 
 #. Default: "Powered by Plone & Python"
 #: components/theme/Footer/Footer
 msgid "Powered by Plone & Python"
-msgstr ""
+msgstr "Powered by Plone & Python"
 
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
-msgstr ""
+msgstr "Embelece o teu código"
 
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Contents/DropZoneContent
 msgid "Preview"
-msgstr ""
+msgstr "Vista previa"
 
 #. Default: "Preview Image URL"
 #: components/manage/Blocks/Video/schema
 msgid "Preview Image URL"
-msgstr ""
+msgstr "URL da Imaxe de Vista Previa"
 
 #. Default: "Profile"
 #: components/manage/Toolbar/PersonalTools
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #. Default: "Properties"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Properties"
-msgstr ""
+msgstr "Propiedades"
 
 #. Default: "Publication date"
 #: components/manage/Contents/Contents
 msgid "Publication date"
-msgstr ""
+msgstr "Data de publicación"
 
 #. Default: "Publishing Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Publishing Date"
-msgstr ""
+msgstr "Data de Publicación"
 
 #. Default: "Query"
 #: components/manage/Blocks/Listing/schema
 msgid "Query"
-msgstr ""
+msgstr "Consulta"
 
 #. Default: "Query Parameter Name"
 #: components/manage/Widgets/SchemaWidget
 msgid "Query Parameter Name"
-msgstr ""
+msgstr "Nome do Parámetro da Consulta"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
 #: components/theme/PasswordReset/PasswordReset
 msgid "Re-enter the password. Make sure the passwords are identical."
-msgstr ""
+msgstr "Volva introducir o contrasinal. Asegúrese de que os contrasinais sexan idénticos."
 
 #. Default: "Read More…"
 #: components/theme/Search/Search
 #: components/theme/View/SummaryView
 msgid "Read More…"
-msgstr ""
+msgstr "Ler Máis…"
 
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Read only for this type of relation."
-msgstr ""
+msgstr "Só lectura para este tipo de relación."
 
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
 msgid "Rearrange items by…"
-msgstr ""
+msgstr "Reorganizar elementos por…"
 
 #. Default: "Ends"
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends"
-msgstr ""
+msgstr "Remata a repetición"
 
 #. Default: "after"
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends after"
-msgstr ""
+msgstr "A repetición finaliza despois de"
 
 #. Default: "on"
 #: components/manage/Widgets/RecurrenceWidget/EndField
 msgid "Recurrence ends on"
-msgstr ""
+msgstr "A repetición remata o"
 
 #. Default: "Redo"
 #: components/manage/Form/UndoToolbar
 msgid "Redo"
-msgstr ""
+msgstr "Refacer"
 
 #. Default: "Minimalistic table design"
 #: config/Blocks
@@ -2916,212 +2916,212 @@ msgstr "Reducir complexidade"
 #. Default: "Referencing this item as related item"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item as related item"
-msgstr ""
+msgstr "Referenciando este elemento como elemento relacionado"
 
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
-msgstr ""
+msgstr "Referenciando este elemento con {relationship}"
 
 #. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
-msgstr ""
+msgstr "Actualizar o contido de orixe"
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
 #: components/theme/Login/Login
 #: components/theme/Register/Register
 msgid "Register"
-msgstr ""
+msgstr "Rexístrate"
 
 #. Default: "Registration form"
 #: components/theme/Register/Register
 msgid "Registration form"
-msgstr ""
+msgstr "Formulario de rexistro"
 
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "Elementos Relacionados"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 msgid "Relation name"
-msgstr ""
+msgstr "Nome da relación"
 
 #. Default: "Relations"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations"
-msgstr ""
+msgstr "Relacións"
 
 #. Default: "Relations are editable with plone.api >= 2.0.3."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Relations are editable with plone.api >= 2.0.3."
-msgstr ""
+msgstr "As relacións son editables con plone.api >= 2.0.3."
 
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
-msgstr ""
+msgstr "Relacións actualizadas"
 
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Soltar para engadir ficheiros a este cartafol"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
 msgid "Relevance"
-msgstr ""
+msgstr "Relevancia"
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
 msgid "Remove"
-msgstr ""
+msgstr "Eliminar"
 
 #. Default: "Remove element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Remove element {index}"
-msgstr ""
+msgstr "Eliminar elemento {index}"
 
 #. Default: "Remove item"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Remove item"
-msgstr ""
+msgstr "Eliminar elemento"
 
 #. Default: "Remove"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Remove recurrence"
-msgstr ""
+msgstr "Eliminar repetición"
 
 #. Default: "Remove selected"
 #: components/manage/Controlpanels/Aliases
 msgid "Remove selected"
-msgstr ""
+msgstr "Eliminar seleccionados"
 
 #. Default: "Remove term"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
-msgstr ""
+msgstr "Eliminar termo"
 
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
 msgid "Remove users from group"
-msgstr ""
+msgstr "Eliminar usuarios do grupo"
 
 #. Default: "Remove working copy"
 #: components/manage/Toolbar/More
 msgid "Remove working copy"
-msgstr ""
+msgstr "Eliminar copia de traballo"
 
 #. Default: "Rename"
 #: components/manage/Actions/Actions
 #: components/manage/Contents/Contents
 msgid "Rename"
-msgstr ""
+msgstr "Cambiar nome"
 
 #. Default: "Renaming items..."
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename Items Loading Message"
-msgstr ""
+msgstr "Renomear a Mensaxe de Cargando Elementos"
 
 #. Default: "Rename items"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename items"
-msgstr ""
+msgstr "Cambiar nome de elementos"
 
 #. Default: "Repeat"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat"
-msgstr ""
+msgstr "Repetir"
 
 #. Default: "Repeat every"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat every"
-msgstr ""
+msgstr "Repetir cada"
 
 #. Default: "Repeat on"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Repeat on"
-msgstr ""
+msgstr "Repetir o"
 
 #. Default: "Replace existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Replace existing file"
-msgstr ""
+msgstr "Substituir ficheiro existente"
 
 #. Default: "Reply"
 #: components/theme/Comments/Comments
 msgid "Reply"
-msgstr ""
+msgstr "Resposta"
 
 #. Default: "Required"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Required"
-msgstr ""
+msgstr "Requirido"
 
 #. Default: "Required input is missing."
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Required input is missing."
-msgstr ""
+msgstr "Falta a entrada requirida."
 
 #. Default: "Reset element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Reset element {index}"
-msgstr ""
+msgstr "Restablecer elemento {index}"
 
 #. Default: "Reset title"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Reset term title"
-msgstr ""
+msgstr "Restablecer o título do termo"
 
 #. Default: "Reset the block"
 #: components/manage/Blocks/Teaser/Data
 msgid "Reset the block"
-msgstr ""
+msgstr "Restablece o bloque"
 
 #. Default: "Results limit"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Results limit"
-msgstr ""
+msgstr "Límite de resultados"
 
 #. Default: "Results preview"
 #: components/manage/Blocks/Listing/Edit
 msgid "Results preview"
-msgstr ""
+msgstr "Vista previa de resultados"
 
 #. Default: "Results template"
 #: components/manage/Blocks/Search/SearchBlockEdit
 msgid "Results template"
-msgstr ""
+msgstr "Modelo de resultados"
 
 #. Default: "Reversed order"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Reversed order"
-msgstr ""
+msgstr "Orde inversa"
 
 #. Default: "Revert to this revision"
 #: components/manage/History/History
 msgid "Revert to this revision"
-msgstr ""
+msgstr "Volver a esta revisión"
 
 #. Default: "Review state"
 #: components/manage/Contents/Contents
 #: components/manage/LinksToItem/LinksToItem
 msgid "Review state"
-msgstr ""
+msgstr "Estado de revisión"
 
 #. Default: "Richtext"
 #: components/manage/Widgets/SchemaWidget
 msgid "Richtext"
-msgstr ""
+msgstr "Texto enriquecido"
 
 #. Default: "Right"
 #: components/manage/Blocks/Maps/Edit
@@ -3133,39 +3133,39 @@ msgstr "Dereita"
 #. Default: "Rights"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Rights"
-msgstr ""
+msgstr "Dereitos"
 
 #. Default: "Roles"
 #: helpers/MessageLabels/MessageLabels
 msgid "Roles"
-msgstr ""
+msgstr "Roles"
 
 #. Default: "Root"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsRootItem
 msgid "Root"
-msgstr ""
+msgstr "Raíz"
 
 #. Default: "Rule added"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Rule added"
-msgstr ""
+msgstr "Regra engadida"
 
 #. Default: "Rule enable changed"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Rule enable changed"
-msgstr ""
+msgstr "Cambiouse a habilitación da regra"
 
 #. Default: "Rules"
 #: components/manage/Rules/Rules
 #: components/manage/Toolbar/More
 msgid "Rules"
-msgstr ""
+msgstr "Regras"
 
 #. Default: "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Rules execute when a triggering event occurs. Rule actions will only be invoked if all the rule's conditions are met. You can add new actions and conditions using the buttons below."
-msgstr ""
+msgstr "As regras execútanse cando se produce un evento desencadeante. As accións das regras só se invocarán se se cumpren todas as condicións da regra. Podes engadir novas accións e condicións usando os botóns seguintes."
 
 #. Default: "Save"
 #: components/manage/Add/Add
@@ -3180,32 +3180,32 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 #: helpers/MessageLabels/MessageLabels
 msgid "Save"
-msgstr ""
+msgstr "Gardar"
 
 #. Default: "Save"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Save recurrence"
-msgstr ""
+msgstr "Gardar repetición"
 
 #. Default: "Saved"
 #: helpers/MessageLabels/MessageLabels
 msgid "Saved"
-msgstr ""
+msgstr "Gardado"
 
 #. Default: "Scheduled"
 #: components/manage/Contents/ContentsItem
 msgid "Scheduled"
-msgstr ""
+msgstr "Programado"
 
 #. Default: "Schema"
 #: components/manage/Controlpanels/ContentTypesActions
 msgid "Schema"
-msgstr ""
+msgstr "Esquema"
 
 #. Default: "Schema updates"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "Schema updates"
-msgstr ""
+msgstr "Actualizacións do esquema"
 
 #. Default: "Search"
 #: components/manage/BlockChooser/BlockChooserSearch
@@ -3218,89 +3218,89 @@ msgstr ""
 #: components/theme/Search/Search
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search"
-msgstr ""
+msgstr "Busca"
 
 #. Default: "Search SVG"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search SVG"
-msgstr ""
+msgstr "Busca SVG"
 
 #. Default: "Search Site"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr ""
+msgstr "Busca no Sitio"
 
 #. Default: "Search block"
 #: components/manage/Blocks/Search/schema
 msgid "Search block"
-msgstr ""
+msgstr "Bloque de busca"
 
 #. Default: "Search button label"
 #: components/manage/Blocks/Search/schema
 msgid "Search button label"
-msgstr ""
+msgstr "Etiqueta do botón de busca"
 
 #. Default: "Search content"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search content"
-msgstr ""
+msgstr "Busca contido"
 
 #. Default: "Search for user or group"
 #: components/manage/Sharing/Sharing
 msgid "Search for user or group"
-msgstr ""
+msgstr "Buscar usuario ou grupo"
 
 #. Default: "Search group…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search group…"
-msgstr ""
+msgstr "Busca grupo…"
 
 #. Default: "Search input label"
 #: components/manage/Blocks/Search/schema
 msgid "Search input label"
-msgstr ""
+msgstr "Buscar etiqueta de entrada"
 
 #. Default: "Search results"
 #: components/manage/Blocks/Search/components/SearchDetails
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Search/Search
 msgid "Search results"
-msgstr ""
+msgstr "Resultados da busca"
 
 #. Default: "Search results for {term}"
 #: components/theme/Search/Search
 msgid "Search results for {term}"
-msgstr ""
+msgstr "Resultados da busca para {term}"
 
 #. Default: "Search sources by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search sources by title or path"
-msgstr ""
+msgstr "Buscar fontes por título ou ruta"
 
 #. Default: "Search targets by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search targets by title or path"
-msgstr ""
+msgstr "Buscar obxectivos por título ou ruta"
 
 #. Default: "Search users…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search users…"
-msgstr ""
+msgstr "Busca usuarios…"
 
 #. Default: "Searched for: <em>{searchedtext}</em>."
 #: components/manage/Blocks/Search/components/SearchDetails
 msgid "Searched for: <em>{searchedtext}</em>."
-msgstr ""
+msgstr "Buscado para: <em>{searchedtext}</em>."
 
 #. Default: "Second"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Second"
-msgstr ""
+msgstr "Segundo"
 
 #. Default: "Section title"
 #: components/manage/Blocks/Search/schema
 msgid "Section title"
-msgstr ""
+msgstr "Título da sección"
 
 #. Default: "Select"
 #: components/manage/Controlpanels/Aliases
@@ -3308,57 +3308,57 @@ msgstr ""
 #: components/manage/Sidebar/ObjectBrowserNav
 #: helpers/MessageLabels/MessageLabels
 msgid "Select"
-msgstr ""
+msgstr "Seleccionar"
 
 #. Default: "Select a date to add to recurrence"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Select a date to add to recurrence"
-msgstr ""
+msgstr "Selecciona unha data para engadir á repetición"
 
 #. Default: "Select columns to show"
 #: components/manage/Contents/Contents
 msgid "Select columns to show"
-msgstr ""
+msgstr "Seleccione as columnas para amosar"
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
-msgstr ""
+msgstr "Seleccione relación"
 
 #. Default: "Select rule"
 #: components/manage/Rules/Rules
 msgid "Select rule"
-msgstr ""
+msgstr "Seleccione regra"
 
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Select the transition to be used for modifying the items state."
-msgstr ""
+msgstr "Seleccione a transición que se usará para modificar o estado dos elementos."
 
 #. Default: "Selected"
 #: helpers/MessageLabels/MessageLabels
 msgid "Selected"
-msgstr ""
+msgstr "Seleccionado"
 
 #. Default: "Selected dates"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Selected dates"
-msgstr ""
+msgstr "Datas seleccionadas"
 
 #. Default: "Selected items"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items"
-msgstr ""
+msgstr "Elementos seleccionados"
 
 #. Default: "of"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
-msgstr ""
+msgstr "Selected items - x of y"
 
 #. Default: "Selection"
 #: components/manage/Widgets/SchemaWidget
 msgid "Selection"
-msgstr ""
+msgstr "Selección"
 
 #. Default: "Select…"
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
@@ -3368,265 +3368,265 @@ msgstr ""
 #: components/manage/Widgets/SelectWidget
 #: components/manage/Widgets/TokenWidget
 msgid "Select…"
-msgstr ""
+msgstr "Seleccione…"
 
 #. Default: "Send"
 #: components/theme/ContactForm/ContactForm
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #. Default: "Send a confirmation mail with a link to set the password."
 #: helpers/MessageLabels/MessageLabels
 msgid "Send a confirmation mail with a link to set the password."
-msgstr ""
+msgstr "Enviar un correo de confirmación cunha ligazón para definir o contrasinal."
 
 #. Default: "Server Error"
 #: components/theme/Error/ServerError
 msgid "Server Error"
-msgstr ""
+msgstr "Erro do Servidor"
 
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set my password"
-msgstr ""
+msgstr "Establecer o meu contrasinal"
 
 #. Default: "Set your password"
 #: components/theme/PasswordReset/PasswordReset
 msgid "Set your password"
-msgstr ""
+msgstr "Establece o teu contrasinal"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 #. Default: "Sharing"
 #: components/manage/Sharing/Sharing
 #: components/manage/Toolbar/More
 msgid "Sharing"
-msgstr ""
+msgstr "Compartindo"
 
 #. Default: "Sharing for {title}"
 #: components/manage/Sharing/Sharing
 msgid "Sharing for {title}"
-msgstr ""
+msgstr "Compartindo para {title}"
 
 #. Default: "Short Name"
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Short Name"
-msgstr ""
+msgstr "Nome Curto"
 
 #. Default: "Short name"
 #: components/manage/Contents/ContentsRenameModal
 msgid "Short name"
-msgstr ""
+msgstr "Nome curto"
 
 #. Default: "Show"
 #: components/manage/Controlpanels/Aliases
 #: components/theme/Pagination/Pagination
 msgid "Show"
-msgstr ""
+msgstr "Amosar"
 
 #. Default: "Show All"
 #: helpers/MessageLabels/MessageLabels
 msgid "Show All"
-msgstr ""
+msgstr "Amosar Todos"
 
 #. Default: "Show Replies"
 #: components/theme/Comments/Comments
 msgid "Show Replies"
-msgstr ""
+msgstr "Amosar Respostas"
 
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
-msgstr ""
+msgstr "Amosar filtros"
 
 #. Default: "Show groups of users below"
 #: helpers/MessageLabels/MessageLabels
 msgid "Show groups of users below"
-msgstr ""
+msgstr "Mostrar grupos de usuarios a continuación"
 
 #. Default: "Show item"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Show item"
-msgstr ""
+msgstr "Amosar elemento"
 
 #. Default: "Show potential sources. Not only objects that are source of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential sources. Not only objects that are source of some relation."
-msgstr ""
+msgstr "Mostrar fontes potenciais. Non só obxectos que son fonte dalgunha relación."
 
 #. Default: "Show potential targets. Not only objects that are target of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential targets. Not only objects that are target of some relation."
-msgstr ""
+msgstr "Mostrar obxectivos potenciais. Non só os obxectos que son obxectivo dalgunha relación."
 
 #. Default: "Show search button?"
 #: components/manage/Blocks/Search/schema
 msgid "Show search button?"
-msgstr ""
+msgstr "Amosar o botón de busca?"
 
 #. Default: "Show search input?"
 #: components/manage/Blocks/Search/schema
 msgid "Show search input?"
-msgstr ""
+msgstr "Amosar entrada de busca?"
 
 #. Default: "Show sorting?"
 #: components/manage/Blocks/Search/schema
 msgid "Show sorting?"
-msgstr ""
+msgstr "Amosar a ordenación?"
 
 #. Default: "Show total results"
 #: components/manage/Blocks/Search/schema
 msgid "Show total results"
-msgstr ""
+msgstr "Amosar todos os resultados"
 
 #. Default: "Shrink sidebar"
 #: components/manage/Sidebar/Sidebar
 msgid "Shrink sidebar"
-msgstr ""
+msgstr "Reducir a barra lateral"
 
 #. Default: "Shrink toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Shrink toolbar"
-msgstr ""
+msgstr "Reducir a barra de ferramentas"
 
 #. Default: "Sign in to start session"
 #: components/theme/Login/Login
 msgid "Sign in to start session"
-msgstr ""
+msgstr "Inicie a sesión"
 
 #. Default: "Site Administration"
 #: components/theme/NotFound/NotFound
 #: components/theme/Unauthorized/Unauthorized
 msgid "Site Administration"
-msgstr ""
+msgstr "Administración do Sitio"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/PersonalTools
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
-msgstr ""
+msgstr "Configuración do Sitio"
 
 #. Default: "Sitemap"
 #: components/theme/Sitemap/Sitemap
 msgid "Sitemap"
-msgstr ""
+msgstr "Mapa do sitio"
 
 #. Default: "Size: {size}"
 #: components/theme/View/ImageView
 msgid "Size: {size}"
-msgstr ""
+msgstr "Tamaño: {size}"
 
 #. Default: "Small"
 #: components/manage/Widgets/ImageSizeWidget
 msgid "Small"
-msgstr ""
+msgstr "Pequeno"
 
 #. Default: "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are also a folder. By deleting them you will delete {containedItemsToDelete} {variation} inside the folders."
-msgstr ""
+msgstr "Algúns elementos tamén son un cartafol. Ao eliminalos, eliminarás {containedItemsToDelete} {variation} dentro dos cartafoles."
 
 #. Default: "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. By deleting them {brokenReferences} {variation} will be broken."
-msgstr ""
+msgstr "Algúns elementos son referenciados por outros contidos. Ao eliminalos, {brokenReferences} {variation} romperase."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
-msgstr ""
+msgstr "Algunhas relacións están rotas. Por favor, arranxaas."
 
 #. Default: "Sorry, something went wrong with your request"
 #: error
 msgid "Sorry, something went wrong with your request"
-msgstr ""
+msgstr "Sentímolo, algo fallou coa túa solicitude"
 
 #. Default: "Sort by"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort By"
-msgstr ""
+msgstr "Ordenar Por"
 
 #. Default: "Sort by:"
 #: components/theme/Search/Search
 msgid "Sort By:"
-msgstr ""
+msgstr "Ordena Por:"
 
 #. Default: "Sort on"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Widgets/QuerySortOnWidget
 #: components/manage/Widgets/QuerystringWidget
 msgid "Sort on"
-msgstr ""
+msgstr "Ordenar"
 
 #. Default: "Sort on options"
 #: components/manage/Blocks/Search/schema
 msgid "Sort on options"
-msgstr ""
+msgstr "Ordenar opcións"
 
 #. Default: "Sort transactions by User-Name, Path or Date"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sort transactions by User-Name, Path or Date"
-msgstr ""
+msgstr "Ordenar transaccións por Nome de Usuario, Ruta ou Data"
 
 #. Default: "Sorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Sorted"
-msgstr ""
+msgstr "Ordenado"
 
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
 msgid "Sorted on"
-msgstr ""
+msgstr "Ordenado"
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Source"
-msgstr ""
+msgstr "Fonte"
 
 #. Default: "Specify a youtube video or playlist url"
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr ""
+msgstr "Especificar a URL dun vídeo ou lista de reprodución de YouTube"
 
 #. Default: "Split"
 #: components/manage/Diff/Diff
 msgid "Split"
-msgstr ""
+msgstr "Dividir"
 
 #. Default: "Start Date"
 #: components/manage/Blocks/Search/components/DateRangeFacet
 #: components/manage/Contents/Contents
 msgid "Start Date"
-msgstr ""
+msgstr "Data de Comezo"
 
 #. Default: "Start of the recurrence"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
 msgid "Start of the recurrence"
-msgstr ""
+msgstr "Inicio da repetición"
 
 #. Default: "Start password reset"
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Start password reset"
-msgstr ""
+msgstr "Iniciar o restablecemento do contrasinal"
 
 #. Default: "State"
 #: components/manage/Contents/Contents
 #: components/manage/Workflow/Workflow
 #: components/theme/View/TabularView
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #. Default: "Status"
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #. Default: "Sticky"
 #: components/manage/Blocks/ToC/Schema
