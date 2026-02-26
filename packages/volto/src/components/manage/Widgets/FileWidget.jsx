@@ -211,7 +211,7 @@ const FileWidget = (props) => {
                 : intl.formatMessage(messages.addNewFile)}
 
               <span className="visually-hidden">
-                {intl.formatMessage(messages.dragAndDropActionA11Y)}
+                {intl.formatMessage(messages.dragAndDropActionA11y)}
               </span>
             </label>
             <input
