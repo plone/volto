@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-02-26 13:09+0000\n"
+"PO-Revision-Date: 2026-02-26 23:09+0000\n"
 "Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
 "Language: gl\n"
@@ -1696,9 +1696,8 @@ msgstr "Rol global"
 
 #. Default: "Google Maps Embedded Block"
 #: components/manage/Blocks/Maps/Edit
-#, fuzzy
 msgid "Google Maps Embedded Block"
-msgstr "Google Maps Embedded Block"
+msgstr "Google Maps Bloque Embebido"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -3631,17 +3630,17 @@ msgstr "Estado"
 #. Default: "Sticky"
 #: components/manage/Blocks/ToC/Schema
 msgid "Sticky"
-msgstr ""
+msgstr "Menú pegañento"
 
 #. Default: "Stop compare"
 #: components/manage/Multilingual/CompareLanguages
 msgid "Stop compare"
-msgstr ""
+msgstr "Parar comparación"
 
 #. Default: "String"
 #: components/manage/Widgets/SchemaWidget
 msgid "String"
-msgstr ""
+msgstr "Cadea"
 
 #. Default: "Alternate row background color"
 #: config/Blocks
@@ -3651,17 +3650,17 @@ msgstr "Raia filas alternas con color"
 #. Default: "Styling"
 #: helpers/Extensions/withBlockSchemaEnhancer
 msgid "Styling"
-msgstr ""
+msgstr "Estilismo"
 
 #. Default: "Subject"
 #: components/theme/ContactForm/ContactForm
 msgid "Subject"
-msgstr ""
+msgstr "Tema"
 
 #. Default: "Submit"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #. Default: "Success"
 #: components/manage/Actions/Actions
@@ -3683,27 +3682,27 @@ msgstr ""
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
 msgid "Success"
-msgstr ""
+msgstr "Éxito"
 
 #. Default: "Successfully undone transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Successfully Undone Transactions"
-msgstr ""
+msgstr "Transaccións Desfeitas con Éxito"
 
 #. Default: "Summary"
 #: config/Blocks
 msgid "Summary"
-msgstr ""
+msgstr "Resumo"
 
 #. Default: "Summary view"
 #: config/Views
 msgid "Summary view"
-msgstr ""
+msgstr "Vista resumo"
 
 #. Default: "Switch to"
 #: components/theme/LanguageSelector/LanguageSelector
 msgid "Switch to"
-msgstr ""
+msgstr "Cambiar a"
 
 #. Default: "Table"
 #: config/Blocks
@@ -3713,60 +3712,60 @@ msgstr "Táboa"
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/View
 msgid "Table of Contents"
-msgstr ""
+msgstr "Táboa de Contido"
 
 #. Default: "Tabular view"
 #: config/Views
 msgid "Tabular view"
-msgstr ""
+msgstr "Vista tabular"
 
 #. Default: "Tags"
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags"
-msgstr ""
+msgstr "Etiquetas"
 
 #. Default: "Tags to add"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to add"
-msgstr ""
+msgstr "Etiquetas a engadir"
 
 #. Default: "Tags to remove"
 #: components/manage/Contents/ContentsTagsModal
 msgid "Tags to remove"
-msgstr ""
+msgstr "Etiquetas a eliminar"
 
 #. Default: "Target"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Controlpanels/Relations/BrokenRelations
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Target"
-msgstr ""
+msgstr "Obxectivo"
 
 #. Default: "Target Path (Required)"
 #: components/manage/Controlpanels/Aliases
 msgid "Target Path (Required)"
-msgstr ""
+msgstr "Ruta ao Obxectivo (Requirido)"
 
 #. Default: "Target memory size per cache in bytes"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target memory size per cache in bytes"
-msgstr ""
+msgstr "Tamaño de memoria obxectivo por caché en bytes"
 
 #. Default: "Target number of objects in memory per cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Target number of objects in memory per cache"
-msgstr ""
+msgstr "Número obxectivo de obxectos na memoria por caché"
 
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
-msgstr ""
+msgstr "Avance"
 
 #. Default: "Text"
 #: components/manage/Widgets/SchemaWidget
 msgid "Text"
-msgstr ""
+msgstr "Texto"
 
 #. Default: "Thank you."
 #: components/theme/ConnectionRefused/ConnectionRefused
@@ -3775,196 +3774,196 @@ msgstr ""
 #: components/theme/RequestTimeout/RequestTimeout
 #: components/theme/Unauthorized/Unauthorized
 msgid "Thank you."
-msgstr ""
+msgstr "Grazas."
 
 #. Default: "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
 #: components/theme/RequestTimeout/RequestTimeout
 msgid "The backend is not responding, due to a server timeout or a connection problem of your device. Please check your connection and try again."
-msgstr ""
+msgstr "O backend non responde debido a un tempo de espera do servidor ou a un problema de conexión do teu dispositivo. Por favor, comproba a conexión e téntao de novo."
 
 #. Default: "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
 #: components/theme/ConnectionRefused/ConnectionRefused
 msgid "The backend is not responding, please check if you have started Plone, check your project's configuration object apiPath (or if you are using the internal proxy, devProxyToApiPath) or the RAZZLE_API_PATH Volto's environment variable."
-msgstr ""
+msgstr "O backend non responde. Por favor, comproba se iniciaches Plone, comproba o obxecto de configuración apiPath do teu proxecto (ou se estás a usar o proxy interno, devProxyToApiPath) ou a variable de contorno RAZZLE_API_PATH de Volto."
 
 #. Default: "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
 #: components/theme/CorsError/CorsError
 msgid "The backend is responding, but the CORS headers are not configured properly and the browser has denied the access to the backend resources."
-msgstr ""
+msgstr "O backend responde, pero as cabeceiras CORS non están configuradas correctamente e o navegador denegou o acceso aos recursos do backend."
 
 #. Default: "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
 #: components/theme/CorsError/CorsError
 msgid "The backend server of your website is not answering, we apologize for the inconvenience. Please try to re-load the page and try again. If the problem persists please contact the site administrators."
-msgstr ""
+msgstr "O servidor de backend do teu sitio web non responde. Desculpa as molestias. Tenta volver cargar a páxina e inténtao de novo. Se o problema persiste, ponte en contacto cos administradores do sitio."
 
 #. Default: "The button presence disables the live search, the query is issued when you press ENTER"
 #: components/manage/Blocks/Search/schema
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
-msgstr ""
+msgstr "A presenza do botón desactiva a busca en directo. A consulta faise ao premer INTRO"
 
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "O ficheiro que cargaches superou o tamaño máximo permitido de {size} bytes"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
 msgid "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
-msgstr ""
+msgstr "As seguintes regras de contido están activas nesta páxina. Usa o panel de control das regras de contido para crear novas regras ou eliminar ou modificar as existentes."
 
 #. Default: "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The following list shows which upgrade steps are going to be run. Upgrading sometimes performs a catalog/security update, which may take a long time on large sites. Be patient."
-msgstr ""
+msgstr "A seguinte lista mostra os pasos de actualización que se executarán. Ás veces, a actualización realiza unha actualización do catálogo/seguridade, o que pode levar moito tempo en sitios grandes. Ten paciencia."
 
 #. Default: "The item could not be deleted."
 #: components/manage/Contents/Contents
 msgid "The item could not be deleted."
-msgstr ""
+msgstr "O elemento non puido ser eliminado."
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
 msgid "The link address is:"
-msgstr ""
+msgstr "O enderezo da ligazón é:"
 
 #. Default: "The number of items must be greater than or equal to {minItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be greater than or equal to {minItems}"
-msgstr ""
+msgstr "O número de elementos debe ser maior ou igual que {minItems}"
 
 #. Default: "The number of items must be less than or equal to {maxItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be less than or equal to {maxItems}"
-msgstr ""
+msgstr "O número de elementos debe ser menor ou igual a {maxItems}"
 
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
-msgstr ""
+msgstr "A url alternativa proporcionada xa existe!"
 
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
 msgid "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
-msgstr ""
+msgstr "O proceso de rexistro realizouse correctamente. Consulta a túa caixa de entrada de correo electrónico para obter información sobre como activar a túa conta."
 
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "O idioma predeterminado seleccionado debe estar na lista do campo 'Idiomas dispoñibles'"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "The site configuration is outdated and needs to be upgraded."
-msgstr ""
+msgstr "A configuración do sitio está desactualizada e precisa ser actualizada."
 
 #. Default: "The value does not match the pattern {pattern}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
-msgstr ""
+msgstr "O valor non coincide co patrón {pattern}"
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
 msgid "The working copy was discarded"
-msgstr ""
+msgstr "A copia de traballo foi descartada"
 
 #. Default: "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
 #: components/theme/Footer/Footer
 msgid "The {plonecms} is {copyright} 2000-{current_year} by the {plonefoundation} and friends."
-msgstr ""
+msgstr "O {plonecms} ten {copyright} 2000-{current_year} de {plonefoundation} e amigos."
 
 #. Default: "There are no groups with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no groups with the searched criteria"
-msgstr ""
+msgstr "Non hai grupos cos criterios buscados"
 
 #. Default: "There are no users with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no users with the searched criteria"
-msgstr ""
+msgstr "Non hai usuarios cos criterios buscados"
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
 msgid "There are some errors."
-msgstr ""
+msgstr "Hai algúns erros."
 
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
 msgid "There is a configuration problem on the backend"
-msgstr ""
+msgstr "Hai un problema de configuración no backend"
 
 #. Default: "There was an error with the upgrade."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "There was an error with the upgrade."
-msgstr ""
+msgstr "Houbo un error coa actualización."
 
 #. Default: "There were some errors"
 #: components/manage/Form/InlineForm
 msgid "There were some errors"
-msgstr ""
+msgstr "Houbo algúns erros"
 
 #. Default: "There were some errors."
 #: components/manage/Form/ModalForm
 #: helpers/MessageLabels/MessageLabels
 msgid "There were some errors."
-msgstr ""
+msgstr "Houbo algúns erros."
 
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr ""
+msgstr "Estes elementos terán ligazóns rotas"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
-msgstr ""
+msgstr "Terceiro"
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
-msgstr ""
+msgstr "Isto ten unha copia de traballo en curso en {title}"
 
 #. Default: "This is a reserved name and can't be used"
 #: components/manage/Widgets/IdWidget
 msgid "This is a reserved name and can't be used"
-msgstr ""
+msgstr "Este é un nome reservado e non se pode usar"
 
 #. Default: "This is a working copy of {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This is a working copy of {title}"
-msgstr ""
+msgstr "Este é unha copia de traballo de {title}"
 
 #. Default: "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item is also a folder. By deleting it you will delete {containedItemsToDelete} {variation} inside the folder."
-msgstr ""
+msgstr "Este elemento tamén é unha cartafol. Ao eliminalo, eliminarás {containedItemsToDelete} {variation} dentro do cartafol."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
 msgid "This item was locked by {creator} on {date}"
-msgstr ""
+msgstr "Este elemento foi bloqueado por {creator} o {date}"
 
 #. Default: "This name will be displayed in the URL."
 #: components/manage/Contents/ContentsRenameModal
 msgid "This name will be displayed in the URL."
-msgstr ""
+msgstr "Este nome amosarase na URL."
 
 #. Default: "This page does not seem to exist…"
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
-msgstr ""
+msgstr "Esta páxina parece non existir…"
 
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "This rule is assigned to the following locations:"
-msgstr ""
+msgstr "Esta regra foi asignada nas seguientes localizacións:"
 
 #. Default: "Time"
 #: components/manage/Widgets/DatetimeWidget
 #: components/manage/Widgets/TimeWidget
 msgid "Time"
-msgstr ""
+msgstr "Hora"
 
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
@@ -3977,86 +3976,86 @@ msgstr ""
 #: components/theme/View/TabularView
 #: helpers/MessageLabels/MessageLabels
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #. Default: "Title field error. Value not provided or already existing."
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
-msgstr ""
+msgstr "Erro no campo do título. Non se proporcionou un valor ou xa existe."
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
-msgstr ""
+msgstr "Total de obxectos activos e inactivos"
 
 #. Default: "Total comments"
 #: components/manage/Contents/Contents
 msgid "Total comments"
-msgstr ""
+msgstr "Total de comentarios"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
-msgstr ""
+msgstr "Total de ficheiros para subir: {totalFiles}"
 
 #. Default: "Total number of objects in each cache"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in each cache"
-msgstr ""
+msgstr "Número total de obxectos en cada caché"
 
 #. Default: "Total number of objects in memory from all caches"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in memory from all caches"
-msgstr ""
+msgstr "Número total de obxectos na memoria de todas as cachés"
 
 #. Default: "Total number of objects in the database"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total number of objects in the database"
-msgstr ""
+msgstr "Número total de obxectos na base de datos"
 
 #. Default: "Transactions"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions"
-msgstr ""
+msgstr "Transaccións"
 
 #. Default: "#"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Checkbox"
-msgstr ""
+msgstr "Caixa de verificación de transaccións"
 
 #. Default: "Transactions have been sorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Sorted"
-msgstr ""
+msgstr "As Transaccións Foron Ordenadas"
 
 #. Default: "Transactions have been unsorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Transactions Have Been Unsorted"
-msgstr ""
+msgstr "As Transaccións Foron Desordenadas"
 
 #. Default: "Translate to {lang}"
 #: components/manage/Add/Add
 #: components/manage/Toolbar/Types
 msgid "Translate to {lang}"
-msgstr ""
+msgstr "Traducir a {lang}"
 
 #. Default: "Translation linked"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linked"
-msgstr ""
+msgstr "Tradución enlazada"
 
 #. Default: "Translation linking removed"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Translation linking removed"
-msgstr ""
+msgstr "Eliminouse a ligazón de tradución"
 
 #. Default: "Triggering event field error. Please select a value"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Triggering event field error. Please select a value"
-msgstr ""
+msgstr "Erro no campo do evento desencadeante. Por favor, selecciona un valor"
 
 #. Default: "Type"
 #: components/manage/Controlpanels/ContentTypes
@@ -4064,32 +4063,32 @@ msgstr ""
 #: components/manage/Widgets/SchemaWidget
 #: components/theme/View/TabularView
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #. Default: "Type a Video (YouTube, Vimeo or mp4) URL"
 #: components/manage/Blocks/Video/Edit
 msgid "Type a Video (YouTube, Vimeo or mp4) URL"
-msgstr ""
+msgstr "Escribe a URL dun vídeo (YouTube, Vimeo ou mp4)"
 
 #. Default: "Type text..."
 #: components/manage/Widgets/SelectAutoComplete
 msgid "Type text..."
-msgstr ""
+msgstr "Escribe texto..."
 
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
-msgstr ""
+msgstr "Escribe o encabezamento"
 
 #. Default: "Type the title…"
 #: components/manage/Blocks/Title/Edit
 msgid "Type the title…"
-msgstr ""
+msgstr "Escribe o título…"
 
 #. Default: "UID"
 #: components/manage/Contents/Contents
 msgid "UID"
-msgstr ""
+msgstr "UID"
 
 #. Default: "URL Management"
 #: components/manage/Aliases/Aliases
@@ -4097,147 +4096,147 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 msgid "URL Management"
-msgstr ""
+msgstr "Xestión da URL"
 
 #. Default: "URL Management for {title}"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
-msgstr ""
+msgstr "Xestión da URL para {title}"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
-msgstr ""
+msgstr "Anular a asignación"
 
 #. Default: "Unassigned"
 #: components/manage/Rules/Rules
 msgid "Unassigned"
-msgstr ""
+msgstr "Asignación anulada"
 
 #. Default: "Unauthorized"
 #: components/manage/Toolbar/More
 #: components/theme/Unauthorized/Unauthorized
 msgid "Unauthorized"
-msgstr ""
+msgstr "Non autorizado"
 
 #. Default: "Undo"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/Form/UndoToolbar
 msgid "Undo"
-msgstr ""
+msgstr "Desfacer"
 
 #. Default: "Undo Controlpanel"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Undo Controlpanel"
-msgstr ""
+msgstr "Panel de Control de Desfacer"
 
 #. Default: "Unfold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Unfold"
-msgstr ""
+msgstr "Despregar"
 
 #. Default: "Unified"
 #: components/manage/Diff/Diff
 msgid "Unified"
-msgstr ""
+msgstr "Unificado"
 
 #. Default: "Uninstall"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Uninstall"
-msgstr ""
+msgstr "Desinstalar"
 
 #. Default: "Unknown Block {block}"
 #: components/manage/Blocks/Block/DefaultView
 #: components/manage/Blocks/Block/Edit
 #: components/theme/View/RenderBlocks
 msgid "Unknown Block"
-msgstr ""
+msgstr "Bloque Descoñecido"
 
 #. Default: "Unlink translation for"
 #: components/manage/Multilingual/ManageTranslations
 msgid "Unlink translation for"
-msgstr ""
+msgstr "Desvincular a tradución para"
 
 #. Default: "Unlock"
 #: components/manage/Toolbar/Toolbar
 msgid "Unlock"
-msgstr ""
+msgstr "Desbloquear"
 
 #. Default: "Unsorted"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "Unsorted"
-msgstr ""
+msgstr "Desordenado"
 
 #. Default: "Update"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update"
-msgstr ""
+msgstr "Actualizar"
 
 #. Default: "Update User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Update User"
-msgstr ""
+msgstr "Actualizar Usuario"
 
 #. Default: "Update installed addons"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons"
-msgstr ""
+msgstr "Actualizar complementos instalados"
 
 #. Default: "Update installed addons:"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr ""
+msgstr "Actualizar complementos instalados:"
 
 #. Default: "Updates available"
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Updates available"
-msgstr ""
+msgstr "Actualizacións dispoñibles"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade"
-msgstr ""
+msgstr "Actualizar"
 
 #. Default: "Upgrade Plone Site"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Plone Site"
-msgstr ""
+msgstr "Actualiza Sitio Plone"
 
 #. Default: "Upgrade Report"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Report"
-msgstr ""
+msgstr "Informe de Actualización"
 
 #. Default: "Upgrade Steps"
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Upgrade Steps"
-msgstr ""
+msgstr "Pasos da Actualización"
 
 #. Default: "Upload"
 #: components/manage/Contents/Contents
 msgid "Upload"
-msgstr ""
+msgstr "Subir"
 
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Subir ficheiros ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
-msgstr ""
+msgstr "Carga unha imaxe de cabeceira no campo de contido 'Imaxe de Cabeceira'."
 
 #. Default: "Upload files"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Upload files"
-msgstr ""
+msgstr "Subir ficheiros"
 
 #. Default: "Uploading image"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
-msgstr ""
+msgstr "Subindo imaxe"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
