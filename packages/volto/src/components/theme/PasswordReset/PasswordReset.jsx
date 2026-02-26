@@ -154,15 +154,11 @@ function PasswordReset() {
     return (
       <Container>
         <h1 className="documentFirstHeading">
-          <FormattedMessage
-            id="Account activation completed"
-            defaultMessage="Account activation completed"
-          />
+          <FormattedMessage {...messages.successRedirectToLoginTitle} />
         </h1>
         <p className="description">
           <FormattedMessage
-            id="Your password has been set successfully. You may now {link} with your new password."
-            defaultMessage="Your password has been set successfully. You may now {link} with your new password."
+            {...messages.successRedirectToLoginBody}
             values={{
               link: (
                 <Link to="/login">{intl.formatMessage({ id: 'Log In' })}</Link>
