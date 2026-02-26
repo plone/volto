@@ -59,7 +59,7 @@ const messages = defineMessages({
     id: 'File is not of the accepted type {accept}',
     defaultMessage: 'File is not of the accepted type {accept}',
   },
-  dragAndDropActionA11Y: {
+  dragAndDropActionA11y: {
     id: 'Press Enter to browse files from your computer.',
     defaultMessage: 'Press Enter to browse files from your computer.',
   },
