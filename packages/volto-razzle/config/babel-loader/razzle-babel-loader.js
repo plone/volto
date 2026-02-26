@@ -128,7 +128,9 @@ module.exports = babelLoader.custom(function (babel) {
           ) {
             configs.add(`${file}.${isServer ? 'node' : 'web'}`);
             console.info(
-              `Using external babel configuration from ${file} for "${isServer ? 'node' : 'web'}" build`,
+              `Using external babel configuration from ${file} for "${
+                isServer ? 'node' : 'web'
+              }" build`,
             );
           }
         }

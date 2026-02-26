@@ -481,8 +481,8 @@ class RecurrenceWidget extends Component {
       field === 'dtstart'
         ? value
         : rruleSet.dtstart()
-          ? rruleSet.dtstart()
-          : new Date();
+        ? rruleSet.dtstart()
+        : new Date();
     var exdates =
       field === 'exdates' ? value : Object.assign([], rruleSet.exdates());
 

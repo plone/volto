@@ -235,7 +235,9 @@ const ManageTranslations = (props) => {
                         <Button
                           aria-label={`${intl.formatMessage(
                             messages.unlink,
-                          )} ${(langmap[lang]?.nativeName || lang).toLowerCase()}`}
+                          )} ${(
+                            langmap[lang]?.nativeName || lang
+                          ).toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}
@@ -254,9 +256,9 @@ const ManageTranslations = (props) => {
                     ) : (
                       <Button.Group>
                         <Button
-                          aria-label={`${intl.formatMessage(
-                            messages.link,
-                          )} ${(langmap[lang]?.nativeName || lang).toLowerCase()}`}
+                          aria-label={`${intl.formatMessage(messages.link)} ${(
+                            langmap[lang]?.nativeName || lang
+                          ).toLowerCase()}`}
                           basic
                           icon
                           disabled={lang === content.language.token}

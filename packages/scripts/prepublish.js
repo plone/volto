@@ -46,7 +46,9 @@ class PrePublishReleaseItPlugin extends Plugin {
         enabled: true,
         task: () =>
           this.exec(
-            `pnpm publish${tag ? ` --tag ${tag}` : ''}${dryRunArg ? ` ${dryRunArg}` : ''} --no-git-checks`,
+            `pnpm publish${tag ? ` --tag ${tag}` : ''}${
+              dryRunArg ? ` ${dryRunArg}` : ''
+            } --no-git-checks`,
             {
               options: { write: false },
             },

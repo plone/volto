@@ -71,12 +71,12 @@ const CompareLanguagesMenu = ({
                   </button>
                 ) : (
                   <button
-                    aria-label={`${intl.formatMessage(
-                      messages.compare_to,
-                    )} ${(langmap[t.language]?.nativeName || t.language).toLowerCase()}`}
-                    title={`${intl.formatMessage(
-                      messages.compare_to,
-                    )} ${(langmap[t.language]?.nativeName || t.language).toLowerCase()}`}
+                    aria-label={`${intl.formatMessage(messages.compare_to)} ${(
+                      langmap[t.language]?.nativeName || t.language
+                    ).toLowerCase()}`}
+                    title={`${intl.formatMessage(messages.compare_to)} ${(
+                      langmap[t.language]?.nativeName || t.language
+                    ).toLowerCase()}`}
                     onClick={() => {
                       setComparingLanguage(t.language);
                       closeMenu();

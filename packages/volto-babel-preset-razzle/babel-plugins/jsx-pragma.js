@@ -77,9 +77,9 @@ module.exports = function (opts) {
                         t.identifier(state.opts.import),
                       )
                     : state.opts.importNamespace
-                      ? t.importNamespaceSpecifier(importAs)
-                      : // import _pragma from '$module'
-                        t.importDefaultSpecifier(importAs),
+                    ? t.importNamespaceSpecifier(importAs)
+                    : // import _pragma from '$module'
+                      t.importDefaultSpecifier(importAs),
                 ],
                 t.stringLiteral(state.opts.module || 'react'),
               );

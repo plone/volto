@@ -163,8 +163,8 @@ const ReferenceWidget = (props) => {
                 )
               : []
             : value
-              ? flattenToAppURL(value['@id'])
-              : ''
+            ? flattenToAppURL(value['@id'])
+            : ''
         }
         onChange={(event, data) => {
           return onChange(

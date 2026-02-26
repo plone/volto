@@ -72,7 +72,9 @@ Instead, change the "addons" registration in the app.
 
   // Loader boilerplate
   parts.push(
-    `\nconst safeWrapper = (func) => (config) => {\n  const res = func(config);\n  if (typeof res === 'undefined') {\n    throw new Error("Configuration function doesn't return config");\n  }\n  return res;\n};\n\nconst load = (config) => {\n  const addonLoaders = [${loaderIdents.join(', ')}];\n  if (!addonLoaders.every((el) => typeof el === 'function')) {\n    throw new TypeError(\n      'Each addon has to provide a function applying its configuration to the projects configuration.',\n    );\n  }\n  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);\n};\nexport default load;\n`,
+    `\nconst safeWrapper = (func) => (config) => {\n  const res = func(config);\n  if (typeof res === 'undefined') {\n    throw new Error("Configuration function doesn't return config");\n  }\n  return res;\n};\n\nconst load = (config) => {\n  const addonLoaders = [${loaderIdents.join(
+      ', ',
+    )}];\n  if (!addonLoaders.every((el) => typeof el === 'function')) {\n    throw new TypeError(\n      'Each addon has to provide a function applying its configuration to the projects configuration.',\n    );\n  }\n  return addonLoaders.reduce((acc, apply) => safeWrapper(apply)(acc), config);\n};\nexport default load;\n`,
   );
 
   return parts.join('');

@@ -369,18 +369,15 @@ const UnconnectedImageInput = (props) => {
                                   onChange(props.id, item);
                                 }
                               : onSelectItem
-                                ? onSelectItem
-                                : // else we save the url along with the image field and scales
-                                  (
-                                    url,
-                                    { title, image_field, image_scales },
-                                  ) => {
-                                    onChange(props.id, flattenToAppURL(url), {
-                                      title,
-                                      image_field,
-                                      image_scales,
-                                    });
-                                  },
+                              ? onSelectItem
+                              : // else we save the url along with the image field and scales
+                                (url, { title, image_field, image_scales }) => {
+                                  onChange(props.id, flattenToAppURL(url), {
+                                    title,
+                                    image_field,
+                                    image_scales,
+                                  });
+                                },
                             currentPath: contextUrl,
                           });
                         }}

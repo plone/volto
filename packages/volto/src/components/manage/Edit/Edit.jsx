@@ -346,10 +346,10 @@ class Edit extends Component {
                           title: this.props?.content?.title,
                         })
                       : this.props?.schema?.title
-                        ? this.props.intl.formatMessage(messages.edit, {
-                            title: this.props.schema.title,
-                          })
-                        : null
+                      ? this.props.intl.formatMessage(messages.edit, {
+                          title: this.props.schema.title,
+                        })
+                      : null
                   }
                 >
                   {this.props.content?.language && (

@@ -27,8 +27,9 @@ async function evaluateAddons(addonsLoaderPath) {
   });
 
   try {
-    const { default: loader, addonsInfo } =
-      await server.ssrLoadModule(addonsLoaderPath);
+    const { default: loader, addonsInfo } = await server.ssrLoadModule(
+      addonsLoaderPath,
+    );
 
     fs.writeFileSync(
       path.join(ploneDir, 'registry.routes.json'),

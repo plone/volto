@@ -18,22 +18,22 @@ export const __setLoadables = async () => {
 };
 
 // TODO: filter mockAllLoadables
-export const injectLazyLibs = vi.fn().mockImplementation(function ([
-  libraries,
-]) {
-  return vi.fn((WrappedComponent) =>
-    vi.fn((props) => {
-      return <WrappedComponent {...props} {...mockAllLoadables} />;
-    }),
-  );
-});
+export const injectLazyLibs = vi
+  .fn()
+  .mockImplementation(function ([libraries]) {
+    return vi.fn((WrappedComponent) =>
+      vi.fn((props) => {
+        return <WrappedComponent {...props} {...mockAllLoadables} />;
+      }),
+    );
+  });
 
-export const preloadLazyLibs = vi.fn().mockImplementation(function ([
-  libraries,
-]) {
-  return vi.fn((WrappedComponent) =>
-    vi.fn((props) => {
-      return <WrappedComponent {...props} />;
-    }),
-  );
-});
+export const preloadLazyLibs = vi
+  .fn()
+  .mockImplementation(function ([libraries]) {
+    return vi.fn((WrappedComponent) =>
+      vi.fn((props) => {
+        return <WrappedComponent {...props} />;
+      }),
+    );
+  });

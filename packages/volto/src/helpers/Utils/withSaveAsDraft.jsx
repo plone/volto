@@ -49,10 +49,10 @@ const getFormId = (props, location) => {
   const id = isEditForm
     ? ['form', type, pathname].join('-')
     : type
-      ? ['form', pathname, type].join('-')
-      : schema?.properties?.comment
-        ? ['form', pathname, 'comment'].join('-')
-        : ['form', pathname].join('-');
+    ? ['form', pathname, type].join('-')
+    : schema?.properties?.comment
+    ? ['form', pathname, 'comment'].join('-')
+    : ['form', pathname].join('-');
 
   return id;
 };

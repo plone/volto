@@ -92,9 +92,14 @@ export default function devProxyMiddleware() {
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
           apiPathURL.hostname
-        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot${vhSubpath}`;
+        }:${
+          apiPathURL.port
+        }${instancePath}/++api++/VirtualHostRoot${vhSubpath}`;
 
-      return `${target}${path.replace(`${config.settings.subpathPrefix}/++api++`, '')}`;
+      return `${target}${path.replace(
+        `${config.settings.subpathPrefix}/++api++`,
+        '',
+      )}`;
     },
     changeOrigin: true,
     logLevel: process.env.DEBUG_HPM ? 'debug' : 'silent',

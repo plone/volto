@@ -19,7 +19,9 @@ export default function server() {
   server
     .listen(port, bind_address, () => {
       console.log(
-        `The Volto server will make API requests to: ${app.internalApiPath || app.apiPath}/++api++`,
+        `The Volto server will make API requests to: ${
+          app.internalApiPath || app.apiPath
+        }/++api++`,
       );
       console.log(
         `The Volto client will make API requests to: ${app.apiPath}/++api++`,

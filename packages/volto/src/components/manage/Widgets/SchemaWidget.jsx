@@ -1793,7 +1793,11 @@ class SchemaWidget extends Component {
           <ModalForm
             onSubmit={this.onAddField}
             onCancel={this.onCancel}
-            className={`field-${slugify(isString(this.state.addField) && this.state.addField !== '' ? this.state.addField : 'label_text_field')}`}
+            className={`field-${slugify(
+              isString(this.state.addField) && this.state.addField !== ''
+                ? this.state.addField
+                : 'label_text_field',
+            )}`}
             onChangeFormData={(data) => {
               this.setState({
                 addField: data.factory,
@@ -1837,7 +1841,9 @@ class SchemaWidget extends Component {
           <ModalForm
             onSubmit={this.onEditField}
             onCancel={this.onCancel}
-            title={`${this.props.intl.formatMessage(messages.editField)}: ${editFieldType}`}
+            title={`${this.props.intl.formatMessage(
+              messages.editField,
+            )}: ${editFieldType}`}
             className={`factory-${slugify(editFieldType)}`}
             formData={{
               ...this.props.value.properties[this.state.editField.id],

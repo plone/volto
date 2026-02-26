@@ -63,8 +63,8 @@ export { default as FileView } from '@plone/volto/components/theme/View/FileView
 export { default as ImageView } from '@plone/volto/components/theme/View/ImageView';
 export { default as NewsItemView } from '@plone/volto/components/theme/View/NewsItemView';
 
-export const EventView = loadable(
-  () => import('@plone/volto/components/theme/View/EventView'),
+export const EventView = loadable(() =>
+  import('@plone/volto/components/theme/View/EventView'),
 );
 
 export { default as ListingView } from '@plone/volto/components/theme/View/ListingView';
@@ -103,24 +103,22 @@ export {
 export { default as Circle } from '@plone/volto/components/manage/Contents/circle';
 
 export { default as Delete } from '@plone/volto/components/manage/Delete/Delete';
-export const Diff = loadable(
-  () =>
-    import(
-      /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/Diff'
-    ),
+export const Diff = loadable(() =>
+  import(
+    /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/Diff'
+  ),
 );
-export const DiffField = loadable(
-  () =>
-    import(
-      /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/DiffField'
-    ),
+export const DiffField = loadable(() =>
+  import(
+    /* webpackChunkName: "HistoryView" */ '@plone/volto/components/manage/Diff/DiffField'
+  ),
 );
 export { default as Display } from '@plone/volto/components/manage/Display/Display';
 export { default as Edit } from '@plone/volto/components/manage/Edit/Edit';
 export { default as History } from '@plone/volto/components/manage/History/History';
 export { default as Sharing } from '@plone/volto/components/manage/Sharing/Sharing';
-export const Rules = loadable(
-  () => import('@plone/volto/components/manage/Rules/Rules'),
+export const Rules = loadable(() =>
+  import('@plone/volto/components/manage/Rules/Rules'),
 );
 export { default as Aliases } from '@plone/volto/components/manage/Aliases/Aliases';
 export { default as LinksToItem } from '@plone/volto/components/manage/LinksToItem/LinksToItem';
@@ -201,11 +199,11 @@ export {
   FormFieldWrapper,
 } from '@plone/volto/components/manage/Widgets';
 
-export const SchemaWidgetFieldset = loadable(
-  () => import('@plone/volto/components/manage/Widgets/SchemaWidgetFieldset'),
+export const SchemaWidgetFieldset = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/SchemaWidgetFieldset'),
 );
-export const ObjectBrowserWidgetMode = loadable(
-  () => import('@plone/volto/components/manage/Widgets/ObjectBrowserWidget'),
+export const ObjectBrowserWidgetMode = loadable(() =>
+  import('@plone/volto/components/manage/Widgets/ObjectBrowserWidget'),
 );
 
 export { default as EditDefaultBlock } from '@plone/volto/components/manage/Blocks/Block/DefaultEdit';

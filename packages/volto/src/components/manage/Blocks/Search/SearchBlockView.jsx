@@ -59,13 +59,13 @@ const applyDefaults = (data, root, blockQuery) => {
   const sort_on = data?.sort_on
     ? { sort_on: data.sort_on }
     : searchBySearchableText === 0
-      ? { sort_on: 'effective' }
-      : {};
+    ? { sort_on: 'effective' }
+    : {};
   const sort_order = data?.sort_order
     ? { sort_order: data.sort_order }
     : searchBySearchableText === 0
-      ? { sort_order: 'descending' }
-      : {};
+    ? { sort_order: 'descending' }
+    : {};
 
   // We start with the base query from the block.
   // We enhance it with the query from the facets (filters).

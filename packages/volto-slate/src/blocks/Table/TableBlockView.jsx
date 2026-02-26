@@ -79,8 +79,8 @@ const View = ({ data }) => {
         state.column !== index
           ? 'ascending'
           : state.direction === 'ascending'
-            ? 'descending'
-            : 'ascending',
+          ? 'descending'
+          : 'ascending',
     });
   };
 

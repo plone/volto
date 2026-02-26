@@ -41,8 +41,8 @@ const CheckboxFacet = (props) => {
                         ...(checked ? [value] : []),
                       ]
                     : checked
-                      ? value
-                      : null,
+                    ? value
+                    : null,
                 )
               }
             />

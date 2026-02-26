@@ -42,10 +42,10 @@ export function formatDate({
   format = format
     ? format
     : long && !includeTime
-      ? long_date_format
-      : includeTime
-        ? short_date_and_time_format
-        : short_date_format;
+    ? long_date_format
+    : includeTime
+    ? short_date_and_time_format
+    : short_date_format;
 
   const formatter = new Intl.DateTimeFormat(locale, format);
   return formatToParts
@@ -94,6 +94,6 @@ export function formatRelativeDate({
   return isNaN(v)
     ? ''
     : formatToParts
-      ? formatter.formatToParts(v, tag)
-      : formatter.format(v, tag).replace('\u202F', ' '); // use "now" ?
+    ? formatter.formatToParts(v, tag)
+    : formatter.format(v, tag).replace('\u202F', ' '); // use "now" ?
 }

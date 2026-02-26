@@ -498,8 +498,8 @@ module.exports = (
         IS_DEV || IS_DEV_ENV
           ? 'cheap-module-source-map'
           : razzleOptions.enableSourceMaps
-            ? 'source-map'
-            : false,
+          ? 'source-map'
+          : false,
       // We need to tell webpack how to resolve both Razzle's node_modules and
       // the users', so we use resolve and resolveLoader.
       resolve: {
@@ -611,56 +611,56 @@ module.exports = (
                       },
                 ]
               : IS_DEV
-                ? [
-                    razzleOptions.staticCssInDev
-                      ? {
-                          loader: MiniCssExtractPlugin.loader,
-                          ident: 'razzle-mini-css-extract-loader',
-                        }
-                      : {
-                          loader: require.resolve('style-loader'),
-                          ident: 'razzle-style-loader',
-                        },
-                    {
-                      loader: require.resolve('css-loader'),
-                      options: {
-                        importLoaders: 1,
-                        modules: {
-                          auto: true,
-                          localIdentName: '[name]__[local]___[hash:base64:5]',
-                        },
+              ? [
+                  razzleOptions.staticCssInDev
+                    ? {
+                        loader: MiniCssExtractPlugin.loader,
+                        ident: 'razzle-mini-css-extract-loader',
+                      }
+                    : {
+                        loader: require.resolve('style-loader'),
+                        ident: 'razzle-style-loader',
                       },
-                      ident: 'razzle-css-loader',
-                    },
-                    {
-                      loader: require.resolve('postcss-loader'),
-                      options: postCssOptions,
-                      ident: 'razzle-postcss-loader',
-                    },
-                  ]
-                : [
-                    {
-                      loader: MiniCssExtractPlugin.loader,
-                      ident: 'razzle-mini-css-extract-loader',
-                    },
-                    {
-                      loader: require.resolve('css-loader'),
-                      options: {
-                        sourceMap: razzleOptions.enableSourceMaps,
-                        importLoaders: 1,
-                        modules: {
-                          auto: true,
-                          localIdentName: '[name]__[local]___[hash:base64:5]',
-                        },
+                  {
+                    loader: require.resolve('css-loader'),
+                    options: {
+                      importLoaders: 1,
+                      modules: {
+                        auto: true,
+                        localIdentName: '[name]__[local]___[hash:base64:5]',
                       },
-                      ident: 'razzle-css-loader',
                     },
-                    {
-                      loader: require.resolve('postcss-loader'),
-                      options: postCssOptions,
-                      ident: 'razzle-postcss-loader',
+                    ident: 'razzle-css-loader',
+                  },
+                  {
+                    loader: require.resolve('postcss-loader'),
+                    options: postCssOptions,
+                    ident: 'razzle-postcss-loader',
+                  },
+                ]
+              : [
+                  {
+                    loader: MiniCssExtractPlugin.loader,
+                    ident: 'razzle-mini-css-extract-loader',
+                  },
+                  {
+                    loader: require.resolve('css-loader'),
+                    options: {
+                      sourceMap: razzleOptions.enableSourceMaps,
+                      importLoaders: 1,
+                      modules: {
+                        auto: true,
+                        localIdentName: '[name]__[local]___[hash:base64:5]',
+                      },
                     },
-                  ],
+                    ident: 'razzle-css-loader',
+                  },
+                  {
+                    loader: require.resolve('postcss-loader'),
+                    options: postCssOptions,
+                    ident: 'razzle-postcss-loader',
+                  },
+                ],
           },
         ],
       },

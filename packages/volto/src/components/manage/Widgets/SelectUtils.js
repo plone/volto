@@ -30,8 +30,8 @@ export function convertValueToVocabQuery(value) {
           isObject(v)
             ? v.value ?? v.token
             : isString(v) || isBoolean(v)
-              ? v
-              : null,
+            ? v
+            : null,
         )
         .filter((f) => f !== null),
     };

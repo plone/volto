@@ -27,8 +27,8 @@ export const sortFacetChoices = (choices) => {
     typeof a.label === 'string' && typeof b.label === 'string'
       ? a.label.localeCompare(b.label, 'en', { sensitivity: 'base' })
       : typeof a.label === 'number' && typeof b.label == 'number'
-        ? a.label - b.label
-        : 0,
+      ? a.label - b.label
+      : 0,
   );
 
   return sorted_choices;
@@ -155,8 +155,8 @@ const Facets = (props) => {
                 ? intl.formatMessage(messages.showFilters)
                 : intl.formatMessage(messages.moreFilters)
               : advancedFilters === 2
-                ? intl.formatMessage(messages.hideFilters)
-                : intl.formatMessage(messages.lessFilters)}
+              ? intl.formatMessage(messages.hideFilters)
+              : intl.formatMessage(messages.lessFilters)}
           </Button>
         </Grid.Column>
       )}

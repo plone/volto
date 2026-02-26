@@ -70,7 +70,9 @@ const SearchInput = (props) => {
               basic
               icon
               className="search-input-live-icon-button"
-              aria-label={`${intl.formatMessage(messages.search)} ${searchText}`}
+              aria-label={`${intl.formatMessage(
+                messages.search,
+              )} ${searchText}`}
             >
               <Icon name={loupeSVG} />
             </Button>

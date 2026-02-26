@@ -17,31 +17,32 @@ const messages = defineMessages({
   },
 });
 
-const templates = (type) => (intl) => [
-  {
-    image: gridTemplate1,
-    id: 'gridtemplateone',
-    title: `1 ${intl.formatMessage(messages.column)}`,
-    blocksData: blocksFormGenerator(1, type),
-  },
-  {
-    image: gridTemplate2,
-    id: 'gridtemplatetwo',
-    title: `2 ${intl.formatMessage(messages.columns)}`,
-    blocksData: blocksFormGenerator(2, type),
-  },
-  {
-    image: gridTemplate3,
-    id: 'gridtemplatethree',
-    title: `3 ${intl.formatMessage(messages.columns)}`,
-    blocksData: blocksFormGenerator(3, type),
-  },
-  {
-    image: gridTemplate4,
-    id: 'gridtemplatefour',
-    title: `4 ${intl.formatMessage(messages.columns)}`,
-    blocksData: blocksFormGenerator(4, type),
-  },
-];
+const templates = (type) => (intl) =>
+  [
+    {
+      image: gridTemplate1,
+      id: 'gridtemplateone',
+      title: `1 ${intl.formatMessage(messages.column)}`,
+      blocksData: blocksFormGenerator(1, type),
+    },
+    {
+      image: gridTemplate2,
+      id: 'gridtemplatetwo',
+      title: `2 ${intl.formatMessage(messages.columns)}`,
+      blocksData: blocksFormGenerator(2, type),
+    },
+    {
+      image: gridTemplate3,
+      id: 'gridtemplatethree',
+      title: `3 ${intl.formatMessage(messages.columns)}`,
+      blocksData: blocksFormGenerator(3, type),
+    },
+    {
+      image: gridTemplate4,
+      id: 'gridtemplatefour',
+      title: `4 ${intl.formatMessage(messages.columns)}`,
+      blocksData: blocksFormGenerator(4, type),
+    },
+  ];
 
 export default templates;
