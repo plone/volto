@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-02-27 01:09+0000\n"
-"Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
+"PO-Revision-Date: 2026-02-27 09:00+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -5300,7 +5300,7 @@ msgstr "Si"
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
-msgstr "{count, plural, one {Upload {count} file} other {Upload {count} files}}\""
+msgstr "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 
 #. Default: "{count} selected"
 #: components/manage/Contents/Contents
