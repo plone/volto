@@ -48,7 +48,7 @@ const BlockEditor = (props: BlockEditorProps) => {
   return (
     <BlockEditorContext.Provider value={blockEditorContextValue}>
       <PlateEditor
-        editorConfig={plateBlockNativeConfig.editorConfig}
+        editorConfig={plateBlockNativeConfig}
         value={stableInitialValueRef.current}
         onChange={(options) => {
           setBlocks((previousBlocks) => ({
