@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-02-27 09:00+0000\n"
+"PO-Revision-Date: 2026-02-27 09:05+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
 "Language: gl\n"
@@ -1358,7 +1358,7 @@ msgstr "Introduza unha URL ou seleccione un elemento"
 #. Default: "Enter a username above to search or click 'Show All'"
 #: helpers/MessageLabels/MessageLabels
 msgid "Enter a username above to search or click 'Show All'"
-msgstr "Introduza un nome de usuario arriba para buscar ou faga click en \"Amosar todos\""
+msgstr "Introduza un nome de usuario arriba para buscar ou faga click en 'Amosar todos'"
 
 #. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: components/theme/Register/Register
@@ -4601,7 +4601,7 @@ msgstr "Introduza o seu novo contrasinal. Mínimo de 8 caracteres."
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Introduza un nome de usuario, normalmente algo como \\\"jtouro\\\". Sen espazos nin caracteres especiais. Os nomes de usuario e os contrasinais distinguen entre maiúsculas e minúsculas, asegúrese de que a tecla Bloq Maiús non estea activada. Este é o nome que se usa para iniciar sesión."
+msgstr "Introduza un nome de usuario, normalmente algo como \"jtouro\". Sen espazos nin caracteres especiais. Os nomes de usuario e os contrasinais distinguen entre maiúsculas e minúsculas, asegúrese de que a tecla Bloq Maiús non estea activada. Este é o nome que se usa para iniciar sesión."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
