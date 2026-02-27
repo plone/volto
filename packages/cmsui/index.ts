@@ -157,6 +157,17 @@ export default function install(config: ConfigType) {
       },
     ],
   });
+  config.registerRoute({
+    type: 'prefix',
+    path: '@createContent',
+    children: [
+      {
+        type: 'route',
+        path: '*',
+        file: '@plone/cmsui/routes/api/createContent.tsx',
+      },
+    ],
+  });
 
   return config;
 }
