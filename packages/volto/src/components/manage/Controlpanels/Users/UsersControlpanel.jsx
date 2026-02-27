@@ -25,6 +25,7 @@ import { Link } from 'react-router-dom';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import { isManager, canAssignGroup } from '@plone/volto/helpers/User/User';
+import { getErrorMessage } from '@plone/volto/helpers/Utils/Utils';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -299,23 +300,6 @@ const UsersControlpanel = () => {
     },
     [updateGroupAction],
   );
-
-  /**
-   * Extract a readable error message from several possible error shapes
-   * @param {object} error
-   * @returns {string} message
-   */
-  const getErrorMessage = (error) => {
-    const respBody = error.response?.body;
-    if (respBody?.error?.message) return respBody.error.message;
-    if (respBody?.message) return respBody.message;
-    if (error.message) return error.message;
-    try {
-      return JSON.stringify(error);
-    } catch (e) {
-      return String(error);
-    }
-  };
 
   /**
    * Callback to be called by the ModalForm when the form is submitted.
