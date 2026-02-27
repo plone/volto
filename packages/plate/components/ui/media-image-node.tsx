@@ -54,6 +54,9 @@ export const ImageElement = withHOC(
   function ImageElement(props: PlateElementProps<TImageElement>) {
     const imageElement = props.element as TImageElement;
     const { align = 'center', focused, readOnly, selected } = useMediaState();
+    const normalizedAlign = align;
+    const isFloatingAlign =
+      normalizedAlign === 'left' || normalizedAlign === 'right';
     const width = useResizableValue('width');
     const [dialogOpen, setDialogOpen] = React.useState(false);
     const [activeTab, setActiveTab] = React.useState('upload');
@@ -284,13 +287,25 @@ export const ImageElement = withHOC(
 
     const imageNode = (
       <PlateElement {...props} className="py-2.5">
-        <figure className="group relative m-0" contentEditable={false}>
+        <figure
+          className={cn(
+            'group pointer-events-auto relative z-20 m-0 w-fit max-w-full',
+            normalizedAlign === 'left' && 'float-left mr-4 mb-2',
+            normalizedAlign === 'right' && 'float-right mb-2 ml-4',
+            !isFloatingAlign && 'clear-both mx-auto',
+          )}
+          contentEditable={false}
+        >
           {hasImageUrl ? (
             <>
               <Resizable
-                align={align}
+                align={normalizedAlign}
                 options={{
-                  align,
+                  align: normalizedAlign,
+                  // The resizable wrapper width can collapse to the current
+                  // image width, which blocks growing again after shrinking.
+                  // Use an explicit pixel max to keep growth possible.
+                  maxWidth: 2000,
                   readOnly,
                 }}
               >
@@ -320,7 +335,7 @@ export const ImageElement = withHOC(
                 />
               </Resizable>
 
-              <Caption style={{ width }} align={align}>
+              <Caption style={{ width }} align={normalizedAlign}>
                 <CaptionTextarea
                   readOnly={readOnly}
                   onFocus={(e) => {
@@ -358,6 +373,9 @@ export const ImageElement = withHOC(
             </div>
           )}
         </figure>
+        {!isFloatingAlign && (
+          <div aria-hidden className="clear-both h-0" contentEditable={false} />
+        )}
 
         {!readOnly && !hasImageUrl && (
           <Dialog open={dialogOpen} onOpenChange={handleDialogOpenChange}>
