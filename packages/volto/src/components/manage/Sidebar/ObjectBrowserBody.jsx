@@ -144,10 +144,14 @@ class ObjectBrowserBody extends Component {
       showSearchInput: false,
       // In image mode, the searchable types default to the image types which
       // can be overridden with the property if specified.
+      // If selectableTypes are passed, the searchableTypes are the selectableTypes
       searchableTypes:
         this.props.mode === 'image'
           ? this.props.searchableTypes || config.settings.imageObjects
-          : this.props.searchableTypes,
+          : [
+              ...(this.props.searchableTypes ?? []),
+              ...(this.props.selectableTypes ?? []),
+            ],
       view: this.props.mode === 'image' ? 'icons' : 'list',
     };
     this.searchInputRef = React.createRef();
