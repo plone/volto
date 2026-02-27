@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-02-27 09:05+0000\n"
+"PO-Revision-Date: 2026-02-27 09:10+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
 "Language: gl\n"
@@ -1206,7 +1206,7 @@ msgstr "Descargar ficheiro"
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arrastra e solta ficheiros desde o teu ordenador nesta área o fai click no botón \"Examinar\"."
+msgstr "Arrastra e solta ficheiros desde o teu ordenador nesta área o fai click no botón “Examinar”."
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/FileWidget
@@ -2622,7 +2622,7 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Só se permiten caracteres de 7 bits. Non pode conter maiúsculas nin caracteres especiais: <, >, &, #, /, ?, ou outros que son ilegais nas URL. Non se pode comezar con: _, aq_, @@, ++. Non pode acabar con __. Non pode ser: request,contributors, ., .., \"\". Non pode conter novas líneas."
+msgstr "Só se permiten caracteres de 7 bits. Non pode conter maiúsculas nin caracteres especiais: <, >, &, #, /, ?, ou outros que son ilegais nas URL. Non se pode comezar con: _, aq_, @@, ++. Non pode acabar con __. Non pode ser: request,contributors, ., .., \\\"\\\". Non pode conter novas líneas."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
