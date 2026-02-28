@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-02-28 12:09+0000\n"
+"PO-Revision-Date: 2026-02-28 21:09+0000\n"
 "Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
 "Language: gl\n"
@@ -384,7 +384,7 @@ msgstr "Enderezo da url alternativa (Requirido)"
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr "A url alternativa debe comezar cunha barra."
+msgstr "O camiño da url alternativa debe comezar cunha barra (/)."
 
 #. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
