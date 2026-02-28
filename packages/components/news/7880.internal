@@ -1,0 +1,1 @@
+Explicitly typed the parameters of the `composeRenderProps` callback in various components (Button, Link, Checkbox, Radio, Tag, ListBox, Menu, Tabs) to fix TypeScript implicit 'any' warnings.

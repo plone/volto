@@ -6,6 +6,7 @@ import {
   OverlayArrow,
   PopoverContext,
   useSlottedContext,
+  type PopoverRenderProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 
@@ -57,8 +58,10 @@ export function Popover({
     <AriaPopover
       offset={offset}
       {...props}
-      className={composeRenderProps(className, (className, renderProps) =>
-        styles({ ...renderProps, className }),
+      className={composeRenderProps(
+        className,
+        (className: string, renderProps: PopoverRenderProps) =>
+          styles({ ...renderProps, className }),
       )}
     >
       {showArrow && (
