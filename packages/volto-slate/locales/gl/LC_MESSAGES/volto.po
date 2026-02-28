@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"PO-Revision-Date: 2026-02-26 00:45+0000\n"
+"PO-Revision-Date: 2026-03-01 23:09+0000\n"
 "Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-slate-18/gl/>\n"
 "Language: gl\n"
@@ -24,12 +24,12 @@ msgstr "Engadir ligazón"
 # defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr "Ocurriu un erro mentres editaba o campo \"{name}\". Fomos notificados e estamos investigando nelo. Por favor, garda o teu traballo e reintenta. Se o problema persiste contacta co administrador do sitio."
+msgstr "Ocurriu un erro mentres editaba o campo '{name}'. Fomos notificados e estamos investigando nelo. Por favor, garda o teu traballo e reintenta. Se o problema persiste contacta co administrador do sitio."
 
 # defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr "Ocurriu un erro mentres se amosaba o campo \"{name}\". Fomos notificados e estamos investigando nelo. Se o problema persiste contacta co administrador do sitio."
+msgstr "Ocurriu un erro mentres se amosaba o campo '{name}'. Fomos notificados e estamos investigando nelo. Se o problema persiste contacta co administrador do sitio."
 
 # defaultMessage: Bottom
 #: blocks/Table/TableBlockEdit
