@@ -15,7 +15,7 @@ import cx from 'classnames';
  * @extends Component
  */
 const View = (props) => {
-  const { data, className } = props;
+  const { data, className, isLCPBlock } = props;
 
   return (
     <div
@@ -30,8 +30,8 @@ const View = (props) => {
     >
       <Body
         data={data}
-        loading={props.isLCPBlock ? 'eager' : 'lazy'}
-        fetchpriority={props.isLCPBlock ? 'high' : 'low'}
+        loading={isLCPBlock ? 'eager' : 'lazy'}
+        fetchpriority={isLCPBlock ? 'high' : 'low'}
       />
     </div>
   );
