@@ -19,7 +19,7 @@ const messages = defineMessages({
 });
 
 const TeaserDefaultTemplate = (props) => {
-  const { className, data, isContainer: inGrid, isEditMode, style, loading, fetchpriority } = props;
+  const { className, data, isContainer: inGrid, isEditMode, style, isLCPBlock } = props;
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
@@ -63,8 +63,8 @@ const TeaserDefaultTemplate = (props) => {
                   <Image
                     src={url}
                     alt=""
-                    loading={loading || 'lazy'}
-                    fetchpriority={fetchpriority}
+                    loading={isLCPBlock ? 'eager' : 'lazy'}
+                    fetchpriority={isLCPBlock ? 'high' : 'low'}
                     responsive={true}
                   />
                 </div>
@@ -75,8 +75,8 @@ const TeaserDefaultTemplate = (props) => {
                       item={image || href}
                       imageField={image ? image.image_field : href.image_field}
                       alt=""
-                      loading={loading || 'lazy'}
-                      fetchpriority={fetchpriority}
+                      loading={isLCPBlock ? 'eager' : 'lazy'}
+                      fetchpriority={isLCPBlock ? 'high' : 'low'}
                       responsive={true}
                       sizes={sizes}
                     />
@@ -101,8 +101,7 @@ const TeaserDefaultTemplate = (props) => {
 TeaserDefaultTemplate.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   isEditMode: PropTypes.bool,
-  loading: PropTypes.string,
-  fetchpriority: PropTypes.string,
+  isLCPBlock: PropTypes.bool,
 };
 
 export default TeaserDefaultTemplate;
