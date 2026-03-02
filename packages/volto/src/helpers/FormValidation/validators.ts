@@ -1,5 +1,6 @@
 import { validationMessage } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import config from '@plone/volto/registry';
 
 type MinMaxValidator = {
   value: string | number;
@@ -245,8 +246,10 @@ export const sizeValidator = ({
   field,
   formatMessage,
 }: FileValidator) => {
-  const maxSize = field.size ? parseInt(field.size, 10) : 7000000; // default 7MB
-  return value.size > maxSize
+  const maxSize = field.size
+    ? parseInt(field.size, 10)
+    : config.settings.maxFileUploadSize;
+  return maxSize && value.size > maxSize
     ? formatMessage(messages.maxSize, { maxSize, size: value.size })
     : null;
 };
