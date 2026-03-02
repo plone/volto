@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.6.1 (2026-03-02)
+
+### Bugfix
+
+- Fix typing for `contentIcons` and `controlPanelsIcons` in Settings config. Changed from `Record<string, React.ComponentType>` to `Record<string, string>` as they contain SVG paths. @wesleybl [#7339](https://github.com/plone/volto/issues/7339)
+
 ## 1.6.0 (2026-01-12)
 
 ### Feature
