@@ -6,9 +6,9 @@ const ImageBlockInfo = {
   view: React.lazy(
     () => import(/* webpackChunkName: "plone-blocks" */ './ImageBlockView'),
   ),
-  // edit: React.lazy(
-  //   () => import(/* webpackChunkName: "plone-blocks" */ './ImageBlockEdit'),
-  // ),
+  edit: React.lazy(
+    () => import(/* webpackChunkName: "plone-blocks" */ './ImageBlockEdit'),
+  ),
   category: 'media',
 };
 
