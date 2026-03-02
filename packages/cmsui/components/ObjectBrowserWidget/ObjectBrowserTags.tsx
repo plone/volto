@@ -1,9 +1,9 @@
 import { Tag, TagGroup } from '@plone/components/quanta';
+import type { ComponentProps } from 'react';
 import { useObjectBrowserContext } from './ObjectBrowserContext';
-import type { AriaTagGroupProps } from 'react-aria';
 
 type ObjectBrowserTagsProps = Omit<
-  AriaTagGroupProps<object>,
+  ComponentProps<typeof TagGroup>,
   'children' | 'items'
 >;
 

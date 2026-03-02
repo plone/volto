@@ -77,9 +77,11 @@ export default function Index() {
     return null;
   }
   const { content, locale } = rootData;
+  const contentLanguage = (content?.language as { token?: string } | undefined)
+    ?.token;
 
   return (
-    <html lang={content.language?.token || locale || 'en'} dir={i18n.dir()}>
+    <html lang={contentLanguage || locale || 'en'} dir={i18n.dir()}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

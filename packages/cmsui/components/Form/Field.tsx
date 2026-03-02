@@ -23,7 +23,7 @@ export interface FieldProps {
   //
   defaultValue?: unknown;
   required?: boolean;
-  error?: Array<undefined>;
+  error?: Array<unknown>;
   //
   formAtom: PrimitiveAtom<Content>;
   widget?: keyof WidgetsConfigByWidget;
@@ -176,13 +176,13 @@ const Field = (props: FieldProps) => {
     ...getWidgetPropsFromTaggedValues(props.widgetOptions),
   };
 
-  const field = useFieldContext<string>();
+  const field = useFieldContext();
   const value = field.state.value;
 
-  const [fieldValue, setField] = useFieldFocusedAtom<Content>(
-    props.formAtom,
-    props.name,
-  );
+  const [fieldValue, setField] = useFieldFocusedAtom<
+    Content,
+    DeepKeys<Content>
+  >(props.formAtom, props.name);
 
   // atom -> form (programmatic update; runs TanStack Form’s flow)
   useEffect(() => {

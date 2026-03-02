@@ -52,7 +52,7 @@ describe('createContent API route action', () => {
       request,
       params: { '*': 'folder' },
       context: {},
-    });
+    } as any);
 
     expect(createContentMock).toHaveBeenCalledWith({
       path: '/folder',

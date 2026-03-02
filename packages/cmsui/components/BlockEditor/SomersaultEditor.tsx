@@ -22,7 +22,7 @@ const BlockEditor = (props: BlockEditorProps) => {
   // Keep the initial Plate value stable across parent re-renders.
   // If we pass a freshly derived value on each change, Plate treats it as a
   // new controlled value and media nodes (like images) can visually blink.
-  const stableInitialValueRef = React.useRef<Value>();
+  const stableInitialValueRef = React.useRef<Value | null>(null);
 
   if (!stableInitialValueRef.current) {
     stableInitialValueRef.current =
@@ -43,6 +43,10 @@ const BlockEditor = (props: BlockEditorProps) => {
 
   const blockEditorContextValue = useBlockEditorContextValue({
     setBlocks,
+    // TODO: Update the context so the values are not needed when using the editor in somersault mode.
+    // Could be that they are no longer needed (maybe for the future order tab...)
+    setBlocksLayout: (update) => update({ items: [] }),
+    onSelectBlock: () => {},
   });
 
   return (
@@ -51,13 +55,16 @@ const BlockEditor = (props: BlockEditorProps) => {
         editorConfig={plateBlockNativeConfig}
         value={stableInitialValueRef.current}
         onChange={(options) => {
-          setBlocks((previousBlocks) => ({
-            ...(previousBlocks || {}),
-            [SOMERSAULT_KEY]: {
-              '@type': SOMERSAULT_KEY,
-              value: options.value as Value[],
-            },
-          }));
+          setBlocks(
+            (previousBlocks) =>
+              ({
+                ...(previousBlocks || {}),
+                [SOMERSAULT_KEY]: {
+                  '@type': SOMERSAULT_KEY,
+                  value: options.value as unknown as Value[],
+                },
+              }) as typeof previousBlocks,
+          );
         }}
       />
     </BlockEditorContext.Provider>

@@ -42,7 +42,7 @@ export async function action({ params, request }: ActionFunctionArgs) {
   try {
     const response = await cli.createContent({
       path,
-      data: body.data,
+      data: body.data as any,
     });
 
     return data(flattenToAppURL(response.data), {
