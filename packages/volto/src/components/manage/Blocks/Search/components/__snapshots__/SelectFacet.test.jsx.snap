@@ -31,6 +31,7 @@ exports[`SelectFacet > renders a facet component with select dropdown 1`] = `
           >
             <input
               aria-autocomplete="list"
+              aria-label="Test Facet"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
