@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-03-02 11:09+0000\n"
+"PO-Revision-Date: 2026-03-02 16:09+0000\n"
 "Last-Translator: Cihan Andac <cihanandac@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/plone/volto-18/tr/>\n"
 "Language: tr\n"
@@ -4464,119 +4464,119 @@ msgstr ""
 #: components/manage/Controlpanels/UndoControlpanel
 #: components/manage/History/History
 msgid "Who"
-msgstr ""
+msgstr "Kim"
 
 #. Default: "Wide"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Wide"
-msgstr ""
+msgstr "Geniş"
 
 #. Default: "Updating workflow states..."
 #: components/manage/Contents/ContentsWorkflowModal
 msgid "Workflow Change Loading Message"
-msgstr ""
+msgstr "İş akışları güncelleniyor"
 
 #. Default: "Workflow updated."
 #: components/manage/Workflow/Workflow
 msgid "Workflow updated."
-msgstr ""
+msgstr "İş akışı güncellendi."
 
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
 msgid "Yearly"
-msgstr ""
+msgstr "Yıllık"
 
 #. Default: "Yes"
 #: components/manage/Contents/ContentsItem
 #: components/manage/Controlpanels/ContentTypes
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "Bu klasörün mevcut sayfasındaki tüm öğeleri silmek üzeresiniz."
 
 #. Default: "You are about to delete all items in this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in this folder."
-msgstr ""
+msgstr "Bu klasördeki tüm öğeleri silmek üzeresiniz."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
+msgstr "Koruma altındaki kaynaklara erişmeye çalışıyorsunuz, lütfen önce {login}."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
-msgstr ""
+msgstr "Güncel olmayan bir tarayıcı kullanıyorsunuz"
 
 #. Default: "You can add a comment by filling out the form below. Plain text formatting."
 #: components/theme/Comments/Comments
 msgid "You can add a comment by filling out the form below. Plain text formatting."
-msgstr ""
+msgstr "Aşağıdaki formu doldurarak yorum ekleyebilirsiniz. Düz metin formatında."
 
 #. Default: "You can control who can view and edit your item using the list below."
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
-msgstr ""
+msgstr "Öğenizi kimlelerin görüntüleyebileceğini ve düzenleme yapabileceğini aşağıdaki listeden kontrol edebilirsiniz."
 
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr "Bu blok türünü yeni konuma taşıyamazsın"
+msgstr "Bu blok türünü yeni konuma taşıyamazsınız"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr "Revizyonlar arasındaki farkı aşağıda görebilirsin."
+msgstr "Revizyonlar arasındaki farkı aşağıda görebilirsiniz."
 
 #. Default: "You can view the history of your item below."
 #: components/manage/History/History
 msgid "You can view the history of your item below."
-msgstr ""
+msgstr "Öğenizin geçmişini aşağıda görüntüleyebilirsiniz."
 
 #. Default: "You can't paste this content here"
 #: components/manage/Contents/Contents
 msgid "You can't paste this content here"
-msgstr ""
+msgstr "Bu içeriği buraya yapıştıramazsınız."
 
 #. Default: "You have been logged out from the site."
 #: components/theme/Logout/Logout
 msgid "You have been logged out from the site."
-msgstr ""
+msgstr "Oturumunuz kapatıldı."
 
 #. Default: "You have not the required permission for this control panel."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
-msgstr ""
+msgstr "Bu kontrol paneli için gerekli izne sahip değilsiniz."
 
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your email is required for reset your password."
-msgstr ""
+msgstr "Şifrenizi sıfırlamak için email adresiniz gereklidir."
 
 #. Default: "Your password has been set successfully. You may now {link} with your new password."
 #: components/theme/PasswordReset/PasswordReset
 msgid "Your password has been set successfully. You may now {link} with your new password."
-msgstr ""
+msgstr "Şifreniz başarıyla ayarlandı. Artık yeni şifrenizle {link}."
 
 #. Default: "Your preferred language"
 #: components/manage/Preferences/PersonalPreferences
 msgid "Your preferred language"
-msgstr ""
+msgstr "Tercih ettiğiniz dil"
 
 #. Default: "Your site is up to date."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Your site is up to date."
-msgstr ""
+msgstr "Siteniz güncel durumdadır."
 
 #. Default: "Your username is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "Your usernaame is required for reset your password."
-msgstr ""
+msgstr "Şifrenizi sıfırlamak için kullanıcı adınız gereklidir."
 
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
