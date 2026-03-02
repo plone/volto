@@ -2304,6 +2304,11 @@ msgstr "Kaarten URL"
 msgid "Maximum length is {len}."
 msgstr "Maximum lengte is {len}."
 
+#. Default: "Maximum size is {maxSize} bytes, file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum size is {maxSize} bytes, file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum value is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum value is {len}."

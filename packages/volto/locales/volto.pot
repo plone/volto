@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-02-27T16:18:50.426Z\n"
+"POT-Creation-Date: 2026-03-02T14:25:56.179Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -2300,6 +2300,11 @@ msgstr ""
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
+msgstr ""
+
+#. Default: "Maximum size is {maxSize} bytes, file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum size is {maxSize} bytes, file is {size} bytes."
 msgstr ""
 
 #. Default: "Maximum value is {len}."

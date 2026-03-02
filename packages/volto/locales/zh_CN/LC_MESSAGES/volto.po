@@ -2306,6 +2306,11 @@ msgstr "映射URL"
 msgid "Maximum length is {len}."
 msgstr "最大长度为{len}。"
 
+#. Default: "Maximum size is {maxSize} bytes, file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum size is {maxSize} bytes, file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum value is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum value is {len}."
