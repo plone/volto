@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-03-02 09:24+0000\n"
+"PO-Revision-Date: 2026-03-02 11:09+0000\n"
 "Last-Translator: Cihan Andac <cihanandac@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/plone/volto-18/tr/>\n"
 "Language: tr\n"
@@ -4531,7 +4531,7 @@ msgstr "Bu blok türünü yeni konuma taşıyamazsın"
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
-msgstr ""
+msgstr "Revizyonlar arasındaki farkı aşağıda görebilirsin."
 
 #. Default: "You can view the history of your item below."
 #: components/manage/History/History
