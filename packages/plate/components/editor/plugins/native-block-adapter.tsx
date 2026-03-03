@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
+import { BlockSelectionPlugin } from '@platejs/selection/react';
 import { isDeepEqual } from '@plone/helpers';
 import config from '@plone/registry';
 import {
@@ -122,6 +123,11 @@ export function NativeBlockAdapterElement(
   const handleSelectBlock = React.useCallback(() => {
     const currentPath = editor.api.findPath(element);
     if (!currentPath) return;
+
+    const elementId = (element as any)?.id;
+    if (elementId) {
+      editor.getApi(BlockSelectionPlugin).blockSelection.set(String(elementId));
+    }
 
     editor.tf.focus();
     editor.tf.select(currentPath);

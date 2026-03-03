@@ -1,5 +1,6 @@
 import type { AnyPluginConfig, SlateEditor, TElement, Value } from 'platejs';
 import type { ReactNode } from 'react';
+import { BlockSelectionPlugin } from '@platejs/selection/react';
 import {
   Plate,
   usePlateEditor,
@@ -60,7 +61,12 @@ export function PlateEditor(props: {
 
 export type { Value } from 'platejs';
 export { ElementApi, type Path } from 'platejs';
-export { useEditorRef, useEditorSelector } from 'platejs/react';
+export {
+  createPlatePlugin,
+  useEditorRef,
+  useEditorSelector,
+} from 'platejs/react';
+export { BlockSelectionPlugin };
 
 export function PlateRenderer(
   props: Omit<
