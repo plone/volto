@@ -3,6 +3,7 @@ import * as React from 'react';
 import type { PlateEditor, PlateElementProps } from 'platejs/react';
 
 import { AIChatPlugin } from '@platejs/ai/react';
+import { SuggestionPlugin } from '@platejs/suggestion/react';
 import config from '@plone/registry';
 import Icon from '../../legacy/Icon';
 import {
@@ -26,7 +27,7 @@ import {
   Table,
   TableOfContentsIcon,
 } from 'lucide-react';
-import { type TComboboxInputElement, ElementApi, KEYS } from 'platejs';
+import { type TComboboxInputElement, ElementApi, KEYS, PathApi } from 'platejs';
 import { PlateElement } from 'platejs/react';
 import { insertBlock } from '../editor/transforms';
 import {
@@ -65,7 +66,7 @@ const addNewBlock = {
   keywords: ['block', 'add', 'insert'],
   label: 'New block',
   value: 'action_new_block',
-  onSelect: (editor) => {
+  onSelect: (editor: PlateEditor) => {
     const api = getBlocksApi(editor);
     if (!api?.onInsertBlock) return;
 
@@ -104,7 +105,7 @@ const baseGroups: Group[] = [
         keywords: ['img', 'picture', 'photo'],
         label: 'Image',
         value: KEYS.img,
-        onSelect: (editor, value) => {
+        onSelect: (editor: PlateEditor, value: string) => {
           insertBlock(editor, value);
         },
       },
@@ -214,6 +215,33 @@ const filteredBlocksConfig = (blocksConfig: Record<string, any>) =>
     return true;
   });
 
+const insertSomersaultNativeBlock = (
+  editor: PlateEditor,
+  nativeBlockType: string,
+) => {
+  editor.tf.withoutNormalizing(() => {
+    const block = editor.api.block();
+    if (!block) return;
+
+    editor.tf.insertNodes(
+      editor.api.create.block({
+        type: 'unknown',
+        '@type': nativeBlockType,
+      }),
+      {
+        at: PathApi.next(block[1]),
+        select: true,
+      },
+    );
+
+    if (block[0].type !== 'unknown') {
+      editor.getApi(SuggestionPlugin).suggestion.withoutSuggestions(() => {
+        editor.tf.removeNodes({ previousEmptyBlock: true });
+      });
+    }
+  });
+};
+
 const useSplitEditorAtCursor = (editor: PlateEditor) => {
   const split = React.useCallback(() => {
     splitEditorAtCursor(editor);
@@ -254,6 +282,11 @@ export function SlashInputElement(
         label,
         value: `volto_${id}`,
         onSelect: (plateEditor: PlateEditor) => {
+          if (config.settings.editorMode === 'somersault') {
+            insertSomersaultNativeBlock(plateEditor, id);
+            return;
+          }
+
           const api = getBlocksApi(plateEditor);
           if (!api?.onInsertBlock) return;
 

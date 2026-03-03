@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImageSchema } from './schema';
 
 const ImageBlockInfo = {
   id: 'image',
@@ -10,6 +11,7 @@ const ImageBlockInfo = {
     () => import(/* webpackChunkName: "plone-blocks" */ './ImageBlockEdit'),
   ),
   category: 'media',
+  blockSchema: ImageSchema,
 };
 
 export default ImageBlockInfo;
