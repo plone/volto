@@ -2295,15 +2295,15 @@ msgstr "Maps"
 msgid "Maps URL"
 msgstr "URL di Maps"
 
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
 msgstr "La lunghezza massima è {len}."
-
-#. Default: "Maximum size is {maxSize} bytes, file is {size} bytes."
-#: helpers/MessageLabels/MessageLabels
-msgid "Maximum size is {maxSize} bytes, file is {size} bytes."
-msgstr ""
 
 #. Default: "Maximum value is {len}."
 #: helpers/MessageLabels/MessageLabels
