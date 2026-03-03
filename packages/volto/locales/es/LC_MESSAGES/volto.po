@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-21 10:02+0000\n"
+"PO-Revision-Date: 2026-03-03 08:18+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language: es\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
+"Language: es\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -317,7 +317,7 @@ msgstr "Alias añadido correctamente"
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr "Se han eliminado las URLs alternativas."
+msgstr "Se han eliminado las URL alternativas."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
@@ -1224,7 +1224,7 @@ msgstr "Arrastrar archivos aquí..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Suelta los archivos aquí para subir"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2965,7 +2965,7 @@ msgstr "Relaciones actualizadas"
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Suleta para añadir los archivos a esta carpeta"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3587,7 +3587,7 @@ msgstr "Fuente"
 #. Default: "Specify a youtube video or playlist url"
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción de youtube"
+msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción de YouTube"
 
 #. Default: "Split"
 #: components/manage/Diff/Diff
@@ -4216,7 +4216,7 @@ msgstr "Cargar"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Cargar archivos ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4521,7 +4521,7 @@ msgstr "Usted puede controlar quien puede ver y editar su elemento usando la lis
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr ""
+msgstr "No se puede mover este tipo de bloque a la nueva ubicación"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4961,12 +4961,12 @@ msgstr "Publicado"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Path actual (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Path del padre (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
