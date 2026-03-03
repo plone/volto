@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-02-24 10:09+0000\n"
+"PO-Revision-Date: 2026-03-03 08:18+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\n"
 "Language: eu\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -5252,7 +5252,7 @@ msgstr "Kargatu irudia zure gailutik"
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr "URL zuzen bat izan behar da (www.zerbait.eus) edo http(s)://www.zerbitzaria.eus)"
+msgstr "URL zuzen bat izan behar da (www.zerbait.eus edo http(s)://www.zerbitzaria.eus)"
 
 #. Default: "user avatar"
 #: components/manage/Toolbar/PersonalTools
