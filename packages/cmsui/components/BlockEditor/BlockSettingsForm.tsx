@@ -27,7 +27,11 @@ const BlockSettingsForm = (props: BlocksSettingsProps) => {
   const schema =
     typeof schemaProp === 'function'
       ? // TODO: use i18n
-        schemaProp({ props, intl: undefined as any })
+        schemaProp({
+          props,
+          formData: (blockData ?? {}) as any,
+          intl: undefined as any,
+        })
       : schemaProp;
 
   return (

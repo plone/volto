@@ -1,4 +1,5 @@
 import type { AnyPluginConfig, SlateEditor, TElement, Value } from 'platejs';
+import type { ReactNode } from 'react';
 import {
   Plate,
   usePlateEditor,
@@ -21,6 +22,7 @@ export function PlateEditor(props: {
   value?: Value;
   blocksApi?: any;
   intl?: any;
+  children?: ReactNode;
   onChange: (options: {
     editor: TPlateEditor<Value, AnyPluginConfig>;
     value: TElement[];
@@ -51,11 +53,14 @@ export function PlateEditor(props: {
         {/* Styles the editor area */}
         <Editor variant="block" placeholder="Type text..." />
       </EditorContainer>
+      {props.children}
     </Plate>
   );
 }
 
 export type { Value } from 'platejs';
+export { ElementApi, type Path } from 'platejs';
+export { useEditorRef, useEditorSelector } from 'platejs/react';
 
 export function PlateRenderer(
   props: Omit<

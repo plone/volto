@@ -9,10 +9,10 @@ type ImageBlockFormData = BlocksFormData & {
 };
 
 type ImageSchemaArgs = {
-  formData: ImageBlockFormData;
+  formData?: ImageBlockFormData;
 };
 
-export function ImageSchema({ formData }: ImageSchemaArgs): JSONSchema {
+export function ImageSchema({ formData = {} }: ImageSchemaArgs): JSONSchema {
   return {
     title: 'Image',
     fieldsets: [

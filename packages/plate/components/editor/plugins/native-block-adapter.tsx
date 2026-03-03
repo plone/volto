@@ -2,7 +2,13 @@
 import React from 'react';
 import { isDeepEqual } from '@plone/helpers';
 import config from '@plone/registry';
-import { createSlatePlugin, type SlateEditor, type TElement } from 'platejs';
+import {
+  createSlatePlugin,
+  ElementApi,
+  PathApi,
+  type SlateEditor,
+  type TElement,
+} from 'platejs';
 import {
   PlateElement,
   toPlatePlugin,
@@ -57,7 +63,8 @@ function getBlockId(element: NativeBlockElement, path: number[]) {
 export function NativeBlockAdapterElement(
   props: PlateElementProps<NativeBlockElement>,
 ) {
-  const { element } = props;
+  const { children: _children, element, ...restProps } = props;
+  void _children;
   const editor = useEditorRef<SlateEditor>();
   const readOnly = useReadOnly();
   const selected = useSelected();
@@ -77,9 +84,7 @@ export function NativeBlockAdapterElement(
 
   if (!blockData || !block) {
     return (
-      <PlateElement {...props} contentEditable={false}>
-        {props.children}
-      </PlateElement>
+      <PlateElement {...restProps} element={element} contentEditable={false} />
     );
   }
 
@@ -115,11 +120,43 @@ export function NativeBlockAdapterElement(
   );
 
   const handleSelectBlock = React.useCallback(() => {
-    editor.tf.select(pathRef.current);
-  }, [editor]);
+    const currentPath = editor.api.findPath(element);
+    if (!currentPath) return;
+
+    editor.tf.focus();
+    editor.tf.select(currentPath);
+  }, [editor, element]);
+
+  const handlePointerDownCapture = React.useCallback(
+    (event: React.PointerEvent) => {
+      const target = event.target as HTMLElement | null;
+      const isInteractive = !!target?.closest(
+        'a,button,input,textarea,select,[contenteditable="true"]',
+      );
+      if (!isInteractive) {
+        event.preventDefault();
+      }
+      handleSelectBlock();
+    },
+    [handleSelectBlock],
+  );
+
+  const className = [
+    restProps.className,
+    selected && 'rounded-sm outline-2 outline-quanta-sapphire',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <PlateElement {...props} contentEditable={false}>
+    <PlateElement
+      {...restProps}
+      element={element}
+      contentEditable={false}
+      className={className}
+      onPointerDownCapture={handlePointerDownCapture}
+      onClick={handleSelectBlock}
+    >
       {readOnly ? (
         View ? (
           <View data={blockData} />
@@ -140,17 +177,176 @@ export function NativeBlockAdapterElement(
       ) : View ? (
         <View data={blockData} />
       ) : null}
-      {props.children}
     </PlateElement>
   );
 }
 
 export const BaseNativeBlockAdapterPlugin = createSlatePlugin({
   key: 'unknown',
+  handlers: {
+    onKeyDown: ({ editor, event }) => {
+      const nativeEvent = (event as any)?.nativeEvent ?? event;
+      if (!nativeEvent) return;
+      if (!editor.selection || !editor.api.isCollapsed()) return;
+
+      const currentEntry = editor.api.block({ highest: true });
+      if (!currentEntry) return;
+
+      const [currentNode, currentPath] = currentEntry;
+      const currentIsNativeUnknown =
+        ElementApi.isElement(currentNode) && currentNode.type === 'unknown';
+
+      if (nativeEvent.key === 'Enter' && currentIsNativeUnknown) {
+        event.preventDefault();
+
+        const nextPath = PathApi.next(currentPath as number[]);
+        const nextNode = editor.api.node(nextPath)?.[0];
+
+        if (ElementApi.isElement(nextNode) && nextNode.type !== 'unknown') {
+          editor.tf.focus();
+          editor.tf.select([...nextPath, 0]);
+          editor.tf.collapse({ edge: 'start' });
+          return;
+        }
+
+        editor.tf.insertNodes(
+          editor.api.create.block({
+            type: 'p',
+            children: [{ text: '' }],
+          }),
+          {
+            at: nextPath,
+            select: true,
+          },
+        );
+        return;
+      }
+
+      if (nativeEvent.key === 'ArrowUp' && currentIsNativeUnknown) {
+        event.preventDefault();
+
+        let previousPath: number[] | undefined;
+        try {
+          previousPath = PathApi.previous(currentPath as number[]);
+        } catch {
+          return;
+        }
+        if (!previousPath) return;
+
+        const previousNode = editor.api.node(previousPath)?.[0];
+        editor.tf.focus();
+        if (
+          ElementApi.isElement(previousNode) &&
+          previousNode.type === 'unknown'
+        ) {
+          editor.tf.select(previousPath);
+          return;
+        }
+        editor.tf.select([...previousPath, 0]);
+        editor.tf.collapse({ edge: 'end' });
+        return;
+      }
+
+      if (nativeEvent.key === 'ArrowDown' && currentIsNativeUnknown) {
+        event.preventDefault();
+
+        const nextPath = PathApi.next(currentPath as number[]);
+        const nextNode = editor.api.node(nextPath)?.[0];
+        if (!nextNode) return;
+
+        editor.tf.focus();
+        if (ElementApi.isElement(nextNode) && nextNode.type === 'unknown') {
+          editor.tf.select(nextPath);
+          return;
+        }
+        editor.tf.select([...nextPath, 0]);
+        editor.tf.collapse({ edge: 'start' });
+        return;
+      }
+
+      if (nativeEvent.key === 'ArrowDown') {
+        let nextPath: number[] | undefined;
+        try {
+          nextPath = PathApi.next(currentPath as number[]);
+        } catch {
+          return;
+        }
+
+        if (!nextPath) return;
+
+        const nextNode = editor.api.node(nextPath)?.[0];
+        if (ElementApi.isElement(nextNode) && nextNode.type === 'unknown') {
+          event.preventDefault();
+          editor.tf.focus();
+          editor.tf.select(nextPath);
+        }
+        return;
+      }
+
+      if (nativeEvent.key !== 'ArrowUp') return;
+
+      let previousPath: number[] | undefined;
+      try {
+        previousPath = PathApi.previous(currentPath as number[]);
+      } catch {
+        return;
+      }
+
+      if (!previousPath) return;
+
+      const previousNode = editor.api.node(previousPath)?.[0];
+      if (
+        ElementApi.isElement(previousNode) &&
+        previousNode.type === 'unknown'
+      ) {
+        event.preventDefault();
+        editor.tf.focus();
+        editor.tf.select(previousPath);
+      }
+    },
+  },
   node: {
     component: NativeBlockAdapterElement,
+    isVoid: true,
     isElement: true,
     type: 'unknown',
+  },
+  extendEditor: ({ editor }) => {
+    const insertBreak = editor.tf.insertBreak;
+
+    editor.tf.insertBreak = () => {
+      const blockEntry = editor.api.block({ highest: true });
+      if (blockEntry) {
+        const [node, path] = blockEntry;
+        if (ElementApi.isElement(node) && node.type === 'unknown') {
+          const nextPath = PathApi.next(path);
+          const nextNode = editor.api.node(nextPath)?.[0];
+
+          if (ElementApi.isElement(nextNode) && nextNode.type !== 'unknown') {
+            editor.tf.focus();
+            editor.tf.select([...nextPath, 0]);
+            editor.tf.collapse({ edge: 'start' });
+            return;
+          }
+
+          editor.tf.insertNodes(
+            editor.api.create.block({
+              type: 'p',
+              children: [{ text: '' }],
+            }),
+            {
+              at: PathApi.next(path),
+              select: true,
+            },
+          );
+          return;
+        }
+      }
+
+      insertBreak();
+    };
+
+    return editor;
   },
 });
 
