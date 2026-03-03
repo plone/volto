@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-02-24 10:09+0000\n"
+"PO-Revision-Date: 2026-03-03 08:18+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
 "Language: es\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -317,7 +317,7 @@ msgstr "Alias añadido correctamente"
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr "Se han eliminado las URLs alternativas."
+msgstr "Se han eliminado las URL alternativas."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
@@ -3587,7 +3587,7 @@ msgstr "Fuente"
 #. Default: "Specify a youtube video or playlist url"
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción de youtube"
+msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción de YouTube"
 
 #. Default: "Split"
 #: components/manage/Diff/Diff
