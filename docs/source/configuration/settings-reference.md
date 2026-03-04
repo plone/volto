@@ -380,8 +380,8 @@ You can extend or override this in your project or add-on to add custom block ty
 Only the first matching block in the layout is marked as the LCP block, whereas others keep lazy loading.
 
 ```{seealso}
-{doc}`../deploying/performance` for other performance optimizations.
-[Browser-level image lazy loading](https://web.dev/articles/browser-level-image-lazy-loading) (web.dev).
+-   {doc}`../deploying/performance` for other performance optimizations.
+-   [Browser-level image lazy loading](https://web.dev/articles/browser-level-image-lazy-loading).
 ```
 
 ### `lazyBundles`
