@@ -56,9 +56,7 @@ if (config.settings) {
         locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
       })
       .catch((error) => {
-        debug('i18n')(
-          `Error loading locale file for ${lang} (${langFileName}): ${error.message}`,
-        );
+        // Error loading locale file
       });
   });
 }
