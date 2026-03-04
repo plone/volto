@@ -8,6 +8,18 @@ const schema = {
     username: { title: 'Username', type: 'string', description: '' },
     email: { title: 'Email', type: 'string', widget: 'email', description: '' },
     url: { title: 'url', type: 'string', widget: 'url', description: '' },
+    file: {
+      title: 'file',
+      type: 'object',
+      description: '',
+      size: 5,
+    },
+    notafile: {
+      title: 'notafile',
+      type: 'object',
+      description: '',
+      whatever: 1,
+    },
   },
   fieldsets: [
     { id: 'default', title: 'FIXME: User Data', fields: ['username'] },
@@ -176,6 +188,41 @@ describe('FormValidation', () => {
         FormValidation.validateFieldsPerFieldset({
           schema,
           formData,
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
+    it('file - validates invalid size', () => {
+      const validationErrorMessages = [messages.maxSize.defaultMessage];
+      validationErrorMessages.title = 'file';
+
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData: { ...formData, file: { size: 10 } },
+          formatMessage,
+        }),
+      ).toEqual({
+        file: validationErrorMessages,
+      });
+    });
+
+    it('file - validates size', () => {
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData: { ...formData, file: { size: 1 } },
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
+    it('notafile - the size validator does nothing', () => {
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData: { ...formData, notafile: { whatever: 1 } },
           formatMessage,
         }),
       ).toEqual({});
