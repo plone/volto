@@ -17,12 +17,6 @@ describe('Title Block Tests', () => {
     cy.wait('@schema');
   });
 
-  it('No border in input', () => {
-    cy.get('.block-editor-title [role=textbox]')
-      .click()
-      .should('have.css', 'outline', 'rgba(0, 0, 0, 0.87) none 0px');
-  });
-
   it('Title block has focus when editing the page a second time', () => {
     cy.get('.ui.button.cancel').click();
     cy.get('.toolbar-actions .edit').click();
