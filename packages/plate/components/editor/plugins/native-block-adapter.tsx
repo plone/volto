@@ -188,6 +188,8 @@ export function NativeBlockAdapterElement(
 }
 
 export const BaseNativeBlockAdapterPlugin = createSlatePlugin({
+  // TODO: Find a better key for this plugin. Maybe just `block`?
+  // It is used in conversions too.
   key: 'unknown',
   handlers: {
     onKeyDown: ({ editor, event }) => {

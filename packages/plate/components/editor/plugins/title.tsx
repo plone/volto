@@ -12,8 +12,7 @@ import {
 } from 'platejs/react';
 import { BLOCK_WIDTH_VALUES } from './block-width-plugin';
 
-export const TITLE_BLOCK_TYPE = 'volto_title';
-const LEGACY_TITLE_BLOCK_TYPE = 'title';
+export const TITLE_BLOCK_TYPE = 'title';
 
 type TitleData = {
   title?: string;
@@ -22,8 +21,7 @@ type TitleData = {
 const fallbackFormAtom = atom<TitleData>({ title: '' });
 
 const isTitleNode = (node: unknown) =>
-  ElementApi.isElement(node) &&
-  (node.type === TITLE_BLOCK_TYPE || node.type === LEGACY_TITLE_BLOCK_TYPE);
+  ElementApi.isElement(node) && node.type === TITLE_BLOCK_TYPE;
 
 const getTitleNodeEntry = (nodes: unknown[]) => {
   for (let index = 0; index < nodes.length; index += 1) {

@@ -31,7 +31,7 @@ async function setupImageBlockPage(page: Parameters<typeof test>[0]['page']) {
           '@type': '__somersault__',
           value: [
             {
-              type: 'volto_title',
+              type: 'title',
               children: [{ text: 'Image block nav page' }],
             },
             {

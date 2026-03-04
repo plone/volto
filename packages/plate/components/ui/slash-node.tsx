@@ -280,7 +280,7 @@ export function SlashInputElement(
         icon: <Icon />,
         keywords: [id, label?.toString()?.toLowerCase?.()].filter(Boolean),
         label,
-        value: `volto_${id}`,
+        value: `block_${id}`,
         onSelect: (plateEditor: PlateEditor) => {
           if (config.settings.editorMode === 'somersault') {
             insertSomersaultNativeBlock(plateEditor, id);
