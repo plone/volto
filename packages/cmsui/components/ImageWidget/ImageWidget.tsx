@@ -46,6 +46,7 @@ type CommonImageInputProps = {
   className?: string;
   imageSize?: string;
   value?: unknown;
+  defaultValue?: unknown;
   selected?: boolean;
   hideLinkPicker?: boolean;
   hideObjectBrowserPicker?: boolean;
@@ -176,11 +177,13 @@ function ImageInputBase({
   uploadPath,
   currentPath,
   value,
+  defaultValue,
   onValueChange,
 }: CommonImageInputProps & {
   onValueChange: (value: string | null, extras?: ImageChangeExtras) => void;
 }) {
-  const imageValue = normalizeImageValue(value);
+  const resolvedValue = value !== undefined ? value : defaultValue;
+  const imageValue = normalizeImageValue(resolvedValue);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const uploadFetcher = useFetcher<CreateContentResponse>();
   const [isDragging, setIsDragging] = useState(false);

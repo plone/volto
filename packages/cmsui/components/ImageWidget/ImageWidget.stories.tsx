@@ -222,7 +222,11 @@ const mockCreateContentAction = async ({
 
 function StoryImageWidget(props: ImageWidgetStoryProps) {
   const [value, setValue] = useState<string | null>(
-    typeof props.value === 'string' ? props.value : null,
+    typeof props.value === 'string'
+      ? props.value
+      : typeof props.defaultValue === 'string'
+        ? props.defaultValue
+        : null,
   );
 
   return (
@@ -310,6 +314,14 @@ export const WithPresetImage: Story = {
   render: (args) => <StoryRouter {...args} />,
   args: {
     value: 'image-widget/halfdome2022.jpg',
+  },
+};
+
+export const WithDefaultValue: Story = {
+  render: (args) => <StoryRouter {...args} />,
+  args: {
+    value: undefined,
+    defaultValue: 'image-widget/halfdome2022.jpg',
   },
 };
 

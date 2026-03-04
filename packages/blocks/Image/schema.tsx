@@ -20,7 +20,9 @@ export function ImageSchema({ formData = {} }: ImageSchemaArgs): JSONSchema {
         id: 'default',
         title: 'Default',
         fields: [
-          ...(formData.url ? ['alt', 'blockWidth', 'align', 'size'] : []),
+          ...(formData.url
+            ? ['url', 'alt', 'blockWidth', 'align', 'size']
+            : []),
         ],
       },
       ...(formData.url
@@ -34,6 +36,10 @@ export function ImageSchema({ formData = {} }: ImageSchemaArgs): JSONSchema {
         : []),
     ],
     properties: {
+      url: {
+        title: 'Image URL',
+        widget: 'image',
+      },
       alt: {
         title: 'Alt text',
         description: (

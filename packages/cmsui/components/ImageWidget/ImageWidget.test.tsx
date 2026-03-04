@@ -91,6 +91,25 @@ describe('ImageWidget', () => {
     );
   });
 
+  it('uses defaultValue when value is undefined', () => {
+    const { container } = render(
+      <ImageWidget defaultValue="/fallback-image" />,
+    );
+
+    expect(container.querySelector('img')).toHaveAttribute(
+      'src',
+      '/fallback-image/@@images/image/teaser',
+    );
+  });
+
+  it('prefers explicit null value over defaultValue fallback', () => {
+    const { container } = render(
+      <ImageWidget value={null} defaultValue="/fallback-image" />,
+    );
+
+    expect(container.querySelector('img')).not.toBeInTheDocument();
+  });
+
   it('calls widget onChange with null when clearing current image', () => {
     const onChange = vi.fn();
     render(<ImageWidget value="/current" onChange={onChange} />);
@@ -154,5 +173,21 @@ describe('ImageInput', () => {
     fireEvent.keyDown(input, { key: 'Enter' });
 
     expect(onChange).toHaveBeenCalledWith('image', '/new-image', undefined);
+  });
+
+  it('uses defaultValue when value is undefined', () => {
+    const onChange = vi.fn();
+    const { container } = render(
+      <ImageInput
+        id="image"
+        onChange={onChange}
+        defaultValue="/preset-image"
+      />,
+    );
+
+    expect(container.querySelector('img')).toHaveAttribute(
+      'src',
+      '/preset-image/@@images/image/teaser',
+    );
   });
 });
