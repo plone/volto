@@ -115,7 +115,6 @@ export function SidebarAfterEditable() {
   return createPortal(
     <BlockSettingsForm
       key={selectedNativeBlock.key}
-      block={selectedNativeBlock.key}
       schema={selectedNativeBlock.schema}
       formData={selectedNativeBlock.data}
       onFormDataChange={onFormDataChange}
