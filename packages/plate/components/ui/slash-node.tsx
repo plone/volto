@@ -5,7 +5,7 @@ import type { PlateEditor, PlateElementProps } from 'platejs/react';
 import { AIChatPlugin } from '@platejs/ai/react';
 import { SuggestionPlugin } from '@platejs/suggestion/react';
 import config from '@plone/registry';
-import Icon from '../../legacy/Icon';
+
 import {
   BookA,
   ChevronRightIcon,
@@ -92,7 +92,7 @@ const baseGroups: Group[] = [
     ],
   },
   {
-    group: 'Basic blocks',
+    group: 'Text blocks',
     items: [
       {
         icon: <PilcrowIcon />,
@@ -259,7 +259,7 @@ export function SlashInputElement(
   const { editor, element } = props;
   const { split, enabled: canSplit } = useSplitEditorAtCursor(editor);
   const intl = React.useMemo(() => getIntl(editor), [editor]);
-  const voltoBlockItems = React.useMemo(() => {
+  const blocks = React.useMemo(() => {
     const blocksConfig = config?.blocks?.blocksConfig;
     if (!blocksConfig) return [];
 
@@ -270,14 +270,14 @@ export function SlashInputElement(
 
       const label =
         typeof block.title === 'string' ? block.title : format(block.title);
-      const iconNode = block.icon ? (
-        <Icon name={block.icon} size="16px" />
-      ) : (
-        <Square />
-      );
-
+      // const iconNode = block.icon ? (
+      //   <Icon name={block.icon} size="16px" />
+      // ) : (
+      //   <Square />
+      // );
+      const Icon = block.icon ? block.icon : Square;
       return {
-        icon: iconNode,
+        icon: <Icon />,
         keywords: [id, label?.toString()?.toLowerCase?.()].filter(Boolean),
         label,
         value: `volto_${id}`,
@@ -338,7 +338,7 @@ export function SlashInputElement(
         },
       };
 
-      nextGroups = addGroupItem(nextGroups, 'Basic blocks', titleBlockItem);
+      nextGroups = addGroupItem(nextGroups, 'Text blocks', titleBlockItem);
     }
     if (canSplit) {
       const splitItem = {
@@ -352,18 +352,18 @@ export function SlashInputElement(
       nextGroups = addGroupItem(nextGroups, 'Actions', splitItem);
     }
 
-    if (voltoBlockItems.length) {
+    if (blocks.length) {
       nextGroups = [
         ...nextGroups,
         {
-          group: 'Volto Blocks',
-          items: voltoBlockItems,
+          group: 'Blocks',
+          items: blocks,
         },
       ];
     }
 
     return nextGroups;
-  }, [canSplit, hasTitleBlock, split, voltoBlockItems]);
+  }, [canSplit, hasTitleBlock, split, blocks]);
 
   return (
     <PlateElement {...props} as="span">

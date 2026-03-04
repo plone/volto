@@ -1,5 +1,6 @@
 import React from 'react';
 import { ImageSchema } from './schema';
+import { ImageIcon } from '@plone/components/Icons';
 
 const ImageBlockInfo = {
   id: 'image',
@@ -12,6 +13,7 @@ const ImageBlockInfo = {
   ),
   category: 'media',
   blockSchema: ImageSchema,
+  icon: ImageIcon,
 };
 
 export default ImageBlockInfo;

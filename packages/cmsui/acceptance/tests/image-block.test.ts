@@ -1,6 +1,8 @@
 import { expect, test } from '../../../tooling/playwright/test';
 import { login } from '../../../tooling/playwright/login';
 import { createContent } from '../../../tooling/playwright/content';
+import { waitForPlateEditorReady } from '../../../tooling/playwright/plate';
+import { getEditorHandle, getNodeByPath } from '@platejs/playwright';
 
 const IMAGE_ID = 'halfdome-local-image';
 const PAGE_ID = 'image-block-nav-page';
@@ -63,6 +65,8 @@ test('Image block can select a pre-uploaded local image URL', async ({
 }) => {
   await login(page);
   await setupImageBlockPage(page);
+  await page.getByLabel('Settings').first().click();
+
   await page.getByText('Browse the site, drop an image, or use a URL').click();
   await expect(page.locator('#sidebar form')).toHaveCount(1);
 
@@ -80,6 +84,7 @@ test('Image block selection, arrows, enter, and sidebar lifecycle', async ({
 }) => {
   await login(page);
   await setupImageBlockPage(page);
+  await page.getByLabel('Settings').first().click();
   await page.getByText('Browse the site, drop an image, or use a URL').click();
   await expect(page.locator('#sidebar form')).toHaveCount(1);
 
@@ -113,4 +118,45 @@ test('Image block selection, arrows, enter, and sidebar lifecycle', async ({
   // Click image -> selected/mounted.
   await image.click();
   await expect(page.locator('#sidebar form')).toHaveCount(1);
+});
+
+test('Image block saves alt text in block data', async ({ page }) => {
+  await login(page);
+  await setupImageBlockPage(page);
+  await waitForPlateEditorReady(page);
+  const editorHandle = await getEditorHandle(page);
+  await page.getByLabel('Settings').first().click();
+
+  await page.getByText('Browse the site, drop an image, or use a URL').click();
+  await expect(page.locator('#sidebar form')).toHaveCount(1);
+
+  const urlInput = page.getByPlaceholder('Enter an image URL');
+  await urlInput.fill(`/${IMAGE_ID}`);
+  await urlInput.press('Enter');
+
+  const image = page.locator(`img[src*="/${IMAGE_ID}/@@images/image"]`).first();
+  await expect(image).toBeVisible();
+
+  await image.click();
+  await expect(page.locator('#sidebar form')).toHaveCount(1);
+
+  const altTextInput = page.getByLabel('Alt text');
+  await altTextInput.fill('Half Dome at sunset');
+
+  const imageNodeHandle = await getNodeByPath(page, editorHandle, [2]);
+  const imageNode = (await imageNodeHandle.jsonValue()) as Record<
+    string,
+    unknown
+  >;
+  expect(imageNode.type).toBe('unknown');
+  expect(imageNode['@type']).toBe('image');
+  expect(imageNode.alt).toBe('Half Dome at sunset');
+
+  // Deselect and reselect the image block to confirm the value is persisted.
+  await page.getByText('Text after image').click();
+  await expect(page.locator('#sidebar form')).toHaveCount(0);
+
+  await image.click();
+  await expect(page.locator('#sidebar form')).toHaveCount(1);
+  await expect(page.getByLabel('Alt text')).toHaveValue('Half Dome at sunset');
 });
