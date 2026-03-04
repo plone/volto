@@ -3,9 +3,14 @@ import { login } from '../../../tooling/playwright/login';
 import { createContent } from '../../../tooling/playwright/content';
 import { waitForPlateEditorReady } from '../../../tooling/playwright/plate';
 import { getEditorHandle, getNodeByPath } from '@platejs/playwright';
+import path from 'node:path';
 
 const IMAGE_ID = 'halfdome-local-image';
 const PAGE_ID = 'image-block-nav-page';
+const UPLOAD_FIXTURE_PATH = path.resolve(
+  process.cwd(),
+  'packages/tooling/playwright/fixtures/halfdome2022.jpg',
+);
 
 async function setupImageBlockPage(page: Parameters<typeof test>[0]['page']) {
   await createContent(page, {
@@ -159,4 +164,25 @@ test('Image block saves alt text in block data', async ({ page }) => {
   await image.click();
   await expect(page.locator('#sidebar form')).toHaveCount(1);
   await expect(page.getByLabel('Alt text')).toHaveValue('Half Dome at sunset');
+});
+
+test('Image block can upload an image using the upload button', async ({
+  page,
+}) => {
+  await login(page);
+  await setupImageBlockPage(page);
+  await page.getByLabel('Settings').first().click();
+
+  await page.getByText('Browse the site, drop an image, or use a URL').click();
+  await expect(page.locator('#sidebar form')).toHaveCount(1);
+
+  await page
+    .locator('input[type="file"]')
+    .first()
+    .setInputFiles(UPLOAD_FIXTURE_PATH);
+
+  await expect(
+    page.locator('img[src*="/@@images/image/"]').first(),
+  ).toBeVisible();
+  await expect(page.getByText('Image upload failed')).toHaveCount(0);
 });

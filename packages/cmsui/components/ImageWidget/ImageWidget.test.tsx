@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import ImageWidget, { ImageInput } from './ImageWidget';
 
 let mockFetcher: any;
@@ -51,6 +51,10 @@ describe('ImageWidget', () => {
       data: undefined,
       submit: vi.fn(),
     };
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
 
   it('renders internal image previews with image scale path', () => {
@@ -145,6 +149,63 @@ describe('ImageWidget', () => {
     );
 
     expect(screen.getByText('Explicit error')).toBeInTheDocument();
+  });
+
+  it('handles wrapped action payloads returned by data()', async () => {
+    class MockFileReader {
+      result = 'data:image/png;base64,ZmFrZS1pbWFnZS1ieXRlcw==';
+      error = null;
+      onload: null | (() => void) = null;
+      onerror: null | (() => void) = null;
+      readAsDataURL() {
+        this.onload?.();
+      }
+    }
+    vi.stubGlobal('FileReader', MockFileReader);
+
+    mockFetcher = {
+      state: 'submitting',
+      data: undefined,
+      submit: vi.fn(),
+    };
+
+    const onChange = vi.fn();
+    const { rerender } = render(
+      <ImageWidget onChange={onChange} hideObjectBrowserPicker />,
+    );
+
+    const fileInput = document.querySelector(
+      'input[type="file"]',
+    ) as HTMLInputElement;
+    const file = new File(['fake-image-bytes'], 'test.png', {
+      type: 'image/png',
+    });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+
+    await waitFor(() => {
+      expect(mockFetcher.submit).toHaveBeenCalled();
+    });
+    expect(screen.queryByText('Image upload failed')).not.toBeInTheDocument();
+
+    mockFetcher = {
+      ...mockFetcher,
+      state: 'idle',
+      data: {
+        data: {
+          '@id': '/uploaded-image',
+          title: 'Uploaded image',
+        },
+      },
+    };
+
+    rerender(<ImageWidget onChange={onChange} hideObjectBrowserPicker />);
+
+    await waitFor(() => {
+      expect(onChange).toHaveBeenCalledWith('/uploaded-image', {
+        title: 'Uploaded image',
+      });
+    });
+    expect(screen.queryByText('Image upload failed')).not.toBeInTheDocument();
   });
 });
 

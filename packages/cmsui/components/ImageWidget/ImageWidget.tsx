@@ -79,6 +79,24 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === 'object';
 }
 
+function parseCreateContentResponse(value: unknown): CreateContentResponse {
+  if (!isRecord(value)) return {};
+
+  if (
+    typeof value['@id'] === 'string' ||
+    typeof value.title === 'string' ||
+    typeof value.message === 'string'
+  ) {
+    return value as CreateContentResponse;
+  }
+
+  if (isRecord(value.data)) {
+    return parseCreateContentResponse(value.data);
+  }
+
+  return {};
+}
+
 function normalizeImageValue(value: unknown): string {
   if (typeof value === 'string') return value;
 
@@ -186,6 +204,7 @@ function ImageInputBase({
   const imageValue = normalizeImageValue(resolvedValue);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const uploadFetcher = useFetcher<CreateContentResponse>();
+  const previousUploadFetcherState = useRef(uploadFetcher.state);
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string>('');
@@ -211,11 +230,16 @@ function ImageInputBase({
     objectBrowserPickerType === 'multiple' ? 'multiple' : 'single';
 
   useEffect(() => {
-    if (uploadFetcher.state !== 'idle' || !isUploading) {
+    const previousState = previousUploadFetcherState.current;
+    previousUploadFetcherState.current = uploadFetcher.state;
+
+    const finishedRequest =
+      previousState !== 'idle' && uploadFetcher.state === 'idle';
+    if (!isUploading || !finishedRequest) {
       return;
     }
 
-    const result = uploadFetcher.data;
+    const result = parseCreateContentResponse(uploadFetcher.data);
     if (result && typeof result?.['@id'] === 'string') {
       setUploadError('');
       onValueChange(result['@id'], {
