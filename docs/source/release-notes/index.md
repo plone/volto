@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.32.3 (2026-03-04)
+
+### Bugfix
+
+- Add file size upload limit validator. @robgietema [#7936](https://github.com/plone/volto/issues/7936)
+
 ## 18.32.2 (2026-03-02)
 
 ### Bugfix
