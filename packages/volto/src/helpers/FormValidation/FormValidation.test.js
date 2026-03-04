@@ -14,6 +14,12 @@ const schema = {
       description: '',
       size: 5,
     },
+    notafile: {
+      title: 'notafile',
+      type: 'object',
+      description: '',
+      whatever: 1,
+    },
   },
   fieldsets: [
     { id: 'default', title: 'FIXME: User Data', fields: ['username'] },
@@ -207,6 +213,16 @@ describe('FormValidation', () => {
         FormValidation.validateFieldsPerFieldset({
           schema,
           formData: { ...formData, file: { size: 1 } },
+          formatMessage,
+        }),
+      ).toEqual({});
+    });
+
+    it('notafile - the size validator does nothing', () => {
+      expect(
+        FormValidation.validateFieldsPerFieldset({
+          schema,
+          formData: { ...formData, notafile: { whatever: 1 } },
           formatMessage,
         }),
       ).toEqual({});
