@@ -1,1 +1,1 @@
-Added defensive checks for missing languages and locale files, providing an extra layer of protection. @pratyush07-hub
+Add defensive checks for missing languages and locale files. @pratyush07-hub
