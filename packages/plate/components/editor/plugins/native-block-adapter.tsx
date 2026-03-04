@@ -65,6 +65,10 @@ export function NativeBlockAdapterElement(
   props: PlateElementProps<NativeBlockElement>,
 ) {
   const { children: _children, element, ...restProps } = props;
+  const baseAttributes = {
+    ...restProps.attributes,
+    contentEditable: false,
+  };
   void _children;
   const editor = useEditorRef<SlateEditor>();
   const readOnly = useReadOnly();
@@ -85,7 +89,13 @@ export function NativeBlockAdapterElement(
 
   if (!blockData || !block) {
     return (
-      <PlateElement {...restProps} element={element} contentEditable={false} />
+      <PlateElement
+        {...restProps}
+        attributes={baseAttributes}
+        element={element}
+      >
+        {_children}
+      </PlateElement>
     );
   }
 
@@ -133,19 +143,9 @@ export function NativeBlockAdapterElement(
     editor.tf.select(currentPath);
   }, [editor, element]);
 
-  const handlePointerDownCapture = React.useCallback(
-    (event: React.PointerEvent) => {
-      const target = event.target as HTMLElement | null;
-      const isInteractive = !!target?.closest(
-        'a,button,input,textarea,select,[contenteditable="true"]',
-      );
-      if (!isInteractive) {
-        event.preventDefault();
-      }
-      handleSelectBlock();
-    },
-    [handleSelectBlock],
-  );
+  const interactiveAttributes = {
+    ...baseAttributes,
+  };
 
   const className = [
     restProps.className,
@@ -157,11 +157,9 @@ export function NativeBlockAdapterElement(
   return (
     <PlateElement
       {...restProps}
+      attributes={interactiveAttributes}
       element={element}
-      contentEditable={false}
       className={className}
-      onPointerDownCapture={handlePointerDownCapture}
-      onClick={handleSelectBlock}
     >
       {readOnly ? (
         View ? (
