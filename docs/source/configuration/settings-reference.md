@@ -357,7 +357,7 @@ See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-
 ### `lcpEligibleBlocks`
 
 The `lcpEligibleBlocks` setting configures which block types can be treated as the largest contentful paint (LCP) candidate on a page.
-The first block in the layout that matches an eligible type and passes its predicate is loaded eagerly with `loading="eager"` and `fetchpriority="high"` to improve LCP and Core Web Vitals.
+The first block in the layout that matches an eligible type and passes its predicate is loaded eagerly with `loading="eager"` and `fetchpriority="high"` to improve LCP and core web vitals.
 
 - **Key**: block `@type` (e.g. `image`, `listing`, `leadimage`, `video`, `teaser`).
 - **Value**: a function `(block) => boolean` that returns whether this specific block instance is eligible (e.g. has content like a URL or href).
