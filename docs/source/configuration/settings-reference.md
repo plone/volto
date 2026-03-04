@@ -377,7 +377,7 @@ config.settings.lcpEligibleBlocks = {
 ```
 
 You can extend or override this in your project or add-on to add custom block types or change eligibility rules.
-Only the **first** matching block in the layout is marked as the LCP block; others keep lazy loading.
+Only the first matching block in the layout is marked as the LCP block, whereas others keep lazy loading.
 
 ```{seealso}
 {doc}`../deploying/performance` for other performance optimizations.
