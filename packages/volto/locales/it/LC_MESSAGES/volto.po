@@ -20,7 +20,7 @@ msgstr "<p>Aggiungi dell'HTML qui</p>"
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "Un identificatore univoco per il gruppo. Non può essere modificato dopo la creazione. Non sono consentiti spazi."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -1224,7 +1224,7 @@ msgstr "Rilascia file qui..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Trascina i file qui per caricarli"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2858,7 +2858,7 @@ msgstr "Query"
 #. Default: "Query Parameter Name"
 #: components/manage/Widgets/SchemaWidget
 msgid "Query Parameter Name"
-msgstr ""
+msgstr "Nome del parametro"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -2965,7 +2965,7 @@ msgstr "Relazioni aggiornate"
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Rilascia per aggiungere file a questa cartella"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -4216,7 +4216,7 @@ msgstr "Carica"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Carica file ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4521,7 +4521,7 @@ msgstr "Puoi controllare chi può visualizzare e modificare l'elemento usando l'
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr ""
+msgstr "Non puoi spostare questo tipo di blocco alla nuova posizione"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4576,7 +4576,7 @@ msgstr "Il tuo username è richiesto per reimpostare la tua password."
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "Tipi di file consentiti"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4659,6 +4659,11 @@ msgstr "Intervallo date"
 msgid "delete"
 msgstr "Elimina"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr "Elimina il blocco {type}"
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4683,6 +4688,11 @@ msgstr "La istruzioni per reimpostare la tua password sono state inviate. Dovreb
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Bozza"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr "Trascina il blocco {type}"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4737,7 +4747,7 @@ msgstr ""
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "Gli URL esterni non sono consentiti in questo campo."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4782,7 +4792,7 @@ msgstr "Immagine"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Carica un'immagine."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4802,7 +4812,7 @@ msgstr "intero"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Nessuna immagine è stata trovata nel percorso che hai fornito."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4961,12 +4971,12 @@ msgstr "Pubblicato"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Percorso corrente (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Percorso del contenitore (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
