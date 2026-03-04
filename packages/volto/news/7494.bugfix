@@ -1,1 +1,2 @@
-Required fields - TODO @Wagner3UB
+- Improved A11Y in CMS UI by adding proper ARIA attributes (aria-required, aria-invalid, aria-label) across key form components and adjusting semantics. @Wagner3UB
+- Applied workarounds for 'DatetimeWidget' limitations and noted structural a11y issues in 'FileWidget' and incorrect URL validation. @Wagner3UB
