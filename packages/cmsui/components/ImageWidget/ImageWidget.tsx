@@ -31,13 +31,13 @@ type ImageChangeExtras = {
   image_scales?: Record<string, unknown>;
 };
 
-type VoltoImageChange = (
+type ImageInputChange = (
   id: string,
   value: string | null,
   extras?: ImageChangeExtras,
 ) => void;
 
-type SevenImageChange = (
+type ImageWidgetChange = (
   value: string | null,
   extras?: ImageChangeExtras,
 ) => void;
@@ -59,12 +59,12 @@ type CommonImageInputProps = {
 
 type ImageInputProps = CommonImageInputProps & {
   id: string;
-  onChange: VoltoImageChange;
+  onChange: ImageInputChange;
 };
 
 type ImageWidgetProps = BaseFormFieldProps &
   CommonImageInputProps & {
-    onChange?: SevenImageChange;
+    onChange?: ImageWidgetChange;
     error?: Array<unknown>;
   };
 
