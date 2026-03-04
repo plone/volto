@@ -2301,6 +2301,11 @@ msgstr "Mapas"
 msgid "Maps URL"
 msgstr "URL do Mapa"
 
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
@@ -2839,6 +2844,11 @@ msgstr "Criado com Plone e Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferências"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Pressione Enter para procurar arquivos no seu computador."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
