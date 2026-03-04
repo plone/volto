@@ -2,6 +2,12 @@ import { expect, test } from '../../../tooling/playwright/test';
 import { login } from '../../../tooling/playwright/login';
 import { createContent } from '../../../tooling/playwright/content';
 import { waitForPlateEditorReady } from '../../../tooling/playwright/plate';
+import {
+  clickAtPath,
+  getEditorHandle,
+  getNodeByPath,
+  setSelection,
+} from '@platejs/playwright';
 
 test('Title block and metadata title stay in sync', async ({ page }) => {
   await login(page);
@@ -70,4 +76,68 @@ test('Newly created title block is initialized from metadata title', async ({
   await metadataTitleInput.fill('Seeded metadata title');
 
   await expect(editorTitle).toHaveText('Seeded metadata title');
+});
+
+test('Enter on title inserts a new empty paragraph before existing next block', async ({
+  page,
+}) => {
+  const contentId = 'title-enter-behavior';
+  const titleText = 'Title enter behavior';
+  const existingNextText = 'Existing next paragraph';
+
+  await login(page);
+  await createContent(page, {
+    contentType: 'Document',
+    contentId,
+    contentTitle: titleText,
+    transition: 'publish',
+    bodyModifier: (body) => ({
+      ...body,
+      blocks: {
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: titleText }],
+            },
+            {
+              type: 'p',
+              children: [{ text: existingNextText }],
+            },
+          ],
+        },
+      },
+      blocks_layout: {
+        items: ['__somersault__'],
+      },
+    }),
+  });
+
+  await page.goto(`/@@edit/${contentId}`);
+  await waitForPlateEditorReady(page);
+
+  const editorHandle = await getEditorHandle(page);
+  await clickAtPath(page, editorHandle, [0]);
+  await setSelection(page, editorHandle, {
+    anchor: { path: [0, 0], offset: titleText.length },
+    focus: { path: [0, 0], offset: titleText.length },
+  });
+  await page.keyboard.press('Enter');
+
+  const insertedNodeHandle = await getNodeByPath(page, editorHandle, [1]);
+  const insertedNode = (await insertedNodeHandle.jsonValue()) as Record<
+    string,
+    unknown
+  >;
+  expect(insertedNode.type).toBe('p');
+  expect(insertedNode.children).toEqual([{ text: '' }]);
+
+  const nextNodeHandle = await getNodeByPath(page, editorHandle, [2]);
+  const nextNode = (await nextNodeHandle.jsonValue()) as Record<
+    string,
+    unknown
+  >;
+  expect(nextNode.type).toBe('p');
+  expect(nextNode.children).toEqual([{ text: existingNextText }]);
 });

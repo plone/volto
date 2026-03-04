@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { atom, type PrimitiveAtom } from 'jotai';
 import { useFieldFocusedAtom } from '@plone/helpers';
 import config from '@plone/registry';
-import { createSlatePlugin, ElementApi } from 'platejs';
+import { createSlatePlugin, ElementApi, PathApi } from 'platejs';
 import {
   PlateElement,
   type PlateElementProps,
@@ -155,6 +155,36 @@ export function TitleBlockElement(props: PlateElementProps) {
 
 export const BaseTitleBlockPlugin = createSlatePlugin({
   key: TITLE_BLOCK_TYPE,
+  handlers: {
+    onKeyDown: ({ editor, event }) => {
+      const nativeEvent = (event as any)?.nativeEvent ?? event;
+      if (!nativeEvent || nativeEvent.key !== 'Enter') return;
+      if (!editor.selection || !editor.api.isCollapsed()) return;
+
+      const currentEntry = editor.api.block({ highest: true });
+      if (!currentEntry) return;
+
+      const [currentNode, currentPath] = currentEntry;
+      if (
+        !ElementApi.isElement(currentNode) ||
+        currentNode.type !== TITLE_BLOCK_TYPE
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      editor.tf.insertNodes(
+        editor.api.create.block({
+          type: 'p',
+          children: [{ text: '' }],
+        }),
+        {
+          at: PathApi.next(currentPath as number[]),
+          select: true,
+        },
+      );
+    },
+  },
   node: {
     component: TitleBlockElement,
     isElement: true,
@@ -167,7 +197,30 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
     },
   },
   extendEditor: ({ editor }) => {
+    const insertBreak = editor.tf.insertBreak;
     const normalizeNode = editor.normalizeNode as (entry: any) => void;
+
+    editor.tf.insertBreak = () => {
+      const blockEntry = editor.api.block({ highest: true });
+      if (blockEntry) {
+        const [node, path] = blockEntry;
+        if (ElementApi.isElement(node) && node.type === TITLE_BLOCK_TYPE) {
+          editor.tf.insertNodes(
+            editor.api.create.block({
+              type: 'p',
+              children: [{ text: '' }],
+            }),
+            {
+              at: PathApi.next(path),
+              select: true,
+            },
+          );
+          return;
+        }
+      }
+
+      insertBreak();
+    };
 
     editor.normalizeNode = (entry) => {
       const [, path] = entry;
