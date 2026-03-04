@@ -8,7 +8,7 @@
     "url": "https://github.com/plone/volto.git",
     "directory": "packages/volto-razzle"
   },
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "bin": {
     "razzle": "./bin/razzle.js"
   },
@@ -30,7 +30,7 @@
     "clean-css": "^5.0.1",
     "copy-webpack-plugin": "^6.1.1",
     "css-loader": "^5.0.0",
-    "css-minimizer-webpack-plugin": "^1.2.0",
+    "css-minimizer-webpack-plugin": "^7.0.4",
     "deepmerge": "^4.2.2",
     "dotenv": "^8.2.0",
     "dotenv-expand": "^5.1.0",
