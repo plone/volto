@@ -3,7 +3,7 @@ import { atom, useAtom, useSetAtom } from 'jotai';
 import { BlockEditorContext, selectedBlockAtom } from './BlockEditorContext';
 import clsx from 'clsx';
 import { createPortal } from 'react-dom';
-import BlockSettingsForm from './BlockSettingsForm';
+import BlockSettingsAtomForm from './BlockSettingsAtomForm';
 import BlockWrapper from '@plone/layout/blocks/BlockWrapper';
 import { Pluggable } from '@plone/layout/components/Pluggable';
 import { blockAtomFamily } from '../../routes/atoms';
@@ -68,7 +68,7 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
       {selected &&
         schema &&
         createPortal(
-          <BlockSettingsForm
+          <BlockSettingsAtomForm
             schema={schema}
             block={props.block}
             // data={props.data}
