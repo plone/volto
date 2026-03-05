@@ -2,7 +2,7 @@ import type { PlateConfig } from '@plone/plate/types';
 import { BlockEditorKit } from '@plone/plate/components/editor/block-editor-kit';
 import { BlockFloatingToolbarButtons } from '@plone/plate/components/ui/preset-block-floating-toolbar-buttons';
 import { setFloatingToolbarButtons } from '@plone/plate/components/editor/plugins/floating-toolbar-kit';
-import { NativeBlockAdapterPlugin } from '@plone/plate/components/editor/plugins/native-block-adapter';
+import { PloneBlockAdapterPlugin } from '@plone/plate/components/editor/plugins/plone-block-adapter';
 import { PlaywrightPlugin } from '@platejs/playwright';
 
 import { TitleBlock } from '@plone/plate/components/editor/plugins/title';
@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
 }
 
 const native: PlateConfig = {
-  plugins: [...BlockEditorKit, TitleBlock, NativeBlockAdapterPlugin],
+  plugins: [...BlockEditorKit, TitleBlock, PloneBlockAdapterPlugin],
   floatingToolbarButtons: BlockFloatingToolbarButtons,
 };
 

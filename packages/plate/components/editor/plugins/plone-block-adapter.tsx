@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { BlockSelectionPlugin } from '@platejs/selection/react';
 import { isDeepEqual } from '@plone/helpers';
@@ -61,50 +60,29 @@ function getBlockId(element: NativeBlockElement, path: number[]) {
   return explicitId ? String(explicitId) : path.join('-');
 }
 
-export function NativeBlockAdapterElement(
-  props: PlateElementProps<NativeBlockElement>,
+function PloneBlockAdapterContent(
+  props: PlateElementProps<NativeBlockElement> & {
+    path: number[];
+    baseAttributes: PlateElementProps<NativeBlockElement>['attributes'];
+    editor: SlateEditor;
+    readOnly: boolean;
+    selected: boolean;
+  },
 ) {
   const { children: _children, element, ...restProps } = props;
-  const baseAttributes = {
-    ...restProps.attributes,
-    contentEditable: false,
-  };
-  void _children;
-  const editor = useEditorRef<SlateEditor>();
-  const readOnly = useReadOnly();
-  const selected = useSelected();
-
-  const path = React.useMemo(
-    () => editor.api.findPath(element),
-    [editor, element],
-  );
+  const { baseAttributes, editor, path, readOnly, selected } = props;
   const pathRef = React.useRef(path);
   pathRef.current = path;
-
-  if (!path) return null;
 
   const blockData = React.useMemo(() => toBlockData(element), [element]);
   const blockType = blockData?.['@type'];
   const block = blockType ? getBlockConfig(blockType) : null;
-
-  if (!blockData || !block) {
-    return (
-      <PlateElement
-        {...restProps}
-        attributes={baseAttributes}
-        element={element}
-      >
-        {_children}
-      </PlateElement>
-    );
-  }
-
   const blockId = React.useMemo(
     () => getBlockId(element, path),
     [element, path],
   );
-  const Edit = block.edit;
-  const View = block.view;
+  const Edit = block?.edit;
+  const View = block?.view;
 
   const handleSetBlock = React.useCallback(
     (data: NativeBlockData) => {
@@ -154,6 +132,18 @@ export function NativeBlockAdapterElement(
     .filter(Boolean)
     .join(' ');
 
+  if (!blockData || !block) {
+    return (
+      <PlateElement
+        {...restProps}
+        attributes={baseAttributes}
+        element={element}
+      >
+        {_children}
+      </PlateElement>
+    );
+  }
+
   return (
     <PlateElement
       {...restProps}
@@ -185,7 +175,37 @@ export function NativeBlockAdapterElement(
   );
 }
 
-export const BaseNativeBlockAdapterPlugin = createSlatePlugin({
+export function PloneBlockAdapterElement(
+  props: PlateElementProps<NativeBlockElement>,
+) {
+  const { element, ...restProps } = props;
+  const baseAttributes = {
+    ...restProps.attributes,
+    contentEditable: false,
+  };
+  const editor = useEditorRef<SlateEditor>();
+  const readOnly = useReadOnly();
+  const selected = useSelected();
+  const path = React.useMemo(
+    () => editor.api.findPath(element),
+    [editor, element],
+  );
+
+  if (!path) return null;
+
+  return (
+    <PloneBlockAdapterContent
+      {...props}
+      path={path}
+      baseAttributes={baseAttributes}
+      editor={editor}
+      readOnly={readOnly}
+      selected={selected}
+    />
+  );
+}
+
+export const BasePloneBlockAdapterPlugin = createSlatePlugin({
   // TODO: Find a better key for this plugin. Maybe just `block`?
   // It is used in conversions too.
   key: 'unknown',
@@ -312,7 +332,7 @@ export const BaseNativeBlockAdapterPlugin = createSlatePlugin({
     },
   },
   node: {
-    component: NativeBlockAdapterElement,
+    component: PloneBlockAdapterElement,
     isVoid: true,
     isElement: true,
     type: 'unknown',
@@ -356,6 +376,6 @@ export const BaseNativeBlockAdapterPlugin = createSlatePlugin({
   },
 });
 
-export const NativeBlockAdapterPlugin = toPlatePlugin(
-  BaseNativeBlockAdapterPlugin,
+export const PloneBlockAdapterPlugin = toPlatePlugin(
+  BasePloneBlockAdapterPlugin,
 );
