@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { isDeepEqual } from '@plone/helpers';
 import { useAppForm } from '../Form/Form';
 import {
   Accordion,
@@ -55,6 +56,7 @@ const BlockSettingsForm = (props: BlockSettingsFormProps) => {
   });
 
   useEffect(() => {
+    if (isDeepEqual(form.state.values, formData)) return;
     form.reset(formData);
   }, [form, formData]);
 

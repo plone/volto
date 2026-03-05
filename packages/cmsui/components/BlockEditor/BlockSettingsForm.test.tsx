@@ -233,7 +233,7 @@ describe('BlockSettingsForm', () => {
     });
   });
 
-  it('resets form values when formData prop changes', async () => {
+  it('syncs form values when formData prop changes', async () => {
     const { rerender } = render(
       <BlockSettingsForm schema={schema} formData={{ title: 'Initial' }} />,
     );
@@ -244,7 +244,24 @@ describe('BlockSettingsForm', () => {
 
     await waitFor(() => {
       const lastForm = getLastForm();
-      expect(lastForm.reset).toHaveBeenCalledWith({ title: 'Next' });
+      expect(lastForm.state.values).toEqual({ title: 'Next' });
+    });
+  });
+
+  it('does not reset form values when formData only changes reference', async () => {
+    const { rerender } = render(
+      <BlockSettingsForm schema={schema} formData={{ title: 'Same value' }} />,
+    );
+
+    const lastForm = getLastForm();
+    (lastForm.reset as any).mockClear();
+
+    rerender(
+      <BlockSettingsForm schema={schema} formData={{ title: 'Same value' }} />,
+    );
+
+    await waitFor(() => {
+      expect(lastForm.reset).not.toHaveBeenCalled();
     });
   });
 });
