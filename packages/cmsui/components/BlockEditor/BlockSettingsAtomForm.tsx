@@ -1,13 +1,8 @@
 import { useAtomValue } from 'jotai';
 import { useAppForm } from '../Form/Form';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionPanel,
-  AccordionItemTrigger,
-} from '@plone/components/quanta';
 import type { BlockConfigBase } from '@plone/types';
 import { blockAtomFamily } from '../../routes/atoms';
+import BlockSettingsFormRenderer from './BlockSettingsFormRenderer';
 
 type BlockSettingsAtomFormProps = {
   block: string;
@@ -35,38 +30,13 @@ const BlockSettingsAtomForm = (props: BlockSettingsAtomFormProps) => {
       : schemaProp;
 
   return (
-    <>
-      <form>
-        {schema.fieldsets.map((fieldset) => (
-          <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
-            <AccordionItem id={fieldset.id} key={fieldset.id}>
-              <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
-              <AccordionPanel>
-                {fieldset.fields.map((schemaField, index) => (
-                  <form.AppField
-                    name={schemaField}
-                    key={index}
-                    // eslint-disable-next-line react/no-children-prop
-                    children={(field) => (
-                      <field.Quanta
-                        {...schema.properties[schemaField]}
-                        className="mb-4"
-                        label={schema.properties[field.name].title}
-                        name={field.name}
-                        defaultValue={field.state.value}
-                        required={schema.required.indexOf(schemaField) !== -1}
-                        error={field.state.meta.errors}
-                        formAtom={blockAtom}
-                      />
-                    )}
-                  />
-                ))}
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
-        ))}
-      </form>
-    </>
+    <BlockSettingsFormRenderer
+      schema={schema as any}
+      form={form}
+      getFieldProps={() => ({
+        formAtom: blockAtom,
+      })}
+    />
   );
 };
 

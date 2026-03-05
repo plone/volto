@@ -1,13 +1,8 @@
 import { useEffect } from 'react';
 import { isDeepEqual } from '@plone/helpers';
 import { useAppForm } from '../Form/Form';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionPanel,
-  AccordionItemTrigger,
-} from '@plone/components/quanta';
 import type { BlockConfigBase } from '@plone/types';
+import BlockSettingsFormRenderer from './BlockSettingsFormRenderer';
 
 type BlockSettingsFormProps = {
   schema: BlockConfigBase['blockSchema'];
@@ -71,47 +66,21 @@ const BlockSettingsForm = (props: BlockSettingsFormProps) => {
       : schemaProp;
 
   return (
-    <>
-      <form>
-        {schema.fieldsets.map((fieldset) => (
-          <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
-            <AccordionItem id={fieldset.id} key={fieldset.id}>
-              <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
-              <AccordionPanel>
-                {fieldset.fields.map((schemaField, index) => (
-                  <form.AppField
-                    name={schemaField}
-                    key={index}
-                    // eslint-disable-next-line react/no-children-prop
-                    children={(field) => (
-                      <field.Quanta
-                        {...schema.properties[schemaField]}
-                        className="mb-4"
-                        label={schema.properties[field.name].title}
-                        name={field.name}
-                        defaultValue={field.state.value}
-                        required={schema.required.indexOf(schemaField) !== -1}
-                        error={field.state.meta.errors}
-                        onChange={(value: unknown) => {
-                          const nextData = setValueByPath(
-                            (form.state.values as Record<string, unknown>) ??
-                              {},
-                            String(field.name),
-                            value,
-                          );
+    <BlockSettingsFormRenderer
+      schema={schema as any}
+      form={form}
+      getFieldProps={(fieldName) => ({
+        onChange: (value: unknown) => {
+          const nextData = setValueByPath(
+            (form.state.values as Record<string, unknown>) ?? {},
+            fieldName,
+            value,
+          );
 
-                          props.onFormDataChange?.(nextData);
-                        }}
-                      />
-                    )}
-                  />
-                ))}
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
-        ))}
-      </form>
-    </>
+          props.onFormDataChange?.(nextData);
+        },
+      })}
+    />
   );
 };
 
