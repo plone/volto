@@ -844,6 +844,11 @@ msgstr "Унаследованные Правила контента"
 msgid "Content that links to or references {title}"
 msgstr "Контент который связан с или ссылается на {title}"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr ""
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"

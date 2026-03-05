@@ -843,6 +843,11 @@ msgstr "Inhoudsregels van bovenliggende mappen"
 msgid "Content that links to or references {title}"
 msgstr "Inhoud die linkt of refereert naar {title}"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr ""
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
