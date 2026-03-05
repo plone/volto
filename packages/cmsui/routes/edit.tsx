@@ -101,7 +101,7 @@ export default function Edit() {
             {config.settings.editorMode !== 'somersault' ? (
               <BlockEditor formAtom={formAtom}></BlockEditor>
             ) : (
-              <SomersaultEditor formAtom={formAtom} />
+              <SomersaultEditor />
             )}
           </div>
           <div className="flex w-[50%] flex-col">
