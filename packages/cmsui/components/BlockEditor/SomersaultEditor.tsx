@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import * as React from 'react';
 import { PlateEditor, type Value } from '@plone/plate/components/editor';
-import plateBlockNativeConfig from '@plone/blocks/plate/native-editor';
+import plateBlockSomersaultConfig from '@plone/plate/config/presets/somersault-editor';
 import { TITLE_BLOCK_TYPE } from '@plone/plate/components/editor/plugins/title';
 import { SidebarPlugin } from './plugins/SidebarPlugin';
 import { blockAtomFamily } from '../../routes/atoms';
@@ -37,8 +37,8 @@ const SomersaultEditor = () => {
 
   const editorConfig = React.useMemo(
     () => ({
-      ...plateBlockNativeConfig,
-      plugins: [...(plateBlockNativeConfig.plugins ?? []), SidebarPlugin],
+      ...plateBlockSomersaultConfig,
+      plugins: [...(plateBlockSomersaultConfig.plugins ?? []), SidebarPlugin],
     }),
     [],
   );
