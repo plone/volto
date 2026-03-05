@@ -2305,6 +2305,11 @@ msgstr "Kartat"
 msgid "Maps URL"
 msgstr "Karta URL"
 
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
@@ -2843,6 +2848,11 @@ msgstr "Voimanlähteenä Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Asetukset"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Paina Enter-näppäintä selataksesi tiedostoja tietokoneeltasi."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

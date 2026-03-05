@@ -2300,6 +2300,11 @@ msgstr "नक्शे"
 msgid "Maps URL"
 msgstr "नक्शे URL"
 
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
@@ -2838,6 +2843,11 @@ msgstr "प्लोन और पायथन द्वारा संचा�
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "पसंद"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
