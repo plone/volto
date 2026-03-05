@@ -9,14 +9,16 @@ import { TitleBlock } from '@plone/plate/components/editor/plugins/title';
 
 setFloatingToolbarButtons(BlockFloatingToolbarButtons);
 
-// Include Playwright plugin only during e2e tests
-if (typeof window !== 'undefined') {
-  // @ts-ignore
-  BlockEditorKit.push(PlaywrightPlugin.configure({ enabled: true }));
-}
-
 const native: PlateConfig = {
-  plugins: [...BlockEditorKit, TitleBlock, PloneBlockAdapterPlugin],
+  plugins: [
+    ...BlockEditorKit,
+    TitleBlock,
+    PloneBlockAdapterPlugin,
+    // Include Playwright plugin only during e2e tests
+    ...(typeof window !== 'undefined'
+      ? [PlaywrightPlugin.configure({ enabled: true })]
+      : []),
+  ],
   floatingToolbarButtons: BlockFloatingToolbarButtons,
 };
 

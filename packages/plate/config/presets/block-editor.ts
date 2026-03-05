@@ -6,14 +6,14 @@ import type { PlateConfig } from '../../types';
 
 setFloatingToolbarButtons(BlockFloatingToolbarButtons);
 
-// Include Playwright plugin only during e2e tests
-if (typeof window !== 'undefined') {
-  // @ts-ignore
-  BlockEditorKit.push(PlaywrightPlugin.configure({ enabled: true }));
-}
-
 const blockEditor: PlateConfig = {
-  plugins: [...BlockEditorKit],
+  plugins: [
+    ...BlockEditorKit,
+    // Include Playwright plugin only during e2e tests
+    ...(typeof window !== 'undefined'
+      ? [PlaywrightPlugin.configure({ enabled: true })]
+      : []),
+  ],
   floatingToolbarButtons: BlockFloatingToolbarButtons,
 };
 
