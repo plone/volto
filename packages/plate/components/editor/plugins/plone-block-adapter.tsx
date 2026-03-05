@@ -2,15 +2,10 @@ import React from 'react';
 import { BlockSelectionPlugin } from '@platejs/selection/react';
 import { isDeepEqual } from '@plone/helpers';
 import config from '@plone/registry';
-import {
-  createSlatePlugin,
-  ElementApi,
-  PathApi,
-  type SlateEditor,
-  type TElement,
-} from 'platejs';
+import { createSlatePlugin, ElementApi, PathApi, type TElement } from 'platejs';
 import {
   PlateElement,
+  type PlateEditor,
   toPlatePlugin,
   useEditorRef,
   useReadOnly,
@@ -52,7 +47,13 @@ function fromBlockData(data: NativeBlockData): Partial<NativeBlockElement> {
 }
 
 function getBlockConfig(blockType: string) {
-  return config?.blocks?.blocksConfig?.[blockType];
+  const blocksConfig = config?.blocks?.blocksConfig as unknown | undefined;
+  return (blocksConfig as Record<string, unknown> | undefined)?.[blockType] as
+    | {
+        edit?: React.ComponentType<any>;
+        view?: React.ComponentType<any>;
+      }
+    | undefined;
 }
 
 function getBlockId(element: NativeBlockElement, path: number[]) {
@@ -64,7 +65,7 @@ function PloneBlockAdapterContent(
   props: PlateElementProps<NativeBlockElement> & {
     path: number[];
     baseAttributes: PlateElementProps<NativeBlockElement>['attributes'];
-    editor: SlateEditor;
+    editor: PlateEditor;
     readOnly: boolean;
     selected: boolean;
   },
@@ -112,7 +113,7 @@ function PloneBlockAdapterContent(
     const currentPath = editor.api.findPath(element);
     if (!currentPath) return;
 
-    const elementId = (element as any)?.id;
+    const elementId = element?.id;
     if (elementId) {
       editor.getApi(BlockSelectionPlugin).blockSelection.set(String(elementId));
     }
@@ -183,7 +184,7 @@ export function PloneBlockAdapterElement(
     ...restProps.attributes,
     contentEditable: false,
   };
-  const editor = useEditorRef<SlateEditor>();
+  const editor = useEditorRef();
   const readOnly = useReadOnly();
   const selected = useSelected();
   const path = React.useMemo(
@@ -210,7 +211,7 @@ export const BasePloneBlockAdapterPlugin = createSlatePlugin({
   // It is used in conversions too.
   key: 'unknown',
   handlers: {
-    onKeyDown: ({ editor, event }) => {
+    onKeyDown: ({ editor, event }: { editor: PlateEditor; event: any }) => {
       const nativeEvent = (event as any)?.nativeEvent ?? event;
       if (!nativeEvent) return;
       if (!editor.selection || !editor.api.isCollapsed()) return;
@@ -330,7 +331,7 @@ export const BasePloneBlockAdapterPlugin = createSlatePlugin({
         editor.tf.select(previousPath);
       }
     },
-  },
+  } as any,
   node: {
     component: PloneBlockAdapterElement,
     isVoid: true,
