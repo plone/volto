@@ -63,6 +63,12 @@ catalogs:
     release-it:
       specifier: ^19.0.5
       version: 19.0.5
+    tailwind-merge:
+      specifier: ^3.5.0
+      version: 3.5.0
+    tailwind-variants:
+      specifier: ^3.2.2
+      version: 3.2.2
     tailwindcss:
       specifier: ^4.1.12
       version: 4.1.13
@@ -257,11 +263,11 @@ importers:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
       tailwind-merge:
-        specifier: ^3.0.2
-        version: 3.3.1
+        specifier: 'catalog:'
+        version: 3.5.0
       tailwind-variants:
-        specifier: ^1.0.0
-        version: 1.0.0(tailwindcss@4.1.13)
+        specifier: 'catalog:'
+        version: 3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.1.13)
       tailwindcss:
         specifier: 'catalog:'
         version: 4.1.13
@@ -500,11 +506,11 @@ importers:
         specifier: 'catalog:'
         version: 7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       tailwind-merge:
-        specifier: ^3.0.1
-        version: 3.3.1
+        specifier: 'catalog:'
+        version: 3.5.0
       tailwind-variants:
-        specifier: ^1.0.0
-        version: 1.0.0(tailwindcss@4.1.13)
+        specifier: 'catalog:'
+        version: 3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.1.13)
       tailwindcss:
         specifier: 'catalog:'
         version: 4.1.13
@@ -618,11 +624,11 @@ importers:
         specifier: ^3.43.0
         version: 3.43.0(react@19.2.0)
       tailwind-merge:
-        specifier: ^3.0.1
-        version: 3.3.1
+        specifier: 'catalog:'
+        version: 3.5.0
       tailwind-variants:
-        specifier: ^1.0.0
-        version: 1.0.0(tailwindcss@4.1.13)
+        specifier: 'catalog:'
+        version: 3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.1.13)
       tailwindcss:
         specifier: 'catalog:'
         version: 4.1.13
@@ -893,9 +899,6 @@ importers:
       '@ariakit/react':
         specifier: ^0.4.19
         version: 0.4.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@faker-js/faker':
-        specifier: ^10.1.0
-        version: 10.1.0
       '@platejs/ai':
         specifier: ^50.3.7
         version: 50.3.7(platejs@49.2.21(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.6)(immer@10.1.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.2)
@@ -1024,7 +1027,7 @@ importers:
         version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@udecode/cn':
         specifier: ^49.0.15
-        version: 49.0.15(@types/react@19.2.6)(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.3.1)
+        version: 49.0.15(@types/react@19.2.6)(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.5.0)
       ai:
         specifier: 5.0.28
         version: 5.0.28(zod@4.1.12)
@@ -1089,14 +1092,14 @@ importers:
         specifier: ^2.0.7
         version: 2.0.7(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       tailwind-merge:
-        specifier: ^3.3.1
-        version: 3.3.1
+        specifier: 'catalog:'
+        version: 3.5.0
       tailwind-scrollbar-hide:
         specifier: ^4.0.0
         version: 4.0.0(tailwindcss@4.1.13)
       tailwind-variants:
-        specifier: ^1.0.0
-        version: 1.0.0(tailwindcss@4.1.13)
+        specifier: 'catalog:'
+        version: 3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.1.13)
       tailwindcss:
         specifier: 'catalog:'
         version: 4.1.13
@@ -1482,11 +1485,11 @@ importers:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
       tailwind-merge:
-        specifier: ^3.0.2
-        version: 3.3.1
+        specifier: 'catalog:'
+        version: 3.5.0
       tailwind-variants:
-        specifier: ^1.0.0
-        version: 1.0.0(tailwindcss@4.1.13)
+        specifier: 'catalog:'
+        version: 3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.1.13)
       tailwindcss:
         specifier: 'catalog:'
         version: 4.1.13
@@ -2173,10 +2176,6 @@ packages:
   '@eslint/plugin-kit@0.4.0':
     resolution: {integrity: sha512-sB5uyeq+dwCWyPi31B2gQlVlo+j5brPlWx4yZBrEaRo/nhdDE8Xke1gsGgtiBdaBTxuTkceLVuVt/pclrasb0A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@faker-js/faker@10.1.0':
-    resolution: {integrity: sha512-C3mrr3b5dRVlKPJdfrAXS8+dq+rq8Qm5SNRazca0JKgw1HQERFmrVb0towvMmw5uu8hHKNiQasMaR/tydf3Zsg==}
-    engines: {node: ^20.19.0 || ^22.13.0 || ^23.5.0 || >=24.0.0, npm: '>=10'}
 
   '@floating-ui/core@1.7.3':
     resolution: {integrity: sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w==}
@@ -7287,6 +7286,7 @@ packages:
     resolution: {integrity: sha512-Quz3MvAwHxVYNXsOByL7xI5EB2WYOeFswqaHIA3qOK3isRWTxiplBEocmmru6XmxDB2L7jDNYtYA4FyimoAFEw==}
     engines: {node: '>=8.17.0'}
     hasBin: true
+    bundledDependencies: []
 
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
@@ -9337,22 +9337,23 @@ packages:
     resolution: {integrity: sha512-FzD187HuFIZEyeR7Xy6sJbJll2d4SybS90satC8SKIuaNRC05CxMvdzN7BUsfDQffcnabckRM5OIcfArjsZ0mg==}
     engines: {node: '>=18.18'}
 
-  tailwind-merge@3.0.2:
-    resolution: {integrity: sha512-l7z+OYZ7mu3DTqrL88RiKrKIqO3NcpEO8V/Od04bNpvk0kiIFndGEoqfuzvj4yuhRkHKjRkII2z+KS2HfPcSxw==}
-
-  tailwind-merge@3.3.1:
-    resolution: {integrity: sha512-gBXpgUm/3rp1lMZZrM/w7D8GKqshif0zAymAhbCyIt8KMe+0v9DQ7cdYLR4FHH/cKpdTXb+A/tKKU3eolfsI+g==}
+  tailwind-merge@3.5.0:
+    resolution: {integrity: sha512-I8K9wewnVDkL1NTGoqWmVEIlUcB9gFriAEkXkfCjX5ib8ezGxtR3xD7iZIxrfArjEsH7F1CHD4RFUtxefdqV/A==}
 
   tailwind-scrollbar-hide@4.0.0:
     resolution: {integrity: sha512-gobtvVcThB2Dxhy0EeYSS1RKQJ5baDFkamkhwBvzvevwX6L4XQfpZ3me9s25Ss1ecFVT5jPYJ50n+7xTBJG9WQ==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || >= 4.0.0 || >= 4.0.0-beta.8 || >= 4.0.0-alpha.20'
 
-  tailwind-variants@1.0.0:
-    resolution: {integrity: sha512-2WSbv4ulEEyuBKomOunut65D8UZwxrHoRfYnxGcQNnHqlSCp2+B7Yz2W+yrNDrxRodOXtGD/1oCcKGNBnUqMqA==}
+  tailwind-variants@3.2.2:
+    resolution: {integrity: sha512-Mi4kHeMTLvKlM98XPnK+7HoBPmf4gygdFmqQPaDivc3DpYS6aIY6KiG/PgThrGvii5YZJqRsPz0aPyhoFzmZgg==}
     engines: {node: '>=16.x', pnpm: '>=7.x'}
     peerDependencies:
+      tailwind-merge: '>=3.0.0'
       tailwindcss: '*'
+    peerDependenciesMeta:
+      tailwind-merge:
+        optional: true
 
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
@@ -10810,8 +10811,6 @@ snapshots:
     dependencies:
       '@eslint/core': 0.16.0
       levn: 0.4.1
-
-  '@faker-js/faker@10.1.0': {}
 
   '@floating-ui/core@1.7.3':
     dependencies:
@@ -14059,13 +14058,13 @@ snapshots:
       '@typescript-eslint/types': 8.46.2
       eslint-visitor-keys: 4.2.1
 
-  '@udecode/cn@49.0.15(@types/react@19.2.6)(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.3.1)':
+  '@udecode/cn@49.0.15(@types/react@19.2.6)(class-variance-authority@0.7.1)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.5.0)':
     dependencies:
       '@udecode/react-utils': 49.0.15(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       class-variance-authority: 0.7.1
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
-      tailwind-merge: 3.3.1
+      tailwind-merge: 3.5.0
     transitivePeerDependencies:
       - '@types/react'
 
@@ -19458,18 +19457,17 @@ snapshots:
 
   tailwind-csstree@0.1.4: {}
 
-  tailwind-merge@3.0.2: {}
-
-  tailwind-merge@3.3.1: {}
+  tailwind-merge@3.5.0: {}
 
   tailwind-scrollbar-hide@4.0.0(tailwindcss@4.1.13):
     dependencies:
       tailwindcss: 4.1.13
 
-  tailwind-variants@1.0.0(tailwindcss@4.1.13):
+  tailwind-variants@3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.1.13):
     dependencies:
-      tailwind-merge: 3.0.2
       tailwindcss: 4.1.13
+    optionalDependencies:
+      tailwind-merge: 3.5.0
 
   tailwindcss-animate@1.0.7(tailwindcss@4.1.13):
     dependencies:

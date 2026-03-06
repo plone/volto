@@ -68,8 +68,8 @@
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
     "react-router": "catalog:",
-    "tailwind-merge": "^3.0.1",
-    "tailwind-variants": "^1.0.0",
+    "tailwind-merge": "catalog:",
+    "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
     "usehooks-ts": "^3.1.1"
   },
