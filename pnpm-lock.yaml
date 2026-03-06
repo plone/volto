@@ -778,6 +778,9 @@ importers:
       '@plone/helpers':
         specifier: workspace:*
         version: link:../helpers
+      '@plone/plate':
+        specifier: workspace:*
+        version: link:../plate
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry

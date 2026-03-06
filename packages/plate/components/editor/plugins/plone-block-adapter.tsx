@@ -8,7 +8,6 @@ import {
   type PlateEditor,
   toPlatePlugin,
   useEditorRef,
-  useReadOnly,
   useSelected,
   type PlateElementProps,
 } from 'platejs/react';
@@ -66,12 +65,11 @@ function PloneBlockAdapterContent(
     path: number[];
     baseAttributes: PlateElementProps<NativeBlockElement>['attributes'];
     editor: PlateEditor;
-    readOnly: boolean;
     selected: boolean;
   },
 ) {
   const { children: _children, element, ...restProps } = props;
-  const { baseAttributes, editor, path, readOnly, selected } = props;
+  const { baseAttributes, editor, path, selected } = props;
   const pathRef = React.useRef(path);
   pathRef.current = path;
 
@@ -152,11 +150,7 @@ function PloneBlockAdapterContent(
       element={element}
       className={className}
     >
-      {readOnly ? (
-        View ? (
-          <View data={blockData} />
-        ) : null
-      ) : Edit ? (
+      {Edit ? (
         <Edit
           data={blockData}
           block={blockId}
@@ -185,7 +179,6 @@ export function PloneBlockAdapterElement(
     contentEditable: false,
   };
   const editor = useEditorRef();
-  const readOnly = useReadOnly();
   const selected = useSelected();
   const path = React.useMemo(
     () => editor.api.findPath(element),
@@ -200,7 +193,6 @@ export function PloneBlockAdapterElement(
       path={path}
       baseAttributes={baseAttributes}
       editor={editor}
-      readOnly={readOnly}
       selected={selected}
     />
   );

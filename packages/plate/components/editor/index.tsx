@@ -62,6 +62,7 @@ export function PlateEditor(props: {
 export type { Value } from 'platejs';
 export { ElementApi, type Path } from 'platejs';
 export {
+  PlateController,
   createPlatePlugin,
   useEditorRef,
   useEditorSelector,
@@ -90,7 +91,11 @@ export function PlateRenderer(
     value: sanitizedValue,
   }) as SlateEditor; // EditorView likes it more
 
-  return <EditorView {...rest} editor={editor} variant="none" />;
+  return (
+    <Plate editor={editor} readOnly>
+      <EditorView {...rest} editor={editor} variant="none" />
+    </Plate>
+  );
 }
 
 PlateRenderer.displayName = 'PlateRenderer';

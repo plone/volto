@@ -54,6 +54,7 @@
   "dependencies": {
     "@plone/components": "workspace:*",
     "@plone/helpers": "workspace:*",
+    "@plone/plate": "workspace:*",
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1",
     "lodash.sortby": "^4.7.0",
