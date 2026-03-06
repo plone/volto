@@ -28,7 +28,7 @@
     "buffer": "^6.0.3",
     "chalk": "^4.1.0",
     "clean-css": "^5.0.1",
-    "copy-webpack-plugin": "^6.1.1",
+    "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^5.0.0",
     "css-minimizer-webpack-plugin": "^7.0.4",
     "deepmerge": "^4.2.2",
