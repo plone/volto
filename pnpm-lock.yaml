@@ -744,6 +744,9 @@ importers:
       '@plone/razzle':
         specifier: workspace:*
         version: link:../volto-razzle
+      '@plone/razzle-dev-utils':
+        specifier: workspace:*
+        version: link:../volto-razzle-dev-utils
       '@plone/types':
         specifier: workspace:*
         version: link:../types
@@ -969,9 +972,6 @@ importers:
       postcss-scss:
         specifier: 4.0.6
         version: 4.0.6(postcss@8.4.31)
-      razzle-dev-utils:
-        specifier: 4.2.18
-        version: 4.2.18(eslint@8.57.1)(typescript@5.9.3)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1(esbuild@0.25.12)))(webpack@5.90.1(esbuild@0.25.12))
       react-docgen-typescript-plugin:
         specifier: ^1.0.5
         version: 1.0.8(typescript@5.9.3)(webpack@5.90.1(esbuild@0.25.12))
@@ -1105,6 +1105,9 @@ importers:
       '@plone/babel-preset-razzle':
         specifier: workspace:*
         version: link:../volto-babel-preset-razzle
+      '@plone/razzle-dev-utils':
+        specifier: workspace:*
+        version: link:../volto-razzle-dev-utils
       '@pmmmwh/react-refresh-webpack-plugin':
         specifier: 0.5.11
         version: 0.5.11(react-refresh@0.14.0)(sockjs-client@1.4.0)(type-fest@2.19.0)(webpack-dev-server@4.11.1(webpack@5.90.1(esbuild@0.25.12)))(webpack-hot-middleware@2.26.1)(webpack@5.90.1(esbuild@0.25.12))
@@ -1183,9 +1186,6 @@ importers:
       process:
         specifier: ^0.11.10
         version: 0.11.10
-      razzle-dev-utils:
-        specifier: 4.2.18
-        version: 4.2.18(eslint@8.57.1)(typescript@5.9.3)(webpack-dev-server@4.11.1(webpack@5.90.1(esbuild@0.25.12)))(webpack@5.90.1(esbuild@0.25.12))
       razzle-start-server-webpack-plugin:
         specifier: 4.2.18
         version: 4.2.18(webpack@5.90.1(esbuild@0.25.12))
@@ -1244,6 +1244,51 @@ importers:
       vitest:
         specifier: ^3.0.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@24.10.13)(@vitest/ui@2.1.9)(jiti@2.6.1)(jsdom@16.7.0)(less@3.11.1)(lightningcss@1.31.1)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2)
+
+  packages/volto-razzle-dev-utils:
+    dependencies:
+      '@babel/code-frame':
+        specifier: ^7.8.3
+        version: 7.29.0
+      chalk:
+        specifier: ^4.1.0
+        version: 4.1.2
+      filesize:
+        specifier: ^6.1.0
+        version: 6.4.0
+      gzip-size:
+        specifier: ^6.0.0
+        version: 6.0.0
+      jest-message-util:
+        specifier: ^26.3.0
+        version: 26.6.2
+      react-dev-utils:
+        specifier: ^11.0.4
+        version: 11.0.4(eslint@8.57.1)(typescript@5.9.3)(webpack@5.90.1)
+      react-error-overlay:
+        specifier: ^6.0.7
+        version: 6.0.9
+      recursive-readdir:
+        specifier: ^2.2.2
+        version: 2.2.3
+      release-it:
+        specifier: ^19.0.4
+        version: 19.2.4(@types/node@24.10.13)(magicast@0.3.5)
+      resolve:
+        specifier: ^1.17.0
+        version: 1.22.11
+      sockjs-client:
+        specifier: ~1.4.0
+        version: 1.4.0
+      strip-ansi:
+        specifier: ^6.0.0
+        version: 6.0.1
+      webpack:
+        specifier: ~4||~5
+        version: 5.90.1
+      webpack-dev-server:
+        specifier: ~3||~4
+        version: 4.11.1(webpack@5.90.1)
 
   packages/volto-slate:
     dependencies:
@@ -10381,12 +10426,6 @@ packages:
   raw-body@2.5.2:
     resolution: {integrity: sha512-8zGqypfENjCIqGhgXToC8aB2r7YrBX+AQAfIPs/Mlk+BtPTztOvTS01NRW/3Eh60J+a48lt8qsCzirQ6loCVfA==}
     engines: {node: '>= 0.8'}
-
-  razzle-dev-utils@4.2.18:
-    resolution: {integrity: sha512-WOXpAUAJaR3JJYhhb6iQKa+i25Ab2lAGiJXdbkDAXWDFRikpnojoUaZ2VuoNluSo0Xd7OKeaX8Ge29LW4mjEEg==}
-    peerDependencies:
-      webpack: ~4||~5
-      webpack-dev-server: ~3||~4
 
   razzle-start-server-webpack-plugin@4.2.18:
     resolution: {integrity: sha512-yR86/T7hmfseBFOQYZDiDfLNxIvws7wBvRoQNz7aw4cT6cX8JFDPpMDHQQNdnESRDencDozMtFLX0jECJJi/CA==}
@@ -20337,7 +20376,7 @@ snapshots:
 
   fork-ts-checker-webpack-plugin@4.1.6(eslint@8.57.1)(typescript@5.9.3)(webpack@5.90.1(esbuild@0.25.12)):
     dependencies:
-      '@babel/code-frame': 7.10.4
+      '@babel/code-frame': 7.29.0
       chalk: 2.4.2
       micromatch: 3.1.10
       minimatch: 3.1.2
@@ -20345,6 +20384,22 @@ snapshots:
       tapable: 1.1.3
       typescript: 5.9.3
       webpack: 5.90.1(esbuild@0.25.12)
+      worker-rpc: 0.1.1
+    optionalDependencies:
+      eslint: 8.57.1
+    transitivePeerDependencies:
+      - supports-color
+
+  fork-ts-checker-webpack-plugin@4.1.6(eslint@8.57.1)(typescript@5.9.3)(webpack@5.90.1):
+    dependencies:
+      '@babel/code-frame': 7.29.0
+      chalk: 2.4.2
+      micromatch: 3.1.10
+      minimatch: 3.1.2
+      semver: 5.7.2
+      tapable: 1.1.3
+      typescript: 5.9.3
+      webpack: 5.90.1
       worker-rpc: 0.1.1
     optionalDependencies:
       eslint: 8.57.1
@@ -23445,48 +23500,6 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  razzle-dev-utils@4.2.18(eslint@8.57.1)(typescript@5.9.3)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.90.1(esbuild@0.25.12)))(webpack@5.90.1(esbuild@0.25.12)):
-    dependencies:
-      '@babel/code-frame': 7.29.0
-      chalk: 4.1.2
-      filesize: 6.4.0
-      gzip-size: 6.0.0
-      jest-message-util: 26.6.2
-      react-dev-utils: 11.0.4(eslint@8.57.1)(typescript@5.9.3)(webpack@5.90.1(esbuild@0.25.12))
-      react-error-overlay: 6.0.9
-      recursive-readdir: 2.2.3
-      resolve: 1.22.11
-      sockjs-client: 1.4.0
-      strip-ansi: 6.0.1
-      webpack: 5.90.1(esbuild@0.25.12)
-      webpack-dev-server: 4.11.1(debug@4.3.4)(webpack@5.90.1(esbuild@0.25.12))
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
-      - typescript
-      - vue-template-compiler
-
-  razzle-dev-utils@4.2.18(eslint@8.57.1)(typescript@5.9.3)(webpack-dev-server@4.11.1(webpack@5.90.1(esbuild@0.25.12)))(webpack@5.90.1(esbuild@0.25.12)):
-    dependencies:
-      '@babel/code-frame': 7.29.0
-      chalk: 4.1.2
-      filesize: 6.4.0
-      gzip-size: 6.0.0
-      jest-message-util: 26.6.2
-      react-dev-utils: 11.0.4(eslint@8.57.1)(typescript@5.9.3)(webpack@5.90.1(esbuild@0.25.12))
-      react-error-overlay: 6.0.9
-      recursive-readdir: 2.2.3
-      resolve: 1.22.11
-      sockjs-client: 1.4.0
-      strip-ansi: 6.0.1
-      webpack: 5.90.1(esbuild@0.25.12)
-      webpack-dev-server: 4.11.1(webpack@5.90.1(esbuild@0.25.12))
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
-      - typescript
-      - vue-template-compiler
-
   razzle-start-server-webpack-plugin@4.2.18(webpack@5.90.1(esbuild@0.25.12)):
     dependencies:
       webpack: 5.90.1(esbuild@0.25.12)
@@ -23722,6 +23735,40 @@ snapshots:
       strip-ansi: 6.0.0
       text-table: 0.2.0
       webpack: 5.90.1(esbuild@0.25.12)
+    optionalDependencies:
+      typescript: 5.9.3
+    transitivePeerDependencies:
+      - eslint
+      - supports-color
+      - vue-template-compiler
+
+  react-dev-utils@11.0.4(eslint@8.57.1)(typescript@5.9.3)(webpack@5.90.1):
+    dependencies:
+      '@babel/code-frame': 7.10.4
+      address: 1.1.2
+      browserslist: 4.14.2
+      chalk: 2.4.2
+      cross-spawn: 7.0.3
+      detect-port-alt: 1.1.6
+      escape-string-regexp: 2.0.0
+      filesize: 6.1.0
+      find-up: 4.1.0
+      fork-ts-checker-webpack-plugin: 4.1.6(eslint@8.57.1)(typescript@5.9.3)(webpack@5.90.1)
+      global-modules: 2.0.0
+      globby: 11.0.1
+      gzip-size: 5.1.1
+      immer: 10.1.3
+      is-root: 2.1.0
+      loader-utils: 2.0.0
+      open: 7.4.2
+      pkg-up: 3.1.0
+      prompts: 2.4.0
+      react-error-overlay: 6.0.9
+      recursive-readdir: 2.2.2
+      shell-quote: 1.7.2
+      strip-ansi: 6.0.0
+      text-table: 0.2.0
+      webpack: 5.90.1
     optionalDependencies:
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -25483,6 +25530,15 @@ snapshots:
     optionalDependencies:
       esbuild: 0.25.12
 
+  terser-webpack-plugin@5.3.16(webpack@5.90.1):
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.31
+      jest-worker: 27.5.1
+      schema-utils: 4.3.3
+      serialize-javascript: 6.0.2
+      terser: 5.46.0
+      webpack: 5.90.1
+
   terser-webpack-plugin@5.3.6(esbuild@0.25.12)(webpack@5.90.1(esbuild@0.25.12)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
@@ -26390,6 +26446,15 @@ snapshots:
       schema-utils: 4.3.3
       webpack: 5.90.1(esbuild@0.25.12)
 
+  webpack-dev-middleware@5.3.4(webpack@5.90.1):
+    dependencies:
+      colorette: 2.0.20
+      memfs: 3.5.3
+      mime-types: 2.1.35
+      range-parser: 1.2.1
+      schema-utils: 4.3.3
+      webpack: 5.90.1
+
   webpack-dev-middleware@6.1.3(webpack@5.90.1(esbuild@0.25.12)):
     dependencies:
       colorette: 2.0.20
@@ -26476,6 +26541,44 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  webpack-dev-server@4.11.1(webpack@5.90.1):
+    dependencies:
+      '@types/bonjour': 3.5.13
+      '@types/connect-history-api-fallback': 1.5.4
+      '@types/express': 4.17.25
+      '@types/serve-index': 1.9.4
+      '@types/serve-static': 1.15.10
+      '@types/sockjs': 0.3.36
+      '@types/ws': 8.18.1
+      ansi-html-community: 0.0.8
+      bonjour-service: 1.3.0
+      chokidar: 3.6.0
+      colorette: 2.0.20
+      compression: 1.8.1
+      connect-history-api-fallback: 2.0.0
+      default-gateway: 6.0.3
+      express: 4.19.2
+      graceful-fs: 4.2.11
+      html-entities: 2.6.0
+      http-proxy-middleware: 2.0.9(@types/express@4.17.25)
+      ipaddr.js: 2.3.0
+      open: 8.4.2
+      p-retry: 4.6.2
+      rimraf: 3.0.2
+      schema-utils: 4.3.3
+      selfsigned: 2.4.1
+      serve-index: 1.9.2
+      sockjs: 0.3.24
+      spdy: 4.0.2
+      webpack: 5.90.1
+      webpack-dev-middleware: 5.3.4(webpack@5.90.1)
+      ws: 8.19.0
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+
   webpack-hot-middleware@2.26.1:
     dependencies:
       ansi-html-community: 0.0.8
@@ -26498,6 +26601,37 @@ snapshots:
   webpack-sources@3.3.3: {}
 
   webpack-virtual-modules@0.6.2: {}
+
+  webpack@5.90.1:
+    dependencies:
+      '@types/eslint-scope': 3.7.7
+      '@types/estree': 1.0.8
+      '@webassemblyjs/ast': 1.14.1
+      '@webassemblyjs/wasm-edit': 1.14.1
+      '@webassemblyjs/wasm-parser': 1.14.1
+      acorn: 8.15.0
+      acorn-import-assertions: 1.9.0(acorn@8.15.0)
+      browserslist: 4.28.1
+      chrome-trace-event: 1.0.4
+      enhanced-resolve: 5.19.0
+      es-module-lexer: 1.7.0
+      eslint-scope: 5.1.1
+      events: 3.3.0
+      glob-to-regexp: 0.4.1
+      graceful-fs: 4.2.11
+      json-parse-even-better-errors: 2.3.1
+      loader-runner: 4.3.1
+      mime-types: 2.1.35
+      neo-async: 2.6.2
+      schema-utils: 3.3.0
+      tapable: 2.3.0
+      terser-webpack-plugin: 5.3.16(webpack@5.90.1)
+      watchpack: 2.5.1
+      webpack-sources: 3.3.3
+    transitivePeerDependencies:
+      - '@swc/core'
+      - esbuild
+      - uglify-js
 
   webpack@5.90.1(esbuild@0.25.12):
     dependencies:
