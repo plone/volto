@@ -65,17 +65,17 @@ const write = (type, text, verbose) => {
 const log = (text = '') => console.log(text);
 
 // Starting a process
-const start = text => {
+const start = (text) => {
   write('start', text);
 };
 
 // Ending a process
-const done = text => {
+const done = (text) => {
   write('done', text);
 };
 
 // Info about a process task
-const info = text => {
+const info = (text) => {
   write('info', text);
 };
 

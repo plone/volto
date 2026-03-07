@@ -67,7 +67,7 @@ class WebpackConfigHelpers {
   getRulesByMatchingFile(config, file) {
     let filePath = path.resolve(this._cwd, file);
     return this.getRules(config).filter(
-      w => w.rule.test && w.rule.test.exec(filePath)
+      (w) => w.rule.test && w.rule.test.exec(filePath),
     );
   }
 
@@ -92,11 +92,11 @@ class WebpackConfigHelpers {
               loader,
               loaderIndex,
             }))
-          : [{ rule, ruleIndex, loader: loaders, loaderIndex: -1 }]
+          : [{ rule, ruleIndex, loader: loaders, loaderIndex: -1 }],
       )
       .reduce((arr, loaders) => arr.concat(loaders), [])
       .filter(
-        ({ loader }) => loader === name || (loader && loader.loader === name)
+        ({ loader }) => loader === name || (loader && loader.loader === name),
       );
   }
 
@@ -113,8 +113,8 @@ class WebpackConfigHelpers {
    */
   getPluginsByName(config, name) {
     return this.getPlugins(config).filter(
-      w =>
-        w.plugin && w.plugin.constructor && w.plugin.constructor.name === name
+      (w) =>
+        w.plugin && w.plugin.constructor && w.plugin.constructor.name === name,
     );
   }
 
@@ -130,7 +130,7 @@ class WebpackConfigHelpers {
    * @memberof WebpackConfigHelpers
    */
   getPluginsByType(config, type) {
-    return this.getPlugins(config).filter(w => w.plugin instanceof type);
+    return this.getPlugins(config).filter((w) => w.plugin instanceof type);
   }
 
   getResolveExtensions(config) {
@@ -154,9 +154,9 @@ class WebpackConfigHelpers {
       const inUseArray =
         Array.isArray(rule.use) &&
         rule.use.find(
-          loader =>
+          (loader) =>
             typeof loader.loader === 'string' &&
-            loader.loader.match(loaderRegex)
+            loader.loader.match(loaderRegex),
         );
 
       return inUseArray || inLoaderString;

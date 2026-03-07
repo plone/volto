@@ -6,16 +6,16 @@ function razzleFormatWebpackMessages(messages) {
   return process.env.WEBPACK_VERSION === 5
     ? formatWebpackMessages(
         ['errors', 'warnings'].reduce(
-          function(result, item) {
+          function (result, item) {
             result[item] = result[item].concat(
-              messages[item].map(function(stat) {
+              messages[item].map(function (stat) {
                 return stat.message;
-              })
+              }),
             );
             return result;
           },
-          { errors: [], warnings: [] }
-        )
+          { errors: [], warnings: [] },
+        ),
       )
     : formatWebpackMessages(messages);
 }

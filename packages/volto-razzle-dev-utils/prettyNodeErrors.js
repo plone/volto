@@ -21,7 +21,7 @@ function pretty(error) {
     const result = codeFrameColumns(
       fs.readFileSync(file, 'utf8'),
       { start: { line } },
-      { highlightCode: true }
+      { highlightCode: true },
     );
     return `\n${message}\n\n${result}\n${stack}\n`;
   } catch (error) {

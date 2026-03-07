@@ -20,7 +20,7 @@ class WebpackErrorsPlugin {
   }
 
   apply(compiler) {
-    compiler.plugin('done', stats => {
+    compiler.plugin('done', (stats) => {
       const rawMessages = stats.toJson({}, true);
       const messages = formatWebpackMessages(rawMessages);
       WEBPACK_COMPILING = false;
@@ -49,10 +49,10 @@ class WebpackErrorsPlugin {
             rawMessages.errors[0].includes("Module not found: Can't resolve"))
         )
       ) {
-        messages.errors.forEach(e => {
+        messages.errors.forEach((e) => {
           logger.error(
             `Failed to compile ${this.target} with ${messages.errors.length} errors`,
-            e
+            e,
           );
         });
         // return;
@@ -60,13 +60,13 @@ class WebpackErrorsPlugin {
 
       if (messages.warnings.length) {
         logger.warn(
-          `Failed to compile with ${messages.warnings.length} warnings`
+          `Failed to compile with ${messages.warnings.length} warnings`,
         );
-        messages.warnings.forEach(w => logger.log(w));
+        messages.warnings.forEach((w) => logger.log(w));
       }
     });
 
-    compiler.plugin('invalid', params => {
+    compiler.plugin('invalid', (params) => {
       WEBPACK_DONE = false;
       if (!WEBPACK_COMPILING) {
         if (!this.verbose) {

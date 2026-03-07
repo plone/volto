@@ -45,7 +45,7 @@ ErrorOverlay.setEditorHandler(function editorHandler(errorLocation) {
         '&colNumber=' +
         window.encodeURIComponent(errorLocation.colNumber || 1),
     }),
-    { mode: 'no-cors' }
+    { mode: 'no-cors' },
   );
 });
 
@@ -57,14 +57,14 @@ ErrorOverlay.setEditorHandler(function editorHandler(errorLocation) {
 // See https://github.com/facebookincubator/create-react-app/issues/3096
 var hadRuntimeError = false;
 ErrorOverlay.startReportingRuntimeErrors({
-  onError: function() {
+  onError: function () {
     hadRuntimeError = true;
   },
   filename: process.env.REACT_BUNDLE_PATH || '/static/js/bundle.js',
 });
 
 if (module.hot && typeof module.hot.dispose === 'function') {
-  module.hot.dispose(function() {
+  module.hot.dispose(function () {
     // TODO: why do we need this?
     ErrorOverlay.stopReportingRuntimeErrors();
   });
@@ -78,10 +78,10 @@ var connection = new SockJS(socketUrl);
 // Unlike WebpackDevServer client, we won't try to reconnect
 // to avoid spamming the console. Disconnect usually happens
 // when developer stops the server.
-connection.onclose = function() {
+connection.onclose = function () {
   if (typeof console !== 'undefined' && typeof console.info === 'function') {
     console.info(
-      'The development server has disconnected.\nRefresh the page if necessary.'
+      'The development server has disconnected.\nRefresh the page if necessary.',
     );
   }
 };
@@ -138,7 +138,7 @@ function handleWarnings(warnings) {
         if (i === 5) {
           console.warn(
             'There were more warnings in other files.\n' +
-              'You can find a complete log in the terminal.'
+              'You can find a complete log in the terminal.',
           );
           break;
         }
@@ -203,7 +203,7 @@ function handleAvailableHash(hash) {
 }
 
 // Handle messages from the server.
-connection.onmessage = function(e) {
+connection.onmessage = function (e) {
   var message = JSON.parse(e.data);
   switch (message.type) {
     case 'hash':
@@ -279,12 +279,12 @@ function tryApplyUpdates(onHotUpdateSuccess) {
   // // Webpack 2 returns a Promise instead of invoking a callback
   if (result && result.then) {
     result.then(
-      function(updatedModules) {
+      function (updatedModules) {
         handleApplyUpdates(null, updatedModules);
       },
-      function(err) {
+      function (err) {
         handleApplyUpdates(err, null);
-      }
+      },
     );
   }
 }

@@ -29,16 +29,16 @@ function printFileSizesAfterBuild(
   previousSizeMap,
   buildFolder,
   maxBundleGzipSize,
-  maxChunkGzipSize
+  maxChunkGzipSize,
 ) {
   var root = previousSizeMap.root;
   var sizes = previousSizeMap.sizes;
   var assets = (webpackStats.stats || [webpackStats])
-    .map(stats =>
+    .map((stats) =>
       stats
         .toJson({ all: false, assets: true })
-        .assets.filter(asset => canReadAsset(asset.name))
-        .map(asset => {
+        .assets.filter((asset) => canReadAsset(asset.name))
+        .map((asset) => {
           var fileContents = fs.readFileSync(path.join(root, asset.name));
           var size = gzipSize(fileContents);
           var previousSize = sizes[removeFileNameHash(root, asset.name)];
@@ -47,23 +47,23 @@ function printFileSizesAfterBuild(
             folder: path.join(
               path.basename(buildFolder),
               path.basename(root),
-              path.dirname(asset.name)
+              path.dirname(asset.name),
             ),
             name: path.basename(asset.name),
             size: size,
             sizeLabel:
               filesize(size) + (difference ? ' (' + difference + ')' : ''),
           };
-        })
+        }),
     )
     .reduce((single, all) => all.concat(single), []);
   assets.sort((a, b) => b.size - a.size);
   var longestSizeLabelLength = Math.max.apply(
     null,
-    assets.map(a => stripAnsi(a.sizeLabel).length)
+    assets.map((a) => stripAnsi(a.sizeLabel).length),
   );
   var suggestBundleSplitting = false;
-  assets.forEach(asset => {
+  assets.forEach((asset) => {
     var sizeLabel = asset.sizeLabel;
     var sizeLength = stripAnsi(sizeLabel).length;
     if (sizeLength < longestSizeLabelLength) {
@@ -82,24 +82,26 @@ function printFileSizesAfterBuild(
       '  ' +
         (isLarge ? chalk.yellow(sizeLabel) : sizeLabel) +
         '  ' +
-        chalk.dim(asset.folder + (/[\/\\]$/.test(asset.folder) ? '':path.sep)) +
-        chalk.cyan(asset.name)
+        chalk.dim(
+          asset.folder + (/[\/\\]$/.test(asset.folder) ? '' : path.sep),
+        ) +
+        chalk.cyan(asset.name),
     );
   });
   if (suggestBundleSplitting) {
     console.log();
     console.log(
-      chalk.yellow('The bundle size is significantly larger than recommended.')
+      chalk.yellow('The bundle size is significantly larger than recommended.'),
     );
     console.log(
       chalk.yellow(
-        'Consider reducing it with code splitting: https://goo.gl/9VhYWB'
-      )
+        'Consider reducing it with code splitting: https://goo.gl/9VhYWB',
+      ),
     );
     console.log(
       chalk.yellow(
-        'You can also analyze the project dependencies: https://goo.gl/LeUzfb'
-      )
+        'You can also analyze the project dependencies: https://goo.gl/LeUzfb',
+      ),
     );
   }
 }
@@ -110,7 +112,7 @@ function removeFileNameHash(buildFolder, fileName) {
     .replace(/\\/g, '/')
     .replace(
       /\/?(.*)(\.[0-9a-f]+)(\.chunk)?(\.js|\.css)/,
-      (match, p1, p2, p3, p4) => p1 + p4
+      (match, p1, p2, p3, p4) => p1 + p4,
     );
 }
 
@@ -132,7 +134,7 @@ function getDifferenceLabel(currentSize, previousSize) {
 }
 
 function measureFileSizesBeforeBuild(buildFolder) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     recursive(buildFolder, (err, fileNames) => {
       var sizes;
       if (!err && fileNames) {
@@ -156,17 +158,17 @@ function removeFilePrefix(buildFolder, fileName) {
 }
 
 function getFileNamesAsStat(buildFolder) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     recursive(buildFolder, (err, fileNames) => {
       var filteredFileNames;
       if (!err && fileNames) {
         filteredFileNames = fileNames
           .filter(canReadAsset)
-          .map(fileName => removeFilePrefix(buildFolder, fileName));
+          .map((fileName) => removeFilePrefix(buildFolder, fileName));
       }
       resolve({
         toJson: () => ({
-          assets: filteredFileNames.map(name => ({ name: name })),
+          assets: filteredFileNames.map((name) => ({ name: name })),
         }),
       });
     });

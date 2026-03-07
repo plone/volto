@@ -4,15 +4,15 @@ const webpackMajor = require('./webpackMajor');
 const chalk = require('chalk');
 
 /**
-* Print an array of warnings to console.
-*
-* @param {string} summary Summary of error
-* @param {Array<Warnings>} warnings Array of Warningss
-*/
+ * Print an array of warnings to console.
+ *
+ * @param {string} summary Summary of error
+ * @param {Array<Warnings>} warnings Array of Warningss
+ */
 function printWarnings(summary, warnings, verbose) {
   console.log(chalk.yellow(summary));
   console.log();
-  warnings.forEach(wrn => {
+  warnings.forEach((wrn) => {
     if (webpackMajor < 5) {
       // webpack 4
       console.warn(wrn);
