@@ -23,6 +23,4 @@
 
     "paths": {}
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "build", "public", "coverage"]
 }
