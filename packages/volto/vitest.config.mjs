@@ -84,6 +84,7 @@ export default defineConfig({
         test: {
           name: 'volto-slate',
           root: '../volto-slate',
+          isolate: true,
           globals: true,
           environment: 'jsdom',
           setupFiles: [
@@ -92,6 +93,7 @@ export default defineConfig({
             `${projectRoot}/jest-setup-afterenv.js`,
             `${projectRoot}/jest-addons-loader.js`,
           ],
+          globalSetup: `${projectRoot}/global-test-setup.js`,
         },
         resolve: {
           alias: voltoSlateAliases,
@@ -99,9 +101,6 @@ export default defineConfig({
         plugins: sharedPlugins,
       },
     ],
-    deps: {
-      moduleDirectories: ['node_modules'],
-    },
     snapshotFormat: { printBasicPrototype: false },
     coverage: {
       provider: 'v8',
