@@ -50,17 +50,17 @@ If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20
 
 (replace-razzle-with-volto-razzle)=
 
-### Replace `razzle` with `@volto/razzle` (fork)
+### Replace `razzle` with `@plone/razzle` (fork)
 ```{versionchanged} Volto 19.0.0-alpha.14
 ```
 
-`@volto/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
-Use `@volto/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
+`@plone/razzle` is a fork of the upstream `razzle` package that contains Volto-specific fixes and patches.
+Use `@plone/razzle` in your Volto 19 projects when either you need the Volto-compatible build behavior, or the Volto team provides temporary patches that are not yet merged upstream in Razzle.
 
 For most projects, no action is required.
 The fork maintains full compatibility with the original `razzle` package, preserving all CLI entry points such as `razzle start`, `razzle build`, and `razzle test`.
 
-However, if you have customized Volto's internals in your project—for example, by importing internal modules directly from the `razzle` package such as `require('razzle/some/path')`—then you need to update those imports to reference `@volto/razzle` instead.
+However, if you have customized Volto's internals in your project—for example, by importing internal modules directly from the `razzle` package such as `require('razzle/some/path')`—then you need to update those imports to reference `@plone/razzle` instead.
 
 To verify whether your project requires updates, search for any direct references to internal `razzle` modules:
 
@@ -77,7 +77,7 @@ If you find any matches, check in particular:
 
 ```{note}
 The fork exists so we can ship fixes and compatibility patches required by Volto, since the upstream is no longer maintained.
-Our goal is to keep `@volto/razzle` compatible with the `razzle` public API.
+Our goal is to keep `@plone/razzle` compatible with the `razzle` public API.
 ```
 
 ### Replace `babel-preset-razzle` with `@plone/babel-preset-razzle`
@@ -332,6 +332,25 @@ To avoid this, we have forked the `razzle-plugin-scss` package and removed the d
 We pinned the version of `sass` to `1.32.0`, which is the one before they introduced the deprecation warnings.
 It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
 In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
+
+### Table block is now wrapped with containers to support horizontal scrolling on small viewports
+```{versionadded} Volto 19.0.0-alpha.26
+```
+
+To support horizontal scrolling of tables on small viewports, the table block is now wrapped with containers that allow horizontal scrolling when the table width exceeds the viewport width.
+
+```html
+<div className="block slate-table">
+  <div className="block-inner-container">
+    <table>
+      <!-- table content -->
+    </table>
+  </div>
+</div>
+```
+
+In the past, the table block was a direct child of the content area.
+If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
 
 (upgrading-to-volto-18-x-x)=
 

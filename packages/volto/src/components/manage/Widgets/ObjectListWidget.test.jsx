@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import ObjectListWidget from './ObjectListWidget';
 
 vi.mock('@plone/volto/helpers/Loadable/Loadable');
+vi.mock('@plone/volto/components/manage/Form');
 beforeAll(async () => {
   const { __setLoadables } = await import(
     '@plone/volto/helpers/Loadable/Loadable'

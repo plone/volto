@@ -60,7 +60,8 @@ export class QuerystringWidgetComponent extends React.Component<any, any, any> {
      * @param {number} index Row index.
      * @returns {Object} Widget.
      */
-    getWidget(row: any, index: number, Select: any): any;
+    getWidget(row: any, index: number, Select: any, intl: any): any;
+    loadReferenceWidgetItem(v: any): void;
     /**
      * Component did mount lifecycle method
      * @method componentDidMount
@@ -74,6 +75,8 @@ export class QuerystringWidgetComponent extends React.Component<any, any, any> {
      */
     render(): string;
 }
-declare const _default: any;
+declare const _default: React.ForwardRefExoticComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & React.RefAttributes<React.ComponentType<import("react-intl").WrappedComponentProps<string>>>> & {
+    WrappedComponent: React.ComponentType<import("react-intl").WrappedComponentProps<string>>;
+};
 export default _default;
 import React from 'react';

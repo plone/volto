@@ -41,7 +41,7 @@ Please see our [CONTRIBUTING.md](../../CONTRIBUTING.md).
 
 ## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors.github.io#emoji-key)):
+Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/allcontributors.org#emoji-key)):
 
 <!-- START contributors generated instructions please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN yarn build-docs TO UPDATE -->
@@ -67,7 +67,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
   - **Contributions:** code, example, plugin
 <!-- END contributors generated instructions please keep comment here to allow auto update -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors.github.io) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/allcontributors.org) specification. Contributions of any kind welcome!
 
 ---
 

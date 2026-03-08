@@ -50,6 +50,7 @@ const Edit = React.memo(
   function areEquals(prevProps, nextProps) {
     return !(
       nextProps.selected !== prevProps.selected ||
+      nextProps.index !== prevProps.index ||
       !isEqual(prevProps.data, nextProps.data)
     );
   },

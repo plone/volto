@@ -25,6 +25,7 @@ import { Link } from 'react-router-dom';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import { isManager, canAssignGroup } from '@plone/volto/helpers/User/User';
+import { getErrorMessage } from '@plone/volto/helpers/Utils/Utils';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
@@ -351,9 +352,7 @@ const UsersControlpanel = () => {
           })
           .catch((error) => {
             // Handle error
-            setAddUserError(
-              error.response?.body?.error?.message || 'Error creating user',
-            );
+            setAddUserError(getErrorMessage(error));
           });
       }
     },
@@ -417,11 +416,11 @@ const UsersControlpanel = () => {
   /**
    * Handle Errors after createUser()
    *
-   * @param {object} error object. Requires the property .message
+   * @param {object} error object
    * @returns {undefined}
    */
   const onAddUserError = useCallback((error) => {
-    setAddUserError(error.response.body.error.message);
+    setAddUserError(getErrorMessage(error));
   }, []);
 
   /**
