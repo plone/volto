@@ -72,7 +72,7 @@ describe('TextBlockEdit', () => {
       users: {
         user: {},
         get: {
-          loading: false, 
+          loading: false,
           loaded: false,
           error: null,
         },

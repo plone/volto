@@ -70,7 +70,6 @@ export default defineConfig({
             `${projectRoot}/test-setup-globals.js`,
             `${projectRoot}/test-setup-config.jsx`,
             `${projectRoot}/test-addons-loader.js`,
-            `${projectRoot}/global-test-setup.js`
           ],
           globalSetup: `${projectRoot}/global-test-setup.js`,
         },
@@ -84,14 +83,15 @@ export default defineConfig({
         test: {
           name: 'volto-slate',
           root: '../volto-slate',
+          isolate: true,
           globals: true,
           environment: 'jsdom',
           setupFiles: [
             `${projectRoot}/test-setup-globals.js`,
             `${projectRoot}/test-setup-config.jsx`,
             `${projectRoot}/test-addons-loader.js`,
-            `${projectRoot}/global-test-setup.js`
           ],
+          globalSetup: `${projectRoot}/global-test-setup.js`,
         },
         resolve: {
           alias: voltoSlateAliases,
@@ -99,9 +99,6 @@ export default defineConfig({
         plugins: sharedPlugins,
       },
     ],
-    deps: {
-      moduleDirectories: ['node_modules'],
-    },
     snapshotFormat: { printBasicPrototype: false },
     coverage: {
       provider: 'v8',
