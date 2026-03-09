@@ -48,7 +48,7 @@ In which case, you should rename your custom implementation, or override Volto's
 Also review any components that depend on hidden accessibility elements to ensure visual and functional consistency.
 
 ```{seealso}
-[Add visually-hidden class #]()
+[Add visually-hidden class #7978](https://github.com/plone/volto/pull/7978)
 ```
 
 ### Cookieplone is now the recommended project and add-on generator for Volto 18
