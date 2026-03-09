@@ -1,0 +1,1 @@
+Aria-required and aria-invalid are added only if the field is required or contains errors, respectively - @Wagner3UB
