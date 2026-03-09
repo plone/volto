@@ -34,6 +34,23 @@ It is usually better and quicker to move your items into new locations and copy 
 
 (upgrade-18-cookieplone-label)=
 
+### New utility class `visually-hidden` for Volto 18
+
+```{versionadded} Volto 18.x.x
+```
+
+A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
+
+This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
+
+If your project, add-on, or custom theme already defines a `visually-hidden` class, or uses similar accessibility helpers, the new global definition may override or conflict with existing custom styles.
+In which case, you should rename your custom implementation, or override Volto's default, as needed.
+Also review any components that depend on hidden accessibility elements to ensure visual and functional consistency.
+
+```{seealso}
+[Add visually-hidden class #]()
+```
+
 ### Cookieplone is now the recommended project and add-on generator for Volto 18
 
 ```{versionadded} Volto 18.0.0-alpha.43
