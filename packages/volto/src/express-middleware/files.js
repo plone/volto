@@ -10,6 +10,7 @@ const HEADERS = [
   'x-sendfile',
   'x-accel-redirect',
   'x-robots-tag',
+  'cache-status',
 ];
 
 function filesMiddlewareFn(req, res, next) {
