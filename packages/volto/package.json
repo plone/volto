@@ -316,7 +316,7 @@
     "react-error-overlay": "6.0.9",
     "react-is": "^18.2.0",
     "release-it": "^19.0.4",
-    "resolve-url-loader": "^3.1.2",
+    "resolve-url-loader": "^5.0.0",
     "sass": "1.58.0",
     "sass-loader": "^10.0.3",
     "semver": "^7.5.4",
