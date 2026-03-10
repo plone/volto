@@ -73,7 +73,7 @@ export const View = ({
                 sizes={config.blocks.blocksConfig.image.getSizes(data)}
                 alt={data.alt || ''}
                 loading={isLCPBlock ? 'eager' : 'lazy'}
-                fetchpriority={isLCPBlock ? 'high' : 'low'}
+                fetchpriority={isLCPBlock ? 'high' : undefined}
                 responsive={true}
               />
             );

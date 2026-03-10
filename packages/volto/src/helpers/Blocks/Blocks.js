@@ -1029,6 +1029,41 @@ export const findContainer = (formData, { containerId }) => {
   return container;
 };
 
+export function getLCPBlockId(content) {
+  if (!hasBlocksData(content)) {
+    return null;
+  }
+
+  const blocksFieldname = getBlocksFieldname(content);
+  const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
+  const blocks = content[blocksFieldname];
+  const layoutItems = content[blocksLayoutFieldname]?.items || [];
+  const lcpEligibleBlocks = config.settings.lcpEligibleBlocks;
+
+  if (!lcpEligibleBlocks) return null;
+
+  for (const blockId of layoutItems) {
+    const block = blocks?.[blockId];
+    if (!block) continue;
+
+    const blockType = block['@type'];
+
+    if (blockType === 'gridBlock') {
+      const innerPath = getLCPBlockId(block);
+      if (innerPath && innerPath.length > 0) {
+        return [blockId, ...innerPath];
+      }
+      continue;
+    }
+
+    const isEligible = lcpEligibleBlocks[blockType];
+    if (typeof isEligible === 'function' && isEligible(block)) {
+      return [blockId];
+    }
+  }
+
+  return null;
+}
 /**
  * Finds parent container of the specified blockId in the given formData.
  *

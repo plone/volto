@@ -30,7 +30,7 @@ const RenderBlocks = (props) => {
   const intl = useIntl();
   const blocksConfig = props.blocksConfig || config.blocks.blocksConfig;
   const CustomTag = props.as || React.Fragment;
-  const lcpBlockId = getLCPBlockId(content);
+  const lcpBlockPath = props.lcpBlockPath ?? getLCPBlockId(content);
 
   const blockList = getBlocks(content);
 
@@ -81,7 +81,18 @@ const RenderBlocks = (props) => {
                   data={blockData}
                   path={getBaseUrl(location?.pathname || '')}
                   blocksConfig={blocksConfig}
-                  isLCPBlock={block === lcpBlockId}
+                  isLCPBlock={
+                    lcpBlockPath?.length > 0 &&
+                    lcpBlockPath[0] === block &&
+                    lcpBlockPath.length === 1
+                  }
+                  lcpBlockPath={
+                    lcpBlockPath?.length > 0 &&
+                    lcpBlockPath[0] === block &&
+                    lcpBlockPath.length > 1
+                      ? lcpBlockPath.slice(1)
+                      : null
+                  }
                 />
               </StyleWrapper>
             </MaybeWrap>
