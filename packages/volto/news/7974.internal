@@ -1,0 +1,1 @@
+Remove the `immutable` dependency, since it is not a direct dependency. @wesleybl

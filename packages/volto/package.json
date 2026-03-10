@@ -202,7 +202,6 @@
     "hoist-non-react-statics": "3.3.2",
     "http-proxy-middleware": "2.0.1",
     "image-extensions": "1.1.0",
-    "immutable": "3",
     "is-hotkey": "0.2.0",
     "is-url": "1.2.4",
     "jotai": "2.11.3",
