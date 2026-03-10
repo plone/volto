@@ -3,8 +3,7 @@
  * @module components/manage/Diff/Diff
  */
 
-import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useMemo } from 'react';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { useSelector, useDispatch } from 'react-redux';
 import filter from 'lodash/filter';
@@ -58,12 +57,11 @@ const messages = defineMessages({
  * @function Diff
  * @returns {JSX.Element}
  */
-function Diff(props) {
+function Diff() {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const isClient = useClient();
-  const isInitialMount = useRef(true);
   const intl = useIntl();
 
   const data = useSelector((state) => state.diff.data);
@@ -89,18 +87,7 @@ function Diff(props) {
     if (pathname && one && two) {
       dispatch(getDiff(getBaseUrl(pathname), one, two));
     }
-    isInitialMount.current = false;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      return;
-    }
-    if (pathname && one && two) {
-      dispatch(getDiff(getBaseUrl(pathname), one, two));
-    }
-  }, [pathname, one, two, dispatch]);
+  }, [pathname, one, two, type, dispatch]);
 
   /**
    * On select view handler
@@ -135,19 +122,23 @@ function Diff(props) {
     history.push(`${pathname}?one=${one}&two=${value}&view=${view}`);
   };
 
-  const versions = map(
-    filter(historyEntries, (entry) => 'version' in entry),
-    (entry, index) => ({
-      text: (
-        <>
-          {index === 0 ? 'Current' : entry.version}&nbsp;(
-          <FormattedDate date={entry.time} long className="text" />, &nbsp;
-          {entry.actor.fullname})
-        </>
+  const versions = useMemo(
+    () =>
+      map(
+        filter(historyEntries, (entry) => 'version' in entry),
+        (entry, index) => ({
+          text: (
+            <>
+              {index === 0 ? 'Current' : entry.version}&nbsp;(
+              <FormattedDate date={entry.time} long className="text" />, &nbsp;
+              {entry.actor.fullname})
+            </>
+          ),
+          value: `${entry.version}`,
+          key: `${entry.version}`,
+        }),
       ),
-      value: `${entry.version}`,
-      key: `${entry.version}`,
-    }),
+    [historyEntries],
   );
 
   return error?.status === 401 ? (
@@ -291,44 +282,5 @@ function Diff(props) {
     </Container>
   );
 }
-
-/**
- * Property types.
- * @property {Object} propTypes Property types.
- */
-Diff.propTypes = {
-  getDiff: PropTypes.func.isRequired,
-  getSchema: PropTypes.func.isRequired,
-  getHistory: PropTypes.func.isRequired,
-  schema: PropTypes.objectOf(PropTypes.any),
-  error: PropTypes.objectOf(PropTypes.any),
-  pathname: PropTypes.string.isRequired,
-  one: PropTypes.string.isRequired,
-  two: PropTypes.string.isRequired,
-  view: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string,
-    }),
-  ).isRequired,
-  historyEntries: PropTypes.arrayOf(
-    PropTypes.shape({
-      version: PropTypes.number,
-      time: PropTypes.string,
-      actor: PropTypes.shape({ fullname: PropTypes.string }),
-    }),
-  ).isRequired,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
-};
-
-/**
- * Default properties
- * @property {Object} defaultProps Default properties.
- */
-Diff.defaultProps = {
-  schema: null,
-};
 
 export default Diff;
