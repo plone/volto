@@ -38,6 +38,7 @@ const GridBlockView = (props) => {
           location={location}
           blocksConfig={blocksConfig}
           isContainer
+          lcpBlockPath={props.lcpBlockPath}
         />
       </Grid>
     </div>

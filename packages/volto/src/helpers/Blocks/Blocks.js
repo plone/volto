@@ -1038,21 +1038,31 @@ export function getLCPBlockId(content) {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(content);
   const blocks = content[blocksFieldname];
   const layoutItems = content[blocksLayoutFieldname]?.items || [];
+  const lcpEligibleBlocks = config.settings.lcpEligibleBlocks;
 
-  return (
-    find(layoutItems, (blockId) => {
-      const block = blocks?.[blockId];
-      if (!block) return false;
+  if (!lcpEligibleBlocks) return null;
 
-      const blockType = block['@type'];
-      const lcpEligibleBlocks = config.settings.lcpEligibleBlocks;
-      if (!lcpEligibleBlocks) return false;
+  for (const blockId of layoutItems) {
+    const block = blocks?.[blockId];
+    if (!block) continue;
 
-      const isEligible = lcpEligibleBlocks[blockType];
+    const blockType = block['@type'];
 
-      return typeof isEligible === 'function' && isEligible(block);
-    }) || null
-  );
+    if (blockType === 'gridBlock') {
+      const innerPath = getLCPBlockId(block);
+      if (innerPath && innerPath.length > 0) {
+        return [blockId, ...innerPath];
+      }
+      continue;
+    }
+
+    const isEligible = lcpEligibleBlocks[blockType];
+    if (typeof isEligible === 'function' && isEligible(block)) {
+      return [blockId];
+    }
+  }
+
+  return null;
 }
 /**
  * Finds parent container of the specified blockId in the given formData.
