@@ -5,7 +5,7 @@
 
 # @plone/razzle-dev-utils
 
-This package includes some utilties used by [Razzle](https://github.com/jaredpalmer/razzle)
+This package includes some utilities used by [Razzle](https://github.com/jaredpalmer/razzle)
 
 ## Usage in Razzle Projects
 

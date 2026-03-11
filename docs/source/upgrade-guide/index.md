@@ -117,11 +117,10 @@ Finally, update your add-on file {file}`babel.config.js`.
 
 `@plone/razzle-dev-utils` is a maintained fork of the original `razzle-dev-utils` package that contains Volto-specific fixes and patches.
 
-To verify whether your project requires updates, search for any direct references to internal `razzle` modules:
+To verify whether your project requires updates, search for any direct references to internal `razzle-dev-utils` modules:
 
 ```shell
-grep -R "require.*razzle-dev-utils/" -n --exclude-dir=node_modules || true
-grep -R "from.*razzle-dev-utils/" -n --exclude-dir=node_modules || true
+grep -R "razzle-dev-utils" -n --exclude-dir=node_modules || true
 ```
 
 ### `pnpm` has been upgraded to version 10
