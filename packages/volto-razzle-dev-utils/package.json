@@ -9,6 +9,7 @@
     "directory": "packages/volto-razzle-dev-utils"
   },
   "license": "MIT",
+  "type": "commonjs",
   "files": [
     "logger.js",
     "printErrors.js",
