@@ -69,7 +69,7 @@
     "@plone/babel-preset-razzle": "workspace:*",
     "html-webpack-plugin": "~4||~5",
     "mini-css-extract-plugin": "2.7.2",
-    "razzle-dev-utils": "4.2.18",
+    "@plone/razzle-dev-utils": "workspace:*",
     "webpack": "~4||~5",
     "webpack-dev-server": "^3.11.0||~4"
   },
