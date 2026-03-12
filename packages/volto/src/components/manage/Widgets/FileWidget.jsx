@@ -59,9 +59,9 @@ const messages = defineMessages({
     id: 'File is not of the accepted type {accept}',
     defaultMessage: 'File is not of the accepted type {accept}',
   },
-  dragAndDropActionA11y: {
-    id: 'Press Enter to browse files from your computer.',
-    defaultMessage: 'Press Enter to browse files from your computer.',
+  requiredField: {
+    id: 'This field is required.',
+    defaultMessage: 'This field is required.',
   },
 });
 
@@ -205,18 +205,24 @@ const FileWidget = (props) => {
               </div>
             )}
 
-            <label className="label-file-widget-input">
+            <Button
+              className="label-file-widget-input"
+              tabIndex={-1}
+              aria-label={
+                props.required
+                  ? `${value ? intl.formatMessage(messages.replaceFile) : intl.formatMessage(messages.addNewFile)}. (${intl.formatMessage(messages.requiredField)})`
+                  : null
+              }
+            >
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
-              <span className="visually-hidden">
-                {intl.formatMessage(messages.dragAndDropActionA11y)}
-              </span>
-            </label>
+            </Button>
             <input
               {...getInputProps({
                 type: 'file',
                 style: { display: 'none' },
+                'aria-required': props.required, // ← AQUI!
               })}
               id={`field-${id}`}
               name={id}
