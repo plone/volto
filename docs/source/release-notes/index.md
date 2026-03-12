@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.32.4 (2026-03-12)
+
+### Feature
+
+- If a delete operation fails, display the error message returned by the API (if any). @cekk [#7888](https://github.com/plone/volto/issues/7888)
+
+### Bugfix
+
+- Update the users controlpanel to be compatible with the new response format of the users endpoint introduced in https://github.com/plone/plone.restapi/pull/1971. @jnptk 
+
+### Internal
+
+- Remove the `immutable` dependency, since it is not a direct dependency. @wesleybl [#7974](https://github.com/plone/volto/issues/7974)
+- Update pnpm to 9.15.9. @wesleybl [#7975](https://github.com/plone/volto/issues/7975)
+- Revert: "Backport #7672: Convert FormFieldWrapper to functional component (18.x.x)" @sneridagh [#7994](https://github.com/plone/volto/issues/7994)
+- Update dependencies: webpack 5.105.4 @davisagli 
+
 ## 18.32.3 (2026-03-04)
 
 ### Bugfix
