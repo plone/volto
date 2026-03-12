@@ -3,13 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2026-02-24 10:09+0000\n"
+"Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-slate-18/nl/>\n"
+"Language: nl\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: editor/plugins/Link/index
 msgid "Add link"
@@ -79,7 +80,7 @@ msgstr "Kolom links invoegen"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr "Rij onder toevoegen"
+msgstr "Rij onder invoegen"
 
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
