@@ -1,1 +1,1 @@
-Requirement aria attributes added to date and time inputs on 'DatetimeWidget' - @Wagner3UB
+Added required ARIA attributes to date and time inputs on `DatetimeWidget`. @Wagner3UB
