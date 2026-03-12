@@ -6,6 +6,7 @@
 [Bb]ackend
 CommonJS
 JavaScript
+Node\.js
 npm
 nvm
 Pastanaga
