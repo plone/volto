@@ -85,6 +85,7 @@ const validateRequiredFields = (
       schema.properties[requiredField] &&
       schema.properties[requiredField].type !== 'boolean' &&
       !schema.properties[requiredField].readonly &&
+      !formData.open_end &&
       isEmpty
     ) {
       errors[requiredField] = [];
