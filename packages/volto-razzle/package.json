@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.6.2",
     "autoprefixer": "^10.2.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-define": "^2.0.0",
