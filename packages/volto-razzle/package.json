@@ -62,8 +62,8 @@
     "webpackbar": "~4||~5"
   },
   "devDependencies": {
-    "vitest": "^3.0.4",
-    "jsdom": "^16.7.0"
+    "vitest": "catalog:",
+    "jsdom": "catalog:"
   },
   "peerDependencies": {
     "@plone/babel-preset-razzle": "workspace:*",
