@@ -155,6 +155,19 @@ make install
 ```
 
 
+(developing-core-when-changing-dependencies-label)=
+
+### When you change a dependency
+
+Whenever you add, remove, or update a dependency in {file}`package.json` (in the repository root or in any workspace under {file}`packages/`), you must:
+
+1.  Run `make install` from the repository root.
+2.  Commit the updated {file}`pnpm-lock.yaml` file.
+
+If you skip this, the lockfile will be out of date and tests may fail locally and in continuous integration.
+New contributors should run `make install` after pulling changes that touch dependencies or the lockfile.
+
+
 (develop-volto-start-plone-label)=
 
 ## Start Plone
