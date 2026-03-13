@@ -3,6 +3,7 @@ import {
   composeRenderProps,
   Button as RACButton,
   type ButtonProps as RACButtonProps,
+  type ButtonRenderProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { focusRing } from '../utils';
@@ -141,14 +142,16 @@ export function Button(props: ButtonProps) {
   return (
     <RACButton
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        button({
-          ...renderProps,
-          variant: props.variant,
-          size: props.size,
-          accent: props.accent,
-          className,
-        }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: ButtonRenderProps) =>
+          button({
+            ...renderProps,
+            variant: props.variant,
+            size: props.size,
+            accent: props.accent,
+            className,
+          }),
       )}
     />
   );

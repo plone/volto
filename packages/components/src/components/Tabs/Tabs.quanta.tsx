@@ -9,6 +9,10 @@ import {
   type TabListProps as RACTabListProps,
   type TabsProps as RACTabsProps,
   type TabPanelProps as RACTabPanelProps,
+  type TabListRenderProps,
+  type TabRenderProps,
+  type TabPanelRenderProps,
+  type TabsRenderProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { focusRing } from '../utils';
@@ -42,8 +46,10 @@ export function TabList<T extends object>(props: RACTabListProps<T>) {
   return (
     <RACTabList
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        tabListStyles({ ...renderProps, className }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: TabListRenderProps) =>
+          tabListStyles({ ...renderProps, className }),
       )}
     />
   );
@@ -84,8 +90,10 @@ export function Tab(props: RACTabProps) {
   return (
     <RACTab
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        tabProps({ ...renderProps, className }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: TabRenderProps) =>
+          tabProps({ ...renderProps, className }),
       )}
     />
   );
@@ -103,8 +111,10 @@ export function TabPanel(props: RACTabPanelProps) {
   return (
     <RACTabPanel
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        tabPanelStyles({ ...renderProps, className }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: TabPanelRenderProps) =>
+          tabPanelStyles({ ...renderProps, className }),
       )}
     />
   );
@@ -115,18 +125,20 @@ export function Tabs(props: TabsProps) {
     <RACTabs
       {...props}
       orientation={props.orientation || 'horizontal'}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        tabs({
-          ...renderProps,
-          orientation: props.orientation,
-          className,
-        }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: TabsRenderProps) =>
+          tabs({
+            ...renderProps,
+            orientation: props.orientation,
+            className,
+          }),
       )}
     >
       <TabList
         className={composeRenderProps(
           props.className,
-          (className, renderProps) =>
+          (className: string, renderProps: TabListRenderProps) =>
             tabListStyles({
               ...renderProps,
               orientation: props.orientation || 'horizontal',

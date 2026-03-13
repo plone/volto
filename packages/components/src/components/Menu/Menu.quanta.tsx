@@ -14,6 +14,7 @@ import {
   type MenuProps as RACMenuProps,
   type MenuTriggerProps,
   type PressEvent,
+  type MenuItemRenderProps,
 } from 'react-aria-components';
 import { Popover, type PopoverProps } from '../Popover/Popover.quanta';
 import { CheckboxIcon, ChevronrightIcon } from '../../components/icons';
@@ -105,7 +106,7 @@ export interface MenuItemProps extends RACMenuItemProps {
 
 export interface MenuButtonProps<T>
   extends RACMenuProps<T>,
-    Omit<MenuTriggerProps, 'children'> {
+  Omit<MenuTriggerProps, 'children'> {
   button?: React.ReactNode;
   onPress?: (e: PressEvent) => void;
 
@@ -123,22 +124,27 @@ export function MenuItem(props: MenuItemProps) {
       textValue={textValue}
       {...props}
       id={props.item?.id}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        dropdownItemStyles({
-          ...renderProps,
-          hasDescription: !!props.item.description,
-          hasIcon: !!props.item?.icon,
-          hasKeyboard: !!props.item?.keyboard,
-          isDisabled: props.item?.disabled,
-          selectionMode: props?.selectionMode,
-          hasHref: !!props.item?.href,
-          className,
-        }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: MenuItemRenderProps) =>
+          dropdownItemStyles({
+            ...renderProps,
+            hasDescription: !!props.item.description,
+            hasIcon: !!props.item?.icon,
+            hasKeyboard: !!props.item?.keyboard,
+            isDisabled: props.item?.disabled,
+            selectionMode: props?.selectionMode,
+            hasHref: !!props.item?.href,
+            className,
+          }),
       )}
     >
       {composeRenderProps(
         props.children,
-        (children, { selectionMode, isSelected, hasSubmenu }) => (
+        (
+          children: React.ReactNode,
+          { selectionMode, isSelected, hasSubmenu }: MenuItemRenderProps,
+        ) => (
           <>
             {selectionMode !== 'none' && (
               <span className="flex w-4 items-center">

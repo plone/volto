@@ -9,6 +9,7 @@ import {
   type TagListProps,
   Text,
   composeRenderProps,
+  type TagRenderProps,
 } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
@@ -60,7 +61,7 @@ const tagStyles = tv({
 
 export interface TagGroupProps<T>
   extends Omit<AriaTagGroupProps, 'children'>,
-    Pick<TagListProps<T>, 'items' | 'children' | 'renderEmptyState'> {
+  Pick<TagListProps<T>, 'items' | 'children' | 'renderEmptyState'> {
   color?: Color;
   label?: string;
   description?: string;
@@ -120,8 +121,10 @@ export function Tag({ children, color, ...props }: TagProps) {
     <AriaTag
       textValue={textValue}
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        tagStyles({ ...renderProps, className, color: color || groupColor }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: TagRenderProps) =>
+          tagStyles({ ...renderProps, className, color: color || groupColor }),
       )}
     >
       {({ allowsRemoving }) => (
