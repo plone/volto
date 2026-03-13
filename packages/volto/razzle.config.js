@@ -26,6 +26,9 @@ const languages = require('./src/constants/Languages.cjs');
 const packageJson = require(path.join(projectRootPath, 'package.json'));
 const { registry } = AddonRegistry.init(projectRootPath);
 
+console.log('[razzle.config.js] POLICY_PACKAGE:', process.env.POLICY_PACKAGE);
+console.log('[razzle.config.js] Registered addons:', registry.getAddons().map(a => a.name));
+
 const defaultModify = ({
   env: { target, dev },
   webpackConfig: config,
@@ -35,6 +38,15 @@ const defaultModify = ({
 }) => {
   // Compile language JSON files from po files
   poToJson({ registry, addonMode: false });
+
+  // Add unique cache name based on POLICY_PACKAGE to isolate webpack caches
+  const policyPackage = process.env.POLICY_PACKAGE || 'default';
+  const cacheSuffix = policyPackage.replace(/[^a-z0-9]/gi, '-');
+  
+  if (config.cache && typeof config.cache === 'object') {
+    config.cache.name = `${config.cache.name || 'default'}-${cacheSuffix}`;
+    console.log(`[razzle.config.js] Using webpack cache name: ${config.cache.name}`);
+  }
 
   if (dev) {
     config.plugins.unshift(
@@ -273,12 +285,36 @@ const defaultModify = ({
     addonsFromEnvVar = process.env.ADDONS.split(';');
   }
 
+  // Ensure .plone directory exists
+  const ploneDir = path.join(__dirname, '.plone');
+  if (!fs.existsSync(ploneDir)) {
+    fs.mkdirSync(ploneDir, { recursive: true });
+  }
+
+  // Create unique addons loader per POLICY_PACKAGE to prevent cross-contamination
+  // Use policyPackage and cacheSuffix from above
   const addonsLoaderPath = createAddonsLoader(
     registry.getAddonDependencies(),
     registry.getAddons(),
     // The load of the project config is deprecated and will be removed in Volto 19.
-    { loadProjectConfig: true },
+    { 
+      loadProjectConfig: true,
+      tempInProject: true, // Create it in .plone directory with unique name
+    },
   );
+  
+  // Replace the generic filename with a policy-specific one
+  const uniqueAddonsLoaderPath = addonsLoaderPath.replace(
+    'registry.loader.js',
+    `registry.loader-${cacheSuffix}.js`
+  );
+  
+  // Rename the file to be unique per policy
+  if (fs.existsSync(addonsLoaderPath) && addonsLoaderPath !== uniqueAddonsLoaderPath) {
+    fs.renameSync(addonsLoaderPath, uniqueAddonsLoaderPath);
+  }
+  
+  console.log(`[razzle.config.js] Using addons loader: ${uniqueAddonsLoaderPath}`);
 
   config.resolve.plugins = [
     new RelativeResolverPlugin(registry),
@@ -292,7 +328,7 @@ const defaultModify = ({
     ...config.resolve.alias,
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
-    'load-volto-addons': addonsLoaderPath,
+    'load-volto-addons': uniqueAddonsLoaderPath,
     ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
     // to be able to reference path uncustomized by webpack
@@ -332,7 +368,21 @@ const defaultModify = ({
 
   let addonsAsExternals = [];
 
-  const { include } = options.webpackOptions.babelRule;
+  // Make babel cache unique per POLICY_PACKAGE (using cacheSuffix from above)
+  const { include, use } = options.webpackOptions.babelRule;
+  if (use && use[0] && use[0].options) {
+    if (use[0].options.cacheDirectory) {
+      use[0].options.cacheDirectory = use[0].options.cacheDirectory.replace(
+        /razzle-babel-loader$/,
+        `razzle-babel-loader-${cacheSuffix}`
+      );
+      console.log(`[razzle.config.js] Using babel cache: ${use[0].options.cacheDirectory}`);
+    }
+    if (use[0].options.cacheIdentifier) {
+      use[0].options.cacheIdentifier += `-policy-${cacheSuffix}`;
+    }
+  }
+  
   if (packageJson.name !== '@plone/volto') {
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
@@ -443,6 +493,34 @@ module.exports = {
   modifyJestConfig: ({ jestConfig }) => {
     jestConfig.testEnvironment = 'jsdom';
     return jestConfig;
+  },
+  modifyPaths: ({ paths, options }) => {
+    // Create separate build directories based on POLICY_PACKAGE
+    const policyPackage = process.env.POLICY_PACKAGE || 'default';
+    const buildSuffix = policyPackage.replace(/[^a-z0-9]/gi, '-');
+    
+    console.log(`[razzle.config.js] Using build directory: build-${buildSuffix}`);
+    
+    return {
+      ...paths,
+      appBuild: paths.appBuild.replace(/build$/, `build-${buildSuffix}`),
+      appBuildPublic: paths.appBuildPublic.replace(
+        /build\/public$/,
+        `build-${buildSuffix}/public`
+      ),
+      appAssetsManifest: paths.appAssetsManifest.replace(
+        /build\/assets\.json$/,
+        `build-${buildSuffix}/assets.json`
+      ),
+      appBuildStaticExport: paths.appBuildStaticExport.replace(
+        /build\//,
+        `build-${buildSuffix}/`
+      ),
+      appBuildStaticExportRoutes: paths.appBuildStaticExportRoutes.replace(
+        /build\//,
+        `build-${buildSuffix}/`
+      ),
+    };
   },
   modifyWebpackConfig: ({
     env: { target, dev },
