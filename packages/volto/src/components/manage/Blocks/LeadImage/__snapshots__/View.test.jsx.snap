@@ -7,6 +7,7 @@ exports[`renders a view image component 1`] = `
   <img
     alt=""
     className=""
+    fetchpriority="low"
     imageField="image"
     item={
       {
@@ -24,6 +25,7 @@ exports[`renders a view image component 1`] = `
         },
       }
     }
+    loading="lazy"
     responsive={true}
   />
 </p>
