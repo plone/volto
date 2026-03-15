@@ -1,4 +1,5 @@
 import { reactRouter } from '@react-router/dev/vite';
+import path from 'node:path';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig, PluginOption } from 'vite';
 import { reactRouterDevTools } from 'react-router-devtools';
@@ -11,6 +12,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig(({ isSsrBuild }) => {
   const analyze = process.env.ANALYZE === 'true';
   const target = isSsrBuild ? 'server' : 'client';
+  const statsDir = path.resolve(__dirname, 'build', 'stats');
 
   return {
     plugins: [
@@ -30,13 +32,13 @@ export default defineConfig(({ isSsrBuild }) => {
       ...(analyze
         ? [
             visualizer({
-              filename: `stats-${target}.html`,
+              filename: path.join(statsDir, `stats-${target}.html`),
               template: 'treemap',
               gzipSize: true,
               brotliSize: true,
             }),
             visualizer({
-              filename: `stats-${target}.json`,
+              filename: path.join(statsDir, `stats-${target}.json`),
               template: 'raw-data',
               gzipSize: true,
               brotliSize: true,
