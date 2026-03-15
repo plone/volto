@@ -1,6 +1,6 @@
 import type { BlockEditProps } from '@plone/types';
 import { PlateEditor, type Value } from '@plone/plate/components/editor';
-import plateBlockConfig from '@plone/plate/config/presets/block';
+import plateBlockConfig from '@plone/plate/config/presets/block-editor';
 import { useStablePlateValue } from '../hooks/use-stable-plate-value';
 
 const TextBlockEdit = (props: BlockEditProps) => {
@@ -9,7 +9,7 @@ const TextBlockEdit = (props: BlockEditProps) => {
 
   return (
     <PlateEditor
-      editorConfig={plateBlockConfig.editorConfig}
+      editorConfig={plateBlockConfig}
       value={stableValue}
       onChange={(options) => {
         setBlock({ ...data, value: options.value });

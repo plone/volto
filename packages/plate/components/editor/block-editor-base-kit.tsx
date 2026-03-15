@@ -9,9 +9,9 @@ import { BaseFontKit } from './plugins/font-base-kit';
 import { BaseLineHeightKit } from './plugins/line-height-base-kit';
 import { BaseLinkKit } from './plugins/link-base-kit';
 import { BaseListKit } from './plugins/list-base-kit';
-import { MarkdownKit } from './plugins/markdown-kit';
 import { BaseMediaKit } from './plugins/media-base-kit';
 import { BaseMentionKit } from './plugins/mention-base-kit';
+import { BaseBlockWidthKit } from './plugins/block-width-base-kit';
 import { BaseSuggestionKit } from './plugins/suggestion-base-kit';
 import { BaseTableKit } from './plugins/table-base-kit';
 import { BaseTocKit } from './plugins/toc-base-kit';
@@ -33,7 +33,7 @@ export const BlockBaseEditorKit = [
   ...BaseListKit,
   ...BaseAlignKit,
   ...BaseLineHeightKit,
+  ...BaseBlockWidthKit,
   ...BaseCommentKit,
   ...BaseSuggestionKit,
-  ...MarkdownKit,
 ];

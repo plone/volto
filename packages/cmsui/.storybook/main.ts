@@ -6,6 +6,7 @@ const config: StorybookConfig = {
   // For some reason the property does not allow negation
   // https://github.com/storybookjs/storybook/issues/11181#issuecomment-1535288804
   stories: ['../**/*.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
+  staticDirs: ['./static'],
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/react-vite',

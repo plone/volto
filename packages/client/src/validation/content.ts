@@ -73,7 +73,23 @@ export const createContentDataSchema = z.object({
   effective: z.string().nullable().optional(),
   exclude_from_nav: z.boolean().optional(),
   expires: z.string().nullable().optional(),
+  file: z
+    .object({
+      'content-type': z.string(),
+      data: z.string(),
+      encoding: z.string(),
+      filename: z.string(),
+    })
+    .optional(),
   id: z.string().optional(),
+  image: z
+    .object({
+      'content-type': z.string(),
+      data: z.string(),
+      encoding: z.string(),
+      filename: z.string(),
+    })
+    .optional(),
   language: z.string().optional(),
   preview_caption: z.string().optional(),
   preview_image: z
