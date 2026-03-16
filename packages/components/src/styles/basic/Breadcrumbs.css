@@ -14,11 +14,18 @@
       vertical-align: middle;
     }
 
+    .react-aria-Breadcrumb > .react-aria-Link:has(button) + svg {
+      position: relative;
+      top: 2px;
+    }
+
     .react-aria-Breadcrumb svg {
       display: inline;
     }
 
-    .react-aria-Breadcrumb:not(:last-child):not(:has(a + svg))::after {
+    .react-aria-Breadcrumb:not(:last-child):not(
+        :has(.react-aria-Link + svg)
+      )::after {
       padding: 0 5px;
       alt: ' ';
       content: '›';
