@@ -829,6 +829,11 @@ msgstr "Gurasoetan dauden eduki erregelak"
 msgid "Content that links to or references {title}"
 msgstr "{title} elementuari esteka edo erreferentzia egiten dion edukia"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Edukiaren izenburua"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
