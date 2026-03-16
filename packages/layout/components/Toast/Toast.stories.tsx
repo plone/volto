@@ -1,8 +1,7 @@
-import React from 'react';
 import Toast from './Toast';
 import config from '@plone/registry';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Toast',

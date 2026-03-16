@@ -1,5 +1,3 @@
-'use client';
-
 import { CalloutPlugin } from '@udecode/plate-callout/react';
 import { DocxPlugin } from '@udecode/plate-docx';
 import { HighlightPlugin } from '@udecode/plate-highlight/react';
@@ -8,7 +6,7 @@ import { KbdPlugin } from '@udecode/plate-kbd/react';
 import { ColumnPlugin } from '@udecode/plate-layout/react';
 // import { SlashPlugin } from '@udecode/plate-slash-command/react';
 import { TogglePlugin } from '@udecode/plate-toggle/react';
-import { TrailingBlockPlugin } from '@udecode/plate-trailing-block';
+// import { TrailingBlockPlugin } from '@udecode/plate-trailing-block';
 // import { FixedToolbarPlugin } from '@plone/plate/components/editor/plugins/fixed-toolbar-plugin';
 import { FloatingToolbarPlugin } from '../../editor/plugins/floating-toolbar-plugin';
 // import { BlockDiscussion } from '@plone/plate/components/plate-ui/block-discussion';

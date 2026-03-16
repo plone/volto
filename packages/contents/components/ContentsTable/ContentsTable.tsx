@@ -485,18 +485,18 @@ export function ContentsTable({
       className="folder-contents"
       // aria-live="polite"
     >
-      <article id="content" className="mx-auto px-4 py-2 lg:px-8">
+      <article id="content" className={`mx-auto px-4 py-2 lg:px-8`}>
         <Topbar>
           <div className="title-block flex-auto">
             <Breadcrumbs
               items={breadcrumbs}
-              className="text-quanta-sapphire contents-breadcrumbs"
+              className="contents-breadcrumbs text-quanta-sapphire"
             >
               {(item) => (
                 <Breadcrumb
                   id={item['@id']}
                   href={item['@id']}
-                  className="text-quanta-sapphire decoration-quanta-sapphire/50 hover:decoration-quanta-sapphire"
+                  className={`text-quanta-sapphire decoration-quanta-sapphire/50 hover:decoration-quanta-sapphire`}
                 >
                   {item.title}
                 </Breadcrumb>
@@ -504,7 +504,9 @@ export function ContentsTable({
             </Breadcrumbs>
             <h1 className="text-2xl font-bold">{title}</h1>
           </div>
-          <div className="group ms-auto flex flex-shrink-0 flex-grow basis-0 flex-wrap-reverse items-center justify-end gap-4 self-end">
+          <div
+            className={`group ms-auto flex flex-shrink-0 flex-grow basis-0 flex-wrap-reverse items-center justify-end gap-4 self-end`}
+          >
             {!isMobileScreenSize && (
               <ContentsActions
                 upload={upload}
@@ -534,7 +536,7 @@ export function ContentsTable({
               <DialogTrigger>
                 <Button
                   variant="primary"
-                  className="bg-quanta-sapphire hover:bg-quanta-royal text-quanta-air hover:text-quanta-air active:text-quanta-air focus:text-quanta-air cursor-pointer rounded-full border-0 p-1.5 outline-offset-2"
+                  className={`cursor-pointer rounded-full border-0 bg-quanta-sapphire p-1.5 text-quanta-air outline-offset-2 hover:bg-quanta-royal hover:text-quanta-air focus:text-quanta-air active:text-quanta-air`}
                 >
                   <AddIcon />
                 </Button>

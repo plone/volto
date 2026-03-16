@@ -6,7 +6,9 @@
 import path from 'path';
 import { AddonRegistry } from '@plone/registry/addon-registry';
 import { createAddonsLoader } from '@plone/registry/create-addons-loader';
+import { createAddonsServerLoader } from '@plone/registry/create-addons-loader-server';
 import { createAddonsStyleLoader } from '@plone/registry/create-addons-styles-loader';
+import { createAddonsLocalesLoader } from '@plone/registry/create-addons-locales-loader';
 
 function initPloneRegistryLoaders() {
   const projectRootPath = path.resolve('.');
@@ -17,8 +19,12 @@ function initPloneRegistryLoaders() {
     registry.getAddons(),
     { tempInProject: true },
   );
-
+  createAddonsServerLoader(
+    registry.getAddonDependencies(),
+    registry.getAddons(),
+  );
   createAddonsStyleLoader(registry);
+  createAddonsLocalesLoader(registry);
 
   return { registry, shadowAliases, addonsLoaderPath };
 }

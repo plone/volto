@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { withRef } from '@udecode/cn';
 import { indentListItems, unindentListItems } from '@udecode/plate-list';
 import { useEditorRef } from '@udecode/plate/react';

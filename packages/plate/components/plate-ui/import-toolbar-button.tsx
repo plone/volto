@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
@@ -26,8 +24,9 @@ export function ImportToolbarButton({ children, ...props }: DropdownMenuProps) {
   const editor = useEditorRef();
   const openState = useOpenState();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [type, setType] = React.useState<ImportType>('html');
-  const accept = type === 'html' ? ['text/html'] : ['.md'];
+  // const accept = type === 'html' ? ['text/html'] : ['.md'];
 
   const getFileNodes = (text: string, type: ImportType) => {
     if (type === 'html') {

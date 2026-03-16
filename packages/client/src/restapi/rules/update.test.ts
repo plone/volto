@@ -3,7 +3,6 @@ import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 
 import PloneClient from '../../client';
 import { v4 as uuid } from 'uuid';
-import { createRule } from './create';
 
 const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',

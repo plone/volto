@@ -1,7 +1,7 @@
 import React from 'react';
 import { GridList, GridListItem } from './GridList';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/GridList',

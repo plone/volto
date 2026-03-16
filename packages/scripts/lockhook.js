@@ -124,7 +124,7 @@ if (!LOCKHOOK_BYPASS) {
         );
         try {
           execa.sync(command, commandargs, { stdio: 'inherit' });
-        } catch (err) {
+        } catch {
           console.warn(`Running ${command} ${commandargs.join(' ')} failed`);
         }
       }

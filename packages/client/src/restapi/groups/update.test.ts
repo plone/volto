@@ -31,7 +31,7 @@ describe('Update Group', () => {
     const updateGroupData = {
       description: 'changed description',
     };
-    const result = await cli.updateGroup({
+    await cli.updateGroup({
       groupId: groupData.groupname,
       data: updateGroupData,
     });

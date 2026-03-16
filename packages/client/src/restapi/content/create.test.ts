@@ -20,7 +20,6 @@ afterEach(async () => {
 
 describe('createContent', () => {
   test('Successful', async () => {
-    const path = '/';
     const data: CreateContentArgs['data'] = {
       '@type': 'Document',
       title: 'My Page',

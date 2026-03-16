@@ -1,6 +1,4 @@
-'use client';
-
-import React, { type ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
 
 import { cn } from '@udecode/cn';
 import {
@@ -58,7 +56,10 @@ export function ColorCustom({
                 size: 'icon',
                 variant: 'outline',
               }),
-              'absolute top-1.5 right-2 bottom-2 flex size-7 items-center justify-center rounded-full',
+              `
+                absolute top-1.5 right-2 bottom-2 flex size-7 items-center justify-center
+                rounded-full
+              `,
             )}
             {...menuItemProps}
           >

@@ -7,4 +7,11 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0-alpha.2 (2025-09-29)
+
+### Internal
+
+- Adjust peer dependencies and engine. @sneridagh
+
 ## 1.0.0 (unreleased)

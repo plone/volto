@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextAreaField } from './TextAreaField';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof TextAreaField> = {
   title: 'Basic/Forms/TextAreaField',

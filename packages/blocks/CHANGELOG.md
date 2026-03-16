@@ -8,6 +8,27 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2025-09-29)
+
+### Breaking
+
+- Remove circular dependency on layout<->blocks.
+  Breaking: The `RenderBlocks` set of components are now under `@plone/layout/blocks`.
+  Adjust the imports accordingly. @sneridagh [#7372](https://github.com/plone/volto/pull/7372)
+
+### Feature
+
+- Implement the BMv3 changes from the blocks edit PR. @sneridagh [#6393](https://github.com/plone/volto/pull/6393)
+- Add Image component and use it in Teaser block. @avoinea [#6689](https://github.com/plone/volto/pull/6689)
+- Improve unified `BlockWrapper`, block model v3 compatible. @danalvrz @sneridagh [#7228](https://github.com/plone/volto/pull/7228)
+- Order blocks config into the accepted "best practice" for it. @sneridagh [#7346](https://github.com/plone/volto/pull/7346)
+
+### Internal
+
+- Adapt import to the rearrangement of the @plone/components package structure. @sneridagh [#7185](https://github.com/plone/volto/pull/7185)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/pull/7298)
+- Adjust peer dependencies and engine. @sneridagh
+
 ## 1.0.0-alpha.4 (2025-05-24)
 
 ### Feature

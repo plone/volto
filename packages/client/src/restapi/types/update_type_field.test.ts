@@ -40,7 +40,7 @@ describe('Update Type', () => {
       title: `Sample info${randomId}`,
     };
 
-    const result = await cli.updateTypeField({
+    await cli.updateTypeField({
       contentPath,
       data: updateTypeFieldData,
     });

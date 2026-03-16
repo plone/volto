@@ -10,6 +10,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const token = await getAuthFromRequest(request);
 
   if (token) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const cli = config
       .getUtility({
         name: 'ploneClient',

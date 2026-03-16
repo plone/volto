@@ -1,20 +1,13 @@
 import React from 'react';
 import { BlockToolbar } from './BlockToolbar';
-import {
-  Button,
-  Checkbox,
-  Group,
-  Separator,
-  Text,
-  ToggleButton,
-} from 'react-aria-components';
+import { Group, Separator, Text, ToggleButton } from 'react-aria-components';
 import { Menu, MenuItem } from '../Menu/Menu';
 
 import { BoldIcon } from '../icons/BoldIcon';
 import { ItalicIcon } from '../icons/ItalicIcon';
 import { LinkIcon } from '../icons/LinkIcon';
 
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { SettingsIcon } from '../icons/SettingsIcon';
 import { RowbeforeIcon } from '../icons/RowbeforeIcon';
 import { RowafterIcon } from '../icons/RowafterIcon';

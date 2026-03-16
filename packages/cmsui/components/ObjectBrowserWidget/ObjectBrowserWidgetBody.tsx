@@ -21,13 +21,13 @@ export function ObjectBrowserWidgetBody() {
   const { currentPath, navigateTo, goBack, canGoBack } =
     useObjectBrowserNavigation();
   const {
-    open,
-    setOpen,
+    // open,
+    // setOpen,
     searchMode,
     setSearchMode,
     SearchableText,
-    handleSearchInputChange,
-    title,
+    // handleSearchInputChange,
+    // title,
     loading,
     items,
     breadcrumbs,
@@ -151,8 +151,18 @@ export function ObjectBrowserWidgetBody() {
           // Todo: better styling
           className={
             viewMode
-              ? 'group data-[layout="grid"] grid h-fit grid-cols-2 gap-4 border-0 py-4 [&_label[slot="selection"]]:hidden [&>div]:rounded-lg [&>div]:p-0 [&>div]:transition-all [&>div]:duration-200'
-              : 'group [&>div]:border-b-quanta-silver data-[layout="stack"] my-4 flex h-full flex-col divide-y divide-gray-200 rounded-none border-0 [&_img]:hidden [&>div]:h-12 [&>div]:rounded-none [&>div]:border-b-2 [&>div]:first:rounded-t-none [&>div]:last:rounded-b-none'
+              ? `
+                group data-[layout="grid"] grid h-fit grid-cols-2 gap-4 border-0 py-4
+                [&_label[slot="selection"]]:hidden
+                [&>div]:rounded-lg [&>div]:p-0 [&>div]:transition-all [&>div]:duration-200
+              `
+              : `
+                group data-[layout="stack"] my-4 flex h-full flex-col divide-y divide-gray-200
+                rounded-none border-0
+                [&_img]:hidden
+                [&>div]:h-12 [&>div]:rounded-none [&>div]:border-b-2 [&>div]:border-b-quanta-silver
+                [&>div]:first:rounded-t-none [&>div]:last:rounded-b-none
+              `
           }
           onSelectionChange={handleSelectionChange}
           selectedKeys={selectedItems}
@@ -162,7 +172,7 @@ export function ObjectBrowserWidgetBody() {
                 {t('cmsui.objectbrowserwidget.loading')}
               </div>
             ) : searchMode && !SearchableText ? (
-              <div className="bg-quanta-silver h-full w-full rounded-lg"></div>
+              <div className="h-full w-full rounded-lg bg-quanta-silver"></div>
             ) : (
               <div className="py-8 text-center italic">
                 {t('cmsui.objectbrowserwidget.noResults')}

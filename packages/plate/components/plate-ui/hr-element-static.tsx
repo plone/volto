@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { SlateElementProps } from '@udecode/plate';
 
 import { cn } from '@udecode/cn';
@@ -17,7 +15,7 @@ export function HrElementStatic({
         <hr
           {...nodeProps}
           className={cn(
-            'bg-muted h-0.5 rounded-sm border-none bg-clip-content',
+            'h-0.5 rounded-sm border-none bg-muted bg-clip-content',
           )}
         />
       </div>

@@ -1,6 +1,5 @@
-'use client';
-
 import * as React from 'react';
+
 import {
   type ControllerProps,
   type FieldPath,
@@ -136,7 +135,7 @@ const FormDescription = React.forwardRef<
     <p
       id={formDescriptionId}
       ref={ref}
-      className={cn('text-muted-foreground text-sm', className)}
+      className={cn('text-sm text-muted-foreground', className)}
       {...props}
     />
   );
@@ -158,7 +157,7 @@ const FormMessage = React.forwardRef<
     <p
       id={formMessageId}
       ref={ref}
-      className={cn('text-destructive text-sm font-medium', className)}
+      className={cn('text-sm font-medium text-destructive', className)}
       {...props}
     >
       {body}

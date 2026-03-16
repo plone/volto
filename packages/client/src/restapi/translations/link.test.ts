@@ -52,7 +52,7 @@ describe('Content', () => {
     };
     const linkPath = `/en/${contentDataEN.title}`;
 
-    const result = await cli.linkTranslation({
+    await cli.linkTranslation({
       path: linkPath,
       data: linkData,
     });
@@ -72,7 +72,7 @@ describe('Content', () => {
     };
 
     try {
-      const result = await cli.linkTranslation({
+      await cli.linkTranslation({
         path: '/en/blah',
         data: linkData,
       });

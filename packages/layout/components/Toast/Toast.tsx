@@ -12,6 +12,7 @@ import { type ToastQueue } from '../../config/toast';
  * Props Types for the SectionWrapper component.
  * They are able to infer the props of the element type passed to the `as` prop.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type AppToastPropsType<T extends React.ElementType> = {
   queue: ToastQueue;
 } & React.ComponentPropsWithoutRef<React.ElementType>;

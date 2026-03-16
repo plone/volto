@@ -48,7 +48,7 @@ describe('Controlpanel', () => {
       title: `My Custom Content ${randomId}`,
     };
 
-    const result = await cli.createControlpanel({
+    await cli.createControlpanel({
       path,
       data: dexteritytypeData,
     });

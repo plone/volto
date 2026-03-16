@@ -1,5 +1,5 @@
 import { useLocation, useRouteLoaderData } from 'react-router';
-import SlotRenderer from '@plone/layout/SlotRenderer';
+import SlotRenderer from '@plone/layout/slots/SlotRenderer';
 import type { RootLoader } from 'seven/app/root';
 
 export default function Content() {

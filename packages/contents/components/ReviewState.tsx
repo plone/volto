@@ -1,7 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 const styles = tv({
-  base: 'before:bg-quanta-dolphin flex min-w-32 items-center before:me-4 before:h-[9px] before:w-[9px] before:rounded-full',
+  base: `flex min-w-32 items-center before:me-4 before:h-[9px] before:w-[9px] before:rounded-full before:bg-quanta-dolphin`,
   variants: {
     state: {
       private: 'before:bg-quanta-rose',

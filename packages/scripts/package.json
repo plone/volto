@@ -33,9 +33,6 @@
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha"
   },
-  "bin": {
-    "catalog-sync": "./catalogSync.js"
-  },
   "publishConfig": {
     "access": "public"
   },

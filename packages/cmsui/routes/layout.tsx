@@ -4,7 +4,6 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
   useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
@@ -70,7 +69,6 @@ export async function loader() {
 }
 
 export default function Index() {
-  const { cssLayers } = useLoaderData<typeof loader>();
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const [collapsed] = useAtom(sidebarAtom);
@@ -86,12 +84,12 @@ export default function Index() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
-        {/* We pre-define here the @layer before tailwind does, adding our own layers */}
-        <style>{`@layer ${cssLayers.join(', ')};`}</style>
         <Meta />
         <Links />
       </head>
       <body className="cmsui">
+        {/* We pre-define here the @layer before tailwind does, adding our own layers in a React 19 managed <link> tag */}
+        <link rel="stylesheet" href="/layers.css" precedence="first" />
         <PluggablesProvider>
           <div
             className={clsx(

@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import { cn, withRef } from '@udecode/cn';
 import {
   type FloatingToolbarState,
@@ -69,7 +65,11 @@ export const FloatingToolbar = withRef<
       <Toolbar
         ref={ref}
         className={cn(
-          'scrollbar-hide bg-popover absolute z-50 overflow-x-auto rounded-md border p-1 whitespace-nowrap opacity-100 shadow-md print:hidden',
+          `
+            scrollbar-hide absolute z-50 overflow-x-auto rounded-md border bg-popover p-1
+            whitespace-nowrap opacity-100 shadow-md
+            print:hidden
+          `,
           'max-w-[80vw]',
         )}
         {...rootProps}

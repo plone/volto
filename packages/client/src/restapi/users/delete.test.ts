@@ -27,7 +27,7 @@ describe('Delete UserDelete', () => {
 
     await cli.createUser({ data: userData });
 
-    const result = await cli.deleteUser({ userId: userData.username });
+    await cli.deleteUser({ userId: userData.username });
   });
 
   test('Failure', async () => {

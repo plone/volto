@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { cn } from '@udecode/cn';
 import {
   PreviewImage,
@@ -63,7 +65,10 @@ export const ImagePreview = () => {
           />
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
-            className="absolute bottom-0 left-1/2 z-40 flex w-fit -translate-x-1/2 justify-center gap-4 p-2 text-center text-white"
+            className={`
+              absolute bottom-0 left-1/2 z-40 flex w-fit -translate-x-1/2 justify-center gap-4 p-2
+              text-center text-white
+            `}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex gap-1">

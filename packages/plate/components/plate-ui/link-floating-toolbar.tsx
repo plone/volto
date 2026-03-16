@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import { cn } from '@udecode/cn';
 import {
   type UseVirtualFloatingOptions,
@@ -77,7 +73,7 @@ export function LinkFloatingToolbar({ state }: LinkFloatingToolbarProps) {
   const input = (
     <div className="flex w-[330px] flex-col" {...inputProps}>
       <div className="flex items-center">
-        <div className="text-muted-foreground flex items-center pr-1 pl-2">
+        <div className="flex items-center pr-1 pl-2 text-muted-foreground">
           <Link className="size-4" />
         </div>
 
@@ -89,7 +85,7 @@ export function LinkFloatingToolbar({ state }: LinkFloatingToolbarProps) {
       </div>
       <Separator className="my-1" />
       <div className="flex items-center">
-        <div className="text-muted-foreground flex items-center pr-1 pl-2">
+        <div className="flex items-center pr-1 pl-2 text-muted-foreground">
           <Text className="size-4" />
         </div>
         <input

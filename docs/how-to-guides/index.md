@@ -15,4 +15,13 @@ This section of the documentation contains how-to guides for developing with Sev
 :maxdepth: 2
 
 routes
+register-an-add-on
+access-registry
+register-and-retrieve-components
+register-and-retrieve-utilities
+register-slots
+shadow-a-component
+fetch-additional-data-root-loader
+add-tailwind
+icons
 ```

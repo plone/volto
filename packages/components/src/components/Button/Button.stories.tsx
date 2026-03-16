@@ -5,7 +5,7 @@ import { Link } from '../Link/Link';
 import { Text } from 'react-aria-components';
 import { AddIcon } from '../icons/AddIcon';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Button',

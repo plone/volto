@@ -30,7 +30,10 @@ const ColorContext = createContext<Color>('gray');
 
 const tagStyles = tv({
   extend: focusRing,
-  base: 'flex max-w-fit cursor-default items-center gap-1 rounded-sm border px-3 py-0.5 text-xs transition',
+  base: `
+    flex max-w-fit cursor-default items-center gap-1 rounded-sm border px-3 py-0.5 text-xs
+    transition
+  `,
   variants: {
     color: {
       gray: '',
@@ -106,7 +109,9 @@ export function TagGroup<T extends object>({
 
 const removeButtonStyles = tv({
   extend: focusRing,
-  base: 'flex cursor-default items-center justify-center rounded-full p-0.5 transition-[background-color]',
+  base: `
+    flex cursor-default items-center justify-center rounded-full p-0.5 transition-[background-color]
+  `,
 });
 
 export function Tag({ children, color, ...props }: TagProps) {

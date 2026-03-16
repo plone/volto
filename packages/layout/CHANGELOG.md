@@ -8,6 +8,30 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2025-09-29)
+
+### Feature
+
+- Add Image component and use it in Teaser block. @avoinea [#6689](https://github.com/plone/volto/issues/6689)
+- Added sitemap route. @ksuess [#6695](https://github.com/plone/volto/issues/6695)
+- Added Breadcrumbs slot. @sneridagh [#7196](https://github.com/plone/volto/issues/7196)
+- Separated publicui and cmsui styles. @pnicolli [#7225](https://github.com/plone/volto/issues/7225)
+- Move `Pluggables` implementation to `@plone/layout` package. @sneridagh [#7228](https://github.com/plone/volto/issues/7228)
+- Added Toast manager. @giuliaghisini [#7333](https://github.com/plone/volto/issues/7333)
+- Improved `Tools` "edit" action implementation to support relative paths. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+- Added language switcher in Seven. @nileshgulia1 [#7352](https://github.com/plone/volto/issues/7352)
+
+### Internal
+
+- Rename `@plone/slots` to `@plone/layout`. @sneridagh [#7119](https://github.com/plone/volto/issues/7119)
+- Adapt import to the rearrangement of the @plone/components package structure. @sneridagh [#7185](https://github.com/plone/volto/issues/7185)
+- Unified CSS from main build in Storybook. @sneridagh [#7220](https://github.com/plone/volto/issues/7220)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
+- Fix URL in README. @stevepiercy [#7360](https://github.com/plone/volto/issues/7360)
+- Upgrade to Storybook 9. @sneridagh [#7371](https://github.com/plone/volto/issues/7371)
+- Remove circular dependency on layout<->blocks. @sneridagh [#7372](https://github.com/plone/volto/issues/7372)
+- Adjust peer dependencies and engine. @sneridagh
+
 ## 1.0.0-alpha.2 (2025-05-24)
 
 ### Feature

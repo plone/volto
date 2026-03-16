@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { SlateElementProps } from '@udecode/plate';
 
 import { cn } from '@udecode/cn';

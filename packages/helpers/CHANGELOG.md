@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.1 (2025-09-29)
+
+### Feature
+
+- Added atom helpers `InitAtoms`. @sneridagh [#6999](https://github.com/plone/volto/issues/6999)
+- Moved the Jotai Atoms helpers here. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+- Added `hasBlocksData` block helper. @sneridagh [#7372](https://github.com/plone/volto/issues/7372)
+
+### Internal
+
+- Added `flattenToAppURL` helper. @giuliaghisini [#7133](https://github.com/plone/volto/issues/7133)
+- Add languageMap Helper @nileshgulia1 [#7352](https://github.com/plone/volto/issues/7352)
+
 ## 2.0.0-alpha.0 (2025-05-24)
 
 ### Internal

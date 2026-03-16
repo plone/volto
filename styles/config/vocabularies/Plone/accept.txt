@@ -4,6 +4,7 @@
 `plone.volto`
 [Aa]sync
 [Bb]ackend
+CMSUI
 CommonJS
 JavaScript
 npm
@@ -12,6 +13,7 @@ Pastanaga
 Plone
 pluggab(le|ility)
 programatically
+Public UI
 Razzle
 RichText
 Sass

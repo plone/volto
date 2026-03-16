@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import { cn } from '@udecode/cn';
 import { SuggestionPlugin } from '@udecode/plate-suggestion/react';
 import { useEditorPlugin, usePluginOption } from '@udecode/plate/react';
@@ -15,7 +11,13 @@ export function SuggestionToolbarButton() {
 
   return (
     <ToolbarButton
-      className={cn(isSuggesting && 'text-brand/80 hover:text-brand/80')}
+      className={cn(
+        isSuggesting &&
+          `
+            text-brand/80
+            hover:text-brand/80
+          `,
+      )}
       onClick={() => setOption('isSuggesting', !isSuggesting)}
       onMouseDown={(e) => e.preventDefault()}
       tooltip={isSuggesting ? 'Turn off suggesting' : 'Suggestion edits'}

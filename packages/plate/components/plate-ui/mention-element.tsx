@@ -1,7 +1,4 @@
-'use client';
-
-import React from 'react';
-
+import * as React from 'react';
 import type { TMentionElement } from '@udecode/plate-mention';
 
 import { cn, withRef } from '@udecode/cn';
@@ -33,9 +30,9 @@ export const MentionElement = withRef<
       ref={ref}
       className={cn(
         className,
-        'bg-muted inline-block rounded-md px-1.5 py-0.5 align-baseline text-sm font-medium',
+        'inline-block rounded-md bg-muted px-1.5 py-0.5 align-baseline text-sm font-medium',
         !readOnly && 'cursor-pointer',
-        selected && focused && 'ring-ring ring-2',
+        selected && focused && 'ring-2 ring-ring',
         element.children[0].bold === true && 'font-bold',
         element.children[0].italic === true && 'italic',
         element.children[0].underline === true && 'underline',

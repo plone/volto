@@ -1,7 +1,7 @@
 import React from 'react';
 import { QuantaSelect, SelectItem } from './Select';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 export interface SelectItemObject {
   label: string;

@@ -1,10 +1,11 @@
 # `tsconfig`
 
 Base configurations for TypeScript projects.
+Cookieplone frontend add-ons already use baseline configurations in the generated template, so you normally don't need to add it manually unless you want to customize your own add-on.
 
 ## Usage
 
-In `package.json`:
+Only if you want to customize your add-on, edit your `package.json` as shown.
 
 ```json
   "devDependencies": {

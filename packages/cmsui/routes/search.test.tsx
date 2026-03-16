@@ -1,5 +1,4 @@
 import { expect, describe, it, vi, afterEach } from 'vitest';
-import { createRoutesStub, unstable_RouterContextProvider } from 'react-router';
 import config from '@plone/registry';
 import { loader } from './search';
 

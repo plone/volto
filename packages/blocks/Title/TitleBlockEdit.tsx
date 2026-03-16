@@ -121,7 +121,13 @@ export function SingleLineH1({
       onPaste={onPaste}
       onInput={onInput}
       className={clsx(
-        'pb-1 font-heading text-4xl font-bold slate-h1 outline-none caret-current selection:bg-black/10 dark:selection:bg-white/20 empty:before:text-gray-400 empty:before:content-[attr(data-placeholder)] leading-tight break-words whitespace-nowrap',
+        `
+          font-heading slate-h1 pb-1 text-4xl leading-tight font-bold break-words whitespace-nowrap
+          caret-current outline-none
+          selection:bg-black/10
+          empty:before:text-gray-400 empty:before:content-[attr(data-placeholder)]
+          dark:selection:bg-white/20
+        `,
         className,
       )}
       style={{

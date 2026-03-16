@@ -4,7 +4,7 @@
 
 # -- Path setup --------------------------------------------------------------
 
-import json
+from datetime import datetime
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -13,13 +13,15 @@ import json
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath("."))
+
 import os
-from datetime import datetime
+import json
+
 
 # -- Project information -----------------------------------------------------
 
-project = "Volto Documentation"
-copyright = "Volto Foundation"
+project = "Seven Documentation"
+copyright = "Seven Foundation"
 author = "Plone Community"
 trademark_name = "Plone"
 now = datetime.now()
@@ -89,6 +91,7 @@ linkcheck_ignore = [
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
+    r"https://browsersl.ist/#",
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
 ]
@@ -143,8 +146,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css",
-            },
+                "class": "nav-link custom-fancy-css"
+            }
         },
         {
             "name": "Mastodon",
@@ -154,8 +157,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css",
-            },
+                "class": "nav-link custom-fancy-css"
+            }
         },
         {
             "name": "YouTube",
@@ -165,8 +168,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css",
-            },
+                "class": "nav-link custom-fancy-css"
+            }
         },
         {
             "name": "X (formerly Twitter)",
@@ -176,12 +179,12 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css",
-            },
+                "class": "nav-link custom-fancy-css"
+            }
         },
     ],
     "logo": {
-        "text": "Volto Documentation",
+        "text": "Seven Documentation",
     },
     "navigation_with_keys": True,
     "path_to_docs": "docs",
@@ -224,12 +227,14 @@ html_static_path = [
 # For more information see:
 # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html
 myst_enable_extensions = [
-    "deflist",  # Support definition lists.
-    # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
-    "linkify",  # Identify "bare" web URLs and add hyperlinks.
-    "colon_fence",  # You can also use ::: delimiters to denote code fences,\
-    #  instead of ```.
+    "attrs_block", # Support parsing of block attributes.
+    "attrs_inline", # Support parsing of inline attributes.
+    "colon_fence",  # You can also use ::: delimiters to denote code fences, instead of ```.
+    "deflist",  # Support definition lists. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
     "html_image",  # For inline images. See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#html-images
+    "linkify",  # Identify "bare" web URLs and add hyperlinks.
+    "strikethrough",  # See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-strikethrough
+    "substitution",  # Use Jinja2 for substitutions. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#substitutions-with-jinja2
 ]
 
 
@@ -272,7 +277,7 @@ todo_include_todos = True
 # -- Options for HTML help output -------------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "VoltoDocumentation"
+htmlhelp_basename = "SevenDocumentation"
 
 
 # -- Options for LaTeX output -------------------------------------------------
@@ -282,7 +287,7 @@ htmlhelp_basename = "VoltoDocumentation"
 latex_documents = [
     (
         "index",
-        "VoltoDocumentation.tex",
+        "SevenDocumentation.tex",
         "Volto Documentation",
         "Plone Community",
         "manual",

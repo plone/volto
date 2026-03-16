@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+import * as React from 'react';
 
 import { withRef } from '@udecode/cn';
 import { AIChatPlugin } from '@udecode/plate-ai/react';
@@ -14,7 +12,6 @@ import { TogglePlugin } from '@udecode/plate-toggle/react';
 import { type PlateEditor, ParagraphPlugin } from '@udecode/plate/react';
 import { PlateElement } from '@udecode/plate/react';
 import {
-  CalendarIcon,
   ChevronRightIcon,
   Code2,
   Columns3Icon,
@@ -25,17 +22,13 @@ import {
   ListOrdered,
   PilcrowIcon,
   Quote,
-  RadicalIcon,
   SparklesIcon,
   Square,
   Table,
   TableOfContentsIcon,
 } from 'lucide-react';
 
-import {
-  insertBlock,
-  insertInlineElement,
-} from '@plone/plate/components/editor/transforms';
+import { insertBlock } from '@plone/plate/components/editor/transforms';
 
 import {
   InlineCombobox,
@@ -220,7 +213,7 @@ export const SlashInputElement = withRef<typeof PlateElement>(
                       group={group}
                       keywords={keywords}
                     >
-                      <div className="text-muted-foreground mr-2">{icon}</div>
+                      <div className="mr-2 text-muted-foreground">{icon}</div>
                       {label ?? value}
                     </InlineComboboxItem>
                   ),

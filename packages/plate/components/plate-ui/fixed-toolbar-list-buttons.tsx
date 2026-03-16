@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {
   BoldPlugin,
   CodePlugin,
@@ -32,7 +30,6 @@ import {
   PaintBucketIcon,
   StrikethroughIcon,
   UnderlineIcon,
-  WandSparklesIcon,
 } from 'lucide-react';
 
 import { MoreDropdownMenu } from '../plate-ui/more-dropdown-menu';

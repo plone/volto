@@ -5,12 +5,8 @@ import { mergeConfig } from 'vite';
 const config: StorybookConfig = {
   // For some reason the property does not allow negation
   // https://github.com/storybookjs/storybook/issues/11181#issuecomment-1535288804
-  stories: ['../../../stories/**/*.mdx'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-  ],
+  stories: ['../stories/**/*.mdx'],
+  addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/react-vite',
     options: {},
@@ -23,7 +19,7 @@ const config: StorybookConfig = {
     },
     layout: {
       title: '@plone/layout',
-      url: 'https://plone-layout.readthedocs.io/latest/',
+      url: 'https://plone-layout.readthedocs.io/',
     },
     // publicui: {
     //   title: '@plone/publicui',
@@ -31,7 +27,7 @@ const config: StorybookConfig = {
     // },
     cmsui: {
       title: '@plone/cmsui',
-      url: 'https://plone-cmsui.readthedocs.io/latest/',
+      url: 'https://plone-cmsui.readthedocs.io/',
     },
   },
   docs: {},

@@ -96,7 +96,7 @@ const isSelectable = (
   item: PartialBrainWithRequired,
   options: WidgetPatternOptions,
 ) => {
-  const { pattern_options, items, mode } = options;
+  const { pattern_options, items } = options;
   const { maximumSelectionSize, selectableTypes } = pattern_options || {
     maximumSelectionSize: undefined,
     selectableTypes: [],

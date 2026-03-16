@@ -101,7 +101,9 @@ export default function Index() {
       <body className="cmsui">
         <PluggablesProvider>
           <RACRouterProvider navigate={navigate}>
-            <div className="grid grid-cols-[80px_1fr_0px] transition-[grid-template-columns] duration-200 ease-linear">
+            <div
+              className={`grid grid-cols-[80px_1fr_0px] transition-[grid-template-columns] duration-200 ease-linear`}
+            >
               <Toolbar />
               <main id="main">
                 {/* <TopNavBar /> */}

@@ -1,7 +1,6 @@
 import { setup, teardown } from '../../utils/test';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 import PloneClient from '../../client';
-import { v4 as uuid } from 'uuid';
 import type { RequestError } from '../types';
 
 const cli = PloneClient.initialize({
@@ -20,8 +19,6 @@ afterEach(async () => {
 
 describe('Content', () => {
   test('Successful', async () => {
-    const randomId = uuid();
-
     const registryData = { 'plone.available_languages': ['en', 'es'] };
     await cli.updateRegistry({ data: registryData });
 
@@ -60,7 +57,7 @@ describe('Content', () => {
       language: 'es',
     };
 
-    const result = await cli.unlinkTranslation({
+    await cli.unlinkTranslation({
       path: linkPath,
       data: unlinkData,
     });
@@ -80,7 +77,7 @@ describe('Content', () => {
     };
 
     try {
-      const result = await cli.unlinkTranslation({
+      await cli.unlinkTranslation({
         path: '/en/blah',
         data: unlinkData,
       });

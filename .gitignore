@@ -65,6 +65,7 @@ cypress/screenshots
 .env
 public/critical.css
 packages/volto/data
+storybook-static/
 
 # Documentation
 _build/

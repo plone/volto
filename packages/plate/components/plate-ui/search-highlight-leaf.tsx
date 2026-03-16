@@ -1,5 +1,3 @@
-'use client';
-
 import { withCn } from '@udecode/cn';
 import { PlateLeaf } from '@udecode/plate/react';
 

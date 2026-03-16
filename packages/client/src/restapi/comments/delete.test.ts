@@ -51,7 +51,7 @@ describe('Delete Comment', () => {
 
     const comment_id = initialCommentData.data.items[0].comment_id;
 
-    const result = await cli.deleteComment({
+    await cli.deleteComment({
       path: contentData.title,
       comment_id,
     });

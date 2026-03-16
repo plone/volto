@@ -33,7 +33,7 @@ describe('Update User', () => {
 
     await cli.createUser({ data: userData });
 
-    const result = await cli.updateUser({
+    await cli.updateUser({
       userId: userData.username,
       data: updateUserData,
     });

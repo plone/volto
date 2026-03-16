@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -39,8 +39,8 @@
     "release-alpha": "release-it --preRelease=alpha"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "peerDependenciesMeta": {
     "react-dom": {
@@ -49,17 +49,17 @@
   },
   "dependencies": {
     "@plone/components": "workspace:*",
-    "@plone/layout": "workspace:*",
     "@plone/plate": "workspace:*",
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
     "@plone/helpers": "workspace:*",
+    "@plone/layout": "workspace:*",
     "@plone/registry": "workspace:*",
     "@plone/types": "workspace:*",
     "@testing-library/jest-dom": "6.4.2",
-    "@testing-library/react": "14.2.1",
+    "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.7",
     "@types/node": "catalog:",
     "@types/react": "catalog:",

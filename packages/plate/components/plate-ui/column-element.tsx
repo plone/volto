@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+import * as React from 'react';
 
 import type { TColumnElement } from '@udecode/plate-layout';
 
@@ -55,7 +53,10 @@ export const ColumnElement = withHOC(
             className={cn(
               'absolute top-2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2',
               'pointer-events-auto flex items-center',
-              'opacity-0 transition-opacity group-hover/column:opacity-100',
+              `
+                opacity-0 transition-opacity
+                group-hover/column:opacity-100
+              `,
             )}
           >
             <ColumnDragHandle />
@@ -66,14 +67,18 @@ export const ColumnElement = withHOC(
           ref={useComposedRef(ref, previewRef)}
           className={cn(
             className,
-            'h-full px-2 pt-2 group-first/column:pl-0 group-last/column:pr-0',
+            `
+              h-full px-2 pt-2
+              group-first/column:pl-0
+              group-last/column:pr-0
+            `,
           )}
           {...props}
         >
           <div
             className={cn(
               'relative h-full border border-transparent p-1.5',
-              !readOnly && 'border-border rounded-lg border-dashed',
+              !readOnly && 'rounded-lg border-dashed border-border',
               isDragging && 'opacity-50',
             )}
           >
@@ -94,7 +99,7 @@ const ColumnDragHandle = React.memo(() => {
         <TooltipTrigger asChild>
           <Button size="none" variant="ghost" className="h-5 px-1">
             <GripHorizontal
-              className="text-muted-foreground size-4"
+              className="size-4 text-muted-foreground"
               onClick={(event) => {
                 event.stopPropagation();
                 event.preventDefault();
@@ -128,9 +133,15 @@ const DropLine = React.forwardRef<
         'slate-dropLine',
         'bg-brand/50 absolute',
         dropLine === 'left' &&
-          'inset-y-0 left-[-10.5px] w-1 group-first/column:-left-1',
+          `
+            inset-y-0 left-[-10.5px] w-1
+            group-first/column:-left-1
+          `,
         dropLine === 'right' &&
-          'inset-y-0 right-[-11px] w-1 group-last/column:-right-1',
+          `
+            inset-y-0 right-[-11px] w-1
+            group-last/column:-right-1
+          `,
         className,
       )}
     />

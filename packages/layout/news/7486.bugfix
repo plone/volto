@@ -1,0 +1,1 @@
+Avoid including always the original size in the Image component. Read now the site config and check if the image has all the sizes available in place. @sneridagh

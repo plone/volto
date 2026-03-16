@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useCallback, useState } from 'react';
 
 import type * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
@@ -84,7 +82,11 @@ export const TableElement = withHOC(
         className={cn(
           className,
           'overflow-x-auto py-5',
-          hasControls && '-ml-2 *:data-[slot=block-selection]:left-2',
+          hasControls &&
+            `
+              -ml-2
+              *:data-[slot=block-selection]:left-2
+            `,
         )}
         style={{ paddingLeft: marginLeft }}
         {...props}
@@ -135,7 +137,11 @@ export const TableFloatingToolbar = withRef<typeof PopoverContent>(
           {...props}
         >
           <Toolbar
-            className="scrollbar-hide bg-popover flex w-auto max-w-[80vw] flex-row overflow-x-auto rounded-md border p-1 shadow-md print:hidden"
+            className={`
+              scrollbar-hide flex w-auto max-w-[80vw] flex-row overflow-x-auto rounded-md border
+              bg-popover p-1 shadow-md
+              print:hidden
+            `}
             contentEditable={false}
           >
             <ToolbarGroup>

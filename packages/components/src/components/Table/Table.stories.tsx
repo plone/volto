@@ -5,7 +5,7 @@ import { Column } from './Column';
 import { Row } from './Row';
 import { Cell, TableBody } from 'react-aria-components';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Table> = {
   title: 'Basic/Table',

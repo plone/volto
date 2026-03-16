@@ -4,7 +4,7 @@ import { selectedBlockAtom } from './BlockEditor';
 import clsx from 'clsx';
 import { createPortal } from 'react-dom';
 import BlockSettingsForm from './BlockSettingsForm';
-import BlockWrapper from '@plone/blocks/RenderBlocks/BlockWrapper';
+import BlockWrapper from '@plone/layout/blocks/BlockWrapper';
 import { Plug, Pluggable } from '@plone/layout/components/Pluggable';
 import { blockAtomFamily } from '../../routes/atoms';
 import config from '@plone/registry';
@@ -36,7 +36,7 @@ const EditBlockWrapper = (props: EditBlockWrapperProps) => {
   return (
     <div
       role="presentation"
-      className={clsx('ebw', { 'outline-quanta-sapphire outline-2': selected })}
+      className={clsx('ebw', { 'outline-2 outline-quanta-sapphire': selected })}
       onClick={() => onSelectBlock(props.block)}
     >
       {/* @ts-expect-error Volto's EditBlockWrapper passes RenderBlocksProps down. We need to revisit which props do we really need to pass down to the block Edit component */}

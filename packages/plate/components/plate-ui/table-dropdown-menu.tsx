@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
 
@@ -239,7 +237,7 @@ export function TablePicker() {
               <div
                 key={`(${rowIndex},${columIndex})`}
                 className={cn(
-                  'bg-secondary col-span-1 size-3 border border-solid',
+                  'col-span-1 size-3 border border-solid bg-secondary',
                   !!value && 'border-current',
                 )}
                 onMouseMove={() => {

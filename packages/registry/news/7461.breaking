@@ -1,0 +1,1 @@
+Save the locales in `/public/locales` rather than in the root of the app. @sneridagh

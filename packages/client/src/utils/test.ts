@@ -24,7 +24,7 @@ export const loginWithCreate = async (
     await cli.createUser({
       data: { username, password, email, roles },
     });
-  } catch (e) {
+  } catch {
     // handle error if the user has already been creatd in previous invocations
   }
 

@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useEffect, useMemo } from 'react';
 
 import { cn, withProps } from '@udecode/cn';

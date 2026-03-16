@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import { cn, withRef } from '@udecode/cn';
 import {
   useTodoListElement,
@@ -31,7 +27,10 @@ export const TodoListElement = withRef<typeof PlateElement>(
         </div>
         <span
           className={cn(
-            'flex-1 focus:outline-none',
+            `
+              flex-1
+              focus:outline-none
+            `,
             state.checked && 'text-muted-foreground line-through',
           )}
           contentEditable={!state.readOnly}

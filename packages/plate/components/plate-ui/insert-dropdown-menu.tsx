@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
 
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react';
@@ -21,7 +17,6 @@ import {
   useEditorRef,
 } from '@udecode/plate/react';
 import {
-  CalendarIcon,
   ChevronRightIcon,
   Columns3Icon,
   FileCodeIcon,
@@ -38,7 +33,6 @@ import {
   PilcrowIcon,
   PlusIcon,
   QuoteIcon,
-  RadicalIcon,
   SquareIcon,
   TableIcon,
   TableOfContentsIcon,

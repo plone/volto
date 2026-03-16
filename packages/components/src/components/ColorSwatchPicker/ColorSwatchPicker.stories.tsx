@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ColorSwatchPicker, ColorSwatchPickerItem } from './ColorSwatchPicker';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Forms/ColorSwatchPicker',

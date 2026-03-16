@@ -11,7 +11,7 @@ import {
   Text,
 } from 'react-aria-components';
 import { SettingsIcon } from '../icons/SettingsIcon';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Menu',

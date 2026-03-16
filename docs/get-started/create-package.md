@@ -23,7 +23,7 @@ It also includes tools for development and deployment.
 After satisfying the {doc}`system-requirements` and having {ref}`activated an LTS version of Node.js <seven-prerequisites-nodejs-label>`, generate the add-on package.
 
 ```shell
-COOKIEPLONE_REPOSITORY_TAG=seventemplate uvx cookieplone seven_addon --no-input
+uvx cookieplone seven_addon --no-input
 ```
 
 

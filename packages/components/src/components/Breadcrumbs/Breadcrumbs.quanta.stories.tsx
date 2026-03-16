@@ -1,6 +1,6 @@
 import React from 'react';
 import { Breadcrumb, Breadcrumbs } from './Breadcrumbs.quanta';
-import { Menu, MenuItem } from '../Menu/Menu.quanta';
+import { Menu } from '../Menu/Menu.quanta';
 import {
   FolderIcon,
   HomeIcon,
@@ -8,7 +8,7 @@ import {
   PageIcon,
 } from '../../components/icons';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Quanta/Breadcrumbs',

@@ -51,7 +51,7 @@ describe('Update Comment', () => {
 
     const comment_id = commentData.data.items[0].comment_id;
 
-    const result = await cli.updateComment({
+    await cli.updateComment({
       path: contentData.title,
       comment_id,
       data: addCommentData,
@@ -82,7 +82,7 @@ describe('Update Comment', () => {
     };
 
     try {
-      const result = await cli.updateComment({
+      await cli.updateComment({
         path,
         comment_id,
         data: updateCommentData,

@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+import * as React from 'react';
 
 import { cn, useComposedRef, withRef } from '@udecode/cn';
 import { PathApi } from '@udecode/plate';
@@ -77,9 +75,19 @@ function RowDragHandle({ dragRef }: { dragRef: React.Ref<any> }) {
       ref={dragRef}
       variant="outline"
       className={cn(
-        'absolute top-1/2 left-0 z-51 h-6 w-4 -translate-y-1/2 p-0 focus-visible:ring-0 focus-visible:ring-offset-0',
-        'cursor-grab active:cursor-grabbing',
-        'opacity-0 transition-opacity duration-100 group-hover/row:opacity-100 group-has-data-[resizing="true"]/row:opacity-0',
+        `
+          absolute top-1/2 left-0 z-51 h-6 w-4 -translate-y-1/2 p-0
+          focus-visible:ring-0 focus-visible:ring-offset-0
+        `,
+        `
+          cursor-grab
+          active:cursor-grabbing
+        `,
+        `
+          opacity-0 transition-opacity duration-100
+          group-hover/row:opacity-100
+          group-has-data-[resizing="true"]/row:opacity-0
+        `,
       )}
       onClick={() => {
         editor.tf.select(element);

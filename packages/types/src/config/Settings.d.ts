@@ -53,9 +53,7 @@ export interface SettingsConfig {
   openExternalLinkInNewTab: boolean;
   notSupportedBrowsers: string[];
   defaultPageSize: number;
-  isMultilingual: boolean;
   supportedLanguages: string[]; // TODO: Improve list of possible values
-  defaultLanguage: string;
   navDepth: number;
   expressMiddleware: unknown;
   defaultBlockType: string; // TODO: Improve list of possible values

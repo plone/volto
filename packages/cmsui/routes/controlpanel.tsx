@@ -61,9 +61,9 @@ export async function action({ params, request }: ActionFunctionArgs) {
 
   cli.config.token = token;
 
-  const path = `/${params['*'] || ''}`;
+  // const path = `/${params['*'] || ''}`;
 
-  const formData = await request.json();
+  // const formData = await request.json();
 
   // TODO: Activate update of control panel data
   // eslint-disable-next-line no-console

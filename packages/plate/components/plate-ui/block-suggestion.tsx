@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useMemo, useState } from 'react';
 
 import type {
@@ -150,7 +148,7 @@ export const BlockSuggestionCard = ({
           <h4 className="mx-2 text-sm leading-none font-semibold">
             {userInfo?.name}
           </h4>
-          <div className="text-muted-foreground/80 text-xs leading-none">
+          <div className="text-xs leading-none text-muted-foreground/80">
             <span className="mr-1">
               {formatCommentDate(new Date(suggestion.createdAt))}
             </span>
@@ -163,7 +161,7 @@ export const BlockSuggestionCard = ({
               <React.Fragment>
                 {suggestionText2Array(suggestion.text!).map((text, index) => (
                   <div key={index} className="flex items-center gap-2">
-                    <span className="text-muted-foreground text-sm">
+                    <span className="text-sm text-muted-foreground">
                       Delete:
                     </span>
 
@@ -180,7 +178,7 @@ export const BlockSuggestionCard = ({
                 {suggestionText2Array(suggestion.newText!).map(
                   (text, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <span className="text-muted-foreground text-sm">
+                      <span className="text-sm text-muted-foreground">
                         Add:
                       </span>
 
@@ -212,7 +210,7 @@ export const BlockSuggestionCard = ({
                 {suggestionText2Array(suggestion.text!).map((text, index) => (
                   <React.Fragment key={index}>
                     <div key={index} className="flex items-start gap-2">
-                      <span className="text-muted-foreground text-sm">
+                      <span className="text-sm text-muted-foreground">
                         {index === 0 ? 'Replace:' : 'Delete:'}
                       </span>
                       <span className="text-sm">{text || 'line breaks'}</span>
@@ -224,7 +222,7 @@ export const BlockSuggestionCard = ({
 
             {suggestion.type === 'update' && (
               <div className="flex items-center gap-2">
-                <span className="text-muted-foreground text-sm">
+                <span className="text-sm text-muted-foreground">
                   {Object.keys(suggestion.properties).map((key) => (
                     <span key={key}>Un{key}</span>
                   ))}
@@ -257,7 +255,7 @@ export const BlockSuggestionCard = ({
           <div className="absolute top-4 right-4 flex gap-2">
             <Button
               variant="ghost"
-              className="text-muted-foreground h-6 p-1"
+              className="h-6 p-1 text-muted-foreground"
               onClick={() => accept(suggestion)}
             >
               <CheckIcon className="size-4" />
@@ -265,7 +263,7 @@ export const BlockSuggestionCard = ({
 
             <Button
               variant="ghost"
-              className="text-muted-foreground h-6 p-1"
+              className="h-6 p-1 text-muted-foreground"
               onClick={() => reject(suggestion)}
             >
               <XIcon className="size-4" />
@@ -279,7 +277,7 @@ export const BlockSuggestionCard = ({
         />
       </div>
 
-      {!isLast && <div className="bg-muted h-px w-full" />}
+      {!isLast && <div className="h-px w-full bg-muted" />}
     </div>
   );
 };
