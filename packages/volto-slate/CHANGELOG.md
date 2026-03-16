@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.12 (2026-03-02)
+
+### Bugfix
+
+- Fix error in HtmlSlateWidget when rendering elements that need i18n. @davisagli [#7889](https://github.com/plone/volto/issues/7889)
+
+## 19.0.0-alpha.11 (2026-02-20)
+
+### Breaking
+
+- Table block is now responsive and can scroll horizontally for non-fixed tables. @sneridagh [#7916](https://github.com/plone/volto/issues/7916)
+
 ## 19.0.0-alpha.10 (2026-02-12)
 
 ### Bugfix

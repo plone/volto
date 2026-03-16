@@ -7,3 +7,9 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 1.0.0-alpha.1 (2026-03-02)
+
+### Internal
+
+- Update css-minimizer-webpack-plugin to v7. @wesleybl [#7934](https://github.com/plone/volto/issues/7934)

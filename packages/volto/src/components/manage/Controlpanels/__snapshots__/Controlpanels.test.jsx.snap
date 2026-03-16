@@ -19,6 +19,181 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
         <div
           class="ui secondary segment"
         >
+          Content
+        </div>
+        <div
+          class="ui attached segment"
+        >
+          <div
+            class="ui doubling six column grid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/rules"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M7,29 L29,29 L29,7 L7,7 L7,29 Z M5,31 L31,31 L31,5 L5,5 L5,31 Z"
+                        />
+                        <path
+                          d="M21 17 25 17 25 11 21 11 21 17ZM19 19 27 19 27 9 19 9 19 19ZM9 11 17 11 17 9 9 9zM9 15 17 15 17 13 9 13zM9 19 17 19 17 17 9 17zM9 23 27 23 27 21 9 21zM9 27 23 27 23 25 9 25z"
+                        />
+                      </g>
+                    </svg>
+                    <div
+                      class="content"
+                    >
+                      Content Rules
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/discussion"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 20C8.897 20 8 19.103 8 18 8 16.897 8.897 16 10 16 11.103 16 12 16.897 12 18 12 19.103 11.103 20 10 20M11 14.142L11 5 9 5 9 14.142C7.28 14.589 6 16.141 6 18 6 19.859 7.28 21.411 9 21.858L9 31 11 31 11 21.858C12.72 21.411 14 19.859 14 18 14 16.141 12.72 14.589 11 14.142M18 14C16.897 14 16 13.103 16 12 16 10.897 16.897 10 18 10 19.103 10 20 10.897 20 12 20 13.103 19.103 14 18 14M22 12C22 10.141 20.72 8.589 19 8.142L19 5 17 5 17 8.142C15.28 8.589 14 10.141 14 12 14 13.859 15.28 15.411 17 15.858L17 31 19 31 19 15.858C20.72 15.411 22 13.859 22 12M26 26C24.897 26 24 25.103 24 24 24 22.897 24.897 22 26 22 27.103 22 28 22.897 28 24 28 25.103 27.103 26 26 26M30 24C30 22.141 28.72 20.589 27 20.142L27 5 25 5 25 20.142C23.28 20.589 22 22.141 22 24 22 25.859 23.28 27.411 25 27.858L25 31 27 31 27 27.858C28.72 27.411 30 25.859 30 24"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                    <div
+                      class="content"
+                    >
+                      Discussion
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/editing"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M29.082,8.8701 L27.946,10.0061 L26.178,8.2381 L27.314,7.1021 L29.082,8.8701 Z M15.91,21.7981 L14.111,22.3351 L13.771,21.9951 L14.368,20.2551 L15.91,21.7981 Z M23.928,10.4881 L24.764,9.6521 L26.532,11.4201 L25.696,12.2561 L23.928,10.4881 Z M24.282,13.6701 L17.447,20.5061 L15.678,18.7371 L22.514,11.9021 L24.282,13.6701 Z M10.45,25.5141 L17.316,23.4651 L30.673,10.1071 C31.355,9.4251 31.355,8.3151 30.673,7.6331 L28.552,5.5121 C27.891,4.8501 26.738,4.8491 26.077,5.5121 L12.735,18.8531 L10.45,25.5141 Z"
+                        />
+                        <path
+                          d="M29 29 7 29 7 7 22 7 22 5 5 5 5 31 31 31 31 14 29 14z"
+                        />
+                      </g>
+                    </svg>
+                    <div
+                      class="content"
+                    >
+                      Editing
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/moderate-comments"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          d="M7,24.5859 L7,22.9999 L6,22.9999 C5.449,22.9999 5,22.5519 5,21.9999 L5,9.9999 C5,9.4479 5.449,8.9999 6,8.9999 L26,8.9999 C26.551,8.9999 27,9.4479 27,9.9999 L27,14.9999 L29,14.9999 L29,9.9999 C29,8.3459 27.654,6.9999 26,6.9999 L6,6.9999 C4.346,6.9999 3,8.3459 3,9.9999 L3,21.9999 C3,23.3039 3.836,24.4159 5,24.8289 L5,29.4139 L9.414,24.9999 L17,24.9999 L17,22.9999 L8.586,22.9999 L7,24.5859 Z"
+                        />
+                        <path
+                          d="M31,24 C31,24.552 30.551,25 30,25 L29,25 L29,26.586 L27.414,25 L22,25 C21.449,25 21,24.552 21,24 L21,20 C21,19.448 21.449,19 22,19 L30,19 C30.551,19 31,19.448 31,20 L31,24 Z M30,17 L22,17 C20.346,17 19,18.346 19,20 L19,24 C19,25.654 20.346,27 22,27 L26.586,27 L31,31.414 L31,26.829 C32.164,26.416 33,25.304 33,24 L33,20 C33,18.346 31.654,17 30,17 L30,17 Z"
+                        />
+                      </g>
+                    </svg>
+                    <div
+                      class="content"
+                    >
+                      Moderate Comments
+                    </div>
+                  </h3>
+                </a>
+              </div>
+              <div
+                class="column"
+              >
+                <a
+                  href="/controlpanel/relations"
+                >
+                  <h3
+                    class="ui icon center aligned header"
+                  >
+                    <svg
+                      class="icon"
+                      style="height: 48px; width: auto; fill: currentColor;"
+                      viewBox="0 0 36 36"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M18.707 5.293 17.293 6.707 27.586 17 5 17 5 19 27.586 19 17.293 29.293 18.707 30.707 31.414 18z"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                    <div
+                      class="content"
+                    >
+                      Relations
+                    </div>
+                  </h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui secondary segment"
+        >
           General
         </div>
         <div
@@ -208,153 +383,6 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                       class="content"
                     >
                       Undo
-                    </div>
-                  </h3>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ui secondary segment"
-        >
-          Content
-        </div>
-        <div
-          class="ui attached segment"
-        >
-          <div
-            class="ui doubling six column grid"
-          >
-            <div
-              class="row"
-            >
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/rules"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox="0 0 36 36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g
-                        fill-rule="evenodd"
-                      >
-                        <path
-                          d="M7,29 L29,29 L29,7 L7,7 L7,29 Z M5,31 L31,31 L31,5 L5,5 L5,31 Z"
-                        />
-                        <path
-                          d="M21 17 25 17 25 11 21 11 21 17ZM19 19 27 19 27 9 19 9 19 19ZM9 11 17 11 17 9 9 9zM9 15 17 15 17 13 9 13zM9 19 17 19 17 17 9 17zM9 23 27 23 27 21 9 21zM9 27 23 27 23 25 9 25z"
-                        />
-                      </g>
-                    </svg>
-                    <div
-                      class="content"
-                    >
-                      Content Rules
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/editing"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox="0 0 36 36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g
-                        fill-rule="evenodd"
-                      >
-                        <path
-                          d="M29.082,8.8701 L27.946,10.0061 L26.178,8.2381 L27.314,7.1021 L29.082,8.8701 Z M15.91,21.7981 L14.111,22.3351 L13.771,21.9951 L14.368,20.2551 L15.91,21.7981 Z M23.928,10.4881 L24.764,9.6521 L26.532,11.4201 L25.696,12.2561 L23.928,10.4881 Z M24.282,13.6701 L17.447,20.5061 L15.678,18.7371 L22.514,11.9021 L24.282,13.6701 Z M10.45,25.5141 L17.316,23.4651 L30.673,10.1071 C31.355,9.4251 31.355,8.3151 30.673,7.6331 L28.552,5.5121 C27.891,4.8501 26.738,4.8491 26.077,5.5121 L12.735,18.8531 L10.45,25.5141 Z"
-                        />
-                        <path
-                          d="M29 29 7 29 7 7 22 7 22 5 5 5 5 31 31 31 31 14 29 14z"
-                        />
-                      </g>
-                    </svg>
-                    <div
-                      class="content"
-                    >
-                      Editing
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/moderate-comments"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox="0 0 36 36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g
-                        fill-rule="evenodd"
-                      >
-                        <path
-                          d="M7,24.5859 L7,22.9999 L6,22.9999 C5.449,22.9999 5,22.5519 5,21.9999 L5,9.9999 C5,9.4479 5.449,8.9999 6,8.9999 L26,8.9999 C26.551,8.9999 27,9.4479 27,9.9999 L27,14.9999 L29,14.9999 L29,9.9999 C29,8.3459 27.654,6.9999 26,6.9999 L6,6.9999 C4.346,6.9999 3,8.3459 3,9.9999 L3,21.9999 C3,23.3039 3.836,24.4159 5,24.8289 L5,29.4139 L9.414,24.9999 L17,24.9999 L17,22.9999 L8.586,22.9999 L7,24.5859 Z"
-                        />
-                        <path
-                          d="M31,24 C31,24.552 30.551,25 30,25 L29,25 L29,26.586 L27.414,25 L22,25 C21.449,25 21,24.552 21,24 L21,20 C21,19.448 21.449,19 22,19 L30,19 C30.551,19 31,19.448 31,20 L31,24 Z M30,17 L22,17 C20.346,17 19,18.346 19,20 L19,24 C19,25.654 20.346,27 22,27 L26.586,27 L31,31.414 L31,26.829 C32.164,26.416 33,25.304 33,24 L33,20 C33,18.346 31.654,17 30,17 L30,17 Z"
-                        />
-                      </g>
-                    </svg>
-                    <div
-                      class="content"
-                    >
-                      Moderate Comments
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/relations"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox="0 0 36 36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M18.707 5.293 17.293 6.707 27.586 17 5 17 5 19 27.586 19 17.293 29.293 18.707 30.707 31.414 18z"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                    <div
-                      class="content"
-                    >
-                      Relations
                     </div>
                   </h3>
                 </a>
@@ -822,40 +850,6 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                       class="content"
                     >
                       Content Rules
-                    </div>
-                  </h3>
-                </a>
-              </div>
-              <div
-                class="column"
-              >
-                <a
-                  href="/controlpanel/moderate-comments"
-                >
-                  <h3
-                    class="ui icon center aligned header"
-                  >
-                    <svg
-                      class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
-                      viewBox="0 0 36 36"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g
-                        fill-rule="evenodd"
-                      >
-                        <path
-                          d="M7,24.5859 L7,22.9999 L6,22.9999 C5.449,22.9999 5,22.5519 5,21.9999 L5,9.9999 C5,9.4479 5.449,8.9999 6,8.9999 L26,8.9999 C26.551,8.9999 27,9.4479 27,9.9999 L27,14.9999 L29,14.9999 L29,9.9999 C29,8.3459 27.654,6.9999 26,6.9999 L6,6.9999 C4.346,6.9999 3,8.3459 3,9.9999 L3,21.9999 C3,23.3039 3.836,24.4159 5,24.8289 L5,29.4139 L9.414,24.9999 L17,24.9999 L17,22.9999 L8.586,22.9999 L7,24.5859 Z"
-                        />
-                        <path
-                          d="M31,24 C31,24.552 30.551,25 30,25 L29,25 L29,26.586 L27.414,25 L22,25 C21.449,25 21,24.552 21,24 L21,20 C21,19.448 21.449,19 22,19 L30,19 C30.551,19 31,19.448 31,20 L31,24 Z M30,17 L22,17 C20.346,17 19,18.346 19,20 L19,24 C19,25.654 20.346,27 22,27 L26.586,27 L31,31.414 L31,26.829 C32.164,26.416 33,25.304 33,24 L33,20 C33,18.346 31.654,17 30,17 L30,17 Z"
-                        />
-                      </g>
-                    </svg>
-                    <div
-                      class="content"
-                    >
-                      Moderate Comments
                     </div>
                   </h3>
                 </a>
