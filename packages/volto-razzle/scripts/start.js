@@ -8,13 +8,13 @@ const webpack = require('webpack');
 const createConfig = require('../config/createConfigAsync');
 const loadRazzleConfig = require('../config/loadRazzleConfig');
 const devServer = require('../config/razzleDevServer');
-const printErrors = require('razzle-dev-utils/printErrors');
+const printErrors = require('@plone/razzle-dev-utils/printErrors');
 const clearConsole = require('react-dev-utils/clearConsole');
-const logger = require('razzle-dev-utils/logger');
-const setPorts = require('razzle-dev-utils/setPorts');
+const logger = require('@plone/razzle-dev-utils/logger');
+const setPorts = require('@plone/razzle-dev-utils/setPorts');
 const chalk = require('chalk');
 const terminate = require('terminate');
-const devServerMajorVersion = require('razzle-dev-utils/devServerMajor');
+const devServerMajorVersion = require('@plone/razzle-dev-utils/devServerMajor');
 
 let verbose = false;
 

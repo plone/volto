@@ -35,7 +35,7 @@
     "dotenv": "^8.2.0",
     "dotenv-expand": "^5.1.0",
     "esbuild": "0.25.12",
-    "file-loader": "^4.3.0",
+    "file-loader": "^6.2.0",
     "fs-extra": "^9.1.0",
     "inquirer": "^7.3.3",
     "mri": "^1.1.4",
@@ -46,7 +46,7 @@
     "postcss-loader": "7.0.2",
     "process": "^0.11.10",
     "razzle-start-server-webpack-plugin": "4.2.18",
-    "react-dev-utils": "^11.0.4",
+    "react-dev-utils": "^12.0.1",
     "react-refresh": "0.14.0",
     "release-it": "^19.0.4",
     "resolve": "^1.17.0",
@@ -57,8 +57,8 @@
     "terminate": "^2.1.2",
     "terser-webpack-plugin": "5.3.6",
     "tiny-async-pool": "^1.1.0",
-    "url-loader": "^2.3.0",
-    "webpack-manifest-plugin": "^3.1.1",
+    "url-loader": "^4.1.1",
+    "webpack-manifest-plugin": "^4.1.1",
     "webpackbar": "~4||~5"
   },
   "devDependencies": {
@@ -69,7 +69,7 @@
     "@plone/babel-preset-razzle": "workspace:*",
     "html-webpack-plugin": "~4||~5",
     "mini-css-extract-plugin": "2.7.2",
-    "razzle-dev-utils": "4.2.18",
+    "@plone/razzle-dev-utils": "workspace:*",
     "webpack": "~4||~5",
     "webpack-dev-server": "^3.11.0||~4"
   },
