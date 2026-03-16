@@ -1,0 +1,1 @@
+Added type for the Link content type @arybakov05

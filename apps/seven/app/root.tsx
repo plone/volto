@@ -6,6 +6,7 @@ import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
 import config from '@plone/registry';
+import { getAuthFromRequest } from '@plone/react-router';
 import {
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -22,6 +23,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   const locale = await i18next.getLocale(request);
 
   const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
+  const token = await getAuthFromRequest(request);
 
   const cli = config
     .getUtility({
@@ -29,6 +31,8 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       type: 'client',
     })
     .method() as PloneClient;
+
+  cli.config.token = token;
 
   const path = `/${params['*'] || ''}`;
 
@@ -74,6 +78,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       content: flattenToAppURL(content.data),
       site: flattenToAppURL(site.data),
       locale,
+      isAuthenticated: !!token,
       ...rootLoaderDataUtilitiesData
         .filter((item) => item)
         .reduce((acc, item) => ({ ...acc, ...item }), {}),
