@@ -781,15 +781,21 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.1.13)
       usehooks-ts:
-        specifier: ^3.1.0
+        specifier: ^3.1.1
         version: 3.1.1(react@19.2.0)
     devDependencies:
       '@plone/types':
         specifier: workspace:*
         version: link:../types
+      '@tailwindcss/vite':
+        specifier: 'catalog:'
+        version: 4.1.13(vite@6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
       '@testing-library/jest-dom':
         specifier: 6.4.2
         version: 6.4.2(@types/jest@30.0.0)(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+      '@testing-library/react':
+        specifier: 'catalog:'
+        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@types/jest-axe':
         specifier: ^3.5.7
         version: 3.5.9
@@ -799,6 +805,9 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.2.3(@types/react@19.2.6)
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 4.0.12(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
       jest-axe:
         specifier: ^8.0.0
         version: 8.0.0
@@ -808,15 +817,27 @@ importers:
       release-it:
         specifier: 17.1.1
         version: 17.1.1(typescript@5.9.2)
+      tailwindcss-react-aria-components:
+        specifier: ^2.0.0
+        version: 2.0.1(tailwindcss@4.1.13)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
       typescript:
         specifier: 'catalog:'
         version: 5.9.2
+      vite:
+        specifier: 'catalog:'
+        version: 6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1)
+      vite-tsconfig-paths:
+        specifier: ^5.1.4
+        version: 5.1.4(typescript@5.9.2)(vite@6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
       vitest:
         specifier: 'catalog:'
         version: 4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1)
+      vitest-axe:
+        specifier: ^0.1.0
+        version: 0.1.0(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
 
   packages/helpers:
     dependencies:
