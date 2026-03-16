@@ -1,5 +1,5 @@
 import type { BlocksData, Content } from '@plone/types';
-import { nanoid, type TElement } from '@udecode/plate';
+import { nanoid, type TElement } from 'platejs';
 
 type SlateNode = TElement;
 type ExtendedSlateNode = SlateNode & {
