@@ -19,12 +19,12 @@ const CopyPlugin = require('copy-webpack-plugin');
 const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const modules = require('./modules');
 const postcssLoadConfig = require('postcss-load-config');
-const resolveRequest = require('razzle-dev-utils/resolveRequest');
-const logger = require('razzle-dev-utils/logger');
+const resolveRequest = require('@plone/razzle-dev-utils/resolveRequest');
+const logger = require('@plone/razzle-dev-utils/logger');
 const razzlePaths = require('./paths');
 const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
-const webpackMajor = require('razzle-dev-utils/webpackMajor');
-const devServerMajorVersion = require('razzle-dev-utils/devServerMajor');
+const webpackMajor = require('@plone/razzle-dev-utils/webpackMajor');
+const devServerMajorVersion = require('@plone/razzle-dev-utils/devServerMajor');
 
 const hasPostCssConfigTest = () => {
   try {
@@ -39,11 +39,11 @@ const hasPostCssConfig = hasPostCssConfigTest();
 let webpackDevClientEntry;
 if (devServerMajorVersion > 3) {
   webpackDevClientEntry = require.resolve(
-    'razzle-dev-utils/webpackHotDevClientV4',
+    '@plone/razzle-dev-utils/webpackHotDevClientV4',
   );
 } else {
   webpackDevClientEntry = require.resolve(
-    'razzle-dev-utils/webpackHotDevClient',
+    '@plone/razzle-dev-utils/webpackHotDevClient',
   );
 }
 
@@ -753,7 +753,7 @@ module.exports = (
 
         // Pretty format server errors
         config.entry.server.unshift(
-          require.resolve('razzle-dev-utils/prettyNodeErrors'),
+          require.resolve('@plone/razzle-dev-utils/prettyNodeErrors'),
         );
 
         config.plugins = [
@@ -1045,9 +1045,7 @@ module.exports = (
             minimizer: [
               new TerserPlugin(webpackOptions.terserPluginOptions),
               new CssMinimizerPlugin({
-                sourceMap: razzleOptions.enableSourceMaps,
                 minimizerOptions: {
-                  sourceMap: razzleOptions.enableSourceMaps,
                   // Removed the calc option because it causes issues with some modern CSS
                   // Let's allow the browsers do the calc() work and the minification to gzip
                   preset: ['default', { calc: false }],

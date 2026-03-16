@@ -17,6 +17,15 @@ const messages = defineMessages({
     id: 'Alignment',
     defaultMessage: 'Alignment',
   },
+  Title: {
+    id: 'Title',
+    defaultMessage: 'Title',
+  },
+  TitleDescription: {
+    id: 'VideoTitleDescription',
+    defaultMessage:
+      "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty.",
+  },
 });
 export const VideoBlockSchema = (props) => ({
   title: props.intl.formatMessage(messages.Video),
@@ -25,7 +34,7 @@ export const VideoBlockSchema = (props) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['url', 'preview_image', 'align'],
+      fields: ['url', 'preview_image', 'title', 'align'],
     },
   ],
 
@@ -41,6 +50,10 @@ export const VideoBlockSchema = (props) => ({
       widget: 'url',
       helpUrl:
         'https://6.docs.plone.org/volto/user-manual/blocks.html#video-block',
+    },
+    title: {
+      title: props.intl.formatMessage(messages.Title),
+      description: props.intl.formatMessage(messages.TitleDescription),
     },
     align: {
       title: props.intl.formatMessage(messages.Alignment),
