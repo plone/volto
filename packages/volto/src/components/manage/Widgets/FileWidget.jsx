@@ -35,12 +35,12 @@ const messages = defineMessages({
     defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drop file here to replace the existing file',
-    defaultMessage: 'Drop file here to replace the existing file',
+    id: 'Drop a file here or click to replace the current one',
+    defaultMessage: 'Drop a file here or click to replace the current one',
   },
   fileDrag: {
-    id: 'Drop file here to upload a new file',
-    defaultMessage: 'Drop file here to upload a new file',
+    id: 'Drop a file here or click to upload',
+    defaultMessage: 'Drop a file here or click to upload',
   },
   replaceFile: {
     id: 'Replace existing file',
@@ -58,6 +58,10 @@ const messages = defineMessages({
   acceptError: {
     id: 'File is not of the accepted type {accept}',
     defaultMessage: 'File is not of the accepted type {accept}',
+  },
+  dragAndDropActionA11y: {
+    id: 'File upload area. Press Enter to open the file browser',
+    defaultMessage: 'File upload area. Press Enter to open the file browser',
   },
   requiredField: {
     id: 'This field is required.',
@@ -179,7 +183,13 @@ const FileWidget = (props) => {
         {...(props.accept ? { accept: props.accept } : {})}
       >
         {({ getRootProps, getInputProps, isDragActive }) => (
-          <div className="file-widget-dropzone" {...getRootProps()}>
+          <div
+            className="file-widget-dropzone"
+            role="button"
+            aria-label={intl.formatMessage(messages.dragAndDropActionA11y)}
+            aria-describedby={`field-${id}-status`}
+            {...getRootProps()}
+          >
             {isDragActive && <Dimmer active></Dimmer>}
             {fileType ? (
               <Image
@@ -208,25 +218,26 @@ const FileWidget = (props) => {
             <Button
               className="label-file-widget-input"
               tabIndex={-1}
-              aria-label={
-                props.required
-                  ? `${value ? intl.formatMessage(messages.replaceFile) : intl.formatMessage(messages.addNewFile)}. (${intl.formatMessage(messages.requiredField)})`
-                  : null
-              }
+              aria-hidden="true"
             >
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
             </Button>
+            <span id={`field-${id}-status`} className="visually-hidden">
+              {props.required && intl.formatMessage(messages.requiredField)}
+              {props.error?.length > 0 && ` ${props.error.join(' ')}`}
+              {value ? ` ${value.filename}` : ''}
+            </span>
             <input
               {...getInputProps({
                 type: 'file',
                 style: { display: 'none' },
-                'aria-required': props.required, // ← AQUI!
               })}
               id={`field-${id}`}
+              aria-required={props.required}
+              aria-invalid={props.error?.length > 0}
               name={id}
-              type="file"
               disabled={isDisabled}
             />
           </div>
