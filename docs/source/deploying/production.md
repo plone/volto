@@ -15,9 +15,9 @@ This chapter describes how to deploy a Volto application to a production environ
 Cookieplone deployment option.
 ```
 
-For production deployments, use the [Cookieplone](https://github.com/plone/cookieplone) `project` template.
-It scaffolds the full Plone stack that integrators may customize and deploy.
-Inside the generated project, a {file}`frontend/` folder contains the Volto application used in production.
+For production deployments where you need only the Volto frontend, use the [Cookieplone](https://github.com/plone/cookieplone) `sub/frontend_project` template.
+It scaffolds a standalone Volto frontend project that you can deploy alongside your Plone backend.
+By default, this template generates the frontend in a {file}`sub/frontend_project/` folder.
 
 This approach provides:
 - a clean, minimal boilerplate project structure
@@ -34,31 +34,27 @@ The Volto app approach for production deployments is deprecated.
 
 ## Generate a project with Cookieplone
 
-To create a production-ready Volto project, run Cookieplone's `project` template.
+To create a production-ready Volto frontend project, run Cookieplone's `sub/frontend_project` template.
 
 ```shell
-uvx cookieplone project
+uvx cookieplone sub/frontend_project
 ```
 
 
 This command will:
 1.  Prompt you for project details, including project name, description, and other information.
-2.  Generate a boilerplate project structure with backend and frontend folders.
-3.  Set up a {file}`package.json` file in `frontend/` that depends on Volto.
+2.  Generate a boilerplate project structure with backend and a dedicated frontend folder.
+3.  Set up a {file}`package.json` file in {file}`sub/frontend_project/` that depends on Volto.
 4.  Include deployment scripts and configuration to build and run the frontend.
 
-The generated {file}`frontend/` project uses Volto as a dependency while remaining a thin wrapper where you add site-specific configuration, add-ons, and styling.
-
-```{tip}
-Cookieplone also ships an internal template `sub/frontend_project` that is used to build the official `plone-frontend` Docker images. It is not meant to be invoked directly by integrators because it lacks the backend plumbing and policy add-ons that a real project requires.
-```
+The generated {file}`sub/frontend_project/` project uses Volto as a dependency while remaining a thin wrapper where you add site-specific configuration, add-ons, and styling.
 
 ### Project structure
 
 After generation, the frontend portion of your project will have a structure similar to the following file tree diagram.
 
 ```console
-my-volto-project/frontend/
+my-volto-project/sub/frontend_project/
 ├── package.json          # Defines Volto as a dependency
 ├── src/
 │   └── config.js         # Your Volto configuration
