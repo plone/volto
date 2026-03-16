@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const resolve = require('resolve');
-const logger = require('razzle-dev-utils/logger');
+const logger = require('@plone/razzle-dev-utils/logger');
 
 function getAdditionalModulePaths(options = {}, paths) {
   const baseUrl = options.baseUrl;
