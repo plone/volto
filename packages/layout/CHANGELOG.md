@@ -8,6 +8,39 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.4 (2025-12-23)
+
+### Breaking
+
+- @plone/layout reordering refactor. @sneridagh [#7432](https://github.com/plone/volto/issues/7432)
+
+### Feature
+
+- View for the File content type @frapell [#6707](https://github.com/plone/volto/issues/6707)
+- Renamed main.css -> publicui.css for placing the publicui CSS in add-ons. @sneridagh [#7426](https://github.com/plone/volto/issues/7426)
+- Added ESlint Tailwind plugin for prettifying and wrapping up the classNames in components.
+  Amended components classNames by applying the plugin. @sneridagh [#7434](https://github.com/plone/volto/issues/7434)
+- View for the Image content type @ebrehault [#7513](https://github.com/plone/volto/issues/7513)
+- Added basic content types views management and rendering. @pnicolli 
+- Unified Image and File views. @pnicolli 
+
+### Bugfix
+
+- Fix logo retrieval from the site endpoint data in the root loader. @sneridagh [#7427](https://github.com/plone/volto/issues/7427)
+- Avoid including always the original size in the Image component. Read now the site config and check if the image has all the sizes available in place. @sneridagh [#7486](https://github.com/plone/volto/issues/7486)
+- Better header CSS, centering the navigation sections. @sneridagh [#7488](https://github.com/plone/volto/issues/7488)
+- Fix default view on non plone content types. @sneridagh [#7490](https://github.com/plone/volto/issues/7490)
+- Added Brain to image component item types. @pnicolli 
+- Better CSS for constrained logo images. @pnicolli @sneridagh 
+- Fixed Image component types. @pnicolli 
+- Fixed styles when the main theme is tailwind-based. @pnicolli 
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395](https://github.com/plone/volto/issues/7395)
+- Linting for remaining TW classNames under callees due to missconfiguration. @sneridagh [#7467](https://github.com/plone/volto/issues/7467)
+- Hide tools in prod. @sneridagh 
+
 ## 1.0.0-alpha.3 (2025-09-29)
 
 ### Feature

@@ -25,8 +25,8 @@ Seven uses [SVGR](https://react-svgr.com/) through a custom Vite plugin to trans
 
 To add a custom icon, perform the following steps.
 
-1.  Drop an SVG file anywhere inside your app, such as {file}`./my-icon.svg`.
-1.  Import it as if it were a React component.
+1.  Drop an SVG file anywhere inside your add-on, such as {file}`./my-icon.svg`.
+1.  Import it as if it were a React component using the `?react` query parameter.
 1.  Render it, passing props such as `aria-label`, `size`, or `color`.
 
 The following code example shows the last two steps.
@@ -34,7 +34,7 @@ The following code example shows the last two steps.
 ```{code-block} tsx
 :caption: {file}`apps/seven/app/components/MyComponent.tsx`
 
-import MyIcon from './my-icon.svg';
+import MyIcon from './my-icon.svg?react';
 
 const MyComponent = () => {
   return <MyIcon aria-label="My Icon" size="sm" color="--color-quanta-daiquiri" />;
@@ -43,7 +43,17 @@ const MyComponent = () => {
 
 ```{note}
 Under the hood, the SVGR plugin gets the SVG, optimizes it, and transforms it into a React component.
+Please note the `?react` query parameter in the import statement, which tells Vite to apply the SVGR transformation and return a React component.
 ```
+
+````{tip}
+To fix the TypeScript error `Cannot find module './my-icon.svg?react' or its corresponding type declarations`, create a {file}`types.d.ts` file in your add-on with the following content:
+
+```{code-block} ts
+:caption: {file}`packages/<add-on-name>/types.d.ts`
+import '@plone/components/icons';
+```
+````
 
 ### Icon props
 
@@ -89,7 +99,7 @@ These icons go through the same SVGR transformation as your custom SVGs.
 The following code example shows how to import the trash can icon from the Quanta icon set.
 
 ```tsx
-import TrashSVG from '@plone/components/icons/bin.svg';
+import TrashSVG from '@plone/components/icons/bin.svg?react';
 
 const MyComponent = () => (
   <TrashSVG aria-label="Delete" size="lg" color="--color-quanta-wine" />
