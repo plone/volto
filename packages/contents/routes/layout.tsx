@@ -21,7 +21,7 @@ import Back from '@plone/components/icons/arrow-left.svg?react';
 // import TopNavBar from '@plone/cmsui/components/Layout/TopNavBar';
 
 // eslint-disable-next-line import/no-unresolved
-import stylesheet from 'seven/cmsui.css?url';
+import stylesheet from 'seven/.plone/cmsui.css?url';
 import basicComponentsStylesheets from '@plone/components/dist/basic.css?url';
 import quantaComponentsStylesheet from '@plone/components/dist/quanta.css?url';
 import Toast from '@plone/layout/components/Toast/Toast';
