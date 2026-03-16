@@ -4834,6 +4834,11 @@ msgstr "/exemplo"
 msgid "externalURLsNotAllowed"
 msgstr "Endereços externos não são permitidos neste campo."
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "field.file.downloadFile"
+msgstr "Baixar {filename}"
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"

@@ -4834,6 +4834,11 @@ msgstr "/exemplu"
 msgid "externalURLsNotAllowed"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "field.file.downloadFile"
+msgstr "Descarcă {filename}"
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"

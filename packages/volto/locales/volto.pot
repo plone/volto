@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-03-16T14:43:32.780Z\n"
+"POT-Creation-Date: 2026-03-16T14:59:37.847Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -4828,6 +4828,11 @@ msgstr ""
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
+msgstr ""
+
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "field.file.downloadFile"
 msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"

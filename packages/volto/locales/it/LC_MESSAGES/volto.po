@@ -4828,6 +4828,11 @@ msgstr ""
 msgid "externalURLsNotAllowed"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "field.file.downloadFile"
+msgstr "Scarica {filename}"
+
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
