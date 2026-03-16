@@ -1224,14 +1224,22 @@ msgstr ""
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "अपने कंप्यूटर से फ़ाइलें इस क्षेत्र पर खींचें और छोड़ें या 'ब्राउज़' बटन पर क्लिक करें।"
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to replace the current one"
+msgstr ""
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr ""
+
+#. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "मौजूदा फ़ाइल को बदलने के लिए यहाँ फ़ाइल ड्रॉप करें"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "नई फ़ाइल अपलोड करने के लिए यहाँ फ़ाइल ड्रॉप करें"
@@ -1584,6 +1592,11 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "फ़ाइल का आकार"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr ""
 
 #. Default: "File view"
 #: config/Views

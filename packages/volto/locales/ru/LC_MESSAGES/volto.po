@@ -1229,14 +1229,22 @@ msgstr ""
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Перетащите файлы в эту область или нажмите кнопку «Обзор»."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to replace the current one"
+msgstr ""
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr ""
+
+#. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Перетащите файл сюда, чтобы заменить существующий файл"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Перетащите файл сюда, чтобы загрузить новый файл"
@@ -1589,6 +1597,11 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Размер файла"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr ""
 
 #. Default: "File view"
 #: config/Views

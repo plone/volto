@@ -1229,14 +1229,22 @@ msgstr "Datei herunterladen"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken Sie den “Durchsuchen”-Knopf."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to replace the current one"
+msgstr ""
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr ""
+
+#. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Datei hier ablegen um die bestehende Datei zu ersetzen"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Datei hier ablegen um eine neue Datei hochzuladen"
@@ -1589,6 +1597,11 @@ msgstr "Datei ist nicht vom akzeptierten Typ {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Dateigröße"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr ""
 
 #. Default: "File view"
 #: config/Views

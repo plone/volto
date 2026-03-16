@@ -67,6 +67,10 @@ const messages = defineMessages({
     id: 'This field is required.',
     defaultMessage: 'This field is required.',
   },
+  downloadFile: {
+    id: 'field.file.downloadFile',
+    defaultMessage: 'Download {filename}',
+  },
 });
 
 /**
@@ -175,6 +179,14 @@ const FileWidget = (props) => {
     reader.readAsDataURL(files[0]);
   };
 
+  const statusTextA11y = [
+    props.required && intl.formatMessage(messages.requiredField), // Required field status
+    props.error?.length && props.error.join(' '), // Validation error messages
+    value?.filename, // Current file name if a file is uploaded
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <FormFieldWrapper {...props}>
       <Dropzone
@@ -225,9 +237,7 @@ const FileWidget = (props) => {
                 : intl.formatMessage(messages.addNewFile)}
             </Button>
             <span id={`field-${id}-status`} className="visually-hidden">
-              {props.required && intl.formatMessage(messages.requiredField)}
-              {props.error?.length > 0 && ` ${props.error.join(' ')}`}
-              {value ? ` ${value.filename}` : ''}
+              {statusTextA11y}
             </span>
             <input
               {...getInputProps({
@@ -245,7 +255,13 @@ const FileWidget = (props) => {
       </Dropzone>
       <div className="field-file-name">
         {value && (
-          <UniversalLink href={value.download} download={true}>
+          <UniversalLink
+            href={value.download}
+            aria-label={intl.formatMessage(messages.downloadFile, {
+              filename: value.filename,
+            })}
+            download={true}
+          >
             {value.filename}
           </UniversalLink>
         )}
