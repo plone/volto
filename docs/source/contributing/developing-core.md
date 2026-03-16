@@ -288,6 +288,32 @@ pnpm start
 
 You can also run commands for a specific workspace using the `--filter` feature as shown in the previous section, {ref}`developing-core-run-commands-for-pnpm-workspaces-label`.
 
+## Upgrading Volto in a project created with Cookieplone
+
+```{note}
+The general recommendation is to create a new {term}`Cookieplone` project when you want to work with newer versions of the packages.
+If you are more than bugfixing something, use a bare core checkout, not the one that's inside a project/add-on.
+```
+
+You can enter the `core` directory and there run `git pull`.
+If you want to integrate the latest changes in the {term}`Cookieplone` template that you use, you have to do it manually.
+
+After running `git pull`, run `make install` and then you can easily run `make frontend-start` (for full-stack Cookieplone projects) or `make start` (for frontend-add-on-only {term}`Cookieplone` projects).
+
+### Sometime this helps
+
+You can edit the {file}`mrs.developer.json` file so that inside the object at the key `core` there will be:
+
+```json
+"branch": "main",
+"filterBlobs": true
+```
+
+and remove the key `tag` and run `make install`.
+
+In some situations, produced by different configurations of Volto, in the unstable commits, which are breaking changes, `make install` won't be enough.
+Then you should run, eventually after `git pull` in the core directory if you don't run `make install` before, `pnpm i` and then `pnpm build:all`.
+This is known to work.
 
 ## Develop other libraries in a workspace
 
