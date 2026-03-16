@@ -1007,6 +1007,10 @@ class SchemaWidget extends Component {
    * @returns {undefined}
    */
   onAddField(values) {
+    const factory =
+      typeof values.factory === 'object' && values.factory !== null
+        ? values.factory.value
+        : values.factory;
     const fieldId = slugify(
       values.id || values.title,
       keys(this.props.value.properties),
@@ -1023,19 +1027,18 @@ class SchemaWidget extends Component {
       : [...currentFieldsetFields, fieldId];
 
     const utility = config.getUtility({
-      name: values.factory,
+      name: factory,
       type: 'fieldFactoryInitialData',
     });
 
     const multiple =
-      values.factory === 'Multiple Choice' ||
-      values.factory === 'label_multi_choice_field';
+      factory === 'Multiple Choice' || factory === 'label_multi_choice_field';
 
     const initialData = utility.method
       ? omit(utility.method(this.props.intl), ['id'])
       : {
           type: 'string',
-          factory: values.factory,
+          factory: factory,
         };
 
     this.onChange({
@@ -1795,8 +1798,12 @@ class SchemaWidget extends Component {
             onCancel={this.onCancel}
             className={`field-${slugify(isString(this.state.addField) && this.state.addField !== '' ? this.state.addField : 'label_text_field')}`}
             onChangeFormData={(data) => {
+              const factoryValue =
+                typeof data.factory === 'object' && data.factory !== null
+                  ? data.factory.value
+                  : data.factory;
               this.setState({
-                addField: data.factory,
+                addField: factoryValue,
               });
             }}
             title={this.props.intl.formatMessage(messages.addField)}
