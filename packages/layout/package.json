@@ -60,7 +60,8 @@
     "pretty-bytes": "^7.1.0",
     "react-aria-components": "catalog:",
     "react-i18next": "catalog:",
-    "react-router": "catalog:"
+    "react-router": "catalog:",
+    "rrule": "^2.8.1"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",

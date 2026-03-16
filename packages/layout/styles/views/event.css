@@ -1,0 +1,58 @@
+.event-view {
+  .desktop {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    visibility: visible;
+  }
+
+  .mobile {
+    display: none;
+    visibility: hidden;
+  }
+
+  aside {
+    padding: 1rem;
+    border: 1px solid lightgray;
+    box-shadow: 0 1px 2px 0 lightgray;
+
+    dt {
+      display: block;
+      padding-bottom: 0.1rem;
+      border-bottom: 1px solid gray;
+      font-weight: bold;
+    }
+
+    dd {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .download-event {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+
+      a {
+        align-self: center;
+        margin-bottom: 0;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-right: 1rem;
+    margin-left: 1rem;
+
+    .desktop {
+      display: none;
+      visibility: hidden;
+    }
+
+    .mobile {
+      display: grid;
+      grid-template-columns: 1fr;
+      visibility: visible;
+    }
+  }
+}
