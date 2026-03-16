@@ -14,7 +14,7 @@ import { ColumnKit } from './plugins/column-kit';
 import { CommentKit } from './plugins/comment-kit';
 import { CursorOverlayKit } from './plugins/cursor-overlay-kit';
 import { DiscussionKit } from './plugins/discussion-kit';
-import { DndKit } from './plugins/dnd-kit';
+// import { DndKit } from './plugins/dnd-kit';
 import { DocxKit } from './plugins/docx-kit';
 import { ExitBreakKit } from './plugins/exit-break-kit';
 import { FloatingToolbarKit } from './plugins/floating-toolbar-kit';
@@ -30,6 +30,7 @@ import { SuggestionKit } from './plugins/suggestion-kit';
 import { TableKit } from './plugins/table-kit';
 import { TocKit } from './plugins/toc-kit';
 import { ToggleKit } from './plugins/toggle-kit';
+import { SplitHotkeyPlugin } from './plugins/split-hotkey';
 
 export const BlockEditorKit = [
   ...AIKit,
@@ -65,8 +66,9 @@ export const BlockEditorKit = [
   ...SlashKit,
   ...AutoformatKit,
   ...CursorOverlayKit,
-  ...DndKit,
+  // ...DndKit,
   ...ExitBreakKit,
+  SplitHotkeyPlugin,
   TrailingBlockPlugin,
 
   // Parsers

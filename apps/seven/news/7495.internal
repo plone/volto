@@ -1,1 +1,0 @@
-Fixed make install in case that `.vscode/extensions.json` is not created yet. @sneridagh

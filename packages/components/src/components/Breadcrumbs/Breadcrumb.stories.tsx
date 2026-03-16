@@ -177,3 +177,52 @@ export const LotsOfItems: Story = {
     root: { '@id': '/', title: 'Home', icon: <HomeIcon size="sm" /> },
   },
 };
+
+export const LotsOfItemsWithSeparator: Story = {
+  render: (args) => {
+    const first = longItems ? longItems[0] : null;
+    const last = longItems ? longItems[longItems.length - 1] : null;
+    const inner = longItems ? longItems.slice(1, longItems.length - 1) : [];
+
+    return (
+      <Breadcrumbs {...args}>
+        {args.root && (
+          <Breadcrumb
+            id={args.root['@id']}
+            href={args.root['@id']}
+            separator={<ChevronrightIcon size="sm" />}
+          >
+            {args.root.icon}
+            {args.root.title}
+          </Breadcrumb>
+        )}
+        <Breadcrumb
+          id={first?.['@id']}
+          href={first?.['@id']}
+          separator={<ChevronrightIcon size="sm" />}
+        >
+          {first?.title}
+        </Breadcrumb>
+        <Breadcrumb separator={<ChevronrightIcon size="sm" />}>
+          <Menu items={inner} button={<MoreoptionsIcon />} placement="bottom">
+            {(item) => (
+              <MenuItem id={item['@id']} href={item['@id']}>
+                {item.title}
+              </MenuItem>
+            )}
+          </Menu>
+        </Breadcrumb>
+        <Breadcrumb
+          id={last?.['@id']}
+          href={last?.['@id']}
+          separator={<ChevronrightIcon size="sm" />}
+        >
+          {last?.title}
+        </Breadcrumb>
+      </Breadcrumbs>
+    );
+  },
+  args: {
+    root: { '@id': '/', title: 'Home', icon: <HomeIcon size="sm" /> },
+  },
+};

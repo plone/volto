@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.2 (2025-12-23)
+
+### Internal
+
+- Remove unused imports present, due to missing rule in ESlint. @sneridagh [#7395](https://github.com/plone/volto/pull/7395)
+
 ## 2.0.0-alpha.1 (2025-09-29)
 
 ### Bugfix

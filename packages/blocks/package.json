@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -52,7 +52,8 @@
     "@plone/plate": "workspace:*",
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1",
-    "lodash.clonedeep": "^4.5.0"
+    "lodash.clonedeep": "^4.5.0",
+    "react-i18next": "catalog:"
   },
   "devDependencies": {
     "@plone/helpers": "workspace:*",

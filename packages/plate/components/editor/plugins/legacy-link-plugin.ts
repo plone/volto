@@ -1,7 +1,27 @@
 import { ElementApi, KEYS, createSlatePlugin } from 'platejs';
-import type { Path, PlateEditor, Value } from 'platejs';
+import type { Path, SlateEditor, Value } from 'platejs';
+import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
 
-const migrateLegacyLink = (editor: PlateEditor, path: Path, node: any) => {
+export type LegacyLinkData = {
+  url?: string;
+  target?: string;
+  [key: string]: unknown;
+};
+
+export type LegacyLinkElement = {
+  type?: string;
+  url?: string;
+  target?: string;
+  data?: LegacyLinkData;
+  children?: LegacyLinkElement[];
+  [key: string]: unknown;
+};
+
+export const migrateLegacyLink = (
+  editor: SlateEditor,
+  path: Path,
+  node: LegacyLinkElement,
+) => {
   const linkType = editor.getType(KEYS.link);
   const legacyUrl =
     typeof node?.data?.url === 'string' ? node.data.url : undefined;
@@ -21,9 +41,55 @@ const migrateLegacyLink = (editor: PlateEditor, path: Path, node: any) => {
   }
 };
 
-const migrateLegacyLinksInValue = (editor: PlateEditor, nodes: Value) => {
+export const migrateLegacyLinksInValueStatic = (
+  nodes: Value,
+  linkType = KEYS.link,
+) => {
+  // For SSR/offline usage: caller provides the link type; operates without an editor instance.
+  const mutableNodes = cloneValueToWritable(nodes);
+
+  const visit = (node: LegacyLinkElement) => {
+    if (!ElementApi.isElement(node)) {
+      return;
+    }
+
+    const legacyUrl =
+      typeof node?.data?.url === 'string' ? node.data.url : undefined;
+    if (typeof legacyUrl === 'string') {
+      node.type = linkType;
+      node.url = legacyUrl;
+      if (node?.data?.target) {
+        node.target = node.data.target;
+      }
+      delete node.data;
+    } else if (node.type === linkType && typeof node?.data?.url === 'string') {
+      node.url = node.data.url;
+      if (node?.data?.target) {
+        node.target = node.data.target;
+      }
+      delete node.data;
+    } else if (node.type === 'link') {
+      node.type = linkType;
+    }
+
+    if (Array.isArray(node.children)) {
+      node.children.forEach(visit);
+    }
+  };
+
+  mutableNodes.forEach(visit);
+  applyNormalizedValue(nodes, mutableNodes);
+  return mutableNodes;
+};
+
+export const migrateLegacyLinksInValue = (
+  editor: SlateEditor,
+  nodes: Value,
+) => {
+  // Editor-aware: resolves the configured link type from the plugin before normalizing.
+  const mutableNodes = cloneValueToWritable(nodes);
   const plateLinkType = editor.getType(KEYS.link);
-  const visit = (node: any) => {
+  const visit = (node: LegacyLinkElement) => {
     if (!ElementApi.isElement(node)) {
       return;
     }
@@ -55,7 +121,9 @@ const migrateLegacyLinksInValue = (editor: PlateEditor, nodes: Value) => {
     }
   };
 
-  nodes.forEach(visit);
+  mutableNodes.forEach(visit);
+  applyNormalizedValue(nodes, mutableNodes);
+  return mutableNodes;
 };
 
 /**
@@ -71,7 +139,8 @@ export const LegacyLinkPlugin = [
       type: 'link',
     },
     normalizeInitialValue: ({ editor, value }) => {
-      migrateLegacyLinksInValue(editor, value);
+      const normalized = migrateLegacyLinksInValue(editor, value);
+      applyNormalizedValue(value, normalized);
     },
     extendEditor: ({ editor }) => {
       const { normalizeNode } = editor;
