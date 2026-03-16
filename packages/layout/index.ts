@@ -22,6 +22,7 @@ export default function install(config: ConfigType) {
     Event: EventView,
     ...config.views.contentTypesViews,
   };
+
   config.views.layoutViews = { ...config.views.layoutViews };
 
   installSettings(config);
