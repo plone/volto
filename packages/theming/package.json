@@ -49,8 +49,8 @@
   "dependencies": {
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
-    "tailwind-merge": "^3.0.2",
-    "tailwind-variants": "^1.0.0",
+    "tailwind-merge": "catalog:",
+    "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "^1.0.7"
   },

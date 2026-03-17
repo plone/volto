@@ -14,6 +14,7 @@ import { CommentToolbarButton } from './comment-toolbar-button';
 import { LinkToolbarButton } from './link-toolbar-button';
 import { MarkToolbarButton } from './mark-toolbar-button';
 import { MoreToolbarButton } from './more-toolbar-button';
+import { BlockWidthToolbarButton } from './block-width-toolbar-button';
 import { SuggestionToolbarButton } from './suggestion-toolbar-button';
 import { ToolbarGroup } from './toolbar';
 import { TurnIntoToolbarButton } from './turn-into-toolbar-button';
@@ -34,6 +35,7 @@ export function FloatingToolbarButtons() {
 
           <ToolbarGroup>
             <TurnIntoToolbarButton />
+            <BlockWidthToolbarButton />
 
             <MarkToolbarButton nodeType={KEYS.bold} tooltip="Bold (⌘+B)">
               <BoldIcon />

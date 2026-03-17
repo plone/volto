@@ -21,9 +21,18 @@ import {
 } from '../../ui/heading-node';
 import { HrElement } from '../../ui/hr-node';
 import { ParagraphElement } from '../../ui/paragraph-node';
+import { BLOCK_WIDTH_VALUES } from './block-width-plugin';
 
 export const BasicBlocksKit = [
-  ParagraphPlugin.withComponent(ParagraphElement),
+  ParagraphPlugin.configure({
+    node: { component: ParagraphElement },
+    options: {
+      blockWidth: {
+        defaultWidth: BLOCK_WIDTH_VALUES.narrow,
+        widths: [BLOCK_WIDTH_VALUES.narrow],
+      },
+    },
+  }),
   H1Plugin.configure({
     node: {
       component: H1Element,

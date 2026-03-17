@@ -1,22 +1,18 @@
 import * as React from 'react';
 
-import type { OurFileRouter } from '~/lib/uploadthing';
-import type {
-  ClientUploadedFileData,
-  UploadFilesOptions,
-} from 'uploadthing/types';
-
-import { generateReactHelpers } from '@uploadthing/react';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
-export type UploadedFile<T = unknown> = ClientUploadedFileData<T>;
+export type UploadedFile = {
+  appUrl?: string;
+  key: string;
+  name: string;
+  size: number;
+  type: string;
+  url: string;
+};
 
-interface UseUploadFileProps
-  extends Pick<
-    UploadFilesOptions<OurFileRouter['editorUploader']>,
-    'headers' | 'onUploadBegin' | 'onUploadProgress' | 'skipPolling'
-  > {
+interface UseUploadFileProps {
   onUploadComplete?: (file: UploadedFile) => void;
   onUploadError?: (error: unknown) => void;
 }
@@ -24,70 +20,67 @@ interface UseUploadFileProps
 export function useUploadFile({
   onUploadComplete,
   onUploadError,
-  ...props
 }: UseUploadFileProps = {}) {
   const [uploadedFile, setUploadedFile] = React.useState<UploadedFile>();
   const [uploadingFile, setUploadingFile] = React.useState<File>();
   const [progress, setProgress] = React.useState<number>(0);
   const [isUploading, setIsUploading] = React.useState(false);
 
-  async function uploadThing(file: File) {
+  async function uploadToPlone(file: File) {
     setIsUploading(true);
     setUploadingFile(file);
+    setProgress(10);
 
     try {
-      const res = await uploadFiles('editorUploader', {
-        ...props,
-        files: [file],
-        onUploadProgress: ({ progress }) => {
-          setProgress(Math.min(progress, 100));
+      const payload = await buildCreateContentPayload(file);
+      const contentPath = getCurrentContentPath();
+      const endpoint =
+        contentPath === '/'
+          ? '/@createContent'
+          : `/@createContent${contentPath}`;
+
+      setProgress(40);
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
+        credentials: 'include',
+        body: JSON.stringify({
+          data: payload.data,
+        }),
       });
 
-      setUploadedFile(res[0]);
+      if (!response.ok) {
+        const errorPayload = await parseJsonSafe(response);
+        throw new Error(
+          getServerErrorMessage(errorPayload) ??
+            `Upload failed with status ${response.status}`,
+        );
+      }
 
-      onUploadComplete?.(res[0]);
+      const createdItem = await response.json();
 
-      return uploadedFile;
+      setProgress(90);
+
+      const uploaded = createUploadedFile(file, createdItem);
+
+      setUploadedFile(uploaded);
+      onUploadComplete?.(uploaded);
+      setProgress(100);
+
+      return uploaded;
     } catch (error) {
       const errorMessage = getErrorMessage(error);
-
-      const message =
+      toast.error(
         errorMessage.length > 0
           ? errorMessage
-          : 'Something went wrong, please try again later.';
-
-      toast.error(message);
+          : 'Something went wrong, please try again later.',
+      );
 
       onUploadError?.(error);
-
-      // Mock upload for unauthenticated users
-      // toast.info('User not logged in. Mocking upload process.');
-      const mockUploadedFile = {
-        key: 'mock-key-0',
-        appUrl: `https://mock-app-url.com/${file.name}`,
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        url: URL.createObjectURL(file),
-      } as UploadedFile;
-
-      // Simulate upload progress
-      let progress = 0;
-
-      const simulateProgress = async () => {
-        while (progress < 100) {
-          await new Promise((resolve) => setTimeout(resolve, 50));
-          progress += 2;
-          setProgress(Math.min(progress, 100));
-        }
-      };
-
-      await simulateProgress();
-
-      setUploadedFile(mockUploadedFile);
-
-      return mockUploadedFile;
+      return undefined;
     } finally {
       setProgress(0);
       setIsUploading(false);
@@ -99,13 +92,111 @@ export function useUploadFile({
     isUploading,
     progress,
     uploadedFile,
-    uploadFile: uploadThing,
+    uploadFile: uploadToPlone,
     uploadingFile,
   };
 }
 
-export const { uploadFiles, useUploadThing } =
-  generateReactHelpers<OurFileRouter>();
+async function buildCreateContentPayload(file: File) {
+  const binaryFieldName = isImageFile(file) ? 'image' : 'file';
+  const contentType = binaryFieldName === 'image' ? 'Image' : 'File';
+  const encoded = await readFileAsDataURL(file);
+  const fields = encoded.match(/^data:(.*);(.*),(.*)$/);
+
+  if (!fields) {
+    throw new Error('Could not read file data');
+  }
+
+  return {
+    data: {
+      '@type': contentType,
+      title: file.name,
+      [binaryFieldName]: {
+        data: fields[3],
+        encoding: fields[2],
+        'content-type': fields[1],
+        filename: file.name,
+      },
+    },
+  };
+}
+
+function createUploadedFile(
+  file: File,
+  createdItem: Record<string, unknown>,
+): UploadedFile {
+  const id = String(createdItem?.['@id'] ?? '');
+  const baseId = id.replace(/\/$/, '');
+  const isImage = isImageFile(file);
+  const url = isImage
+    ? `${baseId}/@@images/image`
+    : `${baseId}/@@download/file`;
+
+  return {
+    appUrl: baseId,
+    key: String(createdItem?.UID ?? baseId ?? file.name),
+    name: String(createdItem?.title ?? file.name),
+    size: file.size,
+    type: file.type,
+    url,
+  };
+}
+
+function isImageFile(file: File) {
+  if (file.type?.startsWith('image/')) return true;
+
+  const lowerName = file.name.toLowerCase();
+  return /\.(png|jpe?g|gif|webp|bmp|svg|avif|tiff?)$/.test(lowerName);
+}
+
+async function parseJsonSafe(response: Response) {
+  try {
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+
+function getServerErrorMessage(errorPayload: any) {
+  if (!errorPayload) return null;
+
+  const message = errorPayload?.message ?? errorPayload?.data?.message;
+  if (typeof message === 'string') return message;
+
+  const nested = errorPayload?.error?.message;
+  if (typeof nested === 'string') return nested;
+
+  return null;
+}
+
+function readFileAsDataURL(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result ?? ''));
+    reader.onerror = () =>
+      reject(reader.error ?? new Error('Could not read file'));
+    reader.readAsDataURL(file);
+  });
+}
+
+function getCurrentContentPath() {
+  if (typeof window === 'undefined') return '/';
+
+  let path = window.location.pathname || '/';
+
+  path = path.replace(/^\/@@edit(\/|$)/, '/');
+  path = path.replace(/\/@@edit(?:\/.*)?$/, '');
+
+  if (!path.startsWith('/')) {
+    path = `/${path}`;
+  }
+
+  if (path.length > 1 && path.endsWith('/')) {
+    path = path.slice(0, -1);
+  }
+
+  return path || '/';
+}
 
 export function getErrorMessage(err: unknown) {
   const unknownError = 'Something went wrong, please try again later.';
