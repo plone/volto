@@ -23,10 +23,10 @@ to every deployed website and, if maximum performance is desired, the critical
 CSS could be specific to each page in a CMS.
 
 Fortunately there are ways to automate extracting the critical CSS. One such
-tool is provided from the Plone [critical-css-cli](https://github.com/plone/critical-css-cli)
-repository which can generate a `critical.css` file from a live website. This
+tool is provided by the Plone [critical-css-cli](https://github.com/plone/critical-css-cli)
+repository, which can generate a `critical.css` file from a live website. This
 tool uses internally [critical](https://github.com/addyosmani/critical) and
-a [headless Chrome instance](https://pptr.dev/) to extract the critical css
+a [headless Chrome instance](https://pptr.dev/) to extract the critical CSS
 from a running website.
 
 Run it like:
@@ -36,9 +36,7 @@ critical-cli -h
 critical-cli https://example.com/ -o critical.css
 ```
 
-You can pass multiple URLs and screen dimensions and the extracted CSS will be
-optimized (duplicate rules will be eliminated, etc). See the [Advanced preset
-of cssnano](https://cssnano.github.io/cssnano/docs/what-are-optimisations/) for details. One last
+You can pass multiple URLs and screen dimensions. The extracted CSS will then be optimized (duplicate rules will be eliminated, etc). See the [Advanced preset of cssnano](https://cssnano.github.io/cssnano/docs/what-are-optimisations/) for details. One final
 optimization applied strips all `@import` declarations from the generated CSS.
 
 After that, copy this file to the `public/critical.css` path (configurable
@@ -55,7 +53,7 @@ With critical.css present, the file content is inlined into a `<style>` tag in
 the HTML and the `<link rel="stylesheet" />` links are moved to the bottom of
 the generated HTML.
 
-The ideal scenario when dealing with the critical css is to generate it for
+The ideal scenario when dealing with the critical CSS is to generate it for
 each possible page, but this complicates the overall architecture: storage,
 invalidations, async workers, etc have to be taken into account. In case you
 want to implement this type of scenario, look at
