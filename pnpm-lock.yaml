@@ -431,6 +431,9 @@ importers:
       '@dnd-kit/utilities':
         specifier: 3.2.2
         version: 3.2.2(react@18.2.0)
+      '@internationalized/date':
+        specifier: ^3.10.1
+        version: 3.12.0
       '@loadable/component':
         specifier: 5.14.1
         version: 5.14.1(react@18.2.0)
@@ -566,6 +569,9 @@ importers:
       react-animate-height:
         specifier: 2.0.17
         version: 2.0.17(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react-aria-components:
+        specifier: ^1.14.0
+        version: 1.16.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-beautiful-dnd:
         specifier: 13.0.0
         version: 13.0.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)

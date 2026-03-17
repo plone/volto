@@ -1,68 +1,70 @@
-import React from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
-import loadable from '@loadable/component';
+import { TimeField } from '@plone/components';
+import { Time } from '@internationalized/date';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import clearSVG from '@plone/volto/icons/clear.svg';
 
-import 'rc-time-picker/assets/index.css';
-
-const TimePicker = loadable(() => import('rc-time-picker'));
-
 const messages = defineMessages({
-  time: {
-    id: 'Time',
-    defaultMessage: 'Time',
+  clearTime: {
+    id: 'Clear time',
+    defaultMessage: 'Clear time',
   },
 });
 
-const TimeWidgetComponent = (props) => {
-  const { id, resettable, moment, value, onChange, isDisabled } = props;
+/**
+ * Parse a 'HH:mm' string into a Time object.
+ */
+const parseTimeString = (value) => {
+  if (!value) return null;
+  const [hours, minutes] = value.split(':').map(Number);
+  return new Time(hours, minutes);
+};
+
+/**
+ * Format a TimeValue object back to 'HH:mm' string.
+ */
+const formatTimeValue = (time) => {
+  if (!time) return null;
+  return `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`;
+};
+
+export const TimeWidgetComponent = (props) => {
+  const { id, resettable, value, onChange, isDisabled } = props;
 
   const intl = useIntl();
-  const lang = intl.locale;
 
-  const onTimeChange = (time) => {
-    if (time) {
-      onChange(id, time.format('HH:mm'));
-    }
-  };
+  const onTimeChange = useCallback(
+    (time) => {
+      if (time) {
+        onChange(id, formatTimeValue(time));
+      }
+    },
+    [id, onChange],
+  );
 
-  const onResetTime = () => {
+  const onResetTime = useCallback(() => {
     onChange(id, null);
-  };
+  }, [id, onChange]);
 
   return (
     <FormFieldWrapper {...props}>
       <div className="date-time-widget-wrapper">
-        <div className="ui input time-input">
-          <TimePicker
-            disabled={isDisabled}
-            defaultValue={moment.default()}
-            value={value ? moment.default(value, 'HH:mm') : null}
-            onChange={onTimeChange}
-            allowEmpty={false}
-            showSecond={false}
-            use12Hours={lang === 'en'}
-            id={id}
-            format={moment.default
-              .localeData(toBackendLang(lang))
-              .longDateFormat('LT')}
-            placeholder={intl.formatMessage(messages.time)}
-            focusOnOpen
-            placement="bottomRight"
-          />
-        </div>
+        <TimeField
+          value={parseTimeString(value)}
+          onChange={onTimeChange}
+          isDisabled={isDisabled}
+        />
         {resettable && (
           <button
             type="button"
             disabled={isDisabled || !value}
             onClick={onResetTime}
             className="item ui noborder button"
+            aria-label={intl.formatMessage(messages.clearTime)}
           >
             <Icon name={clearSVG} size="24px" className="close" />
           </button>
@@ -87,10 +89,8 @@ TimeWidgetComponent.defaultProps = {
   description: null,
   required: false,
   error: [],
-  dateOnly: false,
-  noPastDates: false,
   value: null,
   resettable: true,
 };
 
-export default injectLazyLibs(['reactDates', 'moment'])(TimeWidgetComponent);
+export default TimeWidgetComponent;
