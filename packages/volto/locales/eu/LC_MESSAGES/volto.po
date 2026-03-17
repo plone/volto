@@ -687,6 +687,11 @@ msgstr "Aukeratu fitxategia"
 msgid "Clear"
 msgstr "Garbitu"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "URLa garbitu"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2658,6 +2663,11 @@ msgstr "Ados"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "URL arakatzailea ireki"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4160,6 +4170,16 @@ msgstr "URLen kudeaketa"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "{title} orrialdearen URLen kudeaketa"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URLa falta da"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules

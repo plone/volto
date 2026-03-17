@@ -685,6 +685,11 @@ msgstr "Выбрать файл"
 msgid "Clear"
 msgstr "Очистить"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Очистить URL"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2656,6 +2661,11 @@ msgstr "ОК"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Разрешены только 7-битные символы (ASCII). Не может содержать заглавные буквы, специальные символы: <, >, &, #, /, ? или другие, которые недопустимы в URL. Не может начинаться с: _, aq_, @@, ++. Не может заканчиваться на __. Не может быть: request,contributors, ., .., "". Не может содержать новые строки."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Открыть браузер URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4158,6 +4168,16 @@ msgstr "Управление URL"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "Управление URL для {title}"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL отсутствует"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
