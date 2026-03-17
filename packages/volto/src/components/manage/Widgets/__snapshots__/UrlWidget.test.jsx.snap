@@ -32,10 +32,10 @@ exports[`renders an url widget component 1`] = `
             class="wrapper"
           >
             <div
-              class="ui error input"
+              class="ui input"
             >
               <input
-                aria-invalid="true"
+                aria-invalid="false"
                 aria-required="false"
                 id="field-test-url"
                 name="test-url"
@@ -47,7 +47,7 @@ exports[`renders an url widget component 1`] = `
               class="ui buttons"
             >
               <button
-                aria-label="openUrlBrowser"
+                aria-label="Open URL browser"
                 class="ui basic icon button"
                 type="button"
               >
