@@ -9,7 +9,9 @@ const ContentsBreadcrumbs = (props) => {
   const { items } = props;
   const navroot = useSelector((state) => state.navroot.data.navroot);
   const navrootIsPortal = navroot?.['@type'] === 'Plone Site';
-  const inner = items ? items.slice(0, -1) : [];
+  const inner = items ? items.slice(0, -2) : [];
+  const secondLast =
+    items && items.length >= 2 ? items[items.length - 2] : null;
   const last = items ? items[items.length - 1] : null;
 
   return (
@@ -45,6 +47,11 @@ const ContentsBreadcrumbs = (props) => {
               </MenuItem>
             )}
           </Menu>
+        </Breadcrumb>
+      )}
+      {secondLast && (
+        <Breadcrumb href={secondLast?.url} separator={<SlashIcon size="sm" />}>
+          {secondLast?.title}
         </Breadcrumb>
       )}
       <Breadcrumb href={last?.url} separator={<SlashIcon size="sm" />}>
