@@ -12,7 +12,7 @@ import { ObjectBrowserWidget } from '../components/ObjectBrowserWidget/ObjectBro
 import ImageWidget from '../components/ImageWidget/ImageWidget';
 
 export default function install(config: ConfigType) {
-  config.registerDefaultWidget(TextField);
+  //config.registerDefaultWidget(TextField); //commented because broken
   config.registerWidget({ key: 'widget', definition: { date: DateField } });
   config.registerWidget({
     key: 'widget',

@@ -1,0 +1,78 @@
+{
+  "contents": {
+    "loading": "Caricamento...",
+    "results": {
+      "number": "{{count}} elementi",
+      "contents_of": "Contenuti di {title}",
+      "no_results": "Nessun elemento trovato"
+    },
+    "actions": {
+      "actions": "Azioni",
+      "upload": "Carica",
+      "rename": "Rinomina",
+      "state": "Cambia stato",
+      "tags": "Etichette",
+      "properties": "Proprietà",
+      "cut": "Taglia",
+      "cutted": "Contenuto '{{title}}' tagliato con successo",
+      "cutted_multiple": "{{number}} contenuti tagliati con successo",
+      "copy": "Copia",
+      "copied": "Contenuto '{{title}}' copiato con successo",
+      "copied_multiple": "{{number}} contenuti copiato con successo",
+      "paste": "Incolla",
+      "pasted": "Contenuto '{{title}}' incollato con successo",
+      "pasted_multiple": "{{number}} contenuti incollati con successo",
+      "delete": "Elimina",
+      "deleted": "Contenuto '{{title}}' eliminato con successo",
+      "deleted_multiple": "{{number}} contenuti eliminati con successo",
+      "filter": "Filtra…",
+      "edit": "Modifica",
+      "view": "Vedi",
+      "add": "Aggiungi un contenuto",
+      "move_to_top_folder": "Sposta in cima alla cartella",
+      "move_to_bottom_folder": "Sposta in fondo alla cartella"
+    },
+
+    "item": {
+      "expired": "Scaduto",
+      "scheduled": "Pianificato",
+      "more_options": "Altre opzioni"
+    },
+    "indexes": {
+      "title": "Titolo",
+      "select_columns": "Seleziona le colonne da visualizzare",
+      "boolean": {
+        "yes": "Sì",
+        "no": "No"
+      },
+      "review_state": {
+        "published": "Pubblicato",
+        "private": "Privato",
+        "pending": "In attesa di revisione",
+        "intranet": "Intranet",
+        "draft": "In bozza",
+        "none": "Nessuno",
+        "no_workflow_state": "—"
+      },
+      "date": { "none": "" }
+    },
+    "error": "Errore",
+    "unknown_error": "Errore sconsciuto",
+    "rearrange": {
+      "error": "Errore durante la riposizione degli elementi",
+      "by": "Riordina gli elementi per…",
+      "asc": "Crescente",
+      "desc": "Decrescente",
+      "pickOrder": "Riposiziona {{index}}"
+    }
+  },
+  "modal": {
+    "close": "Annulla"
+  },
+  "modal_delete": {
+    "single": { "title": "Vuoi eliminare \"{{item}}\"?" },
+    "multi": { "title": "Vuoi eliminare {{n}} elementi?" },
+    "description": "Questa azione non può essere annullata.",
+    "confirm": "Procedi con l'eliminazione"
+  }
+}

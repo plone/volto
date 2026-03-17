@@ -1,0 +1,19 @@
+nav.pagination {
+  display: flex;
+
+  font-size: 1.15rem;
+
+  .react-aria-Button {
+    width: 2rem;
+    height: 2rem;
+    line-height: 1;
+
+    &[data-disabled] {
+      color: var(--text-color-disabled);
+    }
+
+    &.active {
+      font-weight: bold;
+    }
+  }
+}

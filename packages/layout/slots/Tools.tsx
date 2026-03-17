@@ -12,6 +12,12 @@ const HeaderTools = () => {
       url: `/@@edit${location.pathname.replace(/^\/$/, '')}`,
     },
     {
+      id: '4',
+      label: 'contents',
+      icon: '📂',
+      url: `/@@contents${location.pathname.replace(/^\/$/, '')}`,
+    },
+    {
       id: '1',
       label: 'login',
       icon: '🔧',

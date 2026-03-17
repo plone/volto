@@ -146,7 +146,7 @@
       }
 
       &::placeholder {
-        color: var(--basic-400);
+        color: var(--quanta-sapphire);
         opacity: 0;
         transition: opacity $time-tiny ease-in-out;
       }

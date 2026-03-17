@@ -132,6 +132,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../../packages/components
+      '@plone/contents':
+        specifier: workspace:*
+        version: link:../../packages/contents
       '@plone/helpers':
         specifier: workspace:*
         version: link:../../packages/helpers
@@ -730,8 +733,129 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
 
+  packages/contents:
+    dependencies:
+      '@plone/client':
+        specifier: workspace:*
+        version: link:../client
+      '@plone/cmsui':
+        specifier: workspace:*
+        version: link:../cmsui
+      '@plone/components':
+        specifier: workspace:*
+        version: link:../components
+      '@plone/helpers':
+        specifier: workspace:*
+        version: link:../helpers
+      '@plone/layout':
+        specifier: workspace:*
+        version: link:../layout
+      '@plone/react-router':
+        specifier: workspace:*
+        version: link:../react-router
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
+      '@react-types/shared':
+        specifier: ^3.29.1
+        version: 3.32.1(react@19.2.0)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      react:
+        specifier: ^19.2.0
+        version: 19.2.0
+      react-aria:
+        specifier: 'catalog:'
+        version: 3.45.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react-aria-components:
+        specifier: 'catalog:'
+        version: 1.14.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react-dom:
+        specifier: ^19.2.0
+        version: 19.2.0(react@19.2.0)
+      react-i18next:
+        specifier: 'catalog:'
+        version: 15.7.3(i18next@24.2.3(typescript@5.9.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.2)
+      react-router:
+        specifier: 'catalog:'
+        version: 7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      tailwind-merge:
+        specifier: 'catalog:'
+        version: 3.5.0
+      tailwind-variants:
+        specifier: 'catalog:'
+        version: 3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.1.13)
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.1.13
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@4.1.13)
+      usehooks-ts:
+        specifier: ^3.1.1
+        version: 3.1.1(react@19.2.0)
+    devDependencies:
+      '@plone/types':
+        specifier: workspace:*
+        version: link:../types
+      '@tailwindcss/vite':
+        specifier: 'catalog:'
+        version: 4.1.13(vite@6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+      '@testing-library/jest-dom':
+        specifier: 6.4.2
+        version: 6.4.2(@types/jest@30.0.0)(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+      '@testing-library/react':
+        specifier: 'catalog:'
+        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@types/jest-axe':
+        specifier: ^3.5.7
+        version: 3.5.9
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.6
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.2.3(@types/react@19.2.6)
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 4.0.12(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+      jest-axe:
+        specifier: ^8.0.0
+        version: 8.0.0
+      prettier-plugin-tailwindcss:
+        specifier: ^0.6.11
+        version: 0.6.14(prettier@3.6.2)
+      release-it:
+        specifier: 'catalog:'
+        version: 19.0.5(@types/node@24.10.1)(magicast@0.3.5)
+      tailwindcss-react-aria-components:
+        specifier: ^2.0.0
+        version: 2.0.1(tailwindcss@4.1.13)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.2
+      vite:
+        specifier: 'catalog:'
+        version: 6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1)
+      vite-tsconfig-paths:
+        specifier: ^5.1.4
+        version: 5.1.4(typescript@5.9.2)(vite@6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+      vitest:
+        specifier: 'catalog:'
+        version: 4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1)
+      vitest-axe:
+        specifier: ^0.1.0
+        version: 0.1.0(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+
   packages/helpers:
     dependencies:
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
       jotai:
         specifier: ^2.12.5
         version: 2.15.0(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.6)(react@19.2.0)
@@ -748,9 +872,6 @@ importers:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
     devDependencies:
-      '@plone/registry':
-        specifier: workspace:*
-        version: link:../registry
       '@plone/types':
         specifier: workspace:*
         version: link:../types
@@ -5212,6 +5333,7 @@ packages:
   basic-ftp@5.0.5:
     resolution: {integrity: sha512-4Bcg1P8xhUuqcii/S0Z9wiHIrQVPMermM1any+MX5GeGD7faD3/msQUDGLol9wOcz4/jbg/WJnGqoJF6LiBdtg==}
     engines: {node: '>=10.0.0'}
+    deprecated: Security vulnerability fixed in 5.2.0, please upgrade
 
   bcp-47-match@2.0.3:
     resolution: {integrity: sha512-JtTezzbAibu8G0R9op9zb3vcWZd9JF6M0xOYGPn0fNCd7wOpRB1mU2mH9T8gaBGbAAyIIVgB2G7xG0GP98zMAQ==}
@@ -5853,10 +5975,6 @@ packages:
 
   default-browser-id@5.0.0:
     resolution: {integrity: sha512-A6p/pu/6fyBcA1TRz/GqWYPViplrftcW2gZC9q79ngNCKAeR/X3gcEdXQHl4KNXV+3wgIJ1CPkJQ3IHM6lcsyA==}
-    engines: {node: '>=18'}
-
-  default-browser@5.2.1:
-    resolution: {integrity: sha512-WY/3TUME0x3KPYdRRxEJJvXRHV4PyPoUsxtZa78lwItwRQRHhd2U9xOscaT/YTf8uCXIAjeJOFBVEh/7FtD8Xg==}
     engines: {node: '>=18'}
 
   default-browser@5.5.0:
@@ -8446,6 +8564,67 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
+  prettier-plugin-tailwindcss@0.6.14:
+    resolution: {integrity: sha512-pi2e/+ZygeIqntN+vC573BcW5Cve8zUB0SSAGxqpB4f96boZF4M3phPVoOFCeypwkpRYdi7+jQ5YJJUwrkGUAg==}
+    engines: {node: '>=14.21.3'}
+    peerDependencies:
+      '@ianvs/prettier-plugin-sort-imports': '*'
+      '@prettier/plugin-hermes': '*'
+      '@prettier/plugin-oxc': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
+      '@zackad/prettier-plugin-twig': '*'
+      prettier: ^3.0
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-import-sort: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-marko: '*'
+      prettier-plugin-multiline-arrays: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-sort-imports: '*'
+      prettier-plugin-style-order: '*'
+      prettier-plugin-svelte: '*'
+    peerDependenciesMeta:
+      '@ianvs/prettier-plugin-sort-imports':
+        optional: true
+      '@prettier/plugin-hermes':
+        optional: true
+      '@prettier/plugin-oxc':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      '@zackad/prettier-plugin-twig':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-marko:
+        optional: true
+      prettier-plugin-multiline-arrays:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-sort-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+
   prettier@3.6.2:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
@@ -10275,7 +10454,7 @@ snapshots:
       cjs-module-lexer: 1.4.3
       fflate: 0.8.2
       lru-cache: 10.4.3
-      semver: 7.7.2
+      semver: 7.7.3
       typescript: 5.6.1-rc
       validate-npm-package-name: 5.0.1
 
@@ -15195,11 +15374,6 @@ snapshots:
 
   default-browser-id@5.0.0: {}
 
-  default-browser@5.2.1:
-    dependencies:
-      bundle-name: 4.1.0
-      default-browser-id: 5.0.0
-
   default-browser@5.5.0:
     dependencies:
       bundle-name: 4.1.0
@@ -17936,7 +18110,7 @@ snapshots:
 
   open@10.2.0:
     dependencies:
-      default-browser: 5.2.1
+      default-browser: 5.5.0
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
       wsl-utils: 0.1.0
@@ -18231,6 +18405,10 @@ snapshots:
   prettier-linter-helpers@1.0.0:
     dependencies:
       fast-diff: 1.3.0
+
+  prettier-plugin-tailwindcss@0.6.14(prettier@3.6.2):
+    dependencies:
+      prettier: 3.6.2
 
   prettier@3.6.2: {}
 

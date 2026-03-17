@@ -5,6 +5,7 @@ import Close from '@plone/components/icons/close.svg?react';
 import { sidebarAtom } from '../Sidebar/Sidebar';
 import { useSetAtom } from 'jotai';
 import { useNavigate } from 'react-router';
+import './Toolbar.css';
 
 const Toolbar = () => {
   const setCollapsed = useSetAtom(sidebarAtom);
