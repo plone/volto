@@ -131,6 +131,15 @@ export default function Controlpanels({ location }) {
     return <Error error={error} />;
   }
 
+  /**
+   * Determine whether the backend exposes the Discussion control panel.
+   * The Moderate Comments view should only be shown if the Discussion
+   * control panel is available to the current user.
+   */
+  const hasDiscussionControlPanel = controlpanels?.some((panel) =>
+    panel['@id']?.endsWith('/discussion'),
+  );
+
   let customcontrolpanels = config.settings.controlpanels
     ? config.settings.controlpanels.map((el) => {
         el.group =
@@ -180,11 +189,16 @@ export default function Controlpanels({ location }) {
         group: intl.formatMessage(messages.content),
         title: intl.formatMessage(messages.relations),
       },
-      {
-        '@id': '/moderate-comments',
-        group: intl.formatMessage(messages.content),
-        title: intl.formatMessage(messages.moderatecomments),
-      },
+      // only shown if Discussion support addon is available from the backend.
+      ...(hasDiscussionControlPanel
+        ? [
+            {
+              '@id': '/moderate-comments',
+              group: intl.formatMessage(messages.content),
+              title: intl.formatMessage(messages.moderatecomments),
+            },
+          ]
+        : []),
       {
         '@id': '/users',
         group: intl.formatMessage(messages.usersControlPanelCategory),

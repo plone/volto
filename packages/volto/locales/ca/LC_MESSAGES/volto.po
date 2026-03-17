@@ -858,6 +858,11 @@ msgstr ""
 msgid "Content that links to or references {title}"
 msgstr ""
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr ""
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -2319,6 +2324,11 @@ msgstr ""
 msgid "Maps URL"
 msgstr "URL del mapa"
 
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
@@ -2868,6 +2878,11 @@ msgstr "Desenvolupat amb Plone i Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferències"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Prem Enter per explorar els fitxers del teu ordinador."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4603,6 +4618,11 @@ msgstr "Pots afegir un comentari omplint el formulari següent. Format de text s
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Podeu controlar qui pot veure i editar el vostre element mitjançant la llista següent."
+
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff

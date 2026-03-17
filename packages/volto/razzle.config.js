@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 const path = require('path');
-const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
+const makeLoaderFinder = require('@plone/razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -421,10 +421,16 @@ const defaultModify = ({
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
-  { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-plugins/webpack-svg-plugin') },
-  { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
-  { object: require('./webpack-plugins/webpack-scss-plugin') },
+  {
+    name: 'less',
+    object: require('./webpack-plugins/webpack-less-plugin')({ registry }),
+  },
+  { name: 'svg', object: require('./webpack-plugins/webpack-svg-plugin') },
+  {
+    name: 'bundle-analyze',
+    object: require('./webpack-plugins/webpack-bundle-analyze-plugin'),
+  },
+  { name: 'scss', object: require('./webpack-plugins/webpack-scss-plugin') },
 ];
 
 const plugins = addonExtenders.reduce(

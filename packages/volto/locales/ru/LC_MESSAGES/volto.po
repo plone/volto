@@ -857,6 +857,11 @@ msgstr "Унаследованные Правила контента"
 msgid "Content that links to or references {title}"
 msgstr "Контент который связан с или ссылается на {title}"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr ""
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -2318,6 +2323,11 @@ msgstr "Карты"
 msgid "Maps URL"
 msgstr "URL карты"
 
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
@@ -2867,6 +2877,11 @@ msgstr "Работает на Plone и Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Настройки"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4602,6 +4617,11 @@ msgstr "Вы можете добавить комментарий ниже (то
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Вы можете настроить кто сможет просматривать и редактировать ваш элемент используя список ниже."
+
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
