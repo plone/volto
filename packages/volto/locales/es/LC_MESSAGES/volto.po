@@ -829,6 +829,11 @@ msgstr "Reglas de contenido de las carpetas principales"
 msgid "Content that links to or references {title}"
 msgstr "Contenido que enlaza o hace referencia a {title}"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Título del contenido"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"

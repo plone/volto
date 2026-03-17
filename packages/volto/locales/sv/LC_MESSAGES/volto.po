@@ -828,6 +828,11 @@ msgstr ""
 msgid "Content that links to or references {title}"
 msgstr "Innehåll som länkar till eller referenser {titel}"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Innehållstitel"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"

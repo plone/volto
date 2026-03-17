@@ -834,6 +834,11 @@ msgstr "Regles de contingut de les carpetes pare"
 msgid "Content that links to or references {title}"
 msgstr "Contingut que enllaça o fa referència a {title}"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Títol del contingut"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
