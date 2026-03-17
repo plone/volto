@@ -104,10 +104,7 @@ export function SidebarAfterEditable() {
   );
 
   const sidebar =
-    typeof document === 'undefined'
-      ? null
-      : (document.getElementById('sidebar') ??
-        document.querySelector<HTMLElement>('[aria-label="Sidebar"]'));
+    typeof document === 'undefined' ? null : document.getElementById('sidebar');
 
   if (!sidebar) return null;
   if (!selectedNativeBlock) return null;
