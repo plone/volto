@@ -16,7 +16,6 @@ import {
   styleClassNameConverters,
   styleClassNameExtenders,
 } from '@plone/volto/config/Style';
-import VoltoImage from '@plone/volto/components/theme/Image/Image';
 
 import {
   controlPanelsIcons,
@@ -152,12 +151,11 @@ config.set('widgets', {
 
 config.set('components', {
   PreviewImage: {
-    component: (props) => (
-      <VoltoImage alt="PreviewImage component mock" {...props} />
-    ),
+    component: (props) => <img alt="PreviewImage component mock" {...props} />,
   },
   Image: {
-    component: (props) => <VoltoImage alt="Image component mock" {...props} />,
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    component: (props) => <img alt="Image component mock" {...props} />,
   },
 });
 
