@@ -32,25 +32,315 @@ exports[`renders a time widget component 1`] = `
             class="date-time-widget-wrapper"
           >
             <div
-              class="ui input time-input"
+              class="react-aria-TimeField"
+              data-rac=""
             >
               <span
-                class="rc-time-picker"
+                class="react-aria-Label"
+                id="react-aria-:r1:"
+              />
+              <div
+                aria-describedby="react-aria-description-0"
+                aria-labelledby="react-aria-:r1:"
+                class="react-aria-DateInput"
+                data-rac=""
+                data-react-aria-pressable="true"
+                id="react-aria-:r0:"
+                role="group"
+                style="unicode-bidi: isolate;"
               >
-                <input
-                  class="rc-time-picker-input"
-                  id="my-field"
-                  placeholder="Time"
-                  type="text"
-                  value="12:00 PM"
-                />
                 <span
-                  class="rc-time-picker-icon"
-                />
-              </span>
+                  aria-hidden="true"
+                  class="react-aria-DateSegment"
+                  data-rac=""
+                  data-type="literal"
+                >
+                  ⁦
+                </span>
+                <span
+                  aria-describedby="react-aria-description-0"
+                  aria-label="hour, "
+                  aria-labelledby="react-aria-:r7: react-aria-:r1:"
+                  aria-valuemax="12"
+                  aria-valuemin="1"
+                  aria-valuenow="12"
+                  aria-valuetext="12 PM"
+                  autocorrect="off"
+                  class="react-aria-DateSegment"
+                  contenteditable="true"
+                  data-rac=""
+                  data-type="hour"
+                  enterkeyhint="next"
+                  id="react-aria-:r7:"
+                  inputmode="numeric"
+                  role="spinbutton"
+                  spellcheck="false"
+                  style="caret-color: transparent;"
+                  tabindex="0"
+                >
+                  12
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="react-aria-DateSegment"
+                  data-rac=""
+                  data-type="literal"
+                >
+                  :
+                </span>
+                <span
+                  aria-label="minute, "
+                  aria-labelledby="react-aria-:rb: react-aria-:r1:"
+                  aria-valuemax="59"
+                  aria-valuemin="0"
+                  aria-valuenow="0"
+                  aria-valuetext="00"
+                  autocorrect="off"
+                  class="react-aria-DateSegment"
+                  contenteditable="true"
+                  data-rac=""
+                  data-type="minute"
+                  enterkeyhint="next"
+                  id="react-aria-:rb:"
+                  inputmode="numeric"
+                  role="spinbutton"
+                  spellcheck="false"
+                  style="caret-color: transparent;"
+                  tabindex="0"
+                >
+                  00
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="react-aria-DateSegment"
+                  data-rac=""
+                  data-type="literal"
+                >
+                  ⁩
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="react-aria-DateSegment"
+                  data-rac=""
+                  data-type="literal"
+                >
+                   
+                </span>
+                <span
+                  aria-label="AM/PM, "
+                  aria-labelledby="react-aria-:rh: react-aria-:r1:"
+                  aria-valuemax="1"
+                  aria-valuemin="0"
+                  aria-valuenow="1"
+                  aria-valuetext="PM"
+                  autocorrect="off"
+                  class="react-aria-DateSegment"
+                  contenteditable="true"
+                  data-rac=""
+                  data-type="dayPeriod"
+                  enterkeyhint="next"
+                  id="react-aria-:rh:"
+                  role="spinbutton"
+                  spellcheck="false"
+                  style="caret-color: transparent;"
+                  tabindex="0"
+                >
+                  PM
+                </span>
+              </div>
+              <input
+                class=""
+                data-rac=""
+                hidden=""
+                title=""
+                type="text"
+                value="12:00:00"
+              />
             </div>
             <button
+              aria-label="Clear time"
               class="item ui noborder button"
+              type="button"
+            >
+              <svg
+                class="icon close"
+                style="height: 24px; width: auto; fill: currentColor;"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a time widget with no value 1`] = `
+<div>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-default-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="date-time-widget-wrapper"
+          >
+            <div
+              class="react-aria-TimeField"
+              data-rac=""
+            >
+              <span
+                class="react-aria-Label"
+                id="react-aria-:rk:"
+              />
+              <div
+                aria-labelledby="react-aria-:rk:"
+                class="react-aria-DateInput"
+                data-rac=""
+                data-react-aria-pressable="true"
+                id="react-aria-:rj:"
+                role="group"
+                style="unicode-bidi: isolate;"
+              >
+                <span
+                  aria-hidden="true"
+                  class="react-aria-DateSegment"
+                  data-rac=""
+                  data-type="literal"
+                >
+                  ⁦
+                </span>
+                <span
+                  aria-label="hour, "
+                  aria-labelledby="react-aria-:rq: react-aria-:rk:"
+                  aria-valuemax="12"
+                  aria-valuemin="1"
+                  aria-valuetext="Empty"
+                  autocorrect="off"
+                  class="react-aria-DateSegment"
+                  contenteditable="true"
+                  data-placeholder="true"
+                  data-rac=""
+                  data-type="hour"
+                  enterkeyhint="next"
+                  id="react-aria-:rq:"
+                  inputmode="numeric"
+                  role="spinbutton"
+                  spellcheck="false"
+                  style="caret-color: transparent;"
+                  tabindex="0"
+                >
+                  ––
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="react-aria-DateSegment"
+                  data-rac=""
+                  data-type="literal"
+                >
+                  :
+                </span>
+                <span
+                  aria-label="minute, "
+                  aria-labelledby="react-aria-:ru: react-aria-:rk:"
+                  aria-valuemax="59"
+                  aria-valuemin="0"
+                  aria-valuetext="Empty"
+                  autocorrect="off"
+                  class="react-aria-DateSegment"
+                  contenteditable="true"
+                  data-placeholder="true"
+                  data-rac=""
+                  data-type="minute"
+                  enterkeyhint="next"
+                  id="react-aria-:ru:"
+                  inputmode="numeric"
+                  role="spinbutton"
+                  spellcheck="false"
+                  style="caret-color: transparent;"
+                  tabindex="0"
+                >
+                  ––
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="react-aria-DateSegment"
+                  data-rac=""
+                  data-type="literal"
+                >
+                  ⁩
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="react-aria-DateSegment"
+                  data-rac=""
+                  data-type="literal"
+                >
+                   
+                </span>
+                <span
+                  aria-label="AM/PM, "
+                  aria-labelledby="react-aria-:r14: react-aria-:rk:"
+                  aria-valuemax="1"
+                  aria-valuemin="0"
+                  aria-valuetext="Empty"
+                  autocorrect="off"
+                  class="react-aria-DateSegment"
+                  contenteditable="true"
+                  data-placeholder="true"
+                  data-rac=""
+                  data-type="dayPeriod"
+                  enterkeyhint="next"
+                  id="react-aria-:r14:"
+                  role="spinbutton"
+                  spellcheck="false"
+                  style="caret-color: transparent;"
+                  tabindex="0"
+                >
+                  AM
+                </span>
+              </div>
+              <input
+                class=""
+                data-rac=""
+                hidden=""
+                title=""
+                type="text"
+                value=""
+              />
+            </div>
+            <button
+              aria-label="Clear time"
+              class="item ui noborder button"
+              disabled=""
               type="button"
             >
               <svg

@@ -6,14 +6,6 @@ import { waitFor, render, screen } from '@testing-library/react';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(async () => {
-  const { __setLoadables } = await import(
-    '@plone/volto/helpers/Loadable/Loadable'
-  );
-  await __setLoadables();
-});
-
 test('renders a datetime widget component', async () => {
   const store = mockStore({
     intl: {
@@ -31,13 +23,11 @@ test('renders a datetime widget component', async () => {
         fieldSet="default"
         onChange={() => {}}
         value={isoDate}
-        showTime={true}
       />
     </Provider>,
   );
 
   await waitFor(() => screen.getByText(/My field/));
-  await waitFor(() => screen.getByPlaceholderText('Time'));
   expect(container).toMatchSnapshot();
 });
 
@@ -57,12 +47,57 @@ test('datetime widget converts UTC date and adapts to local datetime', async () 
         title="My field"
         onChange={() => {}}
         value={date}
-        showTime={true}
       />
     </Provider>,
   );
 
   await waitFor(() => screen.getByText(/My field/));
-  await waitFor(() => screen.getByPlaceholderText('Time'));
   expect(container).toMatchSnapshot();
+});
+
+test('renders a date-only widget when dateOnly is true', async () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const { container } = render(
+    <Provider store={store}>
+      <DatetimeWidget
+        id="my-field"
+        title="My field"
+        onChange={() => {}}
+        value="2020-02-10"
+        dateOnly
+      />
+    </Provider>,
+  );
+
+  await waitFor(() => screen.getByText(/My field/));
+  expect(container).toMatchSnapshot();
+});
+
+test('returns null when open_end and id is end', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const { container } = render(
+    <Provider store={store}>
+      <DatetimeWidget
+        id="end"
+        title="End"
+        onChange={() => {}}
+        value="2020-02-10T15:01:00.000Z"
+        formData={{ open_end: true }}
+      />
+    </Provider>,
+  );
+
+  expect(container.innerHTML).toBe('');
 });

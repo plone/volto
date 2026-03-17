@@ -1,83 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { defineMessages, useIntl } from 'react-intl';
-import loadable from '@loadable/component';
-import cx from 'classnames';
-import Icon from '@plone/volto/components/theme/Icon/Icon';
+import { Button, Calendar, Popover } from '@plone/components';
+import {
+  DatePicker as RACDatePicker,
+  DateInput,
+  DateSegment,
+  Group,
+} from 'react-aria-components';
+import {
+  today,
+  getLocalTimeZone,
+  parseDate,
+  parseAbsolute,
+  ZonedDateTime,
+} from '@internationalized/date';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { parseDateTime, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
-import leftKey from '@plone/volto/icons/left-key.svg';
-import rightKey from '@plone/volto/icons/right-key.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
+/**
+ * Parse an ISO string value into a DateValue for react-aria DatePicker.
+ * Handles both date-only ('YYYY-MM-DD') and full datetime (ISO 8601) strings.
+ */
+function parseValue(value, isDateOnly) {
+  if (!value) return null;
+  try {
+    if (isDateOnly) {
+      return parseDate(value.substring(0, 10));
+    }
+    const localTimeZone = getLocalTimeZone();
+    const isoString =
+      !value.match(/T/) || value.match(/T(.)*(-|\+|Z)/g) ? value : `${value}Z`;
+    return parseAbsolute(isoString, localTimeZone);
+  } catch (error) {
+    return null;
+  }
+}
 
-import 'rc-time-picker/assets/index.css';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
-
-const TimePicker = loadable(() => import('rc-time-picker'));
-
-const messages = defineMessages({
-  date: {
-    id: 'Date',
-    defaultMessage: 'Date',
-  },
-  time: {
-    id: 'Time',
-    defaultMessage: 'Time',
-  },
-  clearDateTime: {
-    id: 'Clear date/time',
-    defaultMessage: 'Clear date and time',
-  },
-});
-
-const PrevIcon = () => (
-  <div
-    style={{
-      color: '#000',
-      left: '22px',
-      padding: '5px',
-      position: 'absolute',
-      top: '15px',
-    }}
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-    tabIndex="0"
-  >
-    <Icon name={leftKey} size="30px" />
-  </div>
-);
-
-const NextIcon = () => (
-  <div
-    style={{
-      color: '#000',
-      right: '22px',
-      padding: '5px',
-      position: 'absolute',
-      top: '15px',
-    }}
-    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-    tabIndex="0"
-  >
-    <Icon name={rightKey} size="30px" />
-  </div>
-);
-
-const defaultTimeDateOnly = {
-  hour: 12,
-  minute: 0,
-  second: 0,
-};
-
-const DatetimeWidgetComponent = (props) => {
+export const DatetimeWidgetComponent = (props) => {
   const {
     id,
     resettable,
-    reactDates,
     widgetOptions,
-    moment,
     value,
     onChange,
     dateOnly,
@@ -87,143 +49,71 @@ const DatetimeWidgetComponent = (props) => {
     formData,
   } = props;
 
-  const intl = useIntl();
-  const lang = intl.locale;
+  const isDateOnly =
+    dateOnly ||
+    widget === 'date' ||
+    ((id === 'start' || id === 'end') && formData?.whole_day);
 
-  const [focused, setFocused] = useState(false);
-  const [isDefault, setIsDefault] = useState(false);
+  const noPastDates =
+    propNoPastDates || widgetOptions?.pattern_options?.noPastDates;
 
-  const { SingleDatePicker } = reactDates;
+  const dateValue = parseValue(value, isDateOnly);
 
-  useEffect(() => {
-    const parsedDateTime = parseDateTime(
-      toBackendLang(lang),
-      value,
-      undefined,
-      moment.default,
-    );
-    setIsDefault(
-      parsedDateTime?.toISOString() === moment.default().utc().toISOString(),
-    );
-  }, [value, lang, moment]);
+  const handleChange = useCallback(
+    (newValue) => {
+      if (!newValue) {
+        onChange(id, null);
+        return;
+      }
+      if (newValue instanceof ZonedDateTime) {
+        onChange(id, newValue.toAbsoluteString());
+      } else {
+        onChange(id, newValue.toString());
+      }
+    },
+    [id, onChange],
+  );
+
+  const handleReset = useCallback(() => {
+    onChange(id, null);
+  }, [id, onChange]);
 
   // If open_end is checked and this is the end field, don't render
   if (id === 'end' && formData?.open_end) {
     return null;
   }
 
-  const getInternalValue = () => {
-    return parseDateTime(toBackendLang(lang), value, undefined, moment.default);
-  };
-
-  const getDateOnly = () => {
-    return (
-      dateOnly ||
-      widget === 'date' ||
-      ((id === 'start' || id === 'end') && formData?.whole_day)
-    );
-  };
-
-  const onDateChange = (date) => {
-    if (date) {
-      const isDateOnly = getDateOnly();
-      const base = (getInternalValue() || moment.default()).set({
-        year: date.year(),
-        month: date.month(),
-        date: date.date(),
-        ...(isDateOnly ? defaultTimeDateOnly : {}),
-      });
-      const dateValue = isDateOnly
-        ? base.format('YYYY-MM-DD')
-        : base.toISOString();
-      onChange(id, dateValue);
-    }
-    setIsDefault(false);
-  };
-
-  const onTimeChange = (time) => {
-    if (time) {
-      const base = (getInternalValue() || moment.default()).set({
-        hours: time?.hours() ?? 0,
-        minutes: time?.minutes() ?? 0,
-        seconds: 0,
-      });
-      const dateValue = base.toISOString();
-      onChange(id, dateValue);
-    }
-  };
-
-  const onResetDates = () => {
-    setIsDefault(false);
-    onChange(id, null);
-  };
-
-  const onFocusChange = ({ focused }) => setFocused(focused);
-
-  const noPastDates =
-    propNoPastDates || widgetOptions?.pattern_options?.noPastDates;
-  const datetime = getInternalValue();
-  const isDateOnly = getDateOnly();
-
   return (
     <FormFieldWrapper {...props}>
       <div className="date-time-widget-wrapper">
-        <div
-          className={cx('ui input date-input', {
-            'default-date': isDefault,
-          })}
+        <RACDatePicker
+          value={dateValue}
+          onChange={handleChange}
+          granularity={isDateOnly ? 'day' : 'minute'}
+          isDisabled={isDisabled}
+          {...(noPastDates
+            ? { minValue: today(getLocalTimeZone()) }
+            : { isDateUnavailable: () => false })}
+          aria-labelledby={`fieldset-${props.fieldSet}-field-label-${id}`}
         >
-          <SingleDatePicker
-            date={datetime}
-            disabled={isDisabled}
-            onDateChange={onDateChange}
-            focused={focused}
-            numberOfMonths={1}
-            {...(noPastDates ? {} : { isOutsideRange: () => false })}
-            onFocusChange={onFocusChange}
-            noBorder
-            displayFormat={moment.default
-              .localeData(toBackendLang(lang))
-              .longDateFormat('L')}
-            navPrev={<PrevIcon />}
-            navNext={<NextIcon />}
-            id={`${id}-date`}
-            placeholder={intl.formatMessage(messages.date)}
-          />
-        </div>
-        {!isDateOnly && (
-          <div
-            className={cx('ui input time-input', {
-              'default-date': isDefault,
-            })}
-          >
-            <TimePicker
-              disabled={isDisabled}
-              defaultValue={datetime}
-              value={datetime}
-              onChange={onTimeChange}
-              allowEmpty={false}
-              showSecond={false}
-              use12Hours={lang === 'en'}
-              id={`${id}-time`}
-              format={moment.default
-                .localeData(toBackendLang(lang))
-                .longDateFormat('LT')}
-              placeholder={intl.formatMessage(messages.time)}
-              focusOnOpen
-              placement="bottomRight"
-            />
-          </div>
-        )}
-        {resettable && (
+          <Group>
+            <DateInput>
+              {(segment) => <DateSegment segment={segment} />}
+            </DateInput>
+            <Button>▼</Button>
+          </Group>
+          <Popover placement="bottom end">
+            <Calendar />
+          </Popover>
+        </RACDatePicker>
+        {resettable && dateValue && (
           <button
             type="button"
-            disabled={isDisabled || !datetime}
-            onClick={onResetDates}
+            disabled={isDisabled}
+            onClick={handleReset}
             className="item ui noborder button"
-            aria-label={intl.formatMessage(messages.clearDateTime)}
           >
-            <Icon name={clearSVG} size="24px" className="close" />
+            ✕
           </button>
         )}
       </div>
@@ -255,6 +145,4 @@ DatetimeWidgetComponent.defaultProps = {
   resettable: true,
 };
 
-export default injectLazyLibs(['reactDates', 'moment'])(
-  DatetimeWidgetComponent,
-);
+export default DatetimeWidgetComponent;

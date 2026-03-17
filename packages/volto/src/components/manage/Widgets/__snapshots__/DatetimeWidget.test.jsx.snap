@@ -32,74 +32,472 @@ exports[`datetime widget converts UTC date and adapts to local datetime 1`] = `
             class="date-time-widget-wrapper"
           >
             <div
-              class="ui input date-input"
+              class="react-aria-DatePicker"
+              data-rac=""
             >
               <div
-                class="SingleDatePicker SingleDatePicker_1"
+                aria-describedby="react-aria-description-1"
+                aria-labelledby="fieldset-undefined-field-label-my-field"
+                class="react-aria-Group"
+                data-rac=""
+                data-react-aria-pressable="true"
+                id="react-aria-:r1g:"
+                role="group"
               >
-                <div>
-                  <div
-                    class="SingleDatePickerInput SingleDatePickerInput_1"
+                <div
+                  class="react-aria-DateInput"
+                  data-rac=""
+                  data-react-aria-pressable="true"
+                  id="react-aria-:r1f:"
+                  role="presentation"
+                  style="unicode-bidi: isolate;"
+                >
+                  <span
+                    aria-describedby="react-aria-description-1"
+                    aria-label="month, "
+                    aria-labelledby="react-aria-:r1q: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="12"
+                    aria-valuemin="1"
+                    aria-valuenow="2"
+                    aria-valuetext="2 – February"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="month"
+                    enterkeyhint="next"
+                    id="react-aria-:r1q:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
                   >
-                    <div
-                      class="DateInput DateInput_1"
-                    >
-                      <input
-                        aria-describedby="DateInput__screen-reader-message-my-field-date"
-                        aria-label="Date"
-                        autocomplete="off"
-                        class="DateInput_input DateInput_input_1"
-                        id="my-field-date"
-                        name="my-field-date"
-                        placeholder="Date"
-                        type="text"
-                        value="02/10/2020"
-                      />
-                      <p
-                        class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
-                        id="DateInput__screen-reader-message-my-field-date"
-                      >
-                        Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
-                      </p>
-                    </div>
-                  </div>
+                    2
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    /
+                  </span>
+                  <span
+                    aria-label="day, "
+                    aria-labelledby="react-aria-:r1u: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="31"
+                    aria-valuemin="1"
+                    aria-valuenow="10"
+                    aria-valuetext="10"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="day"
+                    enterkeyhint="next"
+                    id="react-aria-:r1u:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    10
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    /
+                  </span>
+                  <span
+                    aria-label="year, "
+                    aria-labelledby="react-aria-:r22: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="9999"
+                    aria-valuemin="1"
+                    aria-valuenow="2020"
+                    aria-valuetext="2020"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="year"
+                    enterkeyhint="next"
+                    id="react-aria-:r22:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    2020
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    , 
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    ⁦
+                  </span>
+                  <span
+                    aria-label="hour, "
+                    aria-labelledby="react-aria-:r28: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="12"
+                    aria-valuemin="1"
+                    aria-valuenow="3"
+                    aria-valuetext="3 PM"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="hour"
+                    enterkeyhint="next"
+                    id="react-aria-:r28:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    3
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    :
+                  </span>
+                  <span
+                    aria-label="minute, "
+                    aria-labelledby="react-aria-:r2c: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="59"
+                    aria-valuemin="0"
+                    aria-valuenow="1"
+                    aria-valuetext="01"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="minute"
+                    enterkeyhint="next"
+                    id="react-aria-:r2c:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    01
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    ⁩
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                     
+                  </span>
+                  <span
+                    aria-label="AM/PM, "
+                    aria-labelledby="react-aria-:r2i: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="1"
+                    aria-valuemin="0"
+                    aria-valuenow="1"
+                    aria-valuetext="PM"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="dayPeriod"
+                    enterkeyhint="next"
+                    id="react-aria-:r2i:"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    PM
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                     
+                  </span>
+                  <span
+                    aria-label="time zone, "
+                    aria-labelledby="react-aria-:r2m: fieldset-undefined-field-label-my-field"
+                    aria-readonly="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="timeZoneName"
+                    id="react-aria-:r2m:"
+                    role="textbox"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    UTC
+                  </span>
                 </div>
+                <input
+                  class=""
+                  data-rac=""
+                  hidden=""
+                  title=""
+                  type="text"
+                  value="2020-02-10T15:01:00+00:00[UTC]"
+                />
+                <button
+                  aria-describedby="react-aria-description-1"
+                  aria-expanded="false"
+                  aria-haspopup="dialog"
+                  aria-label="Calendar"
+                  aria-labelledby="react-aria-:r1d: fieldset-undefined-field-label-my-field"
+                  class="react-aria-Button"
+                  data-rac=""
+                  data-react-aria-pressable="true"
+                  id="react-aria-:r1d:"
+                  tabindex="0"
+                  type="button"
+                >
+                  ▼
+                </button>
               </div>
             </div>
             <div
-              class="ui input time-input"
+              aria-hidden="true"
+              data-a11y-ignore="aria-hidden-focus"
+              data-react-aria-prevent-focus="true"
+              data-testid="hidden-dateinput-container"
+              style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;"
             >
-              <span
-                class="rc-time-picker"
-              >
-                <input
-                  class="rc-time-picker-input"
-                  id="my-field-time"
-                  placeholder="Time"
-                  type="text"
-                  value="3:01 PM"
-                />
-                <span
-                  class="rc-time-picker-icon"
-                />
-              </span>
+              <input
+                form=""
+                step="60"
+                tabindex="-1"
+                type="datetime-local"
+                value="2020-02-10T15:01:00"
+              />
             </div>
             <button
-              aria-label="Clear date and time"
               class="item ui noborder button"
               type="button"
             >
-              <svg
-                class="icon close"
-                style="height: 24px; width: auto; fill: currentColor;"
-                viewBox="0 0 36 36"
-                xmlns="http://www.w3.org/2000/svg"
+              ✕
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders a date-only widget when dateOnly is true 1`] = `
+<div>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="four wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <label
+              for="field-my-field"
+              id="fieldset-undefined-field-label-my-field"
+            >
+              My field
+            </label>
+          </div>
+        </div>
+        <div
+          class="eight wide column"
+        >
+          <div
+            class="date-time-widget-wrapper"
+          >
+            <div
+              class="react-aria-DatePicker"
+              data-rac=""
+            >
+              <div
+                aria-describedby="react-aria-description-2"
+                aria-labelledby="fieldset-undefined-field-label-my-field"
+                class="react-aria-Group"
+                data-rac=""
+                data-react-aria-pressable="true"
+                id="react-aria-:r2t:"
+                role="group"
               >
-                <path
-                  d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"
-                  fill-rule="evenodd"
+                <div
+                  class="react-aria-DateInput"
+                  data-rac=""
+                  data-react-aria-pressable="true"
+                  id="react-aria-:r2s:"
+                  role="presentation"
+                  style="unicode-bidi: isolate;"
+                >
+                  <span
+                    aria-describedby="react-aria-description-2"
+                    aria-label="month, "
+                    aria-labelledby="react-aria-:r37: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="12"
+                    aria-valuemin="1"
+                    aria-valuenow="2"
+                    aria-valuetext="2 – February"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="month"
+                    enterkeyhint="next"
+                    id="react-aria-:r37:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    2
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    /
+                  </span>
+                  <span
+                    aria-label="day, "
+                    aria-labelledby="react-aria-:r3b: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="31"
+                    aria-valuemin="1"
+                    aria-valuenow="10"
+                    aria-valuetext="10"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="day"
+                    enterkeyhint="next"
+                    id="react-aria-:r3b:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    10
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    /
+                  </span>
+                  <span
+                    aria-label="year, "
+                    aria-labelledby="react-aria-:r3f: fieldset-undefined-field-label-my-field"
+                    aria-valuemax="9999"
+                    aria-valuemin="1"
+                    aria-valuenow="2020"
+                    aria-valuetext="2020"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="year"
+                    enterkeyhint="next"
+                    id="react-aria-:r3f:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    2020
+                  </span>
+                </div>
+                <input
+                  class=""
+                  data-rac=""
+                  hidden=""
+                  title=""
+                  type="text"
+                  value="2020-02-10"
                 />
-              </svg>
+                <button
+                  aria-describedby="react-aria-description-2"
+                  aria-expanded="false"
+                  aria-haspopup="dialog"
+                  aria-label="Calendar"
+                  aria-labelledby="react-aria-:r2q: fieldset-undefined-field-label-my-field"
+                  class="react-aria-Button"
+                  data-rac=""
+                  data-react-aria-pressable="true"
+                  id="react-aria-:r2q:"
+                  tabindex="0"
+                  type="button"
+                >
+                  ▼
+                </button>
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              data-a11y-ignore="aria-hidden-focus"
+              data-react-aria-prevent-focus="true"
+              data-testid="hidden-dateinput-container"
+              style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;"
+            >
+              <input
+                form=""
+                step="60"
+                tabindex="-1"
+                type="date"
+                value="2020-02-10"
+              />
+            </div>
+            <button
+              class="item ui noborder button"
+              type="button"
+            >
+              ✕
             </button>
           </div>
         </div>
@@ -141,74 +539,282 @@ exports[`renders a datetime widget component 1`] = `
             class="date-time-widget-wrapper"
           >
             <div
-              class="ui input date-input"
+              class="react-aria-DatePicker"
+              data-rac=""
             >
               <div
-                class="SingleDatePicker SingleDatePicker_1"
+                aria-describedby="react-aria-description-0"
+                aria-labelledby="fieldset-default-field-label-my-field"
+                class="react-aria-Group"
+                data-rac=""
+                data-react-aria-pressable="true"
+                id="react-aria-:r3:"
+                role="group"
               >
-                <div>
-                  <div
-                    class="SingleDatePickerInput SingleDatePickerInput_1"
+                <div
+                  class="react-aria-DateInput"
+                  data-rac=""
+                  data-react-aria-pressable="true"
+                  id="react-aria-:r2:"
+                  role="presentation"
+                  style="unicode-bidi: isolate;"
+                >
+                  <span
+                    aria-describedby="react-aria-description-0"
+                    aria-label="month, "
+                    aria-labelledby="react-aria-:rd: fieldset-default-field-label-my-field"
+                    aria-valuemax="12"
+                    aria-valuemin="1"
+                    aria-valuenow="10"
+                    aria-valuetext="10 – October"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="month"
+                    enterkeyhint="next"
+                    id="react-aria-:rd:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
                   >
-                    <div
-                      class="DateInput DateInput_1"
-                    >
-                      <input
-                        aria-describedby="DateInput__screen-reader-message-my-field-date"
-                        aria-label="Date"
-                        autocomplete="off"
-                        class="DateInput_input DateInput_input_1"
-                        id="my-field-date"
-                        name="my-field-date"
-                        placeholder="Date"
-                        type="text"
-                        value="10/21/2019"
-                      />
-                      <p
-                        class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
-                        id="DateInput__screen-reader-message-my-field-date"
-                      >
-                        Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
-                      </p>
-                    </div>
-                  </div>
+                    10
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    /
+                  </span>
+                  <span
+                    aria-label="day, "
+                    aria-labelledby="react-aria-:rh: fieldset-default-field-label-my-field"
+                    aria-valuemax="31"
+                    aria-valuemin="1"
+                    aria-valuenow="21"
+                    aria-valuetext="21"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="day"
+                    enterkeyhint="next"
+                    id="react-aria-:rh:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    21
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    /
+                  </span>
+                  <span
+                    aria-label="year, "
+                    aria-labelledby="react-aria-:rl: fieldset-default-field-label-my-field"
+                    aria-valuemax="9999"
+                    aria-valuemin="1"
+                    aria-valuenow="2019"
+                    aria-valuetext="2019"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="year"
+                    enterkeyhint="next"
+                    id="react-aria-:rl:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    2019
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    , 
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    ⁦
+                  </span>
+                  <span
+                    aria-label="hour, "
+                    aria-labelledby="react-aria-:rr: fieldset-default-field-label-my-field"
+                    aria-valuemax="12"
+                    aria-valuemin="1"
+                    aria-valuenow="12"
+                    aria-valuetext="12 AM"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="hour"
+                    enterkeyhint="next"
+                    id="react-aria-:rr:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    12
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    :
+                  </span>
+                  <span
+                    aria-label="minute, "
+                    aria-labelledby="react-aria-:rv: fieldset-default-field-label-my-field"
+                    aria-valuemax="59"
+                    aria-valuemin="0"
+                    aria-valuenow="0"
+                    aria-valuetext="00"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="minute"
+                    enterkeyhint="next"
+                    id="react-aria-:rv:"
+                    inputmode="numeric"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    00
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                    ⁩
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                     
+                  </span>
+                  <span
+                    aria-label="AM/PM, "
+                    aria-labelledby="react-aria-:r15: fieldset-default-field-label-my-field"
+                    aria-valuemax="1"
+                    aria-valuemin="0"
+                    aria-valuenow="0"
+                    aria-valuetext="AM"
+                    autocorrect="off"
+                    class="react-aria-DateSegment"
+                    contenteditable="true"
+                    data-rac=""
+                    data-type="dayPeriod"
+                    enterkeyhint="next"
+                    id="react-aria-:r15:"
+                    role="spinbutton"
+                    spellcheck="false"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    AM
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="literal"
+                  >
+                     
+                  </span>
+                  <span
+                    aria-label="time zone, "
+                    aria-labelledby="react-aria-:r19: fieldset-default-field-label-my-field"
+                    aria-readonly="true"
+                    class="react-aria-DateSegment"
+                    data-rac=""
+                    data-type="timeZoneName"
+                    id="react-aria-:r19:"
+                    role="textbox"
+                    style="caret-color: transparent;"
+                    tabindex="0"
+                  >
+                    UTC
+                  </span>
                 </div>
+                <input
+                  class=""
+                  data-rac=""
+                  hidden=""
+                  title=""
+                  type="text"
+                  value="2019-10-21T00:00:00+00:00[UTC]"
+                />
+                <button
+                  aria-describedby="react-aria-description-0"
+                  aria-expanded="false"
+                  aria-haspopup="dialog"
+                  aria-label="Calendar"
+                  aria-labelledby="react-aria-:r0: fieldset-default-field-label-my-field"
+                  class="react-aria-Button"
+                  data-rac=""
+                  data-react-aria-pressable="true"
+                  id="react-aria-:r0:"
+                  tabindex="0"
+                  type="button"
+                >
+                  ▼
+                </button>
               </div>
             </div>
             <div
-              class="ui input time-input"
+              aria-hidden="true"
+              data-a11y-ignore="aria-hidden-focus"
+              data-react-aria-prevent-focus="true"
+              data-testid="hidden-dateinput-container"
+              style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;"
             >
-              <span
-                class="rc-time-picker"
-              >
-                <input
-                  class="rc-time-picker-input"
-                  id="my-field-time"
-                  placeholder="Time"
-                  type="text"
-                  value="12:00 AM"
-                />
-                <span
-                  class="rc-time-picker-icon"
-                />
-              </span>
+              <input
+                form=""
+                step="60"
+                tabindex="-1"
+                type="datetime-local"
+                value="2019-10-21T00:00:00"
+              />
             </div>
             <button
-              aria-label="Clear date and time"
               class="item ui noborder button"
               type="button"
             >
-              <svg
-                class="icon close"
-                style="height: 24px; width: auto; fill: currentColor;"
-                viewBox="0 0 36 36"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"
-                  fill-rule="evenodd"
-                />
-              </svg>
+              ✕
             </button>
           </div>
         </div>

@@ -118,3 +118,220 @@ ul.DayPicker_weekHeader_ul {
     left: -115px !important;
   }
 }
+
+/*--------------------------------------------------------------
+  react-aria DatePicker / TimeField overrides for Volto
+  The basic.css uses @layer plone-components.base, which has
+  lower specificity than unlayered Semantic UI styles.
+  We re-declare everything needed here so it actually applies.
+--------------------------------------------------------------*/
+
+/* --- DatePicker layout --- */
+.date-time-widget-wrapper {
+  .react-aria-DatePicker,
+  .react-aria-TimeField {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .react-aria-DatePicker .react-aria-Group {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  /* Date/time input field */
+  .react-aria-DateInput {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 6px 2.2rem 6px 8px;
+    border: 1px solid #c7d5d8;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .react-aria-DateInput[data-focus-within] {
+    border-color: @linkColor;
+    box-shadow: 0 0 0 1px @linkColor;
+    outline: none;
+  }
+
+  .react-aria-DateSegment {
+    padding: 1px 2px;
+    border-radius: 2px;
+    font-variant-numeric: tabular-nums;
+
+    &[data-placeholder] {
+      color: #b8c6c8;
+      font-style: italic;
+    }
+
+    &:focus {
+      background: @linkColor;
+      caret-color: transparent;
+      color: #fff;
+      outline: none;
+    }
+  }
+
+  /* Calendar trigger button — positioned inside the input */
+  .react-aria-DatePicker .react-aria-Button {
+    position: absolute;
+    right: 4px;
+    display: flex;
+    width: 1.6rem;
+    height: 1.6rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    background: transparent;
+    color: #000;
+    cursor: pointer;
+    font-size: 0.85rem;
+
+    &:hover {
+      color: #333;
+    }
+
+    &[data-focus-visible] {
+      outline: 2px solid @linkColor;
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* --- Calendar popover (portalled to body, outside sidebar) --- */
+.react-aria-Popover[data-trigger='DatePicker'] {
+  z-index: 1000;
+  max-width: unset;
+  padding: 12px;
+  border: 1px solid #c7d5d8;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow:
+    0 0 8px 0 rgba(0, 0, 0, 0.1),
+    0 2px 4px 0 rgba(0, 0, 0, 0.05),
+    0 2px 20px 0 rgba(0, 0, 0, 0.15);
+
+  .react-aria-Dialog {
+    outline: none;
+  }
+
+  .react-aria-Calendar {
+    width: fit-content;
+    color: #252525;
+
+    header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .react-aria-Heading {
+      flex: 1;
+      margin: 0;
+      font-family: @fontName;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Prev / Next nav buttons */
+    .react-aria-Button {
+      display: flex;
+      width: 2rem;
+      height: 2rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: none;
+      border-radius: 4px;
+      background: transparent;
+      color: #252525;
+      cursor: pointer;
+      font-size: 1rem;
+
+      &:hover {
+        background: #f0f0f0;
+      }
+    }
+  }
+
+  .react-aria-CalendarGrid {
+    border-collapse: separate;
+    border-spacing: 1px;
+
+    th {
+      padding: 4px;
+      color: #888;
+      font-size: 11px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    td {
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  .react-aria-CalendarCell {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 2rem;
+    outline: none;
+    text-align: center;
+
+    &[data-hovered]:not([data-selected]) {
+      background: #f0f0f0;
+    }
+
+    &[data-selected] {
+      background: @linkColor;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    &[data-focus-visible] {
+      outline: 2px solid @linkColor;
+      outline-offset: 2px;
+    }
+
+    &[data-outside-month] {
+      display: none;
+    }
+
+    &[data-unavailable] {
+      color: #ccc;
+      cursor: default;
+      text-decoration: line-through;
+    }
+
+    &[data-disabled] {
+      color: #ccc;
+      cursor: default;
+    }
+  }
+}
+
+/* --- TimeField standalone overrides --- */
+.date-time-widget-wrapper .react-aria-TimeField {
+  .react-aria-DateInput {
+    padding: 6px 8px;
+  }
+}

@@ -6,14 +6,6 @@ import { waitFor, render, screen } from '@testing-library/react';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(async () => {
-  const { __setLoadables } = await import(
-    '@plone/volto/helpers/Loadable/Loadable'
-  );
-  await __setLoadables();
-});
-
 test('renders a time widget component', async () => {
   const store = mockStore({
     intl: {
@@ -33,6 +25,27 @@ test('renders a time widget component', async () => {
     </Provider>,
   );
   await waitFor(() => screen.getByText(/My field/));
-  await waitFor(() => screen.getByPlaceholderText('Time'));
+  expect(container).toMatchSnapshot();
+});
+
+test('renders a time widget with no value', async () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+  const { container } = render(
+    <Provider store={store}>
+      <TimeWidget
+        id="my-field"
+        title="My field"
+        fieldSet="default"
+        onChange={() => {}}
+        value={null}
+      />
+    </Provider>,
+  );
+  await waitFor(() => screen.getByText(/My field/));
   expect(container).toMatchSnapshot();
 });

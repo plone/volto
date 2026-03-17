@@ -192,10 +192,364 @@ exports[`Aliases > renders an aliases control component 1`] = `
                 </div>
                 <div
                   class="field"
-                />
+                >
+                  <div
+                    class="inline field field-wrapper-created-before-date"
+                  >
+                    <div
+                      class="ui grid"
+                    >
+                      <div
+                        class="stretched row"
+                      >
+                        <div
+                          class="four wide column"
+                        >
+                          <div
+                            class="wrapper"
+                          >
+                            <label
+                              for="field-created-before-date"
+                              id="fieldset-undefined-field-label-created-before-date"
+                            >
+                              Created before
+                            </label>
+                          </div>
+                        </div>
+                        <div
+                          class="eight wide column"
+                        >
+                          <div
+                            class="date-time-widget-wrapper"
+                          >
+                            <div
+                              class="react-aria-DatePicker"
+                              data-rac=""
+                            >
+                              <div
+                                aria-labelledby="fieldset-undefined-field-label-created-before-date"
+                                class="react-aria-Group"
+                                data-rac=""
+                                data-react-aria-pressable="true"
+                                id="react-aria-:r3:"
+                                role="group"
+                              >
+                                <div
+                                  class="react-aria-DateInput"
+                                  data-rac=""
+                                  data-react-aria-pressable="true"
+                                  id="react-aria-:r2:"
+                                  role="presentation"
+                                  style="unicode-bidi: isolate;"
+                                >
+                                  <span
+                                    aria-label="month, "
+                                    aria-labelledby="react-aria-:rd: fieldset-undefined-field-label-created-before-date"
+                                    aria-valuemax="12"
+                                    aria-valuemin="1"
+                                    aria-valuetext="Empty"
+                                    autocorrect="off"
+                                    class="react-aria-DateSegment"
+                                    contenteditable="true"
+                                    data-placeholder="true"
+                                    data-rac=""
+                                    data-type="month"
+                                    enterkeyhint="next"
+                                    id="react-aria-:rd:"
+                                    inputmode="numeric"
+                                    role="spinbutton"
+                                    spellcheck="false"
+                                    style="caret-color: transparent;"
+                                    tabindex="0"
+                                  >
+                                    mm
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                    class="react-aria-DateSegment"
+                                    data-rac=""
+                                    data-type="literal"
+                                  >
+                                    /
+                                  </span>
+                                  <span
+                                    aria-label="day, "
+                                    aria-labelledby="react-aria-:rh: fieldset-undefined-field-label-created-before-date"
+                                    aria-valuemax="31"
+                                    aria-valuemin="1"
+                                    aria-valuetext="Empty"
+                                    autocorrect="off"
+                                    class="react-aria-DateSegment"
+                                    contenteditable="true"
+                                    data-placeholder="true"
+                                    data-rac=""
+                                    data-type="day"
+                                    enterkeyhint="next"
+                                    id="react-aria-:rh:"
+                                    inputmode="numeric"
+                                    role="spinbutton"
+                                    spellcheck="false"
+                                    style="caret-color: transparent;"
+                                    tabindex="0"
+                                  >
+                                    dd
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                    class="react-aria-DateSegment"
+                                    data-rac=""
+                                    data-type="literal"
+                                  >
+                                    /
+                                  </span>
+                                  <span
+                                    aria-label="year, "
+                                    aria-labelledby="react-aria-:rl: fieldset-undefined-field-label-created-before-date"
+                                    aria-valuemax="9999"
+                                    aria-valuemin="1"
+                                    aria-valuetext="Empty"
+                                    autocorrect="off"
+                                    class="react-aria-DateSegment"
+                                    contenteditable="true"
+                                    data-placeholder="true"
+                                    data-rac=""
+                                    data-type="year"
+                                    enterkeyhint="next"
+                                    id="react-aria-:rl:"
+                                    inputmode="numeric"
+                                    role="spinbutton"
+                                    spellcheck="false"
+                                    style="caret-color: transparent;"
+                                    tabindex="0"
+                                  >
+                                    yyyy
+                                  </span>
+                                </div>
+                                <input
+                                  class=""
+                                  data-rac=""
+                                  hidden=""
+                                  title=""
+                                  type="text"
+                                  value=""
+                                />
+                                <button
+                                  aria-expanded="false"
+                                  aria-haspopup="dialog"
+                                  aria-label="Calendar"
+                                  aria-labelledby="react-aria-:r0: fieldset-undefined-field-label-created-before-date"
+                                  class="react-aria-Button"
+                                  data-rac=""
+                                  data-react-aria-pressable="true"
+                                  id="react-aria-:r0:"
+                                  tabindex="0"
+                                  type="button"
+                                >
+                                  ▼
+                                </button>
+                              </div>
+                            </div>
+                            <div
+                              aria-hidden="true"
+                              data-a11y-ignore="aria-hidden-focus"
+                              data-react-aria-prevent-focus="true"
+                              data-testid="hidden-dateinput-container"
+                              style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;"
+                            >
+                              <input
+                                form=""
+                                step="60"
+                                tabindex="-1"
+                                type="date"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div
                   class="field"
-                />
+                >
+                  <div
+                    class="inline field field-wrapper-created-after-date"
+                  >
+                    <div
+                      class="ui grid"
+                    >
+                      <div
+                        class="stretched row"
+                      >
+                        <div
+                          class="four wide column"
+                        >
+                          <div
+                            class="wrapper"
+                          >
+                            <label
+                              for="field-created-after-date"
+                              id="fieldset-undefined-field-label-created-after-date"
+                            >
+                              Created after
+                            </label>
+                          </div>
+                        </div>
+                        <div
+                          class="eight wide column"
+                        >
+                          <div
+                            class="date-time-widget-wrapper"
+                          >
+                            <div
+                              class="react-aria-DatePicker"
+                              data-rac=""
+                            >
+                              <div
+                                aria-labelledby="fieldset-undefined-field-label-created-after-date"
+                                class="react-aria-Group"
+                                data-rac=""
+                                data-react-aria-pressable="true"
+                                id="react-aria-:rs:"
+                                role="group"
+                              >
+                                <div
+                                  class="react-aria-DateInput"
+                                  data-rac=""
+                                  data-react-aria-pressable="true"
+                                  id="react-aria-:rr:"
+                                  role="presentation"
+                                  style="unicode-bidi: isolate;"
+                                >
+                                  <span
+                                    aria-label="month, "
+                                    aria-labelledby="react-aria-:r16: fieldset-undefined-field-label-created-after-date"
+                                    aria-valuemax="12"
+                                    aria-valuemin="1"
+                                    aria-valuetext="Empty"
+                                    autocorrect="off"
+                                    class="react-aria-DateSegment"
+                                    contenteditable="true"
+                                    data-placeholder="true"
+                                    data-rac=""
+                                    data-type="month"
+                                    enterkeyhint="next"
+                                    id="react-aria-:r16:"
+                                    inputmode="numeric"
+                                    role="spinbutton"
+                                    spellcheck="false"
+                                    style="caret-color: transparent;"
+                                    tabindex="0"
+                                  >
+                                    mm
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                    class="react-aria-DateSegment"
+                                    data-rac=""
+                                    data-type="literal"
+                                  >
+                                    /
+                                  </span>
+                                  <span
+                                    aria-label="day, "
+                                    aria-labelledby="react-aria-:r1a: fieldset-undefined-field-label-created-after-date"
+                                    aria-valuemax="31"
+                                    aria-valuemin="1"
+                                    aria-valuetext="Empty"
+                                    autocorrect="off"
+                                    class="react-aria-DateSegment"
+                                    contenteditable="true"
+                                    data-placeholder="true"
+                                    data-rac=""
+                                    data-type="day"
+                                    enterkeyhint="next"
+                                    id="react-aria-:r1a:"
+                                    inputmode="numeric"
+                                    role="spinbutton"
+                                    spellcheck="false"
+                                    style="caret-color: transparent;"
+                                    tabindex="0"
+                                  >
+                                    dd
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                    class="react-aria-DateSegment"
+                                    data-rac=""
+                                    data-type="literal"
+                                  >
+                                    /
+                                  </span>
+                                  <span
+                                    aria-label="year, "
+                                    aria-labelledby="react-aria-:r1e: fieldset-undefined-field-label-created-after-date"
+                                    aria-valuemax="9999"
+                                    aria-valuemin="1"
+                                    aria-valuetext="Empty"
+                                    autocorrect="off"
+                                    class="react-aria-DateSegment"
+                                    contenteditable="true"
+                                    data-placeholder="true"
+                                    data-rac=""
+                                    data-type="year"
+                                    enterkeyhint="next"
+                                    id="react-aria-:r1e:"
+                                    inputmode="numeric"
+                                    role="spinbutton"
+                                    spellcheck="false"
+                                    style="caret-color: transparent;"
+                                    tabindex="0"
+                                  >
+                                    yyyy
+                                  </span>
+                                </div>
+                                <input
+                                  class=""
+                                  data-rac=""
+                                  hidden=""
+                                  title=""
+                                  type="text"
+                                  value=""
+                                />
+                                <button
+                                  aria-expanded="false"
+                                  aria-haspopup="dialog"
+                                  aria-label="Calendar"
+                                  aria-labelledby="react-aria-:rp: fieldset-undefined-field-label-created-after-date"
+                                  class="react-aria-Button"
+                                  data-rac=""
+                                  data-react-aria-pressable="true"
+                                  id="react-aria-:rp:"
+                                  tabindex="0"
+                                  type="button"
+                                >
+                                  ▼
+                                </button>
+                              </div>
+                            </div>
+                            <div
+                              aria-hidden="true"
+                              data-a11y-ignore="aria-hidden-focus"
+                              data-react-aria-prevent-focus="true"
+                              data-testid="hidden-dateinput-container"
+                              style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; width: 1px; white-space: nowrap; top: 0px; left: 0px;"
+                            >
+                              <input
+                                form=""
+                                step="60"
+                                tabindex="-1"
+                                type="date"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <button
                   class="ui primary button"
                 >
