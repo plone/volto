@@ -3,9 +3,11 @@ import * as React from 'react';
 import type { PlateEditor, PlateElementProps } from 'platejs/react';
 
 import { AIChatPlugin } from '@platejs/ai/react';
+import { SuggestionPlugin } from '@platejs/suggestion/react';
 import config from '@plone/registry';
-import Icon from '../../legacy/Icon';
+
 import {
+  BookA,
   ChevronRightIcon,
   Code2,
   Columns3Icon,
@@ -20,12 +22,12 @@ import {
   PilcrowIcon,
   Quote,
   SparklesIcon,
-  SplitSquareHorizontalIcon,
+  SquareSplitVertical,
   Square,
   Table,
   TableOfContentsIcon,
 } from 'lucide-react';
-import { type TComboboxInputElement, KEYS } from 'platejs';
+import { type TComboboxInputElement, ElementApi, KEYS, PathApi } from 'platejs';
 import { PlateElement } from 'platejs/react';
 import { insertBlock } from '../editor/transforms';
 import {
@@ -33,6 +35,7 @@ import {
   getIntl,
   splitEditorAtCursor,
 } from '../editor/plugins/split-utils';
+import { TITLE_BLOCK_TYPE } from '../editor/plugins/title';
 
 import {
   InlineCombobox,
@@ -57,6 +60,23 @@ type Group = {
   }[];
 };
 
+const addNewBlock = {
+  focusEditor: true,
+  icon: <PlusSquareIcon />,
+  keywords: ['block', 'add', 'insert'],
+  label: 'New block',
+  value: 'action_new_block',
+  onSelect: (editor: PlateEditor) => {
+    const api = getBlocksApi(editor);
+    if (!api?.onInsertBlock) return;
+
+    setTimeout(() => {
+      const newId = api.onInsertBlock(api.id, { '@type': 'slate' });
+      api.onSelectBlock?.(newId ?? api.id);
+    }, 0);
+  },
+};
+
 const baseGroups: Group[] = [
   {
     group: 'Actions',
@@ -69,26 +89,10 @@ const baseGroups: Group[] = [
           editor.getApi(AIChatPlugin).aiChat.show();
         },
       },
-      {
-        focusEditor: true,
-        icon: <PlusSquareIcon />,
-        keywords: ['block', 'add', 'insert'],
-        label: 'New block',
-        value: 'action_new_block',
-        onSelect: (editor) => {
-          const api = getBlocksApi(editor);
-          if (!api?.onInsertBlock) return;
-
-          setTimeout(() => {
-            const newId = api.onInsertBlock(api.id, { '@type': 'slate' });
-            api.onSelectBlock?.(newId ?? api.id);
-          }, 0);
-        },
-      },
     ],
   },
   {
-    group: 'Basic blocks',
+    group: 'Text blocks',
     items: [
       {
         icon: <PilcrowIcon />,
@@ -101,7 +105,7 @@ const baseGroups: Group[] = [
         keywords: ['img', 'picture', 'photo'],
         label: 'Image',
         value: KEYS.img,
-        onSelect: (editor, value) => {
+        onSelect: (editor: PlateEditor, value: string) => {
           insertBlock(editor, value);
         },
       },
@@ -211,6 +215,33 @@ const filteredBlocksConfig = (blocksConfig: Record<string, any>) =>
     return true;
   });
 
+const insertSomersaultNativeBlock = (
+  editor: PlateEditor,
+  nativeBlockType: string,
+) => {
+  editor.tf.withoutNormalizing(() => {
+    const block = editor.api.block();
+    if (!block) return;
+
+    editor.tf.insertNodes(
+      editor.api.create.block({
+        type: 'unknown',
+        '@type': nativeBlockType,
+      }),
+      {
+        at: PathApi.next(block[1]),
+        select: true,
+      },
+    );
+
+    if (block[0].type !== 'unknown') {
+      editor.getApi(SuggestionPlugin).suggestion.withoutSuggestions(() => {
+        editor.tf.removeNodes({ previousEmptyBlock: true });
+      });
+    }
+  });
+};
+
 const useSplitEditorAtCursor = (editor: PlateEditor) => {
   const split = React.useCallback(() => {
     splitEditorAtCursor(editor);
@@ -218,7 +249,7 @@ const useSplitEditorAtCursor = (editor: PlateEditor) => {
 
   return {
     split,
-    enabled: Boolean(editor),
+    enabled: Boolean(editor) && config.settings.editorMode !== 'somersault',
   };
 };
 
@@ -228,7 +259,7 @@ export function SlashInputElement(
   const { editor, element } = props;
   const { split, enabled: canSplit } = useSplitEditorAtCursor(editor);
   const intl = React.useMemo(() => getIntl(editor), [editor]);
-  const voltoBlockItems = React.useMemo(() => {
+  const blocks = React.useMemo(() => {
     const blocksConfig = config?.blocks?.blocksConfig;
     if (!blocksConfig) return [];
 
@@ -239,18 +270,23 @@ export function SlashInputElement(
 
       const label =
         typeof block.title === 'string' ? block.title : format(block.title);
-      const iconNode = block.icon ? (
-        <Icon name={block.icon} size="16px" />
-      ) : (
-        <Square />
-      );
-
+      // const iconNode = block.icon ? (
+      //   <Icon name={block.icon} size="16px" />
+      // ) : (
+      //   <Square />
+      // );
+      const Icon = block.icon ? block.icon : Square;
       return {
-        icon: iconNode,
+        icon: <Icon />,
         keywords: [id, label?.toString()?.toLowerCase?.()].filter(Boolean),
         label,
-        value: `volto_${id}`,
+        value: `block_${id}`,
         onSelect: (plateEditor: PlateEditor) => {
+          if (config.settings.editorMode === 'somersault') {
+            insertSomersaultNativeBlock(plateEditor, id);
+            return;
+          }
+
           const api = getBlocksApi(plateEditor);
           if (!api?.onInsertBlock) return;
 
@@ -263,36 +299,71 @@ export function SlashInputElement(
     });
   }, [intl]);
 
+  const hasTitleBlock = editor.children.some(
+    (child) => ElementApi.isElement(child) && child.type === TITLE_BLOCK_TYPE,
+  );
+
   const groups = React.useMemo(() => {
-    if (!canSplit) return baseGroups;
-    const splitItem = {
-      icon: <SplitSquareHorizontalIcon />,
-      keywords: ['split', 'divide', 'new block'],
-      label: 'Split editor here',
-      value: 'action_split_editor',
-      onSelect: split,
-    };
+    const allowNewBlock = config.settings.editorMode !== 'somersault';
+    const addGroupItem = (
+      groups: Group[],
+      groupName: Group['group'],
+      item: { value: string } & Group['items'][number],
+    ) =>
+      groups.map((group) =>
+        group.group === groupName
+          ? {
+              ...group,
+              items: group.items.some(
+                (existing) => existing.value === item.value,
+              )
+                ? group.items
+                : [...group.items, item],
+            }
+          : group,
+      );
 
-    const nextGroups = baseGroups.map((group) =>
-      group.group === 'Actions'
-        ? {
-            ...group,
-            items: group.items.some((item) => item.value === splitItem.value)
-              ? group.items
-              : [...group.items, splitItem],
-          }
-        : group,
-    );
+    let nextGroups = baseGroups;
+    if (allowNewBlock) {
+      nextGroups = addGroupItem(nextGroups, 'Actions', addNewBlock);
+    }
+    if (!hasTitleBlock) {
+      const titleBlockItem = {
+        icon: <BookA />,
+        keywords: ['title', 'page title', 'h1'],
+        label: 'Title',
+        value: TITLE_BLOCK_TYPE,
+        onSelect: (editor: PlateEditor, value: string) => {
+          insertBlock(editor, value);
+        },
+      };
 
-    if (voltoBlockItems.length) {
-      nextGroups.push({
-        group: 'Volto Blocks',
-        items: voltoBlockItems,
-      });
+      nextGroups = addGroupItem(nextGroups, 'Text blocks', titleBlockItem);
+    }
+    if (canSplit) {
+      const splitItem = {
+        icon: <SquareSplitVertical />,
+        keywords: ['split', 'divide', 'new block'],
+        label: 'Split editor here',
+        value: 'action_split_editor',
+        onSelect: split,
+      };
+
+      nextGroups = addGroupItem(nextGroups, 'Actions', splitItem);
+    }
+
+    if (blocks.length) {
+      nextGroups = [
+        ...nextGroups,
+        {
+          group: 'Blocks',
+          items: blocks,
+        },
+      ];
     }
 
     return nextGroups;
-  }, [canSplit, split, voltoBlockItems]);
+  }, [canSplit, hasTitleBlock, split, blocks]);
 
   return (
     <PlateElement {...props} as="span">

@@ -67,11 +67,24 @@ export function MediaToolbar({
   }, [open]);
 
   const element = useElement();
+  const anchorElement = React.useMemo(() => {
+    try {
+      const domElement = editor.api.toDOMNode(element);
+      const figure = domElement.querySelector('figure');
+
+      return figure ?? domElement;
+    } catch {
+      return null;
+    }
+  }, [editor, element]);
   const { props: buttonProps } = useRemoveNodeButton({ element });
 
   return (
     <Popover open={open} modal={false}>
-      <PopoverAnchor>{children}</PopoverAnchor>
+      {anchorElement && (
+        <PopoverAnchor virtualRef={{ current: anchorElement }} />
+      )}
+      {children}
 
       <PopoverContent
         className="w-auto p-1"

@@ -1,16 +1,10 @@
-import type { PlateConfig } from '@plone/types';
+import type { PlateConfig } from '../../types';
 
 import { EditorKit } from '../../components/editor/editor-kit';
-import { BaseEditorKit } from '../../components/editor/editor-base-kit';
 import { LegacyLinkPlugin } from '../../components/editor/plugins/legacy-link-plugin';
 
 const full: PlateConfig = {
-  editorConfig: {
-    plugins: [...LegacyLinkPlugin, ...EditorKit],
-  },
-  rendererConfig: {
-    plugins: [...LegacyLinkPlugin, ...BaseEditorKit],
-  },
+  plugins: [...LegacyLinkPlugin, ...EditorKit],
 };
 
 export default full;

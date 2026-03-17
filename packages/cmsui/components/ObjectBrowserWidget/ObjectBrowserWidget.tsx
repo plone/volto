@@ -10,6 +10,7 @@ import { focusRing } from '../utils';
 import { useLoaderData } from 'react-router';
 import type { loader as editLoader } from '../../routes/edit';
 import { ObjectBrowserProvider } from './ObjectBrowserContext';
+import type { UseObjectBrowserConfig } from './ObjectBrowserContext';
 import { ObjectBrowserTags } from './ObjectBrowserTags';
 import { ObjectBrowserTrigger } from './ObjectBrowserTrigger';
 import { ObjectBrowserModal } from './ObjectBrowserModal';
@@ -26,7 +27,9 @@ const widgetStyles = tv({
   },
 });
 
-interface ObjectBrowserWidgetProps extends BaseFormFieldProps {}
+interface ObjectBrowserWidgetProps
+  extends BaseFormFieldProps,
+    Partial<UseObjectBrowserConfig> {}
 // TODO: interaction with plate and blocks schema
 export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
   const { label, description, errorMessage } = props;

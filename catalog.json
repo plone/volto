@@ -16,6 +16,8 @@
   "@playwright/test": "^1.58.0",
   "@platejs/playwright": "^52.0.11",
   "tailwindcss": "^4.1.12",
+  "tailwind-merge": "^3.5.0",
+  "tailwind-variants": "^3.2.2",
   "release-it": "^19.0.5",
   "tsup": "^8.5.0",
   "typescript": "^5.9.2",
