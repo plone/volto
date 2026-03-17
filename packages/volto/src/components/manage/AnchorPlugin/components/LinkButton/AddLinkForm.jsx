@@ -367,7 +367,7 @@ const LinkForm = ({
           formatOptionLabel={formatOptionLabel}
           isSearchable
           placeholder={placeholder || intl.formatMessage(messages.placeholder)}
-          noOptionsMessage={() => 'No options'}
+          noOptionsMessage={() => null}
           components={{
             DropdownIndicator: () => null,
             IndicatorSeparator: () => null,
@@ -377,7 +377,7 @@ const LinkForm = ({
           onKeyDown={handleSelectKeyDown}
           onFocus={onFocus}
           onBlur={onBlur}
-          menuIsOpen={isMenuOpen}
+          menuIsOpen={isMenuOpen && filteredSuggestions.length > 0}
           isClearable
         />
         {link.length > 0 && (

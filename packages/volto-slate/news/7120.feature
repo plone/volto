@@ -1,1 +1,1 @@
-Added the improved searchable link picker to the Slate editor link workflow. @dobri1408
+Improved the link picker with searchable suggestions, content previews, and quicker link selection while editing. @dobri1408
