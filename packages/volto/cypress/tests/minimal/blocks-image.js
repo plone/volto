@@ -92,9 +92,9 @@ describe('Blocks Tests', () => {
     cy.get('.ui.basic.icon.button.image').contains('Image').click();
 
     cy.findByLabelText('Enter a URL to an image').click();
-    cy.get('input[placeholder="Enter a URL to an image"]').type(
-      '/my-page/my-image{enter}',
-    );
+    cy.get('.link-form-container .react-select-container')
+      .click()
+      .type('/my-page/my-image{enter}');
     cy.get('#toolbar-save').click();
 
     cy.wait('@saveImage');
