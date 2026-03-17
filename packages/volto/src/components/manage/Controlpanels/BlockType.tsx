@@ -89,6 +89,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
         </h1>
         {blockTypes.items?.length > 0 ? (
           <Table
+            className="react-aria-Table cmsui-table"
             columns={[
               {
                 id: 'title',

@@ -83,6 +83,7 @@ const BlockTypesControlpanel = (props: RouteProps) => {
           <FormattedMessage id="Block Types" defaultMessage="Block Types" />
         </h1>
         <Table
+          className="react-aria-Table cmsui-table"
           columns={[
             {
               id: 'blockType',
