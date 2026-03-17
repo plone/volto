@@ -2,18 +2,31 @@ import type { BlockViewProps } from '@plone/types';
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { flattenToAppURL, isInternalURL } from '@plone/helpers';
+import config from '@plone/registry';
 
 type VideoData = NonNullable<BlockViewProps['data']>;
 
-export const getVideoIDAndPlaceholder = (url: string) => {
+const YOUTUBE_REGEX =
+  /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)(?:.*)$/i;
+
+export const getVideoIDAndPlaceholder = (
+  url: string,
+  peertubeInstances?: string[],
+) => {
+  let hasMatch = false;
   let videoID: string | null = null;
   let listID: string | null = null;
   let thumbnailURL: string | null = null;
+  let videoUrl: string | null = null;
 
-  if (url.includes('youtu')) {
-    if (url.includes('list')) {
+  if (YOUTUBE_REGEX.test(url)) {
+    hasMatch = true;
+    if (url.match('list')) {
       const matches = url.match(/^.*\?list=(.*)|^.*&list=(.*)$/);
       listID = matches?.[1] || matches?.[2] || null;
+      videoUrl = listID
+        ? `https://www.youtube.com/embed/videoseries?list=${listID}`
+        : null;
 
       let thumbnailID: string | null = null;
       if (url.match(/\?v=(.*)&list/)) {
@@ -31,6 +44,8 @@ export const getVideoIDAndPlaceholder = (url: string) => {
       videoID = url.match(/^.*\.be\/(.*)/)?.[1] ?? null;
     } else if (url.match(/\?v=/)) {
       videoID = url.match(/^.*\?v=([^&]*)/)?.[1] ?? null;
+    } else if (url.match('shorts')) {
+      videoID = url.match(/^.*\/shorts\/(.*)/)?.[1] ?? null;
     }
 
     if (videoID) {
@@ -41,6 +56,7 @@ export const getVideoIDAndPlaceholder = (url: string) => {
       thumbnailURL = `https://img.youtube.com/vi/${thumbnailID}/sddefault.jpg`;
     }
   } else if (url.includes('vimeo')) {
+    hasMatch = true;
     videoID = url.match(/^.*\.com\/(.*)/)?.[1] ?? null;
     if (videoID) {
       let thumbnailID = videoID;
@@ -49,9 +65,22 @@ export const getVideoIDAndPlaceholder = (url: string) => {
       }
       thumbnailURL = `https://vumbnail.com/${thumbnailID}.jpg`;
     }
+  } else if (
+    Array.isArray(peertubeInstances) &&
+    peertubeInstances.length > 0 &&
+    url.match(new RegExp(peertubeInstances.join('|'), 'gi'))
+  ) {
+    const peertubeRegex = /^(https?:\/\/[^/]+)\/w\/([A-Za-z0-9_-]+)/i;
+    const match = url.match(peertubeRegex);
+    if (match) {
+      hasMatch = true;
+      const instance = match[1];
+      videoID = match[2];
+      videoUrl = `${instance}/videos/embed/${videoID}`;
+    }
   }
 
-  return { videoID, listID, thumbnailURL };
+  return { videoID, listID, videoUrl, thumbnailURL, hasMatch };
 };
 
 const getVideoSrc = (url: string) => {
@@ -81,8 +110,14 @@ export const VideoBlockBody = ({
         : data.preview_image
       : null;
 
-  const { videoID, listID, thumbnailURL } = getVideoIDAndPlaceholder(data.url);
+  const peertubeInstances: string[] =
+    config.blocks?.blocksConfig?.video?.allowedPeertubeInstances ?? [];
+
+  const { videoID, listID, videoUrl, thumbnailURL, hasMatch } =
+    getVideoIDAndPlaceholder(data.url, peertubeInstances);
   placeholder = placeholder || thumbnailURL;
+
+  const autoplay = data.autoplay ? '?autoplay=1' : '';
 
   const iframeProps = {
     allow:
@@ -93,32 +128,43 @@ export const VideoBlockBody = ({
 
   let content: ReactNode = null;
 
-  if (data.url.includes('youtu')) {
-    if (data.url.includes('list') && listID) {
+  if (hasMatch) {
+    if (listID && videoUrl) {
       content = (
         <iframe
-          src={`https://www.youtube.com/embed/videoseries?list=${listID}`}
+          src={`${videoUrl}${autoplay ? `&autoplay=1` : ''}`}
           title={data.title || 'YouTube playlist'}
           {...iframeProps}
         />
       );
     } else if (videoID) {
-      content = (
-        <iframe
-          src={`https://www.youtube.com/embed/${videoID}`}
-          title={data.title || 'YouTube video'}
-          {...iframeProps}
-        />
-      );
+      if (YOUTUBE_REGEX.test(data.url)) {
+        content = (
+          <iframe
+            src={`https://www.youtube.com/embed/${videoID}${autoplay}`}
+            title={data.title || 'YouTube video'}
+            {...iframeProps}
+          />
+        );
+      } else if (data.url.includes('vimeo')) {
+        content = (
+          <iframe
+            src={`https://player.vimeo.com/video/${videoID}${autoplay}`}
+            title={data.title || 'Vimeo video'}
+            {...iframeProps}
+          />
+        );
+      } else if (videoUrl) {
+        // PeerTube
+        content = (
+          <iframe
+            src={`${videoUrl}${autoplay}`}
+            title={data.title || 'PeerTube video'}
+            {...iframeProps}
+          />
+        );
+      }
     }
-  } else if (data.url.includes('vimeo') && videoID) {
-    content = (
-      <iframe
-        src={`https://player.vimeo.com/video/${videoID}`}
-        title={data.title || 'Vimeo video'}
-        {...iframeProps}
-      />
-    );
   } else if (data.url.match(/\.mp4($|[?&#])/i)) {
     content = (
       // eslint-disable-next-line jsx-a11y/media-has-caption

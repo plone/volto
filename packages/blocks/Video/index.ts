@@ -7,6 +7,7 @@ const VideoBlockInfo = {
     () => import(/* webpackChunkName: "plone-blocks" */ './VideoBlockView'),
   ),
   category: 'media',
+  allowedPeertubeInstances: [] as string[],
 };
 
 export default VideoBlockInfo;

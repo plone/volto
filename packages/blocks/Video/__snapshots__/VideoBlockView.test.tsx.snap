@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`VideoBlockView > renders view video component 1`] = `
+<DocumentFragment>
+  <div
+    class="video align block center"
+  >
+    <figure
+      class="video-block"
+    >
+      <div
+        class="video-inner"
+      >
+        <iframe
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen=""
+          loading="lazy"
+          src="https://www.youtube.com/embed/KqjeO_ekW3g"
+          title="YouTube video"
+        />
+      </div>
+    </figure>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`VideoBlockView > renders view video component with placeholder image 1`] = `
+<DocumentFragment>
+  <div
+    class="video align block center"
+  >
+    <figure
+      class="video-block"
+    >
+      <div
+        class="video-inner"
+      >
+        <iframe
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen=""
+          loading="lazy"
+          src="https://www.youtube.com/embed/KqjeO_ekW3g"
+          title="YouTube video"
+        />
+      </div>
+    </figure>
+  </div>
+</DocumentFragment>
+`;
