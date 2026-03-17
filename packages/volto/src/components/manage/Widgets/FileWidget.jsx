@@ -15,7 +15,6 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import Image from '@plone/volto/components/theme/Image/Image';
 import loadable from '@loadable/component';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { defineMessages, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
@@ -60,6 +59,10 @@ const messages = defineMessages({
     id: 'File is not of the accepted type {accept}',
     defaultMessage: 'File is not of the accepted type {accept}',
   },
+  dragAndDropActionA11y: {
+    id: 'Press Enter to browse files from your computer.',
+    defaultMessage: 'Press Enter to browse files from your computer.',
+  },
 });
 
 /**
@@ -90,17 +93,24 @@ const FileWidget = (props) => {
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
 
+  const imgAttrs = React.useMemo(() => {
+    const data = {};
+    if (value?.download) {
+      data.item = {
+        '@id': value.download.substring(0, value.download.indexOf('/@@images')),
+        image: value,
+      };
+    } else if (value?.data) {
+      data.src = `data:${value['content-type']};${value.encoding},${value.data}`;
+    }
+    return data;
+  }, [value]);
+
   React.useEffect(() => {
     if (value && imageMimetypes.includes(value['content-type'])) {
       setFileType(true);
     }
   }, [value]);
-
-  const imgsrc = value?.download
-    ? `${flattenToAppURL(value?.download)}?id=${Date.now()}`
-    : null || value?.data
-      ? `data:${value['content-type']};${value.encoding},${value.data}`
-      : null;
 
   /**
    * Drop handler
@@ -175,7 +185,7 @@ const FileWidget = (props) => {
               <Image
                 className="image-preview small ui image"
                 id={`field-${id}-image`}
-                src={imgsrc}
+                {...imgAttrs}
               />
             ) : (
               <div className="dropzone-placeholder">
@@ -199,6 +209,9 @@ const FileWidget = (props) => {
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
+              <span className="visually-hidden">
+                {intl.formatMessage(messages.dragAndDropActionA11y)}
+              </span>
             </label>
             <input
               {...getInputProps({

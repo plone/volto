@@ -1,7 +1,11 @@
-import { setup, teardown } from '../../utils/test';
+import {
+  getUniqueEntityName,
+  loginWithCreate,
+  setup,
+  teardown,
+} from '../../utils/test';
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
 import PloneClient from '../../client';
-import { getUniqueEntityName, loginWithCreate } from '../../utils/test';
 
 const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',

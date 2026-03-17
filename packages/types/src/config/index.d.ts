@@ -5,6 +5,7 @@ import type { WidgetsConfig } from './Widgets';
 import type { SlotsConfig } from './Slots';
 import type { UtilitiesConfig } from './Utilities';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export type AddonReducersConfig = Record<string, Function>;
 
 export type AddonRoutesConfig = {

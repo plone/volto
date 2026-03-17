@@ -6,5 +6,6 @@
   ],
   "addons": [
     "test-released-dummy"
-  ]
+  ],
+  "theme": "test-addon-theme"
 }

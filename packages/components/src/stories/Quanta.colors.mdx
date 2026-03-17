@@ -1,7 +1,17 @@
-import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 import { quantaColors, quantaGreys, quantaBlues, quantaReds, quantaYellows, quantaGreens, quantaBlueGreens } from './colors';
 
 <Meta title="Styleguide/Quanta Colors" />
+
+# Quanta colors
+
+These are the colors used in Quanta.
+
+They are defined as CSS custom properties and available in the `:root` scope with the `--color-quanta-<color-name>` name.
+
+In non-Tailwind builds, they are available as CSS properties with the `--quanta-<color-name>` name.
+
+&nbsp;&nbsp;
 
 <ColorPalette>
   <ColorItem

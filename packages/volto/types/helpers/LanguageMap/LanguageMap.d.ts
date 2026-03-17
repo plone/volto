@@ -1,10 +1,22 @@
 export default langmap;
 declare const langmap: {
+    aa: {
+        nativeName: string;
+        englishName: string;
+    };
+    ab: {
+        nativeName: string;
+        englishName: string;
+    };
     ach: {
         nativeName: string;
         englishName: string;
     };
     ady: {
+        nativeName: string;
+        englishName: string;
+    };
+    ae: {
         nativeName: string;
         englishName: string;
     };
@@ -24,6 +36,14 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    am: {
+        nativeName: string;
+        englishName: string;
+    };
+    an: {
+        nativeName: string;
+        englishName: string;
+    };
     ar: {
         nativeName: string;
         englishName: string;
@@ -40,6 +60,14 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    as: {
+        nativeName: string;
+        englishName: string;
+    };
+    ay: {
+        nativeName: string;
+        englishName: string;
+    };
     'ay-BO': {
         nativeName: string;
         englishName: string;
@@ -49,6 +77,10 @@ declare const langmap: {
         englishName: string;
     };
     'az-AZ': {
+        nativeName: string;
+        englishName: string;
+    };
+    ba: {
         nativeName: string;
         englishName: string;
     };
@@ -64,6 +96,22 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    be: {
+        nativeName: string;
+        englishName: string;
+    };
+    bh: {
+        nativeName: string;
+        englishName: string;
+    };
+    bi: {
+        nativeName: string;
+        englishName: string;
+    };
+    bm: {
+        nativeName: string;
+        englishName: string;
+    };
     bn: {
         nativeName: string;
         englishName: string;
@@ -73,6 +121,10 @@ declare const langmap: {
         englishName: string;
     };
     'bn-BD': {
+        nativeName: string;
+        englishName: string;
+    };
+    bo: {
         nativeName: string;
         englishName: string;
     };
@@ -104,11 +156,35 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    ce: {
+        nativeName: string;
+        englishName: string;
+    };
+    ch: {
+        nativeName: string;
+        englishName: string;
+    };
+    co: {
+        nativeName: string;
+        englishName: string;
+    };
+    cr: {
+        nativeName: string;
+        englishName: string;
+    };
     cs: {
         nativeName: string;
         englishName: string;
     };
     'cs-CZ': {
+        nativeName: string;
+        englishName: string;
+    };
+    cu: {
+        nativeName: string;
+        englishName: string;
+    };
+    cv: {
         nativeName: string;
         englishName: string;
     };
@@ -145,6 +221,18 @@ declare const langmap: {
         englishName: string;
     };
     dsb: {
+        nativeName: string;
+        englishName: string;
+    };
+    dv: {
+        nativeName: string;
+        englishName: string;
+    };
+    dz: {
+        nativeName: string;
+        englishName: string;
+    };
+    ee: {
         nativeName: string;
         englishName: string;
     };
@@ -296,6 +384,14 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    fj: {
+        nativeName: string;
+        englishName: string;
+    };
+    fo: {
+        nativeName: string;
+        englishName: string;
+    };
     'fo-FO': {
         nativeName: string;
         englishName: string;
@@ -317,6 +413,10 @@ declare const langmap: {
         englishName: string;
     };
     'fr-CH': {
+        nativeName: string;
+        englishName: string;
+    };
+    fy: {
         nativeName: string;
         englishName: string;
     };
@@ -344,7 +444,15 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    gn: {
+        nativeName: string;
+        englishName: string;
+    };
     'gn-PY': {
+        nativeName: string;
+        englishName: string;
+    };
+    gu: {
         nativeName: string;
         englishName: string;
     };
@@ -357,6 +465,10 @@ declare const langmap: {
         englishName: string;
     };
     'gx-GR': {
+        nativeName: string;
+        englishName: string;
+    };
+    ha: {
         nativeName: string;
         englishName: string;
     };
@@ -373,6 +485,10 @@ declare const langmap: {
         englishName: string;
     };
     'hi-IN': {
+        nativeName: string;
+        englishName: string;
+    };
+    ho: {
         nativeName: string;
         englishName: string;
     };
@@ -400,7 +516,19 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    hy: {
+        nativeName: string;
+        englishName: string;
+    };
     'hy-AM': {
+        nativeName: string;
+        englishName: string;
+    };
+    hz: {
+        nativeName: string;
+        englishName: string;
+    };
+    ia: {
         nativeName: string;
         englishName: string;
     };
@@ -409,6 +537,26 @@ declare const langmap: {
         englishName: string;
     };
     'id-ID': {
+        nativeName: string;
+        englishName: string;
+    };
+    ie: {
+        nativeName: string;
+        englishName: string;
+    };
+    ig: {
+        nativeName: string;
+        englishName: string;
+    };
+    ii: {
+        nativeName: string;
+        englishName: string;
+    };
+    ik: {
+        nativeName: string;
+        englishName: string;
+    };
+    io: {
         nativeName: string;
         englishName: string;
     };
@@ -428,6 +576,10 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    iu: {
+        nativeName: string;
+        englishName: string;
+    };
     ja: {
         nativeName: string;
         englishName: string;
@@ -436,7 +588,15 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    jv: {
+        nativeName: string;
+        englishName: string;
+    };
     'jv-ID': {
+        nativeName: string;
+        englishName: string;
+    };
+    ka: {
         nativeName: string;
         englishName: string;
     };
@@ -444,7 +604,31 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    kab: {
+        nativeName: string;
+        englishName: string;
+    };
+    kg: {
+        nativeName: string;
+        englishName: string;
+    };
+    ki: {
+        nativeName: string;
+        englishName: string;
+    };
+    kj: {
+        nativeName: string;
+        englishName: string;
+    };
+    kk: {
+        nativeName: string;
+        englishName: string;
+    };
     'kk-KZ': {
+        nativeName: string;
+        englishName: string;
+    };
+    kl: {
         nativeName: string;
         englishName: string;
     };
@@ -453,10 +637,6 @@ declare const langmap: {
         englishName: string;
     };
     'km-KH': {
-        nativeName: string;
-        englishName: string;
-    };
-    kab: {
         nativeName: string;
         englishName: string;
     };
@@ -476,11 +656,31 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    kr: {
+        nativeName: string;
+        englishName: string;
+    };
+    ks: {
+        nativeName: string;
+        englishName: string;
+    };
+    ku: {
+        nativeName: string;
+        englishName: string;
+    };
     'ku-TR': {
         nativeName: string;
         englishName: string;
     };
+    kv: {
+        nativeName: string;
+        englishName: string;
+    };
     kw: {
+        nativeName: string;
+        englishName: string;
+    };
+    ky: {
         nativeName: string;
         englishName: string;
     };
@@ -496,7 +696,23 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    lg: {
+        nativeName: string;
+        englishName: string;
+    };
+    li: {
+        nativeName: string;
+        englishName: string;
+    };
     'li-NL': {
+        nativeName: string;
+        englishName: string;
+    };
+    ln: {
+        nativeName: string;
+        englishName: string;
+    };
+    lo: {
         nativeName: string;
         englishName: string;
     };
@@ -505,6 +721,10 @@ declare const langmap: {
         englishName: string;
     };
     'lt-LT': {
+        nativeName: string;
+        englishName: string;
+    };
+    lu: {
         nativeName: string;
         englishName: string;
     };
@@ -520,7 +740,19 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    mg: {
+        nativeName: string;
+        englishName: string;
+    };
     'mg-MG': {
+        nativeName: string;
+        englishName: string;
+    };
+    mh: {
+        nativeName: string;
+        englishName: string;
+    };
+    mi: {
         nativeName: string;
         englishName: string;
     };
@@ -540,7 +772,15 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    mn: {
+        nativeName: string;
+        englishName: string;
+    };
     'mn-MN': {
+        nativeName: string;
+        englishName: string;
+    };
+    mo: {
         nativeName: string;
         englishName: string;
     };
@@ -572,7 +812,7 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
-    no: {
+    na: {
         nativeName: string;
         englishName: string;
     };
@@ -584,11 +824,19 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    nd: {
+        nativeName: string;
+        englishName: string;
+    };
     ne: {
         nativeName: string;
         englishName: string;
     };
     'ne-NP': {
+        nativeName: string;
+        englishName: string;
+    };
+    ng: {
         nativeName: string;
         englishName: string;
     };
@@ -604,7 +852,27 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    nn: {
+        nativeName: string;
+        englishName: string;
+    };
     'nn-NO': {
+        nativeName: string;
+        englishName: string;
+    };
+    no: {
+        nativeName: string;
+        englishName: string;
+    };
+    nr: {
+        nativeName: string;
+        englishName: string;
+    };
+    nv: {
+        nativeName: string;
+        englishName: string;
+    };
+    ny: {
         nativeName: string;
         englishName: string;
     };
@@ -612,7 +880,23 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    oj: {
+        nativeName: string;
+        englishName: string;
+    };
+    om: {
+        nativeName: string;
+        englishName: string;
+    };
+    or: {
+        nativeName: string;
+        englishName: string;
+    };
     'or-IN': {
+        nativeName: string;
+        englishName: string;
+    };
+    os: {
         nativeName: string;
         englishName: string;
     };
@@ -624,11 +908,19 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    pi: {
+        nativeName: string;
+        englishName: string;
+    };
     pl: {
         nativeName: string;
         englishName: string;
     };
     'pl-PL': {
+        nativeName: string;
+        englishName: string;
+    };
+    ps: {
         nativeName: string;
         englishName: string;
     };
@@ -648,6 +940,10 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    qu: {
+        nativeName: string;
+        englishName: string;
+    };
     'qu-PE': {
         nativeName: string;
         englishName: string;
@@ -664,6 +960,14 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    rm: {
+        nativeName: string;
+        englishName: string;
+    };
+    rn: {
+        nativeName: string;
+        englishName: string;
+    };
     ru: {
         nativeName: string;
         englishName: string;
@@ -672,7 +976,27 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    rw: {
+        nativeName: string;
+        englishName: string;
+    };
+    sa: {
+        nativeName: string;
+        englishName: string;
+    };
     'sa-IN': {
+        nativeName: string;
+        englishName: string;
+    };
+    sc: {
+        nativeName: string;
+        englishName: string;
+    };
+    sd: {
+        nativeName: string;
+        englishName: string;
+    };
+    se: {
         nativeName: string;
         englishName: string;
     };
@@ -680,7 +1004,15 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    sg: {
+        nativeName: string;
+        englishName: string;
+    };
     sh: {
+        nativeName: string;
+        englishName: string;
+    };
+    si: {
         nativeName: string;
         englishName: string;
     };
@@ -704,7 +1036,19 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    sm: {
+        nativeName: string;
+        englishName: string;
+    };
+    sn: {
+        nativeName: string;
+        englishName: string;
+    };
     'so-SO': {
+        nativeName: string;
+        englishName: string;
+    };
+    so: {
         nativeName: string;
         englishName: string;
     };
@@ -721,6 +1065,14 @@ declare const langmap: {
         englishName: string;
     };
     'sr-RS': {
+        nativeName: string;
+        englishName: string;
+    };
+    ss: {
+        nativeName: string;
+        englishName: string;
+    };
+    st: {
         nativeName: string;
         englishName: string;
     };
@@ -776,6 +1128,14 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    ti: {
+        nativeName: string;
+        englishName: string;
+    };
+    tk: {
+        nativeName: string;
+        englishName: string;
+    };
     tl: {
         nativeName: string;
         englishName: string;
@@ -788,6 +1148,14 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    tn: {
+        nativeName: string;
+        englishName: string;
+    };
+    to: {
+        nativeName: string;
+        englishName: string;
+    };
     tr: {
         nativeName: string;
         englishName: string;
@@ -796,7 +1164,23 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    ts: {
+        nativeName: string;
+        englishName: string;
+    };
+    tt: {
+        nativeName: string;
+        englishName: string;
+    };
     'tt-RU': {
+        nativeName: string;
+        englishName: string;
+    };
+    tw: {
+        nativeName: string;
+        englishName: string;
+    };
+    ty: {
         nativeName: string;
         englishName: string;
     };
@@ -805,6 +1189,10 @@ declare const langmap: {
         englishName: string;
     };
     'uk-UA': {
+        nativeName: string;
+        englishName: string;
+    };
+    ug: {
         nativeName: string;
         englishName: string;
     };
@@ -824,11 +1212,35 @@ declare const langmap: {
         nativeName: string;
         englishName: string;
     };
+    ve: {
+        nativeName: string;
+        englishName: string;
+    };
     vi: {
         nativeName: string;
         englishName: string;
     };
     'vi-VN': {
+        nativeName: string;
+        englishName: string;
+    };
+    vk: {
+        nativeName: string;
+        englishName: string;
+    };
+    vo: {
+        nativeName: string;
+        englishName: string;
+    };
+    wa: {
+        nativeName: string;
+        englishName: string;
+    };
+    wo: {
+        nativeName: string;
+        englishName: string;
+    };
+    xh: {
         nativeName: string;
         englishName: string;
     };
@@ -841,6 +1253,14 @@ declare const langmap: {
         englishName: string;
     };
     'yi-DE': {
+        nativeName: string;
+        englishName: string;
+    };
+    yo: {
+        nativeName: string;
+        englishName: string;
+    };
+    za: {
         nativeName: string;
         englishName: string;
     };
@@ -869,6 +1289,10 @@ declare const langmap: {
         englishName: string;
     };
     'zh-TW': {
+        nativeName: string;
+        englishName: string;
+    };
+    zu: {
         nativeName: string;
         englishName: string;
     };

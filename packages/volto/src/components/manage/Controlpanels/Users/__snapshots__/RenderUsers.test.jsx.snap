@@ -8,8 +8,7 @@ exports[`UsersControlpanelUser > renders a UsersControlpanelUser component 1`] =
     className="fullname"
   >
     Test User
-     
-    (
+     (
     testuser
     )
   </td>
@@ -142,8 +141,7 @@ exports[`UsersControlpanelUser > renders a UsersControlpanelUser component with 
     className="fullname"
   >
     Test User
-     
-    (
+     (
     testuser
     )
   </td>

@@ -182,7 +182,7 @@ class ContentType extends Component {
       return <Error error={this.state.error} />;
     }
 
-    if (this.props.controlpanel) {
+    if (this.props.controlpanel?.data) {
       let controlpanel = this.props.controlpanel;
       if (controlpanel?.data?.filter_content_types === false) {
         controlpanel.data.filter_content_types = { title: 'all', token: 'all' };

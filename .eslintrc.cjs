@@ -74,6 +74,13 @@ const config = {
         'react/no-unescaped-entities': 0,
       },
     },
+    {
+      files: ['**/*.test.js', '**/*.test.jsx', '**/*.test.ts', '**/*.test.tsx'],
+      plugins: ['no-only-tests'],
+      rules: {
+        'no-only-tests/no-only-tests': 'error',
+      },
+    },
   ],
 };
 

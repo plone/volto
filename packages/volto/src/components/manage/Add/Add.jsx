@@ -195,7 +195,7 @@ class Add extends Component {
           erroMessage = this.props.intl.formatMessage(messages.someErrors);
         }
       } else {
-        erroMessage = errorsList.error?.message || error;
+        erroMessage = errorsList?.error?.message || error;
       }
 
       this.setState({ error: error });
@@ -223,11 +223,10 @@ class Add extends Component {
         ? keys(this.props.schema.definitions)
         : null,
       '@type': this.props.type,
-      ...(config.settings.isMultilingual &&
-        this.props.location?.state?.translationOf && {
-          translation_of: this.props.location.state.translationOf,
-          language: this.props.location.state.language,
-        }),
+      ...(this.props.location?.state?.translationOf && {
+        translation_of: this.props.location.state.translationOf,
+        language: this.props.location.state.language,
+      }),
     });
   }
 
@@ -241,11 +240,13 @@ class Add extends Component {
     if (this.props.location?.state?.translationOf) {
       const language = this.props.location.state.languageFrom;
       const langFileName = toGettextLang(language);
-      import(
-        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-      ).then((locale) => {
-        this.props.changeLanguage(language, locale.default);
-      });
+      import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+        .then((locale) => {
+          this.props.changeLanguage(language, locale.default);
+        })
+        .catch(() => {
+          this.props.changeLanguage(language, {});
+        });
       this.props.history.push(this.props.location?.state?.translationOf);
     } else {
       this.props.history.push(getBaseUrl(this.props.pathname));
@@ -267,9 +268,9 @@ class Add extends Component {
         this.props.schema.properties,
       );
       const translationObject = this.props.location?.state?.translationObject;
-
       const translateTo = translationObject
-        ? langmap?.[this.props.location?.state?.language]?.nativeName
+        ? langmap?.[this.props.location?.state?.language]?.nativeName ||
+          this.props.location?.state?.language
         : null;
 
       // Get initial blocks from local config, if any
@@ -481,9 +482,12 @@ class Add extends Component {
             <Grid.Column>
               <div className="new-translation">
                 <Menu pointing secondary attached tabular>
-                  <Menu.Item name={translateTo.toUpperCase()} active={true}>
+                  <Menu.Item
+                    name={translateTo?.toUpperCase() || ''}
+                    active={true}
+                  >
                     {`${this.props.intl.formatMessage(messages.translateTo, {
-                      lang: translateTo,
+                      lang: translateTo || '',
                     })}`}
                   </Menu.Item>
                 </Menu>
