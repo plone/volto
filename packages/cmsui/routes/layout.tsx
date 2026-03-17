@@ -19,9 +19,9 @@ import { clsx } from 'clsx';
 import config from '@plone/registry';
 
 // eslint-disable-next-line import/no-unresolved
-import publicStylesheet from 'seven/publicui.css?url';
+import publicStylesheet from 'seven/.plone/publicui.css?url';
 // eslint-disable-next-line import/no-unresolved
-import stylesheet from 'seven/cmsui.css?url';
+import stylesheet from 'seven/.plone/cmsui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,

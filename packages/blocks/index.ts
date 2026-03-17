@@ -1,13 +1,13 @@
 import type { ConfigType } from '@plone/registry';
-import { slate } from './config/slate';
+
 import TitleBlockInfo from './Title';
 import TextBlockInfo from './Text';
 import ImageBlockInfo from './Image';
 import VideoBlockInfo from './Video';
 import TeaserBlockInfo from './Teaser';
+import ListingBlockInfo from './Listing';
 
 export default function install(config: ConfigType) {
-  config.settings.slate = slate;
   // @ts-expect-error this is a quick hack for now
   // Initializing blocksConfig to empty.
   // We of course are assuming that this package will be installed before any
@@ -19,6 +19,7 @@ export default function install(config: ConfigType) {
   config.blocks.blocksConfig.image = ImageBlockInfo;
   config.blocks.blocksConfig.video = VideoBlockInfo;
   config.blocks.blocksConfig.teaser = TeaserBlockInfo;
+  config.blocks.blocksConfig.listing = ListingBlockInfo;
 
   return config;
 }

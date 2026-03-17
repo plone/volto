@@ -8,6 +8,56 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.6 (2026-02-20)
+
+### Feature
+
+- Added Spinner component. @sneridagh [#7918](https://github.com/plone/volto/issues/7918)
+- Added width (layout) icon components (and related SVGs). @sneridagh 
+
+## 4.0.0-alpha.5 (2025-12-23)
+
+### Feature
+
+- Quanta, Tailwind styled `Toolbar` component. @sneridagh [#7549](https://github.com/plone/volto/issues/7549)
+
+### Internal
+
+- Include other *.md files in the repo root for link checking, fix redirecting links, and remove non-responsive server. @stevepiercy [#7712](https://github.com/plone/volto/issues/7712)
+- Add storybook for lots of items with custom separator. @iFlameing 
+- Fixed update to RAC 1.14.0 DTS problems. @sneridagh 
+
+## 4.0.0-alpha.4 (2025-11-19)
+
+### Bugfix
+
+- Fixed Basic Select styling. @sneridagh [#7632](https://github.com/plone/volto/issues/7632)
+
+## 4.0.0-alpha.3 (2025-11-12)
+
+### Bugfix
+
+- Fixed `Icon` component return type since it was breaking in some builds. @sneridagh 
+
+## 4.0.0-alpha.2 (2025-11-12)
+
+### Feature
+
+- Added ESlint Tailwind plugin for prettifying and wrapping up the classNames in components.
+  Amended components classNames by applying the plugin. @sneridagh [#7434](https://github.com/plone/volto/issues/7434)
+- Added `Radio` component to basic set of components, proxied from RAC. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
+- Added RSC compatibility. @pnicolli 
+
+### Bugfix
+
+- Review and check CSS for "grouped fields". @sneridagh [#7469](https://github.com/plone/volto/issues/7469)
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395 copy](https://github.com/plone/volto/issues/7395 copy)
+- Remove unused imports present, due to missing rule in ESlint. @sneridagh [#7395](https://github.com/plone/volto/issues/7395)
+- Linting for remaining TW classNames under callees due to missconfiguration. @sneridagh [#7467](https://github.com/plone/volto/issues/7467)
+
 ## 4.0.0-alpha.1 (2025-09-29)
 
 ### Breaking

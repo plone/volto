@@ -84,6 +84,7 @@ export function createAddonsServerLoader(
 ) {
   const addonsLoaderPath = path.join(
     process.cwd(),
+    '.plone',
     'registry.loader.server.js',
   );
 

@@ -25,7 +25,7 @@ import config from '@plone/registry';
 import styles from '@plone/layout/slots/App/App.module.css';
 
 // eslint-disable-next-line import/no-unresolved
-import stylesheet from 'seven/publicui.css?url';
+import stylesheet from 'seven/.plone/publicui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,

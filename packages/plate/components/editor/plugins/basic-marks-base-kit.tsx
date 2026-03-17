@@ -1,0 +1,33 @@
+import {
+  BaseBoldPlugin,
+  BaseCodePlugin,
+  BaseHighlightPlugin,
+  BaseItalicPlugin,
+  BaseKbdPlugin,
+  BaseStrikethroughPlugin,
+  BaseSubscriptPlugin,
+  BaseSuperscriptPlugin,
+  BaseUnderlinePlugin,
+} from '@platejs/basic-nodes';
+
+import { CodeLeafStatic } from '../../ui/code-node-static';
+import { HighlightLeafStatic } from '../../ui/highlight-node-static';
+import { KbdLeafStatic } from '../../ui/kbd-node-static';
+import { LegacyBoldPlugin } from './legacy-bold-plugin';
+import { LegacyItalicPlugin } from './legacy-italic-plugin';
+import { LegacyStrikethroughPlugin } from './legacy-strikethrough-plugin';
+
+export const BaseBasicMarksKit = [
+  ...LegacyBoldPlugin,
+  ...LegacyItalicPlugin,
+  ...LegacyStrikethroughPlugin,
+  BaseBoldPlugin,
+  BaseItalicPlugin,
+  BaseUnderlinePlugin,
+  BaseCodePlugin.withComponent(CodeLeafStatic),
+  BaseStrikethroughPlugin,
+  BaseSubscriptPlugin,
+  BaseSuperscriptPlugin,
+  BaseHighlightPlugin.withComponent(HighlightLeafStatic),
+  BaseKbdPlugin.withComponent(KbdLeafStatic),
+];

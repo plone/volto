@@ -1,6 +1,0 @@
-/* This is the base setup of a theming setup with pure CSS (Tailwind-less) */
-@layer reset, plone-components, layout, addons, theme;
-@import 'reset.css';
-@import 'base.css';
-@import '@plone/components/dist/basic.css';
-@import 'layout.css';
