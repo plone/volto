@@ -1,1 +1,0 @@
-Use translated schema title in Helmet for `Add` component page. @alexandreIFB

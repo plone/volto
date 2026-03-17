@@ -13,7 +13,6 @@ const mockStore = configureStore();
 describe('AlternateHrefLangs', () => {
   beforeEach(() => {});
   it('non multilingual site, renders nothing', () => {
-    config.settings.isMultilingual = false;
     const content = {
       '@id': '/',
       '@components': {},
@@ -38,7 +37,6 @@ describe('AlternateHrefLangs', () => {
 
   it('multilingual site, with some translations', () => {
     config.settings.publicURL = 'https://plone.org';
-    config.settings.isMultilingual = true;
     config.settings.supportedLanguages = ['en', 'es', 'eu'];
 
     const content = {
@@ -85,7 +83,6 @@ describe('AlternateHrefLangs', () => {
 
   it('multilingual site, with all available translations', () => {
     config.settings.publicURL = 'https://plone.org';
-    config.settings.isMultilingual = true;
     config.settings.supportedLanguages = ['en', 'es', 'eu'];
     const store = mockStore({
       intl: {
@@ -139,7 +136,6 @@ describe('AlternateHrefLangs', () => {
 
   it('multilingual site, with all available translations - with server URL', () => {
     config.settings.publicURL = 'https://plone.org';
-    config.settings.isMultilingual = true;
     config.settings.supportedLanguages = ['en', 'es', 'eu'];
     const store = mockStore({
       intl: {

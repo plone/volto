@@ -16,7 +16,6 @@ import { useIntl, defineMessages, injectIntl } from 'react-intl';
 import uniqBy from 'lodash/uniqBy';
 
 import jwtDecode from 'jwt-decode';
-import { Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
@@ -68,6 +67,7 @@ const LinkForm = ({
 }) => {
   const location = useLocation();
   const contextUrl = getBaseUrl(location.pathname);
+  const isImagePicker = objectBrowserPickerType === 'image';
 
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -121,7 +121,7 @@ const LinkForm = ({
             sort_order: 'descending',
             metadata_fields: '_all',
             b_size: searchTerm ? 10 : 5,
-            ...(objectBrowserPickerType ? { portal_type: ['Image'] } : {}),
+            ...(isImagePicker ? { portal_type: ['Image'] } : {}),
           },
           'latestContent',
         ),
@@ -136,7 +136,7 @@ const LinkForm = ({
             sort_on: 'getObjPositionInParent',
             metadata_fields: '_all',
             b_size: searchTerm ? 10 : 5,
-            ...(objectBrowserPickerType ? { portal_type: ['Image'] } : {}),
+            ...(isImagePicker ? { portal_type: ['Image'] } : {}),
           },
           'crtFolderContent',
         ),
@@ -150,7 +150,7 @@ const LinkForm = ({
             sort_on: 'getObjPositionInParent',
             metadata_fields: '_all',
             b_size: searchTerm ? 10 : 5,
-            ...(objectBrowserPickerType ? { portal_type: ['Image'] } : {}),
+            ...(isImagePicker ? { portal_type: ['Image'] } : {}),
           },
           'allFoldersContent',
         ),
@@ -158,7 +158,7 @@ const LinkForm = ({
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [dispatch, contextUrl, userId, searchTerm, objectBrowserPickerType]);
+  }, [dispatch, contextUrl, userId, searchTerm, isImagePicker]);
 
   const content = useMemo(() => {
     const latestContent = subrequests?.['latestContent']?.items || [];
@@ -185,7 +185,7 @@ const LinkForm = ({
       .map((item) => ({
         label: item.title,
         value: item['@id'],
-        src: `${item['@id']}/@@images/image/preview`,
+        src: `${item['@id']}/@@images/image/icon`,
         path: flattenToAppURL(item['@id']),
         icon: getContentIcon(item['@type'], item.is_folderish),
         type: item['@type'],
@@ -337,10 +337,8 @@ const LinkForm = ({
       className="link-form-container link-searchable-form-container"
       ref={linkFormContainer}
     >
-      <Button
+      <button
         type="button"
-        basic
-        icon
         className="nav-button"
         aria-label={intl.formatMessage(messages.openObjectBrowser)}
         onClick={(e) => {
@@ -357,7 +355,7 @@ const LinkForm = ({
         }}
       >
         <Icon name={navTreeSVG} size="24px" />
-      </Button>
+      </button>
       <div className="wrapper">
         <Select
           ref={selectRef}
@@ -383,9 +381,8 @@ const LinkForm = ({
           isClearable
         />
         {link.length > 0 && (
-          <Button
+          <button
             type="button"
-            basic
             className="cancel"
             aria-label={intl.formatMessage(messages.clear)}
             onClick={(e) => {
@@ -395,12 +392,11 @@ const LinkForm = ({
             }}
           >
             <Icon name={clearSVG} size="24px" />
-          </Button>
+          </button>
         )}
-        <Button
-          basic
-          primary
-          disabled={!link.length > 0}
+        <button
+          type="button"
+          disabled={link.length === 0}
           aria-label={intl.formatMessage(messages.submit)}
           onClick={(e) => {
             e.preventDefault();
@@ -409,7 +405,7 @@ const LinkForm = ({
           }}
         >
           <Icon name={aheadSVG} size="24px" />
-        </Button>
+        </button>
       </div>
     </div>
   );
@@ -429,7 +425,7 @@ LinkForm.propTypes = {
 LinkForm.defaultProps = {
   placeholder: null,
   filterSuggestionByType: null,
-  objectBrowserPickerType: null,
+  objectBrowserPickerType: 'link',
 };
 
 export default compose(

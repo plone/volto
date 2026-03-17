@@ -14,6 +14,11 @@ It has the potential to send requests to other APIs, when provided the custom qu
 
 These functions can be used in other use cases, including command line helpers, scripts, or programmatic tests.
 
+> [!WARNING]
+> Active development of this package is now on the `seven` branch.
+> Since this is a Plone modular architecture core package (level 1), and we are in alpha, changes will be ported to the `main` branch periodically.
+> Last sync was done on 2025-09-27 by @sneridagh.
+> See breaking changes in the upcoming alphas.
 
 ## Installation
 

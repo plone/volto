@@ -1,6 +1,8 @@
+/* depends on:
 @import './TextField.css';
 @import './Button.css';
 @import './theme.css';
+*/
 
 @layer plone-components.base {
   .react-aria-Form {

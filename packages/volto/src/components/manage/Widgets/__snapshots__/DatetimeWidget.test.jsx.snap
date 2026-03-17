@@ -85,6 +85,7 @@ exports[`datetime widget converts UTC date and adapts to local datetime 1`] = `
               </span>
             </div>
             <button
+              aria-label="Clear date and time"
               class="item ui noborder button"
               type="button"
             >
@@ -193,6 +194,7 @@ exports[`renders a datetime widget component 1`] = `
               </span>
             </div>
             <button
+              aria-label="Clear date and time"
               class="item ui noborder button"
               type="button"
             >

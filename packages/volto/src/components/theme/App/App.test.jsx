@@ -51,6 +51,7 @@ describe('App', () => {
         locale: 'en',
         messages: {},
       },
+      site: { data: {} },
     });
     const component = renderer.create(
       <Provider store={store}>

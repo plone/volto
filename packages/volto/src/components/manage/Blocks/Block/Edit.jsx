@@ -187,6 +187,7 @@ export class Edit extends Component {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
               hovered: this.props.hovered === this.props.id,
+              error: !!this.props.blocksErrors?.[this.props.id],
             })}
             style={{ outline: 'none' }}
             ref={this.blockNode}

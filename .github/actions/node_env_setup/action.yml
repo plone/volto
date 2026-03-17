@@ -3,7 +3,7 @@ name: Set up Node.js environment
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Use Node.js ${{ inputs.node-version }}
       uses: actions/setup-node@v4
@@ -19,20 +19,20 @@ runs:
       run: |
         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-    - uses: actions/cache@v4
+    - uses: actions/cache@v5
       name: Setup pnpm cache
       with:
         path: ${{ env.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
 
     - name: Cache Cypress Binary
       id: cache-cypress-binary
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ~/.cache/Cypress
-        key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
+        key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml', 'package.json') }}
 
     - name: Install Volto dependencies
       shell: bash

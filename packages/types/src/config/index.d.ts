@@ -5,7 +5,7 @@ import type { WidgetsConfig } from './Widgets';
 import type { SlotsConfig } from './Slots';
 import type { UtilitiesConfig } from './Utilities';
 
-export type AddonReducersConfig = Record<string, Function>;
+export type AddonReducersConfig = Record<string, (...args: any[]) => unknown>;
 
 export type AddonRoutesConfig = {
   path: string;

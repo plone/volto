@@ -82,10 +82,11 @@ describe('RegistryImageWidget', () => {
         const dropzone = container.querySelector('.file-widget-dropzone');
         const preview = container.querySelector('.image-preview');
         const filename = container.querySelector('.field-file-name');
+        const img = container.querySelector('img[src*="logo"]');
 
-        return dropzone && preview && filename;
+        return dropzone && preview && filename && img && img.complete;
       },
-      { timeout: 1000 },
+      { timeout: 2000 },
     );
 
     expect(container).toMatchSnapshot();

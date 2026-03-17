@@ -7,3 +7,4 @@ node_modules
 packages/volto/types/*
 packages/registry/docs/*
 storybook-static
+*.md

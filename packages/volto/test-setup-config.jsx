@@ -16,6 +16,7 @@ import {
   styleClassNameConverters,
   styleClassNameExtenders,
 } from '@plone/volto/config/Style';
+import VoltoImage from '@plone/volto/components/theme/Image/Image';
 
 import {
   controlPanelsIcons,
@@ -30,12 +31,10 @@ import { registerValidators } from '@plone/volto/config/validation';
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
   publicURL: 'http://localhost:3000',
-  defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
   showTags: true,
   showRelatedItems: true,
-  isMultilingual: false,
   nonContentRoutes,
   nonContentRoutesPublic,
   contentIcons: contentIcons,
@@ -153,11 +152,12 @@ config.set('widgets', {
 
 config.set('components', {
   PreviewImage: {
-    component: (props) => <img alt="PreviewImage component mock" {...props} />,
+    component: (props) => (
+      <VoltoImage alt="PreviewImage component mock" {...props} />
+    ),
   },
   Image: {
-    // eslint-disable-next-line jsx-a11y/img-redundant-alt
-    component: (props) => <img alt="Image component mock" {...props} />,
+    component: (props) => <VoltoImage alt="Image component mock" {...props} />,
   },
 });
 
