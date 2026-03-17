@@ -2,6 +2,12 @@
   "blocks": {
     "listing": {
       "no-results": "No results."
+    },
+    "maps": {
+      "maps-block-input-placeholder": "Enter map Embed Code",
+      "google-maps-embedded-block": "Google Maps Embedded Block",
+      "instructions": "Please enter the Embed Code provided by Google Maps -> Share -> Embed map. It should contain the <iframe> code on it",
+      "code-error": "Embed code error, please follow the instructions and try again."
     }
   }
 }
