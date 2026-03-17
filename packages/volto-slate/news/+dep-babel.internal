@@ -1,0 +1,3 @@
+Remove devDependency babel-plugin-transform-class-properties (now
+@babel/plugin-transform-class-properties, which is included in
+@babel/preset-env). @davisagli

@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 const path = require('path');
-const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
+const makeLoaderFinder = require('@plone/razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
