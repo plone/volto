@@ -1,6 +1,5 @@
 import type { ConfigType } from '@plone/registry';
 
-import TitleBlockInfo from './Title';
 import ImageBlockInfo from './Image';
 import TeaserBlockInfo from './Teaser';
 import ListingBlockInfo from './Listing';
@@ -12,7 +11,6 @@ export default function install(config: ConfigType) {
   // other package that wants to add blocks.
   config.blocks.blocksConfig = {};
 
-  config.blocks.blocksConfig.title = TitleBlockInfo;
   config.blocks.blocksConfig.image = ImageBlockInfo;
   config.blocks.blocksConfig.teaser = TeaserBlockInfo;
   config.blocks.blocksConfig.listing = ListingBlockInfo;
