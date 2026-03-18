@@ -2353,7 +2353,7 @@ msgstr "Membru actualizat"
 #. Default: "Menu closed"
 #: components/manage/Toolbar/Toolbar
 msgid "Menu closed"
-msgstr "Meniu inchis"
+msgstr "Meniu închis"
 
 #. Default: "Menu opened"
 #: components/manage/Toolbar/Toolbar
