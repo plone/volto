@@ -33,13 +33,16 @@ test('Title block and metadata title stay in sync', async ({ page }) => {
   await page.goto('/@@edit/title-sync-page');
   await waitForPlateEditorReady(page);
 
+  await page.getByRole('tab', { name: 'Content' }).click();
   const metadataTitleInput = page.locator('input[name="title"]').first();
-  const editorTitle = page.locator('[data-slate-editor] h1').first();
-
   await metadataTitleInput.fill('Metadata updated title');
-  await expect(editorTitle).toHaveText('Metadata updated title');
 
+  await page.getByRole('tab', { name: 'Blocks' }).click();
+  const editorTitle = page.locator('[data-slate-editor] h1').first();
+  await expect(editorTitle).toHaveText('Metadata updated title');
   await editorTitle.fill('Editor updated title');
+
+  await page.getByRole('tab', { name: 'Content' }).click();
   await expect(metadataTitleInput).toHaveValue('Editor updated title');
 });
 
@@ -69,12 +72,14 @@ test('Newly created title block is initialized from metadata title', async ({
   await page.goto('/@@edit/title-sync-no-title-block');
   await waitForPlateEditorReady(page);
 
-  const metadataTitleInput = page.locator('input[name="title"]').first();
   const editorTitle = page.locator('[data-slate-editor] h1').first();
-
   await expect(editorTitle).toHaveText('Initial title');
+
+  await page.getByRole('tab', { name: 'Content' }).click();
+  const metadataTitleInput = page.locator('input[name="title"]').first();
   await metadataTitleInput.fill('Seeded metadata title');
 
+  await page.getByRole('tab', { name: 'Blocks' }).click();
   await expect(editorTitle).toHaveText('Seeded metadata title');
 });
 
