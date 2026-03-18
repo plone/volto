@@ -829,6 +829,11 @@ msgstr "Regole di contenuto da cartelle padre"
 msgid "Content that links to or references {title}"
 msgstr "Contenuto collegato a {title}"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Titolo del contenuto"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"

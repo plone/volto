@@ -834,6 +834,11 @@ msgstr "父文件夹的内容规则"
 msgid "Content that links to or references {title}"
 msgstr ""
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "内容标题"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"

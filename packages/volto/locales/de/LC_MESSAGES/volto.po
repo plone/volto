@@ -834,6 +834,11 @@ msgstr "Inhaltsregeln von übergeordneten Seiten"
 msgid "Content that links to or references {title}"
 msgstr "Zu {title} verlinkende oder referenzierende Inhalte"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Inhaltstitel"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"

@@ -833,6 +833,11 @@ msgstr "Sisältösäännöt ylemmistä kansioista"
 msgid "Content that links to or references {title}"
 msgstr ""
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Sisällön otsikko"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"

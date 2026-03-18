@@ -834,6 +834,11 @@ msgstr "Reguli conținut din directoare părinți"
 msgid "Content that links to or references {title}"
 msgstr "Conținut care se referă la {title}"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Titlul conținutului"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"

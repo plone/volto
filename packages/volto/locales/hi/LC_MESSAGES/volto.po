@@ -828,6 +828,11 @@ msgstr "मूल फ़ोल्डर से कंटेंट नियम"
 msgid "Content that links to or references {title}"
 msgstr "{title} से लिंक या संदर्भित कंटेंट"
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "सामग्री शीर्षक"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
