@@ -2,19 +2,17 @@
 
 The JavaScript Plone client is a library that provides easy access to the Plone REST API from a client written in TypeScript.
 This client can be used as an alternative to directly interacting with the Plone REST API.
-It's based on the foundation of [@tanstack/query](https://tanstack.com/query/latest).
 It should be possible to use it in React/Vue/Solid/Svelte projects.
-It provides the artifacts that TanStack Query requires to work:
+It provides a set of building blocks for declarative data fetching:
 
 - Query (or mutation) options factories
 - Query (or mutation) functions
 - API request layer
 
-The API request layer allows to build and send arbitrary requests to Plone REST API endpoints.
-It has the potential to send requests to other APIs, provided through the custom Query options for factories and functions.
+The API request layer allows you to build and send arbitrary requests to Plone REST API endpoints.
+It has the potential to send requests to other APIs, when you provide custom query options factories and functions.
 
-The JavaScript Plone client is conceived to work with TanStack Query.
-The query or mutation functions can be used to call any Plone REST API endpoint without using it.
+The JavaScript Plone client is designed to integrate with data‑fetching libraries, but its query and mutation functions can also be used directly.
 These functions can be used in other use cases like command line helpers, scripts or programmatic tests.
 
 ## Installation​
@@ -46,23 +44,13 @@ const client = ploneClient.initialize({
 
 ## Query (or mutation) options factories
 
-A query (or mutation) options factory in TanStack Query is a function providing an object for React Query hooks or the utilized framework's Query adapter.
-
-```ts
-import { useQuery } from '@tanstack/react-query';
-
-const { getContentQuery } = client;
-
-const { data, isLoading } = useQuery(getContentQuery({ path: pathname }));
-```
-
-The query (or mutation) factories are functions that take an object as arguments.
-These arguments can have some common properties, such as the path, and other specific depending on the nature of the endpoint that they're correspond with.
+A query (or mutation) options factory is a function that returns a configuration object describing how to fetch data.
+The factory functions take an object as arguments.
+These arguments can have some common properties, such as the path, and others that depend on the nature of the endpoint they correspond with.
 
 This is a complete example of the usage of the client in a React client component:
 
 ```jsx
-import { useQuery } from '@tanstack/react-query';
 import ploneClient from '@plone/client';
 import { usePathname } from 'next/navigation';
 
@@ -72,9 +60,9 @@ const client = ploneClient.initialize({
 });
 
 export default function Title() {
-  const { getContentQuery } = client;
+  const { useGetContent } = client;
   const pathname = usePathname();
-  const { data, isLoading } = useQuery(getContentQuery({ path: pathname }));
+  const { data, isLoading } = useGetContent({ path: pathname });
 
   if (isLoading) {
     return <div>Loading...</div>;
