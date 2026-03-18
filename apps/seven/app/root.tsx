@@ -78,6 +78,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       content: flattenToAppURL(content.data),
       site: flattenToAppURL(site.data),
       locale,
+      isAuthenticated: !!token,
       ...rootLoaderDataUtilitiesData
         .filter((item) => item)
         .reduce((acc, item) => ({ ...acc, ...item }), {}),
