@@ -4,6 +4,7 @@
 @source '../node_modules/@plone/components/dist/quanta';
 
 @layer cmsui {
+  @import '@plone/components/src/styles/basic/theme.css';
   @import 'tailwindcss/theme.css';
   @import 'tailwindcss/preflight.css';
   @import 'tailwindcss/utilities.css';
@@ -68,6 +69,8 @@
     --layout-container-width: 1440px;
     --default-container-width: 940px;
     --narrow-container-width: 620px;
+
+    --plone-toolbar-width: 80px;
 
     --color-quanta-air: #fff;
     --color-quanta-space: #000;
