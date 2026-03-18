@@ -383,14 +383,28 @@ class Toolbar extends Component {
 
   handleClickOutside = (e) => {
     const target = e.target;
-    if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
 
-    // if the click is on the same button, do not close the menu as it
-    // may be handled by the toggleMenu action
+    if (this.pusher && doesNodeContainClick(this.pusher, e)) {
+      return;
+    }
+
+    if (
+      this.toolbarRef.current &&
+      doesNodeContainClick(this.toolbarRef.current, e)
+    ) {
+      return;
+    }
+
+    if (target.closest('.ui.modal') || target.closest('.ui.dimmer')) {
+      return;
+    }
+
     const button =
       doesNodeContainClick(this.toolbarRef.current, e) &&
       this.findAncestor(target, 'button');
-    if (button && button === this.buttonRef.current) return;
+    if (button && button === this.buttonRef.current) {
+      return;
+    }
 
     this.closeMenu();
   };
