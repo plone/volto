@@ -2827,6 +2827,11 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Einstellungen"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Drücken Sie die Eingabetaste, um Dateien auf Ihrem Computer zu durchsuche"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
