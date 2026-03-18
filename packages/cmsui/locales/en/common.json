@@ -56,10 +56,6 @@
       "groups": "Groups"
     },
     "blocksEditor": {
-      "explanation": "You are in the blocks editor. Browse the blocks normally, press Tab in a block to move to its configuration dialog.",
-      "extraAriaDescription": "Item {{ index }} of {{ length }}.",
-      "block": "Block",
-      "backToBlock": "Back to block",
       "blocksTab": "Blocks",
       "contentTab": "Content"
     },

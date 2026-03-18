@@ -97,7 +97,7 @@ export default function Edit() {
   return (
     <Provider store={store}>
       <InitAtoms atomValues={[[formAtom, content]]}>
-        <main className="mx-4 mt-8 flex h-screen flex-auto gap-8">
+        <main className="mx-4 mt-8 h-screen">
           <Tabs
             tabs={[
               {
@@ -156,22 +156,6 @@ export default function Edit() {
                           </AccordionItem>
                         </Accordion>
                       ))}
-                      <Plug pluggable="toolbar-top" id="edit-save-button">
-                        <button
-                          aria-label={t('cmsui.save')}
-                          type="submit"
-                          // Trigger the TS form submission
-                          onClick={() => form.handleSubmit()}
-                          className="primary"
-                        >
-                          <Checkbox />
-                        </button>
-                      </Plug>
-                      <Plug pluggable="toolbar-top" id="button-cancel">
-                        <Link aria-label="Cancel" href="/">
-                          <Close />
-                        </Link>
-                      </Plug>
                     </form>
                     {/* <div className="mt-4">
                       <ConsoleLog supressHydrationWarnings formAtom={formAtom} />
@@ -181,6 +165,22 @@ export default function Edit() {
               },
             ]}
           />
+          <Plug pluggable="toolbar-top" id="edit-save-button">
+            <button
+              aria-label={t('cmsui.save')}
+              type="submit"
+              // Trigger the TS form submission
+              onClick={() => form.handleSubmit()}
+              className="primary"
+            >
+              <Checkbox />
+            </button>
+          </Plug>
+          <Plug pluggable="toolbar-top" id="button-cancel">
+            <Link aria-label="Cancel" href="/">
+              <Close />
+            </Link>
+          </Plug>
         </main>
       </InitAtoms>
     </Provider>

@@ -46,10 +46,6 @@
       "groups": "Gruppi"
     },
     "blocksEditor": {
-      "explanation": "Sei nell'editor di blocchi. Naviga normalmente tra i blocchi, premi Tab in un blocco per spostarti nella sua finestra di configurazione.",
-      "extraAriaDescription": "Elemento {{ index }} di {{ length }}.",
-      "block": "Blocco",
-      "backToBlock": "Torna al blocco",
       "blocksTab": "Blocchi",
       "contentTab": "Contenuto"
     },
