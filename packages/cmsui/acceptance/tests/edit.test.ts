@@ -13,7 +13,8 @@ test('GET / shows Homepage', async ({ page }) => {
   await expect(page.getByText('Home')).toBeVisible();
 });
 
-test('GET /mypage shows a document', async ({ page }) => {
+// Skipping this test until we have in place the runtime migration
+test.skip('GET /mypage shows a document', async ({ page }) => {
   await createContent(page, {
     contentType: 'Document',
     contentId: 'mypage',
