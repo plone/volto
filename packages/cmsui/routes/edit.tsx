@@ -16,14 +16,15 @@ import { flattenToAppURL, InitAtoms } from '@plone/helpers';
 import type { Content } from '@plone/types';
 import { Plug } from '@plone/layout/components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
+import Close from '@plone/components/icons/close.svg?react';
 
 import { useAppForm } from '../components/Form/Form';
+import { Link } from 'react-aria-components';
 import {
   Accordion,
   AccordionItem,
   AccordionPanel,
   AccordionItemTrigger,
-  Button,
 } from '@plone/components/quanta';
 import BlocksEditor from '../components/BlockEditor/BlocksEditor';
 
@@ -140,17 +141,20 @@ export default function Edit() {
                 </Accordion>
               ))}
               <Plug pluggable="toolbar-top" id="edit-save-button">
-                <Button
+                <button
                   aria-label={t('cmsui.save')}
                   type="submit"
                   // Trigger the TS form submission
-                  onPress={() => form.handleSubmit()}
-                  variant="primary"
-                  accent
-                  size="L"
+                  onClick={() => form.handleSubmit()}
+                  className="primary"
                 >
                   <Checkbox />
-                </Button>
+                </button>
+              </Plug>
+              <Plug pluggable="toolbar-top" id="button-cancel">
+                <Link aria-label="Cancel" href="/">
+                  <Close />
+                </Link>
               </Plug>
             </form>
             {/* <div className="mt-4">
