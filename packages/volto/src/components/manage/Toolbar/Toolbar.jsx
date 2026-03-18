@@ -285,12 +285,13 @@ class Toolbar extends Component {
     );
     if (this.announceRef.current) {
       this.announceRef.current.textContent = '';
-
       // Timeout to allow the screen reader to pick up the change in content after the menu is closed
       setTimeout(() => {
-        this.announceRef.current.textContent = this.props.intl.formatMessage(
-          messages.menuClosed,
-        );
+        if (this.announceRef.current) {
+          this.announceRef.current.textContent = this.props.intl.formatMessage(
+            messages.menuClosed,
+          );
+        }
       }, 100);
     }
   };
@@ -358,12 +359,14 @@ class Toolbar extends Component {
       });
       if (this.announceRef.current) {
         this.announceRef.current.textContent = '';
-        // Timeout to allow the screen reader to pick up the change in content after the menu is opened
         setTimeout(() => {
-          this.announceRef.current.textContent =
-            this.props.intl.formatMessage(messages[selector]) +
-            ', ' +
-            this.props.intl.formatMessage(messages.menuOpened);
+          if (this.announceRef.current) {
+            const label = messages[selector]
+              ? this.props.intl.formatMessage(messages[selector])
+              : selector;
+            this.announceRef.current.textContent =
+              label + ', ' + this.props.intl.formatMessage(messages.menuOpened);
+          }
           firstFocusable?.focus({ preventScroll: true });
         }, 100);
       }
