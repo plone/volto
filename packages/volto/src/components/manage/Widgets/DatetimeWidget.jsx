@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import loadable from '@loadable/component';
@@ -85,10 +85,13 @@ const DatetimeWidgetComponent = (props) => {
     noPastDates: propNoPastDates,
     isDisabled,
     formData,
+    error,
+    required,
   } = props;
 
   const intl = useIntl();
   const lang = intl.locale;
+  const containerRef = useRef(null);
 
   const [focused, setFocused] = useState(false);
   const [isDefault, setIsDefault] = useState(false);
@@ -163,6 +166,9 @@ const DatetimeWidgetComponent = (props) => {
   const isDateOnly = getDateOnly();
 
   useEffect(() => {
+    // don't do nothing if the widget is not rendered
+    if (!renderWidget) return;
+
     // Selectors for the date field (react-dates)
     const dateSelectors = [
       `#${id}-date`,
@@ -183,7 +189,7 @@ const DatetimeWidgetComponent = (props) => {
 
     function findInput(selectors) {
       for (let selector of selectors) {
-        const item = document.querySelector(selector);
+        const item = containerRef.current?.querySelector(selector);
         if (item && item.tagName === 'INPUT') return item;
         if (item && item.querySelector) {
           const inner = item.querySelector('input');
@@ -199,13 +205,23 @@ const DatetimeWidgetComponent = (props) => {
       if (!dateInput) return;
 
       // Set or remove aria-required on the date input
-      if (props.required) dateInput.setAttribute('aria-required', 'true');
+      if (required) dateInput.setAttribute('aria-required', 'true');
       else dateInput.removeAttribute('aria-required');
 
-      // If the date field is required, make the time field required as well
-      if (props.required && !isDateOnly) {
+      // For date-only widgets, only the date input is relevant for required/validation states
+      if (!isDateOnly) {
         const timeInput = findInput(timeSelectors);
-        if (timeInput) timeInput.setAttribute('aria-required', 'true');
+        if (timeInput) {
+          if (required) timeInput.setAttribute('aria-required', 'true');
+          else timeInput.removeAttribute('aria-required');
+        }
+      }
+
+      // Set or remove aria-invalid based on the presence of errors
+      if (error?.length > 0) {
+        dateInput.setAttribute('aria-invalid', 'true');
+      } else {
+        dateInput.removeAttribute('aria-invalid');
       }
     }
 
@@ -214,16 +230,21 @@ const DatetimeWidgetComponent = (props) => {
 
     // Observe DOM changes since rc-time-picker and react-dates can recreate inputs
     const observer = new MutationObserver(() => applyAria());
-    observer.observe(document.body, { childList: true, subtree: true });
+    if (containerRef.current) {
+      observer.observe(containerRef.current, {
+        childList: true,
+        subtree: true,
+      });
+    }
 
     // Cleanup on unmount
     return () => observer.disconnect();
-  }, [props.required, id, isDateOnly]);
+  }, [required, id, isDateOnly, renderWidget, error]);
 
   return (
     <FormFieldWrapper {...props}>
       {renderWidget && (
-        <div className="date-time-widget-wrapper">
+        <div className="date-time-widget-wrapper" ref={containerRef}>
           <div
             className={cx('ui input date-input', {
               'default-date': isDefault,
