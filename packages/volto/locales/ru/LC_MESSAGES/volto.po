@@ -2349,6 +2349,16 @@ msgstr "Средний"
 msgid "Membership updated"
 msgstr "Членство обновлено"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Меню закрыто"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Меню открыто"
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"

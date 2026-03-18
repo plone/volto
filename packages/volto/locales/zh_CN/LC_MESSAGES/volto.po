@@ -2350,6 +2350,16 @@ msgstr "中等"
 msgid "Membership updated"
 msgstr "成员身份更新"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "菜单已关闭"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "菜单已打开"
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"

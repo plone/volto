@@ -2351,6 +2351,16 @@ msgstr "Ertaina"
 msgid "Membership updated"
 msgstr "Kidetza eguneratu da"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Menu itxita"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Menu irekita"
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"

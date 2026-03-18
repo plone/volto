@@ -2349,6 +2349,16 @@ msgstr ""
 msgid "Membership updated"
 msgstr ""
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "メニューを閉じました"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "メニューを開きました"
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"

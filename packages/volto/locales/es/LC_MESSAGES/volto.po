@@ -2351,6 +2351,16 @@ msgstr "Mediano"
 msgid "Membership updated"
 msgstr "Pertenencia actualizada"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Menú cerrado"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Menú abierto"
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"

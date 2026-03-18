@@ -2350,6 +2350,16 @@ msgstr "Mediu"
 msgid "Membership updated"
 msgstr "Membru actualizat"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Meniu inchis"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Meniu deschis"
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"

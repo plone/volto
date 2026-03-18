@@ -2349,6 +2349,16 @@ msgstr "Mittel"
 msgid "Membership updated"
 msgstr "Gruppenmitgliedschaft aktualisiert"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Menü geschlossen"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Menü geöffnet"
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"

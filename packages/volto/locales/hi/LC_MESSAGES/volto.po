@@ -2344,6 +2344,16 @@ msgstr "मध्यम"
 msgid "Membership updated"
 msgstr "सदस्यता अपडेट की गई"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "मेनू बंद"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "मेनू खुला"
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
