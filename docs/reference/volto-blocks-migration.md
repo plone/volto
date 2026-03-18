@@ -9,16 +9,17 @@ myst:
 
 # Volto blocks migration to Seven using Plate
 
-Seven introduces the new `plate.js` editor, which also has an impact on existing
-Volto blocks. While the Plate editor supports Volto blocks, the default
+Seven introduces the new {term}`Plate` editor, which also has an impact on
+existing Volto blocks. While the Plate editor supports Volto blocks, the default
 selection of Plate plugins makes some blocks redundant.
 
-## Migrating the Table of Contents (ToC) block
+## Migrate the table of contents block
 
-The Plate editor ships with a built-in ToC plugin that watches for headings and
-keeps the table of contents updated as the user types, making the old ToC block
-redundant. The plugin detects the title block and all heading nodes (h1 to h6).
-Headings built into blocks are deliberately not supported anymore.
+The Plate editor ships with a built-in table of contents (ToC) plugin that
+watches for headings and keeps the table of contents updated as the user types,
+making the old ToC block redundant. The plugin detects the title block and all
+heading nodes (h1 to h6). Headings built into blocks are deliberately not
+supported anymore.
 
 When migrating to Seven, existing ToC blocks should be removed. If that is not
 practical, you may register the ToC block in the configuration and continue

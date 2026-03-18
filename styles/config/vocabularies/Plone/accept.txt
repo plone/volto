@@ -10,6 +10,7 @@ JavaScript
 npm
 nvm
 Pastanaga
+Plate
 Plone
 pluggab(le|ility)
 programatically
