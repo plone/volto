@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -29,15 +29,14 @@ describe('ContentsBreadcrumbs Multilingual', () => {
         },
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/en/blog' }]}>
           <ContentsBreadcrumbs items={breadcrumbs} />
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
   it('renders a breadcrumbs component containing items with nav_title - Multilingual', () => {
     const breadcrumbs = [
@@ -63,14 +62,13 @@ describe('ContentsBreadcrumbs Multilingual', () => {
         },
       },
     });
-    const component = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter initialEntries={[{ pathname: '/en/blog' }]}>
           <ContentsBreadcrumbs items={breadcrumbs} />
         </MemoryRouter>
       </Provider>,
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

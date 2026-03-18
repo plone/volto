@@ -38,6 +38,10 @@ export default defineConfig({
       '@plone/volto': path.resolve(__dirname, 'src'),
       '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
       '@root': path.resolve(__dirname, 'src'),
+      '@plone/components/Icons': path.resolve(
+        __dirname,
+        '../components/dist/components/icons/index.js',
+      ),
       '@plone/components': path.resolve(__dirname, '../components/src'),
       'promise-file-reader': require.resolve('promise-file-reader'),
       'react-dropzone': require.resolve('react-dropzone'),
@@ -56,7 +60,7 @@ export default defineConfig({
       `${projectRoot}/test-setup-globals.js`,
       `${projectRoot}/test-setup-config.jsx`,
       `${projectRoot}/test-addons-loader.js`,
-      `${projectRoot}/global-test-setup.js`
+      `${projectRoot}/global-test-setup.js`,
     ],
     globalSetup: `${projectRoot}/global-test-setup.js`,
     coverage: {
@@ -66,11 +70,7 @@ export default defineConfig({
         'src/**/*.{test,spec}.{js,ts,jsx,tsx}',
         '__test__/**/*.{test,spec}.{js,ts,jsx,tsx}',
       ],
-      exclude: [
-        'node_modules/**',
-        '**/dist/**',
-        '**/*.config.{js,ts}',
-      ],
+      exclude: ['node_modules/**', '**/dist/**', '**/*.config.{js,ts}'],
     },
     css: true,
   },
