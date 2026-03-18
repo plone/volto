@@ -15,6 +15,7 @@ import Toolbar from '../components/Toolbar/Toolbar';
 import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
 import TopNavBar from '../components/Layout/TopNavBar';
 import { useAtom } from 'jotai';
+import { useLayoutEffect } from 'react';
 import { clsx } from 'clsx';
 import config from '@plone/registry';
 
@@ -69,6 +70,12 @@ export default function Index() {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const [collapsed] = useAtom(sidebarAtom);
+
+  useLayoutEffect(() => {
+    document
+      .querySelectorAll('link[href*="publicui.css"]')
+      .forEach((el) => el.remove());
+  }, []);
 
   if (!rootData) {
     return null;

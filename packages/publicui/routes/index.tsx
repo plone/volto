@@ -15,6 +15,7 @@ import {
   type LinksFunction,
   type MetaFunction,
 } from 'react-router';
+import { useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
@@ -80,6 +81,12 @@ export default function Index() {
   const routesBodyClasses = matches
     .filter((match) => match.handle?.bodyClass)
     .map((match) => match.handle?.bodyClass);
+
+  useLayoutEffect(() => {
+    document
+      .querySelectorAll('link[href*="cmsui.css"]')
+      .forEach((el) => el.remove());
+  }, []);
 
   if (!rootData) {
     return null;
