@@ -108,6 +108,14 @@ const messages = defineMessages({
     id: 'Unlock',
     defaultMessage: 'Unlock',
   },
+  menuOpened: {
+    id: 'Menu opened',
+    defaultMessage: 'Menu opened',
+  },
+  menuClosed: {
+    id: 'Menu closed',
+    defaultMessage: 'Menu closed',
+  },
 });
 
 let toolbarComponents = {
@@ -197,6 +205,7 @@ class Toolbar extends Component {
       loadedComponents: [],
       hideToolbarBody: false,
     };
+    this.announceRef = React.createRef();
   }
 
   /**
@@ -266,7 +275,24 @@ class Toolbar extends Component {
   };
 
   closeMenu = () => {
-    this.setState(() => ({ showMenu: false, loadedComponents: [] }));
+    this.setState(
+      () => ({ showMenu: false, loadedComponents: [] }),
+      () => {
+        this.toolbarRef.current
+          ?.querySelector('button.toolbar-handler-button')
+          ?.focus();
+      },
+    );
+    if (this.announceRef.current) {
+      this.announceRef.current.textContent = '';
+
+      // Timeout to allow the screen reader to pick up the change in content after the menu is closed
+      setTimeout(() => {
+        this.announceRef.current.textContent = this.props.intl.formatMessage(
+          messages.menuClosed,
+        );
+      }, 100);
+    }
   };
 
   loadComponent = (type) => {
@@ -303,7 +329,6 @@ class Toolbar extends Component {
       this.closeMenu();
       return;
     }
-    // PersonalTools always shows at bottom
     if (selector === 'personalTools') {
       this.setState((state) => ({
         showMenu: !state.showMenu,
@@ -312,10 +337,7 @@ class Toolbar extends Component {
     } else if (selector === 'more') {
       this.setState((state) => ({
         showMenu: !state.showMenu,
-        menuStyle: {
-          overflow: 'visible',
-          top: 0,
-        },
+        menuStyle: { overflow: 'visible', top: 0 },
       }));
     } else {
       this.setState((state) => ({
@@ -325,6 +347,27 @@ class Toolbar extends Component {
     }
     this.toggleButtonPressed(e);
     this.loadComponent(selector);
+
+    requestAnimationFrame(() => {
+      const allFocusable = this.toolbarWindow.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      const firstFocusable = Array.from(allFocusable || []).find((el) => {
+        const style = window.getComputedStyle(el);
+        return style.display !== 'none' && style.visibility !== 'hidden';
+      });
+      if (this.announceRef.current) {
+        this.announceRef.current.textContent = '';
+        // Timeout to allow the screen reader to pick up the change in content after the menu is opened
+        setTimeout(() => {
+          this.announceRef.current.textContent =
+            this.props.intl.formatMessage(messages[selector]) +
+            ', ' +
+            this.props.intl.formatMessage(messages.menuOpened);
+          firstFocusable?.focus({ preventScroll: true });
+        }, 100);
+      }
+    });
   };
 
   findAncestor = (el, sel) => {
@@ -376,12 +419,23 @@ class Toolbar extends Component {
           <BodyClass
             className={expanded ? 'has-toolbar' : 'has-toolbar-collapsed'}
           />
+          <span
+            aria-live="assertive"
+            aria-atomic="true"
+            className="visually-hidden"
+            ref={this.announceRef}
+          />
           <div
             style={this.state.menuStyle}
             className={
               this.state.showMenu ? 'toolbar-content show' : 'toolbar-content'
             }
             ref={this.toolbarWindow}
+            onBlur={(e) => {
+              if (!this.toolbarWindow.current?.contains(e.relatedTarget)) {
+                this.closeMenu();
+              }
+            }}
           >
             {this.state.showMenu && (
               // This sets the scroll locker in the body tag in mobile
