@@ -18,11 +18,9 @@ import {
   LightbulbIcon,
   ListIcon,
   ListOrdered,
-  PlusSquareIcon,
   PilcrowIcon,
   Quote,
   SparklesIcon,
-  SquareSplitVertical,
   Square,
   Table,
   TableOfContentsIcon,
@@ -30,11 +28,7 @@ import {
 import { type TComboboxInputElement, ElementApi, KEYS, PathApi } from 'platejs';
 import { PlateElement } from 'platejs/react';
 import { insertBlock } from '../editor/transforms';
-import {
-  getBlocksApi,
-  getIntl,
-  splitEditorAtCursor,
-} from '../editor/plugins/split-utils';
+import { getIntl } from '../editor/plugins/split-utils';
 import { TITLE_BLOCK_TYPE } from '../editor/plugins/title';
 
 import {
@@ -58,23 +52,6 @@ type Group = {
     keywords?: string[];
     label?: string;
   }[];
-};
-
-const addNewBlock = {
-  focusEditor: true,
-  icon: <PlusSquareIcon />,
-  keywords: ['block', 'add', 'insert'],
-  label: 'New block',
-  value: 'action_new_block',
-  onSelect: (editor: PlateEditor) => {
-    const api = getBlocksApi(editor);
-    if (!api?.onInsertBlock) return;
-
-    setTimeout(() => {
-      const newId = api.onInsertBlock(api.id, { '@type': 'slate' });
-      api.onSelectBlock?.(newId ?? api.id);
-    }, 0);
-  },
 };
 
 const baseGroups: Group[] = [
@@ -242,22 +219,10 @@ const insertSomersaultNativeBlock = (
   });
 };
 
-const useSplitEditorAtCursor = (editor: PlateEditor) => {
-  const split = React.useCallback(() => {
-    splitEditorAtCursor(editor);
-  }, [editor]);
-
-  return {
-    split,
-    enabled: Boolean(editor) && config.settings.editorMode !== 'somersault',
-  };
-};
-
 export function SlashInputElement(
   props: PlateElementProps<TComboboxInputElement>,
 ) {
   const { editor, element } = props;
-  const { split, enabled: canSplit } = useSplitEditorAtCursor(editor);
   const intl = React.useMemo(() => getIntl(editor), [editor]);
   const blocks = React.useMemo(() => {
     const blocksConfig = config?.blocks?.blocksConfig;
@@ -282,18 +247,7 @@ export function SlashInputElement(
         label,
         value: `block_${id}`,
         onSelect: (plateEditor: PlateEditor) => {
-          if (config.settings.editorMode === 'somersault') {
-            insertSomersaultNativeBlock(plateEditor, id);
-            return;
-          }
-
-          const api = getBlocksApi(plateEditor);
-          if (!api?.onInsertBlock) return;
-
-          setTimeout(() => {
-            const newId = api.onInsertBlock(api.id, { '@type': id });
-            api.onSelectBlock?.(newId ?? api.id);
-          }, 0);
+          insertSomersaultNativeBlock(plateEditor, id);
         },
       };
     });
@@ -304,7 +258,6 @@ export function SlashInputElement(
   );
 
   const groups = React.useMemo(() => {
-    const allowNewBlock = config.settings.editorMode !== 'somersault';
     const addGroupItem = (
       groups: Group[],
       groupName: Group['group'],
@@ -324,9 +277,6 @@ export function SlashInputElement(
       );
 
     let nextGroups = baseGroups;
-    if (allowNewBlock) {
-      nextGroups = addGroupItem(nextGroups, 'Actions', addNewBlock);
-    }
     if (!hasTitleBlock) {
       const titleBlockItem = {
         icon: <BookA />,
@@ -340,17 +290,6 @@ export function SlashInputElement(
 
       nextGroups = addGroupItem(nextGroups, 'Text blocks', titleBlockItem);
     }
-    if (canSplit) {
-      const splitItem = {
-        icon: <SquareSplitVertical />,
-        keywords: ['split', 'divide', 'new block'],
-        label: 'Split editor here',
-        value: 'action_split_editor',
-        onSelect: split,
-      };
-
-      nextGroups = addGroupItem(nextGroups, 'Actions', splitItem);
-    }
 
     if (blocks.length) {
       nextGroups = [
@@ -363,7 +302,7 @@ export function SlashInputElement(
     }
 
     return nextGroups;
-  }, [canSplit, hasTitleBlock, split, blocks]);
+  }, [hasTitleBlock, blocks]);
 
   return (
     <PlateElement {...props} as="span">
