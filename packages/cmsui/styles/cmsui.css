@@ -3,12 +3,12 @@
 
 @source '../node_modules/@plone/components/dist/quanta';
 
-@layer cmsui {
-  @import 'tailwindcss/theme.css';
-  @import 'tailwindcss/preflight.css';
-  @import 'tailwindcss/utilities.css';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities);
 
-  :root {
+@layer cmsui {
+  body.cmsui {
     --background: hsl(0 0% 100%);
     --foreground: hsl(222.2 84% 4.9%);
     --card: hsl(0 0% 100%);
@@ -37,7 +37,7 @@
     /* --radius: 0.6rem; */
   }
 
-  .dark {
+  body.cmsui.dark {
     --background: hsl(222.2 84% 4.9%);
     --foreground: hsl(210 40% 98%);
     --card: hsl(222.2 84% 4.9%);

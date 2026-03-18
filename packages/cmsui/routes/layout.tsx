@@ -19,8 +19,6 @@ import { clsx } from 'clsx';
 import config from '@plone/registry';
 
 // eslint-disable-next-line import/no-unresolved
-import publicStylesheet from 'seven/.plone/publicui.css?url';
-// eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/.plone/cmsui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
@@ -39,7 +37,6 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
-  { rel: 'stylesheet', href: publicStylesheet },
   { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',
