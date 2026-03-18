@@ -71,10 +71,11 @@ export function FloatingToolbar({
       <Toolbar
         {...props}
         {...rootProps}
+        aria-label="Editor toolbar"
         ref={ref}
         className={cn(
           `
-            scrollbar-hide absolute z-50 overflow-x-auto rounded-md border bg-popover p-1
+            scrollbar-hide absolute z-100 overflow-x-auto rounded-md border bg-popover p-1
             whitespace-nowrap opacity-100 shadow-md
             print:hidden
           `,

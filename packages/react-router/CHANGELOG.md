@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.2 (2025-12-23)
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395](https://github.com/plone/volto/issues/7395)
+
 ## 2.0.0-alpha.1 (2025-09-29)
 
 ### Internal

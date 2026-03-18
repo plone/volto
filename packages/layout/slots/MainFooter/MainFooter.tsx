@@ -36,7 +36,7 @@ const Footer = (props: SlotComponentProps) => {
       <Logo content={content} location={location} />
 
       <a className="item powered-by" href="https://plone.org">
-        Powered by Plone & Python
+        Powered by Plone
       </a>
     </SectionWrapper>
   );

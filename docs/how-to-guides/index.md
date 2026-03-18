@@ -24,4 +24,6 @@ shadow-a-component
 fetch-additional-data-root-loader
 add-tailwind
 icons
+configure-plate-block-widths
+configure-plate-code-block-languages
 ```

@@ -7,7 +7,9 @@ import { Pluggable } from '@plone/layout/components/Pluggable';
 export const sidebarAtom = atom(false);
 
 const sidebar = tv({
-  base: 'bg-quanta-celery transition-[width] duration-200 ease-linear',
+  base: `
+    shadow-[0_12px_24px_0_var(--color-quanta-smoke)] transition-[width] duration-200 ease-linear
+  `,
   variants: {
     collapsed: {
       true: 'w-0',
@@ -37,7 +39,6 @@ const Sidebar = () => {
     >
       {!collapsed && (
         <Fragment>
-          <button ref={button}>sidebar tabs will be here</button>
           <Pluggable name="sidebar" />
         </Fragment>
       )}

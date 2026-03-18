@@ -177,10 +177,10 @@ The project includes the following tooling configurations:
   In normal circumstances, you do not need to change this folder.
   Customize the workflows if you need a tailored CI/CD process.
 
-{file}`cypress`
-: This folder contains Cypress end-to-end tests for your add-on.
-  Add tests in {file}`cypress/tests` using the `*.cy.ts` naming convention.
-  In normal circumstances, you do not need to change the Cypress configuration.
+{file}`acceptance`
+: This folder contains Playwright end-to-end tests for your add-on.
+  Add tests in {file}`acceptance/tests` using the `*.test.ts` naming convention.
+  In normal circumstances, you do not need to change the acceptance testing configuration.
 
 ## Seven core checkout
 

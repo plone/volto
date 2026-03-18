@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { type UseChatHelpers, useChat as useBaseChat } from '@ai-sdk/react';
-import { faker } from '@faker-js/faker';
 import { AIChatPlugin, aiCommentToRange } from '@platejs/ai/react';
 import { getCommentKey, getTransientCommentKey } from '@platejs/comment';
 import { deserializeMd } from '@platejs/markdown';
@@ -30,6 +29,26 @@ export type MessageDataPart = {
 export type Chat = UseChatHelpers<ChatMessage>;
 
 export type ChatMessage = UIMessage<{}, MessageDataPart>;
+
+const LOREM_SENTENCE =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+const LOREM_WORDS = LOREM_SENTENCE.replace(/[.,]/g, '')
+  .split(' ')
+  .filter(Boolean);
+
+const randomInt = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+const loremWordChunk = (minWords = 1, maxWords = 3) => {
+  const count = randomInt(minWords, maxWords);
+  const words = Array.from(
+    { length: count },
+    (_, index) => LOREM_WORDS[index % LOREM_WORDS.length],
+  );
+
+  return `${words.join(' ')} `;
+};
 
 export const useChat = () => {
   const editor = useEditorRef();
@@ -204,18 +223,18 @@ const fakeStreamText = ({
 
         return [
           Array.from({ length: chunkCount }, () => ({
-            delay: faker.number.int({ max: 100, min: 30 }),
-            texts: faker.lorem.words({ max: 3, min: 1 }) + ' ',
+            delay: randomInt(30, 100),
+            texts: loremWordChunk(),
           })),
 
           Array.from({ length: chunkCount + 2 }, () => ({
-            delay: faker.number.int({ max: 100, min: 30 }),
-            texts: faker.lorem.words({ max: 3, min: 1 }) + ' ',
+            delay: randomInt(30, 100),
+            texts: loremWordChunk(),
           })),
 
           Array.from({ length: chunkCount + 4 }, () => ({
-            delay: faker.number.int({ max: 100, min: 30 }),
-            texts: faker.lorem.words({ max: 3, min: 1 }) + ' ',
+            delay: randomInt(30, 100),
+            texts: loremWordChunk(),
           })),
         ];
       })();
@@ -231,7 +250,7 @@ const fakeStreamText = ({
       signal?.addEventListener('abort', abortHandler);
 
       // Generate a unique message ID
-      const messageId = `msg_${faker.string.alphanumeric(40)}`;
+      const messageId = `msg_${nanoid(40)}`;
 
       // Handle comment data differently
       if (sample === 'comment') {
@@ -331,7 +350,7 @@ const fakeStreamText = ({
   });
 };
 
-const delay = faker.number.int({ max: 20, min: 5 });
+const delay = randomInt(5, 20);
 
 const markdownChunks = [
   [
@@ -378,15 +397,15 @@ const markdownChunks = [
     { delay, texts: ' formatting ' },
     { delay, texts: 'for ' },
     { delay, texts: 'easy ' },
-    { delay: faker.number.int({ max: 100, min: 30 }), texts: 'readability.' },
+    { delay: randomInt(30, 100), texts: 'readability.' },
     { delay, texts: '\n\n' },
     { delay, texts: 'Add ' },
     {
       delay,
       texts: '[links](https://example.com)',
     },
-    { delay: faker.number.int({ max: 100, min: 30 }), texts: ' to ' },
-    { delay: faker.number.int({ max: 100, min: 30 }), texts: 'external ' },
+    { delay: randomInt(30, 100), texts: ' to ' },
+    { delay: randomInt(30, 100), texts: 'external ' },
     { delay, texts: 'resources ' },
     { delay, texts: 'or ' },
     {
@@ -1479,8 +1498,8 @@ const createCommentChunks = (editor: PlateEditor) => {
 
       return [
         {
-          delay: faker.number.int({ max: 500, min: 200 }),
-          texts: `{"id":"${nanoid()}","data":{"blockId":"${block.id}","comment":"${faker.lorem.sentence()}","content":"${content}"},"type":"data-comment"}`,
+          delay: randomInt(200, 500),
+          texts: `{"id":"${nanoid()}","data":{"blockId":"${block.id}","comment":"${LOREM_SENTENCE}","content":"${content}"},"type":"data-comment"}`,
         },
       ];
     })

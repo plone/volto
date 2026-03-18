@@ -5,8 +5,8 @@ import i18next from './i18next.server';
 import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
+import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
-import type { Content } from '@plone/types';
 import {
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -21,6 +21,7 @@ export const middleware = [
 
 export async function loader({ params, request }: Route.LoaderArgs) {
   const locale = await i18next.getLocale(request);
+  const token = await getAuthFromRequest(request);
 
   const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
 
@@ -31,26 +32,34 @@ export async function loader({ params, request }: Route.LoaderArgs) {
     })
     .method() as PloneClient;
 
+  cli.config.token = token;
+
   const path = `/${params['*'] || ''}`;
 
   const rootLoaderDataUtilities = config.getUtilities({
     type: 'rootLoaderData',
-  }) as Array<{
-    method: (args: {
-      cli: PloneClient;
-      content: Content;
-      request: typeof request;
-      path: string;
-      params: typeof params;
-      locale: string;
-    }) => Promise<{ status: number; data: unknown }>;
-  }>;
+  });
+
+  const rootContentSubRequests = config.getUtilities({
+    type: 'rootContentSubRequest',
+  });
 
   try {
     const [content, site] = await Promise.all([
       cli.getContent({ path, expand }),
       cli.getSite(),
     ]);
+
+    for (const utility of rootContentSubRequests) {
+      await utility.method({
+        cli,
+        content: content.data,
+        request,
+        path,
+        params,
+        locale,
+      });
+    }
 
     const rootLoaderDataUtilitiesData = await Promise.all([
       ...rootLoaderDataUtilities.map((utility) =>

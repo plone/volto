@@ -1,10 +1,13 @@
 import type { AnyPluginConfig, SlateEditor, TElement, Value } from 'platejs';
+import type { ReactNode } from 'react';
+import { BlockSelectionPlugin } from '@platejs/selection/react';
 import {
   Plate,
   usePlateEditor,
   type TPlateEditor,
   type PlateViewProps,
 } from 'platejs/react';
+import { useMemo } from 'react';
 
 import {
   Editor,
@@ -13,10 +16,14 @@ import {
   editorVariants,
 } from '../ui/editor';
 import type { VariantProps } from 'class-variance-authority';
+import { normalizeLegacyValue } from './plugins/normalize-legacy';
 
 export function PlateEditor(props: {
   editorConfig: Parameters<typeof usePlateEditor>[0];
   value?: Value;
+  blocksApi?: any;
+  intl?: any;
+  children?: ReactNode;
   onChange: (options: {
     editor: TPlateEditor<Value, AnyPluginConfig>;
     value: TElement[];
@@ -25,7 +32,18 @@ export function PlateEditor(props: {
   onFocusNextBlock?: () => void;
   onFocusSidebar?: () => void;
 }) {
-  const editor = usePlateEditor({ ...props.editorConfig, value: props.value });
+  const sanitizedValue = useMemo(
+    () => normalizeLegacyValue(props.value),
+    [props.value],
+  );
+
+  const editor = usePlateEditor({
+    ...props.editorConfig,
+    value: sanitizedValue,
+  });
+
+  (editor as any).blocksApi = props.blocksApi;
+  (editor as any).intl = props.intl ?? props.blocksApi?.intl;
 
   return (
     <Plate
@@ -37,13 +55,22 @@ export function PlateEditor(props: {
       {/* Provides editor context */}
       <EditorContainer className="">
         {/* Styles the editor area */}
-        <Editor variant="none" placeholder="Type text..." />
+        <Editor variant="block" placeholder="Type text..." />
       </EditorContainer>
+      {props.children}
     </Plate>
   );
 }
 
 export type { Value } from 'platejs';
+export { ElementApi, type Path } from 'platejs';
+export {
+  PlateController,
+  createPlatePlugin,
+  useEditorRef,
+  useEditorSelector,
+} from 'platejs/react';
+export { BlockSelectionPlugin };
 
 export function PlateRenderer(
   props: Omit<
@@ -57,12 +84,21 @@ export function PlateRenderer(
 ) {
   const { editorConfig, ...rest } = props;
 
+  const sanitizedValue = useMemo(
+    () => normalizeLegacyValue(props.value),
+    [props.value],
+  );
+
   const editor = usePlateEditor({
     ...editorConfig,
-    value: props.value,
+    value: sanitizedValue,
   }) as SlateEditor; // EditorView likes it more
 
-  return <EditorView {...rest} editor={editor} />;
+  return (
+    <Plate editor={editor} readOnly>
+      <EditorView {...rest} editor={editor} variant="none" />
+    </Plate>
+  );
 }
 
 PlateRenderer.displayName = 'PlateRenderer';

@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.6 (2025-12-23)
+
+### Feature
+
+- Remove all slate related components. Use the new plate unified configuration in `@plone/plate`. @sneridagh [#7393](https://github.com/plone/volto/pull/7393)
+- Added ESlint Tailwind plugin for prettifying and wrapping up the classNames in components.
+  Amended components classNames by applying the plugin. @sneridagh [#7434](https://github.com/plone/volto/pull/7434)
+- New slate `useStablePlateValue` for fixing SSR issues on converting on the fly legacy slate blocks. @sneridagh [#7650](https://github.com/plone/volto/pull/7650)
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395](https://github.com/plone/volto/pull/7395)
+
 ## 1.0.0-alpha.5 (2025-09-29)
 
 ### Breaking

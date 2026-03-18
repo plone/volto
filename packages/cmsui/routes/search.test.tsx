@@ -32,7 +32,7 @@ describe('loader', () => {
       'http://example.com/@search?SearchableText=test&path.depth=1',
     );
 
-    await loader({ request, params: {}, context: {} });
+    await loader({ request, params: {}, context: {} } as any);
 
     expect(searchMock).toHaveBeenCalledWith({
       query: {
@@ -66,7 +66,7 @@ describe('loader', () => {
     });
     const request = new Request('http://example.com/@search');
 
-    await loader({ request, params: {}, context: {} });
+    await loader({ request, params: {}, context: {} } as any);
 
     expect(searchMock).toHaveBeenCalledWith({
       query: {

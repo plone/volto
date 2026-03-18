@@ -12,6 +12,7 @@ import { MarkToolbarButton } from './mark-toolbar-button';
 import { ToolbarGroup } from './toolbar';
 import { TurnIntoToolbarButton } from './turn-into-toolbar-button';
 import { ToggleToolbarButton } from './toggle-toolbar-button';
+import { BlockWidthToolbarButton } from './block-width-toolbar-button';
 import {
   BulletedListToolbarButton,
   NumberedListToolbarButton,
@@ -68,6 +69,7 @@ export function BlockFloatingToolbarButtons() {
             <NumberedListToolbarButton />
             <BulletedListToolbarButton />
             <TodoListToolbarButton />
+            <BlockWidthToolbarButton />
             <ToggleToolbarButton />
           </ToolbarGroup>
         </>

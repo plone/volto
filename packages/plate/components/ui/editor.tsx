@@ -68,7 +68,10 @@ export function EditorContainer({
 export const editorVariants = cva(
   cn(
     'group/editor',
-    'relative w-full cursor-text overflow-x-hidden break-words whitespace-pre-wrap select-text',
+    `
+      relative w-full cursor-text overflow-x-hidden overflow-y-hidden break-words
+      whitespace-pre-wrap select-text
+    `,
     `
       rounded-md ring-offset-background
       focus-visible:outline-none
@@ -78,6 +81,8 @@ export const editorVariants = cva(
       **:data-slate-placeholder:!top-1/2 **:data-slate-placeholder:-translate-y-1/2
       **:data-slate-placeholder:text-muted-foreground/80 **:data-slate-placeholder:opacity-100!
     `,
+    '[&_[data-slate-node="element"]:not([data-slate-inline="true"])]:mx-auto',
+    '[&_.slate-p]:mx-auto [&_.slate-p]:max-w-(--narrow-container-width)',
     '[&_strong]:font-bold',
   ),
   {
@@ -113,7 +118,8 @@ export const editorVariants = cva(
           size-full px-16 pt-4 pb-72 text-base
           sm:px-24
         `,
-        none: 'px-6',
+        block: 'px-6',
+        none: '',
         select: `
           px-3 py-2 text-base
           data-readonly:w-fit

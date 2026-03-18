@@ -38,6 +38,25 @@ export function TocElementStatic(props: SlateElementProps) {
               className={headingItemVariants({
                 depth: item.depth as 1 | 2 | 3,
               })}
+              // This handler mocks the behaviour inside the edit view,
+              // since the heading highlighting is coupled to the editor
+              onClick={() => {
+                const el = document.querySelector<HTMLElement>(
+                  `[data-block-id="${item.id}"]`,
+                );
+                if (!el) return;
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const overlay = document.createElement('div');
+                overlay.className =
+                  'pointer-events-none absolute inset-0 z-1 bg-brand/[.13]';
+                overlay.dataset.slot = 'block-selection';
+                el.appendChild(overlay);
+                const dismiss = () => {
+                  overlay.remove();
+                  document.removeEventListener('mousedown', dismiss);
+                };
+                document.addEventListener('mousedown', dismiss);
+              }}
             >
               {item.title}
             </Button>

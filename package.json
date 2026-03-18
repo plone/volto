@@ -31,7 +31,9 @@
     "lockhook": "node packages/scripts/lockhook.js",
     "prepare": "husky",
     "husky:uninstall": "husky uninstall",
-    "prereleaser": "node packages/scripts/preleaser.js"
+    "prereleaser": "node packages/scripts/preleaser.js",
+    "acceptance-test": "pnpm exec playwright test --config=playwright.config.ts",
+    "acceptance-test:open": "pnpm exec playwright test --ui --config=playwright.config.ts"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
@@ -41,21 +43,20 @@
     "tsconfig": "workspace:*",
     "typescript": "catalog:"
   },
-  "packageManager": "pnpm@10.10.0",
   "pnpm": {
     "overrides": {
-      "react": "^19.1.0",
-      "react-dom": "^19.1.0",
+      "react": "^19.2.0",
+      "react-dom": "^19.2.0",
       "jotai": "^2.12.5"
     },
     "onlyBuiltDependencies": [
       "@swc/core",
       "@tailwindcss/oxide",
-      "cypress",
       "esbuild",
       "lightningcss-cli",
       "msgpackr-extract",
       "unrs-resolver"
     ]
-  }
+  },
+  "packageManager": "pnpm@10.20.0"
 }
