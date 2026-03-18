@@ -28,9 +28,6 @@ export function PlateEditor(props: {
     editor: TPlateEditor<Value, AnyPluginConfig>;
     value: TElement[];
   }) => void;
-  onFocusPreviousBlock?: () => void;
-  onFocusNextBlock?: () => void;
-  onFocusSidebar?: () => void;
 }) {
   const sanitizedValue = useMemo(
     () => normalizeLegacyValue(props.value),

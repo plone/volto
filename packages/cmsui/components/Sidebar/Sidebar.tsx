@@ -1,4 +1,3 @@
-import { Fragment, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { atom, useAtom } from 'jotai';
 import { tv } from 'tailwind-variants';
@@ -20,28 +19,20 @@ const sidebar = tv({
 
 const Sidebar = () => {
   const { t } = useTranslation();
-  const [collapsed] = useAtom(sidebarAtom);
-  const button = useRef<HTMLButtonElement>(null);
+  const [collapsed, setCollapsed] = useAtom(sidebarAtom);
 
   return (
     <aside
       aria-label={t('cmsui.sidebar.label')}
       id="sidebar"
       className={sidebar({ collapsed })}
-      tabIndex={-1}
-      onFocus={(e) => {
+      onFocus={() => {
         if (collapsed) {
-          e.currentTarget.blur();
-        } else {
-          button.current?.focus();
+          setCollapsed(false);
         }
       }}
     >
-      {!collapsed && (
-        <Fragment>
-          <Pluggable name="sidebar" />
-        </Fragment>
-      )}
+      {!collapsed && <Pluggable name="sidebar" />}
     </aside>
   );
 };
