@@ -25,7 +25,6 @@ import {
   AccordionItemTrigger,
   Button,
 } from '@plone/components/quanta';
-import BlockEditor from '../components/BlockEditor/BlockEditor';
 import SomersaultEditor from '../components/BlockEditor/SomersaultEditor';
 
 // import { ConsoleLog } from '../helpers/debug';
@@ -98,11 +97,7 @@ export default function Edit() {
       <InitAtoms atomValues={[[formAtom, content]]}>
         <main className="mx-4 mt-8 flex h-screen flex-auto gap-8">
           <div className="w-[50%]">
-            {config.settings.editorMode !== 'somersault' ? (
-              <BlockEditor formAtom={formAtom}></BlockEditor>
-            ) : (
-              <SomersaultEditor />
-            )}
+            <SomersaultEditor />
           </div>
           <div className="flex w-[50%] flex-col">
             <h1 className="mb-4 text-2xl font-bold">
