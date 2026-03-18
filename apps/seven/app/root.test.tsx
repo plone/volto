@@ -59,7 +59,6 @@ describe('loader', () => {
         },
         getContent: getContentMock,
         getSite: getSiteMock,
-        config: {},
       }),
     });
     const request = new Request('http://example.com');
@@ -90,7 +89,6 @@ describe('loader', () => {
         },
         getContent: getContentMock,
         getSite: getSiteMock,
-        config: {},
       }),
     });
     const request = new Request('http://example.com/test-content');
@@ -127,7 +125,6 @@ describe('loader', () => {
         },
         getContent: getContentMock,
         getSite: getSiteMock,
-        config: {},
       }),
     });
     const request = new Request('http://example.com');
@@ -157,7 +154,6 @@ describe('loader', () => {
         },
         getContent: getContentMock,
         getSite: getSiteMock,
-        config: {},
       }),
     });
     const request = new Request('http://example.com');
