@@ -30,7 +30,7 @@ export default function install() {
     type: 'rootContentSubRequest',
     method: async (args: LoaderUtilityArgs) => {
       const listingBlocks: { id: string; block: ListingBlockFormData }[] =
-        Object.entries(args.content.blocks)
+        Object.entries(args.content.blocks ?? {})
           .filter(([, block]) => block['@type'] === 'listing')
           .map(([id, block]) => ({ id, block: block as ListingBlockFormData }));
       for (let i = 0; i < listingBlocks.length; i++) {

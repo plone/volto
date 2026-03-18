@@ -21,9 +21,17 @@ import {
 } from '../../ui/heading-node-static';
 import { HrElementStatic } from '../../ui/hr-node-static';
 import { ParagraphElementStatic } from '../../ui/paragraph-node-static';
+import { BLOCK_WIDTH_VALUES } from './block-width-plugin';
 
 export const BaseBasicBlocksKit = [
-  BaseParagraphPlugin.withComponent(ParagraphElementStatic),
+  BaseParagraphPlugin.configure({
+    node: { component: ParagraphElementStatic },
+    options: {
+      blockWidth: {
+        defaultWidth: BLOCK_WIDTH_VALUES.narrow,
+      },
+    },
+  }),
   BaseH1Plugin.withComponent(H1ElementStatic),
   BaseH2Plugin.withComponent(H2ElementStatic),
   BaseH3Plugin.withComponent(H3ElementStatic),

@@ -5,6 +5,7 @@ import i18next from './i18next.server';
 import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
 import type PloneClient from '@plone/client';
+import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 import {
   getAPIResourceWithAuth,
@@ -21,6 +22,7 @@ export const middleware = [
 
 export async function loader({ params, request }: Route.LoaderArgs) {
   const locale = await i18next.getLocale(request);
+  const token = await getAuthFromRequest(request);
 
   const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
   const token = await getAuthFromRequest(request);

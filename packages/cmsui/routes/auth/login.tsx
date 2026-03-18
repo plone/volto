@@ -23,6 +23,15 @@ export const meta = () => {
   return [{ title: 'Plone Login' }];
 };
 
+type LoginErrorResponse = {
+  status: number;
+  data: {
+    error: {
+      message: string;
+    };
+  };
+};
+
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
   const username = String(formData.get('username') || '');
@@ -35,13 +44,26 @@ export async function action({ request }: ActionFunctionArgs) {
     })
     .method() as PloneClient;
 
-  const { data } = await cli.login({ username, password });
-  const response = redirect('/');
-  return await setAuthOnResponse(response, data.token);
+  try {
+    const { data } = await cli.login({ username, password });
+    const response = redirect('/');
+    return await setAuthOnResponse(response, data.token);
+  } catch (error: any) {
+    return {
+      status: Number(error?.status) || 500,
+      data: {
+        error: {
+          message: error?.data?.error?.message || 'Login failed',
+        },
+      },
+    } satisfies LoginErrorResponse;
+  }
 }
 
 export default function Login() {
-  const actionResult = useActionData<typeof action>();
+  const actionResult = useActionData<typeof action>() as
+    | LoginErrorResponse
+    | undefined;
 
   return (
     <div className="mx-4 flex h-screen flex-1 flex-col justify-center">

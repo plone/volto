@@ -54,6 +54,9 @@ describe('loader', () => {
       name: 'ploneClient',
       type: 'client',
       method: () => ({
+        config: {
+          token: undefined,
+        },
         getContent: getContentMock,
         getSite: getSiteMock,
         config: {},
@@ -82,6 +85,9 @@ describe('loader', () => {
       name: 'ploneClient',
       type: 'client',
       method: () => ({
+        config: {
+          token: undefined,
+        },
         getContent: getContentMock,
         getSite: getSiteMock,
         config: {},
@@ -116,6 +122,9 @@ describe('loader', () => {
       name: 'ploneClient',
       type: 'client',
       method: () => ({
+        config: {
+          token: undefined,
+        },
         getContent: getContentMock,
         getSite: getSiteMock,
         config: {},
@@ -143,6 +152,9 @@ describe('loader', () => {
       name: 'ploneClient',
       type: 'client',
       method: () => ({
+        config: {
+          token: undefined,
+        },
         getContent: getContentMock,
         getSite: getSiteMock,
         config: {},

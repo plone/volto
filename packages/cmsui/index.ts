@@ -2,6 +2,13 @@ import type { ConfigType } from '@plone/registry';
 import installWidgets from './config/widgets';
 import installControlpanels from './config/controlpanels';
 import { formAtom } from './routes/atoms';
+import type { BlockConfigBase } from '@plone/types';
+
+declare module '@plone/types' {
+  export interface BlocksConfigData {
+    __somersault__: BlockConfigBase;
+  }
+}
 
 export default function install(config: ConfigType) {
   config.settings.cssLayers = [...(config.settings.cssLayers || []), 'cmsui'];
@@ -145,6 +152,17 @@ export default function install(config: ConfigType) {
         type: 'route',
         path: '*',
         file: '@plone/cmsui/routes/objectBrowserWidget.tsx',
+      },
+    ],
+  });
+  config.registerRoute({
+    type: 'prefix',
+    path: '@createContent',
+    children: [
+      {
+        type: 'route',
+        path: '*',
+        file: '@plone/cmsui/routes/api/createContent.tsx',
       },
     ],
   });

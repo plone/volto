@@ -1,3 +1,5 @@
 [^.]js
 NodeJS
 [Pp]re-requisite
+plate\.js
+platejs

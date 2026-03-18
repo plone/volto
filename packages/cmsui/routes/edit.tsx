@@ -25,7 +25,7 @@ import {
   AccordionItemTrigger,
   Button,
 } from '@plone/components/quanta';
-import BlockEditor from '../components/BlockEditor/BlockEditor';
+import BlocksEditor from '../components/BlockEditor/BlocksEditor';
 
 // import { ConsoleLog } from '../helpers/debug';
 import { formAtom, store } from './atoms';
@@ -97,7 +97,7 @@ export default function Edit() {
       <InitAtoms atomValues={[[formAtom, content]]}>
         <main className="mx-4 mt-8 flex h-screen flex-auto gap-8">
           <div className="w-[50%]">
-            <BlockEditor formAtom={formAtom}></BlockEditor>
+            <BlocksEditor />
           </div>
           <div className="flex w-[50%] flex-col">
             <h1 className="mb-4 text-2xl font-bold">

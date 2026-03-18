@@ -20,6 +20,8 @@ import { VideoElement } from '../../ui/media-video-node';
 
 export const MediaKit = [
   ImagePlugin.configure({
+    // Image nodes are inserted empty and completed through the custom
+    // source dialog in `media-image-node.tsx`.
     options: { disableUploadInsert: true },
     render: { afterEditable: MediaPreviewDialog, node: ImageElement },
   }),
