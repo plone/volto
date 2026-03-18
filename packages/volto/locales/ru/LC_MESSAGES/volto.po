@@ -466,6 +466,8 @@ msgstr "Доступные правила контента:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -509,6 +511,17 @@ msgstr "Базовый поисковый запрос"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Блок"
+
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -2004,6 +2017,11 @@ msgstr "Неверный источник тизера"
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Нельзя одновременно задать пароль и запросить отправку сообщения о сбросе пароля по электронной почте. Вам нужно выбрать что-то одно."
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2646,6 +2664,12 @@ msgstr "Размер объекта"
 msgid "Occurences"
 msgstr "Повторения"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2730,6 +2754,11 @@ msgstr ""
 #. Default: "Paste blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
 msgstr ""
 
 #. Default: "Perform the following actions:"
@@ -4720,6 +4749,11 @@ msgstr "Общие"
 msgid "compare_to"
 msgstr "Сравнить с языком"
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4938,6 +4972,8 @@ msgstr "Список"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Загрузка"
 
@@ -4997,6 +5033,11 @@ msgstr "Нет"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "Нет состояния"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
