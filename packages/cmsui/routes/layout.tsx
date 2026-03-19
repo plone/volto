@@ -18,6 +18,7 @@ import { shouldShowToolbar } from '@plone/layout/helpers';
 import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
 import Settings from '@plone/components/icons/settings.svg?react';
 import { useAtom } from 'jotai';
+import { useLayoutEffect } from 'react';
 import { clsx } from 'clsx';
 import config from '@plone/registry';
 
@@ -72,6 +73,12 @@ export default function Index() {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useAtom(sidebarAtom);
+
+  useLayoutEffect(() => {
+    document
+      .querySelectorAll('link[href*="publicui.css"]')
+      .forEach((el) => el.remove());
+  }, []);
 
   if (!rootData) {
     return null;
