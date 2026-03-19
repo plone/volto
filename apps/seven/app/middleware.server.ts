@@ -2,7 +2,7 @@ import { data } from 'react-router';
 import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 import type { Route } from './+types/root';
-import installServer from './config.server';
+import installServer from './config/server.server';
 
 export const installServerMiddleware: Route.MiddlewareFunction = async (
   { request, context },

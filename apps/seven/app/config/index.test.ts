@@ -1,6 +1,6 @@
 import { expect, describe, it, afterEach } from 'vitest';
 import config from '@plone/registry';
-import install from './config';
+import install from './index';
 
 describe('config', () => {
   afterEach(() => {

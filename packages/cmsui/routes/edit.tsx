@@ -16,9 +16,11 @@ import type { DeepKeys } from '@tanstack/react-form';
 import { flattenToAppURL, InitAtoms } from '@plone/helpers';
 import type { Content } from '@plone/types';
 import { Plug } from '@plone/layout/components/Pluggable';
+import { migrateContent } from 'seven/app/config/server/content-migrations.server';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
 import Close from '@plone/components/icons/close.svg?react';
-
+import { useRouteLoaderData } from 'react-router';
+import type { RootLoader } from 'seven/app/root';
 import { useAppForm } from '../components/Form/Form';
 import { Link } from 'react-aria-components';
 import {
@@ -49,6 +51,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
   const path = `/${params['*'] || ''}`;
 
   const { data: content } = await cli.getContent({ path });
+  migrateContent(content);
   const { data: schema } = await cli.getType({ contentType: content['@type'] });
 
   return data(flattenToAppURL({ content, schema }));
@@ -79,7 +82,9 @@ export async function action({ params, request }: ActionFunctionArgs) {
 }
 
 export default function Edit() {
-  const { content, schema } = useLoaderData<typeof loader>();
+  const { schema } = useLoaderData<typeof loader>();
+  const rootData = useRouteLoaderData<RootLoader>('root');
+  const content = rootData?.content as Content;
   const { t } = useTranslation();
   const fetcher = useFetcher();
   const storeRef = useRef(createStore());

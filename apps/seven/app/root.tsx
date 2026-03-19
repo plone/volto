@@ -12,6 +12,7 @@ import {
   installServerMiddleware,
   otherResources,
 } from './middleware.server';
+import { migrateContent } from './config/server/content-migrations.server';
 
 export const middleware = [
   installServerMiddleware,
@@ -49,6 +50,8 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       cli.getContent({ path, expand }),
       cli.getSite(),
     ]);
+
+    migrateContent(content.data);
 
     for (const utility of rootContentSubRequests) {
       await utility.method({
