@@ -1,6 +1,7 @@
 import type { ConfigType } from '@plone/registry';
 
 import ImageBlockInfo from './Image';
+import VideoBlockInfo from './Video';
 import TeaserBlockInfo from './Teaser';
 import ListingBlockInfo from './Listing';
 import MapsBlockInfo from './Maps';
@@ -14,6 +15,7 @@ export default function install(config: ConfigType) {
 
   config.blocks.blocksConfig.image = ImageBlockInfo;
   config.blocks.blocksConfig.teaser = TeaserBlockInfo;
+  config.blocks.blocksConfig.video = VideoBlockInfo;
   config.blocks.blocksConfig.listing = ListingBlockInfo;
   config.blocks.blocksConfig.maps = MapsBlockInfo;
 
