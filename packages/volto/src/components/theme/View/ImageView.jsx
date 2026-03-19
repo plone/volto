@@ -3,7 +3,6 @@
  * @module components/theme/View/ImageView
  */
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
 import { FormattedMessage } from 'react-intl';
@@ -21,6 +20,7 @@ const ImageView = ({ content }) => {
   const Image = config.getComponent({ name: 'Image' }).component;
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
+  const width = config.settings.defaultWidth;
 
   return (
     <Container className="view-wrapper">
@@ -38,7 +38,7 @@ const ImageView = ({ content }) => {
             imageField="image"
             alt={content.title}
             responsive={true}
-            sizes="auto, (max-width: 940px) 100vw, 940px"
+            sizes={`auto, (max-width: ${width}px) 100vw, ${width}px`}
           />
           <figcaption>
             <FormattedMessage

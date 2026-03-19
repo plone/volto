@@ -2,10 +2,13 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import config from '@plone/volto/registry';
 
 import ImageView from './ImageView';
 
 const mockStore = configureStore();
+
+config.settings.defaultWidth = 940;
 
 test('renders an image view component', () => {
   const store = mockStore({

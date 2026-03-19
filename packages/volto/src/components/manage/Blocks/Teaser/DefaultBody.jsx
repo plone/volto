@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -8,6 +8,7 @@ import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
+import { GridContext } from '@plone/volto/components/manage/Blocks/Grid/context';
 
 const messages = defineMessages({
   PleaseChooseContent: {
@@ -26,7 +27,8 @@ const TeaserDefaultTemplate = (props) => {
 
   const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
-  const sizes = config.blocks.blocksConfig.teaser.getSizes(data);
+  const columns = useContext(GridContext);
+  const sizes = config.blocks.blocksConfig.teaser.getSizes({ data, columns });
 
   return (
     <div className={cx('block teaser', className)} style={style}>

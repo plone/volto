@@ -179,6 +179,7 @@ let config = {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
     },
+    defaultWidth: 940,
   },
   experimental: {
     addBlockButton: {
