@@ -764,6 +764,12 @@ div.image-upload-widget-image {
     width: auto; // for Add Link popup button to be aligned to the right
   }
 
+  .react-select-container {
+    min-width: 0;
+    flex: 1 1 auto;
+    position: static;
+  }
+
   button {
     padding: 0;
     border: 0;
@@ -779,7 +785,8 @@ div.image-upload-widget-image {
   }
 
   .react-select-container .react-select__control {
-    width: 220px;
+    width: 100%;
+    min-width: 0;
     border: none;
     box-shadow: none;
     cursor: text;
@@ -787,10 +794,11 @@ div.image-upload-widget-image {
   }
 
   .react-select-container .react-select__menu {
+    position: absolute;
     z-index: 2;
-    top: auto;
-    left: -38px;
-    width: 310px;
+    top: 100%;
+    left: 0;
+    width: 100%;
 
     border-bottom: 1px solid #c7d5d8;
     margin-top: 0;
@@ -857,6 +865,7 @@ div.image-upload-widget-image {
   width: 100%;
 
   .wrapper {
+    position: relative;
     display: flex;
     flex: 1;
     justify-content: space-between;
@@ -891,6 +900,7 @@ div.image-upload-widget-image {
 
       .link-suggestion-content {
         overflow: hidden;
+        min-width: 0;
 
         .link-suggestion-label {
           overflow: hidden;
@@ -901,6 +911,9 @@ div.image-upload-widget-image {
 
         .link-suggestion-path {
           font-size: 12px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
     }

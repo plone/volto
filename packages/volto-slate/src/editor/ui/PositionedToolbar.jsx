@@ -9,10 +9,12 @@ const PositionedToolbar = ({ toggleButton, className, children, position }) => {
   const ref = React.useRef();
   const portalTarget = toggleButton || document.body;
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     const el = ref.current;
+    if (!el) return;
 
     const { style } = position || {};
+    if (!style) return;
     // allow negative left positioning when portal isn't document.body
     // we need to use Math.max to avoid Slate AddLink popup going off screen
     // and it adds the toolbar to the body

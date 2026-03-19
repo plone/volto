@@ -87,6 +87,17 @@ const LinkForm = ({
   const userId = token ? jwtDecode(token).sub : '';
 
   const Select = reactSelect.default;
+  const menuPortalTarget =
+    typeof document !== 'undefined' ? document.body : null;
+  const linkFormRect = linkFormContainer.current?.getBoundingClientRect();
+  const toolbarWidth =
+    linkFormContainer.current
+      ?.closest('.slate-inline-toolbar.add-link')
+      ?.getBoundingClientRect().width ?? null;
+  const menuWidth = isImagePicker
+    ? linkFormRect?.width ?? null
+    : toolbarWidth ?? null;
+  const menuLeft = isImagePicker ? linkFormRect?.left ?? null : null;
 
   // Effect to set the initial selected value when data.url changes
   useEffect(() => {
@@ -371,6 +382,21 @@ const LinkForm = ({
           components={{
             DropdownIndicator: () => null,
             IndicatorSeparator: () => null,
+          }}
+          menuPortalTarget={menuPortalTarget}
+          menuPosition="fixed"
+          styles={{
+            menuPortal: (base) => ({
+              ...base,
+              zIndex: 1200,
+              width: menuWidth ?? base.width,
+              ...(menuLeft !== null ? { left: menuLeft } : {}),
+            }),
+            menu: (base) => ({
+              ...base,
+              width: menuWidth ?? base.width,
+              marginTop: 0,
+            }),
           }}
           onChange={onChange}
           onInputChange={onInputChange}
