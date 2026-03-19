@@ -2,9 +2,13 @@ import { expect, describe, it, vi, afterEach } from 'vitest';
 import config from '@plone/registry';
 import { RouterContextProvider } from 'react-router';
 import {
+  fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
   otherResources,
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
 } from './middleware.server';
 
 describe('middleware', () => {
@@ -18,7 +22,10 @@ describe('middleware', () => {
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
 
-      await installServerMiddleware({ request, params: {}, context }, nextMock);
+      await installServerMiddleware(
+        { request, params: {}, context, unstable_pattern: '/' },
+        nextMock,
+      );
 
       expect(config.settings).toStrictEqual(
         expect.objectContaining({
@@ -45,7 +52,10 @@ describe('middleware', () => {
       const params = { '*': '' };
       const nextMock = vi.fn();
 
-      await otherResources({ request, params, context }, nextMock);
+      await otherResources(
+        { request, params, context, unstable_pattern: '/' },
+        nextMock,
+      );
     });
 
     it('blocks requests to special urls: css', async () => {
@@ -55,7 +65,10 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources(
+          { request, params, context, unstable_pattern: '/style.css' },
+          nextMock,
+        );
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -68,7 +81,10 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources(
+          { request, params, context, unstable_pattern: '/style.css.map' },
+          nextMock,
+        );
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -115,7 +131,15 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources(
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/?expand=breadcrumbs',
+          },
+          nextMock,
+        );
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -128,7 +152,10 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources(
+          { request, params, context, unstable_pattern: '/assets/image.png' },
+          nextMock,
+        );
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -142,7 +169,10 @@ describe('middleware', () => {
       const params = { '*': '' };
       const nextMock = vi.fn();
 
-      await getAPIResourceWithAuth({ request, params, context }, nextMock);
+      await getAPIResourceWithAuth(
+        { request, params, context, unstable_pattern: '/' },
+        nextMock,
+      );
     });
 
     it('intercepts requests to special urls: @@images', async () => {
@@ -157,7 +187,15 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
+        await getAPIResourceWithAuth(
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/image.png/@@images/image',
+          },
+          nextMock,
+        );
       } catch {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/image.png/@@images/image',
@@ -183,7 +221,15 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
+        await getAPIResourceWithAuth(
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/file.txt/@@download/file',
+          },
+          nextMock,
+        );
       } catch {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/file.txt/@@download/file',
@@ -209,7 +255,10 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
+        await getAPIResourceWithAuth(
+          { request, params, context, unstable_pattern: '/@@site-logo/image' },
+          nextMock,
+        );
       } catch {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/@@site-logo/image',
@@ -235,7 +284,10 @@ describe('middleware', () => {
       global.fetch = fetchMock;
 
       try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
+        await getAPIResourceWithAuth(
+          { request, params, context, unstable_pattern: '/@portrait/username' },
+          nextMock,
+        );
       } catch {
         expect(fetchMock).toHaveBeenCalledWith(
           'http://localhost:8080/Plone/@portrait/username',
@@ -246,6 +298,139 @@ describe('middleware', () => {
             }),
           }),
         );
+      }
+    });
+  });
+
+  describe('fetchPloneContent', () => {
+    afterEach(() => {
+      delete config.utilities['client'];
+    });
+
+    it('fetches content and site and sets them in context', async () => {
+      const mockContent = {
+        data: { '@id': 'http://example.com/', title: 'Home' },
+      };
+      const mockSite = { data: { '@id': 'http://example.com/' } };
+      const getContentMock = vi.fn().mockResolvedValue(mockContent);
+      const getSiteMock = vi.fn().mockResolvedValue(mockSite);
+      config.settings.apiPath = 'http://example.com';
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () => ({
+          config: { token: undefined },
+          getContent: getContentMock,
+          getSite: getSiteMock,
+        }),
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await fetchPloneContent(
+        { request, params: {}, context, unstable_pattern: '/' },
+        nextMock,
+      );
+
+      expect(getContentMock).toHaveBeenCalledWith({
+        path: '/',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+      });
+      expect(getSiteMock).toHaveBeenCalled();
+      expect(context.get(ploneContentContext)).toEqual(mockContent);
+      expect(context.get(ploneSiteContext)).toEqual(mockSite);
+      expect(context.get(ploneClientContext)).toBeDefined();
+    });
+
+    it('fetches content for a specific path', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      config.settings.apiPath = 'http://example.com';
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () => ({
+          config: { token: undefined },
+          getContent: getContentMock,
+          getSite: getSiteMock,
+        }),
+      });
+      const request = new Request('http://example.com/test-content');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await fetchPloneContent(
+        {
+          request,
+          params: { '*': 'test-content' },
+          context,
+          unstable_pattern: '/test-content',
+        },
+        nextMock,
+      );
+
+      expect(getContentMock).toHaveBeenCalledWith({
+        path: '/test-content',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+      });
+    });
+
+    it('throws when content is not found', async () => {
+      const getContentMock = vi
+        .fn()
+        .mockRejectedValue({ data: undefined, status: 500 });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      config.settings.apiPath = 'http://example.com';
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () => ({
+          config: { token: undefined },
+          getContent: getContentMock,
+          getSite: getSiteMock,
+        }),
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      try {
+        await fetchPloneContent(
+          { request, params: {}, context, unstable_pattern: '/' },
+          nextMock,
+        );
+      } catch (err: any) {
+        expect(err.init.status).toEqual(500);
+      }
+    });
+
+    it('throws when site is not found', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi
+        .fn()
+        .mockRejectedValue({ data: undefined, status: 500 });
+      config.settings.apiPath = 'http://example.com';
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () => ({
+          config: { token: undefined },
+          getContent: getContentMock,
+          getSite: getSiteMock,
+        }),
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      try {
+        await fetchPloneContent(
+          { request, params: {}, context, unstable_pattern: '/' },
+          nextMock,
+        );
+      } catch (err: any) {
+        expect(err.init.status).toEqual(500);
       }
     });
   });

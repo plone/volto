@@ -20,11 +20,9 @@
 
 import { createPortal } from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
-import { useRouteLoaderData } from 'react-router';
-import type { RootLoader } from 'seven/app/root';
 import { Pluggable } from '../Pluggable';
-import { shouldShowToolbar } from '../../helpers';
-import toolbarStyles from './Toolbar.css?inline';
+import styles from './Toolbar.module.css';
+import toolbarInnerStyles from './Toolbar-inner.css?inline';
 import { useTranslation } from 'react-i18next';
 
 function ToolbarInner() {
@@ -56,13 +54,8 @@ function ToolbarInner() {
  * More info about Pluggables: https://6.docs.plone.org/volto/development/pluggables.html
  */
 const Toolbar = () => {
-  const rootData = useRouteLoaderData<RootLoader>('root');
   const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null);
   const hostRef = useRef<HTMLDivElement>(null);
-
-  const showToolbar = !!rootData?.content
-    ? shouldShowToolbar(rootData.content)
-    : false;
 
   useEffect(() => {
     if (!hostRef.current || hostRef.current.shadowRoot) return;
@@ -73,12 +66,11 @@ const Toolbar = () => {
   // The host element is always rendered so the ref is stable.  No content is
   // placed in the shadow root until we know the user can edit.
   return (
-    <div ref={hostRef} id="toolbar">
+    <div ref={hostRef} id="toolbar" className={styles.toolbar}>
       {shadowRoot &&
-        showToolbar &&
         createPortal(
           <>
-            <style>{toolbarStyles}</style>
+            <style>{toolbarInnerStyles}</style>
             <ToolbarInner />
           </>,
           shadowRoot,
