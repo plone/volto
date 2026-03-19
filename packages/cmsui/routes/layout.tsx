@@ -4,22 +4,24 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
   useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
-import { PluggablesProvider } from '@plone/layout/components/Pluggable';
-import Toolbar from '../components/Toolbar/Toolbar';
+import { PluggablesProvider, Plug } from '@plone/layout/components/Pluggable';
+import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
+import { shouldShowToolbar } from '@plone/layout/helpers';
 import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
-import TopNavBar from '../components/Layout/TopNavBar';
+import Settings from '@plone/components/icons/settings.svg?react';
 import { useAtom } from 'jotai';
 import { useLayoutEffect } from 'react';
 import { clsx } from 'clsx';
 import config from '@plone/registry';
 
-// eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/.plone/cmsui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
@@ -69,7 +71,8 @@ export async function loader() {
 export default function Index() {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
-  const [collapsed] = useAtom(sidebarAtom);
+  const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useAtom(sidebarAtom);
 
   useLayoutEffect(() => {
     document
@@ -96,24 +99,35 @@ export default function Index() {
       <body className="cmsui">
         {/* We pre-define here the @layer before tailwind does, adding our own layers in a React 19 managed <link> tag */}
         <link rel="stylesheet" href="/layers.css" precedence="first" />
-        <PluggablesProvider>
-          <div
-            className={clsx(
-              'grid transition-[grid-template-columns] duration-200 ease-linear',
-              {
-                'grid-cols-[80px_1fr_300px]': !collapsed,
-                'grid-cols-[80px_1fr_0px]': collapsed,
-              },
-            )}
-          >
+        <RACRouterProvider navigate={navigate}>
+          <PluggablesProvider>
+            <Plug pluggable="toolbar-bottom" id="button-settings">
+              <button
+                type="button"
+                aria-label="Settings"
+                onClick={() => setCollapsed((state) => !state)}
+              >
+                <Settings />
+              </button>
+            </Plug>
             <Toolbar />
-            <div id="main">
-              <TopNavBar />
-              <Outlet />
+            <div
+              className={clsx(
+                'grid transition-[grid-template-columns] duration-200 ease-linear',
+                {
+                  'ml-(--plone-toolbar-width)': shouldShowToolbar(content),
+                  'grid-cols-[1fr_300px]': !collapsed,
+                  'grid-cols-[1fr_0px]': collapsed,
+                },
+              )}
+            >
+              <div id="main">
+                <Outlet />
+              </div>
+              <Sidebar />
             </div>
-            <Sidebar />
-          </div>
-        </PluggablesProvider>
+          </PluggablesProvider>
+        </RACRouterProvider>
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -54,6 +54,13 @@
       "users": "Users",
       "groupMembership": "Group Membership",
       "groups": "Groups"
+    },
+    "blocksEditor": {
+      "blocksTab": "Blocks",
+      "contentTab": "Content"
+    },
+    "sidebar": {
+      "label": "Sidebar"
     }
   }
 }
