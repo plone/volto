@@ -1,3 +1,4 @@
+import { jwtDecode } from 'jwt-decode';
 import { data, createContext } from 'react-router';
 import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
@@ -10,6 +11,9 @@ export const ploneContentContext =
   createContext<Awaited<ReturnType<PloneClient['getContent']>>>();
 export const ploneSiteContext =
   createContext<Awaited<ReturnType<PloneClient['getSite']>>>();
+export const ploneUserContext = createContext<Awaited<
+  ReturnType<PloneClient['getUser']>
+> | null>(null);
 
 export const installServerMiddleware: Route.MiddlewareFunction = async (
   { request, context },
@@ -83,15 +87,31 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
 
   const path = `/${params['*'] || ''}`;
 
+  let userId = '';
+  if (token) {
+    try {
+      const decodedToken = jwtDecode<{
+        sub: string;
+        exp: number;
+        fullname: string | null;
+      }>(token);
+      userId = decodedToken.sub || '';
+    } catch {}
+  }
+
+  if (userId) expand.push('types');
+
   try {
-    const [content, site] = await Promise.all([
+    const [content, site, user] = await Promise.all([
       cli.getContent({ path, expand }),
       cli.getSite(),
+      userId ? cli.getUser({ userId }) : Promise.resolve(null),
     ]);
 
     context.set(ploneClientContext, cli);
     context.set(ploneContentContext, content);
     context.set(ploneSiteContext, site);
+    context.set(ploneUserContext, user);
   } catch (error: any) {
     throw data('Content Not Found', {
       status: typeof error.status === 'number' ? error.status : 500,
