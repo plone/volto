@@ -41,6 +41,119 @@ const createQuerystringRouter = (props: QuerystringWidgetStoryProps) =>
           </div>
         ),
       },
+      {
+        path: '/@queryStringOptions',
+        loader: () => ({
+          indexes: {
+            Creator: {
+              title: 'Creator',
+              description: 'The person that created an item',
+              enabled: true,
+              sortable: true,
+              group: 'Metadata',
+              operators: {
+                is: { title: 'Is', description: null, widget: null },
+              },
+            },
+            Title: {
+              title: 'Title',
+              description: "Text search of an item's title",
+              enabled: true,
+              sortable: false,
+              group: 'Text',
+              operators: {
+                has: { title: 'Contains', description: null, widget: null },
+              },
+            },
+            Subject: {
+              title: 'Tag',
+              description: 'Tags are used for organization of content',
+              enabled: true,
+              sortable: false,
+              group: 'Text',
+              operators: {
+                is: { title: 'Is', description: null, widget: null },
+              },
+            },
+            path: {
+              title: 'Location',
+              description: 'The location of an item',
+              enabled: true,
+              sortable: false,
+              group: 'Metadata',
+              operators: {
+                is: {
+                  title: 'Navigation path',
+                  description: null,
+                  widget: null,
+                },
+              },
+            },
+            modified: {
+              title: 'Modification date',
+              description: 'The time and date an item was last modified',
+              enabled: true,
+              sortable: true,
+              group: 'Dates',
+              operators: {
+                before: {
+                  title: 'Before date',
+                  description: null,
+                  widget: null,
+                },
+                after: { title: 'After date', description: null, widget: null },
+              },
+            },
+            created: {
+              title: 'Creation date',
+              description: 'The date an item was created',
+              enabled: true,
+              sortable: true,
+              group: 'Dates',
+              operators: {
+                before: {
+                  title: 'Before date',
+                  description: null,
+                  widget: null,
+                },
+                after: { title: 'After date', description: null, widget: null },
+              },
+            },
+            review_state: {
+              title: 'Review state',
+              description: "An item's workflow state (e.g.published)",
+              enabled: true,
+              sortable: true,
+              group: 'Metadata',
+              operators: {
+                is: { title: 'Is', description: null, widget: null },
+              },
+              values: {
+                published: { title: 'Published' },
+                pending: { title: 'Pending review' },
+                private: { title: 'Private' },
+              },
+            },
+            portal_type: {
+              title: 'Type',
+              description: "An item's type (e.g. Event)",
+              enabled: true,
+              sortable: false,
+              group: 'Metadata',
+              operators: {
+                is: { title: 'Is', description: null, widget: null },
+              },
+              values: {
+                Document: { title: 'Page' },
+                Folder: { title: 'Folder' },
+                Image: { title: 'Image' },
+                File: { title: 'File' },
+                Event: { title: 'Event' },
+              },
+            },
+          },
+        }),
+      },
     ],
     {
       initialEntries: ['/'],
@@ -161,34 +274,13 @@ export const WithPathCriterionAndDepth: Story = {
 };
 
 /**
- * QuerystringWidget in disabled state
- */
-export const Disabled: Story = {
-  render: (args) => <StoryRouter {...(args as any)} />,
-  args: {
-    isDisabled: true,
-    value: {
-      query: [
-        {
-          i: 'Creator',
-          o: 'is',
-          v: 'admin',
-        },
-      ],
-      sort_on: 'Title',
-      sort_order: 'ascending',
-      limit: 100,
-      b_size: 50,
-    } as QuerystringValue,
-  },
-};
-
-/**
- * QuerystringWidget with error state
+ * QuerystringWidget in error state
  */
 export const WithError: Story = {
   render: (args) => <StoryRouter {...(args as any)} />,
   args: {
+    label: 'Search Criteria',
+    description: 'Define search criteria to filter content',
     errorMessage: 'Please check your search criteria',
     value: {
       query: [

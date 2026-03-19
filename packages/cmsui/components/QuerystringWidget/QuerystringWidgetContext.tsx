@@ -4,7 +4,10 @@ import {
   useState,
   useCallback,
   useMemo,
+  useEffect,
 } from 'react';
+import { useFetcher } from 'react-router';
+import type { loader, BackendIndex } from '../../routes/queryStringOptions';
 
 /**
  * Represents a single query criterion
@@ -41,6 +44,52 @@ export interface FieldMetadata {
   valueOptions?: Array<{ value: string; label: string }>;
 }
 
+export function transformBackendIndexes(
+  backendIndexes: Record<string, BackendIndex>,
+): FieldMetadata[] {
+  return Object.entries(backendIndexes)
+    .filter(([_, index]) => index.enabled)
+    .map(([name, index]) => {
+      // Detect value type from operator widget and field title
+      const firstOperatorWidget = Object.values(index.operators)[0]?.widget;
+      let valueType: 'text' | 'date' | 'number' | 'select' = 'text';
+
+      if (
+        firstOperatorWidget?.includes('Date') ||
+        index.title.toLowerCase().includes('date')
+      ) {
+        valueType = 'date';
+      } else if (
+        firstOperatorWidget?.includes('Number') ||
+        firstOperatorWidget?.includes('Int')
+      ) {
+        valueType = 'number';
+      } else if (firstOperatorWidget?.includes('Selection')) {
+        valueType = 'select';
+      }
+
+      // Extract select options from values or vocabulary
+      let valueOptions: Array<{ value: string; label: string }> | undefined;
+      if (index.values && Object.keys(index.values).length > 0) {
+        valueOptions = Object.entries(index.values).map(([key, val]) => ({
+          value: key,
+          label: val.title,
+        }));
+      }
+
+      return {
+        name,
+        title: index.title,
+        operators: Object.entries(index.operators).map(([key, op]) => ({
+          value: key,
+          label: op.title,
+        })),
+        valueType,
+        valueOptions,
+      };
+    });
+}
+
 interface QuerystringContextType {
   availableFields: FieldMetadata[];
   availableSortFields: Array<{ value: string; label: string }>;
@@ -59,12 +108,10 @@ export interface QuerystringProviderProps {
   initialValue?: QuerystringValue;
   availableFields?: FieldMetadata[];
   availableSortFields?: Array<{ value: string; label: string }>;
+  backendIndexes?: Record<string, BackendIndex>;
   children: React.ReactNode;
 }
 
-/**
- * Default available fields based on typical Plone catalog indexes
- */
 const DEFAULT_FIELDS: FieldMetadata[] = [
   {
     name: 'Creator',
@@ -150,10 +197,31 @@ const DEFAULT_SORT_FIELDS = [
 
 export function QuerystringProvider({
   initialValue = {},
-  availableFields = DEFAULT_FIELDS,
+  availableFields,
   availableSortFields = DEFAULT_SORT_FIELDS,
+  backendIndexes,
   children,
 }: QuerystringProviderProps) {
+  const fetcher = useFetcher<typeof loader>();
+
+  // Fetch querystring options on mount
+  useEffect(() => {
+    if (fetcher.state === 'idle' && !fetcher.data) {
+      fetcher.load('/@queryStringOptions');
+    }
+  }, [fetcher]);
+
+  // Use transformed backend indexes from fetcher, prop, or defaults
+  const fetchedIndexes = (fetcher.data as any)?.indexes;
+  const indexes = backendIndexes || fetchedIndexes;
+
+  const fields = useMemo(
+    () =>
+      availableFields ||
+      (indexes ? transformBackendIndexes(indexes) : DEFAULT_FIELDS),
+    [availableFields, indexes],
+  );
+
   const [value, setValue] = useState<QuerystringValue>(initialValue);
 
   const addCriterion = useCallback(() => {
@@ -162,13 +230,13 @@ export function QuerystringProvider({
       query: [
         ...(prev.query ?? []),
         {
-          i: availableFields[0]?.name ?? '',
-          o: availableFields[0]?.operators?.[0]?.value ?? '',
+          i: fields[0]?.name ?? '',
+          o: fields[0]?.operators?.[0]?.value ?? '',
           v: '',
         },
       ],
     }));
-  }, [availableFields]);
+  }, [fields]);
 
   const removeCriterion = useCallback((index: number) => {
     setValue((prev) => ({
@@ -193,7 +261,7 @@ export function QuerystringProvider({
 
   const contextValue = useMemo(
     () => ({
-      availableFields,
+      availableFields: fields,
       availableSortFields,
       value,
       setValue,
@@ -203,7 +271,7 @@ export function QuerystringProvider({
     }),
     [
       value,
-      availableFields,
+      fields,
       availableSortFields,
       addCriterion,
       removeCriterion,

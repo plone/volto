@@ -1,6 +1,6 @@
 import { useId, useCallback, useMemo } from 'react';
 import { tv } from 'tailwind-variants';
-import type { BaseFormFieldProps } from '../TextField/TextField';
+import type { TextFieldProps as QuantaTextFieldProps } from '@plone/components/quanta';
 import {
   Description,
   fieldBorderStyles,
@@ -27,6 +27,11 @@ import {
   type FieldMetadata,
 } from './QuerystringWidgetContext';
 import { BinIcon, AddIcon } from '@plone/components/Icons';
+
+type BaseFormFieldProps = Pick<
+  QuantaTextFieldProps,
+  'label' | 'description' | 'errorMessage' | 'placeholder'
+>;
 
 const widgetStyles = tv({
   extend: focusRing,
@@ -90,10 +95,10 @@ function QueryCriterionRow({
   };
 
   return (
-    <div className="bg-quanta-slate-50 flex items-end gap-2 rounded-md p-3">
+    <div className="bg-quanta-slate-50 flex items-end gap-4 rounded-md p-4">
       <div className="flex-1">
         <Select
-          label={index === 0 ? 'List content if' : ''}
+          label={index === 0 ? 'List content if' : undefined}
           selectedKey={criterion.i}
           onSelectionChange={(key) => key && handleFieldChange(key as string)}
           isDisabled={disabled}
@@ -108,7 +113,7 @@ function QueryCriterionRow({
 
       <div className="flex-1">
         <Select
-          label={index === 0 ? 'Operator' : ''}
+          label={index === 0 ? 'Operator' : undefined}
           selectedKey={criterion.o}
           onSelectionChange={(key) =>
             key && handleOperatorChange(key as string)
@@ -126,7 +131,7 @@ function QueryCriterionRow({
       <div className="flex-1">
         {field?.valueType === 'date' ? (
           <TextField
-            label={index === 0 ? 'Value' : ''}
+            label={index === 0 ? 'Value' : undefined}
             type="date"
             value={criterion.v}
             onChange={(value: string) => handleValueChange(value)}
@@ -134,7 +139,7 @@ function QueryCriterionRow({
           />
         ) : (
           <TextField
-            label={index === 0 ? 'Value' : ''}
+            label={index === 0 ? 'Value' : undefined}
             value={String(criterion.v)}
             onChange={(value: string) => handleValueChange(value)}
             isDisabled={disabled}
@@ -403,11 +408,9 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
   );
 }
 
-/**
- * Outer component that connects to form data loading
- */
 export function QuerystringWidget(props: QuerystringWidgetProps) {
   useLoaderData<typeof editLoader>();
+
   const { label, description, errorMessage, ...rest } = props;
 
   return (
