@@ -27,7 +27,7 @@ export default function Image({
   className = '',
   ...imageProps
 }) {
-  const site = useSelector((state) => state.site.data);
+  const site = useSelector((state) => state.site?.data);
   const siteImageScales = site?.['plone.image_scales'] || {};
 
   if (!item && !src) return null;
