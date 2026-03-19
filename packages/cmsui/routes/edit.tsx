@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useRef } from 'react';
 import {
   data,
   redirect,
@@ -30,8 +31,8 @@ import {
 import BlocksEditor from '../components/BlockEditor/BlocksEditor';
 
 // import { ConsoleLog } from '../helpers/debug';
-import { formAtom, store } from './atoms';
-import { Provider } from 'jotai';
+import { formAtom } from './atoms';
+import { createStore, Provider } from 'jotai';
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
@@ -81,6 +82,8 @@ export default function Edit() {
   const { content, schema } = useLoaderData<typeof loader>();
   const { t } = useTranslation();
   const fetcher = useFetcher();
+  const storeRef = useRef(createStore());
+  const store = storeRef.current;
 
   const form = useAppForm({
     defaultValues: content,

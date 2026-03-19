@@ -83,6 +83,58 @@ test('Newly created title block is initialized from metadata title', async ({
   await expect(editorTitle).toHaveText('Seeded metadata title');
 });
 
+test('Reloading edit view with no stored title block does not trigger hydration mismatch', async ({
+  page,
+}) => {
+  const pageErrors: string[] = [];
+  const consoleErrors: string[] = [];
+
+  page.on('pageerror', (error) => {
+    pageErrors.push(error.message);
+  });
+
+  page.on('console', (message) => {
+    if (message.type() === 'error') {
+      consoleErrors.push(message.text());
+    }
+  });
+
+  await login(page);
+  await createContent(page, {
+    contentType: 'Document',
+    contentId: 'title-sync-reload-no-title-block',
+    contentTitle: 'Reload title',
+    transition: 'publish',
+    bodyModifier: (body) => ({
+      ...body,
+      blocks: {
+        '1a2b3c4d5e': {
+          '@type': 'slate',
+          value: [{ type: 'p', children: [{ text: '' }] }],
+        },
+      },
+      blocks_layout: {
+        items: ['1a2b3c4d5e'],
+      },
+    }),
+  });
+
+  await page.goto('/@@edit/title-sync-reload-no-title-block');
+  await waitForPlateEditorReady(page);
+  await page.reload();
+  await waitForPlateEditorReady(page);
+
+  const editorTitle = page.locator('[data-slate-editor] h1').first();
+  await expect(editorTitle).toHaveText('Reload title');
+
+  expect(
+    pageErrors.filter((message) => message.includes('Hydration failed')),
+  ).toEqual([]);
+  expect(
+    consoleErrors.filter((message) => message.includes('Hydration failed')),
+  ).toEqual([]);
+});
+
 test('Enter on title inserts a new empty paragraph before existing next block', async ({
   page,
 }) => {
