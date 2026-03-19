@@ -573,8 +573,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1(@types/react@18.3.28)(react@18.2.0)
       react-dates:
-        specifier: 21.5.1
-        version: 21.5.1(@babel/runtime@7.28.6)(moment@2.29.4)(react-dom@18.2.0(react@18.2.0))(react-with-direction@1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        specifier: 21.8.0
+        version: 21.8.0(@babel/runtime@7.28.6)(moment@2.29.4)(react-dom@18.2.0(react@18.2.0))(react-with-direction@1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       react-detect-click-outside:
         specifier: 1.1.1
         version: 1.1.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -10095,8 +10095,8 @@ packages:
     peerDependencies:
       react: '>= 16.3.0'
 
-  react-dates@21.5.1:
-    resolution: {integrity: sha512-1Lplx6T5U2Gu1vN1jh8Nrb+nyA5Uw7LdVVKGqjIoO9Kj6F3mU2budB6DlkxB5hAcjxk3KNzcSHPMYcWPUxvL0g==}
+  react-dates@21.8.0:
+    resolution: {integrity: sha512-PPriGqi30CtzZmoHiGdhlA++YPYPYGCZrhydYmXXQ6RAvAsaONcPtYgXRTLozIOrsQ5mSo40+DiA5eOFHnZ6xw==}
     peerDependencies:
       '@babel/runtime': ^7.0.0
       moment: ^2.18.1
@@ -22546,7 +22546,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  react-dates@21.5.1(@babel/runtime@7.28.6)(moment@2.29.4)(react-dom@18.2.0(react@18.2.0))(react-with-direction@1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
+  react-dates@21.8.0(@babel/runtime@7.28.6)(moment@2.29.4)(react-dom@18.2.0(react@18.2.0))(react-with-direction@1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.28.6
       airbnb-prop-types: 2.16.0(react@18.2.0)
