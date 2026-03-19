@@ -65,7 +65,7 @@ export default function Login() {
     | undefined;
 
   return (
-    <div className="mx-4 flex h-screen flex-1 flex-col justify-center">
+    <main className="mx-4 flex h-screen flex-1 flex-col justify-center">
       <div
         className={`
           flex flex-col items-center
@@ -114,6 +114,6 @@ export default function Login() {
           </Form>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

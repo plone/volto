@@ -34,13 +34,6 @@ export default function install(config: ConfigType) {
         path: 'login',
         children: [
           {
-            type: 'index',
-            file: '@plone/cmsui/routes/auth/login.tsx',
-            options: {
-              id: 'index-login',
-            },
-          },
-          {
             type: 'route',
             path: '*',
             file: '@plone/cmsui/routes/auth/login.tsx',
@@ -52,13 +45,6 @@ export default function install(config: ConfigType) {
         path: 'logout',
         children: [
           {
-            type: 'index',
-            file: '@plone/cmsui/routes/auth/logout.tsx',
-            options: {
-              id: 'index-logout',
-            },
-          },
-          {
             type: 'route',
             path: '*',
             file: '@plone/cmsui/routes/auth/logout.tsx',
@@ -69,13 +55,6 @@ export default function install(config: ConfigType) {
         type: 'prefix',
         path: '@@edit',
         children: [
-          {
-            type: 'index',
-            file: '@plone/cmsui/routes/edit.tsx',
-            options: {
-              id: 'index-edit',
-            },
-          },
           {
             type: 'route',
             path: '*',
@@ -105,13 +84,6 @@ export default function install(config: ConfigType) {
         type: 'prefix',
         path: 'test-layout',
         children: [
-          {
-            type: 'index',
-            file: '@plone/cmsui/routes/test.tsx',
-            options: {
-              id: 'index-test',
-            },
-          },
           {
             type: 'route',
             path: '*',

@@ -16,7 +16,6 @@ import { PluggablesProvider, Plug } from '@plone/layout/components/Pluggable';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
 import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
-import TopNavBar from '../components/Layout/TopNavBar';
 import Settings from '@plone/components/icons/settings.svg?react';
 import { useAtom } from 'jotai';
 import { clsx } from 'clsx';
@@ -116,7 +115,6 @@ export default function Index() {
               )}
             >
               <div id="main">
-                <TopNavBar />
                 <Outlet />
               </div>
               <Sidebar />
