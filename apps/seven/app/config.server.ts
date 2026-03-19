@@ -8,7 +8,7 @@ import applyAddonConfiguration from '../.plone/registry.loader';
 // eslint-disable-next-line import/no-unresolved
 import applyServerAddonConfiguration from '../.plone/registry.loader.server';
 
-import type { ListingBlockFormData } from '@plone/types';
+import type { ListingBlockFormData, QuerystringParameter } from '@plone/types';
 import type { LoaderUtilityArgs } from './config.types';
 
 export default function install() {
@@ -39,6 +39,52 @@ export default function install() {
           const results = await args.cli.querystringSearch(block.querystring);
           args.content.blocks[id].items = results.data.items;
         }
+      }
+    },
+  });
+
+  config.registerUtility({
+    name: 'SearchBlocksContentLoading',
+    type: 'rootContentSubRequest',
+    method: async (args: LoaderUtilityArgs) => {
+      const searchBlocks: {
+        id: string;
+        block: {
+          '@type': 'search';
+          query?: QuerystringParameter['query'];
+          querystring?: QuerystringParameter;
+          sort_on?: string;
+          sort_order?: string;
+          b_size?: string;
+          items?: unknown[];
+        };
+      }[] = Object.entries(args.content.blocks ?? {})
+        .filter(([, block]) => block['@type'] === 'search')
+        .map(([id, block]) => ({
+          id,
+          block: block as {
+            '@type': 'search';
+            query?: QuerystringParameter['query'];
+            querystring?: QuerystringParameter;
+            sort_on?: string;
+            sort_order?: string;
+            b_size?: string;
+            items?: unknown[];
+          },
+        }));
+
+      for (let i = 0; i < searchBlocks.length; i++) {
+        const { id, block } = searchBlocks[i];
+        const query = block.query ?? block.querystring?.query;
+        if (!query?.length) continue;
+
+        const results = await args.cli.querystringSearch({
+          query,
+          sort_on: block.sort_on ?? block.querystring?.sort_on,
+          sort_order: block.sort_order ?? block.querystring?.sort_order,
+          b_size: block.b_size ?? block.querystring?.b_size,
+        });
+        args.content.blocks[id].items = results.data.items;
       }
     },
   });
