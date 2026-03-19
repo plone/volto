@@ -1,3 +1,5 @@
+import { useId, useCallback, useMemo } from 'react';
+import { tv } from 'tailwind-variants';
 import type { BaseFormFieldProps } from '../TextField/TextField';
 import {
   Description,
@@ -7,8 +9,7 @@ import {
 } from '../Field/Field';
 import { useLoaderData } from 'react-router';
 import type { loader as editLoader } from '../../routes/edit';
-import { useId, useCallback, useMemo } from 'react';
-import { tv } from 'tailwind-variants';
+
 import { focusRing } from '../utils';
 import {
   Select,
@@ -410,17 +411,14 @@ export function QuerystringWidget(props: QuerystringWidgetProps) {
   const { label, description, errorMessage, ...rest } = props;
 
   return (
-    <QuerystringProvider
-      initialValue={props.value}
-      children={
-        <QuerystringWidgetComponent
-          label={label}
-          description={description}
-          errorMessage={errorMessage}
-          {...rest}
-        />
-      }
-    />
+    <QuerystringProvider initialValue={props.value}>
+      <QuerystringWidgetComponent
+        label={label}
+        description={description}
+        errorMessage={errorMessage}
+        {...rest}
+      />
+    </QuerystringProvider>
   );
 }
 
