@@ -23,6 +23,11 @@ describe('Toolbar Personal Tools component', () => {
       userSession: {
         token: jwt.sign({ sub: 'admin' }, 'secret'),
       },
+      site: {
+        data: {
+          'plone.image_scales': { preview: {}, listing: {} },
+        },
+      },
       content: {
         data: {
           '@type': 'Folder',
@@ -73,6 +78,11 @@ describe('Toolbar Personal Tools component', () => {
       },
       userSession: {
         token: jwt.sign({ sub: 'admin' }, 'secret'),
+      },
+      site: {
+        data: {
+          'plone.image_scales': { preview: {}, listing: {} },
+        },
       },
       content: {
         data: {
@@ -125,6 +135,11 @@ describe('Toolbar Personal Tools component', () => {
       },
       userSession: {
         token: jwt.sign({ sub: 'admin' }, 'secret'),
+      },
+      site: {
+        data: {
+          'plone.image_scales': { preview: {}, listing: {} },
+        },
       },
       content: {
         data: {

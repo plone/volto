@@ -26,6 +26,7 @@ const TeaserDefaultTemplate = (props) => {
 
   const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
+  const sizes = config.blocks.blocksConfig.teaser.getSizes(data);
 
   return (
     <div className={cx('block teaser', className)} style={style}>
@@ -64,6 +65,7 @@ const TeaserDefaultTemplate = (props) => {
                       alt=""
                       loading="lazy"
                       responsive={true}
+                      sizes={sizes}
                     />
                   </div>
                 )
