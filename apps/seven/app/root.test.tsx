@@ -32,7 +32,10 @@ async function renderStub() {
   await renderWithI18n(<Stub initialEntries={['/']} />);
 }
 
-const makeLoaderArgs = (request: Request, params: Record<string, string> = {}) =>
+const makeLoaderArgs = (
+  request: Request,
+  params: Record<string, string> = {},
+) =>
   ({
     request,
     params,
