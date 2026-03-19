@@ -90,6 +90,7 @@ export default function Index() {
     return null;
   }
   const { content, locale } = rootData;
+  const showToolbar = shouldShowToolbar(content);
 
   return (
     <html lang={content.language?.token || locale || 'en'} dir={i18n.dir()}>
@@ -102,7 +103,7 @@ export default function Index() {
       </head>
       <body
         className={clsx(routesBodyClasses, {
-          'with-toolbar': shouldShowToolbar(content),
+          'with-toolbar': showToolbar,
         })}
       >
         {/* We pre-define here the @layer before tailwind does, adding our own layers in a React 19 managed <link> tag */}
@@ -118,7 +119,7 @@ export default function Index() {
                 <Pencil />
               </Link>
             </Plug>
-            <Toolbar />
+            {showToolbar && <Toolbar />}
             <div id="main">
               <div className={clsx(styles.app, 'app-slot')}>
                 <header id="header" className="header-slot">
@@ -142,7 +143,6 @@ export default function Index() {
             </div>
           </PluggablesProvider>
         </RACRouterProvider>
-        <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />
         <Scripts />
       </body>

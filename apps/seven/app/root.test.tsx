@@ -3,6 +3,11 @@ import { render, screen } from '@testing-library/react';
 import { createRoutesStub, RouterContextProvider } from 'react-router';
 import config from '@plone/registry';
 import { Layout, ErrorBoundary, loader } from './root';
+import {
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
+} from './middleware.server';
 import { renderWithI18n } from '../tests/testHelpers';
 
 async function renderStub() {
@@ -36,129 +41,56 @@ describe('loader', () => {
   afterEach(() => {
     vi.restoreAllMocks();
     config.settings = {};
-    delete config.utilities['client'];
   });
 
-  it('should fetch the current content', async () => {
-    const getContentMock = vi.fn().mockResolvedValue({ data: {} });
-    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
-    config.settings.apiPath = 'http://example.com';
+  it('should return content and site from context', async () => {
     config.settings.defaultLanguage = 'en';
     config.settings.supportedLanguages = ['en'];
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
+    const mockContent = {
+      data: { '@id': 'http://example.com/', title: 'Home' },
+    };
+    const mockSite = { data: { '@id': 'http://example.com/' } };
     const request = new Request('http://example.com');
     const context = new RouterContextProvider();
+    context.set(ploneClientContext, {} as any);
+    context.set(ploneContentContext, mockContent as any);
+    context.set(ploneSiteContext, mockSite as any);
 
-    const data = await loader({ request, params: {}, context });
-
-    expect(getContentMock).toHaveBeenCalledWith({
-      path: '/',
-      expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+    const data = await loader({
+      request,
+      params: {},
+      context,
+      unstable_pattern: '/',
     });
-    expect(getSiteMock).toHaveBeenCalled();
+
     expect(data.locale).toBe('en');
+    expect(data.content).toBeDefined();
+    expect(data.site).toBeDefined();
   });
 
-  it("should fetch the current content when it's not the root", async () => {
-    const getContentMock = vi.fn().mockResolvedValue({ data: {} });
-    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
-    config.settings.apiPath = 'http://example.com';
+  it('should return content for a non-root path', async () => {
     config.settings.defaultLanguage = 'en';
     config.settings.supportedLanguages = ['en'];
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
+    const mockContent = {
+      data: { '@id': 'http://example.com/test-content', title: 'Test' },
+    };
+    const mockSite = { data: { '@id': 'http://example.com/' } };
     const request = new Request('http://example.com/test-content');
     const context = new RouterContextProvider();
+    context.set(ploneClientContext, {} as any);
+    context.set(ploneContentContext, mockContent as any);
+    context.set(ploneSiteContext, mockSite as any);
 
     const data = await loader({
       request,
       params: { '*': 'test-content' },
       context,
+      unstable_pattern: '/test-content',
     });
 
-    expect(getContentMock).toHaveBeenCalledWith({
-      path: '/test-content',
-      expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
-    });
-    expect(getSiteMock).toHaveBeenCalled();
     expect(data.locale).toBe('en');
-  });
-
-  it('should throw when the current content is not loaded', async () => {
-    const getContentMock = vi
-      .fn()
-      .mockRejectedValue({ data: undefined, status: 500 });
-    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
-    config.settings.apiPath = 'http://example.com';
-    config.settings.defaultLanguage = 'en';
-    config.settings.supportedLanguages = ['en'];
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
-    const request = new Request('http://example.com');
-    const context = new RouterContextProvider();
-
-    try {
-      await loader({ request, params: {}, context });
-    } catch (err: any) {
-      expect(err.init.status).toEqual(500);
-    }
-  });
-
-  it('should throw when the site is not loaded', async () => {
-    const getContentMock = vi.fn().mockResolvedValue({ data: {} });
-    const getSiteMock = vi
-      .fn()
-      .mockRejectedValue({ data: undefined, status: 500 });
-    config.settings.apiPath = 'http://example.com';
-    config.settings.defaultLanguage = 'en';
-    config.settings.supportedLanguages = ['en'];
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
-    const request = new Request('http://example.com');
-    const context = new RouterContextProvider();
-
-    try {
-      await loader({ request, params: {}, context });
-    } catch (err: any) {
-      expect(err.init.status).toEqual(500);
-    }
+    expect(data.content).toBeDefined();
+    expect(data.site).toBeDefined();
   });
 });
 
