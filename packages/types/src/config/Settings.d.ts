@@ -78,7 +78,7 @@ export interface SettingsConfig {
   persistentReducers: string[];
   initialReducersBlacklist: string[];
   asyncPropsExtenders: unknown[];
-  contentIcons: Record<string, React.ComponentType>;
+  contentIcons: Record<string, string>;
   loadables: unknown;
   lazyBundles: {
     [key: string]: string[];
@@ -97,7 +97,7 @@ export interface SettingsConfig {
   showTags: boolean;
   showRelatedItems: boolean;
   controlpanels: Controlpanel[];
-  controlPanelsIcons: Record<string, React.ComponentType>;
+  controlPanelsIcons: Record<string, string>;
   filterControlPanels: unknown;
   filterControlPanelsSchema: (schema: Controlpanel) => ControlPanelSchema;
   externalRoutes: {

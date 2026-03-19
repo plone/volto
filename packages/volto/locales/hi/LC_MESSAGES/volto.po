@@ -570,6 +570,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -1236,6 +1237,11 @@ msgstr "नई फ़ाइल अपलोड करने के लिए य
 msgid "Drop files here ..."
 msgstr "यहाँ फ़ाइलें ड्रॉप करें ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1493,6 +1499,11 @@ msgstr "इस आइटम के लिए मौजूदा वैकल्�
 msgid "Expand sidebar"
 msgstr "साइडबार का विस्तार करें"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "टूलबार फैलाएँ"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
@@ -1565,6 +1576,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "फ़ाइल का आकार"
 
@@ -1575,11 +1587,13 @@ msgstr "फ़ाइल दृश्य"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "फ़ाइल का नाम"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
@@ -2065,6 +2079,7 @@ msgstr "अंतिम टिप्पणी की तारीख"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "अंतिम संशोधन"
 
@@ -2819,6 +2834,11 @@ msgstr "प्लोन और पायथन द्वारा संचा�
 msgid "Preferences"
 msgstr "पसंद"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -2827,6 +2847,7 @@ msgstr "अपना कोड सुंदर बनाएं"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "पूर्वावलोकन"
 
@@ -2967,6 +2988,11 @@ msgstr "plone.api >= 2.0.3 के साथ संबंध संपादन�
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "संबंध अपडेट किए गए"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3316,6 +3342,11 @@ msgstr "पुनरावृत्ति में जोड़ने के �
 msgid "Select columns to show"
 msgstr "प्रदर्शित करने के लिए स्तंभ चुनें"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -3357,6 +3388,7 @@ msgid "Selection"
 msgstr "चयन"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -3971,6 +4003,7 @@ msgstr "समय"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -3987,6 +4020,11 @@ msgstr "शीर्षक"
 msgid "Title field error. Value not provided or already existing."
 msgstr "शीर्षक फील्ड त्रुटि। मान उपलब्ध नहीं है या पहले से मौजूद है।"
 
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
+
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
 msgid "Total active and non-active objects"
@@ -3999,6 +4037,7 @@ msgstr "कुल टिप्पणियाँ"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "अपलोड करने के लिए कुल फ़ाइलें: {totalFiles}"
 
@@ -4220,6 +4259,11 @@ msgstr "अपग्रेड कदम"
 msgid "Upload"
 msgstr "अपलोड"
 
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
+
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
 msgid "Upload a lead image in the 'Lead Image' content field."
@@ -4336,6 +4380,11 @@ msgstr "वीडियो"
 #: components/manage/Blocks/Video/schema
 msgid "Video URL"
 msgstr "वीडियो URL"
+
+#. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "VideoTitleDescription"
+msgstr ""
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4524,6 +4573,11 @@ msgstr "आप नीचे दिए गए फ़ॉर्म को भरक
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
 msgstr "आप नीचे दी गई सूची का उपयोग करके अपने आइटम को कौन देख सकता है और संपादित कर सकता है, इसे नियंत्रित कर सकते हैं।"
+
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4970,6 +5024,16 @@ msgstr "निजी"
 msgid "published"
 msgstr "प्रकाशित"
 
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
+
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -5295,6 +5359,7 @@ msgstr "हाँ"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 
@@ -5312,6 +5377,11 @@ msgstr "{id} की कंटेंट प्रकार"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} स्कीमा"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr ""
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

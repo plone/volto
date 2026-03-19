@@ -35,6 +35,7 @@ export { Radio, RadioGroup } from './components/RadioGroup/RadioGroup';
 export { RangeCalendar } from './components/RangeCalendar/RangeCalendar';
 export { SearchField } from './components/SearchField/SearchField';
 export { Select, SelectItem } from './components/Select/Select';
+export { Spinner } from './components/Spinner/Spinner';
 export { Slider } from './components/Slider/Slider';
 export { Switch } from './components/Switch/Switch';
 export { Table } from './components/Table/Table';
