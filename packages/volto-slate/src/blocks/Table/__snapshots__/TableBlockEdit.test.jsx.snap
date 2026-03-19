@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an edit table block component 1`] = `
 <div
   className="block table"
 >
   <table
-    className="ui table slate-table-block"
+    className="ui unstackable table slate-table-block"
   >
     <thead
       className=""
