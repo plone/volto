@@ -117,59 +117,60 @@ export default function SingleControlPanel() {
           <Back />
         </Button>
       </Plug>
-
-      <Container width="default" className="route-controlpanel">
-        <h1 className="documentFirstHeading">
-          {controlpanel.title || 'a control panel'}
-        </h1>
-        <form>
-          {schema.fieldsets.map((fieldset: ControlPanelFieldset) => (
-            <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
-              <AccordionItem id={fieldset.id} key={fieldset.id}>
-                <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
-                <AccordionPanel>
-                  {(fieldset.fields as DeepKeys<ControlPanelSchema>[]).map(
-                    (schemaField, index) => (
-                      <form.AppField
-                        name={schemaField}
-                        key={index}
-                        // eslint-disable-next-line react/no-children-prop
-                        children={(field) => (
-                          <field.Quanta
-                            {...schema.properties[schemaField]}
-                            className="mb-4"
-                            label={schema.properties[field.name].title}
-                            name={field.name}
-                            defaultValue={field.state.value}
-                            required={
-                              schema.required.indexOf(schemaField) !== -1
-                            }
-                            error={field.state.meta.errors}
-                            formAtom={formAtom}
-                          />
-                        )}
-                      />
-                    ),
-                  )}
-                </AccordionPanel>
-              </AccordionItem>
-            </Accordion>
-          ))}
-          <Plug pluggable="toolbar-top" id="edit-save-button">
-            <Button
-              aria-label={t('cmsui.save')}
-              type="submit"
-              // Trigger the TS form submission
-              onPress={() => form.handleSubmit()}
-              variant="primary"
-              accent
-              size="L"
-            >
-              <Checkbox />
-            </Button>
-          </Plug>
-        </form>
-      </Container>
+      <main>
+        <Container width="default" className="route-controlpanel">
+          <h1 className="documentFirstHeading">
+            {controlpanel.title || 'a control panel'}
+          </h1>
+          <form>
+            {schema.fieldsets.map((fieldset: ControlPanelFieldset) => (
+              <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
+                <AccordionItem id={fieldset.id} key={fieldset.id}>
+                  <AccordionItemTrigger>{fieldset.title}</AccordionItemTrigger>
+                  <AccordionPanel>
+                    {(fieldset.fields as DeepKeys<ControlPanelSchema>[]).map(
+                      (schemaField, index) => (
+                        <form.AppField
+                          name={schemaField}
+                          key={index}
+                          // eslint-disable-next-line react/no-children-prop
+                          children={(field) => (
+                            <field.Quanta
+                              {...schema.properties[schemaField]}
+                              className="mb-4"
+                              label={schema.properties[field.name].title}
+                              name={field.name}
+                              defaultValue={field.state.value}
+                              required={
+                                schema.required.indexOf(schemaField) !== -1
+                              }
+                              error={field.state.meta.errors}
+                              formAtom={formAtom}
+                            />
+                          )}
+                        />
+                      ),
+                    )}
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+            ))}
+            <Plug pluggable="toolbar-top" id="edit-save-button">
+              <Button
+                aria-label={t('cmsui.save')}
+                type="submit"
+                // Trigger the TS form submission
+                onPress={() => form.handleSubmit()}
+                variant="primary"
+                accent
+                size="L"
+              >
+                <Checkbox />
+              </Button>
+            </Plug>
+          </form>
+        </Container>
+      </main>
     </InitAtoms>
   );
 }

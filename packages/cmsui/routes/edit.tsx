@@ -16,17 +16,18 @@ import { flattenToAppURL, InitAtoms } from '@plone/helpers';
 import type { Content } from '@plone/types';
 import { Plug } from '@plone/layout/components/Pluggable';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
+import Close from '@plone/components/icons/close.svg?react';
 
 import { useAppForm } from '../components/Form/Form';
+import { Link } from 'react-aria-components';
 import {
   Accordion,
   AccordionItem,
   AccordionPanel,
   AccordionItemTrigger,
-  Button,
+  Tabs,
 } from '@plone/components/quanta';
-import BlockEditor from '../components/BlockEditor/BlockEditor';
-import SomersaultEditor from '../components/BlockEditor/SomersaultEditor';
+import BlocksEditor from '../components/BlockEditor/BlocksEditor';
 
 // import { ConsoleLog } from '../helpers/debug';
 import { formAtom, store } from './atoms';
@@ -96,72 +97,90 @@ export default function Edit() {
   return (
     <Provider store={store}>
       <InitAtoms atomValues={[[formAtom, content]]}>
-        <main className="mx-4 mt-8 flex h-screen flex-auto gap-8">
-          <div className="w-[50%]">
-            {config.settings.editorMode !== 'somersault' ? (
-              <BlockEditor formAtom={formAtom}></BlockEditor>
-            ) : (
-              <SomersaultEditor />
-            )}
-          </div>
-          <div className="flex w-[50%] flex-col">
-            <h1 className="mb-4 text-2xl font-bold">
-              {content.title} - {t('cmsui.edit')}
-            </h1>
-            <form>
-              {schema.fieldsets.map((fieldset) => (
-                <Accordion defaultExpandedKeys={['default']} key={fieldset.id}>
-                  <AccordionItem id={fieldset.id} key={fieldset.id}>
-                    <AccordionItemTrigger>
-                      {fieldset.title}
-                    </AccordionItemTrigger>
-                    <AccordionPanel>
-                      {(fieldset.fields as DeepKeys<Content>[]).map(
-                        (schemaField, index) => (
-                          <form.AppField
-                            name={schemaField}
-                            key={index}
-                            // eslint-disable-next-line react/no-children-prop
-                            children={(field) => (
-                              <field.Quanta
-                                {...schema.properties[schemaField]}
-                                className="mb-4"
-                                label={schema.properties[field.name].title}
-                                name={field.name}
-                                defaultValue={field.state.value}
-                                required={
-                                  schema.required.indexOf(schemaField) !== -1
-                                }
-                                error={field.state.meta.errors}
-                                formAtom={formAtom}
-                                value={field.state.value}
-                              />
-                            )}
-                          />
-                        ),
-                      )}
-                    </AccordionPanel>
-                  </AccordionItem>
-                </Accordion>
-              ))}
-              <Plug pluggable="toolbar-top" id="edit-save-button">
-                <Button
-                  aria-label={t('cmsui.save')}
-                  type="submit"
-                  // Trigger the TS form submission
-                  onPress={() => form.handleSubmit()}
-                  variant="primary"
-                  accent
-                  size="L"
-                >
-                  <Checkbox />
-                </Button>
-              </Plug>
-            </form>
-            {/* <div className="mt-4">
-              <ConsoleLog supressHydrationWarnings formAtom={formAtom} />
-            </div> */}
-          </div>
+        <main className="mx-4 mt-8 h-screen">
+          <Tabs
+            tabs={[
+              {
+                id: 'blocks',
+                title: t('cmsui.blocksEditor.blocksTab'),
+                content: <BlocksEditor />,
+              },
+              {
+                id: 'content',
+                title: t('cmsui.blocksEditor.contentTab'),
+                content: (
+                  <div className="flex flex-col">
+                    <h1 className="mb-4 text-2xl font-bold">
+                      {content.title} - {t('cmsui.edit')}
+                    </h1>
+                    <form>
+                      {schema.fieldsets.map((fieldset) => (
+                        <Accordion
+                          defaultExpandedKeys={['default']}
+                          key={fieldset.id}
+                        >
+                          <AccordionItem id={fieldset.id} key={fieldset.id}>
+                            <AccordionItemTrigger>
+                              {fieldset.title}
+                            </AccordionItemTrigger>
+                            <AccordionPanel>
+                              {(fieldset.fields as DeepKeys<Content>[]).map(
+                                (schemaField, index) => (
+                                  <form.AppField
+                                    name={schemaField}
+                                    key={index}
+                                    // eslint-disable-next-line react/no-children-prop
+                                    children={(field) => (
+                                      <field.Quanta
+                                        {...schema.properties[schemaField]}
+                                        className="mb-4"
+                                        label={
+                                          schema.properties[field.name].title
+                                        }
+                                        name={field.name}
+                                        defaultValue={field.state.value}
+                                        required={
+                                          schema.required.indexOf(
+                                            schemaField,
+                                          ) !== -1
+                                        }
+                                        error={field.state.meta.errors}
+                                        formAtom={formAtom}
+                                        value={field.state.value}
+                                      />
+                                    )}
+                                  />
+                                ),
+                              )}
+                            </AccordionPanel>
+                          </AccordionItem>
+                        </Accordion>
+                      ))}
+                    </form>
+                    {/* <div className="mt-4">
+                      <ConsoleLog supressHydrationWarnings formAtom={formAtom} />
+                    </div> */}
+                  </div>
+                ),
+              },
+            ]}
+          />
+          <Plug pluggable="toolbar-top" id="edit-save-button">
+            <button
+              aria-label={t('cmsui.save')}
+              type="submit"
+              // Trigger the TS form submission
+              onClick={() => form.handleSubmit()}
+              className="primary"
+            >
+              <Checkbox />
+            </button>
+          </Plug>
+          <Plug pluggable="toolbar-top" id="button-cancel">
+            <Link aria-label="Cancel" href="/">
+              <Close />
+            </Link>
+          </Plug>
         </main>
       </InitAtoms>
     </Provider>

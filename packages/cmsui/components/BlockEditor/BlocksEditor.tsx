@@ -19,7 +19,7 @@ const getDefaultSomersaultValue = (): Value => [
   },
 ];
 
-const SomersaultEditor = () => {
+const BlocksEditor = () => {
   const somersaultBlockAtom = blockAtomFamily(SOMERSAULT_KEY);
   const [somersaultBlock, setSomersaultBlock] = useAtom(somersaultBlockAtom);
 
@@ -58,4 +58,4 @@ const SomersaultEditor = () => {
   );
 };
 
-export default SomersaultEditor;
+export default BlocksEditor;

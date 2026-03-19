@@ -13,6 +13,9 @@
       "file": {
         "download": "Clicca per scaricare il file"
       }
+    },
+    "toolbar": {
+      "label": "Barra degli strumenti"
     }
   }
 }

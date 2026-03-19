@@ -35,7 +35,7 @@ export default function ControlPanels() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <>
+    <main>
       <Plug pluggable="toolbar-top" id="button-back">
         <Button aria-label="back" size="L" onPress={() => navigate('/')}>
           <Back />
@@ -46,6 +46,6 @@ export default function ControlPanels() {
         <ControlPanelsList controlpanels={controlpanels ?? []} />
         <VersionOverview {...systemInformation} />
       </Container>
-    </>
+    </main>
   );
 }

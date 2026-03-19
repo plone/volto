@@ -9,8 +9,7 @@ import {
   redirectIfLoggedInLoader,
   setAuthOnResponse,
 } from '@plone/react-router';
-import { Button } from '@plone/components/quanta';
-import { TextField } from '../../components/TextField/TextField';
+import { Button, TextField } from '@plone/components/quanta';
 import ploneSvg from '../../static/plone-white.svg';
 import ArrowRightSVG from '@plone/components/icons/arrow-right.svg?react';
 
@@ -66,7 +65,7 @@ export default function Login() {
     | undefined;
 
   return (
-    <div className="mx-4 flex h-screen flex-1 flex-col justify-center">
+    <main className="mx-4 flex h-screen flex-1 flex-col justify-center">
       <div
         className={`
           flex flex-col items-center
@@ -115,6 +114,6 @@ export default function Login() {
           </Form>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
