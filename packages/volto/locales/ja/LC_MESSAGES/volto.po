@@ -466,6 +466,8 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -509,6 +511,17 @@ msgstr ""
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ブロック"
+
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -842,6 +855,11 @@ msgstr ""
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
+msgstr ""
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
 msgstr ""
 
 #. Default: "Content type created"
@@ -1999,6 +2017,11 @@ msgstr ""
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr ""
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2299,6 +2322,11 @@ msgstr ""
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "地図URL"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2636,6 +2664,12 @@ msgstr "オブジェクトサイズ"
 msgid "Occurences"
 msgstr "回"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2721,6 +2755,11 @@ msgstr "ペースト"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "ブロックを貼り付け"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4710,6 +4749,11 @@ msgstr "一般"
 msgid "compare_to"
 msgstr ""
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4928,6 +4972,8 @@ msgstr "リスティング"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "読み込み中"
 
@@ -4987,6 +5033,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "状態なし"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels

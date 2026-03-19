@@ -465,6 +465,8 @@ msgstr "Beschikbare inhoudsregels"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -508,6 +510,17 @@ msgstr "Basis zoekopdracht"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Blok"
+
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -842,6 +855,11 @@ msgstr "Inhoudsregels van bovenliggende mappen"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr "Inhoud die linkt of refereert naar {title}"
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr ""
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1998,6 +2016,11 @@ msgstr "Ongeldige bron teaser"
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Het is niet toegestaan ​​om zowel het wachtwoord in te stellen als het verzoek om het wachtwoordherstelbericht per e-mail te verzenden. Je moet een van beide kiezen."
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2298,6 +2321,11 @@ msgstr "Kaarten"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "Kaarten URL"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2635,6 +2663,12 @@ msgstr "Object grootte"
 msgid "Occurences"
 msgstr "Gebeurtenissen"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2720,6 +2754,11 @@ msgstr "Plakken"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "Blokken plakken"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4709,6 +4748,11 @@ msgstr "Algemeen"
 msgid "compare_to"
 msgstr "Vergelijk met taal"
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4927,6 +4971,8 @@ msgstr "Lijst"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Laden"
 
@@ -4986,6 +5032,11 @@ msgstr "Nee"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "Geen werkstroom status"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
