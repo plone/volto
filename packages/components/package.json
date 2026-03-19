@@ -96,17 +96,17 @@
     "not dead"
   ],
   "dependencies": {
-    "@react-aria/utils": "^3.32.0",
-    "@react-spectrum/utils": "^3.12.10",
+    "@react-aria/utils": "catalog:",
+    "@react-spectrum/utils": "catalog:",
     "clsx": "^2.1.1",
     "react-aria": "catalog:",
     "react-aria-components": "catalog:",
-    "react-stately": "^3.43.0",
+    "react-stately": "catalog:",
     "tailwind-merge": "catalog:",
     "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "^1.0.7",
-    "@internationalized/date": "^3.10.1"
+    "@internationalized/date": "catalog:"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",

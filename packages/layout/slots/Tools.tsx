@@ -1,16 +1,7 @@
 import { Link } from 'react-aria-components';
-import { useLocation } from 'react-router';
 
 const HeaderTools = () => {
-  const location = useLocation();
-
   const links = [
-    {
-      id: '3',
-      label: 'edit',
-      icon: '🛠️',
-      url: `/@@edit${location.pathname.replace(/^\/$/, '')}`,
-    },
     {
       id: '1',
       label: 'login',
