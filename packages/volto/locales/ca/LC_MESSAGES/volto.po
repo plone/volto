@@ -1672,6 +1672,11 @@ msgstr "Corregeix relacions"
 msgid "Fixed width table cells"
 msgstr "Columnes d'amplada fixa"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Concentra't en"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2354,6 +2359,16 @@ msgstr "Mitjana"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Membresia actualitzada"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
