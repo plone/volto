@@ -2755,6 +2755,7 @@ msgstr "Blöcke einfügen"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Paste or search for link"
 msgstr ""
+
 #. Default: "Path"
 #: components/manage/Controlpanels/BlockType
 msgid "Path"
