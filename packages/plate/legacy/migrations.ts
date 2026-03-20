@@ -1,32 +1,41 @@
 import type { Value } from 'platejs';
-
 import { KEYS } from 'platejs';
+
 import {
-  migrateLegacyBoldInValue,
   migrateLegacyBold,
-} from './legacy-bold-plugin';
+  migrateLegacyBoldInValue,
+} from '../components/editor/plugins/legacy-bold-plugin';
 import {
   migrateLegacyItalic,
   migrateLegacyItalicInValue,
-} from './legacy-italic-plugin';
-import { migrateLegacyLinksInValueStatic } from './legacy-link-plugin';
+} from '../components/editor/plugins/legacy-italic-plugin';
+import { migrateLegacyLinksInValueStatic } from '../components/editor/plugins/legacy-link-plugin';
 import {
   migrateLegacyStrikethrough,
   migrateLegacyStrikethroughInValue,
-} from './legacy-strikethrough-plugin';
-import { migrateLegacyListsInValue } from './legacy-list-plugin';
-import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
+} from '../components/editor/plugins/legacy-strikethrough-plugin';
+import { migrateLegacyListsInValue } from '../components/editor/plugins/legacy-list-plugin';
+import {
+  applyNormalizedValue,
+  cloneValueToWritable,
+} from '../components/editor/plugins/legacy-utils';
 
-/**
- * Run legacy migrations on a value synchronously (useful for SSR).
- * Mutates the provided value; returns the same reference for convenience.
- */
+export {
+  migrateLegacyBold,
+  migrateLegacyBoldInValue,
+  migrateLegacyItalic,
+  migrateLegacyItalicInValue,
+  migrateLegacyLinksInValueStatic,
+  migrateLegacyStrikethrough,
+  migrateLegacyStrikethroughInValue,
+  migrateLegacyListsInValue,
+};
+
 export const normalizeLegacyValue = (value?: Value, linkType = KEYS.link) => {
   if (!value) return value;
 
   let mutableValue = cloneValueToWritable(value);
 
-  // These functions are idempotent and safe to run multiple times.
   mutableValue = migrateLegacyBoldInValue(mutableValue);
   mutableValue = migrateLegacyItalicInValue(mutableValue);
   mutableValue = migrateLegacyStrikethroughInValue(mutableValue);
@@ -45,5 +54,6 @@ export const legacyMigrations = {
   migrateLegacyStrikethrough,
   migrateLegacyStrikethroughInValue,
   migrateLegacyLinksInValueStatic,
+  migrateLegacyListsInValue,
   normalizeLegacyValue,
 };

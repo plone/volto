@@ -4,12 +4,13 @@
 import config from '@plone/registry';
 import PloneClient from '@plone/client';
 // eslint-disable-next-line import/no-unresolved
-import applyAddonConfiguration from '../.plone/registry.loader';
+import applyAddonConfiguration from '../../.plone/registry.loader';
 // eslint-disable-next-line import/no-unresolved
-import applyServerAddonConfiguration from '../.plone/registry.loader.server';
+import applyServerAddonConfiguration from '../../.plone/registry.loader.server';
 
 import type { ListingBlockFormData } from '@plone/types';
-import type { LoaderUtilityArgs } from './config.types';
+import type { LoaderUtilityArgs } from './types';
+import installMigrations from './server/migrations.server';
 
 export default function install() {
   config.settings.apiPath =
@@ -43,14 +44,13 @@ export default function install() {
     },
   });
 
+  installMigrations();
+
   config.settings.defaultLanguage = 'en';
   config.settings.supportedLanguages = ['en'];
 
   applyAddonConfiguration(config);
   applyServerAddonConfiguration(config);
-
-  // eslint-disable-next-line no-console
-  // console.log('API_PATH is:', config.settings.apiPath);
 
   return config;
 }

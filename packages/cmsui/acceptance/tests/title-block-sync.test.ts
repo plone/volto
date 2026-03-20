@@ -10,22 +10,29 @@ import {
 } from '@platejs/playwright';
 
 test('Title block and metadata title stay in sync', async ({ page }) => {
+  const initialTitle = 'Original title';
   await login(page);
   await createContent(page, {
     contentType: 'Document',
     contentId: 'title-sync-page',
-    contentTitle: 'Original title',
+    contentTitle: initialTitle,
     transition: 'publish',
     bodyModifier: (body) => ({
       ...body,
       blocks: {
-        '1a2b3c4d5e': {
-          '@type': 'slate',
-          value: [{ type: 'p', children: [{ text: '' }] }],
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: initialTitle }],
+            },
+            {
+              type: 'p',
+              children: [{ text: '' }],
+            },
+          ],
         },
-      },
-      blocks_layout: {
-        items: ['1a2b3c4d5e'],
       },
     }),
   });
@@ -49,22 +56,29 @@ test('Title block and metadata title stay in sync', async ({ page }) => {
 test('Newly created title block is initialized from metadata title', async ({
   page,
 }) => {
+  const initialTitle = 'Initial title';
   await login(page);
   await createContent(page, {
     contentType: 'Document',
     contentId: 'title-sync-no-title-block',
-    contentTitle: 'Initial title',
+    contentTitle: initialTitle,
     transition: 'publish',
     bodyModifier: (body) => ({
       ...body,
       blocks: {
-        '1a2b3c4d5e': {
-          '@type': 'slate',
-          value: [{ type: 'p', children: [{ text: '' }] }],
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: initialTitle }],
+            },
+            {
+              type: 'p',
+              children: [{ text: '' }],
+            },
+          ],
         },
-      },
-      blocks_layout: {
-        items: ['1a2b3c4d5e'],
       },
     }),
   });
@@ -86,6 +100,7 @@ test('Newly created title block is initialized from metadata title', async ({
 test('Reloading edit view with no stored title block does not trigger hydration mismatch', async ({
   page,
 }) => {
+  const initialTitle = 'Reload title';
   const pageErrors: string[] = [];
   const consoleErrors: string[] = [];
 
@@ -103,18 +118,24 @@ test('Reloading edit view with no stored title block does not trigger hydration 
   await createContent(page, {
     contentType: 'Document',
     contentId: 'title-sync-reload-no-title-block',
-    contentTitle: 'Reload title',
+    contentTitle: initialTitle,
     transition: 'publish',
     bodyModifier: (body) => ({
       ...body,
       blocks: {
-        '1a2b3c4d5e': {
-          '@type': 'slate',
-          value: [{ type: 'p', children: [{ text: '' }] }],
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: initialTitle }],
+            },
+            {
+              type: 'p',
+              children: [{ text: '' }],
+            },
+          ],
         },
-      },
-      blocks_layout: {
-        items: ['1a2b3c4d5e'],
       },
     }),
   });
@@ -164,9 +185,6 @@ test('Enter on title inserts a new empty paragraph before existing next block', 
             },
           ],
         },
-      },
-      blocks_layout: {
-        items: ['__somersault__'],
       },
     }),
   });

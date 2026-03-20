@@ -20,7 +20,7 @@ import {
   migrateLegacyLinksInValue,
   migrateLegacyLinksInValueStatic,
 } from './legacy-link-plugin';
-import { normalizeLegacyValue } from './normalize-legacy';
+import { normalizeLegacyValue } from '../../../legacy/migrations';
 
 describe('legacy bold migration helpers', () => {
   it('calls transforms to bold text and unwrap strong elements', () => {
