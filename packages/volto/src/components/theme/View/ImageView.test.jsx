@@ -8,7 +8,7 @@ import ImageView from './ImageView';
 
 const mockStore = configureStore();
 
-config.settings.defaultWidth = 940;
+config.settings.layout = { tabletBreakpoint: 768, defaultContainerWidth: 940 };
 
 test('renders an image view component', () => {
   const store = mockStore({

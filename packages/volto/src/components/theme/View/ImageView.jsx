@@ -20,7 +20,7 @@ const ImageView = ({ content }) => {
   const Image = config.getComponent({ name: 'Image' }).component;
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
-  const width = config.settings.defaultWidth;
+  const width = config.settings.layout.defaultContainerWidth;
 
   return (
     <Container className="view-wrapper">

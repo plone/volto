@@ -179,7 +179,11 @@ let config = {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
     },
-    defaultWidth: 940,
+    layout: {
+      // used to set `sizes` for images
+      tabletBreakpoint: 768,
+      defaultContainerWidth: 1200,
+    },
   },
   experimental: {
     addBlockButton: {
