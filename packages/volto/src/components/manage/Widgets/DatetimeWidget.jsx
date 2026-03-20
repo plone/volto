@@ -85,16 +85,13 @@ const DatetimeWidgetComponent = (props) => {
     noPastDates: propNoPastDates,
     isDisabled,
     formData,
-    error,
     required,
   } = props;
 
   const intl = useIntl();
   const lang = intl.locale;
 
-  // dateInputRef: only for aria-invalid (SingleDatePicker has no such prop)
-  const dateInputRef = useRef(null);
-  // timeInputRef: only for aria-required (rc-time-picker has no aria props)
+  // timeInputRef: for aria-required (rc-time-picker has no aria props)
   const timeInputRef = useRef(null);
 
   const [focused, setFocused] = useState(false);
@@ -169,22 +166,29 @@ const DatetimeWidgetComponent = (props) => {
   const datetime = getInternalValue();
   const isDateOnly = getDateOnly();
 
-  // aria-invalid for the date input — SingleDatePicker has no such prop
-  useEffect(() => {
-    if (!renderWidget) return;
-    const input = dateInputRef.current?.querySelector('input');
-    if (!input) return;
-
-    input.toggleAttribute('aria-invalid', error?.length > 0);
-  }, [error, renderWidget]);
-
-  // aria-required for the time input (rc-time-picker)
+  // aria-required for the time input (rc-time-picker is lazy-loaded,
+  // so MutationObserver is needed to catch when it mounts its input)
   useEffect(() => {
     if (!renderWidget || isDateOnly) return;
-    const input = timeInputRef.current?.querySelector('input');
-    if (!input) return;
 
-    input.toggleAttribute('aria-required', !!required);
+    function applyTimeAria() {
+      const input = timeInputRef.current?.querySelector('input');
+      if (!input) return;
+      if (required) input.setAttribute('aria-required', 'true');
+      else input.removeAttribute('aria-required');
+    }
+
+    applyTimeAria();
+
+    const observer = new MutationObserver(applyTimeAria);
+    if (timeInputRef.current) {
+      observer.observe(timeInputRef.current, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    return () => observer.disconnect();
   }, [required, isDateOnly, renderWidget]);
 
   return (
@@ -192,7 +196,6 @@ const DatetimeWidgetComponent = (props) => {
       {renderWidget && (
         <div className="date-time-widget-wrapper">
           <div
-            ref={dateInputRef}
             className={cx('ui input date-input', {
               'default-date': isDefault,
             })}
