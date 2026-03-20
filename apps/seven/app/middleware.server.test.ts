@@ -336,7 +336,7 @@ describe('middleware', () => {
 
   describe('fetchPloneContent', () => {
     afterEach(() => {
-      delete config.utilities['client'];
+      delete config.utilities['ploneClient'];
     });
 
     it('fetches content and site and sets them in context', async () => {
