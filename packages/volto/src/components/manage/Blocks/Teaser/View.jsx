@@ -4,9 +4,9 @@ import { GridContext } from '@plone/volto/components/manage/Blocks/Grid/context'
 
 const TeaserView = (props) => {
   return (
-    <GridContext value={1}>
+    <GridContext.Provider value={1}>
       <TeaserBody {...props} />
-    </GridContext>
+    </GridContext.Provider>
   );
 };
 

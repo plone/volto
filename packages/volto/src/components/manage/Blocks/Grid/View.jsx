@@ -30,7 +30,7 @@ const GridBlockView = (props) => {
     >
       {data.headline && <h2 className="headline">{data.headline}</h2>}
 
-      <GridContext value={columns.length}>
+      <GridContext.Provider value={columns.length}>
         <Grid stackable stretched columns={columns.length}>
           <RenderBlocks
             {...props}
@@ -42,7 +42,7 @@ const GridBlockView = (props) => {
             isContainer
           />
         </Grid>
-      </GridContext>
+      </GridContext.Provider>
     </div>
   );
 };
