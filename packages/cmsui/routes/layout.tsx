@@ -15,8 +15,6 @@ import type { RootLoader } from 'seven/app/root';
 import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
-import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
-import { useAtom } from 'jotai';
 import { clsx } from 'clsx';
 import config from '@plone/registry';
 
@@ -70,8 +68,6 @@ export default function Index() {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [collapsed, setCollapsed] = useAtom(sidebarAtom);
 
   if (!rootData) {
     return null;
@@ -79,6 +75,7 @@ export default function Index() {
   const { content, locale } = rootData;
   const contentLanguage = (content?.language as { token?: string } | undefined)
     ?.token;
+  const showToolbar = shouldShowToolbar(content);
 
   return (
     <html lang={contentLanguage || locale || 'en'} dir={i18n.dir()}>
@@ -94,21 +91,13 @@ export default function Index() {
         <link rel="stylesheet" href="/layers.css" precedence="first" />
         <RACRouterProvider navigate={navigate}>
           <PluggablesProvider>
-            <Toolbar />
+            {showToolbar && <Toolbar />}
             <div
-              className={clsx(
-                'grid transition-[grid-template-columns] duration-200 ease-linear',
-                {
-                  'ml-(--plone-toolbar-width)': shouldShowToolbar(content),
-                  'grid-cols-[1fr_300px]': !collapsed,
-                  'grid-cols-[1fr_0px]': collapsed,
-                },
-              )}
+              className={clsx({
+                'ml-(--plone-toolbar-width)': showToolbar,
+              })}
             >
-              <div id="main">
-                <Outlet />
-              </div>
-              <Sidebar />
+              <Outlet />
             </div>
           </PluggablesProvider>
         </RACRouterProvider>

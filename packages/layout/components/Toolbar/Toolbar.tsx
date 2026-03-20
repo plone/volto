@@ -20,10 +20,10 @@
 
 import { createPortal } from 'react-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import styles from './Toolbar.module.css';
+import toolbarInnerStyles from './Toolbar-inner.css?inline';
 import { useLocation, useRouteLoaderData } from 'react-router';
 import type { RootLoader } from 'seven/app/root';
-import { shouldShowToolbar } from '../../helpers';
-import toolbarStyles from './Toolbar.css?inline';
 import { useTranslation } from 'react-i18next';
 import { UNSAFE_PortalProvider } from 'react-aria';
 import SlotRenderer from '../../slots/SlotRenderer';
@@ -74,10 +74,6 @@ const Toolbar = () => {
   const portalContainerRef = useRef<HTMLDivElement>(null);
   const getContainer = useCallback(() => portalContainerRef.current, []);
 
-  const showToolbar = !!rootData?.content
-    ? shouldShowToolbar(rootData.content)
-    : false;
-
   useEffect(() => {
     if (!hostRef.current || hostRef.current.shadowRoot) return;
     const root = hostRef.current.attachShadow({ mode: 'open' });
@@ -89,9 +85,8 @@ const Toolbar = () => {
   // The host element is always rendered so the ref is stable.  No content is
   // placed in the shadow root until we know the user can edit.
   return (
-    <div ref={hostRef} id="toolbar">
+    <div ref={hostRef} id="toolbar" className={styles.toolbar}>
       {shadowRoot &&
-        showToolbar &&
         createPortal(
           /*
             UNSAFE_PortalProvider tells React Aria where to render
@@ -103,9 +98,8 @@ const Toolbar = () => {
             where they inherit the toolbar's CSS.
           */
           <UNSAFE_PortalProvider getContainer={getContainer}>
-            <style>{toolbarStyles}</style>
-            {/* Using content! is safe here, because the showToolbar
-            check already rules out content being undefined */}
+            <style>{toolbarInnerStyles}</style>
+            {/* content! is safe because the Toolbar won't get rendered when content is undefined */}
             <ToolbarInner content={content!} />
             <div ref={portalContainerRef} id="toolbar-portals" />
           </UNSAFE_PortalProvider>,

@@ -24,6 +24,7 @@ import { shouldShowToolbar } from '@plone/layout/helpers';
 import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import clsx from 'clsx';
 import config from '@plone/registry';
+
 import styles from '@plone/layout/slots/App/App.module.css';
 import stylesheet from 'seven/.plone/publicui.css?url';
 
@@ -85,6 +86,7 @@ export default function Index() {
     return null;
   }
   const { content, locale } = rootData;
+  const showToolbar = shouldShowToolbar(content);
 
   return (
     <html lang={content.language?.token || locale || 'en'} dir={i18n.dir()}>
@@ -97,14 +99,14 @@ export default function Index() {
       </head>
       <body
         className={clsx(routesBodyClasses, {
-          'with-toolbar': shouldShowToolbar(content),
+          'with-toolbar': showToolbar,
         })}
       >
         {/* We pre-define here the @layer before tailwind does, adding our own layers in a React 19 managed <link> tag */}
         <link rel="stylesheet" href="/layers.css" precedence="first" />
         <RACRouterProvider navigate={navigate}>
           <PluggablesProvider>
-            <Toolbar />
+            {showToolbar && <Toolbar />}
             <div id="main">
               <div className={clsx(styles.app, 'app-slot')}>
                 <header id="header" className="header-slot">
@@ -128,7 +130,6 @@ export default function Index() {
             </div>
           </PluggablesProvider>
         </RACRouterProvider>
-        <div role="complementary" aria-label="Sidebar" id="sidebar" />
         <ScrollRestoration />
         <Scripts />
       </body>

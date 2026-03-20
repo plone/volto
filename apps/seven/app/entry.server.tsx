@@ -1,6 +1,10 @@
 import { PassThrough } from 'node:stream';
 
-import type { AppLoadContext, EntryContext } from 'react-router';
+import type {
+  // AppLoadContext,
+  EntryContext,
+  RouterContextProvider,
+} from 'react-router';
 import { createReadableStreamFromReadable } from '@react-router/node';
 import { ServerRouter } from 'react-router';
 import { isbot } from 'isbot';
@@ -20,9 +24,9 @@ export default async function handleRequest(
   responseStatusCode: number,
   responseHeaders: Headers,
   routerContext: EntryContext,
-  loadContext: AppLoadContext,
+  // loadContext: AppLoadContext,
   // If you have middleware enabled:
-  // loadContext: unstable_RouterContextProvider
+  loadContext: RouterContextProvider,
 ) {
   // Ensure requests from bots and SPA Mode renders wait for all content to load before responding
   // https://react.dev/reference/react-dom/server/renderToPipeableStream#waiting-for-all-content-to-load-for-crawlers-and-static-generation
