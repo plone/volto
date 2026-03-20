@@ -1,12 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import config from '@plone/registry';
 import { action } from './createContent';
+import { RouterContextProvider } from 'react-router';
+import { ploneClientContext } from 'seven/app/middleware.server';
 
 describe('createContent API route action', () => {
   afterEach(() => {
     vi.restoreAllMocks();
     config.settings = {};
-    delete config.utilities['ploneClient'];
   });
 
   it('calls createContent with wildcard path and returns response data', async () => {
@@ -18,16 +19,10 @@ describe('createContent API route action', () => {
     });
 
     config.settings.apiPath = 'http://example.com';
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        createContent: createContentMock,
-      }),
-    });
+    const context = new RouterContextProvider();
+    context.set(ploneClientContext, {
+      createContent: createContentMock,
+    } as any);
 
     const request = new Request('http://example.com/@createContent/folder', {
       method: 'POST',
@@ -51,8 +46,9 @@ describe('createContent API route action', () => {
     const response = await action({
       request,
       params: { '*': 'folder' },
-      context: {},
-    } as any);
+      context,
+      unstable_pattern: '/@createContent/folder',
+    });
 
     expect(createContentMock).toHaveBeenCalledWith({
       path: '/folder',

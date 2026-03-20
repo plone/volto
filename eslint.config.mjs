@@ -84,6 +84,9 @@ export default tseslint.config(
           project: ['packages/*/tsconfig.json', 'apps/seven/tsconfig.json'],
           alwaysTryTypes: true,
         },
+        alias: {
+          map: [['seven', './apps/seven']],
+        },
         node: true,
       },
     },
@@ -181,8 +184,7 @@ export default tseslint.config(
       'packages/registry/docs',
       '**/.react-router/*',
       '**/+types/*',
-      '**/registry.loader.js',
-      '**/registry.loader.server.js',
+      '**/.plone/*',
     ],
   },
 );
