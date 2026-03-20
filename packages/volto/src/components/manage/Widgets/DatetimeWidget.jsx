@@ -91,7 +91,11 @@ const DatetimeWidgetComponent = (props) => {
 
   const intl = useIntl();
   const lang = intl.locale;
-  const containerRef = useRef(null);
+
+  // dateInputRef: only for aria-invalid (SingleDatePicker has no such prop)
+  const dateInputRef = useRef(null);
+  // timeInputRef: only for aria-required (rc-time-picker has no aria props)
+  const timeInputRef = useRef(null);
 
   const [focused, setFocused] = useState(false);
   const [isDefault, setIsDefault] = useState(false);
@@ -165,87 +169,30 @@ const DatetimeWidgetComponent = (props) => {
   const datetime = getInternalValue();
   const isDateOnly = getDateOnly();
 
+  // aria-invalid for the date input — SingleDatePicker has no such prop
   useEffect(() => {
-    // don't do nothing if the widget is not rendered
     if (!renderWidget) return;
+    const input = dateInputRef.current?.querySelector('input');
+    if (!input) return;
 
-    // Selectors for the date field (react-dates)
-    const dateSelectors = [
-      `#${id}-date`,
-      `#${id}-date .DateInput_input`,
-      `#${id}-date input`,
-      `#${id}`,
-      `.DateInput_input#${id}`,
-    ];
+    input.toggleAttribute('aria-invalid', error?.length > 0);
+  }, [error, renderWidget]);
 
-    // Selectors for the time field (rc-time-picker)
-    const timeSelectors = [
-      `#${id}-time input`,
-      `#${id}-time .rc-time-picker-input`,
-      `.rc-time-picker-input#${id}-time`,
-      `.time-input #${id}-time`,
-      `.time-input .rc-time-picker-input`,
-    ];
+  // aria-required for the time input (rc-time-picker)
+  useEffect(() => {
+    if (!renderWidget || isDateOnly) return;
+    const input = timeInputRef.current?.querySelector('input');
+    if (!input) return;
 
-    function findInput(selectors) {
-      for (let selector of selectors) {
-        const item = containerRef.current?.querySelector(selector);
-        if (item && item.tagName === 'INPUT') return item;
-        if (item && item.querySelector) {
-          const inner = item.querySelector('input');
-          if (inner) return inner;
-        }
-      }
-      return null;
-    }
-
-    // Apply aria-required to the date input and, if required, also to the time input
-    function applyAria() {
-      const dateInput = findInput(dateSelectors);
-      if (!dateInput) return;
-
-      // Set or remove aria-required on the date input
-      if (required) dateInput.setAttribute('aria-required', 'true');
-      else dateInput.removeAttribute('aria-required');
-
-      // For date-only widgets, only the date input is relevant for required/validation states
-      if (!isDateOnly) {
-        const timeInput = findInput(timeSelectors);
-        if (timeInput) {
-          if (required) timeInput.setAttribute('aria-required', 'true');
-          else timeInput.removeAttribute('aria-required');
-        }
-      }
-
-      // Set or remove aria-invalid based on the presence of errors
-      if (error?.length > 0) {
-        dateInput.setAttribute('aria-invalid', 'true');
-      } else {
-        dateInput.removeAttribute('aria-invalid');
-      }
-    }
-
-    // Apply immediately
-    applyAria();
-
-    // Observe DOM changes since rc-time-picker and react-dates can recreate inputs
-    const observer = new MutationObserver(() => applyAria());
-    if (containerRef.current) {
-      observer.observe(containerRef.current, {
-        childList: true,
-        subtree: true,
-      });
-    }
-
-    // Cleanup on unmount
-    return () => observer.disconnect();
-  }, [required, id, isDateOnly, renderWidget, error]);
+    input.toggleAttribute('aria-required', !!required);
+  }, [required, isDateOnly, renderWidget]);
 
   return (
     <FormFieldWrapper {...props}>
       {renderWidget && (
-        <div className="date-time-widget-wrapper" ref={containerRef}>
+        <div className="date-time-widget-wrapper">
           <div
+            ref={dateInputRef}
             className={cx('ui input date-input', {
               'default-date': isDefault,
             })}
@@ -259,6 +206,7 @@ const DatetimeWidgetComponent = (props) => {
               {...(noPastDates ? {} : { isOutsideRange: () => false })}
               onFocusChange={onFocusChange}
               noBorder
+              required={required}
               displayFormat={moment.default
                 .localeData(toBackendLang(lang))
                 .longDateFormat('L')}
@@ -270,6 +218,7 @@ const DatetimeWidgetComponent = (props) => {
           </div>
           {!isDateOnly && (
             <div
+              ref={timeInputRef}
               className={cx('ui input time-input', {
                 'default-date': isDefault,
               })}
