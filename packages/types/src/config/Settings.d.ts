@@ -2,6 +2,7 @@ import { Content } from '../content';
 import { BlocksFormData } from '../blocks/index';
 import { ConfigData } from '.';
 import { Controlpanel, ControlPanelSchema } from '..';
+import type { ComponentType, SVGProps } from 'react';
 
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
@@ -27,6 +28,10 @@ type styleClassNameExtendersType = ({
   data: BlocksFormData;
   classNames: string[];
 }) => string[];
+
+type contentIconsType = {
+  [key: string]: ComponentType<SVGProps<SVGSVGElement>>;
+};
 
 export type PlateConfig = {
   editorConfig: {
@@ -78,7 +83,7 @@ export interface SettingsConfig {
   persistentReducers: string[];
   initialReducersBlacklist: string[];
   asyncPropsExtenders: unknown[];
-  contentIcons: Record<string, React.ComponentType>;
+  contentIcons: contentIconsType;
   loadables: unknown;
   lazyBundles: {
     [key: string]: string[];
