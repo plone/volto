@@ -37,6 +37,7 @@ describe('Text Block Tests', () => {
     cy.clickSlateButton('Add link');
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://google.com{enter}',
+      { force: true },
     );
     cy.toolbarSave();
 
@@ -62,6 +63,7 @@ describe('Text Block Tests', () => {
     cy.clickSlateButton('Add link');
     cy.get('.slate-toolbar .link-form-container input').type(
       'mailto:hello@example.com{enter}',
+      { force: true },
     );
     cy.toolbarSave();
 

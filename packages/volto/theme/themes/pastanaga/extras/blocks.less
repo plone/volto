@@ -741,8 +741,10 @@ div.image-upload-widget-image {
 }
 
 .link-form-container {
+  width: 300px !important;
+
   .inline.field .wrapper {
-    width: 270px; // needed to ensure placeholder shows and buttons are aligned to the right
+    width: 300px; // needed to ensure placeholder shows and buttons are aligned to the right
     min-height: initial; // overrides .input.field .wrapper
     justify-content: space-between;
     border-bottom: none;
@@ -754,8 +756,18 @@ div.image-upload-widget-image {
     margin-left: 0 !important; // overrides .block .toolbar-inner .ui.input
   }
 
+  .nav-button {
+    flex: 0 0 auto !important;
+  }
+
   .ui.buttons {
     width: auto; // for Add Link popup button to be aligned to the right
+  }
+
+  .react-select-container {
+    position: static;
+    min-width: 0;
+    flex: 1 1 auto;
   }
 
   button {
@@ -771,6 +783,122 @@ div.image-upload-widget-image {
       outline: none;
     }
   }
+
+  .react-select-container .link-form-select__control {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    box-shadow: none;
+    cursor: text;
+    font-size: 14px;
+  }
+
+  .react-select-container .link-form-select__menu-list {
+    max-height: unset;
+    padding-block: 0;
+  }
+
+  .react-select-container .link-form-select__placeholder {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .react-select-container .link-form-select__option {
+    display: flex;
+    min-height: 30px;
+    align-items: center;
+    padding: 6px 10px;
+    padding-left: 15px;
+    background-color: null;
+    color: #4a4a4a;
+    font-size: 14px;
+  }
+
+  .react-select-container .link-form-select__option:hover,
+  .react-select-container .link-form-select__option--is-focused {
+    background-color: #f4f5f7;
+  }
+
+  .react-select-container .link-form-select__no-options-message {
+    font-size: 14px;
+  }
+}
+
+.link-searchable-form-container {
+  width: 100%;
+
+  .wrapper {
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
+}
+
+.link-form-select__menu-portal {
+  z-index: 1200 !important;
+  width: 305px !important;
+  margin-left: -30px;
+}
+
+.link-form-select__menu {
+  width: 305px !important;
+  border-bottom: 1px solid #c7d5d8;
+  margin-top: 0 !important;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.link-suggestion-container {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  grid-template-columns: 24px minmax(0, 1fr);
+}
+
+.link-suggestion-preview {
+  display: flex;
+  overflow: hidden;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  .icon-wrapper {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.link-suggestion-content {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.link-suggestion-label {
+  overflow: hidden;
+  color: #333;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-suggestion-path {
+  overflow: hidden;
+  color: #888;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-form-container .wrapper {
+  display: flex;
+  align-items: center;
 }
 
 .blocks-chooser {
