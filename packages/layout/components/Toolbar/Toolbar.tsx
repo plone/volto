@@ -29,7 +29,11 @@ import { UNSAFE_PortalProvider } from 'react-aria';
 import SlotRenderer from '../../slots/SlotRenderer';
 import type { Content } from '@plone/types';
 
-function ToolbarInner({ content }: { content: Content }) {
+interface ToolbarInnerProps {
+  content: Content;
+}
+
+function ToolbarInner({ content }: ToolbarInnerProps) {
   const { t } = useTranslation();
 
   const location = useLocation();
@@ -80,7 +84,9 @@ const Toolbar = () => {
     setShadowRoot(root);
   }, []);
 
-  const content = rootData?.content;
+  // The ! appended to rootData tells TypeScript to ignore rootData possibly being undefined.
+  // Since the Toolbar is not rendered when rootData is undefined, we can safely ignore.
+  const content = rootData!.content;
 
   // The host element is always rendered so the ref is stable.  No content is
   // placed in the shadow root until we know the user can edit.
@@ -88,19 +94,16 @@ const Toolbar = () => {
     <div ref={hostRef} id="toolbar" className={styles.toolbar}>
       {shadowRoot &&
         createPortal(
-          /*
-            UNSAFE_PortalProvider tells React Aria where to render
-            overlay elements (popovers, menus, tooltips). By default
+          /* UNSAFE_PortalProvider tells React Aria where to render
+            overlay elements (popovers, menus, tooltips). By default,
             React Aria appends them to document.body, which is outside
             the shadow DOM, so they would miss the toolbar's scoped
             styles and be invisible or unstyled. Pointing getContainer
             at #toolbar-portals keeps overlays inside the shadow root
-            where they inherit the toolbar's CSS.
-          */
+            where they inherit the toolbar's CSS. */
           <UNSAFE_PortalProvider getContainer={getContainer}>
             <style>{toolbarInnerStyles}</style>
-            {/* content! is safe because the Toolbar won't get rendered when content is undefined */}
-            <ToolbarInner content={content!} />
+            <ToolbarInner content={content} />
             <div ref={portalContainerRef} id="toolbar-portals" />
           </UNSAFE_PortalProvider>,
           shadowRoot,
