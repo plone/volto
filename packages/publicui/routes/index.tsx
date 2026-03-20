@@ -16,19 +16,14 @@ import {
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import {
-  Link,
-  RouterProvider as RACRouterProvider,
-} from 'react-aria-components';
+import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
-import Pencil from '@plone/components/icons/pencil.svg?react';
 import SlotRenderer from '@plone/layout/slots/SlotRenderer';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
-import { Plug, PluggablesProvider } from '@plone/layout/components/Pluggable';
+import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import clsx from 'clsx';
 import config from '@plone/registry';
-
 import styles from '@plone/layout/slots/App/App.module.css';
 import stylesheet from 'seven/.plone/publicui.css?url';
 
@@ -109,15 +104,6 @@ export default function Index() {
         <link rel="stylesheet" href="/layers.css" precedence="first" />
         <RACRouterProvider navigate={navigate}>
           <PluggablesProvider>
-            <Plug pluggable="toolbar-top" id="button-edit">
-              <Link
-                className="primary"
-                aria-label="Edit"
-                href={`/@@edit${location.pathname.replace(/^\/$/, '')}`}
-              >
-                <Pencil />
-              </Link>
-            </Plug>
             <Toolbar />
             <div id="main">
               <div className={clsx(styles.app, 'app-slot')}>

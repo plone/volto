@@ -1,3 +1,6 @@
+@import '@plone/components/src/styles/basic/main.css';
+@import '@plone/components/src/styles/quanta/main.css';
+
 .toolbar {
   position: fixed;
   z-index: 10;

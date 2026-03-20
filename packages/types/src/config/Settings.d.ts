@@ -128,4 +128,5 @@ export interface SettingsConfig {
   cssLayers: string[];
   hideBreadcrumbs: string[]; // Content types for which to hide breadcrumbs
   plate: PlateSettings | Record<string, never>;
+  mostUsedTypes: string[];
 }

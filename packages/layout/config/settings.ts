@@ -24,5 +24,7 @@ export default function install(config: ConfigType) {
     Collection: CollectionIcon,
   };
 
+  config.settings.mostUsedTypes = ['Document', 'Folder', 'File'];
+
   return config;
 }

@@ -25,13 +25,16 @@ export function Menu<T extends object>({
   button,
   onPress,
   children,
+  className,
   ...props
 }: MenuButtonProps<T>) {
   return (
     <MenuTrigger {...props}>
       <Button onPress={onPress}>{button}</Button>
       <Popover placement={props.placement || 'bottom start'}>
-        <RACMenu {...props}>{children}</RACMenu>
+        <RACMenu className={className} {...props}>
+          {children}
+        </RACMenu>
       </Popover>
     </MenuTrigger>
   );

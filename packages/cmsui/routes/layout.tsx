@@ -12,11 +12,10 @@ import {
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import type { RootLoader } from 'seven/app/root';
-import { PluggablesProvider, Plug } from '@plone/layout/components/Pluggable';
+import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
 import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
-import Settings from '@plone/components/icons/settings.svg?react';
 import { useAtom } from 'jotai';
 import { clsx } from 'clsx';
 import config from '@plone/registry';
@@ -71,6 +70,7 @@ export default function Index() {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const { i18n } = useTranslation();
   const navigate = useNavigate();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [collapsed, setCollapsed] = useAtom(sidebarAtom);
 
   if (!rootData) {
@@ -94,15 +94,6 @@ export default function Index() {
         <link rel="stylesheet" href="/layers.css" precedence="first" />
         <RACRouterProvider navigate={navigate}>
           <PluggablesProvider>
-            <Plug pluggable="toolbar-bottom" id="button-settings">
-              <button
-                type="button"
-                aria-label="Settings"
-                onClick={() => setCollapsed((state) => !state)}
-              >
-                <Settings />
-              </button>
-            </Plug>
             <Toolbar />
             <div
               className={clsx(
