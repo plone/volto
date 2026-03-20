@@ -25,6 +25,10 @@ export async function loader({ params, request }: Route.LoaderArgs) {
 
   const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
 
+  if (token) {
+    expand.push('types');
+  }
+
   const cli = config
     .getUtility({
       name: 'ploneClient',
