@@ -573,8 +573,8 @@ importers:
         specifier: 4.1.1
         version: 4.1.1(@types/react@18.3.28)(react@18.2.0)
       react-dates:
-        specifier: 21.5.1
-        version: 21.5.1(@babel/runtime@7.28.6)(moment@2.29.4)(react-dom@18.2.0(react@18.2.0))(react-with-direction@1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
+        specifier: 21.8.0
+        version: 21.8.0(@babel/runtime@7.28.6)(moment@2.29.4)(react-dom@18.2.0(react@18.2.0))(react-with-direction@1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       react-detect-click-outside:
         specifier: 1.1.1
         version: 1.1.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -867,9 +867,6 @@ importers:
       babel-plugin-react-intl:
         specifier: 5.1.17
         version: 5.1.17
-      babel-plugin-root-import:
-        specifier: 6.1.0
-        version: 6.1.0
       circular-dependency-plugin:
         specifier: 5.2.2
         version: 5.2.2(webpack@5.105.4(esbuild@0.25.12))
@@ -900,9 +897,6 @@ importers:
       eslint-import-resolver-alias:
         specifier: ^1.1.2
         version: 1.1.2(eslint-plugin-import@2.32.0)
-      eslint-import-resolver-babel-plugin-root-import:
-        specifier: ^1.1.1
-        version: 1.1.1(babel-plugin-root-import@6.1.0)(eslint-plugin-import@2.32.0)
       eslint-import-resolver-typescript:
         specifier: ^3.6.1
         version: 3.10.1(eslint-plugin-import@2.32.0)(eslint@8.57.1)
@@ -5524,9 +5518,6 @@ packages:
     resolution: {integrity: sha512-VNl57CKax5rPw4E2VrQGSfdCMTRRttpet/4vuHLrlJeVQKlxmOAIMcw6o1KbFgdUx2YVQU18cRcAjkRV+Gm01Q==}
     deprecated: this package has been renamed to babel-plugin-formatjs
 
-  babel-plugin-root-import@6.1.0:
-    resolution: {integrity: sha512-7pFBKr83H7S4mjLICsHENXm8oZ//sTdrjlxP20y7wWAmDl8N1IRtUVAGJDCTk3E9E3LOyRdiPb9znoweDVCrFg==}
-
   babel-plugin-syntax-jsx@6.18.0:
     resolution: {integrity: sha512-qrPaCSo9c8RHNRHIotaufGbuOBN8rtdC4QrrFFc43vyWCCz7Kl7GL1PGaXtMGQZUXrkCjNEgxDfmAuAabr/rlw==}
 
@@ -6869,15 +6860,6 @@ packages:
     engines: {node: '>= 4'}
     peerDependencies:
       eslint-plugin-import: '>=1.4.0'
-
-  eslint-import-resolver-babel-plugin-root-import@1.1.1:
-    resolution: {integrity: sha512-ZZxdV9AxzL2WFVggDxZ36xodPg2+BTrkhhMf/of+BxSVh/GKLGCs17EDq5b61wqC7/oQsA2h1RtH1fV7HOUV/w==}
-    peerDependencies:
-      babel-plugin-root-import: ^5.1.0
-      eslint-plugin-import: '>=1.9.2'
-
-  eslint-import-resolver-node@0.2.3:
-    resolution: {integrity: sha512-HI8ShtDIy7gON76Nr3bu4zl0DuCLPo1Fud9P2lltOQKeiAS2r5/o/l3y+V8HJ1cDLFSz+tHu7/V9fI5jirwlbw==}
 
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
@@ -8362,10 +8344,6 @@ packages:
 
   json3@3.3.3:
     resolution: {integrity: sha512-c7/8mbUsKigAbLkD5B010BK4D9LZm7A1pNItkEwiUZRpIN66exu/e7YQWysGun+TRKaJp8MhemM+VkfWv42aCA==}
-
-  json5@0.5.1:
-    resolution: {integrity: sha512-4xrs1aW+6N5DalkqSVA8fxh458CXvR99WU8WLKmq4v8eWAL86Xo3BVqyd3SkA9wEVjCMqyvvRRkshAdOnBp5rw==}
-    hasBin: true
 
   json5@1.0.2:
     resolution: {integrity: sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==}
@@ -10095,8 +10073,8 @@ packages:
     peerDependencies:
       react: '>= 16.3.0'
 
-  react-dates@21.5.1:
-    resolution: {integrity: sha512-1Lplx6T5U2Gu1vN1jh8Nrb+nyA5Uw7LdVVKGqjIoO9Kj6F3mU2budB6DlkxB5hAcjxk3KNzcSHPMYcWPUxvL0g==}
+  react-dates@21.8.0:
+    resolution: {integrity: sha512-PPriGqi30CtzZmoHiGdhlA++YPYPYGCZrhydYmXXQ6RAvAsaONcPtYgXRTLozIOrsQ5mSo40+DiA5eOFHnZ6xw==}
     peerDependencies:
       '@babel/runtime': ^7.0.0
       moment: ^2.18.1
@@ -10891,10 +10869,6 @@ packages:
   skin-tone@2.0.0:
     resolution: {integrity: sha512-kUMbT1oBJCpgrnKoSr0o6wPtvRWT9W9UKvGLwfJYO2WuahZRHOpEyL1ckyMGgMWh0UdpmaoFqKKD29WTomNEGA==}
     engines: {node: '>=8'}
-
-  slash@1.0.0:
-    resolution: {integrity: sha512-3TYDR7xWt4dIqV2JauJr+EJeW356RXijHeUlO+8djJ+uBXPn8/2dpzBc8yQhh583sVvc9CvFAeQVgijsH+PNNg==}
-    engines: {node: '>=0.10.0'}
 
   slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
@@ -17273,10 +17247,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  babel-plugin-root-import@6.1.0:
-    dependencies:
-      slash: 1.0.0
-
   babel-plugin-syntax-jsx@6.18.0: {}
 
   babel-plugin-transform-define@2.1.4:
@@ -18821,23 +18791,6 @@ snapshots:
   eslint-import-resolver-alias@1.1.2(eslint-plugin-import@2.32.0):
     dependencies:
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
-
-  eslint-import-resolver-babel-plugin-root-import@1.1.1(babel-plugin-root-import@6.1.0)(eslint-plugin-import@2.32.0):
-    dependencies:
-      babel-plugin-root-import: 6.1.0
-      eslint-import-resolver-node: 0.2.3
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
-      json5: 0.5.1
-    transitivePeerDependencies:
-      - supports-color
-
-  eslint-import-resolver-node@0.2.3:
-    dependencies:
-      debug: 2.6.9
-      object-assign: 4.1.1
-      resolve: 1.22.11
-    transitivePeerDependencies:
-      - supports-color
 
   eslint-import-resolver-node@0.3.9:
     dependencies:
@@ -20744,8 +20697,6 @@ snapshots:
 
   json3@3.3.3: {}
 
-  json5@0.5.1: {}
-
   json5@1.0.2:
     dependencies:
       minimist: 1.2.8
@@ -22546,7 +22497,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  react-dates@21.5.1(@babel/runtime@7.28.6)(moment@2.29.4)(react-dom@18.2.0(react@18.2.0))(react-with-direction@1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
+  react-dates@21.8.0(@babel/runtime@7.28.6)(moment@2.29.4)(react-dom@18.2.0(react@18.2.0))(react-with-direction@1.4.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0):
     dependencies:
       '@babel/runtime': 7.28.6
       airbnb-prop-types: 2.16.0(react@18.2.0)
@@ -23692,8 +23643,6 @@ snapshots:
   skin-tone@2.0.0:
     dependencies:
       unicode-emoji-modifier-base: 1.0.0
-
-  slash@1.0.0: {}
 
   slash@3.0.0: {}
 
