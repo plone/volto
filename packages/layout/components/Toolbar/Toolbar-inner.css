@@ -101,3 +101,8 @@
   height: 24px;
   pointer-events: none;
 }
+
+#toolbar-portals .react-aria-Popover {
+  width: 400px;
+  max-width: 400px;
+}
