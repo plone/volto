@@ -38,17 +38,6 @@ async function renderStub() {
   await renderWithI18n(<Stub initialEntries={['/']} />);
 }
 
-const makeLoaderArgs = (
-  request: Request,
-  params: Record<string, string> = {},
-) =>
-  ({
-    request,
-    params,
-    context: new RouterContextProvider(),
-    unstable_pattern: '',
-  }) as Parameters<typeof loader>[0];
-
 const registerSomersaultBlockMigrations = () => {
   config.registerUtility({
     name: 'testSomersaultBlockMigrationTitle',
