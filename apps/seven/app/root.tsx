@@ -4,35 +4,30 @@ import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
 import { flattenToAppURL } from '@plone/helpers';
-import type PloneClient from '@plone/client';
-import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 import {
+  fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
   otherResources,
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
 } from './middleware.server';
 
 export const middleware = [
   installServerMiddleware,
   otherResources,
   getAPIResourceWithAuth,
+  fetchPloneContent,
 ];
 
-export async function loader({ params, request }: Route.LoaderArgs) {
+export async function loader({ params, request, context }: Route.LoaderArgs) {
   const locale = await i18next.getLocale(request);
-  const token = await getAuthFromRequest(request);
 
-  const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
-
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
-
-  cli.config.token = token;
+  const cli = context.get(ploneClientContext);
+  const content = context.get(ploneContentContext);
+  const site = context.get(ploneSiteContext);
 
   const path = `/${params['*'] || ''}`;
 
@@ -45,11 +40,6 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   });
 
   try {
-    const [content, site] = await Promise.all([
-      cli.getContent({ path, expand }),
-      cli.getSite(),
-    ]);
-
     for (const utility of rootContentSubRequests) {
       await utility.method({
         cli,

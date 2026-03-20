@@ -1,17 +1,17 @@
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import * as React from 'react';
 import { PlateEditor, type Value } from '@plone/plate/components/editor';
 import plateBlockSomersaultConfig from '@plone/plate/config/presets/somersault-editor';
 import { TITLE_BLOCK_TYPE } from '@plone/plate/components/editor/plugins/title';
 import { SidebarPlugin } from './plugins/SidebarPlugin';
-import { blockAtomFamily } from '../../routes/atoms';
+import { blockAtomFamily, formAtom } from '../../routes/atoms';
 
 const SOMERSAULT_KEY = '__somersault__';
 
-const getDefaultSomersaultValue = (): Value => [
+const getDefaultSomersaultValue = (title = ''): Value => [
   {
     type: TITLE_BLOCK_TYPE,
-    children: [{ text: '' }],
+    children: [{ text: title }],
   },
   {
     type: 'p',
@@ -22,6 +22,8 @@ const getDefaultSomersaultValue = (): Value => [
 const BlocksEditor = () => {
   const somersaultBlockAtom = blockAtomFamily(SOMERSAULT_KEY);
   const [somersaultBlock, setSomersaultBlock] = useAtom(somersaultBlockAtom);
+  const content = useAtomValue(formAtom);
+  const metadataTitle = content?.title ?? '';
 
   // Keep the initial Plate value stable across parent re-renders.
   // If we pass a freshly derived value on each change, Plate treats it as a
@@ -32,7 +34,7 @@ const BlocksEditor = () => {
     stableInitialValueRef.current =
       (((somersaultBlock as any)?.value as Value | undefined) ?? []).length > 0
         ? ((somersaultBlock as any).value as Value)
-        : getDefaultSomersaultValue();
+        : getDefaultSomersaultValue(metadataTitle);
   }
 
   const editorConfig = React.useMemo(
