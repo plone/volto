@@ -3,7 +3,8 @@ import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
 import type { Route } from './+types/root';
-import installServer from './config.server';
+import installServer from './config/server.server';
+import { migrateContent } from './config/server/content-migrations.server';
 
 export const ploneClientContext = createContext<PloneClient>();
 export const ploneContentContext =
@@ -88,6 +89,8 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
       cli.getContent({ path, expand }),
       cli.getSite(),
     ]);
+
+    migrateContent(content.data);
 
     context.set(ploneClientContext, cli);
     context.set(ploneContentContext, content);
