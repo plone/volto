@@ -1,16 +1,22 @@
-import { data } from 'react-router';
+import { data, createContext } from 'react-router';
 import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
+import type PloneClient from '@plone/client';
 import type { Route } from './+types/root';
 import installServer from './config/server.server';
+import { migrateContent } from './config/server/content-migrations.server';
+
+export const ploneClientContext = createContext<PloneClient>();
+export const ploneContentContext =
+  createContext<Awaited<ReturnType<PloneClient['getContent']>>>();
+export const ploneSiteContext =
+  createContext<Awaited<ReturnType<PloneClient['getSite']>>>();
 
 export const installServerMiddleware: Route.MiddlewareFunction = async (
   { request, context },
   next,
 ) => {
   installServer();
-  // const locale = await i18next.getLocale(request);
-  // context.setData({ locale });
 };
 
 export const otherResources: Route.MiddlewareFunction = async (
@@ -23,9 +29,6 @@ export const otherResources: Route.MiddlewareFunction = async (
   if (/.well-known\/appspecific\/com.chrome.devtools.json/.test(path)) {
     throw Response.json({});
   }
-
-  // eslint-disable-next-line no-console
-  // console.log(path);
 
   if (
     /^https?:\/\//.test(path) ||
@@ -59,6 +62,42 @@ export const getAPIResourceWithAuth: Route.MiddlewareFunction = async (
         ...request.headers,
         Authorization: `Bearer ${token}`,
       },
+    });
+  }
+};
+
+export const fetchPloneContent: Route.MiddlewareFunction = async (
+  { request, params, context },
+  next,
+) => {
+  const token = await getAuthFromRequest(request);
+  const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
+
+  const cli = config
+    .getUtility({
+      name: 'ploneClient',
+      type: 'client',
+    })
+    .method() as PloneClient;
+
+  cli.config.token = token;
+
+  const path = `/${params['*'] || ''}`;
+
+  try {
+    const [content, site] = await Promise.all([
+      cli.getContent({ path, expand }),
+      cli.getSite(),
+    ]);
+
+    migrateContent(content.data);
+
+    context.set(ploneClientContext, cli);
+    context.set(ploneContentContext, content);
+    context.set(ploneSiteContext, site);
+  } catch (error: any) {
+    throw data('Content Not Found', {
+      status: typeof error.status === 'number' ? error.status : 500,
     });
   }
 };

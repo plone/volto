@@ -3,6 +3,12 @@ import { render, screen } from '@testing-library/react';
 import { createRoutesStub, RouterContextProvider } from 'react-router';
 import config from '@plone/registry';
 import { Layout, ErrorBoundary, loader } from './root';
+import {
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
+} from './middleware.server';
+import { migrateContent } from './config/server/content-migrations.server';
 import { renderWithI18n } from '../tests/testHelpers';
 
 async function renderStub() {
@@ -69,247 +75,66 @@ const registerSomersaultBlockMigrations = () => {
   });
 };
 
+afterEach(() => {
+  vi.restoreAllMocks();
+  config.settings = {};
+  const utilities = config.utilities as Partial<Record<string, unknown>>;
+  delete utilities.client;
+  delete utilities.somersaultBlockMigration;
+  delete utilities.somersaultMigration;
+  delete utilities.rootContentSubRequest;
+  delete utilities.rootLoaderData;
+});
+
 describe('loader', () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
-    config.settings = {};
-    const utilities = config.utilities as Partial<Record<string, unknown>>;
-    delete utilities.client;
-    delete utilities.somersaultMigration;
-    delete utilities.rootContentSubRequest;
-    delete utilities.rootLoaderData;
-  });
-
-  it('should fetch the current content', async () => {
-    const getContentMock = vi.fn().mockResolvedValue({ data: {} });
-    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
-    config.settings.apiPath = 'http://example.com';
+  it('should return content and site from context', async () => {
     config.settings.defaultLanguage = 'en';
     config.settings.supportedLanguages = ['en'];
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
+    const mockContent = {
+      data: { '@id': 'http://example.com/', title: 'Home' },
+    };
+    const mockSite = { data: { '@id': 'http://example.com/' } };
     const request = new Request('http://example.com');
-    const data = await loader(makeLoaderArgs(request));
+    const context = new RouterContextProvider();
+    context.set(ploneClientContext, {} as any);
+    context.set(ploneContentContext, mockContent as any);
+    context.set(ploneSiteContext, mockSite as any);
 
-    expect(getContentMock).toHaveBeenCalledWith({
-      path: '/',
-      expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+    const data = await loader({
+      request,
+      params: {},
+      context,
+      unstable_pattern: '/',
     });
-    expect(getSiteMock).toHaveBeenCalled();
+
     expect(data.locale).toBe('en');
+    expect(data.content).toBeDefined();
+    expect(data.site).toBeDefined();
   });
 
-  it("should fetch the current content when it's not the root", async () => {
-    const getContentMock = vi.fn().mockResolvedValue({ data: {} });
-    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
-    config.settings.apiPath = 'http://example.com';
+  it('should return content for a non-root path', async () => {
     config.settings.defaultLanguage = 'en';
     config.settings.supportedLanguages = ['en'];
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
+    const mockContent = {
+      data: { '@id': 'http://example.com/test-content', title: 'Test' },
+    };
+    const mockSite = { data: { '@id': 'http://example.com/' } };
     const request = new Request('http://example.com/test-content');
-    const data = await loader(makeLoaderArgs(request, { '*': 'test-content' }));
+    const context = new RouterContextProvider();
+    context.set(ploneClientContext, {} as any);
+    context.set(ploneContentContext, mockContent as any);
+    context.set(ploneSiteContext, mockSite as any);
 
-    expect(getContentMock).toHaveBeenCalledWith({
-      path: '/test-content',
-      expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+    const data = await loader({
+      request,
+      params: { '*': 'test-content' },
+      context,
+      unstable_pattern: '/test-content',
     });
-    expect(getSiteMock).toHaveBeenCalled();
+
     expect(data.locale).toBe('en');
-  });
-
-  it('should place the migrated title block in the legacy block order', async () => {
-    const getContentMock = vi.fn().mockResolvedValue({
-      data: {
-        title: 'Page title',
-        blocks: {
-          a: {
-            '@type': 'text',
-            value: [{ type: 'p', children: [{ text: 'First block' }] }],
-          },
-          titleBlock: {
-            '@type': 'title',
-          },
-          b: {
-            '@type': 'text',
-            value: [{ type: 'p', children: [{ text: 'Second block' }] }],
-          },
-        },
-        blocks_layout: {
-          items: ['a', 'titleBlock', 'b'],
-        },
-      },
-    });
-    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
-    const somersaultMigration = vi.fn(({ value }) => value);
-    config.settings.apiPath = 'http://example.com';
-    config.settings.defaultLanguage = 'en';
-    config.settings.supportedLanguages = ['en'];
-    registerSomersaultBlockMigrations();
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
-    config.registerUtility({
-      name: 'testSomersaultMigration',
-      type: 'somersaultMigration',
-      method: somersaultMigration,
-    });
-    const request = new Request('http://example.com');
-    const data = await loader(makeLoaderArgs(request));
-
-    expect(somersaultMigration).toHaveBeenCalledTimes(1);
-    expect(data.content.blocks.__somersault__).toEqual({
-      '@type': '__somersault__',
-      value: [
-        {
-          type: 'p',
-          children: [{ text: 'First block' }],
-        },
-        {
-          type: 'title',
-          children: [{ text: 'Page title' }],
-        },
-        {
-          type: 'p',
-          children: [{ text: 'Second block' }],
-        },
-      ],
-    });
-  });
-
-  it('should skip somersault migration when the somersault block already exists', async () => {
-    const existingSomersaultValue = [
-      {
-        type: 'title',
-        children: [{ text: 'Already migrated' }],
-      },
-    ];
-    const getContentMock = vi.fn().mockResolvedValue({
-      data: {
-        title: 'Page title',
-        blocks: {
-          __somersault__: {
-            '@type': '__somersault__',
-            value: existingSomersaultValue,
-          },
-          a: {
-            '@type': 'text',
-            value: [{ type: 'p', children: [{ text: 'Legacy block' }] }],
-          },
-        },
-        blocks_layout: {
-          items: ['a'],
-        },
-      },
-    });
-    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
-    const somersaultMigration = vi.fn(({ value }) => value);
-    config.settings.apiPath = 'http://example.com';
-    config.settings.defaultLanguage = 'en';
-    config.settings.supportedLanguages = ['en'];
-    registerSomersaultBlockMigrations();
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
-    config.registerUtility({
-      name: 'testSomersaultMigration',
-      type: 'somersaultMigration',
-      method: somersaultMigration,
-    });
-    const request = new Request('http://example.com');
-    const data = await loader(makeLoaderArgs(request));
-
-    expect(somersaultMigration).not.toHaveBeenCalled();
-    expect(data.content.blocks.__somersault__).toEqual({
-      '@type': '__somersault__',
-      value: existingSomersaultValue,
-    });
-  });
-
-  it('should throw when the current content is not loaded', async () => {
-    const getContentMock = vi
-      .fn()
-      .mockRejectedValue({ data: undefined, status: 500 });
-    const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
-    config.settings.apiPath = 'http://example.com';
-    config.settings.defaultLanguage = 'en';
-    config.settings.supportedLanguages = ['en'];
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
-    try {
-      await loader(makeLoaderArgs(new Request('http://example.com')));
-    } catch (err: any) {
-      expect(err.init.status).toEqual(500);
-    }
-  });
-
-  it('should throw when the site is not loaded', async () => {
-    const getContentMock = vi.fn().mockResolvedValue({ data: {} });
-    const getSiteMock = vi
-      .fn()
-      .mockRejectedValue({ data: undefined, status: 500 });
-    config.settings.apiPath = 'http://example.com';
-    config.settings.defaultLanguage = 'en';
-    config.settings.supportedLanguages = ['en'];
-    config.registerUtility({
-      name: 'ploneClient',
-      type: 'client',
-      method: () => ({
-        config: {
-          token: undefined,
-        },
-        getContent: getContentMock,
-        getSite: getSiteMock,
-      }),
-    });
-    try {
-      await loader(makeLoaderArgs(new Request('http://example.com')));
-    } catch (err: any) {
-      expect(err.init.status).toEqual(500);
-    }
+    expect(data.content).toBeDefined();
+    expect(data.site).toBeDefined();
   });
 });
 
@@ -325,5 +150,128 @@ describe('ErrorBoundary', () => {
     const error = new Error('Test error');
     render(<ErrorBoundary error={error} params={{}} />);
     expect(screen.getByText('Test error')).toBeInTheDocument();
+  });
+});
+
+it('should place the migrated title block in the legacy block order', async () => {
+  const mockContent = {
+    data: {
+      '@id': 'http://example.com/',
+      title: 'Page title',
+      blocks: {
+        a: {
+          '@type': 'text',
+          value: [{ type: 'p', children: [{ text: 'First block' }] }],
+        },
+        titleBlock: {
+          '@type': 'title',
+        },
+        b: {
+          '@type': 'text',
+          value: [{ type: 'p', children: [{ text: 'Second block' }] }],
+        },
+      },
+      blocks_layout: {
+        items: ['a', 'titleBlock', 'b'],
+      },
+    },
+  };
+  const mockSite = { data: { '@id': 'http://example.com/' } };
+  const somersaultMigration = vi.fn(({ value }) => value);
+  config.settings.defaultLanguage = 'en';
+  config.settings.supportedLanguages = ['en'];
+  registerSomersaultBlockMigrations();
+  config.registerUtility({
+    name: 'testSomersaultMigration',
+    type: 'somersaultMigration',
+    method: somersaultMigration,
+  });
+  const request = new Request('http://example.com');
+  migrateContent(mockContent.data as any);
+  const context = new RouterContextProvider();
+  context.set(ploneClientContext, {} as any);
+  context.set(ploneContentContext, mockContent as any);
+  context.set(ploneSiteContext, mockSite as any);
+
+  const data = await loader({
+    request,
+    params: {},
+    context,
+    unstable_pattern: '/',
+  });
+
+  expect(somersaultMigration).toHaveBeenCalledTimes(1);
+  expect(data.content.blocks.__somersault__).toEqual({
+    '@type': '__somersault__',
+    value: [
+      {
+        type: 'p',
+        children: [{ text: 'First block' }],
+      },
+      {
+        type: 'title',
+        children: [{ text: 'Page title' }],
+      },
+      {
+        type: 'p',
+        children: [{ text: 'Second block' }],
+      },
+    ],
+  });
+});
+
+it('should skip somersault migration when the somersault block already exists', async () => {
+  const existingSomersaultValue = [
+    {
+      type: 'title',
+      children: [{ text: 'Already migrated' }],
+    },
+  ];
+  const mockContent = {
+    data: {
+      '@id': 'http://example.com/',
+      title: 'Page title',
+      blocks: {
+        __somersault__: {
+          '@type': '__somersault__',
+          value: existingSomersaultValue,
+        },
+        a: {
+          '@type': 'text',
+          value: [{ type: 'p', children: [{ text: 'Legacy block' }] }],
+        },
+      },
+      blocks_layout: {
+        items: ['a'],
+      },
+    },
+  };
+  const mockSite = { data: { '@id': 'http://example.com/' } };
+  const somersaultMigration = vi.fn(({ value }) => value);
+  config.settings.defaultLanguage = 'en';
+  config.settings.supportedLanguages = ['en'];
+  registerSomersaultBlockMigrations();
+  config.registerUtility({
+    name: 'testSomersaultMigration',
+    type: 'somersaultMigration',
+    method: somersaultMigration,
+  });
+  const request = new Request('http://example.com');
+  migrateContent(mockContent.data as any);
+  const context = new RouterContextProvider();
+  context.set(ploneClientContext, {} as any);
+  context.set(ploneContentContext, mockContent as any);
+  context.set(ploneSiteContext, mockSite as any);
+  const data = await loader({
+    request,
+    params: {},
+    context,
+    unstable_pattern: '/',
+  });
+
+  expect(somersaultMigration).not.toHaveBeenCalled();
+  expect(data.content.blocks.__somersault__).toEqual({
+    '@type': '__somersault__',
+    value: existingSomersaultValue,
   });
 });
