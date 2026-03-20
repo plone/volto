@@ -33,7 +33,7 @@ import {
   Popover,
   type PressEvent,
 } from 'react-aria-components';
-import { Button } from '@plone/components/src/components/Button/Button';
+import { Button } from '@plone/components';
 import type { Placement } from 'react-aria';
 
 export interface ToolbarMenuProps<T>
