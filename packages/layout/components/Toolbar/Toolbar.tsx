@@ -19,25 +19,37 @@
  */
 
 import { createPortal } from 'react-dom';
-import { useEffect, useRef, useState } from 'react';
-import { useRouteLoaderData } from 'react-router';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useLocation, useRouteLoaderData } from 'react-router';
 import type { RootLoader } from 'seven/app/root';
-import { Pluggable } from '../Pluggable';
 import { shouldShowToolbar } from '../../helpers';
 import toolbarStyles from './Toolbar.css?inline';
 import { useTranslation } from 'react-i18next';
+import { UNSAFE_PortalProvider } from 'react-aria';
+import SlotRenderer from '../../slots/SlotRenderer';
+import type { Content } from '@plone/types';
 
-function ToolbarInner() {
+function ToolbarInner({ content }: { content: Content }) {
   const { t } = useTranslation();
+
+  const location = useLocation();
 
   return (
     <nav aria-label={t('layout.toolbar.label')} className="toolbar">
       <div className="toolbar-buttons">
         <div className="toolbar-region toolbar-top">
-          <Pluggable name="toolbar-top" />
+          <SlotRenderer
+            name="toolbarTop"
+            content={content}
+            location={location}
+          />
         </div>
         <div className="toolbar-region toolbar-bottom">
-          <Pluggable name="toolbar-bottom" />
+          <SlotRenderer
+            name="toolbarBottom"
+            content={content}
+            location={location}
+          />
         </div>
       </div>
     </nav>
@@ -59,6 +71,8 @@ const Toolbar = () => {
   const rootData = useRouteLoaderData<RootLoader>('root');
   const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null);
   const hostRef = useRef<HTMLDivElement>(null);
+  const portalContainerRef = useRef<HTMLDivElement>(null);
+  const getContainer = useCallback(() => portalContainerRef.current, []);
 
   const showToolbar = !!rootData?.content
     ? shouldShowToolbar(rootData.content)
@@ -70,6 +84,8 @@ const Toolbar = () => {
     setShadowRoot(root);
   }, []);
 
+  const content = rootData?.content;
+
   // The host element is always rendered so the ref is stable.  No content is
   // placed in the shadow root until we know the user can edit.
   return (
@@ -77,10 +93,22 @@ const Toolbar = () => {
       {shadowRoot &&
         showToolbar &&
         createPortal(
-          <>
+          /*
+            UNSAFE_PortalProvider tells React Aria where to render
+            overlay elements (popovers, menus, tooltips). By default
+            React Aria appends them to document.body, which is outside
+            the shadow DOM, so they would miss the toolbar's scoped
+            styles and be invisible or unstyled. Pointing getContainer
+            at #toolbar-portals keeps overlays inside the shadow root
+            where they inherit the toolbar's CSS.
+          */
+          <UNSAFE_PortalProvider getContainer={getContainer}>
             <style>{toolbarStyles}</style>
-            <ToolbarInner />
-          </>,
+            {/* Using content! is safe here, because the showToolbar
+            check already rules out content being undefined */}
+            <ToolbarInner content={content!} />
+            <div ref={portalContainerRef} id="toolbar-portals" />
+          </UNSAFE_PortalProvider>,
           shadowRoot,
         )}
     </div>
