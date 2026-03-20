@@ -1,12 +1,23 @@
-import { ToolbarMenu } from '@plone/layout/components/Toolbar/ToolbarMenu';
+import {
+  ToolbarMenu,
+  ToolbarMenuItem,
+} from '@plone/layout/components/Toolbar/ToolbarMenu';
 import Add from '@plone/components/icons/add.svg?react';
 import Page from '@plone/components/icons/page.svg?react';
 import type { Content, GetTypesResponse, Type } from '@plone/types';
-import contentTypesMenuStyles from './ContentTypesMenu.css?inline';
-import { Header, MenuSection, MenuItem, Text } from 'react-aria-components';
+import { Header, MenuSection, Text } from 'react-aria-components';
+import { useTranslation } from 'react-i18next';
 import config from '@plone/registry';
 
-export const ContentTypesMenu = ({ content }: { content: Content }) => {
+import contentTypesMenuStyles from './ContentTypesMenu.css?inline';
+
+interface ContentTypesMenuProps {
+  content: Content;
+}
+
+export const ContentTypesMenu = ({ content }: ContentTypesMenuProps) => {
+  const { t } = useTranslation();
+
   const _types: GetTypesResponse = content['@components']?.types;
   const types = Array.isArray(_types) ? _types : [];
   const addableTypes = types.filter((type) => type.addable);
@@ -26,10 +37,10 @@ export const ContentTypesMenu = ({ content }: { content: Content }) => {
     const Icon = config.settings.contentIcons[type.id] ?? Page;
 
     return (
-      <MenuItem id={type.id} href={`/add?type=${typeToAdd}`}>
+      <ToolbarMenuItem id={type.id} href={`/add?type=${typeToAdd}`}>
         <Icon />
         <Text slot="label">{type.title}</Text>
-      </MenuItem>
+      </ToolbarMenuItem>
     );
   };
 
@@ -40,7 +51,7 @@ export const ContentTypesMenu = ({ content }: { content: Content }) => {
       styles={contentTypesMenuStyles}
     >
       <MenuSection className="most-used">
-        <Header>Add content</Header>
+        <Header>{t('publicui.toolbar.addContent')}</Header>
         {hightlightedTypes.length > 0 &&
           hightlightedTypes.map((type) => (
             <ContentTypeMenuItem key={type.id} {...type} />

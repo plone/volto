@@ -1,0 +1,15 @@
+{
+  "publicui": {
+    "sitemap": "Sitemap",
+    "search": {
+      "title": "Suchergebnisse für",
+      "results": "Suchergebnisse",
+      "placeholder": "Seite durchsuchen...",
+      "noResults": "Keine Ergebnisse gefunden"
+    },
+    "toolbar": {
+      "edit": "Bearbeiten",
+      "addContent": "Inhalt hinzufügen"
+    }
+  }
+}
