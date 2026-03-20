@@ -11,12 +11,14 @@ myst:
 
 # Component registry
 
-The {term}`configuration registry` has a component registry integrated on itself.
-These registry stores by a given name the components.
-Later you can retrieve them by this name, and use them in your code.
-The idea behind is to provide an alternative and more convenient way to customize components.
-You can override programmatically such registrations from your add-on or projects because it's stored in the configuration registry.
-You can customize a component without using {term}`shadowing` at all, if the code that calls the component retrieves the information of the component to use from the component registry.
+The {term}`configuration registry` includes a component registry for managing components globally.
+In this registry, components can be registered given a unique component name.
+Any other add-on can then retrieve and use this component by searching the components name.
+
+The key motivation behind the component registry is to simplify the process of customization.
+Existing components can easily be overwritten without {term}`shadowing` by registering a new component using the name of an existing component.
+Since the component registry is globally available, this means that all code pointing to this component will now use the newly registered component instead.
+
 You can even have modifiers to the component registrations: dependencies. So you can "adapt" the call given an array of such dependencies.
 
 ## Registering components by name using `config.registerComponent`
@@ -50,8 +52,8 @@ Please notice that you are able to pass `props` down to the retrieved component.
 
 ## Adapting the component using `dependencies` array
 
-You can register components, and retrieve them afterwards given a list of modifiers `dependencies`.
-
+Components can also be conditionally registered by passing dependencies.
+To register a component with dependencies, you can either pass a `string` or an `array of strings`.
 ```js
 import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent'
 
@@ -62,7 +64,7 @@ config.registerComponent({
   });
 ```
 
-and then retrieve it:
+To retrieve this component, you must pass the data against which the dependencies are checked.
 
 ```js
 config.getComponent({
