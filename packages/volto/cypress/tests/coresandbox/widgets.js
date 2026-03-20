@@ -37,9 +37,11 @@ context('Widgets Acceptance Tests', () => {
       cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
       cy.findByLabelText('Add item').click();
       cy.findByLabelText('Enter a URL to an image').click();
-      cy.get('.link-form-container .react-select__input input').type(
+      cy.get('.link-form-select__input input').type(
         '/document/my-image{enter}',
-        { force: true },
+        {
+          force: true,
+        },
       );
 
       cy.get('.image-upload-widget-image > img')
@@ -58,7 +60,7 @@ context('Widgets Acceptance Tests', () => {
       cy.get('.blocks-chooser .mostUsed .button.testBlock').click();
       cy.findByLabelText('Add item').click();
       cy.findByLabelText('Enter a URL to an image').click();
-      cy.get('.link-form-container .react-select__input input').type(
+      cy.get('.link-form-select__input input').type(
         'https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}',
         { force: true },
       );
