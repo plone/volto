@@ -1304,9 +1304,6 @@ importers:
       is-url:
         specifier: 1.2.4
         version: 1.2.4
-      jsdom:
-        specifier: 'catalog:'
-        version: 28.1.0
       lodash:
         specifier: 'catalog:'
         version: 4.17.23
@@ -1362,6 +1359,9 @@ importers:
       '@testing-library/react':
         specifier: 14.3.1
         version: 14.3.1(@types/react@18.3.28)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      jsdom:
+        specifier: 'catalog:'
+        version: 28.1.0
       release-it:
         specifier: ^19.0.5
         version: 19.2.4(@types/node@24.12.0)(magicast@0.3.5)
