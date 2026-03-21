@@ -833,6 +833,11 @@ msgstr "Sisältösäännöt ylemmistä kansioista"
 msgid "Content that links to or references {title}"
 msgstr ""
 
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Sisällön otsikko"
+
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
 msgid "Content type created"
@@ -2279,6 +2284,11 @@ msgstr "Kartat"
 msgid "Maps URL"
 msgstr "Karta URL"
 
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
@@ -2815,6 +2825,11 @@ msgstr "Voimanlähteenä Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Asetukset"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Paina Enter-näppäintä selataksesi tiedostoja tietokoneeltasi."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4663,6 +4678,11 @@ msgstr "Päivämäärä"
 msgid "delete"
 msgstr "poista"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr ""
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4687,6 +4707,11 @@ msgstr "Lähetimme sinulle sähköpostilla ohjeet salasanan vaihtamiseksi. Sen p
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "luonnos"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels

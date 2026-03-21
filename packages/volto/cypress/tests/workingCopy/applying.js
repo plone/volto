@@ -1,6 +1,7 @@
 describe('Working Copy Tests - Applying', () => {
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('DELETE', '**/@lock').as('unlock');
     cy.intercept('GET', '/**/Document').as('schema');
     // given a logged in editor and a page in edit mode
     cy.autologin();
@@ -31,6 +32,7 @@ describe('Working Copy Tests - Applying', () => {
     cy.clearSlateTitle().type('New title');
     cy.get('#toolbar-save').click();
     cy.wait('@save');
+    cy.wait('@unlock');
 
     // and I apply the changes of the working copy on the baseline
     cy.get('#toolbar-more').click();
@@ -64,6 +66,7 @@ describe('Working Copy Tests - Applying', () => {
     cy.clearSlateTitle().type('New title');
     cy.get('#toolbar-save').click();
     cy.wait('@save');
+    cy.wait('@unlock');
 
     // and I navigate to the baseline and click on the more menu
     cy.navigate('/document');
