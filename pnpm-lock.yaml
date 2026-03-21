@@ -1560,6 +1560,9 @@ importers:
       eslint-config-prettier:
         specifier: ^10.0.1
         version: 10.1.8(eslint@9.38.0(jiti@2.6.1))
+      eslint-import-resolver-alias:
+        specifier: ^1.1.2
+        version: 1.1.2(eslint-plugin-import@2.32.0)
       eslint-import-resolver-typescript:
         specifier: ^4.4.4
         version: 4.4.4(eslint-plugin-import@2.32.0)(eslint@9.38.0(jiti@2.6.1))
@@ -6698,6 +6701,12 @@ packages:
     peerDependenciesMeta:
       unrs-resolver:
         optional: true
+
+  eslint-import-resolver-alias@1.1.2:
+    resolution: {integrity: sha512-WdviM1Eu834zsfjHtcGHtGfcu+F30Od3V7I9Fi57uhBEwPkjDcii7/yW8jAT+gOhn4P/vOxxNAXbFAKsrrc15w==}
+    engines: {node: '>= 4'}
+    peerDependencies:
+      eslint-plugin-import: '>=1.4.0'
 
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
@@ -17045,6 +17054,10 @@ snapshots:
       stable-hash-x: 0.2.0
     optionalDependencies:
       unrs-resolver: 1.11.1
+
+  eslint-import-resolver-alias@1.1.2(eslint-plugin-import@2.32.0):
+    dependencies:
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.46.2(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.2))(eslint-import-resolver-typescript@4.4.4)(eslint@9.38.0(jiti@2.6.1))
 
   eslint-import-resolver-node@0.3.9:
     dependencies:
