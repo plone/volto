@@ -31,7 +31,7 @@ jobs:
       - run: pnpm i
 
       - name: Run unit tests ${{ matrix.name }}
-        run: pnpm exec init-loaders && pnpm --filter ${{ matrix.name }} test
+        run: pnpm --filter seven exec init-loaders && pnpm --filter ${{ matrix.name }} test
 
   client:
     name: '@plone/client'
