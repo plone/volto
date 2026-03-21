@@ -74,6 +74,10 @@ exports[`renders an object list widget component 1`] = `
                  Add Link
               </button>
             </div>
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+            />
           </div>
         </div>
         <div

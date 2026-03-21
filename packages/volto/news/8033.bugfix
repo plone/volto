@@ -1,0 +1,1 @@
+Accessibility issues in form fields fixed. Announce errors via aria-live and expose required/invalid state on text inputs @Wagner3UB
