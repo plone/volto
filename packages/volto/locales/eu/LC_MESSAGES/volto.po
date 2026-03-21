@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-03-03 08:18+0000\n"
+"PO-Revision-Date: 2026-03-21 19:09+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\n"
 "Language: eu\n"
@@ -2283,7 +2283,7 @@ msgstr "Maparen URLa"
 #. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
-msgstr ""
+msgstr "Fitxategiaren tamaina maximoa {maxSize} bytekoa da, baina kargatu duzun fitxategiak {size} byte ditu."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2825,7 +2825,7 @@ msgstr "Hobespenak"
 #. Default: "Press Enter to browse files from your computer."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Sakatu Enter zure ordenagailuko fitxategiak aukeratzeko."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4677,7 +4677,7 @@ msgstr "Ezabatu"
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete_block"
-msgstr ""
+msgstr "ezabaut {type} blokea"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4707,7 +4707,7 @@ msgstr "Zirriborroa"
 #. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "drag_block"
-msgstr ""
+msgstr "arrastatu {type} blokea"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
