@@ -24,6 +24,7 @@ import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 import { AlternateHrefLangs } from '@plone/volto/components/theme/AlternateHrefLangs/AlternateHrefLangs';
 
 import config from '@plone/volto/registry';
+import { getLCPBlockId } from '@plone/volto/helpers/Blocks/Blocks';
 import SlotRenderer from '../SlotRenderer/SlotRenderer';
 
 /**
@@ -238,6 +239,7 @@ class View extends Component {
     }
     const RenderedView =
       this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
+    const lcpBlockPath = getLCPBlockId(this.props.content);
 
     return (
       <div id="view" tabIndex="-1">
@@ -258,6 +260,7 @@ class View extends Component {
           location={this.props.location}
           token={this.props.token}
           history={this.props.history}
+          lcpBlockPath={lcpBlockPath}
         />
         <SlotRenderer name="belowContent" content={this.props.content} />
         {this.props.content.allow_discussion && (

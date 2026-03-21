@@ -30,7 +30,7 @@ import isEqual from 'lodash/isEqual';
  * @returns {string} Markup of the component.
  */
 const DefaultView = (props) => {
-  const { content, location } = props;
+  const { content, location, lcpBlockPath } = props;
   const path = getBaseUrl(location?.pathname || '');
   const dispatch = useDispatch();
   const { views } = config.widgets;
@@ -69,7 +69,7 @@ const DefaultView = (props) => {
   return contentLoaded ? (
     hasBlocksData(content) ? (
       <Container id="page-document">
-        <RenderBlocks {...props} path={path} />
+        <RenderBlocks {...props} path={path} lcpBlockPath={lcpBlockPath} />
       </Container>
     ) : (
       <Container id="page-document">
@@ -135,6 +135,7 @@ DefaultView.propTypes = {
       data: PropTypes.string,
     }),
   }).isRequired,
+  lcpBlockPath: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default DefaultView;
