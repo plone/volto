@@ -19,7 +19,7 @@ exports[`Renders a button 1`] = `
   >
     <svg
       class="icon block-add-button"
-      style="height: 19px; width: auto; fill: currentColor;"
+      style="height: 19px; width: auto; fill: currentcolor;"
       viewBox="0 0 36 36"
       xmlns="http://www.w3.org/2000/svg"
     >

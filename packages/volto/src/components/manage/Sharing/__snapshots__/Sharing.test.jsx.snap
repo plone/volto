@@ -153,7 +153,7 @@ exports[`Sharing > renders a sharing component 1`] = `
           >
             <svg
               class="icon circled"
-              style="height: 30px; width: auto; fill: currentColor;"
+              style="height: 30px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -171,7 +171,7 @@ exports[`Sharing > renders a sharing component 1`] = `
           >
             <svg
               class="icon circled"
-              style="height: 30px; width: auto; fill: currentColor;"
+              style="height: 30px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
