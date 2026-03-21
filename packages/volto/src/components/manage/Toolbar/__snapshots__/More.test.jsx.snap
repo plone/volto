@@ -15,7 +15,7 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
       >
         <svg
           class="icon"
-          style="height: 30px; width: auto; fill: currentColor;"
+          style="height: 30px; width: auto; fill: currentcolor;"
           viewBox="0 0 36 36"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -63,7 +63,7 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
             </div>
             <svg
               class="icon"
-              style="height: 24px; width: auto; fill: currentColor;"
+              style="height: 24px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -81,7 +81,7 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
             Sharing
             <svg
               class="icon"
-              style="height: 24px; width: auto; fill: currentColor;"
+              style="height: 24px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -99,7 +99,7 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
             URL Management
             <svg
               class="icon"
-              style="height: 24px; width: auto; fill: currentColor;"
+              style="height: 24px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -117,7 +117,7 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
             Links and references
             <svg
               class="icon"
-              style="height: 24px; width: auto; fill: currentColor;"
+              style="height: 24px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
