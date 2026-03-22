@@ -24,22 +24,19 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
-  Menu as RACMenu,
-  MenuItem as RACMenuItem,
   type MenuItemProps,
   type MenuProps,
-  MenuTrigger,
   type MenuTriggerProps,
-  Popover,
   type PressEvent,
 } from 'react-aria-components';
-import { Button } from '@plone/components';
+import { Menu, MenuItem } from '@plone/components';
 import type { Placement } from 'react-aria';
 
 export interface ToolbarMenuProps<T>
   extends MenuProps<T>,
     Omit<MenuTriggerProps, 'children'> {
   button?: React.ReactNode;
+  className?: string;
   onPress?: (e: PressEvent) => void;
   placement?: Placement;
   /** CSS string (imported with `?inline`) to inject into the shadow root. */
@@ -91,20 +88,22 @@ export function ToolbarMenu<T extends object>({
   return (
     <>
       {styles && <style>{styles}</style>}
-      <MenuTrigger isOpen={isOpen} onOpenChange={setIsOpen} {...props}>
-        <Button ref={triggerRefCallback} onPress={onPress}>
-          {button}
-        </Button>
-        <Popover placement={props.placement || 'bottom start'} isNonModal>
-          <RACMenu className={className} {...props}>
-            {children}
-          </RACMenu>
-        </Popover>
-      </MenuTrigger>
+      <Menu
+        isOpen={isOpen}
+        onOpenChange={setIsOpen}
+        button={button}
+        buttonRef={triggerRefCallback}
+        onPress={onPress}
+        isNonModal={true}
+        className={className}
+        {...props}
+      >
+        {children}
+      </Menu>
     </>
   );
 }
 
 export function ToolbarMenuItem<T extends object>(props: MenuItemProps<T>) {
-  return <RACMenuItem {...props} />;
+  return <MenuItem {...props} />;
 }

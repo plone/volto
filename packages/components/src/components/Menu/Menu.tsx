@@ -17,21 +17,33 @@ export interface MenuButtonProps<T>
   extends MenuProps<T>,
     Omit<MenuTriggerProps, 'children'> {
   button?: React.ReactNode;
+  buttonRef?: React.Ref<HTMLButtonElement>;
+  className?: string;
+  isOpen?: boolean;
+  isNonModal?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
   onPress?: (e: PressEvent) => void;
   placement?: Placement;
 }
 
 export function Menu<T extends object>({
   button,
-  onPress,
+  buttonRef,
   children,
   className,
+  isOpen,
+  isNonModal = false,
+  onOpenChange,
+  onPress,
+  placement,
   ...props
 }: MenuButtonProps<T>) {
   return (
-    <MenuTrigger {...props}>
-      <Button onPress={onPress}>{button}</Button>
-      <Popover placement={props.placement || 'bottom start'}>
+    <MenuTrigger isOpen={isOpen} onOpenChange={onOpenChange} {...props}>
+      <Button ref={buttonRef} onPress={onPress}>
+        {button}
+      </Button>
+      <Popover placement={placement || 'bottom start'} isNonModal={isNonModal}>
         <RACMenu className={className} {...props}>
           {children}
         </RACMenu>
