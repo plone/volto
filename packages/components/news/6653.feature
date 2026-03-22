@@ -1,1 +1,1 @@
-Extended customizability of the Menu component. @arybakov05
+Extended customizability of the `Menu` component. @arybakov05

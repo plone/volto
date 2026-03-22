@@ -13,7 +13,7 @@ myst:
 
 The {term}`configuration registry` includes a component registry for managing components globally.
 In this registry, components can be registered given a unique component name.
-Any other add-on can then retrieve and use this component by searching the components name.
+Any other add-on can then retrieve and use this component by searching for the component's name.
 
 The key motivation behind the component registry is to simplify the process of customization.
 Existing components can easily be overwritten without {term}`shadowing` by registering a new component using the name of an existing component.
@@ -53,7 +53,8 @@ Please notice that you are able to pass `props` down to the retrieved component.
 ## Adapting the component using `dependencies` array
 
 Components can also be conditionally registered by passing dependencies.
-To register a component with dependencies, you can either pass a `string` or an `array of strings`.
+To register a component with dependencies, either pass a string or an array of strings.
+
 ```js
 import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent'
 
