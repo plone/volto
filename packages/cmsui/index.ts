@@ -3,6 +3,8 @@ import installWidgets from './config/widgets';
 import installControlpanels from './config/controlpanels';
 import { formAtom } from './routes/atoms';
 import type { BlockConfigBase } from '@plone/types';
+import { ToolbarSettings } from './components/Toolbar/ToolbarSettings';
+import { RouteCondition } from '@plone/layout/helpers';
 
 declare module '@plone/types' {
   export interface BlocksConfigData {
@@ -137,6 +139,13 @@ export default function install(config: ConfigType) {
         file: '@plone/cmsui/routes/api/createContent.tsx',
       },
     ],
+  });
+
+  config.registerSlotComponent({
+    name: 'toolbarSettings',
+    slot: 'toolbarBottom',
+    component: ToolbarSettings,
+    predicates: [RouteCondition('@@edit/*')],
   });
 
   return config;

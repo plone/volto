@@ -73,6 +73,10 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
   const token = await getAuthFromRequest(request);
   const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
 
+  if (token) {
+    expand.push('types');
+  }
+
   const cli = config
     .getUtility({
       name: 'ploneClient',

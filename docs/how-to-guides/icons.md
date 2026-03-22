@@ -126,3 +126,26 @@ These pre-built components are equivalent to importing the SVGs directly, but th
 - Use them when the SVGR Vite plugin is not available, for example in Storybook, Jest, or non-Vite frameworks, such as Next.js.
 - When developing `@plone/components` itself, prefer these pre-built modules because the package build pipeline has no awareness of your app's Vite configuration.
 ```
+
+# Define an icon for a content type
+
+Icons for content types are defined in the registry under `config.settings.contentIcons`.
+To change an existing icon or to define an icon for a custom content type, please refer to the following code example:
+
+````tsx
+import type { ConfigType } from '@plone/registry';
+import SomeIcon from 'my/addon/icons/someicon.svg?react';
+
+export default function install(config: ConfigType) {
+  // Rest of your configuration goes here
+  
+  config.settings.contentIcons = {
+    ...config.settings.contentIcons,
+    MyContentType: SomeIcon,
+  }
+  
+  // or here...
+  
+  return config;
+}
+````

@@ -1,0 +1,65 @@
+.menu-contenttypes-add {
+  padding: 1rem;
+
+  .react-aria-Text {
+    color: var(--quanta-sapphire);
+  }
+
+  .icon {
+    color: var(--quanta-dolphin);
+  }
+
+  .react-aria-MenuItem[data-focused='true'] {
+    .icon {
+      color: var(--quanta-smoke);
+    }
+
+    .react-aria-Text {
+      color: var(--quanta-air);
+    }
+  }
+
+  .most-used {
+    display: grid;
+    width: 100%;
+    margin-bottom: 1rem;
+    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+
+    .react-aria-Header {
+      grid-column: 1 / -1;
+    }
+
+    .react-aria-MenuItem {
+      display: flex;
+      width: 100%;
+      min-height: 100px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border-radius: 0.375rem;
+
+      &:not([data-focused='true']) {
+        background-color: var(--quanta-smoke);
+      }
+
+      .icon {
+        width: 48px;
+        height: 48px;
+      }
+    }
+  }
+
+  .types .react-aria-MenuItem {
+    padding: 1rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--quanta-smoke);
+    }
+
+    .icon {
+      margin-right: 1rem;
+    }
+  }
+}

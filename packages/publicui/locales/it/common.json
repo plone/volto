@@ -6,6 +6,10 @@
       "results": "Risultati della ricerca",
       "placeholder": "Scrivi qui...",
       "noResults": "Nessun risultato"
+    },
+    "toolbar": {
+      "edit": "Edit",
+      "addContent": "Add content"
     }
   }
 }
