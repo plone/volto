@@ -46,14 +46,14 @@ export default function install(config: ConfigType) {
     name: 'toolbarEdit',
     slot: 'toolbarTop',
     component: ToolbarEdit,
-    predicates: [NotRouteCondition('@@edit')],
+    predicates: [NotRouteCondition('@@edit/*')],
   });
 
   config.registerSlotComponent({
     name: 'toolbarAdd',
     slot: 'toolbarTop',
     component: ContentTypesMenu,
-    predicates: [ContentFolderishCondition(), NotRouteCondition('@@edit')],
+    predicates: [ContentFolderishCondition(), NotRouteCondition('@@edit/*')],
   });
 
   return config;

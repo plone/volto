@@ -145,7 +145,7 @@ export default function install(config: ConfigType) {
     name: 'toolbarSettings',
     slot: 'toolbarBottom',
     component: ToolbarSettings,
-    predicates: [RouteCondition('@@edit')],
+    predicates: [RouteCondition('@@edit/*')],
   });
 
   return config;
