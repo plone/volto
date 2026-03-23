@@ -326,7 +326,7 @@
     "wait-on": "catalog:",
     "webpack": "5.105.4",
     "webpack-bundle-analyzer": "4.10.1",
-    "webpack-dev-server": "4.11.1",
+    "webpack-dev-server": "catalog:",
     "webpack-node-externals": "3.0.0"
   }
 }
