@@ -10,8 +10,8 @@ myst:
 # Customize Seven using the configuration registry
 
 The registry is the central place for configuring your Seven application.
-If the default location has not been modified, you can locate the configuration in the `settings.ts` file in the `config` folder of your add-on.
-Existing entries can be modified or new entries can be added.
+Configuration is typically located either in the index.ts file at the add-ons root level or in config/settings.ts.
+In this file, existing entries can be modified or new ones added as needed.
 
 ```ts
 import type { ConfigType } from '@plone/registry';
@@ -24,19 +24,19 @@ export default function install(config: ConfigType) {
   // Example: Adding a content type to the "most used" section
   //          of the content type menu in the toolbar 
   config.settings.mostUsedTypes = [
-    // Make sure not to override existing entries,
-    // but to keep existing values unless you actually want to
+    // Keep existing entries and append the new one
+    // to avoid overwriting them (unless intentional)
     ...config.settings.mostUsedTypes,
     'My Content Type',
   ];
   
-  // Rest of your configuration goes here
+  // Rest of the configuration goes here
   
   return config;
 }
 ```
 
-To then access the configuration in your code, the config can be imported from `@plone/registry`.
+The configuration can then be used in your code using the `config` exported from `@plone/registry`.
 
 ```ts
 import config from '@plone/registry';

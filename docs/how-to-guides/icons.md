@@ -132,7 +132,7 @@ These pre-built components are equivalent to importing the SVGs directly, but th
 Icons for content types are defined in the registry under `config.settings.contentIcons`.
 To change an existing icon or to define an icon for a custom content type, please refer to the following code example:
 
-````tsx
+```tsx
 import type { ConfigType } from '@plone/registry';
 import SomeIcon from 'my/addon/icons/someicon.svg?react';
 
@@ -148,4 +148,4 @@ export default function install(config: ConfigType) {
   
   return config;
 }
-````
+```

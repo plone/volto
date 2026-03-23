@@ -65,7 +65,7 @@ config.registerComponent({
   });
 ```
 
-To retrieve this component, you must pass the data against which the dependencies are checked.
+To retrieve this component, pass the data against which the dependencies are checked.
 
 ```js
 config.getComponent({
