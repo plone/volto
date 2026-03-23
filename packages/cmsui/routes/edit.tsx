@@ -11,7 +11,7 @@ import {
   type SubmitTarget,
 } from 'react-router';
 import { clsx } from 'clsx';
-import { useAtom, createStore, getDefaultStore, Provider } from 'jotai';
+import { useAtomValue, createStore, getDefaultStore, Provider } from 'jotai';
 import { requireAuthCookie } from '@plone/react-router';
 import type { DeepKeys } from '@tanstack/react-form';
 import { flattenToAppURL, InitAtoms } from '@plone/helpers';
@@ -75,8 +75,7 @@ export default function Edit() {
   const fetcher = useFetcher();
   const storeRef = useRef(createStore());
   const store = storeRef.current;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [collapsed, setCollapsed] = useAtom(sidebarAtom);
+  const collapsed = useAtomValue(sidebarAtom);
 
   const form = useAppForm({
     defaultValues: content,

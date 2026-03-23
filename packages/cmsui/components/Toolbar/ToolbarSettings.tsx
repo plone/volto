@@ -1,12 +1,11 @@
-import { useAtom } from 'jotai';
+import { useSetAtom } from 'jotai';
 import { sidebarAtom } from '../Sidebar/Sidebar';
 import Settings from '@plone/components/icons/settings.svg?react';
 import { useTranslation } from 'react-i18next';
 
 export const ToolbarSettings = () => {
   const { t } = useTranslation();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [collapsed, setCollapsed] = useAtom(sidebarAtom);
+  const setCollapsed = useSetAtom(sidebarAtom);
 
   return (
     <button
