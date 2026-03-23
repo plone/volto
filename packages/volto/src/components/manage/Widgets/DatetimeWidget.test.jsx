@@ -66,3 +66,32 @@ test('datetime widget converts UTC date and adapts to local datetime', async () 
   await waitFor(() => screen.getByPlaceholderText('Time'));
   expect(container).toMatchSnapshot();
 });
+
+test('applies aria-required attribute to the time input when required prop is true', async () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const { container } = render(
+    <Provider store={store}>
+      <DatetimeWidget
+        id="required-field"
+        title="Required Field"
+        onChange={() => {}}
+        required={true}
+      />
+    </Provider>,
+  );
+
+  // Wait for the lazy-loaded TimePicker to be mounted in the DOM
+  await waitFor(() => screen.getByPlaceholderText('Time'));
+
+  // The rc-time-picker doesn't support aria-required natively,
+  // so we verify if our MutationObserver/useEffect successfully injected it.
+  const timeInput = container.querySelector('.time-input input');
+
+  expect(timeInput).toHaveAttribute('aria-required', 'true');
+});

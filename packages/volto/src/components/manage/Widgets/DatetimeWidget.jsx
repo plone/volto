@@ -168,6 +168,10 @@ const DatetimeWidgetComponent = (props) => {
 
   // aria-required for the time input (rc-time-picker is lazy-loaded,
   // so MutationObserver is needed to catch when it mounts its input)
+
+  // rc-time-picker does not have aria props, so we need to set aria-required
+  // manually on the input element when the required prop changes
+
   useEffect(() => {
     if (!renderWidget || isDateOnly) return;
 
