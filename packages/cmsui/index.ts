@@ -5,6 +5,8 @@ import { formAtom } from './routes/atoms';
 import type { BlockConfigBase } from '@plone/types';
 import { ToolbarSettings } from './components/Toolbar/ToolbarSettings';
 import { RouteCondition } from '@plone/layout/helpers';
+import { ToolbarCancel } from './components/Toolbar/ToolbarCancel';
+import { ToolbarSave } from './components/Toolbar/ToolbarSave';
 
 declare module '@plone/types' {
   export interface BlocksConfigData {
@@ -145,6 +147,20 @@ export default function install(config: ConfigType) {
     name: 'toolbarSettings',
     slot: 'toolbarBottom',
     component: ToolbarSettings,
+    predicates: [RouteCondition('@@edit/*')],
+  });
+
+  config.registerSlotComponent({
+    name: 'toolbarSave',
+    slot: 'toolbarTop',
+    component: ToolbarSave,
+    predicates: [RouteCondition('@@edit/*')],
+  });
+
+  config.registerSlotComponent({
+    name: 'toolbarCancel',
+    slot: 'toolbarTop',
+    component: ToolbarCancel,
     predicates: [RouteCondition('@@edit/*')],
   });
 

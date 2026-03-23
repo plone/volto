@@ -1,2 +1,2 @@
-Moved toolbar settings button into a slot.
+Moved toolbar actions into slots.
 Added German translations. @arybakov05

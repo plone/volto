@@ -5,6 +5,8 @@ import type { Content } from '@plone/types';
 
 export const formAtom = atom<Content>({} as Content);
 
+export const formSubmitAtom = atom<(() => void) | null>(null);
+
 export const blockAtomFamily = atomFamily((id: string) =>
   focusAtom(formAtom, (optic) => optic.prop('blocks').prop(id)),
 );

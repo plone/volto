@@ -11,16 +11,11 @@ import {
   type SubmitTarget,
 } from 'react-router';
 import { clsx } from 'clsx';
-import { useAtom, createStore, Provider } from 'jotai';
-import { Link } from 'react-aria-components';
+import { useAtom, createStore, getDefaultStore, Provider } from 'jotai';
 import { requireAuthCookie } from '@plone/react-router';
 import type { DeepKeys } from '@tanstack/react-form';
 import { flattenToAppURL, InitAtoms } from '@plone/helpers';
 import type { Content } from '@plone/types';
-import { Plug } from '@plone/layout/components/Pluggable';
-import Checkbox from '@plone/components/icons/checkbox.svg?react';
-import Close from '@plone/components/icons/close.svg?react';
-import Settings from '@plone/components/icons/settings.svg?react';
 import {
   Accordion,
   AccordionItem,
@@ -32,7 +27,7 @@ import {
   ploneClientContext,
   ploneContentContext,
 } from 'seven/app/middleware.server';
-import { formAtom } from './atoms';
+import { formAtom, formSubmitAtom } from './atoms';
 import BlocksEditor from '../components/BlockEditor/BlocksEditor';
 import { useAppForm } from '../components/Form/Form';
 import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
@@ -80,6 +75,7 @@ export default function Edit() {
   const fetcher = useFetcher();
   const storeRef = useRef(createStore());
   const store = storeRef.current;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [collapsed, setCollapsed] = useAtom(sidebarAtom);
 
   const form = useAppForm({
@@ -93,6 +89,8 @@ export default function Edit() {
       return redirect(`/${content['@id']}`);
     },
   });
+
+  getDefaultStore().set(formSubmitAtom, () => form.handleSubmit);
 
   return (
     <Provider store={store}>
@@ -175,31 +173,6 @@ export default function Edit() {
                 },
               ]}
             />
-            <Plug pluggable="toolbar-top" id="edit-save-button">
-              <button
-                aria-label={t('cmsui.save')}
-                type="submit"
-                // Trigger the TS form submission
-                onClick={() => form.handleSubmit()}
-                className="primary"
-              >
-                <Checkbox />
-              </button>
-            </Plug>
-            <Plug pluggable="toolbar-top" id="button-cancel">
-              <Link aria-label="Cancel" href="/">
-                <Close />
-              </Link>
-            </Plug>
-            <Plug pluggable="toolbar-bottom" id="button-settings">
-              <button
-                type="button"
-                aria-label="Settings"
-                onClick={() => setCollapsed((state) => !state)}
-              >
-                <Settings />
-              </button>
-            </Plug>
           </main>
         </div>
         <Sidebar />
