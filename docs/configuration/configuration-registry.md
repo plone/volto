@@ -11,7 +11,7 @@ myst:
 
 The registry is the central place for configuring your Seven application.
 Configuration is typically located either in the index.ts file at the add-ons root level or in config/settings.ts.
-In this file, existing entries can be modified or new ones added as needed.
+In this file, you can modify existing entries or add new ones as needed.
 
 ```ts
 import type { ConfigType } from '@plone/registry';
@@ -36,7 +36,7 @@ export default function install(config: ConfigType) {
 }
 ```
 
-The configuration can then be used in your code using the `config` exported from `@plone/registry`.
+You can then use the configuration in your code using the `config` exported from `@plone/registry`.
 
 ```ts
 import config from '@plone/registry';

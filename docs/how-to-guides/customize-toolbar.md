@@ -93,7 +93,7 @@ export const MyMenu = ({ content }: MyMenuProps) => {
 
 `styles`
 :   A CSS string imported with `?inline`.
-    This is injected into the toolbar's shadow root so that your menu styles apply correctly.
+    Injects the styles into the toolbar's shadow root so that your menu styles apply correctly.
 
 `className`
 :   CSS classes applied to the menu container for styling.
@@ -115,7 +115,7 @@ config.registerSlotComponent({
 
 ## Remove a toolbar button or menu
 
-To remove a button or menu from the toolbar, the according slot can simply be unregistered in the config.
+To remove a button or menu from the toolbar, unregister the corresponding slot in the `config`.
 
 ```ts
 config.unRegisterSlotComponent('toolbarTop', 'myButton', 0);

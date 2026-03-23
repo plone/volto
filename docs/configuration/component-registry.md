@@ -12,11 +12,11 @@ myst:
 # Component registry
 
 The {term}`configuration registry` includes a component registry for managing components globally.
-In this registry, components can be registered given a unique component name.
+In this registry, you can register components given a unique component name.
 Any other add-on can then retrieve and use this component by searching for the component's name.
 
 The key motivation behind the component registry is to simplify the process of customization.
-Existing components can easily be overwritten without {term}`shadowing` by registering a new component using the name of an existing component.
+Existing components can be overwritten without {term}`shadowing` by registering a new component using the name of an existing component.
 Since the component registry is globally available, this means that all code pointing to this component will now use the newly registered component instead.
 
 You can even have modifiers to the component registrations: dependencies. So you can "adapt" the call given an array of such dependencies.
@@ -65,7 +65,7 @@ config.registerComponent({
   });
 ```
 
-To retrieve this component, pass the data against which the dependencies are checked.
+To retrieve this component, pass the data used to check the dependencies.
 
 ```js
 config.getComponent({
