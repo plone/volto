@@ -1,6 +1,6 @@
 {
   "publicui": {
-    "sitemap": "Sitemap",
+    "sitemap": "Mappa del sito",
     "search": {
       "title":"Risultati della ricerca per",
       "results": "Risultati della ricerca",
@@ -8,8 +8,8 @@
       "noResults": "Nessun risultato"
     },
     "toolbar": {
-      "edit": "Edit",
-      "addContent": "Add content"
+      "edit": "Modifica",
+      "addContent": "Aggiungi contenuto"
     }
   }
 }
