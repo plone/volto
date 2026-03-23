@@ -17,7 +17,6 @@
     "FriendlyErrorsPlugin.js",
     "FileSizeReporter.js",
     "webpackHotDevClient.js",
-    "webpackHotDevClientV4.js",
     "setPorts.js",
     "makeLoaderFinder.js",
     "WebpackConfigHelpers.js",
@@ -42,8 +41,8 @@
     "strip-ansi": "^6.0.0"
   },
   "peerDependencies": {
-    "webpack": "~4||~5",
-    "webpack-dev-server": "~3||~4"
+    "webpack": "~5",
+    "webpack-dev-server": "catalog:"
   },
   "scripts": {
     "dry-release": "release-it --dry-run",
