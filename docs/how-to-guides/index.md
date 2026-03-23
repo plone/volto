@@ -25,4 +25,5 @@ add-tailwind
 icons
 configure-plate-block-widths
 configure-plate-code-block-languages
+customize-toolbar
 ```
