@@ -13,7 +13,7 @@
  * is acceptable because permission-gated UI requires an authenticated request
  * anyway.
  *
- * React context (Jotai, Router, Pluggables…) flows through createPortal
+ * React context (Jotai, Router, Pluggables, Slots…) flows through createPortal
  * unchanged — portals preserve the React tree's context even when the DOM
  * target is a shadow root.
  */
@@ -64,12 +64,22 @@ function ToolbarInner({ content }: ToolbarInnerProps) {
  * Renders a fixed CMS toolbar on the left side of the viewport, isolated from
  * the host-page stylesheet via Shadow DOM.
  *
- * Extensibility is handled by the Pluggable system:
- *   • `toolbar-top`    — slot at the top of the toolbar
- *   • `toolbar-bottom` — slot at the bottom of the toolbar
+ * Extensibility is handled by the slot system via `SlotRenderer`:
+ *   • `toolbarTop`    — slot at the top of the toolbar
+ *   • `toolbarBottom` — slot at the bottom of the toolbar
  *
- * Register items with `<Plug pluggable="toolbar-top" id="my-button">`
- * More info about Pluggables: https://6.docs.plone.org/volto/development/pluggables.html
+ * Register components with `config.registerSlotComponent()`:
+ *
+ * ```ts
+ * config.registerSlotComponent({
+ *   slot: 'toolbarTop',
+ *   name: 'myButton',
+ *   component: MyButton,
+ *   predicates: [RouteCondition('@@edit/*')],
+ * });
+ * ```
+ *
+ * More info about Slots: https://6.docs.plone.org/volto/configuration/slots.html
  */
 const Toolbar = () => {
   const rootData = useRouteLoaderData<RootLoader>('root');
