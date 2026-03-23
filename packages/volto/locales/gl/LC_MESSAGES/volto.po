@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-03-03 08:21+0000\n"
-"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"PO-Revision-Date: 2026-03-23 12:09+0000\n"
+"Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -2288,7 +2288,7 @@ msgstr "Mapas URL"
 #. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
-msgstr ""
+msgstr "O tamaño máximo de ficheiro é de {maxSize} bytes, pero o ficheiro cargado ten {size} bytes."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2830,7 +2830,7 @@ msgstr "Preferencias"
 #. Default: "Press Enter to browse files from your computer."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Prema Intro para explorar os ficheiros do seu ordenador."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4682,7 +4682,7 @@ msgstr "eliminar"
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete_block"
-msgstr ""
+msgstr "borrar bloque {type}"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4712,7 +4712,7 @@ msgstr "Borrador"
 #. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "drag_block"
-msgstr ""
+msgstr "arrastre bloque {type}"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
