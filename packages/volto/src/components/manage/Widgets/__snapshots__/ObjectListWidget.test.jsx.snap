@@ -62,7 +62,7 @@ exports[`renders an object list widget component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 18px; width: auto; fill: currentColor;"
+                  style="height: 18px; width: auto; fill: currentcolor;"
                   viewBox="0 0 36 36"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -124,7 +124,7 @@ exports[`renders an object list widget component 1`] = `
             >
               <svg
                 class="icon"
-                style="height: 18px; width: auto; fill: currentColor;"
+                style="height: 18px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -147,7 +147,7 @@ exports[`renders an object list widget component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 20px; width: auto; fill: #e40166;"
+                  style="height: 20px; width: auto; fill: rgb(228, 1, 102);"
                   viewBox="0 0 36 36"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -165,7 +165,7 @@ exports[`renders an object list widget component 1`] = `
               </button>
               <svg
                 class="icon"
-                style="height: 20px; width: auto; fill: currentColor;"
+                style="height: 20px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -240,7 +240,7 @@ exports[`renders an object list widget component 1`] = `
             >
               <svg
                 class="icon"
-                style="height: 18px; width: auto; fill: currentColor;"
+                style="height: 18px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -263,7 +263,7 @@ exports[`renders an object list widget component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 20px; width: auto; fill: #e40166;"
+                  style="height: 20px; width: auto; fill: rgb(228, 1, 102);"
                   viewBox="0 0 36 36"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -281,7 +281,7 @@ exports[`renders an object list widget component 1`] = `
               </button>
               <svg
                 class="icon"
-                style="height: 20px; width: auto; fill: currentColor;"
+                style="height: 20px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
