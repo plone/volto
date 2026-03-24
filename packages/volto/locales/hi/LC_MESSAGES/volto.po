@@ -461,6 +461,8 @@ msgstr "उपलब्ध कंटेंट नियम:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -504,6 +506,17 @@ msgstr "मूल खोज क्वेरी"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "ब्लॉक"
+
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -2004,6 +2017,11 @@ msgstr ""
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "पासवर्ड और पासवर्ड रीसेट संदेश को ईमेल द्वारा भेजने का अनुरोध करने के लिए दोनों को परिभाषित करने की अनुमति नहीं है। आपको उनमें से एक का चयन करना होगा।"
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2646,6 +2664,12 @@ msgstr "ऑब्जेक्ट का आकार"
 msgid "Occurences"
 msgstr "आयोजनएं"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2736,6 +2760,11 @@ msgstr "चिपकाएं"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "ब्लॉक चिपकाएं"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4735,6 +4764,11 @@ msgstr "सामान्य"
 msgid "compare_to"
 msgstr "इस भाषा के साथ तुलना करें"
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4953,6 +4987,8 @@ msgstr "सूची"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "लोड हो रहा है"
 
@@ -5012,6 +5048,11 @@ msgstr "नहीं"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "कोई वर्कफ़्लो स्थिति नहीं"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels

@@ -461,6 +461,8 @@ msgstr "Regole di contenuto disponibili:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -504,6 +506,17 @@ msgstr "Ricerca iniziale"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Blocco"
+
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -2004,6 +2017,11 @@ msgstr "Sorgente non valida per il teaser"
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Non è consentito effettuare contemporaneamente l'inserimento della password e la richiesta dell'invio del messaggio di reimpostazione della password tramite e-mail. È necessario selezionare una di esse."
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2646,6 +2664,12 @@ msgstr "Dimensioni dell'oggetto"
 msgid "Occurences"
 msgstr "occorrenze"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2736,6 +2760,11 @@ msgstr "Incolla"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "Incolla blocchi"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4735,6 +4764,11 @@ msgstr "Comuni"
 msgid "compare_to"
 msgstr "Confronta con"
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4953,6 +4987,8 @@ msgstr "Elenco"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "caricamento"
 
@@ -5012,6 +5048,11 @@ msgstr "No"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "Nessun stato di workflow"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels

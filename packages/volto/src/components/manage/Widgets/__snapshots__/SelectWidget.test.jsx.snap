@@ -73,13 +73,13 @@ exports[`No 'No value' option when default value is 0 1`] = `
                       autocorrect="off"
                       id="react-select-3-input"
                       spellcheck="false"
-                      style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
+                      style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;"
                       tabindex="0"
                       type="text"
                       value=""
                     />
                     <div
-                      style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                      style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; letter-spacing: initial; text-transform: initial;"
                     />
                   </div>
                 </div>
@@ -93,7 +93,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                 >
                   <svg
                     class="icon"
-                    style="height: 18px; width: auto; fill: #e40166;"
+                    style="height: 18px; width: auto; fill: rgb(228, 1, 102);"
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -112,7 +112,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                 >
                   <svg
                     class="icon"
-                    style="height: 24px; width: auto; fill: #007bc1;"
+                    style="height: 24px; width: auto; fill: rgb(0, 123, 193);"
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -140,7 +140,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   </div>
                   <svg
                     class="icon"
-                    style="height: 20px; width: auto; fill: #007bc1;"
+                    style="height: 20px; width: auto; fill: rgb(0, 123, 193);"
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -166,7 +166,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   </div>
                   <svg
                     class="icon"
-                    style="height: 20px; width: auto; fill: #007bc1;"
+                    style="height: 20px; width: auto; fill: rgb(0, 123, 193);"
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -263,13 +263,13 @@ exports[`renders a select widget component 1`] = `
                       autocorrect="off"
                       id="react-select-2-input"
                       spellcheck="false"
-                      style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
+                      style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;"
                       tabindex="0"
                       type="text"
                       value=""
                     />
                     <div
-                      style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                      style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; letter-spacing: initial; text-transform: initial;"
                     />
                   </div>
                 </div>
@@ -286,7 +286,7 @@ exports[`renders a select widget component 1`] = `
                 >
                   <svg
                     class="icon"
-                    style="height: 24px; width: auto; fill: #007bc1;"
+                    style="height: 24px; width: auto; fill: rgb(0, 123, 193);"
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >

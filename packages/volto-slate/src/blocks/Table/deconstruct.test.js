@@ -18,7 +18,7 @@ describe('syncCreateTableBlock', () => {
     const [id, block] = syncCreateTableBlock(rows);
 
     expect(id).toBeDefined();
-    expect(block['@type']).toBe('slateTableaa');
+    expect(block['@type']).toBe('slateTable');
     expect(block.table.rows).toEqual(rows);
   });
 });

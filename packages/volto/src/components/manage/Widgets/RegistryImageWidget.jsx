@@ -99,7 +99,7 @@ const RegistryImageWidget = (props) => {
 
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      onChange(id, `filenameb64:${btoa(file.name)};datab64:${fields[3]}}`);
+      onChange(id, `filenameb64:${btoa(file.name)};datab64:${fields[3]}`);
     });
 
     let reader = new FileReader();
