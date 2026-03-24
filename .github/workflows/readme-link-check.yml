@@ -28,5 +28,6 @@ jobs:
           --exclude 2021.ploneconf.org
           --exclude https://www.lanku.eus/
           --exclude https://medium.com/
+          --exclude https://tanstack.com/
           'packages/**/README.md'
           '*.md'
