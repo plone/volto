@@ -1,0 +1,1 @@
+Only include the original image in the Image component if the image does not have all the scales present. Fixed and update tests. @sneridagh
