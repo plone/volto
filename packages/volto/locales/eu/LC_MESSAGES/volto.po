@@ -561,10 +561,10 @@ msgstr "Atarian bilatu, irudi bat hona arrastatu edo URL bat idatzi"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
 #: components/manage/Sharing/Sharing
-msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Defektuz, elementu hau barnean duen karpetaren baimenak heredatu egiten dira. Hau desaktibatzen baduzu, hemen zehaztutako baimenak bakarrik aplikatuko dira. {inherited} ikurrak heredatutako balioa adierazten du. Era berean, {global} ikurrak rol globala adierazten du, atariaren kudeatzaileak kudeatzen duen rola."
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
+msgstr "Lehenespenez, elementu honen edukiontziaren baimenak heredatzen dira. Hau desgaitzen baduzu, berariaz definitutako partekatze baimenak bakarrik izango dira baliodunak. Laburpenean, heredatutako balioak 'Heredatutako balioa' gisa etiketatzen dira eta egiaztapen-marka berdea jasotzen dute {inherited}. Era berean, gunearen administratzaileak kudeatutako rolak 'Rol globala' gisa etiketatzen dira eta egiaztapen-marka urdina jasotzen dute {global}"
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases

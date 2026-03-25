@@ -472,8 +472,24 @@ class SharingComponent extends Component {
                 </Form.Field>
                 <p className="help">
                   <FormattedMessage
-                    id="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark"
-                    defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark"
+                    id="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
+                    defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
+                    values={{
+                      inherited: (
+                        <IconOld
+                          aria-hidden="true"
+                          name="check circle outline"
+                          color="green"
+                        />
+                      ),
+                      global: (
+                        <IconOld
+                          aria-hidden="true"
+                          name="check circle outline"
+                          color="blue"
+                        />
+                      ),
+                    }}
                   />
                 </p>
               </Segment>
