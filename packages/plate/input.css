@@ -1,0 +1,17 @@
+/* seven/packages/plate/input.css */
+@import 'tailwindcss';
+
+/* Plate’s own code */
+@source './components/**/*.{ts,tsx,js,jsx}';
+@source './stories/**/*.{ts,tsx,js,jsx}';
+@source './lib/**/*.{ts,tsx,js,jsx}';
+
+/* Dependencies that contain Tailwind classes */
+@source './node_modules/@platejs/**/*.{js,jsx,ts,tsx}';
+@source './node_modules/@radix-ui/**/*.{js,jsx,ts,tsx}';
+@source './node_modules/sonner/**/*.{js,jsx,ts,tsx}';
+
+/* Optional: keep Tailwind from walking into nested deps */
+@source not './node_modules/**/node_modules/**';
+
+@import '../theming/styles/colors.css';

@@ -33,6 +33,13 @@ import {
   ToolbarSplitButtonSecondary,
 } from './toolbar';
 
+const getWidthIcon = (value: string | undefined) =>
+  value === BLOCK_WIDTH_VALUES.layout
+    ? WidthLayoutIcon
+    : value === BLOCK_WIDTH_VALUES.narrow
+      ? WidthNarrowIcon
+      : WidthDefaultIcon;
+
 export function BlockWidthToolbarButton(props: DropdownMenuProps) {
   const { editor, tf } = useEditorPlugin(BlockWidthPlugin);
   const [open, setOpen] = React.useState(false);
@@ -49,6 +56,11 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
     defaultValue: baseValue,
     getProp: (node) => node.blockWidth,
   });
+  const ActiveIcon = getWidthIcon(value ?? baseValue);
+
+  if (widthOptions.length <= 1) {
+    return null;
+  }
 
   return (
     <ToolbarSplitButton pressed={open}>
@@ -60,7 +72,7 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
         }}
         data-state={value !== baseValue ? 'on' : 'off'}
       >
-        <WidthDefaultIcon className="size-4" />
+        <ActiveIcon className="size-4" />
       </ToolbarSplitButtonPrimary>
 
       <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
@@ -77,12 +89,7 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
             }}
           >
             {widthOptions.map(({ label, value }) => {
-              const Icon =
-                value === BLOCK_WIDTH_VALUES.layout
-                  ? WidthLayoutIcon
-                  : value === BLOCK_WIDTH_VALUES.narrow
-                    ? WidthNarrowIcon
-                    : WidthDefaultIcon;
+              const Icon = getWidthIcon(value);
 
               return (
                 <DropdownMenuRadioItem
