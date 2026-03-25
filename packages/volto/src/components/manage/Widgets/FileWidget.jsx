@@ -35,12 +35,12 @@ const messages = defineMessages({
     defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drop file here to replace the existing file',
-    defaultMessage: 'Drop file here to replace the existing file',
+    id: 'Drop a file here or click to replace the current one',
+    defaultMessage: 'Drop a file here or click to replace the current one',
   },
   fileDrag: {
-    id: 'Drop file here to upload a new file',
-    defaultMessage: 'Drop file here to upload a new file',
+    id: 'Drop a file here or click to upload',
+    defaultMessage: 'Drop a file here or click to upload',
   },
   replaceFile: {
     id: 'Replace existing file',
@@ -60,8 +60,16 @@ const messages = defineMessages({
     defaultMessage: 'File is not of the accepted type {accept}',
   },
   dragAndDropActionA11y: {
-    id: 'Press Enter to browse files from your computer.',
-    defaultMessage: 'Press Enter to browse files from your computer.',
+    id: 'File upload area. Press Enter to open the file browser',
+    defaultMessage: 'File upload area. Press Enter to open the file browser',
+  },
+  requiredField: {
+    id: 'This field is required.',
+    defaultMessage: 'This field is required.',
+  },
+  downloadFile: {
+    id: 'field.file.downloadFile',
+    defaultMessage: 'Download {filename}',
   },
 });
 
@@ -171,6 +179,14 @@ const FileWidget = (props) => {
     reader.readAsDataURL(files[0]);
   };
 
+  const statusTextA11y = [
+    props.required && intl.formatMessage(messages.requiredField), // Required field status
+    props.error?.length && props.error.join(' '), // Validation error messages
+    value?.filename, // Current file name if a file is uploaded
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <FormFieldWrapper {...props}>
       <Dropzone
@@ -179,7 +195,13 @@ const FileWidget = (props) => {
         {...(props.accept ? { accept: props.accept } : {})}
       >
         {({ getRootProps, getInputProps, isDragActive }) => (
-          <div className="file-widget-dropzone" {...getRootProps()}>
+          <div
+            className="file-widget-dropzone"
+            role="button"
+            aria-label={intl.formatMessage(messages.dragAndDropActionA11y)}
+            aria-describedby={`field-${id}-status`}
+            {...getRootProps()}
+          >
             {isDragActive && <Dimmer active></Dimmer>}
             {fileType ? (
               <Image
@@ -205,22 +227,27 @@ const FileWidget = (props) => {
               </div>
             )}
 
-            <label className="label-file-widget-input">
+            <Button
+              className="label-file-widget-input"
+              tabIndex={-1}
+              aria-hidden="true"
+            >
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
-              <span className="visually-hidden">
-                {intl.formatMessage(messages.dragAndDropActionA11y)}
-              </span>
-            </label>
+            </Button>
+            <span id={`field-${id}-status`} className="visually-hidden">
+              {statusTextA11y}
+            </span>
             <input
               {...getInputProps({
                 type: 'file',
                 style: { display: 'none' },
               })}
               id={`field-${id}`}
+              aria-required={props.required}
+              aria-invalid={props.error?.length > 0}
               name={id}
-              type="file"
               disabled={isDisabled}
             />
           </div>
@@ -228,7 +255,13 @@ const FileWidget = (props) => {
       </Dropzone>
       <div className="field-file-name">
         {value && (
-          <UniversalLink href={value.download} download={true}>
+          <UniversalLink
+            href={value.download}
+            aria-label={intl.formatMessage(messages.downloadFile, {
+              filename: value.filename,
+            })}
+            download={true}
+          >
             {value.filename}
           </UniversalLink>
         )}
