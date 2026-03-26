@@ -559,10 +559,10 @@ msgstr "参照"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "デフォルトでは、この項目のコンテナから権限が継承されます。これを無効にすると、明示的に定義された共有権限のみが有効になります。概要では、継承された値は『継承された値』として明示的にラベル付けされ、緑色のチェックマーク {inherited} が付きます。同様に、サイト管理者が管理するロールは『グローバルロール』としてラベル付けされ、青色のチェックマーク {global} が付きます。"
+msgstr "デフォルトでは、この項目のコンテナから権限が継承されます。これを無効にすると、明示的に定義された共有権限のみが有効になります。概要では、継承された値は『継承された値』として明示的にラベル付けされ、緑色のチェックマーク {inherited} が付きます。同様に、サイト管理者が管理するロールは『グローバルロール』としてラベル付けされ、青色のチェックマーク {global} が付きます。."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases

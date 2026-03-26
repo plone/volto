@@ -561,10 +561,10 @@ msgstr "Explorer le site, déposer l'image ou écriver l'URL"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Par défaut, les permissions du conteneur de cet élément sont héritées. Si vous désactivez cela, seules les permissions de partage définies explicitement seront valides. Dans l’aperçu, les valeurs héritées sont explicitement étiquetées 'Valeur héritée' et reçoivent une coche verte {inherited}. De même, les rôles gérés par l’administrateur du site sont étiquetés 'Rôle global' et reçoivent une coche bleue {global}"
+msgstr "Par défaut, les permissions du conteneur de cet élément sont héritées. Si vous désactivez cela, seules les permissions de partage définies explicitement seront valides. Dans l’aperçu, les valeurs héritées sont explicitement étiquetées 'Valeur héritée' et reçoivent une coche verte {inherited}. De même, les rôles gérés par l’administrateur du site sont étiquetés 'Rôle global' et reçoivent une coche bleue {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
