@@ -79,10 +79,8 @@ describe('loader', () => {
   it('should return content and site from context', async () => {
     config.settings.defaultLanguage = 'en';
     config.settings.supportedLanguages = ['en'];
-    const mockContent = {
-      data: { '@id': 'http://example.com/', title: 'Home' },
-    };
-    const mockSite = { data: { '@id': 'http://example.com/' } };
+    const mockContent = { '@id': 'http://example.com/', title: 'Home' };
+    const mockSite = { '@id': 'http://example.com/' };
     const request = new Request('http://example.com');
     const context = new RouterContextProvider();
     context.set(ploneClientContext, {} as any);
@@ -105,9 +103,10 @@ describe('loader', () => {
     config.settings.defaultLanguage = 'en';
     config.settings.supportedLanguages = ['en'];
     const mockContent = {
-      data: { '@id': 'http://example.com/test-content', title: 'Test' },
+      '@id': 'http://example.com/test-content',
+      title: 'Test',
     };
-    const mockSite = { data: { '@id': 'http://example.com/' } };
+    const mockSite = { '@id': 'http://example.com/' };
     const request = new Request('http://example.com/test-content');
     const context = new RouterContextProvider();
     context.set(ploneClientContext, {} as any);
@@ -144,28 +143,26 @@ describe('ErrorBoundary', () => {
 
 it('should place the migrated title block in the legacy block order', async () => {
   const mockContent = {
-    data: {
-      '@id': 'http://example.com/',
-      title: 'Page title',
-      blocks: {
-        a: {
-          '@type': 'text',
-          value: [{ type: 'p', children: [{ text: 'First block' }] }],
-        },
-        titleBlock: {
-          '@type': 'title',
-        },
-        b: {
-          '@type': 'text',
-          value: [{ type: 'p', children: [{ text: 'Second block' }] }],
-        },
+    '@id': 'http://example.com/',
+    title: 'Page title',
+    blocks: {
+      a: {
+        '@type': 'text',
+        value: [{ type: 'p', children: [{ text: 'First block' }] }],
       },
-      blocks_layout: {
-        items: ['a', 'titleBlock', 'b'],
+      titleBlock: {
+        '@type': 'title',
+      },
+      b: {
+        '@type': 'text',
+        value: [{ type: 'p', children: [{ text: 'Second block' }] }],
       },
     },
+    blocks_layout: {
+      items: ['a', 'titleBlock', 'b'],
+    },
   };
-  const mockSite = { data: { '@id': 'http://example.com/' } };
+  const mockSite = { '@id': 'http://example.com/' };
   const somersaultMigration = vi.fn(({ value }) => value);
   config.settings.defaultLanguage = 'en';
   config.settings.supportedLanguages = ['en'];
@@ -176,7 +173,7 @@ it('should place the migrated title block in the legacy block order', async () =
     method: somersaultMigration,
   });
   const request = new Request('http://example.com');
-  migrateContent(mockContent.data as any);
+  migrateContent(mockContent as any);
   const context = new RouterContextProvider();
   context.set(ploneClientContext, {} as any);
   context.set(ploneContentContext, mockContent as any);
@@ -217,25 +214,23 @@ it('should skip somersault migration when the somersault block already exists', 
     },
   ];
   const mockContent = {
-    data: {
-      '@id': 'http://example.com/',
-      title: 'Page title',
-      blocks: {
-        __somersault__: {
-          '@type': '__somersault__',
-          value: existingSomersaultValue,
-        },
-        a: {
-          '@type': 'text',
-          value: [{ type: 'p', children: [{ text: 'Legacy block' }] }],
-        },
+    '@id': 'http://example.com/',
+    title: 'Page title',
+    blocks: {
+      __somersault__: {
+        '@type': '__somersault__',
+        value: existingSomersaultValue,
       },
-      blocks_layout: {
-        items: ['a'],
+      a: {
+        '@type': 'text',
+        value: [{ type: 'p', children: [{ text: 'Legacy block' }] }],
       },
     },
+    blocks_layout: {
+      items: ['a'],
+    },
   };
-  const mockSite = { data: { '@id': 'http://example.com/' } };
+  const mockSite = { '@id': 'http://example.com/' };
   const somersaultMigration = vi.fn(({ value }) => value);
   config.settings.defaultLanguage = 'en';
   config.settings.supportedLanguages = ['en'];
@@ -246,7 +241,7 @@ it('should skip somersault migration when the somersault block already exists', 
     method: somersaultMigration,
   });
   const request = new Request('http://example.com');
-  migrateContent(mockContent.data as any);
+  migrateContent(mockContent as any);
   const context = new RouterContextProvider();
   context.set(ploneClientContext, {} as any);
   context.set(ploneContentContext, mockContent as any);
