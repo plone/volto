@@ -1,145 +1,212 @@
 ---
 myst:
   html_meta:
-    "description": "Configure width defaults and options for Plate blocks"
-    "property=og:description": "Configure width defaults and options for Plate blocks"
+    "description": "Configure block widths for Plate and Plone blocks"
+    "property=og:description": "Configure block widths for Plate and Plone blocks"
     "property=og:title": "Configure Plate block widths"
     "keywords": "Seven, Plate, block width, editor"
 ---
 
 # Configure Plate block widths
 
-This guide explains how block widths are configured in the Plate editor, how to adjust defaults for existing blocks, and how to set widths for new block plugins.
+This guide explains the current block width model in the Plate editor, including how shared widths are defined, how width policies are configured for Plate blocks and Plone blocks, and how the selected width is injected into rendered block styles.
 
 ## How it works
 
-The block width system is implemented by `BlockWidthPlugin`:
+The block width system is implemented by `BlockWidthPlugin` in `packages/plate/components/editor/plugins/block-width-plugin.ts`.
 
-- It injects a `blockWidth` property on block elements.
-- It maps that value to `style.maxWidth` in the rendered element.
-- It uses the configured defaults per block to decide which width should be used.
-- The width chooser in the toolbar uses the active block's config to show only allowed widths.
+The current shape is:
 
-The plugin lives in:
+- Widths are stored on block nodes as semantic ids such as `narrow`, `default`, `layout`, and `full`.
+- The available width definitions come from `config.blocks.widths`.
+- Each width definition is a `StyleDefinition`, so it can inject a full style object.
+- The selected width is resolved to a style object and merged into the Plate element `style` prop.
+- The toolbar uses the active block policy to show only the widths allowed for that block.
+- Normalization ensures a block always has a valid `blockWidth` value.
 
-- `packages/plate/components/editor/plugins/block-width-plugin.ts`
-- `packages/plate/components/editor/plugins/block-width-kit.tsx`
-- `packages/plate/components/editor/plugins/block-width-base-kit.tsx`
+The important consequence is that the node stores a width id, not a CSS value.
 
-The available width values are:
+## Shared width definitions
 
-- `BLOCK_WIDTH_VALUES.layout`
-- `BLOCK_WIDTH_VALUES.default`
-- `BLOCK_WIDTH_VALUES.narrow`
+All available widths are defined in `config.blocks.widths`.
 
-These values are CSS custom properties, so the actual sizes come from CSS:
-
-- `--layout-container-width`
-- `--default-container-width`
-- `--narrow-container-width`
-
-## Configure defaults for existing blocks
-
-Each block can define its own width defaults via `options.blockWidth` in its plugin configuration. The two keys you can set are:
-
-- `defaultWidth`: the width applied when the block has no explicit width set
-- `widths`: the allowed widths that the toolbar will show
-
-### Example: Paragraphs default to narrow
-
-This is already configured in the basic blocks kit:
+The default definitions are installed in `packages/blocks/index.ts`:
 
 ```ts
-import { BLOCK_WIDTH_VALUES } from './block-width-plugin';
-
-ParagraphPlugin.configure({
-  node: { component: ParagraphElement },
-  options: {
-    blockWidth: {
-      defaultWidth: BLOCK_WIDTH_VALUES.narrow,
+config.blocks.widths = [
+  {
+    style: {
+      '--block-width': 'var(--narrow-container-width)',
     },
+    name: 'narrow',
+    label: 'Narrow',
   },
-});
+  {
+    style: {
+      '--block-width': 'var(--default-container-width)',
+    },
+    name: 'default',
+    label: 'Default',
+  },
+  {
+    style: {
+      '--block-width': 'var(--layout-container-width)',
+    },
+    name: 'layout',
+    label: 'Layout',
+  },
+  {
+    style: {
+      '--block-width': '100%',
+    },
+    name: 'full',
+    label: 'Full Width',
+  },
+];
 ```
 
-File:
-- `packages/plate/components/editor/plugins/basic-blocks-kit.tsx`
-- `packages/plate/components/editor/plugins/basic-blocks-base-kit.tsx`
+Each item is a `StyleDefinition`:
 
-### Example: Table of contents default
+- `name`: the value stored in `blockWidth`
+- `label`: the label shown in the toolbar
+- `style`: the inline style object injected into the rendered block
+
+## How styles are injected
+
+The plugin resolves the current `blockWidth` id against `config.blocks.widths`, then injects the matching `style` object into the Plate element.
+
+That means this width:
 
 ```ts
-import { BLOCK_WIDTH_VALUES } from './block-width-plugin';
-
-TocPlugin.configure({
-  options: {
-    blockWidth: {
-      defaultWidth: BLOCK_WIDTH_VALUES.default,
-    },
+{
+  name: 'layout',
+  label: 'Layout',
+  style: {
+    '--block-width': 'var(--layout-container-width)',
   },
-}).withComponent(TocElement);
+}
 ```
 
-File:
-- `packages/plate/components/editor/plugins/toc-kit.tsx`
-- `packages/plate/components/editor/plugins/toc-base-kit.tsx`
+results in an inline CSS custom property on the block element.
 
-### Example: Restrict widths for a block
+The layout CSS consumes that variable in `packages/layout/styles/content-area.css`:
 
-If a block should only allow a subset of widths, specify `widths`:
+```css
+.block .block-inner-container {
+  max-width: var(--block-width, var(--default-container-width));
+}
+```
+
+So the flow is:
+
+1. The node stores `blockWidth: 'layout'`.
+2. The plugin resolves `layout` in `config.blocks.widths`.
+3. The plugin injects `style={{ '--block-width': 'var(--layout-container-width)' }}`.
+4. CSS uses `var(--block-width)` to compute the final `max-width`.
+
+## Configure widths for Plate blocks
+
+Plate-native blocks are configured through `config.blocks.plateBlocksConfig`.
+
+The default setup lives in `packages/blocks/index.ts`:
 
 ```ts
-import { BLOCK_WIDTH_VALUES } from './block-width-plugin';
-
-SomeBlockPlugin.configure({
-  options: {
+config.blocks.plateBlocksConfig = {
+  p: {
     blockWidth: {
-      defaultWidth: BLOCK_WIDTH_VALUES.default,
-      widths: [
-        BLOCK_WIDTH_VALUES.default,
-        BLOCK_WIDTH_VALUES.narrow,
-      ],
+      defaultWidth: 'narrow',
+      widths: ['narrow'],
     },
   },
-});
+  title: {
+    blockWidth: {
+      defaultWidth: 'default',
+      widths: ['default'],
+    },
+  },
+  toc: {
+    blockWidth: {
+      defaultWidth: 'default',
+      widths: ['layout', 'default', 'narrow'],
+    },
+  },
+};
 ```
 
-The toolbar will only show `default` and `narrow` for that block.
+The key is the Plate element type, for example:
 
-## Configure widths for new block plugins
+- `p` for paragraphs
+- `title` for the title block
+- `toc` for the table of contents block
 
-When creating a new block plugin, add `options.blockWidth` in the plugin's configuration:
+To configure a new Plate block:
 
 ```ts
-import { createPlatePlugin } from 'platejs/react';
-import { BLOCK_WIDTH_VALUES } from '../plugins/block-width-plugin';
-
-export const MyBlockPlugin = createPlatePlugin({
-  key: 'myBlock',
-  node: {
-    isElement: true,
+config.blocks.plateBlocksConfig.myBlock = {
+  blockWidth: {
+    defaultWidth: 'default',
+    widths: ['layout', 'default'],
   },
-  options: {
-    blockWidth: {
-      defaultWidth: BLOCK_WIDTH_VALUES.default,
-      widths: [
-        BLOCK_WIDTH_VALUES.layout,
-        BLOCK_WIDTH_VALUES.default,
-      ],
-    },
-  },
-});
+};
 ```
 
-If you don't specify `blockWidth`, the plugin will use:
+The `blockWidth` policy supports:
 
-- `defaultWidth`: `BLOCK_WIDTH_VALUES.default`
-- `widths`: all available widths
+- `defaultWidth`: the width applied when the block has no explicit width
+- `widths`: the allowed width ids shown in the toolbar
+
+## Configure widths for Plone blocks
+
+Plone blocks are configured in their block info object under `packages/blocks/<Block>/index.ts`.
+
+Example from `packages/blocks/Image/index.ts`:
+
+```ts
+const ImageBlockInfo = {
+  id: 'image',
+  title: 'Image',
+  // ...
+  blockWidth: {
+    defaultWidth: 'default',
+    widths: ['layout', 'default', 'narrow', 'full'],
+  },
+};
+```
+
+This value is registered through `config.blocks.blocksConfig`, so the width plugin can resolve it for adapted Plone blocks.
+
+To configure another Plone block, add a `blockWidth` section to its block info object:
+
+```ts
+const MyBlockInfo = {
+  id: 'myBlock',
+  title: 'My block',
+  // ...
+  blockWidth: {
+    defaultWidth: 'default',
+    widths: ['default', 'narrow'],
+  },
+};
+```
+
+## Resolution order
+
+The width plugin resolves the active block policy from the registry:
+
+- For Plate blocks, it reads `config.blocks.plateBlocksConfig[element.type]`.
+- For adapted Plone blocks, it reads `config.blocks.blocksConfig[element['@type']]`.
+- If no registry config is found, it falls back to plugin options for backward compatibility.
+
+The toolbar uses the resolved policy and the shared width definitions together:
+
+- the policy determines which width ids are allowed
+- `config.blocks.widths` determines the labels and injected styles for those ids
 
 ## Notes
 
 - Widths are stored in the node as `blockWidth`.
-- The `BlockWidthPlugin` normalizes blocks to ensure `blockWidth` is set and valid.
-- Centering is handled by CSS in the editor container so blocks with max widths are centered.
-
-If you need to override widths in a specific editor instance, you can configure the block plugin in that editor kit with different `options.blockWidth` values.
+- Width values should be semantic ids such as `narrow` or `layout`, not raw CSS values.
+- The `BlockWidthPlugin` normalizes blocks to ensure `blockWidth` is set and valid for the current block.
+- The toolbar options are sourced from `config.blocks.widths`.
+- The actual visual width is controlled by CSS through `--block-width`.
+- Registry-based configuration is now the preferred approach for both Plate and Plone blocks.

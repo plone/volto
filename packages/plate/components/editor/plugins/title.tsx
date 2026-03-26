@@ -10,7 +10,6 @@ import {
   useEditorRef,
   useEditorSelector,
 } from 'platejs/react';
-import { BLOCK_WIDTH_VALUES } from './block-width-plugin';
 
 export const TITLE_BLOCK_TYPE = 'title';
 
@@ -189,12 +188,6 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
     component: TitleBlockElement,
     isElement: true,
     type: TITLE_BLOCK_TYPE,
-  },
-  options: {
-    blockWidth: {
-      defaultWidth: BLOCK_WIDTH_VALUES.default,
-      widths: [BLOCK_WIDTH_VALUES.default],
-    },
   },
   extendEditor: ({ editor }) => {
     const insertBreak = editor.tf.insertBreak;
