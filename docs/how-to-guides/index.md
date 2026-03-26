@@ -26,4 +26,5 @@ add-tailwind
 icons
 configure-plate-block-widths
 configure-plate-code-block-languages
+configure-plate-slash-menu
 ```
