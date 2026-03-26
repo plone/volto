@@ -47,7 +47,7 @@ export async function loader({
   await requireAuthCookie(request);
 
   const cli = context.get(ploneClientContext);
-  const { data: content } = context.get(ploneContentContext);
+  const content = context.get(ploneContentContext);
 
   const { data: schema } = await cli.getType({ contentType: content['@type'] });
 

@@ -1,4 +1,5 @@
 import { data, createContext } from 'react-router';
+import { flattenToAppURL } from '@plone/helpers';
 import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
@@ -8,9 +9,9 @@ import { migrateContent } from './config/server/content-migrations.server';
 
 export const ploneClientContext = createContext<PloneClient>();
 export const ploneContentContext =
-  createContext<Awaited<ReturnType<PloneClient['getContent']>>>();
+  createContext<Awaited<ReturnType<PloneClient['getContent']>>['data']>();
 export const ploneSiteContext =
-  createContext<Awaited<ReturnType<PloneClient['getSite']>>>();
+  createContext<Awaited<ReturnType<PloneClient['getSite']>>['data']>();
 
 export const installServerMiddleware: Route.MiddlewareFunction = async (
   { request, context },
@@ -93,8 +94,8 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
     migrateContent(content.data);
 
     context.set(ploneClientContext, cli);
-    context.set(ploneContentContext, content);
-    context.set(ploneSiteContext, site);
+    context.set(ploneContentContext, flattenToAppURL(content.data));
+    context.set(ploneSiteContext, flattenToAppURL(site.data));
   } catch (error: any) {
     throw data('Content Not Found', {
       status: typeof error.status === 'number' ? error.status : 500,

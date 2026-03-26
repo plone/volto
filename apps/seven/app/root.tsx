@@ -3,7 +3,6 @@ import { data, isRouteErrorResponse } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
-import { flattenToAppURL } from '@plone/helpers';
 import config from '@plone/registry';
 import {
   fetchPloneContent,
@@ -43,7 +42,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
     for (const utility of rootContentSubRequests) {
       await utility.method({
         cli,
-        content: content.data,
+        content,
         request,
         path,
         params,
@@ -55,7 +54,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
       ...rootLoaderDataUtilities.map((utility) =>
         utility.method({
           cli,
-          content: content.data,
+          content,
           request,
           path,
           params,
@@ -65,8 +64,8 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
     ]);
 
     return {
-      content: flattenToAppURL(content.data),
-      site: flattenToAppURL(site.data),
+      content,
+      site,
       locale,
       ...rootLoaderDataUtilitiesData
         .filter((item) => item)

@@ -338,8 +338,11 @@ describe('middleware', () => {
         expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
       });
       expect(getSiteMock).toHaveBeenCalled();
-      expect(context.get(ploneContentContext)).toEqual(mockContent);
-      expect(context.get(ploneSiteContext)).toEqual(mockSite);
+      expect(context.get(ploneContentContext)).toEqual({
+        '@id': '/',
+        title: 'Home',
+      });
+      expect(context.get(ploneSiteContext)).toEqual({ '@id': '/' });
       expect(context.get(ploneClientContext)).toBeDefined();
     });
 
