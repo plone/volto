@@ -61,6 +61,10 @@ exports[`renders a objectBrowser widget component 1`] = `
               </svg>
             </button>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
