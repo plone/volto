@@ -91,7 +91,7 @@ exports[`datetime widget converts UTC date and adapts to local datetime 1`] = `
             >
               <svg
                 class="icon close"
-                style="height: 24px; width: auto; fill: currentColor;"
+                style="height: 24px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -200,7 +200,7 @@ exports[`renders a datetime widget component 1`] = `
             >
               <svg
                 class="icon close"
-                style="height: 24px; width: auto; fill: currentColor;"
+                style="height: 24px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
