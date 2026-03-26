@@ -556,7 +556,7 @@ msgstr ""
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
 #: components/manage/Sharing/Sharing
-msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "डिफ़ॉल्ट रूप से, इस आइटम के कंटेनर से अनुमतियाँ विरासत में मिलती हैं। यदि आप इसे अक्षम करते हैं, तो केवल स्पष्ट रूप से परिभाषित साझा करने की अनुमतियाँ ही मान्य होंगी। अवलोकन में, विरासत में मिले मानों को स्पष्ट रूप से 'विरासत में मिला मान' के रूप में लेबल किया जाता है और उन्हें हरा चेक मार्क {inherited} मिलता है। इसी तरह, साइट प्रशासक द्वारा प्रबंधित भूमिकाओं को 'वैश्विक भूमिका' के रूप में लेबल किया जाता है और उन्हें नीला चेक मार्क {global} मिलता है।"
 
 #. Default: "CSV file"

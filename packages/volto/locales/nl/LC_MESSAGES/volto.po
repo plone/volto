@@ -560,7 +560,7 @@ msgstr "Bulk CSV opladen"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
 #: components/manage/Sharing/Sharing
-msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}"
+msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Standaard worden de machtigingen van de container van dit item overgenomen. Als je dit uitschakelt, zijn alleen de expliciet gedefinieerde deelmachtigingen geldig. In het overzicht worden overgenomen waarden expliciet gelabeld als 'Overgenomen waarde' en krijgen ze een groen vinkje {inherited}. Op dezelfde manier worden rollen die door de sitebeheerder worden beheerd gelabeld als 'Globale rol' en krijgen ze een blauw vinkje {global}"
 
 #. Default: "CSV file"
