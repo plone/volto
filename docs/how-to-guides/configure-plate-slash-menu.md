@@ -140,9 +140,9 @@ import {
 const CustomSlashKit = createSlashKit({
   menu: {
     extendGroups: (groups) =>
-      groups.map((group) =>
-        group.group === 'Actions'
-          ? {
+      groups.map((group) => {
+        if (group.group === 'Actions') {
+          return {
               ...group,
               items: [
                 ...group.items,
@@ -156,8 +156,10 @@ const CustomSlashKit = createSlashKit({
                 },
               ],
             }
-          : group,
-      ),
+          };
+        }
+        return group;
+      }),
   },
 });
 ```
