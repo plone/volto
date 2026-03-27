@@ -1,6 +1,5 @@
 import {
   BlockquotePlugin,
-  H1Plugin,
   H2Plugin,
   H3Plugin,
   H4Plugin,
@@ -12,7 +11,6 @@ import { ParagraphPlugin } from 'platejs/react';
 
 import { BlockquoteElement } from '../../ui/blockquote-node';
 import {
-  H1Element,
   H2Element,
   H3Element,
   H4Element,
@@ -32,15 +30,6 @@ export const BasicBlocksKit = [
         widths: [BLOCK_WIDTH_VALUES.narrow],
       },
     },
-  }),
-  H1Plugin.configure({
-    node: {
-      component: H1Element,
-    },
-    rules: {
-      break: { empty: 'reset' },
-    },
-    shortcuts: { toggle: { keys: 'mod+alt+1' } },
   }),
   H2Plugin.configure({
     node: {
