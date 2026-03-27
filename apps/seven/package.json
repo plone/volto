@@ -37,6 +37,7 @@
     "i18next-fs-backend": "^2.6.0",
     "i18next-http-backend": "^3.0.2",
     "isbot": "^5.1.27",
+    "jwt-decode": "^4.0.0",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-i18next": "catalog:",

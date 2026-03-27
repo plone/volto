@@ -40,7 +40,6 @@ import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
 // import { ConsoleLog } from '../helpers/debug';
 
 export async function loader({
-  params,
   request,
   context,
 }: LoaderFunctionArgs<RouterContextProvider>) {
