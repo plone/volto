@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-21 10:02+0000\n"
+"PO-Revision-Date: 2026-03-03 08:18+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language: eu\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\n"
+"Language: eu\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -561,6 +561,7 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -827,6 +828,11 @@ msgstr "Gurasoetan dauden eduki erregelak"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr "{title} elementuari esteka edo erreferentzia egiten dion edukia"
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Edukiaren izenburua"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1220,6 +1226,11 @@ msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
 msgid "Drop files here ..."
 msgstr "Arrastatu fitxategiak hona..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1554,6 +1565,7 @@ msgstr "Fitxategiak ez du onartutako mota {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Fitxategiaren tamaina"
 
@@ -1564,11 +1576,13 @@ msgstr "Fitxategiaren bista"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Fitxategi izena"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Igotako fitxategiak: {uploadedFiles}"
 
@@ -2052,6 +2066,7 @@ msgstr "Azken komentarioaren data"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Azken aldaketa"
 
@@ -2264,6 +2279,11 @@ msgstr "Mapak"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "Maparen URLa"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2802,6 +2822,11 @@ msgstr "Plone eta Pythonekin eginda"
 msgid "Preferences"
 msgstr "Hobespenak"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -2810,6 +2835,7 @@ msgstr "Garbitu zure kodea"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Aurreikusi"
 
@@ -2950,6 +2976,11 @@ msgstr "Erlazioak plone.api >= 2.0.3 erabiliz editatu daitezke."
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "Erlazioak eguneratu egin dira"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr "Askatu fitxategia(k) karpeta honetara gehitzeko"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3975,6 +4006,7 @@ msgstr "Erantzun kopurua"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Igotzeko fitxategiak guztira: {totalFiles}"
 
@@ -4195,6 +4227,11 @@ msgstr "Eguneraketa pausoak"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Kargatu"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr "Kargatu fitxategiak ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4496,6 +4533,11 @@ msgstr "Erantzun bat utzi dezakezu. Testu hutsez idatzi."
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Zure elementua nork ikusi eta aldatu dezakeen kontrolatu dezakezu."
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr "Ezin duzu bloke hau kokapen berrira mugitu"
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
@@ -4632,6 +4674,11 @@ msgstr "Data-tartea"
 msgid "delete"
 msgstr "Ezabatu"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr ""
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4656,6 +4703,11 @@ msgstr "Pasahitza berrezartzeko eskaera e-postaz bidali dizugu. Momentu batetik 
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Zirriborroa"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4930,6 +4982,16 @@ msgstr "Pribatua"
 #: components/manage/Contents/ContentsItem
 msgid "published"
 msgstr "Argitaratuta"
+
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr "Uneko bidea (./)"
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr "Aitaren bidea (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5215,7 +5277,7 @@ msgstr "Kargatu irudia zure gailutik"
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr "URL zuzen bat izan behar da (www.zerbait.eus) edo http(s)://www.zerbitzaria.eus)"
+msgstr "URL zuzen bat izan behar da (www.zerbait.eus edo http(s)://www.zerbitzaria.eus)"
 
 #. Default: "user avatar"
 #: components/manage/Toolbar/PersonalTools
@@ -5256,6 +5318,7 @@ msgstr "bai"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, one {Kargatu fitxategi {count}} othe"
 

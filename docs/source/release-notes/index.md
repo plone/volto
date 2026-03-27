@@ -17,6 +17,86 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.32.4 (2026-03-12)
+
+### Feature
+
+- If a delete operation fails, display the error message returned by the API (if any). @cekk [#7888](https://github.com/plone/volto/issues/7888)
+
+### Bugfix
+
+- Update the users controlpanel to be compatible with the new response format of the users endpoint introduced in https://github.com/plone/plone.restapi/pull/1971. @jnptk 
+
+### Internal
+
+- Remove the `immutable` dependency, since it is not a direct dependency. @wesleybl [#7974](https://github.com/plone/volto/issues/7974)
+- Update pnpm to 9.15.9. @wesleybl [#7975](https://github.com/plone/volto/issues/7975)
+- Revert: "Backport #7672: Convert FormFieldWrapper to functional component (18.x.x)" @sneridagh [#7994](https://github.com/plone/volto/issues/7994)
+- Update dependencies: webpack 5.105.4 @davisagli 
+
+## 18.32.3 (2026-03-04)
+
+### Bugfix
+
+- Add file size upload limit validator. @robgietema [#7936](https://github.com/plone/volto/issues/7936)
+
+## 18.32.2 (2026-03-02)
+
+### Bugfix
+
+- Avoid storing empty blocks clipboard in localstorage until blocks are cut or copied. @davisagli [#6697](https://github.com/plone/volto/issues/6697)
+- Fix ContentTypeSchema error toast to display only error message instead of stringified JSON object. @Shyam-Raghuwanshi [#7692](https://github.com/plone/volto/issues/7692)
+- Language control panel: fix validation of default language. @davisagli [#7720](https://github.com/plone/volto/issues/7720)
+- Set HTTP 503 status code for ConnectionRefused error page. @Shyam-Raghuwanshi [#7754](https://github.com/plone/volto/issues/7754)
+- Changed the order of the "Save" and "Cancel" buttons on the sharing page to improve accessibility. @Wagner3UB [#7835](https://github.com/plone/volto/issues/7835)
+- Filter invalid block IDs (null, undefined, 'undefined') in getBlocks() to prevent duplicate elements in DOM and test failures. @aryan7081 [#7858](https://github.com/plone/volto/issues/7858)
+- Fixed searchable types in Object Browser Widget, adding also selectable-types to searchable-types. @giuliaghisini [#7915](https://github.com/plone/volto/issues/7915)
+- Fix subordering order tab. @robgietema [#7937](https://github.com/plone/volto/issues/7937)
+- Fix href override in UniversalLink component. @iFlameing 
+
+### Internal
+
+- Remove references to @plone/providers and @plone/helpers packages that don't exist in Volto 18 branch. @wesleybl [#7693](https://github.com/plone/volto/issues/7693)
+- Removed references to apps folder and Plone's modular architecture packages (helpers, blocks, providers, theming, layout) that were already removed from the codebase.
+  These packages exist only in the seven branch. @sneridagh [#7785](https://github.com/plone/volto/issues/7785)
+- Continue to prevent editors from automatically reformatting Markdown files by moving this configuration from VSCode to prettier.
+  Move the VSCode settings setup from `make install` to a pnpm post-install hook. @wesleybl [#7834](https://github.com/plone/volto/issues/7834)
+- Use Plone 6.1.4 for development. @wesleybl [#7870](https://github.com/plone/volto/issues/7870)
+- Reinstalled all dependencies to latest compatible versions. @wesleybl [#7871](https://github.com/plone/volto/issues/7871)
+- Increase wait time between link check retries with Lychee. @wesleybl [#7872](https://github.com/plone/volto/issues/7872)
+- Exclude `.storybook` from ESLint's default hidden directory ignore list via `.eslintignore` to allow linting of Storybook configuration files. @Shyam-Raghuwanshi [#7894](https://github.com/plone/volto/issues/7894)
+- Use `getSlateEditorAndType` in `03-block-slate.js` to make the test more robust. @wesleybl [#7924](https://github.com/plone/volto/issues/7924)
+- Fix in-page drag-and-drop issue with the Listing block to ensure proper content reordering. @Manik-Khajuria-5 [#7943](https://github.com/plone/volto/issues/7943)
+- Refactored the `PasswordReset` widget by converting it from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7951](https://github.com/plone/volto/issues/7951)
+
+### Documentation
+
+- Removed add-on packages that no longer exist in the `18.x.x` branch from documentation. @wesleybl [#7887](https://github.com/plone/volto/issues/7887)
+- Remove link to Jobfamilie MEDICE: site is no longer a Volto site (redirects to non-Volto destination). @wesleybl [#7929](https://github.com/plone/volto/issues/7929)
+
+## 18.32.1 (2026-01-23)
+
+### Bugfix
+
+- Remove '__ac' cookie when authtoken expires @Tishasoumya-02 [#7783](https://github.com/plone/volto/issues/7783)
+
+## 18.32.0 (2026-01-12)
+
+### Feature
+
+- Add feature of drag and drop files in folder contents. @Tishasoumya-02 [#draganddrop](https://github.com/plone/volto/issues/draganddrop)
+- Added support for selecting Path and Depth in the Listing Block’s Location criteria using the ObjectBrowserWidget and NumberWidget. @iFlameing @giuliaghisini [#7661](https://github.com/plone/volto/issues/7661)
+
+### Bugfix
+
+- Fix multilingual redirect for languages with locale variants in Volto 18. @Shyam-Raghuwanshi [#7738](https://github.com/plone/volto/issues/7738)
+- Fix rearrangement of files in drag-and-drop of folderish content. @Tishasoumya-02 [#7782](https://github.com/plone/volto/issues/7782)
+- Add support for typing and pasting URLs in the ObjectBrowserWidget for location selection in the Listing block. @iFlameing 
+
+### Internal
+
+- Update actions/cache from v4 to v5 in GitHub Actions workflow files. @wesleybl [#7731](https://github.com/plone/volto/issues/7731)
+
 ## 18.31.0 (2025-12-21)
 
 ### Feature

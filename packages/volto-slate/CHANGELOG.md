@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.8.1 (2026-03-02)
+
+### Bugfix
+
+- Use Slate Table block when pasting tables snippets (instead of deprecated DraftJS) @cekk [#7865](https://github.com/plone/volto/issues/7865)
+
 ## 18.8.0 (2025-12-02)
 
 ### Feature

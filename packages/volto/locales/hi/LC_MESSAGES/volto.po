@@ -560,6 +560,7 @@ msgstr ""
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -826,6 +827,11 @@ msgstr "मूल फ़ोल्डर से कंटेंट नियम"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr "{title} से लिंक या संदर्भित कंटेंट"
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "सामग्री शीर्षक"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1219,6 +1225,11 @@ msgstr "नई फ़ाइल अपलोड करने के लिए य
 msgid "Drop files here ..."
 msgstr "यहाँ फ़ाइलें ड्रॉप करें ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1553,6 +1564,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "फ़ाइल का आकार"
 
@@ -1563,11 +1575,13 @@ msgstr "फ़ाइल दृश्य"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "फ़ाइल का नाम"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
@@ -2051,6 +2065,7 @@ msgstr "अंतिम टिप्पणी की तारीख"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "अंतिम संशोधन"
 
@@ -2263,6 +2278,11 @@ msgstr "नक्शे"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "नक्शे URL"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2801,6 +2821,11 @@ msgstr "प्लोन और पायथन द्वारा संचा�
 msgid "Preferences"
 msgstr "पसंद"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -2809,6 +2834,7 @@ msgstr "अपना कोड सुंदर बनाएं"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "पूर्वावलोकन"
 
@@ -2949,6 +2975,11 @@ msgstr "plone.api >= 2.0.3 के साथ संबंध संपादन�
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "संबंध अपडेट किए गए"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3974,6 +4005,7 @@ msgstr "कुल टिप्पणियाँ"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "अपलोड करने के लिए कुल फ़ाइलें: {totalFiles}"
 
@@ -4194,6 +4226,11 @@ msgstr "अपग्रेड कदम"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "अपलोड"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4495,6 +4532,11 @@ msgstr "आप नीचे दिए गए फ़ॉर्म को भरक
 msgid "You can control who can view and edit your item using the list below."
 msgstr "आप नीचे दी गई सूची का उपयोग करके अपने आइटम को कौन देख सकता है और संपादित कर सकता है, इसे नियंत्रित कर सकते हैं।"
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
@@ -4631,6 +4673,11 @@ msgstr "तिथि सीमा"
 msgid "delete"
 msgstr "हटाएँ"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr ""
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4655,6 +4702,11 @@ msgstr "आपका पासवर्ड रीसेट अनुरोध �
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "ड्राफ़्ट"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4929,6 +4981,16 @@ msgstr "निजी"
 #: components/manage/Contents/ContentsItem
 msgid "published"
 msgstr "प्रकाशित"
+
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5255,6 +5317,7 @@ msgstr "हाँ"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 

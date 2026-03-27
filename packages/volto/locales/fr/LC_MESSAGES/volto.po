@@ -567,6 +567,7 @@ msgstr "Impossible de modifier la mise en page pour le type de contenu <strong>{
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -833,6 +834,11 @@ msgstr "Règles de contenu des dossiers parents"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr ""
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Titre du contenu"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1226,6 +1232,11 @@ msgstr "Déposez le fichier ici pour télécharger un nouveau fichier"
 msgid "Drop files here ..."
 msgstr "Déposez les fichiers ici ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1560,6 +1571,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Taille du fichier"
 
@@ -1570,11 +1582,13 @@ msgstr "Vue fichier"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Nom du fichier"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Fichiers téléchargés : {uploadedFiles}"
 
@@ -2058,6 +2072,7 @@ msgstr "Date du dernier commentaire"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Dernier modifié"
 
@@ -2270,6 +2285,11 @@ msgstr "Carte"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "URL de la carte"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2808,6 +2828,11 @@ msgstr "Alimenté par Plone & Python"
 msgid "Preferences"
 msgstr "Préférences"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Appuyez sur Entrée pour parcourir les fichiers sur votre ordinateur."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -2816,6 +2841,7 @@ msgstr "Embelli votre code"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Aperçu"
 
@@ -2955,6 +2981,11 @@ msgstr ""
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
+msgstr ""
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
 msgstr ""
 
 #. Default: "Relevance"
@@ -3981,6 +4012,7 @@ msgstr "Nombre de commentaires"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Nombre total de fichiers à uploader: {totalFiles}"
 
@@ -4201,6 +4233,11 @@ msgstr "Étapes de mise à niveau"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Téléchargé"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4502,6 +4539,11 @@ msgstr "Vous pouvez ajouter un commentaire en remplissant le formulaire ci-desso
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Vous pouvez contrôler qui peut afficher et modifier votre élément à l'aide de la liste ci-dessous."
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
@@ -4638,6 +4680,11 @@ msgstr "Page de date"
 msgid "delete"
 msgstr "supprimer"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr ""
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4662,6 +4709,11 @@ msgstr "Mot de passe envoyé"
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Brouillon"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4936,6 +4988,16 @@ msgstr "Privé"
 #: components/manage/Contents/ContentsItem
 msgid "published"
 msgstr "Publié"
+
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5262,6 +5324,7 @@ msgstr "Oui"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, un {charger {count} fichier} ou {Chargez {count} fichiers}}"
 

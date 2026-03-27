@@ -561,6 +561,7 @@ msgstr "<strong> {type} </strong> உள்ளடக்க வகைக்கு
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -827,6 +828,11 @@ msgstr "பெற்றோர் கோப்புறைகளிலிரு�
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr "இணைக்கும் அல்லது குறிப்பிடும் உள்ளடக்கம் {title}"
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "உள்ளடக்கத் தலைப்பு"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1220,6 +1226,11 @@ msgstr "புதிய கோப்பைப் பதிவேற்ற இங
 msgid "Drop files here ..."
 msgstr "கோப்புகளை இங்கே விடுங்கள் ..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1554,6 +1565,7 @@ msgstr "கோப்பு ஏற்றுக்கொள்ளப்பட்�
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "கோப்பு அளவு"
 
@@ -1564,11 +1576,13 @@ msgstr "கோப்பு பார்வை"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "கோப்புப்பெயர்"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "கோப்புகள் பதிவேற்றப்பட்டன: {uploadedFiles}"
 
@@ -2052,6 +2066,7 @@ msgstr "கடைசி கருத்து தேதி"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "கடைசியாக மாற்றப்பட்டது"
 
@@ -2264,6 +2279,11 @@ msgstr "வரைபடங்கள்"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "வரைபட முகவரி"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2802,6 +2822,11 @@ msgstr "ப்ளோன் & பைதான் மூலம் இயக்க�
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -2810,6 +2835,7 @@ msgstr "உங்கள் குறியீட்டை முன்னுர�
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "முன்னோட்டம்"
 
@@ -2950,6 +2976,11 @@ msgstr "உறவுகள் plone.api> = 2.0.3 உடன் திருத்
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "உறவுகள் புதுப்பிக்கப்பட்டன"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3975,6 +4006,7 @@ msgstr "மொத்த கருத்துகள்"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "பதிவேற்ற மொத்த கோப்புகள்: {totalFiles}"
 
@@ -4195,6 +4227,11 @@ msgstr "படிகளை மேம்படுத்தவும்"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "பதிவேற்றும்"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4496,6 +4533,11 @@ msgstr "கீழே உள்ள படிவத்தை நிரப்பு
 msgid "You can control who can view and edit your item using the list below."
 msgstr "கீழே உள்ள பட்டியலைப் பயன்படுத்தி உங்கள் உருப்படியைக் காணலாம் மற்றும் திருத்தலாம் என்பதை நீங்கள் கட்டுப்படுத்தலாம்."
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
@@ -4632,6 +4674,11 @@ msgstr "டேட்டாலங்கே முகம்"
 msgid "delete"
 msgstr "நீக்கு"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr ""
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4656,6 +4703,11 @@ msgstr "விளக்கம்_சென்ட்_பாச் வேர்ட
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "வரைவு"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4930,6 +4982,16 @@ msgstr "தனிப்பட்ட"
 #: components/manage/Contents/ContentsItem
 msgid "published"
 msgstr "வெளியிடப்பட்டது"
+
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5256,6 +5318,7 @@ msgstr "ஆம்"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{எண்ணிக்கை, பன்மை, ஒன்று {பதிவேற்றம் {count} கோப்பு} பிற {பதிவேற்றம் {count} கோப்புகள்}}"
 
