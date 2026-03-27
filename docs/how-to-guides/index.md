@@ -16,7 +16,6 @@ This section of the documentation contains how-to guides for developing with Sev
 
 routes
 register-an-add-on
-access-registry
 register-and-retrieve-components
 register-and-retrieve-utilities
 register-slots
@@ -26,4 +25,5 @@ add-tailwind
 icons
 configure-plate-block-widths
 configure-plate-code-block-languages
+customize-toolbar
 ```
