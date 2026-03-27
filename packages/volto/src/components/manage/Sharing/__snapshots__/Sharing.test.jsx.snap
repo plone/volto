@@ -140,6 +140,7 @@ exports[`Sharing > renders a sharing component 1`] = `
               aria-hidden="true"
               class="blue check circle outline icon"
             />
+            .
           </p>
         </div>
         <div
