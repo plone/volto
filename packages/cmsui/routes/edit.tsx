@@ -201,8 +201,8 @@ export default function Edit() {
               </button>
             </Plug>
           </main>
+          <Sidebar />
         </div>
-        <Sidebar />
       </InitAtoms>
     </Provider>
   );
