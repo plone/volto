@@ -151,23 +151,21 @@ export function TitleBlockElement(props: PlateElementProps) {
       className="font-heading relative mt-[1.6em] pb-1 text-4xl font-bold"
       {...props}
     >
-<<<<<<< refactoredblockwidth
-      <BlockInnerContainer>{props.children}</BlockInnerContainer>
-=======
-      {showPlaceholder ? (
-        <span
-          aria-hidden="true"
-          contentEditable={false}
-          className={`
-            pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-muted-foreground/80
-            select-none
-          `}
-        >
-          {TITLE_PLACEHOLDER}
-        </span>
-      ) : null}
-      {props.children}
->>>>>>> seven
+      <BlockInnerContainer>
+        {showPlaceholder ? (
+          <span
+            aria-hidden="true"
+            contentEditable={false}
+            className={`
+              pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2
+              text-muted-foreground/80 select-none
+            `}
+          >
+            {TITLE_PLACEHOLDER}
+          </span>
+        ) : null}
+        {props.children}
+      </BlockInnerContainer>
     </PlateElement>
   );
 }
