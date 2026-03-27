@@ -19,6 +19,7 @@ type TitleData = {
 };
 
 const fallbackFormAtom = atom<TitleData>({ title: '' });
+const TITLE_PLACEHOLDER = 'Type the title...';
 
 const isTitleNode = (node: unknown) =>
   ElementApi.isElement(node) && node.type === TITLE_BLOCK_TYPE;
@@ -142,12 +143,26 @@ function TitleMetadataSync() {
 }
 
 export function TitleBlockElement(props: PlateElementProps) {
+  const showPlaceholder = getNodeText(props.element) === '';
+
   return (
     <PlateElement
       as="h1"
-      className="font-heading mt-[1.6em] pb-1 text-4xl font-bold"
+      className="font-heading relative mt-[1.6em] pb-1 text-4xl font-bold"
       {...props}
     >
+      {showPlaceholder ? (
+        <span
+          aria-hidden="true"
+          contentEditable={false}
+          className={`
+            pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-muted-foreground/80
+            select-none
+          `}
+        >
+          {TITLE_PLACEHOLDER}
+        </span>
+      ) : null}
       {props.children}
     </PlateElement>
   );
