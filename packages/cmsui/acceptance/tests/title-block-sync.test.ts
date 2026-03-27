@@ -216,3 +216,51 @@ test('Enter on title inserts a new empty paragraph before existing next block', 
   expect(nextNode.type).toBe('p');
   expect(nextNode.children).toEqual([{ text: existingNextText }]);
 });
+
+test('Empty title block keeps showing its placeholder when another block is selected', async ({
+  page,
+}) => {
+  const contentId = 'title-placeholder-visibility';
+  const titleText = 'Placeholder seed title';
+
+  await login(page);
+  await createContent(page, {
+    contentType: 'Document',
+    contentId,
+    contentTitle: titleText,
+    transition: 'publish',
+    bodyModifier: (body) => ({
+      ...body,
+      blocks: {
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: titleText }],
+            },
+            {
+              type: 'p',
+              children: [{ text: 'Paragraph after title' }],
+            },
+          ],
+        },
+      },
+    }),
+  });
+
+  await page.goto(`/@@edit/${contentId}`);
+  await waitForPlateEditorReady(page);
+  const editorTitle = page.locator('[data-slate-editor] h1').first();
+  await editorTitle.fill('');
+
+  const titlePlaceholder = page
+    .locator('[data-slate-editor] h1')
+    .getByText('Type the title...');
+  await expect(titlePlaceholder).toBeVisible();
+
+  const editorHandle = await getEditorHandle(page);
+  await clickAtPath(page, editorHandle, [1]);
+
+  await expect(titlePlaceholder).toBeVisible();
+});
