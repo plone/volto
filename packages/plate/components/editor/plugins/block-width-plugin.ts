@@ -11,31 +11,9 @@ import config from '@plone/registry';
 import type { StyleDefinition } from '@plone/types';
 
 export const BLOCK_WIDTH_KEY = 'blockWidth';
+export const FALLBACK_BLOCK_WIDTH = 'default';
 
-export const BLOCK_WIDTH_VALUES = {
-  narrow: 'narrow',
-  default: 'default',
-  layout: 'layout',
-  full: 'full',
-} as const;
-
-export const BLOCK_WIDTH_VALUE_LIST = [
-  BLOCK_WIDTH_VALUES.narrow,
-  BLOCK_WIDTH_VALUES.default,
-  BLOCK_WIDTH_VALUES.layout,
-  BLOCK_WIDTH_VALUES.full,
-] as const;
-
-export type BlockWidthValue = (typeof BLOCK_WIDTH_VALUE_LIST)[number];
-
-export const BLOCK_WIDTH_OPTIONS = [
-  { label: 'Narrow', value: BLOCK_WIDTH_VALUES.narrow },
-  { label: 'Default', value: BLOCK_WIDTH_VALUES.default },
-  { label: 'Layout', value: BLOCK_WIDTH_VALUES.layout },
-  { label: 'Full Width', value: BLOCK_WIDTH_VALUES.full },
-] as const;
-
-export const DEFAULT_BLOCK_WIDTH = BLOCK_WIDTH_VALUES.default;
+export type BlockWidthValue = string;
 
 export type BlockWidthConfig = {
   defaultWidth?: BlockWidthValue;
@@ -51,28 +29,28 @@ const FALLBACK_WIDTH_DEFINITIONS: readonly StyleDefinition[] = [
     style: {
       '--block-width': 'var(--narrow-container-width)',
     },
-    name: BLOCK_WIDTH_VALUES.narrow,
+    name: 'narrow',
     label: 'Narrow',
   },
   {
     style: {
       '--block-width': 'var(--default-container-width)',
     },
-    name: BLOCK_WIDTH_VALUES.default,
+    name: 'default',
     label: 'Default',
   },
   {
     style: {
       '--block-width': 'var(--layout-container-width)',
     },
-    name: BLOCK_WIDTH_VALUES.layout,
+    name: 'layout',
     label: 'Layout',
   },
   {
     style: {
       '--block-width': '100%',
     },
-    name: BLOCK_WIDTH_VALUES.full,
+    name: 'full',
     label: 'Full Width',
   },
 ] as const;
@@ -83,8 +61,19 @@ export const getBlockWidthDefinitions = (): readonly StyleDefinition[] => {
   return widths?.length ? widths : FALLBACK_WIDTH_DEFINITIONS;
 };
 
-const getBlockWidthValueList = (): BlockWidthValue[] =>
-  getBlockWidthDefinitions().map((width) => width.name as BlockWidthValue);
+export const getBlockWidthValueList = (): BlockWidthValue[] =>
+  getBlockWidthDefinitions()
+    .map((width) => width.name)
+    .filter((name): name is string => !!name);
+
+export const getDefaultBlockWidth = (): BlockWidthValue => {
+  const widthValues = getBlockWidthValueList();
+
+  if (!widthValues.length) return FALLBACK_BLOCK_WIDTH;
+  if (widthValues.includes(FALLBACK_BLOCK_WIDTH)) return FALLBACK_BLOCK_WIDTH;
+
+  return widthValues[0];
+};
 
 export const getBlockWidthOptions = () =>
   getBlockWidthDefinitions().map((width) => ({
@@ -160,11 +149,13 @@ export const getBlockWidthConfig = (
     | BaseBlockWidthPluginOptions
     | undefined;
   const blockConfig = resolveBlockWidthConfig(editor, element);
-  const defaultWidth = blockConfig.defaultWidth ?? DEFAULT_BLOCK_WIDTH;
+  const defaultWidth = blockConfig.defaultWidth ?? getDefaultBlockWidth();
+  const registryWidths = getBlockWidthValueList();
   const widths =
     blockConfig.widths ??
-    pluginOptions?.defaultWidths ??
-    getBlockWidthValueList();
+    (registryWidths.length
+      ? registryWidths
+      : (pluginOptions?.defaultWidths ?? []));
 
   return {
     defaultWidth,
@@ -228,7 +219,7 @@ export const BaseBlockWidthPlugin = createSlatePlugin({
     },
   },
   options: {
-    defaultWidths: [...BLOCK_WIDTH_VALUE_LIST],
+    defaultWidths: [],
   },
   extendEditor: ({ editor }) => {
     const normalizeNode = editor.normalizeNode as (entry: any) => void;

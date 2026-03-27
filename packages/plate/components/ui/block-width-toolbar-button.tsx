@@ -13,9 +13,8 @@ import {
 } from '@plone/components/Icons';
 
 import {
-  DEFAULT_BLOCK_WIDTH,
   BlockWidthPlugin,
-  BLOCK_WIDTH_VALUES,
+  getDefaultBlockWidth,
   getBlockWidthConfig,
   getBlockWidthOptions,
 } from '../editor/plugins/block-width-plugin';
@@ -43,7 +42,7 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
   const [open, setOpen] = React.useState(false);
   const activeBlock = editor.api.block()?.[0];
   const config = getBlockWidthConfig(editor, activeBlock);
-  const baseValue = config.defaultWidth ?? DEFAULT_BLOCK_WIDTH;
+  const baseValue = config.defaultWidth ?? getDefaultBlockWidth();
   const widthOptions = React.useMemo(() => {
     const allowed = new Set(config.widths ?? []);
     const options = getBlockWidthOptions();
@@ -84,11 +83,11 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
           >
             {widthOptions.map(({ label, value }) => {
               const Icon =
-                value === BLOCK_WIDTH_VALUES.full
+                value === 'full'
                   ? WidthFullIcon
-                  : value === BLOCK_WIDTH_VALUES.layout
+                  : value === 'layout'
                     ? WidthLayoutIcon
-                    : value === BLOCK_WIDTH_VALUES.narrow
+                    : value === 'narrow'
                       ? WidthNarrowIcon
                       : WidthDefaultIcon;
 

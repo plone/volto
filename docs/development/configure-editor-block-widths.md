@@ -23,6 +23,7 @@ The current shape is:
 - The selected width is resolved to a style object and merged into the Plate element `style` prop.
 - The toolbar uses the active block policy to show only the widths allowed for that block.
 - Normalization ensures a block always has a valid `blockWidth` value.
+- If a block does not define its own `defaultWidth`, the plugin resolves it from `config.blocks.widths`.
 
 The important consequence is that the node stores a width id, not a CSS value.
 
@@ -70,6 +71,9 @@ Each item is a `StyleDefinition`:
 - `name`: the value stored in `blockWidth`
 - `label`: the label shown in the toolbar
 - `style`: the inline style object injected into the rendered block
+
+If the registry contains a width named `default`, it is used as the shared default width.
+Otherwise, the first item in `config.blocks.widths` becomes the shared default.
 
 ### How styles are injected
 

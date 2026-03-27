@@ -3,9 +3,9 @@ import config from '@plone/registry';
 
 import {
   BaseBlockWidthPlugin,
-  BLOCK_WIDTH_VALUES,
-  DEFAULT_BLOCK_WIDTH,
+  FALLBACK_BLOCK_WIDTH,
   getBlockWidthConfig,
+  getDefaultBlockWidth,
   getBlockWidthDefinitions,
   getBlockWidthOptions,
 } from './block-width-plugin';
@@ -43,7 +43,7 @@ const restoreRegistryState = (state: RegistryBlocksState) => {
 
 const initialRegistryState = snapshotRegistryState();
 
-const createEditor = (defaultWidths = [BLOCK_WIDTH_VALUES.default]) =>
+const createEditor = (defaultWidths = ['default']) =>
   ({
     getOptions: vi.fn(() => ({ defaultWidths })),
   }) as any;
@@ -105,8 +105,8 @@ describe('block width plugin', () => {
     registryBlocks.plateBlocksConfig = {
       p: {
         blockWidth: {
-          defaultWidth: BLOCK_WIDTH_VALUES.narrow,
-          widths: [BLOCK_WIDTH_VALUES.narrow],
+          defaultWidth: 'narrow',
+          widths: ['narrow'],
         },
       },
     };
@@ -119,8 +119,8 @@ describe('block width plugin', () => {
         children: [{ text: 'Paragraph' }],
       } as any),
     ).toEqual({
-      defaultWidth: BLOCK_WIDTH_VALUES.narrow,
-      widths: [BLOCK_WIDTH_VALUES.narrow],
+      defaultWidth: 'narrow',
+      widths: ['narrow'],
     });
   });
 
@@ -128,8 +128,8 @@ describe('block width plugin', () => {
     registryBlocks.blocksConfig = {
       image: {
         blockWidth: {
-          defaultWidth: BLOCK_WIDTH_VALUES.default,
-          widths: [BLOCK_WIDTH_VALUES.layout, BLOCK_WIDTH_VALUES.default],
+          defaultWidth: 'default',
+          widths: ['layout', 'default'],
         },
       },
     };
@@ -143,8 +143,8 @@ describe('block width plugin', () => {
         children: [{ text: '' }],
       } as any),
     ).toEqual({
-      defaultWidth: BLOCK_WIDTH_VALUES.default,
-      widths: [BLOCK_WIDTH_VALUES.layout, BLOCK_WIDTH_VALUES.default],
+      defaultWidth: 'default',
+      widths: ['layout', 'default'],
     });
   });
 
@@ -152,8 +152,8 @@ describe('block width plugin', () => {
     registryBlocks.plateBlocksConfig = {
       p: {
         blockWidth: {
-          defaultWidth: BLOCK_WIDTH_VALUES.default,
-          widths: [BLOCK_WIDTH_VALUES.narrow],
+          defaultWidth: 'default',
+          widths: ['narrow'],
         },
       },
     };
@@ -164,11 +164,8 @@ describe('block width plugin', () => {
       children: [{ text: 'Paragraph' }],
     } as any);
 
-    expect(result.defaultWidth).toBe(BLOCK_WIDTH_VALUES.default);
-    expect(result.widths).toEqual([
-      BLOCK_WIDTH_VALUES.narrow,
-      BLOCK_WIDTH_VALUES.default,
-    ]);
+    expect(result.defaultWidth).toBe('default');
+    expect(result.widths).toEqual(['narrow', 'default']);
   });
 
   it('injects the resolved width style object into node props', () => {
@@ -190,7 +187,7 @@ describe('block width plugin', () => {
 
     expect(
       transformProps({
-        nodeValue: BLOCK_WIDTH_VALUES.full,
+        nodeValue: 'full',
         props: {
           style: {
             color: 'red',
@@ -204,6 +201,24 @@ describe('block width plugin', () => {
       },
     });
 
-    expect(DEFAULT_BLOCK_WIDTH).toBe(BLOCK_WIDTH_VALUES.default);
+    expect(getDefaultBlockWidth()).toBe('default');
+    expect(FALLBACK_BLOCK_WIDTH).toBe('default');
+  });
+
+  it('derives the fallback default width from the registry definitions', () => {
+    registryBlocks.widths = [
+      {
+        name: 'cinema',
+        label: 'Cinema',
+        style: { '--block-width': '120ch' },
+      },
+      {
+        name: 'wide',
+        label: 'Wide',
+        style: { '--block-width': '90ch' },
+      },
+    ];
+
+    expect(getDefaultBlockWidth()).toBe('cinema');
   });
 });
