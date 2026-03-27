@@ -1154,12 +1154,12 @@ msgstr "説明"
 #. Default: "Dialog closed."
 #: components/manage/Form/ModalForm
 msgid "Dialog closed."
-msgstr ""
+msgstr "ダイアログが閉じました。"
 
 #. Default: "Dialog opened: {title}"
 #: components/manage/Form/ModalForm
 msgid "Dialog opened: {title}"
-msgstr ""
+msgstr "ダイアログが開きました: {title}"
 
 #. Default: "Diff"
 #: components/manage/Diff/Diff

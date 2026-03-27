@@ -1155,12 +1155,12 @@ msgstr "Descripció"
 #. Default: "Dialog closed."
 #: components/manage/Form/ModalForm
 msgid "Dialog closed."
-msgstr ""
+msgstr "Finestra tancada."
 
 #. Default: "Dialog opened: {title}"
 #: components/manage/Form/ModalForm
 msgid "Dialog opened: {title}"
-msgstr ""
+msgstr "Finestra oberta: {title}"
 
 #. Default: "Diff"
 #: components/manage/Diff/Diff

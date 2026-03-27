@@ -1154,12 +1154,12 @@ msgstr "Kuvaus"
 #. Default: "Dialog closed."
 #: components/manage/Form/ModalForm
 msgid "Dialog closed."
-msgstr ""
+msgstr "Ponnahdusikkuna suljettu."
 
 #. Default: "Dialog opened: {title}"
 #: components/manage/Form/ModalForm
 msgid "Dialog opened: {title}"
-msgstr ""
+msgstr "Ponnahdusikkuna avattu: {title}"
 
 #. Default: "Diff"
 #: components/manage/Diff/Diff
