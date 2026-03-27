@@ -13,4 +13,4 @@ Utilizing these functions reduces import clutter in client files by obviating th
 The `queryHookFromQuery` and `mutationHookFromMutation` functions are utility functions that take a query or mutation function respectively, and yield a corresponding hook function.
 They use helper functions to extract the types of argument and return objects from the given query or mutation function.
 The resulting hook function is returned with the appropriate type casting.
-They use `useQuery` and `useMutation` internally so that the user doesn't have to use `useQuery` or `useMutation` directly.
+They encapsulate the underlying data‑fetching logic so that consumers do not need to work with low‑level query or mutation primitives directly.
