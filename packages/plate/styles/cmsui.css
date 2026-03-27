@@ -1,2 +1,10 @@
 /* Do not remove, it's necessary for the registry to detect Tailwind and load
 the styles for @plone/plate in the cmsui */
+
+.block-inner-container {
+  display: grid;
+  width: 100%;
+  max-width: var(--block-width);
+  justify-items: start;
+  margin-inline: auto;
+}
