@@ -95,7 +95,7 @@
 .modals {
   .modal {
     .actions {
-      display: flex !important;
+      display: flex;
       justify-content: end;
       gap: 0.5em;
 

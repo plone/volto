@@ -1151,6 +1151,16 @@ msgstr "降順"
 msgid "Description"
 msgstr "説明"
 
+#. Default: "Dialog closed."
+#: components/manage/Form/ModalForm
+msgid "Dialog closed."
+msgstr ""
+
+#. Default: "Dialog opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Dialog opened: {title}"
+msgstr ""
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"

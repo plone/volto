@@ -1146,6 +1146,16 @@ msgstr "अवरोही"
 msgid "Description"
 msgstr "विवरण"
 
+#. Default: "Dialog closed."
+#: components/manage/Form/ModalForm
+msgid "Dialog closed."
+msgstr ""
+
+#. Default: "Dialog opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Dialog opened: {title}"
+msgstr ""
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
