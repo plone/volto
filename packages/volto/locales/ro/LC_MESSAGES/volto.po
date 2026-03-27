@@ -861,7 +861,7 @@ msgstr "Conținut care se referă la {title}"
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "Titlul conținutului"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
