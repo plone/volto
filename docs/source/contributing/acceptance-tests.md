@@ -27,6 +27,9 @@ Being able to restart individual components also comes in handy.
 It's recommended to start three individual terminal sessions, one each for running the Plone backend, the Volto frontend, and the acceptance tests.
 All sessions should start from the `packages/volto` directory.
 
+If you have changed any dependency, run `make install` from the repository root and commit the updated {file}`pnpm-lock.yaml` first; otherwise acceptance tests may fail due to an out-of-date lockfile.
+See {ref}`developing-core-when-changing-dependencies-label`.
+
 1.  In the first session, start the backend server.
 
     ```shell
