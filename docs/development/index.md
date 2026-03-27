@@ -17,4 +17,5 @@ This part of the documentation describes how to develop projects using Seven.
 
 images
 i18n
+configure-editor-block-widths
 ```
