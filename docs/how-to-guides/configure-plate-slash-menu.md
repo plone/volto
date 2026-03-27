@@ -114,9 +114,7 @@ Slash builders receive a `context` object:
 ```ts
 type SlashMenuContext = {
   hasTitleBlock: boolean;
-  intl?: {
-    formatMessage?: (...args: any[]) => any;
-  } | null;
+  translate?: (id: string) => string;
 };
 ```
 
@@ -125,6 +123,8 @@ This is useful when the menu depends on editor state. For example:
 - adding a title command only when no title exists
 - translating labels from registry-backed blocks
 - showing or hiding commands depending on the current editor
+
+The default renderer adapts the current editor i18n implementation to this narrower function shape, so slash menu builders do not need to know about `intl` objects.
 
 ## Use case: keep the defaults and add one item
 

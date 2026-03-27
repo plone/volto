@@ -31,7 +31,19 @@ export function SlashInputElement(
       | { menu?: SlashMenuConfig }
       | undefined
   )?.menu;
-  const intl = React.useMemo(() => getIntl(editor), [editor]);
+  const translate = React.useMemo(() => {
+    const intl = getIntl(editor);
+
+    if (!intl?.formatMessage) {
+      return (id: string) => id;
+    }
+
+    return (id: string) =>
+      intl.formatMessage({
+        defaultMessage: id,
+        id,
+      });
+  }, [editor]);
 
   const hasTitleBlock = editor.children.some(
     (child) => ElementApi.isElement(child) && child.type === TITLE_BLOCK_TYPE,
@@ -40,9 +52,9 @@ export function SlashInputElement(
   const groups = React.useMemo(() => {
     return resolveSlashMenuGroups(editor, menuConfig, {
       hasTitleBlock,
-      intl,
+      translate,
     });
-  }, [editor, hasTitleBlock, intl, menuConfig]);
+  }, [editor, hasTitleBlock, menuConfig, translate]);
 
   return (
     <PlateElement {...props} as="span">

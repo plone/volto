@@ -47,9 +47,7 @@ export type SlashMenuGroup = {
 
 export type SlashMenuContext = {
   hasTitleBlock: boolean;
-  intl?: {
-    formatMessage?: (...args: any[]) => any;
-  } | null;
+  translate?: (id: string) => string;
 };
 
 export type SlashMenuConfig = {
@@ -244,18 +242,20 @@ const createStaticGroups = (): SlashMenuGroup[] => [
 ];
 
 const createRegistryBlockItems = (
-  intl?: SlashMenuContext['intl'],
+  translate?: SlashMenuContext['translate'],
 ): SlashMenuItem[] => {
   const blocksConfig = config?.blocks?.blocksConfig;
   if (!blocksConfig) return [];
 
   return filteredBlocksConfig(blocksConfig).map(([id, block]: any) => {
-    const format =
-      intl?.formatMessage?.bind(intl) ||
-      ((msg: any) => msg?.defaultMessage ?? msg?.id ?? String(msg));
-
     const label =
-      typeof block.title === 'string' ? block.title : format(block.title);
+      typeof block.title === 'string'
+        ? block.title
+        : typeof block.title?.id === 'string'
+          ? (translate?.(block.title.id) ??
+            block.title.defaultMessage ??
+            block.title.id)
+          : String(block.title);
     const Icon = block.icon ? block.icon : Square;
 
     return {
@@ -288,7 +288,7 @@ export const getDefaultSlashMenuGroups = (
     });
   }
 
-  const blocks = createRegistryBlockItems(context.intl);
+  const blocks = createRegistryBlockItems(context.translate);
   if (blocks.length) {
     groups = [
       ...groups,
