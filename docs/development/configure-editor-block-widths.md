@@ -7,7 +7,7 @@ myst:
     "keywords": "Seven, Plate, block width, editor"
 ---
 
-# Configure Plate block widths
+# Configure editor block widths
 
 This guide explains the current block width model in the Plate editor, including how shared widths are defined, how width policies are configured for Plate blocks and Plone blocks, and how the selected width is injected into rendered block styles.
 
@@ -26,7 +26,7 @@ The current shape is:
 
 The important consequence is that the node stores a width id, not a CSS value.
 
-## Shared width definitions
+### Shared width definitions
 
 All available widths are defined in `config.blocks.widths`.
 
@@ -71,7 +71,7 @@ Each item is a `StyleDefinition`:
 - `label`: the label shown in the toolbar
 - `style`: the inline style object injected into the rendered block
 
-## How styles are injected
+### How styles are injected
 
 The plugin resolves the current `blockWidth` id against `config.blocks.widths`, then injects the matching `style` object into the Plate element.
 
@@ -202,11 +202,12 @@ The toolbar uses the resolved policy and the shared width definitions together:
 - the policy determines which width ids are allowed
 - `config.blocks.widths` determines the labels and injected styles for those ids
 
-## Notes
 
-- Widths are stored in the node as `blockWidth`.
-- Width values should be semantic ids such as `narrow` or `layout`, not raw CSS values.
-- The `BlockWidthPlugin` normalizes blocks to ensure `blockWidth` is set and valid for the current block.
-- The toolbar options are sourced from `config.blocks.widths`.
-- The actual visual width is controlled by CSS through `--block-width`.
-- Registry-based configuration is now the preferred approach for both Plate and Plone blocks.
+```{note}
+Widths are stored in the node as `blockWidth`.
+Width values should be semantic ids such as `narrow` or `layout`, not raw CSS values.
+The `BlockWidthPlugin` normalizes blocks to ensure `blockWidth` is set and valid for the current block.
+The toolbar options are sourced from `config.blocks.widths`.
+The actual visual width is controlled by CSS through `--block-width`.
+Registry-based configuration is now the preferred approach for both Plate and Plone blocks.
+```

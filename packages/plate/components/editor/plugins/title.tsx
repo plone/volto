@@ -10,6 +10,7 @@ import {
   useEditorRef,
   useEditorSelector,
 } from 'platejs/react';
+import { BlockInnerContainer } from '../../ui/block-inner-container';
 
 export const TITLE_BLOCK_TYPE = 'title';
 
@@ -147,7 +148,7 @@ export function TitleBlockElement(props: PlateElementProps) {
       className="font-heading mt-[1.6em] pb-1 text-4xl font-bold"
       {...props}
     >
-      {props.children}
+      <BlockInnerContainer>{props.children}</BlockInnerContainer>
     </PlateElement>
   );
 }
