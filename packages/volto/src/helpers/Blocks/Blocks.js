@@ -816,7 +816,9 @@ export const getBlocksHierarchy = (properties) => {
     title: properties?.[blocksFieldName]?.[n]?.['@type'],
     data: properties?.[blocksFieldName]?.[n],
     children: isBlockContainer(properties?.[blocksFieldName]?.[n])
-      ? getBlocksHierarchy(properties?.[blocksFieldName]?.[n])
+      ? properties?.[blocksFieldName]?.[n]?.data
+        ? getBlocksHierarchy(properties?.[blocksFieldName]?.[n]?.data)
+        : getBlocksHierarchy(properties?.[blocksFieldName]?.[n])
       : [],
   }));
 };
