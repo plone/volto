@@ -1,15 +1,15 @@
 ---
 myst:
   html_meta:
-    "description": "Configure and extend the Plate slash menu per editor in Seven"
-    "property=og:description": "Configure and extend the Plate slash menu per editor in Seven"
-    "property=og:title": "Configure Plate slash menus"
-    "keywords": "Seven, Plate, slash menu, editor, extensibility, shadowing"
+    "description": "Configure and extend the Editor slash menu per editor in Seven"
+    "property=og:description": "Configure and extend the Editor slash menu per editor in Seven"
+    "property=og:title": "Configure Editor slash menus"
+    "keywords": "Seven, Editor, Plate, slash menu, editor, extensibility, shadowing"
 ---
 
-# Configure Plate slash menus
+# Editor slash menus
 
-This guide explains how the Plate slash menu is wired in Seven, how to extend it without bloating the registry or the bundle, and how to configure different slash menus for different editors.
+This guide explains how the Plate Editor slash menu is wired in Seven, how to extend it without bloating the registry or the bundle, and how to configure different slash menus for different editors.
 
 The key design choice is that the slash menu is configured at editor composition time, not by globally shadowing the UI component.
 
@@ -29,7 +29,7 @@ Their responsibilities are:
 
 This split is important because it keeps the renderer generic and moves customization into configuration.
 
-## Why this model exists
+### Why this model exists
 
 Shadowing `SlashInputElement` is a poor fit when a project has more than one editor.
 
@@ -42,7 +42,7 @@ If the menu is customized by shadowing the component:
 
 The current model avoids that by letting each editor build its own `SlashKit`.
 
-## Default behavior
+### Default behavior
 
 The default export is still:
 
@@ -58,7 +58,7 @@ By default, the menu includes:
 - the title block insertion entry when the current document does not already contain one
 - registry-backed Plone blocks from `config.blocks.blocksConfig`
 
-## The extension API
+### The extension API
 
 The slash menu is configured with `createSlashKit(...)`.
 
@@ -91,7 +91,7 @@ The extension points serve different use cases:
 
 In most cases, `extendGroups` is the best entry point.
 
-## How groups are resolved
+### How groups are resolved
 
 The renderer resolves groups in this order:
 
@@ -107,7 +107,7 @@ That means:
 - `groups` is a static replacement
 - `extendGroups` can be used either with the defaults or with a replacement menu
 
-## The context object
+### The context object
 
 Slash builders receive a `context` object:
 
@@ -126,7 +126,11 @@ This is useful when the menu depends on editor state. For example:
 
 The default renderer adapts the current editor i18n implementation to this narrower function shape, so slash menu builders do not need to know about `intl` objects.
 
-## Use case: keep the defaults and add one item
+## Examples of slash menu customization
+
+Following are some common use cases of slash menu customization and how to implement them with the provided API.
+
+### Use case: keep the defaults and add one item
 
 This is the most common customization.
 
@@ -170,7 +174,7 @@ Use this when:
 - you only need to append or prepend a few commands
 - you want the smallest maintenance surface
 
-## Use case: remove items or groups from the defaults
+### Use case: remove items or groups from the defaults
 
 You can filter the default groups with `extendGroups`.
 
@@ -208,7 +212,7 @@ Use this when:
 - your project wants to curate the default menu
 - some commands should not be available in a specific editor
 
-## Use case: reorder groups or items
+### Use case: reorder groups or items
 
 `extendGroups` can also reorder the resolved menu.
 
@@ -232,7 +236,7 @@ Use this when:
 - one editor should emphasize project blocks over core text commands
 - you need an editorial workflow-specific ordering
 
-## Use case: replace the full menu with a static list
+### Use case: replace the full menu with a static list
 
 Use `groups` when the menu is fixed and does not depend on runtime editor state.
 
@@ -274,7 +278,7 @@ Use this when:
 - an editor must expose a very narrow authoring surface
 - the menu is intentionally independent from the default menu
 
-## Use case: build the full menu dynamically
+### Use case: build the full menu dynamically
 
 Use `getGroups` when the menu depends on editor state or external configuration.
 
@@ -321,7 +325,7 @@ Use this when:
 - commands differ based on selection, schema, or document content
 - you need more control than `extendGroups` provides
 
-## Use case: different slash menus for different editors
+### Use case: different slash menus for different editors
 
 This is the main reason to use `createSlashKit(...)`.
 
@@ -360,11 +364,11 @@ export const LandingPageEditorKit = [
 
 This approach is preferable to shadowing because each editor keeps its own slash menu definition.
 
-## Use case: project-wide defaults in an add-on
+### Use case: project-wide defaults in an add-on
 
 If a project wants to change the default slash menu everywhere, there are two reasonable approaches.
 
-### Option 1: shadow the editor kit
+#### Option 1: shadow the editor kit
 
 Shadow the editor kit that your project uses and replace:
 
@@ -387,7 +391,7 @@ with:
 
 This is the preferred approach when you control the editor composition.
 
-### Option 2: shadow `slash-menu.tsx`
+#### Option 2: shadow `slash-menu.tsx`
 
 This is acceptable only if your goal is to redefine the global defaults used by `createSlashKit()` with no explicit `menu` argument.
 
