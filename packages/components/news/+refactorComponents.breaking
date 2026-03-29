@@ -9,6 +9,7 @@ The Quanta `Menu` component was refactored to behave as a thin wrapper around `r
 - The internal item schema used to describe menu entries with fields such as `label`, `description`, `keyboard`, `icon`, `separator`, `section`, `header`, and nested `children`.
 - Automatic rendering of sections and separators from that custom schema.
 - Automatic rendering of text slots, icons, keyboard shortcuts, and similar item content from custom item objects.
+- The custom `title` prop on `MenuSection`.
 
 ## Added
 
@@ -26,8 +27,11 @@ Consumers should now compose Quanta menus using the standard `react-aria-compone
 
 - Wrap menus with `MenuTrigger` instead of passing trigger props to `Menu`.
 - Pass `MenuItem`, `MenuSection`, and `MenuSeparator` as children instead of a `menuItems` array.
+- Use `Header` inside `MenuSection`, or `aria-label` when there is no visible header, instead of a custom `title` prop.
 - Render icons, descriptions, labels, keyboard shortcuts, and links explicitly in `MenuItem` children using RAC patterns and slots.
 
 This removes opinionated behavior from Quanta `Menu` and makes the component API match upstream RAC usage more closely.
+
+The same alignment was also applied to the basic `Menu` component so both basic and Quanta flavours now follow the same RAC composition model.
 
 @sneridagh

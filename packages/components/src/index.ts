@@ -25,7 +25,14 @@ export { GridList, GridListItem } from './components/GridList/GridList';
 export { Icon } from './components/Icon/Icon';
 export { Link } from './components/Link/Link';
 export { ListBox, ListBoxItem } from './components/ListBox/ListBox';
-export { Menu, MenuItem } from './components/Menu/Menu';
+export {
+  Menu,
+  MenuItem,
+  MenuSection,
+  MenuSeparator,
+  MenuTrigger,
+  SubmenuTrigger,
+} from './components/Menu/Menu';
 export { Meter } from './components/Meter/Meter';
 export { Modal } from './components/Modal/Modal';
 export { NumberField } from './components/NumberField/NumberField';

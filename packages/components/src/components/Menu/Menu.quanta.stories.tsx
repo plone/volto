@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Header, Keyboard, Text, type Selection } from 'react-aria-components';
+import { Keyboard, Text, type Selection } from 'react-aria-components';
 import { Button } from '../Button/Button.quanta';
 import {
   BackgroundIcon,
@@ -17,6 +17,7 @@ import {
   Menu,
   MenuItem,
   MenuSection,
+  MenuSectionHeader,
   MenuSeparator,
   MenuTrigger,
   SubmenuTrigger,
@@ -36,7 +37,7 @@ type Story = StoryObj<typeof meta>;
 
 function TriggerButton({ children }: { children: React.ReactNode }) {
   return (
-    <Button variant="icon" aria-label="Open menu">
+    <Button variant="neutral" accent aria-label="Open menu">
       {children}
     </Button>
   );
@@ -45,7 +46,9 @@ function TriggerButton({ children }: { children: React.ReactNode }) {
 export const Default: Story = {
   render: (args: any) => (
     <MenuTrigger>
-      <Button>Edit</Button>
+      <Button variant="neutral" accent>
+        Edit
+      </Button>
       <Menu {...args}>
         <MenuItem id="cut">Cut</MenuItem>
         <MenuItem id="copy">Copy</MenuItem>
@@ -59,22 +62,24 @@ export const Default: Story = {
 export const WithTextSlots: Story = {
   render: (args: any) => (
     <MenuTrigger>
-      <Button>Edit</Button>
+      <Button variant="neutral" accent>
+        Edit
+      </Button>
       <Menu {...args}>
         <MenuItem id="cut">
-          <SettingsIcon className="h-4 w-4" />
+          <SettingsIcon />
           <Text slot="label">Cut</Text>
           <Text slot="description">Cut to the clipboard</Text>
           <Keyboard>⌘X</Keyboard>
         </MenuItem>
         <MenuItem id="copy">
-          <SettingsIcon className="h-4 w-4" />
+          <SettingsIcon />
           <Text slot="label">Copy</Text>
           <Text slot="description">Copy to the clipboard</Text>
           <Keyboard>⌘C</Keyboard>
         </MenuItem>
         <MenuItem id="paste">
-          <SettingsIcon className="h-4 w-4" />
+          <SettingsIcon />
           <Text slot="label">Paste</Text>
           <Text slot="description">Paste from the clipboard</Text>
           <Keyboard>⌘V</Keyboard>
@@ -89,7 +94,7 @@ export const WithIconButton: Story = {
   render: (args: any) => (
     <MenuTrigger>
       <TriggerButton>
-        <SettingsIcon className="h-4 w-4" />
+        <SettingsIcon />
       </TriggerButton>
       <Menu {...args}>
         <MenuItem id="cut">Cut</MenuItem>
@@ -105,7 +110,7 @@ export const DisabledItems: Story = {
   render: (args: any) => (
     <MenuTrigger>
       <TriggerButton>
-        <BlindIcon className="h-4 w-4" />
+        <BlindIcon />
       </TriggerButton>
       <Menu {...args} disabledKeys={['paste']}>
         <MenuItem id="cut">Cut</MenuItem>
@@ -121,7 +126,7 @@ export const WithSeparators: Story = {
   render: (args: any) => (
     <MenuTrigger>
       <TriggerButton>
-        <DashIcon className="h-4 w-4" />
+        <DashIcon />
       </TriggerButton>
       <Menu {...args}>
         <MenuItem id="cut">Cut</MenuItem>
@@ -139,14 +144,16 @@ export const WithSections: Story = {
   render: (args: any) => (
     <MenuTrigger>
       <TriggerButton>
-        <BackgroundIcon className="h-4 w-4" />
+        <BackgroundIcon />
       </TriggerButton>
       <Menu {...args}>
-        <MenuSection title="Styles">
+        <MenuSection>
+          <MenuSectionHeader>Styles</MenuSectionHeader>
           <MenuItem id="bold">Bold</MenuItem>
           <MenuItem id="underline">Underline</MenuItem>
         </MenuSection>
-        <MenuSection title="Align">
+        <MenuSection>
+          <MenuSectionHeader>Align</MenuSectionHeader>
           <MenuItem id="left">Left</MenuItem>
           <MenuItem id="middle">Middle</MenuItem>
           <MenuItem id="right">Right</MenuItem>
@@ -161,13 +168,11 @@ export const WithCustomHeader: Story = {
   render: (args: any) => (
     <MenuTrigger>
       <TriggerButton>
-        <BackgroundIcon className="h-4 w-4" />
+        <BackgroundIcon />
       </TriggerButton>
       <Menu {...args}>
         <MenuSection>
-          <Header className="px-4 py-1 text-sm font-semibold text-neutral-500">
-            Styles
-          </Header>
+          <MenuSectionHeader>Styles</MenuSectionHeader>
           <MenuItem id="bold">Bold</MenuItem>
           <MenuItem id="underline">Underline</MenuItem>
         </MenuSection>
@@ -181,7 +186,7 @@ export const AsLinks: Story = {
   render: (args: any) => (
     <MenuTrigger>
       <TriggerButton>
-        <LinkIcon className="h-4 w-4" />
+        <LinkIcon />
       </TriggerButton>
       <Menu {...args}>
         <MenuItem href="https://adobe.com/" target="_blank">
@@ -212,7 +217,7 @@ export const SingleSelection: Story = {
       <>
         <MenuTrigger>
           <TriggerButton>
-            <PropertiesIcon className="h-4 w-4" />
+            <PropertiesIcon />
           </TriggerButton>
           <Menu
             {...args}
@@ -245,7 +250,7 @@ export const MultipleSelection: Story = {
       <>
         <MenuTrigger>
           <TriggerButton>
-            <PropertiesIcon className="h-4 w-4" />
+            <PropertiesIcon />
           </TriggerButton>
           <Menu
             {...args}
@@ -276,7 +281,7 @@ export const ControlledState: Story = {
     return (
       <MenuTrigger {...args} isOpen={open} onOpenChange={setOpen}>
         <TriggerButton>
-          <MoreoptionsIcon className="h-4 w-4" />
+          <MoreoptionsIcon />
         </TriggerButton>
         <Menu>
           <MenuItem id="cut">Cut</MenuItem>
@@ -293,7 +298,7 @@ export const LongPress: Story = {
   render: (args: any) => (
     <MenuTrigger trigger="longPress">
       <TriggerButton>
-        <MoreoptionsIcon className="h-4 w-4" />
+        <MoreoptionsIcon />
       </TriggerButton>
       <Menu {...args} onAction={(id) => alert(String(id))}>
         <MenuItem id="cut">Cut</MenuItem>
@@ -309,7 +314,7 @@ export const WithSubmenu: Story = {
   render: (args: any) => (
     <MenuTrigger>
       <TriggerButton>
-        <MoreoptionsIcon className="h-4 w-4" />
+        <MoreoptionsIcon />
       </TriggerButton>
       <Menu {...args}>
         <MenuItem id="new">New</MenuItem>

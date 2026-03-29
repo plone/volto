@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Collection,
   Header,
   Menu as AriaMenu,
   MenuItem as AriaMenuItem,
@@ -11,7 +10,7 @@ import {
   composeRenderProps,
   type MenuItemProps,
   type MenuProps,
-  type MenuSectionProps as AriaMenuSectionProps,
+  type MenuSectionProps,
   type MenuTriggerProps as AriaMenuTriggerProps,
   type SeparatorProps,
   type SubmenuTriggerProps,
@@ -135,11 +134,6 @@ export function MenuSeparator(props: SeparatorProps) {
   );
 }
 
-export interface MenuSectionProps<T> extends AriaMenuSectionProps<T> {
-  title?: string;
-  items?: Iterable<T>;
-}
-
 export function MenuSection<T extends object>(props: MenuSectionProps<T>) {
   return (
     <AriaMenuSection
@@ -153,21 +147,26 @@ export function MenuSection<T extends object>(props: MenuSectionProps<T>) {
         props.className,
       )}
     >
-      {props.title && (
-        <Header
-          className={`
-            sticky -top-[5px] z-10 -mx-1 -mt-px truncate border-y border-y-neutral-200
-            bg-neutral-100/60 px-4 py-1 text-sm font-semibold text-neutral-500 backdrop-blur-md
-            supports-[-moz-appearance:none]:bg-neutral-100
-            dark:border-y-neutral-700 dark:bg-neutral-700/60 dark:text-neutral-300
-            [&+*]:mt-1
-          `}
-        >
-          {props.title}
-        </Header>
-      )}
-      <Collection items={props.items}>{props.children}</Collection>
+      {props.children}
     </AriaMenuSection>
+  );
+}
+
+export function MenuSectionHeader(props: React.ComponentProps<typeof Header>) {
+  return (
+    <Header
+      {...props}
+      className={twMerge(
+        `
+          sticky -top-[5px] z-10 -mx-1 -mt-px truncate border-y border-y-neutral-200
+          bg-neutral-100/60 px-4 py-1 text-sm font-semibold text-neutral-500 backdrop-blur-md
+          supports-[-moz-appearance:none]:bg-neutral-100
+          dark:border-y-neutral-700 dark:bg-neutral-700/60 dark:text-neutral-300
+          [&+*]:mt-1
+        `,
+        props.className,
+      )}
+    />
   );
 }
 
