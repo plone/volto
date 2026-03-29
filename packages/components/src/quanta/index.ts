@@ -7,6 +7,7 @@ export * from '../components/Container/Container.quanta';
 export * from '../components/Field/Field.quanta';
 export * from '../components/Link/Link.quanta';
 export * from '../components/Menu/Menu.quanta';
+export * from '../components/Select/Select.quanta';
 export * from '../components/TextField/TextField.quanta';
 export { SizeWidget } from '../components/SizeWidget/SizeWidget';
 export { AlignWidget } from '../components/AlignWidget/AlignWidget';

@@ -20,17 +20,19 @@ This file applies only to `packages/components` and its subdirectories.
 
 - Components may exist in two flavours:
   - basic: CSS-styled components
-  - Quanta: Tailwind-styled components, named with the `.quanta.tsx` suffix
+  - Quanta styles for a few CSS-styled components in `src/styles/quanta/`: CSS assets for Quanta-styled output
+  - Quanta components: the Tailwind-styled React components, named with the `.quanta.tsx` suffix
 - Both flavours live under the same component folder in `src/components/<ComponentName>/`.
 - Basic components are exported from `src/index.ts`.
-- Quanta components are exported from `src/quanta/index.ts`.
+- Tailwind Quanta components are exported from `src/quanta/index.ts` and are the real Quanta component implementation.
 - Keep tree-shaking in mind when adding exports or shared helpers.
 
 ## Styles
 
 - Built CSS lives under `src/styles`.
 - Basic component styles live in `src/styles/basic/`, usually one CSS file per component, and are bundled from `src/styles/basic/main.css`.
-- Quanta styles live in `src/styles/quanta/` and are bundled from `src/styles/quanta/main.css`.
+- `src/styles/quanta/` contains CSS-based Quanta style definitions and is bundled from `src/styles/quanta/main.css`.
+- Do not confuse `src/styles/quanta/` with the Tailwind Quanta component implementation. The Tailwind components are the `.quanta.tsx` files in `src/components`.
 - Other `src/styles` folders are for shared assets such as static files and fonts.
 - When adding or renaming a styled component, make sure the corresponding style entry is wired into the appropriate `main.css`.
 
