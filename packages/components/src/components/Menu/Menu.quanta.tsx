@@ -1,56 +1,68 @@
-import React, { Fragment, type ReactNode } from 'react';
-
+import React from 'react';
 import {
-  Menu as RACMenu,
-  MenuItem as RACMenuItem,
-  composeRenderProps,
-  MenuTrigger,
-  Keyboard,
-  Section,
-  Text,
+  Collection,
   Header,
-  type MenuItemProps as RACMenuItemProps,
+  Menu as AriaMenu,
+  MenuItem as AriaMenuItem,
+  MenuSection as AriaMenuSection,
+  MenuTrigger as AriaMenuTrigger,
+  Separator as AriaSeparator,
+  SubmenuTrigger as AriaSubmenuTrigger,
+  composeRenderProps,
+  type MenuItemProps,
+  type MenuProps,
+  type MenuSectionProps as AriaMenuSectionProps,
+  type MenuTriggerProps as AriaMenuTriggerProps,
   type SeparatorProps,
-  type MenuProps as RACMenuProps,
-  type MenuTriggerProps,
-  type PressEvent,
+  type SubmenuTriggerProps,
 } from 'react-aria-components';
-import { Popover, type PopoverProps } from '../Popover/Popover.quanta';
-import { CheckboxIcon, ChevronrightIcon } from '../../components/icons';
-import { Button } from '../Button/Button.quanta';
-import { Separator } from '../Separator/Separator.quanta';
 import { tv } from 'tailwind-variants';
+import { twMerge } from 'tailwind-merge';
+import { CheckboxIcon, ChevronrightIcon } from '../icons';
+import { Popover, type PopoverProps } from '../Popover/Popover.quanta';
+import { composeTailwindRenderProps, focusRing } from '../utils';
 
-export interface itemProps {
-  id: string;
-  label: string;
-  description?: string;
-  keyboard?: string;
-  icon?: ReactNode;
-  separator?: boolean;
-  disabled?: boolean;
-  section?: boolean;
-  header?: string;
-  href?: string;
-  target?: string;
-  children?: itemProps[];
+export function Menu<T extends object>(props: MenuProps<T>) {
+  return (
+    <AriaMenu
+      {...props}
+      className={composeTailwindRenderProps(
+        props.className,
+        `
+          max-h-[inherit] overflow-auto p-1 font-sans
+          [clip-path:inset(0_0_0_0_round_.75rem)]
+          empty:pb-2 empty:text-center
+        `,
+      )}
+    />
+  );
 }
 
-export const dropdownItemStyles = tv({
+const menuItemStyles = tv({
+  extend: focusRing,
   base: `
-    group cursor-default items-center gap-x-3 gap-y-0 rounded-lg py-1 pr-1 pl-3 outline-0
-    forced-color-adjust-none select-none
+    group relative flex cursor-default items-center gap-4 rounded-lg py-2 pr-3 pl-3 text-sm
+    no-underline forced-color-adjust-none select-none
+    [-webkit-tap-highlight-color:transparent]
+    selected:pr-1
+    [&[href]]:cursor-pointer
   `,
   variants: {
     isDisabled: {
       false: `
-        text-gray-900
-        dark:text-zinc-100
+        text-neutral-900
+        dark:text-neutral-100
       `,
       true: `
-        text-gray-300
-        dark:text-zinc-600
+        text-neutral-300
+        dark:text-neutral-600
         forced-colors:text-[GrayText]
+      `,
+    },
+    isPressed: {
+      true: `
+        bg-neutral-100
+        dark:bg-neutral-800
       `,
     },
     isFocused: {
@@ -59,81 +71,30 @@ export const dropdownItemStyles = tv({
         forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]
       `,
     },
-    selectionMode: {
-      single: 'flex',
-      multiple: 'flex',
-    },
-    hasDescription: {
-      false: '',
-      true: '',
-    },
-    hasKeyboard: {
-      false: '',
-      true: '',
-    },
-    hasIcon: {
-      false: '',
-      true: '',
-    },
-    hasHref: {
-      false: '',
-      true: 'block',
-    },
   },
   compoundVariants: [
     {
       isFocused: false,
       isOpen: true,
       className: `
-        bg-gray-100
-        dark:bg-zinc-700/60
+        bg-neutral-100
+        dark:bg-neutral-700/60
       `,
-    },
-    {
-      hasDescription: true,
-      hasIcon: true,
-      hasKeyboard: true,
-      className:
-        'grid grid-flow-col grid-cols-[10%_auto_auto] grid-rows-[auto_auto]',
     },
   ],
 });
-export interface MenuItemProps extends RACMenuItemProps {
-  selectionMode: 'single' | 'multiple' | undefined;
-  item: itemProps;
-}
-
-export interface MenuButtonProps<T>
-  extends RACMenuProps<T>,
-    Omit<MenuTriggerProps, 'children'> {
-  button?: React.ReactNode;
-  onPress?: (e: PressEvent) => void;
-
-  placement?: PopoverProps['placement'];
-  selectionMode?: 'single' | 'multiple';
-  menuItems: itemProps[];
-}
 
 export function MenuItem(props: MenuItemProps) {
   const textValue =
     props.textValue ||
     (typeof props.children === 'string' ? props.children : undefined);
+
   return (
-    <RACMenuItem
-      textValue={textValue}
+    <AriaMenuItem
       {...props}
-      id={props.item?.id}
+      textValue={textValue}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        dropdownItemStyles({
-          ...renderProps,
-          hasDescription: !!props.item.description,
-          hasIcon: !!props.item?.icon,
-          hasKeyboard: !!props.item?.keyboard,
-          isDisabled: props.item?.disabled,
-          selectionMode: props?.selectionMode,
-          hasHref: !!props.item?.href,
-          className,
-        }),
+        menuItemStyles({ ...renderProps, className }),
       )}
     >
       {composeRenderProps(
@@ -145,20 +106,7 @@ export function MenuItem(props: MenuItemProps) {
                 {isSelected && <CheckboxIcon aria-hidden className="h-4 w-4" />}
               </span>
             )}
-            {props.item.icon && <props.item.icon className="col-start-1" />}
-            <Text slot="label" className="col-start-2 text-lg">
-              {children}
-            </Text>
-            {props.item.description && (
-              <Text slot="description" className="col-start-2 text-sm">
-                {props.item.description}
-              </Text>
-            )}
-            {props.item.keyboard && (
-              <Keyboard className="col-start-3 row-span-2 text-lg">
-                {props.item.keyboard}
-              </Keyboard>
-            )}
+            {children}
             {hasSubmenu && (
               <ChevronrightIcon
                 aria-hidden
@@ -168,75 +116,93 @@ export function MenuItem(props: MenuItemProps) {
           </>
         ),
       )}
-    </RACMenuItem>
-  );
-}
-
-export function Menu<T extends object>({
-  button,
-  onPress,
-  children,
-  ...props
-}: MenuButtonProps<T>) {
-  return (
-    <MenuTrigger {...props}>
-      <Button onPress={onPress}>{button}</Button>
-      <Popover placement={props.placement} className="min-w-[150px]">
-        <RACMenu
-          {...props}
-          className={`
-            max-h-[inherit] overflow-auto p-1 outline-0
-            [clip-path:inset(0_0_0_0_round_.75rem)]
-          `}
-        >
-          {props?.menuItems?.map((item, key) => {
-            return (
-              <Fragment key={item.id || key}>
-                {item.separator && !item.section && <Separator />}
-                {!item.separator && !item.section && (
-                  <MenuItem
-                    key={item.id}
-                    item={item}
-                    isDisabled={item.disabled}
-                    selectionMode={props.selectionMode}
-                  >
-                    {item.label}
-                  </MenuItem>
-                )}
-                {!item.separator && item.section && (
-                  <Section className={key > 0 ? 'mt-4' : ''}>
-                    <Header className="px-2 text-lg font-bold">
-                      {item.header}
-                    </Header>
-                    {item.children.map((child) => (
-                      <MenuItem
-                        key={child.id}
-                        item={child}
-                        isDisabled={child.disabled}
-                        selectionMode={props.selectionMode}
-                      >
-                        {child.label}
-                      </MenuItem>
-                    ))}
-                  </Section>
-                )}
-              </Fragment>
-            );
-          })}
-        </RACMenu>
-      </Popover>
-    </MenuTrigger>
+    </AriaMenuItem>
   );
 }
 
 export function MenuSeparator(props: SeparatorProps) {
   return (
-    <Separator
+    <AriaSeparator
       {...props}
-      className={`
-        mx-3 my-1 border-b border-gray-300
-        dark:border-zinc-700
-      `}
+      className={twMerge(
+        `
+          mx-3 my-1 border-b border-neutral-300
+          dark:border-neutral-700
+        `,
+        props.className,
+      )}
     />
+  );
+}
+
+export interface MenuSectionProps<T> extends AriaMenuSectionProps<T> {
+  title?: string;
+  items?: Iterable<T>;
+}
+
+export function MenuSection<T extends object>(props: MenuSectionProps<T>) {
+  return (
+    <AriaMenuSection
+      {...props}
+      className={twMerge(
+        `
+          after:block after:h-[5px] after:content-['']
+          first:-mt-[5px]
+          last:after:hidden
+        `,
+        props.className,
+      )}
+    >
+      {props.title && (
+        <Header
+          className={`
+            sticky -top-[5px] z-10 -mx-1 -mt-px truncate border-y border-y-neutral-200
+            bg-neutral-100/60 px-4 py-1 text-sm font-semibold text-neutral-500 backdrop-blur-md
+            supports-[-moz-appearance:none]:bg-neutral-100
+            dark:border-y-neutral-700 dark:bg-neutral-700/60 dark:text-neutral-300
+            [&+*]:mt-1
+          `}
+        >
+          {props.title}
+        </Header>
+      )}
+      <Collection items={props.items}>{props.children}</Collection>
+    </AriaMenuSection>
+  );
+}
+
+interface MenuTriggerProps extends AriaMenuTriggerProps {
+  placement?: PopoverProps['placement'];
+}
+
+export function MenuTrigger(props: MenuTriggerProps) {
+  const [trigger, menu] = React.Children.toArray(props.children) as [
+    React.ReactElement,
+    React.ReactElement,
+  ];
+
+  return (
+    <AriaMenuTrigger {...props}>
+      {trigger}
+      <Popover placement={props.placement} className="min-w-[150px]">
+        {menu}
+      </Popover>
+    </AriaMenuTrigger>
+  );
+}
+
+export function SubmenuTrigger(props: SubmenuTriggerProps) {
+  const [trigger, menu] = React.Children.toArray(props.children) as [
+    React.ReactElement,
+    React.ReactElement,
+  ];
+
+  return (
+    <AriaSubmenuTrigger {...props}>
+      {trigger}
+      <Popover offset={-2} crossOffset={-4}>
+        {menu}
+      </Popover>
+    </AriaSubmenuTrigger>
   );
 }

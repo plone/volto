@@ -65,3 +65,4 @@ This file applies only to `packages/components` and its subdirectories.
   - `pnpm --filter @plone/components test --run`
   - `pnpm --filter @plone/components lint`
   - `pnpm --filter @plone/components build`
+- Run `pnpm --filter @plone/components eslint:fix` after editing component code. This package uses formatting/lint tooling that reorders Tailwind utilities, so apply it before finishing changes.

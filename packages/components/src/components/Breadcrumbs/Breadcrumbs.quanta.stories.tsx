@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb, Breadcrumbs } from './Breadcrumbs.quanta';
-import { Menu } from '../Menu/Menu.quanta';
+import { Button } from '../Button/Button.quanta';
+import { Menu, MenuItem, MenuTrigger } from '../Menu/Menu.quanta';
 import {
   FolderIcon,
   HomeIcon,
@@ -156,11 +157,18 @@ export const LotsOfItems: Story = {
           {first?.title}
         </Breadcrumb>
         <Breadcrumb>
-          <Menu
-            menuItems={inner}
-            button={<MoreoptionsIcon />}
-            placement="bottom"
-          ></Menu>
+          <MenuTrigger placement="bottom">
+            <Button variant="icon" aria-label="More breadcrumb items">
+              <MoreoptionsIcon className="h-4 w-4" />
+            </Button>
+            <Menu>
+              {inner.map((item) => (
+                <MenuItem key={item['@id']} id={item['@id']} href={item['@id']}>
+                  {item.label}
+                </MenuItem>
+              ))}
+            </Menu>
+          </MenuTrigger>
         </Breadcrumb>
         <Breadcrumb id={last?.['@id']} href={last?.['@id']}>
           {last?.title}
