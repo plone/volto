@@ -25,7 +25,14 @@ export { GridList, GridListItem } from './components/GridList/GridList';
 export { Icon } from './components/Icon/Icon';
 export { Link } from './components/Link/Link';
 export { ListBox, ListBoxItem } from './components/ListBox/ListBox';
-export { Menu, MenuItem } from './components/Menu/Menu';
+export {
+  Menu,
+  MenuItem,
+  MenuSection,
+  MenuSeparator,
+  MenuTrigger,
+  SubmenuTrigger,
+} from './components/Menu/Menu';
 export { Meter } from './components/Meter/Meter';
 export { Modal } from './components/Modal/Modal';
 export { NumberField } from './components/NumberField/NumberField';
@@ -34,7 +41,13 @@ export { ProgressBar } from './components/ProgressBar/ProgressBar';
 export { Radio, RadioGroup } from './components/RadioGroup/RadioGroup';
 export { RangeCalendar } from './components/RangeCalendar/RangeCalendar';
 export { SearchField } from './components/SearchField/SearchField';
-export { Select, SelectItem } from './components/Select/Select';
+export {
+  Select,
+  SelectItem,
+  SelectListBox,
+  SelectSection,
+  SelectSectionHeader,
+} from './components/Select/Select';
 export { Spinner } from './components/Spinner/Spinner';
 export { Slider } from './components/Slider/Slider';
 export { Switch } from './components/Switch/Switch';
