@@ -13,6 +13,8 @@ This file applies only to `packages/components` and its subdirectories.
 - Prefer staying very close to the underlying React Aria Components API.
 - Do not reinvent component behavior that RAC already provides.
 - Add Plone value mainly through packaging, small ergonomic wrappers, and styling.
+- Some components, such as `Breadcrumbs`, are intentionally adapted for Seven/Volto and REST API use cases. In those cases, the wrapper props and helpers may shape data for that environment, but the underlying RAC behavior should remain intact.
+- Even adapted components should still behave like thin proxies: keep forwarding supported props through to the underlying RAC component so upstream RAC documentation and expectations continue to apply.
 
 ## Two Flavours
 
