@@ -423,6 +423,8 @@ const UnconnectedImageInput = (props) => {
                         basic
                         aria-label={intl.formatMessage(messages.linkAnImage)}
                         onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
                           !props.selected && onFocus && onFocus();
                           linkEditor.show();
                         }}
