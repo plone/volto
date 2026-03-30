@@ -560,10 +560,10 @@ msgstr "Navegueu pel lloc, deixeu anar una imatge o escriviu un URL"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Per defecte, els permisos del contenidor d'aquest element són heretats. Si es desactiva, només seran vàlids els permisos de compartició definits explícitament. A la vista general, el símbol ${inherited} indica un valor heretat. De la mateixa manera, el símbol ${global} indica un rol global, que és gestionat per l'administrador del lloc."
+msgstr "Per defecte, s'hereten els permisos del contenidor d'aquest element. Si ho desactives, només seran vàlids els permisos de compartició definits explícitament. A la vista general, els valors heretats s'etiqueten explícitament com a 'Valor heretat' i reben una marca de verificació verda {inherited}. De la mateixa manera, els rols gestionats per l'administrador del lloc s'etiqueten com a 'Rol global' i reben una marca de verificació blava {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
