@@ -1153,6 +1153,16 @@ msgstr "Descendant"
 msgid "Description"
 msgstr "Déscription"
 
+#. Default: "Dialog closed."
+#: components/manage/Form/ModalForm
+msgid "Dialog closed."
+msgstr "Boîte de dialogue fermée."
+
+#. Default: "Dialog opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Dialog opened: {title}"
+msgstr "Boîte de dialogue ouverte : {title}"
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"

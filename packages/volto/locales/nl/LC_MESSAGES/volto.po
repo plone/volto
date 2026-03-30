@@ -1150,6 +1150,16 @@ msgstr "Aflopend"
 msgid "Description"
 msgstr "Beschrijving"
 
+#. Default: "Dialog closed."
+#: components/manage/Form/ModalForm
+msgid "Dialog closed."
+msgstr "Dialoogvenster gesloten."
+
+#. Default: "Dialog opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Dialog opened: {title}"
+msgstr "Dialoogvenster geopend: {title}"
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"

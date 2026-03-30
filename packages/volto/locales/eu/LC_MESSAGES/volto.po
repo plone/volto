@@ -1153,6 +1153,16 @@ msgstr "Beheraka"
 msgid "Description"
 msgstr "Deskribapena"
 
+#. Default: "Dialog closed."
+#: components/manage/Form/ModalForm
+msgid "Dialog closed."
+msgstr "Leihoa itxita."
+
+#. Default: "Dialog opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Dialog opened: {title}"
+msgstr "Leihoa irekita: {title}"
+
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
