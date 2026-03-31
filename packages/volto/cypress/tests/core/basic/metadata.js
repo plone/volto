@@ -10,10 +10,15 @@ describe('Add Content Tests', () => {
   });
   it('As an editor I can set the effective date of a page', function () {
     cy.getSlateTitle().focus().click().type('My Page').contains('My Page');
-    cy.get('input#effective-date').click();
-    cy.get('input#effective-date').type('{selectall}12/24/2050{esc}');
-    cy.get('input#effective-time').type('{downarrow}');
-    cy.get('.rc-time-picker-panel-input').type('{selectall}10:00 AM{esc}');
+    // Set date using react-aria date segments
+    cy.get('.field-wrapper-effective [data-type="month"]').click().type('12');
+    cy.get('.field-wrapper-effective [data-type="day"]').click().type('24');
+    cy.get('.field-wrapper-effective [data-type="year"]').click().type('2050');
+    cy.get('.field-wrapper-effective [data-type="hour"]').click().type('10');
+    cy.get('.field-wrapper-effective [data-type="minute"]').click().type('00');
+    cy.get('.field-wrapper-effective [data-type="dayPeriod"]')
+      .click()
+      .type('AM');
     cy.get('#toolbar-save').click();
     cy.get('body.view-viewview #page-document .documentFirstHeading').should(
       'have.text',
@@ -24,8 +29,27 @@ describe('Add Content Tests', () => {
     cy.get('.edit').click();
     cy.wait('@content');
 
-    cy.get('input#effective-date').should('have.value', '12/24/2050');
-    cy.get('input#effective-time').should('have.value', '10:00 AM');
+    // Verify the date segments have the correct values
+    cy.get('.field-wrapper-effective [data-type="month"]').should(
+      'have.text',
+      '12',
+    );
+    cy.get('.field-wrapper-effective [data-type="day"]').should(
+      'have.text',
+      '24',
+    );
+    cy.get('.field-wrapper-effective [data-type="year"]').should(
+      'have.text',
+      '2050',
+    );
+    cy.get('.field-wrapper-effective [data-type="hour"]').should(
+      'have.text',
+      '10',
+    );
+    cy.get('.field-wrapper-effective [data-type="minute"]').should(
+      'have.text',
+      '00',
+    );
   });
 
   it('As an editor, given a document with no title or a validation error when I save the sidebar tab switches to the metadata tab', function () {
