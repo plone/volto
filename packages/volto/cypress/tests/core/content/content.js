@@ -176,27 +176,27 @@ describe('Add Content Tests', () => {
     cy.get('.field-wrapper-end').should('be.visible');
 
     // when I check the whole_day checkbox
-    cy.get('label[for="field-whole_day"]').click({ scrollBehavior: false });
+    cy.get('#field-whole_day').check({ force: true });
 
     // then the time segments should disappear (granularity switches to day)
     cy.get('.field-wrapper-start [data-type="hour"]').should('not.exist');
     cy.get('.field-wrapper-end [data-type="hour"]').should('not.exist');
 
     // when I uncheck the whole_day checkbox
-    cy.get('label[for="field-whole_day"]').click({ scrollBehavior: false });
+    cy.get('#field-whole_day').uncheck({ force: true });
 
     // then the time segments should be visible again
     cy.get('.field-wrapper-start [data-type="hour"]').should('be.visible');
     cy.get('.field-wrapper-end [data-type="hour"]').should('be.visible');
 
     // when I check the open_end checkbox
-    cy.get('label[for="field-open_end"]').click({ scrollBehavior: false });
+    cy.get('#field-open_end').check({ force: true });
 
     // then the end field should disappear entirely
     cy.get('.field-wrapper-end').should('not.exist');
 
     // when I uncheck the open_end checkbox
-    cy.get('label[for="field-open_end"]').click({ scrollBehavior: false });
+    cy.get('#field-open_end').uncheck({ force: true });
 
     // then the end field should be visible again
     cy.get('.field-wrapper-end').should('be.visible');
