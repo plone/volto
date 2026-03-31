@@ -10,6 +10,11 @@ msgstr ""
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+"MIME-Version: 1.0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -855,7 +860,7 @@ msgstr "{title} से लिंक या संदर्भित कंटे
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "सामग्री शीर्षक"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes

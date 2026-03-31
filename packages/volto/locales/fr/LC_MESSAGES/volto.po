@@ -862,7 +862,7 @@ msgstr ""
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "Titre du contenu"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
