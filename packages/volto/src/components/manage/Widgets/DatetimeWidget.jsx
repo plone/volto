@@ -34,11 +34,19 @@ const DatetimeWidgetComponent = (props) => {
     onChange(id, newValue);
   };
 
+  // Normalize value: when switching from date-only back to datetime,
+  // the value may be a plain date string (YYYY-MM-DD) which is invalid
+  // for granularity="minute". Convert it to a full ISO datetime string.
+  let normalizedValue = value;
+  if (!isDateOnly && value && !value.includes('T')) {
+    normalizedValue = `${value}T12:00:00Z`;
+  }
+
   return (
     <FormFieldWrapper {...props}>
       <div className="date-time-widget-wrapper">
         <DateTimePicker
-          value={value}
+          value={normalizedValue}
           onChange={handleChange}
           granularity={isDateOnly ? 'day' : 'minute'}
           isDisabled={isDisabled}
