@@ -14,11 +14,11 @@ describe('Add Content Tests', () => {
     cy.get('.field-wrapper-effective [data-type="month"]').click().type('12');
     cy.get('.field-wrapper-effective [data-type="day"]').click().type('24');
     cy.get('.field-wrapper-effective [data-type="year"]').click().type('2050');
-    cy.get('.field-wrapper-effective [data-type="hour"]').click().type('10');
-    cy.get('.field-wrapper-effective [data-type="minute"]').click().type('00');
+    cy.get('.field-wrapper-effective [data-type="hour"]').click().type('3');
+    cy.get('.field-wrapper-effective [data-type="minute"]').click().type('30');
     cy.get('.field-wrapper-effective [data-type="dayPeriod"]')
       .click()
-      .type('AM');
+      .type('PM');
     cy.get('#toolbar-save').click();
     cy.get('body.view-viewview #page-document .documentFirstHeading').should(
       'have.text',
@@ -44,11 +44,11 @@ describe('Add Content Tests', () => {
     );
     cy.get('.field-wrapper-effective [data-type="hour"]').should(
       'have.text',
-      '10',
+      '3',
     );
     cy.get('.field-wrapper-effective [data-type="minute"]').should(
       'have.text',
-      '00',
+      '30',
     );
   });
 
