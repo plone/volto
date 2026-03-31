@@ -42,7 +42,9 @@ function utcStringToLocalDateValue(
   if (!utcString) return null;
 
   if (isDateOnly) {
-    return parseDate(utcString);
+    // Extract just the date portion in case the string is a full ISO datetime
+    const dateOnly = utcString.split('T')[0];
+    return parseDate(dateOnly);
   }
   try {
     const localTimeZone = getLocalTimeZone();
