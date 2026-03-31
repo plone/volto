@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-03-03T09:10:21.711Z\n"
+"POT-Creation-Date: 2026-03-31T14:05:54.898Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -695,11 +695,6 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#. Default: "Clear date and time"
-#: components/manage/Widgets/DatetimeWidget
-msgid "Clear date/time"
-msgstr ""
-
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -1013,7 +1008,6 @@ msgstr ""
 #. Default: "Date"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr ""
 
@@ -4036,7 +4030,6 @@ msgid "This rule is assigned to the following locations:"
 msgstr ""
 
 #. Default: "Time"
-#: components/manage/Widgets/DatetimeWidget
 #: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr ""

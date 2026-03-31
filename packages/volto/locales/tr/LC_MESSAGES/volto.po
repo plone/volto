@@ -699,11 +699,6 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#. Default: "Clear date and time"
-#: components/manage/Widgets/DatetimeWidget
-msgid "Clear date/time"
-msgstr ""
-
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -1017,7 +1012,6 @@ msgstr ""
 #. Default: "Date"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr ""
 
@@ -4040,7 +4034,6 @@ msgid "This rule is assigned to the following locations:"
 msgstr ""
 
 #. Default: "Time"
-#: components/manage/Widgets/DatetimeWidget
 #: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr ""

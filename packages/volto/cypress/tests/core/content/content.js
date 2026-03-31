@@ -186,21 +186,29 @@ describe('Add Content Tests', () => {
     cy.get('.field-wrapper-whole_day label', { timeout: 10000 }).click();
 
     // then the time segments should be visible again
-    cy.get('.field-wrapper-start [data-type="hour"]').should('be.visible');
-    cy.get('.field-wrapper-end [data-type="hour"]').should('be.visible');
+    cy.get('.field-wrapper-start [data-type="hour"]')
+      .scrollIntoView()
+      .should('be.visible');
+    cy.get('.field-wrapper-end [data-type="hour"]')
+      .scrollIntoView()
+      .should('be.visible');
 
     // when I check the open_end checkbox
-    cy.get('.field-wrapper-open_end label').click();
+    cy.get('.field-wrapper-open_end label').scrollIntoView().click();
 
     // then the end field should disappear entirely
     cy.get('.field-wrapper-end').should('not.exist');
 
     // when I uncheck the open_end checkbox
-    cy.get('.field-wrapper-open_end label', { timeout: 10000 }).click();
+    cy.get('.field-wrapper-open_end label', { timeout: 10000 })
+      .scrollIntoView()
+      .click();
 
     // then the end field should be visible again
-    cy.get('.field-wrapper-end').should('be.visible');
-    cy.get('.field-wrapper-end [data-type="hour"]').should('be.visible');
+    cy.get('.field-wrapper-end').scrollIntoView().should('be.visible');
+    cy.get('.field-wrapper-end [data-type="hour"]')
+      .scrollIntoView()
+      .should('be.visible');
   });
 
   it('As editor I can add a Link (with an external link)', function () {

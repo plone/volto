@@ -700,11 +700,6 @@ msgstr "Choisissez un fichier"
 msgid "Clear"
 msgstr "Effacer"
 
-#. Default: "Clear date and time"
-#: components/manage/Widgets/DatetimeWidget
-msgid "Clear date/time"
-msgstr "Effacer les champs de date"
-
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -1018,7 +1013,6 @@ msgstr "Base de donnée principale"
 #. Default: "Date"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "Date"
 
@@ -4041,7 +4035,6 @@ msgid "This rule is assigned to the following locations:"
 msgstr "Cet règle a été assignée aux endroits suivants :"
 
 #. Default: "Time"
-#: components/manage/Widgets/DatetimeWidget
 #: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "Temps"

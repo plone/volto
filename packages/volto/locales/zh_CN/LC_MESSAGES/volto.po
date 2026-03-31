@@ -700,11 +700,6 @@ msgstr "选择一个文件"
 msgid "Clear"
 msgstr "清除"
 
-#. Default: "Clear date and time"
-#: components/manage/Widgets/DatetimeWidget
-msgid "Clear date/time"
-msgstr ""
-
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -1018,7 +1013,6 @@ msgstr ""
 #. Default: "Date"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "日期"
 
@@ -4041,7 +4035,6 @@ msgid "This rule is assigned to the following locations:"
 msgstr "此规则已被分配到下列位置："
 
 #. Default: "Time"
-#: components/manage/Widgets/DatetimeWidget
 #: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "时间"

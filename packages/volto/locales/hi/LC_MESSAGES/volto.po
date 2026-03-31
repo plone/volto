@@ -698,11 +698,6 @@ msgstr "एक फ़ाइल चुनें"
 msgid "Clear"
 msgstr "साफ़ करें"
 
-#. Default: "Clear date and time"
-#: components/manage/Widgets/DatetimeWidget
-msgid "Clear date/time"
-msgstr ""
-
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
 msgid "Clear filters"
@@ -1016,7 +1011,6 @@ msgstr "मुख्य डेटाबेस"
 #. Default: "Date"
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ModerateComments
-#: components/manage/Widgets/DatetimeWidget
 msgid "Date"
 msgstr "तारीख"
 
@@ -4039,7 +4033,6 @@ msgid "This rule is assigned to the following locations:"
 msgstr "यह नियम निम्नलिखित स्थानों को सौंपा गया है:"
 
 #. Default: "Time"
-#: components/manage/Widgets/DatetimeWidget
 #: components/manage/Widgets/TimeWidget
 msgid "Time"
 msgstr "समय"
