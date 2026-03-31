@@ -1,0 +1,1 @@
+Fix getUsers to handle the updated `@users` response format in `plone.restapi` 10. @davisagli
