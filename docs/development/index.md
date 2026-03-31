@@ -18,4 +18,5 @@ This part of the documentation describes how to develop projects using Seven.
 images
 i18n
 editor-slash-menu
+configure-editor-block-widths
 ```

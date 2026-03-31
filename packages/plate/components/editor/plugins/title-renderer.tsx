@@ -1,5 +1,6 @@
 import { createSlatePlugin } from 'platejs';
 import { toPlatePlugin, type PlateElementProps } from 'platejs/react';
+import { BlockInnerContainer } from '../../ui/block-inner-container';
 
 export const TITLE_BLOCK_TYPE = 'title';
 
@@ -9,7 +10,7 @@ function TitleRendererElement(props: PlateElementProps) {
       {...props.attributes}
       className="font-heading mt-[1.6em] pb-1 text-4xl font-bold"
     >
-      {props.children}
+      <BlockInnerContainer>{props.children}</BlockInnerContainer>
     </h1>
   );
 }
