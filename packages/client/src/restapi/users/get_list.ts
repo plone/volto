@@ -36,5 +36,9 @@ export async function getUsers(
     },
   };
 
-  return apiRequest('get', '/@users', options);
+  return apiRequest('get', '/@users', options).then(
+    // Backwards compatibility for change in plone.restapi 10.
+    // The list of users is now inside the `items` property.
+    (response) => ({ ...response, data: response.data.items ?? response.data }),
+  );
 }
