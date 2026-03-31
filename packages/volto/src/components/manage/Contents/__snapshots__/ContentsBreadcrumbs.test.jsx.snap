@@ -45,10 +45,14 @@ exports[`ContentsBreadcrumbs > renders a ContentsBreadcrumbs component 1`] = `
         class="react-aria-Link"
         data-rac=""
         data-react-aria-pressable="true"
-        href="/blog"
+        href="/blog/contents"
         tabindex="0"
       >
-        Blog
+        <span
+          title="Blog"
+        >
+          Blog
+        </span>
       </a>
       <svg
         aria-hidden="true"
@@ -81,10 +85,13 @@ exports[`ContentsBreadcrumbs > renders a ContentsBreadcrumbs component 1`] = `
         data-disabled="true"
         data-rac=""
         data-react-aria-pressable="true"
-        href="/blog/my-first-blog"
         role="link"
       >
-        My first blog
+        <span
+          title="My first blog"
+        >
+          My first blog
+        </span>
       </span>
     </li>
   </ol>
@@ -136,10 +143,14 @@ exports[`ContentsBreadcrumbs > renders a breadcrumbs component containing items 
         class="react-aria-Link"
         data-rac=""
         data-react-aria-pressable="true"
-        href="/blog"
+        href="/blog/contents"
         tabindex="0"
       >
-        Blog
+        <span
+          title="Blog"
+        >
+          Blog
+        </span>
       </a>
       <svg
         aria-hidden="true"
@@ -172,10 +183,13 @@ exports[`ContentsBreadcrumbs > renders a breadcrumbs component containing items 
         data-disabled="true"
         data-rac=""
         data-react-aria-pressable="true"
-        href="/blog/my-first-blog"
         role="link"
       >
-        My first blog
+        <span
+          title="First one"
+        >
+          First one
+        </span>
       </span>
     </li>
   </ol>

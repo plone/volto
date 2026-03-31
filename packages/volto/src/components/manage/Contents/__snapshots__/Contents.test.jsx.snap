@@ -324,10 +324,13 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         data-disabled="true"
                         data-rac=""
                         data-react-aria-pressable="true"
-                        href="/blog"
                         role="link"
                       >
-                        Blog
+                        <span
+                          title="Blog"
+                        >
+                          Blog
+                        </span>
                       </span>
                     </li>
                   </ol>

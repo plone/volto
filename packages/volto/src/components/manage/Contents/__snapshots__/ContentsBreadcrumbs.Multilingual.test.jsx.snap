@@ -75,10 +75,14 @@ exports[`ContentsBreadcrumbs Multilingual > renders a ContentsBreadcrumbs compon
         class="react-aria-Link"
         data-rac=""
         data-react-aria-pressable="true"
-        href="/en/blog"
+        href="/en/blog/contents"
         tabindex="0"
       >
-        Blog
+        <span
+          title="Blog"
+        >
+          Blog
+        </span>
       </a>
       <svg
         aria-hidden="true"
@@ -111,10 +115,13 @@ exports[`ContentsBreadcrumbs Multilingual > renders a ContentsBreadcrumbs compon
         data-disabled="true"
         data-rac=""
         data-react-aria-pressable="true"
-        href="/en/blog/my-first-blog"
         role="link"
       >
-        My first blog
+        <span
+          title="My first blog"
+        >
+          My first blog
+        </span>
       </span>
     </li>
   </ol>
@@ -196,10 +203,14 @@ exports[`ContentsBreadcrumbs Multilingual > renders a breadcrumbs component cont
         class="react-aria-Link"
         data-rac=""
         data-react-aria-pressable="true"
-        href="/en/blog"
+        href="/en/blog/contents"
         tabindex="0"
       >
-        Blog
+        <span
+          title="Blog"
+        >
+          Blog
+        </span>
       </a>
       <svg
         aria-hidden="true"
@@ -232,10 +243,13 @@ exports[`ContentsBreadcrumbs Multilingual > renders a breadcrumbs component cont
         data-disabled="true"
         data-rac=""
         data-react-aria-pressable="true"
-        href="/en/blog/my-first-blog"
         role="link"
       >
-        My first blog
+        <span
+          title="First one"
+        >
+          First one
+        </span>
       </span>
     </li>
   </ol>
