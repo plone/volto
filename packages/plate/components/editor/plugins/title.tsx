@@ -10,7 +10,7 @@ import {
   useEditorRef,
   useEditorSelector,
 } from 'platejs/react';
-import { BLOCK_WIDTH_VALUES } from './block-width-plugin';
+import { BlockInnerContainer } from '../../ui/block-inner-container';
 
 export const TITLE_BLOCK_TYPE = 'title';
 
@@ -151,19 +151,21 @@ export function TitleBlockElement(props: PlateElementProps) {
       className="font-heading relative mt-[1.6em] pb-1 text-4xl font-bold"
       {...props}
     >
-      {showPlaceholder ? (
-        <span
-          aria-hidden="true"
-          contentEditable={false}
-          className={`
-            pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-muted-foreground/80
-            select-none
-          `}
-        >
-          {TITLE_PLACEHOLDER}
-        </span>
-      ) : null}
-      {props.children}
+      <BlockInnerContainer>
+        {showPlaceholder ? (
+          <span
+            aria-hidden="true"
+            contentEditable={false}
+            className={`
+              pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2
+              text-muted-foreground/80 select-none
+            `}
+          >
+            {TITLE_PLACEHOLDER}
+          </span>
+        ) : null}
+        {props.children}
+      </BlockInnerContainer>
     </PlateElement>
   );
 }
@@ -204,12 +206,6 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
     component: TitleBlockElement,
     isElement: true,
     type: TITLE_BLOCK_TYPE,
-  },
-  options: {
-    blockWidth: {
-      defaultWidth: BLOCK_WIDTH_VALUES.default,
-      widths: [BLOCK_WIDTH_VALUES.default],
-    },
   },
   extendEditor: ({ editor }) => {
     const insertBreak = editor.tf.insertBreak;

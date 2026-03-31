@@ -2,6 +2,7 @@ import React from 'react';
 import config from '@plone/registry';
 import { createSlatePlugin, type TElement } from 'platejs';
 import { toPlatePlugin, type PlateElementProps } from 'platejs/react';
+import { BlockInnerContainer } from '../../ui/block-inner-container';
 
 type NativeBlockElement = TElement & {
   '@type'?: string;
@@ -53,7 +54,9 @@ function PloneBlockAdapterRendererElement(
 
   return (
     <div {...props.attributes}>
-      <View data={blockData} />
+      <BlockInnerContainer>
+        <View data={blockData} />
+      </BlockInnerContainer>
     </div>
   );
 }
