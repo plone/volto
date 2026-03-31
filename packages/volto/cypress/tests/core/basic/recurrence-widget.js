@@ -4,17 +4,17 @@ const createEvent = () => {
   cy.get('#field-title').type('Test recurrence');
 
   // Set start date: May 4, 2020
-  cy.get('#field-start [data-type="month"]').click().type('5');
-  cy.get('#field-start [data-type="day"]').click().type('4');
-  cy.get('#field-start [data-type="year"]').click().type('2020');
-  cy.get('#field-start [data-type="hour"]').click().type('1');
-  cy.get('#field-start [data-type="minute"]').click().type('00');
+  cy.get('.field-wrapper-start [data-type="month"]').click().type('5');
+  cy.get('.field-wrapper-start [data-type="day"]').click().type('4');
+  cy.get('.field-wrapper-start [data-type="year"]').click().type('2020');
+  cy.get('.field-wrapper-start [data-type="hour"]').click().type('1');
+  cy.get('.field-wrapper-start [data-type="minute"]').click().type('00');
   // Set end date: May 16, 2020
-  cy.get('#field-end [data-type="month"]').click().type('5');
-  cy.get('#field-end [data-type="day"]').click().type('16');
-  cy.get('#field-end [data-type="year"]').click().type('2020');
-  cy.get('#field-end [data-type="hour"]').click().type('1');
-  cy.get('#field-end [data-type="minute"]').click().type('00');
+  cy.get('.field-wrapper-end [data-type="month"]').click().type('5');
+  cy.get('.field-wrapper-end [data-type="day"]').click().type('16');
+  cy.get('.field-wrapper-end [data-type="year"]').click().type('2020');
+  cy.get('.field-wrapper-end [data-type="hour"]').click().type('1');
+  cy.get('.field-wrapper-end [data-type="minute"]').click().type('00');
 };
 
 const openRecurrenceModal = () => {

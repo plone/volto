@@ -122,8 +122,8 @@ describe('Add Content Tests', () => {
       .clear()
       .type('datetimeWidget test');
     // Set time using react-aria date segments
-    cy.get('#field-start [data-type="hour"]').click().type('6');
-    cy.get('#field-start [data-type="minute"]').click().type('40');
+    cy.get('.field-wrapper-start [data-type="hour"]').click().type('6');
+    cy.get('.field-wrapper-start [data-type="minute"]').click().type('40');
     cy.get('#toolbar-save').click();
 
     // then
