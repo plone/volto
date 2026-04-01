@@ -11,6 +11,7 @@ import {
 } from 'platejs/react';
 import { useEditorRef, useElement, useReadOnly } from 'platejs/react';
 
+import { BlockInnerContainer } from './block-inner-container';
 import { Button } from './button';
 import {
   Command,
@@ -55,43 +56,45 @@ export function CodeBlockElement(props: PlateElementProps<TCodeBlockElement>) {
       `}
       {...props}
     >
-      <div className="relative rounded-md bg-muted/50">
-        <pre
-          className={`
-            overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal]
-            [tab-size:2]
-            print:break-inside-avoid
-          `}
-        >
-          <code>{props.children}</code>
-        </pre>
+      <BlockInnerContainer>
+        <div className="relative rounded-md bg-muted/50">
+          <pre
+            className={`
+              overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal]
+              [tab-size:2]
+              print:break-inside-avoid
+            `}
+          >
+            <code>{props.children}</code>
+          </pre>
 
-        <div
-          className="absolute top-1 right-1 z-10 flex gap-0.5 select-none"
-          contentEditable={false}
-        >
-          {isLangSupported(element.lang) && (
-            <Button
+          <div
+            className="absolute top-1 right-1 z-10 flex gap-0.5 select-none"
+            contentEditable={false}
+          >
+            {isLangSupported(element.lang) && (
+              <Button
+                size="icon"
+                variant="ghost"
+                className="size-6 text-xs"
+                onClick={() => formatCodeBlock(editor, { element })}
+                title="Format code"
+              >
+                <BracesIcon className="!size-3.5 text-muted-foreground" />
+              </Button>
+            )}
+
+            <CodeBlockCombobox />
+
+            <CopyButton
               size="icon"
               variant="ghost"
-              className="size-6 text-xs"
-              onClick={() => formatCodeBlock(editor, { element })}
-              title="Format code"
-            >
-              <BracesIcon className="!size-3.5 text-muted-foreground" />
-            </Button>
-          )}
-
-          <CodeBlockCombobox />
-
-          <CopyButton
-            size="icon"
-            variant="ghost"
-            className="size-6 gap-1 text-xs text-muted-foreground"
-            value={() => NodeApi.string(element)}
-          />
+              className="size-6 gap-1 text-xs text-muted-foreground"
+              value={() => NodeApi.string(element)}
+            />
+          </div>
         </div>
-      </div>
+      </BlockInnerContainer>
     </PlateElement>
   );
 }
