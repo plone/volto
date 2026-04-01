@@ -54,7 +54,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                     >
                       <svg
                         class="icon upload"
-                        style="height: 24px; width: auto; fill: #007eb1;"
+                        style="height: 24px; width: auto; fill: rgb(0, 126, 177);"
                         viewBox="0 0 36 36"
                         xmlns="http://www.w3.org/2000/svg"
                       >
@@ -257,7 +257,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                       </div>
                       <svg
                         class="icon zoom"
-                        style="height: 30px; width: auto; fill: #007eb1; flex-shrink: 0;"
+                        style="height: 30px; width: auto; fill: rgb(0, 126, 177); flex-shrink: 0;"
                         viewBox="0 0 36 36"
                         xmlns="http://www.w3.org/2000/svg"
                       >
@@ -342,7 +342,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 24px; width: auto; fill: #826a6a;"
+                      style="height: 24px; width: auto; fill: rgb(130, 106, 106);"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -368,7 +368,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Review state"
-                            style="height: 24px; width: auto; fill: #007eb1;"
+                            style="height: 24px; width: auto; fill: rgb(0, 126, 177);"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -394,7 +394,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Last modified"
-                            style="height: 24px; width: auto; fill: #007eb1;"
+                            style="height: 24px; width: auto; fill: rgb(0, 126, 177);"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -420,7 +420,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Publication date"
-                            style="height: 24px; width: auto; fill: #007eb1;"
+                            style="height: 24px; width: auto; fill: rgb(0, 126, 177);"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -446,7 +446,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon ID"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -466,7 +466,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Expiration date"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -486,7 +486,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Created on"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -506,7 +506,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Tags"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -526,7 +526,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Type"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -546,7 +546,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Folder"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -566,7 +566,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Excluded from navigation"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -586,7 +586,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Object Size"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -606,7 +606,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Last comment date"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -626,7 +626,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Total comments"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -646,7 +646,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon End Date"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -666,7 +666,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Description"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -686,7 +686,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Creator"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -706,7 +706,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Location"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -726,7 +726,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon UID"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -746,7 +746,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Start Date"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -766,7 +766,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon Type"
-                            style="height: 24px; width: auto; fill: currentColor;"
+                            style="height: 24px; width: auto; fill: currentcolor;"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -810,7 +810,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon dropdown-popup-trigger configuration-svg"
-                            style="height: 24px; width: auto; fill: #826a6a;"
+                            style="height: 24px; width: auto; fill: rgb(130, 106, 106);"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -828,7 +828,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                         >
                           <svg
                             class="icon dropdown-popup-trigger"
-                            style="height: 24px; width: auto; fill: #826a6a;"
+                            style="height: 24px; width: auto; fill: rgb(130, 106, 106);"
                             viewBox="0 0 36 36"
                             xmlns="http://www.w3.org/2000/svg"
                           >
