@@ -814,10 +814,12 @@ export const getBlocksHierarchy = (properties) => {
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
   return properties[blocksLayoutFieldname]?.items?.map((n) => ({
     id: n,
-    title: properties[blocksFieldName][n]?.['@type'],
-    data: properties[blocksFieldName][n],
-    children: isBlockContainer(properties[blocksFieldName][n])
-      ? getBlocksHierarchy(properties[blocksFieldName][n])
+    title: properties?.[blocksFieldName]?.[n]?.['@type'],
+    data: properties?.[blocksFieldName]?.[n],
+    children: isBlockContainer(properties?.[blocksFieldName]?.[n])
+      ? properties?.[blocksFieldName]?.[n]?.data
+        ? getBlocksHierarchy(properties?.[blocksFieldName]?.[n]?.data)
+        : getBlocksHierarchy(properties?.[blocksFieldName]?.[n])
       : [],
   }));
 };

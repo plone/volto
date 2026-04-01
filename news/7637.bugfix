@@ -1,0 +1,1 @@
+Fix Toolbar crash when a language is not present in langmap and add defensive checks for dynamic locale imports.
