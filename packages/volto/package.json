@@ -399,8 +399,5 @@
     "webpack-dev-server": "4.11.1",
     "webpack-node-externals": "3.0.0",
     "why": "0.6.2"
-  },
-  "volta": {
-    "node": "20.9.0"
   }
 }
