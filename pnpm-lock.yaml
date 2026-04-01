@@ -570,7 +570,7 @@ importers:
         specifier: 2.0.17
         version: 2.0.17(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-aria-components:
-        specifier: ^1.13.0
+        specifier: ^1.14.0
         version: 1.16.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-beautiful-dnd:
         specifier: 13.0.0
