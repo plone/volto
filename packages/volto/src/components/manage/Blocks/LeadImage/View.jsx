@@ -28,7 +28,7 @@ const View = ({ data, properties, isLCPBlock }) => {
                 sizes={config.blocks.blocksConfig.leadimage.getSizes(data)}
                 alt={properties.image_caption || ''}
                 loading={isLCPBlock ? 'eager' : 'lazy'}
-                fetchpriority={isLCPBlock ? 'high' : 'low'}
+                fetchpriority={isLCPBlock ? 'high' : undefined}
                 responsive={true}
               />
             );

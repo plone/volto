@@ -28,11 +28,7 @@ const View = (props) => {
         className,
       )}
     >
-      <Body
-        data={data}
-        loading={isLCPBlock ? 'eager' : 'lazy'}
-        fetchpriority={isLCPBlock ? 'high' : 'low'}
-      />
+      <Body data={data} loading={isLCPBlock ? 'eager' : 'lazy'} />
     </div>
   );
 };

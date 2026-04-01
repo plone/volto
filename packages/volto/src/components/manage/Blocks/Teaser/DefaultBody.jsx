@@ -57,7 +57,7 @@ const TeaserDefaultTemplate = (props) => {
                     src={url}
                     alt=""
                     loading={isLCPBlock ? 'eager' : 'lazy'}
-                    fetchpriority={isLCPBlock ? 'high' : 'low'}
+                    fetchpriority={isLCPBlock ? 'high' : undefined}
                     responsive={true}
                   />
                 </div>
@@ -69,7 +69,7 @@ const TeaserDefaultTemplate = (props) => {
                       imageField={image ? image.image_field : href.image_field}
                       alt=""
                       loading={isLCPBlock ? 'eager' : 'lazy'}
-                      fetchpriority={isLCPBlock ? 'high' : 'low'}
+                      fetchpriority={isLCPBlock ? 'high' : undefined}
                       responsive={true}
                     />
                   </div>
