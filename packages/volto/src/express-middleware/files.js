@@ -3,6 +3,7 @@ import { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWith
 
 const HEADERS = [
   'accept-ranges',
+  'cache-status',
   'cache-control',
   'content-disposition',
   'content-range',
