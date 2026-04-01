@@ -16,6 +16,10 @@ const sharedAliases = {
   '@plone/volto': path.resolve(__dirname, 'src'),
   '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
   '@root': path.resolve(__dirname, 'src'),
+  '@plone/components/Icons': path.resolve(
+    __dirname,
+    '../components/dist/components/icons/index.js',
+  ),
   '@plone/components': path.resolve(__dirname, '../components/src'),
   'promise-file-reader': require.resolve('promise-file-reader'),
   'react-dropzone': require.resolve('react-dropzone'),
