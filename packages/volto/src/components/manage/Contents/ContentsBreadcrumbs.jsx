@@ -55,7 +55,12 @@ const ContentsBreadcrumbs = (props) => {
           >
             {(item) => (
               <MenuItem id={item.url} href={`${item.url}/contents`}>
-                {item.nav_title || item.title}
+                <span title={item.nav_title || item.title}>
+                  {middleTruncate(
+                    item.nav_title || item.title,
+                    MAX_TITLE_LENGTH,
+                  )}
+                </span>
               </MenuItem>
             )}
           </Menu>
