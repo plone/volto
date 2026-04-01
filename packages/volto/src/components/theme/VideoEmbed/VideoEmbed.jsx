@@ -14,6 +14,7 @@ const VideoEmbed = (props) => {
     color = '#444444',
     hd = true,
     id,
+    loading = 'lazy',
     placeholder,
     source,
     title,
@@ -80,7 +81,12 @@ const VideoEmbed = (props) => {
       ) : (
         <>
           {placeholder ? (
-            <Image className="placeholder" src={placeholder} alt="" />
+            <Image
+              className="placeholder"
+              src={placeholder}
+              alt=""
+              loading={loading}
+            />
           ) : (
             <div className="fallback-placeholder"></div>
           )}

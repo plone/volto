@@ -364,20 +364,19 @@ Key
 Value
 :   a function `(block) => boolean` that returns whether this specific block instance is eligible, for example, has content such as a URL or `href`.
 
-Default configuration:
+You can extend or override this in your project or add-on to add custom block types or change eligibility rules.
+Only the **first** matching block in the layout is marked as the LCP block; others keep lazy loading.
+
+For example, to add a custom block type or override an existing predicate:
 
 ```js
 config.settings.lcpEligibleBlocks = {
-  image: (block) => !!block.url,
-  listing: (block) => block.variation === 'imageGallery',
-  leadimage: (block) => !!block.url,
-  video: (block) => !!block.url,
-  teaser: (block) => Array.isArray(block.href) && block.href.length > 0,
+  ...config.settings.lcpEligibleBlocks,
+  myCustomImageBlock: (block) => !!block.imageUrl,
 };
 ```
 
-You can extend or override this in your project or add-on to add custom block types or change eligibility rules.
-Only the first matching block in the layout is marked as the LCP block, whereas others keep lazy loading.
+For the current default predicates, see `packages/volto/src/config/index.js`.
 
 ```{seealso}
 -   {doc}`../deploying/performance` for other performance optimizations.

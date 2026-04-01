@@ -84,7 +84,7 @@ const getVideoIDAndPlaceholder = (url, peertubeInstances) => {
   }
   return { videoID, videoUrl, thumbnailURL, videoSource, hasMatch };
 };
-const Body = ({ data, isEditMode }) => {
+const Body = ({ data, isEditMode, loading = 'lazy' }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
       ? `${flattenToAppURL(data.preview_image)}/@@images/image`
@@ -116,6 +116,7 @@ const Body = ({ data, isEditMode }) => {
     id: videoID,
     source: videoSource,
     url: videoUrl,
+    loading: loading,
   };
 
   return (
@@ -182,6 +183,7 @@ const Body = ({ data, isEditMode }) => {
  */
 Body.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
+  loading: PropTypes.string,
 };
 
 export default Body;

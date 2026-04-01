@@ -7,7 +7,6 @@ exports[`renders a view image component 1`] = `
   <img
     alt=""
     className=""
-    fetchpriority="low"
     imageField="image"
     item={
       {

@@ -74,7 +74,8 @@ exports[`renders a youtu.be video body component 1`] = `
     <img
       alt=""
       className="placeholder"
-      fetchpriority="high"
+      decoding="async"
+      loading="lazy"
       src="https://img.youtube.com/vi/KwRSRRyuk-Q/sddefault.jpg"
     />
     <button
@@ -115,7 +116,8 @@ exports[`renders a youtube short video body component 1`] = `
     <img
       alt=""
       className="placeholder"
-      fetchpriority="high"
+      decoding="async"
+      loading="lazy"
       src="https://img.youtube.com/vi/ayyZ_S30Lhc/sddefault.jpg"
     />
     <button
