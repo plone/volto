@@ -10,9 +10,9 @@ import {
   ChevronRightIcon,
   Code2,
   Columns3Icon,
-  Heading1Icon,
   Heading2Icon,
   Heading3Icon,
+  Heading4Icon,
   ImageIcon,
   LightbulbIcon,
   ListIcon,
@@ -146,12 +146,6 @@ const createStaticGroups = (): SlashMenuGroup[] => [
         value: KEYS.img,
       },
       {
-        icon: <Heading1Icon />,
-        keywords: ['title', 'h1'],
-        label: 'Heading 1',
-        value: KEYS.h1,
-      },
-      {
         icon: <Heading2Icon />,
         keywords: ['subtitle', 'h2'],
         label: 'Heading 2',
@@ -162,6 +156,12 @@ const createStaticGroups = (): SlashMenuGroup[] => [
         keywords: ['subtitle', 'h3'],
         label: 'Heading 3',
         value: KEYS.h3,
+      },
+      {
+        icon: <Heading4Icon />,
+        keywords: ['subtitle', 'h4'],
+        label: 'Heading 4',
+        value: KEYS.h4,
       },
       {
         icon: <ListIcon />,
