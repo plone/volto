@@ -1,74 +1,93 @@
 import React from 'react';
-import { Breadcrumb } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import { defineMessages, useIntl } from 'react-intl';
+import { Breadcrumbs, Breadcrumb, Menu, MenuItem } from '@plone/components';
 import { useSelector } from 'react-redux';
+import { SlashIcon, MoreoptionsIcon } from '@plone/components/Icons';
 import ContentsBreadcrumbsRootItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsRootItem';
 import ContentsBreadcrumbsHomeItem from '@plone/volto/components/manage/Contents/ContentsBreadcrumbsHomeItem';
 
-const messages = defineMessages({
-  home: {
-    id: 'Home',
-    defaultMessage: 'Home',
-  },
-  root: {
-    id: 'Root',
-    defaultMessage: 'Root',
-  },
-});
+const middleTruncate = (str, maxLength = 30) => {
+  if (!str || str.length <= maxLength) return str;
+
+  const ellipsis = '…';
+  const charsToShow = maxLength - ellipsis.length;
+  const frontChars = Math.ceil(charsToShow / 2);
+  const backChars = Math.floor(charsToShow / 2);
+
+  return str.slice(0, frontChars) + ellipsis + str.slice(-backChars);
+};
 
 const ContentsBreadcrumbs = (props) => {
+  const MAX_TITLE_LENGTH = 30;
   const { items } = props;
-  const intl = useIntl();
   const navroot = useSelector((state) => state.navroot.data.navroot);
   const navrootIsPortal = navroot?.['@type'] === 'Plone Site';
+  const inner = items ? items.slice(0, -2) : [];
+  const secondLast =
+    items && items.length >= 2 ? items[items.length - 2] : null;
+  const last = items ? items[items.length - 1] : null;
 
   return (
-    <Breadcrumb>
+    <Breadcrumbs>
       {navrootIsPortal ? (
-        <Link
-          to="/contents"
-          className="section"
-          title={intl.formatMessage(messages.home)}
-        >
+        <Breadcrumb href={'/contents'} separator={<SlashIcon size="sm" />}>
           <ContentsBreadcrumbsHomeItem />
-        </Link>
+        </Breadcrumb>
       ) : (
         <>
-          <Link
-            to="/contents"
-            className="section"
-            title={intl.formatMessage(messages.root)}
-          >
+          <Breadcrumb href={'/contents'} separator={<SlashIcon size="sm" />}>
             <ContentsBreadcrumbsRootItem />
-          </Link>
-          <Breadcrumb.Divider />
-          <Link
-            to={`${navroot?.['@id']}/contents`}
-            className="section"
+          </Breadcrumb>
+          <Breadcrumb
+            href={`${navroot?.['@id']}/contents`}
             title={navroot?.title}
+            separator={<SlashIcon size="sm" />}
           >
             {navroot?.title}
-          </Link>
+          </Breadcrumb>
         </>
       )}
-      {items.map((breadcrumb, index, breadcrumbs) => [
-        <Breadcrumb.Divider key={`divider-${breadcrumb.url}`} />,
-        index < breadcrumbs.length - 1 ? (
-          <Link
-            key={breadcrumb.url}
-            to={`${breadcrumb.url}/contents`}
-            className="section"
+      {inner.length > 0 && (
+        <Breadcrumb separator={<SlashIcon size="sm" />}>
+          <Menu
+            items={inner}
+            button={<MoreoptionsIcon size="sm" />}
+            placement="bottom"
           >
-            {breadcrumb.nav_title || breadcrumb.title}
-          </Link>
-        ) : (
-          <Breadcrumb.Section key={breadcrumb.url} active>
-            {breadcrumb.nav_title || breadcrumb.title}
-          </Breadcrumb.Section>
-        ),
-      ])}
-    </Breadcrumb>
+            {(item) => (
+              <MenuItem id={item.url} href={`${item.url}/contents`}>
+                <span title={item.nav_title || item.title}>
+                  {middleTruncate(
+                    item.nav_title || item.title,
+                    MAX_TITLE_LENGTH,
+                  )}
+                </span>
+              </MenuItem>
+            )}
+          </Menu>
+        </Breadcrumb>
+      )}
+      {secondLast && (
+        <Breadcrumb
+          href={`${secondLast?.url}/contents`}
+          title={secondLast.nav_title || secondLast?.title}
+          separator={<SlashIcon size="sm" />}
+        >
+          <span title={secondLast.nav_title || secondLast?.title}>
+            {middleTruncate(
+              secondLast.nav_title || secondLast?.title,
+              MAX_TITLE_LENGTH,
+            )}
+          </span>
+        </Breadcrumb>
+      )}
+      {last && (
+        <Breadcrumb title={last.nav_title || last?.title}>
+          <span title={last.nav_title || last?.title}>
+            {middleTruncate(last.nav_title || last?.title, MAX_TITLE_LENGTH)}
+          </span>
+        </Breadcrumb>
+      )}
+    </Breadcrumbs>
   );
 };
 

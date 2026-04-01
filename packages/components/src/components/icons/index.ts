@@ -108,3 +108,4 @@ export { WidthFullIcon } from './WidthFullIcon';
 export { WidthLayoutIcon } from './WidthLayoutIcon';
 export { WidthNarrowIcon } from './WidthNarrowIcon';
 export { WorldIcon } from './WorldIcon';
+export { SlashIcon } from './SlashIcon';

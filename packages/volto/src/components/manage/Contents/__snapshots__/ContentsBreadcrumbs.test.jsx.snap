@@ -1,77 +1,197 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`ContentsBreadcrumbs > renders a ContentsBreadcrumbs component 1`] = `
-<div
-  className="ui breadcrumb"
->
-  <a
-    className="section"
-    href="/contents"
-    onClick={[Function]}
-    title="Home"
+<div>
+  <template />
+  <ol
+    aria-label="Breadcrumbs"
+    class="react-aria-Breadcrumbs"
   >
-    Home
-  </a>
-  <div
-    className="divider"
-  >
-    /
-  </div>
-  <a
-    className="section"
-    href="/blog/contents"
-    onClick={[Function]}
-  >
-    Blog
-  </a>
-  <div
-    className="divider"
-  >
-    /
-  </div>
-  <div
-    className="active section"
-    onClick={[Function]}
-  >
-    My first blog
-  </div>
+    <li
+      class="react-aria-Breadcrumb"
+      data-rac=""
+    >
+      <a
+        class="react-aria-Link"
+        data-rac=""
+        data-react-aria-pressable="true"
+        href="/contents"
+        tabindex="0"
+      >
+        Home
+      </a>
+      <svg
+        aria-hidden="true"
+        class="q icon icon-sm"
+        focusable="false"
+        height="36"
+        role="img"
+        style="fill: currentcolor;"
+        viewBox="0 0 36 36"
+        width="36"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polygon
+          fill-rule="evenodd"
+          points="23 7 11 29 14 29 26 7"
+        />
+      </svg>
+    </li>
+    <li
+      class="react-aria-Breadcrumb"
+      data-rac=""
+    >
+      <a
+        class="react-aria-Link"
+        data-rac=""
+        data-react-aria-pressable="true"
+        href="/blog/contents"
+        tabindex="0"
+      >
+        <span
+          title="Blog"
+        >
+          Blog
+        </span>
+      </a>
+      <svg
+        aria-hidden="true"
+        class="q icon icon-sm"
+        focusable="false"
+        height="36"
+        role="img"
+        style="fill: currentcolor;"
+        viewBox="0 0 36 36"
+        width="36"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polygon
+          fill-rule="evenodd"
+          points="23 7 11 29 14 29 26 7"
+        />
+      </svg>
+    </li>
+    <li
+      class="react-aria-Breadcrumb"
+      data-current="true"
+      data-disabled="true"
+      data-rac=""
+    >
+      <span
+        aria-current="page"
+        aria-disabled="true"
+        class="react-aria-Link"
+        data-current="true"
+        data-disabled="true"
+        data-rac=""
+        data-react-aria-pressable="true"
+        role="link"
+      >
+        <span
+          title="My first blog"
+        >
+          My first blog
+        </span>
+      </span>
+    </li>
+  </ol>
 </div>
 `;
 
 exports[`ContentsBreadcrumbs > renders a breadcrumbs component containing items with nav_title 1`] = `
-<div
-  className="ui breadcrumb"
->
-  <a
-    className="section"
-    href="/contents"
-    onClick={[Function]}
-    title="Home"
+<div>
+  <template />
+  <ol
+    aria-label="Breadcrumbs"
+    class="react-aria-Breadcrumbs"
   >
-    Home
-  </a>
-  <div
-    className="divider"
-  >
-    /
-  </div>
-  <a
-    className="section"
-    href="/blog/contents"
-    onClick={[Function]}
-  >
-    Blog
-  </a>
-  <div
-    className="divider"
-  >
-    /
-  </div>
-  <div
-    className="active section"
-    onClick={[Function]}
-  >
-    First one
-  </div>
+    <li
+      class="react-aria-Breadcrumb"
+      data-rac=""
+    >
+      <a
+        class="react-aria-Link"
+        data-rac=""
+        data-react-aria-pressable="true"
+        href="/contents"
+        tabindex="0"
+      >
+        Home
+      </a>
+      <svg
+        aria-hidden="true"
+        class="q icon icon-sm"
+        focusable="false"
+        height="36"
+        role="img"
+        style="fill: currentcolor;"
+        viewBox="0 0 36 36"
+        width="36"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polygon
+          fill-rule="evenodd"
+          points="23 7 11 29 14 29 26 7"
+        />
+      </svg>
+    </li>
+    <li
+      class="react-aria-Breadcrumb"
+      data-rac=""
+    >
+      <a
+        class="react-aria-Link"
+        data-rac=""
+        data-react-aria-pressable="true"
+        href="/blog/contents"
+        tabindex="0"
+      >
+        <span
+          title="Blog"
+        >
+          Blog
+        </span>
+      </a>
+      <svg
+        aria-hidden="true"
+        class="q icon icon-sm"
+        focusable="false"
+        height="36"
+        role="img"
+        style="fill: currentcolor;"
+        viewBox="0 0 36 36"
+        width="36"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polygon
+          fill-rule="evenodd"
+          points="23 7 11 29 14 29 26 7"
+        />
+      </svg>
+    </li>
+    <li
+      class="react-aria-Breadcrumb"
+      data-current="true"
+      data-disabled="true"
+      data-rac=""
+    >
+      <span
+        aria-current="page"
+        aria-disabled="true"
+        class="react-aria-Link"
+        data-current="true"
+        data-disabled="true"
+        data-rac=""
+        data-react-aria-pressable="true"
+        role="link"
+      >
+        <span
+          title="First one"
+        >
+          First one
+        </span>
+      </span>
+    </li>
+  </ol>
 </div>
 `;

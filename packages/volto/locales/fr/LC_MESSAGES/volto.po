@@ -1839,7 +1839,6 @@ msgstr "Historique de {title}"
 
 #. Default: "Home"
 #: components/manage/Contents/Contents
-#: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsHomeItem
 #: components/manage/Sidebar/ObjectBrowserBody
 #: components/theme/Breadcrumbs/Breadcrumbs
@@ -3209,7 +3208,6 @@ msgid "Roles"
 msgstr "Rôles"
 
 #. Default: "Root"
-#: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsRootItem
 msgid "Root"
 msgstr "Racine"

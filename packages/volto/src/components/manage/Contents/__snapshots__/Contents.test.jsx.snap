@@ -275,27 +275,65 @@ exports[`Contents > renders a folder contents view component 1`] = `
                 <div
                   class="ui secondary attached segment contents-breadcrumbs"
                 >
-                  <div
-                    class="ui breadcrumb"
+                  <template />
+                  <ol
+                    aria-label="Breadcrumbs"
+                    class="react-aria-Breadcrumbs"
                   >
-                    <a
-                      class="section"
-                      href="/contents"
-                      title="Home"
+                    <li
+                      class="react-aria-Breadcrumb"
+                      data-rac=""
                     >
-                      Home
-                    </a>
-                    <div
-                      class="divider"
+                      <a
+                        class="react-aria-Link"
+                        data-rac=""
+                        data-react-aria-pressable="true"
+                        href="/contents"
+                        tabindex="0"
+                      >
+                        Home
+                      </a>
+                      <svg
+                        aria-hidden="true"
+                        class="q icon icon-sm"
+                        focusable="false"
+                        height="36"
+                        role="img"
+                        style="fill: currentcolor;"
+                        viewBox="0 0 36 36"
+                        width="36"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polygon
+                          fill-rule="evenodd"
+                          points="23 7 11 29 14 29 26 7"
+                        />
+                      </svg>
+                    </li>
+                    <li
+                      class="react-aria-Breadcrumb"
+                      data-current="true"
+                      data-disabled="true"
+                      data-rac=""
                     >
-                      /
-                    </div>
-                    <div
-                      class="active section"
-                    >
-                      Blog
-                    </div>
-                  </div>
+                      <span
+                        aria-current="page"
+                        aria-disabled="true"
+                        class="react-aria-Link"
+                        data-current="true"
+                        data-disabled="true"
+                        data-rac=""
+                        data-react-aria-pressable="true"
+                        role="link"
+                      >
+                        <span
+                          title="Blog"
+                        >
+                          Blog
+                        </span>
+                      </span>
+                    </li>
+                  </ol>
                   <div
                     aria-expanded="false"
                     class="ui item dropdown right floating selectIndex"
