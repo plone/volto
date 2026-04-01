@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.7.0 (2026-01-12)
+
+### Feature
+
+- Enhance registry utilities type definitions with typed method signatures. @ompharate @sneridagh [#7652](https://github.com/plone/volto/issues/7652)
+
 ## 2.6.0 (2025-11-03)
 
 ### Feature

@@ -565,6 +565,7 @@ msgstr "Sisältötyypin <strong>{type}</strong> asettelua ei voi muokata, koska 
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -831,6 +832,11 @@ msgstr "Sisältösäännöt ylemmistä kansioista"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr ""
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Sisällön otsikko"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1224,6 +1230,11 @@ msgstr "Pudota tiedosto tähän ladataksesi uuden tiedoston"
 msgid "Drop files here ..."
 msgstr "Pudota tiedosto tänne... "
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1558,6 +1569,7 @@ msgstr ""
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Tiedoston koko"
 
@@ -1568,11 +1580,13 @@ msgstr "Tiedostonäkymä"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Tiedostonimi"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Lähetetyt tiedostot: {uploadedFiles} "
 
@@ -2056,6 +2070,7 @@ msgstr "Viimeisin kommentti"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Muokattu viimeksi"
 
@@ -2268,6 +2283,11 @@ msgstr "Kartat"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "Karta URL"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2806,6 +2826,11 @@ msgstr "Voimanlähteenä Plone & Python"
 msgid "Preferences"
 msgstr "Asetukset"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Paina Enter-näppäintä selataksesi tiedostoja tietokoneeltasi."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -2814,6 +2839,7 @@ msgstr "Siisti koodisi"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Esikatselu"
 
@@ -2953,6 +2979,11 @@ msgstr ""
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
+msgstr ""
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
 msgstr ""
 
 #. Default: "Relevance"
@@ -3979,6 +4010,7 @@ msgstr "Kommentteja"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Kaikkien ladattavien tiedostojen määrä: {totalFiles} "
 
@@ -4199,6 +4231,11 @@ msgstr "Päivityksen vaiheet"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Siirrä palvelimelle"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4500,6 +4537,11 @@ msgstr "Kommentoi sisältöä täyttämällä oheinen lomake."
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Tällä sivulla voit hallita, kuka voi nähdä tai muokata sisältöä."
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
@@ -4636,6 +4678,11 @@ msgstr "Päivämäärä"
 msgid "delete"
 msgstr "poista"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr ""
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4660,6 +4707,11 @@ msgstr "Lähetimme sinulle sähköpostilla ohjeet salasanan vaihtamiseksi. Sen p
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "luonnos"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4934,6 +4986,16 @@ msgstr "yksityinen"
 #: components/manage/Contents/ContentsItem
 msgid "published"
 msgstr "julkaistu"
+
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5260,6 +5322,7 @@ msgstr "Kyllä"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr ""
 

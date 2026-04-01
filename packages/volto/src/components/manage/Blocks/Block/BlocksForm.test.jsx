@@ -161,19 +161,12 @@ test('Removes invalid blocks on saving', () => {
     </Provider>,
   );
 
+  expect(onChangeFormData).toHaveBeenCalledTimes(1);
   expect(onChangeFormData).toHaveBeenCalledWith({
     blocks: {
       a: { '@type': 'custom', text: 'a' },
       b: { '@type': 'custom', text: 'b' },
     },
-    blocks_layout: { items: ['a', 'b', 'MISSING-YOU-1'] },
-  });
-
-  expect(onChangeFormData).toHaveBeenCalledWith({
-    blocks: {
-      a: { '@type': 'custom', text: 'a' },
-      b: { '@type': 'custom', text: 'b' },
-    },
-    blocks_layout: { items: ['a', 'b', 'MISSING-YOU-2'] },
+    blocks_layout: { items: ['a', 'b'] },
   });
 });

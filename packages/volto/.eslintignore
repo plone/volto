@@ -1,3 +1,4 @@
 /types/
 !types/react-router-hash-link.d.ts
 cypress/fixtures/
+!.storybook

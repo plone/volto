@@ -58,6 +58,7 @@ const withObjectBrowser = (WrappedComponent) =>
       selectableTypes,
       maximumSelectionSize,
       currentPath,
+      onlyFolderishSelectable,
     } = {}) =>
       this.setState(() => ({
         isObjectBrowserOpen: true,
@@ -70,6 +71,7 @@ const withObjectBrowser = (WrappedComponent) =>
         selectableTypes,
         maximumSelectionSize,
         currentPath,
+        onlyFolderishSelectable,
       }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
@@ -110,6 +112,7 @@ const withObjectBrowser = (WrappedComponent) =>
                 searchableTypes={this.state.searchableTypes}
                 selectableTypes={this.state.selectableTypes}
                 maximumSelectionSize={this.state.maximumSelectionSize}
+                onlyFolderishSelectable={this.state.onlyFolderishSelectable}
               />
             </SidebarPopup>
           </>

@@ -1,6 +1,6 @@
 {
   "name": "@plone/volto-slate",
-  "version": "18.8.0",
+  "version": "18.8.1",
   "description": "Slate.js integration with Volto",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -34,7 +34,7 @@
     "is-hotkey": "0.2.0",
     "is-url": "1.2.4",
     "jsdom": "^16.6.0",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "react-intersection-observer": "9.1.0",
     "react-intl": "3.12.1",
     "react-redux": "8.1.2",

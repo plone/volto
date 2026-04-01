@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.10.4 (2026-03-02)
+
+### Internal
+
+- Fix the {file}`vscodesettings.js` script to properly check if {file}`.vscode/settings.json` exists before reading. @wesleybl [#7834](https://github.com/plone/volto/issues/7834)
+
 ## 3.10.3 (2025-10-08)
 
 ### Internal

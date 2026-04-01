@@ -44,3 +44,28 @@ vi.stubGlobal('sessionStorage', {
   removeItem: vi.fn(),
   clear: vi.fn(),
 });
+
+global.jest = {
+  fn: vi.fn.bind(vi),
+};
+
+// Mock IntersectionObserver for Vitest
+const IntersectionObserverMock = vi.fn((callback, options = {}) => {
+  const instance = {
+    thresholds: Array.isArray(options.threshold)
+      ? options.threshold
+      : [options.threshold ?? 0],
+    root: options.root ?? null,
+    rootMargin: options.rootMargin ?? '',
+    observe: vi.fn(),
+    unobserve: vi.fn(),
+    disconnect: vi.fn(),
+    takeRecords: vi.fn(() => []),
+  };
+
+  return instance;
+});
+
+vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
+global.IntersectionObserver = IntersectionObserverMock;
+window.IntersectionObserver = IntersectionObserverMock;

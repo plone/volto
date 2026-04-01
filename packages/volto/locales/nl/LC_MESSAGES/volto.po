@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-13 10:07+0000\n"
+"PO-Revision-Date: 2026-03-23 08:09+0000\n"
 "Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
-"Language: nl\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-18/nl/>\n"
+"Language: nl\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -399,7 +399,7 @@ msgstr "Van toepassing op submappen?"
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr "Toepassen op submappen?"
+msgstr "Toepassen op submappen"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
@@ -561,6 +561,7 @@ msgstr "Kan lay-out niet bewerken voor het <strong>{type}</strong>-contenttype o
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -827,6 +828,11 @@ msgstr "Inhoudsregels van bovenliggende mappen"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr "Inhoud die linkt of refereert naar {title}"
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Inhoudstitel"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1220,6 +1226,11 @@ msgstr "Zet bestand hier neer om een nieuw bestand op te laden"
 msgid "Drop files here ..."
 msgstr "Zet bestanden hier neer..."
 
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr "Zet hier bestanden neer om te uploaden"
+
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
 msgid "Dry run selected, transaction aborted."
@@ -1554,6 +1565,7 @@ msgstr "Bestand is niet van het geaccepteerde type {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Bestandsgrootte"
 
@@ -1564,11 +1576,13 @@ msgstr "Bestand weergave"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Bestandsnaam"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Opgeladen bestanden: {uploadedFiles}"
 
@@ -2052,6 +2066,7 @@ msgstr "Laatste commentaardatum"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Laatst gewijzigd"
 
@@ -2090,7 +2105,7 @@ msgstr "Minder filters"
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr "Koppeling"
+msgstr "Link"
 
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
@@ -2264,6 +2279,11 @@ msgstr "Kaarten"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "Kaarten URL"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr "Maximum bestandsgrootte is {maxSize} bytes, maar het geüploade bestand is {size} bytes."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2802,6 +2822,11 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Voorkeuren"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Druk Enter om door de bestanden op jouw computer te browsen."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -2810,6 +2835,7 @@ msgstr "Maak je code netter"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Voorvertoning"
 
@@ -2950,6 +2976,11 @@ msgstr "Relaties zijn aanpasbaar met plone.api >= 2.0.3."
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "Relaties zijn bijgewerkt"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3975,6 +4006,7 @@ msgstr "Totaal aantal commentaren"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Totaal aantal te uploaden bestanden: {totalFiles}"
 
@@ -4074,7 +4106,7 @@ msgstr "UID"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 msgid "URL Management"
-msgstr "URL beheer"
+msgstr "URL-beheer"
 
 #. Default: "URL Management for {title}"
 #: components/manage/Aliases/Aliases
@@ -4195,6 +4227,11 @@ msgstr "Upgrade stappen"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Opladen"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr "Uploaden bestanden ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4496,6 +4533,11 @@ msgstr "Je kunt commentaar toevoegen door onderstaand formulier in te vullen. Te
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Je kunt in de onderstaande lijst beheren wie de content kan bekijken en bewerken."
 
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr "Je kan dit type blok niet naar een andere locatie verplaatsen"
+
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
 msgid "You can view the difference of the revisions below."
@@ -4549,7 +4591,7 @@ msgstr "Jouw gebruikersnaam is vereist om je wachtwoord opnieuw in te stellen."
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "Toegelaten bestandstypes"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4632,6 +4674,11 @@ msgstr "Datumbereik"
 msgid "delete"
 msgstr "verwijderen"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr "verwijder {type} blok"
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4656,6 +4703,11 @@ msgstr "Jouw aanvraag voor het opnieuw instellen van ouw wachtwoord is verzonden
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "voorlopige versie"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr "versleep {type} blok"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4931,6 +4983,16 @@ msgstr "Privé"
 msgid "published"
 msgstr "Gepubliceerd"
 
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr "Huidig pad (./)"
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
+
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -4939,7 +5001,7 @@ msgstr "Selecteer…"
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "rebuild relations"
-msgstr "hetbouw relaties"
+msgstr "herbouw relaties"
 
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
@@ -4959,7 +5021,7 @@ msgstr "verwijst naar"
 #. Default: "Result count"
 #: components/manage/Contents/Contents
 msgid "resultCount"
-msgstr ""
+msgstr "Totaal resultaten"
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -5256,6 +5318,7 @@ msgstr "Ja"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, one {{count} bestand opladen} other {{count} bestanden opladen}}"
 
