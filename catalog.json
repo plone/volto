@@ -19,5 +19,6 @@
   "typescript": "^5.9.2",
   "vite": "^6.3.3",
   "vitest": "^3.2.4",
-  "wait-on": "^9.0.4"
+  "wait-on": "^9.0.4",
+  "webpack-dev-server": "^5.2.3"
 }
