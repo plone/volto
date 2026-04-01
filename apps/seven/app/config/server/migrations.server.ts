@@ -1,11 +1,12 @@
 import config from '@plone/registry';
 import {
   migrateLegacyBoldInValue,
+  migrateLegacyBlockWidthsInValue,
   migrateLegacyItalicInValue,
   migrateLegacyLinksInValueStatic,
   migrateLegacyListsInValue,
   migrateLegacyStrikethroughInValue,
-} from '@plone/plate/legacy/migrations';
+} from '@plone/plate/migrations';
 import type {
   SomersaultBlockMigrationArgs,
   SomersaultMigrationArgs,
@@ -70,5 +71,12 @@ export default function install() {
     type: 'somersaultMigration',
     method: ({ value }: SomersaultMigrationArgs) =>
       migrateLegacyListsInValue(value),
+  });
+
+  config.registerUtility({
+    name: 'somersaultMigrationBlockWidths',
+    type: 'somersaultMigration',
+    method: ({ value }: SomersaultMigrationArgs) =>
+      migrateLegacyBlockWidthsInValue(value),
   });
 }
