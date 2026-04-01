@@ -252,9 +252,9 @@ const createRegistryBlockItems = (
       typeof block.title === 'string'
         ? block.title
         : typeof block.title?.id === 'string'
-          ? translate?.(block.title.id) ??
+          ? (translate?.(block.title.id) ??
             block.title.defaultMessage ??
-            block.title.id
+            block.title.id)
           : String(block.title);
     const Icon = block.icon ? block.icon : Square;
 

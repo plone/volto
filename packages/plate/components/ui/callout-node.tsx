@@ -40,9 +40,9 @@ export function CalloutElement({
         }}
       >
         <div className="flex w-full gap-2 rounded-md">
-        {/* ToDo: Replace the dependency on @platejs/emoji and @emoji-mart/data */}
-        {/* with something more lightweight and sane */}
-        {/* <EmojiPopover
+          {/* ToDo: Replace the dependency on @platejs/emoji and @emoji-mart/data */}
+          {/* with something more lightweight and sane */}
+          {/* <EmojiPopover
           {...emojiToolbarDropdownProps}
           control={
             <Button

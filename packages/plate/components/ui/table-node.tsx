@@ -113,10 +113,7 @@ export const TableElement = withHOC(
     const isSelectingTable = useBlockSelected(props.element.id as string);
 
     const content = (
-      <PlateElement
-        {...props}
-        className="py-5"
-      >
+      <PlateElement {...props} className="py-5">
         <BlockInnerContainer>
           <div
             className={cn(
