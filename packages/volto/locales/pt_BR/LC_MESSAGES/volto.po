@@ -1243,14 +1243,22 @@ msgstr "Baixar arquivo"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arraste e solte arquivos do seu computador para esta área, ou clique no botão ‘Procurar’."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to replace the current one"
+msgstr "Solte um arquivo aqui ou clique para substituir o atual"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "Solte um arquivo aqui ou clique para fazer upload"
+
+#. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Solte um arquivo aqui para substituir o arquivo existente"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Solte um arquivo aqui para enviar um novo arquivo"
@@ -1603,6 +1611,11 @@ msgstr "O arquivo não é do tipo aceito {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Tamanho do arquivo"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "Área de upload de arquivo. Pressione Enter para abrir o seletor de arquivos"
 
 #. Default: "File view"
 #: config/Views
@@ -2879,11 +2892,6 @@ msgstr "Criado com Plone e Python"
 msgid "Preferences"
 msgstr "Preferências"
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Pressione Enter para procurar arquivos no seu computador."
-
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -3999,6 +4007,11 @@ msgstr "Esses itens terão links quebrados"
 msgid "Third"
 msgstr "Terceiro"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Este campo é obrigatório."
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4854,6 +4867,11 @@ msgstr "/exemplo"
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
 msgstr "Endereços externos não são permitidos neste campo."
+
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "field.file.downloadFile"
+msgstr "Baixar {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
