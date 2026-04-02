@@ -10,6 +10,11 @@ msgstr ""
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+"MIME-Version: 1.0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit

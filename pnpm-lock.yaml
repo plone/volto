@@ -684,8 +684,8 @@ importers:
         specifier: 2.1.5
         version: 2.1.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       serialize-javascript:
-        specifier: 7.0.4
-        version: 7.0.4
+        specifier: 7.0.5
+        version: 7.0.5
       slate:
         specifier: 0.118.1
         version: 0.118.1
@@ -6430,6 +6430,7 @@ packages:
 
   decorate-component-with-props@1.2.1:
     resolution: {integrity: sha512-X2hZBnVHZAZQHG+g3Ce97SBtog1Vglzg7sPNbUY5XKmmgd3NVAiOHviw9hd7GOJIDrQ1slfwsmkbKQxESWFy7Q==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     peerDependencies:
       react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
 
@@ -10728,8 +10729,8 @@ packages:
   serialize-javascript@6.0.2:
     resolution: {integrity: sha512-Saa1xPByTTq2gdeFZYLLo+RFE35NHZkAbqZeWNd3BpzppeVisAqpDjcp8dyf6uIvEqJRd46jemmyA4iFIeVk8g==}
 
-  serialize-javascript@7.0.4:
-    resolution: {integrity: sha512-DuGdB+Po43Q5Jxwpzt1lhyFSYKryqoNjQSA9M92tyw0lyHIOur+XCalOUe0KTJpyqzT8+fQ5A0Jf7vCx/NKmIg==}
+  serialize-javascript@7.0.5:
+    resolution: {integrity: sha512-F4LcB0UqUl1zErq+1nYEEzSHJnIwb3AF2XWB94b+afhrekOUijwooAYqFyRbjYkm2PAKBabx6oYv/xDxNi8IBw==}
     engines: {node: '>=20.0.0'}
 
   serve-index@1.9.2:
@@ -17755,7 +17756,7 @@ snapshots:
       glob-parent: 6.0.2
       normalize-path: 3.0.0
       schema-utils: 4.3.3
-      serialize-javascript: 7.0.4
+      serialize-javascript: 7.0.5
       tinyglobby: 0.2.15
       webpack: 5.105.4(esbuild@0.25.12)
 
@@ -23309,7 +23310,7 @@ snapshots:
     dependencies:
       randombytes: 2.1.0
 
-  serialize-javascript@7.0.4: {}
+  serialize-javascript@7.0.5: {}
 
   serve-index@1.9.2:
     dependencies:
