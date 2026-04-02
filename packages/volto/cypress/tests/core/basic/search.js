@@ -77,7 +77,7 @@ describe('Search', () => {
     cy.get('.summary.url:first').should('have.text', 'A Colorless');
   });
 
-  it('As anonymous user I can see the search results ordered date(newest first)', () => {
+  it('As anonymous user I can see the search results ordered date (newest first)', () => {
     // Given document Colorless and Color and feeding some text into it.
     cy.createContent({
       contentType: 'Document',
@@ -121,6 +121,6 @@ describe('Search', () => {
 
     // then the first link must be Colorless
     cy.get('button[name="effective"]').click();
-    cy.get('.summary.url:first').should('have.text', 'Color');
+    cy.get('.summary.url:first').should('have.text', 'Colorless');
   });
 });
