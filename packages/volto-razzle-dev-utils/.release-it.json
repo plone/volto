@@ -1,7 +1,4 @@
 {
-  "plugins": {
-    "../scripts/prepublish.js": {}
-  },
   "hooks": {
     "after:bump": [
       "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft",

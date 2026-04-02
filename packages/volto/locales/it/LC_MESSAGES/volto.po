@@ -10,6 +10,11 @@ msgstr ""
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+"MIME-Version: 1.0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -19,7 +24,7 @@ msgstr "<p>Aggiungi dell'HTML qui</p>"
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "Un identificatore univoco per il gruppo. Non può essere modificato dopo la creazione. Non sono consentiti spazi."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -1043,7 +1048,7 @@ msgstr "Default"
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "Valore di default"
 
 #. Default: "Default view"
 #: config/Views
@@ -1240,7 +1245,7 @@ msgstr "Scarica l'evento"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Scarica il file"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1268,7 +1273,7 @@ msgstr "Rilascia file qui..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Trascina i file qui per caricarli"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1530,7 +1535,7 @@ msgstr "Espandi la sidebar"
 #. Default: "Expand toolbar"
 #: components/manage/Toolbar/Toolbar
 msgid "Expand toolbar"
-msgstr "Espandi barra degli strumenti"
+msgstr "Espandi la barra degli strumenti"
 
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1600,7 +1605,7 @@ msgstr "File"
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "Il file non è del tipo consentito {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
@@ -1628,7 +1633,7 @@ msgstr "File caricati: {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
+msgstr "Compila il valore del campo del modulo con il valore fornito da un parametro di query all'interno dell'URL con il nome dato."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2331,7 +2336,7 @@ msgstr "URL di Maps"
 #. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
-msgstr ""
+msgstr "La dimensione massima consentita del file è {maxSize} bytes, ma la dimensione del file caricato è {size} bytes."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2806,7 +2811,7 @@ msgstr "Persone responsabili della creazione del contenuto di questo elemento. I
 #. Default: "Placeholder"
 #: components/manage/Widgets/SchemaWidget
 msgid "Placeholder"
-msgstr ""
+msgstr "Segnaposto"
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
@@ -2934,7 +2939,7 @@ msgstr "Query"
 #. Default: "Query Parameter Name"
 #: components/manage/Widgets/SchemaWidget
 msgid "Query Parameter Name"
-msgstr ""
+msgstr "Nome del parametro"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -3013,7 +3018,7 @@ msgstr "Form di iscrizione"
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "Elementi correlati"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -3041,7 +3046,7 @@ msgstr "Relazioni aggiornate"
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Rilascia per aggiungere file a questa cartella"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3883,7 +3888,7 @@ msgstr "La presenza del bottone disabilita la ricerca al volo, la ricerca verrà
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "Il file caricato ha superato la dimensione massima consentita di {dimensione} byte"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
@@ -3933,7 +3938,7 @@ msgstr "La registrazione è avvenuta correttamente. Per favore controlla la tua 
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "La lingua predefinita selezionata deve essere nell'elenco del campo ' Lingue disponibili'"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -4311,7 +4316,7 @@ msgstr "Carica"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Carica file ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4601,7 +4606,7 @@ msgstr ""
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "Stai per eliminare tutti gli elementi nella paginazione corrente di questa cartella."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4626,7 +4631,7 @@ msgstr "Puoi controllare chi può visualizzare e modificare l'elemento usando l'
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr ""
+msgstr "Non puoi spostare questo tipo di blocco alla nuova posizione"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4681,7 +4686,7 @@ msgstr "Il tuo username è richiesto per reimpostare la tua password."
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "Tipi di file consentiti"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4772,7 +4777,7 @@ msgstr "Intervallo date"
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete_block"
-msgstr "Elimina blocco {type}"
+msgstr "Elimina il blocco {type}"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4802,7 +4807,7 @@ msgstr "Bozza"
 #. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "drag_block"
-msgstr "Trascina blocco {type}"
+msgstr "Trascina il blocco {type}"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4857,7 +4862,7 @@ msgstr ""
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "Gli URL esterni non sono consentiti in questo campo."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4902,7 +4907,7 @@ msgstr "Immagine"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Carica un'immagine."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4922,7 +4927,7 @@ msgstr "intero"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Nessuna immagine è stata trovata nel percorso che hai fornito."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -5088,12 +5093,12 @@ msgstr "Pubblicato"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Percorso corrente (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Percorso del contenitore (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5308,7 +5313,7 @@ msgstr "Seleziona la vista"
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "dimensione"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks

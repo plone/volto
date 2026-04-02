@@ -14,6 +14,7 @@ msgstr ""
 "Language-Code: zh_CN\n"
 "Language-Name: Chinese\n"
 "Preferred-Encodings: utf-8\n"
+"Domain: DOMAIN\n"
 "X-Is-Fallback-For: zh-cn\n"
 "X-Generator: Poedit 3.2\n"
 
@@ -861,7 +862,7 @@ msgstr ""
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "内容标题"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes

@@ -860,7 +860,7 @@ msgstr "Контент который связан с или ссылается 
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "Заголовок содержимого"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
