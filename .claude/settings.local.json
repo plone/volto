@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -l 'msgid \"\"\"\"By default, permissions from the container of this item are inherited' . -r --include=\"*.po\")"
-    ]
-  }
-}
