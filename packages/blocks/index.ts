@@ -54,6 +54,24 @@ export default function install(config: ConfigType) {
         widths: ['narrow'],
       },
     },
+    h2: {
+      blockWidth: {
+        defaultWidth: 'narrow',
+        widths: ['narrow'],
+      },
+    },
+    h3: {
+      blockWidth: {
+        defaultWidth: 'narrow',
+        widths: ['narrow'],
+      },
+    },
+    h4: {
+      blockWidth: {
+        defaultWidth: 'narrow',
+        widths: ['narrow'],
+      },
+    },
     title: {
       blockWidth: {
         defaultWidth: 'default',

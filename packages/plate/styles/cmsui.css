@@ -2,9 +2,8 @@
 the styles for @plone/plate in the cmsui */
 
 .block-inner-container {
-  display: grid;
+  display: block;
   width: 100%;
   max-width: var(--block-width);
-  justify-items: start;
   margin-inline: auto;
 }
