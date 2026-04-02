@@ -1245,12 +1245,12 @@ msgstr ""
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Tō ha faila ki heni pe omiomi ke faka-fetongi ʻa e meʻa ʻoku ʻi ai"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Tō ha faila ki heni pe omiomi ke hikiʻi hake"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1614,7 +1614,7 @@ msgstr ""
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Feituʻu hikiʻi hake faila. Holoki ʻa e Enter ke fakaava ʻa e talafi faila"
 
 #. Default: "File view"
 #: config/Views
@@ -4009,7 +4009,7 @@ msgstr ""
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
-msgstr ""
+msgstr "Ko e ngaahi fīliti ni ʻoku fiemaʻu."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -4870,7 +4870,7 @@ msgstr ""
 #. Default: "Download {filename}"
 #: components/manage/Widgets/FileWidget
 msgid "field.file.downloadFile"
-msgstr ""
+msgstr "Hokosia {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

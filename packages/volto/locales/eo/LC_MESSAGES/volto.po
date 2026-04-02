@@ -1245,12 +1245,12 @@ msgstr ""
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Trenu dosieron ĉi tien aŭ alklaku por anstataŭigi la nunan"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Trenu dosieron ĉi tien aŭ alklaku por alŝuti"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1614,7 +1614,7 @@ msgstr ""
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Dosier-alŝuta areo. Premu Enter por malfermi la dosierfoliumilon"
 
 #. Default: "File view"
 #: config/Views
@@ -4009,7 +4009,7 @@ msgstr ""
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
-msgstr ""
+msgstr "Ĉi tiu kampo estas deviga."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -4870,7 +4870,7 @@ msgstr ""
 #. Default: "Download {filename}"
 #: components/manage/Widgets/FileWidget
 msgid "field.file.downloadFile"
-msgstr ""
+msgstr "Elŝuti {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

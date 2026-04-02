@@ -1245,12 +1245,12 @@ msgstr "Перетащите файлы в эту область или нажм
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Перетащите файл сюда или нажмите, чтобы заменить текущий"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Перетащите файл сюда или нажмите для загрузки"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1614,7 +1614,7 @@ msgstr "Размер файла"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Область загрузки файла. Нажмите Enter, чтобы открыть файловый браузер"
 
 #. Default: "File view"
 #: config/Views

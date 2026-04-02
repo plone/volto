@@ -1247,12 +1247,12 @@ msgstr "Arrastre y suelte los archivos desde su computador en esta área o haga 
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Arrastre un archivo aquí o haga clic para reemplazar el actual"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Arrastre un archivo aquí o haga clic para subir"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1616,7 +1616,7 @@ msgstr "Tamaño del archivo"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Área de carga de archivos. Pulse Enter para abrir el explorador de archivos"
 
 #. Default: "File view"
 #: config/Views
@@ -4872,7 +4872,7 @@ msgstr "No se permiten URLs externas en este campo."
 #. Default: "Download {filename}"
 #: components/manage/Widgets/FileWidget
 msgid "field.file.downloadFile"
-msgstr ""
+msgstr "Descargar {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

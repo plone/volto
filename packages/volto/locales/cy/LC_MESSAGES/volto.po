@@ -1245,12 +1245,12 @@ msgstr ""
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Llusgwch ffeil yma neu cliciwch i amnewid yr un presennol"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Llusgwch ffeil yma neu cliciwch i uwchlwytho"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1614,7 +1614,7 @@ msgstr ""
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Ardal uwchlwytho ffeiliau. Gwasgwch Enter i agor y porwr ffeiliau"
 
 #. Default: "File view"
 #: config/Views
@@ -4009,7 +4009,7 @@ msgstr ""
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
-msgstr ""
+msgstr "Mae'r maes hwn yn ofynnol."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -4870,7 +4870,7 @@ msgstr ""
 #. Default: "Download {filename}"
 #: components/manage/Widgets/FileWidget
 msgid "field.file.downloadFile"
-msgstr ""
+msgstr "Lawrlwytho {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

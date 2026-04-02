@@ -1247,12 +1247,12 @@ msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Arrastatu fitxategi bat hona edo egin klik unekoa ordezkatzeko"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Arrastatu fitxategi bat hona edo egin klik igotzeko"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1616,7 +1616,7 @@ msgstr "Fitxategiaren tamaina"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Fitxategiak igotzeko eremua. Sakatu Enter fitxategi-nabigatzailea irekitzeko"
 
 #. Default: "File view"
 #: config/Views
@@ -4872,7 +4872,7 @@ msgstr "Eremu honetan ezin duzu kanpoko helbiderik idatzi."
 #. Default: "Download {filename}"
 #: components/manage/Widgets/FileWidget
 msgid "field.file.downloadFile"
-msgstr ""
+msgstr "Deskargatu {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

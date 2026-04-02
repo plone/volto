@@ -1246,12 +1246,12 @@ msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic 
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Arrossegueu un fitxer aquí o feu clic per substituir l'actual"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Arrossegueu un fitxer aquí o feu clic per pujar-lo"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1615,7 +1615,7 @@ msgstr "Mida de l'arxiu"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Àrea de càrrega de fitxers. Premeu Enter per obrir el navegador de fitxers"
 
 #. Default: "File view"
 #: config/Views

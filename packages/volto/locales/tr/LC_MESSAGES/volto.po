@@ -1246,12 +1246,12 @@ msgstr ""
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Bir dosyayı buraya sürükleyin veya mevcut olanı değiştirmek için tıklayın"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Bir dosyayı buraya sürükleyin veya yüklemek için tıklayın"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1615,7 +1615,7 @@ msgstr ""
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Dosya yükleme alanı. Dosya tarayıcısını açmak için Enter tuşuna basın"
 
 #. Default: "File view"
 #: config/Views
@@ -4010,7 +4010,7 @@ msgstr ""
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
-msgstr ""
+msgstr "Bu alan zorunludur."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -4871,7 +4871,7 @@ msgstr ""
 #. Default: "Download {filename}"
 #: components/manage/Widgets/FileWidget
 msgid "field.file.downloadFile"
-msgstr ""
+msgstr "{filename} indir"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

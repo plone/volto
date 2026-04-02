@@ -1247,12 +1247,12 @@ msgstr "Glisser et déposer les fichiers depuis votre ordinateur dans la zone ou
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Déposez un fichier ici ou cliquez pour remplacer le fichier actuel"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Déposez un fichier ici ou cliquez pour téléverser"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1616,7 +1616,7 @@ msgstr "Taille du fichier"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Zone de téléversement de fichier. Appuyez sur Entrée pour ouvrir le navigateur de fichiers"
 
 #. Default: "File view"
 #: config/Views

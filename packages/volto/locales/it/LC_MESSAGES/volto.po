@@ -1245,12 +1245,12 @@ msgstr "Trascina in quest'area i file dal tuo computer o clicca su “Sfoglia”
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Trascina un file qui o fai clic per sostituire quello corrente"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Trascina un file qui o fai clic per caricarlo"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1614,7 +1614,7 @@ msgstr "Dimensione del file"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Area di caricamento file. Premi Invio per aprire il selettore di file"
 
 #. Default: "File view"
 #: config/Views

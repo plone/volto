@@ -1246,12 +1246,12 @@ msgstr "ここにファイルをドラッグ、または「参照」ボタンを
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "ファイルをここにドロップするか、クリックして現在のファイルを置き換えてください"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "ファイルをここにドロップするか、クリックしてアップロードしてください"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1615,7 +1615,7 @@ msgstr "ファイルサイズ"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "ファイルのアップロードエリア。Enterキーを押してファイルブラウザを開いてください"
 
 #. Default: "File view"
 #: config/Views

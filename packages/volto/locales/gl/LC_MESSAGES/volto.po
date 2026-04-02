@@ -1246,12 +1246,12 @@ msgstr "Arrastra e solta ficheiros desde o teu ordenador nesta área o fai click
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Arrastre un ficheiro aquí ou prema para substituír o actual"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Arrastre un ficheiro aquí ou prema para envialo"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1615,7 +1615,7 @@ msgstr "Tamaño do ficheiro"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Área de envío de ficheiros. Prema Enter para abrir o explorador de ficheiros"
 
 #. Default: "File view"
 #: config/Views
@@ -4010,7 +4010,7 @@ msgstr "Terceiro"
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
-msgstr ""
+msgstr "Este campo é obrigatorio."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -4871,7 +4871,7 @@ msgstr "Non se permiten URLs externas neste campo."
 #. Default: "Download {filename}"
 #: components/manage/Widgets/FileWidget
 msgid "field.file.downloadFile"
-msgstr ""
+msgstr "Descargar {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

@@ -1245,12 +1245,12 @@ msgstr "Sleep en zet bestanden neer van je computer naar dit gebied of klik op d
 #. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to replace the current one"
-msgstr ""
+msgstr "Sleep een bestand hierheen of klik om het huidige te vervangen"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
-msgstr ""
+msgstr "Sleep een bestand hierheen of klik om te uploaden"
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
@@ -1614,7 +1614,7 @@ msgstr "Bestandsgrootte"
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Bestandsuploadgebied. Druk op Enter om de bestandsbrowser te openen"
 
 #. Default: "File view"
 #: config/Views
@@ -4870,7 +4870,7 @@ msgstr "Externe URLs zijn niet toegestaan in dit veld."
 #. Default: "Download {filename}"
 #: components/manage/Widgets/FileWidget
 msgid "field.file.downloadFile"
-msgstr ""
+msgstr "{filename} downloaden"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
