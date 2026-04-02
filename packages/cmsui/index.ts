@@ -129,6 +129,17 @@ export default function install(config: ConfigType) {
   });
   config.registerRoute({
     type: 'prefix',
+    path: '@queryStringOptions',
+    children: [
+      {
+        type: 'route',
+        path: '*',
+        file: '@plone/cmsui/routes/queryStringOptions.tsx',
+      },
+    ],
+  });
+  config.registerRoute({
+    type: 'prefix',
     path: '@createContent',
     children: [
       {
