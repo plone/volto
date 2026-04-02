@@ -227,15 +227,19 @@ const FileWidget = (props) => {
               </div>
             )}
 
-            <Button
+            {/* aria-hidden: keyboard access is handled by the parent div (role="button").
+                The label is a visual affordance only. The stopPropagation prevents the Dropzone
+                from opening the file dialog twice on click. */}
+            <label
               className="label-file-widget-input"
-              tabIndex={-1}
+              htmlFor={`field-${id}`}
               aria-hidden="true"
+              onClick={(e) => e.stopPropagation()}
             >
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
-            </Button>
+            </label>
             <span id={`field-${id}-status`} className="visually-hidden">
               {statusTextA11y}
             </span>
