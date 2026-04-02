@@ -1151,16 +1151,6 @@ msgstr "Decrescente"
 msgid "Description"
 msgstr "Descrizione"
 
-#. Default: "Dialog closed."
-#: components/manage/Form/ModalForm
-msgid "Dialog closed."
-msgstr "Finestra chiusa."
-
-#. Default: "Dialog opened: {title}"
-#: components/manage/Form/ModalForm
-msgid "Dialog opened: {title}"
-msgstr "Finestra aperta: {title}"
-
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -2867,6 +2857,16 @@ msgstr "Plone Foundation"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Finestra a comparsa chiusa."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Finestra a comparsa aperta: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule

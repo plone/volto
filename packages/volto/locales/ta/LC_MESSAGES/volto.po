@@ -1152,16 +1152,6 @@ msgstr "இறங்கு"
 msgid "Description"
 msgstr "விவரம்"
 
-#. Default: "Dialog closed."
-#: components/manage/Form/ModalForm
-msgid "Dialog closed."
-msgstr ""
-
-#. Default: "Dialog opened: {title}"
-#: components/manage/Form/ModalForm
-msgid "Dialog opened: {title}"
-msgstr ""
-
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -2868,6 +2858,16 @@ msgstr "ப்ளோன் அறக்கட்டளை"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "ப்ளோன் {reg} திறந்த மூல CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "பாப்-அப் சாளரம் மூடப்பட்டது."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "பாப்-அப் சாளரம் திறக்கப்பட்டது: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule

@@ -47,12 +47,12 @@ const messages = defineMessages({
     defaultMessage: 'Cancel',
   },
   dialogOpened: {
-    id: 'Dialog opened: {title}',
-    defaultMessage: 'Dialog opened: {title}',
+    id: 'Pop-up opened: {title}',
+    defaultMessage: 'Pop-up opened: {title}',
   },
   dialogClosed: {
-    id: 'Dialog closed.',
-    defaultMessage: 'Dialog closed.',
+    id: 'Pop-up closed.',
+    defaultMessage: 'Pop-up closed.',
   },
 });
 

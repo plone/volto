@@ -1152,16 +1152,6 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#. Default: "Dialog closed."
-#: components/manage/Form/ModalForm
-msgid "Dialog closed."
-msgstr ""
-
-#. Default: "Dialog opened: {title}"
-#: components/manage/Form/ModalForm
-msgid "Dialog opened: {title}"
-msgstr ""
-
 #. Default: "Diff"
 #: components/manage/Diff/Diff
 msgid "Diff"
@@ -2868,6 +2858,16 @@ msgstr ""
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr ""
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Açılır pencere kapatıldı."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Açılır pencere açıldı: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
