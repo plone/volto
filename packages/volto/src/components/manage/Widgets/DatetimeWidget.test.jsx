@@ -67,6 +67,32 @@ test('datetime widget converts UTC date and adapts to local datetime', async () 
   expect(container).toMatchSnapshot();
 });
 
+test('applies aria-required attribute to the date input when required prop is true', async () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const { container } = render(
+    <Provider store={store}>
+      <DatetimeWidget
+        id="required-field"
+        title="Required Field"
+        onChange={() => {}}
+        required={true}
+      />
+    </Provider>,
+  );
+
+  await waitFor(() => screen.getByPlaceholderText('Date'));
+
+  const dateInput = container.querySelector('.date-input input');
+
+  expect(dateInput).toHaveAttribute('required');
+});
+
 test('applies aria-required attribute to the time input when required prop is true', async () => {
   const store = mockStore({
     intl: {
