@@ -1,6 +1,6 @@
 {
   "name": "@plone/razzle-dev-utils",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "A Volto fork of razzle-dev-utils - Utilities and helpers for Razzle",
   "author": "Jared Palmer <jared@palmer.net>",
   "repository": {

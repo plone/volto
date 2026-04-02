@@ -14,6 +14,7 @@ msgstr ""
 "Language-Code: zh_CN\n"
 "Language-Name: Chinese\n"
 "Preferred-Encodings: utf-8\n"
+"Domain: DOMAIN\n"
 "X-Is-Fallback-For: zh-cn\n"
 "X-Generator: Poedit 3.2\n"
 
@@ -467,6 +468,8 @@ msgstr "可用的内容规则"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -510,6 +513,17 @@ msgstr "基本搜索查询"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "块"
+
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -848,7 +862,7 @@ msgstr ""
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "内容标题"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -2018,6 +2032,11 @@ msgstr ""
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr ""
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2660,6 +2679,12 @@ msgstr "对象大小"
 msgid "Occurences"
 msgstr ""
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2745,6 +2770,11 @@ msgstr "粘贴"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "粘贴块"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4734,6 +4764,11 @@ msgstr ""
 msgid "compare_to"
 msgstr ""
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4957,6 +4992,8 @@ msgstr ""
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr ""
 
@@ -5016,6 +5053,11 @@ msgstr ""
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "无工作流状态"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels

@@ -14,6 +14,7 @@ msgstr ""
 "Language-Code: nl\n"
 "Language-Name: Nederlands\n"
 "Preferred-Encodings: utf-8\n"
+"Domain: DOMAIN\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -23,7 +24,7 @@ msgstr "<p>Voeg hier HTML toe</p>"
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "Een unieke identiteit voor de groep. Na het aanmaken kan deze niet meer gewijzigd worden. Spaties zijn niet toegestaan."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -407,7 +408,7 @@ msgstr "Van toepassing op submappen?"
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr "Toepassen op submappen?"
+msgstr "Toepassen op submappen"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
@@ -465,6 +466,8 @@ msgstr "Beschikbare inhoudsregels"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -508,6 +511,17 @@ msgstr "Basis zoekopdracht"
 #: components/manage/Sidebar/Sidebar
 msgid "Block"
 msgstr "Blok"
+
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -593,7 +607,7 @@ msgstr "Annuleren"
 #. Default: "Cancel search"
 #: components/manage/Blocks/Search/components/SearchInput
 msgid "Cancel search"
-msgstr ""
+msgstr "Annuleer zoeken"
 
 #. Default: "Cell"
 #: config/Blocks
@@ -687,7 +701,7 @@ msgstr "Leegmaken"
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
-msgstr ""
+msgstr "Datum en tijd leegmaken"
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
@@ -846,7 +860,7 @@ msgstr "Inhoud die linkt of refereert naar {title}"
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "Inhoudstitel"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1034,7 +1048,7 @@ msgstr "Standaard"
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "Standaard waarde"
 
 #. Default: "Default view"
 #: config/Views
@@ -1221,7 +1235,7 @@ msgstr "Evenement downloaden"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Bestand downloaden"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1257,7 +1271,7 @@ msgstr "Zet bestanden hier neer..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Zet hier bestanden neer om te uploaden"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1589,7 +1603,7 @@ msgstr "Bestand"
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "Bestand is niet van het geaccepteerde type {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
@@ -1622,7 +1636,7 @@ msgstr "Opgeladen bestanden: {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
+msgstr "Vult de waarde van het formulierveld in met de waarde die is meegegeven door de parameter in de URL met de opgegeven naam."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2016,6 +2030,11 @@ msgstr "Ongeldige bron teaser"
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Het is niet toegestaan ​​om zowel het wachtwoord in te stellen als het verzoek om het wachtwoordherstelbericht per e-mail te verzenden. Je moet een van beide kiezen."
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2142,7 +2161,7 @@ msgstr "Minder filters"
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
 msgid "Link"
-msgstr "Koppeling"
+msgstr "Link"
 
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
@@ -2320,7 +2339,7 @@ msgstr "Kaarten URL"
 #. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
-msgstr ""
+msgstr "Maximum bestandsgrootte is {maxSize} bytes, maar het geüploade bestand is {size} bytes."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2459,7 +2478,7 @@ msgstr "Navigeer terug"
 #. Default: "Navigate to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Navigate to this item"
-msgstr ""
+msgstr "Navigeer naar dit item"
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
@@ -2658,6 +2677,12 @@ msgstr "Object grootte"
 msgid "Occurences"
 msgstr "Gebeurtenissen"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2743,6 +2768,11 @@ msgstr "Plakken"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "Blokken plakken"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -2860,6 +2890,11 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Voorkeuren"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Druk Enter om door de bestanden op jouw computer te browsen."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -2986,7 +3021,7 @@ msgstr "Registratie formulier"
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "Gerelateerde items"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -3856,7 +3891,7 @@ msgstr "De aanwezigheid van de knop schakelt de live-zoekfunctie uit, de bevragi
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "Het bestand is groter dan de toegalaten maximale grootte van {size} bytes"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
@@ -3906,7 +3941,7 @@ msgstr "Het registratieproces was succesvol. Controleer jouw e-mails voor inform
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "De geselecteerde standaardtaal moet in de lijst staan van het veld 'Beschikbare talen'"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3969,7 +4004,7 @@ msgstr "Er zijn fouten opgetreden."
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr ""
+msgstr "Deze items zullen gebroken linken krijgen"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -4164,7 +4199,7 @@ msgstr "UID"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Toolbar/More
 msgid "URL Management"
-msgstr "URL beheer"
+msgstr "URL-beheer"
 
 #. Default: "URL Management for {title}"
 #: components/manage/Aliases/Aliases
@@ -4289,7 +4324,7 @@ msgstr "Opladen"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Uploaden bestanden ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4579,7 +4614,7 @@ msgstr ""
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "Je gaat alle items verwijderen in de huidige paginatie van deze map."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
@@ -4604,7 +4639,7 @@ msgstr "Je kunt in de onderstaande lijst beheren wie de content kan bekijken en 
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr ""
+msgstr "Je kan dit type blok niet naar een andere locatie verplaatsen"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4659,7 +4694,7 @@ msgstr "Jouw gebruikersnaam is vereist om je wachtwoord opnieuw in te stellen."
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "Toegelaten bestandstypes"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4732,6 +4767,11 @@ msgstr "Algemeen"
 msgid "compare_to"
 msgstr "Vergelijk met taal"
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4745,7 +4785,7 @@ msgstr "Datumbereik"
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete_block"
-msgstr "verwijderen"
+msgstr "verwijder {type} blok"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4775,7 +4815,7 @@ msgstr "voorlopige versie"
 #. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "drag_block"
-msgstr ""
+msgstr "versleep {type} blok"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4830,12 +4870,7 @@ msgstr "/voorbeeld"
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
-
-#. Default: "Download {filename}"
-#: components/manage/Widgets/FileWidget
-msgid "field.file.downloadFile"
-msgstr "Download {filename}"
+msgstr "Externe URLs zijn niet toegestaan in dit veld."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4880,7 +4915,7 @@ msgstr "Afbeelding"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Upload een afbeelding in plaats daarvan."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4900,7 +4935,7 @@ msgstr "Invoer moet een integer zijn"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Er werd geen afbeelding gevonden in het opgegeven interne pad."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4935,12 +4970,12 @@ msgstr "Veld leidende afbeelding"
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
-msgstr ""
+msgstr "Verwijder item en verbreek linken"
 
 #. Default: "Checking references..."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: loading references"
-msgstr ""
+msgstr "Controleer referenties..."
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4955,6 +4990,8 @@ msgstr "Lijst"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Laden"
 
@@ -5015,6 +5052,11 @@ msgstr "Nee"
 msgid "no workflow state"
 msgstr "Geen werkstroom status"
 
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
+
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
@@ -5059,7 +5101,7 @@ msgstr "Gepubliceerd"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Huidig pad (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
@@ -5074,7 +5116,7 @@ msgstr "Selecteer…"
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "rebuild relations"
-msgstr "hetbouw relaties"
+msgstr "herbouw relaties"
 
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
@@ -5089,12 +5131,12 @@ msgstr "referenties"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr ""
+msgstr "verwijst naar"
 
 #. Default: "Result count"
 #: components/manage/Contents/Contents
 msgid "resultCount"
-msgstr ""
+msgstr "Totaal resultaten"
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -5279,7 +5321,7 @@ msgstr "Selecteer weergave"
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "grootte"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks

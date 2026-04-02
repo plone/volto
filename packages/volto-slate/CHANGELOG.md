@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.13 (2026-03-31)
+
+### Internal
+
+- Run volto-slate test suite as part of the Vitest multi-project setup. @Abhishek-17h [#7892](https://github.com/plone/volto/issues/7892)
+- Remove devDependency babel-plugin-transform-class-properties (now
+  @babel/plugin-transform-class-properties, which is included in
+  @babel/preset-env). @davisagli 
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update devDependency: jsdom 28.1.0. @davisagli 
+
 ## 19.0.0-alpha.12 (2026-03-02)
 
 ### Bugfix
