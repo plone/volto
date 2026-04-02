@@ -2,8 +2,7 @@ import config from '@plone/registry';
 import type { Value } from '@plone/plate/components/editor';
 import type { Content } from '@plone/types';
 import '../types';
-
-const SOMERSAULT_KEY = '__somersault__';
+import { SOMERSAULT_KEY } from '../../../constants';
 
 type SomersaultValue = Value;
 

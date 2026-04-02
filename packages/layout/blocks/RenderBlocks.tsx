@@ -3,8 +3,7 @@ import { hasBlocksData } from '@plone/helpers';
 import { DefaultBlockView } from './DefaultBlockView';
 import type { BlocksConfigData, Content } from '@plone/types';
 import BlockWrapper from './BlockWrapper';
-
-const SOMERSAULT_KEY = '__somersault__';
+import { SOMERSAULT_KEY } from 'seven/constants';
 const SomersaultRenderer = lazy(() => import('./SomersaultRenderer'));
 
 export type RenderBlocksProps = {
