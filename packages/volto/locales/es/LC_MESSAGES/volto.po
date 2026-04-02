@@ -2893,11 +2893,6 @@ msgstr "Hecho con Plone & Python"
 msgid "Preferences"
 msgstr "Preferencias"
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Presiona Enter para seleccionar archivos de tu ordenador."
-
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -4873,6 +4868,11 @@ msgstr "/ejemplo"
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
 msgstr "No se permiten URLs externas en este campo."
+
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "field.file.downloadFile"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

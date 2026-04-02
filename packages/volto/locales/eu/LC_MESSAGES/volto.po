@@ -2893,11 +2893,6 @@ msgstr "Plone eta Pythonekin eginda"
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Sakatu Enter zure ordenagailuko fitxategiak aukeratzeko."
-
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -4873,6 +4868,11 @@ msgstr "/adibidea"
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
 msgstr "Eremu honetan ezin duzu kanpoko helbiderik idatzi."
+
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "field.file.downloadFile"
+msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
