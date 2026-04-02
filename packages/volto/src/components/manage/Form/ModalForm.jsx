@@ -46,6 +46,14 @@ const messages = defineMessages({
     id: 'Cancel',
     defaultMessage: 'Cancel',
   },
+  dialogOpened: {
+    id: 'Pop-up opened: {title}',
+    defaultMessage: 'Pop-up opened: {title}',
+  },
+  dialogClosed: {
+    id: 'Pop-up closed.',
+    defaultMessage: 'Pop-up closed.',
+  },
 });
 
 /**
@@ -54,6 +62,7 @@ const messages = defineMessages({
  * @extends Component
  */
 class ModalForm extends Component {
+  headerId = `modal-title-${Math.random().toString(36).slice(2)}`;
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -116,6 +125,8 @@ class ModalForm extends Component {
       isFormPristine: true,
       formData: props.formData,
     };
+    this.modalRef = React.createRef();
+    this.announceRef = React.createRef();
     this.selectTab = this.selectTab.bind(this);
     this.onChangeField = this.onChangeField.bind(this);
     this.onBlurField = this.onBlurField.bind(this);
@@ -215,6 +226,22 @@ class ModalForm extends Component {
    * @param {Object} prevState
    */
   async componentDidUpdate(prevProps, prevState) {
+    if (!prevProps.open && this.props.open) {
+      this.modalRef.current?.focus();
+      if (this.announceRef.current) {
+        this.announceRef.current.textContent = this.props.intl.formatMessage(
+          messages.dialogOpened,
+          { title: this.props.title },
+        );
+      }
+    }
+    if (prevProps.open && !this.props.open) {
+      if (this.announceRef.current) {
+        this.announceRef.current.textContent = this.props.intl.formatMessage(
+          messages.dialogClosed,
+        );
+      }
+    }
     if (this.props.onChangeFormData) {
       if (!isEqual(prevState?.formData, this.state.formData)) {
         this.props.onChangeFormData(this.state.formData);
@@ -259,100 +286,133 @@ class ModalForm extends Component {
 
     const state_errors = keys(this.state.errors).length > 0;
     return (
-      <Modal
-        dimmer={this.props.dimmer}
-        open={this.props.open}
-        className={this.props.className}
-      >
-        <Header>{this.props.title}</Header>
-        <Dimmer active={this.props.loading}>
-          <Loader>
-            {this.props.loadingMessage || (
-              <FormattedMessage id="Loading" defaultMessage="Loading." />
-            )}
-          </Loader>
-        </Dimmer>
-        <Modal.Content scrolling>
-          <UiForm
-            method="post"
-            onSubmit={this.onSubmit}
-            error={state_errors || Boolean(this.props.submitError)}
-          >
-            {description}
-            <Message error>
-              {state_errors ? (
-                <FormattedMessage
-                  id="There were some errors."
-                  defaultMessage="There were some errors."
-                />
-              ) : (
-                ''
+      <>
+        {/* aria-live region outside Modal so it persists through open/close cycles */}
+        <div
+          ref={this.announceRef}
+          aria-live="assertive"
+          aria-atomic="true"
+          style={{
+            position: 'absolute',
+            width: '1px',
+            height: '1px',
+            overflow: 'hidden',
+            opacity: 0,
+          }}
+        />
+        <Modal
+          dimmer={this.props.dimmer}
+          open={this.props.open}
+          className={this.props.className}
+          aria-labelledby={this.headerId}
+          aria-modal="true"
+        >
+          <Header id={this.headerId} aria-live="assertive" aria-atomic="true">
+            {this.props.title}
+          </Header>
+          <Dimmer active={this.props.loading}>
+            <Loader>
+              {this.props.loadingMessage || (
+                <FormattedMessage id="Loading" defaultMessage="Loading." />
               )}
-              <div>{this.props.submitError}</div>
-            </Message>
-            {schema.fieldsets?.length > 1 && (
-              <Menu tabular stackable>
-                {map(schema.fieldsets, (item, index) => (
-                  <Menu.Item
-                    name={item.id}
-                    index={index}
-                    key={item.id}
-                    active={this.state.currentTab === index}
-                    onClick={this.selectTab}
-                  >
-                    {item.title}
-                  </Menu.Item>
+            </Loader>
+          </Dimmer>
+          <Modal.Content scrolling>
+            {/* outline suppressed for programmatic focus via CSS :focus:not(:focus-visible) on .modal-focus-trap */}
+            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+            <div ref={this.modalRef} tabIndex={-1} className="modal-focus-trap">
+              <UiForm
+                method="post"
+                onSubmit={this.onSubmit}
+                error={state_errors || Boolean(this.props.submitError)}
+              >
+                {description}
+                <Message error>
+                  {state_errors ? (
+                    <FormattedMessage
+                      id="There were some errors."
+                      defaultMessage="There were some errors."
+                    />
+                  ) : (
+                    ''
+                  )}
+                  <div>{this.props.submitError}</div>
+                </Message>
+                {schema.fieldsets?.length > 1 && (
+                  <Menu tabular stackable>
+                    {map(schema.fieldsets, (item, index) => (
+                      <Menu.Item
+                        name={item.id}
+                        index={index}
+                        key={item.id}
+                        active={this.state.currentTab === index}
+                        onClick={this.selectTab}
+                      >
+                        {item.title}
+                      </Menu.Item>
+                    ))}
+                  </Menu>
+                )}
+                {fields.map((field) => (
+                  <Field
+                    {...field}
+                    key={field.id}
+                    onBlur={this.onBlurField}
+                    onClick={this.onClickInput}
+                    error={this.state.errors[field.id]}
+                  />
                 ))}
-              </Menu>
+              </UiForm>
+            </div>
+          </Modal.Content>
+          <Modal.Actions>
+            {onCancel && (
+              <Button
+                type="button"
+                basic
+                secondary
+                aria-label={this.props.intl.formatMessage(messages.cancel)}
+                title={this.props.intl.formatMessage(messages.cancel)}
+                onClick={onCancel}
+              >
+                <Icon name={clearSVG} className="circled" size="30px" />
+              </Button>
             )}
-            {fields.map((field) => (
-              <Field
-                {...field}
-                key={field.id}
-                onBlur={this.onBlurField}
-                onClick={this.onClickInput}
-                error={this.state.errors[field.id]}
-              />
-            ))}
-          </UiForm>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button
-            basic
-            circular
-            primary
-            floated="right"
-            aria-label={
-              this.props.submitLabel
-                ? this.props.submitLabel
-                : this.props.intl.formatMessage(messages.save)
-            }
-            title={
-              this.props.submitLabel
-                ? this.props.submitLabel
-                : this.props.intl.formatMessage(messages.save)
-            }
-            onClick={this.onSubmit}
-            loading={this.props.loading}
-          >
-            <Icon name={aheadSVG} className="contents circled" size="30px" />
-          </Button>
-          {onCancel && (
             <Button
-              type="button"
               basic
-              circular
-              secondary
-              aria-label={this.props.intl.formatMessage(messages.cancel)}
-              title={this.props.intl.formatMessage(messages.cancel)}
-              floated="right"
-              onClick={onCancel}
+              primary
+              aria-label={
+                this.props.submitLabel
+                  ? this.props.submitLabel
+                  : this.props.intl.formatMessage(messages.save)
+              }
+              title={
+                this.props.submitLabel
+                  ? this.props.submitLabel
+                  : this.props.intl.formatMessage(messages.save)
+              }
+              onClick={this.onSubmit}
+              loading={this.props.loading}
             >
-              <Icon name={clearSVG} className="circled" size="30px" />
+              <Icon name={aheadSVG} className="contents circled" size="30px" />
             </Button>
+          </Modal.Actions>
+          {/* Sentinel: closing the modal when the user tabs past the last element */}
+          {onCancel && (
+            <button
+              type="button"
+              onFocus={() => {
+                if (this.announceRef.current) {
+                  this.announceRef.current.textContent =
+                    this.props.intl.formatMessage(messages.dialogClosed);
+                }
+                onCancel();
+              }}
+              style={{ position: 'absolute', opacity: 0 }}
+            />
           )}
-        </Modal.Actions>
-      </Modal>
+        </Modal>
+      </>
     );
   }
 }

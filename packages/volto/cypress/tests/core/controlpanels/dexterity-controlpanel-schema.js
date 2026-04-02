@@ -13,7 +13,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
 
   it('Add Bike content-type with custom schema', () => {
     // Add Bike content-type
-    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-content-type').click();
     cy.get('input[id="field-title"]').clear().type('Bike');
     cy.get('input[id="field-description"]').type('Bike content-type');
     cy.get('[title=Save]').click();

@@ -2860,6 +2860,16 @@ msgstr "Fundación Plone"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM de Fuentes Abiertos"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Ventana emergente cerrada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Ventana emergente abierta: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"

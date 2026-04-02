@@ -12,7 +12,7 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
   });
 
   it('Edit Blocks Layout for Book', () => {
-    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-content-type').click();
     cy.get('input[id="field-title"]').clear().type('Book');
     cy.get('input[id="field-description"]').type('A book content-type');
     cy.get('[title=Save]').click();

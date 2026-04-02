@@ -2858,6 +2858,16 @@ msgstr "प्लोन फाउंडेशन"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "प्लोन{reg} ओपन सोर्स सीएमएस/डब्ल्यूसीएम"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "पॉप-अप बंद हुआ।"
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "पॉप-अप खुला: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
