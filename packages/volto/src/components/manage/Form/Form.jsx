@@ -34,7 +34,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import xor from 'lodash/xor';
 import isBoolean from 'lodash/isBoolean';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, forwardRef } from 'react';
 import { injectIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
@@ -58,6 +58,101 @@ import { setFormData, setUIState } from '@plone/volto/actions/form/form';
 import { compose } from 'redux';
 import config from '@plone/volto/registry';
 import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
+import { atom, useAtom } from 'jotai';
+import { useHydrateAtoms } from 'jotai/utils';
+
+const formAtom = atom({});
+
+export const HydrateAtoms = ({ atomValues, children }) => {
+  // initialising on state with prop on render here
+  useHydrateAtoms(new Map(atomValues));
+  return children;
+};
+
+const InnerFormWrapper = (WrappedComponent) => {
+  /**
+   * Render method.
+   * @returns {JSX} Markup for the component.
+   */
+
+  return forwardRef((props, ref) => {
+    // You can add additional functionality here
+    // For example: state management, data fetching, etc.
+    // Return the wrapped component with all props passed through
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [formData, setFormData] = useAtom(formAtom);
+
+    const blocksFieldname = getBlocksFieldname(formData);
+    const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
+    const ids = {
+      title: uuid(),
+      text: uuid(),
+    };
+    if (
+      formData.hasOwnProperty(blocksFieldname) &&
+      formData.hasOwnProperty(blocksLayoutFieldname)
+    ) {
+      if (
+        !formData[blocksLayoutFieldname] ||
+        isEmpty(formData[blocksLayoutFieldname].items)
+      ) {
+        setFormData((state) => ({
+          ...state,
+          [blocksLayoutFieldname]: { items: [ids.title, ids.text] },
+        }));
+      }
+      if (!formData[blocksFieldname] || isEmpty(formData[blocksFieldname])) {
+        setFormData((state) => ({
+          ...state,
+          [blocksFieldname]: {
+            [ids.title]: {
+              '@type': 'title',
+            },
+            [ids.text]: {
+              '@type': config.settings.defaultBlockType,
+            },
+          },
+        }));
+      }
+    }
+
+    return (
+      <WrappedComponent
+        {...props}
+        ref={ref}
+        formData={formData}
+        setFormData={setFormData}
+      />
+    );
+  });
+};
+
+/**
+ * Form wrapper component.
+ * This is a Higher-Order Component (HOC) that wraps the Form component in order to
+ * be able to use a Jotai atom for global form data management.
+ * @param {Object} WrappedComponent Component to be wrapped.
+ * @returns {Function} Component.
+ */
+const FormWrapper = (WrappedComponent) => {
+  /**
+   * Render method.
+   * @returns {JSX} Markup for the component.
+   */
+
+  return forwardRef((props, ref) => {
+    // You can add additional functionality here
+    // For example: state management, data fetching, etc.
+    // Return the wrapped component with all props passed through
+
+    return (
+      <HydrateAtoms atomValues={[[formAtom, props.formData]]}>
+        <WrappedComponent {...props} ref={ref} />
+      </HydrateAtoms>
+    );
+  });
+};
 
 /**
  * Form container class.
@@ -1149,6 +1244,8 @@ class Form extends Component {
 const FormIntl = injectIntl(Form, { forwardRef: true });
 
 export default compose(
+  FormWrapper,
+  InnerFormWrapper,
   connect(
     (state, props) => ({
       content: state.content.data,
@@ -1160,7 +1257,7 @@ export default compose(
     {
       setMetadataFieldsets,
       setSidebarTab,
-      setFormData,
+      // setFormData,
       setUIState,
       resetMetadataFocus,
     },
