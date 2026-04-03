@@ -7,6 +7,11 @@ export function RouteCondition(path: string | PathPattern) {
     Boolean(matchPath(path, location.pathname));
 }
 
+export function NotRouteCondition(path: string | PathPattern) {
+  return ({ location }: { location: Location }) =>
+    !Boolean(matchPath(path, location.pathname));
+}
+
 export function ContentTypeCondition(contentType: string[]) {
   return ({ content, location }: { content: Content; location: Location }) => {
     return (
