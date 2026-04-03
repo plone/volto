@@ -1,24 +1,24 @@
 import { useTranslation } from 'react-i18next';
-import { data, type LoaderFunctionArgs } from 'react-router';
-import type PloneClient from '@plone/client';
+import {
+  data,
+  RouterContextProvider,
+  type LoaderFunctionArgs,
+} from 'react-router';
+import { ploneClientContext } from 'seven/app/middleware.server';
 import Sitemap from '@plone/layout/components/Sitemap/Sitemap';
+import { Container } from '@plone/components/quanta';
 import type { NavigationResponse } from '@plone/types';
 import { flattenToAppURL } from '@plone/helpers';
-
-import config from '@plone/registry';
-import { Container } from '@plone/components/quanta';
 
 export const handle = {
   bodyClass: 'sitemap-route',
 };
 
-export async function loader({ params }: LoaderFunctionArgs) {
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
+export async function loader({
+  params,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  const cli = context.get(ploneClientContext);
 
   // TODO path for getNavigation
   const path = `/${params['*'] || ''}`;
