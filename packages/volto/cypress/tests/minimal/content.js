@@ -121,9 +121,9 @@ describe('Add Content Tests', () => {
       // because of lazyloading wait for the element to reach an actionable state
       .clear()
       .type('datetimeWidget test');
-    cy.get('#start-time').click();
-    cy.get('.rc-time-picker-panel-input').click();
-    cy.get('.rc-time-picker-panel-input').clear().type('6:40 AM');
+    // Set time using react-aria date segments
+    cy.get('.field-wrapper-start [data-type="hour"]').click().type('6');
+    cy.get('.field-wrapper-start [data-type="minute"]').click().type('40');
     cy.get('#toolbar-save').click();
 
     // then

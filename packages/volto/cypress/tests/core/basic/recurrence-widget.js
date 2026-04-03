@@ -3,10 +3,18 @@ const createEvent = () => {
   cy.get('#toolbar-add-event').click();
   cy.get('#field-title').type('Test recurrence');
 
-  cy.get('input#start-date').type('{selectall}05/04/2020{esc}'); //May,4 2020
-  cy.get('input#start-time').type('{selectall}01:00 AM{esc}');
-  cy.get('input#end-date').type('{selectall}05/16/2020{esc}'); //May,16 2020
-  cy.get('input#end-time').type('{selectall}01:00 AM{esc}');
+  // Set start date: May 4, 2020
+  cy.get('.field-wrapper-start [data-type="month"]').click().type('5');
+  cy.get('.field-wrapper-start [data-type="day"]').click().type('4');
+  cy.get('.field-wrapper-start [data-type="year"]').click().type('2020');
+  cy.get('.field-wrapper-start [data-type="hour"]').click().type('1');
+  cy.get('.field-wrapper-start [data-type="minute"]').click().type('00');
+  // Set end date: May 16, 2020
+  cy.get('.field-wrapper-end [data-type="month"]').click().type('5');
+  cy.get('.field-wrapper-end [data-type="day"]').click().type('16');
+  cy.get('.field-wrapper-end [data-type="year"]').click().type('2020');
+  cy.get('.field-wrapper-end [data-type="hour"]').click().type('1');
+  cy.get('.field-wrapper-end [data-type="minute"]').click().type('00');
 };
 
 const openRecurrenceModal = () => {

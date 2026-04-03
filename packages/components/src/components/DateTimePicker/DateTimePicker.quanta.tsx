@@ -42,11 +42,17 @@ function utcStringToLocalDateValue(
   if (!utcString) return null;
 
   if (isDateOnly) {
-    return parseDate(utcString);
+    // Extract just the date portion in case the string is a full ISO datetime
+    const dateOnly = utcString.split('T')[0];
+    return parseDate(dateOnly);
   }
   try {
     const localTimeZone = getLocalTimeZone();
-    return parseAbsolute(utcString, localTimeZone);
+    // If the value is a date-only string (no 'T'), convert to a full datetime
+    const dateTimeString = utcString.includes('T')
+      ? utcString
+      : `${utcString}T12:00:00Z`;
+    return parseAbsolute(dateTimeString, localTimeZone);
   } catch (error) {
     console.warn('Failed to parse UTC string:', utcString, error);
     return null;
@@ -83,6 +89,23 @@ export function DateTimePicker({
     const initialValue = value ?? defaultValue ?? null;
     return utcStringToLocalDateValue(initialValue, isDateOnly(granularity));
   });
+
+  // Ensure internalValue is compatible with current granularity synchronously
+  // to avoid react-aria throwing during render on granularity changes.
+  const resolvedValue = (() => {
+    if (value !== undefined) {
+      return utcStringToLocalDateValue(value, isDateOnly(granularity));
+    }
+    if (
+      internalValue &&
+      !isDateOnly(granularity) &&
+      !(internalValue instanceof ZonedDateTime)
+    ) {
+      // Convert CalendarDate to ZonedDateTime when switching to minute granularity
+      return toZoned(internalValue, getLocalTimeZone());
+    }
+    return internalValue;
+  })();
 
   useEffect(() => {
     if (value !== undefined) {
@@ -138,7 +161,7 @@ export function DateTimePicker({
     <div className="flex items-center">
       <AriaDatePicker
         {...props}
-        value={value !== undefined ? internalValue : internalValue}
+        value={resolvedValue}
         defaultValue={
           value === undefined
             ? utcStringToLocalDateValue(
@@ -171,7 +194,7 @@ export function DateTimePicker({
               variant="icon"
               className="h-7 w-7 flex-shrink-0 p-1"
               onPress={handleReset}
-              isDisabled={isDisabled || !internalValue || props.isReadOnly}
+              isDisabled={isDisabled || !resolvedValue || props.isReadOnly}
               aria-label="Clear date and time"
               slot={null}
             >

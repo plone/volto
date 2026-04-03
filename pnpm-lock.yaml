@@ -173,7 +173,7 @@ importers:
         version: 4.2.1(vite@6.4.1(@types/node@24.12.0)(jiti@2.6.1)(less@3.13.1)(lightningcss@1.32.0)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2))
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4)
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@28.1.0)(less@3.13.1)(lightningcss@1.32.0)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2))
       '@testing-library/react':
         specifier: ^16.3.0
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -434,6 +434,9 @@ importers:
       '@dnd-kit/utilities':
         specifier: 3.2.2
         version: 3.2.2(react@18.2.0)
+      '@internationalized/date':
+        specifier: ^3.12.0
+        version: 3.12.0
       '@loadable/component':
         specifier: 5.14.1
         version: 5.14.1(react@18.2.0)
@@ -800,7 +803,7 @@ importers:
         version: 10.1.0(cypress@15.5.0)
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4)
+        version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@28.1.0)(less@3.13.1)(lightningcss@1.32.0)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2))
       '@testing-library/react':
         specifier: 14.3.1
         version: 14.3.1(@types/react@18.3.28)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -15956,7 +15959,7 @@ snapshots:
       lodash: 4.17.23
       redent: 3.0.0
 
-  '@testing-library/jest-dom@6.4.2(@types/jest@30.0.0)(vitest@3.2.4)':
+  '@testing-library/jest-dom@6.4.2(@types/jest@30.0.0)(vitest@3.2.4(@types/debug@4.1.12)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@28.1.0)(less@3.13.1)(lightningcss@1.32.0)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2))':
     dependencies:
       '@adobe/css-tools': 4.4.4
       '@babel/runtime': 7.28.6

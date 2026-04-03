@@ -152,9 +152,9 @@ describe('Add Content Tests', () => {
       // because of lazyloading wait for the element to reach an actionable state
       .clear()
       .type('datetimeWidget test');
-    cy.get('#start-time').click();
-    cy.get('.rc-time-picker-panel-input').click();
-    cy.get('.rc-time-picker-panel-input').clear().type('6:40 AM');
+    // Set time using react-aria date segments
+    cy.get('.field-wrapper-start [data-type="hour"]').click().type('6');
+    cy.get('.field-wrapper-start [data-type="minute"]').click().type('40');
     cy.get('#toolbar-save').click();
 
     // then
@@ -170,38 +170,45 @@ describe('Add Content Tests', () => {
     cy.get('#toolbar-add-event').click();
     cy.get('#field-title').clear().type('Event checkbox test');
 
-    // then the time fields should be visible initially
-    cy.get('#start-time').should('be.visible');
-    cy.get('#end-time').should('be.visible');
-    cy.get('#end-date').should('be.visible');
+    // then the time segments should be visible initially
+    cy.get('.field-wrapper-start [data-type="hour"]').should('be.visible');
+    cy.get('.field-wrapper-end [data-type="hour"]').should('be.visible');
+    cy.get('.field-wrapper-end').should('be.visible');
 
     // when I check the whole_day checkbox
-    cy.get('label[for="field-whole_day"]').click({ scrollBehavior: false });
+    cy.get('.field-wrapper-whole_day label').click();
 
-    // then the time fields should disappear
-    cy.get('#start-time').should('not.exist');
-    cy.get('#end-time').should('not.exist');
+    // then the time segments should disappear (granularity switches to day)
+    cy.get('.field-wrapper-start [data-type="hour"]').should('not.exist');
+    cy.get('.field-wrapper-end [data-type="hour"]').should('not.exist');
 
     // when I uncheck the whole_day checkbox
-    cy.get('label[for="field-whole_day"]').click({ scrollBehavior: false });
+    cy.get('.field-wrapper-whole_day label', { timeout: 10000 }).click();
 
-    // then the time fields should be visible again
-    cy.get('#start-time').should('be.visible');
-    cy.get('#end-time').should('be.visible');
+    // then the time segments should be visible again
+    cy.get('.field-wrapper-start [data-type="hour"]')
+      .scrollIntoView()
+      .should('be.visible');
+    cy.get('.field-wrapper-end [data-type="hour"]')
+      .scrollIntoView()
+      .should('be.visible');
 
     // when I check the open_end checkbox
-    cy.get('label[for="field-open_end"]').click({ scrollBehavior: false });
+    cy.get('.field-wrapper-open_end label').scrollIntoView().click();
 
-    // then the end-date and end-time fields should disappear
-    cy.get('#end-date').should('not.exist');
-    cy.get('#end-time').should('not.exist');
+    // then the end field should disappear entirely
+    cy.get('.field-wrapper-end').should('not.exist');
 
     // when I uncheck the open_end checkbox
-    cy.get('label[for="field-open_end"]').click({ scrollBehavior: false });
+    cy.get('.field-wrapper-open_end label', { timeout: 10000 })
+      .scrollIntoView()
+      .click();
 
-    // then the end-date and end-time fields should be visible again
-    cy.get('#end-date').should('be.visible');
-    cy.get('#end-time').should('be.visible');
+    // then the end field should be visible again
+    cy.get('.field-wrapper-end').scrollIntoView().should('be.visible');
+    cy.get('.field-wrapper-end [data-type="hour"]')
+      .scrollIntoView()
+      .should('be.visible');
   });
 
   it('As editor I can add a Link (with an external link)', function () {
