@@ -21,6 +21,7 @@ import {
   flattenScales,
   addSubpathPrefix,
   stripSubpathPrefix,
+  hasTemplateVariables,
 } from './Url';
 
 beforeEach(() => {
@@ -331,6 +332,32 @@ describe('Url', () => {
       expect(getFieldURL(field)).toStrictEqual(['/foo/bar/1', '/foo/bar/2']);
     });
   });
+  describe('hasTemplateVariables', () => {
+    it('returns true for URL with template variable (portal_url)', () => {
+      expect(hasTemplateVariables(`\${portal_url}/my-page`)).toBe(true);
+    });
+    it('returns true for URL with template variable (navigation_root_url)', () => {
+      expect(hasTemplateVariables(`\${navigation_root_url}/section/page`)).toBe(
+        true,
+      );
+    });
+    it('returns true for URL with valid identifier-style variable', () => {
+      expect(hasTemplateVariables(`\${my_var}`)).toBe(true);
+      expect(hasTemplateVariables(`\${_private}`)).toBe(true);
+    });
+    it('returns false for URL without template variables', () => {
+      expect(hasTemplateVariables('https://example.com/page')).toBe(false);
+      expect(hasTemplateVariables('/my-page')).toBe(false);
+    });
+    it('returns false for non-string input', () => {
+      expect(hasTemplateVariables(null)).toBe(false);
+      expect(hasTemplateVariables(undefined)).toBe(false);
+    });
+    it('returns false for empty string', () => {
+      expect(hasTemplateVariables('')).toBe(false);
+    });
+  });
+
   describe('normalizeUrl', () => {
     it('normalizeUrl test', () => {
       const href = `www.example.com`;
