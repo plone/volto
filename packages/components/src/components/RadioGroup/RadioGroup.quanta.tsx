@@ -6,6 +6,7 @@ import {
   type RadioGroupProps as RACRadioGroupProps,
   type RadioProps,
   type ValidationResult,
+  type RadioRenderProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { composeTailwindRenderProps, focusRing } from '../utils';
@@ -95,7 +96,7 @@ export function Radio(props: RadioProps) {
         `,
       )}
     >
-      {(renderProps) => (
+      {(renderProps: RadioRenderProps) => (
         <>
           <div className={styles(renderProps)} />
           {props.children}
@@ -145,11 +146,13 @@ export function CustomRadio(props: RadioProps) {
   return (
     <RACRadio
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        customRadioButton({
-          ...renderProps,
-          className,
-        }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: RadioRenderProps) =>
+          customRadioButton({
+            ...renderProps,
+            className,
+          }),
       )}
     >
       {props.children}

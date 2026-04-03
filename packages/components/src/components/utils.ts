@@ -30,34 +30,36 @@ export function composeTailwindRenderProps<T>(
   className: string | ((v: T) => string) | undefined,
   tw: string,
 ): string | ((v: T) => string) {
-  return composeRenderProps(className, (className) => twMerge(tw, className));
+  return composeRenderProps(className, (className: string) =>
+    twMerge(tw, className),
+  );
 }
 
 // From https://github.com/adobe/react-spectrum/blob/main/packages/react-aria-components/src/utils.tsx
 export interface StyleRenderProps<T> {
   /** The CSS [className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) for the element. A function may be provided to compute the class based on component state. */
   className?:
-    | string
-    | ((values: T & { defaultClassName: string | undefined }) => string);
+  | string
+  | ((values: T & { defaultClassName: string | undefined }) => string);
   /** The inline [style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) for the element. A function may be provided to compute the style based on component state. */
   style?:
-    | CSSProperties
-    | ((
-        values: T & { defaultStyle: CSSProperties },
-      ) => CSSProperties | undefined);
+  | CSSProperties
+  | ((
+    values: T & { defaultStyle: CSSProperties },
+  ) => CSSProperties | undefined);
 }
 
 export interface RenderProps<T> extends StyleRenderProps<T> {
   /** The children of the component. A function may be provided to alter the children based on component state. */
   children?:
-    | ReactNode
-    | ((values: T & { defaultChildren: ReactNode | undefined }) => ReactNode);
+  | ReactNode
+  | ((values: T & { defaultChildren: ReactNode | undefined }) => ReactNode);
 }
 
 interface RenderPropsHookOptions<T>
   extends RenderProps<T>,
-    SharedDOMProps,
-    AriaLabelingProps {
+  SharedDOMProps,
+  AriaLabelingProps {
   values: T;
   defaultChildren?: ReactNode;
   defaultClassName?: string;

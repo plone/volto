@@ -17,6 +17,7 @@ import {
   Provider,
   GroupContext,
   TextContext,
+  type GroupRenderProps,
 } from 'react-aria-components';
 import { twMerge } from 'tailwind-merge';
 import { tv } from 'tailwind-variants';
@@ -138,8 +139,10 @@ export function FieldGroup(props: GroupProps) {
   return (
     <Group
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        fieldGroupStyles({ ...renderProps, className }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: GroupRenderProps) =>
+          fieldGroupStyles({ ...renderProps, className }),
       )}
     />
   );
