@@ -25,39 +25,31 @@ We can use the new sidebar when building our block's edit components.
 The sidebar is a new UI asset that is available in Volto 4.
 You need to instantiate it this way:
 
-```jsx
-import { SidebarPortal } from '@plone/volto/components';
-
-const Edit = (props) => {
-  const { selected } = props;
-  return (
-
-    [...]
-
-    <SidebarPortal selected={selected}>
-      // ...
-    </SidebarPortal>
-  )
-
-}
+% ex-01: Basic sidebar portal example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Basic sidebar portal example
+:end-before: // Sidebar popup basic example
 ```
 
-Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
+Everything that's inside the `SidebarPortal` component will be rendered in the sidebar. 
 
-```jsx
-import { SidebarPopup } from '@plone/volto/components';
+For a more complete example with form integration:
 
-const Edit = (props) => {
-  const { sidebarOpen } = props;
+% ex-02: Advanced sidebar portal with form
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Advanced sidebar portal with form example
+:end-before: // Sidebar popup example
+```
 
-  return (
-    [...]
+If you need an extra layer of configuration within `SidebarPortal`, you can use `SidebarPopup`.
 
-    <SidebarPopup open={sidebarOpen}>
-      ...
-    </SidebarPopup>
-  )
-}
+% ex-04: Sidebar popup example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Sidebar popup basic example
+:end-before: // Complete sidebar example with form
 ```
 
 ## Schema driven automated block settings forms
@@ -70,81 +62,20 @@ A helper component is available in core in order to simplify the task of definin
 
 The edit block settings component needs to be described by a schema that matches the format used to serialize the content type definitions. The widgets that will be used in rendering the form follow the same algorithm that is used for the regular metadata fields for the content types. As an example of schema, it could look like this:
 
-```js
-const IframeSchema = {
-  title: 'Embed external content',
-
-  fieldsets: [
-    {
-      id: 'default',
-      title: 'Default',
-      fields: [
-        'url',
-        'align',
-        'privacy_statement',
-        'privacy_cookie_key',
-        'enabled',
-      ],
-    },
-  ],
-
-  properties: {
-    url: {
-      title: 'Embed URL',
-    },
-    privacy_statement: {
-      title: 'Privacy statement',
-      description: 'Short notification text',
-      widget: 'text',
-    },
-    privacy_cookie_key: {
-      title: 'Privacy cookie key',
-      description: 'Identifies similar external content',
-    },
-    enabled: {
-      title: 'Use privacy screen?',
-      description: 'Enable/disable the privacy protection',
-      type: 'boolean',
-    },
-  },
-
-  required: ['url'],
-};
-
-export default IframeSchema;
+% ex-05: Iframe schema example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: js
+:start-after: // Iframe schema example
+:end-before: // ===== Object Browser Examples =====
 ```
 
 To render this form and make it available to the edit component:
 
-```jsx
-import schema from './schema';
-import BlockDataForm from '@plone/volto/components/manage/Form/BlockDataForm';
-import { Icon } from '@plone/volto/components';
-
-const Edit = (props) => {
-  const {selected, block, data, onChangeBlock} = props;
-
-  return (
-    <SidebarPortal selected={selected}>
-      <BlockDataForm
-        icon={<Icon size="24px" name={nameSVG} />}
-        schema={schema}
-        title={schema.title}
-        headerActions={<button onClick={() => {}}>Action</button>}
-        footer={<div>I am footer</div>}
-        onChangeField={(id, value) => {
-          onChangeBlock(block, {
-            ...data,
-            [id]: value,
-          });
-        }}
-        onChangeBlock={onChangeBlock}
-        formData={data}
-        block={block}
-      />
-    </SidebarPortal>;
-  )
-}
+% ex-02: Advanced sidebar portal with form
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Advanced sidebar portal with form example
+:end-before: // Sidebar popup example
 ```
 
 ## Object Browser
@@ -152,12 +83,11 @@ const Edit = (props) => {
 Volto 4 has a new object browser component that allows you to select an existing content object from the site.
 It has the form of an HOC (High Order Component), so you have to wrap the component you want to be able to call the object browser from with it, like this:
 
-```js
-import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
-
-[...]
-
-export default withObjectBrowser(MyComponent)
+% ex-06: withObjectBrowser HOC example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Basic HOC example
+:end-before: // Open object browser examples
 ```
 
 The HOC component `withObjectBrowser` wraps your component by making available this props:
@@ -189,26 +119,11 @@ This function has this signature:
 
 These are some examples on how to use it:
 
-```js
-// Opens the browser in the `image` mode by default if no config object specified, so it saves the selection in the `url` data property.
-this.props.openObjectBrowser();
-
-// Opens the browser in the `link` mode, so it saves the selection in the `href` data property.
-this.props.openObjectBrowser({ mode: 'link' });
-
-// Opens the browser defining which data property should save the selection using `dataName`
-this.props.openObjectBrowser({
-  dataName: 'myfancydatafield',
-});
-
-// Opens the browser defining the function that should be used to save the selection using `onSelectItem`
-this.props.openObjectBrowser({
-  onSelectItem: (url) =>
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      myfancydatafield: url,
-    }),
-});
+% ex-07: openObjectBrowser usage examples
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Open object browser examples
+:end-before: // Object browser widget examples
 ```
 
 ### ObjectBrowserWidget
@@ -229,8 +144,11 @@ It works in 3 different mode:
 
 The object widget returns always an array, even if it's meant to have only one object in return. In order to fix that situation and do not issue a breaking change, a `return` prop is being introduced, so if its value is `single`, then it returns a single value:
 
-```js
-export const Image = () => <ObjectBrowserWidget mode="image" return="single" />;
+% ex-08: ObjectBrowserWidget example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Object browser widget examples
+:end-before: // Plone specific examples
 ```
 
 ```{note}
@@ -244,8 +162,11 @@ This situation will be fixed in subsequent Volto releases.
 
 For example:
 
-```js
-content:{ '@id': 'page-1', related_pages:[], image:{url:""}, link:{href:""} }
+% ex-09: Content example with object browser fields
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: js
+:start-after: // Content example with object browser fields
+:end-before: // Blocks schema example with object browser widget
 ```
 
 if we use object browser widget for fields:
@@ -258,24 +179,11 @@ if we use object browser widget for fields:
 
 Used in along with `InlineForm`, one can instantiate and configure it using the widget props like this:
 
-```js
-{
-  title: 'Item',
-  fieldsets: [
-    {
-      id: 'default',
-      title: 'Default',
-      fields: ['href'],
-    },
-  ],
-  properties: {
-    href: {
-      title: 'title',
-      widget: 'object_browser',
-      mode: 'link',
-      selectedItemAttrs: ['Title', 'Description'],
-    },
-}
+% ex-10: Blocks schema example with object browser widget
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: js
+:start-after: // Blocks schema example with object browser widget
+:end-before: // Iframe schema example
 ```
 
 #### selectedItemAttrs
@@ -297,71 +205,51 @@ Returns the component widget with `mode` passed as argument.
 
 The default mode for ObjectBrowserWidget is multiple. If you would like to use this widget with link or image mode as widget field for a specific field id (for example), you could specify in in config.js as:
 
-```jsx
-export const widgets = {
-  widgetMapping: {
-    ...widgetMapping,
-    id: {
-      ...widgetMapping.id,
-      my_image_field: ObjectBrowserWidgetMode('image'),
-      my_link_field: ObjectBrowserWidgetMode('link'),
-    },
-  },
-  default: defaultWidget,
-};
+% ex-11: ObjectBrowserWidgetMode example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Widget mode configuration
+:end-before: // ===== Sidebar Examples =====
 ```
 
 #### Selectable types
 
 If `selectableTypes` is set in `widgetOptions.pattern_options`, then only items whose content type has a name that is defined in `widgetOptions.pattern_options.selectableTypes` will be selectable.
 
-```jsx
-<ObjectBrowserWidget ... widgetOptions={{pattern_options:{selectableTypes:['News Item','Event']}}}>
+% ex-12: Selectable types example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Object browser widget examples
+:end-before: // Plone specific examples
 ```
 
 You can also set the `selectableTypes` from `plone` when declaring a field for `contenttype`:
 
-```jsx
-form.widget(
-  'a_cura_di',
-  RelatedItemsFieldWidget,
-  (vocabulary = 'plone.app.vocabularies.Catalog'),
-  (pattern_options = {
-    maximumSelectionSize: 1,
-    selectableTypes: ['News Item', 'Event'],
-  }),
-);
+% ex-13: Plone selectable types example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Plone specific examples
+:end-before: // Widget mode configuration
 ```
 
 #### `maximumSelectionSize`
 
 If `maximumSelectionSize` is set in `widgetOptions.pattern_options`, the widget allows to select at most the `maximumSelectionSize` number of items defined in `widgetOptions.pattern_options.maximumSelectionSize`.
 
-```jsx
-<ObjectBrowserWidget ... widgetOptions={{pattern_options:{maximumSelectionSize:2}}}>
+% ex-14: Maximum selection size example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Object browser widget examples
+:end-before: // Plone specific examples
 ```
 
 You can also set the `maximumSelectionSize` from `plone` when declaring a field for `contenttype`:
 
-```jsx
-form.widget(
-  'a_cura_di',
-  RelatedItemsFieldWidget,
-  (vocabulary = 'plone.app.vocabularies.Catalog'),
-  (pattern_options = { maximumSelectionSize: 1, selectableTypes: ['Event'] }),
-);
-```
-
-```jsx
-form.widget(
-  'notizie_correlate',
-  RelatedItemsFieldWidget,
-  (vocabulary = 'plone.app.vocabularies.Catalog'),
-  (pattern_options = {
-    maximumSelectionSize: 10,
-    selectableTypes: ['News Item'],
-  }),
-);
+% ex-15: Plone maximum selection size examples
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // Plone specific examples
+:end-before: // Widget mode configuration
 ```
 
 #### `onlyFolderishSelectable`
@@ -421,83 +309,11 @@ This approach is useful when you're using `ObjectBrowserWidget` directly in your
 
 You can render a blocks engine form with the `BlocksForm` component.
 
-```jsx
-import { isEmpty } from 'lodash';
-import BlocksForm from '@plone/volto/components/manage/Blocks/BlocksForm';
-import { emptyBlocksForm } from '@plone/volto/helpers/Blocks/Blocks';
-import config from '@plone/volto/registry';
-
-
-class Example extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedBlock: null,
-      formData: null,
-    }
-    this.blocksState = {};
-  }
-
-  render() {
-    const {
-      block,
-      data,
-      onChangeBlock,
-      pathname,
-      selected,
-      manage,
-    } = this.props;
-    const formData = this.state.formData;
-    const metadata = this.props.metadata || this.props.properties;
-    const {blocksConfig} = config.blocks;
-    const titleBlock = blocksConfig.title;
-
-    return (
-      <BlocksForm
-        title="A form with blocks"
-        description={data?.instructions?.data}
-        manage={manage}
-        allowedBlocks={data?.allowedBlocks}
-        metadata={metadata}
-        properties={isEmpty(formData) ? emptyBlocksForm() : formData}
-        selectedBlock={
-          selected ? this.state.selectedBlock : null
-        }
-        onSelectBlock={(id) => this.setState({ selectedBlock: id }) }
-        onChangeFormData={(newFormData) => {
-          onChangeBlock(block, {
-            ...data,
-            data: {
-              ...formData,
-            },
-          });
-        }}
-        blocksConfig={{
-          ...blocksConfig,
-          title: {
-            ...titleBlock,
-            edit: (props) => <div>Title editing is not allowed (as example)</div>
-          }
-        }}
-        onChangeField={(id, value) => {
-          if (['blocks', 'blocks_layout'].indexOf(id) > -1) {
-            this.blockState[id] = value;
-            onChangeBlock(block, {
-              ...data,
-              data: {
-                ...data.data,
-                ...this.blockState,
-              },
-            });
-          }
-        }}
-        pathname={pathname}
-      >
-      </BlocksForm>
-    );
-  }
-}
+% ex-16: BlocksForm component example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // ===== DragDropList Example =====
+:end-before: // ===== Constants =====
 ```
 
 The current block engine is available as the separate `BlocksForm` component,
@@ -518,66 +334,11 @@ example to filter or add new blocks.
 
 You can also reuse the DragDropList component as a separate component:
 
-```jsx
-  <DragDropList
-    childList={childList}
-    as="tbody"
-    onMoveItem={(result) => {
-      const { source, destination } = result;
-      const ns = JSON.parse(JSON.stringify(state));
-      Object.keys(ns.order).forEach((lang) => {
-        const x = ns.order[lang][source.index];
-        const y = ns.order[lang][destination.index];
-        ns.order[lang][destination.index] = x;
-        ns.order[lang][source.index] = y;
-      });
-      setState(ns);
-      return true;
-    }}
-  >
-    {({ index, draginfo }) => {
-      return (
-        <Ref innerRef={draginfo.innerRef} key={index}>
-          <Table.Row {...draginfo.draggableProps}>
-            <Table.Cell>
-              <div {...draginfo.dragHandleProps}>
-                <Icon name={dragSVG} size="18px" />
-              </div>
-            </Table.Cell>
-            {langs.map((lang) => {
-              const i = state.order[lang][index];
-              const entry = state.data[lang][i];
-              return (
-                <Table.Cell key={lang}>
-                  <TermInput
-                    entry={entry}
-                    onChange={(id, value) => {
-                      const newState = { ...state };
-                      newState.data[lang][i] = {
-                        ...newState.data[lang][i],
-                        [id]: value,
-                      };
-
-                      setState(newState);
-                    }}
-                  />
-                </Table.Cell>
-              );
-            })}
-            <Table.Cell>
-              <Button basic onClick={() => {}}>
-                <Icon
-                  className="circled"
-                  name={deleteSVG}
-                  size="12px"
-                />
-              </Button>
-            </Table.Cell>
-          </Table.Row>
-        </Ref>
-      );
-    }}
-  </DragDropList>
+% ex-17: DragDropList component example
+```{literalinclude} ../_examples/blocks/basic/block-examples.jsx
+:language: jsx
+:start-after: // ===== DragDropList Example =====
+:end-before: // ===== Constants =====
 ```
 
 Check the source code of `volto-columns-block` and
