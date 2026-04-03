@@ -9,6 +9,7 @@ import map from 'lodash/map';
 import cx from 'classnames';
 import { defineMessages, useIntl } from 'react-intl';
 import LanguageSVG from '@plone/volto/icons/language.svg';
+import helpSVG from '@plone/volto/icons/help.svg';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 
 const messages = defineMessages({
@@ -52,6 +53,7 @@ const FormFieldWrapper = ({
   onDelete = null,
   noForInFieldLabel,
   multilingual_options,
+  helpUrl,
   children,
 }) => {
   const intl = useIntl();
@@ -97,6 +99,25 @@ const FormFieldWrapper = ({
                     />
                   )}
                   {title}
+                  {helpUrl && (
+                    <a
+                      href={helpUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="help-url-link"
+                      aria-label={`Help for ${title}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      <Icon
+                        name={helpSVG}
+                        size="18px"
+                        color="#666"
+                        title={`Documentation for ${title}`}
+                      />
+                    </a>
+                  )}
                   {languageIndependent && (
                     <div className="languageIndependent-icon">
                       <Icon
@@ -181,6 +202,7 @@ FormFieldWrapper.propTypes = {
   noForInFieldLabel: PropTypes.bool,
   multilingual_options: PropTypes.object,
   children: PropTypes.node,
+  helpUrl: PropTypes.string,
 };
 
 export default FormFieldWrapper;
