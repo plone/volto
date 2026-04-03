@@ -111,6 +111,10 @@ const DatetimeWidgetComponent = (props) => {
   if (id === 'end' && formData?.open_end) {
     return null;
   }
+  // If open_end is checked set formData.end to formData.start
+  if (formData?.open_end === true) {
+    formData.end = formData.start;
+  }
 
   const getInternalValue = () => {
     return parseDateTime(toBackendLang(lang), value, undefined, moment.default);

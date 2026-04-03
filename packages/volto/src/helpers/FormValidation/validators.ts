@@ -160,7 +160,8 @@ export const startEventDateRangeValidator = ({
   formatMessage,
 }: Validator) => {
   const isValid =
-    value && formData.end && new Date(value) < new Date(formData.end);
+    (value && formData.end && new Date(value) < new Date(formData.end)) ||
+    (formData.open_end && formData.start === formData.end);
   return !isValid
     ? formatMessage(messages.startEventRange, {
         endDateValueOrEndFieldName: formData.end || 'end',
@@ -175,7 +176,8 @@ export const endEventDateRangeValidator = ({
   formatMessage,
 }: Validator) => {
   const isValid =
-    value && formData.start && new Date(value) > new Date(formData.start);
+    (value && formData.start && new Date(value) > new Date(formData.start)) ||
+    (formData.open_end && formData.start === formData.end);
   return !isValid
     ? formatMessage(messages.endEventRange, {
         startDateValueOrStartFieldName: formData.start || 'start',
