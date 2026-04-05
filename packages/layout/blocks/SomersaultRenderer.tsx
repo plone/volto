@@ -5,8 +5,7 @@ import {
   type Value,
 } from '@plone/plate/components/editor';
 import somersaultRendererConfig from '@plone/plate/config/presets/somersault-renderer';
-
-const SOMERSAULT_KEY = '__somersault__';
+import { SOMERSAULT_KEY } from 'seven/constants';
 
 type SomersaultRendererProps = {
   content: Content;
