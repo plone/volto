@@ -178,5 +178,8 @@ jobs:
 
       - run: pnpm i
 
+      - name: Build packages
+        run: make build-deps
+
       - name: Build @plone/volto types
         run: pnpm --filter @plone/volto build:types
