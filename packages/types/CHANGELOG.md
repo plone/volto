@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.15 (2026-04-05)
+
+### Feature
+
+- Added blocktypes service typings. @sneridagh 
+
 ## 2.0.0-alpha.14 (2026-02-03)
 
 ### Bugfix
