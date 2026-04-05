@@ -5,6 +5,7 @@
 
 import superagent from 'superagent';
 import config from '@plone/volto/registry';
+import { getRequestAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 import { stripSubpathPrefix } from '@plone/volto/helpers/Url/Url';
 
@@ -35,7 +36,7 @@ export const getAPIResourceWithAuth = (req) =>
       .get(`${apiPath}${__DEVELOPMENT__ ? '' : apiSuffix}${contentPath}`)
       .maxResponseSize(settings.maxResponseSize)
       .responseType('blob');
-    const authToken = req.universalCookies.get('auth_token');
+    const authToken = getRequestAuthToken(req);
     if (authToken) {
       request.set('Authorization', `Bearer ${authToken}`);
     }
