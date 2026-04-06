@@ -1,1 +1,0 @@
-Add defensive checks as an extra layer of protection to prevent Toolbar crashes when a language is not present in langmap (related to #7637) or for missing locale files.
