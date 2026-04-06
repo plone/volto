@@ -24,13 +24,18 @@ const MultilingualRedirector = (props) => {
     let mounted = true;
     if (settings.isMultilingual && pathname === '/') {
       const langFileName = toGettextLang(redirectToLanguage);
-      import(
-        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-      ).then((locale) => {
-        if (mounted) {
-          dispatch(changeLanguage(redirectToLanguage, locale.default));
-        }
-      });
+      import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+        .then((locale) => {
+          if (mounted) {
+            dispatch(changeLanguage(redirectToLanguage, locale.default));
+          }
+        })
+        .catch(() => {
+          // If locale file doesn't exist, still switch language with empty locale
+          if (mounted) {
+            dispatch(changeLanguage(redirectToLanguage, {}));
+          }
+        });
     }
     return () => {
       mounted = false;
