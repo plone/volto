@@ -2859,6 +2859,16 @@ msgstr "Fundația Plone"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM Open Source"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Fereastră pop-up închisă."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Fereastră pop-up deschisă: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
