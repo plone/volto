@@ -125,7 +125,7 @@ describe('Folder Contents Tests', () => {
       .contains('Creator');
 
     // Tags index shows up on visiting another folder-contents view.
-    cy.get('.folder-contents .breadcrumb a.section').first().click();
+    cy.get('.folder-contents .contents-breadcrumbs a').first().click();
 
     cy.url().should('eq', Cypress.config().baseUrl + '/contents');
     cy.wait('@content');

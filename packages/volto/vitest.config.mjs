@@ -16,6 +16,10 @@ const sharedAliases = {
   '@plone/volto': path.resolve(__dirname, 'src'),
   '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
   '@root': path.resolve(__dirname, 'src'),
+  '@plone/components/Icons': path.resolve(
+    __dirname,
+    '../components/dist/components/icons/index.js',
+  ),
   '@plone/components': path.resolve(__dirname, '../components/src'),
   'promise-file-reader': require.resolve('promise-file-reader'),
   'react-dropzone': require.resolve('react-dropzone'),
@@ -23,11 +27,11 @@ const sharedAliases = {
   'react-intl-redux': require.resolve('react-intl-redux'),
 };
 
-// volto-slate specific aliases 
+// volto-slate specific aliases
 const voltoSlateAliases = {
   ...sharedAliases,
   'react-test-renderer': require.resolve('react-test-renderer'),
-  'redux': require.resolve('redux'), 
+  redux: require.resolve('redux'),
 };
 
 const sharedPlugins = [
@@ -108,11 +112,7 @@ export default defineConfig({
         '__test__/**/*.{test,spec}.{js,ts,jsx,tsx}',
         '../volto-slate/src/**/*.{test,spec}.{js,ts,jsx,tsx}',
       ],
-      exclude: [
-        'node_modules/**',
-        '**/dist/**',
-        '**/*.config.{js,ts}',
-      ],
+      exclude: ['node_modules/**', '**/dist/**', '**/*.config.{js,ts}'],
     },
     css: true,
   },
