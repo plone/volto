@@ -559,10 +559,10 @@ msgstr "Sfoglia i contenuti, rilascia un'immagine o digita un URL"
 msgid "BulkUploadAltUrls"
 msgstr "Caricamento massivo CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Di norma, i permessi di questo elemento vengono ereditati dal contenitore. Se disabiliti questa opzione, verranno considerati solo i permessi di condivisione definiti esplicitamente. Nel sommario, il simbolo {inherited} indica una impostazione ereditata. Analogamente, il simbolo {global} indica un ruolo globale, che è gestito dall'amministratore del sito"
+msgstr "Per impostazione predefinita, i permessi del contenitore di questo elemento sono ereditati. Se disattivi questa opzione, saranno validi solo i permessi di condivisione definiti esplicitamente. Nella panoramica, i valori ereditati sono etichettati esplicitamente come 'Valore ereditato' e ricevono un segno di spunta verde {inherited}. Allo stesso modo, i ruoli gestiti dall'amministratore del sito sono etichettati come 'Ruolo globale' e ricevono un segno di spunta blu {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
