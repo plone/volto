@@ -11,7 +11,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set up Node.js environment
         uses: ./.github/actions/acceptance_tests_node_env_setup
@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - uses: JarvusInnovations/background-action@v1
-        name: Start Servers - Volto and Plone
+        name: Start Servers - Plone 7 frontend and backend
         with:
           run: |
             make ci-acceptance-backend-start &

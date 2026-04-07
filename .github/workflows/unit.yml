@@ -22,7 +22,7 @@ jobs:
           - '@plone/registry'
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Node.js environment
         uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
@@ -41,7 +41,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Node.js environment
         uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
@@ -76,7 +76,7 @@ jobs:
       matrix:
         node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Node.js environment
         uses: ./.github/actions/acceptance_tests_node_env_setup
         with:
