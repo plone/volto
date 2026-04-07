@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 18.9.0 (2026-04-07)
+
+### Feature
+
+- Add gl translations @xulioxesus
+  Fix nl translation @ingovdb [#7941](https://github.com/plone/volto/issues/7941)
+
+### Internal
+
+- Run volto-slate test suite as part of the Vitest multi-project setup. @Abhishek-17h [#7892](https://github.com/plone/volto/issues/7892)
+- Update dependency: lodash 4.17.23. @davisagli 
+
 ## 18.8.1 (2026-03-02)
 
 ### Bugfix
