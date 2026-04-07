@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.7.1 (2026-04-07)
+
+### Internal
+
+- Update dependencies: tmp, vitest. @davisagli 
+
 ## 2.7.0 (2026-01-12)
 
 ### Feature
