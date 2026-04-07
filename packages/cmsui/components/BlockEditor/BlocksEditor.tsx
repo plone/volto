@@ -3,7 +3,7 @@ import * as React from 'react';
 import { PlateEditor, type Value } from '@plone/plate/components/editor';
 import plateBlockSomersaultConfig from '@plone/plate/config/presets/somersault-editor';
 import { TITLE_BLOCK_TYPE } from '@plone/plate/components/editor/plugins/title';
-import { SOMERSAULT_KEY } from 'seven/constants';
+import { SOMERSAULT_KEY } from '@plone/plate/constants';
 import { SidebarPlugin } from './plugins/SidebarPlugin';
 import { blockAtomFamily, formAtom } from '../../routes/atoms';
 
