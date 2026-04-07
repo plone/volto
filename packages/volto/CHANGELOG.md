@@ -17,6 +17,37 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.33.0 (2026-04-07)
+
+### Feature
+
+- Complete it, eu, nl, es, gl, tr translations @yurj @ingodvb @xulioxesus @erral @cihanandac [#7828](https://github.com/plone/volto/issues/7828)
+- Complete eu, es, nl, it and gl translations @erral@ingovdb @yurj @xulioxesus [#8038](https://github.com/plone/volto/issues/8038)
+
+### Bugfix
+
+- Handle create-user 500 responses where body contains 'message' instead of 'error'. @wesleybl [#7946](https://github.com/plone/volto/issues/7946)
+- Forward Cache-Status header for files and images in Express middleware. @wesleybl [#7962](https://github.com/plone/volto/issues/7962)
+- Enhanced accessibility structure for the drag-and-drop of files in the `FileWidget` component. @Wagner3UB [#7979](https://github.com/plone/volto/issues/7979)
+- First focus inside the edit page for assistive technologies @Wagner3UB [#8000](https://github.com/plone/volto/issues/8000)
+- Fix null port in virtual hosting path when the devproxy is used on an origin with an implicit port. @davisagli 
+
+### Internal
+
+- Run volto-slate test suite as part of the Vitest multi-project setup. @Abhishek-17h [#7892](https://github.com/plone/volto/issues/7892)
+- Fix razzle.config.js defaultPlugins missing name property to ensure addon SCSS plugin replacement works correctly. @Manik-Khajuria-5 [#7908](https://github.com/plone/volto/issues/7908)
+- Add defensive checks for missing languages and locale files. @pratyush07-hub [#7955](https://github.com/plone/volto/issues/7955)
+- Ensure unlock wait after saving working copy changes in Cypress tests. @wesleybl [#8024](https://github.com/plone/volto/issues/8024)
+- Update react-dates to version 21.8.0. @wesleybl [#8027](https://github.com/plone/volto/issues/8027)
+- Exclude `https://tanstack.com/` from README link check. @wesleybl [#8040](https://github.com/plone/volto/issues/8040)
+- Remove volta configuration. @wesleybl [#8068](https://github.com/plone/volto/issues/8068)
+- Remove unused devDependency: bundlewatch. @davisagli 
+- Update dependency packages: http-proxy-middleware. Remove dependency packages: tmp.  @davisagli 
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update dependency: serialize-javascript 7.0.4. @davisagli 
+- Update devDependencies: wait-on 9.0.4 and start-server-and-test 2.1.5. @davisagli 
+- Update devDependency: less 3.13.1. @davisagli 
+
 ## 18.32.4 (2026-03-12)
 
 ### Feature

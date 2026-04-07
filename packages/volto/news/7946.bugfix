@@ -1,1 +1,0 @@
-Handle create-user 500 responses where body contains 'message' instead of 'error'. @wesleybl
