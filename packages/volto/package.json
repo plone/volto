@@ -325,7 +325,7 @@
     "babel-preset-razzle": "4.2.18",
     "circular-dependency-plugin": "5.2.2",
     "css-loader": "5.2.7",
-    "cypress": "13.17.0",
+    "cypress": "15.13.1",
     "cypress-axe": "1.7.0",
     "cypress-file-upload": "5.0.8",
     "deep-freeze": "0.0.1",
