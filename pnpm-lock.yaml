@@ -12,6 +12,9 @@ catalogs:
     lodash:
       specifier: 4.17.23
       version: 4.17.23
+    vite:
+      specifier: ^6.4.2
+      version: 6.4.2
     vitest:
       specifier: ^3.2.4
       version: 3.2.4
@@ -226,7 +229,7 @@ importers:
         specifier: ^5.9.2
         version: 5.9.3
       vite:
-        specifier: ^6.4.2
+        specifier: 'catalog:'
         version: 6.4.2(@types/node@24.12.0)(jiti@2.6.1)(less@3.13.1)(lightningcss@1.32.0)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2)
       vite-plugin-svgr:
         specifier: ^4.3.0
@@ -344,7 +347,7 @@ importers:
         specifier: ^5.7.3
         version: 5.9.3
       vite:
-        specifier: ^6.4.2
+        specifier: 'catalog:'
         version: 6.4.2(@types/node@24.12.0)(jiti@2.6.1)(less@3.13.1)(lightningcss@1.32.0)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2)
       vitest:
         specifier: 'catalog:'
