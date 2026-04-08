@@ -324,7 +324,7 @@
     "use-trace-update": "1.3.2",
     "vitest": "catalog:",
     "wait-on": "catalog:",
-    "webpack": "5.105.4",
+    "webpack": "catalog:",
     "webpack-bundle-analyzer": "4.10.1",
     "webpack-dev-server": "catalog:",
     "webpack-node-externals": "3.0.0"

@@ -70,7 +70,7 @@
     "html-webpack-plugin": "~5",
     "mini-css-extract-plugin": "2.7.2",
     "@plone/razzle-dev-utils": "workspace:*",
-    "webpack": "~5",
+    "webpack": "catalog:",
     "webpack-dev-server": "catalog:"
   },
   "keywords": [
