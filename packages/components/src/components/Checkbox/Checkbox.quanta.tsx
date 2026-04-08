@@ -7,6 +7,7 @@ import {
   type CheckboxProps,
   type ValidationResult,
   composeRenderProps,
+  type CheckboxRenderProps,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { Description, FieldError, Label } from '../Field/Field.quanta';
@@ -88,11 +89,17 @@ export function Checkbox(props: CheckboxProps) {
   return (
     <AriaCheckbox
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        checkboxStyles({ ...renderProps, className }),
+      className={composeRenderProps(
+        props.className,
+        (className: string, renderProps: CheckboxRenderProps) =>
+          checkboxStyles({ ...renderProps, className }),
       )}
     >
-      {({ isSelected, isIndeterminate, ...renderProps }) => (
+      {({
+        isSelected,
+        isIndeterminate,
+        ...renderProps
+      }: CheckboxRenderProps) => (
         <>
           <div
             className={boxStyles({
