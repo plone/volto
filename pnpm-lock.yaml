@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    cypress:
+      specifier: 15.13.1
+      version: 15.13.1
     jsdom:
       specifier: ^28.1.0
       version: 28.1.0
@@ -803,7 +806,7 @@ importers:
         version: 8.6.14(storybook@8.6.18(prettier@3.2.5))
       '@testing-library/cypress':
         specifier: 10.1.0
-        version: 10.1.0(cypress@15.5.0)
+        version: 10.1.0(cypress@15.13.1)
       '@testing-library/jest-dom':
         specifier: 6.4.2
         version: 6.4.2(@types/jest@30.0.0)(vitest@3.2.4)
@@ -883,14 +886,14 @@ importers:
         specifier: 5.2.7
         version: 5.2.7(webpack@5.105.4(esbuild@0.25.12))
       cypress:
-        specifier: 15.5.0
-        version: 15.5.0
+        specifier: 'catalog:'
+        version: 15.13.1
       cypress-axe:
         specifier: 1.7.0
-        version: 1.7.0(axe-core@4.4.2)(cypress@15.5.0)
+        version: 1.7.0(axe-core@4.4.2)(cypress@15.13.1)
       cypress-file-upload:
         specifier: 5.0.8
-        version: 5.0.8(cypress@15.5.0)
+        version: 5.0.8(cypress@15.13.1)
       deep-freeze:
         specifier: 0.0.1
         version: 0.0.1
@@ -6623,8 +6626,8 @@ packages:
     peerDependencies:
       cypress: '>3.0.0'
 
-  cypress@15.5.0:
-    resolution: {integrity: sha512-7jXBsh5hTfjxr9QQONC2IbdTj0nxSyU8x4eiarMZBzXzCj3pedKviUx8JnLcE4vL8e0TsOzp70WSLRORjEssRA==}
+  cypress@15.13.1:
+    resolution: {integrity: sha512-jLkgo75zlwo7PhXp0XJot+zIfFSDzN1SvTml6Xf3ETM1XHRWnH3Q4LAR3orCo/BsnxPnhjG3m5HYSvn9DAtwBg==}
     engines: {node: ^20.1.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
 
@@ -11544,8 +11547,8 @@ packages:
     resolution: {integrity: sha512-Bh7QjT8/SuKUIfObSXNHNSK6WHo6J1tHCqJsuaFDP7gP0fkzSfTxI8y85JrppZ0h8l0maIgc2tfuZQ6/t3GtnQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  systeminformation@5.27.7:
-    resolution: {integrity: sha512-saaqOoVEEFaux4v0K8Q7caiauRwjXC4XbD2eH60dxHXbpKxQ8kH9Rf7Jh+nryKpOUSEFxtCdBlSUx0/lO6rwRg==}
+  systeminformation@5.31.5:
+    resolution: {integrity: sha512-5SyLdip4/3alxD4Kh+63bUQTJmu7YMfYQTC+koZy7X73HgNqZSD2P4wOZQWtUncvPvcEmnfIjCoygN4MRoEejQ==}
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
@@ -16591,11 +16594,11 @@ snapshots:
       tailwindcss: 4.2.1
       vite: 6.4.2(@types/node@24.12.0)(jiti@2.6.1)(less@3.13.1)(lightningcss@1.32.0)(sass@1.58.0)(terser@5.46.0)(yaml@2.8.2)
 
-  '@testing-library/cypress@10.1.0(cypress@15.5.0)':
+  '@testing-library/cypress@10.1.0(cypress@15.13.1)':
     dependencies:
       '@babel/runtime': 7.28.6
       '@testing-library/dom': 10.4.1
-      cypress: 15.5.0
+      cypress: 15.13.1
 
   '@testing-library/dom@10.4.0':
     dependencies:
@@ -18682,16 +18685,16 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  cypress-axe@1.7.0(axe-core@4.4.2)(cypress@15.5.0):
+  cypress-axe@1.7.0(axe-core@4.4.2)(cypress@15.13.1):
     dependencies:
       axe-core: 4.4.2
-      cypress: 15.5.0
+      cypress: 15.13.1
 
-  cypress-file-upload@5.0.8(cypress@15.5.0):
+  cypress-file-upload@5.0.8(cypress@15.13.1):
     dependencies:
-      cypress: 15.5.0
+      cypress: 15.13.1
 
-  cypress@15.5.0:
+  cypress@15.13.1:
     dependencies:
       '@cypress/request': 3.0.10
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
@@ -18729,11 +18732,11 @@ snapshots:
       process: 0.11.10
       proxy-from-env: 1.0.0
       request-progress: 3.0.0
-      semver: 7.7.4
       supports-color: 8.1.1
-      systeminformation: 5.27.7
+      systeminformation: 5.31.5
       tmp: 0.2.5
       tree-kill: 1.2.2
+      tslib: 1.14.1
       untildify: 4.0.0
       yauzl: 2.10.0
 
@@ -24719,7 +24722,7 @@ snapshots:
     dependencies:
       '@pkgr/core': 0.2.9
 
-  systeminformation@5.27.7: {}
+  systeminformation@5.31.5: {}
 
   table@6.9.0:
     dependencies:
