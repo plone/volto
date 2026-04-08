@@ -17,7 +17,6 @@
     "FriendlyErrorsPlugin.js",
     "FileSizeReporter.js",
     "webpackHotDevClient.js",
-    "webpackHotDevClientV4.js",
     "setPorts.js",
     "makeLoaderFinder.js",
     "WebpackConfigHelpers.js",
@@ -38,12 +37,11 @@
     "react-error-overlay": "^6.0.7",
     "recursive-readdir": "^2.2.2",
     "resolve": "^1.17.0",
-    "sockjs-client": "~1.4.0",
     "strip-ansi": "^6.0.0"
   },
   "peerDependencies": {
-    "webpack": "~4||~5",
-    "webpack-dev-server": "~3||~4"
+    "webpack": "~5",
+    "webpack-dev-server": "catalog:"
   },
   "scripts": {
     "dry-release": "release-it --dry-run",
