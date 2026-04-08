@@ -1,0 +1,1 @@
+Extended customizability of the `Menu` component. @arybakov05
