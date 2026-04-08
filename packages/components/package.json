@@ -124,7 +124,7 @@
     "jsdom": "catalog:",
     "lightningcss": "^1.29.0",
     "lightningcss-cli": "^1.29.1",
-    "release-it": "^19.0.5",
+    "release-it": "catalog:",
     "tailwindcss-react-aria-components": "^2.0.1",
     "tsup": "^8.5.0",
     "typescript": "^5.9.2",
