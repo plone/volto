@@ -37,7 +37,6 @@
     "react-error-overlay": "^6.0.7",
     "recursive-readdir": "^2.2.2",
     "resolve": "^1.17.0",
-    "sockjs-client": "~1.4.0",
     "strip-ansi": "^6.0.0"
   },
   "peerDependencies": {

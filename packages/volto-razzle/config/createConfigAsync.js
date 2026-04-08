@@ -30,8 +30,7 @@ const hasPostCssConfigTest = () => {
 
 const hasPostCssConfig = hasPostCssConfigTest();
 
-let webpackDevClientEntry;
-webpackDevClientEntry = require.resolve(
+const webpackDevClientEntry = require.resolve(
   '@plone/razzle-dev-utils/webpackHotDevClient',
 );
 
@@ -662,8 +661,9 @@ module.exports = (
         publicPath: clientPublicPath,
         filename: webpackOptions.jsOutputFilename,
         chunkFilename: webpackOptions.jsOutputChunkFilename,
-        library: 'commonjs2',
-        libraryTarget: 'commonjs2',
+        library: {
+          type: 'commonjs2',
+        },
       };
 
       // Add some plugins...
@@ -827,7 +827,6 @@ module.exports = (
             type: 'var',
             name: 'client',
           },
-          libraryTarget: 'var',
           filename: webpackOptions.jsOutputFilename,
           chunkFilename: webpackOptions.jsOutputChunkFilename,
           devtoolModuleFilenameTemplate: (info) =>
@@ -909,7 +908,6 @@ module.exports = (
             type: 'var',
             name: 'client',
           },
-          libraryTarget: 'var',
         };
 
         config.plugins = [
