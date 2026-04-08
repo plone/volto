@@ -10,7 +10,7 @@ const AlternateHrefLangs = (props) => {
         content['@components']?.translations?.items &&
         [
           ...content['@components']?.translations?.items,
-          { '@id': content['@id'], language: content.language.token },
+          { '@id': content['@id'], language: content.language?.token },
         ].map((item, key) => {
           return (
             <link
