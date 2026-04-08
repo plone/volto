@@ -304,7 +304,7 @@
     "react-docgen-typescript-plugin": "^1.0.5",
     "react-error-overlay": "6.0.9",
     "react-is": "^18.2.0",
-    "release-it": "^19.0.4",
+    "release-it": "catalog:",
     "resolve-url-loader": "^5.0.0",
     "sass": "1.58.0",
     "sass-loader": "^10.0.3",

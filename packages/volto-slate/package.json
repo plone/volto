@@ -42,7 +42,7 @@
   "devDependencies": {
     "@testing-library/react": "14.3.1",
     "jsdom": "catalog:",
-    "release-it": "^19.0.5"
+    "release-it": "catalog:"
   },
   "peerDependencies": {
     "react": "^18.2.0",
