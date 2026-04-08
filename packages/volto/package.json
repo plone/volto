@@ -185,7 +185,7 @@
     "decorate-component-with-props": "1.2.1",
     "dependency-graph": "0.10.0",
     "detect-browser": "5.1.0",
-    "diff": "3.5.0",
+    "diff": "3.5.1",
     "express": "4.22.1",
     "filesize": "6",
     "full-icu": "1.4.0",
