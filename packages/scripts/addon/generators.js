@@ -1,4 +1,6 @@
 /* eslint no-console: 0 */
+import fs from 'fs';
+import fse from 'fs-extra';
 import { execSync } from 'child_process';
 import { develop } from 'mrs-developer';
 import chalk from 'chalk';
@@ -8,7 +10,6 @@ import {
   createLocalMrsDeveloperConfig,
   createMrsDeveloperConfig,
 } from './utils.js';
-import fse from 'fs-extra';
 
 export async function runGitGenerator({
   source,
@@ -73,22 +74,36 @@ export async function runGitGenerator({
     branch,
   });
 
+  // BBB: Maintains compatibility with
+  // @plone/generator-volto < 7.0.0-alpha.7
+  // In new versions of @plone/generator-volto we do not have jsconfig.json but tsconfig.json
+  let configFile;
+  if (fs.existsSync(`${destination}/jsconfig.json`)) {
+    configFile = 'jsconfig.json';
+  } else {
+    configFile = 'tsconfig.json';
+  }
+
   await develop({
     root: destination,
-    configFile: 'jsconfig.json',
+    configFile: configFile,
     output: 'addons',
   });
 
-  execSync(`cd ${destination} && yarn`, (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-  });
+  execSync(
+    `cd ${destination} && yarn config set enableImmutableInstalls false && yarn install`,
+    { stdio: 'inherit' },
+    (error, stdout, stderr) => {
+      if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+      }
+    },
+  );
 
   console.log(
     chalk.green(
@@ -131,30 +146,21 @@ export async function runLocalGenerator({
   });
 
   try {
-    fse.copySync(`${source}/src`, `${destination}/src/addons/${name}/src`, {
-      overwrite: false,
+    const filterFunc = (filenames) => {
+      const IGNORE_FILES = ['node_modules', '.git', destination];
+      return filenames.filter((item) => !IGNORE_FILES.includes(item));
+    };
+    const filenames = filterFunc(fs.readdirSync(source));
+
+    filenames.forEach((filename) => {
+      fse.copySync(
+        `${source}/${filename}`,
+        `${destination}/src/addons/${name}/${filename}`,
+        {
+          overwrite: false,
+        },
+      );
     });
-    fse.copySync(
-      `${source}/jest-addon.config.js`,
-      `${destination}/src/addons/${name}/jest-addon.config.js`,
-      {
-        overwrite: false,
-      },
-    );
-    fse.copySync(
-      `${source}/package.json`,
-      `${destination}/src/addons/${name}/package.json`,
-      {
-        overwrite: false,
-      },
-    );
-    fse.copySync(
-      `${source}/yarn.lock`,
-      `${destination}/src/addons/${name}/yarn.lock`,
-      {
-        overwrite: false,
-      },
-    );
   } catch (err) {
     console.error(err);
   }
@@ -167,22 +173,36 @@ export async function runLocalGenerator({
     destination,
   });
 
+  // BBB: Maintains compatibility with
+  // @plone/generator-volto < 7.0.0-alpha.7
+  // In new versions of @plone/generator-volto we do not have jsconfig.json but tsconfig.json
+  let configFile;
+  if (fs.existsSync(`${destination}/jsconfig.json`)) {
+    configFile = 'jsconfig.json';
+  } else {
+    configFile = 'tsconfig.json';
+  }
+
   await develop({
     root: destination,
-    configFile: 'jsconfig.json',
+    configFile: configFile,
     output: 'addons',
   });
 
-  execSync(`cd ${destination} && yarn`, (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-  });
+  execSync(
+    `cd ${destination} && yarn config set enableImmutableInstalls false && yarn install`,
+    { stdio: 'inherit' },
+    (error, stdout, stderr) => {
+      if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+      }
+    },
+  );
 
   console.log(
     chalk.green(

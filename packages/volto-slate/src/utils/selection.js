@@ -1,7 +1,9 @@
-import { castArray } from 'lodash';
+import castArray from 'lodash/castArray';
+import cloneDeep from 'lodash/cloneDeep';
 import { Editor, Transforms, Range, Node } from 'slate';
 import { ReactEditor } from 'slate-react';
-import { isCursorInList } from '@plone/volto-slate/utils';
+import { isCursorInList } from '@plone/volto-slate/utils/lists';
+import { makeEditor } from '@plone/volto-slate/utils/editor';
 import { LI } from '@plone/volto-slate/constants';
 import config from '@plone/volto/registry';
 
@@ -80,10 +82,8 @@ export function isCursorAtBlockStart(editor) {
 
   if (editor.selection && Range.isCollapsed(editor.selection)) {
     const { anchor } = editor.selection;
-    return anchor.offset > 0
-      ? false
-      : anchor.path.reduce((acc, x) => acc + x, 0) === 0;
-    // anchor.path.length === 2 &&
+    // Check if cursor is at offset 0 of any leaf node (not just the first one)
+    return anchor.offset === 0;
   }
   return false;
 }
@@ -155,7 +155,8 @@ export function getFragmentFromStartOfSelectionToEndOfEditor(
   }
 
   // immer doesn't like editor.savedSelection
-  const newEditor = { children: editor.children };
+  const newEditor = makeEditor();
+  newEditor.children = cloneDeep(editor.children);
   return Editor.fragment(newEditor, range);
 }
 
@@ -174,7 +175,9 @@ export function getFragmentFromBeginningOfEditorToStartOfSelection(
 
   // immer doesn't like editor.savedSelection
   // TODO: there's a bug here related to splitting lists
-  const newEditor = { children: editor.children };
+  const newEditor = makeEditor();
+  newEditor.children = cloneDeep(editor.children);
+
   return Editor.fragment(
     newEditor,
     Editor.range(

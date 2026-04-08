@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`can take a schemaEnhancer 1`] = `
+<div
+  className="querystring-widget"
+/>
+`;
+
+exports[`renders an querystring widget component 1`] = `
+<div
+  className="querystring-widget"
+/>
+`;

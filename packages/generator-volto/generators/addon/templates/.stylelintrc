@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "stylelint-config-idiomatic-order"
+  ],
+  "plugins": [
+    "stylelint-prettier"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "**/*.less"
+      ],
+      "customSyntax": "postcss-less"
+    },
+    {
+      "files": [
+        "**/*.overrides"
+      ],
+      "customSyntax": "postcss-less"
+    },
+    {
+      "files": [
+        "**/*.scss"
+      ],
+      "customSyntax": "postcss-scss"
+    }
+  ],
+  "rules": {
+    "prettier/prettier": true,
+    "order/properties-alphabetical-order": null
+  }
+}

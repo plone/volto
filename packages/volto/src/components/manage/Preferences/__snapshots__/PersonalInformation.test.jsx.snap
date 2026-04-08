@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PersonalInformation > renders a personal information component 1`] = `null`;
+
+exports[`PersonalInformation > renders a personal information component embedded in the Toolbar 1`] = `null`;

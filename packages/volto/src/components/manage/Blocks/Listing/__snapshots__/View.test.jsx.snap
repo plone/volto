@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a view image component for the listing block 1`] = `
+<div
+  className="block listing default"
+>
+  <div
+    className="theblock"
+  />
+</div>
+`;

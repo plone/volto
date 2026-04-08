@@ -238,3 +238,39 @@ They are not persisted in the final value, so they are useful, for example, to h
 ```js
 slate.runtimeDecorators = [([node, path], ranges) => ranges];
 ```
+
+(editor-configuration-slate-useLinkedHeadings-label)=
+
+## `slate.useLinkedHeadings`
+
+The setting `slate.useLinkedHeadings` controls whether `volto-slate` creates anchors for headings, such as `h1` and `h2`, in the editor.
+
+The default setting is `true`.
+
+You can opt out of this feature by setting its value to `false`.
+
+```js
+slate.useLinkedHeadings = false
+```
+
+```{versionchanged} Volto 17.0.0-alpha.28
+This feature is still enabled by default, but has a condition to show only for authenticated users.
+```
+
+(editor-configuration-blocks-initialBlocksFocus-label)=
+
+## `blocks.initialBlocksFocus`
+
+Determine which type of block should be selected on edit.
+
+```js
+blocks.initialBlocksFocus === {
+  <content type name>: <block type>
+};
+```
+
+Disable selection of any block and prevent scrolling to a block:
+
+```js
+blocks.initialBlocksFocus === null;
+```

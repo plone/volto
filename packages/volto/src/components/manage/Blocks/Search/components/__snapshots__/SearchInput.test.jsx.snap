@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchInput > renders a search input component 1`] = `
+<div
+  className="search-input"
+>
+  <div
+    className="ui fluid input"
+  >
+    <input
+      id="undefined-searchtext"
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="Search!!!"
+      type="text"
+      value="hello"
+    />
+  </div>
+  <div
+    className="search-input-actions"
+  >
+    <button
+      aria-label="Cancel search"
+      className="ui basic icon button search-input-clear-icon-button"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "currentColor",
+            "height": "36px",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+    </button>
+  </div>
+</div>
+`;

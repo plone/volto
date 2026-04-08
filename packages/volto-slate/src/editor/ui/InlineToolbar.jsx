@@ -2,7 +2,7 @@ import React from 'react'; // , useState
 import SlateToolbar from './SlateToolbar';
 import SlateContextToolbar from './SlateContextToolbar';
 import config from '@plone/volto/registry';
-import { hasRangeSelection } from '@plone/volto-slate/utils';
+import { hasRangeSelection } from '@plone/volto-slate/utils/selection';
 import { ReactEditor } from 'slate-react';
 import cx from 'classnames';
 
@@ -10,14 +10,11 @@ import cx from 'classnames';
  * The main Slate toolbar. All the others are just wrappers, UI or used here
  */
 const InlineToolbar = (props) => {
-  const {
-    editor,
-    className,
-    showExpandedToolbar,
-    setShowExpandedToolbar,
-  } = props;
+  const { editor, className, showExpandedToolbar, setShowExpandedToolbar } =
+    props;
 
-  const { slate } = config.settings;
+  const slate = props.slateSettings || config.settings.slate;
+
   const [showMainToolbar, setShowMainToolbar] = React.useState(
     !!(editor.selection && hasRangeSelection(editor)),
   );
@@ -58,6 +55,7 @@ const InlineToolbar = (props) => {
         showExpandedToolbar={showExpandedToolbar}
         setShowExpandedToolbar={setShowExpandedToolbar}
         show={showMainToolbar}
+        slateSettings={slate}
       />
       <SlateContextToolbar
         editor={editor}

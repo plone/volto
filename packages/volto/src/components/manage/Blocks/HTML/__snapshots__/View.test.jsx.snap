@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a view html component 1`] = `
+<div
+  className="block html"
+  dangerouslySetInnerHTML={
+    {
+      "__html": "<h1></h1>",
+    }
+  }
+/>
+`;

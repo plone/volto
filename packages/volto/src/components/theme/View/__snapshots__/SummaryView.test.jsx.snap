@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TabularView > renders a summary view component 1`] = `
+<div
+  className="ui container view-wrapper summary-view"
+>
+  <article
+    id="content"
+  >
+    <header>
+      <h1
+        className="documentFirstHeading"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="documentDescription"
+      >
+        Hi
+      </p>
+    </header>
+    <section
+      id="content-core"
+    >
+      <article>
+        <h2>
+          <div
+            data-testid="universal-link"
+          >
+            My item
+          </div>
+        </h2>
+        <p>
+          My item description
+        </p>
+        <p>
+          <div
+            data-testid="universal-link"
+          >
+            My item
+          </div>
+        </p>
+      </article>
+    </section>
+  </article>
+</div>
+`;

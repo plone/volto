@@ -41,7 +41,7 @@ export const isInline = (editor) => {
 
 Plugins are the way to extend the capabilities of `volto-slate` by adding extra features to {term}`elementEditor`.
 
-See the [default plugins](https://github.com/plone/volto/tree/master/packages/volto-slate/src/editor/plugins).
+See the [default plugins](https://github.com/plone/volto/tree/main/packages/volto-slate/src/editor/plugins).
 
 Refer to {ref}`writing-plugins-label` for how to write your own plugin.
 
@@ -90,7 +90,7 @@ The {term}`elementEditor` is a top-level wrapper of all plugins used in `volto-s
 It consists of various modules:
 
 `makeInlineElementPlugin`
-:   Used to build and install a custom schema based plugin from volto-slate API.
+:   Used to build and install a custom schema based plugin from `volto-slate` API.
     It expects a set of options passed as a property to your plugin.
 
 `PluginEditor`

@@ -1,0 +1,75 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TextBlockEdit > renders w/o errors 1`] = `
+<DocumentFragment>
+  <div
+    class="text-slate-editor-inner"
+  >
+    <div
+      class="slate-editor selected"
+      tabindex="-1"
+    >
+      <div
+        class="toolbar-wrapper"
+      />
+      <div
+        aria-labelledby="field-undefined"
+        aria-multiline="false"
+        autocapitalize="false"
+        autocorrect="false"
+        contenteditable="false"
+        data-slate-editor="true"
+        data-slate-node="value"
+        spellcheck="false"
+        style="position: relative; white-space: pre-wrap; word-wrap: break-word;"
+        tabindex="0"
+        zindex="-1"
+      >
+        <p
+          data-slate-node="element"
+        >
+          <span
+            data-slate-node="text"
+          >
+            <span
+              class=""
+              data-slate-leaf="true"
+            >
+              <span
+                data-slate-length="0"
+                data-slate-zero-width="n"
+              >
+                ﻿
+                <br />
+              </span>
+            </span>
+          </span>
+        </p>
+      </div>
+    </div>
+    <button
+      class="ui basic icon button block-add-button"
+      title="Add block"
+      type="button"
+    >
+      <svg
+        class="icon block-add-button"
+        style="height: 24px; width: auto; fill: currentColor;"
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g
+          fill-rule="evenodd"
+        >
+          <path
+            d="M19 9 17 9 17 17 9 17 9 19 17 19 17 27 19 27 19 19 27 19 27 17 19 17z"
+          />
+          <path
+            d="M18,31 C10.832,31 5,25.168 5,18 C5,10.832 10.832,5 18,5 C25.168,5 31,10.832 31,18 C31,25.168 25.168,31 18,31 M18,3 C9.729,3 3,9.729 3,18 C3,26.271 9.729,33 18,33 C26.271,33 33,26.271 33,18 C33,9.729 26.271,3 18,3"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;

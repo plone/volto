@@ -1,0 +1,88 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CheckboxWidget > renders a checkbox widget component 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="twelve wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <div
+              class="ui checkbox"
+            >
+              <input
+                class="hidden"
+                id="field-my-field"
+                name="field-my-field"
+                readonly=""
+                tabindex="0"
+                type="checkbox"
+                value=""
+              />
+              <label
+                for="field-my-field"
+              >
+                My field
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CheckboxWidget > renders a checkbox widget component checked 1`] = `
+<DocumentFragment>
+  <div
+    class="inline field field-wrapper-my-field"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="stretched row"
+      >
+        <div
+          class="twelve wide column"
+        >
+          <div
+            class="wrapper"
+          >
+            <div
+              class="ui checked checkbox"
+            >
+              <input
+                checked=""
+                class="hidden"
+                id="field-my-field"
+                name="field-my-field"
+                readonly=""
+                tabindex="0"
+                type="checkbox"
+                value=""
+              />
+              <label
+                for="field-my-field"
+              >
+                My field
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

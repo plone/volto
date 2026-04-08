@@ -1,0 +1,16 @@
+@import './Button.css';
+@import './TextField.css';
+@import './Modal.css';
+@import './theme.css';
+
+@layer plone-components.base {
+  .react-aria-Dialog {
+    padding: 30px;
+    outline: none;
+
+    .react-aria-Heading[slot='title'] {
+      margin-top: 0;
+      line-height: 1em;
+    }
+  }
+}

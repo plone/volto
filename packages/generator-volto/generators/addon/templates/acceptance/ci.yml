@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  addon-acceptance:
+    build:
+      context: ../
+      dockerfile: ./dockerfiles/Dockerfile
+      args:
+        ADDON_NAME: "${ADDON_NAME}"
+        ADDON_PATH: "${ADDON_PATH}"
+        VOLTO_VERSION: ${VOLTO_VERSION:-17}
+    environment:
+      RAZZLE_INTERNAL_API_PATH: http://backend-acceptance:55001/plone
+      RAZZLE_API_PATH: http://localhost:55001/plone
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend-acceptance
+    profiles:
+      - prod
+
+  backend-acceptance:
+    image: plone/server-acceptance:${PLONE_VERSION:-6}
+    ports:
+      - 55001:55001
+    profiles:
+      - dev
+      - prod

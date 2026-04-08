@@ -1,0 +1,65 @@
+describe('Blocks Tests', () => {
+  beforeEach(() => {
+    cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', '/**/Document').as('schema');
+    cy.intercept('POST', '*').as('saveImage');
+    cy.intercept('GET', '/**/image.png/@@images/image').as('getImage');
+
+    // given a logged in editor and a page in edit mode
+    cy.autologin();
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-page',
+      contentTitle: 'My Page',
+    });
+    cy.visit('/');
+
+    cy.navigate('/my-page');
+    cy.wait('@content');
+
+    cy.navigate('/my-page/edit');
+    cy.wait('@schema');
+  });
+
+  it('Add image block', () => {
+    // when I add an image block
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('.toolbar-inner .buttons').first().next().next().click();
+    cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
+      `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
+    );
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+
+    // then the page view should contain the image block
+    cy.get('#page-document img').should(
+      'have.attr',
+      'src',
+      'https://github.com/plone/volto/raw/main/logos/volto-colorful.png',
+    );
+
+    cy.get('#page-document img')
+      .should('be.visible')
+      .and(($img) => {
+        // "naturalWidth" and "naturalHeight" are set when the image loads
+        expect($img[0].naturalWidth).to.be.greaterThan(0);
+      });
+  });
+
+  it('Press Enter on a listing block adds new autofocused default block', () => {
+    cy.getSlate().click();
+    cy.get('button.block-add-button').click();
+    cy.get('.blocks-chooser .title').contains('Common').click();
+    cy.get('.blocks-chooser .common')
+      .contains('Listing')
+      .click({ force: true });
+    cy.get('.block-editor-listing').first().click().type('{enter}');
+    cy.get('*[class^="block-editor"]')
+      .eq(2)
+      .within(() => {
+        return cy.get('.selected');
+      });
+  });
+});

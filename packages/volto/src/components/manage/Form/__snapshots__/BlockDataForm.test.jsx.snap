@@ -1,0 +1,95 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BlockDataForm > should add variations to schema 1`] = `
+<div>
+  <div
+    data-schema="{
+  "fieldsets": [
+    {
+      "title": "Default",
+      "id": "default",
+      "fields": [
+        "variation"
+      ]
+    }
+  ],
+  "properties": {
+    "variation": {
+      "title": "Variation",
+      "choices": [
+        [
+          "default",
+          "Default"
+        ],
+        [
+          "extra",
+          "Extra"
+        ]
+      ],
+      "noValueOption": false,
+      "default": "default"
+    }
+  },
+  "required": []
+}"
+    id="InlineForm"
+  />
+</div>
+`;
+
+exports[`BlockDataForm > should not add variations to schema when explicitly disabled 1`] = `
+<div>
+  <div
+    data-schema="{
+  "fieldsets": [
+    {
+      "title": "Default",
+      "id": "default",
+      "fields": []
+    }
+  ],
+  "properties": {},
+  "required": []
+}"
+    id="InlineForm"
+  />
+</div>
+`;
+
+exports[`BlockDataForm > should not add variations to schema when unneeded 1`] = `
+<div>
+  <div
+    data-schema="{
+  "fieldsets": [
+    {
+      "title": "Default",
+      "id": "default",
+      "fields": []
+    }
+  ],
+  "properties": {},
+  "required": []
+}"
+    id="InlineForm"
+  />
+</div>
+`;
+
+exports[`BlockDataForm > should not add variations when only one variation 1`] = `
+<div>
+  <div
+    data-schema="{
+  "fieldsets": [
+    {
+      "title": "Default",
+      "id": "default",
+      "fields": []
+    }
+  ],
+  "properties": {},
+  "required": []
+}"
+    id="InlineForm"
+  />
+</div>
+`;

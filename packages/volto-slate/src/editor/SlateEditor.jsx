@@ -1,10 +1,9 @@
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
-import { isEqual } from 'lodash';
+import isEqual from 'lodash/isEqual';
 import { Transforms, Editor } from 'slate'; // , Transforms
 import { Slate, Editable, ReactEditor } from 'slate-react';
 import React, { Component } from 'react'; // , useState
-import { connect } from 'react-redux';
 import { v4 as uuid } from 'uuid';
 
 import config from '@plone/volto/registry';
@@ -12,12 +11,10 @@ import config from '@plone/volto/registry';
 import { Element, Leaf } from './render';
 
 import withTestingFeatures from './extensions/withTestingFeatures';
-import {
-  makeEditor,
-  toggleInlineFormat,
-  toggleMark,
-  parseDefaultSelection,
-} from '@plone/volto-slate/utils';
+import { makeEditor } from '@plone/volto-slate/utils/editor';
+import { toggleInlineFormat } from '@plone/volto-slate/utils/blocks';
+import { toggleMark } from '@plone/volto-slate/utils/marks';
+import { parseDefaultSelection } from '@plone/volto-slate/utils/selection';
 import { InlineToolbar } from './ui';
 import EditorContext from './EditorContext';
 
@@ -136,6 +133,8 @@ class SlateEditor extends Component {
           } catch {}
         }, 100); // flush
       }
+
+      this.state.editor.normalize({ force: true });
     }
   }
 
@@ -165,11 +164,17 @@ class SlateEditor extends Component {
         ReactEditor.focus(editor);
         Transforms.select(editor, selection);
       } else {
-        Transforms.select(editor, Editor.end(editor, []));
+        try {
+          Transforms.select(editor, Editor.end(editor, []));
+        } catch (error) {
+          // Weird error only happening in Cypress
+          // Adding a try/catch
+          // eslint-disable-next-line no-console
+          console.log(error);
+        }
       }
 
       this.setState({
-        // editor,
         internalValue: this.props.value,
       });
       return;
@@ -208,6 +213,7 @@ class SlateEditor extends Component {
 
   render() {
     const {
+      id,
       selected,
       placeholder,
       onKeyDown,
@@ -215,6 +221,7 @@ class SlateEditor extends Component {
       readOnly,
       className,
       renderExtensions = [],
+      editableProps = {},
     } = this.props;
     const slateSettings = this.slateSettings;
 
@@ -258,12 +265,16 @@ class SlateEditor extends Component {
         <EditorContext.Provider value={editor}>
           <Slate
             editor={editor}
-            value={this.props.value || slateSettings.defaultValue()}
+            initialValue={this.props.value || slateSettings.defaultValue()}
             onChange={this.handleChange}
           >
             {selected ? (
               <>
-                <InlineToolbar editor={editor} className={className} />
+                <InlineToolbar
+                  editor={editor}
+                  className={className}
+                  slateSettings={this.props.slateSettings}
+                />
                 {Object.keys(slateSettings.elementToolbarButtons).map(
                   (t, i) => {
                     return (
@@ -329,6 +340,8 @@ class SlateEditor extends Component {
                 if (handled) return;
                 onKeyDown && onKeyDown({ editor, event });
               }}
+              {...editableProps}
+              aria-labelledby={`field-${id}`}
             />
             {selected &&
               slateSettings.persistentHelpers.map((Helper, i) => {
@@ -363,10 +376,7 @@ SlateEditor.defaultProps = {
   className: '',
 };
 
-export default connect((state, props) => {
-  return {};
-})(
-  __CLIENT__ && window?.Cypress
-    ? withTestingFeatures(SlateEditor)
-    : SlateEditor,
-);
+// May be needed to wrap in React.memo(), it used to be wrapped in connect()
+export default __CLIENT__ && window?.Cypress
+  ? withTestingFeatures(SlateEditor)
+  : SlateEditor;

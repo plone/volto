@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TextWidget > renders a text view widget component 1`] = `
+<span
+  className="metadata text widget"
+  style={
+    {
+      "whiteSpace": "pre-wrap",
+    }
+  }
+>
+  Foo bar
+</span>
+`;
+
+exports[`TextWidget > renders a text view widget component with children 1`] = `
+<span
+  className="metadata text widget"
+  style={
+    {
+      "whiteSpace": "pre-wrap",
+    }
+  }
+>
+  <strong>
+    Foo bar
+  </strong>
+</span>
+`;
+
+exports[`TextWidget > renders an empty text view widget component 1`] = `null`;

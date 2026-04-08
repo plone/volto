@@ -13,7 +13,7 @@ myst:
 
 This was added in Volto 13 as an experimental feature. During the experimental phase, we realized of several issues hard to solve, which made us rethink the feature into its second incarnation, available since Volto 14.
 
-The first implementation wanted to unify both backend and frontend under the same sun, using the `Accept` header to route the requests to the API and the Volto SSR server. As a reference and for the record, these were the major issues we encountered (https://github.com/plone/volto/issues/2706):
+The first implementation wanted to unify both backend and frontend under the same sun, using the `Accept` header to route the requests to the API and the Volto {term}`SSR` server. As a reference and for the record, these were the major issues we encountered (https://github.com/plone/volto/issues/2706):
 
 - Browsers are unable to differentiate cached responses using the `Accept` header, so the last one (usually the JSON one) was cached, then shown in some situations (like browser restart and open tabs). The back button also showed the JSON responses under some circumstances.
 - The use of cache servers and services is hard since they do not accept the `Vary` header (Cloudflare) and in Varnish the handling is also difficult to differentiate both requests and cache (and then invalidate) them properly.
@@ -48,13 +48,13 @@ All the environment variables that are configurable now work at runtime, not at 
 Before Volto 13, you'd do:
 
 ```bash
-RAZZLE_API_PATH=https://plone.org yarn build && yarn start:prod
+RAZZLE_API_PATH=https://plone.org pnpm build && pnpm start:prod
 ```
 
 From Volto 13 onwards, you can now do:
 
 ```bash
-yarn build && RAZZLE_API_PATH=https://plone.org yarn start:prod
+pnpm build && RAZZLE_API_PATH=https://plone.org pnpm start:prod
 ```
 ````
 
@@ -87,7 +87,7 @@ problematic from the SEO point of view), so indexers cannot reach it.
 
 Repeatable docker builds (since the config will be based on runtime).
 
-Ready to use production builds (e.g. vanila Volto built, ready for testing), configured in runtime.
+Ready to use production builds (e.g. vanilla Volto built, ready for testing), configured in runtime.
 
 ![How Plone 6 works](HowPlone6Works001.png)
 
@@ -129,8 +129,8 @@ server {
   access_log /dev/stdout;
   error_log /dev/stdout;
 
-  # [seamless mode] Recomended as default configuration, using seamless mode new plone.rest traversal
-  # yarn build && yarn start:prod
+  # [seamless mode] Recommended as default configuration, using seamless mode new plone.rest traversal
+  # pnpm build && pnpm start:prod
   location ~ /\+\+api\+\+($|/.*) {
       rewrite ^/\+\+api\+\+($|/.*) /VirtualHostBase/http/myservername.org/Plone/++api++/VirtualHostRoot/$1 break;
       proxy_pass http://backend;
@@ -138,7 +138,7 @@ server {
 
   # Legacy deployment example, using RAZZLE_LEGACY_TRAVERSE Volto won't append ++api++ automatically
   # Recommended only if you can't upgrade to latest `plone.restapi` and `plone.rest`
-  # yarn build && RAZZLE_API_PATH=http://myservername.org/api RAZZLE_LEGACY_TRAVERSE=true yarn start:prod
+  # pnpm build && RAZZLE_API_PATH=http://myservername.org/api RAZZLE_LEGACY_TRAVERSE=true pnpm start:prod
   # location ~ /api($|/.*) {
   #     rewrite ^/api($|/.*) /VirtualHostBase/http/myservername.org/Plone/VirtualHostRoot/_vh_api$1 break;
   #    proxy_pass http://backend;

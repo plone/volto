@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a link view component 1`] = `
+<div
+  className="ui container"
+  id="page-document"
+>
+  <h1
+    className="documentFirstHeading"
+  >
+    Hello World!
+  </h1>
+  <p
+    className="documentDescription"
+  >
+    Hi
+  </p>
+  <p>
+    The link address is:
+     
+    <a
+      href="/news"
+      onClick={[Function]}
+    >
+      /news
+    </a>
+  </p>
+</div>
+`;

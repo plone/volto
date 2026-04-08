@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@plone/volto-testing": "^4.0.0"
+  }
+}

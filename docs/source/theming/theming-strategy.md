@@ -9,6 +9,9 @@ myst:
 
 # Theming Strategy
 
+```{include} ../_inc/_semantic-ui-deprecation.md
+```
+
 One approaches the theming of a Volto site usually with a predefined mockup or
 design from a design agency or an UX/UI designer in the form of Sketch files
 (a common design and prototyping tool), a series of photoshop or PDFs with the
@@ -41,7 +44,7 @@ ones (widgets, forms, etc). Then start theming the components per blocks
 
 Try to stick with the container and grid model of Semantic UI, including its
 breakpoints (and helpers). Use React Semantic UI building blocks whenever it's
-possible since it will help you things fit together easily.
+possible since it will help you fit things together easily.
 
 ## Talks
 

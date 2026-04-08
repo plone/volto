@@ -1,22 +1,18 @@
-/**
- * Add your config changes here.
- * @module config
- * @example
- * export default function applyConfig(config) {
- *   config.settings = {
- *     ...config.settings,
- *     port: 4300,
- *     listBlockTypes: {
- *       ...config.settings.listBlockTypes,
- *       'my-list-item',
- *    }
- * }
+/** Volto Project Configuration
+ * The recommended way for configuring a Volto project is using an add-on.
+ * The project should only be considered as boilerplate, and all the code and
+ * configuration should happen and be placed in add-ons.
+ *
+ * Both configuring directly and placing code in a project is discouraged, and might be
+ * removed at some point from Volto.
+ *
+ * The local project is left for backwards compatibility for existing projects.
  */
 
-// All your imports required for the config here BEFORE this line
+// [Internal] All the imports of modules required for the configuration *must* happen
+// here BEFORE the following line
 import '@plone/volto/config';
 
 export default function applyConfig(config) {
-  // Add here your project's configuration here by modifying `config` accordingly
   return config;
 }

@@ -1,13 +1,20 @@
 const https = require('https');
+const rcompare = require('semver/functions/rcompare');
 
 /*
  * Retrieves Volto's yarn.lock directly from github
  */
 async function getVoltoYarnLock(version) {
-  const url = `https://raw.githubusercontent.com/plone/volto/${version}/yarn.lock`;
+  let ghPath = 'plone/volto';
+
+  if (version.indexOf('#') > -1) {
+    [ghPath, version] = version.split('#');
+  }
+
+  const url = `https://raw.githubusercontent.com/${ghPath}/${version}/yarn.lock`;
   return new Promise((resolve, reject) => {
     https
-      .get(url, (resp) => {
+      .get(url, {}, (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
           data += chunk;
@@ -69,7 +76,9 @@ async function getLatestCanaryVoltoVersion() {
           });
           resp.on('end', () => {
             const res = JSON.parse(data.join(''));
-            resolve(res['dist-tags'].alpha);
+            const versions = Object.values(res['dist-tags']);
+            const latest = versions.sort(rcompare)[0];
+            resolve(latest);
           });
         },
       )
@@ -79,8 +88,60 @@ async function getLatestCanaryVoltoVersion() {
   });
 }
 
+async function getVoltoPackageJSON(tag) {
+  const url = `https://raw.githubusercontent.com/plone/volto/${tag}/packages/volto/package.json`;
+  const requestContent = await new Promise((resolve, reject) => {
+    https
+      .get(url, {}, (resp) => {
+        let data = '';
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+        resp.on('end', () => {
+          resolve(data);
+        });
+      })
+      .on('error', (err) => {
+        reject(err);
+      });
+  });
+  return JSON.parse(requestContent);
+}
+
+async function getPloneTypesVersion(tag) {
+  const url = `https://raw.githubusercontent.com/plone/volto/${tag}/packages/types/package.json`;
+  const requestContent = await new Promise((resolve, reject) => {
+    https
+      .get(url, {}, (resp) => {
+        let data = '';
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+        resp.on('end', () => {
+          resolve(data);
+        });
+      })
+      .on('error', (err) => {
+        reject(err);
+      });
+  });
+  return JSON.parse(requestContent).version;
+}
+
+function orderedDependencies(dependencies) {
+  return Object.keys(dependencies)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = dependencies[key];
+      return obj;
+    }, {});
+}
+
 module.exports = {
   getLatestVoltoVersion,
   getLatestCanaryVoltoVersion,
   getVoltoYarnLock,
+  getVoltoPackageJSON,
+  getPloneTypesVersion,
+  orderedDependencies,
 };

@@ -1,0 +1,30 @@
+h1,
+h2,
+h3,
+h4 {
+  &:hover {
+    a.anchor {
+      svg {
+        opacity: 1;
+        transform: rotate(15deg);
+      }
+    }
+  }
+
+  a.anchor {
+    position: absolute;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+
+    svg {
+      width: 1.6ch;
+      fill: #42526e;
+      opacity: 0;
+      transform: rotate(15deg) translate(-8px, 2px);
+      transition:
+        opacity 0.2s ease 0s,
+        transform 0.2s ease 0s;
+    }
+  }
+}
