@@ -20,6 +20,7 @@ import {
   KEYS,
   PathApi,
 } from 'platejs';
+import { withBlockWidthDefaults } from './plugins/block-width-plugin';
 
 const ACTION_THREE_COLUMNS = 'action_three_columns';
 
