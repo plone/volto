@@ -72,12 +72,12 @@ describe('User Control Panel Test', () => {
     cy.get('button[title="Save"]').click(-50, -50, { force: true });
 
     // select first user with name and edit
-    cy.get('tr:nth-of-type(2) > td.fullname').should(
+    cy.get('tr:nth-of-type(1) > td.fullname').should(
       'have.text',
       'Alok Kumar (iFlameing)',
     );
-    cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
-    cy.get('tr:nth-of-type(2) div[role="option"]#edit-user-button').click();
+    cy.get('tr:nth-of-type(1) div[role="listbox"]').click();
+    cy.get('tr:nth-of-type(1) div[role="option"]#edit-user-button').click();
     cy.get('.ui.page.modals .ui.header').contains('Update User');
     cy.get('.ui.page.modals form input#field-fullname')
       .clear()
@@ -93,8 +93,8 @@ describe('User Control Panel Test', () => {
     cy.get('.icon.button:first').click();
 
     // delete it
-    cy.get('tr:nth-of-type(2) div[role="listbox"]').click();
-    cy.get('tr:nth-of-type(2) div[role="option"]#delete-user-button').click();
+    cy.get('tr:nth-of-type(1) div[role="listbox"]').click();
+    cy.get('tr:nth-of-type(1) div[role="option"]#delete-user-button').click();
     cy.contains('Delete User');
     cy.get('button.ui.primary.button').should('have.text', 'OK').click();
 

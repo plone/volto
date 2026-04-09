@@ -11,10 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
-"Domain: volto\n"
 "Language-Code: fi\n"
 "Language-Name: Finnish\n"
 "Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -559,10 +559,10 @@ msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Oletuksena käyttöoikeudet peritään aina edeltävältä sisältötasolta. Jos tämä valinta poistetaan, vain tällä tasolla erikseen määritellyt käyttöoikeudet ovat voimassa. {inherited} tarkoittaa perittyä käyttöoikeutta. {global} tarkoittaa ylläpitäjän myöntämää sivustonlaajuista käyttöoikeutta."
+msgstr "Oletuksena tämän kohteen säiliön oikeudet peritään. Jos poistat tämän käytöstä, vain nimenomaisesti määritellyt jakamisoikeudet ovat voimassa. Yhteenvedossa perityt arvot merkitään selkeästi tekstillä 'Peritty arvo' ja ne saavat vihreän tarkistusmerkin {inherited}. Vastaavasti sivuston ylläpitäjän hallinnoimat roolit merkitään tekstillä 'Globaali rooli' ja ne saavat sinisen tarkistusmerkin {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -860,7 +860,7 @@ msgstr ""
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "Sisällön otsikko"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes

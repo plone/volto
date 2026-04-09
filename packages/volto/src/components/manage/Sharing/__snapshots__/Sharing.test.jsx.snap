@@ -130,17 +130,17 @@ exports[`Sharing > renders a sharing component 1`] = `
           <p
             class="help"
           >
-            By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol 
+            By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark 
             <i
               aria-hidden="true"
               class="green check circle outline icon"
             />
-             indicates an inherited value. Similarly, the symbol 
+            . Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark 
             <i
               aria-hidden="true"
               class="blue check circle outline icon"
             />
-             indicates a global role, which is managed by the site administrator.
+            .
           </p>
         </div>
         <div
@@ -153,7 +153,7 @@ exports[`Sharing > renders a sharing component 1`] = `
           >
             <svg
               class="icon circled"
-              style="height: 30px; width: auto; fill: currentColor;"
+              style="height: 30px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -171,7 +171,7 @@ exports[`Sharing > renders a sharing component 1`] = `
           >
             <svg
               class="icon circled"
-              style="height: 30px; width: auto; fill: currentColor;"
+              style="height: 30px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >

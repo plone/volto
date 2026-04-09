@@ -8,7 +8,7 @@
     "url": "https://github.com/plone/volto.git",
     "directory": "packages/volto-razzle"
   },
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "bin": {
     "razzle": "./bin/razzle.js"
   },
@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.12.1",
-    "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.6.2",
     "autoprefixer": "^10.2.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-define": "^2.0.0",
@@ -48,7 +48,7 @@
     "razzle-start-server-webpack-plugin": "4.2.18",
     "react-dev-utils": "^12.0.1",
     "react-refresh": "0.14.0",
-    "release-it": "^19.0.4",
+    "release-it": "catalog:",
     "resolve": "^1.17.0",
     "sade": "^1.4.2",
     "source-map-support": "^0.5.16",
@@ -59,19 +59,19 @@
     "tiny-async-pool": "^1.1.0",
     "url-loader": "^4.1.1",
     "webpack-manifest-plugin": "^4.1.1",
-    "webpackbar": "~4||~5"
+    "webpackbar": "^7.0.0"
   },
   "devDependencies": {
-    "vitest": "^3.0.4",
-    "jsdom": "^16.7.0"
+    "vitest": "catalog:",
+    "jsdom": "catalog:"
   },
   "peerDependencies": {
     "@plone/babel-preset-razzle": "workspace:*",
-    "html-webpack-plugin": "~4||~5",
+    "html-webpack-plugin": "~5",
     "mini-css-extract-plugin": "2.7.2",
     "@plone/razzle-dev-utils": "workspace:*",
-    "webpack": "~4||~5",
-    "webpack-dev-server": "^3.11.0||~4"
+    "webpack": "catalog:",
+    "webpack-dev-server": "catalog:"
   },
   "keywords": [
     "inferno",
