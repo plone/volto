@@ -20,15 +20,19 @@ import {
   KEYS,
   PathApi,
 } from 'platejs';
+import { withBlockWidthDefaults } from './plugins/block-width-plugin';
 
 const ACTION_THREE_COLUMNS = 'action_three_columns';
 
 const insertList = (editor: PlateEditor, type: string) => {
   editor.tf.insertNodes(
-    editor.api.create.block({
-      indent: 1,
-      listStyleType: type,
-    }),
+    withBlockWidthDefaults(
+      editor,
+      editor.api.create.block({
+        indent: 1,
+        listStyleType: type,
+      }),
+    ),
     { select: true },
   );
 };
@@ -79,10 +83,13 @@ export const insertBlock = (editor: PlateEditor, type: string) => {
     if (type in insertBlockMap) {
       insertBlockMap[type](editor, type);
     } else {
-      editor.tf.insertNodes(editor.api.create.block({ type }), {
-        at: PathApi.next(block[1]),
-        select: true,
-      });
+      editor.tf.insertNodes(
+        withBlockWidthDefaults(editor, editor.api.create.block({ type })),
+        {
+          at: PathApi.next(block[1]),
+          select: true,
+        },
+      );
     }
     if (getBlockType(block[0]) !== type) {
       editor.getApi(SuggestionPlugin).suggestion.withoutSuggestions(() => {
@@ -104,10 +111,13 @@ const setList = (
   entry: NodeEntry<TElement>,
 ) => {
   editor.tf.setNodes(
-    editor.api.create.block({
-      indent: 1,
-      listStyleType: type,
-    }),
+    withBlockWidthDefaults(
+      editor,
+      editor.api.create.block({
+        indent: 1,
+        listStyleType: type,
+      }),
+    ),
     {
       at: entry[1],
     },
@@ -141,7 +151,10 @@ export const setBlockType = (
         return setBlockMap[type](editor, type, entry);
       }
       if (node.type !== type) {
-        editor.tf.setNodes({ type }, { at: path });
+        editor.tf.setNodes(
+          withBlockWidthDefaults(editor, { ...node, type }),
+          { at: path },
+        );
       }
     };
 

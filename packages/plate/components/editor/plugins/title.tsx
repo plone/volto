@@ -11,6 +11,7 @@ import {
   useEditorSelector,
 } from 'platejs/react';
 import { BlockInnerContainer } from '../../ui/block-inner-container';
+import { withBlockWidthDefaults } from './block-width-plugin';
 
 export const TITLE_BLOCK_TYPE = 'title';
 
@@ -191,10 +192,13 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
 
       event.preventDefault();
       editor.tf.insertNodes(
-        editor.api.create.block({
-          type: 'p',
-          children: [{ text: '' }],
-        }),
+        withBlockWidthDefaults(
+          editor,
+          editor.api.create.block({
+            type: 'p',
+            children: [{ text: '' }],
+          }),
+        ),
         {
           at: PathApi.next(currentPath as number[]),
           select: true,
@@ -217,10 +221,13 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
         const [node, path] = blockEntry;
         if (ElementApi.isElement(node) && node.type === TITLE_BLOCK_TYPE) {
           editor.tf.insertNodes(
-            editor.api.create.block({
-              type: 'p',
-              children: [{ text: '' }],
-            }),
+            withBlockWidthDefaults(
+              editor,
+              editor.api.create.block({
+                type: 'p',
+                children: [{ text: '' }],
+              }),
+            ),
             {
               at: PathApi.next(path),
               select: true,

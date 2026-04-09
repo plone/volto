@@ -13,6 +13,7 @@ import { AILoadingBar, AIMenu } from '../../ui/ai-menu';
 import { AIAnchorElement, AILeaf } from '../../ui/ai-node';
 
 import { useChat } from '../use-chat';
+import { withBlockWidthDefaults } from './block-width-plugin';
 import { CursorOverlayKit } from './cursor-overlay-kit';
 import { MarkdownKit } from './markdown-kit';
 
@@ -40,10 +41,10 @@ export const aiChatPlugin = AIChatPlugin.extend({
         if (isFirst && mode == 'insert') {
           editor.tf.withoutSaving(() => {
             editor.tf.insertNodes(
-              {
+              withBlockWidthDefaults(editor, {
                 children: [{ text: '' }],
                 type: getPluginType(editor, KEYS.aiChat),
-              },
+              } as any),
               {
                 at: PathApi.next(editor.selection!.focus.path.slice(0, 1)),
               },

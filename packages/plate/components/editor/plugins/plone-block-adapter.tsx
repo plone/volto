@@ -12,6 +12,7 @@ import {
   type PlateElementProps,
 } from 'platejs/react';
 import { BlockInnerContainer } from '../../ui/block-inner-container';
+import { withBlockWidthDefaults } from './block-width-plugin';
 
 type NativeBlockElement = TElement & {
   id?: string;
@@ -232,10 +233,13 @@ export const BasePloneBlockAdapterPlugin = createSlatePlugin({
         }
 
         editor.tf.insertNodes(
-          editor.api.create.block({
-            type: 'p',
-            children: [{ text: '' }],
-          }),
+          withBlockWidthDefaults(
+            editor,
+            editor.api.create.block({
+              type: 'p',
+              children: [{ text: '' }],
+            }),
+          ),
           {
             at: nextPath,
             select: true,
@@ -352,10 +356,13 @@ export const BasePloneBlockAdapterPlugin = createSlatePlugin({
           }
 
           editor.tf.insertNodes(
-            editor.api.create.block({
-              type: 'p',
-              children: [{ text: '' }],
-            }),
+            withBlockWidthDefaults(
+              editor,
+              editor.api.create.block({
+                type: 'p',
+                children: [{ text: '' }],
+              }),
+            ),
             {
               at: PathApi.next(path),
               select: true,

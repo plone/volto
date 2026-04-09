@@ -2,21 +2,23 @@ import { useAtom, useAtomValue } from 'jotai';
 import * as React from 'react';
 import { PlateEditor, type Value } from '@plone/plate/components/editor';
 import plateBlockSomersaultConfig from '@plone/plate/config/presets/somersault-editor';
+import { applyBlockWidthDefaultsInValue } from '@plone/plate/components/editor/plugins/block-width-plugin';
 import { TITLE_BLOCK_TYPE } from '@plone/plate/components/editor/plugins/title';
 import { SOMERSAULT_KEY } from '@plone/plate/constants';
 import { SidebarPlugin } from './plugins/SidebarPlugin';
 import { blockAtomFamily, formAtom } from '../../routes/atoms';
 
-const getDefaultSomersaultValue = (title = ''): Value => [
-  {
-    type: TITLE_BLOCK_TYPE,
-    children: [{ text: title }],
-  },
-  {
-    type: 'p',
-    children: [{ text: '' }],
-  },
-];
+const getDefaultSomersaultValue = (title = ''): Value =>
+  applyBlockWidthDefaultsInValue([
+    {
+      type: TITLE_BLOCK_TYPE,
+      children: [{ text: title }],
+    },
+    {
+      type: 'p',
+      children: [{ text: '' }],
+    },
+  ]) as Value;
 
 const BlocksEditor = () => {
   const somersaultBlockAtom = blockAtomFamily(SOMERSAULT_KEY);

@@ -12,6 +12,7 @@ import {
 import { insertEmptyCodeBlock } from '@platejs/code-block';
 import { toggleList } from '@platejs/list';
 import { KEYS } from 'platejs';
+import { withBlockWidthDefaults } from './block-width-plugin';
 
 const autoformatMarks: AutoformatRule[] = [
   {
@@ -145,10 +146,12 @@ const autoformatBlocks: AutoformatRule[] = [
     type: KEYS.hr,
     format: (editor) => {
       editor.tf.setNodes({ type: KEYS.hr });
-      editor.tf.insertNodes({
-        children: [{ text: '' }],
-        type: KEYS.p,
-      });
+      editor.tf.insertNodes(
+        withBlockWidthDefaults(editor, {
+          children: [{ text: '' }],
+          type: KEYS.p,
+        } as any),
+      );
     },
   },
 ];
