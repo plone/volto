@@ -42,12 +42,6 @@ export const turnIntoItems = [
     value: KEYS.p,
   },
   {
-    icon: <Heading1Icon />,
-    keywords: ['title', 'h1'],
-    label: 'Heading 1',
-    value: 'h1',
-  },
-  {
     icon: <Heading2Icon />,
     keywords: ['subtitle', 'h2'],
     label: 'Heading 2',
