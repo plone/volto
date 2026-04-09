@@ -4,6 +4,7 @@ import ImageBlockInfo from './Image';
 import VideoBlockInfo from './Video';
 import TeaserBlockInfo from './Teaser';
 import ListingBlockInfo from './Listing';
+import MapsBlockInfo from './Maps';
 
 export default function install(config: ConfigType) {
   // @ts-expect-error this is a quick hack for now
@@ -46,6 +47,7 @@ export default function install(config: ConfigType) {
   config.blocks.blocksConfig.teaser = TeaserBlockInfo;
   config.blocks.blocksConfig.video = VideoBlockInfo;
   config.blocks.blocksConfig.listing = ListingBlockInfo;
+  config.blocks.blocksConfig.maps = MapsBlockInfo;
 
   const plateBlocksConfig = {
     p: {
