@@ -65,6 +65,7 @@ public/critical.css
 packages/volto/data
 storybook-static/
 /playwright
+/racTailwind
 
 # Documentation
 _build/
