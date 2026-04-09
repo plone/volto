@@ -27,7 +27,6 @@ import {
 import { KEYS, PathApi } from 'platejs';
 
 import { insertBlock } from '../transforms';
-import { withBlockWidthDefaults } from './block-width-plugin';
 import { TITLE_BLOCK_TYPE } from './title';
 
 export type SlashMenuItem = {
@@ -83,13 +82,10 @@ const insertSomersaultNativeBlock = (
     if (!block) return;
 
     editor.tf.insertNodes(
-      withBlockWidthDefaults(
-        editor,
-        editor.api.create.block({
-          type: 'unknown',
-          '@type': nativeBlockType,
-        }),
-      ),
+      editor.api.create.block({
+        type: 'unknown',
+        '@type': nativeBlockType,
+      }),
       {
         at: PathApi.next(block[1]),
         select: true,
