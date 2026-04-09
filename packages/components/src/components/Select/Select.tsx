@@ -28,16 +28,25 @@ export interface SelectItemObject {
   value: string;
 }
 
-export interface SelectProps<
-  T extends object = SelectItemObject,
-  M extends 'single' | 'multiple' = 'single',
-> extends Omit<RACSelectProps<T, M>, 'children'> {
+interface SelectBaseProps<T extends object, M extends 'single' | 'multiple'>
+  extends Omit<RACSelectProps<T, M>, 'children'> {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
-  items?: Iterable<T>;
-  children?: React.ReactNode | ((item: T) => React.ReactNode);
 }
+
+export type SelectProps<
+  T extends object = SelectItemObject,
+  M extends 'single' | 'multiple' = 'single',
+> =
+  | (SelectBaseProps<SelectItemObject, M> & {
+      items?: Iterable<SelectItemObject>;
+      children?: undefined;
+    })
+  | (SelectBaseProps<T, M> & {
+      items?: Iterable<T>;
+      children: React.ReactNode | ((item: T) => React.ReactNode);
+    });
 
 export function Select<
   T extends object = SelectItemObject,
@@ -66,9 +75,15 @@ export function Select<
           {description && <Text slot="description">{description}</Text>}
           <FieldError>{errorMessage}</FieldError>
           <Popover offset={0} {...popoverProps}>
-            <SelectListBox items={items}>
-              {children ? children : DefaultSelectItem}
-            </SelectListBox>
+            {children ? (
+              <SelectListBox items={items}>{children}</SelectListBox>
+            ) : (
+              <SelectListBox<SelectItemObject>
+                items={items as Iterable<SelectItemObject> | undefined}
+              >
+                {DefaultSelectItem}
+              </SelectListBox>
+            )}
           </Popover>
         </>
       )}

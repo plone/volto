@@ -88,9 +88,15 @@ export function Select<
           {description && <Description>{description}</Description>}
           <FieldError>{errorMessage}</FieldError>
           <Popover className="min-w-(--trigger-width) p-1">
-            <SelectListBox items={items}>
-              {children ? children : DefaultSelectItem}
-            </SelectListBox>
+            {children ? (
+              <SelectListBox items={items}>{children}</SelectListBox>
+            ) : (
+              <SelectListBox<SelectItemObject>
+                items={items as Iterable<SelectItemObject> | undefined}
+              >
+                {DefaultSelectItem}
+              </SelectListBox>
+            )}
           </Popover>
         </>
       )}
