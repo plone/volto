@@ -67,13 +67,7 @@ export function Select<
           <FieldError>{errorMessage}</FieldError>
           <Popover offset={0} {...popoverProps}>
             <SelectListBox items={items}>
-              {children ? (
-                children
-              ) : (
-                <DefaultSelectItems
-                  items={items as Iterable<SelectItemObject>}
-                />
-              )}
+              {children ? children : DefaultSelectItem}
             </SelectListBox>
           </Popover>
         </>
@@ -82,20 +76,8 @@ export function Select<
   );
 }
 
-function DefaultSelectItems({ items }: { items?: Iterable<SelectItemObject> }) {
-  if (!items) {
-    return null;
-  }
-
-  return (
-    <>
-      {Array.from(items).map((item) => (
-        <SelectItem key={item.label} id={item.label}>
-          {item.value}
-        </SelectItem>
-      ))}
-    </>
-  );
+function DefaultSelectItem(item: SelectItemObject) {
+  return <SelectItem id={item.label}>{item.value}</SelectItem>;
 }
 
 export function SelectListBox<T extends object>(props: ListBoxProps<T>) {

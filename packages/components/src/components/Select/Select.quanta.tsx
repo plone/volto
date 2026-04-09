@@ -50,20 +50,8 @@ const triggerStyles = tv({
   },
 });
 
-function DefaultSelectItems({ items }: { items?: Iterable<SelectItemObject> }) {
-  if (!items) {
-    return null;
-  }
-
-  return (
-    <>
-      {Array.from(items).map((item) => (
-        <SelectItem key={item.label} id={item.label}>
-          {item.value}
-        </SelectItem>
-      ))}
-    </>
-  );
+function DefaultSelectItem(item: SelectItemObject) {
+  return <SelectItem id={item.label}>{item.value}</SelectItem>;
 }
 
 export function Select<
@@ -101,13 +89,7 @@ export function Select<
           <FieldError>{errorMessage}</FieldError>
           <Popover className="min-w-(--trigger-width) p-1">
             <SelectListBox items={items}>
-              {children ? (
-                children
-              ) : (
-                <DefaultSelectItems
-                  items={items as Iterable<SelectItemObject>}
-                />
-              )}
+              {children ? children : DefaultSelectItem}
             </SelectListBox>
           </Popover>
         </>

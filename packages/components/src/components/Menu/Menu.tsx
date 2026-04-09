@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Header,
   Menu as RACMenu,
   MenuItem as RACMenuItem,
   MenuSection as RACMenuSection,
@@ -15,6 +16,10 @@ import {
   type SubmenuTriggerProps,
 } from 'react-aria-components';
 import type { Placement } from 'react-aria';
+import {
+  getMenuTriggerChildren,
+  type MenuTriggerChildren,
+} from './menuTriggerChildren';
 
 export function Menu<T extends object>(props: MenuProps<T>) {
   return <RACMenu {...props} />;
@@ -32,15 +37,17 @@ export function MenuSection<T extends object>(props: MenuSectionProps<T>) {
   return <RACMenuSection {...props} />;
 }
 
-interface BasicMenuTriggerProps extends MenuTriggerProps {
+export function MenuSectionHeader(props: React.ComponentProps<typeof Header>) {
+  return <Header {...props} />;
+}
+
+interface BasicMenuTriggerProps extends Omit<MenuTriggerProps, 'children'> {
+  children: MenuTriggerChildren;
   placement?: Placement;
 }
 
 export function MenuTrigger(props: BasicMenuTriggerProps) {
-  const [trigger, menu] = React.Children.toArray(props.children) as [
-    React.ReactElement,
-    React.ReactElement,
-  ];
+  const [trigger, menu] = getMenuTriggerChildren(props.children, 'MenuTrigger');
 
   return (
     <RACMenuTrigger {...props}>
@@ -50,16 +57,21 @@ export function MenuTrigger(props: BasicMenuTriggerProps) {
   );
 }
 
-export function SubmenuTrigger(props: SubmenuTriggerProps) {
-  const [trigger, menu] = React.Children.toArray(props.children) as [
-    React.ReactElement,
-    React.ReactElement,
-  ];
+interface BasicSubmenuTriggerProps
+  extends Omit<SubmenuTriggerProps, 'children'> {
+  children: MenuTriggerChildren;
+}
+
+export function SubmenuTrigger(props: BasicSubmenuTriggerProps) {
+  const [trigger, menu] = getMenuTriggerChildren(
+    props.children,
+    'SubmenuTrigger',
+  );
 
   return (
     <RACSubmenuTrigger {...props}>
       {trigger}
-      <Popover>{menu}</Popover>
+      <Popover placement="end">{menu}</Popover>
     </RACSubmenuTrigger>
   );
 }

@@ -29,6 +29,7 @@ export {
   Menu,
   MenuItem,
   MenuSection,
+  MenuSectionHeader,
   MenuSeparator,
   MenuTrigger,
   SubmenuTrigger,
