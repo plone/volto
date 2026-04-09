@@ -17,6 +17,74 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.29 (2026-04-09)
+
+### Breaking
+
+- Update to webpack-dev-server 5. @davisagli 
+
+### Bugfix
+
+- Only include the original image in the `Image` component if the image does not have all the scales present. @sneridagh [#7655](https://github.com/plone/volto/issues/7655)
+- Forward Cache-Status header for files and images in Express middleware. @wesleybl [#7962](https://github.com/plone/volto/issues/7962)
+- Added required ARIA attributes to date and time inputs on `DatetimeWidget`. @Wagner3UB [#7980](https://github.com/plone/volto/issues/7980)
+- Improved text contrast and accessibility for help messages across the UI by updating global secondary color scales. @Wagner3UB [#8052](https://github.com/plone/volto/issues/8052)
+
+### Internal
+
+- Update dependency: diff 3.5.1. @davisagli 
+- Update dependency: express 4.22.1. @davisagli 
+- Update devDependency: cypress 15.13.1. @davisagli 
+- Update devDependency: release-it 19.2.4. @davisagli 
+
+### Documentation
+
+- Added missing upgrade step in the docs for 19a28. @sneridagh [#8096](https://github.com/plone/volto/issues/8096)
+
+## 19.0.0-alpha.28 (2026-04-05)
+
+### Breaking
+
+- Fork `razzle-dev-utils` into `@plone/razzle-dev-utils`. @wesleybl [#7973](https://github.com/plone/volto/issues/7973)
+- Remove support for importing from the Volto root using paths starting with `~`. @davisagli 
+
+### Feature
+
+- Add Block Types control panel for admins to see where blocks are used. @jnptk [#7124](https://github.com/plone/volto/issues/7124)
+- Added blocktypes service typings. @sneridagh 
+- Update translations from branch 18.x @erral 
+
+### Bugfix
+
+- Fixed RegistryImageWidget appending stray `}` to base64 data @mpalomacki [#7900](https://github.com/plone/volto/issues/7900)
+- Add file size upload limit validator. @robgietema [#7936](https://github.com/plone/volto/issues/7936)
+- First focus inside the edit page for assistive technologies @Wagner3UB [#7948](https://github.com/plone/volto/issues/7948)
+- Fixed blockTypes components with correct typings. @sneridagh [#8080](https://github.com/plone/volto/issues/8080)
+- Fix null port in virtual hosting path when the devproxy is used on an origin with an implicit port. @davisagli 
+- Fixed bug in razzle configuration and webpack-less-plugin that could generate wrong aliases and configurations for building the site. @pnicolli 
+
+### Internal
+
+- Refactored the `Diff` component by converting it from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7714](https://github.com/plone/volto/issues/7714)
+- Run volto-slate test suite as part of the Vitest multi-project setup. @Abhishek-17h [#7892](https://github.com/plone/volto/issues/7892)
+- Add defensive checks for missing languages and locale files. @pratyush07-hub [#7955](https://github.com/plone/volto/issues/7955)
+- Remove the `immutable` dependency, since it is not a direct dependency. @wesleybl [#7974](https://github.com/plone/volto/issues/7974)
+- Ensure unlock wait after saving working copy changes in Cypress tests. @wesleybl [#8024](https://github.com/plone/volto/issues/8024)
+- Update react-dates to version 21.8.0. @wesleybl [#8027](https://github.com/plone/volto/issues/8027)
+- Exclude `https://tanstack.com/` from README link check. @wesleybl [#8040](https://github.com/plone/volto/issues/8040)
+- Remove volta configuration. @wesleybl [#8068](https://github.com/plone/volto/issues/8068)
+- Added CI job for code-analysis workflow for checking if Volto types build cleanly. @sneridagh [#8080](https://github.com/plone/volto/issues/8080)
+- Make "Block Types" control panel wider. @jnptk 
+- Remove unused devDependency: bundlewatch. @davisagli 
+- Update dependencies: webpack 5.105.4, resolve-url-loader 5.0.0. @davisagli 
+- Update dependency packages: http-proxy-middleware. Remove dependency packages: tmp.  @davisagli 
+- Update dependency: jsdom 28.1.0. @davisagli 
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update dependency: serialize-javascript 7.0.5. @davisagli 
+- Update devDependencies: wait-on 9.0.4 and start-server-and-test 2.1.5. @davisagli 
+- Update devDependency: less 3.13.1. @davisagli 
+- Use Plone 6.2.0rc1 for development. @davisagli 
+
 ## 19.0.0-alpha.27 (2026-03-02)
 
 ### Bugfix
