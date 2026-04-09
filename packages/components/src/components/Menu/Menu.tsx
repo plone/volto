@@ -16,10 +16,7 @@ import {
   type SubmenuTriggerProps,
 } from 'react-aria-components';
 import type { Placement } from 'react-aria';
-import {
-  getMenuTriggerChildren,
-  type MenuTriggerChildren,
-} from './menuTriggerChildren';
+import { getMenuTriggerChildren } from './menuTriggerChildren';
 
 export function Menu<T extends object>(props: MenuProps<T>) {
   return <RACMenu {...props} />;
@@ -41,8 +38,7 @@ export function MenuSectionHeader(props: React.ComponentProps<typeof Header>) {
   return <Header {...props} />;
 }
 
-interface BasicMenuTriggerProps extends Omit<MenuTriggerProps, 'children'> {
-  children: MenuTriggerChildren;
+interface BasicMenuTriggerProps extends MenuTriggerProps {
   placement?: Placement;
 }
 
@@ -57,12 +53,7 @@ export function MenuTrigger(props: BasicMenuTriggerProps) {
   );
 }
 
-interface BasicSubmenuTriggerProps
-  extends Omit<SubmenuTriggerProps, 'children'> {
-  children: MenuTriggerChildren;
-}
-
-export function SubmenuTrigger(props: BasicSubmenuTriggerProps) {
+export function SubmenuTrigger(props: SubmenuTriggerProps) {
   const [trigger, menu] = getMenuTriggerChildren(
     props.children,
     'SubmenuTrigger',

@@ -20,10 +20,7 @@ import { twMerge } from 'tailwind-merge';
 import { CheckboxIcon, ChevronrightIcon } from '../icons';
 import { Popover, type PopoverProps } from '../Popover/Popover.quanta';
 import { composeTailwindRenderProps, focusRing } from '../utils';
-import {
-  getMenuTriggerChildren,
-  type MenuTriggerChildren,
-} from './menuTriggerChildren';
+import { getMenuTriggerChildren } from './menuTriggerChildren';
 
 export function Menu<T extends object>(props: MenuProps<T>) {
   return (
@@ -174,8 +171,7 @@ export function MenuSectionHeader(props: React.ComponentProps<typeof Header>) {
   );
 }
 
-interface MenuTriggerProps extends Omit<AriaMenuTriggerProps, 'children'> {
-  children: MenuTriggerChildren;
+interface MenuTriggerProps extends AriaMenuTriggerProps {
   placement?: PopoverProps['placement'];
 }
 
@@ -192,12 +188,7 @@ export function MenuTrigger(props: MenuTriggerProps) {
   );
 }
 
-interface QuantaSubmenuTriggerProps
-  extends Omit<SubmenuTriggerProps, 'children'> {
-  children: MenuTriggerChildren;
-}
-
-export function SubmenuTrigger(props: QuantaSubmenuTriggerProps) {
+export function SubmenuTrigger(props: SubmenuTriggerProps) {
   const [trigger, menu] = getMenuTriggerChildren(
     props.children,
     'SubmenuTrigger',
