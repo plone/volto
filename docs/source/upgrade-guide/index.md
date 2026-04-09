@@ -364,6 +364,19 @@ To support horizontal scrolling of tables on small viewports, the table block is
 In the past, the table block was a direct child of the content area.
 If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
 
+### The image component now includes the original image only if necessary
+```{versionadded} Volto 19.0.0-alpha.29
+```
+
+The `Image` component has been optimized to include the original image URL only when necessary.
+Now it is only included if the image does not have all the defined scales present, which could happen if the image uploaded originally is smaller than the defined scales.
+In other scenarios where all the scales are present, including the original image could lead the browser to choose it over the scaled versions, impacting performance.
+This happened especially in high-density resolution screens where the largest scale available was not enough for the browser to pick a scaled version.
+
+This is a breaking change for projects that relied on the original image always being present, for example, in those projects where the original image was always included for large displays, such as televisions or wide-screen displays.
+A pair of additional scales were added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
+Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scales named `2k` and `4k`.
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x
