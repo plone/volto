@@ -205,6 +205,53 @@ describe('block width plugin', () => {
     expect(FALLBACK_BLOCK_WIDTH).toBe('default');
   });
 
+  it('uses the configured default width style when blockWidth is missing', () => {
+    registryBlocks.widths = [
+      {
+        name: 'narrow',
+        label: 'Narrow',
+        style: { '--block-width': 'var(--narrow-container-width)' },
+      },
+      {
+        name: 'default',
+        label: 'Default',
+        style: { '--block-width': 'var(--default-container-width)' },
+      },
+    ];
+    registryBlocks.plateBlocksConfig = {
+      p: {
+        blockWidth: {
+          defaultWidth: 'narrow',
+          widths: ['narrow'],
+        },
+      },
+    };
+
+    const editor = createEditor();
+    const transformProps = (BaseBlockWidthPlugin as any).inject.nodeProps
+      .transformProps as TransformPropsFn;
+
+    expect(
+      transformProps({
+        editor,
+        element: {
+          type: 'p',
+          children: [{ text: 'Paragraph without width' }],
+        },
+        props: {
+          style: {
+            color: 'red',
+          },
+        },
+      } as any),
+    ).toEqual({
+      style: {
+        color: 'red',
+        '--block-width': 'var(--narrow-container-width)',
+      },
+    });
+  });
+
   it('derives the fallback default width from the registry definitions', () => {
     registryBlocks.widths = [
       {

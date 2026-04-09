@@ -141,7 +141,9 @@ export const setBlockType = (
         return setBlockMap[type](editor, type, entry);
       }
       if (node.type !== type) {
-        editor.tf.setNodes({ type }, { at: path });
+        editor.tf.setNodes(withBlockWidthDefaults(editor, { ...node, type }), {
+          at: path,
+        });
       }
     };
 
