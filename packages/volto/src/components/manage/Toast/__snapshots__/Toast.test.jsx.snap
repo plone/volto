@@ -22,10 +22,7 @@ exports[`renders a Toast info component 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   />,
   <div
-    aria-atomic="true"
-    aria-live="assertive"
     className="toast-inner-content"
-    role="alert"
   >
     <span
       className="toast-visually-hidden"
