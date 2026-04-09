@@ -536,10 +536,10 @@ msgstr ""
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr ""
+msgstr "డిఫాల్ట్‌గా, ఈ అంశం యొక్క కంటైనర్ నుండి అనుమతులు వారసత్వంగా పొందబడతాయి. మీరు దీన్ని నిష్క్రియం చేస్తే, స్పష్టంగా నిర్వచించబడిన భాగస్వామ్య అనుమతులు మాత్రమే చెల్లుబాటు అవుతాయి. అవలోకనంలో, {inherited} చిహ్నం వారసత్వ విలువను సూచిస్తుంది. అదే విధంగా, {global} చిహ్నం సైట్ నిర్వాహకుడు నిర్వహించే గ్లోబల్ పాత్రను సూచిస్తుంది."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
