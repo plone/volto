@@ -364,6 +364,40 @@ To support horizontal scrolling of tables on small viewports, the table block is
 In the past, the table block was a direct child of the content area.
 If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
 
+### The projects based on Volto 19 should update to support a centralized pnpm catalog
+```{versionadded} Volto 19.0.0-alpha.28
+```
+
+If you created your project with cookieplone previous to January 2026, it needs to be updated to support the new centralized pnpm catalog. This only involves adding the file `.pnpmfile.cjs` to the `frontend` project folder or the root of add-on, with the following content:
+
+```js
+/* eslint-disable */
+const fs = require('fs');
+const path = require('path');
+
+const catalogPath = path.resolve(__dirname, 'core/catalog.json');
+let catalog = {};
+if (fs.existsSync(catalogPath)) {
+  const catalogData = fs.readFileSync(catalogPath, 'utf-8');
+  catalog = JSON.parse(catalogData);
+} else {
+  console.error('Catalog file does not exist at:', catalogPath);
+}
+
+module.exports = {
+  hooks: {
+    updateConfig(config) {
+      if (config.catalogs) {
+        config.catalogs.default ??= catalog;
+      }
+      return config;
+    },
+  },
+};
+```
+
+You can also re-run the cookieplone generator with the same name metadata as your project to get the new file and structure, and move your code into it.
+
 ### The image component now includes the original image only if necessary
 ```{versionadded} Volto 19.0.0-alpha.29
 ```
