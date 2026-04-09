@@ -6,6 +6,8 @@ import {
   SlateLeaf,
 } from 'platejs';
 
+import { BlockInnerContainer } from './block-inner-container';
+
 export function CodeBlockElementStatic(
   props: SlateElementProps<TCodeBlockElement>,
 ) {
@@ -38,17 +40,19 @@ export function CodeBlockElementStatic(
       `}
       {...props}
     >
-      <div className="relative rounded-md bg-muted/50">
-        <pre
-          className={`
-            overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal]
-            [tab-size:2]
-            print:break-inside-avoid
-          `}
-        >
-          <code>{props.children}</code>
-        </pre>
-      </div>
+      <BlockInnerContainer>
+        <div className="relative rounded-md bg-muted/50">
+          <pre
+            className={`
+              overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal]
+              [tab-size:2]
+              print:break-inside-avoid
+            `}
+          >
+            <code>{props.children}</code>
+          </pre>
+        </div>
+      </BlockInnerContainer>
     </SlateElement>
   );
 }

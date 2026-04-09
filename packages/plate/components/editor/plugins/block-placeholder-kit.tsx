@@ -5,7 +5,7 @@ export const BlockPlaceholderKit = [
   BlockPlaceholderPlugin.configure({
     options: {
       className:
-        'before:absolute before:cursor-text before:text-muted-foreground/80 before:content-[attr(placeholder)]',
+        'before:absolute before:left-1/2 before:block before:w-full before:max-w-(--block-width) before:-translate-x-1/2 before:cursor-text before:text-muted-foreground/80 before:content-[attr(placeholder)]',
       placeholders: {
         [KEYS.p]: 'Type something...',
       },

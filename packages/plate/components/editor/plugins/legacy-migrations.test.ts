@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { KEYS } from 'platejs';
 import type { SlateEditor, Value } from 'platejs';
 
@@ -20,7 +20,24 @@ import {
   migrateLegacyLinksInValue,
   migrateLegacyLinksInValueStatic,
 } from './legacy-link-plugin';
-import { normalizeLegacyValue } from '../../../legacy/migrations';
+import {
+  migrateLegacyBlockWidthsInValue,
+  normalizeLegacyValue,
+} from '../../../migrations';
+import config from '@plone/registry';
+
+const registryBlocks = config.blocks as Record<string, unknown>;
+const initialRegistryState = {
+  widths: registryBlocks.widths,
+  plateBlocksConfig: registryBlocks.plateBlocksConfig,
+  blocksConfig: registryBlocks.blocksConfig,
+};
+
+afterEach(() => {
+  registryBlocks.widths = initialRegistryState.widths;
+  registryBlocks.plateBlocksConfig = initialRegistryState.plateBlocksConfig;
+  registryBlocks.blocksConfig = initialRegistryState.blocksConfig;
+});
 
 describe('legacy bold migration helpers', () => {
   it('calls transforms to bold text and unwrap strong elements', () => {
@@ -594,6 +611,48 @@ describe('normalizeLegacyValue', () => {
             listStart: 2,
           },
         ],
+      },
+    ]);
+  });
+});
+
+describe('legacy block width migration helpers', () => {
+  it('injects configured default widths for block elements without blockWidth', () => {
+    registryBlocks.widths = [
+      {
+        name: 'narrow',
+        label: 'Narrow',
+        style: { '--block-width': 'var(--narrow-container-width)' },
+      },
+      {
+        name: 'default',
+        label: 'Default',
+        style: { '--block-width': 'var(--default-container-width)' },
+      },
+    ];
+    registryBlocks.plateBlocksConfig = {
+      p: {
+        blockWidth: {
+          defaultWidth: 'narrow',
+          widths: ['narrow'],
+        },
+      },
+    };
+
+    const value: Value = [
+      {
+        type: 'p',
+        children: [{ text: 'Paragraph without width' }],
+      } as any,
+    ];
+
+    migrateLegacyBlockWidthsInValue(value);
+
+    expect(value).toEqual([
+      {
+        type: 'p',
+        blockWidth: 'narrow',
+        children: [{ text: 'Paragraph without width' }],
       },
     ]);
   });

@@ -19,10 +19,12 @@ import {
   applyNormalizedValue,
   cloneValueToWritable,
 } from '../components/editor/plugins/legacy-utils';
+import { migrateLegacyBlockWidthsInValue } from './block-width';
 
 export {
   migrateLegacyBold,
   migrateLegacyBoldInValue,
+  migrateLegacyBlockWidthsInValue,
   migrateLegacyItalic,
   migrateLegacyItalicInValue,
   migrateLegacyLinksInValueStatic,
@@ -53,6 +55,7 @@ export const legacyMigrations = {
   migrateLegacyItalicInValue,
   migrateLegacyStrikethrough,
   migrateLegacyStrikethroughInValue,
+  migrateLegacyBlockWidthsInValue,
   migrateLegacyLinksInValueStatic,
   migrateLegacyListsInValue,
   normalizeLegacyValue,

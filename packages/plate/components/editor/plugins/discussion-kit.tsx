@@ -1,7 +1,6 @@
 import type { TComment } from '../../ui/comment';
 
 import { createPlatePlugin } from 'platejs/react';
-
 import { BlockDiscussion } from '../../ui/block-discussion';
 
 export interface TDiscussion {
@@ -136,7 +135,7 @@ export const discussionPlugin = createPlatePlugin({
   },
 })
   .configure({
-    render: { aboveNodes: BlockDiscussion },
+    render: { belowNodes: BlockDiscussion },
   })
   .extendSelectors(({ getOption }) => ({
     currentUser: () => getOption('users')[getOption('currentUserId')],
