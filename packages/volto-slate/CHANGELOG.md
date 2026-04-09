@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.14 (2026-04-09)
+
+### Breaking
+
+- Change hotkey for strikethrough text to Ctrl+Shift+X / Cmd+Shift+X. @MAX-786 [#4196](https://github.com/plone/volto/issues/4196)
+
+### Bugfix
+
+- fix LinkEditor not opening from SlateEditor @CannedShroud [#4130](https://github.com/plone/volto/issues/4130)
+
+### Internal
+
+- Update devDependency: release-it 19.2.4. @davisagli 
+
 ## 19.0.0-alpha.13 (2026-03-31)
 
 ### Internal
