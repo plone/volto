@@ -17,6 +17,30 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.29 (2026-04-09)
+
+### Breaking
+
+- Update to webpack-dev-server 5. @davisagli 
+
+### Bugfix
+
+- Only include the original image in the `Image` component if the image does not have all the scales present. @sneridagh [#7655](https://github.com/plone/volto/issues/7655)
+- Forward Cache-Status header for files and images in Express middleware. @wesleybl [#7962](https://github.com/plone/volto/issues/7962)
+- Added required ARIA attributes to date and time inputs on `DatetimeWidget`. @Wagner3UB [#7980](https://github.com/plone/volto/issues/7980)
+- Improved text contrast and accessibility for help messages across the UI by updating global secondary color scales. @Wagner3UB [#8052](https://github.com/plone/volto/issues/8052)
+
+### Internal
+
+- Update dependency: diff 3.5.1. @davisagli 
+- Update dependency: express 4.22.1. @davisagli 
+- Update devDependency: cypress 15.13.1. @davisagli 
+- Update devDependency: release-it 19.2.4. @davisagli 
+
+### Documentation
+
+- Added missing upgrade step in the docs for 19a28. @sneridagh [#8096](https://github.com/plone/volto/issues/8096)
+
 ## 19.0.0-alpha.28 (2026-04-05)
 
 ### Breaking
