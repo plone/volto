@@ -58,12 +58,7 @@ const Toast = (props) => {
   return (
     <>
       <Icon name={getIcon(props)} size="18px" ariaHidden={true} />
-      <div
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-        className="toast-inner-content"
-      >
+      <div className="toast-inner-content">
         {typeLabel && (
           <span className="toast-visually-hidden">{typeLabel}</span>
         )}
