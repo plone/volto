@@ -368,7 +368,7 @@ If you had custom styles for the table block that assumed it was a direct child 
 ```{versionadded} Volto 19.0.0-alpha.28
 ```
 
-If you created your project with Cookieplone prior to January [exact date] 2026, you must update it to support the new centralized pnpm catalog.
+If you created your project with Cookieplone prior to December 22 2025, you must update it to support the new centralized pnpm catalog.
 Add the file :file:`.pnpmfile.cjs` to either the :file:`frontend` project folder or the root of the add-on with the following content:
 
 ```js
