@@ -1,6 +1,5 @@
 import { reactRouter } from '@react-router/dev/vite';
 import path from 'node:path';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig, PluginOption } from 'vite';
 import { reactRouterDevTools } from 'react-router-devtools';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
@@ -8,6 +7,7 @@ import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
 import babel from 'vite-plugin-babel';
 import tailwindcss from '@tailwindcss/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
+import devtoolsJson from 'vite-plugin-devtools-json';
 
 export default defineConfig(({ isSsrBuild }) => {
   const analyze = process.env.ANALYZE === 'true';
@@ -28,7 +28,7 @@ export default defineConfig(({ isSsrBuild }) => {
           plugins: ['babel-plugin-react-compiler'],
         },
       }),
-      tsconfigPaths(),
+      devtoolsJson(),
       ...(analyze
         ? [
             visualizer({
@@ -46,6 +46,9 @@ export default defineConfig(({ isSsrBuild }) => {
           ]
         : []),
     ] as PluginOption[],
+    resolve: {
+      tsconfigPaths: true,
+    },
     server: {
       port: 3000,
       fs: {

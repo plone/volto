@@ -11,10 +11,10 @@
   "@internationalized/date": "^3.12.0",
   "react-stately": "^3.45.0",
   "react-i18next": "^15.4.1",
-  "react-router": "7.12.0",
-  "@react-router/dev": "7.12.0",
-  "@react-router/node": "7.12.0",
-  "@react-router/serve": "7.12.0",
+  "react-router": "7.14.0",
+  "@react-router/dev": "7.14.0",
+  "@react-router/node": "7.14.0",
+  "@react-router/serve": "7.14.0",
   "@tanstack/react-query": "^5.59.0",
   "playwright": "^1.58.0",
   "@playwright/test": "^1.58.0",
@@ -30,5 +30,5 @@
   "@tailwindcss/vite": "^4.1.4",
   "@vitejs/plugin-react": "^5.0.2",
   "@vitest/coverage-v8": "^4.0.0",
-  "vite": "^6.3.3"
+  "vite": "^8.0.8"
 }
