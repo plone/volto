@@ -60,18 +60,6 @@ export const turnIntoItems = [
     value: 'h4',
   },
   {
-    icon: <Heading5Icon />,
-    keywords: ['subtitle', 'h5'],
-    label: 'Heading 5',
-    value: 'h5',
-  },
-  {
-    icon: <Heading6Icon />,
-    keywords: ['subtitle', 'h6'],
-    label: 'Heading 6',
-    value: 'h6',
-  },
-  {
     icon: <ListIcon />,
     keywords: ['unordered', 'ul', '-'],
     label: 'Bulleted list',
