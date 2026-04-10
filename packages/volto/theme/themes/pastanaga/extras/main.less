@@ -362,6 +362,18 @@ button {
   .toast-inner-content {
     margin-left: 8px;
 
+    .toast-visually-hidden {
+      position: absolute;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      border: 0;
+      margin: -1px;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
     h4 {
       margin-bottom: 0;
       font-weight: @bold;

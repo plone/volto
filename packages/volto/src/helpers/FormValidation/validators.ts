@@ -153,6 +153,15 @@ export const hasUniqueItemsValidator = ({
   return !isValid ? formatMessage(messages.uniqueItems) : null;
 };
 
+const formatDateValue = (isoString: string) => {
+  const date = new Date(isoString);
+  if (isNaN(date.getTime())) return isoString;
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }).format(date);
+};
+
 export const startEventDateRangeValidator = ({
   value,
   field,
@@ -163,7 +172,9 @@ export const startEventDateRangeValidator = ({
     value && formData.end && new Date(value) < new Date(formData.end);
   return !isValid
     ? formatMessage(messages.startEventRange, {
-        endDateValueOrEndFieldName: formData.end || 'end',
+        endDateValueOrEndFieldName: formData.end
+          ? formatDateValue(formData.end)
+          : 'end',
       })
     : null;
 };
@@ -178,7 +189,9 @@ export const endEventDateRangeValidator = ({
     value && formData.start && new Date(value) > new Date(formData.start);
   return !isValid
     ? formatMessage(messages.endEventRange, {
-        startDateValueOrStartFieldName: formData.start || 'start',
+        startDateValueOrStartFieldName: formData.start
+          ? formatDateValue(formData.start)
+          : 'start',
       })
     : null;
 };
