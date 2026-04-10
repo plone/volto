@@ -1,7 +1,6 @@
 import { reactRouter } from '@react-router/dev/vite';
 import path from 'node:path';
 import { defineConfig, PluginOption } from 'vite';
-import { reactRouterDevTools } from 'react-router-devtools';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
 import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
 import babel from 'vite-plugin-babel';
@@ -19,7 +18,6 @@ export default defineConfig(({ isSsrBuild }) => {
       PloneSVGRVitePlugin(),
       PloneRegistryVitePlugin(),
       tailwindcss(),
-      reactRouterDevTools(),
       reactRouter(),
       babel({
         filter: /app\/.*\.tsx?$/,

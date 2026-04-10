@@ -55,7 +55,6 @@
     "@types/react-dom": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "babel-plugin-react-compiler": "19.1.0-rc.3",
-    "react-router-devtools": "^6.2.0",
     "release-it": "catalog:",
     "rollup-plugin-visualizer": "^7.0.1",
     "typescript": "catalog:",
