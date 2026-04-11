@@ -24,6 +24,27 @@ export const installServerMiddleware: Route.MiddlewareFunction = async (
   installServer();
 };
 
+export const PloneClientMiddleware: Route.MiddlewareFunction = async (
+  { request, context },
+  next,
+) => {
+  const token = await getAuthFromRequest(request);
+
+  const PloneClient = config
+    .getUtility({
+      name: 'ploneClient',
+      type: 'client',
+    })
+    .method();
+
+  const cli = PloneClient.initialize({
+    apiPath: config.settings.apiPath,
+    token,
+  });
+
+  context.set(ploneClientContext, cli);
+};
+
 export const otherResources: Route.MiddlewareFunction = async (
   { request, params, context },
   next,
@@ -78,14 +99,7 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
   const token = await getAuthFromRequest(request);
   const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
 
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
-
-  cli.config.token = token;
+  const cli = context.get(ploneClientContext);
 
   const path = `/${params['*'] || ''}`;
 
@@ -112,7 +126,6 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
 
     migrateContent(content.data);
 
-    context.set(ploneClientContext, cli);
     context.set(ploneContentContext, flattenToAppURL(content.data));
     context.set(ploneSiteContext, flattenToAppURL(site.data));
     context.set(ploneUserContext, user?.data ?? null);

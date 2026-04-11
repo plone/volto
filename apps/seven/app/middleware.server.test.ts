@@ -7,6 +7,7 @@ import {
   fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
+  PloneClientMiddleware,
   otherResources,
   ploneClientContext,
   ploneContentContext,
@@ -30,7 +31,13 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await installServerMiddleware(
-        { request, params: {}, context, unstable_pattern: '/' },
+        {
+          request,
+          context,
+          params: {},
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
         nextMock,
       );
 
@@ -52,6 +59,72 @@ describe('middleware', () => {
     });
   });
 
+  describe('PloneClientMiddleware', () => {
+    it('initializes the PloneClient and sets it in context', async () => {
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      vi.mocked(getAuthFromRequest).mockResolvedValue(undefined);
+      config.settings.apiPath = 'http://localhost:8080/Plone';
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () => ({
+          initialize: vi.fn().mockReturnValue({
+            config: { apiPath: 'http://localhost:8080/Plone' },
+          }),
+        }),
+      });
+
+      await PloneClientMiddleware(
+        {
+          request,
+          context,
+          params: {},
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(context.get(ploneClientContext)).toBeDefined();
+    });
+
+    it('initializes PloneClient with token when available', async () => {
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      vi.mocked(getAuthFromRequest).mockResolvedValue('valid.jwt.token');
+      config.settings.apiPath = 'http://localhost:8080/Plone';
+      const initializeMock = vi.fn().mockReturnValue({});
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () => ({
+          initialize: initializeMock,
+        }),
+      });
+
+      await PloneClientMiddleware(
+        {
+          request,
+          context,
+          params: {},
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(initializeMock).toHaveBeenCalledWith({
+        apiPath: 'http://localhost:8080/Plone',
+        token: 'valid.jwt.token',
+      });
+    });
+  });
+
   describe('otherResources', () => {
     it('ignore regular internal content requests', async () => {
       const request = new Request('http://example.com');
@@ -60,7 +133,13 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await otherResources(
-        { request, params, context, unstable_pattern: '/' },
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
         nextMock,
       );
     });
@@ -73,7 +152,13 @@ describe('middleware', () => {
 
       try {
         await otherResources(
-          { request, params, context, unstable_pattern: '/style.css' },
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/style.css',
+            unstable_url: new URL(request.url),
+          },
           nextMock,
         );
       } catch (err: any) {
@@ -89,7 +174,13 @@ describe('middleware', () => {
 
       try {
         await otherResources(
-          { request, params, context, unstable_pattern: '/style.css.map' },
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/style.css.map',
+            unstable_url: new URL(request.url),
+          },
           nextMock,
         );
       } catch (err: any) {
@@ -144,6 +235,7 @@ describe('middleware', () => {
             params,
             context,
             unstable_pattern: '/?expand=breadcrumbs',
+            unstable_url: new URL(request.url),
           },
           nextMock,
         );
@@ -160,7 +252,13 @@ describe('middleware', () => {
 
       try {
         await otherResources(
-          { request, params, context, unstable_pattern: '/assets/image.png' },
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/assets/image.png',
+            unstable_url: new URL(request.url),
+          },
           nextMock,
         );
       } catch (err: any) {
@@ -184,6 +282,7 @@ describe('middleware', () => {
             context,
             unstable_pattern:
               '/.well-known/appspecific/com.chrome.devtools.json',
+            unstable_url: new URL(request.url),
           },
           nextMock,
         );
@@ -202,7 +301,13 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await getAPIResourceWithAuth(
-        { request, params, context, unstable_pattern: '/' },
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
         nextMock,
       );
     });
@@ -225,6 +330,7 @@ describe('middleware', () => {
             params,
             context,
             unstable_pattern: '/image.png/@@images/image',
+            unstable_url: new URL(request.url),
           },
           nextMock,
         );
@@ -259,6 +365,7 @@ describe('middleware', () => {
             params,
             context,
             unstable_pattern: '/file.txt/@@download/file',
+            unstable_url: new URL(request.url),
           },
           nextMock,
         );
@@ -288,7 +395,13 @@ describe('middleware', () => {
 
       try {
         await getAPIResourceWithAuth(
-          { request, params, context, unstable_pattern: '/@@site-logo/image' },
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/@@site-logo/image',
+            unstable_url: new URL(request.url),
+          },
           nextMock,
         );
       } catch {
@@ -317,7 +430,13 @@ describe('middleware', () => {
 
       try {
         await getAPIResourceWithAuth(
-          { request, params, context, unstable_pattern: '/@portrait/username' },
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/@portrait/username',
+            unstable_url: new URL(request.url),
+          },
           nextMock,
         );
       } catch {
@@ -361,7 +480,13 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await fetchPloneContent(
-        { request, params: {}, context, unstable_pattern: '/' },
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
         nextMock,
       );
 
@@ -401,6 +526,7 @@ describe('middleware', () => {
           params: { '*': 'test-content' },
           context,
           unstable_pattern: '/test-content',
+          unstable_url: new URL(request.url),
         },
         nextMock,
       );
@@ -432,7 +558,13 @@ describe('middleware', () => {
 
       try {
         await fetchPloneContent(
-          { request, params: {}, context, unstable_pattern: '/' },
+          {
+            request,
+            params: {},
+            context,
+            unstable_pattern: '/',
+            unstable_url: new URL(request.url),
+          },
           nextMock,
         );
       } catch (err: any) {
@@ -461,7 +593,13 @@ describe('middleware', () => {
 
       try {
         await fetchPloneContent(
-          { request, params: {}, context, unstable_pattern: '/' },
+          {
+            request,
+            params: {},
+            context,
+            unstable_pattern: '/',
+            unstable_url: new URL(request.url),
+          },
           nextMock,
         );
       } catch (err: any) {
@@ -489,7 +627,13 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await fetchPloneContent(
-        { request, params: {}, context, unstable_pattern: '/' },
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
         nextMock,
       );
 
@@ -524,7 +668,13 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await fetchPloneContent(
-        { request, params: {}, context, unstable_pattern: '/' },
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
         nextMock,
       );
 
@@ -558,7 +708,13 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await fetchPloneContent(
-        { request, params: {}, context, unstable_pattern: '/' },
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
         nextMock,
       );
 
@@ -594,7 +750,13 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       await fetchPloneContent(
-        { request, params: {}, context, unstable_pattern: '/' },
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
         nextMock,
       );
 
