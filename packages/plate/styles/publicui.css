@@ -2,7 +2,6 @@
 the styles for @plone/plate in the publicui */
 
 .block-inner-container {
-  display: grid;
   width: 100%;
   max-width: var(--block-width);
   justify-items: start;

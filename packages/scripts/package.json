@@ -40,7 +40,7 @@
     "comment-json": "^4.2.3",
     "execa": "0.6.3",
     "find-parent-dir": "^0.3.1",
-    "glob": "^10.4.5",
+    "glob": "^13.0.6",
     "js-yaml": "^4.1.0",
     "mrs-developer": "^2.3.0",
     "wait-on": "^8.0.0"

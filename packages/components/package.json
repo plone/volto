@@ -96,6 +96,7 @@
     "not dead"
   ],
   "dependencies": {
+    "@internationalized/date": "catalog:",
     "@react-aria/utils": "catalog:",
     "@react-spectrum/utils": "catalog:",
     "clsx": "^2.1.1",
@@ -105,8 +106,7 @@
     "tailwind-merge": "catalog:",
     "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7",
-    "@internationalized/date": "catalog:"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
@@ -124,7 +124,7 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
-    "browserslist": "^4.23.0",
+    "browserslist": "^4.28.2",
     "eslint-plugin-storybook": "^9.1.7",
     "jest-axe": "^8.0.0",
     "jsdom": "^22.1.0",
