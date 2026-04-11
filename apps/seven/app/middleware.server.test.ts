@@ -11,6 +11,17 @@ import {
   ploneSiteContext,
 } from './middleware.server';
 
+const makePloneClientUtility = (client: {
+  getContent: ReturnType<typeof vi.fn>;
+  getSite: ReturnType<typeof vi.fn>;
+}) => ({
+  initialize: vi.fn(() => ({
+    config: { token: undefined },
+    getContent: client.getContent,
+    getSite: client.getSite,
+  })),
+});
+
 describe('middleware', () => {
   afterEach(() => {
     vi.restoreAllMocks();
@@ -40,8 +51,8 @@ describe('middleware', () => {
             name: 'ploneClient',
             type: 'client',
           })
-          .method().config.apiPath,
-      ).toEqual('http://localhost:8080/Plone');
+          .method(),
+      ).toHaveProperty('initialize');
     });
   });
 
@@ -318,11 +329,11 @@ describe('middleware', () => {
       config.registerUtility({
         name: 'ploneClient',
         type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-        }),
+        method: () =>
+          makePloneClientUtility({
+            getContent: getContentMock,
+            getSite: getSiteMock,
+          }),
       });
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
@@ -353,11 +364,11 @@ describe('middleware', () => {
       config.registerUtility({
         name: 'ploneClient',
         type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-        }),
+        method: () =>
+          makePloneClientUtility({
+            getContent: getContentMock,
+            getSite: getSiteMock,
+          }),
       });
       const request = new Request('http://example.com/test-content');
       const context = new RouterContextProvider();
@@ -388,11 +399,11 @@ describe('middleware', () => {
       config.registerUtility({
         name: 'ploneClient',
         type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-        }),
+        method: () =>
+          makePloneClientUtility({
+            getContent: getContentMock,
+            getSite: getSiteMock,
+          }),
       });
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
@@ -417,11 +428,11 @@ describe('middleware', () => {
       config.registerUtility({
         name: 'ploneClient',
         type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-        }),
+        method: () =>
+          makePloneClientUtility({
+            getContent: getContentMock,
+            getSite: getSiteMock,
+          }),
       });
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
