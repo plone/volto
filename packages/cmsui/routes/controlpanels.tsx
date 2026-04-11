@@ -4,7 +4,6 @@ import {
   type LoaderFunctionArgs,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import type PloneClient from '@plone/client';
 import { requireAuthCookie } from '@plone/react-router';
 import { Button, Container } from '@plone/components/quanta';
 import { Plug } from '@plone/layout/components/Pluggable';
@@ -16,14 +15,17 @@ import config from '@plone/registry';
 export async function loader({ params, request }: LoaderFunctionArgs) {
   const token = await requireAuthCookie(request);
 
-  const cli = config
+  const PloneClient = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method() as PloneClient;
+    .method();
 
-  cli.config.token = token;
+  const cli = PloneClient.initialize({
+    apiPath: config.settings.apiPath,
+    token,
+  });
 
   const { data: controlpanels } = await cli.getControlpanels();
   const { data: systemInformation } = await cli.getSystem();

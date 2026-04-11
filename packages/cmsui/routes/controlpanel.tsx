@@ -9,7 +9,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { atom } from 'jotai';
 import type { DeepKeys } from '@tanstack/react-form';
-import type PloneClient from '@plone/client';
 import { requireAuthCookie } from '@plone/react-router';
 import { InitAtoms } from '@plone/helpers';
 import type {
@@ -36,14 +35,17 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   const panel_id = params.id || 'navigation';
 
-  const cli = config
+  const PloneClient = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method() as PloneClient;
+    .method();
 
-  cli.config.token = token;
+  const cli = PloneClient.initialize({
+    apiPath: config.settings.apiPath,
+    token,
+  });
 
   const { data: controlpanel } = await cli.getControlpanel({ path: panel_id });
   return { controlpanel };
@@ -52,14 +54,18 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 export async function action({ params, request }: ActionFunctionArgs) {
   const token = await requireAuthCookie(request);
 
-  const cli = config
+  const PloneClient = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method() as PloneClient;
+    .method();
 
-  cli.config.token = token;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const cli = PloneClient.initialize({
+    apiPath: config.settings.apiPath,
+    token,
+  });
 
   // const path = `/${params['*'] || ''}`;
 

@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { data, type LoaderFunctionArgs } from 'react-router';
-import type PloneClient from '@plone/client';
 import Sitemap from '@plone/layout/components/Sitemap/Sitemap';
 import type { NavigationResponse } from '@plone/types';
 import { flattenToAppURL } from '@plone/helpers';
@@ -13,12 +12,16 @@ export const handle = {
 };
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  const cli = config
+  const PloneClient = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method() as PloneClient;
+    .method();
+
+  const cli = PloneClient.initialize({
+    apiPath: config.settings.apiPath,
+  });
 
   // TODO path for getNavigation
   const path = `/${params['*'] || ''}`;

@@ -5,7 +5,6 @@ import {
   useLoaderData,
   type LoaderFunctionArgs,
 } from 'react-router';
-import type PloneClient from '@plone/client';
 
 import config from '@plone/registry';
 import { Container, Input } from '@plone/components/quanta';
@@ -15,12 +14,16 @@ export const handle = {
 };
 
 export async function loader({ request, params }: LoaderFunctionArgs) {
-  const cli = config
+  const PloneClient = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method() as PloneClient;
+    .method();
+
+  const cli = PloneClient.initialize({
+    apiPath: config.settings.apiPath,
+  });
 
   const path = `/${params['*'] || ''}`;
   const url = new URL(request.url);

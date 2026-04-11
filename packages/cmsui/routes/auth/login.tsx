@@ -13,7 +13,6 @@ import { Button, TextField } from '@plone/components/quanta';
 import ploneSvg from '../../static/plone-white.svg';
 import ArrowRightSVG from '@plone/components/icons/arrow-right.svg?react';
 
-import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 
 export const loader = redirectIfLoggedInLoader;
@@ -36,12 +35,16 @@ export async function action({ request }: ActionFunctionArgs) {
   const username = String(formData.get('username') || '');
   const password = String(formData.get('password') || '');
 
-  const cli = config
+  const PloneClient = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method() as PloneClient;
+    .method();
+
+  const cli = PloneClient.initialize({
+    apiPath: config.settings.apiPath,
+  });
 
   try {
     const { data } = await cli.login({ username, password });

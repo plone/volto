@@ -1,5 +1,4 @@
 import { data, type ActionFunctionArgs } from 'react-router';
-import type PloneClient from '@plone/client';
 import { flattenToAppURL } from '@plone/helpers';
 import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
@@ -12,14 +11,17 @@ type CreateContentRequest = {
 export async function action({ params, request }: ActionFunctionArgs) {
   const token = await getAuthFromRequest(request);
 
-  const cli = config
+  const PloneClient = config
     .getUtility({
       name: 'ploneClient',
       type: 'client',
     })
-    .method() as PloneClient;
+    .method();
 
-  cli.config.token = token;
+  const cli = PloneClient.initialize({
+    apiPath: config.settings.apiPath,
+    token,
+  });
 
   const body = (await request.json()) as CreateContentRequest;
   const pathFromParams = `/${params['*'] || ''}`;

@@ -6,7 +6,7 @@ describe('createContent API route action', () => {
   afterEach(() => {
     vi.restoreAllMocks();
     config.settings = {};
-    delete config.utilities['ploneClient'];
+    delete config.utilities['client'];
   });
 
   it('calls createContent with wildcard path and returns response data', async () => {
@@ -22,10 +22,9 @@ describe('createContent API route action', () => {
       name: 'ploneClient',
       type: 'client',
       method: () => ({
-        config: {
-          token: undefined,
-        },
-        createContent: createContentMock,
+        initialize: vi.fn(() => ({
+          createContent: createContentMock,
+        })),
       }),
     });
 
