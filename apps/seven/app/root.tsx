@@ -8,6 +8,7 @@ import {
   fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
+  PloneClientMiddleware,
   otherResources,
   ploneClientContext,
   ploneContentContext,
@@ -16,6 +17,7 @@ import {
 
 export const middleware = [
   installServerMiddleware,
+  PloneClientMiddleware,
   otherResources,
   getAPIResourceWithAuth,
   fetchPloneContent,
