@@ -6,7 +6,7 @@ describe('loader', () => {
   afterEach(() => {
     vi.restoreAllMocks();
     config.settings = {};
-    delete config.utilities['ploneClient'];
+    delete config.utilities['client'];
   });
 
   it('should call the search method with the correct parameters', async () => {
@@ -22,10 +22,9 @@ describe('loader', () => {
       name: 'ploneClient',
       type: 'client',
       method: () => ({
-        search: searchMock,
-        config: {
-          token: undefined,
-        },
+        initialize: vi.fn(() => ({
+          search: searchMock,
+        })),
       }),
     });
     const request = new Request(
@@ -58,10 +57,9 @@ describe('loader', () => {
       name: 'ploneClient',
       type: 'client',
       method: () => ({
-        search: searchMock,
-        config: {
-          token: undefined,
-        },
+        initialize: vi.fn(() => ({
+          search: searchMock,
+        })),
       }),
     });
     const request = new Request('http://example.com/@search');
