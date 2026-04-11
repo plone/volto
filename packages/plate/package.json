@@ -78,6 +78,7 @@
     "@platejs/markdown": "^50.2.0",
     "@platejs/media": "^49.0.0",
     "@platejs/mention": "^49.0.0",
+    "@platejs/playwright": "catalog:",
     "@platejs/resizable": "^49.0.0",
     "@platejs/selection": "^50.3.4",
     "@platejs/slash-command": "^49.0.0",
