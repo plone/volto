@@ -19,7 +19,7 @@ describe('Login', () => {
   test('login request function', async () => {
     const result = await cli.login({
       data: {
-        username: 'admin',
+        login: 'admin',
         password: 'secret',
       },
     });
