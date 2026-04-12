@@ -2,25 +2,23 @@ import { useTranslation } from 'react-i18next';
 import {
   data,
   Form,
+  RouterContextProvider,
   useLoaderData,
   type LoaderFunctionArgs,
 } from 'react-router';
-import type PloneClient from '@plone/client';
-
-import config from '@plone/registry';
+import { ploneClientContext } from 'seven/app/middleware.server';
 import { Container, Input } from '@plone/components/quanta';
 
 export const handle = {
   bodyClass: 'search-route',
 };
 
-export async function loader({ request, params }: LoaderFunctionArgs) {
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
+export async function loader({
+  request,
+  params,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  const cli = context.get(ploneClientContext);
 
   const path = `/${params['*'] || ''}`;
   const url = new URL(request.url);
