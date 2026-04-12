@@ -412,6 +412,21 @@ This is a breaking change for projects that relied on the original image always 
 A pair of additional scales were added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
 Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scales named `2k` and `4k`.
 
+### Replaced old drag-and-drop libraries
+```{versionadded} Volto 19.0.0-alpha.30
+```
+
+The `react-dnd`, `react-dnd-html5-backend`, and `react-sortable-hoc` libraries were replaced with `dnd-kit`.
+These libraries provided drag-and-drop functionality in several components, but were no longer maintained.
+If you have shadows of any of these components, they need to be updated:
+
+- {file}`Contents.jsx`
+- {file}`ContentsIndexHeader.jsx`
+- {file}`ContentsItem.jsx`
+- {file}`Field.jsx`
+- {file}`ArrayWidget.jsx`
+- {file}`SelectStyling.jsx`
+
 (upgrading-to-volto-18-x-x)=
 
 ## Upgrading to Volto 18.x.x

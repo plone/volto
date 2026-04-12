@@ -276,11 +276,11 @@ class ArrayWidget extends Component {
   render() {
     const choices = normalizeChoices(this.props?.choices || []);
     const selectedOption = normalizeArrayValue(choices, this.props.value);
+    const selectedIds = selectedOption.map((option) => option.value);
 
     const CreatableSelect = this.props.reactSelectCreateable.default;
-    const { SortableContainer } = this.props.reactSortableHOC;
     const Select = this.props.reactSelect.default;
-    const SortableSelect =
+    const SelectComponent =
       // It will be only creatable if the named vocabulary is in the widget definition
       // (hint) like:
       // list_field_voc_unconstrained = schema.List(
@@ -298,95 +298,111 @@ class ArrayWidget extends Component {
       this.props?.choices &&
       !getVocabFromHint(this.props) &&
       !this.props.creatable
-        ? SortableContainer(Select)
-        : SortableContainer(CreatableSelect);
+        ? Select
+        : CreatableSelect;
+    const { DndContext, closestCenter } = this.props.dndKitCore;
+    const { SortableContext, horizontalListSortingStrategy } =
+      this.props.dndKitSortable;
 
     return (
       <FormFieldWrapper {...this.props}>
-        <SortableSelect
-          useDragHandle
-          // react-sortable-hoc props:
-          axis="xy"
-          onSortEnd={(sortProp) => {
-            this.onSortEnd(selectedOption, sortProp);
+        <DndContext
+          collisionDetection={closestCenter}
+          onDragEnd={({ active, over }) => {
+            if (!over || active.id === over.id) {
+              return;
+            }
+            const oldIndex = selectedIds.indexOf(active.id);
+            const newIndex = selectedIds.indexOf(over.id);
+            if (oldIndex < 0 || newIndex < 0) {
+              return;
+            }
+            this.onSortEnd(selectedOption, { oldIndex, newIndex });
           }}
-          menuShouldScrollIntoView={false}
-          distance={4}
-          // small fix for https://github.com/clauderic/react-sortable-hoc/pull/352:
-          getHelperDimensions={({ node }) => node.getBoundingClientRect()}
-          id={`field-${this.props.id}`}
-          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${this.props.id}`}
-          key={this.props.id}
-          isDisabled={this.props.disabled || this.props.isDisabled}
-          className="react-select-container"
-          classNamePrefix="react-select"
-          /* eslint-disable jsx-a11y/no-autofocus */
-          autoFocus={this.props.focus}
-          /* eslint-enable jsx-a11y/no-autofocus */
-          options={
-            this.props.vocabBaseUrl
-              ? choices
-              : this.props.choices
-                ? [
-                    ...choices,
-                    ...(this.props.noValueOption &&
-                    (this.props.default === undefined ||
-                      this.props.default === null)
-                      ? [
-                          {
-                            label: this.props.intl.formatMessage(
-                              messages.no_value,
-                            ),
-                            value: 'no-value',
-                          },
-                        ]
-                      : []),
-                  ]
-                : [
-                    {
-                      label: this.props.intl.formatMessage(messages.no_value),
-                      value: 'no-value',
-                    },
-                  ]
-          }
-          styles={customSelectStyles}
-          theme={selectTheme}
-          components={{
-            ...(this.props.choices?.length > 25 && {
-              MenuList,
-            }),
-            MultiValueContainer,
-            MultiValue: SortableMultiValue,
-            MultiValueLabel: SortableMultiValueLabel,
-            DropdownIndicator,
-            ClearIndicator,
-            Option,
-          }}
-          value={selectedOption || []}
-          placeholder={
-            this.props.placeholder ??
-            this.props.intl.formatMessage(messages.select)
-          }
-          onChange={this.handleChange}
-          isValidNewOption={(
-            inputValue,
-            selectValue,
-            selectOptions,
-            accessors,
-          ) =>
-            !(
-              !inputValue ||
-              selectValue.some((option) =>
-                compareOption(inputValue, option, accessors),
-              ) ||
-              selectOptions.some((option) =>
-                compareOption(inputValue, option, accessors),
-              )
-            )
-          }
-          isClearable
-          isMulti
-        />
+        >
+          <SortableContext
+            items={selectedIds}
+            strategy={horizontalListSortingStrategy}
+          >
+            <SelectComponent
+              menuShouldScrollIntoView={false}
+              id={`field-${this.props.id}`}
+              aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${this.props.id}`}
+              key={this.props.id}
+              isDisabled={this.props.disabled || this.props.isDisabled}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              /* eslint-disable jsx-a11y/no-autofocus */
+              autoFocus={this.props.focus}
+              /* eslint-enable jsx-a11y/no-autofocus */
+              options={
+                this.props.vocabBaseUrl
+                  ? choices
+                  : this.props.choices
+                    ? [
+                        ...choices,
+                        ...(this.props.noValueOption &&
+                        (this.props.default === undefined ||
+                          this.props.default === null)
+                          ? [
+                              {
+                                label: this.props.intl.formatMessage(
+                                  messages.no_value,
+                                ),
+                                value: 'no-value',
+                              },
+                            ]
+                          : []),
+                      ]
+                    : [
+                        {
+                          label: this.props.intl.formatMessage(
+                            messages.no_value,
+                          ),
+                          value: 'no-value',
+                        },
+                      ]
+              }
+              styles={customSelectStyles}
+              theme={selectTheme}
+              components={{
+                ...(this.props.choices?.length > 25 && {
+                  MenuList,
+                }),
+                MultiValueContainer,
+                MultiValue: SortableMultiValue,
+                MultiValueLabel: SortableMultiValueLabel,
+                DropdownIndicator,
+                ClearIndicator,
+                Option,
+              }}
+              value={selectedOption || []}
+              placeholder={
+                this.props.placeholder ??
+                this.props.intl.formatMessage(messages.select)
+              }
+              onChange={this.handleChange}
+              isValidNewOption={(
+                inputValue,
+                selectValue,
+                selectOptions,
+                accessors,
+              ) =>
+                !(
+                  !inputValue ||
+                  selectValue.some((option) =>
+                    compareOption(inputValue, option, accessors),
+                  ) ||
+                  selectOptions.some((option) =>
+                    compareOption(inputValue, option, accessors),
+                  )
+                )
+              }
+              isClearable
+              isMulti
+            />
+          </SortableContext>
+        </DndContext>
       </FormFieldWrapper>
     );
   }
@@ -396,7 +412,12 @@ export const ArrayWidgetComponent = injectIntl(ArrayWidget);
 
 export default compose(
   injectIntl,
-  injectLazyLibs(['reactSelect', 'reactSelectCreateable', 'reactSortableHOC']),
+  injectLazyLibs([
+    'reactSelect',
+    'reactSelectCreateable',
+    'dndKitCore',
+    'dndKitSortable',
+  ]),
   connect(
     (state, props) => {
       const vocabBaseUrl =

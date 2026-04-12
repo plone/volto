@@ -24,9 +24,6 @@ export const loadables = {
   reactVirtualized: loadable.lib(() => import('react-virtualized'), {
     ssr: false,
   }),
-  reactSortableHOC: loadable.lib(() => import('react-sortable-hoc'), {
-    ssr: false,
-  }),
   reactSelectAsyncPaginate: loadable.lib(
     () => import('react-select-async-paginate'),
     { ssr: false },
@@ -46,8 +43,6 @@ export const loadables = {
   diffLib: loadable.lib(() => import('diff')),
   moment: loadable.lib(() => import('moment')),
   reactDates: loadable.lib(() => import('react-dates')),
-  reactDnd: loadable.lib(() => import('react-dnd')),
-  reactDndHtml5Backend: loadable.lib(() => import('react-dnd-html5-backend')),
   reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
   rrule: loadable.lib(() => import('rrule')),
   dndKitCore: loadable.lib(() => import('@dnd-kit/core')),

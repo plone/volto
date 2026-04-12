@@ -16,10 +16,16 @@ export const MenuList = ({ children }) => {
 
 export const SortableMultiValue = injectLazyLibs([
   'reactSelect',
-  'reactSortableHOC',
+  'dndKitSortable',
+  'dndKitUtilities',
 ])((props) => {
   const { MultiValue } = props.reactSelect.components;
-  const { SortableElement } = props.reactSortableHOC;
+  const { useSortable } = props.dndKitSortable;
+  const { CSS } = props.dndKitUtilities;
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: props.data.value,
+    });
   // this prevents the menu from being opened/closed when the user clicks
   // on a value to begin dragging it. ideally, detecting a click (instead of
   // a drag) would still focus the control and toggle the menu, but that
@@ -28,19 +34,31 @@ export const SortableMultiValue = injectLazyLibs([
     e.preventDefault();
     e.stopPropagation();
   };
-  const innerProps = { ...props.innerProps, onMouseDown };
-  const SortableComponent = SortableElement(MultiValue);
-  return <SortableComponent {...props} innerProps={innerProps} />;
+
+  return (
+    <div
+      role="option"
+      aria-selected={props.isSelected}
+      tabindex="0"
+      ref={setNodeRef}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+      }}
+      {...attributes}
+      {...listeners}
+      onMouseDown={onMouseDown}
+    >
+      <MultiValue {...props} />
+    </div>
+  );
 });
 
-export const SortableMultiValueLabel = injectLazyLibs([
-  'reactSelect',
-  'reactSortableHOC',
-])((props) => {
+export const SortableMultiValueLabel = injectLazyLibs(['reactSelect'])((
+  props,
+) => {
   const { MultiValueLabel } = props.reactSelect.components;
-  const { SortableHandle } = props.reactSortableHOC;
-  const SortableComponent = SortableHandle(MultiValueLabel);
-  return <SortableComponent {...props} />;
+  return <MultiValueLabel {...props} />;
 });
 
 export const MultiValueContainer = injectLazyLibs('reactSelect')((props) => {
