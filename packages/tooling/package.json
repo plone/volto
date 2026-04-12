@@ -27,6 +27,7 @@
     "@types/react": "catalog:",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-better-tailwindcss": "^3.7.9",
     "eslint-plugin-import": "^2.32.0",

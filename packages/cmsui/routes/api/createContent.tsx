@@ -1,27 +1,22 @@
-import { data, type ActionFunctionArgs } from 'react-router';
+import {
+  data,
+  RouterContextProvider,
+  type ActionFunctionArgs,
+} from 'react-router';
 import { flattenToAppURL } from '@plone/helpers';
-import { getAuthFromRequest } from '@plone/react-router';
-import config from '@plone/registry';
+import { ploneClientContext } from 'seven/app/middleware.server';
 
 type CreateContentRequest = {
   path?: string;
   data?: Record<string, unknown>;
 };
 
-export async function action({ params, request }: ActionFunctionArgs) {
-  const token = await getAuthFromRequest(request);
-
-  const PloneClient = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method();
-
-  const cli = PloneClient.initialize({
-    apiPath: config.settings.apiPath,
-    token,
-  });
+export async function action({
+  params,
+  request,
+  context,
+}: ActionFunctionArgs<RouterContextProvider>) {
+  const cli = context.get(ploneClientContext);
 
   const body = (await request.json()) as CreateContentRequest;
   const pathFromParams = `/${params['*'] || ''}`;

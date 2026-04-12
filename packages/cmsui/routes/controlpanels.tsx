@@ -1,35 +1,34 @@
 import {
+  RouterContextProvider,
   useLoaderData,
   useNavigate,
   type LoaderFunctionArgs,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { ploneClientContext } from 'seven/app/middleware.server';
 import { requireAuthCookie } from '@plone/react-router';
 import { Button, Container } from '@plone/components/quanta';
 import { Plug } from '@plone/layout/components/Pluggable';
 import ControlPanelsList from '../components/ControlPanel/ControlPanelsList';
 import VersionOverview from '../components/VersionOverview/VersionOverview';
 import Back from '@plone/components/icons/arrow-left.svg?react';
-import config from '@plone/registry';
 
-export async function loader({ params, request }: LoaderFunctionArgs) {
-  const token = await requireAuthCookie(request);
+export async function loader({
+  request,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  await requireAuthCookie(request);
 
-  const PloneClient = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method();
+  const cli = context.get(ploneClientContext);
 
-  const cli = PloneClient.initialize({
-    apiPath: config.settings.apiPath,
-    token,
-  });
-
-  const { data: controlpanels } = await cli.getControlpanels();
-  const { data: systemInformation } = await cli.getSystem();
-  return { controlpanels, systemInformation };
+  const [controlpanelsRes, sysInfoRes] = await Promise.all([
+    cli.getControlpanels(),
+    cli.getSystem(),
+  ]);
+  return {
+    controlpanels: controlpanelsRes.data,
+    systemInformation: sysInfoRes.data,
+  };
 }
 
 export default function ControlPanels() {
