@@ -19,6 +19,32 @@ vi.mock('jwt-decode');
 vi.mock('@plone/react-router', () => ({ getAuthFromRequest: vi.fn() }));
 
 describe('middleware', () => {
+  const initializePloneClientContext = async (
+    request: Request,
+    context: RouterContextProvider,
+  ) => {
+    await PloneClientMiddleware(
+      {
+        request,
+        context,
+        params: {},
+        unstable_pattern: '/',
+        unstable_url: new URL(request.url),
+      },
+      vi.fn(),
+    );
+  };
+
+  const registerPloneClientFactory = (ploneClient: Record<string, unknown>) => {
+    config.registerUtility({
+      name: 'ploneClient',
+      type: 'client',
+      method: () => ({
+        initialize: vi.fn().mockReturnValue(ploneClient),
+      }),
+    });
+  };
+
   afterEach(() => {
     vi.resetAllMocks();
     vi.restoreAllMocks();
@@ -54,8 +80,8 @@ describe('middleware', () => {
             name: 'ploneClient',
             type: 'client',
           })
-          .method().config.apiPath,
-      ).toEqual('http://localhost:8080/Plone');
+          .method(),
+      ).toHaveProperty('initialize');
     });
   });
 
@@ -466,18 +492,15 @@ describe('middleware', () => {
       const getContentMock = vi.fn().mockResolvedValue(mockContent);
       const getSiteMock = vi.fn().mockResolvedValue(mockSite);
       config.settings.apiPath = 'http://example.com';
-      config.registerUtility({
-        name: 'ploneClient',
-        type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-        }),
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
       });
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
 
       await fetchPloneContent(
         {
@@ -507,18 +530,15 @@ describe('middleware', () => {
       const getContentMock = vi.fn().mockResolvedValue({ data: {} });
       const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
       config.settings.apiPath = 'http://example.com';
-      config.registerUtility({
-        name: 'ploneClient',
-        type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-        }),
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
       });
       const request = new Request('http://example.com/test-content');
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
 
       await fetchPloneContent(
         {
@@ -543,18 +563,15 @@ describe('middleware', () => {
         .mockRejectedValue({ data: undefined, status: 500 });
       const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
       config.settings.apiPath = 'http://example.com';
-      config.registerUtility({
-        name: 'ploneClient',
-        type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-        }),
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
       });
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
 
       try {
         await fetchPloneContent(
@@ -578,18 +595,15 @@ describe('middleware', () => {
         .fn()
         .mockRejectedValue({ data: undefined, status: 500 });
       config.settings.apiPath = 'http://example.com';
-      config.registerUtility({
-        name: 'ploneClient',
-        type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-        }),
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
       });
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
 
       try {
         await fetchPloneContent(
@@ -612,19 +626,16 @@ describe('middleware', () => {
       const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
       const getUserMock = vi.fn();
       config.settings.apiPath = 'http://example.com';
-      config.registerUtility({
-        name: 'ploneClient',
-        type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-          getUser: getUserMock,
-        }),
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
       });
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
 
       await fetchPloneContent(
         {
@@ -647,15 +658,10 @@ describe('middleware', () => {
       const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
       const getUserMock = vi.fn().mockResolvedValue(mockUser);
       config.settings.apiPath = 'http://example.com';
-      config.registerUtility({
-        name: 'ploneClient',
-        type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-          getUser: getUserMock,
-        }),
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
       });
       vi.mocked(getAuthFromRequest).mockResolvedValue('valid.jwt.token');
       vi.mocked(jwtDecode).mockReturnValue({
@@ -666,6 +672,8 @@ describe('middleware', () => {
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
 
       await fetchPloneContent(
         {
@@ -691,21 +699,18 @@ describe('middleware', () => {
       const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
       const getUserMock = vi.fn();
       config.settings.apiPath = 'http://example.com';
-      config.registerUtility({
-        name: 'ploneClient',
-        type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-          getUser: getUserMock,
-        }),
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
       });
       vi.mocked(getAuthFromRequest).mockResolvedValue('token.without.sub');
       vi.mocked(jwtDecode).mockReturnValue({ exp: 9999999999 });
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
 
       await fetchPloneContent(
         {
@@ -731,15 +736,10 @@ describe('middleware', () => {
       const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
       const getUserMock = vi.fn();
       config.settings.apiPath = 'http://example.com';
-      config.registerUtility({
-        name: 'ploneClient',
-        type: 'client',
-        method: () => ({
-          config: { token: undefined },
-          getContent: getContentMock,
-          getSite: getSiteMock,
-          getUser: getUserMock,
-        }),
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
       });
       vi.mocked(getAuthFromRequest).mockResolvedValue('malformed.token');
       vi.mocked(jwtDecode).mockImplementation(() => {
@@ -748,6 +748,8 @@ describe('middleware', () => {
       const request = new Request('http://example.com');
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
 
       await fetchPloneContent(
         {
