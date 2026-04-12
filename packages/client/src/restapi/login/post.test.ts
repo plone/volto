@@ -18,8 +18,10 @@ afterEach(async () => {
 describe('Login', () => {
   test('login request function', async () => {
     const result = await cli.login({
-      username: 'admin',
-      password: 'secret',
+      data: {
+        username: 'admin',
+        password: 'secret',
+      },
     });
     expect(result).toBeTypeOf('object');
     expect(result.data.token).toBeTypeOf('string');
