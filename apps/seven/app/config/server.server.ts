@@ -16,14 +16,10 @@ export default function install() {
   config.settings.apiPath =
     process.env.PLONE_API_PATH || 'http://localhost:8080/Plone';
 
-  const cli = PloneClient.initialize({
-    apiPath: config.settings.apiPath,
-  });
-
   config.registerUtility({
     name: 'ploneClient',
     type: 'client',
-    method: () => cli,
+    method: () => PloneClient,
   });
 
   config.registerUtility({

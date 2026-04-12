@@ -17,7 +17,7 @@ export default defineConfig({
         'packages/**',
         'build/**',
         '*.config.ts',
-        'registry.loader.js',
+        '.plone/**',
         'app/entry.server.tsx',
         'app/entry.client.tsx',
         'app/i18next.server.ts',

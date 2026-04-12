@@ -81,7 +81,7 @@ if (secret === 'default' && process.env.NODE_ENV === 'production') {
 export const cookie = createCookie('auth_seven', {
   secrets: [secret],
   // 30 days
-  maxAge: 30 * 24 * 60 * 60,
+  // maxAge: 30 * 24 * 60 * 60,
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
   sameSite: 'lax',
@@ -99,8 +99,12 @@ export async function getAuthFromRequest(
   return token ?? undefined;
 }
 
-export async function setAuthOnResponse(response: Response, token: string) {
-  const header = await cookie.serialize(token);
+export async function setAuthOnResponse(
+  response: Response,
+  token: string,
+  options?: Parameters<typeof cookie.serialize>[1],
+) {
+  const header = await cookie.serialize(token, options);
   response.headers.append('Set-Cookie', header);
   return response;
 }
