@@ -5,25 +5,24 @@ import type { Login } from '@plone/types';
 import type { RequestResponse } from '../types';
 
 export const loginArgsSchema = z.object({
-  username: z.string(),
-  password: z.string(),
+  data: z.object({
+    username: z.string(),
+    password: z.string(),
+  }),
 });
 
 export type LoginArgs = z.infer<typeof loginArgsSchema>;
 
 export async function login(
   this: PloneClient,
-  { username, password }: LoginArgs,
+  { data }: LoginArgs,
 ): Promise<RequestResponse<Login>> {
-  const validatedArgs = loginArgsSchema.parse({
-    username,
-    password,
-  });
+  const validatedArgs = loginArgsSchema.parse({ data });
 
   const options: ApiRequestParams = {
     data: {
-      login: validatedArgs.username,
-      password: validatedArgs.password,
+      login: validatedArgs.data.username,
+      password: validatedArgs.data.password,
     },
     config: this.config,
   };

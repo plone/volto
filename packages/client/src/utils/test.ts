@@ -17,7 +17,7 @@ export const loginWithCreate = async (
   },
 ) => {
   if (!email) {
-    return cli.login({ username, password });
+    return cli.login({ data: { username, password } });
   }
 
   try {
@@ -28,7 +28,7 @@ export const loginWithCreate = async (
     // handle error if the user has already been creatd in previous invocations
   }
 
-  return cli.login({ username, password });
+  return cli.login({ data: { username, password } });
 };
 
 export const getUniqueEntityName = (baseName: string) =>

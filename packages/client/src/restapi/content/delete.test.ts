@@ -9,7 +9,7 @@ const cli = PloneClient.initialize({
 });
 
 // Get token
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { username: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
