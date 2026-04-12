@@ -23,7 +23,6 @@ describe('loader', () => {
     context.set(ploneClientContext, {
       search: searchMock,
     } as any);
-
     const request = new Request(
       'http://example.com/@search?SearchableText=test&path.depth=1',
     );
@@ -59,7 +58,6 @@ describe('loader', () => {
     context.set(ploneClientContext, {
       search: searchMock,
     } as any);
-
     const request = new Request('http://example.com/@search');
 
     await loader({ request, params: {}, context, unstable_pattern: '@search' });
