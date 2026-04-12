@@ -96,8 +96,8 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
   { request, params, context },
   next,
 ) => {
-  const token = await getAuthFromRequest(request);
   const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
+  const token = await getAuthFromRequest(request);
 
   const cli = context.get(ploneClientContext);
 
