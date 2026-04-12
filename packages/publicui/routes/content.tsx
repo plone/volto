@@ -10,7 +10,7 @@ import { ploneContentContext } from 'seven/app/middleware.server';
 export async function loader({
   context,
 }: LoaderFunctionArgs<RouterContextProvider>) {
-  const { data: content } = context.get(ploneContentContext);
+  const content = context.get(ploneContentContext);
   return { content };
 }
 

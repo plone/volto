@@ -81,7 +81,7 @@ export async function loader({
   context,
 }: LoaderFunctionArgs<RouterContextProvider>) {
   const locale = await i18next.getLocale(request);
-  const { data: content } = context.get(ploneContentContext);
+  const content = context.get(ploneContentContext);
   return {
     content,
     cssLayers: config.settings.cssLayers,
