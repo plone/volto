@@ -41,7 +41,7 @@ export async function action({
   const cli = context.get(ploneClientContext);
 
   try {
-    const { data } = await cli.login({ data: { username, password } });
+    const { data } = await cli.login({ data: { login: username, password } });
     const decodedToken = jwtDecode<{
       sub: string;
       exp: number;

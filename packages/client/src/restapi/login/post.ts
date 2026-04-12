@@ -6,7 +6,7 @@ import type { RequestResponse } from '../types';
 
 export const loginArgsSchema = z.object({
   data: z.object({
-    username: z.string(),
+    login: z.string(),
     password: z.string(),
   }),
 });
@@ -21,7 +21,7 @@ export async function login(
 
   const options: ApiRequestParams = {
     data: {
-      login: validatedArgs.data.username,
+      login: validatedArgs.data.login,
       password: validatedArgs.data.password,
     },
     config: this.config,
