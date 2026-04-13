@@ -121,7 +121,7 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
     const [content, site, user] = await Promise.all([
       cli.getContent({ path, expand }),
       cli.getSite(),
-      userId ? cli.getUser({ userId }) : Promise.resolve(null),
+      userId ? cli.getUser({ id: userId }) : Promise.resolve(null),
     ]);
 
     migrateContent(content.data);

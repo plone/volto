@@ -39,7 +39,7 @@ describe('Update User', () => {
     });
 
     const user = await cli.getUser({
-      userId: userData.username,
+      id: userData.username,
     });
 
     expect(user.data.username).toBe('changedUsername');
@@ -72,7 +72,7 @@ describe('Update User', () => {
     });
 
     const user = await cli.getUser({
-      userId: userData.username,
+      id: userData.username,
     });
 
     expect(user.data.portrait).toBe(
@@ -108,7 +108,7 @@ describe('Update User', () => {
     });
 
     const user = await cli.getUser({
-      userId: userData.username,
+      id: userData.username,
     });
 
     expect(user.data.portrait).toBe(
@@ -145,7 +145,7 @@ describe('Update User', () => {
     });
 
     const user = await cli.getUser({
-      userId: userData.username,
+      id: userData.username,
     });
 
     expect(user.data.username).toBe(updateUserData.username);
