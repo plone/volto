@@ -34,7 +34,7 @@ describe('Update User', () => {
     await cli.createUser({ data: userData });
 
     await cli.updateUser({
-      userId: userData.username,
+      id: userData.username,
       data: updateUserData,
     });
 
@@ -67,7 +67,7 @@ describe('Update User', () => {
     await cli.createUser({ data: userData });
 
     await cli.updateUser({
-      userId: userData.username,
+      id: userData.username,
       data: updatePortraitData,
     });
 
@@ -103,7 +103,7 @@ describe('Update User', () => {
     await cli.createUser({ data: userData });
 
     await cli.updateUser({
-      userId: userData.username,
+      id: userData.username,
       data: updatePortraitData,
     });
 
@@ -140,7 +140,7 @@ describe('Update User', () => {
     await cli.createUser({ data: userData });
 
     await cli.updateUser({
-      userId: userData.username,
+      id: userData.username,
       data: updateUserData,
     });
 

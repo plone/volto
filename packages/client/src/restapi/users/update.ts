@@ -5,7 +5,7 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 export const updateUserArgsSchema = z.object({
-  userId: z.string(),
+  id: z.string(),
   data: updateUserDataSchema,
 });
 
@@ -13,10 +13,10 @@ export type UpdateUserArgs = z.infer<typeof updateUserArgsSchema>;
 
 export async function updateUser(
   this: PloneClient,
-  { userId, data }: UpdateUserArgs,
+  { id, data }: UpdateUserArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = updateUserArgsSchema.parse({
-    userId,
+    id,
     data,
   });
 
@@ -25,7 +25,7 @@ export async function updateUser(
     config: this.config,
   };
 
-  const userName = `/@users/${validatedArgs.userId}`;
+  const userName = `/@users/${validatedArgs.id}`;
 
   return apiRequest('patch', userName, options);
 }
