@@ -4,24 +4,24 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 export const deleteUserArgsSchema = z.object({
-  userId: z.string(),
+  id: z.string(),
 });
 
 type DeleteUserArgs = z.infer<typeof deleteUserArgsSchema>;
 
 export async function deleteUser(
   this: PloneClient,
-  { userId }: DeleteUserArgs,
+  { id }: DeleteUserArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = deleteUserArgsSchema.parse({
-    userId,
+    id,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
   };
 
-  const userName = `/@users/${validatedArgs.userId}`;
+  const userName = `/@users/${validatedArgs.id}`;
 
   return apiRequest('delete', userName, options);
 }

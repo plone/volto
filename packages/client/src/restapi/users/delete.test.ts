@@ -27,12 +27,12 @@ describe('Delete UserDelete', () => {
 
     await cli.createUser({ data: userData });
 
-    await cli.deleteUser({ userId: userData.username });
+    await cli.deleteUser({ id: userData.username });
   });
 
   test('Failure', async () => {
     try {
-      await cli.deleteUser({ userId: 'blah' });
+      await cli.deleteUser({ id: 'blah' });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

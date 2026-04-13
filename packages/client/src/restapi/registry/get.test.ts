@@ -19,17 +19,17 @@ afterEach(async () => {
 
 describe('Get Registry', () => {
   test('Successful', async () => {
-    const registryName = 'plone.app.querystring.field.path.title';
-    const result = await cli.getRegistryRecord({ registryName });
+    const name = 'plone.app.querystring.field.path.title';
+    const result = await cli.getRegistryRecord({ name });
 
     expect(result.data).toBe('Location');
   });
 
   test('Failure', async () => {
-    const registryName = '/blah';
+    const name = '/blah';
 
     try {
-      await cli.getRegistryRecord({ registryName });
+      await cli.getRegistryRecord({ name });
     } catch (err) {
       expect((err as RequestError).status).toBe(503);
     }

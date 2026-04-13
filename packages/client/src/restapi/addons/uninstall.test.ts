@@ -18,9 +18,9 @@ afterEach(async () => {
 
 describe('Uninstall Addon', () => {
   test('Successful', async () => {
-    const addonId = '/plone.app.session';
+    const id = '/plone.app.session';
 
-    const result = await cli.uninstallAddon({ addonId });
+    const result = await cli.uninstallAddon({ id });
     expect(result.status).toBe(204);
   });
 });

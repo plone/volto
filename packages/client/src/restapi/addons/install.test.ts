@@ -18,9 +18,9 @@ afterEach(async () => {
 
 describe('Install Addon', () => {
   test('Successful', async () => {
-    const addonId = '/plone.app.iterate';
+    const id = '/plone.app.iterate';
 
-    const result = await cli.installAddon({ addonId });
+    const result = await cli.installAddon({ id });
     expect(result.status).toBe(204);
   });
 });

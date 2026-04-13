@@ -43,7 +43,7 @@ export async function loader({
 
   const cli = context.get(ploneClientContext);
 
-  const { data: controlpanel } = await cli.getControlpanel({ path: panel_id });
+  const { data: controlpanel } = await cli.getControlpanel({ id: panel_id });
   return { controlpanel };
 }
 

@@ -4,7 +4,7 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 const installAddonProfileSchema = z.object({
-  addonId: z.string(),
+  id: z.string(),
   profile: z.string(),
 });
 
@@ -12,10 +12,10 @@ export type InstallAddonProfileArgs = z.infer<typeof installAddonProfileSchema>;
 
 export async function installAddonProfile(
   this: PloneClient,
-  { addonId, profile }: InstallAddonProfileArgs,
+  { id, profile }: InstallAddonProfileArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = installAddonProfileSchema.parse({
-    addonId,
+    id,
     profile,
   });
 
@@ -23,7 +23,7 @@ export async function installAddonProfile(
     config: this.config,
     params: {},
   };
-  const addonName = `@addons/${validatedArgs.addonId}/${profile}`;
+  const addonName = `@addons/${validatedArgs.id}/${profile}`;
 
   return apiRequest('post', addonName, options);
 }
