@@ -32,7 +32,11 @@ function resolveSchema(blockConfig, intl) {
 
   let schema =
     typeof blockSchema === 'function'
-      ? blockSchema({ data: { '@type': id }, intl, props: { data: { '@type': id } } })
+      ? blockSchema({
+          data: { '@type': id },
+          intl,
+          props: { data: { '@type': id } },
+        })
       : blockSchema;
 
   if (schema && typeof schemaEnhancer === 'function') {
@@ -147,7 +151,10 @@ async function blocksSchemaDetail(req, res, next) {
     }
 
     res.set('Cache-Control', 'private, max-age=0, must-revalidate');
-    res.json({ '@id': req.originalUrl || req.url, ...buildFullDetail(blockConfig, intl) });
+    res.json({
+      '@id': req.originalUrl || req.url,
+      ...buildFullDetail(blockConfig, intl),
+    });
   } catch (error) {
     if (error?.status === 401) {
       handleAuthError(res, error);
