@@ -28,7 +28,7 @@ describe('Update Registry', () => {
     });
 
     const registry = await cli.getRegistryRecord({
-      registryName: 'plone.app.querystring.field.path.title',
+      name: 'plone.app.querystring.field.path.title',
     });
 
     expect(registry.data).toBe('Value');

@@ -39,7 +39,7 @@ describe('PasswordUpdate', () => {
     };
 
     await cli.updatePassword({
-      userId: username,
+      id: username,
       data: resetUserData,
     });
   });

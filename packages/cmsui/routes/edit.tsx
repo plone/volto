@@ -48,7 +48,7 @@ export async function loader({
   const cli = context.get(ploneClientContext);
   const content = context.get(ploneContentContext);
 
-  const { data: schema } = await cli.getType({ contentType: content['@type'] });
+  const { data: schema } = await cli.getType({ type: content['@type'] });
 
   return data(flattenToAppURL({ content, schema }));
 }

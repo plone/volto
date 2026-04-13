@@ -27,7 +27,7 @@ describe('Content', () => {
 
     // We need to install 'plone.app.multilingual' in order to use translations endpoint
     await cli.installAddon({
-      addonId: 'plone.app.multilingual',
+      id: 'plone.app.multilingual',
     });
 
     const contentDataES = {
@@ -64,7 +64,7 @@ describe('Content', () => {
 
     // We need to install 'plone.app.multilingual' in order to use translations endpoint
     await cli.installAddon({
-      addonId: 'plone.app.multilingual',
+      id: 'plone.app.multilingual',
     });
 
     const linkData = {

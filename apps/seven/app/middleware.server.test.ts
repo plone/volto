@@ -686,7 +686,7 @@ describe('middleware', () => {
         nextMock,
       );
 
-      expect(getUserMock).toHaveBeenCalledWith({ userId: 'testuser' });
+      expect(getUserMock).toHaveBeenCalledWith({ id: 'testuser' });
       expect(context.get(ploneUserContext)).toEqual(mockUser.data);
       expect(getContentMock).toHaveBeenCalledWith({
         path: '/',

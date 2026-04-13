@@ -32,12 +32,12 @@ describe('Update Group', () => {
       description: 'changed description',
     };
     await cli.updateGroup({
-      groupId: groupData.groupname,
+      id: groupData.groupname,
       data: updateGroupData,
     });
 
     const group = await cli.getGroup({
-      groupId: groupData.groupname,
+      id: groupData.groupname,
     });
 
     expect(group.data.description).toBe('changed description');
@@ -50,7 +50,7 @@ describe('Update Group', () => {
     };
 
     try {
-      await cli.updateGroup({ groupId, data: updateGroupData });
+      await cli.updateGroup({ id: groupId, data: updateGroupData });
     } catch (err) {
       expect((err as RequestError).status).toBe(400);
     }

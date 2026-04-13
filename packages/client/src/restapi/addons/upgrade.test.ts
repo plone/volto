@@ -18,9 +18,9 @@ afterEach(async () => {
 
 describe('Upgrade Addon', () => {
   test('Successful', async () => {
-    const addonId = '/plone.app.volto';
+    const id = '/plone.app.volto';
 
-    const result = await cli.upgradeAddon({ addonId });
+    const result = await cli.upgradeAddon({ id });
     expect(result.status).toBe(204);
   });
 });

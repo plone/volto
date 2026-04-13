@@ -30,7 +30,7 @@ describe('Get User', () => {
 
     await cli.createUser({ data: userData });
 
-    const result = await cli.getUser({ userId: userData.username });
+    const result = await cli.getUser({ id: userData.username });
 
     expect(result.data.id).toBe(userData.username);
   });
@@ -43,7 +43,7 @@ describe('Get User', () => {
     };
 
     try {
-      await cli.getUser({ userId: userData.username });
+      await cli.getUser({ id: userData.username });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

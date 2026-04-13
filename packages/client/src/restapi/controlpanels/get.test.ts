@@ -18,34 +18,34 @@ afterEach(async () => {
 
 describe('Get Controlpanel', () => {
   test('Successful - editing', async () => {
-    const path = 'editing';
+    const id = 'editing';
 
-    const result = await cli.getControlpanel({ path });
+    const result = await cli.getControlpanel({ id });
 
     expect(result.data['@id']).toBe(
-      `http://localhost:55001/plone/@controlpanels/${path}`,
+      `http://localhost:55001/plone/@controlpanels/${id}`,
     );
     expect(result.data.group).toBe('Content');
   });
 
   test('Successful - content-rules', async () => {
-    const path = 'content-rules';
+    const id = 'content-rules';
 
-    const result = await cli.getControlpanel({ path });
+    const result = await cli.getControlpanel({ id });
 
     expect(result.data['@id']).toBe(
-      `http://localhost:55001/plone/@controlpanels/${path}`,
+      `http://localhost:55001/plone/@controlpanels/${id}`,
     );
     expect(result.data.title).toBe('Content Rules');
   });
 
   test('Successful - dexterity-types', async () => {
-    const path = 'dexterity-types';
+    const id = 'dexterity-types';
 
-    const result = await cli.getControlpanel({ path });
+    const result = await cli.getControlpanel({ id });
 
     expect(result.data['@id']).toBe(
-      `http://localhost:55001/plone/@controlpanels/${path}`,
+      `http://localhost:55001/plone/@controlpanels/${id}`,
     );
     expect(result.data.title).toBe('Content Types');
   });

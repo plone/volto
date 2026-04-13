@@ -27,7 +27,7 @@ describe('Delete Group', () => {
 
     await cli.createGroup({ data: groupData });
 
-    const result = await cli.deleteGroup({ groupId: groupData.groupname });
+    const result = await cli.deleteGroup({ id: groupData.groupname });
     expect(result.status).toBe(204);
   });
 
@@ -35,7 +35,7 @@ describe('Delete Group', () => {
     const groupId = 'blah';
 
     try {
-      await cli.deleteGroup({ groupId });
+      await cli.deleteGroup({ id: groupId });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

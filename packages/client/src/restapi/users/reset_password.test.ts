@@ -34,7 +34,7 @@ describe('PasswordReset', () => {
 
     await loginWithCreate(cli, userData);
 
-    const result = await cli.resetPassword({ userId: username });
+    const result = await cli.resetPassword({ id: username });
     expect(result.status).toBe(200);
   });
 });

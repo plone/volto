@@ -1,0 +1,1 @@
+Adapt Seven middleware to the updated `@plone/client` user lookup argument names. @sneridagh

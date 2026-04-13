@@ -34,12 +34,12 @@ describe('Update User', () => {
     await cli.createUser({ data: userData });
 
     await cli.updateUser({
-      userId: userData.username,
+      id: userData.username,
       data: updateUserData,
     });
 
     const user = await cli.getUser({
-      userId: userData.username,
+      id: userData.username,
     });
 
     expect(user.data.username).toBe('changedUsername');
@@ -67,12 +67,12 @@ describe('Update User', () => {
     await cli.createUser({ data: userData });
 
     await cli.updateUser({
-      userId: userData.username,
+      id: userData.username,
       data: updatePortraitData,
     });
 
     const user = await cli.getUser({
-      userId: userData.username,
+      id: userData.username,
     });
 
     expect(user.data.portrait).toBe(
@@ -103,12 +103,12 @@ describe('Update User', () => {
     await cli.createUser({ data: userData });
 
     await cli.updateUser({
-      userId: userData.username,
+      id: userData.username,
       data: updatePortraitData,
     });
 
     const user = await cli.getUser({
-      userId: userData.username,
+      id: userData.username,
     });
 
     expect(user.data.portrait).toBe(
@@ -140,12 +140,12 @@ describe('Update User', () => {
     await cli.createUser({ data: userData });
 
     await cli.updateUser({
-      userId: userData.username,
+      id: userData.username,
       data: updateUserData,
     });
 
     const user = await cli.getUser({
-      userId: userData.username,
+      id: userData.username,
     });
 
     expect(user.data.username).toBe(updateUserData.username);

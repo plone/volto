@@ -18,10 +18,10 @@ afterEach(async () => {
 
 describe('Install Addon Profile', () => {
   test('Successful', async () => {
-    const addonId = '/plone.restapi';
+    const id = '/plone.restapi';
     const profile = 'import/testing-workflows';
 
-    const result = await cli.installAddonProfile({ addonId, profile });
+    const result = await cli.installAddonProfile({ id, profile });
     expect(result.status).toBe(204);
   });
 });
