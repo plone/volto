@@ -29,6 +29,7 @@ import {
   SortableMultiValue,
   SortableMultiValueLabel,
   MultiValueContainer,
+  MultiValueRemove,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
@@ -372,6 +373,7 @@ class ArrayWidget extends Component {
                 MultiValueContainer,
                 MultiValue: SortableMultiValue,
                 MultiValueLabel: SortableMultiValueLabel,
+                MultiValueRemove,
                 DropdownIndicator,
                 ClearIndicator,
                 Option,

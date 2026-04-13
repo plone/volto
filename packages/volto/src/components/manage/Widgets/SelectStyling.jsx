@@ -14,6 +14,15 @@ export const MenuList = ({ children }) => {
   return <DynamicHeightList>{children}</DynamicHeightList>;
 };
 
+// this prevents the menu from being opened/closed when the user clicks
+// on a value to begin dragging it. ideally, detecting a click (instead of
+// a drag) would still focus the control and toggle the menu, but that
+// requires some magic with refs that are out of scope for this example
+const onMouseDown = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+
 export const SortableMultiValue = injectLazyLibs([
   'reactSelect',
   'dndKitSortable',
@@ -26,20 +35,10 @@ export const SortableMultiValue = injectLazyLibs([
     useSortable({
       id: props.data.value,
     });
-  // this prevents the menu from being opened/closed when the user clicks
-  // on a value to begin dragging it. ideally, detecting a click (instead of
-  // a drag) would still focus the control and toggle the menu, but that
-  // requires some magic with refs that are out of scope for this example
-  const onMouseDown = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
-      role="option"
-      aria-selected={props.isSelected}
-      tabindex="0"
       ref={setNodeRef}
       style={{
         transform: CSS.Transform.toString(transform),
@@ -47,9 +46,11 @@ export const SortableMultiValue = injectLazyLibs([
       }}
       {...attributes}
       {...listeners}
-      onMouseDown={onMouseDown}
     >
-      <MultiValue {...props} />
+      <MultiValue
+        {...props}
+        innerProps={{ ...props.innerProps, onMouseDown }}
+      />
     </div>
   );
 });
@@ -71,6 +72,19 @@ export const MultiValueContainer = injectLazyLibs('reactSelect')((props) => {
           <MultiValueContainer {...props} />
         </div>
       }
+    />
+  );
+});
+
+export const MultiValueRemove = injectLazyLibs(['reactSelect'])((props) => {
+  const { MultiValueRemove } = props.reactSelect.components;
+  return (
+    <MultiValueRemove
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        onPointerDown: (e) => e.stopPropagation(),
+      }}
     />
   );
 });
