@@ -3,17 +3,18 @@ import path from 'node:path';
 import { defineConfig, PluginOption } from 'vite';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
 import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
+import applyAddonViteConfiguration from './.plone/vite.loader';
 import babel from 'vite-plugin-babel';
 import tailwindcss from '@tailwindcss/vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import devtoolsJson from 'vite-plugin-devtools-json';
 
-export default defineConfig(({ isSsrBuild }) => {
+export default defineConfig(({ command, mode, isSsrBuild }) => {
   const analyze = process.env.ANALYZE === 'true';
   const target = isSsrBuild ? 'server' : 'client';
   const statsDir = path.resolve(__dirname, 'build', 'stats');
 
-  return {
+  const baseConfig = {
     plugins: [
       PloneSVGRVitePlugin(),
       PloneRegistryVitePlugin(),
@@ -56,4 +57,10 @@ export default defineConfig(({ isSsrBuild }) => {
       },
     },
   };
+
+  return applyAddonViteConfiguration(baseConfig, {
+    command,
+    mode,
+    isSsrBuild,
+  });
 });
