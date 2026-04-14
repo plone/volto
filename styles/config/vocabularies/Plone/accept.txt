@@ -19,6 +19,7 @@ Razzle
 RichText
 Sass
 transpile[dr]{0,1}
+Vite
 Volto
 Vue
 Zope

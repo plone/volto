@@ -7,15 +7,13 @@ myst:
     "keywords": "Seven, Vite, add-on, vite.extend, configuration"
 ---
 
-# Extend Vite config
+# Extend Vite configuration
 
 This guide shows how to extend a Seven app's Vite configuration from an add-on.
 
 ## Create a `vite.extend` file in your add-on
 
-Create a file named {file}`vite.extend.js` or {file}`vite.extend.ts` in the root of your add-on package.
-
-For example:
+Create a file named either {file}`vite.extend.js` or {file}`vite.extend.ts` in the root of your add-on package.
 
 -   {file}`packages/my-addon/vite.extend.js`
 -   {file}`packages/my-addon/vite.extend.ts`
@@ -23,7 +21,7 @@ For example:
 ## Export a default function
 
 The file must export a default function.
-Seven calls this function with the current Vite config and a context object, and expects the function to return a Vite config object.
+Seven calls this function with the current Vite configuration and a context object, and expects the function to return a Vite `config` object.
 
 ```ts
 export default function extendViteConfig(config, context) {
@@ -31,11 +29,11 @@ export default function extendViteConfig(config, context) {
 }
 ```
 
-If your function does not return a config object, Seven raises an error during loader generation.
+If your function does not return a `config` object, Seven raises an error during loader generation.
 
-## Update the Vite config
+## Update the Vite configuration
 
-Return a new config object or mutate the existing one before returning it.
+Use `extendViteConfig()` to return a new `config` object or mutate the existing one before returning it.
 
 The following example adds an alias and externalizes a package during SSR builds.
 
@@ -66,7 +64,7 @@ export default function extendViteConfig(config, context) {
 
 ## Use the context object
 
-The second argument contains information about the current Vite run.
+The second argument to `extendViteConfig(), `context`, contains information about the current Vite run.
 Use it when you need different behavior for development, production, or SSR.
 
 ```ts
@@ -89,9 +87,9 @@ export default function extendViteConfig(config, context) {
 
 ## Register the add-on
 
-Make sure your add-on is registered in the app, for example through {file}`registry.config.ts` or the `addons` key in {file}`package.json`.
+Make sure your add-on is registered in the app, for example, through {file}`registry.config.ts` or the `addons` key in {file}`package.json`.
 
-Seven discovers `vite.extend.js` and `vite.extend.ts` from registered add-ons only.
+Seven discovers {file}`vite.extend.js` and {file}`vite.extend.ts` from registered add-ons only.
 
 ## Run the build
 
@@ -102,4 +100,4 @@ Seven generates a Vite loader from the registered add-ons and applies the extend
 make build
 ```
 
-If multiple add-ons provide a `vite.extend` file, they are applied in the same order as the registered add-ons.
+If multiple add-ons provide a {file}`vite.extend.*s` file, they are applied in the same order as the registered add-ons.
