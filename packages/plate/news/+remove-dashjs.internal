@@ -1,0 +1,1 @@
+Removed `react-player` from Plate's editable video node to drop the `dash.js` build dependency and its noisy build warning output. @sneridagh
