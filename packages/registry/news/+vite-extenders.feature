@@ -1,1 +1,1 @@
-Add support for addon `vite.extend.js` and `vite.extend.ts` files by generating and loading a Vite extension loader from the registry. @sneridagh
+Add support for add-on {file}`vite.extend.js` and {file}`vite.extend.ts` files by generating and loading a Vite extension loader from the registry. @sneridagh
