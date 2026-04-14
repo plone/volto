@@ -1,0 +1,1 @@
+Fixed CSS definition. @sneridagh

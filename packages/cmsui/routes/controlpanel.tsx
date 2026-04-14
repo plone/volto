@@ -1,5 +1,6 @@
 import {
   redirect,
+  RouterContextProvider,
   useFetcher,
   useLoaderData,
   useNavigate,
@@ -8,8 +9,8 @@ import {
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { atom } from 'jotai';
+import { ploneClientContext } from 'seven/app/middleware.server';
 import type { DeepKeys } from '@tanstack/react-form';
-import type PloneClient from '@plone/client';
 import { requireAuthCookie } from '@plone/react-router';
 import { InitAtoms } from '@plone/helpers';
 import type {
@@ -31,35 +32,29 @@ import Back from '@plone/components/icons/arrow-left.svg?react';
 import Checkbox from '@plone/components/icons/checkbox.svg?react';
 import config from '@plone/registry';
 
-export async function loader({ params, request }: LoaderFunctionArgs) {
-  const token = await requireAuthCookie(request);
+export async function loader({
+  params,
+  request,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  await requireAuthCookie(request);
 
   const panel_id = params.id || 'navigation';
 
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
+  const cli = context.get(ploneClientContext);
 
-  cli.config.token = token;
-
-  const { data: controlpanel } = await cli.getControlpanel({ path: panel_id });
+  const { data: controlpanel } = await cli.getControlpanel({ id: panel_id });
   return { controlpanel };
 }
 
-export async function action({ params, request }: ActionFunctionArgs) {
-  const token = await requireAuthCookie(request);
+export async function action({
+  params,
+  request,
+  // context,
+}: ActionFunctionArgs<RouterContextProvider>) {
+  await requireAuthCookie(request);
 
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
-
-  cli.config.token = token;
+  // const cli = context.get(ploneClientContext);
 
   // const path = `/${params['*'] || ''}`;
 

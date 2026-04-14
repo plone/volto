@@ -1,9 +1,8 @@
 import { coverageConfigDefaults, defineConfig } from 'vitest/config';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [tsconfigPaths()],
+  plugins: [],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -18,7 +17,7 @@ export default defineConfig({
         'packages/**',
         'build/**',
         '*.config.ts',
-        'registry.loader.js',
+        '.plone/**',
         'app/entry.server.tsx',
         'app/entry.client.tsx',
         'app/i18next.server.ts',
@@ -26,5 +25,8 @@ export default defineConfig({
         'app/routes.ts',
       ],
     },
+  },
+  resolve: {
+    tsconfigPaths: true,
   },
 });

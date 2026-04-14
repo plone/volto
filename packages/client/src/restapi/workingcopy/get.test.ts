@@ -8,7 +8,7 @@ const cli = ploneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -21,7 +21,7 @@ afterEach(async () => {
 describe('Get WorkingCopy', () => {
   test('Successful', async () => {
     // We need to install 'plone.app.iterate' in order to use workingcopy endpoint
-    await cli.installAddon({ addonId: '/plone.app.iterate' });
+    await cli.installAddon({ id: '/plone.app.iterate' });
 
     const randomId = uuid();
     const path = '/';
@@ -40,7 +40,7 @@ describe('Get WorkingCopy', () => {
 
   test('Failure', async () => {
     // We need to install 'plone.app.iterate' in order to use workingcopy endpoint
-    await cli.installAddon({ addonId: '/plone.app.iterate' });
+    await cli.installAddon({ id: '/plone.app.iterate' });
     const path = 'blah';
 
     try {

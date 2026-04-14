@@ -40,7 +40,6 @@ import Sidebar, { sidebarAtom } from '../components/Sidebar/Sidebar';
 // import { ConsoleLog } from '../helpers/debug';
 
 export async function loader({
-  params,
   request,
   context,
 }: LoaderFunctionArgs<RouterContextProvider>) {
@@ -49,7 +48,7 @@ export async function loader({
   const cli = context.get(ploneClientContext);
   const content = context.get(ploneContentContext);
 
-  const { data: schema } = await cli.getType({ contentType: content['@type'] });
+  const { data: schema } = await cli.getType({ type: content['@type'] });
 
   return data(flattenToAppURL({ content, schema }));
 }

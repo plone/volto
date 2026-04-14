@@ -7,7 +7,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -70,7 +70,7 @@ describe('Update Type', () => {
       data: updateTypeFieldData,
     });
 
-    const type = await cli.getType({ contentType: 'Document' });
+    const type = await cli.getType({ type: 'Document' });
     const lastIndex = type.data.fieldsets.length - 1;
 
     expect(type.data.fieldsets?.[lastIndex].id).toBe(

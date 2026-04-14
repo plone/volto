@@ -8,7 +8,7 @@ const cli = ploneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -22,7 +22,7 @@ describe('Get Group', () => {
   test('Successful', async () => {
     const groupId = '/Administrators';
 
-    const result = await cli.getGroup({ groupId });
+    const result = await cli.getGroup({ id: groupId });
     expect(result.data.id).toBe('Administrators');
   });
 
@@ -34,7 +34,7 @@ describe('Get Group', () => {
 
     await cli.createGroup({ data: groupData });
 
-    const result = await cli.getGroup({ groupId: groupData.groupname });
+    const result = await cli.getGroup({ id: groupData.groupname });
     expect(result.data.id).toBe(groupData.groupname);
   });
 
@@ -42,7 +42,7 @@ describe('Get Group', () => {
     const groupId = 'blah';
 
     try {
-      await cli.getGroup({ groupId });
+      await cli.getGroup({ id: groupId });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

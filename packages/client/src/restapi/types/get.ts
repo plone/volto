@@ -5,24 +5,24 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 const getTypeSchema = z.object({
-  contentType: z.string(),
+  type: z.string(),
 });
 
 export type GetTypeArgs = z.infer<typeof getTypeSchema>;
 
 export async function getType(
   this: PloneClient,
-  { contentType }: GetTypeArgs,
+  { type }: GetTypeArgs,
 ): Promise<RequestResponse<GetTypeResponse>> {
   const validatedArgs = getTypeSchema.parse({
-    contentType,
+    type,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
     params: {},
   };
-  const contentPathPath = `/@types/${validatedArgs.contentType}`;
+  const contentPathPath = `/@types/${validatedArgs.type}`;
 
   return apiRequest('get', contentPathPath, options);
 }

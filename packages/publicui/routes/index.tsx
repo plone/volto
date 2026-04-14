@@ -7,19 +7,23 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useLocation,
   useMatches,
   useNavigate,
-  useRouteLoaderData,
   type UIMatch,
   type LinksFunction,
   type MetaFunction,
+  type LoaderFunctionArgs,
+  RouterContextProvider,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import {
   Link,
   RouterProvider as RACRouterProvider,
 } from 'react-aria-components';
+import i18next from 'seven/app/i18next.server';
+import { ploneContentContext } from 'seven/app/middleware.server';
 import type { RootLoader } from 'seven/app/root';
 import Pencil from '@plone/components/icons/pencil.svg?react';
 import SlotRenderer from '@plone/layout/slots/SlotRenderer';
@@ -72,13 +76,22 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export async function loader() {
-  return { cssLayers: config.settings.cssLayers };
+export async function loader({
+  request,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  const locale = await i18next.getLocale(request);
+  const content = context.get(ploneContentContext);
+  return {
+    content,
+    cssLayers: config.settings.cssLayers,
+    locale,
+  };
 }
 
 export default function Index() {
   const location = useLocation();
-  const rootData = useRouteLoaderData<RootLoader>('root');
+  const { content, locale } = useLoaderData<typeof loader>();
   const { i18n } = useTranslation();
   const navigate = useNavigate();
   const matches = useMatches() as UIMatch<unknown, { bodyClass: string }>[];
@@ -86,10 +99,6 @@ export default function Index() {
     .filter((match) => match.handle?.bodyClass)
     .map((match) => match.handle?.bodyClass);
 
-  if (!rootData) {
-    return null;
-  }
-  const { content, locale } = rootData;
   const showToolbar = shouldShowToolbar(content);
 
   return (

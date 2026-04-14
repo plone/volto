@@ -4,17 +4,17 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 const getRegistryRecordSchema = z.object({
-  registryName: z.string(),
+  name: z.string(),
 });
 
 export type GetRegistryArgs = z.infer<typeof getRegistryRecordSchema>;
 
 export async function getRegistryRecord(
   this: PloneClient,
-  { registryName }: GetRegistryArgs,
+  { name }: GetRegistryArgs,
 ): Promise<RequestResponse<string>> {
   const validatedArgs = getRegistryRecordSchema.parse({
-    registryName,
+    name,
   });
 
   const options: ApiRequestParams = {
@@ -22,7 +22,7 @@ export async function getRegistryRecord(
     params: {},
   };
 
-  const registryPath = `/@registry/${validatedArgs.registryName}`;
+  const registryPath = `/@registry/${validatedArgs.name}`;
 
   return apiRequest('get', registryPath, options);
 }
