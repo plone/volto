@@ -559,10 +559,10 @@ msgstr ""
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr ""
+msgstr "I le tulaga masani, o fa'atagaga mai le koneteina o lenei mea e tofia mai. Afai e te tapeina lenei mea, na'o fa'atagaga fa'asoa ua fa'amatalaina manino e aoga. I le va'aiga lautele, o le fa'ailoga {inherited} e fa'ailoa ai se tau na tofia mai. E fa'apena fo'i, o le fa'ailoga {global} e fa'ailoa ai se matafaioi lalolagi, lea e pulea e le pulega o le saite."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases

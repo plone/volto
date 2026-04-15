@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2026-04-09)
+
+### Breaking
+
+- Update to webpack-dev-server 5. Drop support for webpack 4 and webpack-dev-server 4. @davisagli 
+
+### Internal
+
+- Update devDependency: release-it 19.2.4. @davisagli 
+
 ## 1.0.0-alpha.2 (2026-03-31)
 
 ### Breaking
