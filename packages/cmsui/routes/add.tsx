@@ -71,7 +71,7 @@ export default function Add() {
     <ContentForm
       content={emptyContent}
       schema={schema}
-      heading={`${t('cmsui.add')} ${type} - ${schema.title}`}
+      heading={`${t('cmsui.add')} ${schema.title}`}
       submitMethod="post"
     />
   );
