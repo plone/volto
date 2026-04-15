@@ -14,6 +14,7 @@ msgstr ""
 "Language-Code: zh_CN\n"
 "Language-Name: Chinese\n"
 "Preferred-Encodings: utf-8\n"
+"Domain: DOMAIN\n"
 "X-Is-Fallback-For: zh-cn\n"
 "X-Generator: Poedit 3.2\n"
 
@@ -560,10 +561,10 @@ msgstr "浏览网站，放入一张图片，或者输入一个URL"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "默认情况下，条目的权限从父文件夹继承，您可以禁用继承，明确设置权限。总体来说，${inherited}符号表示这是一个继承的值，${global}符号表示这是一个由网站管理员管理的全局角色。"
+msgstr "默认情况下，会继承此项容器的权限。如果你禁用此选项，只有显式定义的共享权限才会有效。在概览中，继承的值会明确标注为 '继承的值' 并获得绿色对勾 {inherited}。同样，由站点管理员管理的角色会标注为 '全局角色' 并获得蓝色对勾 {global}。."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -866,7 +867,7 @@ msgstr ""
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "内容标题"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes

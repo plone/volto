@@ -15,6 +15,7 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 
 import backSVG from '@plone/volto/icons/back.svg';
 import type { Location } from 'history';
+import type { BlockTypeItem } from '@plone/types';
 
 const messages = defineMessages({
   back: {
@@ -48,12 +49,25 @@ type RouteProps = {
   location: Location;
 };
 
+type BlockTypesState = {
+  error: {
+    status?: number;
+  } | null;
+  items: BlockTypeItem[];
+  loaded: boolean;
+  loading: boolean;
+};
+
+type SelectorState = {
+  blockTypes: BlockTypesState;
+};
+
 const BlockTypeControlpanel = (props: RouteProps) => {
   const { location } = props;
   const params = useParams<{ id: string }>();
   const id = params.id;
   const intl = useIntl();
-  const blockTypes = useSelector((state) => state.blockTypes);
+  const blockTypes = useSelector((state: SelectorState) => state.blockTypes);
   const isClient = useClient();
   const dispatch = useDispatch();
   const pathname = location.pathname;
