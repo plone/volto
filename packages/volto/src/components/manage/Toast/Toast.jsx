@@ -59,9 +59,7 @@ const Toast = (props) => {
     <>
       <Icon name={getIcon(props)} size="18px" />
       <div className="toast-inner-content">
-        {typeLabel && (
-          <span className="toast-visually-hidden">{typeLabel}</span>
-        )}
+        {typeLabel && <span className="visually-hidden">{typeLabel}</span>}
         {title && <h4>{title}</h4>}
         <div>{content}</div>
       </div>
