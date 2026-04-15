@@ -48,7 +48,7 @@ exports[`ButtonsWidget > renders actions info provided via props 1`] = `
               data-react-aria-pressable="true"
             >
               <span
-                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+                style="border: 0px; clip: rect(0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
               >
                 <input
                   aria-label="Additional action title"
@@ -63,7 +63,7 @@ exports[`ButtonsWidget > renders actions info provided via props 1`] = `
               <svg
                 aria-hidden="true"
                 class="icon"
-                style="height: 24px; width: auto; fill: currentColor;"
+                style="height: 24px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -139,7 +139,7 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               data-react-aria-pressable="true"
             >
               <span
-                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+                style="border: 0px; clip: rect(0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
               >
                 <input
                   aria-label="Text Left"
@@ -154,7 +154,7 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               <svg
                 aria-hidden="true"
                 class="icon"
-                style="height: 24px; width: auto; fill: currentColor;"
+                style="height: 24px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -176,7 +176,7 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               data-react-aria-pressable="true"
             >
               <span
-                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+                style="border: 0px; clip: rect(0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
               >
                 <input
                   aria-label="Text Right"
@@ -191,7 +191,7 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               <svg
                 aria-hidden="true"
                 class="icon"
-                style="height: 24px; width: auto; fill: currentColor;"
+                style="height: 24px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -213,7 +213,7 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               data-react-aria-pressable="true"
             >
               <span
-                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+                style="border: 0px; clip: rect(0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
               >
                 <input
                   aria-label="Text Centered"
@@ -228,7 +228,7 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               <svg
                 aria-hidden="true"
                 class="icon"
-                style="height: 24px; width: auto; fill: currentColor;"
+                style="height: 24px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -250,7 +250,7 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               data-react-aria-pressable="true"
             >
               <span
-                style="border: 0px; clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
+                style="border: 0px; clip: rect(0px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap;"
               >
                 <input
                   aria-label="Text Justified"
@@ -265,7 +265,7 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               <svg
                 aria-hidden="true"
                 class="icon"
-                style="height: 24px; width: auto; fill: currentColor;"
+                style="height: 24px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >

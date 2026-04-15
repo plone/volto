@@ -11,10 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
-"Domain: volto\n"
 "Language-Code: fi\n"
 "Language-Name: Finnish\n"
 "Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -466,6 +466,8 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -510,6 +512,17 @@ msgstr ""
 msgid "Block"
 msgstr "Palikka"
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -546,10 +559,10 @@ msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Oletuksena käyttöoikeudet peritään aina edeltävältä sisältötasolta. Jos tämä valinta poistetaan, vain tällä tasolla erikseen määritellyt käyttöoikeudet ovat voimassa. {inherited} tarkoittaa perittyä käyttöoikeutta. {global} tarkoittaa ylläpitäjän myöntämää sivustonlaajuista käyttöoikeutta."
+msgstr "Oletuksena tämän kohteen säiliön oikeudet peritään. Jos poistat tämän käytöstä, vain nimenomaisesti määritellyt jakamisoikeudet ovat voimassa. Yhteenvedossa perityt arvot merkitään selkeästi tekstillä 'Peritty arvo' ja ne saavat vihreän tarkistusmerkin {inherited}. Vastaavasti sivuston ylläpitäjän hallinnoimat roolit merkitään tekstillä 'Globaali rooli' ja ne saavat sinisen tarkistusmerkin {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -843,6 +856,11 @@ msgstr "Sisältösäännöt ylemmistä kansioista"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr ""
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Sisällön otsikko"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1999,6 +2017,11 @@ msgstr ""
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr ""
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2299,6 +2322,11 @@ msgstr "Kartat"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "Karta URL"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2636,6 +2664,12 @@ msgstr "Koko"
 msgid "Occurences"
 msgstr "Toistuminen"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2720,6 +2754,11 @@ msgstr "Liitä"
 #. Default: "Paste blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
 msgstr ""
 
 #. Default: "Perform the following actions:"
@@ -2838,6 +2877,11 @@ msgstr "Voimanlähteenä Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Asetukset"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Paina Enter-näppäintä selataksesi tiedostoja tietokoneeltasi."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4705,6 +4749,11 @@ msgstr "yleiset"
 msgid "compare_to"
 msgstr "Vertaa"
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4923,6 +4972,8 @@ msgstr "luettelo"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "ladataan"
 
@@ -4982,6 +5033,11 @@ msgstr "Ei"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "ei julkaisutilaa"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels

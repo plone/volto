@@ -1,5 +1,6 @@
 import { validationMessage } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import config from '@plone/volto/registry';
 
 type MinMaxValidator = {
   value: string | number;
@@ -21,6 +22,13 @@ type Choice = {
 };
 type ChoiceValidator = {
   value: string | Choice;
+  field: Record<string, any>;
+  formData: any;
+  formatMessage: Function;
+};
+
+type FileValidator = {
+  value: Record<string, any>;
   field: Record<string, any>;
   formData: any;
   formatMessage: Function;
@@ -231,4 +239,17 @@ export const defaultLanguageControlPanelValidator = ({
     ) ||
       formData.available_languages.includes(token));
   return !isValid ? formatMessage(messages.defaultLanguage) : null;
+};
+
+export const sizeValidator = ({
+  value,
+  field,
+  formatMessage,
+}: FileValidator) => {
+  const maxSize = field.size
+    ? parseInt(field.size, 10)
+    : config.settings.maxFileUploadSize;
+  return maxSize && value.size > maxSize
+    ? formatMessage(messages.maxSize, { maxSize, size: value.size })
+    : null;
 };

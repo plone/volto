@@ -1,17 +1,22 @@
 import React from 'react';
-import configureStore from 'redux-mock-store';
-import { Provider } from 'react-intl-redux';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { IntlProvider } from 'react-intl';
 import { render } from '@testing-library/react';
 import config from '@plone/volto/registry';
 import TextBlockEdit from './TextBlockEdit';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 
-const mockStore = configureStore();
+// Create a proper Redux store with initial state
+const createMockStore = (initialState) => {
+  const rootReducer = (state = initialState) => state;
+  return createStore(rootReducer, initialState);
+};
 
 window.getSelection = () => null;
 
-global.__SERVER__ = true; // eslint-disable-line no-underscore-dangle
-global.__CLIENT__ = false; // eslint-disable-line no-underscore-dangle
+global.__SERVER__ = true;
+global.__CLIENT__ = false;
 
 beforeAll(() => {
   config.widgets = {
@@ -60,7 +65,18 @@ beforeAll(() => {
 
 describe('TextBlockEdit', () => {
   it('renders w/o errors', async () => {
-    const store = mockStore({
+    const store = createMockStore({
+      userSession: {
+        token: null,
+      },
+      users: {
+        user: {},
+        get: {
+          loading: false,
+          loaded: false,
+          error: null,
+        },
+      },
       intl: {
         locale: 'en',
         messages: {},
@@ -69,36 +85,37 @@ describe('TextBlockEdit', () => {
 
     mockAllIsIntersecting(true);
 
-    // TODO: also test for the initial contents: My first paragraph.
     const { asFragment } = render(
       <Provider store={store}>
-        <TextBlockEdit
-          block="478923"
-          blockNode={{ current: {} }}
-          detached={false}
-          index={2}
-          onAddBlock={() => {}}
-          onChangeBlock={() => {}}
-          onDeleteBlock={() => {}}
-          onFocusNextBlock={() => {}}
-          onFocusPreviousBlock={() => {}}
-          onInsertBlock={() => {}}
-          onMutateBlock={() => {}}
-          onSelectBlock={() => {}}
-          properties={{}}
-          setSlateBlockSelection={() => {}}
-          data={{
-            '@type': 'slate',
-            plaintext: '',
-            value: [
-              {
-                type: 'p',
-                children: [{ text: '' /* My first paragraph. */ }],
-              },
-            ],
-          }}
-          selected={true}
-        />
+        <IntlProvider locale="en" messages={{}}>
+          <TextBlockEdit
+            block="478923"
+            blockNode={{ current: {} }}
+            detached={false}
+            index={2}
+            onAddBlock={() => {}}
+            onChangeBlock={() => {}}
+            onDeleteBlock={() => {}}
+            onFocusNextBlock={() => {}}
+            onFocusPreviousBlock={() => {}}
+            onInsertBlock={() => {}}
+            onMutateBlock={() => {}}
+            onSelectBlock={() => {}}
+            properties={{}}
+            setSlateBlockSelection={() => {}}
+            data={{
+              '@type': 'slate',
+              plaintext: '',
+              value: [
+                {
+                  type: 'p',
+                  children: [{ text: '' }],
+                },
+              ],
+            }}
+            selected={true}
+          />
+        </IntlProvider>
       </Provider>,
     );
 

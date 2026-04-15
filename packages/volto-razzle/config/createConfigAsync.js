@@ -3,7 +3,6 @@
 const fs = require('fs-extra');
 const path = require('path');
 const webpack = require('webpack');
-const crypto = require('crypto');
 const util = require('util');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -16,15 +15,10 @@ const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware')
 const WebpackBar = require('webpackbar');
 const ManifestPlugin = require('webpack-manifest-plugin').WebpackManifestPlugin;
 const CopyPlugin = require('copy-webpack-plugin');
-const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const modules = require('./modules');
 const postcssLoadConfig = require('postcss-load-config');
-const resolveRequest = require('razzle-dev-utils/resolveRequest');
-const logger = require('razzle-dev-utils/logger');
+const resolveRequest = require('@plone/razzle-dev-utils/resolveRequest');
 const razzlePaths = require('./paths');
-const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier');
-const webpackMajor = require('razzle-dev-utils/webpackMajor');
-const devServerMajorVersion = require('razzle-dev-utils/devServerMajor');
 
 const hasPostCssConfigTest = () => {
   try {
@@ -36,27 +30,9 @@ const hasPostCssConfigTest = () => {
 
 const hasPostCssConfig = hasPostCssConfigTest();
 
-let webpackDevClientEntry;
-if (devServerMajorVersion > 3) {
-  webpackDevClientEntry = require.resolve(
-    'razzle-dev-utils/webpackHotDevClientV4',
-  );
-} else {
-  webpackDevClientEntry = require.resolve(
-    'razzle-dev-utils/webpackHotDevClient',
-  );
-}
-
-const isModuleCSS = (module) => {
-  return (
-    // mini-css-extract-plugin
-    module.type === `css/mini-extract` ||
-    // extract-css-chunks-webpack-plugin (old)
-    module.type === `css/extract-chunks` ||
-    // extract-css-chunks-webpack-plugin (new)
-    module.type === `css/extract-css-chunks`
-  );
-};
+const webpackDevClientEntry = require.resolve(
+  '@plone/razzle-dev-utils/webpackHotDevClient',
+);
 
 // This is the Webpack configuration factory. It's the juice!
 module.exports = (
@@ -93,16 +69,12 @@ module.exports = (
       dev: {
         cacheGroups: {
           default: false,
-          vendors: false,
-          // In webpack 5 vendors was renamed to defaultVendors
           defaultVendors: false,
         },
       },
       prod: {
         cacheGroups: {
           default: false,
-          vendors: false,
-          // In webpack 5 vendors was renamed to defaultVendors
           defaultVendors: false,
         },
       },
@@ -520,13 +492,9 @@ module.exports = (
           },
           additionalAliases,
         ),
-        plugins: [webpackMajor !== 5 && PnpWebpackPlugin].filter((x) => x),
       },
       resolveLoader: {
         modules: [paths.appNodeModules, paths.ownNodeModules],
-        plugins: [
-          webpackMajor !== 5 && PnpWebpackPlugin.moduleLoader(module),
-        ].filter((x) => x),
       },
       module: {
         strictExportPresence: true,
@@ -668,11 +636,7 @@ module.exports = (
 
     config.plugins = [
       // Ignore assets.json and chunks.json to avoid infinite recompile bug
-      new webpack.WatchIgnorePlugin(
-        webpackMajor === 5
-          ? { paths: webpackOptions.watchIgnorePaths }
-          : webpackOptions.watchIgnorePaths,
-      ),
+      new webpack.WatchIgnorePlugin({ paths: webpackOptions.watchIgnorePaths }),
     ];
 
     if (IS_NODE) {
@@ -697,14 +661,10 @@ module.exports = (
         publicPath: clientPublicPath,
         filename: webpackOptions.jsOutputFilename,
         chunkFilename: webpackOptions.jsOutputChunkFilename,
-        libraryTarget: 'commonjs2',
-      };
-
-      if (webpackMajor === 5) {
-        config.output.library = {
+        library: {
           type: 'commonjs2',
-        };
-      }
+        },
+      };
 
       // Add some plugins...
       config.plugins = [
@@ -734,11 +694,7 @@ module.exports = (
             minimizer: [new TerserPlugin(webpackOptions.terserPluginOptions)],
           };
         }
-        if (webpackMajor === 5) {
-          config.optimization.emitOnErrors = razzleOptions.emitOnErrors;
-        } else {
-          config.optimization.noEmitOnErrors = !razzleOptions.emitOnErrors;
-        }
+        config.optimization.emitOnErrors = razzleOptions.emitOnErrors;
         if (hasStaticExportJs) {
           config.entry.static_export = [paths.appStaticExportJs];
         }
@@ -753,7 +709,7 @@ module.exports = (
 
         // Pretty format server errors
         config.entry.server.unshift(
-          require.resolve('razzle-dev-utils/prettyNodeErrors'),
+          require.resolve('@plone/razzle-dev-utils/prettyNodeErrors'),
         );
 
         config.plugins = [
@@ -781,11 +737,10 @@ module.exports = (
 
       config.plugins = [
         ...config.plugins,
-        webpackMajor === 5 &&
-          new webpack.ProvidePlugin({
-            Buffer: [require.resolve('buffer'), 'Buffer'],
-            process: [require.resolve('process')],
-          }),
+        new webpack.ProvidePlugin({
+          Buffer: [require.resolve('buffer'), 'Buffer'],
+          process: [require.resolve('process')],
+        }),
         // Output all files in a manifest file called assets-manifest.json
         // in the build directory.
         new ManifestPlugin({
@@ -868,26 +823,29 @@ module.exports = (
           path: paths.appBuildPublic,
           publicPath: clientPublicPath,
           pathinfo: true,
-          libraryTarget: 'var',
+          library: {
+            type: 'var',
+            name: 'client',
+          },
           filename: webpackOptions.jsOutputFilename,
           chunkFilename: webpackOptions.jsOutputChunkFilename,
           devtoolModuleFilenameTemplate: (info) =>
             path.resolve(info.resourcePath).replace(/\\/g, '/'),
         };
 
-        if (webpackMajor === 5) {
-          config.output.library = {
-            type: 'var',
-            name: 'client',
-          };
-        }
-
         // Configure webpack-dev-server to serve our client-side bundle from
         // http://${dotenv.raw.HOST}:3001
         //
-        // First assign the dev server props that are common to v3 and v4
         config.devServer = {
+          allowedHosts: 'all',
+          client: {
+            logging: 'none', // Enable gzip compression of generated files.
+            overlay: false,
+          },
           compress: true, // watchContentBase: true,
+          devMiddleware: {
+            publicPath: clientPublicPath,
+          },
           headers: { 'Access-Control-Allow-Origin': '*' },
           historyApiFallback: {
             // Paths with dots should still use the history fallback.
@@ -897,56 +855,20 @@ module.exports = (
           hot: true,
           host: dotenv.raw.HOST,
           port: devServerPort,
-        };
-        // If the major version is > 3, then use the newer configuration notation
-        if (devServerMajorVersion > 3) {
-          // See https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md for how this was migrated
-          config.devServer = Object.assign(config.devServer, {
-            allowedHosts: 'all',
-            client: {
-              logging: 'none', // Enable gzip compression of generated files.
-              overlay: false,
-            },
-            devMiddleware: {
-              publicPath: clientPublicPath,
-            },
-            static: {
-              // Reportedly, this avoids CPU overload on some systems.
-              // https://github.com/facebookincubator/create-react-app/issues/293
-              watch: { ignored: /node_modules/ },
-            },
-            onBeforeSetupMiddleware(server) {
-              // This lets us open files from the runtime error overlay.
-              server.app.use(errorOverlayMiddleware());
-            },
-          });
-        } else {
-          config.devServer = Object.assign(config.devServer, {
-            disableHostCheck: true,
-            clientLogLevel: 'none', // Enable gzip compression of generated files.
-            publicPath: clientPublicPath,
-            noInfo: true,
-            overlay: false,
-            quiet: true, // By default files from `contentBase` will not trigger a page reload.
+          static: {
             // Reportedly, this avoids CPU overload on some systems.
             // https://github.com/facebookincubator/create-react-app/issues/293
-            watchOptions: { ignored: /node_modules/ },
-            before(app) {
-              // This lets us open files from the runtime error overlay.
-              app.use(errorOverlayMiddleware());
-            },
-          });
-        }
+            watch: { ignored: /node_modules/ },
+          },
+          setupMiddlewares: (middlewares, devServer) => {
+            middlewares.unshift(errorOverlayMiddleware());
+            return middlewares;
+          },
+        };
 
         // Add client-only development plugins
         config.plugins = [
           ...config.plugins,
-          devServerMajorVersion > 3
-            ? null // avoid warning since v4 automatically adds the HRM plugin when `hot` is true
-            : new webpack.HotModuleReplacementPlugin({
-                // set this true will break HtmlWebpackPlugin
-                multiStep: !clientOnly,
-              }),
           shouldUseReactRefresh
             ? new ReactRefreshWebpackPlugin({
                 overlay: {
@@ -982,24 +904,17 @@ module.exports = (
           publicPath: dotenv.raw.PUBLIC_PATH || '/',
           filename: webpackOptions.jsOutputFilename,
           chunkFilename: webpackOptions.jsOutputChunkFilename,
-          libraryTarget: 'var',
-        };
-
-        if (webpackMajor === 5) {
-          config.output.library = {
+          library: {
             type: 'var',
             name: 'client',
-          };
-        }
+          },
+        };
 
         config.plugins = [
           ...config.plugins,
           // Define production environment vars
           new webpack.DefinePlugin(webpackOptions.definePluginOptions),
           miniCssExtractPlugin,
-          IS_DEV_ENV || webpackMajor === 5
-            ? null
-            : new webpack.HashedModuleIdsPlugin(),
           IS_DEV_ENV ? null : new webpack.optimize.AggressiveMergingPlugin(),
           hasPublicDir &&
             new CopyPlugin({
@@ -1040,14 +955,12 @@ module.exports = (
         if (!IS_DEV_ENV) {
           config.optimization = {
             splitChunks: webpackOptions.splitChunksConfig,
-            moduleIds: webpackMajor === 5 ? 'deterministic' : 'hashed',
+            moduleIds: 'deterministic',
             minimize: true,
             minimizer: [
               new TerserPlugin(webpackOptions.terserPluginOptions),
               new CssMinimizerPlugin({
-                sourceMap: razzleOptions.enableSourceMaps,
                 minimizerOptions: {
-                  sourceMap: razzleOptions.enableSourceMaps,
                   // Removed the calc option because it causes issues with some modern CSS
                   // Let's allow the browsers do the calc() work and the minification to gzip
                   preset: ['default', { calc: false }],
@@ -1063,24 +976,14 @@ module.exports = (
             ],
           };
         }
-        if (webpackMajor === 5) {
-          config.optimization.emitOnErrors = razzleOptions.emitOnErrors;
-        } else {
-          config.optimization.noEmitOnErrors = !razzleOptions.emitOnErrors;
-        }
+        config.optimization.emitOnErrors = razzleOptions.emitOnErrors;
       }
 
       if (clientOnly) {
         if (IS_DEV) {
-          if (devServerMajorVersion > 3) {
-            // See https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md for how this was migrated
-            config.devServer.static.directory = paths.appPublic;
-            if (!config.devServer.static.watch) {
-              config.devServer.static.watch = true;
-            }
-          } else {
-            config.devServer.contentBase = paths.appPublic;
-            config.devServer.watchContentBase = true;
+          config.devServer.static.directory = paths.appPublic;
+          if (!config.devServer.static.watch) {
+            config.devServer.static.watch = true;
           }
         }
       }

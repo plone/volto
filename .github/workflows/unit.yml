@@ -27,12 +27,6 @@ jobs:
       - name: Run unit tests Volto
         run: pnpm --filter @plone/volto test
 
-      # Bundlewatch
-      # - run: yarn build
-      # - uses: jackyef/bundlewatch-gh-action@master
-      #   with:
-      #     bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-
   registry:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: '@plone/registry'
@@ -157,7 +151,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-      
+
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
         with:
@@ -181,7 +175,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
       - run: pnpm i
-
       - name: Run unit tests @plone/razzle
         run: pnpm --filter @plone/razzle test
-

@@ -8,6 +8,37 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.14 (2026-04-09)
+
+### Breaking
+
+- Change hotkey for strikethrough text to Ctrl+Shift+X / Cmd+Shift+X. @MAX-786 [#4196](https://github.com/plone/volto/issues/4196)
+
+### Bugfix
+
+- fix LinkEditor not opening from SlateEditor @CannedShroud [#4130](https://github.com/plone/volto/issues/4130)
+
+### Internal
+
+- Update devDependency: release-it 19.2.4. @davisagli 
+
+## 19.0.0-alpha.13 (2026-03-31)
+
+### Internal
+
+- Run volto-slate test suite as part of the Vitest multi-project setup. @Abhishek-17h [#7892](https://github.com/plone/volto/issues/7892)
+- Remove devDependency babel-plugin-transform-class-properties (now
+  @babel/plugin-transform-class-properties, which is included in
+  @babel/preset-env). @davisagli 
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update devDependency: jsdom 28.1.0. @davisagli 
+
+## 19.0.0-alpha.12 (2026-03-02)
+
+### Bugfix
+
+- Fix error in HtmlSlateWidget when rendering elements that need i18n. @davisagli [#7889](https://github.com/plone/volto/issues/7889)
+
 ## 19.0.0-alpha.11 (2026-02-20)
 
 ### Breaking
