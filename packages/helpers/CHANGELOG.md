@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.3 (2026-04-16)
+
+### Feature
+
+- Added `isDeepEqual`. @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+- Add isInternalURL helper. @tedw87 [#8004](https://github.com/plone/volto/issues/8004)
+
 ## 2.0.0-alpha.2 (2025-12-23)
 
 ### Feature
