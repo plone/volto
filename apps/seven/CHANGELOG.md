@@ -8,6 +8,39 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.2 (2026-04-16)
+
+### Breaking
+
+- Removed Cypress support.
+  Added Playwright support. Move all existing Cypress tests to Playwright. @sneridagh [#7827](https://github.com/plone/volto/issues/7827)
+
+### Feature
+
+- Listing block @ebrehault [#7603](https://github.com/plone/volto/issues/7603)
+- Somersault editor support. @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+- Create video block view @tedw87 [#8004](https://github.com/plone/volto/issues/8004)
+- Refactored runtime migrations to match the somersault editor, reorganize server config files. Fixed tests. @sneridagh [#8021](https://github.com/plone/volto/issues/8021)
+- Added runtime migration for default blockWidths. @sneridagh [#8071](https://github.com/plone/volto/issues/8071)
+- Update to Vite 8 and RR7 7.14.0. @sneridagh [#8106](https://github.com/plone/volto/issues/8106)
+- Moved the initialize client to the middleware from the config. @sneridagh [#8108](https://github.com/plone/volto/issues/8108)
+- Added user data in the context for authenticated users @pnicolli 
+- Apply add-on-provided Vite extension loaders in the Seven app configuration so installed add-ons can extend the app build setup. @sneridagh 
+- Moved basic data fetching to a middleware to allow all loaders and actions to use it @pnicolli 
+
+### Bugfix
+
+- Added safeguard when checking for a contents blocks data @arybakov05 [#8001](https://github.com/plone/volto/issues/8001)
+- Fixed SOMERSAULT_KEY constant, it is centralized now. @sneridagh [#8078](https://github.com/plone/volto/issues/8078)
+- Added auth token to the requests in the root loader @pnicolli 
+
+### Internal
+
+- Upgraded to use RR 7.12.0. @sneridagh [#7787](https://github.com/plone/volto/issues/7787)
+- Adapt Seven middleware to the updated `@plone/client` user lookup argument names. @sneridagh 
+- Updated app test and eslint config. @pnicolli 
+- Use Plone 6.2.0rc1 for development. @davisagli 
+
 ## 1.0.0-alpha.1 (2025-12-23)
 
 ### Feature
