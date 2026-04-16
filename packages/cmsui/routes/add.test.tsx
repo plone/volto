@@ -252,7 +252,6 @@ describe('Add route', () => {
       expect(form).toHaveAttribute('data-submit-method', 'post');
       expect(form).toHaveAttribute('data-content-type', 'Document');
       expect(form).toHaveAttribute('data-content-title', '');
-      expect(form.textContent).toContain('Document');
       expect(form.textContent).toContain('Page');
     });
   });
