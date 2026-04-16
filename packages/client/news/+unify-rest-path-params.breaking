@@ -1,1 +1,0 @@
-Align REST client path argument names with REST API semantics, using canonical keys like `id`, `type`, `name`, and `in_reply_to` across affected endpoints. @sneridagh
