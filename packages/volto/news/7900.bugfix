@@ -1,1 +1,0 @@
-Fixed RegistryImageWidget appending stray `}` to base64 data @mpalomacki

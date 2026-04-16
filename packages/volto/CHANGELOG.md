@@ -17,6 +17,18 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.33.1 (2026-04-16)
+
+### Bugfix
+
+- Fix crash in `AlternateHrefLangs` when `content.language` is undefined. @avoinea [#7309](https://github.com/plone/volto/issues/7309)
+- Fixed RegistryImageWidget appending stray `}` to base64 data @mpalomacki [#7900](https://github.com/plone/volto/issues/7900)
+- Improved text contrast and accessibility for help messages across the UI by updating global secondary color scales. @Wagner3UB [#8086](https://github.com/plone/volto/issues/8086)
+
+### Internal
+
+- Update devDependency: jsdom 23.0.0. @wesleybl [#8107](https://github.com/plone/volto/issues/8107)
+
 ## 18.33.0 (2026-04-07)
 
 ### Feature
