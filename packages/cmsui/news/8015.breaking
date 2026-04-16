@@ -1,1 +1,0 @@
-Remove resident TextField in CMSUI (former quanta one), use @plone/components one instead. @sneridagh

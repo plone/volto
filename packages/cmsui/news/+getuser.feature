@@ -1,1 +1,0 @@
-Set the cookie expiration date equal to the token expiration date after login @pnicolli
