@@ -2,16 +2,26 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Keyboard, Text, type Selection } from 'react-aria-components';
+import { Button } from '../Button/Button.quanta';
 import {
   BackgroundIcon,
   BlindIcon,
   DashIcon,
   LinkIcon,
+  MoreoptionsIcon,
   PropertiesIcon,
   SettingsIcon,
-} from '../../components/icons';
-import { type Selection } from 'react-aria-components';
-import { Menu } from './Menu.quanta';
+} from '../icons';
+import {
+  Menu,
+  MenuItem,
+  MenuSection,
+  MenuSectionHeader,
+  MenuSeparator,
+  MenuTrigger,
+  SubmenuTrigger,
+} from './Menu.quanta';
 
 const meta: Meta<typeof Menu> = {
   title: 'Quanta/Menu',
@@ -25,162 +35,174 @@ const meta: Meta<typeof Menu> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+function TriggerButton({ children }: { children: React.ReactNode }) {
+  return (
+    <Button variant="neutral" accent aria-label="Open menu">
+      {children}
+    </Button>
+  );
+}
+
 export const Default: Story = {
   render: (args: any) => (
-    <Menu
-      {...args}
-      button="Edit"
-      menuItems={[
-        { id: 'cut', label: 'Cut' },
-        { id: 'copy', label: 'Copy' },
-        { id: 'paste', label: 'Paste' },
-      ]}
-    ></Menu>
+    <MenuTrigger>
+      <Button variant="neutral" accent>
+        Edit
+      </Button>
+      <Menu {...args}>
+        <MenuItem id="cut">Cut</MenuItem>
+        <MenuItem id="copy">Copy</MenuItem>
+        <MenuItem id="paste">Paste</MenuItem>
+      </Menu>
+    </MenuTrigger>
   ),
   args: {},
 };
 
 export const WithTextSlots: Story = {
   render: (args: any) => (
-    <Menu
-      {...args}
-      button="Edit"
-      menuItems={[
-        {
-          id: 'cut',
-          label: 'Cut',
-          icon: SettingsIcon,
-          description: 'Cut to the clipboard',
-          keyboard: '⌘X',
-        },
-        {
-          id: 'copy',
-          label: 'Copy',
-          icon: SettingsIcon,
-          description: 'Copy to the clipboard',
-          keyboard: '⌘C',
-        },
-        {
-          id: 'paste',
-          label: 'Paste',
-          icon: SettingsIcon,
-          description: 'Paste from the clipboard',
-          keyboard: '⌘V',
-        },
-      ]}
-    ></Menu>
+    <MenuTrigger>
+      <Button variant="neutral" accent>
+        Edit
+      </Button>
+      <Menu {...args}>
+        <MenuItem id="cut">
+          <SettingsIcon />
+          <Text slot="label">Cut</Text>
+          <Text slot="description">Cut to the clipboard</Text>
+          <Keyboard>⌘X</Keyboard>
+        </MenuItem>
+        <MenuItem id="copy">
+          <SettingsIcon />
+          <Text slot="label">Copy</Text>
+          <Text slot="description">Copy to the clipboard</Text>
+          <Keyboard>⌘C</Keyboard>
+        </MenuItem>
+        <MenuItem id="paste">
+          <SettingsIcon />
+          <Text slot="label">Paste</Text>
+          <Text slot="description">Paste from the clipboard</Text>
+          <Keyboard>⌘V</Keyboard>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   ),
   args: {},
 };
 
 export const WithIconButton: Story = {
   render: (args: any) => (
-    <Menu
-      {...args}
-      button={<SettingsIcon />}
-      menuItems={[
-        { id: 'cut', label: 'Cut' },
-        { id: 'copy', label: 'Copy' },
-        { id: 'paste', label: 'Paste' },
-      ]}
-    ></Menu>
+    <MenuTrigger>
+      <TriggerButton>
+        <SettingsIcon />
+      </TriggerButton>
+      <Menu {...args}>
+        <MenuItem id="cut">Cut</MenuItem>
+        <MenuItem id="copy">Copy</MenuItem>
+        <MenuItem id="paste">Paste</MenuItem>
+      </Menu>
+    </MenuTrigger>
   ),
   args: {},
 };
 
 export const DisabledItems: Story = {
   render: (args: any) => (
-    <Menu
-      {...args}
-      button={<BlindIcon />}
-      menuItems={[
-        { id: 'cut', label: 'Cut' },
-        { id: 'copy', label: 'Copy' },
-        { id: 'paste', label: 'Paste', disabled: true },
-      ]}
-    ></Menu>
+    <MenuTrigger>
+      <TriggerButton>
+        <BlindIcon />
+      </TriggerButton>
+      <Menu {...args} disabledKeys={['paste']}>
+        <MenuItem id="cut">Cut</MenuItem>
+        <MenuItem id="copy">Copy</MenuItem>
+        <MenuItem id="paste">Paste</MenuItem>
+      </Menu>
+    </MenuTrigger>
   ),
   args: {},
 };
 
 export const WithSeparators: Story = {
   render: (args: any) => (
-    <Menu
-      {...args}
-      button={<DashIcon />}
-      menuItems={[
-        { id: 'cut', label: 'Cut' },
-        { id: 'copy', label: 'Copy' },
-        { id: 'paste', label: 'Paste' },
-        { separator: true },
-        { id: 'bold', label: 'Bold' },
-      ]}
-    ></Menu>
+    <MenuTrigger>
+      <TriggerButton>
+        <DashIcon />
+      </TriggerButton>
+      <Menu {...args}>
+        <MenuItem id="cut">Cut</MenuItem>
+        <MenuItem id="copy">Copy</MenuItem>
+        <MenuItem id="paste">Paste</MenuItem>
+        <MenuSeparator />
+        <MenuItem id="bold">Bold</MenuItem>
+      </Menu>
+    </MenuTrigger>
   ),
   args: {},
 };
 
 export const WithSections: Story = {
   render: (args: any) => (
-    <Menu
-      {...args}
-      button={<BackgroundIcon />}
-      menuItems={[
-        {
-          section: true,
-          header: 'Styles',
-          children: [
-            { id: 'bold', label: 'Bold' },
-            { id: 'underline', label: 'Underline' },
-          ],
-        },
-        {
-          section: true,
-          header: 'Align',
-          children: [
-            { id: 'left', label: 'Left' },
-            { id: 'middle', label: 'Middle' },
-            { id: 'right', label: 'Right' },
-          ],
-        },
-      ]}
-    ></Menu>
+    <MenuTrigger>
+      <TriggerButton>
+        <BackgroundIcon />
+      </TriggerButton>
+      <Menu {...args}>
+        <MenuSection>
+          <MenuSectionHeader>Styles</MenuSectionHeader>
+          <MenuItem id="bold">Bold</MenuItem>
+          <MenuItem id="underline">Underline</MenuItem>
+        </MenuSection>
+        <MenuSection>
+          <MenuSectionHeader>Align</MenuSectionHeader>
+          <MenuItem id="left">Left</MenuItem>
+          <MenuItem id="middle">Middle</MenuItem>
+          <MenuItem id="right">Right</MenuItem>
+        </MenuSection>
+      </Menu>
+    </MenuTrigger>
+  ),
+  args: {},
+};
+
+export const WithCustomHeader: Story = {
+  render: (args: any) => (
+    <MenuTrigger>
+      <TriggerButton>
+        <BackgroundIcon />
+      </TriggerButton>
+      <Menu {...args}>
+        <MenuSection>
+          <MenuSectionHeader>Styles</MenuSectionHeader>
+          <MenuItem id="bold">Bold</MenuItem>
+          <MenuItem id="underline">Underline</MenuItem>
+        </MenuSection>
+      </Menu>
+    </MenuTrigger>
   ),
   args: {},
 };
 
 export const AsLinks: Story = {
   render: (args: any) => (
-    <Menu
-      {...args}
-      button={<LinkIcon />}
-      menuItems={[
-        {
-          id: 'adobe',
-          label: 'Adobe',
-          href: 'https://adobe.com/',
-          target: '_blank',
-        },
-        {
-          id: 'apple',
-          label: 'Apple',
-          href: 'https://apple.com/',
-          target: '_blank',
-        },
-        {
-          id: 'google',
-          label: 'Google',
-          href: 'https://google.com/',
-          target: '_blank',
-        },
-        {
-          id: 'microsoft',
-          label: 'Microsoft',
-          href: 'https://microsoft.com/',
-          target: '_blank',
-        },
-      ]}
-    ></Menu>
+    <MenuTrigger>
+      <TriggerButton>
+        <LinkIcon />
+      </TriggerButton>
+      <Menu {...args}>
+        <MenuItem href="https://adobe.com/" target="_blank">
+          Adobe
+        </MenuItem>
+        <MenuItem href="https://apple.com/" target="_blank">
+          Apple
+        </MenuItem>
+        <MenuItem href="https://google.com/" target="_blank">
+          Google
+        </MenuItem>
+        <MenuItem href="https://microsoft.com/" target="_blank">
+          Microsoft
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   ),
   args: {},
 };
@@ -193,18 +215,21 @@ export const SingleSelection: Story = {
 
     return (
       <>
-        <Menu
-          {...args}
-          button={<PropertiesIcon />}
-          selectionMode="single"
-          selectedKeys={selected}
-          onSelectionChange={setSelected}
-          menuItems={[
-            { id: 'left', label: 'Left' },
-            { id: 'center', label: 'Center' },
-            { id: 'right', label: 'Right' },
-          ]}
-        ></Menu>
+        <MenuTrigger>
+          <TriggerButton>
+            <PropertiesIcon />
+          </TriggerButton>
+          <Menu
+            {...args}
+            selectionMode="single"
+            selectedKeys={selected}
+            onSelectionChange={setSelected}
+          >
+            <MenuItem id="left">Left</MenuItem>
+            <MenuItem id="center">Center</MenuItem>
+            <MenuItem id="right">Right</MenuItem>
+          </Menu>
+        </MenuTrigger>
         <p>
           Current selection (controlled):{' '}
           {selected === 'all' ? 'all' : [...selected].join(', ')}
@@ -223,19 +248,22 @@ export const MultipleSelection: Story = {
 
     return (
       <>
-        <Menu
-          {...args}
-          button={<PropertiesIcon />}
-          selectionMode="multiple"
-          selectedKeys={selected}
-          onSelectionChange={setSelected}
-          menuItems={[
-            { id: 'sidebar', label: 'Sidebar' },
-            { id: 'searchbar', label: 'Searchbar' },
-            { id: 'tools', label: 'Tools' },
-            { id: 'console', label: 'Console' },
-          ]}
-        ></Menu>
+        <MenuTrigger>
+          <TriggerButton>
+            <PropertiesIcon />
+          </TriggerButton>
+          <Menu
+            {...args}
+            selectionMode="multiple"
+            selectedKeys={selected}
+            onSelectionChange={setSelected}
+          >
+            <MenuItem id="sidebar">Sidebar</MenuItem>
+            <MenuItem id="searchbar">Searchbar</MenuItem>
+            <MenuItem id="tools">Tools</MenuItem>
+            <MenuItem id="console">Console</MenuItem>
+          </Menu>
+        </MenuTrigger>
         <p>
           Current selection (controlled):{' '}
           {selected === 'all' ? 'all' : [...selected].join(', ')}
@@ -246,21 +274,66 @@ export const MultipleSelection: Story = {
   args: {},
 };
 
+export const ControlledState: Story = {
+  render: (args: any) => {
+    const [open, setOpen] = React.useState(false);
+
+    return (
+      <MenuTrigger {...args} isOpen={open} onOpenChange={setOpen}>
+        <TriggerButton>
+          <MoreoptionsIcon />
+        </TriggerButton>
+        <Menu>
+          <MenuItem id="cut">Cut</MenuItem>
+          <MenuItem id="copy">Copy</MenuItem>
+          <MenuItem id="paste">Paste</MenuItem>
+        </Menu>
+      </MenuTrigger>
+    );
+  },
+  args: {},
+};
+
 export const LongPress: Story = {
   render: (args: any) => (
-    <Menu
-      {...args}
-      button="Long press"
-      menuItems={[
-        { id: 'cut', label: 'Cut' },
-        { id: 'copy', label: 'Copy' },
-        { id: 'paste', label: 'Paste' },
-      ]}
-    ></Menu>
+    <MenuTrigger trigger="longPress">
+      <TriggerButton>
+        <MoreoptionsIcon />
+      </TriggerButton>
+      <Menu {...args} onAction={(id) => alert(String(id))}>
+        <MenuItem id="cut">Cut</MenuItem>
+        <MenuItem id="copy">Copy</MenuItem>
+        <MenuItem id="paste">Paste</MenuItem>
+      </Menu>
+    </MenuTrigger>
   ),
-  args: {
-    trigger: 'longPress',
-    onPress: () => alert('crop'),
-    onAction: (id: any) => alert(id),
-  },
+  args: {},
+};
+
+export const WithSubmenu: Story = {
+  render: (args: any) => (
+    <MenuTrigger>
+      <TriggerButton>
+        <MoreoptionsIcon />
+      </TriggerButton>
+      <Menu {...args}>
+        <MenuItem id="new">New</MenuItem>
+        <SubmenuTrigger>
+          <MenuItem id="share">Share</MenuItem>
+          <Menu>
+            <MenuItem id="sms">SMS</MenuItem>
+            <MenuItem id="x">X</MenuItem>
+            <SubmenuTrigger>
+              <MenuItem id="email">Email</MenuItem>
+              <Menu>
+                <MenuItem id="work">Work</MenuItem>
+                <MenuItem id="personal">Personal</MenuItem>
+              </Menu>
+            </SubmenuTrigger>
+          </Menu>
+        </SubmenuTrigger>
+      </Menu>
+    </MenuTrigger>
+  ),
+  args: {},
 };

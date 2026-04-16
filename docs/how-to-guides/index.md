@@ -16,6 +16,7 @@ This section of the documentation contains how-to guides for developing with Sev
 
 routes
 register-an-add-on
+extend-vite-configuration
 access-registry
 register-and-retrieve-components
 register-and-retrieve-utilities
