@@ -12,11 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Set up Node.js environment
-        uses: ./.github/actions/acceptance_tests_node_env_setup
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ env.node-version }}
-
-      - run: pnpm i
 
       - name: Prettier check
         run: pnpm prettier
@@ -28,11 +26,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Set up Node.js environment
-        uses: ./.github/actions/acceptance_tests_node_env_setup
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ env.node-version }}
-
-      - run: pnpm i
 
       - name: Main ESlint check
         run: pnpm lint
@@ -48,11 +44,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Set up Node.js environment
-        uses: ./.github/actions/acceptance_tests_node_env_setup
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ env.node-version }}
-
-      - run: pnpm i
 
       - name: Stylelint check ${{ matrix.name }}
         run: pnpm --filter ${{ matrix.name }} stylelint
