@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.3 (2026-04-16)
+
+### Feature
+
+- Added options when setting cookies on response @pnicolli 
+
 ## 2.0.0-alpha.2 (2025-12-23)
 
 ### Internal
