@@ -28,8 +28,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: pnpm i
-
       - name: Run unit tests ${{ matrix.name }}
         run: pnpm --filter seven exec init-loaders && pnpm --filter ${{ matrix.name }} test
 
@@ -81,8 +79,6 @@ jobs:
         uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ matrix.node-version }}
-
-      - run: pnpm i
 
       - run: make build-deps
 
