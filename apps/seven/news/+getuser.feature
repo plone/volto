@@ -1,1 +1,0 @@
-Added user data in the context for authenticated users @pnicolli
