@@ -66,7 +66,7 @@ export const createContentDataSchema = z.object({
   '@type': z.string(),
   allow_discussion: z.boolean().optional(),
   blocks: z.unknown().optional(),
-  blocks_layout: z.array(z.string()).optional(),
+  blocks_layout: z.object({ items: z.array(z.string()) }).optional(),
   contributors: z.array(z.string()).optional(),
   creators: z.array(z.string()).optional(),
   description: z.string().optional(),
@@ -110,9 +110,7 @@ export const updateContentDataSchema = z
   .object({
     allow_discussion: z.boolean().optional(),
     blocks: z.unknown().optional(),
-    blocks_layout: z
-      .object({ items: z.array(z.string()).optional() })
-      .optional(),
+    blocks_layout: z.object({ items: z.array(z.string()) }).optional(),
     contributors: z.array(z.string()).optional(),
     creators: z.array(z.string()).optional(),
     description: z.string().optional(),
