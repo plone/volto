@@ -1,1 +1,0 @@
-Adapt CMSUI routes to the updated `@plone/client` path argument names for control panel and type loading. @sneridagh

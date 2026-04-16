@@ -1,1 +1,0 @@
-Normalize client login arguments to follow all non-get argument shape, nesting them under a data argument. @sneridagh
