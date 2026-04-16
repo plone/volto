@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.4 (2026-04-16)
+
+### Feature
+
+- Added the left toolbar @pnicolli [#6649](https://github.com/plone/volto/issues/6649)
+
+### Internal
+
+- Tailwind dependencies in catalog. @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+
 ## 1.0.0-alpha.3 (2025-12-23)
 
 ### Feature
