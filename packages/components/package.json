@@ -137,7 +137,6 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-svgr": "^4.3.0",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   },
