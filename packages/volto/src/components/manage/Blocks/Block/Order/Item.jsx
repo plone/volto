@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import includes from 'lodash/includes';
+import isBoolean from 'lodash/isBoolean';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { setUIState } from '@plone/volto/actions/form/form';
@@ -43,6 +44,11 @@ export const Item = forwardRef(
     const icon =
       config.blocks.blocksConfig[data?.['@type']]?.icon ||
       config.blocks.blocksConfig.title?.icon;
+
+    const required = isBoolean(data?.required)
+      ? data.required
+      : includes(config.blocks.requiredBlocks, data?.['@type']);
+    const fixed = !!data?.fixed;
 
     return (
       <li
@@ -93,15 +99,17 @@ export const Item = forwardRef(
           ref={ref}
           style={style}
         >
-          <button
-            ref={ref}
-            {...handleProps}
-            className={classNames('action', 'drag')}
-            tabIndex={0}
-            data-cypress="draggable-handle"
-          >
-            <Icon name={dragSVG} size="16px" />
-          </button>
+          {!fixed && (
+            <button
+              ref={ref}
+              {...handleProps}
+              className={classNames('action', 'drag')}
+              tabIndex={0}
+              data-cypress="draggable-handle"
+            >
+              <Icon name={dragSVG} size="16px" />
+            </button>
+          )}
           <span
             className={cx('text', {
               errored: errors && Object.keys(errors).length > 0,
@@ -118,7 +126,7 @@ export const Item = forwardRef(
               config.blocks.blocksConfig[data?.['@type']]?.title ||
               data?.title}
           </span>
-          {!clone && onRemove && (
+          {!clone && onRemove && !required && (
             <button
               onClick={onRemove}
               className={classNames('action', 'delete')}
