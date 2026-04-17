@@ -8,6 +8,7 @@ const AlternateHrefLangs = (props) => {
     <Helmet>
       {config.settings.isMultilingual &&
         content['@components']?.translations?.items &&
+        content.language?.token &&
         [
           ...content['@components']?.translations?.items,
           { '@id': content['@id'], language: content.language.token },

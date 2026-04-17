@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "18.33.0",
+  "version": "18.33.1",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -347,7 +347,7 @@
     "jest-environment-jsdom": "^26",
     "jest-file": "1.0.0",
     "jiti": "^2.4.2",
-    "jsdom": "^16.7.0",
+    "jsdom": "23.0.0",
     "jsonwebtoken": "9.0.0",
     "less": "3.13.1",
     "less-loader": "11.1.0",

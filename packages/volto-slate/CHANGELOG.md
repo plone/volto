@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 18.9.1 (2026-04-16)
+
+### Internal
+
+- Update devDependency: jsdom 23.0.0. @wesleybl [#8107](https://github.com/plone/volto/issues/8107)
+
 ## 18.9.0 (2026-04-07)
 
 ### Feature

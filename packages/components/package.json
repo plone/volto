@@ -105,7 +105,7 @@
     "browserslist": "^4.23.0",
     "eslint-plugin-storybook": "^0.11.2",
     "jest-axe": "^8.0.0",
-    "jsdom": "^22.1.0",
+    "jsdom": "23.0.0",
     "lightningcss": "^1.29.0",
     "lightningcss-cli": "^1.29.1",
     "release-it": "19.0.5",
