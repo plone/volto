@@ -114,7 +114,8 @@ describe('/@blocks-schema middleware', () => {
             usage_notes: 'Supports variations.',
             example: { '@type': 'gamma' },
             field_hints: {
-              variation: "Required. See the 'variations' field for the list of registered variation IDs.",
+              variation:
+                "Required. See the 'variations' field for the list of registered variation IDs.",
             },
           }),
         },
@@ -214,7 +215,8 @@ describe('/@blocks-schema middleware', () => {
             usage_notes: 'Supports variations.',
             example: { '@type': 'gamma' },
             field_hints: {
-              variation: "Required. See the 'variations' field for the list of registered variation IDs.",
+              variation:
+                "Required. See the 'variations' field for the list of registered variation IDs.",
             },
           },
           schema: null,
@@ -240,7 +242,8 @@ describe('/@blocks-schema middleware', () => {
       usage_notes: 'Supports variations.',
       example: { '@type': 'gamma' },
       field_hints: {
-        variation: "Required. See the 'variations' field for the list of registered variation IDs.",
+        variation:
+          "Required. See the 'variations' field for the list of registered variation IDs.",
       },
     });
     expect(gamma.variations).toEqual([

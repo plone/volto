@@ -61,7 +61,9 @@ function resolveDocs(blockConfig, intl) {
   try {
     const resolved =
       typeof docs === 'function' ? docs({ blockConfig, intl }) : docs;
-    return resolved ?? { description: '', usage_notes: '', example: { '@type': id } };
+    return (
+      resolved ?? { description: '', usage_notes: '', example: { '@type': id } }
+    );
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(`[blocks-schema] docs() for '${id}' threw:`, e);
@@ -124,7 +126,9 @@ async function blocksSchemaList(req, res, next) {
     const full = req.query?.full === '1';
 
     const items = Object.values(blocksConfig).map((blockConfig) =>
-      full ? buildFullDetail(blockConfig, intl) : buildSummaryItem(blockConfig, intl),
+      full
+        ? buildFullDetail(blockConfig, intl)
+        : buildSummaryItem(blockConfig, intl),
     );
 
     res.set('Cache-Control', 'private, max-age=0, must-revalidate');
