@@ -26,8 +26,6 @@ describe('Title Block Tests', () => {
   it('Title block has focus when editing the page a second time', () => {
     cy.get('.ui.button.cancel').click();
     cy.get('.toolbar-actions .edit').click();
-    cy.wait('@content');
-    cy.wait('@schema');
     cy.get('.block-editor-title [role=textbox]').should('be.focused');
     cy.get('.block-editor-title [role=textbox]').type('{enter}');
     cy.get('.block-editor-title [role=textbox]').should('not.be.focused');
