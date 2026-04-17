@@ -264,7 +264,7 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    llm: {
+    docs: {
       description:
         "Displays the content item's title field. Automatically added as the first block on all content pages. Do not add this block manually, the Title block will be automatically created by Plone.",
       usage_notes:
@@ -284,7 +284,7 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    llm: {
+    docs: {
       description:
         "Displays the content item's description/summary field. Renders automatically from the content object.",
       usage_notes:
@@ -304,11 +304,11 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     getSizes: getImageBlockSizes,
-    llm: {
+    docs: {
       description:
         'Displays an internal or external image with optional title, description, alt text, alignment, size, and link. Use for standalone images within page content.',
       usage_notes:
-        "For INTERNAL Plone images: set 'url' to the Image content object path (e.g. /my-folder/my-image) and set 'image_field' to 'image'. For EXTERNAL images: set 'url' to the full image URL and omit 'image_field'. Do NOT use @@images URLs for internal images. Do not set 'align' or 'size' when nesting inside anpther block (e.g. gridBlock) since the parent block controls layout.",
+        "For INTERNAL Plone images: set 'url' to the Image content object path (e.g. /my-folder/my-image) or a full URL — both are accepted and get converted to a UID-based path when stored. Set 'image_field' to 'image'. For EXTERNAL images: set 'url' to the full image URL and omit 'image_field'. Do NOT use @@images URLs. Do not set 'align' or 'size' when nesting inside another block (e.g. gridBlock) since the parent block controls layout.",
       example: {
         '@type': 'image',
         url: 'https://example.com/images/logo.png',
@@ -316,7 +316,7 @@ const blocksConfig = {
         description: 'External logo image',
       },
       field_hints: {
-        url: 'EXTERNAL: direct image URL. INTERNAL: path to Image content object — NOT the @@images URL.',
+        url: 'EXTERNAL: direct image URL. INTERNAL: path to Image content object or full URL (converted to UID-based path on save) — NOT the @@images URL.',
         image_field:
           "REQUIRED for internal Plone images, set to 'image'. MUST BE OMITTED for external image URLs.",
       },
@@ -369,7 +369,7 @@ const blocksConfig = {
       },
     ],
     getAsyncData: getListingBlockAsyncData,
-    llm: {
+    docs: ({ blockConfig: _blockConfig }) => ({
       description:
         'Renders a dynamic list of content items from a catalog query. Use for news feeds, event listings, filtered content collections, or any scenario where content should be pulled dynamically. For static manually-curated links, use the Teaser block instead.',
       usage_notes:
@@ -399,21 +399,13 @@ const blocksConfig = {
       },
       field_hints: {
         querystring:
-          "Required. Object with 'query' (required array of filter criteria), optional 'sort_on', 'sort_order', 'sort_order_boolean', 'b_size' (string, items per page), 'limit' (string, max total results). Multiple criteria are combined with AND logic. Each criterion requires 'i' (index name), 'o' (FULL operation string — see below), 'v' (value). " +
-          'Indexes: portal_type, path, Title, Description, SearchableText, Creator, getId, review_state, Subject, created, modified. ' +
-          'Operations (always use the FULL string): ' +
-          'plone.app.querystring.operation.selection.any/none/all — v: array of strings, e.g. ["News Item"]; ' +
-          'plone.app.querystring.operation.string.contains/is/isNot — v: string; ' +
-          'plone.app.querystring.operation.string.absolutePath — v: "UID::depth" (e.g. "abc123::2"); ' +
-          'plone.app.querystring.operation.string.relativePath — v: "./" (current) or "../" (parent); ' +
-          'plone.app.querystring.operation.string.currentUser — v: "" (matches logged-in user, use with Creator index); ' +
-          'plone.app.querystring.operation.date.largerThan/lessThan — v: "YYYY-MM-DD". ' +
-          "sort_on values: 'sortable_title', 'effective', 'created', 'modified', 'getObjPositionInParent', 'start', 'end', 'review_state'. " +
-          "sort_order: 'ascending' (default) or 'descending'.",
+          "Required. Object with 'query' (required array of filter criteria), optional 'sort_on', 'sort_order', 'sort_order_boolean', 'b_size' (string, items per page), 'limit' (string, max total results). Multiple criteria are combined with AND logic. Each criterion requires 'i' (index name), 'o' (FULL operation string), 'v' (value). " +
+          'Available indexes and operations are dynamic and depend on the site registry — use the /@querystring API endpoint to retrieve the current list. ' +
+          "sort_order: 'ascending' (default) or 'descending'. When 'sort_order' is 'descending', also set 'sort_order_boolean' to true.",
         variation:
-          "Required. 'default' (simple list), 'summary' (list with images), 'imageGallery' (image carousel), 'eventCalendar' (calendar view), 'listDate' (list with date).",
+          "Required. See the 'variations' field for the list of registered variation IDs.",
       },
-    },
+    }),
   },
   video: {
     id: 'video',
@@ -428,7 +420,7 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     allowedPeertubeInstances: [],
-    llm: {
+    docs: {
       description:
         'Embeds a video by URL (YouTube, Vimeo, or direct video file). Use for embedding video content within page text.',
       usage_notes: '',
@@ -453,7 +445,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    llm: {
+    docs: {
       description:
         'Auto-generates a navigation list from heading blocks on the page. Use to provide an overview and quick navigation for long pages.',
       usage_notes:
@@ -472,7 +464,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    llm: {
+    docs: {
       description:
         'Embeds an interactive map via a URL. Use for displaying geographic locations or maps within page content.',
       usage_notes:
@@ -497,7 +489,7 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
-    llm: {
+    docs: {
       description:
         'Renders raw HTML markup. Use only for trusted, custom HTML that cannot be achieved with other blocks.',
       usage_notes:
@@ -542,7 +534,7 @@ const blocksConfig = {
         isDefault: false,
       },
     ],
-    llm: {
+    docs: {
       description:
         'Renders a searchable, filterable list of content items. Use for any content collection where users need to find items interactively. Unlike the Listing block, the Search block adds a live search input, sorting controls, and optional faceted filters.',
       usage_notes:
@@ -669,7 +661,7 @@ const blocksConfig = {
     templates: GridTemplates,
     maxLength: 4,
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
-    llm: {
+    docs: {
       description:
         'Organizes child blocks (teaser, image, slate, listing) in a responsive column layout. Use to display multiple items side by side. Maximum 4 child blocks per grid.',
       usage_notes:
@@ -716,7 +708,7 @@ const blocksConfig = {
         template: TeaserBlockDefaultBody,
       },
     ],
-    llm: {
+    docs: {
       description:
         'Displays a visual card linking to a content item, showing its title, description, and image. Use for featured content, call-to-action cards, or manually curated highlights. Unlike the Listing block, the Teaser references a single specific content item.',
       usage_notes:

@@ -56,13 +56,27 @@ function resolveSchema(blockConfig, intl) {
   return schema;
 }
 
-function buildSummaryItem(blockConfig) {
+function resolveDocs(blockConfig, intl) {
+  const { docs, id } = blockConfig;
+  try {
+    const resolved =
+      typeof docs === 'function' ? docs({ blockConfig, intl }) : docs;
+    return resolved ?? { description: '', usage_notes: '', example: { '@type': id } };
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error(`[blocks-schema] docs() for '${id}' threw:`, e);
+    return { description: '', usage_notes: '', example: { '@type': id } };
+  }
+}
+
+function buildSummaryItem(blockConfig, intl) {
   const item = {
     id: blockConfig.id,
     title: blockConfig.title,
   };
-  if (blockConfig.llm?.description) {
-    item.description = blockConfig.llm.description;
+  const docs = resolveDocs(blockConfig, intl);
+  if (docs.description) {
+    item.description = docs.description;
   }
   return item;
 }
@@ -71,16 +85,12 @@ function buildFullDetail(blockConfig, intl) {
   const schema = resolveSchema(blockConfig, intl);
   const variations =
     blockConfig.variations?.length > 0 ? blockConfig.variations : null;
-  const llm = blockConfig.llm ?? {
-    description: '',
-    usage_notes: '',
-    example: { '@type': blockConfig.id },
-  };
+  const docs = resolveDocs(blockConfig, intl);
 
   const result = {
     id: blockConfig.id,
     title: blockConfig.title,
-    llm,
+    docs,
     schema,
   };
 
@@ -114,7 +124,7 @@ async function blocksSchemaList(req, res, next) {
     const full = req.query?.full === '1';
 
     const items = Object.values(blocksConfig).map((blockConfig) =>
-      full ? buildFullDetail(blockConfig, intl) : buildSummaryItem(blockConfig),
+      full ? buildFullDetail(blockConfig, intl) : buildSummaryItem(blockConfig, intl),
     );
 
     res.set('Cache-Control', 'private, max-age=0, must-revalidate');

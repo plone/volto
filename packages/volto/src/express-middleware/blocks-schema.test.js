@@ -14,7 +14,7 @@ function parseCookies(cookieHeader = '') {
   );
 }
 
-async function invokeMiddleware({ headers = {} }) {
+async function invokeMiddleware({ headers = {}, query = {} }) {
   const cookies = parseCookies(headers.Cookie || headers.cookie || '');
   const middleware = blocksSchemaMiddleware();
 
@@ -24,6 +24,7 @@ async function invokeMiddleware({ headers = {} }) {
       url: '/@blocks-schema',
       originalUrl: '/@blocks-schema',
       headers,
+      query,
       universalCookies: {
         get: (name) => cookies[name],
       },
@@ -89,11 +90,33 @@ describe('/@blocks-schema middleware', () => {
             properties: {},
             required: [],
           }),
+          docs: {
+            description: 'The Alpha block.',
+            usage_notes: 'Use it for alpha content.',
+            example: { '@type': 'alpha' },
+          },
         },
         beta: {
           id: 'beta',
           title: 'Beta',
           blockSchema: null,
+        },
+        gamma: {
+          id: 'gamma',
+          title: 'Gamma',
+          blockSchema: null,
+          variations: [
+            { id: 'default', title: 'Default' },
+            { id: 'fancy', title: 'Fancy' },
+          ],
+          docs: () => ({
+            description: 'The Gamma block.',
+            usage_notes: 'Supports variations.',
+            example: { '@type': 'gamma' },
+            field_hints: {
+              variation: "Required. See the 'variations' field for the list of registered variation IDs.",
+            },
+          }),
         },
       },
     });
@@ -116,7 +139,7 @@ describe('/@blocks-schema middleware', () => {
     });
   });
 
-  it('accepts Authorization bearer tokens', async () => {
+  it('accepts Authorization bearer tokens and returns summary items', async () => {
     const response = await invokeMiddleware({
       headers: {
         authorization: 'Bearer test-token',
@@ -130,6 +153,42 @@ describe('/@blocks-schema middleware', () => {
         {
           id: 'alpha',
           title: 'Alpha',
+          description: 'The Alpha block.',
+        },
+        {
+          id: 'beta',
+          title: 'Beta',
+        },
+        {
+          id: 'gamma',
+          title: 'Gamma',
+          description: 'The Gamma block.',
+        },
+      ],
+      items_total: 3,
+    });
+  });
+
+  it('returns full details including docs and schema when ?full=1', async () => {
+    const response = await invokeMiddleware({
+      headers: {
+        authorization: 'Bearer test-token',
+      },
+      query: { full: '1' },
+    });
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual({
+      '@id': '/@blocks-schema',
+      items: [
+        {
+          id: 'alpha',
+          title: 'Alpha',
+          docs: {
+            description: 'The Alpha block.',
+            usage_notes: 'Use it for alpha content.',
+            example: { '@type': 'alpha' },
+          },
           schema: {
             title: 'Alpha schema',
             fieldsets: [],
@@ -140,11 +199,54 @@ describe('/@blocks-schema middleware', () => {
         {
           id: 'beta',
           title: 'Beta',
+          docs: {
+            description: '',
+            usage_notes: '',
+            example: { '@type': 'beta' },
+          },
           schema: null,
         },
+        {
+          id: 'gamma',
+          title: 'Gamma',
+          docs: {
+            description: 'The Gamma block.',
+            usage_notes: 'Supports variations.',
+            example: { '@type': 'gamma' },
+            field_hints: {
+              variation: "Required. See the 'variations' field for the list of registered variation IDs.",
+            },
+          },
+          schema: null,
+          variations: [
+            { id: 'default', title: 'Default' },
+            { id: 'fancy', title: 'Fancy' },
+          ],
+        },
       ],
-      items_total: 2,
+      items_total: 3,
     });
+  });
+
+  it('resolves function-valued docs at request time', async () => {
+    const response = await invokeMiddleware({
+      headers: { authorization: 'Bearer test-token' },
+      query: { full: '1' },
+    });
+
+    const gamma = response.body.items.find((item) => item.id === 'gamma');
+    expect(gamma.docs).toEqual({
+      description: 'The Gamma block.',
+      usage_notes: 'Supports variations.',
+      example: { '@type': 'gamma' },
+      field_hints: {
+        variation: "Required. See the 'variations' field for the list of registered variation IDs.",
+      },
+    });
+    expect(gamma.variations).toEqual([
+      { id: 'default', title: 'Default' },
+      { id: 'fancy', title: 'Fancy' },
+    ]);
   });
 
   it('accepts auth_token cookies', async () => {
