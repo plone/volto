@@ -4,24 +4,25 @@ import {
   Autocomplete,
   Collection,
   Group,
-  Label,
-  Popover,
   Select as RACSelect,
   SelectValue,
   useFilter,
 } from 'react-aria-components';
 
-import { Button } from '../Button/Button';
-import { Form } from '../Form/Form';
-import { SearchField } from '../SearchField/SearchField';
-import { Tag, TagGroup } from '../TagGroup/TagGroup';
+import { Button } from '../Button/Button.quanta';
+import { Label } from '../Field/Field.quanta';
+import { Popover } from '../Popover/Popover.quanta';
+import { SearchField } from '../SearchField/SearchField.quanta';
+import { Tag, TagGroup } from '../TagGroup/TagGroup.quanta';
 import {
   Select,
   SelectItem,
   SelectListBox,
   SelectSection,
   SelectSectionHeader,
-} from './Select';
+  type SelectItemObject,
+  type SelectProps,
+} from './Select.quanta';
 
 const options = [
   { label: '1', value: 'Aerospace' },
@@ -82,28 +83,14 @@ const states = [
   { id: 'WA', name: 'Washington' },
 ];
 
-const meta = {
-  title: 'Basic/Forms/Select',
+const meta: Meta<typeof Select> = {
+  title: 'Quanta/Select',
   component: Select,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div
-        style={
-          {
-            width: '420px',
-            '--rac-select-min-width': '220px',
-          } as React.CSSProperties
-        }
-      >
-        <Story />
-      </div>
-    ),
-  ],
-} satisfies Meta<typeof Select>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -113,7 +100,11 @@ function ControlledValueStory(args: any) {
 
   return (
     <>
-      <Select {...args} items={options} value={value} onChange={setValue} />
+      <Select {...args} items={options} value={value} onChange={setValue}>
+        {(item: SelectItemObject) => (
+          <SelectItem id={item.label}>{item.value}</SelectItem>
+        )}
+      </Select>
       <pre style={{ fontSize: 12 }}>
         Current selection: {JSON.stringify(value)}
       </pre>
@@ -132,7 +123,11 @@ function MultipleValueStory(args: any) {
         selectionMode="multiple"
         value={value}
         onChange={setValue}
-      />
+      >
+        {(item: SelectItemObject) => (
+          <SelectItem id={item.label}>{item.value}</SelectItem>
+        )}
+      </Select>
       <pre style={{ fontSize: 12 }}>
         Current selection: {JSON.stringify(value)}
       </pre>
@@ -144,17 +139,12 @@ function AutocompletePopoverStory() {
   const { contains } = useFilter({ sensitivity: 'base' });
 
   return (
-    <RACSelect>
+    <RACSelect className="group flex flex-col gap-1">
       <Label>Category</Label>
-      <Button>
+      <Button variant="neutral" accent>
         <SelectValue />
       </Button>
-      <Popover
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
+      <Popover className="flex flex-col p-1">
         <Autocomplete filter={contains}>
           <SearchField
             aria-label="Search categories"
@@ -176,28 +166,29 @@ function TagGroupValueStory() {
   const triggerRef = React.useRef<HTMLDivElement | null>(null);
   const { contains } = useFilter({ sensitivity: 'base' });
   const [value, setValue] = React.useState<string[]>([]);
-  const selectedStateItems = (
-    selectedItems: Array<(typeof states)[number] | null>,
-  ) =>
-    selectedItems.filter(
-      (item): item is (typeof states)[number] => item != null,
-    );
 
   return (
     <RACSelect
+      className="group flex flex-col gap-1"
       selectionMode="multiple"
       value={value}
       onChange={(nextValue) => setValue(nextValue as string[])}
     >
       <Label>States</Label>
-      <Group aria-label="States" ref={triggerRef}>
+      <Group
+        aria-label="States"
+        ref={triggerRef}
+        className="flex min-h-11 min-w-[250px] items-center gap-2 rounded-lg bg-quanta-snow p-2"
+      >
         <SelectValue<(typeof states)[number]> style={{ flex: 1 }}>
           {({ selectedItems }) => (
             <TagGroup
               aria-label="Selected states"
-              items={selectedStateItems(selectedItems)}
+              items={selectedItems.filter(
+                (item): item is (typeof states)[number] => item != null,
+              )}
               renderEmptyState={() => 'No selected items'}
-              onRemove={(keys) =>
+              onRemove={(keys: Set<React.Key>) =>
                 setValue((current) => current.filter((key) => !keys.has(key)))
               }
             >
@@ -205,17 +196,11 @@ function TagGroupValueStory() {
             </TagGroup>
           )}
         </SelectValue>
-        <Button aria-label="Open state picker">+</Button>
+        <Button variant="primary" accent aria-label="Open state picker">
+          +
+        </Button>
       </Group>
-      <Popover
-        triggerRef={triggerRef}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: 250,
-          padding: 4,
-        }}
-      >
+      <Popover triggerRef={triggerRef} className="flex w-[250px] flex-col p-1">
         <Autocomplete filter={contains}>
           <SearchField
             aria-label="Search states"
@@ -249,6 +234,15 @@ export const Default: Story = {
 };
 
 export const Items: Story = {
+  render: (args) => (
+    <Select<SelectItemObject, 'single'>
+      {...(args as SelectProps<SelectItemObject, 'single'>)}
+    >
+      {(item: SelectItemObject) => (
+        <SelectItem id={item.label}>{item.value}</SelectItem>
+      )}
+    </Select>
+  ),
   args: {
     name: 'field-items',
     label: 'Field title',
@@ -260,7 +254,10 @@ export const Items: Story = {
 
 export const Sections: Story = {
   render: (args) => (
-    <Select {...args} items={groupedOptions}>
+    <Select<(typeof groupedOptions)[number], 'single'>
+      {...(args as SelectProps<(typeof groupedOptions)[number], 'single'>)}
+      items={groupedOptions}
+    >
       {(section: (typeof groupedOptions)[number]) => (
         <SelectSection id={section.name}>
           <SelectSectionHeader>{section.name}</SelectSectionHeader>
@@ -346,27 +343,5 @@ export const Disabled: Story = {
     name: 'field-disabled',
     label: 'Disabled field title',
     isDisabled: true,
-  },
-};
-
-export const Validation: Story = {
-  render: (args) => (
-    <Form>
-      <Select {...args}>
-        <SelectItem id="aardvark">Aardvark</SelectItem>
-        <SelectItem id="cat">Cat</SelectItem>
-        <SelectItem id="dog">Dog</SelectItem>
-        <SelectItem id="kangaroo">Kangaroo</SelectItem>
-        <SelectItem id="panda">Panda</SelectItem>
-        <SelectItem id="snake">Snake</SelectItem>
-      </Select>
-      <Button type="submit">Submit</Button>
-    </Form>
-  ),
-  args: {
-    label: 'Animal',
-    name: 'animal',
-    isRequired: true,
-    description: 'Please select an animal.',
   },
 };

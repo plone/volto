@@ -700,6 +700,11 @@ msgstr "Aukeratu fitxategia"
 msgid "Clear"
 msgstr "Garbitu"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "URLa garbitu"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2682,6 +2687,11 @@ msgstr "Ados"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "7 biteko byte karaktereak bakarrik onartzen dira. Ezin dira hizki larriak edo karaktere bereziak erabili: <, >, &, #, /, ?, edo URLtan onartzen ez direnak. Ezin da karaktere hauekin hasi: _, aq_, @@, ++. Ezin da __-rekin amaitu. Ezin da request, contributors, ., ... edo "" izan. Ezin ditu lerro berriak izan."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "URL arakatzailea ireki"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4190,6 +4200,16 @@ msgstr "URLen kudeaketa"
 msgid "URL Management for {title}"
 msgstr "{title} orrialdearen URLen kudeaketa"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URLa falta da"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -5351,6 +5371,26 @@ msgstr "Testua"
 #: config/Blocks
 msgid "title"
 msgstr "Izenburua"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Errorea"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informazioa"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Arrakasta"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Abisua"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
