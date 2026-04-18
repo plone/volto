@@ -38,7 +38,7 @@
   ],
   "scripts": {
     "test": "vitest",
-    "check-ts": "tsc --project tsconfig.json",
+    "check:ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
