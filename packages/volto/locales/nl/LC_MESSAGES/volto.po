@@ -4623,6 +4623,11 @@ msgstr "Je gaat alle items verwijderen in de huidige paginatie van deze map."
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Je probeert een beveiligde bron te bezoeken, eerst {login} aub."
 
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
+
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
