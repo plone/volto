@@ -42,6 +42,7 @@
     "stylelint": "^16.14.1",
     "stylelint-config-idiomatic-order": "10.0.0",
     "stylelint-prettier": "5.0.3",
+    "tsconfig": "workspace:*",
     "typescript-eslint": "^8.41.0",
     "vite": "catalog:",
     "wait-on": "^8.0.0"
