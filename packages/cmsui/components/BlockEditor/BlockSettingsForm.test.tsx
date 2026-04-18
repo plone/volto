@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import type { Content } from '@plone/types';
+import type { JSX } from 'react';
 import BlockSettingsForm from './BlockSettingsForm';
 
 const { useAppFormSpy, getLastForm } = vi.hoisted(() => {
