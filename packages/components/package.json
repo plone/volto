@@ -77,7 +77,7 @@
     "eslint": "eslint 'src/**/*.{js,ts,tsx}' --quiet",
     "eslint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
     "prettier": "prettier --check 'src/**/*.{js,jsx,ts,tsx}'",
-    "prettier:fix": "prettier --write '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "prettier:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint 'src/**/*.{css,scss,less}'",
     "stylelint:fix": "sh -c 'if [ -f .stylelintrc ] || [ -f .stylelintrc.json ] || [ -f .stylelintrc.js ] || [ -f .stylelintrc.cjs ] || [ -f stylelint.config.js ] || [ -f stylelint.config.cjs ] || [ -f stylelint.config.mjs ]; then stylelint '''./**/*.{css,scss,less}''' --fix --allow-empty-input; else echo \"No local stylelint config, skipping\"; fi'",
     "dry-release": "release-it --dry-run",
