@@ -16,6 +16,7 @@ export interface BlocksConfig {
 }
 
 export interface BlocksConfigData {
+  [key: string]: BlockConfigBase;
   title: BlockConfigBase;
   description: BlockConfigBase;
   slate: SlateBlock;
@@ -39,6 +40,13 @@ export interface PlateBlocksConfigData {
 
 export type AvailableBlocks = keyof BlocksConfigData;
 
+export type BlockSchemaArgs = {
+  formData?: BlocksFormData;
+  intl?: IntlShape;
+  props?: BlockEditProps;
+  data?: BlocksFormData;
+};
+
 export interface BlockConfigBase {
   /**
    * The programmatic id of the block
@@ -51,7 +59,7 @@ export interface BlockConfigBase {
   /**
    * The icon used in the block chooser
    */
-  icon: string;
+  icon: string | React.ComponentType<any>;
   /**
    * The group of the block
    */
@@ -79,9 +87,7 @@ export interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema:
-    | JSONSchema
-    | ((args: { props: unknown; intl: IntlShape }) => JSONSchema);
+  blockSchema: JSONSchema | ((args?: BlockSchemaArgs) => JSONSchema);
   dataAdapter?: ({
     block,
     data,

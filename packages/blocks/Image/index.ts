@@ -1,4 +1,5 @@
 import React from 'react';
+import type { BlockConfigBase } from '@plone/types';
 import { ImageSchema } from './schema';
 import { ImageIcon } from '@plone/components/Icons';
 
@@ -18,6 +19,6 @@ const ImageBlockInfo = {
     defaultWidth: 'default',
     widths: ['layout', 'default', 'narrow', 'full'],
   },
-};
+} satisfies Partial<BlockConfigBase>;
 
 export default ImageBlockInfo;

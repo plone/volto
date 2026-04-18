@@ -22,9 +22,9 @@
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"],
+      "seven/*": ["./*"],
       "@plone/plate/*": ["../../packages/plate/src/*"]
     },
     "noEmit": true,

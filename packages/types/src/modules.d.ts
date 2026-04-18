@@ -104,6 +104,12 @@ declare module '*.svg' {
   let asset: string;
   export default asset;
 }
+declare module '*.svg?react' {
+  import type { FunctionComponent, SVGProps } from 'react';
+
+  const ReactComponent: FunctionComponent<SVGProps<SVGSVGElement>>;
+  export default ReactComponent;
+}
 declare module '*.ttf' {
   let asset: string;
   export default asset;
@@ -139,4 +145,10 @@ declare module '*.webmanifest' {
 declare module '*.zip' {
   let asset: string;
   export default asset;
+}
+
+declare module 'lodash/debounce' {
+  import debounce from 'lodash';
+
+  export default debounce;
 }
