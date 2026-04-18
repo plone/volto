@@ -38,7 +38,7 @@ export interface PlateBlocksConfigData {
   [key: string]: PlateBlockConfigBase;
 }
 
-export type AvailableBlocks = keyof BlocksConfigData;
+export type AvailableBlocks = Extract<keyof BlocksConfigData, string>;
 
 export type BlockSchemaArgs = {
   formData?: BlocksFormData;

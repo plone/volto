@@ -146,9 +146,3 @@ declare module '*.zip' {
   let asset: string;
   export default asset;
 }
-
-declare module 'lodash/debounce' {
-  import debounce from 'lodash';
-
-  export default debounce;
-}
