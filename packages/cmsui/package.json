@@ -33,7 +33,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "vitest --coverage",
-    "check:ts": "tsc --project tsconfig.json",
+    "check:ts": "pnpm --filter seven run typegen && tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",

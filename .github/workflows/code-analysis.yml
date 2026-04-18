@@ -17,7 +17,7 @@ jobs:
           node-version: ${{ env.node-version }}
 
       - name: Seven app TypeScript check
-        run: pnpm --filter seven run typecheck
+        run: pnpm --filter seven exec init-loaders && pnpm --filter seven run typecheck
 
       - name: Package TypeScript checks
         run: |
