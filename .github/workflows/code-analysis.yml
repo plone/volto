@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
 
+      - name: Seven app TypeScript check
+        run: pnpm --filter seven run typecheck
+
       - name: Package TypeScript checks
         run: |
           pnpm --filter @plone/types run check:ts
@@ -27,9 +30,6 @@ jobs:
           pnpm --filter @plone/layout run check:ts
           pnpm --filter @plone/plate run check:ts
           pnpm --filter @plone/publicui run check:ts
-
-      - name: Seven app TypeScript check
-        run: pnpm --filter seven run typecheck
 
   prettier:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
