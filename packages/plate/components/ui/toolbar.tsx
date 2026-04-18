@@ -351,46 +351,46 @@ type TooltipProps<T extends React.ElementType> = {
 } & React.ComponentPropsWithoutRef<T>;
 
 function withTooltip<T extends React.ElementType>(Component: T) {
-  const ComponentWithTooltip = React.forwardRef<
-    React.ElementRef<T>,
-    TooltipProps<T>
-  >(function ExtendComponent(
-    {
-      tooltip,
-      tooltipContentProps,
-      tooltipProps,
-      tooltipTriggerProps,
-      ...props
-    },
-    ref,
-  ) {
-    const [mounted, setMounted] = React.useState(false);
+  const ComponentAny = Component as any;
+  const ComponentWithTooltip = React.forwardRef<any, TooltipProps<T>>(
+    function ExtendComponent(
+      {
+        tooltip,
+        tooltipContentProps,
+        tooltipProps,
+        tooltipTriggerProps,
+        ...props
+      },
+      ref,
+    ) {
+      const [mounted, setMounted] = React.useState(false);
 
-    React.useEffect(() => {
-      setMounted(true);
-    }, []);
+      React.useEffect(() => {
+        setMounted(true);
+      }, []);
 
-    const component = (
-      <Component
-        {...(props as React.ComponentPropsWithoutRef<T>)}
-        ref={ref as React.ComponentPropsWithRef<T>['ref']}
-      />
-    );
-
-    if (tooltip && mounted) {
-      return (
-        <Tooltip {...tooltipProps}>
-          <TooltipTrigger asChild {...tooltipTriggerProps}>
-            {component}
-          </TooltipTrigger>
-
-          <TooltipContent {...tooltipContentProps}>{tooltip}</TooltipContent>
-        </Tooltip>
+      const component = (
+        <ComponentAny
+          {...(props as React.ComponentPropsWithoutRef<T>)}
+          ref={ref as any}
+        />
       );
-    }
 
-    return component;
-  });
+      if (tooltip && mounted) {
+        return (
+          <Tooltip {...tooltipProps}>
+            <TooltipTrigger asChild {...tooltipTriggerProps}>
+              {component}
+            </TooltipTrigger>
+
+            <TooltipContent {...tooltipContentProps}>{tooltip}</TooltipContent>
+          </Tooltip>
+        );
+      }
+
+      return component;
+    },
+  );
 
   ComponentWithTooltip.displayName = `WithTooltip(${getDisplayName(Component)})`;
 
