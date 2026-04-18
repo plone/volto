@@ -1,1 +1,1 @@
-Fix tsconfig root. @wesleybl
+Fix tsconfig root and remove tsconfig package. @wesleybl
