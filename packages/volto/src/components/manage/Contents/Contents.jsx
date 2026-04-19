@@ -1202,6 +1202,11 @@ class Contents extends Component {
     const path = getBaseUrl(this.props.pathname);
     const { DndContext, closestCenter } = this.props.dndKitCore;
     const {
+      restrictToHorizontalAxis,
+      restrictToVerticalAxis,
+      restrictToParentElement,
+    } = this.props.dndKitModifiers;
+    const {
       SortableContext,
       verticalListSortingStrategy,
       horizontalListSortingStrategy,
@@ -1664,15 +1669,19 @@ class Contents extends Component {
                               messages.resultCount,
                             )}: ${this.props.total || 0}`}
                           </span>
-                          <DndContext
-                            collisionDetection={closestCenter}
-                            onDragStart={this.onDragStart}
-                            onDragOver={this.onDragOver}
-                            onDragEnd={this.onDragEnd}
-                            onDragCancel={this.onDragCancel}
-                          >
-                            <Table selectable compact singleLine attached>
-                              <Table.Header>
+                          <Table selectable compact singleLine attached>
+                            <Table.Header>
+                              <DndContext
+                                collisionDetection={closestCenter}
+                                onDragStart={this.onDragStart}
+                                onDragOver={this.onDragOver}
+                                onDragEnd={this.onDragEnd}
+                                onDragCancel={this.onDragCancel}
+                                modifiers={[
+                                  restrictToHorizontalAxis,
+                                  restrictToParentElement,
+                                ]}
+                              >
                                 <Table.Row>
                                   <Table.HeaderCell>
                                     <Popup
@@ -1884,7 +1893,7 @@ class Contents extends Component {
                                   >
                                     {map(
                                       this.state.index.order,
-                                      (index, order) =>
+                                      (index) =>
                                         this.state.index.values[index]
                                           .selected && (
                                           <ContentsIndexHeader
@@ -1898,7 +1907,6 @@ class Contents extends Component {
                                               this.state.index.values[index]
                                                 .label
                                             }
-                                            order={order}
                                           />
                                         ),
                                     )}
@@ -1910,8 +1918,20 @@ class Contents extends Component {
                                     />
                                   </Table.HeaderCell>
                                 </Table.Row>
-                              </Table.Header>
-                              <Table.Body>
+                              </DndContext>
+                            </Table.Header>
+                            <Table.Body>
+                              <DndContext
+                                collisionDetection={closestCenter}
+                                onDragStart={this.onDragStart}
+                                onDragOver={this.onDragOver}
+                                onDragEnd={this.onDragEnd}
+                                onDragCancel={this.onDragCancel}
+                                modifiers={[
+                                  restrictToVerticalAxis,
+                                  restrictToParentElement,
+                                ]}
+                              >
                                 <SortableContext
                                   items={this.state.items.map(
                                     (item) => item['@id'],
@@ -1952,9 +1972,9 @@ class Contents extends Component {
                                     />
                                   ))}
                                 </SortableContext>
-                              </Table.Body>
-                            </Table>
-                          </DndContext>
+                              </DndContext>
+                            </Table.Body>
+                          </Table>
                         </div>
 
                         <div className="contents-pagination">
@@ -2013,7 +2033,12 @@ class Contents extends Component {
 
 export const ContentsComponent = compose(
   injectIntl,
-  injectLazyLibs(['toastify', 'dndKitCore', 'dndKitSortable']),
+  injectLazyLibs([
+    'toastify',
+    'dndKitCore',
+    'dndKitModifiers',
+    'dndKitSortable',
+  ]),
   connect(
     (store, props) => {
       return {

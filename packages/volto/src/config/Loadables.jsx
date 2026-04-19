@@ -46,6 +46,7 @@ export const loadables = {
   reactBeautifulDnd: loadable.lib(() => import('react-beautiful-dnd')),
   rrule: loadable.lib(() => import('rrule')),
   dndKitCore: loadable.lib(() => import('@dnd-kit/core')),
+  dndKitModifiers: loadable.lib(() => import('@dnd-kit/modifiers')),
   dndKitSortable: loadable.lib(() => import('@dnd-kit/sortable')),
   dndKitUtilities: loadable.lib(() => import('@dnd-kit/utilities')),
 };
