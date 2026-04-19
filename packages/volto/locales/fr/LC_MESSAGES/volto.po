@@ -700,6 +700,11 @@ msgstr "Choisissez un fichier"
 msgid "Clear"
 msgstr "Effacer"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Effacer l'URL"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2682,6 +2687,11 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Ouvrir le navigateur d'URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4190,6 +4200,16 @@ msgstr "Gestion des URLs"
 msgid "URL Management for {title}"
 msgstr "Gestion de l'URL pour {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "L'URL est manquante"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4604,6 +4624,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Vous essayez d'accéder à une ressource protégée, veuillez d'abord {login}."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5351,6 +5376,26 @@ msgstr ""
 #: config/Blocks
 msgid "title"
 msgstr "titre"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Erreur"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Information"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Succès"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Avertissement"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

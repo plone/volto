@@ -700,6 +700,11 @@ msgstr "Seleccionar Archivo"
 msgid "Clear"
 msgstr "Limpiar"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Borrar URL"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2682,6 +2687,11 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Sólo se permiten caracteres en bytes de 7 bits. No puede contener letras mayúsculas, caracteres especiales: <, >, &, #, /, ?, u otros que sean ilegales en las URL. No puede empezar por: _, aq_, @@, ++. No puede terminar con __. No puede ser: request,contributors, ., .., "". No puede contener líneas nuevas."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Abrir navegador de URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4190,6 +4200,16 @@ msgstr "Gestión de URLs"
 msgid "URL Management for {title}"
 msgstr "Gestión de URLs para {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta la URL"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4604,6 +4624,11 @@ msgstr "Está a punto de eliminar todos los elementos de la paginación actual d
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Está intentando acceder a un elemento protegido, por favor, haga {login} primero."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5351,6 +5376,26 @@ msgstr "Texto"
 #: config/Blocks
 msgid "title"
 msgstr "Título"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Error"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Información"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Éxito"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertencia"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
