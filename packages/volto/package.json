@@ -298,7 +298,6 @@
     "postcss-less": "6.0.0",
     "postcss-load-config": "catalog:",
     "postcss-loader": "catalog:",
-    "postcss-overrides": "3.1.4",
     "postcss-scss": "4.0.9",
     "@plone/razzle-dev-utils": "workspace:*",
     "react-docgen-typescript-plugin": "^1.0.8",
