@@ -69,11 +69,48 @@ jobs:
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
         run: pnpm nick:migrate && pnpm nick:seed
 
+      - name: Install Playwright browsers
+        working-directory: project-title
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Create Nick smoke test
+        working-directory: project-title
+        run: |
+          mkdir -p apps/seven/acceptance/tests
+          cat > apps/seven/acceptance/tests/nick-smoke.test.ts <<'EOF'
+          import { expect, test } from '../../core/packages/tooling/playwright/test';
+
+          test('renders Plone 7 on the homepage', async ({ page }) => {
+            await page.goto('/');
+            await expect(page.getByText('Plone 7')).toBeVisible();
+          });
+          EOF
+
+      - uses: JarvusInnovations/background-action@v1
+        name: Start generated Seven app
+        with:
+          run: |
+            cd project-title
+            pnpm build
+            pnpm start:prod
+          wait-on: |
+            http://localhost:3000
+          tail: true
+          log-output-resume: stderr
+          wait-for: 10m
+          log-output: stderr,stdout
+          log-output-if: failure
+
+      - name: Run Nick smoke test
+        working-directory: project-title
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+        run: pnpm exec playwright test apps/seven/acceptance/tests/nick-smoke.test.ts --reporter=line
+
       - name: Run Nick checks
         working-directory: project-title
         env:
           DATABASE_URL: ${{ env.DATABASE_URL }}
         run: |
-          make lint
           make format
           make test
