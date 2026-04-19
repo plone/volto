@@ -48,7 +48,7 @@ jobs:
 
       - name: Generate Cookieplone-based frontend addon
         run: |
-          uvx cookieplone@2.0.0a2 plone7_nick_bff --no-input
+          uvx cookieplone@2.0.0a2 plone7_nick_embedded --no-input
 
       - name: Install generated package
         working-directory: project-title
