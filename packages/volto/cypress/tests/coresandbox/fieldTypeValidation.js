@@ -104,7 +104,7 @@ context('Test field types in example content', () => {
       cy.get('#field-list_field').click();
       cy.findAllByText('Advanced').click();
       cy.get(
-        '#field-list_field > .react-select__control > .react-select__value-container > div >.react-select__multi-value',
+        '#field-list_field > .react-select__control > .react-select__value-container > div > .react-select__multi-value',
       ).should('have.text', 'Advanced');
 
       cy.get('.form-error-label').should('not.exist');
