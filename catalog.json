@@ -11,7 +11,7 @@
   "@vitest/coverage-v8": "^3.2.4",
   "cypress": "15.13.1",
   "jsdom": "^28.1.0",
-  "lodash": "4.17.23",
+  "lodash": "4.18.1",
   "react-aria-components": "^1.17.0",
   "react-aria": "^3.48.0",
   "react-stately": "^3.46.0",

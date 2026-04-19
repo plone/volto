@@ -40,8 +40,8 @@ catalogs:
       specifier: ^28.1.0
       version: 28.1.0
     lodash:
-      specifier: 4.17.23
-      version: 4.17.23
+      specifier: 4.18.1
+      version: 4.18.1
     react-aria:
       specifier: ^3.48.0
       version: 3.48.0
@@ -227,7 +227,7 @@ importers:
         version: link:../types
       '@react-types/shared':
         specifier: ^3.32.1
-        version: 3.33.1(react@18.2.0)
+        version: 3.34.0(react@18.2.0)
       '@svgr/plugin-svgo':
         specifier: ^8.1.0
         version: 8.1.0(@svgr/core@8.1.0(typescript@5.9.3))(typescript@5.9.3)
@@ -438,7 +438,7 @@ importers:
         version: 10.5.0
       lodash:
         specifier: 'catalog:'
-        version: 4.17.23
+        version: 4.18.1
       mrs-developer:
         specifier: ^2.1.1
         version: 2.3.2
@@ -575,7 +575,7 @@ importers:
         version: 0.1.0
       lodash:
         specifier: 'catalog:'
-        version: 4.17.23
+        version: 4.18.1
       lodash-move:
         specifier: 1.1.1
         version: 1.1.1
@@ -1355,7 +1355,7 @@ importers:
         version: 1.2.4
       lodash:
         specifier: 'catalog:'
-        version: 4.17.23
+        version: 4.18.1
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -3265,11 +3265,6 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
-  '@react-types/shared@3.33.1':
-    resolution: {integrity: sha512-oJHtjvLG43VjwemQDadlR5g/8VepK56B/xKO2XORPHt9zlW6IZs3tZrYlvH29BMvoqC7RtE7E5UjgbnbFtDGag==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
-
   '@react-types/shared@3.34.0':
     resolution: {integrity: sha512-gp6xo/s2lX54AlTjOiqwDnxA7UW79BNvI9dB9pr3LZTzRKCd1ZA+ZbgKw/ReIiWuvvVw/8QFJpnqeeFyLocMcQ==}
     peerDependencies:
@@ -5094,9 +5089,6 @@ packages:
   caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
 
-  caniuse-lite@1.0.30001777:
-    resolution: {integrity: sha512-tmN+fJxroPndC74efCdp12j+0rk0RHwV5Jwa1zWaFVyw2ZxAuPeG8ZgWC3Wz7uSjT3qMRQ5XHZ4COgQmsCMJAQ==}
-
   caniuse-lite@1.0.30001788:
     resolution: {integrity: sha512-6q8HFp+lOQtcf7wBK+uEenxymVWkGKkjFpCvw5W25cmMwEDU45p1xQFBQv8JDlMMry7eNxyBaR+qxgmTUZkIRQ==}
 
@@ -5715,7 +5707,6 @@ packages:
 
   decorate-component-with-props@1.2.1:
     resolution: {integrity: sha512-X2hZBnVHZAZQHG+g3Ce97SBtog1Vglzg7sPNbUY5XKmmgd3NVAiOHviw9hd7GOJIDrQ1slfwsmkbKQxESWFy7Q==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     peerDependencies:
       react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
 
@@ -7865,8 +7856,8 @@ packages:
   lodash.uniqby@4.7.0:
     resolution: {integrity: sha512-e/zcLx6CSbmaEgFHCA7BnoQKyCtKMxnuWrJygbwPs/AIn+IMKl66L8/s+wBUn5LRw2pZx3bUHibiV1b6aTWIww==}
 
-  lodash@4.17.23:
-    resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
+  lodash@4.18.1:
+    resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
   log-symbols@4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
@@ -12837,7 +12828,7 @@ snapshots:
   '@loadable/server@5.14.0(@loadable/component@5.14.1(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@loadable/component': 5.14.1(react@18.2.0)
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.2.0
 
   '@loadable/webpack-plugin@5.15.2(webpack@5.105.4(esbuild@0.25.12))':
@@ -12878,7 +12869,7 @@ snapshots:
 
   '@nodeutils/defaults-deep@1.1.0':
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   '@nolyfill/is-core-module@1.0.39': {}
 
@@ -13077,10 +13068,6 @@ snapshots:
       react: 18.2.0
       react-aria: 3.48.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-dom: 18.2.0(react@18.2.0)
-
-  '@react-types/shared@3.33.1(react@18.2.0)':
-    dependencies:
-      react: 18.2.0
 
   '@react-types/shared@3.34.0(react@18.2.0)':
     dependencies:
@@ -13771,7 +13758,7 @@ snapshots:
       chalk: 3.0.0
       css.escape: 1.5.1
       dom-accessibility-api: 0.5.16
-      lodash: 4.17.23
+      lodash: 4.18.1
       redent: 3.0.0
 
   '@testing-library/jest-dom@6.4.2(@types/jest@30.0.0)(vitest@3.2.4)':
@@ -13782,7 +13769,7 @@ snapshots:
       chalk: 3.0.0
       css.escape: 1.5.1
       dom-accessibility-api: 0.6.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       redent: 3.0.0
     optionalDependencies:
       '@types/jest': 30.0.0
@@ -13795,7 +13782,7 @@ snapshots:
       chalk: 3.0.0
       css.escape: 1.5.1
       dom-accessibility-api: 0.6.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       redent: 3.0.0
 
   '@testing-library/react-hooks@8.0.1(@types/react@18.3.28)(react-dom@18.2.0(react@18.2.0))(react-test-renderer@18.2.0(react@18.2.0))(react@18.2.0)':
@@ -14855,7 +14842,7 @@ snapshots:
   autoprefixer@10.4.8(postcss@8.4.31):
     dependencies:
       browserslist: 4.28.2
-      caniuse-lite: 1.0.30001777
+      caniuse-lite: 1.0.30001788
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.1
@@ -14926,7 +14913,7 @@ snapshots:
       '@babel/helper-module-imports': 7.28.6
       '@babel/types': 7.20.5
       glob: 7.2.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       require-package-name: 2.0.1
     transitivePeerDependencies:
       - supports-color
@@ -14985,7 +14972,7 @@ snapshots:
 
   babel-plugin-transform-define@2.1.4:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       traverse: 0.6.6
 
   babel-plugin-transform-react-remove-prop-types@0.4.24: {}
@@ -15193,11 +15180,9 @@ snapshots:
   caniuse-api@3.0.0:
     dependencies:
       browserslist: 4.28.2
-      caniuse-lite: 1.0.30001777
+      caniuse-lite: 1.0.30001788
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
-
-  caniuse-lite@1.0.30001777: {}
 
   caniuse-lite@1.0.30001788: {}
 
@@ -15434,7 +15419,7 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       date-fns: 2.30.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       rxjs: 7.8.2
       shell-quote: 1.8.3
       spawn-command: 0.0.2
@@ -15754,7 +15739,7 @@ snapshots:
       hasha: 5.2.2
       is-installed-globally: 0.4.0
       listr2: 3.14.0(enquirer@2.4.1)
-      lodash: 4.17.23
+      lodash: 4.18.1
       log-symbols: 4.1.0
       minimist: 1.2.8
       ospath: 1.2.2
@@ -15954,7 +15939,7 @@ snapshots:
     dependencies:
       asap: 2.0.6
       invariant: 2.2.4
-      lodash: 4.17.23
+      lodash: 4.18.1
       redux: 4.2.1
 
   dns-packet@5.6.1:
@@ -16405,7 +16390,7 @@ snapshots:
       '@babel/plugin-syntax-flow': 7.28.6(@babel/core@7.29.0)
       '@babel/plugin-transform-react-jsx': 7.28.6(@babel/core@7.29.0)
       eslint: 8.57.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       string-natural-compare: 3.0.1
 
   eslint-plugin-import@2.32.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1):
@@ -17341,7 +17326,7 @@ snapshots:
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       pretty-error: 4.0.0
       tapable: 2.3.0
       webpack: 5.105.4(esbuild@0.25.12)
@@ -17528,7 +17513,7 @@ snapshots:
       cli-width: 3.0.0
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       mute-stream: 0.0.8
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -18019,7 +18004,7 @@ snapshots:
   jsonwebtoken@9.0.0:
     dependencies:
       jws: 3.2.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       ms: 2.1.3
       semver: 7.7.4
 
@@ -18336,11 +18321,11 @@ snapshots:
 
   lodash-move@1.1.1:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   lodash-webpack-plugin@0.11.6(webpack@5.105.4(esbuild@0.25.12)):
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       webpack: 5.105.4(esbuild@0.25.12)
 
   lodash.capitalize@4.2.1: {}
@@ -18367,7 +18352,7 @@ snapshots:
 
   lodash.uniqby@4.7.0: {}
 
-  lodash@4.17.23: {}
+  lodash@4.18.1: {}
 
   log-symbols@4.1.0:
     dependencies:
@@ -19328,7 +19313,7 @@ snapshots:
 
   pretty-error@4.0.0:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       renderkid: 3.0.0
 
   pretty-format@26.6.2:
@@ -19615,7 +19600,7 @@ snapshots:
       consolidated-events: 2.0.2
       enzyme-shallow-equal: 1.0.7
       is-touch-device: 1.0.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       moment: 2.29.4
       object.assign: 4.1.7
       object.values: 1.2.1
@@ -19707,7 +19692,7 @@ snapshots:
     dependencies:
       autobind-decorator: 2.4.0
       dnd-core: 4.0.5
-      lodash: 4.17.23
+      lodash: 4.18.1
       shallowequal: 1.1.0
 
   react-dnd@5.0.0(react@18.2.0):
@@ -19715,7 +19700,7 @@ snapshots:
       dnd-core: 4.0.5
       hoist-non-react-statics: 2.5.5
       invariant: 2.2.4
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.2.0
       recompose: 0.27.1(react@18.2.0)
       shallowequal: 1.1.0
@@ -20231,7 +20216,7 @@ snapshots:
       css-select: 4.3.0
       dom-converter: 0.2.0
       htmlparser2: 6.1.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       strip-ansi: 6.0.1
 
   request-progress@3.0.0:
@@ -20457,7 +20442,7 @@ snapshots:
       '@semantic-ui-react/event-stack': 3.1.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       clsx: 1.2.1
       keyboard-key: 1.1.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       lodash-es: 4.17.23
       prop-types: 15.7.2
       react: 18.2.0
@@ -20625,7 +20610,7 @@ snapshots:
       direction: 1.0.4
       is-hotkey: 0.2.0
       is-plain-object: 5.0.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       scroll-into-view-if-needed: 3.1.0
       slate: 0.118.1
       tiny-invariant: 1.3.1
@@ -20644,7 +20629,7 @@ snapshots:
       '@juggle/resize-observer': 3.4.0
       direction: 1.0.4
       is-hotkey: 0.2.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       scroll-into-view-if-needed: 3.1.0
@@ -21721,7 +21706,7 @@ snapshots:
     dependencies:
       axios: 1.15.0(debug@4.3.4)
       joi: 18.0.2
-      lodash: 4.17.23
+      lodash: 4.18.1
       minimist: 1.2.8
       rxjs: 7.8.2
     transitivePeerDependencies:
@@ -21731,7 +21716,7 @@ snapshots:
     dependencies:
       axios: 1.15.0(debug@4.4.3)
       joi: 18.0.2
-      lodash: 4.17.23
+      lodash: 4.18.1
       minimist: 1.2.8
       rxjs: 7.8.2
     transitivePeerDependencies:
