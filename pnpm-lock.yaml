@@ -100,9 +100,6 @@ importers:
       lint-staged:
         specifier: ^15.2.2
         version: 15.5.2
-      tsconfig:
-        specifier: workspace:*
-        version: link:packages/tsconfig
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
@@ -391,9 +388,6 @@ importers:
       release-it:
         specifier: 'catalog:'
         version: 19.2.4(@types/node@24.12.0)(magicast@0.3.5)
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       tsup:
         specifier: ^8.3.5
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.9)(typescript@5.9.3)(yaml@2.8.2)
@@ -459,8 +453,6 @@ importers:
         specifier: 'catalog:'
         version: 19.2.4(@types/node@24.12.0)(magicast@0.3.5)
 
-  packages/tsconfig: {}
-
   packages/types:
     dependencies:
       react:
@@ -479,9 +471,6 @@ importers:
       release-it:
         specifier: 'catalog:'
         version: 19.2.4(@types/node@24.12.0)(magicast@0.3.5)
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
