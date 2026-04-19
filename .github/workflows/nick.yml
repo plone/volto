@@ -22,13 +22,13 @@ jobs:
       postgres:
         image: postgres:17
         env:
-          POSTGRES_DB: ${{ env.POSTGRES_DB }}
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_DB: nick
+          POSTGRES_USER: nick
+          POSTGRES_PASSWORD: nick
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U ${{ env.POSTGRES_USER }} -d ${{ env.POSTGRES_DB }}"
+          --health-cmd "pg_isready -U nick -d nick"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
