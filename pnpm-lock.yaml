@@ -293,8 +293,8 @@ importers:
         specifier: 2.0.3
         version: 2.0.3
       lodash:
-        specifier: 4.17.23
-        version: 4.17.23
+        specifier: 4.18.1
+        version: 4.18.1
       mkdirp-then:
         specifier: 1.2.0
         version: 1.2.0
@@ -436,8 +436,8 @@ importers:
         specifier: ^10.4.5
         version: 10.5.0
       lodash:
-        specifier: 4.17.23
-        version: 4.17.23
+        specifier: 4.18.1
+        version: 4.18.1
       mrs-developer:
         specifier: ^2.1.1
         version: 2.3.2
@@ -567,8 +567,8 @@ importers:
         specifier: 0.1.0
         version: 0.1.0
       lodash:
-        specifier: 4.17.23
-        version: 4.17.23
+        specifier: 4.18.1
+        version: 4.18.1
       lodash-move:
         specifier: 1.1.1
         version: 1.1.1
@@ -1150,8 +1150,8 @@ importers:
         specifier: 1.2.4
         version: 1.2.4
       lodash:
-        specifier: 4.17.23
-        version: 4.17.23
+        specifier: 4.18.1
+        version: 4.18.1
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -16055,7 +16055,7 @@ snapshots:
   '@loadable/server@5.14.0(@loadable/component@5.14.1(react@18.2.0))(react@18.2.0)':
     dependencies:
       '@loadable/component': 5.14.1(react@18.2.0)
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.2.0
 
   '@loadable/webpack-plugin@5.15.2(webpack@5.105.4(lightningcss@1.32.0)(postcss@8.4.31))':
@@ -16129,7 +16129,7 @@ snapshots:
 
   '@nodeutils/defaults-deep@1.1.0':
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   '@nolyfill/is-core-module@1.0.39': {}
 
@@ -17486,7 +17486,7 @@ snapshots:
       chalk: 3.0.0
       css.escape: 1.5.1
       dom-accessibility-api: 0.6.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       redent: 3.0.0
 
   '@testing-library/react-hooks@8.0.1(@types/react@18.3.28)(react-dom@18.2.0(react@18.2.0))(react-test-renderer@18.2.0(react@18.2.0))(react@18.2.0)':
@@ -18903,7 +18903,7 @@ snapshots:
       '@babel/helper-module-imports': 7.28.6
       '@babel/types': 7.20.5
       glob: 7.2.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       require-package-name: 2.0.1
     transitivePeerDependencies:
       - supports-color
@@ -18977,7 +18977,7 @@ snapshots:
 
   babel-plugin-transform-define@2.1.4:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       traverse: 0.6.6
 
   babel-plugin-transform-react-remove-prop-types@0.4.24: {}
@@ -19084,7 +19084,7 @@ snapshots:
       babel-traverse: 6.26.0
       babel-types: 6.26.0
       babylon: 6.18.0
-      lodash: 4.17.23
+      lodash: 4.18.1
     transitivePeerDependencies:
       - supports-color
 
@@ -19098,7 +19098,7 @@ snapshots:
       debug: 2.6.9
       globals: 9.18.0
       invariant: 2.2.4
-      lodash: 4.17.23
+      lodash: 4.18.1
     transitivePeerDependencies:
       - supports-color
 
@@ -19106,7 +19106,7 @@ snapshots:
     dependencies:
       babel-runtime: 6.26.0
       esutils: 2.0.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       to-fast-properties: 1.0.3
 
   babylon@6.18.0: {}
@@ -19886,7 +19886,7 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       date-fns: 2.30.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       rxjs: 7.8.2
       shell-quote: 1.8.3
       spawn-command: 0.0.2
@@ -20343,7 +20343,7 @@ snapshots:
       is-installed-globally: 0.4.0
       lazy-ass: 1.6.0
       listr2: 3.14.0(enquirer@2.4.1)
-      lodash: 4.17.23
+      lodash: 4.18.1
       log-symbols: 4.1.0
       minimist: 1.2.8
       ospath: 1.2.2
@@ -20635,7 +20635,7 @@ snapshots:
     dependencies:
       asap: 2.0.6
       invariant: 2.2.4
-      lodash: 4.17.23
+      lodash: 4.18.1
       redux: 4.2.1
 
   dns-packet@5.6.1:
@@ -21167,7 +21167,7 @@ snapshots:
       '@babel/plugin-syntax-flow': 7.28.6(@babel/core@7.29.0)
       '@babel/plugin-transform-react-jsx': 7.28.6(@babel/core@7.29.0)
       eslint: 8.57.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       string-natural-compare: 3.0.1
 
   eslint-plugin-import@2.32.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1):
@@ -22480,7 +22480,7 @@ snapshots:
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       pretty-error: 4.0.0
       tapable: 2.3.3
       webpack: 5.105.4(lightningcss@1.32.0)(postcss@8.4.31)
@@ -22725,7 +22725,7 @@ snapshots:
       cli-width: 3.0.0
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       mute-stream: 0.0.8
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -22741,7 +22741,7 @@ snapshots:
       cli-cursor: 3.1.0
       cli-width: 3.0.0
       figures: 3.2.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       mute-stream: 0.0.8
       ora: 5.4.1
       run-async: 2.4.1
@@ -22762,7 +22762,7 @@ snapshots:
       cli-width: 4.1.0
       external-editor: 3.1.0
       figures: 5.0.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       mute-stream: 1.0.0
       ora: 5.4.1
       run-async: 3.0.0
@@ -22780,7 +22780,7 @@ snapshots:
       cli-width: 4.1.0
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       mute-stream: 1.0.0
       ora: 5.4.1
       run-async: 3.0.0
@@ -23843,7 +23843,7 @@ snapshots:
   jsonwebtoken@9.0.0:
     dependencies:
       jws: 3.2.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       ms: 2.1.3
       semver: 7.8.0
 
@@ -24162,11 +24162,11 @@ snapshots:
 
   lodash-move@1.1.1:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
 
   lodash-webpack-plugin@0.11.6(webpack@5.105.4(lightningcss@1.32.0)(postcss@8.4.31)):
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       webpack: 5.105.4(lightningcss@1.32.0)(postcss@8.4.31)
 
   lodash.capitalize@4.2.1: {}
@@ -26214,7 +26214,7 @@ snapshots:
 
   pretty-error@4.0.0:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       renderkid: 3.0.0
 
   pretty-format@26.6.2:
@@ -26680,7 +26680,7 @@ snapshots:
       consolidated-events: 2.0.2
       enzyme-shallow-equal: 1.0.7
       is-touch-device: 1.0.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       moment: 2.29.4
       object.assign: 4.1.7
       object.values: 1.2.1
@@ -26738,7 +26738,7 @@ snapshots:
     dependencies:
       autobind-decorator: 2.4.0
       dnd-core: 4.0.5
-      lodash: 4.17.23
+      lodash: 4.18.1
       shallowequal: 1.1.0
 
   react-dnd@5.0.0(react@18.2.0):
@@ -26746,7 +26746,7 @@ snapshots:
       dnd-core: 4.0.5
       hoist-non-react-statics: 2.5.5
       invariant: 2.2.4
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.2.0
       recompose: 0.27.1(react@18.2.0)
       shallowequal: 1.1.0
@@ -27455,7 +27455,7 @@ snapshots:
       css-select: 4.3.0
       dom-converter: 0.2.0
       htmlparser2: 6.1.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       strip-ansi: 6.0.1
 
   repeat-element@1.1.4: {}
@@ -28067,7 +28067,7 @@ snapshots:
       direction: 1.0.4
       is-hotkey: 0.1.8
       is-plain-object: 5.0.0
-      lodash: 4.17.23
+      lodash: 4.18.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       scroll-into-view-if-needed: 2.2.31
@@ -28943,7 +28943,7 @@ snapshots:
       jest: 26.6.3
       jest-util: 26.6.2
       json5: 2.2.3
-      lodash: 4.17.23
+      lodash: 4.18.1
       make-error: 1.3.6
       mkdirp: 1.0.4
       semver: 7.8.0
@@ -29595,7 +29595,7 @@ snapshots:
     dependencies:
       axios: 1.16.1(debug@4.4.3)
       joi: 18.2.1
-      lodash: 4.17.23
+      lodash: 4.18.1
       minimist: 1.2.8
       rxjs: 7.8.2
     transitivePeerDependencies:
@@ -29846,7 +29846,7 @@ snapshots:
 
   whatwg-url@8.7.0:
     dependencies:
-      lodash: 4.17.23
+      lodash: 4.18.1
       tr46: 2.1.0
       webidl-conversions: 6.1.0
 
@@ -30098,7 +30098,7 @@ snapshots:
       inquirer: 8.2.7(@types/node@22.19.18)
       is-scoped: 2.1.0
       isbinaryfile: 4.0.10
-      lodash: 4.17.23
+      lodash: 4.18.1
       log-symbols: 4.1.0
       mem-fs: 2.3.0
       mem-fs-editor: 9.7.0(mem-fs@2.3.0)
@@ -30128,7 +30128,7 @@ snapshots:
       debug: 4.3.4(supports-color@8.1.1)
       execa: 5.1.1
       github-username: 6.0.0(encoding@0.1.13)
-      lodash: 4.17.23
+      lodash: 4.18.1
       mem-fs-editor: 9.7.0(mem-fs@2.3.0)
       minimist: 1.2.8
       pacote: 15.2.0
@@ -30149,7 +30149,7 @@ snapshots:
   yeoman-test@6.3.0(@types/node@22.19.18)(mem-fs@2.3.0)(yeoman-environment@3.19.3(@types/node@22.19.18))(yeoman-generator@5.10.0(encoding@0.1.13)(mem-fs@2.3.0)(yeoman-environment@3.19.3(@types/node@22.19.18))):
     dependencies:
       inquirer: 8.2.7(@types/node@22.19.18)
-      lodash: 4.17.23
+      lodash: 4.18.1
       mem-fs: 2.3.0
       mem-fs-editor: 9.7.0(mem-fs@2.3.0)
       sinon: 10.0.1
