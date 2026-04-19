@@ -1,0 +1,79 @@
+name: Nick
+on: [push, pull_request]
+
+env:
+  python-version: '3.13'
+  POSTGRES_DB: nick
+  POSTGRES_USER: nick
+  POSTGRES_PASSWORD: nick
+  DATABASE_URL: postgresql://nick:nick@localhost:5432/nick
+
+jobs:
+  nick-embedded:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    runs-on: ubuntu-latest
+    name: Plone 7 using Nick as an embedded library
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [24.x]
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ${{ env.POSTGRES_USER }} -d ${{ env.POSTGRES_DB }}"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ env.python-version }}
+          enable-cache: false
+
+      - name: Generate Cookieplone-based frontend addon
+        run: |
+          uvx cookieplone@2.0.0a2 plone7_nick_bff --no-input
+
+      - name: Install generated package
+        working-directory: plone7_nick_bff
+        run: |
+          pnpm dlx mrs-developer missdev --no-config --fetch-https
+          if [[ "${GITHUB_REF#refs/heads/}" != "seven" ]]; then
+            (cd core && git fetch --depth 1 origin ${GITHUB_REF#refs/heads/}:${GITHUB_REF#refs/heads/} && git checkout ${GITHUB_REF#refs/heads/})
+          fi
+          pnpm i
+          make build-deps
+
+      - name: Bootstrap Nick database
+        working-directory: plone7_nick_bff
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+          POSTGRES_DB: ${{ env.POSTGRES_DB }}
+          POSTGRES_USER: ${{ env.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+        run: pnpm nick:migrate && pnpm nick:seed
+
+      - name: Run Nick checks
+        working-directory: plone7_nick_bff
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+        run: |
+          make lint
+          make format
+          make test
