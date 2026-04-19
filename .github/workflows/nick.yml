@@ -51,7 +51,7 @@ jobs:
           uvx cookieplone@2.0.0a2 plone7_nick_bff --no-input
 
       - name: Install generated package
-        working-directory: plone7_nick_bff
+        working-directory: project-title
         run: |
           pnpm dlx mrs-developer missdev --no-config --fetch-https
           if [[ "${GITHUB_REF#refs/heads/}" != "seven" ]]; then
@@ -61,7 +61,7 @@ jobs:
           make build-deps
 
       - name: Bootstrap Nick database
-        working-directory: plone7_nick_bff
+        working-directory: project-title
         env:
           DATABASE_URL: ${{ env.DATABASE_URL }}
           POSTGRES_DB: ${{ env.POSTGRES_DB }}
@@ -70,7 +70,7 @@ jobs:
         run: pnpm nick:migrate && pnpm nick:seed
 
       - name: Run Nick checks
-        working-directory: plone7_nick_bff
+        working-directory: project-title
         env:
           DATABASE_URL: ${{ env.DATABASE_URL }}
         run: |
