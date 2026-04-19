@@ -487,11 +487,11 @@ importers:
         specifier: 3.2.2
         version: 3.2.2(react@18.2.0)
       '@loadable/component':
-        specifier: 5.14.1
-        version: 5.14.1(react@18.2.0)
+        specifier: 5.16.7
+        version: 5.16.7(react@18.2.0)
       '@loadable/server':
-        specifier: 5.14.0
-        version: 5.14.0(@loadable/component@5.14.1(react@18.2.0))(react@18.2.0)
+        specifier: 5.16.7
+        version: 5.16.7(@loadable/component@5.16.7(react@18.2.0))(react@18.2.0)
       '@plone/components':
         specifier: workspace:*
         version: link:../components
@@ -794,8 +794,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@loadable/babel-plugin':
-        specifier: 5.13.2
-        version: 5.13.2(@babel/core@7.29.0)
+        specifier: 5.16.1
+        version: 5.16.1(@babel/core@7.29.0)
       '@loadable/webpack-plugin':
         specifier: 5.15.2
         version: 5.15.2(webpack@5.105.4(esbuild@0.25.12))
@@ -863,7 +863,7 @@ importers:
         specifier: ^4.7.11
         version: 4.7.11
       '@types/loadable__component':
-        specifier: ^5.13.9
+        specifier: ^5.13.10
         version: 5.13.10
       '@types/lodash':
         specifier: ^4.14.201
@@ -974,8 +974,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.2(eslint@8.57.1)
       html-webpack-plugin:
-        specifier: 5.5.0
-        version: 5.5.0(webpack@5.105.4(esbuild@0.25.12))
+        specifier: 5.6.7
+        version: 5.6.7(webpack@5.105.4(esbuild@0.25.12))
       identity-obj-proxy:
         specifier: 3.0.0
         version: 3.0.0
@@ -998,8 +998,8 @@ importers:
         specifier: 0.11.6
         version: 0.11.6(webpack@5.105.4(esbuild@0.25.12))
       mini-css-extract-plugin:
-        specifier: 2.7.2
-        version: 2.7.2(webpack@5.105.4(esbuild@0.25.12))
+        specifier: 2.10.2
+        version: 2.10.2(webpack@5.105.4(esbuild@0.25.12))
       moment-locales-webpack-plugin:
         specifier: 1.2.0
         version: 1.2.0(moment@2.29.4)(webpack@5.105.4(esbuild@0.25.12))
@@ -1025,7 +1025,7 @@ importers:
         specifier: 4.0.6
         version: 4.0.6(postcss@8.4.31)
       react-docgen-typescript-plugin:
-        specifier: ^1.0.5
+        specifier: ^1.0.8
         version: 1.0.8(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12))
       react-error-overlay:
         specifier: 6.0.9
@@ -1076,8 +1076,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       terser-webpack-plugin:
-        specifier: 5.3.6
-        version: 5.3.6(esbuild@0.25.12)(webpack@5.105.4(esbuild@0.25.12))
+        specifier: 5.4.0
+        version: 5.4.0(esbuild@0.25.12)(webpack@5.105.4(esbuild@0.25.12))
       ts-loader:
         specifier: 9.4.4
         version: 9.4.4(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12))
@@ -1206,14 +1206,14 @@ importers:
         specifier: ^9.1.0
         version: 9.1.0
       html-webpack-plugin:
-        specifier: ~5
-        version: 5.5.0(webpack@5.105.4(esbuild@0.25.12))
+        specifier: 5.6.7
+        version: 5.6.7(webpack@5.105.4(esbuild@0.25.12))
       inquirer:
         specifier: ^7.3.3
         version: 7.3.3
       mini-css-extract-plugin:
-        specifier: 2.7.2
-        version: 2.7.2(webpack@5.105.4(esbuild@0.25.12))
+        specifier: 2.10.2
+        version: 2.10.2(webpack@5.105.4(esbuild@0.25.12))
       mri:
         specifier: ^1.1.4
         version: 1.2.0
@@ -3063,24 +3063,24 @@ packages:
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
 
-  '@loadable/babel-plugin@5.13.2':
-    resolution: {integrity: sha512-vSZUVeTH1S1sDbk8Tzft0plZSkN7W4zmVR5w/Bmy4UmvBiu9lin7ztrDpoUTUzxpoups+OJbTc/OosvN0aMXWg==}
+  '@loadable/babel-plugin@5.16.1':
+    resolution: {integrity: sha512-y+oKjRTt5XXf907ReFxiZyQtkYiIa4NAPQYlxb2qh5rUO/UsOKPq2PhCSHvfwoZOUJaMsY0FnoAPZ6lhFZkayQ==}
     engines: {node: '>=8'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@loadable/component@5.14.1':
-    resolution: {integrity: sha512-UQBZfZrp1FLTf8RNhljXNHFNY4QhAA1L2+GOEeABBFre9TD0aFyQh3Sai5QxcOfy+FTbjIfti5iHaNRR7yUzEQ==}
+  '@loadable/component@5.16.7':
+    resolution: {integrity: sha512-XvkFixLUOTEaj8lI7uwc4nf8Wmq3IulYG7SZHCWcPm/Li5gjJDFfIkgWOLPnD7jqPJVtAG9bEz4SCek+SpHYYg==}
     engines: {node: '>=8'}
     peerDependencies:
-      react: '>=16.3.0'
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  '@loadable/server@5.14.0':
-    resolution: {integrity: sha512-oiZiHzUdkOsDzZNXU6fsZ7U0W3+nWZRljVCFCeR8CZSXEKUfXAllUf8tx5G385q7vapAQpXM7U8EzgDns3Q4vQ==}
+  '@loadable/server@5.16.7':
+    resolution: {integrity: sha512-wdRmljftCjzyh75xeyc4+3UL2DGz25/YUrB7BT7VTgVRovHmDThl7feu/01w2C+vSxBqzpMkiuPjSftFPL/Fqw==}
     engines: {node: '>=8'}
     peerDependencies:
       '@loadable/component': ^5.0.1
-      react: '>=16.3.0'
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@loadable/webpack-plugin@5.15.2':
     resolution: {integrity: sha512-+o87jPHn3E8sqW0aBA+qwKuG8JyIfMGdz3zECv0t/JF0KHhxXtzIlTiqzlIYc5ZpFs/vKSQfjzGIR5tPJjoXDw==}
@@ -6834,11 +6834,17 @@ packages:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
     engines: {node: '>=8'}
 
-  html-webpack-plugin@5.5.0:
-    resolution: {integrity: sha512-sy88PC2cRTVxvETRgUHFrL4No3UxvcH8G1NepGhqaTT+GXN2kTamqasot0inS5hXeg1cMbFDt27zzo9p35lZVw==}
+  html-webpack-plugin@5.6.7:
+    resolution: {integrity: sha512-md+vXtdCAe60s1k6AU3dUyMJnDxUyQAwfwPKoLisvgUF1IXjtlLsk2se54+qfL9Mdm26bbwvjJybpNx48NKRLw==}
     engines: {node: '>=10.13.0'}
     peerDependencies:
+      '@rspack/core': 0.x || 1.x
       webpack: ^5.20.0
+    peerDependenciesMeta:
+      '@rspack/core':
+        optional: true
+      webpack:
+        optional: true
 
   htmlparser2@6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
@@ -8064,8 +8070,8 @@ packages:
       prop-types: ^15.0.0
       react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
 
-  mini-css-extract-plugin@2.7.2:
-    resolution: {integrity: sha512-EdlUizq13o0Pd+uCp+WO/JpkLvHRVGt97RqfeGhXqAcorYo1ypJSpkV+WDT0vY/kmh/p7wRdJNJtuyK540PXDw==}
+  mini-css-extract-plugin@2.10.2:
+    resolution: {integrity: sha512-AOSS0IdEB95ayVkxn5oGzNQwqAi2J0Jb/kKm43t7H73s8+f5873g0yuj0PNvK4dO75mu5DHg4nlgp4k6Kga8eg==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
@@ -12830,21 +12836,21 @@ snapshots:
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
-  '@loadable/babel-plugin@5.13.2(@babel/core@7.29.0)':
+  '@loadable/babel-plugin@5.16.1(@babel/core@7.29.0)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/plugin-syntax-dynamic-import': 7.8.3(@babel/core@7.29.0)
 
-  '@loadable/component@5.14.1(react@18.2.0)':
+  '@loadable/component@5.16.7(react@18.2.0)':
     dependencies:
       '@babel/runtime': 7.28.6
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-is: 16.13.1
 
-  '@loadable/server@5.14.0(@loadable/component@5.14.1(react@18.2.0))(react@18.2.0)':
+  '@loadable/server@5.16.7(@loadable/component@5.16.7(react@18.2.0))(react@18.2.0)':
     dependencies:
-      '@loadable/component': 5.14.1(react@18.2.0)
+      '@loadable/component': 5.16.7(react@18.2.0)
       lodash: 4.18.1
       react: 18.2.0
 
@@ -13385,14 +13391,14 @@ snapshots:
       css-loader: 6.11.0(webpack@5.105.4(esbuild@0.25.12))
       es-module-lexer: 1.7.0
       fork-ts-checker-webpack-plugin: 8.0.0(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12))
-      html-webpack-plugin: 5.5.0(webpack@5.105.4(esbuild@0.25.12))
+      html-webpack-plugin: 5.6.7(webpack@5.105.4(esbuild@0.25.12))
       magic-string: 0.30.21
       path-browserify: 1.0.1
       process: 0.11.10
       semver: 7.7.4
       storybook: 8.6.18(prettier@3.2.5)
       style-loader: 3.3.1(webpack@5.105.4(esbuild@0.25.12))
-      terser-webpack-plugin: 5.3.6(esbuild@0.25.12)(webpack@5.105.4(esbuild@0.25.12))
+      terser-webpack-plugin: 5.4.0(esbuild@0.25.12)(webpack@5.105.4(esbuild@0.25.12))
       ts-dedent: 2.2.0
       url: 0.11.4
       util: 0.12.5
@@ -17350,13 +17356,14 @@ snapshots:
 
   html-tags@3.3.1: {}
 
-  html-webpack-plugin@5.5.0(webpack@5.105.4(esbuild@0.25.12)):
+  html-webpack-plugin@5.6.7(webpack@5.105.4(esbuild@0.25.12)):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
       lodash: 4.18.1
       pretty-error: 4.0.0
       tapable: 2.3.0
+    optionalDependencies:
       webpack: 5.105.4(esbuild@0.25.12)
 
   htmlparser2@6.1.0:
@@ -18563,9 +18570,10 @@ snapshots:
       react: 18.2.0
       tiny-warning: 1.0.3
 
-  mini-css-extract-plugin@2.7.2(webpack@5.105.4(esbuild@0.25.12)):
+  mini-css-extract-plugin@2.10.2(webpack@5.105.4(esbuild@0.25.12)):
     dependencies:
       schema-utils: 4.3.3
+      tapable: 2.3.0
       webpack: 5.105.4(esbuild@0.25.12)
 
   minimalistic-assert@1.0.1: {}

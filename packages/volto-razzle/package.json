@@ -67,8 +67,8 @@
   },
   "peerDependencies": {
     "@plone/babel-preset-razzle": "workspace:*",
-    "html-webpack-plugin": "~5",
-    "mini-css-extract-plugin": "2.7.2",
+    "html-webpack-plugin": "5.6.7",
+    "mini-css-extract-plugin": "2.10.2",
     "@plone/razzle-dev-utils": "workspace:*",
     "webpack": "catalog:",
     "webpack-dev-server": "catalog:"
