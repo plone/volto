@@ -92,7 +92,7 @@ jobs:
           run: |
             cd project-title
             pnpm build
-            pnpm start:prod
+            pnpm start:prod &
           wait-on: |
             http://localhost:3000
           tail: true
