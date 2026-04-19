@@ -758,6 +758,42 @@ exports[`Contents > renders a folder contents view component 1`] = `
                   >
                     Result count: 1
                   </span>
+                  <div>
+                    <div
+                      id="DndDescribedBy-0"
+                      style="display: none;"
+                    >
+                      
+    To pick up a draggable item, press the space bar.
+    While dragging, use the arrow keys to move the item.
+    Press space again to drop the item in its new position, or press escape to cancel.
+  
+                    </div>
+                    <div
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      id="DndLiveRegion-0"
+                      role="status"
+                      style="position: fixed; top: 0px; left: 0px; width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overflow: hidden; clip: rect(0px); clip-path: inset(100%); white-space: nowrap;"
+                    />
+                    <div
+                      id="DndDescribedBy-1"
+                      style="display: none;"
+                    >
+                      
+    To pick up a draggable item, press the space bar.
+    While dragging, use the arrow keys to move the item.
+    Press space again to drop the item in its new position, or press escape to cancel.
+  
+                    </div>
+                    <div
+                      aria-atomic="true"
+                      aria-live="assertive"
+                      id="DndLiveRegion-1"
+                      role="status"
+                      style="position: fixed; top: 0px; left: 0px; width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overflow: hidden; clip: rect(0px); clip-path: inset(100%); white-space: nowrap;"
+                    />
+                  </div>
                   <table
                     class="ui selectable single line attached compact table"
                   >
@@ -860,7 +896,7 @@ exports[`Contents > renders a folder contents view component 1`] = `
                             style="display: inline-block;"
                           >
                             <button
-                              aria-describedby="DndDescribedBy-0"
+                              aria-describedby="DndDescribedBy-1"
                               aria-disabled="false"
                               aria-roledescription="sortable"
                               class="ui basic icon button"
@@ -994,23 +1030,6 @@ exports[`Contents > renders a folder contents view component 1`] = `
                       </tr>
                     </tbody>
                   </table>
-                  <div
-                    id="DndDescribedBy-0"
-                    style="display: none;"
-                  >
-                    
-    To pick up a draggable item, press the space bar.
-    While dragging, use the arrow keys to move the item.
-    Press space again to drop the item in its new position, or press escape to cancel.
-  
-                  </div>
-                  <div
-                    aria-atomic="true"
-                    aria-live="assertive"
-                    id="DndLiveRegion-0"
-                    role="status"
-                    style="position: fixed; top: 0px; left: 0px; width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overflow: hidden; clip: rect(0px); clip-path: inset(100%); white-space: nowrap;"
-                  />
                 </div>
                 <div
                   class="contents-pagination"

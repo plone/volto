@@ -414,6 +414,7 @@ class Contents extends Component {
       isClient: false,
     };
     this.filterTimeout = null;
+    this.dragA11yRef = React.createRef();
   }
 
   /**
@@ -1669,6 +1670,7 @@ class Contents extends Component {
                               messages.resultCount,
                             )}: ${this.props.total || 0}`}
                           </span>
+                          <div ref={this.dragA11yRef} />
                           <Table selectable compact singleLine attached>
                             <Table.Header>
                               <DndContext
@@ -1681,6 +1683,9 @@ class Contents extends Component {
                                   restrictToHorizontalAxis,
                                   restrictToParentElement,
                                 ]}
+                                accessibility={{
+                                  container: this.dragA11yRef.current,
+                                }}
                               >
                                 <Table.Row>
                                   <Table.HeaderCell>
@@ -1931,6 +1936,9 @@ class Contents extends Component {
                                   restrictToVerticalAxis,
                                   restrictToParentElement,
                                 ]}
+                                accessibility={{
+                                  container: this.dragA11yRef.current,
+                                }}
                               >
                                 <SortableContext
                                   items={this.state.items.map(
