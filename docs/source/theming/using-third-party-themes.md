@@ -96,7 +96,7 @@ module.exports = Object.assign({}, volto_config, {
 ```
 
 Complete example in an active project:
-https://github.com/RedTurtle/design-volto-theme/blob/master/razzle.config.js
+https://github.com/RedTurtle/design-comuni-plone-theme/blob/main/razzle.extend.js
 
 In that project, there is the Sass loader and the SVG loader, too.
 
@@ -126,5 +126,5 @@ For any other customization, you can put styles in your site theme and override 
 
 ## Example themes using this approach
 
-https://github.com/RedTurtle/design-volto-theme
+https://github.com/RedTurtle/design-comuni-plone-theme
 

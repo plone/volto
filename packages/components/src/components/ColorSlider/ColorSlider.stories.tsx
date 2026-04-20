@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { ColorSlider } from './ColorSlider';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ColorSlider.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Widgets/ColorSlider',
+  title: 'Basic/Forms/ColorSlider',
   component: ColorSlider,
   parameters: {
     layout: 'centered',
@@ -19,10 +17,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args: any) => <ColorSlider {...args} />,
-};
-
-Default.args = {
-  label: 'Red Opacity',
-  defaultValue: '#f00',
-  channel: 'alpha',
+  args: {
+    label: 'Red Opacity',
+    defaultValue: '#f00',
+    channel: 'alpha',
+  },
 };

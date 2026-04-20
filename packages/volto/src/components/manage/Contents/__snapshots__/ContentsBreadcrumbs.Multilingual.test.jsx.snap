@@ -21,7 +21,7 @@ exports[`ContentsBreadcrumbs Multilingual > renders a ContentsBreadcrumbs compon
     className="section"
     href="/en/contents"
     onClick={[Function]}
-    title="Home"
+    title="English"
   >
     English
   </a>
@@ -72,7 +72,7 @@ exports[`ContentsBreadcrumbs Multilingual > renders a breadcrumbs component cont
     className="section"
     href="/en/contents"
     onClick={[Function]}
-    title="Home"
+    title="English"
   >
     English
   </a>

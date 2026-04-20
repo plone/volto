@@ -6,11 +6,11 @@ describe('AddonRegistry - get()', () => {
   it('Basic information', () => {
     const base = path.join(import.meta.dirname, 'fixtures', 'test-app');
     const { addons, shadowAliases, theme } = AddonRegistry.init(base);
-    expect(addons).toStrictEqual(['@plone/slots', 'my-addon']);
+    expect(addons).toStrictEqual(['@plone/layout', 'my-addon']);
     expect(shadowAliases).toStrictEqual([
       {
-        find: '@plone/slots/components/Logo/Logo.svg',
-        replacement: `${base}/node_modules/my-addon/customizations/@plone/slots/components/Logo/Logo.svg`,
+        find: '@plone/layout/components/Logo/Logo.svg',
+        replacement: `${base}/node_modules/my-addon/customizations/@plone/layout/components/Logo/Logo.svg`,
       },
     ]);
     expect(theme).toStrictEqual(undefined);

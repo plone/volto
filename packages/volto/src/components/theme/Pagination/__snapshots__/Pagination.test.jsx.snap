@@ -16,7 +16,7 @@ exports[`Pagination > renders no pagination when only 1 page 1`] = `
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<polygon fill-rule="evenodd" points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"/>",
+            "__html": "<path fill-rule="evenodd" d="M21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18z"/>",
           }
         }
         onClick={null}
@@ -58,7 +58,7 @@ exports[`Pagination > renders page size options when specified 1`] = `
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<polygon fill-rule="evenodd" points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"/>",
+            "__html": "<path fill-rule="evenodd" d="M21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18z"/>",
           }
         }
         onClick={null}
@@ -132,7 +132,7 @@ exports[`Pagination > renders pagination when multiple pages are specified 1`] =
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<polygon fill-rule="evenodd" points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"/>",
+            "__html": "<path fill-rule="evenodd" d="M21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18z"/>",
           }
         }
         onClick={null}
@@ -217,7 +217,7 @@ exports[`Pagination > renders pagination when multiple pages are specified 1`] =
         className="icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<polygon fill-rule="evenodd" points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"/>",
+            "__html": "<path fill-rule="evenodd" d="M14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18z"/>",
           }
         }
         onClick={null}

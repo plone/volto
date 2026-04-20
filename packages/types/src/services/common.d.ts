@@ -33,7 +33,7 @@ export interface Brain {
   head_title: string | null; // TODO is this correct?
   id: string;
   image_field: string; // TODO could this be more specific?
-  image_scales: Record<string, Image> | null; // TODO could this be more specific?
+  image_scales: Record<string, Array<Image>> | null; // TODO could this be more specific?
   in_response_to: string | null; // TODO is this correct?
   is_folderish: boolean;
   last_comment_date: string | null;
@@ -49,4 +49,5 @@ export interface Brain {
   title: string;
   total_comments: number;
   type_title: string; // TODO could this be more specific?
+  Language: string;
 }

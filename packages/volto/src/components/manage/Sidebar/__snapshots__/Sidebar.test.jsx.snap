@@ -22,7 +22,7 @@ exports[`renders a sidebar component 1`] = `
         className="icon full-size-icon"
         dangerouslySetInnerHTML={
           {
-            "__html": "<polygon fill-rule="evenodd" points="21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18"/>",
+            "__html": "<path fill-rule="evenodd" d="M21.293 9.293 22.707 10.707 15.414 18 22.707 25.293 21.293 26.707 12.586 18z"/>",
           }
         }
         onClick={null}

@@ -15,7 +15,7 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
       >
         <svg
           class="icon"
-          style="height: 30px; width: auto; fill: currentColor;"
+          style="height: 30px; width: auto; fill: currentcolor;"
           viewBox="0 0 36 36"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -63,13 +63,13 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
             </div>
             <svg
               class="icon"
-              style="height: 24px; width: auto; fill: currentColor;"
+              style="height: 24px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <polygon
+              <path
+                d="M14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18z"
                 fill-rule="evenodd"
-                points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"
               />
             </svg>
           </a>
@@ -81,13 +81,13 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
             Sharing
             <svg
               class="icon"
-              style="height: 24px; width: auto; fill: currentColor;"
+              style="height: 24px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <polygon
+              <path
+                d="M14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18z"
                 fill-rule="evenodd"
-                points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"
               />
             </svg>
           </a>
@@ -99,13 +99,13 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
             URL Management
             <svg
               class="icon"
-              style="height: 24px; width: auto; fill: currentColor;"
+              style="height: 24px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <polygon
+              <path
+                d="M14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18z"
                 fill-rule="evenodd"
-                points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"
               />
             </svg>
           </a>
@@ -117,13 +117,13 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
             Links and references
             <svg
               class="icon"
-              style="height: 24px; width: auto; fill: currentColor;"
+              style="height: 24px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <polygon
+              <path
+                d="M14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18z"
                 fill-rule="evenodd"
-                points="14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18"
               />
             </svg>
           </a>
