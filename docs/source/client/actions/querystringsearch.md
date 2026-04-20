@@ -1,8 +1,8 @@
-# Querystring Search
+# `Querystring` search
 
 The `@querystring-search` endpoint returns search results that can be filtered on search criteria.
 
-## Get Querystring Search
+## Get `querystring` search
 
 ### Query function
 
@@ -58,7 +58,7 @@ Use the `useGetQuerystringSearch` hook to get the search results for a page.
 
   - **Required**: No
 
-## Get Querystring Search Using POST request
+## Get `querystring` search using `POST` request
 
 ### Mutation function
 

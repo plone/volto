@@ -1,1 +1,0 @@
-The `Add` component can now optionally receive `initialFormData` from the `CreateTranslation` component. This makes it possible for a custom `CreateTranslation` implementation to fully control the initial translation. @Tishasoumya-02

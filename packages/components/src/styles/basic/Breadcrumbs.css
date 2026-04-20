@@ -1,5 +1,3 @@
-@import './theme.css';
-
 @layer plone-components.base {
   .react-aria-Breadcrumbs {
     display: flex;
@@ -10,17 +8,35 @@
     font-size: 18px;
     list-style: none;
 
-    svg.home-icon {
+    svg {
       margin-top: -5px;
       margin-right: 5px;
       vertical-align: middle;
     }
 
-    .react-aria-Breadcrumb:not(:last-child)::after {
+    .react-aria-Breadcrumb > .react-aria-Link:has(button) + svg {
+      position: relative;
+      top: 2px;
+    }
+
+    .react-aria-Breadcrumb svg {
+      display: inline;
+    }
+
+    .react-aria-Breadcrumb:not(:last-child):not(
+        :has(.react-aria-Link + svg)
+      )::after {
       padding: 0 5px;
       alt: ' ';
       content: '›';
       content: '›' / '';
+    }
+
+    .react-aria-Breadcrumb button {
+      padding: 1px 4px;
+      svg {
+        margin: 0;
+      }
     }
 
     .react-aria-Link {

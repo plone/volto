@@ -19,15 +19,16 @@
     "jsx": "react-jsx",
 
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {}
   },
   "include": ["src", "./setupTesting.ts"],
   "exclude": [
     "node_modules",
     "dist",
     "coverage",
-    "src/**/*.test.{ts,tsx}",
-    "src/**/*.stories.{ts,tsx}"
+    "src/**/*.test.*",
+    "src/**/*.stories.*"
   ],
   "references": [
     {

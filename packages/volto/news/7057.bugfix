@@ -1,1 +1,0 @@
-Improve typings in ConditionalLink component, add TS tests to catch the bad typings. @sneridagh

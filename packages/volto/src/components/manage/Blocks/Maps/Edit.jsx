@@ -11,6 +11,7 @@ import MapsSidebar from '@plone/volto/components/manage/Blocks/Maps/MapsSidebar'
 import clearSVG from '@plone/volto/icons/clear.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import mapsBlockSVG from '@plone/volto/components/manage/Blocks/Maps/block-maps.svg';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   MapsBlockInputPlaceholder: {
@@ -121,7 +122,7 @@ const Edit = React.memo((props) => {
       ) : (
         <Message>
           <center>
-            <img src={mapsBlockSVG} alt="" />
+            <Image src={mapsBlockSVG} alt="" />
             <div className="toolbar-inner">
               <Input
                 onKeyDown={onKeyDownVariantMenuForm}

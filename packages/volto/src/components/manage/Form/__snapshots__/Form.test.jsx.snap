@@ -1,86 +1,89 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Form > renders a form component 1`] = `
-<div
-  className="ui container"
->
-  <form
-    className="ui form"
-    method="post"
-    onSubmit={[Function]}
+[
+  <div
+    className="ui container"
   >
-    <fieldset
-      className="invisible"
+    <form
+      className="ui form"
+      method="post"
+      onSubmit={[Function]}
     >
-      <div
-        className="ui raised segments"
+      <fieldset
+        className="invisible"
       >
         <div
-          className="ui segment"
+          className="ui raised segments"
         >
           <div
-            className="Field"
-            id="title"
-          />
-        </div>
-        <div
-          className="ui clearing segment actions"
-        >
-          <button
-            aria-label="Save"
-            className="ui basic primary right floated button"
-            onClick={[Function]}
-            title="Save"
-            type="submit"
+            className="ui segment"
           >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                {
-                  "__html": "<path fill-rule="evenodd" d="M18.707 5.293 17.293 6.707 27.586 17 5 17 5 19 27.586 19 17.293 29.293 18.707 30.707 31.414 18z"/>",
-                }
-              }
-              onClick={null}
-              style={
-                {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
-                }
-              }
-              viewBox="0 0 36 36"
-              xmlns="http://www.w3.org/2000/svg"
+            <div
+              className="Field"
+              id="title"
             />
-          </button>
-          <button
-            aria-label="Cancel"
-            className="ui basic secondary right floated button"
-            onClick={[Function]}
-            title="Cancel"
-            type="button"
+          </div>
+          <div
+            className="ui clearing segment actions"
           >
-            <svg
-              className="icon circled"
-              dangerouslySetInnerHTML={
-                {
-                  "__html": "<path fill-rule="evenodd" d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"/>",
+            <button
+              aria-label="Save"
+              className="ui basic primary right floated button"
+              onClick={[Function]}
+              title="Save"
+              type="submit"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  {
+                    "__html": "<path fill-rule="evenodd" d="M18.707 5.293 17.293 6.707 27.586 17 5 17 5 19 27.586 19 17.293 29.293 18.707 30.707 31.414 18z"/>",
+                  }
                 }
-              }
-              onClick={null}
-              style={
-                {
-                  "fill": "currentColor",
-                  "height": "30px",
-                  "width": "auto",
+                onClick={null}
+                style={
+                  {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
                 }
-              }
-              viewBox="0 0 36 36"
-              xmlns="http://www.w3.org/2000/svg"
-            />
-          </button>
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              />
+            </button>
+            <button
+              aria-label="Cancel"
+              className="ui basic secondary right floated button"
+              onClick={[Function]}
+              title="Cancel"
+              type="button"
+            >
+              <svg
+                className="icon circled"
+                dangerouslySetInnerHTML={
+                  {
+                    "__html": "<path fill-rule="evenodd" d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"/>",
+                  }
+                }
+                onClick={null}
+                style={
+                  {
+                    "fill": "currentColor",
+                    "height": "30px",
+                    "width": "auto",
+                  }
+                }
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+              />
+            </button>
+          </div>
         </div>
-      </div>
-    </fieldset>
-  </form>
-</div>
+      </fieldset>
+    </form>
+  </div>,
+  ",",
+]
 `;

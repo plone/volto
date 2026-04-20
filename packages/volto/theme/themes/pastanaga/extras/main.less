@@ -363,6 +363,7 @@ button {
     margin-left: 8px;
 
     h4 {
+      display: inline;
       margin-bottom: 0;
       font-weight: @bold;
     }
@@ -394,8 +395,6 @@ button {
 }
 
 .users-control-panel .table {
-  overflow-x: scroll;
-
   &::-webkit-scrollbar {
     width: 3px;
     height: 3px; /* scrollbar height */
@@ -443,6 +442,10 @@ fieldset.invisible {
   padding: 0;
   border: none;
   margin: 0;
+  // Reset visibility, this 'invisible' is not meant to hide the fieldset
+  // This prevents issues when used along other CSS framworks that might
+  // have this utility class defined (e.g. TailwindCSS)
+  visibility: initial;
 }
 
 .vertical-form {
@@ -659,8 +662,34 @@ img.responsive {
   margin-top: 20px;
 }
 
-// Deprecated as per https://github.com/plone/volto/issues/1265
-// @import 'utils';
+.toast-box-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .save.toast-box {
+    background: transparent;
+    color: #007eb1;
+
+    .circled.toast-box-blue-icon {
+      color: #007eb1;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(1px, 1px, 1px, 1px); /* IE-style CSS for compatibility */
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
 @import (multiple) '../extras/fonts';
 @import 'toolbar';
 @import 'draftjs';
@@ -683,4 +712,6 @@ img.responsive {
 @import 'views';
 @import 'toc';
 @import 'grid.less';
+@import 'block-types.less';
+@import 'videoembed.less';
 .loadUIOverrides();

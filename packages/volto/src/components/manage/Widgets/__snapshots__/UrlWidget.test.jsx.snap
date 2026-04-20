@@ -35,6 +35,8 @@ exports[`renders an url widget component 1`] = `
               class="ui input"
             >
               <input
+                aria-invalid="false"
+                aria-required="false"
                 id="field-test-url"
                 name="test-url"
                 type="url"
@@ -45,12 +47,13 @@ exports[`renders an url widget component 1`] = `
               class="ui buttons"
             >
               <button
-                aria-label="openUrlBrowser"
+                aria-label="Open URL browser"
                 class="ui basic icon button"
+                type="button"
               >
                 <svg
                   class="icon"
-                  style="height: 24px; width: auto; fill: currentColor;"
+                  style="height: 24px; width: auto; fill: currentcolor;"
                   viewBox="0 0 36 36"
                   xmlns="http://www.w3.org/2000/svg"
                 >

@@ -87,12 +87,15 @@ linkcheck_ignore = [
     r"http://localhost",
     # Ignore pages that require authentication
     r"https://github.com/plone/volto/issues/new/choose",  # requires auth
+    r"https://javascript.plainenglish.io/you-dont-need-lodash-how-i-gave-up-lodash-693c8b96a07c",
+    r"https://www.npmjs.com",
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
     r"https://browsersl.ist/#",
     r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
     r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
+    r"https://medium.com",
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 5

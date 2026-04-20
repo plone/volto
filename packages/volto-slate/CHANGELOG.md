@@ -8,6 +8,112 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.14 (2026-04-09)
+
+### Breaking
+
+- Change hotkey for strikethrough text to Ctrl+Shift+X / Cmd+Shift+X. @MAX-786 [#4196](https://github.com/plone/volto/issues/4196)
+
+### Bugfix
+
+- fix LinkEditor not opening from SlateEditor @CannedShroud [#4130](https://github.com/plone/volto/issues/4130)
+
+### Internal
+
+- Update devDependency: release-it 19.2.4. @davisagli 
+
+## 19.0.0-alpha.13 (2026-03-31)
+
+### Internal
+
+- Run volto-slate test suite as part of the Vitest multi-project setup. @Abhishek-17h [#7892](https://github.com/plone/volto/issues/7892)
+- Remove devDependency babel-plugin-transform-class-properties (now
+  @babel/plugin-transform-class-properties, which is included in
+  @babel/preset-env). @davisagli 
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update devDependency: jsdom 28.1.0. @davisagli 
+
+## 19.0.0-alpha.12 (2026-03-02)
+
+### Bugfix
+
+- Fix error in HtmlSlateWidget when rendering elements that need i18n. @davisagli [#7889](https://github.com/plone/volto/issues/7889)
+
+## 19.0.0-alpha.11 (2026-02-20)
+
+### Breaking
+
+- Table block is now responsive and can scroll horizontally for non-fixed tables. @sneridagh [#7916](https://github.com/plone/volto/issues/7916)
+
+## 19.0.0-alpha.10 (2026-02-12)
+
+### Bugfix
+
+- Use Slate Table block when pasting tables snippets (instead of deprecated DraftJS) @cekk [#7865](https://github.com/plone/volto/issues/7865)
+
+## 19.0.0-alpha.9 (2025-12-08)
+
+### Feature
+
+- cross language support and umlaut fix for slash menu @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
+
+## 19.0.0-alpha.8 (2025-11-19)
+
+### Bugfix
+
+- Avoid errors when deleting at the end of a Slate block with an empty Slate block after it and remove the empty block instead. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
+## 19.0.0-alpha.7 (2025-11-10)
+
+### Bugfix
+
+- Ensure Delete at end of a text block merges the next text block and removes it; if the next block is non-text (e.g., Description), do nothing. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
+## 19.0.0-alpha.6 (2025-10-21)
+
+### Bugfix
+
+- Fix Backspace at start of a text block: merge current block into previous inline (no extra newline), delete the current block, and place the caret before the first character of the merged content. Also handle Enter immediately after such inline merge by splitting back into two blocks. @aryan7081 [#7373](https://github.com/plone/volto/issues/7373)
+
+### Internal
+
+- Update slate libraries. @sneridagh [#7477](https://github.com/plone/volto/issues/7477)
+
+## 19.0.0-alpha.5 (2025-09-29)
+
+### Feature
+
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
+## 19.0.0-alpha.4 (2025-08-25)
+
+### Internal
+
+- Update @testing-library/react to 14.3.1. @wesleybl [#7260](https://github.com/plone/volto/issues/7260)
+
+## 19.0.0-alpha.3 (2025-06-25)
+
+### Bugfix
+
+- Correct `README.md`. Set the correct value of the constant `TFOOT` to `tfoot`, instead of `tbody`. Serve `tabIndex` prop with a number instead of a string. @silviubogan [#7179](https://github.com/plone/volto/issues/7179)
+- This is a fix for "Cannot find a descendant at path [...]" error. In certain cases (e.g., after merging blocks via Backspace), 
+  editor.selection may temporarily point to a path that no longer exists. 
+  This causes Editor.nodes() to throw an exception. Wrapping it in try/catch prevents crashes and hides the inline toolbar gracefully. 
+  Reproducible scenario: text block with bullet list → new text block → write a word → go to first position of letters → Backspace → crash.
+  @tomschall [#7203](https://github.com/plone/volto/issues/7203)
+
+## 19.0.0-alpha.2 (2025-05-20)
+
+### Feature
+
+- Improve accessibility for sortable table headers in table block. @kreafox [#6358](https://github.com/plone/volto/issues/6358)
+
+## 19.0.0-alpha.1 (2025-05-16)
+
+### Internal
+
+- Use `classnames` 2.5.1 @sneridagh [#6826](https://github.com/plone/volto/issues/6826)
+
 ## 19.0.0-alpha.0 (2025-04-12)
 
 ### Bugfix

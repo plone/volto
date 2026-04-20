@@ -3,7 +3,7 @@
 [![NPM](https://img.shields.io/npm/v/@plone/components.svg)](https://www.npmjs.com/package/@plone/components)
 [![Build Status](https://github.com/plone/components/actions/workflows/code.yml/badge.svg)](https://github.com/plone/components/actions)
 [![Build Status](https://github.com/plone/components/actions/workflows/unit.yml/badge.svg)](https://github.com/plone/components/actions)
-[![Read the Docs documentation status](https://app.readthedocs.org/projects/plone-components/badge/)](https://plone-components.readthedocs.io/latest/)
+[![Build Status](https://app.readthedocs.org/projects/plone-components/badge/?version=latest)](https://plone-components.readthedocs.io/latest/)
 
 This package contains ReactJS components for using Plone as a headless CMS.
 
@@ -15,7 +15,7 @@ You can find the self-documented Storybook in:
 
 https://plone-components.readthedocs.io/latest/
 
-`@plone/components` is based on [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html), the documentation there applies also to all the components in this package.
+`@plone/components` is based on [React Aria Components](https://react-aria.adobe.com/), the documentation there applies also to all the components in this package.
 
 ## Design decisions and assumptions
 
@@ -26,9 +26,9 @@ This package provides a set of simple, ready to use components with the followin
 - Theme-able (they can be themed, using both the provided basic theme as a baseline and custom CSS properties)
 - Data-driven-less (they are dumb, presentational components)
 - i18n-less (they do not provide i18n machinery or attached to any i18n framework or library)
-- Built on a renowned headless CMS components library: [React Aria Components (RAC)](https://react-spectrum.adobe.com/react-aria/components.html)
+- Built on a renowned headless CMS components library: [React Aria Components (RAC)](https://react-aria.adobe.com/)
 
-Since we are using RAC as the base, the styling of this package components are done via the [RAC styling options](https://react-spectrum.adobe.com/react-aria/styling.html).
+Since we are using RAC as the base, the styling of this package components are done via the [RAC styling options](https://react-aria.adobe.com/styling).
 See the `react-aria-components` section below for more information about RAC.
 This package provides a simple and basic set of CSS rules to build upon.
 Alternatively, you can bring your own styles, removing the basic styling or complementing it, and build on top of it.
@@ -166,13 +166,67 @@ It's even possible to use TailwindCSS for styling the components in this package
 - TextAreaField
 - Select
 
-## Quanta icons
+## Icons
 
-This package provides an implementation of the Quanta Icon set in React components.
+### Quanta icons
+
+This package provide the Quanta icons as raw SVG files.
+
+```tsx
+import addSVG from '@plone/components/icons/add.svg'
+
+const MyComponent = (props) => (
+  <img src={addSVG} alt />
+)
+```
+
+### Vite SVGR plugin
+
+This package provides a Vite plugin that uses and configures `vite-plugin-svgr` to use `@plone/components` `Icon` component under the hood.
+This plugin converts a raw SVG file into a React component, ready to be used.
+It wraps the SVG with the `@plone/components` `Icon` component.
+To use it, you have to add it to your `vite.config.ts` app configuration.
+
+```ts
+import { PloneSVGRVitePlugin } from '@plone/components/vite-plugin-svgr';
+
+export default defineConfig({
+  plugins: [
+    PloneSVGRVitePlugin(),
+    // (...other plugins)
+  ],
+  // (...more Vite config)
+})
+```
+
+Then, you use it in your code like this:
+
+```tsx
+import AddSVG from '@plone/components/icons/add.svg?react'
+
+const MyComponent = (props) => (
+  <AddSVG />
+)
+```
+
+You can pass any prop that the `Icon` component accepts:
+
+```tsx
+import AddSVG from '@plone/components/icons/add.svg?react'
+
+const MyComponent = (props) => (
+  <AddSVG size='XL' color='informative' />
+)
+```
+
+### Quanta icons as React Components
+
+This package provides an implementation of the Quanta Icon set in native React components.
+Unlike the approach above, these are full fledged components, generated via a script iven the Quanta icons and do not need additional config in the bundler.
 They can be used directly in your components as:
 
 ```tsx
-import { ChevronupIcon, ChevrondownIcon, Button } from '@plone/components';
+import { ChevronupIcon, ChevrondownIcon, Button } from '@plone/components/components/Icons';
 
 const MyComponent = (props) => (
   <Button aria-label="Unfold/Collapse">
@@ -240,7 +294,7 @@ https://medium.com/@nirbenyair/headless-components-in-react-and-why-i-stopped-us
 
 ### `react-aria-components`
 
-`@plone/components` is based on Adobe's [`react-aria-components` library](https://react-spectrum.adobe.com/react-aria/react-aria-components.html).
+`@plone/components` is based on Adobe's [`react-aria-components` library](https://react-aria.adobe.com/).
 React Aria Components is a library of unstyled components built on top of the React Aria library.
 It provides a simpler way to build accessible components with custom styles, while offering the flexibility to drop down to hooks for even more customizability where needed.
 

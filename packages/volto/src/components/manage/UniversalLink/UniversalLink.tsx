@@ -122,6 +122,7 @@ const UniversalLink = React.memo(
         onClick,
         onKeyDown,
         item,
+        href,
         ...rest
       } = props;
       __test.renderCounter();
@@ -148,6 +149,7 @@ const UniversalLink = React.memo(
           target={openLinkInNewTab ?? false ? '_blank' : undefined}
           title={title}
           className={className}
+          onClick={onClick}
           smooth={smooth ?? config.settings.hashLinkSmoothScroll}
           // @ts-ignore
           ref={ref}

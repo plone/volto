@@ -1,4 +1,5 @@
 export const Align: any;
+export const AlignDefaultLeft: any;
 declare namespace _default {
     export let title: string;
     export { AlignWidget as component };

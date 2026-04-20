@@ -23,6 +23,11 @@ describe('Controlpanels', () => {
       controlpanels: {
         controlpanels: [
           {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/discussion',
+            group: 'Content',
+            title: 'Discussion',
+          },
+          {
             '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
             group: 'General',
             title: 'Date and Time',
@@ -47,6 +52,11 @@ describe('Controlpanels', () => {
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/discussion',
+            group: 'Content',
+            title: 'Discussion',
+          },
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
             group: 'General',

@@ -8,7 +8,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers/Blocks/Blocks';
-import { Transforms, Editor, Node, Text, Path } from 'slate';
+import { Transforms, Editor, Node } from 'slate';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import omit from 'lodash/omit';
 import config from '@plone/volto/registry';
@@ -21,74 +21,64 @@ function fromEntries(pairs) {
   return res;
 }
 
-// TODO: should be made generic, no need for "prevBlock.value"
 export function mergeSlateWithBlockBackward(editor, prevBlock, event) {
-  // To work around current architecture limitations, read the value from
-  // previous block. Replace it in the current editor (over which we have
-  // control), join with current block value, then use this result for previous
-  // block, delete current block
+  // Merge the current block content into the previous block
+  // The current block content should be appended to the previous block
+  // and the cursor should be positioned at the start of what was the current block content
 
-  const prev = prevBlock.value;
+  const prevValue = [...prevBlock.value];
+  const currentValue = [...editor.children];
 
-  // collapse the selection to its start point
-  Transforms.collapse(editor, { edge: 'start' });
+  const lastNode = prevValue[prevValue.length - 1];
+  const firstNode = currentValue[0];
+  let merged;
+  let cursor;
 
-  let rangeRef;
-  let end;
+  if (lastNode && firstNode && lastNode.type === firstNode.type) {
+    // If the last node of previous block and first node of current block have the same type,
+    // merge their children together
+    const mergedFirstNode = {
+      ...lastNode,
+      children: [...lastNode.children, ...firstNode.children],
+    };
 
-  Editor.withoutNormalizing(editor, () => {
-    // insert block #0 contents in block #1 contents, at the beginning
-    Transforms.insertNodes(editor, prev, {
-      at: Editor.start(editor, []),
-    });
+    merged = [
+      ...prevValue.slice(0, -1),
+      mergedFirstNode,
+      ...currentValue.slice(1),
+    ];
 
-    // the contents that should be moved into the `ul`, as the last `li`
-    rangeRef = Editor.rangeRef(editor, {
-      anchor: Editor.start(editor, [1]),
-      focus: Editor.end(editor, [1]),
-    });
-
-    const source = rangeRef.current;
-
-    end = Editor.end(editor, [0]);
-
-    let endPoint;
-
-    Transforms.insertNodes(editor, { text: '' }, { at: end });
-
-    end = Editor.end(editor, [0]);
-
-    Transforms.splitNodes(editor, {
-      at: end,
-      always: true,
-      height: 1,
-      mode: 'highest',
-      match: (n) => n.type === 'li' || Text.isText(n),
-    });
-
-    endPoint = Editor.end(editor, [0]);
-
-    Transforms.moveNodes(editor, {
-      at: source,
-      to: endPoint.path,
-      mode: 'all',
-      match: (n, p) => p.length === 2,
-    });
-  });
-
-  const [n] = Editor.node(editor, [1]);
-
-  if (Editor.isEmpty(editor, n)) {
-    Transforms.removeNodes(editor, { at: [1] });
+    cursor = {
+      anchor: {
+        path: [prevValue.length - 1, lastNode.children.length],
+        offset: 0,
+      },
+      focus: {
+        path: [prevValue.length - 1, lastNode.children.length],
+        offset: 0,
+      },
+    };
+  } else {
+    // Otherwise, just append the current block content to the previous block
+    merged = [...prevValue, ...currentValue];
+    // Position cursor at the start of the merged content (where current block was inserted)
+    // The current block content starts at index prevValue.length in the merged array
+    cursor = {
+      anchor: {
+        path: [prevValue.length, 0],
+        offset: 0,
+      },
+      focus: {
+        path: [prevValue.length, 0],
+        offset: 0,
+      },
+    };
   }
 
-  rangeRef.unref();
+  // Update the editor with the merged content
+  editor.children = merged;
 
-  const [, lastPath] = Editor.last(editor, [0]);
-
-  end = Editor.start(editor, Path.parent(lastPath));
-
-  return end;
+  return cursor;
 }
 
 export function mergeSlateWithBlockForward(editor, nextBlock, event) {
@@ -97,7 +87,11 @@ export function mergeSlateWithBlockForward(editor, nextBlock, event) {
   // with current block value, then use this result for next block, delete
   // current block
 
-  const next = nextBlock.value;
+  const next = nextBlock?.value;
+  // Safeguard: if next block has no value or an empty value, there is nothing to merge
+  if (!Array.isArray(next) || next.length === 0) {
+    return;
+  }
 
   // collapse the selection to its start point
   Transforms.collapse(editor, { edge: 'end' });
