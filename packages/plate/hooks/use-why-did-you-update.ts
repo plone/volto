@@ -5,7 +5,7 @@ export function useWhyDidYouUpdate<T extends Record<string, any>>(
   name: string,
   props: T,
 ) {
-  const previousProps = React.useRef<T>();
+  const previousProps = React.useRef<T | undefined>(undefined);
 
   React.useEffect(() => {
     if (previousProps.current) {

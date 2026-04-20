@@ -39,9 +39,11 @@ describe('middleware', () => {
     config.registerUtility({
       name: 'ploneClient',
       type: 'client',
-      method: () => ({
-        initialize: vi.fn().mockReturnValue(ploneClient),
-      }),
+      method: () =>
+        ({
+          prototype: {},
+          initialize: vi.fn().mockReturnValue(ploneClient),
+        }) as any,
     });
   };
 
@@ -96,11 +98,13 @@ describe('middleware', () => {
       config.registerUtility({
         name: 'ploneClient',
         type: 'client',
-        method: () => ({
-          initialize: vi.fn().mockReturnValue({
-            config: { apiPath: 'http://localhost:8080/Plone' },
-          }),
-        }),
+        method: () =>
+          ({
+            prototype: {},
+            initialize: vi.fn().mockReturnValue({
+              config: { apiPath: 'http://localhost:8080/Plone' },
+            }),
+          }) as any,
       });
 
       await PloneClientMiddleware(
@@ -128,9 +132,11 @@ describe('middleware', () => {
       config.registerUtility({
         name: 'ploneClient',
         type: 'client',
-        method: () => ({
-          initialize: initializeMock,
-        }),
+        method: () =>
+          ({
+            prototype: {},
+            initialize: initializeMock,
+          }) as any,
       });
 
       await PloneClientMiddleware(

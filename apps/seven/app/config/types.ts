@@ -1,4 +1,4 @@
-import { Content } from '@plone/types';
+import type { Content } from '@plone/types';
 import type PloneClient from '@plone/client';
 import type { Value } from '@plone/plate/components/editor';
 import type { Params } from 'react-router';

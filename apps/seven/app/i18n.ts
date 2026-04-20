@@ -5,7 +5,7 @@ export default {
   supportedLngs: config.settings.supportedLanguages ?? ['en'],
   // This is the language you want to use in case
   // if the user language is not in the supportedLngs
-  fallbackLng: config.settings.defaultLanguage ?? 'en',
+  fallbackLng: (config.settings.defaultLanguage as string | undefined) ?? 'en',
   // The default namespace of i18next is "translation", but you can customize it here
   defaultNS: 'common',
 };

@@ -32,6 +32,7 @@ describe('loader', () => {
       params: {},
       context,
       unstable_pattern: '/@search?SearchableText=test&path.depth=1',
+      unstable_url: new URL(request.url),
     });
 
     expect(searchMock).toHaveBeenCalledWith({
@@ -60,7 +61,13 @@ describe('loader', () => {
     } as any);
     const request = new Request('http://example.com/@search');
 
-    await loader({ request, params: {}, context, unstable_pattern: '@search' });
+    await loader({
+      request,
+      params: {},
+      context,
+      unstable_pattern: '@search',
+      unstable_url: new URL(request.url),
+    });
 
     expect(searchMock).toHaveBeenCalledWith({
       query: {

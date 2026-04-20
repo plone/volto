@@ -35,13 +35,17 @@
   "scripts": {
     "test": "vitest",
     "test:debug": "vitest --inspect-brk --watch",
-    "check-ts": "tsc --project tsconfig.json",
+    "check:ts": "tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prettier:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint --max-warnings=0 './**/*.{js,jsx,ts,tsx}' --fix --no-error-on-unmatched-pattern",
+    "stylelint:fix": "sh -c 'if [ -f .stylelintrc ] || [ -f .stylelintrc.json ] || [ -f .stylelintrc.js ] || [ -f .stylelintrc.cjs ] || [ -f stylelint.config.js ] || [ -f stylelint.config.cjs ] || [ -f stylelint.config.mjs ]; then stylelint '''./**/*.{css,scss,less}''' --fix --allow-empty-input; else echo \"No local stylelint config, skipping\"; fi'",
+    "format": "pnpm prettier:fix && pnpm lint:fix && pnpm stylelint:fix"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
@@ -107,7 +111,7 @@
     "cmdk": "^1.1.1",
     "html2canvas-pro": "^1.5.12",
     "jotai": "^2.15.0",
-    "lodash": "^4.17.21",
+    "lodash.debounce": "^4.0.8",
     "lowlight": "^3.3.0",
     "lucide-react": "^0.544.0",
     "pdf-lib": "^1.17.1",
@@ -137,6 +141,7 @@
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.9",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
