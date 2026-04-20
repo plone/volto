@@ -1,0 +1,1 @@
+Removed the unused description prop from the TextWidget to prevent typing errors. @alexandreIFB
