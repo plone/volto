@@ -30,7 +30,7 @@ class PrePublishReleaseItPlugin extends Plugin {
   getPackageUrl() {
     const baseUrl = NPM_BASE_URL;
     const publicPath = NPM_PUBLIC_PATH;
-    return `${baseUrl}/${publicPath}/${this.getName()}`;
+    return `${baseUrl}/${publicPath}/${this.config.getContext().npm.name}`;
   }
 
   async beforeRelease() {

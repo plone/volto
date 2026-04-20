@@ -29,6 +29,7 @@ import { handleKey } from './keyboard';
 import TextBlockSchema from './schema';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 import './css/editor.css';
 
@@ -217,7 +218,7 @@ export const DefaultTextBlockEditor = (props) => {
                 ) : (
                   <Message>
                     <center>
-                      <img src={imageBlockSVG} alt="" />
+                      <Image src={imageBlockSVG} alt="" />
                     </center>
                   </Message>
                 )}

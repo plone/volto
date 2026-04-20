@@ -1,1 +1,0 @@
-Fixed stuck states in the Image Upload Widget by resetting uploading after failed size validation and dragging after image deletion or drag events, ensuring proper functionality and user feedback.

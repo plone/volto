@@ -147,8 +147,6 @@ You can modify the main Volto settings on the fly.
 
 ```js
 cy.settings().then(settings => {
-  settings.defaultLanguage = 'de';
-  settings.isMultilingual = true;
   settings.supportedLanguages = ['de', 'en'];
 });
 ```

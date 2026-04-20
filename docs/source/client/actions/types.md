@@ -2,7 +2,7 @@
 
 Available content types in a Plone site can be listed and queried by accessing the `/@types` endpoint on any context.
 
-## Get Types List
+## Get types list
 
 ### Query function
 
@@ -12,7 +12,7 @@ Use the `getTypesQuery` function to get the query for fetching the list of all a
 
 Use the `useGetTypes` hook to get the list of all available types.
 
-## Get Type
+## Get type
 
 ### Query function
 
@@ -24,11 +24,11 @@ Use the `useGetType` hook to get the information about the content type provided
 
 ### Parameters
 
-- **contentPath**: string
+- **`contentPath`**: string
 
   - **Required:** Yes
 
-## Get Type Field
+## Get type field
 
 ### Query function
 
@@ -44,7 +44,7 @@ Use the `useGetTypeField` hook to get the information about the field of the typ
 
   - **Required:** Yes
 
-## Add Type Field/Fieldset
+## Add type field/fieldset
 
 ### Mutation function
 
@@ -56,7 +56,7 @@ Use the `useCreateTypeField` hook to add a field/fieldset to the type provided.
 
 ### Parameters
 
-- **contentPath**: string
+- **`contentPath`**: string
 
   - **Required:** Yes
 
@@ -81,7 +81,7 @@ Use the `useCreateTypeField` hook to add a field/fieldset to the type provided.
 
     - **Required:** Yes
 
-## Update Type Field/Fieldset
+## Update type field/fieldset
 
 ### Mutation function
 
@@ -93,7 +93,7 @@ Use the `useUpdateTypeField` hook to update a field/fieldset of the type provide
 
 ### Parameters
 
-- **contentPath**: string
+- **`contentPath`**: string
 
   - **Required:** Yes
 

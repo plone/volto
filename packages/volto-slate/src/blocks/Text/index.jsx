@@ -19,6 +19,7 @@ import {
   slashMenu,
   cancelEsc,
 } from './keyboard';
+import { splitAtSeam } from './keyboard/splitAtSeam';
 import { withDeleteSelectionOnEnter } from '@plone/volto-slate/editor/extensions';
 import {
   breakList,
@@ -66,6 +67,7 @@ export default function applyConfig(config) {
       Enter: [
         slashMenu,
         unwrapEmptyString,
+        splitAtSeam,
         softBreak, // Handles shift+Enter as a newline (<br/>)
       ],
       ArrowUp: [

@@ -42,7 +42,7 @@ exports[`renders a select widget component 1`] = `
               class="react-select__control css-1ard45z-control"
             >
               <div
-                class="react-select__value-container react-select__value-container--is-multi css-1a9cv00-ValueContainer"
+                class="react-select__value-container react-select__value-container--is-multi css-1dvrfad"
               >
                 <div
                   class="react-select__placeholder css-1wa3eu0-placeholder"
@@ -50,7 +50,7 @@ exports[`renders a select widget component 1`] = `
                   Select…
                 </div>
                 <div
-                  class="css-b8ldur-Input"
+                  class="css-1g6gooi"
                 >
                   <div
                     class="react-select__input"
@@ -63,30 +63,30 @@ exports[`renders a select widget component 1`] = `
                       autocorrect="off"
                       id="react-select-2-input"
                       spellcheck="false"
-                      style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
+                      style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;"
                       tabindex="0"
                       type="text"
                       value=""
                     />
                     <div
-                      style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+                      style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; letter-spacing: initial; text-transform: initial;"
                     />
                   </div>
                 </div>
               </div>
               <div
-                class="react-select__indicators css-1hb7zxy-IndicatorsContainer"
+                class="react-select__indicators css-1wy0on6"
               >
                 <span
                   class="react-select__indicator-separator css-6fp5c8-indicatorSeparator"
                 />
                 <div
                   aria-hidden="true"
-                  class="react-select__indicator react-select__dropdown-indicator css-7hdh9a-DropdownIndicator"
+                  class="react-select__indicator react-select__dropdown-indicator css-9t8fgp"
                 >
                   <svg
                     class="icon"
-                    style="height: 24px; width: auto; fill: #007bc1;"
+                    style="height: 24px; width: auto; fill: rgb(0, 123, 193);"
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >

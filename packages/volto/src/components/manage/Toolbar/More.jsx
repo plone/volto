@@ -114,6 +114,9 @@ const More = (props) => {
 
   const content = useSelector((state) => state.content?.data, shallowEqual);
   const workingCopy = useSelector((state) => state.workingCopy, shallowEqual);
+  const isMultilingual = useSelector(
+    (state) => state.site.data.features?.multilingual,
+  );
 
   const actions = useSelector((state) => state.actions.actions, shallowEqual);
 
@@ -435,7 +438,7 @@ const More = (props) => {
           </li>
         </Plug>
       )}
-      {editAction && config.settings.isMultilingual && (
+      {editAction && isMultilingual && (
         <Plug pluggable="toolbar-more-manage-content" id="multilingual">
           <li>
             <Link to={`${path}/manage-translations`}>

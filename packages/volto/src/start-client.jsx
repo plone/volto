@@ -18,14 +18,21 @@ import Api from '@plone/volto/helpers/Api/Api';
 import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 
-export const history = createBrowserHistory();
-
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
 export default function client() {
   const api = new Api();
+
+  if (window.env.RAZZLE_SUBPATH_PREFIX) {
+    config.settings.subpathPrefix = window.env.RAZZLE_SUBPATH_PREFIX;
+  }
+  const history = createBrowserHistory({
+    basename: config.settings.subpathPrefix
+      ? config.settings.subpathPrefix
+      : '/',
+  });
 
   const store = configureStore(window.__data, history, api);
   persistAuthToken(store);
@@ -57,10 +64,6 @@ export default function client() {
   // TODO: To be removed when the use of the legacy traverse is deprecated.
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
     config.settings.legacyTraverse = true;
-  }
-  // Support for setting the default language from a server environment variable
-  if (window.env.defaultLanguage) {
-    config.settings.defaultLanguage = window.env.defaultLanguage;
   }
 
   loadableReady(() => {

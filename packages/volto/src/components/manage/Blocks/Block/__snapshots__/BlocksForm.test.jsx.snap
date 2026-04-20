@@ -21,12 +21,13 @@ exports[`Allow override of blocksConfig 1`] = `
                 style="position: relative;"
               >
                 <div
+                  aria-label="drag custom block"
                   class="drag handle wrapper"
                   style="visibility: visible; display: inline-block;"
                 >
                   <svg
                     class="icon"
-                    style="height: 18px; width: auto; fill: currentColor;"
+                    style="height: 18px; width: auto; fill: currentcolor;"
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -52,13 +53,13 @@ exports[`Allow override of blocksConfig 1`] = `
                     </div>
                   </div>
                   <button
-                    aria-label="delete"
+                    aria-label="delete custom block"
                     class="ui basic icon button delete-button"
                     type="button"
                   >
                     <svg
                       class="icon"
-                      style="height: 18px; width: auto; fill: currentColor;"
+                      style="height: 18px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -84,12 +85,13 @@ exports[`Allow override of blocksConfig 1`] = `
                 style="position: relative;"
               >
                 <div
+                  aria-label="drag custom block"
                   class="drag handle wrapper"
                   style="visibility: hidden; display: inline-block;"
                 >
                   <svg
                     class="icon"
-                    style="height: 18px; width: auto; fill: currentColor;"
+                    style="height: 18px; width: auto; fill: currentcolor;"
                     viewBox="0 0 36 36"
                     xmlns="http://www.w3.org/2000/svg"
                   >

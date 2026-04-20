@@ -12,7 +12,7 @@ export const multilingualRoutes: ({
     exact?: undefined;
 } | {
     path: string;
-    component: any;
+    component: () => import("react/jsx-runtime").JSX.Element;
     exact: boolean;
 })[];
 export const defaultRoutes: ({
@@ -20,14 +20,15 @@ export const defaultRoutes: ({
     component: any;
     exact?: undefined;
 } | {
+    component: (props: any) => import("react/jsx-runtime").JSX.Element;
+} | {
     path: string;
     component: any;
     exact: boolean;
 } | {
-    component: (props: any) => import("react/jsx-runtime").JSX.Element;
-} | {
     path: string[];
     component: any;
+    exact?: undefined;
 })[];
 export default routes;
 /**
@@ -40,16 +41,21 @@ declare const routes: {
     component: any;
     routes: ({
         path: string;
+        component: React.ComponentType;
+        exact?: boolean;
+    } | {
+        path: string;
         component: any;
         exact?: undefined;
+    } | {
+        component: (props: any) => import("react/jsx-runtime").JSX.Element;
     } | {
         path: string;
         component: any;
         exact: boolean;
     } | {
-        component: (props: any) => import("react/jsx-runtime").JSX.Element;
-    } | {
         path: string[];
         component: any;
+        exact?: undefined;
     })[];
 }[];

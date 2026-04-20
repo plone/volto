@@ -55,7 +55,7 @@ const messages = defineMessages({
     defaultMessage: 'No workflow state',
   },
   none: {
-    id: 'None',
+    id: 'Not available',
     defaultMessage: 'None',
   },
 });
@@ -168,7 +168,7 @@ export const ContentsItemComponent = ({
             {item.ExpirationDate !== 'None' &&
               new Date(item.ExpirationDate).getTime() <
                 new Date().getTime() && (
-                <Button className="button-margin" size="mini">
+                <Button className="button-margin expired-past" size="mini">
                   <FormattedMessage id="Expired" defaultMessage="Expired" />
                 </Button>
               )}
@@ -178,6 +178,14 @@ export const ContentsItemComponent = ({
                   <FormattedMessage id="Scheduled" defaultMessage="Scheduled" />
                 </Button>
               )}
+            {item.is_working_copy && (
+              <Button className="button-margin working-copy" size="mini">
+                <FormattedMessage
+                  id="Working copy"
+                  defaultMessage="Working copy"
+                />
+              </Button>
+            )}
           </Link>
         </Table.Cell>
         {map(indexes, (index) => (
