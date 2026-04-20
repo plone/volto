@@ -6,7 +6,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -18,10 +18,10 @@ afterEach(async () => {
 
 describe('Install Addon Profile', () => {
   test('Successful', async () => {
-    const addonId = '/plone.restapi';
+    const id = '/plone.restapi';
     const profile = 'import/testing-workflows';
 
-    const result = await cli.installAddonProfile({ addonId, profile });
+    const result = await cli.installAddonProfile({ id, profile });
     expect(result.status).toBe(204);
   });
 });

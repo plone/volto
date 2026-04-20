@@ -4,24 +4,24 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 export const deleteGroupArgsSchema = z.object({
-  groupId: z.string(),
+  id: z.string(),
 });
 
 type DeleteGroupArgs = z.infer<typeof deleteGroupArgsSchema>;
 
 export async function deleteGroup(
   this: PloneClient,
-  { groupId }: DeleteGroupArgs,
+  { id }: DeleteGroupArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = deleteGroupArgsSchema.parse({
-    groupId,
+    id,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
   };
 
-  const groupName = `/@groups/${validatedArgs.groupId}`;
+  const groupName = `/@groups/${validatedArgs.id}`;
 
   return apiRequest('delete', groupName, options);
 }

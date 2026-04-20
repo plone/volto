@@ -8,7 +8,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -31,7 +31,7 @@ describe('Update Controlpanel', () => {
       data: updateControlpanelData,
     });
 
-    const controlpanel = await cli.getControlpanel({ path });
+    const controlpanel = await cli.getControlpanel({ id: path });
     expect(controlpanel.status).toBe(200);
   });
 
@@ -62,7 +62,7 @@ describe('Update Controlpanel', () => {
       data: updateControlpanelData,
     });
 
-    const result = await cli.getControlpanel({ path });
+    const result = await cli.getControlpanel({ id: path });
     expect(result.status).toBe(200);
   });
 
@@ -99,7 +99,7 @@ describe('Update Controlpanel', () => {
       data: updateControlpanelData,
     });
 
-    const controlpanel = await cli.getControlpanel({ path });
+    const controlpanel = await cli.getControlpanel({ id: path });
 
     expect(controlpanel.data.items[0][0].description).toBe(
       updateControlpanelData.description,

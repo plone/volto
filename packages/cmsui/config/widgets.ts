@@ -1,11 +1,11 @@
 import type { ConfigType } from '@plone/registry';
-import { TextField } from '../components/TextField/TextField';
 import {
   AlignWidget,
   Checkbox,
   DateTimePicker,
   SizeWidget,
   WidthWidget,
+  TextField,
 } from '@plone/components/quanta';
 import { DateField } from '@plone/components';
 import { ObjectBrowserWidget } from '../components/ObjectBrowserWidget/ObjectBrowserWidget';

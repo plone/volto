@@ -7,7 +7,7 @@ const cli = ploneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -19,8 +19,8 @@ afterEach(async () => {
 
 describe('Get Addon', () => {
   test('Successful', async () => {
-    const addonId = '/plone.app.iterate';
-    const result = await cli.getAddon({ addonId });
+    const id = '/plone.app.iterate';
+    const result = await cli.getAddon({ id });
 
     expect(result.data['@id']).toBe(
       'http://localhost:55001/plone/@addons/plone.app.iterate',
@@ -28,10 +28,10 @@ describe('Get Addon', () => {
   });
 
   test('Failure', async () => {
-    const addonId = 'blah';
+    const id = 'blah';
 
     try {
-      await cli.getAddon({ addonId });
+      await cli.getAddon({ id });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

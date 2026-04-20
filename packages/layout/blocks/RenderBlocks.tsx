@@ -1,11 +1,9 @@
 import { Fragment, lazy } from 'react';
 import { hasBlocksData } from '@plone/helpers';
-import config from '@plone/registry';
 import { DefaultBlockView } from './DefaultBlockView';
 import type { BlocksConfigData, Content } from '@plone/types';
 import BlockWrapper from './BlockWrapper';
-
-const SOMERSAULT_KEY = '__somersault__';
+import { SOMERSAULT_KEY } from '@plone/plate/constants';
 const SomersaultRenderer = lazy(() => import('./SomersaultRenderer'));
 
 export type RenderBlocksProps = {
@@ -38,9 +36,10 @@ export type RenderBlocksProps = {
 const RenderBlocks = (props: RenderBlocksProps) => {
   const { blocksConfig, content, pathname, metadata } = props;
   const CustomTag = props.as || Fragment;
-  const shouldRenderSomersault =
-    config.settings.editorMode === 'somersault' &&
-    Object.hasOwn(content.blocks ?? {}, SOMERSAULT_KEY);
+  const shouldRenderSomersault = Object.hasOwn(
+    content.blocks ?? {},
+    SOMERSAULT_KEY,
+  );
 
   if (shouldRenderSomersault) {
     return (

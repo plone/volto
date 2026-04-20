@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git",
@@ -33,7 +33,6 @@
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "generate:styles": "pnpm dlx @tailwindcss/cli -i ./input.css -o ./output.css",
     "test": "vitest",
     "test:debug": "vitest --inspect-brk --watch",
     "check-ts": "tsc --project tsconfig.json",
@@ -79,6 +78,7 @@
     "@platejs/markdown": "^50.2.0",
     "@platejs/media": "^49.0.0",
     "@platejs/mention": "^49.0.0",
+    "@platejs/playwright": "catalog:",
     "@platejs/resizable": "^49.0.0",
     "@platejs/selection": "^50.3.4",
     "@platejs/slash-command": "^49.0.0",
@@ -116,7 +116,6 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-lite-youtube-embed": "^2.5.6",
-    "react-player": "3.3.1",
     "react-textarea-autosize": "^8.5.9",
     "remark-gfm": "^4.0.1",
     "sonner": "^2.0.7",
@@ -150,7 +149,6 @@
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   }

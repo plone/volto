@@ -9,6 +9,7 @@ import {
 import { useFetcher } from 'react-router';
 import { DialogTrigger } from 'react-aria-components';
 import { Button, Input } from '@plone/components/quanta';
+import type { TextFieldProps as QuantaTextFieldProps } from '@plone/components/quanta';
 import {
   BinIcon,
   ImageIcon,
@@ -17,13 +18,17 @@ import {
   UploadIcon,
 } from '@plone/components/Icons';
 import type { Brain } from '@plone/types';
-import type { BaseFormFieldProps } from '../TextField/TextField';
 import { Description, FieldError, Label } from '../Field/Field';
 import { ObjectBrowserModal } from '../ObjectBrowserWidget/ObjectBrowserModal';
 import {
   ObjectBrowserProvider,
   useObjectBrowserContext,
 } from '../ObjectBrowserWidget/ObjectBrowserContext';
+
+type BaseFormFieldProps = Pick<
+  QuantaTextFieldProps,
+  'label' | 'description' | 'errorMessage' | 'placeholder'
+>;
 
 type ImageChangeExtras = {
   title?: string;

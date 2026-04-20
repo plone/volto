@@ -1,2 +1,0 @@
-Removed Cypress support.
-Added Playwright support. Move all existing Cypress tests to Playwright. @sneridagh

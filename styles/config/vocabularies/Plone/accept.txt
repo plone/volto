@@ -10,6 +10,7 @@ JavaScript
 npm
 nvm
 Pastanaga
+Plate
 Plone
 pluggab(le|ility)
 programatically
@@ -18,6 +19,7 @@ Razzle
 RichText
 Sass
 transpile[dr]{0,1}
+Vite
 Volto
 Vue
 Zope

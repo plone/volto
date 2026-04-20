@@ -4,24 +4,24 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 export const resetPasswordArgsSchema = z.object({
-  userId: z.string(),
+  id: z.string(),
 });
 
 export type ResetUserArgs = z.infer<typeof resetPasswordArgsSchema>;
 
 export async function resetPassword(
   this: PloneClient,
-  { userId }: ResetUserArgs,
+  { id }: ResetUserArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = resetPasswordArgsSchema.parse({
-    userId,
+    id,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
   };
 
-  const userName = `@users/${validatedArgs.userId}/reset-password`;
+  const userName = `@users/${validatedArgs.id}/reset-password`;
 
   return apiRequest('post', userName, options);
 }

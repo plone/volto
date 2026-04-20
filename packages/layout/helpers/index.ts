@@ -28,3 +28,12 @@ export function NotContentTypeCondition(contentType: string[]) {
     );
   };
 }
+
+export function shouldShowToolbar(content?: Content | null) {
+  const actions = content?.['@components']?.actions;
+  const isVisible =
+    (actions?.object?.some((a) => a.id === 'edit') ?? false) ||
+    (actions?.object_buttons?.some((a) => a.id === 'edit') ?? false);
+
+  return isVisible;
+}

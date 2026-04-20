@@ -6,7 +6,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -18,9 +18,9 @@ afterEach(async () => {
 
 describe('Upgrade Addon', () => {
   test('Successful', async () => {
-    const addonId = '/plone.app.volto';
+    const id = '/plone.app.volto';
 
-    const result = await cli.upgradeAddon({ addonId });
+    const result = await cli.upgradeAddon({ id });
     expect(result.status).toBe(204);
   });
 });

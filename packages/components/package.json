@@ -8,7 +8,7 @@
     }
   ],
   "license": "MIT",
-  "version": "4.0.0-alpha.6",
+  "version": "4.0.0-alpha.7",
   "repository": {
     "type": "git",
     "url": "http://github.com/plone/volto.git",
@@ -97,17 +97,17 @@
     "not dead"
   ],
   "dependencies": {
-    "@react-aria/utils": "^3.32.0",
-    "@react-spectrum/utils": "^3.12.10",
+    "@internationalized/date": "catalog:",
+    "@react-aria/utils": "catalog:",
+    "@react-spectrum/utils": "catalog:",
     "clsx": "^2.1.1",
     "react-aria": "catalog:",
     "react-aria-components": "catalog:",
-    "react-stately": "^3.43.0",
+    "react-stately": "catalog:",
     "tailwind-merge": "catalog:",
     "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7",
-    "@internationalized/date": "^3.10.1"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
@@ -125,7 +125,7 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
-    "browserslist": "^4.23.0",
+    "browserslist": "^4.28.2",
     "eslint-plugin-storybook": "^9.1.7",
     "jest-axe": "^8.0.0",
     "jsdom": "^22.1.0",
@@ -138,7 +138,6 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-svgr": "^4.3.0",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   },

@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.7 (2026-04-16)
+
+### Breaking
+
+- Remove Text block from @plone/blocks, remove dependency on @plone/plate @sneridagh [#8015](https://github.com/plone/volto/pull/8015)
+- Refactored and re-thinked blockWidth feature.
+  Added widths to the existing block configs. @sneridagh [#8053](https://github.com/plone/volto/pull/8053)
+
+### Feature
+
+- Listing block @ebrehault [#7603](https://github.com/plone/volto/pull/7603)
+- Somersault editor support. @sneridagh [#7921](https://github.com/plone/volto/pull/7921)
+- Create video block view @tedw87 [#8004](https://github.com/plone/volto/pull/8004)
+
+### Bugfix
+
+- Use Image component in ImageBlockView instead of manually constructing image scale URLs. @jmevissen [#8008](https://github.com/plone/volto/pull/8008)
+- Added default widths for plate headings. @sneridagh [#8076](https://github.com/plone/volto/pull/8076)
+
 ## 1.0.0-alpha.6 (2025-12-23)
 
 ### Feature

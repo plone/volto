@@ -10,22 +10,29 @@ import {
 } from '@platejs/playwright';
 
 test('Title block and metadata title stay in sync', async ({ page }) => {
+  const initialTitle = 'Original title';
   await login(page);
   await createContent(page, {
     contentType: 'Document',
     contentId: 'title-sync-page',
-    contentTitle: 'Original title',
+    contentTitle: initialTitle,
     transition: 'publish',
     bodyModifier: (body) => ({
       ...body,
       blocks: {
-        '1a2b3c4d5e': {
-          '@type': 'slate',
-          value: [{ type: 'p', children: [{ text: '' }] }],
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: initialTitle }],
+            },
+            {
+              type: 'p',
+              children: [{ text: '' }],
+            },
+          ],
         },
-      },
-      blocks_layout: {
-        items: ['1a2b3c4d5e'],
       },
     }),
   });
@@ -33,35 +40,45 @@ test('Title block and metadata title stay in sync', async ({ page }) => {
   await page.goto('/@@edit/title-sync-page');
   await waitForPlateEditorReady(page);
 
+  await page.getByRole('tab', { name: 'Content' }).click();
   const metadataTitleInput = page.locator('input[name="title"]').first();
-  const editorTitle = page.locator('[data-slate-editor] h1').first();
-
   await metadataTitleInput.fill('Metadata updated title');
-  await expect(editorTitle).toHaveText('Metadata updated title');
 
+  await page.getByRole('tab', { name: 'Blocks' }).click();
+  const editorTitle = page.locator('[data-slate-editor] h1').first();
+  await expect(editorTitle).toHaveText('Metadata updated title');
   await editorTitle.fill('Editor updated title');
+
+  await page.getByRole('tab', { name: 'Content' }).click();
   await expect(metadataTitleInput).toHaveValue('Editor updated title');
 });
 
 test('Newly created title block is initialized from metadata title', async ({
   page,
 }) => {
+  const initialTitle = 'Initial title';
   await login(page);
   await createContent(page, {
     contentType: 'Document',
     contentId: 'title-sync-no-title-block',
-    contentTitle: 'Initial title',
+    contentTitle: initialTitle,
     transition: 'publish',
     bodyModifier: (body) => ({
       ...body,
       blocks: {
-        '1a2b3c4d5e': {
-          '@type': 'slate',
-          value: [{ type: 'p', children: [{ text: '' }] }],
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: initialTitle }],
+            },
+            {
+              type: 'p',
+              children: [{ text: '' }],
+            },
+          ],
         },
-      },
-      blocks_layout: {
-        items: ['1a2b3c4d5e'],
       },
     }),
   });
@@ -69,13 +86,74 @@ test('Newly created title block is initialized from metadata title', async ({
   await page.goto('/@@edit/title-sync-no-title-block');
   await waitForPlateEditorReady(page);
 
-  const metadataTitleInput = page.locator('input[name="title"]').first();
   const editorTitle = page.locator('[data-slate-editor] h1').first();
-
   await expect(editorTitle).toHaveText('Initial title');
+
+  await page.getByRole('tab', { name: 'Content' }).click();
+  const metadataTitleInput = page.locator('input[name="title"]').first();
   await metadataTitleInput.fill('Seeded metadata title');
 
+  await page.getByRole('tab', { name: 'Blocks' }).click();
   await expect(editorTitle).toHaveText('Seeded metadata title');
+});
+
+test('Reloading edit view with no stored title block does not trigger hydration mismatch', async ({
+  page,
+}) => {
+  const initialTitle = 'Reload title';
+  const pageErrors: string[] = [];
+  const consoleErrors: string[] = [];
+
+  page.on('pageerror', (error) => {
+    pageErrors.push(error.message);
+  });
+
+  page.on('console', (message) => {
+    if (message.type() === 'error') {
+      consoleErrors.push(message.text());
+    }
+  });
+
+  await login(page);
+  await createContent(page, {
+    contentType: 'Document',
+    contentId: 'title-sync-reload-no-title-block',
+    contentTitle: initialTitle,
+    transition: 'publish',
+    bodyModifier: (body) => ({
+      ...body,
+      blocks: {
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: initialTitle }],
+            },
+            {
+              type: 'p',
+              children: [{ text: '' }],
+            },
+          ],
+        },
+      },
+    }),
+  });
+
+  await page.goto('/@@edit/title-sync-reload-no-title-block');
+  await waitForPlateEditorReady(page);
+  await page.reload();
+  await waitForPlateEditorReady(page);
+
+  const editorTitle = page.locator('[data-slate-editor] h1').first();
+  await expect(editorTitle).toHaveText('Reload title');
+
+  expect(
+    pageErrors.filter((message) => message.includes('Hydration failed')),
+  ).toEqual([]);
+  expect(
+    consoleErrors.filter((message) => message.includes('Hydration failed')),
+  ).toEqual([]);
 });
 
 test('Enter on title inserts a new empty paragraph before existing next block', async ({
@@ -108,9 +186,6 @@ test('Enter on title inserts a new empty paragraph before existing next block', 
           ],
         },
       },
-      blocks_layout: {
-        items: ['__somersault__'],
-      },
     }),
   });
 
@@ -140,4 +215,52 @@ test('Enter on title inserts a new empty paragraph before existing next block', 
   >;
   expect(nextNode.type).toBe('p');
   expect(nextNode.children).toEqual([{ text: existingNextText }]);
+});
+
+test('Empty title block keeps showing its placeholder when another block is selected', async ({
+  page,
+}) => {
+  const contentId = 'title-placeholder-visibility';
+  const titleText = 'Placeholder seed title';
+
+  await login(page);
+  await createContent(page, {
+    contentType: 'Document',
+    contentId,
+    contentTitle: titleText,
+    transition: 'publish',
+    bodyModifier: (body) => ({
+      ...body,
+      blocks: {
+        __somersault__: {
+          '@type': '__somersault__',
+          value: [
+            {
+              type: 'title',
+              children: [{ text: titleText }],
+            },
+            {
+              type: 'p',
+              children: [{ text: 'Paragraph after title' }],
+            },
+          ],
+        },
+      },
+    }),
+  });
+
+  await page.goto(`/@@edit/${contentId}`);
+  await waitForPlateEditorReady(page);
+  const editorTitle = page.locator('[data-slate-editor] h1').first();
+  await editorTitle.fill('');
+
+  const titlePlaceholder = page
+    .locator('[data-slate-editor] h1')
+    .getByText('Type the title...');
+  await expect(titlePlaceholder).toBeVisible();
+
+  const editorHandle = await getEditorHandle(page);
+  await clickAtPath(page, editorHandle, [1]);
+
+  await expect(titlePlaceholder).toBeVisible();
 });

@@ -5,24 +5,24 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 const getGroupSchema = z.object({
-  groupId: z.string(),
+  id: z.string(),
 });
 
 export type GroupArgs = z.infer<typeof getGroupSchema>;
 
 export async function getGroup(
   this: PloneClient,
-  { groupId }: GroupArgs,
+  { id }: GroupArgs,
 ): Promise<RequestResponse<GetGroupResponse>> {
   const validatedArgs = getGroupSchema.parse({
-    groupId,
+    id,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
     params: {},
   };
-  const groupName = `@groups/${validatedArgs.groupId}`;
+  const groupName = `@groups/${validatedArgs.id}`;
 
   return apiRequest('get', groupName, options);
 }

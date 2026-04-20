@@ -8,6 +8,39 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.2 (2026-04-16)
+
+### Breaking
+
+- Removed Cypress support.
+  Added Playwright support. Move all existing Cypress tests to Playwright. @sneridagh [#7827](https://github.com/plone/volto/issues/7827)
+- Remove resident TextField in CMSUI (former quanta one), use @plone/components one instead. @sneridagh [#8015](https://github.com/plone/volto/issues/8015)
+- Refactored and re-thinked blockWidth feature. @sneridagh [#8053](https://github.com/plone/volto/issues/8053)
+- Fixed inconsistent use of username argument instead of login in the login API client. @sneridagh [#8112](https://github.com/plone/volto/issues/8112)
+
+### Feature
+
+- Added the left toolbar @pnicolli [#6649](https://github.com/plone/volto/issues/6649)
+- Added blocks editor layout with tabs @pnicolli [#7355](https://github.com/plone/volto/issues/7355)
+- Somersault editor support. @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+- Refactored runtime migrations to match the somersault editor, reorganize server config files. Fixed tests. @sneridagh [#8021](https://github.com/plone/volto/issues/8021)
+- Add an always shown placeholder for the title if empty. @sneridagh [#8057](https://github.com/plone/volto/issues/8057)
+- Moved the initialize client to the middleware from the config. @sneridagh [#8108](https://github.com/plone/volto/issues/8108)
+- Added `@@add` view @pnicolli 
+- Moved basic data fetching to a middleware to allow all loaders and actions to use it @pnicolli 
+- Set the cookie expiration date equal to the token expiration date after login @pnicolli 
+
+### Bugfix
+
+- Fixed hydration problems with the `@@edit` view. @sneridagh [#8018](https://github.com/plone/volto/issues/8018)
+- Fixed SOMERSAULT_KEY constant, it is centralized now. @sneridagh [#8078](https://github.com/plone/volto/issues/8078)
+- Normalize client login arguments to follow all non-get argument shape, nesting them under a data argument. @sneridagh [#8111](https://github.com/plone/volto/issues/8111)
+
+### Internal
+
+- Adapt CMSUI routes to the updated `@plone/client` path argument names for control panel and type loading. @sneridagh 
+- Updated packages configuration for vite 8. @pnicolli 
+
 ## 1.0.0-alpha.1 (2025-12-23)
 
 ### Feature

@@ -4,6 +4,7 @@ import { useTocElement, useTocElementState } from '@platejs/toc/react';
 import { cva } from 'class-variance-authority';
 import { PlateElement } from 'platejs/react';
 
+import { BlockInnerContainer } from './block-inner-container';
 import { Button } from './button';
 
 const headingItemVariants = cva(
@@ -29,29 +30,31 @@ export function TocElement(props: PlateElementProps) {
   const { headingList } = state;
 
   return (
-    <PlateElement {...props} className="mb-1 p-0">
-      <div contentEditable={false}>
-        {headingList.length > 0 ? (
-          headingList.map((item) => (
-            <Button
-              key={item.id}
-              variant="ghost"
-              className={headingItemVariants({
-                depth: item.depth as 1 | 2 | 3,
-              })}
-              onClick={(e) => btnProps.onClick(e, item, 'smooth')}
-              aria-current
-            >
-              {item.title}
-            </Button>
-          ))
-        ) : (
-          <div className="text-sm text-gray-500">
-            Create a heading to display the table of contents.
-          </div>
-        )}
-      </div>
-      {props.children}
+    <PlateElement {...props}>
+      <BlockInnerContainer className="mb-1 p-0">
+        <div contentEditable={false}>
+          {headingList.length > 0 ? (
+            headingList.map((item) => (
+              <Button
+                key={item.id}
+                variant="ghost"
+                className={headingItemVariants({
+                  depth: item.depth as 1 | 2 | 3,
+                })}
+                onClick={(e) => btnProps.onClick(e, item, 'smooth')}
+                aria-current
+              >
+                {item.title}
+              </Button>
+            ))
+          ) : (
+            <div className="text-sm text-gray-500">
+              Create a heading to display the table of contents.
+            </div>
+          )}
+        </div>
+        {props.children}
+      </BlockInnerContainer>
     </PlateElement>
   );
 }

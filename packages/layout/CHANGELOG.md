@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2026-04-16)
+
+### Feature
+
+- Added the left toolbar @pnicolli [#6649](https://github.com/plone/volto/issues/6649)
+- Somersault editor support (renderers). @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+- Fixed CSS definition. @sneridagh [#8106](https://github.com/plone/volto/issues/8106)
+- Moved basic data fetching to a middleware to allow all loaders and actions to use it @pnicolli 
+
+### Bugfix
+
+- Remove edit button from the preliminary tools. @sneridagh [#8018](https://github.com/plone/volto/issues/8018)
+- Hardened `shouldShowToolbar` helper. @sneridagh [#8030](https://github.com/plone/volto/issues/8030)
+- Fixed SOMERSAULT_KEY constant, it is centralized now. @sneridagh [#8078](https://github.com/plone/volto/issues/8078)
+
+### Internal
+
+- Updated packages configuration for vite 8. @pnicolli 
+
 ## 1.0.0-alpha.4 (2025-12-23)
 
 ### Breaking

@@ -4,4 +4,5 @@ export * from './atoms';
 export * from './blocks';
 export * from './contents';
 export * from './flattenToAppURL';
+export * from './isInternalURL';
 export * from './languageMap';

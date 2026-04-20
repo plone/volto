@@ -6,6 +6,7 @@ import { StyleDefinition } from '../blocks';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
+  plateBlocksConfig: PlateBlocksConfigData;
   groupBlocksOrder: Array<{ id: string; title: string }>;
   requiredBlocks: string[];
   initialBlocks: Record<string, string[]> | Record<string, object[]>;
@@ -30,6 +31,10 @@ export interface BlocksConfigData {
   search: BlockConfigBase;
   gridBlock: BlockConfigBase;
   teaser: BlockConfigBase;
+}
+
+export interface PlateBlocksConfigData {
+  [key: string]: PlateBlockConfigBase;
 }
 
 export type AvailableBlocks = keyof BlocksConfigData;
@@ -135,6 +140,16 @@ export interface BlockConfigBase {
   // TODO: Improve extensions shape
   extensions?: Record<string, BlockExtension>;
   blocksConfig?: Partial<BlocksConfigData>;
+  blockWidth?: BlockWidthConfig;
+}
+
+export interface PlateBlockConfigBase {
+  blockWidth?: BlockWidthConfig;
+}
+
+export interface BlockWidthConfig {
+  defaultWidth?: string;
+  widths?: readonly string[];
 }
 
 export type SchemaEnhancerArgs = {

@@ -6,7 +6,7 @@ import type { RequestResponse } from '../types';
 
 export const createCommentArgsSchema = z.object({
   path: z.string(),
-  reply_id: z.string().optional(),
+  in_reply_to: z.string().optional(),
   data: createCommentDataSchema,
 });
 
@@ -14,11 +14,11 @@ export type CreateCommentArgs = z.infer<typeof createCommentArgsSchema>;
 
 export async function createComment(
   this: PloneClient,
-  { path, reply_id, data }: CreateCommentArgs,
+  { path, in_reply_to, data }: CreateCommentArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = createCommentArgsSchema.parse({
     path,
-    reply_id,
+    in_reply_to,
     data,
   });
 
@@ -27,8 +27,8 @@ export async function createComment(
     config: this.config,
   };
 
-  const commentsPath = reply_id
-    ? `/${validatedArgs.path}/@comments/${validatedArgs.reply_id}`
+  const commentsPath = in_reply_to
+    ? `/${validatedArgs.path}/@comments/${validatedArgs.in_reply_to}`
     : `/${validatedArgs.path}/@comments`;
 
   return apiRequest('post', commentsPath, options);
