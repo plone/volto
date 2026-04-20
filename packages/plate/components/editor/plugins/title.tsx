@@ -2,10 +2,11 @@ import { useEffect, useMemo, useRef } from 'react';
 import { atom, type PrimitiveAtom } from 'jotai';
 import { useFieldFocusedAtom } from '@plone/helpers';
 import config from '@plone/registry';
-import { createSlatePlugin, ElementApi, PathApi } from 'platejs';
+import { ElementApi, PathApi } from 'platejs';
 import {
   PlateElement,
   type PlateElementProps,
+  createPlatePlugin,
   toPlatePlugin,
   useEditorRef,
   useEditorSelector,
@@ -125,7 +126,7 @@ function TitleMetadataSync() {
           {
             ...(titleEntry.node as object),
             children: [{ text: normalizedTitle }],
-          },
+          } as any,
           { at: [titleEntry.index] },
         );
       }
@@ -170,10 +171,10 @@ export function TitleBlockElement(props: PlateElementProps) {
   );
 }
 
-export const BaseTitleBlockPlugin = createSlatePlugin({
+export const BaseTitleBlockPlugin = createPlatePlugin({
   key: TITLE_BLOCK_TYPE,
   handlers: {
-    onKeyDown: ({ editor, event }) => {
+    onKeyDown: ({ editor, event }: any) => {
       const nativeEvent = (event as any)?.nativeEvent ?? event;
       if (!nativeEvent || nativeEvent.key !== 'Enter') return;
       if (!editor.selection || !editor.api.isCollapsed()) return;
@@ -194,7 +195,7 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
         editor.api.create.block({
           type: 'p',
           children: [{ text: '' }],
-        }),
+        }) as any,
         {
           at: PathApi.next(currentPath as number[]),
           select: true,
@@ -220,7 +221,7 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
             editor.api.create.block({
               type: 'p',
               children: [{ text: '' }],
-            }),
+            }) as any,
             {
               at: PathApi.next(path),
               select: true,
@@ -233,7 +234,7 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
       insertBreak();
     };
 
-    editor.normalizeNode = (entry) => {
+    editor.normalizeNode = (entry: any) => {
       const [, path] = entry;
 
       if (path.length === 0) {
@@ -270,7 +271,7 @@ export const BaseTitleBlockPlugin = createSlatePlugin({
   },
 });
 
-export const TitleBlock = toPlatePlugin(BaseTitleBlockPlugin).configure({
+export const TitleBlock = toPlatePlugin(BaseTitleBlockPlugin as any).configure({
   render: {
     afterEditable: TitleMetadataSync,
   },

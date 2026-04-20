@@ -92,6 +92,7 @@ describe('loader', () => {
       params: {},
       context,
       unstable_pattern: '/',
+      unstable_url: new URL(request.url),
     });
 
     expect(data.locale).toBe('en');
@@ -118,6 +119,7 @@ describe('loader', () => {
       params: { '*': 'test-content' },
       context,
       unstable_pattern: '/test-content',
+      unstable_url: new URL(request.url),
     });
 
     expect(data.locale).toBe('en');
@@ -184,6 +186,7 @@ it('should place the migrated title block in the legacy block order', async () =
     params: {},
     context,
     unstable_pattern: '/',
+    unstable_url: new URL(request.url),
   });
 
   expect(somersaultMigration).toHaveBeenCalledTimes(1);
@@ -251,6 +254,7 @@ it('should skip somersault migration when the somersault block already exists', 
     params: {},
     context,
     unstable_pattern: '/',
+    unstable_url: new URL(request.url),
   });
 
   expect(somersaultMigration).not.toHaveBeenCalled();

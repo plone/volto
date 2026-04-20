@@ -1,4 +1,5 @@
 import React from 'react';
+import type { BlockConfigBase } from '@plone/types';
 
 const VideoBlockInfo = {
   id: 'video',
@@ -8,6 +9,8 @@ const VideoBlockInfo = {
   ),
   category: 'media',
   allowedPeertubeInstances: [] as string[],
+} satisfies Partial<BlockConfigBase> & {
+  allowedPeertubeInstances?: string[];
 };
 
 export default VideoBlockInfo;

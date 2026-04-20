@@ -239,7 +239,7 @@ export const withBlockWidthDefaults = <T extends TElement>(
 const withInsertedBlockWidthDefaults = (
   editor: SlateEditor,
   nodes: unknown,
-) => {
+): unknown => {
   if (Array.isArray(nodes)) {
     return nodes.map((node) => withInsertedBlockWidthDefaults(editor, node));
   }
@@ -248,12 +248,12 @@ const withInsertedBlockWidthDefaults = (
     return nodes;
   }
 
-  const children = Array.isArray(nodes.children)
-    ? nodes.children.map((child) =>
+  const children: unknown[] | undefined = Array.isArray(nodes.children)
+    ? nodes.children.map((child: unknown) =>
         withInsertedBlockWidthDefaults(editor, child),
       )
     : nodes.children;
-  const nextNode =
+  const nextNode: TElement =
     children === nodes.children ? nodes : ({ ...nodes, children } as TElement);
 
   if (!editor.api.isBlock(nextNode)) {
@@ -332,7 +332,7 @@ export const BaseBlockWidthPlugin = createSlatePlugin({
 
     editor.tf.insertNodes = ((nodes: any, options?: any) =>
       insertNodes(
-        withInsertedBlockWidthDefaults(editor, nodes),
+        withInsertedBlockWidthDefaults(editor, nodes) as any,
         options,
       )) as any;
 

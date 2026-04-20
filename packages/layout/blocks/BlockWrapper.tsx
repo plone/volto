@@ -10,7 +10,8 @@ type BlockWrapperProps = Partial<RenderBlocksProps> & {
 
 const BlockWrapper = (props: BlockWrapperProps) => {
   const { blocksConfig, children, data } = props;
-  const category = blocksConfig?.[data['@type']]?.category;
+  const category =
+    blocksConfig?.[data['@type'] as keyof typeof blocksConfig]?.category;
   // TODO: Bring in the StyleWrapper helpers for calculating styles and classes
   const classNames = undefined;
   const style = undefined;

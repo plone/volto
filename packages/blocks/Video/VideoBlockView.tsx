@@ -3,7 +3,13 @@ import clsx from 'clsx';
 import { VideoBlockBody, type VideoData } from './VideoBlockBody';
 import './VideoBlockView.css';
 
-const VideoBlockView = (props: BlockViewProps) => {
+type VideoBlockViewProps = {
+  data: BlockViewProps['data'];
+  className?: BlockViewProps['className'];
+  isEditMode?: BlockViewProps['isEditMode'];
+};
+
+const VideoBlockView = (props: VideoBlockViewProps) => {
   const { data, className, isEditMode } = props;
 
   if (!data?.url) return null;

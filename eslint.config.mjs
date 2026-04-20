@@ -83,6 +83,7 @@ export default tseslint.config(
         typescript: {
           project: ['packages/*/tsconfig.json', 'apps/seven/tsconfig.json'],
           alwaysTryTypes: true,
+          noWarnOnMultipleProjects: true,
         },
         alias: {
           map: [['seven', './apps/seven']],

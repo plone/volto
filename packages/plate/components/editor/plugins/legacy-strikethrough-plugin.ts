@@ -1,12 +1,12 @@
 import { ElementApi, TextApi, createSlatePlugin } from 'platejs';
-import type { Path, SlateEditor, Value } from 'platejs';
+import type { NodeEntry, Path, SlateEditor, Value } from 'platejs';
 import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
 
 export type LegacyStrikethroughNode = {
   type?: string;
   text?: string;
   strikethrough?: boolean;
-  children?: LegacyStrikethroughNode[];
+  children?: Value;
   [key: string]: unknown;
 };
 
@@ -28,12 +28,9 @@ export const migrateLegacyStrikethrough = (editor: SlateEditor, path: Path) => {
 };
 
 export const migrateLegacyStrikethroughInValue = (nodes: Value) => {
-  const mutableNodes = cloneValueToWritable(nodes);
+  const mutableNodes = cloneValueToWritable(nodes) as any[];
 
-  const visit = (
-    node: LegacyStrikethroughNode,
-    isStrike = false,
-  ): LegacyStrikethroughNode[] => {
+  const visit = (node: LegacyStrikethroughNode, isStrike = false): any[] => {
     const nextIsStrike = isStrike || node?.type === 'del';
 
     if (typeof node?.text === 'string') {
@@ -47,8 +44,8 @@ export const migrateLegacyStrikethroughInValue = (nodes: Value) => {
       return [node];
     }
 
-    const normalizedChildren = node.children.flatMap(
-      (child: LegacyStrikethroughNode) => visit(child, nextIsStrike),
+    const normalizedChildren = (node.children as any[]).flatMap((child: any) =>
+      visit(child as LegacyStrikethroughNode, nextIsStrike),
     );
 
     if (node.type === 'del') {
@@ -59,12 +56,12 @@ export const migrateLegacyStrikethroughInValue = (nodes: Value) => {
     return [node];
   };
 
-  const normalized = (mutableNodes as LegacyStrikethroughNode[]).flatMap(
-    (node) => visit(node),
+  const normalized = mutableNodes.flatMap((node: any) =>
+    visit(node as LegacyStrikethroughNode),
   );
   mutableNodes.splice(0, mutableNodes.length, ...normalized);
-  applyNormalizedValue(nodes, mutableNodes);
-  return mutableNodes;
+  applyNormalizedValue(nodes, mutableNodes as any);
+  return mutableNodes as any;
 };
 
 /**
@@ -85,7 +82,7 @@ export const LegacyStrikethroughPlugin = [
     extendEditor: ({ editor }) => {
       const { normalizeNode } = editor;
 
-      editor.normalizeNode = (entry) => {
+      editor.normalizeNode = (entry: NodeEntry) => {
         const [node, path] = entry;
 
         if (ElementApi.isElement(node) && node.type === 'del') {
@@ -93,7 +90,7 @@ export const LegacyStrikethroughPlugin = [
           return;
         }
 
-        normalizeNode(entry);
+        (normalizeNode as (entry: NodeEntry) => void)(entry);
       };
 
       return editor;

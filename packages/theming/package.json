@@ -35,7 +35,11 @@
     "release-major-alpha": "release-it major --preRelease=alpha",
     "release-alpha": "release-it --preRelease=alpha",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prettier:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint --max-warnings=0 './**/*.{js,jsx,ts,tsx}' --fix --no-error-on-unmatched-pattern",
+    "stylelint:fix": "sh -c 'if [ -f .stylelintrc ] || [ -f .stylelintrc.json ] || [ -f .stylelintrc.js ] || [ -f .stylelintrc.cjs ] || [ -f stylelint.config.js ] || [ -f stylelint.config.cjs ] || [ -f stylelint.config.mjs ]; then stylelint '''./**/*.{css,scss,less}''' --fix --allow-empty-input; else echo \"No local stylelint config, skipping\"; fi'",
+    "format": "pnpm prettier:fix && pnpm lint:fix && pnpm stylelint:fix"
   },
   "peerDependencies": {
     "react": "^19.1.0",
