@@ -162,18 +162,4 @@ underlined, then in `theme/collections/breadcrumb.overrides`:
 
 ## Utility CSS Classes - Accessibility
 
-Volto provides a set of utility CSS classes in the Pastanaga theme that can be applied directly in your markup.
-These classes use Volto-specific naming to avoid collisions with classes from third-party CSS frameworks such as Tailwind CSS, Semantic UI, or Bootstrap.
-
-### `.visually-hidden-volto`
-
-Hides an element visually while keeping it accessible to screen readers and other assistive technologies.
-
-```html
-<span class="visually-hidden-volto">Skip to main content</span>
-```
-
-```{note}
-The `-volto` suffix is intentional.
-Generic names such as `.visually-hidden` or `.sr-only` are commonly defined by other frameworks and would conflict if both are loaded in the same project.
-```
+See {doc}`../contributing/accessibility-guidelines` for the list of utility CSS classes provided by Volto for accessibility purposes.
