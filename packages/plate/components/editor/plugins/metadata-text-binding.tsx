@@ -66,10 +66,10 @@ export function useMetadataTextBinding(binding: MetadataTextBinding) {
       return undefined;
     }
   }, []);
-  const [fieldValue, setFieldValue] = useFieldFocusedAtom(
-    formAtom ?? fallbackFormAtom,
-    binding.field as never,
-  );
+  const [fieldValue, setFieldValue] = useFieldFocusedAtom<
+    Record<string, any>,
+    any
+  >(formAtom ?? fallbackFormAtom, binding.field as any);
   const state = useEditorSelector(
     (currentEditor) => binding.getState(currentEditor as TPlateEditor),
     [binding],
@@ -115,7 +115,10 @@ export function useMetadataTextBinding(binding: MetadataTextBinding) {
 
     if (action === 'field-to-editor') {
       lastAppliedFromFieldRef.current = normalizedFieldValue;
-      binding.writeToEditor(editor as TPlateEditor, normalizedFieldValue);
+      binding.writeToEditor(
+        editor as unknown as TPlateEditor,
+        normalizedFieldValue,
+      );
     }
   }, [
     binding,
