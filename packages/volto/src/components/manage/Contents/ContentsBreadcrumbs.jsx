@@ -44,7 +44,7 @@ const ContentsBreadcrumbs = (props) => {
           </Link>
           <Breadcrumb.Divider />
           <Link
-            to={`${navroot?.['@id']}/contents`}
+            to={`/${navroot?.['@id'].split('/').pop()}/contents`}
             className="section"
             title={navroot?.title}
           >
