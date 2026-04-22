@@ -658,6 +658,21 @@ img.responsive {
   margin-top: 20px;
 }
 
+// Accessibility
+// This class is used to hide elements visually but keep them accessible for screen readers and assistive technologies.
+// to not interfere with other 'visually-hidden' classes from other CSS frameworks (e.g. Semantic UI or TailwindCSS), we use a specific class name for Volto 18 (only).
+.visually-hidden-volto {
+  position: absolute !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  margin: -1px !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
+
 // Deprecated as per https://github.com/plone/volto/issues/1265
 // @import 'utils';
 @import (multiple) '../extras/fonts';
