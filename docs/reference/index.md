@@ -19,4 +19,5 @@ react-19
 utilities
 slate-to-plate-converters
 plate-playwright
+metadata-text-binding
 ```
