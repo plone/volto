@@ -1,1 +1,1 @@
-Fix for Multilingual Support messed up breadcrumbs in contents tab. @TimoBroeskamp
+Fixed the link to the navigation root in the Contents view breadcrumbs. @TimoBroeskamp
