@@ -6,6 +6,7 @@ import {
   clickAtPath,
   getEditorHandle,
   getNodeByPath,
+  getSelection,
   setSelection,
 } from '@platejs/playwright';
 
@@ -263,4 +264,71 @@ test('Empty title block keeps showing its placeholder when another block is sele
   await clickAtPath(page, editorHandle, [1]);
 
   await expect(titlePlaceholder).toBeVisible();
+});
+
+test('Add view title placeholder is aligned to the constrained title container', async ({
+  page,
+}) => {
+  await login(page);
+  await page.goto('/@@add?type=Document');
+  await waitForPlateEditorReady(page);
+
+  const editorTitle = page.locator('[data-slate-editor] h1').first();
+  const titlePlaceholder = editorTitle.getByText('Type the title...');
+  const innerContainer = editorTitle.locator('.block-inner-container').first();
+
+  await expect(titlePlaceholder).toBeVisible();
+
+  const placeholderBox = await titlePlaceholder.boundingBox();
+  const innerContainerBox = await innerContainer.boundingBox();
+
+  expect(placeholderBox).not.toBeNull();
+  expect(innerContainerBox).not.toBeNull();
+
+  expect(
+    Math.abs((placeholderBox?.x ?? 0) - (innerContainerBox?.x ?? 0)),
+  ).toBeLessThanOrEqual(1);
+  expect(
+    Math.abs((placeholderBox?.width ?? 0) - (innerContainerBox?.width ?? 0)),
+  ).toBeLessThanOrEqual(1);
+});
+
+test('Fast typing in add view keeps the caret in the title block', async ({
+  page,
+}) => {
+  const typedTitle = 'Quick typing should stay in the title block';
+
+  await login(page);
+  await page.goto('/@@add?type=Document');
+  await waitForPlateEditorReady(page);
+
+  const editorHandle = await getEditorHandle(page);
+  await clickAtPath(page, editorHandle, [0]);
+  await setSelection(page, editorHandle, {
+    path: [0, 0],
+    offset: 0,
+  });
+
+  await page.keyboard.type(typedTitle, { delay: 0 });
+
+  const selection = await getSelection(page, editorHandle);
+  expect(selection).not.toBeNull();
+  expect(selection?.anchor.path).toEqual([0, 0]);
+  expect(selection?.focus.path).toEqual([0, 0]);
+
+  const titleNodeHandle = await getNodeByPath(page, editorHandle, [0]);
+  const titleNode = (await titleNodeHandle.jsonValue()) as Record<
+    string,
+    unknown
+  >;
+  expect(titleNode.type).toBe('title');
+  expect(titleNode.children).toEqual([{ text: typedTitle }]);
+
+  const nextNodeHandle = await getNodeByPath(page, editorHandle, [1]);
+  const nextNode = (await nextNodeHandle.jsonValue()) as Record<
+    string,
+    unknown
+  >;
+  expect(nextNode.type).toBe('p');
+  expect(nextNode.children).toEqual([{ text: '' }]);
 });

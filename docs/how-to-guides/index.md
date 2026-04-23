@@ -26,4 +26,5 @@ fetch-additional-data-root-loader
 add-tailwind
 icons
 configure-plate-code-block-languages
+bind-metadata-fields-to-plate-text-blocks
 ```
