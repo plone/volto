@@ -76,7 +76,7 @@
     "release-it": "catalog:",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
-    "uuid": "^9.0.1",
+    "uuid": "^14.0.0",
     "vitest": "catalog:",
     "wait-on": "catalog:"
   },
