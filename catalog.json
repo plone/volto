@@ -20,7 +20,7 @@
   "react-stately": "^3.46.0",
   "react-dom": "18.2.0",
   "react": "18.2.0",
-  "release-it": "^20.0.0",
+  "release-it": "^20.0.1",
   "tailwind-merge": "^3.5.0",
   "tailwind-variants": "^3.2.2",
   "tailwindcss": "^4.1.12",

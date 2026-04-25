@@ -61,8 +61,8 @@ catalogs:
       specifier: ^3.46.0
       version: 3.46.0
     release-it:
-      specifier: ^20.0.0
-      version: 20.0.0
+      specifier: ^20.0.1
+      version: 20.0.1
     tailwind-merge:
       specifier: ^3.5.0
       version: 3.5.0
@@ -166,7 +166,7 @@ importers:
         version: 28.1.0
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
       tsup:
         specifier: ^8.3.5
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.10)(typescript@5.9.3)(yaml@2.8.2)
@@ -278,7 +278,7 @@ importers:
         version: 1.32.0
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
       tailwindcss-react-aria-components:
         specifier: ^2.0.1
         version: 2.0.1(tailwindcss@4.2.1)
@@ -393,7 +393,7 @@ importers:
         version: 0.2.6
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
       tsup:
         specifier: ^8.3.5
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.10)(typescript@5.9.3)(yaml@2.8.2)
@@ -457,7 +457,7 @@ importers:
     devDependencies:
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
 
   packages/types:
     dependencies:
@@ -476,7 +476,7 @@ importers:
         version: 18.3.7(@types/react@18.3.28)
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
@@ -1035,7 +1035,7 @@ importers:
         version: 18.3.1
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
       resolve-url-loader:
         specifier: ^5.0.0
         version: 5.0.0
@@ -1144,7 +1144,7 @@ importers:
     devDependencies:
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
 
   packages/volto-razzle:
     dependencies:
@@ -1246,7 +1246,7 @@ importers:
         version: 0.14.0
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
       resolve:
         specifier: ^1.17.0
         version: 1.22.11
@@ -1322,7 +1322,7 @@ importers:
         version: 2.2.3
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
       resolve:
         specifier: ^1.17.0
         version: 1.22.11
@@ -1413,7 +1413,7 @@ importers:
         version: 28.1.0
       release-it:
         specifier: 'catalog:'
-        version: 20.0.0(@types/node@24.12.0)(magicast@0.3.5)
+        version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
 
 packages:
 
@@ -2809,8 +2809,8 @@ packages:
       '@types/node':
         optional: true
 
-  '@inquirer/prompts@8.3.2':
-    resolution: {integrity: sha512-yFroiSj2iiBFlm59amdTvAcQFvWS6ph5oKESls/uqPBect7rTU2GbjyZO2DqxMGuIwVA8z0P4K6ViPcd/cp+0w==}
+  '@inquirer/prompts@8.4.2':
+    resolution: {integrity: sha512-XJmn/wY4AX56l1BRU+ZjDrFtg9+2uBEi4JvJQj82kwJDQKiPgSn4CEsbfGGygS4Gw6rkL4W18oATjfVfaqub2Q==}
     engines: {node: '>=23.5.0 || ^22.13.0 || ^21.7.0 || ^20.12.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -3115,9 +3115,6 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
-
-  '@nodeutils/defaults-deep@1.1.0':
-    resolution: {integrity: sha512-gG44cwQovaOFdSR02jR9IhVRpnDP64VN6JdjYJTfNz4J4fWn7TQnmrf22nSjRqlwlxPcW8PL/L3KbJg3tdwvpg==}
 
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
@@ -5768,8 +5765,8 @@ packages:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
     engines: {node: '>= 0.4'}
 
-  defu@6.1.4:
-    resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
+  defu@6.1.7:
+    resolution: {integrity: sha512-7z22QmUWiQ/2d0KkdYmANbRUVABpZ9SNYyH5vx6PZ+nE5bcC0l7uFvEfHlyld/HcGBFTL536ClDt3DEcSlEJAQ==}
 
   degenerator@6.0.0:
     resolution: {integrity: sha512-j5MdXdefrecJeSqTpUrgZd4fBsD2IxZx0JlJD+n1Q7+aTf7/HcyXSfHsicPW6ekPurX159v1ZYla6OJgSPh2Dw==}
@@ -9479,8 +9476,8 @@ packages:
     resolution: {integrity: sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==}
     engines: {node: '>= 0.10'}
 
-  release-it@20.0.0:
-    resolution: {integrity: sha512-KLCgEJH+t/MnJieOzjcroFcTSFY8dw44HT9joMm6+R5hPa+h2qPrDhHHZ5eN6m1yx8KK+q7KNdM7AfJYfAVFvQ==}
+  release-it@20.0.1:
+    resolution: {integrity: sha512-3ob1P1aV+3+ZOoR7qgobfYyMlQbpitzOK09iKTtQ145vFi4rWxlRTgHwtVl8kokCvqiF/cJPxRlfcmZmF5aDJA==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24.0.0}
     hasBin: true
 
@@ -12518,7 +12515,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 24.12.0
 
-  '@inquirer/prompts@8.3.2(@types/node@24.12.0)':
+  '@inquirer/prompts@8.4.2(@types/node@24.12.0)':
     dependencies:
       '@inquirer/checkbox': 5.1.4(@types/node@24.12.0)
       '@inquirer/confirm': 6.0.12(@types/node@24.12.0)
@@ -12847,10 +12844,6 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
-
-  '@nodeutils/defaults-deep@1.1.0':
-    dependencies:
-      lodash: 4.18.1
 
   '@nolyfill/is-core-module@1.0.39': {}
 
@@ -15107,7 +15100,7 @@ snapshots:
     dependencies:
       chokidar: 5.0.0
       confbox: 0.2.4
-      defu: 6.1.4
+      defu: 6.1.7
       dotenv: 17.3.1
       exsolve: 1.0.8
       giget: 2.0.0
@@ -15871,7 +15864,7 @@ snapshots:
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
 
-  defu@6.1.4: {}
+  defu@6.1.7: {}
 
   degenerator@6.0.0(quickjs-wasi@0.0.1):
     dependencies:
@@ -17121,7 +17114,7 @@ snapshots:
     dependencies:
       citty: 0.1.6
       consola: 3.4.2
-      defu: 6.1.4
+      defu: 6.1.7
       node-fetch-native: 1.6.7
       nypm: 0.6.5
       pathe: 2.0.3
@@ -19494,7 +19487,7 @@ snapshots:
 
   rc9@2.1.2:
     dependencies:
-      defu: 6.1.4
+      defu: 6.1.7
       destr: 2.0.5
 
   react-anchor-link-smooth-scroll@1.0.12: {}
@@ -20142,15 +20135,15 @@ snapshots:
 
   relateurl@0.2.7: {}
 
-  release-it@20.0.0(@types/node@24.12.0)(magicast@0.3.5):
+  release-it@20.0.1(@types/node@24.12.0)(magicast@0.3.5):
     dependencies:
-      '@inquirer/prompts': 8.3.2(@types/node@24.12.0)
-      '@nodeutils/defaults-deep': 1.1.0
+      '@inquirer/prompts': 8.4.2(@types/node@24.12.0)
       '@octokit/rest': 22.0.1
       '@phun-ky/typeof': 2.0.3
       async-retry: 1.3.3
       c12: 3.3.3(magicast@0.3.5)
       ci-info: 4.4.0
+      defu: 6.1.7
       eta: 4.5.1
       git-url-parse: 16.1.0
       issue-parser: 7.0.1
