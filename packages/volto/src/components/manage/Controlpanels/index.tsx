@@ -2,7 +2,13 @@ import loadable from '@loadable/component';
 import {
   getSystemInformation,
   listControlpanels,
+  getControlpanel,
 } from '@plone/volto/actions/controlpanels/controlpanels';
+import { listRoles } from '@plone/volto/actions/roles/roles';
+import { listUsers, getUser } from '@plone/volto/actions/users/users';
+import { listGroups } from '@plone/volto/actions/groups/groups';
+import { getUserSchema } from '@plone/volto/actions/userschema/userschema';
+import jwtDecode from 'jwt-decode';
 import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 
 // CONTROLPANELS
@@ -66,12 +72,53 @@ export const ConfigureRuleControlpanel = loadable(
 
 // USERS CONTROLPANELS
 
-export const UsersControlpanel = loadable(
+const LoadableUsersControlpanel = loadable(
   () =>
     import(
       /* webpackChunkName: "UsersControlpanel" */ '@plone/volto/components/manage/Controlpanels/Users/UsersControlpanel'
     ),
 );
+
+export const UsersControlpanel = asyncConnect([
+  {
+    key: 'controlpanels',
+    promise: ({ store: { dispatch, getState } }: any) => {
+      return dispatch(getControlpanel('usergroup')).then(() => {
+        const state = getState();
+        const many_users = state.controlpanels?.controlpanel?.data?.many_users;
+        if (!many_users) {
+          dispatch(listUsers());
+          dispatch(listGroups());
+        }
+      });
+    },
+  },
+  {
+    key: 'roles',
+    promise: ({ store: { dispatch } }: any) => {
+      return dispatch(listRoles());
+    },
+  },
+  {
+    key: 'userschema',
+    promise: ({ store: { dispatch } }: any) => {
+      return dispatch(getUserSchema());
+    },
+  },
+  {
+    key: 'user',
+    promise: ({ store: { dispatch, getState } }: any) => {
+      const state = getState();
+      const token = state.userSession.token;
+      if (token) {
+        const userId = jwtDecode(token).sub;
+        if (userId) {
+          return dispatch(getUser(userId));
+        }
+      }
+    },
+  },
+])(LoadableUsersControlpanel);
 
 export const RenderUsers = loadable(
   () =>
