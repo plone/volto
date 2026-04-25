@@ -76,6 +76,7 @@
     "tailwind-merge": "catalog:",
     "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
+    "tailwindcss-react-aria-components": "^2.0.0",
     "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
@@ -97,7 +98,6 @@
     "release-it": "catalog:",
     "storybook": "^9.1.7",
     "tailwindcss-animate": "^1.0.7",
-    "tailwindcss-react-aria-components": "^2.0.0",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
