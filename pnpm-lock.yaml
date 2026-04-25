@@ -725,7 +725,7 @@ importers:
         version: 8.0.8(@types/node@24.10.1)(esbuild@0.25.11)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1)
       vite-plugin-svgr:
         specifier: ^4.3.0
-        version: 4.5.0(rollup@4.52.5)(typescript@5.9.2)(vite@8.0.8(@types/node@24.10.1)(esbuild@0.25.11)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1))
+        version: 4.5.0(rollup@4.52.5)(typescript@5.9.2)(vite@8.0.8(@types/node@24.10.1)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1))
       vitest:
         specifier: 'catalog:'
         version: 4.1.4(@opentelemetry/api@1.9.0)(@types/node@24.10.1)(@vitest/coverage-v8@4.1.4)(jsdom@22.1.0)(vite@8.0.8(@types/node@24.10.1)(esbuild@0.25.11)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1))
@@ -767,10 +767,10 @@ importers:
         version: 19.2.0
       react-aria:
         specifier: 'catalog:'
-        version: 3.45.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 3.48.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react-aria-components:
         specifier: 'catalog:'
-        version: 1.14.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 1.17.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react-dom:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
@@ -779,19 +779,19 @@ importers:
         version: 15.7.3(i18next@24.2.3(typescript@5.9.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.2)
       react-router:
         specifier: 'catalog:'
-        version: 7.12.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 7.14.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       tailwind-merge:
         specifier: 'catalog:'
         version: 3.5.0
       tailwind-variants:
         specifier: 'catalog:'
-        version: 3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.1.13)
+        version: 3.2.2(tailwind-merge@3.5.0)(tailwindcss@4.2.2)
       tailwindcss:
         specifier: 'catalog:'
-        version: 4.1.13
+        version: 4.2.2
       tailwindcss-animate:
         specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@4.1.13)
+        version: 1.0.7(tailwindcss@4.2.2)
       usehooks-ts:
         specifier: ^3.1.1
         version: 3.1.1(react@19.2.0)
@@ -801,10 +801,10 @@ importers:
         version: link:../types
       '@tailwindcss/vite':
         specifier: 'catalog:'
-        version: 4.1.13(vite@6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+        version: 4.2.2(vite@8.0.8(@types/node@24.10.1)(esbuild@0.25.11)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1))
       '@testing-library/jest-dom':
         specifier: 6.4.2
-        version: 6.4.2(@types/jest@30.0.0)(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+        version: 6.4.2(@types/jest@30.0.0)(vitest@4.1.4)
       '@testing-library/react':
         specifier: 'catalog:'
         version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -819,19 +819,16 @@ importers:
         version: 19.2.3(@types/react@19.2.6)
       '@vitest/coverage-v8':
         specifier: 'catalog:'
-        version: 4.0.12(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+        version: 4.1.4(vitest@4.1.4)
       jest-axe:
         specifier: ^8.0.0
         version: 8.0.0
-      prettier-plugin-tailwindcss:
-        specifier: ^0.6.11
-        version: 0.6.14(prettier@3.6.2)
       release-it:
         specifier: 'catalog:'
         version: 19.0.5(@types/node@24.10.1)(magicast@0.3.5)
       tailwindcss-react-aria-components:
         specifier: ^2.0.0
-        version: 2.0.1(tailwindcss@4.1.13)
+        version: 2.0.1(tailwindcss@4.2.2)
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -840,16 +837,13 @@ importers:
         version: 5.9.2
       vite:
         specifier: 'catalog:'
-        version: 6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1)
-      vite-tsconfig-paths:
-        specifier: ^5.1.4
-        version: 5.1.4(typescript@5.9.2)(vite@6.3.6(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+        version: 8.0.8(@types/node@24.10.1)(esbuild@0.25.11)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1)
       vitest:
         specifier: 'catalog:'
-        version: 4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1)
+        version: 4.1.4(@opentelemetry/api@1.9.0)(@types/node@24.10.1)(@vitest/coverage-v8@4.1.4)(jsdom@22.1.0)(vite@8.0.8(@types/node@24.10.1)(esbuild@0.25.11)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1))
       vitest-axe:
         specifier: ^0.1.0
-        version: 0.1.0(vitest@4.0.12(@opentelemetry/api@1.9.0)(@types/debug@4.1.12)(@types/node@24.10.1)(jiti@2.6.1)(jsdom@22.1.0)(lightningcss@1.30.2)(terser@5.30.3)(yaml@2.8.1))
+        version: 0.1.0(vitest@4.1.4)
 
   packages/helpers:
     dependencies:
@@ -7762,67 +7756,6 @@ packages:
     resolution: {integrity: sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==}
     engines: {node: '>=6.0.0'}
 
-  prettier-plugin-tailwindcss@0.6.14:
-    resolution: {integrity: sha512-pi2e/+ZygeIqntN+vC573BcW5Cve8zUB0SSAGxqpB4f96boZF4M3phPVoOFCeypwkpRYdi7+jQ5YJJUwrkGUAg==}
-    engines: {node: '>=14.21.3'}
-    peerDependencies:
-      '@ianvs/prettier-plugin-sort-imports': '*'
-      '@prettier/plugin-hermes': '*'
-      '@prettier/plugin-oxc': '*'
-      '@prettier/plugin-pug': '*'
-      '@shopify/prettier-plugin-liquid': '*'
-      '@trivago/prettier-plugin-sort-imports': '*'
-      '@zackad/prettier-plugin-twig': '*'
-      prettier: ^3.0
-      prettier-plugin-astro: '*'
-      prettier-plugin-css-order: '*'
-      prettier-plugin-import-sort: '*'
-      prettier-plugin-jsdoc: '*'
-      prettier-plugin-marko: '*'
-      prettier-plugin-multiline-arrays: '*'
-      prettier-plugin-organize-attributes: '*'
-      prettier-plugin-organize-imports: '*'
-      prettier-plugin-sort-imports: '*'
-      prettier-plugin-style-order: '*'
-      prettier-plugin-svelte: '*'
-    peerDependenciesMeta:
-      '@ianvs/prettier-plugin-sort-imports':
-        optional: true
-      '@prettier/plugin-hermes':
-        optional: true
-      '@prettier/plugin-oxc':
-        optional: true
-      '@prettier/plugin-pug':
-        optional: true
-      '@shopify/prettier-plugin-liquid':
-        optional: true
-      '@trivago/prettier-plugin-sort-imports':
-        optional: true
-      '@zackad/prettier-plugin-twig':
-        optional: true
-      prettier-plugin-astro:
-        optional: true
-      prettier-plugin-css-order:
-        optional: true
-      prettier-plugin-import-sort:
-        optional: true
-      prettier-plugin-jsdoc:
-        optional: true
-      prettier-plugin-marko:
-        optional: true
-      prettier-plugin-multiline-arrays:
-        optional: true
-      prettier-plugin-organize-attributes:
-        optional: true
-      prettier-plugin-organize-imports:
-        optional: true
-      prettier-plugin-sort-imports:
-        optional: true
-      prettier-plugin-style-order:
-        optional: true
-      prettier-plugin-svelte:
-        optional: true
-
   prettier@3.6.2:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
@@ -11335,7 +11268,7 @@ snapshots:
 
   '@redux-devtools/extension@3.3.0(redux@4.2.1)':
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.29.2
       immutable: 4.3.7
       redux: 4.2.1
 
@@ -11836,12 +11769,12 @@ snapshots:
   '@testing-library/jest-dom@6.4.2(@types/jest@30.0.0)(vitest@4.1.4)':
     dependencies:
       '@adobe/css-tools': 4.4.4
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.29.2
       aria-query: 5.3.2
       chalk: 3.0.0
       css.escape: 1.5.1
       dom-accessibility-api: 0.6.3
-      lodash: 4.17.21
+      lodash: 4.17.23
       redent: 3.0.0
     optionalDependencies:
       '@types/jest': 30.0.0
@@ -16097,10 +16030,6 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-tailwindcss@0.6.14(prettier@3.6.2):
-    dependencies:
-      prettier: 3.6.2
-
   prettier@3.6.2: {}
 
   pretty-bytes@7.1.0: {}
@@ -16220,7 +16149,7 @@ snapshots:
 
   react-base16-styling@0.9.1:
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.29.2
       '@types/base16': 1.0.5
       '@types/lodash': 4.17.20
       base16: 1.0.0
@@ -16274,7 +16203,7 @@ snapshots:
 
   react-error-boundary@5.0.0(react@19.2.0):
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.29.2
       react: 19.2.0
 
   react-i18next@15.7.3(i18next@24.2.3(typescript@5.9.2))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(typescript@5.9.2):
@@ -16295,7 +16224,7 @@ snapshots:
 
   react-json-tree@0.18.0(@types/react@19.2.6)(react@19.2.0):
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.29.2
       '@types/lodash': 4.17.20
       '@types/react': 19.2.6
       react: 19.2.0
@@ -16413,7 +16342,7 @@ snapshots:
 
   redux@4.2.1:
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.29.2
 
   reflect.getprototypeof@1.0.10:
     dependencies:
@@ -17636,7 +17565,7 @@ snapshots:
       uuid: 11.1.0
       vite: 8.0.8(@types/node@24.10.1)(esbuild@0.25.11)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1)
 
-  vite-plugin-svgr@4.5.0(rollup@4.52.5)(typescript@5.9.2)(vite@8.0.8(@types/node@24.10.1)(esbuild@0.25.11)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1)):
+  vite-plugin-svgr@4.5.0(rollup@4.52.5)(typescript@5.9.2)(vite@8.0.8(@types/node@24.10.1)(jiti@2.6.1)(terser@5.30.3)(yaml@2.8.1)):
     dependencies:
       '@rollup/pluginutils': 5.3.0(rollup@4.52.5)
       '@svgr/core': 8.1.0(typescript@5.9.2)

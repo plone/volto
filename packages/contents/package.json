@@ -37,7 +37,9 @@
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha"
+    "release-alpha": "release-it --preRelease=alpha",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "react": "^19.1.0",
@@ -78,13 +80,11 @@
     "@types/react-dom": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "jest-axe": "^8.0.0",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
     "tailwindcss-react-aria-components": "^2.0.0",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   }

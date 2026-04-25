@@ -1,44 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { type LoaderFunctionArgs, useRouteLoaderData } from 'react-router';
+import { useState } from 'react';
+import {
+  type LoaderFunctionArgs,
+  RouterContextProvider,
+  useLoaderData,
+} from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
-import type PloneClient from '@plone/client';
 import { flattenToAppURL } from '@plone/helpers';
-import { CloseIcon, HomeIcon } from '@plone/components/Icons';
 import { ContentsTable } from '../components/ContentsTable/ContentsTable';
 import Indexes, { defaultIndexes } from '../components/Indexes';
-import { ContentsProvider, useContentsContext } from '../providers/contents';
+import { ContentsProvider } from '../providers/contents';
 import DeleteModal from '../components/DeleteModal/DeleteModal';
 import ErrorToast from '@plone/layout/components/Toast/ErrorToast';
 
 import type { TableIndexes } from '../types';
 
-import type { RootLoader } from 'seven/app/root';
+import {
+  ploneClientContext,
+  ploneContentContext,
+} from 'seven/app/middleware.server';
 
 // This is needed because to prevent circular import loops
 export type ContentsLoaderType = typeof loader;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export async function loader({ params, request }: LoaderFunctionArgs) {
-  const token = await requireAuthCookie(request);
+export async function loader({
+  params,
+  request,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  await requireAuthCookie(request);
   const b_size = 10;
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
-
-  cli.config.token = token;
+  const cli = context.get(ploneClientContext);
+  const content = context.get(ploneContentContext);
 
   const path = `/${params['*'] || ''}`;
 
-  const searchableText =
-    new URLSearchParams(new URL(request.url).search).get('SearchableText') ||
-    '';
+  const searchParams = new URL(request.url).searchParams;
+  const searchableText = searchParams.get('SearchableText') || '';
 
-  const page =
-    new URLSearchParams(new URL(request.url).search).get('page') || '';
+  const page = searchParams.get('page') || '';
 
   const searchQuery: Parameters<typeof cli.search>[0]['query'] = {
     path: {
@@ -66,10 +67,7 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
     ).data,
   );
 
-  const types = await cli.getTypes();
-  const addableTypes = types.data.filter((type) => type.addable);
-
-  return { addableTypes, search, searchableText, page, b_size };
+  return { content, search, searchableText, page, b_size };
 }
 
 const DEFAULT_TABLE_INDEXES: TableIndexes = {
@@ -87,22 +85,16 @@ const DEFAULT_TABLE_INDEXES: TableIndexes = {
 };
 
 export default function Contents() {
-  const rootData = useRouteLoaderData<RootLoader>('root');
+  const { content } = useLoaderData<typeof loader>();
   const [indexes, setIndexes] = useState(DEFAULT_TABLE_INDEXES);
 
-  if (!rootData) {
-    return null;
-  }
+  const upload = () => Promise.resolve();
+  const properties = () => Promise.resolve();
+  const workflow = () => Promise.resolve();
+  const tags = () => Promise.resolve();
+  const rename = () => Promise.resolve();
 
-  const { content } = rootData;
-
-  const upload = () => {};
-  const properties = () => {};
-  const workflow = () => {};
-  const tags = () => {};
-  const rename = () => {};
-
-  const onSortItems = () => {};
+  const onSortItems = (_: any, { value }: { value: string }) => {};
 
   //Indexes
 
@@ -114,25 +106,28 @@ export default function Contents() {
   };
 
   return (
-    <ContentsProvider>
-      <DeleteModal />
-      <ContentsTable
-        pathname={content['@id']}
-        // objectActions={props.objectActions}
-        objectActions={[]}
-        // loading={loading}
-        indexes={indexes}
-        onSelectIndex={onSelectIndex}
-        sortItems={(id) => onSortItems(undefined, { value: id })}
-        upload={upload}
-        rename={rename}
-        workflow={workflow}
-        tags={tags}
-        properties={properties}
+    <main id="main">
+      <ContentsProvider>
+        <DeleteModal />
+        <ContentsTable
+          title={content.title}
+          pathname={content['@id']}
+          // objectActions={props.objectActions}
+          // objectActions={[]}
+          // loading={loading}
+          indexes={indexes}
+          onSelectIndex={onSelectIndex}
+          sortItems={(id) => onSortItems(undefined, { value: id })}
+          upload={upload}
+          rename={rename}
+          workflow={workflow}
+          tags={tags}
+          properties={properties}
 
-        // addableTypes={props.addableTypes}
-      />
-    </ContentsProvider>
+          // addableTypes={props.addableTypes}
+        />
+      </ContentsProvider>
+    </main>
   );
 }
 

@@ -5,14 +5,8 @@ import {
   useDragAndDrop,
   DialogTrigger,
   MenuTrigger,
-  ProgressBar,
 } from 'react-aria-components';
-import {
-  useFetcher,
-  useLoaderData,
-  useNavigate,
-  useRouteLoaderData,
-} from 'react-router';
+import { useFetcher, useLoaderData, useNavigate } from 'react-router';
 import { useDebounceCallback, useMediaQuery } from 'usehooks-ts';
 import { Tooltip, Table, Pagination } from '@plone/components';
 
@@ -32,8 +26,7 @@ import {
   CutIcon,
   BinIcon,
 } from '@plone/components/Icons';
-import { TextField } from '@plone/cmsui/components/TextField/TextField';
-import type { RootLoader } from 'seven/app/root';
+import { Input } from '@plone/cmsui/components/Field/Field';
 import type { ArrayElement, Brain } from '@plone/types';
 
 import Topbar from '../Topbar';
@@ -109,14 +102,15 @@ export function ContentsTable({
   const { selected, setSelected, setShowDelete, setItemsToDelete, showToast } =
     useContentsContext();
   const fetcher = useFetcher();
-  const { addableTypes, search, searchableText, page, b_size } =
+  const { content, search, searchableText, page, b_size } =
     useLoaderData<ContentsLoaderType>();
-  const rootData = useRouteLoaderData<RootLoader>('root');
+  const addableTypes = content['@components'].types.filter(
+    (type) => type.addable,
+  );
   const [currentPage, setCurrentPage] = useState<number>(Number(page));
 
-  const { content } = rootData ?? {};
-  const { title = '' } = content ?? {};
-  const { items = [] } = search ?? {};
+  const { title = '' } = content;
+  const { items = [] } = search;
   type Item = ArrayElement<typeof items>;
 
   const breadcrumbsItems = (
@@ -485,7 +479,13 @@ export function ContentsTable({
       className="folder-contents"
       // aria-live="polite"
     >
-      <article id="content" className={`mx-auto px-4 py-2 lg:px-8`}>
+      <article
+        id="content"
+        className={`
+          mx-auto px-4 py-2
+          lg:px-8
+        `}
+      >
         <Topbar>
           <div className="title-block flex-auto">
             <Breadcrumbs
@@ -496,7 +496,10 @@ export function ContentsTable({
                 <Breadcrumb
                   id={item['@id']}
                   href={item['@id']}
-                  className={`text-quanta-sapphire decoration-quanta-sapphire/50 hover:decoration-quanta-sapphire`}
+                  className={`
+                    text-quanta-sapphire decoration-quanta-sapphire/50
+                    hover:decoration-quanta-sapphire
+                  `}
                 >
                   {item.title}
                 </Breadcrumb>
@@ -505,7 +508,10 @@ export function ContentsTable({
             <h1 className="text-2xl font-bold">{title}</h1>
           </div>
           <div
-            className={`group ms-auto flex flex-shrink-0 flex-grow basis-0 flex-wrap-reverse items-center justify-end gap-4 self-end`}
+            className={`
+              group ms-auto flex shrink-0 grow basis-0 flex-wrap-reverse items-center justify-end
+              gap-4 self-end
+            `}
           >
             {!isMobileScreenSize && (
               <ContentsActions
@@ -522,12 +528,12 @@ export function ContentsTable({
                 // selected={selected}
               />
             )}
-            <TextField
+            <Input
               name="sortable_title"
               placeholder={t('contents.actions.filter')}
               value={searchInput ?? ''}
-              onChange={(v) => {
-                setSearchInput(v);
+              onChange={(e) => {
+                setSearchInput(e.target.value);
               }}
               aria-label={t('contents.actions.filter')}
             />
@@ -536,7 +542,13 @@ export function ContentsTable({
               <DialogTrigger>
                 <Button
                   variant="primary"
-                  className={`cursor-pointer rounded-full border-0 bg-quanta-sapphire p-1.5 text-quanta-air outline-offset-2 hover:bg-quanta-royal hover:text-quanta-air focus:text-quanta-air active:text-quanta-air`}
+                  className={`
+                    cursor-pointer rounded-full border-0 bg-quanta-sapphire p-1.5 text-quanta-air
+                    outline-offset-2
+                    hover:bg-quanta-royal hover:text-quanta-air
+                    focus:text-quanta-air
+                    active:text-quanta-air
+                  `}
                 >
                   <AddIcon />
                 </Button>

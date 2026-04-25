@@ -1,4 +1,3 @@
-import React from 'react';
 import { Popover, Checkbox } from '@plone/components';
 import { useTranslation } from 'react-i18next';
 import PopoverListItem from '../PopoverListItem';

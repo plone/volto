@@ -6,15 +6,21 @@ import {
   ScrollRestoration,
   useNavigate,
   useLoaderData,
-  useRouteLoaderData,
   type LinksFunction,
   type MetaFunction,
+  type LoaderFunctionArgs,
+  RouterContextProvider,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
+import clsx from 'clsx';
+import i18next from 'seven/app/i18next.server';
+import { ploneContentContext } from 'seven/app/middleware.server';
 import { type RootLoader } from 'seven/app/root';
 import { PluggablesProvider, Plug } from '@plone/layout/components/Pluggable';
-import Toolbar from '@plone/cmsui/components/Toolbar/Toolbar';
+import Toast from '@plone/layout/components/Toast/Toast';
+import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
+import { shouldShowToolbar } from '@plone/layout/helpers';
 import config from '@plone/registry';
 import { Button } from '@plone/components/quanta';
 import Back from '@plone/components/icons/arrow-left.svg?react';
@@ -24,7 +30,6 @@ import Back from '@plone/components/icons/arrow-left.svg?react';
 import stylesheet from 'seven/.plone/cmsui.css?url';
 import basicComponentsStylesheets from '@plone/components/dist/basic.css?url';
 import quantaComponentsStylesheet from '@plone/components/dist/quanta.css?url';
-import Toast from '@plone/layout/components/Toast/Toast';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -70,45 +75,45 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export async function loader() {
-  return { cssLayers: config.settings.cssLayers };
+export async function loader({
+  request,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  const content = context.get(ploneContentContext);
+  const locale = await i18next.getLocale(request);
+  return { locale, content };
 }
 
 export default function Index() {
-  const { cssLayers } = useLoaderData<typeof loader>();
-  const rootData = useRouteLoaderData<RootLoader>('root');
+  const { locale, content } = useLoaderData<typeof loader>();
   const { i18n } = useTranslation();
   const navigate = useNavigate();
 
-  if (!rootData) {
-    return null;
-  }
-  const { content, locale } = rootData;
-  // console.log(i18n);
+  const contentLanguage = (content?.language as { token?: string } | undefined)
+    ?.token;
+  const showToolbar = shouldShowToolbar(content);
 
   return (
-    <html lang={content.language?.token || locale || 'en'}>
-      {/* dir={i18n.dir()} */}
+    <html lang={contentLanguage || locale || 'en'} dir={i18n.dir()}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
-        {/* We pre-define here the @layer before tailwind does, adding our own layers */}
-        <style>{`@layer ${cssLayers.join(', ')};`}</style>
         <Meta />
         <Links />
       </head>
       <body className="cmsui">
-        <PluggablesProvider>
-          <RACRouterProvider navigate={navigate}>
+        {/* We pre-define here the @layer before tailwind does, adding our own layers in a React 19 managed <link> tag */}
+        <link rel="stylesheet" href="/layers.css" precedence="first" />
+        <RACRouterProvider navigate={navigate}>
+          <PluggablesProvider>
+            {showToolbar && <Toolbar />}
             <div
-              className={`grid grid-cols-[80px_1fr_0px] transition-[grid-template-columns] duration-200 ease-linear`}
+              className={clsx({
+                'ml-(--plone-toolbar-width)': showToolbar,
+              })}
             >
-              <Toolbar />
-              <main id="main">
-                {/* <TopNavBar /> */}
-                <Outlet />
-              </main>
+              <Outlet />
             </div>
             <Plug pluggable="toolbar-top" id="button-back">
               <Button
@@ -125,8 +130,8 @@ export default function Index() {
                 <Back />
               </Button>
             </Plug>
-          </RACRouterProvider>
-        </PluggablesProvider>
+          </PluggablesProvider>
+        </RACRouterProvider>
         <Toast
           queue={config.getUtility({ name: 'queue', type: 'toast' }).method()}
         />

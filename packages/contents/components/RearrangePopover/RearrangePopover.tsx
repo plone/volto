@@ -1,4 +1,3 @@
-import React from 'react';
 import { Menu, MenuItem, SubmenuTrigger } from 'react-aria-components';
 import { Popover, type PopoverProps } from '@plone/components';
 import ChevronrightIcon from '@plone/components/icons/chevron-right.svg?react';

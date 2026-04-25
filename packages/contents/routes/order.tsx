@@ -1,20 +1,19 @@
-import { data, type ActionFunctionArgs } from 'react-router';
+import {
+  data,
+  RouterContextProvider,
+  type ActionFunctionArgs,
+} from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
-import config from '@plone/registry';
-import type PloneClient from '@plone/client';
+import { ploneClientContext } from 'seven/app/middleware.server';
 import { HandleCatchedError } from '../helpers/Errors';
 
-export async function action({ request }: ActionFunctionArgs) {
-  const token = await requireAuthCookie(request);
+export async function action({
+  request,
+  context,
+}: ActionFunctionArgs<RouterContextProvider>) {
+  await requireAuthCookie(request);
 
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
-
-  cli.config.token = token;
+  const cli = context.get(ploneClientContext);
 
   const payload = await request.json();
   const errors = [];

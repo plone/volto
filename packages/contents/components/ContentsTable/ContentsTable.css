@@ -20,7 +20,7 @@
   }
 
   nav.pagination {
-    float: right;
     margin-top: 2rem;
+    float: right;
   }
 }

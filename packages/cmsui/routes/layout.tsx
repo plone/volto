@@ -2,23 +2,26 @@ import {
   Links,
   Meta,
   Outlet,
+  RouterContextProvider,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useNavigate,
-  useRouteLoaderData,
   type LinksFunction,
+  type LoaderFunctionArgs,
   type MetaFunction,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
 import { clsx } from 'clsx';
+import i18next from 'seven/app/i18next.server';
 import type { RootLoader } from 'seven/app/root';
 import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
-import config from '@plone/registry';
 
 import stylesheet from 'seven/.plone/cmsui.css?url';
+import { ploneContentContext } from 'seven/app/middleware.server';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -60,19 +63,20 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export async function loader() {
-  return { cssLayers: config.settings.cssLayers };
+export async function loader({
+  request,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  const content = context.get(ploneContentContext);
+  const locale = await i18next.getLocale(request);
+  return { locale, content };
 }
 
 export default function Index() {
-  const rootData = useRouteLoaderData<RootLoader>('root');
+  const { locale, content } = useLoaderData<typeof loader>();
   const { i18n } = useTranslation();
   const navigate = useNavigate();
 
-  if (!rootData) {
-    return null;
-  }
-  const { content, locale } = rootData;
   const contentLanguage = (content?.language as { token?: string } | undefined)
     ?.token;
   const showToolbar = shouldShowToolbar(content);
