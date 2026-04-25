@@ -3,6 +3,7 @@
   "@react-aria/utils": "^3.34.0",
   "@react-spectrum/utils": "^3.13.0",
   "@tailwindcss/vite": "^4.1.4",
+  "@testing-library/jest-dom": "^6.9.1",
   "@testing-library/react": "^16.3.0",
   "@types/node": "^24",
   "@types/react-dom": "^18.3.1",
