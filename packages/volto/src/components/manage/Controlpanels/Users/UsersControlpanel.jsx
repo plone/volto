@@ -143,7 +143,10 @@ const UsersControlpanel = () => {
       await listUsersAction();
       setEntries(users);
     }
-    await getUserSchemaAction();
+    // Only fetch user schema if it hasn't been loaded yet (e.g. by asyncConnect SSR)
+    if (!userschema?.loaded) {
+      await getUserSchemaAction();
+    }
     await getUserAction(userId);
   }, [
     getControlpanelAction,
@@ -152,6 +155,7 @@ const UsersControlpanel = () => {
     listGroupsAction,
     listUsersAction,
     users,
+    userschema,
     getUserSchemaAction,
     getUserAction,
     userId,
