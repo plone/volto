@@ -160,6 +160,6 @@ underlined, then in `theme/collections/breadcrumb.overrides`:
 }
 ```
 
-## Utility CSS Classes - Accessibility
+## Accessibility CSS classes
 
 See {doc}`../contributing/accessibility-guidelines` for the list of utility CSS classes provided by Volto for accessibility purposes.

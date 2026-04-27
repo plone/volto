@@ -40,7 +40,7 @@ The reasoning is that the `<a></a>` HTML tag has specific behavior that screenre
 
 This is true for one-element forms as well, such as the "Search" form on the folder-contents component. Putting an icon on it does not convey any meaning to screenreader-users, you should clarify it with an aria-label.
 
-## Utility CSS Classes - Accessibility
+## Accessibility CSS classes
 
 Volto provides a set of utility CSS classes in the Pastanaga theme that can be applied directly in your markup.
 These classes use Volto-specific naming to avoid collisions with classes from third-party CSS frameworks such as Tailwind CSS, Semantic UI, or Bootstrap.
@@ -56,4 +56,12 @@ Hides an element visually while keeping it accessible to screen readers and othe
 ```{note}
 The `-volto` suffix is intentional.
 Generic names such as `.visually-hidden` or `.sr-only` are commonly defined by other frameworks and would conflict if both are loaded in the same project.
+```
+
+```{versionadded} Volto 18
+The suffix `-volto` was added in Volto 18.
+```
+
+```{deprecated} Volto 18
+Although the suffix `-volto` is supported in Volto 18, it will be removed in Volto 19, and is therefore deprecated.
 ```
