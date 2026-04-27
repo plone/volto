@@ -56,14 +56,14 @@
     "tailwind-merge": "catalog:",
     "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-react-aria-components": "^2.0.0"
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "release-it": "catalog:",
-    "tailwindcss-react-aria-components": "^2.0.0",
     "tsconfig": "workspace:*",
     "typescript": "catalog:"
   }

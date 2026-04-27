@@ -22,7 +22,7 @@
     "dist",
     "src",
     "README.md",
-    "vite-plugin.*"
+    "vite-plugin-svgr.*"
   ],
   "main": "./dist/index.js",
   "exports": {
@@ -100,6 +100,8 @@
     "@internationalized/date": "catalog:",
     "@react-aria/utils": "catalog:",
     "@react-spectrum/utils": "catalog:",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-svgo": "^8.1.0",
     "clsx": "^2.1.1",
     "react-aria": "catalog:",
     "react-aria-components": "catalog:",
@@ -107,7 +109,8 @@
     "tailwind-merge": "catalog:",
     "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
@@ -116,7 +119,6 @@
     "@storybook/addon-docs": "^9.1.7",
     "@storybook/addon-links": "^9.1.7",
     "@storybook/react-vite": "^9.1.7",
-    "@svgr/plugin-svgo": "^8.1.0",
     "@tailwindcss/vite": "catalog:",
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "catalog:",
@@ -133,12 +135,10 @@
     "lightningcss-cli": "^1.29.1",
     "release-it": "catalog:",
     "storybook": "^9.1.7",
-    "tailwindcss-react-aria-components": "^2.0.0",
     "tsup": "catalog:",
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vite-plugin-svgr": "^4.3.0",
     "vitest": "catalog:",
     "vitest-axe": "^0.1.0"
   },
