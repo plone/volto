@@ -88,6 +88,15 @@ class Search extends Component {
     this.focusResults();
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      JSON.stringify(this.props.search) !== JSON.stringify(prevProps.search)
+    ) {
+      //on opening results page, move focus on results
+      this.focusResults();
+    }
+  }
+
   /**
    * Component will receive props
    * @method componentWillReceiveProps
@@ -97,13 +106,6 @@ class Search extends Component {
   UNSAFE_componentWillReceiveProps = (nextProps) => {
     if (this.props.location.search !== nextProps.location.search) {
       this.doSearch();
-    }
-
-    if (
-      JSON.stringify(this.props.search) !== JSON.stringify(nextProps.search)
-    ) {
-      //on opening results page, move focus on results
-      this.focusResults();
     }
   };
 
