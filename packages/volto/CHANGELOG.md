@@ -17,6 +17,43 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.30 (2026-04-27)
+
+### Breaking
+
+- Update @plone/components to 4.0.0-alpha.7 codebase. @sneridagh [#8122](https://github.com/plone/volto/issues/8122)
+
+### Bugfix
+
+- Respect required and fixed block restrictions in the sidebar Order tab by hiding delete and drag actions when blocked. @avoinea [#6481](https://github.com/plone/volto/issues/6481)
+- Fix crash in `AlternateHrefLangs` when `content.language` is undefined. @avoinea [#7309](https://github.com/plone/volto/issues/7309)
+- - Recreated the `linkInvalid` variable to correctly identify whether a link is valid and to address accessibility issues. @Wagner3UB [#7983](https://github.com/plone/volto/issues/7983)
+- Fix Toast component accessibility by adding a visually hidden, translated type label (Success, Error, Warning, Information) for screen readers. Fix date range validator error messages to display human-readable dates instead of raw ISO strings. @Wagner3UB [#8105](https://github.com/plone/volto/issues/8105)
+- Don't show login link in the `Unauthorized` component if the user is already authenticated. @wesleybl [#8126](https://github.com/plone/volto/issues/8126)
+- Fixed the link to the navigation root in the Contents view breadcrumbs. @TimoBroeskamp [#8140](https://github.com/plone/volto/issues/8140)
+- Completed the missing Romanian translations in the core Volto catalog and aligned a few related UI labels in the touched areas. @avoinea 
+- Fixed redirect after logging in when starting from the `Unauthorized` component on a non-content route, such as control panels. @davisagli 
+
+### Internal
+
+- Add Storybook of View components @Tishasoumya-02 [#5086](https://github.com/plone/volto/issues/5086)
+- storybook of Sitemap @Tishasoumya [#5087](https://github.com/plone/volto/issues/5087)
+- Remove `tsconfig.json` root and remove `tsconfig` package. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+- Remove references to the `apps` folder. @wesleybl [#8144](https://github.com/plone/volto/issues/8144)
+- Remove unused devDependency `postcss-overrides`. @davisagli 
+- Update dependencies: `@loadable/component` 5.16.7, `@loadable/server`
+  5.16.7, `@loadable/babel-plugin` 5.16.1, `@types/loadable__component`
+  5.13.10, `html-webpack-plugin` 5.6.7, `mini-css-extract-plugin` 2.10.1,
+  `react-docgen-typescript-plugin` 1.0.8, `terser-webpack-plugin` 5.4.0.
+  @davisagli 
+- Update dependency: `lodash` 4.18.1. @davisagli 
+- Update dependency: `prismjs` 1.30.0. @davisagli 
+- Update dependency: `uuid` 14.0.0. @davisagli 
+- Update devDependencies: `postcss` 8.5.10, `postcss-load-config` 6.0.1,
+  `postcss-loader` 8.2.1, `postcss-scss` 4.0.9. @davisagli 
+- Update devDependency: `@testing-library/jest-dom` 6.9.1. @davisagli 
+- Update devDependency: `release-it` 20.0.1. @davisagli 
+
 ## 19.0.0-alpha.29 (2026-04-09)
 
 ### Breaking
