@@ -214,7 +214,7 @@
     "universal-cookie-express": "4.0.3",
     "url": "^0.11.3",
     "use-deep-compare-effect": "1.8.1",
-    "uuid": "^8.3.2"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
@@ -242,7 +242,7 @@
     "@storybook/test": "^8.0.4",
     "@storybook/theming": "^8.0.4",
     "@testing-library/cypress": "10.1.0",
-    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "14.3.1",
     "@testing-library/react-hooks": "8.0.1",
     "@types/history": "^4.7.11",
@@ -255,7 +255,6 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/react-test-renderer": "18.0.7",
     "@types/redux-mock-store": "^1.5.0",
-    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^7.7.0",
     "@typescript-eslint/parser": "^7.7.0",
     "@vitejs/plugin-react": "^4.3.4",
