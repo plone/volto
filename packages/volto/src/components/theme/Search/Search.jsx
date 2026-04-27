@@ -85,6 +85,16 @@ class Search extends Component {
   componentDidMount() {
     this.doSearch();
     this.setState({ isClient: true });
+    this.focusResults();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      JSON.stringify(this.props.search) !== JSON.stringify(prevProps.search)
+    ) {
+      //on opening results page, move focus on results
+      this.focusResults();
+    }
   }
 
   /**
@@ -97,6 +107,15 @@ class Search extends Component {
     if (this.props.location.search !== nextProps.location.search) {
       this.doSearch();
     }
+  };
+
+  focusResults = () => {
+    //on opening results page, move focus on results
+    setTimeout(() => {
+      if (document.querySelector('#page-search #search-results')) {
+        document.querySelector('#page-search #search-results').focus();
+      }
+    }, 100);
   };
 
   /**
@@ -162,7 +181,13 @@ class Search extends Component {
     return (
       <Container id="page-search">
         <Helmet title={this.props.intl.formatMessage(messages.Search)} />
-        <div className="container">
+        <div
+          className="container"
+          role="region"
+          aria-live="polite"
+          id="search-results"
+          tabIndex={-1}
+        >
           <article id="content">
             <header>
               <h1 className="documentFirstHeading">
