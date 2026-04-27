@@ -3305,7 +3305,7 @@ msgstr "Suchen"
 #. Default: "Search Site"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr "Website durchsuchen"
+msgstr "Seite durchsuchen"
 
 #. Default: "Search block"
 #: components/manage/Blocks/Search/schema
