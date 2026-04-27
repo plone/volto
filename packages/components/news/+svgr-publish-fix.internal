@@ -1,0 +1,1 @@
+Moved `vite-plugin-svgr` and its SVGR plugins into Components runtime dependencies and narrowed the published plugin file entry for correct downstream installs. @sneridagh

@@ -1,0 +1,1 @@
+Moved `tailwindcss-react-aria-components` into Theming runtime dependencies so published installs include the Tailwind React Aria plugin they use. @sneridagh
