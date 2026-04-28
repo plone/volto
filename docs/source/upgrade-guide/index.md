@@ -194,6 +194,11 @@ index c469fe9..c39a324 100644
 
 A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
 
+```{versionchanged} Volto 19
+This CSS class was previously named `visually-hidden-volto`.
+The suffix `-volto` was removed in Volto 19.
+```
+
 This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
 
 If your project, add-on, or custom theme already defines a `visually-hidden` class, or uses similar accessibility helpers, the new global definition may override or conflict with existing custom styles.
