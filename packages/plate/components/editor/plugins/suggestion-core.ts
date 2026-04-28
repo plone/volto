@@ -394,7 +394,7 @@ const insertFragmentSuggestion = (
 
 const insertTextSuggestion = (editor: any, text: string) => {
   editor.tf.withoutNormalizing(() => {
-    let resultId;
+    let resultId: string | undefined;
 
     const { createdAt, id } = findSuggestionProps(editor, {
       at: editor.selection,
@@ -766,7 +766,7 @@ export const BaseSuggestionPlugin = createTSlatePlugin<any>({
   },
   rules: { selection: { affinity: 'outward' } },
 })
-  .overrideEditor(withSuggestion)
+  .overrideEditor(withSuggestion as any)
   .extendApi(({ api, editor, getOption, setOption, type }: any) => ({
     dataList: (node: any) =>
       Object.keys(node)
