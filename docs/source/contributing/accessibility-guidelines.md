@@ -47,4 +47,5 @@ The `.visually-hidden` class can be used to wrap elements which need to be expos
 
 ```{versionchanged} Volto 19
 This CSS class was previously named `visually-hidden-volto`.
+The suffix `-volto` was removed in Volto 19.
 ```
