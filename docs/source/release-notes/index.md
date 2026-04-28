@@ -1497,7 +1497,7 @@ myst:
 - The proper name is Semantic UI. @stevepiercy [#5855](https://github.com/plone/volto/issues/5855)
 - Add missing nextjs install step. @gomez [#5857](https://github.com/plone/volto/issues/5857)
 - Add reference to Docker installation for some Linux distributions. @stevepiercy [#5861](https://github.com/plone/volto/issues/5861)
-- Fix broken link to TanStack Query. @stevepiercy [#5871](https://github.com/plone/volto/issues/5871)
+- Fix broken link to external query-library documentation. @stevepiercy [#5871](https://github.com/plone/volto/issues/5871)
 - Fix linkcheckbroken of `README.md` at the source of the file. @stevepiercy [#5834](https://github.com/plone/volto/issues/5834)
 - Improve wayfinding for various Volto audiences. @stevepiercy [#5730](https://github.com/plone/volto/issues/5730)
 - Linkcheck thinks `README.md` is `http://README.md`. Bad linkcheck, no more 🍺 for you. @stevepiercy [#5816](https://github.com/plone/volto/issues/5816)
@@ -2187,7 +2187,7 @@ myst:
 - The proper name is Semantic UI. @stevepiercy [#5855](https://github.com/plone/volto/issues/5855)
 - Add missing nextjs install step. @gomez [#5857](https://github.com/plone/volto/issues/5857)
 - Add reference to Docker installation for some Linux distributions. @stevepiercy [#5861](https://github.com/plone/volto/issues/5861)
-- Fix broken link to TanStack Query. @stevepiercy [#5871](https://github.com/plone/volto/issues/5871)
+- Fix broken link to external query-library documentation. @stevepiercy [#5871](https://github.com/plone/volto/issues/5871)
 
 ## 18.0.0-alpha.18 (2024-03-05)
 
