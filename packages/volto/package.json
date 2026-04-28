@@ -126,6 +126,7 @@
     "@plone/registry": "workspace:*",
     "@plone/scripts": "workspace:*",
     "@plone/volto-slate": "workspace:*",
+    "react-aria-components": "catalog:",
     "@redux-devtools/extension": "^3.3.0",
     "classnames": "2.5.1",
     "connected-react-router": "6.8.0",
