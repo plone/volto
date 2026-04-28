@@ -99,6 +99,7 @@ Cypress.Commands.add(
     transition = '',
     bodyModifier = (body) => body,
     image = false,
+    preview_image_link = null,
   }) => {
     let api_url, auth;
     if (Cypress.env('API') === 'guillotina') {
@@ -127,6 +128,10 @@ Cypress.Commands.add(
         allow_discussion: allow_discussion,
       },
     };
+
+    if (preview_image_link) {
+      defaultParams.body.preview_image_link = preview_image_link;
+    }
 
     if (contentType === 'File') {
       const params = {
@@ -822,12 +827,30 @@ Cypress.Commands.add(
   },
 );
 
+// Helper function to check if it is normal text or special command
+function shouldVerifyContent(type) {
+  return !type.includes('{');
+}
+
 Cypress.Commands.add('getSlateEditorAndType', (type) => {
-  cy.getSlate().focus().click().type(type);
+  cy.getSlate().click().trigger('focus').type(type);
+
+  if (shouldVerifyContent(type)) {
+    return cy.getSlate().should('contain', type);
+  }
+
+  return cy.getSlate();
 });
 
 Cypress.Commands.add('getSlateEditorSelectorAndType', (selector, type) => {
-  cy.getSlateSelector(selector).focus().click().type(type);
+  cy.wait(100);
+  cy.getSlateSelector(selector).click().trigger('focus').type(type);
+
+  if (shouldVerifyContent(type)) {
+    return cy.getSlateSelector(selector).should('contain', type);
+  }
+
+  return cy.getSlateSelector(selector);
 });
 
 Cypress.Commands.add('setSlateCursor', (subject, query, endQuery) => {

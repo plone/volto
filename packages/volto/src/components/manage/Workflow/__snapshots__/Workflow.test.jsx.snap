@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Workflow renders a workflow component 1`] = `
+exports[`Workflow > renders a workflow component 1`] = `
 <div>
   <div
     id="FormFieldWrapper"
@@ -8,7 +8,7 @@ exports[`Workflow renders a workflow component 1`] = `
 </div>
 `;
 
-exports[`Workflow renders an empty workflow component 1`] = `
+exports[`Workflow > renders an empty workflow component 1`] = `
 <div>
   <div
     id="FormFieldWrapper"

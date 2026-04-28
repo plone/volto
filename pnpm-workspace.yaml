@@ -6,7 +6,6 @@ packages:
   - '!**/test/**'
   # exclude Volto packages, leaving them as reference
   - '!packages/volto*'
-  - '!packages/coresandbox'
 
 # The default pnpm catalog is loaded from `catalog.json` using `.pnpmfile.cjs`.
 # If you want to customize the versions of the catalog, do it in there.

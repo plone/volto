@@ -25,7 +25,7 @@
 }
 
 .ui.form p.help {
-  color: #878f93;
+  color: @inputColor;
   font-size: @13px;
   font-weight: 300;
   line-height: initial;
@@ -52,6 +52,10 @@
     border-radius: 0;
     color: @textColor;
   }
+}
+
+.ui.form .ui.checkbox {
+  margin: @8px 0;
 }
 
 .ui.form .fields.error .field textarea,

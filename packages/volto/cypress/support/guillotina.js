@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export function setupGuillotina() {
   const headers = {
     Authorization: 'Basic cm9vdDpyb290',

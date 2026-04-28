@@ -68,10 +68,12 @@ import {
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/utils';
 import { getLeadImageBlockSizes } from '@plone/volto/components/manage/Blocks/LeadImage/utils';
+import { getTeaserBlockSizes } from '@plone/volto/components/manage/Blocks/Teaser/utils';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
 import SearchBlockSchema from '@plone/volto/components/manage/Blocks/Search/schema';
+import VideoBlockSchema from '@plone/volto/components/manage/Blocks/Video/schema';
 
 import ToCVariations from '@plone/volto/components/manage/Blocks/ToC/variations';
 
@@ -346,9 +348,11 @@ const blocksConfig = {
     view: ViewVideoBlock,
     edit: EditVideoBlock,
     schema: BlockSettingsSchema,
+    blockSchema: VideoBlockSchema,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
+    allowedPeertubeInstances: [],
   },
   toc: {
     id: 'toc',
@@ -504,6 +508,7 @@ const blocksConfig = {
     sidebarTab: 1,
     blockSchema: TeaserSchema,
     dataAdapter: TeaserBlockDataAdapter,
+    getSizes: getTeaserBlockSizes,
     variations: [
       {
         id: 'default',
@@ -525,7 +530,7 @@ blocksConfig.gridBlock.blocksConfig.teaser.schemaEnhancer =
 blocksConfig.gridBlock.blocksConfig.image.schemaEnhancer =
   gridImageDisableSizeAndPositionHandlersSchema;
 
-const requiredBlocks = ['title'];
+const requiredBlocks = [];
 
 const initialBlocks = {};
 const initialBlocksFocus = {}; //{Document:'title'}

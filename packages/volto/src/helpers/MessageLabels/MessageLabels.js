@@ -25,6 +25,11 @@ export const messages = defineMessages({
     id: 'Maximum value is {len}.',
     defaultMessage: 'Maximum value is {len}.',
   },
+  maxSize: {
+    id: 'Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes.',
+    defaultMessage:
+      'Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes.',
+  },
   uniqueItems: {
     id: 'Items must be unique.',
     defaultMessage: 'Items must be unique.',
@@ -151,6 +156,11 @@ export const messages = defineMessages({
   addGroupsFormGroupNameTitle: {
     id: 'Groupname',
     defaultMessage: 'Groupname',
+  },
+  addGroupsFormGroupNameDescription: {
+    id: 'A unique identifier for the group. Cannot be changed after creation. No spaces allowed.',
+    defaultMessage:
+      'A unique identifier for the group. Cannot be changed after creation. No spaces allowed.',
   },
   addGroupsFormDescriptionTitle: {
     id: 'Description',
@@ -402,5 +412,10 @@ export const messages = defineMessages({
     id: 'The number of items must be greater than or equal to {minItems}',
     defaultMessage:
       'The number of items must be greater than or equal to {minItems}',
+  },
+  defaultLanguage: {
+    id: "The selected default language must be in the list of the field 'Available languages'",
+    defaultMessage:
+      "The selected default language must be in the list of the field 'Available languages'",
   },
 });

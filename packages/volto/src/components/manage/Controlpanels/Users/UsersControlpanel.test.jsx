@@ -1,16 +1,19 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
 import UsersControlpanel from './UsersControlpanel';
 
 const mockStore = configureStore();
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('UsersControlpanel', () => {
-  it('renders a user control component', () => {
+  it('renders a user control component', async () => {
     const store = mockStore({
       userSession: {
         token: jwt.sign({ sub: 'john' }, 'secret'),
@@ -38,11 +41,61 @@ describe('UsersControlpanel', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <UsersControlpanel location={{ pathname: '/blog' }} />
-        <div id="toolbar"></div>
+        <MemoryRouter initialEntries={['/controlpanel/users']}>
+          <UsersControlpanel />
+          <div id="toolbar"></div>
+        </MemoryRouter>
       </Provider>,
     );
+    await waitFor(() => {});
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('handles createRequest error when response body has only message', async () => {
+    const store = mockStore({
+      userSession: {
+        token: jwt.sign({ sub: 'john' }, 'secret'),
+      },
+      roles: { roles: [] },
+      users: {
+        users: [],
+        create: {
+          loading: false,
+          error: {
+            response: { body: { message: 'SMTP relay access denied' } },
+          },
+        },
+        user: {
+          roles: ['Manager'],
+          '@id': 'admin',
+        },
+      },
+      groups: {
+        groups: [],
+        create: { loading: false },
+      },
+      authRole: {
+        authenticatedRole: [],
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    render(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/controlpanel/users']}>
+          <UsersControlpanel />
+          <div id="toolbar"></div>
+        </MemoryRouter>
+      </Provider>,
+    );
+    await waitFor(() => {});
+
+    // If the component attempted to read a missing property it would throw.
+    // Reaching this line means the error shape was handled without exceptions.
+    expect(true).toBe(true);
   });
 });

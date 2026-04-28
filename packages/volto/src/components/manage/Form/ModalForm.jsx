@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 import keys from 'lodash/keys';
 import map from 'lodash/map';
 import {
@@ -76,6 +77,7 @@ class ModalForm extends Component {
     submitError: PropTypes.string,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
+    onChangeFormData: PropTypes.func,
     open: PropTypes.bool,
     submitLabel: PropTypes.string,
     loading: PropTypes.bool,
@@ -208,6 +210,33 @@ class ModalForm extends Component {
   }
 
   /**
+   * Component did update lifecycle handler
+   * @param {Object} prevProps
+   * @param {Object} prevState
+   */
+  async componentDidUpdate(prevProps, prevState) {
+    if (this.props.onChangeFormData) {
+      if (!isEqual(prevState?.formData, this.state.formData)) {
+        this.props.onChangeFormData(this.state.formData);
+      }
+    }
+    if (!isEqual(prevProps.formData, this.props.formData)) {
+      let newFormData = {};
+      map(keys(this.props.formData), (field) => {
+        if (!isEqual(prevProps.formData[field], this.props.formData[field])) {
+          newFormData[field] = this.props.formData[field];
+        }
+      });
+      this.setState({
+        formData: {
+          ...this.state.formData,
+          ...newFormData,
+        },
+      });
+    }
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -216,15 +245,17 @@ class ModalForm extends Component {
     const { schema, onCancel, description } = this.props;
     const currentFieldset = schema.fieldsets[this.state.currentTab];
 
-    const fields = map(currentFieldset.fields, (field) => ({
-      ...schema.properties[field],
-      id: field,
-      value: this.state.formData[field],
-      required: schema.required.indexOf(field) !== -1,
-      onChange: this.onChangeField,
-      onBlur: this.onBlurField,
-      onClick: this.onClickInput,
-    }));
+    const fields = currentFieldset
+      ? map(currentFieldset.fields, (field) => ({
+          ...schema.properties[field],
+          id: field,
+          value: this.state.formData[field],
+          required: schema.required.indexOf(field) !== -1,
+          onChange: this.onChangeField,
+          onBlur: this.onBlurField,
+          onClick: this.onClickInput,
+        }))
+      : [];
 
     const state_errors = keys(this.state.errors).length > 0;
     return (
@@ -259,7 +290,7 @@ class ModalForm extends Component {
               )}
               <div>{this.props.submitError}</div>
             </Message>
-            {schema.fieldsets.length > 1 && (
+            {schema.fieldsets?.length > 1 && (
               <Menu tabular stackable>
                 {map(schema.fieldsets, (item, index) => (
                   <Menu.Item
@@ -308,6 +339,7 @@ class ModalForm extends Component {
           </Button>
           {onCancel && (
             <Button
+              type="button"
               basic
               circular
               secondary
