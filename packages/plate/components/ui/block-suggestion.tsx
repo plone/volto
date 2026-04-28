@@ -8,7 +8,6 @@ import {
   keyId2SuggestionId,
   rejectSuggestion,
 } from '@platejs/suggestion';
-import { SuggestionPlugin } from '@platejs/suggestion/react';
 import { CheckIcon, XIcon } from 'lucide-react';
 import {
   type NodeEntry,
@@ -21,16 +20,14 @@ import {
   PathApi,
   TextApi,
 } from 'platejs';
-import { useEditorPlugin, usePluginOption } from 'platejs/react';
+import { useEditorPlugin } from 'platejs/react';
 
 import { Avatar, AvatarFallback, AvatarImage } from './avatar';
 import { Button } from './button';
 import { cn } from '../../lib/utils';
-import {
-  type TDiscussion,
-  discussionPlugin,
-} from '../editor/plugins/discussion-kit';
-import { suggestionPlugin } from '../editor/plugins/suggestion-kit';
+import { usePlatePlugins } from '../editor/plate-plugins-context';
+import { type TDiscussion } from '../editor/plugins/discussion-kit';
+import { SuggestionPlugin, suggestionPlugin } from '../editor/plugins/suggestion-kit';
 
 import {
   type TComment,
@@ -102,8 +99,8 @@ export function BlockSuggestionCard({
   suggestion: ResolvedSuggestion;
 }) {
   const { api, editor } = useEditorPlugin(SuggestionPlugin);
-
-  const userInfo = usePluginOption(discussionPlugin, 'user', suggestion.userId);
+  const { users } = usePlatePlugins();
+  const userInfo = users[suggestion.userId];
 
   const accept = (suggestion: ResolvedSuggestion) => {
     api.suggestion.withoutSuggestions(() => {
@@ -279,7 +276,7 @@ export const useResolveSuggestion = (
   suggestionNodes: NodeEntry<TElement | TSuggestionText>[],
   blockPath: Path,
 ) => {
-  const discussions = usePluginOption(discussionPlugin, 'discussions');
+  const { discussions } = usePlatePlugins();
 
   const { api, editor, getOption, setOption } =
     useEditorPlugin(suggestionPlugin);

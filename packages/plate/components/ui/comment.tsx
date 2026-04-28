@@ -24,7 +24,6 @@ import {
   useEditorPlugin,
   useEditorRef,
   usePlateEditor,
-  usePluginOption,
 } from 'platejs/react';
 
 import { Avatar, AvatarFallback, AvatarImage } from './avatar';
@@ -37,11 +36,9 @@ import {
   DropdownMenuTrigger,
 } from './dropdown-menu';
 import { cn } from '../../lib/utils';
+import { usePlatePlugins } from '../editor/plate-plugins-context';
 import { BasicMarksKit } from '../editor/plugins/basic-marks-kit';
-import {
-  type TDiscussion,
-  discussionPlugin,
-} from '../editor/plugins/discussion-kit';
+import { type TDiscussion } from '../editor/plugins/discussion-kit';
 
 import { Editor, EditorContainer } from './editor';
 
@@ -76,26 +73,25 @@ export function Comment(props: {
   } = props;
 
   const editor = useEditorRef();
-  const userInfo = usePluginOption(discussionPlugin, 'user', comment.userId);
-  const currentUserId = usePluginOption(discussionPlugin, 'currentUserId');
+  const { discussions, setDiscussions, users, currentUserId } =
+    usePlatePlugins();
+  const userInfo = users[comment.userId];
 
   const resolveDiscussion = async (id: string) => {
-    const updatedDiscussions = editor
-      .getOption(discussionPlugin, 'discussions')
-      .map((discussion) => {
+    const updatedDiscussions = discussions.map((discussion) => {
         if (discussion.id === id) {
           return { ...discussion, isResolved: true };
         }
         return discussion;
       });
-    editor.setOption(discussionPlugin, 'discussions', updatedDiscussions);
+    setDiscussions(updatedDiscussions);
   };
 
   const removeDiscussion = async (id: string) => {
-    const updatedDiscussions = editor
-      .getOption(discussionPlugin, 'discussions')
-      .filter((discussion) => discussion.id !== id);
-    editor.setOption(discussionPlugin, 'discussions', updatedDiscussions);
+    const updatedDiscussions = discussions.filter(
+      (discussion) => discussion.id !== id,
+    );
+    setDiscussions(updatedDiscussions);
   };
 
   const updateComment = async (input: {
@@ -104,9 +100,7 @@ export function Comment(props: {
     discussionId: string;
     isEdited: boolean;
   }) => {
-    const updatedDiscussions = editor
-      .getOption(discussionPlugin, 'discussions')
-      .map((discussion) => {
+    const updatedDiscussions = discussions.map((discussion) => {
         if (discussion.id === input.discussionId) {
           const updatedComments = discussion.comments.map((comment) => {
             if (comment.id === input.id) {
@@ -123,7 +117,7 @@ export function Comment(props: {
         }
         return discussion;
       });
-    editor.setOption(discussionPlugin, 'discussions', updatedDiscussions);
+    setDiscussions(updatedDiscussions);
   };
 
   const { tf } = useEditorPlugin(CommentPlugin);
@@ -312,6 +306,7 @@ function CommentMoreDropdown(props: {
   } = props;
 
   const editor = useEditorRef();
+  const { discussions, setDiscussions } = usePlatePlugins();
 
   const selectedEditCommentRef = React.useRef<boolean>(false);
 
@@ -321,9 +316,7 @@ function CommentMoreDropdown(props: {
       return alert('You are operating too quickly, please try again later.');
 
     // Find and update the discussion
-    const updatedDiscussions = editor
-      .getOption(discussionPlugin, 'discussions')
-      .map((discussion) => {
+    const updatedDiscussions = discussions.map((discussion) => {
         if (discussion.id !== comment.discussionId) {
           return discussion;
         }
@@ -344,10 +337,9 @@ function CommentMoreDropdown(props: {
         };
       });
 
-    // Save back to session storage
-    editor.setOption(discussionPlugin, 'discussions', updatedDiscussions);
+    setDiscussions(updatedDiscussions);
     onRemoveComment?.();
-  }, [comment.discussionId, comment.id, editor, onRemoveComment]);
+  }, [comment.discussionId, comment.id, discussions, onRemoveComment, setDiscussions]);
 
   const onEditComment = React.useCallback(() => {
     selectedEditCommentRef.current = true;
@@ -424,13 +416,16 @@ export function CommentCreateForm({
   discussionId?: string;
   focusOnMount?: boolean;
 }) {
-  const discussions = usePluginOption(discussionPlugin, 'discussions');
-
   const editor = useEditorRef();
   const commentId = useCommentId();
   const discussionId = discussionIdProp ?? commentId;
-
-  const userInfo = usePluginOption(discussionPlugin, 'currentUser');
+  const {
+    currentUser,
+    currentUserId,
+    discussions,
+    setDiscussions,
+  } = usePlatePlugins();
+  const userInfo = currentUser ?? undefined;
   const [commentValue, setCommentValue] = React.useState<Value | undefined>();
   const commentContent = React.useMemo(
     () =>
@@ -448,7 +443,7 @@ export function CommentCreateForm({
   }, [commentEditor, focusOnMount]);
 
   const onAddComment = React.useCallback(async () => {
-    if (!commentValue) return;
+    if (!commentValue || !currentUserId) return;
 
     commentEditor.tf.reset();
 
@@ -466,18 +461,15 @@ export function CommentCreateForm({
               createdAt: new Date(),
               discussionId,
               isEdited: false,
-              userId: editor.getOption(discussionPlugin, 'currentUserId'),
+              userId: currentUserId,
             },
           ],
           createdAt: new Date(),
           isResolved: false,
-          userId: editor.getOption(discussionPlugin, 'currentUserId'),
+          userId: currentUserId,
         };
 
-        editor.setOption(discussionPlugin, 'discussions', [
-          ...discussions,
-          newDiscussion,
-        ]);
+        setDiscussions([...discussions, newDiscussion]);
         return;
       }
 
@@ -488,7 +480,7 @@ export function CommentCreateForm({
         createdAt: new Date(),
         discussionId,
         isEdited: false,
-        userId: editor.getOption(discussionPlugin, 'currentUserId'),
+        userId: currentUserId,
       };
 
       // Add reply to discussion comments
@@ -502,7 +494,7 @@ export function CommentCreateForm({
         .filter((d) => d.id !== discussionId)
         .concat(updatedDiscussion);
 
-      editor.setOption(discussionPlugin, 'discussions', updatedDiscussions);
+      setDiscussions(updatedDiscussions);
 
       return;
     }
@@ -528,19 +520,16 @@ export function CommentCreateForm({
           createdAt: new Date(),
           discussionId: _discussionId,
           isEdited: false,
-          userId: editor.getOption(discussionPlugin, 'currentUserId'),
+          userId: currentUserId,
         },
       ],
       createdAt: new Date(),
       documentContent,
       isResolved: false,
-      userId: editor.getOption(discussionPlugin, 'currentUserId'),
+      userId: currentUserId,
     };
 
-    editor.setOption(discussionPlugin, 'discussions', [
-      ...discussions,
-      newDiscussion,
-    ]);
+    setDiscussions([...discussions, newDiscussion]);
 
     const id = newDiscussion.id;
 
@@ -553,7 +542,15 @@ export function CommentCreateForm({
       );
       editor.tf.unsetNodes([getDraftCommentKey()], { at: path });
     });
-  }, [commentValue, commentEditor.tf, discussionId, editor, discussions]);
+  }, [
+    commentValue,
+    commentEditor.tf,
+    currentUserId,
+    discussionId,
+    editor,
+    discussions,
+    setDiscussions,
+  ]);
 
   return (
     <div className={cn('flex w-full', className)}>
