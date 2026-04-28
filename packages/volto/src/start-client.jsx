@@ -4,7 +4,9 @@ import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
+import { RouterProvider } from 'react-aria-components';
 import { ConnectedRouter } from 'connected-react-router';
+import { useHistory } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
@@ -22,6 +24,20 @@ export const history = createBrowserHistory();
 
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
+}
+
+function ReactAriaRouterProvider({ children }) {
+  const history = useHistory();
+
+  const navigate = (to, options = {}) => {
+    if (options.replace) {
+      history.replace(to);
+    } else {
+      history.push(to);
+    }
+  };
+
+  return <RouterProvider navigate={navigate}>{children}</RouterProvider>;
 }
 
 export default function client() {
@@ -70,9 +86,11 @@ export default function client() {
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
             <ConnectedRouter history={history}>
-              <ScrollToTop>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </ScrollToTop>
+              <ReactAriaRouterProvider>
+                <ScrollToTop>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </ScrollToTop>
+              </ReactAriaRouterProvider>
             </ConnectedRouter>
           </IntlProvider>
         </Provider>
