@@ -46,5 +46,5 @@ Each block lives in its own folder at the package root (e.g., `Video/`, `Image/`
 
 ```sh
 pnpm --filter @plone/blocks test --run
-pnpm --filter @plone/blocks check-ts
+pnpm --filter @plone/blocks check:ts
 ```
