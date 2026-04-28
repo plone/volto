@@ -55,7 +55,7 @@ Hides an element visually while keeping it accessible to screen readers and othe
 
 ```{note}
 The `-volto` suffix is intentional.
-Generic names such as `.visually-hidden` or `.sr-only` are commonly defined by other frameworks and would conflict if both are loaded in the same project.
+Generic names such as `visually-hidden` or `sr-only` are commonly defined by other frameworks and would conflict if both are loaded in the same project.
 ```
 
 ```{versionadded} Volto 18
