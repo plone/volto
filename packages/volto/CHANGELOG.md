@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.31 (2026-04-28)
+
+### Feature
+
+- Add ReactAriaRouterProvider to enable client-side navigation support for React Aria Link components. @iFlameing 
+
+### Internal
+
+- DE translation for Search Site. @Tishasoumya-02 
+
+### Documentation
+
+- Added `{versionchanged}` directive documenting the removal of the `-volto` suffix from the `visually-hidden-volto` CSS class in Volto 19. @Wagner3UB [#8155](https://github.com/plone/volto/issues/8155)
+
 ## 19.0.0-alpha.30 (2026-04-27)
 
 ### Breaking
