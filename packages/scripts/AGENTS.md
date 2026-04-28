@@ -14,7 +14,6 @@ Key scripts:
 
 | Script | Purpose |
 |---|---|
-| `i18n` (via `@plone/scripts`) | Scans source for i18n messages and updates translation catalogues |
 | `preleaser.js` | Pre-release automation |
 | `finalreleasechangelog.py` | Changelog finalization |
 | `corepackagebump.js` | Bumps core package versions |
@@ -30,7 +29,6 @@ Templates for add-on scaffolding live in `templates/`.
 - Scripts here must work with Node.js directly — no transpilation step.
 - Keep scripts focused and single-purpose.
 - Do not add React or frontend UI code here.
-- The `i18n` command is the most widely used script; changes to it affect all consuming packages.
 
 ## Validation
 

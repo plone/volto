@@ -28,16 +28,10 @@ This file applies only to `packages/theming` and its subdirectories.
 - Changes to token names or values here are **breaking changes** — update all consuming packages accordingly.
 - Do not add JavaScript or TypeScript code to this package unless absolutely necessary; keep it CSS-first.
 - When adding a new token, add it to the appropriate CSS file and ensure it is available in the Tailwind layer if applicable.
-- This package has Storybook. Use it to preview theming changes in context.
 
 ## Validation
 
 This package has no dedicated test script.
-Use Storybook to verify visual output:
-
-```sh
-pnpm --filter @plone/theming storybook
-```
 
 For repo-wide CSS linting:
 

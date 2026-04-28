@@ -19,15 +19,15 @@ The package manager is **pnpm**. Do not use `npm` or `yarn`.
 Every package except `volto` and `volto-slate` belongs to the **Seven** stack, an API-first, React-based frontend for Plone 7.
 Seven is composed of focused packages that are assembled into `apps/seven`:
 
-| Layer                      | Packages                                                                      |
-| -------------------------- | ----------------------------------------------------------------------------- |
-| App shell                  | `apps/seven`                                                                  |
-| Public UI (visitor-facing) | `@plone/publicui`, `@plone/layout`, `@plone/blocks`                           |
-| CMS UI (editor-facing)     | `@plone/cmsui`, `@plone/contents`, `@plone/plate`                             |
-| Shared infrastructure      | `@plone/providers`, `@plone/client`, `@plone/registry`, `@plone/react-router` |
-| Utilities and types        | `@plone/helpers`, `@plone/types`                                              |
-| Theming                    | `@plone/theming`, `@plone/agave`, `@plone/components`                         |
-| Tooling                    | `@plone/tooling`, `@plone/scripts`, `tsconfig`                                |
+| Layer                      | Packages                                                                            |
+| -------------------------- | ----------------------------------------------------------------------------------- |
+| App shell                  | `apps/seven`                                                                        |
+| Public UI (visitor-facing) | `@plone/publicui`, `@plone/layout`, `@plone/blocks`                                 |
+| CMS UI (editor-facing)     | `@plone/cmsui`, `@plone/contents`, `@plone/plate`, `@plone/blocks`, `@plone/layout` |
+| Shared infrastructure      | `@plone/client`, `@plone/registry`, `@plone/react-router`                           |
+| Utilities and types        | `@plone/helpers`, `@plone/types`                                                    |
+| Theming                    | `@plone/theming`, `@plone/agave`, `@plone/components`                               |
+| Tooling                    | `@plone/tooling`, `@plone/scripts`, `tsconfig`                                      |
 
 ### Volto (Plone 6) — reference only
 

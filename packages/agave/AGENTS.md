@@ -21,16 +21,10 @@ This file applies only to `packages/agave` and its subdirectories.
 - Keep changes minimal and theme-local.
 - When restyling an element, check if `@plone/theming` already provides a token or utility for it before adding new CSS variables.
 - If TypeScript or React code ever becomes necessary, discuss it explicitly before adding it — the CSS-only constraint is intentional.
-- This package has Storybook configured. If you add visual changes, verify them in Storybook.
 
 ## Validation
 
 This package has no dedicated test or lint script.
-Use Storybook to verify visual output:
-
-```sh
-pnpm --filter @plone/agave storybook
-```
 
 For repo-wide CSS linting:
 

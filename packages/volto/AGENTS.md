@@ -19,7 +19,6 @@ This file applies only to `packages/volto` and its subdirectories.
 Volto uses a different toolchain from the Seven packages:
 
 - Build: Razzle (not Vite)
-- Test: Jest (not Vitest)
 - CSS: Less/Semantic UI (not Tailwind/CSS modules)
 
 These differences are intentional — Volto and Seven are separate stacks.
