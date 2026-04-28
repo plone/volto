@@ -45,7 +45,7 @@ This is true for one-element forms as well, such as the "Search" form on the fol
 Volto provides a set of utility CSS classes in the Pastanaga theme that can be applied directly in your markup.
 These classes use Volto-specific naming to avoid collisions with classes from third-party CSS frameworks such as Tailwind CSS, Semantic UI, or Bootstrap.
 
-### `.visually-hidden-volto`
+### `visually-hidden-volto`
 
 Hides an element visually while keeping it accessible to screen readers and other assistive technologies.
 
@@ -62,7 +62,6 @@ Generic names such as `visually-hidden` or `sr-only` are commonly defined by oth
 The suffix `-volto` was added in Volto 18.
 ```
 
-```{deprecated} Volto 18
 ```{versionchanged} Volto 19
 Although the suffix `-volto` is supported in Volto 18, it will be removed in Volto 19, resulting in the CSS class name of `visually-hidden` for the same functionality.
 ```

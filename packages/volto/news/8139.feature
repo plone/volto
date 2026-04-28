@@ -1,1 +1,1 @@
-Add `.visually-hidden-volto` accessibility CSS class for hiding elements visually while keeping them accessible to screen readers, using a Volto-specific name to avoid conflicts with third-party CSS frameworks. @Wagner3UB
+Add `visually-hidden-volto` accessibility CSS class for hiding elements visually while keeping them accessible to screen readers, using a Volto-specific name to avoid conflicts with third-party CSS frameworks. @Wagner3UB
