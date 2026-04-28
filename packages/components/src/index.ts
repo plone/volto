@@ -69,6 +69,12 @@ export { Toolbar } from './components/Toolbar/Toolbar';
 export { Tooltip } from './components/Tooltip/Tooltip';
 export { Tree, TreeItem, TreeItemContent } from './components/Tree/Tree';
 export { WidthWidget } from './components/WidthWidget/WidthWidget';
+export {
+  Accordion,
+  AccordionItem,
+  AccordionItemTrigger,
+  AccordionPanel,
+} from './components/Accordion/Accordion.quanta';
 
 // Quanta components
 export { QuantaTextField } from './components/quanta/TextField/TextField';
