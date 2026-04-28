@@ -1,7 +1,7 @@
 import { type Value, TrailingBlockPlugin } from 'platejs';
 import { type TPlateEditor, useEditorRef } from 'platejs/react';
 
-import { AIKit } from './plugins/ai-kit';
+// import { AIKit } from './plugins/ai-kit';
 import { AlignKit } from './plugins/align-kit';
 import { AutoformatKit } from './plugins/autoformat-kit';
 import { BasicBlocksKit } from './plugins/basic-blocks-kit';
@@ -34,7 +34,7 @@ import { ToggleKit } from './plugins/toggle-kit';
 import { SplitHotkeyPlugin } from './plugins/split-hotkey';
 
 export const BlockEditorKit = [
-  ...AIKit,
+  // ...AIKit,
   ...BlockMenuKit,
 
   // Elements

@@ -13,7 +13,7 @@ import { CodeBlockKit } from './plugins/code-block-kit';
 import { ColumnKit } from './plugins/column-kit';
 import { CommentKit } from './plugins/comment-kit';
 import { CursorOverlayKit } from './plugins/cursor-overlay-kit';
-import { DiscussionKit } from './plugins/discussion-kit';
+// import { DiscussionKit } from './plugins/discussion-kit';
 import { DndKit } from './plugins/dnd-kit';
 import { DocxKit } from './plugins/docx-kit';
 import { ExitBreakKit } from './plugins/exit-break-kit';
@@ -28,7 +28,7 @@ import { MediaKit } from './plugins/media-kit';
 import { MentionKit } from './plugins/mention-kit';
 import { BlockWidthKit } from './plugins/block-width-kit';
 import { SlashKit } from './plugins/slash-kit';
-import { SuggestionKit } from './plugins/suggestion-kit';
+// import { SuggestionKit } from './plugins/suggestion-kit';
 import { TableKit } from './plugins/table-kit';
 import { TocKit } from './plugins/toc-kit';
 import { ToggleKit } from './plugins/toggle-kit';
@@ -60,9 +60,9 @@ export const EditorKit = [
   ...BlockWidthKit,
 
   // Collaboration
-  ...DiscussionKit,
+  // ...DiscussionKit,
   ...CommentKit,
-  ...SuggestionKit,
+  // ...SuggestionKit,
 
   // Editing
   ...SlashKit,
