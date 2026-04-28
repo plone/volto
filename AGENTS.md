@@ -72,6 +72,9 @@ pnpm stylelint:fix
 
 # Run Playwright acceptance tests
 pnpm acceptance-test
+
+# Check typings
+pnpm check-ts
 ```
 
 ## General Conventions
