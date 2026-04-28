@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-import type {
-  TDiscussion,
-  TDiscussionUser,
-} from './plugins/discussion-kit';
+import type { TDiscussion, TDiscussionUser } from './plugins/discussion-kit';
 
 type PlatePluginsContextValue = {
   currentUser: TDiscussionUser | null;

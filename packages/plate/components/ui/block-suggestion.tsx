@@ -27,7 +27,10 @@ import { Button } from './button';
 import { cn } from '../../lib/utils';
 import { usePlatePlugins } from '../editor/plate-plugins-context';
 import { type TDiscussion } from '../editor/plugins/discussion-kit';
-import { SuggestionPlugin, suggestionPlugin } from '../editor/plugins/suggestion-kit';
+import {
+  SuggestionPlugin,
+  suggestionPlugin,
+} from '../editor/plugins/suggestion-kit';
 
 import {
   type TComment,

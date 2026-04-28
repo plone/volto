@@ -77,7 +77,11 @@ export function ModeToolbarButton(props: DropdownMenuProps) {
             }
 
             if (newValue === 'suggestion') {
-              editor.setOption(SuggestionPlugin, 'currentUserId', currentUserId);
+              editor.setOption(
+                SuggestionPlugin,
+                'currentUserId',
+                currentUserId,
+              );
               editor.setOption(SuggestionPlugin, 'isSuggesting', true);
 
               return;

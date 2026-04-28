@@ -2,7 +2,6 @@ import {
   createTSlatePlugin,
   ElementApi,
   getAt,
-  isDefined,
   KEYS,
   nanoid,
   PathApi,
@@ -34,8 +33,7 @@ const getInlineSuggestionData = (node: any) => {
 export const getSuggestionKey = (id = '0'): string =>
   `${KEYS.suggestion}_${id}`;
 
-const isSuggestionKey = (key: string) =>
-  key.startsWith(`${KEYS.suggestion}_`);
+const isSuggestionKey = (key: string) => key.startsWith(`${KEYS.suggestion}_`);
 
 const getSuggestionKeys = (node: any) => {
   const keys: string[] = [];
@@ -791,7 +789,10 @@ export const BaseSuggestionPlugin = createTSlatePlugin<any>({
               return !!node[getSuggestionKey(id)];
             }
 
-            if (ElementApi.isElement(node) && api.suggestion.isBlockSuggestion(node)) {
+            if (
+              ElementApi.isElement(node) &&
+              api.suggestion.isBlockSuggestion(node)
+            ) {
               return (node as any).suggestion.id === id;
             }
           }

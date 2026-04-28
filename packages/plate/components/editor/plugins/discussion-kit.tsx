@@ -21,9 +21,8 @@ export type TDiscussionUser = {
 
 export const discussionPlugin = createPlatePlugin({
   key: 'discussion',
-})
-  .configure({
-    render: { belowNodes: BlockDiscussion },
-  });
+}).configure({
+  render: { belowNodes: BlockDiscussion },
+});
 
 export const DiscussionKit = [discussionPlugin];

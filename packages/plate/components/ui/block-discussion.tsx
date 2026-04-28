@@ -31,10 +31,11 @@ import {
 } from './popover';
 import { usePlatePlugins } from '../editor/plate-plugins-context';
 import { commentPlugin } from '../editor/plugins/comment-kit';
+import { type TDiscussion } from '../editor/plugins/discussion-kit';
 import {
-  type TDiscussion,
-} from '../editor/plugins/discussion-kit';
-import { SuggestionPlugin, suggestionPlugin } from '../editor/plugins/suggestion-kit';
+  SuggestionPlugin,
+  suggestionPlugin,
+} from '../editor/plugins/suggestion-kit';
 
 import {
   BlockSuggestionCard,

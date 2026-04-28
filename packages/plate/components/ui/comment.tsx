@@ -72,18 +72,17 @@ export function Comment(props: {
     onEditorClick,
   } = props;
 
-  const editor = useEditorRef();
   const { discussions, setDiscussions, users, currentUserId } =
     usePlatePlugins();
   const userInfo = users[comment.userId];
 
   const resolveDiscussion = async (id: string) => {
     const updatedDiscussions = discussions.map((discussion) => {
-        if (discussion.id === id) {
-          return { ...discussion, isResolved: true };
-        }
-        return discussion;
-      });
+      if (discussion.id === id) {
+        return { ...discussion, isResolved: true };
+      }
+      return discussion;
+    });
     setDiscussions(updatedDiscussions);
   };
 
@@ -101,22 +100,22 @@ export function Comment(props: {
     isEdited: boolean;
   }) => {
     const updatedDiscussions = discussions.map((discussion) => {
-        if (discussion.id === input.discussionId) {
-          const updatedComments = discussion.comments.map((comment) => {
-            if (comment.id === input.id) {
-              return {
-                ...comment,
-                contentRich: input.contentRich,
-                isEdited: true,
-                updatedAt: new Date(),
-              };
-            }
-            return comment;
-          });
-          return { ...discussion, comments: updatedComments };
-        }
-        return discussion;
-      });
+      if (discussion.id === input.discussionId) {
+        const updatedComments = discussion.comments.map((comment) => {
+          if (comment.id === input.id) {
+            return {
+              ...comment,
+              contentRich: input.contentRich,
+              isEdited: true,
+              updatedAt: new Date(),
+            };
+          }
+          return comment;
+        });
+        return { ...discussion, comments: updatedComments };
+      }
+      return discussion;
+    });
     setDiscussions(updatedDiscussions);
   };
 
@@ -305,7 +304,6 @@ function CommentMoreDropdown(props: {
     onRemoveComment,
   } = props;
 
-  const editor = useEditorRef();
   const { discussions, setDiscussions } = usePlatePlugins();
 
   const selectedEditCommentRef = React.useRef<boolean>(false);
@@ -317,29 +315,35 @@ function CommentMoreDropdown(props: {
 
     // Find and update the discussion
     const updatedDiscussions = discussions.map((discussion) => {
-        if (discussion.id !== comment.discussionId) {
-          return discussion;
-        }
+      if (discussion.id !== comment.discussionId) {
+        return discussion;
+      }
 
-        const commentIndex = discussion.comments.findIndex(
-          (c) => c.id === comment.id,
-        );
-        if (commentIndex === -1) {
-          return discussion;
-        }
+      const commentIndex = discussion.comments.findIndex(
+        (c) => c.id === comment.id,
+      );
+      if (commentIndex === -1) {
+        return discussion;
+      }
 
-        return {
-          ...discussion,
-          comments: [
-            ...discussion.comments.slice(0, commentIndex),
-            ...discussion.comments.slice(commentIndex + 1),
-          ],
-        };
-      });
+      return {
+        ...discussion,
+        comments: [
+          ...discussion.comments.slice(0, commentIndex),
+          ...discussion.comments.slice(commentIndex + 1),
+        ],
+      };
+    });
 
     setDiscussions(updatedDiscussions);
     onRemoveComment?.();
-  }, [comment.discussionId, comment.id, discussions, onRemoveComment, setDiscussions]);
+  }, [
+    comment.discussionId,
+    comment.id,
+    discussions,
+    onRemoveComment,
+    setDiscussions,
+  ]);
 
   const onEditComment = React.useCallback(() => {
     selectedEditCommentRef.current = true;
@@ -419,12 +423,8 @@ export function CommentCreateForm({
   const editor = useEditorRef();
   const commentId = useCommentId();
   const discussionId = discussionIdProp ?? commentId;
-  const {
-    currentUser,
-    currentUserId,
-    discussions,
-    setDiscussions,
-  } = usePlatePlugins();
+  const { currentUser, currentUserId, discussions, setDiscussions } =
+    usePlatePlugins();
   const userInfo = currentUser ?? undefined;
   const [commentValue, setCommentValue] = React.useState<Value | undefined>();
   const commentContent = React.useMemo(
