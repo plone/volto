@@ -1,3 +1,0 @@
-[mcp_servers.react-aria]
-command = "npx"
-args = ["@react-aria/mcp@latest"]

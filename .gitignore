@@ -22,6 +22,7 @@ build
 
 # Other
 .vscode
+.codex
 /cache
 .yarn/
 .DS_Store
