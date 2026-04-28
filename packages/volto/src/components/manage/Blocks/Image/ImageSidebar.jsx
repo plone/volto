@@ -31,6 +31,7 @@ const ImageSidebar = (props) => {
         <Button.Group>
           <Button
             title={intl.formatMessage(messages.clear)}
+            type="button"
             basic
             disabled={!data.url}
             onClick={() => {

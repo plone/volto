@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`renders TextLineEdit renders an TextLineEdit as h1 1`] = `
+exports[`renders TextLineEdit > renders an TextLineEdit as h1 1`] = `
 <div
   aria-multiline="false"
   autoCapitalize="false"
@@ -27,7 +27,7 @@ exports[`renders TextLineEdit renders an TextLineEdit as h1 1`] = `
   role="textbox"
   spellCheck={false}
   style={
-    Object {
+    {
       "position": "relative",
       "whiteSpace": "pre-wrap",
       "wordWrap": "break-word",
@@ -57,7 +57,7 @@ exports[`renders TextLineEdit renders an TextLineEdit as h1 1`] = `
 </div>
 `;
 
-exports[`renders TextLineEdit renders an TextLineEdit as h2 1`] = `
+exports[`renders TextLineEdit > renders an TextLineEdit as h2 1`] = `
 <div
   aria-multiline="false"
   autoCapitalize="false"
@@ -84,7 +84,7 @@ exports[`renders TextLineEdit renders an TextLineEdit as h2 1`] = `
   role="textbox"
   spellCheck={false}
   style={
-    Object {
+    {
       "position": "relative",
       "whiteSpace": "pre-wrap",
       "wordWrap": "break-word",
@@ -114,7 +114,7 @@ exports[`renders TextLineEdit renders an TextLineEdit as h2 1`] = `
 </div>
 `;
 
-exports[`renders TextLineEdit renders an TextLineEdit as h2 with a classname 1`] = `
+exports[`renders TextLineEdit > renders an TextLineEdit as h2 with a classname 1`] = `
 <div
   aria-multiline="false"
   autoCapitalize="false"
@@ -141,7 +141,7 @@ exports[`renders TextLineEdit renders an TextLineEdit as h2 with a classname 1`]
   role="textbox"
   spellCheck={false}
   style={
-    Object {
+    {
       "position": "relative",
       "whiteSpace": "pre-wrap",
       "wordWrap": "break-word",

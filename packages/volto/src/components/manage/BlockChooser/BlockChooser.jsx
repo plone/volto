@@ -110,6 +110,7 @@ const BlockChooser = ({
         getFormatMessage(block.title)
           .toLowerCase()
           .includes(filterValue.toLowerCase()) ||
+        block.title.toLowerCase().includes(filterValue.toLowerCase()) ||
         filterVariations(block)?.length,
     );
   }
@@ -128,6 +129,7 @@ const BlockChooser = ({
     return (
       <Button.Group key={block.id}>
         <Button
+          type="button"
           icon
           basic
           className={block.id}

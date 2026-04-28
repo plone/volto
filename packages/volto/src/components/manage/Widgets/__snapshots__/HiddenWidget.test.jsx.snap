@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a hidden widget component 1`] = `
+<input
+  id="field-my-field"
+  name="my-field"
+  type="hidden"
+  value=""
+/>
+`;

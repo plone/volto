@@ -7,7 +7,7 @@ import ReactDOMServer from 'react-dom/server';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl, IntlProvider } from 'react-intl';
 
 import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
@@ -40,6 +40,7 @@ const HtmlSlateWidget = (props) => {
     onChange,
     value,
     focus,
+    fieldSet,
     className,
     block,
     placeholder,
@@ -60,7 +61,13 @@ const HtmlSlateWidget = (props) => {
       const mockStore = configureStore();
       const html = ReactDOMServer.renderToStaticMarkup(
         <Provider store={mockStore({ userSession: { token } })}>
-          <MemoryRouter>{serializeNodes(value || [])}</MemoryRouter>
+          <IntlProvider
+            locale={intl.locale}
+            messages={intl.messages}
+            defaultLocale={intl.defaultLocale ?? 'en'}
+          >
+            <MemoryRouter>{serializeNodes(value || [])}</MemoryRouter>
+          </IntlProvider>
         </Provider>,
       );
       // console.log('toHtml value', JSON.stringify(value));
@@ -72,7 +79,7 @@ const HtmlSlateWidget = (props) => {
         data: html,
       };
     },
-    [token],
+    [token, intl],
   );
 
   const fromHtml = React.useCallback(
@@ -117,7 +124,7 @@ const HtmlSlateWidget = (props) => {
       <div
         className="slate_wysiwyg_box"
         role="textbox"
-        tabIndex="-1"
+        tabIndex={-1}
         style={{ boxSizing: 'initial' }}
         onClick={handleClick}
         onKeyDown={() => {}}
@@ -128,6 +135,7 @@ const HtmlSlateWidget = (props) => {
             id={id}
             name={id}
             value={valueFromHtml}
+            fieldSet={fieldSet}
             onChange={handleChange}
             block={block}
             selected={selected}

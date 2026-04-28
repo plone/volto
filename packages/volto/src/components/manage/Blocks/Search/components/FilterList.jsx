@@ -53,6 +53,7 @@ const FilterList = (props) => {
           {intl.formatMessage(messages.currentFilters)}: {totalFilters}
         </div>
         <Button
+          type="button"
           icon
           basic
           compact

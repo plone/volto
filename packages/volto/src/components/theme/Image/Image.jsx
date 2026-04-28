@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { flattenToAppURL, flattenScales } from '@plone/volto/helpers/Url/Url';
+import { useSelector } from 'react-redux';
+import {
+  flattenToAppURL,
+  flattenScales,
+  addSubpathPrefix,
+} from '@plone/volto/helpers/Url/Url';
 
 /**
  * Image component
@@ -22,15 +27,18 @@ export default function Image({
   className = '',
   ...imageProps
 }) {
+  const site = useSelector((state) => state.site?.data);
+  const siteImageScales = site?.['plone.image_scales'] || {};
+
   if (!item && !src) return null;
 
   // TypeScript hints for editor autocomplete :)
   /** @type {React.ImgHTMLAttributes<HTMLImageElement>} */
   const attrs = {};
+  attrs.className = cx(className, { responsive }) || undefined;
 
   if (!item && src) {
-    attrs.src = src;
-    attrs.className = cx(className, { responsive });
+    attrs.src = addSubpathPrefix(src);
   } else {
     const isFromRealObject = !item.image_scales;
     const imageFieldWithDefault = imageField || item.image_field || 'image';
@@ -46,21 +54,27 @@ export default function Image({
 
     const isSvg = image['content-type'] === 'image/svg+xml';
     // In case `base_path` is present (`preview_image_link`) use it as base path
-    const basePath = image.base_path || item['@id'];
+    const basePath = addSubpathPrefix(
+      flattenToAppURL(image.base_path || item['@id']),
+    );
+    attrs.src = `${basePath}/${image.download}`;
 
-    attrs.src = `${flattenToAppURL(basePath)}/${image.download}`;
     attrs.width = image.width;
     attrs.height = image.height;
-    attrs.className = cx(className, { responsive });
 
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
       const sortedScales = Object.values({
         ...image.scales,
-        original: {
-          download: `${image.download}`,
-          width: image.width,
-          height: image.height,
-        },
+        ...(Object.keys(siteImageScales).length >
+        Object.keys(image.scales).length
+          ? {
+              original: {
+                download: `${image.download}`,
+                width: image.width,
+                height: image.height,
+              },
+            }
+          : {}),
       }).sort((a, b) => {
         if (a.width > b.width) return 1;
         else if (a.width < b.width) return -1;
@@ -68,10 +82,7 @@ export default function Image({
       });
 
       attrs.srcSet = sortedScales
-        .map(
-          (scale) =>
-            `${flattenToAppURL(basePath)}/${scale.download} ${scale.width}w`,
-        )
+        .map((scale) => `${basePath}/${scale.download} ${scale.width}w`)
         .join(', ');
     }
   }
