@@ -120,7 +120,7 @@
     "@storybook/addon-links": "^9.1.7",
     "@storybook/react-vite": "^9.1.7",
     "@tailwindcss/vite": "catalog:",
-    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.7",
     "@types/react": "catalog:",
@@ -130,7 +130,7 @@
     "browserslist": "^4.28.2",
     "eslint-plugin-storybook": "^9.1.7",
     "jest-axe": "^8.0.0",
-    "jsdom": "^22.1.0",
+    "jsdom": "^28.1.0",
     "lightningcss": "^1.29.0",
     "lightningcss-cli": "^1.29.1",
     "release-it": "catalog:",
@@ -139,8 +139,7 @@
     "tsconfig": "workspace:*",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vitest": "catalog:",
-    "vitest-axe": "^0.1.0"
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
