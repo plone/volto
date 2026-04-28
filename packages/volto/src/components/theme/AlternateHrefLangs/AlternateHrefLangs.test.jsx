@@ -36,6 +36,36 @@ describe('AlternateHrefLangs', () => {
     expect(helmetLinks.length).toBe(0);
   });
 
+  it('multilingual site, content without language field, renders nothing', () => {
+    config.settings.publicURL = 'https://plone.org';
+    config.settings.supportedLanguages = ['en', 'es'];
+
+    const content = {
+      '@id': 'http://localhost:8080/Plone/en/newsroom/news',
+      '@components': {
+        translations: {
+          items: [{ '@id': 'http://localhost:8080/Plone/es', language: 'es' }],
+        },
+      },
+    };
+
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+
+    renderer.create(
+      <Provider store={store}>
+        <AlternateHrefLangs content={content} />
+      </Provider>,
+    );
+
+    const helmetLinks = Helmet.peek().linkTags;
+    expect(helmetLinks.length).toBe(0);
+  });
+
   it('multilingual site, with some translations', () => {
     config.settings.publicURL = 'https://plone.org';
     config.settings.isMultilingual = true;

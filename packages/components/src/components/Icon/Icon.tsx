@@ -1,4 +1,4 @@
-import React, { type ReactElement } from 'react';
+import React, { type JSX, type ReactElement } from 'react';
 import type {
   AriaLabelingProps,
   DOMProps,
@@ -56,7 +56,7 @@ const iconStyleProps: StyleHandlers = {
 /**
  * Spectrum icons are clear, minimal, and consistent across platforms. They follow the focused and rational principles of the design system in both metaphor and style.
  */
-export function Icon(props: IconProps) {
+export function Icon(props: IconProps): JSX.Element {
   props = useSlotProps(props, 'icon');
   let {
     children,

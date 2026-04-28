@@ -310,6 +310,7 @@ const defaultModify = ({
     'load-volto-addons': addonsLoaderPath,
     ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
+    '@plone/volto-slate': `${registry.voltoPath}/../volto-slate/src`,
     // to be able to reference path uncustomized by webpack
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package
@@ -420,11 +421,26 @@ const defaultModify = ({
 const addonExtenders = registry.getAddonExtenders().map((m) => require(m));
 
 const defaultPlugins = [
-  { object: require('./webpack-plugins/webpack-less-plugin')({ registry }) },
-  { object: require('./webpack-plugins/webpack-svg-plugin') },
-  { object: require('./webpack-plugins/webpack-bundle-analyze-plugin') },
-  { object: require('./jest-extender-plugin') },
-  'scss',
+  {
+    name: 'less',
+    object: require('./webpack-plugins/webpack-less-plugin')({ registry }),
+  },
+  {
+    name: 'svg',
+    object: require('./webpack-plugins/webpack-svg-plugin'),
+  },
+  {
+    name: 'bundle-analyze',
+    object: require('./webpack-plugins/webpack-bundle-analyze-plugin'),
+  },
+  {
+    name: 'jest-extender',
+    object: require('./jest-extender-plugin'),
+  },
+  {
+    name: 'scss',
+    object: require('razzle-plugin-scss'),
+  },
 ];
 
 const plugins = addonExtenders.reduce(

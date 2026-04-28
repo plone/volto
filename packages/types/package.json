@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.5.0",
+  "version": "1.6.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "release-it": "^17.1.1",
+    "release-it": "19.0.6",
     "tsconfig": "workspace:*",
     "typescript": "^5.7.3"
   }

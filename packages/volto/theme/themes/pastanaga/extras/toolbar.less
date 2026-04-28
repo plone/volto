@@ -129,10 +129,6 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
 
     .toolbar-handler {
-      .toolbar-handler-button {
-        opacity: 0.3;
-      }
-
       // State colors
       .published:before {
         background: @teal-blue;
@@ -252,6 +248,18 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
         cursor: pointer;
         transition: opacity 0.3s;
 
+        .visually-hidden {
+          position: absolute !important;
+          overflow: hidden !important;
+          width: 1px !important;
+          height: 1px !important;
+          padding: 0 !important;
+          border: 0 !important;
+          margin: -1px !important;
+          clip: rect(0 0 0 0) !important;
+          white-space: nowrap !important;
+        }
+
         &::before {
           position: relative;
           display: block;
@@ -259,6 +267,15 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
           height: 4px;
           background-color: red;
           content: '';
+          opacity: 0.65;
+        }
+
+        &:hover,
+        &:focus {
+          &::before {
+            opacity: 1;
+            transition: opacity 0.3s;
+          }
         }
       }
     }
@@ -714,7 +731,7 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
     }
 
     .compare-languages {
-      @media (max-width: @largestMobileScreen - 1) {
+      @media (max-width: calc(@largestMobileScreen - 1px)) {
         position: fixed;
         top: 101px;
         left: 0;

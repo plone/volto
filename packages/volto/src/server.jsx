@@ -8,7 +8,6 @@ import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
 import { parse as parseUrl } from 'url';
-import keys from 'lodash/keys';
 import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
@@ -33,12 +32,8 @@ import {
 import { changeLanguage } from '@plone/volto/actions/language/language';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
-
-import ErrorPage from '@plone/volto/error';
-
-import languages from '@plone/volto/constants/Languages.cjs';
-
 import configureStore from '@plone/volto/store';
+import ErrorPage from '@plone/volto/error';
 import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
 
 let locales = {};
@@ -46,11 +41,15 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
-    import(
-      /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-    ).then((locale) => {
-      locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
-    });
+    import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+      .then((locale) => {
+        locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
+      })
+      .catch(() => {
+        debug('i18n')(
+          `Locale file for ${lang} not found, using empty messages.`,
+        );
+      });
   });
 }
 
@@ -58,7 +57,10 @@ function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
-const supported = new locale.Locales(keys(languages), 'en');
+const supported = new locale.Locales(
+  config.settings.supportedLanguages,
+  config.settings.defaultLanguage,
+);
 
 const server = express()
   .disable('x-powered-by')
