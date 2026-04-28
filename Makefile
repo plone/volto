@@ -161,9 +161,6 @@ packages/components/dist: $(shell find packages/components/src -type f)
 packages/client/dist: $(shell find packages/client/src -type f)
 	pnpm build:client
 
-# packages/providers/dist: $(shell find packages/providers/src -type f)
-# 	pnpm build:providers
-
 packages/helpers/dist: $(shell find packages/helpers/src -type f)
 	pnpm build:helpers
 

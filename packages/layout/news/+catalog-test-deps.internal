@@ -1,0 +1,1 @@
+Switched Layout's local `@testing-library/jest-dom` dev dependency to the shared catalog entry to keep test tooling consistent with the monorepo dependency refresh.

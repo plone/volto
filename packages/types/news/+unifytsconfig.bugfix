@@ -1,0 +1,1 @@
+Fixed published TypeScript declarations for block config keys, React 19 compatibility, and shared module typings used across the monorepo.

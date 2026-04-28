@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { data, isRouteErrorResponse } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';

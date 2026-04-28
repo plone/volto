@@ -22,7 +22,7 @@ export const splitEditorAtCursor = (editor: PlateEditor) => {
     editor.tf.removeNodes({
       match: (node) => (node as any)?.type === slashType,
     });
-    editor.tf.deleteBackward({ unit: 'character' });
+    editor.tf.deleteBackward('character' as any);
   });
 
   const block = editor.api.block();

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`renders edit blocks renders an edit description block component 1`] = `
+exports[`renders edit blocks > renders an edit description block component 1`] = `
 <div
   aria-multiline="false"
   autoCapitalize="false"
@@ -27,7 +27,7 @@ exports[`renders edit blocks renders an edit description block component 1`] = `
   role="textbox"
   spellCheck={false}
   style={
-    Object {
+    {
       "position": "relative",
       "whiteSpace": "pre-wrap",
       "wordWrap": "break-word",

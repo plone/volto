@@ -1,4 +1,5 @@
 import React from 'react';
+import type { BlockConfigBase } from '@plone/types';
 import { LinkIcon } from '@plone/components/Icons';
 import { TeaserSchema } from './schema';
 
@@ -14,6 +15,6 @@ const TeaserBlockInfo = {
   category: 'teaser',
   blockSchema: TeaserSchema,
   icon: LinkIcon,
-};
+} satisfies Partial<BlockConfigBase>;
 
 export default TeaserBlockInfo;

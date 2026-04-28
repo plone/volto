@@ -1,0 +1,1 @@
+Switched Plate's local `@testing-library/jest-dom` dev dependency to the shared catalog entry during the monorepo dependency cleanup.

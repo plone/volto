@@ -1,4 +1,5 @@
 import React from 'react';
+import type { BlockConfigBase } from '@plone/types';
 
 const ListingBlockInfo = {
   id: 'listing',
@@ -7,6 +8,6 @@ const ListingBlockInfo = {
     () => import(/* webpackChunkName: "plone-blocks" */ './ListingBlockView'),
   ),
   category: 'common',
-};
+} satisfies Partial<BlockConfigBase>;
 
 export default ListingBlockInfo;

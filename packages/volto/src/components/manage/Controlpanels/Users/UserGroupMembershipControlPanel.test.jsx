@@ -7,11 +7,16 @@ import { MemoryRouter } from 'react-router-dom';
 import UserGroupMembershipControlPanel from './UserGroupMembershipControlPanel';
 
 const mockStore = configureStore();
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('UserGroupMembershipControlPanel', () => {
   it('renders a user group membership control component', () => {
     const store = mockStore({
+      userSession: {
+        token: '1234',
+      },
       controlpanels: {
         controlpanel: {
           data: {

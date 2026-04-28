@@ -163,16 +163,19 @@ describe('ImageWidget', () => {
     }
     vi.stubGlobal('FileReader', MockFileReader);
 
-    mockFetcher = {
-      state: 'submitting',
-      data: undefined,
-      submit: vi.fn(),
-    };
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: vi.fn().mockResolvedValue({
+        data: {
+          '@id': '/uploaded-image',
+          title: 'Uploaded image',
+        },
+      }),
+    });
+    vi.stubGlobal('fetch', fetchMock);
 
     const onChange = vi.fn();
-    const { rerender } = render(
-      <ImageWidget onChange={onChange} hideObjectBrowserPicker />,
-    );
+    render(<ImageWidget onChange={onChange} hideObjectBrowserPicker />);
 
     const fileInput = document.querySelector(
       'input[type="file"]',
@@ -183,22 +186,9 @@ describe('ImageWidget', () => {
     fireEvent.change(fileInput, { target: { files: [file] } });
 
     await waitFor(() => {
-      expect(mockFetcher.submit).toHaveBeenCalled();
+      expect(fetchMock).toHaveBeenCalled();
     });
     expect(screen.queryByText('Image upload failed')).not.toBeInTheDocument();
-
-    mockFetcher = {
-      ...mockFetcher,
-      state: 'idle',
-      data: {
-        data: {
-          '@id': '/uploaded-image',
-          title: 'Uploaded image',
-        },
-      },
-    };
-
-    rerender(<ImageWidget onChange={onChange} hideObjectBrowserPicker />);
 
     await waitFor(() => {
       expect(onChange).toHaveBeenCalledWith('/uploaded-image', {

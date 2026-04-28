@@ -38,11 +38,15 @@
   ],
   "scripts": {
     "test": "vitest",
-    "check-ts": "tsc --project tsconfig.json",
+    "check:ts": "pnpm --filter seven run typegen && tsc --project tsconfig.json",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha"
+    "release-alpha": "release-it --preRelease=alpha",
+    "prettier:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint --max-warnings=0 './**/*.{js,jsx,ts,tsx}' --fix --no-error-on-unmatched-pattern",
+    "stylelint:fix": "sh -c 'if [ -f .stylelintrc ] || [ -f .stylelintrc.json ] || [ -f .stylelintrc.js ] || [ -f .stylelintrc.cjs ] || [ -f stylelint.config.js ] || [ -f stylelint.config.cjs ] || [ -f stylelint.config.mjs ]; then stylelint '''./**/*.{css,scss,less}''' --fix --allow-empty-input; else echo \"No local stylelint config, skipping\"; fi'",
+    "format": "pnpm prettier:fix && pnpm lint:fix && pnpm stylelint:fix"
   },
   "peerDependencies": {
     "react": "^19.1.0",
@@ -68,7 +72,7 @@
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
-    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.7",
     "@types/node": "catalog:",

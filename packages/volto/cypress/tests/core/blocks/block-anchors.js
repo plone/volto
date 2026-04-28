@@ -1,6 +1,7 @@
 import { slateBeforeEach } from '../../../support/volto-slate';
 
 describe('Block Tests: Anchors', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(slateBeforeEach);
 
   it('Add Block: add content to TOC', () => {
@@ -46,9 +47,13 @@ describe('Block Tests: Anchors', () => {
     cy.contains('Slate Heading Anchors');
     cy.get('h2[id="title-1"]').contains('Title 1');
     cy.get('h2[id="title-2"]').contains('Title 2');
-    cy.get('.table-of-contents a[href="/my-page#title-1"]').click();
+    cy.get(
+      `.table-of-contents a[href="${subpathPrefix}/my-page#title-1"]`,
+    ).click();
     cy.get('h2[id="title-1"]').scrollIntoView().should('be.visible');
-    cy.get('.table-of-contents a[href="/my-page#title-2"]').click();
+    cy.get(
+      `.table-of-contents a[href="${subpathPrefix}/my-page#title-2"]`,
+    ).click();
     cy.get('h2[id="title-2"]').scrollIntoView().should('be.visible');
   });
 
@@ -100,9 +105,13 @@ describe('Block Tests: Anchors', () => {
     cy.contains('Slate Heading Anchors');
     cy.get('h2[id="title-1"]').contains('Title 1');
     cy.get('h2[id="title-2-u-a"]').contains('Title 2 ü à');
-    cy.get('.table-of-contents a[href="/my-page#title-1"]').click();
+    cy.get(
+      `.table-of-contents a[href="${subpathPrefix}/my-page#title-1"]`,
+    ).click();
     cy.get('h2[id="title-1"]').scrollIntoView().should('be.visible');
-    cy.get('.table-of-contents a[href="/my-page#title-2-u-a"]').click();
+    cy.get(
+      `.table-of-contents a[href="${subpathPrefix}/my-page#title-2-u-a"]`,
+    ).click();
     cy.get('h2[id="title-2-u-a"]').scrollIntoView().should('be.visible');
   });
 });

@@ -1,5 +1,5 @@
 import { ElementApi, KEYS, createSlatePlugin } from 'platejs';
-import type { Path, SlateEditor, Value } from 'platejs';
+import type { NodeEntry, Path, SlateEditor, Value } from 'platejs';
 import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
 
 export type LegacyLinkData = {
@@ -52,28 +52,32 @@ export const migrateLegacyLinksInValueStatic = (
     if (!ElementApi.isElement(node)) {
       return;
     }
+    const element = node as LegacyLinkElement;
 
     const legacyUrl =
-      typeof node?.data?.url === 'string' ? node.data.url : undefined;
+      typeof element.data?.url === 'string' ? element.data.url : undefined;
     if (typeof legacyUrl === 'string') {
-      node.type = linkType;
-      node.url = legacyUrl;
-      if (node?.data?.target) {
-        node.target = node.data.target;
+      element.type = linkType;
+      element.url = legacyUrl;
+      if (element.data?.target) {
+        element.target = element.data.target;
       }
-      delete node.data;
-    } else if (node.type === linkType && typeof node?.data?.url === 'string') {
-      node.url = node.data.url;
-      if (node?.data?.target) {
-        node.target = node.data.target;
+      delete element.data;
+    } else if (
+      element.type === linkType &&
+      typeof element.data?.url === 'string'
+    ) {
+      element.url = element.data.url;
+      if (element.data?.target) {
+        element.target = element.data.target;
       }
-      delete node.data;
-    } else if (node.type === 'link') {
-      node.type = linkType;
+      delete element.data;
+    } else if (element.type === 'link') {
+      element.type = linkType;
     }
 
-    if (Array.isArray(node.children)) {
-      node.children.forEach(visit);
+    if (Array.isArray(element.children)) {
+      element.children.forEach(visit);
     }
   };
 
@@ -93,31 +97,32 @@ export const migrateLegacyLinksInValue = (
     if (!ElementApi.isElement(node)) {
       return;
     }
+    const element = node as LegacyLinkElement;
 
     const legacyUrl =
-      typeof node?.data?.url === 'string' ? node.data.url : undefined;
+      typeof element.data?.url === 'string' ? element.data.url : undefined;
     if (typeof legacyUrl === 'string') {
-      node.type = plateLinkType;
-      node.url = legacyUrl;
-      if (node?.data?.target) {
-        node.target = node.data.target;
+      element.type = plateLinkType;
+      element.url = legacyUrl;
+      if (element.data?.target) {
+        element.target = element.data.target;
       }
-      delete node.data;
+      delete element.data;
     } else if (
-      node.type === plateLinkType &&
-      typeof node?.data?.url === 'string'
+      element.type === plateLinkType &&
+      typeof element.data?.url === 'string'
     ) {
-      node.url = node.data.url;
-      if (node?.data?.target) {
-        node.target = node.data.target;
+      element.url = element.data.url;
+      if (element.data?.target) {
+        element.target = element.data.target;
       }
-      delete node.data;
-    } else if (node.type === 'link') {
-      node.type = plateLinkType;
+      delete element.data;
+    } else if (element.type === 'link') {
+      element.type = plateLinkType;
     }
 
-    if (Array.isArray(node.children)) {
-      node.children.forEach(visit);
+    if (Array.isArray(element.children)) {
+      element.children.forEach(visit);
     }
   };
 
@@ -145,7 +150,7 @@ export const LegacyLinkPlugin = [
     extendEditor: ({ editor }) => {
       const { normalizeNode } = editor;
 
-      editor.normalizeNode = (entry) => {
+      editor.normalizeNode = (entry: NodeEntry) => {
         const [node, path] = entry;
 
         if (ElementApi.isElement(node)) {
@@ -173,7 +178,7 @@ export const LegacyLinkPlugin = [
           }
         }
 
-        normalizeNode(entry);
+        (normalizeNode as (entry: NodeEntry) => void)(entry);
       };
 
       return editor;

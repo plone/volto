@@ -38,6 +38,23 @@ export const safeWrapper = (func) => (config) => {
 };
 
 /**
+ * Extract a readable error message from several possible error shapes
+ * @param {object} error
+ * @returns {string} message
+ */
+export const getErrorMessage = (error) => {
+  const respBody = error?.response?.body;
+  if (respBody?.error?.message) return respBody.error.message;
+  if (respBody?.message) return respBody.message;
+  if (error?.message) return error.message;
+  try {
+    return JSON.stringify(error);
+  } catch (e) {
+    return String(error);
+  }
+};
+
+/**
  * A helper to pipe a configuration object through configuration loaders
  *
  * @param {Array} configMethods A list of configuration methods
@@ -301,13 +318,25 @@ export function normalizeString(str) {
 /**
  * Slugify a string: remove whitespaces, special chars and replace with _
  * @param {string} string String to be slugified
+ * @param {Array} slugs Array with slugs already taken
  * @returns {string} Slugified string
  */
-export const slugify = (string) => {
-  return string
+export const slugify = (string, slugs = []) => {
+  let slug = string
     .toLowerCase()
     .replace(/[\s-]+/g, '_')
     .replace(/[^\w]+/g, '');
+  let i = 1;
+
+  if (slugs.includes(slug)) {
+    while (slugs.includes(`${slug}_${i}`)) {
+      i++;
+    }
+
+    slug = `${slug}_${i}`;
+  }
+
+  return slug;
 };
 
 /**

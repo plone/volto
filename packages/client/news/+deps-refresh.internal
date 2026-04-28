@@ -1,0 +1,1 @@
+Refreshed Client's local runtime and test dependency versions, including `axios`, `uuid`, `jsdom`, and `wait-on`, to match the current monorepo dependency baseline.

@@ -29,6 +29,7 @@ export const ButtonComponent = (props) => {
 
   return (
     <Button
+      type="button"
       icon
       basic
       title={intl.formatMessage(messages.addBlock)}

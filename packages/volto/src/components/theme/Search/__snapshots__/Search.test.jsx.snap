@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Search renders a search component 1`] = `
+exports[`Search > renders a search component 1`] = `
 <div>
   <div
     class="ui container"
@@ -81,7 +81,7 @@ exports[`Search renders a search component 1`] = `
 </div>
 `;
 
-exports[`Search renders an empty search component 1`] = `
+exports[`Search > renders an empty search component 1`] = `
 <div>
   <div
     class="ui container"
