@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-03-21 19:09+0000\n"
-"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language: es\n"
+"PO-Revision-Date: 2026-04-28 16:09+0000\n"
+"Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
+"Language: es\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -379,7 +379,7 @@ msgstr "Ruta de url alternativa (obligatorio)"
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr "La url alternativa debe comenzar con un carácter especial '/'."
+msgstr "La url alternativa debe comenzar con un carácter /."
 
 #. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
@@ -2196,7 +2196,7 @@ msgstr "Inicio de sesión"
 #. Default: "Logged out"
 #: components/theme/Logout/Logout
 msgid "Logged out"
-msgstr "Salir"
+msgstr "Ha salido del sistema"
 
 #. Default: "Login"
 #: components/theme/Login/Login
