@@ -33,7 +33,7 @@ This file applies only to `packages/cmsui` and its subdirectories.
 
 ```sh
 pnpm --filter @plone/cmsui test --run
-pnpm --filter @plone/cmsui check-ts
+pnpm --filter @plone/cmsui check:ts
 ```
 
 For Storybook:

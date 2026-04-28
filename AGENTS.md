@@ -42,7 +42,7 @@ Always scope your commands to the package you are working in using pnpm's `--fil
 ```sh
 pnpm --filter @plone/<package> test --run
 pnpm --filter @plone/<package> build
-pnpm --filter @plone/<package> check-ts
+pnpm --filter @plone/<package> check:ts
 ```
 
 Each package has its own `AGENTS.md` describing its purpose, architecture, and the exact validation commands to run.
@@ -74,7 +74,7 @@ pnpm stylelint:fix
 pnpm acceptance-test
 
 # Check typings
-pnpm check-ts
+pnpm check:ts
 ```
 
 ## General Conventions

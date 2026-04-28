@@ -26,11 +26,11 @@ This file applies only to `packages/tsconfig` and its subdirectories.
 Type-check all packages from the repo root:
 
 ```sh
-pnpm --filter @plone/* run check-ts --if-present
+pnpm --filter @plone/* run check:ts --if-present
 ```
 
 Or validate a specific package after changing a config:
 
 ```sh
-pnpm --filter @plone/<package> check-ts
+pnpm --filter @plone/<package> check:ts
 ```
