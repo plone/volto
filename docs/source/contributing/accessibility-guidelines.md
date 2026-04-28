@@ -63,5 +63,6 @@ The suffix `-volto` was added in Volto 18.
 ```
 
 ```{deprecated} Volto 18
-Although the suffix `-volto` is supported in Volto 18, it will be removed in Volto 19, and is therefore deprecated.
+```{versionchanged} Volto 19
+Although the suffix `-volto` is supported in Volto 18, it will be removed in Volto 19, resulting in the CSS class name of `visually-hidden` for the same functionality.
 ```
