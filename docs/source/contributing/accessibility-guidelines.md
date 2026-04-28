@@ -45,6 +45,6 @@ This is true for one-element forms as well, such as the "Search" form on the fol
 Sometimes extra information needs to be provided to users who are not able to see the screen.
 The `.visually-hidden` class can be used to wrap elements which need to be exposed to assistive technologies, such as screen readers, without them being visible.
 
-```{versionremoved} Volto 19
-The suffix `-volto` was removed in Volto 19.
+```{versionchanged} Volto 19
+This CSS class was previously named `visually-hidden-volto`.
 ```
