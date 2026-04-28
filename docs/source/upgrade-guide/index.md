@@ -194,7 +194,8 @@ index c469fe9..c39a324 100644
 
 A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
 
-```{versionremoved} Volto 19
+```{versionchanged} Volto 19
+This CSS class was previously named `visually-hidden-volto`.
 The suffix `-volto` was removed in Volto 19.
 ```
 
