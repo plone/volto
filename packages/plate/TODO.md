@@ -138,6 +138,135 @@ That adapter:
 - injects them into `@plone/plate`
 - persists updated discussions back into the somersault block
 
+## How Hydration Is Wired In The Editor Instances
+
+The host app is responsible for hydrating Plate with persisted discussion data before rendering the editor instance.
+
+In `volto-plate`, that happens separately for edit mode and view mode.
+
+### Edit mode
+
+Relevant file:
+
+- [../packages/volto-plate/src/components/PlateEditorForm/PlateEditorForm.tsx](../packages/volto-plate/src/components/PlateEditorForm/PlateEditorForm.tsx)
+
+Flow:
+
+1. Read the persisted somersault block from content.
+2. Normalize `discussions` with `normalizeDiscussions(...)`.
+3. Normalize `users` with `normalizeUsers(...)`.
+4. Wrap `PlateEditor` with the app-side `PlatePluginsProvider`.
+5. Pass `initialDiscussions` and `initialUsers` into that provider.
+6. On discussion changes, serialize them back with `serializeDiscussions(...)`.
+7. Persist the updated value and serialized discussions back into the somersault block through `onChangeFormData(...)`.
+
+This means the editor instance is hydrated before the Plate UI mounts, and all comment/suggestion UI reads from already-normalized app state.
+
+### View mode
+
+Relevant file:
+
+- [../packages/volto-plate/src/components/PlateEditorRenderer/PlateEditorRenderer.tsx](../packages/volto-plate/src/components/PlateEditorRenderer/PlateEditorRenderer.tsx)
+
+Flow:
+
+1. Read persisted `discussions` and `users` from the somersault block.
+2. Normalize both payloads.
+3. Wrap `PlateRenderer` with `PlatePluginsProvider`.
+4. Pass the normalized state into the provider.
+
+That is enough for persisted suggestions/comments to render correctly in view mode, because the renderer-side UI resolves authors and discussion threads from the same shared context contract.
+
+### Why this matters
+
+`@plone/plate` itself does not know where persisted comments/suggestions live.
+
+Hydration is therefore a host-app concern:
+
+- storage format is app-specific
+- user/session source is app-specific
+- persistence callbacks are app-specific
+
+The package only assumes that, by the time `PlateEditor` or `PlateRenderer` renders, the app has already transformed its stored data into the `PlatePluginsProvider` shape.
+
+### Minimal host-app example
+
+Pseudocode:
+
+```tsx
+import {
+  PlatePluginsProvider,
+} from '@plone/plate/components/editor/plate-plugins-context';
+import { PlateEditor, PlateRenderer } from '@plone/plate/components/editor';
+
+function AppPlateEditor({
+  currentUser,
+  persistedDiscussions,
+  persistedUsers,
+  value,
+  onChange,
+}) {
+  const [discussions, setDiscussions] = React.useState(
+    normalizeDiscussions(persistedDiscussions),
+  );
+  const [users, setUsers] = React.useState(normalizeUsers(persistedUsers));
+
+  const contextValue = React.useMemo(
+    () => ({
+      currentUser,
+      currentUserId: currentUser?.id ?? null,
+      discussions,
+      setDiscussions,
+      setUsers,
+      users,
+    }),
+    [currentUser, discussions, users],
+  );
+
+  return (
+    <PlatePluginsProvider value={contextValue}>
+      <PlateEditor
+        value={value}
+        onChange={({ value: nextValue }) => {
+          onChange({
+            value: nextValue,
+            discussions: serializeDiscussions(discussions),
+          });
+        }}
+      />
+    </PlatePluginsProvider>
+  );
+}
+
+function AppPlateRenderer({
+  currentUser,
+  persistedDiscussions,
+  persistedUsers,
+  value,
+}) {
+  const contextValue = {
+    currentUser,
+    currentUserId: currentUser?.id ?? null,
+    discussions: normalizeDiscussions(persistedDiscussions),
+    setDiscussions: () => {},
+    setUsers: () => {},
+    users: normalizeUsers(persistedUsers),
+  };
+
+  return (
+    <PlatePluginsProvider value={contextValue}>
+      <PlateRenderer value={value} />
+    </PlatePluginsProvider>
+  );
+}
+```
+
+Important details:
+
+- In edit mode, `setDiscussions` must update app-owned state so comment/suggestion changes persist.
+- In view mode, the setters can be inert because the renderer only needs read access.
+- If the host app supports suggestion creation, it must expose a valid `currentUserId`.
+
 ## What Seven Needs
 
 If Seven wants to consume comments/suggestions in the same way, it should provide the same provider contract around the Plate editor:
