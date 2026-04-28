@@ -1,5 +1,7 @@
-export default function MaybeWrap({ condition, as: Component, ...props }: {
-    [x: string]: any;
-    condition: any;
-    as?: string;
-}): any;
+import React, { ComponentPropsWithoutRef } from 'react';
+type MaybeWrapProps<T extends React.ElementType> = {
+    condition: boolean;
+    as: T;
+} & ComponentPropsWithoutRef<React.ElementType extends T ? 'div' : T>;
+declare function MaybeWrap<T extends React.ElementType = 'div'>(props: MaybeWrapProps<T>): any;
+export default MaybeWrap;

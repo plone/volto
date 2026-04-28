@@ -45,6 +45,7 @@ import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRe
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
 import RouteAnnouncer from '@plone/volto/components/theme/RouteAnnouncer/RouteAnnouncer';
+import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
 
 /**
  * @export
@@ -159,6 +160,7 @@ export class App extends Component {
             'public-ui': !isCmsUI,
           })}
         />
+        <SlotRenderer name="aboveApp" content={this.props.content} />
         <SkipLinks />
         <Header pathname={path} />
         <Breadcrumbs pathname={path} />
@@ -174,7 +176,9 @@ export class App extends Component {
             <main ref={this.mainRef}>
               <OutdatedBrowser />
               {this.props.connectionRefused ? (
-                <ConnectionRefusedView />
+                <ConnectionRefusedView
+                  staticContext={this.props.staticContext}
+                />
               ) : this.state.hasError ? (
                 <Error
                   message={this.state.error.message}
@@ -235,7 +239,9 @@ export const fetchContent = async ({ store, location }) => {
 
   const visitor = ([id, data]) => {
     const blockType = data['@type'];
-    const { getAsyncData } = blocksConfig[blockType];
+    const block = blocksConfig[blockType];
+    if (!block) return;
+    const { getAsyncData } = block;
     if (getAsyncData) {
       const p = getAsyncData({
         store,

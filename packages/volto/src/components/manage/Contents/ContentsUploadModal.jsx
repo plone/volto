@@ -6,7 +6,6 @@ import {
   Dimmer,
   Header,
   Icon,
-  Image,
   Modal,
   Table,
   Segment,
@@ -24,6 +23,7 @@ import FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/F
 import { createContent } from '@plone/volto/actions/content/content';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const Dropzone = loadable(() => import('react-dropzone'));
 
@@ -259,7 +259,11 @@ const ContentsUploadModal = (props) => {
                     <Table.Cell>{filesize(file.size, { round: 0 })}</Table.Cell>
                     <Table.Cell>
                       {file.type.split('/')[0] === 'image' && (
-                        <Image src={file.preview} height={60} />
+                        <Image
+                          src={file.preview}
+                          height={60}
+                          className="ui image"
+                        />
                       )}
                     </Table.Cell>
                     <Table.Cell>

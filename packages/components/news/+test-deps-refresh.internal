@@ -1,0 +1,1 @@
+Aligned Components' local test dependency setup with the monorepo refresh by moving `@testing-library/jest-dom` and `jsdom` to the current shared baseline and dropping the unused `vitest-axe` dev dependency.
