@@ -1,5 +1,5 @@
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -11,6 +11,24 @@ const Unauthorized = () => {
   const error_message = useSelector((state) => state.apierror?.message);
   let location = useLocation();
 
+  if (!token) {
+    return (
+      <Redirect
+        to={{
+          pathname: `${location.pathname.replace(/\/$/, '')}/login`,
+          search: `?return_url=${encodeURIComponent(location.pathname)}`,
+          state: {
+            // This is needed to cover the use case of being logged in in
+            // another backend (eg. in development), having a token for
+            // localhost and try to use it, the login route has to know that
+            // it's the same as it comes from a logout
+            isLogout: true,
+          },
+        }}
+      />
+    );
+  }
+
   return (
     <Container className="view-wrapper">
       <BodyClass className="view-unauthorized" />
@@ -19,35 +37,10 @@ const Unauthorized = () => {
       </h1>
       <h3>{error_message}</h3>
       <p className="description">
-        {token ? (
-          <FormattedMessage
-            id="You are trying to access a protected resource."
-            defaultMessage="You are trying to access a protected resource."
-          />
-        ) : (
-          <FormattedMessage
-            id="You are trying to access a protected resource, please {login} first."
-            defaultMessage="You are trying to access a protected resource, please {login} first."
-            values={{
-              login: (
-                <Link
-                  to={{
-                    pathname: `${location.pathname.replace(/\/$/, '')}/login`,
-                    state: {
-                      // This is needed to cover the use case of being logged in in
-                      // another backend (eg. in development), having a token for
-                      // localhost and try to use it, the login route has to know that
-                      // it's the same as it comes from a logout
-                      isLogout: true,
-                    },
-                  }}
-                >
-                  <FormattedMessage id="log in" defaultMessage="log in" />
-                </Link>
-              ),
-            }}
-          />
-        )}
+        <FormattedMessage
+          id="You are trying to access a protected resource."
+          defaultMessage="You are trying to access a protected resource."
+        />
       </p>
       <p>
         <FormattedMessage
