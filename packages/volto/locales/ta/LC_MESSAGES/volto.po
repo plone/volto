@@ -4619,11 +4619,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "இந்த கோப்புறையின் தற்போதைய மோகத்தில் உள்ள அனைத்து பொருட்களையும் நீங்கள் நீக்க உள்ளீர்கள்."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "பாதுகாக்கப்பட்ட வளத்தை அணுக முயற்சிக்கிறீர்கள், முதலில் {login} முதலில்."
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5002,11 +4997,6 @@ msgstr "பட்டியல்"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "ஏற்றுகிறது"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "புகுபதிகை"
 
 #. Default: "Maps"
 #: config/Blocks
