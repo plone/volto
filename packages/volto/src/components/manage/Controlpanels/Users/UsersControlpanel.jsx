@@ -57,7 +57,8 @@ import {
  * UsersControlpanel functional component.
  * @function UsersControlpanel
  */
-const UsersControlpanel = () => {
+const UsersControlpanel = (props) => {
+  const { staticContext } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
 
@@ -455,6 +456,8 @@ const UsersControlpanel = () => {
 
   useEffect(() => {
     setIsClient(true);
+    // Skip fetching if the store already has an error.
+    if (loadRolesRequest?.error) return;
     fetchData();
     checkLoginUsingEmailStatus();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -475,8 +478,14 @@ const UsersControlpanel = () => {
     }
   }, [loadRolesRequest?.error, loadRolesRequest?.loading]);
 
-  if (error) {
-    return <Error error={error} />;
+  const effectiveError =
+    error ||
+    (loadRolesRequest?.error && !loadRolesRequest?.loading
+      ? loadRolesRequest.error
+      : null);
+
+  if (effectiveError) {
+    return <Error error={effectiveError} staticContext={staticContext} />;
   }
 
   const usernameToDelete = userToDelete ? userToDelete.username : '';
