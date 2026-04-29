@@ -1,0 +1,1 @@
+Added `Batching` interface to `common.d.ts` and optional `batching` property to `QuerystringSearchResponse` and `SearchResponse` for batched API responses. @pratyush07-hub
