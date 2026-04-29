@@ -1,3 +1,4 @@
+export { AlignWidget } from './components/AlignWidget/AlignWidget';
 export { BlockToolbar } from './components/BlockToolbar/BlockToolbar';
 export { Breadcrumb, Breadcrumbs } from './components/Breadcrumbs/Breadcrumbs';
 export { Button } from './components/Button/Button';
@@ -49,6 +50,7 @@ export {
   SelectSection,
   SelectSectionHeader,
 } from './components/Select/Select';
+export { SizeWidget } from './components/SizeWidget/SizeWidget';
 export { Spinner } from './components/Spinner/Spinner';
 export { Slider } from './components/Slider/Slider';
 export { Switch } from './components/Switch/Switch';
@@ -65,6 +67,8 @@ export { Toast } from './components/Toast/Toast';
 export { ToggleButton } from './components/ToggleButton/ToggleButton';
 export { Toolbar } from './components/Toolbar/Toolbar';
 export { Tooltip } from './components/Tooltip/Tooltip';
+export { Tree, TreeItem, TreeItemContent } from './components/Tree/Tree';
+export { WidthWidget } from './components/WidthWidget/WidthWidget';
 
 // Quanta components
 export { QuantaTextField } from './components/quanta/TextField/TextField';
