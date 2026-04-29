@@ -7,9 +7,6 @@ type PlatePluginsContextValue = {
   currentUserId: string | null;
   discussions: TDiscussion[];
   setDiscussions: React.Dispatch<React.SetStateAction<TDiscussion[]>>;
-  setUsers: React.Dispatch<
-    React.SetStateAction<Record<string, TDiscussionUser>>
-  >;
   users: Record<string, TDiscussionUser>;
 };
 
