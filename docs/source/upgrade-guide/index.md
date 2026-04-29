@@ -421,8 +421,11 @@ Additionally, if your project relied on the original image to always be present,
 ```{versionadded} Volto 19.0.0-alpha.32
 ```
 
-The handling of 401 errors for anonymous users has been changed to improve user experience.
+The handling of 401 (Unauthorized) errors for anonymous users has been changed to improve user experience.
 Now, instead of showing the 401 error page, the user will be redirected to the login page when they encounter a 401 error while being anonymous.
+This matches Plone 6 classic behavior and aligns with user expectations when trying to access protected content without being authenticated.
+
+Please notice that when you are authenticated and you try to access a protected content that you don't have permissions to access, you will trigger a 403 (Forbidden) error page, which is the expected behavior in that case.
 
 (upgrading-to-volto-18-x-x)=
 
