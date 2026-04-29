@@ -1,0 +1,1 @@
+Changed the 401 behavior for anonymous users. Now it redirects to `login` page instead of showing the 401 error route. @sneridagh
