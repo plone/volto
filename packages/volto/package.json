@@ -56,7 +56,7 @@
     "lint:husky": "eslint --max-warnings=0 --fix",
     "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
     "i18n:ci": "pnpm i18n && git diff -G'^[^\"POT]' --exit-code",
-    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "check:ts": "tsc --project tsconfig.json --noEmit",
     "dry-release": "release-it --dry-run",
     "release": "release-it",
     "release-major-alpha": "release-it major --preRelease=alpha",
