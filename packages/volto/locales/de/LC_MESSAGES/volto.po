@@ -3305,7 +3305,7 @@ msgstr "Suchen"
 #. Default: "Search Site"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr "Website durchsuchen"
+msgstr "Seite durchsuchen"
 
 #. Default: "Search block"
 #: components/manage/Blocks/Search/schema
@@ -4623,6 +4623,11 @@ msgstr "Sie sind dabei alle Objekte in der aktuellen Paginierung dieses Ordners 
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Sie versuchen eine geschützte Seite aufzurufen, bitte zuerst {login}."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser

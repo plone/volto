@@ -4,10 +4,10 @@ import { Container } from 'semantic-ui-react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { withServerErrorCode } from '@plone/volto/helpers/Utils/Utils';
-import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 
 const Unauthorized = () => {
+  const token = useSelector((state) => state.userSession.token);
   const error_message = useSelector((state) => state.apierror?.message);
   let location = useLocation();
 
@@ -19,28 +19,35 @@ const Unauthorized = () => {
       </h1>
       <h3>{error_message}</h3>
       <p className="description">
-        <FormattedMessage
-          id="You are trying to access a protected resource, please {login} first."
-          defaultMessage="You are trying to access a protected resource, please {login} first."
-          values={{
-            login: (
-              <Link
-                to={{
-                  pathname: `${getBaseUrl(location.pathname)}/login`,
-                  state: {
-                    // This is needed to cover the use case of being logged in in
-                    // another backend (eg. in development), having a token for
-                    // localhost and try to use it, the login route has to know that
-                    // it's the same as it comes from a logout
-                    isLogout: true,
-                  },
-                }}
-              >
-                <FormattedMessage id="log in" defaultMessage="log in" />
-              </Link>
-            ),
-          }}
-        />
+        {token ? (
+          <FormattedMessage
+            id="You are trying to access a protected resource."
+            defaultMessage="You are trying to access a protected resource."
+          />
+        ) : (
+          <FormattedMessage
+            id="You are trying to access a protected resource, please {login} first."
+            defaultMessage="You are trying to access a protected resource, please {login} first."
+            values={{
+              login: (
+                <Link
+                  to={{
+                    pathname: `${location.pathname.replace(/\/$/, '')}/login`,
+                    state: {
+                      // This is needed to cover the use case of being logged in in
+                      // another backend (eg. in development), having a token for
+                      // localhost and try to use it, the login route has to know that
+                      // it's the same as it comes from a logout
+                      isLogout: true,
+                    },
+                  }}
+                >
+                  <FormattedMessage id="log in" defaultMessage="log in" />
+                </Link>
+              ),
+            }}
+          />
+        )}
       </p>
       <p>
         <FormattedMessage

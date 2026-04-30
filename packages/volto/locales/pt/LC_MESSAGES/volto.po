@@ -4623,6 +4623,11 @@ msgstr "Está prestes a apagar todos os elementos na paginação atual desta pas
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Está a tentar aceder um recurso protegido, por favor, {login} primeiro."
 
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
+
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"

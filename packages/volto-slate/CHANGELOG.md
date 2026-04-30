@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.15 (2026-04-27)
+
+### Bugfix
+
+- Added Romanian translations for the `@plone/volto-slate` core addon catalog. @avoinea 
+
+### Internal
+
+- Update dependency: `uuid` 14.0.0. @davisagli 
+
 ## 19.0.0-alpha.14 (2026-04-09)
 
 ### Breaking
