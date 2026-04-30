@@ -1,0 +1,1 @@
+Changed the 401 Unauthorized behavior. Now, for anonymous users it redirects to the login page, or for authenticated users it displays a 403 Forbidden page, instead of showing the 401 Unauthorized error route. @sneridagh

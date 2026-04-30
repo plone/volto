@@ -4619,11 +4619,6 @@ msgstr "Sie sind dabei, alle Objekte und alle ihre Unterobjekte zu löschen."
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Sie sind dabei alle Objekte in der aktuellen Paginierung dieses Ordners zu löschen."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Sie versuchen eine geschützte Seite aufzurufen, bitte zuerst {login}."
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5002,11 +4997,6 @@ msgstr "Listing"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "laden"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "Einloggen"
 
 #. Default: "Maps"
 #: config/Blocks

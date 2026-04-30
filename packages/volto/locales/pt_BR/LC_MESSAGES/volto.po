@@ -4619,11 +4619,6 @@ msgstr "Você está prestes a excluir todos os itens e todos os seus subitens."
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Você está prestes a excluir todos os itens na paginação atual desta pasta."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Você está tentando acessar um recurso protegido, por favor, {login} primeiro."
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5002,11 +4997,6 @@ msgstr "Listagem"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Carregando"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "acessar"
 
 #. Default: "Maps"
 #: config/Blocks

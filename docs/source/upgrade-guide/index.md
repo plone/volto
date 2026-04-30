@@ -417,6 +417,18 @@ This is a breaking change for projects that relied on the original image always 
 A pair of additional scales were added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
 Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scales named `2k` and `4k`.
 
+### 401 unauthorized error route handling behaviors have changed
+```{versionadded} Volto 19.0.0-alpha.32
+```
+
+The handling of 401 Unauthorized errors for anonymous users has been changed to improve the user experience.
+Previously, when an anonymous user attempted to access a resource that required authorization, the 401 unauthorized error page would be displayed.
+Now the user will be redirected to the login page.
+This matches Plone 6 Classic UI behavior and aligns with user expectations.
+
+Additionally, an authenticated user who attempts to access a protected resource for which they lack permission will see a 403 Forbidden error page.
+This is the correct behavior, whereas previously they would see a 401 Unauthorized error page.
+
 ### The "AutoSave" feature has been marked as experimental and opt-in by default
 ```{versionadded} Volto 19.0.0-alpha.32
 ```
