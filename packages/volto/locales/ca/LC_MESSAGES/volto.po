@@ -699,6 +699,11 @@ msgstr "Trieu un fitxer"
 msgid "Clear"
 msgstr "Clar"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Esborra l'URL"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2681,6 +2686,11 @@ msgstr "D'acord"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., "". No pot contenir salts de línia."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Obre el navegador d'URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4189,6 +4199,16 @@ msgstr "Gestió d'URL"
 msgid "URL Management for {title}"
 msgstr "Gestió d'URL per a {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta l'URL"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4603,6 +4623,11 @@ msgstr "Estàs a punt d'eliminar tots els elements de la pàgina actual d'aquest
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Esteu provant d'accedir a un recurs protegit, primer {login} ."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5350,6 +5375,26 @@ msgstr "Text"
 #: config/Blocks
 msgid "title"
 msgstr "Títol"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Error"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informació"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Èxit"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertiment"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

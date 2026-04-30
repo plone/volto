@@ -1,0 +1,205 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"PO-Revision-Date: 2026-04-09 13:30+0300\n"
+"Last-Translator: Alin Voinea <avoinea@plone.org>\n"
+"Language-Team: Romanian (https://www.transifex.com/plone/teams/14552/ro/)\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Code: ro\n"
+"Language-Name: Romanian\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+"X-Generator: Poedit 3.5\n"
+
+#: editor/plugins/Link/index
+# defaultMessage: Add link
+msgid "Add link"
+msgstr "Adaugă link"
+
+#: editor/plugins/StyleMenu/StyleMenu
+# defaultMessage: Additional Styles
+msgid "Additional Styles"
+msgstr "Stiluri suplimentare"
+
+#: widgets/HtmlSlateWidget
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr "A apărut o eroare la editarea câmpului \"{name}\". Am fost notificați și investigăm problema. Vă rugăm să vă salvați munca și să încercați din nou. Dacă problema persistă, contactați administratorul site-ului."
+
+#: widgets/RichTextWidgetView
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr "A apărut o eroare la randarea câmpului \"{name}\". Am fost notificați și investigăm problema. Dacă problema persistă, contactați administratorul site-ului."
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Bottom
+msgid "Bottom"
+msgstr "Jos"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Center
+msgid "Center"
+msgstr "Centrează"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+# defaultMessage: Delete col
+msgid "Delete col"
+msgstr "Șterge coloană"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+# defaultMessage: Delete row
+msgid "Delete row"
+msgstr "Șterge rând"
+
+#: editor/plugins/Table/index
+# defaultMessage: Delete table
+msgid "Delete table"
+msgstr "Șterge tabelul"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Divide each row into separate cells
+msgid "Divide each row into separate cells"
+msgstr "Împarte fiecare rând în celule separate"
+
+#: elementEditor/messages
+# defaultMessage: Edit element
+msgid "Edit element"
+msgstr "Editează elementul"
+
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+# defaultMessage: Edit link
+msgid "Edit link"
+msgstr "Editează linkul"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Fixed width table cells
+msgid "Fixed width table cells"
+msgstr "Celule de tabel cu lățime fixă"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Hide headers
+msgid "Hide headers"
+msgstr "Ascunde antetele"
+
+#: editor/plugins/StyleMenu/StyleMenu
+# defaultMessage: Inline Style
+msgid "Inline Style"
+msgstr "Stil în linie"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+# defaultMessage: Insert col after
+msgid "Insert col after"
+msgstr "Inserează coloană după"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+# defaultMessage: Insert col before
+msgid "Insert col before"
+msgstr "Inserează coloană înainte"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+# defaultMessage: Insert row after
+msgid "Insert row after"
+msgstr "Inserează rând după"
+
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+# defaultMessage: Insert row before
+msgid "Insert row before"
+msgstr "Inserează rând înainte"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Left
+msgid "Left"
+msgstr "Stânga"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Make the table compact
+msgid "Make the table compact"
+msgstr "Face tabelul compact"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Make the table sortable
+msgid "Make the table sortable"
+msgstr "Face tabelul sortabil"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Middle
+msgid "Middle"
+msgstr "Mijloc"
+
+#: blocks/Text/SlashMenu
+# defaultMessage: No matching blocks
+msgid "No matching blocks"
+msgstr "Niciun bloc corespunzător"
+
+#: editor/plugins/StyleMenu/StyleMenu
+# defaultMessage: Paragraph Style
+msgid "Paragraph Style"
+msgstr "Stil paragraf"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Reduce complexity
+msgid "Reduce complexity"
+msgstr "Reduce complexitatea"
+
+#: elementEditor/messages
+# defaultMessage: Remove element
+msgid "Remove element"
+msgstr "Elimină elementul"
+
+#: editor/plugins/AdvancedLink/index
+# defaultMessage: Remove link
+msgid "Remove link"
+msgstr "Elimină linkul"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Right
+msgid "Right"
+msgstr "Dreapta"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Stripe alternate rows with color
+msgid "Stripe alternate rows with color"
+msgstr "Colorează alternativ rândurile"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Table
+msgid "Table"
+msgstr "Tabel"
+
+#: blocks/Table/schema
+# defaultMessage: Table block
+msgid "Table block"
+msgstr "Bloc tabel"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Table color inverted
+msgid "Table color inverted"
+msgstr "Culori inversate pentru tabel"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Top
+msgid "Top"
+msgstr "Sus"
+
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+# defaultMessage: Type text…
+msgid "Type text…"
+msgstr "Tastați text…"
+
+#: blocks/Table/TableBlockEdit
+# defaultMessage: Visible only in view mode
+msgid "Visible only in view mode"
+msgstr "Vizibil doar în modul de vizualizare"

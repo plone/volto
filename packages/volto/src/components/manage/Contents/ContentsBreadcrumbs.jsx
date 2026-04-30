@@ -1,5 +1,6 @@
 import React from 'react';
 import { Breadcrumb } from 'semantic-ui-react';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import { Link } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import { useSelector } from 'react-redux';
@@ -43,13 +44,13 @@ const ContentsBreadcrumbs = (props) => {
             <ContentsBreadcrumbsRootItem />
           </Link>
           <Breadcrumb.Divider />
-          <Link
-            to={`${navroot?.['@id']}/contents`}
+          <UniversalLink
+            href={`${navroot?.['@id']}/contents`}
             className="section"
             title={navroot?.title}
           >
             {navroot?.title}
-          </Link>
+          </UniversalLink>
         </>
       )}
       {items.map((breadcrumb, index, breadcrumbs) => [

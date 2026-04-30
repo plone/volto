@@ -699,6 +699,11 @@ msgstr "Escolle un ficheiro"
 msgid "Clear"
 msgstr "Limpar"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr ""
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2681,6 +2686,11 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Só se permiten caracteres de 7 bits. Non pode conter maiúsculas nin caracteres especiais: <, >, &, #, /, ?, ou outros que son ilegais nas URL. Non se pode comezar con: _, aq_, @@, ++. Non pode acabar con __. Non pode ser: request,contributors, ., .., ''. Non pode conter novas líneas."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr ""
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4189,6 +4199,16 @@ msgstr "Xestión das URLs"
 msgid "URL Management for {title}"
 msgstr "Xestión da URL para {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr ""
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4603,6 +4623,11 @@ msgstr "Estás a piques de eliminar todos os elementos na paxinación actual des
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Estás a tentar acceder a un recurso protexido. Primeiro, {login}."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5350,6 +5375,26 @@ msgstr "Texto"
 #: config/Blocks
 msgid "title"
 msgstr "Título"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Erro"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Información"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Éxito"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertencia"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
