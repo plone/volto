@@ -699,6 +699,11 @@ msgstr "ஒரு கோப்பைத் தேர்வுசெய்க"
 msgid "Clear"
 msgstr "தெளிவான"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr ""
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2694,6 +2699,11 @@ msgstr "சரி"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "7-பிட் பைட்டுகள் எழுத்துக்கள் மட்டுமே அனுமதிக்கப்படுகின்றன. பெரிய எழுத்துக்கள், சிறப்பு எழுத்துக்கள்: <,>, &, #, /,?, அல்லது முகவரி களில் சட்டவிரோதமானது. தொடங்க முடியாது: _, aq_, @@, ++. __ உடன் முடிவடைய முடியாது. இருக்க முடியாது: கோரிக்கை, பங்களிப்பாளர்கள்,., .., "". புதிய வரிகளைக் கொண்டிருக்க முடியாது."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr ""
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4202,6 +4212,16 @@ msgstr "முகவரி மேலாண்மை"
 msgid "URL Management for {title}"
 msgstr "{தலைப்பு க்கு க்கான முகவரி மேலாண்மை"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr ""
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4616,6 +4636,11 @@ msgstr "இந்த கோப்புறையின் தற்போதை�
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "பாதுகாக்கப்பட்ட வளத்தை அணுக முயற்சிக்கிறீர்கள், முதலில் {login} முதலில்."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5368,6 +5393,26 @@ msgstr "உரை"
 #: config/Blocks
 msgid "title"
 msgstr "தலைப்பு"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "பிழை"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "தகவல்"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "வெற்றி"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "எச்சரிக்கை"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

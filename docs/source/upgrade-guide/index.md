@@ -194,6 +194,11 @@ index c469fe9..c39a324 100644
 
 A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
 
+```{versionchanged} Volto 19
+This CSS class was previously named `visually-hidden-volto`.
+The suffix `-volto` was removed in Volto 19.
+```
+
 This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
 
 If your project, add-on, or custom theme already defines a `visually-hidden` class, or uses similar accessibility helpers, the new global definition may override or conflict with existing custom styles.
@@ -411,6 +416,20 @@ This happened especially in high-density resolution screens where the largest sc
 This is a breaking change for projects that relied on the original image always being present, for example, in those projects where the original image was always included for large displays, such as televisions or wide-screen displays.
 A pair of additional scales were added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
 Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scales named `2k` and `4k`.
+
+### The "AutoSave" feature has been marked as experimental and opt-in by default
+```{versionadded} Volto 19.0.0-alpha.32
+```
+
+The "AutoSave" feature, which automatically saves content changes locally (localstorage) at regular intervals, has been marked as experimental in Volto 19.
+This is due to the need for further testing and refinement based on user feedback.
+It seems that there are still some edge cases that need to be addressed to ensure a smooth user experience.
+
+If you want to enable it in your project, you can set the `config.experimental.saveAsDraft` setting to `true` in your add-on configuration:
+
+```js
+config.experimental.saveAsDraft = true;
+```
 
 (upgrading-to-volto-18-x-x)=
 

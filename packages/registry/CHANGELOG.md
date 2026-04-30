@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.11 (2026-04-27)
+
+### Internal
+
+- Removed tsconfig development dependency. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+
 ## 3.0.0-alpha.10 (2026-03-31)
 
 ### Internal
