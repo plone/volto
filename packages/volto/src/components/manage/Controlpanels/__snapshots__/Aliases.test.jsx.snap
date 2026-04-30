@@ -89,6 +89,10 @@ exports[`Aliases > renders an aliases control component 1`] = `
                               value=""
                             />
                           </div>
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                          />
                         </div>
                       </div>
                     </div>
@@ -185,6 +189,10 @@ exports[`Aliases > renders an aliases control component 1`] = `
                               </div>
                             </div>
                           </div>
+                          <div
+                            aria-atomic="true"
+                            aria-live="polite"
+                          />
                         </div>
                       </div>
                     </div>

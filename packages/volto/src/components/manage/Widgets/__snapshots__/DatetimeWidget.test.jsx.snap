@@ -102,6 +102,10 @@ exports[`datetime widget converts UTC date and adapts to local datetime 1`] = `
               </svg>
             </button>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -211,6 +215,10 @@ exports[`renders a datetime widget component 1`] = `
               </svg>
             </button>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>

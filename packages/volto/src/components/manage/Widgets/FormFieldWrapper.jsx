@@ -105,11 +105,13 @@ class FormFieldWrapper extends Component {
       <>
         {this.props.children}
 
-        {map(error, (message) => (
-          <Label key={message} basic color="red" className="form-error-label">
-            {message}
-          </Label>
-        ))}
+        <div aria-live="polite" aria-atomic="true">
+          {map(error, (message) => (
+            <Label key={message} basic color="red" className="form-error-label">
+              {message}
+            </Label>
+          ))}
+        </div>
       </>
     );
 
