@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.32 (2026-04-30)
+
+### Breaking
+
+- Make form autosave opt-in behind `config.experimental.saveAsDraft.enabled`; enable this flag to preserve the previous save-as-draft behavior. @sneridagh 
+
 ## 19.0.0-alpha.31 (2026-04-28)
 
 ### Feature
