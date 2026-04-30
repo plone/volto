@@ -1636,6 +1636,11 @@ msgstr "Починить связи"
 msgid "Fixed width table cells"
 msgstr "Столбцы фиксированной ширины"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Сфокусироваться на"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2308,6 +2313,16 @@ msgstr "Средний"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Членство обновлено"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Меню закрыто"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Меню открыто"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm

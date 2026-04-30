@@ -1632,6 +1632,11 @@ msgstr "Herstel relaties"
 msgid "Fixed width table cells"
 msgstr "Vaste kolombreedte"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Focus op"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2304,6 +2309,16 @@ msgstr "Gemiddeld"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Lidmaatschap bijgewerkt"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Menu gesloten"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Menu geopend"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
