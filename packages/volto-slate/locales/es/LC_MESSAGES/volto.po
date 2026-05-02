@@ -2,13 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-05-03 08:55+0000\n"
+"Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-slate-main/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.17.1\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
@@ -17,167 +19,167 @@ msgstr ""
 # defaultMessage: Add link
 #: editor/plugins/Link/index
 msgid "Add link"
-msgstr ""
+msgstr "Agregar enlace"
 
 # defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr ""
+msgstr "Ha ocurrido un error mientras editaba \"{name}\" del campo. Hemos sido notificados y estamos mirando a él. Guarde vuestro trabajo y reintente. Si el incidente persiste contacte con el administrador del sitio."
 
 # defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr ""
+msgstr "Se ha producido un error mientras se representaba el campo \"{name}\". Hemos sido notificados y estamos investigándolo. Si el incidente persiste, póngase en contacto con el administrador del sitio."
 
 # defaultMessage: Bottom
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
-msgstr ""
+msgstr "Inferior"
 
 # defaultMessage: Center
 #: blocks/Table/TableBlockEdit
 msgid "Center"
-msgstr ""
+msgstr "Central"
 
 # defaultMessage: Delete col
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete col"
-msgstr ""
+msgstr "Eliminar col"
 
 # defaultMessage: Delete row
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete row"
-msgstr ""
+msgstr "Eliminar fila"
 
 # defaultMessage: Delete table
 #: editor/plugins/Table/index
 msgid "Delete table"
-msgstr ""
+msgstr "Eliminar tabla"
 
 # defaultMessage: Divide each row into separate cells
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
-msgstr ""
+msgstr "Divide cada fila en celdas separadas"
 
 # defaultMessage: Edit element
 #: elementEditor/messages
 msgid "Edit element"
-msgstr ""
+msgstr "Editar elemento"
 
 # defaultMessage: Edit link
 #: editor/plugins/AdvancedLink/index
 #: editor/plugins/Link/index
 msgid "Edit link"
-msgstr ""
+msgstr "Editar enlace"
 
 # defaultMessage: Fixed width table cells
 #: blocks/Table/TableBlockEdit
 msgid "Fixed width table cells"
-msgstr ""
+msgstr "Celdas de tabla de ancho fijo"
 
 # defaultMessage: Hide headers
 #: blocks/Table/TableBlockEdit
 msgid "Hide headers"
-msgstr ""
+msgstr "Ocultar encabezados"
 
 # defaultMessage: Insert col after
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col after"
-msgstr ""
+msgstr "Insertar col tras"
 
 # defaultMessage: Insert col before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col before"
-msgstr ""
+msgstr "Insertar col antes"
 
 # defaultMessage: Insert row after
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr ""
+msgstr "Insertar fila tras"
 
 # defaultMessage: Insert row before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row before"
-msgstr ""
+msgstr "Insertar fila antes"
 
 # defaultMessage: Left
 #: blocks/Table/TableBlockEdit
 msgid "Left"
-msgstr ""
+msgstr "Izquierda"
 
 # defaultMessage: Make the table compact
 #: blocks/Table/TableBlockEdit
 msgid "Make the table compact"
-msgstr ""
+msgstr "Crea la tabla compacta"
 
 # defaultMessage: Make the table sortable
 #: blocks/Table/TableBlockEdit
 msgid "Make the table sortable"
-msgstr ""
+msgstr "Crear la tabla ordenable"
 
 # defaultMessage: Middle
 #: blocks/Table/TableBlockEdit
 msgid "Middle"
-msgstr ""
+msgstr "Mitad"
 
 # defaultMessage: No matching blocks
 #: blocks/Text/SlashMenu
 msgid "No matching blocks"
-msgstr ""
+msgstr "Ningún bloque coincidente"
 
 # defaultMessage: Reduce complexity
 #: blocks/Table/TableBlockEdit
 msgid "Reduce complexity"
-msgstr ""
+msgstr "Reducir complejidad"
 
 # defaultMessage: Remove element
 #: elementEditor/messages
 msgid "Remove element"
-msgstr ""
+msgstr "Quitar elemento"
 
 # defaultMessage: Remove link
 #: editor/plugins/AdvancedLink/index
 msgid "Remove link"
-msgstr ""
+msgstr "Retirar enlace"
 
 # defaultMessage: Right
 #: blocks/Table/TableBlockEdit
 msgid "Right"
-msgstr ""
+msgstr "Derecho"
 
 # defaultMessage: Stripe alternate rows with color
 #: blocks/Table/TableBlockEdit
 msgid "Stripe alternate rows with color"
-msgstr ""
+msgstr "Filas de franja alterna con color"
 
 # defaultMessage: Table
 #: blocks/Table/TableBlockEdit
 msgid "Table"
-msgstr ""
+msgstr "Tabla"
 
 # defaultMessage: Table color inverted
 #: blocks/Table/TableBlockEdit
 msgid "Table color inverted"
-msgstr ""
+msgstr "Color de tabla invertido"
 
 # defaultMessage: Top
 #: blocks/Table/TableBlockEdit
 msgid "Top"
-msgstr ""
+msgstr "Cima"
 
 # defaultMessage: Type text…
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
-msgstr ""
+msgstr "Teclear texto…"
 
 # defaultMessage: Visible only in view mode
 #: blocks/Table/TableBlockEdit
 msgid "Visible only in view mode"
-msgstr ""
+msgstr "Solo visible en el modo de vista"
