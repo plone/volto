@@ -1,8 +1,3 @@
-/**
- * Content Type component.
- * @module components/manage/Controlpanels/ContentType
- */
-
 import { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +18,7 @@ import {
   getControlpanel,
   updateControlpanel,
 } from '@plone/volto/actions/controlpanels/controlpanels';
+import { useClient } from '@plone/volto/hooks/client/useClient';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
@@ -54,15 +50,10 @@ const messages = defineMessages({
   },
 });
 
-/**
- * ContentType functional component.
- * @function ContentType
- * @param {Object} props Component properties
- * @returns {JSX.Element} Markup for the component.
- */
 function ContentType(props) {
   const dispatch = useDispatch();
   const intl = useIntl();
+  const isClient = useClient();
 
   const controlpanel = useSelector((state) => state.controlpanels.controlpanel);
   const cpanelRequest = useSelector((state) => state.controlpanels);
@@ -73,66 +64,31 @@ function ContentType(props) {
 
   const [visual] = useState(false);
   const [error, setError] = useState(null);
-  const [isClient, setIsClient] = useState(false);
 
   const form = useRef(null);
-  const prevCpanelRequest = useRef(cpanelRequest);
 
-  /**
-   * Component did mount equivalent
-   * @method useEffect
-   * @returns {undefined}
-   */
   useEffect(() => {
-    dispatch(getControlpanel(join([parent, id], '/')));
-    setIsClient(true);
+    dispatch(getControlpanel(join([parent, id], '/')))
+      .catch((err) => {
+        setError(err);
+      });
   }, [dispatch, parent, id]);
 
-  /**
-   * Component will receive props equivalent
-   * @method useEffect
-   * @returns {undefined}
-   */
-  useEffect(() => {
-    // Control Panel GET
-    if (prevCpanelRequest.current?.get?.loading && cpanelRequest.get?.error) {
-      setError(cpanelRequest.get.error);
-    }
-
-    // Control Panel PATCH
-    if (
-      prevCpanelRequest.current?.update?.loading &&
-      cpanelRequest.update?.loaded
-    ) {
-      toast.info(
-        <Toast
-          info
-          title={intl.formatMessage(messages.info)}
-          content={intl.formatMessage(messages.changesSaved)}
-        />,
-      );
-    }
-
-    prevCpanelRequest.current = cpanelRequest;
-  }, [cpanelRequest, intl]);
-
-  /**
-   * Submit handler
-   * @method onSubmit
-   * @param {object} data Form data.
-   * @returns {undefined}
-   */
   const onSubmit = (data) => {
     if (controlpanel?.['@id']) {
-      dispatch(updateControlpanel(controlpanel['@id'], data));
+      dispatch(updateControlpanel(controlpanel['@id'], data))
+        .then(() => {
+          toast.info(
+            <Toast
+              info
+              title={intl.formatMessage(messages.info)}
+              content={intl.formatMessage(messages.changesSaved)}
+            />,
+          );
+        });
     }
   };
 
-  /**
-   * Cancel handler
-   * @method onCancel
-   * @returns {undefined}
-   */
   const onCancel = () => {
     props.history.push(getParentUrl(pathname));
   };
