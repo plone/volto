@@ -25,7 +25,7 @@ msgstr "<p>Adăugați HTML aici</p>"
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "Un identificator unic pentru grup. Nu poate fi modificat după creare. Nu sunt permise spațiile."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -394,7 +394,7 @@ msgstr "Cale URL alternativ → URL-ul către care se face redirect (data și ti
 #. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
-msgstr ""
+msgstr "Altă persoană a editat acest conținut, iar acea versiune este afișată acum. Doriți să o înlocuiți cu versiunea dvs. salvată automat?"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -450,7 +450,7 @@ msgstr "Automat"
 #. Default: "Autosaved content found"
 #: helpers/Utils/withSaveAsDraft
 msgid "Autosaved content found"
-msgstr ""
+msgstr "A fost găsit conținut salvat automat"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -467,6 +467,8 @@ msgstr "Reguli de conținut disponibile:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -511,6 +513,17 @@ msgstr "Interogare căutare de bază"
 msgid "Block"
 msgstr "Bloc"
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr "Tip de bloc"
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr "Tipuri de blocuri"
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -547,10 +560,10 @@ msgstr "Navigați site-ul, adaugați o imagine sau introduceți o adresă URL"
 msgid "BulkUploadAltUrls"
 msgstr "Încărcare a mai multor URL-uri alternative dintr-un fișier CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "În mod implicit, permisiunile din containerul acestui articol sunt moștenite. Dacă dezactivați acest lucru, numai permisiunile de partajare definite în mod explicit vor fi valide. În imagine, simbolul {inherited} indică o valoare moștenită. În mod similar, simbolul {global} indică un rol global, care este gestionat de administratorul site-ului. "
+msgstr "În mod implicit, permisiunile din containerul acestui element sunt moștenite. Dacă dezactivezi acest lucru, vor fi valabile doar permisiunile de partajare definite explicit. În prezentarea generală, valorile moștenite sunt etichetate explicit ca 'Valoare moștenită' și primesc o bifă verde {inherited}. În mod similar, rolurile gestionate de administratorul site-ului sunt etichetate ca 'Rol global' și primesc o bifă albastră {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -685,6 +698,11 @@ msgstr "Alegeți un fișier"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Curațați"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Șterge URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -848,7 +866,7 @@ msgstr "Conținut care se referă la {title}"
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "Titlul conținutului"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1036,7 +1054,7 @@ msgstr "Implicit"
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "Valoare implicită"
 
 #. Default: "Default view"
 #: config/Views
@@ -1116,7 +1134,7 @@ msgstr "Șters"
 #. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
-msgstr ""
+msgstr "Ștergerea acestui element va întrerupe {brokenReferences} {variation}."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1202,7 +1220,7 @@ msgstr "Doriți cu adevărat să ștergeți acest articol?"
 #. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Do you want to restore your autosaved content?"
-msgstr ""
+msgstr "Doriți să restaurați conținutul salvat automat?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -1223,7 +1241,7 @@ msgstr "Descărcați evenimentul"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Descărcați fișierul"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1251,7 +1269,7 @@ msgstr "Trageți fișierele aici..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Trageți fișierele aici pentru a le încărca"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1583,7 +1601,7 @@ msgstr "Fișier"
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "Fișierul nu este de unul dintre tipurile acceptate: {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
@@ -1611,7 +1629,7 @@ msgstr "Fișiere încărcate: {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
+msgstr "Completează valoarea câmpului formularului cu valoarea furnizată printr-un parametru de interogare din URL care are numele dat."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
@@ -2005,6 +2023,11 @@ msgstr "Sursă teaser invalidă"
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Nu este permis să definiți atât parola, cât și să cereți trimiterea mesajului de resetare a parolei prin e-mail. Trebuie să selectați una dintre ele."
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr "Element"
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2309,7 +2332,7 @@ msgstr "URL Hartă"
 #. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
-msgstr ""
+msgstr "Dimensiunea maximă a fișierului este de {maxSize} octeți, dar fișierul încărcat are {size} octeți."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2448,7 +2471,7 @@ msgstr "Navigați înapoi"
 #. Default: "Navigate to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Navigate to this item"
-msgstr ""
+msgstr "Navigați la acest element"
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
@@ -2647,6 +2670,12 @@ msgstr "Dimensiunea obiectului"
 msgid "Occurences"
 msgstr "Apariții"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr "Apariții"
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2656,6 +2685,11 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Doar caractere de 7 biți sunt permise. Nu poate conține caractere majuscule, caractere speciale: <, >, &, #, /, ?, sau alte caractere care sunt interzise în URL-uri. Nu poate începe cu: _, aq_, @@, ++. Nu poate să se termine cu __. Nu poate fi: request, contributors, ., .., "". Nu poate conține linii noi."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Deschide browserul URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2733,6 +2767,11 @@ msgstr "Lipire"
 msgid "Paste blocks"
 msgstr "Lipire câmpuri"
 
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr "Cale"
+
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Perform the following actions:"
@@ -2773,7 +2812,7 @@ msgstr "Persoane responsabile de crearea conținutului acestui articol. Vă rug�
 #. Default: "Placeholder"
 #: components/manage/Widgets/SchemaWidget
 msgid "Placeholder"
-msgstr ""
+msgstr "Text de substituție"
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
@@ -2901,7 +2940,7 @@ msgstr "Interogare"
 #. Default: "Query Parameter Name"
 #: components/manage/Widgets/SchemaWidget
 msgid "Query Parameter Name"
-msgstr ""
+msgstr "Numele parametrului de interogare"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -2980,7 +3019,7 @@ msgstr "Formular de înregistrare"
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "Elemente asociate"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -3008,7 +3047,7 @@ msgstr "Relațiile actualizate"
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Eliberați pentru a adăuga fișiere în acest folder"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3361,7 +3400,7 @@ msgstr "Selectați coloane de afișat"
 #. Default: "Select option"
 #: components/manage/Blocks/Search/components/SelectFacet
 msgid "Select option"
-msgstr ""
+msgstr "Selectați o opțiune"
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
@@ -3371,7 +3410,7 @@ msgstr "Selectați relația"
 #. Default: "Select rule"
 #: components/manage/Rules/Rules
 msgid "Select rule"
-msgstr ""
+msgstr "Selectați o regulă"
 
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
@@ -3574,12 +3613,12 @@ msgstr "Mic"
 #. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
-msgstr ""
+msgstr "Unele elemente sunt referite de alte elemente de conținut. Ștergerea lor va întrerupe {brokenReferences} {variation}."
 
 #. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
-msgstr ""
+msgstr "Unele elemente conțin subelemente. Ștergerea lor va șterge și {containedItemsToDelete} {variation} din interior."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3850,7 +3889,7 @@ msgstr "Prezența butonului dezactivează căutarea live, interogarea este emis�
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "Fișierul încărcat depășește dimensiunea maximă permisă de {size} octeți"
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
@@ -3870,7 +3909,7 @@ msgstr "Elementul nu a putut fi șters."
 #. Default: "The kicker is a line of text shown above the title."
 #: components/manage/Blocks/Teaser/schema
 msgid "The kicker is a line of text shown above the title."
-msgstr ""
+msgstr "Supratitlul este o linie de text afișată deasupra titlului."
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -3900,7 +3939,7 @@ msgstr "Procesul de înregistrare a avut succes. Vă rugăm să verificați căs
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "Limba implicită selectată trebuie să fie în lista câmpului „Limbi disponibile”"
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3963,7 +4002,7 @@ msgstr "Au aparut unele erori."
 #. Default: "These items will have broken links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "These items will have broken links"
-msgstr ""
+msgstr "Aceste elemente vor avea legături întrerupte"
 
 #. Default: "Third"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -3988,7 +4027,7 @@ msgstr "Aceasta este o copie de lucru a {title}"
 #. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
-msgstr ""
+msgstr "Acest element conține subelemente. Ștergerea lui va șterge și {containedItemsToDelete} {variation} din interior."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4039,7 +4078,7 @@ msgstr "Eroare a câmpului Titlu. Valoarea nu a fost furnizată sau este deja ex
 #. Default: "Toggle option"
 #: components/manage/Blocks/Search/components/ToggleFacet
 msgid "Toggle option"
-msgstr ""
+msgstr "Comutați opțiunea"
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4160,6 +4199,16 @@ msgstr "URL-uri alternative"
 msgid "URL Management for {title}"
 msgstr "URL-uri alternative pentru {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL lipsește"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4278,7 +4327,7 @@ msgstr "Încărcare"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Încărcare fișiere ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4400,7 +4449,7 @@ msgstr "URL-ul video"
 #. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
 #: components/manage/Blocks/Video/schema
 msgid "VideoTitleDescription"
-msgstr ""
+msgstr "Titlul videoclipului nu este afișat, ci este folosit doar din motive de accesibilitate pentru a identifica videoclipul pentru utilizatorii care folosesc cititoare de ecran. Dacă videoclipul este deja descris suficient de un titlu de mai sus, lăsați acest câmp necompletat."
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4563,17 +4612,22 @@ msgstr "Da"
 #. Default: "You are about to delete all items and all its subitems."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items and all its subitems."
-msgstr ""
+msgstr "Sunteți pe cale să ștergeți toate elementele și toate subelementele acestora."
 
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "Sunteți pe cale să ștergeți toate elementele din pagina curentă a acestui folder."
 
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Încercați să accesați o resursă protejată, vă rugăm mai întâi {login}."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4593,7 +4647,7 @@ msgstr "Puteți controla cine vă poate vizualiza și edita elementul folosind l
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr ""
+msgstr "Nu puteți muta acest tip de bloc în noua poziție"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4648,7 +4702,7 @@ msgstr "Numele dvs. de utilizator este necesar pentru a reseta parola."
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "Tipuri de fișiere permise"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4673,7 +4727,7 @@ msgstr "Introduceți un nume de utilizator, de obicei ceva de genul vpopescu. F�
 #. Default: "and {count} more…"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "and {count} more…"
-msgstr ""
+msgstr "și încă {count}…"
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4721,6 +4775,11 @@ msgstr "Comun"
 msgid "compare_to"
 msgstr "Compara cu"
 
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr "Bloc: {title}"
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -4734,7 +4793,7 @@ msgstr "Interval de date"
 #. Default: "delete {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "delete_block"
-msgstr "Ștergeți"
+msgstr "ștergeți blocul {type}"
 
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4764,7 +4823,7 @@ msgstr "proiect"
 #. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "drag_block"
-msgstr ""
+msgstr "glisați blocul {type}"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4819,7 +4878,7 @@ msgstr "/exemplu"
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "URL-urile externe nu sunt permise în acest câmp."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
@@ -4839,7 +4898,7 @@ msgstr "<ul><li>Regenerează intIds (simboluri de relaţii în catalog de relaţ
 #. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr "Titlu"
+msgstr "Supratitlu"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4864,7 +4923,7 @@ msgstr "Imagine"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Vă rugăm să încărcați o imagine, nu alt tip de fișier."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
@@ -4884,7 +4943,7 @@ msgstr "număr întreg"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Nu a fost găsită nicio imagine la calea internă furnizată."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4919,12 +4978,12 @@ msgstr "Imagine (copertă)"
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
-msgstr ""
+msgstr "Ștergeți elementul și întrerupeți legăturile"
 
 #. Default: "Checking references..."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: loading references"
-msgstr ""
+msgstr "Se verifică referințele..."
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
@@ -4939,6 +4998,8 @@ msgstr "Listare"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "încărcare"
 
@@ -4999,6 +5060,11 @@ msgstr "nu"
 msgid "no workflow state"
 msgstr "nicio stare de flux de lucru"
 
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr "Nu s-au găsit elemente pentru tipul: {type}."
+
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
@@ -5043,17 +5109,17 @@ msgstr "publicat"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Calea curentă (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Calea părinte (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
-msgstr "querystring-widget-select"
+msgstr "Selectați…"
 
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
@@ -5073,12 +5139,12 @@ msgstr "referințe"
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr ""
+msgstr "se referă la"
 
 #. Default: "Result count"
 #: components/manage/Contents/Contents
 msgid "resultCount"
-msgstr ""
+msgstr "Număr de rezultate"
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -5263,7 +5329,7 @@ msgstr "Alege vizualizare"
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "Dimensiunea maximă a fișierului în octeți"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
@@ -5309,6 +5375,26 @@ msgstr "Text"
 #: config/Blocks
 msgid "title"
 msgstr "Titlu"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Eroare"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informație"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Succes"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Avertisment"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
@@ -5397,7 +5483,7 @@ msgstr "{id} Schemă"
 #. Default: "{sources} or mp4 URL allowed"
 #: components/manage/Blocks/Video/Edit
 msgid "{sources} or mp4 URL allowed"
-msgstr ""
+msgstr "Sunt permise {sources} sau un URL mp4"
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.17 (2026-04-27)
+
+### Internal
+
+- Removed tsconfig development dependency. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+
+## 2.0.0-alpha.16 (2026-04-05)
+
+### Feature
+
+- Added blocktypes service typings. @sneridagh 
+
+## 2.0.0-alpha.15 (2026-04-05)
+
+### Feature
+
+- Added blocktypes service typings. @sneridagh 
+
 ## 2.0.0-alpha.14 (2026-02-03)
 
 ### Bugfix

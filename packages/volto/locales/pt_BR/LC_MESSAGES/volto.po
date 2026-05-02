@@ -467,6 +467,8 @@ msgstr "Regras de conteúdo disponíveis:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -511,6 +513,17 @@ msgstr "Base da consulta para busca"
 msgid "Block"
 msgstr "Bloco"
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -547,10 +560,10 @@ msgstr "Navegue no site, arraste uma imagem ou digite uma URL"
 msgid "BulkUploadAltUrls"
 msgstr "Carregamento em massa de CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Por padrão, as permissões do container deste item são herdadas. Se você desabilitar isso, apenas as permissões de compartilhamento definidas explicitamente serão válidas. Na visão geral, o símbolo {inherited} indica um valor herdado. Da mesma forma, o símbolo {global} indica uma função global que é gerenciada pelo administrador do site."
+msgstr "Por padrão, as permissões do contêiner deste item são herdadas. Se desativar isso, apenas as permissões de compartilhamento definidas explicitamente serão válidas. Na visão geral, os valores herdados são explicitamente rotulados como 'Valor herdado' e recebem uma marca de verificação verde {inherited}. Da mesma forma, os papéis gerenciados pelo administrador do site são rotulados como 'Papel global' e recebem uma marca de verificação azul {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -685,6 +698,11 @@ msgstr "Escolha um arquivo"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Limpar"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Limpar URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -2005,6 +2023,11 @@ msgstr "Fonte do destaque inválida"
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Não é permitido definir a senha e solicitar o envio da mensagem de redefinição de senha por e-mail. Por favor, selecione um deles."
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2647,6 +2670,12 @@ msgstr "Tamanho do objeto"
 msgid "Occurences"
 msgstr "Ocorrências"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2656,6 +2685,11 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Somente caracteres de bytes de 7 bits são permitidos. Não pode conter letras maiúsculas, caracteres especiais: <, >, &, #, /, ?, ou outros que são ilegais em URLs. Não pode começar com: , aq, @@, ++. Não pode terminar com __. Não pode ser: request, contributors, ., .., “”. Não pode conter quebras de linha."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Abrir navegador de URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2732,6 +2766,11 @@ msgstr "Colar"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "Colar blocos"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4160,6 +4199,16 @@ msgstr "Gerenciamento de URL"
 msgid "URL Management for {title}"
 msgstr "Gerenciamento de URL para {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL ausente"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4575,6 +4624,11 @@ msgstr "Você está prestes a excluir todos os itens na paginação atual desta 
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Você está tentando acessar um recurso protegido, por favor, {login} primeiro."
 
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr "Você está tentando acessar um recurso protegido."
+
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
@@ -4720,6 +4774,11 @@ msgstr "Padrão"
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
 msgstr "Comparar com"
+
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4939,6 +4998,8 @@ msgstr "Listagem"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Carregando"
 
@@ -4998,6 +5059,11 @@ msgstr "Não"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "Sem estado de workflow"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5309,6 +5375,26 @@ msgstr "texto"
 #: config/Blocks
 msgid "title"
 msgstr "Título"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Erro"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informação"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Sucesso"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Aviso"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
