@@ -226,21 +226,6 @@ const Edit = (props) => {
 
   const schema = useMemo(() => TableSchema(props), [props]);
 
-  // eslint-disable-next-line no-unused-vars
-  const onChange = useCallback(
-    (id, value) => {
-      const table = data.table;
-      onChangeBlock(block, {
-        ...data,
-        table: {
-          ...table,
-          [id]: value,
-        },
-      });
-    },
-    [data, block, onChangeBlock],
-  );
-
   const onSelectCell = useCallback((row, cell) => {
     setSelectedCell({ row, cell });
   }, []);
@@ -259,18 +244,6 @@ const Edit = (props) => {
     },
     [data, block, onChangeBlock],
   );
-
-  // eslint-disable-next-line no-unused-vars
-  const toggleCellType = useCallback(() => {
-    const table = { ...data.table };
-    const type = table.rows[selectedCell.row].cells[selectedCell.cell].type;
-    table.rows[selectedCell.row].cells[selectedCell.cell].type =
-      type === 'header' ? 'data' : 'header';
-    onChangeBlock(block, {
-      ...data,
-      table,
-    });
-  }, [data, block, onChangeBlock, selectedCell]);
 
   const onInsertRowBefore = useCallback(() => {
     const table = data.table;
