@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.6 (2026-03-31)
+
+### Internal
+
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update devDependency: wait-on 9.0.4. @davisagli 
+
+## 4.0.0-alpha.5 (2026-02-12)
+
+### Internal
+
+- Fix the {file}`vscodesettings.js` script to properly check if {file}`.vscode/settings.json` exists before reading. @wesleybl [#7834](https://github.com/plone/volto/issues/7834)
+
 ## 4.0.0-alpha.4 (2025-11-19)
 
 ### Breaking

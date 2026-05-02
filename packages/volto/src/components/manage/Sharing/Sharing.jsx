@@ -473,23 +473,39 @@ class SharingComponent extends Component {
                 <p className="help">
                   <FormattedMessage
                     id="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-                    defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+                    defaultMessage="By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
                     values={{
                       inherited: (
-                        <IconOld name="check circle outline" color="green" />
+                        <IconOld
+                          aria-hidden="true"
+                          name="check circle outline"
+                          color="green"
+                        />
                       ),
                       global: (
-                        <IconOld name="check circle outline" color="blue" />
+                        <IconOld
+                          aria-hidden="true"
+                          name="check circle outline"
+                          color="blue"
+                        />
                       ),
                     }}
                   />
                 </p>
               </Segment>
-              <Segment className="actions" attached clearing>
+              <Segment className="right aligned actions" attached clearing>
+                <Button
+                  basic
+                  secondary
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
+                  title={this.props.intl.formatMessage(messages.cancel)}
+                  onClick={this.onCancel}
+                >
+                  <Icon className="circled" name={clearSVG} size="30px" />
+                </Button>
                 <Button
                   basic
                   primary
-                  floated="right"
                   type="submit"
                   aria-label={this.props.intl.formatMessage(messages.save)}
                   title={this.props.intl.formatMessage(messages.save)}
@@ -497,16 +513,6 @@ class SharingComponent extends Component {
                   onClick={this.onSubmit}
                 >
                   <Icon className="circled" name={aheadSVG} size="30px" />
-                </Button>
-                <Button
-                  basic
-                  secondary
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  title={this.props.intl.formatMessage(messages.cancel)}
-                  floated="right"
-                  onClick={this.onCancel}
-                >
-                  <Icon className="circled" name={clearSVG} size="30px" />
                 </Button>
               </Segment>
             </Form>

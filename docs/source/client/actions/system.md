@@ -2,7 +2,7 @@
 
 The `@system` endpoint exposes system information about the Plone backend.
 
-## Get System Information
+## Get system information
 
 ### Query function
 
