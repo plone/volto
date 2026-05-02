@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-04-28 16:09+0000\n"
+"PO-Revision-Date: 2026-05-02 21:12+0000\n"
 "Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
 "Language: es\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17.1-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -592,7 +592,7 @@ msgstr "Celda"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Center"
-msgstr "Centro"
+msgstr "Central"
 
 #. Default: "Change Note"
 #: components/manage/History/History
@@ -1069,7 +1069,7 @@ msgstr "Eliminar bloques"
 #. Default: "Delete col"
 #: config/Blocks
 msgid "Delete col"
-msgstr "Eliminar columna"
+msgstr "Eliminar col"
 
 #. Default: "Condition deleted"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1904,17 +1904,17 @@ msgstr "Valor heredado"
 #. Default: "Insert col after"
 #: config/Blocks
 msgid "Insert col after"
-msgstr "Insertar columna después"
+msgstr "Insertar col tras"
 
 #. Default: "Insert col before"
 #: config/Blocks
 msgid "Insert col before"
-msgstr "Insertar columna antes"
+msgstr "Insertar col antes"
 
 #. Default: "Insert row after"
 #: config/Blocks
 msgid "Insert row after"
-msgstr "Insertar fila después"
+msgstr "Insertar fila tras"
 
 #. Default: "Insert row before"
 #: config/Blocks
@@ -2231,7 +2231,7 @@ msgstr "Hecho por {creator} el {date}. Esta no es una copia de trabajo, sino el 
 #. Default: "Reduce cell padding"
 #: config/Blocks
 msgid "Make the table compact"
-msgstr "Hacer la tabla compacta"
+msgstr "Crea la tabla compacta"
 
 #. Default: "Manage Translations"
 #: components/manage/Multilingual/ManageTranslations
@@ -3137,7 +3137,7 @@ msgstr "Texto formateado"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Right"
-msgstr "Derecha"
+msgstr "Derecho"
 
 #. Default: "Rights"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -3655,7 +3655,7 @@ msgstr "Cadena de texto"
 #. Default: "Alternate row background color"
 #: config/Blocks
 msgid "Stripe alternate rows with color"
-msgstr "Raya las filas alternas con color"
+msgstr "Filas de franja alterna con color"
 
 #. Default: "Styling"
 #: helpers/Extensions/withBlockSchemaEnhancer
@@ -4521,7 +4521,7 @@ msgstr "Está intentando acceder a un elemento protegido, por favor, haga {login
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr ""
+msgstr "Está intentando acceder a un recurso protegido."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
