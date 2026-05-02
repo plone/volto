@@ -111,6 +111,18 @@ Finally, update your add-on file {file}`babel.config.js`.
 +  const presets = ['@plone/razzle'];
 ```
 
+### Replace `razzle-dev-utils` with `@plone/razzle-dev-utils`
+```{versionchanged} Volto 19.0.0-alpha.28
+```
+
+`@plone/razzle-dev-utils` is a maintained fork of the original `razzle-dev-utils` package that contains Volto-specific fixes and patches.
+
+To verify whether your project requires updates, search for any direct references to internal `razzle-dev-utils` modules:
+
+```shell
+grep -R "razzle-dev-utils" -n --exclude-dir=node_modules || true
+```
+
 ### `pnpm` has been upgraded to version 10
 ```{versionchanged} Volto 19.0.0-alpha.7
 ```
@@ -181,6 +193,11 @@ index c469fe9..c39a324 100644
 ```
 
 A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
+
+```{versionchanged} Volto 19
+This CSS class was previously named `visually-hidden-volto`.
+The suffix `-volto` was removed in Volto 19.
+```
 
 This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
 
@@ -332,6 +349,87 @@ To avoid this, we have forked the `razzle-plugin-scss` package and removed the d
 We pinned the version of `sass` to `1.32.0`, which is the one before they introduced the deprecation warnings.
 It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
 In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
+
+### Table block is now wrapped with containers to support horizontal scrolling on small viewports
+```{versionadded} Volto 19.0.0-alpha.26
+```
+
+To support horizontal scrolling of tables on small viewports, the table block is now wrapped with containers that allow horizontal scrolling when the table width exceeds the viewport width.
+
+```html
+<div className="block slate-table">
+  <div className="block-inner-container">
+    <table>
+      <!-- table content -->
+    </table>
+  </div>
+</div>
+```
+
+In the past, the table block was a direct child of the content area.
+If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
+
+### Centralized pnpm catalog
+```{versionadded} Volto 19.0.0-alpha.28
+```
+
+If you created your project with Cookieplone prior to December 22 2025, you must update it to support the new centralized pnpm catalog.
+Add the file :file:`.pnpmfile.cjs` to either the :file:`frontend` project folder or the root of the add-on with the following content:
+
+```js
+/* eslint-disable */
+const fs = require('fs');
+const path = require('path');
+
+const catalogPath = path.resolve(__dirname, 'core/catalog.json');
+let catalog = {};
+if (fs.existsSync(catalogPath)) {
+  const catalogData = fs.readFileSync(catalogPath, 'utf-8');
+  catalog = JSON.parse(catalogData);
+} else {
+  console.error('Catalog file does not exist at:', catalogPath);
+}
+
+module.exports = {
+  hooks: {
+    updateConfig(config) {
+      if (config.catalogs) {
+        config.catalogs.default ??= catalog;
+      }
+      return config;
+    },
+  },
+};
+```
+
+You can also re-run the Cookieplone generator with the same name metadata as your project to get the new file and structure, and move your code into it.
+
+### The image component now includes the original image only if necessary
+```{versionadded} Volto 19.0.0-alpha.29
+```
+
+The `Image` component has been optimized to include the original image URL only when necessary.
+Now it is only included if the image does not have all the defined scales present, which could happen if the image uploaded originally is smaller than the defined scales.
+In other scenarios where all the scales are present, including the original image could lead the browser to choose it over the scaled versions, impacting performance.
+This happened especially in high-density resolution screens where the largest scale available was not enough for the browser to pick a scaled version.
+
+This is a breaking change for projects that relied on the original image always being present, for example, in those projects where the original image was always included for large displays, such as televisions or wide-screen displays.
+A pair of additional scales were added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
+Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scales named `2k` and `4k`.
+
+### The "AutoSave" feature has been marked as experimental and opt-in by default
+```{versionadded} Volto 19.0.0-alpha.32
+```
+
+The "AutoSave" feature, which automatically saves content changes locally (localstorage) at regular intervals, has been marked as experimental in Volto 19.
+This is due to the need for further testing and refinement based on user feedback.
+It seems that there are still some edge cases that need to be addressed to ensure a smooth user experience.
+
+If you want to enable it in your project, you can set the `config.experimental.saveAsDraft` setting to `true` in your add-on configuration:
+
+```js
+config.experimental.saveAsDraft = true;
+```
 
 (upgrading-to-volto-18-x-x)=
 

@@ -178,7 +178,7 @@ const ManageTranslations = (props) => {
           <FormattedMessage
             id="Manage translations for {title}"
             defaultMessage="Manage translations for {title}"
-            values={{ title: <q>{content.title}</q> }}
+            values={{ title: <q>{content?.title || ''}</q> }}
           />
         </Segment>
         {content && (

@@ -194,3 +194,6 @@ export function getBlocksHierarchy(properties: any): any;
 export function findContainer(formData: object, { containerId }: {
     containerId: string;
 }): object | undefined;
+export function findParent(formData: object, { blockId }: {
+    blockId: string;
+}): object | undefined;
