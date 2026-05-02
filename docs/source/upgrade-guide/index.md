@@ -284,8 +284,9 @@ These packages have been removed from the Volto repository as they are no longer
 
 `@plone/client` is no longer developed or released from the `main` branch of the Volto monorepo.
 It is now developed and released from the `seven` branch, and is expected to be released as part of Plone 7.
+Its documentation, when changed, will be backported to the `main` branch so that it can be continue to be included in the main Plone 6 documentation at https://6.docs.plone.org/volto/client/index.html.
 
-If your project uses it and still references it as a workspace package, remove those references from your root `package.json` scripts and workspace-specific tooling.
+If your project uses it and still references it as a workspace package, remove those references from your root {file}`package.json` scripts and workspace-specific tooling.
 Use published packages from npm instead of workspace links when upgrading existing setups.
 
 ### Removed language settings
