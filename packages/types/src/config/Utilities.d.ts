@@ -1,3 +1,5 @@
+import type { StyleDefinition } from '../blocks';
+
 /**
  * Map utility "type" to its method signature.
  * Extend via module augmentation:
@@ -8,6 +10,7 @@ export interface UtilityTypeMap {
   transform: (data: any) => any;
   fieldFactoryInitialData: (intl: any) => Record<string, any>;
   fieldFactoryProperties: (intl: any) => Record<string, any>;
+  styleFieldDefinition: StyleFieldDefinitionUtility;
 }
 
 export type ValidatorUtilityArgs = {
@@ -20,6 +23,17 @@ export type ValidatorUtilityArgs = {
 export type ValidatorUtility = (
   options: ValidatorUtilityArgs,
 ) => string | null | undefined;
+
+export type StyleFieldDefinitionUtilityArgs = {
+  data: Record<string, unknown>;
+  container?: Record<string, unknown>;
+  blockType?: string;
+  fieldName: string;
+};
+
+export type StyleFieldDefinitionUtility = (
+  options: StyleFieldDefinitionUtilityArgs,
+) => readonly StyleDefinition[];
 
 type UtilityMethodFor<Type extends string> = Type extends keyof UtilityTypeMap
   ? UtilityTypeMap[Type]
