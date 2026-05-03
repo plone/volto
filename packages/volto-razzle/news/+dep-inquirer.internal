@@ -1,0 +1,2 @@
+Replace dependency `inquirer` with `@inquirer/confirm` to prompt for build
+confirmation. @davisagli

@@ -16,7 +16,7 @@ process.env.NODE_ENV = /production|staging|development$/.test(nodeEnv)
 
 const webpack = require('webpack');
 const fs = require('fs-extra');
-const inquirer = require('inquirer');
+const confirm = require('@inquirer/confirm').default;
 const chalk = require('chalk');
 const createConfig = require('../config/createConfigAsync');
 const loadRazzleConfig = require('../config/loadRazzleConfig');
@@ -51,20 +51,14 @@ loadRazzleConfig(webpack).then(
       process.env.RAZZLE_NONINTERACTIVE !== 'true' &&
       !cliArgs['noninteractive']
     ) {
-      await inquirer
-        .prompt([
-          {
-            type: 'confirm',
-            name: 'run',
-            message:
-              'This runs the production build, are you sure you want to run it?\nAdd --noninteractive to remove this prompt.',
-          },
-        ])
-        .then((answers) => {
-          if (answers.run === false) {
-            process.exit(1);
-          }
-        });
+      const run = await confirm({
+        message:
+          'This runs the production build, are you sure you want to run it?\nAdd --noninteractive to remove this prompt.',
+      });
+
+      if (!run) {
+        process.exit(1);
+      }
     }
 
     const clientOnly = /spa|single\-page\-application/.test(
