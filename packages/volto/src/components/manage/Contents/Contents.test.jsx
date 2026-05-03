@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import { __test__ as Contents } from './Contents';
+import { ContentsComponent as Contents } from './Contents';
 
 const mockStore = configureStore();
 
