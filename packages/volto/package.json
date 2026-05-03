@@ -298,7 +298,6 @@
     "postcss-loader": "catalog:",
     "postcss-scss": "4.0.9",
     "@plone/razzle-dev-utils": "workspace:*",
-    "react-docgen-typescript-plugin": "^1.0.8",
     "react-error-overlay": "6.0.9",
     "react-is": "^18.2.0",
     "release-it": "catalog:",

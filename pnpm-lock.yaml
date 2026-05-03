@@ -954,9 +954,6 @@ importers:
       postcss-scss:
         specifier: 4.0.9
         version: 4.0.9(postcss@8.5.10)
-      react-docgen-typescript-plugin:
-        specifier: ^1.0.8
-        version: 1.0.8(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12))
       react-error-overlay:
         specifier: 6.0.9
         version: 6.0.9
@@ -8941,12 +8938,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  react-docgen-typescript-plugin@1.0.8:
-    resolution: {integrity: sha512-r+dUkpm/dmiVvvrfOTYbbg0g7bmaeXTodQFIru8ZzCx/HNUAUNSmh1C0seXzDSLqDSXm5EiOAiJZVs4gqAZqzA==}
-    peerDependencies:
-      typescript: '>= 4.x'
-      webpack: '>= 4'
 
   react-docgen-typescript@2.4.0:
     resolution: {integrity: sha512-ZtAp5XTO5HRzQctjPU0ybY0RRCQO19X/8fxn3w7y2VVTUbGHDKULPTL4ky3vB05euSgG5NpALhEhDPvQ56wvXg==}
@@ -19365,19 +19356,6 @@ snapshots:
       - eslint
       - supports-color
       - vue-template-compiler
-
-  react-docgen-typescript-plugin@1.0.8(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12)):
-    dependencies:
-      debug: 4.3.4(supports-color@8.1.1)
-      find-cache-dir: 3.3.2
-      flat-cache: 3.2.0
-      micromatch: 4.0.8
-      react-docgen-typescript: 2.4.0(typescript@5.9.3)
-      tslib: 2.8.1
-      typescript: 5.9.3
-      webpack: 5.105.4(esbuild@0.25.12)
-    transitivePeerDependencies:
-      - supports-color
 
   react-docgen-typescript@2.4.0(typescript@5.9.3):
     dependencies:
