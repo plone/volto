@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import ModerateComments from './ModerateComments';
 
 const mockStore = configureStore();
@@ -53,10 +54,12 @@ describe('ModerateComments', () => {
 
     const { container } = render(
       <Provider store={store}>
-        <div>
-          <ModerateComments location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </div>
+        <CookiesProvider>
+          <div>
+            <ModerateComments location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </div>
+        </CookiesProvider>
       </Provider>,
     );
 

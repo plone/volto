@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import { render } from '@testing-library/react';
 
 import PersonalPreferences from './PersonalPreferences';
@@ -37,12 +38,14 @@ describe('PersonalPreferences', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <PersonalPreferences
-            location={{ pathname: '/blog' }}
-            closeMenu={() => {}}
-          />
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <PersonalPreferences
+              location={{ pathname: '/blog' }}
+              closeMenu={() => {}}
+            />
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
     expect(container).toMatchSnapshot();
