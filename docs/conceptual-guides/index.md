@@ -14,6 +14,7 @@ This section of the documentation contains conceptual guides for various aspects
 ```{toctree}
 :maxdepth: 2
 
+plone-mcp-v1-architecture
 seven-vs-volto-differences
 modular-arch-packages
 add-on-registry

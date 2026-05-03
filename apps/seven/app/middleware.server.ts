@@ -1,21 +1,24 @@
 import { jwtDecode } from 'jwt-decode';
-import { data, createContext } from 'react-router';
+import { data } from 'react-router';
 import { flattenToAppURL } from '@plone/helpers';
 import { getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
-import type PloneClient from '@plone/client';
 import type { Route } from './+types/root';
 import installServer from './config/server.server';
 import { migrateContent } from './config/server/content-migrations.server';
+import {
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
+  ploneUserContext,
+} from './config/plone-context';
 
-export const ploneClientContext = createContext<PloneClient>();
-export const ploneContentContext =
-  createContext<Awaited<ReturnType<PloneClient['getContent']>>['data']>();
-export const ploneSiteContext =
-  createContext<Awaited<ReturnType<PloneClient['getSite']>>['data']>();
-export const ploneUserContext = createContext<
-  Awaited<ReturnType<PloneClient['getUser']>>['data'] | null
->(null);
+export {
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
+  ploneUserContext,
+};
 
 export const installServerMiddleware: Route.MiddlewareFunction = async (
   { request, context },

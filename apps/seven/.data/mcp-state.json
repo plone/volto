@@ -1,0 +1,1781 @@
+{
+  "conversations": [
+    {
+      "id": "conv_5be4c15e64c64100a40c7a9b76218b3f",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:41:56.411Z",
+      "updatedAt": "2026-05-01T14:41:56.414Z",
+      "lastUsedAt": "2026-05-01T14:41:56.414Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_1c2c2f34925f4b81a838a98245941d30",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:42:26.933Z",
+      "updatedAt": "2026-05-01T14:42:26.935Z",
+      "lastUsedAt": "2026-05-01T14:42:26.935Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_43ff00418532452489e83f74f8d8f4eb",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:49:09.653Z",
+      "updatedAt": "2026-05-01T14:49:09.656Z",
+      "lastUsedAt": "2026-05-01T14:49:09.656Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_317d685e6c9b4e44aaaf1b803cca7fea",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:49:29.199Z",
+      "updatedAt": "2026-05-01T14:49:29.201Z",
+      "lastUsedAt": "2026-05-01T14:49:29.201Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_2093481108124d0eb0ce14425d680ee8",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:50:18.807Z",
+      "updatedAt": "2026-05-01T14:50:18.811Z",
+      "lastUsedAt": "2026-05-01T14:50:18.811Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_8f363f7491154351a71077c5a4827026",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:50:23.766Z",
+      "updatedAt": "2026-05-01T14:50:23.770Z",
+      "lastUsedAt": "2026-05-01T14:50:23.770Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_78b7c6f4a6414646ae4d0acde9a0f535",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:50:26.514Z",
+      "updatedAt": "2026-05-01T14:50:26.522Z",
+      "lastUsedAt": "2026-05-01T14:50:26.522Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_8b3e77902dc148d3826a5afd492426d1",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:54:33.814Z",
+      "updatedAt": "2026-05-01T14:54:33.819Z",
+      "lastUsedAt": "2026-05-01T14:54:33.819Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_f1eb0c14751348e0868a6a868bfe83ea",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:56:40.538Z",
+      "updatedAt": "2026-05-01T14:56:40.540Z",
+      "lastUsedAt": "2026-05-01T14:56:40.540Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_0583bceb6ed649769318a96d61b5b461",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:57:03.188Z",
+      "updatedAt": "2026-05-01T14:57:03.193Z",
+      "lastUsedAt": "2026-05-01T14:57:03.193Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_6b13b7c161bd479e9295d6062550ece1",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T14:57:08.947Z",
+      "updatedAt": "2026-05-01T14:57:17.214Z",
+      "lastUsedAt": "2026-05-01T14:57:17.214Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_588f97ade8a349f8b9e5459298111f7f",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:23:16.496Z",
+      "updatedAt": "2026-05-01T21:23:20.186Z",
+      "lastUsedAt": "2026-05-01T21:23:20.186Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_d096cbf880ef4083ad382da3c12702c6",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:25:34.670Z",
+      "updatedAt": "2026-05-01T21:25:34.676Z",
+      "lastUsedAt": "2026-05-01T21:25:34.676Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_a1b509b6f259467b882dc1bafc67eabf",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:26:54.791Z",
+      "updatedAt": "2026-05-01T21:26:54.793Z",
+      "lastUsedAt": "2026-05-01T21:26:54.793Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_441810e8b12b4e59881c6686e928d398",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:30:16.695Z",
+      "updatedAt": "2026-05-01T21:30:16.698Z",
+      "lastUsedAt": "2026-05-01T21:30:16.698Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_609207404c674f31aa66ec95cd1567e4",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:31:59.480Z",
+      "updatedAt": "2026-05-01T21:31:59.482Z",
+      "lastUsedAt": "2026-05-01T21:31:59.482Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_f769044b6aa744649851853d3eb896da",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:32:55.030Z",
+      "updatedAt": "2026-05-01T21:32:55.034Z",
+      "lastUsedAt": "2026-05-01T21:32:55.034Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_0c750fd8af83468aa298e2b8cb314a81",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:32:56.902Z",
+      "updatedAt": "2026-05-01T21:32:56.907Z",
+      "lastUsedAt": "2026-05-01T21:32:56.907Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_de1c03936ee94c309cb148dadc0925ba",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:33:00.683Z",
+      "updatedAt": "2026-05-01T21:33:00.687Z",
+      "lastUsedAt": "2026-05-01T21:33:00.687Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_e3af75cf2afc448fbad29f600f6ac9e6",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:33:04.848Z",
+      "updatedAt": "2026-05-01T21:33:04.852Z",
+      "lastUsedAt": "2026-05-01T21:33:04.852Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_27b01064864d469dbbfdfaa3c2f6b7e3",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:33:05.773Z",
+      "updatedAt": "2026-05-01T21:33:05.776Z",
+      "lastUsedAt": "2026-05-01T21:33:05.776Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_b01fed87a99645bfb65f0e2b0ebd7e24",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:33:06.546Z",
+      "updatedAt": "2026-05-01T21:33:06.548Z",
+      "lastUsedAt": "2026-05-01T21:33:06.548Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_86dbf32eb52347d8a2626b31deb6a2c2",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:33:23.641Z",
+      "updatedAt": "2026-05-01T21:33:23.644Z",
+      "lastUsedAt": "2026-05-01T21:33:23.644Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_b56a95c65f91404881abc88d9bdeecde",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:34:24.650Z",
+      "updatedAt": "2026-05-01T21:34:24.654Z",
+      "lastUsedAt": "2026-05-01T21:34:24.654Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_ec885a5c0d8a48ce9cf2d0d6e8ba1ec0",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:34:33.351Z",
+      "updatedAt": "2026-05-01T21:34:33.353Z",
+      "lastUsedAt": "2026-05-01T21:34:33.353Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    },
+    {
+      "id": "conv_c5d039ae756e4dc5bf84087c896a2ea8",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "title": "Chat for Welcome to Plone",
+      "status": "active",
+      "createdAt": "2026-05-01T21:37:39.682Z",
+      "updatedAt": "2026-05-01T21:37:39.684Z",
+      "lastUsedAt": "2026-05-01T21:37:39.684Z",
+      "metadata": {
+        "siteTitle": "Plone site"
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "id": "mcp_b9691ef7f2854666b5f16357be905b0b",
+      "conversationId": "conv_5be4c15e64c64100a40c7a9b76218b3f",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_911af16fc88d459a9164e9a4ac6de8b3",
+      "createdAt": "2026-05-01T14:41:56.413Z",
+      "updatedAt": "2026-05-01T14:41:56.413Z",
+      "expiresAt": "2026-05-01T14:51:56.000Z",
+      "lastUsedAt": "2026-05-01T14:41:56.413Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_35666d10ac5b4b8db453900cafb872d6",
+      "conversationId": "conv_1c2c2f34925f4b81a838a98245941d30",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_b82f0a0110e449bb8aeecf14a813e1d9",
+      "createdAt": "2026-05-01T14:42:26.934Z",
+      "updatedAt": "2026-05-01T14:42:26.934Z",
+      "expiresAt": "2026-05-01T14:52:26.000Z",
+      "lastUsedAt": "2026-05-01T14:42:26.934Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_67d550071daf43658a0ef2d56d2bf50b",
+      "conversationId": "conv_43ff00418532452489e83f74f8d8f4eb",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_ad2f1ec529694309b56f47a1396c5655",
+      "createdAt": "2026-05-01T14:49:09.654Z",
+      "updatedAt": "2026-05-01T14:49:09.655Z",
+      "expiresAt": "2026-05-01T14:59:09.000Z",
+      "lastUsedAt": "2026-05-01T14:49:09.655Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_7870215b99c04badaf7256033d3fab22",
+      "conversationId": "conv_317d685e6c9b4e44aaaf1b803cca7fea",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_903960323dc2491b808b58e6d1c74771",
+      "createdAt": "2026-05-01T14:49:29.199Z",
+      "updatedAt": "2026-05-01T14:49:29.200Z",
+      "expiresAt": "2026-05-01T14:59:29.000Z",
+      "lastUsedAt": "2026-05-01T14:49:29.200Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_8d54d68e59904ba485704fc0f35e755a",
+      "conversationId": "conv_2093481108124d0eb0ce14425d680ee8",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_5014e9e572554844842d097e32e2d4e6",
+      "createdAt": "2026-05-01T14:50:18.809Z",
+      "updatedAt": "2026-05-01T14:50:18.810Z",
+      "expiresAt": "2026-05-01T15:00:18.000Z",
+      "lastUsedAt": "2026-05-01T14:50:18.810Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_42c61d72b83544a886588a0d7e5f4546",
+      "conversationId": "conv_8f363f7491154351a71077c5a4827026",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_284d976612ed4903a3e6533e54991a8f",
+      "createdAt": "2026-05-01T14:50:23.768Z",
+      "updatedAt": "2026-05-01T14:50:23.769Z",
+      "expiresAt": "2026-05-01T15:00:23.000Z",
+      "lastUsedAt": "2026-05-01T14:50:23.769Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_c8357ee3d2d6447d9d4a286374553cfb",
+      "conversationId": "conv_78b7c6f4a6414646ae4d0acde9a0f535",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_36b2c6f5eb7b4c749dc9e18028cdc70e",
+      "createdAt": "2026-05-01T14:50:26.516Z",
+      "updatedAt": "2026-05-01T14:50:26.518Z",
+      "expiresAt": "2026-05-01T15:00:26.000Z",
+      "lastUsedAt": "2026-05-01T14:50:26.518Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_a3e74434fd0347e29e48ecf89688d387",
+      "conversationId": "conv_8b3e77902dc148d3826a5afd492426d1",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_6dca5b8e23f34456aed4ecc2b65889ca",
+      "createdAt": "2026-05-01T14:54:33.817Z",
+      "updatedAt": "2026-05-01T14:54:33.818Z",
+      "expiresAt": "2026-05-01T15:04:33.000Z",
+      "lastUsedAt": "2026-05-01T14:54:33.818Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_49b524fae4a2471897f629382d86d203",
+      "conversationId": "conv_f1eb0c14751348e0868a6a868bfe83ea",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_af8a48da7d9f466ca34f6092c5cdba77",
+      "createdAt": "2026-05-01T14:56:40.539Z",
+      "updatedAt": "2026-05-01T14:56:40.539Z",
+      "expiresAt": "2026-05-01T15:06:40.000Z",
+      "lastUsedAt": "2026-05-01T14:56:40.539Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_76fb75d08f324d84878b19990a48b268",
+      "conversationId": "conv_0583bceb6ed649769318a96d61b5b461",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_1aea22ae37734ab6b5a16f7621e30d69",
+      "createdAt": "2026-05-01T14:57:03.190Z",
+      "updatedAt": "2026-05-01T14:57:03.191Z",
+      "expiresAt": "2026-05-01T15:07:03.000Z",
+      "lastUsedAt": "2026-05-01T14:57:03.191Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_09c14b305bb04b04adf7abe286d94295",
+      "conversationId": "conv_6b13b7c161bd479e9295d6062550ece1",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_909ac21a0482403f9448fb1a534c8c72",
+      "createdAt": "2026-05-01T14:57:08.948Z",
+      "updatedAt": "2026-05-01T14:57:17.213Z",
+      "expiresAt": "2026-05-01T15:07:08.000Z",
+      "lastUsedAt": "2026-05-01T14:57:17.213Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_53df8afca3574c6aa08d1fae4f60fa58",
+      "conversationId": "conv_588f97ade8a349f8b9e5459298111f7f",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_7f6369d5cc1347e19a3d4f282fc467dc",
+      "createdAt": "2026-05-01T21:23:16.500Z",
+      "updatedAt": "2026-05-01T21:23:20.183Z",
+      "expiresAt": "2026-05-01T21:33:16.000Z",
+      "lastUsedAt": "2026-05-01T21:23:20.183Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_201e3beba85440bbb1a518fee43b1471",
+      "conversationId": "conv_d096cbf880ef4083ad382da3c12702c6",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_a71900b92daf4001b3a41b14a7680b37",
+      "createdAt": "2026-05-01T21:25:34.673Z",
+      "updatedAt": "2026-05-01T21:25:34.675Z",
+      "expiresAt": "2026-05-01T21:35:34.000Z",
+      "lastUsedAt": "2026-05-01T21:25:34.675Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_4303838e80294455a6ae3ead08355e95",
+      "conversationId": "conv_a1b509b6f259467b882dc1bafc67eabf",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_a3ee57cf257f4c89b9afab893088205a",
+      "createdAt": "2026-05-01T21:26:54.792Z",
+      "updatedAt": "2026-05-01T21:26:54.793Z",
+      "expiresAt": "2026-05-01T21:36:54.000Z",
+      "lastUsedAt": "2026-05-01T21:26:54.793Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_891b5941b6c745eaae9716bd6aa61056",
+      "conversationId": "conv_441810e8b12b4e59881c6686e928d398",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_cc4992c7e88e4e57b65b894b789624cb",
+      "createdAt": "2026-05-01T21:30:16.696Z",
+      "updatedAt": "2026-05-01T21:30:16.697Z",
+      "expiresAt": "2026-05-01T21:40:16.000Z",
+      "lastUsedAt": "2026-05-01T21:30:16.697Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_ad046b99fccf4ccca004f17bc5754077",
+      "conversationId": "conv_609207404c674f31aa66ec95cd1567e4",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_ff983e4acaea45da99c5fbd522f271d2",
+      "createdAt": "2026-05-01T21:31:59.481Z",
+      "updatedAt": "2026-05-01T21:31:59.482Z",
+      "expiresAt": "2026-05-01T21:41:59.000Z",
+      "lastUsedAt": "2026-05-01T21:31:59.482Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_bcdfe42b523246a395cf994234927247",
+      "conversationId": "conv_f769044b6aa744649851853d3eb896da",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_d992064a9ac44d739e2f69992b1fdf92",
+      "createdAt": "2026-05-01T21:32:55.032Z",
+      "updatedAt": "2026-05-01T21:32:55.033Z",
+      "expiresAt": "2026-05-01T21:42:55.000Z",
+      "lastUsedAt": "2026-05-01T21:32:55.033Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_783b6bab638c425dbdeaf4e94deb12af",
+      "conversationId": "conv_0c750fd8af83468aa298e2b8cb314a81",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_634fd884999c4437a41bd4d35d98e39f",
+      "createdAt": "2026-05-01T21:32:56.904Z",
+      "updatedAt": "2026-05-01T21:32:56.906Z",
+      "expiresAt": "2026-05-01T21:42:56.000Z",
+      "lastUsedAt": "2026-05-01T21:32:56.906Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_77e0ce05826640cab10df4ea5b76971f",
+      "conversationId": "conv_de1c03936ee94c309cb148dadc0925ba",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_dd76bd85285f424ab09e6486cb3b694c",
+      "createdAt": "2026-05-01T21:33:00.684Z",
+      "updatedAt": "2026-05-01T21:33:00.686Z",
+      "expiresAt": "2026-05-01T21:43:00.000Z",
+      "lastUsedAt": "2026-05-01T21:33:00.686Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_0ea2cc3731f84e6ab3d1e53de7c0a1a8",
+      "conversationId": "conv_e3af75cf2afc448fbad29f600f6ac9e6",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_8f78bc23e5ce4be9b4dec5268b30d882",
+      "createdAt": "2026-05-01T21:33:04.849Z",
+      "updatedAt": "2026-05-01T21:33:04.852Z",
+      "expiresAt": "2026-05-01T21:43:04.000Z",
+      "lastUsedAt": "2026-05-01T21:33:04.852Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_f26a134f1dbb4d3395b243784158b055",
+      "conversationId": "conv_27b01064864d469dbbfdfaa3c2f6b7e3",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_37c15932a32d4099880889f1e4f5dc1b",
+      "createdAt": "2026-05-01T21:33:05.775Z",
+      "updatedAt": "2026-05-01T21:33:05.776Z",
+      "expiresAt": "2026-05-01T21:43:05.000Z",
+      "lastUsedAt": "2026-05-01T21:33:05.776Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_baeb5caf0cc34b1886698211d0dcc438",
+      "conversationId": "conv_b01fed87a99645bfb65f0e2b0ebd7e24",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_ece8d2f15e2f48f0a81da3aa06073980",
+      "createdAt": "2026-05-01T21:33:06.547Z",
+      "updatedAt": "2026-05-01T21:33:06.548Z",
+      "expiresAt": "2026-05-01T21:43:06.000Z",
+      "lastUsedAt": "2026-05-01T21:33:06.548Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_89da6dcf6e4645f787eabbf46165ccdf",
+      "conversationId": "conv_86dbf32eb52347d8a2626b31deb6a2c2",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_9a32a6d67e5745d9a473b0649527e04a",
+      "createdAt": "2026-05-01T21:33:23.642Z",
+      "updatedAt": "2026-05-01T21:33:23.643Z",
+      "expiresAt": "2026-05-01T21:43:23.000Z",
+      "lastUsedAt": "2026-05-01T21:33:23.643Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_9f5030319ff244d591c15459fdbc33cf",
+      "conversationId": "conv_b56a95c65f91404881abc88d9bdeecde",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_f903bc872ac24b36b6c04e87c1aaafe0",
+      "createdAt": "2026-05-01T21:34:24.651Z",
+      "updatedAt": "2026-05-01T21:34:24.653Z",
+      "expiresAt": "2026-05-01T21:44:24.000Z",
+      "lastUsedAt": "2026-05-01T21:34:24.653Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_c3efda7711994018a258690cbce77427",
+      "conversationId": "conv_ec885a5c0d8a48ce9cf2d0d6e8ba1ec0",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_9a9b8db437954e94b8281612326aebd1",
+      "createdAt": "2026-05-01T21:34:33.352Z",
+      "updatedAt": "2026-05-01T21:34:33.353Z",
+      "expiresAt": "2026-05-01T21:44:33.000Z",
+      "lastUsedAt": "2026-05-01T21:34:33.353Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    },
+    {
+      "id": "mcp_8eaac6389ee4477db44bd1d734bf34de",
+      "conversationId": "conv_c5d039ae756e4dc5bf84087c896a2ea8",
+      "siteId": "http://localhost:55001/plone/@site",
+      "userId": "admin",
+      "origin": "seven-web",
+      "status": "active",
+      "scopes": [
+        "site.read",
+        "content.read",
+        "content.search",
+        "content.write",
+        "workflow.write",
+        "schema.read",
+        "blocks.read"
+      ],
+      "approvalPolicy": "standard_editor",
+      "tokenJti": "jti_35707bc957034c6889bd2917c47eccdf",
+      "createdAt": "2026-05-01T21:37:39.682Z",
+      "updatedAt": "2026-05-01T21:37:39.683Z",
+      "expiresAt": "2026-05-01T21:47:39.000Z",
+      "lastUsedAt": "2026-05-01T21:37:39.683Z",
+      "revokedAt": null,
+      "revokeReason": null,
+      "authBinding": {
+        "kind": "seven-auth-cookie"
+      },
+      "clientMetadata": {}
+    }
+  ],
+  "events": [
+    {
+      "id": "evt_dd11c5c3d84847dfb42b2106a00ae1ce",
+      "conversationId": "conv_5be4c15e64c64100a40c7a9b76218b3f",
+      "sessionId": "mcp_b9691ef7f2854666b5f16357be905b0b",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:41:56.414Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_c49f7b33bdee4e9594006f6e0e5c1425",
+      "conversationId": "conv_1c2c2f34925f4b81a838a98245941d30",
+      "sessionId": "mcp_35666d10ac5b4b8db453900cafb872d6",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:42:26.935Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_544ea57866354dde98675ace190c7036",
+      "conversationId": "conv_43ff00418532452489e83f74f8d8f4eb",
+      "sessionId": "mcp_67d550071daf43658a0ef2d56d2bf50b",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:49:09.656Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_60feab3db72a4fea9e22323c70aa5916",
+      "conversationId": "conv_317d685e6c9b4e44aaaf1b803cca7fea",
+      "sessionId": "mcp_7870215b99c04badaf7256033d3fab22",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:49:29.201Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_d46ac64d0b8a48eda1097d32e27c8e4c",
+      "conversationId": "conv_2093481108124d0eb0ce14425d680ee8",
+      "sessionId": "mcp_8d54d68e59904ba485704fc0f35e755a",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:50:18.811Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_8ee4fa94139e415e844c91410f11509c",
+      "conversationId": "conv_8f363f7491154351a71077c5a4827026",
+      "sessionId": "mcp_42c61d72b83544a886588a0d7e5f4546",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:50:23.770Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_33fdfc4154064cd88861ce611096efb9",
+      "conversationId": "conv_78b7c6f4a6414646ae4d0acde9a0f535",
+      "sessionId": "mcp_c8357ee3d2d6447d9d4a286374553cfb",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:50:26.522Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_80e1b046751740fe81aef551bc9ab717",
+      "conversationId": "conv_8b3e77902dc148d3826a5afd492426d1",
+      "sessionId": "mcp_a3e74434fd0347e29e48ecf89688d387",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:54:33.819Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_ac704ea160e74eafadb53b642869c758",
+      "conversationId": "conv_f1eb0c14751348e0868a6a868bfe83ea",
+      "sessionId": "mcp_49b524fae4a2471897f629382d86d203",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:56:40.540Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_66959db212ee4fd8a8a5aa3045bbde23",
+      "conversationId": "conv_0583bceb6ed649769318a96d61b5b461",
+      "sessionId": "mcp_76fb75d08f324d84878b19990a48b268",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:57:03.193Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_28aa65188dac400f98078d356b710c4b",
+      "conversationId": "conv_6b13b7c161bd479e9295d6062550ece1",
+      "sessionId": "mcp_09c14b305bb04b04adf7abe286d94295",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T14:57:08.951Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_ffb60ee9e4b44626920fa37f203dbddf",
+      "conversationId": "conv_6b13b7c161bd479e9295d6062550ece1",
+      "sessionId": "mcp_09c14b305bb04b04adf7abe286d94295",
+      "sequence": 2,
+      "eventType": "user_message",
+      "createdAt": "2026-05-01T14:57:17.214Z",
+      "actorType": "user",
+      "actorId": "admin",
+      "payload": {
+        "text": "Hello"
+      },
+      "summary": "Hello",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_29f241e2d2bc4d2f81fdf48373ece67a",
+      "conversationId": "conv_588f97ade8a349f8b9e5459298111f7f",
+      "sessionId": "mcp_53df8afca3574c6aa08d1fae4f60fa58",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:23:16.505Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_e3f40358ef824bc9b83587259fcf653d",
+      "conversationId": "conv_588f97ade8a349f8b9e5459298111f7f",
+      "sessionId": "mcp_53df8afca3574c6aa08d1fae4f60fa58",
+      "sequence": 2,
+      "eventType": "user_message",
+      "createdAt": "2026-05-01T21:23:20.186Z",
+      "actorType": "user",
+      "actorId": "admin",
+      "payload": {
+        "text": "asdad"
+      },
+      "summary": "asdad",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_49acb1eedc6845a883f4e73f5d6a1155",
+      "conversationId": "conv_d096cbf880ef4083ad382da3c12702c6",
+      "sessionId": "mcp_201e3beba85440bbb1a518fee43b1471",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:25:34.676Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_dd6a361366e24411aec908a2475c29f6",
+      "conversationId": "conv_a1b509b6f259467b882dc1bafc67eabf",
+      "sessionId": "mcp_4303838e80294455a6ae3ead08355e95",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:26:54.793Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_ba5479f276224deeadc644ae40d81bec",
+      "conversationId": "conv_441810e8b12b4e59881c6686e928d398",
+      "sessionId": "mcp_891b5941b6c745eaae9716bd6aa61056",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:30:16.698Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_16b5135a62014190b58e172c558ca990",
+      "conversationId": "conv_609207404c674f31aa66ec95cd1567e4",
+      "sessionId": "mcp_ad046b99fccf4ccca004f17bc5754077",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:31:59.482Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_1887e751d2f6485a90913f2c9060166c",
+      "conversationId": "conv_f769044b6aa744649851853d3eb896da",
+      "sessionId": "mcp_bcdfe42b523246a395cf994234927247",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:32:55.034Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_7eecee14489944a7b6ec1a2511625407",
+      "conversationId": "conv_0c750fd8af83468aa298e2b8cb314a81",
+      "sessionId": "mcp_783b6bab638c425dbdeaf4e94deb12af",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:32:56.907Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_ff749e84d0c54c3496ecc0995c9acfbd",
+      "conversationId": "conv_de1c03936ee94c309cb148dadc0925ba",
+      "sessionId": "mcp_77e0ce05826640cab10df4ea5b76971f",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:33:00.687Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_16414bdb82b54e5cb9a0db0c2c134f3f",
+      "conversationId": "conv_e3af75cf2afc448fbad29f600f6ac9e6",
+      "sessionId": "mcp_0ea2cc3731f84e6ab3d1e53de7c0a1a8",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:33:04.852Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_6ab1050c1efe43bd83e675b1f9fac2cf",
+      "conversationId": "conv_27b01064864d469dbbfdfaa3c2f6b7e3",
+      "sessionId": "mcp_f26a134f1dbb4d3395b243784158b055",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:33:05.776Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_53879c42cc3f4b85b124dff27da112e1",
+      "conversationId": "conv_b01fed87a99645bfb65f0e2b0ebd7e24",
+      "sessionId": "mcp_baeb5caf0cc34b1886698211d0dcc438",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:33:06.548Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_56839b1c2f2944cebabee29919820645",
+      "conversationId": "conv_86dbf32eb52347d8a2626b31deb6a2c2",
+      "sessionId": "mcp_89da6dcf6e4645f787eabbf46165ccdf",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:33:23.644Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_32fc26ef494e4777ac3ddfed4219e07c",
+      "conversationId": "conv_b56a95c65f91404881abc88d9bdeecde",
+      "sessionId": "mcp_9f5030319ff244d591c15459fdbc33cf",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:34:24.654Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_038b17470f8e4b79b0fada4c54b4b545",
+      "conversationId": "conv_ec885a5c0d8a48ce9cf2d0d6e8ba1ec0",
+      "sessionId": "mcp_c3efda7711994018a258690cbce77427",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:34:33.353Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    },
+    {
+      "id": "evt_d626ead7a22b4a9baf3d6cec608b9248",
+      "conversationId": "conv_c5d039ae756e4dc5bf84087c896a2ea8",
+      "sessionId": "mcp_8eaac6389ee4477db44bd1d734bf34de",
+      "sequence": 1,
+      "eventType": "session_started",
+      "createdAt": "2026-05-01T21:37:39.684Z",
+      "actorType": "system",
+      "actorId": "admin",
+      "payload": {
+        "siteId": "http://localhost:55001/plone/@site",
+        "scopes": [
+          "site.read",
+          "content.read",
+          "content.search",
+          "content.write",
+          "workflow.write",
+          "schema.read",
+          "blocks.read"
+        ],
+        "approvalPolicy": "standard_editor"
+      },
+      "summary": "MCP session started",
+      "contentRefs": []
+    }
+  ],
+  "approvals": []
+}

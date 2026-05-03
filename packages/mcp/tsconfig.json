@@ -1,0 +1,18 @@
+{
+  "extends": "tsconfig/react-library.json",
+  "include": [
+    "index.ts",
+    "*.ts",
+    "routes/**/*.ts",
+    "routes/**/*.tsx"
+  ],
+  "exclude": ["node_modules", "dist", "coverage", "*.test.ts"],
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "lib": ["ES2023", "DOM"],
+    "types": ["node"],
+    "paths": {
+      "seven/*": ["../../apps/seven/*"]
+    }
+  }
+}

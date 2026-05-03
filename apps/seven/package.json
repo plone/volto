@@ -29,6 +29,7 @@
     "@plone/components": "workspace:*",
     "@plone/helpers": "workspace:*",
     "@plone/layout": "workspace:*",
+    "@plone/mcp": "workspace:*",
     "@plone/plate": "workspace:*",
     "@plone/publicui": "workspace:*",
     "@plone/react-router": "workspace:*",

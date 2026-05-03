@@ -125,6 +125,5 @@ export default function install(config: ConfigType) {
       },
     ],
   });
-
   return config;
 }

@@ -4,6 +4,7 @@ const addons = [
   '@plone/blocks',
   '@plone/layout',
   '@plone/cmsui',
+  '@plone/mcp',
   '@plone/publicui',
   '@plone/agave',
 ];

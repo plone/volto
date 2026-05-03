@@ -1,0 +1,84 @@
+{
+  "name": "@plone/mcp",
+  "description": "Plone MCP runtime primitives for Seven",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "1.0.0-alpha.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git",
+    "directory": "packages/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "plone",
+    "mcp",
+    "seven",
+    "ai"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "index.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./index.ts",
+    "./approval.server": "./approval.server.ts",
+    "./auth.server": "./auth.server.ts",
+    "./chat.server": "./chat.server.ts",
+    "./config.server": "./config.server.ts",
+    "./file-storage.server": "./file-storage.server.ts",
+    "./persistence.server": "./persistence.server.ts",
+    "./routes/approval": "./routes/approval.server.ts",
+    "./routes/chat": "./routes/chat.server.ts",
+    "./routes/chat-page": "./routes/chat-page.tsx",
+    "./routes/conversation": "./routes/conversation.server.ts",
+    "./routes/layout": "./routes/layout.tsx",
+    "./routes/playground": "./routes/playground.tsx",
+    "./routes/session": "./routes/session.server.ts",
+    "./session.server": "./session.server.ts",
+    "./token.server": "./token.server.ts",
+    "./tools.server": "./tools.server.ts",
+    "./types": "./types.ts"
+  },
+  "scripts": {
+    "check:ts": "pnpm --filter seven run typegen && tsc --project tsconfig.json",
+    "test": "vitest",
+    "dry-release": "release-it --dry-run",
+    "release": "release-it",
+    "release-major-alpha": "release-it major --preRelease=alpha",
+    "release-alpha": "release-it --preRelease=alpha",
+    "prettier:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint --max-warnings=0 './**/*.{js,jsx,ts,tsx}' --fix --no-error-on-unmatched-pattern",
+    "stylelint:fix": "sh -c 'if [ -f .stylelintrc ] || [ -f .stylelintrc.json ] || [ -f .stylelintrc.js ] || [ -f .stylelintrc.cjs ] || [ -f stylelint.config.js ] || [ -f stylelint.config.cjs ] || [ -f stylelint.config.mjs ]; then stylelint '''./**/*.{css,scss,less}''' --fix --allow-empty-input; else echo \"No local stylelint config, skipping\"; fi'",
+    "format": "pnpm prettier:fix && pnpm lint:fix && pnpm stylelint:fix"
+  },
+  "dependencies": {
+    "@plone/client": "workspace:*",
+    "@plone/helpers": "workspace:*",
+    "@plone/react-router": "workspace:*",
+    "@plone/registry": "workspace:*",
+    "jwt-decode": "^4.0.0",
+    "react": "catalog:",
+    "react-router": "catalog:"
+  },
+  "devDependencies": {
+    "@plone/types": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "release-it": "catalog:",
+    "tsconfig": "workspace:*",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}
