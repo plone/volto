@@ -45,7 +45,6 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 
 | Package | Location |
 |---|---|
-| [`@plone/client`](https://www.npmjs.com/package/@plone/client) | [`packages/client`](https://github.com/plone/volto/tree/main/packages/client#readme) |
 | [`@plone/components`](https://www.npmjs.com/package/@plone/components) | [`packages/components`](https://github.com/plone/volto/tree/main/packages/components#readme) |
 | [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme) |
 | [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts) | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme) |
