@@ -2,6 +2,7 @@ import { render, waitFor, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import Controlpanel from './Controlpanel';
 
 const mockStore = configureStore();
@@ -70,10 +71,12 @@ describe('Controlpanel', () => {
     store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
-          <Route path={'/controlpanel/:id'} component={Controlpanel} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
+            <Route path={'/controlpanel/:id'} component={Controlpanel} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -83,10 +86,12 @@ describe('Controlpanel', () => {
   it('renders a controlpanel component with error', async () => {
     const { container, rerender } = render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
-          <Route path={'/controlpanel/:id'} component={Controlpanel} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
+            <Route path={'/controlpanel/:id'} component={Controlpanel} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -97,10 +102,12 @@ describe('Controlpanel', () => {
 
     rerender(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
-          <Route path={'/controlpanel/:id'} component={Controlpanel} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
+            <Route path={'/controlpanel/:id'} component={Controlpanel} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

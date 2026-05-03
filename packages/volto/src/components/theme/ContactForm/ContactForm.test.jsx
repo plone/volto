@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import ContactForm from './ContactForm';
 
 vi.mock('../../manage/Toolbar/Toolbar', () => ({
@@ -29,10 +30,12 @@ describe('Contact form', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <ContactForm />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <ContactForm />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -57,10 +60,12 @@ describe('Contact form', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <ContactForm />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <ContactForm />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

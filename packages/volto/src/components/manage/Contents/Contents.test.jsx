@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import { ContentsComponent as Contents } from './Contents';
 
@@ -111,10 +112,12 @@ describe('Contents', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Contents location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Contents location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import MultilingualRedirector from './MultilingualRedirector';
 
@@ -21,9 +22,11 @@ describe('MultilingualRedirector', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter>
-          <MultilingualRedirector pathname={'/'} />
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <MultilingualRedirector pathname={'/'} />
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
     const json = component.toJSON();
