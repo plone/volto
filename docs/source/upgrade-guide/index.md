@@ -194,6 +194,11 @@ index c469fe9..c39a324 100644
 
 A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
 
+```{versionchanged} Volto 19
+This CSS class was previously named `visually-hidden-volto`.
+The suffix `-volto` was removed in Volto 19.
+```
+
 This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
 
 If your project, add-on, or custom theme already defines a `visually-hidden` class, or uses similar accessibility helpers, the new global definition may override or conflict with existing custom styles.
@@ -273,6 +278,17 @@ These packages have been removed from the Volto repository as they are no longer
 - `@plone/volto-guillotina`: No longer actively maintained
 - `@plone/volto-testing`: Testing functionality is now integrated directly in Volto core
 
+### `@plone/client` was removed from the monorepo
+```{versionremoved} Volto 19.0.0-alpha.33
+```
+
+`@plone/client` is no longer developed or released from the `main` branch of the Volto monorepo.
+It is now developed and released from the `seven` branch, and is expected to be released as part of Plone 7.
+Its documentation, when changed, will be backported to the `main` branch so that it can continue to be included in the main Plone 6 documentation at https://6.docs.plone.org/volto/client/index.html.
+
+If your project uses it and still references it as a workspace package, remove those references from your root {file}`package.json` scripts and workspace-specific tooling.
+Use published packages from npm instead of workspace links when upgrading existing setups.
+
 ### Removed language settings
 ```{versionremoved} Volto 19
 ```
@@ -300,13 +316,12 @@ config.settings.showRelatedItems = false;
 The default (English) literal "Head title" in the `teaser` block has been renamed to "Kicker" for accuracy and clarity.
 The `head_title` property and the translation id (`head_title`) in the `teaser` block settings has been kept for backwards compatibility.
 
-### `@plone/components` and `@plone/client` were updated to the latest alphas developed for Seven
+### `@plone/components` was updated to the latest alphas developed for Seven
 ```{versionadded} Volto 19.0.0-alpha.6
 ```
-`@plone/components` and `@plone/client` are in active development for Seven and they have been updated to the latest alphas.
-You can still use them in Volto using the `workspace` protocol in your `package.json` file.
-However, check the breaking changes issued for these packages in the respective changelogs.
-It is recommended that you use the released versions of these packages instead of the workspace protocol, unless you need a specific feature or fix that is released yet.
+`@plone/components` is in active development for Seven and has been updated to the latest alphas.
+Check the breaking changes issued for this package in its changelog.
+It is recommended that you use the released npm versions instead of the workspace protocol, unless you need a specific feature or fix that is not released yet.
 
 ### `AlignWidget` and `ButtonsWidget` are now Semantic UI-free
 ```{versionadded} Volto 19.0.0-alpha.10
@@ -426,6 +441,20 @@ If you have shadows of any of these components, they need to be updated:
 - {file}`Field.jsx`
 - {file}`ArrayWidget.jsx`
 - {file}`SelectStyling.jsx`
+
+### The "AutoSave" feature has been marked as experimental and opt-in by default
+```{versionadded} Volto 19.0.0-alpha.32
+```
+
+The "AutoSave" feature, which automatically saves content changes locally (localstorage) at regular intervals, has been marked as experimental in Volto 19.
+This is due to the need for further testing and refinement based on user feedback.
+It seems that there are still some edge cases that need to be addressed to ensure a smooth user experience.
+
+If you want to enable it in your project, you can set the `config.experimental.saveAsDraft` setting to `true` in your add-on configuration:
+
+```js
+config.experimental.saveAsDraft = true;
+```
 
 (upgrading-to-volto-18-x-x)=
 
@@ -841,8 +870,6 @@ The following table lists the old and new Makefile commands and the new commands
 | test-acceptance-guillotina-headless | guillotina-ci-acceptance-test | Run Cypress tests in headless mode for CI for Guillotina tests |  |
 | full-test-acceptance-guillotina | guillotina-ci-acceptance-test-run-all | With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests |  |
 | start-test-acceptance-server-5 | plone5-acceptance-backend-start | Start backend acceptance server for Plone 5 tests |  |
-| start-test-acceptance-server-detached | acceptance-server-detached-start | Starts test acceptance server main fixture in detached mode (daemon) |  |
-| stop-test-acceptance-server-detached | acceptance-server-detached-stop | Stop test acceptance server main fixture in detached mode (daemon) |  |
 
 
 The documentation has been updated as well to reflect this change.

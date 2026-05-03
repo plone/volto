@@ -189,6 +189,9 @@ let config = {
     addBlockButton: {
       enabled: true,
     },
+    saveAsDraft: {
+      enabled: false,
+    },
   },
   widgets: {},
   views: {},
