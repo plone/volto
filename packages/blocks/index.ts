@@ -92,6 +92,11 @@ export default function install(config: ConfigType) {
   };
 
   config.blocks.plateBlocksConfig = plateBlocksConfig;
+  config.registerUtility({
+    type: 'styleFieldDefinition',
+    name: 'blockWidth',
+    method: () => config.blocks.widths ?? [],
+  });
 
   return config;
 }
