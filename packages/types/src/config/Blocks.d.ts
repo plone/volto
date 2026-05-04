@@ -135,6 +135,21 @@ export interface BlockConfigBase {
   // TODO: Improve extensions shape
   extensions?: Record<string, BlockExtension>;
   blocksConfig?: Partial<BlocksConfigData>;
+  /**
+   * Documentation for the block, useful for reference docs, LLMs, and human readers.
+   * Can be a plain object or a function receiving the block config and intl,
+   * allowing dynamic content such as reading the current variations list.
+   */
+  docs?:
+    | BlockDocs
+    | ((args: { blockConfig: BlockConfigBase; intl: IntlShape }) => BlockDocs);
+}
+
+export interface BlockDocs {
+  description: string;
+  usage_notes?: string;
+  example?: Record<string, unknown>;
+  field_hints?: Record<string, unknown>;
 }
 
 export type SchemaEnhancerArgs = {

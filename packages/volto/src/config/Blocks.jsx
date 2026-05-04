@@ -265,6 +265,13 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
+    docs: {
+      description:
+        "Displays the content item's title field. Automatically added as the first block on all content pages. Do not add this block manually, the Title block will be automatically created by Plone.",
+      usage_notes:
+        "To set the page title, use the 'title' field of the content object itself",
+      example: { '@type': 'title' },
+    },
   },
   description: {
     id: 'description',
@@ -278,6 +285,13 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
+    docs: {
+      description:
+        "Displays the content item's description/summary field. Renders automatically from the content object.",
+      usage_notes:
+        "To set the page description, use the 'description' field of the content object itself",
+      example: { '@type': 'description' },
+    },
   },
   image: {
     id: 'image',
@@ -291,6 +305,23 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     getSizes: getImageBlockSizes,
+    docs: {
+      description:
+        'Displays an internal or external image with optional title, description, alt text, alignment, size, and link. Use for standalone images within page content.',
+      usage_notes:
+        "For INTERNAL Plone images: set 'url' to the Image content object path (e.g. /my-folder/my-image) or a full URL — both are accepted and get converted to a UID-based path when stored. Set 'image_field' to 'image'. For EXTERNAL images: set 'url' to the full image URL and omit 'image_field'. Do NOT use @@images URLs. Do not set 'align' or 'size' when nesting inside another block (e.g. gridBlock) since the parent block controls layout.",
+      example: {
+        '@type': 'image',
+        url: 'https://example.com/images/logo.png',
+        alt: 'Logo',
+        description: 'External logo image',
+      },
+      field_hints: {
+        url: 'EXTERNAL: direct image URL. INTERNAL: path to Image content object or full URL (converted to UID-based path on save) — NOT the @@images URL.',
+        image_field:
+          "REQUIRED for internal Plone images, set to 'image'. MUST BE OMITTED for external image URLs.",
+      },
+    },
   },
   leadimage: {
     id: 'leadimage',
@@ -339,6 +370,43 @@ const blocksConfig = {
       },
     ],
     getAsyncData: getListingBlockAsyncData,
+    docs: ({ blockConfig: _blockConfig }) => ({
+      description:
+        'Renders a dynamic list of content items from a catalog query. Use for news feeds, event listings, filtered content collections, or any scenario where content should be pulled dynamically. For static manually-curated links, use the Teaser block instead.',
+      usage_notes:
+        "The 'querystring' and 'variation' fields are required. When 'sort_order' is 'descending', also set 'sort_order_boolean' to true. 'b_size' and 'limit' values must be strings (e.g. '10'), not integers.",
+      example: {
+        '@type': 'listing',
+        headline: 'Latest News',
+        headlineTag: 'h2',
+        variation: 'summary',
+        querystring: {
+          query: [
+            {
+              i: 'portal_type',
+              o: 'plone.app.querystring.operation.selection.any',
+              v: ['News Item'],
+            },
+            {
+              i: 'path',
+              o: 'plone.app.querystring.operation.string.absolutePath',
+              v: '/news',
+            },
+          ],
+          sort_on: 'effective',
+          sort_order: 'descending',
+          b_size: '6',
+        },
+      },
+      field_hints: {
+        querystring:
+          "Required. Object with 'query' (required array of filter criteria), optional 'sort_on', 'sort_order', 'sort_order_boolean', 'b_size' (string, items per page), 'limit' (string, max total results). Multiple criteria are combined with AND logic. Each criterion requires 'i' (index name), 'o' (FULL operation string), 'v' (value). " +
+          'Available indexes and operations are dynamic and depend on the site registry — use the /@querystring API endpoint to retrieve the current list. ' +
+          "sort_order: 'ascending' (default) or 'descending'. When 'sort_order' is 'descending', also set 'sort_order_boolean' to true.",
+        variation:
+          "Required. See the 'variations' field for the list of registered variation IDs.",
+      },
+    }),
   },
   video: {
     id: 'video',
@@ -353,6 +421,18 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     allowedPeertubeInstances: [],
+    docs: {
+      description:
+        'Embeds a video by URL (YouTube, Vimeo, or direct video file). Use for embedding video content within page text.',
+      usage_notes: '',
+      example: {
+        '@type': 'video',
+        url: 'https://youtu.be/n837R4emhns?si=Xw2mQDxDVI02CZvz',
+      },
+      field_hints: {
+        url: 'Video URL (YouTube, Vimeo, or direct video file link).',
+      },
+    },
   },
   toc: {
     id: 'toc',
@@ -366,6 +446,13 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
+    docs: {
+      description:
+        'Auto-generates a navigation list from heading blocks on the page. Use to provide an overview and quick navigation for long pages.',
+      usage_notes:
+        'No configuration needed. Automatically scans the page for heading blocks.',
+      example: { '@type': 'toc' },
+    },
   },
   maps: {
     id: 'maps',
@@ -378,6 +465,19 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
+    docs: {
+      description:
+        'Embeds an interactive map via a URL. Use for displaying geographic locations or maps within page content.',
+      usage_notes:
+        "The 'url' field should be an embed URL (e.g. a Google Maps embed URL starting with https://www.google.com/maps/embed).",
+      example: {
+        '@type': 'maps',
+        url: 'https://www.google.com/maps/embed?pb=...',
+      },
+      field_hints: {
+        url: 'Map embed URL. For Google Maps: use the embed URL from Share > Embed a map.',
+      },
+    },
   },
   html: {
     id: 'html',
@@ -390,6 +490,19 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
+    docs: {
+      description:
+        'Renders raw HTML markup. Use only for trusted, custom HTML that cannot be achieved with other blocks.',
+      usage_notes:
+        'Only use trusted content. Prefer other blocks when possible.',
+      example: {
+        '@type': 'html',
+        html: '<p>Custom <strong>HTML</strong> content.</p>',
+      },
+      field_hints: {
+        html: 'Raw HTML string to render. Must be trusted content.',
+      },
+    },
   },
   search: {
     id: 'search',
@@ -422,6 +535,60 @@ const blocksConfig = {
         isDefault: false,
       },
     ],
+    docs: {
+      description:
+        'Renders a searchable, filterable list of content items. Use for any content collection where users need to find items interactively. Unlike the Listing block, the Search block adds a live search input, sorting controls, and optional faceted filters.',
+      usage_notes:
+        "'query' is an object (analogous to 'querystring' in the Listing block) that pre-filters all results before the user interacts. " +
+        "It contains a 'query' array inside it — do NOT set 'query' to an array directly. Use {'query': []} to show all content with no pre-filtering. " +
+        "'b_size' and 'limit' inside 'query' must be strings (e.g. '10'), not integers.",
+      example: {
+        '@type': 'search',
+        headline: 'News',
+        query: {
+          query: [
+            {
+              i: 'portal_type',
+              o: 'plone.app.querystring.operation.selection.any',
+              v: ['News Item'],
+            },
+          ],
+          sort_on: 'effective',
+          sort_order: 'descending',
+          b_size: '10',
+        },
+        showSearchInput: true,
+        showSortOn: true,
+        showTotalResults: true,
+        variation: 'facetsRightSide',
+      },
+      field_hints: {
+        query:
+          "Object that pre-filters all search results. Contains 'query' (required array of filter criteria), optional 'sort_on', 'sort_order', 'b_size' (string, items per page), 'limit' (string, max total). " +
+          'Use {"query": []} to show all content with no pre-filtering. ' +
+          'Each criterion requires "i" (index), "o" (FULL operation string), "v" (value). ' +
+          'Indexes: portal_type, path, Title, Description, SearchableText, Creator, getId, review_state, Subject, created, modified. ' +
+          'Operations (always use the FULL string): ' +
+          'plone.app.querystring.operation.selection.any/none/all — v: array of strings, e.g. ["News Item"]; ' +
+          'plone.app.querystring.operation.string.contains/is/isNot — v: string; ' +
+          'plone.app.querystring.operation.string.absolutePath — v: "/path/to/folder::depth" (e.g. "/en/news::1"); ' +
+          'plone.app.querystring.operation.string.relativePath — v: "./" (current) or "../" (parent); ' +
+          'plone.app.querystring.operation.string.currentUser — v: "" (matches logged-in user, use with Creator index); ' +
+          'plone.app.querystring.operation.date.largerThan/lessThan — v: "YYYY-MM-DD". ' +
+          "sort_on values: 'sortable_title', 'effective', 'created', 'modified', 'getObjPositionInParent', 'start', 'end', 'review_state'. " +
+          "sort_order: 'ascending' (default) or 'descending'.",
+        showSearchInput:
+          'Boolean. Show a live text search input above results. Default: true.',
+        showSortOn:
+          'Boolean. Show a sort-by dropdown above results. Default: false.',
+        showTotalResults:
+          'Boolean. Show the total result count above results. Default: true.',
+        facets:
+          'Array of facet filter definitions. Each: {"title": "Label", "field": "catalog_index", "type": "selectFacet|checkboxFacet|daterangeFacet|toggleFacet", "hidden": false, "advanced": false}. Omit or use [] for no facets.',
+        variation:
+          "Controls facet panel position: 'facetsRightSide' (default), 'facetsLeftSide', or 'facetsTopSide'.",
+      },
+    },
     extensions: {
       facetWidgets: {
         rewriteOptions: (name, choices) => {
@@ -495,6 +662,32 @@ const blocksConfig = {
     templates: GridTemplates,
     maxLength: 4,
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
+    docs: {
+      description:
+        'Organizes child blocks (teaser, image, slate, listing) in a responsive column layout. Use to display multiple items side by side. Maximum 4 child blocks per grid.',
+      usage_notes:
+        "The 'blocks' object keys and 'blocks_layout.items' array must use matching UUIDs (these are generated automatically when using the Plone MCP block tools). Only 'image', 'listing', 'slate', and 'teaser' are allowed as children. Do not set 'align', 'size', or 'styles.align' on child image or teaser blocks, the grid controls layout.",
+      example: {
+        '@type': 'gridBlock',
+        blocks: {
+          'uuid-1': {
+            '@type': 'teaser',
+            href: [{ '@id': '/en/news/article-one', title: 'Article One' }],
+          },
+          'uuid-2': {
+            '@type': 'teaser',
+            href: [{ '@id': '/en/news/article-two', title: 'Article Two' }],
+          },
+        },
+        blocks_layout: { items: ['uuid-1', 'uuid-2'] },
+      },
+      field_hints: {
+        blocks:
+          "Object of child blocks keyed by UUID. Each child must have '@type' and required fields for that block type. Maximum 4 blocks. Allowed types: 'image', 'listing', 'slate', 'teaser'.",
+        blocks_layout:
+          "Object with 'items' array of child block UUIDs in display order. Must match the keys of 'blocks'.",
+      },
+    },
   },
   teaser: {
     id: 'teaser',
@@ -517,6 +710,30 @@ const blocksConfig = {
         template: TeaserBlockDefaultBody,
       },
     ],
+    docs: {
+      description:
+        'Displays a visual card linking to a content item, showing its title, description, and image. Use for featured content, call-to-action cards, or manually curated highlights. Unlike the Listing block, the Teaser references a single specific content item.',
+      usage_notes:
+        "The 'href' field is required and usually the only field needed — the teaser automatically uses the target's title, description, and image. Set 'overwrite: true' only when you need to customize those values; changes to the target content will then NOT be reflected automatically. Do not use 'styles.align' inside a gridBlock — the parent controls layout.",
+      example: {
+        '@type': 'teaser',
+        href: [
+          {
+            '@id': '/en/news/annual-report-2025',
+            title: 'Annual Report 2025',
+          },
+        ],
+      },
+      field_hints: {
+        href: 'Required. Array with exactly one object: [{"@id": "/path/to/content", "title": "Title"}]. For external links: [{"@id": "https://example.com", "title": "Example"}].',
+        overwrite:
+          'Set true only when customizing title, description, or image independently of the target content.',
+        preview_image:
+          'Only used when \'overwrite\' is true. Array with one object: [{"@id": "/path/to/image", "image_field": "image"}]. Omit \'image_field\' for external image URLs.',
+        styles:
+          "Object with 'align' ('left', 'right', 'center'). Do not set styles when using this block inside a gridBlock.",
+      },
+    },
   },
 };
 
