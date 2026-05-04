@@ -1,0 +1,1 @@
+Fix Toast component accessibility by adding a visually hidden, translated type label (Success, Error, Warning, Information) for screen readers. Fix date range validator error messages to display human-readable dates instead of raw ISO strings. @Wagner3UB

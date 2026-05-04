@@ -3,6 +3,7 @@
 exports[`renders a Toast info component 1`] = `
 [
   <svg
+    aria-hidden={true}
     className="icon"
     dangerouslySetInnerHTML={
       {
@@ -23,6 +24,11 @@ exports[`renders a Toast info component 1`] = `
   <div
     className="toast-inner-content"
   >
+    <span
+      className="toast-visually-hidden"
+    >
+      Information
+    </span>
     <h4>
       I'm a title
     </h4>
