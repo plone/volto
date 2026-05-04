@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { IntlProvider } from 'react-intl';
 
 import Edit from './TableBlockEdit';
 
@@ -18,21 +19,17 @@ test('renders an edit table block component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <Edit
-        data={{ table: { rows: [] } }}
-        selected={false}
-        block="1234"
-        onAddBlock={() => {}}
-        onChangeBlock={() => {}}
-        onSelectBlock={() => {}}
-        onDeleteBlock={() => {}}
-        onInsertBlock={() => {}}
-        onFocusPreviousBlock={() => {}}
-        onFocusNextBlock={() => {}}
-        handleKeyDown={() => {}}
-        onMutateBlock={() => {}}
-        index={1}
-      />
+      <IntlProvider locale="en" messages={{}}>
+        <Edit
+          data={{ table: { rows: [] } }}
+          selected={false}
+          block="1234"
+          onAddBlock={() => {}}
+          onChangeBlock={() => {}}
+          onSelectBlock={() => {}}
+          index={1}
+        />
+      </IntlProvider>
     </Provider>,
   );
   const json = component.toJSON();
