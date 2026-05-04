@@ -1637,6 +1637,11 @@ msgstr "Reparieren"
 msgid "Fixed width table cells"
 msgstr "Tabellen-Zellen mit fester Breite"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Fokus auf"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2309,6 +2314,16 @@ msgstr "Mittel"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Gruppenmitgliedschaft aktualisiert"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Menü geschlossen"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Menü geöffnet"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm

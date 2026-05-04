@@ -1632,6 +1632,11 @@ msgstr "உறவுகளை சரிசெய்யவும்"
 msgid "Fixed width table cells"
 msgstr "நிலையான அகல அட்டவணை செல்கள்"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr ""
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2304,6 +2309,16 @@ msgstr "சராசரி"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "உறுப்பினர் புதுப்பிக்கப்பட்டது"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm

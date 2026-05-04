@@ -1637,6 +1637,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "固定表格单元格宽度"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "聚焦于"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2309,6 +2314,16 @@ msgstr "中等"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "成员身份更新"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "菜单已关闭"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "菜单已打开"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm

@@ -1632,6 +1632,11 @@ msgstr "Konpondu erlazioak"
 msgid "Fixed width table cells"
 msgstr "Tamaina finkoko taularen zeldak"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Zentratu honetan"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2304,6 +2309,16 @@ msgstr "Ertaina"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Kidetza eguneratu da"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Menua itxita"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Menua irekita"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
