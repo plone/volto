@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-03-21 19:09+0000\n"
+"PO-Revision-Date: 2026-05-04 07:09+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language: es\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
+"Language: es\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -379,7 +379,7 @@ msgstr "Ruta de url alternativa (obligatorio)"
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr "La url alternativa debe comenzar con un carácter especial '/'."
+msgstr "La url alternativa debe comenzar con un carácter /."
 
 #. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
@@ -592,7 +592,7 @@ msgstr "Celda"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Center"
-msgstr "Centro"
+msgstr "Central"
 
 #. Default: "Change Note"
 #: components/manage/History/History
@@ -1904,7 +1904,7 @@ msgstr "Valor heredado"
 #. Default: "Insert col after"
 #: config/Blocks
 msgid "Insert col after"
-msgstr "Insertar columna después"
+msgstr "Insertar columna despúes"
 
 #. Default: "Insert col before"
 #: config/Blocks
@@ -1914,7 +1914,7 @@ msgstr "Insertar columna antes"
 #. Default: "Insert row after"
 #: config/Blocks
 msgid "Insert row after"
-msgstr "Insertar fila después"
+msgstr "Insertar fila tras"
 
 #. Default: "Insert row before"
 #: config/Blocks
@@ -2196,7 +2196,7 @@ msgstr "Inicio de sesión"
 #. Default: "Logged out"
 #: components/theme/Logout/Logout
 msgid "Logged out"
-msgstr "Salir"
+msgstr "Ha salido del sistema"
 
 #. Default: "Login"
 #: components/theme/Login/Login
@@ -2379,7 +2379,7 @@ msgstr "Mover al fondo de la carpeta"
 #. Default: "Move to top of folder"
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr "Mover encima de la carpeta"
+msgstr "Mover a primer elemento de la carpeta"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3655,7 +3655,7 @@ msgstr "Cadena de texto"
 #. Default: "Alternate row background color"
 #: config/Blocks
 msgid "Stripe alternate rows with color"
-msgstr "Raya las filas alternas con color"
+msgstr "Filas de franja alterna con color"
 
 #. Default: "Styling"
 #: helpers/Extensions/withBlockSchemaEnhancer
@@ -4521,7 +4521,7 @@ msgstr "Está intentando acceder a un elemento protegido, por favor, haga {login
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr ""
+msgstr "Está intentando acceder a un recurso protegido."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4787,7 +4787,7 @@ msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaci
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr "Kicker"
+msgstr "Entradilla"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
