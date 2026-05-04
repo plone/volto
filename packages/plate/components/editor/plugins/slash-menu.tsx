@@ -3,7 +3,6 @@ import * as React from 'react';
 import type { PlateEditor } from 'platejs/react';
 
 import { AIChatPlugin } from '@platejs/ai/react';
-import { SuggestionPlugin } from '@platejs/suggestion/react';
 import config from '@plone/registry';
 import {
   BookA,
@@ -27,6 +26,7 @@ import {
 import { KEYS, PathApi } from 'platejs';
 
 import { insertBlock } from '../transforms';
+import { SuggestionPlugin } from './suggestion-kit';
 import { TITLE_BLOCK_TYPE } from './title';
 
 export type SlashMenuItem = {
