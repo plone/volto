@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"PO-Revision-Date: 2026-05-03 20:10+0000\n"
-"Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
+"PO-Revision-Date: 2026-05-05 06:09+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-slate-18/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgstr "Central"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Delete col"
-msgstr "Eliminar col"
+msgstr "Eliminar columna"
 
 # defaultMessage: Delete row
 #: blocks/Table/TableBlockEdit
@@ -88,13 +88,13 @@ msgstr "Ocultar encabezados"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col after"
-msgstr "Insertar col tras"
+msgstr "Insertar columna despúes"
 
 # defaultMessage: Insert col before
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert col before"
-msgstr "Insertar col antes"
+msgstr "Insertar columna antes"
 
 # defaultMessage: Insert row after
 #: blocks/Table/TableBlockEdit
@@ -116,7 +116,7 @@ msgstr "Izquierda"
 # defaultMessage: Make the table compact
 #: blocks/Table/TableBlockEdit
 msgid "Make the table compact"
-msgstr "Crea la tabla compacta"
+msgstr "Hacer la tabla compacta"
 
 # defaultMessage: Make the table sortable
 #: blocks/Table/TableBlockEdit
@@ -151,7 +151,7 @@ msgstr "Retirar enlace"
 # defaultMessage: Right
 #: blocks/Table/TableBlockEdit
 msgid "Right"
-msgstr "Derecho"
+msgstr "Derecha"
 
 # defaultMessage: Stripe alternate rows with color
 #: blocks/Table/TableBlockEdit
@@ -171,13 +171,13 @@ msgstr "Color de tabla invertido"
 # defaultMessage: Top
 #: blocks/Table/TableBlockEdit
 msgid "Top"
-msgstr "Cima"
+msgstr "Arriba"
 
 # defaultMessage: Type text…
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
 msgid "Type text…"
-msgstr "Teclear texto…"
+msgstr "Escribir texto…"
 
 # defaultMessage: Visible only in view mode
 #: blocks/Table/TableBlockEdit
