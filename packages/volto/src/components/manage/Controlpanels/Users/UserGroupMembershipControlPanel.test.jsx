@@ -14,6 +14,9 @@ vi.mock('../../Toolbar/Toolbar', () => ({
 describe('UserGroupMembershipControlPanel', () => {
   it('renders a user group membership control component', () => {
     const store = mockStore({
+      userSession: {
+        token: '1234',
+      },
       controlpanels: {
         controlpanel: {
           data: {

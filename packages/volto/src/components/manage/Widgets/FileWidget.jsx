@@ -59,6 +59,10 @@ const messages = defineMessages({
     id: 'File is not of the accepted type {accept}',
     defaultMessage: 'File is not of the accepted type {accept}',
   },
+  dragAndDropActionA11y: {
+    id: 'Press Enter to browse files from your computer.',
+    defaultMessage: 'Press Enter to browse files from your computer.',
+  },
 });
 
 /**
@@ -205,6 +209,9 @@ const FileWidget = (props) => {
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
+              <span className="visually-hidden">
+                {intl.formatMessage(messages.dragAndDropActionA11y)}
+              </span>
             </label>
             <input
               {...getInputProps({

@@ -32,11 +32,14 @@ const CreateTranslation = (props) => {
       // We change the interface language
       if (config.settings.supportedLanguages.includes(language)) {
         const langFileName = toGettextLang(language);
-        import(
-          /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-        ).then((locale) => {
-          dispatch(changeLanguage(language, locale.default));
-        });
+        import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+          .then((locale) => {
+            dispatch(changeLanguage(language, locale.default));
+          })
+          .catch(() => {
+            // If locale file doesn't exist, still switch language with empty locale
+            dispatch(changeLanguage(language, {}));
+          });
       }
     };
     // On mount only

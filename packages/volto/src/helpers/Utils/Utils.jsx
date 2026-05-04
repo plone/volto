@@ -38,6 +38,23 @@ export const safeWrapper = (func) => (config) => {
 };
 
 /**
+ * Extract a readable error message from several possible error shapes
+ * @param {object} error
+ * @returns {string} message
+ */
+export const getErrorMessage = (error) => {
+  const respBody = error?.response?.body;
+  if (respBody?.error?.message) return respBody.error.message;
+  if (respBody?.message) return respBody.message;
+  if (error?.message) return error.message;
+  try {
+    return JSON.stringify(error);
+  } catch (e) {
+    return String(error);
+  }
+};
+
+/**
  * A helper to pipe a configuration object through configuration loaders
  *
  * @param {Array} configMethods A list of configuration methods

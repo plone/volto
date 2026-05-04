@@ -14,6 +14,7 @@ msgstr ""
 "Language-Code: de\n"
 "Language-Name: Deutsch\n"
 "Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
 #. Default: "<p>Add some HTML here</p>"
@@ -150,7 +151,7 @@ msgstr "Block hinzufügen"
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr "Block an Position {index} hinzufügen"
+msgstr "Block in Position hinzufügen {index}"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
@@ -466,6 +467,8 @@ msgstr "Verfügbare Inhaltsregeln:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -510,6 +513,17 @@ msgstr "Basis Suchfilter"
 msgid "Block"
 msgstr "Block"
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr "Blocktyp"
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr "Blocktypen"
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -546,10 +560,10 @@ msgstr "Seite durchsuchen, Bild ablegen oder URL eingeben"
 msgid "BulkUploadAltUrls"
 msgstr "CSV Massenupload"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Standardmäßig werden die Berechtigungen von einem Ordner auf die in ihm befindlichen Artikel vererbt. Wenn Sie dies deaktivieren, sind nur die explizit definierten Zugriffsberechtigungen gültig. In der Übersicht zeigt das Symbol ${image_confirm_icon} einen ererbten Wert an. Das Symbol ${image_link_icon} zeigt eine globale Funktion an, die vom Administrator verwaltet wird."
+msgstr "Standardmäßig werden die Berechtigungen aus dem Container dieses Elements vererbt. Wenn du dies deaktivierst, sind nur die ausdrücklich definierten Freigabeberechtigungen gültig. In der Übersicht werden vererbte Werte ausdrücklich als 'Vererbter Wert' gekennzeichnet und erhalten ein grünes Häkchen {inherited}. Ebenso werden Rollen, die vom Site-Administrator verwaltet werden, als 'Globale Rolle' gekennzeichnet und erhalten ein blaues Häkchen {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -651,7 +665,7 @@ msgstr "Änderungen gespeichert."
 #. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
 #: components/manage/Blocks/Teaser/schema
 msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
-msgstr "Aktivieren Sie dieses Kontrollkästchen, um den Titel, die Beschreibung oder das Bild des Zielinhalts für diesen Teaser anzupassen. Lassen Sie es deaktiviert, um Aktualisierungen des Zielinhalts anzuzeigen, falls dieser später bearbeitet wird."
+msgstr "Aktivieren Sie dieses Kontrollkästchen, um den Titel, die Beschreibung oder das Vorschaubild des Zielinhalts für diesen Teaser anzupassen. Lassen Sie es deaktiviert, um Aktualisierungen des Zielinhalts anzuzeigen, falls dieser später bearbeitet wird."
 
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
@@ -684,6 +698,11 @@ msgstr "Datei auswählen"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Löschen"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "URL löschen"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -842,7 +861,12 @@ msgstr "Inhaltsregeln von übergeordneten Seiten"
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
-msgstr "Zu {title} verlinkende oder verweisende Inhalte"
+msgstr "Zu {title} verlinkende oder referenzierende Inhalte"
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Inhaltstitel"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1191,7 +1215,7 @@ msgstr "Möchten Sie den Nutzer {username} wirklich löschen?"
 #. Default: "Do you really want to delete this item?"
 #: components/manage/Delete/Delete
 msgid "Do you really want to delete this item?"
-msgstr "Möchten Sie diesen Artikel wirklich löschen?"
+msgstr "Möchten Sie den Artikel wirklich löschen?"
 
 #. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
@@ -1941,7 +1965,7 @@ msgstr "Zeile davor einfügen"
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Inspect relations"
-msgstr "Bearbeiten"
+msgstr "Untersuche Relationen"
 
 #. Default: "Install"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1998,6 +2022,11 @@ msgstr "Ungültige Teaser-Quelle"
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Es ist nicht erlaubt, sowohl das Passwort festzulegen als auch das Zurücksetzen des Passworts per E-Mail anzufordern. Bitte wählen Sie eine Option."
+
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr "Artikel"
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2173,7 +2202,7 @@ msgstr "Inhalte, die im Text auf diesen Inhalt verlinken"
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
-msgstr "Links und Verweise"
+msgstr "Links und Referenzen"
 
 #. Default: "List View"
 #: components/manage/Sidebar/ObjectBrowserBody
@@ -2299,6 +2328,11 @@ msgstr "Karten"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "Karten URL"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2636,6 +2670,12 @@ msgstr "Grösse"
 msgid "Occurences"
 msgstr "Vorkommen"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr "Vorkommen"
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2645,6 +2685,11 @@ msgstr "OK"
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Nur 7-Bit Zeichen sind erlaubt. Darf keine Großbuchstaben und Sonderzeichen enthalten: <, >, &, #, /, ? oder andere, die in URLs nicht zulässig sind. Darf nicht beginnen mit: _, aq_, @@, ++. Darf nicht mit __ enden. Kann nicht sein: request,contributors, ., .., "". Darf keine neuen Zeilen enthalten."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "URL-Browser öffnen"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2721,6 +2766,11 @@ msgstr "Einfügen"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "Blöcke einfügen"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr "Pfad"
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -2838,6 +2888,11 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Einstellungen"
+
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Drücken Sie die Eingabetaste, um Dateien auf Ihrem Computer zu durchsuche"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3250,7 +3305,7 @@ msgstr "Suchen"
 #. Default: "Search Site"
 #: components/theme/SearchWidget/SearchWidget
 msgid "Search Site"
-msgstr "Website durchsuchen"
+msgstr "Seite durchsuchen"
 
 #. Default: "Search block"
 #: components/manage/Blocks/Search/schema
@@ -3342,6 +3397,11 @@ msgstr "Wählen Sie ein Datum um ein wiederkehrendes Datum einzustellen"
 msgid "Select columns to show"
 msgstr "Anzuzeigende Spalten wählen"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr "Option auswählen"
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -3383,6 +3443,7 @@ msgid "Selection"
 msgstr "Auswahl"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -3997,6 +4058,7 @@ msgstr "Zeit"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4012,6 +4074,11 @@ msgstr "Titel"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "Fehler im Titelfeld. Kein Wert angegeben oder Wert existiert bereits."
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr "Option umschalten"
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4131,6 +4198,16 @@ msgstr "URL-Verwaltung"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "URL-Verwaltung für {title}"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL fehlt"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -4276,13 +4353,13 @@ msgstr "Nutzen Sie das folgende Formular zum Definieren neuer Inhaltsregeln"
 #. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr "Verwenden Sie das folgende Formular, um neue Inhaltsregeln zu definieren, zu ändern oder zu entfernen. Regeln führen automatisch Aktionen auf Inhalte aus, wenn bestimmte Auslöser eintreten. Nachdem Sie Regeln definiert haben, können Sie zu einem Ordner gehen, um diese zuzuweisen, indem Sie das Element 'Regeln' im Aktionsmenü verwenden."
+msgstr "Nutzen Sie das folgende Formular zum Definieren, Ändern oder Entfernen von Inhaltsregeln. Inhaltsregeln führen automatische Aktionen auf Inhalten aus, wenn bestimmte Auslöser vorhanden sind. Nach dem Definieren von Regeln können Sie diese einer Seite oder einem beliebigen Inhaltselement zuweisen, indem Sie das "Inhaltsregeln" Bedienelement im Aktionsmenü nutzen."
 
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
 #: components/manage/Widgets/SelectWidget
 msgid "Used for programmatic access to the fieldset."
-msgstr "Wird für den programmierten Zugriff auf das Fieldset verwendet."
+msgstr "Wir für den programmierten Zugriff auf das Fieldset verwendet."
 
 #. Default: "User"
 #: components/manage/Sharing/Sharing
@@ -4368,6 +4445,11 @@ msgstr "Video"
 #: components/manage/Blocks/Video/schema
 msgid "Video URL"
 msgstr "Video URL"
+
+#. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "VideoTitleDescription"
+msgstr "Der Videotitel wird nicht angezeigt, sondern dient lediglich der Barrierefreiheit, um Nutzern von Bildschirmleseprogrammen das Video zu identifizieren. Falls der Videotitel bereits durch die obige Überschrift ausreichend beschrieben ist, lassen Sie dieses Feld bitte leer."
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4542,6 +4624,11 @@ msgstr "Sie sind dabei alle Objekte in der aktuellen Paginierung dieses Ordners 
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Sie versuchen eine geschützte Seite aufzurufen, bitte zuerst {login}."
 
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
+
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
@@ -4556,6 +4643,11 @@ msgstr "Sie können einen Kommentar abgeben wenn Sie das untenstehende Formular 
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Sie können mit der folgenden Liste bestimmen, wer Ihren Artikel sehen und bearbeiten kann."
+
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr "Dieser Blocktyp kann nicht an den neuen Standort verschoben werden"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4682,6 +4774,11 @@ msgstr "Allgemein"
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
 msgstr "Vergleichen mit"
+
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr "Blocktyp: {title}"
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4901,6 +4998,8 @@ msgstr "Listing"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "laden"
 
@@ -4960,6 +5059,11 @@ msgstr "Nein"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "Kein Status gesetzt"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5272,6 +5376,26 @@ msgstr "Text"
 msgid "title"
 msgstr "Titel"
 
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Fehler"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Information"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Erfolg"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Warnung"
+
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
 #: config/Blocks
@@ -5355,6 +5479,11 @@ msgstr "{id} Inhaltstyp"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
 msgstr "{id} Schema"
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
+msgstr "{sources} oder eine MP4-URL sind erlaubt."
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

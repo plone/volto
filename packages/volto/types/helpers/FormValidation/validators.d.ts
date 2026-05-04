@@ -10,6 +10,22 @@ type Validator = {
     formData: any;
     formatMessage: Function;
 };
+type Choice = {
+    token: string;
+    label: string;
+};
+type ChoiceValidator = {
+    value: string | Choice;
+    field: Record<string, any>;
+    formData: any;
+    formatMessage: Function;
+};
+type FileValidator = {
+    value: Record<string, any>;
+    field: Record<string, any>;
+    formData: any;
+    formatMessage: Function;
+};
 export declare const isMaxPropertyValid: ({ value, fieldSpec, criterion, formatMessage, }: MinMaxValidator) => any;
 export declare const isMinPropertyValid: ({ value, fieldSpec, criterion, formatMessage, }: MinMaxValidator) => any;
 export declare const minLengthValidator: ({ value, field, formatMessage, }: Validator) => any;
@@ -26,5 +42,6 @@ export declare const endEventDateRangeValidator: ({ value, field, formData, form
 export declare const patternValidator: ({ value, field, formatMessage, }: Validator) => any;
 export declare const maxItemsValidator: ({ value, field, formatMessage, }: Validator) => any;
 export declare const minItemsValidator: ({ value, field, formatMessage, }: Validator) => any;
-export declare const defaultLanguageControlPanelValidator: ({ value, formData, formatMessage, }: Validator) => any;
+export declare const defaultLanguageControlPanelValidator: ({ value, formData, formatMessage, }: ChoiceValidator) => any;
+export declare const sizeValidator: ({ value, field, formatMessage, }: FileValidator) => any;
 export {};

@@ -90,14 +90,14 @@ test('Provides path to blocks', () => {
   expect(container).toMatchSnapshot();
 });
 
-test('Renders invalid blocks', () => {
+test('Filters out invalid blocks', () => {
   const store = mockStore({
     intl: {
       locale: 'en',
       messages: {},
     },
   });
-  const { queryAllByText } = render(
+  const { queryAllByText, queryByText } = render(
     <Provider store={store}>
       <RenderBlocks
         blocksConfig={{
@@ -113,7 +113,14 @@ test('Renders invalid blocks', () => {
         }}
         content={{
           blocks_layout: {
-            items: ['MISSING-YOU-1', 'a', 'MISSING-YOU-2'],
+            items: [
+              'MISSING-YOU-1',
+              'a',
+              'MISSING-YOU-2',
+              null,
+              undefined,
+              'undefined',
+            ],
           },
           blocks: {
             a: {
@@ -126,7 +133,10 @@ test('Renders invalid blocks', () => {
       />
     </Provider>,
   );
+  // Invalid blocks (missing from blocks object or invalid IDs) are filtered out and not rendered
   expect(
     queryAllByText('Invalid block - Will be removed on saving'),
-  ).toHaveLength(2);
+  ).toHaveLength(0);
+  // Only valid blocks are rendered
+  expect(queryByText('id: a - text: bar - path: /foo')).not.toBeNull();
 });
