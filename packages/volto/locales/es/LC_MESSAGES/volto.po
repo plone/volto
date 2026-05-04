@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-05-02 21:12+0000\n"
-"Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
+"PO-Revision-Date: 2026-05-04 07:09+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
 "Language: es\n"
 "Content-Type: \n"
@@ -1069,7 +1069,7 @@ msgstr "Eliminar bloques"
 #. Default: "Delete col"
 #: config/Blocks
 msgid "Delete col"
-msgstr "Eliminar col"
+msgstr "Eliminar columna"
 
 #. Default: "Condition deleted"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1904,12 +1904,12 @@ msgstr "Valor heredado"
 #. Default: "Insert col after"
 #: config/Blocks
 msgid "Insert col after"
-msgstr "Insertar col tras"
+msgstr "Insertar columna despúes"
 
 #. Default: "Insert col before"
 #: config/Blocks
 msgid "Insert col before"
-msgstr "Insertar col antes"
+msgstr "Insertar columna antes"
 
 #. Default: "Insert row after"
 #: config/Blocks
@@ -2231,7 +2231,7 @@ msgstr "Hecho por {creator} el {date}. Esta no es una copia de trabajo, sino el 
 #. Default: "Reduce cell padding"
 #: config/Blocks
 msgid "Make the table compact"
-msgstr "Crea la tabla compacta"
+msgstr "Hacer la tabla compacta"
 
 #. Default: "Manage Translations"
 #: components/manage/Multilingual/ManageTranslations
@@ -2379,7 +2379,7 @@ msgstr "Mover al fondo de la carpeta"
 #. Default: "Move to top of folder"
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr "Mover encima de la carpeta"
+msgstr "Mover a primer elemento de la carpeta"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3137,7 +3137,7 @@ msgstr "Texto formateado"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Right"
-msgstr "Derecho"
+msgstr "Derecha"
 
 #. Default: "Rights"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -4787,7 +4787,7 @@ msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaci
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr "Kicker"
+msgstr "Entradilla"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
