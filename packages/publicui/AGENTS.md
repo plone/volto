@@ -33,5 +33,5 @@ This file applies only to `packages/publicui` and its subdirectories.
 
 ```sh
 pnpm --filter @plone/publicui test --run
-pnpm --filter @plone/publicui check-ts
+pnpm --filter @plone/publicui check:ts
 ```

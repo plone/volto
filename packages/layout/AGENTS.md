@@ -28,7 +28,7 @@ This file applies only to `packages/layout` and its subdirectories.
 
 ```sh
 pnpm --filter @plone/layout test --run
-pnpm --filter @plone/layout check-ts
+pnpm --filter @plone/layout check:ts
 ```
 
 For Storybook:

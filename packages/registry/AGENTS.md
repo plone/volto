@@ -27,6 +27,6 @@ This file applies only to `packages/registry` and its subdirectories.
 ```sh
 pnpm --filter @plone/registry test --run
 pnpm --filter @plone/registry build
-pnpm --filter @plone/registry check-ts
+pnpm --filter @plone/registry check:ts
 pnpm --filter @plone/registry check:exports
 ```

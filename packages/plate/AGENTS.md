@@ -34,7 +34,7 @@ This file applies only to `packages/plate` and its subdirectories.
 
 ```sh
 pnpm --filter @plone/plate test --run
-pnpm --filter @plone/plate check-ts
+pnpm --filter @plone/plate check:ts
 ```
 
 For Storybook:

@@ -45,5 +45,5 @@ declare module '@plone/types' {
 ## Validation
 
 ```sh
-pnpm --filter @plone/types check-ts
+pnpm --filter @plone/types check:ts
 ```
