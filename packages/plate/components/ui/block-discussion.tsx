@@ -5,7 +5,6 @@ import type { PlateElementProps, RenderNodeWrapper } from 'platejs/react';
 import { getDraftCommentKey } from '@platejs/comment';
 import { CommentPlugin } from '@platejs/comment/react';
 import { getTransientSuggestionKey } from '@platejs/suggestion';
-import { SuggestionPlugin } from '@platejs/suggestion/react';
 import {
   MessageSquareTextIcon,
   MessagesSquareIcon,
@@ -30,12 +29,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from './popover';
+import { usePlatePlugins } from '../editor/plate-plugins-context';
 import { commentPlugin } from '../editor/plugins/comment-kit';
+import { type TDiscussion } from '../editor/plugins/discussion-kit';
 import {
-  type TDiscussion,
-  discussionPlugin,
-} from '../editor/plugins/discussion-kit';
-import { suggestionPlugin } from '../editor/plugins/suggestion-kit';
+  SuggestionPlugin,
+  suggestionPlugin,
+} from '../editor/plugins/suggestion-kit';
 
 import {
   BlockSuggestionCard,
@@ -324,8 +324,7 @@ const useResolvedDiscussion = (
   blockPath: Path,
 ) => {
   const { api, getOption, setOption } = useEditorPlugin(commentPlugin);
-
-  const discussions = usePluginOption(discussionPlugin, 'discussions');
+  const { discussions } = usePlatePlugins();
 
   commentNodes.forEach(([node]) => {
     const id = api.comment.nodeId(node);

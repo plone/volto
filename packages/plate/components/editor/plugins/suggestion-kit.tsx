@@ -1,7 +1,4 @@
-import {
-  type BaseSuggestionConfig,
-  BaseSuggestionPlugin,
-} from '@platejs/suggestion';
+import type { BaseSuggestionConfig } from '@platejs/suggestion';
 import {
   type ExtendConfig,
   type Path,
@@ -13,13 +10,13 @@ import { toTPlatePlugin } from 'platejs/react';
 
 import { BlockSuggestion } from '../../ui/block-suggestion';
 import { SuggestionLeaf, SuggestionLineBreak } from '../../ui/suggestion-node';
-
-import { discussionPlugin } from './discussion-kit';
+import { BaseSuggestionPlugin, SuggestionPlugin } from './suggestion-core';
 
 export type SuggestionConfig = ExtendConfig<
   BaseSuggestionConfig,
   {
     activeId: string | null;
+    currentUserId: string | null;
     hoverId: string | null;
     uniquePathMap: Map<string, Path>;
   }
@@ -27,10 +24,10 @@ export type SuggestionConfig = ExtendConfig<
 
 export const suggestionPlugin = toTPlatePlugin<SuggestionConfig>(
   BaseSuggestionPlugin,
-  ({ editor }) => ({
+  () => ({
     options: {
       activeId: null,
-      currentUserId: editor.getOption(discussionPlugin, 'currentUserId'),
+      currentUserId: null,
       hoverId: null,
       uniquePathMap: new Map(),
     },
@@ -90,4 +87,5 @@ export const suggestionPlugin = toTPlatePlugin<SuggestionConfig>(
   },
 });
 
+export { BaseSuggestionPlugin, SuggestionPlugin };
 export const SuggestionKit = [suggestionPlugin];

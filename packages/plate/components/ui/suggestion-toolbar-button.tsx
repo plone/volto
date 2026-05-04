@@ -1,14 +1,16 @@
-import { SuggestionPlugin } from '@platejs/suggestion/react';
 import { PencilLineIcon } from 'lucide-react';
 import { useEditorPlugin, usePluginOption } from 'platejs/react';
 
 import { cn } from '../../lib/utils';
+import { usePlatePlugins } from '../editor/plate-plugins-context';
+import { SuggestionPlugin } from '../editor/plugins/suggestion-kit';
 
 import { ToolbarButton } from './toolbar';
 
 export function SuggestionToolbarButton() {
   const { setOption } = useEditorPlugin(SuggestionPlugin);
   const isSuggesting = usePluginOption(SuggestionPlugin, 'isSuggesting');
+  const { currentUserId } = usePlatePlugins();
 
   return (
     <ToolbarButton
@@ -19,7 +21,12 @@ export function SuggestionToolbarButton() {
             hover:text-brand/80
           `,
       )}
-      onClick={() => setOption('isSuggesting', !isSuggesting)}
+      onClick={() => {
+        const nextIsSuggesting = !isSuggesting;
+
+        setOption('currentUserId', nextIsSuggesting ? currentUserId : null);
+        setOption('isSuggesting', nextIsSuggesting);
+      }}
       onMouseDown={(e) => e.preventDefault()}
       tooltip={isSuggesting ? 'Turn off suggesting' : 'Suggestion edits'}
     >

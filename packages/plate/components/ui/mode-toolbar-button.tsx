@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { SuggestionPlugin } from '@platejs/suggestion/react';
 import {
   type DropdownMenuProps,
   DropdownMenuItemIndicator,
@@ -16,12 +15,15 @@ import {
   DropdownMenuTrigger,
 } from './dropdown-menu';
 
+import { usePlatePlugins } from '../editor/plate-plugins-context';
+import { SuggestionPlugin } from '../editor/plugins/suggestion-kit';
 import { ToolbarButton } from './toolbar';
 
 export function ModeToolbarButton(props: DropdownMenuProps) {
   const editor = useEditorRef();
   const [readOnly, setReadOnly] = usePlateState('readOnly');
   const [open, setOpen] = React.useState(false);
+  const { currentUserId } = usePlatePlugins();
 
   const isSuggesting = usePluginOption(SuggestionPlugin, 'isSuggesting');
 
@@ -75,10 +77,16 @@ export function ModeToolbarButton(props: DropdownMenuProps) {
             }
 
             if (newValue === 'suggestion') {
+              editor.setOption(
+                SuggestionPlugin,
+                'currentUserId',
+                currentUserId,
+              );
               editor.setOption(SuggestionPlugin, 'isSuggesting', true);
 
               return;
             } else {
+              editor.setOption(SuggestionPlugin, 'currentUserId', null);
               editor.setOption(SuggestionPlugin, 'isSuggesting', false);
             }
 
