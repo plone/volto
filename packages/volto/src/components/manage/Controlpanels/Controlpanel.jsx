@@ -156,7 +156,7 @@ const Controlpanel = () => {
                   <Button
                     className="cancel"
                     aria-label={intl.formatMessage(messages.cancel)}
-                    onClick={() => this.onCancel()}
+                    onClick={onCancel}
                   >
                     <Icon
                       name={clearSVG}
