@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-03-23 12:09+0000\n"
+"PO-Revision-Date: 2026-05-04 18:10+0000\n"
 "Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
-"Language: gl\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"MIME-Version: 1.0\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
@@ -121,7 +121,7 @@ msgstr "Engadir Regra"
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr "Engadir Tradución"
+msgstr "Engadir Tradución…"
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
@@ -3367,7 +3367,7 @@ msgstr "Elementos seleccionados"
 #. Default: "of"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
-msgstr "Selected items - x of y"
+msgstr "Elementos seleccionados - x de y"
 
 #. Default: "Selection"
 #: components/manage/Widgets/SchemaWidget
@@ -4093,7 +4093,7 @@ msgstr "Escribe texto..."
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
-msgstr "Escribe o encabezamento"
+msgstr "Escribe o encabezamento…"
 
 #. Default: "Type the title…"
 #: components/manage/Blocks/Title/Edit
@@ -4526,7 +4526,7 @@ msgstr "Estás a tentar acceder a un recurso protexido. Primeiro, {login}."
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr ""
+msgstr "Estás intentando acceder a un recurso protexido."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
