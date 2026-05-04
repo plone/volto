@@ -12,7 +12,7 @@ myst:
 This guide explains how to configure schema-driven style fields in Seven.
 It focuses on a `theme` field, because that is the common case for the new style field system.
 
-Use this model when you want a block to store a semantic id such as `default` or `sand`, and resolve that id to a runtime style object later.
+Use this model when you want a block to store a semantic ID, such as `default` or `sand`, and resolve that ID to a runtime style object later.
 
 ## How it works
 
@@ -20,11 +20,11 @@ The style field system has three parts:
 
 1. The block schema marks a field as a style-backed field.
 2. A registry utility returns the `StyleDefinition[]` for that field.
-3. Runtime resolves the stored id to a `style` object and injects it into the rendered block.
+3. Runtime resolves the stored ID to a `style` object, and injects it into the rendered block.
 
-The important consequence is that the block stores a semantic id, not raw CSS.
+The important consequence is that the block stores a semantic ID, not raw CSS.
 
-For example, a block can store:
+For example, a block can store `sand` as an identifier:
 
 ```ts
 {
@@ -33,7 +33,7 @@ For example, a block can store:
 }
 ```
 
-and Seven can later resolve `sand` to:
+And Seven can later resolve `sand` to a CSS variable:
 
 ```ts
 {
@@ -43,7 +43,7 @@ and Seven can later resolve `sand` to:
 
 ## Mark the schema field
 
-Generic style fields are configured in the block schema.
+Configure generic style fields in the block schema.
 Add the field as usual, then mark it with `styleField: true`.
 
 ```ts
@@ -87,8 +87,7 @@ Seven reads this metadata from the schema at runtime.
 ## Register the style definitions
 
 Next, register a `styleFieldDefinition` utility for the field name.
-
-For a `theme` field:
+The following code example shows how to register a `theme` field.
 
 ```ts
 config.registerUtility({
@@ -134,13 +133,18 @@ config.blocks.themes = [
 
 Each item has:
 
-- `name`: the literal stored in the block data
-- `label`: the human-readable label
-- `style`: the inline style object injected at runtime
+`name`
+:   the literal stored in the block data
+
+`label`
+:   the human-readable label
+
+`style`
+:   the inline style object injected at runtime
 
 ## Use the field in block data
 
-Once the schema field and utility are registered, the block only stores the selected id:
+Once the schema field and utility are registered, the block only stores the selected ID:
 
 ```ts
 {
@@ -159,7 +163,7 @@ At render time, Seven:
 
 This works in both:
 
-- Plate / Somersault rendering
+- Plate and Somersault rendering
 - public block rendering in `@plone/layout`
 
 ## Nested storage
@@ -202,14 +206,14 @@ It is intrinsic to the block wrapper and width policy of each block, so it still
 That means:
 
 - generic style fields such as `theme` are schema-driven
-- `blockWidth` remains block-config-driven
+- `blockWidth` remains block configuration-driven
 
 The global width definitions themselves have not changed.
 They are still defined in `config.blocks.widths` and resolved through the `blockWidth` utility.
 
 ## Theme example
 
-Putting it together:
+Take the foregoing parts and put them together to form a complete theme example.
 
 ```ts
 config.blocks.themes = [
