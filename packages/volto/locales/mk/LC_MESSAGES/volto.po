@@ -1247,14 +1247,22 @@ msgstr ""
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the current one"
 #: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to replace the current one"
+msgstr "Повлечете датотека овде или кликнете за замена на тековната"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "Повлечете датотека овде или кликнете за прикачување"
+
+#. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr ""
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr ""
@@ -1607,6 +1615,11 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr ""
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "Област за прикачување датотеки. Притиснете Enter за отварање на прелистувачот на датотеки"
 
 #. Default: "File view"
 #: config/Views
@@ -2888,11 +2901,6 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr ""
-
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -4008,6 +4016,11 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Ова поле е задолжително."
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4878,6 +4891,11 @@ msgstr ""
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
 msgstr ""
+
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "field.file.downloadFile"
+msgstr "Преземи {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
