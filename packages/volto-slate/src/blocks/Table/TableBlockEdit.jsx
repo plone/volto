@@ -554,11 +554,6 @@ Edit.propTypes = {
   block: PropTypes.string.isRequired,
   onAddBlock: PropTypes.func.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
-  onDeleteBlock: PropTypes.func.isRequired,
-  onInsertBlock: PropTypes.func.isRequired,
-  onMutateBlock: PropTypes.func.isRequired,
-  onFocusPreviousBlock: PropTypes.func.isRequired,
-  onFocusNextBlock: PropTypes.func.isRequired,
   onSelectBlock: PropTypes.func.isRequired,
   blocksConfig: PropTypes.object,
 };
