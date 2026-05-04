@@ -2,21 +2,7 @@
 
 @layer plone-components.base {
   :root {
-    /* These has to be mapped to global css custom properties based on the SG scales */
-    --quanta-icon-default-size-s: 18px;
-    --quanta-icon-default-size-m: 24px;
-    --quanta-icon-size-s: var(--quanta-icon-default-size-s);
-    --quanta-icon-size-m: var(--quanta-icon-default-size-m);
-    --quanta-icon-size-xxs: calc(var(--quanta-icon-size-s) / 2);
-    --quanta-icon-size-xs: calc(var(--quanta-icon-size-m) / 2);
-    --quanta-icon-size-l: calc(var(--quanta-icon-size-s) * 2);
-    --quanta-icon-size-xl: calc(var(--quanta-icon-size-m) * 2);
-    --quanta-icon-size-xxl: calc(var(--quanta-icon-size-m) * 3);
-
-    --quanta-color-icon-informative: var(--quanta-sapphire);
-    --quanta-color-icon-negative: var(--quanta-candy);
-    --quanta-color-icon-positive: var(--quanta-neon);
-    --quanta-color-icon-notice: var(--quanta-lemmon);
+    --quanta-icon-size: 0.25rem;
   }
 
   .q.icon {
@@ -44,66 +30,75 @@
   }
 
   .q {
-    &.icon--sizeXXS {
+    &.icon-2xs {
       &,
       img,
       svg {
-        block-size: var(--quanta-icon-size-xxs);
-        inline-size: var(--quanta-icon-size-xxs);
+        width: calc(var(--quanta-icon-size) * 3);
+        height: calc(var(--quanta-icon-size) * 3);
       }
     }
 
-    &.icon--sizeXS {
+    &.icon-xs {
       &,
       img,
       svg {
-        block-size: var(--quanta-icon-size-xs);
-        inline-size: var(--quanta-icon-size-xs);
+        width: calc(var(--quanta-icon-size) * 4);
+        height: calc(var(--quanta-icon-size) * 4);
       }
     }
 
-    &.icon--sizeS {
+    &.icon-sm {
       &,
       img,
       svg {
-        block-size: var(--quanta-icon-size-s);
-        inline-size: var(--quanta-icon-size-s);
+        width: calc(var(--quanta-icon-size) * 5);
+        height: calc(var(--quanta-icon-size) * 5);
       }
     }
 
-    &.icon--sizeM {
+    &.icon-base {
       &,
       img,
       svg {
-        block-size: var(--quanta-icon-size-m);
-        inline-size: var(--quanta-icon-size-m);
+        width: calc(var(--quanta-icon-size) * 6);
+        height: calc(var(--quanta-icon-size) * 6);
       }
     }
 
-    &.icon--sizeL {
+    &.icon-lg {
       &,
       img,
       svg {
-        block-size: var(--quanta-icon-size-l);
-        inline-size: var(--quanta-icon-size-l);
+        width: calc(var(--quanta-icon-size) * 7);
+        height: calc(var(--quanta-icon-size) * 7);
       }
     }
 
-    &.icon--sizeXL {
+    &.icon-xl {
       &,
       img,
       svg {
-        block-size: var(--quanta-icon-size-xl);
-        inline-size: var(--quanta-icon-size-xl);
+        width: calc(var(--quanta-icon-size) * 8);
+        height: calc(var(--quanta-icon-size) * 8);
       }
     }
 
-    &.icon--sizeXXL {
+    &.icon-2xl {
       &,
       img,
       svg {
-        block-size: var(--quanta-icon-size-xxl);
-        inline-size: var(--quanta-icon-size-xxl);
+        width: calc(var(--quanta-icon-size) * 9);
+        height: calc(var(--quanta-icon-size) * 9);
+      }
+    }
+
+    &.icon3xl {
+      &,
+      img,
+      svg {
+        width: calc(var(--quanta-icon-size) * 10);
+        height: calc(var(--quanta-icon-size) * 10);
       }
     }
   }

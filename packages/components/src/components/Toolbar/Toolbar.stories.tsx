@@ -7,17 +7,16 @@ import {
   Separator,
   ToggleButton,
 } from 'react-aria-components';
-import { Menu, MenuItem } from '../Menu/Menu';
+import { Menu, MenuItem, MenuTrigger } from '../Menu/Menu';
 
-import { BoldIcon } from '../Icons/BoldIcon';
-import { ItalicIcon } from '../Icons/ItalicIcon';
-import { LinkIcon } from '../Icons/LinkIcon';
+import { BoldIcon } from '../icons/BoldIcon';
+import { ItalicIcon } from '../icons/ItalicIcon';
+import { LinkIcon } from '../icons/LinkIcon';
 
-import type { Meta } from '@storybook/react';
-
-import '../../styles/basic/Toolbar.css';
+import type { Meta } from '@storybook/react-vite';
 
 const meta: Meta<typeof Toolbar> = {
+  title: 'Basic/Toolbar',
   component: Toolbar,
   parameters: {
     layout: 'centered',
@@ -56,10 +55,13 @@ export const Example = (args: any) => (
       Night Mode
     </Checkbox>
     <Separator orientation="vertical" />
-    <Menu button="Edit">
-      <MenuItem>Cut</MenuItem>
-      <MenuItem>Copy</MenuItem>
-      <MenuItem>Paste</MenuItem>
-    </Menu>
+    <MenuTrigger>
+      <Button>Edit</Button>
+      <Menu>
+        <MenuItem>Cut</MenuItem>
+        <MenuItem>Copy</MenuItem>
+        <MenuItem>Paste</MenuItem>
+      </Menu>
+    </MenuTrigger>
   </Toolbar>
 );

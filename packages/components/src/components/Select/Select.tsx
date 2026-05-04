@@ -2,82 +2,80 @@ import React from 'react';
 import {
   Button,
   FieldError,
+  Header,
   Label,
   ListBox,
   ListBoxItem,
-  type ListBoxItemProps,
+  ListBoxSection,
   Popover,
   PopoverContext,
   Select as RACSelect,
-  type SelectProps as RACSelectProps,
   SelectValue,
   Text,
   useContextProps,
+  type ListBoxItemProps,
+  type ListBoxProps,
+  type SectionProps,
+  type SelectProps as RACSelectProps,
   type ValidationResult,
 } from 'react-aria-components';
 
-import { ChevrondownIcon } from '../Icons/ChevrondownIcon';
-import { ChevronupIcon } from '../Icons/ChevronupIcon';
+import { ChevrondownIcon } from '../icons/ChevrondownIcon';
+import { ChevronupIcon } from '../icons/ChevronupIcon';
 
-export interface SelectProps<T extends object>
-  extends Omit<RACSelectProps<T>, 'children'> {
+export interface SelectItemObject {
+  label: string;
+  value: string;
+}
+
+interface SelectBaseProps<T extends object, M extends 'single' | 'multiple'>
+  extends Omit<RACSelectProps<T, M>, 'children'> {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   items?: Iterable<T>;
-  children: React.ReactNode | ((item: T) => React.ReactNode);
+  children?: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
-/**
- * See https://react-spectrum.adobe.com/react-aria/Select.html
- *
- * An iterable list of options is passed to the Select using the items prop. Each item
- * accepts an id prop, which is passed to the onSelectionChange handler to identify
- * the selected item. Alternatively, if the item objects contain an id property, as
- * shown in the example below, then this is used automatically and an id prop is not
- * required.
- *
- * Setting a selected option can be done by using the defaultSelectedKey or selectedKey
- * prop. The selected key corresponds to the id prop of an item. When Select is used
- * with a dynamic collection as described above, the id of each item is derived from
- * the data.
- *
- */
-export function Select<T extends SelectItemObject>({
+export interface SelectProps<
+  T extends object = SelectItemObject,
+  M extends 'single' | 'multiple' = 'single',
+> extends SelectBaseProps<T, M> {}
+
+export function Select<
+  T extends object = SelectItemObject,
+  M extends 'single' | 'multiple' = 'single',
+>({
   label,
   description,
   errorMessage,
   children,
   items,
   ...props
-}: SelectProps<T>) {
-  // In case that we want to customize the Popover, we proxy the PopoverContext props down
+}: SelectProps<T, M>) {
   const [popoverProps] = useContextProps({}, null, PopoverContext);
 
   return (
     <RACSelect {...props}>
       {({ isOpen }) => (
         <>
-          <Label>{label}</Label>
+          {label && <Label>{label}</Label>}
           <Button>
             <SelectValue />
-            {/* Next span is flexed to position the icon just in the middle */}
             <span aria-hidden="true" style={{ display: 'flex' }}>
               {isOpen ? <ChevronupIcon /> : <ChevrondownIcon />}
             </span>
           </Button>
           {description && <Text slot="description">{description}</Text>}
           <FieldError>{errorMessage}</FieldError>
-          <Popover {...popoverProps}>
-            {children ? (
-              <ListBox items={items}>{children}</ListBox>
-            ) : (
-              <ListBox items={items}>
-                {(item) => (
-                  <SelectItem id={item.label}>{item.value}</SelectItem>
-                )}
-              </ListBox>
-            )}
+          <Popover offset={0} {...popoverProps}>
+            <SelectListBox items={items}>
+              {children
+                ? children
+                : (DefaultSelectItem as unknown as (
+                    item: T,
+                  ) => React.ReactNode)}
+            </SelectListBox>
           </Popover>
         </>
       )}
@@ -85,11 +83,24 @@ export function Select<T extends SelectItemObject>({
   );
 }
 
-export type SelectItemObject = {
-  label: string;
-  value: string;
-};
+function DefaultSelectItem(item: SelectItemObject) {
+  return <SelectItem id={item.label}>{item.value}</SelectItem>;
+}
+
+export function SelectListBox<T extends object>(props: ListBoxProps<T>) {
+  return <ListBox {...props} />;
+}
 
 export function SelectItem(props: ListBoxItemProps) {
   return <ListBoxItem {...props} />;
+}
+
+export function SelectSection<T extends object>(props: SectionProps<T>) {
+  return <ListBoxSection {...props} />;
+}
+
+export function SelectSectionHeader(
+  props: React.ComponentProps<typeof Header>,
+) {
+  return <Header {...props} />;
 }

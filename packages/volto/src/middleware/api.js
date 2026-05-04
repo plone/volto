@@ -287,9 +287,13 @@ const apiMiddlewareFactory =
               const langFileName = toGettextLang(lang);
               import(
                 /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-              ).then((locale) => {
-                dispatch(changeLanguage(lang, locale.default));
-              });
+              )
+                .then((locale) => {
+                  dispatch(changeLanguage(lang, locale.default));
+                })
+                .catch(() => {
+                  dispatch(changeLanguage(lang, {}));
+                });
             }
           }
 
@@ -341,14 +345,19 @@ const apiMiddlewareFactory =
         (error) => {
           // Make sure an error during hydration
           // (for example when serving an archived page)
-          // doesn't hide the SSR content.
-          if (isHydrating && !hasExistingError) {
+          // doesn't hide the SSR content. Only suppress GET_CONTENT failures;
+          // user-initiated actions (LOGIN, etc.) must always dispatch _FAIL so
+          // loaders stop and errors surface.
+          const shouldIgnoreHydrationError =
+            isHydrating && !hasExistingError && type === GET_CONTENT;
+
+          if (shouldIgnoreHydrationError) {
             isHydrating = false;
             return;
           }
 
           // Only SSR can set ECONNREFUSED
-          if (error.code === 'ECONNREFUSED') {
+          if (error?.code === 'ECONNREFUSED') {
             next({
               ...rest,
               error,
@@ -359,7 +368,7 @@ const apiMiddlewareFactory =
           }
 
           // Response error is marked crossDomain if CORS error happen
-          else if (error.crossDomain) {
+          else if (error?.crossDomain) {
             next({
               ...rest,
               error,
@@ -410,7 +419,7 @@ const apiMiddlewareFactory =
                 ...rest,
                 error,
                 statusCode: error.response,
-                message: error.response.body.message,
+                message: error.response?.body?.message,
                 connectionRefused: false,
                 type: SET_APIERROR,
               });

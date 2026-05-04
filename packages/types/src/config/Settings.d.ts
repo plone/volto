@@ -1,6 +1,7 @@
 import { Content } from '../content';
 import { BlocksFormData } from '../blocks/index';
 import { ConfigData } from '.';
+import { Controlpanel, ControlPanelSchema } from '..';
 
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
@@ -26,6 +27,22 @@ type styleClassNameExtendersType = ({
   data: BlocksFormData;
   classNames: string[];
 }) => string[];
+
+export type PlateConfig = {
+  editorConfig: {
+    plugins: any[];
+    [key: string]: unknown;
+  };
+  rendererConfig: {
+    plugins: any[];
+    [key: string]: unknown;
+  };
+  floatingToolbarButtons?: React.ComponentType<any>;
+};
+
+interface PlateSettings {
+  block: PlateConfig;
+}
 
 export interface SettingsConfig {
   [key: string]: unknown;
@@ -61,7 +78,7 @@ export interface SettingsConfig {
   persistentReducers: string[];
   initialReducersBlacklist: string[];
   asyncPropsExtenders: unknown[];
-  contentIcons: Record<string, React.ComponentType>;
+  contentIcons: Record<string, string>;
   loadables: unknown;
   lazyBundles: {
     [key: string]: string[];
@@ -79,10 +96,10 @@ export interface SettingsConfig {
   storeExtenders: unknown[];
   showTags: boolean;
   showRelatedItems: boolean;
-  controlpanels: unknown[];
-  controlPanelsIcons: Record<string, React.ComponentType>;
+  controlpanels: Controlpanel[];
+  controlPanelsIcons: Record<string, string>;
   filterControlPanels: unknown;
-  filterControlPanelsSchema: unknown;
+  filterControlPanelsSchema: (schema: Controlpanel) => ControlPanelSchema;
   externalRoutes: {
     match?: string | { path: string; exact: boolean; strict: boolean };
   }[];
@@ -104,4 +121,6 @@ export interface SettingsConfig {
     titleAndSiteTitleSeparator: string;
   };
   cssLayers: string[];
+  hideBreadcrumbs: string[]; // Content types for which to hide breadcrumbs
+  plate: PlateSettings | Record<string, never>;
 }

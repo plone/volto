@@ -8,6 +8,35 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.6 (2026-03-31)
+
+### Internal
+
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update devDependency: wait-on 9.0.4. @davisagli 
+
+## 4.0.0-alpha.5 (2026-02-12)
+
+### Internal
+
+- Fix the {file}`vscodesettings.js` script to properly check if {file}`.vscode/settings.json` exists before reading. @wesleybl [#7834](https://github.com/plone/volto/issues/7834)
+
+## 4.0.0-alpha.4 (2025-11-19)
+
+### Breaking
+
+- Fork `babel-razzle-preset` from Razzle. Update dependencies. @sneridagh [#7619](https://github.com/plone/volto/issues/7619)
+
+## 4.0.0-alpha.3 (2025-10-21)
+
+### Bugfix
+
+- Escape double quotes in POT / PO files @erral [#7476](https://github.com/plone/volto/issues/7476)
+
+### Internal
+
+- upgrade execa to address a security vulnerability @nileshgulia1 [#7435](https://github.com/plone/volto/issues/7435)
+
 ## 4.0.0-alpha.2 (2025-09-14)
 
 ### Internal

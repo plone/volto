@@ -1,12 +1,10 @@
 import React from 'react';
 import { Calendar } from './Calendar';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Calendar.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Calendar> = {
-  title: 'Widgets/Calendar',
+  title: 'Basic/Forms/Calendar',
   component: Calendar,
   parameters: {
     layout: 'centered',

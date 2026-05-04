@@ -1,4 +1,4 @@
-export function ContentsItemComponent({ item, selected, onClick, indexes, onCut, onCopy, onDelete, onMoveToTop, onMoveToBottom, connectDragPreview, connectDragSource, connectDropTarget, isDragging, order, }: {
+export function ContentsItemComponent({ item, selected, onClick, indexes, onCut, onCopy, onDelete, onMoveToTop, onMoveToBottom, order, dndKitSortable, dndKitUtilities, }: {
     item: any;
     selected: any;
     onClick: any;
@@ -8,11 +8,9 @@ export function ContentsItemComponent({ item, selected, onClick, indexes, onCut,
     onDelete: any;
     onMoveToTop: any;
     onMoveToBottom: any;
-    connectDragPreview: any;
-    connectDragSource: any;
-    connectDropTarget: any;
-    isDragging: any;
     order: any;
+    dndKitSortable: any;
+    dndKitUtilities: any;
 }): string;
 export namespace ContentsItemComponent {
     namespace propTypes {
@@ -25,12 +23,7 @@ export namespace ContentsItemComponent {
         let onDelete: any;
         let onMoveToTop: any;
         let onMoveToBottom: any;
-        let connectDragPreview: any;
-        let connectDragSource: any;
-        let connectDropTarget: any;
-        let isDragging: any;
         let order: any;
-        let onOrderItem: any;
     }
 }
 declare const _default: any;

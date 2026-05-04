@@ -59,6 +59,8 @@ import { compose } from 'redux';
 import config from '@plone/volto/registry';
 import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
 
+const noop = () => {};
+
 /**
  * Form container class.
  * @class Form
@@ -117,6 +119,9 @@ class Form extends Component {
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
     global: PropTypes.bool,
+    checkSavedDraft: PropTypes.func,
+    onSaveDraft: PropTypes.func,
+    onCancelDraft: PropTypes.func,
   };
 
   /**
@@ -153,6 +158,9 @@ class Form extends Component {
     requestError: null,
     allowedBlocks: null,
     global: false,
+    checkSavedDraft: noop,
+    onSaveDraft: noop,
+    onCancelDraft: noop,
   };
 
   /**
@@ -191,8 +199,8 @@ class Form extends Component {
     // Adding fallback in case the fields are empty, so we are sure that the edit form
     // shows at least the default blocks
     if (
-      formData.hasOwnProperty(blocksFieldname) &&
-      formData.hasOwnProperty(blocksLayoutFieldname)
+      formData?.hasOwnProperty(blocksFieldname) &&
+      formData?.hasOwnProperty(blocksLayoutFieldname)
     ) {
       if (
         !formData[blocksLayoutFieldname] ||
@@ -216,7 +224,7 @@ class Form extends Component {
 
     let selectedBlock = null;
     if (
-      formData.hasOwnProperty(blocksLayoutFieldname) &&
+      formData?.hasOwnProperty(blocksLayoutFieldname) &&
       formData[blocksLayoutFieldname].items.length > 0
     ) {
       if (config.blocks?.initialBlocksFocus === null) {

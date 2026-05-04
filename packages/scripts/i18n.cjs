@@ -18,6 +18,16 @@ const { program } = require('commander');
 const chalk = require('chalk');
 
 /**
+ * Replace appearances of " to convert to \"
+ * to keep gettext compatibility in PO files
+ * @function escapeDoubleQuotes
+ * @return {string}
+ */
+function escapeDoubleQuotes(value) {
+  return value.replaceAll('"', '\\"');
+}
+
+/**
  * Extract messages into separate JSON files
  * @function extractMessages
  * @return {undefined}
@@ -103,9 +113,9 @@ function getMessages() {
 function messagesToPot(messages) {
   return map(keys(messages).sort(), (key) =>
     [
-      `#. Default: "${messages[key].defaultMessage.trim()}"`,
+      `#. Default: "${escapeDoubleQuotes(messages[key].defaultMessage.trim())}"`,
       ...map(messages[key].filenames, (filename) => `#: ${filename}`),
-      `msgid "${key}"`,
+      `msgid "${escapeDoubleQuotes(key)}"`,
       'msgstr ""',
     ].join('\n'),
   ).join('\n\n');
@@ -246,7 +256,7 @@ ${map(pot.items, (item) => {
   return [
     `#. ${item.extractedComments[0]}`,
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
-    `msgid "${item.msgid}"`,
+    `msgid "${escapeDoubleQuotes(item.msgid)}"`,
     `msgstr "${poItem ? poItem.msgstr : ''}"`,
   ].join('\n');
 }).join('\n\n')}\n`,
