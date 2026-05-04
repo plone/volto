@@ -3,19 +3,19 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-15T08:53:14.294Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2026-05-01 12:10+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-main/eu/>\n"
 "Language: eu\n"
-"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"MIME-Version: 1.0\n"
+"X-Generator: Weblate 5.17.1\n"
 "Language-Code: eu\n"
 "Language-Name: Basque\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Generator: Poedit 2.3\n"
 "X-Poedit-Bookmarks: -1,38,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. Default: "<p>Add some HTML here</p>"
@@ -395,7 +395,7 @@ msgstr "Ordezko helbidearen bidea → helburu helbidearen bidea (sorrera data et
 #. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
-msgstr ""
+msgstr "Beste norbaitek eduki hau aldatu du eta horixe ikusten ari zara. Gordetako zure edukiarekin ordezkatu nahi duzu?"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -451,7 +451,7 @@ msgstr "Automatikoki"
 #. Default: "Autosaved content found"
 #: helpers/Utils/withSaveAsDraft
 msgid "Autosaved content found"
-msgstr ""
+msgstr "Automatikoki gordetako edukia aurkitu da"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -517,13 +517,13 @@ msgstr "Blokea"
 #. Default: "Block Type"
 #: components/manage/Controlpanels/BlockTypes
 msgid "Block Type"
-msgstr ""
+msgstr "Bloke mota"
 
 #. Default: "Block Types"
 #: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/Controlpanels
 msgid "Block Types"
-msgstr ""
+msgstr "Bloke motak"
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -1135,7 +1135,7 @@ msgstr "Ezabatuta"
 #. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
-msgstr ""
+msgstr "Elementu hau ezabatzean {brokenReferences} {variation} apurtuko dira."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1221,7 +1221,7 @@ msgstr "Elementu hau ezabatu egin nahi duzu?"
 #. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Do you want to restore your autosaved content?"
-msgstr ""
+msgstr "Automatikoki gordetako zure edukia berrezarri nahi duzu?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -2027,7 +2027,7 @@ msgstr "Ezin duzu pasahitza ezarri eta aldi berean pasahitza berrezartzeko mezua
 #. Default: "Item"
 #: components/manage/Controlpanels/BlockType
 msgid "Item"
-msgstr ""
+msgstr "Elementua"
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2675,7 +2675,7 @@ msgstr "agerpenen ondoren"
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
 msgid "Occurrences"
-msgstr ""
+msgstr "Agerpenak"
 
 #. Default: "Ok"
 #: components/manage/Delete/Delete
@@ -2771,7 +2771,7 @@ msgstr "Itsatsi blokeak"
 #. Default: "Path"
 #: components/manage/Controlpanels/BlockType
 msgid "Path"
-msgstr ""
+msgstr "Bidea"
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3401,7 +3401,7 @@ msgstr "Aukeratu erakutsiko diren zutabeak"
 #. Default: "Select option"
 #: components/manage/Blocks/Search/components/SelectFacet
 msgid "Select option"
-msgstr ""
+msgstr "Aukeratu"
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
@@ -3614,12 +3614,12 @@ msgstr "Txikia"
 #. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
-msgstr ""
+msgstr "Elementu batzuei beste eduki batzutatik egiten zaie erreferentzia. Ezabatzean {broeknReferences} {variation} apurtuko dira."
 
 #. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
-msgstr ""
+msgstr "Elementu batzuk beste elementu batzuk dituzte barruan. Ezabatzean bere barruko {containedItenmsToDelete} {variation} ere ezabatu egingo dira."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3910,7 +3910,7 @@ msgstr "Elementua ezin izan da ezabatu."
 #. Default: "The kicker is a line of text shown above the title."
 #: components/manage/Blocks/Teaser/schema
 msgid "The kicker is a line of text shown above the title."
-msgstr ""
+msgstr "Kickerra izenburuaren aurretik erakusten den testua da."
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -4028,7 +4028,7 @@ msgstr "Hau {title} elementuaren lan-bertsioa da"
 #. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
-msgstr ""
+msgstr "Elementu honek elementu gehiago ditu barruan. Berau ezabatzean bere barruko {containedItemsToDelete} {variation} ezabatu egingo dira."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4079,7 +4079,7 @@ msgstr "Errorea izenburuaren eremuan. Ez duzu ezer idatzi edo jada existitzen da
 #. Default: "Toggle option"
 #: components/manage/Blocks/Search/components/ToggleFacet
 msgid "Toggle option"
-msgstr ""
+msgstr "Aktibatu/desaktibatu"
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4203,7 +4203,7 @@ msgstr "{title} orrialdearen URLen kudeaketa"
 #. Default: "URL is invalid"
 #: components/manage/Widgets/UrlWidget
 msgid "URL is invalid"
-msgstr ""
+msgstr "URLa ez da zuzena"
 
 #. Default: "URL is missing"
 #: components/manage/Widgets/UrlWidget
@@ -4450,7 +4450,7 @@ msgstr "Bideoaren URLa"
 #. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
 #: components/manage/Blocks/Video/schema
 msgid "VideoTitleDescription"
-msgstr ""
+msgstr "Bideoaren izenburua ez da erakusten baina pantaila irakurleak erabiltzen dituztenentzat erabiltzen da irisgarritasun arrazoiak direla-eta. Goiko goiburua nahikoa bada bideoren izenburua izateko, utzi hau hutsik."
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4613,7 +4613,7 @@ msgstr "Bai"
 #. Default: "You are about to delete all items and all its subitems."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items and all its subitems."
-msgstr ""
+msgstr "Elementu guztiak eta beren barruko elementu guztiak ezabatzera zoaz."
 
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
@@ -4628,7 +4628,7 @@ msgstr "Babestutako orrialde batera sartu nahian zabiltza, {login} lehenengo."
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr ""
+msgstr "Babestutako baliabide bat atzitzen saiatzen ari zara."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4728,7 +4728,7 @@ msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onart
 #. Default: "and {count} more…"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "and {count} more…"
-msgstr ""
+msgstr "eta {count} gehiago…"
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4779,7 +4779,7 @@ msgstr "Konparatu hizkuntza honekin"
 #. Default: "Block: {title}"
 #: components/manage/Controlpanels/BlockType
 msgid "controlpanel_block_type"
-msgstr ""
+msgstr "Blokea: {title}"
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -5064,7 +5064,7 @@ msgstr "Ez du workflowrik"
 #. Default: "No items found for type: {type}."
 #: components/manage/Controlpanels/BlockType
 msgid "no-blocks-found"
-msgstr ""
+msgstr "Ez da mota honetako elementurik aurkitu: {type}"
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5484,7 +5484,7 @@ msgstr "{id} eskema"
 #. Default: "{sources} or mp4 URL allowed"
 #: components/manage/Blocks/Video/Edit
 msgid "{sources} or mp4 URL allowed"
-msgstr ""
+msgstr "{sources} edo mp4 URL bat idatzi daiteke"
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
