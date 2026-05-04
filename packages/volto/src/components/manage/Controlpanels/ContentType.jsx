@@ -68,24 +68,22 @@ function ContentType(props) {
   const form = useRef(null);
 
   useEffect(() => {
-    dispatch(getControlpanel(join([parent, id], '/')))
-      .catch((err) => {
-        setError(err);
-      });
+    dispatch(getControlpanel(join([parent, id], '/'))).catch((err) => {
+      setError(err);
+    });
   }, [dispatch, parent, id]);
 
   const onSubmit = (data) => {
     if (controlpanel?.['@id']) {
-      dispatch(updateControlpanel(controlpanel['@id'], data))
-        .then(() => {
-          toast.info(
-            <Toast
-              info
-              title={intl.formatMessage(messages.info)}
-              content={intl.formatMessage(messages.changesSaved)}
-            />,
-          );
-        });
+      dispatch(updateControlpanel(controlpanel['@id'], data)).then(() => {
+        toast.info(
+          <Toast
+            info
+            title={intl.formatMessage(messages.info)}
+            content={intl.formatMessage(messages.changesSaved)}
+          />,
+        );
+      });
     }
   };
 
