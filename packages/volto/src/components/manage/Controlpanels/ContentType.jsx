@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 import { getParentUrl } from '@plone/volto/helpers/Url/Url';
 import { createPortal } from 'react-dom';
 import { Button, Header } from 'semantic-ui-react';
@@ -50,15 +50,16 @@ const messages = defineMessages({
   },
 });
 
-function ContentType(props) {
+function ContentType() {
   const dispatch = useDispatch();
   const intl = useIntl();
   const isClient = useClient();
+  const history = useHistory();
+  const pathname = useLocation().pathname;
 
   const controlpanel = useSelector((state) => state.controlpanels.controlpanel);
   const cpanelRequest = useSelector((state) => state.controlpanels);
 
-  const pathname = props.location.pathname;
   const id = last(pathname.split('/'));
   const parent = nth(pathname.split('/'), -2);
 
@@ -88,7 +89,7 @@ function ContentType(props) {
   };
 
   const onCancel = () => {
-    props.history.push(getParentUrl(pathname));
+    history.push(getParentUrl(pathname));
   };
 
   if (error) {
@@ -186,14 +187,5 @@ function ContentType(props) {
   }
   return <div />;
 }
-
-ContentType.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-};
 
 export default ContentType;
