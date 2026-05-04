@@ -1,1 +1,0 @@
-Standardized the TypeScript validation script name to `check:ts` and added package-specific `AGENTS.md` contributor guidance for `@plone/volto`.

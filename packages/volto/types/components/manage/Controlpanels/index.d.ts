@@ -1,5 +1,5 @@
 export declare const Controlpanels: any;
-export declare const Controlpanel: import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
+export declare const Controlpanel: import("@loadable/component").LoadableComponent<unknown>;
 export declare const RulesControlpanel: import("@loadable/component").LoadableClassComponent<any>;
 export declare const AddRuleControlpanel: import("@loadable/component").LoadableClassComponent<any>;
 export declare const EditRuleControlpanel: import("@loadable/component").LoadableClassComponent<any>;
@@ -13,7 +13,7 @@ export declare const RelationsControlpanel: import("@loadable/component").Loadab
 export declare const AliasesControlpanel: import("@loadable/component").LoadableComponent<any>;
 export declare const UndoControlpanel: import("@loadable/component").LoadableClassComponent<any>;
 export declare const AddonsControlpanel: import("@loadable/component").LoadableComponent<any>;
-export declare const ContentType: import("@loadable/component").LoadableClassComponent<any>;
+export declare const ContentType: import("@loadable/component").LoadableComponent<unknown>;
 export declare const ContentTypeLayout: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ContentTypeSchema: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ContentTypes: import("@loadable/component").LoadableClassComponent<any>;
