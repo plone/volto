@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-05-04 07:09+0000\n"
+"PO-Revision-Date: 2026-05-05 16:11+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
 "Language: es\n"
@@ -1914,7 +1914,7 @@ msgstr "Insertar columna antes"
 #. Default: "Insert row after"
 #: config/Blocks
 msgid "Insert row after"
-msgstr "Insertar fila tras"
+msgstr "Insertar fila después"
 
 #. Default: "Insert row before"
 #: config/Blocks
