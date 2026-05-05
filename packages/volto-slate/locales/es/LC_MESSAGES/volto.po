@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"PO-Revision-Date: 2026-05-05 06:09+0000\n"
+"PO-Revision-Date: 2026-05-06 09:32+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-slate-18/es/>\n"
 "Language: es\n"
@@ -100,7 +100,7 @@ msgstr "Insertar columna antes"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr "Insertar fila tras"
+msgstr "Insertar fila después"
 
 # defaultMessage: Insert row before
 #: blocks/Table/TableBlockEdit
@@ -121,12 +121,12 @@ msgstr "Hacer la tabla compacta"
 # defaultMessage: Make the table sortable
 #: blocks/Table/TableBlockEdit
 msgid "Make the table sortable"
-msgstr "Crear la tabla ordenable"
+msgstr "Hacer la tabla ordenable"
 
 # defaultMessage: Middle
 #: blocks/Table/TableBlockEdit
 msgid "Middle"
-msgstr "Mitad"
+msgstr "Centro"
 
 # defaultMessage: No matching blocks
 #: blocks/Text/SlashMenu
@@ -141,12 +141,12 @@ msgstr "Reducir complejidad"
 # defaultMessage: Remove element
 #: elementEditor/messages
 msgid "Remove element"
-msgstr "Quitar elemento"
+msgstr "Eliminar elemento"
 
 # defaultMessage: Remove link
 #: editor/plugins/AdvancedLink/index
 msgid "Remove link"
-msgstr "Retirar enlace"
+msgstr "Eliminar enlace"
 
 # defaultMessage: Right
 #: blocks/Table/TableBlockEdit
