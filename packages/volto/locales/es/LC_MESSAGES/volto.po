@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
-"PO-Revision-Date: 2026-05-05 16:11+0000\n"
-"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"PO-Revision-Date: 2026-05-05 18:14+0000\n"
+"Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-main/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -122,7 +122,7 @@ msgstr "Añadir regla"
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr "Añadir traducción..."
+msgstr "Añadir traducción…"
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
@@ -323,7 +323,7 @@ msgstr "Alias añadido correctamente"
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr "Se han eliminado las URL alternativas."
+msgstr "Los aliases han sido eliminados."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
@@ -559,7 +559,7 @@ msgstr "Navegue el contenido, arrastre una imagen o escriba una dirección URL"
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr "Carga masiva CSV"
+msgstr "Carga masiva de archivos CSV"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
@@ -1656,7 +1656,7 @@ msgstr "Filtrar usuarios por grupos"
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtrar..."
+msgstr "Filtrar…"
 
 #. Default: "First"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -1931,7 +1931,7 @@ msgstr "Información"
 #. Default: "You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 msgid "InfoUserGroupSettings"
-msgstr "Ha seleccionado la opción 'Demasiados usuarios' o 'Demasiados grupos'. Por ello en este panel solo puede buscar usuarios o grupos. Si desea ver todos los usuarios o grupos de inmediato vaya a la configuración de Usuarios y Grupos. Vea el botón de la izquierda."
+msgstr "Ha seleccionado la opción 'Demasiados usuarios' o 'Demasiados grupos'. Por ello en este panel solo puede buscar usuarios o grupos. Si desea ver todos los usuarios o grupos de inmediato vaya a la configuración de Usuarios y Grupos. Consulte el botón de la izquierda."
 
 #. Default: "Inherit permissions from higher levels"
 #: components/manage/Sharing/Sharing
@@ -3104,7 +3104,7 @@ msgstr "Renombrar"
 #. Default: "Renaming items..."
 #: components/manage/Contents/ContentsRenameModal
 msgid "Rename Items Loading Message"
-msgstr "Cambiando el nombre de los elementos..."
+msgstr "Renombrado de elementos Cargando Mensaje"
 
 #. Default: "Rename items"
 #: components/manage/Contents/ContentsRenameModal
@@ -3678,7 +3678,7 @@ msgstr "Fuente"
 #. Default: "Specify a youtube video or playlist url"
 #: components/manage/Blocks/Video/Edit
 msgid "Specify a youtube video or playlist url"
-msgstr "Especifica la dirección URL de un vídeo o una lista de reproducción de YouTube"
+msgstr "Especifica un vídeo al YouTube o url del listado de reproducción"
 
 #. Default: "Split"
 #: components/manage/Diff/Diff
@@ -3930,7 +3930,7 @@ msgstr "El número de elementos debe ser menor o igual a {maxItems}"
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
-msgstr "¡La URL alternativa ya existe!"
+msgstr "¡La URL alternativa proporcionada ya existe!"
 
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
@@ -4449,9 +4449,8 @@ msgstr "URL del vídeo"
 
 #. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
 #: components/manage/Blocks/Video/schema
-#, fuzzy
 msgid "VideoTitleDescription"
-msgstr "El título del vídeo no se muestra, sino que se utiliza únicamente por motivos de accesibilidad para que los usuarios de lectores de pantalla puedan identificarlo. Si el vídeo ya tiene un título suficiente (como el encabezado que aparece arriba), deje este campo en blanco."
+msgstr "Predeterminado: \"El título del vídeo no se muestra, sino que se utiliza únicamente por motivos de accesibilidad para que los usuarios de lectores de pantalla puedan identificarlo. Si el vídeo ya tiene un título suficiente (como el encabezado que aparece arriba), deje este campo en blanco.*"
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4724,7 +4723,7 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como "jperez" o "jose_perez". No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
+msgstr "Por defecto: \"Introduzca el nombre de usuario que desee utilizar, usualmente algo como \\\"jperez\\\" o \\\"jose_perez\\\". No están permitidos caracteres especiales o espacios en el nombre de usuario. Esto es el nombre utilizado para iniciar sesión.\""
 
 #. Default: "and {count} more…"
 #: components/manage/Contents/ContentsDeleteModal
@@ -4750,7 +4749,7 @@ msgstr "¿Olvidaste tu contraseña?"
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
-msgstr "Añada muchas URL alternativas a la vez cargando un archivo CSV. La primera columna debe ser la ruta desde la que redirigir; la segunda, la ruta a la que redirigir. Ambas rutas deben ser relativas al sitio Plone, comenzando con una barra (/). Una tercera columna opcional puede contener la fecha y la hora. Una cuarta columna opcional puede contener un valor booleano para marcar como una redirección manual (por defecto true)."
+msgstr "Predeterminado: \"Añada muchas URL alternativas a la vez cargando un archivo CSV. La primera columna debe ser la ruta desde la que redirigir; la segunda, la ruta a la que redirigir. Ambas rutas deben ser relativas al sitio Plone, comenzando con una barra (/). Una tercera columna opcional puede contener la fecha y la hora. Una cuarta columna opcional puede contener un valor booleano para marcar como una redirección manual (por defecto true).\""
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4780,7 +4779,7 @@ msgstr "Comparar con el idioma"
 #. Default: "Block: {title}"
 #: components/manage/Controlpanels/BlockType
 msgid "controlpanel_block_type"
-msgstr ""
+msgstr "controlpanel_block_type"
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -5065,7 +5064,7 @@ msgstr "No hay estado del flujo de trabajo"
 #. Default: "No items found for type: {type}."
 #: components/manage/Controlpanels/BlockType
 msgid "no-blocks-found"
-msgstr ""
+msgstr "no-blocks-found"
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5121,7 +5120,7 @@ msgstr "Path del padre (../)"
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
-msgstr "Seleccione..."
+msgstr "Seleccione…"
 
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
@@ -5422,7 +5421,7 @@ msgstr "Cargar una imagen desde el ordenador"
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "url"
-msgstr "El valor introducido debe ser una URL válida (www.algo.com o http(s)://www.algo.com)"
+msgstr "url"
 
 #. Default: "user avatar"
 #: components/manage/Toolbar/PersonalTools
