@@ -56,6 +56,7 @@ class SlateEditor extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.getSavedSelection = this.getSavedSelection.bind(this);
     this.setSavedSelection = this.setSavedSelection.bind(this);
+    this.scheduleFocus = this.scheduleFocus.bind(this);
 
     this.savedSelection = null;
 
@@ -160,8 +161,7 @@ class SlateEditor extends Component {
           editor,
           this.props.defaultSelection,
         );
-
-        ReactEditor.focus(editor);
+        this.scheduleFocus(editor);
         Transforms.select(editor, selection);
       } else {
         try {
@@ -193,12 +193,30 @@ class SlateEditor extends Component {
         );
       }
 
-      ReactEditor.focus(this.state.editor);
+      this.scheduleFocus(this.state.editor);
     }
 
     if (this.props.selected && this.props.onUpdate) {
       this.props.onUpdate(editor);
     }
+  }
+
+  scheduleFocus(editor) {
+    if (!editor) return;
+
+    const schedule =
+      typeof window !== 'undefined' && window.requestAnimationFrame
+        ? (fn) => window.requestAnimationFrame(fn)
+        : (fn) => setTimeout(fn, 0);
+
+    schedule(() => {
+      if (this.isUnmounted) return;
+      try {
+        ReactEditor.focus(editor);
+      } catch {
+        // ignore focus errors; selection might no longer be valid
+      }
+    });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
