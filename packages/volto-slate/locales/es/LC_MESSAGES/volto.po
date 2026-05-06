@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"PO-Revision-Date: 2026-05-06 09:32+0000\n"
-"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"PO-Revision-Date: 2026-05-07 10:11+0000\n"
+"Last-Translator: \"Leonardo J. Caballero G.\" <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-slate-18/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 # defaultMessage: Add link
 #: editor/plugins/Link/index
 msgid "Add link"
-msgstr "Agregar enlace"
+msgstr "Añade enlace"
 
 # defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget
