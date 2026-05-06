@@ -4518,6 +4518,11 @@ msgstr "Usted está a punto de eliminar todos los elementos en esta carpeta."
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Está intentando acceder a un elemento protegido, por favor, haga {login} primero."
 
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
+
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
