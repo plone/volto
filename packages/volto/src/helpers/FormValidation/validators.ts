@@ -1,5 +1,6 @@
 import { validationMessage } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import config from '@plone/volto/registry';
 
 type MinMaxValidator = {
   value: string | number;
@@ -10,6 +11,24 @@ type MinMaxValidator = {
 
 type Validator = {
   value: string;
+  field: Record<string, any>;
+  formData: any;
+  formatMessage: Function;
+};
+
+type Choice = {
+  token: string;
+  label: string;
+};
+type ChoiceValidator = {
+  value: string | Choice;
+  field: Record<string, any>;
+  formData: any;
+  formatMessage: Function;
+};
+
+type FileValidator = {
+  value: Record<string, any>;
   field: Record<string, any>;
   formData: any;
   formatMessage: Function;
@@ -211,12 +230,26 @@ export const defaultLanguageControlPanelValidator = ({
   value,
   formData,
   formatMessage,
-}: Validator) => {
+}: ChoiceValidator) => {
+  const token = typeof value === 'object' ? value.token : value;
   const isValid =
-    value &&
+    token &&
     (formData.available_languages.find(
-      (lang: { token: string }) => lang.token === value,
+      (lang: { token: string }) => lang.token === token,
     ) ||
-      formData.available_languages.includes(value));
+      formData.available_languages.includes(token));
   return !isValid ? formatMessage(messages.defaultLanguage) : null;
+};
+
+export const sizeValidator = ({
+  value,
+  field,
+  formatMessage,
+}: FileValidator) => {
+  const maxSize = field.size
+    ? parseInt(field.size, 10)
+    : config.settings.maxFileUploadSize;
+  return maxSize && value.size > maxSize
+    ? formatMessage(messages.maxSize, { maxSize, size: value.size })
+    : null;
 };

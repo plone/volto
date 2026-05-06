@@ -15,8 +15,12 @@ import groupBy from 'lodash/groupBy';
 import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
 import { defineMessages, injectIntl } from 'react-intl';
+import { withRouter } from 'react-router';
 import { getQuerystring } from '@plone/volto/actions/querystring/querystring';
+import { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import ObjectBrowserWidget from '@plone/volto/components/manage/Widgets/ObjectBrowserWidget';
+import NumberWidget from '@plone/volto/components/manage/Widgets/NumberWidget';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
@@ -43,7 +47,26 @@ const messages = defineMessages({
     id: 'querystring-widget-select',
     defaultMessage: 'Select…',
   },
+  currentPath: {
+    id: 'query-widget-currentPath',
+    defaultMessage: 'Current path (./)',
+  },
+  parentPath: {
+    id: 'query-widget-parentPath',
+    defaultMessage: 'Parent path (../)',
+  },
 });
+
+const parseUidDepth = (val) => {
+  if (typeof val !== 'string') return { uid: '', depth: 1 };
+  const lastSep = String(val).lastIndexOf('::');
+  if (lastSep !== -1) {
+    const uid = val.substring(0, lastSep);
+    const parsed = parseInt(val.substring(lastSep + 2), 10);
+    return { uid, depth: Number.isNaN(parsed) ? 1 : parsed };
+  }
+  return { uid: val, depth: 1 };
+};
 
 /**
  * Widget for a querystring value, to define a catalog search criteria.
@@ -97,6 +120,7 @@ export class QuerystringWidgetComponent extends Component {
     };
     this.onChangeValue = this.onChangeValue.bind(this);
     this.getWidget = this.getWidget.bind(this);
+    this.loadReferenceWidgetItem = this.loadReferenceWidgetItem.bind(this);
   }
 
   /**
@@ -111,6 +135,27 @@ export class QuerystringWidgetComponent extends Component {
     this.props.getQuerystring();
   }
 
+  loadReferenceWidgetItem(v) {
+    const loading =
+      this.props.reference[`${v}_query_reference`]?.loading ?? false;
+    if (!loading && v?.length > 0) {
+      this.props.getQueryStringResults(
+        '/',
+        {
+          b_size: 1,
+          query: [
+            {
+              i: 'path',
+              o: 'plone.app.querystring.operation.string.absolutePath',
+              v: v + '::0',
+            },
+          ],
+        },
+        v + '_query_reference',
+      );
+    }
+  }
+
   /**
    * Get correct widget
    * @method getWidget
@@ -118,15 +163,16 @@ export class QuerystringWidgetComponent extends Component {
    * @param {number} index Row index.
    * @returns {Object} Widget.
    */
-  getWidget(row, index, Select) {
+  getWidget(row, index, Select, intl) {
     const props = {
       fluid: true,
       value: row.v,
       onChange: (data) => this.onChangeValue(index, data.target.value),
     };
     const values = this.props.indexes[row.i].values;
+    const operator = this.props.indexes[row.i].operators[row.o];
 
-    switch (this.props.indexes[row.i].operators[row.o].widget) {
+    switch (operator.widget) {
       case null:
         return <span />;
       case 'DateWidget':
@@ -217,13 +263,93 @@ export class QuerystringWidgetComponent extends Component {
           </Form.Field>
         );
       case 'ReferenceWidget':
+        const { uid: uidValue, depth: depthValue } = parseUidDepth(props.value);
+        if (!this.props.reference[`${uidValue}_query_reference`]) {
+          this.loadReferenceWidgetItem(uidValue);
+        }
+        const referenceItem = this.props.reference[
+          `${uidValue}_query_reference`
+        ]
+          ? this.props.reference[`${uidValue}_query_reference`].items[0]
+          : null;
+        return (
+          <div className="location-object-browser">
+            <Form.Field className="object-browser-field">
+              <ObjectBrowserWidget
+                id={`query-reference-widget-${index}`}
+                mode="link"
+                onChange={(id, data) => {
+                  const itemSelected = data.length > 0 ? data[0] : {};
+                  const uid = itemSelected.UID ?? '';
+                  this.onChangeValue(index, uid ? `${uid}::${depthValue}` : '');
+                  this.loadReferenceWidgetItem(uid);
+                }}
+                value={uidValue && this.props.reference ? [referenceItem] : []}
+                wrapped={false}
+                onlyFolderishSelectable={true}
+                allowExternals={true}
+              />
+            </Form.Field>
+
+            {uidValue && (
+              <Form.Field className="reference-widget-depth">
+                <NumberWidget
+                  title={intl.formatMessage({
+                    id: 'Depth',
+                    defaultMessage: 'Depth',
+                  })}
+                  min={1}
+                  step={1}
+                  value={depthValue}
+                  onChange={(id, value) => {
+                    const newDepth = parseInt(value, 10) || 1;
+                    const curUid = uidValue || '';
+                    this.onChangeValue(index, `${curUid}::${newDepth}`);
+                  }}
+                />
+              </Form.Field>
+            )}
+          </div>
+        );
+      case 'RelativePathWidget':
+        const relativePathOptions = [
+          {
+            label: intl.formatMessage(messages.currentPath),
+            value: './',
+          },
+          {
+            label: intl.formatMessage(messages.parentPath),
+            value: '../',
+          },
+        ];
+        return (
+          <Form.Field style={{ flex: '1 0 auto', maxWidth: '92%' }}>
+            <Select
+              {...props}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              options={relativePathOptions}
+              styles={customSelectStyles}
+              placeholder={this.props.intl.formatMessage(messages.select)}
+              theme={selectTheme}
+              components={{ DropdownIndicator, Option }}
+              onChange={(data) => {
+                this.onChangeValue(index, data.value);
+              }}
+              isMulti={false}
+              value={
+                relativePathOptions.filter((p) => p.value === props.value)?.[0]
+              }
+            />
+          </Form.Field>
+        );
       default:
         // if (row.o === 'plone.app.querystring.operation.string.relativePath') {
         //   props.onChange = data => this.onChangeValue(index, data.target.value);
         // }
         return (
           <Form.Field style={{ flex: '1 0 auto' }}>
-            <Input {...props} />
+            <Input {...props} description={operator.description} />
           </Form.Field>
         );
     }
@@ -334,7 +460,7 @@ export class QuerystringWidgetComponent extends Component {
                             value: row.i,
                             label: indexes[row.i]?.title,
                           }}
-                          onChange={(data) =>
+                          onChange={(data) => {
                             onChange(
                               id,
                               map(value, (curRow, curIndex) =>
@@ -346,8 +472,8 @@ export class QuerystringWidgetComponent extends Component {
                                     }
                                   : curRow,
                               ),
-                            )
-                          }
+                            );
+                          }}
                         />
                       </Form.Field>
                       <Form.Field style={{ flex: '1 0 auto' }}>
@@ -408,7 +534,7 @@ export class QuerystringWidgetComponent extends Component {
                         </Button>
                       )}
                     </div>
-                    {this.getWidget(row, index, Select)}
+                    {this.getWidget(row, index, Select, intl)}
                     {this.props.indexes[row.i].operators[row.o].widget && (
                       <Button
                         onClick={(event) => {
@@ -500,10 +626,12 @@ export class QuerystringWidgetComponent extends Component {
 export default compose(
   injectIntl,
   injectLazyLibs(['reactSelect']),
+  withRouter,
   connect(
-    (state) => ({
+    (state, props) => ({
       indexes: state.querystring.indexes,
+      reference: state.querystringsearch.subrequests,
     }),
-    { getQuerystring },
+    { getQuerystring, getQueryStringResults },
   ),
 )(QuerystringWidgetComponent);

@@ -1,0 +1,1 @@
+Fixed unauthorized access to control panels by adding proper authorization checks. @Shyam-Raghuwanshi

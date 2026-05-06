@@ -25,7 +25,7 @@
 }
 
 .ui.form p.help {
-  color: #878f93;
+  color: @inputColor;
   font-size: @13px;
   font-weight: 300;
   line-height: initial;
