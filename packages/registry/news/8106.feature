@@ -1,1 +1,0 @@
-Update glob. @sneridagh
