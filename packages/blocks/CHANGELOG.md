@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.8 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Blocks' local registration and TypeScript project setup with the monorepo-wide typecheck cleanup. 
+- Switched Blocks' local `@testing-library/jest-dom` dev dependency to the shared catalog entry to keep test tooling aligned with the monorepo dependency refresh. 
+
 ## 1.0.0-alpha.7 (2026-04-16)
 
 ### Breaking
