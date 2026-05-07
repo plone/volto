@@ -6,13 +6,7 @@ import { stdin as input, stdout as output } from 'node:process';
 import { globSync as glob } from 'glob';
 
 const NEWS_GLOB = '**/news/*.{breaking,feature,bugfix,documentation,internal}';
-const IGNORE_GLOBS = [
-  '**/node_modules/**',
-  '_build/**',
-  'docs/**',
-  'packages/volto/**',
-  'packages/volto-slate/**',
-];
+const IGNORE_GLOBS = ['**/node_modules/**', '_build/**', 'docs/**'];
 
 const RELEASE_GROUPS = [
   {
@@ -30,7 +24,6 @@ const RELEASE_GROUPS = [
       '@plone/babel-preset-razzle',
       '@plone/razzle-dev-utils',
       '@plone/razzle',
-      '@plone/volto-slate',
     ],
   },
   {
@@ -48,10 +41,7 @@ function readPackageJson(filename) {
 }
 
 function getPackageMetadata() {
-  const packageFiles = [
-    ...glob('packages/*/package.json'),
-    ...glob('apps/*/package.json'),
-  ];
+  const packageFiles = [...glob('packages/*/package.json')];
 
   return packageFiles.reduce(
     (metadata, filename) => {
