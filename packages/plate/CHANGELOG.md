@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2026-05-07)
+
+### Bugfix
+
+- Prevent `input.css` import directly from the repo, since it's plain wrong. @sneridagh 
+
 ## 1.0.0-alpha.4 (2026-05-07)
 
 ### Feature
