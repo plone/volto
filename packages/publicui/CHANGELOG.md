@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned PublicUI's app-aware TypeScript project setup and route typing with the monorepo-wide typecheck cleanup. 
+- Switched PublicUI's local `@testing-library/jest-dom` dev dependency to the shared catalog entry to keep test tooling aligned with the monorepo dependency refresh. 
+
 ## 1.0.0-alpha.2 (2026-04-16)
 
 ### Feature
