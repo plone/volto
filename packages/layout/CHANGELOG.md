@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.6 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Layout's app-aware TypeScript project setup and internal view typings with the monorepo-wide typecheck cleanup. 
+- Switched Layout's local `@testing-library/jest-dom` dev dependency to the shared catalog entry to keep test tooling consistent with the monorepo dependency refresh. 
+
 ## 1.0.0-alpha.5 (2026-04-16)
 
 ### Feature
