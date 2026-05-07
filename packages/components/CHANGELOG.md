@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.0-alpha.0 (2026-05-07)
+
+### Bugfix
+
+- Added missing exports. @sneridagh [#8160](https://github.com/plone/volto/issues/8160)
+
+### Internal
+
+- Aligned Components' local test dependency setup with the monorepo refresh by moving `@testing-library/jest-dom` and `jsdom` to the current shared baseline and dropping the unused `vitest-axe` dev dependency. 
+- Aligned Components' shared tsconfig usage and local package scripts with the monorepo-wide typecheck cleanup. 
+- Moved `vite-plugin-svgr` and its SVGR plugins into Components runtime dependencies and narrowed the published plugin file entry for correct downstream installs. @sneridagh 
+
 ## 4.0.0-alpha.7 (2026-04-16)
 
 ### Breaking
