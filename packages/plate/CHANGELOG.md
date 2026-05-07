@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.4 (2026-05-07)
+
+### Feature
+
+- Added shared Plate context state for comments and suggestion editing, including inline suggestion tracking and toolbar-driven suggestion mode for the new collaborative editor flow. @sneridagh 
+
+### Bugfix
+
+- Kept fast add-view title typing synchronized in the title block and aligned the empty title placeholder with the constrained title container. 
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Plate's editor typings and debounce dependency setup with the monorepo-wide typecheck cleanup. 
+- Switched Plate's local `@testing-library/jest-dom` dev dependency to the shared catalog entry during the monorepo dependency cleanup. 
+
 ## 1.0.0-alpha.3 (2026-04-16)
 
 ### Breaking
