@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.34 (2026-05-07)
+
+### Bugfix
+
+- Replace hard-coded color values with Semantic UI theme variables for input field to improve accessibility. @Wagner3UB [#8044](https://github.com/plone/volto/issues/8044)
+
 ## 19.0.0-alpha.33 (2026-05-04)
 
 ### Breaking
