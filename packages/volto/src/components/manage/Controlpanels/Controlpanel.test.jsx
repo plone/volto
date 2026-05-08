@@ -1,4 +1,4 @@
-import { render, waitFor, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
@@ -82,6 +82,7 @@ describe('Controlpanel', () => {
 
     expect(container).toMatchSnapshot();
   });
+<<<<<<< dep-cookie
 
   it('renders a controlpanel component with error', async () => {
     const { container, rerender } = render(
@@ -114,4 +115,6 @@ describe('Controlpanel', () => {
     await waitFor(() => screen.findByText(/Twitter/i));
     expect(container).toMatchSnapshot();
   });
+=======
+>>>>>>> main
 });

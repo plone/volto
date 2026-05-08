@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.7 (2026-05-07)
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/scripts` maintainers. 
+
 ## 4.0.0-alpha.6 (2026-03-31)
 
 ### Internal
