@@ -559,10 +559,10 @@ msgstr "Navegue no website, largue uma imagem ou escreva um URL"
 msgid "BulkUploadAltUrls"
 msgstr "Carregamento em massa de CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Por predefinição, as permissões do contentor deste item são herdadas. Se desactivar isto, apenas serão válidas as permissões de partilha explicitamente definidas. No resumo, o símbolo {inherited} indica um valor herdado. Do mesmo modo, o símbolo {global} indica um papel global, que é gerido pelo administrador do sítio."
+msgstr "Por predefinição, as permissões do contentor deste item são herdadas. Se desativar isto, apenas serão válidas as permissões de partilha definidas explicitamente. Na visão geral, os valores herdados são explicitamente rotulados como 'Valor herdado' e recebem uma marca de verificação verde {inherited}. Da mesma forma, os papéis geridos pelo administrador do site são rotulados como 'Papel global' e recebem uma marca de verificação azul {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -697,6 +697,11 @@ msgstr "Escolha um ficheiro"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Limpar"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Limpar URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -2680,6 +2685,11 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Somente caracteres de bytes de 7 bits são permitidos. Não pode conter letras maiúsculas, caracteres especiais: <, >, &, #, /, ?, ou outros que são ilegais em URLs. Não pode começar com: , aq, @@, ++. Não pode terminar com __. Não pode ser: request, contributors, ., .., “”. Não pode conter quebras de linha."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Abrir navegador de URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4188,6 +4198,16 @@ msgstr "Gestão de URL"
 msgid "URL Management for {title}"
 msgstr "Gestão de URL para {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta o URL"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4602,6 +4622,11 @@ msgstr "Está prestes a apagar todos os elementos na paginação atual desta pas
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Está a tentar aceder um recurso protegido, por favor, {login} primeiro."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5349,6 +5374,26 @@ msgstr "texto"
 #: config/Blocks
 msgid "title"
 msgstr "título"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Erro"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informação"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Sucesso"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Aviso"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

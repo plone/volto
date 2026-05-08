@@ -559,10 +559,10 @@ msgstr ""
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr ""
+msgstr "기본적으로 이 항목의 컨테이너에서 권한이 상속됩니다. 이를 비활성화하면 명시적으로 정의된 공유 권한만 유효합니다. 개요에서 {inherited} 기호는 상속된 값을 나타냅니다. 마찬가지로 {global} 기호는 사이트 관리자가 관리하는 전역 역할을 나타냅니다."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -696,6 +696,11 @@ msgstr ""
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
+msgstr ""
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
 msgstr ""
 
 #. Default: "Clear date and time"
@@ -2680,6 +2685,11 @@ msgstr ""
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr ""
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4188,6 +4198,16 @@ msgstr ""
 msgid "URL Management for {title}"
 msgstr ""
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr ""
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4601,6 +4621,11 @@ msgstr ""
 #. Default: "You are trying to access a protected resource, please {login} first."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
+msgstr ""
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
 msgstr ""
 
 #. Default: "You are using an outdated browser"
@@ -5349,6 +5374,26 @@ msgstr ""
 #: config/Blocks
 msgid "title"
 msgstr ""
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "오류"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "정보"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "성공"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "경고"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
