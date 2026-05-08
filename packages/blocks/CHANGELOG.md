@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.9 (2026-05-08)
+
+### Internal
+
+- Registered the `blockWidth` style field definition utility to support the new generic style field runtime. @sneridagh 
+
 ## 1.0.0-alpha.8 (2026-05-07)
 
 ### Internal
