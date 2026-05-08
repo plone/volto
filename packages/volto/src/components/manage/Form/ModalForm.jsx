@@ -133,6 +133,7 @@ class ModalForm extends Component {
     this.onBlurField = this.onBlurField.bind(this);
     this.onClickInput = this.onClickInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   /**
@@ -221,13 +222,41 @@ class ModalForm extends Component {
     });
   }
 
+  onKeyDown(event) {
+    if (event.key !== 'Tab') return;
+    const modal = document.getElementById(this.headerId)?.closest('.ui.modal');
+    if (!modal) return;
+    const focusable = modal.querySelectorAll(
+      'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])',
+    );
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey) {
+      if (document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
   /**
    * Component did update lifecycle handler
    * @param {Object} prevProps
    * @param {Object} prevState
    */
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.onKeyDown);
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (!prevProps.open && this.props.open) {
+      document.addEventListener('keydown', this.onKeyDown);
       this.modalRef.current?.focus();
       if (this.announceRef.current) {
         this.announceRef.current.textContent = this.props.intl.formatMessage(
@@ -237,6 +266,7 @@ class ModalForm extends Component {
       }
     }
     if (prevProps.open && !this.props.open) {
+      document.removeEventListener('keydown', this.onKeyDown);
       if (this.announceRef.current) {
         this.announceRef.current.textContent = this.props.intl.formatMessage(
           messages.dialogClosed,
@@ -397,20 +427,6 @@ class ModalForm extends Component {
               <Icon name={aheadSVG} className="contents circled" size="30px" />
             </Button>
           </Modal.Actions>
-          {/* Sentinel: closing the modal when the user tabs past the last element */}
-          {onCancel && (
-            <button
-              type="button"
-              onFocus={() => {
-                if (this.announceRef.current) {
-                  this.announceRef.current.textContent =
-                    this.props.intl.formatMessage(messages.dialogClosed);
-                }
-                onCancel();
-              }}
-              style={{ position: 'absolute', opacity: 0 }}
-            />
-          )}
         </Modal>
       </>
     );
