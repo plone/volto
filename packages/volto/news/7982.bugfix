@@ -1,1 +1,1 @@
-Added aria-required and labels to ensure proper identification of mandatory fields in the FileWidget and RegistryImageWidget components - @Wagner3UB
+Added aria-required and labels to ensure proper identification of mandatory fields in the FileWidget component. @Wagner3UB
