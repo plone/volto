@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.7 (2026-05-08)
+
+### Feature
+
+- Enabled public block rendering to resolve schema-driven style fields, including the special `blockWidth` bridge from block config. @sneridagh 
+
 ## 1.0.0-alpha.6 (2026-05-07)
 
 ### Internal
