@@ -449,13 +449,7 @@ class Toolbar extends Component {
                   ?.querySelector('button.toolbar-handler-button')
                   ?.focus();
 
-                // Close menu on blur only for personalTools — scoped to avoid
-                // impacting other toolbar flows or unrelated tests
-                const isPersonalTools =
-                  this.state.loadedComponents.includes('personalTools');
-                if (isPersonalTools) {
-                  this.closeMenu();
-                }
+                this.closeMenu();
 
                 if (this.announceRef.current) {
                   this.announceRef.current.textContent = '';
