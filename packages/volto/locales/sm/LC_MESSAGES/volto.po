@@ -1619,7 +1619,7 @@ msgstr ""
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr ""
+msgstr "Eria e la’u i luga faila. Ta'omi le Enter e tatala ai le masini su'e faila."
 
 #. Default: "File view"
 #: config/Views
