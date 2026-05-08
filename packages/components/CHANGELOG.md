@@ -1,4 +1,4 @@
-# @plone/client Release Notes
+# @plone/components Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
@@ -7,6 +7,12 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 4.0.0-alpha.8 (2026-05-07)
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/components` maintainers. 
 
 ## 4.0.0-alpha.6 (2026-02-20)
 

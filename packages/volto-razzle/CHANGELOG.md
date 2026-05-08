@@ -8,6 +8,17 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2026-05-04)
+
+### Internal
+
+- Replace dependency `inquirer` with `@inquirer/confirm` to prompt for build
+  confirmation. @davisagli 
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/razzle` maintainers. 
+
 ## 1.0.0-alpha.4 (2026-04-27)
 
 ### Internal
