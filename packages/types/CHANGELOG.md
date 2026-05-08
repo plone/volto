@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.1 (2026-05-08)
+
+### Feature
+
+- Added `styleFieldDefinition` utility typings for registry-based style field resolution. @sneridagh 
+
 ## 3.0.0-alpha.0 (2026-05-07)
 
 ### Breaking
