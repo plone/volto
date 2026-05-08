@@ -2,6 +2,11 @@ import type { ReactNode } from 'react';
 import cx from 'clsx';
 import type { RenderBlocksProps } from './RenderBlocks';
 import type { BlocksFormData } from '@plone/types';
+import {
+  getStyleFieldDefinitionsFromRegistry,
+  resolveStyleFields,
+} from '@plone/helpers';
+import { getBlockStyleFieldConfigs } from '../helpers';
 
 type BlockWrapperProps = Partial<RenderBlocksProps> & {
   children: ReactNode;
@@ -12,9 +17,14 @@ const BlockWrapper = (props: BlockWrapperProps) => {
   const { blocksConfig, children, data } = props;
   const category =
     blocksConfig?.[data['@type'] as keyof typeof blocksConfig]?.category;
-  // TODO: Bring in the StyleWrapper helpers for calculating styles and classes
+  const { style } = resolveStyleFields({
+    data,
+    fieldConfigs: getBlockStyleFieldConfigs(data, blocksConfig),
+    container: undefined,
+    resolveDefinitions: getStyleFieldDefinitionsFromRegistry,
+  });
+  // TODO: Bring in the StyleWrapper helpers for calculating classes
   const classNames = undefined;
-  const style = undefined;
 
   return (
     <div

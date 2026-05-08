@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import config from '@plone/registry';
 
 import {
@@ -9,15 +9,22 @@ import {
   getBlockWidthDefinitions,
   getBlockWidthOptions,
 } from './block-width-plugin';
+import {
+  BaseStyleFieldsPlugin,
+  resetStyleFieldOnEditor,
+  setStyleFieldOnEditor,
+} from './style-fields-plugin';
 
 type RegistryBlocksState = {
   widths?: unknown;
   plateBlocksConfig?: unknown;
   blocksConfig?: unknown;
+  utilities?: unknown;
 };
 
 type TransformPropsArgs = {
-  nodeValue?: string;
+  editor?: unknown;
+  element?: Record<string, unknown>;
   props: {
     style?: Record<string, string>;
   };
@@ -33,12 +40,14 @@ const snapshotRegistryState = (): RegistryBlocksState => ({
   widths: registryBlocks.widths,
   plateBlocksConfig: registryBlocks.plateBlocksConfig,
   blocksConfig: registryBlocks.blocksConfig,
+  utilities: config.utilities,
 });
 
 const restoreRegistryState = (state: RegistryBlocksState) => {
   registryBlocks.widths = state.widths;
   registryBlocks.plateBlocksConfig = state.plateBlocksConfig;
   registryBlocks.blocksConfig = state.blocksConfig;
+  config.utilities = state.utilities as any;
 };
 
 const initialRegistryState = snapshotRegistryState();
@@ -50,6 +59,14 @@ const createEditor = (defaultWidths = ['default']) =>
 
 afterEach(() => {
   restoreRegistryState(initialRegistryState);
+});
+
+beforeEach(() => {
+  config.registerUtility({
+    type: 'styleFieldDefinition',
+    name: 'blockWidth',
+    method: () => (registryBlocks.widths as any) ?? [],
+  });
 });
 
 describe('block width plugin', () => {
@@ -181,13 +198,25 @@ describe('block width plugin', () => {
         style: { '--block-width': '100%' },
       },
     ];
+    registryBlocks.plateBlocksConfig = {
+      p: {
+        blockWidth: {
+          defaultWidth: 'default',
+          widths: ['default', 'full'],
+        },
+      },
+    };
 
     const transformProps = (BaseBlockWidthPlugin as any).inject.nodeProps
       .transformProps as TransformPropsFn;
 
     expect(
       transformProps({
-        nodeValue: 'full',
+        element: {
+          type: 'p',
+          blockWidth: 'full',
+          children: [{ text: 'Paragraph' }],
+        },
         props: {
           style: {
             color: 'red',
@@ -267,5 +296,107 @@ describe('block width plugin', () => {
     ];
 
     expect(getDefaultBlockWidth()).toBe('cinema');
+  });
+
+  it('reads and writes nested path style fields through generic transforms', () => {
+    registryBlocks.blocksConfig = {
+      teaser: {
+        blockSchema: {
+          title: 'Teaser',
+          fieldsets: [],
+          required: [],
+          properties: {
+            theme: {
+              title: 'Theme',
+              default: 'default',
+              choices: [
+                ['default', 'Default'],
+                ['sand', 'Sand'],
+              ],
+              styleField: {
+                path: 'styles.theme',
+              },
+            },
+          },
+        },
+      },
+    };
+
+    config.registerUtility({
+      type: 'styleFieldDefinition',
+      name: 'theme',
+      method: () => [
+        {
+          name: 'default',
+          label: 'Default',
+          style: { '--theme-color': 'white' },
+        },
+        {
+          name: 'sand',
+          label: 'Sand',
+          style: { '--theme-color': 'wheat' },
+        },
+      ],
+    });
+
+    const setNodes = vi.fn();
+    const block = {
+      type: 'unknown',
+      '@type': 'teaser',
+      styles: {
+        theme: 'sand',
+      },
+      children: [{ text: '' }],
+    };
+    const editor = {
+      api: {
+        block: vi.fn(() => [block, [0]]),
+        node: vi.fn(() => [block, [0]]),
+        blocks: vi.fn(() => [[block, [0]]]),
+        isBlock: vi.fn(() => true),
+      },
+      tf: {
+        setNodes,
+      },
+    } as any;
+
+    const transformProps = (BaseStyleFieldsPlugin as any).inject.nodeProps
+      .transformProps as TransformPropsFn;
+    expect(
+      transformProps({
+        editor,
+        element: block,
+        props: { style: {} },
+      } as any),
+    ).toEqual({
+      style: {
+        '--theme-color': 'wheat',
+      },
+    });
+
+    setStyleFieldOnEditor(editor, 'theme', 'default');
+    expect(setNodes).toHaveBeenCalledWith(
+      {
+        styles: {
+          theme: 'default',
+        },
+      },
+      {
+        at: [0],
+      },
+    );
+
+    setNodes.mockClear();
+    resetStyleFieldOnEditor(editor, 'theme');
+    expect(setNodes).toHaveBeenCalledWith(
+      {
+        styles: {
+          theme: 'default',
+        },
+      },
+      {
+        at: [0],
+      },
+    );
   });
 });
