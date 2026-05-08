@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.6 (2026-05-08)
+
+### Feature
+
+- Added a generic schema-driven style fields plugin for Plate and migrated `blockWidth` to use the shared style field runtime. @sneridagh 
+
 ## 1.0.0-alpha.5 (2026-05-07)
 
 ### Bugfix
