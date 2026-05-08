@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.5 (2026-05-08)
+
+### Feature
+
+- Added shared helpers to derive schema-driven style fields, resolve their style definitions, and read or write nested style field values. @sneridagh 
+
 ## 2.0.0-alpha.4 (2026-05-07)
 
 ### Internal
