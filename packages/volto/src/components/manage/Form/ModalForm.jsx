@@ -62,7 +62,7 @@ const messages = defineMessages({
  * @extends Component
  */
 class ModalForm extends Component {
-  headerId = `modal-title-${Math.random().toString(36).slice(2)}`;
+  static idCounter = 0;
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -119,6 +119,7 @@ class ModalForm extends Component {
    */
   constructor(props) {
     super(props);
+    this.headerId = `modal-title-${++ModalForm.idCounter}`;
     this.state = {
       currentTab: 0,
       errors: {},
@@ -225,7 +226,7 @@ class ModalForm extends Component {
    * @param {Object} prevProps
    * @param {Object} prevState
    */
-  async componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (!prevProps.open && this.props.open) {
       this.modalRef.current?.focus();
       if (this.announceRef.current) {
@@ -301,15 +302,14 @@ class ModalForm extends Component {
           }}
         />
         <Modal
+          role="dialog"
           dimmer={this.props.dimmer}
           open={this.props.open}
           className={this.props.className}
           aria-labelledby={this.headerId}
           aria-modal="true"
         >
-          <Header id={this.headerId} aria-live="assertive" aria-atomic="true">
-            {this.props.title}
-          </Header>
+          <Header id={this.headerId}>{this.props.title}</Header>
           <Dimmer active={this.props.loading}>
             <Loader>
               {this.props.loadingMessage || (
