@@ -45,7 +45,14 @@ describe('Slate Delete key behavior', () => {
   it('Delete at end of A removes empty next slate block', () => {
     cy.getSlateEditorAndType('Keep me');
 
-    cy.addNewBlock('slate');
+    // Press Enter at end of block to create a new empty slate block naturally,
+    // instead of using addNewBlock which relies on the slash menu and fails when
+    // the block already has content.
+    cy.get(
+      '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
+    )
+      .first()
+      .type('{moveToEnd}{enter}');
 
     cy.get(
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
@@ -56,6 +63,7 @@ describe('Slate Delete key behavior', () => {
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
     )
       .first()
+      .click()
       .type('{moveToEnd}{del}');
 
     cy.get(
