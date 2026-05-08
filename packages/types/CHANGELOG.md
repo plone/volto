@@ -8,6 +8,25 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.0 (2026-05-07)
+
+### Breaking
+
+- Refactored and re-thinked blockWidth feature, add new `plateBlocksConfig` key. @sneridagh [#8053](https://github.com/plone/volto/issues/8053)
+
+### Feature
+
+- Typings for block data, utilities, and querystring search. @ebrehault [#7603](https://github.com/plone/volto/issues/7603)
+
+### Bugfix
+
+- Fixed published TypeScript declarations for block config keys, React 19 compatibility, and shared module typings used across the monorepo. 
+- Forward port @plone/types 2a16. @sneridagh 
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+
 ## 2.0.0-alpha.16 (2026-04-05)
 
 ### Feature

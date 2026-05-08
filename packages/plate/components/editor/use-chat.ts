@@ -10,8 +10,7 @@ import { type TNode, KEYS, nanoid, NodeApi, TextApi } from 'platejs';
 import { type PlateEditor, useEditorRef, usePluginOption } from 'platejs/react';
 
 import { aiChatPlugin } from '../../components/editor/plugins/ai-kit';
-
-import { discussionPlugin } from './plugins/discussion-kit';
+import { usePlatePlugins } from './plate-plugins-context';
 
 export type ToolName = 'comment' | 'edit' | 'generate';
 
@@ -53,6 +52,7 @@ const loremWordChunk = (minWords = 1, maxWords = 3) => {
 export const useChat = () => {
   const editor = useEditorRef();
   const options = usePluginOption(aiChatPlugin, 'chatOptions');
+  const { currentUserId, discussions, setDiscussions } = usePlatePlugins();
 
   // remove when you implement the route /api/ai/command
   const abortControllerRef = React.useRef<AbortController | null>(null);
@@ -124,9 +124,7 @@ export const useChat = () => {
 
         // eslint-disable-next-line no-console
         if (!range) return console.warn('No range found for AI comment');
-
-        const discussions =
-          editor.getOption(discussionPlugin, 'discussions') || [];
+        if (!currentUserId) return;
 
         // Generate a new discussion ID
         const discussionId = nanoid();
@@ -138,7 +136,7 @@ export const useChat = () => {
           createdAt: new Date(),
           discussionId,
           isEdited: false,
-          userId: editor.getOption(discussionPlugin, 'currentUserId'),
+          userId: currentUserId,
         };
 
         // Create a new discussion
@@ -150,12 +148,12 @@ export const useChat = () => {
             .map((node: TNode) => NodeApi.string(node))
             .join('\n'),
           isResolved: false,
-          userId: editor.getOption(discussionPlugin, 'currentUserId'),
+          userId: currentUserId,
         };
 
         // Update discussions
         const updatedDiscussions = [...discussions, newDiscussion];
-        editor.setOption(discussionPlugin, 'discussions', updatedDiscussions);
+        setDiscussions(updatedDiscussions);
 
         // Apply comment marks to the editor
         editor.tf.withMerging(() => {
