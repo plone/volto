@@ -1,0 +1,1 @@
+Fixed the floating toolbar width handler button, if there's only a single option, do not show. @sneridagh
