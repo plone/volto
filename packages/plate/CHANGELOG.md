@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.7 (2026-05-08)
+
+### Bugfix
+
+- Fixed the floating toolbar width handler button, if there's only a single option, do not show. @sneridagh 
+
 ## 1.0.0-alpha.6 (2026-05-08)
 
 ### Feature
