@@ -97,7 +97,7 @@ const messages = defineMessages({
  *
  */
 const FileWidget = (props) => {
-  const { id, value, onChange, isDisabled } = props;
+  const { id, value, onChange, isDisabled, fieldSet } = props;
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
 
@@ -180,7 +180,9 @@ const FileWidget = (props) => {
   };
 
   const statusTextA11y = [
-    props.required && intl.formatMessage(messages.requiredField), // Required field status
+    intl.formatMessage(messages.dragAndDropActionA11y), // Interaction instructions
+    props.required &&
+      `${props.title}: ${intl.formatMessage(messages.requiredField)}`, // Required field status
     props.error?.length && props.error.join(' '), // Validation error messages
     value?.filename, // Current file name if a file is uploaded
   ]
@@ -198,7 +200,7 @@ const FileWidget = (props) => {
           <div
             className="file-widget-dropzone"
             role="button"
-            aria-label={intl.formatMessage(messages.dragAndDropActionA11y)}
+            aria-labelledby={`fieldset-${fieldSet}-field-label-${id}`}
             aria-describedby={`field-${id}-status`}
             {...getRootProps()}
           >
@@ -257,8 +259,8 @@ const FileWidget = (props) => {
           </div>
         )}
       </Dropzone>
-      <div className="field-file-name">
-        {value && (
+      {value && (
+        <div className="field-file-name">
           <UniversalLink
             href={value.download}
             aria-label={intl.formatMessage(messages.downloadFile, {
@@ -268,8 +270,6 @@ const FileWidget = (props) => {
           >
             {value.filename}
           </UniversalLink>
-        )}
-        {value && (
           <Button
             type="button"
             icon
@@ -284,8 +284,8 @@ const FileWidget = (props) => {
           >
             <Icon name={deleteSVG} size="20px" />
           </Button>
-        )}
-      </div>
+        </div>
+      )}
     </FormFieldWrapper>
   );
 };
@@ -300,6 +300,7 @@ FileWidget.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
+  fieldSet: PropTypes.string,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.shape({
     '@type': PropTypes.string,
@@ -317,6 +318,7 @@ FileWidget.propTypes = {
 FileWidget.defaultProps = {
   description: null,
   required: false,
+  fieldSet: null,
   error: [],
   value: null,
 };
