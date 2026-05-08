@@ -9,7 +9,7 @@ myst:
 
 # Configure style fields
 
-This guide explains how to configure schema-driven style fields in Seven.
+This guide explains how to configure block styles based on fields in the block schema in Seven.
 It focuses on a `theme` field, because that is the common case for the new style field system.
 
 Use this model when you want a block to store a semantic ID, such as `default` or `sand`, and resolve that ID to a runtime style object later.
