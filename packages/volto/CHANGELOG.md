@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.35 (2026-05-08)
+
+### Internal
+
+- Release for updating needed and conflicting typings. @sneridagh 
+
 ## 19.0.0-alpha.34 (2026-05-07)
 
 ### Bugfix
