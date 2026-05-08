@@ -560,7 +560,7 @@ msgstr "Navega pel lloc, deixa anar una imatge o escriu una URL"
 msgid "BulkUploadAltUrls"
 msgstr "Càrrega massiva de CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Per defecte, els permisos del contenidor d'aquest element són heretats. Si desactiveu aquesta opció, només seran vàlids els permisos de compartició definits explícitament. A la vista general, el símbol {inherited} indica un valor heretat. De la mateixa manera, el símbol {global} indica un rol global, que és gestionat per l'administrador del lloc."
@@ -698,6 +698,11 @@ msgstr "Trieu un fitxer"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Clar"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Esborra l'URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -2681,6 +2686,11 @@ msgstr "D'acord"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., "". No pot contenir salts de línia."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Obre el navegador d'URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4199,6 +4209,16 @@ msgstr "Gestió d'URL"
 msgid "URL Management for {title}"
 msgstr "Gestió d'URL per a {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta l'URL"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4613,6 +4633,11 @@ msgstr "Estàs a punt d'eliminar tots els elements de la pàgina actual d'aquest
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Esteu provant d'accedir a un recurs protegit, primer {login} ."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5360,6 +5385,26 @@ msgstr "Text"
 #: config/Blocks
 msgid "title"
 msgstr "Títol"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Error"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informació"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Èxit"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertiment"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

@@ -8,6 +8,36 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.16 (2026-05-07)
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/volto-slate` maintainers. 
+
+## 19.0.0-alpha.15 (2026-04-27)
+
+### Bugfix
+
+- Added Romanian translations for the `@plone/volto-slate` core addon catalog. @avoinea 
+
+### Internal
+
+- Update dependency: `uuid` 14.0.0. @davisagli 
+
+## 19.0.0-alpha.14 (2026-04-09)
+
+### Breaking
+
+- Change hotkey for strikethrough text to Ctrl+Shift+X / Cmd+Shift+X. @MAX-786 [#4196](https://github.com/plone/volto/issues/4196)
+
+### Bugfix
+
+- fix LinkEditor not opening from SlateEditor @CannedShroud [#4130](https://github.com/plone/volto/issues/4130)
+
+### Internal
+
+- Update devDependency: release-it 19.2.4. @davisagli 
+
 ## 19.0.0-alpha.13 (2026-03-31)
 
 ### Internal

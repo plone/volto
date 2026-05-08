@@ -559,10 +559,10 @@ msgstr "Найдите изображение на сайте, или перет
 msgid "BulkUploadAltUrls"
 msgstr "Массовая загрузка CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "По умолчанию права наследуются от контейнера элемента. Если это отключить,то будут действительны только явно назначенные права. Символ {inherited} указывает на унаследованное значение. Аналогично, символ {global} указывает на глобальную роль, которая управляется администратором сайта."
+msgstr "По умолчанию наследуются права доступа из контейнера этого элемента. Если вы отключите это, будут действовать только явно заданные права общего доступа. В обзоре наследуемые значения явно помечаются как 'Наследуемое значение' и получают зелёную галочку {inherited}. Аналогично, роли, управляемые администратором сайта, помечаются как 'Глобальная роль' и получают синюю галочку {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -697,6 +697,11 @@ msgstr "Выбрать файл"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Очистить"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Очистить URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -2680,6 +2685,11 @@ msgstr "ОК"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Разрешены только 7-битные символы (ASCII). Не может содержать заглавные буквы, специальные символы: <, >, &, #, /, ? или другие, которые недопустимы в URL. Не может начинаться с: _, aq_, @@, ++. Не может заканчиваться на __. Не может быть: request,contributors, ., .., "". Не может содержать новые строки."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Открыть браузер URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -4198,6 +4208,16 @@ msgstr "Управление URL"
 msgid "URL Management for {title}"
 msgstr "Управление URL для {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL отсутствует"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4612,6 +4632,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Вы пытаетесь получить доступ к защищенному ресурсу, пожалуйста, сначала выполните {login}."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5359,6 +5384,26 @@ msgstr "Текст"
 #: config/Blocks
 msgid "title"
 msgstr "Заголовок"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Ошибка"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Информация"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Успех"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Предупреждение"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

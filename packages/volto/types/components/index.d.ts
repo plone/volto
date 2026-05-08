@@ -54,7 +54,7 @@ export { default as Actions } from "@plone/volto/components/manage/Actions/Actio
 export { default as Add } from "@plone/volto/components/manage/Add/Add";
 export { default as Circle } from "@plone/volto/components/manage/Contents/circle";
 export { default as Delete } from "@plone/volto/components/manage/Delete/Delete";
-export const Diff: import("@loadable/component").LoadableClassComponent<any>;
+export const Diff: import("@loadable/component").LoadableComponent<any>;
 export const DiffField: import("@loadable/component").LoadableClassComponent<any>;
 export { default as Display } from "@plone/volto/components/manage/Display/Display";
 export { default as Edit } from "@plone/volto/components/manage/Edit/Edit";

@@ -8,6 +8,37 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2026-05-04)
+
+### Internal
+
+- Replace dependency `inquirer` with `@inquirer/confirm` to prompt for build
+  confirmation. @davisagli 
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/razzle` maintainers. 
+
+## 1.0.0-alpha.4 (2026-04-27)
+
+### Internal
+
+- Update dependencies: `html-webpack-plugin` 5.6.7,
+  `mini-css-extract-plugin` 2.10.2, `css-minimizer-webpack-plugin` 8.0.0,
+  `terser-webpack-plugin` 5.4.0. @davisagli 
+- Update dependencies: `postcss` 8.5.10, `postcss-load-config` 6.0.1,
+  `postcss-scss` 8.2.1. @davisagli 
+
+## 1.0.0-alpha.3 (2026-04-09)
+
+### Breaking
+
+- Update to webpack-dev-server 5. Drop support for webpack 4 and webpack-dev-server 4. @davisagli 
+
+### Internal
+
+- Update devDependency: release-it 19.2.4. @davisagli 
+
 ## 1.0.0-alpha.2 (2026-03-31)
 
 ### Breaking

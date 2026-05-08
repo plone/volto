@@ -1,6 +1,6 @@
 {
   "name": "@plone/babel-preset-razzle",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "Babel presets for Razzle",
   "main": "index.js",
   "author": "jaredpalmer",
@@ -38,6 +38,6 @@
     "chalk": "^5.6.2"
   },
   "devDependencies": {
-    "release-it": "^19.0.5"
+    "release-it": "catalog:"
   }
 }
