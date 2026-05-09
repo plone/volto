@@ -30,7 +30,13 @@ describe('Slate Delete key behavior', () => {
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
     )
       .first()
-      .type('{moveToEnd}{del}');
+      .type('{moveToEnd}')
+      .trigger('keydown', {
+        key: 'Delete',
+        keyCode: 46,
+        which: 46,
+        bubbles: true,
+      });
 
     cy.get(
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
@@ -56,7 +62,13 @@ describe('Slate Delete key behavior', () => {
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
     )
       .first()
-      .type('{moveToEnd}{del}');
+      .type('{moveToEnd}')
+      .trigger('keydown', {
+        key: 'Delete',
+        keyCode: 46,
+        which: 46,
+        bubbles: true,
+      });
 
     cy.get(
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
@@ -94,7 +106,13 @@ describe('Slate Delete key behavior', () => {
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
     )
       .first()
-      .type('{moveToEnd}{del}');
+      .type('{moveToEnd}')
+      .trigger('keydown', {
+        key: 'Delete',
+        keyCode: 46,
+        which: 46,
+        bubbles: true,
+      });
 
     cy.get(
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
