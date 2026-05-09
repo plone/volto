@@ -18,7 +18,7 @@ describe('Slate Delete key behavior', () => {
   it('Delete at end of A merges B text block into A and removes B', () => {
     cy.getSlateEditorAndType('First block text');
 
-    cy.addNewBlock('slate');
+    cy.getSlateEditorAndType('{enter}');
     cy.getSlateEditorAndType('Second block text');
 
     cy.get(
@@ -45,7 +45,7 @@ describe('Slate Delete key behavior', () => {
   it('Delete at end of A removes empty next slate block', () => {
     cy.getSlateEditorAndType('Keep me');
 
-    cy.addNewBlock('slate');
+    cy.getSlateEditorAndType('{enter}');
 
     cy.get(
       '.content-area .block-editor-slate .slate-editor [contenteditable=true]',
