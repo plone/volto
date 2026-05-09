@@ -3,7 +3,7 @@
  * @module components/manage/Widgets/TokenWidget
  */
 
-import React, { useEffect, useCallback, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { defineMessages, useIntl } from 'react-intl';
@@ -61,13 +61,10 @@ const TokenWidget = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const vocabBaseUrl = useMemo(
-    () =>
-      getVocabFromHint(props) ||
-      getVocabFromField(props) ||
-      getVocabFromItems(props),
-    [props],
-  );
+  const vocabBaseUrl =
+    getVocabFromHint(props) ||
+    getVocabFromField(props) ||
+    getVocabFromItems(props);
 
   const lang = useSelector((state) => state.intl.locale);
 
@@ -113,15 +110,12 @@ const TokenWidget = (props) => {
     dispatch,
   ]);
 
-  const handleChange = useCallback(
-    (selectedOption) => {
-      onChange(
-        id,
-        selectedOption ? selectedOption.map((item) => item.label) : null,
-      );
-    },
-    [onChange, id],
-  );
+  const handleChange = (selectedOption) => {
+    onChange(
+      id,
+      selectedOption ? selectedOption.map((item) => item.label) : null,
+    );
+  };
 
   const selectedOption = value
     ? value.map((item) => ({ label: item, value: item }))
