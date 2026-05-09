@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.19 (2026-05-08)
+
+### Bugfix
+
+- Backport fixes for blockSchema args. @sneridagh 
+
 ## 2.0.0-alpha.18 (2026-05-04)
 
 ### Internal
