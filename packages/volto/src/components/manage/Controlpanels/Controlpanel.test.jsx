@@ -82,39 +82,4 @@ describe('Controlpanel', () => {
 
     expect(container).toMatchSnapshot();
   });
-<<<<<<< dep-cookie
-
-  it('renders a controlpanel component with error', async () => {
-    const { container, rerender } = render(
-      <Provider store={store}>
-        <CookiesProvider>
-          <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
-            <Route path={'/controlpanel/:id'} component={Controlpanel} />
-            <div id="toolbar"></div>
-          </MemoryRouter>
-        </CookiesProvider>
-      </Provider>,
-    );
-
-    store.getState().controlpanels.update.loading = true;
-    store.getState().controlpanels.update.error.response.body.message =
-      "[{'message': 'Twitter username should not include the \"@\" prefix character.', 'field': 'twitter_username', 'error': 'ValidationError'}]";
-    store.dispatch = vi.fn(() => Promise.resolve());
-
-    rerender(
-      <Provider store={store}>
-        <CookiesProvider>
-          <MemoryRouter initialEntries={['/controlpanel/date-and-time']}>
-            <Route path={'/controlpanel/:id'} component={Controlpanel} />
-            <div id="toolbar"></div>
-          </MemoryRouter>
-        </CookiesProvider>
-      </Provider>,
-    );
-
-    await waitFor(() => screen.findByText(/Twitter/i));
-    expect(container).toMatchSnapshot();
-  });
-=======
->>>>>>> main
 });
