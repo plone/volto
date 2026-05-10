@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.16 (2026-05-07)
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/volto-slate` maintainers. 
+
 ## 19.0.0-alpha.15 (2026-04-27)
 
 ### Bugfix

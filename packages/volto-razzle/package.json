@@ -8,7 +8,7 @@
     "url": "https://github.com/plone/volto.git",
     "directory": "packages/volto-razzle"
   },
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "bin": {
     "razzle": "./bin/razzle.js"
   },
