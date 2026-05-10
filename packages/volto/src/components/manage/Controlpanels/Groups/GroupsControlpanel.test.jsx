@@ -2,6 +2,7 @@ import React from 'react';
 import { render, act } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
 import GroupsControlpanel from './GroupsControlpanel';
@@ -41,10 +42,10 @@ describe('UsersControlpanel', () => {
     const { container } = await act(async () => {
       return render(
         <Provider store={store}>
-          <>
-            <GroupsControlpanel location={{ pathname: '/blog' }} />
+          <MemoryRouter initialEntries={['/blog']}>
+            <GroupsControlpanel />
             <div id="toolbar"></div>
-          </>
+          </MemoryRouter>
         </Provider>,
       );
     });
