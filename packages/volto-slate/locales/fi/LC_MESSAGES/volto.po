@@ -2,16 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
 "POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
-"PO-Revision-Date: 2025-03-31 10:32+0000\n"
+"PO-Revision-Date: 2026-05-10 15:43+0000\n"
 "Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
-"Language-Team: Finnish <https://hosted.weblate.org/projects/plone/"
-"volto-slate-18/fi/>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/plone/volto-slate-18/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
@@ -25,17 +24,12 @@ msgstr "Lisää linkki"
 # defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr ""
-"Virhe muokatessa kenttää \"{name}\". Meille on ilmoitettu ja tutkimme asiaa. "
-"Tallenna työsi ja yritä uudelleen. Jos ongelma jatkuu, ota yhteyttä sivuston "
-"järjestelmänvalvojaan."
+msgstr "Virhe muokatessa kenttää \"{name}\". Meille on ilmoitettu ja tutkimme asiaa. Tallenna työsi ja yritä uudelleen. Jos ongelma jatkuu, ota yhteyttä sivuston järjestelmänvalvojaan."
 
 # defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr ""
-"Virhe hahmonnettaessa kenttää \"{name}\". Meille on ilmoitettu ja tutkimme "
-"asiaa. Jos ongelma jatkuu, ota yhteyttä sivuston järjestelmänvalvojaan."
+msgstr "Virhe hahmonnettaessa kenttää \"{name}\". Meille on ilmoitettu ja tutkimme asiaa. Jos ongelma jatkuu, ota yhteyttä sivuston järjestelmänvalvojaan."
 
 # defaultMessage: Bottom
 #: blocks/Table/TableBlockEdit
