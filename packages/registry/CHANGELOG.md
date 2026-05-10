@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.12 (2026-05-07)
+
+### Internal
+
+- Standardized the TypeScript validation script name to `check:ts` and added package-specific `AGENTS.md` contributor guidance for `@plone/registry`. 
+
 ## 3.0.0-alpha.11 (2026-04-27)
 
 ### Internal
