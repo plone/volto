@@ -113,14 +113,13 @@ const ObjectBrowserNav = ({
                   : `${intl.formatMessage(messages.select)} ${item.title}`
               }
               key={item['@id']}
-              className={cx('', {
-                'selected-item': isSelected(item),
-
-                disabled:
+              className={cx('disabled', {
+                'is-disabled':
                   mode === 'image'
                     ? !config.settings.imageObjects.includes(item['@type']) &&
                       !item.is_folderish
                     : !isSelectable(item),
+                'selected-item': isSelected(item),
               })}
               onClick={() => handleClickOnItem(item)}
               onDoubleClick={() => handleDoubleClickOnItem(item)}
