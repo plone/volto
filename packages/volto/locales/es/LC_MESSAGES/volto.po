@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2026-05-10 15:47+0000\n"
-"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Last-Translator: \"Leonardo J. Caballero G.\" <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
 "Language: es\n"
 "Content-Type: \n"
@@ -2627,7 +2627,7 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Sólo se permiten caracteres en bytes de 7 bits. No puede contener letras mayúsculas, caracteres especiales: <, >, &, #, /, ?, u otros que sean ilegales en las URL. No puede empezar por: _, aq_, @@, ++. No puede terminar con __. No puede ser: request,contributors, ., .., "". No puede contener líneas nuevas."
+msgstr "Sólo se permiten caracteres en bytes de 7 bits. No puede contener letras mayúsculas, caracteres especiales: <, >, &, #, /, ?, u otros que sean ilegales en las URL. No puede empezar por: _, aq_, @@, ++. No puede terminar con __. No puede ser: request,contributors, ., .., \"\". No puede contener líneas nuevas."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
