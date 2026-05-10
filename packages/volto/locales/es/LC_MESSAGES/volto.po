@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-03-21 19:09+0000\n"
+"PO-Revision-Date: 2026-05-06 08:11+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language: es\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-18/es/>\n"
+"Language: es\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -116,7 +116,7 @@ msgstr "Añadir regla"
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr "Añadir traducción..."
+msgstr "Añadir traducción…"
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
@@ -317,7 +317,7 @@ msgstr "Alias añadido correctamente"
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr "Se han eliminado las URL alternativas."
+msgstr "Los aliases han sido eliminados."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
@@ -379,7 +379,7 @@ msgstr "Ruta de url alternativa (obligatorio)"
 #: components/manage/Aliases/Aliases
 #: components/manage/Controlpanels/Aliases
 msgid "Alternative url path must start with a slash."
-msgstr "La url alternativa debe comenzar con un carácter especial '/'."
+msgstr "La url alternativa debe comenzar con un carácter /."
 
 #. Default: "Alternative URL path → target URL path (date and time of creation, manually created yes/no)"
 #: components/manage/Controlpanels/Aliases
@@ -530,7 +530,7 @@ msgstr "Navegue el contenido, arrastre una imagen o escriba una dirección URL"
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr "Carga masiva CSV"
+msgstr "Carga masiva de archivos CSV"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
@@ -592,7 +592,7 @@ msgstr "Celda"
 #: components/manage/Sidebar/AlignBlock
 #: components/manage/Widgets/AlignWidget
 msgid "Center"
-msgstr "Centro"
+msgstr "Central"
 
 #. Default: "Change Note"
 #: components/manage/History/History
@@ -1615,7 +1615,7 @@ msgstr "Filtrar usuarios por grupos"
 #. Default: "Filter…"
 #: components/manage/Contents/Contents
 msgid "Filter…"
-msgstr "Filtrar..."
+msgstr "Filtrar…"
 
 #. Default: "First"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
@@ -1889,7 +1889,7 @@ msgstr "Información"
 #. Default: "You have selected the option 'many users' or 'many groups'. Thus this control panel asks for input to show users and groups. If you want to see users and groups instantaneous, head over to user group settings. See the button on the left."
 #: components/manage/Controlpanels/Users/UserGroupMembershipControlPanel
 msgid "InfoUserGroupSettings"
-msgstr "Ha seleccionado la opción 'Demasiados usuarios' o 'Demasiados grupos'. Por ello en este panel solo puede buscar usuarios o grupos. Si desea ver todos los usuarios o grupos de inmediato vaya a la configuración de Usuarios y Grupos. Vea el botón de la izquierda."
+msgstr "Ha seleccionado la opción 'Demasiados usuarios' o 'Demasiados grupos'. Por ello en este panel solo puede buscar usuarios o grupos. Si desea ver todos los usuarios o grupos de inmediato vaya a la configuración de Usuarios y Grupos. Utilice el botón de la izquierda."
 
 #. Default: "Inherit permissions from higher levels"
 #: components/manage/Sharing/Sharing
@@ -1904,7 +1904,7 @@ msgstr "Valor heredado"
 #. Default: "Insert col after"
 #: config/Blocks
 msgid "Insert col after"
-msgstr "Insertar columna después"
+msgstr "Insertar columna despúes"
 
 #. Default: "Insert col before"
 #: config/Blocks
@@ -2196,7 +2196,7 @@ msgstr "Inicio de sesión"
 #. Default: "Logged out"
 #: components/theme/Logout/Logout
 msgid "Logged out"
-msgstr "Salir"
+msgstr "Ha salido del sistema"
 
 #. Default: "Login"
 #: components/theme/Login/Login
@@ -2379,7 +2379,7 @@ msgstr "Mover al fondo de la carpeta"
 #. Default: "Move to top of folder"
 #: components/manage/Contents/ContentsItem
 msgid "Move to top of folder"
-msgstr "Mover encima de la carpeta"
+msgstr "Mover a primer elemento de la carpeta"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3655,7 +3655,7 @@ msgstr "Cadena de texto"
 #. Default: "Alternate row background color"
 #: config/Blocks
 msgid "Stripe alternate rows with color"
-msgstr "Raya las filas alternas con color"
+msgstr "Filas de franja alterna con color"
 
 #. Default: "Styling"
 #: helpers/Extensions/withBlockSchemaEnhancer
@@ -3849,7 +3849,7 @@ msgstr "El número de elementos debe ser menor o igual a {maxItems}"
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
 msgid "The provided alternative url already exists!"
-msgstr "¡La URL alternativa ya existe!"
+msgstr "¡La URL alternativa proporcionada ya existe!"
 
 #. Default: "The registration process has been successful. Please check your e-mail inbox for information on how activate your account."
 #: components/theme/Register/Register
@@ -4521,7 +4521,7 @@ msgstr "Está intentando acceder a un elemento protegido, por favor, haga {login
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr ""
+msgstr "Está intentando acceder a un recurso protegido."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4616,7 +4616,7 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Introduzca el nombre de usuario que desee utilizar. Generalmente algo como "jperez" o "jose_perez". No están permitidos caracteres especiales o espacios en el nombre de usuario. Los nombres de usuario y las contraseñas son sensibles a mayúsculas y minúsculas, asegúrese que la tecla de bloqueo de mayúsculas no está activada ('caps lock'). Este es el nombre que utilizará para identificarse."
+msgstr "Introduzca el nombre de usuario que desee utilizar, usualmente algo como 'jperez' o 'jose_perez'. No están permitidos caracteres especiales o espacios en el nombre de usuario. Esto es el nombre utilizado para iniciar sesión."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4787,7 +4787,7 @@ msgstr "<ul><li>Regenerar intIds (tokens de relaciones en el catálogo de relaci
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr "Kicker"
+msgstr "Entradilla"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -5001,7 +5001,7 @@ msgstr "Path del padre (../)"
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
-msgstr "Seleccione..."
+msgstr "Seleccione…"
 
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
