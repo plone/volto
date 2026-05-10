@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-03 03:20-0400\n"
 "PO-Revision-Date: 2026-05-10 15:53+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/plone/volto-main/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -4743,7 +4743,7 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Introduzca el nombre de usuario que desee utilizar, usualmente algo como 'jperez' o 'jose_perez'. No están permitidos caracteres especiales o espacios en el nombre de usuario. Esto es el nombre utilizado para iniciar sesión."
+msgstr "Introduzca el nombre de usuario que desee utilizar, usualmente algo como \\\"jperez\\\" o \\\"jose_perez\\\". No están permitidos caracteres especiales o espacios en el nombre de usuario. Esto es el nombre utilizado para iniciar sesión."
 
 #. Default: "and {count} more…"
 #: components/manage/Contents/ContentsDeleteModal
