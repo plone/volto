@@ -51,11 +51,13 @@ let locales = {};
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
-    import(
-      /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-    ).then((locale) => {
-      locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
-    });
+    import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+      .then((locale) => {
+        locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
+      })
+      .catch((error) => {
+        // Error loading locale file
+      });
   });
 }
 
@@ -266,7 +268,13 @@ server.get('/*', (req, res) => {
         ? initialLang
         : state.content.data?.language?.token || initialLang;
 
-      if (toBackendLang(initialLang) !== contentLang && url !== '/') {
+      const isMultilingual = state.site.data.features?.multilingual;
+
+      if (
+        toBackendLang(initialLang) !== contentLang &&
+        !/\/\.well-known\/.*$/.test(location.pathname) &&
+        !(isMultilingual && location.pathname === '/')
+      ) {
         const newLang = toReactIntlLang(
           new locale.Locales(contentLang).best(supported).toString(),
         );

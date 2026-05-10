@@ -21,6 +21,13 @@ Blocks provide the user the ability to display content in a specific way, althou
 
 Volto provides an autosave mechanism that automatically captures your ongoing edits as you work on a page or content item.
 
+This feature is marked as experimental and you can opt-in in your project add-on to enable it.
+If you want to enable it in your project, you can set the `config.experimental.saveAsDraft` setting to `true` in your add-on configuration:
+
+```js
+config.experimental.saveAsDraft = true;
+```
+
 Changes made in the blocks editor are periodically saved in the background to prevent data loss, even if the user navigates away or the browser unexpectedly closes.
 
 Autosave stores changes locally in your browser using [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).

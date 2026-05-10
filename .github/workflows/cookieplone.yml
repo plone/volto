@@ -17,7 +17,7 @@ jobs:
     env:
       project-directory: volto-add-on
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Compute several vars needed for the CI
         id: vars

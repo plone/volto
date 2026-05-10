@@ -56,33 +56,33 @@ const CompareLanguagesMenu = ({
                 {comparingLanguage === t.language ? (
                   <button
                     aria-label={`${intl.formatMessage(messages.stop_compare)} ${
-                      langmap[t.language].nativeName
+                      langmap[t.language]?.nativeName || t.language
                     }`}
                     title={`${intl.formatMessage(messages.stop_compare)} ${
-                      langmap[t.language].nativeName
+                      langmap[t.language]?.nativeName || t.language
                     }`}
                     onClick={() => {
                       setComparingLanguage(null);
                       closeMenu();
                     }}
                   >
-                    {langmap[t.language].nativeName}
+                    {langmap[t.language]?.nativeName || t.language}
                     <Icon name={clearSVG} size="30px" />
                   </button>
                 ) : (
                   <button
                     aria-label={`${intl.formatMessage(
                       messages.compare_to,
-                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
+                    )} ${(langmap[t.language]?.nativeName || t.language).toLowerCase()}`}
                     title={`${intl.formatMessage(
                       messages.compare_to,
-                    )} ${langmap[t.language].nativeName.toLowerCase()}`}
+                    )} ${(langmap[t.language]?.nativeName || t.language).toLowerCase()}`}
                     onClick={() => {
                       setComparingLanguage(t.language);
                       closeMenu();
                     }}
                   >
-                    {langmap[t.language].nativeName}
+                    {langmap[t.language]?.nativeName || t.language}
                   </button>
                 )}
               </li>
