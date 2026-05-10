@@ -75,9 +75,7 @@ clean: ## Clean development environment
 
 .PHONY: install
 install: ## Set up development environment
-	# Setup ESlint for VSCode
 	pnpm i
-	node packages/scripts/vscodesettings.js
 	make build-deps
 
 ##### Documentation

@@ -3,6 +3,7 @@ import { Radio, Header } from 'semantic-ui-react';
 
 const ToggleFacet = (props) => {
   const { facet, isEditMode, onChange, value } = props; // value, choices, isMulti, onChange,
+  const labelText = facet?.title ?? facet?.field?.label ?? 'Toggle option';
 
   return (
     <div className="checkbox-facet">
@@ -10,6 +11,7 @@ const ToggleFacet = (props) => {
       <div className="radio">
         <Radio
           toggle
+          aria-label={labelText}
           checked={value || typeof value === 'string'}
           disabled={isEditMode}
           onChange={(e, { checked }) => {

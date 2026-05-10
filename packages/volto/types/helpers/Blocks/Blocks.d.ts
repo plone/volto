@@ -176,6 +176,7 @@ export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
  */
 export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
 export function getBlocks(properties: any): any[];
+export function getInvalidBlockLayoutIds(properties: any): string[];
 export function applyBlockInitialValue({ id, value, blocksConfig, formData, intl, }: {
     id: any;
     value: any;

@@ -113,7 +113,14 @@ test('Filters out invalid blocks', () => {
         }}
         content={{
           blocks_layout: {
-            items: ['MISSING-YOU-1', 'a', 'MISSING-YOU-2'],
+            items: [
+              'MISSING-YOU-1',
+              'a',
+              'MISSING-YOU-2',
+              null,
+              undefined,
+              'undefined',
+            ],
           },
           blocks: {
             a: {
@@ -126,7 +133,7 @@ test('Filters out invalid blocks', () => {
       />
     </Provider>,
   );
-  // Invalid blocks (missing from blocks object) are filtered out and not rendered
+  // Invalid blocks (missing from blocks object or invalid IDs) are filtered out and not rendered
   expect(
     queryAllByText('Invalid block - Will be removed on saving'),
   ).toHaveLength(0);

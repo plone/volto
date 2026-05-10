@@ -144,11 +144,28 @@ exports[`Sharing > renders a sharing component 1`] = `
           </p>
         </div>
         <div
-          class="ui clearing attached segment actions"
+          class="ui clearing attached segment right aligned actions"
         >
           <button
+            aria-label="Cancel"
+            class="ui basic secondary button"
+            title="Cancel"
+          >
+            <svg
+              class="icon circled"
+              style="height: 30px; width: auto; fill: currentColor;"
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <button
             aria-label="Save"
-            class="ui basic primary right floated button"
+            class="ui basic primary button"
             title="Save"
             type="submit"
           >
@@ -160,23 +177,6 @@ exports[`Sharing > renders a sharing component 1`] = `
             >
               <path
                 d="M18.707 5.293 17.293 6.707 27.586 17 5 17 5 19 27.586 19 17.293 29.293 18.707 30.707 31.414 18z"
-                fill-rule="evenodd"
-              />
-            </svg>
-          </button>
-          <button
-            aria-label="Cancel"
-            class="ui basic secondary right floated button"
-            title="Cancel"
-          >
-            <svg
-              class="icon circled"
-              style="height: 30px; width: auto; fill: currentColor;"
-              viewBox="0 0 36 36"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M27.899 9.515 26.485 8.101 18 16.586 9.514 8.101 8.1 9.515 16.586 18 8.1 26.486 9.514 27.9 18 19.414 26.485 27.9 27.899 26.486 19.414 18z"
                 fill-rule="evenodd"
               />
             </svg>

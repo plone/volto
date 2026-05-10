@@ -63,9 +63,7 @@ This bundle must work on both CommonJS and ESM environments.
 
 ## Add-on packages
 
--   `@plone/blocks`
--   `@plone/slots`
--   `@plone/theming`
+-   None yet.
 
 
 ### Rules
