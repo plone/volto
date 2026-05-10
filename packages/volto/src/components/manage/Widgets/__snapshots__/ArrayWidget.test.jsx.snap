@@ -188,6 +188,10 @@ exports[`No 'No value' option when default value is 0 1`] = `
             role="status"
             style="position: fixed; top: 0px; left: 0px; width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overflow: hidden; clip: rect(0px); clip-path: inset(100%); white-space: nowrap;"
           />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -372,6 +376,10 @@ exports[`renders an array widget component 1`] = `
               "width": 1,
             }
           }
+        />
+        <div
+          aria-atomic="true"
+          aria-live="polite"
         />
       </div>
     </div>
