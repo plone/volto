@@ -224,7 +224,7 @@ const Edit = (props) => {
     [data.table],
   );
 
-  const schema = useMemo(() => TableSchema(props), [props]);
+  const schema = useMemo(() => TableSchema({ ...props, intl }), [props, intl]);
 
   const onSelectCell = useCallback((row, cell) => {
     setSelectedCell({ row, cell });
