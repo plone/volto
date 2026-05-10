@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2026-05-10 15:53+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/plone/volto-18/hi/>\n"
 "Language: hi\n"
 "Content-Type: \n"
@@ -4616,7 +4616,7 @@ msgstr "अपना नया पासवर्ड दर्ज करें�
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: "jsmith" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
+msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: \"jsmith\" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
