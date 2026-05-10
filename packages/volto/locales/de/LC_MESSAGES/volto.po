@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
 "PO-Revision-Date: 2026-05-10 15:50+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/plone/volto-18/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -4621,7 +4621,7 @@ msgstr "Geben Sie Ihr neues Passwort ein. Das Passwort muss aus mindestens 8 Zei
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie "m.muster". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
+msgstr "Geben Sie einen Nutzernamen ein, beispielsweise etwas wie \"m.muster\". Benutzen Sie keine Leer- oder Sonderzeichen. Bitte beachten Sie Groß- und Kleinschreibung und stellen Sie sicher, dass die Feststelltaste nicht aktiviert ist. Dieser Name wird zum Anmelden genutzt."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
