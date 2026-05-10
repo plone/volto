@@ -456,9 +456,9 @@ If you want to enable it in your project, you can set the `config.experimental.s
 config.experimental.saveAsDraft = true;
 ```
 
-### Some tests need to add a CookiesProvider
+### Some tests need to add a `CookiesProvider`
 
-Components which use the `useCookies` hook from `react-cookie` now expect an explicit CookiesProvider.
+Components which use the `useCookies` hook from `react-cookie` now expect an explicit `CookiesProvider`.
 You might need to add this in some unit tests.
 
 ```js
