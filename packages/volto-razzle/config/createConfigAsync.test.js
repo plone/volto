@@ -109,3 +109,61 @@ describe('createConfigAsync .well-known handling', () => {
     ).toBe(true);
   });
 });
+
+describe('createConfigAsync css minimizer sourceMap option', () => {
+  it('should configure CssMinimizerPlugin with the expected preset (calc:false)', async () => {
+    const createConfigAsync = (await import('./createConfigAsync')).default;
+
+    const commonRazzleOptions = {
+      forceRuntimeEnvVars: [],
+      debug: { options: false, config: false },
+      browserslist: ['>1%'],
+      mediaPrefix: 'static/media',
+      cssPrefix: 'static/css',
+      jsPrefix: 'static/js',
+      emitOnErrors: false,
+    };
+
+    const config = await createConfigAsync(
+      'web',
+      'prod',
+      {},
+      { version: '5' },
+      false,
+      undefined,
+      [],
+      { ...commonRazzleOptions, enableSourceMaps: true },
+    );
+
+    const minimizers = config.optimization?.minimizer || [];
+    const cssMinimizer = minimizers.find(
+      (m) =>
+        m && m.constructor && /CssMinimizerPlugin/.test(m.constructor.name),
+    );
+    expect(cssMinimizer).toBeDefined();
+
+    const findPreset = (obj, depth = 6) => {
+      if (!obj || typeof obj !== 'object' || depth < 0) return undefined;
+      if (Object.prototype.hasOwnProperty.call(obj, 'preset'))
+        return obj.preset;
+      for (const k of Object.keys(obj)) {
+        try {
+          const v = obj[k];
+          const found = findPreset(v, depth - 1);
+          if (found !== undefined) return found;
+        } catch (e) {
+          // ignore
+        }
+      }
+      return undefined;
+    };
+
+    const preset =
+      findPreset(cssMinimizer) ?? findPreset(cssMinimizer?.options);
+    expect(preset).toBeDefined();
+    expect(Array.isArray(preset)).toBe(true);
+    expect(preset[0]).toBe('default');
+    const presetOptions = preset[1] || {};
+    expect(presetOptions.calc).toBe(false);
+  });
+});

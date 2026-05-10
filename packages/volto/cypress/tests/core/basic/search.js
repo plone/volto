@@ -1,6 +1,7 @@
 describe('Search', () => {
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
+    cy.intercept('GET', `/**/@search*`).as('search');
     cy.autologin();
     cy.visit('/');
     cy.wait('@content');
@@ -77,7 +78,7 @@ describe('Search', () => {
     cy.get('.summary.url:first').should('have.text', 'A Colorless');
   });
 
-  it('As anonymous user I can see the search results ordered date(newest first)', () => {
+  it('As anonymous user I can see the search results ordered date (newest first)', () => {
     // Given document Colorless and Color and feeding some text into it.
     cy.createContent({
       contentType: 'Document',
@@ -114,13 +115,17 @@ describe('Search', () => {
 
     // then we are searching for SearchableText=color and sorting it with effective date
     cy.visit('/search?SearchableText=color');
+    cy.wait('@search'); // Wait for initial search
     cy.url().should(
       'eq',
       Cypress.config().baseUrl + '/search?SearchableText=color',
     );
 
-    // then the first link must be Colorless
+    // then the first link must be Colorless (newest first)
     cy.get('button[name="effective"]').click();
-    cy.get('.summary.url:first').should('have.text', 'Color');
+
+    cy.wait('@search'); // Wait for search to complete
+
+    cy.get('.summary.url:first').should('have.text', 'Colorless');
   });
 });
