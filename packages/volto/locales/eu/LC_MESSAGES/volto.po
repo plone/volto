@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-03-21 19:09+0000\n"
+"PO-Revision-Date: 2026-05-10 15:51+0000\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language: eu\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\n"
+"Language: eu\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 2026.5-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -2627,7 +2627,7 @@ msgstr "Ados"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "7 biteko byte karaktereak bakarrik onartzen dira. Ezin dira hizki larriak edo karaktere bereziak erabili: <, >, &, #, /, ?, edo URLtan onartzen ez direnak. Ezin da karaktere hauekin hasi: _, aq_, @@, ++. Ezin da __-rekin amaitu. Ezin da request, contributors, ., ... edo "" izan. Ezin ditu lerro berriak izan."
+msgstr "7 biteko byte karaktereak bakarrik onartzen dira. Ezin dira hizki larriak edo karaktere bereziak erabili: <, >, &, #, /, ?, edo URLtan onartzen ez direnak. Ezin da karaktere hauekin hasi: _, aq_, @@, ++. Ezin da __-rekin amaitu. Ezin da request, contributors, ., ... edo \"\" izan. Ezin ditu lerro berriak izan."
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -4521,7 +4521,7 @@ msgstr "Babestutako orrialde batera sartu nahian zabiltza, {login} lehenengo."
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr ""
+msgstr "Babestutako baliabide bat atzitzen saiatzen ari zara."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4616,7 +4616,7 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
+msgstr "Idatzi zure erabiltzaile izena, \"jgarmendia\" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
