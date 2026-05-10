@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2026-05-10 15:42+0000\n"
-"Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-slate-18/nl/>\n"
 "Language: nl\n"
 "Content-Type: \n"
@@ -18,11 +18,11 @@ msgstr "Koppeling toevoegen"
 
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr "Er is een fout opgetreden bij het bewerken van het "{name}" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Bewaar je werk en probeer opnieuw aub. Indien het probleem blijft, contacteer dan de site beheerder."
+msgstr "Er is een fout opgetreden bij het bewerken van het \"{name}\" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Bewaar je werk en probeer opnieuw aub. Indien het probleem blijft, contacteer dan de site beheerder."
 
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr "Er is een fout opgetreden bij het weergeven van het "{name}" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Indien het probleem blijft, contacteer dan de site beheerder."
+msgstr "Er is een fout opgetreden bij het weergeven van het \"{name}\" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Indien het probleem blijft, contacteer dan de site beheerder."
 
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
