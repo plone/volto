@@ -1,15 +1,4 @@
-/**
- * Slate Table block editor.
- * @module volto-slate/blocks/Table/Edit
- */
-
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  useRef,
-} from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
@@ -17,6 +6,7 @@ import remove from 'lodash/remove';
 import { Button, Table } from 'semantic-ui-react';
 import cx from 'classnames';
 import { defineMessages, useIntl } from 'react-intl';
+import { useClient } from '@plone/volto/hooks/client/useClient';
 
 import Cell from './Cell';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -186,17 +176,18 @@ const Edit = (props) => {
   } = props;
 
   const intl = useIntl();
-  const prevSelectedRef = useRef(selected);
+  const isClient = useClient();
 
   const [selectedCell, setSelectedCell] = useState({
     row: 0,
     cell: 0,
   });
-  const [isClient, setIsClient] = useState(false);
-
+  // If selected prop is unset, update the state
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    if (!selected) {
+      setSelectedCell(null);
+    }
+  }, [selected]);
 
   useEffect(() => {
     if (!data.table || isEmpty(data.table)) {
@@ -206,13 +197,6 @@ const Edit = (props) => {
       });
     }
   }, [data.table, data, block, onChangeBlock]);
-
-  useEffect(() => {
-    if (prevSelectedRef.current && !selected) {
-      setSelectedCell(null);
-    }
-    prevSelectedRef.current = selected;
-  }, [selected]);
 
   const headers = useMemo(
     () => data.table?.rows?.[0]?.cells || [],
@@ -446,6 +430,7 @@ const Edit = (props) => {
           inverted={data.table.inverted}
           striped={data.table.striped}
           className="slate-table-block"
+          unstackable
         >
           {!data.table.hideHeaders ? (
             <Table.Header>
