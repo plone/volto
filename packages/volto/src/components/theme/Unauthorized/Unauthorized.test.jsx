@@ -9,7 +9,7 @@ import Unauthorized from './Unauthorized';
 const mockStore = configureStore();
 
 describe('Unauthorized', () => {
-  it('renders an unauthorized component', () => {
+  it('redirects to login', () => {
     const store = mockStore({
       userSession: {
         token: null,
