@@ -426,8 +426,7 @@ Previously, when an anonymous user attempted to access a resource that required 
 Now the user will be redirected to the login page.
 This matches Plone 6 Classic UI behavior and aligns with user expectations.
 
-Additionally, an authenticated user who attempts to access a protected resource for which they lack permission will see a 403 Forbidden error page.
-This is the correct behavior, whereas previously they would see a 401 Unauthorized error page.
+An authenticated user who attempts to access a protected resource for which they lack permission will still see an Unauthorized error page.
 
 ### The "AutoSave" feature has been marked as experimental and opt-in by default
 ```{versionadded} Volto 19.0.0-alpha.32
