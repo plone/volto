@@ -17,6 +17,30 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.36 (2026-05-12)
+
+### Breaking
+
+- Changed the 401 Unauthorized behavior. Now, for anonymous users it redirects to the login page. For authenticated users it still shows an Unauthorized message indicating they don't have permission. @sneridagh [#8164](https://github.com/plone/volto/issues/8164)
+- Updated dependencies: `universal-cookie` 8.1.2, `universal-cookie-express`
+  8.1.2, `react-cookie` 8.1.2. @davisagli 
+- Upgraded `superagent` from `3.8.2` to `10.3.0`; projects with custom request wrappers or SSR callbacks must handle missing response objects and stricter redirect/error handling. 
+
+### Feature
+
+- Complete translations for es, eu, gl and it @erral @cyphra @yurj @xulioxesus [#8169](https://github.com/plone/volto/issues/8169)
+
+### Bugfix
+
+- Announce errors via `aria-live` and expose required and invalid states on text inputs to improve accessibility of form fields. @Wagner3UB [#8033](https://github.com/plone/volto/issues/8033)
+
+### Internal
+
+- Updated Cypress test for search date sorting to verify newest-first ordering. @aryan7081 [#7489](https://github.com/plone/volto/issues/7489)
+- Update packages in pnpm-lock.yaml. @wesleybl [#8188](https://github.com/plone/volto/issues/8188)
+- Excludes badge links from readme-link-check. @wesleybl [#8189](https://github.com/plone/volto/issues/8189)
+- Fixes an intermittent error in the Cypress tests blocks-slate-backspace.js and blocks-slate-delete.js. @wesleybl [#8190](https://github.com/plone/volto/issues/8190)
+
 ## 19.0.0-alpha.35 (2026-05-08)
 
 ### Internal

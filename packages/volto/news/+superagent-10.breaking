@@ -1,1 +1,0 @@
-Upgraded `superagent` from `3.8.2` to `10.3.0`; projects with custom request wrappers or SSR callbacks must handle missing response objects and stricter redirect/error handling.
