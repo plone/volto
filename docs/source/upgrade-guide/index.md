@@ -427,6 +427,17 @@ This is a breaking change for projects that relied on the original image always 
 A pair of additional scales were added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
 Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scales named `2k` and `4k`.
 
+### 401 unauthorized error route handling behaviors have changed
+```{versionadded} Volto 19.0.0-alpha.32
+```
+
+The handling of 401 Unauthorized errors for anonymous users has been changed to improve the user experience.
+Previously, when an anonymous user attempted to access a resource that required authorization, the 401 unauthorized error page would be displayed.
+Now the user will be redirected to the login page.
+This matches Plone 6 Classic UI behavior and aligns with user expectations.
+
+An authenticated user who attempts to access a protected resource for which they lack permission will still see an Unauthorized error page.
+
 ### Replaced old drag-and-drop libraries
 ```{versionadded} Volto 19.0.0-alpha.30
 ```
@@ -454,6 +465,21 @@ If you want to enable it in your project, you can set the `config.experimental.s
 
 ```js
 config.experimental.saveAsDraft = true;
+```
+
+### Some tests need to add a `CookiesProvider`
+
+Components which use the `useCookies` hook from `react-cookie` now expect an explicit `CookiesProvider`.
+You might need to add this in some unit tests.
+
+```js
+import { CookiesProvider } from 'react-cookie';
+
+const { container } = render(
+  <CookiesProvider>
+    <!-- your component being tested -->
+  </CookiesProvider>
+);
 ```
 
 (upgrading-to-volto-18-x-x)=

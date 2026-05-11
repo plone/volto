@@ -84,6 +84,10 @@ exports[`ButtonsWidget > renders actions info provided via props 1`] = `
               </svg>
             </label>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -282,6 +286,10 @@ exports[`ButtonsWidget > renders string-based actions 1`] = `
               </svg>
             </label>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
