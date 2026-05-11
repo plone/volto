@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Unauthorized > renders an unauthorized component 1`] = `null`;
+exports[`Unauthorized > redirects to login 1`] = `null`;
 
 exports[`Unauthorized > renders an unauthorized component for authenticated user 1`] = `
 <div

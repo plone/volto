@@ -84,6 +84,10 @@ exports[`AlignWidget > renders with custom actions 1`] = `
               </svg>
             </label>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -306,6 +310,10 @@ exports[`AlignWidget > renders with default actions 1`] = `
               </svg>
             </label>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
