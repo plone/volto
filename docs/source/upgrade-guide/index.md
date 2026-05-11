@@ -187,6 +187,56 @@ index c469fe9..c39a324 100644
 +    CI=1 pnpm install --prod
 ```
 
+### `superagent` has been upgraded to version 10
+```{versionchanged} Volto 19
+```
+
+Volto upgraded `superagent` from `3.8.2` to `10.3.0`.
+This is a major upgrade of the HTTP client used by Volto for API and SSR helper requests.
+
+For most projects, no action is required if you only use the public request API, such as `get()`, `post()`, `query()`, `send()`, `set()`, `attach()`, `then()`, or `end()`.
+However, newer `superagent` versions use stricter error handling, so projects with custom request wrappers or SSR integrations should review their error paths carefully.
+
+Check your project and add-ons for direct `superagent` usage:
+
+```shell
+grep -R "from 'superagent'" -n --exclude-dir=node_modules .
+grep -R 'require.*superagent' -n --exclude-dir=node_modules .
+```
+
+In particular, verify the following cases.
+
+-   callbacks passed to `request.end()` do not assume that a response object is always present
+-   redirect handling does not assume `error.response.headers.location` always exists
+-   custom wrappers that inspect low-level request or response internals still behave correctly
+-   file upload code and middleware around multipart requests still work as expected
+
+If your code destructures the response directly in the callback, update it to handle missing responses safely.
+
+```diff
+- request.end((error, { body }) => {
++ request.end((error, { body } = {}) => {
+```
+
+Likewise, when reading redirect targets or headers from an error response, guard against missing nested values.
+
+```diff
+- const location = error.response.headers.location;
++ const location = error.response?.headers?.location;
+```
+
+After upgrading, test the code paths that use backend requests the most:
+
+-   authentication and token-protected requests
+-   redirects and URL checks in SSR
+-   sitemap and robots generation
+-   file and image downloads
+-   file uploads and multipart forms
+
+```{seealso}
+[superagent releases](https://github.com/forwardemail/superagent/releases)
+```
+
 ### New utility class `visually-hidden`
 
 ```{versionadded} Volto 19.0.0-alpha.10
