@@ -4620,11 +4620,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Vous essayez d'accéder à une ressource protégée, veuillez d'abord {login}."
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5003,11 +4998,6 @@ msgstr "listing"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Chargement"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "se connecter"
 
 #. Default: "Maps"
 #: config/Blocks
