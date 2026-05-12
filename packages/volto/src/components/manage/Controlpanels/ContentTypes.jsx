@@ -475,11 +475,9 @@ class ContentTypes extends Component {
                   </Link>
                   <Button
                     className="add"
-                    aria-label={this.props.intl.formatMessage(
-                      messages.addTypeButtonTitle,
-                    )}
+                    aria-label={this.props.intl.formatMessage(messages.add)}
                     tabIndex={0}
-                    id="toolbar-add-content-type"
+                    id="toolbar-add"
                     ref={(el) => {
                       this._addTypeTrigger = el;
                     }}
