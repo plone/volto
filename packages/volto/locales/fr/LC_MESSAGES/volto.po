@@ -1638,6 +1638,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Largeur des cellules de la table fixe"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Se concentrer sur"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2310,6 +2315,16 @@ msgstr "Moyen"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Adhésion mise à jour"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Menu fermé"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Menu ouvert"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
