@@ -289,10 +289,6 @@ exports[`renders a dictionary widget component 1`] = `
               </div>
             </div>
           </div>
-          <div
-            aria-atomic="true"
-            aria-live="polite"
-          />
         </div>
       </div>
     </div>

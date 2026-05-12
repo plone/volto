@@ -25,7 +25,7 @@ exports[`renders a Toast info component 1`] = `
     className="toast-inner-content"
   >
     <span
-      className="toast-visually-hidden"
+      className="visually-hidden-volto"
     >
       Information
     </span>
