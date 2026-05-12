@@ -80,6 +80,10 @@ exports[`RegistryImageWidget > renders a file widget component with value 1`] = 
               </svg>
             </button>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -145,6 +149,10 @@ exports[`RegistryImageWidget > renders an empty file widget component 1`] = `
           </div>
           <div
             class="field-file-name"
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
           />
         </div>
       </div>

@@ -3,6 +3,7 @@ import { render, waitFor } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import jwt from 'jsonwebtoken';
 
 import UsersControlpanel from './UsersControlpanel';
@@ -41,10 +42,12 @@ describe('UsersControlpanel', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/controlpanel/users']}>
-          <UsersControlpanel />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/controlpanel/users']}>
+            <UsersControlpanel />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
     await waitFor(() => {});
@@ -86,10 +89,12 @@ describe('UsersControlpanel', () => {
 
     render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/controlpanel/users']}>
-          <UsersControlpanel />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/controlpanel/users']}>
+            <UsersControlpanel />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
     await waitFor(() => {});
