@@ -8,6 +8,12 @@ https://6.docs.plone.org/contributing/index.html#change-log-entry
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2026-05-07)
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/razzle-dev-utils` maintainers. 
+
 ## 1.0.0-alpha.2 (2026-04-09)
 
 ### Breaking

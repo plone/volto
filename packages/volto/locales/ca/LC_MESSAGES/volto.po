@@ -4619,11 +4619,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Estàs a punt d'eliminar tots els elements de la pàgina actual d'aquesta carpeta."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Esteu provant d'accedir a un recurs protegit, primer {login} ."
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5002,11 +4997,6 @@ msgstr "Llistat"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Carregant"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "Iniciar Sessió"
 
 #. Default: "Maps"
 #: config/Blocks

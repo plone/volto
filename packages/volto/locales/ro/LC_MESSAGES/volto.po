@@ -4619,11 +4619,6 @@ msgstr "Sunteți pe cale să ștergeți toate elementele și toate subelementele
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Sunteți pe cale să ștergeți toate elementele din pagina curentă a acestui folder."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Încercați să accesați o resursă protejată, vă rugăm mai întâi {login}."
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5002,11 +4997,6 @@ msgstr "Listare"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "încărcare"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "autentificați-vă"
 
 #. Default: "Maps"
 #: config/Blocks
