@@ -2683,7 +2683,7 @@ msgstr "ОК"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Разрешены только 7-битные символы (ASCII). Не может содержать заглавные буквы, специальные символы: <, >, &, #, /, ? или другие, которые недопустимы в URL. Не может начинаться с: _, aq_, @@, ++. Не может заканчиваться на __. Не может быть: request,contributors, ., .., "". Не может содержать новые строки."
+msgstr "Разрешены только 7-битные символы (ASCII). Не может содержать заглавные буквы, специальные символы: <, >, &, #, /, ? или другие, которые недопустимы в URL. Не может начинаться с: _, aq_, @@, ++. Не может заканчиваться на __. Не может быть: request,contributors, ., .., \"\". Не может содержать новые строки."
 
 #. Default: "Open URL browser"
 #: components/manage/Widgets/UrlWidget
