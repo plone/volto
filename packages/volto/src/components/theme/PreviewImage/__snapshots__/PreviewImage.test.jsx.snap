@@ -5,7 +5,7 @@ exports[`PreviewImage > not renders a fallback image if showDefault prop is fals
   alt="Item title"
   className="extra"
   height="300"
-  src="/src/components/manage/Blocks/Listing/default-image.svg"
+  src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='300'%20viewBox='0%200%20400%20300'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3crect%20width='399'%20height='299'%20x='.5'%20y='.5'%20fill='%23D8E1E3'%20stroke='%23878F93'%20rx='3'/%3e%3cg%20transform='translate(130%2090)'%3e%3crect%20width='140'%20height='120'%20fill='%23FFF'%20fill-opacity='.5'%20rx='3'/%3e%3cg%20transform='translate(22%2013)'%3e%3crect%20width='96'%20height='96'%20fill='%2393ACC8'%20rx='3'/%3e%3cpolygon%20fill='%23FFF'%20points='14.299%2072%2079.949%2072%2060.957%2044.745%2049%2059.702%2034.836%2034.246'/%3e%3ccircle%20cx='74'%20cy='29'%20r='8'%20fill='%23FFF'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e"
   width="400"
 />
 `;
@@ -14,7 +14,7 @@ exports[`PreviewImage > renders a fallback image 1`] = `
 <img
   alt="Item title"
   height="300"
-  src="/src/components/manage/Blocks/Listing/default-image.svg"
+  src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='300'%20viewBox='0%200%20400%20300'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3crect%20width='399'%20height='299'%20x='.5'%20y='.5'%20fill='%23D8E1E3'%20stroke='%23878F93'%20rx='3'/%3e%3cg%20transform='translate(130%2090)'%3e%3crect%20width='140'%20height='120'%20fill='%23FFF'%20fill-opacity='.5'%20rx='3'/%3e%3cg%20transform='translate(22%2013)'%3e%3crect%20width='96'%20height='96'%20fill='%2393ACC8'%20rx='3'/%3e%3cpolygon%20fill='%23FFF'%20points='14.299%2072%2079.949%2072%2060.957%2044.745%2049%2059.702%2034.836%2034.246'/%3e%3ccircle%20cx='74'%20cy='29'%20r='8'%20fill='%23FFF'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e"
   width="400"
 />
 `;
@@ -24,7 +24,7 @@ exports[`PreviewImage > renders a fallback image with alt prop 1`] = `
   alt="Alt prop"
   className="extra"
   height="300"
-  src="/src/components/manage/Blocks/Listing/default-image.svg"
+  src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='300'%20viewBox='0%200%20400%20300'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3crect%20width='399'%20height='299'%20x='.5'%20y='.5'%20fill='%23D8E1E3'%20stroke='%23878F93'%20rx='3'/%3e%3cg%20transform='translate(130%2090)'%3e%3crect%20width='140'%20height='120'%20fill='%23FFF'%20fill-opacity='.5'%20rx='3'/%3e%3cg%20transform='translate(22%2013)'%3e%3crect%20width='96'%20height='96'%20fill='%2393ACC8'%20rx='3'/%3e%3cpolygon%20fill='%23FFF'%20points='14.299%2072%2079.949%2072%2060.957%2044.745%2049%2059.702%2034.836%2034.246'/%3e%3ccircle%20cx='74'%20cy='29'%20r='8'%20fill='%23FFF'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e"
   width="400"
 />
 `;
@@ -34,7 +34,7 @@ exports[`PreviewImage > renders a fallback image with alt prop empty 1`] = `
   alt=""
   className="extra"
   height="300"
-  src="/src/components/manage/Blocks/Listing/default-image.svg"
+  src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='300'%20viewBox='0%200%20400%20300'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3crect%20width='399'%20height='299'%20x='.5'%20y='.5'%20fill='%23D8E1E3'%20stroke='%23878F93'%20rx='3'/%3e%3cg%20transform='translate(130%2090)'%3e%3crect%20width='140'%20height='120'%20fill='%23FFF'%20fill-opacity='.5'%20rx='3'/%3e%3cg%20transform='translate(22%2013)'%3e%3crect%20width='96'%20height='96'%20fill='%2393ACC8'%20rx='3'/%3e%3cpolygon%20fill='%23FFF'%20points='14.299%2072%2079.949%2072%2060.957%2044.745%2049%2059.702%2034.836%2034.246'/%3e%3ccircle%20cx='74'%20cy='29'%20r='8'%20fill='%23FFF'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e"
   width="400"
 />
 `;
@@ -44,7 +44,7 @@ exports[`PreviewImage > renders a fallback image with extra props 1`] = `
   alt="Item title"
   className="extra"
   height="300"
-  src="/src/components/manage/Blocks/Listing/default-image.svg"
+  src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='300'%20viewBox='0%200%20400%20300'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3crect%20width='399'%20height='299'%20x='.5'%20y='.5'%20fill='%23D8E1E3'%20stroke='%23878F93'%20rx='3'/%3e%3cg%20transform='translate(130%2090)'%3e%3crect%20width='140'%20height='120'%20fill='%23FFF'%20fill-opacity='.5'%20rx='3'/%3e%3cg%20transform='translate(22%2013)'%3e%3crect%20width='96'%20height='96'%20fill='%2393ACC8'%20rx='3'/%3e%3cpolygon%20fill='%23FFF'%20points='14.299%2072%2079.949%2072%2060.957%2044.745%2049%2059.702%2034.836%2034.246'/%3e%3ccircle%20cx='74'%20cy='29'%20r='8'%20fill='%23FFF'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3c/svg%3e"
   width="400"
 />
 `;
