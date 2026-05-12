@@ -27,7 +27,12 @@ exports[`renders a checkbox group widget component 1`] = `
         </div>
         <div
           class="eight wide column"
-        />
+        >
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
+        </div>
       </div>
     </div>
   </div>
