@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.17 (2026-05-12)
+
+### Internal
+
+- Refactored the `TableBlockEdit` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7760](https://github.com/plone/volto/issues/7760)
+
 ## 19.0.0-alpha.16 (2026-05-07)
 
 ### Documentation

@@ -9,7 +9,7 @@
     }
   ],
   "license": "MIT",
-  "version": "19.0.0-alpha.35",
+  "version": "19.0.0-alpha.36",
   "repository": {
     "type": "git",
     "url": "git@github.com:plone/volto.git"
@@ -206,7 +206,7 @@
     "slate": "0.118.1",
     "slate-hyperscript": "0.115.0",
     "slate-react": "0.117.4",
-    "superagent": "3.8.2",
+    "superagent": "10.3.0",
     "tlds": "1.203.1",
     "undoo": "0.5.0",
     "universal-cookie": "8.1.2",
