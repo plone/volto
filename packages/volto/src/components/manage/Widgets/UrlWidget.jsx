@@ -138,7 +138,7 @@ export const UrlWidget = (props) => {
           <span
             id={`${inputId}-error`}
             role="alert"
-            className="visually-hidden"
+            className="visually-hidden-volto"
           >
             {value?.length > 0
               ? intl.formatMessage(messages.urlInvalid)
