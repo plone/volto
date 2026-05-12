@@ -14,9 +14,29 @@ import {
   flattenToAppURL,
   URLUtils,
 } from '@plone/volto/helpers/Url/Url';
+import { defineMessages, useIntl } from 'react-intl';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import navTreeSVG from '@plone/volto/icons/nav.svg';
+
+const messages = defineMessages({
+  urlMissing: {
+    id: 'URL is missing',
+    defaultMessage: 'URL is missing',
+  },
+  urlInvalid: {
+    id: 'URL is invalid',
+    defaultMessage: 'URL is invalid',
+  },
+  clearUrl: {
+    id: 'Clear URL',
+    defaultMessage: 'Clear URL',
+  },
+  openUrlBrowser: {
+    id: 'Open URL browser',
+    defaultMessage: 'Open URL browser',
+  },
+});
 
 /** Widget to edit urls
  *
@@ -40,9 +60,10 @@ export const UrlWidget = (props) => {
     maxLength,
     placeholder,
     isDisabled,
+    required,
   } = props;
   const inputId = `field-${id}`;
-
+  const intl = useIntl();
   const [value, setValue] = useState(flattenToAppURL(props.value));
   const [isInvalid, setIsInvalid] = useState(false);
   /**
@@ -54,6 +75,7 @@ export const UrlWidget = (props) => {
   const clear = () => {
     setValue('');
     onChange(id, undefined);
+    setIsInvalid(false);
   };
 
   const onChangeValue = (_value) => {
@@ -83,6 +105,14 @@ export const UrlWidget = (props) => {
     onChange(id, newValue === '' ? undefined : newValue);
   };
 
+  // A11y: if the field is required and the user leaves it empty, we mark it as missing
+  const handleBlur = ({ target }) => {
+    if (required && (!target.value || target.value === '')) {
+      setIsInvalid(true);
+    }
+    onBlur(id, target.value === '' ? undefined : target.value);
+  };
+
   return (
     <FormFieldWrapper {...props} className="url wide">
       <div className="wrapper">
@@ -90,24 +120,38 @@ export const UrlWidget = (props) => {
           id={inputId}
           name={id}
           type="url"
+          required={required}
+          aria-required={required}
+          aria-invalid={isInvalid}
+          aria-errormessage={isInvalid ? `${inputId}-error` : undefined}
           value={value || ''}
           disabled={isDisabled}
           placeholder={placeholder}
           onChange={({ target }) => onChangeValue(target.value)}
-          onBlur={({ target }) =>
-            onBlur(id, target.value === '' ? undefined : target.value)
-          }
+          onBlur={handleBlur}
           onClick={() => onClick()}
           minLength={minLength || null}
           maxLength={maxLength || null}
           error={isInvalid}
         />
+        {isInvalid && (
+          <span
+            id={`${inputId}-error`}
+            role="alert"
+            className="visually-hidden"
+          >
+            {value?.length > 0
+              ? intl.formatMessage(messages.urlInvalid)
+              : intl.formatMessage(messages.urlMissing)}
+          </span>
+        )}
         {value?.length > 0 ? (
           <Button.Group>
             <Button
+              type="button"
               basic
               className="cancel"
-              aria-label="clearUrlBrowser"
+              aria-label={intl.formatMessage(messages.clearUrl)}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -120,9 +164,10 @@ export const UrlWidget = (props) => {
         ) : (
           <Button.Group>
             <Button
+              type="button"
               basic
               icon
-              aria-label="openUrlBrowser"
+              aria-label={intl.formatMessage(messages.openUrlBrowser)}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
