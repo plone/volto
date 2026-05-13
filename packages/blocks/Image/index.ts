@@ -15,10 +15,6 @@ const ImageBlockInfo = {
   category: 'media',
   blockSchema: ImageSchema,
   icon: ImageIcon,
-  blockWidth: {
-    defaultWidth: 'default',
-    widths: ['layout', 'default', 'narrow', 'full'],
-  },
 } satisfies Partial<BlockConfigBase>;
 
 export default ImageBlockInfo;
