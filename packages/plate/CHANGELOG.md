@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.8 (2026-05-13)
+
+### Feature
+
+- Added first-class generic style field support while preserving `blockWidth` fallback for Plone blocks and explicit width handling for Plate-native blocks. @sneridagh 
+
 ## 1.0.0-alpha.7 (2026-05-08)
 
 ### Bugfix
