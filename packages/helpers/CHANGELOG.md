@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.6 (2026-05-13)
+
+### Bugfix
+
+- Make the import for the styleFields helper resilient and Volto-compatible. @sneridagh 
+
 ## 2.0.0-alpha.5 (2026-05-08)
 
 ### Feature
