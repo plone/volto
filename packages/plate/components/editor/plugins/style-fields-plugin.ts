@@ -17,7 +17,6 @@ import {
 import { toPlatePlugin } from 'platejs/react';
 
 export const STYLE_FIELDS_KEY = 'styleFields';
-const BLOCK_WIDTH_KEY = 'blockWidth';
 type StyleFieldConfig = {
   defaultValue?: string;
   values?: readonly string[];
@@ -50,20 +49,20 @@ const getGlobalDefaultWidth = () => {
   return values[0];
 };
 
-const getLegacyStyleFieldConfigs = (
+const withBlockWidthFallback = (
   styleFields: Record<string, StyleFieldConfig>,
-  legacyWidthConfig?: {
+  blockWidthConfig?: {
     defaultWidth?: string;
     widths?: readonly string[];
   },
 ) => {
-  if (!legacyWidthConfig) {
+  if (!blockWidthConfig) {
     return styleFields;
   }
 
-  styleFields[BLOCK_WIDTH_KEY] = {
-    defaultValue: legacyWidthConfig.defaultWidth ?? getGlobalDefaultWidth(),
-    values: legacyWidthConfig.widths ?? getGlobalWidthValues(),
+  styleFields.blockWidth = {
+    defaultValue: blockWidthConfig.defaultWidth ?? getGlobalDefaultWidth(),
+    values: blockWidthConfig.widths ?? getGlobalWidthValues(),
   };
 
   return styleFields;
@@ -84,7 +83,7 @@ const getElementStyleFieldConfigs = (
 
     const currentBlockConfig = blockConfig?.[blockType];
 
-    return getLegacyStyleFieldConfigs(
+    return withBlockWidthFallback(
       getStyleFieldsFromBlockSchema(
         currentBlockConfig,
         element as unknown as BlocksFormData,
@@ -93,22 +92,7 @@ const getElementStyleFieldConfigs = (
     );
   }
 
-  const plateBlocksConfig = (config.blocks as Record<string, unknown>)
-    .plateBlocksConfig as
-    | Record<
-        string,
-        {
-          blockWidth?: { defaultWidth?: string; widths?: readonly string[] };
-        }
-      >
-    | undefined;
-
-  return getLegacyStyleFieldConfigs(
-    {},
-    typeof element.type === 'string'
-      ? plateBlocksConfig?.[element.type]?.blockWidth
-      : undefined,
-  );
+  return {};
 };
 
 const applyStyleFieldDefaultsToElement = <T extends TElement>(

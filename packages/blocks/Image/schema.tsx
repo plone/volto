@@ -54,6 +54,7 @@ export function ImageSchema({
         title: 'Block width',
         widget: 'width',
         default: 'default',
+        styleField: true,
       },
       align: {
         title: 'Alignment',
