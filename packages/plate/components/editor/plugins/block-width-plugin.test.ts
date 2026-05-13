@@ -141,12 +141,24 @@ describe('block width plugin', () => {
     });
   });
 
-  it('resolves plone block width config from config.blocks.blocksConfig', () => {
+  it('does not use blocksConfig.blockWidth for unknown blocks in BlockWidthPlugin', () => {
+    registryBlocks.widths = [
+      {
+        name: 'default',
+        label: 'Default',
+        style: { '--block-width': 'var(--default-container-width)' },
+      },
+      {
+        name: 'layout',
+        label: 'Layout',
+        style: { '--block-width': 'var(--layout-container-width)' },
+      },
+    ];
     registryBlocks.blocksConfig = {
       image: {
         blockWidth: {
-          defaultWidth: 'default',
-          widths: ['layout', 'default'],
+          defaultWidth: 'layout',
+          widths: ['layout'],
         },
       },
     };
@@ -161,7 +173,53 @@ describe('block width plugin', () => {
       } as any),
     ).toEqual({
       defaultWidth: 'default',
-      widths: ['layout', 'default'],
+      widths: ['default', 'layout'],
+    });
+  });
+
+  it('still uses blocksConfig.blockWidth as a fallback for unknown blocks in style fields', () => {
+    registryBlocks.widths = [
+      {
+        name: 'default',
+        label: 'Default',
+        style: { '--block-width': 'var(--default-container-width)' },
+      },
+      {
+        name: 'layout',
+        label: 'Layout',
+        style: { '--block-width': 'var(--layout-container-width)' },
+      },
+    ];
+    registryBlocks.blocksConfig = {
+      image: {
+        blockWidth: {
+          defaultWidth: 'layout',
+          widths: ['layout'],
+        },
+      },
+    };
+
+    const transformProps = (BaseStyleFieldsPlugin as any).inject.nodeProps
+      .transformProps as TransformPropsFn;
+
+    expect(
+      transformProps({
+        element: {
+          type: 'unknown',
+          '@type': 'image',
+          children: [{ text: '' }],
+        },
+        props: {
+          style: {
+            color: 'red',
+          },
+        },
+      }),
+    ).toEqual({
+      style: {
+        color: 'red',
+        '--block-width': 'var(--layout-container-width)',
+      },
     });
   });
 

@@ -48,7 +48,7 @@ export function shouldShowToolbar(content?: Content | null) {
 export const getBlockStyleFieldConfigs = (
   data: BlocksFormData,
   blocksConfig?: BlocksConfigData,
-): Record<string, StyleFieldConfig> => {
+) => {
   const blockType = data['@type'];
 
   if (!blockType) return {};
@@ -56,8 +56,8 @@ export const getBlockStyleFieldConfigs = (
   const blockConfig = blocksConfig?.[blockType];
   const styleFields = getStyleFieldsFromBlockSchema(blockConfig, data);
 
-  // `blockWidth` is still configured in blocksConfig, not in the block schema,
-  // so public rendering needs to bridge that special case into the generic resolver.
+  // Keep `blockWidth` as a fallback for Plone blocks that wants to configure it
+  // in blocksConfig instead using a explicit width schema field marked with `styleField: true`.
   if (blockConfig?.blockWidth) {
     styleFields.blockWidth = {
       defaultValue: blockConfig.blockWidth.defaultWidth,
@@ -65,5 +65,5 @@ export const getBlockStyleFieldConfigs = (
     };
   }
 
-  return styleFields;
+  return styleFields as Record<string, StyleFieldConfig>;
 };
