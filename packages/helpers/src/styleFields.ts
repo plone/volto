@@ -1,4 +1,4 @@
-import config from '@plone/registry';
+import registryModule from '@plone/registry';
 import type {
   BlockConfigBase,
   BlocksFormData,
@@ -13,6 +13,14 @@ type StyleFieldConfig = {
   path?: string;
 };
 type StyleFieldsConfig = Record<string, StyleFieldConfig>;
+
+const config: {
+  getUtility: (args: { name: string; type: string }) => {
+    method?: (...args: any[]) => any;
+  };
+} = (registryModule as any).getUtility
+  ? (registryModule as any)
+  : (registryModule as any).default;
 
 type RegistryUtilityArgs = {
   data: DataRecord;
