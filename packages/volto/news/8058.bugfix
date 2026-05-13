@@ -1,0 +1,1 @@
+Fixed accessibility issues in `ModalForm` with focus management, `aria-live` announcements, and `aria-modal` support. @Wagner3UB
