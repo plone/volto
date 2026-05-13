@@ -14,7 +14,6 @@ import {
 
 import {
   BlockWidthPlugin,
-  BLOCK_WIDTH_KEY,
   getDefaultBlockWidth,
   getBlockWidthConfig,
   getBlockWidthOptions,
@@ -36,9 +35,9 @@ import {
 
 export function BlockWidthToolbarButton(props: DropdownMenuProps) {
   const { editor, tf } = useEditorPlugin(BlockWidthPlugin);
-  const styleFieldTransforms = tf.styleFields as {
-    resetStyleField: (fieldName: string) => void;
-    setStyleField: (fieldName: string, value: string) => void;
+  const blockWidthTransforms = tf.blockWidth as {
+    resetWidth: () => void;
+    setWidth: (value: string) => void;
   };
   const [open, setOpen] = React.useState(false);
   const activeBlock = editor.api.block()?.[0];
@@ -65,7 +64,7 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
       <ToolbarSplitButtonPrimary
         className="data-[state=on]:bg-accent data-[state=on]:text-accent-foreground"
         onClick={() => {
-          styleFieldTransforms.resetStyleField(BLOCK_WIDTH_KEY);
+          blockWidthTransforms.resetWidth();
           editor.tf.focus();
         }}
         data-state={value !== baseValue ? 'on' : 'off'}
@@ -82,7 +81,7 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
           <DropdownMenuRadioGroup
             value={value ?? baseValue}
             onValueChange={(newValue) => {
-              styleFieldTransforms.setStyleField(BLOCK_WIDTH_KEY, newValue);
+              blockWidthTransforms.setWidth(newValue);
               editor.tf.focus();
             }}
           >
