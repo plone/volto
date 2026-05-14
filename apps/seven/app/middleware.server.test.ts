@@ -7,6 +7,7 @@ import {
   fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
+  ploneClearAuthCookieContext,
   PloneClientMiddleware,
   otherResources,
   ploneClientContext,
@@ -16,7 +17,13 @@ import {
 } from './middleware.server';
 
 vi.mock('jwt-decode');
-vi.mock('@plone/react-router', () => ({ getAuthFromRequest: vi.fn() }));
+vi.mock('@plone/react-router', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@plone/react-router')>();
+  return {
+    ...actual,
+    getAuthFromRequest: vi.fn(),
+  };
+});
 
 describe('middleware', () => {
   const initializePloneClientContext = async (
@@ -355,28 +362,29 @@ describe('middleware', () => {
       });
       global.fetch = fetchMock;
 
-      try {
-        await getAPIResourceWithAuth(
-          {
-            request,
-            params,
-            context,
-            unstable_pattern: '/image.png/@@images/image',
-            unstable_url: new URL(request.url),
-          },
-          nextMock,
-        );
-      } catch {
-        expect(fetchMock).toHaveBeenCalledWith(
-          'http://localhost:8080/Plone/image.png/@@images/image',
-          expect.objectContaining({
-            method: 'GET',
-            headers: expect.objectContaining({
-              Authorization: 'Bearer undefined',
-            }),
-          }),
-        );
-      }
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/image.png/@@images/image',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://localhost:8080/Plone/image.png/@@images/image',
+        expect.objectContaining({
+          method: 'GET',
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
     });
 
     it('intercepts requests to special urls: @@download', async () => {
@@ -390,28 +398,29 @@ describe('middleware', () => {
       });
       global.fetch = fetchMock;
 
-      try {
-        await getAPIResourceWithAuth(
-          {
-            request,
-            params,
-            context,
-            unstable_pattern: '/file.txt/@@download/file',
-            unstable_url: new URL(request.url),
-          },
-          nextMock,
-        );
-      } catch {
-        expect(fetchMock).toHaveBeenCalledWith(
-          'http://localhost:8080/Plone/file.txt/@@download/file',
-          expect.objectContaining({
-            method: 'GET',
-            headers: expect.objectContaining({
-              Authorization: 'Bearer undefined',
-            }),
-          }),
-        );
-      }
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/file.txt/@@download/file',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://localhost:8080/Plone/file.txt/@@download/file',
+        expect.objectContaining({
+          method: 'GET',
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
     });
 
     it('intercepts requests to special urls: @@site-logo', async () => {
@@ -425,28 +434,29 @@ describe('middleware', () => {
       });
       global.fetch = fetchMock;
 
-      try {
-        await getAPIResourceWithAuth(
-          {
-            request,
-            params,
-            context,
-            unstable_pattern: '/@@site-logo/image',
-            unstable_url: new URL(request.url),
-          },
-          nextMock,
-        );
-      } catch {
-        expect(fetchMock).toHaveBeenCalledWith(
-          'http://localhost:8080/Plone/@@site-logo/image',
-          expect.objectContaining({
-            method: 'GET',
-            headers: expect.objectContaining({
-              Authorization: 'Bearer undefined',
-            }),
-          }),
-        );
-      }
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/@@site-logo/image',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://localhost:8080/Plone/@@site-logo/image',
+        expect.objectContaining({
+          method: 'GET',
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
     });
 
     it('intercepts requests to special urls: @portrait', async () => {
@@ -460,28 +470,91 @@ describe('middleware', () => {
       });
       global.fetch = fetchMock;
 
-      try {
-        await getAPIResourceWithAuth(
-          {
-            request,
-            params,
-            context,
-            unstable_pattern: '/@portrait/username',
-            unstable_url: new URL(request.url),
-          },
-          nextMock,
-        );
-      } catch {
-        expect(fetchMock).toHaveBeenCalledWith(
-          'http://localhost:8080/Plone/@portrait/username',
-          expect.objectContaining({
-            method: 'GET',
-            headers: expect.objectContaining({
-              Authorization: 'Bearer undefined',
-            }),
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/@portrait/username',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://localhost:8080/Plone/@portrait/username',
+        expect.objectContaining({
+          method: 'GET',
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
+    });
+
+    it('retries resource requests anonymously after a 401 and clears the cookie', async () => {
+      const request = new Request('http://example.com', {
+        headers: {
+          Cookie: 'auth_seven=token',
+        },
+      });
+      const context = new RouterContextProvider();
+      const params = { '*': 'image.png/@@images/image' };
+      const nextMock = vi.fn();
+      const fetchMock = vi
+        .fn()
+        .mockResolvedValueOnce(
+          new Response('unauthorized', { status: 401, statusText: 'Unauthorized' }),
+        )
+        .mockResolvedValueOnce(
+          new Response('image', {
+            status: 200,
+            headers: { 'Content-Type': 'image/png' },
           }),
         );
-      }
+      global.fetch = fetchMock;
+      vi.mocked(getAuthFromRequest).mockResolvedValue('expired.jwt.token');
+
+      const response = (await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/image.png/@@images/image',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      )) as Response;
+
+      expect(fetchMock).toHaveBeenNthCalledWith(
+        1,
+        'http://localhost:8080/Plone/image.png/@@images/image',
+        expect.objectContaining({
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(fetchMock).toHaveBeenNthCalledWith(
+        2,
+        'http://localhost:8080/Plone/image.png/@@images/image',
+        expect.objectContaining({
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBe('Bearer expired.jwt.token');
+      expect(
+        (fetchMock.mock.calls[1]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
+      expect(response.status).toBe(200);
+      expect(response.headers.get('Set-Cookie')).toContain('auth_seven=');
     });
   });
 
@@ -770,6 +843,74 @@ describe('middleware', () => {
 
       expect(getUserMock).not.toHaveBeenCalled();
       expect(context.get(ploneUserContext)).toBeNull();
+    });
+
+    it('retries anonymously after a 401 and clears the auth cookie context', async () => {
+      const authContent = vi
+        .fn()
+        .mockRejectedValueOnce({ data: undefined, status: 401 });
+      const authSite = vi.fn().mockResolvedValue({ data: {} });
+      const anonymousContent = vi
+        .fn()
+        .mockResolvedValueOnce({ data: { '@id': 'http://example.com/', title: 'Home' } });
+      const anonymousSite = vi
+        .fn()
+        .mockResolvedValueOnce({ data: { '@id': 'http://example.com/' } });
+      config.settings.apiPath = 'http://example.com';
+      const initializeMock = vi
+        .fn()
+        .mockReturnValueOnce({
+          getContent: authContent,
+          getSite: authSite,
+          getUser: vi.fn(),
+        })
+        .mockReturnValueOnce({
+          getContent: anonymousContent,
+          getSite: anonymousSite,
+          getUser: vi.fn(),
+        });
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () =>
+          ({
+            prototype: {},
+            initialize: initializeMock,
+          }) as any,
+      });
+      vi.mocked(getAuthFromRequest).mockResolvedValue('expired.jwt.token');
+      vi.mocked(jwtDecode).mockReturnValue({
+        sub: 'testuser',
+        exp: 9999999999,
+        fullname: 'Test User',
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(anonymousContent).toHaveBeenCalledWith({
+        path: '/',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+      });
+      expect(context.get(ploneContentContext)).toEqual({
+        '@id': '/',
+        title: 'Home',
+      });
+      expect(context.get(ploneUserContext)).toBeNull();
+      expect(context.get(ploneClearAuthCookieContext)).toBe(true);
     });
   });
 });

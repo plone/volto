@@ -109,14 +109,33 @@ export async function setAuthOnResponse(
   return response;
 }
 
+export async function clearAuthOnResponse(
+  response: Response,
+  options?: Parameters<typeof cookie.serialize>[1],
+) {
+  const header = await cookie.serialize('', {
+    maxAge: 0,
+    ...options,
+  });
+  response.headers.append('Set-Cookie', header);
+  return response;
+}
+
+export async function getClearAuthCookieHeader(
+  options?: Parameters<typeof cookie.serialize>[1],
+) {
+  return await cookie.serialize('', {
+    maxAge: 0,
+    ...options,
+  });
+}
+
 export async function requireAuthCookie(request: Request) {
   const token = await getAuthFromRequest(request);
   if (!token) {
     throw redirect('/login', {
       headers: {
-        'Set-Cookie': await cookie.serialize('', {
-          maxAge: 0,
-        }),
+        'Set-Cookie': await getClearAuthCookieHeader(),
       },
     });
   }
@@ -134,11 +153,5 @@ export async function redirectIfLoggedInLoader({
 }
 
 export async function redirectWithClearedCookie() {
-  return redirect('/', {
-    headers: {
-      'Set-Cookie': await cookie.serialize('', {
-        maxAge: 0,
-      }),
-    },
-  });
+  return clearAuthOnResponse(redirect('/'));
 }
