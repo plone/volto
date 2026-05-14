@@ -56,6 +56,13 @@ beforeAll(() => {
 });
 
 describe('UsersControlpanel SSR', () => {
+  const baseRouterState = {
+    router: {
+      location: { pathname: '/controlpanel/users' },
+    },
+    reduxAsyncConnect: {},
+  };
+
   describe('SSR Unauthorized (401) rendering', () => {
     it('renders 401 error during SSR without throwing', () => {
       const staticContext = {};
@@ -95,6 +102,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       expect(() => {
@@ -149,6 +157,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       const html = renderToString(
@@ -201,6 +210,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       renderToString(
@@ -252,6 +262,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       const html = renderToString(
@@ -307,6 +318,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       const html = renderToString(
@@ -359,6 +371,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       expect(() => {
@@ -420,6 +433,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       expect(() => {
@@ -474,6 +488,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       let threwError = false;
@@ -539,6 +554,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       const html = renderToString(
@@ -591,6 +607,7 @@ describe('UsersControlpanel SSR', () => {
           locale: 'en',
           messages: {},
         },
+        ...baseRouterState,
       });
 
       renderToString(

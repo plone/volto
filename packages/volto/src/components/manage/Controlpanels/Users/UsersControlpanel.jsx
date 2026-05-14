@@ -13,6 +13,7 @@ import { listRoles } from '@plone/volto/actions/roles/roles';
 import { listGroups, updateGroup } from '@plone/volto/actions/groups/groups';
 import { getControlpanel } from '@plone/volto/actions/controlpanels/controlpanels';
 import { getUserSchema } from '@plone/volto/actions/userschema/userschema';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import jwtDecode from 'jwt-decode';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
@@ -742,4 +743,43 @@ const UsersControlpanel = (props) => {
   );
 };
 
-export default UsersControlpanel;
+export default asyncConnect([
+  {
+    key: 'controlpanels',
+    promise: ({ store: { dispatch, getState } }) => {
+      return dispatch(getControlpanel('usergroup')).then(() => {
+        const state = getState();
+        const many_users = state.controlpanels?.controlpanel?.data?.many_users;
+        if (!many_users) {
+          dispatch(listUsers());
+          dispatch(listGroups());
+        }
+      });
+    },
+  },
+  {
+    key: 'roles',
+    promise: ({ store: { dispatch } }) => {
+      return dispatch(listRoles());
+    },
+  },
+  {
+    key: 'userschema',
+    promise: ({ store: { dispatch } }) => {
+      return dispatch(getUserSchema());
+    },
+  },
+  {
+    key: 'user',
+    promise: ({ store: { dispatch, getState } }) => {
+      const state = getState();
+      const token = state.userSession.token;
+      if (token) {
+        const userId = jwtDecode(token).sub;
+        if (userId) {
+          return dispatch(getUser(userId));
+        }
+      }
+    },
+  },
+])(UsersControlpanel);
