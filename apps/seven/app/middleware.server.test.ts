@@ -853,11 +853,9 @@ describe('middleware', () => {
         .fn()
         .mockRejectedValueOnce({ data: undefined, status: 401 });
       const authSite = vi.fn().mockResolvedValue({ data: {} });
-      const anonymousContent = vi
-        .fn()
-        .mockResolvedValueOnce({
-          data: { '@id': 'http://example.com/', title: 'Home' },
-        });
+      const anonymousContent = vi.fn().mockResolvedValueOnce({
+        data: { '@id': 'http://example.com/', title: 'Home' },
+      });
       const anonymousSite = vi
         .fn()
         .mockResolvedValueOnce({ data: { '@id': 'http://example.com/' } });
