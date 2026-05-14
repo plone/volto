@@ -507,7 +507,10 @@ describe('middleware', () => {
       const fetchMock = vi
         .fn()
         .mockResolvedValueOnce(
-          new Response('unauthorized', { status: 401, statusText: 'Unauthorized' }),
+          new Response('unauthorized', {
+            status: 401,
+            statusText: 'Unauthorized',
+          }),
         )
         .mockResolvedValueOnce(
           new Response('image', {
@@ -852,7 +855,9 @@ describe('middleware', () => {
       const authSite = vi.fn().mockResolvedValue({ data: {} });
       const anonymousContent = vi
         .fn()
-        .mockResolvedValueOnce({ data: { '@id': 'http://example.com/', title: 'Home' } });
+        .mockResolvedValueOnce({
+          data: { '@id': 'http://example.com/', title: 'Home' },
+        });
       const anonymousSite = vi
         .fn()
         .mockResolvedValueOnce({ data: { '@id': 'http://example.com/' } });
