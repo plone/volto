@@ -503,6 +503,25 @@ If you have shadows of any of these components, they need to be updated:
 - {file}`ArrayWidget.jsx`
 - {file}`SelectStyling.jsx`
 
+The following libraries are no longer available to be loaded using `injectLazyLibs`: `reactDnd`, `reactDndHtml5Backend`, and `reactSortableHOC`.
+Add-ons which use them need to include them as a dependency in `package.json`,
+and take care of adding them to `config.settings.loadables`.
+
+For example:
+
+```js
+import loadable from '@loadable/component';
+
+config.settings.loadables.reactDnd = loadable.lib(() => import('react-dnd'));
+config.settings.loadables.reactDndHtml5Backend = loadable.lib(() => import('react-dnd-html5-backend'));
+config.settings.loadables.reactSortableHOC = loadable.lib(() => import('react-sortable-hoc'), {
+  ssr: false,
+});
+```
+
+Or, these add-ons can be updated to use a maintained drag-and-drop library.
+
+
 ### The "AutoSave" feature has been marked as experimental and opt-in by default
 ```{versionadded} Volto 19.0.0-alpha.32
 ```
