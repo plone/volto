@@ -2869,6 +2869,16 @@ msgstr "Plone Foundation"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "ポップアップが閉じました。"
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "ポップアップが開きました: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
@@ -4619,11 +4629,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "保護されたリソースにアクセスしようとしています。 {login} してください。"
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5002,11 +5007,6 @@ msgstr "リスティング"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "読み込み中"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "ログイン"
 
 #. Default: "Maps"
 #: config/Blocks

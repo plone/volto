@@ -187,6 +187,56 @@ index c469fe9..c39a324 100644
 +    CI=1 pnpm install --prod
 ```
 
+### `superagent` has been upgraded to version 10
+```{versionchanged} Volto 19
+```
+
+Volto upgraded `superagent` from `3.8.2` to `10.3.0`.
+This is a major upgrade of the HTTP client used by Volto for API and SSR helper requests.
+
+For most projects, no action is required if you only use the public request API, such as `get()`, `post()`, `query()`, `send()`, `set()`, `attach()`, `then()`, or `end()`.
+However, newer `superagent` versions use stricter error handling, so projects with custom request wrappers or SSR integrations should review their error paths carefully.
+
+Check your project and add-ons for direct `superagent` usage:
+
+```shell
+grep -R "from 'superagent'" -n --exclude-dir=node_modules .
+grep -R 'require.*superagent' -n --exclude-dir=node_modules .
+```
+
+In particular, verify the following cases.
+
+-   callbacks passed to `request.end()` do not assume that a response object is always present
+-   redirect handling does not assume `error.response.headers.location` always exists
+-   custom wrappers that inspect low-level request or response internals still behave correctly
+-   file upload code and middleware around multipart requests still work as expected
+
+If your code destructures the response directly in the callback, update it to handle missing responses safely.
+
+```diff
+- request.end((error, { body }) => {
++ request.end((error, { body } = {}) => {
+```
+
+Likewise, when reading redirect targets or headers from an error response, guard against missing nested values.
+
+```diff
+- const location = error.response.headers.location;
++ const location = error.response?.headers?.location;
+```
+
+After upgrading, test the code paths that use backend requests the most:
+
+-   authentication and token-protected requests
+-   redirects and URL checks in SSR
+-   sitemap and robots generation
+-   file and image downloads
+-   file uploads and multipart forms
+
+```{seealso}
+[superagent releases](https://github.com/forwardemail/superagent/releases)
+```
+
 ### New utility class `visually-hidden`
 
 ```{versionadded} Volto 19.0.0-alpha.10
@@ -278,6 +328,17 @@ These packages have been removed from the Volto repository as they are no longer
 - `@plone/volto-guillotina`: No longer actively maintained
 - `@plone/volto-testing`: Testing functionality is now integrated directly in Volto core
 
+### `@plone/client` was removed from the monorepo
+```{versionremoved} Volto 19.0.0-alpha.33
+```
+
+`@plone/client` is no longer developed or released from the `main` branch of the Volto monorepo.
+It is now developed and released from the `seven` branch, and is expected to be released as part of Plone 7.
+Its documentation, when changed, will be backported to the `main` branch so that it can continue to be included in the main Plone 6 documentation at https://6.docs.plone.org/volto/client/index.html.
+
+If your project uses it and still references it as a workspace package, remove those references from your root {file}`package.json` scripts and workspace-specific tooling.
+Use published packages from npm instead of workspace links when upgrading existing setups.
+
 ### Removed language settings
 ```{versionremoved} Volto 19
 ```
@@ -305,13 +366,12 @@ config.settings.showRelatedItems = false;
 The default (English) literal "Head title" in the `teaser` block has been renamed to "Kicker" for accuracy and clarity.
 The `head_title` property and the translation id (`head_title`) in the `teaser` block settings has been kept for backwards compatibility.
 
-### `@plone/components` and `@plone/client` were updated to the latest alphas developed for Seven
+### `@plone/components` was updated to the latest alphas developed for Seven
 ```{versionadded} Volto 19.0.0-alpha.6
 ```
-`@plone/components` and `@plone/client` are in active development for Seven and they have been updated to the latest alphas.
-You can still use them in Volto using the `workspace` protocol in your `package.json` file.
-However, check the breaking changes issued for these packages in the respective changelogs.
-It is recommended that you use the released versions of these packages instead of the workspace protocol, unless you need a specific feature or fix that is released yet.
+`@plone/components` is in active development for Seven and has been updated to the latest alphas.
+Check the breaking changes issued for this package in its changelog.
+It is recommended that you use the released npm versions instead of the workspace protocol, unless you need a specific feature or fix that is not released yet.
 
 ### `AlignWidget` and `ButtonsWidget` are now Semantic UI-free
 ```{versionadded} Volto 19.0.0-alpha.10
@@ -417,6 +477,32 @@ This is a breaking change for projects that relied on the original image always 
 A pair of additional scales were added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
 Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scales named `2k` and `4k`.
 
+### 401 unauthorized error route handling behaviors have changed
+```{versionadded} Volto 19.0.0-alpha.32
+```
+
+The handling of 401 Unauthorized errors for anonymous users has been changed to improve the user experience.
+Previously, when an anonymous user attempted to access a resource that required authorization, the 401 unauthorized error page would be displayed.
+Now the user will be redirected to the login page.
+This matches Plone 6 Classic UI behavior and aligns with user expectations.
+
+An authenticated user who attempts to access a protected resource for which they lack permission will still see an Unauthorized error page.
+
+### Replaced old drag-and-drop libraries
+```{versionadded} Volto 19.0.0-alpha.30
+```
+
+The `react-dnd`, `react-dnd-html5-backend`, and `react-sortable-hoc` libraries were replaced with `dnd-kit`.
+These libraries provided drag-and-drop functionality in several components, but were no longer maintained.
+If you have shadows of any of these components, they need to be updated:
+
+- {file}`Contents.jsx`
+- {file}`ContentsIndexHeader.jsx`
+- {file}`ContentsItem.jsx`
+- {file}`Field.jsx`
+- {file}`ArrayWidget.jsx`
+- {file}`SelectStyling.jsx`
+
 ### The "AutoSave" feature has been marked as experimental and opt-in by default
 ```{versionadded} Volto 19.0.0-alpha.32
 ```
@@ -429,6 +515,21 @@ If you want to enable it in your project, you can set the `config.experimental.s
 
 ```js
 config.experimental.saveAsDraft = true;
+```
+
+### Some tests need to add a `CookiesProvider`
+
+Components which use the `useCookies` hook from `react-cookie` now expect an explicit `CookiesProvider`.
+You might need to add this in some unit tests.
+
+```js
+import { CookiesProvider } from 'react-cookie';
+
+const { container } = render(
+  <CookiesProvider>
+    <!-- your component being tested -->
+  </CookiesProvider>
+);
 ```
 
 (upgrading-to-volto-18-x-x)=
@@ -845,8 +946,6 @@ The following table lists the old and new Makefile commands and the new commands
 | test-acceptance-guillotina-headless | guillotina-ci-acceptance-test | Run Cypress tests in headless mode for CI for Guillotina tests |  |
 | full-test-acceptance-guillotina | guillotina-ci-acceptance-test-run-all | With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests |  |
 | start-test-acceptance-server-5 | plone5-acceptance-backend-start | Start backend acceptance server for Plone 5 tests |  |
-| start-test-acceptance-server-detached | acceptance-server-detached-start | Starts test acceptance server main fixture in detached mode (daemon) |  |
-| stop-test-acceptance-server-detached | acceptance-server-detached-stop | Stop test acceptance server main fixture in detached mode (daemon) |  |
 
 
 The documentation has been updated as well to reflect this change.
