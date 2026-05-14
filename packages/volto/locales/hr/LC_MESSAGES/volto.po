@@ -2881,6 +2881,16 @@ msgstr ""
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr ""
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Skočni prozor zatvoren."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Skočni prozor otvoren: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
@@ -4631,11 +4641,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5018,11 +5023,6 @@ msgstr ""
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
-msgstr ""
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
 msgstr ""
 
 #. Default: "Maps"
