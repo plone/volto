@@ -3410,7 +3410,7 @@ msgstr "Selecione colunas para mostrar"
 #. Default: "Select option"
 #: components/manage/Blocks/Search/components/SelectFacet
 msgid "Select option"
-msgstr "Selecione "
+msgstr "Selecione uma opção"
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
