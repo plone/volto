@@ -112,6 +112,7 @@ export {
   normalizeString,
 } from '@plone/volto/helpers/Utils/Utils';
 export { messages } from './MessageLabels/MessageLabels';
+export { formatMessageWithFallback } from './I18n/I18n';
 export {
   withBlockSchemaEnhancer,
   withVariationSchemaEnhancer,
