@@ -1,0 +1,1 @@
+Add `className` prop to each `Sidebar` tab for individual customization and styling. @alexandreIFB

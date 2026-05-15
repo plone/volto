@@ -154,7 +154,7 @@ const Sidebar = (props) => {
               menuItem: {
                 key: 'documentTab',
                 as: 'button',
-                className: 'ui button',
+                className: 'tab-document ui button',
                 content: type || intl.formatMessage(messages.document),
               },
               pane: (
@@ -169,7 +169,7 @@ const Sidebar = (props) => {
               menuItem: {
                 key: 'blockTab',
                 as: 'button',
-                className: 'ui button',
+                className: 'tab-block ui button',
                 content: intl.formatMessage(messages.block),
               },
               pane: (
@@ -187,7 +187,10 @@ const Sidebar = (props) => {
               ),
             },
             !!orderTab && {
-              menuItem: intl.formatMessage(messages.order),
+              menuItem: {
+                className: 'tab-order',
+                menuItem: intl.formatMessage(messages.order),
+              },
               pane: (
                 <Tab.Pane
                   key="order"
@@ -203,7 +206,10 @@ const Sidebar = (props) => {
               ),
             },
             !!settingsTab && {
-              menuItem: intl.formatMessage(messages.settings),
+              menuItem: {
+                className: 'tab-settings',
+                menuItem: intl.formatMessage(messages.settings),
+              },
               pane: (
                 <Tab.Pane
                   key="settings"
