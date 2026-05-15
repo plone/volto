@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2026-05-07)
+
+### Bugfix
+
+- Fixed flakey tests. @sneridagh [#8160](https://github.com/plone/volto/issues/8160)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Added acceptance coverage for add-view title placeholder alignment and fast title typing to guard the somersault title block sync behavior. 
+- Aligned CMSUI's local TypeScript project and test typing setup with the monorepo-wide typecheck cleanup. 
+- Moved `tailwindcss-react-aria-components` into CMSUI runtime dependencies so published installs include the Tailwind React Aria plugin they use. @sneridagh 
+- Switched CMSUI's local `@testing-library/jest-dom` dev dependency to the shared catalog entry during the monorepo dependency cleanup. 
+
 ## 1.0.0-alpha.2 (2026-04-16)
 
 ### Breaking

@@ -1,14 +1,13 @@
 import {
+  createSlatePlugin,
+  ElementApi,
   type SetNodesOptions,
   type SlateEditor,
   type TElement,
-  createSlatePlugin,
-  ElementApi,
-  getPluginByType,
 } from 'platejs';
-import { toPlatePlugin } from 'platejs/react';
 import config from '@plone/registry';
 import type { StyleDefinition } from '@plone/types';
+import { toPlatePlugin } from 'platejs/react';
 
 export const BLOCK_WIDTH_KEY = 'blockWidth';
 export const FALLBACK_BLOCK_WIDTH = 'default';
@@ -84,20 +83,6 @@ export const getBlockWidthOptions = () =>
 const getBlockWidthStyle = (value?: string) =>
   getBlockWidthDefinitions().find((width) => width.name === value)?.style;
 
-const getBlockPluginWidthConfig = (
-  editor: SlateEditor,
-  element?: TElement | null,
-): BlockWidthConfig => {
-  if (!element) return {};
-
-  const plugin = getPluginByType(editor, element.type);
-
-  return (
-    (plugin?.options as { blockWidth?: BlockWidthConfig } | undefined)
-      ?.blockWidth ?? {}
-  );
-};
-
 const getPlateBlockRegistryWidthConfig = (
   element?: TElement | null,
 ): BlockWidthConfig => {
@@ -129,6 +114,10 @@ export const resolveBlockWidthConfig = (
   editor: SlateEditor,
   element?: TElement | null,
 ): BlockWidthConfig => {
+  if (element?.type === 'unknown') {
+    return {};
+  }
+
   const registryConfig =
     element?.type === 'unknown'
       ? getPloneBlockRegistryWidthConfig(element)
@@ -138,24 +127,24 @@ export const resolveBlockWidthConfig = (
     return registryConfig;
   }
 
-  return getBlockPluginWidthConfig(editor, element);
+  const pluginOptions = editor.getOptions(BaseBlockWidthPlugin) as
+    | BlockWidthPluginOptions
+    | undefined;
+
+  return {
+    widths: pluginOptions?.defaultWidths,
+  };
 };
 
 export const getBlockWidthConfig = (
   editor: SlateEditor,
   element?: TElement | null,
 ) => {
-  const pluginOptions = editor.getOptions(BaseBlockWidthPlugin) as
-    | BaseBlockWidthPluginOptions
-    | undefined;
   const blockConfig = resolveBlockWidthConfig(editor, element);
   const defaultWidth = blockConfig.defaultWidth ?? getDefaultBlockWidth();
   const registryWidths = getBlockWidthValueList();
   const widths =
-    blockConfig.widths ??
-    (registryWidths.length
-      ? registryWidths
-      : (pluginOptions?.defaultWidths ?? []));
+    blockConfig.widths ?? (registryWidths.length ? registryWidths : []);
 
   return {
     defaultWidth,
@@ -183,10 +172,16 @@ export const applyBlockWidthDefaultsInValue = (value: unknown[]) => {
     const element = node as ValueElement;
     if (typeof element.type !== 'string') return;
 
-    const registryConfig =
-      element.type === 'unknown'
-        ? getPloneBlockRegistryWidthConfig(element as TElement)
-        : getPlateBlockRegistryWidthConfig(element as TElement);
+    if (element.type === 'unknown') {
+      if (Array.isArray(element.children)) {
+        element.children.forEach(visit);
+      }
+      return;
+    }
+
+    const registryConfig = getPlateBlockRegistryWidthConfig(
+      element as TElement,
+    );
     const defaultWidth = registryConfig.defaultWidth ?? fallbackDefaultWidth;
     const widths = registryConfig.widths?.length
       ? registryConfig.widths
@@ -210,20 +205,24 @@ export const getEffectiveBlockWidth = (
   editor: SlateEditor,
   element?: TElement | null,
 ) => {
-  const config = getBlockWidthConfig(editor, element);
   const current = element?.[BLOCK_WIDTH_KEY];
+  const { defaultWidth, widths } = getBlockWidthConfig(editor, element);
 
-  if (typeof current === 'string' && isAllowedWidth(config.widths, current)) {
+  if (typeof current === 'string' && isAllowedWidth(widths, current)) {
     return current;
   }
 
-  return config.defaultWidth;
+  return defaultWidth;
 };
 
 export const withBlockWidthDefaults = <T extends TElement>(
   editor: SlateEditor,
   element: T,
 ): T => {
+  if (element.type === 'unknown') {
+    return element;
+  }
+
   const width = getEffectiveBlockWidth(editor, element);
 
   if (element[BLOCK_WIDTH_KEY] === width) {
@@ -239,7 +238,7 @@ export const withBlockWidthDefaults = <T extends TElement>(
 const withInsertedBlockWidthDefaults = (
   editor: SlateEditor,
   nodes: unknown,
-) => {
+): unknown => {
   if (Array.isArray(nodes)) {
     return nodes.map((node) => withInsertedBlockWidthDefaults(editor, node));
   }
@@ -248,15 +247,15 @@ const withInsertedBlockWidthDefaults = (
     return nodes;
   }
 
-  const children = Array.isArray(nodes.children)
-    ? nodes.children.map((child) =>
+  const children: unknown[] | undefined = Array.isArray(nodes.children)
+    ? nodes.children.map((child: unknown) =>
         withInsertedBlockWidthDefaults(editor, child),
       )
     : nodes.children;
-  const nextNode =
+  const nextNode: TElement =
     children === nodes.children ? nodes : ({ ...nodes, children } as TElement);
 
-  if (!editor.api.isBlock(nextNode)) {
+  if (!editor.api.isBlock(nextNode) || nextNode.type === 'unknown') {
     return nextNode;
   }
 
@@ -268,18 +267,16 @@ const setBlockWidth = (
   value: string,
   setNodesOptions?: SetNodesOptions,
 ) => {
-  const { nodeKey } = editor.getInjectProps(BaseBlockWidthPlugin);
-
-  if (!nodeKey) return;
-
   const matchesValue = (node: TElement) => {
+    if (node.type === 'unknown') return false;
+
     const config = getBlockWidthConfig(editor, node);
 
     return isAllowedWidth(config.widths, value);
   };
 
   editor.tf.setNodes(
-    { [nodeKey]: value },
+    { [BLOCK_WIDTH_KEY]: value },
     {
       match: (node) =>
         ElementApi.isElement(node) &&
@@ -289,8 +286,6 @@ const setBlockWidth = (
     },
   );
 };
-
-type BaseBlockWidthPluginOptions = BlockWidthPluginOptions;
 
 export const BaseBlockWidthPlugin = createSlatePlugin({
   key: BLOCK_WIDTH_KEY,
@@ -302,10 +297,15 @@ export const BaseBlockWidthPlugin = createSlatePlugin({
     nodeProps: {
       nodeKey: BLOCK_WIDTH_KEY,
       transformProps: ({ editor, element, nodeValue, props }) => {
-        const widthValue =
-          element && ElementApi.isElement(element)
-            ? getEffectiveBlockWidth(editor, element)
-            : nodeValue;
+        if (
+          !element ||
+          !ElementApi.isElement(element) ||
+          element.type === 'unknown'
+        ) {
+          return props;
+        }
+
+        const widthValue = getEffectiveBlockWidth(editor, element) ?? nodeValue;
         const widthStyle = getBlockWidthStyle(widthValue);
 
         if (!widthStyle) return props;
@@ -332,7 +332,7 @@ export const BaseBlockWidthPlugin = createSlatePlugin({
 
     editor.tf.insertNodes = ((nodes: any, options?: any) =>
       insertNodes(
-        withInsertedBlockWidthDefaults(editor, nodes),
+        withInsertedBlockWidthDefaults(editor, nodes) as any,
         options,
       )) as any;
 
@@ -342,7 +342,9 @@ export const BaseBlockWidthPlugin = createSlatePlugin({
   resetWidth: (options?: SetNodesOptions) => {
     const blockEntry = editor.api.block();
     const block =
-      blockEntry && ElementApi.isElement(blockEntry[0])
+      blockEntry &&
+      ElementApi.isElement(blockEntry[0]) &&
+      blockEntry[0].type !== 'unknown'
         ? blockEntry[0]
         : undefined;
     const { defaultWidth } = getBlockWidthConfig(editor, block);

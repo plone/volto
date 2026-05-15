@@ -55,6 +55,10 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
     getProp: (node) => node.blockWidth,
   });
 
+  if (widthOptions.length <= 1) {
+    return null;
+  }
+
   return (
     <ToolbarSplitButton pressed={open}>
       <ToolbarSplitButtonPrimary

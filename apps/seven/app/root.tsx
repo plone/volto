@@ -1,10 +1,11 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { data, isRouteErrorResponse } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
 import config from '@plone/registry';
 import {
+  ploneClearAuthCookieContext,
   fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
@@ -14,6 +15,7 @@ import {
   ploneContentContext,
   ploneSiteContext,
 } from './middleware.server';
+import { getClearAuthCookieHeader } from '@plone/react-router';
 
 export const middleware = [
   installServerMiddleware,
@@ -65,7 +67,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
       ),
     ]);
 
-    return {
+    const loaderData = {
       content,
       site,
       locale,
@@ -73,6 +75,14 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
         .filter((item) => item)
         .reduce((acc, item) => ({ ...acc, ...item }), {}),
     };
+
+    return data(loaderData, {
+      headers: context.get(ploneClearAuthCookieContext)
+        ? {
+            'Set-Cookie': await getClearAuthCookieHeader(),
+          }
+        : undefined,
+    });
   } catch (error: any) {
     throw data('Content Not Found', {
       status: typeof error.status === 'number' ? error.status : 500,
@@ -111,11 +121,16 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
+
   if (isRouteErrorResponse(error)) {
     switch (error.status) {
       case 404:
         message = '404';
         details = 'The requested page could not be found.';
+        break;
+      case 401:
+        message = '401';
+        details = 'You are not authorized to view this page.';
         break;
       case 500:
         message = '500';

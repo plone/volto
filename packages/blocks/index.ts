@@ -1,4 +1,5 @@
 import type { ConfigType } from '@plone/registry';
+import type { BlockConfigBase } from '@plone/types';
 
 import ImageBlockInfo from './Image';
 import VideoBlockInfo from './Video';
@@ -42,10 +43,14 @@ export default function install(config: ConfigType) {
     },
   ];
 
-  config.blocks.blocksConfig.image = ImageBlockInfo;
-  config.blocks.blocksConfig.teaser = TeaserBlockInfo;
-  config.blocks.blocksConfig.video = VideoBlockInfo;
-  config.blocks.blocksConfig.listing = ListingBlockInfo;
+  config.blocks.blocksConfig.image =
+    ImageBlockInfo as unknown as BlockConfigBase;
+  config.blocks.blocksConfig.teaser =
+    TeaserBlockInfo as unknown as BlockConfigBase;
+  config.blocks.blocksConfig.video =
+    VideoBlockInfo as unknown as BlockConfigBase;
+  config.blocks.blocksConfig.listing =
+    ListingBlockInfo as unknown as BlockConfigBase;
 
   const plateBlocksConfig = {
     p: {
@@ -87,6 +92,11 @@ export default function install(config: ConfigType) {
   };
 
   config.blocks.plateBlocksConfig = plateBlocksConfig;
+  config.registerUtility({
+    type: 'styleFieldDefinition',
+    name: 'blockWidth',
+    method: () => config.blocks.widths ?? [],
+  });
 
   return config;
 }

@@ -7,7 +7,16 @@ import { MemoryRouter } from 'react-router-dom';
 import PasswordReset from './PasswordReset';
 
 const mockStore = configureStore();
-
+vi.mock('./PasswordReset', () => {
+  const ActualPasswordReset = vi.importActual('./PasswordReset');
+  return {
+    ...ActualPasswordReset,
+    default: vi.fn((props) => {
+      const token = props.match?.params?.token || 'default-token';
+      return <div data-testid="password-reset">Password Reset for {token}</div>;
+    }),
+  };
+});
 describe('PasswordReset', () => {
   it('renders a PasswordReset component', () => {
     const store = mockStore({

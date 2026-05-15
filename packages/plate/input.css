@@ -1,4 +1,4 @@
-/* seven/packages/plate/input.css */
+/* Support input.css file for loading @plone/plate from outside Seven */
 @import 'tailwindcss';
 
 /* Plate’s own code */
@@ -13,5 +13,3 @@
 
 /* Optional: keep Tailwind from walking into nested deps */
 @source not './node_modules/**/node_modules/**';
-
-@import '../theming/styles/colors.css';

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
@@ -8,6 +8,7 @@ import MaybeWrap from '@plone/volto/components/manage/MaybeWrap/MaybeWrap';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import cx from 'classnames';
 import config from '@plone/volto/registry';
+import { GridContext } from '@plone/volto/components/manage/Blocks/Grid/context';
 
 const messages = defineMessages({
   PleaseChooseContent: {
@@ -18,7 +19,7 @@ const messages = defineMessages({
 });
 
 const TeaserDefaultTemplate = (props) => {
-  const { className, data, isEditMode, style } = props;
+  const { className, data, isContainer: inGrid, isEditMode, style } = props;
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];
@@ -26,6 +27,12 @@ const TeaserDefaultTemplate = (props) => {
 
   const Image = config.getComponent('Image').component;
   const { openExternalLinkInNewTab } = config.settings;
+  const columns = useContext(GridContext);
+  const sizes = config.blocks.blocksConfig.teaser.getSizes({
+    data,
+    inGrid,
+    columns,
+  });
 
   return (
     <div className={cx('block teaser', className)} style={style}>
@@ -33,7 +40,7 @@ const TeaserDefaultTemplate = (props) => {
         {!href && isEditMode && (
           <Message>
             <div className="teaser-item placeholder">
-              <img src={imageBlockSVG} alt="" />
+              <Image src={imageBlockSVG} alt="" />
               <p>{intl.formatMessage(messages.PleaseChooseContent)}</p>
             </div>
           </Message>
@@ -64,6 +71,7 @@ const TeaserDefaultTemplate = (props) => {
                       alt=""
                       loading="lazy"
                       responsive={true}
+                      sizes={sizes}
                     />
                   </div>
                 )

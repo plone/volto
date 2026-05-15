@@ -31,7 +31,6 @@ const nonAddons = [
   'packages/components',
   'packages/registry',
   'packages/helpers',
-  'packages/providers',
   'packages/react-router',
   'packages/scripts',
   'packages/tooling',
@@ -83,6 +82,7 @@ export default tseslint.config(
         typescript: {
           project: ['packages/*/tsconfig.json', 'apps/seven/tsconfig.json'],
           alwaysTryTypes: true,
+          noWarnOnMultipleProjects: true,
         },
         alias: {
           map: [['seven', './apps/seven']],
@@ -174,7 +174,6 @@ export default tseslint.config(
       '**/storybook-static/*',
       '**/.storybook/*',
       'packages/volto/*',
-      'packages/coresandbox/*',
       'packages/volto-slate',
       '!**/.*',
       '**/dist',
