@@ -38,6 +38,10 @@ exports[`IdWidget > renders an empty id widget component 1`] = `
               value=""
             />
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -83,6 +87,10 @@ exports[`IdWidget > renders an id widget with a valid dot character 1`] = `
               value="test-id"
             />
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -128,6 +136,10 @@ exports[`IdWidget > renders an id widget with a valid value 1`] = `
               value="test-id"
             />
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -174,9 +186,14 @@ exports[`IdWidget > renders an id widget with an reserved name 1`] = `
             />
           </div>
           <div
-            class="ui red basic label form-error-label"
+            aria-atomic="true"
+            aria-live="polite"
           >
-            This is a reserved name and can't be used
+            <div
+              class="ui red basic label form-error-label"
+            >
+              This is a reserved name and can't be used
+            </div>
           </div>
         </div>
       </div>
@@ -224,9 +241,14 @@ exports[`IdWidget > renders an id widget with invalid characters 1`] = `
             />
           </div>
           <div
-            class="ui red basic label form-error-label"
+            aria-atomic="true"
+            aria-live="polite"
           >
-            Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: &lt;, &gt;, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.
+            <div
+              class="ui red basic label form-error-label"
+            >
+              Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: &lt;, &gt;, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines.
+            </div>
           </div>
         </div>
       </div>

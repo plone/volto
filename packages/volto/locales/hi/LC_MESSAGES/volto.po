@@ -669,6 +669,11 @@ msgstr "एक फ़ाइल चुनें"
 msgid "Clear"
 msgstr "साफ़ करें"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "URL साफ़ करें"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2628,6 +2633,11 @@ msgstr "ठीक है"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "केवल 7-बिट बाइट वाले वर्ण प्रयोग किए जा सकते हैं। अपरकेस अक्षर, विशेष वर्ण: <, >, &, #, /, ?, या अन्य जो यूआरएल में अवैध हैं, का प्रयोग नहीं किया जा सकता। नहीं शुरू हो सकता: _, aq_, @@, ++। __ के साथ समाप्त नहीं हो सकता। नहीं हो सकता: request,contributors, ., .., ""। नई पंक्तियों को नहीं शामिल किया जा सकता।"
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "URL ब्राउज़र खोलें"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2800,6 +2810,16 @@ msgstr "प्लोन फाउंडेशन"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "प्लोन{reg} ओपन सोर्स सीएमएस/डब्ल्यूसीएम"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "पॉप-अप बंद हो गया।"
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "पॉप-अप खुल गया: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4112,6 +4132,16 @@ msgstr "यूआरएल प्रबंधन"
 msgid "URL Management for {title}"
 msgstr "{title} के लिए यूआरएल प्रबंधन"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr "URL अमान्य है"
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL अनुपस्थित है"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4516,6 +4546,11 @@ msgstr ""
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "आप एक संरक्षित संसाधन तक पहुँचने का प्रयास कर रहे हैं, कृपया पहले {लॉगिन} करें।"
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5251,6 +5286,26 @@ msgstr "पाठ"
 #: config/Blocks
 msgid "title"
 msgstr "शीर्षक"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "त्रुटि"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "जानकारी"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "सफलता"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "चेतावनी"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

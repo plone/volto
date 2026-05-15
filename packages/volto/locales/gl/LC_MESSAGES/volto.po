@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-03-23 12:09+0000\n"
+"PO-Revision-Date: 2026-05-04 18:10+0000\n"
 "Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
 "Language: gl\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
@@ -121,7 +121,7 @@ msgstr "Engadir Regra"
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr "Engadir Tradución"
+msgstr "Engadir Tradución…"
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
@@ -674,6 +674,11 @@ msgstr "Escolle un ficheiro"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Limpar"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Borrar URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -2634,6 +2639,11 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Só se permiten caracteres de 7 bits. Non pode conter maiúsculas nin caracteres especiais: <, >, &, #, /, ?, ou outros que son ilegais nas URL. Non se pode comezar con: _, aq_, @@, ++. Non pode acabar con __. Non pode ser: request,contributors, ., .., ''. Non pode conter novas líneas."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Abrir o navegador de URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2806,6 +2816,16 @@ msgstr "Fundación Plone"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Ventá emerxente pechada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Ventá emerxente aberta: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3367,7 +3387,7 @@ msgstr "Elementos seleccionados"
 #. Default: "of"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
-msgstr "Selected items - x of y"
+msgstr "Elementos seleccionados - x de y"
 
 #. Default: "Selection"
 #: components/manage/Widgets/SchemaWidget
@@ -4093,7 +4113,7 @@ msgstr "Escribe texto..."
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
-msgstr "Escribe o encabezamento"
+msgstr "Escribe o encabezamento…"
 
 #. Default: "Type the title…"
 #: components/manage/Blocks/Title/Edit
@@ -4117,6 +4137,16 @@ msgstr "Xestión das URLs"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "Xestión da URL para {title}"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr "O URL non é válido"
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta o URL"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -4522,6 +4552,11 @@ msgstr "Estás a piques de eliminar todos os elementos deste cartafol."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Estás a tentar acceder a un recurso protexido. Primeiro, {login}."
+
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr "Estás intentando acceder a un recurso protexido."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -5257,6 +5292,26 @@ msgstr "Texto"
 #: config/Blocks
 msgid "title"
 msgstr "Título"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Erro"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Información"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Éxito"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertencia"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
