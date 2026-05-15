@@ -5,6 +5,7 @@ import config from '@plone/registry';
 import { Layout, ErrorBoundary, loader } from './root';
 import {
   ploneClientContext,
+  ploneClearAuthCookieContext,
   ploneContentContext,
   ploneSiteContext,
 } from './middleware.server';
@@ -87,7 +88,7 @@ describe('loader', () => {
     context.set(ploneContentContext, mockContent as any);
     context.set(ploneSiteContext, mockSite as any);
 
-    const data = await loader({
+    const result = await loader({
       request,
       params: {},
       context,
@@ -95,9 +96,9 @@ describe('loader', () => {
       unstable_url: new URL(request.url),
     });
 
-    expect(data.locale).toBe('en');
-    expect(data.content).toBeDefined();
-    expect(data.site).toBeDefined();
+    expect(result.data.locale).toBe('en');
+    expect(result.data.content).toBeDefined();
+    expect(result.data.site).toBeDefined();
   });
 
   it('should return content for a non-root path', async () => {
@@ -114,7 +115,7 @@ describe('loader', () => {
     context.set(ploneContentContext, mockContent as any);
     context.set(ploneSiteContext, mockSite as any);
 
-    const data = await loader({
+    const result = await loader({
       request,
       params: { '*': 'test-content' },
       context,
@@ -122,9 +123,33 @@ describe('loader', () => {
       unstable_url: new URL(request.url),
     });
 
-    expect(data.locale).toBe('en');
-    expect(data.content).toBeDefined();
-    expect(data.site).toBeDefined();
+    expect(result.data.locale).toBe('en');
+    expect(result.data.content).toBeDefined();
+    expect(result.data.site).toBeDefined();
+  });
+
+  it('should clear the auth cookie when middleware requests it', async () => {
+    config.settings.defaultLanguage = 'en';
+    config.settings.supportedLanguages = ['en'];
+    const mockContent = { '@id': 'http://example.com/', title: 'Home' };
+    const mockSite = { '@id': 'http://example.com/' };
+    const request = new Request('http://example.com');
+    const context = new RouterContextProvider();
+    context.set(ploneClientContext, {} as any);
+    context.set(ploneContentContext, mockContent as any);
+    context.set(ploneSiteContext, mockSite as any);
+    context.set(ploneClearAuthCookieContext, true);
+
+    const result = (await loader({
+      request,
+      params: {},
+      context,
+      unstable_pattern: '/',
+      unstable_url: new URL(request.url),
+    })) as any;
+
+    expect(result.data.content).toEqual(mockContent);
+    expect(result.init.headers['Set-Cookie']).toContain('auth_seven=');
   });
 });
 
@@ -181,7 +206,7 @@ it('should place the migrated title block in the legacy block order', async () =
   context.set(ploneContentContext, mockContent as any);
   context.set(ploneSiteContext, mockSite as any);
 
-  const data = await loader({
+  const result = await loader({
     request,
     params: {},
     context,
@@ -190,7 +215,7 @@ it('should place the migrated title block in the legacy block order', async () =
   });
 
   expect(somersaultMigration).toHaveBeenCalledTimes(1);
-  expect(data.content.blocks.__somersault__).toEqual({
+  expect(result.data.content.blocks.__somersault__).toEqual({
     '@type': '__somersault__',
     value: [
       {
@@ -249,7 +274,7 @@ it('should skip somersault migration when the somersault block already exists', 
   context.set(ploneClientContext, {} as any);
   context.set(ploneContentContext, mockContent as any);
   context.set(ploneSiteContext, mockSite as any);
-  const data = await loader({
+  const result = await loader({
     request,
     params: {},
     context,
@@ -258,7 +283,7 @@ it('should skip somersault migration when the somersault block already exists', 
   });
 
   expect(somersaultMigration).not.toHaveBeenCalled();
-  expect(data.content.blocks.__somersault__).toEqual({
+  expect(result.data.content.blocks.__somersault__).toEqual({
     '@type': '__somersault__',
     value: existingSomersaultValue,
   });
