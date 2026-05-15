@@ -907,12 +907,12 @@ describe('middleware', () => {
         .mockReturnValueOnce({
           getContent: authContent,
           getSite: authSite,
-          getUser: vi.fn(),
+          getUser: vi.fn().mockResolvedValue(null),
         })
         .mockReturnValueOnce({
           getContent: anonymousContent,
           getSite: anonymousSite,
-          getUser: vi.fn(),
+          getUser: vi.fn().mockResolvedValue(null),
         });
       config.registerUtility({
         name: 'ploneClient',

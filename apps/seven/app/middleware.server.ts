@@ -174,9 +174,7 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
     const [content, site, user] = await Promise.all([
       cli.getContent({ path, expand }),
       cli.getSite(),
-      userId
-        ? Promise.resolve(cli.getUser({ id: userId })).catch(() => null)
-        : null,
+      userId ? cli.getUser({ id: userId }).catch(() => null) : null,
     ]);
 
     setPloneContext(content, site, user?.data ?? null);
