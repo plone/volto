@@ -363,7 +363,7 @@ msgstr "Alfabeticamente"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
 msgid "Alt text"
-msgstr "Descrição alt"
+msgstr "Descrição alternativa"
 
 #. Default: "Leave empty if the image is purely decorative."
 #: components/manage/Blocks/Image/schema
@@ -399,17 +399,17 @@ msgstr "Outra pessoa editou este conteúdo e ele está sendo exibido atualmente.
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
-msgstr "Aplicada em subpastas"
+msgstr "Aplicada nas subpastas"
 
 #. Default: "Applies to subfolders?"
 #: components/manage/Rules/Rules
 msgid "Applies to subfolders?"
-msgstr "Aplicar em subpastas?"
+msgstr "Aplicar nas subpastas?"
 
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr "Aplicar em subpastas"
+msgstr "Aplicar nas subpastas"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
@@ -516,13 +516,13 @@ msgstr "Bloco"
 #. Default: "Block Type"
 #: components/manage/Controlpanels/BlockTypes
 msgid "Block Type"
-msgstr ""
+msgstr "Tipo do bloco"
 
 #. Default: "Block Types"
 #: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/Controlpanels
 msgid "Block Types"
-msgstr ""
+msgstr "Blocos"
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -1269,7 +1269,7 @@ msgstr "Soltar aquivos aqui…"
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Arraste e solte os arquivos aqui para enviar"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2026,7 +2026,7 @@ msgstr "Não é permitido definir a senha e solicitar o envio da mensagem de red
 #. Default: "Item"
 #: components/manage/Controlpanels/BlockType
 msgid "Item"
-msgstr ""
+msgstr "Item"
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2332,7 +2332,7 @@ msgstr "URL do Mapa"
 #. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
-msgstr ""
+msgstr "O tamanho máximo para arquivos é de {maxSize} bytes, mas o arquivo enviado tem {size} bytes."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2674,7 +2674,7 @@ msgstr "Ocorrências"
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
 msgid "Occurrences"
-msgstr ""
+msgstr "Ocorrências"
 
 #. Default: "Ok"
 #: components/manage/Delete/Delete
@@ -2770,7 +2770,7 @@ msgstr "Colar blocos"
 #. Default: "Path"
 #: components/manage/Controlpanels/BlockType
 msgid "Path"
-msgstr ""
+msgstr "Caminho"
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3057,7 +3057,7 @@ msgstr "Relacionamentos atualizados"
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Solte para adicionar arquivo(s) a esta pasta"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3410,7 +3410,7 @@ msgstr "Selecione colunas para mostrar"
 #. Default: "Select option"
 #: components/manage/Blocks/Search/components/SelectFacet
 msgid "Select option"
-msgstr ""
+msgstr "Selecione uma opção"
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
@@ -4088,7 +4088,7 @@ msgstr "Erro de título. Valor não fornecido ou já existente."
 #. Default: "Toggle option"
 #: components/manage/Blocks/Search/components/ToggleFacet
 msgid "Toggle option"
-msgstr ""
+msgstr "Alternar opção"
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4212,7 +4212,7 @@ msgstr "Gerenciamento de URL para {title}"
 #. Default: "URL is invalid"
 #: components/manage/Widgets/UrlWidget
 msgid "URL is invalid"
-msgstr ""
+msgstr "URL é inválida"
 
 #. Default: "URL is missing"
 #: components/manage/Widgets/UrlWidget
@@ -4337,7 +4337,7 @@ msgstr "Enviar"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Enviar arquivos ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4459,7 +4459,7 @@ msgstr "URL do vídeo"
 #. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
 #: components/manage/Blocks/Video/schema
 msgid "VideoTitleDescription"
-msgstr ""
+msgstr "O título do vídeo não é exibido, mas é usado apenas por motivos de acessibilidade para identificar o vídeo para usuários de leitores de tela. Se o vídeo já estiver suficientemente intitulado por um cabeçalho acima, deixe este campo vazio."
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4652,7 +4652,7 @@ msgstr "Você pode controlar quem pode visualizar e editar seu item usando a lis
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr ""
+msgstr "Você não pode mover este tipo de bloco para a nova localização"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4783,7 +4783,7 @@ msgstr "Comparar com"
 #. Default: "Block: {title}"
 #: components/manage/Controlpanels/BlockType
 msgid "controlpanel_block_type"
-msgstr ""
+msgstr "Bloco: {title}"
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4828,7 +4828,7 @@ msgstr "Rascunho"
 #. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "drag_block"
-msgstr ""
+msgstr "arrastar bloco {type}"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -5063,7 +5063,7 @@ msgstr "Sem estado de workflow"
 #. Default: "No items found for type: {type}."
 #: components/manage/Controlpanels/BlockType
 msgid "no-blocks-found"
-msgstr ""
+msgstr "Nenhum bloco encontrado para o tipo: {type}."
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5109,12 +5109,12 @@ msgstr "Publicado"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Caminho atual (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Caminho pai (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5483,7 +5483,7 @@ msgstr "Esquema {id}"
 #. Default: "{sources} or mp4 URL allowed"
 #: components/manage/Blocks/Video/Edit
 msgid "{sources} or mp4 URL allowed"
-msgstr ""
+msgstr "{sources} ou URL de arquivos mp4 permitidos"
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
