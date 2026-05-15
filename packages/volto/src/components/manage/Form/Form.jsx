@@ -937,6 +937,7 @@ class Form extends Component {
                         key: item.id,
                         content: item.title,
                         as: 'button',
+                        type: 'button',
                       },
                       render: () => [
                         !settings.verticalFormTabs && this.props.title && (
