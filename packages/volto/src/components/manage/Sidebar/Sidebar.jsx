@@ -155,7 +155,6 @@ const Sidebar = (props) => {
                 key: 'documentTab',
                 as: 'button',
                 className: 'ui button',
-                type: 'button',
                 content: type || intl.formatMessage(messages.document),
               },
               pane: (

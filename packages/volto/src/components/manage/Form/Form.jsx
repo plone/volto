@@ -933,11 +933,7 @@ class Form extends Component {
                     onTabChange={this.onTabChange}
                     activeIndex={this.state.activeIndex}
                     panes={map(schema.fieldsets, (item) => ({
-                      menuItem: {
-                        key: item.id,
-                        content: item.title,
-                        as: 'button',
-                      },
+                      menuItem: item.title,
                       render: () => [
                         !settings.verticalFormTabs && this.props.title && (
                           <Segment secondary attached key={this.props.title}>

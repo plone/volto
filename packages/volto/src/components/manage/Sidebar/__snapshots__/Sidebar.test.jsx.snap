@@ -46,7 +46,6 @@ exports[`renders a sidebar component 1`] = `
         <button
           className="active item ui button"
           onClick={[Function]}
-          type="button"
         >
           Document
         </button>
