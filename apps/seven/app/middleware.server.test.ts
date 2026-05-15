@@ -776,6 +776,48 @@ describe('middleware', () => {
       });
     });
 
+    it('keeps content and site loading successful when user fetch fails', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      const getUserMock = vi.fn().mockRejectedValue(new Error('User failed'));
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
+      });
+      vi.mocked(getAuthFromRequest).mockResolvedValue('valid.jwt.token');
+      vi.mocked(jwtDecode).mockReturnValue({
+        sub: 'testuser',
+        exp: 9999999999,
+        fullname: 'Test User',
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(getContentMock).toHaveBeenCalledWith({
+        path: '/',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions', 'types'],
+      });
+      expect(getSiteMock).toHaveBeenCalled();
+      expect(getUserMock).toHaveBeenCalledWith({ id: 'testuser' });
+      expect(context.get(ploneUserContext)).toBeNull();
+    });
+
     it('does not fetch user when token has no sub field', async () => {
       const getContentMock = vi.fn().mockResolvedValue({ data: {} });
       const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
