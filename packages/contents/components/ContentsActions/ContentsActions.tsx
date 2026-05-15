@@ -48,10 +48,33 @@ export function ContentsActions({
   // selected,
 }: Props) {
   const { t } = useTranslation();
-  const { selected } = useContentsContext();
+  const { selected, setSelected } = useContentsContext();
 
   return (
     <div className="contents-actions">
+      <div className="contents-selection-status flex items-center gap-2">
+        <span className="text-sm text-quanta-iron">
+          {selected.size > 0
+            ? t('contents.actions.selected', { count: selected.size })
+            : t('contents.actions.select')}
+        </span>
+        <Button
+          size="S"
+          onPress={() => setSelected('all')}
+          aria-label={t('contents.actions.select_all')}
+        >
+          {t('contents.actions.select_all')}
+        </Button>
+        <Button
+          size="S"
+          onPress={() => setSelected('none')}
+          aria-label={t('contents.actions.clear_selection')}
+          isDisabled={selected.size === 0}
+        >
+          {t('contents.actions.clear_selection')}
+        </Button>
+      </div>
+      <span className="separator" />
       <TooltipTrigger>
         <Button
           variant="icon"

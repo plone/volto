@@ -3,6 +3,7 @@ import {
   type LoaderFunctionArgs,
   RouterContextProvider,
   useLoaderData,
+  useNavigate,
 } from 'react-router';
 import { requireAuthCookie } from '@plone/react-router';
 import config from '@plone/registry';
@@ -38,16 +39,17 @@ export async function loader({
 
   const searchParams = new URL(request.url).searchParams;
   const searchableText = searchParams.get('SearchableText') || '';
-
   const page = searchParams.get('page') || '';
+  const sort_on = searchParams.get('sort_on') || 'getObjPositionInParent';
+  const sort_order = searchParams.get('sort_order') || 'ascending';
 
   const searchQuery: Parameters<typeof cli.search>[0]['query'] = {
     path: {
       query: path,
       depth: 1,
     },
-    sort_on: 'getObjPositionInParent',
-    sort_order: 'ascending',
+    sort_on,
+    sort_order,
     metadata_fields: '_all',
     show_inactive: true,
     b_size,
@@ -67,7 +69,7 @@ export async function loader({
     ).data,
   );
 
-  return { content, search, searchableText, page, b_size };
+  return { content, search, searchableText, page, b_size, sort_on, sort_order };
 }
 
 const DEFAULT_TABLE_INDEXES: TableIndexes = {
@@ -86,6 +88,7 @@ const DEFAULT_TABLE_INDEXES: TableIndexes = {
 
 export default function Contents() {
   const { content } = useLoaderData<typeof loader>();
+  const navigate = useNavigate();
   const [indexes, setIndexes] = useState(DEFAULT_TABLE_INDEXES);
 
   const upload = () => Promise.resolve();
@@ -94,7 +97,17 @@ export default function Contents() {
   const tags = () => Promise.resolve();
   const rename = () => Promise.resolve();
 
-  const onSortItems = (_: any, { value }: { value: string }) => {};
+  const onSortItems = (_: any, { value }: { value: string }) => {
+    const [sort_on, sort_order] = value.split('|');
+    const params = new URLSearchParams(window.location.search);
+
+    params.set('sort_on', sort_on);
+    params.set('sort_order', sort_order);
+    params.delete('page');
+
+    const querystring = params.size > 0 ? '?' + params.toString() : '';
+    navigate(`/@@contents${content['@id']}${querystring}`);
+  };
 
   //Indexes
 

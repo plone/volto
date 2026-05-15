@@ -9,6 +9,10 @@
     },
     "actions": {
       "actions": "Actions",
+      "select": "Select",
+      "selected": "{{count}} selected",
+      "select_all": "Select page",
+      "clear_selection": "Clear",
       "upload": "Upload",
       "rename": "Rename",
       "state": "Change state",
