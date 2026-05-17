@@ -504,8 +504,7 @@ If you have shadows of any of these components, they need to be updated:
 - {file}`SelectStyling.jsx`
 
 The following libraries are no longer available to be loaded using `injectLazyLibs`: `reactDnd`, `reactDndHtml5Backend`, and `reactSortableHOC`.
-Add-ons which use them need to include them as a dependency in `package.json`,
-and take care of adding them to `config.settings.loadables`.
+Add-ons which use them need to include them as a dependency in {file}`package.json`, and take care of adding them to `config.settings.loadables`.
 
 For example:
 
