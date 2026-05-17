@@ -84,6 +84,7 @@ class ObjectBrowserBody extends Component {
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
     maximumSelectionSize: PropTypes.number,
+    initialPath: PropTypes.string,
     contextURL: PropTypes.string,
     searchableTypes: PropTypes.arrayOf(PropTypes.string),
     onlyFolderishSelectable: PropTypes.bool,
@@ -113,18 +114,21 @@ class ObjectBrowserBody extends Component {
    */
   constructor(props) {
     super(props);
+    const defaultMultiplePath = props.initialPath || '/';
     this.state = {
       currentFolder:
-        this.props.mode === 'multiple' ? '/' : this.props.contextURL || '/',
+        this.props.mode === 'multiple'
+          ? defaultMultiplePath
+          : this.props.contextURL || '/',
       currentImageFolder:
         this.props.mode === 'multiple'
-          ? '/'
+          ? defaultMultiplePath
           : this.props.mode === 'image' && this.props.data?.url
             ? getParentURL(this.props.data.url)
             : '/',
       currentLinkFolder:
         this.props.mode === 'multiple'
-          ? '/'
+          ? defaultMultiplePath
           : this.props.mode === 'link' && this.props.data?.href
             ? getParentURL(this.props.data.href)
             : '/',
@@ -144,10 +148,14 @@ class ObjectBrowserBody extends Component {
       showSearchInput: false,
       // In image mode, the searchable types default to the image types which
       // can be overridden with the property if specified.
+      // If selectableTypes are passed, the searchableTypes are the selectableTypes
       searchableTypes:
         this.props.mode === 'image'
           ? this.props.searchableTypes || config.settings.imageObjects
-          : this.props.searchableTypes,
+          : [
+              ...(this.props.searchableTypes ?? []),
+              ...(this.props.selectableTypes ?? []),
+            ],
       view: this.props.mode === 'image' ? 'icons' : 'list',
     };
     this.searchInputRef = React.createRef();

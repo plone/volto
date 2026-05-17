@@ -27,8 +27,8 @@
     "node_modules",
     "dist",
     "coverage",
-    "src/**/*.test.{ts,tsx}",
-    "src/**/*.stories.{ts,tsx}"
+    "src/**/*.test.*",
+    "src/**/*.stories.*"
   ],
   "references": [
     {

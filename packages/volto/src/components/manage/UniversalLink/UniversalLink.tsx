@@ -122,6 +122,7 @@ const UniversalLink = React.memo(
         onClick,
         onKeyDown,
         item,
+        href,
         ...rest
       } = props;
       __test.renderCounter();

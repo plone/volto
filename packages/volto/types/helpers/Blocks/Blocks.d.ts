@@ -176,6 +176,7 @@ export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
  */
 export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
 export function getBlocks(properties: any): any[];
+export function getInvalidBlockLayoutIds(properties: any): string[];
 export function applyBlockInitialValue({ id, value, blocksConfig, formData, intl, }: {
     id: any;
     value: any;
@@ -192,4 +193,7 @@ export function getPreviousNextBlock({ content, block }: any): any[];
 export function getBlocksHierarchy(properties: any): any;
 export function findContainer(formData: object, { containerId }: {
     containerId: string;
+}): object | undefined;
+export function findParent(formData: object, { blockId }: {
+    blockId: string;
 }): object | undefined;

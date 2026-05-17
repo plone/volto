@@ -55,6 +55,9 @@ const messages = defineMessages({
     defaultMessage: 'Upload Files ({count})',
   },
 });
+const hasFiles = (e) => {
+  return e.dataTransfer.types && e.dataTransfer.types.includes('Files');
+};
 
 const DropZoneContent = (props) => {
   const { onOk, onCancel, pathname, children } = props;
@@ -82,12 +85,18 @@ const DropZoneContent = (props) => {
   }, [prevrequestloading, request.loaded, onOk]);
 
   const handleDragEnter = (e) => {
+    if (!hasFiles(e)) {
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
     setIsDragOver(true);
   };
 
   const handleDragLeave = (e) => {
+    if (!hasFiles(e)) {
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
     if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -96,11 +105,17 @@ const DropZoneContent = (props) => {
   };
 
   const handleDragOver = (e) => {
+    if (!hasFiles(e)) {
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
   };
 
   const onDrop = async (e) => {
+    if (!hasFiles(e)) {
+      return;
+    }
     setIsDragOver(false);
     const newFiles = Array.from(e.dataTransfer.files);
     const validFiles = [];

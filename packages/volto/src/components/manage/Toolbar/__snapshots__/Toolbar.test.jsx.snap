@@ -2,8 +2,15 @@
 
 exports[`Toolbar > renders the Toolbar component 1`] = `
 [
+  <span
+    aria-atomic="true"
+    aria-live="assertive"
+    className="visually-hidden"
+    role="status"
+  />,
   <div
     className="toolbar-content"
+    onBlur={[Function]}
     style={{}}
   >
     <div
@@ -17,6 +24,7 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
   </div>,
   <div
     className="toolbar expanded"
+    id="toolbar-body"
   >
     <div
       className="toolbar-body"
@@ -182,10 +190,18 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
       className="toolbar-handler"
     >
       <button
-        aria-label="Shrink toolbar"
+        aria-controls="toolbar-body"
+        aria-expanded={true}
         className="toolbar-handler-button"
         onClick={[Function]}
-      />
+      >
+        <span
+          aria-live="assertive"
+          className="visually-hidden"
+        >
+          Shrink toolbar
+        </span>
+      </button>
     </div>
   </div>,
   <div
@@ -196,8 +212,15 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
 
 exports[`Toolbar > renders the Toolbar component with lock 1`] = `
 [
+  <span
+    aria-atomic="true"
+    aria-live="assertive"
+    className="visually-hidden"
+    role="status"
+  />,
   <div
     className="toolbar-content"
+    onBlur={[Function]}
     style={{}}
   >
     <div
@@ -211,6 +234,7 @@ exports[`Toolbar > renders the Toolbar component with lock 1`] = `
   </div>,
   <div
     className="toolbar expanded"
+    id="toolbar-body"
   >
     <div
       className="toolbar-body"
@@ -376,10 +400,18 @@ exports[`Toolbar > renders the Toolbar component with lock 1`] = `
       className="toolbar-handler"
     >
       <button
-        aria-label="Shrink toolbar"
+        aria-controls="toolbar-body"
+        aria-expanded={true}
         className="toolbar-handler-button"
         onClick={[Function]}
-      />
+      >
+        <span
+          aria-live="assertive"
+          className="visually-hidden"
+        >
+          Shrink toolbar
+        </span>
+      </button>
     </div>
   </div>,
   <div
