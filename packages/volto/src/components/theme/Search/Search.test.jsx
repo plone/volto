@@ -22,20 +22,18 @@ describe('Search', () => {
     const store = mockStore({
       search: {
         loaded: false,
+        items: [],
       },
       intl: {
         locale: 'en',
         messages: {},
       },
     });
-    const history = {
-      location: { pathname: '/blog', search: '?SearchableText=blog' },
-    };
     const { container } = render(
       <Provider store={store}>
         <CookiesProvider>
-          <MemoryRouter>
-            <Search history={history} />
+          <MemoryRouter initialEntries={['/search?SearchableText=blog']}>
+            <Search />
             <div id="toolbar"></div>
           </MemoryRouter>
         </CookiesProvider>
@@ -63,14 +61,11 @@ describe('Search', () => {
         messages: {},
       },
     });
-    const history = {
-      location: { pathname: '/blog', search: '?SearchableText=blog' },
-    };
     const { container } = render(
       <Provider store={store}>
         <CookiesProvider>
-          <MemoryRouter>
-            <Search history={history} />
+          <MemoryRouter initialEntries={['/search?SearchableText=blog']}>
+            <Search />
             <div id="toolbar"></div>
           </MemoryRouter>
         </CookiesProvider>
