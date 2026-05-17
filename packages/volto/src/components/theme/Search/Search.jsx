@@ -1,10 +1,4 @@
-/**
- * Search component.
- * @module components/theme/Search/Search
- */
-
-import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
@@ -32,48 +26,21 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Search functional component.
- * @function Search
- * @returns {string}
- */
-const Search = () => {
+const Search = (props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const isClient = useClient();
+  const { search } = props;
 
   const defaultPageSize = config.settings.defaultPageSize;
 
   const items = useSelector((state) => state.search.items);
-  const search = useSelector((state) => state.reduxAsyncConnect?.search);
   const searchableText = qs.parse(location.search).SearchableText;
   const pathname = location.pathname;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [active, setActive] = useState('relevance');
-
-  /**
-   * Search based on the given searchableText, subject and path.
-   * @function doSearch
-   * @returns {undefined}
-   */
-  const doSearch = useCallback(() => {
-    const options = qs.parse(location.search);
-    setCurrentPage(1);
-    options['use_site_search_settings'] = 1;
-    dispatch(
-      searchContent('', {
-        b_size: defaultPageSize,
-        ...options,
-      }),
-    );
-  }, [location.search, defaultPageSize, dispatch]);
-
-  useEffect(() => {
-    doSearch();
-  }, [doSearch]);
 
   const handleQueryPaginationChange = useCallback(
     (e, { activePage }) => {
@@ -103,9 +70,6 @@ const Search = () => {
         delete options.sort_order;
       }
       const searchParams = qs.stringify(options);
-      setCurrentPage(1);
-      setActive(event.target.name);
-      // eslint-disable-next-line no-restricted-globals
       history.replace({
         search: searchParams,
       });
@@ -159,7 +123,7 @@ const Search = () => {
                       name="relevance"
                       size="tiny"
                       className={classNames('button-sort', {
-                        'button-active': active === 'relevance',
+                        'button-active': options.sort_on === 'relevance',
                       })}
                     >
                       <FormattedMessage
@@ -174,7 +138,7 @@ const Search = () => {
                       name="sortable_title"
                       size="tiny"
                       className={classNames('button-sort', {
-                        'button-active': active === 'sortable_title',
+                        'button-active': options.sort_on === 'sortable_title',
                       })}
                     >
                       <FormattedMessage
@@ -189,7 +153,7 @@ const Search = () => {
                       name="effective"
                       size="tiny"
                       className={classNames('button-sort', {
-                        'button-active': active === 'effective',
+                        'button-active': options.sort_on === 'effective',
                       })}
                     >
                       <FormattedMessage
@@ -279,29 +243,6 @@ const Search = () => {
   );
 };
 
-Search.propTypes = {
-  searchableText: PropTypes.string,
-  subject: PropTypes.string,
-  path: PropTypes.string,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      '@id': PropTypes.string,
-      '@type': PropTypes.string,
-      title: PropTypes.string,
-      description: PropTypes.string,
-    }),
-  ),
-  pathname: PropTypes.string,
-};
-
-Search.defaultProps = {
-  items: [],
-  searchableText: null,
-  subject: null,
-  path: null,
-  pathname: null,
-};
-
 export const __test__ = Search;
 
 export default asyncConnect([
@@ -310,6 +251,7 @@ export default asyncConnect([
     promise: ({ location, store: { dispatch } }) =>
       dispatch(
         searchContent('', {
+          b_size: config.settings.defaultPageSize,
           ...qs.parse(location.search),
           use_site_search_settings: 1,
         }),
