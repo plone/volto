@@ -1,25 +1,15 @@
-import { useEffect, useMemo, useRef } from 'react';
-import { atom, type PrimitiveAtom } from 'jotai';
-import { useFieldFocusedAtom } from '@plone/helpers';
-import config from '@plone/registry';
 import { ElementApi, PathApi } from 'platejs';
 import {
   PlateElement,
   type PlateElementProps,
+  type TPlateEditor,
   createPlatePlugin,
   toPlatePlugin,
-  useEditorRef,
-  useEditorSelector,
 } from 'platejs/react';
 import { BlockInnerContainer } from '../../ui/block-inner-container';
+import { useMetadataTextBinding } from './metadata-text-binding';
 
 export const TITLE_BLOCK_TYPE = 'title';
-
-type TitleData = {
-  title?: string;
-};
-
-const fallbackFormAtom = atom<TitleData>({ title: '' });
 const TITLE_PLACEHOLDER = 'Type the title...';
 
 const isTitleNode = (node: unknown) =>
@@ -46,99 +36,61 @@ const getNodeText = (node: unknown): string => {
   return node.children.map((child) => getNodeText(child)).join('');
 };
 
-type SyncAction = 'none' | 'atom-to-editor' | 'editor-to-atom';
+const isPathInside = (path: number[], ancestorPath: number[]) =>
+  ancestorPath.every((segment, index) => path[index] === segment);
 
-export function getTitleSyncAction({
-  previousAtomTitle,
-  previousEditorTitle,
-  atomTitle,
-  editorTitle,
-}: {
-  previousAtomTitle: string;
-  previousEditorTitle: string | null;
-  atomTitle: string;
-  editorTitle: string | null;
-}): SyncAction {
-  if (editorTitle === null) return 'none';
+const isSelectionInside = (selection: any, path: number[]) => {
+  if (!selection) return false;
 
-  const atomChanged = previousAtomTitle !== atomTitle;
-  const editorChanged = previousEditorTitle !== editorTitle;
-  const titleNodeJustAppeared =
-    previousEditorTitle === null && editorTitle !== null;
-  const shouldInitializeFromAtom =
-    titleNodeJustAppeared && editorTitle === '' && atomTitle !== '';
+  return (
+    isPathInside(selection.anchor.path, path) &&
+    isPathInside(selection.focus.path, path)
+  );
+};
 
-  if (shouldInitializeFromAtom) return 'atom-to-editor';
-  if (atomChanged && editorTitle !== atomTitle) return 'atom-to-editor';
-  if (editorChanged && !atomChanged && editorTitle !== atomTitle) {
-    return 'editor-to-atom';
-  }
-
-  return 'none';
-}
+const setTitleNodeText = (
+  editor: TPlateEditor,
+  titlePath: number[],
+  titleNode: unknown,
+  value: string,
+) => {
+  editor.tf.replaceNodes(
+    {
+      ...(titleNode as object),
+      children: [{ text: value }],
+    } as any,
+    { at: titlePath },
+  );
+};
 
 function TitleMetadataSync() {
-  const editor = useEditorRef();
-  const previousEditorTitleRef = useRef<string | null>(null);
-  const previousAtomTitleRef = useRef('');
-  const formAtom = useMemo(() => {
-    try {
-      return config
-        .getUtility({
-          name: 'formAtom',
-          type: 'atom',
-        })
-        ?.method?.() as PrimitiveAtom<TitleData> | undefined;
-    } catch {
-      return undefined;
-    }
-  }, []);
-  const [titleValue, setTitleValue] = useFieldFocusedAtom<TitleData, 'title'>(
-    formAtom ?? fallbackFormAtom,
-    'title',
-  );
-  const editorTitle = useEditorSelector((editor) => {
-    const titleEntry = getTitleNodeEntry(editor.children as unknown[]);
-    return titleEntry ? getNodeText(titleEntry.node) : null;
-  }, []);
-
-  const hasFormAtom = !!formAtom;
-  const normalizedTitle = titleValue ?? '';
-
-  useEffect(() => {
-    if (!hasFormAtom) {
-      previousEditorTitleRef.current = editorTitle;
-      previousAtomTitleRef.current = normalizedTitle;
-      return;
-    }
-
-    const action = getTitleSyncAction({
-      previousAtomTitle: previousAtomTitleRef.current,
-      previousEditorTitle: previousEditorTitleRef.current,
-      atomTitle: normalizedTitle,
-      editorTitle,
-    });
-
-    if (action === 'atom-to-editor') {
+  useMetadataTextBinding({
+    field: 'title',
+    getState: (editor) => {
       const titleEntry = getTitleNodeEntry(editor.children as unknown[]);
-      if (titleEntry) {
-        editor.tf.replaceNodes(
-          {
-            ...(titleEntry.node as object),
-            children: [{ text: normalizedTitle }],
-          } as any,
-          { at: [titleEntry.index] },
-        );
+
+      if (!titleEntry) {
+        return {
+          isActive: false,
+          value: null,
+        };
       }
-    }
 
-    if (action === 'editor-to-atom' && editorTitle !== null) {
-      setTitleValue(editorTitle);
-    }
+      const titlePath = [titleEntry.index];
 
-    previousEditorTitleRef.current = editorTitle;
-    previousAtomTitleRef.current = normalizedTitle;
-  }, [editor, editorTitle, hasFormAtom, normalizedTitle, setTitleValue]);
+      return {
+        isActive: isSelectionInside(editor.selection, titlePath),
+        value: getNodeText(titleEntry.node),
+      };
+    },
+    writeToEditor: (editor, value) => {
+      const titleEntry = getTitleNodeEntry(editor.children as unknown[]);
+
+      if (!titleEntry) return;
+
+      setTitleNodeText(editor, [titleEntry.index], titleEntry.node, value);
+    },
+  });
 
   return null;
 }
@@ -152,20 +104,20 @@ export function TitleBlockElement(props: PlateElementProps) {
       className="font-heading relative mt-[1.6em] pb-1 text-4xl font-bold"
       {...props}
     >
-      <BlockInnerContainer>
+      <BlockInnerContainer className="relative">
         {showPlaceholder ? (
           <span
             aria-hidden="true"
             contentEditable={false}
             className={`
-              pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2
+              pointer-events-none absolute inset-x-0 top-1/2 z-0 -translate-y-1/2
               text-muted-foreground/80 select-none
             `}
           >
             {TITLE_PLACEHOLDER}
           </span>
         ) : null}
-        {props.children}
+        <span className="relative z-10">{props.children}</span>
       </BlockInnerContainer>
     </PlateElement>
   );

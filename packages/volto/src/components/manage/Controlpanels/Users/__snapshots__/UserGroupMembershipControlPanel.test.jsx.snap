@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`UserGroupMembershipControlPanel renders a user group membership control component 1`] = `
+exports[`UserGroupMembershipControlPanel > renders a user group membership control component 1`] = `
 <div>
   <div
     class="ui container view-wrapper"
@@ -12,13 +12,7 @@ exports[`UserGroupMembershipControlPanel renders a user group membership control
     <p
       class="description"
     >
-      You are trying to access a protected resource, please 
-      <a
-        href="/login"
-      >
-        log in
-      </a>
-       first.
+      You are trying to access a protected resource.
     </p>
     <p>
       If you are certain you have the correct web address but are encountering an error, please contact the 

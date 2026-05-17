@@ -39,7 +39,7 @@ test('As an editor, I can edit /mypage and interact with the editor', async ({
   await expect(page.locator('h1', { hasText: 'My page' })).toBeVisible();
   await waitForPlateEditorReady(page);
   const editorHandle = await getEditorHandle(page);
-  await clickAtPath(page, editorHandle, [0]);
+  await clickAtPath(page, editorHandle, [1]);
   await page.keyboard.type('Hello world!');
 });
 
@@ -57,11 +57,11 @@ test('As an editor, I can edit /mypage and interact with the editor - Selects a 
   await expect(page.locator('h1', { hasText: 'My page' })).toBeVisible();
   await waitForPlateEditorReady(page);
   const editorHandle = await getEditorHandle(page);
-  await clickAtPath(page, editorHandle, [0]);
+  await clickAtPath(page, editorHandle, [1]);
   await page.keyboard.type('Hello world!');
   await setSelection(page, editorHandle, {
-    anchor: { path: [0, 0], offset: 0 },
-    focus: { path: [0, 0], offset: 5 },
+    anchor: { path: [1, 0], offset: 0 },
+    focus: { path: [1, 0], offset: 5 },
   });
   await expect(page.getByLabel('Editor toolbar')).toBeVisible();
 });

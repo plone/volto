@@ -8,6 +8,14 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.4 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli
+- Aligned Client's shared tsconfig usage and local package scripts with the monorepo-wide typecheck cleanup.
+- Refreshed Client's local runtime and test dependency versions, including `axios`, `uuid`, `jsdom`, and `wait-on`, to match the current monorepo dependency baseline.
+
 ## 2.0.0-alpha.3 (2026-04-16)
 
 ### Breaking

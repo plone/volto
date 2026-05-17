@@ -74,9 +74,6 @@ They are also published as traditional bundles that work in CommonJS and ESM env
 
 The utility packages are:
 
-`@plone/providers`
-:   Data flow providers.
-
 `@plone/helpers`
 :   Utility functions and helpers.
 

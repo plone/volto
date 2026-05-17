@@ -20,10 +20,12 @@ extend-vite-configuration
 access-registry
 register-and-retrieve-components
 register-and-retrieve-utilities
+configure-style-fields
 register-slots
 shadow-a-component
 fetch-additional-data-root-loader
 add-tailwind
 icons
 configure-plate-code-block-languages
+bind-metadata-fields-to-plate-text-blocks
 ```

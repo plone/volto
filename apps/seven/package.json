@@ -1,6 +1,6 @@
 {
   "name": "seven",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.4",
   "private": true,
   "sideEffects": false,
   "type": "module",

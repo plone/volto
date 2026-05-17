@@ -8,6 +8,15 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.4 (2026-05-13)
+
+## 1.0.0-alpha.3 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli
+- Aligned the Seven app TypeScript configuration and root loader typing with the monorepo-wide typecheck cleanup.
+
 ## 1.0.0-alpha.2 (2026-04-16)
 
 ### Breaking

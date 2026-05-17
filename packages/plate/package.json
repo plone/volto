@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.8",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git",
@@ -138,7 +138,7 @@
     "@storybook/addon-links": "^9.1.15",
     "@storybook/react-vite": "^9.1.15",
     "@tailwindcss/vite": "catalog:",
-    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
     "@types/jest-axe": "^3.5.9",
     "@types/lodash.debounce": "^4.0.9",

@@ -8,6 +8,20 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.0-alpha.0 (2026-05-07)
+
+### Feature
+
+- Allow to override slots with no predicate with the same name. @sneridagh [#6887](https://github.com/plone/volto/issues/6887)
+- Better typings for utilities. @ebrehault [#7603](https://github.com/plone/volto/issues/7603)
+- Update glob. @sneridagh [#8106](https://github.com/plone/volto/issues/8106)
+- Add support for add-on {file}`vite.extend.js` and {file}`vite.extend.ts` files by generating and loading a Vite extension loader from the registry. @sneridagh
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli
+- Aligned Registry's shared tsconfig usage and local package scripts with the monorepo-wide typecheck cleanup.
+
 ## 3.0.0-alpha.9 (2025-12-22)
 
 ### Feature

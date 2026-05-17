@@ -38,8 +38,6 @@ jobs:
               - 'packages/helpers/**'
             types:
               - 'packages/types/**'
-            providers:
-              - 'packages/providers/**'
             publicui:
               - 'packages/publicui/**'
             plate:
@@ -108,14 +106,6 @@ jobs:
         run: |
           git fetch --no-tags origin seven
           towncrier check --compare-with origin/seven --dir packages/types
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Providers changelog check
-        if: steps.filter.outputs.providers == 'true'
-        run: |
-          git fetch --no-tags origin seven
-          towncrier check --compare-with origin/seven --dir packages/providers
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
