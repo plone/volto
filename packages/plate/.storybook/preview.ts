@@ -6,9 +6,7 @@ import installPlate from '../index';
 installPlate(config);
 
 export const parameters = {
-  backgrounds: {
-    default: 'light',
-  },
+  backgrounds: {},
   options: {
     storySort: {
       order: [
@@ -26,5 +24,11 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+};
+
+export const initialGlobals = {
+  backgrounds: {
+    value: 'light',
   },
 };
