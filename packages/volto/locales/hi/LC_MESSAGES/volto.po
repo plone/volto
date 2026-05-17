@@ -10,6 +10,11 @@ msgstr ""
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+"MIME-Version: 1.0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -554,10 +559,10 @@ msgstr "साइट ब्राउज़ करें, एक छवि छो
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "डिफ़ॉल्ट रूप से, इस आइटम के कंटेनर से अनुमतियाँ विरासत में होती हैं। यदि आप इसे अक्षम करते हैं, तो केवल स्पष्ट रूप से परिभागित अनुमतियाँ मान्य होंगी। अवलोकन में, प्रतीक {inherited} एक विरासत मान को दर्शाता है। उसी तरह, प्रतीक {global} एक वैश्विक भूमिका को दर्शाता है, जो साइट प्रशासक द्वारा प्रबंधित की जाती है।"
+msgstr "डिफ़ॉल्ट रूप से, इस आइटम के कंटेनर से अनुमतियाँ विरासत में मिलती हैं। यदि आप इसे अक्षम करते हैं, तो केवल स्पष्ट रूप से परिभाषित साझा करने की अनुमतियाँ ही मान्य होंगी। अवलोकन में, विरासत में मिले मानों को स्पष्ट रूप से 'विरासत में मिला मान' के रूप में लेबल किया जाता है और उन्हें हरा चेक मार्क {inherited} मिलता है। इसी तरह, साइट प्रशासक द्वारा प्रबंधित भूमिकाओं को 'वैश्विक भूमिका' के रूप में लेबल किया जाता है और उन्हें नीला चेक मार्क {global} मिलता है।."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -692,6 +697,11 @@ msgstr "एक फ़ाइल चुनें"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "साफ़ करें"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "URL साफ़ करें"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -855,7 +865,7 @@ msgstr "{title} से लिंक या संदर्भित कंटे
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "सामग्री शीर्षक"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1661,6 +1671,11 @@ msgstr "संबंधों को सुधारें"
 msgid "Fixed width table cells"
 msgstr "स्थिर चौड़ाई वाली तालिका कक्ष"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "इस पर ध्यान दें"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2344,6 +2359,16 @@ msgstr "मध्यम"
 msgid "Membership updated"
 msgstr "सदस्यता अपडेट की गई"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2675,6 +2700,11 @@ msgstr "ठीक है"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "केवल 7-बिट बाइट वाले वर्ण प्रयोग किए जा सकते हैं। अपरकेस अक्षर, विशेष वर्ण: <, >, &, #, /, ?, या अन्य जो यूआरएल में अवैध हैं, का प्रयोग नहीं किया जा सकता। नहीं शुरू हो सकता: _, aq_, @@, ++। __ के साथ समाप्त नहीं हो सकता। नहीं हो सकता: request,contributors, ., .., ""। नई पंक्तियों को नहीं शामिल किया जा सकता।"
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "URL ब्राउज़र खोलें"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2852,6 +2882,16 @@ msgstr "प्लोन फाउंडेशन"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "प्लोन{reg} ओपन सोर्स सीएमएस/डब्ल्यूसीएम"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "पॉप-अप बंद हुआ।"
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "पॉप-अप खुला: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4183,6 +4223,16 @@ msgstr "यूआरएल प्रबंधन"
 msgid "URL Management for {title}"
 msgstr "{title} के लिए यूआरएल प्रबंधन"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL गायब है"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4593,10 +4643,10 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "आप एक संरक्षित संसाधन तक पहुँचने का प्रयास कर रहे हैं, कृपया पहले {लॉगिन} करें।"
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4972,11 +5022,6 @@ msgstr "सूची"
 msgid "loading"
 msgstr "लोड हो रहा है"
 
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "लॉग इन"
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5344,6 +5389,26 @@ msgstr "पाठ"
 #: config/Blocks
 msgid "title"
 msgstr "शीर्षक"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "त्रुटि"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "जानकारी"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "सफलता"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "चेतावनी"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

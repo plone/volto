@@ -2,8 +2,15 @@
 
 exports[`Toolbar > renders the Toolbar component 1`] = `
 [
+  <span
+    aria-atomic="true"
+    aria-live="assertive"
+    className="visually-hidden"
+    role="status"
+  />,
   <div
     className="toolbar-content"
+    onBlur={[Function]}
     style={{}}
   >
     <div
@@ -205,8 +212,15 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
 
 exports[`Toolbar > renders the Toolbar component with lock 1`] = `
 [
+  <span
+    aria-atomic="true"
+    aria-live="assertive"
+    className="visually-hidden"
+    role="status"
+  />,
   <div
     className="toolbar-content"
+    onBlur={[Function]}
     style={{}}
   >
     <div
