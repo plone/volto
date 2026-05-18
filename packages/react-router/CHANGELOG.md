@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.4 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned React Router package-local formatting and typecheck scripts with the monorepo-wide package script cleanup. 
+
+## 2.0.0-alpha.3 (2026-04-16)
+
+### Feature
+
+- Added options when setting cookies on response @pnicolli 
+
 ## 2.0.0-alpha.2 (2025-12-23)
 
 ### Internal

@@ -82,7 +82,6 @@ export const editorVariants = cva(
       **:data-slate-placeholder:text-muted-foreground/80 **:data-slate-placeholder:opacity-100!
     `,
     '[&_[data-slate-node="element"]:not([data-slate-inline="true"])]:mx-auto',
-    '[&_.slate-p]:mx-auto [&_.slate-p]:max-w-(--narrow-container-width)',
     '[&_strong]:font-bold',
   ),
   {

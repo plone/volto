@@ -2,6 +2,7 @@ import {
   nestContent,
   getContentIcon,
   getLanguageIndependentFields,
+  flattenStaticBehaviors,
 } from './Content';
 import contentExistingSVG from '@plone/volto/icons/content-existing.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
@@ -94,6 +95,44 @@ describe('Content', () => {
         },
       };
       expect(getLanguageIndependentFields(schema)).toStrictEqual(['lif']);
+    });
+  });
+
+  describe('flattenStaticBehaviors', () => {
+    it('returns object unchanged when no @static_behaviors', () => {
+      const input = {
+        title: 'Example',
+        creator: 'admin',
+      };
+      expect(flattenStaticBehaviors(input)).toEqual(input);
+    });
+
+    it('flattens static behaviors into dot-notation keys', () => {
+      const input = {
+        title: 'Example',
+        '@static_behaviors': [
+          'guillotina_cms.interfaces.blocks.IBlocks',
+          'guillotina_cms.interfaces.dublin_core.IDublinCore',
+        ],
+        'guillotina_cms.interfaces.blocks.IBlocks': {
+          blocks: 'blocks',
+          blocks_layout: 'blocks_layout',
+        },
+        'guillotina_cms.interfaces.dublin_core.IDublinCore': {
+          creator: 'creator',
+        },
+      };
+      expect(flattenStaticBehaviors(input)).toEqual({
+        title: 'Example',
+        '@static_behaviors': [
+          'guillotina_cms.interfaces.blocks.IBlocks',
+          'guillotina_cms.interfaces.dublin_core.IDublinCore',
+        ],
+        'guillotina_cms.interfaces.blocks.IBlocks.blocks': 'blocks',
+        'guillotina_cms.interfaces.blocks.IBlocks.blocks_layout':
+          'blocks_layout',
+        'guillotina_cms.interfaces.dublin_core.IDublinCore.creator': 'creator',
+      });
     });
   });
 });

@@ -5,7 +5,7 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 export const updateGroupArgsSchema = z.object({
-  groupId: z.string(),
+  id: z.string(),
   data: updateGroupDataSchema,
 });
 
@@ -13,10 +13,10 @@ export type UpdateGroupArgs = z.infer<typeof updateGroupArgsSchema>;
 
 export async function updateGroup(
   this: PloneClient,
-  { groupId, data }: UpdateGroupArgs,
+  { id, data }: UpdateGroupArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = updateGroupArgsSchema.parse({
-    groupId,
+    id,
     data,
   });
 
@@ -25,7 +25,7 @@ export async function updateGroup(
     config: this.config,
   };
 
-  const groupName = `/@groups/${validatedArgs.groupId}`;
+  const groupName = `/@groups/${validatedArgs.id}`;
 
   return apiRequest('patch', groupName, options);
 }

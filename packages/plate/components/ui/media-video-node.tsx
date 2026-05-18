@@ -1,4 +1,3 @@
-import * as React from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 
 import type { TResizableProps, TVideoElement } from 'platejs';
@@ -18,8 +17,6 @@ import {
   Resizable,
   ResizeHandle,
 } from './resize-handle';
-
-const LazyReactPlayer = React.lazy(() => import('react-player'));
 
 export const VideoElement = withHOC(
   ResizableProvider,
@@ -136,24 +133,13 @@ export const VideoElement = withHOC(
 
               {isUpload && isEditorMounted && (
                 <div ref={handleRef}>
-                  <React.Suspense
-                    fallback={
-                      // eslint-disable-next-line jsx-a11y/media-has-caption
-                      <video
-                        className="h-full w-full rounded-sm object-cover px-0"
-                        src={unsafeUrl}
-                        controls
-                        preload="metadata"
-                      />
-                    }
-                  >
-                    <LazyReactPlayer
-                      height="100%"
-                      src={unsafeUrl}
-                      width="100%"
-                      controls
-                    />
-                  </React.Suspense>
+                  {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                  <video
+                    className="h-full w-full rounded-sm object-cover px-0"
+                    src={unsafeUrl}
+                    controls
+                    preload="metadata"
+                  />
                 </div>
               )}
             </div>

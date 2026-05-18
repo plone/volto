@@ -8,7 +8,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -27,7 +27,7 @@ describe('Content', () => {
 
     // We need to install 'plone.app.multilingual' in order to use translations endpoint
     await cli.installAddon({
-      addonId: 'plone.app.multilingual',
+      id: 'plone.app.multilingual',
     });
 
     const contentDataES = {
@@ -64,7 +64,7 @@ describe('Content', () => {
 
     // We need to install 'plone.app.multilingual' in order to use translations endpoint
     await cli.installAddon({
-      addonId: 'plone.app.multilingual',
+      id: 'plone.app.multilingual',
     });
 
     const linkData = {

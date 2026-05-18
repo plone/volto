@@ -1,7 +1,7 @@
 import { type Value, TrailingBlockPlugin } from 'platejs';
 import { type TPlateEditor, useEditorRef } from 'platejs/react';
 
-import { AIKit } from './plugins/ai-kit';
+// import { AIKit } from './plugins/ai-kit';
 import { AlignKit } from './plugins/align-kit';
 import { AutoformatKit } from './plugins/autoformat-kit';
 import { BasicBlocksKit } from './plugins/basic-blocks-kit';
@@ -26,6 +26,7 @@ import { MarkdownKit } from './plugins/markdown-kit';
 import { MediaKit } from './plugins/media-kit';
 import { MentionKit } from './plugins/mention-kit';
 import { BlockWidthKit } from './plugins/block-width-kit';
+import { StyleFieldsKit } from './plugins/style-fields-kit';
 import { SlashKit } from './plugins/slash-kit';
 import { SuggestionKit } from './plugins/suggestion-kit';
 import { TableKit } from './plugins/table-kit';
@@ -34,7 +35,7 @@ import { ToggleKit } from './plugins/toggle-kit';
 import { SplitHotkeyPlugin } from './plugins/split-hotkey';
 
 export const BlockEditorKit = [
-  ...AIKit,
+  // ...AIKit,
   ...BlockMenuKit,
 
   // Elements
@@ -54,10 +55,11 @@ export const BlockEditorKit = [
   ...FontKit,
 
   // Block Style
+  ...StyleFieldsKit,
+  ...BlockWidthKit,
   ...ListKit,
   ...AlignKit,
   ...LineHeightKit,
-  ...BlockWidthKit,
 
   // Collaboration
   ...DiscussionKit,

@@ -1,1 +1,0 @@
-Added blocks editor layout with tabs @pnicolli

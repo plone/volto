@@ -8,7 +8,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -27,7 +27,7 @@ describe('Delete Group', () => {
 
     await cli.createGroup({ data: groupData });
 
-    const result = await cli.deleteGroup({ groupId: groupData.groupname });
+    const result = await cli.deleteGroup({ id: groupData.groupname });
     expect(result.status).toBe(204);
   });
 
@@ -35,7 +35,7 @@ describe('Delete Group', () => {
     const groupId = 'blah';
 
     try {
-      await cli.deleteGroup({ groupId });
+      await cli.deleteGroup({ id: groupId });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

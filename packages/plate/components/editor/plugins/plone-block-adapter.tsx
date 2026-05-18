@@ -11,6 +11,7 @@ import {
   useSelected,
   type PlateElementProps,
 } from 'platejs/react';
+import { BlockInnerContainer } from '../../ui/block-inner-container';
 
 type NativeBlockElement = TElement & {
   id?: string;
@@ -150,22 +151,24 @@ function PloneBlockAdapterContent(
       element={element}
       className={className}
     >
-      {Edit ? (
-        <Edit
-          data={blockData}
-          block={blockId}
-          selected={selected}
-          setBlock={handleSetBlock}
-          onChangeBlock={handleChangeBlock}
-          onSelectBlock={handleSelectBlock}
-          blocksConfig={config.blocks.blocksConfig}
-          blocksErrors={{}}
-          navRoot={config.settings?.navRootPath}
-          contentType={blockData['@type']}
-        />
-      ) : View ? (
-        <View data={blockData} />
-      ) : null}
+      <BlockInnerContainer>
+        {Edit ? (
+          <Edit
+            data={blockData}
+            block={blockId}
+            selected={selected}
+            setBlock={handleSetBlock}
+            onChangeBlock={handleChangeBlock}
+            onSelectBlock={handleSelectBlock}
+            blocksConfig={config.blocks.blocksConfig}
+            blocksErrors={{}}
+            navRoot={config.settings?.navRootPath}
+            contentType={blockData['@type']}
+          />
+        ) : View ? (
+          <View data={blockData} />
+        ) : null}
+      </BlockInnerContainer>
     </PlateElement>
   );
 }

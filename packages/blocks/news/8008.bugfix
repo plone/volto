@@ -1,1 +1,0 @@
-Use Image component in ImageBlockView instead of manually constructing image scale URLs. @jmevissen

@@ -10,10 +10,12 @@ import { __test__ as LinksToItem } from './LinksToItem';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-
-jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
-
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
+vi.mock('../Toolbar/More', () => ({
+  default: vi.fn(() => <div className="More" />),
+}));
 describe('LinksToItem', () => {
   it('renders "links and references" view', () => {
     const store = mockStore({
