@@ -59,7 +59,7 @@ export function TeaserSchema({
         widget: 'object_browser',
         mode: 'image',
         allowExternals: true,
-        selectedItemAttrs: ['image_field', 'image_scales'],
+        selectedItemAttrs: ['@id', 'image_field', 'image_scales'],
       },
       openLinkInNewTab: {
         title: 'Open in a new tab',

@@ -142,10 +142,10 @@ export function ObjectBrowserWidgetBody() {
                 count: items?.length ?? 0,
               })}`}
           key={`${viewMode}-${currentPath}`} // Force re-render on viewMode or path change
-          selectionMode={'multiple'}
+          selectionMode={'single'}
           disabledBehavior="selection"
           escapeKeyBehavior="none"
-          selectionBehavior={'toggle'}
+          selectionBehavior={'replace'}
           items={items ?? []}
           layout={viewMode ? 'grid' : 'stack'}
           // Todo: better styling
