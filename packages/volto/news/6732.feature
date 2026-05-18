@@ -1,0 +1,1 @@
+Replace moment.js with native Intl formatting in DateWidget and DatetimeWidget theme display widgets. The `formatDate` helper now accepts moment-style token strings ('ll', 'lll', 'LLLL', 'L', 'LT') for backward compatibility. @avoinea

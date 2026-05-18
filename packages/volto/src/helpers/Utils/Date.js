@@ -5,6 +5,21 @@ const DAY = HOUR * 24;
 const MONTH = DAY * 30;
 const YEAR = DAY * 365; // ? is this safe or should it be more accurate
 
+// moment-style format tokens → Intl.DateTimeFormat options (for backward compat)
+const MOMENT_FORMAT_MAP = {
+  ll: { year: 'numeric', month: 'short', day: 'numeric' },
+  lll: {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+  },
+  LLLL: { dateStyle: 'full', timeStyle: 'short' },
+  L: { year: 'numeric', month: '2-digit', day: '2-digit' },
+  LT: { timeStyle: 'short' },
+};
+
 export const short_date_format = {
   // 12/9/2021
   year: 'numeric',
@@ -32,13 +47,23 @@ export const toDate = (d) =>
  */
 export function formatDate({
   date, // Date() or  '2022-01-03T19:26:08.999Z'
-  format, // format object, see https://tc39.es/ecma402/#datetimeformat-objects
+  format, // format object (Intl.DateTimeFormat options) or moment-style token string (e.g. 'll', 'lll', 'LLLL', 'L', 'LT')
   locale = 'en',
   long, // true if format should be in long readable form.
   includeTime, // true if short date format should include time
   formatToParts = false,
 }) {
   date = toDate(date);
+  // Resolve moment-style token strings to Intl format options
+  if (typeof format === 'string') {
+    if (process.env.NODE_ENV !== 'production' && !MOMENT_FORMAT_MAP[format]) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[formatDate] Unknown format token "${format}", falling back to short_date_format`,
+      );
+    }
+    format = MOMENT_FORMAT_MAP[format] || short_date_format;
+  }
   format = format
     ? format
     : long && !includeTime

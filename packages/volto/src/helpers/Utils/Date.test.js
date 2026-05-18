@@ -79,6 +79,40 @@ describe('formatDate helper', () => {
       }),
     ).toBe('J 03, 2022');
   });
+
+  describe('moment-style format tokens', () => {
+    it('formats with "ll" token (short date)', () => {
+      expect(formatDate({ date, format: 'll' })).toBe('Jan 3, 2022');
+    });
+
+    it('formats with "lll" token (short date + time)', () => {
+      expect(formatDate({ date, format: 'lll' })).toBe('Jan 3, 2022, 7:26 PM');
+    });
+
+    it('formats with "LLLL" token (full date + time)', () => {
+      expect(formatDate({ date, format: 'LLLL' })).toBe(
+        'Monday, January 3, 2022 at 7:26 PM',
+      );
+    });
+
+    it('formats with "L" token (numeric short date)', () => {
+      expect(formatDate({ date, format: 'L' })).toBe('01/03/2022');
+    });
+
+    it('formats with "LT" token (time only)', () => {
+      expect(formatDate({ date, format: 'LT' })).toBe('7:26 PM');
+    });
+
+    it('moment token works with other locales', () => {
+      expect(formatDate({ date, format: 'll', locale: 'de' })).toBe(
+        '3. Jan. 2022',
+      );
+    });
+
+    it('unknown string format falls back to short_date_format', () => {
+      expect(formatDate({ date, format: 'unknown' })).toBe('1/3/2022');
+    });
+  });
 });
 
 describe('formatRelativeDate helper', () => {
