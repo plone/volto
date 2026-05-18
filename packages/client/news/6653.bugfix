@@ -1,0 +1,1 @@
+Fixed TypeScript error in `getTypes` test by narrowing `GetTypesResponse` union type before indexing. @arybakov05
