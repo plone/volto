@@ -1,2 +1,1 @@
-Use navroot to render sitemap
-[erral]
+Use the navroot expander to render the sitemap. @erral
