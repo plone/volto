@@ -47,7 +47,6 @@ The package `volto` is the core code of Volto.
 ```text
 /
 ├─ packages/
-│  ├─ client
 │  ├─ components
 │  ├─ coresandbox
 │  ├─ registry

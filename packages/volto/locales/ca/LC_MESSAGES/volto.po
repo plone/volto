@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2019-07-02 00:11+0200\n"
-"Last-Translator: Víctor Fernández de Alba <victor@plone.org>\n"
-"Language: \n"
-"Language-Team: Català <plone-cat@lists.plone.org>\n"
+"PO-Revision-Date: 2026-05-10 15:54+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language: ca\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/plone/volto-main/ca/>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: ca\n"
 "Language-Name: Catalan\n"
 "Preferred-Encodings: utf-8\n"
@@ -1246,7 +1247,7 @@ msgstr "Descarrega el fitxer"
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó "Navega"."
+msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/FileWidget
@@ -1671,6 +1672,11 @@ msgstr "Corregeix relacions"
 #: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Columnes d'amplada fixa"
+
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Concentra't en"
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -2355,6 +2361,16 @@ msgstr "Mitjana"
 msgid "Membership updated"
 msgstr "Membresia actualitzada"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2684,7 +2700,7 @@ msgstr "D'acord"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., "". No pot contenir salts de línia."
+msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., \"\". No pot contenir salts de línia."
 
 #. Default: "Open URL browser"
 #: components/manage/Widgets/UrlWidget
@@ -2868,6 +2884,16 @@ msgstr "Fundació Plone"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM de codi obert"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Finestra emergent tancada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Finestra emergent oberta: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4619,11 +4645,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Estàs a punt d'eliminar tots els elements de la pàgina actual d'aquesta carpeta."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Esteu provant d'accedir a un recurs protegit, primer {login} ."
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5002,11 +5023,6 @@ msgstr "Llistat"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Carregant"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "Iniciar Sessió"
 
 #. Default: "Maps"
 #: config/Blocks

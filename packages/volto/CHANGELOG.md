@@ -17,6 +17,63 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.36 (2026-05-12)
+
+### Breaking
+
+- Changed the 401 Unauthorized behavior. Now, for anonymous users it redirects to the login page. For authenticated users it still shows an Unauthorized message indicating they don't have permission. @sneridagh [#8164](https://github.com/plone/volto/issues/8164)
+- Updated dependencies: `universal-cookie` 8.1.2, `universal-cookie-express`
+  8.1.2, `react-cookie` 8.1.2. @davisagli 
+- Upgraded `superagent` from `3.8.2` to `10.3.0`; projects with custom request wrappers or SSR callbacks must handle missing response objects and stricter redirect/error handling. 
+
+### Feature
+
+- Complete translations for es, eu, gl and it @erral @cyphra @yurj @xulioxesus [#8169](https://github.com/plone/volto/issues/8169)
+
+### Bugfix
+
+- Announce errors via `aria-live` and expose required and invalid states on text inputs to improve accessibility of form fields. @Wagner3UB [#8033](https://github.com/plone/volto/issues/8033)
+
+### Internal
+
+- Updated Cypress test for search date sorting to verify newest-first ordering. @aryan7081 [#7489](https://github.com/plone/volto/issues/7489)
+- Update packages in pnpm-lock.yaml. @wesleybl [#8188](https://github.com/plone/volto/issues/8188)
+- Excludes badge links from readme-link-check. @wesleybl [#8189](https://github.com/plone/volto/issues/8189)
+- Fixes an intermittent error in the Cypress tests blocks-slate-backspace.js and blocks-slate-delete.js. @wesleybl [#8190](https://github.com/plone/volto/issues/8190)
+
+## 19.0.0-alpha.35 (2026-05-08)
+
+### Internal
+
+- Release for updating needed and conflicting typings. @sneridagh 
+
+## 19.0.0-alpha.34 (2026-05-07)
+
+### Bugfix
+
+- Replace hard-coded color values with Semantic UI theme variables for input field to improve accessibility. @Wagner3UB [#8044](https://github.com/plone/volto/issues/8044)
+
+## 19.0.0-alpha.33 (2026-05-04)
+
+### Breaking
+
+- Removed the `@plone/client` package from the `main` branch. @sneridagh [#8170](https://github.com/plone/volto/issues/8170)
+- Replaced the dependencies `react-dnd`,  `react-dnd-html5-backend`, and `react-sortable-hoc` with `dnd-kit`.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
+  @davisagli 
+
+### Bugfix
+
+- Force the proper setting of the I18NLANGUAGE cookie for non-multilingual sites too. @sneridagh 
+
+### Internal
+
+- Refactored the `ContentType` and `ControlPanel` components to be functional components. @Manik-Khajuria-5, @davisagli [#7705](https://github.com/plone/volto/issues/7705)
+- Refactored the `WeekdayOfTheMonthIndexField` component by converting it from a class-based component to a modern functional component. @Manik-Khajuria-5 [#7811](https://github.com/plone/volto/issues/7811)
+- Remove unused devDependency: `react-docgen-typescript-plugin`. @davisagli 
+- Standardized the TypeScript validation script name to `check:ts` and added package-specific `AGENTS.md` contributor guidance for `@plone/volto`. 
+- Update devDependency: `@vitest/ui` 3.2.4. @davisagli 
+
 ## 19.0.0-alpha.32 (2026-04-30)
 
 ### Breaking

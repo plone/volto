@@ -3,19 +3,19 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2024-10-31 09:02-0300\n"
-"Last-Translator: Érico Andrei <ericof@plone.org>\n"
+"PO-Revision-Date: 2026-05-10 16:07+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: pt_BR\n"
-"Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/plone/volto-main/pt_BR/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: pt-br\n"
 "Language-Name: Português do Brasil\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Generator: Poedit 3.5\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -363,7 +363,7 @@ msgstr "Alfabeticamente"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/Maps/schema
 msgid "Alt text"
-msgstr "Descrição alt"
+msgstr "Descrição alternativa"
 
 #. Default: "Leave empty if the image is purely decorative."
 #: components/manage/Blocks/Image/schema
@@ -399,17 +399,17 @@ msgstr "Outra pessoa editou este conteúdo e ele está sendo exibido atualmente.
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
 msgid "Applied to subfolders"
-msgstr "Aplicada em subpastas"
+msgstr "Aplicada nas subpastas"
 
 #. Default: "Applies to subfolders?"
 #: components/manage/Rules/Rules
 msgid "Applies to subfolders?"
-msgstr "Aplicar em subpastas?"
+msgstr "Aplicar nas subpastas?"
 
 #. Default: "Apply to subfolders"
 #: components/manage/Rules/Rules
 msgid "Apply to subfolders"
-msgstr "Aplicar em subpastas"
+msgstr "Aplicar nas subpastas"
 
 #. Default: "Apply working copy"
 #: components/manage/Toolbar/More
@@ -516,13 +516,13 @@ msgstr "Bloco"
 #. Default: "Block Type"
 #: components/manage/Controlpanels/BlockTypes
 msgid "Block Type"
-msgstr ""
+msgstr "Tipo do bloco"
 
 #. Default: "Block Types"
 #: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/Controlpanels
 msgid "Block Types"
-msgstr ""
+msgstr "Blocos"
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -1269,7 +1269,7 @@ msgstr "Soltar aquivos aqui…"
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Arraste e solte os arquivos aqui para enviar"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1672,6 +1672,11 @@ msgstr "Consertar relacionamentos"
 msgid "Fixed width table cells"
 msgstr "Células de tabela de largura fixa"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Focar em"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2026,7 +2031,7 @@ msgstr "Não é permitido definir a senha e solicitar o envio da mensagem de red
 #. Default: "Item"
 #: components/manage/Controlpanels/BlockType
 msgid "Item"
-msgstr ""
+msgstr "Item"
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2332,7 +2337,7 @@ msgstr "URL do Mapa"
 #. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
-msgstr ""
+msgstr "O tamanho máximo para arquivos é de {maxSize} bytes, mas o arquivo enviado tem {size} bytes."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2354,6 +2359,16 @@ msgstr "Médio"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Participação atualizada"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
@@ -2674,7 +2689,7 @@ msgstr "Ocorrências"
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
 msgid "Occurrences"
-msgstr ""
+msgstr "Ocorrências"
 
 #. Default: "Ok"
 #: components/manage/Delete/Delete
@@ -2770,7 +2785,7 @@ msgstr "Colar blocos"
 #. Default: "Path"
 #: components/manage/Controlpanels/BlockType
 msgid "Path"
-msgstr ""
+msgstr "Caminho"
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -2868,6 +2883,16 @@ msgstr "Fundação Plone"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Janela flutuante fechada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Janela flutuante aberta: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3047,7 +3072,7 @@ msgstr "Relacionamentos atualizados"
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Solte para adicionar arquivo(s) a esta pasta"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3400,7 +3425,7 @@ msgstr "Selecione colunas para mostrar"
 #. Default: "Select option"
 #: components/manage/Blocks/Search/components/SelectFacet
 msgid "Select option"
-msgstr ""
+msgstr "Selecione uma opção"
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
@@ -4078,7 +4103,7 @@ msgstr "Erro de título. Valor não fornecido ou já existente."
 #. Default: "Toggle option"
 #: components/manage/Blocks/Search/components/ToggleFacet
 msgid "Toggle option"
-msgstr ""
+msgstr "Alternar opção"
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4202,7 +4227,7 @@ msgstr "Gerenciamento de URL para {title}"
 #. Default: "URL is invalid"
 #: components/manage/Widgets/UrlWidget
 msgid "URL is invalid"
-msgstr ""
+msgstr "URL é inválida"
 
 #. Default: "URL is missing"
 #: components/manage/Widgets/UrlWidget
@@ -4327,7 +4352,7 @@ msgstr "Enviar"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Enviar arquivos ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4449,7 +4474,7 @@ msgstr "URL do vídeo"
 #. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
 #: components/manage/Blocks/Video/schema
 msgid "VideoTitleDescription"
-msgstr ""
+msgstr "O título do vídeo não é exibido, mas é usado apenas por motivos de acessibilidade para identificar o vídeo para usuários de leitores de tela. Se o vídeo já estiver suficientemente intitulado por um cabeçalho acima, deixe este campo vazio."
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4619,11 +4644,6 @@ msgstr "Você está prestes a excluir todos os itens e todos os seus subitens."
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Você está prestes a excluir todos os itens na paginação atual desta pasta."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Você está tentando acessar um recurso protegido, por favor, {login} primeiro."
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -4647,7 +4667,7 @@ msgstr "Você pode controlar quem pode visualizar e editar seu item usando a lis
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr ""
+msgstr "Você não pode mover este tipo de bloco para a nova localização"
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4778,7 +4798,7 @@ msgstr "Comparar com"
 #. Default: "Block: {title}"
 #: components/manage/Controlpanels/BlockType
 msgid "controlpanel_block_type"
-msgstr ""
+msgstr "Bloco: {title}"
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4823,7 +4843,7 @@ msgstr "Rascunho"
 #. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "drag_block"
-msgstr ""
+msgstr "arrastar bloco {type}"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -5003,11 +5023,6 @@ msgstr "Listagem"
 msgid "loading"
 msgstr "Carregando"
 
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "acessar"
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5063,7 +5078,7 @@ msgstr "Sem estado de workflow"
 #. Default: "No items found for type: {type}."
 #: components/manage/Controlpanels/BlockType
 msgid "no-blocks-found"
-msgstr ""
+msgstr "Nenhum bloco encontrado para o tipo: {type}."
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5109,12 +5124,12 @@ msgstr "Publicado"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Caminho atual (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Caminho pai (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5483,7 +5498,7 @@ msgstr "Esquema {id}"
 #. Default: "{sources} or mp4 URL allowed"
 #: components/manage/Blocks/Video/Edit
 msgid "{sources} or mp4 URL allowed"
-msgstr ""
+msgstr "{sources} ou URL de arquivos mp4 permitidos"
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions
