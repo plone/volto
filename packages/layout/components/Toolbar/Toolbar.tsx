@@ -22,38 +22,23 @@ import { createPortal } from 'react-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './Toolbar.module.css';
 import toolbarInnerStyles from './Toolbar-inner.css?inline';
-import { useLocation, useRouteLoaderData } from 'react-router';
+import { useRouteLoaderData } from 'react-router';
 import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
 import { UNSAFE_PortalProvider } from 'react-aria';
-import SlotRenderer from '../../slots/SlotRenderer';
-import type { Content } from '@plone/types';
+import { Pluggable } from '../Pluggable';
 
-interface ToolbarInnerProps {
-  content: Content;
-}
-
-function ToolbarInner({ content }: ToolbarInnerProps) {
+function ToolbarInner() {
   const { t } = useTranslation();
-
-  const location = useLocation();
 
   return (
     <nav aria-label={t('layout.toolbar.label')} className="toolbar">
       <div className="toolbar-buttons">
         <div className="toolbar-region toolbar-top">
-          <SlotRenderer
-            name="toolbarTop"
-            content={content}
-            location={location}
-          />
+          <Pluggable name="toolbar-top" />
         </div>
         <div className="toolbar-region toolbar-bottom">
-          <SlotRenderer
-            name="toolbarBottom"
-            content={content}
-            location={location}
-          />
+          <Pluggable name="toolbar-bottom" />
         </div>
       </div>
     </nav>
@@ -64,22 +49,12 @@ function ToolbarInner({ content }: ToolbarInnerProps) {
  * Renders a fixed CMS toolbar on the left side of the viewport, isolated from
  * the host-page stylesheet via Shadow DOM.
  *
- * Extensibility is handled by the slot system via `SlotRenderer`:
- *   • `toolbarTop`    — slot at the top of the toolbar
- *   • `toolbarBottom` — slot at the bottom of the toolbar
+ * Extensibility is handled by the Pluggable system:
+ *   • `toolbar-top`    — slot at the top of the toolbar
+ *   • `toolbar-bottom` — slot at the bottom of the toolbar
  *
- * Register components with `config.registerSlotComponent()`:
- *
- * ```ts
- * config.registerSlotComponent({
- *   slot: 'toolbarTop',
- *   name: 'myButton',
- *   component: MyButton,
- *   predicates: [RouteCondition('@@edit/*')],
- * });
- * ```
- *
- * More info about Slots: https://6.docs.plone.org/volto/configuration/slots.html
+ * Register items with `<Plug pluggable="toolbar-top" id="my-button">`
+ * More info about Pluggables: https://6.docs.plone.org/volto/development/pluggables.html
  */
 const Toolbar = () => {
   const rootData = useRouteLoaderData<RootLoader>('root');
@@ -98,7 +73,7 @@ const Toolbar = () => {
   // Since the Toolbar is not rendered when rootData is undefined, we can safely ignore.
   const content = rootData!.content;
 
-  // The host element is always rendered so the ref is stable.  No content is
+  // The host element is always rendered, so the ref is stable. No content is
   // placed in the shadow root until we know the user can edit.
   return (
     <div ref={hostRef} id="toolbar" className={styles.toolbar}>

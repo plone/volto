@@ -77,11 +77,15 @@ export function PlateRenderer(
   const editor = usePlateEditor({
     ...editorConfig,
     value: props.value,
-  }) as SlateEditor; // EditorView likes it more
+  }) as unknown as TPlateEditor<Value, AnyPluginConfig>;
 
   return (
     <Plate editor={editor} readOnly>
-      <EditorView {...rest} editor={editor} variant="none" />
+      <EditorView
+        {...rest}
+        editor={editor as unknown as SlateEditor}
+        variant="none"
+      />
     </Plate>
   );
 }

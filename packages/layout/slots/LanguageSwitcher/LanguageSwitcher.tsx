@@ -27,13 +27,16 @@ const LanguageSwitcher = (props: LanguageSelectorProps) => {
   }
 
   const { site } = rootData;
+  if (!site) {
+    return null;
+  }
   const isMultilingual = site.features?.multilingual;
   const availableLanguages = site['plone.available_languages'] || [];
   const currentLang = site['plone.default_language'] || 'en';
 
   return isMultilingual ? (
     <div className={clsx(styles['language-switcher'])}>
-      {availableLanguages.map((lang) => {
+      {availableLanguages.map((lang: string) => {
         return (
           <Link
             aria-label={t('layout.languageSwitcher.switchTo', {

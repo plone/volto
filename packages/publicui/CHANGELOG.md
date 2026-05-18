@@ -8,6 +8,26 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.3 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned PublicUI's app-aware TypeScript project setup and route typing with the monorepo-wide typecheck cleanup. 
+- Switched PublicUI's local `@testing-library/jest-dom` dev dependency to the shared catalog entry to keep test tooling aligned with the monorepo dependency refresh. 
+
+## 1.0.0-alpha.2 (2026-04-16)
+
+### Feature
+
+- Added the left toolbar @pnicolli [#6649](https://github.com/plone/volto/issues/6649)
+- Moved the initialize client to the middleware from the config. @sneridagh [#8108](https://github.com/plone/volto/issues/8108)
+- Moved basic data fetching to a middleware to allow all loaders and actions to use it @pnicolli 
+
+### Internal
+
+- Refactored to use context in all loaders and actions. @pnicolli 
+
 ## 1.0.0-alpha.1 (2025-12-23)
 
 ### Feature

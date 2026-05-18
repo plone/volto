@@ -139,7 +139,7 @@ const IconsList: React.FC = () => {
               fontSize: '14px',
             }}
           >
-            <QuantaIcon size="L" />
+            <QuantaIcon size="lg" />
             <br />
             {QuantaIcon.name.replace('Icon', '')}
           </span>

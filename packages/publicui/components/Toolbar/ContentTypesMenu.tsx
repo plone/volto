@@ -1,15 +1,13 @@
-import {
-  ToolbarMenu,
-  ToolbarMenuItem,
-} from '@plone/layout/components/Toolbar/ToolbarMenu';
+import { ToolbarMenu } from '@plone/layout/components/Toolbar/ToolbarMenu';
 import Add from '@plone/components/icons/add.svg?react';
 import Page from '@plone/components/icons/page.svg?react';
 import type { Content, GetTypesResponse, Type } from '@plone/types';
-import { Header, MenuSection, Text } from 'react-aria-components';
+import { Header, Menu, MenuSection, Text } from 'react-aria-components';
 import { useTranslation } from 'react-i18next';
 import config from '@plone/registry';
 
 import contentTypesMenuStyles from './ContentTypesMenu.css?inline';
+import { MenuItem } from '@plone/components';
 
 interface ContentTypesMenuProps {
   content: Content;
@@ -24,7 +22,7 @@ export const ContentTypesMenu = ({ content }: ContentTypesMenuProps) => {
 
   const mostUsedTypes = config.settings.mostUsedTypes;
 
-  const hightlightedTypes = addableTypes.filter((type) =>
+  const highlightedTypes = addableTypes.filter((type) =>
     mostUsedTypes.includes(type.id),
   );
 
@@ -37,32 +35,30 @@ export const ContentTypesMenu = ({ content }: ContentTypesMenuProps) => {
     const Icon = config.settings.contentIcons[type.id] ?? Page;
 
     return (
-      <ToolbarMenuItem id={type.id} href={`/add?type=${typeToAdd}`}>
+      <MenuItem id={type.id} href={`/add?type=${typeToAdd}`}>
         <Icon />
         <Text slot="label">{type.title}</Text>
-      </ToolbarMenuItem>
+      </MenuItem>
     );
   };
 
   return (
-    <ToolbarMenu
-      className="menu-contenttypes-add"
-      button={<Add />}
-      styles={contentTypesMenuStyles}
-    >
-      <MenuSection className="most-used">
-        <Header>{t('publicui.toolbar.addContent')}</Header>
-        {hightlightedTypes.length > 0 &&
-          hightlightedTypes.map((type) => (
-            <ContentTypeMenuItem key={type.id} {...type} />
-          ))}
-      </MenuSection>
-      <MenuSection className="types">
-        {otherTypes.length > 0 &&
-          otherTypes.map((type) => (
-            <ContentTypeMenuItem key={type.id} {...type} />
-          ))}
-      </MenuSection>
+    <ToolbarMenu icon={<Add />} styles={contentTypesMenuStyles}>
+      <Menu className="menu-contenttypes-add">
+        <MenuSection className="most-used">
+          <Header>{t('publicui.toolbar.addContent')}</Header>
+          {highlightedTypes.length > 0 &&
+            highlightedTypes.map((type) => (
+              <ContentTypeMenuItem key={type.id} {...type} />
+            ))}
+        </MenuSection>
+        <MenuSection className="types">
+          {otherTypes.length > 0 &&
+            otherTypes.map((type) => (
+              <ContentTypeMenuItem key={type.id} {...type} />
+            ))}
+        </MenuSection>
+      </Menu>
     </ToolbarMenu>
   );
 };

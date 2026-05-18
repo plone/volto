@@ -7,26 +7,35 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useLocation,
   useMatches,
   useNavigate,
-  useRouteLoaderData,
   type UIMatch,
   type LinksFunction,
   type MetaFunction,
+  type LoaderFunctionArgs,
+  RouterContextProvider,
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { RouterProvider as RACRouterProvider } from 'react-aria-components';
+import {
+  Link,
+  RouterProvider as RACRouterProvider,
+} from 'react-aria-components';
+import i18next from 'seven/app/i18next.server';
+import { ploneContentContext } from 'seven/app/middleware.server';
 import type { RootLoader } from 'seven/app/root';
+import Pencil from '@plone/components/icons/pencil.svg?react';
 import SlotRenderer from '@plone/layout/slots/SlotRenderer';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
-import { PluggablesProvider } from '@plone/layout/components/Pluggable';
+import { Plug, PluggablesProvider } from '@plone/layout/components/Pluggable';
 import clsx from 'clsx';
 import config from '@plone/registry';
 
 import styles from '@plone/layout/slots/App/App.module.css';
 import stylesheet from 'seven/.plone/publicui.css?url';
+import { ContentTypesMenu } from '../components/Toolbar/ContentTypesMenu';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -68,28 +77,35 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export async function loader() {
-  return { cssLayers: config.settings.cssLayers };
+export async function loader({
+  request,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  const locale = await i18next.getLocale(request);
+  const content = context.get(ploneContentContext);
+  return {
+    content,
+    cssLayers: config.settings.cssLayers,
+    locale,
+  };
 }
 
 export default function Index() {
   const location = useLocation();
-  const rootData = useRouteLoaderData<RootLoader>('root');
+  const { content, locale } = useLoaderData<typeof loader>();
   const { i18n } = useTranslation();
   const navigate = useNavigate();
   const matches = useMatches() as UIMatch<unknown, { bodyClass: string }>[];
   const routesBodyClasses = matches
     .filter((match) => match.handle?.bodyClass)
     .map((match) => match.handle?.bodyClass);
+  const contentLanguage = (content.language as { token?: string } | undefined)
+    ?.token;
 
-  if (!rootData) {
-    return null;
-  }
-  const { content, locale } = rootData;
   const showToolbar = shouldShowToolbar(content);
 
   return (
-    <html lang={content.language?.token || locale || 'en'} dir={i18n.dir()}>
+    <html lang={contentLanguage || locale || 'en'} dir={i18n.dir()}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -106,6 +122,18 @@ export default function Index() {
         <link rel="stylesheet" href="/layers.css" precedence="first" />
         <RACRouterProvider navigate={navigate}>
           <PluggablesProvider>
+            <Plug pluggable="toolbar-top" id="button-edit">
+              <Link
+                className="primary"
+                aria-label="Edit"
+                href={`/@@edit${location.pathname.replace(/^\/$/, '')}`}
+              >
+                <Pencil />
+              </Link>
+            </Plug>
+            <Plug pluggable="toolbar-top" id="button-add">
+              <ContentTypesMenu content={content} />
+            </Plug>
             {showToolbar && <Toolbar />}
             <div id="main">
               <div className={clsx(styles.app, 'app-slot')}>

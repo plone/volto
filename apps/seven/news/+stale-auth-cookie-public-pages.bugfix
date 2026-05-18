@@ -1,0 +1,1 @@
+Gracefully clear stale `auth_seven` cookies and retry public page and asset requests anonymously instead of surfacing a `401` error boundary. @sneridagh

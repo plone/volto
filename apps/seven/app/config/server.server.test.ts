@@ -27,7 +27,7 @@ describe('config/server', () => {
           name: 'ploneClient',
           type: 'client',
         })
-        .method().config.apiPath,
-    ).toEqual('http://localhost:8080/Plone');
+        .method(),
+    ).toHaveProperty('initialize');
   });
 });

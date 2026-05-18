@@ -24,18 +24,15 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
-  type MenuItemProps,
-  type MenuProps,
+  Button,
   type MenuTriggerProps,
   type PressEvent,
 } from 'react-aria-components';
-import { Menu, MenuItem } from '@plone/components';
+import { MenuTrigger } from '@plone/components';
 import type { Placement } from 'react-aria';
 
-export interface ToolbarMenuProps<T>
-  extends MenuProps<T>,
-    Omit<MenuTriggerProps, 'children'> {
-  button?: React.ReactNode;
+export interface ToolbarMenuProps extends MenuTriggerProps {
+  icon?: React.ReactNode;
   className?: string;
   onPress?: (e: PressEvent) => void;
   placement?: Placement;
@@ -43,14 +40,13 @@ export interface ToolbarMenuProps<T>
   styles?: string;
 }
 
-export function ToolbarMenu<T extends object>({
-  button,
+export function ToolbarMenu({
+  icon,
   onPress,
   children,
-  className,
   styles,
   ...props
-}: ToolbarMenuProps<T>) {
+}: ToolbarMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
 
@@ -61,26 +57,45 @@ export function ToolbarMenu<T extends object>({
   useEffect(() => {
     if (!isOpen) return;
 
-    const onPointerDown = (e: PointerEvent) => {
+    const shadowRoot = triggerRef.current?.getRootNode() as ShadowRoot | null;
+    if (!shadowRoot || !('host' in shadowRoot)) return;
+
+    // Inside the shadow root e.target is the real element, so plain contains() works.
+    const onShadowPointerDown = (e: PointerEvent) => {
       const target = e.target as Node;
-      if (triggerRef.current?.contains(target)) return;
-
-      const root = triggerRef.current?.getRootNode() as ShadowRoot | Document;
-      const popover = root?.querySelector('.react-aria-Popover');
+      if (triggerRef.current?.contains(target)) {
+        setIsOpen(false);
+        return;
+      }
+      const popover = shadowRoot.querySelector('.react-aria-Popover');
       if (popover?.contains(target)) return;
-
       setIsOpen(false);
     };
 
-    const root = triggerRef.current?.getRootNode() as ShadowRoot | Document;
-    root?.addEventListener('pointerdown', onPointerDown as EventListener);
-    document.addEventListener('pointerdown', onPointerDown as EventListener);
+    // At the document level, shadow-root events are retargeted to the shadow
+    // host — only close when the click genuinely came from outside the toolbar.
+    const onDocumentPointerDown = (e: PointerEvent) => {
+      if (shadowRoot.host.contains(e.target as Node)) return;
+      setIsOpen(false);
+    };
+
+    shadowRoot.addEventListener(
+      'pointerdown',
+      onShadowPointerDown as EventListener,
+    );
+    document.addEventListener(
+      'pointerdown',
+      onDocumentPointerDown as EventListener,
+    );
 
     return () => {
-      root?.removeEventListener('pointerdown', onPointerDown as EventListener);
+      shadowRoot.removeEventListener(
+        'pointerdown',
+        onShadowPointerDown as EventListener,
+      );
       document.removeEventListener(
         'pointerdown',
-        onPointerDown as EventListener,
+        onDocumentPointerDown as EventListener,
       );
     };
   }, [isOpen]);
@@ -88,22 +103,15 @@ export function ToolbarMenu<T extends object>({
   return (
     <>
       {styles && <style>{styles}</style>}
-      <Menu
+      <MenuTrigger
         isOpen={isOpen}
         onOpenChange={setIsOpen}
-        button={button}
-        buttonRef={triggerRefCallback}
-        onPress={onPress}
         isNonModal={true}
-        className={className}
         {...props}
       >
+        <Button ref={triggerRefCallback}>{icon}</Button>
         {children}
-      </Menu>
+      </MenuTrigger>
     </>
   );
-}
-
-export function ToolbarMenuItem<T extends object>(props: MenuItemProps<T>) {
-  return <MenuItem {...props} />;
 }

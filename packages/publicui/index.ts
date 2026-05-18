@@ -1,8 +1,4 @@
 import type { ConfigType } from '@plone/registry';
-import { ContentTypesMenu } from './components/Toolbar/ContentTypesMenu';
-import { ContentFolderishCondition } from './helpers';
-import { ToolbarEdit } from './components/Toolbar/ToolbarEdit';
-import { NotRouteCondition } from '@plone/layout/helpers';
 
 export default function install(config: ConfigType) {
   config.registerRoute({
@@ -40,20 +36,6 @@ export default function install(config: ConfigType) {
         },
       },
     ],
-  });
-
-  config.registerSlotComponent({
-    name: 'toolbarEdit',
-    slot: 'toolbarTop',
-    component: ToolbarEdit,
-    predicates: [NotRouteCondition('@@edit/*')],
-  });
-
-  config.registerSlotComponent({
-    name: 'toolbarAdd',
-    slot: 'toolbarTop',
-    component: ContentTypesMenu,
-    predicates: [ContentFolderishCondition(), NotRouteCondition('@@edit/*')],
   });
 
   return config;

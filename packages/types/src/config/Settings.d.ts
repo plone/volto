@@ -29,7 +29,7 @@ type styleClassNameExtendersType = ({
   classNames: string[];
 }) => string[];
 
-type contentIconsType = {
+type IconsType = {
   [key: string]: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
@@ -83,7 +83,7 @@ export interface SettingsConfig {
   persistentReducers: string[];
   initialReducersBlacklist: string[];
   asyncPropsExtenders: unknown[];
-  contentIcons: contentIconsType;
+  contentIcons: IconType;
   loadables: unknown;
   lazyBundles: {
     [key: string]: string[];
@@ -102,7 +102,7 @@ export interface SettingsConfig {
   showTags: boolean;
   showRelatedItems: boolean;
   controlpanels: Controlpanel[];
-  controlPanelsIcons: Record<string, React.ComponentType>;
+  controlPanelsIcons: IconType;
   filterControlPanels: unknown;
   filterControlPanelsSchema: (schema: Controlpanel) => ControlPanelSchema;
   externalRoutes: {

@@ -1,0 +1,1 @@
+Dropped Scripts' package-local prepublish plugin registration so release handling relies on the current shared hook configuration.

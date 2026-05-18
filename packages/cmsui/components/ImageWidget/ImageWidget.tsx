@@ -1,12 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type DragEvent,
-} from 'react';
-import { useFetcher } from 'react-router';
+import { useCallback, useMemo, useRef, useState, type DragEvent } from 'react';
 import { DialogTrigger } from 'react-aria-components';
 import { Button, Input } from '@plone/components/quanta';
 import type { TextFieldProps as QuantaTextFieldProps } from '@plone/components/quanta';
@@ -100,6 +92,14 @@ function parseCreateContentResponse(value: unknown): CreateContentResponse {
   }
 
   return {};
+}
+
+async function parseJsonSafe(response: Response) {
+  try {
+    return await response.json();
+  } catch {
+    return null;
+  }
 }
 
 function normalizeImageValue(value: unknown): string {
@@ -208,16 +208,10 @@ function ImageInputBase({
   const resolvedValue = value !== undefined ? value : defaultValue;
   const imageValue = normalizeImageValue(resolvedValue);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const uploadFetcher = useFetcher<CreateContentResponse>();
-  const previousUploadFetcherState = useRef(uploadFetcher.state);
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string>('');
   const [linkValue, setLinkValue] = useState(imageValue);
-
-  useEffect(() => {
-    setLinkValue(imageValue);
-  }, [imageValue]);
 
   const resolvedCurrentPath = useMemo(() => {
     const fallbackPath =
@@ -231,30 +225,15 @@ function ImageInputBase({
     () => uploadPath || getBasePath(resolvedCurrentPath),
     [resolvedCurrentPath, uploadPath],
   );
+  const uploadAction = useMemo(
+    () =>
+      resolvedUploadPath === '/'
+        ? '/@createContent'
+        : `/@createContent${resolvedUploadPath}`,
+    [resolvedUploadPath],
+  );
   const objectBrowserMode =
     objectBrowserPickerType === 'multiple' ? 'multiple' : 'single';
-
-  useEffect(() => {
-    const previousState = previousUploadFetcherState.current;
-    previousUploadFetcherState.current = uploadFetcher.state;
-
-    const finishedRequest =
-      previousState !== 'idle' && uploadFetcher.state === 'idle';
-    if (!isUploading || !finishedRequest) {
-      return;
-    }
-
-    const result = parseCreateContentResponse(uploadFetcher.data);
-    if (result && typeof result?.['@id'] === 'string') {
-      setUploadError('');
-      onValueChange(result['@id'], {
-        title: result.title,
-      });
-    } else {
-      setUploadError(result?.message || 'Image upload failed');
-    }
-    setIsUploading(false);
-  }, [uploadFetcher.state, uploadFetcher.data, isUploading, onValueChange]);
 
   const submitUpload = useCallback(
     async (file: File) => {
@@ -277,8 +256,17 @@ function ImageInputBase({
           return;
         }
 
-        uploadFetcher.submit(
-          {
+        // Keep this as a direct fetch: this widget treats `@createContent`
+        // like an API endpoint and needs its raw JSON payload to update local
+        // state. `useFetcher.submit` routes the action response through React
+        // Router's data transport instead of exposing that API-ish shape.
+        const response = await fetch(uploadAction, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({
             path: resolvedUploadPath,
             data: {
               '@type': 'Image',
@@ -290,19 +278,27 @@ function ImageInputBase({
                 filename: file.name,
               },
             },
-          },
-          {
-            method: 'post',
-            encType: 'application/json',
-            action: '/@createContent',
-          },
-        );
+          }),
+        });
+
+        const responseData = await parseJsonSafe(response);
+        const result = parseCreateContentResponse(responseData);
+
+        if (response.ok && typeof result?.['@id'] === 'string') {
+          setUploadError('');
+          onValueChange(result['@id'], {
+            title: result.title,
+          });
+        } else {
+          setUploadError(result?.message || 'Image upload failed');
+        }
+        setIsUploading(false);
       } catch {
         setUploadError('Could not read the selected file');
         setIsUploading(false);
       }
     },
-    [restrictFileUpload, uploadFetcher, resolvedUploadPath],
+    [restrictFileUpload, resolvedUploadPath, uploadAction, onValueChange],
   );
 
   const onDrop = useCallback(

@@ -7,7 +7,8 @@ import {
   MoreoptionsIcon,
   PageIcon,
 } from '../../components/icons';
-import { Menu, MenuItem } from '../Menu/Menu';
+import { Button } from '../Button/Button';
+import { Menu, MenuItem, MenuTrigger } from '../Menu/Menu';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -159,13 +160,18 @@ export const LotsOfItems: Story = {
           {first?.title}
         </Breadcrumb>
         <Breadcrumb>
-          <Menu items={inner} button={<MoreoptionsIcon />} placement="bottom">
-            {(item) => (
-              <MenuItem id={item['@id']} href={item['@id']}>
-                {item.title}
-              </MenuItem>
-            )}
-          </Menu>
+          <MenuTrigger placement="bottom">
+            <Button>
+              <MoreoptionsIcon />
+            </Button>
+            <Menu items={inner}>
+              {(item) => (
+                <MenuItem id={item['@id']} href={item['@id']}>
+                  {item.title}
+                </MenuItem>
+              )}
+            </Menu>
+          </MenuTrigger>
         </Breadcrumb>
         <Breadcrumb id={last?.['@id']} href={last?.['@id']}>
           {last?.title}
@@ -204,13 +210,18 @@ export const LotsOfItemsWithSeparator: Story = {
           {first?.title}
         </Breadcrumb>
         <Breadcrumb separator={<ChevronrightIcon size="sm" />}>
-          <Menu items={inner} button={<MoreoptionsIcon />} placement="bottom">
-            {(item) => (
-              <MenuItem id={item['@id']} href={item['@id']}>
-                {item.title}
-              </MenuItem>
-            )}
-          </Menu>
+          <MenuTrigger placement="bottom">
+            <Button>
+              <MoreoptionsIcon />
+            </Button>
+            <Menu items={inner}>
+              {(item) => (
+                <MenuItem id={item['@id']} href={item['@id']}>
+                  {item.title}
+                </MenuItem>
+              )}
+            </Menu>
+          </MenuTrigger>
         </Breadcrumb>
         <Breadcrumb
           id={last?.['@id']}

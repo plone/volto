@@ -1,10 +1,13 @@
-import { Content } from '@plone/types';
+import type { Content } from '@plone/types';
 import type PloneClient from '@plone/client';
 import type { Value } from '@plone/plate/components/editor';
 import type { Params } from 'react-router';
 
+export type PloneClientUtility = typeof PloneClient;
+
 declare module '@plone/types' {
   interface UtilityTypeMap {
+    client: () => PloneClientUtility;
     rootContentSubRequest: (args: LoaderUtilityArgs) => Promise<unknown>;
     rootLoaderData: (
       args: LoaderUtilityArgs,

@@ -5,24 +5,24 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 const getUserSchema = z.object({
-  userId: z.string(),
+  id: z.string(),
 });
 
 export type UserArgs = z.infer<typeof getUserSchema>;
 
 export async function getUser(
   this: PloneClient,
-  { userId }: UserArgs,
+  { id }: UserArgs,
 ): Promise<RequestResponse<GetUserResponse>> {
   const validatedArgs = getUserSchema.parse({
-    userId,
+    id,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
     params: {},
   };
-  const userName = `@users/${validatedArgs.userId}`;
+  const userName = `@users/${validatedArgs.id}`;
 
   return apiRequest('get', userName, options);
 }

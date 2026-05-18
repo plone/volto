@@ -9,6 +9,7 @@ import type {
 import { BaseTablePlugin } from '@platejs/table';
 import { SlateElement } from 'platejs';
 
+import { BlockInnerContainer } from './block-inner-container';
 import { cn } from '../../lib/utils';
 
 export function TableElementStatic({
@@ -19,16 +20,19 @@ export function TableElementStatic({
   const marginLeft = disableMarginLeft ? 0 : props.element.marginLeft;
 
   return (
-    <SlateElement
-      {...props}
-      className="overflow-x-auto py-5"
-      style={{ paddingLeft: marginLeft }}
-    >
-      <div className="group/table relative w-fit">
-        <table className="mr-0 ml-px table h-px table-fixed border-collapse">
-          <tbody className="min-w-full">{children}</tbody>
-        </table>
-      </div>
+    <SlateElement {...props} className="py-5">
+      <BlockInnerContainer>
+        <div
+          className="overflow-x-auto overflow-y-hidden"
+          style={{ paddingLeft: marginLeft }}
+        >
+          <div className="group/table relative w-fit">
+            <table className="mr-0 ml-px table h-px table-fixed border-collapse">
+              <tbody className="min-w-full">{children}</tbody>
+            </table>
+          </div>
+        </div>
+      </BlockInnerContainer>
     </SlateElement>
   );
 }

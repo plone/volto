@@ -1,1 +1,1 @@
-Extended customizability of the `Menu` component. @arybakov05
+Moved `react-aria-components`, `react-aria`, and `react-stately` from `dependencies` to `peerDependencies` to prevent duplicate module instances that break React context across shadow DOM boundaries. @arybakov05

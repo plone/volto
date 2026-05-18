@@ -1,10 +1,13 @@
-import type { BlockViewProps } from '@plone/types';
+import type { BlockConfigBase, BlockViewProps } from '@plone/types';
 import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import { isInternalURL } from '@plone/helpers';
 import config from '@plone/registry';
 
 type VideoData = NonNullable<BlockViewProps['data']>;
+type VideoBlockConfig = BlockConfigBase & {
+  allowedPeertubeInstances?: string[];
+};
 
 const YOUTUBE_REGEX =
   /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)(?:.*)$/i;
@@ -121,8 +124,11 @@ export const VideoBlockBody = ({
         : data.preview_image
       : null;
 
+  const videoBlockConfig = config.blocks?.blocksConfig?.video as
+    | VideoBlockConfig
+    | undefined;
   const peertubeInstances: string[] =
-    config.blocks?.blocksConfig?.video?.allowedPeertubeInstances ?? [];
+    videoBlockConfig?.allowedPeertubeInstances ?? [];
 
   const { videoID, listID, videoUrl, thumbnailURL, hasMatch } =
     getVideoIDAndPlaceholder(data.url, peertubeInstances);

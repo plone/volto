@@ -1,49 +1,45 @@
 ---
 myst:
   html_meta:
-    "description": "How to customize the toolbar using slots"
-    "property=og:description": "How to customize the toolbar using slots"
+    "description": "How to customize the toolbar using pluggables"
+    "property=og:description": "How to customize the toolbar using pluggables"
     "property=og:title": "Customize the toolbar"
-    "keywords": "Plone, Volto, Seven, Toolbar, Slots"
+    "keywords": "Plone, Volto, Seven, Toolbar, Pluggables"
 ---
 
 # Customize the toolbar
 
-The toolbar uses the slot system for extensibility.
-It exposes two slots:
+The toolbar uses the pluggable system for extensibility.
+It exposes two pluggables:
 
-`toolbarTop`
+`toolbar-top`
 :   Rendered at the top of the toolbar. Typically used for action buttons (save, cancel, edit, add).
 
-`toolbarBottom`
+`toolbar-bottom`
 :   Rendered at the bottom of the toolbar. Typically used for settings or navigation.
 
 ## Register a toolbar button
 
-Use `config.registerSlotComponent()` to add a component to either slot.
-Predicates control when the component appears.
+Wrap your component in a `<Plug>` and place it inside the existing `<PluggablesProvider>` in your layout.
+The `id` uniquely identifies the plug and determines insertion order together with the optional `order` prop.
 
-```ts
-import { RouteCondition, NotRouteCondition } from '@plone/helpers';
+```tsx
+import { Plug } from '@plone/layout/components/Pluggable';
+import MyIcon from './my-icon.svg?react';
+import { Link } from 'react-aria-components';
+import { useLocation } from 'react-router';
 
-// Show only in the edit view (cmsui)
-config.registerSlotComponent({
-  slot: 'toolbarTop',
-  name: 'myEditButton',
-  component: MyEditButton,
-  predicates: [RouteCondition('@@edit/*')],
-});
+// Inside your layout component:
+const location = useLocation();
 
-// Show everywhere except the edit view (publicui)
-config.registerSlotComponent({
-  slot: 'toolbarTop',
-  name: 'myViewButton',
-  component: MyViewButton,
-  predicates: [NotRouteCondition('@@edit/*')],
-});
+<Plug pluggable="toolbar-top" id="my-button">
+  <Link href={`/some-action${location.pathname}`} aria-label="My action">
+    <MyIcon />
+  </Link>
+</Plug>
 ```
 
-The component receives `content` and `location` as props from the `SlotRenderer`.
+Any data your component needs (content, location, navigation) must be fetched via hooks inside the component itself or captured in the `<Plug>` closure — the toolbar does not pass props down to plugged components.
 
 ## Add a menu to the toolbar
 
@@ -54,11 +50,9 @@ The menu children follow the same API as [React Aria's Menu](https://react-aria.
 ### Create the menu component
 
 ```tsx
-import {
-  ToolbarMenu,
-  ToolbarMenuItem,
-} from '@plone/layout/components/Toolbar/ToolbarMenu';
-import { Header, MenuSection, Text } from 'react-aria-components';
+import { ToolbarMenu } from '@plone/layout/components/Toolbar/ToolbarMenu';
+import { MenuItem } from '@plone/components';
+import { Header, Menu, MenuSection, Text } from 'react-aria-components';
 import type { Content } from '@plone/types';
 import MyIcon from './my-icon.svg?react';
 
@@ -70,17 +64,15 @@ interface MyMenuProps {
 
 export const MyMenu = ({ content }: MyMenuProps) => {
   return (
-    <ToolbarMenu
-      className="menu-my-menu"
-      button={<MyIcon />}
-      styles={menuStyles}
-    >
-      <MenuSection>
-        <Header>My menu</Header>
-        <ToolbarMenuItem id="item-1" href="/some-action">
-          <Text slot="label">Item 1</Text>
-        </ToolbarMenuItem>
-      </MenuSection>
+    <ToolbarMenu icon={<MyIcon />} styles={menuStyles}>
+      <Menu className="menu-my-menu">
+        <MenuSection>
+          <Header>My menu</Header>
+          <MenuItem id="item-1" href="/some-action">
+            <Text slot="label">Item 1</Text>
+          </MenuItem>
+        </MenuSection>
+      </Menu>
     </ToolbarMenu>
   );
 };
@@ -88,39 +80,42 @@ export const MyMenu = ({ content }: MyMenuProps) => {
 
 `ToolbarMenu` accepts the following props:
 
-`button`
+`icon`
 :   The trigger element rendered in the toolbar (typically an SVG icon).
 
 `styles`
 :   A CSS string imported with `?inline`.
     Injects the styles into the toolbar's shadow root so that your menu styles apply correctly.
 
-`className`
-:   CSS classes applied to the menu container for styling.
+### Register the menu as a pluggable
 
-### Register the menu as a slot component
+```tsx
+import { Plug } from '@plone/layout/components/Pluggable';
+import { MyMenu } from './MyMenu';
+import { useRouteLoaderData } from 'react-router';
+import type { RootLoader } from 'seven/app/root';
 
-The process of registering a menu is the same as registering a button.
+// Inside your layout component:
+const rootData = useRouteLoaderData<RootLoader>('root');
 
-```ts
-import { RouteCondition } from '@plone/helpers';
-
-config.registerSlotComponent({
-  slot: 'toolbarTop',
-  name: 'myMenu',
-  component: MyMenu,
-  predicates: [RouteCondition('@@edit/*')],
-});
+<Plug pluggable="toolbar-top" id="my-menu">
+  <MyMenu content={rootData.content} />
+</Plug>
 ```
 
 ## Remove a toolbar button or menu
 
-To remove a button or menu from the toolbar, unregister the corresponding slot in the `config`.
+To remove a built-in button or menu, simply don't render the corresponding `<Plug>`.
+If you need to conditionally suppress a plug that another package registers, render it with `null` children:
 
-```ts
-config.unRegisterSlotComponent('toolbarTop', 'myButton', 0);
+```tsx
+<Plug pluggable="toolbar-top" id="button-add">
+  {null}
+</Plug>
 ```
+
+Using the same `id` as an existing plug replaces it.
 
 For a full example, see the `ContentTypesMenu` component in `@plone/publicui`.
 
-See {doc}`register-slots` for the full slot API reference.
+See the [Pluggables documentation](https://6.docs.plone.org/volto/development/pluggables.html) for the full pluggable API reference.

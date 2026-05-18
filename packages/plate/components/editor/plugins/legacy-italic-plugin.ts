@@ -1,12 +1,12 @@
 import { ElementApi, TextApi, createSlatePlugin } from 'platejs';
-import type { Path, SlateEditor, Value } from 'platejs';
+import type { NodeEntry, Path, SlateEditor, Value } from 'platejs';
 import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
 
 export type LegacyItalicNode = {
   type?: string;
   text?: string;
   italic?: boolean;
-  children?: LegacyItalicNode[];
+  children?: Value;
   [key: string]: unknown;
 };
 
@@ -28,12 +28,9 @@ export const migrateLegacyItalic = (editor: SlateEditor, path: Path) => {
 };
 
 export const migrateLegacyItalicInValue = (nodes: Value) => {
-  const mutableNodes = cloneValueToWritable(nodes);
+  const mutableNodes = cloneValueToWritable(nodes) as any[];
 
-  const visit = (
-    node: LegacyItalicNode,
-    isItalic = false,
-  ): LegacyItalicNode[] => {
+  const visit = (node: LegacyItalicNode, isItalic = false): any[] => {
     const nextIsItalic = isItalic || node?.type === 'em';
 
     if (typeof node?.text === 'string') {
@@ -47,8 +44,8 @@ export const migrateLegacyItalicInValue = (nodes: Value) => {
       return [node];
     }
 
-    const normalizedChildren = node.children.flatMap(
-      (child: LegacyItalicNode) => visit(child, nextIsItalic),
+    const normalizedChildren = (node.children as any[]).flatMap((child: any) =>
+      visit(child as LegacyItalicNode, nextIsItalic),
     );
 
     if (node.type === 'em') {
@@ -59,12 +56,12 @@ export const migrateLegacyItalicInValue = (nodes: Value) => {
     return [node];
   };
 
-  const normalized = (mutableNodes as LegacyItalicNode[]).flatMap((node) =>
-    visit(node),
+  const normalized = mutableNodes.flatMap((node: any) =>
+    visit(node as LegacyItalicNode),
   );
   mutableNodes.splice(0, mutableNodes.length, ...normalized);
-  applyNormalizedValue(nodes, mutableNodes);
-  return mutableNodes;
+  applyNormalizedValue(nodes, mutableNodes as any);
+  return mutableNodes as any;
 };
 
 /**
@@ -85,7 +82,7 @@ export const LegacyItalicPlugin = [
     extendEditor: ({ editor }) => {
       const { normalizeNode } = editor;
 
-      editor.normalizeNode = (entry) => {
+      editor.normalizeNode = (entry: NodeEntry) => {
         const [node, path] = entry;
 
         if (ElementApi.isElement(node) && node.type === 'em') {
@@ -93,7 +90,7 @@ export const LegacyItalicPlugin = [
           return;
         }
 
-        normalizeNode(entry);
+        (normalizeNode as (entry: NodeEntry) => void)(entry);
       };
 
       return editor;

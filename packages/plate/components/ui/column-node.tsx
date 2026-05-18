@@ -33,6 +33,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from './tooltip';
+import { BlockInnerContainer } from './block-inner-container';
 import { cn } from '../../lib/utils';
 
 export const ColumnElement = withHOC(
@@ -149,9 +150,11 @@ function DropLine() {
 
 export function ColumnGroupElement(props: PlateElementProps) {
   return (
-    <PlateElement className="mb-2" {...props}>
+    <PlateElement {...props}>
       <ColumnFloatingToolbar>
-        <div className="flex size-full rounded">{props.children}</div>
+        <BlockInnerContainer className="mb-2">
+          <div className="flex size-full rounded">{props.children}</div>
+        </BlockInnerContainer>
       </ColumnFloatingToolbar>
     </PlateElement>
   );

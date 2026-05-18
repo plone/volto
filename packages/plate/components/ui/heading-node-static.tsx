@@ -5,6 +5,8 @@ import type { SlateElementProps } from 'platejs';
 import { type VariantProps, cva } from 'class-variance-authority';
 import { SlateElement } from 'platejs';
 
+import { BlockInnerContainer } from './block-inner-container';
+
 const headingVariants = cva('relative mb-1', {
   variants: {
     variant: {
@@ -28,7 +30,7 @@ export function HeadingElementStatic({
       className={headingVariants({ variant })}
       {...props}
     >
-      {props.children}
+      <BlockInnerContainer>{props.children}</BlockInnerContainer>
     </SlateElement>
   );
 }

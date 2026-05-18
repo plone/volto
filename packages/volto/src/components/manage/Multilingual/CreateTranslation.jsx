@@ -12,8 +12,11 @@ const CreateTranslation = (props) => {
   const dispatch = useDispatch();
   const { language, translationOf } = props.location.state;
   const [translationLocation, setTranslationLocation] = React.useState(null);
-  const [translationObject, setTranslationObject] = React.useState(null);
   const languageFrom = useSelector((state) => state.intl.locale);
+
+  const translationObject = useSelector(
+    (state) => state.content.subrequests['translationObject'],
+  );
 
   React.useEffect(() => {
     // Only on mount, we dispatch the locator query
@@ -22,22 +25,21 @@ const CreateTranslation = (props) => {
     });
 
     //and we load the translationObject
-    dispatch(getContent(translationOf, null, 'translationObject')).then(
-      (resp) => {
-        setTranslationObject(resp);
-      },
-    );
+    dispatch(getContent(translationOf, null, 'translationObject'));
 
     // On unmount we dispatch the language change
     return () => {
       // We change the interface language
       if (config.settings.supportedLanguages.includes(language)) {
         const langFileName = toGettextLang(language);
-        import(
-          /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-        ).then((locale) => {
-          dispatch(changeLanguage(language, locale.default));
-        });
+        import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+          .then((locale) => {
+            dispatch(changeLanguage(language, locale.default));
+          })
+          .catch(() => {
+            // If locale file doesn't exist, still switch language with empty locale
+            dispatch(changeLanguage(language, {}));
+          });
       }
     };
     // On mount only
@@ -46,7 +48,8 @@ const CreateTranslation = (props) => {
 
   return (
     translationLocation &&
-    translationObject && (
+    translationObject.data &&
+    translationObject.loaded > 0 && (
       <Redirect
         to={{
           pathname: `${flattenToAppURL(translationLocation)}/add`,
@@ -54,7 +57,7 @@ const CreateTranslation = (props) => {
           state: {
             translationOf: props.location.state.translationOf,
             language: props.location.state.language,
-            translationObject: translationObject,
+            translationObject: translationObject.data,
             languageFrom,
           },
         }}

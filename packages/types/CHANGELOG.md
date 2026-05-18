@@ -8,6 +8,55 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.1 (2026-05-08)
+
+### Feature
+
+- Added `styleFieldDefinition` utility typings for registry-based style field resolution. @sneridagh 
+
+## 3.0.0-alpha.0 (2026-05-07)
+
+### Breaking
+
+- Refactored and re-thinked blockWidth feature, add new `plateBlocksConfig` key. @sneridagh [#8053](https://github.com/plone/volto/issues/8053)
+
+### Feature
+
+- Typings for block data, utilities, and querystring search. @ebrehault [#7603](https://github.com/plone/volto/issues/7603)
+
+### Bugfix
+
+- Fixed published TypeScript declarations for block config keys, React 19 compatibility, and shared module typings used across the monorepo. 
+- Forward port @plone/types 2a16. @sneridagh 
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+
+## 2.0.0-alpha.16 (2026-04-05)
+
+### Feature
+
+- Added blocktypes service typings. @sneridagh
+
+## 2.0.0-alpha.15 (2026-04-05)
+
+### Feature
+
+- Added blocktypes service typings. @sneridagh
+
+## 2.0.0-alpha.14 (2026-02-03)
+
+### Bugfix
+
+- Fix typing for `contentIcons` and `controlPanelsIcons` in Settings config. Changed from `Record<string, React.ComponentType>` to `Record<string, string>` as they contain SVG paths. @YourGitHubUsername [#7339](https://github.com/plone/volto/issues/7339)
+
+## 2.0.0-alpha.13 (2026-01-26)
+
+### Feature
+
+- Enhanced `SlotRenderer`'s `GetSlotArgs` typings. @sneridagh
+
 ## 2.0.0-alpha.12 (2025-12-22)
 
 ### Feature

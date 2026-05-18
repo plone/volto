@@ -1,4 +1,2 @@
-Replaced toolbar plugs with slots.
-Wrapped toolbar in portal provider so that overlays are rendered inside the shadow root.
-Added `ToolbarMenu` component to handle shadow root integration.
-Added `NotRouteCondition` helper for slots. @arybakov05
+Added `ToolbarMenu` and `ToolbarMenuItem` components for shadow-DOM-safe menus in the toolbar.
+Wrapped the toolbar in `UNSAFE_PortalProvider` so React Aria overlays render inside the shadow root. @arybakov05
