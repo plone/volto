@@ -17,6 +17,34 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.34.0 (2026-05-13)
+
+### Feature
+
+- Synchronizes versions of Volto dependencies with other packages in the monorepo. @wesleybl [#7184](https://github.com/plone/volto/issues/7184)
+- Add `visually-hidden-volto` accessibility CSS class for hiding elements visually while keeping them accessible to screen readers, using a Volto-specific name to avoid conflicts with third-party CSS frameworks. @Wagner3UB [#8139](https://github.com/plone/volto/issues/8139)
+- Complete translations for es, gl @cyphra @erral @xulioxesus [#8162](https://github.com/plone/volto/issues/8162)
+
+### Bugfix
+
+- Respect required and fixed block restrictions in the sidebar Order tab by hiding delete and drag actions when blocked. @avoinea [#6481](https://github.com/plone/volto/issues/6481)
+- Fixed unauthorized access to control panels by adding proper authorization checks. @Shyam-Raghuwanshi [#7807](https://github.com/plone/volto/issues/7807)
+- Added required ARIA attributes to date and time inputs on `DatetimeWidget`. @Wagner3UB [#7980](https://github.com/plone/volto/issues/7980)
+- Don't show login link in the `Unauthorized` component if the user is already authenticated. @wesleybl [#8126](https://github.com/plone/volto/issues/8126)
+- Announce errors via `aria-live` and expose required and invalid states on text inputs to improve accessibility of form fields. @Wagner3UB [#8167](https://github.com/plone/volto/issues/8167)
+- Replace hard-coded color values with Semantic UI theme variables for input field to improve accessibility. @Wagner3UB [#8182](https://github.com/plone/volto/issues/8182)
+- Announce errors via `aria-live` and expose required and invalid states on URL inputs to improve accessibility of URL form fields. @Wagner3UB [#8201](https://github.com/plone/volto/issues/8201)
+- Fixed bug in razzle configuration and webpack-less-plugin that could generate wrong aliases and configurations for building the site. @pnicolli 
+
+### Internal
+
+- Removed {file}`tsconfig.json` root file and removed `tsconfig` package. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+- Remove `@plone/client` references in README. @wesleybl [#8180](https://github.com/plone/volto/issues/8180)
+- Update packages in pnpm-lock.yaml. @wesleybl [#8188](https://github.com/plone/volto/issues/8188)
+- Excludes badge links from readme-link-check. @wesleybl [#8189](https://github.com/plone/volto/issues/8189)
+- Fixes an intermittent error in the Cypress tests blocks-slate-backspace.js and blocks-slate-delete.js. @wesleybl [#8190](https://github.com/plone/volto/issues/8190)
+- Update dependency: serialize-javascript 7.0.5. @davisagli 
+
 ## 18.33.1 (2026-04-16)
 
 ### Bugfix
