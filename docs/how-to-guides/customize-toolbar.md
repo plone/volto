@@ -21,7 +21,6 @@ It exposes two pluggables:
 ## Register a toolbar button
 
 Wrap your component in a `<Plug>` and place it inside the existing `<PluggablesProvider>` in your layout.
-The `id` uniquely identifies the plug and determines insertion order together with the optional `order` prop.
 
 ```tsx
 import { Plug } from '@plone/layout/components/Pluggable';
@@ -78,7 +77,8 @@ export const MyMenu = ({ content }: MyMenuProps) => {
 };
 ```
 
-`ToolbarMenu` accepts the following props:
+`ToolbarMenu` extends `BasicMenuTrigger` and thus `BasicMenuTriggerProps`.
+In addition to those props, it accepts the following:
 
 `icon`
 :   The trigger element rendered in the toolbar (typically an SVG icon).
@@ -100,17 +100,6 @@ const rootData = useRouteLoaderData<RootLoader>('root');
 
 <Plug pluggable="toolbar-top" id="my-menu">
   <MyMenu content={rootData.content} />
-</Plug>
-```
-
-## Remove a toolbar button or menu
-
-To remove a built-in button or menu, simply don't render the corresponding `<Plug>`.
-If you need to conditionally suppress a plug that another package registers, render it with `null` children:
-
-```tsx
-<Plug pluggable="toolbar-top" id="button-add">
-  {null}
 </Plug>
 ```
 

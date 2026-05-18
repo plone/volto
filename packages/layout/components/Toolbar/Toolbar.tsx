@@ -13,7 +13,7 @@
  * is acceptable because permission-gated UI requires an authenticated request
  * anyway.
  *
- * React context (Jotai, Router, Pluggables, Slots…) flows through createPortal
+ * React context (Jotai, Router, Pluggables…) flows through createPortal
  * unchanged — portals preserve the React tree's context even when the DOM
  * target is a shadow root.
  */
@@ -22,8 +22,6 @@ import { createPortal } from 'react-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './Toolbar.module.css';
 import toolbarInnerStyles from './Toolbar-inner.css?inline';
-import { useRouteLoaderData } from 'react-router';
-import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
 import { UNSAFE_PortalProvider } from 'react-aria';
 import { Pluggable } from '../Pluggable';
@@ -57,7 +55,6 @@ function ToolbarInner() {
  * More info about Pluggables: https://6.docs.plone.org/volto/development/pluggables.html
  */
 const Toolbar = () => {
-  const rootData = useRouteLoaderData<RootLoader>('root');
   const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null);
   const hostRef = useRef<HTMLDivElement>(null);
   const portalContainerRef = useRef<HTMLDivElement>(null);
@@ -68,10 +65,6 @@ const Toolbar = () => {
     const root = hostRef.current.attachShadow({ mode: 'open' });
     setShadowRoot(root);
   }, []);
-
-  // The ! appended to rootData tells TypeScript to ignore rootData possibly being undefined.
-  // Since the Toolbar is not rendered when rootData is undefined, we can safely ignore.
-  const content = rootData!.content;
 
   // The host element is always rendered, so the ref is stable. No content is
   // placed in the shadow root until we know the user can edit.
@@ -88,7 +81,7 @@ const Toolbar = () => {
             where they inherit the toolbar's CSS. */
           <UNSAFE_PortalProvider getContainer={getContainer}>
             <style>{toolbarInnerStyles}</style>
-            <ToolbarInner content={content} />
+            <ToolbarInner />
             <div ref={portalContainerRef} id="toolbar-portals" />
           </UNSAFE_PortalProvider>,
           shadowRoot,

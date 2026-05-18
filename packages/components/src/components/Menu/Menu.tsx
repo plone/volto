@@ -38,7 +38,7 @@ export function MenuSectionHeader(props: React.ComponentProps<typeof Header>) {
   return <Header {...props} />;
 }
 
-interface BasicMenuTriggerProps extends MenuTriggerProps {
+export interface BasicMenuTriggerProps extends MenuTriggerProps {
   placement?: Placement;
   isNonModal?: boolean;
 }

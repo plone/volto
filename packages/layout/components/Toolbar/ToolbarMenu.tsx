@@ -23,26 +23,17 @@
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import {
-  Button,
-  type MenuTriggerProps,
-  type PressEvent,
-} from 'react-aria-components';
-import { MenuTrigger } from '@plone/components';
-import type { Placement } from 'react-aria';
+import { Button } from 'react-aria-components';
+import { MenuTrigger, type BasicMenuTriggerProps } from '@plone/components';
 
-export interface ToolbarMenuProps extends MenuTriggerProps {
+export interface ToolbarMenuProps extends BasicMenuTriggerProps {
   icon?: React.ReactNode;
-  className?: string;
-  onPress?: (e: PressEvent) => void;
-  placement?: Placement;
   /** CSS string (imported with `?inline`) to inject into the shadow root. */
   styles?: string;
 }
 
 export function ToolbarMenu({
   icon,
-  onPress,
   children,
   styles,
   ...props
