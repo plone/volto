@@ -19,7 +19,12 @@ async function renderStub() {
       Component: () => (
         <Layout
           params={{}}
-          loaderData={{ locale: 'en', content: {} as any, site: {} as any, isAuthenticated: false }}
+          loaderData={{
+            locale: 'en',
+            content: {} as any,
+            site: {} as any,
+            isAuthenticated: false,
+          }}
           matches={[{} as any]}
         >
           <p>Root Layout</p>
