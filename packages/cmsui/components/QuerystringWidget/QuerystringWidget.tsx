@@ -11,14 +11,8 @@ import { useLoaderData } from 'react-router';
 import type { loader as editLoader } from '../../routes/edit';
 
 import { focusRing } from '../utils';
-import {
-  Select,
-  SelectItem,
-  TextField,
-  NumberField,
-  Switch,
-  Button,
-} from '@plone/components';
+import { TextField, NumberField, Switch, Button } from '@plone/components';
+import { Select, SelectItem } from '@plone/components/quanta';
 import {
   QuerystringProvider,
   useQuerystringContext,
@@ -35,7 +29,7 @@ type BaseFormFieldProps = Pick<
 
 const widgetStyles = tv({
   extend: focusRing,
-  base: 'mx-1 flex flex-col gap-4 rounded-md p-4',
+  base: 'mx-1 flex flex-col gap-4 overflow-visible rounded-md p-4',
   variants: {
     isFocused: fieldBorderStyles.variants.isFocusWithin,
     isInvalid: fieldBorderStyles.variants.isInvalid,
@@ -95,8 +89,8 @@ function QueryCriterionRow({
   };
 
   return (
-    <div className="bg-quanta-slate-50 flex items-end gap-4 rounded-md p-4">
-      <div className="flex-1">
+    <div className="flex items-end gap-4 overflow-visible rounded-md bg-white p-4">
+      <div className="relative z-50 flex-1">
         <Select
           label={index === 0 ? 'List content if' : undefined}
           selectedKey={criterion.i}
@@ -111,7 +105,7 @@ function QueryCriterionRow({
         </Select>
       </div>
 
-      <div className="flex-1">
+      <div className="relative z-50 flex-1">
         <Select
           label={index === 0 ? 'Operator' : undefined}
           selectedKey={criterion.o}
@@ -272,13 +266,13 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
         role="group"
       >
         {/* Query Criteria Section */}
-        <div className="space-y-2">
+        <div className="space-y-2 overflow-visible">
           <h3 className="text-quanta-slate-900 text-sm font-semibold">
             Criteria
           </h3>
 
           {synced.query && synced.query.length > 0 ? (
-            <div className="space-y-2">
+            <div className="space-y-2 overflow-visible">
               {synced.query.map((criterion, index) => (
                 <QueryCriterionRow
                   key={index}
