@@ -20,6 +20,6 @@ describe('Get UsersList', () => {
   test('Successful', async () => {
     const result = await cli.getTypes();
 
-    expect(result.data[0]).toHaveProperty('@id');
+    expect(Array.isArray(result.data) && result.data[0]).toHaveProperty('@id');
   });
 });
