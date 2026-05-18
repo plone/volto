@@ -126,7 +126,10 @@ export default function content(state = initialState, action = {}) {
             [getRequestKey(action.type)]: {
               loading: true,
               loaded: false,
-              error: null,
+              // preserve error if we're fetching context for an error view
+              error: action.errorcontext
+                ? state[getRequestKey(action.type)].error
+                : null,
             },
           };
     case `${CREATE_CONTENT}_SUCCESS`:
@@ -228,7 +231,10 @@ export default function content(state = initialState, action = {}) {
             [getRequestKey(action.type)]: {
               loading: false,
               loaded: true,
-              error: null,
+              // preserve error if we fetched context for an error view
+              error: action.errorcontext
+                ? state[getRequestKey(action.type)].error
+                : null,
             },
           };
     case `${DELETE_CONTENT}_SUCCESS`:

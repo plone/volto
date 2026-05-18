@@ -185,6 +185,24 @@ export function getContent(
 }
 
 /**
+ * Get content as context for an error view
+ * @function getErrorContext
+ * @param {string} url Content url
+ * @returns {Object} Get content action
+ */
+
+export function getErrorContext(url) {
+  return {
+    type: GET_CONTENT,
+    request: {
+      op: 'get',
+      path: url,
+    },
+    errorcontext: true,
+  };
+}
+
+/**
  * Reset content function
  * @function resetContent
  * @param {string} subrequest Key of the subrequest.
