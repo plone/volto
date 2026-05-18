@@ -89,6 +89,7 @@ export type RootData<T extends Content = Content> =
       content: T;
       site: GetSiteResponse;
       locale: string;
+      isAuthenticated: boolean;
     }
   | undefined;
 
