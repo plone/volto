@@ -1,0 +1,1 @@
+Make `react` peer dependency optional, allowing `@plone/types` to be installed without React for API-only type usage (e.g., in Astro, SvelteKit, or other non-React frameworks). @YourGitHubUsername
