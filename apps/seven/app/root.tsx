@@ -15,7 +15,10 @@ import {
   ploneContentContext,
   ploneSiteContext,
 } from './middleware.server';
-import { getClearAuthCookieHeader, getAuthFromRequest } from '@plone/react-router';
+import {
+  getClearAuthCookieHeader,
+  getAuthFromRequest,
+} from '@plone/react-router';
 
 export const middleware = [
   installServerMiddleware,
