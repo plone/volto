@@ -10,6 +10,7 @@ import {
 import { DateField } from '@plone/components';
 import { ObjectBrowserWidget } from '../components/ObjectBrowserWidget/ObjectBrowserWidget';
 import ImageWidget from '../components/ImageWidget/ImageWidget';
+import { QuerystringWidget } from '../components/QuerystringWidget/QuerystringWidget';
 
 export default function install(config: ConfigType) {
   config.registerDefaultWidget(TextField);
@@ -45,6 +46,12 @@ export default function install(config: ConfigType) {
     key: 'widget',
     definition: {
       object_browser: ObjectBrowserWidget,
+    },
+  });
+  config.registerWidget({
+    key: 'widget',
+    definition: {
+      querystring: QuerystringWidget,
     },
   });
   config.registerWidget({
