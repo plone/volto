@@ -394,7 +394,7 @@ msgstr "Alternatief URL-pad → doel URL-pad (datum en tijd van aanmaak, manueel
 #. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
-msgstr "Iemand anders heeft deze inhoud bewerkt en dat wordt nu weergegeven. Wil je dit vervangen door je automatisch opgeslagen inhoud?"
+msgstr "Iemand anders heeft deze inhoud bewerkt en dat wordt nu weergegeven. Wil je dit vervangen door jouw automatisch opgeslagen inhoud?"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -3246,7 +3246,7 @@ msgstr "Rollen"
 #: components/manage/Contents/ContentsBreadcrumbs
 #: components/manage/Contents/ContentsBreadcrumbsRootItem
 msgid "Root"
-msgstr "Root"
+msgstr "Hoofdmap"
 
 #. Default: "Rule added"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -3638,12 +3638,12 @@ msgstr "Klein"
 #. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
-msgstr "Naar sommige content items wordt verwezen door andere items. Deze verwijderen zal {brokenReferences} {variation} breken."
+msgstr "Naar sommige van deze items wordt nu verwezen door andere items. Deze verwijderen zal {brokenReferences} {variation} breken."
 
 #. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
-msgstr "Sommige content items hebben onderliggende items. Deze verwijderen zal ook hun {containedItemsToDelete} {variation} verwijderen."
+msgstr "Sommige van deze items hebben subitems. Deze verwijderen zal ook hun {containedItemsToDelete} {variation} verwijderen."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3740,7 +3740,7 @@ msgstr "Status"
 #. Default: "Sticky"
 #: components/manage/Blocks/ToC/Schema
 msgid "Sticky"
-msgstr "Klevend"
+msgstr "Vastgezet"
 
 #. Default: "Stop compare"
 #: components/manage/Multilingual/CompareLanguages
@@ -3934,7 +3934,7 @@ msgstr "Het item kon niet verwijderd worden."
 #. Default: "The kicker is a line of text shown above the title."
 #: components/manage/Blocks/Teaser/schema
 msgid "The kicker is a line of text shown above the title."
-msgstr "De hoofdtitel is een tekstregel getoond boven de titel."
+msgstr "De bovenkop is een tekstregel getoond boven de titel."
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -4052,7 +4052,7 @@ msgstr "Dit is een werkkopie van {title}"
 #. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
-msgstr "Dit item heeft onderliggende items. Deze verwijderen zal ook de {containedItemsToDelete} {variation} verwijderen."
+msgstr "Dit item heeft subitems. Dit item verwijderen zal ook de {containedItemsToDelete} {variation} verwijderen."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4103,7 +4103,7 @@ msgstr "Titelveld fout. Waarde niet ingesteld of deze bestaat reeds."
 #. Default: "Toggle option"
 #: components/manage/Blocks/Search/components/ToggleFacet
 msgid "Toggle option"
-msgstr "Schakel optie"
+msgstr "Schakeloptie"
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4637,7 +4637,7 @@ msgstr "Ja"
 #. Default: "You are about to delete all items and all its subitems."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items and all its subitems."
-msgstr "Je gaat alle items verwijderen en alle onderliggende items."
+msgstr "Je gaat alle items inclusief subitems verwijderen."
 
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
@@ -4647,7 +4647,7 @@ msgstr "Je gaat alle items verwijderen in de huidige paginatie van deze map."
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr "Je probeert een beschermde bron te bezoeken."
+msgstr "Je probeert een afgeschermde bron te bezoeken."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4918,7 +4918,7 @@ msgstr "<ul><li>Regenereer intIds (tokens van relaties in de relatiecatalogus)</
 #. Default: "Kicker"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr "Hoofdtitel"
+msgstr "Bovenkop"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
