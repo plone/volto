@@ -1,15 +1,8 @@
 import type { BlocksFormData, JSONSchema } from '@plone/types';
 
-type TeaserBlockFormData = BlocksFormData & {
-  overwrite?: boolean;
-  href?: unknown;
-};
-
-type TeaserSchemaArgs = {
-  formData?: TeaserBlockFormData;
-};
-
-export function TeaserSchema({ formData = {} }: TeaserSchemaArgs): JSONSchema {
+export function TeaserSchema({
+  formData = {} as BlocksFormData,
+}: { formData?: BlocksFormData } = {}): JSONSchema {
   return {
     title: 'Teaser',
     fieldsets: [

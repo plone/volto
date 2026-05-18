@@ -13,6 +13,7 @@ test('renders a TemplateChooser component', () => {
       locale: 'en',
       messages: { templateid: 'Template default translation' },
     },
+    site: { data: { 'plone.image_scales': { preview: {}, listing: {} } } },
   });
 
   const component = renderer.create(

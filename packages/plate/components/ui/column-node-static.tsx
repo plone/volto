@@ -2,6 +2,8 @@ import type { SlateElementProps, TColumnElement } from 'platejs';
 
 import { SlateElement } from 'platejs';
 
+import { BlockInnerContainer } from './block-inner-container';
+
 export function ColumnElementStatic(props: SlateElementProps<TColumnElement>) {
   const { width } = props.element;
 
@@ -25,8 +27,10 @@ export function ColumnElementStatic(props: SlateElementProps<TColumnElement>) {
 
 export function ColumnGroupElementStatic(props: SlateElementProps) {
   return (
-    <SlateElement className="mb-2" {...props}>
-      <div className="flex size-full rounded">{props.children}</div>
+    <SlateElement {...props}>
+      <BlockInnerContainer className="mb-2">
+        <div className="flex size-full rounded">{props.children}</div>
+      </BlockInnerContainer>
     </SlateElement>
   );
 }

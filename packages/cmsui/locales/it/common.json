@@ -1,8 +1,9 @@
 {
   "cmsui": {
+    "add": "Aggiungi",
     "edit": "Modifica",
     "save": "Salva",
-    "controlpanel": "Control Panel",
+    "controlpanel": "Pannello di controllo",
     "objectbrowserwidget": {
       "openDialog": "Seleziona contenuti",
       "dialogTitle": "Seleziona Contenuti",
@@ -23,6 +24,34 @@
         "list": "elenco",
         "grid": "griglia"
       }
+    },
+    "panelgroups": {
+      "general": "Generale",
+      "content": "Contenuto",
+      "security": "Sicurezza",
+      "users": "Utenti",
+      "site": "Sito",
+      "addons": "Configurazione prodotti aggiuntivi",
+      "maintenance": "Manutenzione"
+    },
+    "paneltitles": {
+      "addons": "Prodotti aggiuntivi",
+      "database": "Database",
+      "contentRules": "Regole di contenuto",
+      "undo": "Annulla operazioni",
+      "urlmanagement": "Gestione URL",
+      "relations": "Relazioni",
+      "moderatecomments": "Moderazione dei commenti",
+      "users": "Utenti",
+      "groupMembership": "Appartenenza ai gruppi",
+      "groups": "Gruppi"
+    },
+    "blocksEditor": {
+      "blocksTab": "Blocchi",
+      "contentTab": "Contenuto"
+    },
+    "sidebar": {
+      "label": "Barra laterale destra"
     }
   }
 }

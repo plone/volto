@@ -1,5 +1,6 @@
 import { validationMessage } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
+import config from '@plone/volto/registry';
 
 type MinMaxValidator = {
   value: string | number;
@@ -10,6 +11,24 @@ type MinMaxValidator = {
 
 type Validator = {
   value: string;
+  field: Record<string, any>;
+  formData: any;
+  formatMessage: Function;
+};
+
+type Choice = {
+  token: string;
+  label: string;
+};
+type ChoiceValidator = {
+  value: string | Choice;
+  field: Record<string, any>;
+  formData: any;
+  formatMessage: Function;
+};
+
+type FileValidator = {
+  value: Record<string, any>;
   field: Record<string, any>;
   formData: any;
   formatMessage: Function;
@@ -74,7 +93,10 @@ export const urlValidator = ({ value, formatMessage }: Validator) => {
   return !isValid ? formatMessage(messages.isValidURL) : null;
 };
 
-export const emailValidator = ({ value, formatMessage }: Validator): string => {
+export const emailValidator = ({
+  value,
+  formatMessage,
+}: Validator): string | null => {
   // Email Regex taken from from WHATWG living standard:
   // https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)
   const emailRegex =
@@ -131,6 +153,15 @@ export const hasUniqueItemsValidator = ({
   return !isValid ? formatMessage(messages.uniqueItems) : null;
 };
 
+const formatDateValue = (isoString: string) => {
+  const date = new Date(isoString);
+  if (isNaN(date.getTime())) return isoString;
+  return new Intl.DateTimeFormat(undefined, {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  }).format(date);
+};
+
 export const startEventDateRangeValidator = ({
   value,
   field,
@@ -141,7 +172,9 @@ export const startEventDateRangeValidator = ({
     value && formData.end && new Date(value) < new Date(formData.end);
   return !isValid
     ? formatMessage(messages.startEventRange, {
-        endDateValueOrEndFieldName: formData.end || 'end',
+        endDateValueOrEndFieldName: formData.end
+          ? formatDateValue(formData.end)
+          : 'end',
       })
     : null;
 };
@@ -156,7 +189,9 @@ export const endEventDateRangeValidator = ({
     value && formData.start && new Date(value) > new Date(formData.start);
   return !isValid
     ? formatMessage(messages.endEventRange, {
-        startDateValueOrStartFieldName: formData.start || 'start',
+        startDateValueOrStartFieldName: formData.start
+          ? formatDateValue(formData.start)
+          : 'start',
       })
     : null;
 };
@@ -201,5 +236,33 @@ export const minItemsValidator = ({
   const isValid = Array.isArray(value) && value.length >= field.minItems;
   return !isValid
     ? formatMessage(messages.minItems, { minItems: field.minItems })
+    : null;
+};
+
+export const defaultLanguageControlPanelValidator = ({
+  value,
+  formData,
+  formatMessage,
+}: ChoiceValidator) => {
+  const token = typeof value === 'object' ? value.token : value;
+  const isValid =
+    token &&
+    (formData.available_languages.find(
+      (lang: { token: string }) => lang.token === token,
+    ) ||
+      formData.available_languages.includes(token));
+  return !isValid ? formatMessage(messages.defaultLanguage) : null;
+};
+
+export const sizeValidator = ({
+  value,
+  field,
+  formatMessage,
+}: FileValidator) => {
+  const maxSize = field.size
+    ? parseInt(field.size, 10)
+    : config.settings.maxFileUploadSize;
+  return maxSize && value.size > maxSize
+    ? formatMessage(messages.maxSize, { maxSize, size: value.size })
     : null;
 };

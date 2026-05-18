@@ -55,9 +55,11 @@ async function setupTeaserBlockPage(page: Parameters<typeof test>[0]['page']) {
   });
 
   await page.goto(`/@@edit/${PAGE_ID}`);
-  await page.locator('[data-slate-editor]').waitFor({ state: 'visible' });
   await waitForPlateEditorReady(page);
-  await page.getByLabel('Settings').first().click();
+  await page
+    .locator('#toolbar')
+    .getByRole('button', { name: 'Settings' })
+    .click();
 }
 
 test('Teaser block shows placeholder while source is not selected', async ({

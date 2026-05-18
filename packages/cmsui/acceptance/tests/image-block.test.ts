@@ -62,7 +62,7 @@ async function setupImageBlockPage(page: Parameters<typeof test>[0]['page']) {
   });
 
   await page.goto(`/@@edit/${PAGE_ID}`);
-  await page.locator('[data-slate-editor]').waitFor({ state: 'visible' });
+  await waitForPlateEditorReady(page);
 }
 
 test('Image block can select a pre-uploaded local image URL', async ({
@@ -70,7 +70,10 @@ test('Image block can select a pre-uploaded local image URL', async ({
 }) => {
   await login(page);
   await setupImageBlockPage(page);
-  await page.getByLabel('Settings').first().click();
+  await page
+    .locator('#toolbar')
+    .getByRole('button', { name: 'Settings' })
+    .click();
 
   await page.getByText('Browse the site, drop an image, or use a URL').click();
   await expect(page.locator('#sidebar form')).toHaveCount(1);
@@ -89,7 +92,10 @@ test('Image block selection, arrows, enter, and sidebar lifecycle', async ({
 }) => {
   await login(page);
   await setupImageBlockPage(page);
-  await page.getByLabel('Settings').first().click();
+  await page
+    .locator('#toolbar')
+    .getByRole('button', { name: 'Settings' })
+    .click();
   await page.getByText('Browse the site, drop an image, or use a URL').click();
   await expect(page.locator('#sidebar form')).toHaveCount(1);
 
@@ -130,7 +136,10 @@ test('Image block saves alt text in block data', async ({ page }) => {
   await setupImageBlockPage(page);
   await waitForPlateEditorReady(page);
   const editorHandle = await getEditorHandle(page);
-  await page.getByLabel('Settings').first().click();
+  await page
+    .locator('#toolbar')
+    .getByRole('button', { name: 'Settings' })
+    .click();
 
   await page.getByText('Browse the site, drop an image, or use a URL').click();
   await expect(page.locator('#sidebar form')).toHaveCount(1);
@@ -171,7 +180,10 @@ test('Image block can upload an image using the upload button', async ({
 }) => {
   await login(page);
   await setupImageBlockPage(page);
-  await page.getByLabel('Settings').first().click();
+  await page
+    .locator('#toolbar')
+    .getByRole('button', { name: 'Settings' })
+    .click();
 
   await page.getByText('Browse the site, drop an image, or use a URL').click();
   await expect(page.locator('#sidebar form')).toHaveCount(1);

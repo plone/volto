@@ -1,5 +1,11 @@
 import { useCallback } from 'react';
-import type { BlockEditProps } from '@plone/types';
+import type {
+  BlockEditProps,
+  Brain,
+  ContainedItem,
+  Content,
+  RelatedItem,
+} from '@plone/types';
 import Image from '@plone/layout/components/Image/Image';
 import clsx from 'clsx';
 import config from '@plone/registry';
@@ -29,7 +35,15 @@ const ImageBlockEdit = (props: BlockEditProps) => {
     | undefined;
 
   const handleChange = useCallback(
-    (image: string | null, { title, image_field, image_scales } = {}) => {
+    (
+      image: string | null,
+      item: {
+        title?: string;
+        image_field?: string;
+        image_scales?: Record<string, unknown>;
+      } = {},
+    ) => {
+      const { title, image_field, image_scales } = item;
       const url = image ? flattenToAppUrl(image) : '';
 
       setBlock({
@@ -42,6 +56,14 @@ const ImageBlockEdit = (props: BlockEditProps) => {
     },
     [data, setBlock],
   );
+
+  const imageItem = data.image_scales
+    ? ({
+        '@id': data.url,
+        image_field: data.image_field,
+        image_scales: data.image_scales,
+      } as unknown as Content | Brain | ContainedItem | RelatedItem)
+    : undefined;
 
   return (
     <div
@@ -61,15 +83,7 @@ const ImageBlockEdit = (props: BlockEditProps) => {
             medium: data.size === 'm',
             small: data.size === 's',
           })}
-          item={
-            data.image_scales
-              ? {
-                  '@id': data.url,
-                  image_field: data.image_field,
-                  image_scales: data.image_scales,
-                }
-              : undefined
-          }
+          item={imageItem}
           src={
             data.image_scales
               ? undefined

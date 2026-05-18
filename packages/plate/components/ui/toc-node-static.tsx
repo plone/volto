@@ -4,6 +4,7 @@ import { type Heading, BaseTocPlugin, isHeading } from '@platejs/toc';
 import { cva } from 'class-variance-authority';
 import { NodeApi, SlateElement } from 'platejs';
 
+import { BlockInnerContainer } from './block-inner-container';
 import { Button } from './button';
 
 const headingItemVariants = cva(
@@ -28,46 +29,48 @@ export function TocElementStatic(props: SlateElementProps) {
   const headingList = getHeadingList(editor);
 
   return (
-    <SlateElement {...props} className="mb-1 p-0">
-      <div>
-        {headingList.length > 0 ? (
-          headingList.map((item) => (
-            <Button
-              key={item.title}
-              variant="ghost"
-              className={headingItemVariants({
-                depth: item.depth as 1 | 2 | 3,
-              })}
-              // This handler mocks the behaviour inside the edit view,
-              // since the heading highlighting is coupled to the editor
-              onClick={() => {
-                const el = document.querySelector<HTMLElement>(
-                  `[data-block-id="${item.id}"]`,
-                );
-                if (!el) return;
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                const overlay = document.createElement('div');
-                overlay.className =
-                  'pointer-events-none absolute inset-0 z-1 bg-brand/[.13]';
-                overlay.dataset.slot = 'block-selection';
-                el.appendChild(overlay);
-                const dismiss = () => {
-                  overlay.remove();
-                  document.removeEventListener('mousedown', dismiss);
-                };
-                document.addEventListener('mousedown', dismiss);
-              }}
-            >
-              {item.title}
-            </Button>
-          ))
-        ) : (
-          <div className="text-sm text-gray-500">
-            Create a heading to display the table of contents.
-          </div>
-        )}
-      </div>
-      {props.children}
+    <SlateElement {...props}>
+      <BlockInnerContainer className="mb-1 p-0">
+        <div>
+          {headingList.length > 0 ? (
+            headingList.map((item) => (
+              <Button
+                key={item.title}
+                variant="ghost"
+                className={headingItemVariants({
+                  depth: item.depth as 1 | 2 | 3,
+                })}
+                // This handler mocks the behaviour inside the edit view,
+                // since the heading highlighting is coupled to the editor
+                onClick={() => {
+                  const el = document.querySelector<HTMLElement>(
+                    `[data-block-id="${item.id}"]`,
+                  );
+                  if (!el) return;
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  const overlay = document.createElement('div');
+                  overlay.className =
+                    'pointer-events-none absolute inset-0 z-1 bg-brand/[.13]';
+                  overlay.dataset.slot = 'block-selection';
+                  el.appendChild(overlay);
+                  const dismiss = () => {
+                    overlay.remove();
+                    document.removeEventListener('mousedown', dismiss);
+                  };
+                  document.addEventListener('mousedown', dismiss);
+                }}
+              >
+                {item.title}
+              </Button>
+            ))
+          ) : (
+            <div className="text-sm text-gray-500">
+              Create a heading to display the table of contents.
+            </div>
+          )}
+        </div>
+        {props.children}
+      </BlockInnerContainer>
     </SlateElement>
   );
 }

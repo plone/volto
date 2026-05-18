@@ -7,16 +7,16 @@ import { CheckIcon } from 'lucide-react';
 import { useEditorPlugin, useSelectionFragmentProp } from 'platejs/react';
 import {
   WidthDefaultIcon,
+  WidthFullIcon,
   WidthLayoutIcon,
   WidthNarrowIcon,
 } from '@plone/components/Icons';
 
 import {
-  DEFAULT_BLOCK_WIDTH,
   BlockWidthPlugin,
-  BLOCK_WIDTH_VALUES,
-  BLOCK_WIDTH_OPTIONS,
+  getDefaultBlockWidth,
   getBlockWidthConfig,
+  getBlockWidthOptions,
 } from '../editor/plugins/block-width-plugin';
 
 import {
@@ -35,14 +35,19 @@ import {
 
 export function BlockWidthToolbarButton(props: DropdownMenuProps) {
   const { editor, tf } = useEditorPlugin(BlockWidthPlugin);
+  const blockWidthTransforms = tf.blockWidth as {
+    resetWidth: () => void;
+    setWidth: (value: string) => void;
+  };
   const [open, setOpen] = React.useState(false);
   const activeBlock = editor.api.block()?.[0];
   const config = getBlockWidthConfig(editor, activeBlock);
-  const baseValue = config.defaultWidth ?? DEFAULT_BLOCK_WIDTH;
+  const baseValue = config.defaultWidth ?? getDefaultBlockWidth();
   const widthOptions = React.useMemo(() => {
     const allowed = new Set(config.widths ?? []);
+    const options = getBlockWidthOptions();
 
-    return BLOCK_WIDTH_OPTIONS.filter((option) => allowed.has(option.value));
+    return options.filter((option) => allowed.has(option.value));
   }, [config.widths]);
 
   const value = useSelectionFragmentProp({
@@ -50,12 +55,16 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
     getProp: (node) => node.blockWidth,
   });
 
+  if (widthOptions.length <= 1) {
+    return null;
+  }
+
   return (
     <ToolbarSplitButton pressed={open}>
       <ToolbarSplitButtonPrimary
         className="data-[state=on]:bg-accent data-[state=on]:text-accent-foreground"
         onClick={() => {
-          tf.blockWidth.setNodes(baseValue);
+          blockWidthTransforms.resetWidth();
           editor.tf.focus();
         }}
         data-state={value !== baseValue ? 'on' : 'off'}
@@ -72,17 +81,19 @@ export function BlockWidthToolbarButton(props: DropdownMenuProps) {
           <DropdownMenuRadioGroup
             value={value ?? baseValue}
             onValueChange={(newValue) => {
-              tf.blockWidth.setNodes(newValue);
+              blockWidthTransforms.setWidth(newValue);
               editor.tf.focus();
             }}
           >
             {widthOptions.map(({ label, value }) => {
               const Icon =
-                value === BLOCK_WIDTH_VALUES.layout
-                  ? WidthLayoutIcon
-                  : value === BLOCK_WIDTH_VALUES.narrow
-                    ? WidthNarrowIcon
-                    : WidthDefaultIcon;
+                value === 'full'
+                  ? WidthFullIcon
+                  : value === 'layout'
+                    ? WidthLayoutIcon
+                    : value === 'narrow'
+                      ? WidthNarrowIcon
+                      : WidthDefaultIcon;
 
               return (
                 <DropdownMenuRadioItem

@@ -1,36 +1,41 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an Image Block Sidebar component 1`] = `
 <div
   data-schema="{
-  \\"title\\": \\"Video\\",
-  \\"block\\": \\"Video\\",
-  \\"fieldsets\\": [
+  "title": "Video",
+  "block": "Video",
+  "fieldsets": [
     {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"url\\",
-        \\"preview_image\\",
-        \\"align\\"
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "url",
+        "preview_image",
+        "title",
+        "align"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"url\\": {
-      \\"title\\": \\"Video URL\\",
-      \\"widget\\": \\"url\\"
+  "properties": {
+    "url": {
+      "title": "Video URL",
+      "widget": "url"
     },
-    \\"preview_image\\": {
-      \\"title\\": \\"Preview Image URL\\",
-      \\"widget\\": \\"url\\"
+    "preview_image": {
+      "title": "Preview Image URL",
+      "widget": "url"
     },
-    \\"align\\": {
-      \\"title\\": \\"Alignment\\",
-      \\"widget\\": \\"align\\"
+    "title": {
+      "title": "Title",
+      "description": "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
+    },
+    "align": {
+      "title": "Alignment",
+      "widget": "align"
     }
   },
-  \\"required\\": []
+  "required": []
 }"
   id="BlockDataForm"
 />

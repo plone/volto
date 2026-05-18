@@ -26,6 +26,9 @@
       "file": {
         "download": "Download file"
       }
+    },
+    "toolbar": {
+      "label": "Toolbar"
     }
   }
 }

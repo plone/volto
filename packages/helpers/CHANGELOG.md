@@ -8,6 +8,32 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.6 (2026-05-13)
+
+### Bugfix
+
+- Make the import for the styleFields helper resilient and Volto-compatible. @sneridagh 
+
+## 2.0.0-alpha.5 (2026-05-08)
+
+### Feature
+
+- Added shared helpers to derive schema-driven style fields, resolve their style definitions, and read or write nested style field values. @sneridagh 
+
+## 2.0.0-alpha.4 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Helpers' local formatting and typecheck scripts with the monorepo-wide package script cleanup. 
+
+## 2.0.0-alpha.3 (2026-04-16)
+
+### Feature
+
+- Added `isDeepEqual`. @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+- Add isInternalURL helper. @tedw87 [#8004](https://github.com/plone/volto/issues/8004)
+
 ## 2.0.0-alpha.2 (2025-12-23)
 
 ### Feature

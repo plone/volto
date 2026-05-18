@@ -3,19 +3,17 @@ import {
   useActionData,
   redirect,
   type ActionFunctionArgs,
+  RouterContextProvider,
 } from 'react-router';
-
+import { jwtDecode } from 'jwt-decode';
+import { ploneClientContext } from 'seven/app/middleware.server';
 import {
   redirectIfLoggedInLoader,
   setAuthOnResponse,
 } from '@plone/react-router';
-import { Button } from '@plone/components/quanta';
-import { TextField } from '../../components/TextField/TextField';
+import { Button, TextField } from '@plone/components/quanta';
 import ploneSvg from '../../static/plone-white.svg';
 import ArrowRightSVG from '@plone/components/icons/arrow-right.svg?react';
-
-import type PloneClient from '@plone/client';
-import config from '@plone/registry';
 
 export const loader = redirectIfLoggedInLoader;
 
@@ -32,22 +30,26 @@ type LoginErrorResponse = {
   };
 };
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function action({
+  request,
+  context,
+}: ActionFunctionArgs<RouterContextProvider>) {
   const formData = await request.formData();
   const username = String(formData.get('username') || '');
   const password = String(formData.get('password') || '');
 
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
+  const cli = context.get(ploneClientContext);
 
   try {
-    const { data } = await cli.login({ username, password });
+    const { data } = await cli.login({ data: { login: username, password } });
+    const decodedToken = jwtDecode<{
+      sub: string;
+      exp: number;
+      fullname: string | null;
+    }>(data.token);
+    const expires = new Date(decodedToken.exp * 1000);
     const response = redirect('/');
-    return await setAuthOnResponse(response, data.token);
+    return await setAuthOnResponse(response, data.token, { expires });
   } catch (error: any) {
     return {
       status: Number(error?.status) || 500,
@@ -66,7 +68,7 @@ export default function Login() {
     | undefined;
 
   return (
-    <div className="mx-4 flex h-screen flex-1 flex-col justify-center">
+    <main className="mx-4 flex h-screen flex-1 flex-col justify-center">
       <div
         className={`
           flex flex-col items-center
@@ -115,6 +117,6 @@ export default function Login() {
           </Form>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
