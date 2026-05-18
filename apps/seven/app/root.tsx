@@ -14,11 +14,9 @@ import {
   ploneClientContext,
   ploneContentContext,
   ploneSiteContext,
+  ploneUserContext,
 } from './middleware.server';
-import {
-  getClearAuthCookieHeader,
-  getAuthFromRequest,
-} from '@plone/react-router';
+import { getClearAuthCookieHeader } from '@plone/react-router';
 
 export const middleware = [
   installServerMiddleware,
@@ -34,9 +32,9 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
   const cli = context.get(ploneClientContext);
   const content = context.get(ploneContentContext);
   const site = context.get(ploneSiteContext);
+  const user = context.get(ploneUserContext);
 
   const path = `/${params['*'] || ''}`;
-  const token = await getAuthFromRequest(request);
 
   const rootLoaderDataUtilities = config.getUtilities({
     type: 'rootLoaderData',
@@ -75,7 +73,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
       content,
       site,
       locale,
-      isAuthenticated: !!token,
+      isAuthenticated: user !== null,
       ...rootLoaderDataUtilitiesData
         .filter((item) => item)
         .reduce((acc, item) => ({ ...acc, ...item }), {}),
