@@ -1,5 +1,5 @@
 @layer custom {
-  .anontools {
+  .anonymoustools {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -43,6 +43,10 @@
       &:focus {
         outline: 2px solid var(--quanta-cobalt);
         outline-offset: 0;
+      }
+
+      svg {
+        opacity: 0.7;
       }
     }
   }

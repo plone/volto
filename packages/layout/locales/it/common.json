@@ -5,9 +5,10 @@
         "languageSwitcher": {
           "switchTo": "Passa a {{ lang }}"
         },
-        "anontools": {
-          "edit": "Modifica",
-          "logout": "Disconnetti",
+        "siteActions": {
+          "logout": "Disconnetti"
+        },
+        "anonymousTools": {
           "login": "Accedi",
           "register": "Registrati"
         },

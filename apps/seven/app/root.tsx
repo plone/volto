@@ -15,7 +15,7 @@ import {
   ploneContentContext,
   ploneSiteContext,
 } from './middleware.server';
-import { getClearAuthCookieHeader } from '@plone/react-router';
+import { getClearAuthCookieHeader, getAuthFromRequest } from '@plone/react-router';
 
 export const middleware = [
   installServerMiddleware,
@@ -33,6 +33,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
   const site = context.get(ploneSiteContext);
 
   const path = `/${params['*'] || ''}`;
+  const token = await getAuthFromRequest(request);
 
   const rootLoaderDataUtilities = config.getUtilities({
     type: 'rootLoaderData',

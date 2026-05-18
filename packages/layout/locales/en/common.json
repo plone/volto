@@ -5,9 +5,10 @@
         "languageSwitcher": {
           "switchTo": "Switch to {{ lang }}"
         },
-        "anontools": {
-          "edit": "Edit",
-          "logout": "Log Out",
+        "siteActions": {
+          "logout": "Log Out"
+        },
+        "anonymousTools": {
           "login": "Log In",
           "register": "Register"
         },

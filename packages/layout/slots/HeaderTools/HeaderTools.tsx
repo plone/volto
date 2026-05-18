@@ -21,7 +21,11 @@ const HeaderTools = (props: SlotComponentProps) => {
           location={location}
         />
       ) : (
-        <SlotRenderer name="anontools" content={content} location={location} />
+        <SlotRenderer
+          name="anonymousTools"
+          content={content}
+          location={location}
+        />
       )}
       <SlotRenderer
         name="languageSwitcher"

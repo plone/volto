@@ -9,7 +9,7 @@ import ContentArea from '../slots/ContentArea';
 import MainFooter from '../slots/MainFooter/MainFooter';
 import Breadcrumbs from '../slots/Breadcrumbs';
 import { NotContentTypeCondition } from '../helpers';
-import Anontools from '../slots/HeaderTools/Anontools';
+import AnonymousTools from '../slots/HeaderTools/AnonymousTools';
 import HeaderTools from '../slots/HeaderTools/HeaderTools';
 import SearchWidget from '../slots/HeaderTools/SearchWidget';
 import SiteActions from '../slots/HeaderTools/SiteActions';
@@ -54,8 +54,8 @@ export default function install(config: ConfigType) {
 
   config.registerSlotComponent({
     name: 'Tools',
-    slot: 'anontools',
-    component: Anontools,
+    slot: 'anonymousTools',
+    component: AnonymousTools,
   });
 
   config.registerSlotComponent({
