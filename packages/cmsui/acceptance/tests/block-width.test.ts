@@ -1,10 +1,9 @@
 import { expect, test } from '../../../tooling/playwright/test';
+import type { Locator, Page } from '@playwright/test';
 import { login } from '../../../tooling/playwright/login';
 import { createContent } from '../../../tooling/playwright/content';
 
-async function getInheritedBlockWidth(
-  locator: Parameters<typeof test>[0]['page']['locator'],
-) {
+async function getInheritedBlockWidth(locator: Locator) {
   return locator.evaluate((element) => {
     let current: HTMLElement | null = element as HTMLElement;
 
@@ -18,11 +17,8 @@ async function getInheritedBlockWidth(
   });
 }
 
-async function getRootVariable(
-  page: Parameters<typeof test>[0]['page'],
-  name: string,
-) {
-  return page.evaluate((variableName) => {
+async function getRootVariable(page: Page, name: string) {
+  return page.evaluate((variableName: string) => {
     return getComputedStyle(document.documentElement)
       .getPropertyValue(variableName)
       .trim();
@@ -30,7 +26,7 @@ async function getRootVariable(
 }
 
 async function setupSomersaultEditPage(
-  page: Parameters<typeof test>[0]['page'],
+  page: Page,
   {
     pageId,
     contentTitle,

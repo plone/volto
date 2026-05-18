@@ -448,7 +448,15 @@ export function ContentsTable({
 
   const debouncedSearchableText = useDebounceCallback((text: string) => {
     setSelected('none');
-    navigate(`/@@contents${pathname}?SearchableText=${text}`);
+    const params = new URLSearchParams(window.location.search);
+    if (text) {
+      params.set('SearchableText', text);
+    } else {
+      params.delete('SearchableText');
+    }
+    params.delete('page');
+    const querystring = params.size > 0 ? '?' + params.toString() : '';
+    navigate(`/@@contents${pathname}${querystring}`);
   }, 500);
 
   useEffect(() => {

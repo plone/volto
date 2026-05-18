@@ -33,11 +33,17 @@ export const AddContentPopover = ({
           {addableTypes.map((type) => (
             <PopoverListItem
               key={type.id}
-              className={`border-quanta-smoke [&+li]:border-t`}
+              className={`
+                border-quanta-smoke
+                [&+li]:border-t
+              `}
             >
               <Link
                 href={`/@@add${path}?type=${encodeURIComponent(type.id)}`}
-                className={`flex items-center text-quanta-sapphire decoration-transparent hover:text-quanta-royal`}
+                className={`
+                  flex items-center text-quanta-sapphire decoration-transparent
+                  hover:text-quanta-royal
+                `}
                 aria-describedby="add-content-popover-label"
               >
                 {type.title}

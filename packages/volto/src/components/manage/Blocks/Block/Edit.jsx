@@ -122,7 +122,7 @@ export class Edit extends Component {
    */
   render() {
     const { blocksConfig = config.blocks.blocksConfig } = this.props;
-    const { editable, type } = this.props;
+    const { editable, type, isContainer: parentIsContainer } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
@@ -187,6 +187,7 @@ export class Edit extends Component {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
               hovered: this.props.hovered === this.props.id,
+              error: !!this.props.blocksErrors?.[this.props.id],
             })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
@@ -198,6 +199,7 @@ export class Edit extends Component {
               {...this.props}
               blockNode={this.blockNode}
               data={this.props.data}
+              className={cx({ contained: parentIsContainer })}
             />
             {this.props.manage && (
               <SidebarPortal

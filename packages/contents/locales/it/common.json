@@ -8,6 +8,10 @@
     },
     "actions": {
       "actions": "Azioni",
+      "select": "Seleziona",
+      "selected": "{{count}} selezionati",
+      "select_all": "Seleziona pagina",
+      "clear_selection": "Cancella",
       "upload": "Carica",
       "rename": "Rinomina",
       "state": "Cambia stato",

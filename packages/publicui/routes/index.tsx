@@ -98,11 +98,13 @@ export default function Index() {
   const routesBodyClasses = matches
     .filter((match) => match.handle?.bodyClass)
     .map((match) => match.handle?.bodyClass);
+  const contentLanguage = (content.language as { token?: string } | undefined)
+    ?.token;
 
   const showToolbar = shouldShowToolbar(content);
 
   return (
-    <html lang={content.language?.token || locale || 'en'} dir={i18n.dir()}>
+    <html lang={contentLanguage || locale || 'en'} dir={i18n.dir()}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

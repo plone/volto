@@ -22,9 +22,13 @@ const messages = defineMessages({
     id: 'Description',
     defaultMessage: 'Description',
   },
-  head_title: {
+  kicker: {
     id: 'head_title',
-    defaultMessage: 'Head title',
+    defaultMessage: 'Kicker',
+  },
+  kicker_description: {
+    id: 'The kicker is a line of text shown above the title.',
+    defaultMessage: 'The kicker is a line of text shown above the title.',
   },
   teaser: {
     id: 'Teaser',
@@ -88,7 +92,8 @@ export const TeaserSchema = ({ data, intl }) => {
         title: intl.formatMessage(messages.title),
       },
       head_title: {
-        title: intl.formatMessage(messages.head_title),
+        title: intl.formatMessage(messages.kicker),
+        description: intl.formatMessage(messages.kicker_description),
       },
       description: {
         title: intl.formatMessage(messages.description),

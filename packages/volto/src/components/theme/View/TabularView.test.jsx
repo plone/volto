@@ -28,6 +28,7 @@ describe('TabularView', () => {
                   title: 'My item',
                   description: 'My item description',
                   url: '/item',
+                  '@id': '/item',
                 },
               ],
             }}

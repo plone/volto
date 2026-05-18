@@ -1,11 +1,11 @@
 import { ElementApi, KEYS, createSlatePlugin } from 'platejs';
-import type { Path, SlateEditor, Value } from 'platejs';
+import type { NodeEntry, Path, SlateEditor, Value } from 'platejs';
 
 import { applyNormalizedValue, cloneValueToWritable } from './legacy-utils';
 
 type LegacyListElement = {
   type?: string;
-  children?: LegacyListElement[];
+  children?: Value;
   listStyleType?: string;
   indent?: number;
   listStart?: number;
@@ -17,7 +17,7 @@ const listTypeMap: Record<string, string> = {
   ol: KEYS.ol, // decimal
 };
 
-const flattenListNode = (node: LegacyListElement): LegacyListElement[] => {
+const flattenListNode = (node: LegacyListElement): any[] => {
   const listStyleType = listTypeMap[node.type ?? ''] ?? KEYS.ul;
   const items = (node.children ?? []).filter((child) =>
     ElementApi.isElement(child),
@@ -40,9 +40,9 @@ const flattenListNode = (node: LegacyListElement): LegacyListElement[] => {
 };
 
 export const migrateLegacyListsInValue = (nodes: Value): Value => {
-  const mutable = cloneValueToWritable(nodes);
+  const mutable = cloneValueToWritable(nodes) as any[];
 
-  const visit = (node: LegacyListElement): LegacyListElement[] => {
+  const visit = (node: LegacyListElement): any[] => {
     const isList = node?.type === 'ul' || node?.type === 'ol';
 
     if (isList) {
@@ -53,26 +53,30 @@ export const migrateLegacyListsInValue = (nodes: Value): Value => {
       return [node];
     }
 
-    const normalizedChildren = node.children.flatMap((child) => visit(child));
+    const normalizedChildren = (node.children as any[]).flatMap((child: any) =>
+      visit(child as LegacyListElement),
+    );
     node.children = normalizedChildren;
     return [node];
   };
 
-  const normalized = mutable.flatMap((node) => visit(node));
+  const normalized = mutable.flatMap((node: any) =>
+    visit(node as LegacyListElement),
+  );
   mutable.splice(0, mutable.length, ...normalized);
-  applyNormalizedValue(nodes, mutable);
-  return mutable;
+  applyNormalizedValue(nodes, mutable as any);
+  return mutable as any;
 };
 
 const migrateListAtPath = (editor: SlateEditor, path: Path) => {
   const nodeEntry = editor.api.node(path);
   if (!nodeEntry) return;
-  const [node] = nodeEntry as [LegacyListElement];
+  const [node] = nodeEntry as unknown as [LegacyListElement, Path];
   const items = flattenListNode(node);
 
   editor.tf.withoutNormalizing(() => {
     editor.tf.removeNodes({ at: path });
-    editor.tf.insertNodes(items, { at: path });
+    editor.tf.insertNodes(items as any, { at: path });
   });
 };
 
@@ -94,7 +98,7 @@ export const LegacyListPlugin = [
     extendEditor: ({ editor }) => {
       const { normalizeNode } = editor;
 
-      editor.normalizeNode = (entry) => {
+      editor.normalizeNode = (entry: NodeEntry) => {
         const [node, path] = entry;
 
         if (
@@ -105,7 +109,7 @@ export const LegacyListPlugin = [
           return;
         }
 
-        normalizeNode(entry);
+        (normalizeNode as (entry: NodeEntry) => void)(entry);
       };
 
       return editor;
