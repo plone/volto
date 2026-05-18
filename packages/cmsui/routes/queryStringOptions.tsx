@@ -37,7 +37,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
       name: 'ploneClient',
       type: 'client',
     })
-    .method() as PloneClient;
+    .method() as unknown as PloneClient;
 
   cli.config.token = token;
 
