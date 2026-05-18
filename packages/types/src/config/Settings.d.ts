@@ -29,7 +29,7 @@ type styleClassNameExtendersType = ({
   classNames: string[];
 }) => string[];
 
-type IconsType = {
+type IconType = {
   [key: string]: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
