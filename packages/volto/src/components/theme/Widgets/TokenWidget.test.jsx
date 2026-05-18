@@ -4,7 +4,7 @@ import TokenWidget from './TokenWidget';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 
 const mockStore = configureStore([thunk]);
 
