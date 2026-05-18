@@ -23,4 +23,5 @@ For more information see {doc}`../contributing/version-policy`.
 :caption: Upgrade Guides
 seven
 plone-components
+volto-blocks-migration
 ```

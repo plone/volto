@@ -24,6 +24,7 @@ export function VideoElementStatic(
             className="w-full max-w-full rounded-sm object-cover px-0"
             src={url}
             controls
+            preload="metadata"
           />
           {caption && <figcaption>{NodeApi.string(caption[0])}</figcaption>}
         </figure>

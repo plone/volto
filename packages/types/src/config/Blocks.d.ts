@@ -6,6 +6,7 @@ import { StyleDefinition } from '../blocks';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
+  plateBlocksConfig: PlateBlocksConfigData;
   groupBlocksOrder: Array<{ id: string; title: string }>;
   requiredBlocks: string[];
   initialBlocks: Record<string, string[]> | Record<string, object[]>;
@@ -15,6 +16,7 @@ export interface BlocksConfig {
 }
 
 export interface BlocksConfigData {
+  [key: string]: BlockConfigBase;
   title: BlockConfigBase;
   description: BlockConfigBase;
   slate: SlateBlock;
@@ -32,7 +34,18 @@ export interface BlocksConfigData {
   teaser: BlockConfigBase;
 }
 
-export type AvailableBlocks = keyof BlocksConfigData;
+export interface PlateBlocksConfigData {
+  [key: string]: PlateBlockConfigBase;
+}
+
+export type AvailableBlocks = Extract<keyof BlocksConfigData, string>;
+
+export type BlockSchemaArgs = {
+  formData?: BlocksFormData;
+  intl?: IntlShape;
+  props?: BlockEditProps;
+  data?: BlocksFormData;
+};
 
 export interface BlockConfigBase {
   /**
@@ -46,7 +59,7 @@ export interface BlockConfigBase {
   /**
    * The icon used in the block chooser
    */
-  icon: string;
+  icon: string | React.ComponentType<any>;
   /**
    * The group of the block
    */
@@ -74,9 +87,7 @@ export interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema:
-    | JSONSchema
-    | ((args: { props: unknown; intl: IntlShape }) => JSONSchema);
+  blockSchema: JSONSchema | ((args?: BlockSchemaArgs) => JSONSchema);
   dataAdapter?: ({
     block,
     data,
@@ -135,6 +146,16 @@ export interface BlockConfigBase {
   // TODO: Improve extensions shape
   extensions?: Record<string, BlockExtension>;
   blocksConfig?: Partial<BlocksConfigData>;
+  blockWidth?: BlockWidthConfig;
+}
+
+export interface PlateBlockConfigBase {
+  blockWidth?: BlockWidthConfig;
+}
+
+export interface BlockWidthConfig {
+  defaultWidth?: string;
+  widths?: readonly string[];
 }
 
 export type SchemaEnhancerArgs = {

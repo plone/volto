@@ -19,6 +19,8 @@ import {
   normaliseMail,
   normalizeTelephone,
   flattenScales,
+  addSubpathPrefix,
+  stripSubpathPrefix,
 } from './Url';
 
 beforeEach(() => {
@@ -530,6 +532,66 @@ describe('Url', () => {
         },
         size: 319364,
         width: 1182,
+      });
+    });
+  });
+
+  describe('Subpath tests', () => {
+    beforeEach(() => {
+      settings.subpathPrefix = '/site';
+    });
+    describe('addSubpathPrefix', () => {
+      it('adds subpath prefix to internal URLs', () => {
+        expect(addSubpathPrefix('/some-page')).toBe('/site/some-page');
+        expect(addSubpathPrefix('/news/article')).toBe('/site/news/article');
+      });
+
+      it('does not add subpath prefix to URLs that already have it', () => {
+        expect(addSubpathPrefix('/site/some-page')).toBe('/site/some-page');
+      });
+
+      it('does not add subpath prefix to external URLs', () => {
+        expect(addSubpathPrefix('https://example.com/page')).toBe(
+          'https://example.com/page',
+        );
+      });
+
+      it('handles empty subpath prefix', () => {
+        settings.subpathPrefix = '';
+        expect(addSubpathPrefix('/some-page')).toBe('/some-page');
+      });
+
+      it('handles undefined subpath prefix', () => {
+        settings.subpathPrefix = undefined;
+        expect(addSubpathPrefix('/some-page')).toBe('/some-page');
+      });
+    });
+
+    describe('stripSubpathPrefix', () => {
+      beforeEach(() => {
+        settings.subpathPrefix = '/site';
+      });
+      it('removes subpath prefix from URLs that have it', () => {
+        expect(stripSubpathPrefix('/site/some-page')).toBe('/some-page');
+        expect(stripSubpathPrefix('/site/news/article')).toBe('/news/article');
+      });
+
+      it('leaves URLs unchanged if they do not have the prefix', () => {
+        expect(stripSubpathPrefix('/other/some-page')).toBe('/other/some-page');
+      });
+
+      it('handles the case where URL is exactly the subpath prefix', () => {
+        expect(stripSubpathPrefix('/site')).toBe('');
+      });
+
+      it('handles empty subpath prefix', () => {
+        settings.subpathPrefix = '';
+        expect(stripSubpathPrefix('/some-page')).toBe('/some-page');
+      });
+
+      it('handles undefined subpath prefix', () => {
+        settings.subpathPrefix = undefined;
+        expect(stripSubpathPrefix('/some-page')).toBe('/some-page');
       });
     });
   });

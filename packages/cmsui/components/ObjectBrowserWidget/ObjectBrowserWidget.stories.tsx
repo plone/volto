@@ -321,6 +321,6 @@ export const WithInitialSelection: Story = {
         title: 'Launch Video',
         '@type': 'Video',
       },
-    ],
+    ] as any,
   },
 };

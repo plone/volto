@@ -59,6 +59,7 @@ import {
 import { useElementSelector } from 'platejs/react';
 
 import { Button } from './button';
+import { BlockInnerContainer } from './block-inner-container';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -112,33 +113,39 @@ export const TableElement = withHOC(
     const isSelectingTable = useBlockSelected(props.element.id as string);
 
     const content = (
-      <PlateElement
-        {...props}
-        className={cn(
-          'overflow-x-auto py-5',
-          hasControls &&
-            `
-              -ml-2
-              *:data-[slot=block-selection]:left-2
-            `,
-        )}
-        style={{ paddingLeft: marginLeft }}
-      >
-        <div className="group/table relative w-fit">
-          <table
+      <PlateElement {...props} className="py-5">
+        <BlockInnerContainer>
+          <div
             className={cn(
-              'mr-0 ml-px table h-px table-fixed border-collapse',
-              isSelectingCell && 'selection:bg-transparent',
+              'overflow-x-auto overflow-y-hidden',
+              hasControls &&
+                `
+                  -ml-2
+                  *:data-[slot=block-selection]:left-2
+                `,
             )}
-            {...tableProps}
+            style={{ paddingLeft: marginLeft }}
           >
-            <tbody className="min-w-full">{children}</tbody>
-          </table>
+            <div className="group/table relative w-fit">
+              <table
+                className={cn(
+                  'mr-0 ml-px table h-px table-fixed border-collapse',
+                  isSelectingCell && 'selection:bg-transparent',
+                )}
+                {...tableProps}
+              >
+                <tbody className="min-w-full">{children}</tbody>
+              </table>
 
-          {isSelectingTable && (
-            <div className={blockSelectionVariants()} contentEditable={false} />
-          )}
-        </div>
+              {isSelectingTable && (
+                <div
+                  className={blockSelectionVariants()}
+                  contentEditable={false}
+                />
+              )}
+            </div>
+          </div>
+        </BlockInnerContainer>
       </PlateElement>
     );
 

@@ -1,7 +1,7 @@
 import type { APIRequestContext, Page } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { basename, dirname, join } from 'node:path';
 
 export type SevenApi = 'plone' | 'guillotina';
 
@@ -83,12 +83,14 @@ function normalizePath(value?: string) {
 
 function getFixturesDir() {
   const here = dirname(fileURLToPath(import.meta.url));
-  return join(here, '../../playwright/fixtures');
+  return join(here, 'fixtures');
 }
 
-async function readFixtureAsBase64(filename: string) {
-  const data = await readFile(join(getFixturesDir(), filename));
-  return data.toString('base64');
+function resolveFixturePath(sourceFilename: string) {
+  if (sourceFilename.includes('/') || sourceFilename.includes('\\')) {
+    return sourceFilename;
+  }
+  return join(getFixturesDir(), sourceFilename);
 }
 
 export async function setWorkflowSeven(
@@ -187,14 +189,36 @@ export async function createContent(
       },
     });
   } else if (contentType === 'Image') {
-    const pngBase64 = await readFixtureAsBase64('image.png');
+    const imageOverrides =
+      typeof image === 'object'
+        ? (({ sourceFilename: _sourceFilename, ...rest }) => rest)(image)
+        : null;
+
+    const sourceFilename =
+      typeof image === 'object' && image.sourceFilename
+        ? resolveFixturePath(image.sourceFilename)
+        : join(getFixturesDir(), 'image.png');
+    const imageBase64 = (await readFile(sourceFilename)).toString('base64');
+    const imageDefaults = {
+      encoding: 'base64',
+      filename: basename(sourceFilename),
+      'content-type': sourceFilename.toLowerCase().endsWith('.jpg')
+        ? 'image/jpeg'
+        : sourceFilename.toLowerCase().endsWith('.jpeg')
+          ? 'image/jpeg'
+          : sourceFilename.toLowerCase().endsWith('.webp')
+            ? 'image/webp'
+            : 'image/png',
+    };
+    const imagePayload = imageOverrides
+      ? { ...imageDefaults, ...imageOverrides }
+      : imageDefaults;
+
     body = bodyModifier({
       ...defaultBody,
       image: {
-        data: pngBase64,
-        encoding: 'base64',
-        filename: 'image.png',
-        'content-type': 'image/png',
+        ...imagePayload,
+        data: imageBase64,
       },
     });
   } else if (
@@ -215,9 +239,14 @@ export async function createContent(
     };
 
     if (image) {
+      const imageOverrides =
+        typeof image === 'object'
+          ? (({ sourceFilename: _sourceFilename, ...rest }) => rest)(image)
+          : null;
+
       const sourceFilename =
         typeof image === 'object' && image.sourceFilename
-          ? image.sourceFilename
+          ? resolveFixturePath(image.sourceFilename)
           : join(getFixturesDir(), 'halfdome2022.jpg');
 
       const previewBase64 = (await readFile(sourceFilename)).toString('base64');
@@ -226,10 +255,9 @@ export async function createContent(
         filename: 'image.jpg',
         'content-type': 'image/jpg',
       };
-      const preview =
-        typeof image === 'object'
-          ? { ...previewDefaults, ...image }
-          : previewDefaults;
+      const preview = imageOverrides
+        ? { ...previewDefaults, ...imageOverrides }
+        : previewDefaults;
 
       paramsBody = bodyModifier({
         ...paramsBody,

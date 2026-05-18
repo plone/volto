@@ -7,8 +7,8 @@ import type {
   RelatedItem,
   Brain,
 } from '@plone/types';
-import type { RootLoader } from 'seven/app/root';
 import { useRouteLoaderData } from 'react-router';
+import type { RootLoader } from 'seven/app/root';
 
 function removeObjectIdFromURL(basePath: string, scale: string) {
   return scale.replace(`${basePath}/`, '');
@@ -64,6 +64,9 @@ export default function Image(props: ImageProps) {
   if (!item && src) {
     attrs.src = src;
   } else if (item) {
+    const itemId = item['@id'];
+    if (!itemId && !src) return null;
+
     const isFromRealObject = !('image_scales' in item);
     let imageFieldWithDefault = 'image';
     if (imageField) {
@@ -73,9 +76,9 @@ export default function Image(props: ImageProps) {
     }
 
     const image = isFromRealObject
-      ? flattenScales(item['@id'], (item as any)[imageFieldWithDefault])
+      ? flattenScales(itemId ?? '', (item as any)[imageFieldWithDefault])
       : flattenScales(
-          item['@id'],
+          itemId ?? '',
           (item as any)?.image_scales?.[imageFieldWithDefault]?.[0],
         );
 
@@ -86,7 +89,7 @@ export default function Image(props: ImageProps) {
     } else if (image) {
       const isSvg = image['content-type'] === 'image/svg+xml';
       // In case `base_path` is present (`preview_image_link`) use it as base path
-      const basePath = image.base_path || item['@id'];
+      const basePath = image.base_path || itemId;
 
       attrs.src = `${basePath}/${image.download}`;
       attrs.width = image.width;

@@ -54,9 +54,7 @@ The package `volto` is the core code of Volto.
 │  ├─ blocks
 │  ├─ client
 │  ├─ components
-│  ├─ coresandbox
 │  ├─ helpers
-│  ├─ providers
 │  ├─ registry
 │  ├─ scripts
 │  ├─ layout
@@ -404,14 +402,3 @@ You can try it out using the following command.
 ```shell
 pnpm --filter plone-rr7 dev
 ```
-
-
-## Support libraries
-
-Volto uses several libraries to support development.
-
-### `volto-coresandbox`
-
-`@plone/volto-coresandbox` is a support library used mainly for testing purposes.
-It provides fixtures to bootstrap projects with configurations different than the default one.
-It is used by the acceptance tests to set up different test fixtures, such as `multilingual` or `workingcopy`.

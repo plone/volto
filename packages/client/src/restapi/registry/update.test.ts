@@ -7,7 +7,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -28,7 +28,7 @@ describe('Update Registry', () => {
     });
 
     const registry = await cli.getRegistryRecord({
-      registryName: 'plone.app.querystring.field.path.title',
+      name: 'plone.app.querystring.field.path.title',
     });
 
     expect(registry.data).toBe('Value');

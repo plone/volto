@@ -3,15 +3,16 @@ import {
   BaseCodeLinePlugin,
   BaseCodeSyntaxPlugin,
 } from '@platejs/code-block';
-import { all, createLowlight } from 'lowlight';
+import { createLowlight } from 'lowlight';
 
 import {
   CodeBlockElementStatic,
   CodeLineElementStatic,
   CodeSyntaxLeafStatic,
 } from '../../ui/code-block-node-static';
+import { codeBlockLanguages } from './code-block-languages';
 
-const lowlight = createLowlight(all);
+const lowlight = createLowlight(codeBlockLanguages);
 
 export const BaseCodeBlockKit = [
   BaseCodeBlockPlugin.configure({

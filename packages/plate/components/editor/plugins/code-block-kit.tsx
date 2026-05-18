@@ -3,15 +3,16 @@ import {
   CodeLinePlugin,
   CodeSyntaxPlugin,
 } from '@platejs/code-block/react';
-import { all, createLowlight } from 'lowlight';
+import { createLowlight } from 'lowlight';
 
 import {
   CodeBlockElement,
   CodeLineElement,
   CodeSyntaxLeaf,
 } from '../../ui/code-block-node';
+import { codeBlockLanguages } from './code-block-languages';
 
-const lowlight = createLowlight(all);
+const lowlight = createLowlight(codeBlockLanguages);
 
 export const CodeBlockKit = [
   CodeBlockPlugin.configure({

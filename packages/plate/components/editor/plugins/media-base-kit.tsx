@@ -2,7 +2,7 @@ import { BaseCaptionPlugin } from '@platejs/caption';
 import {
   BaseAudioPlugin,
   BaseFilePlugin,
-  BaseImagePlugin,
+  // BaseImagePlugin,
   BaseMediaEmbedPlugin,
   BasePlaceholderPlugin,
   BaseVideoPlugin,
@@ -11,11 +11,11 @@ import { KEYS } from 'platejs';
 
 import { AudioElementStatic } from '../../ui/media-audio-node-static';
 import { FileElementStatic } from '../../ui/media-file-node-static';
-import { ImageElementStatic } from '../../ui/media-image-node-static';
+// import { ImageElementStatic } from '../../ui/media-image-node-static';
 import { VideoElementStatic } from '../../ui/media-video-node-static';
 
 export const BaseMediaKit = [
-  BaseImagePlugin.withComponent(ImageElementStatic),
+  // BaseImagePlugin.withComponent(ImageElementStatic),
   BaseVideoPlugin.withComponent(VideoElementStatic),
   BaseAudioPlugin.withComponent(AudioElementStatic),
   BaseFilePlugin.withComponent(FileElementStatic),

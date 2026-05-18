@@ -4,6 +4,7 @@
  */
 
 import { GET_QUERYSTRING } from '@plone/volto/constants/ActionTypes';
+import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 
 /**
  * Get querystring.
@@ -11,11 +12,15 @@ import { GET_QUERYSTRING } from '@plone/volto/constants/ActionTypes';
  * @returns {Object} Get querystring action.
  */
 export function getQuerystring() {
-  return {
-    type: GET_QUERYSTRING,
-    request: {
-      op: 'get',
-      path: '/@querystring',
-    },
+  return (dispatch, getState) => {
+    const state = getState();
+    const path = flattenToAppURL(state.content?.data?.['@id'] || '');
+    dispatch({
+      type: GET_QUERYSTRING,
+      request: {
+        op: 'get',
+        path: `${path}/@querystring`,
+      },
+    });
   };
 }

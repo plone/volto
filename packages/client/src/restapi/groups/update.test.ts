@@ -8,7 +8,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -32,12 +32,12 @@ describe('Update Group', () => {
       description: 'changed description',
     };
     await cli.updateGroup({
-      groupId: groupData.groupname,
+      id: groupData.groupname,
       data: updateGroupData,
     });
 
     const group = await cli.getGroup({
-      groupId: groupData.groupname,
+      id: groupData.groupname,
     });
 
     expect(group.data.description).toBe('changed description');
@@ -50,7 +50,7 @@ describe('Update Group', () => {
     };
 
     try {
-      await cli.updateGroup({ groupId, data: updateGroupData });
+      await cli.updateGroup({ id: groupId, data: updateGroupData });
     } catch (err) {
       expect((err as RequestError).status).toBe(400);
     }

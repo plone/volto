@@ -101,6 +101,7 @@ const Delete = () => {
                 onClick={onSubmit}
               />
               <Button
+                type="button"
                 basic
                 circular
                 secondary

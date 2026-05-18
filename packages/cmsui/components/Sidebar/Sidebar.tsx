@@ -1,12 +1,14 @@
-import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { atom, useAtom } from 'jotai';
 import { tv } from 'tailwind-variants';
 import { Pluggable } from '@plone/layout/components/Pluggable';
 
-export const sidebarAtom = atom(true);
+export const sidebarAtom = atom(false);
 
 const sidebar = tv({
-  base: 'bg-quanta-celery transition-[width] duration-200 ease-linear',
+  base: `
+    shadow-[0_12px_24px_0_var(--color-quanta-smoke)] transition-[width] duration-200 ease-linear
+  `,
   variants: {
     collapsed: {
       true: 'w-0',
@@ -16,22 +18,22 @@ const sidebar = tv({
 });
 
 const Sidebar = () => {
-  const [collapsed] = useAtom(sidebarAtom);
+  const { t } = useTranslation();
+  const [collapsed, setCollapsed] = useAtom(sidebarAtom);
 
   return (
-    <div
-      role="complementary"
-      aria-label="Sidebar"
+    <aside
+      aria-label={t('cmsui.sidebar.label')}
       id="sidebar"
       className={sidebar({ collapsed })}
+      onFocus={() => {
+        if (collapsed) {
+          setCollapsed(false);
+        }
+      }}
     >
-      {!collapsed && (
-        <Fragment>
-          <h2 className="mt-4 text-center text-2xl">This is the sidebar</h2>
-          <Pluggable name="sidebar" />
-        </Fragment>
-      )}
-    </div>
+      {!collapsed && <Pluggable name="sidebar" />}
+    </aside>
   );
 };
 
