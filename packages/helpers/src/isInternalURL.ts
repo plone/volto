@@ -1,36 +1,28 @@
 import config from '@plone/registry';
-import { matchPath } from 'react-router';
-import { flattenToAppURL } from './flattenToAppURL';
 
-/** Check if the URL is internal */
-export function isInternalURL(url: string): boolean {
-  const { settings } = config;
+/**
+ * Lightweight check to detect if a URL points to the current Plone instance.
+ * For absolute URLs, compares origins to avoid prefix-matching attacks
+ */
+export function isInternalURL(url?: string): boolean {
+  if (!url) return false;
 
-  const isMatch = (config.settings.externalRoutes ?? []).find((route) => {
-    const pathname = flattenToAppURL(url);
-
-    if (typeof route === 'object') {
-      return matchPath(route.match as string, pathname);
-    }
-
-    return matchPath(route, pathname);
-  });
-
-  const isExcluded = isMatch && Object.keys(isMatch)?.length > 0;
-
-  const internalURL =
-    !!url &&
-    (url.indexOf(settings.publicURL) !== -1 ||
-      (settings.internalApiPath &&
-        url.indexOf(settings.internalApiPath) !== -1) ||
-      url.indexOf(settings.apiPath) !== -1 ||
-      url.charAt(0) === '/' ||
-      url.charAt(0) === '.' ||
-      url.startsWith('#'));
-
-  if (internalURL && isExcluded) {
-    return false;
+  if (url.startsWith('/') || url.startsWith('.') || url.startsWith('#')) {
+    return true;
   }
 
-  return internalURL;
+  const settings = config.settings ?? ({} as Record<string, string>);
+  const apiPath = settings.apiPath as string | undefined;
+
+  if (apiPath) {
+    try {
+      const urlOrigin = new URL(url).origin;
+      const apiOrigin = new URL(apiPath).origin;
+      return urlOrigin === apiOrigin;
+    } catch {
+      return false;
+    }
+  }
+
+  return false;
 }

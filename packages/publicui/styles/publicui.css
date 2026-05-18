@@ -1,0 +1,5 @@
+@layer custom {
+  .with-toolbar #main {
+    margin-inline-start: var(--plone-toolbar-width);
+  }
+}

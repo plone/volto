@@ -14,6 +14,9 @@
         "download": "Clicca per scaricare il file"
       }
     },
+    "toolbar": {
+      "label": "Barra degli strumenti"
+    },
     "views": {
       "link": {
         "linkLabel": "L'indirizzo del link è:",

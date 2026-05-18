@@ -1,20 +1,16 @@
-import { data, type LoaderFunctionArgs } from 'react-router';
-import type PloneClient from '@plone/client';
+import {
+  data,
+  RouterContextProvider,
+  type LoaderFunctionArgs,
+} from 'react-router';
+import { ploneClientContext } from 'seven/app/middleware.server';
 import { flattenToAppURL } from '@plone/helpers';
-import { getAuthFromRequest } from '@plone/react-router';
-import config from '@plone/registry';
 
-export async function loader({ params, request }: LoaderFunctionArgs) {
-  const token = await getAuthFromRequest(request);
-
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
-
-  cli.config.token = token;
+export async function loader({
+  params,
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  const cli = context.get(ploneClientContext);
 
   const path = `/${params['*'] || ''}`;
 

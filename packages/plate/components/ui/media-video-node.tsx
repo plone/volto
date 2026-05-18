@@ -1,5 +1,4 @@
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import ReactPlayer from 'react-player';
 
 import type { TResizableProps, TVideoElement } from 'platejs';
 import type { PlateElementProps } from 'platejs/react';
@@ -134,11 +133,12 @@ export const VideoElement = withHOC(
 
               {isUpload && isEditorMounted && (
                 <div ref={handleRef}>
-                  <ReactPlayer
-                    height="100%"
+                  {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                  <video
+                    className="h-full w-full rounded-sm object-cover px-0"
                     src={unsafeUrl}
-                    width="100%"
                     controls
+                    preload="metadata"
                   />
                 </div>
               )}

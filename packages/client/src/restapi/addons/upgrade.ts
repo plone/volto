@@ -4,24 +4,24 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 const upgradeAddonSchema = z.object({
-  addonId: z.string(),
+  id: z.string(),
 });
 
 export type UpgradeAddonArgs = z.infer<typeof upgradeAddonSchema>;
 
 export async function upgradeAddon(
   this: PloneClient,
-  { addonId }: UpgradeAddonArgs,
+  { id }: UpgradeAddonArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = upgradeAddonSchema.parse({
-    addonId,
+    id,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
     params: {},
   };
-  const addonName = `@addons/${validatedArgs.addonId}/upgrade`;
+  const addonName = `@addons/${validatedArgs.id}/upgrade`;
 
   return apiRequest('post', addonName, options);
 }

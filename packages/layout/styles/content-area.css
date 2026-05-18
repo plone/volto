@@ -42,7 +42,6 @@ main {
 
   .block {
     & .block-inner-container {
-      display: grid;
       width: 100%;
       max-width: var(--block-width, var(--default-container-width));
       align-items: var(--align-items, center);

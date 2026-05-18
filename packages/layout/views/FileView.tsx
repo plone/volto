@@ -1,9 +1,9 @@
 import { useRouteLoaderData } from 'react-router';
-import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
 import prettybytes from 'pretty-bytes';
 import { Container, Link } from '@plone/components';
 import type { Content } from '@plone/types';
+import type { RootLoader } from 'seven/app/root';
 
 // TODO: move this to @plone/types in some way?
 type FileContent = Content & {
@@ -16,21 +16,15 @@ type FileContent = Content & {
   };
 };
 
-type Loader = (args: Parameters<RootLoader>) => Promise<
-  Awaited<ReturnType<RootLoader>> & {
-    content: FileContent;
-  }
->;
-
 export default function FileView() {
-  const rootData = useRouteLoaderData<Loader>('root');
+  const rootData = useRouteLoaderData<RootLoader>('root');
   const { t } = useTranslation();
 
   if (!rootData) {
     return null;
   }
 
-  const { content } = rootData;
+  const content = rootData.content as FileContent;
 
   return (
     <Container width="default">

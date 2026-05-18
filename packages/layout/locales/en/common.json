@@ -14,6 +14,9 @@
         "download": "Download file"
       }
     },
+    "toolbar": {
+      "label": "Toolbar"
+    },
     "views": {
       "link": {
         "linkLabel": "The link address is:",

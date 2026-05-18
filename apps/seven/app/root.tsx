@@ -1,38 +1,38 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { data, isRouteErrorResponse } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
-import { flattenToAppURL } from '@plone/helpers';
-import type PloneClient from '@plone/client';
 import config from '@plone/registry';
-import { getAuthFromRequest } from '@plone/react-router';
 import {
+  ploneClearAuthCookieContext,
+  fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
+  PloneClientMiddleware,
   otherResources,
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
+  ploneUserContext,
 } from './middleware.server';
+import { getClearAuthCookieHeader } from '@plone/react-router';
 
 export const middleware = [
   installServerMiddleware,
+  PloneClientMiddleware,
   otherResources,
   getAPIResourceWithAuth,
+  fetchPloneContent,
 ];
 
-export async function loader({ params, request }: Route.LoaderArgs) {
+export async function loader({ params, request, context }: Route.LoaderArgs) {
   const locale = await i18next.getLocale(request);
 
-  const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
-  const token = await getAuthFromRequest(request);
-
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
-
-  cli.config.token = token;
+  const cli = context.get(ploneClientContext);
+  const content = context.get(ploneContentContext);
+  const site = context.get(ploneSiteContext);
+  const user = context.get(ploneUserContext);
 
   const path = `/${params['*'] || ''}`;
 
@@ -45,15 +45,10 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   });
 
   try {
-    const [content, site] = await Promise.all([
-      cli.getContent({ path, expand }),
-      cli.getSite(),
-    ]);
-
     for (const utility of rootContentSubRequests) {
       await utility.method({
         cli,
-        content: content.data,
+        content,
         request,
         path,
         params,
@@ -65,7 +60,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       ...rootLoaderDataUtilities.map((utility) =>
         utility.method({
           cli,
-          content: content.data,
+          content,
           request,
           path,
           params,
@@ -74,15 +69,23 @@ export async function loader({ params, request }: Route.LoaderArgs) {
       ),
     ]);
 
-    return {
-      content: flattenToAppURL(content.data),
-      site: flattenToAppURL(site.data),
+    const loaderData = {
+      content,
+      site,
       locale,
-      isAuthenticated: !!token,
+      isAuthenticated: user !== null,
       ...rootLoaderDataUtilitiesData
         .filter((item) => item)
         .reduce((acc, item) => ({ ...acc, ...item }), {}),
     };
+
+    return data(loaderData, {
+      headers: context.get(ploneClearAuthCookieContext)
+        ? {
+            'Set-Cookie': await getClearAuthCookieHeader(),
+          }
+        : undefined,
+    });
   } catch (error: any) {
     throw data('Content Not Found', {
       status: typeof error.status === 'number' ? error.status : 500,
@@ -121,11 +124,16 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
+
   if (isRouteErrorResponse(error)) {
     switch (error.status) {
       case 404:
         message = '404';
         details = 'The requested page could not be found.';
+        break;
+      case 401:
+        message = '401';
+        details = 'You are not authorized to view this page.';
         break;
       case 500:
         message = '500';

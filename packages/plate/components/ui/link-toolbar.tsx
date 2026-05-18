@@ -101,7 +101,7 @@ export function LinkFloatingToolbar({
   if (hidden) return null;
 
   const input = (
-    <div className="flex w-[330px] flex-col" {...inputProps}>
+    <div className="flex w-[330px] flex-col" {...(inputProps as any)}>
       <div className="flex items-center">
         <div className="flex items-center pr-1 pl-2 text-muted-foreground">
           <Link className="size-4" />
@@ -161,11 +161,19 @@ export function LinkFloatingToolbar({
 
   return (
     <>
-      <div ref={insertRef} className={popoverVariants()} {...insertProps}>
+      <div
+        ref={insertRef as any}
+        className={popoverVariants()}
+        {...(insertProps as any)}
+      >
         {input}
       </div>
 
-      <div ref={editRef} className={popoverVariants()} {...editProps}>
+      <div
+        ref={editRef as any}
+        className={popoverVariants()}
+        {...(editProps as any)}
+      >
         {editContent}
       </div>
     </>

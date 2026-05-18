@@ -10,7 +10,6 @@ import {
   insertMedia,
   insertVideoPlaceholder,
 } from '@platejs/media';
-import { SuggestionPlugin } from '@platejs/suggestion/react';
 import { TablePlugin } from '@platejs/table/react';
 import { insertToc } from '@platejs/toc';
 import {
@@ -20,6 +19,8 @@ import {
   KEYS,
   PathApi,
 } from 'platejs';
+import { SuggestionPlugin } from './plugins/suggestion-kit';
+import { withBlockWidthDefaults } from './plugins/block-width-plugin';
 
 const ACTION_THREE_COLUMNS = 'action_three_columns';
 
@@ -141,7 +142,9 @@ export const setBlockType = (
         return setBlockMap[type](editor, type, entry);
       }
       if (node.type !== type) {
-        editor.tf.setNodes({ type }, { at: path });
+        editor.tf.setNodes(withBlockWidthDefaults(editor, { ...node, type }), {
+          at: path,
+        });
       }
     };
 

@@ -20,7 +20,7 @@ export declare interface IntlConfig {
   locale: string;
   timeZone?: string;
   formats: unknown;
-  textComponent?: React.ComponentType | keyof React.ReactHTML;
+  textComponent?: React.ComponentType | keyof React.JSX.IntrinsicElements;
   messages: Record<string, string>;
   defaultLocale: string;
   defaultFormats: unknown;
@@ -38,7 +38,7 @@ export declare interface IntlFormatters {
       string,
       PrimitiveType | React.ReactElement | FormatXMLElementFn
     >,
-  ): string | React.ReactNodeArray;
+  ): string | React.ReactNode;
 }
 
 export declare interface IntlShape extends IntlConfig, IntlFormatters {}

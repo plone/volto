@@ -23,7 +23,9 @@ import { HrElementStatic } from '../../ui/hr-node-static';
 import { ParagraphElementStatic } from '../../ui/paragraph-node-static';
 
 export const BaseBasicBlocksKit = [
-  BaseParagraphPlugin.withComponent(ParagraphElementStatic),
+  BaseParagraphPlugin.configure({
+    node: { component: ParagraphElementStatic },
+  }),
   BaseH1Plugin.withComponent(H1ElementStatic),
   BaseH2Plugin.withComponent(H2ElementStatic),
   BaseH3Plugin.withComponent(H3ElementStatic),

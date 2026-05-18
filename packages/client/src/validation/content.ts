@@ -66,14 +66,30 @@ export const createContentDataSchema = z.object({
   '@type': z.string(),
   allow_discussion: z.boolean().optional(),
   blocks: z.unknown().optional(),
-  blocks_layout: z.array(z.string()).optional(),
+  blocks_layout: z.object({ items: z.array(z.string()) }).optional(),
   contributors: z.array(z.string()).optional(),
   creators: z.array(z.string()).optional(),
   description: z.string().optional(),
   effective: z.string().nullable().optional(),
   exclude_from_nav: z.boolean().optional(),
   expires: z.string().nullable().optional(),
+  file: z
+    .object({
+      'content-type': z.string(),
+      data: z.string(),
+      encoding: z.string(),
+      filename: z.string(),
+    })
+    .optional(),
   id: z.string().optional(),
+  image: z
+    .object({
+      'content-type': z.string(),
+      data: z.string(),
+      encoding: z.string(),
+      filename: z.string(),
+    })
+    .optional(),
   language: z.string().optional(),
   preview_caption: z.string().optional(),
   preview_image: z
@@ -94,9 +110,7 @@ export const updateContentDataSchema = z
   .object({
     allow_discussion: z.boolean().optional(),
     blocks: z.unknown().optional(),
-    blocks_layout: z
-      .object({ items: z.array(z.string()).optional() })
-      .optional(),
+    blocks_layout: z.object({ items: z.array(z.string()) }).optional(),
     contributors: z.array(z.string()).optional(),
     creators: z.array(z.string()).optional(),
     description: z.string().optional(),

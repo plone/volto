@@ -2,7 +2,7 @@ import { PlateEditor } from '../components/editor';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import plateBlockConfig from '../config/presets/block';
+import plateBlockEditorConfig from '../config/presets/block-editor';
 
 const meta = {
   title: 'Multi Plate Editor',
@@ -11,7 +11,7 @@ const meta = {
     layout: 'centered',
   },
   args: {
-    editorConfig: plateBlockConfig.editorConfig,
+    editorConfig: plateBlockEditorConfig,
     onChange: () => {},
     value: [
       {

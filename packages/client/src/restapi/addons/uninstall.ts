@@ -4,24 +4,24 @@ import type PloneClient from '../../client';
 import type { RequestResponse } from '../types';
 
 const uninstallAddonSchema = z.object({
-  addonId: z.string(),
+  id: z.string(),
 });
 
 export type UninstallAddonArgs = z.infer<typeof uninstallAddonSchema>;
 
 export async function uninstallAddon(
   this: PloneClient,
-  { addonId }: UninstallAddonArgs,
+  { id }: UninstallAddonArgs,
 ): Promise<RequestResponse<undefined>> {
   const validatedArgs = uninstallAddonSchema.parse({
-    addonId,
+    id,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
     params: {},
   };
-  const addonName = `@addons/${validatedArgs.addonId}/uninstall`;
+  const addonName = `@addons/${validatedArgs.id}/uninstall`;
 
   return apiRequest('post', addonName, options);
 }

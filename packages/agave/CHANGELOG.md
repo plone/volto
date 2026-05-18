@@ -8,6 +8,19 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Agave's local formatting and typecheck scripts with the monorepo-wide package script cleanup. 
+
+## 1.0.0-alpha.4 (2026-04-16)
+
+### Feature
+
+- Listing block @ebrehault [#7603](https://github.com/plone/volto/issues/7603)
+
 ## 1.0.0-alpha.3 (2025-12-23)
 
 ### Feature
