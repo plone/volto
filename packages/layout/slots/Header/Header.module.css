@@ -9,8 +9,6 @@
   } */
 
   .header-tools {
-    display: flex;
-    flex: 1 1 0;
-    flex-direction: row-reverse;
+    align-items: center;
   }
 }

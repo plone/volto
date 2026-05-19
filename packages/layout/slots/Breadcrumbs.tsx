@@ -17,7 +17,7 @@ const Breadcrumbs = (props: SlotComponentProps) => {
     icon: <HomeIcon size="sm" />,
   };
 
-  const breacrumbs = [rootItem, ...(items || [])];
+  const breadcrumbs = [rootItem, ...(items || [])];
 
   return (
     <SectionWrapper
@@ -26,7 +26,7 @@ const Breadcrumbs = (props: SlotComponentProps) => {
       width="layout"
       className="breadcrumbs"
     >
-      <PCBreadcrumbs items={breacrumbs}>
+      <PCBreadcrumbs items={breadcrumbs}>
         {(item) => (
           <PCBreadcrumb id={item['@id']} href={item['@id']}>
             {item.title}

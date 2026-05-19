@@ -1,0 +1,1 @@
+Include `isAuthenticated` boolean in root loader data. @arybakov05
