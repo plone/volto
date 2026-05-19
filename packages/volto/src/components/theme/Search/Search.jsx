@@ -94,6 +94,7 @@ const Search = (props) => {
         aria-live="polite"
         id="search-results"
         tabIndex={-1}
+        ref={resultsRef}
       >
         <article id="content">
           <header>
