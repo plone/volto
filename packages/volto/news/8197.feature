@@ -1,1 +1,0 @@
-Complete fr translation @jimbiscuit
