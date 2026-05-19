@@ -24,6 +24,11 @@ export function TeaserSchema({
         title: 'Target',
         widget: 'object_browser',
         mode: 'link',
+        widgetOptions: {
+          pattern_options: {
+            maximumSelectionSize: 1,
+          },
+        },
         selectedItemAttrs: [
           'Title',
           'title',

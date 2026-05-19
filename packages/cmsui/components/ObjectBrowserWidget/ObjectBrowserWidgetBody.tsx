@@ -5,8 +5,8 @@ import {
   GridList,
   GridListItem,
 } from '@plone/components/quanta';
-import { useEffect, useState, useRef } from 'react';
-import { isSelectable, getItemLabel } from './utils';
+import { useEffect, useState, useRef, useMemo } from 'react';
+import { getItemLabel } from './utils';
 import { ArrowleftIcon, ListIcon } from '@plone/components/Icons';
 import type { PressEvent } from 'react-aria-components';
 import { useObjectBrowserNavigation } from './ObjectBrowserNavigationContext';
@@ -33,7 +33,6 @@ export function ObjectBrowserWidgetBody() {
     breadcrumbs,
     selectedItems,
     handleSelectionChange,
-    mode,
     ariaControlsId,
     ...rest
   } = useObjectBrowserContext();
@@ -59,6 +58,25 @@ export function ObjectBrowserWidgetBody() {
   };
 
   const { widgetOptions } = rest;
+
+  const disabledKeys = useMemo(() => {
+    const maxSize = widgetOptions?.pattern_options?.maximumSelectionSize;
+    const selectableTypes = widgetOptions?.pattern_options?.selectableTypes;
+
+    return (items ?? [])
+      .filter((item) => {
+        if (selectableTypes?.length && !selectableTypes.includes(item['@type']))
+          return true;
+        if (
+          maxSize &&
+          selectedItems.length >= maxSize &&
+          !selectedItems.includes(item['@id'])
+        )
+          return true;
+        return false;
+      })
+      .map((item) => item['@id']);
+  }, [widgetOptions, selectedItems, items]);
 
   return (
     <div className="flex h-full w-full flex-col pt-4 pb-8">
@@ -142,10 +160,11 @@ export function ObjectBrowserWidgetBody() {
                 count: items?.length ?? 0,
               })}`}
           key={`${viewMode}-${currentPath}`} // Force re-render on viewMode or path change
-          selectionMode={'single'}
+          selectionMode={'multiple'}
           disabledBehavior="selection"
+          disabledKeys={disabledKeys}
           escapeKeyBehavior="none"
-          selectionBehavior={'replace'}
+          selectionBehavior={'toggle'}
           items={items ?? []}
           layout={viewMode ? 'grid' : 'stack'}
           // Todo: better styling
@@ -181,27 +200,21 @@ export function ObjectBrowserWidgetBody() {
           }
         >
           {(item) => {
-            // Convert selectedItems IDs to actual Brain objects for isSelectable
-            const selectedItemObjects = selectedItems
-              .map((id) => items?.find((item) => item['@id'] === id))
-              .filter(Boolean) as Brain[];
-
-            const disabled = !isSelectable(item, {
-              ...widgetOptions,
-              mode,
-              items: selectedItemObjects,
-            });
+            const isDisabled = disabledKeys.includes(item['@id']);
             const isSelected = selectedItems.includes(item['@id']);
             const reviewState = item.review_state || undefined;
 
             return (
               <GridListItem
                 id={item['@id']}
-                textValue={getItemLabel(t, item, isSelected, disabled)}
-                aria-label={getItemLabel(t, item, isSelected, disabled)}
-                data-selectable={!disabled}
-                onAction={() => handleNavigation(item)}
-                isDisabled={disabled}
+                textValue={getItemLabel(t, item, isSelected, isDisabled)}
+                aria-label={getItemLabel(t, item, isSelected, isDisabled)}
+                data-selectable={!isDisabled}
+                onAction={
+                  disabledKeys.includes(item['@id'])
+                    ? undefined
+                    : () => handleNavigation(item)
+                }
                 className={itemVariants({
                   viewMode: viewMode ? 'grid' : 'list',
                   workflow: reviewState as any,
