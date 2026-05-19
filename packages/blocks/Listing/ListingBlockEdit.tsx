@@ -1,7 +1,5 @@
-import { useCallback, type ComponentType } from 'react';
 import type { BlockEditProps } from '@plone/types';
 
-import config from '@plone/registry';
 import ListingBlockView from './ListingBlockView';
 
 const hasQuery = (value: any): boolean => {
@@ -18,13 +16,14 @@ const ListingEdit = (props: BlockEditProps) => {
   const { data } = props;
   const hasListingQuery = hasQuery(data.querystring as any);
 
-  const QuerystringWidget = config.getWidget('querystring') as
-    | ComponentType<any>
-    | undefined;
-
   if (!hasListingQuery) {
     return (
-      <div className="listing message">
+      <div
+        className={[
+          'placeholder rounded-md border border-dashed border-quanta-azure bg-quanta-air',
+          'p-6 text-center text-quanta-iron',
+        ].join(' ')}
+      >
         <p>No Results Found</p>
       </div>
     );
