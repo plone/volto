@@ -45,10 +45,7 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 
 | Package | Location |
 |---|---|
-| [`@plone/client`](https://www.npmjs.com/package/@plone/client) | [`packages/client`](https://github.com/plone/volto/tree/main/packages/client#readme) |
 | [`@plone/components`](https://www.npmjs.com/package/@plone/components) | [`packages/components`](https://github.com/plone/volto/tree/main/packages/components#readme) |
-| [`@plone/helpers`](https://www.npmjs.com/package/@plone/helpers) | [`packages/helpers`](https://github.com/plone/volto/tree/main/packages/helpers#readme) |
-| [`@plone/providers`](https://www.npmjs.com/package/@plone/providers) | [`packages/providers`](https://github.com/plone/volto/tree/main/packages/providers#readme) |
 | [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme) |
 | [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts) | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme) |
 | [`@plone/types`](https://www.npmjs.com/package/@plone/types) | [`packages/types`](https://github.com/plone/volto/tree/main/packages/types#readme) |
@@ -140,11 +137,10 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Debabarreneko mankomunitatea](https://debabarrena.eus/eu) (Website of the Commonwealth of Debabarrena, community of municipalities to centralize waste handling services, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [Debako Udala / Ayuntamiento de Deba](https://www.deba.eus/eu) (Website of the municipality of Deba, developed by [CodeSyntax](https://www.codesyntax.com/en), 2022)
 - [European Environment Agency](https://www.eea.europa.eu/en) (Website of the European Environment Agency. Developed by [Eau de Web](https://eaudeweb.ro), 2023)
-- Excellence at Humboldt-Universität zu Berlin (Website for the excellence initiative of the [Humboldt University Berlin](https://www.hu-berlin.de/de), developed by [kitconcept GmbH](https://kitconcept.com/en), 2019)
 - [Film Basque Country](https://www.filmbasquecountry.eus/en) (Website to attract, guide, and support international productions, making it easier for them to film in the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2025)
 - [Forest Information System for Europe](https://forest.eea.europa.eu) (Thematic website focusing on European forests, developed by [Eau de Web](https://eaudeweb.ro/), 2019)
 - [Forschungszentrum Jülich](https://www.fz-juelich.de/de) (Website for Forschungzentrum Jülich, which is one of the largest research institutions in Europe, developed by [kitconcept GmbH](https://kitconcept.com/en), 2022)
-- [Geosphere Austria](https://www.geosphere.at/de) (Website of the Austrian Federal Institute, national geological, geophysical, climatological and meteorological service, 2023)
+- [Geosphere Austria](https://geosphere.at/de) (Website of the Austrian Federal Institute, national geological, geophysical, climatological and meteorological service, 2023)
 - [German Aerospace Center (DLR)](https://www.dlr.de/de) (The German Aerospace Center (DLR) is the Federal Republic of Germany's research center for aeronautics. With more than 10.000 employees and a yearly budget of more than 1 billion euros, it is one of the largest research institutions in Germany, developed by [kitconcept GmbH](https://kitconcept.com/en), 2023)
 - [Helmholtz-Institut Erlangen-Nürnberg für Erneuerbare Energien (HI-ERN)](https://www.hi-ern.de/de) (Website for HI ERN, a research institution for renewable energies, developed by [kitconcept GmbH](https://kitconcept.com/en), 2022)
 - [Humboldt Labor](https://www.humboldtforum.org/de/programm/dauerangebot/ausstellung/nach-der-natur-14144/) (The Humboldt Lab is a website where the Humboldt University Berlin presents its latest research projects and findings. Developed by WLDX (a joint venture of [WAALD](https://www.waald.com/) and [CDLX](https://cdlx.de/)) and [kitconcept GmbH](https://kitconcept.com/en), 2020)
@@ -152,7 +148,6 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Industrial Emissions portal for Europe](https://industry.eea.europa.eu) (Thematic website focusing on European industrial emissions, developed by [Eau de Web](https://eaudeweb.ro/), 2020)
 - [Interpretare.ro](https://www.interpretare.ro) (Romanian medical imaging interpretation service allowing patients to submit MRI, CT, and other diagnostic imaging for professional evaluation by medical specialists, 2022)
 - [iTlent - Basque Institute of Talent in VET](https://www.itlent.eus/en) (developed by [CodeSyntax](https://www.codesyntax.com/en), 2024)
-- [Jobfamilie MEDICE](https://jobfamilie.medice.de/de) (Career website for MEDICE Arzneimittel Pütter GmbH & Co. KG, developed by [Werkbank GmbH](https://werkbank.de/), 2020)
 - [Lanku](https://www.lanku.eus) (Website for Lanku Kultur Zerbitzuak, a company offering cultural services and improvised Basque verse singing sessions across the Basque Country, developed by [CodeSyntax](https://www.codesyntax.com/en), 2023)
 - [Leibniz Institute for Science and Mathematics Education (IPN)](https://www.leibniz-ipn.de/de) (Website of the IPN, a research institute dedicated to issues related to learning and teaching of science, mathematics and computer science in and outside of schools, developed by [Starzel](https://www.starzel.de), 2023)
 - [Nuova Voce Ecologista](https://nuovavoceecologista.it) (Website of Nuova Voce Ecologista, an Italian green Party, 2020)

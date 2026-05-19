@@ -32,6 +32,8 @@ jobs:
               - 'packages/types/**'
             scripts:
               - 'packages/scripts/**'
+            voltoRazzle:
+              - 'packages/volto-razzle/**'
             voltoSlate:
               - 'packages/volto-slate/**'
             wrongNews:
@@ -77,6 +79,14 @@ jobs:
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/volto-slate
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
+      - name: volto-razzle changelog check
+        if: steps.filter.outputs.voltoRazzle == 'true'
+        run: |
+          git fetch --no-tags origin main
+          towncrier check --compare-with origin/main --dir packages/volto-razzle
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

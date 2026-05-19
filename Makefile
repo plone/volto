@@ -75,9 +75,7 @@ clean: ## Clean development environment
 
 .PHONY: install
 install: ## Set up development environment
-	# Setup ESlint for VSCode
 	pnpm i
-	node packages/scripts/vscodesettings.js
 	make build-deps
 
 ##### Documentation
@@ -152,14 +150,11 @@ packages/registry/dist: $(shell find packages/registry/src -type f)
 packages/components/dist: $(shell find packages/components/src -type f)
 	pnpm build:components
 
-packages/client/dist: $(shell find packages/client/src -type f)
-	pnpm build:client
-
 .PHONY: build-deps
 build-deps: packages/registry/dist packages/components/dist ## Build dependencies
 
 .PHONY: build-all-deps
-build-all-deps: packages/registry/dist packages/components/dist packages/client/dist ## Build all dependencies
+build-all-deps: packages/registry/dist packages/components/dist ## Build all dependencies
 
 .PHONY: i18n
 i18n: ## Converts your po files into json to translate volto frontend
@@ -398,16 +393,6 @@ subpath-working-copy-acceptance-frontend-prod-start: ## Start acceptance fronten
 .PHONY: subpath-working-copy-acceptance-test
 subpath-working-copy-acceptance-test: ## Start Cypress in interactive mode for prefixed working copy tests
 	$(MAKE) -C "./packages/volto/" subpath-working-copy-acceptance-test
-
-######### @plone/client
-
-.PHONY: acceptance-server-detached-start
-acceptance-server-detached-start: ## Starts test acceptance server main fixture in detached mode (daemon)
-	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 -e APPLY_PROFILES=plone.app.contenttypes:plone-content,plone.restapi:default,plone.volto:default,plone.app.discussion:default $(DOCKER_IMAGE_ACCEPTANCE)
-
-.PHONY: acceptance-server-detached-stop
-acceptance-server-detached-stop: ## Stop test acceptance server main fixture in detached mode (daemon)
-	docker kill plone-client-acceptance-server
 
 # include local overrides if present
 -include Makefile.local

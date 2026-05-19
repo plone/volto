@@ -16,6 +16,136 @@ exports[`renders a error message for invalid video URL in edit mode 1`] = `
 </div>
 `;
 
+exports[`renders a incorrect peertube video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="invalidVideoFormat"
+  />
+</div>
+`;
+
+exports[`renders a peertube video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="ui embed video-embed 16:9"
+  >
+    <div
+      className="fallback-placeholder"
+    />
+    <button
+      aria-label="Play video"
+      className="video-play-button"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M11,10.71 L11,25.29 L23.96,18 L11,10.71 Z M9,28.71 L9,7.29 L28.04,18 L9,28.71 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "white",
+            "height": "100%",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`renders a youtu.be video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="ui embed video-embed 16:9"
+  >
+    <img
+      alt=""
+      className="placeholder"
+      fetchpriority="high"
+      src="https://img.youtube.com/vi/KwRSRRyuk-Q/sddefault.jpg"
+    />
+    <button
+      aria-label="Play video"
+      className="video-play-button"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M11,10.71 L11,25.29 L23.96,18 L11,10.71 Z M9,28.71 L9,7.29 L28.04,18 L9,28.71 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "white",
+            "height": "100%",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`renders a youtube short video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="ui embed video-embed 16:9"
+  >
+    <img
+      alt=""
+      className="placeholder"
+      fetchpriority="high"
+      src="https://img.youtube.com/vi/ayyZ_S30Lhc/sddefault.jpg"
+    />
+    <button
+      aria-label="Play video"
+      className="video-play-button"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon"
+        dangerouslySetInnerHTML={
+          {
+            "__html": "<path fill-rule="evenodd" d="M11,10.71 L11,25.29 L23.96,18 L11,10.71 Z M9,28.71 L9,7.29 L28.04,18 L9,28.71 Z"/>",
+          }
+        }
+        onClick={null}
+        style={
+          {
+            "fill": "white",
+            "height": "100%",
+            "width": "auto",
+          }
+        }
+        viewBox="0 0 36 36"
+        xmlns="http://www.w3.org/2000/svg"
+      />
+    </button>
+  </div>
+</div>
+`;
+
 exports[`renders a youtube video body component 1`] = `
 <div
   className="video-inner"
@@ -28,7 +158,7 @@ exports[`renders a youtube video body component 1`] = `
   >
     <i
       aria-hidden="true"
-      className="play icon"
+      className="video play icon"
       onClick={[Function]}
     />
     <img
@@ -51,7 +181,7 @@ exports[`renders a youtube video body component in edit mode 1`] = `
   >
     <i
       aria-hidden="true"
-      className="play icon"
+      className="video play icon"
       onClick={[Function]}
     />
     <img
