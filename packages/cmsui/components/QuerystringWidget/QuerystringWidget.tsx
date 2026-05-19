@@ -16,6 +16,8 @@ import {
   TextField,
   Select,
   SelectItem,
+  ComboBox,
+  ComboBoxItem,
   Button,
 } from '@plone/components/quanta';
 import {
@@ -103,18 +105,19 @@ function QueryCriterionRow({
       `}
     >
       <div className="relative z-50 flex-1">
-        <Select
+        <ComboBox
           label={index === 0 ? 'List content if' : undefined}
           selectedKey={criterion.i}
           onSelectionChange={(key) => key && handleFieldChange(key as string)}
           isDisabled={disabled}
+          placeholder="Search field…"
         >
           {availableFields.map((f) => (
-            <SelectItem key={f.name} id={f.name}>
+            <ComboBoxItem key={f.name} id={f.name} textValue={f.title}>
               {f.title}
-            </SelectItem>
+            </ComboBoxItem>
           ))}
-        </Select>
+        </ComboBox>
       </div>
 
       <div className="relative z-50 flex-1">
