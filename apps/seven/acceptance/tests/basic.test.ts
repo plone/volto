@@ -2,7 +2,7 @@ import { expect, test } from '../../../../packages/tooling/playwright/test';
 
 test.describe('Basic Playwright Test', () => {
   test('should visit the root URL', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('http://localhost:3000/');
     await expect(page).toHaveURL(/\/$/);
     await expect(page.getByText('Home')).toBeVisible();
   });
