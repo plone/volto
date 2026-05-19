@@ -100,6 +100,57 @@ The grid block has the following configuration settings.
     };
     ```
 
+### Add custom blocks to a grid block
+
+When working with the grid block, you need to use both the `allowedBlocks` and `blocksConfig` configuration settings.
+Only adding a block to `allowedBlocks` is not enough.
+The grid block uses its own `blocksConfig` to render inner blocks.
+
+The following examples show how to add a custom block `countUpBlock` to a grid block's configuration settings.
+
+First, add the block to `allowedBlocks`.
+
+```js
+config.blocks.blocksConfig.gridBlock.allowedBlocks.push('countUpBlock');
+```
+
+Then add the block configuration to the grid block's `blocksConfig`.
+
+```js
+config.blocks.blocksConfig.gridBlock.blocksConfig = {
+  ...config.blocks.blocksConfig.gridBlock.blocksConfig,
+  countUpBlock: config.blocks.blocksConfig.countUpBlock,
+};
+```
+
+### Customize existing blocks in a grid block
+
+The following example shows how to customize the behavior of existing blocks within the grid.
+
+```js
+config.blocks.blocksConfig.gridBlock.allowedBlocks = ['teaser', 'image', 'slate'];
+config.blocks.blocksConfig.gridBlock.blocksConfig = {
+  // You can customize the blocks inside the grid like this:
+  ...config.blocks.blocksConfig.gridBlock.blocksConfig,
+  teaser: {
+    ...config.blocks.blocksConfig.gridBlock.blocksConfig.teaser,
+    variations: [
+      {
+        id: 'default',
+        isDefault: true,
+        title: 'Default',
+        template: DefaultBody,
+      },
+      {
+        id: 'variation2',
+        title: 'variation #2',
+        template: DefaultBody2,
+      },
+    ],
+  },
+};
+```
+
 ## Block image styling customization
 
 By default, the images inside a grid block are using a 16/9 aspect ratio.
