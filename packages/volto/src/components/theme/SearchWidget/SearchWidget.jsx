@@ -49,11 +49,7 @@ const SearchWidget = (props) => {
   }, [dispatch, pathname]);
 
   return (
-    <Form
-      action={`${navroot?.navroot?.['@id']}/search`}
-      onSubmit={onSubmit}
-      aria-controls="search-results"
-    >
+    <Form action={`${navroot?.navroot?.['@id']}/search`} onSubmit={onSubmit}>
       <Form.Field className="searchbox">
         <Input
           aria-label={intl.formatMessage(messages.search)}
@@ -65,10 +61,7 @@ const SearchWidget = (props) => {
           placeholder={intl.formatMessage(messages.searchSite)}
           title={intl.formatMessage(messages.search)}
         />
-        <button
-          aria-label={intl.formatMessage(messages.search)}
-          aria-controls="search-results"
-        >
+        <button aria-label={intl.formatMessage(messages.search)}>
           <Icon name={zoomSVG} size="18px" />
         </button>
       </Form.Field>
