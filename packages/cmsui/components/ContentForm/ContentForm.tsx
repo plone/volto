@@ -70,14 +70,14 @@ export default function ContentForm({
         <div
           id="main"
           className={clsx(
-            'grid transition-[grid-template-columns] duration-200 ease-linear',
+            'grid h-screen transition-[grid-template-columns] duration-200 ease-linear',
             {
               'grid-cols-[1fr_300px]': !collapsed,
               'grid-cols-[1fr_0px]': collapsed,
             },
           )}
         >
-          <main className="mx-4 mt-8 h-screen">
+          <main className="mx-4 h-full overflow-auto pt-8">
             <Tabs
               tabs={[
                 {
