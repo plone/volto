@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import { CookiesProvider } from 'react-cookie';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 

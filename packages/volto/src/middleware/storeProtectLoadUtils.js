@@ -32,7 +32,7 @@ export const protectLoadStart =
       case LOCATION_CHANGE:
         const { location } = action.payload;
         const { pathname: path } = location;
-        const currentPath = getState().router.location.pathname;
+        const currentPath = getState().router.location?.pathname;
         const result = next(action);
         if (isCmsUi(path)) {
           // Next path: isCmsUI, Non Content. There is no
@@ -50,7 +50,7 @@ export const protectLoadStart =
             // a not isCmsUi, Content pass. However, reset will
             // not occur if moving between two content paths,
             // only the postponed location will be booked.
-            resetBeforeFetch: isCmsUi(currentPath),
+            resetBeforeFetch: currentPath ? isCmsUi(currentPath) : false,
           });
         }
         return result;

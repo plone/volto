@@ -28,6 +28,22 @@ It is usually better and quicker to move your items into new locations and copy 
 ```
 ````
 
+(volto-upgrade-guide-20.x.x)=
+
+## Upgrading to Volto 20.x.x
+
+### Updated to `redux` 5.x and related packages
+
+Volto now uses `redux` 5.x.
+See https://redux.js.org/usage/migrations/migrating-rtk-2 for changes that might be needed in your code.
+
+This includes an update to `redux-thunk` 3.1.0.
+If you have tests that import the `thunk` middleware, they must be updated to use a non-default name:
+
+```js
+import { thunk } from 'redux-thunk';
+```
+
 (volto-upgrade-guide-19.x.x)=
 
 ## Upgrading to Volto 19.x.x
