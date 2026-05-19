@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.20 (2026-05-19)
+
+### Bugfix
+
+- Corrected the typings for `contentIcons` and `controlPanelsIcons` in `SettingsConfig` to use strings instead of React components, matching actual SVG usage. @vigneshshiv28 [#7339](https://github.com/plone/volto/issues/7339)
+
 ## 2.0.0-alpha.19 (2026-05-08)
 
 ### Bugfix
