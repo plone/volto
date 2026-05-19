@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 2.7.2 (2026-05-13)
+
+### Internal
+
+- Removed tsconfig development dependency. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+- Bump vite from 5.4.9 to 6.4.2. [#8082](https://github.com/plone/volto/issues/8082)
+
 ## 2.7.1 (2026-04-07)
 
 ### Internal

@@ -55,9 +55,7 @@ describe('actions Tests', () => {
     cy.get('button[class="ui button icon item"]').eq(0).click();
     cy.get('#field-0_title').clear().type('my-page-rename');
     cy.get('#field-0_id').clear().type('my-page-rename');
-    cy.get(
-      'button[class="ui basic circular primary right floated button"]',
-    ).click();
+    cy.get('.ui.modal .actions .ui.primary.button').click();
     cy.get('tr[aria-label="/my-page-rename"]').within(() => {
       cy.get('a[class="icon-align-name"]').should(
         'have.attr',

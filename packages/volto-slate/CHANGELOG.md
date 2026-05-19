@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 18.9.2 (2026-05-13)
+
+### Feature
+
+- Complete translations for es @cyphra, @erral @macagua [#8178](https://github.com/plone/volto/issues/8178)
+
+### Bugfix
+
+- fix LinkEditor not opening from SlateEditor @CannedShroud [#4130](https://github.com/plone/volto/issues/4130)
+
+## 18.9.1 (2026-04-16)
+
+### Internal
+
+- Update devDependency: jsdom 23.0.0. @wesleybl [#8107](https://github.com/plone/volto/issues/8107)
+
 ## 18.9.0 (2026-04-07)
 
 ### Feature
