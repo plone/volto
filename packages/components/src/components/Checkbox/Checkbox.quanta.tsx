@@ -39,9 +39,12 @@ export function CheckboxGroup(props: CheckboxGroupProps) {
 
 const checkboxStyles = tv({
   base: 'group flex items-center gap-2 text-sm transition',
+});
+
+const labelStyles = tv({
   variants: {
     isDisabled: {
-      false: 'text-quanta-cobalt',
+      false: 'text-quanta-denim',
       true: `
         text-quanta-iron
         forced-colors:text-[GrayText]
@@ -84,7 +87,17 @@ const boxStyles = tv({
 const iconStyles =
   'w-4 h-4 text-white group-disabled:text-quanta-iron forced-colors:text-[HighlightText]';
 
-export function Checkbox(props: CheckboxProps) {
+export interface QuantaCheckboxProps extends Omit<CheckboxProps, 'children'> {
+  // Form widgets pass the label via `label` (from the schema's `title`),
+  // while React Aria's Checkbox uses `children` for its visible content.
+  // Accept both so the same component works in either context.
+  // `children` is narrowed to plain ReactNode (no render-function form) because
+  // we render it inside a span for label-specific styling.
+  label?: ReactNode;
+  children?: ReactNode;
+}
+
+export function Checkbox({ label, children, ...props }: QuantaCheckboxProps) {
   return (
     <AriaCheckbox
       {...props}
@@ -92,11 +105,12 @@ export function Checkbox(props: CheckboxProps) {
         checkboxStyles({ ...renderProps, className }),
       )}
     >
-      {({ isSelected, isIndeterminate, ...renderProps }) => (
+      {({ isSelected, isIndeterminate, isDisabled, ...renderProps }) => (
         <>
           <div
             className={boxStyles({
               isSelected: isSelected || isIndeterminate,
+              isDisabled,
               ...renderProps,
             })}
           >
@@ -106,7 +120,9 @@ export function Checkbox(props: CheckboxProps) {
               <CheckboxIcon aria-hidden className={iconStyles} />
             ) : null}
           </div>
-          {props.children}
+          <span className={labelStyles({ isDisabled })}>
+            {children ?? label}
+          </span>
         </>
       )}
     </AriaCheckbox>
