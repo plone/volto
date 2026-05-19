@@ -1,19 +1,23 @@
 .event-view {
-  .desktop {
-    display: grid;
-    grid-template-columns: 70% 30%;
-    visibility: visible;
+  display: grid;
+  grid-template-areas:
+    'title aside'
+    'content aside';
+  grid-template-columns: 70% 30%;
+
+  .title {
+    grid-area: title;
   }
 
-  .mobile {
-    display: none;
-    visibility: hidden;
+  .content {
+    grid-area: content;
   }
 
   aside {
     padding: 1rem;
     border: 1px solid lightgray;
     box-shadow: 0 1px 2px 0 lightgray;
+    grid-area: aside;
 
     dt {
       display: block;
@@ -44,15 +48,7 @@
     margin-right: 1rem;
     margin-left: 1rem;
 
-    .desktop {
-      display: none;
-      visibility: hidden;
-    }
-
-    .mobile {
-      display: grid;
-      grid-template-columns: 1fr;
-      visibility: visible;
-    }
+    grid-template-areas: 'title' 'aside' 'content';
+    grid-template-columns: 1fr;
   }
 }
