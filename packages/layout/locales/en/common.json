@@ -1,0 +1,21 @@
+{
+  "layout": {
+    "languageSwitcher": {
+      "switchTo": "Switch to {{ lang }}"
+    },
+    "contenttypes": {
+      "common": {
+        "size": "Size:"
+      },
+      "image": {
+        "download": "Click to download full sized image"
+      },
+      "file": {
+        "download": "Download file"
+      }
+    },
+    "toolbar": {
+      "label": "Toolbar"
+    }
+  }
+}

@@ -7,14 +7,16 @@ import DeleteIcon from '@plone/components/icons/bin.svg?react';
 import { Button } from '@plone/components/quanta';
 
 import RecurrenceWidgetModal from './Components/RecurrenceWidgetModal';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAtomValue } from 'jotai';
 import { formAtom } from '../../routes/atoms';
 import type { FieldProps } from '../Form/Field';
-import { RRule, rrulestr } from 'rrule';
+import pkg from 'rrule';
 import SelectedDates from './Components/SelectedDates';
 
-interface RecurrenceWidgetProps extends FieldProps {}
+const { rrulestr } = pkg;
+
+type RecurrenceWidgetProps = FieldProps;
 
 export function RecurrenceWidget({
   label,
@@ -34,16 +36,25 @@ export function RecurrenceWidget({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Group className="group mb-4 flex flex-col gap-1 hover:cursor-default">
+    <Group
+      className={`
+        group mb-4 flex flex-col gap-1
+        hover:cursor-default
+      `}
+    >
       {label && <Label>{label}</Label>}
       <div className="flex">
         <DialogTrigger isOpen={isModalOpen}>
           <Button
-            className="pressed:bg-quanta-air pressed:outline-quanta-cobalt h-9 w-9 hover:cursor-pointer"
+            className={`
+              h-9 w-9
+              hover:cursor-pointer
+              pressed:bg-quanta-air pressed:outline-quanta-cobalt
+            `}
             onClick={(e) => setIsModalOpen(true)}
           >
             <EditIcon
-              className="fill-quanta-cobalt color-quanta-cobalt"
+              className="color-quanta-cobalt fill-quanta-cobalt"
               style={{ fill: 'fill-quanta-cobalt' }}
             />
           </Button>
@@ -56,13 +67,16 @@ export function RecurrenceWidget({
         </DialogTrigger>
 
         <Button
-          className="h-9 w-9 hover:cursor-pointer"
+          className={`
+            h-9 w-9
+            hover:cursor-pointer
+          `}
           onClick={(e) => {
             if (onChange) onChange(null);
           }}
         >
           <DeleteIcon
-            className="fill-quanta-candy color-quanta-candy"
+            className="color-quanta-candy fill-quanta-candy"
             style={{ fill: 'fill-quanta-candy' }}
           />
         </Button>
@@ -70,7 +84,7 @@ export function RecurrenceWidget({
 
       {recurrence && (
         <div className="mt-2">
-          <div className="bg-muted-foreground/10 text-muted-foreground p-2 font-semibold">
+          <div className="bg-muted-foreground/10 p-2 font-semibold text-muted-foreground">
             <div>{rruleText}</div>
           </div>
           <div className="mt-2">

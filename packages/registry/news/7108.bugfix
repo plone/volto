@@ -1,1 +1,0 @@
-`getUtility` returns an empty object if called with a utility type that has not been registered. @davisagli

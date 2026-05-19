@@ -1,5 +1,4 @@
 import type {
-  WidgetsConfigById,
   WidgetsConfigByFactory,
   WidgetsConfigByType,
   WidgetsConfigByVocabulary,

@@ -2,6 +2,7 @@ import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  plugins: [],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -9,14 +10,14 @@ export default defineConfig({
     // you might want to disable it, if you don't have tests that rely on CSS
     // since parsing CSS is slow
     // css: true,
-    exclude: ['**/node_modules/**', '**/lib/**'],
+    exclude: ['**/node_modules/**', '**/lib/**', '**/acceptance/**'],
     coverage: {
       exclude: [
         ...coverageConfigDefaults.exclude,
         'packages/**',
         'build/**',
         '*.config.ts',
-        'registry.loader.js',
+        '.plone/**',
         'app/entry.server.tsx',
         'app/entry.client.tsx',
         'app/i18next.server.ts',
@@ -24,5 +25,8 @@ export default defineConfig({
         'app/routes.ts',
       ],
     },
+  },
+  resolve: {
+    tsconfigPaths: true,
   },
 });

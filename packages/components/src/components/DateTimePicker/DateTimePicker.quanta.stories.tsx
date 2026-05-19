@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Form } from 'react-aria-components';
 import { now, getLocalTimeZone } from '@internationalized/date';
 import { Button } from '../Button/Button.quanta';

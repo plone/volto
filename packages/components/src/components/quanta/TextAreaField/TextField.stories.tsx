@@ -1,7 +1,7 @@
 import React from 'react';
 import { QuantaTextAreaField } from './TextAreaField';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof QuantaTextAreaField> = {
   title: 'Basic/Quanta/TextAreaField',

@@ -1,4 +1,4 @@
-import { describe, expect, it, afterEach, beforeEach } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { getAddonRoutesConfig } from './index';
 import type { ReactRouterRouteEntry } from '@plone/types';
 

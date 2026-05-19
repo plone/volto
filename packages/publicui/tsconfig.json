@@ -1,6 +1,10 @@
 {
   "extends": "tsconfig/react-library.json",
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "../../apps/seven/.react-router/types/**/*"
+  ],
   "exclude": [
     "node_modules",
     "build",
@@ -12,6 +16,11 @@
   ],
   "compilerOptions": {
     "types": ["vite/client"],
+    "rootDirs": [
+      ".",
+      "../../apps/seven/app",
+      "../../apps/seven/.react-router/types/app"
+    ],
     "paths": {
       "seven/*": ["../../apps/seven/*"]
     }

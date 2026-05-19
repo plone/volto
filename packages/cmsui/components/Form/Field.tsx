@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import config from '@plone/registry';
 import type {
   WidgetsConfigById,
@@ -7,20 +8,19 @@ import type {
   WidgetsConfigByWidget,
   Content,
 } from '@plone/types';
-import { useSetFieldFocusAtom } from '../../helpers/atoms';
+import { useFieldFocusedAtom } from '@plone/helpers';
 import { useFieldContext } from './Form';
-import type { PrimitiveAtom } from 'jotai';
-import type { DeepKeys } from '@tanstack/react-form';
+import { type PrimitiveAtom } from 'jotai';
+import { type DeepKeys } from '@tanstack/react-form';
 
-export type FieldProps = {
+interface BaseFieldProps {
   id?: keyof WidgetsConfigById;
   className?: string;
   label: string;
   name: DeepKeys<Content>;
   defaultValue?: unknown;
   required?: boolean;
-  error?: Array<undefined>;
-  formAtom: PrimitiveAtom<Content>;
+  error?: Array<unknown>;
   widget?: keyof WidgetsConfigByWidget;
   vocabulary?: { '@id': keyof WidgetsConfigByVocabulary };
   choices?: Array<[string, string]>;
@@ -33,7 +33,18 @@ export type FieldProps = {
   onChange?: (value: any) => void;
   placeholder?: string;
   title?: string /* To remove? */;
+  value: any;
+}
+
+type AtomFieldProps = BaseFieldProps & {
+  formAtom: PrimitiveAtom<Content>;
 };
+
+type FormFieldProps = BaseFieldProps & {
+  formAtom?: undefined;
+};
+
+export type FieldProps = AtomFieldProps | FormFieldProps;
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**
@@ -148,42 +159,84 @@ const getWidgetByType = (
 ): React.ComponentType<any> | null =>
   type ? (config.getWidget(type) ?? null) : null;
 
-const Field = (props: FieldProps) => {
+const renderFieldWidget = ({
+  fieldProps,
+  onFieldChange,
+}: {
+  fieldProps: FieldProps;
+  onFieldChange: (value: any) => void;
+}) => {
   const Widget =
-    getWidgetByFieldId(props.name) ||
-    getWidgetFromTaggedValues(props.widgetOptions) ||
-    getWidgetByName(props.widget) ||
-    getWidgetByChoices(props) ||
-    getWidgetByVocabulary(props.vocabulary) ||
-    getWidgetByVocabularyFromHint(props) ||
-    getWidgetByFactory(props.factory) ||
-    getWidgetByType(props.type) ||
+    getWidgetByFieldId(fieldProps.id) ||
+    getWidgetFromTaggedValues(fieldProps.widgetOptions) ||
+    getWidgetByName(fieldProps.widget) ||
+    getWidgetByChoices(fieldProps) ||
+    getWidgetByVocabulary(fieldProps.vocabulary) ||
+    getWidgetByVocabularyFromHint(fieldProps) ||
+    getWidgetByFactory(fieldProps.factory) ||
+    getWidgetByType(fieldProps.type) ||
     getWidgetDefault();
 
   // Adding the widget props from tagged values (if any)
   const widgetProps = {
-    ...props,
-    label: props.title,
-    placeholder: props.placeholder || 'Type something...',
-    ...getWidgetPropsFromTaggedValues(props.widgetOptions),
+    ...fieldProps,
+    label: fieldProps.title,
+    placeholder: fieldProps.placeholder || 'Type something...',
+    ...getWidgetPropsFromTaggedValues(fieldProps.widgetOptions),
   };
 
-  const field = useFieldContext<string>();
-
-  const globalFormSetter = useSetFieldFocusAtom<Content>({
-    anAtom: props.formAtom,
-    field: props.name,
-  });
-
-  return props.mode !== MODE_HIDDEN ? (
+  return fieldProps.mode !== MODE_HIDDEN ? (
     <Widget
       {...widgetProps}
       onChange={(value: any) => {
-        globalFormSetter(value);
-        return field.handleChange(value);
+        fieldProps.onChange?.(value);
+        onFieldChange(value);
       }}
     />
   ) : null;
+};
+
+const AtomField = (props: AtomFieldProps) => {
+  const field = useFieldContext();
+  const value = field.state.value;
+
+  const [fieldValue, setField] = useFieldFocusedAtom<
+    Content,
+    DeepKeys<Content>
+  >(props.formAtom, props.name);
+
+  // atom -> form (programmatic update; runs TanStack Form’s flow)
+  useEffect(() => {
+    if (fieldValue !== value) {
+      // prefer handleChange to keep validators/touched consistent
+      field.handleChange(fieldValue as typeof value);
+    }
+  }, [fieldValue, value, field]);
+
+  return renderFieldWidget({
+    fieldProps: props,
+    onFieldChange: (value: any) => {
+      setField(value);
+      return field.handleChange(value);
+    },
+  });
+};
+
+const FormField = (props: FormFieldProps) => {
+  const field = useFieldContext();
+
+  return renderFieldWidget({
+    fieldProps: props,
+    onFieldChange: (value: any) => field.handleChange(value),
+  });
+};
+
+const Field = (props: FieldProps) => {
+  if ('formAtom' in props && props.formAtom) {
+    return <AtomField {...props} />;
+  }
+
+  return <FormField {...props} />;
 };
 
 export default Field;

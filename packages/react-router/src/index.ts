@@ -81,7 +81,7 @@ if (secret === 'default' && process.env.NODE_ENV === 'production') {
 export const cookie = createCookie('auth_seven', {
   secrets: [secret],
   // 30 days
-  maxAge: 30 * 24 * 60 * 60,
+  // maxAge: 30 * 24 * 60 * 60,
   httpOnly: true,
   secure: process.env.NODE_ENV === 'production',
   sameSite: 'lax',
@@ -93,28 +93,44 @@ export async function getAuthFromRequest(
   let token;
   try {
     token = await cookie.parse(request.headers.get('Cookie'));
-  } catch (error) {
+  } catch {
     // asd
   }
   return token ?? undefined;
 }
 
-export async function setAuthOnResponse(response: Response, token: string) {
-  const header = await cookie.serialize(token);
+export async function setAuthOnResponse(
+  response: Response,
+  token: string,
+  options?: Parameters<typeof cookie.serialize>[1],
+) {
+  const header = await cookie.serialize(token, options);
   response.headers.append('Set-Cookie', header);
   return response;
+}
+
+export async function clearAuthOnResponse(
+  response: Response,
+  options?: Parameters<typeof cookie.serialize>[1],
+) {
+  const header = await getClearAuthCookieHeader(options);
+  response.headers.append('Set-Cookie', header);
+  return response;
+}
+
+export async function getClearAuthCookieHeader(
+  options?: Parameters<typeof cookie.serialize>[1],
+) {
+  return await cookie.serialize('', {
+    maxAge: 0,
+    ...options,
+  });
 }
 
 export async function requireAuthCookie(request: Request) {
   const token = await getAuthFromRequest(request);
   if (!token) {
-    throw redirect('/login', {
-      headers: {
-        'Set-Cookie': await cookie.serialize('', {
-          maxAge: 0,
-        }),
-      },
-    });
+    throw await redirectWithClearedCookie('/login');
   }
   return token;
 }
@@ -129,12 +145,6 @@ export async function redirectIfLoggedInLoader({
   return null;
 }
 
-export async function redirectWithClearedCookie() {
-  return redirect('/', {
-    headers: {
-      'Set-Cookie': await cookie.serialize('', {
-        maxAge: 0,
-      }),
-    },
-  });
+export async function redirectWithClearedCookie(url = '/') {
+  return clearAuthOnResponse(redirect(url));
 }

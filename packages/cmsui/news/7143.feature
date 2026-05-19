@@ -1,1 +1,0 @@
-Added a @search route as a helper for widgets. @pnicolli

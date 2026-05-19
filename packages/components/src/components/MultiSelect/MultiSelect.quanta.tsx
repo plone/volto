@@ -202,7 +202,13 @@ export function MultiSelect({
     <div className={twMerge('w-full', className)}>
       {label && <Label>{label}</Label>}
       <div ref={triggerRef} className="relative">
-        <div className="relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-1.5 shadow-sm focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-400">
+        <div
+          className={`
+            relative flex min-h-10 w-full flex-wrap items-center gap-1 rounded-md border
+            border-gray-300 bg-white px-3 py-1.5 shadow-sm
+            focus-within:border-gray-500 focus-within:ring-2 focus-within:ring-gray-400
+          `}
+        >
           <TagGroup
             id={tagGroupIdentifier}
             aria-label="Selected items"
@@ -214,14 +220,21 @@ export function MultiSelect({
             >
               {(item: Option) => (
                 <Tag
-                  className="inline-flex items-center gap-x-1.5 rounded-md bg-gray-200 px-2 py-0.5 text-sm text-gray-800"
+                  className={`
+                    inline-flex items-center gap-x-1.5 rounded-md bg-gray-200 px-2 py-0.5 text-sm
+                    text-gray-800
+                  `}
                   textValue={item.name}
                   id={item.id}
                 >
                   {item.name}
                   <Button
                     slot="remove"
-                    className="grid cursor-pointer place-content-center text-gray-500 hover:bg-gray-600 hover:text-gray-300 focus:bg-gray-600 focus:outline-none"
+                    className={`
+                      grid cursor-pointer place-content-center text-gray-500
+                      hover:bg-gray-600 hover:text-gray-300
+                      focus:bg-gray-600 focus:outline-none
+                    `}
                     type="button"
                   >
                     <Close size="xs" />
@@ -251,11 +264,18 @@ export function MultiSelect({
                 accessibleList.setFilterText('');
               }}
               onKeyDownCapture={onKeyDownCapture}
-              className="min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-gray-800 outline-0 disabled:text-gray-200"
+              className={`
+                min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-gray-800 outline-0
+                disabled:text-gray-200
+              `}
             />
 
             <Button
-              className="absolute top-1/2 right-2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600 focus:outline-none"
+              className={`
+                absolute top-1/2 right-2 -translate-y-1/2 p-1 text-gray-400
+                hover:text-gray-600
+                focus:outline-none
+              `}
               type="button"
             >
               <ChevrondownIcon />
@@ -277,7 +297,11 @@ export function MultiSelect({
                     ? () => renderEmptyState(fieldState.inputValue)
                     : () => (
                         <div
-                          className="block cursor-pointer rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                          className={`
+                            block cursor-pointer rounded-md px-3 py-2 text-gray-700
+                            hover:bg-gray-100
+                            focus:bg-gray-100 focus:outline-none
+                          `}
                           role="button"
                           onMouseDown={(e) => {
                             e.stopPropagation();
@@ -306,7 +330,12 @@ export function MultiSelect({
                     key={item.id}
                     id={item.id}
                     textValue={item.name}
-                    className="cursor-pointer rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none data-[focused]:bg-gray-100"
+                    className={`
+                      cursor-pointer rounded-md px-3 py-2 text-gray-700
+                      hover:bg-gray-100
+                      focus:bg-gray-100 focus:outline-none
+                      data-[focused]:bg-gray-100
+                    `}
                   >
                     {item.name}
                   </ListBoxItem>

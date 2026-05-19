@@ -28,6 +28,22 @@ type styleClassNameExtendersType = ({
   classNames: string[];
 }) => string[];
 
+export type PlateConfig = {
+  editorConfig: {
+    plugins: any[];
+    [key: string]: unknown;
+  };
+  rendererConfig: {
+    plugins: any[];
+    [key: string]: unknown;
+  };
+  floatingToolbarButtons?: React.ComponentType<any>;
+};
+
+interface PlateSettings {
+  block: PlateConfig;
+}
+
 export interface SettingsConfig {
   [key: string]: unknown;
   host: string;
@@ -53,9 +69,7 @@ export interface SettingsConfig {
   openExternalLinkInNewTab: boolean;
   notSupportedBrowsers: string[];
   defaultPageSize: number;
-  isMultilingual: boolean;
   supportedLanguages: string[]; // TODO: Improve list of possible values
-  defaultLanguage: string;
   navDepth: number;
   expressMiddleware: unknown;
   defaultBlockType: string; // TODO: Improve list of possible values
@@ -64,7 +78,7 @@ export interface SettingsConfig {
   persistentReducers: string[];
   initialReducersBlacklist: string[];
   asyncPropsExtenders: unknown[];
-  contentIcons: Record<string, React.ComponentType>;
+  contentIcons: Record<string, string>;
   loadables: unknown;
   lazyBundles: {
     [key: string]: string[];
@@ -83,7 +97,7 @@ export interface SettingsConfig {
   showTags: boolean;
   showRelatedItems: boolean;
   controlpanels: Controlpanel[];
-  controlPanelsIcons: Record<string, React.ComponentType>;
+  controlPanelsIcons: Record<string, string>;
   filterControlPanels: unknown;
   filterControlPanelsSchema: (schema: Controlpanel) => ControlPanelSchema;
   externalRoutes: {
@@ -108,4 +122,5 @@ export interface SettingsConfig {
   };
   cssLayers: string[];
   hideBreadcrumbs: string[]; // Content types for which to hide breadcrumbs
+  plate: PlateSettings | Record<string, never>;
 }

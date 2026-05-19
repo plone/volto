@@ -133,6 +133,7 @@ const validateFieldsPerFieldset = (
 
   Object.entries(schema.properties).forEach(([fieldId, field]) => {
     let fieldData = formData[fieldId];
+    field = { ...field, ...field.widgetOptions?.frontendOptions?.widgetProps };
 
     // Validation per specific validator set (format property)
     const hasSpecificValidator =
@@ -231,6 +232,10 @@ const validateFieldsPerFieldset = (
         ...perBehaviorFieldErrors,
         ...blockTypeFieldErrors,
       ];
+    }
+
+    if (errors[fieldId]) {
+      errors[fieldId].title = field.title;
     }
   });
 

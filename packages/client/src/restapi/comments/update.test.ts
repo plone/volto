@@ -8,7 +8,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -30,12 +30,9 @@ describe('Update Comment', () => {
     await cli.createContent({ path: '/', data: contentData });
 
     const registryData = {
-      'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled':
-        true,
-      'plone.app.discussion.interfaces.IDiscussionSettings.edit_comment_enabled':
-        true,
-      'plone.app.discussion.interfaces.IDiscussionSettings.delete_own_comment_enabled':
-        true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled': true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.edit_comment_enabled': true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.delete_own_comment_enabled': true,
     };
     await cli.updateRegistry({ data: registryData });
 
@@ -54,7 +51,7 @@ describe('Update Comment', () => {
 
     const comment_id = commentData.data.items[0].comment_id;
 
-    const result = await cli.updateComment({
+    await cli.updateComment({
       path: contentData.title,
       comment_id,
       data: addCommentData,
@@ -71,12 +68,9 @@ describe('Update Comment', () => {
 
   test('Failure', async () => {
     const registryData = {
-      'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled':
-        true,
-      'plone.app.discussion.interfaces.IDiscussionSettings.edit_comment_enabled':
-        true,
-      'plone.app.discussion.interfaces.IDiscussionSettings.delete_own_comment_enabled':
-        true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled': true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.edit_comment_enabled': true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.delete_own_comment_enabled': true,
     };
     await cli.updateRegistry({ data: registryData });
 
@@ -88,7 +82,7 @@ describe('Update Comment', () => {
     };
 
     try {
-      const result = await cli.updateComment({
+      await cli.updateComment({
         path,
         comment_id,
         data: updateCommentData,

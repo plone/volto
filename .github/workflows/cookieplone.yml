@@ -2,7 +2,7 @@ name: Cookieplone
 on: [push, pull_request]
 
 env:
-  python-version: "3.13"
+  python-version: '3.13'
   CYPRESS_RETRIES: 2
 
 jobs:
@@ -14,9 +14,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [22.x]
+        node-version: [24.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Node.js environment
         uses: ./.github/actions/node_env_setup
         with:
@@ -30,7 +30,7 @@ jobs:
 
       - name: Generate Cookieplone-based frontend addon
         run: |
-          COOKIEPLONE_REPOSITORY_TAG=seventemplate uvx cookieplone seven_addon --no-input
+          uvx cookieplone seven_addon --no-input
 
       - name: Install generated package
         working-directory: seven-add-on
@@ -49,25 +49,6 @@ jobs:
       - name: Run formatters in the generated package
         working-directory: seven-add-on
         run: make format
-
-      - uses: JarvusInnovations/background-action@v1
-        name: Start Servers and wait for them to start
-        with:
-          run: |
-            make ci-acceptance-backend-start &
-            make acceptance-frontend-prod-start &
-          wait-on: |
-            http-get://localhost:55001/plone
-            http://localhost:3000
-          tail: true
-          log-output-resume: stderr
-          wait-for: 10m
-          log-output: stderr,stdout
-          log-output-if: failure
-          working-directory: seven-add-on
-
-      - run: make ci-acceptance-test
-        working-directory: seven-add-on
 
       # Upload Cypress screenshots
       - uses: actions/upload-artifact@v4

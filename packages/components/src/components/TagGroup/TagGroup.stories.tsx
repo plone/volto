@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tag, TagGroup } from './TagGroup';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/TagGroup',

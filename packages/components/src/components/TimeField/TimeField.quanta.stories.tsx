@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Time } from '@internationalized/date';
 import { Button } from '../Button/Button.quanta';
 import { TimeField } from './TimeField.quanta';

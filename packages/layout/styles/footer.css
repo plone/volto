@@ -1,0 +1,18 @@
+#footer {
+  container-name: footer;
+  container-type: inline-size;
+}
+
+.section-footer {
+  &.main-footer {
+    --justify-items: center;
+    .block-inner-container {
+      grid-auto-flow: row;
+      text-align: center;
+
+      .powered-by {
+        place-self: center;
+      }
+    }
+  }
+}

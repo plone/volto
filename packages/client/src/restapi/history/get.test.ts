@@ -7,7 +7,7 @@ const cli = ploneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -35,7 +35,7 @@ describe('Get History', () => {
     const path = '/blah';
 
     try {
-      const result = await cli.getHistory({ path });
+      await cli.getHistory({ path });
     } catch (err) {
       expect((err as RequestError).status).toBe(404);
     }

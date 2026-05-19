@@ -6,6 +6,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "scripts": {
     "storybook:components": "storybook dev -p 6001 -c ../components/.storybook",
     "storybook:blocks": "storybook dev -p 6002 -c ../blocks/.storybook",
@@ -13,42 +14,41 @@
     "storybook:publicui": "storybook dev -p 6004 -c ../publicui/.storybook",
     "storybook:layout": "storybook dev -p 6005 -c ../layout/.storybook",
     "storybook:main": "storybook dev -p 6060 -c .storybook",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prettier:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "eslint --max-warnings=0 './**/*.{js,jsx,ts,tsx}' --fix --no-error-on-unmatched-pattern",
+    "stylelint:fix": "sh -c 'if [ -f .stylelintrc ] || [ -f .stylelintrc.json ] || [ -f .stylelintrc.js ] || [ -f .stylelintrc.cjs ] || [ -f stylelint.config.js ] || [ -f stylelint.config.cjs ] || [ -f stylelint.config.mjs ]; then stylelint '''./**/*.{css,scss,less}''' --fix --allow-empty-input; else echo \"No local stylelint config, skipping\"; fi'",
+    "format": "pnpm prettier:fix && pnpm lint:fix && pnpm stylelint:fix"
   },
-  "dependencies": {
+  "devDependencies": {
     "@eslint/js": "^9.20.0",
+    "@platejs/playwright": "catalog:",
+    "@playwright/test": "catalog:",
+    "@plone/react-router": "workspace:*",
+    "@storybook/addon-docs": "^10.4.0",
+    "@storybook/addon-links": "^10.4.0",
+    "@storybook/react-vite": "^10.4.0",
+    "@types/react": "catalog:",
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-cypress": "^4.1.0",
+    "eslint-plugin-better-tailwindcss": "^3.7.9",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.1",
+    "eslint-plugin-storybook": "^10.4.0",
+    "playwright": "catalog:",
     "prettier": "^3.5.2",
+    "storybook": "^10.4.0",
     "stylelint": "^16.14.1",
     "stylelint-config-idiomatic-order": "10.0.0",
     "stylelint-prettier": "5.0.3",
-    "typescript-eslint": "^8.41.0"
-  },
-  "devDependencies": {
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/addon-interactions": "^8.6.12",
-    "@storybook/addon-links": "^8.6.12",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/manager-api": "^8.6.12",
-    "@storybook/react": "^8.6.12",
-    "@storybook/react-vite": "^8.6.12",
-    "@storybook/theming": "^8.6.12",
-    "@types/react": "catalog:",
-    "cypress": "^14.3.0",
-    "cypress-axe": "1.6.0",
-    "cypress-file-upload": "5.0.8",
-    "eslint-plugin-storybook": "^0.11.2",
-    "storybook": "^8.6.12",
+    "tsconfig": "workspace:*",
+    "typescript-eslint": "^8.41.0",
     "vite": "catalog:",
-    "vite-tsconfig-paths": "^5.1.4",
     "wait-on": "^8.0.0"
   }
 }

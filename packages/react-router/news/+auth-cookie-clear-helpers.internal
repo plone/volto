@@ -1,0 +1,1 @@
+Add shared auth cookie clearing helpers so Seven routes can centralize stale-cookie cleanup behavior. @sneridagh

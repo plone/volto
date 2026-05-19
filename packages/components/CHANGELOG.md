@@ -8,6 +8,167 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.0-alpha.0 (2026-05-07)
+
+### Bugfix
+
+- Added missing exports. @sneridagh [#8160](https://github.com/plone/volto/issues/8160)
+
+### Internal
+
+- Aligned Components' local test dependency setup with the monorepo refresh by moving `@testing-library/jest-dom` and `jsdom` to the current shared baseline and dropping the unused `vitest-axe` dev dependency. 
+- Aligned Components' shared tsconfig usage and local package scripts with the monorepo-wide typecheck cleanup. 
+- Moved `vite-plugin-svgr` and its SVGR plugins into Components runtime dependencies and narrowed the published plugin file entry for correct downstream installs. @sneridagh 
+
+## 4.0.0-alpha.7 (2026-04-16)
+
+### Breaking
+
+- # Quanta Menu API cleanup
+
+  The Quanta `Menu` component was refactored to behave as a thin wrapper around `react-aria-components` instead of exposing a custom data-driven API.
+
+  ## Removed
+
+  - The custom `menuItems` prop.
+  - The bundled trigger API based on `button`, `onPress`, and `placement` props on `Menu`.
+  - The internal item schema used to describe menu entries with fields such as `label`, `description`, `keyboard`, `icon`, `separator`, `section`, `header`, and nested `children`.
+  - Automatic rendering of sections and separators from that custom schema.
+  - Automatic rendering of text slots, icons, keyboard shortcuts, and similar item content from custom item objects.
+  - The custom `title` prop on `MenuSection`.
+
+  ## Added
+
+  - RAC-aligned Quanta primitives:
+    - `Menu`
+    - `MenuItem`
+    - `MenuTrigger`
+    - `SubmenuTrigger`
+    - `MenuSection`
+    - `MenuSeparator`
+
+  ## Migration
+
+  Consumers should now compose Quanta menus using the standard `react-aria-components` structure:
+
+  - Wrap menus with `MenuTrigger` instead of passing trigger props to `Menu`.
+  - Pass `MenuItem`, `MenuSection`, and `MenuSeparator` as children instead of a `menuItems` array.
+  - Use `Header` inside `MenuSection`, or `aria-label` when there is no visible header, instead of a custom `title` prop.
+  - Render icons, descriptions, labels, keyboard shortcuts, and links explicitly in `MenuItem` children using RAC patterns and slots.
+
+  This removes opinionated behavior from Quanta `Menu` and makes the component API match upstream RAC usage more closely.
+
+  The same alignment was also applied to the basic `Menu` component so both basic and Quanta flavours now follow the same RAC composition model.
+
+  @sneridagh 
+
+### Feature
+
+- Icons for the Somersault editor support. @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+- Update browserslist. @sneridagh [#8106](https://github.com/plone/volto/issues/8106)
+
+### Bugfix
+
+- Updated to latest RAC 1.16.0. @sneridagh [#8018](https://github.com/plone/volto/issues/8018)
+- Fixed Tabs panel font size. @sneridagh [#8076](https://github.com/plone/volto/issues/8076)
+
+### Internal
+
+- Updated packages configuration for vite 8. @pnicolli 
+- Updated the React Aria Components dependency set to `react-aria-components` 1.17.0 and aligned the related RAC packages. @sneridagh 
+
+## 4.0.0-alpha.6 (2026-02-20)
+
+### Feature
+
+- Added Spinner component. @sneridagh [#7918](https://github.com/plone/volto/issues/7918)
+- Added width (layout) icon components (and related SVGs). @sneridagh 
+
+## 4.0.0-alpha.5 (2025-12-23)
+
+### Feature
+
+- Quanta, Tailwind styled `Toolbar` component. @sneridagh [#7549](https://github.com/plone/volto/issues/7549)
+
+### Internal
+
+- Include other *.md files in the repo root for link checking, fix redirecting links, and remove non-responsive server. @stevepiercy [#7712](https://github.com/plone/volto/issues/7712)
+- Add storybook for lots of items with custom separator. @iFlameing 
+- Fixed update to RAC 1.14.0 DTS problems. @sneridagh 
+
+## 4.0.0-alpha.4 (2025-11-19)
+
+### Bugfix
+
+- Fixed Basic Select styling. @sneridagh [#7632](https://github.com/plone/volto/issues/7632)
+
+## 4.0.0-alpha.3 (2025-11-12)
+
+### Bugfix
+
+- Fixed `Icon` component return type since it was breaking in some builds. @sneridagh 
+
+## 4.0.0-alpha.2 (2025-11-12)
+
+### Feature
+
+- Added ESlint Tailwind plugin for prettifying and wrapping up the classNames in components.
+  Amended components classNames by applying the plugin. @sneridagh [#7434](https://github.com/plone/volto/issues/7434)
+- Added `Radio` component to basic set of components, proxied from RAC. @sneridagh [#7555](https://github.com/plone/volto/issues/7555)
+- Added RSC compatibility. @pnicolli 
+
+### Bugfix
+
+- Review and check CSS for "grouped fields". @sneridagh [#7469](https://github.com/plone/volto/issues/7469)
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395 copy](https://github.com/plone/volto/issues/7395 copy)
+- Remove unused imports present, due to missing rule in ESlint. @sneridagh [#7395](https://github.com/plone/volto/issues/7395)
+- Linting for remaining TW classNames under callees due to missconfiguration. @sneridagh [#7467](https://github.com/plone/volto/issues/7467)
+
+## 4.0.0-alpha.1 (2025-09-29)
+
+### Breaking
+
+- Rearrangement of the package structure. @sneridagh
+
+  BREAKING:
+  - Renaming imports path from `tailwind` to `quanta`.
+  - Rename all the Quanta components to have the `quanta` suffix. [#7185](https://github.com/plone/volto/issues/7185)
+- - Unify `Breadcrumbs` component implementations, while removing the custom `BreadcrumbsPrimitive` implementation since it's no longer needed. @sneridagh [#7196](https://github.com/plone/volto/issues/7196)
+
+### Feature
+
+- Add react-aria-components Tree component integration. @deodorhunter [#4352](https://github.com/plone/volto/issues/4352)
+- Added sitemap route. @ksuess [#6695](https://github.com/plone/volto/issues/6695)
+- Add react-aria-components Tabs component. @ionlizarazu [#7127](https://github.com/plone/volto/issues/7127)
+- Create DateTimePicker, DatePicker, TimeField and DateInput components. @rboixaderg [#7131](https://github.com/plone/volto/issues/7131)
+- Added react-aria-components RadioGroup and Radio component. @sabrina-bongiovanni [#7142](https://github.com/plone/volto/issues/7142)
+- Add react-aria-components Menu Popover and Dialog component. @ionlizarazu [#7144](https://github.com/plone/volto/issues/7144)
+- Added SizeWidget, AlignWidget, and WidthWidget to the components library. @rboixaderg [#7150](https://github.com/plone/volto/issues/7150)
+- Added quanta GridList and TagGroup, improved quanta styles. @deodorhunter [#7201](https://github.com/plone/volto/issues/7201)
+- `Field` and `FieldWrapper` component for widgets that have no field wrapper by default. @sneridagh [#7213](https://github.com/plone/volto/issues/7213)
+- Separated publicui and cmsui styles. @pnicolli [#7225](https://github.com/plone/volto/issues/7225)
+- Unify `Container` components props. Added `width` prop to basic component. @sneridagh
+  (Non-breaking change) [#7236](https://github.com/plone/volto/issues/7236)
+- Added Toast manager. @giuliaghisini [#7333](https://github.com/plone/volto/issues/7333)
+
+### Bugfix
+
+- Minor storybook and props fixes. @deodorhunter [#4352](https://github.com/plone/volto/issues/4352)
+- Fixed some prettier/lint issues. @sneridagh [#7346](https://github.com/plone/volto/issues/7346)
+
+### Internal
+
+- Rename `@plone/slots` to `@plone/layout`. @sneridagh [#7119](https://github.com/plone/volto/issues/7119)
+- Removed `lightningcss` from the Storybook build. @sneridagh [#7220](https://github.com/plone/volto/issues/7220)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
+- Update RAC to latest.
+  Fix Storybook, added basic CSS. @sneridagh [#7320](https://github.com/plone/volto/issues/7320)
+- Upgrade to Storybook 9. @sneridagh [#7371](https://github.com/plone/volto/issues/7371)
+- Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/issues/7372)
+
 ## 4.0.0-alpha.0 (2025-05-24)
 
 ### Breaking

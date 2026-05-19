@@ -23,8 +23,6 @@ import type { Controlpanel } from '@plone/types';
 // import linkSVG from '@plone/volto/icons/link.svg';
 // import relationsSVG from '@plone/volto/icons/ahead.svg';
 
-import config from '@plone/registry';
-
 // export const controlPanelsIcons = {
 //   default: settingsSVG,
 //   'dexterity-types': contentSVG,

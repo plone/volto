@@ -2,21 +2,45 @@ name: Code Analysis Check
 on: [push, pull_request]
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
+  typescript:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Seven app TypeScript check
+        run: pnpm --filter seven exec init-loaders && pnpm --filter seven run typecheck
+
+      - name: Package TypeScript checks
+        run: |
+          pnpm --filter @plone/types run check:ts
+          pnpm --filter @plone/client run check:ts
+          pnpm --filter @plone/components run check:ts
+          pnpm --filter @plone/registry run check:ts
+          pnpm --filter @plone/blocks run check:ts
+          pnpm --filter @plone/cmsui run check:ts
+          pnpm --filter @plone/layout run check:ts
+          pnpm --filter @plone/plate run check:ts
+          pnpm --filter @plone/publicui run check:ts
+
   prettier:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: Prettier
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Node.js environment
-        uses: ./.github/actions/acceptance_tests_node_env_setup
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ env.node-version }}
-
-      - run: pnpm i
 
       - name: Prettier check
         run: pnpm prettier
@@ -26,13 +50,11 @@ jobs:
     name: ESlint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Node.js environment
-        uses: ./.github/actions/acceptance_tests_node_env_setup
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ env.node-version }}
-
-      - run: pnpm i
 
       - name: Main ESlint check
         run: pnpm lint
@@ -44,15 +66,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: ["@plone/components", "@plone/theming", "@plone/layout"]
+        name: ['@plone/components', '@plone/theming', '@plone/layout']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Set up Node.js environment
-        uses: ./.github/actions/acceptance_tests_node_env_setup
+        uses: ./.github/actions/node_env_setup
         with:
           node-version: ${{ env.node-version }}
-
-      - run: pnpm i
 
       - name: Stylelint check ${{ matrix.name }}
         run: pnpm --filter ${{ matrix.name }} stylelint

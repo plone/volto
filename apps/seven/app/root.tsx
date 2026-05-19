@@ -1,42 +1,88 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { data, isRouteErrorResponse } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
-import { flattenToAppURL } from '@plone/helpers';
-import type PloneClient from '@plone/client';
 import config from '@plone/registry';
 import {
+  ploneClearAuthCookieContext,
+  fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
+  PloneClientMiddleware,
   otherResources,
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
 } from './middleware.server';
+import { getClearAuthCookieHeader } from '@plone/react-router';
 
-export const unstable_middleware = [
+export const middleware = [
   installServerMiddleware,
+  PloneClientMiddleware,
   otherResources,
   getAPIResourceWithAuth,
+  fetchPloneContent,
 ];
 
-export async function loader({ params, request }: Route.LoaderArgs) {
+export async function loader({ params, request, context }: Route.LoaderArgs) {
   const locale = await i18next.getLocale(request);
 
-  const expand = ['navroot', 'breadcrumbs', 'navigation', 'actions'];
-
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
+  const cli = context.get(ploneClientContext);
+  const content = context.get(ploneContentContext);
+  const site = context.get(ploneSiteContext);
 
   const path = `/${params['*'] || ''}`;
 
+  const rootLoaderDataUtilities = config.getUtilities({
+    type: 'rootLoaderData',
+  });
+
+  const rootContentSubRequests = config.getUtilities({
+    type: 'rootContentSubRequest',
+  });
+
   try {
-    return {
-      content: flattenToAppURL((await cli.getContent({ path, expand })).data),
+    for (const utility of rootContentSubRequests) {
+      await utility.method({
+        cli,
+        content,
+        request,
+        path,
+        params,
+        locale,
+      });
+    }
+
+    const rootLoaderDataUtilitiesData = await Promise.all([
+      ...rootLoaderDataUtilities.map((utility) =>
+        utility.method({
+          cli,
+          content,
+          request,
+          path,
+          params,
+          locale,
+        }),
+      ),
+    ]);
+
+    const loaderData = {
+      content,
+      site,
       locale,
+      ...rootLoaderDataUtilitiesData
+        .filter((item) => item)
+        .reduce((acc, item) => ({ ...acc, ...item }), {}),
     };
+
+    return data(loaderData, {
+      headers: context.get(ploneClearAuthCookieContext)
+        ? {
+            'Set-Cookie': await getClearAuthCookieHeader(),
+          }
+        : undefined,
+    });
   } catch (error: any) {
     throw data('Content Not Found', {
       status: typeof error.status === 'number' ? error.status : 500,
@@ -70,16 +116,32 @@ export function Layout({
   return children;
 }
 
+// ToDo: improve error page and error handling
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
+
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? '404' : 'Error';
-    details =
-      error.status === 404
-        ? 'The requested page could not be found.'
-        : error.statusText || details;
+    switch (error.status) {
+      case 404:
+        message = '404';
+        details = 'The requested page could not be found.';
+        break;
+      case 401:
+        message = '401';
+        details = 'You are not authorized to view this page.';
+        break;
+      case 500:
+        message = '500';
+        details =
+          'The server encountered an internal error. Did you start the backend?';
+        break;
+      default:
+        message = 'Error';
+        details = error.statusText || details;
+        break;
+    }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;

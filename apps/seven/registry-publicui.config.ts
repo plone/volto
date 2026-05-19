@@ -1,8 +1,10 @@
 const addons = [
   '@plone/theming',
+  '@plone/plate',
   '@plone/blocks',
   '@plone/layout',
   '@plone/publicui',
+  '@plone/agave',
 ];
 const theme = '';
 

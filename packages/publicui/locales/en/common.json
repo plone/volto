@@ -1,5 +1,11 @@
 {
   "publicui": {
-    "sitemap": "Sitemap"
+    "sitemap": "Sitemap",
+    "search": {
+      "title": "Search results for",
+      "results": "Search results",
+      "placeholder": "Write here...",
+      "noResults": "No results found"
+    }
   }
 }

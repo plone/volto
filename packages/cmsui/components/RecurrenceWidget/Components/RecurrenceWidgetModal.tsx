@@ -14,7 +14,7 @@ import CheckboxIcon from '@plone/components/icons/checkbox.svg?react';
 import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
 import { useTranslation } from 'react-i18next';
 // import { useAppForm } from '../../Form/Form';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useAtomValue } from 'jotai';
 import { formAtom } from '../../../routes/atoms';
 import {
@@ -39,7 +39,8 @@ import {
   createFormHookContexts,
   useStore,
 } from '@tanstack/react-form';
-import { RRule, type Options, type WeekdayStr } from 'rrule';
+import pkg from 'rrule';
+import { type Options, type WeekdayStr } from 'rrule';
 import IntervalField from './IntervalField';
 import ByDayField from './ByDayField';
 import RadioOptionsField from './RadioOptionsField';
@@ -50,6 +51,8 @@ import ByWeekdayOfTheMonth from './ByWeekdayOfTheMonth';
 import CountEndField from './CountEndField';
 import UntilEndField from './UntilEndField';
 import SelectedDates from './SelectedDates';
+
+const { RRule } = pkg;
 
 interface RecurrenceWidgetModalProps {
   onSave: (rrule: string) => void;
@@ -251,14 +254,16 @@ const RecurrenceWidgetModal = ({
   return (
     <ModalOverlay
       className={
-        'bg-muted-foreground/80 fixed top-0 flex h-screen w-full items-center justify-center'
+        'fixed top-0 flex h-screen w-full items-center justify-center bg-muted-foreground/80'
       }
     >
       <Modal
         isDismissable
-        className={
-          'bg-background relative w-[95%] rounded-sm md:w-[88%] lg:w-[850px]'
-        }
+        className={`
+          relative w-[95%] rounded-sm bg-background
+          md:w-[88%]
+          lg:w-212.5
+        `}
       >
         <Dialog>
           <div className="flex items-center justify-between border-b-2 p-6">
@@ -579,11 +584,18 @@ const RecurrenceWidgetModal = ({
               </div>
               <div className="flex justify-end">
                 <Button
-                  className="bg-quanta-sapphire hover:bg-quanta-cobalt hover:cursor-pointer"
+                  className={`
+                    bg-quanta-sapphire
+                    hover:cursor-pointer hover:bg-quanta-cobalt
+                  `}
                   type="submit"
                 >
                   <CheckboxIcon
-                    className="fill-background color-background hover:fill-"
+                    className={`
+                      color-background
+                      hover:fill-
+                      fill-background
+                    `}
                     style={{ fill: 'bg-background' }}
                   />
                 </Button>

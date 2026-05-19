@@ -6,12 +6,27 @@ import type {
 } from '../config/Blocks';
 import type { IntlShape } from '../i18n';
 import type { Location, History } from '../router';
+import { Brain, QuerystringParameter } from '../services';
 
-export interface BlocksFormData {
-  '@type': AvailableBlocks;
+export interface BaseBlockFormData<TType extends string = string> {
+  '@type': TType;
   variation?: string;
-  [x: string]: unknown;
+  [x: string]: any;
 }
+
+export interface ListingBlockFormData extends BaseBlockFormData {
+  '@type': 'listing';
+  variation?: string;
+  headline?: string;
+  headlineTag?: 'h2' | 'h3';
+  querystring?: QuerystringParameter;
+  items?: Brain[];
+}
+
+// This type must be removed once each block will have been properly typed
+export type DummyBlockFormData = BaseBlockFormData<AvailableBlocks>;
+
+export type BlocksFormData = ListingBlockFormData | DummyBlockFormData;
 
 export interface BlockViewProps {
   blocksConfig: BlocksConfigData;
@@ -29,9 +44,10 @@ export interface BlockViewProps {
   path: string;
   className: string;
   style: Record<`--${string}`, string>;
+  isEditMode?: boolean;
 }
 
-type SearchMetadataResultItem = {};
+type SearchMetadataResultItem = Record<string, any>;
 
 export interface BlockEditProps {
   allowedBlocks: string[];
@@ -67,6 +83,9 @@ export interface BlockEditProps {
   navRoot: Content;
   onAddBlock: (type: string, index: number) => string;
   onChangeBlock: (id: string, newData: any) => void;
+  // `setBlock` is part of Seven's API but not used in Volto
+  // Should we move it to @plone/registry (as decided with @pnicolli during the Salamina Sprint 2025)
+  setBlock: (value: any) => void;
   onChangeField: (id: string, newData: any) => void;
   onChangeFormData: (newFormData: any) => void; // Not really FormData, the `data` inside the blocks settings
   onDeleteBlock: (id: string, selectPrev: boolean) => void;

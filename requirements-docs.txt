@@ -5,8 +5,8 @@ plone-sphinx-theme<2
 sphinx-autobuild
 sphinx-copybutton
 sphinx-examples
+sphinx-reredirects
 sphinxcontrib-video
 sphinxcontrib-youtube
 sphinxext-opengraph
-sphinx-reredirects
 vale

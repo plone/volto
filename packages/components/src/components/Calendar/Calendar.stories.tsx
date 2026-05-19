@@ -1,7 +1,7 @@
 import React from 'react';
 import { Calendar } from './Calendar';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Calendar> = {
   title: 'Basic/Forms/Calendar',

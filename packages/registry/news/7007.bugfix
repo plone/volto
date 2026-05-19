@@ -1,1 +1,0 @@
-Return properly in `getUtility` and `getUtilities` in case `type` or `name` is not set. @sneridagh

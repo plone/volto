@@ -6,6 +6,7 @@ import { StyleDefinition } from '../blocks';
 
 export interface BlocksConfig {
   blocksConfig: BlocksConfigData;
+  plateBlocksConfig: PlateBlocksConfigData;
   groupBlocksOrder: Array<{ id: string; title: string }>;
   requiredBlocks: string[];
   initialBlocks: Record<string, string[]> | Record<string, object[]>;
@@ -15,6 +16,7 @@ export interface BlocksConfig {
 }
 
 export interface BlocksConfigData {
+  [key: string]: BlockConfigBase;
   title: BlockConfigBase;
   description: BlockConfigBase;
   slate: SlateBlock;
@@ -32,7 +34,18 @@ export interface BlocksConfigData {
   teaser: BlockConfigBase;
 }
 
-export type AvailableBlocks = keyof BlocksConfigData;
+export interface PlateBlocksConfigData {
+  [key: string]: PlateBlockConfigBase;
+}
+
+export type AvailableBlocks = Extract<keyof BlocksConfigData, string>;
+
+export type BlockSchemaArgs = {
+  formData?: BlocksFormData;
+  intl?: IntlShape;
+  props?: BlockEditProps;
+  data?: BlocksFormData;
+};
 
 export interface BlockConfigBase {
   /**
@@ -46,7 +59,7 @@ export interface BlockConfigBase {
   /**
    * The icon used in the block chooser
    */
-  icon: string;
+  icon: string | React.ComponentType<any>;
   /**
    * The group of the block
    */
@@ -74,9 +87,7 @@ export interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema:
-    | JSONSchema
-    | ((args: { props: unknown; intl: IntlShape }) => JSONSchema);
+  blockSchema: JSONSchema | ((args?: BlockSchemaArgs) => JSONSchema);
   dataAdapter?: ({
     block,
     data,
@@ -124,13 +135,7 @@ export interface BlockConfigBase {
    * It can be either be at block level (it's applied always), at a variation level
    * or both. It's up to the developer to make them work nicely (not conflict) between them
    */
-  schemaEnhancer?: (args: {
-    schema: JSONSchema;
-    formData: BlockConfigBase; // Not sure, if so, has to be extendable
-    intl: IntlShape;
-    navRoot: Content;
-    contentType: string;
-  }) => JSONSchema;
+  schemaEnhancer?: (args: SchemaEnhancerArgs) => JSONSchema;
   /**
    * A block can define variations (it should include the stock, default one)
    */
@@ -141,7 +146,25 @@ export interface BlockConfigBase {
   // TODO: Improve extensions shape
   extensions?: Record<string, BlockExtension>;
   blocksConfig?: Partial<BlocksConfigData>;
+  blockWidth?: BlockWidthConfig;
 }
+
+export interface PlateBlockConfigBase {
+  blockWidth?: BlockWidthConfig;
+}
+
+export interface BlockWidthConfig {
+  defaultWidth?: string;
+  widths?: readonly string[];
+}
+
+export type SchemaEnhancerArgs = {
+  schema: JSONSchema;
+  formData?: BlocksFormData;
+  intl?: IntlShape;
+  navRoot?: Content;
+  contentType?: string;
+};
 
 export interface BlockExtension {
   id: string;

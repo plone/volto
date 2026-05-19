@@ -1,6 +1,6 @@
 import React from 'react';
 import config from './index';
-import { describe, expect, it, afterEach, beforeEach, beforeAll } from 'vitest';
+import { describe, expect, it, afterEach, beforeEach } from 'vitest';
 import type { WidgetsConfig } from '@plone/types';
 
 const MockDefaultWidget = () => <div data-testid="default-widget">Default</div>;
@@ -17,7 +17,7 @@ beforeEach(() => {
   config.set('slots', {});
   config.set('utilities', {});
   config.set('widgets', {
-    default: MockDefaultWidget,
+    default: { default: MockDefaultWidget },
     id: {
       title: MockTextWidget,
     },

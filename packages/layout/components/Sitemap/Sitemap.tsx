@@ -1,4 +1,4 @@
-import { Link } from '@plone/components/quanta';
+import { Link } from '@plone/components';
 
 // TODO translations
 

@@ -18,7 +18,7 @@ type SectionWrapperProps<T extends React.ElementType> = {
   width?: 'layout' | 'default' | 'narrow' | 'full';
   /** Inline styles for the wrapper. (not wired yet) */
   style?: React.CSSProperties;
-} & React.ComponentPropsWithoutRef<React.ElementType extends T ? 'div' : T>;
+} & React.ComponentPropsWithoutRef<T>;
 
 const SectionWrapper = <T extends React.ElementType = 'div'>(
   props: SectionWrapperProps<T>,
@@ -34,13 +34,21 @@ const SectionWrapper = <T extends React.ElementType = 'div'>(
   } = props;
   const sectionClasses = cx(
     'section',
-    { [`section-${section}`]: section },
+    {
+      [`
+        section-${section}
+      `]: section,
+    },
     width,
     className,
   );
 
   return (
-    <Component {...rest} className={sectionClasses} style={style}>
+    <Component
+      {...(rest as React.ComponentPropsWithoutRef<T>)}
+      className={sectionClasses}
+      style={style}
+    >
       <div className="section-inner-container">{children}</div>
     </Component>
   );

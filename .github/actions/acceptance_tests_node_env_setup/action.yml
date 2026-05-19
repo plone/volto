@@ -1,4 +1,5 @@
 name: Set up Node.js environment
+description: 'Set up Node.js environment for acceptance tests'
 
 runs:
   using: "composite"
@@ -25,22 +26,13 @@ runs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
 
-    - name: Cache Cypress Binary
-      id: cache-cypress-binary
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/Cypress
-        key: binary-${{ inputs.node-version }}-${{ hashFiles('pnpm-lock.yaml') }}
-
     - name: Install dependencies
       shell: bash
       run: make install
 
-    - name: Install Cypress if not in cache
-      if: steps.cache-cypress-binary.outputs.cache-hit != 'true'
+    - name: Install Playwright Browsers
       shell: bash
-      working-directory: packages/tooling
-      run: make cypress-install
+      run: pnpm exec playwright install --with-deps chromium
 
 inputs:
   node-version:

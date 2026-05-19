@@ -2,33 +2,49 @@ import React from 'react';
 import {
   DateInput as AriaDateInput,
   type DateInputProps as AriaDateInputProps,
-  composeRenderProps,
   DateSegment,
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
-import { fieldGroupStyles } from '../Field/Field.quanta';
+import { composeTailwindRenderProps } from '../utils';
 
 const segmentStyles = tv({
-  base: 'type-literal:px-0 inline rounded-xs p-0.5 text-gray-800 caret-transparent outline outline-0 forced-color-adjust-none dark:text-zinc-200 forced-colors:text-[ButtonText]',
+  base: `
+    inline rounded-xs p-1 text-gray-800 caret-transparent outline-0 forced-color-adjust-none
+    dark:text-zinc-200
+    forced-colors:text-[ButtonText]
+    type-literal:px-0
+  `,
   variants: {
     isPlaceholder: {
-      true: 'text-gray-600 italic dark:text-zinc-400',
+      true: `
+        text-gray-600 italic
+        dark:text-zinc-400
+      `,
     },
     isDisabled: {
-      true: 'text-gray-200 dark:text-zinc-600 forced-colors:text-[GrayText]',
+      true: `
+        text-gray-200
+        dark:text-zinc-600
+        forced-colors:text-[GrayText]
+      `,
     },
     isFocused: {
-      true: 'bg-blue-600 text-white dark:text-white forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]',
+      true: `
+        bg-blue-600 text-white
+        dark:text-white
+        forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]
+      `,
     },
   },
 });
-// Review styles
+
 export function DateInput(props: Omit<AriaDateInputProps, 'children'>) {
   return (
     <AriaDateInput
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        fieldGroupStyles({ ...renderProps, className }),
+      className={composeTailwindRenderProps(
+        props.className,
+        'ml-1 flex h-10 min-w-[150px] flex-1 items-center pl-2',
       )}
     >
       {(segment) => <DateSegment segment={segment} className={segmentStyles} />}

@@ -5,7 +5,7 @@ import {
   AccordionPanel,
   AccordionItemTrigger,
 } from './Accordion.quanta';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ChevronrightIcon } from '../../components/icons';
 
 const meta = {
@@ -142,7 +142,10 @@ const items = [
 export const Nested: Story = {
   render: (args) => (
     <Accordion
-      className="w-3xl rounded-xl border **:data-[slot=disclosure]:last:border-b-0"
+      className={`
+        w-3xl rounded-xl border
+        **:data-[slot=disclosure]:last:border-b-0
+      `}
       {...args}
     >
       {items.map((item, index) => (
@@ -156,7 +159,12 @@ export const Nested: Story = {
                 <AccordionItem key={childIndex} id={childIndex}>
                   <AccordionItemTrigger className="group">
                     <span>
-                      <ChevronrightIcon className="size-5 duration-300 group-aria-expanded:rotate-90" />
+                      <ChevronrightIcon
+                        className={`
+                          size-5 duration-300
+                          group-aria-expanded:rotate-90
+                        `}
+                      />
                       {child.title}
                     </span>
                   </AccordionItemTrigger>

@@ -20,39 +20,21 @@ Plone has both hardware requirements and software prerequisites.
 
 ## Hardware requirements
 
-````{ifconfig} context not in ("volto",)
-```{include} /volto/_inc/_hardware-requirements.md
+```{include} ../_inc/_hardware-requirements.md
 ```
-````
-````{ifconfig} context in ("volto",)
-```{include} /_inc/_hardware-requirements.md
-```
-`````
 
 ## Supported web browsers
 
-````{ifconfig} context not in ("volto",)
-```{include} /volto/_inc/_install-browser-reqs-volto.md
+```{include} ../_inc/_install-browser-reqs-volto.md
 ```
-````
-````{ifconfig} context in ("volto",)
-```{include} /_inc/_install-browser-reqs-volto.md
-```
-````
 
 
 (seven-create-project-cookieplone-prerequisites-for-installation-label)=
 
 ## Prerequisites for installation
 
-````{ifconfig} context not in ("volto",)
-```{include} /volto/_inc/_install-operating-system.md
+```{include} ../_inc/_install-operating-system.md
 ```
-````
-````{ifconfig} context in ("volto",)
-```{include} /_inc/_install-operating-system.md
-```
-````
 
 -   {term}`uv`
 -   {term}`nvm`

@@ -1,14 +1,16 @@
 import type { ConfigType } from '@plone/registry';
-import { TextField } from '../components/TextField/TextField';
 import {
   AlignWidget,
   Checkbox,
   DateTimePicker,
   SizeWidget,
   WidthWidget,
+  TextField,
 } from '@plone/components/quanta';
 import { DateField } from '@plone/components';
 import { RecurrenceWidget } from '../components/RecurrenceWidget/RecurrenceWidget';
+import { ObjectBrowserWidget } from '../components/ObjectBrowserWidget/ObjectBrowserWidget';
+import ImageWidget from '../components/ImageWidget/ImageWidget';
 
 export default function install(config: ConfigType) {
   config.registerDefaultWidget(TextField);
@@ -34,6 +36,28 @@ export default function install(config: ConfigType) {
   config.registerWidget({
     key: 'widget',
     definition: { width: WidthWidget },
+  });
+  config.registerWidget({
+    key: 'widget',
+    definition: { image: ImageWidget },
+  });
+  config.registerWidget({
+    key: 'factory',
+    definition: {
+      'Relation List': ObjectBrowserWidget,
+    },
+  });
+  config.registerWidget({
+    key: 'widget',
+    definition: {
+      object_browser: ObjectBrowserWidget,
+    },
+  });
+  config.registerWidget({
+    key: 'vocabulary',
+    definition: {
+      'plone.app.vocabularies.Catalog': ObjectBrowserWidget,
+    },
   });
 
   return config;

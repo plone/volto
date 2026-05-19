@@ -7,9 +7,10 @@ import {
   MoreoptionsIcon,
   PageIcon,
 } from '../../components/icons';
-import { Menu, MenuItem } from '../Menu/Menu';
+import { Button } from '../Button/Button';
+import { Menu, MenuItem, MenuTrigger } from '../Menu/Menu';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Breadcrumbs',
@@ -159,15 +160,74 @@ export const LotsOfItems: Story = {
           {first?.title}
         </Breadcrumb>
         <Breadcrumb>
-          <Menu items={inner} button={<MoreoptionsIcon />} placement="bottom">
-            {(item) => (
-              <MenuItem id={item['@id']} href={item['@id']}>
-                {item.title}
-              </MenuItem>
-            )}
-          </Menu>
+          <MenuTrigger placement="bottom">
+            <Button>
+              <MoreoptionsIcon />
+            </Button>
+            <Menu items={inner}>
+              {(item) => (
+                <MenuItem id={item['@id']} href={item['@id']}>
+                  {item.title}
+                </MenuItem>
+              )}
+            </Menu>
+          </MenuTrigger>
         </Breadcrumb>
         <Breadcrumb id={last?.['@id']} href={last?.['@id']}>
+          {last?.title}
+        </Breadcrumb>
+      </Breadcrumbs>
+    );
+  },
+  args: {
+    root: { '@id': '/', title: 'Home', icon: <HomeIcon size="sm" /> },
+  },
+};
+
+export const LotsOfItemsWithSeparator: Story = {
+  render: (args) => {
+    const first = longItems ? longItems[0] : null;
+    const last = longItems ? longItems[longItems.length - 1] : null;
+    const inner = longItems ? longItems.slice(1, longItems.length - 1) : [];
+
+    return (
+      <Breadcrumbs {...args}>
+        {args.root && (
+          <Breadcrumb
+            id={args.root['@id']}
+            href={args.root['@id']}
+            separator={<ChevronrightIcon size="sm" />}
+          >
+            {args.root.icon}
+            {args.root.title}
+          </Breadcrumb>
+        )}
+        <Breadcrumb
+          id={first?.['@id']}
+          href={first?.['@id']}
+          separator={<ChevronrightIcon size="sm" />}
+        >
+          {first?.title}
+        </Breadcrumb>
+        <Breadcrumb separator={<ChevronrightIcon size="sm" />}>
+          <MenuTrigger placement="bottom">
+            <Button>
+              <MoreoptionsIcon />
+            </Button>
+            <Menu items={inner}>
+              {(item) => (
+                <MenuItem id={item['@id']} href={item['@id']}>
+                  {item.title}
+                </MenuItem>
+              )}
+            </Menu>
+          </MenuTrigger>
+        </Breadcrumb>
+        <Breadcrumb
+          id={last?.['@id']}
+          href={last?.['@id']}
+          separator={<ChevronrightIcon size="sm" />}
+        >
           {last?.title}
         </Breadcrumb>
       </Breadcrumbs>

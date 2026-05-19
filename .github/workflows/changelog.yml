@@ -6,13 +6,13 @@ on:
       - seven
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
   towncrier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           # Fetch all history
           fetch-depth: '0'
@@ -38,14 +38,12 @@ jobs:
               - 'packages/helpers/**'
             types:
               - 'packages/types/**'
-            providers:
-              - 'packages/providers/**'
             publicui:
               - 'packages/publicui/**'
+            plate:
+              - 'packages/plate/**'
             reactrouter:
               - 'packages/react-router/**'
-            scripts:
-              - 'packages/scripts/**'
             blocks:
               - 'packages/blocks/**'
             layout:
@@ -111,14 +109,6 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Providers changelog check
-        if: steps.filter.outputs.providers == 'true'
-        run: |
-          git fetch --no-tags origin seven
-          towncrier check --compare-with origin/seven --dir packages/providers
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
       - name: Public UI changelog check
         if: steps.filter.outputs.publicui == 'true'
         run: |
@@ -127,19 +117,19 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
+      - name: Plate changelog check
+        if: steps.filter.outputs.plate == 'true'
+        run: |
+          git fetch --no-tags origin seven
+          towncrier check --compare-with origin/seven --dir packages/plate
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+
       - name: React Router changelog check
         if: steps.filter.outputs.reactrouter == 'true'
         run: |
           git fetch --no-tags origin seven
           towncrier check --compare-with origin/seven --dir packages/react-router
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: scripts changelog check
-        if: steps.filter.outputs.scripts == 'true'
-        run: |
-          git fetch --no-tags origin seven
-          towncrier check --compare-with origin/seven --dir packages/scripts
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

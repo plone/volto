@@ -1,1 +1,0 @@
-Updated widget config registration to reflect new API. @deodorhunter

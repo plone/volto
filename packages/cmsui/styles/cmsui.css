@@ -3,13 +3,13 @@
 
 @source '../node_modules/@plone/components/dist/quanta';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer cmsui {
+  @import '@plone/components/src/styles/basic/theme.css';
   @import 'tailwindcss/theme.css';
   @import 'tailwindcss/preflight.css';
-
-  .cmsui {
-    @import 'tailwindcss/utilities.css';
-  }
+  @import 'tailwindcss/utilities.css';
 
   :root {
     --background: hsl(0 0% 100%);
@@ -72,6 +72,8 @@
     --default-container-width: 940px;
     --narrow-container-width: 620px;
 
+    --plone-toolbar-width: 80px;
+
     --color-quanta-air: #fff;
     --color-quanta-space: #000;
     --color-quanta-denim: #021322;
@@ -120,6 +122,7 @@
   }
 
   @theme inline {
+    --color-brand: var(--color-quanta-sapphire);
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-card: var(--card);

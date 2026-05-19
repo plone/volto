@@ -4,7 +4,7 @@ import { TooltipTrigger } from 'react-aria-components';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
 import { BoldIcon } from '../icons/BoldIcon';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Tooltip',

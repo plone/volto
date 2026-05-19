@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SizeWidget, defaultSizeActionsInfo } from './SizeWidget';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Form } from 'react-aria-components';
 import { Button } from '../Button/Button.quanta';
 

@@ -3,19 +3,17 @@ import {
   useActionData,
   redirect,
   type ActionFunctionArgs,
+  RouterContextProvider,
 } from 'react-router';
-
+import { jwtDecode } from 'jwt-decode';
+import { ploneClientContext } from 'seven/app/middleware.server';
 import {
   redirectIfLoggedInLoader,
   setAuthOnResponse,
 } from '@plone/react-router';
-import { Button } from '@plone/components/quanta';
-import { TextField } from '../../components/TextField/TextField';
+import { Button, TextField } from '@plone/components/quanta';
 import ploneSvg from '../../static/plone-white.svg';
 import ArrowRightSVG from '@plone/components/icons/arrow-right.svg?react';
-
-import type PloneClient from '@plone/client';
-import config from '@plone/registry';
 
 export const loader = redirectIfLoggedInLoader;
 
@@ -23,30 +21,61 @@ export const meta = () => {
   return [{ title: 'Plone Login' }];
 };
 
-export async function action({ request }: ActionFunctionArgs) {
+type LoginErrorResponse = {
+  status: number;
+  data: {
+    error: {
+      message: string;
+    };
+  };
+};
+
+export async function action({
+  request,
+  context,
+}: ActionFunctionArgs<RouterContextProvider>) {
   const formData = await request.formData();
   const username = String(formData.get('username') || '');
   const password = String(formData.get('password') || '');
 
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as PloneClient;
+  const cli = context.get(ploneClientContext);
 
-  const { data } = await cli.login({ username, password });
-  const response = redirect('/');
-  return await setAuthOnResponse(response, data.token);
+  try {
+    const { data } = await cli.login({ data: { login: username, password } });
+    const decodedToken = jwtDecode<{
+      sub: string;
+      exp: number;
+      fullname: string | null;
+    }>(data.token);
+    const expires = new Date(decodedToken.exp * 1000);
+    const response = redirect('/');
+    return await setAuthOnResponse(response, data.token, { expires });
+  } catch (error: any) {
+    return {
+      status: Number(error?.status) || 500,
+      data: {
+        error: {
+          message: error?.data?.error?.message || 'Login failed',
+        },
+      },
+    } satisfies LoginErrorResponse;
+  }
 }
 
 export default function Login() {
-  const actionResult = useActionData<typeof action>();
+  const actionResult = useActionData<typeof action>() as
+    | LoginErrorResponse
+    | undefined;
 
   return (
-    <div className="mx-4 flex h-screen flex-1 flex-col justify-center">
-      <div className="flex flex-col items-center sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-quanta-sapphire flex h-32 w-32 flex-col items-center rounded-full p-8">
+    <main className="mx-4 flex h-screen flex-1 flex-col justify-center">
+      <div
+        className={`
+          flex flex-col items-center
+          sm:mx-auto sm:w-full sm:max-w-md
+        `}
+      >
+        <div className="flex h-32 w-32 flex-col items-center rounded-full bg-quanta-sapphire p-8">
           <img src={ploneSvg} alt="" />
         </div>
         <h2
@@ -88,6 +117,6 @@ export default function Login() {
           </Form>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

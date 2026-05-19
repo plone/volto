@@ -35,12 +35,18 @@ describe('Controlpanels action', () => {
     it('should create an action to update a controlpanel', () => {
       const url = 'http://localhost';
       const data = 'Hello World!';
-      const action = updateControlpanel(url, data);
 
-      expect(action.type).toEqual(UPDATE_CONTROLPANEL);
-      expect(action.request.op).toEqual('patch');
-      expect(action.request.path).toEqual(url);
-      expect(action.request.data).toEqual(data);
+      const dispatch = vi.fn().mockResolvedValue();
+      updateControlpanel(url, data)(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith({
+        type: UPDATE_CONTROLPANEL,
+        request: {
+          op: 'patch',
+          path: url,
+          data,
+        },
+      });
     });
   });
 });

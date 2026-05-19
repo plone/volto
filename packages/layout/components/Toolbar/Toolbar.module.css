@@ -1,0 +1,9 @@
+.toolbar {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--plone-toolbar-width);
+  background-color: var(--quanta-smoke);
+}

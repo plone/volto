@@ -8,6 +8,32 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.4 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned React Router package-local formatting and typecheck scripts with the monorepo-wide package script cleanup. 
+
+## 2.0.0-alpha.3 (2026-04-16)
+
+### Feature
+
+- Added options when setting cookies on response @pnicolli 
+
+## 2.0.0-alpha.2 (2025-12-23)
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395](https://github.com/plone/volto/issues/7395)
+
+## 2.0.0-alpha.1 (2025-09-29)
+
+### Internal
+
+- Moved auth helpers to the react-router package. @pnicolli [#7134](https://github.com/plone/volto/issues/7134)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/issues/7298)
+
 ## 2.0.0-alpha.0 (2025-05-24)
 
 ### Feature
