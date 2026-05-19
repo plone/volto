@@ -12,6 +12,9 @@
     ],
     "after:release": "rm .changelog.draft"
   },
+  "plonePrePublish": {
+    "tag": "volto-18"
+  },
   "npm": {
     "publish": false
   },

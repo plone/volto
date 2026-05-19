@@ -1,1 +1,0 @@
-Improve modal focus management and keyboard accessibility in `ContentTypes`: `ModalForm` now sets `role="dialog"`, traps focus, returns focus to the trigger on close, and announces open/close events via `aria-live`. @Wagner3UB
