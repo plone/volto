@@ -6,7 +6,7 @@ import {
   GridListItem,
 } from '@plone/components/quanta';
 import { useEffect, useState, useRef } from 'react';
-import { isSelectable, getItemLabel } from './utils';
+import { isSelectable, getItemLabel, isSingleMode } from './utils';
 import { ArrowleftIcon, ListIcon } from '@plone/components/Icons';
 import type { PressEvent } from 'react-aria-components';
 import { useObjectBrowserNavigation } from './ObjectBrowserNavigationContext';
@@ -59,6 +59,11 @@ export function ObjectBrowserWidgetBody() {
   };
 
   const { widgetOptions } = rest;
+  const maximumSelectionSize =
+    widgetOptions?.pattern_options?.maximumSelectionSize;
+  const selectionMode =
+    isSingleMode(mode) || maximumSelectionSize === 1 ? 'single' : 'multiple';
+  const selectionBehavior = maximumSelectionSize === 1 ? 'replace' : 'toggle';
 
   return (
     <div className="flex h-full w-full flex-col pt-4 pb-8">
@@ -142,10 +147,10 @@ export function ObjectBrowserWidgetBody() {
                 count: items?.length ?? 0,
               })}`}
           key={`${viewMode}-${currentPath}`} // Force re-render on viewMode or path change
-          selectionMode={'multiple'}
+          selectionMode={selectionMode}
           disabledBehavior="selection"
           escapeKeyBehavior="none"
-          selectionBehavior={'toggle'}
+          selectionBehavior={selectionBehavior}
           items={items ?? []}
           layout={viewMode ? 'grid' : 'stack'}
           // Todo: better styling
