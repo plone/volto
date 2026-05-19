@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.3 (2026-05-19)
+
+### Internal
+
+- Update dependency: `lodash` 4.18.1. @davisagli 
+
 ## 9.0.2 (2026-04-07)
 
 ### Internal
