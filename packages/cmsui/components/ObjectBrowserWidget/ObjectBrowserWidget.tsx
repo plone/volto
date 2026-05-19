@@ -34,7 +34,9 @@ const widgetStyles = tv({
 
 interface ObjectBrowserWidgetProps
   extends BaseFormFieldProps,
-    Partial<UseObjectBrowserConfig> {}
+    Partial<UseObjectBrowserConfig> {
+  selectedItemAttrs?: Array<string>;
+}
 // TODO: interaction with plate and blocks schema
 export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
   const { label, description, errorMessage } = props;
@@ -75,9 +77,16 @@ export function ObjectBrowserWidgetComponent(props: ObjectBrowserWidgetProps) {
 
 export function ObjectBrowserWidget(props: ObjectBrowserWidgetProps) {
   const { content } = useLoaderData<typeof editLoader>();
-  const { label, description, errorMessage, ...rest } = props;
+  const { label, description, errorMessage, selectedItemAttrs, ...rest } =
+    props;
   return (
-    <ObjectBrowserProvider config={{ ...rest, initialPath: content?.['@id'] }}>
+    <ObjectBrowserProvider
+      config={{
+        ...rest,
+        selectedAttrs: (selectedItemAttrs as any) ?? rest.selectedAttrs,
+        initialPath: content?.['@id'],
+      }}
+    >
       <ObjectBrowserWidgetComponent {...{ label, description, errorMessage }} />
     </ObjectBrowserProvider>
   );

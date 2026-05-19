@@ -89,7 +89,11 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
       const newSelectedKeys = new Set(
         selected.map((item) => ({ id: item['@id'], title: item.title })),
       );
-      setSelectedKeys(newSelectedKeys);
+
+      setSelectedKeys((prev) => {
+        console.log(prev, newSelectedKeys,"thi sis from setSelectedKeys");
+        return newSelectedKeys;
+      });
 
       const filteredSelected = filterBrainAttributes(selected);
       onChange?.(filteredSelected);
