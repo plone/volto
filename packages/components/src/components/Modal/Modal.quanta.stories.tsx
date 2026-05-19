@@ -1,15 +1,10 @@
 import React from 'react';
 import { Modal } from './Modal.quanta';
 import { Button } from '../Button/Button.quanta';
+import { Dialog } from '../Dialog/Dialog.quanta';
+import { TextField } from '../TextField/TextField.quanta';
 
-import {
-  Dialog,
-  DialogTrigger,
-  Heading,
-  Input,
-  Label,
-  TextField,
-} from 'react-aria-components';
+import { DialogTrigger, Heading } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
@@ -28,21 +23,19 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args: any) => (
     <DialogTrigger>
-      <Button>Sign up…</Button>
+      <Button variant="primary" accent>
+        Sign up…
+      </Button>
       <Modal {...args}>
         <Dialog>
           {({ close }) => (
             <form>
               <Heading slot="title">Sign up</Heading>
-              <TextField autoFocus>
-                <Label>First Name:</Label>
-                <Input />
-              </TextField>
-              <TextField>
-                <Label>Last Name:</Label>
-                <Input />
-              </TextField>
-              <Button onPress={close}>Submit</Button>
+              <TextField autoFocus label="First name:" />
+              <TextField label="Last name:" />
+              <Button variant="primary" accent onPress={close}>
+                Submit
+              </Button>
             </form>
           )}
         </Dialog>
