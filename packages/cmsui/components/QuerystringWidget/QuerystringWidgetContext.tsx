@@ -7,7 +7,13 @@ import {
   useEffect,
 } from 'react';
 import { useFetcher } from 'react-router';
+import { useDebounceValue } from 'usehooks-ts';
+import type { Brain } from '@plone/types';
 import type { loader, BackendIndex } from '../../routes/queryStringOptions';
+import type {
+  loader as querystringSearchLoader,
+  QuerystringSearchResult,
+} from '../../routes/querystringSearch';
 
 /**
  * Represents a single query criterion
@@ -42,6 +48,15 @@ export interface FieldMetadata {
   operators: Array<{ value: string; label: string }>;
   valueType?: 'text' | 'date' | 'number' | 'select';
   valueOptions?: Array<{ value: string; label: string }>;
+}
+
+export function transformSortableIndexes(
+  backendIndexes: Record<string, BackendIndex>,
+): Array<{ value: string; label: string }> {
+  return Object.entries(backendIndexes)
+    .filter(([, index]) => index.sortable)
+    .map(([name, index]) => ({ value: name, label: index.title }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 }
 
 export function transformBackendIndexes(
@@ -98,6 +113,9 @@ interface QuerystringContextType {
   addCriterion: () => void;
   removeCriterion: (index: number) => void;
   updateCriterion: (index: number, criterion: QueryCriterion) => void;
+  searchItems: Brain[];
+  searchTotal: number;
+  searchLoading: boolean;
 }
 
 const QuerystringContext = createContext<QuerystringContextType | undefined>(
@@ -112,93 +130,12 @@ export interface QuerystringProviderProps {
   children: React.ReactNode;
 }
 
-const DEFAULT_FIELDS: FieldMetadata[] = [
-  {
-    name: 'Creator',
-    title: 'Creator',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'is_not', label: 'is not' },
-    ],
-  },
-  {
-    name: 'Title',
-    title: 'Title',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'has', label: 'has' },
-      { value: 'is_not', label: 'is not' },
-    ],
-    valueType: 'text',
-  },
-  {
-    name: 'Description',
-    title: 'Description',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'has', label: 'has' },
-      { value: 'is_not', label: 'is not' },
-    ],
-    valueType: 'text',
-  },
-  {
-    name: 'Subject',
-    title: 'Keywords',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'is_not', label: 'is not' },
-    ],
-  },
-  {
-    name: 'path',
-    title: 'Location',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'is_not', label: 'is not' },
-    ],
-  },
-  {
-    name: 'modified',
-    title: 'Last modified',
-    operators: [
-      { value: 'before', label: 'before' },
-      { value: 'on', label: 'on' },
-      { value: 'after', label: 'after' },
-    ],
-    valueType: 'date',
-  },
-  {
-    name: 'created',
-    title: 'Created',
-    operators: [
-      { value: 'before', label: 'before' },
-      { value: 'on', label: 'on' },
-      { value: 'after', label: 'after' },
-    ],
-    valueType: 'date',
-  },
-  {
-    name: 'review_state',
-    title: 'Review state',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'is_not', label: 'is not' },
-    ],
-  },
-];
-
-const DEFAULT_SORT_FIELDS = [
-  { value: 'Title', label: 'Title' },
-  { value: 'Creator', label: 'Creator' },
-  { value: 'modified', label: 'Last modified' },
-  { value: 'created', label: 'Created' },
-  { value: 'Subject', label: 'Keywords' },
-];
+const EMPTY_ITEMS: Brain[] = [];
 
 export function QuerystringProvider({
   initialValue = {},
   availableFields,
-  availableSortFields = DEFAULT_SORT_FIELDS,
+  availableSortFields: availableSortFieldsProp,
   backendIndexes,
   children,
 }: QuerystringProviderProps) {
@@ -216,11 +153,16 @@ export function QuerystringProvider({
   const indexes = backendIndexes || fetchedIndexes;
 
   const fields = useMemo(
-    () =>
-      availableFields ||
-      (indexes ? transformBackendIndexes(indexes) : DEFAULT_FIELDS),
+    () => availableFields || (indexes ? transformBackendIndexes(indexes) : []),
     [availableFields, indexes],
   );
+
+  const availableSortFields = useMemo(() => {
+    if (availableSortFieldsProp && availableSortFieldsProp.length > 0) {
+      return availableSortFieldsProp;
+    }
+    return indexes ? transformSortableIndexes(indexes) : [];
+  }, [availableSortFieldsProp, indexes]);
 
   const [value, setValue] = useState<QuerystringValue>(initialValue);
 
@@ -259,6 +201,28 @@ export function QuerystringProvider({
     [],
   );
 
+  const searchFetcher = useFetcher<typeof querystringSearchLoader>();
+
+  const querySignature = useMemo(
+    () => JSON.stringify(value.query ?? []),
+    [value.query],
+  );
+  const [debouncedQuerySignature] = useDebounceValue(querySignature, 400);
+
+  useEffect(() => {
+    const criteria = JSON.parse(debouncedQuerySignature) as QueryCriterion[];
+    if (!criteria || criteria.length === 0) return;
+    searchFetcher.load(
+      `/@querystringSearch?query=${encodeURIComponent(debouncedQuerySignature)}`,
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuerySignature]);
+
+  const searchData = searchFetcher.data as QuerystringSearchResult | undefined;
+  const searchItems = searchData?.items ?? EMPTY_ITEMS;
+  const searchTotal = searchData?.items_total ?? 0;
+  const searchLoading = searchFetcher.state !== 'idle';
+
   const contextValue = useMemo(
     () => ({
       availableFields: fields,
@@ -268,6 +232,9 @@ export function QuerystringProvider({
       addCriterion,
       removeCriterion,
       updateCriterion,
+      searchItems,
+      searchTotal,
+      searchLoading,
     }),
     [
       value,
@@ -276,6 +243,9 @@ export function QuerystringProvider({
       addCriterion,
       removeCriterion,
       updateCriterion,
+      searchItems,
+      searchTotal,
+      searchLoading,
     ],
   );
 

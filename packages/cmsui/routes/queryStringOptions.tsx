@@ -1,7 +1,9 @@
-import { data, type LoaderFunctionArgs } from 'react-router';
-import type PloneClient from '@plone/client';
-import { getAuthFromRequest } from '@plone/react-router';
-import config from '@plone/registry';
+import {
+  data,
+  RouterContextProvider,
+  type LoaderFunctionArgs,
+} from 'react-router';
+import { ploneClientContext } from 'seven/app/middleware.server';
 
 export interface BackendOperator {
   title: string;
@@ -29,20 +31,13 @@ export interface QuerystringOptionsResponse {
   sortable_indexes?: Record<string, BackendIndex>;
 }
 
-export async function loader({ request }: LoaderFunctionArgs) {
-  const token = await getAuthFromRequest(request);
-
-  const cli = config
-    .getUtility({
-      name: 'ploneClient',
-      type: 'client',
-    })
-    .method() as unknown as PloneClient;
-
-  cli.config.token = token;
+export async function loader({
+  context,
+}: LoaderFunctionArgs<RouterContextProvider>) {
+  const cli = context.get(ploneClientContext);
 
   try {
-    const qs = await cli.getQuerystring();
+    const { data: qs } = await cli.getQuerystring();
     const response = qs as unknown as QuerystringOptionsResponse;
 
     return data(

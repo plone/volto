@@ -1,4 +1,4 @@
-import { useId, useCallback, useMemo } from 'react';
+import { useId, useCallback, useMemo, useEffect, useRef } from 'react';
 import { tv } from 'tailwind-variants';
 import type { TextFieldProps as QuantaTextFieldProps } from '@plone/components/quanta';
 import {
@@ -11,8 +11,15 @@ import { useLoaderData } from 'react-router';
 import type { loader as editLoader } from '../../routes/edit';
 
 import { focusRing } from '../utils';
-import { TextField, NumberField, Switch, Button } from '@plone/components';
-import { Select, SelectItem } from '@plone/components/quanta';
+import { NumberField, Switch } from '@plone/components';
+import {
+  TextField,
+  Select,
+  SelectItem,
+  ComboBox,
+  ComboBoxItem,
+  Button,
+} from '@plone/components/quanta';
 import {
   QuerystringProvider,
   useQuerystringContext,
@@ -39,7 +46,9 @@ const widgetStyles = tv({
 
 interface QuerystringWidgetProps extends BaseFormFieldProps {
   value?: QuerystringValue;
+  defaultValue?: QuerystringValue;
   onChange?: (value: QuerystringValue) => void;
+  onPatchFormData?: (partial: Record<string, unknown>) => void;
 }
 
 /**
@@ -89,20 +98,26 @@ function QueryCriterionRow({
   };
 
   return (
-    <div className="flex items-end gap-4 overflow-visible rounded-md bg-white p-4">
+    <div
+      className={`
+        flex flex-col gap-4 overflow-visible rounded-md bg-white p-4
+        @2xl:flex-row @2xl:items-end
+      `}
+    >
       <div className="relative z-50 flex-1">
-        <Select
+        <ComboBox
           label={index === 0 ? 'List content if' : undefined}
           selectedKey={criterion.i}
           onSelectionChange={(key) => key && handleFieldChange(key as string)}
           isDisabled={disabled}
+          placeholder="Search field…"
         >
           {availableFields.map((f) => (
-            <SelectItem key={f.name} id={f.name}>
+            <ComboBoxItem key={f.name} id={f.name} textValue={f.title}>
               {f.title}
-            </SelectItem>
+            </ComboBoxItem>
           ))}
-        </Select>
+        </ComboBox>
       </div>
 
       <div className="relative z-50 flex-1">
@@ -148,6 +163,7 @@ function QueryCriterionRow({
         className={`
           h-fit rounded p-2
           hover:bg-red-100
+          lg:h-fit
         `}
         aria-label="Remove criterion"
       >
@@ -171,7 +187,21 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
     addCriterion,
     removeCriterion,
     updateCriterion,
+    searchItems,
   } = useQuerystringContext();
+
+  // Feed query-string search results into the block's `items` so the
+  // Listing block preview renders them, mirroring Volto's withQuerystringResults.
+  const patchRef = useRef(props.onPatchFormData);
+  patchRef.current = props.onPatchFormData;
+  const lastItemsRef = useRef<string>('[]');
+
+  useEffect(() => {
+    const signature = JSON.stringify(searchItems.map((item) => item['@id']));
+    if (signature === lastItemsRef.current) return;
+    lastItemsRef.current = signature;
+    patchRef.current?.({ items: searchItems });
+  }, [searchItems]);
 
   // Sync context value with prop value
   const synced = useMemo(
@@ -272,7 +302,7 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
           </h3>
 
           {synced.query && synced.query.length > 0 ? (
-            <div className="space-y-2 overflow-visible">
+            <div className="@container space-y-2 overflow-visible">
               {synced.query.map((criterion, index) => (
                 <QueryCriterionRow
                   key={index}
@@ -405,14 +435,17 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
 export function QuerystringWidget(props: QuerystringWidgetProps) {
   useLoaderData<typeof editLoader>();
 
-  const { label, description, errorMessage, ...rest } = props;
+  const { label, description, errorMessage, value, defaultValue, ...rest } =
+    props;
+  const initialValue = value ?? defaultValue;
 
   return (
-    <QuerystringProvider initialValue={props.value}>
+    <QuerystringProvider initialValue={initialValue}>
       <QuerystringWidgetComponent
         label={label}
         description={description}
         errorMessage={errorMessage}
+        value={initialValue}
         {...rest}
       />
     </QuerystringProvider>
