@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 18.10.0 (2026-05-19)
+
+### Feature
+
+- Update es, ta, fi, gl, nl translations @macagua @TamilNeram @Ricky-Tigg @xulioxesus @ingovb [#8195](https://github.com/plone/volto/issues/8195)
+
+### Internal
+
+- Update dependency: `lodash` 4.18.1. @davisagli 
+
 ## 18.9.2 (2026-05-13)
 
 ### Feature
