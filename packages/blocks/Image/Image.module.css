@@ -1,0 +1,4 @@
+.block {
+  max-width: var(--block-size);
+  float: var(--block-align);
+}
