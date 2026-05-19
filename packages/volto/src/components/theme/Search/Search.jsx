@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
@@ -77,12 +77,25 @@ const Search = (props) => {
     [location.search, history],
   );
 
+  // Focus search results after they render
+  const resultsRef = useRef();
+  useEffect(() => {
+    resultsRef.current?.focus();
+  }, [items]);
+
   const options = qs.parse(location.search);
 
   return (
     <Container id="page-search">
       <Helmet title={intl.formatMessage(messages.Search)} />
-      <div className="container">
+      <div
+        className="container"
+        role="region"
+        aria-live="polite"
+        id="search-results"
+        tabIndex={-1}
+        ref={resultsRef}
+      >
         <article id="content">
           <header>
             <h1 className="documentFirstHeading">
