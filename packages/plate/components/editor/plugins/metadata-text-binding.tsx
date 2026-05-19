@@ -51,9 +51,22 @@ export function getMetadataTextSyncAction({
 }
 
 export function useMetadataTextBinding(binding: MetadataTextBinding) {
+  const { field, getState, writeToEditor } = binding;
   const editor = useEditorRef();
   const lastAppliedFromEditorRef = useRef<string | null>(null);
   const lastAppliedFromFieldRef = useRef<string | null>(null);
+
+  // Callers pass a fresh `binding` object literal on every render. Stash the
+  // callbacks in refs so the selector and effect deps below stay stable —
+  // otherwise this hook re-subscribes and re-fires every render, looping
+  // setState back into the editor / form atom.
+  const getStateRef = useRef(getState);
+  const writeToEditorRef = useRef(writeToEditor);
+  useEffect(() => {
+    getStateRef.current = getState;
+    writeToEditorRef.current = writeToEditor;
+  });
+
   const formAtom = useMemo(() => {
     try {
       return config
@@ -69,10 +82,10 @@ export function useMetadataTextBinding(binding: MetadataTextBinding) {
   const [fieldValue, setFieldValue] = useFieldFocusedAtom<
     Record<string, any>,
     any
-  >(formAtom ?? fallbackFormAtom, binding.field as any);
+  >(formAtom ?? fallbackFormAtom, field as any);
   const state = useEditorSelector(
-    (currentEditor) => binding.getState(currentEditor as TPlateEditor),
-    [binding],
+    (currentEditor) => getStateRef.current(currentEditor as TPlateEditor),
+    [],
   );
 
   const hasFormAtom = !!formAtom;
@@ -115,13 +128,12 @@ export function useMetadataTextBinding(binding: MetadataTextBinding) {
 
     if (action === 'field-to-editor') {
       lastAppliedFromFieldRef.current = normalizedFieldValue;
-      binding.writeToEditor(
+      writeToEditorRef.current(
         editor as unknown as TPlateEditor,
         normalizedFieldValue,
       );
     }
   }, [
-    binding,
     editor,
     hasFormAtom,
     normalizedFieldValue,
