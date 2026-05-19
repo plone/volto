@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.0-alpha.21 (2026-05-19)
+
+### Bugfix
+
+- Added `Batching` interface to `common.d.ts` and optional `batching` property to `QuerystringSearchResponse` and `SearchResponse` for batched API responses. @pratyush07-hub [#6267](https://github.com/plone/volto/issues/6267)
+
 ## 2.0.0-alpha.20 (2026-05-19)
 
 ### Bugfix
