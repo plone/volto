@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 const path = require('path');
-const makeLoaderFinder = require('razzle-dev-utils/makeLoaderFinder');
+const makeLoaderFinder = require('@plone/razzle-dev-utils/makeLoaderFinder');
 const nodeExternals = require('webpack-node-externals');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
@@ -295,6 +295,7 @@ const defaultModify = ({
     'load-volto-addons': addonsLoaderPath,
     ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
+    '@plone/volto-slate': `${registry.voltoPath}/../volto-slate/src`,
     // to be able to reference path uncustomized by webpack
     '@plone/volto-original': `${registry.voltoPath}/src`,
     // be able to reference current package from customized package

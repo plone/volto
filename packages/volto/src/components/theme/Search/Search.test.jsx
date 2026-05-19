@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import { __test__ as Search } from './Search';
 
@@ -21,21 +22,21 @@ describe('Search', () => {
     const store = mockStore({
       search: {
         loaded: false,
+        items: [],
       },
       intl: {
         locale: 'en',
         messages: {},
       },
     });
-    const history = {
-      location: { pathname: '/blog', search: '?SearchableText=blog' },
-    };
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Search history={history} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/search?SearchableText=blog']}>
+            <Search />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -60,15 +61,14 @@ describe('Search', () => {
         messages: {},
       },
     });
-    const history = {
-      location: { pathname: '/blog', search: '?SearchableText=blog' },
-    };
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Search history={history} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/search?SearchableText=blog']}>
+            <Search />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

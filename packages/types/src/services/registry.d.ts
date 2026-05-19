@@ -1,9 +1,4 @@
-interface Batching {
-  '@id': string;
-  first: string;
-  last: string;
-  next: string;
-}
+import type { Batching } from './common';
 
 interface SchemaProperties {
   description: string;
