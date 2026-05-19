@@ -59,7 +59,7 @@ export function formatDate({
     if (process.env.NODE_ENV !== 'production' && !MOMENT_FORMAT_MAP[format]) {
       // eslint-disable-next-line no-console
       console.warn(
-        `[formatDate] Unknown format token "${format}", falling back to short_date_format`,
+        `[formatDate] Unknown format token "${format}". Supported tokens: ${Object.keys(MOMENT_FORMAT_MAP).join(', ')}. Falling back to short_date_format.`,
       );
     }
     format = MOMENT_FORMAT_MAP[format] || short_date_format;
