@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.19 (2026-05-19)
+
+### Feature
+
+- Update translations. @erral [#8194](https://github.com/plone/volto/issues/8194)
+
 ## 19.0.0-alpha.17 (2026-05-12)
 
 ### Internal
