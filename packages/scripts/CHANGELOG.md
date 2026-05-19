@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 3.10.6 (2026-05-19)
+
+### Bugfix
+
+- Enhance i18n escaping function to avoid double-escaping and use it for msgstrs @erral [#8203](https://github.com/plone/volto/issues/8203)
+
+### Internal
+
+- Update dependency: `lodash` 4.18.1. @davisagli 
+
 ## 3.10.5 (2026-04-07)
 
 ### Internal
