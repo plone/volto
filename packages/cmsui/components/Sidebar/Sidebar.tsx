@@ -7,8 +7,8 @@ export const sidebarAtom = atom(false);
 
 const sidebar = tv({
   base: `
-    h-screen p-8 shadow-[0_12px_24px_0_var(--color-quanta-smoke)] transition-[width] duration-200
-    ease-linear
+    fixed top-0 right-0 h-screen overflow-y-auto p-8
+    shadow-[0_12px_24px_0_var(--color-quanta-smoke)] transition-[width] duration-200 ease-linear
   `,
   variants: {
     collapsed: {
