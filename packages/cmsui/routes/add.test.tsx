@@ -34,7 +34,7 @@ describe('Add route', () => {
       context.set(ploneClientContext, { getType: getTypeMock } as any);
 
       const request = new Request(
-        'http://example.com/my-folder/add?type=Document',
+        'http://example.com/@@add/my-folder/?type=Document',
       );
 
       await loader({
@@ -55,7 +55,7 @@ describe('Add route', () => {
       context.set(ploneClientContext, { getType: getTypeMock } as any);
 
       const request = new Request(
-        'http://example.com/my-folder/add?type=Document',
+        'http://example.com/@@add/my-folder/?type=Document',
       );
 
       const result = await loader({
@@ -103,7 +103,7 @@ describe('Add route', () => {
       const context = new RouterContextProvider();
       context.set(ploneClientContext, { getType: getTypeMock } as any);
 
-      const request = new Request('http://example.com/add?type=Document');
+      const request = new Request('http://example.com/@@add?type=Document');
 
       // Should not throw; loader succeeds with empty params
       const result = await loader({
