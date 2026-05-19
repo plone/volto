@@ -17,6 +17,174 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.37 (2026-05-19)
+
+### Feature
+
+- Use the navroot expander to render the sitemap. @erral [#5503](https://github.com/plone/volto/issues/5503)
+- Complete fr translation @jimbiscuit [#8197](https://github.com/plone/volto/issues/8197)
+- Update nl translations. @mauritsvanrees 
+- Update pt_BR translations. @ericof 
+
+### Bugfix
+
+- Inside the CMS-UI, when using the keyboard the block becomes active when focused - @Wagner3UB [#5273](https://github.com/plone/volto/issues/5273)
+- Translate block titles displayed in the Order tab of the sidebar. @ericof [#7348](https://github.com/plone/volto/issues/7348)
+- The toolbar panel {guilabel}`Personal tools` now manages focus and announces state changes to screen readers to improve accessibility. @Wagner3UB [#8019](https://github.com/plone/volto/issues/8019)
+- Fixed accessibility issues in `ModalForm` with focus management, `aria-live` announcements, and `aria-modal` support. @Wagner3UB [#8058](https://github.com/plone/volto/issues/8058)
+- Fixed `ObjectBrowserWidget` to honor `frontendOptions.widgetProps.initialPath` when rendered in multiple mode (e.g. `RelationList` of `RelationChoice`). @ericof [#8156](https://github.com/plone/volto/issues/8156)
+- Show Unauthorized page via SSR if an anonymous user accesses the user control panel. @wesleybl [#8184](https://github.com/plone/volto/issues/8184)
+- Use `<button>` elements instead of `<a>` for formtabs menu items to fix accessibility and keyboard navigation. @Wagner3UB [#8219](https://github.com/plone/volto/issues/8219)
+- Prevent browser default behavior on file drop in folder contents dropzone. @jnptk [#8228](https://github.com/plone/volto/issues/8228)
+
+### Internal
+
+- Refactored the `TokenWidget` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7683](https://github.com/plone/volto/issues/7683)
+- Refactored the `Search` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7686](https://github.com/plone/volto/issues/7686)
+- Remove .nvmrc from Volto's folder. @sneridagh 
+
+### Documentation
+
+- Add more information about removed drag-and-drop libraries in the upgrade guide. @davisagli 
+
+## 19.0.0-alpha.36 (2026-05-12)
+
+### Breaking
+
+- Changed the 401 Unauthorized behavior. Now, for anonymous users it redirects to the login page. For authenticated users it still shows an Unauthorized message indicating they don't have permission. @sneridagh [#8164](https://github.com/plone/volto/issues/8164)
+- Updated dependencies: `universal-cookie` 8.1.2, `universal-cookie-express`
+  8.1.2, `react-cookie` 8.1.2. @davisagli 
+- Upgraded `superagent` from `3.8.2` to `10.3.0`; projects with custom request wrappers or SSR callbacks must handle missing response objects and stricter redirect/error handling. 
+
+### Feature
+
+- Complete translations for es, eu, gl and it @erral @cyphra @yurj @xulioxesus [#8169](https://github.com/plone/volto/issues/8169)
+
+### Bugfix
+
+- Announce errors via `aria-live` and expose required and invalid states on text inputs to improve accessibility of form fields. @Wagner3UB [#8033](https://github.com/plone/volto/issues/8033)
+
+### Internal
+
+- Updated Cypress test for search date sorting to verify newest-first ordering. @aryan7081 [#7489](https://github.com/plone/volto/issues/7489)
+- Update packages in pnpm-lock.yaml. @wesleybl [#8188](https://github.com/plone/volto/issues/8188)
+- Excludes badge links from readme-link-check. @wesleybl [#8189](https://github.com/plone/volto/issues/8189)
+- Fixes an intermittent error in the Cypress tests blocks-slate-backspace.js and blocks-slate-delete.js. @wesleybl [#8190](https://github.com/plone/volto/issues/8190)
+
+## 19.0.0-alpha.35 (2026-05-08)
+
+### Internal
+
+- Release for updating needed and conflicting typings. @sneridagh 
+
+## 19.0.0-alpha.34 (2026-05-07)
+
+### Bugfix
+
+- Replace hard-coded color values with Semantic UI theme variables for input field to improve accessibility. @Wagner3UB [#8044](https://github.com/plone/volto/issues/8044)
+
+## 19.0.0-alpha.33 (2026-05-04)
+
+### Breaking
+
+- Removed the `@plone/client` package from the `main` branch. @sneridagh [#8170](https://github.com/plone/volto/issues/8170)
+- Replaced the dependencies `react-dnd`,  `react-dnd-html5-backend`, and `react-sortable-hoc` with `dnd-kit`.
+  See https://6.docs.plone.org/volto/upgrade-guide/index.html for more information.
+  @davisagli 
+
+### Bugfix
+
+- Force the proper setting of the I18NLANGUAGE cookie for non-multilingual sites too. @sneridagh 
+
+### Internal
+
+- Refactored the `ContentType` and `ControlPanel` components to be functional components. @Manik-Khajuria-5, @davisagli [#7705](https://github.com/plone/volto/issues/7705)
+- Refactored the `WeekdayOfTheMonthIndexField` component by converting it from a class-based component to a modern functional component. @Manik-Khajuria-5 [#7811](https://github.com/plone/volto/issues/7811)
+- Remove unused devDependency: `react-docgen-typescript-plugin`. @davisagli 
+- Standardized the TypeScript validation script name to `check:ts` and added package-specific `AGENTS.md` contributor guidance for `@plone/volto`. 
+- Update devDependency: `@vitest/ui` 3.2.4. @davisagli 
+
+## 19.0.0-alpha.32 (2026-04-30)
+
+### Breaking
+
+- Make form autosave opt-in behind `config.experimental.saveAsDraft.enabled`; enable this flag to preserve the previous save-as-draft behavior. @sneridagh 
+
+## 19.0.0-alpha.31 (2026-04-28)
+
+### Feature
+
+- Add ReactAriaRouterProvider to enable client-side navigation support for React Aria Link components. @iFlameing 
+
+### Internal
+
+- DE translation for Search Site. @Tishasoumya-02 
+
+### Documentation
+
+- Added `{versionchanged}` directive documenting the removal of the `-volto` suffix from the `visually-hidden-volto` CSS class in Volto 19. @Wagner3UB [#8155](https://github.com/plone/volto/issues/8155)
+
+## 19.0.0-alpha.30 (2026-04-27)
+
+### Breaking
+
+- Update @plone/components to 4.0.0-alpha.7 codebase. @sneridagh [#8122](https://github.com/plone/volto/issues/8122)
+
+### Bugfix
+
+- Respect required and fixed block restrictions in the sidebar Order tab by hiding delete and drag actions when blocked. @avoinea [#6481](https://github.com/plone/volto/issues/6481)
+- Fix crash in `AlternateHrefLangs` when `content.language` is undefined. @avoinea [#7309](https://github.com/plone/volto/issues/7309)
+- - Recreated the `linkInvalid` variable to correctly identify whether a link is valid and to address accessibility issues. @Wagner3UB [#7983](https://github.com/plone/volto/issues/7983)
+- Fix Toast component accessibility by adding a visually hidden, translated type label (Success, Error, Warning, Information) for screen readers. Fix date range validator error messages to display human-readable dates instead of raw ISO strings. @Wagner3UB [#8105](https://github.com/plone/volto/issues/8105)
+- Don't show login link in the `Unauthorized` component if the user is already authenticated. @wesleybl [#8126](https://github.com/plone/volto/issues/8126)
+- Fixed the link to the navigation root in the Contents view breadcrumbs. @TimoBroeskamp [#8140](https://github.com/plone/volto/issues/8140)
+- Completed the missing Romanian translations in the core Volto catalog and aligned a few related UI labels in the touched areas. @avoinea 
+- Fixed redirect after logging in when starting from the `Unauthorized` component on a non-content route, such as control panels. @davisagli 
+
+### Internal
+
+- Add Storybook of View components @Tishasoumya-02 [#5086](https://github.com/plone/volto/issues/5086)
+- storybook of Sitemap @Tishasoumya [#5087](https://github.com/plone/volto/issues/5087)
+- Remove `tsconfig.json` root and remove `tsconfig` package. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+- Remove references to the `apps` folder. @wesleybl [#8144](https://github.com/plone/volto/issues/8144)
+- Remove unused devDependency `postcss-overrides`. @davisagli 
+- Update dependencies: `@loadable/component` 5.16.7, `@loadable/server`
+  5.16.7, `@loadable/babel-plugin` 5.16.1, `@types/loadable__component`
+  5.13.10, `html-webpack-plugin` 5.6.7, `mini-css-extract-plugin` 2.10.1,
+  `react-docgen-typescript-plugin` 1.0.8, `terser-webpack-plugin` 5.4.0.
+  @davisagli 
+- Update dependency: `lodash` 4.18.1. @davisagli 
+- Update dependency: `prismjs` 1.30.0. @davisagli 
+- Update dependency: `uuid` 14.0.0. @davisagli 
+- Update devDependencies: `postcss` 8.5.10, `postcss-load-config` 6.0.1,
+  `postcss-loader` 8.2.1, `postcss-scss` 4.0.9. @davisagli 
+- Update devDependency: `@testing-library/jest-dom` 6.9.1. @davisagli 
+- Update devDependency: `release-it` 20.0.1. @davisagli 
+
+## 19.0.0-alpha.29 (2026-04-09)
+
+### Breaking
+
+- Update to webpack-dev-server 5. @davisagli 
+
+### Bugfix
+
+- Only include the original image in the `Image` component if the image does not have all the scales present. @sneridagh [#7655](https://github.com/plone/volto/issues/7655)
+- Forward Cache-Status header for files and images in Express middleware. @wesleybl [#7962](https://github.com/plone/volto/issues/7962)
+- Added required ARIA attributes to date and time inputs on `DatetimeWidget`. @Wagner3UB [#7980](https://github.com/plone/volto/issues/7980)
+- Improved text contrast and accessibility for help messages across the UI by updating global secondary color scales. @Wagner3UB [#8052](https://github.com/plone/volto/issues/8052)
+
+### Internal
+
+- Update dependency: diff 3.5.1. @davisagli 
+- Update dependency: express 4.22.1. @davisagli 
+- Update devDependency: cypress 15.13.1. @davisagli 
+- Update devDependency: release-it 19.2.4. @davisagli 
+
+### Documentation
+
+- Added missing upgrade step in the docs for 19a28. @sneridagh [#8096](https://github.com/plone/volto/issues/8096)
+
 ## 19.0.0-alpha.28 (2026-04-05)
 
 ### Breaking

@@ -1,4 +1,3 @@
-import React from 'react';
 import TeaserBody from './Body';
 import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 
