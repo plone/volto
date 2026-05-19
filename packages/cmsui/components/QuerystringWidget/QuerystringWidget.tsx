@@ -11,8 +11,13 @@ import { useLoaderData } from 'react-router';
 import type { loader as editLoader } from '../../routes/edit';
 
 import { focusRing } from '../utils';
-import { TextField, NumberField, Switch, Button } from '@plone/components';
-import { Select, SelectItem } from '@plone/components/quanta';
+import { NumberField, Switch } from '@plone/components';
+import {
+  TextField,
+  Select,
+  SelectItem,
+  Button,
+} from '@plone/components/quanta';
 import {
   QuerystringProvider,
   useQuerystringContext,
