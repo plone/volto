@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
 ## 19.0.0-alpha.19 (2026-05-19)
 
 ### Feature
