@@ -1,11 +1,15 @@
 {
   "publicui": {
-    "sitemap": "Sitemap",
+    "sitemap": "Mappa del sito",
     "search": {
       "title":"Risultati della ricerca per",
       "results": "Risultati della ricerca",
       "placeholder": "Scrivi qui...",
       "noResults": "Nessun risultato"
+    },
+    "toolbar": {
+      "edit": "Modifica",
+      "addContent": "Aggiungi contenuto"
     }
   }
 }

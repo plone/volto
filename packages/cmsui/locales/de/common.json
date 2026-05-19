@@ -1,0 +1,69 @@
+{
+  "cmsui": {
+    "edit": "Bearbeiten",
+    "save": "Speichern",
+    "controlpanel": "Konfiguration",
+    "objectbrowserwidget": {
+      "openDialog": "Inhalt auswählen",
+      "dialogTitle": "Inhalt auswählen",
+      "closeDialog": "Auswahl schließen",
+      "openSearch": "Inhalt durchsuchen",
+      "closeSearch": "Suche schließen",
+      "searchPlaceholder": "Inhalt durchsuchen...",
+      "loading": "Lade...",
+      "routeannouncer": "Aktueller Pfad: {{route}}",
+      "noResults": "Keine Inhalte gefunden",
+      "searchResults": "Suchergebnisse: {{count}} Inhalte",
+      "searchResultsFor": "Suchergebnisse für \"{{searchTerm}}\": {{count}} ",
+      "goback": "Zurück",
+      "changeViewMode": "Zur {{mode}} Ansicht wechseln",
+      "currentItems": "Aktuelle Inhaltselemente",
+      "home": "Startseite",
+      "item": "{{title}}",
+      "itemSelected": "ausgewählt",
+      "itemNotSelectable": "nicht auswählbar",
+      "itemNavigateTo": "Zu {{title}} navigieren",
+      "canNavigateTo": "Verschachtelbarer Inhalt",
+      "workflowStates": {
+        "private": "Privat",
+        "pending": "Ausstehend",
+        "published": "Veröffentlicht"
+      },
+      "viewModes": {
+        "list": "Listenansicht",
+        "grid": "Kachelansicht"
+      }
+    },
+    "panelgroups": {
+      "general": "Allgemein",
+      "content": "Inhalt",
+      "security": "Sicherheit",
+      "users": "Benutzer",
+      "site": "Seiteneinstellungen",
+      "addons": "Erweiterungen",
+      "maintenance": "Wartung"
+    },
+    "paneltitles": {
+      "addons": "Erweiterungen",
+      "database": "Datenbank",
+      "contentRules": "Inhaltsregeln",
+      "undo": "Rückgängig machen",
+      "urlmanagement": "URL Verwaltung",
+      "relations": "Relationen",
+      "moderatecomments": "Kommentare moderieren",
+      "users": "Benutzer",
+      "groupMembership": "Gruppenmitgliedschaft",
+      "groups": "Gruppen"
+    },
+    "blocksEditor": {
+      "blocksTab": "Blöcke",
+      "contentTab": "Inhalt"
+    },
+    "sidebar": {
+      "label": "Seitenleiste"
+    },
+    "toolbar": {
+      "settings": "Einstellungen"
+    }
+  }
+}

@@ -38,17 +38,22 @@ export function MenuSectionHeader(props: React.ComponentProps<typeof Header>) {
   return <Header {...props} />;
 }
 
-interface BasicMenuTriggerProps extends MenuTriggerProps {
+export interface BasicMenuTriggerProps extends MenuTriggerProps {
   placement?: Placement;
+  isNonModal?: boolean;
 }
 
 export function MenuTrigger(props: BasicMenuTriggerProps) {
   const [trigger, menu] = getMenuTriggerChildren(props.children, 'MenuTrigger');
 
+  const { placement, isNonModal, ...menuProps } = props;
+
   return (
-    <RACMenuTrigger {...props}>
+    <RACMenuTrigger {...menuProps}>
       {trigger}
-      <Popover placement={props.placement || 'bottom start'}>{menu}</Popover>
+      <Popover placement={placement || 'bottom start'} isNonModal={isNonModal}>
+        {menu}
+      </Popover>
     </RACMenuTrigger>
   );
 }

@@ -12,6 +12,7 @@ myst:
 ```{toctree}
 :maxdepth: 2
 
+configuration-registry
 component-registry
 expanders
 ```

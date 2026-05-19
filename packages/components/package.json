@@ -97,15 +97,9 @@
     "not dead"
   ],
   "dependencies": {
-    "@internationalized/date": "catalog:",
-    "@react-aria/utils": "catalog:",
-    "@react-spectrum/utils": "catalog:",
     "@svgr/plugin-jsx": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
     "clsx": "^2.1.1",
-    "react-aria": "catalog:",
-    "react-aria-components": "catalog:",
-    "react-stately": "catalog:",
     "tailwind-merge": "catalog:",
     "tailwind-variants": "catalog:",
     "tailwindcss": "catalog:",
@@ -142,8 +136,14 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
+    "@internationalized/date": "catalog:",
+    "@react-aria/utils": "catalog:",
+    "@react-spectrum/utils": "catalog:",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+    "react-aria": "catalog:",
+    "react-aria-components": "catalog:",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-stately": "catalog:"
   },
   "peerDependenciesMeta": {
     "react-dom": {

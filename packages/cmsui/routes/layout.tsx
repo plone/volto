@@ -11,11 +11,11 @@ import {
 } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { RouterProvider as RACRouterProvider } from 'react-aria-components';
-import { clsx } from 'clsx';
 import type { RootLoader } from 'seven/app/root';
 import { PluggablesProvider } from '@plone/layout/components/Pluggable';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
+import { clsx } from 'clsx';
 import config from '@plone/registry';
 
 import stylesheet from 'seven/.plone/cmsui.css?url';

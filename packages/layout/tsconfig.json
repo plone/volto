@@ -3,7 +3,8 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "../../apps/seven/.react-router/types/**/*"
+    "../../apps/seven/.react-router/types/**/*",
+    "../components/src/icons.d.ts"
   ],
   "exclude": [
     "node_modules",

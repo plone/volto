@@ -21,7 +21,7 @@ That means it accepts props, can be composed, and follows the same accessibility
 
 ## Add custom SVG icons
 
-Seven uses [SVGR](https://react-svgr.com/) through a custom Vite plugin to transform SVG files into React components at build time.
+Seven uses [{abbr}`SVGR (SVG to React)`](https://react-svgr.com/) through a custom Vite plugin to transform SVG files into React components at build time.
 
 To add a custom icon, perform the following steps.
 
@@ -57,7 +57,7 @@ import '@plone/components/icons';
 
 ### Icon props
 
-The following code sample shows how to add various props to custom icons.
+The following code example shows how to add various props to custom icons.
 
 ```ts
 export interface IconProps extends DOMProps, AriaLabelingProps {
@@ -94,7 +94,7 @@ export interface IconProps extends DOMProps, AriaLabelingProps {
 ## Import Quanta SVG icons
 
 `@plone/components` bundles the Quanta icon set as raw SVG files under the `@plone/components/icons` import path.
-These icons go through the same SVGR transformation as your custom SVGs.
+These icons go through the same {abbr}`SVGR (SVG to React)` transformation as your custom SVGs.
 
 The following code example shows how to import the trash can icon from the Quanta icon set.
 
@@ -125,4 +125,27 @@ const MyComponent = () => {
 These pre-built components are equivalent to importing the SVGs directly, but they are bundled JavaScript modules.
 - Use them when the SVGR Vite plugin is not available, for example in Storybook, Jest, or non-Vite frameworks, such as Next.js.
 - When developing `@plone/components` itself, prefer these pre-built modules because the package build pipeline has no awareness of your app's Vite configuration.
+```
+
+# Define an icon for a content type
+
+The registry defines icons for content types under `config.settings.contentIcons`.
+To change an existing icon or to define an icon for a custom content type, please refer to the following code example:
+
+```tsx
+import type { ConfigType } from '@plone/registry';
+import SomeIcon from 'my/addon/icons/someicon.svg?react';
+
+export default function install(config: ConfigType) {
+  // Rest of your configuration goes here
+  
+  config.settings.contentIcons = {
+    ...config.settings.contentIcons,
+    MyContentType: SomeIcon,
+  }
+  
+  // or here...
+  
+  return config;
+}
 ```

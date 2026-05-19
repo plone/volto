@@ -35,6 +35,7 @@ import config from '@plone/registry';
 
 import styles from '@plone/layout/slots/App/App.module.css';
 import stylesheet from 'seven/.plone/publicui.css?url';
+import { ContentTypesMenu } from '../components/Toolbar/ContentTypesMenu';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -129,6 +130,9 @@ export default function Index() {
               >
                 <Pencil />
               </Link>
+            </Plug>
+            <Plug pluggable="toolbar-top" id="button-add">
+              <ContentTypesMenu content={content} />
             </Plug>
             {showToolbar && <Toolbar />}
             <div id="main">

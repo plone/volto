@@ -13,7 +13,11 @@ export interface Type {
   title: string;
 }
 
-export interface GetTypesResponse extends Array<Type> {}
+export interface NonExpandedTypes {
+  '@id': string;
+}
+
+export type GetTypesResponse = Array<Type> | NonExpandedTypes;
 
 export interface Fieldset {
   behavior: string;

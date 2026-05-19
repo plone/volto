@@ -8,3 +8,9 @@ node_modules
 /packages/
 public/locales/
 /stats*
+
+# automatically generated files
+cmsui.css
+publicui.css
+registry.loader.js
+registry.loader.server.js

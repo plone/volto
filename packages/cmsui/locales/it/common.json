@@ -52,6 +52,9 @@
     },
     "sidebar": {
       "label": "Barra laterale destra"
+    },
+    "toolbar": {
+      "settings": "Impostazioni"
     }
   }
 }

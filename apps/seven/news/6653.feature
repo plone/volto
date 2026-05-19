@@ -1,0 +1,1 @@
+Ignore automatically generated files in `.gitignore` @arybakov05

@@ -6,6 +6,10 @@
       "results": "Search results",
       "placeholder": "Write here...",
       "noResults": "No results found"
+    },
+    "toolbar": {
+      "edit": "Edit",
+      "addContent": "Add content"
     }
   }
 }

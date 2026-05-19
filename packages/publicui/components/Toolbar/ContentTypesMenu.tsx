@@ -1,0 +1,68 @@
+import { ToolbarMenu } from '@plone/layout/components/Toolbar/ToolbarMenu';
+import Add from '@plone/components/icons/add.svg?react';
+import Page from '@plone/components/icons/page.svg?react';
+import type { Content, GetTypesResponse, Type } from '@plone/types';
+import { Header, Menu, MenuSection, Text } from 'react-aria-components';
+import { useTranslation } from 'react-i18next';
+import config from '@plone/registry';
+import { MenuItem } from '@plone/components';
+import { useLocation } from 'react-router';
+import contentTypesMenuStyles from './ContentTypesMenu.css?inline';
+
+interface ContentTypesMenuProps {
+  content: Content;
+}
+
+export const ContentTypesMenu = ({ content }: ContentTypesMenuProps) => {
+  const { t } = useTranslation();
+  const location = useLocation();
+
+  const _types: GetTypesResponse = content['@components']?.types;
+  const types = Array.isArray(_types) ? _types : [];
+  const addableTypes = types.filter((type) => type.addable);
+
+  const mostUsedTypes = config.settings.mostUsedTypes;
+
+  const highlightedTypes = addableTypes.filter((type) =>
+    mostUsedTypes.includes(type.id),
+  );
+
+  const otherTypes = addableTypes.filter(
+    (type) => !mostUsedTypes.includes(type.id),
+  );
+
+  const ContentTypeMenuItem = (type: Type) => {
+    const typeToAdd = type['@id'].split('@types/')[1];
+    const Icon = config.settings.contentIcons[type.id] ?? Page;
+
+    return (
+      <MenuItem
+        id={type.id}
+        href={`/@@add${location.pathname}/?type=${typeToAdd}`}
+      >
+        <Icon />
+        <Text slot="label">{type.title}</Text>
+      </MenuItem>
+    );
+  };
+
+  return (
+    <ToolbarMenu icon={<Add />} styles={contentTypesMenuStyles}>
+      <Menu className="menu-contenttypes-add">
+        <MenuSection className="most-used">
+          <Header>{t('publicui.toolbar.addContent')}</Header>
+          {highlightedTypes.length > 0 &&
+            highlightedTypes.map((type) => (
+              <ContentTypeMenuItem key={type.id} {...type} />
+            ))}
+        </MenuSection>
+        <MenuSection className="types">
+          {otherTypes.length > 0 &&
+            otherTypes.map((type) => (
+              <ContentTypeMenuItem key={type.id} {...type} />
+            ))}
+        </MenuSection>
+      </Menu>
+    </ToolbarMenu>
+  );
+};

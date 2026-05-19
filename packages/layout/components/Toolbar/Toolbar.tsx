@@ -19,11 +19,12 @@
  */
 
 import { createPortal } from 'react-dom';
-import { useEffect, useRef, useState } from 'react';
-import { Pluggable } from '../Pluggable';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './Toolbar.module.css';
 import toolbarInnerStyles from './Toolbar-inner.css?inline';
 import { useTranslation } from 'react-i18next';
+import { UNSAFE_PortalProvider } from 'react-aria';
+import { Pluggable } from '../Pluggable';
 
 function ToolbarInner() {
   const { t } = useTranslation();
@@ -56,6 +57,8 @@ function ToolbarInner() {
 const Toolbar = () => {
   const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null);
   const hostRef = useRef<HTMLDivElement>(null);
+  const portalContainerRef = useRef<HTMLDivElement>(null);
+  const getContainer = useCallback(() => portalContainerRef.current, []);
 
   useEffect(() => {
     if (!hostRef.current || hostRef.current.shadowRoot) return;
@@ -63,16 +66,24 @@ const Toolbar = () => {
     setShadowRoot(root);
   }, []);
 
-  // The host element is always rendered so the ref is stable.  No content is
+  // The host element is always rendered, so the ref is stable. No content is
   // placed in the shadow root until we know the user can edit.
   return (
     <div ref={hostRef} id="toolbar" className={styles.toolbar}>
       {shadowRoot &&
         createPortal(
-          <>
+          /* UNSAFE_PortalProvider tells React Aria where to render
+            overlay elements (popovers, menus, tooltips). By default,
+            React Aria appends them to document.body, which is outside
+            the shadow DOM, so they would miss the toolbar's scoped
+            styles and be invisible or unstyled. Pointing getContainer
+            at #toolbar-portals keeps overlays inside the shadow root
+            where they inherit the toolbar's CSS. */
+          <UNSAFE_PortalProvider getContainer={getContainer}>
             <style>{toolbarInnerStyles}</style>
             <ToolbarInner />
-          </>,
+            <div ref={portalContainerRef} id="toolbar-portals" />
+          </UNSAFE_PortalProvider>,
           shadowRoot,
         )}
     </div>
