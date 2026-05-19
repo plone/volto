@@ -44,6 +44,7 @@ const widgetStyles = tv({
 
 interface QuerystringWidgetProps extends BaseFormFieldProps {
   value?: QuerystringValue;
+  defaultValue?: QuerystringValue;
   onChange?: (value: QuerystringValue) => void;
   onPatchFormData?: (partial: Record<string, unknown>) => void;
 }
@@ -431,14 +432,17 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
 export function QuerystringWidget(props: QuerystringWidgetProps) {
   useLoaderData<typeof editLoader>();
 
-  const { label, description, errorMessage, ...rest } = props;
+  const { label, description, errorMessage, value, defaultValue, ...rest } =
+    props;
+  const initialValue = value ?? defaultValue;
 
   return (
-    <QuerystringProvider initialValue={props.value}>
+    <QuerystringProvider initialValue={initialValue}>
       <QuerystringWidgetComponent
         label={label}
         description={description}
         errorMessage={errorMessage}
+        value={initialValue}
         {...rest}
       />
     </QuerystringProvider>

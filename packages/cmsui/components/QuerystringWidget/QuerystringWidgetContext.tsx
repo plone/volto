@@ -50,6 +50,15 @@ export interface FieldMetadata {
   valueOptions?: Array<{ value: string; label: string }>;
 }
 
+export function transformSortableIndexes(
+  backendIndexes: Record<string, BackendIndex>,
+): Array<{ value: string; label: string }> {
+  return Object.entries(backendIndexes)
+    .filter(([, index]) => index.sortable)
+    .map(([name, index]) => ({ value: name, label: index.title }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+}
+
 export function transformBackendIndexes(
   backendIndexes: Record<string, BackendIndex>,
 ): FieldMetadata[] {
@@ -126,7 +135,7 @@ const EMPTY_ITEMS: Brain[] = [];
 export function QuerystringProvider({
   initialValue = {},
   availableFields,
-  availableSortFields = [],
+  availableSortFields: availableSortFieldsProp,
   backendIndexes,
   children,
 }: QuerystringProviderProps) {
@@ -147,6 +156,13 @@ export function QuerystringProvider({
     () => availableFields || (indexes ? transformBackendIndexes(indexes) : []),
     [availableFields, indexes],
   );
+
+  const availableSortFields = useMemo(() => {
+    if (availableSortFieldsProp && availableSortFieldsProp.length > 0) {
+      return availableSortFieldsProp;
+    }
+    return indexes ? transformSortableIndexes(indexes) : [];
+  }, [availableSortFieldsProp, indexes]);
 
   const [value, setValue] = useState<QuerystringValue>(initialValue);
 
