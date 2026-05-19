@@ -1,4 +1,4 @@
-import { useId, useCallback, useMemo } from 'react';
+import { useId, useCallback, useMemo, useEffect, useRef } from 'react';
 import { tv } from 'tailwind-variants';
 import type { TextFieldProps as QuantaTextFieldProps } from '@plone/components/quanta';
 import {
@@ -40,6 +40,7 @@ const widgetStyles = tv({
 interface QuerystringWidgetProps extends BaseFormFieldProps {
   value?: QuerystringValue;
   onChange?: (value: QuerystringValue) => void;
+  onPatchFormData?: (partial: Record<string, unknown>) => void;
 }
 
 /**
@@ -89,7 +90,12 @@ function QueryCriterionRow({
   };
 
   return (
-    <div className="flex items-end gap-4 overflow-visible rounded-md bg-white p-4">
+    <div
+      className={`
+        flex flex-col gap-4 overflow-visible rounded-md bg-white p-4
+        @2xl:flex-row @2xl:items-end
+      `}
+    >
       <div className="relative z-50 flex-1">
         <Select
           label={index === 0 ? 'List content if' : undefined}
@@ -148,6 +154,7 @@ function QueryCriterionRow({
         className={`
           h-fit rounded p-2
           hover:bg-red-100
+          lg:h-fit
         `}
         aria-label="Remove criterion"
       >
@@ -171,7 +178,21 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
     addCriterion,
     removeCriterion,
     updateCriterion,
+    searchItems,
   } = useQuerystringContext();
+
+  // Feed query-string search results into the block's `items` so the
+  // Listing block preview renders them, mirroring Volto's withQuerystringResults.
+  const patchRef = useRef(props.onPatchFormData);
+  patchRef.current = props.onPatchFormData;
+  const lastItemsRef = useRef<string>('[]');
+
+  useEffect(() => {
+    const signature = JSON.stringify(searchItems.map((item) => item['@id']));
+    if (signature === lastItemsRef.current) return;
+    lastItemsRef.current = signature;
+    patchRef.current?.({ items: searchItems });
+  }, [searchItems]);
 
   // Sync context value with prop value
   const synced = useMemo(
@@ -272,7 +293,7 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
           </h3>
 
           {synced.query && synced.query.length > 0 ? (
-            <div className="space-y-2 overflow-visible">
+            <div className="@container space-y-2 overflow-visible">
               {synced.query.map((criterion, index) => (
                 <QueryCriterionRow
                   key={index}

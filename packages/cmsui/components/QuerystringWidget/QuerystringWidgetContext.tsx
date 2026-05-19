@@ -7,7 +7,13 @@ import {
   useEffect,
 } from 'react';
 import { useFetcher } from 'react-router';
+import { useDebounceValue } from 'usehooks-ts';
+import type { Brain } from '@plone/types';
 import type { loader, BackendIndex } from '../../routes/queryStringOptions';
+import type {
+  loader as querystringSearchLoader,
+  QuerystringSearchResult,
+} from '../../routes/querystringSearch';
 
 /**
  * Represents a single query criterion
@@ -98,6 +104,9 @@ interface QuerystringContextType {
   addCriterion: () => void;
   removeCriterion: (index: number) => void;
   updateCriterion: (index: number, criterion: QueryCriterion) => void;
+  searchItems: Brain[];
+  searchTotal: number;
+  searchLoading: boolean;
 }
 
 const QuerystringContext = createContext<QuerystringContextType | undefined>(
@@ -111,6 +120,8 @@ export interface QuerystringProviderProps {
   backendIndexes?: Record<string, BackendIndex>;
   children: React.ReactNode;
 }
+
+const EMPTY_ITEMS: Brain[] = [];
 
 const DEFAULT_FIELDS: FieldMetadata[] = [
   {
@@ -259,6 +270,28 @@ export function QuerystringProvider({
     [],
   );
 
+  const searchFetcher = useFetcher<typeof querystringSearchLoader>();
+
+  const querySignature = useMemo(
+    () => JSON.stringify(value.query ?? []),
+    [value.query],
+  );
+  const [debouncedQuerySignature] = useDebounceValue(querySignature, 400);
+
+  useEffect(() => {
+    const criteria = JSON.parse(debouncedQuerySignature) as QueryCriterion[];
+    if (!criteria || criteria.length === 0) return;
+    searchFetcher.load(
+      `/@querystringSearch?query=${encodeURIComponent(debouncedQuerySignature)}`,
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuerySignature]);
+
+  const searchData = searchFetcher.data as QuerystringSearchResult | undefined;
+  const searchItems = searchData?.items ?? EMPTY_ITEMS;
+  const searchTotal = searchData?.items_total ?? 0;
+  const searchLoading = searchFetcher.state !== 'idle';
+
   const contextValue = useMemo(
     () => ({
       availableFields: fields,
@@ -268,6 +301,9 @@ export function QuerystringProvider({
       addCriterion,
       removeCriterion,
       updateCriterion,
+      searchItems,
+      searchTotal,
+      searchLoading,
     }),
     [
       value,
@@ -276,6 +312,9 @@ export function QuerystringProvider({
       addCriterion,
       removeCriterion,
       updateCriterion,
+      searchItems,
+      searchTotal,
+      searchLoading,
     ],
   );
 

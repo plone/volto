@@ -19,8 +19,8 @@ export function ListingSchema(): JSONSchema {
         title: 'Query',
         description:
           'Enter a querystring to filter the content items to be listed. For example: "Type: News Item" or "path: /news".',
+        widget: 'querystring',
       },
-      widget: 'querystring',
     },
     required: ['querystring'],
   };
