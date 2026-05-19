@@ -5,6 +5,7 @@ export * from '../components/Calendar/Calendar.quanta';
 export * from '../components/Checkbox/Checkbox.quanta';
 export * from '../components/ComboBox/ComboBox.quanta';
 export * from '../components/Container/Container.quanta';
+export * from '../components/ComboBox/ComboBox.quanta';
 export * from '../components/Field/Field.quanta';
 export * from '../components/Link/Link.quanta';
 export * from '../components/Menu/Menu.quanta';
