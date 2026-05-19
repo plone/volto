@@ -123,93 +123,10 @@ export interface QuerystringProviderProps {
 
 const EMPTY_ITEMS: Brain[] = [];
 
-const DEFAULT_FIELDS: FieldMetadata[] = [
-  {
-    name: 'Creator',
-    title: 'Creator',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'is_not', label: 'is not' },
-    ],
-  },
-  {
-    name: 'Title',
-    title: 'Title',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'has', label: 'has' },
-      { value: 'is_not', label: 'is not' },
-    ],
-    valueType: 'text',
-  },
-  {
-    name: 'Description',
-    title: 'Description',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'has', label: 'has' },
-      { value: 'is_not', label: 'is not' },
-    ],
-    valueType: 'text',
-  },
-  {
-    name: 'Subject',
-    title: 'Keywords',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'is_not', label: 'is not' },
-    ],
-  },
-  {
-    name: 'path',
-    title: 'Location',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'is_not', label: 'is not' },
-    ],
-  },
-  {
-    name: 'modified',
-    title: 'Last modified',
-    operators: [
-      { value: 'before', label: 'before' },
-      { value: 'on', label: 'on' },
-      { value: 'after', label: 'after' },
-    ],
-    valueType: 'date',
-  },
-  {
-    name: 'created',
-    title: 'Created',
-    operators: [
-      { value: 'before', label: 'before' },
-      { value: 'on', label: 'on' },
-      { value: 'after', label: 'after' },
-    ],
-    valueType: 'date',
-  },
-  {
-    name: 'review_state',
-    title: 'Review state',
-    operators: [
-      { value: 'is', label: 'is' },
-      { value: 'is_not', label: 'is not' },
-    ],
-  },
-];
-
-const DEFAULT_SORT_FIELDS = [
-  { value: 'Title', label: 'Title' },
-  { value: 'Creator', label: 'Creator' },
-  { value: 'modified', label: 'Last modified' },
-  { value: 'created', label: 'Created' },
-  { value: 'Subject', label: 'Keywords' },
-];
-
 export function QuerystringProvider({
   initialValue = {},
   availableFields,
-  availableSortFields = DEFAULT_SORT_FIELDS,
+  availableSortFields = [],
   backendIndexes,
   children,
 }: QuerystringProviderProps) {
@@ -227,9 +144,7 @@ export function QuerystringProvider({
   const indexes = backendIndexes || fetchedIndexes;
 
   const fields = useMemo(
-    () =>
-      availableFields ||
-      (indexes ? transformBackendIndexes(indexes) : DEFAULT_FIELDS),
+    () => availableFields || (indexes ? transformBackendIndexes(indexes) : []),
     [availableFields, indexes],
   );
 
