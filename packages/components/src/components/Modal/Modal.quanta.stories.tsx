@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal } from './Modal.quanta';
 import { Button } from '../Button/Button.quanta';
 import { Dialog } from '../Dialog/Dialog.quanta';
+import { Form } from '../Form/Form.quanta';
 import { TextField } from '../TextField/TextField.quanta';
 
 import { DialogTrigger, Heading } from 'react-aria-components';
@@ -29,14 +30,14 @@ export const Default: Story = {
       <Modal {...args}>
         <Dialog>
           {({ close }) => (
-            <form>
+            <Form>
               <Heading slot="title">Sign up</Heading>
               <TextField autoFocus label="First name:" />
               <TextField label="Last name:" />
               <Button variant="primary" accent onPress={close}>
                 Submit
               </Button>
-            </form>
+            </Form>
           )}
         </Dialog>
       </Modal>
