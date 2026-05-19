@@ -17,6 +17,24 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0-alpha.38 (2026-05-19)
+
+### Breaking
+
+- The `RichTextWidget` wraps its value in a `div` instead of a `p`. @nileshgulia1 [#7950](https://github.com/plone/volto/issues/7950)
+
+### Feature
+
+- Replace moment.js with native Intl formatting in DateWidget and DatetimeWidget theme display widgets. The `formatDate` helper now accepts moment-style token strings ('ll', 'lll', 'LLLL', 'L', 'LT') for backward compatibility. @avoinea [#6732](https://github.com/plone/volto/issues/6732)
+
+### Bugfix
+
+- fixed a11y in search page. @giuliaghisini [#8085](https://github.com/plone/volto/issues/8085)
+
+### Documentation
+
+- Add Python 3.14 to Plone 6.2 support for Volto 19. @stevepiercy [#8051](https://github.com/plone/volto/issues/8051)
+
 ## 19.0.0-alpha.37 (2026-05-19)
 
 ### Feature
