@@ -5,6 +5,7 @@ import {
   createMemoryRouter,
   type LoaderFunctionArgs,
 } from 'react-router';
+import { fn } from 'storybook/test';
 import type { QuerystringValue } from './QuerystringWidgetContext';
 import { QuerystringWidget } from './QuerystringWidget';
 
@@ -13,7 +14,9 @@ interface QuerystringWidgetStoryProps {
   description?: string;
   errorMessage?: string;
   value?: QuerystringValue;
+  defaultValue?: QuerystringValue;
   onChange?: (value: QuerystringValue) => void;
+  onPatchFormData?: (partial: Record<string, unknown>) => void;
 }
 
 const createQuerystringLoader = () => {
@@ -154,6 +157,26 @@ const createQuerystringRouter = (props: QuerystringWidgetStoryProps) =>
           },
         }),
       },
+      {
+        path: '/@querystringSearch',
+        loader: () => ({
+          items: [
+            {
+              '@id': '/Test/example-news-item',
+              '@type': 'News Item',
+              title: 'Example news item',
+              description: 'A sample result for the query-string search.',
+            },
+            {
+              '@id': '/Test/example-page',
+              '@type': 'Document',
+              title: 'Example page',
+              description: 'Another sample result.',
+            },
+          ],
+          items_total: 2,
+        }),
+      },
     ],
     {
       initialEntries: ['/'],
@@ -171,13 +194,12 @@ const meta = {
     layout: 'fullscreen',
     backgrounds: { disable: true },
   },
-  argTypes: {
-    onChange: { action: 'onChange' },
-  },
   tags: ['autodocs'],
   args: {
     label: 'Search Criteria',
     description: 'Define search criteria to filter content',
+    onChange: fn(),
+    onPatchFormData: fn(),
   },
 } satisfies Meta<QuerystringWidgetStoryProps>;
 
