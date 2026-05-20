@@ -4,13 +4,12 @@ import { useTranslation } from 'react-i18next';
 import { Link } from '@plone/components';
 import config from '@plone/registry';
 import styles from './Tools.module.css';
-import { flattenToAppURL } from '@plone/helpers';
 
 const AnonymousTools = (props: SlotComponentProps) => {
   const { content } = props;
   const { t } = useTranslation();
 
-  const returnUrl = flattenToAppURL(content['@id']);
+  const returnUrl = content['@id'];
   const hasReturnUrl = returnUrl !== '' && returnUrl !== '/';
 
   return (
