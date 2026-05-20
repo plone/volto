@@ -7,7 +7,14 @@ import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
 import { formatDate } from '@plone/volto/helpers/Utils/Date';
 
+/**
+ * @deprecated Use the native Date API directly. Will be removed in Volto 20.
+ */
 export const datesForDisplay = (start, end, moment) => {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'datesForDisplay is deprecated and will be removed in Volto 20. Use the native Date API directly.',
+  );
   const mStart = moment(start);
   const mEnd = moment(end);
   if (!mStart.isValid() || !mEnd.isValid()) {
