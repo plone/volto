@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.1 (2026-05-20)
+
+### Internal
+
+- Force release @plone/babel-preset-razzle to npm, since it's a dependency of @plone/scripts. @sneridagh 
+
 ## 4.0.0 (2026-05-19)
 
 ### Internal
