@@ -25,6 +25,7 @@ import {
 import i18next from 'seven/app/i18next.server';
 import { ploneContentContext } from 'seven/app/middleware.server';
 import type { RootLoader } from 'seven/app/root';
+import { FolderIcon } from '@plone/components/Icons';
 import Pencil from '@plone/components/icons/pencil.svg?react';
 import SlotRenderer from '@plone/layout/slots/SlotRenderer';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
@@ -128,6 +129,15 @@ export default function Index() {
                 href={`/@@edit${location.pathname.replace(/^\/$/, '')}`}
               >
                 <Pencil />
+              </Link>
+            </Plug>
+            <Plug pluggable="toolbar-top" id="button-contents">
+              <Link
+                className="secondary"
+                aria-label="Contents"
+                href={`/@@contents${location.pathname.replace(/^\/$/, '')}`}
+              >
+                <FolderIcon />
               </Link>
             </Plug>
             {showToolbar && <Toolbar />}

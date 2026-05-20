@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { useFetcher } from 'react-router';
 import { Heading } from 'react-aria-components';
 import { useTranslation } from 'react-i18next';
-import { Modal, Dialog } from '@plone/components';
-import { Button } from '@plone/components/quanta';
+import { Button, Dialog, Modal } from '@plone/components/quanta';
 import { BinIcon } from '@plone/components/Icons';
 import CloseSVG from '@plone/components/icons/close.svg?react';
 import BinSVG from '@plone/components/icons/bin.svg?react';
@@ -86,8 +85,11 @@ export default function DeleteModal() {
   //TODO: check linkintegrity
   return (
     <Modal isDismissable isOpen={showDelete} onOpenChange={setShowDelete}>
-      <Dialog>
-        <Heading slot="title" className="react-aria-Heading text-center">
+      <Dialog className="p-8">
+        <Heading
+          slot="title"
+          className="react-aria-Heading mb-1 text-center text-xl font-bold"
+        >
           {itemsToDelete.size > 1
             ? t('contents.modal_delete.multi.title', {
                 n: itemsToDelete.size,
@@ -97,10 +99,10 @@ export default function DeleteModal() {
               })}
         </Heading>
 
-        <p className="text-center text-[0.8rem] font-light">
+        <p className="text-center text-sm">
           {t('contents.modal_delete.description')}
         </p>
-        <div className="button-group-bottom justify-center">
+        <div className="mt-8 flex justify-center gap-3">
           <Button
             className="react-aria-Button close"
             onPress={close}

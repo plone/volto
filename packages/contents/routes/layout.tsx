@@ -17,14 +17,13 @@ import clsx from 'clsx';
 import i18next from 'seven/app/i18next.server';
 import { ploneContentContext } from 'seven/app/middleware.server';
 import { type RootLoader } from 'seven/app/root';
+import { Link } from '@plone/components/quanta';
 import { PluggablesProvider, Plug } from '@plone/layout/components/Pluggable';
 import Toast from '@plone/layout/components/Toast/Toast';
 import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
 import config from '@plone/registry';
-import { Button } from '@plone/components/quanta';
 import Back from '@plone/components/icons/arrow-left.svg?react';
-// import TopNavBar from '@plone/cmsui/components/Layout/TopNavBar';
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/.plone/cmsui.css?url';
@@ -78,14 +77,16 @@ export const links: LinksFunction = () => [
 export async function loader({
   request,
   context,
+  params,
 }: LoaderFunctionArgs<RouterContextProvider>) {
   const content = context.get(ploneContentContext);
   const locale = await i18next.getLocale(request);
-  return { locale, content };
+  const path = `/${params['*'] || ''}`;
+  return { locale, content, path };
 }
 
 export default function Index() {
-  const { locale, content } = useLoaderData<typeof loader>();
+  const { locale, content, path } = useLoaderData<typeof loader>();
   const { i18n } = useTranslation();
   const navigate = useNavigate();
 
@@ -115,20 +116,15 @@ export default function Index() {
             >
               <Outlet />
             </div>
-            <Plug pluggable="toolbar-top" id="button-back">
-              <Button
-                aria-label="back"
-                size="L"
-                onPress={() => {
-                  navigate(
-                    window.location.pathname
-                      .replace('/@@contents', '/')
-                      .replaceAll('//', '/'),
-                  );
-                }}
-              >
+            <Plug
+              pluggable="toolbar-top"
+              id="button-back"
+              // @ts-expect-error this is currently typed as never[]
+              dependencies={[path]}
+            >
+              <Link className="secondary" aria-label="back" href={path}>
                 <Back />
-              </Button>
+              </Link>
             </Plug>
           </PluggablesProvider>
         </RACRouterProvider>
