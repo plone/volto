@@ -77,7 +77,7 @@ export const MyMenu = ({ content }: MyMenuProps) => {
 };
 ```
 
-`ToolbarMenu` extends `BasicMenuTrigger` and thus `BasicMenuTriggerProps`.
+`ToolbarMenu` extends `MenuTrigger` and thus `BasicMenuTriggerProps`.
 In addition to those props, it accepts the following:
 
 `icon`
