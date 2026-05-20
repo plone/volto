@@ -1,5 +1,6 @@
-@import '@plone/components/src/styles/basic/main.css';
-@import '@plone/components/src/styles/quanta/main.css';
+@import '@plone/components/src/styles/basic/Menu.css';
+@import '@plone/components/src/styles/basic/Popover.css';
+@import '@plone/components/src/styles/quanta/Popover.css';
 
 .toolbar {
   position: fixed;
