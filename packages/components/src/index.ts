@@ -77,4 +77,3 @@ export { QuantaSelect } from './components/quanta/Select/Select';
 
 // types
 export type { IconProps } from './components/Icon/Icon';
-export type { BasicMenuTriggerProps } from './components/Menu/Menu';

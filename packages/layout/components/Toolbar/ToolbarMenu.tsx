@@ -25,10 +25,11 @@
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { type ComponentProps } from 'react';
 import { Button } from 'react-aria-components';
-import { MenuTrigger, type BasicMenuTriggerProps } from '@plone/components';
+import { MenuTrigger } from '@plone/components';
 
-export interface ToolbarMenuProps extends BasicMenuTriggerProps {
+export interface ToolbarMenuProps extends ComponentProps<typeof MenuTrigger> {
   icon?: React.ReactNode;
   /** CSS string (imported with `?inline`) to inject into the shadow root. */
   styles?: string;
