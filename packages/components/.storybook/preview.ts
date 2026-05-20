@@ -12,6 +12,8 @@ export const parameters = {
         'Tailwind',
         'Basic',
         ['Forms', 'Quanta', '*'],
+        'Quanta',
+        ['Introduction', 'Forms', '*'],
       ],
     },
   },
