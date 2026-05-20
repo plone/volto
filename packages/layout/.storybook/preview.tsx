@@ -64,14 +64,18 @@ const withRR7FrameworkRouter = (Story: any, context: any) => {
 export const decorators = [withRR7FrameworkRouter];
 
 export const parameters = {
-  backgrounds: {
-    default: 'light',
-  },
+  backgrounds: {},
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+};
+
+export const initialGlobals = {
+  backgrounds: {
+    value: 'light',
   },
 };

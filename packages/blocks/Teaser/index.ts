@@ -10,7 +10,7 @@ const TeaserBlockInfo = {
     () => import(/* webpackChunkName: "plone-blocks" */ './TeaserBlockView'),
   ),
   edit: React.lazy(
-    () => import(/* webpackChunkName: "plone-blocks" */ './TeaserEdit'),
+    () => import(/* webpackChunkName: "plone-blocks" */ './TeaserBlockEdit'),
   ),
   category: 'teaser',
   blockSchema: TeaserSchema,
