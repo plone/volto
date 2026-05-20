@@ -1,5 +1,7 @@
 import type { BlockViewProps, ContainedItem } from '@plone/types';
 import Image from '@plone/layout/components/Image/Image';
+import clsx from 'clsx';
+import styles from './Image.module.css';
 
 const ImageBlockView = (props: BlockViewProps) => {
   const { data } = props;
@@ -12,7 +14,7 @@ const ImageBlockView = (props: BlockViewProps) => {
   } as ContainedItem;
 
   return (
-    <figure>
+    <figure className={clsx(styles['block'])}>
       <Image
         item={item}
         alt={(data.alt as string) || ''}

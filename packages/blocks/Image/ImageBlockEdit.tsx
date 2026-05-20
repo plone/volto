@@ -1,14 +1,16 @@
 import { useCallback } from 'react';
+import ImageView from './ImageBlockView';
 import type {
   BlockEditProps,
-  Brain,
-  ContainedItem,
-  Content,
-  RelatedItem,
+  // Brain,
+  // ContainedItem,
+  // Content,
+  // RelatedItem,
 } from '@plone/types';
-import Image from '@plone/layout/components/Image/Image';
+// import Image from '@plone/layout/components/Image/Image';
 import clsx from 'clsx';
 import config from '@plone/registry';
+import styles from './Image.module.css';
 
 function flattenToAppUrl(url: string) {
   const apiPath = config.settings.apiPath || '';
@@ -57,33 +59,21 @@ const ImageBlockEdit = (props: BlockEditProps) => {
     [data, setBlock],
   );
 
-  const imageItem = data.image_scales
-    ? ({
-        '@id': data.url,
-        image_field: data.image_field,
-        image_scales: data.image_scales,
-      } as unknown as Content | Brain | ContainedItem | RelatedItem)
-    : undefined;
+  // const imageItem = data.image_scales
+  //   ? ({
+  //       '@id': data.url,
+  //       image_field: data.image_field,
+  //       image_scales: data.image_scales,
+  //     } as unknown as Content | Brain | ContainedItem | RelatedItem)
+  //   : undefined;
 
   return (
-    <div
-      className={clsx(
-        'image align block',
-        {
-          center: !Boolean(data.align),
-        },
-        data.align,
-      )}
-    >
+    <div className={clsx('image align block', styles['block'], data.align)}>
       {data.url ? (
-        <Image
-          className={clsx({
-            'full-width': data.align === 'full',
-            large: data.size === 'l',
-            medium: data.size === 'm',
-            small: data.size === 's',
-          })}
-          item={imageItem}
+        <ImageView
+          data={data}
+          block={block}
+          // this is still work in progress because I want to import the ImageView and use it here too. @Timo Broeskamp
           src={
             data.image_scales
               ? undefined
@@ -95,7 +85,20 @@ const ImageBlockEdit = (props: BlockEditProps) => {
           loading="lazy"
           responsive={true}
         />
-      ) : ImageWidget ? (
+      ) : // <Image
+      //   item={imageItem}
+      //   src={
+      //     data.image_scales
+      //       ? undefined
+      //       : isInternalUrl(data.url)
+      //         ? getLegacyScaledSrc(data.url, data.size || 'l')
+      //         : data.url
+      //   }
+      //   alt={data.alt || ''}
+      //   loading="lazy"
+      //   responsive={true}
+      // />
+      ImageWidget ? (
         <ImageWidget
           onChange={handleChange}
           value={data.url || ''}
