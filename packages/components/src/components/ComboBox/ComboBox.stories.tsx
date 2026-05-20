@@ -1,9 +1,7 @@
 import React from 'react';
 import { ComboBox, ComboBoxItem } from './ComboBox';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ComboBox.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Forms/ComboBox',

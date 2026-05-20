@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ConfigureRule renders rules configure interface 1`] = `
+exports[`ConfigureRule > renders rules configure interface 1`] = `
 <div>
   <div
     id="page-rule-configure"

@@ -8,6 +8,79 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.10 (2026-05-13)
+
+### Internal
+
+- Added first-class generic style field support while preserving `blockWidth` fallback for Plone blocks and explicit width handling for Plate-native blocks. @sneridagh 
+
+## 1.0.0-alpha.9 (2026-05-08)
+
+### Internal
+
+- Registered the `blockWidth` style field definition utility to support the new generic style field runtime. @sneridagh 
+
+## 1.0.0-alpha.8 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Blocks' local registration and TypeScript project setup with the monorepo-wide typecheck cleanup. 
+- Switched Blocks' local `@testing-library/jest-dom` dev dependency to the shared catalog entry to keep test tooling aligned with the monorepo dependency refresh. 
+
+## 1.0.0-alpha.7 (2026-04-16)
+
+### Breaking
+
+- Remove Text block from @plone/blocks, remove dependency on @plone/plate @sneridagh [#8015](https://github.com/plone/volto/pull/8015)
+- Refactored and re-thinked blockWidth feature.
+  Added widths to the existing block configs. @sneridagh [#8053](https://github.com/plone/volto/pull/8053)
+
+### Feature
+
+- Listing block @ebrehault [#7603](https://github.com/plone/volto/pull/7603)
+- Somersault editor support. @sneridagh [#7921](https://github.com/plone/volto/pull/7921)
+- Create video block view @tedw87 [#8004](https://github.com/plone/volto/pull/8004)
+
+### Bugfix
+
+- Use Image component in ImageBlockView instead of manually constructing image scale URLs. @jmevissen [#8008](https://github.com/plone/volto/pull/8008)
+- Added default widths for plate headings. @sneridagh [#8076](https://github.com/plone/volto/pull/8076)
+
+## 1.0.0-alpha.6 (2025-12-23)
+
+### Feature
+
+- Remove all slate related components. Use the new plate unified configuration in `@plone/plate`. @sneridagh [#7393](https://github.com/plone/volto/pull/7393)
+- Added ESlint Tailwind plugin for prettifying and wrapping up the classNames in components.
+  Amended components classNames by applying the plugin. @sneridagh [#7434](https://github.com/plone/volto/pull/7434)
+- New slate `useStablePlateValue` for fixing SSR issues on converting on the fly legacy slate blocks. @sneridagh [#7650](https://github.com/plone/volto/pull/7650)
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395](https://github.com/plone/volto/pull/7395)
+
+## 1.0.0-alpha.5 (2025-09-29)
+
+### Breaking
+
+- Remove circular dependency on layout<->blocks.
+  Breaking: The `RenderBlocks` set of components are now under `@plone/layout/blocks`.
+  Adjust the imports accordingly. @sneridagh [#7372](https://github.com/plone/volto/pull/7372)
+
+### Feature
+
+- Implement the BMv3 changes from the blocks edit PR. @sneridagh [#6393](https://github.com/plone/volto/pull/6393)
+- Add Image component and use it in Teaser block. @avoinea [#6689](https://github.com/plone/volto/pull/6689)
+- Improve unified `BlockWrapper`, block model v3 compatible. @danalvrz @sneridagh [#7228](https://github.com/plone/volto/pull/7228)
+- Order blocks config into the accepted "best practice" for it. @sneridagh [#7346](https://github.com/plone/volto/pull/7346)
+
+### Internal
+
+- Adapt import to the rearrangement of the @plone/components package structure. @sneridagh [#7185](https://github.com/plone/volto/pull/7185)
+- Update to latest versions. @sneridagh [#7298](https://github.com/plone/volto/pull/7298)
+- Adjust peer dependencies and engine. @sneridagh
+
 ## 1.0.0-alpha.4 (2025-05-24)
 
 ### Feature

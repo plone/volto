@@ -3,8 +3,8 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build:deps": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
-    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/providers --filter @plone/react-router build",
+    "build:deps": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/react-router --filter @plone/helpers build",
+    "build:all": "pnpm --filter @plone/registry --filter @plone/client --filter @plone/components --filter @plone/react-router --filter @plone/helpers build",
     "build:registry": "pnpm --filter @plone/registry run build",
     "build:components": "pnpm --filter @plone/components run build",
     "build:client": "pnpm --filter @plone/client run build",
@@ -17,7 +17,8 @@
     "build:cmsui": "pnpm --filter seven build:cmsui",
     "start:prod": "pnpm --filter seven start:prod",
     "start:cmsui": "pnpm --filter seven dev:cmsui",
-    "lint": "make build-deps && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "lint": "make build-deps && pnpm --filter seven exec init-loaders && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "make build-deps && pnpm --filter seven exec init-loaders && eslint --max-warnings=0 '{apps,packages}/**/*.{js,jsx,ts,tsx}' --fix",
     "test": "pnpm --filter seven run test",
     "test:all": "pnpm test:ci",
     "test:ci": "pnpm --filter @plone/* --filter \"!@plone/scripts\" --filter \"!@plone/theming\" run test --run",
@@ -25,31 +26,38 @@
     "prettier:fix": "prettier --write '{apps,packages}/**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint '{apps,packages}/**/*.{css,scss,less}'",
     "stylelint:fix": "stylelint '{apps,packages}/**/*.{css,scss,less}' --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
     "lint-staged": "lint-staged",
     "lockhook": "node packages/scripts/lockhook.js",
     "prepare": "husky",
     "husky:uninstall": "husky uninstall",
-    "prereleaser": "node packages/scripts/preleaser.js"
+    "prereleaser": "node packages/scripts/preleaser.js",
+    "acceptance-test": "pnpm exec playwright test --config=playwright.config.ts",
+    "acceptance-test:open": "pnpm exec playwright test --ui --config=playwright.config.ts",
+    "update-baseline-browser-mapping": "pnpm update baseline-browser-mapping browserslist -r"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
+    "tailwindcss": "catalog:",
     "tsconfig": "workspace:*",
-    "typescript": "^5.7.3"
+    "typescript": "catalog:"
   },
-  "packageManager": "pnpm@10.10.0",
   "pnpm": {
     "overrides": {
-      "react": "^19.1.0",
-      "react-dom": "^19.1.0"
+      "react": "^19.2.0",
+      "react-dom": "^19.2.0",
+      "jotai": "^2.12.5"
     },
     "onlyBuiltDependencies": [
       "@swc/core",
-      "cypress",
+      "@tailwindcss/oxide",
       "esbuild",
-      "lightningcss-cli"
+      "lightningcss-cli",
+      "msgpackr-extract",
+      "unrs-resolver"
     ]
-  }
+  },
+  "packageManager": "pnpm@10.20.0"
 }

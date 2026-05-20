@@ -1,4 +1,4 @@
-import React, { type ReactElement } from 'react';
+import React, { type JSX, type ReactElement } from 'react';
 import type { AriaLabelingProps, DOMProps } from '@react-types/shared';
 import { useSlotProps } from '@react-spectrum/utils';
 import { filterDOMProps } from '@react-aria/utils';
@@ -56,7 +56,7 @@ const icon = tv({
   },
 });
 
-export function Icon(props: IconProps) {
+export function Icon(props: IconProps): JSX.Element {
   props = useSlotProps(props, 'icon');
   const { children, size, 'aria-label': ariaLabel, ...otherProps } = props;
   let { 'aria-hidden': ariaHidden } = props;
@@ -75,7 +75,7 @@ export function Icon(props: IconProps) {
     'aria-hidden': ariaLabel ? ariaHidden || undefined : true,
     role: 'img',
     className: icon({
-      size: props.size,
+      size,
       className: clsx(children.props.className, props.className),
     }),
     style: { fill: color, ...otherProps.style },

@@ -3,9 +3,8 @@ import { Popover } from './Popover';
 import { Button } from '../Button/Button';
 import { DialogTrigger, Heading } from 'react-aria-components';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import '../../styles/basic/Popover.css';
 import { InfoIcon } from '../icons/InfoIcon';
 
 const meta = {

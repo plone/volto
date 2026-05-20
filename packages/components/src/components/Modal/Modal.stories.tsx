@@ -11,9 +11,7 @@ import {
   TextField,
 } from 'react-aria-components';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Modal.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Modal',

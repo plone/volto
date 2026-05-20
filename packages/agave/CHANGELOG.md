@@ -1,0 +1,44 @@
+# @plone/agave Release Notes
+
+<!-- Do *NOT* add new change log entries to this file.
+     Instead create a file in the news directory.
+     For helpful instructions, see:
+     https://6.docs.plone.org/contributing/index.html#change-log-entry
+-->
+
+<!-- towncrier release notes start -->
+
+## 1.0.0-alpha.5 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Agave's local formatting and typecheck scripts with the monorepo-wide package script cleanup. 
+
+## 1.0.0-alpha.4 (2026-04-16)
+
+### Feature
+
+- Listing block @ebrehault [#7603](https://github.com/plone/volto/issues/7603)
+
+## 1.0.0-alpha.3 (2025-12-23)
+
+### Feature
+
+- Renamed main.css -> publicui.css for placing the publicui CSS in add-ons. @sneridagh [#7426](https://github.com/plone/volto/issues/7426)
+
+### Bugfix
+
+- Better header CSS, give prio to the `@plone/layout` defaults. @sneridagh [#7488](https://github.com/plone/volto/issues/7488)
+
+### Internal
+
+- Fixed unused vars linting rule. Fixed all code that violated this rule. @sneridagh [#7395](https://github.com/plone/volto/issues/7395)
+
+## 1.0.0-alpha.2 (2025-09-29)
+
+### Internal
+
+- Adjust peer dependencies and engine. @sneridagh
+
+## 1.0.0 (unreleased)

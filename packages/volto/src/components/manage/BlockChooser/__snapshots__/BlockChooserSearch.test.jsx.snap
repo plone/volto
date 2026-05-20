@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`BlocksChooserSearch renders a BlockChooserSearch component 1`] = `
+exports[`BlocksChooserSearch > renders a BlockChooserSearch component 1`] = `
 <div>
   <form
     class="ui form"
@@ -8,7 +8,7 @@ exports[`BlocksChooserSearch renders a BlockChooserSearch component 1`] = `
   >
     <div
       class="field searchbox"
-      style="border-left: 0; height: 2em; padding: 0px;"
+      style="border-left: 0px; height: 2em; padding: 0px;"
     >
       <div
         class="ui input"

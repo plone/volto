@@ -8,9 +8,51 @@
 
 <!-- towncrier release notes start -->
 
-## 2.0.0-alpha.0 (2025-05-24)
+## 2.0.0-alpha.4 (2026-05-07)
 
-## 1.0.0-alpha.24 (2025-05-24)
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Client's shared tsconfig usage and local package scripts with the monorepo-wide typecheck cleanup. 
+- Refreshed Client's local runtime and test dependency versions, including `axios`, `uuid`, `jsdom`, and `wait-on`, to match the current monorepo dependency baseline. 
+
+## 2.0.0-alpha.3 (2026-04-16)
+
+### Breaking
+
+- Normalize client login arguments to follow all non-get argument shape, nesting them under a data argument. @sneridagh [#8111](https://github.com/plone/volto/pull/8111)
+- Fixed inconsistent use of username argument instead of login in the login API client. @sneridagh [#8112](https://github.com/plone/volto/pull/8112)
+- Align REST client path argument names with REST API semantics, using canonical keys like `id`, `type`, `name`, and `in_reply_to` across affected endpoints. @sneridagh 
+
+### Feature
+
+- Better zod support for upload files/images. @sneridagh [#7921](https://github.com/plone/volto/pull/7921)
+
+### Bugfix
+
+- Fix `getUsers` to handle the updated `@users` response format in `plone.restapi` 10. @davisagli 
+- Fixed create and update content validation @pnicolli 
+
+## 2.0.0-alpha.2 (2025-12-23)
+
+### Internal
+
+- Remove unused imports present, due to missing rule in ESlint. @sneridagh [#7395](https://github.com/plone/volto/pull/7395)
+
+## 2.0.0-alpha.1 (2025-09-29)
+
+### Bugfix
+
+- Fix Zod schema for `update` endpoint. @sneridagh [#7118](https://github.com/plone/volto/pull/7118)
+- Fixed related items payload schema. @deodorhunter [#7201](https://github.com/plone/volto/pull/7201)
+- Fixed some lint/prettier issues. @sneridagh [#7346](https://github.com/plone/volto/pull/7346)
+
+### Internal
+
+- Add `@testing-library/react` to the catalog. @sneridagh [#7372](https://github.com/plone/volto/pull/7372)
+- Remove not needed `vite`. @sneridagh
+
+## 2.0.0-alpha.0 (2025-05-24)
 
 ### Feature
 
@@ -20,7 +62,7 @@
 
 - Fixed handling of errors that are not coming from the backend @pnicolli [#6901](https://github.com/plone/volto/pull/6901)
 - Fixed name of the getType parameter @pnicolli [#6906](https://github.com/plone/volto/pull/6906)
-- Fixed client test in `@types` endpoint. @sneridagh 
+- Fixed client test in `@types` endpoint. @sneridagh
 
 ### Internal
 

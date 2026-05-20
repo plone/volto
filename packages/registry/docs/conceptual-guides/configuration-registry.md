@@ -46,7 +46,9 @@ The add-on is meant to extend the initial configuration.
 From the default export function of our add-on, you should provide the configuration of the new block:
 
 ```ts
-export default function applyConfig(config: ConfigData) {
+import type { ConfigType } from '@plone/registry';
+
+export default function applyConfig(config: ConfigType) {
   config.blocks.blocksConfig.faq_viewer = {
     id: 'faq_viewer',
     title: 'FAQ Viewer',

@@ -34,27 +34,44 @@ export function getProjection(
     depth = minDepth;
   }
 
-  return { depth, maxDepth, minDepth, parentId: getParentId() };
+  return { depth, maxDepth, minDepth, ...getParent() };
 
-  function getParentId() {
+  function getParent() {
     if (depth === 0 || !previousItem) {
-      return null;
+      return {
+        parentId: null,
+        parentType: null,
+      };
     }
 
     if (depth <= previousItem.depth) {
-      return previousItem.parentId;
+      return {
+        parentId: previousItem.parentId,
+        parentType: previousItem.parentType,
+      };
     }
 
     if (depth > previousItem.depth) {
-      return previousItem.id;
+      return {
+        parentId: previousItem.id,
+        parentType: previousItem.data?.['@type'] || null,
+      };
     }
 
     const newParent = newItems
       .slice(0, overItemIndex)
       .reverse()
-      .find((item) => item.depth === depth)?.parentId;
+      .find((item) => item.depth === depth);
 
-    return newParent ?? null;
+    return newParent
+      ? {
+          parentId: newParent.parentId,
+          parentType: newParent.parentType,
+        }
+      : {
+          parentId: null,
+          parentType: null,
+        };
   }
 }
 
@@ -79,12 +96,12 @@ function getMinDepth({ nextItem }) {
   return 0;
 }
 
-function flatten(items = [], parentId = null, depth = 0) {
+function flatten(items = [], parentId = null, parentType = null, depth = 0) {
   return items.reduce((acc, item, index) => {
     return [
       ...acc,
-      { ...item, parentId, depth, index },
-      ...flatten(item.children, item.id, depth + 1),
+      { ...item, parentId, parentType, depth, index },
+      ...flatten(item.children, item.id, item.data?.['@type'], depth + 1),
     ];
   }, []);
 }

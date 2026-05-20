@@ -1,10 +1,8 @@
 import './storybook-base.css';
-import '../../theming/styles/main.css';
+import '../../theming/styles/tailwind.css';
 
 export const parameters = {
-  backgrounds: {
-    default: 'light',
-  },
+  backgrounds: {},
   options: {
     storySort: {
       order: [
@@ -22,5 +20,11 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+};
+
+export const initialGlobals = {
+  backgrounds: {
+    value: 'light',
   },
 };

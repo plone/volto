@@ -1,9 +1,7 @@
 import React from 'react';
 import { SearchField } from './SearchField';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/SearchField.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof SearchField> = {
   title: 'Basic/Forms/SearchField',

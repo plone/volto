@@ -1,1 +1,0 @@
-Remove the slot registration from the array if it is the last in `unRegisterSlotComponent`. @sneridagh

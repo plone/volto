@@ -14,6 +14,21 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'route',
+        path: 'layers.css',
+        file: '@plone/publicui/routes/layers.css.tsx',
+      },
+      {
+        type: 'route',
+        path: 'sitemap',
+        file: '@plone/publicui/routes/sitemap.tsx',
+      },
+      {
+        type: 'route',
+        path: 'search',
+        file: '@plone/publicui/routes/search.tsx',
+      },
+      {
+        type: 'route',
         path: '*',
         file: '@plone/publicui/routes/content.tsx',
         options: {

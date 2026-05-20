@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { ColorArea } from './ColorArea';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ColorArea.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Forms/ColorArea',

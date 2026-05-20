@@ -1,0 +1,16 @@
+@layer custom {
+  .language-switcher {
+    display: flex;
+    margin-right: 20px;
+
+    .selected {
+      font-weight: bold;
+    }
+    a:not(:last-child):after {
+      margin-right: 5px;
+      margin-left: 5px;
+      content: '|';
+      font-weight: normal;
+    }
+  }
+}

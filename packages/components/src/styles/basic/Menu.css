@@ -1,7 +1,7 @@
+/* depends on:
 @import './Button.css';
 @import './Popover.css';
-@import './theme.css';
-
+*/
 @layer plone-components.base {
   .react-aria-Menu {
     overflow: auto;
@@ -104,6 +104,15 @@
 
     &[data-disabled] {
       color: var(--text-color-disabled);
+    }
+
+    &[data-has-submenu]::after {
+      position: absolute;
+      right: 0.571rem;
+      content: '›';
+      content: '›' / '';
+      font-size: 1rem;
+      line-height: 1;
     }
   }
 }

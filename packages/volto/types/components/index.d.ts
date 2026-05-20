@@ -54,7 +54,7 @@ export { default as Actions } from "@plone/volto/components/manage/Actions/Actio
 export { default as Add } from "@plone/volto/components/manage/Add/Add";
 export { default as Circle } from "@plone/volto/components/manage/Contents/circle";
 export { default as Delete } from "@plone/volto/components/manage/Delete/Delete";
-export const Diff: import("@loadable/component").LoadableClassComponent<any>;
+export const Diff: import("@loadable/component").LoadableComponent<any>;
 export const DiffField: import("@loadable/component").LoadableClassComponent<any>;
 export { default as Display } from "@plone/volto/components/manage/Display/Display";
 export { default as Edit } from "@plone/volto/components/manage/Edit/Edit";
@@ -121,4 +121,4 @@ export { default as App } from "@plone/volto/components/theme/App/App";
 export { Controlpanels, Controlpanel, RulesControlpanel, AddRuleControlpanel, EditRuleControlpanel, ConfigureRuleControlpanel, UsersControlpanel, RenderUsers, UserGroupMembershipControlPanel, GroupsControlpanel, RenderGroups, RelationsControlpanel, AliasesControlpanel, UndoControlpanel, AddonsControlpanel, ContentType, ContentTypeLayout, ContentTypeSchema, ContentTypes, VersionOverview, UpgradeControlPanel, ModerateComments, DatabaseInformation } from "@plone/volto/components/manage/Controlpanels";
 export { Field, InlineForm, ModalForm, UndoToolbar, BlocksToolbar, BlockDataForm, BlocksForm, Form } from "@plone/volto/components/manage/Form";
 export { Contents, ContentsBreadcrumbs, ContentsIndexHeader, ContentsItem, ContentsUploadModal, ContentsPropertiesModal, ContentsRenameModal, ContentsWorkflowModal, ContentsTagsModal } from "@plone/volto/components/manage/Contents";
-export { AlignWidget, ButtonsWidget, ArrayWidget, CheckboxWidget, FileWidget, IdWidget, PasswordWidget, QueryWidget, QuerySortOnWidget, QuerystringWidget, SchemaWidget, SelectWidget, TextareaWidget, TextWidget, TokenWidget, WysiwygWidget, UrlWidget, InternalUrlWidget, EmailWidget, NumberWidget, ImageSizeWidget, RegistryImageWidget, ReferenceWidget, ObjectBrowserWidget, ObjectWidget, ObjectListWidget, VocabularyTermsWidget, SelectMetadataWidget, SelectAutoComplete, ColorPickerWidget, DatetimeWidget, RecurrenceWidget, FormFieldWrapper } from "@plone/volto/components/manage/Widgets";
+export { AlignWidget, ButtonsWidget, ArrayWidget, CheckboxWidget, FileWidget, HiddenWidget, IdWidget, PasswordWidget, QueryWidget, QuerySortOnWidget, QuerystringWidget, SchemaWidget, SelectWidget, StaticTextWidget, TextareaWidget, TextWidget, TokenWidget, WysiwygWidget, UrlWidget, InternalUrlWidget, EmailWidget, NumberWidget, ImageSizeWidget, RegistryImageWidget, ReferenceWidget, ObjectBrowserWidget, ObjectWidget, ObjectListWidget, VocabularyTermsWidget, SelectMetadataWidget, SelectAutoComplete, ColorPickerWidget, DatetimeWidget, RecurrenceWidget, FormFieldWrapper } from "@plone/volto/components/manage/Widgets";

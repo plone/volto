@@ -21,13 +21,13 @@
     }
 
     .react-aria-Label:has(
-        + .react-aria-Input[data-focused],
-        + .react-aria-TextArea[data-focused]
-      ),
+      + .react-aria-Input[data-focused],
+      + .react-aria-TextArea[data-focused]
+    ),
     .react-aria-Label:has(
-        + .react-aria-Input:not(:placeholder-shown),
-        + .react-aria-TextArea:not(:placeholder-shown)
-      ) {
+      + .react-aria-Input:not(:placeholder-shown),
+      + .react-aria-TextArea:not(:placeholder-shown)
+    ) {
       margin-top: -30px;
       margin-left: -12px;
       transform: scale(0.8571428571, 0.8571428571);
@@ -35,13 +35,13 @@
     }
 
     .react-aria-Label:has(
-        + .react-aria-Input:not(:placeholder-shown):not(:hover):not(
-            :active
-          ):not(:focus),
-        + .react-aria-TextArea:not(:placeholder-shown):not(:hover):not(
-            :active
-          ):not(:focus)
-      ) {
+      + .react-aria-Input:not(:placeholder-shown):not(:hover):not(:active):not(
+          :focus
+        ),
+      + .react-aria-TextArea:not(:placeholder-shown):not(:hover):not(
+          :active
+        ):not(:focus)
+    ) {
       color: var(--basic-500);
     }
 
@@ -65,9 +65,9 @@
     }
 
     .react-aria-Label:has(
-        + .react-aria-Input[data-invalid],
-        + .react-aria-TextArea[data-invalid]
-      ) {
+      + .react-aria-Input[data-invalid],
+      + .react-aria-TextArea[data-invalid]
+    ) {
       color: var(--quanta-candy) !important;
 
       &::after {
@@ -76,16 +76,16 @@
     }
 
     .react-aria-Label:has(
-        + .react-aria-Input[data-disabled],
-        + .react-aria-TextArea[data-disabled]
-      ) {
+      + .react-aria-Input[data-disabled],
+      + .react-aria-TextArea[data-disabled]
+    ) {
       color: var(--basic-400) !important;
     }
 
     .react-aria-Label:has(
-        + .react-aria-Input[readonly],
-        + .react-aria-TextArea[readonly]
-      ) {
+      + .react-aria-Input[readonly],
+      + .react-aria-TextArea[readonly]
+    ) {
       color: var(--basic-500);
     }
   }

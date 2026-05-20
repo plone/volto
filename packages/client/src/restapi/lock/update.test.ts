@@ -8,7 +8,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -32,7 +32,7 @@ describe('Lock', () => {
 
     const locktoken = 'sample-token';
 
-    const result = await cli.updateLock({
+    await cli.updateLock({
       path: contentData.title,
       locktoken,
     });

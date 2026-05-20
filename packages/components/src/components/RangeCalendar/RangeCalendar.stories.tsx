@@ -1,9 +1,7 @@
 import React from 'react';
 import { RangeCalendar } from './RangeCalendar';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/RangeCalendar.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof RangeCalendar> = {
   title: 'Basic/Forms/RangeCalendar',

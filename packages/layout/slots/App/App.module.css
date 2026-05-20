@@ -1,0 +1,13 @@
+@layer custom {
+  .app {
+    display: grid;
+    height: 100dvh;
+    margin: 0;
+    grid-template-areas:
+      'header'
+      'content'
+      'footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+}

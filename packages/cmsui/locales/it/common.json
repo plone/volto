@@ -1,6 +1,57 @@
 {
   "cmsui": {
+    "add": "Aggiungi",
     "edit": "Modifica",
-    "save": "Salva"
+    "save": "Salva",
+    "controlpanel": "Pannello di controllo",
+    "objectbrowserwidget": {
+      "openDialog": "Seleziona contenuti",
+      "dialogTitle": "Seleziona Contenuti",
+      "closeDialog": "Chiudi selezione",
+      "openSearch": "Cerca contenuti",
+      "closeSearch": "Chiudi ricerca",
+      "searchPlaceholder": "Cerca contenuti...",
+      "loading": "Caricamento...",
+      "noResults": "Nessun contenuto trovato",
+      "goback": "Torna indietro",
+      "changeViewMode": "Passa alla vista {{mode}}",
+      "currentItems": "Elementi correnti",
+      "home": "Home",
+      "item": "{{title}}{{#selected}} (selezionato){{/selected}}",
+      "itemNotSelectable": "{{title}} (non selezionabile)",
+      "itemNavigateTo": "Naviga verso {{title}}",
+      "viewModes": {
+        "list": "elenco",
+        "grid": "griglia"
+      }
+    },
+    "panelgroups": {
+      "general": "Generale",
+      "content": "Contenuto",
+      "security": "Sicurezza",
+      "users": "Utenti",
+      "site": "Sito",
+      "addons": "Configurazione prodotti aggiuntivi",
+      "maintenance": "Manutenzione"
+    },
+    "paneltitles": {
+      "addons": "Prodotti aggiuntivi",
+      "database": "Database",
+      "contentRules": "Regole di contenuto",
+      "undo": "Annulla operazioni",
+      "urlmanagement": "Gestione URL",
+      "relations": "Relazioni",
+      "moderatecomments": "Moderazione dei commenti",
+      "users": "Utenti",
+      "groupMembership": "Appartenenza ai gruppi",
+      "groups": "Gruppi"
+    },
+    "blocksEditor": {
+      "blocksTab": "Blocchi",
+      "contentTab": "Contenuto"
+    },
+    "sidebar": {
+      "label": "Barra laterale destra"
+    }
   }
 }

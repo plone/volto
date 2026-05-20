@@ -4,18 +4,22 @@
 `plone.volto`
 [Aa]sync
 [Bb]ackend
+CMSUI
 CommonJS
 JavaScript
 npm
 nvm
 Pastanaga
+Plate
 Plone
 pluggab(le|ility)
 programatically
+Public UI
 Razzle
 RichText
 Sass
 transpile[dr]{0,1}
+Vite
 Volto
 Vue
 Zope

@@ -14,7 +14,14 @@ This section of the documentation contains conceptual guides for various aspects
 ```{toctree}
 :maxdepth: 2
 
-add-ons
+seven-vs-volto-differences
+modular-arch-packages
+add-on-registry
+add-on-loader
+add-on-styles-loader
+configuration-registry
+add-on-driven-configuration
+cookieplone-frontend-add-on
 routing
-shadowing
+slots
 ```

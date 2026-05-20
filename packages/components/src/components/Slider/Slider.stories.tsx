@@ -1,9 +1,7 @@
 import React from 'react';
 import { Slider } from './Slider';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Slider.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Slider> = {
   title: 'Basic/Slider',

@@ -1,3 +1,0 @@
-Fix image scales typings.
-Added `dataAdapter` key in `BlockConfigBase`.
-`category` as optional in `BlockConfigBase`. @sneridagh

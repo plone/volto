@@ -1,1 +1,0 @@
-Unified the `quanta` app into the `seven` app. @pnicolli

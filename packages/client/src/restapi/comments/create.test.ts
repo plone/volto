@@ -8,7 +8,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -30,12 +30,9 @@ describe('Comment', () => {
     await cli.createContent({ path: '/', data: contentData });
 
     const registryData = {
-      'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled':
-        true,
-      'plone.app.discussion.interfaces.IDiscussionSettings.edit_comment_enabled':
-        true,
-      'plone.app.discussion.interfaces.IDiscussionSettings.delete_own_comment_enabled':
-        true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled': true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.edit_comment_enabled': true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.delete_own_comment_enabled': true,
     };
     await cli.updateRegistry({ data: registryData });
 
@@ -52,12 +49,9 @@ describe('Comment', () => {
 
   test('Failure', async () => {
     const registryData = {
-      'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled':
-        true,
-      'plone.app.discussion.interfaces.IDiscussionSettings.edit_comment_enabled':
-        true,
-      'plone.app.discussion.interfaces.IDiscussionSettings.delete_own_comment_enabled':
-        true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.globally_enabled': true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.edit_comment_enabled': true,
+      'plone.app.discussion.interfaces.IDiscussionSettings.delete_own_comment_enabled': true,
     };
     await cli.updateRegistry({ data: registryData });
 

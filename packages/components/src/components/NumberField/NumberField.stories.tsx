@@ -1,9 +1,7 @@
 import React from 'react';
 import { NumberField } from './NumberField';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/NumberField.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
   title: 'Basic/Forms/NumberField',

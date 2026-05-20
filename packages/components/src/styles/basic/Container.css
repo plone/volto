@@ -8,6 +8,12 @@
       margin-left: auto;
     }
 
+    &.default {
+      max-width: var(--default-container-width);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
     &.narrow {
       max-width: var(--narrow-container-width);
       margin-right: auto;

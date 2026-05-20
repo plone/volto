@@ -2,9 +2,7 @@ import React from 'react';
 import { Tabs } from './Tabs';
 import { Tab, TabList, TabPanel } from 'react-aria-components';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Tabs.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Tabs> = {
   title: 'Basic/Tabs',
