@@ -602,6 +602,9 @@ importers:
       '@internationalized/date':
         specifier: 'catalog:'
         version: 3.12.1
+      '@plone/registry':
+        specifier: workspace:*
+        version: link:../registry
       '@react-aria/utils':
         specifier: 'catalog:'
         version: 3.34.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
