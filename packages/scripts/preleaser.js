@@ -20,8 +20,8 @@ const RELEASE_GROUPS = [
   {
     label: 'Utils (level 2)',
     packages: [
-      '@plone/scripts',
       '@plone/babel-preset-razzle',
+      '@plone/scripts',
       '@plone/razzle-dev-utils',
       '@plone/razzle',
     ],
