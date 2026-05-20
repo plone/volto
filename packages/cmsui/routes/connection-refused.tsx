@@ -6,9 +6,13 @@ const ConnectionRefused = () => {
   const { t } = useTranslation();
 
   return (
-    <Container className="mt-10 flex min-h-screen flex-col items-center font-sans text-xl">
-      <h1 className="mb-6 text-center leading-10">
-        {t('cmsui.connectionRefused')}
+    <Container
+      className={`
+        mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center text-center
+      `}
+    >
+      <h1 className="mb-4 text-2xl font-bold">
+        {t('cmsui.errorRoutes.connectionRefused')}
         {process.env.NODE_ENV === 'development' && (
           <>
             <br />
@@ -25,16 +29,16 @@ const ConnectionRefused = () => {
         )}
       </h1>
       {process.env.NODE_ENV === 'development' && (
-        <p className="mx-auto mb-5 w-[475px] text-center">
-          {t('cmsui.connectionRefusedDescription')}
+        <p className="mb-3 text-lg">
+          {t('cmsui.errorRoutes.connectionRefusedDescription')}
         </p>
       )}
       {process.env.NODE_ENV !== 'development' && (
         <>
-          <p className="mx-auto mb-5 w-[475px] text-center">
-            {t('cmsui.connectionRefusedProduction')}
+          <p className="mb-3 text-lg">
+            {t('cmsui.errorRoutes.connectionRefusedProduction')}
           </p>
-          <p className="text-center">{t('thankyou')}</p>
+          <p className="text-lg">{t('cmsui.errorRoutes.thankyou')}</p>
         </>
       )}
     </Container>
