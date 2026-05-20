@@ -57,7 +57,7 @@ import { buildObjectBrowserUrl } from '../../ObjectBrowserWidget/utils';
 import { formAtom } from '../../../routes/atoms';
 
 const popoverVariants = cva(
-  'z-50 w-[380px] rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-hidden',
+  'z-50 rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-hidden',
 );
 
 const inputVariants = cva(
@@ -76,7 +76,8 @@ const resultsListVariants = cva(
 const resultButtonVariants = cva(
   `
     flex w-full flex-col items-start gap-0.5 px-3 py-2 text-left text-sm
-    hover:bg-muted focus:bg-muted focus:outline-none
+    hover:bg-muted
+    focus:bg-muted focus:outline-none
   `,
 );
 
@@ -148,6 +149,9 @@ function LinkOpenButton() {
         variant: 'ghost',
       })}
       onMouseOver={(event) => {
+        event.stopPropagation();
+      }}
+      onFocus={(event) => {
         event.stopPropagation();
       }}
       aria-label="Open link in a new tab"
@@ -521,7 +525,8 @@ function LinkFloatingToolbar({
   const results = React.useMemo(
     () =>
       shouldSearchForInput(url)
-        ? (searchFetcher.data?.results?.items as SearchItem[] | undefined) ?? []
+        ? ((searchFetcher.data?.results?.items as SearchItem[] | undefined) ??
+          [])
         : [],
     [searchFetcher.data?.results?.items, url],
   );
@@ -566,9 +571,10 @@ function LinkFloatingToolbar({
                 <button
                   key={item['@id']}
                   type="button"
-                  className={`${resultButtonVariants()} ${
-                    item['@id'] === results[0]?.['@id'] ? 'bg-muted' : ''
-                  }`}
+                  className={`
+                    ${resultButtonVariants()}
+                    ${item['@id'] === results[0]?.['@id'] ? 'bg-muted' : ''}
+                  `}
                   data-selected={item['@id'] === results[0]?.['@id']}
                   onMouseDown={(event) => {
                     event.preventDefault();
