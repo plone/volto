@@ -38,7 +38,7 @@ export const ContentTypesMenu = ({ content }: ContentTypesMenuProps) => {
     return (
       <MenuItem
         id={type.id}
-        href={`/@@add${location.pathname}/?type=${typeToAdd}`}
+        href={`/@@add${location.pathname}?type=${typeToAdd}`}
       >
         <Icon />
         <Text slot="label">{type.title}</Text>
