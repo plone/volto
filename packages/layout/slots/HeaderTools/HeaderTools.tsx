@@ -15,11 +15,7 @@ const HeaderTools = (props: SlotComponentProps) => {
   return (
     <>
       {isAuthenticated ? (
-        <SlotRenderer
-          name="siteActions"
-          content={content}
-          location={location}
-        />
+        <SlotRenderer name="actions" content={content} location={location} />
       ) : (
         <SlotRenderer
           name="anonymousTools"

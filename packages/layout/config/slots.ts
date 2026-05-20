@@ -12,7 +12,7 @@ import { NotContentTypeCondition } from '../helpers';
 import AnonymousTools from '../slots/HeaderTools/AnonymousTools';
 import HeaderTools from '../slots/HeaderTools/HeaderTools';
 import SearchWidget from '../slots/HeaderTools/SearchWidget';
-import SiteActions from '../slots/HeaderTools/SiteActions';
+import Actions from '../slots/HeaderTools/Actions';
 
 export default function install(config: ConfigType) {
   // Main App Slot
@@ -41,25 +41,25 @@ export default function install(config: ConfigType) {
 
   // Header Tools
   config.registerSlotComponent({
-    name: 'Tools',
+    name: 'HeaderTools',
     slot: 'headerTools',
     component: HeaderTools,
   });
 
   config.registerSlotComponent({
-    name: 'Tools',
-    slot: 'siteActions',
-    component: SiteActions,
+    name: 'Actions',
+    slot: 'actions',
+    component: Actions,
   });
 
   config.registerSlotComponent({
-    name: 'Tools',
+    name: 'AnonymousTools',
     slot: 'anonymousTools',
     component: AnonymousTools,
   });
 
   config.registerSlotComponent({
-    name: 'Tools',
+    name: 'SearchWidget',
     slot: 'searchWidget',
     component: SearchWidget,
   });

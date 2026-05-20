@@ -1,7 +1,7 @@
 import { Link } from '@plone/components';
 import { useTranslation } from 'react-i18next';
 
-const SiteActions = () => {
+const Actions = () => {
   const { t } = useTranslation();
 
   return (
@@ -9,4 +9,4 @@ const SiteActions = () => {
   );
 };
 
-export default SiteActions;
+export default Actions;
