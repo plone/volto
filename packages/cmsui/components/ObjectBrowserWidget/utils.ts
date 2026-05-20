@@ -31,7 +31,7 @@ export type WidgetPatternOptions = {
     selectableTypes?: Content['@type'][];
     [key: string]: any;
   };
-  items: PartialBrainWithRequired[];
+  selectedItemIds: string[];
   mode: ObjectBrowserWidgetMode;
 };
 
@@ -96,7 +96,7 @@ const isSelectable = (
   item: PartialBrainWithRequired,
   options: WidgetPatternOptions,
 ) => {
-  const { pattern_options, items } = options;
+  const { pattern_options, selectedItemIds, mode } = options;
   const { maximumSelectionSize, selectableTypes } = pattern_options || {
     maximumSelectionSize: undefined,
     selectableTypes: [],
@@ -111,10 +111,14 @@ const isSelectable = (
     return false;
   }
 
-  // Second check: respect maximum selection limit
-  if (maximumSelectionSize && items && maximumSelectionSize <= items.length) {
+  // Second check: respect maximum selection limit (multiple mode only)
+  if (
+    isMultipleMode(mode) &&
+    maximumSelectionSize &&
+    maximumSelectionSize <= selectedItemIds.length
+  ) {
     // At limit: only already selected items are selectable (for deselection)
-    return items.some((i) => i['@id'] === item['@id']);
+    return selectedItemIds.includes(item['@id']);
   }
 
   // All checks passed
