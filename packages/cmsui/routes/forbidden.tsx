@@ -1,4 +1,4 @@
-import { Container } from '@plone/components/tailwind';
+import { Container } from '@plone/components';
 import { useTranslation } from 'react-i18next';
 
 const Forbidden = () => {

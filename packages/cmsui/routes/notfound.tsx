@@ -1,4 +1,4 @@
-import { Container } from '@plone/components/tailwind';
+import { Container } from '@plone/components';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 
@@ -10,7 +10,13 @@ const NotFound = () => {
       <p className="mb-3 text-lg">{t('cmsui.notFoundDescription')}</p>
       <p className="mb-3 text-lg">
         {t('cmsui.contact')}
-        <NavLink to="/contact-form" className="text-blue-600 hover:underline">
+        <NavLink
+          to="/contact-form"
+          className={`
+            text-blue-600
+            hover:underline
+          `}
+        >
           {t('cmsui.siteAdminstration')}
         </NavLink>
       </p>

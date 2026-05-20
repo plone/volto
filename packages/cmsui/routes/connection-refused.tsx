@@ -1,5 +1,5 @@
 import config from '@plone/registry';
-import { Container } from '@plone/components/tailwind';
+import { Container } from '@plone/components';
 import { useTranslation } from 'react-i18next';
 
 const ConnectionRefused = () => {
@@ -13,7 +13,10 @@ const ConnectionRefused = () => {
           <>
             <br />
             <a
-              className="text-blue-600 hover:underline"
+              className={`
+                text-blue-600
+                hover:underline
+              `}
               href={config.settings.apiPath}
             >
               {config.settings.apiPath}
