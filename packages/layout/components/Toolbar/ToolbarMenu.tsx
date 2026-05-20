@@ -8,6 +8,8 @@
  *
  * ToolbarMenu works around this by:
  *  - Setting `isNonModal` on the Popover to disable FocusScope containment
+ *  - Blocking Tab while the menu is open, to trap the focus
+ *  - Restoring focus to the trigger button when the menu closes
  *  - Managing open state and dismiss-on-outside-click manually via native
  *    event listeners on both the shadow root and document
  *
@@ -45,6 +47,17 @@ export function ToolbarMenu({
     triggerRef.current = node;
   }, []);
 
+  const onOpenChange = (isOpen: boolean) => {
+    setIsOpen(isOpen);
+
+    if (!isOpen) {
+      triggerRef.current?.focus();
+    }
+  };
+
+  // Closes the menu on outside clicks. Two listeners are needed because Shadow DOM
+  // retargets events at the document level, so only the shadow-root listener can
+  // distinguish trigger clicks from popover clicks within the toolbar.
   useEffect(() => {
     if (!isOpen) return;
 
@@ -91,12 +104,24 @@ export function ToolbarMenu({
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        e.preventDefault();
+      }
+    };
+
+    if (isOpen) document.addEventListener('keydown', onKeyDown);
+
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
+
   return (
     <>
       {styles && <style>{styles}</style>}
       <MenuTrigger
         isOpen={isOpen}
-        onOpenChange={setIsOpen}
+        onOpenChange={onOpenChange}
         isNonModal={true}
         {...props}
       >
