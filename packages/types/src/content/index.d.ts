@@ -1,7 +1,7 @@
 import type { Expanders, ContainedItem, Image, RelatedItem } from './common';
 import type { BlocksFormData } from '../blocks';
 
-export interface Content {
+export interface BaseContent {
   '@components': Expanders;
   '@id': string;
   '@type': string;
@@ -80,6 +80,17 @@ export interface Content {
   working_copy_of: unknown;
 }
 
-export interface CreateContentResponse extends Content {}
-export interface UpdateContentResponse extends Content {}
+export interface EventContent extends Omit<BaseContent, '@type'> {
+  '@type': 'Event';
+  start: string;
+  end: string;
+  recurrence: string | null;
+  open_end: boolean;
+  whole_day: boolean;
+}
+
+export type Content = BaseContent | EventContent;
+
+export type CreateContentResponse = Content;
+export type UpdateContentResponse = Content;
 export * from './common';
