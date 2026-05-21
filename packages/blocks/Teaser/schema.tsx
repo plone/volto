@@ -23,8 +23,9 @@ export function TeaserSchema({
       href: {
         title: 'Target',
         widget: 'object_browser',
-        mode: 'link',
+        mode: 'single',
         selectedItemAttrs: [
+          '@id',
           'Title',
           'title',
           'Description',
@@ -59,7 +60,7 @@ export function TeaserSchema({
         widget: 'object_browser',
         mode: 'image',
         allowExternals: true,
-        selectedItemAttrs: ['image_field', 'image_scales'],
+        selectedItemAttrs: ['@id', 'image_field', 'image_scales'],
       },
       openLinkInNewTab: {
         title: 'Open in a new tab',
