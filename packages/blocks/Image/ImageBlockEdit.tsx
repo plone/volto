@@ -1,13 +1,6 @@
 import { useCallback } from 'react';
 import ImageView from './ImageBlockView';
-import type {
-  BlockEditProps,
-  // Brain,
-  // ContainedItem,
-  // Content,
-  // RelatedItem,
-} from '@plone/types';
-// import Image from '@plone/layout/components/Image/Image';
+import type { BlockEditProps } from '@plone/types';
 import clsx from 'clsx';
 import config from '@plone/registry';
 import styles from './Image.module.css';
@@ -17,17 +10,6 @@ function flattenToAppUrl(url: string) {
   if (!apiPath || !url) return url;
 
   return url.replace(`${apiPath}/`, '/').replace(apiPath, '/');
-}
-
-function isInternalUrl(url: string) {
-  return url.startsWith('/') || url.includes('/++api++/');
-}
-
-function getLegacyScaledSrc(url: string, size: string) {
-  const base = flattenToAppUrl(url);
-  if (size === 'm') return `${base}/@@images/image/preview`;
-  if (size === 's') return `${base}/@@images/image/mini`;
-  return `${base}/@@images/image`;
 }
 
 const ImageBlockEdit = (props: BlockEditProps) => {
@@ -59,46 +41,11 @@ const ImageBlockEdit = (props: BlockEditProps) => {
     [data, setBlock],
   );
 
-  // const imageItem = data.image_scales
-  //   ? ({
-  //       '@id': data.url,
-  //       image_field: data.image_field,
-  //       image_scales: data.image_scales,
-  //     } as unknown as Content | Brain | ContainedItem | RelatedItem)
-  //   : undefined;
-
   return (
     <div className={clsx('image align block', styles['block'], data.align)}>
       {data.url ? (
-        <ImageView
-          data={data}
-          block={block}
-          // this is still work in progress because I want to import the ImageView and use it here too. @Timo Broeskamp
-          src={
-            data.image_scales
-              ? undefined
-              : isInternalUrl(data.url)
-                ? getLegacyScaledSrc(data.url, data.size || 'l')
-                : data.url
-          }
-          alt={data.alt || ''}
-          loading="lazy"
-          responsive={true}
-        />
-      ) : // <Image
-      //   item={imageItem}
-      //   src={
-      //     data.image_scales
-      //       ? undefined
-      //       : isInternalUrl(data.url)
-      //         ? getLegacyScaledSrc(data.url, data.size || 'l')
-      //         : data.url
-      //   }
-      //   alt={data.alt || ''}
-      //   loading="lazy"
-      //   responsive={true}
-      // />
-      ImageWidget ? (
+        <ImageView {...props} />
+      ) : ImageWidget ? (
         <ImageWidget
           onChange={handleChange}
           value={data.url || ''}

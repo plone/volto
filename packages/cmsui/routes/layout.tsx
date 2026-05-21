@@ -19,6 +19,7 @@ import { shouldShowToolbar } from '@plone/layout/helpers';
 import config from '@plone/registry';
 
 import stylesheet from 'seven/.plone/cmsui.css?url';
+import publicStylesheet from 'seven/.plone/publicui.css?url';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
   matches,
@@ -36,6 +37,8 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: publicStylesheet },
+
   { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',
