@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-03-21 19:09+0000\n"
-"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
-"Language: eu\n"
+"PO-Revision-Date: 2026-05-10 15:51+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/plone/volto-18/eu/>\n"
+"Language: eu\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 2026.5-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -4551,7 +4551,7 @@ msgstr "Babestutako orrialde batera sartu nahian zabiltza, {login} lehenengo."
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr ""
+msgstr "Babestutako baliabide bat atzitzen saiatzen ari zara."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
