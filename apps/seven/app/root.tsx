@@ -22,7 +22,6 @@ import NotFound from '@plone/cmsui/routes/notfound';
 import ConnectionRefused from '@plone/cmsui/routes/connection-refused';
 import { getClearAuthCookieHeader } from '@plone/react-router';
 
-
 import stylesheet from 'seven/.plone/cmsui.css?url';
 
 export const middleware = [
