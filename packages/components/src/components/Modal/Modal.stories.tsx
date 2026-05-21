@@ -1,15 +1,10 @@
 import React from 'react';
 import { Modal } from './Modal';
 import { Button } from '../Button/Button';
+import { Dialog } from '../Dialog/Dialog';
+import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
 
-import {
-  Dialog,
-  DialogTrigger,
-  Heading,
-  Input,
-  Label,
-  TextField,
-} from 'react-aria-components';
+import { Heading, Input, Label, TextField } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
