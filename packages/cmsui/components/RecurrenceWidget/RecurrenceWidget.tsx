@@ -11,27 +11,24 @@ import { useState } from 'react';
 import { useAtomValue } from 'jotai';
 import { formAtom } from '../../routes/atoms';
 import type { FieldProps } from '../Form/Field';
-import pkg from 'rrule';
-import SelectedDates from './Components/SelectedDates';
 
-const { rrulestr } = pkg;
+import { rrulestr } from './rrule';
+import SelectedDates from './Components/SelectedDates';
+import { getRruleText } from './utils';
+import type { EventContent } from '@plone/types';
 
 type RecurrenceWidgetProps = FieldProps;
 
-export function RecurrenceWidget({
-  label,
-  onChange,
-  ...props
-}: RecurrenceWidgetProps) {
-  const eventFormContext = useAtomValue(formAtom);
-  // @ts-ignore
+export function RecurrenceWidget({ label, onChange }: RecurrenceWidgetProps) {
+  const eventFormContext = useAtomValue(formAtom) as EventContent;
 
   // @ts-ignore
   const recurrence = eventFormContext?.recurrence ?? null;
 
   const rrule = recurrence ? rrulestr(recurrence) : null;
-  const rruleText = rrule && rrule.toText();
-  const rruleDates = rrule && rrule.all();
+  const rruleText = getRruleText(rrule);
+
+  const dates = rrule?.all() ?? [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -75,20 +72,17 @@ export function RecurrenceWidget({
             if (onChange) onChange(null);
           }}
         >
-          <DeleteIcon
-            className="color-quanta-candy fill-quanta-candy"
-            style={{ fill: 'fill-quanta-candy' }}
-          />
+          <DeleteIcon className="color-quanta-candy fill-quanta-candy!" />
         </Button>
       </div>
 
       {recurrence && (
         <div className="mt-2">
           <div className="bg-muted-foreground/10 p-2 font-semibold text-muted-foreground">
-            <div>{rruleText}</div>
+            {rruleText && <div>{rruleText}</div>}
           </div>
           <div className="mt-2">
-            {rruleDates && <SelectedDates rruleDates={rruleDates} />}
+            {dates.length > 0 && <SelectedDates rruleDates={dates} />}
           </div>
         </div>
       )}
