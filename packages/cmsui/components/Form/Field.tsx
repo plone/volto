@@ -167,7 +167,9 @@ const renderFieldWidget = ({
   onFieldChange: (value: any) => void;
 }) => {
   const Widget =
-    getWidgetByFieldId(fieldProps.id) ||
+    getWidgetByFieldId(
+      (fieldProps.id ?? fieldProps.name) as FieldProps['name'],
+    ) ||
     getWidgetFromTaggedValues(fieldProps.widgetOptions) ||
     getWidgetByName(fieldProps.widget) ||
     getWidgetByChoices(fieldProps) ||
