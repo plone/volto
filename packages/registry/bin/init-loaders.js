@@ -15,6 +15,7 @@ import { createAddonsStyleLoader } from '@plone/registry/create-addons-styles-lo
 import { createAddonsLocalesLoader } from '@plone/registry/create-addons-locales-loader';
 import { PloneRegistryVitePlugin } from '@plone/registry/vite-plugin';
 import config from '@plone/registry';
+import { buildSlotTree } from './slot-tree.js';
 
 const titleCase = (w) => w.slice(0, 1).toUpperCase() + w.slice(1, w.length);
 
@@ -106,14 +107,17 @@ async function evaluateAddons(addonsLoaderPath) {
     const { default: loader, addonsInfo } =
       await server.ssrLoadModule(addonsLoaderPath);
 
+    const populatedConfig = loader(config);
+
     fs.writeFileSync(
       path.join(ploneDir, 'registry.routes.json'),
-      JSON.stringify(loader(config).routes, null, 2),
+      JSON.stringify(populatedConfig.routes, null, 2),
     );
     fs.writeFileSync(
       path.join(ploneDir, 'registry.addonsInfo.json'),
       JSON.stringify(addonsInfo, null, 2),
     );
+    await buildSlotTree(populatedConfig, ploneDir, server);
   } finally {
     await server.close();
   }
