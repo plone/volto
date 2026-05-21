@@ -15,7 +15,6 @@ type RendererSchema = {
 type BaseFieldExtraProps = {
   formAtom?: PrimitiveAtom<any>;
   onChange?: (value: unknown) => void;
-  onPatchFormData?: (partial: Record<string, unknown>) => void;
 };
 
 type BlockSettingsFormRendererProps = {

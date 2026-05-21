@@ -76,15 +76,6 @@ const BlockSettingsForm = (props: BlockSettingsFormProps) => {
             fieldName,
             value,
           );
-
-          props.onFormDataChange?.(nextData);
-        },
-        onPatchFormData: (partial: Record<string, unknown>) => {
-          const nextData = {
-            ...((form.state.values as Record<string, unknown>) ?? {}),
-            ...partial,
-          };
-
           props.onFormDataChange?.(nextData);
         },
       })}

@@ -16,7 +16,6 @@ interface QuerystringWidgetStoryProps {
   value?: QuerystringValue;
   defaultValue?: QuerystringValue;
   onChange?: (value: QuerystringValue) => void;
-  onPatchFormData?: (partial: Record<string, unknown>) => void;
 }
 
 const createQuerystringLoader = () => {
@@ -199,7 +198,6 @@ const meta = {
     label: 'Search Criteria',
     description: 'Define search criteria to filter content',
     onChange: fn(),
-    onPatchFormData: fn(),
   },
 } satisfies Meta<QuerystringWidgetStoryProps>;
 
