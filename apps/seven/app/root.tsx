@@ -124,7 +124,7 @@ export function Layout({
 
 // ToDo: improve error page and error handling
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
+  const message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
 
