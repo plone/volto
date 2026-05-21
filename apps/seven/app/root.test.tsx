@@ -1,6 +1,6 @@
 import { expect, describe, it, vi, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { createRoutesStub, RouterContextProvider } from 'react-router';
+import { createRoutesStub, RouterContextProvider, UNSAFE_ErrorResponseImpl } from 'react-router';
 import config from '@plone/registry';
 import { Layout, ErrorBoundary, loader } from './root';
 import {
@@ -161,7 +161,7 @@ describe('Layout', () => {
 });
 
 describe('ErrorBoundary', () => {
-  it('should render the error message', async () => {
+  it('should render the error message for dev JS errors', async () => {
     const error = new Error('Test error');
     const Stub = createRoutesStub([
       {
@@ -171,6 +171,80 @@ describe('ErrorBoundary', () => {
     ]);
     render(<Stub />);
     expect(screen.getByText('Test error')).toBeInTheDocument();
+  });
+
+  it('should render Unauthorized for 401', () => {
+    const error = new UNSAFE_ErrorResponseImpl(401, 'Unauthorized', null);
+    const Stub = createRoutesStub([
+      {
+        path: '/',
+        Component: () => <ErrorBoundary error={error} params={{}} />,
+      },
+    ]);
+    render(<Stub />);
+    expect(screen.getByText('cmsui.errorRoutes.unauthorized')).toBeInTheDocument();
+  });
+
+  it('should render Forbidden for 403', () => {
+    const error = new UNSAFE_ErrorResponseImpl(403, 'Forbidden', null);
+    const Stub = createRoutesStub([
+      {
+        path: '/',
+        Component: () => <ErrorBoundary error={error} params={{}} />,
+      },
+    ]);
+    render(<Stub />);
+    expect(screen.getByText('cmsui.errorRoutes.forbidden')).toBeInTheDocument();
+  });
+
+  it('should render NotFound for 404', () => {
+    const error = new UNSAFE_ErrorResponseImpl(404, 'Not Found', null);
+    const Stub = createRoutesStub([
+      {
+        path: '/',
+        Component: () => <ErrorBoundary error={error} params={{}} />,
+      },
+    ]);
+    render(<Stub />);
+    expect(screen.getByText('cmsui.errorRoutes.notFound')).toBeInTheDocument();
+  });
+
+  it('should render ConnectionRefused for 500', () => {
+    const error = new UNSAFE_ErrorResponseImpl(500, 'Server Error', null);
+    const Stub = createRoutesStub([
+      {
+        path: '/',
+        Component: () => <ErrorBoundary error={error} params={{}} />,
+      },
+    ]);
+    render(<Stub />);
+    expect(screen.getByText('cmsui.errorRoutes.connectionRefused')).toBeInTheDocument();
+  });
+
+  it('should render generic error for unhandled status codes', () => {
+    const error = new UNSAFE_ErrorResponseImpl(400, 'Bad Request', null);
+    const Stub = createRoutesStub([
+      {
+        path: '/',
+        Component: () => <ErrorBoundary error={error} params={{}} />,
+      },
+    ]);
+    render(<Stub />);
+    expect(screen.getByText('Oops!')).toBeInTheDocument();
+    expect(screen.getByText('An unexpected error occurred.')).toBeInTheDocument();
+  });
+
+  it('should render generic error for prod JS errors', () => {
+    const error = { message: 'some non-error object' };
+    const Stub = createRoutesStub([
+      {
+        path: '/',
+        Component: () => <ErrorBoundary error={error} params={{}} />,
+      },
+    ]);
+    render(<Stub />);
+    expect(screen.getByText('Oops!')).toBeInTheDocument();
+    expect(screen.getByText('An unexpected error occurred.')).toBeInTheDocument();
   });
 });
 
