@@ -1,6 +1,6 @@
 import { Group } from 'react-aria-components';
 import { Input, Label } from '../../Field/Field';
-import type { FieldApi, Updater } from '@tanstack/react-form';
+import type { Updater } from '@tanstack/react-form';
 import { TextField } from '../../TextField/TextField';
 import { widgetTailwindClasses } from '../utils';
 
