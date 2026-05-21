@@ -121,7 +121,11 @@ export default function Index() {
         <link rel="stylesheet" href="/layers.css" precedence="first" />
         <RACRouterProvider navigate={navigate}>
           <PluggablesProvider>
-            <Plug pluggable="toolbar-top" id="button-edit">
+            <Plug
+              pluggable="toolbar-top"
+              id="button-edit"
+              dependencies={[location.pathname] as any}
+            >
               <Link
                 className="primary"
                 aria-label="Edit"
