@@ -1,6 +1,6 @@
 {
   "name": "@plone/babel-preset-razzle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Babel presets for Razzle",
   "main": "index.js",
   "author": "jaredpalmer",
@@ -18,6 +18,9 @@
     "babel-plugins/no-anonymous-default-export.js",
     "babel-plugins/optimize-hook-destructuring.js"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dry-release": "release-it --dry-run",
     "release": "release-it",
