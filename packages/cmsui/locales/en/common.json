@@ -62,6 +62,15 @@
     },
     "sidebar": {
       "label": "Sidebar"
+    },
+    "views": {
+      "slots": {
+        "heading": "Slots",
+        "registeredTab": "Registered Slots",
+        "registeredDescription": "All slots registered in the configuration, each with their ordered list of components.",
+        "compositionTab": "Slot Composition",
+        "compositionDescription": "Slots as a composition tree, showing which components render nested slots. Includes slots with no components registered yet."
+      }
     }
   }
 }

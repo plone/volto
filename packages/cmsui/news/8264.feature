@@ -1,0 +1,1 @@
+Add slots manager view at `@@slots` for overview over registered slots and slot composition. @arybakov05

@@ -52,6 +52,15 @@
     },
     "sidebar": {
       "label": "Barra laterale destra"
+    },
+    "views": {
+      "slots": {
+        "heading": "Slot",
+        "registeredTab": "Slot registrati",
+        "registeredDescription": "Tutti gli slot registrati nella configurazione, ciascuno con il proprio elenco ordinato di componenti.",
+        "compositionTab": "Composizione degli slot",
+        "compositionDescription": "Slot come albero di composizione, che mostra quali componenti rendono slot annidati. Include gli slot senza componenti ancora registrati."
+      }
     }
   }
 }
