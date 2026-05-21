@@ -132,8 +132,7 @@ export default function Index() {
                 <Plug
                   pluggable="toolbar-top"
                   id="button-edit"
-                  // @ts-ignore
-                  dependencies={[location.pathname]}
+                  dependencies={[location.pathname] as any}
                 >
                   <Link
                     className="primary"
@@ -146,8 +145,7 @@ export default function Index() {
                 <Plug
                   pluggable="toolbar-top"
                   id="button-add"
-                  // @ts-ignore
-                  dependencies={[location.pathname]}
+                  dependencies={[location.pathname] as any}
                 >
                   <ContentTypesMenu content={content} />
                 </Plug>

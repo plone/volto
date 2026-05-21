@@ -2,6 +2,12 @@
 @import '@plone/components/src/styles/basic/Popover.css';
 @import '@plone/components/src/styles/quanta/Popover.css';
 
+@property --plone-toolbar-button-background-color {
+  inherits: false;
+  initial-value: transparent;
+  syntax: '<color>';
+}
+
 .toolbar {
   position: fixed;
   z-index: 10;
@@ -9,9 +15,9 @@
   bottom: 0;
   left: 0;
   display: flex;
-  width: var(--plone-toolbar-width);
+  width: var(--plone-toolbar-width, 80px);
   justify-content: center;
-  background-color: var(--quanta-smoke);
+  background: var(--plone-toolbar-background, var(--quanta-smoke));
   transition:
     left 0.2s ease,
     right 0.2s ease,
@@ -25,7 +31,7 @@
   bottom: 0;
   left: 0;
   display: flex;
-  width: var(--plone-toolbar-width);
+  width: var(--plone-toolbar-width, 80px);
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -52,8 +58,8 @@
   padding: 0;
   border: none;
   border-radius: 50%;
-  background-color: transparent;
-  color: var(--quanta-iron);
+  background-color: var(--plone-toolbar-button-background-color, transparent);
+  color: var(--plone-toolbar-button-color, var(--quanta-iron));
   cursor: pointer;
   /* Reset any inherited browser defaults */
   font-family: inherit;
@@ -62,36 +68,85 @@
   transition: background-color 0.15s ease;
 }
 
+.toolbar-region > button:focus-visible,
+.toolbar-region > a:focus-visible,
+.toolbar-button:focus-visible {
+  outline: 2px solid
+    var(--plone-toolbar-button-focus-outline, var(--quanta-royal));
+  outline-offset: 2px;
+}
+
 .toolbar-region > button:hover,
 .toolbar-region > a:hover,
 .toolbar-button:hover {
-  background-color: var(--quanta-snow);
+  --plone-toolbar-button-background-color: var(
+    --plone-toolbar-button-background-color-hover,
+    white
+  );
 }
 
 .toolbar-region > button:active,
 .toolbar-region > a:active,
 .toolbar-button:active {
-  background-color: var(--quanta-silver);
-}
-
-.toolbar-region > button:focus-visible,
-.toolbar-region > a:focus-visible,
-.toolbar-button:focus-visible {
-  outline: 2px solid var(--quanta-royal);
-  outline-offset: 2px;
+  --plone-toolbar-button-background-color: var(
+    --plone-toolbar-button-background-color-active,
+    var(--quanta-silver)
+  );
 }
 
 .toolbar-region > button.primary,
 .toolbar-region > a.primary,
 .toolbar-button.primary {
-  background-color: var(--quanta-sapphire);
-  color: var(--quanta-air);
+  --plone-toolbar-button-background-color: var(
+    --plone-toolbar-button-background-color-primary,
+    var(--quanta-sapphire)
+  );
+  --plone-toolbar-button-color: var(--quanta-air);
 }
 
 .toolbar-region > button.primary:hover,
 .toolbar-region > a.primary:hover,
 .toolbar-button.primary:hover {
-  background-color: var(--quanta-royal);
+  --plone-toolbar-button-background-color: var(
+    --plone-toolbar-button-background-color-primary-hover,
+    var(--quanta-royal)
+  );
+}
+
+.toolbar-region > button.primary:active,
+.toolbar-region > a.primary:active,
+.toolbar-button.primary:active {
+  --plone-toolbar-button-background-color: var(
+    --plone-toolbar-button-background-color-primary-active,
+    var(--quanta-denim)
+  );
+}
+
+.toolbar-region > button.secondary,
+.toolbar-region > a.secondary,
+.toolbar-button.secondary {
+  --plone-toolbar-button-background-color: var(
+    --plone-toolbar-button-background-secondary,
+    var(--quanta-snow)
+  );
+}
+
+.toolbar-region > button.secondary:hover,
+.toolbar-region > a.secondary:hover,
+.toolbar-button.secondary:hover {
+  --plone-toolbar-button-background-color: var(
+    --plone-toolbar-button-background-secondary-hover,
+    white
+  );
+}
+
+.toolbar-region > button.secondary:active,
+.toolbar-region > a.secondary:active,
+.toolbar-button.secondary:active {
+  --plone-toolbar-button-background-color: var(
+    --plone-toolbar-button-background-color-secondary-active,
+    var(--quanta-silver)
+  );
 }
 
 .toolbar-region > button svg,

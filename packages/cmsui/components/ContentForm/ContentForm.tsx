@@ -153,8 +153,12 @@ export default function ContentForm({
                 <Checkbox />
               </button>
             </Plug>
-            <Plug pluggable="toolbar-top" id="button-cancel">
-              <Link aria-label="Cancel" href="/">
+            <Plug
+              pluggable="toolbar-top"
+              id="button-cancel"
+              dependencies={[content['@id']] as any}
+            >
+              <Link aria-label="Cancel" href={content['@id']}>
                 <Close />
               </Link>
             </Plug>

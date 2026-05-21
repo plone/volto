@@ -37,7 +37,7 @@ export interface UseObjectBrowserConfig {
   widgetOptions?: {
     pattern_options?: PatternOptions;
   };
-  selectedAttrs?: Array<keyof Brain>;
+  selectedItemAttrs?: Array<keyof Brain>;
   // TODO: Also add blockchange/slate signature compat
   onChange?: (selected: Partial<Brain>[]) => void;
   defaultValue?: Brain[];
@@ -50,7 +50,7 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
   const {
     mode = 'multiple',
     widgetOptions = {},
-    selectedAttrs = ['@id', 'title', 'description', '@type', 'UID'],
+    selectedItemAttrs = ['@id', 'title', 'description', '@type', 'UID'],
     onChange,
     defaultValue = [],
     title,
@@ -72,13 +72,13 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
       return brains.map(
         (item) =>
           Object.fromEntries(
-            selectedAttrs
+            selectedItemAttrs
               .filter((attr) => attr in item)
               .map((attr) => [attr, item[attr]]),
           ) as Partial<Brain>,
       );
     },
-    [selectedAttrs],
+    [selectedItemAttrs],
   );
 
   const handleSelectionChange = useCallback(
@@ -184,7 +184,7 @@ const useObjectBrowserInternal = (config: UseObjectBrowserConfig = {}) => {
 
     // Config
     mode,
-    selectedAttrs,
+    selectedItemAttrs,
     title,
     widgetOptions,
   };
