@@ -6,8 +6,11 @@ import DeleteIcon from '@plone/components/icons/bin.svg?react';
 
 import { Button } from '@plone/components/quanta';
 
-import RecurrenceWidgetModal from './Components/RecurrenceWidgetModal';
-import { useState } from 'react';
+import { lazy, Suspense, useMemo, useState } from 'react';
+
+const RecurrenceWidgetModal = lazy(
+  () => import('./Components/RecurrenceWidgetModal'),
+);
 import { useAtomValue } from 'jotai';
 import { formAtom } from '../../routes/atoms';
 import type { FieldProps } from '../Form/Field';
@@ -28,7 +31,7 @@ export function RecurrenceWidget({ label, onChange }: RecurrenceWidgetProps) {
   const rrule = recurrence ? rrulestr(recurrence) : null;
   const rruleText = getRruleText(rrule);
 
-  const dates = rrule?.all() ?? [];
+  const dates = useMemo(() => rrule?.all() ?? [], [rrule]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -55,12 +58,16 @@ export function RecurrenceWidget({ label, onChange }: RecurrenceWidgetProps) {
               style={{ fill: 'fill-quanta-cobalt' }}
             />
           </Button>
-          <RecurrenceWidgetModal
-            onSave={(rrule: string) => {
-              if (onChange) onChange(rrule);
-            }}
-            setIsModalOpen={setIsModalOpen}
-          />
+          {isModalOpen && (
+            <Suspense fallback={null}>
+              <RecurrenceWidgetModal
+                onSave={(rrule: string) => {
+                  if (onChange) onChange(rrule);
+                }}
+                setIsModalOpen={setIsModalOpen}
+              />
+            </Suspense>
+          )}
         </DialogTrigger>
 
         <Button

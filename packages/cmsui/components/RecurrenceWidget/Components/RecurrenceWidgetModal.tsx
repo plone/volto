@@ -41,7 +41,21 @@ import {
   useStore,
 } from '@tanstack/react-form';
 
-import { RRule, type Options, type WeekdayStr, RRuleSet } from '../rrule';
+const { fieldContext, formContext } = createFormHookContexts();
+const { useAppForm } = createFormHook({
+  fieldComponents: {},
+  formComponents: {},
+  fieldContext,
+  formContext,
+});
+
+import {
+  RRule,
+  type Options,
+  type WeekdayStr,
+  RRuleSet,
+  rrulestr,
+} from '../rrule';
 
 // import { RRule, type Options, type WeekdayStr } from 'rrule';
 import IntervalField from './IntervalField';
@@ -131,14 +145,15 @@ const RecurrenceWidgetModal = ({
     [],
   );
 
-  const { fieldContext, formContext } = createFormHookContexts();
-  const [exdates, setExdates] = useState<Date[]>([]);
-
-  const { useAppForm } = createFormHook({
-    fieldComponents: {},
-    formComponents: {},
-    fieldContext,
-    formContext,
+  const [exdates, setExdates] = useState<Date[]>(() => {
+    // @ts-ignore
+    const saved = eventFormContext?.recurrence;
+    if (!saved) return [];
+    try {
+      const parsed = rrulestr(saved);
+      if (parsed instanceof RRuleSet) return parsed.exdates();
+    } catch {}
+    return [];
   });
 
   const form = useAppForm({
@@ -247,19 +262,20 @@ const RecurrenceWidgetModal = ({
     return new RRule(updatedFormValues);
   };
 
-  const allDates = useMemo(
-    () => formValuesToRRule(formValues).all(),
+  const currentRRule = useMemo(
+    () => formValuesToRRule(formValues),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [formValues],
   );
 
+  const allDates = useMemo(() => currentRRule.all(), [currentRRule]);
+
   const rruleSetForSave = useMemo(() => {
     const set = new RRuleSet();
-    set.rrule(formValuesToRRule(formValues));
+    set.rrule(currentRRule);
     exdates.forEach((d) => set.exdate(d));
     return set;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formValues, exdates]);
+  }, [currentRRule, exdates]);
 
   const toggleExcludeDate = (d: Date) => {
     setExdates((prev) => {

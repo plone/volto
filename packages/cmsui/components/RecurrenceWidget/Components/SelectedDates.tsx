@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { getLocalizedMonth, getLocalizedWeekday } from '../utils';
 import { Heading } from 'react-aria-components';
 import DeleteIcon from '@plone/components/icons/bin.svg?react';
+import AddIcon from '@plone/components/icons/add.svg?react';
 import { Button } from '@plone/components/quanta';
 
 interface SelectedDatesProps {
@@ -65,12 +66,13 @@ const SelectedDates = ({
               : excludeDate
                 ? () => excludeDate(d)
                 : undefined;
+
             return (
               <SelectedDateListItem key={date.toString()}>
                 <div
                   className={`
-                    table-cell w-4/5
-                    py-1${isExcluded ? 'line-through opacity-40' : ''}
+                    table-cell w-4/5 py-1
+                    ${isExcluded ? 'line-through opacity-40' : ''}
                   `}
                 >
                   {date}
@@ -86,13 +88,11 @@ const SelectedDates = ({
                       className={`cursor-pointer rounded-sm! p-0!`}
                       onClick={handleToggle}
                     >
-                      <DeleteIcon
-                        className={
-                          isExcluded
-                            ? 'fill-muted-foreground opacity-40'
-                            : 'fill-quanta-candy!'
-                        }
-                      />
+                      {isExcluded ? (
+                        <AddIcon />
+                      ) : (
+                        <DeleteIcon className={'fill-quanta-candy!'} />
+                      )}
                     </Button>
                   </div>
                 )}
