@@ -1,4 +1,5 @@
 import type { PropsWithChildren } from 'react';
+import { Container } from '@plone/components';
 import { data, isRouteErrorResponse, Links } from 'react-router';
 import stylesheet from 'seven/.plone/cmsui.css?url';
 import { useChangeLanguage } from 'remix-i18next/react';
@@ -146,12 +147,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         break;
       default:
         ErrorContent = (
-          <div>
-            <h3>
-              {message}
-              {details}
-            </h3>
-          </div>
+          <Container className="mx-20 my-16">
+            <h1 className="mb-4 text-2xl font-bold">{message}</h1>
+            <p className="mb-3 text-lg">{details}</p>
+          </Container>
         );
         break;
     }
@@ -159,15 +158,22 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
     details = error.message;
     stack = error.stack;
     ErrorContent = (
-      <main className="container mx-auto p-4 pt-16">
-        <h1>{message}</h1>
-        <p>{details}</p>
+      <Container className="mx-20 my-16">
+        <h1 className="mb-4 text-2xl font-bold">{message}</h1>
+        <p className="mb-3 text-lg">{details}</p>
         {stack && (
-          <pre className="w-full overflow-x-auto p-4">
+          <pre className="w-full overflow-x-auto rounded bg-gray-100 p-4 text-sm text-red-600">
             <code>{stack}</code>
           </pre>
         )}
-      </main>
+      </Container>
+    );
+  } else {
+    ErrorContent = (
+      <Container className="mx-20 my-16">
+        <h1 className="mb-4 text-2xl font-bold">{message}</h1>
+        <p className="mb-3 text-lg">{details}</p>
+      </Container>
     );
   }
   return (

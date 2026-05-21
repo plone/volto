@@ -1,18 +1,9 @@
 import { Container } from '@plone/components';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
-import { cookie } from '@plone/react-router';
-
-const hasAuthToken = () => {
-  if (typeof document === 'undefined') return false;
-  return document.cookie
-    .split(';')
-    .some((c) => c.trim().startsWith(`${cookie.name}=`));
-};
 
 const Unauthorized = () => {
   const { t } = useTranslation();
-  const isLoggedIn = hasAuthToken();
 
   return (
     <Container
@@ -24,22 +15,16 @@ const Unauthorized = () => {
         {t('cmsui.errorRoutes.unauthorized')}
       </h1>
       <p className="mb-3 text-lg">
-        {isLoggedIn ? (
-          t('cmsui.errorRoutes.unauthorizedLoggedIn')
-        ) : (
-          <>
-            {t('cmsui.errorRoutes.loginRequired')}
-            <NavLink
-              to="/login"
-              className={`
-                text-blue-600
-                hover:underline
-              `}
-            >
-              {t('cmsui.errorRoutes.login')}
-            </NavLink>
-          </>
-        )}
+        {t('cmsui.errorRoutes.loginRequired')}
+        <NavLink
+          to="/login"
+          className={`
+            text-blue-600
+            hover:underline
+          `}
+        >
+          {t('cmsui.errorRoutes.login')}
+        </NavLink>
       </p>
       <p className="mb-3 text-lg">
         {t('cmsui.errorRoutes.contact')}
