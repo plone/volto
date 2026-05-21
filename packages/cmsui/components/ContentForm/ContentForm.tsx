@@ -153,7 +153,7 @@ export default function ContentForm({
             <Plug
               pluggable="toolbar-top"
               id="button-cancel"
-              dependencies={[content['@id']]}
+              dependencies={[content['@id']] as any}
             >
               <Link aria-label="Cancel" href={content['@id']}>
                 <Close />
