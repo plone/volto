@@ -24,7 +24,13 @@
  *   </ToolbarMenu>
  */
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { type ComponentProps } from 'react';
 import { Button } from 'react-aria-components';
 import { MenuTrigger } from '@plone/components';
@@ -37,8 +43,8 @@ export interface ToolbarMenuProps extends ComponentProps<typeof MenuTrigger> {
 
 export function ToolbarMenu({
   icon,
-  children,
   styles,
+  children,
   ...props
 }: ToolbarMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -115,6 +121,23 @@ export function ToolbarMenu({
     if (isOpen) document.addEventListener('keydown', onKeyDown);
 
     return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
+
+  // When the menu is opened by clicking the trigger button, the focus stays on the trigger button.
+  // To prevent this, the focus must be manually moved to the menu after mount.
+  useLayoutEffect(() => {
+    if (!isOpen) return;
+
+    const animationFrame = requestAnimationFrame(() => {
+      const shadowRoot = triggerRef.current?.getRootNode() as ShadowRoot | null;
+      if (!shadowRoot || !('host' in shadowRoot)) return;
+
+      const menuId = triggerRef?.current?.getAttribute('aria-controls');
+      if (!menuId) return;
+
+      shadowRoot.getElementById(menuId)?.focus();
+    });
+    return () => cancelAnimationFrame(animationFrame);
   }, [isOpen]);
 
   return (
