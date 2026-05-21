@@ -48,9 +48,6 @@ export default defineConfig(({ command, mode, isSsrBuild }) => {
     resolve: {
       tsconfigPaths: true,
     },
-    ssr: {
-      noExternal: ['rrule'],
-    },
     server: {
       port: 3000,
       fs: {
