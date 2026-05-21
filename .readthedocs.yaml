@@ -32,5 +32,6 @@ build:
     - asdf reshim nodejs
     - pnpm install
     - pnpm build:registry
+    - pnpm build:components
     - (cd packages/volto && pnpm build-storybook -o ${READTHEDOCS_OUTPUT}/html/storybook)
     - make docs-rtd-pr-preview

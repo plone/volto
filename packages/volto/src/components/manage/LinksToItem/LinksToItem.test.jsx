@@ -4,6 +4,7 @@ import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import { __test__ as LinksToItem } from './LinksToItem';
 
@@ -102,10 +103,12 @@ describe('LinksToItem', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

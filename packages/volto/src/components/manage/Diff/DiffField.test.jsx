@@ -4,12 +4,7 @@ import { Provider } from 'react-intl-redux';
 import { waitFor, render, screen } from '@testing-library/react';
 import DiffField from './DiffField';
 
-vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
-  return await import(
-    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
-  );
-});
-
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
 beforeAll(async () => {
   const { __setLoadables } = await import(
     '@plone/volto/helpers/Loadable/Loadable'

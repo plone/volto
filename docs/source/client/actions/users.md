@@ -3,7 +3,7 @@
 Available users in a Plone site can be created, queried, updated, and deleted by interacting with the `/@users` endpoint on portal root.
 This action requires an authenticated user:
 
-## Get Users list
+## Get users list
 
 ### Query function
 
@@ -19,7 +19,7 @@ Use the `useGetUsers` hook to get the list of all users in the portal.
 
   - **Required**: No
 
-- **groupsFilter**: string[]
+- **`groupsFilter`**: string[]
 
   - **Required**: No
 
@@ -31,7 +31,7 @@ Use the `useGetUsers` hook to get the list of all users in the portal.
 
   - **Required**: No
 
-## Get User
+## Get user
 
 ### Query function
 
@@ -47,7 +47,7 @@ Use the `useGetUser` hook to get the information about an individual user at the
 
   - **Required**: Yes
 
-## Add User
+## Add user
 
 ### Mutation function
 
@@ -100,7 +100,7 @@ Use the `useCreateUser` hook to add a new user at the given path.
 
     - **Required**: Yes
 
-## Update User
+## Update user
 
 ### Mutation function
 
@@ -149,7 +149,7 @@ Use the `useUpdateUser` hook to update an existing user at the given path.
 
     - **Required**: No
 
-## Delete User
+## Delete user
 
 ### Mutation function
 
@@ -165,7 +165,7 @@ Use the `useDeleteUser` hook to delete an existing user at the given path.
 
   - **Required**: Yes
 
-## Update User Password
+## Update user password
 
 ### Mutation function
 
@@ -194,7 +194,7 @@ Use the `useUpdatePassword` hook to update an existing user password at the give
 
     - **Required**: Yes
 
-## Reset User Password
+## Reset user password
 
 ### Mutation function
 
@@ -210,7 +210,7 @@ Use the `useResetPassword` hook to reset an existing user password at the given 
 
   - **Required**: Yes
 
-## Reset User Password with Token
+## Reset user password with token
 
 ### Mutation function
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
@@ -13,11 +14,7 @@ vi.mock('../../Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
 }));
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('EditRule', () => {
   it('renders rules edit interface', () => {
@@ -29,10 +26,12 @@ describe('EditRule', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <>
-          <EditRule location={{ pathname: '/controlpanel/rules/:id/edit' }} />
-          <div id="toolbar"></div>
-        </>
+        <CookiesProvider>
+          <>
+            <EditRule location={{ pathname: '/controlpanel/rules/:id/edit' }} />
+            <div id="toolbar"></div>
+          </>
+        </CookiesProvider>
       </Provider>,
     );
 

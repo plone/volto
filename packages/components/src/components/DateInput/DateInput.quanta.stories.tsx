@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Form, DateField } from 'react-aria-components';
+import { Form } from 'react-aria-components';
 import {
   CalendarDate,
   CalendarDateTime,
@@ -10,6 +10,7 @@ import {
 import { Button } from '../Button/Button.quanta';
 import { Label, Description, FieldError } from '../Field/Field.quanta';
 import { DateInput } from './DateInput.quanta';
+import { DateField } from '../DateField/DateField.quanta';
 
 // DateInput Stories
 const meta = {
@@ -27,13 +28,7 @@ type Story = StoryObj<typeof meta>;
 
 // Basic Stories
 export const Default: Story = {
-  render: (args) => (
-    <DateField>
-      <Label>Date</Label>
-      <DateInput {...args} />
-      <Description>Select a date using the date input</Description>
-    </DateField>
-  ),
+  render: (args) => <DateInput {...args} />,
   args: {},
 };
 
@@ -256,7 +251,10 @@ export const CustomStyling: Story = {
       <Label>Custom Styled Date Input</Label>
       <DateInput
         {...args}
-        className="rounded-lg border-2 border-purple-300 bg-purple-50 px-4 py-2 focus-within:border-purple-500"
+        className={`
+          rounded-lg border-2 border-purple-300 bg-purple-50 px-4 py-2
+          focus-within:border-purple-500
+        `}
       />
       <Description>Date input with custom styling</Description>
     </DateField>

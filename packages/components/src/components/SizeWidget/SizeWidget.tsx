@@ -20,6 +20,7 @@ export const defaultSizeActionsInfo: Record<string, [string, string]> = {
 
 export function SizeWidget(props: SizeWidgetProps) {
   const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     id,
     onChange,
     actions = ['s', 'm', 'l'],

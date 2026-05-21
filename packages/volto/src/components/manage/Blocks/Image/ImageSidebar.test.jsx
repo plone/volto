@@ -5,11 +5,7 @@ import { Provider } from 'react-intl-redux';
 
 import ImageSidebar from './ImageSidebar';
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 
 const mockStore = configureStore();
 
@@ -19,6 +15,7 @@ it('renders an Image Block Sidebar component', () => {
       create: {},
       data: {},
     },
+    site: { data: { 'plone.image_scales': { preview: {}, listing: {} } } },
     intl: {
       locale: 'en',
       messages: {},

@@ -7,11 +7,10 @@ import {
   type GridListItemProps,
   type GridListProps,
 } from 'react-aria-components';
-import { tv, type ClassProp } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 import { Checkbox } from '../Checkbox/Checkbox.quanta';
 import { composeTailwindRenderProps, focusRing } from '../utils';
-import { twMerge, type ClassNameValue } from 'tailwind-merge';
-import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function GridList<T extends object>({
   children,
@@ -33,14 +32,22 @@ export function GridList<T extends object>({
 const itemStyles = tv({
   extend: focusRing,
   //   Data- selectors not even showing up, wtf
-  base: 'relative -mb-px flex cursor-default gap-3 border-y border-transparent px-3 py-2 text-sm -outline-offset-2 select-none first:rounded-t-md first:border-t-0 last:mb-0 last:rounded-b-md last:border-b-0',
+  base: `
+    relative -mb-px flex cursor-default gap-3 border-y border-transparent px-3 py-2 text-sm
+    -outline-offset-2 select-none
+    first:rounded-t-md first:border-t-0
+    last:mb-0 last:rounded-b-md last:border-b-0
+  `,
   variants: {
     isSelected: {
       false: 'hover:bg-gray-100',
       true: 'z-20',
     },
     isDisabled: {
-      true: 'z-10 forced-colors:text-[GrayText]',
+      true: `
+        z-10
+        forced-colors:text-[GrayText]
+      `,
     },
   },
 });

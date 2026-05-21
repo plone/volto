@@ -31,6 +31,7 @@ export const defaultActionsInfo: Record<
 
 export function AlignWidget(props: AlignWidgetProps) {
   const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     id,
     onChange,
     actions = ['left', 'right', 'center', 'full'],

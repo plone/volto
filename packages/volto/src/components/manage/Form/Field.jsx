@@ -7,7 +7,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import config from '@plone/volto/registry';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const MODE_HIDDEN = 'hidden'; //hidden mode. If mode is hidden, field is not rendered
 /**
@@ -155,7 +154,7 @@ const getWidgetByType = (widgets, type) => widgets.type[type] || null;
  * @param {Object} props Properties.
  * @returns {string} Markup of the component.
  */
-const UnconnectedField = (props, { intl }) => {
+const Field = (props, { intl }) => {
   const widgets = props.widgets || config.widgets;
   const Widget =
     getWidgetByFieldId(widgets, props.id) ||
@@ -178,73 +177,8 @@ const UnconnectedField = (props, { intl }) => {
     ...getWidgetPropsFromTaggedValues(widgets, props.widgetOptions),
   };
 
-  if (props.onOrder) {
-    const { DropTarget, DragSource } = props.reactDnd;
-    const WrappedWidget = DropTarget(
-      'field',
-      {
-        hover(properties, monitor) {
-          const dragOrder = monitor.getItem().order;
-          const hoverOrder = properties.order;
-
-          if (dragOrder === hoverOrder) {
-            return;
-          }
-          properties.onOrder(dragOrder, hoverOrder - dragOrder);
-
-          monitor.getItem().order = hoverOrder;
-        },
-      },
-      (connect) => ({
-        connectDropTarget: connect.dropTarget(),
-      }),
-    )(
-      DragSource(
-        'field',
-        {
-          beginDrag(properties) {
-            return {
-              id: properties.label,
-              order: properties.order,
-            };
-          },
-        },
-        (connect, monitor) => ({
-          connectDragSource: connect.dragSource(),
-          connectDragPreview: connect.dragPreview(),
-          isDragging: monitor.isDragging(),
-        }),
-      )(
-        ({
-          connectDropTarget,
-          connectDragSource,
-          connectDragPreview,
-          ...rest
-        }) =>
-          connectDropTarget(
-            connectDragSource(
-              connectDragPreview(
-                <div>
-                  <Widget {...rest} />
-                </div>,
-              ),
-            ),
-          ),
-      ),
-    );
-    return <WrappedWidget {...widgetProps} />;
-  }
   return <Widget {...widgetProps} />;
 };
-
-const DndConnectedField = injectLazyLibs(['reactDnd'])(UnconnectedField);
-
-const Field = (props) =>
-  props.onOrder ? (
-    <DndConnectedField {...props} />
-  ) : (
-    <UnconnectedField {...props} />
-  );
 
 /**
  * Property types.
@@ -258,7 +192,6 @@ Field.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
   focus: PropTypes.bool,
-  onOrder: PropTypes.func,
 };
 
 /**
@@ -272,7 +205,6 @@ Field.defaultProps = {
   choices: null,
   type: 'string',
   focus: false,
-  onOrder: null,
 };
 
 export default injectIntl(Field);

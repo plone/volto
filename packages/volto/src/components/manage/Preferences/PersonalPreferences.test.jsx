@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import { render } from '@testing-library/react';
 
 import PersonalPreferences from './PersonalPreferences';
@@ -12,23 +13,7 @@ vi.mock('../Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
 }));
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
-vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
-  return await import(
-    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
-  );
-});
-
-beforeAll(async () => {
-  const { __setLoadables } = await import(
-    '@plone/volto/helpers/Loadable/Loadable'
-  );
-  await __setLoadables();
-});
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('PersonalPreferences', () => {
   it('renders a personal preferences component', () => {
@@ -53,12 +38,14 @@ describe('PersonalPreferences', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <PersonalPreferences
-            location={{ pathname: '/blog' }}
-            closeMenu={() => {}}
-          />
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <PersonalPreferences
+              location={{ pathname: '/blog' }}
+              closeMenu={() => {}}
+            />
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
     expect(container).toMatchSnapshot();

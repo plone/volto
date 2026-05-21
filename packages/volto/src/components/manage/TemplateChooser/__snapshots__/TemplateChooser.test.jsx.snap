@@ -21,7 +21,7 @@ exports[`renders a TemplateChooser component 1`] = `
           <img
             alt=""
             fetchpriority="high"
-            src="/src/components/manage/TemplateChooser/template.svg"
+            src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='96'%20height='96'%20viewBox='0%200%2096%2096'%3e%3cg%20fill='none'%20fill-rule='evenodd'%3e%3crect%20width='96'%20height='96'%20fill='%239FD1E5'%20rx='3'/%3e%3cg%20fill='%23FFF'%20opacity='.9'%20transform='translate(9%2021)'%3e%3crect%20width='78'%20height='29'/%3e%3crect%20width='36'%20height='8'%20y='33'/%3e%3crect%20width='77'%20height='10'%20y='45'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e"
           />
           <div
             className="template-chooser-title"

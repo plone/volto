@@ -2,16 +2,13 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 
 import UndoControlpanel from './UndoControlpanel';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 vi.mock('../../Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
 }));
@@ -111,10 +108,12 @@ describe('UndoControlpanel', () => {
     store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <div>
-          <UndoControlpanel location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </div>
+        <CookiesProvider>
+          <div>
+            <UndoControlpanel location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </div>
+        </CookiesProvider>
       </Provider>,
     );
 

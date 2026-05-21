@@ -2,17 +2,14 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import jwt from 'jsonwebtoken';
 
 import { __test__ as Edit } from './Edit';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 vi.mock('../Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
 }));
@@ -59,9 +56,11 @@ describe('Edit', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <div id="toolbar"></div>
-        <Edit location={{ pathname: '/blog', search: {} }} />
-        <div id="sidebar"></div>
+        <CookiesProvider>
+          <div id="toolbar"></div>
+          <Edit location={{ pathname: '/blog', search: {} }} />
+          <div id="sidebar"></div>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -108,9 +107,11 @@ describe('Edit', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <div id="toolbar"></div>
-        <Edit location={{ pathname: '/blog', search: {} }} />
-        <div id="sidebar"></div>
+        <CookiesProvider>
+          <div id="toolbar"></div>
+          <Edit location={{ pathname: '/blog', search: {} }} />
+          <div id="sidebar"></div>
+        </CookiesProvider>
       </Provider>,
     );
 

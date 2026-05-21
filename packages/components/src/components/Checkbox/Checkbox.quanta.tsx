@@ -42,7 +42,10 @@ const checkboxStyles = tv({
   variants: {
     isDisabled: {
       false: 'text-quanta-cobalt',
-      true: 'text-quanta-iron forced-colors:text-[GrayText]',
+      true: `
+        text-quanta-iron
+        forced-colors:text-[GrayText]
+      `,
     },
   },
 });
@@ -52,15 +55,28 @@ const boxStyles = tv({
   base: 'flex h-5 w-5 flex-shrink-0 items-center justify-center rounded border-2 transition',
   variants: {
     isSelected: {
-      false:
-        'group-pressed:border-quanta-silver border-quanta-pigeon bg-quanta-snow',
-      true: 'group-pressed:border-quanta-sapphire border-quanta-sapphire bg-quanta-sapphire forced-colors:![--color:Highlight]',
+      false: `
+        border-quanta-pigeon bg-quanta-snow
+        group-pressed:border-quanta-silver
+      `,
+      true: `
+        border-quanta-sapphire bg-quanta-sapphire
+        group-pressed:border-quanta-sapphire
+        forced-colors:![--color:Highlight]
+      `,
     },
     isInvalid: {
-      true: 'group-pressed:border-quanta-ruby border-quanta-ruby forced-colors:![--color:Mark]',
+      true: `
+        group-pressed:border-quanta-ruby
+        border-quanta-ruby
+        forced-colors:![--color:Mark]
+      `,
     },
     isDisabled: {
-      true: 'border-quanta-silver bg-quanta-smoke forced-colors:![--color:GrayText]',
+      true: `
+        border-quanta-silver bg-quanta-smoke
+        forced-colors:![--color:GrayText]
+      `,
     },
   },
 });

@@ -44,8 +44,16 @@ function buildLoaderCode(registry: AddonRegistry, styleSheetPath: string) {
 }
 
 export function createAddonsStyleLoader(registry: AddonRegistry) {
-  const publicUIStyles = path.join(registry.projectRootPath, 'publicui.css');
-  const cmsUIStyles = path.join(registry.projectRootPath, 'cmsui.css');
+  const publicUIStyles = path.join(
+    registry.projectRootPath,
+    '.plone',
+    'publicui.css',
+  );
+  const cmsUIStyles = path.join(
+    registry.projectRootPath,
+    '.plone',
+    'cmsui.css',
+  );
 
   fs.writeFileSync(
     publicUIStyles,

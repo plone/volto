@@ -1,9 +1,9 @@
 # Navigation root
 
-Plone has a concept called {term}`navigation root` which provides a way to root catalog queries, searches, breadcrumbs, and other content types in a given section of the site.
-This feature is useful when working with subsites or multilingual sites, because it allows the site manager to restrict searches or navigation queries to a specific location in the site.
+Plone has the concept of a {term}`navigation root`, which provides a way to root catalog queries, searches, breadcrumbs, and other content types in a given section of the site.
+With a navigation root, site managers can constrain searches or navigation queries in sub-sites or multilingual sites within specific site sections, enhancing search precision.
 
-## Get Navigation Root
+## Get navigation root
 
 ### Query function
 

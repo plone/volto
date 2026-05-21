@@ -8,6 +8,101 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
+## 19.0.0-alpha.19 (2026-05-19)
+
+### Feature
+
+- Update translations. @erral [#8194](https://github.com/plone/volto/issues/8194)
+
+## 19.0.0-alpha.17 (2026-05-12)
+
+### Internal
+
+- Refactored the `TableBlockEdit` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7760](https://github.com/plone/volto/issues/7760)
+
+## 19.0.0-alpha.16 (2026-05-07)
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/volto-slate` maintainers. 
+
+## 19.0.0-alpha.15 (2026-04-27)
+
+### Bugfix
+
+- Added Romanian translations for the `@plone/volto-slate` core addon catalog. @avoinea 
+
+### Internal
+
+- Update dependency: `uuid` 14.0.0. @davisagli 
+
+## 19.0.0-alpha.14 (2026-04-09)
+
+### Breaking
+
+- Change hotkey for strikethrough text to Ctrl+Shift+X / Cmd+Shift+X. @MAX-786 [#4196](https://github.com/plone/volto/issues/4196)
+
+### Bugfix
+
+- fix LinkEditor not opening from SlateEditor @CannedShroud [#4130](https://github.com/plone/volto/issues/4130)
+
+### Internal
+
+- Update devDependency: release-it 19.2.4. @davisagli 
+
+## 19.0.0-alpha.13 (2026-03-31)
+
+### Internal
+
+- Run volto-slate test suite as part of the Vitest multi-project setup. @Abhishek-17h [#7892](https://github.com/plone/volto/issues/7892)
+- Remove devDependency babel-plugin-transform-class-properties (now
+  @babel/plugin-transform-class-properties, which is included in
+  @babel/preset-env). @davisagli 
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update devDependency: jsdom 28.1.0. @davisagli 
+
+## 19.0.0-alpha.12 (2026-03-02)
+
+### Bugfix
+
+- Fix error in HtmlSlateWidget when rendering elements that need i18n. @davisagli [#7889](https://github.com/plone/volto/issues/7889)
+
+## 19.0.0-alpha.11 (2026-02-20)
+
+### Breaking
+
+- Table block is now responsive and can scroll horizontally for non-fixed tables. @sneridagh [#7916](https://github.com/plone/volto/issues/7916)
+
+## 19.0.0-alpha.10 (2026-02-12)
+
+### Bugfix
+
+- Use Slate Table block when pasting tables snippets (instead of deprecated DraftJS) @cekk [#7865](https://github.com/plone/volto/issues/7865)
+
+## 19.0.0-alpha.9 (2025-12-08)
+
+### Feature
+
+- cross language support and umlaut fix for slash menu @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
+
+## 19.0.0-alpha.8 (2025-11-19)
+
+### Bugfix
+
+- Avoid errors when deleting at the end of a Slate block with an empty Slate block after it and remove the empty block instead. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
+## 19.0.0-alpha.7 (2025-11-10)
+
+### Bugfix
+
+- Ensure Delete at end of a text block merges the next text block and removes it; if the next block is non-text (e.g., Description), do nothing. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
 ## 19.0.0-alpha.6 (2025-10-21)
 
 ### Bugfix

@@ -18,11 +18,10 @@ import { CloseIcon } from '../icons';
 
 const colors = {
   gray: 'bg-quanta-silver text-foreground border-gray-200 hover:border-gray-300  ',
-  green:
-    'bg-green-100 text-green-700 border-green-200 hover:border-green-300 dark:bg-green-300/20 dark:text-green-400 dark:border-green-300/10 dark:hover:border-green-300/20',
+  green: 'bg-green-100 text-green-700 border-green-200 hover:border-green-300 ',
   yellow:
-    'bg-yellow-100 text-yellow-700 border-yellow-200 hover:border-yellow-300 dark:bg-yellow-300/20 dark:text-yellow-400 dark:border-yellow-300/10 dark:hover:border-yellow-300/20',
-  blue: 'bg-blue-100 text-blue-700 border-blue-200 hover:border-blue-300 dark:bg-blue-400/20 dark:text-blue-300 dark:border-blue-400/10 dark:hover:border-blue-400/20',
+    'bg-yellow-100 text-yellow-700 border-yellow-200 hover:border-yellow-300 ',
+  blue: 'bg-blue-100 text-blue-700 border-blue-200 hover:border-blue-300',
 };
 
 type Color = keyof typeof colors;
@@ -30,7 +29,10 @@ const ColorContext = createContext<Color>('gray');
 
 const tagStyles = tv({
   extend: focusRing,
-  base: 'flex max-w-fit cursor-default items-center gap-1 rounded-sm border px-3 py-0.5 text-xs transition',
+  base: `
+    text-md flex max-w-fit cursor-default items-center gap-1 rounded-sm border px-3 py-0.5
+    transition
+  `,
   variants: {
     color: {
       gray: '',
@@ -82,7 +84,7 @@ export function TagGroup<T extends object>({
   return (
     <AriaTagGroup
       {...props}
-      className={twMerge('flex flex-col gap-1', props.className)}
+      className={twMerge('flex flex-col', props.className)}
     >
       <Label>{label}</Label>
       <ColorContext.Provider value={props.color || 'gray'}>
@@ -106,7 +108,9 @@ export function TagGroup<T extends object>({
 
 const removeButtonStyles = tv({
   extend: focusRing,
-  base: 'flex cursor-default items-center justify-center rounded-full p-0.5 transition-[background-color]',
+  base: `
+    flex cursor-default items-center justify-center rounded-full p-0.5 transition-[background-color]
+  `,
 });
 
 export function Tag({ children, color, ...props }: TagProps) {

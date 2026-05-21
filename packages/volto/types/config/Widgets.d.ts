@@ -41,6 +41,9 @@ export namespace widgetMapping {
         export { HiddenWidget as hidden };
         export { RadioGroupWidget as radio_group };
         export { CheckboxGroupWidget as checkbox_group };
+        export { BlockAlignment as blockAlignment };
+        export { BlockWidth as blockWidth };
+        export { Size as size };
     }
     export let vocabulary: {
         'plone.app.vocabularies.Catalog': import("@loadable/component").LoadableComponent<Omit<import("react-intl").WithIntlProps<import("react-intl").WrappedComponentProps<string>>, "ref"> & import("react").RefAttributes<import("react").ComponentType<import("react-intl").WrappedComponentProps<string>>>>;
@@ -141,6 +144,9 @@ import { StaticTextWidget } from '@plone/volto/components/manage/Widgets';
 import { HiddenWidget } from '@plone/volto/components/manage/Widgets';
 import { RadioGroupWidget } from '@plone/volto/components/manage/Widgets';
 import { CheckboxGroupWidget } from '@plone/volto/components/manage/Widgets';
+import { BlockAlignment } from '@plone/volto/components/manage/Widgets';
+import { BlockWidth } from '@plone/volto/components/manage/Widgets';
+import { Size } from '@plone/volto/components/manage/Widgets';
 import { CheckboxWidget } from '@plone/volto/components/manage/Widgets';
 import { NumberWidget } from '@plone/volto/components/manage/Widgets';
 import { getWidgetView } from '@plone/volto/helpers/Widget/widget';

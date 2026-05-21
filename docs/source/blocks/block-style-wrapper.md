@@ -130,7 +130,7 @@ const BlockView = (props) => (
 ```
 
 ```{seealso}
-[CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties)
+[CSS custom properties basics](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties)
 ```
 
 ### Nested custom CSS properties

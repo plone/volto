@@ -7,11 +7,7 @@ import config from '@plone/volto/registry';
 
 config.experimental = { addBlockButton: { enabled: false } };
 
-vi.mock('@plone/volto/helpers/Loadable/Loadable', async () => {
-  return await import(
-    '@plone/volto/helpers/Loadable/__mocks__/Loadable.vitest.jsx'
-  );
-});
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
 
 beforeAll(async () => {
   const { __setLoadables } = await import(
@@ -161,19 +157,12 @@ test('Removes invalid blocks on saving', () => {
     </Provider>,
   );
 
+  expect(onChangeFormData).toHaveBeenCalledTimes(1);
   expect(onChangeFormData).toHaveBeenCalledWith({
     blocks: {
       a: { '@type': 'custom', text: 'a' },
       b: { '@type': 'custom', text: 'b' },
     },
-    blocks_layout: { items: ['a', 'b', 'MISSING-YOU-1'] },
-  });
-
-  expect(onChangeFormData).toHaveBeenCalledWith({
-    blocks: {
-      a: { '@type': 'custom', text: 'a' },
-      b: { '@type': 'custom', text: 'b' },
-    },
-    blocks_layout: { items: ['a', 'b', 'MISSING-YOU-2'] },
+    blocks_layout: { items: ['a', 'b'] },
   });
 });

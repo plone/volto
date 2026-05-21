@@ -82,6 +82,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     openObjectBrowser: PropTypes.func.isRequired,
     allowExternals: PropTypes.bool,
     placeholder: PropTypes.string,
+    onlyFolderishSelectable: PropTypes.bool,
   };
 
   /**
@@ -98,6 +99,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     return: 'multiple',
     initialPath: '',
     allowExternals: false,
+    onlyFolderishSelectable: false,
   };
 
   state = {
@@ -305,6 +307,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     this.props.openObjectBrowser({
       mode: this.props.mode,
       currentPath: this.props.initialPath || this.props.location.pathname,
+      initialPath: this.props.initialPath,
       propDataName: 'value',
       onSelectItem: (url, item) => {
         this.onChange(item);
@@ -315,6 +318,9 @@ export class ObjectBrowserWidgetComponent extends Component {
       maximumSelectionSize:
         this.props.widgetOptions?.pattern_options?.maximumSelectionSize ||
         this.props.maximumSelectionSize,
+      onlyFolderishSelectable:
+        this.props.widgetOptions?.pattern_options?.onlyFolderishSelectable ||
+        this.props.onlyFolderishSelectable,
     });
   };
 

@@ -4,16 +4,13 @@ import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import ChangePassword from './ChangePassword';
 
 const mockStore = configureStore();
 
-vi.mock('@plone/volto/components/manage/Form', async () => {
-  return await import(
-    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
-  );
-});
+vi.mock('@plone/volto/components/manage/Form');
 
 vi.mock('../Toolbar/Toolbar', () => ({
   default: vi.fn(() => <div id="Portal" />),
@@ -44,10 +41,12 @@ describe('ChangePassword', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <ChangePassword location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <ChangePassword location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

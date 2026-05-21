@@ -2,13 +2,12 @@ import React from 'react';
 import { BlockToolbar } from './BlockToolbar';
 import {
   Button,
-  Checkbox,
   Group,
   Separator,
   Text,
   ToggleButton,
 } from 'react-aria-components';
-import { Menu, MenuItem } from '../Menu/Menu';
+import { Menu, MenuItem, MenuTrigger } from '../Menu/Menu';
 
 import { BoldIcon } from '../icons/BoldIcon';
 import { ItalicIcon } from '../icons/ItalicIcon';
@@ -46,24 +45,29 @@ export const Example = (args: any) => (
       </ToggleButton>
     </Group>
     <Separator orientation="vertical" />
-    <Menu button={<MoreoptionsIcon />}>
-      <MenuItem>
-        <SettingsIcon />
-        <Text slot="label">Settings</Text>
-      </MenuItem>
-      <MenuItem>
-        <RowbeforeIcon />
-        <Text slot="label">Insert block before</Text>
-      </MenuItem>
-      <MenuItem>
-        <RowafterIcon />
-        <Text slot="label">Insert block after</Text>
-      </MenuItem>
-      <Separator />
-      <MenuItem>
-        <BinIcon />
-        <Text slot="label">Remove block</Text>
-      </MenuItem>
-    </Menu>
+    <MenuTrigger>
+      <Button>
+        <MoreoptionsIcon />
+      </Button>
+      <Menu>
+        <MenuItem>
+          <SettingsIcon />
+          <Text slot="label">Settings</Text>
+        </MenuItem>
+        <MenuItem>
+          <RowbeforeIcon />
+          <Text slot="label">Insert block before</Text>
+        </MenuItem>
+        <MenuItem>
+          <RowafterIcon />
+          <Text slot="label">Insert block after</Text>
+        </MenuItem>
+        <Separator />
+        <MenuItem>
+          <BinIcon />
+          <Text slot="label">Remove block</Text>
+        </MenuItem>
+      </Menu>
+    </MenuTrigger>
   </BlockToolbar>
 );

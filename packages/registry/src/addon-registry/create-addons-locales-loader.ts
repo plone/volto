@@ -16,6 +16,7 @@ export function createAddonsLocalesLoader(registry: AddonRegistry) {
       }
       const localesDir = path.join(
         registry.projectRootPath,
+        'public',
         'locales',
         language,
       );
