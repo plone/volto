@@ -4,7 +4,6 @@ import { Days, getLocalizedWeekday, widgetTailwindClasses } from '../utils';
 import type { Updater } from '@tanstack/react-form';
 import { useTranslation } from 'react-i18next';
 import { twMerge } from 'tailwind-merge';
-import type { Weekday } from 'rrule';
 
 interface ByDayFieldProps {
   onChange: (updater: Updater<string[]>) => void;
@@ -28,8 +27,13 @@ const ByDayField = ({ label, onChange, defaultValue }: ByDayFieldProps) => {
             key={d}
             value={d}
             className={twMerge(
-              'data-[selected=true]:bg-muted-foreground/50 hover:bg-muted-foreground/20 focus:outline-quanta-cobalt flex h-[50px] w-[50px] items-center justify-center border-e-[1px] border-t-[1px] border-b-[1px] hover:cursor-pointer focus:outline-2',
-              i === 0 && 'border-l-[1px]',
+              `
+                flex h-12.5 w-12.5 items-center justify-center border-e border-t border-b
+                hover:cursor-pointer hover:bg-muted-foreground/20
+                focus:outline-2 focus:outline-quanta-cobalt
+                data-[selected=true]:bg-muted-foreground/50
+              `,
+              i === 0 && 'border-l',
             )}
           >
             {getLocalizedWeekday(Days[d].weekday, currentLocale, 'short')}

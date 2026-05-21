@@ -24,10 +24,10 @@ const ByWeekdayOfTheMonth = ({
   const currentLocale = i18n.language;
   return (
     <Select
-      onSelectionChange={(value) =>
+      onChange={(value) =>
         value && typeof value === 'number' && onChange(value)
       }
-      defaultSelectedKey={defaultValue}
+      defaultValue={defaultValue}
     >
       <Button className={widgetTailwindClasses.selectButton}>
         <SelectValue className="text-[1rem]" />

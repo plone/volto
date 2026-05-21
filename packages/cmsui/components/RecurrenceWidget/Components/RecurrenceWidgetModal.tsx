@@ -14,13 +14,14 @@ import CheckboxIcon from '@plone/components/icons/checkbox.svg?react';
 import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
 import { useTranslation } from 'react-i18next';
 // import { useAppForm } from '../../Form/Form';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useAtomValue } from 'jotai';
 import { formAtom } from '../../../routes/atoms';
 import {
   byMonthOptions,
   byYearOptions,
   Days,
+  getRruleText,
   getWeekday,
   isFrequency,
   MONDAYFRIDAY_DAYS,
@@ -39,8 +40,10 @@ import {
   createFormHookContexts,
   useStore,
 } from '@tanstack/react-form';
-import pkg from 'rrule';
-import { type Options, type WeekdayStr } from 'rrule';
+
+import { RRule, type Options, type WeekdayStr, RRuleSet } from '../rrule';
+
+// import { RRule, type Options, type WeekdayStr } from 'rrule';
 import IntervalField from './IntervalField';
 import ByDayField from './ByDayField';
 import RadioOptionsField from './RadioOptionsField';
@@ -52,7 +55,7 @@ import CountEndField from './CountEndField';
 import UntilEndField from './UntilEndField';
 import SelectedDates from './SelectedDates';
 
-const { RRule } = pkg;
+// const { RRule } = pkg;
 
 interface RecurrenceWidgetModalProps {
   onSave: (rrule: string) => void;
@@ -129,6 +132,7 @@ const RecurrenceWidgetModal = ({
   );
 
   const { fieldContext, formContext } = createFormHookContexts();
+  const [exdates, setExdates] = useState<Date[]>([]);
 
   const { useAppForm } = createFormHook({
     fieldComponents: {},
@@ -144,6 +148,7 @@ const RecurrenceWidgetModal = ({
   const formValues = useStore(form.store, (state) => state.values);
 
   const resetForm = () => {
+    setExdates([]);
     form.reset();
   };
 
@@ -242,8 +247,32 @@ const RecurrenceWidgetModal = ({
     return new RRule(updatedFormValues);
   };
 
-  const rruleString = formValuesToRRule(formValues).toString();
-  const rruleDates = formValuesToRRule(formValues).all();
+  const allDates = useMemo(
+    () => formValuesToRRule(formValues).all(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [formValues],
+  );
+
+  const rruleSetForSave = useMemo(() => {
+    const set = new RRuleSet();
+    set.rrule(formValuesToRRule(formValues));
+    exdates.forEach((d) => set.exdate(d));
+    return set;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formValues, exdates]);
+
+  const toggleExcludeDate = (d: Date) => {
+    setExdates((prev) => {
+      const isExcluded = prev.some((e) => e.getTime() === d.getTime());
+      return isExcluded
+        ? prev.filter((e) => e.getTime() !== d.getTime())
+        : [...prev, d];
+    });
+  };
+
+  const rruleString = rruleSetForSave.toString();
+
+  const rruleText = getRruleText(rruleSetForSave);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -273,7 +302,10 @@ const RecurrenceWidgetModal = ({
             <Button
               slot="close"
               className="hover:cursor-pointer"
-              onClick={(e) => setIsModalOpen(false)}
+              onClick={(e) => {
+                setIsModalOpen(false);
+                resetForm();
+              }}
             >
               <CloseIcon className="" />
             </Button>
@@ -580,7 +612,16 @@ const RecurrenceWidgetModal = ({
                     }
                   }}
                 />
-                <SelectedDates rruleDates={rruleDates} editMode />
+
+                <div className="bg-muted-foreground/10 p-2 font-semibold text-muted-foreground">
+                  {rruleText && <div>{rruleText}</div>}
+                </div>
+                <SelectedDates
+                  rruleDates={allDates}
+                  exdates={exdates}
+                  editMode
+                  onToggleDate={toggleExcludeDate}
+                />
               </div>
               <div className="flex justify-end">
                 <Button

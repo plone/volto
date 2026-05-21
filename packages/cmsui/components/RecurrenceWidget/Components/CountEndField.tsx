@@ -11,7 +11,7 @@ interface CountEndFieldProps {
 const CountEndField = ({ onChange }: CountEndFieldProps) => {
   const { t } = useTranslation();
   return (
-    <div className="flex items-center gap-x-6">
+    <div className="flex flex-wrap items-center gap-x-6">
       <Label>{t('cmsui.recurrence.count_after')}</Label>
       <TextField
         inputMode="numeric"
@@ -24,6 +24,9 @@ const CountEndField = ({ onChange }: CountEndFieldProps) => {
         <Input />
       </TextField>
       <Label>{t('cmsui.recurrence.count_occurrences')}</Label>
+      <div className="mt-2 basis-full text-sm text-muted-foreground">
+        {t('cmsui.recurrence.infinite_occurrences')}
+      </div>
     </div>
   );
 };

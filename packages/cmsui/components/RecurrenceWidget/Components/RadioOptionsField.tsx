@@ -21,7 +21,7 @@ const RadioOptionsField = <T extends string>({
       <Label className={widgetTailwindClasses.labelComponent}>{label}</Label>
       <RadioGroup
         onChange={(value) => onChange(value as T)}
-        defaultValue={checkboxValue}
+        value={checkboxValue}
       >
         {options.map((opt) => {
           const { id, title, description } = opt;
