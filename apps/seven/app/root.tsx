@@ -1,7 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import { Container } from '@plone/components';
 import { data, isRouteErrorResponse, Links } from 'react-router';
-import stylesheet from 'seven/.plone/cmsui.css?url';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
@@ -22,6 +21,9 @@ import Unauthorized from '@plone/cmsui/routes/unauthorized';
 import NotFound from '@plone/cmsui/routes/notfound';
 import ConnectionRefused from '@plone/cmsui/routes/connection-refused';
 import { getClearAuthCookieHeader } from '@plone/react-router';
+
+
+import stylesheet from 'seven/.plone/cmsui.css?url';
 
 export const middleware = [
   installServerMiddleware,
