@@ -1353,6 +1353,11 @@ msgstr "Sähköposti lähetetty"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Virhe upotuskoodissa. Seuraa ohjeita ja yritä uudelleen."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1733,11 +1738,6 @@ msgstr "Yleinen"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Sivustonlaajuinen rooli"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Google Maps -upotuspalikka"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
