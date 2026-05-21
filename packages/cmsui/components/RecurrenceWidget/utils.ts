@@ -1,5 +1,4 @@
-import pkg from 'rrule';
-const { RRule } = pkg;
+import { RRule, RRuleSet, type RRuleType } from './rrule';
 
 export const FREQUENCES = {
   DAILY: 'daily',
@@ -61,6 +60,16 @@ export const ORDINAL_NUMBERS = {
   4: 'fourth',
   '-1': 'last',
 };
+
+export function getRruleText(rrule: RRuleType | null) {
+  if (rrule) {
+    const mainRule = rrule instanceof RRuleSet ? rrule.rrules()[0] : rrule;
+    const rruleText = mainRule?.toText();
+    return rruleText;
+  }
+  return undefined;
+}
+
 export function getLocalizedOrdinalNumber(string: string, t: any) {
   return t(`cmsui.recurrence.${string}_label`);
 }
@@ -154,7 +163,7 @@ export function recurrenceEndOptions(
 
 export const widgetTailwindClasses = {
   fieldComponent: 'flex items-center ',
-  fieldGroupComponent: 'flex items-center border-0 h-auto gap-2',
+  fieldGroupComponent: 'flex items-center border-0 h-auto gap-2 px-4 py-2',
   labelComponent: 'basis-1/5 text-[1rem]',
   selectButton:
     'pressed:bg-transparent flex items-center rounded-[4px]! border-[1px] focus:bg-transparent hover:cursor-pointer',
