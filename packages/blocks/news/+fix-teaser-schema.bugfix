@@ -1,0 +1,1 @@
+Fix Teaser block object browser configuration: the target field now uses single selection mode, and the required item identifier is included in the selected attributes for both the target and image fields. @iFlameing
