@@ -1,6 +1,10 @@
 import { expect, describe, it, vi, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { createRoutesStub, RouterContextProvider, UNSAFE_ErrorResponseImpl } from 'react-router';
+import {
+  createRoutesStub,
+  RouterContextProvider,
+  UNSAFE_ErrorResponseImpl,
+} from 'react-router';
 import config from '@plone/registry';
 import { Layout, ErrorBoundary, loader } from './root';
 import {
@@ -182,7 +186,9 @@ describe('ErrorBoundary', () => {
       },
     ]);
     render(<Stub />);
-    expect(screen.getByText('cmsui.errorRoutes.unauthorized')).toBeInTheDocument();
+    expect(
+      screen.getByText('cmsui.errorRoutes.unauthorized'),
+    ).toBeInTheDocument();
   });
 
   it('should render Forbidden for 403', () => {
@@ -218,7 +224,9 @@ describe('ErrorBoundary', () => {
       },
     ]);
     render(<Stub />);
-    expect(screen.getByText('cmsui.errorRoutes.connectionRefused')).toBeInTheDocument();
+    expect(
+      screen.getByText('cmsui.errorRoutes.connectionRefused'),
+    ).toBeInTheDocument();
   });
 
   it('should render generic error for unhandled status codes', () => {
@@ -231,7 +239,9 @@ describe('ErrorBoundary', () => {
     ]);
     render(<Stub />);
     expect(screen.getByText('Oops!')).toBeInTheDocument();
-    expect(screen.getByText('An unexpected error occurred.')).toBeInTheDocument();
+    expect(
+      screen.getByText('An unexpected error occurred.'),
+    ).toBeInTheDocument();
   });
 
   it('should render generic error for prod JS errors', () => {
@@ -244,7 +254,9 @@ describe('ErrorBoundary', () => {
     ]);
     render(<Stub />);
     expect(screen.getByText('Oops!')).toBeInTheDocument();
-    expect(screen.getByText('An unexpected error occurred.')).toBeInTheDocument();
+    expect(
+      screen.getByText('An unexpected error occurred.'),
+    ).toBeInTheDocument();
   });
 });
 
