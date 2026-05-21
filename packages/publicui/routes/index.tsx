@@ -124,7 +124,7 @@ export default function Index() {
             <Plug
               pluggable="toolbar-top"
               id="button-edit"
-              dependencies={[location.pathname]}
+              dependencies={[location.pathname] as any}
             >
               <Link
                 className="primary"
