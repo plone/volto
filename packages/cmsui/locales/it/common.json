@@ -44,9 +44,12 @@
       "until_description": "il 15 giugno 2050",
       "count_after": "Dopo",
       "count_occurrences": "occorrenza/e",
+      "infinite_occurences": "Impostare a 0 o lasciare vuoto per ricorrenze infinite",
       "selected_dates": "Date selezionate",
+      "no_occurrences": "Nessuna ricorrenza disponibile",
       "start_recurrence": "Inizio ricorrenza",
-      "other_dates": "altre date"
+      "other_dates": "altre date",
+      "show_more_dates": "Mostra più date"
     },
     "controlpanel": "Pannello di controllo",
     "objectbrowserwidget": {
