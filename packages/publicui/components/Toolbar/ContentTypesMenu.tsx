@@ -21,6 +21,8 @@ export const ContentTypesMenu = ({ content }: ContentTypesMenuProps) => {
   const types = Array.isArray(_types) ? _types : [];
   const addableTypes = types.filter((type) => type.addable);
 
+  if (addableTypes.length === 0) return null;
+
   const mostUsedTypes = config.settings.mostUsedTypes;
 
   const highlightedTypes = addableTypes.filter((type) =>
