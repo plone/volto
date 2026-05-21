@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 const ConnectionRefused = () => {
   const { t } = useTranslation();
+  const isDev = process.env.NODE_ENV === 'development';
+  const apiPath = config?.settings?.apiPath;
 
   return (
     <Container
@@ -13,7 +15,7 @@ const ConnectionRefused = () => {
     >
       <h1 className="mb-4 text-2xl font-bold">
         {t('cmsui.errorRoutes.connectionRefused')}
-        {process.env.NODE_ENV === 'development' && (
+        {isDev && apiPath && (
           <>
             <br />
             <a
@@ -21,19 +23,19 @@ const ConnectionRefused = () => {
                 text-blue-600
                 hover:underline
               `}
-              href={config.settings.apiPath}
+              href={apiPath}
             >
-              {config.settings.apiPath}
+              {apiPath}
             </a>
           </>
         )}
       </h1>
-      {process.env.NODE_ENV === 'development' && (
+
+      {isDev ? (
         <p className="mb-3 text-lg">
           {t('cmsui.errorRoutes.connectionRefusedDescription')}
         </p>
-      )}
-      {process.env.NODE_ENV !== 'development' && (
+      ) : (
         <>
           <p className="mb-3 text-lg">
             {t('cmsui.errorRoutes.connectionRefusedProduction')}
@@ -44,4 +46,5 @@ const ConnectionRefused = () => {
     </Container>
   );
 };
+
 export default ConnectionRefused;
