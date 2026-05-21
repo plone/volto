@@ -115,7 +115,6 @@ describe('Search', () => {
 
     // then we are searching for SearchableText=color and sorting it with effective date
     cy.visit('/search?SearchableText=color');
-    cy.wait('@search'); // Wait for initial search
     cy.url().should(
       'eq',
       Cypress.config().baseUrl + '/search?SearchableText=color',

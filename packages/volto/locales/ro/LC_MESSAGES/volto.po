@@ -3,19 +3,19 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2024-10-31 15:00-0300\n"
-"Last-Translator: Alin Voinea <avoinea@plone.org>\n"
+"PO-Revision-Date: 2026-05-10 16:06+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: ro\n"
-"Language-Team: Romanian (https://www.transifex.com/plone/teams/14552/ro/)\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/plone/volto-main/ro/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: ro\n"
 "Language-Name: Romanian\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Generator: Poedit 3.5\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -1677,6 +1677,11 @@ msgstr "Corectează relațiile"
 msgid "Fixed width table cells"
 msgstr "Celule de tabel cu lățimea fixă"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Concentrează-te pe"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2355,6 +2360,16 @@ msgstr "Mediu"
 msgid "Membership updated"
 msgstr "Membru actualizat"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2684,7 +2699,7 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Doar caractere de 7 biți sunt permise. Nu poate conține caractere majuscule, caractere speciale: <, >, &, #, /, ?, sau alte caractere care sunt interzise în URL-uri. Nu poate începe cu: _, aq_, @@, ++. Nu poate să se termine cu __. Nu poate fi: request, contributors, ., .., "". Nu poate conține linii noi."
+msgstr "Doar caractere de 7 biți sunt permise. Nu poate conține caractere majuscule, caractere speciale: <, >, &, #, /, ?, sau alte caractere care sunt interzise în URL-uri. Nu poate începe cu: _, aq_, @@, ++. Nu poate să se termine cu __. Nu poate fi: request, contributors, ., .., \"\". Nu poate conține linii noi."
 
 #. Default: "Open URL browser"
 #: components/manage/Widgets/UrlWidget
@@ -2868,6 +2883,16 @@ msgstr "Fundația Plone"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM Open Source"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Fereastră pop-up închisă."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Fereastră pop-up deschisă: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule

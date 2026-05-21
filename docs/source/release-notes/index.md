@@ -17,6 +17,60 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
+## 19.0.0-alpha.38 (2026-05-19)
+
+### Breaking
+
+- The `RichTextWidget` wraps its value in a `div` instead of a `p`. @nileshgulia1 [#7950](https://github.com/plone/volto/issues/7950)
+
+### Feature
+
+- Replace moment.js with native Intl formatting in DateWidget and DatetimeWidget theme display widgets. The `formatDate` helper now accepts moment-style token strings ('ll', 'lll', 'LLLL', 'L', 'LT') for backward compatibility. @avoinea [#6732](https://github.com/plone/volto/issues/6732)
+
+### Bugfix
+
+- fixed a11y in search page. @giuliaghisini [#8085](https://github.com/plone/volto/issues/8085)
+
+### Documentation
+
+- Add Python 3.14 to Plone 6.2 support for Volto 19. @stevepiercy [#8051](https://github.com/plone/volto/issues/8051)
+
+## 19.0.0-alpha.37 (2026-05-19)
+
+### Feature
+
+- Use the navroot expander to render the sitemap. @erral [#5503](https://github.com/plone/volto/issues/5503)
+- Complete fr translation @jimbiscuit [#8197](https://github.com/plone/volto/issues/8197)
+- Update nl translations. @mauritsvanrees 
+- Update pt_BR translations. @ericof 
+
+### Bugfix
+
+- Inside the CMS-UI, when using the keyboard the block becomes active when focused - @Wagner3UB [#5273](https://github.com/plone/volto/issues/5273)
+- Translate block titles displayed in the Order tab of the sidebar. @ericof [#7348](https://github.com/plone/volto/issues/7348)
+- The toolbar panel {guilabel}`Personal tools` now manages focus and announces state changes to screen readers to improve accessibility. @Wagner3UB [#8019](https://github.com/plone/volto/issues/8019)
+- Fixed accessibility issues in `ModalForm` with focus management, `aria-live` announcements, and `aria-modal` support. @Wagner3UB [#8058](https://github.com/plone/volto/issues/8058)
+- Fixed `ObjectBrowserWidget` to honor `frontendOptions.widgetProps.initialPath` when rendered in multiple mode (e.g. `RelationList` of `RelationChoice`). @ericof [#8156](https://github.com/plone/volto/issues/8156)
+- Show Unauthorized page via SSR if an anonymous user accesses the user control panel. @wesleybl [#8184](https://github.com/plone/volto/issues/8184)
+- Use `<button>` elements instead of `<a>` for formtabs menu items to fix accessibility and keyboard navigation. @Wagner3UB [#8219](https://github.com/plone/volto/issues/8219)
+- Prevent browser default behavior on file drop in folder contents dropzone. @jnptk [#8228](https://github.com/plone/volto/issues/8228)
+
+### Internal
+
+- Refactored the `TokenWidget` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7683](https://github.com/plone/volto/issues/7683)
+- Refactored the `Search` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7686](https://github.com/plone/volto/issues/7686)
+- Remove .nvmrc from Volto's folder. @sneridagh 
+
+### Documentation
+
+- Add more information about removed drag-and-drop libraries in the upgrade guide. @davisagli 
+
 ## 19.0.0-alpha.36 (2026-05-12)
 
 ### Breaking

@@ -2,6 +2,7 @@ import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { getParentUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { formatMessageWithFallback } from '@plone/volto/helpers/I18n/I18n';
 import { useClient } from '@plone/volto/hooks';
 import config from '@plone/volto/registry';
 import { useEffect } from 'react';
@@ -86,9 +87,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
     return <Error error={blockTypes.error} />;
   }
 
-  const translatedTitle = block?.title
-    ? intl.formatMessage({ id: block.title, defaultMessage: block.title })
-    : id;
+  const translatedTitle = formatMessageWithFallback(intl, block?.title) || id;
 
   return (
     blockTypes.loaded && (

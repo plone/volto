@@ -84,6 +84,7 @@ class ObjectBrowserBody extends Component {
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
     maximumSelectionSize: PropTypes.number,
+    initialPath: PropTypes.string,
     contextURL: PropTypes.string,
     searchableTypes: PropTypes.arrayOf(PropTypes.string),
     onlyFolderishSelectable: PropTypes.bool,
@@ -113,18 +114,21 @@ class ObjectBrowserBody extends Component {
    */
   constructor(props) {
     super(props);
+    const defaultMultiplePath = props.initialPath || '/';
     this.state = {
       currentFolder:
-        this.props.mode === 'multiple' ? '/' : this.props.contextURL || '/',
+        this.props.mode === 'multiple'
+          ? defaultMultiplePath
+          : this.props.contextURL || '/',
       currentImageFolder:
         this.props.mode === 'multiple'
-          ? '/'
+          ? defaultMultiplePath
           : this.props.mode === 'image' && this.props.data?.url
             ? getParentURL(this.props.data.url)
             : '/',
       currentLinkFolder:
         this.props.mode === 'multiple'
-          ? '/'
+          ? defaultMultiplePath
           : this.props.mode === 'link' && this.props.data?.href
             ? getParentURL(this.props.data.href)
             : '/',
