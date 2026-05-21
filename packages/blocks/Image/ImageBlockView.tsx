@@ -1,8 +1,12 @@
 import type { BlockViewProps, ContainedItem } from '@plone/types';
 import Image from '@plone/layout/components/Image/Image';
+import clsx from 'clsx';
+
+import './ImageBlock.css';
 
 const ImageBlockView = (props: BlockViewProps) => {
   const { data } = props;
+
   if (!data.url) return null;
 
   const item = {
@@ -12,8 +16,22 @@ const ImageBlockView = (props: BlockViewProps) => {
   } as ContainedItem;
 
   return (
-    <figure>
+    <figure
+      className={clsx(
+        'image align block',
+        {
+          center: !data.align,
+        },
+        data.align,
+      )}
+    >
       <Image
+        className={clsx({
+          'full-width': data.align === 'full',
+          large: data.size === 'l',
+          medium: data.size === 'm',
+          small: data.size === 's',
+        })}
         item={item}
         alt={(data.alt as string) || ''}
         imageField={data.image_field as string}

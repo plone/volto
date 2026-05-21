@@ -6,9 +6,11 @@ import type {
   Content,
   RelatedItem,
 } from '@plone/types';
+
 import Image from '@plone/layout/components/Image/Image';
 import clsx from 'clsx';
 import config from '@plone/registry';
+import './ImageBlock.css';
 
 function flattenToAppUrl(url: string) {
   const apiPath = config.settings.apiPath || '';
@@ -66,11 +68,11 @@ const ImageBlockEdit = (props: BlockEditProps) => {
     : undefined;
 
   return (
-    <div
+    <figure
       className={clsx(
         'image align block',
         {
-          center: !Boolean(data.align),
+          center: !data.align,
         },
         data.align,
       )}
@@ -105,7 +107,7 @@ const ImageBlockEdit = (props: BlockEditProps) => {
           objectBrowserPickerType="image"
         />
       ) : null}
-    </div>
+    </figure>
   );
 };
 

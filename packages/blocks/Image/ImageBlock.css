@@ -1,0 +1,56 @@
+/* Image block */
+
+.block.image {
+  clear: both;
+}
+
+.block.image.align.left img {
+  max-width: 50%;
+  margin-right: 1em !important;
+  margin-bottom: 1em;
+  float: left;
+}
+
+.block.image.align.right img {
+  max-width: 50%;
+  margin-bottom: 1em;
+  margin-left: 1em !important;
+  float: right;
+}
+
+.block.image.align.center {
+  text-align: center;
+}
+
+.block.image.align.center img {
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.block.image.align.center img.medium {
+  max-width: 50%;
+}
+
+.block.image.align.center img.small {
+  max-width: 25%;
+}
+
+.block.image.align.left img.large,
+.block.image.align.right img.large {
+  max-width: 50%;
+}
+
+.block.image.align.left img.medium,
+.block.image.align.right img.medium {
+  max-width: 25%;
+}
+
+.block.image.align.left img.small,
+.block.image.align.right img.small {
+  max-width: 15%;
+}
+
+.block.image img.full-width {
+  width: 100%;
+  max-width: 100%;
+}
