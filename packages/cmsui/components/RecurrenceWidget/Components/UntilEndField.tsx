@@ -16,13 +16,21 @@ const UntilEndField = ({ onChange }: UntilEndFieldProps) => {
   const defaultMonth = endDate.getMonth() + 1;
   const defaultDay = endDate.getDate();
 
+  const today = new Date();
+
+  const month = defaultMonth < 10 ? `0${defaultMonth}` : defaultMonth;
+
   const defaultDate = endDate
-    ? `${defaultYear}-0${defaultMonth}-${defaultDay}`
-    : null;
+    ? `${defaultYear}-${month}-${defaultDay}`
+    : `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
   return (
     <DatePicker
-      onChange={(value) => value && onChange(value)}
+      onChange={(value) => {
+        if (value && new Date(value).getFullYear().toString().length === 4) {
+          onChange(value);
+        }
+      }}
       defaultValue={defaultDate}
       className="**:dark:text-foreground"
       resettable={false}
