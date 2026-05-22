@@ -181,8 +181,7 @@ const FileWidget = (props) => {
 
   const statusTextA11y = [
     intl.formatMessage(messages.dragAndDropActionA11y), // Interaction instructions
-    props.required &&
-      `${props.title}: ${intl.formatMessage(messages.requiredField)}`, // Required field status
+    props.required && intl.formatMessage(messages.requiredField), // Required field status
     value?.filename, // Current file name if a file is uploaded
   ]
     .filter(Boolean)
