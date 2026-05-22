@@ -8,10 +8,6 @@
     },
     "actions": {
       "actions": "Azioni",
-      "select": "Seleziona",
-      "selected": "{{count}} selezionati",
-      "select_all": "Seleziona pagina",
-      "clear_selection": "Cancella",
       "upload": "Carica",
       "rename": "Rinomina",
       "state": "Cambia stato",
@@ -68,15 +64,27 @@
       "asc": "Crescente",
       "desc": "Decrescente",
       "pickOrder": "Riposiziona {{index}}"
+    },
+    "modal": {
+      "close": "Annulla"
+    },
+    "modal_upload": {
+      "title": "Carica in \"{{title}}\"",
+      "upload_more_files": "Carica altri file",
+      "upload_files": "Carica file",
+      "dropzone_label": "Trascina i file qui, o clicca per <1><0>sfogliare</0></1>",
+      "confirm": "Carica",
+      "columns": {
+        "name": "Nome",
+        "size": "Dimensione",
+        "last_modified": "Ultima modifica"
+      }
+    },
+    "modal_delete": {
+      "single": { "title": "Vuoi eliminare \"{{item}}\"?" },
+      "multi": { "title": "Vuoi eliminare {{n}} elementi?" },
+      "description": "Questa azione non può essere annullata.",
+      "confirm": "Procedi con l'eliminazione"
     }
-  },
-  "modal": {
-    "close": "Annulla"
-  },
-  "modal_delete": {
-    "single": { "title": "Vuoi eliminare \"{{item}}\"?" },
-    "multi": { "title": "Vuoi eliminare {{n}} elementi?" },
-    "description": "Questa azione non può essere annullata.",
-    "confirm": "Procedi con l'eliminazione"
   }
 }

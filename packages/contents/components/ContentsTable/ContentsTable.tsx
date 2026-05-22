@@ -8,16 +8,24 @@ import {
 } from 'react-aria-components';
 import { useFetcher, useLoaderData, useNavigate } from 'react-router';
 import { useDebounceCallback, useMediaQuery } from 'usehooks-ts';
-import { Tooltip, Table, Pagination } from '@plone/components';
+import { Pagination } from '@plone/components';
 
 import {
   Button,
   Container,
   Breadcrumbs,
   Breadcrumb,
+  Input,
+  Table,
+  Tooltip,
+  TableHeader,
+  Column,
+  TableBody,
+  Row,
+  Cell,
 } from '@plone/components/quanta';
 import {
-  AddIcon,
+  // AddIcon,
   HomeIcon,
   CollectionIcon,
   MoreoptionsIcon,
@@ -26,15 +34,14 @@ import {
   CutIcon,
   BinIcon,
 } from '@plone/components/Icons';
-import { Input } from '@plone/cmsui/components/Field/Field';
 import type { ArrayElement, Brain } from '@plone/types';
 
 import Topbar from '../Topbar';
 import { ContentsCell } from '../ContentsCell/ContentsCell';
 import { TableIndexesPopover } from '../TableIndexesPopover/TableIndexesPopover';
 import { RearrangePopover } from '../RearrangePopover/RearrangePopover';
-import { ContentsActions } from '../ContentsActions/ContentsActions';
-import { AddContentPopover } from '../AddContentPopover/AddContentPopover';
+import { ContentsActions } from '../ContentsActions';
+// import { AddContentPopover } from '../AddContentPopover/AddContentPopover';
 import type { ContentsLoaderType } from '../../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../../providers/contents';
@@ -99,14 +106,20 @@ export function ContentsTable({
   const isMobileScreenSize = useMediaQuery('(max-width: 992px)');
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { selected, setSelected, setShowDelete, setItemsToDelete, showToast } =
-    useContentsContext();
+  const {
+    selected,
+    setSelected,
+    setShowDelete,
+    setItemsToDelete,
+    setShowUpload,
+    showToast,
+  } = useContentsContext();
   const fetcher = useFetcher();
   const { content, search, searchableText, page, b_size } =
     useLoaderData<ContentsLoaderType>();
-  const addableTypes = content['@components'].types.filter(
-    (type) => type.addable,
-  );
+  // const addableTypes = content['@components'].types.filter(
+  //   (type) => type.addable,
+  // );
   const [currentPage, setCurrentPage] = useState<number>(Number(page));
 
   const { title = '' } = content;
@@ -151,6 +164,10 @@ export function ContentsTable({
   const deleteItem = (item?: Item | null) => {
     setShowDelete(true);
     setItemsToDelete(item ? new Set([item]) : selected);
+  };
+
+  const openUpload = () => {
+    setShowUpload(true);
   };
 
   const orderItem = async (id: string, delta: number | 'bottom' | 'top') => {
@@ -341,6 +358,7 @@ export function ContentsTable({
       id: 'title',
       name: t('contents.indexes.title'),
       isRowHeader: true,
+      width: undefined,
     },
     ...(!isMobileScreenSize
       ? indexes.order
@@ -349,10 +367,14 @@ export function ContentsTable({
             id: index,
             // TODO: use translation
             name: indexes.values[index].label,
+            isRowHeader: false,
+            width: undefined,
           }))
       : []),
     {
       id: '_actions',
+      isRowHeader: false,
+      width: 50,
       name: !isMobileScreenSize ? (
         <DialogTrigger>
           <TooltipTrigger>
@@ -383,7 +405,7 @@ export function ContentsTable({
   ] as const;
 
   const rows = items.map((item, itemIndex) =>
-    columns.reduce<ArrayElement<ComponentProps<typeof Table>['rows']>>(
+    columns.reduce(
       (cells, column) => ({
         ...cells,
         [column.id]: (
@@ -495,7 +517,7 @@ export function ContentsTable({
         `}
       >
         <Topbar>
-          <div className="title-block flex-auto">
+          <div className="title-block">
             <Breadcrumbs
               items={breadcrumbs}
               className="contents-breadcrumbs text-quanta-sapphire"
@@ -519,11 +541,12 @@ export function ContentsTable({
             className={`
               group ms-auto flex shrink-0 grow basis-0 flex-wrap-reverse items-center justify-end
               gap-4 self-end
+              lg:flex-nowrap
             `}
           >
             {!isMobileScreenSize && (
               <ContentsActions
-                upload={upload}
+                upload={openUpload}
                 rename={rename}
                 workflow={workflow}
                 tags={tags}
@@ -544,9 +567,10 @@ export function ContentsTable({
                 setSearchInput(e.target.value);
               }}
               aria-label={t('contents.actions.filter')}
+              className="flex-0 basis-60"
             />
 
-            <TooltipTrigger>
+            {/* <TooltipTrigger>
               <DialogTrigger>
                 <Button
                   variant="primary"
@@ -567,7 +591,7 @@ export function ContentsTable({
                 />
               </DialogTrigger>
               <Tooltip placement="bottom">{t('contents.actions.add')}</Tooltip>
-            </TooltipTrigger>
+            </TooltipTrigger> */}
           </div>
         </Topbar>
         <section className="contents-table">
@@ -579,36 +603,54 @@ export function ContentsTable({
           {rows?.length > 0 ? (
             <>
               <Table
-                className="react-aria-Table hoverable"
                 aria-label={t('contents.results.contents_of', { title })}
-                columns={[...columns]}
-                rows={rows}
                 selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
                 selectedKeys={[...selected].map((s) => s['@id'])}
                 onSelectionChange={setSelected}
                 dragAndDropHooks={dragAndDropHooks}
-                dragColumnHeader={
-                  <MenuTrigger>
-                    <TooltipTrigger>
-                      <Button variant="icon" className="drag-cell-header">
-                        <CollectionIcon />
-                      </Button>
-                      <Tooltip
-                        className="react-aria-Tooltip tooltip"
-                        placement="bottom"
-                      >
-                        {t('contents.rearrange.by')}
-                      </Tooltip>
-                    </TooltipTrigger>
-                    <RearrangePopover
-                      indexes={indexes.values}
-                      sortItems={sortItems}
-                    />
-                  </MenuTrigger>
-                }
                 // onRowSelection={onRowSelection}
-                // resizableColumns={true}
-              />
+              >
+                <TableHeader
+                  columns={[...columns]}
+                  dragColumnWidth={50}
+                  dragColumnHeader={
+                    <MenuTrigger>
+                      <TooltipTrigger>
+                        <Button variant="icon" className="drag-cell-header">
+                          <CollectionIcon />
+                        </Button>
+                        <Tooltip
+                          className="react-aria-Tooltip tooltip"
+                          placement="bottom"
+                        >
+                          {t('contents.rearrange.by')}
+                        </Tooltip>
+                      </TooltipTrigger>
+                      <RearrangePopover
+                        indexes={indexes.values}
+                        sortItems={sortItems}
+                      />
+                    </MenuTrigger>
+                  }
+                >
+                  {(column) => (
+                    <Column
+                      isRowHeader={column.isRowHeader}
+                      width={column.width}
+                      minWidth={column.width}
+                    >
+                      {column.name}
+                    </Column>
+                  )}
+                </TableHeader>
+                <TableBody items={rows}>
+                  {(row) => (
+                    <Row columns={[...columns]} textValue={row.textValue}>
+                      {(column) => <Cell>{row[column.id]}</Cell>}
+                    </Row>
+                  )}
+                </TableBody>
+              </Table>
 
               <Pagination
                 totalPages={Math.ceil(search.items_total / b_size)}

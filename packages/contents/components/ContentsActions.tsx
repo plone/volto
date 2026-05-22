@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { TooltipTrigger } from 'react-aria-components';
-import { Tooltip } from '@plone/components';
+import { Button, Tooltip } from '@plone/components/quanta';
 
 import {
   UploadIcon,
@@ -15,13 +15,11 @@ import {
 } from '@plone/components/Icons';
 
 import type { Brain } from '@plone/types';
-import { Button } from '@plone/components/quanta';
 
-import { useContentsContext } from '../../providers/contents';
-import './ContentsActions.css';
+import { useContentsContext } from '../providers/contents';
 
 type Props = {
-  upload: () => Promise<void>;
+  upload: () => void | Promise<void>;
   rename: () => Promise<void>;
   workflow: () => Promise<void>;
   tags: () => Promise<void>;
@@ -48,33 +46,10 @@ export function ContentsActions({
   // selected,
 }: Props) {
   const { t } = useTranslation();
-  const { selected, setSelected } = useContentsContext();
+  const { selected } = useContentsContext();
 
   return (
-    <div className="contents-actions">
-      <div className="contents-selection-status flex items-center gap-2">
-        <span className="text-sm text-quanta-iron">
-          {selected.size > 0
-            ? t('contents.actions.selected', { count: selected.size })
-            : t('contents.actions.select')}
-        </span>
-        <Button
-          size="S"
-          onPress={() => setSelected('all')}
-          aria-label={t('contents.actions.select_all')}
-        >
-          {t('contents.actions.select_all')}
-        </Button>
-        <Button
-          size="S"
-          onPress={() => setSelected('none')}
-          aria-label={t('contents.actions.clear_selection')}
-          isDisabled={selected.size === 0}
-        >
-          {t('contents.actions.clear_selection')}
-        </Button>
-      </div>
-      <span className="separator" />
+    <div className="contents-actions flex flex-wrap gap-1">
       <TooltipTrigger>
         <Button
           variant="icon"
@@ -134,7 +109,7 @@ export function ContentsActions({
         </Button>
         <Tooltip placement="bottom">{t('contents.actions.properties')}</Tooltip>
       </TooltipTrigger>
-      <span className="separator"></span>
+      <span className="separator mx-1 border-[0.5px] border-quanta-silver"></span>
       <TooltipTrigger>
         <Button
           variant="icon"
@@ -174,7 +149,7 @@ export function ContentsActions({
       <TooltipTrigger>
         <Button
           variant="icon"
-          className="contents-action-trigger delete"
+          className="contents-action-trigger delete text-quanta-candy"
           onPress={() => deleteItem()}
           aria-label={t('contents.actions.delete')}
           isDisabled={selected.size === 0}

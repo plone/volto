@@ -55,10 +55,14 @@ export function ContentsCell({
   if (column === 'title') {
     return (
       <Link
-        className="title-link"
+        className="title-link inline-flex items-center decoration-0"
         href={`${item.is_folderish ? '/@@contents' : ''}${item['@id']}`}
       >
-        <Icon size="S" title={item['Type'] || item['@type']} />
+        <Icon
+          size="S"
+          title={item['Type'] || item['@type']}
+          className="me-4 shrink-0 text-quanta-pigeon"
+        />
         {item.title}
         {item.ExpirationDate !== 'None' &&
           new Date(item.ExpirationDate).getTime() < new Date().getTime() && (

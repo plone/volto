@@ -21,6 +21,7 @@ export { DateRangePicker } from './components/DateRangePicker/DateRangePicker';
 export { Dialog } from './components/Dialog/Dialog';
 export { Disclosure } from './components/Disclosure/Disclosure';
 export { DisclosureGroup } from './components/DisclosureGroup/DisclosureGroup';
+export { DropZone, Text as DropZoneText } from './components/DropZone/DropZone';
 export { Form } from './components/Form/Form';
 export { GridList, GridListItem } from './components/GridList/GridList';
 export { Icon } from './components/Icon/Icon';

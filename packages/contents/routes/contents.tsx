@@ -12,6 +12,7 @@ import { ContentsTable } from '../components/ContentsTable/ContentsTable';
 import Indexes, { defaultIndexes } from '../components/Indexes';
 import { ContentsProvider } from '../providers/contents';
 import DeleteModal from '../components/DeleteModal/DeleteModal';
+import UploadModal from '../components/UploadModal/UploadModal';
 import ErrorToast from '@plone/layout/components/Toast/ErrorToast';
 
 import type { TableIndexes } from '../types';
@@ -122,6 +123,7 @@ export default function Contents() {
     <main id="main">
       <ContentsProvider>
         <DeleteModal />
+        <UploadModal />
         <ContentsTable
           title={content.title}
           pathname={content['@id']}

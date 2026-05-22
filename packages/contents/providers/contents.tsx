@@ -26,6 +26,9 @@ interface ContentsContext {
   setShowDelete: (s: boolean) => void;
   itemsToDelete: Set<Item>;
   setItemsToDelete: (s: Set<Item>) => void;
+  showUpload: boolean;
+  setShowUpload: (s: boolean) => void;
+  contentTitle: string;
   showToast: (c: ToastItem) => void;
 }
 
@@ -36,6 +39,9 @@ const ContentsContext = createContext<ContentsContext>({
   setShowDelete: () => {},
   itemsToDelete: new Set(),
   setItemsToDelete: () => {},
+  showUpload: false,
+  setShowUpload: () => {},
+  contentTitle: '',
   showToast: (t: ToastItem) => {},
 });
 
@@ -44,8 +50,9 @@ type ContentsProviderProps = PropsWithChildren;
 export function ContentsProvider(props: ContentsProviderProps) {
   const { children } = props;
 
-  const { search } = useLoaderData<ContentsLoaderType>();
+  const { search, content } = useLoaderData<ContentsLoaderType>();
   const { items = [] } = search ?? {};
+  const contentTitle = content?.title ?? '';
   //selected
   const [selected, _setSelected] = useState<Set<Item>>(new Set());
 
@@ -66,6 +73,9 @@ export function ContentsProvider(props: ContentsProviderProps) {
   const [itemsToDelete, setItemsToDelete] = useState<Set<Item>>(new Set());
   const [showDelete, setShowDelete] = useState(false);
 
+  //upload
+  const [showUpload, setShowUpload] = useState(false);
+
   //show toast
   const showToast = (queueElement: ToastItem) => {
     config
@@ -82,6 +92,9 @@ export function ContentsProvider(props: ContentsProviderProps) {
     setItemsToDelete,
     showDelete,
     setShowDelete,
+    showUpload,
+    setShowUpload,
+    contentTitle,
     showToast,
   };
 

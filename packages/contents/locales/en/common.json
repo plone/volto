@@ -9,10 +9,6 @@
     },
     "actions": {
       "actions": "Actions",
-      "select": "Select",
-      "selected": "{{count}} selected",
-      "select_all": "Select page",
-      "clear_selection": "Clear",
       "upload": "Upload",
       "rename": "Rename",
       "state": "Change state",
@@ -71,6 +67,18 @@
     },
     "modal": {
       "close": "Close"
+    },
+    "modal_upload": {
+      "title": "Upload to \"{{title}}\"",
+      "upload_more_files": "Upload more files",
+      "upload_files": "Upload files",
+      "dropzone_label": "Drag and drop or <1><0>Browse</0></1>",
+      "confirm": "Upload",
+      "columns": {
+        "name": "Name",
+        "size": "Size",
+        "last_modified": "Last modified"
+      }
     },
     "modal_delete": {
       "single": { "title": "Delete \"{{item}}\"?" },
