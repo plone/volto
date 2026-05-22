@@ -97,7 +97,7 @@ export default function Login() {
     <main
       className={`
         grid min-h-screen
-        has-[>*:nth-child(2)]:grid-cols-[minmax(50%,1fr)_auto]
+        lg:has-[>*:nth-child(2)]:grid-cols-[minmax(50%,1fr)_auto]
       `}
     >
       <div className="flex h-full flex-col justify-center p-15">
@@ -175,7 +175,14 @@ export default function Login() {
           </div>
         </div>
       </div>
-      <SlotRenderer name="loginHero" content={content} location={location} />
+      <div
+        className={`
+          hidden
+          lg:block
+        `}
+      >
+        <SlotRenderer name="loginHero" content={content} location={location} />
+      </div>
     </main>
   );
 }
