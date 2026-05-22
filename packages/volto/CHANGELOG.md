@@ -17,6 +17,58 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.35.0 (2026-05-19)
+
+### Feature
+
+- Improve modal focus management and keyboard accessibility in `ContentTypes`: `ModalForm` now sets `role="dialog"`, traps focus, returns focus to the trigger on close, and announces open/close events via `aria-live`. @Wagner3UB [#8205](https://github.com/plone/volto/issues/8205)
+- Update pt_BR translations. @ericof 
+
+### Bugfix
+
+- Fix Toast component accessibility by adding a visually hidden, translated type label (Success, Error, Warning, Information) for screen readers. Fix date range validator error messages to display human-readable dates instead of raw ISO strings. @Wagner3UB [#8087](https://github.com/plone/volto/issues/8087)
+- Show Unauthorized page via SSR if an anonymous user accesses the user control panel. @wesleybl [#8184](https://github.com/plone/volto/issues/8184)
+
+### Internal
+
+- Fix Search Site DE translation. @Tishasoumya-02 
+- Update dependencies: `@loadable/component` 5.16.7, `@loadable/server`
+  5.16.7, `@loadable/babel-plugin` 5.16.1, `@types/loadable__component`
+  5.13.10, `html-webpack-plugin` 5.6.7, `mini-css-extract-plugin` 2.10.1,
+  `react-docgen-typescript-plugin` 1.0.8, `terser-webpack-plugin` 5.4.0.
+  @davisagli 
+- Update dependency: `lodash` 4.18.1. @davisagli 
+- Update dependency: diff 3.5.1. @davisagli 
+- Update dependency: express 4.22.1. @davisagli 
+
+## 18.34.0 (2026-05-13)
+
+### Feature
+
+- Synchronizes versions of Volto dependencies with other packages in the monorepo. @wesleybl [#7184](https://github.com/plone/volto/issues/7184)
+- Add `visually-hidden-volto` accessibility CSS class for hiding elements visually while keeping them accessible to screen readers, using a Volto-specific name to avoid conflicts with third-party CSS frameworks. @Wagner3UB [#8139](https://github.com/plone/volto/issues/8139)
+- Complete translations for es, gl @cyphra @erral @xulioxesus [#8162](https://github.com/plone/volto/issues/8162)
+
+### Bugfix
+
+- Respect required and fixed block restrictions in the sidebar Order tab by hiding delete and drag actions when blocked. @avoinea [#6481](https://github.com/plone/volto/issues/6481)
+- Fixed unauthorized access to control panels by adding proper authorization checks. @Shyam-Raghuwanshi [#7807](https://github.com/plone/volto/issues/7807)
+- Added required ARIA attributes to date and time inputs on `DatetimeWidget`. @Wagner3UB [#7980](https://github.com/plone/volto/issues/7980)
+- Don't show login link in the `Unauthorized` component if the user is already authenticated. @wesleybl [#8126](https://github.com/plone/volto/issues/8126)
+- Announce errors via `aria-live` and expose required and invalid states on text inputs to improve accessibility of form fields. @Wagner3UB [#8167](https://github.com/plone/volto/issues/8167)
+- Replace hard-coded color values with Semantic UI theme variables for input field to improve accessibility. @Wagner3UB [#8182](https://github.com/plone/volto/issues/8182)
+- Announce errors via `aria-live` and expose required and invalid states on URL inputs to improve accessibility of URL form fields. @Wagner3UB [#8201](https://github.com/plone/volto/issues/8201)
+- Fixed bug in razzle configuration and webpack-less-plugin that could generate wrong aliases and configurations for building the site. @pnicolli 
+
+### Internal
+
+- Removed {file}`tsconfig.json` root file and removed `tsconfig` package. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+- Remove `@plone/client` references in README. @wesleybl [#8180](https://github.com/plone/volto/issues/8180)
+- Update packages in pnpm-lock.yaml. @wesleybl [#8188](https://github.com/plone/volto/issues/8188)
+- Excludes badge links from readme-link-check. @wesleybl [#8189](https://github.com/plone/volto/issues/8189)
+- Fixes an intermittent error in the Cypress tests blocks-slate-backspace.js and blocks-slate-delete.js. @wesleybl [#8190](https://github.com/plone/volto/issues/8190)
+- Update dependency: serialize-javascript 7.0.5. @davisagli 
+
 ## 18.33.1 (2026-04-16)
 
 ### Bugfix

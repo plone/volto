@@ -670,6 +670,11 @@ msgstr "Aukeratu fitxategia"
 msgid "Clear"
 msgstr "Garbitu"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Garbitu URL"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -2642,7 +2647,12 @@ msgstr "Ados"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "7 biteko byte karaktereak bakarrik onartzen dira. Ezin dira hizki larriak edo karaktere bereziak erabili: <, >, &, #, /, ?, edo URLtan onartzen ez direnak. Ezin da karaktere hauekin hasi: _, aq_, @@, ++. Ezin da __-rekin amaitu. Ezin da request, contributors, ., ... edo "" izan. Ezin ditu lerro berriak izan."
+msgstr "7 biteko byte karaktereak bakarrik onartzen dira. Ezin dira hizki larriak edo karaktere bereziak erabili: <, >, &, #, /, ?, edo URLtan onartzen ez direnak. Ezin da karaktere hauekin hasi: _, aq_, @@, ++. Ezin da __-rekin amaitu. Ezin da request, contributors, ., ... edo \"\" izan. Ezin ditu lerro berriak izan."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Ireki URL arakatzailea"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2816,6 +2826,16 @@ msgstr "Plone Fundazioa"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Pop-up leihoa itxita."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Pop-up leihoa irekita: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4128,6 +4148,16 @@ msgstr "URLen kudeaketa"
 msgid "URL Management for {title}"
 msgstr "{title} orrialdearen URLen kudeaketa"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr "URLa ez da baliozkoa"
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URLa falta da"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4272,7 +4302,7 @@ msgstr "Erabili formulario hau erregela berria definitzeko"
 #. Default: "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
 #: components/manage/Controlpanels/Rules/Rules
 msgid "Use the form below to define, change or remove content rules. Rules will automatically perform actions on content when certain triggers take place. After defining rules, you may want to go to a folder to assign them, using the 'rules' item in the actions menu."
-msgstr "Erabili formulario hau erregela berriak sortu, aldatu edo ezabatzeko. Erregelek ekintza jakin batzuk gertatzean akzio jakin batzuk exekutatuko dituzte. Erregelak definitu ostean, erregelak zein tokitan esleitu aukeratu beharko duzu akzioen menuko "erregelak" erabiliz."
+msgstr "Erabili formulario hau erregela berriak sortu, aldatu edo ezabatzeko. Erregelek ekintza jakin batzuk gertatzean akzio jakin batzuk exekutatuko dituzte. Erregelak definitu ostean, erregelak zein tokitan esleitu aukeratu beharko duzu akzioen menuko \"erregelak\" erabiliz."
 
 #. Default: "Used for programmatic access to the fieldset."
 #: components/manage/Widgets/SchemaWidget
@@ -4631,7 +4661,7 @@ msgstr "Idatzi zure pasahitz berria. Gutxienez 8 karaktere."
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Idatzi zure erabiltzaile izena, "jgarmendia" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
+msgstr "Idatzi zure erabiltzaile izena, \"jgarmendia\" moduko zerbait. Ez da onartzen espaziorik edo karaktere berezirik. Erabiltzaile izenak eta pasahitzak letra larri eta xeheak bereizten dituzte. Hau da webgunera sartzeko erabiliko den izena."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -5272,6 +5302,26 @@ msgstr "Testua"
 #: config/Blocks
 msgid "title"
 msgstr "Izenburua"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Errorea"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informazioa"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Arrakasta"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Abisua"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
