@@ -1,4 +1,4 @@
-import voltoHeroSvg from '../../static/volto-hero.svg?url';
+import voltoHeroSvg from '../../static/volto-hero.svg';
 
 const LoginHero = () => {
   return (
