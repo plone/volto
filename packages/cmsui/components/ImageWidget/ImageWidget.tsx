@@ -389,7 +389,7 @@ function ImageInputBase({
           <ObjectBrowserProvider
             config={{
               mode: objectBrowserMode,
-              selectedAttrs: ['@id', 'title'],
+              selectedItemAttrs: ['@id', 'title'],
               onChange: onSelectInternalImage,
               initialPath: resolvedCurrentPath,
               title: 'Pick an existing image',
