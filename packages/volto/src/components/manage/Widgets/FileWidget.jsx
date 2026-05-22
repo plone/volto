@@ -183,11 +183,12 @@ const FileWidget = (props) => {
     intl.formatMessage(messages.dragAndDropActionA11y), // Interaction instructions
     props.required &&
       `${props.title}: ${intl.formatMessage(messages.requiredField)}`, // Required field status
-    props.error?.length && props.error.join(' '), // Validation error messages
     value?.filename, // Current file name if a file is uploaded
   ]
     .filter(Boolean)
-    .join(' ');
+    .join('. ');
+
+  const errorTextA11y = props.error?.length ? props.error.join('. ') : null;
 
   return (
     <FormFieldWrapper {...props}>
@@ -245,6 +246,11 @@ const FileWidget = (props) => {
             <span id={`field-${id}-status`} className="visually-hidden">
               {statusTextA11y}
             </span>
+            {errorTextA11y && (
+              <span role="alert" className="visually-hidden">
+                {errorTextA11y}
+              </span>
+            )}
             <input
               {...getInputProps({
                 type: 'file',
