@@ -202,8 +202,4 @@ export const widgetTailwindClasses = {
   fieldGroupComponent:
     'flex items-center border-0 h-auto gap-2 px-4 py-2 hover:bg-quanta-snow',
   labelComponent: 'basis-1/5 text-base',
-  selectButton:
-    'pressed:bg-transparent flex items-center rounded-[4px]! border-[1px] focus:bg-transparent hover:cursor-pointer',
-  selectPopover: 'bg-background min-w-[var(--trigger-width)] border-[1px]',
-  listBoxItem: 'hover:bg-muted-foreground/60 px-3 py-2 hover:cursor-pointer',
 };
