@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-27T19:30:59.079Z\n"
-"PO-Revision-Date: 2021-09-08 20:50+0900\n"
-"Last-Translator: Manabu TERADA <terada@cmscom.jp>\n"
+"PO-Revision-Date: 2026-05-10 16:04+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: ja\n"
-"Language-Team: Plone Japanese Team <https://github.com/plonejp>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/plone/volto-main/ja/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: ja\n"
 "Language-Name: Japanese\n"
 "Preferred-Encodings: utf-8\n"
@@ -1685,6 +1686,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "テーブルのセル幅を固定"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "フォーカスする"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2366,6 +2372,16 @@ msgstr ""
 #. Default: "Membership updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
+msgstr ""
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
 msgstr ""
 
 #. Default: "Message"

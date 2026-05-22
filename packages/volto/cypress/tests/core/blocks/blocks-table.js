@@ -119,9 +119,7 @@ describe('Table Block Tests', () => {
       .should('be.visible')
       .and('not.be.disabled');
 
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click({
-      waitForAnimations: false,
-    });
+    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
 
     // without the second click the test fails. so this makes the test green.
     cy.get(

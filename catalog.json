@@ -32,5 +32,5 @@
   "vitest": "^3.2.4",
   "wait-on": "^9.0.4",
   "webpack": "5.105.4",
-  "webpack-dev-server": "^5.2.3"
+  "webpack-dev-server": "^5.2.4"
 }
