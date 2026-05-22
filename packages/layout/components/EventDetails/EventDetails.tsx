@@ -1,5 +1,4 @@
 import EventDate from '../EventDate/EventDate';
-import { flattenToAppURL } from '@plone/helpers';
 import { Link } from '@plone/components/quanta';
 import * as RRuleLib from 'rrule';
 import type * as RRuleTypes from 'rrule';
@@ -7,6 +6,7 @@ import type { EventCT, RootData } from '@plone/types';
 import { getDate } from '../../helpers';
 import Calendar from '@plone/components/icons/calendar.svg?react';
 import { useTranslation } from 'react-i18next';
+import styles from './EventDetails.module.css';
 
 interface EventDetailsProps {
   data?: RootData<EventCT>;
@@ -26,7 +26,7 @@ export default function EventDetails({ data }: EventDetailsProps) {
   const { content, locale } = data;
 
   return (
-    <aside className="segment">
+    <aside className={styles['event-details']}>
       <dl>
         {content.subjects?.length > 0 && (
           <>
@@ -108,7 +108,7 @@ export default function EventDetails({ data }: EventDetailsProps) {
       <span className="download-event">
         <Calendar />
         <Link
-          href={`${flattenToAppURL(content['@id'])}/ics_view`}
+          href={`${content['@id']}/ics_view`}
           target="_blank"
           rel="noreferrer"
         >

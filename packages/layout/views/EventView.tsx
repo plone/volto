@@ -4,9 +4,9 @@ import type { RootLoader } from 'seven/app/root';
 import RenderBlocks from '../blocks/RenderBlocks';
 import EventDetails from '../components/EventDetails/EventDetails';
 import config from '@plone/registry';
-import '../styles/views/event.css';
 import type { EventCT, RootData } from '@plone/types';
 import { Container } from '@plone/components';
+import styles from './EventView.module.css';
 
 export default function EventView() {
   const rootData = useRouteLoaderData<RootLoader>('root') as RootData<EventCT>;
@@ -19,44 +19,24 @@ export default function EventView() {
   const hasBlocks = hasBlocksData(content);
 
   return (
-    <Container width="default" className="event-view">
-      {hasBlocks && (
-        <>
-          <div className="title">
-            <RenderBlocks
-              content={{
-                ...content,
-                blocks_layout: {
-                  items: content.blocks_layout.items.slice(0, 1),
-                },
-              }}
-              blocksConfig={config.blocks.blocksConfig}
-              pathname="/"
-            />
-          </div>
-          <EventDetails data={rootData} />
-          <div className="content">
-            <RenderBlocks
-              content={{
-                ...content,
-                blocks_layout: {
-                  items: content.blocks_layout.items.slice(1),
-                },
-              }}
-              blocksConfig={config.blocks.blocksConfig}
-              pathname="/"
-            />
-          </div>
-        </>
-      )}
-      {!hasBlocks && (
-        <>
-          <h1 className="documentFirstHeading">{content.title}</h1>
-          {Boolean(content.description) && (
-            <p className="documentDescription">{content.description}</p>
-          )}
-        </>
-      )}
+    <Container width="default" className={styles['event-view']}>
+      <div className="content">
+        {hasBlocks ? (
+          <RenderBlocks
+            content={content}
+            blocksConfig={config.blocks.blocksConfig}
+            pathname="/"
+          />
+        ) : (
+          <>
+            <h1 className="documentFirstHeading">{content.title}</h1>
+            {Boolean(content.description) && (
+              <p className="documentDescription">{content.description}</p>
+            )}
+          </>
+        )}
+      </div>
+      <EventDetails data={rootData} />
     </Container>
   );
 }

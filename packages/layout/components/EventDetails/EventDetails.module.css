@@ -1,23 +1,8 @@
-.event-view {
-  display: grid;
-  grid-template-areas:
-    'title aside'
-    'content aside';
-  grid-template-columns: 70% 30%;
-
-  .title {
-    grid-area: title;
-  }
-
-  .content {
-    grid-area: content;
-  }
-
-  aside {
+@layer custom {
+  .event-details {
     padding: 1rem;
     border: 1px solid lightgray;
     box-shadow: 0 1px 2px 0 lightgray;
-    grid-area: aside;
 
     dt {
       display: block;
@@ -31,7 +16,7 @@
       margin-bottom: 1rem;
     }
 
-    .download-event {
+    :global(.download-event) {
       display: flex;
       flex-direction: row;
       align-content: center;
@@ -42,13 +27,5 @@
         margin-left: 4px;
       }
     }
-  }
-
-  @media (max-width: 768px) {
-    margin-right: 1rem;
-    margin-left: 1rem;
-
-    grid-template-areas: 'title' 'aside' 'content';
-    grid-template-columns: 1fr;
   }
 }
