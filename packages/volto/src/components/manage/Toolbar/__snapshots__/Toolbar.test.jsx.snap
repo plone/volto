@@ -6,6 +6,7 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
     aria-atomic="true"
     aria-live="assertive"
     className="visually-hidden-volto"
+    role="status"
   />,
   <div
     className="toolbar-content"
@@ -215,6 +216,7 @@ exports[`Toolbar > renders the Toolbar component with lock 1`] = `
     aria-atomic="true"
     aria-live="assertive"
     className="visually-hidden-volto"
+    role="status"
   />,
   <div
     className="toolbar-content"
