@@ -432,6 +432,7 @@ class Toolbar extends Component {
           <span
             aria-live="assertive"
             aria-atomic="true"
+            role="status"
             className="visually-hidden-volto"
             ref={this.announceRef}
           />
