@@ -1253,20 +1253,16 @@ msgstr "Scarica {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trascina in quest'area i file dal tuo computer o clicca su “Sfoglia”."
 
-#. Default: "Drop a file here or click to replace the current one"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to replace the current one"
-msgstr "Trascina un file qui o fai clic per sostituire quello corrente"
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Trascina un file qui o clicca per sostituire il file esistente"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
 msgstr "Trascina un file qui o fai clic per caricarlo"
-
-#. Default: "Drop file here to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Rilascia un file qui per sostituire quello esistente"
 
 #. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget

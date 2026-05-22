@@ -1253,20 +1253,16 @@ msgstr "{filename} डाउनलोड करें"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "अपने कंप्यूटर से फ़ाइलें इस क्षेत्र पर खींचें और छोड़ें या 'ब्राउज़' बटन पर क्लिक करें।"
 
-#. Default: "Drop a file here or click to replace the current one"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to replace the current one"
-msgstr "यहाँ फ़ाइल खींचें या मौजूदा फ़ाइल बदलने के लिए क्लिक करें"
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "यहाँ एक फ़ाइल छोड़ें या मौजूदा फ़ाइल को बदलने के लिए क्लिक करें"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
 msgstr "यहाँ फ़ाइल खींचें या अपलोड करने के लिए क्लिक करें"
-
-#. Default: "Drop file here to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "मौजूदा फ़ाइल को बदलने के लिए यहाँ फ़ाइल ड्रॉप करें"
 
 #. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget

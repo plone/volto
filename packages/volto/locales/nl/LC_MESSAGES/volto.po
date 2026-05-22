@@ -1253,20 +1253,16 @@ msgstr "{filename} downloaden"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Sleep en zet bestanden neer van je computer naar dit gebied of klik op de “Bladeren” knop."
 
-#. Default: "Drop a file here or click to replace the current one"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to replace the current one"
-msgstr "Sleep een bestand hierheen of klik om het huidige te vervangen"
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Zet een bestand hier neer of klik om het bestaande bestand te vervangen"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
 msgstr "Sleep een bestand hierheen of klik om te uploaden"
-
-#. Default: "Drop file here to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Zet bestand hier neer om het bestaande bestand te vervangen"
 
 #. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget

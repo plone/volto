@@ -1253,20 +1253,16 @@ msgstr "{filename} பதிவிறக்கம் செய்யவும்
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "உங்கள் கணினியிலிருந்து கோப்புகளை இந்த பகுதியில் இழுத்து விடுங்கள் அல்லது “உலாவு” பொத்தானைக் சொடுக்கு செய்க."
 
-#. Default: "Drop a file here or click to replace the current one"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to replace the current one"
-msgstr "இங்கே ஒரு கோப்பை இழுக்கவும் அல்லது தற்போதையதை மாற்ற கிளிக் செய்யவும்"
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "இங்கே ஒரு கோப்பை இழுத்து விடுங்கள் அல்லது தற்போதுள்ள கோப்பை மாற்ற கிளிக் செய்யுங்கள்"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
 msgstr "இங்கே ஒரு கோப்பை இழுக்கவும் அல்லது பதிவேற்ற கிளிக் செய்யவும்"
-
-#. Default: "Drop file here to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "இருக்கும் கோப்பை மாற்ற கோப்பை இங்கே விடுங்கள்"
 
 #. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget

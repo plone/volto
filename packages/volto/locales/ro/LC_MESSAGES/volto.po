@@ -1253,20 +1253,16 @@ msgstr "Descarcă {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
-#. Default: "Drop a file here or click to replace the current one"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to replace the current one"
-msgstr "Trageți un fișier aici sau faceți clic pentru a-l înlocui pe cel curent"
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Glisați un fișier aici sau faceți clic pentru a înlocui fișierul existent"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
 msgstr "Trageți un fișier aici sau faceți clic pentru încărcare"
-
-#. Default: "Drop file here to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Trageți fișierul aici pentru a înlocui fișierul existent"
 
 #. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget

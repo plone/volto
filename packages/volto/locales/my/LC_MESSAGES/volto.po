@@ -1253,20 +1253,16 @@ msgstr "{filename} ကို ဒေါင်းလုဒ်လုပ်ပါ"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the current one"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to replace the current one"
-msgstr "ဖိုင်တစ်ခုကို ဤနေရာတွင် ချပစ်ပါ သို့မဟုတ် လက်ရှိဖိုင်ကို အစားထိုးရန် နှိပ်ပါ"
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "ဖိုင်တစ်ခုကို ဤနေရာတွင် ချပါ သို့မဟုတ် ရှိပြီးသားဖိုင်ကို အစားထိုးရန် နှိပ်ပါ"
 
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
 msgid "Drop a file here or click to upload"
 msgstr "ဖိုင်တစ်ခုကို ဤနေရာတွင် ချပစ်ပါ သို့မဟုတ် အပ်လုဒ်တင်ရန် နှိပ်ပါ"
-
-#. Default: "Drop file here to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr ""
 
 #. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
