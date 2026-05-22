@@ -1,0 +1,76 @@
+{
+  "cmsui": {
+    "add": "Hinzufügen",
+    "edit": "Bearbeiten",
+    "save": "Speichern",
+    "controlpanel": "Kontrollzentrum",
+    "objectbrowserwidget": {
+      "openDialog": "Inhalt auswählen",
+      "dialogTitle": "Inhalt auswählen",
+      "closeDialog": "Auswahl schließen",
+      "openSearch": "Inhalt suchen",
+      "closeSearch": "Suche schließen",
+      "searchPlaceholder": "Suche Inhalte...",
+      "loading": "Lade...",
+      "routeannouncer": "Aktueller Pfad: {{route}}",
+      "noResults": "Keine Inhalte gefunden",
+      "searchResults": "Suchergebnisse: {{count}} Inhalte",
+      "searchResultsFor": "Suchergebnisse für \"{{searchTerm}}\": {{count}} ",
+      "goback": "Zurück",
+      "changeViewMode": "Zur {{mode}} umschalten",
+      "currentItems": "Aktuelle Inhalte",
+      "home": "Startseite",
+      "item": "{{title}}",
+      "itemSelected": "ausgewählt",
+      "itemNotSelectable": "nicht auswählbar",
+      "itemNavigateTo": "Zu {{title}} navigieren",
+      "canNavigateTo": "Ordnerähnlicher Inhalt",
+      "workflowStates": {
+        "private": "Privat",
+        "pending": "Ausstehend",
+        "published": "Veröffentlicht"
+      },
+      "viewModes": {
+        "list": "Listenansicht",
+        "grid": "Kachelansicht"
+      }
+    },
+    "panelgroups": {
+      "general": "Allgemein",
+      "content": "Inhalt",
+      "security": "Sicherheit",
+      "users": "Benutzer",
+      "site": "Seitenkonfiguration",
+      "addons": "Erweiterungen",
+      "maintenance": "Wartung"
+    },
+    "paneltitles": {
+      "addons": "Erweiterungen",
+      "database": "Datenbank",
+      "contentRules": "Inhaltsregeln",
+      "undo": "Rückgängig machen",
+      "urlmanagement": "URL Verwaltung",
+      "relations": "Relationen",
+      "moderatecomments": "Kommentare moderieren",
+      "users": "Benutzer",
+      "groupMembership": "Gruppenmitgliedschaft",
+      "groups": "Gruppen"
+    },
+    "blocksEditor": {
+      "blocksTab": "Blöcke",
+      "contentTab": "Inhalt"
+    },
+    "sidebar": {
+      "label": "Seitenleiste"
+    },
+    "auth": {
+      "username": "Benutzername",
+      "password": "Passwort",
+      "signIn": "Anmelden",
+      "signUp": "Registrieren",
+      "signInTo": "Bei {{site}} anmelden",
+      "forgotPassword": "Passwort vergessen? <a>Neues Passwort anfordern</a>",
+      "returnToHome": "Zur Startseite zurückkehren"
+    }
+  }
+}

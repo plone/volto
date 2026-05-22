@@ -62,6 +62,15 @@
     },
     "sidebar": {
       "label": "Sidebar"
+    },
+    "auth": {
+      "username": "username",
+      "password": "password",
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "signInTo": "Sign in to {{site}}",
+      "forgotPassword": "Forgot password? Request a <a>new password</a>",
+      "returnToHome": "Return to home page"
     }
   }
 }

@@ -52,6 +52,15 @@
     },
     "sidebar": {
       "label": "Barra laterale destra"
+    },
+    "auth": {
+      "username": "nome utente",
+      "password": "password",
+      "signIn": "Accedi",
+      "signUp": "Registrati",
+      "signInTo": "Accedi a {{site}}",
+      "forgotPassword": "Password dimenticata? <a>Richiedi una nuova password</a>",
+      "returnToHome": "Torna alla home page"
     }
   }
 }
