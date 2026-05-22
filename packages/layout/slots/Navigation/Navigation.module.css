@@ -1,9 +1,11 @@
 @layer custom {
   .navigation {
-    display: flex;
+    display: inline-flex;
     flex: 3.5 1 0;
+    align-items: center;
     align-self: center;
     justify-content: center;
+    justify-self: center;
 
     ul {
       display: flex;
