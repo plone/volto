@@ -65,6 +65,7 @@ main {
   }
 
   .documentDescription {
+    margin-bottom: 1rem;
     color: var(--text-color-base);
   }
 }
