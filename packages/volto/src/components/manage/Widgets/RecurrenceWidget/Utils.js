@@ -1,7 +1,5 @@
-import pkg from 'rrule';
+import { RRule } from 'rrule';
 import { defineMessages } from 'react-intl';
-
-const { RRule } = pkg;
 
 export const Days = {
   MO: RRule.MO,
