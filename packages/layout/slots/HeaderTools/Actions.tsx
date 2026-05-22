@@ -4,9 +4,7 @@ import { useTranslation } from 'react-i18next';
 const Actions = () => {
   const { t } = useTranslation();
 
-  return (
-    <Link href="/logout">{t('layout.slots.tools.siteActions.logout')}</Link>
-  );
+  return <Link href="/logout">{t('layout.slots.tools.actions.logout')}</Link>;
 };
 
 export default Actions;

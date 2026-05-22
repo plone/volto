@@ -5,7 +5,7 @@
         "languageSwitcher": {
           "switchTo": "Switch to {{ lang }}"
         },
-        "siteActions": {
+        "actions": {
           "logout": "Log Out"
         },
         "anonymousTools": {
