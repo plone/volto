@@ -65,7 +65,7 @@ export default function install(config: ConfigType) {
   });
 
   config.registerSlotComponent({
-    name: 'Language Switcher',
+    name: 'LanguageSwitcher',
     slot: 'languageSwitcher',
     component: LanguageSwitcher,
   });
