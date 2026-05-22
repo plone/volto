@@ -1,15 +1,7 @@
 import type { Updater } from '@tanstack/react-form';
-import {
-  ListBox,
-  ListBoxItem,
-  Popover,
-  Select,
-  SelectValue,
-} from 'react-aria-components';
 import { useTranslation } from 'react-i18next';
-import { getLocalizedMonth, months, widgetTailwindClasses } from '../utils';
-import { Button } from '@plone/components/quanta';
-import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
+import { Select } from '@plone/components/quanta';
+import { getMonthOptions } from '../utils';
 
 interface MonthOfTheYearFieldProps {
   onChange: (updater: Updater<number>) => void;
@@ -22,31 +14,15 @@ const MonthOfTheYearField = ({
 }: MonthOfTheYearFieldProps) => {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
+  const months = getMonthOptions(currentLocale);
   return (
     <Select
-      onSelectionChange={(value) =>
+      onChange={(value) =>
         value && typeof value === 'number' && onChange(value)
       }
-      defaultSelectedKey={defaultValue}
-    >
-      <Button className={widgetTailwindClasses.selectButton}>
-        <SelectValue className="text-[1rem]" defaultValue={1} />
-        <ChevronDown />
-      </Button>
-      <Popover className={widgetTailwindClasses.selectPopover}>
-        <ListBox>
-          {months.map((m) => (
-            <ListBoxItem
-              key={m}
-              id={m}
-              className={widgetTailwindClasses.listBoxItem}
-            >
-              {getLocalizedMonth(m, currentLocale, 'long')}
-            </ListBoxItem>
-          ))}
-        </ListBox>
-      </Popover>
-    </Select>
+      defaultValue={defaultValue}
+      items={months}
+    />
   );
 };
 

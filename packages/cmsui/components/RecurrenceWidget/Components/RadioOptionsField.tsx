@@ -1,6 +1,5 @@
 import type { Updater } from '@tanstack/react-form';
-import { Label } from '../../Field/Field';
-import { Radio, RadioGroup } from '@plone/components/quanta';
+import { Radio, RadioGroup, Label } from '@plone/components/quanta';
 import { widgetTailwindClasses } from '../utils';
 
 interface RadioOptionsFieldProps<T extends string> {

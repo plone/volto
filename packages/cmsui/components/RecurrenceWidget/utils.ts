@@ -38,6 +38,13 @@ export const OPTIONS: { frequences: Record<Frequency, FrequencyOption> } = {
   },
 };
 
+export function getSelectOptions(t: (key: string) => string) {
+  return Object.entries(OPTIONS.frequences).map(([key]) => ({
+    value: key as Frequency,
+    label: t(`cmsui.recurrence.options.${key as Frequency}`),
+  }));
+}
+
 export const Days = {
   MO: RRule.MO,
   TU: RRule.TU,
@@ -48,10 +55,28 @@ export const Days = {
   SU: RRule.SU,
 };
 
+export const getDaysOptions = (
+  currentLocale: string,
+): { value: number; label: string }[] => {
+  return (Object.keys(Days) as Array<keyof typeof Days>).map((d) => ({
+    value: Days[d].weekday,
+    label: getLocalizedWeekday(Days[d].weekday, currentLocale, 'long'),
+  }));
+};
+
 export const WEEKLY_DAYS = [Days.MO, Days.TU, Days.WE, Days.TH, Days.FR];
 export const MONDAYFRIDAY_DAYS = [Days.MO, Days.FR];
 
 export const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+export const getMonthOptions = (
+  currentLocale: string,
+): { value: number; label: string }[] => {
+  return months.map((m) => ({
+    value: m,
+    label: getLocalizedMonth(m, currentLocale, 'long'),
+  }));
+};
 
 export const ORDINAL_NUMBERS = {
   1: 'first',
@@ -59,6 +84,17 @@ export const ORDINAL_NUMBERS = {
   3: 'third',
   4: 'fourth',
   '-1': 'last',
+};
+
+export const getOrdinalNumbersOptions = (
+  t: (key: string) => string,
+): { value: number; label: string }[] => {
+  return (
+    Object.keys(ORDINAL_NUMBERS) as Array<keyof typeof ORDINAL_NUMBERS>
+  ).map((numb) => ({
+    value: Number(numb),
+    label: getLocalizedOrdinalNumber(ORDINAL_NUMBERS[numb], t),
+  }));
 };
 
 export function getRruleText(rrule: RRuleType | null) {
@@ -162,9 +198,10 @@ export function recurrenceEndOptions(
 }
 
 export const widgetTailwindClasses = {
-  fieldComponent: 'flex items-center ',
-  fieldGroupComponent: 'flex items-center border-0 h-auto gap-2 px-4 py-2',
-  labelComponent: 'basis-1/5 text-[1rem]',
+  fieldComponent: 'flex items-center flex-row gap-0',
+  fieldGroupComponent:
+    'flex items-center border-0 h-auto gap-2 px-4 py-2 hover:bg-quanta-snow',
+  labelComponent: 'basis-1/5 text-base',
   selectButton:
     'pressed:bg-transparent flex items-center rounded-[4px]! border-[1px] focus:bg-transparent hover:cursor-pointer',
   selectPopover: 'bg-background min-w-[var(--trigger-width)] border-[1px]',

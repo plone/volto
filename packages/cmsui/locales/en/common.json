@@ -44,7 +44,7 @@
       "until_description": "on June 15th, 2050",
       "count_after": "After",
       "count_occurrences": "occurrence(s)",
-      "infinite_occurences": "Set to 0 or leave empty for infinite occurrences",
+      "infinite_occurrences": "Set to 0 or leave empty for infinite occurrences",
       "selected_dates": "Selected Dates",
       "no_occurrences": "No occurences available",
       "start_recurrence": "Start of recurrence",

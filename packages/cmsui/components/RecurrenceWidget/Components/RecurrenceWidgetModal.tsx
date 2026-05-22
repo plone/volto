@@ -1,19 +1,8 @@
-import { Button, FieldGroup, Label, Popover } from '@plone/components/quanta';
-import {
-  Dialog,
-  Heading,
-  Modal,
-  ModalOverlay,
-  SelectValue,
-  Select,
-  ListBox,
-  ListBoxItem,
-} from 'react-aria-components';
+import { Button, FieldGroup, Select } from '@plone/components/quanta';
+import { Dialog, Heading, Modal, ModalOverlay } from 'react-aria-components';
 import CloseIcon from '@plone/components/icons/close.svg?react';
 import CheckboxIcon from '@plone/components/icons/checkbox.svg?react';
-import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
 import { useTranslation } from 'react-i18next';
-// import { useAppForm } from '../../Form/Form';
 import { useEffect, useMemo, useState } from 'react';
 import { useAtomValue } from 'jotai';
 import { formAtom } from '../../../routes/atoms';
@@ -22,6 +11,7 @@ import {
   byYearOptions,
   Days,
   getRruleText,
+  getSelectOptions,
   getWeekday,
   isFrequency,
   MONDAYFRIDAY_DAYS,
@@ -105,6 +95,7 @@ const RecurrenceWidgetModal = ({
   setIsModalOpen,
 }: RecurrenceWidgetModalProps) => {
   const { t } = useTranslation();
+  const selectOptions = getSelectOptions(t);
 
   const eventFormContext = useAtomValue(formAtom);
 
@@ -335,44 +326,19 @@ const RecurrenceWidgetModal = ({
                   children={(field) => (
                     <>
                       <Select
-                        onSelectionChange={(value) => {
+                        onChange={(value) => {
                           if (formValues !== defaultValues) resetForm();
                           if (value && isFrequency(value))
                             field.handleChange(value);
                         }}
                         className={widgetTailwindClasses.fieldComponent}
-                        defaultSelectedKey={Object.keys(
-                          OPTIONS.frequences,
-                        ).find((el) => el === formValues.freq)}
-                      >
-                        <Label className={widgetTailwindClasses.labelComponent}>
-                          {t('cmsui.recurrence.repeat')}
-                        </Label>
-                        <Button className={widgetTailwindClasses.selectButton}>
-                          <SelectValue
-                            className="text-[1rem]"
-                            defaultValue={formValues.freq}
-                          />
-                          <ChevronDown />
-                        </Button>
-                        <Popover
-                          className={widgetTailwindClasses.selectPopover}
-                        >
-                          <ListBox>
-                            {Object.keys(OPTIONS.frequences).map(
-                              (el, index) => (
-                                <ListBoxItem
-                                  key={el}
-                                  id={el}
-                                  className={widgetTailwindClasses.listBoxItem}
-                                >
-                                  {t(`cmsui.recurrence.options.${el}`)}
-                                </ListBoxItem>
-                              ),
-                            )}
-                          </ListBox>
-                        </Popover>
-                      </Select>
+                        defaultValue={Object.keys(OPTIONS.frequences).find(
+                          (el) => el === formValues.freq,
+                        )}
+                        label={t('cmsui.recurrence.repeat')}
+                        labelClassnames={widgetTailwindClasses.labelComponent}
+                        items={selectOptions}
+                      />
                     </>
                   )}
                 />

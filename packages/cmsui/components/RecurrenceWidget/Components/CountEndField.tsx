@@ -1,8 +1,7 @@
 import type { Updater } from '@tanstack/react-form';
 import { useTranslation } from 'react-i18next';
-import { TextField } from '../../TextField/TextField';
-import { Input } from '../../Field/Field';
-import { Label } from 'react-aria-components';
+import { TextField, Label, Input } from '@plone/components/quanta';
+// import { Input } from '../../Field/Field';
 
 interface CountEndFieldProps {
   onChange: (updater: Updater<number>) => void;
@@ -12,7 +11,7 @@ const CountEndField = ({ onChange }: CountEndFieldProps) => {
   const { t } = useTranslation();
   return (
     <div className="flex flex-wrap items-center gap-x-6">
-      <Label>{t('cmsui.recurrence.count_after')}</Label>
+      <Label className="text-base">{t('cmsui.recurrence.count_after')}</Label>
       <TextField
         inputMode="numeric"
         type="number"
@@ -23,7 +22,9 @@ const CountEndField = ({ onChange }: CountEndFieldProps) => {
       >
         <Input />
       </TextField>
-      <Label>{t('cmsui.recurrence.count_occurrences')}</Label>
+      <Label className="text-base">
+        {t('cmsui.recurrence.count_occurrences')}
+      </Label>
       <div className="mt-2 basis-full text-sm text-muted-foreground">
         {t('cmsui.recurrence.infinite_occurrences')}
       </div>

@@ -51,7 +51,7 @@ const triggerStyles = tv({
 });
 
 function DefaultSelectItem(item: SelectItemObject) {
-  return <SelectItem id={item.label}>{item.value}</SelectItem>;
+  return <SelectItem id={item.value}>{item.label}</SelectItem>;
 }
 
 export function Select<
@@ -63,6 +63,7 @@ export function Select<
   errorMessage,
   children,
   items,
+  labelClassnames,
   ...props
 }: SelectProps<T, M>) {
   return (
@@ -75,7 +76,7 @@ export function Select<
     >
       {({ isOpen }) => (
         <>
-          {label && <Label>{label}</Label>}
+          {label && <Label className={labelClassnames}>{label}</Label>}
           <Button className={triggerStyles}>
             <SelectValue
               className={`

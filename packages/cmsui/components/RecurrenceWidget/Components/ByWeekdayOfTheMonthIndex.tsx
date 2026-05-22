@@ -1,20 +1,7 @@
-import { Button } from '@plone/components/quanta';
+import { Select } from '@plone/components/quanta';
 import type { Updater } from '@tanstack/react-form';
 
-import {
-  ListBox,
-  ListBoxItem,
-  Popover,
-  Select,
-  SelectValue,
-} from 'react-aria-components';
-import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
-
-import {
-  getLocalizedOrdinalNumber,
-  ORDINAL_NUMBERS,
-  widgetTailwindClasses,
-} from '../utils';
+import { getOrdinalNumbersOptions, ORDINAL_NUMBERS } from '../utils';
 import { useTranslation } from 'react-i18next';
 
 interface ByWeekdayOfTheMonthIndexProps {
@@ -29,32 +16,13 @@ const ByWeekdayOfTheMonthIndex = ({
   const { t } = useTranslation();
   return (
     <Select
-      onSelectionChange={(value) => {
+      onChange={(value) => {
         const indexValue = Number(value);
         onChange(indexValue);
       }}
-      defaultSelectedKey={Number(defaultValue)}
-    >
-      <Button className={widgetTailwindClasses.selectButton}>
-        <SelectValue className="text-[1rem]" />
-        <ChevronDown />
-      </Button>
-      <Popover className={widgetTailwindClasses.selectPopover}>
-        <ListBox>
-          {(
-            Object.keys(ORDINAL_NUMBERS) as Array<keyof typeof ORDINAL_NUMBERS>
-          ).map((numb) => (
-            <ListBoxItem
-              key={numb}
-              id={Number(numb)}
-              className={widgetTailwindClasses.listBoxItem}
-            >
-              {getLocalizedOrdinalNumber(ORDINAL_NUMBERS[numb], t)}
-            </ListBoxItem>
-          ))}
-        </ListBox>
-      </Popover>
-    </Select>
+      defaultValue={Number(defaultValue)}
+      items={getOrdinalNumbersOptions(t)}
+    />
   );
 };
 

@@ -1,5 +1,4 @@
-import { Checkbox, CheckboxGroup } from 'react-aria-components';
-import { Label } from '../../Field/Field';
+import { CheckboxGroup, Checkbox, Label } from '@plone/components/quanta';
 import { Days, getLocalizedWeekday, widgetTailwindClasses } from '../utils';
 import type { Updater } from '@tanstack/react-form';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +27,9 @@ const ByDayField = ({ label, onChange, defaultValue }: ByDayFieldProps) => {
             value={d}
             className={twMerge(
               `
-                flex h-12.5 w-12.5 items-center justify-center border-e border-t border-b
+                flex h-12.5 w-12.5 items-center justify-center border-e border-t border-b text-base
+                text-black
+                *:hidden
                 hover:cursor-pointer hover:bg-muted-foreground/20
                 focus:outline-2 focus:outline-quanta-cobalt
                 data-[selected=true]:bg-muted-foreground/50

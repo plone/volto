@@ -1,7 +1,6 @@
 import { Group } from 'react-aria-components';
-import { Input, Label } from '../../Field/Field';
+import { TextField, Input, Label } from '@plone/components/quanta';
 import type { Updater } from '@tanstack/react-form';
-import { TextField } from '../../TextField/TextField';
 import { widgetTailwindClasses } from '../utils';
 
 interface IntervalFieldProps {

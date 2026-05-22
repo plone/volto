@@ -1,15 +1,7 @@
-import { Button } from '@plone/components/quanta';
-import {
-  ListBox,
-  ListBoxItem,
-  Popover,
-  Select,
-  SelectValue,
-} from 'react-aria-components';
-import { getLocalizedWeekday, Days, widgetTailwindClasses } from '../utils';
+import { Select } from '@plone/components/quanta';
+import { getDaysOptions } from '../utils';
 import { useTranslation } from 'react-i18next';
 import type { Updater } from '@tanstack/react-form';
-import ChevronDown from '@plone/components/icons/chevron-down.svg?react';
 
 interface ByWeekdayOfTheMonth {
   onChange: (updater: Updater<number>) => void;
@@ -22,33 +14,15 @@ const ByWeekdayOfTheMonth = ({
 }: ByWeekdayOfTheMonth) => {
   const { i18n } = useTranslation();
   const currentLocale = i18n.language;
+  const daysOptions = getDaysOptions(currentLocale);
   return (
     <Select
       onChange={(value) =>
         value && typeof value === 'number' && onChange(value)
       }
       defaultValue={defaultValue}
-    >
-      <Button className={widgetTailwindClasses.selectButton}>
-        <SelectValue className="text-[1rem]" />
-        <ChevronDown />
-      </Button>
-      <Popover className={widgetTailwindClasses.selectPopover}>
-        <ListBox>
-          {(Object.keys(Days) as Array<keyof typeof Days>).map((d) => {
-            return (
-              <ListBoxItem
-                key={Days[d].weekday}
-                id={Days[d].weekday}
-                className={widgetTailwindClasses.listBoxItem}
-              >
-                {getLocalizedWeekday(Days[d].weekday, currentLocale, 'long')}
-              </ListBoxItem>
-            );
-          })}
-        </ListBox>
-      </Popover>
-    </Select>
+      items={daysOptions}
+    />
   );
 };
 
