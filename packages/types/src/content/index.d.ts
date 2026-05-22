@@ -1,6 +1,6 @@
 import type { Expanders, ContainedItem, Image, RelatedItem } from './common';
 import type { BlocksFormData } from '../blocks';
-import type { GetSiteResponse } from '../services';
+import { GetSiteResponse } from '../services';
 
 export interface Content {
   '@components': Expanders;
@@ -89,10 +89,12 @@ export type RootData<T extends Content = Content> =
       content: T;
       site: GetSiteResponse;
       locale: string;
+      isAuthenticated: boolean;
     }
   | undefined;
 
 // Content Types
+export * from './types/link';
 export * from './types/event';
 
 // Other

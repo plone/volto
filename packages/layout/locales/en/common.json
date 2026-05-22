@@ -18,6 +18,10 @@
       "label": "Toolbar"
     },
     "views": {
+      "link": {
+        "linkLabel": "The link address is:",
+        "externalLinkLabel": "The external link address is:"
+      },
       "event": {
         "what": "What",
         "when": "When",
