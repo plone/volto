@@ -68,7 +68,7 @@ const messages = defineMessages({
     defaultMessage: 'This field is required.',
   },
   downloadFile: {
-    id: 'field.file.downloadFile',
+    id: 'Download {filename}',
     defaultMessage: 'Download {filename}',
   },
 });
