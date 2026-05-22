@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import type { LinkCT, RootData } from '@plone/types';
 import { isInternalURL } from '@plone/helpers';
 import clsx from 'clsx';
-import '../styles/views/link.css';
 
 export default function LinkView() {
   const rootData = useRouteLoaderData<RootLoader>('root') as RootData<LinkCT>;
