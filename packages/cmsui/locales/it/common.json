@@ -4,6 +4,22 @@
     "edit": "Modifica",
     "save": "Salva",
     "controlpanel": "Pannello di controllo",
+    "errorRoutes": {
+      "forbidden": "Accesso negato",
+      "forbiddenDescription": "Ci scusiamo per l'inconveniente, ma non hai i permessi per questa risorsa",
+      "unauthorized": "Non autorizzato",
+      "unauthorizedLoggedIn": "Stai tentando di accedere a una risorsa protetta.",
+      "login": "Accedi",
+      "loginRequired": "Stai tentando di accedere a una risorsa protetta, per favore prima ",
+      "siteAdminstration": "Amministrazione del sito",
+      "thankyou": "Grazie!",
+      "contact": "Se sei certo di avere l'indirizzo web corretto ma stai riscontrando un errore, contatta ",
+      "connectionRefused": "Connessione rifiutata",
+      "connectionRefusedDescription": "Il backend non risponde, controlla di aver avviato Plone e verifica la variabile d'ambiente PLONE_API_PATH o l'impostazione apiPath nella configurazione del progetto.",
+      "connectionRefusedProduction": "Ci scusiamo per l'inconveniente, ma il backend del sito a cui stai accedendo non è disponibile in questo momento. Per favore, riprova più tardi",
+      "notFound": "Questa pagina sembra non esistere…",
+      "notFoundDescription": "Ci scusiamo per l'inconveniente, ma la pagina a cui stai tentando di accedere non esiste o è stata spostata. Controlla l'URL o torna alla homepage."
+    },
     "objectbrowserwidget": {
       "openDialog": "Seleziona contenuti",
       "dialogTitle": "Seleziona Contenuti",

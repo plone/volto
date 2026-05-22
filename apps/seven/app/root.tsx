@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from 'react';
-import { data, isRouteErrorResponse } from 'react-router';
+import { Container } from '@plone/components';
+import { data, isRouteErrorResponse, Links } from 'react-router';
 import { useChangeLanguage } from 'remix-i18next/react';
 import i18next from './i18next.server';
 import type { Route } from './+types/root';
@@ -16,7 +17,13 @@ import {
   ploneSiteContext,
   ploneUserContext,
 } from './middleware.server';
+import Forbidden from '@plone/cmsui/routes/forbidden';
+import Unauthorized from '@plone/cmsui/routes/unauthorized';
+import NotFound from '@plone/cmsui/routes/notfound';
+import ConnectionRefused from '@plone/cmsui/routes/connection-refused';
 import { getClearAuthCookieHeader } from '@plone/react-router';
+
+import stylesheet from 'seven/.plone/cmsui.css?url';
 
 export const middleware = [
   installServerMiddleware,
@@ -121,53 +128,68 @@ export function Layout({
 
 // ToDo: improve error page and error handling
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = 'Oops!';
+  const message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
 
+  let ErrorContent: React.ReactElement;
+
   if (isRouteErrorResponse(error)) {
     switch (error.status) {
-      case 404:
-        message = '404';
-        details = 'The requested page could not be found.';
+      case 403:
+        ErrorContent = <Forbidden />;
         break;
-      case 401:
-        message = '401';
-        details = 'You are not authorized to view this page.';
+      case 404:
+        ErrorContent = <NotFound />;
         break;
       case 500:
-        message = '500';
-        details =
-          'The server encountered an internal error. Did you start the backend?';
+      case 503:
+        ErrorContent = <ConnectionRefused />;
+        break;
+      case 401:
+        ErrorContent = <Unauthorized />;
         break;
       default:
-        message = 'Error';
-        details = error.statusText || details;
+        ErrorContent = (
+          <Container className="mx-20 my-16">
+            <h1 className="mb-4 text-2xl font-bold">{message}</h1>
+            <p className="mb-3 text-lg">{details}</p>
+          </Container>
+        );
         break;
     }
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
+    ErrorContent = (
+      <Container className="mx-20 my-16">
+        <h1 className="mb-4 text-2xl font-bold">{message}</h1>
+        <p className="mb-3 text-lg">{details}</p>
+        {stack && (
+          <pre className="w-full overflow-x-auto rounded bg-gray-100 p-4 text-sm text-red-600">
+            <code>{stack}</code>
+          </pre>
+        )}
+      </Container>
+    );
+  } else {
+    ErrorContent = (
+      <Container className="mx-20 my-16">
+        <h1 className="mb-4 text-2xl font-bold">{message}</h1>
+        <p className="mb-3 text-lg">{details}</p>
+      </Container>
+    );
   }
-
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="stylesheet" href={stylesheet} />
+        <Links />
       </head>
-      <body>
-        <main className="container mx-auto p-4 pt-16">
-          <h1>{message}</h1>
-          <p>{details}</p>
-          {stack && (
-            <pre className="w-full overflow-x-auto p-4">
-              <code>{stack}</code>
-            </pre>
-          )}
-        </main>
-      </body>
+      <body>{ErrorContent}</body>
     </html>
   );
 }

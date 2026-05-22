@@ -1,0 +1,1 @@
+Added ErrorBoundary component with tests to handle special routes (404, 403, 401, 500) and display appropriate error pages. @Tishasoumya-02

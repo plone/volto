@@ -1,0 +1,1 @@
+Added special error boundary routes. @Tishasoumya-02
