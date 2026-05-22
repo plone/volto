@@ -16,6 +16,12 @@
     },
     "toolbar": {
       "label": "Barra degli strumenti"
+    },
+    "views": {
+      "link": {
+        "linkLabel": "L'indirizzo del link è:",
+        "externalLinkLabel": "L'indirizzo del link esterno è:"
+      }
     }
   }
 }
