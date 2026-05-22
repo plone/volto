@@ -39,6 +39,10 @@ describe('UsersControlpanel', () => {
         locale: 'en',
         messages: {},
       },
+      router: {
+        location: { pathname: '/controlpanel/users' },
+      },
+      reduxAsyncConnect: {},
     });
     const { container } = render(
       <Provider store={store}>
@@ -85,6 +89,10 @@ describe('UsersControlpanel', () => {
         locale: 'en',
         messages: {},
       },
+      router: {
+        location: { pathname: '/controlpanel/users' },
+      },
+      reduxAsyncConnect: {},
     });
 
     render(

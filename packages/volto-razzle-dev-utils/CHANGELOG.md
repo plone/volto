@@ -8,6 +8,12 @@ https://6.docs.plone.org/contributing/index.html#change-log-entry
 
 <!-- towncrier release notes start -->
 
+## 1.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
 ## 1.0.0-alpha.3 (2026-05-07)
 
 ### Documentation
