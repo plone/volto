@@ -97,7 +97,6 @@
     "not dead"
   ],
   "dependencies": {
-    "@plone/registry": "workspace:*",
     "@internationalized/date": "catalog:",
     "@react-aria/utils": "catalog:",
     "@react-spectrum/utils": "catalog:",

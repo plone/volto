@@ -1,4 +1,3 @@
-import React from 'react';
 import config from '@plone/registry';
 
 type BaseProps = {
@@ -24,6 +23,7 @@ export function Component<T extends object>({
   const RegisteredComponent = config.getComponent(componentOptions).component;
 
   if (!RegisteredComponent) {
+    // eslint-disable-next-line no-console
     console.warn(`Component not found in registry: ${componentName}`);
     return null;
   }
