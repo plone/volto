@@ -6,6 +6,7 @@ import DefaultView from './views/DefaultView';
 import FileView from './views/FileView';
 import ImageView from './views/ImageView';
 import LinkView from './views/LinkView';
+import EventView from './views/EventView';
 
 export default function install(config: ConfigType) {
   // Translation factory
@@ -20,8 +21,10 @@ export default function install(config: ConfigType) {
     File: FileView,
     Image: ImageView,
     Link: LinkView,
+    Event: EventView,
     ...config.views.contentTypesViews,
   };
+
   config.views.layoutViews = { ...config.views.layoutViews };
 
   installSettings(config);
