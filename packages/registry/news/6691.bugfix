@@ -1,0 +1,1 @@
+Updated `GetComponentResult` type, as retrieved component could be `undefined` if not found. @arybakov05
