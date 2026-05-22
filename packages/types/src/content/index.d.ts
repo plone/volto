@@ -1,6 +1,6 @@
 import type { Expanders, ContainedItem, Image, RelatedItem } from './common';
 import type { BlocksFormData } from '../blocks';
-import { GetSiteResponse } from '../services';
+import type { GetSiteResponse } from '../services';
 
 export interface Content {
   '@components': Expanders;
