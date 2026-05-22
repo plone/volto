@@ -1243,6 +1243,11 @@ msgstr "Scarica l'evento"
 msgid "Download file"
 msgstr "Scarica il file"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Scarica {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -4912,11 +4917,6 @@ msgstr ""
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
 msgstr "Gli URL esterni non sono consentiti in questo campo."
-
-#. Default: "Download {filename}"
-#: components/manage/Widgets/FileWidget
-msgid "field.file.downloadFile"
-msgstr "Scarica {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

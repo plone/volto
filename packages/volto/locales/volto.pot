@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-05-07T07:25:19.397Z\n"
+"POT-Creation-Date: 2026-05-22T13:47:28.713Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1237,6 +1237,11 @@ msgstr ""
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
+msgstr ""
+
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
 msgstr ""
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -4907,11 +4912,6 @@ msgstr ""
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
-
-#. Default: "Download {filename}"
-#: components/manage/Widgets/FileWidget
-msgid "field.file.downloadFile"
 msgstr ""
 
 #. Default: "This website does not accept files larger than {limit}"

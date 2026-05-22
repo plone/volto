@@ -1243,6 +1243,11 @@ msgstr ""
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Telechargiar {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -4912,11 +4917,6 @@ msgstr ""
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
 msgstr ""
-
-#. Default: "Download {filename}"
-#: components/manage/Widgets/FileWidget
-msgid "field.file.downloadFile"
-msgstr "Telechargiar {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

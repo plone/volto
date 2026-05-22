@@ -1244,6 +1244,11 @@ msgstr "Télécharger l'événement"
 msgid "Download file"
 msgstr "Télécharger le fichier"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Télécharger {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -4913,11 +4918,6 @@ msgstr "/exemple"
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
 msgstr "Les URL externes ne sont pas autorisées dans ce champ."
-
-#. Default: "Download {filename}"
-#: components/manage/Widgets/FileWidget
-msgid "field.file.downloadFile"
-msgstr "Télécharger {filename}"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels

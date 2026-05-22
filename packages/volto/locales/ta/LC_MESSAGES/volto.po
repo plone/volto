@@ -1243,6 +1243,11 @@ msgstr "நிகழ்வைப் பதிவிறக்கவும்"
 msgid "Download file"
 msgstr "கோப்பைப் பதிவிறக்கவும்"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "{filename} பதிவிறக்கம் செய்யவும்"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
@@ -4912,11 +4917,6 @@ msgstr "எடுத்துக்காட்டு"
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
 msgstr "இந்தப் புலத்தில் வெளிப்புற URLகள் அனுமதிக்கப்படவில்லை."
-
-#. Default: "Download {filename}"
-#: components/manage/Widgets/FileWidget
-msgid "field.file.downloadFile"
-msgstr "{filename} பதிவிறக்கவும்"
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
