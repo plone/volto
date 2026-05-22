@@ -4,7 +4,7 @@
  */
 import React, { Children, isValidElement, cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Grid, Icon as IconOld, Label } from 'semantic-ui-react';
+import { Form, Grid, Icon as IconOld, Input, Label } from 'semantic-ui-react';
 import map from 'lodash/map';
 import cx from 'classnames';
 import { defineMessages, useIntl } from 'react-intl';
@@ -60,7 +60,7 @@ const FormFieldWrapper = ({
   const wdg = (
     <>
       {Children.map(children, (child) => {
-        if (isValidElement(child) && required && child.type.name === 'Input') {
+        if (isValidElement(child) && required && child.type === Input) {
           return cloneElement(child, {
             'aria-required': true,
             'aria-invalid': !!(error && error.length > 0),
