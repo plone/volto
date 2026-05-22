@@ -35,6 +35,28 @@
       "link": {
         "linkLabel": "Die Linkadresse lautet:",
         "externalLinkLabel": "Die externe Linkadresse lautet:"
+      },
+      "event": {
+        "what": "Was",
+        "when": "Datum",
+        "time": {
+          "sameDayOpenEnd": "{{date}} ab {{fromTime}}",
+          "sameDayRange": "{{date}} von {{fromTime}} bis {{toTime}}",
+          "multiDayWholeDayOpen": "{{fromDate}}",
+          "multiDayWholeDay": "{{fromDate}} bis {{toDate}}",
+          "multiDayRangeOpen": "{{fromDate}} {{fromTime}}",
+          "multiDayRange": "{{fromDate}} {{fromTime}} bis {{toDate}} {{toTime}}"
+        },
+        "allDates": "Alle Termine",
+        "where": "Ort",
+        "contact": {
+          "name": "Kontaktname",
+          "phone": "Kontakttelefon"
+        },
+        "attendees": "Teilnehmer",
+        "website": "Webseite",
+        "visitWebsite": "Webseite besuchen",
+        "downloadEvent": "Event herunterladen"
       }
     }
   }
