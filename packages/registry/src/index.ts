@@ -34,7 +34,7 @@ export type ConfigData = {
 };
 
 type GetComponentResult = {
-  component: React.ComponentType<any>;
+  component: React.ComponentType<any> | undefined;
 };
 
 type UtilityMethodFor<Type extends string> = Type extends keyof UtilityTypeMap

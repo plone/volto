@@ -1,0 +1,12 @@
+@layer custom {
+  .event-view {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 70% 30%;
+
+    @media (max-width: 768px) {
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+  }
+}

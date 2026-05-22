@@ -1,0 +1,1 @@
+Fix several issues in the Object Browser widget: single selection mode now behaves correctly, clicking a non-folder item no longer attempts navigation, the maximum selection limit is ignored in single mode, and the API for specifying which item attributes to return has been renamed for consistency across the codebase. @iFlameing
