@@ -42,7 +42,7 @@ const ImageBlockEdit = (props: BlockEditProps) => {
   );
 
   return (
-    <div className={clsx('image align block', styles['block'], data.align)}>
+    <div className={clsx('image align block', styles['block'])}>
       {data.url ? (
         <ImageView {...props} />
       ) : ImageWidget ? (

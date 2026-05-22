@@ -40,7 +40,7 @@ const ImageBlockView = (props: BlockViewProps) => {
     : undefined;
 
   return (
-    <figure className={clsx(styles['block'])}>
+    <figure className={clsx(styles['block'], styles[data.align], data.align)}>
       <Image
         item={imageItem}
         alt={(data.alt as string) || ''}

@@ -67,6 +67,8 @@ export function ImageSchema({
         title: 'Image size',
         widget: 'size',
         default: 'l',
+        actions: ['s', 'm', 'l'],
+        // disabled: true,
         styleField: true,
       },
       href: {
