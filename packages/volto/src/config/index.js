@@ -24,7 +24,7 @@ import { installDefaultBlocks } from './Blocks';
 
 import {
   getSiteAsyncPropExtender,
-  SystemInfoAsyncPropExtender,
+  getSystemInfoAsyncPropExtender,
   getControlpanelAsyncPropExtender,
 } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
@@ -130,7 +130,7 @@ let config = {
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [
       getSiteAsyncPropExtender,
-      SystemInfoAsyncPropExtender,
+      getSystemInfoAsyncPropExtender,
       getControlpanelAsyncPropExtender,
     ], // per route asyncConnect customizers
     contentIcons: contentIcons,

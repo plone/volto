@@ -43,7 +43,7 @@ const getControlpanelAsyncPropExtender = {
   },
 };
 
-const SystemInfoAsyncPropExtender = {
+const getSystemInfoAsyncPropExtender = {
   path: `${prefixPath}/controlpanel`,
   extend: (dispatchActions) => {
     if (
@@ -63,6 +63,6 @@ const SystemInfoAsyncPropExtender = {
 
 export {
   getSiteAsyncPropExtender,
-  SystemInfoAsyncPropExtender,
+  getSystemInfoAsyncPropExtender,
   getControlpanelAsyncPropExtender,
 };
