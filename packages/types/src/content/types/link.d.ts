@@ -1,5 +1,12 @@
-import { Content } from '../index';
+import type { ContentBase } from '../base';
 
-export interface LinkCT extends Content {
+export interface LinkContent extends ContentBase {
+  '@type': 'Link';
   remoteUrl: string;
+}
+
+declare module '../index' {
+  interface ContentTypeMap {
+    Link: LinkContent;
+  }
 }
