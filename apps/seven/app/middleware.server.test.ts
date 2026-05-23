@@ -1005,8 +1005,8 @@ describe('middleware', () => {
 
       await initializePloneClientContext(request, context);
 
-      try {
-        await fetchPloneContent(
+      await expect(() =>
+        fetchPloneContent(
           {
             request,
             params: {},
@@ -1015,10 +1015,8 @@ describe('middleware', () => {
             unstable_url: new URL(request.url),
           },
           nextMock,
-        );
-      } catch (err: any) {
-        expect(err.init.status).toEqual(301);
-      }
+        ),
+      ).rejects.toMatchObject({ init: { status: 301 } });
     });
   });
 
