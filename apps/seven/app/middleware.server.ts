@@ -1,9 +1,10 @@
 import { jwtDecode } from 'jwt-decode';
-import { data, createContext } from 'react-router';
+import { data, createContext, redirect } from 'react-router';
 import { flattenToAppURL } from '@plone/helpers';
 import { clearAuthOnResponse, getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
+import type { LinkCT } from '@plone/types';
 import type { Route } from './+types/root';
 import installServer from './config/server.server';
 import { migrateContent } from './config/server/content-migrations.server';
@@ -179,6 +180,11 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
 
     setPloneContext(content, site, user?.data ?? null);
   } catch (error: any) {
+    if (error.status >= 300 && error.status < 400 && error.location) {
+      return redirect(error.location, {
+        status: error.status,
+      });
+    }
     if (token && error?.status === 401) {
       const PloneClient = config
         .getUtility({
@@ -216,5 +222,21 @@ export const fetchPloneContent: Route.MiddlewareFunction = async (
     throw data('Content Not Found', {
       status: typeof error.status === 'number' ? error.status : 500,
     });
+  }
+};
+
+export const linkMiddleware: Route.MiddlewareFunction = async (
+  { context },
+  next,
+) => {
+  const content = context.get(ploneContentContext);
+
+  if (
+    content['@type'] === 'Link' &&
+    !content['@components'].actions.object.find(
+      (action) => action.id === 'edit',
+    )
+  ) {
+    return redirect((content as LinkCT).remoteUrl);
   }
 };
