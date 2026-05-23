@@ -379,6 +379,7 @@ class Toolbar extends Component {
   };
 
   handleClickOutside = (e) => {
+    e.preventDefault();
     const target = e.target;
 
     if (this.pusher && doesNodeContainClick(this.pusher, e)) {
@@ -399,7 +400,9 @@ class Toolbar extends Component {
     const button =
       doesNodeContainClick(this.toolbarRef.current, e) &&
       this.findAncestor(target, 'button');
-    if (button && button === this.buttonRef.current) return;
+    if (button && button === this.buttonRef.current) {
+      return;
+    }
 
     this.closeMenu();
   };
