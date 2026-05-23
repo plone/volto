@@ -1,0 +1,1 @@
+Handled redirect responses from the backend when fetching content objects. @pnicolli
