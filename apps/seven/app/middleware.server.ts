@@ -4,7 +4,6 @@ import { flattenToAppURL } from '@plone/helpers';
 import { clearAuthOnResponse, getAuthFromRequest } from '@plone/react-router';
 import config from '@plone/registry';
 import type PloneClient from '@plone/client';
-import type { LinkCT } from '@plone/types';
 import type { Route } from './+types/root';
 import installServer from './config/server.server';
 import { migrateContent } from './config/server/content-migrations.server';
@@ -237,6 +236,6 @@ export const linkMiddleware: Route.MiddlewareFunction = async (
       (action) => action.id === 'edit',
     )
   ) {
-    return redirect((content as LinkCT).remoteUrl);
+    return redirect(content.remoteUrl);
   }
 };
