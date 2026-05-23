@@ -1,11 +1,11 @@
 import React from 'react';
 import { Modal } from './Modal.quanta';
 import { Button } from '../Button/Button.quanta';
-import { Dialog } from '../Dialog/Dialog.quanta';
+import { Dialog, DialogTrigger } from '../Dialog/Dialog.quanta';
 import { Form } from '../Form/Form.quanta';
 import { TextField } from '../TextField/TextField.quanta';
 
-import { DialogTrigger, Heading } from 'react-aria-components';
+import { Heading } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
