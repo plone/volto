@@ -1355,6 +1355,11 @@ msgstr "Eposta ondo bidali da"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Itsatsitako kodearen errorea, jarraitu argibideak eta saiatu berriz."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1740,11 +1745,6 @@ msgstr "Orokorra"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Rol globala"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Google Maps itsasteko blokea"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema

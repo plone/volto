@@ -1354,6 +1354,11 @@ msgstr "ईमेल भेजा गया"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "एम्बेड कोड त्रुटि, कृपया निर्देशों का पालन करें और पुनः प्रयास करें।"
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1739,11 +1744,6 @@ msgstr "सामान्य"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "वैश्विक भूमिका"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "गूगल मानचित्र एम्बेडेड ब्लॉक"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema

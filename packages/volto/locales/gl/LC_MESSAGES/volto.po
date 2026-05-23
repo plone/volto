@@ -1354,6 +1354,11 @@ msgstr "Correo electrónico enviado"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Código de error incrustado, por favor, siga as instruccións e inténteo de novo."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1739,11 +1744,6 @@ msgstr "Xeral"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Rol global"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Google Maps Bloque Embebido"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
