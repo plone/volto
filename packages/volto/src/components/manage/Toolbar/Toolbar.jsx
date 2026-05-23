@@ -379,7 +379,6 @@ class Toolbar extends Component {
   };
 
   handleClickOutside = (e) => {
-    e.preventDefault();
     const target = e.target;
 
     if (this.pusher && doesNodeContainClick(this.pusher, e)) {
@@ -448,7 +447,10 @@ class Toolbar extends Component {
             }
             ref={this.toolbarWindow}
             onBlur={(e) => {
-              if (!this.toolbarWindow.current?.contains(e.relatedTarget)) {
+              if (
+                e.relatedTarget &&
+                !this.toolbarWindow.current?.contains(e.relatedTarget)
+              ) {
                 this.toolbarRef.current
                   ?.querySelector('button.toolbar-handler-button')
                   ?.focus();
