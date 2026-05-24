@@ -9,6 +9,37 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    asButton: {
+      control: 'boolean',
+      description: 'Show the link as a button',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    accent: {
+      description: 'Only available when `asButton` is set to `true`',
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    variant: {
+      control: 'select',
+      description: 'Only available when `asButton` is set to `true`',
+      options: ['neutral', 'primary', 'destructive', 'secondary'],
+    },
+  },
+  args: {
+    accent: false,
+    asButton: false as any,
+  },
 } satisfies Meta<typeof Link>;
 
 export default meta;

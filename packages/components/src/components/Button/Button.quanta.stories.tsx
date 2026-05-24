@@ -14,12 +14,39 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['neutral', 'primary', 'destructive'],
+      options: ['neutral', 'primary', 'destructive', 'secondary'],
+    },
+    asLink: {
+      control: 'boolean',
+      description: 'Show the button as a link',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    accent: {
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    isDisabled: {
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
     },
   },
   args: {
     isDisabled: false,
     children: 'Button',
+    asLink: false as any,
     accent: false,
   },
 } satisfies Meta<typeof Button>;
