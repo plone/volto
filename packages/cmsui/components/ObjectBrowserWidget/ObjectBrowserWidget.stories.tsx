@@ -145,15 +145,6 @@ const MOCK_NODES: MockNode[] = [
     review_state: 'published',
   },
   {
-    '@id': `${STORY_ROOT_ID}/media/launch-video`,
-    '@type': 'Video',
-    title: 'Launch Video',
-    description: 'Teaser for the new release',
-    parent: `${STORY_ROOT_ID}/media`,
-    UID: 'video-1',
-    review_state: 'pending',
-  },
-  {
     '@id': `${STORY_ROOT_ID}/media/product-image`,
     '@type': 'Image',
     title: 'Product Image',
@@ -315,11 +306,6 @@ export const WithInitialSelection: Story = {
         '@id': `${STORY_ROOT_ID}/welcome-document`,
         title: 'Welcome Document',
         '@type': 'Document',
-      },
-      {
-        '@id': `${STORY_ROOT_ID}/media/launch-video`,
-        title: 'Launch Video',
-        '@type': 'Video',
       },
     ] as any,
   },
