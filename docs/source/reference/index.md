@@ -15,4 +15,5 @@ This section of the documentation contains reference guides for various aspects 
 :maxdepth: 1
 
 widgets
+utilities
 ```

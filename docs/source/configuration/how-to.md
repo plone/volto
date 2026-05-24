@@ -25,22 +25,26 @@ const absoluteUrl = `${config.settings.apiPath}/${content.url}`;
 
 Both the main project and individual add-ons can extend Volto's configuration registry.
 First the add-ons configuration is applied, in the order they are defined in
-`package.json`, then finally the project configuration is applied. Visualized like
+{file}`package.json`, then finally the project configuration is applied. Visualized like
 a pipe would be:
 
 > Default Volto configuration -> Add-on 1 -> Add-on 2 -> ... -> Add-on n -> Project
 
 Both use the same method, using a function as the default export. This function takes a
 `config` and should return the `config` once you've ended your modifications. For
-add-ons, it must be provided in the main `index.js` module of the add-on. For project's
-it must be provided in the `src/config.js` module of the project.
+add-ons, it must be provided in the main {file}`index.js` module of the add-on.
+
+```{deprecated} Volto 18
+
+As of Volto 18, the project configuration approach using {file}`src/config.js` is deprecated and will be removed in Volto 19.
+New projects created with Cookieplone now use a {file}`config/` folder approach.
+```
 
 See the {doc}`../conceptual-guides/add-ons` and {doc}`../development/add-ons/index` sections for extended information on how to work with add-ons.
 
-
 ## Extending configuration in a project
 
-You must provide a function as default export in your `src/config.js`:
+You must provide a function as default export in your {file}`src/config.js`:
 
 ```js
 export default function applyConfig(config) {

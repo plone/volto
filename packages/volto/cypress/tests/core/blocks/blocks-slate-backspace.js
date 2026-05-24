@@ -19,7 +19,7 @@ describe('Slate Backspace Behavior', () => {
   it('Backspace at start of second block deletes it and merges content into first block', () => {
     cy.getSlateEditorAndType('First block text');
 
-    cy.addNewBlock('slate');
+    cy.getSlateEditorAndType('{enter}');
     cy.getSlateEditorAndType('Second block text');
 
     cy.getSlate().setCursorBefore('Second').type('{backspace}');
@@ -33,7 +33,7 @@ describe('Slate Backspace Behavior', () => {
   it('Enter after Backspace merge splits back into a new block', () => {
     cy.getSlateEditorAndType('Hello');
 
-    cy.addNewBlock('slate');
+    cy.getSlateEditorAndType('{enter}');
     cy.getSlateEditorAndType('World');
 
     cy.getSlate().setCursorBefore('World').type('{backspace}');

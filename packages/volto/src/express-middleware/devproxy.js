@@ -88,11 +88,13 @@ export default function devProxyMiddleware() {
             .map((part) => '/_vh_' + part)
             .join('')
         : '';
+      const port =
+        apiPathURL.port || (apiPathURL.protocol === 'https:' ? 443 : 80);
       const target =
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
           apiPathURL.hostname
-        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot${vhSubpath}`;
+        }:${port}${instancePath}/++api++/VirtualHostRoot${vhSubpath}`;
 
       return `${target}${path.replace(`${config.settings.subpathPrefix}/++api++`, '')}`;
     },

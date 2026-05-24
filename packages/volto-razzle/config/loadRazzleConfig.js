@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const merge = require('deepmerge');
 const clearConsole = require('react-dev-utils/clearConsole');
-const logger = require('razzle-dev-utils/logger');
+const logger = require('@plone/razzle-dev-utils/logger');
 
 const defaultPaths = require('./paths');
 const defaultRazzleOptions = require('./defaultOptions');

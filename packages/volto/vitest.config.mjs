@@ -12,59 +12,101 @@ const __dirname = path.dirname(__filename);
 
 const projectRoot = path.resolve(__dirname);
 
-export default defineConfig({
-  plugins: [
-    react(),
-    svgLoader({
-      svgoConfig: {
-        plugins: [
-          {
-            name: 'preset-default',
-            params: {
-              overrides: {
-                convertPathData: false,
-                removeViewBox: false,
-              },
+const sharedAliases = {
+  '@plone/volto': path.resolve(__dirname, 'src'),
+  '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
+  '@root': path.resolve(__dirname, 'src'),
+  '@plone/components': path.resolve(__dirname, '../components/src'),
+  'promise-file-reader': require.resolve('promise-file-reader'),
+  'react-dropzone': require.resolve('react-dropzone'),
+  'prop-types': require.resolve('prop-types'),
+  'react-intl-redux': require.resolve('react-intl-redux'),
+};
+
+// volto-slate specific aliases 
+const voltoSlateAliases = {
+  ...sharedAliases,
+  'react-test-renderer': require.resolve('react-test-renderer'),
+  'redux': require.resolve('redux'), 
+};
+
+const sharedPlugins = [
+  react(),
+  svgLoader({
+    svgoConfig: {
+      plugins: [
+        {
+          name: 'preset-default',
+          params: {
+            overrides: {
+              convertPathData: false,
+              removeViewBox: false,
             },
           },
-          'removeTitle',
-          'removeUselessStrokeAndFill',
-        ],
-      },
-    }),
-  ],
-  resolve: {
-    alias: {
-      '@plone/volto': path.resolve(__dirname, 'src'),
-      '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
-      '@root': path.resolve(__dirname, 'src'),
-      '@plone/components': path.resolve(__dirname, '../components/src'),
-      'promise-file-reader': require.resolve('promise-file-reader'),
-      'react-dropzone': require.resolve('react-dropzone'),
-      'prop-types': require.resolve('prop-types'),
+        },
+        'removeTitle',
+        'removeUselessStrokeAndFill',
+      ],
     },
+  }),
+];
+
+export default defineConfig({
+  plugins: sharedPlugins,
+  resolve: {
+    alias: sharedAliases,
   },
   test: {
-    isolate: true,
-    deps: {
-      moduleDirectories: ['node_modules'],
-    },
-    snapshotFormat: { printBasicPrototype: false },
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: [
-      `${projectRoot}/test-setup-globals.js`,
-      `${projectRoot}/test-setup-config.jsx`,
-      `${projectRoot}/test-addons-loader.js`,
-      `${projectRoot}/global-test-setup.js`
+    projects: [
+      // Volto main project
+      {
+        test: {
+          name: 'volto',
+          root: '.',
+          isolate: true,
+          globals: true,
+          environment: 'jsdom',
+          setupFiles: [
+            `${projectRoot}/test-setup-globals.js`,
+            `${projectRoot}/test-setup-config.jsx`,
+            `${projectRoot}/test-addons-loader.js`,
+          ],
+          globalSetup: `${projectRoot}/global-test-setup.js`,
+        },
+        resolve: {
+          alias: sharedAliases,
+        },
+        plugins: sharedPlugins,
+      },
+      // volto-slate project
+      {
+        test: {
+          name: 'volto-slate',
+          root: '../volto-slate',
+          isolate: true,
+          globals: true,
+          environment: 'jsdom',
+          setupFiles: [
+            `${projectRoot}/test-setup-globals.js`,
+            `${projectRoot}/test-setup-config.jsx`,
+            `${projectRoot}/test-addons-loader.js`,
+          ],
+          globalSetup: `${projectRoot}/global-test-setup.js`,
+        },
+        resolve: {
+          alias: voltoSlateAliases,
+        },
+        plugins: sharedPlugins,
+      },
     ],
-    globalSetup: `${projectRoot}/global-test-setup.js`,
+    snapshotFormat: { printBasicPrototype: false },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       include: [
         'src/**/*.{test,spec}.{js,ts,jsx,tsx}',
         '__test__/**/*.{test,spec}.{js,ts,jsx,tsx}',
+        '../volto-slate/src/**/*.{test,spec}.{js,ts,jsx,tsx}',
       ],
       exclude: [
         'node_modules/**',

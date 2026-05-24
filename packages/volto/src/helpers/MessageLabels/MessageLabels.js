@@ -25,6 +25,11 @@ export const messages = defineMessages({
     id: 'Maximum value is {len}.',
     defaultMessage: 'Maximum value is {len}.',
   },
+  maxSize: {
+    id: 'Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes.',
+    defaultMessage:
+      'Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes.',
+  },
   uniqueItems: {
     id: 'Items must be unique.',
     defaultMessage: 'Items must be unique.',

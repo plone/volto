@@ -8,6 +8,36 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
+## 3.0.0-alpha.12 (2026-05-07)
+
+### Internal
+
+- Standardized the TypeScript validation script name to `check:ts` and added package-specific `AGENTS.md` contributor guidance for `@plone/registry`. 
+
+## 3.0.0-alpha.11 (2026-04-27)
+
+### Internal
+
+- Removed tsconfig development dependency. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+
+## 3.0.0-alpha.10 (2026-03-31)
+
+### Internal
+
+- Update dependencies: tmp, vitest. @davisagli 
+
+## 3.0.0-alpha.9 (2025-12-22)
+
+### Feature
+
+- Enhance registry utilities type definitions with typed method signatures. @ompharate @sneridagh [#7652](https://github.com/plone/volto/issues/7652)
+
 ## 3.0.0-alpha.8 (2025-11-03)
 
 ### Breaking
