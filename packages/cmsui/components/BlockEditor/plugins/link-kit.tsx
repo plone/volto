@@ -351,6 +351,7 @@ function LinkObjectBrowser({
         mode: 'single',
         title: 'Select content',
         initialPath,
+        selectedItemAttrs: ['@id', 'title', 'description', '@type'],
         widgetOptions: {
           pattern_options: {
             maximumSelectionSize: 1,
