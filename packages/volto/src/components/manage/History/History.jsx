@@ -3,11 +3,11 @@
  * @module components/manage/History/History
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useMemo, useCallback } from 'react';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { compose } from 'redux';
 import {
   Container as SemanticContainer,
   Dropdown,
@@ -21,6 +21,7 @@ import reverse from 'lodash/reverse';
 import find from 'lodash/find';
 import { createPortal } from 'react-dom';
 import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 
 import FormattedDate from '@plone/volto/components/theme/FormattedDate/FormattedDate';
 import IconNext from '@plone/volto/components/theme/Icon/Icon';
@@ -33,6 +34,7 @@ import {
 } from '@plone/volto/actions/history/history';
 import { listActions } from '@plone/volto/actions/actions/actions';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import { useClient } from '@plone/volto/hooks/client/useClient';
 import config from '@plone/volto/registry';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -49,14 +51,13 @@ const messages = defineMessages({
 });
 
 /**
-
  * @function History
  * @param {Object} props
- * @returns {JSX.Element} 
+ * @returns {JSX.Element}
  */
 const History = (props) => {
   const { staticContext } = props;
-  const [isClient, setIsClient] = useState(false);
+  const isClient = useClient();
   const dispatch = useDispatch();
   const location = useLocation();
   const pathname = location.pathname;
@@ -64,53 +65,38 @@ const History = (props) => {
 
   const objectActions = useSelector((state) => state.actions.actions.object);
   const token = useSelector((state) => state.userSession.token);
-  const entriesProp = useSelector((state) => state.history.entries);
+  const entries = useSelector((state) => state.history.entries);
   const title = useSelector((state) => state.content.data?.title);
-  const revertRequest = useSelector((state) => state.history.revert);
 
   const onRevert = useCallback(
     (event, { value }) => {
-      dispatch(revertHistory(getBaseUrl(pathname), value));
+      const baseUrl = getBaseUrl(pathname);
+      dispatch(revertHistory(baseUrl, value)).then(() => {
+        dispatch(getHistory(baseUrl));
+      });
     },
     [dispatch, pathname],
   );
 
-  const processHistoryEntries = useCallback(() => {
-    // Getting the history entries from the props
-    // No clue why the reverse(concat()) is necessary
-    const entries = reverse(concat(entriesProp));
-    let title = entries.length > 0 ? entries[0].state_title : '';
-    for (let x = 1; x < entries.length; x += 1) {
-      entries[x].prev_state_title = title;
-      title = entries[x].state_title || title;
+  const processedEntries = useMemo(() => {
+    const result = reverse(concat(entries));
+    let title = result.length > 0 ? result[0].state_title : '';
+    for (let x = 1; x < result.length; x += 1) {
+      result[x].prev_state_title = title;
+      title = result[x].state_title || title;
     }
-    // We reverse them again
-    reverse(entries);
+    reverse(result);
 
-    // We identify the latest 'versioning' entry and mark it
-    const current_version = find(entries, (item) => item.type === 'versioning');
+    const current_version = find(result, (item) => item.type === 'versioning');
     if (current_version) {
       current_version.is_current = true;
     }
-    return entries;
-  }, [entriesProp]);
-
-  useEffect(() => {
-    dispatch(listActions(getBaseUrl(pathname)));
-    dispatch(getHistory(getBaseUrl(pathname)));
-    setIsClient(true);
-  }, [dispatch, pathname]);
-
-  useEffect(() => {
-    if (revertRequest.loading && revertRequest.loaded) {
-      dispatch(getHistory(getBaseUrl(pathname)));
-    }
-  }, [dispatch, revertRequest.loading, revertRequest.loaded, pathname]);
+    return result;
+  }, [entries]);
 
   const historyAction = find(objectActions, {
     id: 'history',
   });
-  const entries = processHistoryEntries();
 
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
@@ -170,7 +156,7 @@ const History = (props) => {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {map(entries, (entry) => (
+            {map(processedEntries, (entry) => (
               <Table.Row key={entry.time}>
                 <Table.Cell>
                   {('version' in entry && entry.version > 0 && (
@@ -288,35 +274,12 @@ const History = (props) => {
   );
 };
 
-History.propTypes = {
-  getHistory: PropTypes.func.isRequired,
-  revertHistory: PropTypes.func.isRequired,
-  revertRequest: PropTypes.shape({
-    loaded: PropTypes.bool,
-    loading: PropTypes.bool,
-  }).isRequired,
-  pathname: PropTypes.string.isRequired,
-  entries: PropTypes.arrayOf(
-    PropTypes.shape({
-      transition_title: PropTypes.string,
-      type: PropTypes.string,
-      action: PropTypes.string,
-      state_title: PropTypes.string,
-      time: PropTypes.string,
-      comments: PropTypes.string,
-      actor: PropTypes.shape({ fullname: PropTypes.string }),
-    }),
-  ).isRequired,
-  title: PropTypes.string.isRequired,
-  objectActions: PropTypes.array,
-  token: PropTypes.string,
-  staticContext: PropTypes.object,
-};
-
-History.defaultProps = {
-  objectActions: [],
-  token: null,
-  staticContext: null,
-};
-
-export default History;
+export default compose(
+  asyncConnect([
+    {
+      key: 'actions',
+      promise: async ({ location, store: { dispatch } }) =>
+        await dispatch(listActions(getBaseUrl(location.pathname))),
+    },
+  ]),
+)(History);
