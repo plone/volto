@@ -3,15 +3,14 @@ import type { RootLoader } from 'seven/app/root';
 import { Container } from '@plone/components';
 import { Link } from '@plone/components/quanta';
 import { useTranslation } from 'react-i18next';
-import type { LinkCT, RootData } from '@plone/types';
 import { isInternalURL } from '@plone/helpers';
 import clsx from 'clsx';
 
 export default function LinkView() {
-  const rootData = useRouteLoaderData<RootLoader>('root') as RootData<LinkCT>;
+  const rootData = useRouteLoaderData<RootLoader>('root');
   const { t } = useTranslation();
 
-  if (!rootData) {
+  if (!rootData || rootData.content['@type'] !== 'Link') {
     return null;
   }
 

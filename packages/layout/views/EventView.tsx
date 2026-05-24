@@ -4,18 +4,17 @@ import type { RootLoader } from 'seven/app/root';
 import RenderBlocks from '../blocks/RenderBlocks';
 import EventDetails from '../components/EventDetails/EventDetails';
 import config from '@plone/registry';
-import type { EventCT, RootData } from '@plone/types';
 import { Container } from '@plone/components';
 import styles from './EventView.module.css';
 
 export default function EventView() {
-  const rootData = useRouteLoaderData<RootLoader>('root') as RootData<EventCT>;
+  const rootData = useRouteLoaderData<RootLoader>('root');
 
-  if (!rootData) {
+  if (!rootData || rootData.content['@type'] !== 'Event') {
     return null;
   }
 
-  const { content } = rootData;
+  const { content, locale } = rootData;
   const hasBlocks = hasBlocksData(content);
 
   return (
@@ -36,7 +35,7 @@ export default function EventView() {
           </>
         )}
       </div>
-      <EventDetails data={rootData} />
+      <EventDetails content={content} locale={locale} />
     </Container>
   );
 }

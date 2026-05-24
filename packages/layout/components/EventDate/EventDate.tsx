@@ -1,9 +1,9 @@
-import type { EventCT } from '@plone/types';
+import type { EventContent } from '@plone/types';
 import { getDate, isSameDay } from '../../helpers';
 import { useTranslation } from 'react-i18next';
 
 interface EventDateProps {
-  content: EventCT;
+  content: EventContent;
   locale: string;
 }
 
@@ -18,8 +18,6 @@ const getDateTime = (date: string, locale: string): string => {
 
 export default function EventDate({ locale, content }: EventDateProps) {
   const { t } = useTranslation();
-
-  if (!locale || !content) return null;
 
   const { start, end, whole_day, open_end } = content;
 

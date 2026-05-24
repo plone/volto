@@ -2,14 +2,15 @@ import EventDate from '../EventDate/EventDate';
 import { Link } from '@plone/components/quanta';
 import * as RRuleLib from 'rrule';
 import type * as RRuleTypes from 'rrule';
-import type { EventCT, RootData } from '@plone/types';
+import type { EventContent } from '@plone/types';
 import { getDate } from '../../helpers';
 import Calendar from '@plone/components/icons/calendar.svg?react';
 import { useTranslation } from 'react-i18next';
 import styles from './EventDetails.module.css';
 
 interface EventDetailsProps {
-  data?: RootData<EventCT>;
+  content: EventContent;
+  locale: string;
 }
 
 interface RecurrenceProps {
@@ -18,12 +19,8 @@ interface RecurrenceProps {
   locale: string;
 }
 
-export default function EventDetails({ data }: EventDetailsProps) {
+export default function EventDetails({ content, locale }: EventDetailsProps) {
   const { t } = useTranslation();
-
-  if (!data) return;
-
-  const { content, locale } = data;
 
   return (
     <aside className={styles['event-details']}>
