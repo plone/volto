@@ -352,11 +352,7 @@ function LinkObjectBrowser({
         title: 'Select content',
         initialPath,
         selectedItemAttrs: ['@id', 'title', 'description', '@type'],
-        widgetOptions: {
-          pattern_options: {
-            maximumSelectionSize: 1,
-          },
-        },
+
         defaultValue: selectedUrl
           ? ([{ '@id': selectedUrl, title: '' }] as Brain[])
           : [],
