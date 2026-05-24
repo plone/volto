@@ -127,10 +127,10 @@ These pre-built components are equivalent to importing the SVGs directly, but th
 - When developing `@plone/components` itself, prefer these pre-built modules because the package build pipeline has no awareness of your app's Vite configuration.
 ```
 
-# Define an icon for a content type
+## Define an icon for a content type
 
 The registry defines icons for content types under `config.settings.contentIcons`.
-To change an existing icon or to define an icon for a custom content type, please refer to the following code example:
+To change an existing icon or to define an icon for a custom content type, refer to the following code example:
 
 ```tsx
 import type { ConfigType } from '@plone/registry';

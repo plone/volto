@@ -16,10 +16,10 @@ In this registry, you can register components given a unique component name.
 Any other add-on can then retrieve and use this component by searching for the component's name.
 
 The key motivation behind the component registry is to simplify the process of customization.
-Existing components can be overwritten without {term}`shadowing` by registering a new component using the name of an existing component.
+Existing components can be overridden without {term}`shadowing` by registering a new component using the name of an existing component.
 Since the component registry is globally available, this means that all code pointing to this component will now use the newly registered component instead.
 
-You can even have modifiers to the component registrations: dependencies. So you can "adapt" the call given an array of such dependencies.
+Additionally, it's possible to modify the component registrations with a given array of dependencies.
 
 ## Registering components by name using `config.registerComponent`
 
@@ -50,9 +50,11 @@ or by using the convenience component `Component` if you want to use it in JSX d
 
 Please notice that you are able to pass `props` down to the retrieved component.
 
-## Adapting the component using `dependencies` array
+## Adapt components with dependencies
 
-Components can also be conditionally registered by passing dependencies.
+Additionally, components can be registered with dependencies.
+This allows calling a component by its name and conditionally by its dependencies, according to the use case.
+
 To register a component with dependencies, either pass a string or an array of strings.
 
 ```js
@@ -70,30 +72,49 @@ To retrieve this component, pass the data used to check the dependencies.
 ```js
 config.getComponent({
     name: 'Teaser',
-    dependencies: ['News Item'],
+    dependencies: 'News Item',
   }).component
 ```
 
-The idea is that you can have both with and without dependencies:
+This is useful for components that have variations based on the context, such as the content type of the current item.
+
+For example, there might be a `Teaser` component that has a variation for the `News Item` content type.
+The component is registered as such:
 
 ```js
-import MyTeaserDefaultComponent from './MyTeaserDefaultComponent'
-import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent'
+import MyTeaserDefaultComponent from './MyTeaserDefaultComponent';
+import MyTeaserNewsItemComponent from './MyTeaserNewsItemComponent';
 
 config.registerComponent({
     name: 'Teaser',
     component: MyTeaserDefaultComponent,
-  });
+});
 
 config.registerComponent({
     name: 'Teaser',
     component: MyTeaserNewsItemComponent,
     dependencies: 'News Item',
-  });
+});
 ```
 
-and then retrieve them both, depending on the use case (in the example, given a content type value coming from `content` prop):
+The following example shows how to retrieve the `Teaser` component with a given content type value coming from the `content` prop.
+If the content type is a `News Item`, then it will retrieve the `Teaser` component registered with this dependency, in this case, `MyTeaserNewsItemComponent`.
 
 ```jsx
-<Component componentName="Toolbar" dependencies={[props.content['@type']]} {...props} />
+<Component componentName="Teaser" dependencies={[props.content['@type']]} {...props} />
 ```
+
+However, if the content type is different from `News Item`, no component is rendered, because the registry does not automatically fall back to the `MyTeaserDefaultComponent` registered without dependencies.
+If the `MyTeaserDefaultComponent` should be rendered when the dependency is not `News Item`, a manual fallback mechanism is needed:
+
+```jsx
+const Component = config.getComponent({
+    name: 'Teaser',
+    dependencies: props.content['@type']
+}).component || config.getComponent('Teaser').component;
+
+return <Component {...props} />;
+```
+
+This will explicitly use the `Teaser` component if one is registered with the matching content type as a dependency.
+Otherwise, the `config.getComponent(...).component` call returns `undefined` and the manual fallback returns the `Teaser` component that was registered without dependencies.

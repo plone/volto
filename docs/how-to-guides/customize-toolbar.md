@@ -13,10 +13,12 @@ The toolbar uses the pluggable system for extensibility.
 It exposes two pluggables:
 
 `toolbar-top`
-:   Rendered at the top of the toolbar. Typically used for action buttons (save, cancel, edit, add).
+:   Rendered at the top of the toolbar.
+    Typically used for action buttons (save, cancel, edit, add).
 
 `toolbar-bottom`
-:   Rendered at the bottom of the toolbar. Typically used for settings or navigation.
+:   Rendered at the bottom of the toolbar.
+    Typically used for settings or navigation.
 
 ## Register a toolbar button
 
@@ -38,7 +40,8 @@ const location = useLocation();
 </Plug>
 ```
 
-Any data your component needs (content, location, navigation) must be fetched via hooks inside the component itself or captured in the `<Plug>` closure — the toolbar does not pass props down to plugged components.
+Any data your component needs—including content, location or navigation—must be fetched via hooks inside the component itself or captured in the `<Plug>` closure.
+The toolbar does not pass props down to plugged components.
 
 ## Add a menu to the toolbar
 
@@ -47,6 +50,8 @@ Use it in place of the standard `Menu` component.
 The menu children follow the same API as [React Aria's Menu](https://react-aria.adobe.com/Menu).
 
 ### Create the menu component
+
+First, create the menu component, using the following example code.
 
 ```tsx
 import { ToolbarMenu } from '@plone/layout/components/Toolbar/ToolbarMenu';
@@ -81,13 +86,15 @@ export const MyMenu = ({ content }: MyMenuProps) => {
 In addition to those props, it accepts the following:
 
 `icon`
-:   The trigger element rendered in the toolbar (typically an SVG icon).
+:   The trigger element rendered in the toolbar, typically an SVG icon.
 
 `styles`
 :   A CSS string imported with `?inline`.
     Injects the styles into the toolbar's shadow root so that your menu styles apply correctly.
 
 ### Register the menu as a pluggable
+
+Then, register the menu as a pluggable, using the following code.
 
 ```tsx
 import { Plug } from '@plone/layout/components/Pluggable';
@@ -107,4 +114,4 @@ Using the same `id` as an existing plug replaces it.
 
 For a full example, see the `ContentTypesMenu` component in `@plone/publicui`.
 
-See the [Pluggables documentation](https://6.docs.plone.org/volto/development/pluggables.html) for the full pluggable API reference.
+See the {doc}`plone:volto/development/pluggables` for the full pluggable API reference.
