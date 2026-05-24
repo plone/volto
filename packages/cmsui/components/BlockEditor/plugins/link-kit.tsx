@@ -37,22 +37,14 @@ import {
   usePluginOption,
 } from 'platejs/react';
 import { useFetcher } from 'react-router';
-import { Dialog, Heading } from 'react-aria-components';
 import { flattenToAppURL, isInternalURL } from '@plone/helpers';
-import { Modal } from '@plone/components';
-import { Button, Input } from '@plone/components/quanta';
-import { SearchIcon, CloseIcon } from '@plone/components/Icons';
-import { useTranslation } from 'react-i18next';
 
 import { buttonVariants } from '@plone/plate/components/ui/button';
 import { LinkElement } from '@plone/plate/components/ui/link-node';
 import { Separator } from '@plone/plate/components/ui/separator';
 import { LegacyLinkPlugin } from '@plone/plate/components/editor/plugins/legacy-link-plugin';
-import {
-  ObjectBrowserProvider,
-  useObjectBrowserContext,
-} from '../../ObjectBrowserWidget/ObjectBrowserContext';
-import { ObjectBrowserWidgetBody } from '../../ObjectBrowserWidget/ObjectBrowserWidgetBody';
+import { ObjectBrowserProvider } from '../../ObjectBrowserWidget/ObjectBrowserContext';
+import { ObjectBrowserModal } from '../../ObjectBrowserWidget/ObjectBrowserModal';
 import { buildObjectBrowserUrl } from '../../ObjectBrowserWidget/utils';
 import { formAtom } from '../../../routes/atoms';
 
@@ -231,94 +223,6 @@ function CmsuiLinkInput({
   );
 }
 
-function LinkObjectBrowserDialog({
-  open,
-  onClose,
-}: {
-  open: boolean;
-  onClose: () => void;
-}) {
-  const { t } = useTranslation();
-  const {
-    searchMode,
-    setSearchMode,
-    setSearchableText,
-    handleSearchInputChange,
-    ariaControlsId,
-    title,
-  } = useObjectBrowserContext();
-
-  return (
-    <Modal
-      isDismissable
-      className={`
-        data-[entering]:animate-slide-in
-        data-[exiting]:animate-slide-out
-        fixed top-0 right-0 bottom-0 w-[360px] border-l border-quanta-azure bg-quanta-air px-6 py-8
-        text-black shadow-[rgba(0,0,0,0.1)_-8px_0px_20px] outline-none
-      `}
-      isOpen={open}
-      onOpenChange={(isOpen) => {
-        if (!isOpen) onClose();
-      }}
-    >
-      <Dialog className="flex h-full flex-col overflow-hidden p-1">
-        {!searchMode ? (
-          <div className="flex items-center justify-between">
-            <Heading slot="title" className="!mb-0 !text-2xl">
-              {title || t('cmsui.objectbrowserwidget.dialogTitle')}
-            </Heading>
-            <div className="flex items-center gap-0.5">
-              <Button
-                variant="icon"
-                onPress={() => {
-                  setSearchMode(true);
-                  setSearchableText('');
-                }}
-                type="button"
-                aria-label={t('cmsui.objectbrowserwidget.openSearch')}
-              >
-                <SearchIcon />
-              </Button>
-
-              <Button
-                slot="close"
-                variant="icon"
-                type="button"
-                aria-label={t('cmsui.objectbrowserwidget.closeDialog')}
-                onPress={onClose}
-              >
-                <CloseIcon />
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2">
-            <Input
-              onChange={handleSearchInputChange}
-              className={'border-quanta rounded-md'}
-              aria-controls={ariaControlsId}
-              placeholder={t('cmsui.objectbrowserwidget.searchPlaceholder')}
-            />
-            <Button
-              variant="icon"
-              type="button"
-              aria-label={t('cmsui.objectbrowserwidget.closeSearch')}
-              onPress={() => {
-                setSearchMode(false);
-                setSearchableText('');
-              }}
-            >
-              <CloseIcon />
-            </Button>
-          </div>
-        )}
-        <ObjectBrowserWidgetBody />
-      </Dialog>
-    </Modal>
-  );
-}
-
 function LinkObjectBrowser({
   open,
   initialPath,
@@ -359,7 +263,12 @@ function LinkObjectBrowser({
         onChange: handleChange,
       }}
     >
-      <LinkObjectBrowserDialog open={open} onClose={onClose} />
+      <ObjectBrowserModal
+        isOpen={open}
+        onOpenChange={(nextOpen) => {
+          if (!nextOpen) onClose();
+        }}
+      />
     </ObjectBrowserProvider>
   );
 }
