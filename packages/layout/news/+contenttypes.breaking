@@ -1,1 +1,1 @@
-Refactored the Content type to properly match the basic Plone types and allow TypeScript to narrow this type automatically. @pnicolli
+Refactored the `Content` type to properly match the basic Plone types and allow TypeScript to narrow this type automatically. @pnicolli
