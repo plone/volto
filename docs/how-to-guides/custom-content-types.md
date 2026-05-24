@@ -4,7 +4,7 @@ myst:
     "description": "How to define TypeScript types for custom Plone content types"
     "property=og:description": "How to define TypeScript types for custom Plone content types"
     "property=og:title": "Custom content types"
-    "keywords": "Seven, TypeScript, content types, @plone/types, ContentTypeMap, type narrowing"
+    "keywords": "Seven, TypeScript, custom, content types, @plone/types, ContentTypeMap, type narrowing"
 ---
 
 # Custom content types
