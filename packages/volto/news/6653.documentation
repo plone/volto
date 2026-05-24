@@ -1,0 +1,3 @@
+Improved the documentation of icons and the configuration and component registry.
+Added documentation on how to customize the toolbar and create menus using the new `ToolbarMenu` component.
+Added documentation on how to customize content type icons. @arybakov05
