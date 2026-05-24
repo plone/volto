@@ -70,14 +70,17 @@ export default function ContentForm({
         <div
           id="main"
           className={clsx(
-            'grid transition-[grid-template-columns] duration-200 ease-linear',
+            `
+              grid grid-rows-[minmax(100vh,auto)] transition-[grid-template-columns] duration-200
+              ease-linear
+            `,
             {
               'grid-cols-[1fr_300px]': !collapsed,
               'grid-cols-[1fr_0px]': collapsed,
             },
           )}
         >
-          <main className="mx-4 mt-8 h-screen">
+          <main className="mx-4 pt-8">
             <Tabs
               tabs={[
                 {
@@ -150,8 +153,12 @@ export default function ContentForm({
                 <Checkbox />
               </button>
             </Plug>
-            <Plug pluggable="toolbar-top" id="button-cancel">
-              <Link aria-label="Cancel" href="/">
+            <Plug
+              pluggable="toolbar-top"
+              id="button-cancel"
+              dependencies={[content['@id']] as any}
+            >
+              <Link aria-label="Cancel" href={content['@id']}>
                 <Close />
               </Link>
             </Plug>

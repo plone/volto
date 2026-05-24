@@ -6,7 +6,7 @@ import {
   GridListItem,
 } from '@plone/components/quanta';
 import { useEffect, useState, useRef } from 'react';
-import { isSelectable, getItemLabel, isSingleMode } from './utils';
+import { isSelectable, getItemLabel } from './utils';
 import { ArrowleftIcon, ListIcon } from '@plone/components/Icons';
 import type { PressEvent } from 'react-aria-components';
 import { useObjectBrowserNavigation } from './ObjectBrowserNavigationContext';
@@ -54,16 +54,12 @@ export function ObjectBrowserWidgetBody() {
   }, [currentPath, loading, items]);
 
   const handleNavigation = (item: Brain) => {
+    if (!item.is_folderish) return;
     navigateTo(item['@id']);
     setSearchMode(false);
   };
 
   const { widgetOptions } = rest;
-  const maximumSelectionSize =
-    widgetOptions?.pattern_options?.maximumSelectionSize;
-  const selectionMode =
-    isSingleMode(mode) || maximumSelectionSize === 1 ? 'single' : 'multiple';
-  const selectionBehavior = maximumSelectionSize === 1 ? 'replace' : 'toggle';
 
   return (
     <div className="flex h-full w-full flex-col pt-4 pb-8">
@@ -147,10 +143,11 @@ export function ObjectBrowserWidgetBody() {
                 count: items?.length ?? 0,
               })}`}
           key={`${viewMode}-${currentPath}`} // Force re-render on viewMode or path change
-          selectionMode={selectionMode}
+          selectionMode={mode === 'single' ? 'single' : 'multiple'}
           disabledBehavior="selection"
           escapeKeyBehavior="none"
-          selectionBehavior={selectionBehavior}
+          selectionBehavior={mode === 'single' ? 'replace' : 'toggle'}
+          dependencies={[selectedItems]}
           items={items ?? []}
           layout={viewMode ? 'grid' : 'stack'}
           // Todo: better styling
@@ -186,15 +183,10 @@ export function ObjectBrowserWidgetBody() {
           }
         >
           {(item) => {
-            // Convert selectedItems IDs to actual Brain objects for isSelectable
-            const selectedItemObjects = selectedItems
-              .map((id) => items?.find((item) => item['@id'] === id))
-              .filter(Boolean) as Brain[];
-
             const disabled = !isSelectable(item, {
               ...widgetOptions,
               mode,
-              items: selectedItemObjects,
+              selectedItemIds: selectedItems,
             });
             const isSelected = selectedItems.includes(item['@id']);
             const reviewState = item.review_state || undefined;
@@ -205,7 +197,9 @@ export function ObjectBrowserWidgetBody() {
                 textValue={getItemLabel(t, item, isSelected, disabled)}
                 aria-label={getItemLabel(t, item, isSelected, disabled)}
                 data-selectable={!disabled}
-                onAction={() => handleNavigation(item)}
+                onAction={
+                  mode !== 'single' ? () => handleNavigation(item) : undefined
+                }
                 isDisabled={disabled}
                 className={itemVariants({
                   viewMode: viewMode ? 'grid' : 'list',
