@@ -19,7 +19,14 @@ const messages = defineMessages({
 });
 
 const TeaserDefaultTemplate = (props) => {
-  const { className, data, isContainer: inGrid, isEditMode, style, isLCPBlock } = props;
+  const {
+    className,
+    data,
+    isContainer: inGrid,
+    isEditMode,
+    style,
+    isLCPBlock,
+  } = props;
   const intl = useIntl();
   const href = data.href?.[0];
   const image = data.preview_image?.[0];

@@ -154,6 +154,7 @@ exports[`renders a youtube video body component 1`] = `
 >
   <div
     className="ui 16:9 embed"
+    loading="lazy"
     onClick={[Function]}
     onKeyPress={[Function]}
     tabIndex={0}
@@ -177,6 +178,7 @@ exports[`renders a youtube video body component in edit mode 1`] = `
 >
   <div
     className="ui 16:9 embed"
+    loading="lazy"
     onClick={[Function]}
     onKeyPress={[Function]}
     tabIndex={0}
