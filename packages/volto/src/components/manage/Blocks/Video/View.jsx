@@ -28,7 +28,7 @@ const View = (props) => {
         className,
       )}
     >
-      <Body data={data} loading={isLCPBlock ? 'eager' : 'lazy'} />
+      <Body data={data} isLCPBlock={isLCPBlock} />
     </div>
   );
 };
