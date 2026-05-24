@@ -1,9 +1,4 @@
-/**
- * History component.
- * @module components/manage/History/History
- */
-
-import React, { useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useCallback } from 'react';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -50,11 +45,6 @@ const messages = defineMessages({
   },
 });
 
-/**
- * @function History
- * @param {Object} props
- * @returns {JSX.Element}
- */
 const History = (props) => {
   const { staticContext } = props;
   const isClient = useClient();
@@ -77,6 +67,10 @@ const History = (props) => {
     },
     [dispatch, pathname],
   );
+
+  useEffect(() => {
+    dispatch(getHistory(getBaseUrl(pathname)));
+  }, [dispatch, pathname]);
 
   const processedEntries = useMemo(() => {
     const result = reverse(concat(entries));
@@ -157,7 +151,7 @@ const History = (props) => {
           </Table.Header>
           <Table.Body>
             {map(processedEntries, (entry) => (
-              <Table.Row key={entry.time}>
+              <Table.Row key={entry.version ?? entry.time}>
                 <Table.Cell>
                   {('version' in entry && entry.version > 0 && (
                     <Link

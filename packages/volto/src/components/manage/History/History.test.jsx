@@ -92,7 +92,7 @@ describe('History', () => {
       <Provider store={store}>
         <CookiesProvider>
           <MemoryRouter initialEntries={['/blog']}>
-            <History location={{ pathname: '/blog' }} />
+            <History />
             <div id="toolbar"></div>
           </MemoryRouter>
         </CookiesProvider>
@@ -163,7 +163,7 @@ describe('History', () => {
       <Provider store={store}>
         <CookiesProvider>
           <MemoryRouter initialEntries={['/blog']}>
-            <History location={{ pathname: '/blog' }} />
+            <History />
             <div id="toolbar"></div>
           </MemoryRouter>
         </CookiesProvider>
