@@ -1,6 +1,7 @@
-import { Content } from '../index';
+import type { ContentBase } from '../base';
 
-export interface EventCT extends Content {
+export interface EventContent extends ContentBase {
+  '@type': 'Event';
   start: string;
   end: string;
   whole_day: boolean;
@@ -12,4 +13,10 @@ export interface EventCT extends Content {
   contact_phone: string;
   attendees: string[];
   event_url: string;
+}
+
+declare module '../index' {
+  interface ContentTypeMap {
+    Event: EventContent;
+  }
 }

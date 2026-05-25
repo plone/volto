@@ -13,6 +13,7 @@ vi.mock('react-router', () => ({
   })),
   useRouteLoaderData: vi.fn(() => ({
     content: {
+      '@type': 'File',
       title: 'My file',
       description: 'This is a file.',
       file: {

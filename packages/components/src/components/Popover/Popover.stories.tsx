@@ -1,7 +1,8 @@
 import React from 'react';
 import { Popover } from './Popover';
 import { Button } from '../Button/Button';
-import { DialogTrigger, Heading } from 'react-aria-components';
+import { DialogTrigger } from '../Dialog/Dialog';
+import { Heading } from 'react-aria-components';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
