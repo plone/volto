@@ -100,10 +100,9 @@ context('Special fields Acceptance Tests', () => {
       cy.get('#toolbar-save').click();
       cy.wait('@save');
 
-      cy.get('.test-block').should(
-        'contain.text',
-        '<p>   hello   world   </p>',
-      );
+      cy.get('.test-block')
+        .invoke('text')
+        .should('include', '<p>   hello   world   </p>');
     });
 
     it('break list on empty li element', () => {
