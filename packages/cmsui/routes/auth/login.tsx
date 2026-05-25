@@ -103,18 +103,13 @@ export default function Login() {
       <div className="flex h-full flex-col justify-center p-15">
         <div className="relative flex h-full flex-1 flex-col items-center justify-center">
           <Link
-            className={`
-              focus:bg-quanta-artic focus:shadow-sm
-              absolute top-0 right-0 flex cursor-default items-center justify-center rounded-md
-              border-0 bg-quanta-air p-1 px-4.5 py-3 text-center text-xl/6 font-medium
-              text-quanta-iron transition
-              hover:bg-quanta-snow hover:shadow-sm
-              active:bg-quanta-silver active:shadow-md
-              has-[svg]:rounded-full has-[svg]:p-3 has-[svg]:text-xs has-[svg]:text-quanta-iron
-              pressed:bg-quanta-cobalt pressed:[&_svg]:text-white
-            `}
-            aria-label={t('cmsui.auth.returnToHome')}
+            className="absolute top-0 right-0"
+            variant="icon"
+            accent
+            size="L"
             href="/"
+            aria-label={t('cmsui.auth.returnToHome')}
+            asButton
           >
             <CloseSVG />
           </Link>
