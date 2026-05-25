@@ -7,6 +7,7 @@ export { default as ScrollToTop } from "@plone/volto/helpers/ScrollToTop/ScrollT
 export { default as langmap } from "./LanguageMap/LanguageMap";
 export { default as Helmet } from "./Helmet/Helmet";
 export { messages } from "./MessageLabels/MessageLabels";
+export { formatMessageWithFallback } from "./I18n/I18n";
 export { asyncConnect } from "./AsyncConnect";
 export { useDetectClickOutside } from "./Utils/useDetectClickOutside";
 export { useEvent } from "./Utils/useEvent";

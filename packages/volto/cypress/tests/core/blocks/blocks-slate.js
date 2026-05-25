@@ -16,4 +16,10 @@ describe('Slate Block Tests', () => {
     cy.navigate('/my-page/edit');
     cy.wait('@schema');
   });
+
+  it('No border in input', () => {
+    cy.get('.block-editor-slate [role=textbox]')
+      .click()
+      .should('have.css', 'outline-style', 'none');
+  });
 });

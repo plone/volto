@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-05T13:04:20.470Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Leonid Toporkov <leonid.toporkov@gmail.com>\n"
+"PO-Revision-Date: 2026-05-10 15:49+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: ru\n"
-"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/plone/volto-main/ru/>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: ru\n"
 "Language-Name: Русский\n"
 "Preferred-Encodings: utf-8\n"
@@ -466,6 +467,8 @@ msgstr "Доступные правила контента:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -510,6 +513,17 @@ msgstr "Базовый поисковый запрос"
 msgid "Block"
 msgstr "Блок"
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -546,10 +560,10 @@ msgstr "Найдите изображение на сайте, или перет
 msgid "BulkUploadAltUrls"
 msgstr "Массовая загрузка CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "По умолчанию права наследуются от контейнера элемента. Если это отключить,то будут действительны только явно назначенные права. Символ {inherited} указывает на унаследованное значение. Аналогично, символ {global} указывает на глобальную роль, которая управляется администратором сайта."
+msgstr "По умолчанию наследуются права доступа из контейнера этого элемента. Если вы отключите это, будут действовать только явно заданные права общего доступа. В обзоре наследуемые значения явно помечаются как 'Наследуемое значение' и получают зелёную галочку {inherited}. Аналогично, роли, управляемые администратором сайта, помечаются как 'Глобальная роль' и получают синюю галочку {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -684,6 +698,11 @@ msgstr "Выбрать файл"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Очистить"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Очистить URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -843,6 +862,11 @@ msgstr "Унаследованные Правила контента"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr "Контент который связан с или ссылается на {title}"
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Заголовок содержимого"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1330,6 +1354,11 @@ msgstr "Письмо отправлено"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Ошибка при встраивании кода, следуйте инструкциям и попробуйте снова."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1648,6 +1677,11 @@ msgstr "Починить связи"
 msgid "Fixed width table cells"
 msgstr "Столбцы фиксированной ширины"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Сфокусироваться на"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1710,11 +1744,6 @@ msgstr "Общие"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Глобальная роль"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Встроенный блок Google Maps"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -1998,6 +2027,11 @@ msgstr "Неверный источник тизера"
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "Нельзя одновременно задать пароль и запросить отправку сообщения о сбросе пароля по электронной почте. Вам нужно выбрать что-то одно."
+
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2326,6 +2360,16 @@ msgstr "Средний"
 msgid "Membership updated"
 msgstr "Членство обновлено"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2641,6 +2685,12 @@ msgstr "Размер объекта"
 msgid "Occurences"
 msgstr "Повторения"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2649,7 +2699,12 @@ msgstr "ОК"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Разрешены только 7-битные символы (ASCII). Не может содержать заглавные буквы, специальные символы: <, >, &, #, /, ? или другие, которые недопустимы в URL. Не может начинаться с: _, aq_, @@, ++. Не может заканчиваться на __. Не может быть: request,contributors, ., .., "". Не может содержать новые строки."
+msgstr "Разрешены только 7-битные символы (ASCII). Не может содержать заглавные буквы, специальные символы: <, >, &, #, /, ? или другие, которые недопустимы в URL. Не может начинаться с: _, aq_, @@, ++. Не может заканчиваться на __. Не может быть: request,contributors, ., .., \"\". Не может содержать новые строки."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Открыть браузер URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2725,6 +2780,11 @@ msgstr ""
 #. Default: "Paste blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
 msgstr ""
 
 #. Default: "Perform the following actions:"
@@ -2823,6 +2883,16 @@ msgstr ""
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} — система управления контентом с открытым исходным кодом"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Всплывающее окно закрыто."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Всплывающее окно открыто: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4154,6 +4224,16 @@ msgstr "Управление URL"
 msgid "URL Management for {title}"
 msgstr "Управление URL для {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL отсутствует"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4564,10 +4644,10 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Вы пытаетесь получить доступ к защищенному ресурсу, пожалуйста, сначала выполните {login}."
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4714,6 +4794,11 @@ msgstr "Общие"
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
 msgstr "Сравнить с языком"
+
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4933,13 +5018,10 @@ msgstr "Список"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "Загрузка"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "войти"
 
 #. Default: "Maps"
 #: config/Blocks
@@ -4992,6 +5074,11 @@ msgstr "Нет"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "Нет состояния"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5303,6 +5390,26 @@ msgstr "Текст"
 #: config/Blocks
 msgid "title"
 msgstr "Заголовок"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Ошибка"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Информация"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Успех"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Предупреждение"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

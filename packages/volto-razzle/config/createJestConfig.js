@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const clearConsole = require('react-dev-utils/clearConsole');
-const logger = require('razzle-dev-utils/logger');
+const logger = require('@plone/razzle-dev-utils/logger');
 
 // first search for setupTests.ts file
 // if .ts file not exists then looks for setupTests.js
