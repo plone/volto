@@ -1,4 +1,4 @@
-d---
+---
 myst:
   html_meta:
     "description": "How to access and modify the configuration registry"
