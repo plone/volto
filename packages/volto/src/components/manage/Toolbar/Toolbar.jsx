@@ -399,7 +399,9 @@ class Toolbar extends Component {
     const button =
       doesNodeContainClick(this.toolbarRef.current, e) &&
       this.findAncestor(target, 'button');
-    if (button && button === this.buttonRef.current) return;
+    if (button && button === this.buttonRef.current) {
+      return;
+    }
 
     this.closeMenu();
   };
@@ -445,7 +447,10 @@ class Toolbar extends Component {
             }
             ref={this.toolbarWindow}
             onBlur={(e) => {
-              if (!this.toolbarWindow.current?.contains(e.relatedTarget)) {
+              if (
+                e.relatedTarget &&
+                !this.toolbarWindow.current?.contains(e.relatedTarget)
+              ) {
                 this.toolbarRef.current
                   ?.querySelector('button.toolbar-handler-button')
                   ?.focus();
