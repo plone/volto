@@ -19,7 +19,7 @@ The key motivation behind the component registry is to simplify the process of c
 Existing components can be overridden without {term}`shadowing` by registering a new component using the name of an existing component.
 Since the component registry is globally available, this means that all code pointing to this component will now use the newly registered component instead.
 
-Additionally, it's possible to modify the component registrations with a given array of dependencies.
+Additionally, it's possible to modify the component registrations with dependencies.
 
 ## Registering components by name using `config.registerComponent`
 
@@ -53,7 +53,7 @@ Please notice that you are able to pass `props` down to the retrieved component.
 ## Adapt components with dependencies
 
 Additionally, components can be registered with dependencies.
-This allows calling a component by its name and conditionally by its dependencies, according to the use case.
+This allows calling a component by its name and optionally by its dependencies, according to the use case.
 
 To register a component with dependencies, either pass a string or an array of strings.
 
@@ -105,9 +105,10 @@ If the content type is a `News Item`, then it will retrieve the `Teaser` compone
 ```
 
 However, if the content type is different from `News Item`, no component is rendered, because the registry does not automatically fall back to the `MyTeaserDefaultComponent` registered without dependencies.
-If the `MyTeaserDefaultComponent` should be rendered when the dependency is not `News Item`, a manual fallback mechanism is needed:
+If the `MyTeaserDefaultComponent` should be rendered when the dependency is not `News Item`, a manual fallback mechanism should be registered as a conditional expression:
 
-```jsx
+```{code-block} jsx
+:emphasize-lines: 4
 const Component = config.getComponent({
     name: 'Teaser',
     dependencies: props.content['@type']
