@@ -8,6 +8,35 @@
 
 <!-- towncrier release notes start -->
 
+## 2.7.2 (2026-05-13)
+
+### Internal
+
+- Removed tsconfig development dependency. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+- Bump vite from 5.4.9 to 6.4.2. [#8082](https://github.com/plone/volto/issues/8082)
+
+## 2.7.1 (2026-04-07)
+
+### Internal
+
+- Update dependencies: tmp, vitest. @davisagli 
+
+## 2.7.0 (2026-01-12)
+
+### Feature
+
+- Enhance registry utilities type definitions with typed method signatures. @ompharate @sneridagh [#7652](https://github.com/plone/volto/issues/7652)
+
+## 2.6.0 (2025-11-03)
+
+### Feature
+
+- Enable detection of `theme` key in add-ons. @sneridagh [#7563](https://github.com/plone/volto/issues/7563)
+
+### Internal
+
+- Update to @types/node 22 @sneridagh [#7538](https://github.com/plone/volto/issues/7538)
+
 ## 2.5.4 (2025-06-12)
 
 ### Bugfix

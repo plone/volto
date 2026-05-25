@@ -1,6 +1,6 @@
 ## Documentation
 
-[Volto Hands-On](https://training.plone.org/voltohandson/index.html) is a training on how to create your own website.
+[Volto Hands-On](https://2024.training.plone.org/voltohandson/index.html) is a training on how to create your own website.
 
 ## Quick Start
 

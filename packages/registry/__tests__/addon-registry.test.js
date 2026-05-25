@@ -61,7 +61,7 @@ describe('AddonRegistry - get()', () => {
         replacement: `${base}/node_modules/test-released-source-addon/src/customizations/LanguageSwitcher.js`,
       },
     ]);
-    expect(theme).toStrictEqual(undefined);
+    expect(theme).toStrictEqual('test-released-source-addon-theme');
   });
 });
 
@@ -104,6 +104,7 @@ describe('AddonRegistry - Project', () => {
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
         packageJson: `${base}/node_modules/test-released-addon/package.json`,
+        theme: 'test-released-addon-theme',
         addons: ['test-released-unmentioned:extra1,extra2'],
         isRegisteredAddon: true,
         tsConfigPaths: null,
@@ -115,6 +116,7 @@ describe('AddonRegistry - Project', () => {
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         name: 'test-released-source-addon',
         packageJson: `${base}/node_modules/test-released-source-addon/package.json`,
+        theme: 'test-released-source-addon-theme',
         razzleExtender: `${base}/node_modules/test-released-source-addon/razzle.extend.js`,
         addons: [],
         isRegisteredAddon: true,
@@ -198,6 +200,22 @@ describe('AddonRegistry - Project', () => {
     ]);
   });
 
+  it('uses the theme from the last addon declaring one', () => {
+    const base = path.join(
+      import.meta.dirname,
+      'fixtures',
+      'test-volto-project',
+    );
+    const { registry } = AddonRegistry.init(base);
+    expect(registry.packages['test-released-addon'].theme).toBe(
+      'test-released-addon-theme',
+    );
+    expect(registry.packages['test-released-source-addon'].theme).toBe(
+      'test-released-source-addon-theme',
+    );
+    expect(registry.theme).toBe('test-released-source-addon-theme');
+  });
+
   it('provides customization paths declared in a Volto project', () => {
     const base = path.join(
       import.meta.dirname,
@@ -231,6 +249,28 @@ describe('AddonRegistry - Project', () => {
       '@root/marker': `${base}/node_modules/test-released-source-addon/src/customizations/@root/marker.js`,
       'test-released-source-addon/index': `${base}/addons/test-addon/src/custom-addons/test-released-source-addon/index.js`,
     });
+  });
+});
+
+describe('AddonRegistry - theme precedence', () => {
+  const base = path.join(import.meta.dirname, 'fixtures', 'test-volto-project');
+  const originalEnv = process.env;
+
+  beforeEach(() => {
+    vi.resetModules();
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
+  it('keeps environment theme override even when addons declare themes', () => {
+    process.env = {
+      ...originalEnv,
+      THEME: 'environment-theme',
+    };
+    const { registry } = AddonRegistry.init(base);
+    expect(registry.theme).toBe('environment-theme');
   });
 });
 

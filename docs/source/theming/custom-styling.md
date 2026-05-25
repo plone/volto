@@ -159,3 +159,7 @@ underlined, then in `theme/collections/breadcrumb.overrides`:
     text-decoration: underline;
 }
 ```
+
+## Accessibility CSS classes
+
+See {doc}`../contributing/accessibility-guidelines` for the list of utility CSS classes provided by Volto for accessibility purposes.

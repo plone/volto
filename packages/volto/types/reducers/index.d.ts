@@ -50,6 +50,7 @@ declare namespace reducers {
     export { site };
     export { navroot };
 }
+import { intlReducer } from 'react-intl-redux';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
 import actions from '@plone/volto/reducers/actions/actions';
 import addons from '@plone/volto/reducers/addons/addons';

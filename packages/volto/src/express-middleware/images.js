@@ -4,6 +4,7 @@ import { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWith
 const HEADERS = [
   'content-type',
   'content-disposition',
+  'cache-status',
   'cache-control',
   'x-sendfile',
   'x-accel-redirect',

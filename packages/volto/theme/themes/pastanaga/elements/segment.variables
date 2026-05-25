@@ -61,4 +61,4 @@
 
 /* Ordinality */
 @secondaryBackground: @tealBackground;
-@secondaryColor: @teal;
+@secondaryColor: @textColor;

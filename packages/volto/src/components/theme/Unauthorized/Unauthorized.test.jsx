@@ -9,8 +9,35 @@ import Unauthorized from './Unauthorized';
 const mockStore = configureStore();
 
 describe('Unauthorized', () => {
-  it('renders a not found component', () => {
+  it('renders an unauthorized component', () => {
     const store = mockStore({
+      userSession: {
+        token: null,
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      apierror: {
+        message: 'You are not authorized to access this resource',
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Unauthorized />
+        </MemoryRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+  });
+
+  it('renders an unauthorized component for authenticated user', () => {
+    const store = mockStore({
+      userSession: {
+        token: '1234',
+      },
       intl: {
         locale: 'en',
         messages: {},

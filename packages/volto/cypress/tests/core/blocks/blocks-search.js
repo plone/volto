@@ -42,7 +42,6 @@ describe('Search Block Tests', () => {
     cy.removeContent({ path: 'my-event' });
     cy.removeContent({ path: 'my-search-page' });
   });
-
   it('Search block - test checkbox facet', () => {
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
@@ -499,6 +498,23 @@ describe('Search Block Tests', () => {
   });
 
   it('Search block - test on edit sort on and sort order', () => {
+    // Publish the created contents with different effective dates
+    cy.setWorkflow({
+      path: 'my-page',
+      effective: '2025-01-01T08:00:00',
+      expires: '2025-12-31T08:00:00',
+    });
+    cy.setWorkflow({
+      path: 'my-folder',
+      effective: '2024-01-01T08:00:00',
+      expires: '2024-12-31T08:00:00',
+    });
+    cy.setWorkflow({
+      path: 'my-event',
+      effective: '2023-01-01T08:00:00',
+      expires: '2023-12-31T08:00:00',
+    });
+
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
@@ -540,7 +556,7 @@ describe('Search Block Tests', () => {
     // reverse order
     cy.get('label[for=field-sort_order_boolean-2-query]').click();
     //check if the sorting order is working
-    cy.get('.listing-item').first().contains('My Event');
+    cy.get('.listing-item').first().contains('My page');
     cy.get('#select-listingblock-sort-on').click();
     cy.get('.react-select__menu .react-select__group')
       .first()
@@ -608,15 +624,22 @@ describe('Search Block Tests', () => {
       '#field-sortOnOptions > .react-select__control > .react-select__value-container ',
     ).click();
     cy.findByText('Effective date').click();
-    //save page
-    cy.get('#toolbar-save').click();
+
+    // Save the page
+    cy.get('#toolbar-save > .icon').click();
+
+    cy.visit('/my-search-page');
+    cy.wait('@content');
     // then we are able to see label and sort option
-    cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('#select-search-sort-on').click();
-    cy.findByText('Effective date').click({ force: true });
-    cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
-    ).contains('Effective date');
+    cy.get('.search-react-select-container').as('selectContainer').click();
+    cy.get('@selectContainer').should('contain', 'Effective date');
+
+    cy.findByText('Effective date').click();
+
+    cy.get('div#select-search-sort-on.search-react-select-container').contains(
+      'Effective date',
+    );
+
     // Verify the presence of Ascending button
     cy.get('button[title="Ascending"]').should('be.visible');
     // Verify the presence of Descending button
@@ -651,11 +674,18 @@ describe('Search Block Tests', () => {
     cy.get('#field-sortOnOptions').click();
     cy.findByText('Effective date').click();
     // save page
-    cy.get('#toolbar-save').click();
+    cy.get('#toolbar-save > .icon').click();
+
+    cy.visit('/my-search-page');
+    cy.wait('@content');
     // then we are able to see label and sort option
     cy.get('.sort-label').should('have.text', 'Sort on');
-    cy.get('#select-search-sort-on').click();
-    cy.findByText('Effective date').click({ force: true });
+
+    cy.get('.search-react-select-container').as('selectContainer').click();
+    cy.get('@selectContainer').should('contain', 'Effective date');
+
+    cy.findByText('Effective date').click();
+
     cy.get(
       'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
     ).contains('Effective date');

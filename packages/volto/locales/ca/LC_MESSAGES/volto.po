@@ -22,6 +22,11 @@ msgstr ""
 msgid "<p>Add some HTML here</p>"
 msgstr "<p>Afegeix codi HTML aquí</p>"
 
+#. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+#: helpers/MessageLabels/MessageLabels
+msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
+msgstr ""
+
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
 msgid "Account Registration Completed"
@@ -532,7 +537,7 @@ msgstr "Navega pel lloc, deixa anar una imatge o escriu una URL"
 msgid "BulkUploadAltUrls"
 msgstr "Càrrega massiva de CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Per defecte, els permisos del contenidor d'aquest element són heretats. Si desactiveu aquesta opció, només seran vàlids els permisos de compartició definits explícitament. A la vista general, el símbol {inherited} indica un valor heretat. De la mateixa manera, el símbol {global} indica un rol global, que és gestionat per l'administrador del lloc."
@@ -561,6 +566,7 @@ msgstr "No es pot editar la plantilla per al tipus de contingut <strong>{type}</
 #: components/manage/Add/Add
 #: components/manage/Contents/ContentsDeleteModal
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -668,6 +674,16 @@ msgstr "Trieu un fitxer"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Clar"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Esborra l'URL"
+
+#. Default: "Clear date and time"
+#: components/manage/Widgets/DatetimeWidget
+msgid "Clear date/time"
+msgstr ""
 
 #. Default: "Clear filters"
 #: components/manage/Blocks/Search/components/FilterList
@@ -822,6 +838,11 @@ msgstr "Regles de contingut de les carpetes pare"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr "Contingut que enllaça o fa referència a {title}"
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Títol del contingut"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1195,7 +1216,7 @@ msgstr "Descarrega el fitxer"
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó "Navega"."
+msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/FileWidget
@@ -1214,6 +1235,11 @@ msgstr "Deixeu anar el fitxer aquí per pujar un fitxer nou"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop files here ..."
 msgstr "Deixeu fitxers aquí..."
+
+#. Default: "Drop files here to upload"
+#: components/manage/Contents/DropZoneContent
+msgid "Drop files here to upload"
+msgstr ""
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1472,6 +1498,11 @@ msgstr "URLs alternatives existents per a aquest element"
 msgid "Expand sidebar"
 msgstr "Amplieu la barra lateral"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Amplieu la barra d’eines"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
@@ -1544,6 +1575,7 @@ msgstr "El fitxer no és del tipus acceptat {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Mida de l'arxiu"
 
@@ -1554,11 +1586,13 @@ msgstr "Arxiu"
 
 #. Default: "Filename"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Filename"
 msgstr "Nom de l'arxiu"
 
 #. Default: "Files uploaded: {uploadedFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
 msgstr "Fitxers pujats: {uploadedFiles}"
 
@@ -2042,6 +2076,7 @@ msgstr "Data de l'últim comentari"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Last modified"
 msgstr "Última modificació"
 
@@ -2254,6 +2289,11 @@ msgstr "Mapes"
 #: components/manage/Blocks/Maps/schema
 msgid "Maps URL"
 msgstr "URL del mapa"
+
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2594,10 +2634,15 @@ msgstr "esdeveniment(s)"
 msgid "Ok"
 msgstr "D'acord"
 
-#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
+#. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
-msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., "". Cannot contain new lines."
-msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., "". No pot contenir salts de línia."
+msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
+msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., \"\". No pot contenir salts de línia."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Obre el navegador d'URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2772,6 +2817,16 @@ msgstr "Fundació Plone"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM de codi obert"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Finestra emergent tancada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Finestra emergent oberta: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
@@ -2792,6 +2847,11 @@ msgstr "Desenvolupat amb Plone i Python"
 msgid "Preferences"
 msgstr "Preferències"
 
+#. Default: "Press Enter to browse files from your computer."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Prem Enter per explorar els fitxers del teu ordinador."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -2800,6 +2860,7 @@ msgstr "Prepareu el vostre codi"
 #. Default: "Preview"
 #: components/manage/Blocks/HTML/Edit
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Preview"
 msgstr "Vista prèvia"
 
@@ -2896,7 +2957,7 @@ msgstr "Referenciant aquest element com a relacionat"
 msgid "Referencing this item with {relationship}"
 msgstr "Referenciant aquest element amb {relationship}"
 
-#. Default: "Refresh source content"
+#. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
 msgstr "Actualitza el contingut d'origen"
@@ -2940,6 +3001,11 @@ msgstr "Les relacions són editables amb plone.api >= 2.0.3."
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
 msgstr "Relacions actualitzades"
+
+#. Default: "Release to add file(s) to this folder"
+#: components/manage/Contents/DropZoneContent
+msgid "Release to add file(s) to this folder"
+msgstr ""
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3965,6 +4031,7 @@ msgstr "Total de comentaris"
 
 #. Default: "Total files to upload: {totalFiles}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "Total files to upload: {totalFiles}"
 msgstr "Total fitxers per carregar: {totalFiles}"
 
@@ -4070,6 +4137,16 @@ msgstr "Gestió d'URL"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "Gestió d'URL per a {title}"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr "L'URL no és vàlid"
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta l'URL"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -4185,6 +4262,11 @@ msgstr "Passos d'actualització"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Pujar"
+
+#. Default: "Upload Files ({count})"
+#: components/manage/Contents/DropZoneContent
+msgid "Upload Files ({count})"
+msgstr ""
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4471,6 +4553,11 @@ msgstr "Estàs a punt d'eliminar tots els elements d'aquesta carpeta."
 msgid "You are trying to access a protected resource, please {login} first."
 msgstr "Esteu provant d'accedir a un recurs protegit, primer {login} ."
 
+#. Default: "You are trying to access a protected resource."
+#: components/theme/Unauthorized/Unauthorized
+msgid "You are trying to access a protected resource."
+msgstr ""
+
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "You are using an outdated browser"
@@ -4485,6 +4572,11 @@ msgstr "Pots afegir un comentari omplint el formulari següent. Format de text s
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Podeu controlar qui pot veure i editar el vostre element mitjançant la llista següent."
+
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4556,7 +4648,7 @@ msgstr "Introdueix el nom complet, per exemple Joan Garcia."
 msgid "addUserFormPasswordDescription"
 msgstr "Introdueix la nova contrasenya. Mínim 8 caràcters."
 
-#. Default: "Enter a user name, usually something like "jsmith". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
+#. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
 msgstr "Introdueix un nom d'usuari, normalment alguna cosa com 'jgarcia'. Sense espais ni caràcters especials. Els noms d'usuari i contrasenya són sensibles a majúscules i minúscules, assegura't que el bloqueig de majúscules no estigui activat. Aquest és el nom per iniciar sessió."
@@ -4622,6 +4714,11 @@ msgstr "Interval de dates"
 msgid "delete"
 msgstr "Suprimeix"
 
+#. Default: "delete {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "delete_block"
+msgstr ""
+
 #. Default: "You are using {browsername} {browserversion} which is deprecated by its vendor. That means that it does not get security updates and it is not ready for current modern web features, which deteriorates the user experience. Please upgrade to a modern browser."
 #: components/theme/OutdatedBrowser/OutdatedBrowser
 msgid "deprecated_browser_notice_message"
@@ -4646,6 +4743,11 @@ msgstr "La vostra sol·licitud de restabliment de la contrasenya s'ha enviat per
 #: components/manage/Contents/ContentsItem
 msgid "draft"
 msgstr "Esborrany"
+
+#. Default: "drag {type} block"
+#: components/manage/Blocks/Block/EditBlockWrapper
+msgid "drag_block"
+msgstr ""
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4921,6 +5023,16 @@ msgstr "privat"
 msgid "published"
 msgstr "Publicat"
 
+#. Default: "Current path (./)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-currentPath"
+msgstr ""
+
+#. Default: "Parent path (../)"
+#: components/manage/Widgets/QueryWidget
+msgid "query-widget-parentPath"
+msgstr ""
+
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
 msgid "querystring-widget-select"
@@ -4945,6 +5057,11 @@ msgstr "referències"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
 msgstr "es refereix a"
+
+#. Default: "Result count"
+#: components/manage/Contents/Contents
+msgid "resultCount"
+msgstr ""
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -5176,6 +5293,26 @@ msgstr "Text"
 msgid "title"
 msgstr "Títol"
 
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Error"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informació"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Èxit"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertiment"
+
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
 #: config/Blocks
@@ -5241,6 +5378,7 @@ msgstr "Sí"
 
 #. Default: "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 #: components/manage/Contents/ContentsUploadModal
+#: components/manage/Contents/DropZoneContent
 msgid "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 msgstr "{count, plural, one {Upload {count} file} other {Upload {count} files}}"
 

@@ -8,6 +8,7 @@ import {
   getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
+  getInvalidBlockLayoutIds,
   applyBlockDefaults,
   getBlocksHierarchy,
   addBlock,
@@ -260,16 +261,18 @@ const BlocksForm = (props) => {
   const editBlockWrapper = children || defaultBlockWrapper;
 
   // Remove invalid blocks on saving
-  // Note they are alreaady filtered by DragDropList, but we also want them
+  // Note they are already filtered by DragDropList, but we also want them
   // to be removed when the user saves the page next. Otherwise the invalid
   // blocks would linger for ever.
-
-  for (const [n, v] of blockList) {
-    if (!v) {
-      const newFormData = deleteBlock(properties, n, intl);
-      onChangeFormData(newFormData);
+  useEffect(() => {
+    const invalidBlockIds = getInvalidBlockLayoutIds(properties);
+    if (invalidBlockIds.length === 0) return;
+    let newFormData = properties;
+    for (const id of invalidBlockIds) {
+      newFormData = deleteBlock(newFormData, id, intl);
     }
-  }
+    onChangeFormData(newFormData);
+  }, [properties, intl, onChangeFormData]);
 
   useEvent('voltoClickBelowContent', () => {
     if (!config.experimental.addBlockButton.enabled || !isMainForm) return;

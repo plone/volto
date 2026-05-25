@@ -8,6 +8,79 @@
 
 <!-- towncrier release notes start -->
 
+## 18.10.0 (2026-05-19)
+
+### Feature
+
+- Update es, ta, fi, gl, nl translations @macagua @TamilNeram @Ricky-Tigg @xulioxesus @ingovb [#8195](https://github.com/plone/volto/issues/8195)
+
+### Internal
+
+- Update dependency: `lodash` 4.18.1. @davisagli 
+
+## 18.9.2 (2026-05-13)
+
+### Feature
+
+- Complete translations for es @cyphra, @erral @macagua [#8178](https://github.com/plone/volto/issues/8178)
+
+### Bugfix
+
+- fix LinkEditor not opening from SlateEditor @CannedShroud [#4130](https://github.com/plone/volto/issues/4130)
+
+## 18.9.1 (2026-04-16)
+
+### Internal
+
+- Update devDependency: jsdom 23.0.0. @wesleybl [#8107](https://github.com/plone/volto/issues/8107)
+
+## 18.9.0 (2026-04-07)
+
+### Feature
+
+- Add gl translations @xulioxesus
+  Fix nl translation @ingovdb [#7941](https://github.com/plone/volto/issues/7941)
+
+### Internal
+
+- Run volto-slate test suite as part of the Vitest multi-project setup. @Abhishek-17h [#7892](https://github.com/plone/volto/issues/7892)
+- Update dependency: lodash 4.17.23. @davisagli 
+
+## 18.8.1 (2026-03-02)
+
+### Bugfix
+
+- Use Slate Table block when pasting tables snippets (instead of deprecated DraftJS) @cekk [#7865](https://github.com/plone/volto/issues/7865)
+
+## 18.8.0 (2025-12-02)
+
+### Feature
+
+- cross language support and umlaut fix for slash menu @Tishasoumya-02 [#7657](https://github.com/plone/volto/issues/7657)
+
+### Bugfix
+
+- Ensure Delete at end of a text block merges the next text block and removes it; if the next block is non-text (e.g., Description), do nothing. @aryan7081 [#7263](https://github.com/plone/volto/issues/7263)
+
+## 18.7.1 (2025-10-10)
+
+### Bugfix
+
+- Fix Backspace at start of a text block: merge current block into previous inline (no extra newline), delete the current block, and place the caret before the first character of the merged content. Also handle Enter immediately after such inline merge by splitting back into two blocks. @aryan7081 [#7373](https://github.com/plone/volto/issues/7373)
+
+## 18.7.0 (2025-10-07)
+
+### Feature
+
+- Update translations: eu @erral [#7394](https://github.com/plone/volto/issues/7394)
+
+## 18.6.0 (2025-09-26)
+
+### Feature
+
+- Update slate translations for es, eu, ta, sv, fr [#7176](https://github.com/plone/volto/issues/7176)
+- Replace img tags with Image component. @wesleybl [#7363](https://github.com/plone/volto/issues/7363)
+
 ## 18.5.1 (2025-09-01)
 
 ### Internal

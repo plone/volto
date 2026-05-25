@@ -8,6 +8,41 @@
 
 <!-- towncrier release notes start -->
 
+## 3.10.6 (2026-05-19)
+
+### Bugfix
+
+- Enhance i18n escaping function to avoid double-escaping and use it for msgstrs @erral [#8203](https://github.com/plone/volto/issues/8203)
+
+### Internal
+
+- Update dependency: `lodash` 4.18.1. @davisagli 
+
+## 3.10.5 (2026-04-07)
+
+### Internal
+
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update devDependency: wait-on 9.0.4. @davisagli 
+
+## 3.10.4 (2026-03-02)
+
+### Internal
+
+- Fix the {file}`vscodesettings.js` script to properly check if {file}`.vscode/settings.json` exists before reading. @wesleybl [#7834](https://github.com/plone/volto/issues/7834)
+
+## 3.10.3 (2025-10-08)
+
+### Internal
+
+- upgrade execa to address a security vulnerability @nileshgulia1 [#7462](https://github.com/plone/volto/issues/7462)
+
+## 3.10.2 (2025-09-29)
+
+### Internal
+
+- Upgrade `glob` to a modern version. Adjust scripts. @sneridagh [#7321](https://github.com/plone/volto/issues/7321)
+
 ## 3.10.1 (2025-05-12)
 
 ### Bugfix

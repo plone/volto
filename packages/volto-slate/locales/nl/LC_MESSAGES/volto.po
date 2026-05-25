@@ -3,13 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2026-05-10 15:42+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-slate-18/nl/>\n"
+"Language: nl\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.5-dev\n"
 
 #: editor/plugins/Link/index
 msgid "Add link"
@@ -17,11 +18,11 @@ msgstr "Koppeling toevoegen"
 
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr "Er is een fout opgetreden bij het bewerken van het "{name}" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Bewaar je werk en probeer opnieuw aub. Indien het probleem blijft, contacteer dan de site beheerder."
+msgstr "Er is een fout opgetreden bij het bewerken van het \"{name}\" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Bewaar je werk en probeer opnieuw aub. Indien het probleem blijft, contacteer dan de site beheerder."
 
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr "Er is een fout opgetreden bij het weergeven van het "{name}" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Indien het probleem blijft, contacteer dan de site beheerder."
+msgstr "Er is een fout opgetreden bij het weergeven van het \"{name}\" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Indien het probleem blijft, contacteer dan de site beheerder."
 
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
@@ -79,7 +80,7 @@ msgstr "Kolom links invoegen"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr "Rij onder toevoegen"
+msgstr "Rij onder invoegen"
 
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
