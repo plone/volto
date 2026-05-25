@@ -112,6 +112,6 @@ const rootData = useRouteLoaderData<RootLoader>('root');
 
 Using the same `id` as an existing plug replaces it.
 
-For a full example, see the `ContentTypesMenu` component in `@plone/publicui`.
+For a full example, see the [`ContentTypesMenu`](https://github.com/plone/volto/blob/seven/packages/publicui/components/Toolbar/ContentTypesMenu.tsx) component in `@plone/publicui`.
 
 See the {doc}`plone:volto/development/pluggables` for the full pluggable API reference.
