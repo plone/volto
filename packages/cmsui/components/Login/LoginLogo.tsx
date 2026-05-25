@@ -1,4 +1,4 @@
-import ploneWhiteSVG from '../../static/plone-white.svg';
+import ploneWhiteSVG from '../../static/plone.svg';
 
 const LoginLogo = () => {
   return (
@@ -7,7 +7,7 @@ const LoginLogo = () => {
         flex h-32 w-32 flex-col items-center justify-center rounded-full bg-quanta-lemon p-2
       `}
     >
-      <img src={ploneWhiteSVG} alt="" />
+      <img src={ploneWhiteSVG} alt="" aria-hidden="true" />
     </div>
   );
 };
