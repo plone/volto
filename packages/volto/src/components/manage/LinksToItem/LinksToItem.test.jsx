@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import { MemoryRouter } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 

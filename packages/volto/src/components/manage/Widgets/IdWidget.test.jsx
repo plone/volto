@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-intl-redux';
 import { render, waitFor } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import config from '@plone/volto/registry';
 
 import IdWidget from './IdWidget';

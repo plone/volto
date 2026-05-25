@@ -11,7 +11,7 @@ import { Grid } from 'semantic-ui-react';
 import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-intl-redux';
 import { createBrowserHistory } from 'history';
-import { ConnectedRouter } from 'connected-react-router';
+import { Router } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import config from '@plone/volto/registry';
 import Api from '@plone/volto/helpers/Api/Api';
@@ -189,16 +189,16 @@ const DiffField = ({
         parts = diffWords(
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
-              <ConnectedRouter history={history}>
+              <Router history={store.history}>
                 <RenderBlocks content={contentOne} />
-              </ConnectedRouter>
+              </Router>
             </Provider>,
           ),
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
-              <ConnectedRouter history={history}>
+              <Router history={store.history}>
                 <RenderBlocks content={contentTwo} />
-              </ConnectedRouter>
+              </Router>
             </Provider>,
           ),
         );
@@ -211,16 +211,12 @@ const DiffField = ({
         parts = diffWords(
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
-              <ConnectedRouter history={history}>
-                {serializeNodes(one)}
-              </ConnectedRouter>
+              <Router history={store.history}>{serializeNodes(one)}</Router>
             </Provider>,
           ),
           ReactDOMServer.renderToStaticMarkup(
             <Provider store={store}>
-              <ConnectedRouter history={history}>
-                {serializeNodes(two)}
-              </ConnectedRouter>
+              <Router history={store.history}>{serializeNodes(two)}</Router>
             </Provider>,
           ),
         );
@@ -237,16 +233,16 @@ const DiffField = ({
           parts = diffWords(
             ReactDOMServer.renderToStaticMarkup(
               <Provider store={store}>
-                <ConnectedRouter history={history}>
+                <Router history={store.history}>
                   <Widget value={one} />
-                </ConnectedRouter>
+                </Router>
               </Provider>,
             ),
             ReactDOMServer.renderToStaticMarkup(
               <Provider store={store}>
-                <ConnectedRouter history={history}>
+                <Router history={store.history}>
                   <Widget value={two} />
-                </ConnectedRouter>
+                </Router>
               </Provider>,
             ),
           );

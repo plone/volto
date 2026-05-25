@@ -85,6 +85,29 @@ describe('storeProtectLoadUtils', () => {
       };
 
     describe('location change', () => {
+      test('initial location change with no previous router location', () => {
+        const dispatch = vi.fn();
+        const getState = vi.fn(() => ({
+          router: {
+            location: null,
+          },
+        }));
+        const next = vi.fn(() => 'NEXT');
+        const action = {
+          type: '@@router/LOCATION_CHANGE',
+          payload: { location: { pathname: '/NEW-PATH' } },
+        };
+        Url.isCmsUi = vi.fn((path) => path === '/PATH');
+        const result = protectLoadStart({ dispatch, getState })(next)(action);
+        expect(dispatch).toHaveBeenCalledWith({
+          type: '@@loadProtector/START',
+          location: { pathname: '/NEW-PATH' },
+          resetBeforeFetch: false,
+        });
+        expect(next).toHaveBeenCalledWith(action);
+        expect(result).toBe('NEXT');
+      });
+
       test(
         'non content => content',
         testLocationChange({

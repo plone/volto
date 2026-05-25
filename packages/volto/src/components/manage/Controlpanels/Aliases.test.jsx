@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import { Provider } from 'react-intl-redux';
 import { CookiesProvider } from 'react-cookie';
 
