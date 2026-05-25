@@ -1,4 +1,4 @@
-import voltoTitledSvg from '../../static/volto-titled.svg';
+import ploneWhiteSVG from '../../static/plone-white.svg';
 
 const LoginLogo = () => {
   return (
@@ -7,7 +7,7 @@ const LoginLogo = () => {
         flex h-32 w-32 flex-col items-center justify-center rounded-full bg-quanta-lemon p-2
       `}
     >
-      <img src={voltoTitledSvg} alt="" />
+      <img src={ploneWhiteSVG} alt="" />
     </div>
   );
 };

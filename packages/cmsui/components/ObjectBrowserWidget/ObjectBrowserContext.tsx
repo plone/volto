@@ -27,7 +27,7 @@ import {
 
 type PatternOptions = {
   maximumSelectionSize?: number;
-  selectableTypes?: string[];
+  selectableTypes?: Brain['@type'][];
   basePath?: string;
   currentPath?: string;
 } & Record<string, any>;
