@@ -1,0 +1,1 @@
+Fix error on Block Types control panel if there was a blockConfig with a missing id. @davisagli

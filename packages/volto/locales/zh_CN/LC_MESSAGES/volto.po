@@ -1364,6 +1364,11 @@ msgstr "发送邮件"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "嵌入代码错误，请按照说明重试"
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1754,11 +1759,6 @@ msgstr "常规"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "全局角色"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Google 地图嵌入块"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
