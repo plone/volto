@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
-import { StaticRouter } from 'react-router-dom';
+import { MemoryRouter, StaticRouter } from 'react-router-dom';
 import { CookiesProvider } from 'react-cookie';
 import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
@@ -91,8 +91,10 @@ describe('History', () => {
     const { container } = render(
       <Provider store={store}>
         <CookiesProvider>
-          <History location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
+          <MemoryRouter initialEntries={['/blog']}>
+            <History />
+            <div id="toolbar"></div>
+          </MemoryRouter>
         </CookiesProvider>
       </Provider>,
     );
@@ -160,8 +162,10 @@ describe('History', () => {
     const { container } = render(
       <Provider store={store}>
         <CookiesProvider>
-          <History location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
+          <MemoryRouter initialEntries={['/blog']}>
+            <History />
+            <div id="toolbar"></div>
+          </MemoryRouter>
         </CookiesProvider>
       </Provider>,
     );

@@ -1354,6 +1354,11 @@ msgstr "Письмо отправлено"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Ошибка при встраивании кода, следуйте инструкциям и попробуйте снова."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1739,11 +1744,6 @@ msgstr "Общие"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Глобальная роль"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Встроенный блок Google Maps"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema

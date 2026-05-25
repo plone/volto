@@ -1355,6 +1355,11 @@ msgstr "E-Mail versendet"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Fehler beim Einbinden des Google Maps Codes. Bitte lesen Sie die Anweisungen und stellen Sie sicher dass Sie den korrekten Code verwenden."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr "Eingebettete Karte"
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1740,11 +1745,6 @@ msgstr "Allgemein"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Globale Rolle"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Google Maps Block"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema

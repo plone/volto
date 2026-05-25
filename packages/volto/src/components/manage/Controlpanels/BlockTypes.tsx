@@ -62,15 +62,15 @@ const BlockTypesControlpanel = (props: RouteProps) => {
   const pathname = location.pathname;
   const isClient = useClient();
 
-  const blocks = Object.values(blocksConfig)
-    .map((blockConfig) => ({
+  const blocks = Object.entries(blocksConfig)
+    .map(([key, blockConfig]) => ({
       ...blockConfig,
       title: blockConfig.title
         ? intl.formatMessage({
             id: blockConfig.title,
             defaultMessage: blockConfig.title,
           })
-        : blockConfig.id,
+        : blockConfig.id ?? key,
     }))
     .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
 

@@ -1355,6 +1355,11 @@ msgstr "Email enviat"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Error d'inserció del codi, seguiu les instruccions i torneu-ho a provar."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1740,11 +1745,6 @@ msgstr "General"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Paper global"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Bloc incrustat de Google Maps"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
