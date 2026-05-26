@@ -45,7 +45,7 @@
     "slate-history": "0.100.0",
     "slate-hyperscript": "0.100.0",
     "slate-react": "0.98.4",
-    "uuid": "^9.0.1",
+    "uuid": "^14.0.0",
     "weak-key": "^1.0.2"
   },
   "devDependencies": {
