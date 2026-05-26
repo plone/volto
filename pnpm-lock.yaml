@@ -479,9 +479,6 @@ importers:
       filesize:
         specifier: '6'
         version: 6.4.0
-      full-icu:
-        specifier: 1.4.0
-        version: 1.4.0
       github-slugger:
         specifier: 1.4.0
         version: 1.4.0
@@ -632,9 +629,6 @@ importers:
       react-simple-code-editor:
         specifier: 0.7.1
         version: 0.7.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react-test-renderer:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
       react-toastify:
         specifier: 5.5.0
         version: 5.5.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -656,9 +650,6 @@ importers:
       redux-localstorage-simple:
         specifier: 2.5.1
         version: 2.5.1
-      redux-mock-store:
-        specifier: 1.5.4
-        version: 1.5.4
       redux-thunk:
         specifier: 2.4.2
         version: 2.4.2(redux@4.2.1)
@@ -906,6 +897,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^4.6.0
         version: 4.6.2(eslint@8.57.1)
+      full-icu:
+        specifier: 1.4.0
+        version: 1.4.0
       html-webpack-plugin:
         specifier: 5.6.7
         version: 5.6.7(webpack@5.105.4(esbuild@0.25.12))
@@ -960,6 +954,12 @@ importers:
       react-is:
         specifier: ^18.2.0
         version: 18.3.1
+      react-test-renderer:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      redux-mock-store:
+        specifier: 1.5.4
+        version: 1.5.4
       release-it:
         specifier: 'catalog:'
         version: 20.0.1(@types/node@24.12.0)(magicast@0.3.5)
