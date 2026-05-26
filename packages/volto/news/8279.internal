@@ -1,0 +1,1 @@
+Move packages that are used only in testing to devDependencies: full-icu, react-test-renderer, and redux-mock-store. @wesleybl
