@@ -47,7 +47,7 @@ export default function install(config: ConfigType) {
     {
       name: 'default',
       label: 'Default',
-      style: {},
+      style: { '--block-align': 'none' },
     },
     {
       name: 'left',

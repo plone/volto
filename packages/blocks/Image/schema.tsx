@@ -68,7 +68,7 @@ export function ImageSchema({
         widget: 'size',
         default: 'l',
         actions: ['s', 'm', 'l'],
-        // disabled: true,
+        disabled: formData.align === 'center',
         styleField: true,
       },
       href: {
