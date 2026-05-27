@@ -14,7 +14,8 @@ export function RecycleBinTable({
 }) {
   const { t, i18n } = useTranslation();
   const allSelected =
-    items.length > 0 && items.every((item) => selectedItems.includes(item.id));
+    items.length > 0 &&
+    items.every((item) => selectedItems.includes(item.recycle_id));
 
   const toggleItem = (id: string, selected: boolean) => {
     onSelectionChange(
@@ -36,7 +37,9 @@ export function RecycleBinTable({
                 checked={allSelected}
                 onChange={(event) =>
                   onSelectionChange(
-                    event.target.checked ? items.map((item) => item.id) : [],
+                    event.target.checked
+                      ? items.map((item) => item.recycle_id)
+                      : [],
                   )
                 }
               />
@@ -65,10 +68,10 @@ export function RecycleBinTable({
                   })}
                   name="selected_items"
                   type="checkbox"
-                  value={item.id}
-                  checked={selectedItems.includes(item.id)}
+                  value={item.recycle_id}
+                  checked={selectedItems.includes(item.recycle_id)}
                   onChange={(event) =>
-                    toggleItem(item.id, event.target.checked)
+                    toggleItem(item.recycle_id, event.target.checked)
                   }
                 />
               </td>
