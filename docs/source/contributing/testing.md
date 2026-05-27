@@ -42,7 +42,7 @@ See {ref}`developing-core-run-commands-for-pnpm-workspaces-label` for other opti
 ```
 
 If you have changed any dependency (in {file}`package.json` or a workspace), run `make install` from the repository root and commit the updated {file}`pnpm-lock.yaml` before running tests.
-See {ref}`developing-core-when-changing-dependencies-label`.
+See {ref}`developing-core-dependency-updates-label`.
 
 Vitest tests must pass locally before you push commits to the remote Volto repository.
 Vitest has several modes to run unit tests locally.
