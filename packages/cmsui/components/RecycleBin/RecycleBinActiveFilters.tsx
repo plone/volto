@@ -7,12 +7,12 @@ import {
 } from './utils';
 
 const activeFilterLabels: Record<keyof RecycleBinQueryState, string> = {
-  search_query: 'cmsui.recyclebin.filters.search',
-  filter_type: 'cmsui.recyclebin.filters.type',
-  filter_deleted_by: 'cmsui.recyclebin.filters.deletedBy',
-  filter_has_subitems: 'cmsui.recyclebin.filters.hasSubitems',
-  filter_language: 'cmsui.recyclebin.filters.language',
-  filter_workflow_state: 'cmsui.recyclebin.filters.workflowState',
+  title: 'cmsui.recyclebin.filters.search',
+  portal_type: 'cmsui.recyclebin.filters.type',
+  deleted_by: 'cmsui.recyclebin.filters.deletedBy',
+  has_subitems: 'cmsui.recyclebin.filters.hasSubitems',
+  language: 'cmsui.recyclebin.filters.language',
+  review_state: 'cmsui.recyclebin.filters.workflowState',
   date_from: 'cmsui.recyclebin.filters.dateFrom',
   date_to: 'cmsui.recyclebin.filters.dateTo',
   sort_by: 'cmsui.recyclebin.sort.label',

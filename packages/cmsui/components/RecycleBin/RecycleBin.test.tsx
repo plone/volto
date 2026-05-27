@@ -130,8 +130,8 @@ describe('RecycleBin components', () => {
     renderWithRouter(
       <RecycleBinActiveFilters
         queryState={{
-          search_query: 'page',
-          filter_type: 'Document',
+          title: 'page',
+          portal_type: 'Document',
           sort_by: 'title_asc',
           b_size: '25',
         }}
@@ -141,7 +141,7 @@ describe('RecycleBin components', () => {
     const searchFilter = screen.getByText(/page/);
     expect(searchFilter).toHaveAttribute(
       'href',
-      '/@@recyclebin?filter_type=Document&sort_by=title_asc&b_size=25',
+      '/@@recyclebin?portal_type=Document&sort_by=title_asc&b_size=25',
     );
     expect(searchFilter).toHaveTextContent('x');
     expect(screen.queryByText(/title_asc/)).not.toBeInTheDocument();

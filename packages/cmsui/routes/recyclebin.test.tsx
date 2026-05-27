@@ -50,7 +50,7 @@ describe('recycle bin route', () => {
 
     await callLoader(
       new Request(
-        'http://example.com/@@recyclebin?search_query=page&filter_type=Document&filter_deleted_by=admin&filter_language=en&filter_workflow_state=private&date_from=2026-01-01&date_to=2026-02-01&b_start=10&b_size=25',
+        'http://example.com/@@recyclebin?title=page&portal_type=Document&deleted_by=admin&language=en&review_state=private&date_from=2026-01-01&date_to=2026-02-01&b_start=10&b_size=25',
       ),
       { getRecycleBin },
     );
@@ -111,17 +111,15 @@ describe('recycle bin route', () => {
   });
 
   it.each([
-    ['with_subitems', true],
-    ['without_subitems', false],
-  ])('maps filter_has_subitems=%s', async (value, expected) => {
+    ['true', true],
+    ['false', false],
+  ])('maps has_subitems=%s', async (value, expected) => {
     const getRecycleBin = vi.fn().mockResolvedValue({
       data: { '@id': '/@recyclebin', items_total: 0, items: [] },
     });
 
     await callLoader(
-      new Request(
-        `http://example.com/@@recyclebin?filter_has_subitems=${value}`,
-      ),
+      new Request(`http://example.com/@@recyclebin?has_subitems=${value}`),
       { getRecycleBin },
     );
 

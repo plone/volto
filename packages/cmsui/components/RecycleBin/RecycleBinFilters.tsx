@@ -32,11 +32,11 @@ export function RecycleBinFilters({
   const languages = getFilterOptions(items, 'language');
   const workflowStates = getFilterOptions(items, 'review_state');
   const hasAdvancedFilters = Boolean(
-    queryState.filter_type ||
-      queryState.filter_deleted_by ||
-      queryState.filter_has_subitems ||
-      queryState.filter_language ||
-      queryState.filter_workflow_state ||
+    queryState.portal_type ||
+      queryState.deleted_by ||
+      queryState.has_subitems ||
+      queryState.language ||
+      queryState.review_state ||
       queryState.date_from ||
       queryState.date_to,
   );
@@ -52,9 +52,9 @@ export function RecycleBinFilters({
       <label className="flex flex-col gap-1 text-sm">
         {t('cmsui.recyclebin.filters.search')}
         <input
-          name="search_query"
+          name="title"
           type="search"
-          defaultValue={queryState.search_query ?? ''}
+          defaultValue={queryState.title ?? ''}
           className="rounded border border-quanta-silver px-3 py-2"
         />
       </label>
@@ -99,8 +99,8 @@ export function RecycleBinFilters({
           <label className="flex flex-col gap-1 text-sm">
             {t('cmsui.recyclebin.filters.type')}
             <select
-              name="filter_type"
-              defaultValue={queryState.filter_type ?? ''}
+              name="portal_type"
+              defaultValue={queryState.portal_type ?? ''}
               className="rounded border border-quanta-silver px-3 py-2"
             >
               <option value="">{t('cmsui.recyclebin.filters.any')}</option>
@@ -114,8 +114,8 @@ export function RecycleBinFilters({
           <label className="flex flex-col gap-1 text-sm">
             {t('cmsui.recyclebin.filters.deletedBy')}
             <select
-              name="filter_deleted_by"
-              defaultValue={queryState.filter_deleted_by ?? ''}
+              name="deleted_by"
+              defaultValue={queryState.deleted_by ?? ''}
               className="rounded border border-quanta-silver px-3 py-2"
             >
               <option value="">{t('cmsui.recyclebin.filters.any')}</option>
@@ -129,15 +129,15 @@ export function RecycleBinFilters({
           <label className="flex flex-col gap-1 text-sm">
             {t('cmsui.recyclebin.filters.hasSubitems')}
             <select
-              name="filter_has_subitems"
-              defaultValue={queryState.filter_has_subitems ?? ''}
+              name="has_subitems"
+              defaultValue={queryState.has_subitems ?? ''}
               className="rounded border border-quanta-silver px-3 py-2"
             >
               <option value="">{t('cmsui.recyclebin.filters.any')}</option>
-              <option value="with_subitems">
+              <option value="true">
                 {t('cmsui.recyclebin.filters.withSubitems')}
               </option>
-              <option value="without_subitems">
+              <option value="false">
                 {t('cmsui.recyclebin.filters.withoutSubitems')}
               </option>
             </select>
@@ -145,8 +145,8 @@ export function RecycleBinFilters({
           <label className="flex flex-col gap-1 text-sm">
             {t('cmsui.recyclebin.filters.language')}
             <select
-              name="filter_language"
-              defaultValue={queryState.filter_language ?? ''}
+              name="language"
+              defaultValue={queryState.language ?? ''}
               className="rounded border border-quanta-silver px-3 py-2"
             >
               <option value="">{t('cmsui.recyclebin.filters.any')}</option>
@@ -160,8 +160,8 @@ export function RecycleBinFilters({
           <label className="flex flex-col gap-1 text-sm">
             {t('cmsui.recyclebin.filters.workflowState')}
             <select
-              name="filter_workflow_state"
-              defaultValue={queryState.filter_workflow_state ?? ''}
+              name="review_state"
+              defaultValue={queryState.review_state ?? ''}
               className="rounded border border-quanta-silver px-3 py-2"
             >
               <option value="">{t('cmsui.recyclebin.filters.any')}</option>

@@ -16,12 +16,12 @@ export type RecycleBinSortBy =
   | 'workflow_desc';
 
 export type RecycleBinQueryState = {
-  search_query?: string;
-  filter_type?: string;
-  filter_deleted_by?: string;
-  filter_has_subitems?: 'with_subitems' | 'without_subitems';
-  filter_language?: string;
-  filter_workflow_state?: string;
+  title?: string;
+  portal_type?: string;
+  deleted_by?: string;
+  has_subitems?: 'true' | 'false';
+  language?: string;
+  review_state?: string;
   date_from?: string;
   date_to?: string;
   sort_by?: RecycleBinSortBy;
@@ -44,12 +44,12 @@ export const sortMap: Record<
 };
 
 const queryKeys: Array<keyof RecycleBinQueryState> = [
-  'search_query',
-  'filter_type',
-  'filter_deleted_by',
-  'filter_has_subitems',
-  'filter_language',
-  'filter_workflow_state',
+  'title',
+  'portal_type',
+  'deleted_by',
+  'has_subitems',
+  'language',
+  'review_state',
   'date_from',
   'date_to',
   'sort_by',
@@ -72,11 +72,11 @@ export const toRecycleBinQuery = (
   queryState: RecycleBinQueryState,
 ): RecycleBinQuery => {
   const query: RecycleBinQuery = {
-    title: queryState.search_query,
-    portal_type: queryState.filter_type,
-    deleted_by: queryState.filter_deleted_by,
-    language: queryState.filter_language,
-    review_state: queryState.filter_workflow_state,
+    title: queryState.title,
+    portal_type: queryState.portal_type,
+    deleted_by: queryState.deleted_by,
+    language: queryState.language,
+    review_state: queryState.review_state,
     date_from: queryState.date_from,
     date_to: queryState.date_to,
     b_start: queryState.b_start,
@@ -84,9 +84,9 @@ export const toRecycleBinQuery = (
     ...(sortMap[queryState.sort_by ?? 'date_desc'] ?? sortMap.date_desc),
   };
 
-  if (queryState.filter_has_subitems === 'with_subitems') {
+  if (queryState.has_subitems === 'true') {
     query.has_subitems = true;
-  } else if (queryState.filter_has_subitems === 'without_subitems') {
+  } else if (queryState.has_subitems === 'false') {
     query.has_subitems = false;
   }
 

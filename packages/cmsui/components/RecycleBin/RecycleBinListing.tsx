@@ -31,7 +31,8 @@ export function RecycleBinListing({
       queryState.b_size,
     );
   const hasActiveFilters = Object.entries(queryState).some(
-    ([key, value]) => value && key !== 'b_start' && key !== 'b_size',
+    ([key, value]) =>
+      value && key !== 'b_start' && key !== 'b_size' && key !== 'sort_by',
   );
   const makePageHref = (bStart: number) => {
     const searchParams = new URLSearchParams();
