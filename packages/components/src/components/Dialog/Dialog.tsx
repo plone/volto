@@ -4,3 +4,5 @@ import { Dialog as RACDialog, type DialogProps } from 'react-aria-components';
 export function Dialog(props: DialogProps) {
   return <RACDialog {...props} />;
 }
+
+export { DialogTrigger } from 'react-aria-components';

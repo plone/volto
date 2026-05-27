@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
+## 19.0.0-alpha.19 (2026-05-19)
+
+### Feature
+
+- Update translations. @erral [#8194](https://github.com/plone/volto/issues/8194)
+
+## 19.0.0-alpha.17 (2026-05-12)
+
+### Internal
+
+- Refactored the `TableBlockEdit` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7760](https://github.com/plone/volto/issues/7760)
+
 ## 19.0.0-alpha.16 (2026-05-07)
 
 ### Documentation

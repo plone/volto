@@ -17,6 +17,84 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
+## 19.0.0-alpha.38 (2026-05-19)
+
+### Breaking
+
+- The `RichTextWidget` wraps its value in a `div` instead of a `p`. @nileshgulia1 [#7950](https://github.com/plone/volto/issues/7950)
+
+### Feature
+
+- Replace moment.js with native Intl formatting in DateWidget and DatetimeWidget theme display widgets. The `formatDate` helper now accepts moment-style token strings ('ll', 'lll', 'LLLL', 'L', 'LT') for backward compatibility. @avoinea [#6732](https://github.com/plone/volto/issues/6732)
+
+### Bugfix
+
+- fixed a11y in search page. @giuliaghisini [#8085](https://github.com/plone/volto/issues/8085)
+
+### Documentation
+
+- Add Python 3.14 to Plone 6.2 support for Volto 19. @stevepiercy [#8051](https://github.com/plone/volto/issues/8051)
+
+## 19.0.0-alpha.37 (2026-05-19)
+
+### Feature
+
+- Use the navroot expander to render the sitemap. @erral [#5503](https://github.com/plone/volto/issues/5503)
+- Complete fr translation @jimbiscuit [#8197](https://github.com/plone/volto/issues/8197)
+- Update nl translations. @mauritsvanrees 
+- Update pt_BR translations. @ericof 
+
+### Bugfix
+
+- Inside the CMS-UI, when using the keyboard the block becomes active when focused - @Wagner3UB [#5273](https://github.com/plone/volto/issues/5273)
+- Translate block titles displayed in the Order tab of the sidebar. @ericof [#7348](https://github.com/plone/volto/issues/7348)
+- The toolbar panel {guilabel}`Personal tools` now manages focus and announces state changes to screen readers to improve accessibility. @Wagner3UB [#8019](https://github.com/plone/volto/issues/8019)
+- Fixed accessibility issues in `ModalForm` with focus management, `aria-live` announcements, and `aria-modal` support. @Wagner3UB [#8058](https://github.com/plone/volto/issues/8058)
+- Fixed `ObjectBrowserWidget` to honor `frontendOptions.widgetProps.initialPath` when rendered in multiple mode (e.g. `RelationList` of `RelationChoice`). @ericof [#8156](https://github.com/plone/volto/issues/8156)
+- Show Unauthorized page via SSR if an anonymous user accesses the user control panel. @wesleybl [#8184](https://github.com/plone/volto/issues/8184)
+- Use `<button>` elements instead of `<a>` for formtabs menu items to fix accessibility and keyboard navigation. @Wagner3UB [#8219](https://github.com/plone/volto/issues/8219)
+- Prevent browser default behavior on file drop in folder contents dropzone. @jnptk [#8228](https://github.com/plone/volto/issues/8228)
+
+### Internal
+
+- Refactored the `TokenWidget` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7683](https://github.com/plone/volto/issues/7683)
+- Refactored the `Search` component from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7686](https://github.com/plone/volto/issues/7686)
+- Remove .nvmrc from Volto's folder. @sneridagh 
+
+### Documentation
+
+- Add more information about removed drag-and-drop libraries in the upgrade guide. @davisagli 
+
+## 19.0.0-alpha.36 (2026-05-12)
+
+### Breaking
+
+- Changed the 401 Unauthorized behavior. Now, for anonymous users it redirects to the login page. For authenticated users it still shows an Unauthorized message indicating they don't have permission. @sneridagh [#8164](https://github.com/plone/volto/issues/8164)
+- Updated dependencies: `universal-cookie` 8.1.2, `universal-cookie-express`
+  8.1.2, `react-cookie` 8.1.2. @davisagli 
+- Upgraded `superagent` from `3.8.2` to `10.3.0`; projects with custom request wrappers or SSR callbacks must handle missing response objects and stricter redirect/error handling. 
+
+### Feature
+
+- Complete translations for es, eu, gl and it @erral @cyphra @yurj @xulioxesus [#8169](https://github.com/plone/volto/issues/8169)
+
+### Bugfix
+
+- Announce errors via `aria-live` and expose required and invalid states on text inputs to improve accessibility of form fields. @Wagner3UB [#8033](https://github.com/plone/volto/issues/8033)
+
+### Internal
+
+- Updated Cypress test for search date sorting to verify newest-first ordering. @aryan7081 [#7489](https://github.com/plone/volto/issues/7489)
+- Update packages in pnpm-lock.yaml. @wesleybl [#8188](https://github.com/plone/volto/issues/8188)
+- Excludes badge links from readme-link-check. @wesleybl [#8189](https://github.com/plone/volto/issues/8189)
+- Fixes an intermittent error in the Cypress tests blocks-slate-backspace.js and blocks-slate-delete.js. @wesleybl [#8190](https://github.com/plone/volto/issues/8190)
+
 ## 19.0.0-alpha.35 (2026-05-08)
 
 ### Internal

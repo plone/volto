@@ -1353,6 +1353,11 @@ msgstr ""
 msgid "Embed code error, please follow the instructions and try again."
 msgstr ""
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1671,6 +1676,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Focus on"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1732,11 +1742,6 @@ msgstr ""
 #. Default: "Global role"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr ""
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
 msgstr ""
 
 #. Default: "Grid"
@@ -2354,6 +2359,16 @@ msgstr ""
 msgid "Membership updated"
 msgstr ""
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2867,6 +2882,16 @@ msgstr ""
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr ""
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Pop-up closed."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Pop-up opened: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4618,11 +4643,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5000,11 +5020,6 @@ msgstr ""
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
-msgstr ""
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
 msgstr ""
 
 #. Default: "Maps"

@@ -79,6 +79,243 @@ describe('formatDate helper', () => {
       }),
     ).toBe('J 03, 2022');
   });
+
+  describe('moment-style format tokens', () => {
+    it('formats with "ll" token (short date)', () => {
+      expect(formatDate({ date, format: 'll' })).toBe('Jan 3, 2022');
+    });
+
+    it('formats with "lll" token (short date + time)', () => {
+      expect(formatDate({ date, format: 'lll' })).toBe('Jan 3, 2022, 7:26 PM');
+    });
+
+    it('formats with "LLLL" token (full date + time)', () => {
+      expect(formatDate({ date, format: 'LLLL' })).toBe(
+        'Monday, January 3, 2022 at 7:26 PM',
+      );
+    });
+
+    it('formats with "L" token (numeric short date)', () => {
+      expect(formatDate({ date, format: 'L' })).toBe('01/03/2022');
+    });
+
+    it('formats with "LT" token (time only)', () => {
+      expect(formatDate({ date, format: 'LT' })).toBe('7:26 PM');
+    });
+
+    it('moment token works with other locales', () => {
+      expect(formatDate({ date, format: 'll', locale: 'de' })).toBe(
+        '3. Jan. 2022',
+      );
+    });
+
+    it('unknown string format falls back to short_date_format', () => {
+      expect(formatDate({ date, format: 'unknown' })).toBe('1/3/2022');
+    });
+  });
+
+  describe('Italian locale (it)', () => {
+    it('formats a basic date', () => {
+      expect(formatDate({ date, locale: 'it' })).toBe('03/01/2022');
+    });
+
+    it('formats a date with time', () => {
+      expect(formatDate({ date, locale: 'it', includeTime: true })).toBe(
+        '03/01/22, 19:26',
+      );
+    });
+
+    it('formats a date as long', () => {
+      expect(formatDate({ date, locale: 'it', long: true })).toBe(
+        'lunedì 3 gennaio 2022 alle ore 19:26',
+      );
+    });
+
+    it('formats with "ll" token', () => {
+      expect(formatDate({ date, format: 'll', locale: 'it' })).toBe(
+        '3 gen 2022',
+      );
+    });
+
+    it('formats with "lll" token', () => {
+      expect(formatDate({ date, format: 'lll', locale: 'it' })).toBe(
+        '3 gen 2022, 19:26',
+      );
+    });
+
+    it('formats with "LLLL" token', () => {
+      expect(formatDate({ date, format: 'LLLL', locale: 'it' })).toBe(
+        'lunedì 3 gennaio 2022 alle ore 19:26',
+      );
+    });
+
+    it('formats with "L" token', () => {
+      expect(formatDate({ date, format: 'L', locale: 'it' })).toBe(
+        '03/01/2022',
+      );
+    });
+
+    it('formats with "LT" token', () => {
+      expect(formatDate({ date, format: 'LT', locale: 'it' })).toBe('19:26');
+    });
+  });
+
+  describe('German locale (de)', () => {
+    it('formats a basic date', () => {
+      expect(formatDate({ date, locale: 'de' })).toBe('3.1.2022');
+    });
+
+    it('formats a date with time', () => {
+      expect(formatDate({ date, locale: 'de', includeTime: true })).toBe(
+        '03.01.22, 19:26',
+      );
+    });
+
+    it('formats a date as long', () => {
+      expect(formatDate({ date, locale: 'de', long: true })).toBe(
+        'Montag, 3. Januar 2022 um 19:26',
+      );
+    });
+
+    it('formats with "ll" token', () => {
+      expect(formatDate({ date, format: 'll', locale: 'de' })).toBe(
+        '3. Jan. 2022',
+      );
+    });
+
+    it('formats with "lll" token', () => {
+      expect(formatDate({ date, format: 'lll', locale: 'de' })).toBe(
+        '3. Jan. 2022, 19:26',
+      );
+    });
+
+    it('formats with "LLLL" token', () => {
+      expect(formatDate({ date, format: 'LLLL', locale: 'de' })).toBe(
+        'Montag, 3. Januar 2022 um 19:26',
+      );
+    });
+
+    it('formats with "L" token', () => {
+      expect(formatDate({ date, format: 'L', locale: 'de' })).toBe(
+        '03.01.2022',
+      );
+    });
+
+    it('formats with "LT" token', () => {
+      expect(formatDate({ date, format: 'LT', locale: 'de' })).toBe('19:26');
+    });
+  });
+
+  describe('Brazilian Portuguese locale (pt-BR)', () => {
+    it('formats a basic date', () => {
+      expect(formatDate({ date, locale: 'pt-BR' })).toBe('03/01/2022');
+    });
+
+    it('formats a date with time', () => {
+      expect(formatDate({ date, locale: 'pt-BR', includeTime: true })).toBe(
+        '03/01/2022, 19:26',
+      );
+    });
+
+    it('formats a date as long', () => {
+      expect(formatDate({ date, locale: 'pt-BR', long: true })).toBe(
+        'segunda-feira, 3 de janeiro de 2022 às 19:26',
+      );
+    });
+
+    it('formats with "ll" token', () => {
+      expect(formatDate({ date, format: 'll', locale: 'pt-BR' })).toBe(
+        '3 de jan. de 2022',
+      );
+    });
+
+    it('formats with "lll" token', () => {
+      expect(formatDate({ date, format: 'lll', locale: 'pt-BR' })).toBe(
+        '3 de jan. de 2022, 19:26',
+      );
+    });
+
+    it('formats with "LLLL" token', () => {
+      expect(formatDate({ date, format: 'LLLL', locale: 'pt-BR' })).toBe(
+        'segunda-feira, 3 de janeiro de 2022 às 19:26',
+      );
+    });
+
+    it('formats with "L" token', () => {
+      expect(formatDate({ date, format: 'L', locale: 'pt-BR' })).toBe(
+        '03/01/2022',
+      );
+    });
+
+    it('formats with "LT" token', () => {
+      expect(formatDate({ date, format: 'LT', locale: 'pt-BR' })).toBe('19:26');
+    });
+  });
+
+  describe('Romanian locale (ro)', () => {
+    it('formats a basic date', () => {
+      expect(formatDate({ date, locale: 'ro' })).toBe('03.01.2022');
+    });
+
+    it('formats a date with time', () => {
+      expect(formatDate({ date, locale: 'ro', includeTime: true })).toBe(
+        '03.01.2022, 19:26',
+      );
+    });
+
+    it('formats a date as long', () => {
+      expect(formatDate({ date, locale: 'ro', long: true })).toBe(
+        'luni, 3 ianuarie 2022 la 19:26',
+      );
+    });
+
+    it('formats with "ll" token', () => {
+      expect(formatDate({ date, format: 'll', locale: 'ro' })).toBe(
+        '3 ian. 2022',
+      );
+    });
+
+    it('formats with "lll" token', () => {
+      expect(formatDate({ date, format: 'lll', locale: 'ro' })).toBe(
+        '3 ian. 2022, 19:26',
+      );
+    });
+
+    it('formats with "LLLL" token', () => {
+      expect(formatDate({ date, format: 'LLLL', locale: 'ro' })).toBe(
+        'luni, 3 ianuarie 2022 la 19:26',
+      );
+    });
+
+    it('formats with "L" token', () => {
+      expect(formatDate({ date, format: 'L', locale: 'ro' })).toBe(
+        '03.01.2022',
+      );
+    });
+
+    it('formats with "LT" token', () => {
+      expect(formatDate({ date, format: 'LT', locale: 'ro' })).toBe('19:26');
+    });
+  });
+
+  // moment vs Intl comparison
+  // This section documents known differences between the former moment.js output
+  // and our Intl-based formatDate implementation. Reference values are hardcoded
+  // from moment@2.29.4 to avoid a runtime dependency on the library we are removing.
+  //
+  // Tokens that match moment exactly: ll, L, LT (most locales), LLLL (pt-BR only)
+  //
+  // Known differences from moment@2.29.4:
+  //   - lll (all locales): Intl inserts a comma between date and time;
+  //     moment did not (e.g. "Jan 3, 2022, 7:26 PM" vs "Jan 3, 2022 7:26 PM")
+  //   - LLLL (en, it, de, ro): Intl inserts a locale-specific preposition before
+  //     the time; moment did not
+  //       en: "...at 7:26 PM"  vs "...7:26 PM"
+  //       it: "...alle ore 19:26" vs "...19:26"
+  //       de: "...um 19:26"      vs "...19:26"
+  //       ro: "...la 19:26"      vs "...19:26"
+  //   - ll/lll (pt-BR): Intl adds a period after abbreviated month ("jan.");
+  //     moment did not ("jan")
 });
 
 describe('formatRelativeDate helper', () => {

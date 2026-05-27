@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-10 15:50+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: sr@cyrl\n"
-"Language-Team: none\n"
+"Language-Team: Serbian <https://hosted.weblate.org/projects/plone/volto-main/sr@cyrl/>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
@@ -1353,6 +1354,11 @@ msgstr ""
 msgid "Embed code error, please follow the instructions and try again."
 msgstr ""
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1671,6 +1677,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr ""
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1732,11 +1743,6 @@ msgstr ""
 #. Default: "Global role"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr ""
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
 msgstr ""
 
 #. Default: "Grid"
@@ -2354,6 +2360,16 @@ msgstr ""
 msgid "Membership updated"
 msgstr ""
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2867,6 +2883,16 @@ msgstr ""
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr ""
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Искачући прозор је затворен."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Искачући прозор је отворен: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4618,11 +4644,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr ""
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -5000,11 +5021,6 @@ msgstr ""
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
-msgstr ""
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
 msgstr ""
 
 #. Default: "Maps"

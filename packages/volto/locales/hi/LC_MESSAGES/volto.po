@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2026-05-10 15:46+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language: hi\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/plone/volto-main/hi/>\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
@@ -1353,6 +1354,11 @@ msgstr "ईमेल भेजा गया"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "एम्बेड कोड त्रुटि, कृपया निर्देशों का पालन करें और पुनः प्रयास करें।"
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1623,7 +1629,7 @@ msgstr "फ़ाइल का नाम"
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
-msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
+msgstr "\"फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
@@ -1670,6 +1676,11 @@ msgstr "संबंधों को सुधारें"
 #: config/Blocks
 msgid "Fixed width table cells"
 msgstr "स्थिर चौड़ाई वाली तालिका कक्ष"
+
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "इस पर ध्यान दें"
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -1733,11 +1744,6 @@ msgstr "सामान्य"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "वैश्विक भूमिका"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "गूगल मानचित्र एम्बेडेड ब्लॉक"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -2354,6 +2360,16 @@ msgstr "मध्यम"
 msgid "Membership updated"
 msgstr "सदस्यता अपडेट की गई"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2683,7 +2699,7 @@ msgstr "ठीक है"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "केवल 7-बिट बाइट वाले वर्ण प्रयोग किए जा सकते हैं। अपरकेस अक्षर, विशेष वर्ण: <, >, &, #, /, ?, या अन्य जो यूआरएल में अवैध हैं, का प्रयोग नहीं किया जा सकता। नहीं शुरू हो सकता: _, aq_, @@, ++। __ के साथ समाप्त नहीं हो सकता। नहीं हो सकता: request,contributors, ., .., ""। नई पंक्तियों को नहीं शामिल किया जा सकता।"
+msgstr "केवल 7-बिट बाइट वाले वर्ण प्रयोग किए जा सकते हैं। अपरकेस अक्षर, विशेष वर्ण: <, >, &, #, /, ?, या अन्य जो यूआरएल में अवैध हैं, का प्रयोग नहीं किया जा सकता। नहीं शुरू हो सकता: _, aq_, @@, ++। __ के साथ समाप्त नहीं हो सकता। नहीं हो सकता: request,contributors, ., .., \"\"। नई पंक्तियों को नहीं शामिल किया जा सकता।"
 
 #. Default: "Open URL browser"
 #: components/manage/Widgets/UrlWidget
@@ -2867,6 +2883,16 @@ msgstr "प्लोन फाउंडेशन"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "प्लोन{reg} ओपन सोर्स सीएमएस/डब्ल्यूसीएम"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "पॉप-अप बंद हुआ।"
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "पॉप-अप खुला: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4618,11 +4644,6 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
-#: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "आप एक संरक्षित संसाधन तक पहुँचने का प्रयास कर रहे हैं, कृपया पहले {लॉगिन} करें।"
-
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
@@ -4721,7 +4742,7 @@ msgstr "अपना नया पासवर्ड दर्ज करें�
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: "jsmith" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
+msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: \"jsmith\" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
 
 #. Default: "and {count} more…"
 #: components/manage/Contents/ContentsDeleteModal
@@ -5001,11 +5022,6 @@ msgstr "सूची"
 #: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "लोड हो रहा है"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "लॉग इन"
 
 #. Default: "Maps"
 #: config/Blocks
