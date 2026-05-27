@@ -69,6 +69,22 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'prefix',
+        path: '@@recyclebin',
+        children: [
+          {
+            type: 'index',
+            file: '@plone/cmsui/routes/recyclebin.tsx',
+            options: { id: 'recyclebin' },
+          },
+          {
+            type: 'route',
+            path: ':id',
+            file: '@plone/cmsui/routes/recyclebin-item.tsx',
+          },
+        ],
+      },
+      {
+        type: 'prefix',
         path: 'test-layout',
         children: [
           {

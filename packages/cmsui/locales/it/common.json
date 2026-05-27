@@ -42,9 +42,102 @@
       "urlmanagement": "Gestione URL",
       "relations": "Relazioni",
       "moderatecomments": "Moderazione dei commenti",
+      "recycleBin": "Cestino",
       "users": "Utenti",
       "groupMembership": "Appartenenza ai gruppi",
       "groups": "Gruppi"
+    },
+    "recyclebin": {
+      "title": "Cestino",
+      "description": "Gli elementi eliminati da questo sito sono conservati qui e possono essere ripristinati o eliminati definitivamente.",
+      "filters": {
+        "search": "Cerca",
+        "type": "Tipo di contenuto",
+        "deletedBy": "Eliminato da",
+        "hasSubitems": "Contiene sottoelementi",
+        "language": "Lingua",
+        "workflowState": "Stato workflow",
+        "dateFrom": "Eliminato dal",
+        "dateTo": "Eliminato al",
+        "any": "Qualsiasi",
+        "withSubitems": "Con sottoelementi",
+        "withoutSubitems": "Senza sottoelementi",
+        "apply": "Applica",
+        "clearAll": "Rimuovi filtri"
+      },
+      "sort": {
+        "label": "Ordina",
+        "date_desc": "Eliminati piu recenti",
+        "date_asc": "Eliminati meno recenti",
+        "title_asc": "Titolo A-Z",
+        "title_desc": "Titolo Z-A",
+        "type_asc": "Tipo A-Z",
+        "type_desc": "Tipo Z-A",
+        "workflow_asc": "Workflow A-Z",
+        "workflow_desc": "Workflow Z-A"
+      },
+      "table": {
+        "selectAll": "Seleziona tutti gli elementi",
+        "selectItem": "Seleziona {{title}}",
+        "title": "Titolo",
+        "type": "Tipo",
+        "workflowState": "Stato workflow",
+        "path": "Percorso originale",
+        "deletionDate": "Eliminato",
+        "deletedBy": "Eliminato da",
+        "hasChildren": "Contiene elementi"
+      },
+      "actions": {
+        "restore": "Ripristina",
+        "restoreSelected": "Ripristina selezionati",
+        "delete": "Elimina definitivamente",
+        "deleteSelected": "Elimina selezionati",
+        "empty": "Svuota cestino",
+        "backToListing": "Torna al cestino"
+      },
+      "confirmations": {
+        "delete": "Eliminare definitivamente questo elemento?",
+        "deleteSelected": "Eliminare definitivamente gli elementi selezionati?",
+        "empty": "Eliminare definitivamente tutti gli elementi nel cestino?"
+      },
+      "empty": {
+        "noItems": "Il cestino e vuoto.",
+        "noMatches": "Nessun elemento eliminato corrisponde ai filtri correnti."
+      },
+      "pagination": {
+        "range": "Mostra {{start}}-{{end}} di {{total}}",
+        "previous": "Precedente",
+        "next": "Successivo",
+        "pageSize": "Dimensione pagina",
+        "start": "Inizio"
+      },
+      "details": {
+        "originalId": "Id originale",
+        "workflowState": "Stato workflow",
+        "path": "Percorso originale",
+        "parentPath": "Percorso padre originale",
+        "deletionDate": "Data eliminazione",
+        "deletedBy": "Eliminato da",
+        "containedItems": "Elementi contenuti"
+      },
+      "restorePanel": {
+        "title": "Ripristina o elimina",
+        "targetPath": "Ripristina nel percorso"
+      },
+      "children": {
+        "title": "Elementi contenuti",
+        "childrenCount": "Figli",
+        "restoreTo": "Ripristina in",
+        "targetPath": "Percorso destinazione per {{title}}"
+      },
+      "errors": {
+        "disabledTitle": "Cestino non disponibile",
+        "disabledDescription": "Il cestino e disabilitato o non disponibile per questo sito.",
+        "itemNotFoundTitle": "Elemento non trovato",
+        "itemNotFoundDescription": "L'elemento richiesto non e stato trovato nel cestino. Potrebbe essere stato ripristinato o eliminato.",
+        "genericTitle": "Errore cestino",
+        "genericDescription": "La richiesta al cestino non puo essere completata."
+      }
     },
     "blocksEditor": {
       "blocksTab": "Blocchi",

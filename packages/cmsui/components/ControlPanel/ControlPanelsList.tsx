@@ -4,6 +4,7 @@ import config from '@plone/registry';
 
 interface ControlPanel {
   '@id': string;
+  href?: string;
   title: string;
   group: string;
   id?: string;
@@ -53,6 +54,12 @@ export const ControlPanelsList = ({
       '@id': '/moderate-comments',
       group: t('cmsui.panelgroups.content'),
       title: t('cmsui.paneltitles.moderatecomments'),
+    },
+    {
+      '@id': '/@@recyclebin',
+      href: '/@@recyclebin',
+      group: t('cmsui.panelgroups.maintenance'),
+      title: t('cmsui.paneltitles.recycleBin'),
     },
     {
       '@id': '/users',
@@ -107,7 +114,7 @@ export const ControlPanelsList = ({
                 .map((panel) => (
                   <li key={panel['@id']} className="controlpanel-item">
                     <Link
-                      href={`/controlpanel/${panel.id}`}
+                      href={panel.href ?? `/controlpanel/${panel.id}`}
                       className="controlpanel-link"
                     >
                       {panel.title}

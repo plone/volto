@@ -72,6 +72,12 @@ export { getQuerystring } from './querystring/get';
 
 export { querystringSearch } from './querystring-search/get';
 
+export { getRecycleBin } from './recyclebin/get';
+export { getRecycleBinItem } from './recyclebin/get_item';
+export { restoreRecycleBinItem } from './recyclebin/restore';
+export { purgeRecycleBinItem } from './recyclebin/purge';
+export { emptyRecycleBin } from './recyclebin/empty';
+
 export { getRegistry } from './registry/get_list';
 export { getRegistryRecord } from './registry/get';
 export { updateRegistry } from './registry/update';

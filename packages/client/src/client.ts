@@ -98,6 +98,12 @@ export default class PloneClient {
 
   querystringSearch = restapi.querystringSearch;
 
+  getRecycleBin = restapi.getRecycleBin;
+  getRecycleBinItem = restapi.getRecycleBinItem;
+  restoreRecycleBinItem = restapi.restoreRecycleBinItem;
+  purgeRecycleBinItem = restapi.purgeRecycleBinItem;
+  emptyRecycleBin = restapi.emptyRecycleBin;
+
   getRegistry = restapi.getRegistry;
   getRegistryRecord = restapi.getRegistryRecord;
   updateRegistry = restapi.updateRegistry;

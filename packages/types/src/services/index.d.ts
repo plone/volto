@@ -22,6 +22,7 @@ export * from './principals';
 export * from './querysources';
 export * from './querystring';
 export * from './querystring-search';
+export * from './recyclebin';
 export * from './registry';
 export * from './relations';
 export * from './roles';

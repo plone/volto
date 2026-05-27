@@ -52,9 +52,102 @@
       "urlmanagement": "URL Management",
       "relations": "Relations",
       "moderatecomments": "Moderate Comments",
+      "recycleBin": "Recycle Bin",
       "users": "Users",
       "groupMembership": "Group Membership",
       "groups": "Groups"
+    },
+    "recyclebin": {
+      "title": "Recycle bin",
+      "description": "Items deleted from this site are stored here, and can be restored or permanently deleted.",
+      "filters": {
+        "search": "Search",
+        "type": "Content type",
+        "deletedBy": "Deleted by",
+        "hasSubitems": "Contains sub-items",
+        "language": "Language",
+        "workflowState": "Workflow state",
+        "dateFrom": "Deleted from",
+        "dateTo": "Deleted to",
+        "any": "Any",
+        "withSubitems": "With sub-items",
+        "withoutSubitems": "Without sub-items",
+        "apply": "Apply",
+        "clearAll": "Clear all"
+      },
+      "sort": {
+        "label": "Sort",
+        "date_desc": "Newest deleted first",
+        "date_asc": "Oldest deleted first",
+        "title_asc": "Title A-Z",
+        "title_desc": "Title Z-A",
+        "type_asc": "Type A-Z",
+        "type_desc": "Type Z-A",
+        "workflow_asc": "Workflow A-Z",
+        "workflow_desc": "Workflow Z-A"
+      },
+      "table": {
+        "selectAll": "Select all items",
+        "selectItem": "Select {{title}}",
+        "title": "Title",
+        "type": "Type",
+        "workflowState": "Workflow state",
+        "path": "Original path",
+        "deletionDate": "Deleted",
+        "deletedBy": "Deleted by",
+        "hasChildren": "Contains items"
+      },
+      "actions": {
+        "restore": "Restore",
+        "restoreSelected": "Restore selected",
+        "delete": "Permanently delete",
+        "deleteSelected": "Delete selected",
+        "empty": "Empty recycle bin",
+        "backToListing": "Back to recycle bin"
+      },
+      "confirmations": {
+        "delete": "Permanently delete this item?",
+        "deleteSelected": "Permanently delete the selected items?",
+        "empty": "Permanently delete all items in the recycle bin?"
+      },
+      "empty": {
+        "noItems": "The recycle bin is empty.",
+        "noMatches": "No deleted items match the current filters."
+      },
+      "pagination": {
+        "range": "Showing {{start}}-{{end}} of {{total}}",
+        "previous": "Previous",
+        "next": "Next",
+        "pageSize": "Page size",
+        "start": "Start"
+      },
+      "details": {
+        "originalId": "Original id",
+        "workflowState": "Workflow state",
+        "path": "Original path",
+        "parentPath": "Original parent path",
+        "deletionDate": "Deletion date",
+        "deletedBy": "Deleted by",
+        "containedItems": "Contained items"
+      },
+      "restorePanel": {
+        "title": "Restore or delete",
+        "targetPath": "Restore to path"
+      },
+      "children": {
+        "title": "Contained items",
+        "childrenCount": "Children",
+        "restoreTo": "Restore to",
+        "targetPath": "Target path for {{title}}"
+      },
+      "errors": {
+        "disabledTitle": "Recycle bin unavailable",
+        "disabledDescription": "The recycle bin is disabled or unavailable for this site.",
+        "itemNotFoundTitle": "Item not found",
+        "itemNotFoundDescription": "The requested item was not found in the recycle bin. It may have been restored or deleted.",
+        "genericTitle": "Recycle bin error",
+        "genericDescription": "The recycle bin request could not be completed."
+      }
     },
     "blocksEditor": {
       "blocksTab": "Blocks",
