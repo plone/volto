@@ -28,7 +28,10 @@ const callLoader = (request: Request, cli: Record<string, unknown>) => {
 
 const callAction = (request: Request, cli: Record<string, unknown>) => {
   const context = new RouterContextProvider();
-  context.set(ploneClientContext, cli as any);
+  context.set(ploneClientContext, {
+    config: { apiPath: 'http://example.com/Plone' },
+    ...cli,
+  } as any);
   return action({
     request,
     params: { id: 'deleted-item' },
@@ -127,13 +130,15 @@ describe('recycle bin item route', () => {
 
   it('restores the item with an optional target path', async () => {
     const restoreRecycleBinItem = vi.fn().mockResolvedValue({
-      data: { restored_item: { '@id': '/restored-item' } },
+      data: {
+        restored_item: { '@id': 'http://example.com/Plone/restored-item' },
+      },
     });
     const formData = new FormData();
     formData.append('_action', 'restore');
     formData.append('target_path', 'target-folder');
 
-    await callAction(
+    const result = await callAction(
       new Request('http://example.com/@@recyclebin/deleted-item', {
         method: 'POST',
         body: formData,
@@ -145,6 +150,7 @@ describe('recycle bin item route', () => {
       id: 'deleted-item',
       data: { target_path: 'target-folder' },
     });
+    expect((result as Response).headers.get('Location')).toBe('/restored-item');
   });
 
   it('purges the item', async () => {

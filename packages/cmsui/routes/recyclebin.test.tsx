@@ -28,7 +28,10 @@ const callLoader = (request: Request, cli: Record<string, unknown>) => {
 
 const callAction = (request: Request, cli: Record<string, unknown>) => {
   const context = new RouterContextProvider();
-  context.set(ploneClientContext, cli as any);
+  context.set(ploneClientContext, {
+    config: { apiPath: 'http://example.com/Plone' },
+    ...cli,
+  } as any);
   return action({
     request,
     params: {},
@@ -156,7 +159,9 @@ describe('recycle bin route', () => {
   });
 
   it('restores selected items', async () => {
-    const restoreRecycleBinItem = vi.fn().mockResolvedValue({});
+    const restoreRecycleBinItem = vi.fn().mockResolvedValue({
+      data: { restored_item: { '@id': 'http://example.com/Plone/restored' } },
+    });
     const formData = new FormData();
     formData.append('_action', 'restore-selected');
     formData.append('selected_items', 'one');
@@ -178,6 +183,27 @@ describe('recycle bin route', () => {
       id: 'two',
       data: {},
     });
+  });
+
+  it('redirects to the restored item when one selected item is restored', async () => {
+    const restoreRecycleBinItem = vi.fn().mockResolvedValue({
+      data: {
+        restored_item: { '@id': 'http://example.com/Plone/restored-item' },
+      },
+    });
+    const formData = new FormData();
+    formData.append('_action', 'restore-selected');
+    formData.append('selected_items', 'one');
+
+    const result = await callAction(
+      new Request('http://example.com/@@recyclebin', {
+        method: 'POST',
+        body: formData,
+      }),
+      { restoreRecycleBinItem },
+    );
+
+    expect((result as Response).headers.get('Location')).toBe('/restored-item');
   });
 
   it('purges selected items', async () => {

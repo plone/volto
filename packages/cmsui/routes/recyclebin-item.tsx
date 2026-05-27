@@ -14,7 +14,10 @@ import { Container } from '@plone/components/quanta';
 import { useTranslation } from 'react-i18next';
 import { ploneClientContext } from 'seven/app/middleware.server';
 import { RecycleBinItemDetails } from '../components/RecycleBin/RecycleBinItemDetails';
-import { normalizeRecycleBinItemPaths } from '../components/RecycleBin/utils';
+import {
+  normalizeRecycleBinItemPaths,
+  stripPortalBasePath,
+} from '../components/RecycleBin/utils';
 
 const getErrorMessage = (error: unknown) => {
   if (
@@ -28,6 +31,21 @@ const getErrorMessage = (error: unknown) => {
     return String(error.data.message);
   }
   return 'Request failed';
+};
+
+const getRestoredItemRedirectUrl = (
+  restoredUrl: string | undefined,
+  apiPath: string,
+) => {
+  if (!restoredUrl) return '/@@recyclebin';
+
+  const flattenedUrl = flattenToAppURL(restoredUrl);
+
+  try {
+    return stripPortalBasePath(new URL(flattenedUrl).pathname, apiPath);
+  } catch {
+    return stripPortalBasePath(flattenedUrl, apiPath);
+  }
 };
 
 export async function loader({
@@ -76,7 +94,7 @@ export async function action({
       });
       const restoredUrl = result.data.restored_item?.['@id'];
       return redirect(
-        restoredUrl ? flattenToAppURL(restoredUrl) : '/@@recyclebin',
+        getRestoredItemRedirectUrl(restoredUrl, cli.config.apiPath),
       );
     }
 
