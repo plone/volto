@@ -1,5 +1,6 @@
 import { Form } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@plone/components/quanta';
 
 export function RecycleBinActions({
   selectedItems,
@@ -17,18 +18,16 @@ export function RecycleBinActions({
         {selectedItems.map((id) => (
           <input key={id} name="selected_items" type="hidden" value={id} />
         ))}
-        <button
+        <Button
           type="submit"
           name="_action"
           value="restore-selected"
-          disabled={noSelection}
-          className={`
-            rounded border border-quanta-silver px-4 py-2
-            disabled:opacity-50
-          `}
+          isDisabled={noSelection}
+          variant="neutral"
+          accent
         >
           {t('cmsui.recyclebin.actions.restoreSelected')}
-        </button>
+        </Button>
       </Form>
       <Form
         method="post"
@@ -44,18 +43,15 @@ export function RecycleBinActions({
         {selectedItems.map((id) => (
           <input key={id} name="selected_items" type="hidden" value={id} />
         ))}
-        <button
+        <Button
           type="submit"
           name="_action"
           value="purge-selected"
-          disabled={noSelection}
-          className={`
-            rounded border border-quanta-candy px-4 py-2 text-quanta-candy
-            disabled:opacity-50
-          `}
+          isDisabled={noSelection}
+          variant="destructive"
         >
           {t('cmsui.recyclebin.actions.deleteSelected')}
-        </button>
+        </Button>
       </Form>
       <Form
         method="post"
@@ -66,18 +62,16 @@ export function RecycleBinActions({
           }
         }}
       >
-        <button
+        <Button
           type="submit"
           name="_action"
           value="empty"
-          disabled={disabled}
-          className={`
-            rounded bg-quanta-candy px-4 py-2 text-white
-            disabled:opacity-50
-          `}
+          isDisabled={disabled}
+          variant="destructive"
+          accent
         >
           {t('cmsui.recyclebin.actions.empty')}
-        </button>
+        </Button>
       </Form>
     </div>
   );

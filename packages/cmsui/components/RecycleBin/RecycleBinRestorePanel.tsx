@@ -1,5 +1,6 @@
 import { Form } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@plone/components/quanta';
 
 export function RecycleBinRestorePanel({
   actionMessage,
@@ -26,28 +27,30 @@ export function RecycleBinRestorePanel({
             className="rounded border border-quanta-silver px-3 py-2"
           />
         </label>
-        <button
+        <Button
           type="submit"
           name="_action"
           value="restore"
-          className="rounded bg-brand px-4 py-2 text-white"
+          variant="primary"
+          accent
         >
           {t('cmsui.recyclebin.actions.restore')}
-        </button>
-        <button
+        </Button>
+        <Button
           type="submit"
           name="_action"
           value="purge"
+          variant="destructive"
+          accent
           onClick={(event) => {
             // eslint-disable-next-line no-alert
             if (!window.confirm(t('cmsui.recyclebin.confirmations.delete'))) {
               event.preventDefault();
             }
           }}
-          className="rounded bg-quanta-candy px-4 py-2 text-white"
         >
           {t('cmsui.recyclebin.actions.delete')}
-        </button>
+        </Button>
       </Form>
     </section>
   );

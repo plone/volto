@@ -62,7 +62,8 @@
         "any": "Qualsiasi",
         "withSubitems": "Con sottoelementi",
         "withoutSubitems": "Senza sottoelementi",
-        "apply": "Applica",
+        "advanced": "Avanzate",
+        "apply": "Cerca",
         "clearAll": "Rimuovi filtri"
       },
       "sort": {

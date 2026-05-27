@@ -42,6 +42,12 @@ export function RecycleBinListing({
     searchParams.set('b_size', String(size));
     return `/@@recyclebin?${searchParams.toString()}`;
   };
+  const previousHref =
+    recycleBin.batching?.prev ??
+    (hasPrevious ? makePageHref(previousStart) : undefined);
+  const nextHref =
+    recycleBin.batching?.next ??
+    (hasNext ? makePageHref(nextStart) : undefined);
 
   return (
     <section className="py-8">
@@ -67,10 +73,6 @@ export function RecycleBinListing({
       ) : null}
       <RecycleBinFilters items={recycleBin.items} queryState={queryState} />
       <RecycleBinActiveFilters queryState={queryState} />
-      <RecycleBinActions
-        selectedItems={selectedItems}
-        disabled={recycleBin.items_total === 0}
-      />
       {recycleBin.items_total === 0 ? (
         <div className="my-8 rounded border border-quanta-smoke p-8 text-center">
           <h2 className="text-xl font-semibold">
@@ -98,28 +100,34 @@ export function RecycleBinListing({
             selectedItems={selectedItems}
             onSelectionChange={setSelectedItems}
           />
-          <nav className="mt-4 flex gap-3" aria-label="Pagination">
-            <Link
-              to={makePageHref(previousStart)}
-              aria-disabled={!hasPrevious}
-              className={`
-                rounded border px-3 py-2
-                ${hasPrevious ? '' : 'pointer-events-none opacity-50'}
-              `}
-            >
-              {t('cmsui.recyclebin.pagination.previous')}
-            </Link>
-            <Link
-              to={makePageHref(nextStart)}
-              aria-disabled={!hasNext}
-              className={`
-                rounded border px-3 py-2
-                ${hasNext ? '' : 'pointer-events-none opacity-50'}
-              `}
-            >
-              {t('cmsui.recyclebin.pagination.next')}
-            </Link>
-          </nav>
+          <RecycleBinActions
+            selectedItems={selectedItems}
+            disabled={recycleBin.items_total === 0}
+          />
+          {recycleBin.batching ? (
+            <nav className="mt-4 flex gap-3" aria-label="Pagination">
+              <Link
+                to={previousHref ?? '#'}
+                aria-disabled={!previousHref}
+                className={`
+                  rounded border px-3 py-2
+                  ${previousHref ? '' : 'pointer-events-none opacity-50'}
+                `}
+              >
+                {t('cmsui.recyclebin.pagination.previous')}
+              </Link>
+              <Link
+                to={nextHref ?? '#'}
+                aria-disabled={!nextHref}
+                className={`
+                  rounded border px-3 py-2
+                  ${nextHref ? '' : 'pointer-events-none opacity-50'}
+                `}
+              >
+                {t('cmsui.recyclebin.pagination.next')}
+              </Link>
+            </nav>
+          ) : null}
         </>
       )}
     </section>

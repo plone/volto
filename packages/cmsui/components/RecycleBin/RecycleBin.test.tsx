@@ -85,6 +85,34 @@ describe('RecycleBin components', () => {
     expect(screen.getByText('/Plone/deleted-page')).toBeInTheDocument();
   });
 
+  it('only renders pagination controls when batching links are present', () => {
+    renderWithRouter(
+      <RecycleBinListing recycleBin={recycleBin} queryState={{}} />,
+    );
+
+    expect(
+      screen.queryByRole('link', {
+        name: 'cmsui.recyclebin.pagination.next',
+      }),
+    ).not.toBeInTheDocument();
+
+    renderWithRouter(
+      <RecycleBinListing
+        recycleBin={{
+          ...recycleBin,
+          batching: { next: '/@@recyclebin?b_start=25&b_size=25' },
+        }}
+        queryState={{}}
+      />,
+    );
+
+    expect(
+      screen.getByRole('link', {
+        name: 'cmsui.recyclebin.pagination.next',
+      }),
+    ).toHaveAttribute('href', '/@@recyclebin?b_start=25&b_size=25');
+  });
+
   it('renders empty state when there are no items', () => {
     renderWithRouter(
       <RecycleBinListing

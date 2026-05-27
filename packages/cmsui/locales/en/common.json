@@ -72,7 +72,8 @@
         "any": "Any",
         "withSubitems": "With sub-items",
         "withoutSubitems": "Without sub-items",
-        "apply": "Apply",
+        "advanced": "Advanced",
+        "apply": "Search",
         "clearAll": "Clear all"
       },
       "sort": {

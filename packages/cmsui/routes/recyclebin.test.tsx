@@ -13,7 +13,10 @@ vi.mock('seven/app/middleware.server', () => ({
 
 const callLoader = (request: Request, cli: Record<string, unknown>) => {
   const context = new RouterContextProvider();
-  context.set(ploneClientContext, cli as any);
+  context.set(ploneClientContext, {
+    config: { apiPath: 'http://example.com/Plone' },
+    ...cli,
+  } as any);
   return loader({
     request,
     params: {},
@@ -67,6 +70,44 @@ describe('recycle bin route', () => {
         sort_order: 'descending',
       },
     });
+  });
+
+  it('strips the portal base path from response paths', async () => {
+    const getRecycleBin = vi.fn().mockResolvedValue({
+      data: {
+        '@id': '/@recyclebin',
+        items_total: 1,
+        items: [
+          {
+            '@id': '/@recyclebin/deleted-page',
+            '@type': 'Document',
+            id: 'deleted-page',
+            title: 'Deleted page',
+            path: '/Plone/deleted-page',
+            parent_path: '/Plone',
+            deletion_date: '2026-05-20T10:30:00+00:00',
+            recycle_id: 'deleted-page',
+            deleted_by: 'admin',
+            language: 'en',
+            review_state: 'private',
+            has_children: false,
+            actions: {
+              restore: '/@recyclebin/deleted-page/restore',
+              purge: '/@recyclebin/deleted-page',
+            },
+          },
+        ],
+      },
+    });
+
+    const result = await callLoader(
+      new Request('http://example.com/@@recyclebin'),
+      { getRecycleBin },
+    );
+    const body = (result as any).data;
+
+    expect(body.recycleBin.items[0].path).toBe('/deleted-page');
+    expect(body.recycleBin.items[0].parent_path).toBe('/');
   });
 
   it.each([

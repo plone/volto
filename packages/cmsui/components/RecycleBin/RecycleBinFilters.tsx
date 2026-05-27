@@ -1,5 +1,6 @@
 import { Form } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@plone/components/quanta';
 import type { RecycleBinItemSummary } from '@plone/types';
 import {
   getFilterOptions,
@@ -30,6 +31,15 @@ export function RecycleBinFilters({
   const users = getFilterOptions(items, 'deleted_by');
   const languages = getFilterOptions(items, 'language');
   const workflowStates = getFilterOptions(items, 'review_state');
+  const hasAdvancedFilters = Boolean(
+    queryState.filter_type ||
+      queryState.filter_deleted_by ||
+      queryState.filter_has_subitems ||
+      queryState.filter_language ||
+      queryState.filter_workflow_state ||
+      queryState.date_from ||
+      queryState.date_to,
+  );
 
   return (
     <Form
@@ -45,100 +55,6 @@ export function RecycleBinFilters({
           name="search_query"
           type="search"
           defaultValue={queryState.search_query ?? ''}
-          className="rounded border border-quanta-silver px-3 py-2"
-        />
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        {t('cmsui.recyclebin.filters.type')}
-        <select
-          name="filter_type"
-          defaultValue={queryState.filter_type ?? ''}
-          className="rounded border border-quanta-silver px-3 py-2"
-        >
-          <option value="">{t('cmsui.recyclebin.filters.any')}</option>
-          {types.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        {t('cmsui.recyclebin.filters.deletedBy')}
-        <select
-          name="filter_deleted_by"
-          defaultValue={queryState.filter_deleted_by ?? ''}
-          className="rounded border border-quanta-silver px-3 py-2"
-        >
-          <option value="">{t('cmsui.recyclebin.filters.any')}</option>
-          {users.map((user) => (
-            <option key={user} value={user}>
-              {user}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        {t('cmsui.recyclebin.filters.hasSubitems')}
-        <select
-          name="filter_has_subitems"
-          defaultValue={queryState.filter_has_subitems ?? ''}
-          className="rounded border border-quanta-silver px-3 py-2"
-        >
-          <option value="">{t('cmsui.recyclebin.filters.any')}</option>
-          <option value="with_subitems">
-            {t('cmsui.recyclebin.filters.withSubitems')}
-          </option>
-          <option value="without_subitems">
-            {t('cmsui.recyclebin.filters.withoutSubitems')}
-          </option>
-        </select>
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        {t('cmsui.recyclebin.filters.language')}
-        <select
-          name="filter_language"
-          defaultValue={queryState.filter_language ?? ''}
-          className="rounded border border-quanta-silver px-3 py-2"
-        >
-          <option value="">{t('cmsui.recyclebin.filters.any')}</option>
-          {languages.map((language) => (
-            <option key={language} value={language}>
-              {language}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        {t('cmsui.recyclebin.filters.workflowState')}
-        <select
-          name="filter_workflow_state"
-          defaultValue={queryState.filter_workflow_state ?? ''}
-          className="rounded border border-quanta-silver px-3 py-2"
-        >
-          <option value="">{t('cmsui.recyclebin.filters.any')}</option>
-          {workflowStates.map((state) => (
-            <option key={state} value={state}>
-              {state}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        {t('cmsui.recyclebin.filters.dateFrom')}
-        <input
-          name="date_from"
-          type="date"
-          defaultValue={queryState.date_from ?? ''}
-          className="rounded border border-quanta-silver px-3 py-2"
-        />
-      </label>
-      <label className="flex flex-col gap-1 text-sm">
-        {t('cmsui.recyclebin.filters.dateTo')}
-        <input
-          name="date_to"
-          type="date"
-          defaultValue={queryState.date_to ?? ''}
           className="rounded border border-quanta-silver px-3 py-2"
         />
       </label>
@@ -170,10 +86,116 @@ export function RecycleBinFilters({
           ))}
         </select>
       </label>
+      <details className="md:col-span-4" open={hasAdvancedFilters}>
+        <summary className="cursor-pointer text-sm font-medium">
+          {t('cmsui.recyclebin.filters.advanced')}
+        </summary>
+        <div
+          className={`
+            mt-3 grid gap-3
+            md:grid-cols-4
+          `}
+        >
+          <label className="flex flex-col gap-1 text-sm">
+            {t('cmsui.recyclebin.filters.type')}
+            <select
+              name="filter_type"
+              defaultValue={queryState.filter_type ?? ''}
+              className="rounded border border-quanta-silver px-3 py-2"
+            >
+              <option value="">{t('cmsui.recyclebin.filters.any')}</option>
+              {types.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-1 text-sm">
+            {t('cmsui.recyclebin.filters.deletedBy')}
+            <select
+              name="filter_deleted_by"
+              defaultValue={queryState.filter_deleted_by ?? ''}
+              className="rounded border border-quanta-silver px-3 py-2"
+            >
+              <option value="">{t('cmsui.recyclebin.filters.any')}</option>
+              {users.map((user) => (
+                <option key={user} value={user}>
+                  {user}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-1 text-sm">
+            {t('cmsui.recyclebin.filters.hasSubitems')}
+            <select
+              name="filter_has_subitems"
+              defaultValue={queryState.filter_has_subitems ?? ''}
+              className="rounded border border-quanta-silver px-3 py-2"
+            >
+              <option value="">{t('cmsui.recyclebin.filters.any')}</option>
+              <option value="with_subitems">
+                {t('cmsui.recyclebin.filters.withSubitems')}
+              </option>
+              <option value="without_subitems">
+                {t('cmsui.recyclebin.filters.withoutSubitems')}
+              </option>
+            </select>
+          </label>
+          <label className="flex flex-col gap-1 text-sm">
+            {t('cmsui.recyclebin.filters.language')}
+            <select
+              name="filter_language"
+              defaultValue={queryState.filter_language ?? ''}
+              className="rounded border border-quanta-silver px-3 py-2"
+            >
+              <option value="">{t('cmsui.recyclebin.filters.any')}</option>
+              {languages.map((language) => (
+                <option key={language} value={language}>
+                  {language}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-1 text-sm">
+            {t('cmsui.recyclebin.filters.workflowState')}
+            <select
+              name="filter_workflow_state"
+              defaultValue={queryState.filter_workflow_state ?? ''}
+              className="rounded border border-quanta-silver px-3 py-2"
+            >
+              <option value="">{t('cmsui.recyclebin.filters.any')}</option>
+              {workflowStates.map((state) => (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-1 text-sm">
+            {t('cmsui.recyclebin.filters.dateFrom')}
+            <input
+              name="date_from"
+              type="date"
+              defaultValue={queryState.date_from ?? ''}
+              className="rounded border border-quanta-silver px-3 py-2"
+            />
+          </label>
+          <label className="flex flex-col gap-1 text-sm">
+            {t('cmsui.recyclebin.filters.dateTo')}
+            <input
+              name="date_to"
+              type="date"
+              defaultValue={queryState.date_to ?? ''}
+              className="rounded border border-quanta-silver px-3 py-2"
+            />
+          </label>
+        </div>
+      </details>
       <div className="flex items-end gap-2">
-        <button type="submit" className="rounded bg-brand px-4 py-2 text-white">
+        <Button type="submit" variant="primary" accent>
           {t('cmsui.recyclebin.filters.apply')}
-        </button>
+        </Button>
       </div>
     </Form>
   );

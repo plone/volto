@@ -14,6 +14,7 @@ import { Container } from '@plone/components/quanta';
 import { useTranslation } from 'react-i18next';
 import { ploneClientContext } from 'seven/app/middleware.server';
 import { RecycleBinItemDetails } from '../components/RecycleBin/RecycleBinItemDetails';
+import { normalizeRecycleBinItemPaths } from '../components/RecycleBin/utils';
 
 const getErrorMessage = (error: unknown) => {
   if (
@@ -47,7 +48,11 @@ export async function loader({
     query,
   });
 
-  return data(flattenToAppURL({ item }));
+  return data(
+    flattenToAppURL({
+      item: normalizeRecycleBinItemPaths(item, cli.config.apiPath),
+    }),
+  );
 }
 
 export async function action({
@@ -112,7 +117,7 @@ export default function RecycleBinItem() {
 
   return (
     <main>
-      <Container width="layout">
+      <Container width="default">
         <RecycleBinItemDetails
           item={item}
           actionMessage={actionData?.message}

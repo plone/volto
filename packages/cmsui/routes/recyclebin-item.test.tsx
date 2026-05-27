@@ -13,7 +13,10 @@ vi.mock('seven/app/middleware.server', () => ({
 
 const callLoader = (request: Request, cli: Record<string, unknown>) => {
   const context = new RouterContextProvider();
-  context.set(ploneClientContext, cli as any);
+  context.set(ploneClientContext, {
+    config: { apiPath: 'http://example.com/Plone' },
+    ...cli,
+  } as any);
   return loader({
     request,
     params: { id: 'deleted-item' },
@@ -42,7 +45,26 @@ describe('recycle bin item route', () => {
 
   it('loads one recycle bin item with batching params', async () => {
     const getRecycleBinItem = vi.fn().mockResolvedValue({
-      data: { id: 'deleted-item', items_total: 0, items: [] },
+      data: {
+        '@id': '/@recyclebin/deleted-item',
+        '@type': 'Document',
+        id: 'deleted-item',
+        title: 'Deleted item',
+        path: '/Plone/deleted-item',
+        parent_path: '/Plone',
+        deletion_date: '2026-05-20T10:30:00+00:00',
+        recycle_id: 'deleted-item',
+        deleted_by: 'admin',
+        language: 'en',
+        review_state: 'private',
+        has_children: false,
+        actions: {
+          restore: '/@recyclebin/deleted-item/restore',
+          purge: '/@recyclebin/deleted-item',
+        },
+        items_total: 0,
+        items: [],
+      },
     });
 
     await callLoader(
@@ -56,6 +78,51 @@ describe('recycle bin item route', () => {
       id: 'deleted-item',
       query: { b_start: '5', b_size: '10' },
     });
+  });
+
+  it('strips the portal base path from item and child paths', async () => {
+    const getRecycleBinItem = vi.fn().mockResolvedValue({
+      data: {
+        '@id': '/@recyclebin/deleted-item',
+        '@type': 'Document',
+        id: 'deleted-item',
+        title: 'Deleted item',
+        path: '/Plone/deleted-item',
+        parent_path: '/Plone',
+        deletion_date: '2026-05-20T10:30:00+00:00',
+        recycle_id: 'deleted-item',
+        deleted_by: 'admin',
+        language: 'en',
+        review_state: 'private',
+        has_children: true,
+        actions: {
+          restore: '/@recyclebin/deleted-item/restore',
+          purge: '/@recyclebin/deleted-item',
+        },
+        items_total: 1,
+        items: [
+          {
+            id: 'child',
+            title: 'Child',
+            '@type': 'Document',
+            path: '/Plone/deleted-item/child',
+            restore_id: 'child',
+            language: 'en',
+            review_state: 'private',
+          },
+        ],
+      },
+    });
+
+    const result = await callLoader(
+      new Request('http://example.com/@@recyclebin/deleted-item'),
+      { getRecycleBinItem },
+    );
+    const body = (result as any).data;
+
+    expect(body.item.path).toBe('/deleted-item');
+    expect(body.item.parent_path).toBe('/');
+    expect(body.item.items[0].path).toBe('/deleted-item/child');
   });
 
   it('restores the item with an optional target path', async () => {

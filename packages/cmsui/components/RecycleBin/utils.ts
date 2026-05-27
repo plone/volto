@@ -1,4 +1,9 @@
-import type { RecycleBinItemSummary, RecycleBinQuery } from '@plone/types';
+import type {
+  GetRecycleBinItemResponse,
+  GetRecycleBinResponse,
+  RecycleBinItemSummary,
+  RecycleBinQuery,
+} from '@plone/types';
 
 export type RecycleBinSortBy =
   | 'date_desc'
@@ -149,3 +154,43 @@ export const getPagination = (
     hasNext: end < total,
   };
 };
+
+export const stripPortalBasePath = (path: string, apiPath: string) => {
+  const basePath = new URL(apiPath).pathname.replace(/\/$/, '');
+
+  if (
+    !basePath ||
+    basePath === '/' ||
+    (path !== basePath && !path.startsWith(`${basePath}/`))
+  ) {
+    return path;
+  }
+
+  const appPath = path.slice(basePath.length);
+  return appPath || '/';
+};
+
+export const normalizeRecycleBinPaths = (
+  recycleBin: GetRecycleBinResponse,
+  apiPath: string,
+): GetRecycleBinResponse => ({
+  ...recycleBin,
+  items: recycleBin.items.map((item) => ({
+    ...item,
+    path: stripPortalBasePath(item.path, apiPath),
+    parent_path: stripPortalBasePath(item.parent_path, apiPath),
+  })),
+});
+
+export const normalizeRecycleBinItemPaths = (
+  item: GetRecycleBinItemResponse,
+  apiPath: string,
+): GetRecycleBinItemResponse => ({
+  ...item,
+  path: stripPortalBasePath(item.path, apiPath),
+  parent_path: stripPortalBasePath(item.parent_path, apiPath),
+  items: item.items.map((child) => ({
+    ...child,
+    path: stripPortalBasePath(child.path, apiPath),
+  })),
+});

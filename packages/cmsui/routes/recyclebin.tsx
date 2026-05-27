@@ -19,6 +19,7 @@ import {
 } from '../components/RecycleBin/RecycleBinListing';
 import {
   getQueryStateFromSearchParams,
+  normalizeRecycleBinPaths,
   toRecycleBinQuery,
 } from '../components/RecycleBin/utils';
 
@@ -50,7 +51,12 @@ export async function loader({
     query: toRecycleBinQuery(queryState),
   });
 
-  return data(flattenToAppURL({ recycleBin, queryState }));
+  return data(
+    flattenToAppURL({
+      recycleBin: normalizeRecycleBinPaths(recycleBin, cli.config.apiPath),
+      queryState,
+    }),
+  );
 }
 
 export async function action({
@@ -120,7 +126,7 @@ export default function RecycleBin() {
 
   return (
     <main>
-      <Container width="layout">
+      <Container width="default">
         <RecycleBinListing
           recycleBin={recycleBin}
           queryState={queryState}

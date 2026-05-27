@@ -1,5 +1,6 @@
 import { Form } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@plone/components/quanta';
 import type { RecycleBinChildItem } from '@plone/types';
 
 export function RecycleBinChildrenTable({
@@ -62,14 +63,14 @@ export function RecycleBinChildrenTable({
                       required
                       className="min-w-0 flex-1 rounded border border-quanta-silver px-2 py-1"
                     />
-                    <button
+                    <Button
                       type="submit"
                       name="_action"
                       value="restore-child"
-                      className="rounded border border-quanta-silver px-3 py-1"
+                      size="S"
                     >
                       {t('cmsui.recyclebin.actions.restore')}
-                    </button>
+                    </Button>
                   </Form>
                 </td>
               </tr>
