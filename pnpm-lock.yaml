@@ -1032,9 +1032,6 @@ importers:
       postcss-loader:
         specifier: ^8.2.1
         version: 8.2.1(postcss@8.5.15)(typescript@5.9.3)(webpack@5.105.4)
-      postcss-overrides:
-        specifier: 3.1.4
-        version: 3.1.4
       postcss-scss:
         specifier: 4.0.9
         version: 4.0.9(postcss@8.5.15)
@@ -10959,10 +10956,6 @@ packages:
   postcss-ordered-values@4.1.2:
     resolution: {integrity: sha512-2fCObh5UanxvSxeXrtLtlwVThBvHn6MQcu4ksNT2tsaV2Fg76R2CV98W7wNSlX+5/pFwEyaDwKLLoEV7uRybAw==}
     engines: {node: '>=6.9.0'}
-
-  postcss-overrides@3.1.4:
-    resolution: {integrity: sha512-BtwqJW/fWE6Euvaj0UbFDtIZ9TT7TaFdQyfXgrNsr2dJKa4m+2OcZXe0eNo6jgTf4158WqZRvuNCJLkDvTJvwA==}
-    engines: {node: '>=6.14.4'}
 
   postcss-reduce-initial@4.0.3:
     resolution: {integrity: sha512-gKWmR5aUulSjbzOfD9AlJiHCGH6AEVLaM0AV+aSioxUDd16qXP1PCh8d1/BGVvpdWn8k/HiK7n6TjeoXN1F7DA==}
@@ -26016,10 +26009,6 @@ snapshots:
       cssnano-util-get-arguments: 4.0.0
       postcss: 7.0.39
       postcss-value-parser: 3.3.1
-
-  postcss-overrides@3.1.4:
-    dependencies:
-      postcss: 7.0.39
 
   postcss-reduce-initial@4.0.3:
     dependencies:
