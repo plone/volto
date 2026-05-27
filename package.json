@@ -53,7 +53,6 @@
       "cypress",
       "es5-ext",
       "esbuild",
-      "full-icu",
       "lightningcss-cli",
       "unrs-resolver"
     ]
