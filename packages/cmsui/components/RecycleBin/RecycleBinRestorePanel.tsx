@@ -4,8 +4,10 @@ import { Button } from '@plone/components/quanta';
 
 export function RecycleBinRestorePanel({
   actionMessage,
+  defaultTargetPath,
 }: {
   actionMessage?: string;
+  defaultTargetPath: string;
 }) {
   const { t } = useTranslation();
 
@@ -24,6 +26,7 @@ export function RecycleBinRestorePanel({
           {t('cmsui.recyclebin.restorePanel.targetPath')}
           <input
             name="target_path"
+            defaultValue={defaultTargetPath}
             className="rounded border border-quanta-silver px-3 py-2"
           />
         </label>

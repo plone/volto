@@ -169,12 +169,37 @@ describe('RecycleBin components', () => {
 
     expect(screen.getByText('Deleted page')).toBeInTheDocument();
     expect(screen.getAllByText('/Plone/deleted-page')[0]).toBeInTheDocument();
+    expect(
+      screen.queryByText('cmsui.recyclebin.details.originalId'),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('cmsui.recyclebin.details.parentPath'),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('cmsui.recyclebin.details.containedItems'),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByText('cmsui.recyclebin.children.title (1)'),
+    ).toBeInTheDocument();
     expect(screen.getByText('admin')).toBeInTheDocument();
+  });
+
+  it('prefills the restore target path with the original parent path', () => {
+    const { container } = renderWithRouter(
+      <RecycleBinItemDetails item={recycleBinItem} />,
+    );
+
+    expect(
+      container.querySelector<HTMLInputElement>('input[name="target_path"]')
+        ?.value,
+    ).toBe('/Plone');
   });
 
   it('requires a target path for child restore inputs', () => {
     renderWithRouter(<RecycleBinItemDetails item={recycleBinItem} />);
 
-    expect(screen.getByLabelText('Target path for Child page')).toBeRequired();
+    const targetPath = screen.getByLabelText('Target path for Child page');
+    expect(targetPath).toBeRequired();
+    expect(targetPath).toHaveValue('');
   });
 });

@@ -36,27 +36,15 @@ export function RecycleBinItemDetails({
       >
         <div>
           <dt className="text-sm text-quanta-iron">
-            {t('cmsui.recyclebin.details.originalId')}
-          </dt>
-          <dd>{item.id}</dd>
-        </div>
-        <div>
-          <dt className="text-sm text-quanta-iron">
-            {t('cmsui.recyclebin.details.workflowState')}
-          </dt>
-          <dd>{item.review_state}</dd>
-        </div>
-        <div>
-          <dt className="text-sm text-quanta-iron">
             {t('cmsui.recyclebin.details.path')}
           </dt>
           <dd>{item.path}</dd>
         </div>
         <div>
           <dt className="text-sm text-quanta-iron">
-            {t('cmsui.recyclebin.details.parentPath')}
+            {t('cmsui.recyclebin.details.workflowState')}
           </dt>
-          <dd>{item.parent_path}</dd>
+          <dd>{item.review_state}</dd>
         </div>
         <div>
           <dt className="text-sm text-quanta-iron">
@@ -70,15 +58,15 @@ export function RecycleBinItemDetails({
           </dt>
           <dd>{item.deleted_by}</dd>
         </div>
-        <div>
-          <dt className="text-sm text-quanta-iron">
-            {t('cmsui.recyclebin.details.containedItems')}
-          </dt>
-          <dd>{item.items_total}</dd>
-        </div>
       </dl>
-      <RecycleBinRestorePanel actionMessage={actionMessage} />
-      <RecycleBinChildrenTable childrenItems={item.items} />
+      <RecycleBinRestorePanel
+        actionMessage={actionMessage}
+        defaultTargetPath={item.parent_path}
+      />
+      <RecycleBinChildrenTable
+        childrenItems={item.items}
+        itemsTotal={item.items_total}
+      />
     </section>
   );
 }

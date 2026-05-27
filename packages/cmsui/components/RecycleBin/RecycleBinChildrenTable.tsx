@@ -5,8 +5,10 @@ import type { RecycleBinChildItem } from '@plone/types';
 
 export function RecycleBinChildrenTable({
   childrenItems,
+  itemsTotal,
 }: {
   childrenItems: RecycleBinChildItem[];
+  itemsTotal: number;
 }) {
   const { t } = useTranslation();
 
@@ -15,7 +17,7 @@ export function RecycleBinChildrenTable({
   return (
     <section className="mt-8">
       <h2 className="mb-3 text-xl font-semibold">
-        {t('cmsui.recyclebin.children.title')}
+        {t('cmsui.recyclebin.children.title')} ({itemsTotal})
       </h2>
       <div className="overflow-x-auto border border-quanta-smoke">
         <table className="w-full min-w-[760px] border-collapse text-left text-sm">
