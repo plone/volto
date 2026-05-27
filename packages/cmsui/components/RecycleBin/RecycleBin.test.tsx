@@ -132,15 +132,19 @@ describe('RecycleBin components', () => {
         queryState={{
           search_query: 'page',
           filter_type: 'Document',
+          sort_by: 'title_asc',
           b_size: '25',
         }}
       />,
     );
 
-    expect(screen.getByText(/page/)).toHaveAttribute(
+    const searchFilter = screen.getByText(/page/);
+    expect(searchFilter).toHaveAttribute(
       'href',
-      '/@@recyclebin?filter_type=Document&b_size=25',
+      '/@@recyclebin?filter_type=Document&sort_by=title_asc&b_size=25',
     );
+    expect(searchFilter).toHaveTextContent('x');
+    expect(screen.queryByText(/title_asc/)).not.toBeInTheDocument();
     expect(
       screen.getByText('cmsui.recyclebin.filters.clearAll'),
     ).toHaveAttribute('href', '/@@recyclebin');

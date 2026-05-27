@@ -27,7 +27,8 @@ export function RecycleBinActiveFilters({
 }) {
   const { t } = useTranslation();
   const activeFilters = Object.entries(queryState).filter(
-    ([key, value]) => value && key !== 'b_start' && key !== 'b_size',
+    ([key, value]) =>
+      value && key !== 'b_start' && key !== 'b_size' && key !== 'sort_by',
   ) as Array<[keyof RecycleBinQueryState, string]>;
 
   if (activeFilters.length === 0) return null;
@@ -38,9 +39,15 @@ export function RecycleBinActiveFilters({
         <Link
           key={key}
           to={removeQueryParamHref(queryState, key)}
-          className="rounded border border-quanta-silver px-2 py-1 text-sm text-quanta-iron"
+          className={`
+            inline-flex items-center gap-1 rounded border border-quanta-silver px-2 py-1 text-sm
+            text-quanta-iron
+          `}
         >
           {t(activeFilterLabels[key])}: {value}
+          <span aria-hidden="true" className="text-base leading-none">
+            x
+          </span>
         </Link>
       ))}
       <Link to={clearFiltersHref()} className="text-sm text-brand underline">
