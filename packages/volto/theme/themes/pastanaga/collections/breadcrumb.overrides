@@ -8,6 +8,8 @@
   padding-right: 1rem;
   padding-left: 1rem;
 
+  svg.icon {height: 24px !important}
+
   a.section {
     color: #0074a3;
   }
