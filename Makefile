@@ -1,15 +1,3 @@
-### Defensive settings for make:
-#     https://tech.davis-hansson.com/p/make/
-SHELL:=bash
-.ONESHELL:
-.SHELLFLAGS:=-eu -o pipefail -c
-.SILENT:
-.DELETE_ON_ERROR:
-MAKEFLAGS+=--warn-undefined-variables
-MAKEFLAGS+=--no-builtin-rules
-
-CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-
 # Project settings
 include variables.mk
 
@@ -35,13 +23,12 @@ CHECKOUT_BRANCH=$(shell git branch --show-current)
 CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
 CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
 
-# We like colors
-# From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
-RED=`tput setaf 1`
-GREEN=`tput setaf 2`
-RESET=`tput sgr0`
-YELLOW=`tput setaf 3`
-
+.PHONY: test-colors
+test-colors:
+	@echo "$(RED)This is red$(RESET)"
+	@echo "$(GREEN)This is green$(RESET)"
+	@echo "$(YELLOW)This is yellow$(RESET)"
+	@echo "$(CYAN)This is cyan$(RESET)"
 
 # Top-level targets
 
@@ -53,7 +40,7 @@ all: help
 # to return a pretty list of targets and their descriptions.
 .PHONY: help
 help: ## This help message
-	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/$(CYAN)\1$(RESET):\2/' | column -c2 -t -s :)"
 
 .PHONY: start
 start: ## Starts Seven in development mode
@@ -169,16 +156,6 @@ packages/react-router/dist: $(shell find packages/react-router/src -type f)
 
 .PHONY: build-deps
 build-deps: packages/registry/dist packages/components/dist packages/client/dist packages/react-router/dist packages/helpers/dist  ## Build dependencies
-
-## Storybook
-
-.PHONY: storybook-start
-storybook-start: ## Start Storybook server on port 6006
-	$(MAKE) -C "./packages/volto/" storybook-start
-
-.PHONY: storybook-build
-storybook-build: ## Build Storybook
-	$(MAKE) -C "./packages/volto/" storybook-build
 
 ##### Release
 
