@@ -8,6 +8,16 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.2 (2026-05-28)
+
+### Bugfix
+
+- Fixed `redux-mock-store` used in production. @sneridagh 
+
+### Internal
+
+- Update devDependency: `@testing-library/react` 16.3.2. @wesleybl [#8294](https://github.com/plone/volto/issues/8294)
+
 ## 19.0.1 (2026-05-28)
 
 ### Documentation
