@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.1 (2026-05-28)
+
+### Documentation
+
+- Document running `make install` and committing {file}`pnpm-lock.yaml` when changing dependencies. @Manik-Khajuria-5 [#7944](https://github.com/plone/volto/issues/7944)
+
 ## 19.0.0 (2026-05-19)
 
 ### Internal
