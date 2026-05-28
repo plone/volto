@@ -49,6 +49,7 @@
     "remix-i18next": "^7.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
     "@babel/preset-typescript": "^7.27.1",
     "@plone/types": "workspace:*",
     "@react-router/dev": "catalog:",
