@@ -18,6 +18,7 @@ export declare const ContentTypeLayout: import("@loadable/component").LoadableCl
 export declare const ContentTypeSchema: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ContentTypes: import("@loadable/component").LoadableClassComponent<any>;
 export declare const VersionOverview: import("@loadable/component").LoadableComponent<{
+    [x: string]: any;
     cmf_version: any;
     debug_mode: any;
     pil_version: any;
