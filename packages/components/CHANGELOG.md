@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.1.0 (2026-05-28)
+
+### Feature
+
+- Add DialogTrigger component. @jnptk 
+
 ## 4.0.0 (2026-05-19)
 
 ### Internal

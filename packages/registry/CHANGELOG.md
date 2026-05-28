@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.1 (2026-05-28)
+
+### Internal
+
+- Update dependency: `tmp` 0.2.6. @davisagli 
+
 ## 3.0.0 (2026-05-19)
 
 ### Internal
