@@ -40,7 +40,7 @@
     "weak-key": "^1.0.2"
   },
   "devDependencies": {
-    "@testing-library/react": "14.3.1",
+    "@testing-library/react": "catalog:",
     "jsdom": "catalog:",
     "release-it": "catalog:"
   },
