@@ -22,6 +22,7 @@ add-on-styles-loader
 configuration-registry
 add-on-driven-configuration
 cookieplone-frontend-add-on
+seven-add-on-deployment-app
 routing
 slots
 ```
