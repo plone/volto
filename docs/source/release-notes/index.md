@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.1.1 (2026-05-28)
+
+### Internal
+
+- Update devDependency: `@testing-library/react` 16.3.2. @wesleybl [#8294](https://github.com/plone/volto/issues/8294)
+
 ## 19.1.0 (2026-05-28)
 
 ### Feature
