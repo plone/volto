@@ -5,7 +5,9 @@
 }
 
 // Global focus styles for all elements that support :focus-visible
-:focus-visible {
+// Exclude contenteditable elements (slate editors, rich text inputs) — focus is
+// already implied by the text cursor; an outline ring is noisy and confusing.
+:focus-visible:not([contenteditable]):not([data-slate-editor]) {
   .universal-focus-style();
 }
 
