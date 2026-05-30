@@ -5,12 +5,23 @@ import loadable from '@loadable/component';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
-import { parseDateTime, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
+import {
+  parseDateTime,
+  toBackendLang,
+  getTimeZoneOffset,
+} from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import {
+  customSelectStyles,
+  DropdownIndicator,
+  Option,
+  selectTheme,
+} from '@plone/volto/components/manage/Widgets/SelectStyling';
 
 import leftKey from '@plone/volto/icons/left-key.svg';
 import rightKey from '@plone/volto/icons/right-key.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import clockSVG from '@plone/volto/icons/clock.svg';
 
 import 'rc-time-picker/assets/index.css';
 import 'react-dates/initialize';
@@ -26,6 +37,14 @@ const messages = defineMessages({
   time: {
     id: 'Time',
     defaultMessage: 'Time',
+  },
+  timezone: {
+    id: 'timezone',
+    defaultMessage: 'Time zone',
+  },
+  editTimezone: {
+    id: 'editTimezone',
+    defaultMessage: 'Edit time zone',
   },
   clearDateTime: {
     id: 'Clear date/time',
@@ -71,6 +90,52 @@ const defaultTimeDateOnly = {
   second: 0,
 };
 
+const TimezoneSelector = injectLazyLibs(['reactSelect'])(({
+  value,
+  onChange,
+  reactSelect,
+}) => {
+  const intl = useIntl();
+  const [open, setOpen] = useState(false);
+  const Select = reactSelect.default;
+
+  return (
+    <div className="date-time-widget-timezone">
+      <button
+        type="button"
+        aria-label={intl.formatMessage(messages.editTimezone)}
+        onClick={() => setOpen(!open)}
+      >
+        <Icon name={clockSVG} size="16px" /> {open ? null : value}
+      </button>
+      {open ? (
+        <div className="date-time-widget-timezone-selector">
+          <Select
+            placeholder={intl.formatMessage(messages.editTimezone)}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+            value={{ value, label: value }}
+            onChange={(option) => {
+              onChange(option.value);
+              setOpen(false);
+            }}
+            onBlur={() => setOpen(false)}
+            options={Intl.supportedValuesOf('timeZone').map((tz) => ({
+              value: tz,
+              label: tz,
+            }))}
+            styles={customSelectStyles}
+            theme={selectTheme}
+            components={{
+              DropdownIndicator,
+              Option,
+            }}
+          />
+        </div>
+      ) : null}
+    </div>
+  );
+});
 const DatetimeWidgetComponent = (props) => {
   const {
     id,
@@ -101,20 +166,30 @@ const DatetimeWidgetComponent = (props) => {
 
   const renderWidget = !(id === 'end' && formData?.open_end);
 
+  const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const selectedTimezone = formData?.[id + '_timezone'] || localTimezone;
+
   useEffect(() => {
     const parsedDateTime = parseDateTime(
       toBackendLang(lang),
       value,
       undefined,
       moment.default,
+      selectedTimezone,
     );
     setIsDefault(
       parsedDateTime?.toISOString() === moment.default().utc().toISOString(),
     );
-  }, [value, lang, moment]);
+  }, [value, lang, moment, selectedTimezone]);
 
   const getInternalValue = () => {
-    return parseDateTime(toBackendLang(lang), value, undefined, moment.default);
+    return parseDateTime(
+      toBackendLang(lang),
+      value,
+      undefined,
+      moment.default,
+      selectedTimezone,
+    );
   };
 
   const getDateOnly = () => {
@@ -151,6 +226,18 @@ const DatetimeWidgetComponent = (props) => {
       });
       const dateValue = base.toISOString();
       onChange(id, dateValue);
+    }
+  };
+
+  const onTimezoneChange = (timezone) => {
+    if (timezone) {
+      let value = getInternalValue();
+      value = value.utcOffset(
+        getTimeZoneOffset(value.toDate(), timezone),
+        true,
+      );
+      onChange(id, value.toISOString());
+      onChange(id + '_timezone', timezone);
     }
   };
 
@@ -198,68 +285,76 @@ const DatetimeWidgetComponent = (props) => {
   return (
     <FormFieldWrapper {...props}>
       {renderWidget && (
-        <div className="date-time-widget-wrapper">
-          <div
-            className={cx('ui input date-input', {
-              'default-date': isDefault,
-            })}
-          >
-            <SingleDatePicker
-              date={datetime}
-              disabled={isDisabled}
-              onDateChange={onDateChange}
-              focused={focused}
-              numberOfMonths={1}
-              {...(noPastDates ? {} : { isOutsideRange: () => false })}
-              onFocusChange={onFocusChange}
-              noBorder
-              required={required}
-              displayFormat={moment.default
-                .localeData(toBackendLang(lang))
-                .longDateFormat('L')}
-              navPrev={<PrevIcon />}
-              navNext={<NextIcon />}
-              id={`${id}-date`}
-              placeholder={intl.formatMessage(messages.date)}
-            />
-          </div>
-          {!isDateOnly && (
+        <>
+          <div className="date-time-widget-wrapper">
             <div
-              ref={timeInputRef}
-              className={cx('ui input time-input', {
+              className={cx('ui input date-input', {
                 'default-date': isDefault,
               })}
             >
-              <TimePicker
+              <SingleDatePicker
+                date={datetime}
                 disabled={isDisabled}
-                defaultValue={datetime}
-                value={datetime}
-                onChange={onTimeChange}
-                allowEmpty={false}
-                showSecond={false}
-                use12Hours={lang === 'en'}
-                id={`${id}-time`}
-                format={moment.default
+                onDateChange={onDateChange}
+                focused={focused}
+                numberOfMonths={1}
+                {...(noPastDates ? {} : { isOutsideRange: () => false })}
+                onFocusChange={onFocusChange}
+                noBorder
+                required={required}
+                displayFormat={moment.default
                   .localeData(toBackendLang(lang))
-                  .longDateFormat('LT')}
-                placeholder={intl.formatMessage(messages.time)}
-                focusOnOpen
-                placement="bottomRight"
+                  .longDateFormat('L')}
+                navPrev={<PrevIcon />}
+                navNext={<NextIcon />}
+                id={`${id}-date`}
+                placeholder={intl.formatMessage(messages.date)}
               />
             </div>
-          )}
-          {resettable && (
-            <button
-              type="button"
-              disabled={isDisabled || !datetime}
-              onClick={onResetDates}
-              className="item ui noborder button"
-              aria-label={intl.formatMessage(messages.clearDateTime)}
-            >
-              <Icon name={clearSVG} size="24px" className="close" />
-            </button>
-          )}
-        </div>
+            {!isDateOnly && (
+              <div
+                ref={timeInputRef}
+                className={cx('ui input time-input', {
+                  'default-date': isDefault,
+                })}
+              >
+                <TimePicker
+                  disabled={isDisabled}
+                  defaultValue={datetime}
+                  value={datetime}
+                  onChange={onTimeChange}
+                  allowEmpty={false}
+                  showSecond={false}
+                  use12Hours={lang === 'en'}
+                  id={`${id}-time`}
+                  format={moment.default
+                    .localeData(toBackendLang(lang))
+                    .longDateFormat('LT')}
+                  placeholder={intl.formatMessage(messages.time)}
+                  focusOnOpen
+                  placement="bottomRight"
+                />
+              </div>
+            )}
+            {resettable && (
+              <button
+                type="button"
+                disabled={isDisabled || !datetime}
+                onClick={onResetDates}
+                className="item ui noborder button"
+                aria-label={intl.formatMessage(messages.clearDateTime)}
+              >
+                <Icon name={clearSVG} size="24px" className="close" />
+              </button>
+            )}
+          </div>
+          {id === 'start' || id === 'end' ? (
+            <TimezoneSelector
+              value={selectedTimezone}
+              onChange={onTimezoneChange}
+            />
+          ) : null}
+        </>
       )}
     </FormFieldWrapper>
   );
@@ -289,6 +384,6 @@ DatetimeWidgetComponent.defaultProps = {
   resettable: true,
 };
 
-export default injectLazyLibs(['reactDates', 'moment'])(
+export default injectLazyLibs(['reactDates', 'reactSelect', 'moment'])(
   DatetimeWidgetComponent,
 );
