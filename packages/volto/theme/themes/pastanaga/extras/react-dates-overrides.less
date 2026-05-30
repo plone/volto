@@ -108,6 +108,28 @@ ul.DayPicker_weekHeader_ul {
   align-items: center;
 }
 
+.date-time-widget-timezone {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px 16px 0 0;
+  font-size: 0.9rem;
+
+  button {
+    cursor: pointer;
+    opacity: 0.5;
+
+    & > svg {
+      display: inline-block;
+      vertical-align: bottom;
+    }
+  }
+}
+
+.date-time-widget-timezone-selector {
+  position: relative;
+  flex-grow: 1;
+}
+
 .sidebar-container:not(.full-size) #sidebar-metadata {
   .DateInput {
     width: 110px !important;
