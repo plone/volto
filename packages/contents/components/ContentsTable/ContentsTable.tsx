@@ -1,4 +1,4 @@
-import { type ComponentProps, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { VisuallyHidden } from 'react-aria';
 import {
   TooltipTrigger,
@@ -46,6 +46,7 @@ import type { ContentsLoaderType } from '../../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../../providers/contents';
 import { clipboardKey } from '../../config/constants';
+import { ContentsDropZone } from './ContentsDropZone';
 import { type TableIndexes } from '../../types';
 
 import { type ToastItem } from '@plone/layout/config/toast';
@@ -504,73 +505,74 @@ export function ContentsTable({
   };
 
   return (
-    <Container
-      width="layout"
-      className="folder-contents"
-      // aria-live="polite"
-    >
-      <article
-        id="content"
-        className={`
-          mx-auto px-4 py-2
-          lg:px-8
-        `}
+    <ContentsDropZone>
+      <Container
+        width="layout"
+        className="folder-contents min-h-dvh"
+        // aria-live="polite"
       >
-        <Topbar>
-          <div className="title-block">
-            <Breadcrumbs
-              items={breadcrumbs}
-              className="contents-breadcrumbs text-quanta-sapphire"
+        <article
+          id="content"
+          className={`
+            mx-auto px-4 py-2
+            lg:px-8
+          `}
+        >
+          <Topbar>
+            <div className="title-block">
+              <Breadcrumbs
+                items={breadcrumbs}
+                className="contents-breadcrumbs text-quanta-sapphire"
+              >
+                {(item) => (
+                  <Breadcrumb
+                    id={item['@id']}
+                    href={item['@id']}
+                    className={`
+                      text-quanta-sapphire decoration-quanta-sapphire/50
+                      hover:decoration-quanta-sapphire
+                    `}
+                  >
+                    {item.title}
+                  </Breadcrumb>
+                )}
+              </Breadcrumbs>
+              <h1 className="text-2xl font-bold">{title}</h1>
+            </div>
+            <div
+              className={`
+                group ms-auto flex shrink-0 grow basis-0 flex-wrap-reverse items-center justify-end
+                gap-4 self-end
+                lg:flex-nowrap
+              `}
             >
-              {(item) => (
-                <Breadcrumb
-                  id={item['@id']}
-                  href={item['@id']}
-                  className={`
-                    text-quanta-sapphire decoration-quanta-sapphire/50
-                    hover:decoration-quanta-sapphire
-                  `}
-                >
-                  {item.title}
-                </Breadcrumb>
+              {!isMobileScreenSize && (
+                <ContentsActions
+                  upload={openUpload}
+                  rename={rename}
+                  workflow={workflow}
+                  tags={tags}
+                  properties={properties}
+                  cut={cut}
+                  copy={copy}
+                  paste={paste}
+                  deleteItem={deleteItem}
+                  canPaste={canPaste}
+                  // selected={selected}
+                />
               )}
-            </Breadcrumbs>
-            <h1 className="text-2xl font-bold">{title}</h1>
-          </div>
-          <div
-            className={`
-              group ms-auto flex shrink-0 grow basis-0 flex-wrap-reverse items-center justify-end
-              gap-4 self-end
-              lg:flex-nowrap
-            `}
-          >
-            {!isMobileScreenSize && (
-              <ContentsActions
-                upload={openUpload}
-                rename={rename}
-                workflow={workflow}
-                tags={tags}
-                properties={properties}
-                cut={cut}
-                copy={copy}
-                paste={paste}
-                deleteItem={deleteItem}
-                canPaste={canPaste}
-                // selected={selected}
+              <Input
+                name="sortable_title"
+                placeholder={t('contents.actions.filter')}
+                value={searchInput ?? ''}
+                onChange={(e) => {
+                  setSearchInput(e.target.value);
+                }}
+                aria-label={t('contents.actions.filter')}
+                className="flex-0 basis-60"
               />
-            )}
-            <Input
-              name="sortable_title"
-              placeholder={t('contents.actions.filter')}
-              value={searchInput ?? ''}
-              onChange={(e) => {
-                setSearchInput(e.target.value);
-              }}
-              aria-label={t('contents.actions.filter')}
-              className="flex-0 basis-60"
-            />
 
-            {/* <TooltipTrigger>
+              {/* <TooltipTrigger>
               <DialogTrigger>
                 <Button
                   variant="primary"
@@ -592,81 +594,83 @@ export function ContentsTable({
               </DialogTrigger>
               <Tooltip placement="bottom">{t('contents.actions.add')}</Tooltip>
             </TooltipTrigger> */}
-          </div>
-        </Topbar>
-        <section className="contents-table">
-          <VisuallyHidden>
-            <span aria-live="polite">
-              {t('contents.results', { count: items.length })}
-            </span>
-          </VisuallyHidden>
-          {rows?.length > 0 ? (
-            <>
-              <Table
-                aria-label={t('contents.results.contents_of', { title })}
-                selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
-                selectedKeys={[...selected].map((s) => s['@id'])}
-                onSelectionChange={setSelected}
-                dragAndDropHooks={dragAndDropHooks}
-                // onRowSelection={onRowSelection}
-              >
-                <TableHeader
-                  columns={[...columns]}
-                  dragColumnWidth={50}
-                  dragColumnHeader={
-                    <MenuTrigger>
-                      <TooltipTrigger>
-                        <Button variant="icon" className="drag-cell-header">
-                          <CollectionIcon />
-                        </Button>
-                        <Tooltip
-                          className="react-aria-Tooltip tooltip"
-                          placement="bottom"
-                        >
-                          {t('contents.rearrange.by')}
-                        </Tooltip>
-                      </TooltipTrigger>
-                      <RearrangePopover
-                        indexes={indexes.values}
-                        sortItems={sortItems}
-                      />
-                    </MenuTrigger>
-                  }
-                >
-                  {(column) => (
-                    <Column
-                      isRowHeader={column.isRowHeader}
-                      width={column.width}
-                      minWidth={column.width}
-                    >
-                      {column.name}
-                    </Column>
-                  )}
-                </TableHeader>
-                <TableBody items={rows}>
-                  {(row) => (
-                    <Row columns={[...columns]} textValue={row.textValue}>
-                      {(column) => <Cell>{row[column.id]}</Cell>}
-                    </Row>
-                  )}
-                </TableBody>
-              </Table>
-
-              <Pagination
-                totalPages={Math.ceil(search.items_total / b_size)}
-                currentPage={currentPage}
-                onPageChange={(page) => onPageChange(page)}
-              />
-            </>
-          ) : (
-            <div className="empty-state">
-              <div className="text-center text-xl">
-                {t('contents.results.no_results')}
-              </div>
             </div>
-          )}
-        </section>
-      </article>
-    </Container>
+          </Topbar>
+          <section className="contents-table">
+            <VisuallyHidden>
+              <span aria-live="polite">
+                {t('contents.results', { count: items.length })}
+              </span>
+            </VisuallyHidden>
+            {rows?.length > 0 ? (
+              <>
+                <Table
+                  className="max-h-none border-0"
+                  aria-label={t('contents.results.contents_of', { title })}
+                  selectionMode={!isMobileScreenSize ? 'multiple' : undefined}
+                  selectedKeys={[...selected].map((s) => s['@id'])}
+                  onSelectionChange={setSelected}
+                  dragAndDropHooks={dragAndDropHooks}
+                  // onRowSelection={onRowSelection}
+                >
+                  <TableHeader
+                    columns={[...columns]}
+                    dragColumnWidth={50}
+                    dragColumnHeader={
+                      <MenuTrigger>
+                        <TooltipTrigger>
+                          <Button variant="icon" className="drag-cell-header">
+                            <CollectionIcon />
+                          </Button>
+                          <Tooltip
+                            className="react-aria-Tooltip tooltip"
+                            placement="bottom"
+                          >
+                            {t('contents.rearrange.by')}
+                          </Tooltip>
+                        </TooltipTrigger>
+                        <RearrangePopover
+                          indexes={indexes.values}
+                          sortItems={sortItems}
+                        />
+                      </MenuTrigger>
+                    }
+                  >
+                    {(column) => (
+                      <Column
+                        isRowHeader={column.isRowHeader}
+                        width={column.width}
+                        minWidth={column.width}
+                      >
+                        {column.name}
+                      </Column>
+                    )}
+                  </TableHeader>
+                  <TableBody items={rows}>
+                    {(row) => (
+                      <Row columns={[...columns]} textValue={row.textValue}>
+                        {(column) => <Cell>{row[column.id]}</Cell>}
+                      </Row>
+                    )}
+                  </TableBody>
+                </Table>
+
+                <Pagination
+                  totalPages={Math.ceil(search.items_total / b_size)}
+                  currentPage={currentPage}
+                  onPageChange={(page) => onPageChange(page)}
+                />
+              </>
+            ) : (
+              <div className="empty-state">
+                <div className="text-center text-xl">
+                  {t('contents.results.no_results')}
+                </div>
+              </div>
+            )}
+          </section>
+        </article>
+      </Container>
+    </ContentsDropZone>
   );
 }

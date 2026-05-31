@@ -30,9 +30,10 @@
       "view": "Vedi",
       "add": "Aggiungi un contenuto",
       "move_to_top_folder": "Sposta in cima alla cartella",
-      "move_to_bottom_folder": "Sposta in fondo alla cartella"
+      "move_to_bottom_folder": "Sposta in fondo alla cartella",
+      "uploaded": "Contenuto '{{title}}' caricato con successo",
+      "uploaded_multiple": "{{number}} contenuti caricati con successo"
     },
-
     "item": {
       "expired": "Scaduto",
       "scheduled": "Pianificato",
@@ -54,7 +55,9 @@
         "none": "Nessuno",
         "no_workflow_state": "—"
       },
-      "date": { "none": "" }
+      "date": {
+        "none": ""
+      }
     },
     "error": "Errore",
     "unknown_error": "Errore sconsciuto",
@@ -74,6 +77,7 @@
       "upload_files": "Carica file",
       "dropzone_label": "Trascina i file qui, o clicca per <1><0>sfogliare</0></1>",
       "confirm": "Carica",
+      "remove_file": "Rimuovi file",
       "columns": {
         "name": "Nome",
         "size": "Dimensione",
@@ -81,8 +85,12 @@
       }
     },
     "modal_delete": {
-      "single": { "title": "Vuoi eliminare \"{{item}}\"?" },
-      "multi": { "title": "Vuoi eliminare {{n}} elementi?" },
+      "single": {
+        "title": "Vuoi eliminare \"{{item}}\"?"
+      },
+      "multi": {
+        "title": "Vuoi eliminare {{n}} elementi?"
+      },
       "description": "Questa azione non può essere annullata.",
       "confirm": "Procedi con l'eliminazione"
     }

@@ -15,6 +15,8 @@ import { type ToastItem } from '@plone/layout/config/toast';
 
 type SetSelectedType = 'all' | 'none' | Set<Key>;
 
+export type FileEntry = { file: File; title: string };
+
 type Item = ArrayElement<
   Awaited<ReturnType<ContentsLoaderType>>['search']['items']
 >;
@@ -28,7 +30,10 @@ interface ContentsContext {
   setItemsToDelete: (s: Set<Item>) => void;
   showUpload: boolean;
   setShowUpload: (s: boolean) => void;
+  pendingDropFiles: FileEntry[];
+  setPendingDropFiles: (files: FileEntry[]) => void;
   contentTitle: string;
+  contentPath: string;
   showToast: (c: ToastItem) => void;
 }
 
@@ -41,7 +46,10 @@ const ContentsContext = createContext<ContentsContext>({
   setItemsToDelete: () => {},
   showUpload: false,
   setShowUpload: () => {},
+  pendingDropFiles: [],
+  setPendingDropFiles: () => {},
   contentTitle: '',
+  contentPath: '/',
   showToast: (t: ToastItem) => {},
 });
 
@@ -53,6 +61,7 @@ export function ContentsProvider(props: ContentsProviderProps) {
   const { search, content } = useLoaderData<ContentsLoaderType>();
   const { items = [] } = search ?? {};
   const contentTitle = content?.title ?? '';
+  const contentPath = content?.['@id'] ?? '/';
   //selected
   const [selected, _setSelected] = useState<Set<Item>>(new Set());
 
@@ -75,6 +84,7 @@ export function ContentsProvider(props: ContentsProviderProps) {
 
   //upload
   const [showUpload, setShowUpload] = useState(false);
+  const [pendingDropFiles, setPendingDropFiles] = useState<FileEntry[]>([]);
 
   //show toast
   const showToast = (queueElement: ToastItem) => {
@@ -94,7 +104,10 @@ export function ContentsProvider(props: ContentsProviderProps) {
     setShowDelete,
     showUpload,
     setShowUpload,
+    pendingDropFiles,
+    setPendingDropFiles,
     contentTitle,
+    contentPath,
     showToast,
   };
 

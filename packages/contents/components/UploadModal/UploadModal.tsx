@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useFetcher } from 'react-router';
 import { Heading, FileTrigger } from 'react-aria-components';
 import { type FileDropItem, useDateFormatter } from 'react-aria';
 import { useTranslation, Trans } from 'react-i18next';
@@ -7,9 +8,16 @@ import {
   Dialog,
   DropZone,
   DropZoneText,
+  Input,
   Modal,
 } from '@plone/components/quanta';
-import { CloseIcon, PageIcon, UploadIcon } from '@plone/components/Icons';
+import {
+  BinIcon,
+  CloseIcon,
+  PageIcon,
+  UploadIcon,
+} from '@plone/components/Icons';
+import { type ToastItem } from '@plone/layout/config/toast';
 import { useContentsContext } from '../../providers/contents';
 
 function formatBytes(bytes: number): string {
@@ -25,8 +33,16 @@ function formatBytes(bytes: number): string {
 
 export default function UploadModal() {
   const { t } = useTranslation();
-  const { showUpload, setShowUpload, contentTitle } = useContentsContext();
-  const [files, setFiles] = useState<File[]>([]);
+  const {
+    showUpload,
+    setShowUpload,
+    contentTitle,
+    contentPath,
+    showToast,
+    pendingDropFiles: entries,
+    setPendingDropFiles: setEntries,
+  } = useContentsContext();
+  const fetcher = useFetcher();
   const longFormatter = useDateFormatter({
     dateStyle: 'full',
     timeStyle: 'full',
@@ -36,23 +52,91 @@ export default function UploadModal() {
     timeStyle: 'short',
   });
 
-  if (!showUpload) return null;
-
   const addFiles = (newFiles: File[]) => {
-    setFiles((prev) => {
-      const existingNames = new Set(prev.map((f) => f.name));
-      const unique = newFiles.filter((f) => !existingNames.has(f.name));
-      return [...prev, ...unique];
-    });
+    const existingNames = new Set(entries.map((e) => e.file.name));
+    const unique = newFiles
+      .filter((f) => !existingNames.has(f.name))
+      .map((f) => ({
+        file: f,
+        title: f.name,
+      }));
+    setEntries([...entries, ...unique]);
   };
 
+  const removeFile = (index: number) => {
+    setEntries(entries.filter((_, i) => i !== index));
+  };
+
+  const updateTitle = (index: number, title: string) => {
+    setEntries(entries.map((e, i) => (i === index ? { ...e, title } : e)));
+  };
+
+  useEffect(() => {
+    if (fetcher.state === 'idle') {
+      const responseData = fetcher.data;
+      if (responseData?.ok?.length > 0) {
+        const toast: ToastItem = { title: '', icon: <UploadIcon /> };
+        if (responseData.ok.length === 1) {
+          toast.title = t('contents.actions.uploaded', {
+            title: responseData.ok[0].title,
+          });
+        } else {
+          toast.title = t('contents.actions.uploaded_multiple', {
+            number: responseData.ok.length,
+          });
+        }
+        showToast(toast);
+      }
+      if (responseData?.errors?.length > 0) {
+        responseData.errors.forEach((e: any) => {
+          const toast: ToastItem = {
+            title: `${t('contents.error')} ${e.__error?.status} - ${e.__error?.data?.type}`,
+            description: e.__error?.data?.message,
+            icon: <UploadIcon />,
+            className: 'error',
+          };
+          showToast(toast);
+        });
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetcher.state]);
+
+  if (!showUpload) return null;
+
   const close = () => {
-    setFiles([]);
+    setEntries([]);
     setShowUpload(false);
   };
 
-  // UI-only stub — actual Plone API call will be added in a follow-up
-  const confirm = () => {
+  const fileToBase64 = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        resolve(result.split(',')[1]);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+
+  const confirm = async () => {
+    const encodedFiles = await Promise.all(
+      entries.map(async ({ file, title }) => ({
+        name: file.name,
+        type: file.type || 'application/octet-stream',
+        data: await fileToBase64(file),
+        title,
+      })),
+    );
+    fetcher.submit(
+      { path: contentPath, files: encodedFiles },
+      {
+        method: 'POST',
+        encType: 'application/json',
+        action: '/@@contents/@@upload',
+      },
+    );
     close();
   };
 
@@ -66,7 +150,7 @@ export default function UploadModal() {
           {t('contents.modal_upload.title', { title: contentTitle })}
         </Heading>
         <div className="mx-auto max-w-2xl">
-          {files.length > 0 && (
+          {entries.length > 0 && (
             <table className="mb-6 w-full border-collapse text-sm">
               <thead>
                 <tr className="text-quanta-graphite border-b border-quanta-silver text-left">
@@ -79,29 +163,37 @@ export default function UploadModal() {
                   <th className="pb-2 font-normal">
                     {t('contents.modal_upload.columns.last_modified')}
                   </th>
+                  <th className="pb-2" />
                 </tr>
               </thead>
               <tbody>
-                {files.map((file, index) => (
+                {entries.map((entry, index) => (
                   <tr key={index} className="border-b border-quanta-silver">
                     <td className="flex items-center gap-2 py-3">
-                      {file.type.startsWith('image/') ? (
+                      {entry.file.type.startsWith('image/') ? (
                         <img
-                          src={URL.createObjectURL(file)}
-                          alt={file.name}
-                          className="h-8 w-8 rounded object-cover"
+                          src={URL.createObjectURL(entry.file)}
+                          alt={entry.file.name}
+                          className="h-8 w-8 shrink-0 rounded object-cover"
                         />
                       ) : (
-                        <div className="flex h-8 w-8 items-center justify-center">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center">
                           <PageIcon size="sm" />
                         </div>
                       )}
-                      <span className="text-quanta-sapphire">{file.name}</span>
+                      <Input
+                        type="text"
+                        name="title"
+                        value={entry.title}
+                        onChange={(e) => updateTitle(index, e.target.value)}
+                        className="me-2 flex-1"
+                        aria-label={`${t('contents.modal_upload.columns.name')}: ${entry.file.name}`}
+                      />
                     </td>
-                    <td className="py-3">{formatBytes(file.size)}</td>
+                    <td className="py-3">{formatBytes(entry.file.size)}</td>
                     <td className="py-3">
                       {(() => {
-                        const date = new Date(file.lastModified);
+                        const date = new Date(entry.file.lastModified);
                         return (
                           <time
                             dateTime={date.toISOString()}
@@ -111,6 +203,16 @@ export default function UploadModal() {
                           </time>
                         );
                       })()}
+                    </td>
+                    <td className="py-3 text-right">
+                      <Button
+                        type="button"
+                        variant="destructive"
+                        onPress={() => removeFile(index)}
+                        aria-label={t('contents.modal_upload.remove_file')}
+                      >
+                        <BinIcon size="sm" />
+                      </Button>
                     </td>
                   </tr>
                 ))}
@@ -141,7 +243,7 @@ export default function UploadModal() {
               <UploadIcon size="3xl" />
             </div>
             <p className="my-1 text-xl font-bold">
-              {files.length > 0
+              {entries.length > 0
                 ? t('contents.modal_upload.upload_more_files')
                 : t('contents.modal_upload.upload_files')}
             </p>
@@ -187,7 +289,7 @@ export default function UploadModal() {
               variant="primary"
               accent={true}
               size="L"
-              isDisabled={files.length === 0}
+              isDisabled={entries.length === 0 || fetcher.state !== 'idle'}
             >
               <UploadIcon />
             </Button>

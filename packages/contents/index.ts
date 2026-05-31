@@ -16,6 +16,11 @@ export default function install(config: ConfigType) {
             file: '@plone/contents/routes/delete.tsx',
           },
           {
+            path: '@@upload/*',
+            type: 'route',
+            file: '@plone/contents/routes/upload.tsx',
+          },
+          {
             path: '@@order/*',
             type: 'route',
             file: '@plone/contents/routes/order.tsx',
