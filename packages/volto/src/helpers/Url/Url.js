@@ -394,6 +394,22 @@ export const URLUtils = {
 };
 
 /**
+ * Checks whether a given URL is external (starts with http), and returns it if so.
+ * It if it is not, it returns the alternative
+ *
+ * This is useful in Image-related components, where some backends may produce
+ * absolute URLs pointing to external image scales.
+ *
+ * For instance when using Thumbor like in the Cloudbrine stack
+ */
+export function externalUrlOrAlternative(url, alternative) {
+  console.log('externalUrlOrAlternative', url);
+  return flattenToAppURL(url).startsWith('http')
+    ? flattenToAppURL(url)
+    : alternative;
+}
+
+/**
  * Given an image info object, it does flatten all the scales information to
  * match the ones stored in the catalog
  * 'http://localhost:3000/{path}/@@images/{scalefile}' -> '@images/{scalefile}'
@@ -412,12 +428,18 @@ export function flattenScales(path, image) {
   const imageInfo = {
     ...image,
     scales: image.scales || {},
-    download: flattenToAppURL(removeObjectIdFromURL(basePath, image.download)),
+    download: externalUrlOrAlternative(
+      image.download,
+      flattenToAppURL(removeObjectIdFromURL(basePath, image.download)),
+    ),
   };
 
   Object.keys(imageInfo.scales).forEach((key) => {
-    imageInfo.scales[key].download = flattenToAppURL(
-      removeObjectIdFromURL(basePath, image.scales[key].download),
+    imageInfo.scales[key].download = externalUrlOrAlternative(
+      image.scales[key].download,
+      flattenToAppURL(
+        removeObjectIdFromURL(basePath, image.scales[key].download),
+      ),
     );
   });
 

@@ -63,6 +63,7 @@ const TeaserData = (props) => {
   };
 
   const dataTransformer = (resp, data) => {
+    console.log('dataTransformer', resp, data);
     let hrefData = {
       '@id': flattenToAppURL(resp['@id']),
       '@type': resp?.['@type'],
@@ -94,6 +95,7 @@ const TeaserData = (props) => {
       styles: data.styles,
       title: resp.title,
     };
+    console.log('dataTransformerTeaser', blockData);
     return blockData;
   };
 

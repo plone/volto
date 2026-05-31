@@ -34,6 +34,8 @@ const TeaserDefaultTemplate = (props) => {
     columns,
   });
 
+  console.log('TeaserDefaultTemplate', url);
+
   return (
     <div className={cx('block teaser', className)} style={style}>
       <>

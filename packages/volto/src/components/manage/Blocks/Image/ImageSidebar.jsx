@@ -35,12 +35,14 @@ const ImageSidebar = (props) => {
             basic
             disabled={!data.url}
             onClick={() => {
-              onChangeBlock(block, {
-                ...data,
-                url: undefined,
-                image_scales: undefined,
-                image_field: undefined,
-                alt: data.url.title === data.alt ? undefined : data.alt,
+              onChangeBlock(block, () => {
+                return {
+                  ...data,
+                  url: undefined,
+                  image_scales: undefined,
+                  image_field: undefined,
+                  alt: data.url.title === data.alt ? undefined : data.alt,
+                };
               });
             }}
           >

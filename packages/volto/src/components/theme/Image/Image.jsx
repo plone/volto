@@ -5,6 +5,7 @@ import {
   flattenToAppURL,
   flattenScales,
   addSubpathPrefix,
+  externalUrlOrAlternative,
 } from '@plone/volto/helpers/Url/Url';
 
 /**
@@ -38,11 +39,11 @@ export default function Image({
   attrs.className = cx(className, { responsive }) || undefined;
 
   if (!item && src) {
-    attrs.src = addSubpathPrefix(src);
+    console.log('Image Componente, src', src);
+    attrs.src = externalUrlOrAlternative(src, addSubpathPrefix(src));
   } else {
     const isFromRealObject = !item.image_scales;
     const imageFieldWithDefault = imageField || item.image_field || 'image';
-
     const image = isFromRealObject
       ? flattenScales(item['@id'], item[imageFieldWithDefault])
       : flattenScales(
@@ -54,14 +55,18 @@ export default function Image({
 
     const isSvg = image['content-type'] === 'image/svg+xml';
     // In case `base_path` is present (`preview_image_link`) use it as base path
-    const basePath = addSubpathPrefix(
-      flattenToAppURL(image.base_path || item['@id']),
+    const baseUrl = image.base_path || item['@id'];
+    const basePath = addSubpathPrefix(flattenToAppURL(baseUrl));
+    console.log('Image Componente, basePath', basePath);
+    console.log('Image Componente, baseUrl', baseUrl);
+    console.log('Image Componente, image.download', image.download);
+    attrs.src = externalUrlOrAlternative(
+      image.download,
+      `${basePath}/${image.download}`,
     );
-    attrs.src = `${basePath}/${image.download}`;
 
     attrs.width = image.width;
     attrs.height = image.height;
-
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
       const sortedScales = Object.values({
         ...image.scales,
@@ -82,7 +87,11 @@ export default function Image({
       });
 
       attrs.srcSet = sortedScales
-        .map((scale) => `${basePath}/${scale.download} ${scale.width}w`)
+        .map((scale) =>
+          scale.download.startsWith('http')
+            ? scale.download
+            : `${basePath}/${scale.download} ${scale.width}w`,
+        )
         .join(', ');
     }
   }
