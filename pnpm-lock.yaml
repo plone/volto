@@ -454,6 +454,12 @@ importers:
 
   packages/cmsui:
     dependencies:
+      '@platejs/floating':
+        specifier: ^49.0.0
+        version: 49.0.0(platejs@49.2.21(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.6)(immer@10.1.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@platejs/link':
+        specifier: ^49.1.1
+        version: 49.1.1(platejs@49.2.21(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.6)(immer@10.1.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@plone/blocks':
         specifier: workspace:*
         version: link:../blocks
@@ -481,6 +487,9 @@ importers:
       '@tanstack/react-form':
         specifier: ^1.3.3
         version: 1.23.8(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -493,9 +502,15 @@ importers:
       jwt-decode:
         specifier: ^4.0.0
         version: 4.0.0
+      lucide-react:
+        specifier: ^0.544.0
+        version: 0.544.0(react@19.2.0)
       optics-ts:
         specifier: ^2.4.1
         version: 2.4.1
+      platejs:
+        specifier: ^49.2.21
+        version: 49.2.21(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.6)(immer@10.1.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(scheduler@0.27.0)(use-sync-external-store@1.6.0(react@19.2.0))
       react:
         specifier: ^19.2.0
         version: 19.2.0
