@@ -20,7 +20,6 @@ import { ExitBreakKit } from './plugins/exit-break-kit';
 import { FloatingToolbarKit } from './plugins/floating-toolbar-kit';
 import { FontKit } from './plugins/font-kit';
 import { LineHeightKit } from './plugins/line-height-kit';
-import { LinkKit } from './plugins/link-kit';
 import { ListKit } from './plugins/list-kit';
 import { MarkdownKit } from './plugins/markdown-kit';
 import { MediaKit } from './plugins/media-kit';
@@ -47,7 +46,6 @@ export const BlockEditorKit = [
   ...MediaKit,
   ...CalloutKit,
   ...ColumnKit,
-  ...LinkKit,
   ...MentionKit,
 
   // Marks
