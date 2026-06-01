@@ -1,15 +1,6 @@
 # Project settings
 include ../../variables.mk
 
-CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-
-# Recipe snippets for reuse
-
-CHECKOUT_BASENAME="$(shell basename $(shell realpath ./))"
-CHECKOUT_BRANCH=$(shell git branch --show-current)
-CHECKOUT_TMP=../$(CHECKOUT_BASENAME).tmp
-CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
-
 .PHONY: all
 all: help
 
@@ -27,7 +18,7 @@ build: ## Build the package
 
 .PHONY: storybook-start
 storybook-start: ## Start Storybook
-	pnpm run storybook:main
+	pnpm run storybook
 
 .PHONY: storybook-build
 storybook-build: ## Build Storybook
