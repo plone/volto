@@ -1,0 +1,2 @@
+Added missing `forwardRef` to the Quanta button component.
+Renamed `quanta-lemmon` color to `quanta-lemon`. @arybakov05

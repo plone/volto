@@ -22,6 +22,7 @@ register-and-retrieve-components
 register-and-retrieve-utilities
 configure-style-fields
 register-slots
+customize-login-screen
 shadow-a-component
 fetch-additional-data-root-loader
 add-tailwind
