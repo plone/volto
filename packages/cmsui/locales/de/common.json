@@ -3,6 +3,7 @@
     "add": "Hinzufügen",
     "edit": "Bearbeiten",
     "save": "Speichern",
+    "cancel": "Abbrechen",
     "controlpanel": "Konfiguration",
     "objectbrowserwidget": {
       "openDialog": "Inhalt auswählen",

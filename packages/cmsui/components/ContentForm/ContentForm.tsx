@@ -158,14 +158,13 @@ export default function ContentForm({
               id="button-cancel"
               dependencies={[content['@id']] as any}
             >
-              <Link aria-label="Cancel" href={content['@id']}>
+              <Link aria-label={t('cmsui.cancel')} href={content['@id']}>
                 <Close />
               </Link>
             </Plug>
             <Plug pluggable="toolbar-bottom" id="button-settings">
               <button
-                type="button"
-                aria-label="Settings"
+                aria-label={t('cmsui.toolbar.settings')}
                 onClick={() => setCollapsed((state) => !state)}
               >
                 <Settings />

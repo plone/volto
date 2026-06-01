@@ -3,6 +3,7 @@
     "add": "Add",
     "edit": "Edit",
     "save": "Save",
+    "cancel": "Cancel",
     "controlpanel": "Control Panel",
     "objectbrowserwidget": {
       "openDialog": "Select content",
