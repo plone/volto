@@ -22,7 +22,7 @@ export interface ContentIconMap {
 export type ObjectBrowserWidgetMode = 'multiple' | 'single';
 export type PartialBrainWithRequired = Partial<Brain> & {
   '@id': string;
-  '@type': string;
+  '@type': Content['@type'];
   title: string;
 };
 export type WidgetPatternOptions = {

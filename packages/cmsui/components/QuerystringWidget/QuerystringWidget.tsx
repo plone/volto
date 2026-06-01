@@ -11,7 +11,7 @@ import { useLoaderData } from 'react-router';
 import type { loader as editLoader } from '../../routes/edit';
 
 import { focusRing } from '../utils';
-import { NumberField, Switch } from '@plone/components';
+import { Switch } from '@plone/components';
 import {
   TextField,
   Select,
@@ -326,17 +326,16 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
             {/* Depth Field - Conditional */}
             {hasPathCriterion && (
               <div className="max-w-xs">
-                <NumberField
+                <TextField
                   label="Depth"
-                  value={synced.depth}
-                  onChange={(value: number) =>
+                  type="number"
+                  value={String(synced.depth || '')}
+                  onChange={(value: string) =>
                     handleValueChange({
                       ...synced,
-                      depth: value,
+                      depth: value ? parseInt(value, 10) : undefined,
                     })
                   }
-                  minValue={0}
-                  maxValue={10}
                 />
               </div>
             )}
@@ -380,29 +379,29 @@ function QuerystringWidgetComponent(props: QuerystringWidgetProps) {
             {/* Results Options Row */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <NumberField
+                <TextField
                   label="Maximum results"
-                  value={synced.limit}
-                  onChange={(value: number) =>
+                  type="number"
+                  value={String(synced.limit || '')}
+                  onChange={(value: string) =>
                     handleValueChange({
                       ...synced,
-                      limit: value,
+                      limit: value ? parseInt(value, 10) : undefined,
                     })
                   }
-                  minValue={0}
                 />
               </div>
               <div>
-                <NumberField
+                <TextField
                   label="Paginate every"
-                  value={synced.b_size}
-                  onChange={(value: number) =>
+                  type="number"
+                  value={String(synced.b_size || '')}
+                  onChange={(value: string) =>
                     handleValueChange({
                       ...synced,
-                      b_size: value,
+                      b_size: value ? parseInt(value, 10) : undefined,
                     })
                   }
-                  minValue={1}
                 />
               </div>
             </div>

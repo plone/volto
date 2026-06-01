@@ -1,20 +1,23 @@
 import type { SlateElementProps, TLinkElement } from 'platejs';
 
-import { getLinkAttributes } from '@platejs/link';
+import { Link } from '@plone/components';
 import { SlateElement } from 'platejs';
 
 export function LinkElementStatic(props: SlateElementProps<TLinkElement>) {
   return (
     <SlateElement
       {...props}
-      as="a"
+      as="span"
       className="font-medium text-primary underline decoration-primary underline-offset-4"
-      attributes={{
-        ...props.attributes,
-        ...getLinkAttributes(props.editor, props.element),
-      }}
+      attributes={props.attributes}
     >
-      {props.children}
+      <Link
+        href={props.element.url}
+        target={props.element.target}
+        rel={props.element.target === '_blank' ? 'noreferrer' : undefined}
+      >
+        {props.children}
+      </Link>
     </SlateElement>
   );
 }

@@ -14,12 +14,39 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['neutral', 'primary', 'destructive'],
+      options: ['neutral', 'primary', 'destructive', 'secondary'],
+    },
+    asLink: {
+      control: 'boolean',
+      description: 'Show the button as a link',
+      table: {
+        type: {
+          summary: 'boolean',
+        },
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    accent: {
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
+    },
+    isDisabled: {
+      table: {
+        defaultValue: {
+          summary: 'false',
+        },
+      },
     },
   },
   args: {
     isDisabled: false,
     children: 'Button',
+    asLink: false as any,
     accent: false,
   },
 } satisfies Meta<typeof Button>;
@@ -164,5 +191,21 @@ export const WithTWClassName: Story = {
     className: 'border-5 border-amber-300',
     variant: 'destructive',
     accent: true,
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    asLink: true,
+    variant: 'primary',
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary'],
+    },
+    accent: {
+      table: { disable: true },
+    },
   },
 };
