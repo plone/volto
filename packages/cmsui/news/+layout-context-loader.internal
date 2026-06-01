@@ -1,0 +1,1 @@
+Updated the CMS UI layout loader to read content and locale from route context. @pnicolli

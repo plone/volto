@@ -18,6 +18,7 @@
 @import './ColorSwatch.css';
 @import './ColorSwatchPicker.css';
 @import './Disclosure.css';
+@import './DropZone.css';
 @import './NumberField.css';
 @import './RadioGroup.css';
 @import './Switch.css';
@@ -56,3 +57,4 @@
 @import './Toast.css';
 
 @import './Container.css';
+@import './Pagination.css';
