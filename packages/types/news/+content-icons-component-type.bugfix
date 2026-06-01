@@ -1,0 +1,1 @@
+Allowed `contentIcons` settings to contain React icon components as well as SVG path strings. @pnicolli @giuliaghisini
