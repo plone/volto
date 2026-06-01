@@ -16,7 +16,7 @@ export async function action({
   const cli = context.get(ploneClientContext);
 
   const payload = await request.json();
-  const errors = [];
+  // const errors = [];
 
   try {
     await cli.updateContent({

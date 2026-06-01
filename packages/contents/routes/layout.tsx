@@ -27,6 +27,7 @@ import Back from '@plone/components/icons/arrow-left.svg?react';
 
 // eslint-disable-next-line import/no-unresolved
 import stylesheet from 'seven/.plone/cmsui.css?url';
+// TODO these imports are temporary and will need to be fully replaced with quanta tailwind styles
 import basicComponentsStylesheets from '@plone/components/dist/basic.css?url';
 import quantaComponentsStylesheet from '@plone/components/dist/quanta.css?url';
 
@@ -46,8 +47,6 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
-  // { rel: 'stylesheet', href: publicStylesheet },
-
   { rel: 'stylesheet', href: basicComponentsStylesheets },
   { rel: 'stylesheet', href: quantaComponentsStylesheet },
   { rel: 'stylesheet', href: stylesheet },

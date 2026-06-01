@@ -122,7 +122,12 @@ export default function Index() {
         <link rel="stylesheet" href="/layers.css" precedence="first" />
         <RACRouterProvider navigate={navigate}>
           <PluggablesProvider>
-            <Plug pluggable="toolbar-top" id="button-edit">
+            <Plug
+              pluggable="toolbar-top"
+              id="button-edit"
+              // @ts-expect-error this is currently typed as never[]
+              dependencies={[location.pathname]}
+            >
               <Link
                 className="primary"
                 aria-label="Edit"
@@ -131,7 +136,12 @@ export default function Index() {
                 <Pencil />
               </Link>
             </Plug>
-            <Plug pluggable="toolbar-top" id="button-contents">
+            <Plug
+              pluggable="toolbar-top"
+              id="button-contents"
+              // @ts-expect-error this is currently typed as never[]
+              dependencies={[location.pathname]}
+            >
               <Link
                 className="secondary"
                 aria-label="Contents"

@@ -36,7 +36,6 @@ Legend:
 | Breadcrumbs for contents navigation | `ContentsBreadcrumbs.jsx` | `partial` | Present, but needs parity review for multilingual/root behavior and final visual rules. |
 | Display of content icon, title, expired/scheduled badges | `ContentsItem.jsx` | `partial` | Present in `ContentsCell`, but current implementation has API/type issues. |
 | Row action popover with edit/view/cut/copy/delete/move actions | `ContentsItem.jsx` | `partial` | Present and granular, but needs permissions review and contract cleanup. |
-| Add content entry point | top action area in `Contents.jsx` | `partial` | Present as `AddContentPopover`, but needs parity review against addable types behavior and Figma flow. |
 | Search/filter input | `onChangeFilter` + `fetchContents` | `partial` | Debounced search exists, but only supports `SearchableText` and needs empty/no-results handling. |
 | Pagination | `onChangePage` / `pageSize` logic | `partial` | Present, but page size parity and state handling are not aligned with Volto yet. |
 | Column picker | `onSelectIndex` + popup in `Contents.jsx` | `partial` | Present, but persistence and some metadata details are incomplete. |
@@ -219,7 +218,6 @@ Tasks:
 Primary files:
 - `packages/contents/components/ContentsCell/ContentsCell.tsx`
 - `packages/contents/components/ItemActionsPopover/ItemActionsPopover.tsx`
-- `packages/contents/components/AddContentPopover/AddContentPopover.tsx`
 
 ### 2.9 Permissions, Unauthorized, Error And Empty States
 
@@ -256,7 +254,6 @@ Primary files:
 - `packages/contents/components/ItemActionsPopover/ItemActionsPopover.tsx`
 - `packages/contents/components/ContentsTable/ContentsTable.tsx`
 - `packages/contents/components/DeleteModal/DeleteModal.tsx`
-- `packages/contents/components/AddContentPopover/AddContentPopover.tsx`
 
 ### 3.2 Data Refresh And Mutation UX
 

@@ -62,10 +62,6 @@ const Pagination = ({
           {current + 1}
         </Menu.Item>
       )}
-
-
-
-
       {total > current + 1 && (
         <Menu.Item value={current + 1} onClick={onChangePage}>
           {current + 2}
@@ -76,10 +72,7 @@ const Pagination = ({
           {current + 3}
         </Menu.Item>
       )}
-
       {total > current + 4 && <Menu.Item disabled>...</Menu.Item>}
-
-      
       {total > current + 3 && (
         <Menu.Item value={total - 1} onClick={onChangePage}>
           {total}

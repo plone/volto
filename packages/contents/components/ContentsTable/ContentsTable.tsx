@@ -41,7 +41,6 @@ import { ContentsCell } from '../ContentsCell/ContentsCell';
 import { TableIndexesPopover } from '../TableIndexesPopover/TableIndexesPopover';
 import { RearrangePopover } from '../RearrangePopover/RearrangePopover';
 import { ContentsActions } from '../ContentsActions';
-// import { AddContentPopover } from '../AddContentPopover/AddContentPopover';
 import type { ContentsLoaderType } from '../../routes/contents';
 import { useTranslation } from 'react-i18next';
 import { useContentsContext } from '../../providers/contents';
@@ -74,7 +73,6 @@ interface ContentsTableProps {
   // orderItem: (id: string, delta: number) => Promise<void>;
   // moveToTop: (index: number) => Promise<void>;
   // moveToBottom: (index: number) => Promise<void>;
-  // addableTypes: ComponentProps<typeof AddContentPopover>['addableTypes'];
 }
 
 /**
@@ -571,29 +569,6 @@ export function ContentsTable({
                 aria-label={t('contents.actions.filter')}
                 className="flex-0 basis-60"
               />
-
-              {/* <TooltipTrigger>
-              <DialogTrigger>
-                <Button
-                  variant="primary"
-                  className={`
-                    cursor-pointer rounded-full border-0 bg-quanta-sapphire p-1.5 text-quanta-air
-                    outline-offset-2
-                    hover:bg-quanta-royal hover:text-quanta-air
-                    focus:text-quanta-air
-                    active:text-quanta-air
-                  `}
-                >
-                  <AddIcon />
-                </Button>
-                <AddContentPopover
-                  path={pathname}
-                  contentTitle={content?.title ?? ''}
-                  addableTypes={addableTypes}
-                />
-              </DialogTrigger>
-              <Tooltip placement="bottom">{t('contents.actions.add')}</Tooltip>
-            </TooltipTrigger> */}
             </div>
           </Topbar>
           <section className="contents-table">

@@ -19,8 +19,8 @@ export async function action({
   const path = `/${params['*'] || ''}`;
 
   const payload = await request.json();
-  const errors = [];
-  let response = null;
+  // const errors = [];
+  // let response = null;
 
   try {
     const options = {
@@ -31,9 +31,9 @@ export async function action({
     };
 
     if (payload.action === 'copy') {
-      response = await cli.copyContent(options);
+      await cli.copyContent(options);
     } else if (payload.action === 'cut') {
-      response = await cli.moveContent(options);
+      await cli.moveContent(options);
     }
   } catch (e) {
     HandleCatchedError(e, 'Error on paste');
