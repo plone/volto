@@ -26,3 +26,11 @@ export const Default: Story = {
     children: 'The link',
   },
 };
+
+export const AsButton: Story = {
+  args: {
+    href: '/',
+    children: 'The link as button',
+    className: 'react-aria-Button',
+  },
+};

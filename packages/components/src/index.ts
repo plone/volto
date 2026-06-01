@@ -18,7 +18,7 @@ export { Container } from './components/Container/Container';
 export { DateField } from './components/DateField/DateField';
 export { DatePicker } from './components/DatePicker/DatePicker';
 export { DateRangePicker } from './components/DateRangePicker/DateRangePicker';
-export { Dialog } from './components/Dialog/Dialog';
+export { Dialog, DialogTrigger } from './components/Dialog/Dialog';
 export { Disclosure } from './components/Disclosure/Disclosure';
 export { DisclosureGroup } from './components/DisclosureGroup/DisclosureGroup';
 export { DropZone, Text as DropZoneText } from './components/DropZone/DropZone';
