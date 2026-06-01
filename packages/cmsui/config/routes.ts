@@ -51,6 +51,17 @@ export default function install(config: ConfigType) {
       },
       {
         type: 'prefix',
+        path: '@@slots',
+        children: [
+          {
+            type: 'route',
+            path: '*',
+            file: '@plone/cmsui/routes/slots.tsx',
+          },
+        ],
+      },
+      {
+        type: 'prefix',
         path: 'controlpanel',
         children: [
           {

@@ -1,0 +1,13 @@
+{
+  "cmsui": {
+    "views": {
+      "slots": {
+        "heading": "Slots",
+        "registeredTab": "Registrierte Slots",
+        "registeredDescription": "Alle in der Konfiguration registrierten Slots, jeweils mit ihrer geordneten Liste von Komponenten.",
+        "compositionTab": "Slot-Komposition",
+        "compositionDescription": "Slots als Kompositionsbaum, der zeigt, welche Komponenten verschachtelte Slots rendern. Enthält auch Slots, denen noch keine Komponenten zugewiesen wurden."
+      }
+    }
+  }
+}
