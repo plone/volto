@@ -54,7 +54,7 @@ const TeaserEdit = (props: BlockEditProps) => {
           <ObjectBrowserWidget
             mode="single"
             onChange={onTargetChange}
-            selectedAttrs={[
+            selectedItemAttrs={[
               '@id',
               '@type',
               'title',

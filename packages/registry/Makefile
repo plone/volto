@@ -1,12 +1,5 @@
-### Defensive settings for make:
-#     https://tech.davis-hansson.com/p/make/
-SHELL:=bash
-.ONESHELL:
-.SHELLFLAGS:=-eu -o pipefail -c
-.SILENT:
-.DELETE_ON_ERROR:
-MAKEFLAGS+=--warn-undefined-variables
-MAKEFLAGS+=--no-builtin-rules
+# Project settings
+include ../../variables.mk
 
 # Sphinx variables
 # You can set these variables from the command line.
@@ -20,12 +13,29 @@ BUILDDIR        = ./_build/
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(SPHINXOPTS) .
 VALEFILES       := $(shell find $(DOCS_DIR) -type f -name "*.md" -print)
 
-# We like colors
-# From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
-RED=`tput setaf 1`
-GREEN=`tput setaf 2`
-RESET=`tput sgr0`
-YELLOW=`tput setaf 3`
+.PHONY: all
+all: help
+
+.PHONY: help
+help: ## This help message
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/$(CYAN)\1$(RESET):\2/' | column -c2 -t -s :)"
+
+.PHONY: install
+install: ## Install dependencies
+	pnpm install
+
+.PHONY: build
+build: ## Build the package
+	pnpm run build
+	$(MAKE) fix-build
+
+# .PHONY: storybook-start
+# storybook-start: ## Start Storybook
+# 	pnpm run storybook
+
+# .PHONY: storybook-build
+# storybook-build: ## Build Storybook
+# 	pnpm run build-storybook
 
 ## Docs
 
@@ -85,6 +95,8 @@ docs-rtd-registry: ## Build Plone Registry docs on RTD
 
 .PHONY: fix-build
 fix-build: ## Rename the built files js -> cjs and fix import.meta.url appearences in cjs
-	mv dist/cjs/addon-registry.js dist/cjs/addon-registry.cjs
-	mv dist/cjs/create-addons-loader.js dist/cjs/create-addons-loader.cjs
-	mv dist/cjs/create-theme-loader.js dist/cjs/create-theme-loader.cjs
+	if [ -d dist/cjs ]; then
+		mv dist/cjs/addon-registry.js dist/cjs/addon-registry.cjs || true
+		mv dist/cjs/create-addons-loader.js dist/cjs/create-addons-loader.cjs || true
+		mv dist/cjs/create-theme-loader.js dist/cjs/create-theme-loader.cjs || true
+	fi

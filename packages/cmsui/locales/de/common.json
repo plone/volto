@@ -1,5 +1,6 @@
 {
   "cmsui": {
+    "add": "Hinzufügen",
     "edit": "Bearbeiten",
     "save": "Speichern",
     "controlpanel": "Konfiguration",
@@ -7,23 +8,23 @@
       "openDialog": "Inhalt auswählen",
       "dialogTitle": "Inhalt auswählen",
       "closeDialog": "Auswahl schließen",
-      "openSearch": "Inhalt durchsuchen",
+      "openSearch": "Inhalt suchen",
       "closeSearch": "Suche schließen",
-      "searchPlaceholder": "Inhalt durchsuchen...",
+      "searchPlaceholder": "Suche Inhalte...",
       "loading": "Lade...",
       "routeannouncer": "Aktueller Pfad: {{route}}",
       "noResults": "Keine Inhalte gefunden",
       "searchResults": "Suchergebnisse: {{count}} Inhalte",
       "searchResultsFor": "Suchergebnisse für \"{{searchTerm}}\": {{count}} ",
       "goback": "Zurück",
-      "changeViewMode": "Zur {{mode}} Ansicht wechseln",
-      "currentItems": "Aktuelle Inhaltselemente",
+      "changeViewMode": "Zur {{mode}} umschalten",
+      "currentItems": "Aktuelle Inhalte",
       "home": "Startseite",
       "item": "{{title}}",
       "itemSelected": "ausgewählt",
       "itemNotSelectable": "nicht auswählbar",
       "itemNavigateTo": "Zu {{title}} navigieren",
-      "canNavigateTo": "Verschachtelbarer Inhalt",
+      "canNavigateTo": "Ordnerähnlicher Inhalt",
       "workflowStates": {
         "private": "Privat",
         "pending": "Ausstehend",
@@ -39,7 +40,7 @@
       "content": "Inhalt",
       "security": "Sicherheit",
       "users": "Benutzer",
-      "site": "Seiteneinstellungen",
+      "site": "Seitenkonfiguration",
       "addons": "Erweiterungen",
       "maintenance": "Wartung"
     },
@@ -61,6 +62,15 @@
     },
     "sidebar": {
       "label": "Seitenleiste"
+    },
+    "auth": {
+      "username": "Benutzername",
+      "password": "Passwort",
+      "signIn": "Anmelden",
+      "signUp": "Registrieren",
+      "signInTo": "Bei {{site}} anmelden",
+      "forgotPassword": "Passwort vergessen? <a>Neues Passwort anfordern</a>",
+      "returnToHome": "Zur Startseite zurückkehren"
     },
     "toolbar": {
       "settings": "Einstellungen"

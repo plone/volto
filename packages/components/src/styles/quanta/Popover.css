@@ -1,5 +1,25 @@
 @layer plone-components.quanta {
   .q.react-aria-Popover {
-    --border-color: transparent;
+    border: none;
+
+    fieldset legend {
+      color: var(--quanta-pigeon);
+      font-size: 0.8rem;
+      font-weight: 500;
+
+      & + .popover-list {
+        margin-top: 0.25rem;
+      }
+    }
+
+    .popover-list {
+      .react-aria-Checkbox {
+        font-size: 1rem;
+      }
+    }
+
+    .react-aria-Dialog {
+      padding: 0.75rem;
+    }
   }
 }

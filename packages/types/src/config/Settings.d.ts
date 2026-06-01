@@ -29,9 +29,9 @@ type styleClassNameExtendersType = ({
   classNames: string[];
 }) => string[];
 
-type IconType = {
-  [key: string]: ComponentType<SVGProps<SVGSVGElement>>;
-};
+type IconType =
+  | { [key: string]: ComponentType<SVGProps<SVGSVGElement>> }
+  | Record<string, string>; // Volto ones
 
 export type PlateConfig = {
   editorConfig: {
