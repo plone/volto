@@ -1,0 +1,14 @@
+.contents-table {
+  --plone-table-width: 100%;
+
+  .react-aria-Table {
+    .react-aria-Link {
+      font-size: var(--plone-table-row-font-size);
+    }
+  }
+
+  nav.pagination {
+    margin-top: 2rem;
+    float: right;
+  }
+}

@@ -1,0 +1,43 @@
+import { tv } from 'tailwind-variants';
+
+const styles = tv({
+  base: `
+    flex min-w-32 items-center
+    before:me-4 before:h-2.25 before:w-2.25 before:rounded-full before:bg-quanta-dolphin
+  `,
+  variants: {
+    state: {
+      private: 'before:bg-quanta-rose',
+      published: 'before:bg-quanta-cobalt',
+      intranet: 'before:bg-quanta-neon',
+      draft: 'before:bg-[#f6a808]',
+    },
+  },
+});
+
+function stateIsValid(
+  state: string,
+): state is 'private' | 'published' | 'intranet' | 'draft' {
+  return ['private', 'published', 'intranet', 'draft'].includes(state);
+}
+
+export default function ReviewState({
+  state,
+  className,
+  children,
+}: {
+  state: string;
+  className?: string;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div
+      className={styles({
+        state: stateIsValid(state) ? state : undefined,
+        className,
+      })}
+    >
+      {children}
+    </div>
+  );
+}

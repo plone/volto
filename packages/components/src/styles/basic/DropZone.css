@@ -1,0 +1,34 @@
+.react-aria-DropZone {
+  display: flex;
+  width: var(--plone-dropzone-width, 30%);
+  min-height: var(--plone-dropzone-min-height, 96px);
+  align-items: center;
+  justify-content: center;
+  padding: var(--plone-dropzone-padding-y, 24px)
+    var(--plone-dropzone-padding-x, 12px);
+  border: var(--plone-dropzone-border-width, 1px)
+    var(--plone-dropzone-border-style, solid)
+    var(--plone-dropzone-border-color, var(--border-color));
+  border-radius: var(--radius);
+  margin: 0;
+  appearance: none;
+  background: var(--overlay-background);
+  color: var(--text-color);
+  font-size: 1rem;
+  forced-color-adjust: none;
+  line-height: 1.5;
+  outline: none;
+  text-align: center;
+  text-wrap: balance;
+  vertical-align: middle;
+
+  &[data-focus-visible],
+  &[data-drop-target] {
+    outline: 2px solid var(--focus-ring-color);
+    outline-offset: -1px;
+  }
+
+  &[data-drop-target] {
+    background: var(--highlight-overlay);
+  }
+}

@@ -1,0 +1,1 @@
+Externalize `bcrypt` and `node-gyp-build` in the registry Vite plugin SSR config to avoid native module resolution failures in Seven apps. @sneridagh

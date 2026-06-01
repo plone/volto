@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import type { ComponentProps } from 'react';
 import { ObjectBrowserModal } from './ObjectBrowserModal';
 
 // Mock react-i18next
@@ -117,9 +118,12 @@ vi.mock('./ObjectBrowserWidgetBody', () => ({
   ),
 }));
 
-const renderWithContext = (contextValue: any) => {
+const renderWithContext = (
+  contextValue: any,
+  modalProps?: ComponentProps<typeof ObjectBrowserModal>,
+) => {
   mockContextValue = contextValue;
-  return render(<ObjectBrowserModal />);
+  return render(<ObjectBrowserModal {...modalProps} />);
 };
 
 describe('ObjectBrowserModal', () => {
@@ -151,6 +155,20 @@ describe('ObjectBrowserModal', () => {
       });
 
       expect(screen.getByTestId('modal')).toHaveAttribute('data-open', 'false');
+    });
+
+    it('should prefer controlled isOpen when provided', () => {
+      renderWithContext(
+        {
+          ...defaultContextValue,
+          open: false,
+        },
+        {
+          isOpen: true,
+        },
+      );
+
+      expect(screen.getByTestId('modal')).toHaveAttribute('data-open', 'true');
     });
 
     it('should render dialog and widget body', () => {
@@ -282,6 +300,15 @@ describe('ObjectBrowserModal', () => {
       fireEvent.click(screen.getByTestId('modal-backdrop'));
 
       expect(setOpen).toHaveBeenCalledWith(false);
+    });
+
+    it('should call external onOpenChange when modal backdrop is clicked', () => {
+      const onOpenChange = vi.fn();
+      renderWithContext(defaultContextValue, { onOpenChange });
+
+      fireEvent.click(screen.getByTestId('modal-backdrop'));
+
+      expect(onOpenChange).toHaveBeenCalledWith(false);
     });
   });
 
