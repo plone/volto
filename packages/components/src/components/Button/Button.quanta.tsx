@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import {
   composeRenderProps,
   Button as RACButton,
@@ -21,11 +21,15 @@ type ButtonAsLinkProps = RACButtonProps &
     asLink: true;
   };
 
-export function Button(props: ButtonProps | ButtonAsLinkProps) {
+export const Button = forwardRef(function _Button(
+  props: ButtonProps | ButtonAsLinkProps,
+  ref: React.ForwardedRef<HTMLButtonElement>,
+) {
   const { asLink, variant, ...buttonProps } = props;
 
   return (
     <RACButton
+      ref={ref}
       {...buttonProps}
       className={composeRenderProps(
         props.className,
@@ -48,4 +52,4 @@ export function Button(props: ButtonProps | ButtonAsLinkProps) {
       )}
     />
   );
-}
+});

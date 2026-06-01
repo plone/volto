@@ -24,7 +24,7 @@
     "plone",
     "plone6",
     "react",
-    "helpers"
+    "cmsui"
   ],
   "publishConfig": {
     "access": "public"
