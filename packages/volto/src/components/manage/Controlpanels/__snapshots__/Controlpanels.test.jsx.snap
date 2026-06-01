@@ -41,7 +41,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -72,7 +72,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -106,7 +106,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -134,7 +134,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -168,7 +168,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -202,7 +202,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -247,7 +247,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -275,7 +275,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -303,7 +303,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -337,7 +337,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -365,7 +365,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -399,7 +399,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 64 64"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -446,7 +446,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -491,7 +491,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -525,7 +525,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -553,7 +553,7 @@ exports[`Controlpanels > renders a controlpanels component 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -635,7 +635,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -680,7 +680,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -725,7 +725,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -753,7 +753,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -781,7 +781,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -815,7 +815,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 64 64"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -862,7 +862,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -893,7 +893,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -927,7 +927,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -972,7 +972,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -1006,7 +1006,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -1034,7 +1034,7 @@ exports[`Controlpanels > renders an additional control panel 1`] = `
                   >
                     <svg
                       class="icon"
-                      style="height: 48px; width: auto; fill: currentColor;"
+                      style="height: 48px; width: auto; fill: currentcolor;"
                       viewBox="0 0 36 36"
                       xmlns="http://www.w3.org/2000/svg"
                     >

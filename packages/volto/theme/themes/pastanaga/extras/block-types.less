@@ -1,6 +1,7 @@
 .react-aria-Table.cmsui-table {
   --plone-table-cell-border-bottom: 1px solid var(--quanta-smoke);
   --plone-table-header-border-bottom: 2px solid var(--quanta-silver);
+  width: 100%;
   border-radius: 0;
 
   .react-aria-Row {
@@ -9,8 +10,8 @@
     border-bottom: none;
   }
 
+  .react-aria-Column[data-key$='occurrences'],
   .react-aria-Cell[data-key$=':occurrences'] {
-    display: block;
-    text-align: center;
+    text-align: right;
   }
 }

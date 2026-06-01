@@ -103,7 +103,7 @@ class Api {
             request.attach.apply(request, attachment);
           });
 
-          request.end((err, response) => {
+          request.end((err, response = {}) => {
             if (
               checkUrl &&
               request.url &&
@@ -127,7 +127,7 @@ class Api {
             if ([301, 302].includes(err?.status)) {
               return reject({
                 code: err.status,
-                url: err.response.headers.location,
+                url: err.response?.headers?.location,
               });
             }
 
