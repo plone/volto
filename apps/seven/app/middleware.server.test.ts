@@ -7,6 +7,7 @@ import {
   fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
+  linkMiddleware,
   ploneClearAuthCookieContext,
   PloneClientMiddleware,
   otherResources,
@@ -956,6 +957,133 @@ describe('middleware', () => {
       });
       expect(context.get(ploneUserContext)).toBeNull();
       expect(context.get(ploneClearAuthCookieContext)).toBe(true);
+    });
+
+    it('redirects when getContent throws a 3xx error with location', async () => {
+      const getContentMock = vi
+        .fn()
+        .mockRejectedValue({ status: 301, location: '/new-path' });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      const result = await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(result).toBeInstanceOf(Response);
+      expect((result as Response).status).toBe(301);
+      expect((result as Response).headers.get('Location')).toBe('/new-path');
+    });
+
+    it('throws content error when error has 3xx status but no location', async () => {
+      const getContentMock = vi.fn().mockRejectedValue({ status: 301 });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await expect(() =>
+        fetchPloneContent(
+          {
+            request,
+            params: {},
+            context,
+            unstable_pattern: '/',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        ),
+      ).rejects.toMatchObject({ init: { status: 301 } });
+    });
+  });
+
+  describe('linkMiddleware', () => {
+    const makeArgs = (context: RouterContextProvider) => ({
+      request: new Request('http://example.com/link'),
+      context,
+      params: {},
+      unstable_pattern: '/link',
+      unstable_url: new URL('http://example.com/link'),
+    });
+
+    it('redirects to remoteUrl when content is a Link without edit permission', async () => {
+      const context = new RouterContextProvider();
+      context.set(ploneContentContext, {
+        '@type': 'Link',
+        remoteUrl: 'https://external.example.com',
+        '@components': {
+          actions: {
+            // @ts-expect-error
+            object: [{ id: 'view' }, { id: 'history' }],
+          },
+        },
+      });
+
+      const result = await linkMiddleware(makeArgs(context), vi.fn());
+
+      expect(result).toBeInstanceOf(Response);
+      expect((result as Response).status).toBe(302);
+      expect((result as Response).headers.get('Location')).toBe(
+        'https://external.example.com',
+      );
+    });
+
+    it('does not redirect when content is a Link with edit permission', async () => {
+      const context = new RouterContextProvider();
+      context.set(ploneContentContext, {
+        '@type': 'Link',
+        remoteUrl: 'https://external.example.com',
+        '@components': {
+          actions: {
+            // @ts-expect-error
+            object: [{ id: 'view' }, { id: 'edit' }],
+          },
+        },
+      });
+
+      const result = await linkMiddleware(makeArgs(context), vi.fn());
+
+      expect(result).toBeUndefined();
+    });
+
+    it('does not redirect when content is not a Link type', async () => {
+      const context = new RouterContextProvider();
+      context.set(ploneContentContext, {
+        '@type': 'Document',
+        '@components': {
+          actions: {
+            // @ts-expect-error
+            object: [{ id: 'view' }],
+          },
+        },
+      });
+
+      const result = await linkMiddleware(makeArgs(context), vi.fn());
+
+      expect(result).toBeUndefined();
     });
   });
 });

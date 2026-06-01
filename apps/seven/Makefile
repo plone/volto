@@ -1,15 +1,5 @@
 # Volto development
 
-### Defensive settings for make:
-#     https://tech.davis-hansson.com/p/make/
-SHELL:=bash
-.ONESHELL:
-.SHELLFLAGS:=-eu -o pipefail -c
-.SILENT:
-.DELETE_ON_ERROR:
-MAKEFLAGS+=--warn-undefined-variables
-MAKEFLAGS+=--no-builtin-rules
-
 # Project settings (read from repo root)
 include ../../variables.mk
 
@@ -25,14 +15,6 @@ CHECKOUT_TMP_ABS="$(shell realpath $(CHECKOUT_TMP))"
 
 CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-# We like colors
-# From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
-RED=`tput setaf 1`
-GREEN=`tput setaf 2`
-RESET=`tput sgr0`
-YELLOW=`tput setaf 3`
-
-
 # Top-level targets
 
 .PHONY: all
@@ -43,7 +25,7 @@ all: help
 # to return a pretty list of targets and their descriptions.
 .PHONY: help
 help: ## This help message
-	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/\\x1b[36m\1\\x1b[m:\2/' | column -c2 -t -s :)"
+	@echo -e "$$(grep -hE '^\S+:.*##' $(MAKEFILE_LIST) | sed -e 's/:.*##\s*/:/' -e 's/^\(.\+\):\(.*\)/$(CYAN)\1$(RESET):\2/' | column -c2 -t -s :)"
 
 .PHONY: start
 start: ## Starts Plone 7 in development mode
@@ -66,7 +48,7 @@ clean: ## Clean development environment
 ../../packages/registry/dist: $(shell find ../../packages/registry/src -type f)
 	(cd ../../ && pnpm build:registry)
 
-../../packages/components/dist: $(shell find .../../packages/components/src -type f)
+../../packages/components/dist: $(shell find ../../packages/components/src -type f)
 	(cd ../../ && pnpm build:components)
 
 ../../packages/client/dist: $(shell find ../../packages/client/src -type f)
@@ -75,7 +57,7 @@ clean: ## Clean development environment
 ../../packages/helpers/dist: $(shell find ../../packages/helpers/src -type f)
 	(cd ../../ && pnpm build:helpers)
 
-../../packages/react-router/dist: $(shell find .../../packages/react-router/src -type f)
+../../packages/react-router/dist: $(shell find ../../packages/react-router/src -type f)
 	(cd ../../ && pnpm build:react-router)
 
 .PHONY: build-deps

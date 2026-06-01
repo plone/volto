@@ -22,10 +22,12 @@ register-and-retrieve-components
 register-and-retrieve-utilities
 configure-style-fields
 register-slots
+customize-login-screen
 shadow-a-component
 fetch-additional-data-root-loader
 add-tailwind
 icons
 configure-plate-code-block-languages
 bind-metadata-fields-to-plate-text-blocks
+custom-content-types
 ```

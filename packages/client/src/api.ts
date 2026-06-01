@@ -17,15 +17,16 @@ export type ApiRequestParams = {
   headers?: any;
   checkUrl?: boolean;
   raw?: boolean;
+  maxRedirects?: number;
 };
+
+const APISUFFIX = '/++api++';
 
 export function getBackendURL(
   apiPath: string,
   apiSuffix: string | undefined,
   path: string,
 ) {
-  const APISUFFIX = '/++api++';
-
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
   const adjustedPath = path[0] !== '/' ? `/${path}` : path;
@@ -35,20 +36,37 @@ export function getBackendURL(
 
 const _handleResponse = (response: AxiosResponse) => response;
 
-const _handleError = (error: AxiosError) => {
-  debug(error);
-  return Promise.reject({
-    status: error.status ?? error.code,
-    data: error.response?.data,
-  });
-};
+const _handleError =
+  (config: ApiRequestParams['config']) => (error: AxiosError) => {
+    debug(error);
+    const status = error.status ?? 0;
+    return Promise.reject({
+      status: error.status ?? error.code,
+      data: error.response?.data,
+      location:
+        status >= 300 && status < 400
+          ? error.response?.headers.location
+              .replaceAll(
+                `${config.apiPath}${config.apiSuffix ?? APISUFFIX}`,
+                '',
+              )
+              .replace(/\?.*$/, '')
+          : undefined,
+    });
+  };
 
 export function axiosConfigAdapter(
   method: string,
   path: string,
   options: ApiRequestParams,
 ): AxiosRequestConfig {
-  const { config, params, data, headers = {} }: ApiRequestParams = options;
+  const {
+    config,
+    params,
+    data,
+    maxRedirects,
+    headers = {},
+  }: ApiRequestParams = options;
   const axiosConfig: AxiosRequestConfig = {
     method,
     url: getBackendURL(config.apiPath, config.apiSuffix, path),
@@ -64,6 +82,7 @@ export function axiosConfigAdapter(
     paramsSerializer: function (params) {
       return qs.stringify(params, { arrayFormat: 'colon-list-separator' });
     },
+    maxRedirects,
   };
 
   if (config.token && axiosConfig.headers) {
@@ -83,9 +102,12 @@ export async function apiRequest(
   const instance = axios.create();
 
   if (options.raw) {
-    instance.interceptors.response.use(undefined, _handleError);
+    instance.interceptors.response.use(undefined, _handleError(options.config));
   } else {
-    instance.interceptors.response.use(_handleResponse, _handleError);
+    instance.interceptors.response.use(
+      _handleResponse,
+      _handleError(options.config),
+    );
   }
 
   return instance.request(axiosConfigAdapter(method, path, options));
