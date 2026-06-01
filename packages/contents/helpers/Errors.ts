@@ -1,4 +1,5 @@
 export const HandleCatchedError = (e: any, defaultStatusText = 'Error') => {
+  // eslint-disable-next-line no-console
   console.error('Error', e);
 
   if (typeof e === 'object' && e !== null) {
