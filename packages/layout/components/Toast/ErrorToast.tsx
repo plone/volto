@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouteError, isRouteErrorResponse } from 'react-router';
-import { UNSTABLE_ToastQueue as ToastQueue } from 'react-aria-components';
+import { type ToastQueue } from '../../config/toast';
 /*
 Use ErrorToast in your ErrorBoundary of your layout. 
 
@@ -13,14 +13,15 @@ export function ErrorBoundary() {
 *** Params: ***
 - queue: a ToastQueue from react-aria-components. You could istantiate your queue, or use the global basic queue from registry
 */
-export default function ErrorToast(queue: ToastQueue<any>) {
+export default function ErrorToast(queue: ToastQueue) {
   const error = useRouteError();
 
   useEffect(() => {
     if (isRouteErrorResponse(error)) {
+      const e = { ...error, ...error.data };
       queue.add({
-        title: `Error: ${error.status}:`,
-        description: error.statusText,
+        title: `Error: ${e.status} - ${e.statusText}`,
+        description: e.message,
         className: 'error',
       });
     } else if (error instanceof Error) {
