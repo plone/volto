@@ -1,3 +1,41 @@
+export type WidgetChoice = [value: string, label: string];
+
+export type WidgetVocabulary = {
+  '@id': string;
+};
+
+export type WidgetOptions = Record<string, unknown> & {
+  frontendOptions?: {
+    widget?: string;
+    widgetProps?: Record<string, unknown>;
+  };
+  vocabulary?: WidgetVocabulary;
+};
+
+export interface FormWidgetProps<TValue = unknown> {
+  name: string;
+  value: TValue;
+  defaultValue?: TValue;
+  onChange: (value: TValue) => void;
+  onBlur?: () => void;
+  label?: string;
+  description?: string;
+  errorMessage?: string;
+  errors?: unknown[];
+  required?: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
+  className?: string;
+  placeholder?: string;
+  choices?: WidgetChoice[];
+  vocabulary?: WidgetVocabulary;
+  widgetOptions?: WidgetOptions;
+}
+
+export type FormWidget<TValue = unknown> = React.ComponentType<
+  FormWidgetProps<TValue>
+>;
+
 export type WidgetIdsTypes =
   | (string & {})
   | 'schema'
