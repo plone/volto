@@ -24,11 +24,12 @@ export function Breadcrumb(
       value?: Breadcrumb;
     },
 ) {
+  const { className, separator, value, ...otherProps } = props;
   return (
     <RACBreadcrumb
-      {...props}
+      {...otherProps}
       className={composeTailwindRenderProps(
-        props.className,
+        className,
         `
           flex items-center gap-1
           [&_a>svg]:mx-1 [&_a>svg]:inline [&_a>svg]:align-text-top
@@ -37,10 +38,10 @@ export function Breadcrumb(
     >
       {({ isCurrent }) => (
         <>
-          {props.value?.icon && props.value?.icon}
-          <Link variant="secondary" {...props} />
+          {value?.icon && value?.icon}
+          <Link variant="secondary" {...otherProps} />
           {!isCurrent &&
-            (props.separator ?? (
+            (separator ?? (
               <ChevronrightIcon className="h-3 w-3 text-gray-600" />
             ))}
         </>

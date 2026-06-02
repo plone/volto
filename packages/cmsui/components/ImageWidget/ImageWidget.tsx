@@ -1,6 +1,5 @@
 import { useCallback, useMemo, useRef, useState, type DragEvent } from 'react';
-import { DialogTrigger } from 'react-aria-components';
-import { Button, Input } from '@plone/components/quanta';
+import { Button, DialogTrigger, Input } from '@plone/components/quanta';
 import type { TextFieldProps as QuantaTextFieldProps } from '@plone/components/quanta';
 import {
   BinIcon,
@@ -389,7 +388,7 @@ function ImageInputBase({
           <ObjectBrowserProvider
             config={{
               mode: objectBrowserMode,
-              selectedAttrs: ['@id', 'title'],
+              selectedItemAttrs: ['@id', 'title'],
               onChange: onSelectInternalImage,
               initialPath: resolvedCurrentPath,
               title: 'Pick an existing image',

@@ -78,7 +78,9 @@ export interface SettingsConfig {
   persistentReducers: string[];
   initialReducersBlacklist: string[];
   asyncPropsExtenders: unknown[];
-  contentIcons: Record<string, string>;
+  contentIcons:
+    | Record<string, React.ComponentType<any>>
+    | Record<string, string>; // Volto ones
   loadables: unknown;
   lazyBundles: {
     [key: string]: string[];

@@ -59,6 +59,77 @@ describe('apiRequest', () => {
     await apiRequest('GET', '/path', { config });
     expect(mockAxios.request).toHaveBeenCalledTimes(1);
   });
+
+  describe('error handler', () => {
+    it('should include location in error for 3xx redirect responses', async () => {
+      await apiRequest('GET', '/path', {
+        config: { apiPath: 'http://example.com' },
+      });
+
+      const errorHandler = mockAxios.interceptors.response.use.mock.calls[0][1];
+
+      await expect(
+        errorHandler({
+          status: 301,
+          response: {
+            headers: {
+              location: 'http://example.com/++api++/new-path?foo=bar',
+            },
+            data: undefined,
+          },
+        }),
+      ).rejects.toEqual({
+        status: 301,
+        data: undefined,
+        location: '/new-path',
+      });
+    });
+
+    it('should not include location in error for non-3xx responses', async () => {
+      await apiRequest('GET', '/path', {
+        config: { apiPath: 'http://example.com' },
+      });
+
+      const errorHandler = mockAxios.interceptors.response.use.mock.calls[0][1];
+
+      await expect(
+        errorHandler({
+          status: 404,
+          response: {
+            headers: {},
+            data: { message: 'Not found' },
+          },
+        }),
+      ).rejects.toMatchObject({
+        status: 404,
+        location: undefined,
+      });
+    });
+
+    it('should strip custom apiSuffix from location for 3xx responses', async () => {
+      await apiRequest('GET', '/path', {
+        config: { apiPath: 'http://example.com', apiSuffix: '/custom-api' },
+      });
+
+      const errorHandler = mockAxios.interceptors.response.use.mock.calls[0][1];
+
+      await expect(
+        errorHandler({
+          status: 302,
+          response: {
+            headers: {
+              location: 'http://example.com/custom-api/another-path',
+            },
+            data: undefined,
+          },
+        }),
+      ).rejects.toEqual({
+        status: 302,
+        data: undefined,
+        location: '/another-path',
+      });
+    });
+  });
 });
 
 describe('axiosConfigAdapter', () => {
