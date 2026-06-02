@@ -1,8 +1,9 @@
+import { ContentTypeMap } from '../content';
 import type { Image } from '../content/common';
 
 export interface Brain {
   '@id': string;
-  '@type': string;
+  '@type': keyof ContentTypeMap;
   CreationDate: string;
   Creator: string;
   Date: string;

@@ -6,7 +6,15 @@ import { ObjectBrowserWidgetBody } from './ObjectBrowserWidgetBody';
 import { useObjectBrowserContext } from './ObjectBrowserContext';
 import { useTranslation } from 'react-i18next';
 
-export const ObjectBrowserModal = () => {
+type ObjectBrowserModalProps = {
+  isOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
+};
+
+export const ObjectBrowserModal = ({
+  isOpen,
+  onOpenChange,
+}: ObjectBrowserModalProps = {}) => {
   const { t } = useTranslation();
   const {
     open,
@@ -18,6 +26,12 @@ export const ObjectBrowserModal = () => {
     ariaControlsId,
     title,
   } = useObjectBrowserContext();
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen);
+    onOpenChange?.(nextOpen);
+  };
+
   return (
     <Modal
       isDismissable
@@ -27,8 +41,8 @@ export const ObjectBrowserModal = () => {
         fixed top-0 right-0 bottom-0 w-[360px] border-l border-quanta-azure bg-quanta-air px-6 py-8
         text-black shadow-[rgba(0,0,0,0.1)_-8px_0px_20px] outline-none
       `}
-      isOpen={open}
-      onOpenChange={(isOpen) => setOpen(isOpen)}
+      isOpen={isOpen ?? open}
+      onOpenChange={handleOpenChange}
     >
       <Dialog className="flex h-full flex-col overflow-hidden p-1">
         {!searchMode ? (
@@ -54,7 +68,7 @@ export const ObjectBrowserModal = () => {
                 variant="icon"
                 type="button"
                 aria-label={t('cmsui.objectbrowserwidget.closeDialog')}
-                onPress={() => setOpen(false)}
+                onPress={() => handleOpenChange(false)}
               >
                 <CloseIcon />
               </Button>

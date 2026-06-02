@@ -1,0 +1,1 @@
+Implement login view according to Volto Quanta UI. @arybakov05

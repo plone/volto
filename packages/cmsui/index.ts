@@ -2,6 +2,7 @@ import type { ConfigType } from '@plone/registry';
 import installWidgets from './config/widgets';
 import installControlpanels from './config/controlpanels';
 import installRoutes from './config/routes';
+import installSlots from './config/slots';
 import { formAtom } from './routes/atoms';
 import type { BlockConfigBase } from '@plone/types';
 
@@ -26,6 +27,7 @@ export default function install(config: ConfigType) {
   installWidgets(config);
   installControlpanels(config);
   installRoutes(config);
+  installSlots(config);
 
   return config;
 }

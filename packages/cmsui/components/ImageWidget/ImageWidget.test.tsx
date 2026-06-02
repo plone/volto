@@ -14,6 +14,7 @@ vi.mock('@plone/components/quanta', () => ({
       {children}
     </button>
   ),
+  DialogTrigger: ({ children }: any) => <>{children}</>,
   Input: ({ ...props }: any) => <input {...props} />,
 }));
 
@@ -29,10 +30,6 @@ vi.mock('../Field/Field', () => ({
   Description: ({ children }: any) => <p>{children}</p>,
   FieldError: ({ children }: any) => <p>{children}</p>,
   Label: ({ children }: any) => <label>{children}</label>,
-}));
-
-vi.mock('react-aria-components', () => ({
-  DialogTrigger: ({ children }: any) => <>{children}</>,
 }));
 
 vi.mock('../ObjectBrowserWidget/ObjectBrowserModal', () => ({

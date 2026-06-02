@@ -63,6 +63,11 @@ main {
       --block-width: var(--narrow-container-width);
     }
   }
+
+  .documentDescription {
+    margin-bottom: 1rem;
+    color: var(--text-color-base);
+  }
 }
 
 /* Blocks & Inner containers */

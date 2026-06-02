@@ -27,6 +27,7 @@
     "@plone/client": "workspace:*",
     "@plone/cmsui": "workspace:*",
     "@plone/components": "workspace:*",
+    "@plone/contents": "workspace:*",
     "@plone/helpers": "workspace:*",
     "@plone/layout": "workspace:*",
     "@plone/plate": "workspace:*",
@@ -49,6 +50,7 @@
     "remix-i18next": "^7.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
     "@babel/preset-typescript": "^7.27.1",
     "@plone/types": "workspace:*",
     "@react-router/dev": "catalog:",

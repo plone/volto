@@ -6,6 +6,7 @@
 @layer plone-components.base {
   .react-aria-Popover {
     --background-color: var(--overlay-background);
+    overflow: auto;
     max-width: 250px;
     box-sizing: border-box;
 

@@ -110,7 +110,7 @@ const storyI18n = {
 interface StoryFormData {
   start: string;
   end: string;
-  recurrence?: string | null;
+  recurrence?: string;
   [key: string]: unknown;
 }
 
@@ -136,7 +136,7 @@ function StoryRecurrenceWidget({
   const handleChange = (rrule: string | null) => {
     store.set(formAtom, {
       ...(store.get(formAtom) as EventContent),
-      recurrence: rrule,
+      recurrence: rrule ?? '',
     });
     onChange?.(rrule);
   };
@@ -160,7 +160,6 @@ function StoryRecurrenceWidget({
 const DEFAULT_FORM_DATA: StoryFormData = {
   start: '2025-06-01T10:00:00',
   end: '2025-12-31T10:00:00',
-  recurrence: null,
 };
 
 const meta = {

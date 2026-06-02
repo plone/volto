@@ -1,9 +1,8 @@
 // Componente Button estratto dal widget originale
 import { type PropsWithChildren } from 'react';
 import { Icon } from '@plone/components';
-import { Button } from '@plone/components/quanta';
+import { Button, DialogTrigger } from '@plone/components/quanta';
 import { useObjectBrowserContext } from './ObjectBrowserContext';
-import { DialogTrigger } from 'react-aria-components';
 import { useTranslation } from 'react-i18next';
 
 export const ObjectBrowserTrigger = ({ children }: PropsWithChildren) => {

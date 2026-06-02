@@ -28,6 +28,7 @@ export async function getContent(
 
   const options: ApiRequestParams = {
     config: this.config,
+    maxRedirects: 0,
     params: {
       ...(validatedArgs.page && { page: validatedArgs.page }),
       ...(validatedArgs.version && { version: validatedArgs.version }),

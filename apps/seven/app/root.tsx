@@ -14,6 +14,8 @@ import {
   ploneClientContext,
   ploneContentContext,
   ploneSiteContext,
+  ploneUserContext,
+  linkMiddleware,
 } from './middleware.server';
 import { getClearAuthCookieHeader } from '@plone/react-router';
 
@@ -23,6 +25,7 @@ export const middleware = [
   otherResources,
   getAPIResourceWithAuth,
   fetchPloneContent,
+  linkMiddleware,
 ];
 
 export async function loader({ params, request, context }: Route.LoaderArgs) {
@@ -31,6 +34,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
   const cli = context.get(ploneClientContext);
   const content = context.get(ploneContentContext);
   const site = context.get(ploneSiteContext);
+  const user = context.get(ploneUserContext);
 
   const path = `/${params['*'] || ''}`;
 
@@ -71,6 +75,7 @@ export async function loader({ params, request, context }: Route.LoaderArgs) {
       content,
       site,
       locale,
+      isAuthenticated: user !== null,
       ...rootLoaderDataUtilitiesData
         .filter((item) => item)
         .reduce((acc, item) => ({ ...acc, ...item }), {}),
@@ -138,7 +143,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           'The server encountered an internal error. Did you start the backend?';
         break;
       default:
-        message = 'Error';
+        message = 'Error ' + error.status;
         details = error.statusText || details;
         break;
     }

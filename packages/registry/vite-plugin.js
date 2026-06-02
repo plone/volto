@@ -166,6 +166,7 @@ export const PloneRegistryVitePlugin = () => {
       enforce: 'pre',
       config: () => ({
         ssr: {
+          external: ['bcrypt', 'node-gyp-build'],
           optimizeDeps: {
             exclude: addOns,
           },
