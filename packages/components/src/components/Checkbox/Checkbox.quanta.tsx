@@ -41,7 +41,7 @@ const checkboxStyles = tv({
   base: 'group flex items-center gap-2 text-sm transition',
   variants: {
     isDisabled: {
-      false: 'text-quanta-cobalt',
+      false: 'text-quanta-pigeon',
       true: `
         text-quanta-iron
         forced-colors:text-[GrayText]
