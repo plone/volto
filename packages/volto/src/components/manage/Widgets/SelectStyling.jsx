@@ -46,6 +46,7 @@ export const SortableMultiValue = injectLazyLibs([
       }}
       {...attributes}
       {...listeners}
+      aria-label={`${(props.selectProps['aria-label'] || '').split(':')[0].trim()}: ${props.data.label}`}
     >
       <MultiValue
         {...props}
@@ -68,7 +69,7 @@ export const MultiValueContainer = injectLazyLibs('reactSelect')((props) => {
     <Popup
       content={props.data.label}
       trigger={
-        <div {...props.innerProps}>
+        <div>
           <MultiValueContainer {...props} />
         </div>
       }
