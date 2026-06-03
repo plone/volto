@@ -48,6 +48,12 @@ export const SortableMultiValue = injectLazyLibs([
       {...listeners}
       tabIndex={-1}
       aria-label={`${(props.selectProps['aria-label'] || '').split(':')[0].trim()}: ${props.data.label}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Delete' || e.key === 'Backspace' || e.key === 'Enter') {
+          e.preventDefault();
+          props.removeProps?.onClick?.(e);
+        }
+      }}
     >
       <MultiValue
         {...props}
@@ -85,7 +91,15 @@ export const MultiValueRemove = injectLazyLibs(['reactSelect'])((props) => {
       {...props}
       innerProps={{
         ...props.innerProps,
+        role: 'button',
+        tabIndex: -1,
         onPointerDown: (e) => e.stopPropagation(),
+        onKeyDown: (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            props.innerProps.onClick?.(e);
+          }
+        },
       }}
     />
   );
