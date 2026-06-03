@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.0-alpha.10 (2026-03-31)
+
+### Internal
+
+- Update dependencies: tmp, vitest. @davisagli 
+
 ## 3.0.0-alpha.9 (2025-12-22)
 
 ### Feature

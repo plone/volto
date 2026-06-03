@@ -25,6 +25,7 @@ export const Item = forwardRef(
       onRemove,
       onSelectBlock,
       parentId,
+      parentType,
       style,
       value,
       wrapperRef,
@@ -38,6 +39,10 @@ export const Item = forwardRef(
     const multiSelected = useSelector((state) => state.form.ui.multiSelected);
     const gridSelected = useSelector((state) => state.form.ui.gridSelected);
     const dispatch = useDispatch();
+
+    const icon =
+      config.blocks.blocksConfig[data?.['@type']]?.icon ||
+      config.blocks.blocksConfig.title?.icon;
 
     return (
       <li
@@ -102,15 +107,16 @@ export const Item = forwardRef(
               errored: errors && Object.keys(errors).length > 0,
             })}
           >
-            {config.blocks.blocksConfig[data?.['@type']]?.icon && (
+            {icon && (
               <Icon
-                name={config.blocks.blocksConfig[data?.['@type']]?.icon}
+                name={icon}
                 size="20px"
                 style={{ verticalAlign: 'middle' }}
               />
             )}{' '}
             {data?.plaintext ||
-              config.blocks.blocksConfig[data?.['@type']]?.title}
+              config.blocks.blocksConfig[data?.['@type']]?.title ||
+              data?.title}
           </span>
           {!clone && onRemove && (
             <button

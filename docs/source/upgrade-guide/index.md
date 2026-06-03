@@ -111,6 +111,18 @@ Finally, update your add-on file {file}`babel.config.js`.
 +  const presets = ['@plone/razzle'];
 ```
 
+### Replace `razzle-dev-utils` with `@plone/razzle-dev-utils`
+```{versionchanged} Volto 19.0.0-alpha.28
+```
+
+`@plone/razzle-dev-utils` is a maintained fork of the original `razzle-dev-utils` package that contains Volto-specific fixes and patches.
+
+To verify whether your project requires updates, search for any direct references to internal `razzle-dev-utils` modules:
+
+```shell
+grep -R "razzle-dev-utils" -n --exclude-dir=node_modules || true
+```
+
 ### `pnpm` has been upgraded to version 10
 ```{versionchanged} Volto 19.0.0-alpha.7
 ```
@@ -332,6 +344,25 @@ To avoid this, we have forked the `razzle-plugin-scss` package and removed the d
 We pinned the version of `sass` to `1.32.0`, which is the one before they introduced the deprecation warnings.
 It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
 In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
+
+### Table block is now wrapped with containers to support horizontal scrolling on small viewports
+```{versionadded} Volto 19.0.0-alpha.26
+```
+
+To support horizontal scrolling of tables on small viewports, the table block is now wrapped with containers that allow horizontal scrolling when the table width exceeds the viewport width.
+
+```html
+<div className="block slate-table">
+  <div className="block-inner-container">
+    <table>
+      <!-- table content -->
+    </table>
+  </div>
+</div>
+```
+
+In the past, the table block was a direct child of the content area.
+If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
 
 (upgrading-to-volto-18-x-x)=
 

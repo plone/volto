@@ -121,7 +121,7 @@ let config = {
     defaultBlockType: 'slate',
     verticalFormTabs: false,
     useEmailAsLogin: false,
-    persistentReducers: ['blocksClipboard'],
+    persistentReducers: ['blocksClipboard.cut', 'blocksClipboard.copy'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
     asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
     contentIcons: contentIcons,

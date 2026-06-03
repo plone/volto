@@ -106,6 +106,10 @@ const IconsList: React.FC = () => {
     Icons.UserIcon,
     Icons.VideoIcon,
     Icons.VoltoIcon,
+    Icons.WidthNarrowIcon,
+    Icons.WidthDefaultIcon,
+    Icons.WidthLayoutIcon,
+    Icons.WidthFullIcon,
     Icons.WindowedIcon,
     Icons.WorldIcon,
   ];

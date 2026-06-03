@@ -1,0 +1,1 @@
+Remove support for importing from the Volto root using paths starting with `~`. @davisagli

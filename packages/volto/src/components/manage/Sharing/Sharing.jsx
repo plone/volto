@@ -485,11 +485,19 @@ class SharingComponent extends Component {
                   />
                 </p>
               </Segment>
-              <Segment className="actions" attached clearing>
+              <Segment className="right aligned actions" attached clearing>
+                <Button
+                  basic
+                  secondary
+                  aria-label={this.props.intl.formatMessage(messages.cancel)}
+                  title={this.props.intl.formatMessage(messages.cancel)}
+                  onClick={this.onCancel}
+                >
+                  <Icon className="circled" name={clearSVG} size="30px" />
+                </Button>
                 <Button
                   basic
                   primary
-                  floated="right"
                   type="submit"
                   aria-label={this.props.intl.formatMessage(messages.save)}
                   title={this.props.intl.formatMessage(messages.save)}
@@ -497,16 +505,6 @@ class SharingComponent extends Component {
                   onClick={this.onSubmit}
                 >
                   <Icon className="circled" name={aheadSVG} size="30px" />
-                </Button>
-                <Button
-                  basic
-                  secondary
-                  aria-label={this.props.intl.formatMessage(messages.cancel)}
-                  title={this.props.intl.formatMessage(messages.cancel)}
-                  floated="right"
-                  onClick={this.onCancel}
-                >
-                  <Icon className="circled" name={clearSVG} size="30px" />
                 </Button>
               </Segment>
             </Form>
