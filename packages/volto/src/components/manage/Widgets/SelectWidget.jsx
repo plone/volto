@@ -264,6 +264,7 @@ class SelectWidget extends Component {
         <Select
           id={`select-container-${id}`}
           inputId={`field-${id}`}
+          fieldTitle={this.props.title}
           key={choices}
           name={id}
           aria-label={

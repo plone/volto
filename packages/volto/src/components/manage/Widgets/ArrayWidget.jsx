@@ -329,6 +329,7 @@ class ArrayWidget extends Component {
               menuShouldScrollIntoView={false}
               id={`select-container-${this.props.id}`}
               inputId={`field-${this.props.id}`}
+              fieldTitle={this.props.title}
               aria-label={
                 this.props.title
                   ? `${this.props.title}: ${
