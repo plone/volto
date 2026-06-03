@@ -51,6 +51,8 @@ test('can take a schemaEnhancer', async () => {
       />
     </Provider>,
   );
-  await waitFor(() => {});
+  await waitFor(() => {
+    expect(component.toJSON()?.children).toHaveLength(3);
+  });
   expect(component.toJSON()).toMatchSnapshot();
 });

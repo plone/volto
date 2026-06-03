@@ -150,7 +150,6 @@ First, in {file}`frontend/package.json`, update as shown.
 +      "cypress",
 +      "es5-ext",
 +      "esbuild",
-+      "full-icu",
 +      "lightningcss-cli",
 +      "unrs-resolver"
 +    ]
@@ -187,12 +186,67 @@ index c469fe9..c39a324 100644
 +    CI=1 pnpm install --prod
 ```
 
+### `superagent` has been upgraded to version 10
+```{versionchanged} Volto 19
+```
+
+Volto upgraded `superagent` from `3.8.2` to `10.3.0`.
+This is a major upgrade of the HTTP client used by Volto for API and SSR helper requests.
+
+For most projects, no action is required if you only use the public request API, such as `get()`, `post()`, `query()`, `send()`, `set()`, `attach()`, `then()`, or `end()`.
+However, newer `superagent` versions use stricter error handling, so projects with custom request wrappers or SSR integrations should review their error paths carefully.
+
+Check your project and add-ons for direct `superagent` usage:
+
+```shell
+grep -R "from 'superagent'" -n --exclude-dir=node_modules .
+grep -R 'require.*superagent' -n --exclude-dir=node_modules .
+```
+
+In particular, verify the following cases.
+
+-   callbacks passed to `request.end()` do not assume that a response object is always present
+-   redirect handling does not assume `error.response.headers.location` always exists
+-   custom wrappers that inspect low-level request or response internals still behave correctly
+-   file upload code and middleware around multipart requests still work as expected
+
+If your code destructures the response directly in the callback, update it to handle missing responses safely.
+
+```diff
+- request.end((error, { body }) => {
++ request.end((error, { body } = {}) => {
+```
+
+Likewise, when reading redirect targets or headers from an error response, guard against missing nested values.
+
+```diff
+- const location = error.response.headers.location;
++ const location = error.response?.headers?.location;
+```
+
+After upgrading, test the code paths that use backend requests the most:
+
+-   authentication and token-protected requests
+-   redirects and URL checks in SSR
+-   sitemap and robots generation
+-   file and image downloads
+-   file uploads and multipart forms
+
+```{seealso}
+[superagent releases](https://github.com/forwardemail/superagent/releases)
+```
+
 ### New utility class `visually-hidden`
 
 ```{versionadded} Volto 19.0.0-alpha.10
 ```
 
 A new global CSS utility class called `visually-hidden` [`@packages/components/src/styles/basic/utility.css`] has been introduced to Volto's SCSS base.
+
+```{versionchanged} Volto 19
+This CSS class was previously named `visually-hidden-volto`.
+The suffix `-volto` was removed in Volto 19.
+```
 
 This class allows developers to visually hide elements while keeping them accessible to screen readers, improving accessibility for assistive technologies.
 
@@ -273,6 +327,17 @@ These packages have been removed from the Volto repository as they are no longer
 - `@plone/volto-guillotina`: No longer actively maintained
 - `@plone/volto-testing`: Testing functionality is now integrated directly in Volto core
 
+### `@plone/client` was removed from the monorepo
+```{versionremoved} Volto 19.0.0-alpha.33
+```
+
+`@plone/client` is no longer developed or released from the `main` branch of the Volto monorepo.
+It is now developed and released from the `seven` branch, and is expected to be released as part of Plone 7.
+Its documentation, when changed, will be backported to the `main` branch so that it can continue to be included in the main Plone 6 documentation at https://6.docs.plone.org/volto/client/index.html.
+
+If your project uses it and still references it as a workspace package, remove those references from your root {file}`package.json` scripts and workspace-specific tooling.
+Use published packages from npm instead of workspace links when upgrading existing setups.
+
 ### Removed language settings
 ```{versionremoved} Volto 19
 ```
@@ -300,13 +365,12 @@ config.settings.showRelatedItems = false;
 The default (English) literal "Head title" in the `teaser` block has been renamed to "Kicker" for accuracy and clarity.
 The `head_title` property and the translation id (`head_title`) in the `teaser` block settings has been kept for backwards compatibility.
 
-### `@plone/components` and `@plone/client` were updated to the latest alphas developed for Seven
+### `@plone/components` was updated to the latest alphas developed for Seven
 ```{versionadded} Volto 19.0.0-alpha.6
 ```
-`@plone/components` and `@plone/client` are in active development for Seven and they have been updated to the latest alphas.
-You can still use them in Volto using the `workspace` protocol in your `package.json` file.
-However, check the breaking changes issued for these packages in the respective changelogs.
-It is recommended that you use the released versions of these packages instead of the workspace protocol, unless you need a specific feature or fix that is released yet.
+`@plone/components` is in active development for Seven and has been updated to the latest alphas.
+Check the breaking changes issued for this package in its changelog.
+It is recommended that you use the released npm versions instead of the workspace protocol, unless you need a specific feature or fix that is not released yet.
 
 ### `AlignWidget` and `ButtonsWidget` are now Semantic UI-free
 ```{versionadded} Volto 19.0.0-alpha.10
@@ -363,6 +427,127 @@ To support horizontal scrolling of tables on small viewports, the table block is
 
 In the past, the table block was a direct child of the content area.
 If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
+
+### Centralized pnpm catalog
+```{versionadded} Volto 19.0.0-alpha.28
+```
+
+If you created your project with Cookieplone prior to December 22 2025, you must update it to support the new centralized pnpm catalog.
+Add the file :file:`.pnpmfile.cjs` to either the :file:`frontend` project folder or the root of the add-on with the following content:
+
+```js
+/* eslint-disable */
+const fs = require('fs');
+const path = require('path');
+
+const catalogPath = path.resolve(__dirname, 'core/catalog.json');
+let catalog = {};
+if (fs.existsSync(catalogPath)) {
+  const catalogData = fs.readFileSync(catalogPath, 'utf-8');
+  catalog = JSON.parse(catalogData);
+} else {
+  console.error('Catalog file does not exist at:', catalogPath);
+}
+
+module.exports = {
+  hooks: {
+    updateConfig(config) {
+      if (config.catalogs) {
+        config.catalogs.default ??= catalog;
+      }
+      return config;
+    },
+  },
+};
+```
+
+You can also re-run the Cookieplone generator with the same name metadata as your project to get the new file and structure, and move your code into it.
+
+### The image component now includes the original image only if necessary
+```{versionadded} Volto 19.0.0-alpha.29
+```
+
+The `Image` component has been optimized to include the original image URL only when necessary.
+Now it is only included if the image does not have all the defined scales present, which could happen if the image uploaded originally is smaller than the defined scales.
+In other scenarios where all the scales are present, including the original image could lead the browser to choose it over the scaled versions, impacting performance.
+This happened especially in high-density resolution screens where the largest scale available was not enough for the browser to pick a scaled version.
+
+This is a breaking change for projects that relied on the original image always being present, for example, in those projects where the original image was always included for large displays, such as televisions or wide-screen displays.
+A pair of additional scales were added to cover those use cases, enough to cover the highest density screens at the largest common resolutions.
+Additionally, if your project relied on the original image to always be present, then you need to either add an additional scale to cover your use case, run the upgrade steps defined in `plone.volto>=6.0.0a0`, or, in Plone 6.2, to use the new image scales named `2k` and `4k`.
+
+### 401 unauthorized error route handling behaviors have changed
+```{versionadded} Volto 19.0.0-alpha.32
+```
+
+The handling of 401 Unauthorized errors for anonymous users has been changed to improve the user experience.
+Previously, when an anonymous user attempted to access a resource that required authorization, the 401 unauthorized error page would be displayed.
+Now the user will be redirected to the login page.
+This matches Plone 6 Classic UI behavior and aligns with user expectations.
+
+An authenticated user who attempts to access a protected resource for which they lack permission will still see an Unauthorized error page.
+
+### Replaced old drag-and-drop libraries
+```{versionadded} Volto 19.0.0-alpha.30
+```
+
+The `react-dnd`, `react-dnd-html5-backend`, and `react-sortable-hoc` libraries were replaced with `dnd-kit`.
+These libraries provided drag-and-drop functionality in several components, but were no longer maintained.
+If you have shadows of any of these components, they need to be updated:
+
+- {file}`Contents.jsx`
+- {file}`ContentsIndexHeader.jsx`
+- {file}`ContentsItem.jsx`
+- {file}`Field.jsx`
+- {file}`ArrayWidget.jsx`
+- {file}`SelectStyling.jsx`
+
+The following libraries are no longer available to be loaded using `injectLazyLibs`: `reactDnd`, `reactDndHtml5Backend`, and `reactSortableHOC`.
+Add-ons which use them need to include them as a dependency in {file}`package.json`, and take care of adding them to `config.settings.loadables`.
+
+For example:
+
+```js
+import loadable from '@loadable/component';
+
+config.settings.loadables.reactDnd = loadable.lib(() => import('react-dnd'));
+config.settings.loadables.reactDndHtml5Backend = loadable.lib(() => import('react-dnd-html5-backend'));
+config.settings.loadables.reactSortableHOC = loadable.lib(() => import('react-sortable-hoc'), {
+  ssr: false,
+});
+```
+
+Or, these add-ons can be updated to use a maintained drag-and-drop library.
+
+
+### The "AutoSave" feature has been marked as experimental and opt-in by default
+```{versionadded} Volto 19.0.0-alpha.32
+```
+
+The "AutoSave" feature, which automatically saves content changes locally (localstorage) at regular intervals, has been marked as experimental in Volto 19.
+This is due to the need for further testing and refinement based on user feedback.
+It seems that there are still some edge cases that need to be addressed to ensure a smooth user experience.
+
+If you want to enable it in your project, you can set the `config.experimental.saveAsDraft` setting to `true` in your add-on configuration:
+
+```js
+config.experimental.saveAsDraft = true;
+```
+
+### Some tests need to add a `CookiesProvider`
+
+Components which use the `useCookies` hook from `react-cookie` now expect an explicit `CookiesProvider`.
+You might need to add this in some unit tests.
+
+```js
+import { CookiesProvider } from 'react-cookie';
+
+const { container } = render(
+  <CookiesProvider>
+    <!-- your component being tested -->
+  </CookiesProvider>
+);
+```
 
 (upgrading-to-volto-18-x-x)=
 
@@ -778,8 +963,6 @@ The following table lists the old and new Makefile commands and the new commands
 | test-acceptance-guillotina-headless | guillotina-ci-acceptance-test | Run Cypress tests in headless mode for CI for Guillotina tests |  |
 | full-test-acceptance-guillotina | guillotina-ci-acceptance-test-run-all | With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests |  |
 | start-test-acceptance-server-5 | plone5-acceptance-backend-start | Start backend acceptance server for Plone 5 tests |  |
-| start-test-acceptance-server-detached | acceptance-server-detached-start | Starts test acceptance server main fixture in detached mode (daemon) |  |
-| stop-test-acceptance-server-detached | acceptance-server-detached-stop | Stop test acceptance server main fixture in detached mode (daemon) |  |
 
 
 The documentation has been updated as well to reflect this change.

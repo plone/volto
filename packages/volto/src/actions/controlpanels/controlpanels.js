@@ -90,17 +90,13 @@ export function listControlpanels() {
  * @returns {Object} Update controlpanel action.
  */
 export function updateControlpanel(url, data) {
-  return (dispatch) => {
-    dispatch({
-      type: UPDATE_CONTROLPANEL,
-      request: {
-        op: 'patch',
-        path: url,
-        data,
-      },
-    }).then(() => {
-      dispatch(getSite());
-    });
+  return {
+    type: UPDATE_CONTROLPANEL,
+    request: {
+      op: 'patch',
+      path: url,
+      data,
+    },
   };
 }
 

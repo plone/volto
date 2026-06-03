@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-03-03T09:10:21.711Z\n"
+"POT-Creation-Date: 2026-05-07T07:25:19.397Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -556,7 +556,7 @@ msgstr ""
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr ""
@@ -693,6 +693,11 @@ msgstr ""
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
+msgstr ""
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
 msgstr ""
 
 #. Default: "Clear date and time"
@@ -1345,6 +1350,11 @@ msgstr ""
 msgid "Embed code error, please follow the instructions and try again."
 msgstr ""
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1663,6 +1673,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr ""
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr ""
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1724,11 +1739,6 @@ msgstr ""
 #. Default: "Global role"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
-msgstr ""
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
 msgstr ""
 
 #. Default: "Grid"
@@ -2346,6 +2356,16 @@ msgstr ""
 msgid "Membership updated"
 msgstr ""
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2677,6 +2697,11 @@ msgstr ""
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr ""
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2853,6 +2878,16 @@ msgstr ""
 #. Default: "Plone{reg} Open Source CMS/WCM"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
+msgstr ""
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr ""
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
 msgstr ""
 
 #. Default: "Position changed"
@@ -4186,6 +4221,16 @@ msgstr ""
 msgid "URL Management for {title}"
 msgstr ""
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr ""
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4596,9 +4641,9 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
+msgid "You are trying to access a protected resource."
 msgstr ""
 
 #. Default: "You are using an outdated browser"
@@ -4975,11 +5020,6 @@ msgstr ""
 msgid "loading"
 msgstr ""
 
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr ""
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5346,6 +5386,26 @@ msgstr ""
 #. Default: "Title"
 #: config/Blocks
 msgid "title"
+msgstr ""
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr ""
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr ""
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr ""
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
 msgstr ""
 
 #. Default: "Table of Contents"

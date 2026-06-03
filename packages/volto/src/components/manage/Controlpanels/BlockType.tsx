@@ -2,6 +2,7 @@ import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { getParentUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import { formatMessageWithFallback } from '@plone/volto/helpers/I18n/I18n';
 import { useClient } from '@plone/volto/hooks';
 import config from '@plone/volto/registry';
 import { useEffect } from 'react';
@@ -15,6 +16,7 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 
 import backSVG from '@plone/volto/icons/back.svg';
 import type { Location } from 'history';
+import type { BlockTypeItem } from '@plone/types';
 
 const messages = defineMessages({
   back: {
@@ -48,12 +50,25 @@ type RouteProps = {
   location: Location;
 };
 
+type BlockTypesState = {
+  error: {
+    status?: number;
+  } | null;
+  items: BlockTypeItem[];
+  loaded: boolean;
+  loading: boolean;
+};
+
+type SelectorState = {
+  blockTypes: BlockTypesState;
+};
+
 const BlockTypeControlpanel = (props: RouteProps) => {
   const { location } = props;
   const params = useParams<{ id: string }>();
   const id = params.id;
   const intl = useIntl();
-  const blockTypes = useSelector((state) => state.blockTypes);
+  const blockTypes = useSelector((state: SelectorState) => state.blockTypes);
   const isClient = useClient();
   const dispatch = useDispatch();
   const pathname = location.pathname;
@@ -72,9 +87,7 @@ const BlockTypeControlpanel = (props: RouteProps) => {
     return <Error error={blockTypes.error} />;
   }
 
-  const translatedTitle = block?.title
-    ? intl.formatMessage({ id: block.title, defaultMessage: block.title })
-    : id;
+  const translatedTitle = formatMessageWithFallback(intl, block?.title) || id;
 
   return (
     blockTypes.loaded && (

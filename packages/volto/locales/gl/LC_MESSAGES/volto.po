@@ -3,19 +3,19 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-24T14:38:32.534Z\n"
-"PO-Revision-Date: 2026-03-23 12:09+0000\n"
+"PO-Revision-Date: 2026-05-10 15:56+0000\n"
 "Last-Translator: xulioxesus <xulioxesus@gmail.com>\n"
 "Language: gl\n"
-"Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-18/gl/>\n"
+"Language-Team: Galician <https://hosted.weblate.org/projects/plone/volto-main/gl/>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: volto\n"
-"X-Generator: Weblate 5.17-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -121,7 +121,7 @@ msgstr "Engadir Regra"
 #. Default: "Add Translation…"
 #: components/manage/Toolbar/Types
 msgid "Add Translation…"
-msgstr "Engadir Tradución"
+msgstr "Engadir Tradución…"
 
 #. Default: "Add User"
 #: helpers/MessageLabels/MessageLabels
@@ -394,7 +394,7 @@ msgstr "Ruta da url alternativa → ruta da url obxectivo (data e hora da creaci
 #. Default: "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Another person edited this content, and it's currently displayed. Do you want to replace it with your autosaved content?"
-msgstr ""
+msgstr "Outra persoa editou este contido e actualmente estase a amosar. Queres substituílo polo teu contido gardado automaticamente?"
 
 #. Default: "Applied to subfolders"
 #: components/manage/Rules/Rules
@@ -450,7 +450,7 @@ msgstr "Automáticamente"
 #. Default: "Autosaved content found"
 #: helpers/Utils/withSaveAsDraft
 msgid "Autosaved content found"
-msgstr ""
+msgstr "Atopouse contido gardado automaticamente"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -516,13 +516,13 @@ msgstr "Bloque"
 #. Default: "Block Type"
 #: components/manage/Controlpanels/BlockTypes
 msgid "Block Type"
-msgstr ""
+msgstr "Tipo Bloque"
 
 #. Default: "Block Types"
 #: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/Controlpanels
 msgid "Block Types"
-msgstr ""
+msgstr "Tipos de bloques"
 
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
@@ -560,7 +560,7 @@ msgstr "Examina o sitio, solta unha imaxe, ou escribe a URL"
 msgid "BulkUploadAltUrls"
 msgstr "Carga masiva CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Por defecto, os permisos do contedor deste elemento hérdanse. Se desactivas isto, só serán válidos os permisos de uso compartido definidos explicitamente. Na vista xeral, o símbolo {inherited} indica un valor herdado. Do mesmo xeito, o símbolo {global} indica un rol global, que xestiona o administrador do sitio."
@@ -698,6 +698,11 @@ msgstr "Escolle un ficheiro"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Limpar"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Limpar URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -1129,7 +1134,7 @@ msgstr "Eliminado"
 #. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
-msgstr ""
+msgstr "Eliminar este elemento romperá {brokenReferences} {variation}."
 
 #. Default: "Depth"
 #: components/manage/Widgets/QuerystringWidget
@@ -1215,7 +1220,7 @@ msgstr "Queres realmente eliminar este elemento?"
 #. Default: "Do you want to restore your autosaved content?"
 #: helpers/Utils/withSaveAsDraft
 msgid "Do you want to restore your autosaved content?"
-msgstr ""
+msgstr "Queres restaurar o contido gardado automaticamente?"
 
 #. Default: "Document"
 #: components/manage/Multilingual/TranslationObject
@@ -1348,6 +1353,11 @@ msgstr "Correo electrónico enviado"
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Código de error incrustado, por favor, siga as instruccións e inténteo de novo."
+
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
 
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
@@ -1667,6 +1677,11 @@ msgstr "Reparar relacións"
 msgid "Fixed width table cells"
 msgstr "Celas de táboa de ancho fixo"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr ""
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1729,11 +1744,6 @@ msgstr "Xeral"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Rol global"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Google Maps Bloque Embebido"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -2021,7 +2031,7 @@ msgstr "Non está permitido definir tanto o contrasinal como solicitar o envío 
 #. Default: "Item"
 #: components/manage/Controlpanels/BlockType
 msgid "Item"
-msgstr ""
+msgstr "Elemento"
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2350,6 +2360,16 @@ msgstr "Medio"
 msgid "Membership updated"
 msgstr "Subscrición actualizada"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2669,7 +2689,7 @@ msgstr "Repeticións"
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
 msgid "Occurrences"
-msgstr ""
+msgstr "Ocurrencias"
 
 #. Default: "Ok"
 #: components/manage/Delete/Delete
@@ -2680,6 +2700,11 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Só se permiten caracteres de 7 bits. Non pode conter maiúsculas nin caracteres especiais: <, >, &, #, /, ?, ou outros que son ilegais nas URL. Non se pode comezar con: _, aq_, @@, ++. Non pode acabar con __. Non pode ser: request,contributors, ., .., ''. Non pode conter novas líneas."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Abre o navegador de URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2760,7 +2785,7 @@ msgstr "Pegar bloques"
 #. Default: "Path"
 #: components/manage/Controlpanels/BlockType
 msgid "Path"
-msgstr ""
+msgstr "Camiño"
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -2858,6 +2883,16 @@ msgstr "Fundación Plone"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Xanela emerxente pechada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Xanela emerxente aberta: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3390,7 +3425,7 @@ msgstr "Seleccione as columnas para amosar"
 #. Default: "Select option"
 #: components/manage/Blocks/Search/components/SelectFacet
 msgid "Select option"
-msgstr ""
+msgstr "Seleccione opción"
 
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
@@ -3425,7 +3460,7 @@ msgstr "Elementos seleccionados"
 #. Default: "of"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Selected items - x of y"
-msgstr "Selected items - x of y"
+msgstr "Elementos seleccionados - x de y"
 
 #. Default: "Selection"
 #: components/manage/Widgets/SchemaWidget
@@ -3603,12 +3638,12 @@ msgstr "Pequeno"
 #. Default: "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items are referenced by other contents. Deleting them will break {brokenReferences} {variation}."
-msgstr ""
+msgstr "Algúns elementos son referenciados por outros contidos. Eliminalos romperá {brokenReferences} {variation}."
 
 #. Default: "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Some items contain subitems. Deleting them will also delete their {containedItemsToDelete} {variation} inside."
-msgstr ""
+msgstr "Algúns elementos conteñen subelementos. Ao eliminalos, tamén se eliminará a súa {variation} {containedItemsToDelete}."
 
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
@@ -3899,7 +3934,7 @@ msgstr "O elemento non puido ser eliminado."
 #. Default: "The kicker is a line of text shown above the title."
 #: components/manage/Blocks/Teaser/schema
 msgid "The kicker is a line of text shown above the title."
-msgstr ""
+msgstr "O kicker é unha liña de texto que se mostra enriba do título."
 
 #. Default: "The link address is:"
 #: components/theme/View/LinkView
@@ -4017,7 +4052,7 @@ msgstr "Este é unha copia de traballo de {title}"
 #. Default: "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "This item contains subitems. Deleting it will also delete its {containedItemsToDelete} {variation} inside."
-msgstr ""
+msgstr "Este elemento contén subelementos. Ao eliminalo, tamén se eliminará a súa {variation} {containedItemsToDelete}."
 
 #. Default: "This item was locked by {creator} on {date}"
 #: components/manage/LockingToastsFactory/LockingToastsFactory
@@ -4068,7 +4103,7 @@ msgstr "Erro no campo do título. Non se proporcionou un valor ou xa existe."
 #. Default: "Toggle option"
 #: components/manage/Blocks/Search/components/ToggleFacet
 msgid "Toggle option"
-msgstr ""
+msgstr "Alternar opción"
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4164,7 +4199,7 @@ msgstr "Escribe texto..."
 #. Default: "Type the heading…"
 #: components/manage/TextLineEdit/TextLineEdit
 msgid "Type the heading…"
-msgstr "Escribe o encabezamento"
+msgstr "Escribe o encabezamento…"
 
 #. Default: "Type the title…"
 #: components/manage/Blocks/Title/Edit
@@ -4188,6 +4223,16 @@ msgstr "Xestión das URLs"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "Xestión da URL para {title}"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr "A URL é inválida"
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta URL"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -4429,7 +4474,7 @@ msgstr "Vídeo URL"
 #. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
 #: components/manage/Blocks/Video/schema
 msgid "VideoTitleDescription"
-msgstr ""
+msgstr "O título do vídeo non se mostra, senón que só se usa por razóns de accesibilidade para identificar o vídeo para os usuarios de lectores de pantalla. Se o vídeo xa ten un título suficientemente definido por un título anterior, deixa este campo baleiro."
 
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
@@ -4576,7 +4621,7 @@ msgstr "Fluxo de traballo actualizado."
 #. Default: "Working copy"
 #: components/manage/Contents/ContentsItem
 msgid "Working copy"
-msgstr ""
+msgstr "Copia de traballo"
 
 #. Default: "Yearly"
 #: components/manage/Widgets/RecurrenceWidget/RecurrenceWidget
@@ -4592,17 +4637,17 @@ msgstr "Si"
 #. Default: "You are about to delete all items and all its subitems."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items and all its subitems."
-msgstr ""
+msgstr "Estás a piques de eliminar todos os elementos e todos os seus subelementos."
 
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Estás a piques de eliminar todos os elementos na paxinación actual deste cartafol."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Estás a tentar acceder a un recurso protexido. Primeiro, {login}."
+msgid "You are trying to access a protected resource."
+msgstr "Estás intentando acceder a un recurso protexido."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4702,7 +4747,7 @@ msgstr "Introduza un nome de usuario, normalmente algo como 'jtouro'. Sen espazo
 #. Default: "and {count} more…"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "and {count} more…"
-msgstr ""
+msgstr "e {count} máis…"
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
@@ -4753,7 +4798,7 @@ msgstr "Compare coa lingua"
 #. Default: "Block: {title}"
 #: components/manage/Controlpanels/BlockType
 msgid "controlpanel_block_type"
-msgstr ""
+msgstr "Bloque: {title}"
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4978,11 +5023,6 @@ msgstr "Listado"
 msgid "loading"
 msgstr "Cargando"
 
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "iniciar sesión"
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5038,7 +5078,7 @@ msgstr "Sen estado de fluxo de traballo"
 #. Default: "No items found for type: {type}."
 #: components/manage/Controlpanels/BlockType
 msgid "no-blocks-found"
-msgstr ""
+msgstr "Non se atoparon elementos para o tipo: {type}."
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5351,6 +5391,26 @@ msgstr "Texto"
 msgid "title"
 msgstr "Título"
 
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Erro"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Información"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Éxito"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertencia"
+
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
 #: config/Blocks
@@ -5438,7 +5498,7 @@ msgstr "{id} Esquema"
 #. Default: "{sources} or mp4 URL allowed"
 #: components/manage/Blocks/Video/Edit
 msgid "{sources} or mp4 URL allowed"
-msgstr ""
+msgstr "Permítese {sources} ou URL mp4"
 
 #. Default: "{title} copied."
 #: components/manage/Actions/Actions

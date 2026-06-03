@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-28T02:46:27.521Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Asko Soukka <asko.soukka@iki.fi>, 2020\n"
+"PO-Revision-Date: 2026-05-10 16:00+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: fi\n"
-"Language-Team: Finnish (https://www.transifex.com/plone/teams/14552/fi/)\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/plone/volto-main/fi/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: fi\n"
 "Language-Name: Finnish\n"
 "Preferred-Encodings: utf-8\n"
@@ -559,10 +560,10 @@ msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Oletuksena käyttöoikeudet peritään aina edeltävältä sisältötasolta. Jos tämä valinta poistetaan, vain tällä tasolla erikseen määritellyt käyttöoikeudet ovat voimassa. {inherited} tarkoittaa perittyä käyttöoikeutta. {global} tarkoittaa ylläpitäjän myöntämää sivustonlaajuista käyttöoikeutta."
+msgstr "Oletuksena tämän kohteen säiliön oikeudet peritään. Jos poistat tämän käytöstä, vain nimenomaisesti määritellyt jakamisoikeudet ovat voimassa. Yhteenvedossa perityt arvot merkitään selkeästi tekstillä 'Peritty arvo' ja ne saavat vihreän tarkistusmerkin {inherited}. Vastaavasti sivuston ylläpitäjän hallinnoimat roolit merkitään tekstillä 'Globaali rooli' ja ne saavat sinisen tarkistusmerkin {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -697,6 +698,11 @@ msgstr "Valitse tiedosto"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Tyhjennä"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Tyhjennä URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -1348,6 +1354,11 @@ msgstr "Sähköposti lähetetty"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Virhe upotuskoodissa. Seuraa ohjeita ja yritä uudelleen."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1666,6 +1677,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Kiinteälevyiset sarakkeet"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Kohdista"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1728,11 +1744,6 @@ msgstr "Yleinen"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Sivustonlaajuinen rooli"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Google Maps -upotuspalikka"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -2349,6 +2360,16 @@ msgstr "Keskikokoinen"
 msgid "Membership updated"
 msgstr "Jäsenyys päivitetty"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2680,6 +2701,11 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Avaa URL-selain"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2857,6 +2883,16 @@ msgstr "Plone-säätiön"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} avoimen lähdenkoodin sisällönhallintajärjestelmä CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Ponnahdusikkuna suljettu."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Ponnahdusikkuna avattu: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4189,6 +4225,16 @@ msgstr "URL-osoitteiden hallinta"
 msgid "URL Management for {title}"
 msgstr "URL-osoitteiden hallinta kohteelle {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL puuttuu"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4599,10 +4645,10 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Ole hyvä ja {login} nähdäksesi tämän sivun."
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4978,11 +5024,6 @@ msgstr "luettelo"
 msgid "loading"
 msgstr "ladataan"
 
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "kirjaudu"
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5350,6 +5391,26 @@ msgstr ""
 #: config/Blocks
 msgid "title"
 msgstr "nimike"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Virhe"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Tiedote"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Onnistui"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Varoitus"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

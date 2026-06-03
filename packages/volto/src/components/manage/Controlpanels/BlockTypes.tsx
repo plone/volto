@@ -40,24 +40,37 @@ type RouteProps = {
   location: Location;
 };
 
+type BlockTypesState = {
+  error: {
+    status?: number;
+  } | null;
+  items: Record<string, number> | unknown[];
+  loaded: boolean;
+  loading: boolean;
+};
+
+type SelectorState = {
+  blockTypes: BlockTypesState;
+};
+
 const BlockTypesControlpanel = (props: RouteProps) => {
   const { location } = props;
   const intl = useIntl();
-  const blockTypes = useSelector((state) => state.blockTypes);
+  const blockTypes = useSelector((state: SelectorState) => state.blockTypes);
   const blocksConfig = config.blocks.blocksConfig;
   const dispatch = useDispatch();
   const pathname = location.pathname;
   const isClient = useClient();
 
-  const blocks = Object.values(blocksConfig)
-    .map((blockConfig) => ({
+  const blocks = Object.entries(blocksConfig)
+    .map(([key, blockConfig]) => ({
       ...blockConfig,
       title: blockConfig.title
         ? intl.formatMessage({
             id: blockConfig.title,
             defaultMessage: blockConfig.title,
           })
-        : blockConfig.id,
+        : blockConfig.id ?? key,
     }))
     .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
 

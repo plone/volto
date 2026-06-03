@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-12-17T20:38:19.520Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Emanuel de Jesus <emanuel.angelo@gmail.com>, 2019\n"
+"PO-Revision-Date: 2026-05-10 15:45+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: pt\n"
-"Language-Team: Portuguese (https://www.transifex.com/plone/teams/14552/pt/)\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/plone/volto-main/pt/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: pt\n"
 "Language-Name: Portuguese\n"
 "Preferred-Encodings: utf-8\n"
@@ -559,10 +560,10 @@ msgstr "Navegue no website, largue uma imagem ou escreva um URL"
 msgid "BulkUploadAltUrls"
 msgstr "Carregamento em massa de CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Por predefinição, as permissões do contentor deste item são herdadas. Se desactivar isto, apenas serão válidas as permissões de partilha explicitamente definidas. No resumo, o símbolo {inherited} indica um valor herdado. Do mesmo modo, o símbolo {global} indica um papel global, que é gerido pelo administrador do sítio."
+msgstr "Por predefinição, as permissões do contentor deste item são herdadas. Se desativar isto, apenas serão válidas as permissões de partilha definidas explicitamente. Na visão geral, os valores herdados são explicitamente rotulados como 'Valor herdado' e recebem uma marca de verificação verde {inherited}. Da mesma forma, os papéis geridos pelo administrador do site são rotulados como 'Papel global' e recebem uma marca de verificação azul {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -697,6 +698,11 @@ msgstr "Escolha um ficheiro"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Limpar"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Limpar URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -1348,6 +1354,11 @@ msgstr "Email enviado"
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Erro de código Embed, siga as instruções e tente novamente."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1666,6 +1677,11 @@ msgstr "Consertar relacionamentos"
 msgid "Fixed width table cells"
 msgstr "Células de tabela de tamanho fixo."
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Focar em"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1728,11 +1744,6 @@ msgstr "Geral"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Papel global"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Bloco Integrado Google Maps"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -2349,6 +2360,16 @@ msgstr "Médio"
 msgid "Membership updated"
 msgstr "Participação atualizada"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2680,6 +2701,11 @@ msgstr "Ok"
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr "Somente caracteres de bytes de 7 bits são permitidos. Não pode conter letras maiúsculas, caracteres especiais: <, >, &, #, /, ?, ou outros que são ilegais em URLs. Não pode começar com: , aq, @@, ++. Não pode terminar com __. Não pode ser: request, contributors, ., .., “”. Não pode conter quebras de linha."
 
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Abrir navegador de URL"
+
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2857,6 +2883,16 @@ msgstr "Fundação Plone"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} Open Source CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Janela flutuante fechada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Janela flutuante aberta: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4189,6 +4225,16 @@ msgstr "Gestão de URL"
 msgid "URL Management for {title}"
 msgstr "Gestão de URL para {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta o URL"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4599,10 +4645,10 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Está prestes a apagar todos os elementos na paginação atual desta pasta."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Está a tentar aceder um recurso protegido, por favor, {login} primeiro."
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4978,11 +5024,6 @@ msgstr "Listagem"
 msgid "loading"
 msgstr "A carregar"
 
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr ""
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5350,6 +5391,26 @@ msgstr "texto"
 #: config/Blocks
 msgid "title"
 msgstr "título"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Erro"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informação"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Sucesso"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Aviso"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

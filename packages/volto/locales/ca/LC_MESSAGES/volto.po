@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2019-07-02 00:11+0200\n"
-"Last-Translator: Víctor Fernández de Alba <victor@plone.org>\n"
-"Language: \n"
-"Language-Team: Català <plone-cat@lists.plone.org>\n"
+"PO-Revision-Date: 2026-05-10 15:54+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language: ca\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/plone/volto-main/ca/>\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: ca\n"
 "Language-Name: Catalan\n"
 "Preferred-Encodings: utf-8\n"
@@ -560,7 +561,7 @@ msgstr "Navega pel lloc, deixa anar una imatge o escriu una URL"
 msgid "BulkUploadAltUrls"
 msgstr "Càrrega massiva de CSV"
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Per defecte, els permisos del contenidor d'aquest element són heretats. Si desactiveu aquesta opció, només seran vàlids els permisos de compartició definits explícitament. A la vista general, el símbol {inherited} indica un valor heretat. De la mateixa manera, el símbol {global} indica un rol global, que és gestionat per l'administrador del lloc."
@@ -698,6 +699,11 @@ msgstr "Trieu un fitxer"
 #: components/manage/Blocks/HTML/Edit
 msgid "Clear"
 msgstr "Clar"
+
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Esborra l'URL"
 
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
@@ -1241,7 +1247,7 @@ msgstr "Descarrega el fitxer"
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó "Navega"."
+msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
 #. Default: "Drop file here to replace the existing file"
 #: components/manage/Widgets/FileWidget
@@ -1348,6 +1354,11 @@ msgstr "Email enviat"
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Error d'inserció del codi, seguiu les instruccions i torneu-ho a provar."
+
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
 
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
@@ -1667,6 +1678,11 @@ msgstr "Corregeix relacions"
 msgid "Fixed width table cells"
 msgstr "Columnes d'amplada fixa"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Concentra't en"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1729,11 +1745,6 @@ msgstr "General"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Paper global"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Bloc incrustat de Google Maps"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -2350,6 +2361,16 @@ msgstr "Mitjana"
 msgid "Membership updated"
 msgstr "Membresia actualitzada"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2679,7 +2700,12 @@ msgstr "D'acord"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., "". No pot contenir salts de línia."
+msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., \"\". No pot contenir salts de línia."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Obre el navegador d'URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2858,6 +2884,16 @@ msgstr "Fundació Plone"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM de codi obert"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Finestra emergent tancada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Finestra emergent oberta: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -4190,6 +4226,16 @@ msgstr "Gestió d'URL"
 msgid "URL Management for {title}"
 msgstr "Gestió d'URL per a {title}"
 
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta l'URL"
+
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
 msgid "Unassign"
@@ -4600,10 +4646,10 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr "Estàs a punt d'eliminar tots els elements de la pàgina actual d'aquesta carpeta."
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Esteu provant d'accedir a un recurs protegit, primer {login} ."
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4979,11 +5025,6 @@ msgstr "Llistat"
 msgid "loading"
 msgstr "Carregant"
 
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "Iniciar Sessió"
-
 #. Default: "Maps"
 #: config/Blocks
 msgid "maps"
@@ -5351,6 +5392,26 @@ msgstr "Text"
 #: config/Blocks
 msgid "title"
 msgstr "Títol"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Error"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informació"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Èxit"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertiment"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
