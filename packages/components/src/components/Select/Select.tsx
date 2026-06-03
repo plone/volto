@@ -31,6 +31,7 @@ export interface SelectItemObject {
 interface SelectBaseProps<T extends object, M extends 'single' | 'multiple'>
   extends Omit<RACSelectProps<T, M>, 'children'> {
   label?: string;
+  labelClassnames?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   items?: Iterable<T>;
@@ -84,7 +85,7 @@ export function Select<
 }
 
 function DefaultSelectItem(item: SelectItemObject) {
-  return <SelectItem id={item.label}>{item.value}</SelectItem>;
+  return <SelectItem id={item.value}>{item.label}</SelectItem>;
 }
 
 export function SelectListBox<T extends object>(props: ListBoxProps<T>) {
