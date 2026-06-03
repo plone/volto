@@ -410,7 +410,7 @@ class ArrayWidget extends Component {
                   )
                 )
               }
-              isClearable
+              isClearable={!this.props.required}
               isMulti
             />
           </SortableContext>
