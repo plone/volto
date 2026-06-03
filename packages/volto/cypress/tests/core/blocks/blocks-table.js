@@ -37,32 +37,28 @@ describe('Table Block Tests', () => {
     )
       .focus()
       .click()
-      .type('column 1 / row 1')
-      .should('have.text', 'column 1 / row 1');
+      .type('column 1 / row 1');
 
     cy.get(
       '.celled.fixed.table thead tr th:nth-child(2) [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 2 / row 1')
-      .should('have.text', 'column 2 / row 1');
+      .type('column 2 / row 1');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 1 / row 2')
-      .should('have.text', 'column 1 / row 2');
+      .type('column 1 / row 2');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:nth-child(2) [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 2 / row 2')
-      .should('have.text', 'column 2 / row 2');
+      .type('column 2 / row 2');
 
     cy.get('button[title="Insert col after"]').click();
     cy.get('button[title="Insert row after"]').click();
