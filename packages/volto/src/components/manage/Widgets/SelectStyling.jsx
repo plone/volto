@@ -46,6 +46,7 @@ export const SortableMultiValue = injectLazyLibs([
       }}
       {...attributes}
       {...listeners}
+      tabIndex={-1}
       aria-label={`${(props.selectProps['aria-label'] || '').split(':')[0].trim()}: ${props.data.label}`}
     >
       <MultiValue
