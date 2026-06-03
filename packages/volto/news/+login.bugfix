@@ -1,0 +1,2 @@
+Fix "Cannot POST" error on login form if it was submitted before hydration
+finished, by disabling the submit button until then. @davisagli

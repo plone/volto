@@ -14,6 +14,7 @@ import qs from 'query-string';
 
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { useClient } from '@plone/volto/hooks/client/useClient';
 import config from '@plone/volto/registry';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import {
@@ -84,6 +85,7 @@ const Login = (props) => {
     location.pathname.replace(/\/[^/]*\/?$/, '') ||
     '/';
   const previousToken = usePrevious(token);
+  const isClient = useClient();
 
   useEffect(() => {
     if (location?.state?.isLogout) {
@@ -252,6 +254,7 @@ const Login = (props) => {
                 aria-label={intl.formatMessage(messages.login)}
                 title={intl.formatMessage(messages.login)}
                 loading={loading}
+                disabled={!isClient}
               >
                 <Icon className="circled" name={aheadSVG} size="30px" />
               </Button>
