@@ -4845,6 +4845,11 @@ msgstr "voorlopige versie"
 msgid "drag_block"
 msgstr "versleep {type} blok"
 
+#. Default: "Edit time zone"
+#: components/manage/Widgets/DatetimeWidget
+msgid "editTimezone"
+msgstr ""
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
@@ -5385,6 +5390,11 @@ msgstr "pad naar doel"
 #: config/Blocks
 msgid "text"
 msgstr "Tekst"
+
+#. Default: "Time zone"
+#: components/manage/Widgets/DatetimeWidget
+msgid "timezone"
+msgstr ""
 
 #. Default: "Title"
 #: config/Blocks

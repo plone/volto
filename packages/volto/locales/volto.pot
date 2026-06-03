@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-05-07T07:25:19.397Z\n"
+"POT-Creation-Date: 2026-05-30T12:08:30.264Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -4841,6 +4841,11 @@ msgstr ""
 msgid "drag_block"
 msgstr ""
 
+#. Default: "Edit time zone"
+#: components/manage/Widgets/DatetimeWidget
+msgid "editTimezone"
+msgstr ""
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
@@ -5380,6 +5385,11 @@ msgstr ""
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
+msgstr ""
+
+#. Default: "Time zone"
+#: components/manage/Widgets/DatetimeWidget
+msgid "timezone"
 msgstr ""
 
 #. Default: "Title"
