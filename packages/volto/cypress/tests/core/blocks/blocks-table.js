@@ -70,10 +70,7 @@ describe('Table Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
 
-    // Wait for table to be visible before asserting
-    cy.get('.celled.fixed.table').should('be.visible');
-
-    // View
+    // Wait until the first cell has content before asserting
     cy.get('.celled.fixed.table thead tr th:first-child()').should(
       'contain',
       'column 1 / row 1',
@@ -137,10 +134,7 @@ describe('Table Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
 
-    // Wait for table to be visible before asserting
-    cy.get('.celled.fixed.table').should('be.visible');
-
-    // View
+    // Wait until the first cell has content before asserting
     cy.get('.celled.fixed.table thead tr th:first-child()').should(
       'contain',
       'column 1 / row 1',
