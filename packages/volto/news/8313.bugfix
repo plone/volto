@@ -1,0 +1,1 @@
+Improved screen reader support in SelectWidget and ArrayWidget: added dynamic aria-label with field name and current value, keyboard navigation for selected chips, and hidden the clear button on required fields. @Wagner3UB
