@@ -1,7 +1,6 @@
 import React, { type ReactNode, type ComponentProps } from 'react';
 import {
   type TableProps as RACTableProps,
-  type TableBodyRenderProps,
   ResizableTableContainer,
   ColumnResizer,
   Table as RACTable,
@@ -30,7 +29,7 @@ interface TableProps<C, R> extends RACTableProps {
   rows?: R[];
   resizableColumns?: boolean;
   dragColumnHeader?: ComponentProps<typeof TableHeader>['dragColumnHeader'];
-  renderEmptyState?: (props: TableBodyRenderProps) => ReactNode;
+  renderEmptyState?: ComponentProps<typeof TableBody>['renderEmptyState'];
   // TODO maybe a custom "selectall" component? Is it doable with react-aria-components?
 }
 
