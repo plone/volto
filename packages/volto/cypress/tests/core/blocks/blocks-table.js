@@ -35,28 +35,24 @@ describe('Table Block Tests', () => {
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
     )
-      .focus()
       .click()
       .type('column 1 / row 1');
 
     cy.get(
       '.celled.fixed.table thead tr th:nth-child(2) [contenteditable="true"]',
     )
-      .focus()
       .click()
       .type('column 2 / row 1');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]',
     )
-      .focus()
       .click()
       .type('column 1 / row 2');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:nth-child(2) [contenteditable="true"]',
     )
-      .focus()
       .click()
       .type('column 2 / row 2');
 
