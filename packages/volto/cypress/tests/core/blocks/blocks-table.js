@@ -32,6 +32,10 @@ describe('Table Block Tests', () => {
       .click()
       .should('have.css', 'outline-style', 'none');
 
+    // Click outside the table to reset Slate focus before typing in cells
+    cy.get('body').click(0, 0);
+    cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
+
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
     )
