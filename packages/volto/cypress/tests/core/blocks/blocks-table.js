@@ -65,13 +65,10 @@ describe('Table Block Tests', () => {
     cy.get('button[title="Insert row before"]').click();
     cy.get('button[title="Insert col before"]').click();
 
-    // Redefine intercept before save to capture the post-save redirect request
-    cy.intercept('GET', `/**/*?expand*`).as('contentAfterSave');
-
     // Save
     cy.get('#toolbar-save').click();
     cy.wait('@save');
-    cy.wait('@contentAfterSave');
+    cy.wait('@content');
 
     // Wait for table to be visible before asserting
     cy.get('.celled.fixed.table').should('be.visible');
