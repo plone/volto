@@ -37,40 +37,50 @@ describe('Table Block Tests', () => {
     )
       .focus()
       .click()
-      .type('column 1 / row 1');
+      .type('column 1 / row 1')
+      .should('have.text', 'column 1 / row 1');
 
     cy.get(
       '.celled.fixed.table thead tr th:nth-child(2) [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 2 / row 1');
+      .type('column 2 / row 1')
+      .should('have.text', 'column 2 / row 1');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 1 / row 2');
+      .type('column 1 / row 2')
+      .should('have.text', 'column 1 / row 2');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:nth-child(2) [contenteditable="true"]',
     )
       .focus()
       .click()
-      .type('column 2 / row 2');
+      .type('column 2 / row 2')
+      .should('have.text', 'column 2 / row 2');
 
     cy.get('button[title="Insert col after"]').click();
     cy.get('button[title="Insert row after"]').click();
     cy.get('button[title="Insert row before"]').click();
     cy.get('button[title="Insert col before"]').click();
 
+    // Redefine intercept before save to capture the post-save redirect request
+    cy.intercept('GET', `/**/*?expand*`).as('contentAfterSave');
+
     // Save
     cy.get('#toolbar-save').click();
     cy.wait('@save');
-    cy.wait('@content');
+    cy.wait('@contentAfterSave');
 
-    // Wait until the first cell has content before asserting
+    // Wait for table to be visible before asserting
+    cy.get('.celled.fixed.table').should('be.visible');
+
+    // View
     cy.get('.celled.fixed.table thead tr th:first-child()').should(
       'contain',
       'column 1 / row 1',
@@ -134,7 +144,10 @@ describe('Table Block Tests', () => {
     cy.wait('@save');
     cy.wait('@content');
 
-    // Wait until the first cell has content before asserting
+    // Wait for table to be visible before asserting
+    cy.get('.celled.fixed.table').should('be.visible');
+
+    // View
     cy.get('.celled.fixed.table thead tr th:first-child()').should(
       'contain',
       'column 1 / row 1',
