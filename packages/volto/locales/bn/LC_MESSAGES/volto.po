@@ -2919,6 +2919,11 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr ""
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "আইটেম যোগ করতে স্পেস চাপুন। মুছতে মুছুন বা Backspace চাপুন।"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

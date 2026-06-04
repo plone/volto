@@ -2919,6 +2919,11 @@ msgstr "Preferințe"
 msgid "Press Enter to browse files from your computer."
 msgstr "Apasă Enter pentru a răsfoi fișierele de pe calculatorul tău."
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "Apăsați Spațiu pentru a adăuga elemente. Apăsați Șterge sau Backspace pentru a elimina."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

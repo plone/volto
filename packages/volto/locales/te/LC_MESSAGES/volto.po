@@ -2919,6 +2919,11 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr ""
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "అంశాలు జోడించడానికి స్పేస్ నొక్కండి. తీసివేయడానికి తొలగించు లేదా Backspace నొక్కండి."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

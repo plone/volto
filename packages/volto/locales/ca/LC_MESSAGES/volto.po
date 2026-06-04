@@ -2920,6 +2920,11 @@ msgstr "Preferències"
 msgid "Press Enter to browse files from your computer."
 msgstr "Prem Enter per explorar els fitxers del teu ordinador."
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "Premeu Espai per afegir elements. Premeu Suprimir o Retrocés per eliminar."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

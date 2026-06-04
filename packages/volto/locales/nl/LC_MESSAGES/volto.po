@@ -2919,6 +2919,11 @@ msgstr "Voorkeuren"
 msgid "Press Enter to browse files from your computer."
 msgstr "Druk Enter om door de bestanden op jouw computer te browsen."
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "Druk op Spatie om items toe te voegen. Druk op Verwijder of Backspace om te verwijderen."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

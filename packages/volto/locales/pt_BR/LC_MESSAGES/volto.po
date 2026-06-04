@@ -2919,6 +2919,11 @@ msgstr "Preferências"
 msgid "Press Enter to browse files from your computer."
 msgstr "Pressione Enter para procurar arquivos no seu computador."
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "Pressione Espaço para adicionar itens. Pressione Excluir ou Backspace para remover."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
