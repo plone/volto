@@ -12,7 +12,7 @@ myst:
 # Form fields, controls, and widgets
 
 Seven forms are schema-driven.
-A content schema describes metadata fields, and the CMS UI turns those fields into interactive form elements.
+A content schema describes metadata fields, and the {term}`CMSUI` turns those fields into interactive form elements.
 This process is intentionally split into several concepts: fields, controls, widgets, and adapters.
 The distinction matters because not every visual input component can be registered directly as a CMS widget.
 
@@ -26,7 +26,7 @@ For example, `title`, `description`, `effective`, and `is_folderish` are fields 
 A field belongs to the form system.
 It participates in form state, validation, submission, and synchronization with the content object.
 In Seven, `@tanstack/react-form` owns this part of the model.
-The CMS UI field component connects TanStack Form state to the widget registry and to any additional state that the editing UI needs.
+The CMSUI field component connects TanStack Form state to the widget registry and to any additional state that the editing UI needs.
 
 A field is not just the visible input.
 It also includes the surrounding form concerns that make the input meaningful in a CMS.
@@ -153,7 +153,7 @@ The form state system asks, "What is the value and validation state of this fiel
 The widget registry asks, "Which widget should render this field?"
 
 Seven can resolve a widget from several schema hints.
-The field id, explicit widget name, choices, vocabulary, factory, and type can all influence the result.
+The field ID, explicit widget name, choices, vocabulary, factory, and type can all influence the result.
 This lets the same schema-driven form render very different field experiences without hard-coding every field in the form component.
 
 The resolved widget still receives the same field contract.
@@ -178,7 +178,7 @@ Checkboxes, date pickers, object browsers, image pickers, and rich editors usual
 
 ## Design implications
 
-The form generator should stay boring.
+The form generator should be basic.
 It should resolve widgets, pass normalized field props, and connect changes back to form state.
 It should not contain special cases for checkbox selection state, date serialization, upload workflows, relation values, or vocabulary fetching.
 
