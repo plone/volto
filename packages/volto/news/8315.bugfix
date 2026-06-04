@@ -1,0 +1,1 @@
+Hide the clear button in `SelectWidget` and `ArrayWidget` when the field is marked as required. @Wagner3UB
