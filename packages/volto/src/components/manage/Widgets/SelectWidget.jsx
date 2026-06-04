@@ -305,6 +305,14 @@ class SelectWidget extends Component {
             );
           }}
           isClearable={this.props.isClearable}
+          ariaLiveMessages={{
+            onFocus: (props) => {
+              if (props.context === 'input') {
+                return `${props['aria-label'] || 'Select'} is focused${props.isSearchable ? ', type to refine list' : ''}, press Down to open the menu.`;
+              }
+              return '';
+            },
+          }}
         />
       </FormFieldWrapper>
     );

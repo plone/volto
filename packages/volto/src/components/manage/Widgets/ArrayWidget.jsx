@@ -402,6 +402,14 @@ class ArrayWidget extends Component {
               }
               isClearable
               isMulti
+              ariaLiveMessages={{
+                onFocus: (props) => {
+                  if (props.context === 'input') {
+                    return `${props['aria-label'] || 'Select'} is focused${props.isSearchable ? ', type to refine list' : ''}, press Down to open the menu.`;
+                  }
+                  return '';
+                },
+              }}
             />
           </SortableContext>
         </DndContext>

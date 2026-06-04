@@ -1,5 +1,6 @@
 import React from 'react';
 import { Popup } from 'semantic-ui-react';
+import { defineMessages, useIntl } from 'react-intl';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import DynamicHeightList from '@plone/volto/components/manage/ReactVirtualized/DynamicRowHeightList';
@@ -9,6 +10,16 @@ import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+const messages = defineMessages({
+  chip_instructions: {
+    id: 'Press Space to add items. Press Delete or Backspace to remove.',
+    defaultMessage:
+      'Press Space to add items. Press Delete or Backspace to remove.',
+  },
+});
+
+const CHIP_INSTRUCTIONS_ID = 'select-chip-instructions';
 
 export const MenuList = ({ children }) => {
   return <DynamicHeightList>{children}</DynamicHeightList>;
@@ -35,6 +46,7 @@ export const SortableMultiValue = injectLazyLibs([
     useSortable({
       id: props.data.value,
     });
+  const intl = useIntl();
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -46,7 +58,12 @@ export const SortableMultiValue = injectLazyLibs([
       }}
       {...attributes}
       {...listeners}
+      aria-label={`${props.selectProps.fieldTitle || ''}: ${props.data.label}`}
+      aria-describedby={CHIP_INSTRUCTIONS_ID}
     >
+      <span id={CHIP_INSTRUCTIONS_ID} style={{ display: 'none' }}>
+        {intl.formatMessage(messages.chip_instructions)}
+      </span>
       <MultiValue
         {...props}
         innerProps={{ ...props.innerProps, onMouseDown }}
