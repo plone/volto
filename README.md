@@ -1,4 +1,4 @@
-# Seven
+# @plone/aurora
 
 [![Unit Tests](https://github.com/plone/volto/actions/workflows/unit.yml/badge.svg?branch=seven)](https://github.com/plone/volto/actions/workflows/unit.yml)
 [![Acceptance Tests](https://github.com/plone/volto/actions/workflows/acceptance.yml/badge.svg?branch=seven)](https://github.com/plone/volto/actions/workflows/acceptance.yml)
@@ -7,29 +7,25 @@
 
 ## Introduction
 
-[Volto](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System.
-It is the default frontend starting with the Plone 6 release.
+[Plone Aurora](https://github.com/plone/volto) is a ReactJS-based frontend for the [Plone](https://plone.org) Content Management System compatible with the `plone.restapi` specification.
 
-[Plone](https://plone.org) is a CMS built on Python with more than 20 years of history and experience.
+[Plone](https://plone.org) is a CMS built on Python with more than 25 years of history and experience.
 
 Plone has features that appeal to developers and users alike, such as an intuitive editing interface, customizable content types, hierarchical organization, and a sophisticated permissions model.
 This allows you to build anything from simple websites to enterprise-grade intranets.
 
-Volto exposes all these features and communicates with Plone via its [REST API](https://github.com/plone/plone.restapi).
+Plone Aurora exposes all these features and communicates with Plone via its [REST API](https://github.com/plone/plone.restapi).
 
-Volto features the Pastanaga editor, a modern block-based content layout editor.
+Plone Aurora features the Somersault editor, a modern block-based content layout editor based on Plate.js.
 It is extensible and customizable, so you can adapt the provided default blocks to meet your requirements, or build new ones.
 
-Volto is extensible using add-ons.
-You can build your own or choose from the community released ones:
+Plone Aurora is extensible using add-ons.
 
-- [Volto Add-ons in NPM](https://www.npmjs.com/search?q=keywords%3Avolto-addon%2Cvolto)
-- [Volto Awesome](https://github.com/collective/awesome-volto)
-
+Plone Aurora is the successor and natural evolution to the Plone Volto frontend.
 
 ## Demo
 
-You can try a Volto online demo at [https://demo.plone.org/](https://demo.plone.org/).
+You can try a Plone Aurora online demo at [https://aurora.demo.plone.org/](https://aurora.demo.plone.org/).
 
 
 ## Monorepo structure
@@ -41,11 +37,20 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 
 | Package | Location |
 |---|---|
-| [`@plone/client`](https://www.npmjs.com/package/@plone/client) | [`packages/client`](https://github.com/plone/volto/tree/seven/packages/client#readme) |
-| [`@plone/components`](https://www.npmjs.com/package/@plone/components) | [`packages/components`](https://github.com/plone/volto/tree/main/packages/components#readme) |
-| [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/volto/tree/main/packages/registry#readme) |
-| [`@plone/scripts`](https://www.npmjs.com/package/@plone/scripts) | [`packages/scripts`](https://github.com/plone/volto/tree/main/packages/scripts#readme) |
-| [`@plone/types`](https://www.npmjs.com/package/@plone/types) | [`packages/types`](https://github.com/plone/volto/tree/main/packages/types#readme) |
+| [`@plone/client`](https://www.npmjs.com/package/@plone/client) | [`packages/client`](https://github.com/plone/aurora/tree/main/packages/client#readme) |
+| [`@plone/components`](https://www.npmjs.com/package/@plone/components) | [`packages/components`](https://github.com/plone/aurora/tree/main/packages/components#readme) |
+| [`@plone/registry`](https://www.npmjs.com/package/@plone/registry) | [`packages/registry`](https://github.com/plone/aurora/tree/main/packages/registry#readme) |
+| [`@plone/types`](https://www.npmjs.com/package/@plone/types) | [`packages/types`](https://github.com/plone/aurora/tree/main/packages/types#readme) |
+| [`@plone/helpers`](https://www.npmjs.com/package/@plone/helpers) | [`packages/helpers`](https://github.com/plone/aurora/tree/main/packages/helpers#readme) |
+| [`@plone/react-router`](https://www.npmjs.com/package/@plone/react-router) | [`packages/react-router`](https://github.com/plone/aurora/tree/main/packages/react-router#readme) |
+| [`@plone/blocks`](https://www.npmjs.com/package/@plone/blocks) | [`packages/blocks`](https://github.com/plone/aurora/tree/main/packages/blocks#readme) |
+| [`@plone/layout`](https://www.npmjs.com/package/@plone/layout) | [`packages/layout`](https://github.com/plone/aurora/tree/main/packages/layout#readme) |
+| [`@plone/publicui`](https://www.npmjs.com/package/@plone/publicui) | [`packages/publicui`](https://github.com/plone/aurora/tree/main/packages/publicui#readme) |
+| [`@plone/cmsui`](https://www.npmjs.com/package/@plone/cmsui) | [`packages/cmsui`](https://github.com/plone/aurora/tree/main/packages/cmsui#readme) |
+| [`@plone/contents`](https://www.npmjs.com/package/@plone/contents) | [`packages/contents`](https://github.com/plone/aurora/tree/main/packages/contents#readme) |
+| [`@plone/plate`](https://www.npmjs.com/package/@plone/plate) | [`packages/plate`](https://github.com/plone/aurora/tree/main/packages/plate#readme) |
+| [`@plone/agave`](https://www.npmjs.com/package/@plone/agave) | [`packages/agave`](https://github.com/plone/aurora/tree/main/packages/agave#readme) |
+
 
 See also [Monorepo structure](https://6.docs.plone.org/volto/contributing/developing-core.html#monorepo-structure).
 
@@ -56,9 +61,9 @@ The frontend's modular architecture in Plone is documented with Storybook.
 You can find it at https://plone-storybook.readthedocs.io/?path=/docs/introduction--docs.
 
 
-## Create a Seven frontend-only project
+## Create a Plone Aurora frontend-only project
 
-To create a project with a frontend-only scaffold using Seven, follow the [Plone installation documentation](https://volto.readthedocs.io/seven/get-started/create-package.html).
+To create a project with a frontend-only scaffold using Plone Aurora, follow the [Plone installation documentation](https://volto.readthedocs.io/seven/get-started/create-package.html).
 
 
 ## Documentation
@@ -85,16 +90,14 @@ See [Supported browsers](https://volto.readthedocs.io/seven/contributing/version
 
 ## Contributing
 
-To contribute to the Volto project by writing code, documentation, translations, and so on, please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://volto.readthedocs.io/seven/contributing/index.html).
+To contribute to the Plone Aurora project by writing code, documentation, translations, and so on, please read [Contributing to Plone](https://6.docs.plone.org/contributing/index.html) and [Contributing to Volto](https://volto.readthedocs.io/seven/contributing/index.html).
 
-For newcomers to Volto, Plone, or open source software, you must read and follow [First-time contributors](https://6.docs.plone.org/contributing/first-time.html).
-
-Since December 2023, this repository has a monorepo structure.
+For newcomers to Plone Aurora, Plone, or open source software, you must read and follow [First-time contributors](https://6.docs.plone.org/contributing/first-time.html).
 
 ## Contributors
 
-<a href="https://github.com/plone/volto/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=plone/volto" />
+<a href="https://github.com/plone/aurora/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=plone/aurora" />
 </a>
 
 
