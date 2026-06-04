@@ -88,8 +88,10 @@ exports[`No 'No value' option when default value is 0 1`] = `
                 class="react-select__indicators css-1wy0on6"
               >
                 <div
-                  aria-hidden="true"
+                  aria-hidden="false"
                   class="react-select__indicator react-select__clear-indicator css-mszz6t"
+                  role="button"
+                  tabindex="0"
                 >
                   <svg
                     class="icon"
