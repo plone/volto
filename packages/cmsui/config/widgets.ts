@@ -8,11 +8,18 @@ import {
 } from '@plone/components/quanta';
 import { DateField } from '@plone/components';
 import { BooleanWidget } from '../components/BooleanWidget/BooleanWidget';
+import { RecurrenceWidget } from '../components/RecurrenceWidget/RecurrenceWidget';
 import { ObjectBrowserWidget } from '../components/ObjectBrowserWidget/ObjectBrowserWidget';
 import ImageWidget from '../components/ImageWidget/ImageWidget';
+import { QuerystringWidget } from '../components/QuerystringWidget/QuerystringWidget';
 
 export default function install(config: ConfigType) {
   config.registerDefaultWidget(TextField);
+
+  config.registerWidget({
+    key: 'id',
+    definition: { recurrence: RecurrenceWidget },
+  });
   config.registerWidget({ key: 'widget', definition: { date: DateField } });
   config.registerWidget({
     key: 'widget',
@@ -48,6 +55,12 @@ export default function install(config: ConfigType) {
     key: 'widget',
     definition: {
       object_browser: ObjectBrowserWidget,
+    },
+  });
+  config.registerWidget({
+    key: 'widget',
+    definition: {
+      querystring: QuerystringWidget,
     },
   });
   config.registerWidget({
