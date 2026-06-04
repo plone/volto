@@ -16,3 +16,18 @@ it('Link basic a11y test', async () => {
 
   expect(results).toHaveNoViolations();
 });
+
+it('Link asButton a11y test', async () => {
+  const { container } = render(
+    <Link className="react-aria-Button" href="/">
+      The link as button
+    </Link>,
+  );
+
+  const asd = screen.getByText('The link as button');
+  expect(asd).toHaveAttribute('href', '/');
+
+  const results = await axe(container);
+
+  expect(results).toHaveNoViolations();
+});

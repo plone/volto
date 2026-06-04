@@ -13,6 +13,37 @@
       "file": {
         "download": "Clicca per scaricare il file"
       }
+    },
+    "toolbar": {
+      "label": "Barra degli strumenti"
+    },
+    "views": {
+      "link": {
+        "linkLabel": "L'indirizzo del link è:",
+        "externalLinkLabel": "L'indirizzo del link esterno è:"
+      },
+      "event": {
+        "what": "Cosa",
+        "when": "Quando",
+        "time": {
+          "sameDayOpenEnd": "{{date}} dalle {{fromTime}}",
+          "sameDayRange": "{{date}} dalle {{fromTime}} alle {{toTime}}",
+          "multiDayWholeDayOpen": "{{fromDate}}",
+          "multiDayWholeDay": "Dal {{fromDate}} al {{toDate}}",
+          "multiDayRangeOpen": "{{fromDate}} {{fromTime}}",
+          "multiDayRange": "Dal {{fromDate}} {{fromTime}} al {{toDate}} {{toTime}}"
+        },
+        "allDates": "Tutte le date",
+        "where": "Dove",
+        "contact": {
+          "name": "Nome del contatto",
+          "phone": "Telefono del contatto"
+        },
+        "attendees": "Partecipanti",
+        "website": "Sito web",
+        "visitWebsite": "Visita il sito web",
+        "downloadEvent": "Scarica evento"
+      }
     }
   }
 }

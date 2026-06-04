@@ -3,6 +3,8 @@ import type { PlateElementProps } from 'platejs/react';
 import { type VariantProps, cva } from 'class-variance-authority';
 import { PlateElement } from 'platejs/react';
 
+import { BlockInnerContainer } from './block-inner-container';
+
 const headingVariants = cva('relative mb-1', {
   variants: {
     variant: {
@@ -26,7 +28,7 @@ export function HeadingElement({
       className={headingVariants({ variant })}
       {...props}
     >
-      {props.children}
+      <BlockInnerContainer>{props.children}</BlockInnerContainer>
     </PlateElement>
   );
 }

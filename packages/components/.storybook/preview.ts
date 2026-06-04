@@ -3,9 +3,7 @@ import '../../theming/styles/tailwind.css';
 import '../src/styles/basic/main.css';
 
 export const parameters = {
-  backgrounds: {
-    default: 'light',
-  },
+  backgrounds: {},
   options: {
     storySort: {
       order: [
@@ -14,6 +12,8 @@ export const parameters = {
         'Tailwind',
         'Basic',
         ['Forms', 'Quanta', '*'],
+        'Quanta',
+        ['Introduction', 'Forms', '*'],
       ],
     },
   },
@@ -23,5 +23,11 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+};
+
+export const initialGlobals = {
+  backgrounds: {
+    value: 'light',
   },
 };

@@ -4,15 +4,9 @@ import type {
   SchemaEnhancerArgs,
 } from '@plone/types';
 
-type ImageBlockFormData = BlocksFormData & {
-  url?: string;
-};
-
-type ImageSchemaArgs = {
-  formData?: ImageBlockFormData;
-};
-
-export function ImageSchema({ formData = {} }: ImageSchemaArgs): JSONSchema {
+export function ImageSchema({
+  formData = {} as BlocksFormData,
+}: { formData?: BlocksFormData } = {}): JSONSchema {
   return {
     title: 'Image',
     fieldsets: [
@@ -60,6 +54,7 @@ export function ImageSchema({ formData = {} }: ImageSchemaArgs): JSONSchema {
         title: 'Block width',
         widget: 'width',
         default: 'default',
+        styleField: true,
       },
       align: {
         title: 'Alignment',

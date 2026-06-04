@@ -86,6 +86,7 @@ class ObjectBrowserBody extends Component {
     maximumSelectionSize: PropTypes.number,
     contextURL: PropTypes.string,
     searchableTypes: PropTypes.arrayOf(PropTypes.string),
+    onlyFolderishSelectable: PropTypes.bool,
   };
 
   /**
@@ -101,6 +102,7 @@ class ObjectBrowserBody extends Component {
     selectableTypes: [],
     searchableTypes: null,
     maximumSelectionSize: null,
+    onlyFolderishSelectable: false,
   };
 
   /**
@@ -142,10 +144,14 @@ class ObjectBrowserBody extends Component {
       showSearchInput: false,
       // In image mode, the searchable types default to the image types which
       // can be overridden with the property if specified.
+      // If selectableTypes are passed, the searchableTypes are the selectableTypes
       searchableTypes:
         this.props.mode === 'image'
           ? this.props.searchableTypes || config.settings.imageObjects
-          : this.props.searchableTypes,
+          : [
+              ...(this.props.searchableTypes ?? []),
+              ...(this.props.selectableTypes ?? []),
+            ],
       view: this.props.mode === 'image' ? 'icons' : 'list',
     };
     this.searchInputRef = React.createRef();
@@ -329,7 +335,17 @@ class ObjectBrowserBody extends Component {
   };
 
   isSelectable = (item) => {
-    const { maximumSelectionSize, data, mode, selectableTypes } = this.props;
+    const {
+      maximumSelectionSize,
+      data,
+      mode,
+      selectableTypes,
+      onlyFolderishSelectable,
+    } = this.props;
+
+    if (onlyFolderishSelectable && !item.is_folderish) {
+      return false;
+    }
     if (
       maximumSelectionSize &&
       data &&

@@ -20,6 +20,7 @@
   --secondary-foreground: hsl(222.2 47.4% 11.2%);
   --muted: hsl(210 40% 96.1%);
   --muted-foreground: hsl(215.4 16.3% 46.9%);
+  --muted-background: hsl(0, 0%, 90%);
   --accent: hsl(210 40% 96.1%);
   --accent-foreground: hsl(222.2 47.4% 11.2%);
   --destructive: hsl(0 84.2% 60.2%);
@@ -68,6 +69,8 @@
   --default-container-width: 940px;
   --narrow-container-width: 620px;
 
+  --plone-toolbar-width: 80px;
+
   --color-quanta-air: #fff;
   --color-quanta-space: #000;
   --color-quanta-denim: #021322;
@@ -95,7 +98,7 @@
 
   --color-quanta-cream: #fcf3cf;
   --color-quanta-banana: #faeaad;
-  --color-quanta-lemmon: #f6d355;
+  --color-quanta-lemon: #f6d355;
   --color-quanta-gold: #b48f09;
   --color-quanta-dijon: #917308;
   --color-quanta-bronze: #6b5506;
@@ -129,6 +132,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-muted-background: var(--muted-background);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);

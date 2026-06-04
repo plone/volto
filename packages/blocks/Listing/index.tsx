@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListIcon } from '@plone/components/Icons';
 import { ListingSchema } from './schema';
+import type { BlockConfigBase } from '@plone/types';
 
 const ListingBlockInfo = {
   id: 'listing',
@@ -14,6 +15,6 @@ const ListingBlockInfo = {
   category: 'common',
   blockSchema: ListingSchema,
   icon: ListIcon,
-};
+} satisfies Partial<BlockConfigBase>;
 
 export default ListingBlockInfo;

@@ -15,7 +15,7 @@ const cli = ploneClient.initialize({
 });
 
 beforeAll(async () => {
-  await cli.login({ username: 'admin', password: 'secret' });
+  await cli.login({ data: { login: 'admin', password: 'secret' } });
 });
 
 beforeEach(async () => {

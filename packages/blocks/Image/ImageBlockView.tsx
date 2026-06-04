@@ -1,17 +1,23 @@
-import type { BlockViewProps } from '@plone/types';
+import type { BlockViewProps, ContainedItem } from '@plone/types';
+import Image from '@plone/layout/components/Image/Image';
 
 const ImageBlockView = (props: BlockViewProps) => {
   const { data } = props;
   if (!data.url) return null;
-  const url = data.image_scales
-    ? `${data.url}/${data.image_scales[data.image_field || 'image'][0].scales.larger.download}`
-    : data.url;
-  // data.preview_image?.[0]?.['@id'] ||
-  // `/++api++${data.href[0]?.image_scales[data.href[0].image_field][0].base_path}/${data.href[0]?.image_scales[data.href[0].image_field][0].download}`;
+
+  const item = {
+    '@id': data.url,
+    image_field: data.image_field,
+    image_scales: data.image_scales,
+  } as ContainedItem;
 
   return (
     <figure>
-      <img src={url} alt={data.alt} />
+      <Image
+        item={item}
+        alt={(data.alt as string) || ''}
+        imageField={data.image_field as string}
+      />
     </figure>
   );
 };

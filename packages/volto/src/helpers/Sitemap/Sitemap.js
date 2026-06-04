@@ -22,10 +22,10 @@ export const SITEMAP_BATCH_SIZE = 5000;
 export const generateSitemap = (_req, start = 0, size = undefined) =>
   new Promise((resolve) => {
     const { settings } = config;
-    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+    const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
     const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
-      `${apiPath}${APISUFIX}/@search?metadata_fields=modified&b_start=${start}&b_size=${
+      `${apiPath}${apiSuffix}/@search?metadata_fields=modified&b_start=${start}&b_size=${
         size !== undefined ? size : 100000000
       }&use_site_search_settings=1`,
     );
@@ -64,10 +64,10 @@ export const generateSitemap = (_req, start = 0, size = undefined) =>
 export const generateSitemapIndex = (_req, gzip = false) =>
   new Promise((resolve) => {
     const { settings } = config;
-    const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+    const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
     const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
-      `${apiPath}${APISUFIX}/@search?metadata_fields=modified&b_size=0&use_site_search_settings=1`,
+      `${apiPath}${apiSuffix}/@search?metadata_fields=modified&b_size=0&use_site_search_settings=1`,
     );
     request.set('Accept', 'application/json');
     const authToken = _req.universalCookies.get('auth_token');

@@ -1,7 +1,56 @@
 {
   "cmsui": {
+    "add": "Add",
     "edit": "Edit",
     "save": "Save",
+    "recurrence": {
+      "editRecurrence": "Edit recurrence",
+      "repeat": "Repeat",
+      "interval_label": "Every",
+      "options": {
+        "daily": "Daily",
+        "mondayfriday": "Monday - Friday",
+        "weekly": "Weekly",
+        "weekdays": "Weekdays",
+        "monthly": "Monthly",
+        "yearly": "Yearly"
+      },
+      "intervals": {
+        "interval_daily": "day(s)",
+        "interval_weekly": "week(s)",
+        "interval_monthly": "month(s)",
+        "interval_yearly": "year(s)"
+      },
+      "repeaton_label": "Repeat every",
+      "bymonthday": "By month day",
+      "bymonthday_description": "ex. Day 22 of the month",
+      "byweekday": "By week day",
+      "byweekday_description": "ex. On the third tuesday of the month",
+      "byday": "By week day of a specific month",
+      "byday_description": "ex. On the first monday of february",
+      "on_the_label": "The",
+      "day_label": "Day",
+      "first_label": "First",
+      "second_label": "Second",
+      "third_label": "Third",
+      "fourth_label": "Fourth",
+      "last_label": "Last",
+      "ofmonth_label": "of month",
+      "monthdayError": "Please select a valid day of the month",
+      "ends_label": "Ends",
+      "count": "After a set number of occurrences",
+      "count_description": "ex. After 5 occurrences",
+      "until": "On a set date",
+      "until_description": "on June 15th, 2050",
+      "count_after": "After",
+      "count_occurrences": "occurrence(s)",
+      "infinite_occurrences": "Set to 0 or leave empty for infinite occurrences",
+      "selected_dates": "Selected Dates",
+      "no_occurrences": "No occurences available",
+      "start_recurrence": "Start of recurrence",
+      "other_dates": "more dates",
+      "show_more_dates": "Show more dates"
+    },
     "controlpanel": "Control Panel",
     "objectbrowserwidget": {
       "openDialog": "Select content",
@@ -54,6 +103,22 @@
       "users": "Users",
       "groupMembership": "Group Membership",
       "groups": "Groups"
+    },
+    "blocksEditor": {
+      "blocksTab": "Blocks",
+      "contentTab": "Content"
+    },
+    "sidebar": {
+      "label": "Sidebar"
+    },
+    "auth": {
+      "username": "username",
+      "password": "password",
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "signInTo": "Sign in to {{site}}",
+      "forgotPassword": "Forgot password? Request a <a>new password</a>",
+      "returnToHome": "Return to home page"
     }
   }
 }

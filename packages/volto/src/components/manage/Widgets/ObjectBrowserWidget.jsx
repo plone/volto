@@ -12,7 +12,7 @@ import isArray from 'lodash/isArray';
 import isEmpty from 'lodash/isEmpty';
 import remove from 'lodash/remove';
 import { connect } from 'react-redux';
-import { Image, Label, Popup, Button } from 'semantic-ui-react';
+import { Label, Popup, Button } from 'semantic-ui-react';
 import {
   flattenToAppURL,
   isInternalURL,
@@ -33,6 +33,7 @@ import homeSVG from '@plone/volto/icons/home.svg';
 import aheadSVG from '@plone/volto/icons/ahead.svg';
 import blankSVG from '@plone/volto/icons/blank.svg';
 import { withRouter } from 'react-router';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 const messages = defineMessages({
   placeholder: {
@@ -81,6 +82,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     openObjectBrowser: PropTypes.func.isRequired,
     allowExternals: PropTypes.bool,
     placeholder: PropTypes.string,
+    onlyFolderishSelectable: PropTypes.bool,
   };
 
   /**
@@ -97,6 +99,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     return: 'multiple',
     initialPath: '',
     allowExternals: false,
+    onlyFolderishSelectable: false,
   };
 
   state = {
@@ -131,7 +134,7 @@ export class ObjectBrowserWidgetComponent extends Component {
             <div className="item-title">
               {includes(config.settings.imageObjects, item['@type']) ? (
                 <Image
-                  size="small"
+                  className="small ui image"
                   src={`${item['@id']}/@@images/image/thumb`}
                 />
               ) : (
@@ -230,7 +233,7 @@ export class ObjectBrowserWidgetComponent extends Component {
   };
 
   validateManualLink = (url) => {
-    if (this.props.allowExternals) {
+    if (this.props.allowExternals && !url.startsWith('/')) {
       const error = urlValidator({
         value: url,
         formatMessage: this.props.intl.formatMessage,
@@ -314,6 +317,9 @@ export class ObjectBrowserWidgetComponent extends Component {
       maximumSelectionSize:
         this.props.widgetOptions?.pattern_options?.maximumSelectionSize ||
         this.props.maximumSelectionSize,
+      onlyFolderishSelectable:
+        this.props.widgetOptions?.pattern_options?.onlyFolderishSelectable ||
+        this.props.onlyFolderishSelectable,
     });
   };
 
@@ -398,6 +404,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           {this.state.manualLinkInput && isEmpty(items) && (
             <Button.Group>
               <Button
+                type="button"
                 basic
                 className="cancel"
                 onClick={(e) => {
@@ -408,6 +415,7 @@ export class ObjectBrowserWidgetComponent extends Component {
                 <Icon name={clearSVG} size="18px" color="#e40166" />
               </Button>
               <Button
+                type="button"
                 basic
                 primary
                 disabled={!this.state.validURL}
@@ -422,6 +430,7 @@ export class ObjectBrowserWidgetComponent extends Component {
           )}
           {!this.state.manualLinkInput && (
             <Button
+              type="button"
               aria-label={this.props.intl.formatMessage(
                 messages.openObjectBrowser,
               )}

@@ -1,15 +1,8 @@
 import type { BlocksFormData, JSONSchema } from '@plone/types';
 
-type TeaserBlockFormData = BlocksFormData & {
-  overwrite?: boolean;
-  href?: unknown;
-};
-
-type TeaserSchemaArgs = {
-  formData?: TeaserBlockFormData;
-};
-
-export function TeaserSchema({ formData = {} }: TeaserSchemaArgs): JSONSchema {
+export function TeaserSchema({
+  formData = {} as BlocksFormData,
+}: { formData?: BlocksFormData } = {}): JSONSchema {
   return {
     title: 'Teaser',
     fieldsets: [
@@ -30,8 +23,9 @@ export function TeaserSchema({ formData = {} }: TeaserSchemaArgs): JSONSchema {
       href: {
         title: 'Target',
         widget: 'object_browser',
-        mode: 'link',
+        mode: 'single',
         selectedItemAttrs: [
+          '@id',
           'Title',
           'title',
           'Description',
@@ -66,7 +60,7 @@ export function TeaserSchema({ formData = {} }: TeaserSchemaArgs): JSONSchema {
         widget: 'object_browser',
         mode: 'image',
         allowExternals: true,
-        selectedItemAttrs: ['image_field', 'image_scales'],
+        selectedItemAttrs: ['@id', 'image_field', 'image_scales'],
       },
       openLinkInNewTab: {
         title: 'Open in a new tab',

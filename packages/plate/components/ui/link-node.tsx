@@ -1,11 +1,11 @@
 import type { TInlineSuggestionData, TLinkElement } from 'platejs';
 import type { PlateElementProps } from 'platejs/react';
 
-import { getLinkAttributes } from '@platejs/link';
-import { SuggestionPlugin } from '@platejs/suggestion/react';
+import { Link } from '@plone/components';
 import { PlateElement } from 'platejs/react';
 
 import { cn } from '../../lib/utils';
+import { SuggestionPlugin } from '../editor/plugins/suggestion-kit';
 
 export function LinkElement(props: PlateElementProps<TLinkElement>) {
   const suggestionData = props.editor
@@ -17,21 +17,32 @@ export function LinkElement(props: PlateElementProps<TLinkElement>) {
   return (
     <PlateElement
       {...props}
-      as="a"
+      as="span"
       className={cn(
         'font-medium text-primary underline decoration-primary underline-offset-4',
         suggestionData?.type === 'remove' && 'bg-red-100 text-red-700',
         suggestionData?.type === 'insert' && 'bg-emerald-100 text-emerald-700',
       )}
-      attributes={{
-        ...props.attributes,
-        ...getLinkAttributes(props.editor, props.element),
-        onMouseOver: (e) => {
-          e.stopPropagation();
-        },
-      }}
+      attributes={props.attributes}
     >
-      {props.children}
+      <Link
+        href={props.element.url}
+        target={props.element.target}
+        rel={props.element.target === '_blank' ? 'noreferrer' : undefined}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        }}
+        onAuxClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        }}
+        onMouseOver={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        {props.children}
+      </Link>
     </PlateElement>
   );
 }

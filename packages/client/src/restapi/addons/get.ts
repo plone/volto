@@ -5,24 +5,24 @@ import { z } from 'zod';
 import type { RequestResponse } from '../types';
 
 const getAddonSchema = z.object({
-  addonId: z.string(),
+  id: z.string(),
 });
 
 export type AddonArgs = z.infer<typeof getAddonSchema> & {};
 
 export async function getAddon(
   this: PloneClient,
-  { addonId }: AddonArgs,
+  { id }: AddonArgs,
 ): Promise<RequestResponse<GetAddonResponse>> {
   const validatedArgs = getAddonSchema.parse({
-    addonId,
+    id,
   });
 
   const options: ApiRequestParams = {
     config: this.config,
     params: {},
   };
-  const addonName = `@addons/${validatedArgs.addonId}`;
+  const addonName = `@addons/${validatedArgs.id}`;
 
   return apiRequest('get', addonName, options);
 }

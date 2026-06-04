@@ -1,4 +1,4 @@
-import type { BaseFormFieldProps } from '../TextField/TextField';
+import type { TextFieldProps as QuantaTextFieldProps } from '@plone/components/quanta';
 import {
   Description,
   fieldBorderStyles,
@@ -15,6 +15,11 @@ import { ObjectBrowserTags } from './ObjectBrowserTags';
 import { ObjectBrowserTrigger } from './ObjectBrowserTrigger';
 import { ObjectBrowserModal } from './ObjectBrowserModal';
 import { useFocusRing, useId } from 'react-aria';
+
+type BaseFormFieldProps = Pick<
+  QuantaTextFieldProps,
+  'label' | 'description' | 'errorMessage' | 'placeholder'
+>;
 
 // TODO: better styling
 const widgetStyles = tv({

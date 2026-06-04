@@ -1,14 +1,62 @@
 import { expect, describe, it, vi, afterEach } from 'vitest';
 import config from '@plone/registry';
 import { RouterContextProvider } from 'react-router';
+import { jwtDecode } from 'jwt-decode';
+import { getAuthFromRequest } from '@plone/react-router';
 import {
+  fetchPloneContent,
   getAPIResourceWithAuth,
   installServerMiddleware,
+  linkMiddleware,
+  ploneClearAuthCookieContext,
+  PloneClientMiddleware,
   otherResources,
+  ploneClientContext,
+  ploneContentContext,
+  ploneSiteContext,
+  ploneUserContext,
 } from './middleware.server';
 
+vi.mock('jwt-decode');
+vi.mock('@plone/react-router', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@plone/react-router')>();
+  return {
+    ...actual,
+    getAuthFromRequest: vi.fn(),
+  };
+});
+
 describe('middleware', () => {
+  const initializePloneClientContext = async (
+    request: Request,
+    context: RouterContextProvider,
+  ) => {
+    await PloneClientMiddleware(
+      {
+        request,
+        context,
+        params: {},
+        unstable_pattern: '/',
+        unstable_url: new URL(request.url),
+      },
+      vi.fn(),
+    );
+  };
+
+  const registerPloneClientFactory = (ploneClient: Record<string, unknown>) => {
+    config.registerUtility({
+      name: 'ploneClient',
+      type: 'client',
+      method: () =>
+        ({
+          prototype: {},
+          initialize: vi.fn().mockReturnValue(ploneClient),
+        }) as any,
+    });
+  };
+
   afterEach(() => {
+    vi.resetAllMocks();
     vi.restoreAllMocks();
   });
 
@@ -18,7 +66,16 @@ describe('middleware', () => {
       const context = new RouterContextProvider();
       const nextMock = vi.fn();
 
-      await installServerMiddleware({ request, params: {}, context }, nextMock);
+      await installServerMiddleware(
+        {
+          request,
+          context,
+          params: {},
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
 
       expect(config.settings).toStrictEqual(
         expect.objectContaining({
@@ -33,8 +90,78 @@ describe('middleware', () => {
             name: 'ploneClient',
             type: 'client',
           })
-          .method().config.apiPath,
-      ).toEqual('http://localhost:8080/Plone');
+          .method(),
+      ).toHaveProperty('initialize');
+    });
+  });
+
+  describe('PloneClientMiddleware', () => {
+    it('initializes the PloneClient and sets it in context', async () => {
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      vi.mocked(getAuthFromRequest).mockResolvedValue(undefined);
+      config.settings.apiPath = 'http://localhost:8080/Plone';
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () =>
+          ({
+            prototype: {},
+            initialize: vi.fn().mockReturnValue({
+              config: { apiPath: 'http://localhost:8080/Plone' },
+            }),
+          }) as any,
+      });
+
+      await PloneClientMiddleware(
+        {
+          request,
+          context,
+          params: {},
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(context.get(ploneClientContext)).toBeDefined();
+    });
+
+    it('initializes PloneClient with token when available', async () => {
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      vi.mocked(getAuthFromRequest).mockResolvedValue('valid.jwt.token');
+      config.settings.apiPath = 'http://localhost:8080/Plone';
+      const initializeMock = vi.fn().mockReturnValue({});
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () =>
+          ({
+            prototype: {},
+            initialize: initializeMock,
+          }) as any,
+      });
+
+      await PloneClientMiddleware(
+        {
+          request,
+          context,
+          params: {},
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(initializeMock).toHaveBeenCalledWith({
+        apiPath: 'http://localhost:8080/Plone',
+        token: 'valid.jwt.token',
+      });
     });
   });
 
@@ -45,7 +172,16 @@ describe('middleware', () => {
       const params = { '*': '' };
       const nextMock = vi.fn();
 
-      await otherResources({ request, params, context }, nextMock);
+      await otherResources(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
     });
 
     it('blocks requests to special urls: css', async () => {
@@ -55,7 +191,16 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources(
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/style.css',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        );
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -68,7 +213,16 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources(
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/style.css.map',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        );
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -115,7 +269,16 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources(
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/?expand=breadcrumbs',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        );
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
       }
@@ -128,9 +291,44 @@ describe('middleware', () => {
       const nextMock = vi.fn();
 
       try {
-        await otherResources({ request, params, context }, nextMock);
+        await otherResources(
+          {
+            request,
+            params,
+            context,
+            unstable_pattern: '/assets/image.png',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        );
       } catch (err: any) {
         expect(err.init.status).toEqual(404);
+      }
+    });
+
+    it('blocks requests to .well-known paths', async () => {
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const params = {
+        '*': '.well-known/appspecific/com.chrome.devtools.json',
+      };
+      const nextMock = vi.fn();
+
+      try {
+        await otherResources(
+          {
+            request,
+            params,
+            context,
+            unstable_pattern:
+              '/.well-known/appspecific/com.chrome.devtools.json',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        );
+      } catch (err: any) {
+        expect(err).toBeInstanceOf(Response);
+        expect(err.status).toEqual(200);
       }
     });
   });
@@ -142,7 +340,16 @@ describe('middleware', () => {
       const params = { '*': '' };
       const nextMock = vi.fn();
 
-      await getAPIResourceWithAuth({ request, params, context }, nextMock);
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
     });
 
     it('intercepts requests to special urls: @@images', async () => {
@@ -156,19 +363,29 @@ describe('middleware', () => {
       });
       global.fetch = fetchMock;
 
-      try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
-      } catch {
-        expect(fetchMock).toHaveBeenCalledWith(
-          'http://localhost:8080/Plone/image.png/@@images/image',
-          expect.objectContaining({
-            method: 'GET',
-            headers: expect.objectContaining({
-              Authorization: 'Bearer undefined',
-            }),
-          }),
-        );
-      }
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/image.png/@@images/image',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://localhost:8080/Plone/image.png/@@images/image',
+        expect.objectContaining({
+          method: 'GET',
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
     });
 
     it('intercepts requests to special urls: @@download', async () => {
@@ -182,19 +399,29 @@ describe('middleware', () => {
       });
       global.fetch = fetchMock;
 
-      try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
-      } catch {
-        expect(fetchMock).toHaveBeenCalledWith(
-          'http://localhost:8080/Plone/file.txt/@@download/file',
-          expect.objectContaining({
-            method: 'GET',
-            headers: expect.objectContaining({
-              Authorization: 'Bearer undefined',
-            }),
-          }),
-        );
-      }
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/file.txt/@@download/file',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://localhost:8080/Plone/file.txt/@@download/file',
+        expect.objectContaining({
+          method: 'GET',
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
     });
 
     it('intercepts requests to special urls: @@site-logo', async () => {
@@ -208,19 +435,29 @@ describe('middleware', () => {
       });
       global.fetch = fetchMock;
 
-      try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
-      } catch {
-        expect(fetchMock).toHaveBeenCalledWith(
-          'http://localhost:8080/Plone/@@site-logo/image',
-          expect.objectContaining({
-            method: 'GET',
-            headers: expect.objectContaining({
-              Authorization: 'Bearer undefined',
-            }),
-          }),
-        );
-      }
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/@@site-logo/image',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://localhost:8080/Plone/@@site-logo/image',
+        expect.objectContaining({
+          method: 'GET',
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
     });
 
     it('intercepts requests to special urls: @portrait', async () => {
@@ -234,19 +471,619 @@ describe('middleware', () => {
       });
       global.fetch = fetchMock;
 
-      try {
-        await getAPIResourceWithAuth({ request, params, context }, nextMock);
-      } catch {
-        expect(fetchMock).toHaveBeenCalledWith(
-          'http://localhost:8080/Plone/@portrait/username',
-          expect.objectContaining({
-            method: 'GET',
-            headers: expect.objectContaining({
-              Authorization: 'Bearer undefined',
-            }),
+      await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/@portrait/username',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(fetchMock).toHaveBeenCalledWith(
+        'http://localhost:8080/Plone/@portrait/username',
+        expect.objectContaining({
+          method: 'GET',
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
+    });
+
+    it('retries resource requests anonymously after a 401 and clears the cookie', async () => {
+      const request = new Request('http://example.com', {
+        headers: {
+          Cookie: 'auth_seven=token',
+        },
+      });
+      const context = new RouterContextProvider();
+      const params = { '*': 'image.png/@@images/image' };
+      const nextMock = vi.fn();
+      const fetchMock = vi
+        .fn()
+        .mockResolvedValueOnce(
+          new Response('unauthorized', {
+            status: 401,
+            statusText: 'Unauthorized',
+          }),
+        )
+        .mockResolvedValueOnce(
+          new Response('image', {
+            status: 200,
+            headers: { 'Content-Type': 'image/png' },
           }),
         );
+      global.fetch = fetchMock;
+      vi.mocked(getAuthFromRequest).mockResolvedValue('expired.jwt.token');
+
+      const response = (await getAPIResourceWithAuth(
+        {
+          request,
+          params,
+          context,
+          unstable_pattern: '/image.png/@@images/image',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      )) as Response;
+
+      expect(fetchMock).toHaveBeenNthCalledWith(
+        1,
+        'http://localhost:8080/Plone/image.png/@@images/image',
+        expect.objectContaining({
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(fetchMock).toHaveBeenNthCalledWith(
+        2,
+        'http://localhost:8080/Plone/image.png/@@images/image',
+        expect.objectContaining({
+          headers: expect.any(Headers),
+        }),
+      );
+      expect(
+        (fetchMock.mock.calls[0]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBe('Bearer expired.jwt.token');
+      expect(
+        (fetchMock.mock.calls[1]?.[1] as { headers: Headers }).headers.get(
+          'Authorization',
+        ),
+      ).toBeNull();
+      expect(response.status).toBe(200);
+      expect(response.headers.get('Set-Cookie')).toContain('auth_seven=');
+    });
+  });
+
+  describe('fetchPloneContent', () => {
+    afterEach(() => {
+      delete config.utilities['ploneClient'];
+    });
+
+    it('fetches content and site and sets them in context', async () => {
+      const mockContent = {
+        data: { '@id': 'http://example.com/', title: 'Home' },
+      };
+      const mockSite = { data: { '@id': 'http://example.com/' } };
+      const getContentMock = vi.fn().mockResolvedValue(mockContent);
+      const getSiteMock = vi.fn().mockResolvedValue(mockSite);
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(getContentMock).toHaveBeenCalledWith({
+        path: '/',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+      });
+      expect(getSiteMock).toHaveBeenCalled();
+      expect(context.get(ploneContentContext)).toEqual({
+        '@id': '/',
+        title: 'Home',
+      });
+      expect(context.get(ploneSiteContext)).toEqual({ '@id': '/' });
+      expect(context.get(ploneClientContext)).toBeDefined();
+    });
+
+    it('fetches content for a specific path', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      });
+      const request = new Request('http://example.com/test-content');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: { '*': 'test-content' },
+          context,
+          unstable_pattern: '/test-content',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(getContentMock).toHaveBeenCalledWith({
+        path: '/test-content',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+      });
+    });
+
+    it('throws when content is not found', async () => {
+      const getContentMock = vi
+        .fn()
+        .mockRejectedValue({ data: undefined, status: 500 });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      try {
+        await fetchPloneContent(
+          {
+            request,
+            params: {},
+            context,
+            unstable_pattern: '/',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        );
+      } catch (err: any) {
+        expect(err.init.status).toEqual(500);
       }
+    });
+
+    it('throws when site is not found', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi
+        .fn()
+        .mockRejectedValue({ data: undefined, status: 500 });
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      try {
+        await fetchPloneContent(
+          {
+            request,
+            params: {},
+            context,
+            unstable_pattern: '/',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        );
+      } catch (err: any) {
+        expect(err.init.status).toEqual(500);
+      }
+    });
+
+    it('sets ploneUserContext to null when no token is provided', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      const getUserMock = vi.fn();
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(getUserMock).not.toHaveBeenCalled();
+      expect(context.get(ploneUserContext)).toBeNull();
+    });
+
+    it('fetches user and sets ploneUserContext when token is valid', async () => {
+      const mockUser = { data: { id: 'testuser', fullname: 'Test User' } };
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      const getUserMock = vi.fn().mockResolvedValue(mockUser);
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
+      });
+      vi.mocked(getAuthFromRequest).mockResolvedValue('valid.jwt.token');
+      vi.mocked(jwtDecode).mockReturnValue({
+        sub: 'testuser',
+        exp: 9999999999,
+        fullname: 'Test User',
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(getUserMock).toHaveBeenCalledWith({ id: 'testuser' });
+      expect(context.get(ploneUserContext)).toEqual(mockUser.data);
+      expect(getContentMock).toHaveBeenCalledWith({
+        path: '/',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions', 'types'],
+      });
+    });
+
+    it('keeps content and site loading successful when user fetch fails', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      const getUserMock = vi.fn().mockRejectedValue(new Error('User failed'));
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
+      });
+      vi.mocked(getAuthFromRequest).mockResolvedValue('valid.jwt.token');
+      vi.mocked(jwtDecode).mockReturnValue({
+        sub: 'testuser',
+        exp: 9999999999,
+        fullname: 'Test User',
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(getContentMock).toHaveBeenCalledWith({
+        path: '/',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions', 'types'],
+      });
+      expect(getSiteMock).toHaveBeenCalled();
+      expect(getUserMock).toHaveBeenCalledWith({ id: 'testuser' });
+      expect(context.get(ploneUserContext)).toBeNull();
+    });
+
+    it('does not fetch user when token has no sub field', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      const getUserMock = vi.fn();
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
+      });
+      vi.mocked(getAuthFromRequest).mockResolvedValue('token.without.sub');
+      vi.mocked(jwtDecode).mockReturnValue({ exp: 9999999999 });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(getUserMock).not.toHaveBeenCalled();
+      expect(context.get(ploneUserContext)).toBeNull();
+      expect(getContentMock).toHaveBeenCalledWith({
+        path: '/',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+      });
+    });
+
+    it('handles JWT decode errors gracefully and proceeds without user', async () => {
+      const getContentMock = vi.fn().mockResolvedValue({ data: {} });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      const getUserMock = vi.fn();
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+        getUser: getUserMock,
+      });
+      vi.mocked(getAuthFromRequest).mockResolvedValue('malformed.token');
+      vi.mocked(jwtDecode).mockImplementation(() => {
+        throw new Error('Invalid token');
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(getUserMock).not.toHaveBeenCalled();
+      expect(context.get(ploneUserContext)).toBeNull();
+    });
+
+    it('retries anonymously after a 401 and clears the auth cookie context', async () => {
+      const authContent = vi
+        .fn()
+        .mockRejectedValueOnce({ data: undefined, status: 401 });
+      const authSite = vi.fn().mockResolvedValue({ data: {} });
+      const anonymousContent = vi.fn().mockResolvedValueOnce({
+        data: { '@id': 'http://example.com/', title: 'Home' },
+      });
+      const anonymousSite = vi
+        .fn()
+        .mockResolvedValueOnce({ data: { '@id': 'http://example.com/' } });
+      config.settings.apiPath = 'http://example.com';
+      const initializeMock = vi
+        .fn()
+        .mockReturnValueOnce({
+          getContent: authContent,
+          getSite: authSite,
+          getUser: vi.fn().mockResolvedValue(null),
+        })
+        .mockReturnValueOnce({
+          getContent: anonymousContent,
+          getSite: anonymousSite,
+          getUser: vi.fn().mockResolvedValue(null),
+        });
+      config.registerUtility({
+        name: 'ploneClient',
+        type: 'client',
+        method: () =>
+          ({
+            prototype: {},
+            initialize: initializeMock,
+          }) as any,
+      });
+      vi.mocked(getAuthFromRequest).mockResolvedValue('expired.jwt.token');
+      vi.mocked(jwtDecode).mockReturnValue({
+        sub: 'testuser',
+        exp: 9999999999,
+        fullname: 'Test User',
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(anonymousContent).toHaveBeenCalledWith({
+        path: '/',
+        expand: ['navroot', 'breadcrumbs', 'navigation', 'actions'],
+      });
+      expect(context.get(ploneContentContext)).toEqual({
+        '@id': '/',
+        title: 'Home',
+      });
+      expect(context.get(ploneUserContext)).toBeNull();
+      expect(context.get(ploneClearAuthCookieContext)).toBe(true);
+    });
+
+    it('redirects when getContent throws a 3xx error with location', async () => {
+      const getContentMock = vi
+        .fn()
+        .mockRejectedValue({ status: 301, location: '/new-path' });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      const result = await fetchPloneContent(
+        {
+          request,
+          params: {},
+          context,
+          unstable_pattern: '/',
+          unstable_url: new URL(request.url),
+        },
+        nextMock,
+      );
+
+      expect(result).toBeInstanceOf(Response);
+      expect((result as Response).status).toBe(301);
+      expect((result as Response).headers.get('Location')).toBe('/new-path');
+    });
+
+    it('throws content error when error has 3xx status but no location', async () => {
+      const getContentMock = vi.fn().mockRejectedValue({ status: 301 });
+      const getSiteMock = vi.fn().mockResolvedValue({ data: {} });
+      config.settings.apiPath = 'http://example.com';
+      registerPloneClientFactory({
+        getContent: getContentMock,
+        getSite: getSiteMock,
+      });
+      const request = new Request('http://example.com');
+      const context = new RouterContextProvider();
+      const nextMock = vi.fn();
+
+      await initializePloneClientContext(request, context);
+
+      await expect(() =>
+        fetchPloneContent(
+          {
+            request,
+            params: {},
+            context,
+            unstable_pattern: '/',
+            unstable_url: new URL(request.url),
+          },
+          nextMock,
+        ),
+      ).rejects.toMatchObject({ init: { status: 301 } });
+    });
+  });
+
+  describe('linkMiddleware', () => {
+    const makeArgs = (context: RouterContextProvider) => ({
+      request: new Request('http://example.com/link'),
+      context,
+      params: {},
+      unstable_pattern: '/link',
+      unstable_url: new URL('http://example.com/link'),
+    });
+
+    it('redirects to remoteUrl when content is a Link without edit permission', async () => {
+      const context = new RouterContextProvider();
+      context.set(ploneContentContext, {
+        '@type': 'Link',
+        remoteUrl: 'https://external.example.com',
+        '@components': {
+          actions: {
+            // @ts-expect-error
+            object: [{ id: 'view' }, { id: 'history' }],
+          },
+        },
+      });
+
+      const result = await linkMiddleware(makeArgs(context), vi.fn());
+
+      expect(result).toBeInstanceOf(Response);
+      expect((result as Response).status).toBe(302);
+      expect((result as Response).headers.get('Location')).toBe(
+        'https://external.example.com',
+      );
+    });
+
+    it('does not redirect when content is a Link with edit permission', async () => {
+      const context = new RouterContextProvider();
+      context.set(ploneContentContext, {
+        '@type': 'Link',
+        remoteUrl: 'https://external.example.com',
+        '@components': {
+          actions: {
+            // @ts-expect-error
+            object: [{ id: 'view' }, { id: 'edit' }],
+          },
+        },
+      });
+
+      const result = await linkMiddleware(makeArgs(context), vi.fn());
+
+      expect(result).toBeUndefined();
+    });
+
+    it('does not redirect when content is not a Link type', async () => {
+      const context = new RouterContextProvider();
+      context.set(ploneContentContext, {
+        '@type': 'Document',
+        '@components': {
+          actions: {
+            // @ts-expect-error
+            object: [{ id: 'view' }],
+          },
+        },
+      });
+
+      const result = await linkMiddleware(makeArgs(context), vi.fn());
+
+      expect(result).toBeUndefined();
     });
   });
 });

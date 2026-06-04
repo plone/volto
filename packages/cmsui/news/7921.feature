@@ -1,1 +1,0 @@
-Somersault editor support. @sneridagh
