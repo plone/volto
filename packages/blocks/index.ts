@@ -52,8 +52,7 @@ export default function install(config: ConfigType) {
     VideoBlockInfo as unknown as BlockConfigBase;
   config.blocks.blocksConfig.listing =
     ListingBlockInfo as unknown as BlockConfigBase;
-  config.blocks.blocksConfig.maps = 
-    MapsBlockInfo as unknown as BlockConfigBase;
+  config.blocks.blocksConfig.maps = MapsBlockInfo as unknown as BlockConfigBase;
 
   const plateBlocksConfig = {
     p: {
