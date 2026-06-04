@@ -119,7 +119,21 @@ export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
 export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
   const { ClearIndicator } = props.reactSelect.components;
   return (
-    <ClearIndicator {...props}>
+    <ClearIndicator
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        'aria-hidden': false,
+        role: 'button',
+        tabIndex: 0,
+        onKeyDown: (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            props.clearValue();
+          }
+        },
+      }}
+    >
       <Icon name={clearSVG} size="18px" color="#e40166" />
     </ClearIndicator>
   );
