@@ -262,10 +262,22 @@ class SelectWidget extends Component {
     return (
       <FormFieldWrapper {...this.props}>
         <Select
-          id={`field-${id}`}
+          id={`select-container-${id}`}
+          inputId={`field-${id}`}
+          fieldTitle={this.props.title}
           key={choices}
           name={id}
-          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${id}`}
+          aria-label={
+            this.props.title
+              ? `${this.props.title}: ${
+                  normalizedValue
+                    ? Array.isArray(normalizedValue)
+                      ? normalizedValue.map((v) => v.label).join(', ')
+                      : normalizedValue.label
+                    : intl.formatMessage(messages.no_value)
+                }`
+              : undefined
+          }
           menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
