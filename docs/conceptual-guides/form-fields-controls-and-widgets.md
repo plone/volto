@@ -12,21 +12,21 @@ myst:
 # Form fields, controls, and widgets
 
 Seven forms are schema-driven.
-A content schema describes metadata fields, and the {term}`CMSUI` turns those fields into interactive form elements.
+A content schema describes metadata fields, and the form generators in Aurora turn those fields into interactive form elements.
 This process is intentionally split into several concepts: fields, controls, widgets, and adapters.
-The distinction matters because not every visual input component can be registered directly as a CMS widget.
+The distinction matters because not every visual input component can be registered directly as a widget.
 
 ## Field
 
 A field is the form-level representation of one piece of content data.
 It has a name, a current value, validation state, and schema metadata.
 In a content form, a field usually comes from a Plone schema property.
-For example, `title`, `description`, `effective`, and `is_folderish` are fields when the form renders them as editable metadata.
+For example, `title`, `description`, and `effective` are fields when the form renders them as editable metadata.
 
 A field belongs to the form system.
 It participates in form state, validation, submission, and synchronization with the content object.
-In Seven, `@tanstack/react-form` owns this part of the model.
-The CMSUI field component connects TanStack Form state to the widget registry and to any additional state that the editing UI needs.
+In Aurora, `@tanstack/react-form` owns this part of the model.
+The field component connects TanStack Form state to the widget registry and to any additional state that the editing UI needs.
 
 A field is not just the visible input.
 It also includes the surrounding form concerns that make the input meaningful in a CMS.
@@ -117,7 +117,7 @@ Use it when you implement a widget or adapter.
 
 ```tsx
 function BooleanWidget(props: FormWidgetProps<boolean>) {
-  return null;
+  // ...
 }
 ```
 
@@ -126,7 +126,7 @@ Use it when you want to type a variable, registry entry, or exported component a
 
 ```tsx
 const BooleanWidget: FormWidget<boolean> = (props) => {
-  return null;
+  // ...
 };
 ```
 
