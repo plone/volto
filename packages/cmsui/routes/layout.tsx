@@ -21,6 +21,7 @@ import Toolbar from '@plone/layout/components/Toolbar/Toolbar';
 import { shouldShowToolbar } from '@plone/layout/helpers';
 
 import stylesheet from 'seven/.plone/cmsui.css?url';
+import publicStylesheet from 'seven/.plone/publicui.css?url';
 import { ploneContentContext } from 'seven/app/middleware.server';
 
 export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
@@ -39,6 +40,8 @@ export const meta: MetaFunction<unknown, { root: RootLoader }> = ({
 };
 
 export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: publicStylesheet },
+
   { rel: 'stylesheet', href: stylesheet },
   {
     rel: 'icon',

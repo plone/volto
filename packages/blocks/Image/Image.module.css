@@ -1,0 +1,21 @@
+.block {
+  max-width: inherit;
+  float: var(--block-align);
+}
+.left {
+  max-width: var(--block-size);
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.right {
+  max-width: var(--block-size);
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.center {
+  max-width: inherit;
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}

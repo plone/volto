@@ -43,6 +43,58 @@ export default function install(config: ConfigType) {
     },
   ];
 
+  const alignment = [
+    {
+      name: 'default',
+      label: 'Default',
+      style: { '--block-align': 'none' },
+    },
+    {
+      name: 'left',
+      label: 'Left',
+      style: {
+        '--block-align': 'left',
+      },
+    },
+    {
+      name: 'right',
+      label: 'Right',
+      style: {
+        '--block-align': 'right',
+      },
+    },
+  ];
+
+  config.registerUtility({
+    type: 'styleFieldDefinition',
+    name: 'align',
+    method: () => alignment,
+  });
+
+  const size = [
+    {
+      name: 'l',
+      label: 'l',
+      style: { '--block-size': '460px' },
+    },
+    {
+      name: 'm',
+      label: 'M',
+      style: { '--block-size': '300px' },
+    },
+    {
+      name: 's',
+      label: 'S',
+      style: { '--block-size': '220px' },
+    },
+  ];
+
+  config.registerUtility({
+    type: 'styleFieldDefinition',
+    name: 'size',
+    method: () => size,
+  });
+
   config.blocks.blocksConfig.image =
     ImageBlockInfo as unknown as BlockConfigBase;
   config.blocks.blocksConfig.teaser =

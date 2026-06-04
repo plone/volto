@@ -61,11 +61,15 @@ export function ImageSchema({
         widget: 'align',
         default: 'center',
         actions: ['left', 'right', 'center'],
+        styleField: true,
       },
       size: {
         title: 'Image size',
         widget: 'size',
         default: 'l',
+        actions: ['s', 'm', 'l'],
+        disabled: formData.align === 'center',
+        styleField: true,
       },
       href: {
         title: 'Link to',
