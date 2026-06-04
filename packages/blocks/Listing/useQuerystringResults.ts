@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useFetcher } from 'react-router';
 import { useDebounceValue } from 'usehooks-ts';
-import type { QuerystringValue } from '@plone/cmsui/components/QuerystringWidget';
+import type { QuerystringValue } from '../../cmsui/components/QuerystringWidget/QuerystringWidgetContext';
 import type { QuerystringSearchResult } from '../../cmsui/routes/querystringSearch';
 
 export function useQuerystringResults(

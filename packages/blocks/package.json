@@ -55,7 +55,9 @@
     "@plone/components": "workspace:*",
     "@plone/registry": "workspace:*",
     "clsx": "^2.1.1",
-    "react-i18next": "catalog:"
+    "react-i18next": "catalog:",
+    "react-router": "catalog:",
+    "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
     "@plone/helpers": "workspace:*",
