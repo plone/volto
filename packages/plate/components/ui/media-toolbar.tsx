@@ -70,6 +70,7 @@ export function MediaToolbar({
   const anchorElement = React.useMemo(() => {
     try {
       const domElement = editor.api.toDOMNode(element);
+      if (!domElement) return null;
       const figure = domElement.querySelector('figure');
 
       return figure ?? domElement;

@@ -1,6 +1,5 @@
 export default LinkView;
-declare function LinkView({ token, content }: {
-    token: any;
+declare function LinkView({ content }: {
     content: any;
 }): import("react/jsx-runtime").JSX.Element;
 declare namespace LinkView {

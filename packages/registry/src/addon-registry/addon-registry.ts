@@ -24,6 +24,7 @@ export type Package = {
   addons: Array<string>;
   theme: string | undefined;
   razzleExtender?: string;
+  viteExtender?: string;
   eslintExtender?: string;
 };
 type VoltoConfigJS = {
@@ -491,6 +492,13 @@ class AddonRegistry {
       if (fs.existsSync(razzlePath)) {
         addon!.razzleExtender = razzlePath;
       }
+      const vitePathJs = path.resolve(`${base}/vite.extend.js`);
+      const vitePathTs = path.resolve(`${base}/vite.extend.ts`);
+      if (fs.existsSync(vitePathJs)) {
+        addon!.viteExtender = vitePathJs;
+      } else if (fs.existsSync(vitePathTs)) {
+        addon!.viteExtender = vitePathTs;
+      }
       const eslintPath = path.resolve(`${base}/eslint.extend.js`);
       if (fs.existsSync(eslintPath)) {
         addon!.eslintExtender = eslintPath;
@@ -510,6 +518,12 @@ class AddonRegistry {
   getAddonExtenders() {
     return this.getAddons()
       .map((o) => o?.razzleExtender)
+      .filter((e) => e);
+  }
+
+  getViteExtenders() {
+    return this.getAddons()
+      .map((o) => o?.viteExtender)
       .filter((e) => e);
   }
 

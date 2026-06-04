@@ -19,6 +19,7 @@ import rulesSVG from '@plone/volto/icons/content-existing.svg';
 import undoControlPanelSVG from '@plone/volto/icons/undo-control-panel.svg';
 import linkSVG from '@plone/volto/icons/link.svg';
 import relationsSVG from '@plone/volto/icons/ahead.svg';
+import contentListingSVG from '@plone/volto/icons/content-listing.svg';
 import config from '@plone/volto/registry';
 
 export const controlPanelsIcons = {
@@ -43,6 +44,7 @@ export const controlPanelsIcons = {
   undo: undoControlPanelSVG,
   aliases: linkSVG,
   relations: relationsSVG,
+  'block-types': contentListingSVG,
 };
 
 export const filterControlPanels = (controlpanels = []) => {
@@ -77,6 +79,7 @@ export const unwantedControlPanelsFields = {
     'exposeDCMetaTags',
     'enable_sitemap',
     'webstats_js',
+    'webstats_head_js',
   ],
   editing: ['available_editors', 'default_editor', 'ext_editor'],
   imaging: [

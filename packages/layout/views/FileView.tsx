@@ -1,32 +1,14 @@
 import { useRouteLoaderData } from 'react-router';
-import type { RootLoader } from 'seven/app/root';
 import { useTranslation } from 'react-i18next';
 import prettybytes from 'pretty-bytes';
 import { Container, Link } from '@plone/components';
-import type { Content } from '@plone/types';
-
-// TODO: move this to @plone/types in some way?
-type FileContent = Content & {
-  '@type': 'File';
-  file: {
-    'content-type': string;
-    download: string;
-    filename: string;
-    size: number;
-  };
-};
-
-type Loader = (args: Parameters<RootLoader>) => Promise<
-  Awaited<ReturnType<RootLoader>> & {
-    content: FileContent;
-  }
->;
+import type { RootLoader } from 'seven/app/root';
 
 export default function FileView() {
-  const rootData = useRouteLoaderData<Loader>('root');
+  const rootData = useRouteLoaderData<RootLoader>('root');
   const { t } = useTranslation();
 
-  if (!rootData) {
+  if (!rootData || rootData.content['@type'] !== 'File') {
     return null;
   }
 

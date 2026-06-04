@@ -12,7 +12,7 @@ const cli = PloneClient.initialize({
   apiPath: 'http://localhost:55001/plone',
 });
 
-await cli.login({ username: 'admin', password: 'secret' });
+await cli.login({ data: { login: 'admin', password: 'secret' } });
 
 beforeEach(async () => {
   await setup();
@@ -34,7 +34,7 @@ describe('PasswordReset', () => {
 
     await loginWithCreate(cli, userData);
 
-    const result = await cli.resetPassword({ userId: username });
+    const result = await cli.resetPassword({ id: username });
     expect(result.status).toBe(200);
   });
 });

@@ -22,6 +22,8 @@
     --plone-table-row-font-size: 1rem;
     --plone-table-row-pressed: var(--highlight-pressed);
     --plone-table-row-border-radius: 0;
+    --plone-table-row-selected-background: var(--highlight-background);
+    --plone-table-row-selected-foreground: var(--highlight-foreground);
 
     --plone-table-column-font-weight: 500;
 
@@ -82,13 +84,13 @@
       }
 
       &[data-selected] {
-        background: var(--highlight-background);
-        color: var(--highlight-foreground);
-        --text-color: var(--highlight-foreground);
-        --focus-ring-color: var(--highlight-foreground);
-        --link-color: var(--highlight-foreground);
-        --link-color-secondary: var(--highlight-foreground);
-        --button-background: var(--highlight-background);
+        background: var(--plone-table-row-selected-background);
+        color: var(--plone-table-row-selected-foreground);
+        --text-color: var(--plone-table-row-selected-foreground);
+        --focus-ring-color: var(--plone-table-row-selected-foreground);
+        --link-color: var(--plone-table-row-selected-foreground);
+        --link-color-secondary: var(--plone-table-row-selected-foreground);
+        --button-background: var(--plone-table-row-selected-background);
 
         &[data-focus-visible],
         .react-aria-Cell[data-focus-visible] {

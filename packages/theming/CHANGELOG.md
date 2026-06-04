@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.0-alpha.5 (2026-05-07)
+
+### Internal
+
+- Added AGENTS.md file. @pnicolli 
+- Aligned Theming's local formatting and typecheck scripts with the monorepo-wide package script cleanup. 
+- Moved `tailwindcss-react-aria-components` into Theming runtime dependencies so published installs include the Tailwind React Aria plugin they use. @sneridagh 
+
+## 1.0.0-alpha.4 (2026-04-16)
+
+### Feature
+
+- Added the left toolbar @pnicolli [#6649](https://github.com/plone/volto/issues/6649)
+
+### Internal
+
+- Tailwind dependencies in catalog. @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+
 ## 1.0.0-alpha.3 (2025-12-23)
 
 ### Feature

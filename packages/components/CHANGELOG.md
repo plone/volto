@@ -8,6 +8,75 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.0-alpha.0 (2026-05-07)
+
+### Bugfix
+
+- Added missing exports. @sneridagh [#8160](https://github.com/plone/volto/issues/8160)
+
+### Internal
+
+- Aligned Components' local test dependency setup with the monorepo refresh by moving `@testing-library/jest-dom` and `jsdom` to the current shared baseline and dropping the unused `vitest-axe` dev dependency. 
+- Aligned Components' shared tsconfig usage and local package scripts with the monorepo-wide typecheck cleanup. 
+- Moved `vite-plugin-svgr` and its SVGR plugins into Components runtime dependencies and narrowed the published plugin file entry for correct downstream installs. @sneridagh 
+
+## 4.0.0-alpha.7 (2026-04-16)
+
+### Breaking
+
+- # Quanta Menu API cleanup
+
+  The Quanta `Menu` component was refactored to behave as a thin wrapper around `react-aria-components` instead of exposing a custom data-driven API.
+
+  ## Removed
+
+  - The custom `menuItems` prop.
+  - The bundled trigger API based on `button`, `onPress`, and `placement` props on `Menu`.
+  - The internal item schema used to describe menu entries with fields such as `label`, `description`, `keyboard`, `icon`, `separator`, `section`, `header`, and nested `children`.
+  - Automatic rendering of sections and separators from that custom schema.
+  - Automatic rendering of text slots, icons, keyboard shortcuts, and similar item content from custom item objects.
+  - The custom `title` prop on `MenuSection`.
+
+  ## Added
+
+  - RAC-aligned Quanta primitives:
+    - `Menu`
+    - `MenuItem`
+    - `MenuTrigger`
+    - `SubmenuTrigger`
+    - `MenuSection`
+    - `MenuSeparator`
+
+  ## Migration
+
+  Consumers should now compose Quanta menus using the standard `react-aria-components` structure:
+
+  - Wrap menus with `MenuTrigger` instead of passing trigger props to `Menu`.
+  - Pass `MenuItem`, `MenuSection`, and `MenuSeparator` as children instead of a `menuItems` array.
+  - Use `Header` inside `MenuSection`, or `aria-label` when there is no visible header, instead of a custom `title` prop.
+  - Render icons, descriptions, labels, keyboard shortcuts, and links explicitly in `MenuItem` children using RAC patterns and slots.
+
+  This removes opinionated behavior from Quanta `Menu` and makes the component API match upstream RAC usage more closely.
+
+  The same alignment was also applied to the basic `Menu` component so both basic and Quanta flavours now follow the same RAC composition model.
+
+  @sneridagh 
+
+### Feature
+
+- Icons for the Somersault editor support. @sneridagh [#7921](https://github.com/plone/volto/issues/7921)
+- Update browserslist. @sneridagh [#8106](https://github.com/plone/volto/issues/8106)
+
+### Bugfix
+
+- Updated to latest RAC 1.16.0. @sneridagh [#8018](https://github.com/plone/volto/issues/8018)
+- Fixed Tabs panel font size. @sneridagh [#8076](https://github.com/plone/volto/issues/8076)
+
+### Internal
+
+- Updated packages configuration for vite 8. @pnicolli 
+- Updated the React Aria Components dependency set to `react-aria-components` 1.17.0 and aligned the related RAC packages. @sneridagh 
+
 ## 4.0.0-alpha.6 (2026-02-20)
 
 ### Feature

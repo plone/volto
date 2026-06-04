@@ -79,6 +79,20 @@ export function isInternalURL(url: string): boolean;
  */
 export function isUrl(url: string): boolean;
 /**
+ * Add subpath path if set in settings
+ * @method addSubpathPrefix
+ * @param {string} src pathname
+ * @returns {string} prefixed subpath pathname
+ */
+export function addSubpathPrefix(src: string): string;
+/**
+ * strip subpath path particulary from api calls
+ * @method stripSubpathPrefix
+ * @param {string} src pathname
+ * @returns {string} pathname
+ */
+export function stripSubpathPrefix(src: string): string;
+/**
  * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
  * @method normalizeUrl
  * @param {string} url URL of the object

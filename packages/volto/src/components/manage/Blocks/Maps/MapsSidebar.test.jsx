@@ -5,7 +5,7 @@ import { Provider } from 'react-intl-redux';
 
 import MapsSidebar from './MapsSidebar';
 
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form');
 
 const mockStore = configureStore();
 

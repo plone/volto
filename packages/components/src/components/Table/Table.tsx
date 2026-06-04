@@ -29,6 +29,7 @@ interface TableProps<C, R> extends RACTableProps {
   rows?: R[];
   resizableColumns?: boolean;
   dragColumnHeader?: ComponentProps<typeof TableHeader>['dragColumnHeader'];
+  renderEmptyState?: ComponentProps<typeof TableBody>['renderEmptyState'];
   // TODO maybe a custom "selectall" component? Is it doable with react-aria-components?
 }
 
@@ -42,6 +43,7 @@ export function Table<C extends ColumnType, R extends RowType>({
   rows,
   resizableColumns,
   dragColumnHeader,
+  renderEmptyState,
   ...otherProps
 }: TableProps<C, R>) {
   let table = null;
@@ -63,7 +65,7 @@ export function Table<C extends ColumnType, R extends RowType>({
             </Column>
           )}
         </TableHeader>
-        <TableBody items={rows}>
+        <TableBody items={rows} renderEmptyState={renderEmptyState}>
           {(item) => (
             <Row columns={columns} textValue={item.textValue}>
               {(column) => <Cell>{item[column.id]}</Cell>}

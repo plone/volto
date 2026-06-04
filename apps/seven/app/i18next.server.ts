@@ -6,12 +6,13 @@ import i18n from './i18n'; // your i18n configuration file
 const i18next = new RemixI18Next({
   detection: {
     supportedLanguages: i18n.supportedLngs,
-    fallbackLanguage: i18n.fallbackLng,
+    fallbackLanguage: i18n.fallbackLng as string,
   },
   // This is the configuration for i18next used
   // when translating messages server-side only
   i18next: {
     ...i18n,
+    fallbackLng: i18n.fallbackLng as string,
     backend: {
       loadPath: resolve('../locales/{{lng}}/{{ns}}.json'),
     },

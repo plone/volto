@@ -7,11 +7,6 @@ export default defineConfig({
     setupFiles: './setupTesting.ts',
     fileParallelism: false,
     pool: 'forks',
-    poolOptions: {
-      threads: {
-        singleThread: true,
-      },
-    },
     // you might want to disable it, if you don't have tests that rely on CSS
     // since parsing CSS is slow
     css: true,

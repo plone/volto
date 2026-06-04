@@ -176,6 +176,7 @@ export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
  */
 export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
 export function getBlocks(properties: any): any[];
+export function getInvalidBlockLayoutIds(properties: any): string[];
 export function applyBlockInitialValue({ id, value, blocksConfig, formData, intl, }: {
     id: any;
     value: any;
@@ -187,9 +188,12 @@ export function styleToClassName(key: any, value: any, prefix?: string): any;
 export function buildStyleClassNamesFromData(obj?: {}, prefix?: string): any;
 export function buildStyleClassNamesExtenders({ block, content, data, classNames, }: any): any[];
 export function styleDataToStyleObject(key: any, value: any, prefix?: string): any[];
-export function buildStyleObjectFromData(data?: any, prefix?: string): any;
+export function buildStyleObjectFromData(data?: any, prefix?: string, container?: {}): any;
 export function getPreviousNextBlock({ content, block }: any): any[];
 export function getBlocksHierarchy(properties: any): any;
 export function findContainer(formData: object, { containerId }: {
     containerId: string;
+}): object | undefined;
+export function findParent(formData: object, { blockId }: {
+    blockId: string;
 }): object | undefined;

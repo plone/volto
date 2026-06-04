@@ -15,6 +15,7 @@ module.exports = {
   it: 'Italiano',
   nl: 'Nederlands',
   ro: 'Română',
+  ru: 'Русский',
   ja: '日本語',
   pt: 'Português',
   pt_BR: 'Português (Brasil)',
