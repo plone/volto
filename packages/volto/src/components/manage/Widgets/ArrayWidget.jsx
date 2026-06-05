@@ -329,15 +329,7 @@ class ArrayWidget extends Component {
               menuShouldScrollIntoView={false}
               id={`field-${this.props.id}`}
               fieldTitle={this.props.title}
-              aria-label={
-                this.props.title
-                  ? `${this.props.title}: ${
-                      selectedOption?.length > 0
-                        ? selectedOption.map((v) => v.label).join(', ')
-                        : this.props.intl.formatMessage(messages.no_value)
-                    }`
-                  : undefined
-              }
+              aria-label={this.props.title || undefined}
               key={this.props.id}
               isDisabled={this.props.disabled || this.props.isDisabled}
               className="react-select-container"

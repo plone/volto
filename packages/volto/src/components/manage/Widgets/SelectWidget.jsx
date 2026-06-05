@@ -266,17 +266,7 @@ class SelectWidget extends Component {
           fieldTitle={this.props.title}
           key={choices}
           name={id}
-          aria-label={
-            this.props.title
-              ? `${this.props.title}: ${
-                  normalizedValue
-                    ? Array.isArray(normalizedValue)
-                      ? normalizedValue.map((v) => v.label).join(', ')
-                      : normalizedValue.label
-                    : intl.formatMessage(messages.no_value)
-                }`
-              : undefined
-          }
+          aria-label={this.props.title || undefined}
           menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
