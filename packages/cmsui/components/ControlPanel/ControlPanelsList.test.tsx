@@ -51,4 +51,12 @@ describe('ControlPanelsList', () => {
       expect(link).toHaveAttribute('href', panel.href);
     });
   });
+
+  it('renders Seven control panels with custom hrefs', () => {
+    render(<ControlPanelsList controlpanels={[]} />);
+
+    expect(
+      screen.getByRole('link', { name: 'cmsui.paneltitles.recycleBin' }),
+    ).toHaveAttribute('href', '/@@recyclebin');
+  });
 });

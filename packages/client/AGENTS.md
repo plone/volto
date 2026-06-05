@@ -23,8 +23,15 @@ This file applies only to `packages/client` and its subdirectories.
 - When adding a new REST API endpoint, follow the existing pattern in `src/restapi/` and export from `src/index.ts`.
 - Include TypeScript types for all request and response shapes.
 - Write tests for new query/mutation factories.
+- Tests should be end-to-end tests that connect to a real server, and not use mocks.
 
 ## Validation
+
+First start the server for running acceptance tests. Run this in the repository root:
+
+```sh
+make acceptance-backend-start
+```
 
 ```sh
 pnpm --filter @plone/client test --run
