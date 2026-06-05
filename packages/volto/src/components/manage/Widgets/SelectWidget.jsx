@@ -263,7 +263,6 @@ class SelectWidget extends Component {
       <FormFieldWrapper {...this.props}>
         <Select
           id={`field-${id}`}
-          inputId={`field-input-${id}`}
           fieldTitle={this.props.title}
           key={choices}
           name={id}
