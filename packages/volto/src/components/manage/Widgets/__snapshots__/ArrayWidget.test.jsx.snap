@@ -30,7 +30,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
         >
           <div
             class="react-select-container css-2b097c-container"
-            id="select-container-my-field"
+            id="field-my-field"
           >
             <span
               aria-atomic="false"
@@ -71,7 +71,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                       autocapitalize="none"
                       autocomplete="off"
                       autocorrect="off"
-                      id="field-my-field"
+                      id="field-input-my-field"
                       spellcheck="false"
                       style="box-sizing: content-box; width: 2px; background: 0px center; border: 0px; font-size: inherit; opacity: 1; outline: 0px; padding: 0px; color: inherit;"
                       tabindex="0"
@@ -228,7 +228,7 @@ exports[`renders an array widget component 1`] = `
       >
         <div
           className="react-select-container css-2b097c-container"
-          id="select-container-my-field"
+          id="field-my-field"
           onKeyDown={[Function]}
         >
           <span
@@ -268,7 +268,7 @@ exports[`renders an array widget component 1`] = `
                     autoComplete="off"
                     autoCorrect="off"
                     disabled={false}
-                    id="field-my-field"
+                    id="field-input-my-field"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
