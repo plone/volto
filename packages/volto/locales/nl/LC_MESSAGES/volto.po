@@ -5116,6 +5116,12 @@ msgstr "Wachten"
 msgid "pickAnImage"
 msgstr "Kies een bestaande afbeelding"
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "Druk op Pijl omlaag om het menu te openen."
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5346,6 +5352,12 @@ msgstr "Selecteer"
 msgid "selectView"
 msgstr "Selecteer weergave"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} heeft de focus."
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5426,6 +5438,12 @@ msgstr "Inhoudstafel"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Schakelen"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "Typ om de lijst te verfijnen."
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

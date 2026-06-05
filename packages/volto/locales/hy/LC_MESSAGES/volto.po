@@ -5116,6 +5116,12 @@ msgstr ""
 msgid "pickAnImage"
 msgstr ""
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "Ցանկը բացելու համար սեղմեք Ներքև սլաք։"
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5346,6 +5352,12 @@ msgstr ""
 msgid "selectView"
 msgstr ""
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label}-ը ֆոկուսում է։"
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5426,6 +5438,12 @@ msgstr ""
 #: config/Blocks
 msgid "toggleFacet"
 msgstr ""
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "Մուտքագրեք ցանկը ֆիլտրելու համար։"
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

@@ -5116,6 +5116,12 @@ msgstr "நிலுவையில் உள்ளது"
 msgid "pickAnImage"
 msgstr "பிகானிமேச்"
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "மெனுவை திறக்க கீழ் அம்புக்குறியை அழுத்தவும்."
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5346,6 +5352,12 @@ msgstr "SelectFacet"
 msgid "selectView"
 msgstr "SelectView"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} கவனத்தில் உள்ளது."
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5426,6 +5438,12 @@ msgstr "TOC"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "TOGGLEFACET"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "பட்டியலை வடிகட்ட தட்டச்சு செய்யுங்கள்."
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

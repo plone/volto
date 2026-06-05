@@ -79,6 +79,18 @@ const messages = defineMessages({
     id: 'No options',
     defaultMessage: 'No options',
   },
+  select_is_focused: {
+    id: 'select_is_focused',
+    defaultMessage: '{label} is focused.',
+  },
+  type_to_refine: {
+    id: 'type_to_refine',
+    defaultMessage: 'Type to refine list.',
+  },
+  press_down_to_open: {
+    id: 'press_down_to_open',
+    defaultMessage: 'Press Down Arrow to open the menu.',
+  },
 });
 
 /**
@@ -308,7 +320,19 @@ class SelectWidget extends Component {
           ariaLiveMessages={{
             onFocus: (props) => {
               if (props.context === 'input') {
-                return `${props['aria-label'] || 'Select'} is focused${props.isSearchable ? ', type to refine list' : ''}, press Down to open the menu.`;
+                return [
+                  intl.formatMessage(messages.select_is_focused, {
+                    label:
+                      props['aria-label'] ||
+                      intl.formatMessage(messages.select),
+                  }),
+                  props.isSearchable
+                    ? intl.formatMessage(messages.type_to_refine)
+                    : '',
+                  intl.formatMessage(messages.press_down_to_open),
+                ]
+                  .filter(Boolean)
+                  .join(' ');
               }
               return '';
             },

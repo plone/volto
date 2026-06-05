@@ -5117,6 +5117,12 @@ msgstr ""
 msgid "pickAnImage"
 msgstr ""
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "メニューを開くには下矢印キーを押してください。"
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5347,6 +5353,12 @@ msgstr ""
 msgid "selectView"
 msgstr ""
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} がフォーカスされています。"
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5427,6 +5439,12 @@ msgstr "目次"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr ""
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "リストを絞り込むために入力してください。"
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

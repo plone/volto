@@ -5116,6 +5116,12 @@ msgstr "अपूर्ण"
 msgid "pickAnImage"
 msgstr ""
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "मेनू खोलने के लिए नीचे तीर दबाएं।"
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5346,6 +5352,12 @@ msgstr "चयन करें"
 msgid "selectView"
 msgstr "दृश्य चुनें"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} फोकस में है।"
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5426,6 +5438,12 @@ msgstr "कंटेंट की तालिका"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "टॉगल"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "सूची को फ़िल्टर करने के लिए टाइप करें।"
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

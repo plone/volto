@@ -5117,6 +5117,12 @@ msgstr "En attente"
 msgid "pickAnImage"
 msgstr "Choisissez une image existante"
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "Appuyez sur Flèche bas pour ouvrir le menu."
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5347,6 +5353,12 @@ msgstr "List de sélection"
 msgid "selectView"
 msgstr "Sélectionner une vue"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} est sélectionné."
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5427,6 +5439,12 @@ msgstr "toc"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Activer/désactiver"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "Tapez pour affiner la liste."
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel
