@@ -8,6 +8,7 @@ import type {
 } from '@plone/types';
 import Image from '@plone/layout/components/Image/Image';
 import clsx from 'clsx';
+import styles from './Image.module.css';
 import config from '@plone/registry';
 
 function flattenToAppUrl(url: string) {
@@ -72,17 +73,13 @@ const ImageBlockEdit = (props: BlockEditProps) => {
         {
           center: !Boolean(data.align),
         },
+        styles['block'],
         data.align,
+        data.size,
       )}
     >
       {data.url ? (
         <Image
-          className={clsx({
-            'full-width': data.align === 'full',
-            large: data.size === 'l',
-            medium: data.size === 'm',
-            small: data.size === 's',
-          })}
           item={imageItem}
           src={
             data.image_scales
