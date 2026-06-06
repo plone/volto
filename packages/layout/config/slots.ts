@@ -5,11 +5,14 @@ import Footer from '../slots/Footer';
 import Logo from '../slots/Logo/Logo';
 import LanguageSwitcher from '../slots/LanguageSwitcher/LanguageSwitcher';
 import Navigation from '../slots/Navigation/Navigation';
-import HeaderTools from '../slots/Tools';
 import ContentArea from '../slots/ContentArea';
 import MainFooter from '../slots/MainFooter/MainFooter';
 import Breadcrumbs from '../slots/Breadcrumbs';
 import { NotContentTypeCondition } from '../helpers';
+import AnonymousTools from '../slots/HeaderTools/AnonymousTools';
+import HeaderTools from '../slots/HeaderTools/HeaderTools';
+import SearchWidget from '../slots/HeaderTools/SearchWidget';
+import Actions from '../slots/HeaderTools/Actions';
 
 export default function install(config: ConfigType) {
   // Main App Slot
@@ -36,16 +39,34 @@ export default function install(config: ConfigType) {
     component: Navigation,
   });
 
-  // Tools
+  // Header Tools
   config.registerSlotComponent({
-    name: 'Tools',
-    slot: 'headertools',
+    name: 'HeaderTools',
+    slot: 'headerTools',
     component: HeaderTools,
   });
 
   config.registerSlotComponent({
-    name: 'Language Switcher',
-    slot: 'language-switcher',
+    name: 'Actions',
+    slot: 'actions',
+    component: Actions,
+  });
+
+  config.registerSlotComponent({
+    name: 'AnonymousTools',
+    slot: 'anonymousTools',
+    component: AnonymousTools,
+  });
+
+  config.registerSlotComponent({
+    name: 'SearchWidget',
+    slot: 'searchWidget',
+    component: SearchWidget,
+  });
+
+  config.registerSlotComponent({
+    name: 'LanguageSwitcher',
+    slot: 'languageSwitcher',
     component: LanguageSwitcher,
   });
 

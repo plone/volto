@@ -39,7 +39,7 @@ const LanguageSwitcher = (props: LanguageSelectorProps) => {
       {availableLanguages.map((lang: string) => {
         return (
           <Link
-            aria-label={t('layout.languageSwitcher.switchTo', {
+            aria-label={t('layout.slots.tools.languageSwitcher.switchTo', {
               lang: langmap[lang]?.nativeName.toLowerCase(),
             })}
             className={clsx({
