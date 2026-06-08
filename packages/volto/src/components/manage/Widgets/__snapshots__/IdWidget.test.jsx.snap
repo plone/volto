@@ -41,6 +41,7 @@ exports[`IdWidget > renders an empty id widget component 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -90,6 +91,7 @@ exports[`IdWidget > renders an id widget with a valid dot character 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -139,6 +141,7 @@ exports[`IdWidget > renders an id widget with a valid value 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -188,6 +191,7 @@ exports[`IdWidget > renders an id widget with an reserved name 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class=""
           >
             <div
               class="ui red basic label form-error-label"
@@ -243,6 +247,7 @@ exports[`IdWidget > renders an id widget with invalid characters 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class=""
           >
             <div
               class="ui red basic label form-error-label"
