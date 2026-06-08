@@ -76,6 +76,7 @@ const BlockSettingsForm = (props: BlockSettingsFormProps) => {
             fieldName,
             value,
           );
+
           props.onFormDataChange?.(nextData);
         },
       })}
