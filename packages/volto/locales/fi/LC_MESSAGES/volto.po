@@ -3505,6 +3505,7 @@ msgstr "Vaihda salasanasi"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
+#: components/theme/Search/Search
 msgid "Settings"
 msgstr "Asetukset"
 

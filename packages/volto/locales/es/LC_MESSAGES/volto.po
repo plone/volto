@@ -3506,6 +3506,7 @@ msgstr "Defina su contraseña"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
+#: components/theme/Search/Search
 msgid "Settings"
 msgstr "Configuración"
 
