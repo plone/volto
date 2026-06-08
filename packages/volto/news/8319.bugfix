@@ -1,1 +1,0 @@
-Fix layout regression in `FormFieldWrapper` where the empty `aria-live` container was acting as an extra flex item, breaking widget layouts like `SizeWidget`. @Wagner3UB

@@ -17,6 +17,15 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.1.2 (2026-06-08)
+
+### Bugfix
+
+- Increase home icon size to comply with WCAG 2.2 accessibility. @polyester [#8297](https://github.com/plone/volto/issues/8297)
+- Fix layout regression in `FormFieldWrapper` where the empty `aria-live` container was acting as an extra flex item, breaking widget layouts like `SizeWidget`. @Wagner3UB [#8319](https://github.com/plone/volto/issues/8319)
+- Fix "Cannot POST" error on login form if it was submitted before hydration
+  finished, by disabling the submit button until then. @davisagli 
+
 ## 19.1.1 (2026-05-28)
 
 ### Internal
