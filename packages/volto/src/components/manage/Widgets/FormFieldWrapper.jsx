@@ -61,7 +61,11 @@ const FormFieldWrapper = ({
     <>
       {children}
 
-      <div aria-live="polite" aria-atomic="true">
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        className={cx({ 'visually-hidden': !error?.length })}
+      >
         {map(error, (message) => (
           <Label key={message} basic color="red" className="form-error-label">
             {message}
