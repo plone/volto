@@ -112,7 +112,7 @@ class FormFieldWrapper extends Component {
           if (isValidElement(child) && required && child.type === Input) {
             return cloneElement(child, {
               'aria-required': true,
-              'aria-invalid': !!(error && error.length > 0),
+              ...(error && error.length > 0 ? { 'aria-invalid': true } : {}),
             });
           }
           return child;
