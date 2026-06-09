@@ -256,7 +256,7 @@ const FileWidget = (props) => {
                 style: { display: 'none' },
               })}
               id={`field-${id}`}
-              aria-required={props.required}
+              {...(props.required && { 'aria-required': true })}
               {...(props.error?.length > 0 && { 'aria-invalid': true })}
               name={id}
               disabled={isDisabled}
