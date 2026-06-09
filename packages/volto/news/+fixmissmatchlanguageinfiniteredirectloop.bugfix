@@ -1,0 +1,1 @@
+Fix infinite redirect loop caused by mismatched language content object with the current language tree. @sneridagh
