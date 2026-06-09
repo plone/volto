@@ -150,7 +150,6 @@ First, in {file}`frontend/package.json`, update as shown.
 +      "cypress",
 +      "es5-ext",
 +      "esbuild",
-+      "full-icu",
 +      "lightningcss-cli",
 +      "unrs-resolver"
 +    ]
