@@ -17,6 +17,14 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.1.3 (2026-06-09)
+
+### Bugfix
+
+- Add `aria-required` or `aria-invalid` attributes only if the field is required or contains errors, respectively. @Wagner3UB [#7981](https://github.com/plone/volto/issues/7981)
+- Added aria-required and labels to ensure proper identification of mandatory fields in FileWidget and RegistryImageWidget components. @Wagner3UB [#7982](https://github.com/plone/volto/issues/7982)
+- Fix infinite redirect loop caused by mismatched language content object with the current language tree. @sneridagh 
+
 ## 19.1.2 (2026-06-08)
 
 ### Bugfix
