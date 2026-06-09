@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 4.2.0 (2026-06-08)
+
+### Feature
+
+- Add `renderEmptyState` to `Table` component. It provides content to display when there are no rows in the table. @jnptk 
+
+## 4.1.0 (2026-05-28)
+
+### Feature
+
+- Add DialogTrigger component. @jnptk 
+
 ## 4.0.0 (2026-05-19)
 
 ### Internal

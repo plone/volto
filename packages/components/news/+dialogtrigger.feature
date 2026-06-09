@@ -1,1 +1,0 @@
-Add DialogTrigger component. @jnptk

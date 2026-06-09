@@ -17,6 +17,39 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.1.2 (2026-06-08)
+
+### Bugfix
+
+- Increase home icon size to comply with WCAG 2.2 accessibility. @polyester [#8297](https://github.com/plone/volto/issues/8297)
+- Fix layout regression in `FormFieldWrapper` where the empty `aria-live` container was acting as an extra flex item, breaking widget layouts like `SizeWidget`. @Wagner3UB [#8319](https://github.com/plone/volto/issues/8319)
+- Fix "Cannot POST" error on login form if it was submitted before hydration
+  finished, by disabling the submit button until then. @davisagli 
+
+## 19.1.1 (2026-05-28)
+
+### Internal
+
+- Update devDependency: `@testing-library/react` 16.3.2. @wesleybl [#8294](https://github.com/plone/volto/issues/8294)
+
+## 19.1.0 (2026-05-28)
+
+### Feature
+
+- Add support for versions in the control panel for different backends. @robgietema [#8263](https://github.com/plone/volto/issues/8263)
+- Split the Maps block into separate View and Body components so wrapper and content customizations can compose. @danalvrz 
+
+### Bugfix
+
+- Fix clicking in personal tools menu in Safari. @davisagli [#8272](https://github.com/plone/volto/issues/8272)
+- Fix error on Block Types control panel if there was a blockConfig with a missing id. @davisagli 
+
+### Internal
+
+- Refactored the `History` manage component by converting it from a class-based component to a modern functional component using React hooks. @Manik-Khajuria-5 [#7717](https://github.com/plone/volto/issues/7717)
+- Move packages that are used only in testing to devDependencies: react-test-renderer and redux-mock-store. Remove unnecessary dependency: full-icu. @wesleybl [#8279](https://github.com/plone/volto/issues/8279)
+- Update devDependency: `cypress` 15.16.0. @davisagli 
+
 ## 19.0.0 (2026-05-19)
 
 ### Internal

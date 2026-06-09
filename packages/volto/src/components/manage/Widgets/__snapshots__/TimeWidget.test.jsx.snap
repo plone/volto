@@ -69,6 +69,7 @@ exports[`renders a time widget component 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
