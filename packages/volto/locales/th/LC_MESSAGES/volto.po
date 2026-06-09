@@ -1212,19 +1212,28 @@ msgstr ""
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "ดาวน์โหลด {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr ""
+msgid "Drop a file here or click to replace the existing file"
+msgstr "วางไฟล์ที่นี่หรือคลิกเพื่อแทนที่ไฟล์ที่มีอยู่"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "วางไฟล์ที่นี่หรือคลิกเพื่ออัปโหลด"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr ""
@@ -1577,6 +1586,16 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr ""
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "พื้นที่อัปโหลดไฟล์ กด Enter เพื่อเปิดตัวเลือกไฟล์"
+
+#. Default: "File upload area. Press Enter to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to replace the existing file"
+msgstr "พื้นที่อัปโหลดไฟล์ กด Enter เพื่อแทนที่ไฟล์ที่มีอยู่"
 
 #. Default: "File view"
 #: config/Views
@@ -2846,11 +2865,6 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr ""
-
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -3952,6 +3966,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr ""
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "ช่องนี้จำเป็นต้องกรอก"
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

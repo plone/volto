@@ -1212,19 +1212,28 @@ msgstr ""
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "{filename} をダウンロード"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "ここにファイルをドラッグ、または「参照」ボタンをクリック"
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "ファイルをここにドロップして、既存のファイルを置き換え"
+msgid "Drop a file here or click to replace the existing file"
+msgstr "ここにファイルをドロップするか、クリックして既存のファイルを置き換えてください"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "ファイルをここにドロップするかクリックしてアップロード"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "ファイルをここにドロップして、新しいファイルをアップロード"
@@ -1577,6 +1586,16 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "ファイルサイズ"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "ファイルアップロードエリア。Enterキーを押してファイルブラウザを開いてください"
+
+#. Default: "File upload area. Press Enter to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to replace the existing file"
+msgstr "ファイルアップロードエリア。Enterキーを押して既存のファイルを置き換えてください"
 
 #. Default: "File view"
 #: config/Views
@@ -2846,11 +2865,6 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "個別設定"
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr ""
-
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -3952,6 +3966,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "第3"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "このフィールドは必須です。"
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

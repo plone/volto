@@ -1213,19 +1213,28 @@ msgstr "Descărcați evenimentul"
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Descarcă {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Trageți fișierul aici pentru a înlocui fișierul existent"
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Trageți un fișier aici sau faceți clic pentru a înlocui fișierul existent"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "Trageți un fișier aici sau faceți clic pentru a încărca"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Trageți fișierul aici pentru a încărca un fișier nou"
@@ -1578,6 +1587,16 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Mărimea fișierului"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "Zonă de încărcare fișiere. Apăsați Enter pentru a deschide browserul de fișiere"
+
+#. Default: "File upload area. Press Enter to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to replace the existing file"
+msgstr "Zonă de încărcare fișier. Apăsați Enter pentru a înlocui fișierul existent"
 
 #. Default: "File view"
 #: config/Views
@@ -2847,11 +2866,6 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Preferințe"
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Apasă Enter pentru a răsfoi fișierele de pe calculatorul tău."
-
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -3953,6 +3967,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Al treilea"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Acest câmp este obligatoriu."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
