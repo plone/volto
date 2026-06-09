@@ -1,0 +1,1 @@
+Add `aria-required` and `aria-invalid` attributes to Input fields inside FormFieldWrapper when the field is required or has errors, respectively. @Wagner3UB
