@@ -1219,17 +1219,17 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop a file here or click to replace the existing file"
 msgstr "Arrastatu fitxategi bat hona edo egin klik lehendik dagoen fitxategia ordezkatzeko"
 
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr "Arrastatu fitxategia hona orain dagoena ordezkatzeko"
+
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Arrastatu fitxategi bat hona edo egin klik kargatzeko"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
@@ -1587,11 +1587,6 @@ msgstr "Fitxategiaren tamaina"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
 msgstr "Fitxategiak kargatzeko eremua. Sakatu Enter fitxategi-arakatzailea irekitzeko"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to replace the existing file"
-msgstr "Fitxategi-karga eremua. Sakatu Enter lehendik dagoen fitxategia ordezkatzeko"
 
 #. Default: "File view"
 #: config/Views
@@ -2860,6 +2855,11 @@ msgstr "Plone eta Pythonekin eginda"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Hobespenak"
+
+#. Default: "File upload area. Press Enter to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Sakatu Enter zure ordenagailuko fitxategiak aukeratzeko."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

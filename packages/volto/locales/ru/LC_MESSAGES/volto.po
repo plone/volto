@@ -1223,17 +1223,17 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Перетащите файлы в эту область или нажмите кнопку «Обзор»."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop a file here or click to replace the existing file"
 msgstr "Перетащите файл сюда или нажмите, чтобы заменить существующий файл"
 
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr "Перетащите файл сюда, чтобы заменить существующий файл"
+
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Перетащите файл сюда или нажмите для загрузки"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Перетащите файл сюда, чтобы загрузить новый файл"
@@ -1591,11 +1591,6 @@ msgstr "Размер файла"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
 msgstr "Область загрузки файлов. Нажмите Enter, чтобы открыть проводник файлов"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to replace the existing file"
-msgstr "Область загрузки файла. Нажмите Enter, чтобы заменить существующий файл"
 
 #. Default: "File view"
 #: config/Views
@@ -2864,6 +2859,11 @@ msgstr "Работает на Plone и Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Настройки"
+
+#. Default: "File upload area. Press Enter to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

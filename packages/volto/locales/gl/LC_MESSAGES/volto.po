@@ -1224,17 +1224,17 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrastra e solta ficheiros desde o teu ordenador nesta área o fai click no botón “Examinar”."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop a file here or click to replace the existing file"
 msgstr "Arrastra un ficheiro aquí ou fai clic para substituír o ficheiro existente"
 
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr "Solta o ficheiro aquí para substituir o ficheiro existente"
+
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Arrastra un ficheiro aquí ou fai clic para subir"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Solta o ficheiro aquí para subir un novo ficheiro"
@@ -1592,11 +1592,6 @@ msgstr "Tamaño do ficheiro"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
 msgstr "Área de carga de ficheiros. Preme Intro para abrir o explorador de ficheiros"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to replace the existing file"
-msgstr "Área de carga de ficheiros. Prema Intro para substituír o ficheiro existente"
 
 #. Default: "File view"
 #: config/Views
@@ -2865,6 +2860,11 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferencias"
+
+#. Default: "File upload area. Press Enter to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Prema Intro para explorar os ficheiros do seu ordenador."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

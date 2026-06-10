@@ -1219,17 +1219,17 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrastre y suelte los archivos desde su computador en esta área o haga clic al botón “Seleccionar”."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop a file here or click to replace the existing file"
 msgstr "Arrastra un archivo aquí o haz clic para reemplazar el archivo existente"
 
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr "Arrastre aquí el archivo para reemplazar el actual"
+
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Arrastre un archivo aquí o haga clic para subir"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Arrastre aquí el archivo para añadir un nuevo"
@@ -1587,11 +1587,6 @@ msgstr "Tamaño del archivo"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
 msgstr "Área de carga de archivos. Pulse Intro para abrir el explorador de archivos"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to replace the existing file"
-msgstr "Área de carga de archivos. Pulse Intro para reemplazar el archivo existente"
 
 #. Default: "File view"
 #: config/Views
@@ -2860,6 +2855,11 @@ msgstr "Hecho con Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferencias"
+
+#. Default: "File upload area. Press Enter to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Presiona Enter para seleccionar archivos de tu ordenador."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

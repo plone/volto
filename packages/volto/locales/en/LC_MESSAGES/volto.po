@@ -1218,17 +1218,17 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop a file here or click to replace the existing file"
 msgstr "Drop a file here or click to replace the existing file"
 
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr ""
+
 #. Default: "Drop a file here or click to upload"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Drop a file here or click to upload"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr ""
@@ -1586,11 +1586,6 @@ msgstr ""
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
 msgstr "File upload area. Press Enter to open the file browser"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to replace the existing file"
-msgstr "File upload area. Press Enter to replace the existing file"
 
 #. Default: "File view"
 #: config/Views
@@ -2858,6 +2853,11 @@ msgstr ""
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
+msgstr ""
+
+#. Default: "File upload area. Press Enter to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
 msgstr ""
 
 #. Default: "Prettify your code"
