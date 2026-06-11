@@ -26,38 +26,38 @@ describe('Table Block Tests', () => {
     // Wait for table editor to appear instead of hardcoded wait
     cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
 
-    // No border in input
+    // No border in input — check on second cell so first cell gets a fresh click for typing
     cy.get('.block-editor-slateTable [role=textbox]')
-      .first()
+      .eq(1)
       .click()
       .should('have.css', 'outline-style', 'none');
-
-    // Click outside the table to reset Slate focus before typing in cells
-    cy.get('body').click(0, 0);
-    cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
 
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
     )
       .click()
+      .should('be.focused')
       .type('column 1 / row 1');
 
     cy.get(
       '.celled.fixed.table thead tr th:nth-child(2) [contenteditable="true"]',
     )
       .click()
+      .should('be.focused')
       .type('column 2 / row 1');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]',
     )
       .click()
+      .should('be.focused')
       .type('column 1 / row 2');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:nth-child(2) [contenteditable="true"]',
     )
       .click()
+      .should('be.focused')
       .type('column 2 / row 2');
 
     cy.get('button[title="Insert col after"]').click();
