@@ -22,7 +22,11 @@ import { installDefaultWidgets } from './Widgets';
 import { installDefaultViews } from './Views';
 import { installDefaultBlocks } from './Blocks';
 
-import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
+import {
+  getSiteAsyncPropExtender,
+  getSystemInfoAsyncPropExtender,
+  getControlpanelAsyncPropExtender,
+} from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
 
 import languages from '@plone/volto/constants/Languages.cjs';
@@ -124,7 +128,11 @@ let config = {
     useEmailAsLogin: false,
     persistentReducers: ['blocksClipboard.cut', 'blocksClipboard.copy'],
     initialReducersBlacklist: [], // reducers in this list won't be hydrated in windows.__data
-    asyncPropsExtenders: [getSiteAsyncPropExtender], // per route asyncConnect customizers
+    asyncPropsExtenders: [
+      getSiteAsyncPropExtender,
+      getSystemInfoAsyncPropExtender,
+      getControlpanelAsyncPropExtender,
+    ], // per route asyncConnect customizers
     contentIcons: contentIcons,
     loadables,
     lazyBundles: {
