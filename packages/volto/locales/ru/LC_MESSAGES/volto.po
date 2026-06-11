@@ -1212,22 +1212,27 @@ msgstr "Скачать событие"
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Скачать {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Перетащите файлы в эту область или нажмите кнопку «Обзор»."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Перетащите файл сюда, чтобы заменить существующий файл"
+msgstr "Перетащите файл сюда или нажмите, чтобы заменить существующий файл"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
-msgstr "Перетащите файл сюда, чтобы загрузить новый файл"
+msgstr "Перетащите файл сюда или нажмите для загрузки"
 
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
@@ -1577,6 +1582,11 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Размер файла"
+
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Область загрузки файла. Нажмите Enter или щёлкните, чтобы заменить существующий файл"
 
 #. Default: "File view"
 #: config/Views
@@ -2846,10 +2856,10 @@ msgstr "Работает на Plone и Python"
 msgid "Preferences"
 msgstr "Настройки"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Область загрузки файла. Нажмите Enter или щёлкните, чтобы открыть файловый браузер"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3952,6 +3962,11 @@ msgstr "Эти элементы будут содержать нарушенны
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Третий"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Это поле обязательно для заполнения."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
