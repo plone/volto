@@ -1223,8 +1223,12 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Tago se faila iinei pe kiliki e suia le faila o loo i ai"
+
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Tago se faila iinei pe kiliki e suia le faila o loo i ai"
 
@@ -1583,10 +1587,15 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Vaega o le uuina aʻe o faila. T누누i le Enter poʻo le kiliki e suia ai le faila o loʻo i ai"
+
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr "Vaega mo le tukuina o faila. Tulu'i le Enter e tatala ai le su'esu'e faila"
+msgstr "Nofoaga o faʻapipiʻi faila. Tuu le Enter e tatala ai le faʻamatalaga o faila"
 
 #. Default: "File view"
 #: config/Views
@@ -2854,11 +2863,6 @@ msgstr ""
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr ""
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
 msgstr ""
 
 #. Default: "Prettify your code"

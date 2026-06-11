@@ -1223,8 +1223,12 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Повлечете датотека тука или кликнете за да ја замените постоечката датотека"
+
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Пуштете датотека овде или кликнете за да ја замените постојната датотека"
 
@@ -1583,10 +1587,15 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Област за прикачување датотека. Притиснете Enter или кликнете за да ја замените постоечката датотека"
+
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr "Област за прикачување датотеки. Притиснете Enter за да го отворите прелистувачот на датотеки"
+msgstr "Област за прикачување датотека. Притиснете Enter за да го отворите прелистувачот на датотеки"
 
 #. Default: "File view"
 #: config/Views
@@ -2854,11 +2863,6 @@ msgstr ""
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr ""
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
 msgstr ""
 
 #. Default: "Prettify your code"

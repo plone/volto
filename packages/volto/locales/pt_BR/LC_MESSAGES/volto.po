@@ -1224,8 +1224,12 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arraste e solte arquivos do seu computador para esta área, ou clique no botão ‘Procurar’."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Solte um arquivo aqui ou clique para substituir o arquivo existente"
+
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Solte um arquivo aqui para substituir o arquivo existente"
 
@@ -1584,10 +1588,15 @@ msgstr "O arquivo não é do tipo aceito {accept}"
 msgid "File size"
 msgstr "Tamanho do arquivo"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Área de upload de arquivo. Pressione Enter ou clique para substituir o arquivo existente"
+
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr "Área de envio de arquivos. Pressione Enter para abrir o seletor de arquivos"
+msgstr "Área de envio de arquivo. Pressione Enter para abrir o seletor de arquivos"
 
 #. Default: "File view"
 #: config/Views
@@ -2856,11 +2865,6 @@ msgstr "Criado com Plone e Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferências"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Pressione Enter para procurar arquivos no seu computador."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

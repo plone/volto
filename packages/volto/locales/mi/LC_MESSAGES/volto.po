@@ -1223,8 +1223,12 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Tukua he kōnae ki konei, ka pāwhiri rānei hei whakakapi i te kōnae o nāianei"
+
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Tukua he kōnae ki konei, ki te kore, pawhiria hei whakakapi i te kōnae o nāianei"
 
@@ -1583,10 +1587,15 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Wāhi tukuatu kōnae. Pēhia te Enter, tīkina rānei hei whakakapinga i te kōnae o nāianei"
+
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr "Rohe tukuatu kōnae. Pēhia Enter ki te tuwhera i te tirotiro kōnae"
+msgstr "Wāhi tukuake kōnae. Pēhia Enter hei tuwhera i te tirotiro kōnae"
 
 #. Default: "File view"
 #: config/Views
@@ -2854,11 +2863,6 @@ msgstr ""
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
-msgstr ""
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
 msgstr ""
 
 #. Default: "Prettify your code"

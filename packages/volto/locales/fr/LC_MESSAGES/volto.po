@@ -1225,8 +1225,12 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Glisser et déposer les fichiers depuis votre ordinateur dans la zone ou cliquer sur le bouton “Explore“"
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Déposez un fichier ici ou cliquez pour remplacer le fichier existant"
+
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Déposez le fichier ici pour remplacer le fichier existant"
 
@@ -1585,10 +1589,15 @@ msgstr ""
 msgid "File size"
 msgstr "Taille du fichier"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Zone de téléversement de fichier. Appuyez sur Entrée ou cliquez pour remplacer le fichier existant"
+
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr "Zone de téléversement de fichiers. Appuyez sur Entrée pour ouvrir le sélecteur de fichiers"
+msgstr "Zone de téléversement de fichier. Appuyez sur Entrée pour ouvrir le navigateur de fichiers"
 
 #. Default: "File view"
 #: config/Views
@@ -2857,11 +2866,6 @@ msgstr "Alimenté par Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Préférences"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Appuyez sur Entrée pour parcourir les fichiers sur votre ordinateur."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

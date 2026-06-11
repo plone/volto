@@ -1223,8 +1223,12 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Перетащите файлы в эту область или нажмите кнопку «Обзор»."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Перетащите файл сюда или нажмите, чтобы заменить существующий файл"
+
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Перетащите файл сюда, чтобы заменить существующий файл"
 
@@ -1582,6 +1586,11 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Размер файла"
+
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Область загрузки файла. Нажмите Enter или щёлкните, чтобы заменить существующий файл"
 
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
@@ -2855,11 +2864,6 @@ msgstr "Работает на Plone и Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Настройки"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

@@ -1219,8 +1219,12 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Sleep en zet bestanden neer van je computer naar dit gebied of klik op de “Bladeren” knop."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Sleep een bestand hierheen of klik om het bestaande bestand te vervangen"
+
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Zet bestand hier neer om het bestaande bestand te vervangen"
 
@@ -1578,6 +1582,11 @@ msgstr "Bestand is niet van het geaccepteerde type {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Bestandsgrootte"
+
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om het bestaande bestand te vervangen"
 
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
@@ -2851,11 +2860,6 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Voorkeuren"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Druk Enter om door de bestanden op jouw computer te browsen."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

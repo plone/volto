@@ -1218,8 +1218,12 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "अपने कंप्यूटर से फ़ाइलें इस क्षेत्र पर खींचें और छोड़ें या 'ब्राउज़' बटन पर क्लिक करें।"
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
+msgid "Drop a file here or click to replace the existing file"
+msgstr "मौजूदा फ़ाइल को बदलने के लिए यहाँ फ़ाइल छोड़ें या क्लिक करें"
+
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
 msgid "Drop file here to replace the existing file"
 msgstr "मौजूदा फ़ाइल को बदलने के लिए यहाँ फ़ाइल ड्रॉप करें"
 
@@ -1578,10 +1582,15 @@ msgstr ""
 msgid "File size"
 msgstr "फ़ाइल का आकार"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "फ़ाइल अपलोड क्षेत्र। मौजूदा फ़ाइल को बदलने के लिए Enter दबाएं या क्लिक करें"
+
 #. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter to open the file browser"
-msgstr "फ़ाइल अपलोड क्षेत्र। फ़ाइल ब्राउज़र खोलने के लिए Enter दबाएं"
+msgstr "फ़ाइल अपलोड क्षेत्र। फ़ाइल ब्राउज़र खोलने के लिए Enter दबाएँ"
 
 #. Default: "File view"
 #: config/Views
@@ -2850,11 +2859,6 @@ msgstr "प्लोन और पायथन द्वारा संचा�
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "पसंद"
-
-#. Default: "File upload area. Press Enter to replace the existing file"
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
