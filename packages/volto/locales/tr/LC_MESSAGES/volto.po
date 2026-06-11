@@ -1588,12 +1588,6 @@ msgstr ""
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Dosya yükleme alanı. Mevcut dosyayı değiştirmek için Enter'a basın veya tıklayın"
 
-#. Default: "File upload area. Press Enter to open the file browser"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Dosya yükleme alanı. Dosya tarayıcısını açmak için Enter tuşuna basın"
-
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -2860,6 +2854,12 @@ msgstr ""
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
+msgstr ""
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Press Enter to browse files from your computer."
 msgstr ""
 
 #. Default: "Prettify your code"

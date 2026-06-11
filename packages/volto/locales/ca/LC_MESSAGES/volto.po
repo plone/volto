@@ -1588,12 +1588,6 @@ msgstr "Mida de l'arxiu"
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Àrea de càrrega de fitxers. Premeu Retorn o feu clic per substituir el fitxer existent"
 
-#. Default: "File upload area. Press Enter to open the file browser"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Àrea de càrrega de fitxers. Premeu Enter per obrir el navegador de fitxers"
-
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -2861,6 +2855,12 @@ msgstr "Desenvolupat amb Plone i Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferències"
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

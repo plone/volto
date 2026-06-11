@@ -1589,12 +1589,6 @@ msgstr "Taille du fichier"
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Zone de téléversement de fichier. Appuyez sur Entrée ou cliquez pour remplacer le fichier existant"
 
-#. Default: "File upload area. Press Enter to open the file browser"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Zone de téléversement de fichier. Appuyez sur Entrée pour ouvrir le navigateur de fichiers"
-
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -2862,6 +2856,12 @@ msgstr "Alimenté par Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Préférences"
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

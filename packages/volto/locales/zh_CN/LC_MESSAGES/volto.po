@@ -1588,12 +1588,6 @@ msgstr "文件大小"
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "文件上传区域。按 Enter 键或点击以替换现有文件"
 
-#. Default: "File upload area. Press Enter to open the file browser"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "文件上传区域。按 Enter 键打开文件浏览器"
-
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -2861,6 +2855,12 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "偏好"
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

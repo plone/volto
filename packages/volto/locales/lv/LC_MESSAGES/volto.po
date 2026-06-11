@@ -1587,12 +1587,6 @@ msgstr ""
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Faila augšupielādes apgabals. Nospiediet Enter vai noklikšķiniet, lai aizstātu esošo failu"
 
-#. Default: "File upload area. Press Enter to open the file browser"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Failu augšupielādes apgabals. Nospiediet Enter, lai atvērtu failu pārlūku"
-
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -2859,6 +2853,12 @@ msgstr ""
 #. Default: "Preferences"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
+msgstr ""
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Press Enter to browse files from your computer."
 msgstr ""
 
 #. Default: "Prettify your code"

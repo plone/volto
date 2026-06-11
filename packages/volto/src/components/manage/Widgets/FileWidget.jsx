@@ -60,8 +60,9 @@ const messages = defineMessages({
     defaultMessage: 'File is not of the accepted type {accept}',
   },
   dragAndDropActionA11y: {
-    id: 'File upload area. Press Enter to open the file browser',
-    defaultMessage: 'File upload area. Press Enter to open the file browser',
+    id: 'Press Enter to browse files from your computer.',
+    defaultMessage:
+      'File upload area. Press Enter or click to open the file browser',
   },
   dragAndDropReplaceA11y: {
     id: 'File upload area. Press Enter or click to replace the existing file',

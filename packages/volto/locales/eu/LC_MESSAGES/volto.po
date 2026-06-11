@@ -1583,12 +1583,6 @@ msgstr "Fitxategiaren tamaina"
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Fitxategi kargatzeko area. Sakatu Enter edo egin klik lehendik dagoen fitxategia ordezkatzeko"
 
-#. Default: "File upload area. Press Enter to open the file browser"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Fitxategia kargatzeko eremua. Sakatu Enter fitxategi-arakatzailea irekitzeko"
-
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -2856,6 +2850,12 @@ msgstr "Plone eta Pythonekin eginda"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Hobespenak"
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

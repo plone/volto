@@ -38,7 +38,7 @@ const messages = defineMessages({
       'File upload area. Press Enter or click to replace the existing file',
   },
   dragAndDropActionA11y: {
-    id: 'File upload area. Press Enter to open the file browser',
+    id: 'Press Enter to browse files from your computer.',
     defaultMessage:
       'File upload area. Press Enter or click to open the file browser',
   },

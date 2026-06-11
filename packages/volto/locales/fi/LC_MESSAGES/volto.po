@@ -1587,12 +1587,6 @@ msgstr "Tiedoston koko"
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Tiedoston latausalue. Paina Enter tai napsauta korvataksesi olemassa olevan tiedoston"
 
-#. Default: "File upload area. Press Enter to open the file browser"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Tiedostonlatausalue. Avaa tiedostoselain painamalla Enter"
-
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -2860,6 +2854,12 @@ msgstr "Voimanlähteenä Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Asetukset"
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

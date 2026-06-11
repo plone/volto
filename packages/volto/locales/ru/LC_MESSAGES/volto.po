@@ -1587,12 +1587,6 @@ msgstr "Размер файла"
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Область загрузки файла. Нажмите Enter или щёлкните, чтобы заменить существующий файл"
 
-#. Default: "File upload area. Press Enter to open the file browser"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Область загрузки файлов. Нажмите Enter, чтобы открыть проводник файлов"
-
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -2860,6 +2854,12 @@ msgstr "Работает на Plone и Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Настройки"
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
+msgid "Press Enter to browse files from your computer."
+msgstr ""
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
