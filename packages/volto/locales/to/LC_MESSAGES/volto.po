@@ -1223,12 +1223,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Tuku ha faile heni pe lomiʻi ke fetongi ʻa e faile ʻoku ʻi ai"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Tuku ha faili heni pe lomi ke fetongi ʻa e faili ʻoku ʻi ai"
 

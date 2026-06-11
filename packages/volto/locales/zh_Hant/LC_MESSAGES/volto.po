@@ -1223,12 +1223,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "將檔案拖放至此處或按一下以取代現有檔案"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "將檔案拖曳到此處，或點擊以取代現有檔案"
 

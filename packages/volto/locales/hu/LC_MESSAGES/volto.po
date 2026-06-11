@@ -1223,12 +1223,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Húzzon ide egy fájlt, vagy kattintson a meglévő fájl cseréjéhez"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Húzzon ide egy fájlt, vagy kattintson a meglévő fájl cseréjéhez"
 

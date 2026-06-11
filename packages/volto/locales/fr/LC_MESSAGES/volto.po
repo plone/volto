@@ -1225,12 +1225,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Glisser et déposer les fichiers depuis votre ordinateur dans la zone ou cliquer sur le bouton “Explore“"
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Déposez un fichier ici ou cliquez pour remplacer le fichier existant"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Déposez le fichier ici pour remplacer le fichier existant"
 

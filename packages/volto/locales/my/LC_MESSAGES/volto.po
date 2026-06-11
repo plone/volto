@@ -1223,12 +1223,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr ""
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "ရှိပြီးသားဖိုင်ကို အစားထိုးရန် ဤနေရာတွင် ဖိုင်ချပါ သို့မဟုတ် နှိပ်ပါ"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "ဖိုင်တစ်ခုကို ဤနေရာတွင် ချပစ်ပါ သို့မဟုတ် ရှိပြီးသား ဖိုင်ကို အစားထိုးရန် နှိပ်ပါ"
 

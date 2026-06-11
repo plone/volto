@@ -1223,12 +1223,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "ここにファイルをドラッグ、または「参照」ボタンをクリック"
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "ファイルをここにドロップするか、クリックして既存のファイルを置き換えてください"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "ファイルをここにドロップして、既存のファイルを置き換え"
 
