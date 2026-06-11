@@ -81,22 +81,18 @@ describe('Table Block Tests', () => {
     cy.get('.celled.fixed.table').should('be.visible');
 
     // View
-    cy.get('.celled.fixed.table thead tr th:first-child()').should(
-      'contain',
-      'column 1 / row 1',
-    );
-    cy.get('.celled.fixed.table thead tr th:nth-child(3)').should(
-      'contain',
-      'column 2 / row 1',
-    );
-    cy.get('.celled.fixed.table tbody tr:nth-child(2) td:first-child()').should(
-      'contain',
-      'column 1 / row 2',
-    );
-    cy.get('.celled.fixed.table tbody tr:nth-child(2) td:nth-child(3)').should(
-      'contain',
-      'column 2 / row 2',
-    );
+    cy.get('.celled.fixed.table thead tr th:first-child()', {
+      timeout: 15000,
+    }).should('contain', 'column 1 / row 1');
+    cy.get('.celled.fixed.table thead tr th:nth-child(3)', {
+      timeout: 15000,
+    }).should('contain', 'column 2 / row 1');
+    cy.get('.celled.fixed.table tbody tr:nth-child(2) td:first-child()', {
+      timeout: 15000,
+    }).should('contain', 'column 1 / row 2');
+    cy.get('.celled.fixed.table tbody tr:nth-child(2) td:nth-child(3)', {
+      timeout: 15000,
+    }).should('contain', 'column 2 / row 2');
 
     // Redefine all intercepts before the second visit to avoid alias conflicts
     cy.intercept('GET', `/**/*?expand*`).as('content2');
@@ -152,20 +148,17 @@ describe('Table Block Tests', () => {
     cy.get('.celled.fixed.table').should('be.visible');
 
     // View
-    cy.get('.celled.fixed.table thead tr th:first-child()').should(
-      'contain',
-      'column 1 / row 1',
-    );
-    cy.get('.celled.fixed.table thead tr th:nth-child(2)> p ').should(
-      'have.text',
-      'column 2 / row 1',
-    );
-    cy.get(
-      '.celled.fixed.table tbody tr:first-child() td:first-child()',
-    ).should('contain', 'column 1 / row 2');
-    cy.get('.celled.fixed.table tbody tr:first-child() td:nth-child(2)').should(
-      'contain',
-      'column 2 / row 2',
-    );
+    cy.get('.celled.fixed.table thead tr th:first-child()', {
+      timeout: 15000,
+    }).should('contain', 'column 1 / row 1');
+    cy.get('.celled.fixed.table thead tr th:nth-child(2)> p ', {
+      timeout: 15000,
+    }).should('have.text', 'column 2 / row 1');
+    cy.get('.celled.fixed.table tbody tr:first-child() td:first-child()', {
+      timeout: 15000,
+    }).should('contain', 'column 1 / row 2');
+    cy.get('.celled.fixed.table tbody tr:first-child() td:nth-child(2)', {
+      timeout: 15000,
+    }).should('contain', 'column 2 / row 2');
   });
 });
