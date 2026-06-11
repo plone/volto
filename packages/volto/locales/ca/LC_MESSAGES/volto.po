@@ -1224,12 +1224,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Arrossegueu un fitxer aquí o feu clic per substituir el fitxer existent"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Deixeu anar el fitxer aquí per substituir el fitxer existent"
 

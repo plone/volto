@@ -1219,12 +1219,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "உங்கள் கணினியிலிருந்து கோப்புகளை இந்த பகுதியில் இழுத்து விடுங்கள் அல்லது “உலாவு” பொத்தானைக் சொடுக்கு செய்க."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "கோப்பை இங்கே இழுக்கவும் அல்லது ஏற்கனவே உள்ள கோப்பை மாற்ற கிளிக் செய்யவும்"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "இருக்கும் கோப்பை மாற்ற கோப்பை இங்கே விடுங்கள்"
 

@@ -1224,12 +1224,8 @@ msgid "Drag and drop files from your computer onto this area or click the “Bro
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
 #. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Trageți un fișier aici sau faceți clic pentru a înlocui fișierul existent"
-
-#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Trageți fișierul aici pentru a înlocui fișierul existent"
 
