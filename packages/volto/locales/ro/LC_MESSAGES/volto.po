@@ -1223,13 +1223,15 @@ msgstr "Descarcă {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Trageți un fișier aici sau faceți clic pentru a înlocui fișierul existent"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Glisați un fișier aici sau faceți clic pentru a încărca"
 
@@ -1584,7 +1586,6 @@ msgstr "Mărimea fișierului"
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a înlocui fișierul existent"
 
@@ -2858,9 +2859,8 @@ msgstr "Preferințe"
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Zonă de încărcare fișiere. Apăsați Enter sau faceți clic pentru a deschide browserul de fișiere"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

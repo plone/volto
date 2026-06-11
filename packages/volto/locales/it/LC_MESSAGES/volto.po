@@ -1218,13 +1218,15 @@ msgstr "Scarica {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trascina in quest'area i file dal tuo computer o clicca su “Sfoglia”."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Trascina un file qui o clicca per sostituire il file esistente"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Trascina un file qui o clicca per caricarlo"
 
@@ -1579,7 +1581,6 @@ msgstr "Dimensione del file"
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Area di caricamento file. Premi Invio o fai clic per sostituire il file esistente"
 
@@ -2853,9 +2854,8 @@ msgstr "Preferenze"
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Area di caricamento file. Premi Invio o fai clic per aprire il browser dei file"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

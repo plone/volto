@@ -1222,13 +1222,15 @@ msgstr "{filename} ကို ဒေါင်းလုဒ်လုပ်ရန်
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "ရှိပြီးသား ဖိုင်ကို အစားထိုးရန် ဤနေရာသို့ ဖိုင်တစ်ခု ချပစ်ပါ သို့မဟုတ် နှိပ်ပါ"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "ဖိုင်တစ်ခုကို ဤနေရာတွင် ချပါ သို့မဟုတ် တင်ရန် နှိပ်ပါ"
 
@@ -1583,7 +1585,6 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "ဖိုင်တင်သွင်းသည့်နေရာ။ ရှိပြီးသားဖိုင်ကိုအစားထိုးရန် Enter နှိပ်ပါ သို့မဟုတ် နှိပ်ပါ"
 
@@ -2857,9 +2858,8 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "ဖိုင်တင်သွင်းသည့်နေရာ။ ဖိုင်ရှာဖွေသည့်ဝင်းဒိုးဖွင့်ရန် Enter နှိပ်ပါ သို့မဟုတ် ကလစ်နှိပ်ပါ"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

@@ -1223,13 +1223,15 @@ msgstr "Descarrega {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Arrossegueu un fitxer aquí o feu clic per substituir el fitxer existent"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Arrossegueu un fitxer aquí o feu clic per pujar-lo"
 
@@ -1584,7 +1586,6 @@ msgstr "Mida de l'arxiu"
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Àrea de càrrega de fitxers. Premeu Retorn o feu clic per substituir el fitxer existent"
 
@@ -2858,9 +2859,8 @@ msgstr "Preferències"
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per obrir el navegador de fitxers"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

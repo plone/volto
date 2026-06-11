@@ -1222,13 +1222,15 @@ msgstr "Lavea mai {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Tōpē se faila iinei pe kiliki e suia le faila o loʻo i ai"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Tago se faila iinei pe kiliki e ukuina"
 
@@ -1583,7 +1585,6 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Vaega o le uuina aʻe o faila. T누누i le Enter poʻo le kiliki e suia ai le faila o loʻo i ai"
 
@@ -2857,9 +2858,8 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Nofoaga mo le teu faila.누누 le Enter pe kiliki e tatala le teutusi o faila"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

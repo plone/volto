@@ -1222,13 +1222,15 @@ msgstr "ดาวน์โหลด {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "วางไฟล์ที่นี่หรือคลิกเพื่อแทนที่ไฟล์ที่มีอยู่"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "วางไฟล์ที่นี่หรือคลิกเพื่ออัปโหลด"
 
@@ -1583,7 +1585,6 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "พื้นที่อัปโหลดไฟล์ กด Enter หรือคลิกเพื่อแทนที่ไฟล์ที่มีอยู่"
 
@@ -2857,9 +2858,8 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "พื้นที่อัปโหลดไฟล์ กด Enter หรือคลิกเพื่อเปิดตัวเลือกไฟล์"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

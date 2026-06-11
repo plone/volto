@@ -1222,13 +1222,15 @@ msgstr "Изтегляне на {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Пуснете файл тук или щракнете, за да замените съществуващия файл"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Пуснете файл тук или кликнете за качване"
 
@@ -1583,7 +1585,6 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Зона за качване на файл. Натиснете Enter или щракнете, за да замените съществуващия файл"
 
@@ -2857,9 +2858,8 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Зона за качване на файл. Натиснете Enter или щракнете, за да отворите файловия браузър"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

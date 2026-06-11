@@ -1222,13 +1222,15 @@ msgstr "{filename}-ის გადმოწერა"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "ჩააგდეთ ფაილი აქ ან დააჭირეთ არსებული ფაილის შესაცვლელად"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "ჩააგდეთ ფაილი აქ ან დააჭირეთ ასატვირთად"
 
@@ -1583,7 +1585,6 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "ფაილის ატვირთვის არეალი. დააჭირეთ Enter-ს ან დააწკაპუნეთ არსებული ფაილის შესაცვლელად"
 
@@ -2857,9 +2858,8 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "ფაილის ატვირთვის არეალი. დააჭირეთ Enter-ს ან დააწკაპუნეთ ფაილების ბრაუზერის გასახსნელად"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

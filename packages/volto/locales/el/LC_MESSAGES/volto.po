@@ -1222,13 +1222,15 @@ msgstr "Λήψη {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Σύρετε ένα αρχείο εδώ ή κάντε κλικ για να αντικαταστήσετε το υπάρχον αρχείο"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Σύρετε ένα αρχείο εδώ ή κάντε κλικ για μεταφόρτωση"
 
@@ -1583,7 +1585,6 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Περιοχή μεταφόρτωσης αρχείου. Πατήστε Enter ή κάντε κλικ για να αντικαταστήσετε το υπάρχον αρχείο"
 
@@ -2857,9 +2858,8 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Περιοχή μεταφόρτωσης αρχείου. Πατήστε Enter ή κάντε κλικ για να ανοίξετε την περιήγηση αρχείων"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

@@ -1222,13 +1222,15 @@ msgstr "Ներբեռնել {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Նետեք ֆայլ այստեղ կամ սեղմեք գոյություն ունեցող ֆայլը փոխարինելու համար"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Քաշեք ֆայլ այստեղ կամ սեղմեք՝ վերբեռնելու համար"
 
@@ -1583,7 +1585,6 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Ֆայլի վերբեռնման տարածք։ Սեղմեք Enter կամ սեղմեք՝ առկա ֆայլը փոխարինելու համար"
 
@@ -2857,9 +2858,8 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Ֆայլի բեռնման տարածք: Ֆայլերի դիտարկիչը բացելու համար սեղմեք Enter կամ կտտացրեք"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

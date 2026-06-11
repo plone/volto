@@ -1222,13 +1222,15 @@ msgstr "Hilifaki {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Tukuange ha ha ʻa e faili pe lomiʻi ke fetongi ʻa e faili ʻoku ʻi ai"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Tuku ha faile heni pe lomiʻi ke hikiʻi hake"
 
@@ -1583,7 +1585,6 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Feituʻunga fakatoʻotoʻo faila. Holoki ʻa e Enter pe kiliki ke fetongi ʻa e faila ʻoku ʻi ai"
 
@@ -2857,9 +2858,8 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Feituʻu fakahū faili. Holoki Enter pe lomi ke toʻo ha faili"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

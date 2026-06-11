@@ -1222,13 +1222,15 @@ msgstr "Lataa {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Raahaa ja pudota tiedostoja tietokoneeltasi tähän tai paina “Selaa”."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Vedä tiedosto tähän tai napsauta korvataksesi olemassa olevan tiedoston"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Pudota tiedosto tähän tai lataa klikkaamalla"
 
@@ -1583,7 +1585,6 @@ msgstr "Tiedoston koko"
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Tiedoston latausalue. Paina Enter tai napsauta korvataksesi olemassa olevan tiedoston"
 
@@ -2857,9 +2858,8 @@ msgstr "Asetukset"
 
 #. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Tiedostojen latausalue. Avaa tiedostoselain painamalla Enter tai napsauttamalla"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
