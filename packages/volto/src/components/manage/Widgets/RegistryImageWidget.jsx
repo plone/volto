@@ -33,7 +33,7 @@ const messages = defineMessages({
     defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drop a file here or click to replace the existing file',
+    id: 'Drop file here to replace the existing file',
     defaultMessage: 'Drop a file here or click to replace the existing file',
   },
   fileDrag: {
