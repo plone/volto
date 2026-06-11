@@ -1222,6 +1222,16 @@ msgstr "{filename} డౌన్‌లోడ్ చేయండి"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr "ఫైల్‌ను ఇక్కడ వదలండి లేదా ఇప్పటికే ఉన్న ఫైల్‌ను భర్తీ చేయడానికి క్లిక్ చేయండి"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr "ఇక్కడ ఒక ఫైల్ వదలండి లేదా అప్‌లోడ్ చేయడానికి క్లిక్ చేయండి"
+
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
@@ -1577,7 +1587,7 @@ msgstr ""
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "ఫైల్ అప్‌లోడ్ ప్రాంతం. ఉన్న ఫైల్‌ని భర్తీ చేయడానికి Enter నొక్కండి లేదా క్లిక్ చేయండి"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter to open the file browser"

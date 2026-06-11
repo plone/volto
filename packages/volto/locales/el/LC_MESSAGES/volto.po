@@ -1222,6 +1222,16 @@ msgstr "Λήψη {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr "Σύρετε ένα αρχείο εδώ ή κάντε κλικ για να αντικαταστήσετε το υπάρχον αρχείο"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr "Σύρετε ένα αρχείο εδώ ή κάντε κλικ για μεταφόρτωση"
+
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
@@ -1577,7 +1587,7 @@ msgstr ""
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Περιοχή μεταφόρτωσης αρχείου. Πατήστε Enter ή κάντε κλικ για να αντικαταστήσετε το υπάρχον αρχείο"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter to open the file browser"

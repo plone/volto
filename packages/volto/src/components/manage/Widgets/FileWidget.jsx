@@ -34,6 +34,14 @@ const messages = defineMessages({
     id: 'Drop files here ...',
     defaultMessage: 'Drop files here ...',
   },
+  editFile: {
+    id: 'Drop file here to replace the existing file',
+    defaultMessage: 'Drop a file here or click to replace the existing file',
+  },
+  fileDrag: {
+    id: 'Drop file here to upload a new file',
+    defaultMessage: 'Drop a file here or click to upload',
+  },
   replaceFile: {
     id: 'Replace existing file',
     defaultMessage: 'Replace existing file',
@@ -53,8 +61,7 @@ const messages = defineMessages({
   },
   dragAndDropActionA11y: {
     id: 'File upload area. Press Enter to open the file browser',
-    defaultMessage:
-      'File upload area. Press Enter or click to open the file browser',
+    defaultMessage: 'File upload area. Press Enter to open the file browser',
   },
   dragAndDropReplaceA11y: {
     id: 'File upload area. Press Enter or click to replace the existing file',
@@ -219,11 +226,11 @@ const FileWidget = (props) => {
                   </p>
                 ) : value ? (
                   <p className="dropzone-text">
-                    {intl.formatMessage(messages.dragAndDropReplaceA11y)}
+                    {intl.formatMessage(messages.editFile)}
                   </p>
                 ) : (
                   <p className="dropzone-text">
-                    {intl.formatMessage(messages.dragAndDropActionA11y)}
+                    {intl.formatMessage(messages.fileDrag)}
                   </p>
                 )}
               </div>

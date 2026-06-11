@@ -1222,6 +1222,16 @@ msgstr "{filename} ডাউনলোড করুন"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
+#. Default: "Drop a file here or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to replace the existing file"
+msgstr "বিদ্যমান ফাইলটি প্রতিস্থাপন করতে এখানে একটি ফাইল টেনে আনুন বা ক্লিক করুন"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop file here to upload a new file"
+msgstr "এখানে একটি ফাইল ড্রপ করুন বা আপলোড করতে ক্লিক করুন"
+
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
@@ -1577,7 +1587,7 @@ msgstr ""
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "ফাইল আপলোড এলাকা। বিদ্যমান ফাইলটি প্রতিস্থাপন করতে Enter চাপুন বা ক্লিক করুন"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter to open the file browser"
