@@ -32,13 +32,15 @@ const messages = defineMessages({
     id: 'Drop files here ...',
     defaultMessage: 'Drop files here ...',
   },
-  editFile: {
-    id: 'Drop file here to replace the existing file',
-    defaultMessage: 'Drop a file here or click to replace the existing file',
+  dragAndDropReplaceA11y: {
+    id: 'File upload area. Press Enter or click to replace the existing file',
+    defaultMessage:
+      'File upload area. Press Enter or click to replace the existing file',
   },
-  fileDrag: {
-    id: 'Drop file here to upload a new file',
-    defaultMessage: 'Drop file here to upload a new file',
+  dragAndDropActionA11y: {
+    id: 'File upload area. Press Enter to open the file browser',
+    defaultMessage:
+      'File upload area. Press Enter or click to open the file browser',
   },
   replaceFile: {
     id: 'Replace existing file',
@@ -132,11 +134,11 @@ const RegistryImageWidget = (props) => {
                   </p>
                 ) : value ? (
                   <p className="dropzone-text">
-                    {intl.formatMessage(messages.editFile)}
+                    {intl.formatMessage(messages.dragAndDropReplaceA11y)}
                   </p>
                 ) : (
                   <p className="dropzone-text">
-                    {intl.formatMessage(messages.fileDrag)}
+                    {intl.formatMessage(messages.dragAndDropActionA11y)}
                   </p>
                 )}
               </div>

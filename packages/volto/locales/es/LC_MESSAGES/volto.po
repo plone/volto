@@ -1218,18 +1218,6 @@ msgstr "Descargar {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrastre y suelte los archivos desde su computador en esta área o haga clic al botón “Seleccionar”."
 
-#. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Arrastre aquí el archivo para reemplazar el actual"
-
-#. Default: "Drop a file here or click to upload"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to upload a new file"
-msgstr "Arrastre aquí el archivo para añadir un nuevo"
-
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
@@ -1581,11 +1569,13 @@ msgstr "Tamaño del archivo"
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Área de carga de archivos. Pulse Intro o haga clic para reemplazar el archivo existente"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter to open the file browser"
 msgstr "Área de carga de archivos. Pulse Enter para abrir el explorador de archivos"
 

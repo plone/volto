@@ -1223,18 +1223,6 @@ msgstr "下载 {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "从你的电脑中拖放文件到此区域或单击 “浏览” 按钮"
 
-#. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "在此处放置文件以替换现有文件"
-
-#. Default: "Drop a file here or click to upload"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to upload a new file"
-msgstr "在此处放置文件来上传新文件"
-
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
@@ -1586,11 +1574,13 @@ msgstr "文件大小"
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "文件上传区域。按 Enter 键或点击以替换现有文件"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter to open the file browser"
 msgstr "文件上传区域。按 Enter 键打开文件浏览器"
 

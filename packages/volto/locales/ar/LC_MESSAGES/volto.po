@@ -1222,18 +1222,6 @@ msgstr "تنزيل {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "اسحب ملفاً هنا أو انقر لاستبدال الملف الحالي"
-
-#. Default: "Drop a file here or click to upload"
-#: components/manage/Widgets/FileWidget
-#: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to upload a new file"
-msgstr ""
-
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
@@ -1585,11 +1573,13 @@ msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "منطقة تحميل الملف. اضغط Enter أو انقر لاستبدال الملف الموجود"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
+#: components/manage/Widgets/RegistryImageWidget
 msgid "File upload area. Press Enter to open the file browser"
 msgstr "منطقة تحميل الملف. اضغط Enter لفتح متصفح الملفات"
 
