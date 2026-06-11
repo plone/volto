@@ -1,1 +1,0 @@
-Fixed the Babel compare language toolbar button closing immediately after user clicks by treating the trigger and popup as one outside-click boundary. @sneridagh
