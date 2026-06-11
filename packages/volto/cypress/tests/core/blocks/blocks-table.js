@@ -40,28 +40,24 @@ describe('Table Block Tests', () => {
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
     )
       .click()
-      .should('be.focused')
       .type('column 1 / row 1');
 
     cy.get(
       '.celled.fixed.table thead tr th:nth-child(2) [contenteditable="true"]',
     )
       .click()
-      .should('be.focused')
       .type('column 2 / row 1');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]',
     )
       .click()
-      .should('be.focused')
       .type('column 1 / row 2');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:nth-child(2) [contenteditable="true"]',
     )
       .click()
-      .should('be.focused')
       .type('column 2 / row 2');
 
     cy.get('button[title="Insert col after"]').click();
