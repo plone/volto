@@ -39,6 +39,7 @@ exports[`CheckboxWidget > renders a checkbox widget component 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -87,6 +88,7 @@ exports[`CheckboxWidget > renders a checkbox widget component checked 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>

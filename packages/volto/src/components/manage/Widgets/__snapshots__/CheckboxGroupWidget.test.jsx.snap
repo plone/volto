@@ -31,6 +31,7 @@ exports[`renders a checkbox group widget component 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>

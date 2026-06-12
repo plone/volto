@@ -105,6 +105,7 @@ exports[`datetime widget converts UTC date and adapts to local datetime 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -218,6 +219,7 @@ exports[`renders a datetime widget component 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
