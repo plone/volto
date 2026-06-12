@@ -22,12 +22,12 @@ input:focus-visible {
   outline-offset: 4px;
 }
 
-.ui.checkbox label::before {
+.ui.checkbox input:focus-visible ~ label::before {
   transition: none !important;
 }
 
 // Skiplinks focus styles
-.skiplinks a:focus:not(.focus--mouse) {
+.skiplinks a:focus-visible {
   border: 2px solid @linkColor;
   outline: 3px solid @linkColor;
 }
