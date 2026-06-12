@@ -2929,6 +2929,11 @@ msgstr ""
 msgid "Preferences"
 msgstr "偏好"
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "按空格键添加项目。按删除键或退格键删除。"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -5126,6 +5131,12 @@ msgstr "待审核"
 msgid "pickAnImage"
 msgstr ""
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "按向下箭头键打开菜单。"
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5356,6 +5367,12 @@ msgstr ""
 msgid "selectView"
 msgstr "选择视图"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} 已获得焦点。"
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5436,6 +5453,12 @@ msgstr "目录"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr ""
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "输入以筛选列表。"
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

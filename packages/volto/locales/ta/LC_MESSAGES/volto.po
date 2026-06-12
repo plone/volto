@@ -2928,6 +2928,11 @@ msgstr "ப்ளோன் & பைதான் மூலம் இயக்க�
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "உருப்படிகளை சேர்க்க இடைவெளி அழுத்தவும். நீக்க நீக்கு அல்லது Backspace அழுத்தவும்."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -5125,6 +5130,12 @@ msgstr "நிலுவையில் உள்ளது"
 msgid "pickAnImage"
 msgstr "பிகானிமேச்"
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "மெனுவை திறக்க கீழ் அம்புக்குறியை அழுத்தவும்."
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5355,6 +5366,12 @@ msgstr "SelectFacet"
 msgid "selectView"
 msgstr "SelectView"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} கவனத்தில் உள்ளது."
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5435,6 +5452,12 @@ msgstr "TOC"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "TOGGLEFACET"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "பட்டியலை வடிகட்ட தட்டச்சு செய்யுங்கள்."
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

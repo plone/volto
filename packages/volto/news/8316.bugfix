@@ -1,0 +1,1 @@
+Improve screen reader announcements for multi-value chips in `SelectWidget` and `ArrayWidget`: announce chip value and keyboard instructions on focus, and suppress misleading navigation hints. @Wagner3UB
