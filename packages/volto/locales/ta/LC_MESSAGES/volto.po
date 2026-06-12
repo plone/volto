@@ -719,6 +719,11 @@ msgstr "தெளிவான வடிப்பான்கள்"
 msgid "Clear search"
 msgstr "தேடலை அழி"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "தேர்வை அழி"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
