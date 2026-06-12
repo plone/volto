@@ -141,8 +141,9 @@ export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
         role: 'button',
         tabIndex: 0,
         onKeyDown: (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
             e.preventDefault();
+            e.stopPropagation();
             props.clearValue();
           }
         },
