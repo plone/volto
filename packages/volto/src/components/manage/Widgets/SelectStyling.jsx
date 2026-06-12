@@ -127,13 +127,17 @@ export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
 export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
   const { ClearIndicator } = props.reactSelect.components;
   const intl = useIntl();
+  const fieldLabelId = props.selectProps?.['aria-labelledby'];
+  const clearLabelId = `${props.selectProps?.inputId}-clear-label`;
   return (
     <ClearIndicator
       {...props}
       innerProps={{
         ...props.innerProps,
         'aria-hidden': false,
-        'aria-label': intl.formatMessage(messages.clearSelection),
+        ...(fieldLabelId
+          ? { 'aria-labelledby': `${fieldLabelId} ${clearLabelId}` }
+          : { 'aria-label': intl.formatMessage(messages.clearSelection) }),
         role: 'button',
         tabIndex: 0,
         onKeyDown: (e) => {
@@ -144,6 +148,9 @@ export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
         },
       }}
     >
+      <span id={clearLabelId} hidden>
+        {intl.formatMessage(messages.clearSelection)}
+      </span>
       <Icon name={clearSVG} size="18px" color="#e40166" />
     </ClearIndicator>
   );
