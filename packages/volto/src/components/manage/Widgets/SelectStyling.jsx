@@ -1,4 +1,5 @@
 import React from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import { Popup } from 'semantic-ui-react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -9,6 +10,13 @@ import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+const messages = defineMessages({
+  clearSelection: {
+    id: 'Clear selection',
+    defaultMessage: 'Clear selection',
+  },
+});
 
 export const MenuList = ({ children }) => {
   return <DynamicHeightList>{children}</DynamicHeightList>;
@@ -118,12 +126,14 @@ export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
 
 export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
   const { ClearIndicator } = props.reactSelect.components;
+  const intl = useIntl();
   return (
     <ClearIndicator
       {...props}
       innerProps={{
         ...props.innerProps,
         'aria-hidden': false,
+        'aria-label': intl.formatMessage(messages.clearSelection),
         role: 'button',
         tabIndex: 0,
         onKeyDown: (e) => {
