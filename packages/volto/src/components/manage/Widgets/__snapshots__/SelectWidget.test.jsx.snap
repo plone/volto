@@ -195,6 +195,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -311,6 +312,7 @@ exports[`renders a select widget component 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>

@@ -1243,19 +1243,28 @@ msgstr "Scarica l'evento"
 msgid "Download file"
 msgstr "Scarica il file"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Scarica {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trascina in quest'area i file dal tuo computer o clicca su “Sfoglia”."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Rilascia un file qui per sostituire quello esistente"
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Trascina un file qui o clicca per sostituire il file esistente"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "Trascina un file qui o fai clic per caricarlo"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Rilascia un file qui per caricare un nuovo file"
@@ -1613,6 +1622,11 @@ msgstr "Il file non è del tipo consentito {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Dimensione del file"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "Area di caricamento file. Premi Invio per aprire il selettore di file"
 
 #. Default: "File view"
 #: config/Views
@@ -2914,11 +2928,6 @@ msgstr "Realizzato con Plone &amp; Python"
 msgid "Preferences"
 msgstr "Preferenze"
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Premi Invio per scegliere i file dal tuo computer."
-
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -4033,6 +4042,11 @@ msgstr "Questi elementi avranno dei collegamenti rotti"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Terzo"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Questo campo è obbligatorio."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
