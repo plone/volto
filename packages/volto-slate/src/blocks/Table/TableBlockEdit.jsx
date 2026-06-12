@@ -229,7 +229,9 @@ const Edit = (props) => {
     [data, block, onChangeBlock],
   );
 
-  const onInsertRowBefore = useCallback(() => {
+  const onInsertRowBefore = useCallback((ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = data.table;
     onChangeBlock(block, {
       ...data,
@@ -248,7 +250,9 @@ const Edit = (props) => {
     });
   }, [data, block, onChangeBlock, selectedCell]);
 
-  const onInsertRowAfter = useCallback(() => {
+  const onInsertRowAfter = useCallback((ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = data.table;
     onChangeBlock(block, {
       ...data,
@@ -263,7 +267,9 @@ const Edit = (props) => {
     });
   }, [data, block, onChangeBlock, selectedCell]);
 
-  const onInsertColBefore = useCallback(() => {
+  const onInsertColBefore = useCallback((ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = data.table;
     onChangeBlock(block, {
       ...data,
@@ -285,7 +291,9 @@ const Edit = (props) => {
     });
   }, [data, block, onChangeBlock, selectedCell]);
 
-  const onInsertColAfter = useCallback(() => {
+  const onInsertColAfter = useCallback((ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = data.table;
     onChangeBlock(block, {
       ...data,
@@ -303,7 +311,9 @@ const Edit = (props) => {
     });
   }, [data, block, onChangeBlock, selectedCell]);
 
-  const onDeleteCol = useCallback(() => {
+  const onDeleteCol = useCallback((ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = data.table;
 
     if (selectedCell.cell === table.rows[0].cells.length - 1) {
@@ -328,7 +338,9 @@ const Edit = (props) => {
     });
   }, [data, block, onChangeBlock, selectedCell]);
 
-  const onDeleteRow = useCallback(() => {
+  const onDeleteRow = useCallback((ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = data.table;
 
     if (selectedCell.row === table.rows.length - 1) {
