@@ -325,7 +325,9 @@ class Edit extends Component {
    * operation is done.
    * @returns {undefined}
    */
-  onInsertRowBefore() {
+  onInsertRowBefore(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -350,7 +352,9 @@ class Edit extends Component {
    * Insert row after handler
    * @returns {undefined}
    */
-  onInsertRowAfter() {
+  onInsertRowAfter(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -370,7 +374,9 @@ class Edit extends Component {
    * operation is done.
    * @returns {undefined}
    */
-  onInsertColBefore() {
+  onInsertColBefore(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -398,7 +404,9 @@ class Edit extends Component {
    * Insert column after handler
    * @returns {undefined}
    */
-  onInsertColAfter() {
+  onInsertColAfter(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -421,7 +429,9 @@ class Edit extends Component {
    * is selected.
    * @returns {undefined}
    */
-  onDeleteCol() {
+  onDeleteCol(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = this.props.data.table;
 
     if (this.state.selected.cell === table.rows[0].cells.length - 1) {
@@ -454,7 +464,9 @@ class Edit extends Component {
    * @method onDeleteRow
    * @returns {undefined}
    */
-  onDeleteRow() {
+  onDeleteRow(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
     const table = this.props.data.table;
 
     if (this.state.selected.row === table.rows.length - 1) {
