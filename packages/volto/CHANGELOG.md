@@ -17,6 +17,29 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.1.4 (2026-06-11)
+
+### Bugfix
+
+- Fixed the Babel compare language toolbar button closing immediately after user clicks by treating the trigger and popup as one outside-click boundary. @sneridagh [#8323](https://github.com/plone/volto/issues/8323)
+
+## 19.1.3 (2026-06-09)
+
+### Bugfix
+
+- Add `aria-required` or `aria-invalid` attributes only if the field is required or contains errors, respectively. @Wagner3UB [#7981](https://github.com/plone/volto/issues/7981)
+- Added aria-required and labels to ensure proper identification of mandatory fields in FileWidget and RegistryImageWidget components. @Wagner3UB [#7982](https://github.com/plone/volto/issues/7982)
+- Fix infinite redirect loop caused by mismatched language content object with the current language tree. @sneridagh 
+
+## 19.1.2 (2026-06-08)
+
+### Bugfix
+
+- Increase home icon size to comply with WCAG 2.2 accessibility. @polyester [#8297](https://github.com/plone/volto/issues/8297)
+- Fix layout regression in `FormFieldWrapper` where the empty `aria-live` container was acting as an extra flex item, breaking widget layouts like `SizeWidget`. @Wagner3UB [#8319](https://github.com/plone/volto/issues/8319)
+- Fix "Cannot POST" error on login form if it was submitted before hydration
+  finished, by disabling the submit button until then. @davisagli 
+
 ## 19.1.1 (2026-05-28)
 
 ### Internal

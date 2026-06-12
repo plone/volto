@@ -1244,19 +1244,28 @@ msgstr "Descarrega l'esdeveniment"
 msgid "Download file"
 msgstr "Descarrega el fitxer"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Descarrega {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Deixeu anar el fitxer aquí per substituir el fitxer existent"
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Arrossegueu un fitxer aquí o feu clic per substituir el fitxer existent"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "Arrossegueu un fitxer aquí o feu clic per pujar-lo"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Deixeu anar el fitxer aquí per pujar un fitxer nou"
@@ -1614,6 +1623,11 @@ msgstr "El fitxer no és del tipus acceptat {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Mida de l'arxiu"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "Àrea de càrrega de fitxers. Premeu Enter per obrir el navegador de fitxers"
 
 #. Default: "File view"
 #: config/Views
@@ -4039,6 +4053,11 @@ msgstr "Aquests elements tindran enllaços trencats"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Tercer"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Aquest camp és obligatori."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

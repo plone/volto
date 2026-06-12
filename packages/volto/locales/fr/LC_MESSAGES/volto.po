@@ -1244,19 +1244,28 @@ msgstr "Télécharger l'événement"
 msgid "Download file"
 msgstr "Télécharger le fichier"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Télécharger {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Glisser et déposer les fichiers depuis votre ordinateur dans la zone ou cliquer sur le bouton “Explore“"
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Déposez le fichier ici pour remplacer le fichier existant"
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Déposez un fichier ici ou cliquez pour remplacer le fichier existant"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "Déposez un fichier ici ou cliquez pour téléverser"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Déposez le fichier ici pour télécharger un nouveau fichier"
@@ -1614,6 +1623,11 @@ msgstr "Le fichier n'est pas du type accepté {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Taille du fichier"
+
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "Zone de téléversement de fichier. Appuyez sur Entrée pour ouvrir le navigateur de fichiers"
 
 #. Default: "File view"
 #: config/Views
@@ -4039,6 +4053,11 @@ msgstr "Les éléments suivants auront des liens brisés."
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Troisième"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Ce champ est obligatoire."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
