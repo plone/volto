@@ -2929,11 +2929,6 @@ msgstr "Hecho con Plone & Python"
 msgid "Preferences"
 msgstr "Preferencias"
 
-#. Default: "Press Enter to browse files from your computer."
-#: components/manage/Widgets/FileWidget
-msgid "Press Enter to browse files from your computer."
-msgstr "Presiona Enter para seleccionar archivos de tu ordenador."
-
 #. Default: "Press Space to add items. Press Delete or Backspace to remove."
 #: components/manage/Widgets/SelectStyling
 msgid "Press Space to add items. Press Delete or Backspace to remove."
