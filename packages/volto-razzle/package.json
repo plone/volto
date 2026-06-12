@@ -35,7 +35,7 @@
     "deepmerge": "^4.2.2",
     "dotenv": "^8.2.0",
     "dotenv-expand": "^5.1.0",
-    "esbuild": "0.25.12",
+    "esbuild": "0.28.1",
     "file-loader": "^6.2.0",
     "fs-extra": "^9.1.0",
     "mri": "^1.1.4",
