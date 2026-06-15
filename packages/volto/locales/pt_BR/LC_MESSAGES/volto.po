@@ -1253,18 +1253,14 @@ msgstr "Baixar {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arraste e solte arquivos do seu computador para esta área, ou clique no botão ‘Procurar’."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Solte um arquivo aqui ou clique para substituir o arquivo existente"
+msgid "Drop file here to replace the existing file"
+msgstr "Área de upload de arquivo. Pressione Enter ou clique para substituir o arquivo existente"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Solte um arquivo aqui ou clique para fazer upload"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Solte um arquivo aqui para enviar um novo arquivo"
@@ -1623,10 +1619,10 @@ msgstr "O arquivo não é do tipo aceito {accept}"
 msgid "File size"
 msgstr "Tamanho do arquivo"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Área de upload de arquivo. Pressione Enter para abrir o seletor de arquivos"
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Área de upload de arquivo. Pressione Enter ou clique para substituir o arquivo existente"
 
 #. Default: "File view"
 #: config/Views
@@ -2927,6 +2923,11 @@ msgstr "Criado com Plone e Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferências"
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Área de upload de arquivo. Pressione Enter ou clique para abrir o gerenciador de arquivos"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

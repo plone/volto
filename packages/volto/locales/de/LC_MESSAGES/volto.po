@@ -1254,18 +1254,14 @@ msgstr "{filename} herunterladen"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken Sie den “Durchsuchen”-Knopf."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Datei hier ablegen oder klicken, um die vorhandene Datei zu ersetzen"
+msgid "Drop file here to replace the existing file"
+msgstr "Datei-Upload-Bereich. Enter drücken oder klicken, um die vorhandene Datei zu ersetzen"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Datei hier ablegen oder klicken zum Hochladen"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Datei hier ablegen um eine neue Datei hochzuladen"
@@ -1624,10 +1620,10 @@ msgstr "Datei ist nicht vom akzeptierten Typ {accept}"
 msgid "File size"
 msgstr "Dateigröße"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Bereich zum Hochladen von Dateien. Enter drücken, um den Dateibrowser zu öffnen"
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Datei-Upload-Bereich. Enter drücken oder klicken, um die vorhandene Datei zu ersetzen"
 
 #. Default: "File view"
 #: config/Views
@@ -2928,6 +2924,11 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Einstellungen"
+
+#. Default: "File upload area. Press Enter or click to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Datei-Upload-Bereich. Enter drücken oder klicken, um den Datei-Browser zu öffnen"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
