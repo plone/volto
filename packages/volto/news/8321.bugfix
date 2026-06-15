@@ -1,0 +1,1 @@
+Add `aria-required` and `aria-invalid` attributes to `Input` fields inside `FormFieldWrapper` when the field is required or has errors, respectively. Also fixes the `blocks-table` Cypress test which was failing in headless/CI mode due to a fragile focus reset strategy. @Wagner3UB
