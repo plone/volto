@@ -63,7 +63,7 @@ exports[`RegistryImageWidget > renders a file widget component with value 1`] = 
             >
               <svg
                 class="icon"
-                style="height: 20px; width: auto; fill: currentColor;"
+                style="height: 20px; width: auto; fill: currentcolor;"
                 viewBox="0 0 36 36"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -80,6 +80,11 @@ exports[`RegistryImageWidget > renders a file widget component with value 1`] = 
               </svg>
             </button>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="visually-hidden"
+          />
         </div>
       </div>
     </div>
@@ -145,6 +150,11 @@ exports[`RegistryImageWidget > renders an empty file widget component 1`] = `
           </div>
           <div
             class="field-file-name"
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>

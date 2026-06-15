@@ -35,12 +35,12 @@ const messages = defineMessages({
     defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drop file here to replace the existing file',
-    defaultMessage: 'Drop file here to replace the existing file',
+    id: 'Drop a file here or click to replace the existing file',
+    defaultMessage: 'Drop a file here or click to replace the existing file',
   },
   fileDrag: {
-    id: 'Drop file here to upload a new file',
-    defaultMessage: 'Drop file here to upload a new file',
+    id: 'Drop a file here or click to upload',
+    defaultMessage: 'Drop a file here or click to upload',
   },
   replaceFile: {
     id: 'Replace existing file',
@@ -58,6 +58,18 @@ const messages = defineMessages({
   acceptError: {
     id: 'File is not of the accepted type {accept}',
     defaultMessage: 'File is not of the accepted type {accept}',
+  },
+  dragAndDropActionA11y: {
+    id: 'File upload area. Press Enter to open the file browser',
+    defaultMessage: 'File upload area. Press Enter to open the file browser',
+  },
+  requiredField: {
+    id: 'This field is required.',
+    defaultMessage: 'This field is required.',
+  },
+  downloadFile: {
+    id: 'Download {filename}',
+    defaultMessage: 'Download {filename}',
   },
 });
 
@@ -85,7 +97,7 @@ const messages = defineMessages({
  *
  */
 const FileWidget = (props) => {
-  const { id, value, onChange, isDisabled } = props;
+  const { id, value, onChange, isDisabled, fieldSet } = props;
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
 
@@ -167,6 +179,16 @@ const FileWidget = (props) => {
     reader.readAsDataURL(files[0]);
   };
 
+  const statusTextA11y = [
+    intl.formatMessage(messages.dragAndDropActionA11y), // Interaction instructions
+    props.required && intl.formatMessage(messages.requiredField), // Required field status
+    value?.filename, // Current file name if a file is uploaded
+  ]
+    .filter(Boolean)
+    .join('. ');
+
+  const errorTextA11y = props.error?.length ? props.error.join('. ') : null;
+
   return (
     <FormFieldWrapper {...props}>
       <Dropzone
@@ -175,7 +197,13 @@ const FileWidget = (props) => {
         {...(props.accept ? { accept: props.accept } : {})}
       >
         {({ getRootProps, getInputProps, isDragActive }) => (
-          <div className="file-widget-dropzone" {...getRootProps()}>
+          <div
+            className="file-widget-dropzone"
+            role="button"
+            aria-labelledby={`fieldset-${fieldSet}-field-label-${id}`}
+            aria-describedby={`field-${id}-status`}
+            {...getRootProps()}
+          >
             {isDragActive && <Dimmer active></Dimmer>}
             {fileType ? (
               <Image
@@ -201,31 +229,52 @@ const FileWidget = (props) => {
               </div>
             )}
 
-            <label className="label-file-widget-input">
+            {/* aria-hidden: keyboard access is handled by the parent div (role="button").
+                The label is a visual affordance only. The stopPropagation prevents the Dropzone
+                from opening the file dialog twice on click. */}
+            <label
+              className="label-file-widget-input"
+              htmlFor={`field-${id}`}
+              aria-hidden="true"
+              onClick={(e) => e.stopPropagation()}
+            >
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
             </label>
+            <span id={`field-${id}-status`} className="visually-hidden">
+              {statusTextA11y}
+            </span>
+            {errorTextA11y && (
+              <span role="alert" className="visually-hidden">
+                {errorTextA11y}
+              </span>
+            )}
             <input
               {...getInputProps({
                 type: 'file',
                 style: { display: 'none' },
               })}
               id={`field-${id}`}
+              {...(props.required && { 'aria-required': true })}
+              {...(props.error?.length > 0 && { 'aria-invalid': true })}
               name={id}
-              type="file"
               disabled={isDisabled}
             />
           </div>
         )}
       </Dropzone>
-      <div className="field-file-name">
-        {value && (
-          <UniversalLink href={value.download} download={true}>
+      {value && (
+        <div className="field-file-name">
+          <UniversalLink
+            href={value.download}
+            aria-label={intl.formatMessage(messages.downloadFile, {
+              filename: value.filename,
+            })}
+            download={true}
+          >
             {value.filename}
           </UniversalLink>
-        )}
-        {value && (
           <Button
             type="button"
             icon
@@ -240,8 +289,8 @@ const FileWidget = (props) => {
           >
             <Icon name={deleteSVG} size="20px" />
           </Button>
-        )}
-      </div>
+        </div>
+      )}
     </FormFieldWrapper>
   );
 };
@@ -256,6 +305,7 @@ FileWidget.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
+  fieldSet: PropTypes.string,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.shape({
     '@type': PropTypes.string,
@@ -273,6 +323,7 @@ FileWidget.propTypes = {
 FileWidget.defaultProps = {
   description: null,
   required: false,
+  fieldSet: null,
   error: [],
   value: null,
 };

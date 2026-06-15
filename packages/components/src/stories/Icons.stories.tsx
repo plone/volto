@@ -106,6 +106,10 @@ const IconsList: React.FC = () => {
     Icons.UserIcon,
     Icons.VideoIcon,
     Icons.VoltoIcon,
+    Icons.WidthNarrowIcon,
+    Icons.WidthDefaultIcon,
+    Icons.WidthLayoutIcon,
+    Icons.WidthFullIcon,
     Icons.WindowedIcon,
     Icons.WorldIcon,
   ];
@@ -135,7 +139,7 @@ const IconsList: React.FC = () => {
               fontSize: '14px',
             }}
           >
-            <QuantaIcon size="L" />
+            <QuantaIcon size="lg" />
             <br />
             {QuantaIcon.name.replace('Icon', '')}
           </span>

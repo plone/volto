@@ -27,12 +27,6 @@ jobs:
       - name: Run unit tests Volto
         run: pnpm --filter @plone/volto test
 
-      # Bundlewatch
-      # - run: yarn build
-      # - uses: jackyef/bundlewatch-gh-action@master
-      #   with:
-      #     bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
-
   registry:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
     name: '@plone/registry'
@@ -110,25 +104,33 @@ jobs:
       - name: Run unit tests @plone/components
         run: pnpm --filter @plone/components test
 
-  client:
-    name: '@plone/client'
+  volto-razzle:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: '@plone/volto-razzle'
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22.x, 24.x]
+
     steps:
       - uses: actions/checkout@v5
 
+      - name: Set up Node.js environment
+        uses: ./.github/actions/node_env_setup
+        with:
+          node-version: ${{ matrix.node-version }}
+      # node setup
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-
       - name: Enable corepack
         run: npm i -g corepack@latest && corepack enable
-
       - name: Get pnpm store directory
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
       - uses: actions/cache@v5
         name: Setup pnpm cache
         with:
@@ -136,12 +138,6 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-
       - run: pnpm i
-
-      - run: make acceptance-server-detached-start
-
-      - run: npx wait-on --httpTimeout 20000 http-get://localhost:55001/plone && pnpm --filter @plone/client test
-        working-directory: packages/client
-
-      - run: make acceptance-server-detached-stop
+      - name: Run unit tests @plone/razzle
+        run: pnpm --filter @plone/razzle test

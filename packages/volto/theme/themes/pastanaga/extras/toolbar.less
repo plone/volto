@@ -720,8 +720,16 @@ body:not(.has-sidebar):not(.has-sidebar-collapsed) {
   .toolbar-compare-translations-wrapper {
     position: relative;
 
-    .toolbar-button-compare-translations .icon {
-      padding: 4px;
+    .toolbar-button-compare-translations {
+      display: flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+
+      .icon {
+        padding: 4px;
+      }
     }
 
     .compare-languages {
