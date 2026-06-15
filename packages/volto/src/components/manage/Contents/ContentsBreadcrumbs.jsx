@@ -1,5 +1,6 @@
 import React from 'react';
 import { Breadcrumb } from 'semantic-ui-react';
+import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import { Link, useLocation } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import langmap from '@plone/volto/helpers/LanguageMap/LanguageMap';
@@ -41,22 +42,22 @@ const ContentsBreadcrumbs = (props) => {
         </>
       )}
       {settings.isMultilingual && pathname?.split('/')?.length > 2 && (
-        <Link
-          to={`/${lang}/contents`}
+        <UniversalLink
+          href={`/${lang}/contents`}
           className="section"
           title={intl.formatMessage(messages.home)}
         >
           {langmap?.[lang]?.nativeName ?? lang}
-        </Link>
+        </UniversalLink>
       )}
       {!settings.isMultilingual && (
-        <Link
-          to="/contents"
+        <UniversalLink
+          href="/contents"
           className="section"
           title={intl.formatMessage(messages.home)}
         >
           <ContentsBreadcrumbsHomeItem />
-        </Link>
+        </UniversalLink>
       )}
       {items.map((breadcrumb, index, breadcrumbs) => [
         <Breadcrumb.Divider key={`divider-${breadcrumb.url}`} />,
