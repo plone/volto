@@ -88,9 +88,18 @@ exports[`No 'No value' option when default value is 0 1`] = `
                 class="react-select__indicators css-1wy0on6"
               >
                 <div
-                  aria-hidden="true"
+                  aria-hidden="false"
+                  aria-labelledby="fieldset-default-field-label-my-field undefined-clear-label"
                   class="react-select__indicator react-select__clear-indicator css-mszz6t"
+                  role="button"
+                  tabindex="0"
                 >
+                  <span
+                    hidden=""
+                    id="undefined-clear-label"
+                  >
+                    Clear selection
+                  </span>
                   <svg
                     class="icon"
                     style="height: 18px; width: auto; fill: #e40166;"
