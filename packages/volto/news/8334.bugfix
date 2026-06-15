@@ -1,1 +1,1 @@
-Restore original i18n msgid keys in FileWidget and RegistryImageWidget that were inadvertently renamed in #7982, breaking backward compatibility with existing translations. Add missing translations for all 65 supported languages.
+Restored original i18n `msgid` keys in `FileWidget` and `RegistryImageWidget` that were inadvertently renamed in #7982, breaking backward compatibility with existing translations. Added missing translations for all 65 supported languages. @Wagner3UB
