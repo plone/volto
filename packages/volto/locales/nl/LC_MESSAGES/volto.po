@@ -690,6 +690,11 @@ msgstr "Filters leegmaken"
 msgid "Clear search"
 msgstr "Zoek leegmaken"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Selectie wissen"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"

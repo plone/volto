@@ -689,6 +689,11 @@ msgstr "Rensa filter"
 msgid "Clear search"
 msgstr "Rensa sökning"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Rensa val"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
