@@ -1642,6 +1642,11 @@ msgstr "Corectează relațiile"
 msgid "Fixed width table cells"
 msgstr "Celule de tabel cu lățimea fixă"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Concentrează-te pe"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -2314,6 +2319,16 @@ msgstr "Mediu"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Membru actualizat"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Meniu închis"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Meniu deschis"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
