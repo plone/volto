@@ -26,43 +26,43 @@ describe('Table Block Tests', () => {
     // Wait for table editor to appear instead of hardcoded wait
     cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
 
-    // No border in input
+    // No border in input — check on second cell so first cell gets a fresh click for typing
     cy.get('.block-editor-slateTable [role=textbox]')
-      .first()
+      .eq(1)
       .click()
       .should('have.css', 'outline-style', 'none');
+
+    // Click outside the table to reset Slate focus before typing in cells
+    cy.get('body').click(0, 0);
+    cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
 
     cy.get(
       '.celled.fixed.table thead tr th:first-child() [contenteditable="true"]',
     )
-      .focus()
       .click()
-      .type('column 1 / row 1')
-      .should('have.text', 'column 1 / row 1');
+      .should('be.focused')
+      .type('column 1 / row 1');
 
     cy.get(
       '.celled.fixed.table thead tr th:nth-child(2) [contenteditable="true"]',
     )
-      .focus()
       .click()
-      .type('column 2 / row 1')
-      .should('have.text', 'column 2 / row 1');
+      .should('be.focused')
+      .type('column 2 / row 1');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:first-child() [contenteditable="true"]',
     )
-      .focus()
       .click()
-      .type('column 1 / row 2')
-      .should('have.text', 'column 1 / row 2');
+      .should('be.focused')
+      .type('column 1 / row 2');
 
     cy.get(
       '.celled.fixed.table tbody tr:nth-child(1) td:nth-child(2) [contenteditable="true"]',
     )
-      .focus()
       .click()
-      .type('column 2 / row 2')
-      .should('have.text', 'column 2 / row 2');
+      .should('be.focused')
+      .type('column 2 / row 2');
 
     cy.get('button[title="Insert col after"]').click();
     cy.get('button[title="Insert row after"]').click();
@@ -119,12 +119,11 @@ describe('Table Block Tests', () => {
       .should('be.visible')
       .and('not.be.disabled');
 
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
+    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click({
+      waitForAnimations: false,
+    });
 
-    // without the second click the test fails. so this makes the test green.
-    cy.get(
-      '.celled.fixed.table thead tr:first-child() th:nth-child(2)',
-    ).click();
+    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click();
 
     cy.get('button[title="Delete col"]').click();
     cy.get(
