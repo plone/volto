@@ -720,6 +720,11 @@ msgstr "清除过滤器"
 msgid "Clear search"
 msgstr ""
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "清除选择"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"

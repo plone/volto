@@ -305,7 +305,7 @@ class SelectWidget extends Component {
                 : undefined,
             );
           }}
-          isClearable={this.props.isClearable}
+          isClearable={!this.props.required && this.props.isClearable}
         />
       </FormFieldWrapper>
     );

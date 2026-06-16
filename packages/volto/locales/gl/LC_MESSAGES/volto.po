@@ -719,6 +719,11 @@ msgstr "Limpar filtros"
 msgid "Clear search"
 msgstr "Limpar busca"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Borrar a selección"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
