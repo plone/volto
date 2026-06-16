@@ -2928,6 +2928,11 @@ msgstr "Criado com Plone e Python"
 msgid "Preferences"
 msgstr "Preferências"
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "Prima Espaço para adicionar itens. Prima Eliminar ou Backspace para remover."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -5125,6 +5130,12 @@ msgstr "Pendente"
 msgid "pickAnImage"
 msgstr "Selecione uma imagem existente"
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "Prima Seta para baixo para abrir o menu."
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5355,6 +5366,12 @@ msgstr "Seleção"
 msgid "selectView"
 msgstr "Escolha a visão"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} está em foco."
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5435,6 +5452,12 @@ msgstr ""
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Alternar"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "Escreva para filtrar a lista."
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

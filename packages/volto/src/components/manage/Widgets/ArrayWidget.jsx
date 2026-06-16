@@ -47,6 +47,18 @@ const messages = defineMessages({
     id: 'No options',
     defaultMessage: 'No options',
   },
+  select_is_focused: {
+    id: 'select_is_focused',
+    defaultMessage: '{label} is focused.',
+  },
+  type_to_refine: {
+    id: 'type_to_refine',
+    defaultMessage: 'Type to refine list.',
+  },
+  press_down_to_open: {
+    id: 'press_down_to_open',
+    defaultMessage: 'Press Down Arrow to open the menu.',
+  },
 });
 
 function arrayMove(array, from, to) {
@@ -403,6 +415,31 @@ class ArrayWidget extends Component {
               }
               isClearable
               isMulti
+              ariaLiveMessages={{
+                onFocus: (props) => {
+                  if (props.context === 'input') {
+                    return [
+                      this.props.intl.formatMessage(
+                        messages.select_is_focused,
+                        {
+                          label:
+                            props['aria-label'] ||
+                            this.props.intl.formatMessage(messages.select),
+                        },
+                      ),
+                      props.isSearchable
+                        ? this.props.intl.formatMessage(messages.type_to_refine)
+                        : '',
+                      this.props.intl.formatMessage(
+                        messages.press_down_to_open,
+                      ),
+                    ]
+                      .filter(Boolean)
+                      .join(' ');
+                  }
+                  return '';
+                },
+              }}
             />
           </SortableContext>
         </DndContext>

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-05-22T13:57:05.194Z\n"
+"POT-Creation-Date: 2026-06-12T08:17:41.867Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -2924,6 +2924,11 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr ""
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -5121,6 +5126,12 @@ msgstr ""
 msgid "pickAnImage"
 msgstr ""
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr ""
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5351,6 +5362,12 @@ msgstr ""
 msgid "selectView"
 msgstr ""
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr ""
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5430,6 +5447,12 @@ msgstr ""
 #. Default: "Toggle"
 #: config/Blocks
 msgid "toggleFacet"
+msgstr ""
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
 msgstr ""
 
 #. Default: "Update from version {origin} to {destination}"
