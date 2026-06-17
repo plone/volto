@@ -1,0 +1,1 @@
+Hide the clear button on required `Select` and `ArrayWidget` fields to prevent invalid state and improve accessibility. @Wagner3UB
