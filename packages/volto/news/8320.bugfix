@@ -1,0 +1,1 @@
+Improved accessibility of `FileWidget` and `RegistryImageWidget`: added proper ARIA roles, labels, and screen reader announcements for the dropzone area, required state, and file download link. @Wagner3UB
