@@ -89,7 +89,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
               >
                 <div
                   aria-hidden="false"
-                  aria-labelledby="fieldset-default-field-label-my-field undefined-clear-label"
+                  aria-label="Clear selection"
                   class="react-select__indicator react-select__clear-indicator css-mszz6t"
                   role="button"
                   tabindex="0"
