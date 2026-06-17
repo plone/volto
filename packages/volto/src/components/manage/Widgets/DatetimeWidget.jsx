@@ -50,6 +50,10 @@ const messages = defineMessages({
     id: 'Clear date/time',
     defaultMessage: 'Clear date and time',
   },
+  allTimezonesEqual: {
+    id: 'allTimezonesEqual',
+    defaultMessage: 'Use the same timezone for start and end',
+  },
 });
 
 const PrevIcon = () => (
@@ -91,13 +95,20 @@ const defaultTimeDateOnly = {
 };
 
 const TimezoneSelector = injectLazyLibs(['reactSelect'])(({
-  value,
+  id,
+  formData,
+  timezoneFields,
   onChange,
   reactSelect,
 }) => {
   const intl = useIntl();
   const [open, setOpen] = useState(false);
   const Select = reactSelect.default;
+  const allTimezonesEqual = timezoneFields.reduce(
+    (prev, current) =>
+      prev !== undefined &&
+      formData[`${prev}.timezone`] === formData[`${current}.timezone`],
+  );
 
   return (
     <div className="date-time-widget-timezone">
@@ -106,31 +117,44 @@ const TimezoneSelector = injectLazyLibs(['reactSelect'])(({
         aria-label={intl.formatMessage(messages.editTimezone)}
         onClick={() => setOpen(!open)}
       >
-        <Icon name={clockSVG} size="16px" /> {open ? null : value}
+        <Icon name={clockSVG} size="16px" />{' '}
+        {open ? null : formData[`${id}.timezone`]}
       </button>
       {open ? (
         <div className="date-time-widget-timezone-selector">
-          <Select
-            placeholder={intl.formatMessage(messages.editTimezone)}
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
-            value={{ value, label: value }}
-            onChange={(option) => {
-              onChange(option.value);
-              setOpen(false);
-            }}
-            onBlur={() => setOpen(false)}
-            options={Intl.supportedValuesOf('timeZone').map((tz) => ({
-              value: tz,
-              label: tz,
-            }))}
-            styles={customSelectStyles}
-            theme={selectTheme}
-            components={{
-              DropdownIndicator,
-              Option,
-            }}
-          />
+          <label>
+            <input type="checkbox" checked={allTimezonesEqual} />
+            {intl.formatMessage(messages.allTimezonesEqual)}
+          </label>
+          {timezoneFields.map((key) => (
+            <React.Fragment key={key}>
+              <label>{key}</label>
+              <Select
+                placeholder={intl.formatMessage(messages.editTimezone)}
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
+                value={{
+                  value: formData[`${key}.timezone`],
+                  label: formData[`${key}.timezone`],
+                }}
+                onChange={(option) => {
+                  onChange(option.value);
+                  setOpen(false);
+                }}
+                onBlur={() => setOpen(false)}
+                options={Intl.supportedValuesOf('timeZone').map((tz) => ({
+                  value: tz,
+                  label: tz,
+                }))}
+                styles={customSelectStyles}
+                theme={selectTheme}
+                components={{
+                  DropdownIndicator,
+                  Option,
+                }}
+              />
+            </React.Fragment>
+          ))}
         </div>
       ) : null}
     </div>
@@ -167,7 +191,10 @@ const DatetimeWidgetComponent = (props) => {
   const renderWidget = !(id === 'end' && formData?.open_end);
 
   const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const selectedTimezone = formData?.[id + '_timezone'] || localTimezone;
+  const selectedTimezone = formData?.[id + '.timezone'] || localTimezone;
+  const timezoneFields = Object.keys(formData).filter((k) =>
+    ['start', 'end'].contains(k),
+  );
 
   useEffect(() => {
     const parsedDateTime = parseDateTime(
@@ -182,7 +209,8 @@ const DatetimeWidgetComponent = (props) => {
     );
   }, [value, lang, moment, selectedTimezone]);
 
-  const getInternalValue = () => {
+  const getInternalValue = (field) => {
+    const value = formData[field ?? id];
     return parseDateTime(
       toBackendLang(lang),
       value,
@@ -229,15 +257,15 @@ const DatetimeWidgetComponent = (props) => {
     }
   };
 
-  const onTimezoneChange = (timezone) => {
+  const onTimezoneChange = (timezone, field) => {
     if (timezone) {
-      let value = getInternalValue();
+      let value = getInternalValue(field);
       value = value.utcOffset(
         getTimeZoneOffset(value.toDate(), timezone),
         true,
       );
       onChange(id, value.toISOString());
-      onChange(id + '_timezone', timezone);
+      onChange(field + '.timezone', timezone);
     }
   };
 
@@ -348,7 +376,7 @@ const DatetimeWidgetComponent = (props) => {
               </button>
             )}
           </div>
-          {id === 'start' || id === 'end' ? (
+          {timezoneFields.contains(id) ? (
             <TimezoneSelector
               value={selectedTimezone}
               onChange={onTimezoneChange}
