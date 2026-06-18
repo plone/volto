@@ -43,6 +43,10 @@ To install the add-on, use the following command.
 make install
 ```
 
+This command is the development-mode alias for `make install-dev`.
+When you want to validate the generated deployment app, use `make install-deploy`.
+Use `make clean-deploy` to remove the generated deployment app and force a fresh deploy-mode install.
+
 This will take a few minutes.
 ☕️
 When the process completes successfully, it will exit with no message.
@@ -87,6 +91,10 @@ Start the Plone frontend with the following command.
 ```shell
 make start
 ```
+
+This command is the development-mode alias for `make start-dev`.
+To start the generated deployment app instead, use `make start-deploy`.
+To smoke test the deployment app in production mode, use `make start-prod-deploy`.
 
 The Plone frontend server starts up and emits messages to the console, and should end with the following.
 ```console
