@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 16.34.2 (2026-06-18)
+
+### Bugfix
+
+- Fix project generator acceptance test on Node 16. @davisagli [#7421](https://github.com/plone/volto/issues/7421)
+- Added more resilience to the API and Robots helper methods, based and backported from https://github.com/plone/volto/pull/8198 @sneridagh 
+
 ## 16.34.1 (2025-09-29)
 
 ### Bugfix

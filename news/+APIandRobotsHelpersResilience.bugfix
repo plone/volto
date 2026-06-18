@@ -1,1 +1,0 @@
-Added more resilience to the API and Robots helper methods, based and backported from https://github.com/plone/volto/pull/8198 @sneridagh
