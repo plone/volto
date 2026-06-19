@@ -93,8 +93,8 @@ describe('Table Block Tests', () => {
 
     // Edit
     cy.visit('/my-page/edit');
-    cy.wait('@schema');
     cy.wait('@content');
+    cy.wait('@schema');
 
     // Wait for toolbar to be visible — this is the last reliable signal
     // that all async chunks have finished loading
@@ -103,33 +103,19 @@ describe('Table Block Tests', () => {
     // Wait for the table and the target cell to be fully interactive.
     // Using a generous timeout since chunk loading in CI can be slow.
     cy.get('.celled.fixed.table', { timeout: 15000 }).should('be.visible');
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)', {
+    cy.get('.celled.fixed.table tr:first-child th:nth-child(2)', {
       timeout: 15000,
     })
       .should('be.visible')
-      .and('not.be.disabled');
-
-    cy.get('.celled.fixed.table tr:first-child() th:nth-child(2)').click({
-      waitForAnimations: false,
-    });
-
-    // without the second click the test fails. so this makes the test green.
-    cy.get(
-      '.celled.fixed.table thead tr:first-child() th:nth-child(2)',
-    ).click();
+      .and('not.be.disabled')
+      .click();
 
     cy.get('button[title="Delete col"]').click();
-    cy.get(
-      '.celled.fixed.table thead tr:first-child() th:nth-child(3)',
-    ).click();
+    cy.get('.celled.fixed.table thead tr:first-child th:nth-child(3)').click();
     cy.get('button[title="Delete col"]').click();
-    cy.get(
-      '.celled.fixed.table tbody tr:first-child() td:first-child()',
-    ).click();
+    cy.get('.celled.fixed.table tbody tr:first-child td:first-child').click();
     cy.get('button[title="Delete row"]').click();
-    cy.get(
-      '.celled.fixed.table tbody tr:nth-child(2) td:first-child()',
-    ).click();
+    cy.get('.celled.fixed.table tbody tr:nth-child(2) td:first-child').click();
     cy.get('button[title="Delete row"]').click();
 
     // Save
@@ -149,10 +135,11 @@ describe('Table Block Tests', () => {
       'have.text',
       'column 2 / row 1',
     );
-    cy.get(
-      '.celled.fixed.table tbody tr:first-child() td:first-child()',
-    ).should('contain', 'column 1 / row 2');
-    cy.get('.celled.fixed.table tbody tr:first-child() td:nth-child(2)').should(
+    cy.get('.celled.fixed.table tbody tr:first-child td:first-child').should(
+      'contain',
+      'column 1 / row 2',
+    );
+    cy.get('.celled.fixed.table tbody tr:first-child td:nth-child(2)').should(
       'contain',
       'column 2 / row 2',
     );
