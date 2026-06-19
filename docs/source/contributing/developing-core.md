@@ -154,6 +154,21 @@ make install
 ```
 
 
+(developing-core-dependency-updates-label)=
+
+### Dependency updates
+
+Whenever you add, remove, or update a dependency in {file}`package.json`, either in the repository root or in any workspace under {file}`packages/`, you must:
+
+1.  Run `make install` from the repository root.
+2.  Commit the updated {file}`pnpm-lock.yaml` lockfile.
+
+If you skip these steps, the lockfile will be out of sync.
+Tests may fail both locally and, after you push the commit, in continuous integration.
+
+Additionally, after you pull changes from upstream that touch either dependencies or the lockfile, you should run `make install`.
+
+
 (develop-volto-start-plone-label)=
 
 ## Start Plone

@@ -67,7 +67,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
                   >
                     <input
                       aria-autocomplete="list"
-                      aria-labelledby="fieldset-default-field-label-my-field"
+                      aria-label="My field"
                       autocapitalize="none"
                       autocomplete="off"
                       autocorrect="off"
@@ -191,6 +191,7 @@ exports[`No 'No value' option when default value is 0 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -263,7 +264,7 @@ exports[`renders an array widget component 1`] = `
                 >
                   <input
                     aria-autocomplete="list"
-                    aria-labelledby="fieldset-default-field-label-my-field"
+                    aria-label="My field"
                     autoCapitalize="none"
                     autoComplete="off"
                     autoCorrect="off"
@@ -380,6 +381,7 @@ exports[`renders an array widget component 1`] = `
         <div
           aria-atomic="true"
           aria-live="polite"
+          className="visually-hidden"
         />
       </div>
     </div>
