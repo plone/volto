@@ -1142,11 +1142,6 @@ msgstr "Gelöscht"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Das Löschen dieses Elements wird {brokenReferences} {variation} brechen."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Tiefe"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents

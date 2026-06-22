@@ -1142,11 +1142,6 @@ msgstr "Ezabatuta"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Elementu hau ezabatzean {brokenReferences} {variation} apurtuko dira."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Sakonera"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
