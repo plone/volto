@@ -1110,11 +1110,6 @@ msgstr "Apagado"
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "Apagar este elemento quebra {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Profundidade"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents

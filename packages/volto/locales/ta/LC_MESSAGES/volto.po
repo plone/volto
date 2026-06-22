@@ -1111,11 +1111,6 @@ msgstr "நீக்கப்பட்டது"
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "இந்த உருப்படியை நீக்குதல் {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "ஆழம்"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents

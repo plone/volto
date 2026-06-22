@@ -1116,11 +1116,6 @@ msgstr "Șters"
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "Ștergerea acestui element întrerupe {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Adâncime"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
