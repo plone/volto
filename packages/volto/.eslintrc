@@ -58,9 +58,6 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"],
       },
       "node": { "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"] },
-      "babel-plugin-root-import": {
-        "rootPathSuffix": "src",
-      },
     },
     "import/core-modules": ["load-volto-addons"],
     "react": {

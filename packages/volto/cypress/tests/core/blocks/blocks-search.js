@@ -499,6 +499,23 @@ describe('Search Block Tests', () => {
   });
 
   it('Search block - test on edit sort on and sort order', () => {
+    // Publish the created contents with different effective dates
+    cy.setWorkflow({
+      path: 'my-page',
+      effective: '2025-01-01T08:00:00',
+      expires: '2025-12-31T08:00:00',
+    });
+    cy.setWorkflow({
+      path: 'my-folder',
+      effective: '2024-01-01T08:00:00',
+      expires: '2024-12-31T08:00:00',
+    });
+    cy.setWorkflow({
+      path: 'my-event',
+      effective: '2023-01-01T08:00:00',
+      expires: '2023-12-31T08:00:00',
+    });
+
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
     cy.get('#toolbar-add-document').click();
@@ -540,7 +557,7 @@ describe('Search Block Tests', () => {
     // reverse order
     cy.get('label[for=field-sort_order_boolean-2-query]').click();
     //check if the sorting order is working
-    cy.get('.listing-item').first().contains('My Event');
+    cy.get('.listing-item').first().contains('My page');
     cy.get('#select-listingblock-sort-on').click();
     cy.get('.react-select__menu .react-select__group')
       .first()
@@ -620,7 +637,7 @@ describe('Search Block Tests', () => {
 
     cy.findByText('Effective date').click();
 
-    cy.get('div#select-search-sort-on.search-react-select-container').contains(
+    cy.get('.search-sort-on .search-react-select-container').contains(
       'Effective date',
     );
 
@@ -671,11 +688,11 @@ describe('Search Block Tests', () => {
     cy.findByText('Effective date').click();
 
     cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
+      '.search-sort-on .search-react-select-container.css-2b097c-container',
     ).contains('Effective date');
-    cy.get('#select-search-sort-on').click();
+    cy.get('.search-sort-on .search-react-select-container').click();
     cy.get(
-      'div#select-search-sort-on.search-react-select-container.css-2b097c-container',
+      '.search-sort-on .search-react-select-container.css-2b097c-container',
     ).contains('Order in folder');
     // Verify the presence of Ascending button
     cy.get('button[title="Ascending"]').should('be.visible');

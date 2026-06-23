@@ -48,12 +48,15 @@ const TranslationObject = ({
       let lang =
         config.settings.supportedLanguages[Object.keys(locales).length];
       const langFileName = toGettextLang(lang);
-      import(
-        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-      ).then((locale) => {
-        setLocales({ ...locales, [toReactIntlLang(lang)]: locale.default });
-        setLoadingLocale(false);
-      });
+      import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+        .then((locale) => {
+          setLocales({ ...locales, [toReactIntlLang(lang)]: locale.default });
+          setLoadingLocale(false);
+        })
+        .catch(() => {
+          setLocales({ ...locales, [toReactIntlLang(lang)]: {} });
+          setLoadingLocale(false);
+        });
     }
   }, [loadingLocale, locales]);
 
@@ -83,7 +86,7 @@ const TranslationObject = ({
             active={activeMenu === 'language'}
             onClick={handleMenuClick}
           >
-            {langmap[lang].nativeName}
+            {langmap[lang]?.nativeName || lang}
           </Menu.Item>
           {visual && (
             <Menu.Item
@@ -107,7 +110,7 @@ const TranslationObject = ({
             hideActions
             pathname={flattenToAppURL(translationObject['@id'])}
             visual={visual}
-            title={langmap[lang].nativeName}
+            title={langmap[lang]?.nativeName || lang}
             loading={false}
             isFormSelected={isFormSelected}
             onSelectForm={onSelectForm}

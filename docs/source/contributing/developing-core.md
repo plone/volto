@@ -36,7 +36,7 @@ This allows the code to be shared effectively, and unifies tracking of changes a
 
 This monorepo uses pnpm as a package manager, extensively using its {term}`workspace` feature.
 It's organized in two folders, depending on whether it's a library (package) or an app.
-The workspaces are located in the `packages` or `apps` folder.
+The workspaces are located in the `packages` folder.
 
 
 ### Folder layout
@@ -46,21 +46,11 @@ The package `volto` is the core code of Volto.
 
 ```text
 /
-├─ apps/
-│  ├─ nextjs
-│  └─ rr7
-├─ ...
 ├─ packages/
-│  ├─ blocks
-│  ├─ client
 │  ├─ components
 │  ├─ coresandbox
-│  ├─ helpers
-│  ├─ providers
 │  ├─ registry
 │  ├─ scripts
-│  ├─ slots
-│  ├─ theming
 │  ├─ tsconfig
 │  ├─ types
 │  ├─ volto
@@ -164,6 +154,21 @@ make install
 ```
 
 
+(developing-core-dependency-updates-label)=
+
+### Dependency updates
+
+Whenever you add, remove, or update a dependency in {file}`package.json`, either in the repository root or in any workspace under {file}`packages/`, you must:
+
+1.  Run `make install` from the repository root.
+2.  Commit the updated {file}`pnpm-lock.yaml` lockfile.
+
+If you skip these steps, the lockfile will be out of sync.
+Tests may fail both locally and, after you push the commit, in continuous integration.
+
+Additionally, after you pull changes from upstream that touch either dependencies or the lockfile, you should run `make install`.
+
+
 (develop-volto-start-plone-label)=
 
 ## Start Plone
@@ -253,9 +258,9 @@ Browse to the frontend running at http://localhost:3000.
 ## Run commands for pnpm workspaces
 
 As mentioned in {ref}`developing-core-monorepo-structure-label`, pnpm has the concept of {term}`workspace`.
-Every package or app located in the `packages` or `apps` folders is declared as a pnpm workspace.
+Every package located in the {file}`packages` folder is declared as a pnpm workspace.
 
-When developing Volto, you can run pnpm commands from either the repository root or inside the package's or app's workspace in `packages/<package_name>` or `apps/<app_name>`.
+When developing Volto, you can run pnpm commands from either the repository root or inside the package's workspace in {file}`packages/<package_name>`.
 
 pnpm commands will apply in the context from which they are run.
 That means when you run a pnpm command from the repository root, it will apply to all workspaces.
@@ -360,50 +365,7 @@ Plone 6 comes with two frontend {term}`reference implementation`s.
 Volto is the default frontend, and is React-based.
 Classic UI is the Python-based, server-side rendered frontend.
 
-In Volto's `apps` folder, you'll find a Volto project scaffolding that uses Volto as a library.
 This is the same as that which you'll have when you follow the instructions in {doc}`plone:install/create-project-cookieplone`).
-
-
-## Experimental frontends
-
-Other frontends are currently under heavy development.
-They are marked as experimental and, for now, they are a proof of concept demonstrating that other frontends are possible.
-Although they do work now in an acceptable way, the implementation might change in the future.
-These implementations only show how to access the public Plone content in the current site, dealing with data fetching and routing.
-All implementations are located in the `apps` directory in a subdirectory according to their implementation name.
-They use the Plone frontend strategic packages, including `@plone/registry`, `@plone/client`, and `@plone/components`.
-
-
-### Next.js
-
-This frontend is a proof of concept using Next.js with Plone.
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-nextjs dev
-```
-
-### Remix
-
-This frontend is a proof of concept using Remix with Plone.
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-remix dev
-```
-
-
-### React Router 7
-
-This frontend is a proof of concept using React Router 7 with Plone.
-
-You can try it out using the following command.
-
-```shell
-pnpm --filter plone-rr7 dev
-```
 
 
 ## Support libraries

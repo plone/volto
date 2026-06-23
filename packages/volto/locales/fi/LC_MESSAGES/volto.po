@@ -3,18 +3,19 @@ msgstr ""
 "Project-Id-Version: Plone\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-28T02:46:27.521Z\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Asko Soukka <asko.soukka@iki.fi>, 2020\n"
+"PO-Revision-Date: 2026-05-10 16:00+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language: fi\n"
-"Language-Team: Finnish (https://www.transifex.com/plone/teams/14552/fi/)\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/plone/volto-main/fi/>\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
-"Domain: volto\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: fi\n"
 "Language-Name: Finnish\n"
 "Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -466,6 +467,8 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -510,6 +513,17 @@ msgstr ""
 msgid "Block"
 msgstr "Palikka"
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -546,10 +560,10 @@ msgstr "Selaa sivustoa, raahaa ja pudota kuva, tai syötä URL"
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "Oletuksena käyttöoikeudet peritään aina edeltävältä sisältötasolta. Jos tämä valinta poistetaan, vain tällä tasolla erikseen määritellyt käyttöoikeudet ovat voimassa. {inherited} tarkoittaa perittyä käyttöoikeutta. {global} tarkoittaa ylläpitäjän myöntämää sivustonlaajuista käyttöoikeutta."
+msgstr "Oletuksena tämän kohteen säiliön oikeudet peritään. Jos poistat tämän käytöstä, vain nimenomaisesti määritellyt jakamisoikeudet ovat voimassa. Yhteenvedossa perityt arvot merkitään selkeästi tekstillä 'Peritty arvo' ja ne saavat vihreän tarkistusmerkin {inherited}. Vastaavasti sivuston ylläpitäjän hallinnoimat roolit merkitään tekstillä 'Globaali rooli' ja ne saavat sinisen tarkistusmerkin {global}."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -685,6 +699,11 @@ msgstr "Valitse tiedosto"
 msgid "Clear"
 msgstr "Tyhjennä"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Tyhjennä URL"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -699,6 +718,11 @@ msgstr "Tyhjennä suodattimet"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
 msgstr ""
+
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Tyhjennä valinta"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -843,6 +867,11 @@ msgstr "Sisältösäännöt ylemmistä kansioista"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
 msgstr ""
+
+#. Default: "Content title"
+#: components/manage/Blocks/Title/Edit
+msgid "Content title"
+msgstr "Sisällön otsikko"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1219,19 +1248,28 @@ msgstr "Lataa tapahtuma"
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Lataa {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Raahaa ja pudota tiedostoja tietokoneeltasi tähän tai paina “Selaa”."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "Drop a file here or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop file here to replace the existing file"
-msgstr "Pudota tiedosto tähän korvataksesi olemassaolevan tiedoston"
+msgid "Drop a file here or click to replace the existing file"
+msgstr "Pudota tiedosto tähän tai napsauta korvataksesi olemassa olevan tiedoston"
+
+#. Default: "Drop a file here or click to upload"
+#: components/manage/Widgets/FileWidget
+msgid "Drop a file here or click to upload"
+msgstr "Vedä tiedosto tähän tai lataa napsauttamalla"
 
 #. Default: "Drop file here to upload a new file"
-#: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Pudota tiedosto tähän ladataksesi uuden tiedoston"
@@ -1329,6 +1367,11 @@ msgstr "Sähköposti lähetetty"
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "Virhe upotuskoodissa. Seuraa ohjeita ja yritä uudelleen."
+
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
 
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
@@ -1504,6 +1547,11 @@ msgstr "Voimassaolevat vaihtoehtoiset URL:t tälle kohteelle"
 msgid "Expand sidebar"
 msgstr "Laajenna sivupalkki"
 
+#. Default: "Expand toolbar"
+#: components/manage/Toolbar/Toolbar
+msgid "Expand toolbar"
+msgstr "Laajenna työkalupalkkia"
+
 #. Default: "Expiration Date"
 #: components/manage/Contents/ContentsPropertiesModal
 msgid "Expiration Date"
@@ -1580,6 +1628,11 @@ msgstr ""
 msgid "File size"
 msgstr "Tiedoston koko"
 
+#. Default: "File upload area. Press Enter to open the file browser"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter to open the file browser"
+msgstr "Tiedostonlatausalue. Avaa tiedostoselain painamalla Enter"
+
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -1643,6 +1696,11 @@ msgstr ""
 msgid "Fixed width table cells"
 msgstr "Kiinteälevyiset sarakkeet"
 
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Kohdista"
+
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
 msgid "Fold"
@@ -1705,11 +1763,6 @@ msgstr "Yleinen"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "Sivustonlaajuinen rooli"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "Google Maps -upotuspalikka"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -1992,6 +2045,11 @@ msgstr ""
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
+msgstr ""
+
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
 msgstr ""
 
 #. Default: "Item batch size"
@@ -2295,6 +2353,11 @@ msgstr "Kartat"
 msgid "Maps URL"
 msgstr "Karta URL"
 
+#. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+#: helpers/MessageLabels/MessageLabels
+msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
+msgstr ""
+
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum length is {len}."
@@ -2315,6 +2378,16 @@ msgstr "Keskikokoinen"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Jäsenyys päivitetty"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
@@ -2631,6 +2704,12 @@ msgstr "Koko"
 msgid "Occurences"
 msgstr "Toistuminen"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2640,6 +2719,11 @@ msgstr "Ok"
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 msgstr ""
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Avaa URL-selain"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2715,6 +2799,11 @@ msgstr "Liitä"
 #. Default: "Paste blocks"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
+msgstr ""
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
 msgstr ""
 
 #. Default: "Perform the following actions:"
@@ -2813,6 +2902,16 @@ msgstr "Plone-säätiön"
 #: components/theme/Footer/Footer
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} avoimen lähdenkoodin sisällönhallintajärjestelmä CMS/WCM"
+
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Ponnahdusikkuna suljettu."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Ponnahdusikkuna avattu: {title}"
 
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -3337,6 +3436,11 @@ msgstr "Valitse toistumiseen lisättävä päivä"
 msgid "Select columns to show"
 msgstr "Näytettävät sarakkeet"
 
+#. Default: "Select option"
+#: components/manage/Blocks/Search/components/SelectFacet
+msgid "Select option"
+msgstr ""
+
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
@@ -3378,6 +3482,7 @@ msgid "Selection"
 msgstr "Valinta"
 
 #. Default: "Select…"
+#: components/manage/Blocks/Search/components/SelectFacet
 #: components/manage/Blocks/Search/widgets/SelectMetadataField
 #: components/manage/Contents/Contents
 #: components/manage/Widgets/ArrayWidget
@@ -3943,6 +4048,11 @@ msgstr ""
 msgid "Third"
 msgstr "Kolmas"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Tämä kenttä on pakollinen."
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -3992,6 +4102,7 @@ msgstr "Aika"
 #. Default: "Title"
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/ToC/Schema
+#: components/manage/Blocks/Video/schema
 #: components/manage/Contents/Contents
 #: components/manage/Contents/ContentsRenameModal
 #: components/manage/Controlpanels/ContentTypes
@@ -4007,6 +4118,11 @@ msgstr "Nimike"
 #: components/manage/Controlpanels/Rules/EditRule
 msgid "Title field error. Value not provided or already existing."
 msgstr "Otsikkovirhe. Arvoa ei syötetty tai se on jo olemassa."
+
+#. Default: "Toggle option"
+#: components/manage/Blocks/Search/components/ToggleFacet
+msgid "Toggle option"
+msgstr ""
 
 #. Default: "Total active and non-active objects"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -4126,6 +4242,16 @@ msgstr "URL-osoitteiden hallinta"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "URL-osoitteiden hallinta kohteelle {title}"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL puuttuu"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -4364,6 +4490,11 @@ msgstr "Video"
 msgid "Video URL"
 msgstr "Videon URL"
 
+#. Default: "The video's title is not displayed, but only used for accessibility reasons to identify the video for screen reader users. If the video is already sufficiently titled by a headline above, please leave this field empty."
+#: components/manage/Blocks/Video/schema
+msgid "VideoTitleDescription"
+msgstr ""
+
 #. Default: "View"
 #: components/manage/Contents/ContentsItem
 msgid "View"
@@ -4532,10 +4663,10 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "Ole hyvä ja {login} nähdäksesi tämän sivun."
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4551,6 +4682,11 @@ msgstr "Kommentoi sisältöä täyttämällä oheinen lomake."
 #: components/manage/Sharing/Sharing
 msgid "You can control who can view and edit your item using the list below."
 msgstr "Tällä sivulla voit hallita, kuka voi nähdä tai muokata sisältöä."
+
+#. Default: "You can not move this type of block to the new location"
+#: components/manage/Blocks/Block/Order/Order
+msgid "You can not move this type of block to the new location"
+msgstr ""
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4677,6 +4813,11 @@ msgstr "yleiset"
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
 msgstr "Vertaa"
+
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4896,13 +5037,10 @@ msgstr "luettelo"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "ladataan"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "kirjaudu"
 
 #. Default: "Maps"
 #: config/Blocks
@@ -4955,6 +5093,11 @@ msgstr "Ei"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "ei julkaisutilaa"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5267,6 +5410,26 @@ msgstr ""
 msgid "title"
 msgstr "nimike"
 
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Virhe"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Tiedote"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Onnistui"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Varoitus"
+
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
 #: config/Blocks
@@ -5349,6 +5512,11 @@ msgstr ""
 #. Default: "{id} Schema"
 #: components/manage/Controlpanels/ContentTypeSchema
 msgid "{id} Schema"
+msgstr ""
+
+#. Default: "{sources} or mp4 URL allowed"
+#: components/manage/Blocks/Video/Edit
+msgid "{sources} or mp4 URL allowed"
 msgstr ""
 
 #. Default: "{title} copied."

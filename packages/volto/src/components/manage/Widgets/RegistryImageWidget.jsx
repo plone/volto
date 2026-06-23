@@ -33,8 +33,8 @@ const messages = defineMessages({
     defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drop file here to replace the existing file',
-    defaultMessage: 'Drop file here to replace the existing file',
+    id: 'Drop a file here or click to replace the existing file',
+    defaultMessage: 'Drop a file here or click to replace the existing file',
   },
   fileDrag: {
     id: 'Drop file here to upload a new file',
@@ -99,7 +99,7 @@ const RegistryImageWidget = (props) => {
 
     readAsDataURL(file).then((data) => {
       const fields = data.match(/^data:(.*);(.*),(.*)$/);
-      onChange(id, `filenameb64:${btoa(file.name)};datab64:${fields[3]}}`);
+      onChange(id, `filenameb64:${btoa(file.name)};datab64:${fields[3]}`);
     });
 
     let reader = new FileReader();

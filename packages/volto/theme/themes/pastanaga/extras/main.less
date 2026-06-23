@@ -363,6 +363,7 @@ button {
     margin-left: 8px;
 
     h4 {
+      display: inline;
       margin-bottom: 0;
       font-weight: @bold;
     }
@@ -394,8 +395,6 @@ button {
 }
 
 .users-control-panel .table {
-  overflow-x: scroll;
-
   &::-webkit-scrollbar {
     width: 3px;
     height: 3px; /* scrollbar height */
@@ -486,6 +485,7 @@ fieldset.invisible {
 }
 
 .file-widget-dropzone {
+  padding-bottom: 1rem;
   outline: none;
 }
 
@@ -713,4 +713,6 @@ img.responsive {
 @import 'views';
 @import 'toc';
 @import 'grid.less';
+@import 'block-types.less';
+@import 'videoembed.less';
 .loadUIOverrides();
