@@ -48,16 +48,6 @@ export function mergeSlateWithBlockBackward(editor, prevBlock, event) {
       ...currentValue.slice(1),
     ];
 
-    // If the last child of the previous block's last node is a text node,
-    // Slate's normalization will merge it with the first child of the
-    // current block's first node (if it's also a text node). Point the
-    // cursor into the surviving (pre-merge) text node at the offset equal
-    // to its text length, so that after normalization the cursor lands at
-    // the correct position — the start of what was the current block's
-    // content. Without this, the cursor points to a child index that no
-    // longer exists after normalization, causing
-    // "Cannot find a descendant at path [..]" crashes on older Slate
-    // versions and incorrect cursor placement on newer ones. (#8347)
     const lastChild = lastNode.children[lastNode.children.length - 1];
     if (Text.isText(lastChild)) {
       cursor = {

@@ -1,1 +1,1 @@
-Fix Backspace behaving erratically near a styled or link text. @avoinea
+Fix Backspace behaving erratically near a styled or link text and fix cursor position after merging two same-type slate blocks via Backspace. @avoinea
