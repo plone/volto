@@ -99,7 +99,7 @@ Update the Storybook configuration file {file}`.storybook/main.js`.
 
 ```diff
 - const scssPlugin = require('razzle-plugin-scss');
-+ const scssPlugin = require('@plone/babel-preset-razzle/webpack-plugins/webpack-scss-plugin');
++ const scssPlugin = require('@plone/volto/webpack-plugins/webpack-scss-plugin');
 - const createConfig = require('razzle/config/createConfigAsync.js');
 + const createConfig = require('@plone/razzle/config/createConfigAsync.js');
 ```
@@ -408,6 +408,13 @@ To avoid this, we have forked the `razzle-plugin-scss` package and removed the d
 We pinned the version of `sass` to `1.32.0`, which is the one before they introduced the deprecation warnings.
 It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
 In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
+
+Update the Storybook configuration file {file}`.storybook/main.js`.
+
+```diff
+- const scssPlugin = require('razzle-plugin-scss');
++ const scssPlugin = require('@plone/volto/webpack-plugins/webpack-scss-plugin');
+```
 
 ### Table block is now wrapped with containers to support horizontal scrolling on small viewports
 ```{versionadded} Volto 19.0.0-alpha.26

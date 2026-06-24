@@ -720,6 +720,11 @@ msgstr "Garbitu filtroak"
 msgid "Clear search"
 msgstr "Garbitu bilaketa"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Garbitu hautapena"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
