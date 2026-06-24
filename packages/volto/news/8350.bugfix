@@ -1,0 +1,3 @@
+Removed redundant depth field from QuerystringWidget as it is already
+in QueryWidget when Location criteria is selected and when a path is
+selected in ObjectBrowserWidget. @sabrina-bongiovanni

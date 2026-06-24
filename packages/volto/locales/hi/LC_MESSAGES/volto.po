@@ -1141,11 +1141,6 @@ msgstr "हटा दिया गया"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "गहराई"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
