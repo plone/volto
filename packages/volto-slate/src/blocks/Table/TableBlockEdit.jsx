@@ -325,9 +325,7 @@ class Edit extends Component {
    * operation is done.
    * @returns {undefined}
    */
-  onInsertRowBefore(ev) {
-    ev.preventDefault();
-    ev.stopPropagation();
+  onInsertRowBefore() {
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -352,9 +350,7 @@ class Edit extends Component {
    * Insert row after handler
    * @returns {undefined}
    */
-  onInsertRowAfter(ev) {
-    ev.preventDefault();
-    ev.stopPropagation();
+  onInsertRowAfter() {
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -374,9 +370,7 @@ class Edit extends Component {
    * operation is done.
    * @returns {undefined}
    */
-  onInsertColBefore(ev) {
-    ev.preventDefault();
-    ev.stopPropagation();
+  onInsertColBefore() {
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -404,9 +398,7 @@ class Edit extends Component {
    * Insert column after handler
    * @returns {undefined}
    */
-  onInsertColAfter(ev) {
-    ev.preventDefault();
-    ev.stopPropagation();
+  onInsertColAfter() {
     const table = this.props.data.table;
     this.props.onChangeBlock(this.props.block, {
       ...this.props.data,
@@ -429,9 +421,7 @@ class Edit extends Component {
    * is selected.
    * @returns {undefined}
    */
-  onDeleteCol(ev) {
-    ev.preventDefault();
-    ev.stopPropagation();
+  onDeleteCol() {
     const table = this.props.data.table;
 
     if (this.state.selected.cell === table.rows[0].cells.length - 1) {
@@ -464,9 +454,7 @@ class Edit extends Component {
    * @method onDeleteRow
    * @returns {undefined}
    */
-  onDeleteRow(ev) {
-    ev.preventDefault();
-    ev.stopPropagation();
+  onDeleteRow() {
     const table = this.props.data.table;
 
     if (this.state.selected.row === table.rows.length - 1) {
@@ -517,6 +505,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onInsertRowBefore}
                 title={this.props.intl.formatMessage(messages.insertRowBefore)}
                 aria-label={this.props.intl.formatMessage(
@@ -530,6 +519,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onInsertRowAfter}
                 title={this.props.intl.formatMessage(messages.insertRowAfter)}
                 aria-label={this.props.intl.formatMessage(
@@ -543,6 +533,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onDeleteRow}
                 disabled={this.props.data.table?.rows?.length === 1}
                 title={this.props.intl.formatMessage(messages.deleteRow)}
@@ -555,6 +546,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onInsertColBefore}
                 title={this.props.intl.formatMessage(messages.insertColBefore)}
                 aria-label={this.props.intl.formatMessage(
@@ -568,6 +560,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onInsertColAfter}
                 title={this.props.intl.formatMessage(messages.insertColAfter)}
                 aria-label={this.props.intl.formatMessage(
@@ -581,6 +574,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onDeleteCol}
                 disabled={this.props.data.table?.rows?.[0].cells.length === 1}
                 title={this.props.intl.formatMessage(messages.deleteCol)}
