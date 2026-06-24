@@ -114,6 +114,11 @@ msgstr "Añadir contenido"
 msgid "Add Content Rule"
 msgstr "Añadir regla de contenido"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -1243,6 +1248,11 @@ msgstr "Vista de documento"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Descargar evento"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView

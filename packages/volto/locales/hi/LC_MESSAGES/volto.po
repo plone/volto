@@ -113,6 +113,11 @@ msgstr "जोड़े कंटेंट"
 msgid "Add Content Rule"
 msgstr "कंटेंट रूल्स जोड़े"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -1242,6 +1247,11 @@ msgstr "दस्तावेज़ दृश्य"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "आयोजन डाउनलोड करें"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView

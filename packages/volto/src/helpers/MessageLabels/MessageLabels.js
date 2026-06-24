@@ -111,6 +111,14 @@ export const messages = defineMessages({
     id: 'Add User',
     defaultMessage: 'Add User',
   },
+  addMemberImport: {
+    id: 'Add Members via CSV',
+    defaultMessage: 'Add Members via CSV',
+  },
+  membersCSVExport: {
+    id: 'Download Members as CSV',
+    defaultMessage: 'Download Members as CSV',
+  },
   addGroupsFormTitle: {
     id: 'Add group',
     defaultMessage: 'Add group',

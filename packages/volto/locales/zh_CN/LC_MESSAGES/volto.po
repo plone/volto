@@ -114,6 +114,11 @@ msgstr "添加内容"
 msgid "Add Content Rule"
 msgstr "添加内容规则"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -1243,6 +1248,11 @@ msgstr "文档视图"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "下载事件"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView

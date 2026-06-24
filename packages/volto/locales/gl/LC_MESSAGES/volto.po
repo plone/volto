@@ -113,6 +113,11 @@ msgstr "Engadir Contido"
 msgid "Add Content Rule"
 msgstr "Engadir Regra de Contido"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -1242,6 +1247,11 @@ msgstr "Vista documento"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Descargar Evento"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView
