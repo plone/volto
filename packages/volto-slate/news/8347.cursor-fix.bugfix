@@ -1,0 +1,3 @@
+Fix cursor position after merging two same-type slate blocks via Backspace.
+Slate normalization merges adjacent text nodes, making the original cursor
+path invalid. @avoinea
