@@ -91,17 +91,17 @@ describe('Slate Backspace Behavior', () => {
     cy.getSlateEditorAndType('{enter}');
     cy.getSlateEditorAndType('Built with JavaScript programming');
 
-    // Turn "JavaScript" into a link.
+    // Convert the line into a bulleted list first (while the text is still
+    // plain, so setSlateSelection can find it as a single text node).
+    cy.setSlateSelection('Built with JavaScript programming');
+    cy.clickSlateButton('Bulleted list');
+
+    // Now turn "JavaScript" into a link inside the list item.
     cy.setSlateSelection('JavaScript');
     cy.clickSlateButton('Add link');
     cy.get('.slate-toolbar .link-form-container input').type(
       'https://demo.plone.org/{enter}',
     );
-
-    // Convert the whole line into a bulleted list, so the link ends up inside
-    // a list item.
-    cy.setSlateSelection('Built with JavaScript programming');
-    cy.clickSlateButton('Bulleted list');
 
     // Place the caret at the start of the text leaf that follows the link
     // inside the list item, then backspace.
