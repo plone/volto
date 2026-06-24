@@ -114,6 +114,11 @@ msgstr "Gehitu edukia"
 msgid "Add Content Rule"
 msgstr "Gehitu eduki erregela"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -1243,6 +1248,11 @@ msgstr "Dokumentuaren bista"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Deskargatu hitzorduaren fitxategia"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView
