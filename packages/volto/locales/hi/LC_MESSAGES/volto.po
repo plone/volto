@@ -719,6 +719,11 @@ msgstr "फ़िल्टर साफ़ करें"
 msgid "Clear search"
 msgstr "खोज साफ़ करें"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "चयन साफ़ करें"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1135,11 +1140,6 @@ msgstr "हटा दिया गया"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "गहराई"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn

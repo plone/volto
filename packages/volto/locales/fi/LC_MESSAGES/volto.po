@@ -719,6 +719,11 @@ msgstr "Tyhjennä suodattimet"
 msgid "Clear search"
 msgstr ""
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Tyhjennä valinta"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1135,11 +1140,6 @@ msgstr "Poistettu"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Syvyys"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn

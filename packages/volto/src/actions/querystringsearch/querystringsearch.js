@@ -17,7 +17,10 @@ export function getQueryStringResults(path, data, subrequest, page) {
     delete requestData.depth;
     requestData.query.forEach((q) => {
       if (q.i === 'path') {
-        q.v += '::' + data.depth;
+        // fixes https://github.com/plone/volto/issues/8349
+        // Skip if depth is already embedded in the path value (e.g. set via object browser)
+        const hasEmbeddedDepth = /::\d+$/.test(q.v);
+        if (!hasEmbeddedDepth) q.v += '::' + data.depth;
       }
     });
   }

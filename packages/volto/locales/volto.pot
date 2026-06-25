@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-05-22T13:57:05.194Z\n"
+"POT-Creation-Date: 2026-06-22T08:55:07.777Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -715,6 +715,11 @@ msgstr ""
 msgid "Clear search"
 msgstr ""
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr ""
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1130,11 +1135,6 @@ msgstr ""
 #. Default: "Deleting this item will break {brokenReferences} {variation}."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
-msgstr ""
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
 msgstr ""
 
 #. Default: "Descending"

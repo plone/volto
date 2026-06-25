@@ -719,6 +719,11 @@ msgstr "Limpar filtros"
 msgid "Clear search"
 msgstr "Limpar pesquisa"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Limpar seleção"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1135,11 +1140,6 @@ msgstr "Apagado"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Profundidade"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
