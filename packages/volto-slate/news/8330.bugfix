@@ -1,7 +1,1 @@
-Fixed unintended form submission triggered by table block buttons.
-
-When the table block is rendered inside a form, clicking the add/delete row or column buttons 
-was unintentionally submitting the parent form. 
-This happened because the Button components were missing the `type` attribute.
-
-Buttons now prevent the parent form submission from being triggered on click.
+Fixed unintended form submission triggered by table block buttons. @ilariamassa96
