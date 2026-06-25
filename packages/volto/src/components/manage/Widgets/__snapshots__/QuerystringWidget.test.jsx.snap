@@ -9,7 +9,7 @@ exports[`can take a schemaEnhancer 1`] = `
     id="mocked-field-query-0-my-field"
   >
     Criteria
-     -
+     - 
     No description
   </div>
   <div
@@ -17,7 +17,7 @@ exports[`can take a schemaEnhancer 1`] = `
     id="mocked-field-sort_on-1-my-field"
   >
     Sort on
-     -
+     - 
     No description
   </div>
   <div
@@ -25,7 +25,7 @@ exports[`can take a schemaEnhancer 1`] = `
     id="mocked-field-sort_order_boolean-2-my-field"
   >
     Reversed order
-     -
+     - 
     No description
   </div>
 </div>
