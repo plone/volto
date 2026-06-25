@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17.1\n"
+"X-Generator: Weblate 2026.5-dev\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -4651,7 +4651,7 @@ msgstr "Introduzca su nueva contraseña. Mínimo 8 caracteres."
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "Introduzca el nombre de usuario que desee utilizar, usualmente algo como 'jperez' o 'jose_perez'. No están permitidos caracteres especiales o espacios en el nombre de usuario. Esto es el nombre utilizado para iniciar sesión."
+msgstr "Introduzca el nombre de usuario que desee utilizar, usualmente algo como \"jperez\" o \"jose_perez\". No están permitidos caracteres especiales o espacios en el nombre de usuario. Esto es el nombre utilizado para iniciar sesión."
 
 #. Default: "Available views"
 #: components/manage/Blocks/Search/schema
