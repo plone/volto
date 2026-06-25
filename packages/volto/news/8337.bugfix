@@ -1,1 +1,0 @@
-Improve screen reader support for `SelectWidget` and `ArrayWidget` by replacing `aria-labelledby` with a dynamic `aria-label` that announces the field name on focus. @Wagner3UB

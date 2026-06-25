@@ -13,10 +13,6 @@ export function objectSchema({ intl, isDisabled, value }: {
             title: any;
             widget: string;
         };
-        depth: {
-            title: any;
-            type: string;
-        };
         sort_on: {
             title: any;
             widget: string;

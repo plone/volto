@@ -17,6 +17,42 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.35.1 (2026-06-25)
+
+### Bugfix
+
+- Translate block titles displayed in the Order tab of the sidebar. @ericof [#7348](https://github.com/plone/volto/issues/7348)
+- Fixed the link to the navigation root in the Contents view breadcrumbs. @TimoBroeskamp [#8140](https://github.com/plone/volto/issues/8140)
+- Fixed `ObjectBrowserWidget` to honor `frontendOptions.widgetProps.initialPath` when rendered in multiple mode (e.g. `RelationList` of `RelationChoice`). @ericof [#8156](https://github.com/plone/volto/issues/8156)
+- Select block on focus for keyboard navigation in block editor. @Wagner3UB [#8312](https://github.com/plone/volto/issues/8312)
+- Add `aria-required` and `aria-invalid` attributes to `Input` fields inside `FormFieldWrapper` when the field is required or has errors, respectively. Also fixes the `blocks-table` Cypress test which was failing in headless/CI mode due to a fragile focus reset strategy. @Wagner3UB [#8321](https://github.com/plone/volto/issues/8321)
+- Hide the clear button on required `Select` and `ArrayWidget` fields to prevent invalid state and improve accessibility. @Wagner3UB [#8336](https://github.com/plone/volto/issues/8336)
+- Improve screen reader support for `SelectWidget` and `ArrayWidget` by replacing `aria-labelledby` with a dynamic `aria-label` that announces the field name on focus. @Wagner3UB [#8337](https://github.com/plone/volto/issues/8337)
+- Removed redundant depth field from QuerystringWidget as it is already
+  in QueryWidget when Location criteria is selected and when a path is
+  selected in ObjectBrowserWidget. @sabrina-bongiovanni [#8351](https://github.com/plone/volto/issues/8351)
+- Fixed redirect after logging in when starting from the `Unauthorized` component on a non-content route, such as control panels. @davisagli 
+- Force the proper setting of the I18NLANGUAGE cookie for non-multilingual sites too. @sneridagh 
+
+### Internal
+
+- Add Storybook of View components @Tishasoumya-02 [#5086](https://github.com/plone/volto/issues/5086)
+- Remove references to the `apps` folder. @wesleybl [#8144](https://github.com/plone/volto/issues/8144)
+- Move packages that are used only in testing to devDependencies: react-test-renderer and redux-mock-store. Remove unnecessary dependency: full-icu. @wesleybl [#8279](https://github.com/plone/volto/issues/8279)
+- Update devDependency: `@testing-library/react` 16.3.2. @wesleybl [#8294](https://github.com/plone/volto/issues/8294)
+- Fix SelectWidget test. @wesleybl [#8343](https://github.com/plone/volto/issues/8343)
+- Fix random failure in test cypress blocks-table.js. @wesleybl [#8345](https://github.com/plone/volto/issues/8345)
+- Remove .nvmrc from Volto's folder. @sneridagh 
+- Remove unused devDependency `postcss-overrides`. @davisagli 
+- Remove unused devDependency: `react-docgen-typescript-plugin`. @davisagli 
+- Update dependency: `prismjs` 1.30.0. @davisagli 
+- Update dependency: `uuid` 14.0.0. @davisagli 
+- Update devDependencies: `postcss` 8.5.15, `postcss-load-config` 6.0.1,
+  `postcss-loader` 8.2.1, `postcss-scss` 4.0.9. @davisagli 
+- Update devDependency: `@testing-library/jest-dom` 6.9.1. @davisagli 
+- Update devDependency: `@vitest/ui` 3.2.4. @davisagli 
+- Update devDependency: `release-it` 20.0.1. @davisagli 
+
 ## 18.35.0 (2026-05-19)
 
 ### Feature

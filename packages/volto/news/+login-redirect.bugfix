@@ -1,1 +1,0 @@
-Fixed redirect after logging in when starting from the `Unauthorized` component on a non-content route, such as control panels. @davisagli
