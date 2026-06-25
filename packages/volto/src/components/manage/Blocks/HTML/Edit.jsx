@@ -1,15 +1,15 @@
-/**
- * Edit html block.
- * @module components/manage/Blocks/HTML/Edit
- */
-
 import { compose } from 'redux';
-import React, { Component } from 'react';
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useLayoutEffect,
+  memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import loadable from '@loadable/component';
-import isEqual from 'lodash/isEqual';
 
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -47,162 +47,43 @@ const messages = defineMessages({
   },
 });
 
-/**
- * Edit html block class.
- * @class Edit
- * @extends Component
- */
-class Edit extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    selected: PropTypes.bool.isRequired,
-    block: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    data: PropTypes.objectOf(PropTypes.any).isRequired,
-    onChangeBlock: PropTypes.func.isRequired,
-    onSelectBlock: PropTypes.func.isRequired,
-    onDeleteBlock: PropTypes.func.isRequired,
-    handleKeyDown: PropTypes.func.isRequired,
-    editable: PropTypes.bool,
-  };
+const Edit = memo((props) => {
+  const {
+    selected,
+    block,
+    data,
+    onChangeBlock,
+    editable = true,
+    prettierStandalone,
+    prettierParserHtml,
+    prismCore,
+  } = props;
 
-  /**
-   * Default properties
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    editable: true,
-  };
-  /**
-   * Constructor
-   * @method constructor
-   * @param {Object} props Component properties
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      isPreview: false,
-    };
-    this.onChangeCode = this.onChangeCode.bind(this);
-    this.onPreview = this.onPreview.bind(this);
-    this.onCodeEditor = this.onCodeEditor.bind(this);
-  }
+  const intl = useIntl();
 
-  codeEditorRef = React.createRef();
-  savedSelection = {};
+  const [isPreview, setIsPreview] = useState(false);
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    // The selection is saved in the snapshot.
-    this.savedSelection = snapshot;
+  const codeEditorRef = useRef(null);
+  const savedSelection = useRef({});
 
-    this.restoreSelectionAndFocus(this.codeEditorRef.current);
-  }
+  const getValue = useCallback(() => {
+    return data.html || '';
+  }, [data.html]);
 
-  /**
-   * @param {*} nextProps
-   * @param {*} nextState
-   * @returns {boolean}
-   * @memberof Edit
-   */
-  shouldComponentUpdate(nextProps) {
-    // Always rerender when the DOM node is not created for the Editor (the
-    // first call to shouldComponentUpdate).
-    if (!this._input) {
-      return true;
-    }
+  const onChangeCode = useCallback(
+    (code) => {
+      onChangeBlock(block, {
+        ...data,
+        html: code,
+      });
+    },
+    [onChangeBlock, block, data],
+  );
 
-    // Rerender the entire component when the Editor in it changes its selection
-    // because this way we get a call to getSnapshotBeforeUpdate where we can
-    // save the selection.
-    return (
-      this.props.selected ||
-      !isEqual(this.props.data, nextProps.data) ||
-      this._input.selectionStart !== this.savedSelection.selectionStart ||
-      this._input.selectionEnd !== this.savedSelection.selectionEnd
-    );
-  }
-
-  /**
-   * Change html handler
-   * @method onChangeCode
-   * @param {string} code New value html
-   * @returns {undefined}
-   */
-  onChangeCode(code) {
-    this.props.onChangeBlock(this.props.block, {
-      ...this.props.data,
-      html: code,
-    });
-  }
-
-  getValue() {
-    return this.props.data.html || '';
-  }
-
-  /**
-   * Preview mode handler
-   * @method onPreview
-   * @returns {undefined}
-   */
-  async onPreview() {
-    try {
-      const code = (
-        await this.props.prettierStandalone.format(this.getValue(), {
-          parser: 'html',
-          plugins: [this.props.prettierParserHtml],
-        })
-      ).trim();
-      this.setState(
-        {
-          isPreview: !this.state.isPreview,
-        },
-        () => this.onChangeCode(code),
-      );
-    } catch (ex) {
-      // error while parsing the user-typed HTML
-      // TODO: show a toast notification or something similar to the user
-    }
-  }
-
-  /**
-   * Prettify handler
-   * @method onPrettify
-   * @returns {undefined}
-   */
-  onPrettify = async () => {
-    try {
-      const code = (
-        await this.props.prettierStandalone.format(this.getValue(), {
-          parser: 'html',
-          plugins: [this.props.prettierParserHtml],
-        })
-      ).trim();
-      this.onChangeCode(code);
-    } catch (ex) {
-      // error while parsing the user-typed HTML
-      // TODO: show a toast notification or something similar to the user
-    }
-  };
-
-  /**
-   * Code Editor mode handler
-   * @method onPreview
-   * @returns {undefined}
-   */
-  onCodeEditor() {
-    this.setState({ isPreview: !this.state.isPreview });
-  }
-
-  getSelection = (editor) => {
+  const getSelection = useCallback((editor) => {
     if (!editor || !editor._input) {
       return {};
     }
-
     const o = {};
     if (editor._input.selectionStart) {
       o.selectionStart = editor._input.selectionStart;
@@ -211,143 +92,173 @@ class Edit extends Component {
       o.selectionEnd = editor._input.selectionEnd;
     }
     return o;
-  };
+  }, []);
 
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    return this.getSelection(this.codeEditorRef.current);
-  }
-
-  restoreSelectionAndFocus = (editor) => {
-    // Don't restore selection when the block is not selected.
+  useLayoutEffect(() => {
+    const editor = codeEditorRef.current;
     if (
-      this.props.selected &&
-      editor._input &&
-      typeof this.savedSelection?.selectionStart === 'number' &&
-      typeof this.savedSelection?.selectionEnd === 'number'
+      selected &&
+      editor?._input &&
+      typeof savedSelection.current?.selectionStart === 'number' &&
+      typeof savedSelection.current?.selectionEnd === 'number'
     ) {
-      editor._input.selectionStart = this.savedSelection?.selectionStart;
-      editor._input.selectionEnd = this.savedSelection?.selectionEnd;
+      editor._input.selectionStart = savedSelection.current.selectionStart;
+      editor._input.selectionEnd = savedSelection.current.selectionEnd;
       editor._input.focus();
     }
-  };
+    return () => {
+      savedSelection.current = getSelection(codeEditorRef.current);
+    };
+  }, [selected, data.html, getSelection]);
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const placeholder =
-      this.props.data.placeholder ||
-      this.props.intl.formatMessage(messages.placeholder);
-    const value = this.getValue();
-    return (
-      <>
-        {this.props.selected && value && (
-          <div className="toolbar">
-            <Popup
-              trigger={
-                <Button
-                  type="button"
-                  icon
-                  basic
-                  aria-label={this.props.intl.formatMessage(messages.source)}
-                  active={!this.state.isPreview}
-                  onClick={this.onCodeEditor}
-                >
-                  <Icon name={codeSVG} size="24px" />
-                </Button>
-              }
-              position="top center"
-              content={this.props.intl.formatMessage(messages.code)}
-              size="mini"
-            />
-            <Popup
-              trigger={
-                <Button
-                  type="button"
-                  icon
-                  basic
-                  aria-label={this.props.intl.formatMessage(messages.preview)}
-                  active={this.state.isPreview}
-                  onClick={this.onPreview}
-                >
-                  <Icon name={showSVG} size="24px" />
-                </Button>
-              }
-              position="top center"
-              content={this.props.intl.formatMessage(messages.preview)}
-              size="mini"
-            />
-            <Popup
-              trigger={
-                <Button
-                  type="button"
-                  icon
-                  basic
-                  aria-label={this.props.intl.formatMessage(messages.prettier)}
-                  onClick={this.onPrettify}
-                >
-                  <Icon name={indentSVG} size="24px" />
-                </Button>
-              }
-              position="top center"
-              content={this.props.intl.formatMessage(messages.prettier)}
-              size="mini"
-            />
-            <div className="separator" />
-            <Popup
-              trigger={
-                <Button.Group>
-                  <Button
-                    type="button"
-                    icon
-                    basic
-                    onClick={() => this.onChangeCode('')}
-                  >
-                    <Icon name={clearSVG} size="24px" color="#e40166" />
-                  </Button>
-                </Button.Group>
-              }
-              position="top center"
-              content={this.props.intl.formatMessage(messages.clear)}
-              size="mini"
-            />
-          </div>
-        )}
-        {this.state.isPreview ? (
-          <div dangerouslySetInnerHTML={{ __html: value }} />
-        ) : (
-          <Editor
-            value={this.getValue()}
-            readOnly={!this.props.editable}
-            placeholder={placeholder}
-            onValueChange={(code) => this.onChangeCode(code)}
-            highlight={
-              this.props.prismCore?.highlight &&
-              this.props.prismCore?.languages?.html
-                ? (code) =>
-                    this.props.prismCore.highlight(
-                      code,
-                      this.props.prismCore.languages.html,
-                      'html',
-                    )
-                : () => {}
+  const editorRefCallback = useCallback((node) => {
+    if (node) {
+      codeEditorRef.current = node;
+    }
+  }, []);
+
+  const onPreview = useCallback(async () => {
+    try {
+      const code = (
+        await prettierStandalone.format(getValue(), {
+          parser: 'html',
+          plugins: [prettierParserHtml],
+        })
+      ).trim();
+      setIsPreview((prev) => !prev);
+      onChangeCode(code);
+    } catch (ex) {}
+  }, [prettierStandalone, prettierParserHtml, getValue, onChangeCode]);
+
+  const onPrettify = useCallback(async () => {
+    try {
+      const code = (
+        await prettierStandalone.format(getValue(), {
+          parser: 'html',
+          plugins: [prettierParserHtml],
+        })
+      ).trim();
+      onChangeCode(code);
+    } catch (ex) {}
+  }, [prettierStandalone, prettierParserHtml, getValue, onChangeCode]);
+
+  const onCodeEditor = useCallback(() => {
+    setIsPreview((prev) => !prev);
+  }, []);
+
+  const placeholder =
+    data.placeholder || intl.formatMessage(messages.placeholder);
+  const value = getValue();
+
+  return (
+    <>
+      {selected && value && (
+        <div className="toolbar">
+          <Popup
+            trigger={
+              <Button
+                type="button"
+                icon
+                basic
+                aria-label={intl.formatMessage(messages.source)}
+                active={!isPreview}
+                onClick={onCodeEditor}
+              >
+                <Icon name={codeSVG} size="24px" />
+              </Button>
             }
-            padding={8}
-            className="html-editor"
-            ref={(node) => {
-              if (node) {
-                this.codeEditorRef.current = node;
-              }
-            }}
-            ignoreTabKey={true}
+            position="top center"
+            content={intl.formatMessage(messages.code)}
+            size="mini"
           />
-        )}
-      </>
-    );
-  }
-}
+          <Popup
+            trigger={
+              <Button
+                type="button"
+                icon
+                basic
+                aria-label={intl.formatMessage(messages.preview)}
+                active={isPreview}
+                onClick={onPreview}
+              >
+                <Icon name={showSVG} size="24px" />
+              </Button>
+            }
+            position="top center"
+            content={intl.formatMessage(messages.preview)}
+            size="mini"
+          />
+          <Popup
+            trigger={
+              <Button
+                type="button"
+                icon
+                basic
+                aria-label={intl.formatMessage(messages.prettier)}
+                onClick={onPrettify}
+              >
+                <Icon name={indentSVG} size="24px" />
+              </Button>
+            }
+            position="top center"
+            content={intl.formatMessage(messages.prettier)}
+            size="mini"
+          />
+          <div className="separator" />
+          <Popup
+            trigger={
+              <Button.Group>
+                <Button
+                  type="button"
+                  icon
+                  basic
+                  onClick={() => onChangeCode('')}
+                >
+                  <Icon name={clearSVG} size="24px" color="#e40166" />
+                </Button>
+              </Button.Group>
+            }
+            position="top center"
+            content={intl.formatMessage(messages.clear)}
+            size="mini"
+          />
+        </div>
+      )}
+      {isPreview ? (
+        <div dangerouslySetInnerHTML={{ __html: value }} />
+      ) : (
+        <Editor
+          value={value}
+          readOnly={!editable}
+          placeholder={placeholder}
+          onValueChange={(code) => onChangeCode(code)}
+          highlight={
+            prismCore?.highlight && prismCore?.languages?.html
+              ? (code) =>
+                  prismCore.highlight(code, prismCore.languages.html, 'html')
+              : () => {}
+          }
+          padding={8}
+          className="html-editor"
+          ref={editorRefCallback}
+          ignoreTabKey={true}
+        />
+      )}
+    </>
+  );
+});
+
+Edit.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  block: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  onChangeBlock: PropTypes.func.isRequired,
+  onSelectBlock: PropTypes.func.isRequired,
+  onDeleteBlock: PropTypes.func.isRequired,
+  handleKeyDown: PropTypes.func.isRequired,
+  editable: PropTypes.bool,
+};
 
 const withPrismMarkup = (WrappedComponent) => (props) => {
   const [loaded, setLoaded] = React.useState();
@@ -372,5 +283,4 @@ const withPrismMarkup = (WrappedComponent) => (props) => {
 export default compose(
   injectLazyLibs(['prettierStandalone', 'prettierParserHtml', 'prismCore']),
   withPrismMarkup,
-  injectIntl,
 )(Edit);
