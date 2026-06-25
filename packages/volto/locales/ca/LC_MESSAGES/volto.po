@@ -1116,11 +1116,6 @@ msgstr "Eliminat"
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "Eliminar aquest element trenca {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Profunditat"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
