@@ -1,4 +1,5 @@
 import imagesMiddleware from '@plone/volto/express-middleware/images';
+import blocksSchemaMiddleware from '@plone/volto/express-middleware/blocks-schema';
 import filesMiddleware from '@plone/volto/express-middleware/files';
 import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
 import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
@@ -8,6 +9,7 @@ import devProxyMiddleware from '@plone/volto/express-middleware/devproxy';
 const settings = {
   expressMiddleware: [
     devProxyMiddleware(),
+    blocksSchemaMiddleware(),
     filesMiddleware(),
     imagesMiddleware(),
     robotstxtMiddleware(),

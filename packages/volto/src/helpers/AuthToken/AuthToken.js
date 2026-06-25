@@ -20,6 +20,24 @@ export function getAuthToken() {
 }
 
 /**
+ * Get auth token from a server request.
+ * Authorization header takes precedence over the auth_token cookie.
+ * @method getRequestAuthToken
+ * @param {object} req Server request.
+ * @returns {string|undefined} The auth token.
+ */
+export function getRequestAuthToken(req) {
+  const authorization = req?.headers?.authorization;
+  const [, token] = authorization?.match(/^Bearer\s+(.+)$/i) || [];
+
+  if (token) {
+    return token;
+  }
+
+  return req?.universalCookies?.get('auth_token');
+}
+
+/**
  * Persist auth token method.
  * @method persistAuthToken
  * @param {object} store Redux store.
