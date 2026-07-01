@@ -1,6 +1,6 @@
 import castArray from 'lodash/castArray';
 import cloneDeep from 'lodash/cloneDeep';
-import { Editor, Transforms, Range, Node, Text } from 'slate';
+import { Editor, Transforms, Range, Node, Path } from 'slate';
 import { ReactEditor } from 'slate-react';
 import { isCursorInList } from '@plone/volto-slate/utils/lists';
 import { makeEditor } from '@plone/volto-slate/utils/editor';
@@ -14,12 +14,7 @@ import config from '@plone/volto/registry';
  */
 function firstLeafPath(editor) {
   if (!editor.children?.length) return null;
-  let [node, path] = Node.first(editor, []);
-  while (!Text.isText(node)) {
-    if (!node.children?.length) return null;
-    [node, path] = Node.first(editor, path);
-  }
-  return path;
+  return Node.first(editor, [])[1];
 }
 
 /**
@@ -31,7 +26,7 @@ function firstLeafPath(editor) {
 function isAtFirstLeaf(editor, path) {
   const first = firstLeafPath(editor);
   if (!first) return false;
-  return path.length === first.length && path.every((n, i) => n === first[i]);
+  return Path.equals(path, first);
 }
 
 /**
