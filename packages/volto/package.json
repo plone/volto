@@ -147,7 +147,7 @@
     "is-url": "1.2.4",
     "jotai": "2.11.3",
     "jwt-decode": "2.2.0",
-    "linkify-it": "3.0.2",
+    "linkify-it": "5.0.1",
     "locale": "0.1.0",
     "lodash": "catalog:",
     "lodash-move": "1.1.1",
