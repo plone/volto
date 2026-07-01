@@ -185,6 +185,13 @@ let config = {
       tabletBreakpoint: 768,
       defaultContainerWidth: 1200,
     },
+    lcpEligibleBlocks: {
+      image: (block) => !!block.url,
+      listing: (block) => block.variation === 'imageGallery',
+      leadimage: (block) => !!block.url,
+      video: (block) => !!block.url,
+      teaser: (block) => Array.isArray(block.href) && block.href.length > 0,
+    },
   },
   experimental: {
     addBlockButton: {
