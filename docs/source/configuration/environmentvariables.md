@@ -94,7 +94,7 @@ You can also generate builds on your continuous integration, then deploy them an
 `DEBUG`
     It enables several logging points scattered throughout the Volto code.
     It uses the `volto:` namespace.
-    You can use it in any number of named scopes, all of which are additive and do not cancel one another, or everywhere.
+    You can use it in multiple named scopes,which are additive and do not cancel each other,or enable logging everywhere.
 
     `shadowing` enables component shadowing errors.
     It displays the errors of the non-compliant customizations in the server console.
@@ -252,3 +252,10 @@ In the frontend, you can access this variable in your code with the following.
 ```shell
 window.env.RAZZLE_MY_VARIABLE
 ```
+
+
+## Related content
+
+- {doc}`volto-config-js`
+- {doc}`multilingual`
+
