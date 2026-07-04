@@ -362,3 +362,10 @@
 /*---  Dark Tones  ---*/
 
 /*---  Light Tones  ---*/
+
+/*-------------------
+    Focused Input
+--------------------*/
+
+@innerFocusShadow: #fff;
+@outerFocusOutline: #000;
