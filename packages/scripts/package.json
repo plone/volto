@@ -40,7 +40,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.29.6",
     "babel-plugin-react-intl": "5.1.17",
     "@plone/babel-preset-razzle": "workspace:^",
     "chalk": "4",
