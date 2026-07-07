@@ -80,6 +80,7 @@ class Html extends Component {
     store: PropTypes.shape({
       getState: PropTypes.func,
     }).isRequired,
+    nonce: PropTypes.string,
   };
 
   /**
@@ -88,7 +89,7 @@ class Html extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { extractor, markup, store, criticalCss, apiPath, publicURL } =
+    const { extractor, markup, store, criticalCss, apiPath, publicURL, nonce } =
       this.props;
     const head = Helmet.rewind();
     const bodyClass = join(BodyClass.rewind(), ' ');
@@ -112,6 +113,7 @@ class Html extends Component {
           {head.style.toComponent()}
 
           <script
+            nonce={nonce}
             dangerouslySetInnerHTML={{
               __html: `window.env = ${serialize({
                 ...runtimeConfig,
@@ -169,6 +171,7 @@ class Html extends Component {
             criticalCss ? (
               <>
                 <script
+                  nonce={nonce}
                   dangerouslySetInnerHTML={{
                     __html: CRITICAL_CSS_TEMPLATE,
                   }}
@@ -196,6 +199,7 @@ class Html extends Component {
           <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
           <div role="complementary" aria-label="Sidebar" id="sidebar" />
           <script
+            nonce={nonce}
             dangerouslySetInnerHTML={{
               __html: `window.__data=${serialize(
                 loadReducers(store.getState()),
@@ -206,6 +210,7 @@ class Html extends Component {
           {/* Add the crossorigin while in development */}
           {extractor.getScriptElements().map((elem) =>
             React.cloneElement(elem, {
+              nonce: nonce,
               crossOrigin:
                 process.env.NODE_ENV === 'production' ? undefined : 'true',
             }),
