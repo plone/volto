@@ -364,15 +364,13 @@ const DragDropConnector = (props) => {
           drop(props, monitor) {
             const id = monitor.getItem().id;
             const dragOrder = monitor.getItem().startOrder;
-            const dropOrder = props.order;
+            const dropOrder = monitor.getItem().order;
 
             if (dragOrder === dropOrder) {
               return;
             }
 
             props.onOrderItem(id, dragOrder, dropOrder - dragOrder, true);
-
-            monitor.getItem().order = dropOrder;
           },
         },
         (connect) => ({
