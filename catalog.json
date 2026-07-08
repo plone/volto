@@ -1,4 +1,10 @@
 {
+  "@babel/core": "^7.29.7",
+  "@babel/eslint-parser": "^7.29.7",
+  "@babel/preset-env": "^7.29.7",
+  "@babel/preset-react": "^7.29.7",
+  "@babel/preset-typescript": "^7.29.7",
+  "@babel/runtime": "^7.29.7",
   "@internationalized/date": "^3.12.1",
   "@react-aria/utils": "^3.34.0",
   "@react-spectrum/utils": "^3.13.0",
