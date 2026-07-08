@@ -212,12 +212,12 @@
     "uuid": "^14.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.5",
-    "@babel/eslint-parser": "^7.28.5",
-    "@babel/plugin-proposal-export-default-from": "^7.27.1",
-    "@babel/plugin-proposal-throw-expressions": "^7.27.1",
-    "@babel/runtime": "^7.28.4",
-    "@babel/types": "7.20.5",
+    "@babel/core": "catalog:",
+    "@babel/eslint-parser": "catalog:",
+    "@babel/plugin-proposal-export-default-from": "^7.29.7",
+    "@babel/plugin-proposal-throw-expressions": "^7.29.7",
+    "@babel/runtime": "catalog:",
+    "@babel/types": "^7.29.7",
     "@fiverr/afterbuild-webpack-plugin": "^1.0.0",
     "@loadable/babel-plugin": "5.16.1",
     "@loadable/webpack-plugin": "5.15.2",
