@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,19 +22,19 @@ msgstr "Link hinzufügen"
 
 #: widgets/HtmlSlateWidget
 msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
-msgstr ""
+msgstr "Beim Bearbeiten des Feldes „{name}“ ist ein Fehler aufgetreten. Wir wurden benachrichtigt und untersuchen das Problem. Bitte speichern Sie Ihre Arbeit und versuchen Sie es erneut. Falls das Problem weiterhin besteht, wenden Sie sich bitte an den Website-Administrator."
 
 #: widgets/RichTextWidgetView
 msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
-msgstr ""
+msgstr "Beim Rendern des Feldes „{name}“ ist ein Fehler aufgetreten. Wir wurden benachrichtigt und untersuchen das Problem. Falls das Problem weiterhin besteht, wenden Sie sich bitte an den Website-Administrator."
 
 #: blocks/Table/TableBlockEdit
 msgid "Bottom"
-msgstr ""
+msgstr "Unten"
 
 #: blocks/Table/TableBlockEdit
 msgid "Center"
-msgstr ""
+msgstr "Zentriert"
 
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
@@ -48,7 +48,7 @@ msgstr "Zeile löschen"
 
 #: editor/plugins/Table/index
 msgid "Delete table"
-msgstr ""
+msgstr "Tabelle löschen"
 
 #: blocks/Table/TableBlockEdit
 msgid "Divide each row into separate cells"
@@ -69,7 +69,7 @@ msgstr "Zellen mit fester Breite"
 
 #: blocks/Table/TableBlockEdit
 msgid "Hide headers"
-msgstr ""
+msgstr "Kopfzeilen ausblenden"
 
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
@@ -93,7 +93,7 @@ msgstr "Zeile davor einfügen"
 
 #: blocks/Table/TableBlockEdit
 msgid "Left"
-msgstr ""
+msgstr "Links"
 
 #: blocks/Table/TableBlockEdit
 msgid "Make the table compact"
@@ -101,15 +101,15 @@ msgstr "Tabelle komprimieren"
 
 #: blocks/Table/TableBlockEdit
 msgid "Make the table sortable"
-msgstr ""
+msgstr "Tabelle sortierbar machen"
 
 #: blocks/Table/TableBlockEdit
 msgid "Middle"
-msgstr ""
+msgstr "Mitte"
 
 #: blocks/Text/SlashMenu
 msgid "No matching blocks"
-msgstr ""
+msgstr "Keine passenden Blöcke"
 
 #: blocks/Table/TableBlockEdit
 msgid "Reduce complexity"
@@ -125,7 +125,7 @@ msgstr "Link entferenen"
 
 #: blocks/Table/TableBlockEdit
 msgid "Right"
-msgstr ""
+msgstr "Rechts"
 
 #: blocks/Table/TableBlockEdit
 msgid "Stripe alternate rows with color"
@@ -141,7 +141,7 @@ msgstr "Tabellenfarbe invertiert"
 
 #: blocks/Table/TableBlockEdit
 msgid "Top"
-msgstr ""
+msgstr "Oben"
 
 #: blocks/Text/DefaultTextBlockEditor
 #: blocks/Text/DetachedTextBlockEditor
@@ -150,4 +150,4 @@ msgstr "Text eingeben"
 
 #: blocks/Table/TableBlockEdit
 msgid "Visible only in view mode"
-msgstr ""
+msgstr "Nur im Anzeigemodus sichtbar"
