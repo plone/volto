@@ -3,20 +3,20 @@ msgstr ""
 "Project-Id-Version: volto-fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2020-06-16 11:44+0100\n"
-"Last-Translator: Benoît Suttor <benoit.suttor@imio.be>\n"
+"PO-Revision-Date: 2026-05-12 10:11+0000\n"
+"Last-Translator: Julien Chandelle <julienchandelle@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/plone/volto-18/fr/>\n"
 "Language: fr\n"
-"Language-Team: French <plone-fr@lists.plone.org>\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8;\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2026.5-dev\n"
 "Language-Code: fr\n"
 "Language-Name: French\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
-"X-Generator: Poedit 2.2.3\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -26,7 +26,7 @@ msgstr "<p>Ajoutez du HTML ici</p>"
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "Identifiant unique du groupe. Ne peut être modifié après sa création. Les espaces ne sont pas autorisés."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -102,7 +102,7 @@ msgstr "Ajouter des modules"
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Add Alternative URL"
-msgstr ""
+msgstr "Ajouter une URL alternative"
 
 #. Default: "Add Content…"
 #: components/manage/Toolbar/Types
@@ -152,7 +152,7 @@ msgstr "Ajouter un bloc"
 #. Default: "Add block in position {index}"
 #: components/manage/Blocks/Container/NewBlockAddButton
 msgid "Add block in position {index}"
-msgstr ""
+msgstr "Ajouter un bloc à la position {index}"
 
 #. Default: "Add block…"
 #: helpers/MessageLabels/MessageLabels
@@ -182,7 +182,7 @@ msgstr "Ajouter une date"
 #. Default: "Add element to container"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Add element to container"
-msgstr ""
+msgstr "Ajouter l'élément au conteneur"
 
 #. Default: "Add field"
 #: components/manage/Widgets/SchemaWidget
@@ -297,12 +297,12 @@ msgstr "Module mis à jour avec succès"
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facet?"
-msgstr ""
+msgstr "Facette avancée ?"
 
 #. Default: "Advanced facets are initially hidden and displayed on demand"
 #: components/manage/Blocks/Search/schema
 msgid "Advanced facets are initially hidden and displayed on demand"
-msgstr ""
+msgstr "Les facettes avancées sont initialement masquées et affichées à la demande."
 
 #. Default: "Album view"
 #: config/Views
@@ -323,12 +323,12 @@ msgstr "L'alias a été ajouté"
 #. Default: "Aliases have been removed."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been removed."
-msgstr ""
+msgstr "Les alias ont été supprimés."
 
 #. Default: "Aliases have been uploaded."
 #: components/manage/Controlpanels/Aliases
 msgid "Aliases have been uploaded."
-msgstr ""
+msgstr "Les alias ont été téléchargés."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
@@ -431,7 +431,7 @@ msgstr "Ascendant"
 #. Default: "Assign the {role} role to {entry}"
 #: components/manage/Sharing/Sharing
 msgid "Assign the {role} role to {entry}"
-msgstr ""
+msgstr "Attribuez le rôle {role} à {entry}"
 
 #. Default: "Assignments"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -441,7 +441,7 @@ msgstr "Affectations"
 #. Default: "Automatically"
 #: components/manage/Controlpanels/Aliases
 msgid "Automatically"
-msgstr ""
+msgstr "Automatiquement"
 
 #. Default: "Available"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -505,7 +505,7 @@ msgstr "Bloc"
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
-msgstr ""
+msgstr "Les deux"
 
 #. Default: "Both email address and password are case sensitive, check that caps lock is not enabled."
 #: components/theme/Login/Login
@@ -520,7 +520,7 @@ msgstr "Fil d'Ariane"
 #. Default: "Broken relations"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "Broken relations"
-msgstr ""
+msgstr "Relations brisées"
 
 #. Default: "Browse"
 #: components/manage/Contents/ContentsUploadModal
@@ -536,7 +536,7 @@ msgstr "Explorer le site, déposer l'image ou écriver l'URL"
 #. Default: "Bulk upload CSV"
 #: components/manage/Controlpanels/Aliases
 msgid "BulkUploadAltUrls"
-msgstr ""
+msgstr "Importation groupée CSV"
 
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
@@ -546,7 +546,7 @@ msgstr "Par défaut, les autorisations du conteneur de cet élément sont hérit
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
-msgstr ""
+msgstr "fichier CSV"
 
 #. Default: "Cache Name"
 #: components/manage/Controlpanels/DatabaseInformation
@@ -642,7 +642,7 @@ msgstr "Changements sauvegardés."
 #. Default: "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
 #: components/manage/Blocks/Teaser/schema
 msgid "Check this box to customize the title, description, or image of the target content item for this teaser. Leave it unchecked to show updates to the target content item if it is edited later."
-msgstr ""
+msgstr "Cochez cette case pour personnaliser le titre, la description ou l'image de l'élément cible dans cet aperçu. Laissez-la décochée pour afficher automatiquement les mises à jour de l'élément cible s'il est modifié ultérieurement."
 
 #. Default: "Checkbox"
 #: components/manage/Widgets/SchemaWidget
@@ -694,7 +694,7 @@ msgstr "Effacer les filtres"
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
-msgstr ""
+msgstr "Réinitialiser la recherche"
 
 #. Default: "Clear selection"
 #: components/manage/Widgets/SelectStyling
@@ -812,7 +812,7 @@ msgstr "Eléments contenants"
 #. Default: "Container settings"
 #: components/manage/Blocks/Container/SimpleContainerToolbar
 msgid "Container settings"
-msgstr ""
+msgstr "Paramètres du conteneur"
 
 #. Default: "Content"
 #: components/manage/Controlpanels/Controlpanels
@@ -843,7 +843,7 @@ msgstr "Règles de contenu des dossiers parents"
 #. Default: "Content that links to or references {title}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Content that links to or references {title}"
-msgstr ""
+msgstr "Contenu qui renvoie à ou fait référence à {title}"
 
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
@@ -896,7 +896,7 @@ msgstr "Droits d'auteur ou autres informations sur les droits sur cet élément"
 #. Default: "Create or delete relations to target"
 #: helpers/MessageLabels/MessageLabels
 msgid "Create or delete relations to target"
-msgstr ""
+msgstr "Créer ou supprimer des relations vers la cible"
 
 #. Default: "Create working copy"
 #: components/manage/Toolbar/More
@@ -906,12 +906,12 @@ msgstr "Créer une copie de travail"
 #. Default: "Created after"
 #: components/manage/Controlpanels/Aliases
 msgid "Created after"
-msgstr ""
+msgstr "Créé après"
 
 #. Default: "Created before"
 #: components/manage/Controlpanels/Aliases
 msgid "Created before"
-msgstr ""
+msgstr "Créé avant"
 
 #. Default: "Created by {creator} on {date}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -957,7 +957,7 @@ msgstr "Mot de passe actuel"
 #. Default: "Customize teaser content"
 #: components/manage/Blocks/Teaser/schema
 msgid "Customize teaser content"
-msgstr ""
+msgstr "Personnaliser le contenu de l'aperçu"
 
 #. Default: "Cut"
 #: components/manage/Actions/Actions
@@ -1035,7 +1035,7 @@ msgstr "Défaut"
 #. Default: "Default value"
 #: components/manage/Widgets/SchemaWidget
 msgid "Default value"
-msgstr ""
+msgstr "Valeur par défaut"
 
 #. Default: "Default view"
 #: config/Views
@@ -1100,12 +1100,12 @@ msgstr "Supprimer la ligne"
 #. Default: "Delete selected items?"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Delete selected items?"
-msgstr ""
+msgstr "Supprimer les éléments sélectionnés ?"
 
 #. Default: "Delete this item?"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Delete this item?"
-msgstr ""
+msgstr "Supprimer cet élément ?"
 
 #. Default: "Deleted"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1212,7 +1212,7 @@ msgstr "Télécharger l'événement"
 #. Default: "Download file"
 #: components/theme/View/FileView
 msgid "Download file"
-msgstr ""
+msgstr "Télécharger le fichier"
 
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
@@ -1240,7 +1240,7 @@ msgstr "Déposez les fichiers ici ..."
 #. Default: "Drop files here to upload"
 #: components/manage/Contents/DropZoneContent
 msgid "Drop files here to upload"
-msgstr ""
+msgstr "Déposez les fichiers ici pour les télécharger"
 
 #. Default: "Dry run selected, transaction aborted."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -1273,7 +1273,7 @@ msgstr "Modifier"
 #. Default: "Edit Alternative URL"
 #: components/manage/Controlpanels/Aliases
 msgid "Edit Alternative URL"
-msgstr ""
+msgstr "Modifier l'URL alternative"
 
 #. Default: "Edit Rule"
 #: components/manage/Controlpanels/Rules/EditRule
@@ -1394,7 +1394,7 @@ msgstr "Saisissez le chemin absolu de la cible. La cible doit exister ou être u
 #. Default: "Enter the absolute path where the alternative URL should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Controlpanels/Aliases
 msgid "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only URLs that result in a 404 not found page will result in a redirect occurring."
-msgstr ""
+msgstr "Saisissez le chemin absolu où l'URL alternative doit exister. Le chemin doit commencer par '/'. Seules les URL qui aboutissent à une page 404 introuvable entraîneront une redirection."
 
 #. Default: "Enter the absolute path where the alternative url should exist. The path must start with '/'. Only urls that result in a 404 not found page will result in a redirect occurring."
 #: components/manage/Aliases/Aliases
@@ -1425,7 +1425,7 @@ msgstr "Saisissez votre nom d'utilisateur pour vérification."
 #. Default: "Entries"
 #: components/manage/Blocks/ToC/Schema
 msgid "Entries"
-msgstr ""
+msgstr "Entrées"
 
 #. Default: "Error"
 #: components/manage/Add/Add
@@ -1452,7 +1452,7 @@ msgstr "Événement"
 #. Default: "Event end date must be on or after {startDateValueOrStartFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event end date must be on or after {startDateValueOrStartFieldName}"
-msgstr ""
+msgstr "La date de fin de l'événement doit être postérieure ou égale à {startDateValueOrStartFieldName}."
 
 #. Default: "Event listing"
 #: config/Views
@@ -1462,7 +1462,7 @@ msgstr "Liste des événements"
 #. Default: "Event start date must be on or before {endDateValueOrEndFieldName}"
 #: helpers/MessageLabels/MessageLabels
 msgid "Event start date must be on or before {endDateValueOrEndFieldName}"
-msgstr ""
+msgstr "La date de début de l'événement doit être au plus tard le {endDateValueOrEndFieldName}"
 
 #. Default: "Event view"
 #: config/Views
@@ -1472,7 +1472,7 @@ msgstr "Vue d'événement"
 #. Default: "Example"
 #: components/manage/Controlpanels/Aliases
 msgid "Example"
-msgstr ""
+msgstr "Exemple"
 
 #. Default: "Exclude from navigation"
 #: components/manage/Contents/ContentsPropertiesModal
@@ -1572,7 +1572,7 @@ msgstr "Fichier"
 #. Default: "File is not of the accepted type {accept}"
 #: components/manage/Widgets/FileWidget
 msgid "File is not of the accepted type {accept}"
-msgstr ""
+msgstr "Le fichier n'est pas du type accepté {accept}"
 
 #. Default: "File size"
 #: components/manage/Contents/ContentsUploadModal
@@ -1600,13 +1600,13 @@ msgstr "Fichiers téléchargés : {uploadedFiles}"
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
 msgid "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
-msgstr ""
+msgstr "Remplit la valeur du champ de formulaire avec la valeur fournie par un paramètre de requête dans l'URL portant le nom indiqué."
 
 #. Default: "Filter"
 #: components/manage/Controlpanels/Aliases
 #: helpers/MessageLabels/MessageLabels
 msgid "Filter"
-msgstr ""
+msgstr "Filtre"
 
 #. Default: "Filter Rules:"
 #: components/manage/Controlpanels/Rules/Rules
@@ -1636,7 +1636,7 @@ msgstr "Premier"
 #. Default: "Fix relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Fix relations"
-msgstr ""
+msgstr "Réparer les relations"
 
 #. Default: "Fixed width columns"
 #: config/Blocks
@@ -1713,7 +1713,7 @@ msgstr "Bloc intégré de la carte Google"
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
 msgid "Grid"
-msgstr ""
+msgstr "Grille"
 
 #. Default: "Group"
 #: components/manage/Sharing/Sharing
@@ -1728,7 +1728,7 @@ msgstr "Groupe créé"
 #. Default: "Group deleted"
 #: helpers/MessageLabels/MessageLabels
 msgid "Group deleted"
-msgstr ""
+msgstr "Groupe supprimé"
 
 #. Default: "Group roles updated"
 #: helpers/MessageLabels/MessageLabels
@@ -1788,12 +1788,12 @@ msgstr "Masquer la facette ?"
 #. Default: "Hide filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Hide filters"
-msgstr ""
+msgstr "Masquer les filtres"
 
 #. Default: "Hide title"
 #: components/manage/Blocks/ToC/Schema
 msgid "Hide title"
-msgstr ""
+msgstr "Masquer le titre"
 
 #. Default: "History"
 #: components/manage/History/History
@@ -1829,7 +1829,7 @@ msgstr "ID"
 #. Default: "Icon View"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Icon View"
-msgstr ""
+msgstr "Vue par icône"
 
 #. Default: "If all of the following conditions are met:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -1872,7 +1872,7 @@ msgstr "Galerie d'images"
 #. Default: "Image override"
 #: components/manage/Blocks/Teaser/schema
 msgid "Image override"
-msgstr ""
+msgstr "Remplacement d'image"
 
 #. Default: "Image size"
 #: components/manage/Blocks/Image/schema
@@ -1935,7 +1935,7 @@ msgstr "Insérer une ligne avant"
 #. Default: "Inspect relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "Inspect relations"
-msgstr ""
+msgstr "Inspecter les relations"
 
 #. Default: "Install"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -1986,12 +1986,12 @@ msgstr "Bloc invalide - Sera supprimé lors de l'enregistrement"
 #. Default: "Invalid teaser source"
 #: components/manage/Blocks/Teaser/Data
 msgid "Invalid teaser source"
-msgstr ""
+msgstr "Source de l'aperçu invalide"
 
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
-msgstr ""
+msgstr "Il est impossible de définir à la fois le mot de passe et de demander l'envoi du message de réinitialisation du mot de passe par courriel. Vous devez choisir l'un ou l'autre."
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2058,7 +2058,7 @@ msgstr "Champ indépendant de la langue."
 #. Default: "This is a language independent field. Any value you enter here will overwrite the corresponding field of all members of the translation group when you save this form."
 #: components/manage/Widgets/FormFieldWrapper
 msgid "Language independent icon title"
-msgstr ""
+msgstr "Titre d'icône indépendant de la langue"
 
 #. Default: "Large"
 #: components/manage/Widgets/ImageSizeWidget
@@ -2111,7 +2111,7 @@ msgstr "Gauche"
 #. Default: "Less filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Less filters"
-msgstr ""
+msgstr "Moins de filtres"
 
 #. Default: "Link"
 #: components/manage/Toolbar/Toolbar
@@ -2121,7 +2121,7 @@ msgstr "Lien"
 #. Default: "Anchor link copied to the clipboard"
 #: helpers/MessageLabels/MessageLabels
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "Lien copié dans le presse-papiers"
 
 #. Default: "Link more"
 #: components/manage/Blocks/Listing/schema
@@ -2131,12 +2131,12 @@ msgstr "Lier plus"
 #. Default: "Link redirect view"
 #: config/Views
 msgid "Link redirect view"
-msgstr ""
+msgstr "Vue de redirection de lien"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
 msgid "Link settings"
-msgstr ""
+msgstr "Paramètres de lien"
 
 #. Default: "Link Title"
 #: components/manage/Blocks/Listing/schema
@@ -2158,18 +2158,18 @@ msgstr "Traduction du lien pour"
 #. Default: "Linking this item with hyperlink in text"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Linking this item with hyperlink in text"
-msgstr ""
+msgstr "Lié cet élément avec hypertexte dans le texte"
 
 #. Default: "Links and references"
 #: components/manage/LinksToItem/LinksToItem
 #: components/manage/Toolbar/More
 msgid "Links and references"
-msgstr ""
+msgstr "Liens et références"
 
 #. Default: "List View"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "List View"
-msgstr ""
+msgstr "Vue Liste"
 
 #. Default: "Listing"
 #: components/manage/Blocks/Listing/schema
@@ -2227,7 +2227,7 @@ msgstr "Identifiant"
 #. Default: "Logo of"
 #: components/theme/Logo/Logo
 msgid "Logo of"
-msgstr ""
+msgstr "Logo de"
 
 #. Default: "Logout"
 #: components/manage/Toolbar/PersonalTools
@@ -2268,7 +2268,7 @@ msgstr "Manuel"
 #. Default: "Manually"
 #: components/manage/Controlpanels/Aliases
 msgid "Manually"
-msgstr ""
+msgstr "Manuellement"
 
 #. Default: "Manually or automatically added?"
 #: components/manage/Controlpanels/Aliases
@@ -2278,7 +2278,7 @@ msgstr "Ajouté manuellement ou automatiquement ?"
 #. Default: "Many relations found. Please search."
 #: helpers/MessageLabels/MessageLabels
 msgid "Many relations found. Please search."
-msgstr ""
+msgstr "De nombreux liens de parenté ont été trouvés. Veuillez effectuer une recherche."
 
 #. Default: "Maps"
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2294,7 +2294,7 @@ msgstr "URL de la carte"
 #. Default: "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
 #: helpers/MessageLabels/MessageLabels
 msgid "Maximum file size is {maxSize} bytes, but the uploaded file is {size} bytes."
-msgstr ""
+msgstr "La taille maximale du fichier est de {maxSize} octets, mais le fichier téléchargé fait {size} octets."
 
 #. Default: "Maximum length is {len}."
 #: helpers/MessageLabels/MessageLabels
@@ -2365,7 +2365,7 @@ msgstr "Plus"
 #. Default: "More filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "More filters"
-msgstr ""
+msgstr "Plus de filtres"
 
 #. Default: "More information about the upgrade procedure can be found in the documentation section of plone.org in the Upgrade Guide."
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -2431,7 +2431,7 @@ msgstr "Retour en arrière"
 #. Default: "Navigate to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Navigate to this item"
-msgstr ""
+msgstr "Accédez à cet élément"
 
 #. Default: "Navigation"
 #: components/theme/Navigation/ContextNavigation
@@ -2488,7 +2488,7 @@ msgstr "Aucun module trouvé"
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "No broken relations found."
-msgstr ""
+msgstr "Aucune relation rompue trouvée."
 
 #. Default: "There is no connection to the server, due to a timeout o no network connection."
 #: components/theme/RequestTimeout/RequestTimeout
@@ -2513,7 +2513,7 @@ msgstr "Aucune image pour le champ image"
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
-msgstr ""
+msgstr "Aucune image trouvée."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -2528,7 +2528,7 @@ msgstr "Aucun élément sélectionné"
 #. Default: "No links to this item found."
 #: components/manage/LinksToItem/LinksToItem
 msgid "No links to this item found."
-msgstr ""
+msgstr "Aucun lien trouvé pour cet élément."
 
 #. Default: "No map selected"
 #: components/manage/Blocks/Maps/MapsSidebar
@@ -2551,7 +2551,7 @@ msgstr "Aucune option"
 #. Default: "No relation found"
 #: helpers/MessageLabels/MessageLabels
 msgid "No relation found"
-msgstr ""
+msgstr "Aucune relation trouvée"
 
 #. Default: "No results found"
 #: components/manage/BlockChooser/BlockChooser
@@ -2638,7 +2638,7 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr ""
+msgstr "Seuls les caractères codés sur 7 bits sont autorisés. Les lettres majuscules, les caractères spéciaux <, >, &, #, /, ? et tout autre caractère interdit dans les URL sont interdits. L'URL ne peut pas commencer par _, aq_, @@, ++. Elle ne peut pas se terminer par __. Les URL ne peuvent pas contenir les caractères suivants : request, contributors, ., .., \"\". Les sauts de ligne sont interdits."
 
 #. Default: "Open URL browser"
 #: components/manage/Widgets/UrlWidget
@@ -2666,12 +2666,12 @@ msgstr "Ouvrir le navigateur d'objets"
 #. Default: "Order"
 #: components/manage/Sidebar/Sidebar
 msgid "Order"
-msgstr ""
+msgstr "Ordre"
 
 #. Default: "Ordered"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
-msgstr ""
+msgstr "Ordonnée"
 
 #. Default: "Origin"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
@@ -2681,7 +2681,7 @@ msgstr "Origine"
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Overview of relations of all content items"
-msgstr ""
+msgstr "Aperçu des relations de tous les éléments de contenu"
 
 #. Default: "Page"
 #: components/manage/Toolbar/Toolbar
@@ -2761,12 +2761,12 @@ msgstr "Personnes responsables de la création du contenu de cet article. Veuill
 #. Default: "Placeholder"
 #: components/manage/Widgets/SchemaWidget
 msgid "Placeholder"
-msgstr ""
+msgstr "Texte indicatif"
 
 #. Default: "Please choose an existing content as source for this element"
 #: components/manage/Blocks/Teaser/DefaultBody
 msgid "Please choose an existing content as source for this element"
-msgstr ""
+msgstr "Veuillez choisir un contenu existant comme source pour cet élément."
 
 #. Default: "Please continue with the upgrade."
 #: components/manage/Controlpanels/Controlpanels
@@ -2806,7 +2806,7 @@ msgstr "Veuillez mettre à niveau plone.restapi >= 8.24.0."
 #. Default: "Please upgrade to plone.restapi >= 8.39.0."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Please upgrade to plone.restapi >= 8.39.0."
-msgstr ""
+msgstr "Veuillez mettre à jour plone.restapi vers une version >= 8.39.0."
 
 #. Default: "Plone Foundation"
 #: components/theme/Footer/Footer
@@ -2899,7 +2899,7 @@ msgstr "Requête"
 #. Default: "Query Parameter Name"
 #: components/manage/Widgets/SchemaWidget
 msgid "Query Parameter Name"
-msgstr ""
+msgstr "Nom du paramètre de requête"
 
 #. Default: "Re-enter the password. Make sure the passwords are identical."
 #: components/manage/Preferences/ChangePassword
@@ -2916,7 +2916,7 @@ msgstr "Lire la suite..."
 #. Default: "Read only for this type of relation."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Read only for this type of relation."
-msgstr ""
+msgstr "Lecture seule pour ce type de relation."
 
 #. Default: "Rearrange items by…"
 #: components/manage/Contents/Contents
@@ -2951,17 +2951,17 @@ msgstr "Réduisez la complexité"
 #. Default: "Referencing this item as related item"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item as related item"
-msgstr ""
+msgstr "Référencer cet article comme article connexe"
 
 #. Default: "Referencing this item with {relationship}"
 #: components/manage/LinksToItem/LinksToItem
 msgid "Referencing this item with {relationship}"
-msgstr ""
+msgstr "Référencer cet élément avec {relationship}"
 
 #. Default: "Reset to target"
 #: components/manage/Blocks/Teaser/Data
 msgid "Refresh source content"
-msgstr ""
+msgstr "Réinitialiser à la cible"
 
 #. Default: "Register"
 #: components/theme/Anontools/Anontools
@@ -2978,35 +2978,35 @@ msgstr "Formulaire d'enregistrement"
 #. Default: "Related Items"
 #: components/theme/RelatedItems/RelatedItems
 msgid "Related Items"
-msgstr ""
+msgstr "Élément connexes"
 
 #. Default: "Relation"
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 #: helpers/MessageLabels/MessageLabels
 msgid "Relation name"
-msgstr ""
+msgstr "Relation"
 
 #. Default: "Relations"
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/Relations/Relations
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations"
-msgstr ""
+msgstr "Relations"
 
 #. Default: "Relations are editable with plone.api >= 2.0.3."
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "Relations are editable with plone.api >= 2.0.3."
-msgstr ""
+msgstr "Les relations sont modifiables avec plone.api >= 2.0.3."
 
 #. Default: "Relations updated"
 #: helpers/MessageLabels/MessageLabels
 msgid "Relations updated"
-msgstr ""
+msgstr "Relations mises à jour"
 
 #. Default: "Release to add file(s) to this folder"
 #: components/manage/Contents/DropZoneContent
 msgid "Release to add file(s) to this folder"
-msgstr ""
+msgstr "Autorisation d'ajouter un ou des fichier(s) à ce dossier"
 
 #. Default: "Relevance"
 #: components/theme/Search/Search
@@ -3021,7 +3021,7 @@ msgstr "Supprimer"
 #. Default: "Remove element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Remove element {index}"
-msgstr ""
+msgstr "Supprimer l'élément {index}"
 
 #. Default: "Remove item"
 #: components/manage/Widgets/ObjectListWidget
@@ -3110,7 +3110,7 @@ msgstr "Un champ obligatoire est manquant"
 #. Default: "Reset element {index}"
 #: components/manage/Blocks/Container/EditBlockWrapper
 msgid "Reset element {index}"
-msgstr ""
+msgstr "Réinitialiser l'élément {index}"
 
 #. Default: "Reset title"
 #: components/manage/Widgets/VocabularyTermsWidget
@@ -3120,7 +3120,7 @@ msgstr "Réinitialiser le titre"
 #. Default: "Reset the block"
 #: components/manage/Blocks/Teaser/Data
 msgid "Reset the block"
-msgstr ""
+msgstr "Réinitialiser le bloc"
 
 #. Default: "Results limit"
 #: components/manage/Widgets/QuerystringWidget
@@ -3230,7 +3230,7 @@ msgstr "Sauvegardé"
 #. Default: "Scheduled"
 #: components/manage/Contents/ContentsItem
 msgid "Scheduled"
-msgstr ""
+msgstr "Programmé"
 
 #. Default: "Schema"
 #: components/manage/Controlpanels/ContentTypesActions
@@ -3258,7 +3258,7 @@ msgstr "Recherche"
 #. Default: "Search SVG"
 #: components/manage/Sidebar/ObjectBrowserBody
 msgid "Search SVG"
-msgstr ""
+msgstr "Recherche SVG"
 
 #. Default: "Search Site"
 #: components/theme/SearchWidget/SearchWidget
@@ -3310,12 +3310,12 @@ msgstr "Résultats de recherche pour {term}"
 #. Default: "Search sources by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search sources by title or path"
-msgstr ""
+msgstr "Rechercher des sources par titre ou chemin d'accès"
 
 #. Default: "Search targets by title or path"
 #: helpers/MessageLabels/MessageLabels
 msgid "Search targets by title or path"
-msgstr ""
+msgstr "Rechercher des cibles par titre ou chemin d'accès"
 
 #. Default: "Search users…"
 #: helpers/MessageLabels/MessageLabels
@@ -3358,12 +3358,12 @@ msgstr "Sélectionnez les colonnes à afficher"
 #. Default: "Select relation"
 #: helpers/MessageLabels/MessageLabels
 msgid "Select relation"
-msgstr ""
+msgstr "Sélectionner la relation"
 
 #. Default: "Select rule"
 #: components/manage/Rules/Rules
 msgid "Select rule"
-msgstr ""
+msgstr "Sélectionner une règle"
 
 #. Default: "Select the transition to be used for modifying the items state."
 #: components/manage/Contents/ContentsWorkflowModal
@@ -3373,7 +3373,7 @@ msgstr "Sélectionnez la transition à utiliser pour modifier l'état des élém
 #. Default: "Selected"
 #: helpers/MessageLabels/MessageLabels
 msgid "Selected"
-msgstr ""
+msgstr "Sélectionné"
 
 #. Default: "Selected dates"
 #: components/manage/Widgets/RecurrenceWidget/Occurences
@@ -3418,7 +3418,7 @@ msgstr "Envoyer un email de confirmation avec un lien pour définir le mot de pa
 #. Default: "Server Error"
 #: components/theme/Error/ServerError
 msgid "Server Error"
-msgstr ""
+msgstr "Erreur serveur"
 
 #. Default: "Set my password"
 #: components/theme/PasswordReset/PasswordReset
@@ -3476,7 +3476,7 @@ msgstr "Afficher les réponses"
 #. Default: "Show filters"
 #: components/manage/Blocks/Search/components/Facets
 msgid "Show filters"
-msgstr ""
+msgstr "Afficher les filtres"
 
 #. Default: "Show groups of users below"
 #: helpers/MessageLabels/MessageLabels
@@ -3491,12 +3491,12 @@ msgstr "Afficher l'élément"
 #. Default: "Show potential sources. Not only objects that are source of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential sources. Not only objects that are source of some relation."
-msgstr ""
+msgstr "Indiquez les sources potentielles. Pas seulement les objets qui sont à l'origine d'une relation."
 
 #. Default: "Show potential targets. Not only objects that are target of some relation."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
 msgid "Show potential targets. Not only objects that are target of some relation."
-msgstr ""
+msgstr "Indiquez les cibles potentielles. Pas seulement les objets qui sont la cible d'une relation."
 
 #. Default: "Show search button?"
 #: components/manage/Blocks/Search/schema
@@ -3574,7 +3574,7 @@ msgstr ""
 #. Default: "Some relations are broken. Please fix."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "Some relations are broken. Please fix."
-msgstr ""
+msgstr "Certaines relations sont rompues. Veuillez les réparer."
 
 #. Default: "Sorry, something went wrong with your request"
 #: error
@@ -3616,7 +3616,7 @@ msgstr "Trié"
 #. Default: "Sorted on"
 #: components/manage/Blocks/Search/components/SortOn
 msgid "Sorted on"
-msgstr ""
+msgstr "Trié par"
 
 #. Default: "Source"
 #: components/manage/Blocks/HTML/Edit
@@ -3666,7 +3666,7 @@ msgstr "Statut"
 #. Default: "Sticky"
 #: components/manage/Blocks/ToC/Schema
 msgid "Sticky"
-msgstr ""
+msgstr "Collant"
 
 #. Default: "Stop compare"
 #: components/manage/Multilingual/CompareLanguages
@@ -3696,7 +3696,7 @@ msgstr "Sujet"
 #. Default: "Submit"
 #: components/manage/AnchorPlugin/components/LinkButton/AddLinkForm
 msgid "Submit"
-msgstr ""
+msgstr "Envoyer"
 
 #. Default: "Success"
 #: components/manage/Actions/Actions
@@ -3796,7 +3796,7 @@ msgstr "Nombre d'objets en mémoire par cache"
 #. Default: "Teaser"
 #: components/manage/Blocks/Teaser/schema
 msgid "Teaser"
-msgstr ""
+msgstr "Aperçu"
 
 #. Default: "Text"
 #: components/manage/Widgets/SchemaWidget
@@ -3840,7 +3840,7 @@ msgstr "La présence du bouton désactive la recherche en temps réel, la requê
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
-msgstr ""
+msgstr "Le fichier que vous avez téléchargé dépasse la taille maximale autorisée de {size} octets."
 
 #. Default: "The following content rules are active in this Page. Use the content rules control panel to create new rules or delete or modify existing ones."
 #: components/manage/Rules/Rules
@@ -3865,12 +3865,12 @@ msgstr "L'adresse du lien est :"
 #. Default: "The number of items must be greater than or equal to {minItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be greater than or equal to {minItems}"
-msgstr ""
+msgstr "Le nombre d'éléments doit être supérieur ou égal à {minItems}."
 
 #. Default: "The number of items must be less than or equal to {maxItems}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The number of items must be less than or equal to {maxItems}"
-msgstr ""
+msgstr "Le nombre d'éléments doit être inférieur ou égal à {maxItems}."
 
 #. Default: "The provided alternative url already exists!"
 #: components/manage/Aliases/Aliases
@@ -3885,7 +3885,7 @@ msgstr "Le processus d'inscription a réussi. Veuillez vérifier votre boîte e-
 #. Default: "The selected default language must be in the list of the field 'Available languages'"
 #: helpers/MessageLabels/MessageLabels
 msgid "The selected default language must be in the list of the field 'Available languages'"
-msgstr ""
+msgstr "La langue par défaut sélectionnée doit figurer dans la liste du champ «Langues disponibles»."
 
 #. Default: "The site configuration is outdated and needs to be upgraded."
 #: components/manage/Controlpanels/Controlpanels
@@ -3896,7 +3896,7 @@ msgstr "La configuration du site nécessite une mise à niveau."
 #. Default: "The value does not match the pattern {pattern}"
 #: helpers/MessageLabels/MessageLabels
 msgid "The value does not match the pattern {pattern}"
-msgstr ""
+msgstr "La valeur ne correspond pas au modèle {pattern}"
 
 #. Default: "The working copy was discarded"
 #: components/manage/Toolbar/More
@@ -3911,18 +3911,18 @@ msgstr "Le {plonecms} est {copyright} 2000-{current_year} par la {plonefoundatio
 #. Default: "There are no groups with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no groups with the searched criteria"
-msgstr ""
+msgstr "Aucun groupe ne correspond aux critères de recherche."
 
 #. Default: "There are no users with the searched criteria"
 #: helpers/MessageLabels/MessageLabels
 msgid "There are no users with the searched criteria"
-msgstr ""
+msgstr "Aucun utilisateur ne correspond aux critères de recherche."
 
 #. Default: "There are some errors."
 #: components/manage/Add/Add
 #: components/manage/Edit/Edit
 msgid "There are some errors."
-msgstr ""
+msgstr "Il y a quelques erreurs."
 
 #. Default: "There is a configuration problem on the backend"
 #: components/theme/CorsError/CorsError
@@ -4222,7 +4222,7 @@ msgstr "Mise à jour"
 #. Default: "Update User"
 #: helpers/MessageLabels/MessageLabels
 msgid "Update User"
-msgstr ""
+msgstr "Mise à jour de l'utilisateur"
 
 #. Default: "Update installed addons"
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -4267,7 +4267,7 @@ msgstr "Téléchargé"
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
 msgid "Upload Files ({count})"
-msgstr ""
+msgstr "Téléverser des fichiers ({count})"
 
 #. Default: "Upload a lead image in the 'Lead Image' content field."
 #: components/manage/Blocks/LeadImage/Edit
@@ -4325,7 +4325,7 @@ msgstr "Utilisateur créé"
 #. Default: "User deleted"
 #: helpers/MessageLabels/MessageLabels
 msgid "User deleted"
-msgstr ""
+msgstr "Utilisateur supprimé"
 
 #. Default: "User name"
 #: components/manage/Controlpanels/Users/UsersControlpanel
@@ -4340,7 +4340,7 @@ msgstr "Rôles de l'utilisateur mis à jour"
 #. Default: "User updated successfuly"
 #: helpers/MessageLabels/MessageLabels
 msgid "User updated successfuly"
-msgstr ""
+msgstr "Utilisateur mis à jour avec succès"
 
 #. Default: "Username"
 #: helpers/MessageLabels/MessageLabels
@@ -4399,7 +4399,7 @@ msgstr "Voir les changements"
 #. Default: "View links and references to this item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "View links and references to this item"
-msgstr ""
+msgstr "Consultez les liens et les références à cet élément"
 
 #. Default: "View this revision"
 #: components/manage/History/History
@@ -4449,7 +4449,7 @@ msgstr "Nous nous excusons pour la gêne occasionnée, mais la page à laquelle 
 #. Default: "We apologize for the inconvenience, but there was an unexpected error on the server."
 #: components/theme/Error/ServerError
 msgid "We apologize for the inconvenience, but there was an unexpected error on the server."
-msgstr ""
+msgstr "Nous vous prions de nous excuser pour la gêne occasionnée, mais une erreur inattendue est survenue sur le serveur."
 
 #. Default: "We apologize for the inconvenience, but you don't have permissions on this resource."
 #: components/theme/Forbidden/Forbidden
@@ -4542,7 +4542,7 @@ msgstr "Oui"
 #. Default: "You are about to delete all items in the current pagination of this folder."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "You are about to delete all items in the current pagination of this folder."
-msgstr ""
+msgstr "Vous êtes sur le point de supprimer tous les éléments de la pagination actuelle de ce dossier."
 
 #. Default: "You are about to delete all items in this folder."
 #: components/manage/Contents/ContentsDeleteModal
@@ -4557,7 +4557,7 @@ msgstr "Vous essayez d'accéder à une ressource protégée, veuillez d'abord {l
 #. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
 msgid "You are trying to access a protected resource."
-msgstr ""
+msgstr "Vous tentez d'accéder à une ressource protégée."
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4577,7 +4577,7 @@ msgstr "Vous pouvez contrôler qui peut afficher et modifier votre élément à 
 #. Default: "You can not move this type of block to the new location"
 #: components/manage/Blocks/Block/Order/Order
 msgid "You can not move this type of block to the new location"
-msgstr ""
+msgstr "Vous ne pouvez pas déplacer ce type de bloc vers le nouvel emplacement."
 
 #. Default: "You can view the difference of the revisions below."
 #: components/manage/Diff/Diff
@@ -4602,7 +4602,7 @@ msgstr "Vous avez été déconnecté du site."
 #. Default: "You have not the required permission for this control panel."
 #: components/manage/Controlpanels/Relations/Relations
 msgid "You have not the required permission for this control panel."
-msgstr ""
+msgstr "Vous ne disposez pas des autorisations requises pour ce panneau de contrôle."
 
 #. Default: "Your email is required for reset your password."
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4632,7 +4632,7 @@ msgstr "Votre nom d'utilisateur est requis pour réinitialiser votre mot de pass
 #. Default: "File types allowed"
 #: components/manage/Widgets/SchemaWidget
 msgid "accept"
-msgstr ""
+msgstr "accepter"
 
 #. Default: "Enter an email address. This is necessary in case the password is lost. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: helpers/MessageLabels/MessageLabels
@@ -4662,7 +4662,7 @@ msgstr "Vues disponibles"
 #. Default: "Error in the block field {errorField}."
 #: helpers/MessageLabels/MessageLabels
 msgid "blocksFieldsErrorTitle"
-msgstr ""
+msgstr "Erreur dans le champ de bloc {errorField}."
 
 #. Default: "Forgot your password?"
 #: components/theme/Login/Login
@@ -4673,7 +4673,7 @@ msgstr "Mot de passe oublié"
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
 msgid "bulkUploadUrlsHelp"
-msgstr ""
+msgstr "Ajoutez plusieurs URL alternatives simultanément en important un fichier CSV. La première colonne doit contenir le chemin de redirection ; la seconde, le chemin de redirection. Les deux chemins doivent être relatifs au site Plone et commencer par un slash (/). Une troisième colonne facultative peut contenir une date et une heure. Une quatrième colonne facultative peut contenir une valeur booléenne indiquant s'il s'agit d'une redirection manuelle (valeur par défaut : vrai)."
 
 #. Default: "Checkbox"
 #: config/Blocks
@@ -4683,12 +4683,12 @@ msgstr "Case à cocher"
 #. Default: "column"
 #: components/manage/Blocks/Grid/templates
 msgid "column"
-msgstr ""
+msgstr "colonne"
 
 #. Default: "columns"
 #: components/manage/Blocks/Grid/templates
 msgid "columns"
-msgstr ""
+msgstr "colonnes"
 
 #. Default: "Common"
 #: config/Blocks
@@ -4703,7 +4703,7 @@ msgstr "Comparer avec la langue"
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
-msgstr ""
+msgstr "{countofrelation} {countofrelation, plural, one {relation brisée} other {relations brisées}} de type {typeofrelation}"
 
 #. Default: "Date Range"
 #: config/Blocks
@@ -4748,7 +4748,7 @@ msgstr "Brouillon"
 #. Default: "drag {type} block"
 #: components/manage/Blocks/Block/EditBlockWrapper
 msgid "drag_block"
-msgstr ""
+msgstr "glisser {type} bloc"
 
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
@@ -4798,32 +4798,32 @@ msgstr "Où"
 #. Default: "/example"
 #: components/manage/Controlpanels/Aliases
 msgid "examplePath"
-msgstr ""
+msgstr "/exemple"
 
 #. Default: "External URLs are not allowed in this field."
 #: components/manage/Widgets/ImageWidget
 msgid "externalURLsNotAllowed"
-msgstr ""
+msgstr "Les URL externes ne sont pas autorisées dans ce champ."
 
 #. Default: "This website does not accept files larger than {limit}"
 #: helpers/MessageLabels/MessageLabels
 msgid "fileTooLarge"
-msgstr ""
+msgstr "Ce site web n'accepte pas les fichiers de taille supérieure à {limit}"
 
 #. Default: "flush intIds and rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "flush intIds and rebuild relations"
-msgstr ""
+msgstr "vider les intIds et reconstruire les relations"
 
 #. Default: "<ul><li>Regenerate intIds (tokens of relations in relation catalog)</li><li>Rebuild relations</li></ul><p>Check the log for details!</p><p><b>Warning</b>: If you have add-ons relying on intIds, you should not flush them.</p>"
 #: helpers/MessageLabels/MessageLabels
 msgid "flushAndRebuildRelationsHints"
-msgstr ""
+msgstr "<ul><li>Régénérer les intIds (jetons des relations dans le catalogue de relations)</li><li>Reconstruire les relations</li></ul><p>Consultez le journal pour plus de détails !</p><p><b>Avertissement</b> : Si vous utilisez des modules complémentaires qui dépendent des intIds, vous ne devez pas les supprimer.</p>"
 
 #. Default: "Head title"
 #: components/manage/Blocks/Teaser/schema
 msgid "head_title"
-msgstr ""
+msgstr "Surtitre"
 
 #. Default: "Password reset confirmation sent"
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4848,17 +4848,17 @@ msgstr "image"
 #. Default: "Please upload an image instead."
 #: components/manage/Widgets/ImageWidget
 msgid "imageUploadErrorMessage"
-msgstr ""
+msgstr "Veuillez plutôt télécharger une image."
 
 #. Default: "Clear image"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_clear"
-msgstr ""
+msgstr "Effacer l'image"
 
 #. Default: "Image preview"
 #: components/manage/Blocks/Image/ImageSidebar
 msgid "image_block_preview"
-msgstr ""
+msgstr "Aperçu de l'image"
 
 #. Default: "Input must be integer"
 #: helpers/MessageLabels/MessageLabels
@@ -4868,7 +4868,7 @@ msgstr "Le champ doit être un entier"
 #. Default: "No image was found in the internal path you provided."
 #: components/manage/Widgets/ImageWidget
 msgid "internalImageNotFoundErrorMessage"
-msgstr ""
+msgstr "Aucune image n'a été trouvée dans le chemin interne que vous avez indiqué."
 
 #. Default: "Intranet"
 #: components/manage/Contents/ContentsItem
@@ -4878,12 +4878,12 @@ msgstr "Intranet"
 #. Default: "item"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "item"
-msgstr ""
+msgstr "élément"
 
 #. Default: "items"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "items"
-msgstr ""
+msgstr "éléments"
 
 #. Default: "My email is"
 #: components/theme/PasswordReset/RequestPasswordReset
@@ -4903,17 +4903,17 @@ msgstr "image de garde"
 #. Default: "Delete item and break links"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: Delete item and break links"
-msgstr ""
+msgstr "Supprimer l'élément et rompre les liens"
 
 #. Default: "Checking references..."
 #: components/manage/Contents/ContentsDeleteModal
 msgid "link-integrity: loading references"
-msgstr ""
+msgstr "Vérification des références..."
 
 #. Default: "Enter a URL to an image"
 #: components/manage/Widgets/ImageWidget
 msgid "linkAnImage"
-msgstr ""
+msgstr "Saisissez l'URL d'une image"
 
 #. Default: "Listing"
 #: config/Blocks
@@ -4969,7 +4969,7 @@ msgstr "souvent utilisé"
 #. Default: "Found {sources} sources and {targets} targets. Narrow down to {max}!"
 #: components/manage/Controlpanels/Relations/RelationsListing
 msgid "narrowDownRelations"
-msgstr ""
+msgstr "Sources et cibles trouvées : {sources} et {targets}. Affiner la recherche à maximum {max} !"
 
 #. Default: "No"
 #: components/manage/Blocks/Search/components/DateRangeFacetFilterListEntry
@@ -5012,7 +5012,7 @@ msgstr "En attente"
 #. Default: "Pick an existing image"
 #: components/manage/Widgets/ImageWidget
 msgid "pickAnImage"
-msgstr ""
+msgstr "Choisissez une image existante"
 
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
@@ -5027,12 +5027,12 @@ msgstr "Publié"
 #. Default: "Current path (./)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-currentPath"
-msgstr ""
+msgstr "Chemin actuel (./)"
 
 #. Default: "Parent path (../)"
 #: components/manage/Widgets/QueryWidget
 msgid "query-widget-parentPath"
-msgstr ""
+msgstr "Chemin parent (../)"
 
 #. Default: "Select…"
 #: components/manage/Widgets/QueryWidget
@@ -5042,27 +5042,27 @@ msgstr "Sélectionnez…"
 #. Default: "rebuild relations"
 #: helpers/MessageLabels/MessageLabels
 msgid "rebuild relations"
-msgstr ""
+msgstr "rétablir les relations"
 
 #. Default: "reference"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "reference"
-msgstr ""
+msgstr "référence"
 
 #. Default: "references"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "references"
-msgstr ""
+msgstr "références"
 
 #. Default: "refers to"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "refers to"
-msgstr ""
+msgstr "fait référence à"
 
 #. Default: "Result count"
 #: components/manage/Contents/Contents
 msgid "resultCount"
-msgstr ""
+msgstr "Nombre de résultats"
 
 #. Default: "results"
 #: components/theme/Search/Search
@@ -5247,7 +5247,7 @@ msgstr "Sélectionner une vue"
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
-msgstr ""
+msgstr "taille"
 
 #. Default: "Skip to footer"
 #: components/theme/SkipLinks/SkipLinks
@@ -5272,7 +5272,7 @@ msgstr "trier"
 #. Default: "sources path"
 #: helpers/MessageLabels/MessageLabels
 msgid "sources path"
-msgstr ""
+msgstr "chemin des sources"
 
 #. Default: "Table"
 #: config/Blocks
@@ -5282,12 +5282,12 @@ msgstr "table"
 #. Default: "target path"
 #: helpers/MessageLabels/MessageLabels
 msgid "target path"
-msgstr ""
+msgstr "chemin cible"
 
 #. Default: "Text"
 #: config/Blocks
 msgid "text"
-msgstr ""
+msgstr "Texte"
 
 #. Default: "Title"
 #: config/Blocks
@@ -5333,7 +5333,7 @@ msgstr "Mise à niveau de la version {origin} à {destination}"
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
 msgid "uploadAnImage"
-msgstr ""
+msgstr "Téléverser une image depuis votre ordinateur"
 
 #. Default: "Input must be valid url (www.something.com or http(s)://www.something.com)"
 #: helpers/MessageLabels/MessageLabels
