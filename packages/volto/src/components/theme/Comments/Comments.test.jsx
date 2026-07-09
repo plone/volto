@@ -12,23 +12,18 @@ vi.mock('@plone/volto/components/theme/Comments/CommentEditModal', () => ({
 
 const mockStore = configureStore();
 
-vi.mock('moment', () => ({
-  default: vi.fn(() => ({
-    format: vi.fn(() => 'Sunday, April 23, 2017 3:38 AM'),
-    fromNow: vi.fn(() => 'a few seconds ago'),
-  })),
-}));
-
-vi.mock('@plone/volto/helpers/Loadable/Loadable');
 vi.mock('@plone/volto/components/manage/Form');
-beforeAll(async () => {
-  const { __setLoadables } = await import(
-    '@plone/volto/helpers/Loadable/Loadable'
-  );
-  await __setLoadables();
-});
 
 describe('Comments', () => {
+  beforeEach(() => {
+    // Freeze time so formatRelativeDate produces deterministic output
+    vi.useFakeTimers({ now: new Date('2017-04-23T03:38:04Z') });
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it('renders a comments component', () => {
     const store = mockStore({
       comments: {
@@ -37,7 +32,7 @@ describe('Comments', () => {
             '@id': 'someurl',
             comment_id: '1614094601171408',
             author_name: 'admin',
-            creation_date: '2017-11-06T19:36:01',
+            creation_date: '2017-04-23T03:38:00Z',
             text: { data: 'Some comment' },
             is_deletable: true,
             is_editable: true,

@@ -121,3 +121,27 @@ exports[`same day, whole day 1`] = `
   </span>
 </p>
 `;
+
+exports[`uses current time when end is undefined 1`] = `
+<p
+  className="event-when same-day"
+>
+  <span
+    className="start-date"
+  >
+    Jun 23, 2019
+  </span>
+   from 
+  <span
+    className="start-time"
+  >
+    11:55 AM
+  </span>
+   to 
+  <span
+    className="end-time"
+  >
+    3:20 PM
+  </span>
+</p>
+`;
