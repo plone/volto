@@ -3516,6 +3516,7 @@ msgstr "Establiu la contrasenya"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
+#: components/theme/Search/Search
 msgid "Settings"
 msgstr "Configuració"
 
