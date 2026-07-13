@@ -252,11 +252,11 @@ const FileWidget = (props) => {
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
             </label>
-            <span id={`field-${id}-status`} className="visually-hidden-volto">
+            <span id={`field-${id}-status`} className="visually-hidden">
               {statusTextA11y}
             </span>
             {errorTextA11y && (
-              <span role="alert" className="visually-hidden-volto">
+              <span role="alert" className="visually-hidden">
                 {errorTextA11y}
               </span>
             )}
