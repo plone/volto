@@ -1254,13 +1254,13 @@ msgstr "Descarrega {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
-#. Default: "File upload area. Press Enter or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per substituir el fitxer existent"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1620,7 +1620,7 @@ msgstr "El fitxer no és del tipus acceptat {accept}"
 msgid "File size"
 msgstr "Mida de l'arxiu"
 
-#. Default: "File upload area. Press Enter or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per substituir el fitxer existent"
@@ -2926,7 +2926,7 @@ msgstr "Desenvolupat amb Plone i Python"
 msgid "Preferences"
 msgstr "Preferències"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
 msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per obrir el navegador de fitxers"

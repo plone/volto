@@ -1254,13 +1254,13 @@ msgstr "Deskargatu {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrastatu fitxategiak hona edo erabili Arakatu botoia."
 
-#. Default: "File upload area. Press Enter or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Fitxategiak igotzeko eremua. Sakatu Enter edo egin klik lehendik dagoen fitxategia ordezkatzeko"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1620,7 +1620,7 @@ msgstr "Fitxategiak ez du onartutako mota {accept}"
 msgid "File size"
 msgstr "Fitxategiaren tamaina"
 
-#. Default: "File upload area. Press Enter or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Fitxategiak igotzeko eremua. Sakatu Enter edo egin klik lehendik dagoen fitxategia ordezkatzeko"
@@ -2926,7 +2926,7 @@ msgstr "Plone eta Pythonekin eginda"
 msgid "Preferences"
 msgstr "Hobespenak"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
 msgstr "Fitxategiak igotzeko eremua. Sakatu Enter edo egin klik fitxategi-arakatzailea irekitzeko"

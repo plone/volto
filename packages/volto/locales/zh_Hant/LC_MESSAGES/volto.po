@@ -1253,13 +1253,13 @@ msgstr "下載 {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "File upload area. Press Enter or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "檔案上傳區域。按 Enter 或按一下以取代現有檔案"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1619,7 +1619,7 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
-#. Default: "File upload area. Press Enter or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "檔案上傳區域。按 Enter 或按一下以取代現有檔案"
@@ -2925,7 +2925,7 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
 msgstr "檔案上傳區域。按 Enter 或按一下以開啟檔案瀏覽器"

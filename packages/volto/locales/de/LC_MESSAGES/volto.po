@@ -1254,13 +1254,13 @@ msgstr "{filename} herunterladen"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Ziehen Sie Dateien von Ihrem Computer auf diesen Bereich oder drücken Sie den “Durchsuchen”-Knopf."
 
-#. Default: "File upload area. Press Enter or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
 msgstr "Datei-Upload-Bereich. Enter drücken oder klicken, um die vorhandene Datei zu ersetzen"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1620,7 +1620,7 @@ msgstr "Datei ist nicht vom akzeptierten Typ {accept}"
 msgid "File size"
 msgstr "Dateigröße"
 
-#. Default: "File upload area. Press Enter or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 msgid "File upload area. Press Enter or click to replace the existing file"
 msgstr "Datei-Upload-Bereich. Enter drücken oder klicken, um die vorhandene Datei zu ersetzen"
@@ -2926,7 +2926,7 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#. Default: "File upload area. Press Enter or click to open the file browser"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
 msgstr "Datei-Upload-Bereich. Enter drücken oder klicken, um den Datei-Browser zu öffnen"
