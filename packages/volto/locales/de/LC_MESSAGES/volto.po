@@ -720,6 +720,11 @@ msgstr "Filter entfernen"
 msgid "Clear search"
 msgstr "Suche zurücksetzen"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Auswahl aufheben"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1136,11 +1141,6 @@ msgstr "Gelöscht"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Das Löschen dieses Elements wird {brokenReferences} {variation} brechen."
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Tiefe"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
@@ -2244,6 +2244,7 @@ msgstr "Mehr laden"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "lädt"
 

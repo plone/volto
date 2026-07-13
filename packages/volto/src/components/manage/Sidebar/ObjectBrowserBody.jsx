@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment, Breadcrumb } from 'semantic-ui-react';
 
+import debounce from 'lodash/debounce';
 import join from 'lodash/join';
 
 // These absolute imports (without using the corresponding centralized index.js) are required
@@ -159,6 +160,22 @@ class ObjectBrowserBody extends Component {
       view: this.props.mode === 'image' ? 'icons' : 'list',
     };
     this.searchInputRef = React.createRef();
+    // Debounce the live-search dispatch so rapid keystrokes do not produce a
+    // burst of overlapping requests whose responses may resolve out of order
+    // (an older, less-filtered response arriving after the latest one would
+    // visually "reset" the list to look unfiltered).
+    this.debouncedSearch = debounce(this.doSearch, 300);
+  }
+
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.debouncedSearch) {
+      this.debouncedSearch.cancel();
+    }
   }
 
   /**
@@ -248,8 +265,7 @@ class ObjectBrowserBody extends Component {
       view: prevState.view === 'icons' ? 'list' : 'icons',
     }));
 
-  onSearch = (e) => {
-    const text = flattenToAppURL(e.target.value);
+  doSearch = (text) => {
     if (text.startsWith('/')) {
       this.setState({ currentFolder: text });
       this.props.searchContent(
@@ -284,6 +300,11 @@ class ObjectBrowserBody extends Component {
             `${this.props.block}-${this.props.mode}`,
           );
     }
+  };
+
+  onSearch = (e) => {
+    const text = flattenToAppURL(e.target.value);
+    this.debouncedSearch(text);
   };
 
   onSelectItem = (item) => {

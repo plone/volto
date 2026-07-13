@@ -355,6 +355,7 @@ const Edit = (props) => {
             <Button
               icon
               basic
+              type="button"
               onClick={onInsertRowBefore}
               title={intl.formatMessage(messages.insertRowBefore)}
               aria-label={intl.formatMessage(messages.insertRowBefore)}
@@ -366,6 +367,7 @@ const Edit = (props) => {
             <Button
               icon
               basic
+              type="button"
               onClick={onInsertRowAfter}
               title={intl.formatMessage(messages.insertRowAfter)}
               aria-label={intl.formatMessage(messages.insertRowAfter)}
@@ -377,6 +379,7 @@ const Edit = (props) => {
             <Button
               icon
               basic
+              type="button"
               onClick={onDeleteRow}
               disabled={data.table?.rows?.length === 1}
               title={intl.formatMessage(messages.deleteRow)}
@@ -389,6 +392,7 @@ const Edit = (props) => {
             <Button
               icon
               basic
+              type="button"
               onClick={onInsertColBefore}
               title={intl.formatMessage(messages.insertColBefore)}
               aria-label={intl.formatMessage(messages.insertColBefore)}
@@ -400,6 +404,7 @@ const Edit = (props) => {
             <Button
               icon
               basic
+              type="button"
               onClick={onInsertColAfter}
               title={intl.formatMessage(messages.insertColAfter)}
               aria-label={intl.formatMessage(messages.insertColAfter)}
@@ -411,6 +416,7 @@ const Edit = (props) => {
             <Button
               icon
               basic
+              type="button"
               onClick={onDeleteCol}
               disabled={data.table?.rows?.[0].cells.length === 1}
               title={intl.formatMessage(messages.deleteCol)}

@@ -719,6 +719,11 @@ msgstr "Filters leegmaken"
 msgid "Clear search"
 msgstr "Zoek leegmaken"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Selectie wissen"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1135,11 +1140,6 @@ msgstr "Verwijderd"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Verwijderen van dit item zal {brokenReferences} {variation} breken."
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Diepte"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
@@ -2243,6 +2243,7 @@ msgstr "Meer laden..."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Laden"
 
