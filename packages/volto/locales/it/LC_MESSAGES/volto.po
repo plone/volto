@@ -690,6 +690,11 @@ msgstr "Azzera filtri"
 msgid "Clear search"
 msgstr "Cancella ricerca"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Cancella selezione"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1105,11 +1110,6 @@ msgstr "Cancellato"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "Eliminando questo elemento si romperanno {brokenReferences} {variation}."
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Profondità di ricerca"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn

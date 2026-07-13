@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.10.7 (2026-06-25)
+
+### Internal
+
+- Update devDependency: `release-it` 20.0.1. @davisagli 
+
 ## 3.10.6 (2026-05-19)
 
 ### Bugfix
