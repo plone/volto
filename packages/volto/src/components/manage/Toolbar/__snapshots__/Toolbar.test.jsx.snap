@@ -197,7 +197,7 @@ exports[`Toolbar > renders the Toolbar component 1`] = `
       >
         <span
           aria-live="assertive"
-          className="visually-hidden"
+          className="visually-hidden-volto"
         >
           Shrink toolbar
         </span>
@@ -407,7 +407,7 @@ exports[`Toolbar > renders the Toolbar component with lock 1`] = `
       >
         <span
           aria-live="assertive"
-          className="visually-hidden"
+          className="visually-hidden-volto"
         >
           Shrink toolbar
         </span>

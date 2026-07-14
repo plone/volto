@@ -443,18 +443,15 @@ class Toolbar extends Component {
             }
             ref={this.toolbarWindow}
             onBlur={(e) => {
-              if (!this.toolbarWindow.current?.contains(e.relatedTarget)) {
+              if (
+                e.relatedTarget &&
+                !this.toolbarWindow.current?.contains(e.relatedTarget)
+              ) {
                 this.toolbarRef.current
                   ?.querySelector('button.toolbar-handler-button')
                   ?.focus();
 
-                // Close menu on blur only for personalTools — scoped to avoid
-                // impacting other toolbar flows or unrelated tests
-                const isPersonalTools =
-                  this.state.loadedComponents.includes('personalTools');
-                if (isPersonalTools) {
-                  this.closeMenu();
-                }
+                this.closeMenu();
 
                 if (this.announceRef.current) {
                   this.announceRef.current.textContent = '';
@@ -716,7 +713,7 @@ class Toolbar extends Component {
                 aria-expanded={expanded}
                 aria-controls="toolbar-body"
               >
-                <span aria-live="assertive" className="visually-hidden">
+                <span aria-live="assertive" className="visually-hidden-volto">
                   {expanded
                     ? this.props.intl.formatMessage(messages.shrinkToolbar)
                     : this.props.intl.formatMessage(messages.expandToolbar)}
