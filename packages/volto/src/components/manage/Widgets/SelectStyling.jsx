@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Popup } from 'semantic-ui-react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -22,8 +22,6 @@ const messages = defineMessages({
     defaultMessage: 'Clear selection',
   },
 });
-
-const CHIP_INSTRUCTIONS_ID = 'select-chip-instructions';
 
 export const MenuList = ({ children }) => {
   return <DynamicHeightList>{children}</DynamicHeightList>;
@@ -51,6 +49,9 @@ export const SortableMultiValue = injectLazyLibs([
       id: props.data.value,
     });
   const intl = useIntl();
+  // useId guarantees a unique id per chip instance, so the id is never
+  // duplicated when several widgets (or several chips) are on the same page.
+  const chipInstructionsId = useId();
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -63,9 +64,11 @@ export const SortableMultiValue = injectLazyLibs([
       {...attributes}
       {...listeners}
       aria-label={`${props.selectProps.fieldTitle || ''}: ${props.data.label}`}
-      aria-describedby={CHIP_INSTRUCTIONS_ID}
+      aria-describedby={chipInstructionsId}
     >
-      <span id={CHIP_INSTRUCTIONS_ID} style={{ display: 'none' }}>
+      {/* visually-hidden keeps the text available to screen readers;
+          display:none would remove it from the accessibility tree */}
+      <span id={chipInstructionsId} className="visually-hidden">
         {intl.formatMessage(messages.chip_instructions)}
       </span>
       <MultiValue
