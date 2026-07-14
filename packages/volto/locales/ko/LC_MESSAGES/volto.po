@@ -1253,18 +1253,14 @@ msgstr "{filename} 다운로드"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "여기에 파일을 끌어다 놓거나 클릭하여 기존 파일을 교체하세요"
+msgid "Drop file here to replace the existing file"
+msgstr "파일 업로드 영역. Enter를 누르거나 클릭하여 기존 파일을 교체하세요"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "파일을 여기에 끌어다 놓거나 클릭하여 업로드하세요"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr ""
@@ -1623,10 +1619,10 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "파일 업로드 영역. 파일 브라우저를 열려면 Enter를 누르세요"
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "파일 업로드 영역. Enter를 누르거나 클릭하여 기존 파일을 교체하세요"
 
 #. Default: "File view"
 #: config/Views
@@ -2928,6 +2924,11 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr ""
+
+#. Default: "File upload area. Press Enter or click to open the file browser."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "파일 업로드 영역. Enter를 누르거나 클릭하여 파일 브라우저를 여세요"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
