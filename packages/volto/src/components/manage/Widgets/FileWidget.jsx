@@ -35,12 +35,14 @@ const messages = defineMessages({
     defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drop a file here or click to replace the existing file',
-    defaultMessage: 'Drop a file here or click to replace the existing file',
+    id: 'Drop file here to replace the existing file',
+    defaultMessage:
+      'File upload area. Press Enter or click to replace the existing file.',
   },
   fileDrag: {
-    id: 'Drop a file here or click to upload',
-    defaultMessage: 'Drop a file here or click to upload',
+    id: 'Drop file here to upload a new file',
+    defaultMessage:
+      'File upload area. Press Enter or click to open the file browser.',
   },
   replaceFile: {
     id: 'Replace existing file',
@@ -60,8 +62,14 @@ const messages = defineMessages({
     defaultMessage: 'File is not of the accepted type {accept}',
   },
   dragAndDropActionA11y: {
-    id: 'File upload area. Press Enter to open the file browser',
-    defaultMessage: 'File upload area. Press Enter to open the file browser',
+    id: 'Press Enter to browse files from your computer.',
+    defaultMessage:
+      'File upload area. Press Enter or click to open the file browser.',
+  },
+  dragAndDropReplaceA11y: {
+    id: 'File upload area. Press Enter or click to replace the existing file',
+    defaultMessage:
+      'File upload area. Press Enter or click to replace the existing file.',
   },
   requiredField: {
     id: 'This field is required.',
@@ -180,9 +188,11 @@ const FileWidget = (props) => {
   };
 
   const statusTextA11y = [
-    intl.formatMessage(messages.dragAndDropActionA11y), // Interaction instructions
-    props.required && intl.formatMessage(messages.requiredField), // Required field status
-    value?.filename, // Current file name if a file is uploaded
+    value
+      ? intl.formatMessage(messages.dragAndDropReplaceA11y)
+      : intl.formatMessage(messages.dragAndDropActionA11y),
+    props.required && intl.formatMessage(messages.requiredField),
+    value?.filename,
   ]
     .filter(Boolean)
     .join('. ');
