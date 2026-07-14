@@ -269,7 +269,7 @@ Because the `id` is the key used to look up translations in the `.po` files, ren
 This release restores the original `msgid` keys, so the long-standing translations apply again.
 The `defaultMessage` (the visible English text) was also updated to more accessible wording, but that does not affect the translation lookup.
 
-The renamed keys existed only in Volto 19.1.3 and the two subsequent patch releases.
+The renamed keys existed only in Volto 19.1.3, 19.1.4, and 19.1.5.
 If your add-on or project referenced or translated any of those message IDs, update them to the restored keys.
 - `Drop a file here or click to replace the existing file` was restored to `Drop file here to replace the existing file`, 
 - `Drop a file here or click to upload` was restored to `Drop file here to upload a new file`, 
