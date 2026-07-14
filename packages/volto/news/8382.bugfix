@@ -1,1 +1,1 @@
-Fix wrong skiplink selector in focus.less so skiplinks focus styles apply correctly. @Wagner3UB
+Renamed the selector in {file}`focus.less` so that skiplinks focus styles apply correctly. @Wagner3UB
