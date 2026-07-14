@@ -724,9 +724,9 @@ class Contents extends Component {
         delta,
       );
     } else {
-      this.setState({
-        items: move(this.state.items, itemIndex, itemIndex + delta),
-      });
+      this.setState((prevState) => ({
+        items: move(prevState.items, itemIndex, itemIndex + delta),
+      }));
     }
   }
 
