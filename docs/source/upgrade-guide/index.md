@@ -266,7 +266,7 @@ The `msgid` keys renamed in Volto 19.1.3 were reverted to their original values.
 Volto 19.1.3 (through [#7982](https://github.com/plone/volto/pull/7982)) inadvertently renamed several `defineMessages` `id` keys in `FileWidget` and `RegistryImageWidget`.
 Because the `id` is the key used to look up translations in the `.po` files, renaming it silently broke all existing translations for those strings, which then fell back to their English default.
 
-This release restores the original `msgid` keys, so the long-standing translations apply again.
+Volto 19.1.6 restores the original `msgid` keys, so the long-standing translations apply again.
 The `defaultMessage` (the visible English text) was also updated to more accessible wording, but that does not affect the translation lookup.
 
 The renamed keys existed only in Volto 19.1.3, 19.1.4, and 19.1.5.
