@@ -1208,22 +1208,27 @@ msgstr "Evenement downloaden"
 msgid "Download file"
 msgstr "Bestand downloaden"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "{filename} downloaden"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Sleep en zet bestanden neer van je computer naar dit gebied of klik op de “Bladeren” knop."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Zet bestand hier neer om het bestaande bestand te vervangen"
+msgstr "Sleep een bestand hierheen of klik om het bestaande bestand te vervangen"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
-msgstr "Zet bestand hier neer om een nieuw bestand op te laden"
+msgstr "Zet hier een bestand neer of klik om te uploaden"
 
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
@@ -1573,6 +1578,11 @@ msgstr "Bestand is niet van het geaccepteerde type {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Bestandsgrootte"
+
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om het bestaande bestand te vervangen"
 
 #. Default: "File view"
 #: config/Views
@@ -2857,10 +2867,10 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr "Druk Enter om door de bestanden op jouw computer te browsen."
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om de bestandsverkenner te openen"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3963,6 +3973,11 @@ msgstr "Deze items zullen gebroken linken krijgen"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Derde"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Dit veld is verplicht."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
