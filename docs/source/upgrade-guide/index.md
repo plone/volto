@@ -259,7 +259,7 @@ Also review any components that depend on hidden accessibility elements to ensur
 ```
 
 ### Restored original `FileWidget` i18n message IDs
-```{versionchanged} Volto 19
+```{versionchanged} Volto 19.1.3 and Volto 19.1.6
 The `msgid` keys renamed in Volto 19.1.3 were reverted to their original values.
 ```
 
