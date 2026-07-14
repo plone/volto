@@ -8,13 +8,12 @@ import {
   ListBoxItem,
   ListBoxSection,
   Popover,
-  PopoverContext,
   Select as RACSelect,
   SelectValue,
   Text,
-  useContextProps,
   type ListBoxItemProps,
   type ListBoxProps,
+  type PopoverProps,
   type SectionProps,
   type SelectProps as RACSelectProps,
   type ValidationResult,
@@ -42,6 +41,14 @@ export interface SelectProps<
   M extends 'single' | 'multiple' = 'single',
 > extends SelectBaseProps<T, M> {}
 
+export type SelectPopoverContextValue = Pick<
+  PopoverProps,
+  'className' | 'style'
+>;
+
+export const SelectPopoverContext =
+  React.createContext<SelectPopoverContextValue | null>(null);
+
 export function Select<
   T extends object = SelectItemObject,
   M extends 'single' | 'multiple' = 'single',
@@ -53,7 +60,7 @@ export function Select<
   items,
   ...props
 }: SelectProps<T, M>) {
-  const [popoverProps] = useContextProps({}, null, PopoverContext);
+  const popoverProps = React.useContext(SelectPopoverContext) ?? undefined;
 
   return (
     <RACSelect {...props}>
@@ -68,7 +75,7 @@ export function Select<
           </Button>
           {description && <Text slot="description">{description}</Text>}
           <FieldError>{errorMessage}</FieldError>
-          <Popover offset={0} {...popoverProps}>
+          <Popover {...popoverProps} offset={0}>
             <SelectListBox items={items}>
               {children
                 ? children

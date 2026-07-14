@@ -719,6 +719,11 @@ msgstr ""
 msgid "Clear search"
 msgstr ""
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Seçimi temizle"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1136,11 +1141,6 @@ msgstr ""
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr ""
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1253,18 +1253,14 @@ msgstr "{filename} indir"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Bir dosyayı buraya bırakın veya mevcut dosyayı değiştirmek için tıklayın"
+msgid "Drop file here to replace the existing file"
+msgstr "Dosya yükleme alanı. Mevcut dosyayı değiştirmek için Enter tuşuna basın veya tıklayın"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Bir dosyayı buraya sürükleyin veya yüklemek için tıklayın"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr ""
@@ -1623,10 +1619,10 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Dosya yükleme alanı. Dosya tarayıcısını açmak için Enter tuşuna basın"
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Dosya yükleme alanı. Mevcut dosyayı değiştirmek için Enter tuşuna basın veya tıklayın"
 
 #. Default: "File view"
 #: config/Views
@@ -2247,6 +2243,7 @@ msgstr ""
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr ""
 
@@ -2927,6 +2924,11 @@ msgstr ""
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr ""
+
+#. Default: "File upload area. Press Enter or click to open the file browser."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Dosya yükleme alanı. Dosya tarayıcısını açmak için Enter tuşuna basın veya tıklayın"
 
 #. Default: "Press Space to add items. Press Delete or Backspace to remove."
 #: components/manage/Widgets/SelectStyling

@@ -413,7 +413,7 @@ class ArrayWidget extends Component {
                   )
                 )
               }
-              isClearable
+              isClearable={!this.props.required}
               isMulti
               ariaLiveMessages={{
                 onFocus: (props) => {

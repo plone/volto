@@ -99,7 +99,7 @@ Update the Storybook configuration file {file}`.storybook/main.js`.
 
 ```diff
 - const scssPlugin = require('razzle-plugin-scss');
-+ const scssPlugin = require('@plone/babel-preset-razzle/webpack-plugins/webpack-scss-plugin');
++ const scssPlugin = require('@plone/volto/webpack-plugins/webpack-scss-plugin');
 - const createConfig = require('razzle/config/createConfigAsync.js');
 + const createConfig = require('@plone/razzle/config/createConfigAsync.js');
 ```
@@ -258,6 +258,27 @@ Also review any components that depend on hidden accessibility elements to ensur
 [Add visually-hidden class #6356](https://github.com/plone/volto/pull/6356)
 ```
 
+### Restored original `FileWidget` i18n message IDs
+```{versionchanged} Volto 19.1.3 and Volto 19.1.6
+The `msgid` keys renamed in Volto 19.1.3 were reverted to their original values.
+```
+
+Volto 19.1.3 in pull request [#7982](https://github.com/plone/volto/pull/7982) inadvertently renamed several `defineMessages` `id` keys in `FileWidget` and `RegistryImageWidget`.
+Because the `id` is the key used to look up translations in the `.po` files, renaming it silently broke all existing translations for those strings, which then fell back to their English default.
+
+Volto 19.1.6 restores the original `msgid` keys, so the long-standing translations apply again.
+The `defaultMessage` (the visible English text) was also updated to more accessible wording, but that does not affect the translation lookup.
+
+The renamed keys existed only in Volto 19.1.3, 19.1.4, and 19.1.5.
+If your add-on or project referenced or translated any of those message IDs, update them to the restored keys.
+- `Drop a file here or click to replace the existing file` was restored to `Drop file here to replace the existing file`, 
+- `Drop a file here or click to upload` was restored to `Drop file here to upload a new file`, 
+- `File upload area. Press Enter to open the file browser` was restored to `Press Enter to browse files from your computer.`.
+
+```{seealso}
+[Fix FileWidget i18n msgid breakage introduced in #7982 #8334](https://github.com/plone/volto/pull/8334)
+```
+
 (19-removed-support-for-loading-configuration-from-project-label)=
 
 ### Removed support for loading configuration from project
@@ -408,6 +429,13 @@ To avoid this, we have forked the `razzle-plugin-scss` package and removed the d
 We pinned the version of `sass` to `1.32.0`, which is the one before they introduced the deprecation warnings.
 It is unlikely that using this version will cause problems since no real new features were added in later versions that are relevant for Volto developers.
 In case that you need a later version of `sass` in your project or add-on, you can override it in your project's {file}`package.json` file.
+
+Update the Storybook configuration file {file}`.storybook/main.js`.
+
+```diff
+- const scssPlugin = require('razzle-plugin-scss');
++ const scssPlugin = require('@plone/volto/webpack-plugins/webpack-scss-plugin');
+```
 
 ### Table block is now wrapped with containers to support horizontal scrolling on small viewports
 ```{versionadded} Volto 19.0.0-alpha.26

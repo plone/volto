@@ -720,6 +720,11 @@ msgstr "Esborra filtres"
 msgid "Clear search"
 msgstr "Neteja la cerca"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Esborra la selecció"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1137,11 +1142,6 @@ msgstr "Eliminat"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Profunditat"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1254,18 +1254,14 @@ msgstr "Descarrega {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Arrossegueu un fitxer aquí o feu clic per substituir el fitxer existent"
+msgid "Drop file here to replace the existing file"
+msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per substituir el fitxer existent"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Arrossegueu un fitxer aquí o feu clic per pujar-lo"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Deixeu anar el fitxer aquí per pujar un fitxer nou"
@@ -1624,10 +1620,10 @@ msgstr "El fitxer no és del tipus acceptat {accept}"
 msgid "File size"
 msgstr "Mida de l'arxiu"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Àrea de càrrega de fitxers. Premeu Enter per obrir el navegador de fitxers"
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per substituir el fitxer existent"
 
 #. Default: "File view"
 #: config/Views
@@ -2248,6 +2244,7 @@ msgstr "Carrega més..."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Carregant."
 
@@ -2928,6 +2925,11 @@ msgstr "Desenvolupat amb Plone i Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferències"
+
+#. Default: "File upload area. Press Enter or click to open the file browser."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per obrir el navegador de fitxers"
 
 #. Default: "Press Space to add items. Press Delete or Backspace to remove."
 #: components/manage/Widgets/SelectStyling

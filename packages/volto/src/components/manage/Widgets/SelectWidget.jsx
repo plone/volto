@@ -317,7 +317,7 @@ class SelectWidget extends Component {
                 : undefined,
             );
           }}
-          isClearable={this.props.isClearable}
+          isClearable={!this.props.required && this.props.isClearable}
           ariaLiveMessages={{
             onFocus: (props) => {
               if (props.context === 'input') {

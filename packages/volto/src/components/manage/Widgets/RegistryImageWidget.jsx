@@ -33,12 +33,14 @@ const messages = defineMessages({
     defaultMessage: 'Drop files here ...',
   },
   editFile: {
-    id: 'Drop a file here or click to replace the existing file',
-    defaultMessage: 'Drop a file here or click to replace the existing file',
+    id: 'Drop file here to replace the existing file',
+    defaultMessage:
+      'File upload area. Press Enter or click to replace the existing file.',
   },
   fileDrag: {
     id: 'Drop file here to upload a new file',
-    defaultMessage: 'Drop file here to upload a new file',
+    defaultMessage:
+      'File upload area. Press Enter or click to open the file browser.',
   },
   replaceFile: {
     id: 'Replace existing file',
