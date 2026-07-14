@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.3 (2026-07-01)
+
+### Bugfix
+
+- Fixed unintended form submission triggered by table block buttons. @ilariamassa96 [#8330](https://github.com/plone/volto/issues/8330)
+
 ## 19.0.2 (2026-05-28)
 
 ### Bugfix

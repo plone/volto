@@ -17,6 +17,25 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.1.5 (2026-07-01)
+
+### Bugfix
+
+- Improve screen reader support for `SelectWidget` and `ArrayWidget` by replacing `aria-labelledby` with a dynamic `aria-label` that announces the field name and the current selected value on focus. @Wagner3UB [#8314](https://github.com/plone/volto/issues/8314)
+- Hide the clear button in `SelectWidget` and `ArrayWidget` when the field is marked as required, and make it keyboard accessible ({kbd}`Tab`, {kbd}`Enter`, {kbd}`Space`) on non-required fields. @Wagner3UB [#8315](https://github.com/plone/volto/issues/8315)
+- Removed redundant depth field from QuerystringWidget as it is already
+  in QueryWidget when Location criteria is selected and when a path is
+  selected in ObjectBrowserWidget. @sabrina-bongiovanni [#8350](https://github.com/plone/volto/issues/8350)
+
+### Internal
+
+- Fix random failure in test cypress blocks-table.js. @wesleybl [#8339](https://github.com/plone/volto/issues/8339), [#8345](https://github.com/plone/volto/issues/8345)
+- Remove redundant and deprecated pull request preview build workflow. @stevepiercy 
+
+### Documentation
+
+- Added missing steps for `webpack-scss-plugin` in the upgrade guide. @ksuess [#8045](https://github.com/plone/volto/issues/8045)
+
 ## 19.1.4 (2026-06-11)
 
 ### Bugfix

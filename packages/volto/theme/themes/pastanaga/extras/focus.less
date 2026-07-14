@@ -1,0 +1,33 @@
+.universal-focus-style() {
+  box-shadow: 0 0 0 2px @innerFocusShadow !important;
+  outline: @outerFocusOutline auto 2px !important;
+  outline-offset: 2px;
+}
+
+// Global focus styles for all elements that support :focus-visible
+// Exclude contenteditable elements (slate editors, rich text inputs) — focus is
+// already implied by the text cursor; an outline ring is noisy and confusing.
+:focus-visible:not([contenteditable]):not([data-slate-editor]) {
+  .universal-focus-style();
+}
+
+//inputs modifications
+input:focus-visible {
+  border-color: @outerFocusOutline !important;
+}
+
+// Semantic UI checkbox focus styles
+.ui.checkbox input:focus-visible ~ label::before {
+  .universal-focus-style();
+  outline-offset: 4px;
+}
+
+.ui.checkbox input:focus-visible ~ label::before {
+  transition: none !important;
+}
+
+// Skiplinks focus styles
+.skiplinks a:focus-visible {
+  border: 2px solid @linkColor;
+  outline: 3px solid @linkColor;
+}

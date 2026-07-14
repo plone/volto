@@ -719,6 +719,11 @@ msgstr "தெளிவான வடிப்பான்கள்"
 msgid "Clear search"
 msgstr "தேடலை அழி"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "தேர்வை அழி"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1135,11 +1140,6 @@ msgstr "நீக்கப்பட்டது"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "ஆழம்"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
@@ -2247,6 +2247,7 @@ msgstr "மேலும் ஏற்றவும்"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "ஏற்றுகிறது"
 
