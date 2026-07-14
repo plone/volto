@@ -505,6 +505,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onInsertRowBefore}
                 title={this.props.intl.formatMessage(messages.insertRowBefore)}
                 aria-label={this.props.intl.formatMessage(
@@ -518,6 +519,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onInsertRowAfter}
                 title={this.props.intl.formatMessage(messages.insertRowAfter)}
                 aria-label={this.props.intl.formatMessage(
@@ -531,6 +533,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onDeleteRow}
                 disabled={this.props.data.table?.rows?.length === 1}
                 title={this.props.intl.formatMessage(messages.deleteRow)}
@@ -543,6 +546,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onInsertColBefore}
                 title={this.props.intl.formatMessage(messages.insertColBefore)}
                 aria-label={this.props.intl.formatMessage(
@@ -556,6 +560,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onInsertColAfter}
                 title={this.props.intl.formatMessage(messages.insertColAfter)}
                 aria-label={this.props.intl.formatMessage(
@@ -569,6 +574,7 @@ class Edit extends Component {
               <Button
                 icon
                 basic
+                type="button"
                 onClick={this.onDeleteCol}
                 disabled={this.props.data.table?.rows?.[0].cells.length === 1}
                 title={this.props.intl.formatMessage(messages.deleteCol)}

@@ -690,6 +690,11 @@ msgstr "Garbitu filtroak"
 msgid "Clear search"
 msgstr "Garbitu bilaketa"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Garbitu hautaketa"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1105,11 +1110,6 @@ msgstr "Ezabatuta"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "Elementu hau ezabatzean {brokenReferences} {variation} apurtuko dira."
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Sakonera"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn

@@ -695,6 +695,11 @@ msgstr "Curațați filtrele"
 msgid "Clear search"
 msgstr "Ștergeți căutarea"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Șterge selecția"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1110,11 +1115,6 @@ msgstr "Șters"
 #: components/manage/Contents/ContentsDeleteModal
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "Ștergerea acestui element întrerupe {brokenReferences} {variation}."
-
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Adâncime"
 
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn

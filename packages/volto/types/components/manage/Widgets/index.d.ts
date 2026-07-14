@@ -23,7 +23,7 @@ export declare const UrlWidget: import("@loadable/component").LoadableClassCompo
         state: {
             isObjectBrowserOpen: boolean;
         };
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, initialPath, onlyFolderishSelectable, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;
@@ -63,7 +63,7 @@ export declare const InternalUrlWidget: import("@loadable/component").LoadableCl
         state: {
             isObjectBrowserOpen: boolean;
         };
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, initialPath, onlyFolderishSelectable, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;

@@ -491,6 +491,9 @@ showRelatedItems
 showTags
     If true, the `Tags` component will show tags from the `subjects` field. Default: true.
 
+siteMapDepth
+    Navigation levels depth used in the sitemap.
+    Defaults to `4`.
 
 defaultLanguage
     Defines the default language of the site.
