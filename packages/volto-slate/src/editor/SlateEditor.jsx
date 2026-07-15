@@ -7,6 +7,7 @@ import React, { Component } from 'react'; // , useState
 import { v4 as uuid } from 'uuid';
 
 import config from '@plone/volto/registry';
+import { isIMEComposing } from '@plone/volto/helpers/Utils/Utils';
 
 import { Element, Leaf } from './render';
 
@@ -354,6 +355,9 @@ class SlateEditor extends Component {
                 }, 200);
               }}
               onKeyDown={(event) => {
+                // Ignore keys while an IME composition is active (e.g. CJK
+                // conversion); slate-react handles composition itself.
+                if (isIMEComposing(event)) return;
                 const handled = handleHotKeys(editor, event, slateSettings);
                 if (handled) return;
                 onKeyDown && onKeyDown({ editor, event });
