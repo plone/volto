@@ -1,0 +1,1 @@
+Fixed IME composition Enter key in the Title and Description blocks being misinterpreted as a move to the next block, which broke Japanese/Chinese/Korean input (e.g. confirming a conversion in Safari). @terapyon
