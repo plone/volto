@@ -1253,18 +1253,14 @@ msgstr "{filename} downloaden"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Sleep en zet bestanden neer van je computer naar dit gebied of klik op de “Bladeren” knop."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Zet een bestand hier neer of klik om het bestaande bestand te vervangen"
+msgid "Drop file here to replace the existing file"
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om het bestaande bestand te vervangen"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Sleep een bestand hierheen of klik om te uploaden"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Zet bestand hier neer om een nieuw bestand op te laden"
@@ -1623,10 +1619,10 @@ msgstr "Bestand is niet van het geaccepteerde type {accept}"
 msgid "File size"
 msgstr "Bestandsgrootte"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Bestandsuploadgebied. Druk op Enter om de bestandsbrowser te openen"
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om het bestaande bestand te vervangen"
 
 #. Default: "File view"
 #: config/Views
@@ -2928,6 +2924,11 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Voorkeuren"
+
+#. Default: "File upload area. Press Enter or click to open the file browser."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om de bestandsverkenner te openen"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
