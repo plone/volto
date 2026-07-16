@@ -2930,6 +2930,11 @@ msgstr "पसंद"
 msgid "Press Enter to browse files from your computer."
 msgstr "फ़ाइल अपलोड क्षेत्र। फ़ाइल ब्राउज़र खोलने के लिए Enter दबाएं या क्लिक करें"
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "आइटम जोड़ने के लिए स्पेस दबाएं। हटाने के लिए हटाएं या Backspace दबाएं।"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -5127,6 +5132,12 @@ msgstr "अपूर्ण"
 msgid "pickAnImage"
 msgstr ""
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "मेनू खोलने के लिए नीचे तीर दबाएं।"
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5357,6 +5368,12 @@ msgstr "चयन करें"
 msgid "selectView"
 msgstr "दृश्य चुनें"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} फोकस में है।"
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5437,6 +5454,12 @@ msgstr "कंटेंट की तालिका"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "टॉगल"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "सूची को फ़िल्टर करने के लिए टाइप करें।"
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

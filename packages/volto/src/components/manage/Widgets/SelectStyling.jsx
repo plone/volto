@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { Popup } from 'semantic-ui-react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
@@ -12,6 +12,11 @@ import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
 const messages = defineMessages({
+  chip_instructions: {
+    id: 'Press Space to add items. Press Delete or Backspace to remove.',
+    defaultMessage:
+      'Press Space to add items. Press Delete or Backspace to remove.',
+  },
   clearSelection: {
     id: 'Clear selection',
     defaultMessage: 'Clear selection',
@@ -43,6 +48,10 @@ export const SortableMultiValue = injectLazyLibs([
     useSortable({
       id: props.data.value,
     });
+  const intl = useIntl();
+  // useId guarantees a unique id per chip instance, so the id is never
+  // duplicated when several widgets (or several chips) are on the same page.
+  const chipInstructionsId = useId();
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -54,7 +63,14 @@ export const SortableMultiValue = injectLazyLibs([
       }}
       {...attributes}
       {...listeners}
+      aria-label={`${props.selectProps.fieldTitle || ''}: ${props.data.label}`}
+      aria-describedby={chipInstructionsId}
     >
+      {/* visually-hidden keeps the text available to screen readers;
+          display:none would remove it from the accessibility tree */}
+      <span id={chipInstructionsId} className="visually-hidden">
+        {intl.formatMessage(messages.chip_instructions)}
+      </span>
       <MultiValue
         {...props}
         innerProps={{ ...props.innerProps, onMouseDown }}

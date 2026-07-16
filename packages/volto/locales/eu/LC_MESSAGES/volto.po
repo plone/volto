@@ -2931,6 +2931,11 @@ msgstr "Hobespenak"
 msgid "Press Enter to browse files from your computer."
 msgstr "Fitxategiak igotzeko eremua. Sakatu Enter edo egin klik fitxategi-arakatzailea irekitzeko"
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "Sakatu Zuriunea elementuak gehitzeko. Sakatu Ezabatu edo Atzera ezabatzeko."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -5128,6 +5133,12 @@ msgstr "Zain"
 msgid "pickAnImage"
 msgstr "Aukeratu existitzen den irudi bat"
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "Sakatu Behera gezia menua irekitzeko."
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5358,6 +5369,12 @@ msgstr "Aukeraketa laukia"
 msgid "selectView"
 msgstr "Aukeratu bista"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} fokusatuta dago."
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5438,6 +5455,12 @@ msgstr "Edukien taula"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Aktibatu/Desaktibatu"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "Idatzi zerrenda iragazteko."
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

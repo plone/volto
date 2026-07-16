@@ -2930,6 +2930,11 @@ msgstr "Preferințe"
 msgid "Press Enter to browse files from your computer."
 msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a deschide browserul de fișiere"
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "Apăsați Spațiu pentru a adăuga elemente. Apăsați Șterge sau Backspace pentru a elimina."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -5127,6 +5132,12 @@ msgstr "în așteptare"
 msgid "pickAnImage"
 msgstr "Alegeți o imagine existentă"
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "Apăsați Săgeată jos pentru a deschide meniul."
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5357,6 +5368,12 @@ msgstr "Alege"
 msgid "selectView"
 msgstr "Alege vizualizare"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} este focalizat."
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5437,6 +5454,12 @@ msgstr "Cuprins"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Alternează"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "Tastați pentru a filtra lista."
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel

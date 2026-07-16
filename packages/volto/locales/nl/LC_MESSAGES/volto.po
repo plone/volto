@@ -2930,6 +2930,11 @@ msgstr "Voorkeuren"
 msgid "Press Enter to browse files from your computer."
 msgstr "Bestandsuploadgebied. Druk op Enter of klik om de bestandsverkenner te openen"
 
+#. Default: "Press Space to add items. Press Delete or Backspace to remove."
+#: components/manage/Widgets/SelectStyling
+msgid "Press Space to add items. Press Delete or Backspace to remove."
+msgstr "Druk op Spatie om items toe te voegen. Druk op Verwijder of Backspace om te verwijderen."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
@@ -5127,6 +5132,12 @@ msgstr "Wachten"
 msgid "pickAnImage"
 msgstr "Kies een bestaande afbeelding"
 
+#. Default: "Press Down Arrow to open the menu."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "press_down_to_open"
+msgstr "Druk op Pijl omlaag om het menu te openen."
+
 #. Default: "Private"
 #: components/manage/Contents/ContentsItem
 msgid "private"
@@ -5357,6 +5368,12 @@ msgstr "Selecteer"
 msgid "selectView"
 msgstr "Selecteer weergave"
 
+#. Default: "{label} is focused."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "select_is_focused"
+msgstr "{label} heeft de focus."
+
 #. Default: "Maximum size of the file in bytes"
 #: components/manage/Widgets/SchemaWidget
 msgid "size"
@@ -5437,6 +5454,12 @@ msgstr "Inhoudstafel"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Schakelen"
+
+#. Default: "Type to refine list."
+#: components/manage/Widgets/ArrayWidget
+#: components/manage/Widgets/SelectWidget
+msgid "type_to_refine"
+msgstr "Typ om de lijst te verfijnen."
 
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/AddonsControlpanel
