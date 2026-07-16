@@ -17,6 +17,26 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.1.6 (2026-07-16)
+
+### Feature
+
+- Add loading feedback for working copy actions in More toolbar. @wesleybl [#8362](https://github.com/plone/volto/issues/8362)
+
+### Bugfix
+
+- Added consistent visible focus for interactive components to improve accessibility. @Wagner3UB [#7850](https://github.com/plone/volto/issues/7850)
+- Restored original i18n `msgid` keys in `FileWidget` and `RegistryImageWidget` that were inadvertently renamed in #7982, breaking backward compatibility with existing translations. Added missing translations for all 65 supported languages. @Wagner3UB [#8334](https://github.com/plone/volto/issues/8334)
+- Debounce search input in ObjectBrowserBody. @wesleybl [#8365](https://github.com/plone/volto/issues/8365)
+- Renamed the selector in {file}`focus.less` so that skiplinks focus styles apply correctly. @Wagner3UB [#8382](https://github.com/plone/volto/issues/8382)
+- Stopped the Block Types control panel from crashing when an add-on configures a block that was never registered, which leaves behind an entry with no id or no title. Those entries are not blocks, and are no longer listed. @ericof [#8384](https://github.com/plone/volto/issues/8384)
+
+### Internal
+
+- Added Cypress regression tests for slate Backspace behavior near styled/link inline elements. @avoinea [#8347](https://github.com/plone/volto/issues/8347)
+- Use Plone 6.2.1. @wesleybl [#8364](https://github.com/plone/volto/issues/8364)
+- Remove unused dependency `linkify-it`. @davisagli 
+
 ## 19.1.5 (2026-07-01)
 
 ### Bugfix

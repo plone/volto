@@ -1,1 +1,0 @@
-Stopped the Block Types control panel from crashing when an add-on configures a block that was never registered, which leaves behind an entry with no id or no title. Those entries are not blocks, and are no longer listed. @ericof
