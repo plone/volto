@@ -1,0 +1,1 @@
+Silence the Node 24 `DEP0169` `url.parse()` deprecation warnings emitted by the archived `react-dev-utils` during build and dev-server startup, via a pnpm patch that switches the two affected call sites to the WHATWG `URL` API. @sneridagh
