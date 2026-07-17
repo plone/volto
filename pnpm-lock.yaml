@@ -103,6 +103,9 @@ catalogs:
 pnpmfileChecksum: sha256-WUpdqnyQl6o6FiaFJwVm56xjaWIronnBe1XtXkplmyQ=
 
 patchedDependencies:
+  http-proxy@1.18.1:
+    hash: 07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51
+    path: patches/http-proxy@1.18.1.patch
   react-dev-utils@12.0.1:
     hash: ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60
     path: patches/react-dev-utils@12.0.1.patch
@@ -16891,7 +16894,7 @@ snapshots:
   http-proxy-middleware@2.0.9(@types/express@4.17.25):
     dependencies:
       '@types/http-proxy': 1.17.17
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.8
@@ -16903,7 +16906,7 @@ snapshots:
   http-proxy-middleware@2.0.9(@types/express@4.17.25)(debug@4.3.4):
     dependencies:
       '@types/http-proxy': 1.17.17
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)(debug@4.3.4)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.8
@@ -16912,7 +16915,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  http-proxy@1.18.1:
+  http-proxy@1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51):
     dependencies:
       eventemitter3: 4.0.7
       follow-redirects: 1.16.0(debug@4.4.3)
@@ -16920,7 +16923,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  http-proxy@1.18.1(debug@4.3.4):
+  http-proxy@1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)(debug@4.3.4):
     dependencies:
       eventemitter3: 4.0.7
       follow-redirects: 1.16.0(debug@4.3.4)
