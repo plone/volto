@@ -1,3 +1,8 @@
+/**
+ * Edit html block.
+ * @module components/manage/Blocks/HTML/Edit
+ */
+
 import { compose } from 'redux';
 import React, {
   useState,
@@ -6,7 +11,6 @@ import React, {
   useLayoutEffect,
   memo,
 } from 'react';
-import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
 import { defineMessages, useIntl } from 'react-intl';
 import loadable from '@loadable/component';
@@ -66,19 +70,14 @@ const Edit = memo((props) => {
   const codeEditorRef = useRef(null);
   const savedSelection = useRef({});
 
-  const getValue = useCallback(() => {
-    return data.html || '';
-  }, [data.html]);
+  const value = data.html || '';
 
-  const onChangeCode = useCallback(
-    (code) => {
-      onChangeBlock(block, {
-        ...data,
-        html: code,
-      });
-    },
-    [onChangeBlock, block, data],
-  );
+  const onChangeCode = (code) => {
+    onChangeBlock(block, {
+      ...data,
+      html: code,
+    });
+  };
 
   const getSelection = useCallback((editor) => {
     if (!editor || !editor._input) {
@@ -117,30 +116,36 @@ const Edit = memo((props) => {
     }
   }, []);
 
-  const onPreview = useCallback(async () => {
+  const onPreview = async () => {
     try {
       const code = (
-        await prettierStandalone.format(getValue(), {
+        await prettierStandalone.format(value, {
           parser: 'html',
           plugins: [prettierParserHtml],
         })
       ).trim();
       setIsPreview((prev) => !prev);
       onChangeCode(code);
-    } catch (ex) {}
-  }, [prettierStandalone, prettierParserHtml, getValue, onChangeCode]);
+    } catch (ex) {
+      // error while parsing the user-typed HTML
+      // TODO: show a toast notification or something similar to the user
+    }
+  };
 
-  const onPrettify = useCallback(async () => {
+  const onPrettify = async () => {
     try {
       const code = (
-        await prettierStandalone.format(getValue(), {
+        await prettierStandalone.format(value, {
           parser: 'html',
           plugins: [prettierParserHtml],
         })
       ).trim();
       onChangeCode(code);
-    } catch (ex) {}
-  }, [prettierStandalone, prettierParserHtml, getValue, onChangeCode]);
+    } catch (ex) {
+      // error while parsing the user-typed HTML
+      // TODO: show a toast notification or something similar to the user
+    }
+  };
 
   const onCodeEditor = useCallback(() => {
     setIsPreview((prev) => !prev);
@@ -148,7 +153,6 @@ const Edit = memo((props) => {
 
   const placeholder =
     data.placeholder || intl.formatMessage(messages.placeholder);
-  const value = getValue();
 
   return (
     <>
@@ -247,18 +251,6 @@ const Edit = memo((props) => {
     </>
   );
 });
-
-Edit.propTypes = {
-  selected: PropTypes.bool.isRequired,
-  block: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
-  onChangeBlock: PropTypes.func.isRequired,
-  onSelectBlock: PropTypes.func.isRequired,
-  onDeleteBlock: PropTypes.func.isRequired,
-  handleKeyDown: PropTypes.func.isRequired,
-  editable: PropTypes.bool,
-};
 
 const withPrismMarkup = (WrappedComponent) => (props) => {
   const [loaded, setLoaded] = React.useState();
