@@ -74,6 +74,113 @@ describe('querystringsearch action', () => {
     expect(action.request.data.sort_order).toEqual('descending');
   });
 
+  describe('offset', () => {
+    const data = {
+      query: [
+        {
+          i: 'portal_type',
+          o: 'plone.app.querystring.operation.selection.any',
+          v: ['Document'],
+        },
+      ],
+    };
+
+    it('skips the leading items on the first page', () => {
+      const action = getQueryStringResults(
+        '',
+        { ...data, b_size: 10, offset: 3 },
+        'sub',
+        1,
+      );
+
+      expect(action.request.data).toMatchObject({ b_start: 3 });
+    });
+
+    it('stays applied while paginating', () => {
+      const action = getQueryStringResults(
+        '',
+        { ...data, b_size: 10, offset: 3 },
+        'sub',
+        2,
+      );
+
+      expect(action.request.data).toMatchObject({ b_start: 13 });
+    });
+
+    it('tolerates an offset stored as a string by the widget', () => {
+      const action = getQueryStringResults(
+        '',
+        { ...data, b_size: 10, offset: '3' },
+        'sub',
+        2,
+      );
+
+      expect(action.request.data).toMatchObject({ b_start: 13 });
+    });
+
+    it('applies the offset even when no page is requested', () => {
+      const action = getQueryStringResults('', { ...data, offset: 4 }, 'sub');
+
+      expect(action.request.data.b_start).toEqual(4);
+    });
+
+    it('raises the limit by the offset so the listing still gets its items', () => {
+      const action = getQueryStringResults(
+        '',
+        { ...data, b_size: 10, offset: 3, limit: 10 },
+        'sub',
+        1,
+      );
+
+      expect(action.request.data.limit).toEqual(13);
+    });
+
+    // plone.app.querystring's querybuilder only applies limit when truthy, so
+    // a zero limit must reach the backend untouched rather than being raised
+    // to the offset, which would cap the batch at the skipped items.
+    it('keeps a zero limit meaning no limit', () => {
+      const action = getQueryStringResults(
+        '',
+        { ...data, b_size: 10, offset: 3, limit: 0 },
+        'sub',
+        1,
+      );
+
+      expect(action.request.data.limit).toEqual(0);
+    });
+
+    it('leaves the request untouched when nothing is skipped', () => {
+      const withoutOffset = getQueryStringResults(
+        '',
+        { ...data, b_size: 10, limit: 5 },
+        'sub',
+        2,
+      );
+      const withZeroOffset = getQueryStringResults(
+        '',
+        { ...data, b_size: 10, limit: 5, offset: 0 },
+        'sub',
+        2,
+      );
+
+      expect(withoutOffset.request.data).toMatchObject({
+        b_start: 10,
+        limit: 5,
+      });
+      expect(withZeroOffset.request.data).toEqual({
+        ...withoutOffset.request.data,
+        offset: 0,
+      });
+    });
+
+    it('sends no b_start when there is neither a page nor an offset', () => {
+      const action = getQueryStringResults('', data);
+
+      expect(action.request.data.b_start).toBeUndefined();
+      expect(JSON.stringify(action.request.data)).not.toContain('b_start');
+    });
+  });
+
   describe('depth handling', () => {
     it('appends depth to path value when depth is set and path has no embedded depth', () => {
       const data = {

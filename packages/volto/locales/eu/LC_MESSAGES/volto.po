@@ -2703,6 +2703,11 @@ msgstr "agerpenen ondoren"
 msgid "Occurrences"
 msgstr "Agerpenak"
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
