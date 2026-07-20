@@ -1,0 +1,1 @@
+Fix development-mode portrait passthrough for Plone by routing requests through the `++api++` traversal layer. @sneridagh
