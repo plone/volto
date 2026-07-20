@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWithAuth';
+import { getPloneBackendAPIResourceWithAuth } from '@plone/volto/helpers/Api/PloneBackendAPIResourceWithAuth';
 
 const HEADERS = [
   'content-type',
@@ -11,8 +11,8 @@ const HEADERS = [
   'x-robots-tag',
 ];
 
-function imageMiddlewareFn(req, res, next) {
-  getAPIResourceWithAuth(req)
+function portraitMiddlewareFn(req, res, next) {
+  getPloneBackendAPIResourceWithAuth(req)
     .then((resource) => {
       // Just forward the headers that we need
       HEADERS.forEach((header) => {
@@ -25,11 +25,10 @@ function imageMiddlewareFn(req, res, next) {
     .catch(next);
 }
 
-export default function imagesMiddleware() {
+export default function portraitsMiddleware() {
   const middleware = express.Router();
 
-  middleware.all(['**/@@images/*'], imageMiddlewareFn);
-  middleware.all(['/@@site-logo/*'], imageMiddlewareFn);
-  middleware.id = 'imageResourcesProcessor';
+  middleware.all(['/@portrait/*'], portraitMiddlewareFn);
+  middleware.id = 'portraitResourcesProcessor';
   return middleware;
 }
