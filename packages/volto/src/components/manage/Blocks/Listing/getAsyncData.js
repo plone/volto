@@ -38,6 +38,11 @@ export default function getListingBlockAsyncData(props) {
         path,
         {
           ...data.querystring,
+          // Shape the request exactly as withQuerystringResults does on the
+          // client, so the first paint and the re-render agree. The offset is
+          // turned into b_start by the action itself: computing it here would
+          // apply it twice.
+          offset: data.querystring.offset || 0,
           ...(resolvedExtensions?.variation?.fullobjects
             ? { fullobjects: 1 }
             : { metadata_fields: '_all' }),
