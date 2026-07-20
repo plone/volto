@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.2.0 (2026-07-20)
+
+### Feature
+
+- Added an `offset` setting to the Listing block, skipping the first N results of its query and paginating over the remainder. A block limited to the latest N items and a second block offset by N now compose without repeating results. @ericof [#8385](https://github.com/plone/volto/issues/8385)
+
+### Bugfix
+
+- Fix development-mode portrait passthrough for Plone by routing requests through the `++api++` traversal layer. @sneridagh [#8390](https://github.com/plone/volto/issues/8390)
+
 ## 19.1.6 (2026-07-16)
 
 ### Feature

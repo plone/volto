@@ -1,1 +1,0 @@
-Added an `offset` setting to the Listing block, skipping the first N results of its query and paginating over the remainder. A block limited to the latest N items and a second block offset by N now compose without repeating results. @ericof
