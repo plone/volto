@@ -30,6 +30,7 @@ describe('getPloneBackendAPIResourceWithAuth', () => {
       apiPath: 'http://localhost:3000',
       devProxyToApiPath: 'http://localhost:8080/Plone',
       internalApiPath: undefined,
+      apiSuffix: undefined,
     });
   });
 
@@ -55,6 +56,17 @@ describe('getPloneBackendAPIResourceWithAuth', () => {
 
     expect(superagent.get).toHaveBeenCalledWith(
       'http://localhost:8080/Plone/@portrait/admin',
+    );
+  });
+
+  it('uses apiSuffix in preference to legacyTraverse in development', async () => {
+    config.settings.legacyTraverse = true;
+    config.settings.apiSuffix = '/custom-api';
+
+    await getPloneBackendAPIResourceWithAuth(request);
+
+    expect(superagent.get).toHaveBeenCalledWith(
+      'http://localhost:8080/Plone/custom-api/@portrait/admin',
     );
   });
 });

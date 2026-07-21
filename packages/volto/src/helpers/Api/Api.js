@@ -8,6 +8,7 @@ import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 import {
+  getApiSuffix,
   stripQuerystring,
   stripSubpathPrefix,
 } from '@plone/volto/helpers/Url/Url';
@@ -22,7 +23,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 export function formatUrl(path) {
   const { settings } = config;
-  const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
+  const apiSuffix = getApiSuffix();
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
