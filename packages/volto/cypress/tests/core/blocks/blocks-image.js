@@ -29,7 +29,7 @@ describe('Blocks Tests', () => {
     cy.get('.block-editor-image [tabindex="0"]')
       .last()
       .focus()
-      .should('have.css', 'outline', 'rgb(16, 16, 16) auto 1px');
+      .should('have.css', 'outline', 'rgb(0, 0, 0) solid 2px');
     cy.findByLabelText('Enter a URL to an image').click();
     cy.get('.ui.input.editor-link.input-anchorlink-theme input').type(
       `https://github.com/plone/volto/raw/main/logos/volto-colorful.png{enter}`,
