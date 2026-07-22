@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.0.1 (2026-07-22)
+
+### Feature
+
+- Add the `apiSuffix` setting type for configuring Volto API traversal. 
+
 ## 2.0.0 (2026-05-19)
 
 ### Internal
