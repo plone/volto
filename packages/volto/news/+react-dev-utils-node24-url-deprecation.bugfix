@@ -1,1 +1,0 @@
-Silence the Node 24 `DEP0169` (`url.parse()`) and `DEP0060` (`util._extend`) deprecation warnings shown when running/building a Volto project. Volto's own server code (`server.jsx`, `devproxy.js`) now uses the WHATWG `URL` API, and pnpm patches update the archived `react-dev-utils` (build/dev-server) and `http-proxy` (dev proxy `util._extend`) dependencies. @sneridagh

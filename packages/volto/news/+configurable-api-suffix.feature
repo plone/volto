@@ -1,1 +1,0 @@
-Add the `apiSuffix` setting and `RAZZLE_API_SUFFIX` environment variable to configure the API traversal suffix.

@@ -17,6 +17,20 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.3.0 (2026-07-22)
+
+### Feature
+
+- Add the `apiSuffix` setting and `RAZZLE_API_SUFFIX` environment variable to configure the API traversal suffix. 
+
+### Bugfix
+
+- Silence the Node 24 `DEP0169` (`url.parse()`) and `DEP0060` (`util._extend`) deprecation warnings shown when running/building a Volto project. Volto's own server code (`server.jsx`, `devproxy.js`) now uses the WHATWG `URL` API, and pnpm patches update the archived `react-dev-utils` (build/dev-server) and `http-proxy` (dev proxy `util._extend`) dependencies. @sneridagh 
+
+### Internal
+
+- Remove unused react-medium-image-zoom @Tishasoumya-02 
+
 ## 19.2.0 (2026-07-20)
 
 ### Feature
