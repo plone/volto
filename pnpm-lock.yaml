@@ -102,6 +102,14 @@ catalogs:
 
 pnpmfileChecksum: sha256-WUpdqnyQl6o6FiaFJwVm56xjaWIronnBe1XtXkplmyQ=
 
+patchedDependencies:
+  http-proxy@1.18.1:
+    hash: 07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51
+    path: patches/http-proxy@1.18.1.patch
+  react-dev-utils@12.0.1:
+    hash: ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60
+    path: patches/react-dev-utils@12.0.1.patch
+
 importers:
 
   .:
@@ -1158,7 +1166,7 @@ importers:
         version: 4.2.18(webpack@5.105.4(esbuild@0.25.12))
       react-dev-utils:
         specifier: ^12.0.1
-        version: 12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12))
+        version: 12.0.1(patch_hash=ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60)(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12))
       react-refresh:
         specifier: 0.14.0
         version: 0.14.0
@@ -1231,7 +1239,7 @@ importers:
         version: 26.6.2
       react-dev-utils:
         specifier: ^12.0.1
-        version: 12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4)
+        version: 12.0.1(patch_hash=ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60)(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4)
       react-error-overlay:
         specifier: ^6.0.7
         version: 6.0.9
@@ -16876,7 +16884,7 @@ snapshots:
   http-proxy-middleware@2.0.9(@types/express@4.17.25):
     dependencies:
       '@types/http-proxy': 1.17.17
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.8
@@ -16888,7 +16896,7 @@ snapshots:
   http-proxy-middleware@2.0.9(@types/express@4.17.25)(debug@4.3.4):
     dependencies:
       '@types/http-proxy': 1.17.17
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)(debug@4.3.4)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.8
@@ -16897,7 +16905,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  http-proxy@1.18.1:
+  http-proxy@1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51):
     dependencies:
       eventemitter3: 4.0.7
       follow-redirects: 1.16.0(debug@4.4.3)
@@ -16905,7 +16913,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  http-proxy@1.18.1(debug@4.3.4):
+  http-proxy@1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)(debug@4.3.4):
     dependencies:
       eventemitter3: 4.0.7
       follow-redirects: 1.16.0(debug@4.3.4)
@@ -19026,7 +19034,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  react-dev-utils@12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12)):
+  react-dev-utils@12.0.1(patch_hash=ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60)(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12)):
     dependencies:
       '@babel/code-frame': 7.29.0
       address: 1.1.2
@@ -19060,7 +19068,7 @@ snapshots:
       - supports-color
       - vue-template-compiler
 
-  react-dev-utils@12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4):
+  react-dev-utils@12.0.1(patch_hash=ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60)(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4):
     dependencies:
       '@babel/code-frame': 7.29.0
       address: 1.1.2
