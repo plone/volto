@@ -6,13 +6,13 @@ on:
       - main
 
 env:
-  node-version: 22.x
+  node-version: 24.x
 
 jobs:
   towncrier:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # Fetch all history
           fetch-depth: '0'
@@ -26,26 +26,16 @@ jobs:
           filters: |
             volto:
               - 'packages/volto/**'
-            client:
-              - 'packages/client/**'
             registry:
               - 'packages/registry/**'
-            components:
-              - 'packages/components/**'
             types:
               - 'packages/types/**'
-            providers:
-              - 'packages/providers/**'
             scripts:
               - 'packages/scripts/**'
+            voltoRazzle:
+              - 'packages/volto-razzle/**'
             voltoSlate:
               - 'packages/volto-slate/**'
-            blocks:
-              - 'packages/blocks/**'
-            slots:
-              - 'packages/slots/**'
-            theming:
-              - 'packages/theming/**'
             wrongNews:
               - added|modified: 'news/**'
 
@@ -60,14 +50,6 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Client changelog check
-        if: steps.filter.outputs.client == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/client
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
       - name: Registry changelog check
         if: steps.filter.outputs.registry == 'true'
         run: |
@@ -76,27 +58,11 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Components changelog check
-        if: steps.filter.outputs.components == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/components
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
       - name: Types changelog check
         if: steps.filter.outputs.types == 'true'
         run: |
           git fetch --no-tags origin main
           towncrier check --compare-with origin/main --dir packages/types
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Providers changelog check
-        if: steps.filter.outputs.providers == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/providers
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
@@ -116,27 +82,11 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 
-      - name: Blocks changelog check
-        if: steps.filter.outputs.blocks == 'true'
+      - name: volto-razzle changelog check
+        if: steps.filter.outputs.voltoRazzle == 'true'
         run: |
           git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/blocks
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Slots changelog check
-        if: steps.filter.outputs.slots == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/slots
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-
-      - name: Theming changelog check
-        if: steps.filter.outputs.theming == 'true'
-        run: |
-          git fetch --no-tags origin main
-          towncrier check --compare-with origin/main --dir packages/theming
+          towncrier check --compare-with origin/main --dir packages/volto-razzle
         env:
           BASE_BRANCH: ${{ github.base_ref }}
 

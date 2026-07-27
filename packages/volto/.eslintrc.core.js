@@ -34,6 +34,12 @@ if (process.env.VOLTOCONFIG) {
         message:
           "Importing directly from `lodash` is not allowed. Please use `import <helper> from 'lodash/<helper>'` instead.",
       },
+      {
+        name: 'semantic-ui-react',
+        importNames: ['Image'],
+        message:
+          "Don't import 'Image' from 'semantic-ui-react'. Please use @plone/volto/components/theme/Image/Image.",
+      },
     ],
   };
 }

@@ -4,19 +4,29 @@ import { FormattedMessage } from 'react-intl';
 import { Embed, Message } from 'semantic-ui-react';
 import cx from 'classnames';
 import { isInternalURL, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import VideoEmbed from '@plone/volto/components/theme/VideoEmbed/VideoEmbed';
+import config from '@plone/volto/registry';
 
 //Extracting videoID, listID and thumbnailURL from the video URL
-const getVideoIDAndPlaceholder = (url) => {
+const getVideoIDAndPlaceholder = (url, peertubeInstances) => {
+  let hasMatch = false;
   let videoID = null;
   let listID = null;
   let thumbnailURL = null;
+  let videoSource = null;
+  let videoUrl = null;
 
   if (url) {
-    if (url.match('youtu')) {
+    if (
+      /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)(?:.*)$/i.test(url)
+    ) {
+      hasMatch = true;
+      videoSource = 'youtube';
       if (url.match('list')) {
         const matches = url.match(/^.*\?list=(.*)|^.*&list=(.*)$/);
         listID = matches[1] || matches[2];
-
+        videoUrl = `https://www.youtube.com/embed/videoseries?list=${listID}`;
+        videoSource = null;
         let thumbnailID = null;
         if (url.match(/\?v=(.*)&list/)) {
           thumbnailID = url.match(/^.*\?v=(.*)&list(.*)/)[1];
@@ -32,6 +42,8 @@ const getVideoIDAndPlaceholder = (url) => {
         videoID = url.match(/^.*\.be\/(.*)/)[1];
       } else if (url.match(/\?v=/)) {
         videoID = url.match(/^.*\?v=(.*)$/)[1];
+      } else if (url.match('shorts')) {
+        videoID = url.match(/^.*\/shorts\/(.*)/)[1];
       }
 
       if (videoID) {
@@ -44,6 +56,8 @@ const getVideoIDAndPlaceholder = (url) => {
           'https://img.youtube.com/vi/' + thumbnailID + '/sddefault.jpg';
       }
     } else if (url.match('vimeo')) {
+      hasMatch = true;
+      videoSource = 'vimeo';
       videoID = url.match(/^.*\.com\/(.*)/)[1];
       if (videoID) {
         let thumbnailID = videoID;
@@ -52,22 +66,37 @@ const getVideoIDAndPlaceholder = (url) => {
         }
         thumbnailURL = 'https://vumbnail.com/' + thumbnailID + '.jpg';
       }
+    } else if (
+      url &&
+      Array.isArray(peertubeInstances) &&
+      url.match(new RegExp(peertubeInstances.join('|'), 'gi'))
+    ) {
+      const peertubeRegex = /^(https?:\/\/[^/]+)\/w\/([A-Za-z0-9_-]+)/i;
+      const match = url.match(peertubeRegex);
+      if (match) {
+        hasMatch = true;
+        videoSource = 'peertube';
+        const instance = match[1];
+        videoID = match[2];
+        videoUrl = `${instance}/videos/embed/${videoID}`;
+      }
     }
   }
-  return { videoID, listID, thumbnailURL };
+  return { videoID, videoUrl, thumbnailURL, videoSource, hasMatch };
 };
-
 const Body = ({ data, isEditMode }) => {
   let placeholder = data.preview_image
     ? isInternalURL(data.preview_image)
       ? `${flattenToAppURL(data.preview_image)}/@@images/image`
       : data.preview_image
     : null;
+  const peertubeInstances =
+    config.blocks.blocksConfig.video.allowedPeertubeInstances;
 
-  const { videoID, listID, thumbnailURL } = getVideoIDAndPlaceholder(data.url);
+  const { videoID, videoUrl, thumbnailURL, videoSource, hasMatch, listID } =
+    getVideoIDAndPlaceholder(data.url, peertubeInstances);
 
   placeholder = !placeholder ? thumbnailURL : placeholder;
-
   const ref = React.createRef();
   const onKeyDown = (e) => {
     if (e.nativeEvent.keyCode === 13) {
@@ -77,13 +106,16 @@ const Body = ({ data, isEditMode }) => {
 
   const embedSettings = {
     placeholder: placeholder,
-    icon: 'play',
     defaultActive: false,
-    autoplay: false,
+    autoplay: data.autoplay || false,
     aspectRatio: '16:9',
     tabIndex: 0,
     onKeyPress: onKeyDown,
     ref: ref,
+    title: data.title,
+    id: videoID,
+    source: videoSource,
+    url: videoUrl,
   };
 
   return (
@@ -94,7 +126,7 @@ const Body = ({ data, isEditMode }) => {
             'full-width': data.align === 'full',
           })}
         >
-          {data.url.match('youtu') ? (
+          {hasMatch ? (
             <>
               {data.url.match('list') ? (
                 <Embed
@@ -102,44 +134,38 @@ const Body = ({ data, isEditMode }) => {
                   {...embedSettings}
                 />
               ) : (
-                <Embed id={videoID} source="youtube" {...embedSettings} />
+                <VideoEmbed id={videoID} {...embedSettings} />
               )}
             </>
           ) : (
             <>
-              {data.url.match('vimeo') ? (
-                <Embed id={videoID} source="vimeo" {...embedSettings} />
+              {data.url.match('.mp4') ? (
+                // eslint-disable-next-line jsx-a11y/media-has-caption
+                <video
+                  src={
+                    isInternalURL(data.url)
+                      ? data.url.includes('@@download')
+                        ? data.url
+                        : `${flattenToAppURL(data.url)}/@@download/file`
+                      : data.url
+                  }
+                  controls
+                  poster={placeholder}
+                  type="video/mp4"
+                />
+              ) : isEditMode ? (
+                <div>
+                  <Message>
+                    <center>
+                      <FormattedMessage
+                        id="Please enter a valid URL by deleting the block and adding a new video block."
+                        defaultMessage="Please enter a valid URL by deleting the block and adding a new video block."
+                      />
+                    </center>
+                  </Message>
+                </div>
               ) : (
-                <>
-                  {data.url.match('.mp4') ? (
-                    // eslint-disable-next-line jsx-a11y/media-has-caption
-                    <video
-                      src={
-                        isInternalURL(data.url)
-                          ? data.url.includes('@@download')
-                            ? data.url
-                            : `${flattenToAppURL(data.url)}/@@download/file`
-                          : data.url
-                      }
-                      controls
-                      poster={placeholder}
-                      type="video/mp4"
-                    />
-                  ) : isEditMode ? (
-                    <div>
-                      <Message>
-                        <center>
-                          <FormattedMessage
-                            id="Please enter a valid URL by deleting the block and adding a new video block."
-                            defaultMessage="Please enter a valid URL by deleting the block and adding a new video block."
-                          />
-                        </center>
-                      </Message>
-                    </div>
-                  ) : (
-                    <div className="invalidVideoFormat" />
-                  )}
-                </>
+                <div className="invalidVideoFormat" />
               )}
             </>
           )}

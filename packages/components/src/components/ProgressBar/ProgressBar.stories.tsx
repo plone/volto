@@ -1,12 +1,10 @@
 import React from 'react';
 import { ProgressBar } from './ProgressBar';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ProgressBar.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof ProgressBar> = {
-  title: 'Widgets/ProgressBar',
+  title: 'Basic/Forms/ProgressBar',
   component: ProgressBar,
   parameters: {
     layout: 'centered',

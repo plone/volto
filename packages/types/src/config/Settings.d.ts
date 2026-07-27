@@ -1,5 +1,7 @@
 import { Content } from '../content';
 import { BlocksFormData } from '../blocks/index';
+import { ConfigData } from '.';
+import { Controlpanel, ControlPanelSchema } from '..';
 
 type apiExpandersType =
   | { match: string; GET_CONTENT: string[] }
@@ -8,7 +10,10 @@ type apiExpandersType =
       GET_CONTENT: string[];
       querystring:
         | { [key: string]: string }
-        | (() => { [key: string]: string });
+        | ((
+            config,
+            querystring: { config: ConfigData; querystring: object },
+          ) => { [key: string]: string });
     };
 
 type styleClassNameExtendersType = ({
@@ -23,6 +28,22 @@ type styleClassNameExtendersType = ({
   classNames: string[];
 }) => string[];
 
+export type PlateConfig = {
+  editorConfig: {
+    plugins: any[];
+    [key: string]: unknown;
+  };
+  rendererConfig: {
+    plugins: any[];
+    [key: string]: unknown;
+  };
+  floatingToolbarButtons?: React.ComponentType<any>;
+};
+
+interface PlateSettings {
+  block: PlateConfig;
+}
+
 export interface SettingsConfig {
   [key: string]: unknown;
   host: string;
@@ -35,9 +56,10 @@ export interface SettingsConfig {
   actions_raising_api_errors: string[];
   internalApiPath: string | undefined;
   websockets: string | false;
+  apiSuffix: string | undefined;
   legacyTraverse: string | false;
   cookieExpires: number;
-  nonContentRoutes: string[];
+  nonContentRoutes: Array<string | RegExp>;
   richtextEditorSettings: unknown;
   richtextViewSettings: unknown;
   imageObjects: string[];
@@ -48,9 +70,7 @@ export interface SettingsConfig {
   openExternalLinkInNewTab: boolean;
   notSupportedBrowsers: string[];
   defaultPageSize: number;
-  isMultilingual: boolean;
   supportedLanguages: string[]; // TODO: Improve list of possible values
-  defaultLanguage: string;
   navDepth: number;
   expressMiddleware: unknown;
   defaultBlockType: string; // TODO: Improve list of possible values
@@ -59,7 +79,7 @@ export interface SettingsConfig {
   persistentReducers: string[];
   initialReducersBlacklist: string[];
   asyncPropsExtenders: unknown[];
-  contentIcons: Record<string, React.ComponentType>;
+  contentIcons: Record<string, string>;
   loadables: unknown;
   lazyBundles: {
     [key: string]: string[];
@@ -77,10 +97,10 @@ export interface SettingsConfig {
   storeExtenders: unknown[];
   showTags: boolean;
   showRelatedItems: boolean;
-  controlpanels: unknown[];
-  controlPanelsIcons: Record<string, React.ComponentType>;
+  controlpanels: Controlpanel[];
+  controlPanelsIcons: Record<string, string>;
   filterControlPanels: unknown;
-  filterControlPanelsSchema: unknown;
+  filterControlPanelsSchema: (schema: Controlpanel) => ControlPanelSchema;
   externalRoutes: {
     match?: string | { path: string; exact: boolean; strict: boolean };
   }[];
@@ -102,4 +122,6 @@ export interface SettingsConfig {
     titleAndSiteTitleSeparator: string;
   };
   cssLayers: string[];
+  hideBreadcrumbs: string[]; // Content types for which to hide breadcrumbs
+  plate: PlateSettings | Record<string, never>;
 }

@@ -3,13 +3,8 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import config from '@plone/volto/registry';
 
 import ContentsBreadcrumbs from './ContentsBreadcrumbs';
-
-beforeAll(() => {
-  config.settings.isMultilingual = true;
-});
 
 const mockStore = configureStore();
 
@@ -23,6 +18,15 @@ describe('ContentsBreadcrumbs Multilingual', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      navroot: {
+        data: {
+          navroot: {
+            '@type': 'LRF',
+            '@id': '/en',
+            title: 'English',
+          },
+        },
       },
     });
     const component = renderer.create(
@@ -48,6 +52,15 @@ describe('ContentsBreadcrumbs Multilingual', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      navroot: {
+        data: {
+          navroot: {
+            '@type': 'LRF',
+            '@id': '/en',
+            title: 'English',
+          },
+        },
       },
     });
     const component = renderer.create(

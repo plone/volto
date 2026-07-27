@@ -20,6 +20,7 @@ export const controlPanelsIcons: {
     undo: string;
     aliases: string;
     relations: string;
+    'block-types': string;
 };
 export function filterControlPanels(controlpanels?: any[]): any[];
 export namespace unwantedControlPanelsFields {

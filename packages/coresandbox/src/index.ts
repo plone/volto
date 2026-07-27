@@ -174,7 +174,6 @@ const listing = (config: ConfigType) => {
 };
 
 export const multilingualFixture = (config: ConfigType) => {
-  config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['en', 'it'];
 
   return config;

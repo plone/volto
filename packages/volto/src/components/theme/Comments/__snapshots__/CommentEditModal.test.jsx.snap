@@ -1,27 +1,27 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CommentEditModal renders a comment edit modal component 1`] = `
+exports[`CommentEditModal > renders a comment edit modal component 1`] = `
 <div
   data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"text\\"
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "text"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"text\\": {
-      \\"title\\": \\"Comment\\",
-      \\"type\\": \\"string\\",
-      \\"widget\\": \\"textarea\\",
-      \\"description\\": \\"\\"
+  "properties": {
+    "text": {
+      "title": "Comment",
+      "type": "string",
+      "widget": "textarea",
+      "description": ""
     }
   },
-  \\"required\\": [
-    \\"text\\"
+  "required": [
+    "text"
   ]
 }"
   id="ModalForm"

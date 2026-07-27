@@ -1,0 +1,119 @@
+import { defineConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { svgLoader } from './vite-plugins/svg.mjs';
+import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const projectRoot = path.resolve(__dirname);
+
+const sharedAliases = {
+  '@plone/volto': path.resolve(__dirname, 'src'),
+  '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
+  '@root': path.resolve(__dirname, 'src'),
+  '@plone/components': path.resolve(__dirname, '../components/src'),
+  'promise-file-reader': require.resolve('promise-file-reader'),
+  'react-dropzone': require.resolve('react-dropzone'),
+  'prop-types': require.resolve('prop-types'),
+  'react-intl-redux': require.resolve('react-intl-redux'),
+};
+
+// volto-slate specific aliases 
+const voltoSlateAliases = {
+  ...sharedAliases,
+  'react-test-renderer': require.resolve('react-test-renderer'),
+  'redux': require.resolve('redux'), 
+};
+
+const sharedPlugins = [
+  react(),
+  svgLoader({
+    svgoConfig: {
+      plugins: [
+        {
+          name: 'preset-default',
+          params: {
+            overrides: {
+              convertPathData: false,
+              removeViewBox: false,
+            },
+          },
+        },
+        'removeTitle',
+        'removeUselessStrokeAndFill',
+      ],
+    },
+  }),
+];
+
+export default defineConfig({
+  plugins: sharedPlugins,
+  resolve: {
+    alias: sharedAliases,
+  },
+  test: {
+    projects: [
+      // Volto main project
+      {
+        test: {
+          name: 'volto',
+          root: '.',
+          isolate: true,
+          globals: true,
+          environment: 'jsdom',
+          setupFiles: [
+            `${projectRoot}/test-setup-globals.js`,
+            `${projectRoot}/test-setup-config.jsx`,
+            `${projectRoot}/test-addons-loader.js`,
+          ],
+          globalSetup: `${projectRoot}/global-test-setup.js`,
+        },
+        resolve: {
+          alias: sharedAliases,
+        },
+        plugins: sharedPlugins,
+      },
+      // volto-slate project
+      {
+        test: {
+          name: 'volto-slate',
+          root: '../volto-slate',
+          isolate: true,
+          globals: true,
+          environment: 'jsdom',
+          setupFiles: [
+            `${projectRoot}/test-setup-globals.js`,
+            `${projectRoot}/test-setup-config.jsx`,
+            `${projectRoot}/test-addons-loader.js`,
+          ],
+          globalSetup: `${projectRoot}/global-test-setup.js`,
+        },
+        resolve: {
+          alias: voltoSlateAliases,
+        },
+        plugins: sharedPlugins,
+      },
+    ],
+    snapshotFormat: { printBasicPrototype: false },
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      include: [
+        'src/**/*.{test,spec}.{js,ts,jsx,tsx}',
+        '__test__/**/*.{test,spec}.{js,ts,jsx,tsx}',
+        '../volto-slate/src/**/*.{test,spec}.{js,ts,jsx,tsx}',
+      ],
+      exclude: [
+        'node_modules/**',
+        '**/dist/**',
+        '**/*.config.{js,ts}',
+      ],
+    },
+    css: true,
+  },
+});

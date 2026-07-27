@@ -1,13 +1,13 @@
 # Locking
 
-Locking is a mechanism to prevent users from accidentally overriding each other's changes.
+Locking is a mechanism to prevent users from overriding each other's changes.
 
 When a user edits a content object in Plone, the object is locked until the user hits the {guilabel}`Save` or {guilabel}`Cancel` button.
 If a second user tries to edit the object at the same time, she will see a message that this object is locked.
 
 The API consumer can create, read, update, and delete a content-type lock.
 
-## Get Lock Info
+## Get lock info
 
 ### Query function
 
@@ -23,7 +23,7 @@ Use the `useGetLock` hook to get the lock info for a page.
 
   - **Required:** Yes
 
-## Add Lock
+## Add lock
 
 ### Mutation function
 
@@ -54,7 +54,7 @@ Use the `useCreateLock` hook to add a lock for a page.
     - **Required:** No
     - The timeout of the lock in seconds. If not given, the default timeout is used.
 
-## Update Lock
+## Update lock
 
 ### Mutation function
 
@@ -70,11 +70,11 @@ Use the `useUpdateLock` hook to update a lock for a page.
 
   - **Required:** Yes
 
-- **locktoken**: string
+- **`locktoken`**: string
 
   - **Required:** Yes
 
-## Delete Lock
+## Delete lock
 
 ### Mutation function
 

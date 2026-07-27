@@ -7,6 +7,16 @@ import { MemoryRouter } from 'react-router-dom';
 import SummaryView from './SummaryView';
 
 const mockStore = configureStore();
+vi.mock('@plone/volto/components/manage/UniversalLink/UniversalLink', () => ({
+  default: vi.fn(({ item, ...props }) => {
+    // Ensure @id is always present
+    const safeItem = {
+      ...item,
+      '@id': item['@id'] || item.url || '/default-link',
+    };
+    return <div data-testid="universal-link">{safeItem.title}</div>;
+  }),
+}));
 
 describe('TabularView', () => {
   it('renders a summary view component', () => {

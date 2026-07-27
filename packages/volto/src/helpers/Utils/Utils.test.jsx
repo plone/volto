@@ -3,6 +3,7 @@ import config from '@plone/volto/registry';
 import {
   applyConfig,
   difference,
+  getErrorMessage,
   getColor,
   getInitials,
   hasApiExpander,
@@ -243,6 +244,44 @@ describe('Utils tests', () => {
       expect(getColor(1)).toEqual('Teal');
       expect(getColor(2)).toEqual('SteelBlue');
       expect(getColor(1)).toEqual('Teal');
+    });
+  });
+
+  describe('getErrorMessage', () => {
+    it('returns nested backend error message', () => {
+      const error = {
+        response: {
+          body: {
+            error: {
+              message: 'Backend nested message',
+            },
+          },
+        },
+      };
+
+      expect(getErrorMessage(error)).toEqual('Backend nested message');
+    });
+
+    it('returns body message when present', () => {
+      const error = {
+        response: {
+          body: {
+            message: 'Backend body message',
+          },
+        },
+      };
+
+      expect(getErrorMessage(error)).toEqual('Backend body message');
+    });
+
+    it('returns generic error.message fallback', () => {
+      expect(getErrorMessage(new Error('Generic message'))).toEqual(
+        'Generic message',
+      );
+    });
+
+    it('returns stringified object as final fallback', () => {
+      expect(getErrorMessage({ foo: 'bar' })).toEqual('{"foo":"bar"}');
     });
   });
 

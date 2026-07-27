@@ -30,12 +30,10 @@ import { registerValidators } from '@plone/volto/config/validation';
 config.set('settings', {
   apiPath: 'http://localhost:8080/Plone',
   publicURL: 'http://localhost:3000',
-  defaultLanguage: 'en',
   supportedLanguages: ['en'],
   defaultPageSize: 25,
   showTags: true,
   showRelatedItems: true,
-  isMultilingual: false,
   nonContentRoutes,
   nonContentRoutesPublic,
   contentIcons: contentIcons,
@@ -153,10 +151,11 @@ config.set('widgets', {
 
 config.set('components', {
   PreviewImage: {
+    // eslint-disable-next-line no-restricted-syntax
     component: (props) => <img alt="PreviewImage component mock" {...props} />,
   },
   Image: {
-    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt, no-restricted-syntax
     component: (props) => <img alt="Image component mock" {...props} />,
   },
 });

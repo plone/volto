@@ -19,15 +19,18 @@ import config from '@plone/volto/registry';
 const NotFound = () => {
   const dispatch = useDispatch();
   const lang = useSelector((state) => state.intl.locale);
+  const isMultilingual = useSelector(
+    (state) => state.site.data.features?.multilingual,
+  );
 
   useEffect(() => {
     dispatch(
       getNavigation(
-        config.settings.isMultilingual ? `/${toBackendLang(lang)}` : '/',
+        isMultilingual ? `/${toBackendLang(lang)}` : '/',
         config.settings.navDepth,
       ),
     );
-  }, [dispatch, lang]);
+  }, [dispatch, lang, isMultilingual]);
 
   return (
     <Container className="view-wrapper">

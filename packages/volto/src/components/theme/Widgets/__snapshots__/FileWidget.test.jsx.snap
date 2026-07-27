@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`FileWidget renders a file view widget component 1`] = `
+exports[`FileWidget > renders a file view widget component 1`] = `
 <a
   className="metadata file widget"
   data-content-type=""
@@ -8,14 +8,13 @@ exports[`FileWidget renders a file view widget component 1`] = `
   data-size-fmt="0B"
   href="/foo-bar.pdf"
   onClick={[Function]}
-  target={null}
   title="/foo-bar.pdf"
 >
   /foo-bar.pdf
 </a>
 `;
 
-exports[`FileWidget renders a file view widget component with children 1`] = `
+exports[`FileWidget > renders a file view widget component with children 1`] = `
 <a
   className="metadata file widget"
   data-content-type="application/x-pdf"
@@ -23,7 +22,6 @@ exports[`FileWidget renders a file view widget component with children 1`] = `
   data-size-fmt="121kB"
   href="/foo-bar.pdf"
   onClick={[Function]}
-  target={null}
   title="application/x-pdf"
 >
   <strong>
@@ -32,7 +30,7 @@ exports[`FileWidget renders a file view widget component with children 1`] = `
 </a>
 `;
 
-exports[`FileWidget renders a simple file view widget component 1`] = `
+exports[`FileWidget > renders a simple file view widget component 1`] = `
 <a
   className="metadata file widget"
   data-content-type=""
@@ -40,11 +38,10 @@ exports[`FileWidget renders a simple file view widget component 1`] = `
   data-size-fmt="0B"
   href="/foo-bar.pdf"
   onClick={[Function]}
-  target={null}
   title="/foo-bar.pdf"
 >
   /foo-bar.pdf
 </a>
 `;
 
-exports[`FileWidget renders an empty file view widget component 1`] = `null`;
+exports[`FileWidget > renders an empty file view widget component 1`] = `null`;

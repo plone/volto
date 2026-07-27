@@ -9,7 +9,7 @@ import Logout from './Logout';
 
 const mockStore = configureStore();
 
-jest.mock('../Login/Login', () => jest.fn(() => <div />));
+vi.mock('../Login/Login', () => ({ default: vi.fn(() => <div />) }));
 
 describe('Logout', () => {
   it('renders a logout component', () => {

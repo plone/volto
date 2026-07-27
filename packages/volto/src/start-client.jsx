@@ -4,7 +4,9 @@ import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { IntlProvider } from 'react-intl-redux';
+import { RouterProvider } from 'react-aria-components';
 import { ConnectedRouter } from 'connected-react-router';
+import { useHistory } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { ReduxAsyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { loadableReady } from '@loadable/component';
@@ -18,14 +20,35 @@ import Api from '@plone/volto/helpers/Api/Api';
 import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import ScrollToTop from '@plone/volto/helpers/ScrollToTop/ScrollToTop';
 
-export const history = createBrowserHistory();
-
 function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
+function ReactAriaRouterProvider({ children }) {
+  const history = useHistory();
+
+  const navigate = (to, options = {}) => {
+    if (options.replace) {
+      history.replace(to);
+    } else {
+      history.push(to);
+    }
+  };
+
+  return <RouterProvider navigate={navigate}>{children}</RouterProvider>;
+}
+
 export default function client() {
   const api = new Api();
+
+  if (window.env.RAZZLE_SUBPATH_PREFIX) {
+    config.settings.subpathPrefix = window.env.RAZZLE_SUBPATH_PREFIX;
+  }
+  const history = createBrowserHistory({
+    basename: config.settings.subpathPrefix
+      ? config.settings.subpathPrefix
+      : '/',
+  });
 
   const store = configureStore(window.__data, history, api);
   persistAuthToken(store);
@@ -54,13 +77,12 @@ export default function client() {
   if (window.env.RAZZLE_INTERNAL_API_PATH) {
     config.settings.internalApiPath = window.env.RAZZLE_INTERNAL_API_PATH;
   }
+  if (typeof window.env.RAZZLE_API_SUFFIX !== 'undefined') {
+    config.settings.apiSuffix = window.env.RAZZLE_API_SUFFIX;
+  }
   // TODO: To be removed when the use of the legacy traverse is deprecated.
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
     config.settings.legacyTraverse = true;
-  }
-  // Support for setting the default language from a server environment variable
-  if (window.env.defaultLanguage) {
-    config.settings.defaultLanguage = window.env.defaultLanguage;
   }
 
   loadableReady(() => {
@@ -70,9 +92,11 @@ export default function client() {
         <Provider store={store}>
           <IntlProvider onError={reactIntlErrorHandler}>
             <ConnectedRouter history={history}>
-              <ScrollToTop>
-                <ReduxAsyncConnect routes={routes} helpers={api} />
-              </ScrollToTop>
+              <ReactAriaRouterProvider>
+                <ScrollToTop>
+                  <ReduxAsyncConnect routes={routes} helpers={api} />
+                </ScrollToTop>
+              </ReactAriaRouterProvider>
             </ConnectedRouter>
           </IntlProvider>
         </Provider>

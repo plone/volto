@@ -1,20 +1,15 @@
-export function ContentsIndexHeaderComponent({ intl, width, label, connectDragSource, connectDropTarget, isDragging, }: {
-    intl: any;
+export function ContentsIndexHeaderComponent({ id, width, label, dndKitSortable, dndKitUtilities, }: {
+    id: any;
     width: any;
     label: any;
-    connectDragSource: any;
-    connectDropTarget: any;
-    isDragging: any;
-}): string;
+    dndKitSortable: any;
+    dndKitUtilities: any;
+}): import("react/jsx-runtime").JSX.Element;
 export namespace ContentsIndexHeaderComponent {
     namespace propTypes {
+        let id: any;
         let width: any;
         let label: any;
-        let connectDragSource: any;
-        let connectDropTarget: any;
-        let isDragging: any;
-        let order: any;
-        let onOrderIndex: any;
     }
 }
 declare const _default: any;

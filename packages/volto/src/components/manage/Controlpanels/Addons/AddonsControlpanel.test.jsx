@@ -2,12 +2,15 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 
 import AddonsControlpanel from './AddonsControlpanel';
 
 const mockStore = configureStore();
 
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('AddonsControlpanel', () => {
   it('renders an addon control component', () => {
@@ -54,11 +57,36 @@ describe('AddonsControlpanel', () => {
         locale: 'en',
         messages: {},
       },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
+    store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <AddonsControlpanel location={{ pathname: '/blog' }} />
-        <div id="toolbar"></div>
+        <CookiesProvider>
+          <div>
+            <AddonsControlpanel location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </div>
+        </CookiesProvider>
       </Provider>,
     );
 

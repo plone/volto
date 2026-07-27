@@ -27,6 +27,7 @@ export function TeaserSchema({ data, intl }: {
         };
         head_title: {
             title: any;
+            description: any;
         };
         description: {
             title: any;

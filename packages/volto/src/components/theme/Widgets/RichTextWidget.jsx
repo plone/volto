@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 const RichTextWidget = ({ value, className }) =>
   value ? (
-    <p
+    <div
       className={cx(className, 'richtext', 'widget')}
       dangerouslySetInnerHTML={{
         __html: value.data,

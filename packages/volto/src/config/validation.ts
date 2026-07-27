@@ -16,6 +16,7 @@ import {
   endEventDateRangeValidator,
   patternValidator,
   defaultLanguageControlPanelValidator,
+  sizeValidator,
 } from '@plone/volto/helpers/FormValidation/validators';
 
 const registerValidators = (config: ConfigType) => {
@@ -31,6 +32,13 @@ const registerValidators = (config: ConfigType) => {
     type: 'validator',
     dependencies: { fieldType: 'string' },
     method: maxLengthValidator,
+  });
+
+  config.registerUtility({
+    name: 'size',
+    type: 'validator',
+    dependencies: { fieldType: 'object' },
+    method: sizeValidator,
   });
 
   config.registerUtility({

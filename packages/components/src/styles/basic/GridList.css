@@ -1,8 +1,8 @@
+/* depends on:
 @import './Button.css';
 @import './Checkbox.css';
 @import './ToggleButton.css';
-@import './theme.css';
-
+*/
 @layer plone-components.base {
   .react-aria-GridList {
     display: flex;

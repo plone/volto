@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Actions renders an actions component 1`] = `
+exports[`Actions > renders an actions component 1`] = `
 <div
   aria-expanded={false}
   className="ui item dropdown"

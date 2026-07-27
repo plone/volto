@@ -1,4 +1,5 @@
 describe('ControlPanel: Dexterity Content-Types Layout', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
@@ -16,10 +17,9 @@ describe('ControlPanel: Dexterity Content-Types Layout', () => {
     cy.get('input[id="field-description"]').type('A book content-type');
     cy.get('[title=Save]').click();
 
-    cy.get('a[href="/controlpanel/dexterity-types/book"]').should(
-      'have.text',
-      'Book',
-    );
+    cy.get(
+      `a[href="${subpathPrefix}/controlpanel/dexterity-types/book"]`,
+    ).should('have.text', 'Book');
 
     cy.navigate('/controlpanel/dexterity-types/book/layout');
     cy.get('#page-controlpanel-layout').contains(

@@ -3,10 +3,7 @@ import { slateBeforeEach, getSlateBlockValue } from '../../../support/helpers';
 describe('Block Tests', () => {
   beforeEach(slateBeforeEach);
   it('should create a block with some text, move the cursor in the middle of the text, insert a line break, and then have 2 blocks with the two parts of the initial text', () => {
-    cy.getSlate()
-      .focus()
-      .click()
-      .type('hello, world')
+    cy.getSlateEditorAndType('hello, world')
       .type('{leftarrow}')
       .type('{leftarrow}')
       .type('{leftarrow}')

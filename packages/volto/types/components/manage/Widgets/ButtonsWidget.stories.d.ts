@@ -1,4 +1,7 @@
 export const Buttons: any;
+export const ButtonsWithDefaultValue: any;
+export const ButtonsWithStyleDefinitions: any;
+export const ButtonsFiltered: any;
 declare namespace _default {
     export let title: string;
     export { ButtonsWidget as component };

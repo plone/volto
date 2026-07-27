@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CheckboxWidget renders a checkbox widget component 1`] = `
+exports[`CheckboxWidget > renders a checkbox widget component 1`] = `
 <DocumentFragment>
   <div
     class="inline field field-wrapper-my-field"
@@ -36,6 +36,11 @@ exports[`CheckboxWidget renders a checkbox widget component 1`] = `
               </label>
             </div>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="visually-hidden"
+          />
         </div>
       </div>
     </div>
@@ -43,7 +48,7 @@ exports[`CheckboxWidget renders a checkbox widget component 1`] = `
 </DocumentFragment>
 `;
 
-exports[`CheckboxWidget renders a checkbox widget component checked 1`] = `
+exports[`CheckboxWidget > renders a checkbox widget component checked 1`] = `
 <DocumentFragment>
   <div
     class="inline field field-wrapper-my-field"
@@ -80,6 +85,11 @@ exports[`CheckboxWidget renders a checkbox widget component checked 1`] = `
               </label>
             </div>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="visually-hidden"
+          />
         </div>
       </div>
     </div>

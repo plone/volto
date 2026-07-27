@@ -1,7 +1,7 @@
+/* depends on:
 @import './Button.css';
 @import './TextField.css';
-@import './theme.css';
-
+*/
 @layer plone-components.base {
   .react-aria-ModalOverlay {
     position: fixed;

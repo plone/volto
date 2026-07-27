@@ -1,12 +1,10 @@
 import React from 'react';
 import { Checkbox } from './Checkbox';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Checkbox.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Components/Checkbox',
+  title: 'Basic/Checkbox',
   component: Checkbox,
   parameters: {
     layout: 'centered',

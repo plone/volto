@@ -1,4 +1,5 @@
 describe('ControlPanel: Dexterity Content-Types Schema', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // given a logged in editor
@@ -17,10 +18,9 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.get('input[id="field-description"]').type('Bike content-type');
     cy.get('[title=Save]').click();
 
-    cy.get('a[href="/controlpanel/dexterity-types/bike"]').should(
-      'have.text',
-      'Bike',
-    );
+    cy.get(
+      `a[href="${subpathPrefix}/controlpanel/dexterity-types/bike"]`,
+    ).should('have.text', 'Bike');
 
     // Go to schema
     cy.visit('/controlpanel/dexterity-types/bike/schema');
@@ -73,7 +73,7 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.get('#toolbar-add').click();
     cy.get('#toolbar-add-bike').click();
     cy.get('input[name="title"]').type('Kona').should('have.value', 'Kona');
-    cy.get('.formtabs a').contains('Specifications').click();
+    cy.get('.formtabs button').contains('Specifications').click();
     cy.get('.react-select-container[id="field-color"]')
       .click()
       .type('Green{enter}');

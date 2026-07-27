@@ -12,7 +12,7 @@ const useUser = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!user?.id && users?.get.loading === false) {
+    if (userId && !user?.id && users?.get.loading === false) {
       dispatch(getUser(userId));
     }
   }, [dispatch, userId, user, users?.get.loading]);

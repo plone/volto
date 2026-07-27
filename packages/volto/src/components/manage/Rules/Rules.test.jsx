@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
@@ -9,9 +10,12 @@ import Rules from './Rules';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-
-jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
+vi.mock('../Toolbar/More', () => ({
+  default: vi.fn(() => <div className="More" />),
+}));
 
 describe('Rules', () => {
   it('renders rules object control', () => {
@@ -66,8 +70,10 @@ describe('Rules', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <Rules location={{ pathname: '/blog/rules' }} />
-        <div id="toolbar"></div>
+        <CookiesProvider>
+          <Rules location={{ pathname: '/blog/rules' }} />
+          <div id="toolbar"></div>
+        </CookiesProvider>
       </Provider>,
     );
 

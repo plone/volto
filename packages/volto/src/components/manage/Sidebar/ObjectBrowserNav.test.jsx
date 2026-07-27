@@ -110,11 +110,11 @@ describe('ObjectBrowserNav', () => {
   const baseProps = {
     currentSearchResults,
     isSelectable: () => true,
-    handleClickOnItem: jest.fn(),
-    handleDoubleClickOnItem: jest.fn(),
+    handleClickOnItem: vi.fn(),
+    handleDoubleClickOnItem: vi.fn(),
     mode: 'link',
     view: 'list',
-    navigateTo: jest.fn(),
+    navigateTo: vi.fn(),
   };
 
   it('renders a view image component', () => {

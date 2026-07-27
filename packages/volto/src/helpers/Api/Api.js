@@ -7,7 +7,11 @@ import superagent from 'superagent';
 import Cookies from 'universal-cookie';
 import config from '@plone/volto/registry';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripQuerystring } from '@plone/volto/helpers/Url/Url';
+import {
+  getApiSuffix,
+  stripQuerystring,
+  stripSubpathPrefix,
+} from '@plone/volto/helpers/Url/Url';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
@@ -19,11 +23,10 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
  */
 export function formatUrl(path) {
   const { settings } = config;
-  const APISUFIX = settings.legacyTraverse ? '' : '/++api++';
+  const apiSuffix = getApiSuffix();
 
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
 
-  const adjustedPath = path[0] !== '/' ? `/${path}` : path;
   let apiPath = '';
   if (settings.internalApiPath && __SERVER__) {
     apiPath = settings.internalApiPath;
@@ -31,7 +34,8 @@ export function formatUrl(path) {
     apiPath = settings.apiPath;
   }
 
-  return `${apiPath}${APISUFIX}${adjustedPath}`;
+  const contentPath = stripSubpathPrefix(path[0] !== '/' ? `/${path}` : path);
+  return `${apiPath}${apiSuffix}${contentPath}`;
 }
 
 /**
@@ -99,7 +103,7 @@ class Api {
             request.attach.apply(request, attachment);
           });
 
-          request.end((err, response) => {
+          request.end((err, response = {}) => {
             if (
               checkUrl &&
               request.url &&
@@ -123,7 +127,7 @@ class Api {
             if ([301, 302].includes(err?.status)) {
               return reject({
                 code: err.status,
-                url: err.response.headers.location,
+                url: err.response?.headers?.location,
               });
             }
 

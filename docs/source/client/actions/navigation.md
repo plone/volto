@@ -2,7 +2,7 @@
 
 Get the top-level navigation items or navigation item tree with the navigation endpoint.
 
-## Get Navigation
+## Get navigation
 
 ### Query function
 

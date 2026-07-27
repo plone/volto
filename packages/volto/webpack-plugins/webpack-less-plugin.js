@@ -143,7 +143,7 @@ module.exports = (userOptions = {}) => ({
           /packages\/volto\/theme/,
           /plone\.volto\/theme/,
           /node_modules\/semantic-ui-less/,
-          ...Object.values(registry.getResolveAliases()),
+          ...Object.values(registry.packages).map((p) => p.modulePath),
         ],
         use: isServer
           ? [

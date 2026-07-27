@@ -1,18 +1,21 @@
 import config from '@plone/volto/registry';
 import Api from './Api';
 
-jest.mock('superagent', () => ({
-  get: jest.fn((url) => ({
-    url,
-    query: jest.fn(),
-    set: jest.fn(),
-    type: jest.fn(),
-    send: jest.fn(),
-    end: jest.fn(),
-  })),
+vi.mock('superagent', () => ({
+  default: {
+    get: vi.fn((url) => ({
+      url,
+      query: vi.fn(),
+      set: vi.fn(),
+      type: vi.fn(),
+      send: vi.fn(),
+      end: vi.fn(),
+    })),
+  },
 }));
 
 beforeAll(() => {
+  config.settings.apiSuffix = undefined;
   config.settings.legacyTraverse = false;
 });
 
@@ -38,5 +41,11 @@ describe('Api', () => {
   it('does not change https URL provided as path', () => {
     const promise = api.get('https://example.com');
     expect(promise.request.url).toBe('https://example.com');
+  });
+  it('uses the configured API suffix', () => {
+    config.settings.apiSuffix = '/custom-api';
+    const promise = api.get('/test');
+    expect(promise.request.url).toBe(`${settings.apiPath}/custom-api/test`);
+    config.settings.apiSuffix = undefined;
   });
 });

@@ -128,6 +128,7 @@ class SelectWidget extends Component {
     isMulti: PropTypes.bool,
     placeholder: PropTypes.string,
     sort: PropTypes.bool,
+    isClearable: PropTypes.bool,
   };
 
   /**
@@ -156,6 +157,7 @@ class SelectWidget extends Component {
     noValueOption: true,
     customOptionStyling: null,
     sort: false,
+    isClearable: true,
   };
 
   /**
@@ -261,9 +263,10 @@ class SelectWidget extends Component {
       <FormFieldWrapper {...this.props}>
         <Select
           id={`field-${id}`}
+          fieldTitle={this.props.title}
           key={choices}
           name={id}
-          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${id}`}
+          aria-label={this.props.title || undefined}
           menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
@@ -302,7 +305,7 @@ class SelectWidget extends Component {
                 : undefined,
             );
           }}
-          isClearable
+          isClearable={!this.props.required && this.props.isClearable}
         />
       </FormFieldWrapper>
     );

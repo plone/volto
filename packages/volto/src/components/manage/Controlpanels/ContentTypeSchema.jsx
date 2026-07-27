@@ -169,7 +169,7 @@ class ContentTypeSchema extends Component {
           error
           title={this.props.intl.formatMessage(messages.error)}
           content={JSON.stringify(
-            nextProps.schemaRequest.put.error.response.body ||
+            nextProps.schemaRequest.put.error.response.body?.message ||
               nextProps.schemaRequest.put.error.response.text,
           )}
         />,

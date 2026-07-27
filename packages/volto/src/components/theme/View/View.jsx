@@ -222,6 +222,13 @@ class View extends Component {
       }
       return (
         <div id="view">
+          <BodyClass
+            className={
+              FoundView.displayName
+                ? `view-${this.cleanViewName(FoundView.displayName)}`
+                : null
+            }
+          />
           <FoundView {...this.props} />
         </div>
       );
@@ -246,7 +253,7 @@ class View extends Component {
         />
         <SlotRenderer name="aboveContent" content={this.props.content} />
         <RenderedView
-          key={this.props.content['@id']}
+          key={flattenToAppURL(this.props.content['@id'])}
           content={this.props.content}
           location={this.props.location}
           token={this.props.token}

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders an array widget component 1`] = `
 <div
@@ -44,7 +44,7 @@ exports[`renders an array widget component 1`] = `
             className="search"
             onChange={[Function]}
             style={
-              Object {
+              {
                 "width": undefined,
               }
             }
@@ -80,6 +80,11 @@ exports[`renders an array widget component 1`] = `
             </div>
           </div>
         </div>
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          className="visually-hidden"
+        />
       </div>
     </div>
   </div>

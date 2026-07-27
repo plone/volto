@@ -110,7 +110,7 @@ Open `/docs/_build/linkcheck/output.txt` for a list of broken links.
 
 #### `docs-vale`
 
-`docs-vale` checks for American English spelling, grammar, syntax, and the Microsoft Developer Style Guide.
+`docs-vale` checks for American English spelling, grammar, and syntax, and follows the Microsoft Writing Style Guide.
 
 ```shell
 make docs-vale

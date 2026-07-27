@@ -10,14 +10,23 @@ myst:
 # Add-ons styles loader
 
 Add-ons that are compatible with the `@plone/registry` may declare styles that should be loaded by the app.
-To do so, create a file {file}`styles/main.css` at the root of your project which serves as the entry point.
-This file is a `.css` file containing the styles that you want your app to load.
+Currently, the loader loads styles for both the end user interface (Public UI) part, which displays content to both authenticated and anonymous users, and the content management system user interface (CMSUI) part of the app.
+
+## Public UI Styles
+
+To load Public UI styles, create a file {file}`styles/publicui.css` at the root of your add-on package to serve as the entry point.
+This file is a `.css` file containing the styles that you want your app to load for the Public UI.
+
+## CMSUI Styles
+
+Similar to the Public UI, you can create a file {file}`styles/cmsui.css` at the root of your add-on package to serve as the entry point for the CMSUI styles.
+This file is also a CSS file containing the styles that you want your app to load for the CMSUI.
 
 `@plone/registry` has a helper utility `createAddonsStyleLoader` which generates an add-ons loader file.
 That file contains the aggregated files from all the registered add-ons, keeping the order in which they were defined.
 
-This loader is also a `.css` file and is placed in the root of your application.
-By default, it's called {file}`addons.styles.css`.
+This loader is also a `.css` file and is placed in the {file}`.plone` directory in the root of your application.
+By default, it's called {file}`publicui.css` for the Public UI and {file}`cmsui.css` for the CMSUI.
 
 ```{important}
 This file is generated and maintained by `@plone/registry`.
@@ -29,18 +38,18 @@ The add-ons loader generator is meant to be run before bundling your app or by t
 The `@plone/registry` Vite plugin generates this file, so the framework can load it during app bootstrap time.
 
 ```js
-  const projectRootPath = path.resolve('.');
-  const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
+const projectRootPath = path.resolve('.');
+const { registry, shadowAliases } = AddonRegistry.init(projectRootPath);
 
-  createAddonsStyleLoader(registry);
+createAddonsStyleLoader(registry);
 ```
 
-This will create {file}`addons.styles.css` in the root of your app.
+This will create {file}`publicui.css` in the {file}`.plone` directory in the root of your app.
 Afterwards, configure your app to load the CSS according to the framework's convention, and in both a centralized and performant manner.
 
 ```css
-@import "tailwind";
-@import "./addons.styles.css"
+@import 'tailwind';
+@import './.plone/publicui.css';
 ```
 
 ```{note}

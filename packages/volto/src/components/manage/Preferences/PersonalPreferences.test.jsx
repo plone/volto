@@ -2,20 +2,18 @@ import React from 'react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import { render } from '@testing-library/react';
 
 import PersonalPreferences from './PersonalPreferences';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('@plone/volto/components/manage/Form');
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('PersonalPreferences', () => {
   it('renders a personal preferences component', () => {
@@ -40,12 +38,14 @@ describe('PersonalPreferences', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <PersonalPreferences
-            location={{ pathname: '/blog' }}
-            closeMenu={() => {}}
-          />
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <PersonalPreferences
+              location={{ pathname: '/blog' }}
+              closeMenu={() => {}}
+            />
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
     expect(container).toMatchSnapshot();

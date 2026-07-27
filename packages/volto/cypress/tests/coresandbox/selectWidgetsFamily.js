@@ -281,7 +281,7 @@ context('Select widgets family Acceptance Tests', () => {
 
       // We reset (force a no-value) in the field by clearing it (x)
       cy.get(
-        '#field-list_field_voc_huge .react-select__clear-indicator',
+        '#field-list_field_voc_huge .react-select__multi-value__remove',
       ).click();
       cy.get(
         '#field-list_field_voc_huge > .react-select__control > .react-select__value-container',

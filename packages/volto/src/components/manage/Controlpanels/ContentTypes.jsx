@@ -227,6 +227,7 @@ class ContentTypes extends Component {
       addTypeError: undefined,
       addTypeSetFormDataCallback: undefined,
     });
+    this._addTypeTrigger?.focus();
     toast.success(
       <Toast
         success
@@ -369,10 +370,13 @@ class ContentTypes extends Component {
           />
           <ModalForm
             open={this.state.showAddType}
-            className="modal"
+            className="modal add-content-type"
             onSubmit={this.onAddTypeSubmit}
             submitError={this.state.addTypeError}
-            onCancel={() => this.setState({ showAddType: false })}
+            onCancel={() => {
+              this.setState({ showAddType: false });
+              this._addTypeTrigger?.focus();
+            }}
             title={this.props.intl.formatMessage(messages.addTypeFormTitle)}
             loading={this.props.cpanelRequest.post.loading}
             schema={{
@@ -474,6 +478,9 @@ class ContentTypes extends Component {
                     aria-label={this.props.intl.formatMessage(messages.add)}
                     tabIndex={0}
                     id="toolbar-add"
+                    ref={(el) => {
+                      this._addTypeTrigger = el;
+                    }}
                     onClick={() => {
                       this.setState({ showAddType: true });
                     }}

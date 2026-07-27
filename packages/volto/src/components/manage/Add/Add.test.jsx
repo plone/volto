@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import config from '@plone/volto/registry';
-
 import Add from './Add';
 
 const mockStore = configureStore();
@@ -16,9 +16,13 @@ beforeAll(() => {
   config.settings.loadables = {};
 });
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('../Form/Form', () => jest.fn(() => <div className="Form" />));
+vi.mock('../Form/Form', () => ({
+  default: vi.fn(() => <div className="Form" />),
+}));
 
 describe('Add', () => {
   it('renders an empty add component', () => {
@@ -40,7 +44,9 @@ describe('Add', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
+        <CookiesProvider>
+          <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
+        </CookiesProvider>
       </Provider>,
     );
     expect(container).toMatchSnapshot();
@@ -67,7 +73,9 @@ describe('Add', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
+        <CookiesProvider>
+          <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -106,7 +114,9 @@ describe('Add', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
+        <CookiesProvider>
+          <Add location={{ pathname: '/blog', search: { type: 'Document' } }} />
+        </CookiesProvider>
       </Provider>,
     );
 

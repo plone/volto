@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
+exports[`BlocksChooser > Fallback BlockChooser component onMutateBlock 1`] = `
 <div>
   <div
     class="blocks-chooser"
@@ -11,7 +11,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
     >
       <div
         class="field searchbox"
-        style="border-left: 0; height: 2em; padding: 0px;"
+        style="border-left: 0px; height: 2em; padding: 0px;"
       >
         <div
           class="ui input"
@@ -41,10 +41,15 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         >
           <svg
             class="icon"
-            style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            style="height: 20px; width: auto; fill: currentcolor;"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -56,7 +61,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           style="height: auto; overflow: visible;"
         >
           <div
-            style="transition: opacity 500ms ease 0ms;"
+            style="transition: opacity 500ms ease 0ms; -webkit-transition: opacity 500ms ease 0ms;"
           >
             <div
               class="ui buttons"
@@ -67,7 +72,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Image
               </button>
@@ -81,7 +86,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Listing
               </button>
@@ -95,7 +100,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Video
               </button>
@@ -113,10 +118,15 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         >
           <svg
             class="icon"
-            style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            style="height: 20px; width: auto; fill: currentcolor;"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -128,7 +138,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           style="height: 0px; overflow: hidden;"
         >
           <div
-            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+            style="transition: opacity 500ms ease 0ms; -webkit-transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
               class="ui buttons"
@@ -139,7 +149,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Text
               </button>
@@ -157,10 +167,15 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         >
           <svg
             class="icon"
-            style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            style="height: 20px; width: auto; fill: currentcolor;"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -172,7 +187,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           style="height: 0px; overflow: hidden;"
         >
           <div
-            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+            style="transition: opacity 500ms ease 0ms; -webkit-transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
               class="ui buttons"
@@ -183,7 +198,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Image
               </button>
@@ -197,7 +212,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Lead Image Field
               </button>
@@ -211,7 +226,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Video
               </button>
@@ -229,10 +244,15 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
         >
           <svg
             class="icon"
-            style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            style="height: 20px; width: auto; fill: currentcolor;"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -244,7 +264,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
           style="height: 0px; overflow: hidden;"
         >
           <div
-            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+            style="transition: opacity 500ms ease 0ms; -webkit-transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
               class="ui buttons"
@@ -255,7 +275,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Listing
               </button>
@@ -269,7 +289,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Table of Contents
               </button>
@@ -283,7 +303,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Hero
               </button>
@@ -297,7 +317,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Maps
               </button>
@@ -311,7 +331,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 HTML
               </button>
@@ -325,7 +345,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Table
               </button>
@@ -338,7 +358,7 @@ exports[`BlocksChooser Fallback BlockChooser component onMutateBlock 1`] = `
 </div>
 `;
 
-exports[`BlocksChooser renders a BlockChooser component 1`] = `
+exports[`BlocksChooser > renders a BlockChooser component 1`] = `
 <div>
   <div
     class="blocks-chooser"
@@ -349,7 +369,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
     >
       <div
         class="field searchbox"
-        style="border-left: 0; height: 2em; padding: 0px;"
+        style="border-left: 0px; height: 2em; padding: 0px;"
       >
         <div
           class="ui input"
@@ -379,10 +399,15 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         >
           <svg
             class="icon"
-            style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            style="height: 20px; width: auto; fill: currentcolor;"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -394,7 +419,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           style="height: auto; overflow: visible;"
         >
           <div
-            style="transition: opacity 500ms ease 0ms;"
+            style="transition: opacity 500ms ease 0ms; -webkit-transition: opacity 500ms ease 0ms;"
           >
             <div
               class="ui buttons"
@@ -405,7 +430,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Image
               </button>
@@ -419,7 +444,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Listing
               </button>
@@ -433,7 +458,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Video
               </button>
@@ -451,10 +476,15 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         >
           <svg
             class="icon"
-            style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            style="height: 20px; width: auto; fill: currentcolor;"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -466,7 +496,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           style="height: 0px; overflow: hidden;"
         >
           <div
-            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+            style="transition: opacity 500ms ease 0ms; -webkit-transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
               class="ui buttons"
@@ -477,7 +507,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Text
               </button>
@@ -495,10 +525,15 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         >
           <svg
             class="icon"
-            style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            style="height: 20px; width: auto; fill: currentcolor;"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -510,7 +545,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           style="height: 0px; overflow: hidden;"
         >
           <div
-            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+            style="transition: opacity 500ms ease 0ms; -webkit-transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
               class="ui buttons"
@@ -521,7 +556,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Image
               </button>
@@ -535,7 +570,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Lead Image Field
               </button>
@@ -549,7 +584,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Video
               </button>
@@ -567,10 +602,15 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
         >
           <svg
             class="icon"
-            style="height: 20px; width: auto; fill: currentColor;"
-            viewBox=""
-            xmlns=""
-          />
+            style="height: 20px; width: auto; fill: currentcolor;"
+            viewBox="0 0 36 36"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M26.707 21.293 25.293 22.707 18 15.414 10.707 22.707 9.293 21.293 18 12.586z"
+              fill-rule="evenodd"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -582,7 +622,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
           style="height: 0px; overflow: hidden;"
         >
           <div
-            style="transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
+            style="transition: opacity 500ms ease 0ms; -webkit-transition: opacity 500ms ease 0ms; opacity: 0; display: none;"
           >
             <div
               class="ui buttons"
@@ -593,7 +633,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Listing
               </button>
@@ -607,7 +647,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Table of Contents
               </button>
@@ -621,7 +661,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Hero
               </button>
@@ -635,7 +675,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Maps
               </button>
@@ -649,7 +689,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 HTML
               </button>
@@ -663,7 +703,7 @@ exports[`BlocksChooser renders a BlockChooser component 1`] = `
               >
                 <svg
                   class="icon"
-                  style="height: 36px; width: auto; fill: currentColor;"
+                  style="height: 36px; width: auto; fill: currentcolor;"
                 />
                 Table
               </button>

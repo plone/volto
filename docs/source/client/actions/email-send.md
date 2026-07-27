@@ -1,8 +1,8 @@
-# Email Send
+# Email send
 
 To send an email to an arbitrary email address use the /@email-send endpoint.
 
-## Send Email
+## Send email
 
 ### Mutation function
 

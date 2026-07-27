@@ -7,7 +7,6 @@ import { Provider } from 'react-intl-redux';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
-import { parse as parseUrl } from 'url';
 import keys from 'lodash/keys';
 import locale from 'locale';
 import { detect } from 'detect-browser';
@@ -18,8 +17,9 @@ import { CookiesProvider } from 'react-cookie';
 import cookiesMiddleware from 'universal-cookie-express';
 import debug from 'debug';
 
-import routes from '@root/routes';
+import routes from '@plone/volto/routes';
 import config from '@plone/volto/registry';
+import okMiddleware from '@plone/volto/express-middleware/ok';
 
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import Html from '@plone/volto/helpers/Html/Html';
@@ -39,18 +39,24 @@ import ErrorPage from '@plone/volto/error';
 import languages from '@plone/volto/constants/Languages.cjs';
 
 import configureStore from '@plone/volto/store';
-import { ReduxAsyncConnect, loadOnServer } from './helpers/AsyncConnect';
+import {
+  ReduxAsyncConnect,
+  loadOnServer,
+} from '@plone/volto/helpers/AsyncConnect';
 
 let locales = {};
 
+// Load locales listed in supportedLanguages setting
 if (config.settings) {
   config.settings.supportedLanguages.forEach((lang) => {
     const langFileName = toGettextLang(lang);
-    import(
-      /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-    ).then((locale) => {
-      locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
-    });
+    import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+      .then((locale) => {
+        locales = { ...locales, [toReactIntlLang(lang)]: locale.default };
+      })
+      .catch((error) => {
+        // Error loading locale file
+      });
   });
 }
 
@@ -68,10 +74,30 @@ const server = express()
   })
   .use(cookiesMiddleware());
 
+// If Volto is being served under a subpath,
+// make sure the static files are available there too.
+// (The static middleware loads too early to access the config.)
+if (config.settings.subpathPrefix) {
+  server.use(
+    config.settings.subpathPrefix,
+    express.static(
+      process.env.BUILD_DIR
+        ? path.join(process.env.BUILD_DIR, 'public')
+        : process.env.RAZZLE_PUBLIC_DIR,
+      {
+        redirect: false, // Avoid /my-prefix from being redirected to /my-prefix/
+      },
+    ),
+  );
+}
+
 const middleware = (config.settings.expressMiddleware || []).filter((m) => m);
 
 server.all('*', setupServer);
-if (middleware.length) server.use('/', middleware);
+if (middleware.length) {
+  server.use(config.settings.subpathPrefix || '/', middleware);
+}
+server.use('/', okMiddleware());
 
 server.use(function (err, req, res, next) {
   if (err) {
@@ -107,7 +133,6 @@ function setupServer(req, res, next) {
   const lang = toReactIntlLang(
     new locale.Locales(
       req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
         req.headers['accept-language'],
     )
       .best(supported)
@@ -160,8 +185,10 @@ function setupServer(req, res, next) {
     res.locals.detectedHost = `${
       req.headers['x-forwarded-proto'] || req.protocol
     }://${req.headers.host}`;
-    config.settings.apiPath = res.locals.detectedHost;
-    config.settings.publicURL = res.locals.detectedHost;
+    config.settings.apiPath =
+      res.locals.detectedHost + config.settings.subpathPrefix;
+    config.settings.publicURL =
+      res.locals.detectedHost + config.settings.subpathPrefix;
   }
 
   res.locals = {
@@ -184,7 +211,6 @@ server.get('/*', (req, res) => {
   const lang = toReactIntlLang(
     new locale.Locales(
       req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
         req.headers['accept-language'],
     )
       .best(supported)
@@ -220,13 +246,32 @@ server.get('/*', (req, res) => {
   });
 
   const url = req.originalUrl || req.url;
-  const location = parseUrl(url);
+  // Parse the request URL without the deprecated `url.parse()` (DEP0169).
+  // `req.url` is always an origin-form path here, so a plain string split
+  // reproduces the exact `url.parse()` shape (including raw, non-encoded
+  // query strings) that downstream async-connected components rely on.
+  const hashIndex = url.indexOf('#');
+  const withoutHash = hashIndex === -1 ? url : url.slice(0, hashIndex);
+  const hash = hashIndex === -1 ? null : url.slice(hashIndex);
+  const queryIndex = withoutHash.indexOf('?');
+  const pathname =
+    queryIndex === -1 ? withoutHash : withoutHash.slice(0, queryIndex);
+  const search = queryIndex === -1 ? null : withoutHash.slice(queryIndex);
+  const location = {
+    pathname,
+    search,
+    query: search ? search.slice(1) : null,
+    hash,
+    path: withoutHash,
+    href: url,
+  };
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
+      const state = store.getState();
       const initialLang =
         req.universalCookies.get('I18N_LANGUAGE') ||
-        config.settings.defaultLanguage ||
+        state.site.data['plone.default_language'] ||
         req.headers['accept-language'];
 
       // The content info is in the store at this point thanks to the asynconnect
@@ -236,12 +281,17 @@ server.get('/*', (req, res) => {
       // TODO: there is a bug here with content that, for any reason, doesn't
       // present the language token field, for some reason. In this case, we
       // should follow the cookie rather then switching the language
-      const contentLang = store.getState().content.get?.error
+      const contentLang = state.content.get?.error
         ? initialLang
-        : store.getState().content.data?.language?.token ||
-          config.settings.defaultLanguage;
+        : state.content.data?.language?.token || initialLang;
 
-      if (toBackendLang(initialLang) !== contentLang && url !== '/') {
+      const isMultilingual = state.site.data.features?.multilingual;
+
+      if (
+        toBackendLang(initialLang) !== contentLang &&
+        !/\/\.well-known\/.*$/.test(location.pathname) &&
+        !(isMultilingual && location.pathname === '/')
+      ) {
         const newLang = toReactIntlLang(
           new locale.Locales(contentLang).best(supported).toString(),
         );
@@ -254,7 +304,11 @@ server.get('/*', (req, res) => {
         <ChunkExtractorManager extractor={extractor}>
           <CookiesProvider cookies={req.universalCookies}>
             <Provider store={store} onError={reactIntlErrorHandler}>
-              <StaticRouter context={context} location={req.url}>
+              <StaticRouter
+                context={context}
+                location={req.url}
+                basename={config.settings.subpathPrefix}
+              >
                 <ReduxAsyncConnect routes={routes} helpers={api} />
               </StaticRouter>
             </Provider>
@@ -291,8 +345,8 @@ server.get('/*', (req, res) => {
             markup={markup}
             store={store}
             criticalCss={readCriticalCss(req)}
-            apiPath={res.locals.detectedHost || config.settings.apiPath}
-            publicURL={res.locals.detectedHost || config.settings.publicURL}
+            apiPath={config.settings.apiPath}
+            publicURL={config.settings.publicURL}
           />,
         )}
       `,
@@ -335,6 +389,8 @@ export const defaultReadCriticalCss = () => {
 
 // Exposed for the console bootstrap info messages
 server.apiPath = config.settings.apiPath;
+server.internalApiPath = config.settings.internalApiPath;
+server.subpathPrefix = config.settings.subpathPrefix;
 server.devProxyToApiPath = config.settings.devProxyToApiPath;
 server.proxyRewriteTarget = config.settings.proxyRewriteTarget;
 server.publicURL = config.settings.publicURL;

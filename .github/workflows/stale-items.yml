@@ -48,3 +48,5 @@ jobs:
             - updating its status and other labels 🏷️
 
             Otherwise close this pull request. 🧹
+          exempt-milestones: 'Plone 7.0'
+          exempt-issue-labels: '03 type: feature (plip),06 type: plip task'

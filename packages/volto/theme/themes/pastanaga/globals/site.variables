@@ -48,9 +48,6 @@
 /* This adjusts the default form input across all elements */
 @inputHorizontalPadding : 0;
 
-/* Input Text Color */
-@inputPlaceholderColor: #B8C6C8;
-
 
 /*-------------------
     Focused Input
@@ -365,3 +362,10 @@
 /*---  Dark Tones  ---*/
 
 /*---  Light Tones  ---*/
+
+/*-------------------
+    Focused Input
+--------------------*/
+
+@innerFocusShadow: #fff;
+@outerFocusOutline: #000;

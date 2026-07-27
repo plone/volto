@@ -5,7 +5,9 @@ import includes from 'lodash/includes';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { setUIState } from '@plone/volto/actions/form/form';
+import { formatMessageWithFallback } from '@plone/volto/helpers/I18n/I18n';
 import config from '@plone/volto/registry';
+import { useIntl } from 'react-intl';
 
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import dragSVG from '@plone/volto/icons/drag.svg';
@@ -25,6 +27,7 @@ export const Item = forwardRef(
       onRemove,
       onSelectBlock,
       parentId,
+      parentType,
       style,
       value,
       wrapperRef,
@@ -33,12 +36,27 @@ export const Item = forwardRef(
     },
     ref,
   ) => {
+    const intl = useIntl();
     const selected = useSelector((state) => state.form.ui.selected);
     const hovered = useSelector((state) => state.form.ui.hovered);
     const multiSelected = useSelector((state) => state.form.ui.multiSelected);
     const gridSelected = useSelector((state) => state.form.ui.gridSelected);
     const dispatch = useDispatch();
 
+    const icon =
+      config.blocks.blocksConfig[data?.['@type']]?.icon ||
+      config.blocks.blocksConfig.title?.icon;
+
+    const required =
+      typeof data?.required === 'boolean'
+        ? data.required
+        : includes(config.blocks.requiredBlocks, data?.['@type']);
+    const fixed = !!data?.fixed;
+    const configTitle = config.blocks.blocksConfig[data?.['@type']]?.title;
+    const blockTitle =
+      data?.plaintext ||
+      formatMessageWithFallback(intl, configTitle) ||
+      data?.title;
     return (
       <li
         className={classNames(
@@ -88,31 +106,32 @@ export const Item = forwardRef(
           ref={ref}
           style={style}
         >
-          <button
-            ref={ref}
-            {...handleProps}
-            className={classNames('action', 'drag')}
-            tabIndex={0}
-            data-cypress="draggable-handle"
-          >
-            <Icon name={dragSVG} size="16px" />
-          </button>
+          {!fixed && (
+            <button
+              ref={ref}
+              {...handleProps}
+              className={classNames('action', 'drag')}
+              tabIndex={0}
+              data-cypress="draggable-handle"
+            >
+              <Icon name={dragSVG} size="16px" />
+            </button>
+          )}
           <span
             className={cx('text', {
               errored: errors && Object.keys(errors).length > 0,
             })}
           >
-            {config.blocks.blocksConfig[data?.['@type']]?.icon && (
+            {icon && (
               <Icon
-                name={config.blocks.blocksConfig[data?.['@type']]?.icon}
+                name={icon}
                 size="20px"
                 style={{ verticalAlign: 'middle' }}
               />
             )}{' '}
-            {data?.plaintext ||
-              config.blocks.blocksConfig[data?.['@type']]?.title}
+            {blockTitle}
           </span>
-          {!clone && onRemove && (
+          {!clone && onRemove && !required && (
             <button
               onClick={onRemove}
               className={classNames('action', 'delete')}

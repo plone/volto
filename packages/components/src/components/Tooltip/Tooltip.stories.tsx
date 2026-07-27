@@ -2,13 +2,12 @@ import React from 'react';
 import { Tooltip } from './Tooltip';
 import { TooltipTrigger } from 'react-aria-components';
 import { ToggleButton } from '../ToggleButton/ToggleButton';
-import { BoldIcon } from '../Icons/BoldIcon';
+import { BoldIcon } from '../icons/BoldIcon';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Tooltip.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
+  title: 'Basic/Tooltip',
   component: Tooltip,
   parameters: {
     layout: 'centered',
@@ -23,10 +22,12 @@ export const Default: Story = {
   render: (args: any) => (
     <TooltipTrigger>
       <ToggleButton {...args}>
-        <BoldIcon size="S" />
+        <BoldIcon size="sm" />
       </ToggleButton>
       <Tooltip {...args}>Bold</Tooltip>
     </TooltipTrigger>
   ),
-  args: {},
+  args: {
+    children: null,
+  },
 };

@@ -24,6 +24,7 @@ creating-project
 add-ons/index
 folder-structure
 environment-variables
+shadowing
 customizing-components
 customizing-views
 creating-views
@@ -37,4 +38,5 @@ pluggables
 widget
 how-to-restrict-blocks
 color-picker-widget
+known-dev-watcher-issue
 ```

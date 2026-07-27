@@ -81,12 +81,16 @@ context('Test Field Type in form ', () => {
         'be.visible',
       );
     });
+
     it('Test RichText Field Type', function () {
-      cy.get('.slate_wysiwyg_box').type('Plone{selectall}');
+      cy.get('.slate_wysiwyg_box').type('Plone');
+      cy.get('p[data-slate-node="element"]').type('{selectall}');
       cy.get('a[title="Bold"]').click();
+      cy.get('p[data-slate-node="element"]').type('{selectall}');
       cy.get('a[title="Italic"]').click();
       cy.get('.slate_wysiwyg_box').click();
     });
+
     it('Missing required field error', function () {
       cy.get('#field-textline').type('Volto Coresandbox fixture');
       cy.get('#field-email').type('plone@org.com');

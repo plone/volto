@@ -68,16 +68,6 @@ declare module '*.jpg' {
   let asset: string;
   export default asset;
 }
-declare module '*.md' {
-  import 'mdx';
-  let attributes: any;
-  let filename: string;
-}
-declare module '*.mdx' {
-  import 'mdx';
-  let attributes: any;
-  let filename: string;
-}
 declare module '*.mp3' {
   let asset: string;
   export default asset;

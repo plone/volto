@@ -158,7 +158,7 @@ const InlineForm = (props) => {
                 onChangeField(id, value, itemInfo);
               }}
               key={field}
-              error={errors?.[block]?.[field] || {}}
+              error={errors?.[block]?.[field] || []}
               block={block}
             />
           ))}
@@ -199,7 +199,7 @@ const InlineForm = (props) => {
                         onChangeField(id, value);
                       }}
                       key={field}
-                      error={errors?.[block]?.[field] || {}}
+                      error={errors?.[block]?.[field] || []}
                       block={block}
                     />
                   ))}

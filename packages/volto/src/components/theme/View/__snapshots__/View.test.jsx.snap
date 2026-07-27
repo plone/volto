@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`View renders a document view 1`] = `
+exports[`View > renders a document view 1`] = `
 <div>
   <div
     id="view"
@@ -29,7 +29,7 @@ exports[`View renders a document view 1`] = `
 </div>
 `;
 
-exports[`View renders a summary view 1`] = `
+exports[`View > renders a summary view 1`] = `
 <div>
   <div
     id="view"
@@ -58,7 +58,7 @@ exports[`View renders a summary view 1`] = `
 </div>
 `;
 
-exports[`View renders a tabular view 1`] = `
+exports[`View > renders a tabular view 1`] = `
 <div>
   <div
     id="view"
@@ -87,7 +87,7 @@ exports[`View renders a tabular view 1`] = `
 </div>
 `;
 
-exports[`View renders an empty view 1`] = `
+exports[`View > renders an empty view 1`] = `
 <div>
   <span />
   <div

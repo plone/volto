@@ -3,6 +3,7 @@ import { Button, Segment, Popup } from 'semantic-ui-react';
 import { useIntl, defineMessages } from 'react-intl';
 import cx from 'classnames';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Image from '@plone/volto/components/theme/Image/Image';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { getContentIcon } from '@plone/volto/helpers/Content/Content';
 import config from '@plone/volto/registry';
@@ -69,7 +70,7 @@ const ObjectBrowserNav = ({
                 }
               >
                 {item['@type'] === 'Image' ? (
-                  <img
+                  <Image
                     src={`${item['@id']}/@@images/image/preview`}
                     alt={item.title}
                     style={{

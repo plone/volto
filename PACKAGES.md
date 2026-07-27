@@ -36,7 +36,6 @@ It is published "as is", so you can import the type definitions from anywhere in
 
 ## Core packages
 
--   `@plone/client`
 -   `@plone/components`
 -   `@plone/registry`
 
@@ -52,7 +51,6 @@ The bundle of these packages must work on both CommonJS and ECMAScript Module (E
 
 -   `@plone/providers`
 -   `@plone/helpers`
--   `@plone/react-router`
 
 
 ### Rules
@@ -64,11 +62,7 @@ This bundle must work on both CommonJS and ESM environments.
 
 ## Add-on packages
 
--   `@plone/blocks`
--   `@plone/slots`
--   `@plone/theming`
--   `@plone/cmsui`
--   `@plone/contents`
+-   None yet.
 
 
 ### Rules

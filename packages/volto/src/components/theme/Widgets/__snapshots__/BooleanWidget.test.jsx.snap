@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`BooleanWidget renders a boolean false view widget component 1`] = `
+exports[`BooleanWidget > renders a boolean false view widget component 1`] = `
 <span
   className="metadata boolean widget"
 >
@@ -8,7 +8,7 @@ exports[`BooleanWidget renders a boolean false view widget component 1`] = `
 </span>
 `;
 
-exports[`BooleanWidget renders a boolean false view widget component with children 1`] = `
+exports[`BooleanWidget > renders a boolean false view widget component with children 1`] = `
 <span
   className="metadata boolean widget"
 >
@@ -18,7 +18,7 @@ exports[`BooleanWidget renders a boolean false view widget component with childr
 </span>
 `;
 
-exports[`BooleanWidget renders a boolean true view widget component 1`] = `
+exports[`BooleanWidget > renders a boolean true view widget component 1`] = `
 <span
   className="metadata boolean widget"
 >
@@ -26,7 +26,7 @@ exports[`BooleanWidget renders a boolean true view widget component 1`] = `
 </span>
 `;
 
-exports[`BooleanWidget renders a boolean true view widget component with children 1`] = `
+exports[`BooleanWidget > renders a boolean true view widget component with children 1`] = `
 <span
   className="metadata boolean widget"
 >
@@ -36,4 +36,4 @@ exports[`BooleanWidget renders a boolean true view widget component with childre
 </span>
 `;
 
-exports[`BooleanWidget renders an empty boolean view widget component 1`] = `null`;
+exports[`BooleanWidget > renders an empty boolean view widget component 1`] = `null`;

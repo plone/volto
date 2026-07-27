@@ -10,6 +10,7 @@ import includes from 'lodash/includes';
 import some from 'lodash/some';
 import first from 'lodash/first';
 import { makeEditor } from './editor';
+import { safeEditorNodes } from './safe.js';
 
 // case sensitive; first in an inner array is the default and preffered format
 // in that array of formats
@@ -140,7 +141,7 @@ export function createParagraph(text) {
 }
 
 export const isSingleBlockTypeActive = (editor, format) => {
-  const [match] = Editor.nodes(editor, {
+  const [match] = safeEditorNodes(editor, {
     match: (n) => n.type === format,
   });
 

@@ -19,6 +19,15 @@
   vertical-align: @headerVerticalAlign;
 }
 
+// use sorting icons from icons.woff instead of assuming it's font awesome
+.ui.sortable.table thead th.ascending::after {
+  content: '\E9EC';
+}
+
+.ui.sortable.table thead th.descending::after {
+  content: '\E9EB';
+}
+
 .ui.table tr > th:first-child {
   border-left: none;
 }

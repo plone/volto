@@ -265,3 +265,24 @@ export const FormFieldWrapper = loadable(
       /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/FormFieldWrapper'
     ),
 );
+
+export const Size = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/Size'
+    ),
+);
+
+export const BlockAlignment = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/BlockAlignment'
+    ),
+);
+
+export const BlockWidth = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/BlockWidth'
+    ),
+);

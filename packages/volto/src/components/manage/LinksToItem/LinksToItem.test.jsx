@@ -4,16 +4,19 @@ import { Provider } from 'react-intl-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import { __test__ as LinksToItem } from './LinksToItem';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-
-jest.mock('../Toolbar/More', () => jest.fn(() => <div className="More" />));
-
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
+vi.mock('../Toolbar/More', () => ({
+  default: vi.fn(() => <div className="More" />),
+}));
 describe('LinksToItem', () => {
   it('renders "links and references" view', () => {
     const store = mockStore({
@@ -100,10 +103,12 @@ describe('LinksToItem', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <LinksToItem location={{ pathname: '/page-1/links-to-item' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

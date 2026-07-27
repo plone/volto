@@ -1,12 +1,10 @@
 import React from 'react';
 import { TimeField } from './TimeField';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/TimeField.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof TimeField> = {
-  title: 'Forms/TimeField',
+  title: 'Basic/Forms/TimeField',
   component: TimeField,
   parameters: {
     layout: 'centered',

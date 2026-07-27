@@ -11,18 +11,24 @@ context('Blocks Acceptance Tests', () => {
     cy.autologin();
     cy.visit('/');
     cy.wait('@content');
-  });
 
-  it('As editor I can add a (standalone) Teaser block', () => {
     // GIVEN a Document with the title document and a Document to reference with the title Blue Orchids
+    cy.createContent({
+      contentType: 'Image',
+      contentId: 'preview-image',
+      contentTitle: 'Preview image',
+    });
     cy.createContent({
       contentType: 'Document',
       contentId: 'blue-orchids',
       contentTitle: 'Blue Orchids',
       contentDescription: 'are growing on the mountain tops',
-      image: true,
+      preview_image_link: '/preview-image',
       path: '/document',
     });
+  });
+
+  it('As editor I can add a (standalone) Teaser block', () => {
     cy.visit('/document/edit');
     cy.wait('@schema');
 
@@ -37,7 +43,9 @@ context('Blocks Acceptance Tests', () => {
     ).click();
     cy.get('[aria-label="Select Blue Orchids"]').dblclick();
     cy.wait(500);
-    cy.get('.align-buttons .ui.buttons button[aria-label="Center"]').click();
+    cy.get(
+      '[class*="field-wrapper-align-"] .buttons input[aria-label="Center"]',
+    ).click({ force: true });
     cy.get('#toolbar-save').click();
 
     // THEN I can see the Teaser block
@@ -45,7 +53,7 @@ context('Blocks Acceptance Tests', () => {
     cy.get('.block.teaser').should('have.class', 'has--align--center');
     cy.get('.block.teaser .image-wrapper img')
       .should('have.attr', 'src')
-      .and('include', '/document/blue-orchids/@@images/preview_image-');
+      .and('include', '/preview-image/@@images/image-');
     cy.get('.block.teaser .content h2').contains('Blue Orchids');
     cy.get('.block.teaser .content p').contains(
       'are growing on the mountain tops',
@@ -53,16 +61,6 @@ context('Blocks Acceptance Tests', () => {
   });
 
   it('As editor I can add a (standalone) Teaser block that always fetches the live data', () => {
-    // GIVEN a Document with the title document and a Document to reference with the title Blue Orchids
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'blue-orchids',
-      contentTitle: 'Blue Orchids',
-      contentDescription: 'are growing on the mountain tops',
-      image: true,
-      path: '/document',
-    });
-
     cy.navigate('/document/edit');
     // WHEN I create a Teaser block and change the data of the referenced object
     cy.get('.block .slate-editor [contenteditable=true]').click();
@@ -78,6 +76,7 @@ context('Blocks Acceptance Tests', () => {
     cy.get('#toolbar-save').click();
 
     cy.visit('/document');
+
     cy.get('.block.teaser .content h2').contains('Blue Orchids');
     cy.get('.block.teaser .content p').contains(
       'are growing on the mountain tops',
@@ -92,7 +91,8 @@ context('Blocks Acceptance Tests', () => {
 
     cy.get('.documentFirstHeading').contains('Blue Orchids and Tulips');
     // THEN I can see the updated content in the teaser
-    cy.navigate('/document');
+    cy.visit('/document');
+    cy.wait('@content');
     cy.get('.block.teaser .content h2').contains('Blue Orchids and Tulips');
     cy.get('.block.teaser .content p').contains(
       'are beautifully growing on the mountain tops',
@@ -100,15 +100,6 @@ context('Blocks Acceptance Tests', () => {
   });
 
   it('As editor I can create a Teaser block and overwrite the data which is is not updated when the target is changed', () => {
-    // GIVEN a Document with the title document and a Document to reference with the title Blue Orchids
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'blue-orchids',
-      contentTitle: 'Blue Orchids',
-      contentDescription: 'are growing on the mountain tops',
-      image: true,
-      path: '/document',
-    });
     cy.visit('/document/edit');
     // WHEN I create a Teaser block and change the data of the referenced object
     cy.get('.block .slate-editor [contenteditable=true]').click();
@@ -138,16 +129,6 @@ context('Blocks Acceptance Tests', () => {
   });
 
   it('As editor I can add a Teaser block and override the data with an external image ', () => {
-    // GIVEN a Document with the title document and a Document to reference with the title Blue Orchids
-    cy.createContent({
-      contentType: 'Document',
-      contentId: 'blue-orchids',
-      contentTitle: 'Blue Orchids',
-      contentDescription: 'are growing on the mountain tops',
-      image: true,
-      path: '/document',
-    });
-
     cy.navigate('/document/edit');
     // WHEN I create a Teaser block and change the data of the referenced object
     cy.get('.block .slate-editor [contenteditable=true]').click();

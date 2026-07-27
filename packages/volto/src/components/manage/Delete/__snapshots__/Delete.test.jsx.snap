@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Delete renders a delete component 1`] = `
+exports[`Delete > renders a delete component 1`] = `
 <div>
   <div
     id="page-delete"
@@ -61,15 +61,11 @@ exports[`Delete renders a delete component 1`] = `
   </div>
   <div
     id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+  />
 </div>
 `;
 
-exports[`Delete renders an empty delete component 1`] = `
+exports[`Delete > renders an empty delete component 1`] = `
 <div>
   <div />
   <div

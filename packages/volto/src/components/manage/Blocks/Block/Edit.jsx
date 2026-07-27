@@ -122,7 +122,7 @@ export class Edit extends Component {
    */
   render() {
     const { blocksConfig = config.blocks.blocksConfig } = this.props;
-    const { editable, type } = this.props;
+    const { editable, type, isContainer: parentIsContainer } = this.props;
 
     const disableNewBlocks = this.props.data?.disableNewBlocks;
 
@@ -149,21 +149,30 @@ export class Edit extends Component {
                 this.props.setUIState({ hovered: this.props.id });
               }
             }}
-            onFocus={(e) => {
-              // TODO: This `onFocus` steals somehow the focus from the slate block
-              // we have to investigate why this is happening
-              // Apparently, I can't see any difference in the behavior
-              // If any, we can fix it in successive iterations
-              // if (this.props.hovered !== this.props.id) {
-              //   this.props.setUIState({ hovered: this.props.id });
-              // }
-            }}
             onMouseLeave={(e) => {
               e.preventDefault();
               e.stopPropagation();
               this.props.setUIState({ hovered: null });
             }}
             onClick={(e) => {
+              const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
+              !this.props.selected &&
+                this.props.onSelectBlock(
+                  this.props.id,
+                  this.props.selected ? false : isMultipleSelection,
+                  e,
+                );
+            }}
+            // onFocus={(e) => {
+            //   // TODO: This `onFocus` steals somehow the focus from the slate block
+            //   // we have to investigate why this is happening
+            //   // Apparently, I can't see any difference in the behavior
+            //   // If any, we can fix it in successive iterations
+            //   // if (this.props.hovered !== this.props.id) {
+            //   //   this.props.setUIState({ hovered: this.props.id });
+            //   // }
+            // }}
+            onFocus={(e) => {
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
                 this.props.onSelectBlock(
@@ -187,6 +196,7 @@ export class Edit extends Component {
               selected: this.props.selected || this.props.multiSelected,
               multiSelected: this.props.multiSelected,
               hovered: this.props.hovered === this.props.id,
+              error: !!this.props.blocksErrors?.[this.props.id],
             })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
@@ -198,6 +208,7 @@ export class Edit extends Component {
               {...this.props}
               blockNode={this.blockNode}
               data={this.props.data}
+              className={cx({ contained: parentIsContainer })}
             />
             {this.props.manage && (
               <SidebarPortal
@@ -216,6 +227,7 @@ export class Edit extends Component {
               e.stopPropagation();
               this.props.setUIState({ hovered: this.props.id });
             }}
+            // Mantenha apenas este onFocus ou remova se não for necessário
             onFocus={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -243,7 +255,6 @@ export class Edit extends Component {
             className={cx(`block ${type}`, { selected: this.props.selected })}
             style={{ outline: 'none' }}
             ref={this.blockNode}
-            // The tabIndex is required for the keyboard navigation
             tabIndex={-1}
           >
             {this.props.intl.formatMessage(messages.unknownBlock, {

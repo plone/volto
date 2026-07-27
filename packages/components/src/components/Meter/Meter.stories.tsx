@@ -1,12 +1,10 @@
 import React from 'react';
 import { Meter } from './Meter';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Meter.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Meter> = {
-  title: 'Forms/Meter',
+  title: 'Basic/Forms/Meter',
   component: Meter,
   parameters: {
     layout: 'centered',

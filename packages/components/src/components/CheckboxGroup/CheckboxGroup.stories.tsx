@@ -2,12 +2,10 @@ import React from 'react';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/CheckboxGroup.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Widgets/CheckboxGroup',
+  title: 'Basic/Forms/CheckboxGroup',
   component: CheckboxGroup,
   parameters: {
     layout: 'centered',

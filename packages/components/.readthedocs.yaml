@@ -1,0 +1,15 @@
+# .readthedocs.yaml
+# Read the Docs configuration file
+# See https://docs.readthedocs.com/platform/stable/config-file/v2.html for details
+
+# Required
+version: 2
+
+# Set the OS, Python version and other tools you might need
+build:
+  os: ubuntu-24.04
+  tools:
+    python: "3.13"
+    nodejs: "22"
+  commands:
+    - exit 183 # Skip the build as this branch is not meant to be built on Read the Docs

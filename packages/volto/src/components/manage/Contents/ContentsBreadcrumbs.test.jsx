@@ -19,6 +19,13 @@ describe('ContentsBreadcrumbs', () => {
         locale: 'en',
         messages: {},
       },
+      navroot: {
+        data: {
+          navroot: {
+            '@type': 'Plone Site',
+          },
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -43,6 +50,13 @@ describe('ContentsBreadcrumbs', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      navroot: {
+        data: {
+          navroot: {
+            '@type': 'Plone Site',
+          },
+        },
       },
     });
     const component = renderer.create(

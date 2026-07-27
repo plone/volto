@@ -1,1 +1,0 @@
-Add Russian translation in Volto. @toropok

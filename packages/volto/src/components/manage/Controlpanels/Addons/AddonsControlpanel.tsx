@@ -21,6 +21,7 @@ import Toast from '@plone/volto/components/manage/Toast/Toast';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Error from '@plone/volto/components/theme/Error/Error';
 import './index.css';
 
 const messages = defineMessages({
@@ -174,6 +175,9 @@ const AddonsControlpanel = (props: Props) => {
   const loadingAddons = useSelector<Record<string, any>>(
     (state) => state.addons.loading,
   );
+  const addonsError = useSelector<Record<string, any>>(
+    (state) => state.addons.error,
+  );
 
   useEffect(() => {
     dispatch(listAddons() as AnyAction);
@@ -264,6 +268,11 @@ const AddonsControlpanel = (props: Props) => {
     },
     [dispatch, intl],
   );
+
+  // Error handling for unauthorized access
+  if (addonsError) {
+    return <Error error={addonsError} />;
+  }
 
   return (
     <div id="page-addons" className="ui container controlpanel-addons">

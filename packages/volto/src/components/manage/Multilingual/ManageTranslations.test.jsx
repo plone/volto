@@ -3,16 +3,17 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import config from '@plone/volto/registry';
 
 import ManageTranslations from './ManageTranslations';
 
 beforeAll(() => {
-  config.settings.isMultilingual = true;
   config.settings.supportedLanguages = ['de', 'es'];
 });
-
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 const mockStore = configureStore();
 
@@ -33,21 +34,28 @@ describe('ManageTranslations', () => {
           language: 'en',
         },
       },
+      site: {
+        data: {
+          'plone.available_languages': ['de', 'es'],
+        },
+      },
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <ManageTranslations
-            location={{
-              pathname: '/blog-post',
-              state: {
-                language: 'es',
-                translationOf: '/en/page-en',
-              },
-            }}
-          />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <ManageTranslations
+              location={{
+                pathname: '/blog-post',
+                state: {
+                  language: 'es',
+                  translationOf: '/en/page-en',
+                },
+              }}
+            />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

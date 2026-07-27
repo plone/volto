@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`EditRule renders rules edit interface 1`] = `
+exports[`EditRule > renders rules edit interface 1`] = `
 <div>
   <div
     id="page-rule-edit"

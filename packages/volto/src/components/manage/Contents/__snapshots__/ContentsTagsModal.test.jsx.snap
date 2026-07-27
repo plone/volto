@@ -1,37 +1,37 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentsTagsModal renders a contents tags modal component 1`] = `
+exports[`ContentsTagsModal > renders a contents tags modal component 1`] = `
 <div
   data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"id\\": \\"default\\",
-      \\"title\\": \\"Default\\",
-      \\"fields\\": [
-        \\"tags_to_remove\\",
-        \\"tags_to_add\\"
+      "id": "default",
+      "title": "Default",
+      "fields": [
+        "tags_to_remove",
+        "tags_to_add"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"tags_to_remove\\": {
-      \\"type\\": \\"array\\",
-      \\"widget\\": \\"array\\",
-      \\"title\\": \\"Tags to remove\\",
-      \\"choices\\": []
+  "properties": {
+    "tags_to_remove": {
+      "type": "array",
+      "widget": "array",
+      "title": "Tags to remove",
+      "choices": []
     },
-    \\"tags_to_add\\": {
-      \\"type\\": \\"array\\",
-      \\"widget\\": \\"token\\",
-      \\"title\\": \\"Tags to add\\",
-      \\"items\\": {
-        \\"vocabulary\\": {
-          \\"@id\\": \\"plone.app.vocabularies.Keywords\\"
+    "tags_to_add": {
+      "type": "array",
+      "widget": "token",
+      "title": "Tags to add",
+      "items": {
+        "vocabulary": {
+          "@id": "plone.app.vocabularies.Keywords"
         }
       }
     }
   },
-  \\"required\\": []
+  "required": []
 }"
   id="ModalForm"
 />

@@ -1,4 +1,5 @@
 describe('Add Content Tests', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
   beforeEach(() => {
     cy.intercept('GET', `/**/*?expand*`).as('content');
     // give a logged in editor and the site root
@@ -163,6 +164,46 @@ describe('Add Content Tests', () => {
     );
   });
 
+  it('As editor I toggle whole_day and open_end checkboxes and date/time fields disappear', function () {
+    // when I add an Event
+    cy.get('#toolbar-add').click();
+    cy.get('#toolbar-add-event').click();
+    cy.get('#field-title').clear().type('Event checkbox test');
+
+    // then the time fields should be visible initially
+    cy.get('#start-time').should('be.visible');
+    cy.get('#end-time').should('be.visible');
+    cy.get('#end-date').should('be.visible');
+
+    // when I check the whole_day checkbox
+    cy.get('label[for="field-whole_day"]').click({ scrollBehavior: false });
+
+    // then the time fields should disappear
+    cy.get('#start-time').should('not.exist');
+    cy.get('#end-time').should('not.exist');
+
+    // when I uncheck the whole_day checkbox
+    cy.get('label[for="field-whole_day"]').click({ scrollBehavior: false });
+
+    // then the time fields should be visible again
+    cy.get('#start-time').should('be.visible');
+    cy.get('#end-time').should('be.visible');
+
+    // when I check the open_end checkbox
+    cy.get('label[for="field-open_end"]').click({ scrollBehavior: false });
+
+    // then the end-date and end-time fields should disappear
+    cy.get('#end-date').should('not.exist');
+    cy.get('#end-time').should('not.exist');
+
+    // when I uncheck the open_end checkbox
+    cy.get('label[for="field-open_end"]').click({ scrollBehavior: false });
+
+    // then the end-date and end-time fields should be visible again
+    cy.get('#end-date').should('be.visible');
+    cy.get('#end-time').should('be.visible');
+  });
+
   it('As editor I can add a Link (with an external link)', function () {
     cy.intercept('POST', '*').as('saveLink');
     // When I add a link
@@ -222,7 +263,7 @@ describe('Add Content Tests', () => {
     // and the link should show up on the link view
     cy.contains('/link-target');
     // and the link redirects to the link target
-    cy.get('main a[href="/link-target"]').click();
+    cy.get(`main a[href="${subpathPrefix}/link-target"]`).click();
     cy.url().should('eq', Cypress.config().baseUrl + '/link-target');
     cy.get('main').contains('Link Target');
   });

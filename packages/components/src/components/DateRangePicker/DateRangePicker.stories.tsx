@@ -1,12 +1,10 @@
 import React from 'react';
 import { DateRangePicker } from './DateRangePicker';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/DateRangePicker.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof DateRangePicker> = {
-  title: 'Widgets/DateRangePicker',
+  title: 'Basic/Forms/DateRangePicker',
   component: DateRangePicker,
   parameters: {
     layout: 'centered',

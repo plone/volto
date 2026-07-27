@@ -1,8 +1,8 @@
-# Querystring
+# `Querystring`
 
 The `@querystring` endpoint returns the `querystring` configuration of `plone.app.querystring`.
 
-## Get Querystring
+## Get `querystring`
 
 ### Query function
 

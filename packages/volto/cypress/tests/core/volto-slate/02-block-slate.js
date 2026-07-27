@@ -3,8 +3,9 @@ import { slateBeforeEach } from '../../../support/helpers';
 describe('Block Tests', () => {
   beforeEach(slateBeforeEach);
 
-  it('should create 4 slate blocks, first 3 with mouse, the last with an Enter in the third block', () => {
-    cy.getSlate().focus().click().type('Hello Slate World').type('{enter}');
+  it('should save typed content in the Slate editor', () => {
+    cy.getSlateEditorAndType('Hello Slate World');
+    cy.getSlateEditorAndType('{enter}');
 
     // Save
     cy.toolbarSave();

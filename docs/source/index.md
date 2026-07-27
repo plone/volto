@@ -14,7 +14,7 @@ myst:
 The Volto user interface (UI) is a React-based frontend for the [Plone content management system](https://plone.org).
 It is the default user interface starting with the release of Plone 6.
 
-Volto provides an attractive proposition: integration with the modern frontend development world, access to the huge ecosystem of React libraries and add-ons, combined with the ability to use the mature Plone CMS backend as a development platform.
+Volto provides an attractive proposition: integration with the modern frontend development world, access to the huge ecosystem of React libraries and Volto add-ons, combined with the ability to use the mature Plone CMS backend as a development platform.
 
 Thanks to the use of the Plone REST API, it is fully compatible with Plone's content type framework.
 But its power comes from the innovative Pastanaga editor, which provides a flexible WYSIWYG editing interface based on "blocks".
@@ -72,6 +72,7 @@ contributing/index
 release-notes/index
 release-management-notes/index
 conceptual-guides/index
+reference/index
 ```
 
 % Only check change log entries in Volto documentation—not when it is included in the main Plone documentation—to ensure links work and do not redirect.
