@@ -31,10 +31,10 @@ import { isManager, canAssignGroup } from '@plone/volto/helpers/User/User';
 import { getErrorMessage } from '@plone/volto/helpers/Utils/Utils';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
-import groupSvg from '@plone/volto/icons/group.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
 import downloadSVG from '@plone/volto/icons/download.svg';
+import uploadSVG from '@plone/volto/icons/upload.svg';
 import find from 'lodash/find';
 import map from 'lodash/map';
 import pull from 'lodash/pull';
@@ -708,31 +708,71 @@ const UsersControlpanel = (props) => {
           }}
         >
           <FormattedMessage id="Users" defaultMessage="Users" />
-          <Button
-            id="member-export"
-            aria-label={intl.formatMessage(messages.membersCSVExport)}
+          <div
             style={{
-              backgroundColor: '#e91e8c',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '0px 12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              justifyItems: 'end',
             }}
-            onClick={() => downloadUserCsv()}
           >
-            Download CSV
-            <Icon
-              name={downloadSVG}
-              size="25px"
-              color="#826A6A"
-              align="right"
-              title={intl.formatMessage(messages.membersCSVExport)}
-              style={{ margin: '0px 0px 0px 8px', fill: 'white' }}
-            />
-          </Button>{' '}
+            <Button
+              id="toolbar-member-import-export"
+              aria-label={intl.formatMessage(messages.addMemberImport)}
+              style={{
+                backgroundColor: '#E8E8E8',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '0px 12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'rgba(0, 0, 0, 0.6)',
+              }}
+              onClick={() => {
+                setShowCSVImport(true);
+              }}
+              loading={createRequest?.loading}
+            >
+              Upload CSV
+              <Icon
+                name={uploadSVG}
+                size="25px"
+                align="right"
+                title={intl.formatMessage(messages.addMemberImport)}
+                style={{
+                  margin: '0px 0px 0px 8px',
+                  fill: 'rgba(0, 0, 0, 0.6)',
+                }}
+              />
+            </Button>
+            <Button
+              id="member-export"
+              aria-label={intl.formatMessage(messages.membersCSVExport)}
+              style={{
+                backgroundColor: '#E8E8E8',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '0px 12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'rgba(0, 0, 0, 0.6)',
+              }}
+              onClick={() => downloadUserCsv()}
+            >
+              Download CSV
+              <Icon
+                name={downloadSVG}
+                size="25px"
+                align="right"
+                title={intl.formatMessage(messages.membersCSVExport)}
+                style={{
+                  margin: '0px 0px 0px 8px',
+                  fill: 'rgba(0, 0, 0, 0.6)',
+                }}
+              />
+            </Button>{' '}
+          </div>
         </Segment>
         <Segment secondary>
           <FormattedMessage
@@ -864,21 +904,6 @@ const UsersControlpanel = (props) => {
                     size="45px"
                     color="#826A6A"
                     title={intl.formatMessage(messages.addUserButtonTitle)}
-                  />
-                </Button>
-                <Button
-                  id="toolbar-member-import-export"
-                  aria-label={intl.formatMessage(messages.addMemberImport)}
-                  onClick={() => {
-                    setShowCSVImport(true);
-                  }}
-                  loading={createRequest?.loading}
-                >
-                  <Icon
-                    name={groupSvg}
-                    size="45px"
-                    color="#826A6A"
-                    title={intl.formatMessage(messages.addMemberImport)}
                   />
                 </Button>
               </>
