@@ -460,7 +460,7 @@ msgstr "उपलब्ध"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "उपलब्ध ऐड-ऑन"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2000,7 +2000,7 @@ msgstr "स्थापित किया गया"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "इंस्टॉल किए गए ऐड-ऑन"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2539,7 +2539,7 @@ msgstr "नहीं"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "इंस्टॉल करने के लिए कोई ऐड-ऑन उपलब्ध नहीं है।"
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4373,7 +4373,7 @@ msgstr "अपडेट्स उपलब्ध हैं"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "अपग्रेड करने योग्य ऐड-ऑन"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5472,6 +5472,11 @@ msgstr "कंटेंट की तालिका"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "टॉगल"
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "upgradeVersions"
+msgstr "{origin} से {destination} में अपडेट करें"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

@@ -460,7 +460,7 @@ msgstr "Disponível"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "Extensões disponíveis"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2000,7 +2000,7 @@ msgstr "Instalado"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "Extensões instaladas"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2539,7 +2539,7 @@ msgstr "Não"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "Não há extensões disponíveis para instalação."
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4075,15 +4075,15 @@ msgstr "Estes elementos terão ligações quebradas"
 msgid "Third"
 msgstr "Terceiro"
 
-#. Default: "This field is required."
-#: components/manage/Widgets/FileWidget
-msgid "This field is required."
-msgstr "Este campo é obrigatório."
-
 #. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 msgstr "Este complemento foi atualizado. A versão do perfil atualmente instalada é {installedVersion}. A nova versão disponível do perfil é {newVersion}."
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Este campo é obrigatório."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
@@ -4373,7 +4373,7 @@ msgstr "Atualizações disponíveis"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "Extensões com atualização disponível"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel

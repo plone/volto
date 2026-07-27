@@ -460,7 +460,7 @@ msgstr "Disponibil"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "Suplimente disponibile"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2000,7 +2000,7 @@ msgstr "Instalat"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "Suplimente instalate"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2539,7 +2539,7 @@ msgstr "Nu"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "Nu există suplimente disponibile pentru instalare."
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4373,7 +4373,7 @@ msgstr "Actualizări disponibile"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "Suplimente ce pot fi actualizate"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5472,6 +5472,11 @@ msgstr "Cuprins"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr ""
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "upgradeVersions"
+msgstr "Actualizare de la versiunea {origin} la versiunea {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

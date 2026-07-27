@@ -459,7 +459,7 @@ msgstr ""
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "Available add-ons"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -1999,7 +1999,7 @@ msgstr ""
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "Installed add-ons"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2538,12 +2538,12 @@ msgstr ""
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "No add-ons available for installation."
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
-msgstr ""
+msgstr "No installed add-ons."
 
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
@@ -4077,7 +4077,7 @@ msgstr ""
 #. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr ""
+msgstr "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
@@ -4372,7 +4372,7 @@ msgstr ""
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "Upgradable add-ons"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5471,6 +5471,11 @@ msgstr ""
 #: config/Blocks
 msgid "toggleFacet"
 msgstr ""
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "upgradeVersions"
+msgstr "Update from version {origin} to {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

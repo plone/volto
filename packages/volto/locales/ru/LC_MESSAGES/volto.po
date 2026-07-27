@@ -460,7 +460,7 @@ msgstr "Доступно"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "Доступные дополнения"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2000,7 +2000,7 @@ msgstr "Установлено"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "Установленные дополнения"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2539,12 +2539,12 @@ msgstr "Нет"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "Нет доступных дополнений для установки."
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Installed available"
-msgstr ""
+msgstr "Нет установленных дополнений."
 
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
@@ -2564,7 +2564,7 @@ msgstr "Не выбраны Транзакции для отмены"
 #. Default: "No upgrades in this corner. You are up to date. High fives."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Upgrades available"
-msgstr ""
+msgstr "Здесь нет обновлений. У вас всё актуально. Поздравляем."
 
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
@@ -4078,7 +4078,7 @@ msgstr "Третий"
 #. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr ""
+msgstr "Это дополнение было обновлено. Текущая установленная версия профиля — {installedVersion}. Новая доступная версия профиля — {newVersion}"
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
@@ -4373,7 +4373,7 @@ msgstr "Доступны обновления"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "Дополнения с доступным обновлением"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5472,6 +5472,11 @@ msgstr "Оглавление"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Переключатель"
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "upgradeVersions"
+msgstr "Обновите с версии {origin} до {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

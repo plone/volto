@@ -461,7 +461,7 @@ msgstr "Disponible"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "Complements disponibles"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2001,7 +2001,7 @@ msgstr "Instal·lat"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "Complements instal·lats"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2540,7 +2540,7 @@ msgstr "No"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "No hi ha complements disponibles per instal·lar."
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4374,7 +4374,7 @@ msgstr "Actualitzacions disponibles"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "Complements actualitzables"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel

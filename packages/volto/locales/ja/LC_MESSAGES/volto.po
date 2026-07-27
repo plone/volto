@@ -461,7 +461,7 @@ msgstr "利用可能"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "利用可能なアドオン"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2001,7 +2001,7 @@ msgstr "インストール済み"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "インストール済みのアドオン"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2540,7 +2540,7 @@ msgstr "No"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "インストール可能なアドオンはありません。"
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4374,7 +4374,7 @@ msgstr "利用可能なアップデート"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "アップグレード可能なアドオン"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5473,6 +5473,11 @@ msgstr "目次"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr ""
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "upgradeVersions"
+msgstr "バージョン {origin} から {destination} に更新"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

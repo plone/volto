@@ -461,7 +461,7 @@ msgstr "Verfügbar"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "Verfügbare Add-ons"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2001,7 +2001,7 @@ msgstr "aktiviert"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "Installierte Add-ons"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2540,7 +2540,7 @@ msgstr "Nein"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "Keine Add-ons zur Installation verfügbar."
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4374,7 +4374,7 @@ msgstr "Verfügbare Erweiterungen"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "Aktualisierbare Add-ons"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5473,6 +5473,11 @@ msgstr "Inhaltsverzeichnis"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Toggle"
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "upgradeVersions"
+msgstr "Von Version {origin} zu Version {destination} aktualisieren"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

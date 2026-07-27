@@ -460,7 +460,7 @@ msgstr "Saatavilla"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "Käytettävissä olevat lisäosat"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2000,7 +2000,7 @@ msgstr "Asennettu"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "Asennetut lisäosat"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2539,7 +2539,7 @@ msgstr "Ei"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "Asennettavia lisäosia ei ole saatavilla."
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4373,7 +4373,7 @@ msgstr "Päivityksiä saatavilla"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "Päivitettävät lisäosat"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5472,6 +5472,11 @@ msgstr "sisällys"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr ""
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "upgradeVersions"
+msgstr "Päivitä versiosta {origin} versioon {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

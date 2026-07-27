@@ -461,7 +461,7 @@ msgstr "Aukerak"
 #. Default: "Available add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available add-ons"
-msgstr ""
+msgstr "Osagarri erabilgarriak"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -2001,7 +2001,7 @@ msgstr "Instalatuta"
 #. Default: "Installed add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed add-ons"
-msgstr ""
+msgstr "Instalatutako osagarriak"
 
 #. Default: "Installed version"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -2540,7 +2540,7 @@ msgstr "Ez"
 #. Default: "No add-ons available for installation."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No Addon available"
-msgstr ""
+msgstr "Ez dago instalatzeko osagarririk erabilgarri."
 
 #. Default: "No installed add-ons."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
@@ -4374,7 +4374,7 @@ msgstr "Instalatu daitezkeen eguneraketak"
 #. Default: "Upgradable add-ons"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Upgradable add-ons"
-msgstr ""
+msgstr "Berritu daitezkeen osagarriak"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -5473,6 +5473,11 @@ msgstr "Edukien taula"
 #: config/Blocks
 msgid "toggleFacet"
 msgstr "Aktibatu/Desaktibatu"
+
+#. Default: "Update from version {origin} to {destination}"
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "upgradeVersions"
+msgstr "Eguneratu {origin} bertsiotik {destination} bertsiora"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget
