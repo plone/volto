@@ -5476,7 +5476,7 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "ಆವೃತ್ತಿ {origin} ಇಂದ {destination} ಗೆ ನವೀಕರಿಸಿ"
+msgstr "ಆವೃತ್ತಿ {origin} ರಿಂದ {destination} ಗೆ ನವೀಕರಿಸಿ"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

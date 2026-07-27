@@ -5476,7 +5476,7 @@ msgstr "टॉगल"
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "{origin} से {destination} में अपडेट करें"
+msgstr "संस्करण {origin} से {destination} में अपडेट करें"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

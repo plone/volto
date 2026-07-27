@@ -5476,7 +5476,7 @@ msgstr "TOGGLEFACET"
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "மேம்படுத்தல்கள்"
+msgstr "பதிப்பு {origin} இலிருந்து {destination} க்கு புதுப்பிக்கவும்"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

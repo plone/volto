@@ -5476,7 +5476,7 @@ msgstr "Toggle"
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "Aggiorna da versione {origin} a {destination}"
+msgstr "Aggiorna dalla versione {origin} alla {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

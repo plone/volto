@@ -5476,7 +5476,7 @@ msgstr "Переключатель"
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "Обновите с версии {origin} до {destination}"
+msgstr "Обновить с версии {origin} до {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

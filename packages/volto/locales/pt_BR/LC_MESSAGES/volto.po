@@ -5476,7 +5476,7 @@ msgstr "Alternar"
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "Atualizar da versão {origin} para versão {destination}"
+msgstr "Atualizar da versão {origin} para a {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

@@ -5476,7 +5476,7 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "Fakahoko mei he tuku {origin} ki he {destination}"
+msgstr "Fakalakalaka mei he vēsone {origin} ki he {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

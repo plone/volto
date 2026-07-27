@@ -5476,7 +5476,7 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "განახლება ვერსიიდან {origin} ვერსიაზე {destination}"
+msgstr "განახლება ვერსია {origin}-დან {destination}-მდე"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

@@ -5476,7 +5476,7 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "Fa'afouina mai le fa'aliliuga {origin} i le {destination}"
+msgstr "Fa'afou mai le lomiga {origin} i le {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

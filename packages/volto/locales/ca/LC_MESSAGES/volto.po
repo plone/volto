@@ -5477,7 +5477,7 @@ msgstr "Commutador"
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "Actualitza de la versió {origin} a {destination}"
+msgstr "Actualitza de la versió {origin} a la {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

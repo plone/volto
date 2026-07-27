@@ -5476,7 +5476,7 @@ msgstr ""
 #. Default: "Update from version {origin} to {destination}"
 #: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "সংস্করণ {origin} থেকে {destination}-এ আপডেট করুন"
+msgstr "সংস্করণ {origin} থেকে {destination} এ আপডেট করুন"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

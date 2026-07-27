@@ -13,6 +13,10 @@ const messages = defineMessages({
     defaultMessage:
       'This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
   },
+  upgradeVersions: {
+    id: 'upgradeVersions',
+    defaultMessage: 'Update from version {origin} to {destination}',
+  },
 });
 
 interface BaseAddonProps {
@@ -60,7 +64,7 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
               ' ' +
               addon.title +
               ' ' +
-              intl.formatMessage({ id: 'upgradeVersions' })
+              intl.formatMessage(messages.upgradeVersions)
             }
             className={'install-action'}
           >
