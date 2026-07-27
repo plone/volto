@@ -3,8 +3,11 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Autocomplete,
   Collection,
+  DialogTrigger,
   Group,
+  Heading,
   Label,
+  Modal,
   Popover,
   Select as RACSelect,
   SelectValue,
@@ -12,6 +15,7 @@ import {
 } from 'react-aria-components';
 
 import { Button } from '../Button/Button';
+import { Dialog } from '../Dialog/Dialog';
 import { Form } from '../Form/Form';
 import { SearchField } from '../SearchField/SearchField';
 import { Tag, TagGroup } from '../TagGroup/TagGroup';
@@ -233,6 +237,22 @@ function TagGroupValueStory() {
   );
 }
 
+function InModalStory(args: any) {
+  return (
+    <DialogTrigger>
+      <Button>Open modal</Button>
+      <Modal>
+        <Dialog>
+          <div style={{ display: 'grid', gap: 16, minWidth: 320 }}>
+            <Heading slot="title">Select inside a modal</Heading>
+            <Select {...args} items={options} />
+          </div>
+        </Dialog>
+      </Modal>
+    </DialogTrigger>
+  );
+}
+
 export const Default: Story = {
   args: {
     name: 'field-default',
@@ -304,6 +324,16 @@ export const AutocompletePopover: Story = {
 
 export const TagGroupValue: Story = {
   render: TagGroupValueStory,
+};
+
+export const InModal: Story = {
+  render: InModalStory,
+  args: {
+    name: 'field-modal',
+    label: 'Field title',
+    description: 'Open the modal, then open the Select popover.',
+    placeholder: 'Select...',
+  },
 };
 
 export const Required: Story = {

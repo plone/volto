@@ -1,1 +1,0 @@
-Hide the clear button in `SelectWidget` and `ArrayWidget` when the field is marked as required, and make it keyboard accessible ({kbd}`Tab`, {kbd}`Enter`, {kbd}`Space`) on non-required fields. @Wagner3UB

@@ -130,7 +130,7 @@ exports[`RegistryImageWidget > renders an empty file widget component 1`] = `
               <p
                 class="dropzone-text"
               >
-                Drop file here to upload a new file
+                File upload area. Press Enter or click to open the file browser.
               </p>
             </div>
             <label

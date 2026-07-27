@@ -1146,11 +1146,6 @@ msgstr "நீக்கப்பட்டது"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "ஆழம்"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1268,18 +1263,14 @@ msgstr "{filename} பதிவிறக்கம் செய்யவும்
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "உங்கள் கணினியிலிருந்து கோப்புகளை இந்த பகுதியில் இழுத்து விடுங்கள் அல்லது “உலாவு” பொத்தானைக் சொடுக்கு செய்க."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "இங்கே ஒரு கோப்பை இழுத்து விடுங்கள் அல்லது தற்போதுள்ள கோப்பை மாற்ற கிளிக் செய்யுங்கள்"
+msgid "Drop file here to replace the existing file"
+msgstr "கோப்பு பதிவேற்றும் பகுதி. தற்போதுள்ள கோப்பை மாற்ற Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "இங்கே ஒரு கோப்பை இழுக்கவும் அல்லது பதிவேற்ற கிளிக் செய்யவும்"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "புதிய கோப்பைப் பதிவேற்ற இங்கே கோப்பை விடுங்கள்"
@@ -1638,10 +1629,10 @@ msgstr "கோப்பு ஏற்றுக்கொள்ளப்பட்�
 msgid "File size"
 msgstr "கோப்பு அளவு"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "கோப்பு பதிவேற்றப் பகுதி. கோப்பு உலாவியைத் திறக்க Enter அழுத்தவும்"
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "கோப்பு பதிவேற்றும் பகுதி. தற்போதுள்ள கோப்பை மாற்ற Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
 
 #. Default: "File view"
 #: config/Views
@@ -2262,6 +2253,7 @@ msgstr "மேலும் ஏற்றவும்"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "ஏற்றுகிறது"
 
@@ -2720,6 +2712,11 @@ msgstr "நிகழ்வுகள்"
 msgid "Occurrences"
 msgstr ""
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2942,6 +2939,11 @@ msgstr "ப்ளோன் & பைதான் மூலம் இயக்க�
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
+
+#. Default: "File upload area. Press Enter or click to open the file browser."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "கோப்பு பதிவேற்றும் பகுதி. கோப்பு உலாவியைத் திறக்க Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit

@@ -183,6 +183,17 @@ export function addAppURL(url) {
 }
 
 /**
+ * Get the API traversal suffix.
+ *
+ * An explicitly configured apiSuffix takes precedence over legacyTraverse.
+ * @returns {string} API traversal suffix.
+ */
+export function getApiSuffix() {
+  const { settings } = config;
+  return settings.apiSuffix ?? (settings.legacyTraverse ? '' : '/++api++');
+}
+
+/**
  * Given a URL expands it to the backend URL
  * Useful when you have to actually call the backend from the
  * frontend code (eg. ICS calendar download)
@@ -193,7 +204,7 @@ export function addAppURL(url) {
  */
 export function expandToBackendURL(path) {
   const { settings } = config;
-  const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
+  const apiSuffix = getApiSuffix();
   let adjustedPath;
   if (path.startsWith('http://') || path.startsWith('https://')) {
     // flattenToAppURL first if we get a full URL

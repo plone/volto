@@ -102,6 +102,8 @@ let config = {
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
     subpathPrefix: process.env.RAZZLE_SUBPATH_PREFIX || '',
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    // Overrides the API traversal suffix. An empty string disables it.
+    apiSuffix: process.env.RAZZLE_API_SUFFIX,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)

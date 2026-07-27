@@ -1146,11 +1146,6 @@ msgstr "Șters"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Ștergerea acestui element va întrerupe {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Adâncime"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1268,18 +1263,14 @@ msgstr "Descarcă {filename}"
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
-#. Default: "Drop a file here or click to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
-msgid "Drop a file here or click to replace the existing file"
-msgstr "Glisați un fișier aici sau faceți clic pentru a înlocui fișierul existent"
+msgid "Drop file here to replace the existing file"
+msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a înlocui fișierul existent"
 
-#. Default: "Drop a file here or click to upload"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
-msgid "Drop a file here or click to upload"
-msgstr "Trageți un fișier aici sau faceți clic pentru încărcare"
-
-#. Default: "Drop file here to upload a new file"
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
 msgstr "Trageți fișierul aici pentru a încărca un fișier nou"
@@ -1638,10 +1629,10 @@ msgstr "Fișierul nu este de unul dintre tipurile acceptate: {accept}"
 msgid "File size"
 msgstr "Mărimea fișierului"
 
-#. Default: "File upload area. Press Enter to open the file browser"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
-msgid "File upload area. Press Enter to open the file browser"
-msgstr "Zonă de încărcare fișiere. Apăsați Enter pentru a deschide selectorul de fișiere"
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a înlocui fișierul existent"
 
 #. Default: "File view"
 #: config/Views
@@ -2262,6 +2253,7 @@ msgstr "Incarcă mai mult"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Se încarcă"
 
@@ -2720,6 +2712,11 @@ msgstr "Apariții"
 msgid "Occurrences"
 msgstr "Apariții"
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2942,6 +2939,11 @@ msgstr "Powered by Plone & Python"
 #: components/manage/Toolbar/PersonalTools
 msgid "Preferences"
 msgstr "Preferințe"
+
+#. Default: "File upload area. Press Enter or click to open the file browser."
+#: components/manage/Widgets/FileWidget
+msgid "Press Enter to browse files from your computer."
+msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a deschide browserul de fișiere"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
