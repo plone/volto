@@ -59,6 +59,7 @@ const UpgradesPanel: React.FC<UpgradablePanelProps & { intl: IntlShape }> = (
       </div>
       <div>
         <GridList
+          className="addons-gridlist"
           aria-labelledby={type}
           selectionBehavior="replace"
           disabledBehavior="selection"
@@ -102,6 +103,7 @@ const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
       </div>
       <div>
         <GridList
+          className="addons-gridlist"
           aria-labelledby={type}
           selectionBehavior="replace"
           disabledBehavior="selection"
@@ -145,6 +147,7 @@ const InstalledPanel: React.FC<InstalledPanelProps & { intl: IntlShape }> = (
       </div>
       <div>
         <GridList
+          className="addons-gridlist"
           aria-labelledby={type}
           selectionBehavior="replace"
           disabledBehavior="selection"

@@ -51,7 +51,14 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
           ? `${addon.description} ${descriptionText}`
           : addon.description + addon.upgrade_info.available
       }
-      isDisabled
+      onAction={
+        addon.upgrade_info.available
+          ? () =>
+              onUpgrade({
+                target: { id: 'upgradable-' + addon.id },
+              } as unknown as PressEvent)
+          : undefined
+      }
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>
@@ -64,7 +71,10 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
               ' ' +
               addon.title +
               ' ' +
-              intl.formatMessage(messages.upgradeVersions)
+              intl.formatMessage(messages.upgradeVersions, {
+                origin: addon.upgrade_info.installedVersion ?? '',
+                destination: addon.upgrade_info.newVersion ?? '',
+              })
             }
             className={'install-action'}
           >
@@ -90,7 +100,9 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
       key={addon['@id']}
       className="addon-item"
       textValue={`${addon.title} - ${addon.description}`}
-      isDisabled
+      onAction={() =>
+        onInstall({ target: { id: addon.id } } as unknown as PressEvent)
+      }
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>
@@ -119,7 +131,11 @@ const InstalledItem: React.FC<InstalledAddonProps> = ({
       key={addon['@id']}
       className="addon-item"
       textValue={`${addon.title} ${addon.description}`}
-      isDisabled
+      onAction={() =>
+        onUninstall({
+          target: { id: 'installed-' + addon.id },
+        } as unknown as PressEvent)
+      }
     >
       <div className="addon-item-header">
         <h4>{addon.title + ` - ${addon.version}`}</h4>

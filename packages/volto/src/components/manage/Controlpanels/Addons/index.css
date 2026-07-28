@@ -88,3 +88,8 @@
   font-weight: 500;
   gap: 0.5rem;
 }
+
+#page-addons.controlpanel-addons .addons-gridlist {
+  display: block;
+  width: 100%;
+}
