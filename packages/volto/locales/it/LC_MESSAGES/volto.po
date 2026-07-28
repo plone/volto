@@ -2960,6 +2960,21 @@ msgstr "Preferenze"
 msgid "Press Enter to browse files from your computer."
 msgstr "Area di caricamento file. Premi Invio o fai clic per aprire il browser dei file"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Premi Invio per installare questo componente aggiuntivo."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Premi Invio per disinstallare questo componente aggiuntivo."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Premi Invio per aggiornare questo componente aggiuntivo."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

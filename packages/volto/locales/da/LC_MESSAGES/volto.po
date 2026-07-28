@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "Filoverførselsområde. Tryk på Enter eller klik for at åbne filbrowseren"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Tryk på Enter for at installere denne tilføjelse."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Tryk på Enter for at afinstallere denne tilføjelse."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Tryk på Enter for at opdatere denne tilføjelse."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

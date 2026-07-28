@@ -2960,6 +2960,21 @@ msgstr "Voorkeuren"
 msgid "Press Enter to browse files from your computer."
 msgstr "Bestandsuploadgebied. Druk op Enter of klik om de bestandsverkenner te openen"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Druk op Enter om deze add-on te installeren."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Druk op Enter om deze add-on te verwijderen."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Druk op Enter om deze add-on bij te werken."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "Dosya yükleme alanı. Dosya tarayıcısını açmak için Enter tuşuna basın veya tıklayın"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Bu eklentiyi yüklemek için Enter tuşuna basın."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Bu eklentiyi kaldırmak için Enter tuşuna basın."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Bu eklentiyi güncellemek için Enter tuşuna basın."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

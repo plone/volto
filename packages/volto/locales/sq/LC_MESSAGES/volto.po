@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "Zona e ngarkimit të skedarit. Shtypni Enter ose klikoni për të hapur shfletuesin e skedarëve"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Shtypni Enter për të instaluar këtë shtesë."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Shtypni Enter për të çinstaluar këtë shtesë."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Shtypni Enter për të përditësuar këtë shtesë."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

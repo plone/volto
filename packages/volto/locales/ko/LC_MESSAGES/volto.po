@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "파일 업로드 영역. Enter를 누르거나 클릭하여 파일 브라우저를 여세요"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "이 애드온을 설치하려면 Enter 키를 누르세요."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "이 애드온을 제거하려면 Enter 키를 누르세요."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "이 애드온을 업데이트하려면 Enter 키를 누르세요."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

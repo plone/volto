@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "Vaega fa'aulu faila. Tomi le Enter pe kiliki e tatalaina le fa'amatalaga o faila"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Oomi le Enter e faapipii ai lenei fa'aopoopoga."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Oomi le Enter e aveese ai lenei fa'aopoopoga."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Oomi le Enter e faafouina ai lenei fa'aopoopoga."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

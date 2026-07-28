@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "Περιοχή μεταφόρτωσης αρχείου. Πατήστε Enter ή κάντε κλικ για να ανοίξετε τον περιηγητή αρχείων"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Πατήστε Enter για να εγκαταστήσετε αυτήν την πρόσθετη εφαρμογή."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Πατήστε Enter για να απεγκαταστήσετε αυτήν την πρόσθετη εφαρμογή."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Πατήστε Enter για να ενημερώσετε αυτήν την πρόσθετη εφαρμογή."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

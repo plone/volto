@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "ఫైల్ అప్‌లోడ్ ప్రాంతం. ఫైల్ బ్రౌజర్ తెరవడానికి Enter నొక్కండి లేదా క్లిక్ చేయండి"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "ఈ యాడ్-ఆన్‌ను ఇన్‌స్టాల్ చేయడానికి Enter నొక్కండి."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "ఈ యాడ్-ఆన్‌ను అన్‌ఇన్‌స్టాల్ చేయడానికి Enter నొక్కండి."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "ఈ యాడ్-ఆన్‌ను అప్‌డేట్ చేయడానికి Enter నొక్కండి."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

@@ -2960,6 +2960,21 @@ msgstr "விருப்பத்தேர்வுகள்"
 msgid "Press Enter to browse files from your computer."
 msgstr "கோப்பு பதிவேற்றும் பகுதி. கோப்பு உலாவியைத் திறக்க Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "இந்த ஆட்-ஆனை நிறுவ Enter ஐ அழுத்தவும்."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "இந்த ஆட்-ஆனை நீக்க Enter ஐ அழுத்தவும்."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "இந்த ஆட்-ஆனை புதுப்பிக்க Enter ஐ அழுத்தவும்."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

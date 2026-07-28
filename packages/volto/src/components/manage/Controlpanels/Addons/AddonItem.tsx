@@ -17,6 +17,18 @@ const messages = defineMessages({
     id: 'upgradeVersions',
     defaultMessage: 'Update from version {origin} to {destination}',
   },
+  pressEnterToInstall: {
+    id: 'Press Enter to install this add-on',
+    defaultMessage: 'Press Enter to install this add-on.',
+  },
+  pressEnterToUninstall: {
+    id: 'Press Enter to uninstall this add-on',
+    defaultMessage: 'Press Enter to uninstall this add-on.',
+  },
+  pressEnterToUpdate: {
+    id: 'Press Enter to update this add-on',
+    defaultMessage: 'Press Enter to update this add-on.',
+  },
 });
 
 interface BaseAddonProps {
@@ -47,9 +59,12 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
       key={addon['@id']}
       className="addon-item"
       textValue={
-        addon.upgrade_info.installedVersion && addon.upgrade_info.newVersion
+        (addon.upgrade_info.installedVersion && addon.upgrade_info.newVersion
           ? `${addon.description} ${descriptionText}`
-          : addon.description + addon.upgrade_info.available
+          : addon.description + addon.upgrade_info.available) +
+        (addon.upgrade_info.available
+          ? ` ${intl.formatMessage(messages.pressEnterToUpdate)}`
+          : '')
       }
       onAction={
         addon.upgrade_info.available
@@ -99,7 +114,7 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      textValue={`${addon.title} - ${addon.description}`}
+      textValue={`${addon.title} - ${addon.description} ${intl.formatMessage(messages.pressEnterToInstall)}`}
       onAction={() =>
         onInstall({ target: { id: addon.id } } as unknown as PressEvent)
       }
@@ -130,7 +145,7 @@ const InstalledItem: React.FC<InstalledAddonProps> = ({
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      textValue={`${addon.title} ${addon.description}`}
+      textValue={`${addon.title} ${addon.description} ${intl.formatMessage(messages.pressEnterToUninstall)}`}
       onAction={() =>
         onUninstall({
           target: { id: 'installed-' + addon.id },

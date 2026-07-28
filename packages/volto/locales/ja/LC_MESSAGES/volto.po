@@ -2961,6 +2961,21 @@ msgstr "個別設定"
 msgid "Press Enter to browse files from your computer."
 msgstr "ファイルのアップロード領域。Enterを押すかクリックしてファイルブラウザを開いてください"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "このアドオンをインストールするには Enter キーを押してください。"
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "このアドオンをアンインストールするには Enter キーを押してください。"
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "このアドオンを更新するには Enter キーを押してください。"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

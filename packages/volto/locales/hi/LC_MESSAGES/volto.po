@@ -2960,6 +2960,21 @@ msgstr "पसंद"
 msgid "Press Enter to browse files from your computer."
 msgstr "फ़ाइल अपलोड क्षेत्र। फ़ाइल ब्राउज़र खोलने के लिए Enter दबाएं या क्लिक करें"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "इस ऐड-ऑन को इंस्टॉल करने के लिए Enter दबाएँ।"
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "इस ऐड-ऑन को अनइंस्टॉल करने के लिए Enter दबाएँ।"
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "इस ऐड-ऑन को अपडेट करने के लिए Enter दबाएँ।"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

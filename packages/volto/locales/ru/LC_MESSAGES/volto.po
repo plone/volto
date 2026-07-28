@@ -2960,6 +2960,21 @@ msgstr "Настройки"
 msgid "Press Enter to browse files from your computer."
 msgstr "Область загрузки файла. Нажмите Enter или щёлкните, чтобы открыть файловый браузер"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Нажмите Enter, чтобы установить это дополнение."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Нажмите Enter, чтобы удалить это дополнение."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Нажмите Enter, чтобы обновить это дополнение."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

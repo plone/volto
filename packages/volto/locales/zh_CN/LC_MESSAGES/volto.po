@@ -2961,6 +2961,21 @@ msgstr "偏好"
 msgid "Press Enter to browse files from your computer."
 msgstr "文件上传区域。按 Enter 或单击以打开文件浏览器"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "按 Enter 键安装此附加组件。"
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "按 Enter 键卸载此附加组件。"
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "按 Enter 键更新此附加组件。"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

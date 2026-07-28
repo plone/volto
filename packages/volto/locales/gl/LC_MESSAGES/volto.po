@@ -2960,6 +2960,21 @@ msgstr "Preferencias"
 msgid "Press Enter to browse files from your computer."
 msgstr "Área de carga de ficheiros. Prima Intro ou faga clic para abrir o explorador de ficheiros"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Prema Intro para instalar este complemento."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Prema Intro para desinstalar este complemento."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Prema Intro para actualizar este complemento."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

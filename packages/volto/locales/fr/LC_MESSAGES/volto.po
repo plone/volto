@@ -2961,6 +2961,21 @@ msgstr "Préférences"
 msgid "Press Enter to browse files from your computer."
 msgstr "Zone de téléversement de fichier. Appuyez sur Entrée ou cliquez pour ouvrir le navigateur de fichiers"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Appuyez sur Entrée pour installer ce module complémentaire."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Appuyez sur Entrée pour désinstaller ce module complémentaire."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Appuyez sur Entrée pour mettre à jour ce module complémentaire."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

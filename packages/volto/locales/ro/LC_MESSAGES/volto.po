@@ -2960,6 +2960,21 @@ msgstr "Preferințe"
 msgid "Press Enter to browse files from your computer."
 msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a deschide browserul de fișiere"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Apăsați Enter pentru a instala acest modul suplimentar."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Apăsați Enter pentru a dezinstala acest modul suplimentar."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Apăsați Enter pentru a actualiza acest modul suplimentar."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

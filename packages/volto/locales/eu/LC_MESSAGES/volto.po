@@ -2961,6 +2961,21 @@ msgstr "Hobespenak"
 msgid "Press Enter to browse files from your computer."
 msgstr "Fitxategiak igotzeko eremua. Sakatu Enter edo egin klik fitxategi-arakatzailea irekitzeko"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Sakatu Enter gehigarri hau instalatzeko."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Sakatu Enter gehigarri hau desinstalatzeko."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Sakatu Enter gehigarri hau eguneratzeko."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

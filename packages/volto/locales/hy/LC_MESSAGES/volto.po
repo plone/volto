@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "Ֆայլի վերբեռնման տարածք։ Սեղմեք Enter կամ կտտացրեք ֆայլի զննիչը բացելու համար"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Սեղմեք Enter՝ այս հավելումը տեղադրելու համար։"
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Սեղմեք Enter՝ այս հավելումը հեռացնելու համար։"
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Սեղմեք Enter՝ այս հավելումը թարմացնելու համար։"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

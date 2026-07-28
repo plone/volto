@@ -2960,6 +2960,21 @@ msgstr ""
 msgid "Press Enter to browse files from your computer."
 msgstr "ফাইল আপলোড এলাকা। ফাইল ব্রাউজার খুলতে Enter চাপুন বা ক্লিক করুন"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "এই অ্যাড-অন ইনস্টল করতে Enter চাপুন।"
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "এই অ্যাড-অন আনইনস্টল করতে Enter চাপুন।"
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "এই অ্যাড-অন আপডেট করতে Enter চাপুন।"
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

@@ -2961,6 +2961,21 @@ msgstr "Einstellungen"
 msgid "Press Enter to browse files from your computer."
 msgstr "Datei-Upload-Bereich. Enter drücken oder klicken, um den Datei-Browser zu öffnen"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Drücken Sie die Eingabetaste, um dieses Add-on zu installieren."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Drücken Sie die Eingabetaste, um dieses Add-on zu deinstallieren."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Drücken Sie die Eingabetaste, um dieses Add-on zu aktualisieren."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"

@@ -2961,6 +2961,21 @@ msgstr "Preferències"
 msgid "Press Enter to browse files from your computer."
 msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per obrir el navegador de fitxers"
 
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Premeu Retorn per instal·lar aquest complement."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Premeu Retorn per desinstal·lar aquest complement."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Premeu Retorn per actualitzar aquest complement."
+
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
 msgid "Prettify your code"
