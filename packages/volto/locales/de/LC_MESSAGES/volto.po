@@ -4436,6 +4436,11 @@ msgstr "Dateien hochladen"
 msgid "Uploading image"
 msgstr "Bild hochladen"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Verwenden Sie die Pfeiltasten, um zwischen den Elementen zu wechseln."
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

@@ -4435,6 +4435,11 @@ msgstr "Lähetä palvelimelle tiedostoja"
 msgid "Uploading image"
 msgstr "Kuvaa ladataan"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Siirry kohteiden välillä nuolinäppäimillä."
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

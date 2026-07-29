@@ -4436,6 +4436,11 @@ msgstr "Carregueu fitxers"
 msgid "Uploading image"
 msgstr "S'està carregant la imatge"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Utilitzeu les fletxes per moure-us entre els elements."
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

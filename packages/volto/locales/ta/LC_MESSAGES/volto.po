@@ -4435,6 +4435,11 @@ msgstr "கோப்புகளைப் பதிவேற்றவும்"
 msgid "Uploading image"
 msgstr "படத்தை பதிவேற்றுகிறது"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "உருப்படிகளுக்கு இடையே செல்ல அம்புகளைப் பயன்படுத்தவும்."
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

@@ -4435,6 +4435,11 @@ msgstr "फ़ाइलें अपलोड करें"
 msgid "Uploading image"
 msgstr "इमेज अपलोड हो रहा है"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "आइटम के बीच जाने के लिए तीरों का उपयोग करें।"
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

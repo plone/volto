@@ -4435,6 +4435,11 @@ msgstr ""
 msgid "Uploading image"
 msgstr ""
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Ngāue'aki 'a e ngaahi 'ok ke fetu'utaki 'i he vaha'a 'o e ngaahi kupu'i me'a."
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

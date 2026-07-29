@@ -4435,6 +4435,11 @@ msgstr "Bestanden opladen"
 msgid "Uploading image"
 msgstr "Afbeelding opladen"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Gebruik de pijltjestoetsen om tussen items te navigeren."
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

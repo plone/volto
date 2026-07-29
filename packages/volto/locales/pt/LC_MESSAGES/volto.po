@@ -4435,6 +4435,11 @@ msgstr "Enviar ficheiros"
 msgid "Uploading image"
 msgstr "A enviar imagem"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Utilize as setas para se deslocar entre os itens."
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

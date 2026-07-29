@@ -29,10 +29,15 @@ const messages = defineMessages({
     id: 'Press Enter to update this add-on',
     defaultMessage: 'Press Enter to update this add-on.',
   },
+  useArrowsToNavigate: {
+    id: 'Use the arrows to move between items',
+    defaultMessage: 'Use the arrows to move between items.',
+  },
 });
 
 interface BaseAddonProps {
   addon: GetAddonResponse;
+  isFirst?: boolean;
 }
 
 interface UpgradableAddonProps extends BaseAddonProps {
@@ -48,6 +53,7 @@ interface InstalledAddonProps extends BaseAddonProps {
 const UpgradableItem: React.FC<UpgradableAddonProps> = ({
   addon,
   onUpgrade,
+  isFirst,
 }) => {
   const intl = useIntl();
   const descriptionText = intl.formatMessage(messages.addonUpgradableInfo, {
@@ -63,8 +69,9 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
           ? `${addon.description} ${descriptionText}`
           : addon.description + addon.upgrade_info.available) +
         (addon.upgrade_info.available
-          ? ` ${intl.formatMessage(messages.pressEnterToUpdate)}`
-          : '')
+          ? `. ${intl.formatMessage(messages.pressEnterToUpdate)}`
+          : '') +
+        (isFirst ? ` ${intl.formatMessage(messages.useArrowsToNavigate)}` : '')
       }
       onAction={
         addon.upgrade_info.available
@@ -108,13 +115,17 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
   );
 };
 
-const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
+const AvailableItem: React.FC<AvailableAddonProps> = ({
+  addon,
+  onInstall,
+  isFirst,
+}) => {
   const intl = useIntl();
   return (
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      textValue={`${addon.title} - ${addon.description} ${intl.formatMessage(messages.pressEnterToInstall)}`}
+      textValue={`${addon.title} - ${addon.description}. ${intl.formatMessage(messages.pressEnterToInstall)}${isFirst ? ` ${intl.formatMessage(messages.useArrowsToNavigate)}` : ''}`}
       onAction={() =>
         onInstall({ target: { id: addon.id } } as unknown as PressEvent)
       }
@@ -139,13 +150,14 @@ const AvailableItem: React.FC<AvailableAddonProps> = ({ addon, onInstall }) => {
 const InstalledItem: React.FC<InstalledAddonProps> = ({
   addon,
   onUninstall,
+  isFirst,
 }) => {
   const intl = useIntl();
   return (
     <GridListItem
       key={addon['@id']}
       className="addon-item"
-      textValue={`${addon.title} ${addon.description} ${intl.formatMessage(messages.pressEnterToUninstall)}`}
+      textValue={`${addon.title} ${addon.description}. ${intl.formatMessage(messages.pressEnterToUninstall)}${isFirst ? ` ${intl.formatMessage(messages.useArrowsToNavigate)}` : ''}`}
       onAction={() =>
         onUninstall({
           target: { id: 'installed-' + addon.id },

@@ -66,7 +66,7 @@ exports[`AddonsControlpanel > renders an addon control component 1`] = `
               tabindex="0"
             >
               <div
-                aria-label="Does stuff and junk…true Press Enter to update this add-on."
+                aria-label="Does stuff and junk…true. Press Enter to update this add-on. Use the arrows to move between items."
                 aria-selected="false"
                 class="addon-item"
                 data-collection="react-aria-:r0:"
@@ -156,7 +156,7 @@ exports[`AddonsControlpanel > renders an addon control component 1`] = `
               tabindex="0"
             >
               <div
-                aria-label="Something Else - Does other things… Press Enter to install this add-on."
+                aria-label="Something Else - Does other things…. Press Enter to install this add-on. Use the arrows to move between items."
                 aria-selected="false"
                 class="addon-item"
                 data-collection="react-aria-:r2:"
@@ -246,7 +246,7 @@ exports[`AddonsControlpanel > renders an addon control component 1`] = `
               tabindex="0"
             >
               <div
-                aria-label="Whatever Does stuff and junk… Press Enter to uninstall this add-on."
+                aria-label="Whatever Does stuff and junk…. Press Enter to uninstall this add-on. Use the arrows to move between items."
                 aria-selected="false"
                 class="addon-item"
                 data-collection="react-aria-:r4:"

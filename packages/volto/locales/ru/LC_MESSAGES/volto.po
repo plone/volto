@@ -4435,6 +4435,11 @@ msgstr "Загрузить файлы"
 msgid "Uploading image"
 msgstr "Загрузка изображения"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Используйте стрелки для перемещения между элементами."
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

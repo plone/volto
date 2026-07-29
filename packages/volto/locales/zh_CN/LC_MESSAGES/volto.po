@@ -4436,6 +4436,11 @@ msgstr "上传文件"
 msgid "Uploading image"
 msgstr "上传图像中"
 
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "使用箭头键在项目之间移动。"
+
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule

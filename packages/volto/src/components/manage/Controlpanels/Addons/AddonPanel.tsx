@@ -66,8 +66,13 @@ const UpgradesPanel: React.FC<UpgradablePanelProps & { intl: IntlShape }> = (
           selectionMode="single"
         >
           {addons.length ? (
-            addons.map((ua: GetAddonResponse) => (
-              <UpgradableItem key={ua['@id']} {...rest} addon={ua} />
+            addons.map((ua: GetAddonResponse, index: number) => (
+              <UpgradableItem
+                key={ua['@id']}
+                {...rest}
+                addon={ua}
+                isFirst={index === 0}
+              />
             ))
           ) : (
             <GridListItem
@@ -110,8 +115,13 @@ const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
           selectionMode="single"
         >
           {addons.length ? (
-            addons.map((ua: GetAddonResponse) => (
-              <AvailableItem key={ua['@id']} {...rest} addon={ua} />
+            addons.map((ua: GetAddonResponse, index: number) => (
+              <AvailableItem
+                key={ua['@id']}
+                {...rest}
+                addon={ua}
+                isFirst={index === 0}
+              />
             ))
           ) : (
             <GridListItem
@@ -154,8 +164,13 @@ const InstalledPanel: React.FC<InstalledPanelProps & { intl: IntlShape }> = (
           selectionMode="single"
         >
           {addons.length ? (
-            addons.map((ua: GetAddonResponse) => (
-              <InstalledItem key={ua['@id']} {...rest} addon={ua} />
+            addons.map((ua: GetAddonResponse, index: number) => (
+              <InstalledItem
+                key={ua['@id']}
+                {...rest}
+                addon={ua}
+                isFirst={index === 0}
+              />
             ))
           ) : (
             <GridListItem
