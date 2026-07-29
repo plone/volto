@@ -2536,16 +2536,6 @@ msgstr "Nieuwsbericht weergave"
 msgid "No"
 msgstr "Nee"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "Geen add-ons beschikbaar om te installeren."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "Geen geïnstalleerde add-ons beschikbaar."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "Geen upgrades in deze hoek. Je bent up-to-date. High five!"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "Geen video geselecteerd"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "Geen add-ons beschikbaar voor installatie."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr "Geen afbeelding ingesteld in het inhoudsveld Afbeelding"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "Geen afbeeldingen gevonden."
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "Geen geïnstalleerde add-ons."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr "Deze items zullen gebroken linken krijgen"
 msgid "Third"
 msgstr "Derde"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "Deze add-on is bijgewerkt. De momenteel geïnstalleerde profielversie is {installedVersion}. De nieuwe beschikbare profielversie is {newVersion}."
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Deze add-on is bijgewerkt. De huidige geïnstalleerde profielversie is {installedVersion}. De nieuwe beschikbare profielversie is {newVersion}."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

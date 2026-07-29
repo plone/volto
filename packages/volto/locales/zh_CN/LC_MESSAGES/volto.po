@@ -2537,16 +2537,6 @@ msgstr "新闻视图"
 msgid "No"
 msgstr "否"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "没有可安装的附加组件。"
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "没有已安装的插件。"
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2571,6 +2561,11 @@ msgstr "这里没有更新。你是最新的。击个掌！"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "未选择视频"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "没有可安装的插件。"
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2606,6 +2601,11 @@ msgstr "在图像内容字段中没有设置图像"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "没有已安装的插件。"
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4091,10 +4091,10 @@ msgstr ""
 msgid "Third"
 msgstr "第三"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "此插件已更新。当前安装的配置文件版本为 {installedVersion}。新可用的配置文件版本为 {newVersion}."
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "此插件已更新。当前安装的配置文件版本为 {installedVersion}。新的可用配置文件版本为 {newVersion}。"
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

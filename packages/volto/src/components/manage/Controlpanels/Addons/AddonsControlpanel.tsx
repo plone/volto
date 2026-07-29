@@ -80,11 +80,11 @@ const messages = defineMessages({
       'No upgrades in this corner. You are up to date. High fives.',
   },
   noAddonAvailable: {
-    id: 'No Addon available',
+    id: 'No add-on available',
     defaultMessage: 'No add-ons available for installation.',
   },
   noInstalledAvailable: {
-    id: 'No Installed available',
+    id: 'No installed add-ons available',
     defaultMessage: 'No installed add-ons.',
   },
   updateInstalledAddons: {

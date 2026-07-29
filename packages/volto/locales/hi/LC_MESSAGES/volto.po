@@ -2536,16 +2536,6 @@ msgstr "समाचार आइटम देखें"
 msgid "No"
 msgstr "नहीं"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "इंस्टॉल करने के लिए कोई ऐड-ऑन उपलब्ध नहीं है।"
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "कोई इंस्टॉल किया हुआ ऐड-ऑन उपलब्ध नहीं है।"
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "इस कोने में कोई अपग्रेड नही�
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "कोई वीडियो चयनित नहीं है"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "इंस्टॉलेशन के लिए कोई ऐड-ऑन उपलब्ध नहीं है।"
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr "छवि कंटेंट क्षेत्र में कोई �
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "कोई छवियां नहीं मिलीं।"
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "कोई इंस्टॉल किया गया ऐड-ऑन नहीं है।"
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr ""
 msgid "Third"
 msgstr "तीसरा"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "यह ऐड-ऑन अपडेट किया गया है। वर्तमान में स्थापित प्रोफ़ाइल संस्करण {installedVersion} है। उपलब्ध नया प्रोफ़ाइल संस्करण {newVersion} है।"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "इस ऐड-ऑन को अपडेट किया गया था। वर्तमान में इंस्टॉल किया गया प्रोफ़ाइल संस्करण {installedVersion} है। नया उपलब्ध प्रोफ़ाइल संस्करण {newVersion} है।"
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

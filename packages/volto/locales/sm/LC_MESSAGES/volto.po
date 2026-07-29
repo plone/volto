@@ -2536,16 +2536,6 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "E leai ni fa'aopoopoga o lo'o maua e fa'apipi'i."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "E leai ni fa'aopoopoga fa'apipi'i."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "E leai ni fa'aleleia iinei. E fa'afou uma. Fa'amalo."
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr ""
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "E leai ni fa'aopoopoga o lo'o maua e fa'apipi'i."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "E leai ni fa'aopoopoga ua fa'apipi'i."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "Na fa'afouina lenei fa'aopoopoga. O le fa'amaufa'ailoga o le profile o lo'o fa'apipi'iina o {installedVersion}. O le fa'amaufa'ailoga o le profile fou o lo'o maua o {newVersion}"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Ua fa'afouina lenei fa'aopoopoga. O le fa'amaumauga o lo'o fa'apipi'iina nei o le {installedVersion}. O le fa'amaumauga fou o lo'o maua o le {newVersion}."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

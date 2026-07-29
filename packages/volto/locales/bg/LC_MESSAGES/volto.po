@@ -2536,16 +2536,6 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "Няма налични добавки за инсталиране."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "Няма инсталирани добавки."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "Няма надстройки тук. Вие сте напълно ак�
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr ""
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "Няма налични добавки за инсталиране."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "Няма инсталирани добавки."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "Тази добавка беше актуализирана. Текущата инсталирана версия на профила е {installedVersion}. Новата достъпна версия на профила е {newVersion}"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Тази добавка беше актуализирана. Текущата инсталирана версия на профила е {installedVersion}. Новата налична версия на профила е {newVersion}."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

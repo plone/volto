@@ -128,7 +128,7 @@ const AvailablePanel: React.FC<AvailablePanelProps & { intl: IntlShape }> = (
               key="no-addon-available"
               className="no-addon-available"
             >
-              {intl.formatMessage({ id: 'No Add-on available' })}
+              {intl.formatMessage({ id: 'No add-on available' })}
             </GridListItem>
           )}
         </GridList>
@@ -177,7 +177,7 @@ const InstalledPanel: React.FC<InstalledPanelProps & { intl: IntlShape }> = (
               key="no-installed-available"
               className="no-installed-available"
             >
-              {intl.formatMessage({ id: 'No Installed available' })}
+              {intl.formatMessage({ id: 'No installed add-ons available' })}
             </GridListItem>
           )}
         </GridList>

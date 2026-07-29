@@ -2537,16 +2537,6 @@ msgstr "Nachricht"
 msgid "No"
 msgstr "Nein"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "Keine Add-ons zur Installation verfügbar."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "Keine installierten Add-ons verfügbar."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2571,6 +2561,11 @@ msgstr "Keine Upgrades in dieser Ecke. Du bist auf dem neuesten Stand. High Five
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "Kein Video ausgewählt"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "Keine Add-ons zur Installation verfügbar."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2606,6 +2601,11 @@ msgstr "Im Feld 'Bild' wurde kein Bild gesetzt"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "Keine Bilder gefunden"
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "Keine installierten Add-ons."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4091,9 +4091,9 @@ msgstr "Die folgenden Verweise würden beim Löschen ungültig."
 msgid "Third"
 msgstr "Dritter"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 msgstr "Dieses Add-on wurde aktualisiert. Die aktuell installierte Profilversion ist {installedVersion}. Die neue verfügbare Profilversion ist {newVersion}."
 
 #. Default: "This field is required."

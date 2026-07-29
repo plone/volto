@@ -2536,16 +2536,6 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "설치할 수 있는 애드온이 없습니다."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "설치된 애드온이 없습니다."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "여기에는 업그레이드가 없습니다. 이미 최신 상태입니
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr ""
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "설치할 수 있는 애드온이 없습니다."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "설치된 애드온이 없습니다."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "이 애드온이 업데이트되었습니다. 현재 설치된 프로필 버전은 {installedVersion}입니다. 새로 사용 가능한 프로필 버전은 {newVersion}입니다"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "이 애드온이 업데이트되었습니다. 현재 설치된 프로필 버전은 {installedVersion}입니다. 새로 사용 가능한 프로필 버전은 {newVersion}입니다."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

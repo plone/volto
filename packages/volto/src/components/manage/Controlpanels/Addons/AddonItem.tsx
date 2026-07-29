@@ -9,9 +9,9 @@ import {
 
 const messages = defineMessages({
   addonUpgradableInfo: {
-    id: 'This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
+    id: 'This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}.',
     defaultMessage:
-      'This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}',
+      'This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}.',
   },
   upgradeVersions: {
     id: 'upgradeVersions',

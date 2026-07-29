@@ -2536,16 +2536,6 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "တပ်ဆင်ရန် အက်ဒ်-အွန်များ မရှိပါ။"
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "တပ်ဆင်ထားသော အက်ဒ်-အွန်များ မရှိပါ။"
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "ဤနေရာတွင် အဆင့်မြှင့်တင်�
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr ""
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "ထည့်သွင်းရန် ရရှိနိုင်သော ထပ်ဆောင်းများ မရှိပါ။"
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "ထည့်သွင်းထားသော ထပ်ဆောင်းများ မရှိပါ။"
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "ဤအက်ဒ်-အွန်ကို အပ်ဒိတ်လုပ်ပြီးပါသည်။ လက်ရှိတပ်ဆင်ထားသော ပရိုဖိုင်ဗားရှင်းမှာ {installedVersion} ဖြစ်သည်။ ရရှိနိုင်သော ပရိုဖိုင်ဗားရှင်းအသစ်မှာ {newVersion} ဖြစ်သည်"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "ဤထပ်ဆောင်းကို အပ်ဒိတ်လုပ်ပြီးပါပြီ။ လက်ရှိထည့်သွင်းထားသော ပရိုဖိုင်ဗားရှင်းမှာ {installedVersion} ဖြစ်ပါသည်။ ရရှိနိုင်သော ပရိုဖိုင်ဗားရှင်းအသစ်မှာ {newVersion} ဖြစ်ပါသည်။"
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

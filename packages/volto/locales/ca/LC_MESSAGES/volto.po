@@ -2537,16 +2537,6 @@ msgstr "Notícia"
 msgid "No"
 msgstr "No"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "No hi ha complements disponibles per instal·lar."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "No hi ha instal·lats disponibles."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2571,6 +2561,11 @@ msgstr "No hi ha actualitzacions en aquesta cantonada. Estàs al dia. Xoca els c
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "No s'ha seleccionat cap vídeo"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "No hi ha cap complement disponible per instal·lar."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2606,6 +2601,11 @@ msgstr "No s'ha establert cap imatge al camp de contingut de la imatge"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "No s'han trobat imatges."
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "No hi ha complements instal·lats."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4091,10 +4091,10 @@ msgstr "Aquests elements tindran enllaços trencats"
 msgid "Third"
 msgstr "Tercer"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "Aquest complement s'ha actualitzat. La versió del perfil instal·lat actualment és {installedVersion}. La nova versió disponible del perfil és {newVersion}."
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Aquest complement s'ha actualitzat. La versió del perfil instal·lada actualment és {installedVersion}. La nova versió de perfil disponible és {newVersion}."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

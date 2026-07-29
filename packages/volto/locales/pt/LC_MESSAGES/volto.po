@@ -2536,16 +2536,6 @@ msgstr "Visão de notícia"
 msgid "No"
 msgstr "Não"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "Não há extensões disponíveis para instalação."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "Não há complementos instalados disponíveis."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "Nenhuma atualização disponível por aqui. Estás atualizado. Dá cá c
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "Nenhum vídeo selecionado"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "Não existem extensões disponíveis para instalação."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr "Nenhuma imagem definida no campo de imagem"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "Não existem extensões instaladas."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr "Estes elementos terão ligações quebradas"
 msgid "Third"
 msgstr "Terceiro"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "Este complemento foi atualizado. A versão do perfil atualmente instalada é {installedVersion}. A nova versão disponível do perfil é {newVersion}."
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Esta extensão foi atualizada. A versão de perfil atualmente instalada é {installedVersion}. A nova versão de perfil disponível é {newVersion}."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

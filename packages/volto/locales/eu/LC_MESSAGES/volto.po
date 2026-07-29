@@ -2537,16 +2537,6 @@ msgstr "Albistearen bista"
 msgid "No"
 msgstr "Ez"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "Ez dago instalatzeko osagarririk erabilgarri."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "Ez dago instalatutako gehigarririk eskuragarri."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2571,6 +2561,11 @@ msgstr "Ez dago eguneratzerik hemen. Egunean zaude. Bostekoa!"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "Ez da bideorik aukeratu"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "Ez dago instalatzeko gehigarririk erabilgarri."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2606,6 +2601,11 @@ msgstr "Ez dago irudirik dagokion eremuan"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "Ez da irudirik aurkitu."
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "Ez dago instalatutako gehigarririk."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4091,10 +4091,10 @@ msgstr "Elementu hauek apurtutako eestekak izango dituzte"
 msgid "Third"
 msgstr "Hirugarren"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "Gehigarri hau eguneratu da. Instalatutako profilaren egungo bertsioa {installedVersion} da. Eskuragarri dagoen profilaren bertsio berria {newVersion} da."
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Gehigarri hau eguneratu da. Instalatutako profilaren uneko bertsioa {installedVersion} da. Profilaren bertsio berri erabilgarria {newVersion} da."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

@@ -2536,16 +2536,6 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "ಸ್ಥಾಪನೆಗೆ ಯಾವುದೇ ಆಡ್-ಆನ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "ಯಾವುದೇ ಸ್ಥಾಪಿಸಲಾದ ಆಡ್-ಆನ್‌ಗಳಿಲ್ಲ."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "ಇಲ್ಲಿ ಯಾವುದೇ ಅಪ್‌ಗ್ರೇಡ್‌ಗ�
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr ""
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "ಸ್ಥಾಪನೆಗೆ ಯಾವುದೇ ಆಡ್-ಆನ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr ""
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "ಯಾವುದೇ ಸ್ಥಾಪಿತ ಆಡ್-ಆನ್‌ಗಳಿಲ್ಲ."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr ""
 msgid "Third"
 msgstr ""
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "ಈ ಆಡ್-ಆನ್ ಅಪ್‌ಡೇಟ್ ಆಗಿದೆ. ಪ್ರಸ್ತುತ ಸ್ಥಾಪಿಸಲಾದ ಪ್ರೊಫೈಲ್ ಆವೃತ್ತಿ {installedVersion} ಆಗಿದೆ. ಹೊಸ ಲಭ್ಯವಿರುವ ಪ್ರೊಫೈಲ್ ಆವೃತ್ತಿ {newVersion} ಆಗಿದೆ"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "ಈ ಆಡ್-ಆನ್ ಅನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ. ಪ್ರಸ್ತುತ ಸ್ಥಾಪಿತ ಪ್ರೊಫೈಲ್ ಆವೃತ್ತಿ {installedVersion} ಆಗಿದೆ. ಹೊಸ ಲಭ್ಯವಿರುವ ಪ್ರೊಫೈಲ್ ಆವೃತ್ತಿ {newVersion} ಆಗಿದೆ."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

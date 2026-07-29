@@ -2536,16 +2536,6 @@ msgstr "Vizualizare articol de știri"
 msgid "No"
 msgstr "Nu"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "Nu există suplimente disponibile pentru instalare."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "Nu există module instalate disponibile."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "Nicio actualizare în această zonă. Ești la zi. Bate palma!"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "Nu s-a selectat niciun video"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "Nu există suplimente disponibile pentru instalare."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr "Nicio imagine setată în câmpul imagine de continut"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "Nu s-au găsit imagini."
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "Niciun supliment instalat."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr "Aceste elemente vor avea legături întrerupte"
 msgid "Third"
 msgstr "Al treilea"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "Acest add-on a fost actualizat. Versiunea curentă a profilului instalat este {installedVersion}. Noua versiune disponibilă a profilului este {newVersion}."
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Acest supliment a fost actualizat. Versiunea profilului instalat în prezent este {installedVersion}. Noua versiune de profil disponibilă este {newVersion}."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget

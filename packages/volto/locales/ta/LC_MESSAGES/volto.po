@@ -2536,16 +2536,6 @@ msgstr "செய்தி பொருள் பார்வை"
 msgid "No"
 msgstr "இல்லை"
 
-#. Default: "No add-ons available for installation."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Addon available"
-msgstr "நிறுவுவதற்கு கூடுதல் இணைப்புகள் எதுவும் இல்லை."
-
-#. Default: "No installed add-ons."
-#: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "No Installed available"
-msgstr "நிறுவப்பட்ட கூடுதல் இணைப்புகள் இல்லை."
-
 #. Default: "No transactions found"
 #: components/manage/Controlpanels/UndoControlpanel
 msgid "No Transactions Found"
@@ -2570,6 +2560,11 @@ msgstr "இங்கே மேம்படுத்தல்கள் இல்�
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "வீடியோ எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
+
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "நிறுவுவதற்கு எந்த சேர்க்கைகளும் கிடைக்கவில்லை."
 
 #. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
@@ -2605,6 +2600,11 @@ msgstr "பட உள்ளடக்க புலத்தில் எந்த
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "படங்கள் எதுவும் கிடைக்கவில்லை."
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "நிறுவப்பட்ட சேர்க்கைகள் எதுவும் இல்லை."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -4090,10 +4090,10 @@ msgstr "இந்த உருப்படிகளில் உடைந்த 
 msgid "Third"
 msgstr "மூன்றாவது"
 
-#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
 #: components/manage/Controlpanels/Addons/AddonItem
-msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}"
-msgstr "இந்த கூடுதல் இணைப்பு புதுப்பிக்கப்பட்டது. தற்போது நிறுவப்பட்ட சுயவிவர பதிப்பு {installedVersion}. புதிதாக கிடைக்கும் சுயவிவர பதிப்பு {newVersion}"
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "இந்த சேர்க்கை புதுப்பிக்கப்பட்டது. தற்போது நிறுவப்பட்ட சுயவிவர பதிப்பு {installedVersion} ஆகும். புதிதாக கிடைக்கும் சுயவிவர பதிப்பு {newVersion} ஆகும்."
 
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
