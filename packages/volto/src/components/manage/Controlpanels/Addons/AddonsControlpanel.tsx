@@ -1,6 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { useClient } from '@plone/volto/hooks';
 import { Dimmer, Loader } from 'semantic-ui-react';
@@ -149,8 +149,9 @@ const messages = defineMessages({
   },
 });
 
-interface Props extends RouteComponentProps {
+interface Props {
   title: string;
+  location: { pathname: string };
 }
 
 const AddonsControlpanel = (props: Props) => {
@@ -364,3 +365,4 @@ const AddonsControlpanel = (props: Props) => {
 };
 
 export default AddonsControlpanel;
+export type { Props };
