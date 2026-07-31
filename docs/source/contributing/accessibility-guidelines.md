@@ -76,16 +76,60 @@ If available, use the translation machinery to make the label appear in the corr
 </button>
 ```
 
+
 ### Do not use `<a>` tags without `href`
 
 If an element has an event listener on it and performs an action, but does not point to a proper URL, use a `<button>` and style with CSS.
 The `<a></a>` HTML tag has specific behavior that screen readers support and users expect.
+
 
 ### Make sure form elements have a label
 
 This is true for single element forms as well, such as the "Search" form on the folder contents component.
 Putting an icon on it does not convey any meaning to screen reader users.
 You should clarify it with an `aria-label` attribute.
+
+
+### Interactive states (focus visible)
+
+Developers often remove the default browser outline for aesthetic reasons.
+Hiding the focus indicator without providing a clear visual alternative is a major accessibility violation.
+
+Rule
+:   Every interactive or clickable element must have a distinct `:focus` state.
+
+Guideline
+:   Avoid using `outline: none` in CSS unless you replace it with an equally evident custom focus style.
+    Keyboard users rely on this indicator to know with which element they are interacting.
+
+
+### Semantic heading hierarchy
+
+A frequent mistake when developing components or add-ons is using `<h2>`, `<h3>`, or `<h4>` tags solely to achieve a specific font size.
+
+Recommendation
+:   Always maintain a logical heading order.
+    If a page starts with an `<h1>`, the subsequent subheading must be an `<h2>`, followed by `<h3>`, and so forth.
+
+Impact
+:   Skipping heading levels—for example, jumping from `<h2>` to `<h4>`—breaks the document structure and confuses screen reader users who use headings to navigate the page layout.
+
+
+### Alternative text for images (alt text)
+
+Images must have an `alt` attribute to be accessible.
+However, the way it is implemented depends on the image's purpose.
+
+Informative images
+:   If an image conveys meaning, the `alt` text should be a brief, descriptive equivalent of the information.
+
+Decorative images
+:   If an image is purely for visual styling and contains no information, use an empty alt attribute, `alt=""`.
+    This tells screen readers to skip the image entirely.
+
+Avoid redundant text
+:   Do not start `alt` text with "Image of..." or "Photo of...", as screen readers already announce that it is an image.
+
 
 ### Additional information for non-visual users
 
