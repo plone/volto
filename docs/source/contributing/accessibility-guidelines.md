@@ -58,6 +58,23 @@ Name accessibility tests `[THING] tested for a11y axe violations`.
 This section describes common issues that you might need to address while developing for Volto core or an add-on.
 
 
+### Understanding assistive technology
+
+Simply activating a screen reader is not enough.
+Developers must understand the underlying mechanics of how these tools interpret the DOM to avoid creating technically "valid" but practically unusable interfaces.
+
+Beyond tool usage
+:   Focus on how assistive technologies announce content.
+    For example, understanding how a screen reader handles "live regions" or how it contextually reads labels helps in building more intuitive layouts.
+
+Logical Flow
+:   Developers should learn the common navigation patterns used by people with disabilities, such as navigating by landmarks or form elements, rather than just testing for linear reading.
+
+The "Why" behind ARIA
+:   Instead of overusing ARIA attributes, understand what each one signals to the browser's accessibility tree.
+    Often, the best ARIA is no ARIA at all, favoring native HTML semantics instead.
+
+
 ### Clickable elements that have a symbol or icon and no visible text
 
 If the symbol or icon is clear enough for sighted users—for instance a big "X" to close a dialog—it will still need a text for screen reader users.
