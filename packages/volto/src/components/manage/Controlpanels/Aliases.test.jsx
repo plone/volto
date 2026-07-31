@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 
 import Aliases from './Aliases';
 import { MemoryRouter } from 'react-router';
@@ -95,10 +96,12 @@ describe('Aliases', () => {
     store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Aliases location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Aliases location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

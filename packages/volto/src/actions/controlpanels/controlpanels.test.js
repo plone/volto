@@ -36,10 +36,9 @@ describe('Controlpanels action', () => {
       const url = 'http://localhost';
       const data = 'Hello World!';
 
-      const dispatch = vi.fn().mockResolvedValue();
-      updateControlpanel(url, data)(dispatch);
+      const action = updateControlpanel(url, data);
 
-      expect(dispatch).toHaveBeenCalledWith({
+      expect(action).toEqual({
         type: UPDATE_CONTROLPANEL,
         request: {
           op: 'patch',

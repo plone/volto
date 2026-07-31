@@ -4,6 +4,7 @@ import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+import { CookiesProvider } from 'react-cookie';
 
 import { __test__ as App } from './App';
 
@@ -55,16 +56,18 @@ describe('App', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/blog/edit']}>
-          <App
-            location={{ pathname: '/blog/edit' }}
-            route={{
-              routes: '',
-            }}
-          >
-            <div />
-          </App>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/blog/edit']}>
+            <App
+              location={{ pathname: '/blog/edit' }}
+              route={{
+                routes: '',
+              }}
+            >
+              <div />
+            </App>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
     const json = component.toJSON();

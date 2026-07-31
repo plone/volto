@@ -59,6 +59,8 @@ import { compose } from 'redux';
 import config from '@plone/volto/registry';
 import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
 
+const noop = () => {};
+
 /**
  * Form container class.
  * @class Form
@@ -117,6 +119,9 @@ class Form extends Component {
     allowedBlocks: PropTypes.arrayOf(PropTypes.string),
     showRestricted: PropTypes.bool,
     global: PropTypes.bool,
+    checkSavedDraft: PropTypes.func,
+    onSaveDraft: PropTypes.func,
+    onCancelDraft: PropTypes.func,
   };
 
   /**
@@ -153,6 +158,9 @@ class Form extends Component {
     requestError: null,
     allowedBlocks: null,
     global: false,
+    checkSavedDraft: noop,
+    onSaveDraft: noop,
+    onCancelDraft: noop,
   };
 
   /**
@@ -964,7 +972,12 @@ class Form extends Component {
                     onTabChange={this.onTabChange}
                     activeIndex={this.state.activeIndex}
                     panes={map(schema.fieldsets, (item) => ({
-                      menuItem: item.title,
+                      menuItem: {
+                        key: item.id,
+                        content: item.title,
+                        as: 'button',
+                        type: 'button',
+                      },
                       render: () => [
                         !settings.verticalFormTabs && this.props.title && (
                           <Segment secondary attached key={this.props.title}>

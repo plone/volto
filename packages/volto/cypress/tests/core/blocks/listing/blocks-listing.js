@@ -943,7 +943,7 @@ describe('Listing Block Tests', () => {
       .click();
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
-    cy.get('#field-b_size-4-querystring').click().type('2');
+    cy.get('#field-b_size-5-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]')
       .first()
       .should('be.visible')
@@ -996,7 +996,7 @@ describe('Listing Block Tests', () => {
     cy.get('#field-limit-3-querystring').click().type('2');
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
-    cy.get('#field-b_size-4-querystring').click().type('2');
+    cy.get('#field-b_size-5-querystring').click().type('2');
     cy.get('#toolbar-save').click();
     cy.wait('@save');
     cy.wait('@content');
@@ -1094,7 +1094,7 @@ describe('Listing Block Tests', () => {
       .click();
 
     cy.get('#field-limit-3-querystring').click().clear().type('0');
-    cy.get('#field-b_size-4-querystring').click().type('2');
+    cy.get('#field-b_size-5-querystring').click().type('2');
     cy.get('.ui.pagination.menu a[value="2"]')
       .first()
       .should('be.visible')
@@ -1164,7 +1164,7 @@ describe('Listing Block Tests', () => {
     cy.configureListingWith('Page');
 
     cy.get('#field-limit-3-querystring').click().type('0');
-    cy.get('#field-b_size-4-querystring').click().type('2');
+    cy.get('#field-b_size-5-querystring').click().type('2');
 
     cy.addNewBlock('listing');
 
@@ -1174,7 +1174,7 @@ describe('Listing Block Tests', () => {
     cy.configureListingWith('Page');
 
     cy.get('#field-limit-3-querystring').click().type('0');
-    cy.get('#field-b_size-4-querystring').click().type('1');
+    cy.get('#field-b_size-5-querystring').click().type('1');
     cy.get('#toolbar-save').click();
     cy.wait('@save');
     cy.wait('@content');

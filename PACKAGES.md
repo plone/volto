@@ -36,7 +36,6 @@ It is published "as is", so you can import the type definitions from anywhere in
 
 ## Core packages
 
--   `@plone/client`
 -   `@plone/components`
 -   `@plone/registry`
 

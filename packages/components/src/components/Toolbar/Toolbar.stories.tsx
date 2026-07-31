@@ -7,7 +7,7 @@ import {
   Separator,
   ToggleButton,
 } from 'react-aria-components';
-import { Menu, MenuItem } from '../Menu/Menu';
+import { Menu, MenuItem, MenuTrigger } from '../Menu/Menu';
 
 import { BoldIcon } from '../icons/BoldIcon';
 import { ItalicIcon } from '../icons/ItalicIcon';
@@ -55,10 +55,13 @@ export const Example = (args: any) => (
       Night Mode
     </Checkbox>
     <Separator orientation="vertical" />
-    <Menu button="Edit">
-      <MenuItem>Cut</MenuItem>
-      <MenuItem>Copy</MenuItem>
-      <MenuItem>Paste</MenuItem>
-    </Menu>
+    <MenuTrigger>
+      <Button>Edit</Button>
+      <Menu>
+        <MenuItem>Cut</MenuItem>
+        <MenuItem>Copy</MenuItem>
+        <MenuItem>Paste</MenuItem>
+      </Menu>
+    </MenuTrigger>
   </Toolbar>
 );

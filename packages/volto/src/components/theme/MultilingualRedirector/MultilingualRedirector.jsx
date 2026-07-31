@@ -6,7 +6,7 @@ import { changeLanguage } from '@plone/volto/actions/language/language';
 import { toGettextLang, toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 
 const MultilingualRedirector = (props) => {
-  const { pathname, children } = props;
+  const { pathname, contentLanguage, children } = props;
   const [cookies] = useCookies();
   const site = useSelector((state) => state.site.data);
   const isMultilingual = site.features?.multilingual;
@@ -44,8 +44,11 @@ const MultilingualRedirector = (props) => {
         performLanguageSwitch(redirectToLanguage);
       } else {
         const lang = pathname.split('/')[1];
+        const contentLanguageMatchesPath =
+          !contentLanguage || contentLanguage === lang;
         if (
           availableLanguages?.includes(lang) &&
+          contentLanguageMatchesPath &&
           lang !== toBackendLang(currentLanguage)
         ) {
           performLanguageSwitch(lang);
@@ -62,6 +65,7 @@ const MultilingualRedirector = (props) => {
     isMultilingual,
     availableLanguages,
     currentLanguage,
+    contentLanguage,
   ]);
   return pathname === '/' && isMultilingual ? (
     <Redirect to={`/${toBackendLang(redirectToLanguage)}`} />

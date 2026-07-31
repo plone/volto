@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import jwt from 'jsonwebtoken';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import Sharing from './Sharing';
@@ -60,12 +61,14 @@ describe('Sharing', () => {
 
     const { container } = render(
       <Provider store={store}>
-        <PluggablesProvider>
-          <MemoryRouter>
-            <Sharing location={{ pathname: '/blog' }} />
-            <div id="toolbar"></div>
-          </MemoryRouter>
-        </PluggablesProvider>
+        <CookiesProvider>
+          <PluggablesProvider>
+            <MemoryRouter>
+              <Sharing location={{ pathname: '/blog' }} />
+              <div id="toolbar"></div>
+            </MemoryRouter>
+          </PluggablesProvider>
+        </CookiesProvider>
       </Provider>,
     );
 

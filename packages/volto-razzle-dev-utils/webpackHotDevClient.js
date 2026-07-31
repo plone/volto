@@ -9,23 +9,17 @@
 // that looks similar to our console output. The error overlay is inspired by:
 // https://github.com/glenjamin/webpack-hot-middleware
 
-// HACK ALERT: Most of this file is identical to the webpackHotDevClientV4.js file with the exception of the code blocks
-// denoted with //--- START Unique code --- and //--- END Unique code
-// This was done to avoid getting a warning about the `createSocketURL` vs `createSocketUrl` file names
-// You must keep the code in these two files in sync
-
-var SockJS = require('sockjs-client');
 var stripAnsi = require('strip-ansi');
 var url = require('url');
 var launchEditorEndpoint = require('react-dev-utils/launchEditorEndpoint');
 var formatWebpackMessages = require('./formatWebpackMessages');
 var ErrorOverlay = require('react-error-overlay');
 
-//--- START Unique code ---
-// This code is unique to webpack-dev-server v3
-var createSocketUrl = require('webpack-dev-server/client/utils/createSocketUrl');
-var socketUrl = createSocketUrl();
-//--- END Unique code ---
+// The single API changed to 2 APIs in v4, first you parse the URL, then you create the socket URL from the parsed data
+// These APIs are accessible from the `default` context
+var parseURL = require('webpack-dev-server/client').parseURL;
+var createSocketUrl = require('webpack-dev-server/client').createSocketURL;
+var socketUrl = createSocketUrl(parseURL());
 
 var parsedSocketUrl = url.parse(socketUrl);
 
@@ -70,10 +64,7 @@ if (module.hot && typeof module.hot.dispose === 'function') {
   });
 }
 
-//--- START Unique code ---
-// This code is unique to webpack-dev-server v3
-var connection = new SockJS(socketUrl);
-//--- END Unique code ---
+var connection = new WebSocket(socketUrl);
 
 // Unlike WebpackDevServer client, we won't try to reconnect
 // to avoid spamming the console. Disconnect usually happens
@@ -147,19 +138,15 @@ function handleWarnings(warnings) {
     }
   }
 
+  printWarnings();
+
   // Attempt to apply hot updates or reload.
   if (isHotUpdate) {
     tryApplyUpdates(function onSuccessfulHotUpdate() {
-      // Only print warnings if we aren't refreshing the page.
-      // Otherwise they'll disappear right away anyway.
-      printWarnings();
       // Only dismiss it when we're sure it's a hot update.
       // Otherwise it would flicker right before the reload.
       tryDismissErrorOverlay();
     });
-  } else {
-    // Print initial warnings immediately.
-    printWarnings();
   }
 }
 
@@ -213,8 +200,7 @@ connection.onmessage = function (e) {
     case 'ok':
       handleSuccess();
       break;
-    case 'content-changed':
-      // Triggered when a file from `contentBase` changed.
+    case 'static-changed':
       window.location.reload();
       break;
     case 'warnings':
@@ -241,6 +227,18 @@ function canApplyUpdates() {
   return module.hot.status() === 'idle';
 }
 
+function canAcceptErrors() {
+  // NOTE: This var is injected by Webpack's DefinePlugin, and is a boolean instead of string.
+  const hasReactRefresh = process.env.FAST_REFRESH;
+
+  const status = module.hot.status();
+  // React refresh can handle hot-reloading over errors.
+  // However, when hot-reload status is abort or fail,
+  // it indicates the current update cannot be applied safely,
+  // and thus we should bail out to a forced reload for consistency.
+  return hasReactRefresh && ['abort', 'fail'].indexOf(status) === -1;
+}
+
 // Attempt to update code on the fly, fall back to a hard reload.
 function tryApplyUpdates(onHotUpdateSuccess) {
   if (!module.hot) {
@@ -254,10 +252,13 @@ function tryApplyUpdates(onHotUpdateSuccess) {
   }
 
   function handleApplyUpdates(err, updatedModules) {
-    const hasReactRefresh = process.env.FAST_REFRESH;
-    const wantsForcedReload = err || !updatedModules || hadRuntimeError;
-    // React refresh can handle hot-reloading over errors.
-    if (!hasReactRefresh && wantsForcedReload) {
+    const haveErrors = err || hadRuntimeError;
+    // When there is no error but updatedModules is unavailable,
+    // it indicates a critical failure in hot-reloading,
+    // e.g. server is not ready to serve new bundle,
+    // and hence we need to do a forced reload.
+    const needsForcedReload = !err && !updatedModules;
+    if ((haveErrors && !canAcceptErrors()) || needsForcedReload) {
       window.location.reload();
       return;
     }

@@ -8,9 +8,14 @@ import {
 } from 'react-aria-components';
 import { tv } from 'tailwind-variants';
 import { Toolbar } from './Toolbar.quanta';
-import { Button } from '../Button/Button';
+import { Button } from '../Button/Button.quanta';
 import { Checkbox } from '../Checkbox/Checkbox.quanta';
-import { Menu } from '../Menu/Menu.quanta';
+import {
+  Menu,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from '../Menu/Menu.quanta';
 import { Separator } from '../Separator/Separator.quanta';
 import {
   AligncenterIcon,
@@ -113,15 +118,15 @@ export const Default: Story = {
       <Separator orientation="vertical" />
       <Checkbox value="comments">Allow comments</Checkbox>
       <Separator orientation="vertical" />
-      <Menu
-        button="More"
-        menuItems={[
-          { id: 'undo', label: 'Undo', keyboard: '⌘Z' },
-          { id: 'redo', label: 'Redo', keyboard: '⇧⌘Z' },
-          { separator: true },
-          { id: 'settings', label: 'Toolbar settings' },
-        ]}
-      />
+      <MenuTrigger>
+        <Button variant="neutral">More</Button>
+        <Menu>
+          <MenuItem id="undo">Undo</MenuItem>
+          <MenuItem id="redo">Redo</MenuItem>
+          <MenuSeparator />
+          <MenuItem id="settings">Toolbar settings</MenuItem>
+        </Menu>
+      </MenuTrigger>
     </Toolbar>
   ),
 };
@@ -138,15 +143,25 @@ export const WithMenus: Story = {
         </Button>
       </Group>
       <Separator orientation="vertical" />
-      <Menu
-        button={<MoreoptionsIcon className="h-4 w-4" />}
-        placement="bottom end"
-        menuItems={[
-          { id: 'cut', label: 'Cut', icon: CutIcon },
-          { id: 'copy', label: 'Copy', icon: CopyIcon },
-          { id: 'paste', label: 'Paste', icon: PasteIcon },
-        ]}
-      />
+      <MenuTrigger placement="bottom end">
+        <Button variant="icon" aria-label="More options">
+          <MoreoptionsIcon className="h-4 w-4" />
+        </Button>
+        <Menu>
+          <MenuItem id="cut">
+            <CutIcon className="h-4 w-4" />
+            Cut
+          </MenuItem>
+          <MenuItem id="copy">
+            <CopyIcon className="h-4 w-4" />
+            Copy
+          </MenuItem>
+          <MenuItem id="paste">
+            <PasteIcon className="h-4 w-4" />
+            Paste
+          </MenuItem>
+        </Menu>
+      </MenuTrigger>
       <Button variant="primary" accent>
         Publish
       </Button>
@@ -173,14 +188,14 @@ export const Vertical: Story = {
         Wrap text
       </Checkbox>
       <Separator />
-      <Menu
-        button="Spacing"
-        menuItems={[
-          { id: 'tight', label: 'Tight' },
-          { id: 'normal', label: 'Normal' },
-          { id: 'loose', label: 'Loose' },
-        ]}
-      />
+      <MenuTrigger>
+        <Button variant="neutral">Spacing</Button>
+        <Menu>
+          <MenuItem id="tight">Tight</MenuItem>
+          <MenuItem id="normal">Normal</MenuItem>
+          <MenuItem id="loose">Loose</MenuItem>
+        </Menu>
+      </MenuTrigger>
     </Toolbar>
   ),
 };

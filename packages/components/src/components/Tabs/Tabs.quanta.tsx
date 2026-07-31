@@ -94,7 +94,7 @@ export function Tab(props: RACTabProps) {
 const tabPanelStyles = tv({
   extend: focusRing,
   base: `
-    flex-1 p-4 text-sm text-gray-900
+    flex-1 p-4 text-base text-gray-900
     dark:text-zinc-100
   `,
 });

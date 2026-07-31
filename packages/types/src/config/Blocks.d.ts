@@ -15,6 +15,7 @@ export interface BlocksConfig {
 }
 
 export interface BlocksConfigData {
+  [key: string]: BlockConfigBase;
   title: BlockConfigBase;
   description: BlockConfigBase;
   slate: SlateBlock;
@@ -32,7 +33,14 @@ export interface BlocksConfigData {
   teaser: BlockConfigBase;
 }
 
-export type AvailableBlocks = keyof BlocksConfigData;
+export type AvailableBlocks = Extract<keyof BlocksConfigData, string>;
+
+export type BlockSchemaArgs = {
+  formData?: BlocksFormData;
+  intl?: IntlShape;
+  props?: BlockEditProps;
+  data?: BlocksFormData;
+};
 
 export interface BlockConfigBase {
   /**
@@ -74,9 +82,7 @@ export interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema:
-    | JSONSchema
-    | ((args: { props: unknown; intl: IntlShape }) => JSONSchema);
+  blockSchema: JSONSchema | ((args?: BlockSchemaArgs) => JSONSchema);
   dataAdapter?: ({
     block,
     data,

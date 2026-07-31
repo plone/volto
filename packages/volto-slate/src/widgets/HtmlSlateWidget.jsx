@@ -4,7 +4,6 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
 import { defineMessages, injectIntl, IntlProvider } from 'react-intl';
@@ -23,6 +22,7 @@ import {
 import config from '@plone/volto/registry';
 
 import { ErrorBoundary } from './ErrorBoundary';
+import { createStaticStore } from './createStaticStore';
 
 import './style.css';
 
@@ -58,9 +58,8 @@ const HtmlSlateWidget = (props) => {
 
   const toHtml = React.useCallback(
     (value) => {
-      const mockStore = configureStore();
       const html = ReactDOMServer.renderToStaticMarkup(
-        <Provider store={mockStore({ userSession: { token } })}>
+        <Provider store={createStaticStore({ userSession: { token } })}>
           <IntlProvider
             locale={intl.locale}
             messages={intl.messages}

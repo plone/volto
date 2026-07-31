@@ -17,9 +17,9 @@
     "changelog": "pipx run towncrier build --draft --yes --version 0.0.0",
     "requireUpstream": false,
     "requireCleanWorkingDir": false,
-    "commitMessage": "Release @plone/slate ${version}",
+    "commitMessage": "Release @plone/volto-slate ${version}",
     "tagName": "plone-slate-${version}",
-    "tagAnnotation": "Release @plone/slate ${version}"
+    "tagAnnotation": "Release @plone/volto-slate ${version}"
   },
   "github": {
     "release": true,

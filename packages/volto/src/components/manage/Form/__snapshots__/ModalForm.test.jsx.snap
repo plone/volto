@@ -1,5 +1,33 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ModalForm > renders a modal form component 1`] = `null`;
+exports[`ModalForm > renders a modal form component 1`] = `
+<div
+  aria-atomic="true"
+  aria-live="assertive"
+  style={
+    {
+      "height": "1px",
+      "opacity": 0,
+      "overflow": "hidden",
+      "position": "absolute",
+      "width": "1px",
+    }
+  }
+/>
+`;
 
-exports[`ModalForm > renders with empty fieldsets array 1`] = `null`;
+exports[`ModalForm > renders with empty fieldsets array 1`] = `
+<div
+  aria-atomic="true"
+  aria-live="assertive"
+  style={
+    {
+      "height": "1px",
+      "opacity": 0,
+      "overflow": "hidden",
+      "position": "absolute",
+      "width": "1px",
+    }
+  }
+/>
+`;

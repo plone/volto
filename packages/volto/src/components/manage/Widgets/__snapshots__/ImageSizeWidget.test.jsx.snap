@@ -84,6 +84,11 @@ exports[`renders an image sizes widget component 1`] = `
             </div>
           </div>
         </div>
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          className="visually-hidden"
+        />
       </div>
     </div>
   </div>

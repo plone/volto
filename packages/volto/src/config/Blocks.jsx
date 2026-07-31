@@ -68,6 +68,7 @@ import {
 import getListingBlockAsyncData from '@plone/volto/components/manage/Blocks/Listing/getAsyncData';
 import { getImageBlockSizes } from '@plone/volto/components/manage/Blocks/Image/utils';
 import { getLeadImageBlockSizes } from '@plone/volto/components/manage/Blocks/LeadImage/utils';
+import { getTeaserBlockSizes } from '@plone/volto/components/manage/Blocks/Teaser/utils';
 
 // block sidebar schemas (not the Dexterity Layout block settings schemas)
 import ListingBlockSchema from '@plone/volto/components/manage/Blocks/Listing/schema';
@@ -507,6 +508,7 @@ const blocksConfig = {
     sidebarTab: 1,
     blockSchema: TeaserSchema,
     dataAdapter: TeaserBlockDataAdapter,
+    getSizes: getTeaserBlockSizes,
     variations: [
       {
         id: 'default',

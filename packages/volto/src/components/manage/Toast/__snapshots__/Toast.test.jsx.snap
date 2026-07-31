@@ -23,6 +23,11 @@ exports[`renders a Toast info component 1`] = `
   <div
     className="toast-inner-content"
   >
+    <span
+      className="visually-hidden"
+    >
+      Information
+    </span>
     <h4>
       I'm a title
     </h4>
@@ -30,5 +35,6 @@ exports[`renders a Toast info component 1`] = `
       This is the content, lorem ipsum
     </div>
   </div>,
+  ",",
 ]
 `;

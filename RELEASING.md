@@ -78,14 +78,11 @@ The following is sample output.
 ```console
 packages/slots/news/7260.internal
 packages/components/news/7260.internal
-packages/client/news/7321.internal
-packages/client/news/7260.internal
 packages/blocks/news/7260.internal
 [
   'packages/volto',
   'packages/volto-slate',
   'packages/components',
-  'packages/client',
 ]
 ```
 

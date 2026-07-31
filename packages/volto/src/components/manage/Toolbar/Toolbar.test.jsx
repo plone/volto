@@ -5,6 +5,7 @@ import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import thunk from 'redux-thunk';
+import { CookiesProvider } from 'react-cookie';
 import { PluggablesProvider } from '@plone/volto/components/manage/Pluggable';
 
 import Toolbar from './Toolbar';
@@ -130,11 +131,13 @@ describe('Toolbar', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <PluggablesProvider>
-          <MemoryRouter>
-            <Toolbar pathname="/test" inner={<span />} />
-          </MemoryRouter>
-        </PluggablesProvider>
+        <CookiesProvider>
+          <PluggablesProvider>
+            <MemoryRouter>
+              <Toolbar pathname="/test" inner={<span />} />
+            </MemoryRouter>
+          </PluggablesProvider>
+        </CookiesProvider>
       </Provider>,
     );
     const json = component.toJSON();
@@ -264,11 +267,13 @@ describe('Toolbar', () => {
     });
     const component = renderer.create(
       <Provider store={store}>
-        <PluggablesProvider>
-          <MemoryRouter>
-            <Toolbar pathname="/test" inner={<span />} />
-          </MemoryRouter>
-        </PluggablesProvider>
+        <CookiesProvider>
+          <PluggablesProvider>
+            <MemoryRouter>
+              <Toolbar pathname="/test" inner={<span />} />
+            </MemoryRouter>
+          </PluggablesProvider>
+        </CookiesProvider>
       </Provider>,
     );
     const json = component.toJSON();

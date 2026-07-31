@@ -7,7 +7,7 @@ exports[`ContentsUploadModal > renders a contents upload modal component 1`] = `
   <div />
   <div
     class="ui page modals dimmer transition visible active"
-    style="display: flex;"
+    style="display: flex !important;"
   >
     <div
       class="ui modal transition visible active contents-upload-modal"
@@ -74,7 +74,7 @@ exports[`ContentsUploadModal > renders a contents upload modal component that on
   <div />
   <div
     class="ui page modals dimmer transition visible active"
-    style="display: flex;"
+    style="display: flex !important;"
   >
     <div
       class="ui modal transition visible active contents-upload-modal"
@@ -141,7 +141,7 @@ exports[`ContentsUploadModal > renders a contents upload modal component that on
   <div />
   <div
     class="ui page modals dimmer transition visible active"
-    style="display: flex;"
+    style="display: flex !important;"
   >
     <div
       class="ui modal transition visible active contents-upload-modal"
@@ -208,7 +208,7 @@ exports[`ContentsUploadModal > renders a contents upload modal component that on
   <div />
   <div
     class="ui page modals dimmer transition visible active"
-    style="display: flex;"
+    style="display: flex !important;"
   >
     <div
       class="ui modal transition visible active contents-upload-modal"

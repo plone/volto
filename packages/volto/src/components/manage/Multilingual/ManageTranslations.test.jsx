@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import config from '@plone/volto/registry';
 
 import ManageTranslations from './ManageTranslations';
@@ -41,18 +42,20 @@ describe('ManageTranslations', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <ManageTranslations
-            location={{
-              pathname: '/blog-post',
-              state: {
-                language: 'es',
-                translationOf: '/en/page-en',
-              },
-            }}
-          />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <ManageTranslations
+              location={{
+                pathname: '/blog-post',
+                state: {
+                  language: 'es',
+                  translationOf: '/en/page-en',
+                },
+              }}
+            />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

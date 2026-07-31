@@ -22,7 +22,7 @@ exports[`UsersControlpanel > renders a user control component 1`] = `
         Note that roles set here apply directly to a user. The symbol
         <svg
           class="icon"
-          style="height: 20px; width: auto; fill: #007EB1;"
+          style="height: 20px; width: auto; fill: rgb(0, 126, 177);"
           viewBox="0 0 36 36"
           xmlns="http://www.w3.org/2000/svg"
         >

@@ -8,6 +8,15 @@ import ContentsIndexHeader from './ContentsIndexHeader';
 
 const mockStore = configureStore([thunk]);
 
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
+
 describe('ContentsIndexHeader', () => {
   it('renders a contents titles component', () => {
     const store = mockStore({
@@ -19,11 +28,9 @@ describe('ContentsIndexHeader', () => {
     const component = renderer.create(
       <Provider store={store}>
         <ContentsIndexHeader
+          id="review_state"
           width={1}
           label="Review state"
-          onOrderIndex={() => {}}
-          connectDragSource={(x) => x}
-          connectDropTarget={(x) => x}
           order={1}
           isDragging={false}
         />

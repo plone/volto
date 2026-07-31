@@ -102,6 +102,8 @@ let config = {
     internalApiPath: process.env.RAZZLE_INTERNAL_API_PATH || undefined,
     subpathPrefix: process.env.RAZZLE_SUBPATH_PREFIX || '',
     websockets: process.env.RAZZLE_WEBSOCKETS || false,
+    // Overrides the API traversal suffix. An empty string disables it.
+    apiSuffix: process.env.RAZZLE_API_SUFFIX,
     // TODO: legacyTraverse to be removed when the use of the legacy traverse is deprecated.
     legacyTraverse: process.env.RAZZLE_LEGACY_TRAVERSE || false,
     cookieExpires: 15552000, //in seconds. Default is 6 month (15552000)
@@ -117,6 +119,7 @@ let config = {
     defaultPageSize: 25,
     supportedLanguages: Object.keys(languages),
     navDepth: 1,
+    siteMapDepth: 4,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
     verticalFormTabs: false,
@@ -179,10 +182,18 @@ let config = {
       includeSiteTitle: false,
       titleAndSiteTitleSeparator: '-',
     },
+    layout: {
+      // used to set `sizes` for images
+      tabletBreakpoint: 768,
+      defaultContainerWidth: 1200,
+    },
   },
   experimental: {
     addBlockButton: {
       enabled: true,
+    },
+    saveAsDraft: {
+      enabled: false,
     },
   },
   widgets: {},

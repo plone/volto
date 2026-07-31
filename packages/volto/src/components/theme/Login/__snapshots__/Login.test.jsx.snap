@@ -143,9 +143,11 @@ exports[`Login > renders a login component 1`] = `
         >
           <button
             aria-label="Log in"
-            className="ui basic icon primary right floated button"
+            className="ui basic icon primary disabled right floated button"
+            disabled={true}
             id="login-form-submit"
             onClick={[Function]}
+            tabIndex={-1}
             title="Log in"
             type="submit"
           >

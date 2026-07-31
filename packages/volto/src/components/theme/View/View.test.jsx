@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 
 import View from './View';
 import config from '@plone/volto/registry';
@@ -158,10 +159,12 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <>
-          <View location={{ pathname: '/test' }} />
-          <div id="toolbar"></div>
-        </>
+        <CookiesProvider>
+          <>
+            <View location={{ pathname: '/test' }} />
+            <div id="toolbar"></div>
+          </>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -181,10 +184,12 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <>
-          <View location={{ pathname: '/test' }} />
-          <div id="toolbar"></div>
-        </>
+        <CookiesProvider>
+          <>
+            <View location={{ pathname: '/test' }} />
+            <div id="toolbar"></div>
+          </>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -204,10 +209,12 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <>
-          <View location={{ pathname: '/test' }} />
-          <div id="toolbar"></div>
-        </>
+        <CookiesProvider>
+          <>
+            <View location={{ pathname: '/test' }} />
+            <div id="toolbar"></div>
+          </>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -227,10 +234,12 @@ describe('View', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <>
-          <View location={{ pathname: '/test' }} />
-          <div id="toolbar"></div>
-        </>
+        <CookiesProvider>
+          <>
+            <View location={{ pathname: '/test' }} />
+            <div id="toolbar"></div>
+          </>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -258,20 +267,24 @@ describe('View', () => {
     });
     const { rerender } = render(
       <Provider store={store}>
-        <>
-          <View location={{ pathname: '/test' }} />
-          <div id="toolbar"></div>
-        </>
+        <CookiesProvider>
+          <>
+            <View location={{ pathname: '/test' }} />
+            <div id="toolbar"></div>
+          </>
+        </CookiesProvider>
       </Provider>,
     );
     expect(instanceCount).toBe(1);
     store.getState().content.data['@id'] = '/b';
     rerender(
       <Provider store={store}>
-        <>
-          <View location={{ pathname: '/test' }} />
-          <div id="toolbar"></div>
-        </>
+        <CookiesProvider>
+          <>
+            <View location={{ pathname: '/test' }} />
+            <div id="toolbar"></div>
+          </>
+        </CookiesProvider>
       </Provider>,
     );
     expect(instanceCount).toBe(2);

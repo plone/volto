@@ -1,2 +1,7 @@
-declare const _default: any;
-export default _default;
+export default Diff;
+/**
+ * Diff component.
+ * @function Diff
+ * @returns {JSX.Element}
+ */
+declare function Diff(): JSX.Element;

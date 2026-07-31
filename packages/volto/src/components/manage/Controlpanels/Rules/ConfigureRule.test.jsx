@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
@@ -23,12 +24,14 @@ describe('ConfigureRule', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <>
-          <ConfigureRule
-            location={{ pathname: '/controlpanel/rules/:id/configure' }}
-          />
-          <div id="toolbar"></div>
-        </>
+        <CookiesProvider>
+          <>
+            <ConfigureRule
+              location={{ pathname: '/controlpanel/rules/:id/configure' }}
+            />
+            <div id="toolbar"></div>
+          </>
+        </CookiesProvider>
       </Provider>,
     );
 

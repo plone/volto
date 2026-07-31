@@ -1,2 +1,2 @@
-declare const _default: any;
+declare const _default: (props: any) => import("react/jsx-runtime").JSX.Element;
 export default _default;

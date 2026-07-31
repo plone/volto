@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb, Breadcrumbs } from './Breadcrumbs.quanta';
-import { Menu } from '../Menu/Menu.quanta';
+import { Button } from '../Button/Button.quanta';
+import { Menu, MenuItem, MenuTrigger } from '../Menu/Menu.quanta';
 import {
   FolderIcon,
   HomeIcon,
@@ -121,19 +122,19 @@ export const NoRoot: Story = {
 };
 
 const longItems = [
-  { '@id': '/folder', label: 'Folder' },
-  { '@id': '/folder/folderB', label: 'Folder with long name' },
+  { '@id': '/folder', title: 'Folder' },
+  { '@id': '/folder/folderB', title: 'Folder with long name' },
   {
     '@id': '/folder/folderB/folderC',
-    label: 'Folder with long name and a bit more',
+    title: 'Folder with long name and a bit more',
   },
   {
     '@id': '/folder/folderB/folderC/folderD',
-    label: 'Folder with long name even more long',
+    title: 'Folder with long name even more long',
   },
   {
     '@id': '/folder/folderB/folderC/folderD/folderE',
-    label: 'Folder',
+    title: 'Folder',
   },
   { '@id': '/folder/page', title: 'Page' },
 ];
@@ -156,11 +157,18 @@ export const LotsOfItems: Story = {
           {first?.title}
         </Breadcrumb>
         <Breadcrumb>
-          <Menu
-            menuItems={inner}
-            button={<MoreoptionsIcon />}
-            placement="bottom"
-          ></Menu>
+          <MenuTrigger placement="bottom">
+            <Button variant="icon" aria-label="More breadcrumb items">
+              <MoreoptionsIcon className="h-4 w-4" />
+            </Button>
+            <Menu>
+              {inner.map((item) => (
+                <MenuItem key={item['@id']} id={item['@id']} href={item['@id']}>
+                  {item.title}
+                </MenuItem>
+              ))}
+            </Menu>
+          </MenuTrigger>
         </Breadcrumb>
         <Breadcrumb id={last?.['@id']} href={last?.['@id']}>
           {last?.title}

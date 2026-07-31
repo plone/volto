@@ -3,13 +3,19 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2026-05-10 15:46+0000\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language: hi\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/plone/volto-main/hi/>\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"MIME-Version: 1.0\n"
+"X-Generator: Weblate 2026.5-dev\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -461,6 +467,8 @@ msgstr "उपलब्ध कंटेंट नियम:"
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
@@ -505,6 +513,17 @@ msgstr "मूल खोज क्वेरी"
 msgid "Block"
 msgstr "ब्लॉक"
 
+#. Default: "Block Type"
+#: components/manage/Controlpanels/BlockTypes
+msgid "Block Type"
+msgstr ""
+
+#. Default: "Block Types"
+#: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/Controlpanels
+msgid "Block Types"
+msgstr ""
+
 #. Default: "Both"
 #: components/manage/Controlpanels/Aliases
 msgid "Both"
@@ -541,10 +560,10 @@ msgstr "साइट ब्राउज़ करें, एक छवि छो
 msgid "BulkUploadAltUrls"
 msgstr ""
 
-#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+#. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
-msgstr "डिफ़ॉल्ट रूप से, इस आइटम के कंटेनर से अनुमतियाँ विरासत में होती हैं। यदि आप इसे अक्षम करते हैं, तो केवल स्पष्ट रूप से परिभागित अनुमतियाँ मान्य होंगी। अवलोकन में, प्रतीक {inherited} एक विरासत मान को दर्शाता है। उसी तरह, प्रतीक {global} एक वैश्विक भूमिका को दर्शाता है, जो साइट प्रशासक द्वारा प्रबंधित की जाती है।"
+msgstr "डिफ़ॉल्ट रूप से, इस आइटम के कंटेनर से अनुमतियाँ विरासत में मिलती हैं। यदि आप इसे अक्षम करते हैं, तो केवल स्पष्ट रूप से परिभाषित साझा करने की अनुमतियाँ ही मान्य होंगी। अवलोकन में, विरासत में मिले मानों को स्पष्ट रूप से 'विरासत में मिला मान' के रूप में लेबल किया जाता है और उन्हें हरा चेक मार्क {inherited} मिलता है। इसी तरह, साइट प्रशासक द्वारा प्रबंधित भूमिकाओं को 'वैश्विक भूमिका' के रूप में लेबल किया जाता है और उन्हें नीला चेक मार्क {global} मिलता है।."
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -680,6 +699,11 @@ msgstr "एक फ़ाइल चुनें"
 msgid "Clear"
 msgstr "साफ़ करें"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "URL साफ़ करें"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -694,6 +718,11 @@ msgstr "फ़िल्टर साफ़ करें"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
 msgstr "खोज साफ़ करें"
+
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "चयन साफ़ करें"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -842,7 +871,7 @@ msgstr "{title} से लिंक या संदर्भित कंटे
 #. Default: "Content title"
 #: components/manage/Blocks/Title/Edit
 msgid "Content title"
-msgstr ""
+msgstr "सामग्री शीर्षक"
 
 #. Default: "Content type created"
 #: components/manage/Controlpanels/ContentTypes
@@ -1112,11 +1141,6 @@ msgstr "हटा दिया गया"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "गहराई"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1219,18 +1243,23 @@ msgstr "आयोजन डाउनलोड करें"
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "{filename} डाउनलोड करें"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "अपने कंप्यूटर से फ़ाइलें इस क्षेत्र पर खींचें और छोड़ें या 'ब्राउज़' बटन पर क्लिक करें।"
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "मौजूदा फ़ाइल को बदलने के लिए यहाँ फ़ाइल ड्रॉप करें"
+msgstr "फ़ाइल अपलोड क्षेत्र। मौजूदा फ़ाइल को बदलने के लिए Enter दबाएं या क्लिक करें"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1329,6 +1358,11 @@ msgstr "ईमेल भेजा गया"
 #: components/manage/Blocks/Maps/Edit
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "एम्बेड कोड त्रुटि, कृपया निर्देशों का पालन करें और पुनः प्रयास करें।"
+
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
 
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
@@ -1585,6 +1619,11 @@ msgstr ""
 msgid "File size"
 msgstr "फ़ाइल का आकार"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file."
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "फ़ाइल अपलोड क्षेत्र। मौजूदा फ़ाइल को बदलने के लिए Enter दबाएं या क्लिक करें"
+
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -1600,7 +1639,7 @@ msgstr "फ़ाइल का नाम"
 #: components/manage/Contents/ContentsUploadModal
 #: components/manage/Contents/DropZoneContent
 msgid "Files uploaded: {uploadedFiles}"
-msgstr ""फ़ाइलें अपलोड की गईं: {uploadedFiles}"
+msgstr "\"फ़ाइलें अपलोड की गईं: {uploadedFiles}"
 
 #. Default: "Fills the value of the form field with the value supplied by a query parameter inside the URL with the given name."
 #: components/manage/Widgets/SchemaWidget
@@ -1647,6 +1686,11 @@ msgstr "संबंधों को सुधारें"
 #: config/Blocks
 msgid "Fixed width table cells"
 msgstr "स्थिर चौड़ाई वाली तालिका कक्ष"
+
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "इस पर ध्यान दें"
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -1710,11 +1754,6 @@ msgstr "सामान्य"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "वैश्विक भूमिका"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "गूगल मानचित्र एम्बेडेड ब्लॉक"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
@@ -1999,6 +2038,11 @@ msgstr ""
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 msgstr "पासवर्ड और पासवर्ड रीसेट संदेश को ईमेल द्वारा भेजने का अनुरोध करने के लिए दोनों को परिभाषित करने की अनुमति नहीं है। आपको उनमें से एक का चयन करना होगा।"
 
+#. Default: "Item"
+#: components/manage/Controlpanels/BlockType
+msgid "Item"
+msgstr ""
+
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
 msgid "Item batch size"
@@ -2199,6 +2243,7 @@ msgstr "अधिक लोड करें"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "लोड हो रहा है"
 
@@ -2325,6 +2370,16 @@ msgstr "मध्यम"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "सदस्यता अपडेट की गई"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
@@ -2641,6 +2696,17 @@ msgstr "ऑब्जेक्ट का आकार"
 msgid "Occurences"
 msgstr "आयोजनएं"
 
+#. Default: "Occurrences"
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
+msgid "Occurrences"
+msgstr ""
+
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2649,7 +2715,12 @@ msgstr "ठीक है"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "केवल 7-बिट बाइट वाले वर्ण प्रयोग किए जा सकते हैं। अपरकेस अक्षर, विशेष वर्ण: <, >, &, #, /, ?, या अन्य जो यूआरएल में अवैध हैं, का प्रयोग नहीं किया जा सकता। नहीं शुरू हो सकता: _, aq_, @@, ++। __ के साथ समाप्त नहीं हो सकता। नहीं हो सकता: request,contributors, ., .., ""। नई पंक्तियों को नहीं शामिल किया जा सकता।"
+msgstr "केवल 7-बिट बाइट वाले वर्ण प्रयोग किए जा सकते हैं। अपरकेस अक्षर, विशेष वर्ण: <, >, &, #, /, ?, या अन्य जो यूआरएल में अवैध हैं, का प्रयोग नहीं किया जा सकता। नहीं शुरू हो सकता: _, aq_, @@, ++। __ के साथ समाप्त नहीं हो सकता। नहीं हो सकता: request,contributors, ., .., \"\"। नई पंक्तियों को नहीं शामिल किया जा सकता।"
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "URL ब्राउज़र खोलें"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2726,6 +2797,11 @@ msgstr "चिपकाएं"
 #: helpers/MessageLabels/MessageLabels
 msgid "Paste blocks"
 msgstr "ब्लॉक चिपकाएं"
+
+#. Default: "Path"
+#: components/manage/Controlpanels/BlockType
+msgid "Path"
+msgstr ""
 
 #. Default: "Perform the following actions:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -2824,6 +2900,16 @@ msgstr "प्लोन फाउंडेशन"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "प्लोन{reg} ओपन सोर्स सीएमएस/डब्ल्यूसीएम"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "पॉप-अप बंद हुआ।"
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "पॉप-अप खुला: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
@@ -2844,10 +2930,10 @@ msgstr "प्लोन और पायथन द्वारा संचा�
 msgid "Preferences"
 msgstr "पसंद"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "फ़ाइल अपलोड क्षेत्र। फ़ाइल ब्राउज़र खोलने के लिए Enter दबाएं या क्लिक करें"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3964,6 +4050,11 @@ msgstr ""
 msgid "Third"
 msgstr "तीसरा"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "यह फ़ील्ड अनिवार्य है।"
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4153,6 +4244,16 @@ msgstr "यूआरएल प्रबंधन"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "{title} के लिए यूआरएल प्रबंधन"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr ""
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL गायब है"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -4564,10 +4665,10 @@ msgstr ""
 msgid "You are about to delete all items in the current pagination of this folder."
 msgstr ""
 
-#. Default: "You are trying to access a protected resource, please {login} first."
+#. Default: "You are trying to access a protected resource."
 #: components/theme/Unauthorized/Unauthorized
-msgid "You are trying to access a protected resource, please {login} first."
-msgstr "आप एक संरक्षित संसाधन तक पहुँचने का प्रयास कर रहे हैं, कृपया पहले {लॉगिन} करें।"
+msgid "You are trying to access a protected resource."
+msgstr ""
 
 #. Default: "You are using an outdated browser"
 #: components/theme/OutdatedBrowser/OutdatedBrowser
@@ -4662,7 +4763,7 @@ msgstr "अपना नया पासवर्ड दर्ज करें�
 #. Default: "Enter a user name, usually something like \"jsmith\". No spaces or special characters. Usernames and passwords are case sensitive, make sure the caps lock key is not enabled. This is the name used to log in."
 #: helpers/MessageLabels/MessageLabels
 msgid "addUserFormUsernameDescription"
-msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: "jsmith" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
+msgstr "एक उपयोगकर्ता नाम दर्ज करें, सामान्यत: \"jsmith\" कुछ ऐसा। कोई रिक्त स्थान या विशेष वर्ण नहीं। उपयोगकर्ता नाम और पासवर्ड मामूली हैं, सुनिश्चित करें कि कैप्स लॉक कुंजी सक्षम नहीं है। यह लॉगिन के लिए उपयोग किया जाने वाला नाम है।"
 
 #. Default: "and {count} more…"
 #: components/manage/Contents/ContentsDeleteModal
@@ -4714,6 +4815,11 @@ msgstr "सामान्य"
 #: components/manage/Multilingual/CompareLanguages
 msgid "compare_to"
 msgstr "इस भाषा के साथ तुलना करें"
+
+#. Default: "Block: {title}"
+#: components/manage/Controlpanels/BlockType
+msgid "controlpanel_block_type"
+msgstr ""
 
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
@@ -4933,13 +5039,10 @@ msgstr "सूची"
 #. Default: "Loading"
 #: components/manage/Blocks/Listing/ListingBody
 #: components/manage/Contents/Contents
+#: components/manage/Controlpanels/BlockType
+#: components/manage/Controlpanels/BlockTypes
 msgid "loading"
 msgstr "लोड हो रहा है"
-
-#. Default: "log in"
-#: components/theme/Unauthorized/Unauthorized
-msgid "log in"
-msgstr "लॉग इन"
 
 #. Default: "Maps"
 #: config/Blocks
@@ -4992,6 +5095,11 @@ msgstr "नहीं"
 #: components/manage/Contents/ContentsItem
 msgid "no workflow state"
 msgstr "कोई वर्कफ़्लो स्थिति नहीं"
+
+#. Default: "No items found for type: {type}."
+#: components/manage/Controlpanels/BlockType
+msgid "no-blocks-found"
+msgstr ""
 
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
@@ -5303,6 +5411,26 @@ msgstr "पाठ"
 #: config/Blocks
 msgid "title"
 msgstr "शीर्षक"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "त्रुटि"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "जानकारी"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "सफलता"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "चेतावनी"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema
