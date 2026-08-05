@@ -1,1 +1,1 @@
-"This fixes the path to be correctly forwarded to the news item" @TimoBroeskamp
+Fix path used for rendering blocks in the `NewsItemView`. @TimoBroeskamp
