@@ -1,0 +1,1 @@
+Forces the use of webpack 5.105.4. This avoids compatibility errors with the version required by Storybook. @wesleybl
