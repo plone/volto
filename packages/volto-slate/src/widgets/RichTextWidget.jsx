@@ -16,7 +16,7 @@ import { createEmptyParagraph, createParagraph } from '../utils/blocks';
 import './style.css';
 
 const getValue = (value) => {
-  if (isUndefined(value) || !isUndefined(value?.data)) {
+  if (isUndefined(value) || isUndefined(value?.data)) {
     return [createEmptyParagraph()];
   }
   // Previously this was a text field
@@ -46,7 +46,7 @@ const SlateRichTextWidget = (props) => {
       <div
         className="slate_wysiwyg_box"
         role="textbox"
-        tabIndex="-1"
+        tabIndex={-1}
         style={{ boxSizing: 'initial' }}
         onClick={() => {
           setSelected(true);
