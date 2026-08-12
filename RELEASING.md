@@ -43,7 +43,7 @@ See `release-it` documentation of [GitHub releases](https://www.npmjs.com/packag
 The release process calls `towncrier`.
 It is a Python library that uses the Python utility `pipx`.
 This utility allows you to call and execute Python modules without installing them as a prerequisite in your system.
-It works similar to the NodeJS `npx` utility.
+It works similar to the Node.js `npx` utility.
 
 Install {term}`pipx` for your active Python, and ensure it is on your `$PATH`.
 Carefully read the console output for further instructions, if needed.
