@@ -17,6 +17,50 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.3.0 (2026-07-22)
+
+### Feature
+
+- Add the `apiSuffix` setting and `RAZZLE_API_SUFFIX` environment variable to configure the API traversal suffix. 
+
+### Bugfix
+
+- Silence the Node 24 `DEP0169` (`url.parse()`) and `DEP0060` (`util._extend`) deprecation warnings shown when running/building a Volto project. Volto's own server code (`server.jsx`, `devproxy.js`) now uses the WHATWG `URL` API, and pnpm patches update the archived `react-dev-utils` (build/dev-server) and `http-proxy` (dev proxy `util._extend`) dependencies. @sneridagh 
+
+### Internal
+
+- Remove unused react-medium-image-zoom @Tishasoumya-02 
+
+## 19.2.0 (2026-07-20)
+
+### Feature
+
+- Added an `offset` setting to the Listing block, skipping the first N results of its query and paginating over the remainder. A block limited to the latest N items and a second block offset by N now compose without repeating results. @ericof [#8385](https://github.com/plone/volto/issues/8385)
+
+### Bugfix
+
+- Fix development-mode portrait passthrough for Plone by routing requests through the `++api++` traversal layer. @sneridagh [#8390](https://github.com/plone/volto/issues/8390)
+
+## 19.1.6 (2026-07-16)
+
+### Feature
+
+- Add loading feedback for working copy actions in More toolbar. @wesleybl [#8362](https://github.com/plone/volto/issues/8362)
+
+### Bugfix
+
+- Added consistent visible focus for interactive components to improve accessibility. @Wagner3UB [#7850](https://github.com/plone/volto/issues/7850)
+- Restored original i18n `msgid` keys in `FileWidget` and `RegistryImageWidget` that were inadvertently renamed in #7982, breaking backward compatibility with existing translations. Added missing translations for all 65 supported languages. @Wagner3UB [#8334](https://github.com/plone/volto/issues/8334)
+- Debounce search input in ObjectBrowserBody. @wesleybl [#8365](https://github.com/plone/volto/issues/8365)
+- Renamed the selector in {file}`focus.less` so that skiplinks focus styles apply correctly. @Wagner3UB [#8382](https://github.com/plone/volto/issues/8382)
+- Stopped the Block Types control panel from crashing when an add-on configures a block that was never registered, which leaves behind an entry with no id or no title. Those entries are not blocks, and are no longer listed. @ericof [#8384](https://github.com/plone/volto/issues/8384)
+
+### Internal
+
+- Added Cypress regression tests for slate Backspace behavior near styled/link inline elements. @avoinea [#8347](https://github.com/plone/volto/issues/8347)
+- Use Plone 6.2.1. @wesleybl [#8364](https://github.com/plone/volto/issues/8364)
+- Remove unused dependency `linkify-it`. @davisagli 
+
 ## 19.1.5 (2026-07-01)
 
 ### Bugfix

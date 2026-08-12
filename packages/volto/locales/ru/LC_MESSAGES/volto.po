@@ -2702,6 +2702,11 @@ msgstr "Повторения"
 msgid "Occurrences"
 msgstr ""
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"

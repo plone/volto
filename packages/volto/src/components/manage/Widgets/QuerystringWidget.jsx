@@ -19,6 +19,10 @@ const messages = defineMessages({
     id: 'Results limit',
     defaultMessage: 'Results limit',
   },
+  offset: {
+    id: 'Offset',
+    defaultMessage: 'Offset',
+  },
   itemBatchSize: {
     id: 'Item batch size',
     defaultMessage: 'Item batch size',
@@ -34,7 +38,14 @@ export const objectSchema = ({ intl, isDisabled, value }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: ['query', 'sort_on', 'sort_order_boolean', 'limit', 'b_size'],
+      fields: [
+        'query',
+        'sort_on',
+        'sort_order_boolean',
+        'limit',
+        'offset',
+        'b_size',
+      ],
     },
   ],
   properties: {
@@ -56,6 +67,12 @@ export const objectSchema = ({ intl, isDisabled, value }) => ({
       title: intl.formatMessage(messages.limit),
       type: 'number',
       isDisabled: isDisabled,
+    },
+    offset: {
+      title: intl.formatMessage(messages.offset),
+      type: 'number',
+      isDisabled: isDisabled,
+      default: 0,
     },
     b_size: {
       title: intl.formatMessage(messages.itemBatchSize),

@@ -1,0 +1,36 @@
+diff --git a/WebpackDevServerUtils.js b/WebpackDevServerUtils.js
+index d9eea34..e3d2598 100644
+--- a/WebpackDevServerUtils.js
++++ b/WebpackDevServerUtils.js
+@@ -230,8 +230,7 @@ function createCompiler({
+ }
+ 
+ function resolveLoopback(proxy) {
+-  const o = url.parse(proxy);
+-  o.host = undefined;
++  const o = new url.URL(proxy);
+   if (o.hostname !== 'localhost') {
+     return proxy;
+   }
+@@ -255,7 +254,7 @@ function resolveLoopback(proxy) {
+   } catch (_ignored) {
+     o.hostname = '127.0.0.1';
+   }
+-  return url.format(o);
++  return o.href;
+ }
+ 
+ // We need to provide a custom onError function for httpProxyMiddleware.
+diff --git a/printHostingInstructions.js b/printHostingInstructions.js
+index 49433f7..c14629d 100644
+--- a/printHostingInstructions.js
++++ b/printHostingInstructions.js
+@@ -21,7 +21,7 @@ function printHostingInstructions(
+ ) {
+   if (publicUrl && publicUrl.includes('.github.io/')) {
+     // "homepage": "http://user.github.io/project"
+-    const publicPathname = url.parse(publicPath).pathname;
++    const publicPathname = new url.URL(publicPath, 'http://localhost').pathname;
+     const hasDeployScript =
+       typeof appPackage.scripts !== 'undefined' &&
+       typeof appPackage.scripts.deploy !== 'undefined';

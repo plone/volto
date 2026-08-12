@@ -102,6 +102,14 @@ catalogs:
 
 pnpmfileChecksum: sha256-WUpdqnyQl6o6FiaFJwVm56xjaWIronnBe1XtXkplmyQ=
 
+patchedDependencies:
+  http-proxy@1.18.1:
+    hash: 07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51
+    path: patches/http-proxy@1.18.1.patch
+  react-dev-utils@12.0.1:
+    hash: ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60
+    path: patches/react-dev-utils@12.0.1.patch
+
 importers:
 
   .:
@@ -593,9 +601,6 @@ importers:
       react-intl-redux:
         specifier: 2.3.0
         version: 2.3.0(@babel/runtime@7.28.6)(prop-types@15.7.2)(react-intl@3.12.1(@types/react@18.3.28)(react@18.2.0))(react-redux@8.1.2(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(redux@4.2.1))(react@18.2.0)
-      react-medium-image-zoom:
-        specifier: 3.0.15
-        version: 3.0.15(prop-types@15.7.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-popper:
         specifier: ^2.3.0
         version: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -1161,7 +1166,7 @@ importers:
         version: 4.2.18(webpack@5.105.4(esbuild@0.25.12))
       react-dev-utils:
         specifier: ^12.0.1
-        version: 12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12))
+        version: 12.0.1(patch_hash=ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60)(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12))
       react-refresh:
         specifier: 0.14.0
         version: 0.14.0
@@ -1234,7 +1239,7 @@ importers:
         version: 26.6.2
       react-dev-utils:
         specifier: ^12.0.1
-        version: 12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4)
+        version: 12.0.1(patch_hash=ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60)(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4)
       react-error-overlay:
         specifier: ^6.0.7
         version: 6.0.9
@@ -8940,13 +8945,6 @@ packages:
 
   react-lifecycles-compat@3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
-
-  react-medium-image-zoom@3.0.15:
-    resolution: {integrity: sha512-OJc6XXmSFr0ApniFdCL1TliP6BG9eQabkcahWA9CbHha3y2IJXo1aAsQs7Irc2Wcek/N9QCeAY4wTitoMg5iLg==}
-    peerDependencies:
-      prop-types: ^15.5.8
-      react: ^16.0.0
-      react-dom: ^16.0.0
 
   react-moment-proptypes@1.8.1:
     resolution: {integrity: sha512-Er940DxWoObfIqPrZNfwXKugjxMIuk1LAuEzn23gytzV6hKS/sw108wibi9QubfMN4h+nrlje8eUCSbQRJo2fQ==}
@@ -16886,7 +16884,7 @@ snapshots:
   http-proxy-middleware@2.0.9(@types/express@4.17.25):
     dependencies:
       '@types/http-proxy': 1.17.17
-      http-proxy: 1.18.1
+      http-proxy: 1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.8
@@ -16898,7 +16896,7 @@ snapshots:
   http-proxy-middleware@2.0.9(@types/express@4.17.25)(debug@4.3.4):
     dependencies:
       '@types/http-proxy': 1.17.17
-      http-proxy: 1.18.1(debug@4.3.4)
+      http-proxy: 1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)(debug@4.3.4)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
       micromatch: 4.0.8
@@ -16907,7 +16905,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  http-proxy@1.18.1:
+  http-proxy@1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51):
     dependencies:
       eventemitter3: 4.0.7
       follow-redirects: 1.16.0(debug@4.4.3)
@@ -16915,7 +16913,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  http-proxy@1.18.1(debug@4.3.4):
+  http-proxy@1.18.1(patch_hash=07726fb7066b6406afbabe5925e09ce1e21ac1e8004ae090d2db4336244d0a51)(debug@4.3.4):
     dependencies:
       eventemitter3: 4.0.7
       follow-redirects: 1.16.0(debug@4.3.4)
@@ -19036,7 +19034,7 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  react-dev-utils@12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12)):
+  react-dev-utils@12.0.1(patch_hash=ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60)(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4(esbuild@0.25.12)):
     dependencies:
       '@babel/code-frame': 7.29.0
       address: 1.1.2
@@ -19070,7 +19068,7 @@ snapshots:
       - supports-color
       - vue-template-compiler
 
-  react-dev-utils@12.0.1(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4):
+  react-dev-utils@12.0.1(patch_hash=ac086ebbd8dd73e29a29e11cb55684f0d8768de6273b64d111c710d67969fb60)(eslint@8.57.1)(typescript@5.9.3)(webpack@5.105.4):
     dependencies:
       '@babel/code-frame': 7.29.0
       address: 1.1.2
@@ -19200,12 +19198,6 @@ snapshots:
   react-is@18.3.1: {}
 
   react-lifecycles-compat@3.0.4: {}
-
-  react-medium-image-zoom@3.0.15(prop-types@15.7.2)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
-    dependencies:
-      prop-types: 15.7.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
 
   react-moment-proptypes@1.8.1(moment@2.29.4):
     dependencies:

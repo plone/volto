@@ -2702,6 +2702,11 @@ msgstr "Ocorrências"
 msgid "Occurrences"
 msgstr "Ocorrências"
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr "Deslocamento inicial"
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
