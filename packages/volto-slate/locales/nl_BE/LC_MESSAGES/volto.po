@@ -1,0 +1,185 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: nl-BE\n"
+"Language-Name: nl-BE\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: DOMAIN\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: nl-BE\n"
+
+#. Default: "Add link"
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr "Koppeling toevoegen"
+
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr ""
+
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr ""
+
+#. Default: "Bottom"
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr "Onderaan"
+
+#. Default: "Center"
+#: blocks/Table/TableBlockEdit
+msgid "Center"
+msgstr "Centreren"
+
+#. Default: "Delete col"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete col"
+msgstr "Kolom verwijderen"
+
+#. Default: "Delete row"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete row"
+msgstr "Rij verwijderen"
+
+#. Default: "Delete table"
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr "Tabel verwijderen"
+
+#. Default: "Divide each row into separate cells"
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr "Verdeel elke rij in meerdere cellen"
+
+#. Default: "Edit element"
+#: elementEditor/messages
+msgid "Edit element"
+msgstr "Element bewerken"
+
+#. Default: "Edit link"
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+msgid "Edit link"
+msgstr "Koppeling bewerken"
+
+#. Default: "Fixed width table cells"
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr "Tabelcellen met vaste breedte"
+
+#. Default: "Hide headers"
+#: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr "Koppen verbergen"
+
+#. Default: "Insert col after"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col after"
+msgstr "Kolom rechts invoegen"
+
+#. Default: "Insert col before"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col before"
+msgstr "Kolom links invoegen"
+
+#. Default: "Insert row after"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row after"
+msgstr "Rij onder toevoegen"
+
+#. Default: "Insert row before"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row before"
+msgstr "Rij boven invoegen"
+
+#. Default: "Left"
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr "Links"
+
+#. Default: "Make the table compact"
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr "Maak tabel compacter"
+
+#. Default: "Make the table sortable"
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr "Maak tabel sorteerbaar"
+
+#. Default: "Middle"
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr "Midden"
+
+#. Default: "No matching blocks"
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
+msgstr "Geen overeenkomstige blokken"
+
+#. Default: "Reduce complexity"
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr "Complexiteit verminderen"
+
+#. Default: "Remove element"
+#: elementEditor/messages
+msgid "Remove element"
+msgstr "Element verwijderen"
+
+#. Default: "Remove link"
+#: editor/plugins/AdvancedLink/index
+msgid "Remove link"
+msgstr "Koppeling verwijderen"
+
+#. Default: "Right"
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr "Rechts"
+
+#. Default: "Stripe alternate rows with color"
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr "Markeer afwisselend rijen met kleur"
+
+#. Default: "Table"
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr "Tabel"
+
+#. Default: "Table color inverted"
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr "Tabelkleur omgekeerd"
+
+#. Default: "Top"
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr "Bovenaan"
+
+#. Default: "Type text…"
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr "Typ tekst…"
+
+#. Default: "Visible only in view mode"
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr "Enkel zichtbaar in weergavemodus"
