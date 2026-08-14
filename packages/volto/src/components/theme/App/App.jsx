@@ -52,6 +52,31 @@ import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRendere
  * @class App
  * @extends {Component}
  */
+//added more languages
+const RTL_LANGUAGES = [
+  'ar',
+  'he',
+  'fa',
+  'ur',
+  'hi',
+  'bn',
+  'pa',
+  'gu',
+  'or',
+  'ta',
+  'te',
+  'kn',
+  'ml',
+  'si',
+  'th',
+  'lo',
+  'my',
+  'km',
+  'vi',
+  'zh',
+  'ja',
+  'ko',
+];
 export class App extends Component {
   /**
    * Property types.
@@ -121,12 +146,14 @@ export class App extends Component {
 
     const language =
       this.props.content?.language?.token ?? this.props.intl?.locale;
+    // determine text direction based on language
+    const textDirection = RTL_LANGUAGES.includes(language) ? 'rtl' : 'ltr';
 
     return (
       <PluggablesProvider>
         {language && (
           <Helmet>
-            <html lang={language} />
+            <html lang={language} dir={textDirection} />
           </Helmet>
         )}
         <BodyClass className={`view-${action}view`} />
