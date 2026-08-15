@@ -1,0 +1,1 @@
+Ignore keydown events in the Slate editor while an IME composition is active, so confirming a Japanese/Chinese/Korean conversion with Enter (or navigating candidates with arrow keys) is no longer misinterpreted as a keyboard shortcut or block navigation. @terapyon
