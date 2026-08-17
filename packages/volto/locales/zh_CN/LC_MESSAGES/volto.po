@@ -64,7 +64,7 @@ msgid "Actions"
 msgstr "操作"
 
 #. Default: "Activate and deactivate add-ons in the lists below."
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Activate and deactivate"
 msgstr "启用或者禁用"
 
@@ -95,7 +95,7 @@ msgid "Add (object list)"
 msgstr "添加（对象列表）"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
 msgstr "添加附件"
 
@@ -245,12 +245,12 @@ msgid "Add-on Configuration"
 msgstr "附加组件配置"
 
 #. Default: "Add-ons"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
 msgstr "附加组件"
 
 #. Default: "Add-ons Settings"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons Settings"
 msgstr "附加组件设置"
 
@@ -264,35 +264,35 @@ msgstr "已添加"
 msgid "Additional date"
 msgstr "附加日期"
 
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be installed"
-msgstr "无法安装附件"
+msgstr ""
 
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be uninstalled"
-msgstr "无法卸载附件"
+msgstr ""
 
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be upgraded"
-msgstr "无法升级附件"
+msgstr ""
 
-#. Default: "Addon installed succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr "附件安装成功"
+msgstr ""
 
-#. Default: "Addon uninstalled succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr "附件卸载成功"
+msgstr ""
 
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr "附件升级成功"
+msgstr ""
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -454,9 +454,14 @@ msgid "Autosaved content found"
 msgstr ""
 
 #. Default: "Available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available"
 msgstr "可用的"
+
+#. Default: "Available add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available add-ons"
+msgstr "可用的附加组件"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -466,7 +471,7 @@ msgstr "可用的内容规则"
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
@@ -1469,7 +1474,7 @@ msgstr ""
 
 #. Default: "Error"
 #: components/manage/Add/Add
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
@@ -1984,22 +1989,27 @@ msgid "Inspect relations"
 msgstr ""
 
 #. Default: "Install"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Install"
-msgstr "安装"
+msgstr ""
 
 #. Default: "Installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "已安装"
 
+#. Default: "Installed add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed add-ons"
+msgstr "已安装的附加组件"
+
 #. Default: "Installed version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed version"
 msgstr "已安装版本"
 
 #. Default: "Installing a third party add-on"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "正在安装第三方附加组件"
 
@@ -2139,7 +2149,7 @@ msgid "Latest available configuration"
 msgstr "最新可用配置"
 
 #. Default: "Latest version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Latest version"
 msgstr "最新版本"
 
@@ -2542,15 +2552,25 @@ msgstr ""
 msgid "No Transactions Selected To Do Undo"
 msgstr ""
 
+#. Default: "No upgrades in this corner. You are up to date. High fives."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Upgrades available"
+msgstr "这里没有更新。你是最新的。击个掌！"
+
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "未选择视频"
 
-#. Default: "No addons found"
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "没有可安装的插件。"
+
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
-msgstr "没有找到附件"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2581,6 +2601,11 @@ msgstr "在图像内容字段中没有设置图像"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "没有已安装的插件。"
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -2639,8 +2664,8 @@ msgstr "未找到结果。"
 msgid "No selection"
 msgstr "没有选择"
 
-#. Default: "This addon does not provide an uninstall profile."
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "This add-on does not provide an uninstall profile."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "没有卸载配置文件"
 
@@ -2935,6 +2960,21 @@ msgstr "偏好"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
 msgstr "文件上传区域。按 Enter 或单击以打开文件浏览器"
+
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "按 Enter 键安装此附加组件。"
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "按 Enter 键卸载此附加组件。"
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "按 Enter 键更新此附加组件。"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3793,7 +3833,7 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -4051,6 +4091,11 @@ msgstr ""
 msgid "Third"
 msgstr "第三"
 
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "此插件已更新。当前安装的配置文件版本为 {installedVersion}。新的可用配置文件版本为 {newVersion}。"
+
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
@@ -4295,7 +4340,7 @@ msgid "Unified"
 msgstr ""
 
 #. Default: "Uninstall"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Uninstall"
 msgstr "卸载"
 
@@ -4322,7 +4367,7 @@ msgid "Unsorted"
 msgstr "未排序"
 
 #. Default: "Update"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update"
 msgstr "更新"
 
@@ -4331,20 +4376,20 @@ msgstr "更新"
 msgid "Update User"
 msgstr ""
 
-#. Default: "Update installed addons"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons"
-msgstr "更新已安装的插件"
-
-#. Default: "Update installed addons:"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Update installed add-ons:"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr "更新已安装的插件："
+msgstr ""
 
 #. Default: "Updates available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "可用更新"
+
+#. Default: "Upgradable add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable add-ons"
+msgstr "可升级的附加组件"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -4390,6 +4435,11 @@ msgstr "上传文件"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "上传图像中"
+
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "使用箭头键在项目之间移动。"
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -5445,9 +5495,9 @@ msgid "toggleFacet"
 msgstr ""
 
 #. Default: "Update from version {origin} to {destination}"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr ""
+msgstr "从版本 {origin} 更新到 {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

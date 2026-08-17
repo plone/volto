@@ -63,7 +63,7 @@ msgid "Actions"
 msgstr "செயல்கள்"
 
 #. Default: "Activate and deactivate add-ons in the lists below."
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Activate and deactivate"
 msgstr "செயல்படுத்தவும் செயலிழக்கவும்"
 
@@ -94,7 +94,7 @@ msgid "Add (object list)"
 msgstr "சேர் (பொருள் பட்டியல்)"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
 msgstr "துணை நிரல்கள்"
 
@@ -244,12 +244,12 @@ msgid "Add-on Configuration"
 msgstr "கூடுதல் உள்ளமைவு"
 
 #. Default: "Add-ons"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
 msgstr "துணை நிரல்கள்"
 
 #. Default: "Add-ons Settings"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons Settings"
 msgstr "கூடுதல் அமைப்புகள்"
 
@@ -263,33 +263,33 @@ msgstr "சேர்க்கப்பட்டது"
 msgid "Additional date"
 msgstr "கூடுதல் தேதி"
 
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be installed"
 msgstr "துணை நிரலை நிறுவ முடியவில்லை"
 
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be uninstalled"
 msgstr "துணை நிரலை நிறுவல் நீக்க முடியவில்லை"
 
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be upgraded"
 msgstr "துணை நிரலை மேம்படுத்த முடியவில்லை"
 
-#. Default: "Addon installed succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
 msgstr "Addon வெற்றிகரமாக நிறுவப்பட்டது"
 
-#. Default: "Addon uninstalled succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
 msgstr "Addon வெற்றிகரமாக நிறுவல் நீக்குகிறது"
 
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
 msgstr "Addon வெற்றிகரமாக மேம்படுத்தப்பட்டது"
 
@@ -453,9 +453,14 @@ msgid "Autosaved content found"
 msgstr ""
 
 #. Default: "Available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available"
 msgstr "கிடைக்கிறது"
+
+#. Default: "Available add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available add-ons"
+msgstr "கிடைக்கும் கூடுதல் இணைப்புகள்"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -465,7 +470,7 @@ msgstr "கிடைக்கும் உள்ளடக்க விதிக�
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
@@ -1468,7 +1473,7 @@ msgstr "உள்ளீடுகள்"
 
 #. Default: "Error"
 #: components/manage/Add/Add
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
@@ -1983,22 +1988,27 @@ msgid "Inspect relations"
 msgstr "உறவுகளை ஆய்வு செய்யுங்கள்"
 
 #. Default: "Install"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Install"
 msgstr "நிறுவவும்"
 
 #. Default: "Installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "நிறுவப்பட்டது"
 
+#. Default: "Installed add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed add-ons"
+msgstr "நிறுவப்பட்ட கூடுதல் இணைப்புகள்"
+
 #. Default: "Installed version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed version"
 msgstr "நிறுவப்பட்ட பதிப்பு"
 
 #. Default: "Installing a third party add-on"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "மூன்றாம் தரப்பு துணை நிரலை நிறுவுதல்"
 
@@ -2138,7 +2148,7 @@ msgid "Latest available configuration"
 msgstr "அண்மைக் கால கிடைக்கக்கூடிய உள்ளமைவு"
 
 #. Default: "Latest version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Latest version"
 msgstr "அண்மைக் கால பதிப்பு"
 
@@ -2541,12 +2551,22 @@ msgstr "பரிவர்த்தனைகள் எதுவும் தே�
 msgid "No Transactions Selected To Do Undo"
 msgstr "செயல்தவிர் செய்ய பரிவர்த்தனைகள் எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
 
+#. Default: "No upgrades in this corner. You are up to date. High fives."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Upgrades available"
+msgstr "இங்கே மேம்படுத்தல்கள் இல்லை. நீங்கள் முழுமையாக புதுப்பிக்கப்பட்டுள்ளீர்கள். வாழ்த்துக்கள்."
+
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "வீடியோ எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
 
-#. Default: "No addons found"
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "நிறுவுவதற்கு எந்த சேர்க்கைகளும் கிடைக்கவில்லை."
+
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
 msgstr "எந்த துணை நிரலும் கிடைக்கவில்லை"
@@ -2580,6 +2600,11 @@ msgstr "பட உள்ளடக்க புலத்தில் எந்த
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "படங்கள் எதுவும் கிடைக்கவில்லை."
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "நிறுவப்பட்ட சேர்க்கைகள் எதுவும் இல்லை."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -2638,8 +2663,8 @@ msgstr "முடிவுகள் எதுவும் கிடைக்க�
 msgid "No selection"
 msgstr "தேர்வு இல்லை"
 
-#. Default: "This addon does not provide an uninstall profile."
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "This add-on does not provide an uninstall profile."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "நிறுவல் நீக்குதல் சுயவிவரம் இல்லை"
 
@@ -2934,6 +2959,21 @@ msgstr "விருப்பத்தேர்வுகள்"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
 msgstr "கோப்பு பதிவேற்றும் பகுதி. கோப்பு உலாவியைத் திறக்க Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
+
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "இந்த ஆட்-ஆனை நிறுவ Enter ஐ அழுத்தவும்."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "இந்த ஆட்-ஆனை நீக்க Enter ஐ அழுத்தவும்."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "இந்த ஆட்-ஆனை புதுப்பிக்க Enter ஐ அழுத்தவும்."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3792,7 +3832,7 @@ msgstr "சமர்ப்பிக்கவும்"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -4050,6 +4090,11 @@ msgstr "இந்த உருப்படிகளில் உடைந்த 
 msgid "Third"
 msgstr "மூன்றாவது"
 
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "இந்த சேர்க்கை புதுப்பிக்கப்பட்டது. தற்போது நிறுவப்பட்ட சுயவிவர பதிப்பு {installedVersion} ஆகும். புதிதாக கிடைக்கும் சுயவிவர பதிப்பு {newVersion} ஆகும்."
+
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
@@ -4294,7 +4339,7 @@ msgid "Unified"
 msgstr "ஒன்றுபட்ட"
 
 #. Default: "Uninstall"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Uninstall"
 msgstr "நிறுவல் நீக்க"
 
@@ -4321,7 +4366,7 @@ msgid "Unsorted"
 msgstr "வரிசைப்படுத்தப்படாதது"
 
 #. Default: "Update"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update"
 msgstr "புதுப்பிப்பு"
 
@@ -4330,20 +4375,20 @@ msgstr "புதுப்பிப்பு"
 msgid "Update User"
 msgstr "பயனரை புதுப்பிக்கவும்"
 
-#. Default: "Update installed addons"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons"
-msgstr "நிறுவப்பட்ட துணை நிரல்களைப் புதுப்பிக்கவும்"
-
-#. Default: "Update installed addons:"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Update installed add-ons:"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update installed addons:"
 msgstr "நிறுவப்பட்ட துணை நிரல்களைப் புதுப்பிக்கவும்:"
 
 #. Default: "Updates available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "புதுப்பிப்புகள் கிடைக்கின்றன"
+
+#. Default: "Upgradable add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable add-ons"
+msgstr "மேம்படுத்தக்கூடிய கூடுதல் இணைப்புகள்"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -4389,6 +4434,11 @@ msgstr "கோப்புகளைப் பதிவேற்றவும்"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "படத்தை பதிவேற்றுகிறது"
+
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "உருப்படிகளுக்கு இடையே செல்ல அம்புகளைப் பயன்படுத்தவும்."
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -5444,9 +5494,9 @@ msgid "toggleFacet"
 msgstr "TOGGLEFACET"
 
 #. Default: "Update from version {origin} to {destination}"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr "மேம்படுத்தல்கள்"
+msgstr "பதிப்பு {origin} இலிருந்து {destination} க்கு புதுப்பிக்கவும்"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

@@ -64,7 +64,7 @@ msgid "Actions"
 msgstr "Ekintzak"
 
 #. Default: "Activate and deactivate add-ons in the lists below."
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Activate and deactivate"
 msgstr "Aktibatu eta desaktibatu"
 
@@ -95,7 +95,7 @@ msgid "Add (object list)"
 msgstr "Gehitu"
 
 #. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
 msgstr "Gehitu gehigarriak"
 
@@ -245,12 +245,12 @@ msgid "Add-on Configuration"
 msgstr "Produktuen konfigurazioa"
 
 #. Default: "Add-ons"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
 msgstr "Produktuak"
 
 #. Default: "Add-ons Settings"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons Settings"
 msgstr "Gehigarrien ezarpenak"
 
@@ -264,35 +264,35 @@ msgstr "Ondo gehitu da"
 msgid "Additional date"
 msgstr "Data gehigarria"
 
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be installed"
-msgstr "Produktu gehigarria ezin izan da instalatu"
+msgstr ""
 
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be uninstalled"
-msgstr "Produktu gehigarria ezin izan da kendu"
+msgstr ""
 
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be upgraded"
-msgstr "Produktu gehigarria ezin izan da eguneratu"
+msgstr ""
 
-#. Default: "Addon installed succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr "Produktu gehigarria ondo instalatu da"
+msgstr ""
 
-#. Default: "Addon uninstalled succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr "Produktu gehigarria ondo kendu da"
+msgstr ""
 
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on upgraded succesfuly"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr "Produktu gehigarria ondo eguneratu da"
+msgstr ""
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -454,9 +454,14 @@ msgid "Autosaved content found"
 msgstr "Automatikoki gordetako edukia aurkitu da"
 
 #. Default: "Available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available"
 msgstr "Aukerak"
+
+#. Default: "Available add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available add-ons"
+msgstr "Osagarri erabilgarriak"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -466,7 +471,7 @@ msgstr "Erabilgarri dauden eduki-erregelak:"
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
@@ -1469,7 +1474,7 @@ msgstr "Sarrerak"
 
 #. Default: "Error"
 #: components/manage/Add/Add
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
@@ -1984,22 +1989,27 @@ msgid "Inspect relations"
 msgstr "Ikuskatu erlazioak"
 
 #. Default: "Install"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Install"
-msgstr "Instalatu"
+msgstr ""
 
 #. Default: "Installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "Instalatuta"
 
+#. Default: "Installed add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed add-ons"
+msgstr "Instalatutako osagarriak"
+
 #. Default: "Installed version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed version"
 msgstr "Instalatutako bertsioa"
 
 #. Default: "Installing a third party add-on"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "Hirugarrenen produktu gehigarriak instalatu"
 
@@ -2139,7 +2149,7 @@ msgid "Latest available configuration"
 msgstr "Azken konfigurazioa"
 
 #. Default: "Latest version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Latest version"
 msgstr "Azken bertsioa"
 
@@ -2542,15 +2552,25 @@ msgstr "Ez duzu transakziorik aukeratu"
 msgid "No Transactions Selected To Do Undo"
 msgstr "Ez duzu desegiteko transakziorik aukeratu"
 
+#. Default: "No upgrades in this corner. You are up to date. High fives."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Upgrades available"
+msgstr "Ez dago eguneratzerik hemen. Egunean zaude. Bostekoa!"
+
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "Ez da bideorik aukeratu"
 
-#. Default: "No addons found"
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "Ez dago instalatzeko gehigarririk erabilgarri."
+
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
-msgstr "Ez da gehigarririk aurkitu"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2581,6 +2601,11 @@ msgstr "Ez dago irudirik dagokion eremuan"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr "Ez da irudirik aurkitu."
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "Ez dago instalatutako gehigarririk."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -2639,8 +2664,8 @@ msgstr "Ez da emaitzarik aurkitu."
 msgid "No selection"
 msgstr "Ez da ezer aukeratu"
 
-#. Default: "This addon does not provide an uninstall profile."
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "This add-on does not provide an uninstall profile."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "Ez du desinstalatzeko profilik"
 
@@ -2935,6 +2960,21 @@ msgstr "Hobespenak"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
 msgstr "Fitxategiak igotzeko eremua. Sakatu Enter edo egin klik fitxategi-arakatzailea irekitzeko"
+
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Sakatu Enter gehigarri hau instalatzeko."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Sakatu Enter gehigarri hau desinstalatzeko."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Sakatu Enter gehigarri hau eguneratzeko."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3793,7 +3833,7 @@ msgstr "Bidali"
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -4051,6 +4091,11 @@ msgstr "Elementu hauek apurtutako eestekak izango dituzte"
 msgid "Third"
 msgstr "Hirugarren"
 
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Gehigarri hau eguneratu da. Instalatutako profilaren uneko bertsioa {installedVersion} da. Profilaren bertsio berri erabilgarria {newVersion} da."
+
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
@@ -4295,7 +4340,7 @@ msgid "Unified"
 msgstr "Elkartuta"
 
 #. Default: "Uninstall"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Uninstall"
 msgstr "Desinstalatu"
 
@@ -4322,7 +4367,7 @@ msgid "Unsorted"
 msgstr "Ordenatu gabe"
 
 #. Default: "Update"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update"
 msgstr "Eguneratu"
 
@@ -4331,20 +4376,20 @@ msgstr "Eguneratu"
 msgid "Update User"
 msgstr "Eguneratu erabiltzailea"
 
-#. Default: "Update installed addons"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons"
-msgstr "Eguneratu instalatutako gehigarriak"
-
-#. Default: "Update installed addons:"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Update installed add-ons:"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update installed addons:"
 msgstr "Eguneratu instalatutako gehigarriak:"
 
 #. Default: "Updates available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "Instalatu daitezkeen eguneraketak"
+
+#. Default: "Upgradable add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable add-ons"
+msgstr "Berritu daitezkeen osagarriak"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -4390,6 +4435,11 @@ msgstr "Kargatu fitxategiak"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "Irudia kargatzen"
+
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Erabili geziak elementuen artean mugitzeko."
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -5445,7 +5495,7 @@ msgid "toggleFacet"
 msgstr "Aktibatu/Desaktibatu"
 
 #. Default: "Update from version {origin} to {destination}"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
 msgstr "Eguneratu {origin} bertsiotik {destination} bertsiora"
 
