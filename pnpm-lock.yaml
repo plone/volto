@@ -863,6 +863,9 @@ importers:
       cypress-file-upload:
         specifier: 5.0.8
         version: 5.0.8(cypress@15.16.0)
+      cypress-real-events:
+        specifier: ^1.15.0
+        version: 1.15.0(cypress@15.16.0)
       deep-freeze:
         specifier: 0.0.1
         version: 0.0.1
@@ -5467,6 +5470,11 @@ packages:
     engines: {node: '>=8.2.1'}
     peerDependencies:
       cypress: '>3.0.0'
+
+  cypress-real-events@1.15.0:
+    resolution: {integrity: sha512-in98xxTnnM9Z7lZBvvVozm99PBT2eEOjXRG5LKWyYvQnj9mGWXMiPNpfw7e7WiraBFh7XlXIxnE9Cu5o+52kQQ==}
+    peerDependencies:
+      cypress: ^4.x || ^5.x || ^6.x || ^7.x || ^8.x || ^9.x || ^10.x || ^11.x || ^12.x || ^13.x || ^14.x || ^15.x
 
   cypress@15.16.0:
     resolution: {integrity: sha512-fy0M0c9xDLEp4v9y7LLKFeAQhIdDsobxDSKpD3JcZpqQefjy9TSzEyVV3HA0zu7hUi0bGHlSYlI7ASub8wgR9A==}
@@ -15292,6 +15300,10 @@ snapshots:
       cypress: 15.16.0
 
   cypress-file-upload@5.0.8(cypress@15.16.0):
+    dependencies:
+      cypress: 15.16.0
+
+  cypress-real-events@1.15.0(cypress@15.16.0):
     dependencies:
       cypress: 15.16.0
 

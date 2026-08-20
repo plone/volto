@@ -265,6 +265,7 @@
     "cypress": "catalog:",
     "cypress-axe": "1.7.0",
     "cypress-file-upload": "5.0.8",
+    "cypress-real-events": "^1.15.0",
     "deep-freeze": "0.0.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.2",
