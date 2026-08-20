@@ -1,6 +1,7 @@
 import '@testing-library/cypress/add-commands';
 import 'cypress-axe';
 import 'cypress-file-upload';
+import 'cypress-real-events';
 import './commands';
 import { setupGuillotina, tearDownGuillotina } from './guillotina';
 import { setup, teardown } from './reset-fixture';

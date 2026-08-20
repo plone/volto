@@ -115,6 +115,12 @@ export class Edit extends Component {
 
   blockNode = React.createRef();
 
+  // When the block is focused with the mouse, the caret has not been
+  // committed to the DOM yet, so selecting the block on focus (as with the
+  // keyboard) would lose the click position. Select on click instead; the
+  // keyboard focus behavior is preserved.
+  isMouseFocus = false;
+
   /**
    * Render method.
    * @method render
@@ -172,7 +178,16 @@ export class Edit extends Component {
             //   //   this.props.setUIState({ hovered: this.props.id });
             //   // }
             // }}
+            onMouseDownCapture={() => {
+              this.isMouseFocus = true;
+              setTimeout(() => {
+                this.isMouseFocus = false;
+              }, 0);
+            }}
             onFocus={(e) => {
+              if (this.isMouseFocus) {
+                return;
+              }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
                 this.props.onSelectBlock(
