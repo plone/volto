@@ -1208,22 +1208,27 @@ msgstr "நிகழ்வைப் பதிவிறக்கவும்"
 msgid "Download file"
 msgstr "கோப்பைப் பதிவிறக்கவும்"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "{filename} பதிவிறக்கம் செய்யவும்"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "உங்கள் கணினியிலிருந்து கோப்புகளை இந்த பகுதியில் இழுத்து விடுங்கள் அல்லது “உலாவு” பொத்தானைக் சொடுக்கு செய்க."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "இருக்கும் கோப்பை மாற்ற கோப்பை இங்கே விடுங்கள்"
+msgstr "கோப்பை இங்கே இழுத்து விடுங்கள் அல்லது இருக்கும் கோப்பை மாற்ற கிளிக் செய்யுங்கள்"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
-msgstr "புதிய கோப்பைப் பதிவேற்ற இங்கே கோப்பை விடுங்கள்"
+msgstr "இங்கே ஒரு கோப்பை இழுத்து விடுங்கள் அல்லது பதிவேற்ற கிளிக் செய்யுங்கள்"
 
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
@@ -1574,6 +1579,11 @@ msgstr "கோப்பு ஏற்றுக்கொள்ளப்பட்�
 msgid "File size"
 msgstr "கோப்பு அளவு"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "கோப்பு பதிவேற்ற பகுதி. தற்போதுள்ள கோப்பை மாற்ற Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
+
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -1636,6 +1646,11 @@ msgstr "உறவுகளை சரிசெய்யவும்"
 #: config/Blocks
 msgid "Fixed width table cells"
 msgstr "நிலையான அகல அட்டவணை செல்கள்"
+
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr ""
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -2310,6 +2325,16 @@ msgstr "சராசரி"
 msgid "Membership updated"
 msgstr "உறுப்பினர் புதுப்பிக்கப்பட்டது"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2842,10 +2867,10 @@ msgstr "ப்ளோன் & பைதான் மூலம் இயக்க�
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "கோப்பு பதிவேற்ற பகுதி. கோப்பு உலாவியைத் திறக்க Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3948,6 +3973,11 @@ msgstr "இந்த உருப்படிகளில் உடைந்த 
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "மூன்றாவது"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "இந்த புலம் தேவையானது."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

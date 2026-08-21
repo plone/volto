@@ -1213,22 +1213,27 @@ msgstr "Descargar Evento"
 msgid "Download file"
 msgstr "Descargar ficheiro"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Descargar {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrastra e solta ficheiros desde o teu ordenador nesta área o fai click no botón “Examinar”."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Solta o ficheiro aquí para substituir o ficheiro existente"
+msgstr "Arrastra un ficheiro aquí ou fai clic para substituír o ficheiro existente"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
-msgstr "Solta o ficheiro aquí para subir un novo ficheiro"
+msgstr "Arrastra un ficheiro aquí ou fai clic para subilo"
 
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
@@ -1579,6 +1584,11 @@ msgstr "O ficheiro non é do tipo aceptado {accept}"
 msgid "File size"
 msgstr "Tamaño do ficheiro"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Área de carga de ficheiros. Preme Intro ou fai clic para substituír o ficheiro existente"
+
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -1641,6 +1651,11 @@ msgstr "Reparar relacións"
 #: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Celas de táboa de ancho fixo"
+
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr ""
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -2315,6 +2330,16 @@ msgstr "Medio"
 msgid "Membership updated"
 msgstr "Subscrición actualizada"
 
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
+
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
 msgid "Message"
@@ -2847,10 +2872,10 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Preferencias"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr "Prema Intro para explorar os ficheiros do seu ordenador."
+msgstr "Área de carga de ficheiros. Prema Intro ou faga clic para abrir o explorador de ficheiros"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3953,6 +3978,11 @@ msgstr "Estes elementos terán ligazóns rotas"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Terceiro"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Este campo é obrigatorio."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
