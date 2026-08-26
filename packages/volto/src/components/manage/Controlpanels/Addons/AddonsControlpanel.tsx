@@ -32,7 +32,7 @@ const messages = defineMessages({
   addAddons: {
     id: 'Add Addons',
     defaultMessage:
-      'To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see',
+      'To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}.',
   },
   addonsSettings: {
     id: 'Add-ons Settings',
@@ -113,7 +113,7 @@ const messages = defineMessages({
   },
   addonUpgraded: {
     id: 'Addon upgraded succesfuly',
-    defaultMessage: 'Add-on upgraded succesfuly',
+    defaultMessage: 'Add-on upgraded successfully',
   },
   addonNotUpgraded: {
     id: 'Addon could not be upgraded',
@@ -301,17 +301,19 @@ const AddonsControlpanel = (props: Props) => {
               </h2>
               <FormattedMessage
                 id="Add Addons"
-                defaultMessage="To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+                defaultMessage="To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
+                values={{
+                  link: (
+                    <a
+                      href="https://6.docs.plone.org/volto/development/add-ons/install-an-add-on.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {intl.formatMessage(messages.installingAnAddon)}
+                    </a>
+                  ),
+                }}
               />
-              &nbsp;
-              <a
-                href="https://6.docs.plone.org/volto/development/add-ons/install-an-add-on.html"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {intl.formatMessage(messages.installingAnAddon)}
-              </a>
-              .
             </div>
             <AddonPanel
               type="upgradable"

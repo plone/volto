@@ -94,10 +94,10 @@ msgstr "Gehitu"
 msgid "Add (object list)"
 msgstr "Gehitu"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Gehitu gehigarriak"
+msgstr "Gehigarri berriak hemen ager daitezen, gehitu itzazu zure konfigurazioan, sortu build-a eta berrabiarazi zerbitzariaren prozesua. Argibide xeheak ikusteko, kontsultatu {link}."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -282,17 +282,17 @@ msgstr ""
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "Gehigarria ongi instalatu da"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "Gehigarria ongi desinstalatu da"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "Gehigarria ongi eguneratu da"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

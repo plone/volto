@@ -93,10 +93,10 @@ msgstr ""
 msgid "Add (object list)"
 msgstr ""
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "若要讓新的附加元件顯示於此，請將其加入您的設定檔，進行建置後重新啟動伺服器程序。詳細說明請參閱 {link}。"
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -281,17 +281,17 @@ msgstr ""
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "外掛安裝成功"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "外掛移除成功"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "外掛更新成功"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

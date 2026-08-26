@@ -94,10 +94,10 @@ msgstr "Afegeix"
 msgid "Add (object list)"
 msgstr "Afegeix"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Afegeix complements"
+msgstr "Perquè els nous complements apareguin aquí, afegeix-los a la teva configuració, fes el build i reinicia el procés del servidor. Per a instruccions detallades, consulta {link}."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -289,7 +289,7 @@ msgstr "Complement instal·lat correctament"
 msgid "Addon uninstalled succesfuly"
 msgstr "Complement desinstal·lat correctament"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
 msgstr "Complement actualitzat correctament"

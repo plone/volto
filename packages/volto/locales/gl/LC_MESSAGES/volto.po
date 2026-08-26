@@ -93,10 +93,10 @@ msgstr "Engadir"
 msgid "Add (object list)"
 msgstr "Engadir (lista de obxectos)"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Engadir Complementos"
+msgstr "Para que os novos complementos aparezan aquí, engádeos á túa configuración, compila e reinicia o proceso do servidor. Para instrucións detalladas, consulta {link}."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -281,17 +281,17 @@ msgstr "O complemento non puido ser actualizado"
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr "Complemento instalado con éxito"
+msgstr "Engadido instalado correctamente"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr "Complemento desinstalado con éxito"
+msgstr "Engadido desinstalado correctamente"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr "Complemento actualizado con éxito"
+msgstr "Engadido actualizado correctamente"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

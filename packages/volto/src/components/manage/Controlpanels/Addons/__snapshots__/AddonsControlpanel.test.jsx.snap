@@ -17,8 +17,7 @@ exports[`AddonsControlpanel > renders an addon control component 1`] = `
           <h2>
             Activate and deactivate add-ons in the lists below.
           </h2>
-          To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see
-           
+          To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see 
           <a
             href="https://6.docs.plone.org/volto/development/add-ons/install-an-add-on.html"
             rel="noopener noreferrer"

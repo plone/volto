@@ -93,10 +93,10 @@ msgstr "Adăugare"
 msgid "Add (object list)"
 msgstr "Adăugare (listă de obiecte)"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Adăugare add-on-uri"
+msgstr "Pentru ca noile module să apară aici, adaugă-le în configurație, construiește și repornește procesul serverului. Pentru instrucțiuni detaliate, vezi {link}."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -281,17 +281,17 @@ msgstr ""
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "Modulul a fost instalat cu succes"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "Modulul a fost dezinstalat cu succes"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "Modulul a fost actualizat cu succes"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

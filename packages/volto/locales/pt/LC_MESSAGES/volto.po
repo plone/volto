@@ -93,10 +93,10 @@ msgstr "Adicionar"
 msgid "Add (object list)"
 msgstr "Adicionar"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Adicionar complementos"
+msgstr "Para que novos complementos apareçam aqui, adicione-os à sua configuração, faça a compilação e reinicie o processo do servidor. Para instruções detalhadas, consulte {link}."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -288,7 +288,7 @@ msgstr "Complemento instalado com sucesso"
 msgid "Addon uninstalled succesfuly"
 msgstr "Complemento desinstalado com sucesso"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
 msgstr "Complemento atualizado com sucesso"

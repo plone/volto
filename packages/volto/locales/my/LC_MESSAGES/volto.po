@@ -93,10 +93,10 @@ msgstr ""
 msgid "Add (object list)"
 msgstr ""
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr ""
+msgstr "add-on အသစ်များ ဤနေရာတွင် ပြသနိုင်ရန် သင့်ဖော်ပြချက်တွင် ထည့်ပြီး build ပြုလုပ်ပြီး ဆာဗာလုပ်ငန်းစဉ်ကို ပြန်လည်စတင်ပါ။ အသေးစိတ်ညွှန်ကြားချက်များအတွက် {link} ကိုကြည့်ပါ။"
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -281,17 +281,17 @@ msgstr ""
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "အက်ဒ်ွန်ကို အောင်မြင်စွာ ထည့်သွင်းပြီးပါပြီ"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "အက်ဒ်ွန်ကို အောင်မြင်စွာ ဖယ်ရှားပြီးပါပြီ"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "အက်ဒ်ွန်ကို အောင်မြင်စွာ အဆင့်မြှင့်ပြီးပါပြီ"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

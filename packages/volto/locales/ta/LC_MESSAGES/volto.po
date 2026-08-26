@@ -93,10 +93,10 @@ msgstr "கூட்டு"
 msgid "Add (object list)"
 msgstr "சேர் (பொருள் பட்டியல்)"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "துணை நிரல்கள்"
+msgstr "புதிய ஆட்-ஆன்கள் இங்கே தோன்ற, அவற்றை உங்கள் கட்டமைப்பில் சேர்த்து, பில்ட் செய்து சேவையக செயல்முறையை மறுதொடக்கம் செய்யவும். விரிவான வழிமுறைகளுக்கு {link} பார்க்கவும்."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -281,17 +281,17 @@ msgstr "துணை நிரலை மேம்படுத்த முடி
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr "Addon வெற்றிகரமாக நிறுவப்பட்டது"
+msgstr "செருகுநிரல் வெற்றிகரமாக நிறுவப்பட்டது"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr "Addon வெற்றிகரமாக நிறுவல் நீக்குகிறது"
+msgstr "செருகுநிரல் வெற்றிகரமாக அகற்றப்பட்டது"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr "Addon வெற்றிகரமாக மேம்படுத்தப்பட்டது"
+msgstr "செருகுநிரல் வெற்றிகரமாக மேம்படுத்தப்பட்டது"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

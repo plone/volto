@@ -94,10 +94,10 @@ msgstr "追加"
 msgid "Add (object list)"
 msgstr ""
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "以下のリストに新しいアドオンが表示されるようにするには、それをビルドアウト設定(buildout.cfg)に追加し、ビルドアウトコマンド(bin/buildout)を実行した後に、サーバプロセスを再起動します。"
+msgstr "新しいアドオンをここに表示するには、設定に追加し、ビルドしてサーバープロセスを再起動してください。詳しい手順については{link}をご覧ください。"
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -282,17 +282,17 @@ msgstr "アドオンをアップグレードできませんでした"
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr "アドオンが正常にインストールされました"
+msgstr "アドオンをインストールしました"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr "アドオンが正常にアンインストールされました"
+msgstr "アドオンをアンインストールしました"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr "アドオンが正常にアップグレードされました"
+msgstr "アドオンを更新しました"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

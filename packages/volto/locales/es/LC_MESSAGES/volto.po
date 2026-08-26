@@ -94,10 +94,10 @@ msgstr "Añadir"
 msgid "Add (object list)"
 msgstr "Añadir (lista objecto)"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Añadir complementos"
+msgstr "Para que los nuevos complementos aparezcan aquí, agrégalos a tu configuración, compílalos y reinicia el proceso del servidor. Para instrucciones detalladas, consulta {link}."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -282,17 +282,17 @@ msgstr ""
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon installed succesfuly"
-msgstr ""
+msgstr "Complemento instalado correctamente"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon uninstalled succesfuly"
-msgstr ""
+msgstr "Complemento desinstalado correctamente"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr ""
+msgstr "Complemento actualizado correctamente"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

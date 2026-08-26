@@ -93,10 +93,10 @@ msgstr "Lägg till"
 msgid "Add (object list)"
 msgstr "Lägg till (objektlista)"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Lägg till tillägg"
+msgstr "För att nya tillägg ska visas här, lägg till dem i din konfiguration, bygg och starta om serverprocessen. För detaljerade instruktioner, se {link}."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -288,10 +288,10 @@ msgstr "Tillägget installerades"
 msgid "Addon uninstalled succesfuly"
 msgstr "Tillägget avinstallerades"
 
-#. Default: "Add-on upgraded succesfuly"
+#. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon upgraded succesfuly"
-msgstr "Tillägget uppgraderades"
+msgstr "Tillägget uppdaterades"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
