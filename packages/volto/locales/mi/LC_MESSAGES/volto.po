@@ -280,18 +280,18 @@ msgstr ""
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "I angitu te whakauru atu i te tāpiri"
+msgid "Addon installed successfully"
+msgstr "Kua angitu te whakauru i te tāpiringa"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "I angitu te tango i te tāpiri"
+msgid "Addon uninstalled successfully"
+msgstr "Kua angitu te tango i te tāpiri"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "I angitu te whakahou i te tāpiri"
+msgid "Addon upgraded successfully"
+msgstr "Kua angitu te whakahou i te tāpiritanga"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

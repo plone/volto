@@ -281,18 +281,18 @@ msgstr "アドオンをアップグレードできませんでした"
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "アドオンをインストールしました"
+msgid "Addon installed successfully"
+msgstr "アドオンが正常にインストールされました"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
+msgid "Addon uninstalled successfully"
 msgstr "アドオンをアンインストールしました"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "アドオンを更新しました"
+msgid "Addon upgraded successfully"
+msgstr "アドオンが正常にアップグレードされました"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

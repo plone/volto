@@ -280,17 +280,17 @@ msgstr ""
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "By-voegsel suksesvol geïnstalleer"
+msgid "Addon installed successfully"
+msgstr "Byvoegsel suksesvol geïnstalleer"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "By-voegsel suksesvol verwyder"
+msgid "Addon uninstalled successfully"
+msgstr "Byvoegsel suksesvol verwyder"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
+msgid "Addon upgraded successfully"
 msgstr "By-voegsel suksesvol opgegradeer"
 
 #. Default: "Advanced facet?"

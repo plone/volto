@@ -280,18 +280,18 @@ msgstr ""
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "外掛安裝成功"
+msgid "Addon installed successfully"
+msgstr "外掛程式安裝成功"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "外掛移除成功"
+msgid "Addon uninstalled successfully"
+msgstr "外掛程式已成功解除安裝"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "外掛更新成功"
+msgid "Addon upgraded successfully"
+msgstr "外掛程式已成功升級"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

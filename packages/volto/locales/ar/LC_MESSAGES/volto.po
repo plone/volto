@@ -280,18 +280,18 @@ msgstr ""
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
+msgid "Addon installed successfully"
 msgstr "تم تثبيت الإضافة بنجاح"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "تمت إزالة الإضافة بنجاح"
+msgid "Addon uninstalled successfully"
+msgstr "تمّت إزالة الإضافة بنجاح"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "تم تحديث الإضافة بنجاح"
+msgid "Addon upgraded successfully"
+msgstr "تمت ترقية الإضافة بنجاح"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

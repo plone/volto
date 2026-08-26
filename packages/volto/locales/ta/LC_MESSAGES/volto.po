@@ -280,17 +280,17 @@ msgstr "துணை நிரலை மேம்படுத்த முடி
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "செருகுநிரல் வெற்றிகரமாக நிறுவப்பட்டது"
+msgid "Addon installed successfully"
+msgstr "ஆடு-ஆன் வெற்றிகரமாக நிறுவப்பட்டது"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "செருகுநிரல் வெற்றிகரமாக அகற்றப்பட்டது"
+msgid "Addon uninstalled successfully"
+msgstr "செருகுநிரல் வெற்றிகரமாக நீக்கப்பட்டது"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
+msgid "Addon upgraded successfully"
 msgstr "செருகுநிரல் வெற்றிகரமாக மேம்படுத்தப்பட்டது"
 
 #. Default: "Advanced facet?"

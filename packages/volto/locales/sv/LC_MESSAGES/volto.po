@@ -280,18 +280,18 @@ msgstr "Tillägg kunde inte uppgraderas"
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "Tillägget installerades"
+msgid "Addon installed successfully"
+msgstr "Tillägget har installerats"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
+msgid "Addon uninstalled successfully"
 msgstr "Tillägget avinstallerades"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "Tillägget uppdaterades"
+msgid "Addon upgraded successfully"
+msgstr "Tillägget uppgraderades"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

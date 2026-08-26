@@ -281,17 +281,17 @@ msgstr ""
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
+msgid "Addon installed successfully"
 msgstr "Gehigarria ongi instalatu da"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "Gehigarria ongi desinstalatu da"
+msgid "Addon uninstalled successfully"
+msgstr "Gehigarria ondo desinstalatu da"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
+msgid "Addon upgraded successfully"
 msgstr "Gehigarria ongi eguneratu da"
 
 #. Default: "Advanced facet?"

@@ -280,17 +280,17 @@ msgstr ""
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
+msgid "Addon installed successfully"
 msgstr "애드온이 성공적으로 설치되었습니다"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
+msgid "Addon uninstalled successfully"
 msgstr "애드온이 성공적으로 제거되었습니다"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
+msgid "Addon upgraded successfully"
 msgstr "애드온이 성공적으로 업그레이드되었습니다"
 
 #. Default: "Advanced facet?"

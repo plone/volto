@@ -280,18 +280,18 @@ msgstr ""
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "Naʻe lava lelei ʻae fokotuʻu ʻoe fakalahi"
+msgid "Addon installed successfully"
+msgstr "Kuo lava lelei hono fokotuʻu ʻo e tānaki"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "Naʻe lava lelei ʻae toʻo ʻoe fakalahi"
+msgid "Addon uninstalled successfully"
+msgstr "Naʻe lavaʻi ʻae toʻo ʻae addon"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "Naʻe lava lelei ʻae fakaʻāʻonga ʻoe fakalahi"
+msgid "Addon upgraded successfully"
+msgstr "Naʻe lavaʻi ʻa e fakalelei ʻo e vaʻa fakaʻaonga"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema

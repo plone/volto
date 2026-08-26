@@ -112,7 +112,7 @@ const messages = defineMessages({
     defaultMessage: 'Error',
   },
   addonUpgraded: {
-    id: 'Addon upgraded succesfuly',
+    id: 'Addon upgraded successfully',
     defaultMessage: 'Add-on upgraded successfully',
   },
   addonNotUpgraded: {
@@ -120,7 +120,7 @@ const messages = defineMessages({
     defaultMessage: 'Add-on could not be upgraded',
   },
   addonInstalled: {
-    id: 'Addon installed succesfuly',
+    id: 'Addon installed successfully',
     defaultMessage: 'Add-on installed successfully',
   },
   addonNotInstalled: {
@@ -128,7 +128,7 @@ const messages = defineMessages({
     defaultMessage: 'Add-on could not be installed',
   },
   addonUninstalled: {
-    id: 'Addon uninstalled succesfuly',
+    id: 'Addon uninstalled successfully',
     defaultMessage: 'Add-on uninstalled successfully',
   },
   addonNotUninstalled: {

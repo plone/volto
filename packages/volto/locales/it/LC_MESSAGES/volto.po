@@ -280,18 +280,18 @@ msgstr "Non è stato possibile aggiornare l'add-on."
 
 #. Default: "Add-on installed successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "Componente aggiuntivo installato con successo"
+msgid "Addon installed successfully"
+msgstr "Add-on installato correttamente"
 
 #. Default: "Add-on uninstalled successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "Componente aggiuntivo disinstallato con successo"
+msgid "Addon uninstalled successfully"
+msgstr "Add-on disinstallato con successo"
 
 #. Default: "Add-on upgraded successfully"
 #: components/manage/Controlpanels/Addons/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "Componente aggiuntivo aggiornato con successo"
+msgid "Addon upgraded successfully"
+msgstr "Add-on aggiornato con successo"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
