@@ -67,7 +67,7 @@ const UpgradableItem: React.FC<UpgradableAddonProps> = ({
       textValue={
         (addon.upgrade_info.installedVersion && addon.upgrade_info.newVersion
           ? `${addon.description} ${descriptionText}`
-          : addon.description + addon.upgrade_info.available) +
+          : addon.description) +
         (addon.upgrade_info.available
           ? `. ${intl.formatMessage(messages.pressEnterToUpdate)}`
           : '') +
