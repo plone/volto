@@ -17,6 +17,18 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.3.1 (2026-08-26)
+
+### Bugfix
+
+- Fix path used for rendering blocks in the `NewsItemView`. @TimoBroeskamp [#8397](https://github.com/plone/volto/issues/8397)
+
+### Internal
+
+- Added support for the `.chore` extension for a change log entry. This satisfies the requirement of its presence, but doesn't display them in the change log. @stevepiercy [#8401](https://github.com/plone/volto/issues/8401)
+- Remove deprecated and redundant Read the Docs pull request preview workflow. @stevepiercy 
+- Remove redundant and deprecated pull request preview build workflow. @stevepiercy 
+
 ## 19.3.0 (2026-07-22)
 
 ### Feature

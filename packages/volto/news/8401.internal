@@ -1,1 +1,0 @@
-Added support for the `.chore` extension for a change log entry. This satisfies the requirement of its presence, but doesn't display them in the change log. @stevepiercy
