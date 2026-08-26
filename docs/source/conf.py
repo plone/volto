@@ -85,10 +85,10 @@ linkcheck_ignore = [
     # TODO: Before release, clean up any links to ignore
     r"http://127.0.0.1",
     r"http://localhost",
-    # Ignore pages that require authentication
+    # Ignore pages that require authentication or block the client
     r"https://github.com/plone/volto/issues/new/choose",  # requires auth
     r"https://javascript.plainenglish.io/you-dont-need-lodash-how-i-gave-up-lodash-693c8b96a07c",
-    r"https://www.npmjs.com",
+    r"https://stackoverflow.com",
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
