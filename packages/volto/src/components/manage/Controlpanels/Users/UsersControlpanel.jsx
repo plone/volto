@@ -699,35 +699,13 @@ const UsersControlpanel = (props) => {
         ) : null}
       </div>
       <Segment.Group raised>
-        <Segment
-          className="primary"
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
+        <Segment className="primary">
           <FormattedMessage id="Users" defaultMessage="Users" />
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              justifyItems: 'end',
-            }}
-          >
+          <div className="users_grid">
             <Button
               id="toolbar-member-import-export"
               aria-label={intl.formatMessage(messages.addMemberImport)}
-              style={{
-                backgroundColor: '#E8E8E8',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '0px 12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'rgba(0, 0, 0, 0.6)',
-              }}
+              className="import_members_csv"
               onClick={() => {
                 setShowCSVImport(true);
               }}
@@ -736,40 +714,25 @@ const UsersControlpanel = (props) => {
               Upload CSV
               <Icon
                 name={uploadSVG}
+                className="csv_icon"
                 size="25px"
                 align="right"
                 title={intl.formatMessage(messages.addMemberImport)}
-                style={{
-                  margin: '0px 0px 0px 8px',
-                  fill: 'rgba(0, 0, 0, 0.6)',
-                }}
               />
             </Button>
             <Button
               id="member-export"
               aria-label={intl.formatMessage(messages.membersCSVExport)}
-              style={{
-                backgroundColor: '#E8E8E8',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '0px 12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'rgba(0, 0, 0, 0.6)',
-              }}
+              className="export_members_csv"
               onClick={() => downloadUserCsv()}
             >
               Download CSV
               <Icon
                 name={downloadSVG}
+                className="csv_icon"
                 size="25px"
                 align="right"
                 title={intl.formatMessage(messages.membersCSVExport)}
-                style={{
-                  margin: '0px 0px 0px 8px',
-                  fill: 'rgba(0, 0, 0, 0.6)',
-                }}
               />
             </Button>{' '}
           </div>
