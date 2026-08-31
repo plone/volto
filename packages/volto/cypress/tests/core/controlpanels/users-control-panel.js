@@ -140,10 +140,8 @@ describe('User Control Panel Test', () => {
     cy.visit('/controlpanel/users');
     cy.get('#member-export').click();
 
-    const apiUrl = Cypress.env('API_PATH') || 'http://127.0.0.1:3000/++api++';
-
     cy.request({
-      url: `${apiUrl}/@users`,
+      url: `${Cypress.config('baseUrl')}/++api++/@users`,
       headers: {
         Accept: 'text/csv',
       },
