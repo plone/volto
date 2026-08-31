@@ -13,22 +13,20 @@ exports[`UsersControlpanel > renders a user control component 1`] = `
     >
       <div
         class="ui segment primary"
-        style="display: flex; justify-content: space-between; align-items: center;"
       >
         Users
         <div
-          style="display: grid; grid-template-columns: 1fr 1fr; justify-items: end;"
+          class="users_grid"
         >
           <button
             aria-label="Add Members via CSV"
-            class="ui button"
-            id="toolbar-member-import-export"
-            style="background-color: rgb(232, 232, 232); border: medium; border-radius: 8px; padding: 0px 12px; display: flex; align-items: center; justify-content: center; color: rgba(0, 0, 0, 0.6);"
+            class="ui button import_members_csv"
+            id="member-import"
           >
             Upload CSV
             <svg
-              class="icon"
-              style="height: 25px; width: auto; fill: rgba(0, 0, 0, 0.6); margin: 0px 0px 0px 8px;"
+              class="icon csv_icon"
+              style="height: 25px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -49,14 +47,13 @@ exports[`UsersControlpanel > renders a user control component 1`] = `
           </button>
           <button
             aria-label="Download Members as CSV"
-            class="ui button"
+            class="ui button export_members_csv"
             id="member-export"
-            style="background-color: rgb(232, 232, 232); border: medium; border-radius: 8px; padding: 0px 12px; display: flex; align-items: center; justify-content: center; color: rgba(0, 0, 0, 0.6);"
           >
             Download CSV
             <svg
-              class="icon"
-              style="height: 25px; width: auto; fill: rgba(0, 0, 0, 0.6); margin: 0px 0px 0px 8px;"
+              class="icon csv_icon"
+              style="height: 25px; width: auto; fill: currentcolor;"
               viewBox="0 0 36 36"
               xmlns="http://www.w3.org/2000/svg"
             >
