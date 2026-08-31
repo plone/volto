@@ -119,6 +119,42 @@ describe('User Control Panel Test', () => {
       .first()
       .should('have.class', 'checked');
   });
+
+  it('Should upload users via csv', () => {
+    cy.visit('/controlpanel/users');
+
+    cy.get('Button[id="member-import"]').click();
+    cy.intercept('POST', '**/@users').as('saveUsers');
+
+    cy.get('div[class="file-widget-dropzone"]').selectFile(
+      'cypress/fixtures/cy_users_test.csv',
+      { action: 'drag-drop' },
+    );
+    cy.get('a[aria-label="Download cy_users_test.csv"]').should('exist');
+
+    cy.get('Button[title="Save"]').click({ force: true });
+
+    cy.wait('@saveUsers').its('response.statusCode').should('eq', 201);
+  });
+  it('Should download users as csv', () => {
+    cy.visit('/controlpanel/users');
+    cy.get('Button[id="member-export"]').click();
+    cy.request({
+      url: 'http://127.0.0.1:3000/++api++/@users',
+      headers: {
+        Accept: 'text/csv',
+      },
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.headers['content-type']).to.include('text/csv');
+      expect(response.body).to.include(
+        'id,username,fullname,email,roles,groups',
+      );
+      expect(response.body).to.include(
+        'test_user_1_,test-user,,,Member,AuthenticatedUsers',
+      );
+    });
+  });
 });
 describe('User Control Panel test for many users', () => {
   beforeEach(() => {

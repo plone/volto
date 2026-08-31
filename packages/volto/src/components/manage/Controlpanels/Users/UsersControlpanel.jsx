@@ -601,8 +601,8 @@ const UsersControlpanel = (props) => {
     required: [],
   };
 
-  function downloadUserCsv(filename = 'users.csv') {
-    const csvContent = dispatch(getUsersCsv());
+  async function downloadUserCsv(filename = 'users.csv') {
+    const csvContent = await dispatch(getUsersCsv());
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -703,7 +703,7 @@ const UsersControlpanel = (props) => {
           <FormattedMessage id="Users" defaultMessage="Users" />
           <div className="users_grid">
             <Button
-              id="toolbar-member-import-export"
+              id="member-import"
               aria-label={intl.formatMessage(messages.addMemberImport)}
               className="import_members_csv"
               onClick={() => {
