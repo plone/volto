@@ -138,10 +138,11 @@ describe('User Control Panel Test', () => {
   });
   it('Should download users as csv', () => {
     cy.visit('/controlpanel/users');
-    cy.get('#member-export').click();
+    cy.get('Button[id="member-export"]').click();
+    const apiUrl = Cypress.env('API_PATH') || 'http://127.0.0.1:3000/++api++';
 
     cy.request({
-      url: `${Cypress.config('baseUrl')}/++api++/@users`,
+      url: `${apiUrl}/@users`,
       headers: {
         Accept: 'text/csv',
       },
@@ -150,6 +151,9 @@ describe('User Control Panel Test', () => {
       expect(response.headers['content-type']).to.include('text/csv');
       expect(response.body).to.include(
         'id,username,fullname,email,roles,groups',
+      );
+      expect(response.body).to.include(
+        'test_user_1_,test-user,,,Member,AuthenticatedUsers',
       );
     });
   });
