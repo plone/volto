@@ -116,6 +116,23 @@ export class Edit extends Component {
   blockNode = React.createRef();
 
   /**
+   * True when the event originates inside a nested block form rendered by
+   * this block (e.g. a child block of a Grid container). Child modifier
+   * semantics belong to the nested form; the container may only activate
+   * itself as a single selection.
+   * @param {Event} event the synthetic event
+   * @returns {boolean}
+   */
+  isNestedFormEvent = (event) => {
+    const node = this.blockNode.current;
+    if (!node || !event?.target?.closest) {
+      return false;
+    }
+    const nestedForm = event.target.closest('.blocks-form');
+    return !!nestedForm && node.contains(nestedForm);
+  };
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
@@ -154,16 +171,31 @@ export class Edit extends Component {
               e.stopPropagation();
               this.props.setUIState({ hovered: null });
             }}
-            onClick={(e) => {
+            onMouseDown={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                return;
+              }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              !this.props.selected &&
-                this.props.onSelectBlock(
-                  this.props.id,
-                  this.props.selected ? false : isMultipleSelection,
-                  e,
-                );
+              if (!this.props.selected && isMultipleSelection) {
+                e.preventDefault();
+              }
+            }}
+            onClick={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                !this.props.selected &&
+                  this.props.onSelectBlock(this.props.id, false);
+                return;
+              }
+              const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
+              (!this.props.selected || isMultipleSelection) &&
+                this.props.onSelectBlock(this.props.id, isMultipleSelection, e);
             }}
             onFocus={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                !this.props.selected &&
+                  this.props.onSelectBlock(this.props.id, false);
+                return;
+              }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
                 this.props.onSelectBlock(

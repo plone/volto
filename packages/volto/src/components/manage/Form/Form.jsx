@@ -63,7 +63,7 @@ import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRendere
  * @class Form
  * @extends Component
  */
-class Form extends Component {
+export class Form extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -467,15 +467,16 @@ class Form extends Component {
       }
 
       if ((event.ctrlKey || event.metaKey) && !event.shiftKey) {
+        const activeBlock = this.props.uiState.selected;
         multiSelected = this.props.uiState.multiSelected || [];
-        if (!this.props.uiState.multiSelected.includes(this.state.selected)) {
-          multiSelected = [...multiSelected, this.props.uiState.selected];
-          selected = null;
+
+        if (activeBlock && !multiSelected.includes(activeBlock)) {
+          multiSelected = [...multiSelected, activeBlock];
         }
+
         if (this.props.uiState.multiSelected.includes(id)) {
-          selected = null;
           multiSelected = without(multiSelected, id);
-        } else {
+        } else if (!multiSelected.includes(id)) {
           multiSelected = [...multiSelected, id];
         }
       }
