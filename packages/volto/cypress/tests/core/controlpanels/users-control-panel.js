@@ -142,20 +142,23 @@ describe('User Control Panel Test', () => {
     const apiUrl =
       Cypress.env('API_PATH') || `${Cypress.config('baseUrl')}/++api++`;
 
-    cy.request({
-      url: `${apiUrl}/@users`,
-      headers: {
-        Accept: 'text/csv',
-      },
-    }).then((response) => {
-      expect(response.status).to.eq(200);
-      expect(response.headers['content-type']).to.include('text/csv');
-      expect(response.body).to.include(
-        'id,username,fullname,email,roles,groups',
-      );
-      expect(response.body).to.include(
-        'test_user_1_,test-user,,,Member,AuthenticatedUsers',
-      );
+    cy.getCookie('auth_token').then((cookie) => {
+      cy.request({
+        url: `${apiUrl}/@users`,
+        headers: {
+          Accept: 'text/csv',
+          Authorization: `Bearer ${cookie.value}`,
+        },
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+        expect(response.headers['content-type']).to.include('text/csv');
+        expect(response.body).to.include(
+          'id,username,fullname,email,roles,groups',
+        );
+        expect(response.body).to.include(
+          'test_user_1_,test-user,,,Member,AuthenticatedUsers',
+        );
+      });
     });
   });
 });
