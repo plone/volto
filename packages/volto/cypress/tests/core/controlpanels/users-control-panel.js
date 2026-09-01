@@ -119,6 +119,48 @@ describe('User Control Panel Test', () => {
       .first()
       .should('have.class', 'checked');
   });
+
+  it('Should upload users via csv', () => {
+    cy.visit('/controlpanel/users');
+
+    cy.get('Button[id="member-import"]').click();
+    cy.intercept('POST', '**/@users').as('saveUsers');
+
+    cy.get('div[class="file-widget-dropzone"]').selectFile(
+      'cypress/fixtures/cy_users_test.csv',
+      { action: 'drag-drop' },
+    );
+    cy.get('a[aria-label="Download cy_users_test.csv"]').should('exist');
+
+    cy.get('Button[title="Save"]').click({ force: true });
+
+    cy.wait('@saveUsers').its('response.statusCode').should('eq', 201);
+  });
+  it('Should download users as csv', () => {
+    cy.visit('/controlpanel/users');
+    cy.get('Button[id="member-export"]').click();
+    const apiUrl =
+      Cypress.env('API_PATH') || `${Cypress.config('baseUrl')}/++api++`;
+
+    cy.getCookie('auth_token').then((cookie) => {
+      cy.request({
+        url: `${apiUrl}/@users`,
+        headers: {
+          Accept: 'text/csv',
+          Authorization: `Bearer ${cookie.value}`,
+        },
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+        expect(response.headers['content-type']).to.include('text/csv');
+        expect(response.body).to.include(
+          'id,username,fullname,email,roles,groups',
+        );
+        expect(response.body).to.include(
+          'test_user_1_,test-user,,,Member,AuthenticatedUsers',
+        );
+      });
+    });
+  });
 });
 describe('User Control Panel test for many users', () => {
   beforeEach(() => {
