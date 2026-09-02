@@ -27,7 +27,7 @@ import trashSVG from '@plone/volto/icons/delete.svg';
 import {
   cloneBlocks,
   loadBlocksClipboardFromStorage,
-} from './blocksClipboardUtils';
+} from '@plone/volto/helpers/Blocks/cloneBlocks';
 
 export class BlocksToolbarComponent extends React.Component {
   constructor(props) {

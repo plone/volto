@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { v4 as uuid } from 'uuid';
+import { load } from 'redux-localstorage-simple';
 import {
   getBlocks,
   getBlocksFieldname,
@@ -41,3 +42,30 @@ export function cloneBlocks(blocksData) {
 
   return blocksData;
 }
+
+const fallbackBlocksClipboardStates = [
+  'blocksClipboard.cut',
+  'blocksClipboard.copy',
+];
+
+const getBlocksClipboardStates = () => {
+  const persistentReducers = config.settings?.persistentReducers || [];
+  const blocksClipboardStates = persistentReducers.filter(
+    (state) =>
+      state === 'blocksClipboard' || state.startsWith('blocksClipboard.'),
+  );
+
+  return blocksClipboardStates.length
+    ? blocksClipboardStates
+    : fallbackBlocksClipboardStates;
+};
+
+export const loadBlocksClipboardFromStorage = () =>
+  load({
+    states: getBlocksClipboardStates(),
+    disableWarnings: true,
+  })?.blocksClipboard ||
+  load({
+    states: ['blocksClipboard'],
+    disableWarnings: true,
+  })?.blocksClipboard;
