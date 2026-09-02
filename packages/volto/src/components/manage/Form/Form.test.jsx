@@ -67,7 +67,7 @@ const selectBlock = ({
   metaKey = true,
   shiftKey = false,
 }) => {
-  const setUIState = jest.fn();
+  const setUIState = vi.fn();
   const form = Object.create(FormComponent.prototype);
   form.state = {
     formData: {

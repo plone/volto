@@ -38,7 +38,13 @@ describe('Blocks copy/paste', () => {
     cy.get('a[aria-label="Edit"]').click();
 
     // WHEN: I copy paste them
-    cy.getSlateTitle().focus().click().type('{shift}', { release: false });
+    // NOTE: focus the title without clicking, like the Delete test below.
+    // A click leaves a text-selection anchor in the title; when Cypress
+    // then scrolls the image block into view, the browser can re-anchor
+    // the scroll on that caret, moving the sticky page header over the
+    // image click point (Volto 17 layout), so the click lands on the
+    // header instead of the block. Focus alone already selects the title.
+    cy.getSlateTitle().focus().type('{shift}', { release: false });
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-copy-blocks').click();
 
@@ -77,7 +83,8 @@ describe('Blocks copy/paste', () => {
     cy.get('a[aria-label="Edit"]').click();
 
     // WHEN: I cut paste them
-    cy.getSlateTitle().focus().click().type('{shift}', { release: false });
+    // Same focus-without-click gesture as the Copy test (see note there).
+    cy.getSlateTitle().focus().type('{shift}', { release: false });
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-cut-blocks').click();
 
