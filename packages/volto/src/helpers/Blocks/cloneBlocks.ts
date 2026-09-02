@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { v4 as uuid } from 'uuid';
 import {
+  getBlocks,
   getBlocksFieldname,
   getBlocksLayoutFieldname,
   hasBlocksData,
@@ -12,17 +13,16 @@ export function cloneBlocks(blocksData) {
     const blocksFieldname = getBlocksFieldname(blocksData);
     const blocksLayoutFieldname = getBlocksLayoutFieldname(blocksData);
 
-    const cloneWithIds = Object.keys(blocksData.blocks)
-      .map((key) => {
-        const block = blocksData.blocks[key];
-        const blockConfig = config.blocks.blocksConfig[blocksData['@type']];
+    const cloneWithIds = getBlocks(blocksData)
+      .map(([, block]) => {
+        const blockConfig = config.blocks.blocksConfig[block['@type']];
         return blockConfig?.cloneData
           ? blockConfig.cloneData(block)
           : [uuid(), cloneBlocks(block)];
       })
       .filter((info) => !!info); // some blocks may refuse to be copied
 
-    const newBlockData = {
+    return {
       ...blocksData,
       [blocksFieldname]: {
         ...Object.assign(
@@ -35,8 +35,6 @@ export function cloneBlocks(blocksData) {
         items: [...cloneWithIds.map(([id]) => id)],
       },
     };
-
-    return newBlockData;
   }
 
   return blocksData;
