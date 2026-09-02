@@ -11,6 +11,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
 import { setUIState } from '@plone/volto/actions/form/form';
+
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
@@ -58,6 +59,8 @@ export class Edit extends Component {
    * @property {Object} defaultProps Default properties.
    * @static
    */
+  blockNode = React.createRef();
+
   static defaultProps = {
     manage: false,
     editable: true,
@@ -113,7 +116,25 @@ export class Edit extends Component {
     }
   }
 
-  blockNode = React.createRef();
+  /**
+   * True when the event originates inside a nested block form rendered by
+   * this block (e.g. a child block of a Group, Columns, Grid, Tabs or
+   * Accordion container). Child modifier semantics belong to the nested
+   * form; the container may only activate itself as a single selection.
+   * @param {Event} event the synthetic event
+   * @returns {boolean}
+   */
+  isNestedFormEvent = (event) => {
+    const node = this.blockNode.current;
+    if (!node || !event?.target?.closest) {
+      return false;
+    }
+    const nestedForm = event.target.closest('.blocks-form');
+    return !!nestedForm && node.contains(nestedForm);
+  };
+
+
+
 
   /**
    * Render method.
@@ -155,17 +176,28 @@ export class Edit extends Component {
               this.props.setUIState({ hovered: null });
             }}
             onMouseDown={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                return;
+              }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               if (!this.props.selected && isMultipleSelection) {
                 e.preventDefault();
               }
             }}
             onClick={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                !this.props.selected && this.props.onSelectBlock(this.props.id, false);
+                return;
+              }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              (!this.props.selected || isMultipleSelection) &&
+              (!this.props.selected && isMultipleSelection) &&
                 this.props.onSelectBlock(this.props.id, isMultipleSelection, e);
             }}
             onFocus={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                !this.props.selected && this.props.onSelectBlock(this.props.id, false);
+                return;
+              }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
                 this.props.onSelectBlock(
