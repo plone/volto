@@ -133,9 +133,6 @@ export class Edit extends Component {
     return !!nestedForm && node.contains(nestedForm);
   };
 
-
-
-
   /**
    * Render method.
    * @method render
@@ -186,16 +183,19 @@ export class Edit extends Component {
             }}
             onClick={(e) => {
               if (this.isNestedFormEvent(e)) {
-                !this.props.selected && this.props.onSelectBlock(this.props.id, false);
+                !this.props.selected &&
+                  this.props.onSelectBlock(this.props.id, false);
                 return;
               }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              (!this.props.selected && isMultipleSelection) &&
+              !this.props.selected &&
+                isMultipleSelection &&
                 this.props.onSelectBlock(this.props.id, isMultipleSelection, e);
             }}
             onFocus={(e) => {
               if (this.isNestedFormEvent(e)) {
-                !this.props.selected && this.props.onSelectBlock(this.props.id, false);
+                !this.props.selected &&
+                  this.props.onSelectBlock(this.props.id, false);
                 return;
               }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
