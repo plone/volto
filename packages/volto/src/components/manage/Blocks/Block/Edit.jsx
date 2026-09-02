@@ -189,8 +189,11 @@ export class Edit extends Component {
               }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
-                isMultipleSelection &&
-                this.props.onSelectBlock(this.props.id, isMultipleSelection, e);
+                this.props.onSelectBlock(
+                  this.props.id,
+                  this.props.selected ? false : isMultipleSelection,
+                  e,
+                );
             }}
             onFocus={(e) => {
               if (this.isNestedFormEvent(e)) {
