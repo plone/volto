@@ -22,7 +22,7 @@ export function cloneBlocks(blocksData) {
       })
       .filter((info) => !!info); // some blocks may refuse to be copied
 
-    return {
+    const newBlockData = {
       ...blocksData,
       [blocksFieldname]: {
         ...Object.assign(
@@ -35,6 +35,8 @@ export function cloneBlocks(blocksData) {
         items: [...cloneWithIds.map(([id]) => id)],
       },
     };
+
+    return newBlockData;
   }
 
   return blocksData;
