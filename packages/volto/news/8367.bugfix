@@ -1,0 +1,1 @@
+Redirect anonymous visitors away from `/change-password` instead of rendering a password form that can never submit successfully. @kunalKumar-13
