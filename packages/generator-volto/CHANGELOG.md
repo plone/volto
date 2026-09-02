@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 9.0.6 (2026-09-02)
+
+### Bugfix
+
+- Forces the use of webpack 5.105.4. This avoids compatibility errors with the version required by Storybook. @wesleybl [#8396](https://github.com/plone/volto/issues/8396)
+
 ## 9.0.5 (2026-06-25)
 
 ### Internal

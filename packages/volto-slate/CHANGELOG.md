@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 18.10.2 (2026-09-02)
+
+### Bugfix
+
+- Fix Backspace behaving erratically near a styled or link text and fix cursor position after merging two same-type slate blocks via Backspace. @avoinea [#8347](https://github.com/plone/volto/issues/8347)
+- Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl [#8402](https://github.com/plone/volto/issues/8402)
+
 ## 18.10.1 (2026-06-25)
 
 ### Bugfix
