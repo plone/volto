@@ -1,19 +1,14 @@
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
 import pickBy from 'lodash/pickBy';
-import without from 'lodash/without';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import { BlocksForm } from '@plone/volto/components/manage/Form';
-import BlocksToolbar from '@plone/volto/components/manage/Form/BlocksToolbar';
 import PropTypes from 'prop-types';
 import ContainerData from './Data';
 import DefaultEditBlockWrapper from './EditBlockWrapper';
 import SimpleContainerToolbar from './SimpleContainerToolbar';
 import { v4 as uuid } from 'uuid';
-import {
-  blocksFormGenerator,
-  getBlocksLayoutFieldname,
-} from '@plone/volto/helpers/Blocks/Blocks';
+import { blocksFormGenerator } from '@plone/volto/helpers/Blocks/Blocks';
 
 import DefaultTemplateChooser from '@plone/volto/components/manage/TemplateChooser/TemplateChooser';
 
@@ -55,63 +50,6 @@ const ContainerBlockEdit = (props) => {
   if (props.setSelectedBlock) {
     ({ selectedBlock, setSelectedBlock } = props);
   }
-
-  let [multiSelected, setMultiSelected] = useState([]);
-  if (props.setMultiSelected) {
-    ({ multiSelected, setMultiSelected } = props);
-  }
-
-  // Mirror of the top-level Form selection state machine (Form.jsx
-  // onSelectBlock), operating on the container's own blocks layout
-  const onSelectBlock = (id, isMultipleSelection, event) => {
-    let newMultiSelected = [];
-    let newSelectedBlock = id;
-
-    if (isMultipleSelection) {
-      newSelectedBlock = null;
-      const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-      const blocks_layout = properties[blocksLayoutFieldname].items;
-      // Keyboard navigation (shift + arrow keys) passes no event and is
-      // always a range extension
-      const isShift = event ? event.shiftKey : true;
-      const isToggle = event ? event.ctrlKey || event.metaKey : false;
-
-      if (isShift && !isToggle) {
-        const anchorId =
-          multiSelected.length > 0
-            ? multiSelected[0]
-            : selectedBlock && blocks_layout.includes(selectedBlock)
-              ? selectedBlock
-              : id;
-        const anchor = blocks_layout.indexOf(anchorId);
-        const focus = blocks_layout.indexOf(id);
-
-        if (anchor === focus) {
-          newMultiSelected = [id];
-        } else if (focus > anchor) {
-          newMultiSelected = [...blocks_layout.slice(anchor, focus + 1)];
-        } else {
-          newMultiSelected = [...blocks_layout.slice(focus, anchor + 1)];
-        }
-      }
-
-      if (isToggle && !isShift) {
-        if (multiSelected.includes(id)) {
-          newMultiSelected = without(multiSelected, id);
-        } else {
-          // Promote the active block when starting a multi-selection
-          const active =
-            selectedBlock && !multiSelected.includes(selectedBlock)
-              ? [selectedBlock]
-              : [];
-          newMultiSelected = [...active, ...multiSelected, id];
-        }
-      }
-    }
-
-    setSelectedBlock(newSelectedBlock);
-    setMultiSelected(newMultiSelected);
-  };
 
   const blockState = {};
 
@@ -159,7 +97,6 @@ const ContainerBlockEdit = (props) => {
     maxLength,
     metadata,
     onAddNewBlock,
-    onSelectBlock,
     onSelectTemplate,
     selectedBlock,
     setSelectedBlock,
@@ -171,29 +108,6 @@ const ContainerBlockEdit = (props) => {
       {data.headline && <h2 className="headline">{data.headline}</h2>}
 
       {selected && <ContainerToolbar {...containerProps} />}
-
-      {selected && (
-        <BlocksToolbar
-          formData={properties}
-          selectedBlock={selectedBlock}
-          selectedBlocks={multiSelected}
-          onSetSelectedBlocks={(blockIds) => {
-            setMultiSelected(blockIds);
-          }}
-          onSelectBlock={(id, isMultipleSelection, event) => {
-            const modifiers = event
-              ? event.shiftKey || event.ctrlKey || event.metaKey
-              : false;
-            onSelectBlock(id, isMultipleSelection || modifiers, event);
-          }}
-          onChangeBlocks={(newBlockData) => {
-            onChangeBlock(block, {
-              ...data,
-              ...newBlockData,
-            });
-          }}
-        />
-      )}
 
       {!isInitialized && templates && (
         <TemplateChooser
@@ -212,18 +126,14 @@ const ContainerBlockEdit = (props) => {
         direction={direction}
         manage={manage}
         selectedBlock={selected ? selectedBlock : null}
-        multiSelected={selected ? multiSelected : []}
         blocksConfig={allowedBlocksConfig}
         title={data.placeholder}
         isContainer
         isMainForm={false}
-        stopPropagation={selectedBlock || multiSelected.length > 0}
+        stopPropagation={selectedBlock}
         disableAddBlockOnEnterKey
-        onSelectBlock={(id, isMultipleSelection, event) => {
-          const modifiers = event
-            ? event.shiftKey || event.ctrlKey || event.metaKey
-            : false;
-          onSelectBlock(id, isMultipleSelection || modifiers, event);
+        onSelectBlock={(id) => {
+          setSelectedBlock(id);
         }}
         onChangeFormData={(newFormData) => {
           onChangeBlock(block, {

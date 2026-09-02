@@ -66,18 +66,7 @@ const EditBlockWrapper = (props) => {
         className="cell-wrapper"
         onClick={(e) => {
           e.block = block;
-          // Clicks inside the child block are already handled by the child's
-          // own selection handler (including modifier semantics), don't
-          // clobber them with a plain single selection. The nearest .block
-          // ancestor can also be the container itself (e.g. the page-level
-          // grid block), only skip when it is a child of this wrapper
-          const innerBlock = e.target.closest('.block');
-          if (innerBlock && e.currentTarget.contains(innerBlock)) {
-            return;
-          }
-          const isMultipleSelection =
-            e.shiftKey || e.ctrlKey || e.metaKey || false;
-          onSelectBlock(block, isMultipleSelection, e);
+          onSelectBlock(block);
         }}
       >
         {type !== 'empty' ? (
