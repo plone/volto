@@ -17,6 +17,28 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 18.36.0 (2026-09-02)
+
+### Feature
+
+- Use the navroot expander to render the sitemap. @erral [#5503](https://github.com/plone/volto/issues/5503)
+- Add loading feedback for working copy actions in More toolbar. @wesleybl [#8362](https://github.com/plone/volto/issues/8362)
+
+### Bugfix
+
+- The toolbar panel {guilabel}`Personal tools` now manages focus and announces state changes to screen readers to improve accessibility. @Wagner3UB [#8168](https://github.com/plone/volto/issues/8168)
+- Prevent browser default behavior on file drop in folder contents dropzone. @jnptk [#8228](https://github.com/plone/volto/issues/8228)
+- Improved accessibility of `FileWidget` and `RegistryImageWidget`: added proper ARIA roles, labels, and screen reader announcements for the dropzone area, required state, and file download link. @Wagner3UB [#8320](https://github.com/plone/volto/issues/8320)
+- Debounce search input in ObjectBrowserBody. @wesleybl [#8365](https://github.com/plone/volto/issues/8365)
+- Fix incorrect item positioning when rapidly dragging and dropping items in ``/contents``. @wesleybl [#8372](https://github.com/plone/volto/issues/8372)
+- Added consistent visible focus for interactive components to improve accessibility. @Wagner3UB [#8381](https://github.com/plone/volto/issues/8381)
+- Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl [#8402](https://github.com/plone/volto/issues/8402)
+
+### Internal
+
+- Added Cypress regression tests for slate Backspace behavior near styled/link inline elements. @avoinea [#8347](https://github.com/plone/volto/issues/8347)
+- Use Plone 6.1.5. @wesleybl [#8374](https://github.com/plone/volto/issues/8374)
+
 ## 18.35.1 (2026-06-25)
 
 ### Bugfix
