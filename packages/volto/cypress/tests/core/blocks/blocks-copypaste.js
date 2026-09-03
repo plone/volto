@@ -48,7 +48,7 @@ describe('Blocks copy/paste', () => {
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-copy-blocks').click();
 
-    cy.getSlateEditorAndType('{shift}').click();
+    cy.getSlateEditorAndType('{shift}', { force: true }).click({ force: true });
     cy.get('#toolbar-paste-blocks').should('be.visible');
     cy.get('#toolbar-paste-blocks').click();
 
@@ -88,7 +88,7 @@ describe('Blocks copy/paste', () => {
     cy.get('.block-editor-maps').click();
     cy.get('#toolbar-cut-blocks').click();
 
-    cy.getSlateEditorAndType('{shift}').click();
+    cy.getSlateEditorAndType('{shift}', { force: true }).click({ force: true });
 
     cy.get('#toolbar-paste-blocks').should('be.visible');
     cy.get('#toolbar-paste-blocks').click();

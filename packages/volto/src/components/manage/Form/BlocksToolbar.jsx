@@ -66,7 +66,7 @@ export class BlocksToolbarComponent extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('storage', this.loadFromStorage);
+    window.removeEventListener('storage', this.loadFromStorage, true);
   }
 
   deleteBlocks() {
