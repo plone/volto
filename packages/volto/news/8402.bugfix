@@ -1,0 +1,1 @@
+Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl
