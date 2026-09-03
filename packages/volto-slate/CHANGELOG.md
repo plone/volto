@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.0.5 (2026-09-03)
+
+### Bugfix
+
+- Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl [#8402](https://github.com/plone/volto/issues/8402)
+
 ## 19.0.4 (2026-07-16)
 
 ### Bugfix
