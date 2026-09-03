@@ -69,7 +69,7 @@ describe('ChangePassword', () => {
           <MemoryRouter initialEntries={['/change-password']}>
             <Switch>
               <Route exact path="/change-password" component={ChangePassword} />
-              <Route path="*" render={() => <div id="redirected" />} />
+              <Route render={() => <div id="redirected" />} />
             </Switch>
           </MemoryRouter>
         </CookiesProvider>
