@@ -1,1 +1,0 @@
-Added a `UserAvatar` component, used by the toolbar to render the signed-in user's avatar. Add-ons can now change that avatar by shadowing this one small component, instead of shadowing the whole `Toolbar`. @ericof
