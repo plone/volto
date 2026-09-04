@@ -183,7 +183,7 @@ const Edit = (props) => {
     cell: 0,
   });
   const tableRef = useRef(null);
-  const [toolbarTop, setToolbarTop] = useState(-32);
+  const [toolbarTop, setToolbarTop] = useState(0);
 
   // If selected prop is unset, update the state
   useEffect(() => {
@@ -194,7 +194,7 @@ const Edit = (props) => {
 
   useEffect(() => {
     if (!selected || !selectedCell || !tableRef.current) {
-      setToolbarTop(-32);
+      setToolbarTop(0);
       return;
     }
     let rowEl;
@@ -206,9 +206,9 @@ const Edit = (props) => {
       rowEl = bodyRows[rowIndex];
     }
     if (rowEl) {
-      setToolbarTop(rowEl.offsetTop - 34);
+      setToolbarTop(rowEl.offsetTop);
     }
-  }, [selected, selectedCell, data.table]);
+  }, [selected, selectedCell?.row, data.table?.hideHeaders]);
 
   useEffect(() => {
     if (!data.table || isEmpty(data.table)) {
@@ -375,7 +375,6 @@ const Edit = (props) => {
           className="toolbar"
           style={{
             top: `${toolbarTop}px`,
-            transition: 'top 0.15s ease-in-out',
           }}
         >
           <Button.Group>
