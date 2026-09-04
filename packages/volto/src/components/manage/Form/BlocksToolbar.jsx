@@ -159,7 +159,7 @@ export class BlocksToolbarComponent extends React.Component {
     } = this.props;
     return (
       <>
-        {selectedBlocks.length > 0 ? (
+        {selectedBlocks?.length > 0 ? (
           <>
             <Plug pluggable="main.toolbar.bottom" id="blocks-delete-btn">
               <button
