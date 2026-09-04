@@ -227,6 +227,9 @@ describe('AddonRegistry - Project', () => {
       '@plone/volto/LanguageSwitcher': `${base}/src/customizations/LanguageSwitcher.js`,
       '@plone/volto/TSComponent': `${base}/src/customizations/TSComponent.jsx`,
       '@plone/volto/client': `${base}/src/customizations/client.js`,
+      // .cjs is shadowable, and the alias key keeps its extension because
+      // such modules are imported with it. See #8366.
+      '@plone/volto/constants/Languages.cjs': `${base}/src/customizations/constants/Languages.cjs`,
       '@plone/volto/routes': `${base}/src/customizations/routes.tsx`,
       'test-addon/testaddon': `${base}/src/custom-addons/test-addon/testaddon.js`,
       '@plone/volto/server': `${base}/src/customizations/server.jsx`,
