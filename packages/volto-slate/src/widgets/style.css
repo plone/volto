@@ -3,18 +3,6 @@
   border-bottom: 1px solid #c7d5d8;
 }
 
-.metadata.mention.slate.widget {
-  display: inline;
-}
-
-.metadata.mention.slate.widget > :first-child {
-  display: inline;
-}
-
-.metadata.mention.slate.widget > :last-child {
-  display: inline;
-}
-
 .slate.error {
   color: #f00;
   white-space: normal;
