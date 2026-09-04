@@ -292,8 +292,16 @@ body.has-toolbar.has-sidebar-collapsed .ui.wrapper > .ui.inner.block.full {
   line-height: @headerLineHeight;
 }
 
-.ui.block.table {
+.ui.block.table,
+.block.table {
+  --toolbar-gap: 2px;
   border: 0;
+
+  .toolbar {
+    top: 0;
+    transform: translate(-50%, calc(-100% - var(--toolbar-gap)));
+    transition: top 0.15s ease-in-out;
+  }
 }
 
 .block {

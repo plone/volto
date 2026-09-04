@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
@@ -182,12 +182,34 @@ const Edit = (props) => {
     row: 0,
     cell: 0,
   });
+  const tableRef = useRef(null);
+  const [toolbarTop, setToolbarTop] = useState(0);
+
   // If selected prop is unset, update the state
   useEffect(() => {
     if (!selected) {
       setSelectedCell(null);
     }
   }, [selected]);
+
+  useEffect(() => {
+    if (!selected || !selectedCell || !tableRef.current) {
+      setToolbarTop(0);
+      return;
+    }
+    let rowEl;
+    if (!data.table?.hideHeaders && selectedCell.row === 0) {
+      rowEl = tableRef.current.querySelector('thead tr');
+    } else {
+      const bodyRows = tableRef.current.querySelectorAll('tbody tr');
+      const rowIndex = selectedCell.row > 0 ? selectedCell.row - 1 : 0;
+      rowEl = bodyRows[rowIndex];
+    }
+    if (rowEl) {
+      setToolbarTop(rowEl.offsetTop);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected, selectedCell?.row, data.table?.hideHeaders]);
 
   useEffect(() => {
     if (!data.table || isEmpty(data.table)) {
@@ -348,9 +370,14 @@ const Edit = (props) => {
   }, [data, block, onChangeBlock, selectedCell]);
 
   return (
-    <div className={cx('block table', { selected })}>
+    <div ref={tableRef} className={cx('block table', { selected })}>
       {selected && (
-        <div className="toolbar">
+        <div
+          className="toolbar"
+          style={{
+            top: `${toolbarTop}px`,
+          }}
+        >
           <Button.Group>
             <Button
               icon
