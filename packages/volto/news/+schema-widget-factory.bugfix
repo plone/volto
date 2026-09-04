@@ -1,0 +1,1 @@
+Fix SchemaWidget to send the field factory as a string instead of an object to the backend, and pass `filterFactory` in the types control panel to only allow valid content type field types. @Shyam-Raghuwanshi
