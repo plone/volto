@@ -208,6 +208,7 @@ const Edit = (props) => {
     if (rowEl) {
       setToolbarTop(rowEl.offsetTop);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected, selectedCell?.row, data.table?.hideHeaders]);
 
   useEffect(() => {
