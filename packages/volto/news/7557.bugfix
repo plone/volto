@@ -1,0 +1,1 @@
+Fixes cypress test to fit HtmlSlateWidget changes in volto-slate, which changes state management to avoid re-render of slate node. @sabrina-bongiovanni
