@@ -1,0 +1,1 @@
+Fixed multi-selection of blocks within container blocks (grid, group, columns) and ensured the copy/paste toolbar works reliably across nested forms. @nileshgulia1
