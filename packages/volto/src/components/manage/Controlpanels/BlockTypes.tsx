@@ -5,6 +5,7 @@ import { useClient } from '@plone/volto/hooks';
 import config from '@plone/volto/registry';
 import { createPortal } from 'react-dom';
 import { defineMessages, useIntl, FormattedMessage } from 'react-intl';
+import type { IntlShape } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getBlockTypes } from '@plone/volto/actions/blockTypes/blockTypes';
@@ -15,6 +16,7 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 
 import backSVG from '@plone/volto/icons/back.svg';
 import type { Location } from 'history';
+import type { BlocksConfigData } from '@plone/types';
 
 const messages = defineMessages({
   back: {
@@ -53,6 +55,35 @@ type SelectorState = {
   blockTypes: BlockTypesState;
 };
 
+/**
+ * List the configured blocks, by title.
+ *
+ * An add-on can configure a block that was never registered — enhancing one
+ * that ships with another add-on, say — which leaves an entry behind that is
+ * not a block at all, with no id or no title. `BlockConfigBase` says both are
+ * always there, but the config disagrees, so drop those entries rather than
+ * list a block that does not exist.
+ * @function sortConfigBlocks
+ * @param {BlocksConfigData} blocksConfig The blocks configuration.
+ * @param {IntlShape} intl Used to translate each block title.
+ * @returns {Array} The configured blocks, sorted by translated title.
+ */
+export function sortConfigBlocks(
+  blocksConfig: BlocksConfigData,
+  intl: IntlShape,
+) {
+  return Object.entries(blocksConfig)
+    .filter(([, blockConfig]) => blockConfig.id && blockConfig.title)
+    .map(([, blockConfig]) => ({
+      ...blockConfig,
+      title: intl.formatMessage({
+        id: blockConfig.title,
+        defaultMessage: blockConfig.title,
+      }),
+    }))
+    .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
+}
+
 const BlockTypesControlpanel = (props: RouteProps) => {
   const { location } = props;
   const intl = useIntl();
@@ -62,17 +93,7 @@ const BlockTypesControlpanel = (props: RouteProps) => {
   const pathname = location.pathname;
   const isClient = useClient();
 
-  const blocks = Object.entries(blocksConfig)
-    .map(([key, blockConfig]) => ({
-      ...blockConfig,
-      title: blockConfig.title
-        ? intl.formatMessage({
-            id: blockConfig.title,
-            defaultMessage: blockConfig.title,
-          })
-        : blockConfig.id ?? key,
-    }))
-    .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
+  const blocks = sortConfigBlocks(blocksConfig, intl);
 
   useEffect(() => {
     dispatch(getBlockTypes());

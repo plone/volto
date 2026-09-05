@@ -7,7 +7,6 @@ import { Provider } from 'react-intl-redux';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
-import { parse as parseUrl } from 'url';
 import keys from 'lodash/keys';
 import locale from 'locale';
 import { detect } from 'detect-browser';
@@ -247,7 +246,25 @@ server.get('/*', (req, res) => {
   });
 
   const url = req.originalUrl || req.url;
-  const location = parseUrl(url);
+  // Parse the request URL without the deprecated `url.parse()` (DEP0169).
+  // `req.url` is always an origin-form path here, so a plain string split
+  // reproduces the exact `url.parse()` shape (including raw, non-encoded
+  // query strings) that downstream async-connected components rely on.
+  const hashIndex = url.indexOf('#');
+  const withoutHash = hashIndex === -1 ? url : url.slice(0, hashIndex);
+  const hash = hashIndex === -1 ? null : url.slice(hashIndex);
+  const queryIndex = withoutHash.indexOf('?');
+  const pathname =
+    queryIndex === -1 ? withoutHash : withoutHash.slice(0, queryIndex);
+  const search = queryIndex === -1 ? null : withoutHash.slice(queryIndex);
+  const location = {
+    pathname,
+    search,
+    query: search ? search.slice(1) : null,
+    hash,
+    path: withoutHash,
+    href: url,
+  };
 
   loadOnServer({ store, location, routes, api })
     .then(() => {

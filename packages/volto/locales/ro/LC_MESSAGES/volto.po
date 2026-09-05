@@ -719,6 +719,11 @@ msgstr "Curațați filtrele"
 msgid "Clear search"
 msgstr "Ștergeți căutarea"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Șterge selecția"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1136,11 +1141,6 @@ msgstr "Șters"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Ștergerea acestui element va întrerupe {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Adâncime"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1243,18 +1243,23 @@ msgstr "Descărcați evenimentul"
 msgid "Download file"
 msgstr "Descărcați fișierul"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Descarcă {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Trageți fișierul aici pentru a înlocui fișierul existent"
+msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a înlocui fișierul existent"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1613,6 +1618,11 @@ msgstr "Fișierul nu este de unul dintre tipurile acceptate: {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Mărimea fișierului"
+
+#. Default: "File upload area. Press Enter or click to replace the existing file."
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a înlocui fișierul existent"
 
 #. Default: "File view"
 #: config/Views
@@ -2233,6 +2243,7 @@ msgstr "Incarcă mai mult"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Se încarcă"
 
@@ -2691,6 +2702,11 @@ msgstr "Apariții"
 msgid "Occurrences"
 msgstr "Apariții"
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2914,10 +2930,10 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Preferințe"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr "Apasă Enter pentru a răsfoi fișierele de pe calculatorul tău."
+msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a deschide browserul de fișiere"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4033,6 +4049,11 @@ msgstr "Aceste elemente vor avea legături întrerupte"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Al treilea"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Acest câmp este obligatoriu."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

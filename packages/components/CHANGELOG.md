@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 4.2.1 (2026-07-01)
+
+### Bugfix
+
+- Fixed popover placement in modals for @plone/components Select @sneridagh @jnptk [#8359](https://github.com/plone/volto/issues/8359)
+
+## 4.2.0 (2026-06-08)
+
+### Feature
+
+- Add `renderEmptyState` to `Table` component. It provides content to display when there are no rows in the table. @jnptk 
+
 ## 4.1.0 (2026-05-28)
 
 ### Feature

@@ -9,9 +9,7 @@ export namespace layoutViews {
 }
 export const contentTypesViews: {
     'News Item': {
-        ({ content }: {
-            content: any;
-        }): string;
+        (props: any): string;
         propTypes: {
             content: any;
         };

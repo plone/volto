@@ -17,6 +17,115 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.4.0 (2026-09-03)
+
+### Feature
+
+- Added a `UserAvatar` component, used by the toolbar to render the signed-in user's avatar. Add-ons can now change that avatar by shadowing this one small component, instead of shadowing the whole `Toolbar`. @ericof [#8404](https://github.com/plone/volto/issues/8404)
+- Adding quanta support with semanticUI fallback for seach container. @TimoBroeskamp [#8411](https://github.com/plone/volto/issues/8411)
+
+### Bugfix
+
+- Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl [#8402](https://github.com/plone/volto/issues/8402)
+
+## 19.3.1 (2026-08-26)
+
+### Bugfix
+
+- Fix path used for rendering blocks in the `NewsItemView`. @TimoBroeskamp [#8397](https://github.com/plone/volto/issues/8397)
+
+### Internal
+
+- Added support for the `.chore` extension for a change log entry. This satisfies the requirement of its presence, but doesn't display them in the change log. @stevepiercy [#8401](https://github.com/plone/volto/issues/8401)
+- Remove deprecated and redundant Read the Docs pull request preview workflow. @stevepiercy 
+- Remove redundant and deprecated pull request preview build workflow. @stevepiercy 
+
+## 19.3.0 (2026-07-22)
+
+### Feature
+
+- Add the `apiSuffix` setting and `RAZZLE_API_SUFFIX` environment variable to configure the API traversal suffix. 
+
+### Bugfix
+
+- Silence the Node 24 `DEP0169` (`url.parse()`) and `DEP0060` (`util._extend`) deprecation warnings shown when running/building a Volto project. Volto's own server code (`server.jsx`, `devproxy.js`) now uses the WHATWG `URL` API, and pnpm patches update the archived `react-dev-utils` (build/dev-server) and `http-proxy` (dev proxy `util._extend`) dependencies. @sneridagh 
+
+### Internal
+
+- Remove unused react-medium-image-zoom @Tishasoumya-02 
+
+## 19.2.0 (2026-07-20)
+
+### Feature
+
+- Added an `offset` setting to the Listing block, skipping the first N results of its query and paginating over the remainder. A block limited to the latest N items and a second block offset by N now compose without repeating results. @ericof [#8385](https://github.com/plone/volto/issues/8385)
+
+### Bugfix
+
+- Fix development-mode portrait passthrough for Plone by routing requests through the `++api++` traversal layer. @sneridagh [#8390](https://github.com/plone/volto/issues/8390)
+
+## 19.1.6 (2026-07-16)
+
+### Feature
+
+- Add loading feedback for working copy actions in More toolbar. @wesleybl [#8362](https://github.com/plone/volto/issues/8362)
+
+### Bugfix
+
+- Added consistent visible focus for interactive components to improve accessibility. @Wagner3UB [#7850](https://github.com/plone/volto/issues/7850)
+- Restored original i18n `msgid` keys in `FileWidget` and `RegistryImageWidget` that were inadvertently renamed in #7982, breaking backward compatibility with existing translations. Added missing translations for all 65 supported languages. @Wagner3UB [#8334](https://github.com/plone/volto/issues/8334)
+- Debounce search input in ObjectBrowserBody. @wesleybl [#8365](https://github.com/plone/volto/issues/8365)
+- Renamed the selector in {file}`focus.less` so that skiplinks focus styles apply correctly. @Wagner3UB [#8382](https://github.com/plone/volto/issues/8382)
+- Stopped the Block Types control panel from crashing when an add-on configures a block that was never registered, which leaves behind an entry with no id or no title. Those entries are not blocks, and are no longer listed. @ericof [#8384](https://github.com/plone/volto/issues/8384)
+
+### Internal
+
+- Added Cypress regression tests for slate Backspace behavior near styled/link inline elements. @avoinea [#8347](https://github.com/plone/volto/issues/8347)
+- Use Plone 6.2.1. @wesleybl [#8364](https://github.com/plone/volto/issues/8364)
+- Remove unused dependency `linkify-it`. @davisagli 
+
+## 19.1.5 (2026-07-01)
+
+### Bugfix
+
+- Improve screen reader support for `SelectWidget` and `ArrayWidget` by replacing `aria-labelledby` with a dynamic `aria-label` that announces the field name and the current selected value on focus. @Wagner3UB [#8314](https://github.com/plone/volto/issues/8314)
+- Hide the clear button in `SelectWidget` and `ArrayWidget` when the field is marked as required, and make it keyboard accessible ({kbd}`Tab`, {kbd}`Enter`, {kbd}`Space`) on non-required fields. @Wagner3UB [#8315](https://github.com/plone/volto/issues/8315)
+- Removed redundant depth field from QuerystringWidget as it is already
+  in QueryWidget when Location criteria is selected and when a path is
+  selected in ObjectBrowserWidget. @sabrina-bongiovanni [#8350](https://github.com/plone/volto/issues/8350)
+
+### Internal
+
+- Fix random failure in test cypress blocks-table.js. @wesleybl [#8339](https://github.com/plone/volto/issues/8339), [#8345](https://github.com/plone/volto/issues/8345)
+- Remove redundant and deprecated pull request preview build workflow. @stevepiercy 
+
+### Documentation
+
+- Added missing steps for `webpack-scss-plugin` in the upgrade guide. @ksuess [#8045](https://github.com/plone/volto/issues/8045)
+
+## 19.1.4 (2026-06-11)
+
+### Bugfix
+
+- Fixed the Babel compare language toolbar button closing immediately after user clicks by treating the trigger and popup as one outside-click boundary. @sneridagh [#8323](https://github.com/plone/volto/issues/8323)
+
+## 19.1.3 (2026-06-09)
+
+### Bugfix
+
+- Add `aria-required` or `aria-invalid` attributes only if the field is required or contains errors, respectively. @Wagner3UB [#7981](https://github.com/plone/volto/issues/7981)
+- Added aria-required and labels to ensure proper identification of mandatory fields in FileWidget and RegistryImageWidget components. @Wagner3UB [#7982](https://github.com/plone/volto/issues/7982)
+- Fix infinite redirect loop caused by mismatched language content object with the current language tree. @sneridagh 
+
+## 19.1.2 (2026-06-08)
+
+### Bugfix
+
+- Increase home icon size to comply with WCAG 2.2 accessibility. @polyester [#8297](https://github.com/plone/volto/issues/8297)
+- Fix layout regression in `FormFieldWrapper` where the empty `aria-live` container was acting as an extra flex item, breaking widget layouts like `SizeWidget`. @Wagner3UB [#8319](https://github.com/plone/volto/issues/8319)
+- Fix "Cannot POST" error on login form if it was submitted before hydration
+  finished, by disabling the submit button until then. @davisagli 
+
 ## 19.1.1 (2026-05-28)
 
 ### Internal

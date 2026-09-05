@@ -7,6 +7,10 @@ import { getContent } from '@plone/volto/actions/content/content';
 import { getQueryStringResults } from '@plone/volto/actions/querystringsearch/querystringsearch';
 import { usePagination } from '@plone/volto/helpers/Utils/usePagination';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import {
+  computeTotalPages,
+  computeVisibleTotal,
+} from '@plone/volto/helpers/Pagination/Pagination';
 
 import config from '@plone/volto/registry';
 
@@ -37,6 +41,7 @@ export default function withQuerystringResults(WrappedComponent) {
       variation?.fullobjects ? { fullobjects: 1 } : { metadata_fields: '_all' },
       {
         b_size: b_size,
+        offset: querystring?.offset || 0,
       },
       ...copyFields.map((name) =>
         Object.keys(querystring).includes(name)
@@ -62,14 +67,22 @@ export default function withQuerystringResults(WrappedComponent) {
       ? querystringResults?.[subrequestID]?.items || []
       : folderItems;
 
+    // The backend counts the items the offset skips in its total, but the
+    // listing never shows them. Everything the user sees — the page count and
+    // the result counter — is about the items past the offset.
+    const subrequestTotal = querystringResults?.[subrequestID]?.total;
+    const visibleTotal = computeVisibleTotal(
+      subrequestTotal,
+      adaptedQuery.offset,
+    );
+
     const showAsFolderListing = !hasQuery && content?.items_total > b_size;
-    const showAsQueryListing =
-      hasQuery && querystringResults?.[subrequestID]?.total > b_size;
+    const showAsQueryListing = hasQuery && visibleTotal > b_size;
 
     const totalPages = showAsFolderListing
-      ? Math.ceil(content.items_total / b_size)
+      ? computeTotalPages(content.items_total, b_size)
       : showAsQueryListing
-        ? Math.ceil(querystringResults[subrequestID].total / b_size)
+        ? computeTotalPages(visibleTotal, b_size)
         : 0;
 
     const prevBatch = showAsFolderListing
@@ -135,7 +148,7 @@ export default function withQuerystringResults(WrappedComponent) {
       <WrappedComponent
         {...props}
         onPaginationChange={(e, { activePage }) => setCurrentPage(activePage)}
-        total={querystringResults?.[subrequestID]?.total}
+        total={subrequestTotal === undefined ? undefined : visibleTotal}
         batch_size={b_size}
         currentPage={currentPage}
         totalPages={totalPages}

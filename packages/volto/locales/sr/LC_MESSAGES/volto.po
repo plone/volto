@@ -719,6 +719,11 @@ msgstr ""
 msgid "Clear search"
 msgstr ""
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Обриши избор"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1136,11 +1141,6 @@ msgstr ""
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr ""
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1243,18 +1243,23 @@ msgstr ""
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Preuzmi {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr ""
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr ""
+msgstr "Област за отпремање датотеке. Притисните Enter или кликните да замените постојећу датотеку"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1613,6 +1618,11 @@ msgstr ""
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr ""
+
+#. Default: "File upload area. Press Enter or click to replace the existing file."
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Област за отпремање датотеке. Притисните Enter или кликните да замените постојећу датотеку"
 
 #. Default: "File view"
 #: config/Views
@@ -2233,6 +2243,7 @@ msgstr ""
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr ""
 
@@ -2691,6 +2702,11 @@ msgstr ""
 msgid "Occurrences"
 msgstr ""
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2914,10 +2930,10 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "Област за отпремање датотеке. Притисните Enter или кликните да отворите прегледач датотека"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4033,6 +4049,11 @@ msgstr ""
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr ""
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Ово поље је обавезно."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

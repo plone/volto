@@ -1,10 +1,11 @@
 import React from 'react';
-import { PopoverContext, SelectContext } from 'react-aria-components';
+import { SelectContext } from 'react-aria-components';
 
 import {
   Select,
   SelectItem,
   SelectListBox,
+  SelectPopoverContext,
   SelectSection,
   SelectSectionHeader,
   type SelectItemObject,
@@ -17,9 +18,11 @@ export function QuantaSelect<
 >(props: SelectProps<T, M>) {
   return (
     <SelectContext.Provider value={{ className: 'q react-aria-Select' }}>
-      <PopoverContext.Provider value={{ className: 'q react-aria-Popover' }}>
+      <SelectPopoverContext.Provider
+        value={{ className: 'q react-aria-Popover' }}
+      >
         <Select {...props} />
-      </PopoverContext.Provider>
+      </SelectPopoverContext.Provider>
     </SelectContext.Provider>
   );
 }

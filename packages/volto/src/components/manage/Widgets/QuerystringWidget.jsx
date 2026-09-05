@@ -7,10 +7,6 @@ const messages = defineMessages({
     id: 'Criteria',
     defaultMessage: 'Criteria',
   },
-  depth: {
-    id: 'Depth',
-    defaultMessage: 'Depth',
-  },
   SortOn: {
     id: 'Sort on',
     defaultMessage: 'Sort on',
@@ -22,6 +18,10 @@ const messages = defineMessages({
   limit: {
     id: 'Results limit',
     defaultMessage: 'Results limit',
+  },
+  offset: {
+    id: 'Offset',
+    defaultMessage: 'Offset',
   },
   itemBatchSize: {
     id: 'Item batch size',
@@ -40,12 +40,10 @@ export const objectSchema = ({ intl, isDisabled, value }) => ({
       title: 'Default',
       fields: [
         'query',
-        ...(value?.query?.filter((q) => q.i === 'path').length > 0
-          ? ['depth']
-          : []),
         'sort_on',
         'sort_order_boolean',
         'limit',
+        'offset',
         'b_size',
       ],
     },
@@ -54,10 +52,6 @@ export const objectSchema = ({ intl, isDisabled, value }) => ({
     query: {
       title: intl.formatMessage(messages.Criteria),
       widget: 'query',
-    },
-    depth: {
-      title: intl.formatMessage(messages.depth),
-      type: 'number',
     },
     sort_on: {
       title: intl.formatMessage(messages.SortOn),
@@ -73,6 +67,12 @@ export const objectSchema = ({ intl, isDisabled, value }) => ({
       title: intl.formatMessage(messages.limit),
       type: 'number',
       isDisabled: isDisabled,
+    },
+    offset: {
+      title: intl.formatMessage(messages.offset),
+      type: 'number',
+      isDisabled: isDisabled,
+      default: 0,
     },
     b_size: {
       title: intl.formatMessage(messages.itemBatchSize),

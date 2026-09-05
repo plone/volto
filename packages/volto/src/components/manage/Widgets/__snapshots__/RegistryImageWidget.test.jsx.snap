@@ -83,6 +83,7 @@ exports[`RegistryImageWidget > renders a file widget component with value 1`] = 
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -129,7 +130,7 @@ exports[`RegistryImageWidget > renders an empty file widget component 1`] = `
               <p
                 class="dropzone-text"
               >
-                Drop file here to upload a new file
+                File upload area. Press Enter or click to open the file browser.
               </p>
             </div>
             <label
@@ -153,6 +154,7 @@ exports[`RegistryImageWidget > renders an empty file widget component 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>

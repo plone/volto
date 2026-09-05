@@ -7,7 +7,7 @@ import superagent from 'superagent';
 import config from '@plone/volto/registry';
 import { getRequestAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
-import { stripSubpathPrefix } from '@plone/volto/helpers/Url/Url';
+import { getApiSuffix, stripSubpathPrefix } from '@plone/volto/helpers/Url/Url';
 
 /**
  * Get a resource image/file with authenticated (if token exist) API headers
@@ -18,7 +18,7 @@ import { stripSubpathPrefix } from '@plone/volto/helpers/Url/Url';
 export const getAPIResourceWithAuth = (req) =>
   new Promise((resolve, reject) => {
     const { settings } = config;
-    const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
+    const apiSuffix = getApiSuffix();
     let apiPath = '';
 
     if (settings.internalApiPath && __SERVER__) {

@@ -719,6 +719,11 @@ msgstr "Filters leegmaken"
 msgid "Clear search"
 msgstr "Zoek leegmaken"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Selectie wissen"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1136,11 +1141,6 @@ msgstr "Verwijderd"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Verwijderen van dit item zal {brokenReferences} {variation} breken."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Diepte"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1243,18 +1243,23 @@ msgstr "Evenement downloaden"
 msgid "Download file"
 msgstr "Bestand downloaden"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "{filename} downloaden"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Sleep en zet bestanden neer van je computer naar dit gebied of klik op de “Bladeren” knop."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Zet bestand hier neer om het bestaande bestand te vervangen"
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om het bestaande bestand te vervangen"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1613,6 +1618,11 @@ msgstr "Bestand is niet van het geaccepteerde type {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Bestandsgrootte"
+
+#. Default: "File upload area. Press Enter or click to replace the existing file."
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om het bestaande bestand te vervangen"
 
 #. Default: "File view"
 #: config/Views
@@ -2233,6 +2243,7 @@ msgstr "Meer laden..."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Laden"
 
@@ -2691,6 +2702,11 @@ msgstr "Gebeurtenissen"
 msgid "Occurrences"
 msgstr "Aantal"
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2914,10 +2930,10 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr "Druk Enter om door de bestanden op jouw computer te browsen."
+msgstr "Bestandsuploadgebied. Druk op Enter of klik om de bestandsverkenner te openen"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4033,6 +4049,11 @@ msgstr "Deze items zullen gebroken linken krijgen"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Derde"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Dit veld is verplicht."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

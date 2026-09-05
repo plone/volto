@@ -720,6 +720,11 @@ msgstr "Limpiar filtros"
 msgid "Clear search"
 msgstr "Borrar búsqueda"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Borrar selección"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1137,11 +1142,6 @@ msgstr "Eliminado"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr "Eliminar este artículo romperá {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Profundidad"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1244,18 +1244,23 @@ msgstr "Descargar evento"
 msgid "Download file"
 msgstr "Descargar archivo"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Descargar {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrastre y suelte los archivos desde su computador en esta área o haga clic al botón “Seleccionar”."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Arrastre aquí el archivo para reemplazar el actual"
+msgstr "Área de carga de archivos. Pulse Intro o haga clic para reemplazar el archivo existente"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1614,6 +1619,11 @@ msgstr "El archivo no es del tipo aceptado {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Tamaño del archivo"
+
+#. Default: "File upload area. Press Enter or click to replace the existing file."
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Área de carga de archivos. Pulse Intro o haga clic para reemplazar el archivo existente"
 
 #. Default: "File view"
 #: config/Views
@@ -2234,6 +2244,7 @@ msgstr "Cargar más"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Cargando"
 
@@ -2692,6 +2703,11 @@ msgstr "Apariciones"
 msgid "Occurrences"
 msgstr "Apariciones"
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2915,10 +2931,10 @@ msgstr "Hecho con Plone & Python"
 msgid "Preferences"
 msgstr "Preferencias"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr "Presiona Enter para seleccionar archivos de tu ordenador."
+msgstr "Área de carga de archivos. Pulse Intro o haga clic para abrir el explorador de archivos"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4034,6 +4050,11 @@ msgstr "Estos elementos tendrán enlaces rotos"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Tercero"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Este campo es obligatorio."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

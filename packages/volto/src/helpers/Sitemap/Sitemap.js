@@ -6,7 +6,7 @@
 import superagent from 'superagent';
 import map from 'lodash/map';
 import zlib from 'zlib';
-import { toPublicURL } from '@plone/volto/helpers/Url/Url';
+import { getApiSuffix, toPublicURL } from '@plone/volto/helpers/Url/Url';
 import { addHeadersFactory } from '@plone/volto/helpers/Proxy/Proxy';
 
 import config from '@plone/volto/registry';
@@ -22,7 +22,7 @@ export const SITEMAP_BATCH_SIZE = 5000;
 export const generateSitemap = (_req, start = 0, size = undefined) =>
   new Promise((resolve) => {
     const { settings } = config;
-    const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
+    const apiSuffix = getApiSuffix();
     const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
       `${apiPath}${apiSuffix}/@search?metadata_fields=modified&b_start=${start}&b_size=${
@@ -64,7 +64,7 @@ export const generateSitemap = (_req, start = 0, size = undefined) =>
 export const generateSitemapIndex = (_req, gzip = false) =>
   new Promise((resolve) => {
     const { settings } = config;
-    const apiSuffix = settings.legacyTraverse ? '' : '/++api++';
+    const apiSuffix = getApiSuffix();
     const apiPath = settings.internalApiPath ?? settings.apiPath;
     const request = superagent.get(
       `${apiPath}${apiSuffix}/@search?metadata_fields=modified&b_size=0&use_site_search_settings=1`,

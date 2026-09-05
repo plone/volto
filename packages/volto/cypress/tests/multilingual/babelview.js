@@ -75,7 +75,21 @@ describe('Babel View Tests', () => {
     );
 
     // Click on the menu
-    cy.findByLabelText('Confronta con').click();
+    cy.findByLabelText('Confronta con')
+      .should('have.attr', 'type', 'button')
+      .should(($button) => {
+        const button = $button[0];
+        const rect = button.getBoundingClientRect();
+        const target = button.ownerDocument.elementFromPoint(
+          rect.left + rect.width / 2,
+          rect.top + rect.height / 2,
+        );
+
+        expect(rect.width).to.be.at.least(42);
+        expect(rect.height).to.be.at.least(42);
+        expect(button === target || button.contains(target)).to.eq(true);
+      })
+      .click();
     cy.findByLabelText('Confronta con english').click();
 
     // The babel view is there

@@ -87,6 +87,7 @@ exports[`AlignWidget > renders with custom actions 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>
@@ -313,6 +314,7 @@ exports[`AlignWidget > renders with default actions 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
+            class="visually-hidden"
           />
         </div>
       </div>

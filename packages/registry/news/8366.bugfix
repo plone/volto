@@ -1,0 +1,1 @@
+Include `.cjs` and `.mjs` in the customizations glob so core modules with those extensions can be shadowed. @kunalKumar-13

@@ -39,9 +39,9 @@ import unlockSVG from '@plone/volto/icons/unlock.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
-import userSVG from '@plone/volto/icons/user.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import UserAvatar from './UserAvatar';
 
 const messages = defineMessages({
   edit: {
@@ -695,8 +695,7 @@ class Toolbar extends Component {
                     tabIndex={0}
                     id="toolbar-personal"
                   >
-                    <Icon
-                      name={userSVG}
+                    <UserAvatar
                       size="30px"
                       title={this.props.intl.formatMessage(
                         messages.personalTools,

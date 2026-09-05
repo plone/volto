@@ -5,7 +5,12 @@ import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import { createPortal } from 'react-dom';
-import { Container, Pagination, Button, Header } from 'semantic-ui-react';
+import {
+  Container as SemanticContainer,
+  Pagination,
+  Button,
+  Header,
+} from 'semantic-ui-react';
 import qs from 'query-string';
 import classNames from 'classnames';
 import config from '@plone/volto/registry';
@@ -84,6 +89,9 @@ const Search = (props) => {
   }, [items]);
 
   const options = qs.parse(location.search);
+
+  const Container =
+    config.getComponent({ name: 'Container' }).component || SemanticContainer;
 
   return (
     <Container id="page-search">

@@ -719,6 +719,11 @@ msgstr "Azzera filtri"
 msgid "Clear search"
 msgstr "Cancella ricerca"
 
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Cancella selezione"
+
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
 msgid "Click to download full sized image"
@@ -1136,11 +1141,6 @@ msgstr "Cancellato"
 msgid "Deleting this item will break {brokenReferences} {variation}."
 msgstr ""
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Profondità di ricerca"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1243,18 +1243,23 @@ msgstr "Scarica l'evento"
 msgid "Download file"
 msgstr "Scarica il file"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Scarica {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trascina in quest'area i file dal tuo computer o clicca su “Sfoglia”."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Rilascia un file qui per sostituire quello esistente"
+msgstr "Area di caricamento file. Premi Invio o fai clic per sostituire il file esistente"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
@@ -1613,6 +1618,11 @@ msgstr "Il file non è del tipo consentito {accept}"
 #: components/manage/Contents/DropZoneContent
 msgid "File size"
 msgstr "Dimensione del file"
+
+#. Default: "File upload area. Press Enter or click to replace the existing file."
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Area di caricamento file. Premi Invio o fai clic per sostituire il file esistente"
 
 #. Default: "File view"
 #: config/Views
@@ -2233,6 +2243,7 @@ msgstr "Carica altro"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Caricamento"
 
@@ -2691,6 +2702,11 @@ msgstr "occorrenze"
 msgid "Occurrences"
 msgstr ""
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
@@ -2914,10 +2930,10 @@ msgstr "Realizzato con Plone &amp; Python"
 msgid "Preferences"
 msgstr "Preferenze"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser."
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr "Premi Invio per scegliere i file dal tuo computer."
+msgstr "Area di caricamento file. Premi Invio o fai clic per aprire il browser dei file"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -4033,6 +4049,11 @@ msgstr "Questi elementi avranno dei collegamenti rotti"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Third"
 msgstr "Terzo"
+
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Questo campo è obbligatorio."
 
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory

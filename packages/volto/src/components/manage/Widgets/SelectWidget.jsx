@@ -263,9 +263,10 @@ class SelectWidget extends Component {
       <FormFieldWrapper {...this.props}>
         <Select
           id={`field-${id}`}
+          fieldTitle={this.props.title}
           key={choices}
           name={id}
-          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${id}`}
+          aria-label={this.props.title || undefined}
           menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
@@ -304,7 +305,7 @@ class SelectWidget extends Component {
                 : undefined,
             );
           }}
-          isClearable={this.props.isClearable}
+          isClearable={!this.props.required && this.props.isClearable}
         />
       </FormFieldWrapper>
     );
