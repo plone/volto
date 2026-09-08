@@ -684,7 +684,7 @@ class AddonRegistry {
 
       reg.forEach(({ customPath, name, sourcePath }) => {
         glob(
-          `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
+          `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx|cjs|mjs)`,
         ).map((filename) => {
           function changeFileExtension(filePath: string) {
             // Extract the current file extension
