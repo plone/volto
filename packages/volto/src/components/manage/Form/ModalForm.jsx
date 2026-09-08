@@ -316,6 +316,7 @@ class ModalForm extends Component {
       : [];
 
     const state_errors = keys(this.state.errors).length > 0;
+
     return (
       <>
         {/* aria-live region outside Modal so it persists through open/close cycles */}

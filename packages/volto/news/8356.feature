@@ -1,0 +1,1 @@
+Added functionality to up- and download users via csv file in the users controlpanel. @TimoBroeskamp
