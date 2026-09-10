@@ -11,6 +11,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import cx from 'classnames';
 import { setSidebarTab } from '@plone/volto/actions/sidebar/sidebar';
 import { setUIState } from '@plone/volto/actions/form/form';
+
 import config from '@plone/volto/registry';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
 import ViewDefaultBlock from '@plone/volto/components/manage/Blocks/Block/DefaultView';
@@ -58,6 +59,8 @@ export class Edit extends Component {
    * @property {Object} defaultProps Default properties.
    * @static
    */
+  blockNode = React.createRef();
+
   static defaultProps = {
     manage: false,
     editable: true,
@@ -113,7 +116,22 @@ export class Edit extends Component {
     }
   }
 
-  blockNode = React.createRef();
+  /**
+   * True when the event originates inside a nested block form rendered by
+   * this block (e.g. a child block of a Group, Columns, Grid, Tabs or
+   * Accordion container). Child modifier semantics belong to the nested
+   * form; the container may only activate itself as a single selection.
+   * @param {Event} event the synthetic event
+   * @returns {boolean}
+   */
+  isNestedFormEvent = (event) => {
+    const node = this.blockNode.current;
+    if (!node || !event?.target?.closest) {
+      return false;
+    }
+    const nestedForm = event.target.closest('.blocks-form');
+    return !!nestedForm && node.contains(nestedForm);
+  };
 
   /**
    * Render method.
@@ -154,25 +172,31 @@ export class Edit extends Component {
               e.stopPropagation();
               this.props.setUIState({ hovered: null });
             }}
-            onClick={(e) => {
+            onMouseDown={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                return;
+              }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
-              !this.props.selected &&
-                this.props.onSelectBlock(
-                  this.props.id,
-                  this.props.selected ? false : isMultipleSelection,
-                  e,
-                );
+              if (!this.props.selected && isMultipleSelection) {
+                e.preventDefault();
+              }
             }}
-            // onFocus={(e) => {
-            //   // TODO: This `onFocus` steals somehow the focus from the slate block
-            //   // we have to investigate why this is happening
-            //   // Apparently, I can't see any difference in the behavior
-            //   // If any, we can fix it in successive iterations
-            //   // if (this.props.hovered !== this.props.id) {
-            //   //   this.props.setUIState({ hovered: this.props.id });
-            //   // }
-            // }}
+            onClick={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                !this.props.selected &&
+                  this.props.onSelectBlock(this.props.id, false);
+                return;
+              }
+              const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
+              (!this.props.selected || isMultipleSelection) &&
+                this.props.onSelectBlock(this.props.id, isMultipleSelection, e);
+            }}
             onFocus={(e) => {
+              if (this.isNestedFormEvent(e)) {
+                !this.props.selected &&
+                  this.props.onSelectBlock(this.props.id, false);
+                return;
+              }
               const isMultipleSelection = e.shiftKey || e.ctrlKey || e.metaKey;
               !this.props.selected &&
                 this.props.onSelectBlock(
@@ -227,7 +251,6 @@ export class Edit extends Component {
               e.stopPropagation();
               this.props.setUIState({ hovered: this.props.id });
             }}
-            // Mantenha apenas este onFocus ou remova se não for necessário
             onFocus={(e) => {
               e.preventDefault();
               e.stopPropagation();
