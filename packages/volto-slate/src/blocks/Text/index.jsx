@@ -20,6 +20,7 @@ import {
   cancelEsc,
 } from './keyboard';
 import { splitAtSeam } from './keyboard/splitAtSeam';
+import { getAnchor, getAnchorText } from '@plone/volto-slate/utils/toc';
 import { withDeleteSelectionOnEnter } from '@plone/volto-slate/editor/extensions';
 import {
   breakList,
@@ -129,10 +130,17 @@ export default function applyConfig(config) {
     tocEntry: (block = {}) => {
       const { value, override_toc, entry_text, level, plaintext } = block;
       const type = value?.[0]?.type;
+      // The anchor is computed from the current value, and not from the stored
+      // plaintext, so that it always matches the `id` rendered by the view.
+      const anchor = getAnchor(value?.[0]);
       return override_toc && level
-        ? [parseInt(level.slice(1)), entry_text]
+        ? [parseInt(level.slice(1)), entry_text, anchor]
         : config.settings.slate.topLevelTargetElements.includes(type)
-          ? [parseInt(type.slice(1)), plaintext]
+          ? [
+              parseInt(type.slice(1)),
+              getAnchorText(value?.[0]) || plaintext,
+              anchor,
+            ]
           : null;
     },
   };

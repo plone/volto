@@ -114,4 +114,51 @@ describe('Block Tests: Anchors', () => {
     ).click();
     cy.get('h2[id="title-2-u-a"]').scrollIntoView().should('be.visible');
   });
+
+  it('Add Block: add content to TOC with inline formatting', () => {
+    // Change page title
+    cy.clearSlateTitle();
+    cy.getSlateTitle().type('Slate Heading Anchors with inline formatting');
+    cy.getSlate().click();
+
+    // Add TOC block
+    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    cy.get(".blocks-chooser .ui.form .field.searchbox input[type='text']").type(
+      'table of contents',
+    );
+    cy.get('.button.toc').click();
+
+    // Add a heading, and make one of its words italic
+    cy.get('.ui.basic.icon.button.block-add-button').first().click();
+    cy.get(".blocks-chooser .ui.form .field.searchbox input[type='text']").type(
+      'text',
+    );
+    cy.get('.button.slate').click();
+    cy.get('.ui.drag.block.inner.slate')
+      .click()
+      .type('Title 1 is not okay')
+      .click();
+    cy.get('.ui.drag.block.inner.slate span span span').setSelection(
+      'Title 1 is not okay',
+    );
+    cy.get('.slate-inline-toolbar .button-wrapper a[title="Title"]').click({
+      force: true,
+    });
+    cy.setSlateSelection('not');
+    cy.clickSlateButton('Italic');
+
+    // Save page
+    cy.get('#toolbar-save').click();
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+
+    // The anchor of the heading ignores the inline formatting, and the TOC
+    // entry links to it
+    cy.get('h2[id="title-1-is-not-okay"] em').contains('not');
+    cy.get(
+      `.table-of-contents a[href="${subpathPrefix}/my-page#title-1-is-not-okay"]`,
+    ).click();
+    cy.get('h2[id="title-1-is-not-okay"]')
+      .scrollIntoView()
+      .should('be.visible');
+  });
 });
