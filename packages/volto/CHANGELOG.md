@@ -17,6 +17,12 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.4.1 (2026-09-10)
+
+### Bugfix
+
+- Fix `SelectAutoComplete` rendering the raw token instead of its title when the vocabulary subrequest still held a stale token/title pair from a previously edited value (for example after changing a value, saving, and editing again via client-side navigation). The widget now keeps its local token/title cache in sync with the incoming choices instead of seeding it only once. @sneridagh [#8423](https://github.com/plone/volto/issues/8423)
+
 ## 19.4.0 (2026-09-03)
 
 ### Feature
