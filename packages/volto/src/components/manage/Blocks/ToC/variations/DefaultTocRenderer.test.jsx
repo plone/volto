@@ -52,3 +52,54 @@ test('renders a default toc renderer component', () => {
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });
+
+const renderToc = (entries) => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+  return renderer.create(
+    <Provider store={store}>
+      <MemoryRouter>
+        <DefaultTocRenderer
+          properties={properties}
+          data={data}
+          tocEntries={entries}
+        />
+      </MemoryRouter>
+    </Provider>,
+  );
+};
+
+test('links to the anchor provided by the block', () => {
+  const component = renderToc([
+    {
+      level: 2,
+      title: 'Everything is not okay',
+      items: [],
+      id: 'block-id-0',
+      anchor: 'subtitle-everything-is-not-okay',
+    },
+  ]);
+
+  expect(component.root.findByType('a').props.href).toMatch(
+    /#subtitle-everything-is-not-okay$/,
+  );
+});
+
+test('slugs the title of blocks that provide no anchor', () => {
+  const component = renderToc([
+    {
+      level: 2,
+      title: 'Everything is okay',
+      items: [],
+      id: 'block-id-0',
+    },
+  ]);
+
+  expect(component.root.findByType('a').props.href).toMatch(
+    /#everything-is-okay$/,
+  );
+});

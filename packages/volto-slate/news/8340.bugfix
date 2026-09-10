@@ -1,0 +1,1 @@
+Fixed the anchor of a heading being built from its indexed plaintext, which broke it when the heading contained inline formatting or a link. The anchor is now built from the text of the heading as it is rendered, and is also reported as the third element of the block's `tocEntry`. @Somilg11
