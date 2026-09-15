@@ -75,13 +75,13 @@ const renderFullscreenButton = (onClick, isFullscreen) => {
   );
 };
 
-const ImageGalleryTemplate = ({ items }) => {
+const ImageGalleryTemplate = ({ items, isLCPBlock }) => {
   const { settings } = config;
   const renderItems = items.filter(
     (content) =>
       settings.imageObjects.includes(content['@type']) && content.image_field,
   );
-  const imagesInfo = renderItems.map((item) => {
+  const imagesInfo = renderItems.map((item, index) => {
     return {
       original: `${addSubpathPrefix(flattenToAppURL(item['@id']))}/@@images/${
         item.image_field
@@ -89,6 +89,15 @@ const ImageGalleryTemplate = ({ items }) => {
       thumbnail: `${addSubpathPrefix(flattenToAppURL(item['@id']))}/@@images/${
         item.image_field
       }/thumb`,
+      originalAttributes:
+        isLCPBlock && index === 0
+          ? {
+              fetchpriority: 'high',
+              loading: 'eager',
+            }
+          : {
+              loading: 'lazy',
+            },
     };
   });
 
@@ -100,7 +109,7 @@ const ImageGalleryTemplate = ({ items }) => {
         renderRightNav={renderRightNav}
         renderPlayPauseButton={renderPlayPauseButton}
         renderFullscreenButton={renderFullscreenButton}
-        lazyLoad={true}
+        lazyLoad={!isLCPBlock}
       />
     )
   );
@@ -108,6 +117,7 @@ const ImageGalleryTemplate = ({ items }) => {
 
 ImageGalleryTemplate.propTypes = {
   items: PropTypes.arrayOf(PropTypes.any).isRequired,
+  isLCPBlock: PropTypes.bool,
 };
 
 export default ImageGalleryTemplate;
