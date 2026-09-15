@@ -570,6 +570,11 @@ msgstr ""
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "預設情況下，會繼承此項目容器的權限。若你停用此項目，只有明確定義的共享權限會生效。在概覽中，符號 {inherited} 表示繼承值。同樣地，符號 {global} 表示全域角色，由網站管理員管理。"
 
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
+
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
@@ -1238,6 +1243,11 @@ msgstr ""
 msgid "Document view"
 msgstr ""
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
@@ -1261,6 +1271,11 @@ msgstr "下載 {filename}"
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
 msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
@@ -4378,6 +4393,11 @@ msgstr ""
 #. Default: "Upload"
 #: components/manage/Contents/Contents
 msgid "Upload"
+msgstr ""
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
 msgstr ""
 
 #. Default: "Upload Files ({count})"

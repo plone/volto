@@ -570,6 +570,11 @@ msgstr "Carregamento em massa de CSV"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Por predefinição, as permissões do contentor deste item são herdadas. Se desativar isto, apenas serão válidas as permissões de partilha definidas explicitamente. Na visão geral, os valores herdados são explicitamente rotulados como 'Valor herdado' e recebem uma marca de verificação verde {inherited}. Da mesma forma, os papéis geridos pelo administrador do site são rotulados como 'Papel global' e recebem uma marca de verificação azul {global}."
 
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
+
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
@@ -1238,6 +1243,11 @@ msgstr "Documento"
 msgid "Document view"
 msgstr "Visão do Documento"
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
@@ -1262,6 +1272,11 @@ msgstr "Descarregar {filename}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arraste e largue ficheiros do seu computador para esta área ou clique no botão “Procurar”."
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
+msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
@@ -4379,6 +4394,11 @@ msgstr "Passos de atualização"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Enviar"
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
+msgstr ""
 
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent

@@ -570,6 +570,11 @@ msgstr "Încărcare a mai multor URL-uri alternative dintr-un fișier CSV"
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "În mod implicit, permisiunile din containerul acestui element sunt moștenite. Dacă dezactivezi acest lucru, vor fi valabile doar permisiunile de partajare definite explicit. În prezentarea generală, valorile moștenite sunt etichetate explicit ca 'Valoare moștenită' și primesc o bifă verde {inherited}. În mod similar, rolurile gestionate de administratorul site-ului sunt etichetate ca 'Rol global' și primesc o bifă albastră {global}."
 
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
+
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
@@ -1238,6 +1243,11 @@ msgstr "Document"
 msgid "Document view"
 msgstr "Vizualizare document"
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
@@ -1262,6 +1272,11 @@ msgstr "Descarcă {filename}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
+msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
@@ -4379,6 +4394,11 @@ msgstr "Etape de actualizare"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Încărcare"
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
+msgstr ""
 
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent

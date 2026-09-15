@@ -570,6 +570,11 @@ msgstr ""
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "I le tulaga masani, o fa'atagaga mai le koneteina o lenei mea e tofia mai. Afai e te tapeina lenei mea, na'o fa'atagaga fa'asoa ua fa'amatalaina manino e aoga. I le va'aiga lautele, o le fa'ailoga {inherited} e fa'ailoa ai se tau na tofia mai. E fa'apena fo'i, o le fa'ailoga {global} e fa'ailoa ai se matafaioi lalolagi, lea e pulea e le pulega o le saite."
 
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
+
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
@@ -1238,6 +1243,11 @@ msgstr ""
 msgid "Document view"
 msgstr ""
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
@@ -1261,6 +1271,11 @@ msgstr "Sii mai {filename}"
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
 msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
@@ -4378,6 +4393,11 @@ msgstr ""
 #. Default: "Upload"
 #: components/manage/Contents/Contents
 msgid "Upload"
+msgstr ""
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
 msgstr ""
 
 #. Default: "Upload Files ({count})"

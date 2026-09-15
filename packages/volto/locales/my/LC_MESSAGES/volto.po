@@ -570,6 +570,11 @@ msgstr ""
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "ပုံမှန်အားဖြင့် ဤအရာ၏ ကွန်တိန်နာမှ ခွင့်ပြုချက်များကို အမွေဆက်ခံသည်။ ဤကို ပိတ်ထားပါက သတ်မှတ်ထားသော မျှဝေခွင့်ပြုချက်များသာ အကျုံးဝင်ပါမည်။ အနှစ်ချုပ်တွင် {inherited} သင်္ကေတသည် အမွေဆက်ခံတန်ဖိုးကို ပြသသည်။ အလားတူ၊ {global} သင်္ကေတသည် ဆိုက်အုပ်ချုပ်ရေးမှူးက စီမံခန့်ခွဲသည့် ကမ္ဘာလုံးဆိုင်ရာ အခန်းကဏ္ဍကို ပြသသည်။"
 
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
+
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
 msgid "CSVFile"
@@ -1238,6 +1243,11 @@ msgstr ""
 msgid "Document view"
 msgstr ""
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
@@ -1261,6 +1271,11 @@ msgstr "{filename} ကို ဒေါင်းလုဒ်လုပ်ပါ"
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
 msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
@@ -4378,6 +4393,11 @@ msgstr ""
 #. Default: "Upload"
 #: components/manage/Contents/Contents
 msgid "Upload"
+msgstr ""
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
 msgstr ""
 
 #. Default: "Upload Files ({count})"
