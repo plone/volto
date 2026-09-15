@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.4.1 (2026-09-10)
+
+### Bugfix
+
+- Fix `SelectAutoComplete` rendering the raw token instead of its title when the vocabulary subrequest still held a stale token/title pair from a previously edited value (for example after changing a value, saving, and editing again via client-side navigation). The widget now keeps its local token/title cache in sync with the incoming choices instead of seeding it only once. @sneridagh [#8423](https://github.com/plone/volto/issues/8423)
+
+## 19.4.0 (2026-09-03)
+
+### Feature
+
+- Added a `UserAvatar` component, used by the toolbar to render the signed-in user's avatar. Add-ons can now change that avatar by shadowing this one small component, instead of shadowing the whole `Toolbar`. @ericof [#8404](https://github.com/plone/volto/issues/8404)
+- Adding quanta support with semanticUI fallback for seach container. @TimoBroeskamp [#8411](https://github.com/plone/volto/issues/8411)
+
+### Bugfix
+
+- Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl [#8402](https://github.com/plone/volto/issues/8402)
+
 ## 19.3.1 (2026-08-26)
 
 ### Bugfix

@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.0.2 (2026-09-10)
+
+### Bugfix
+
+- Include `.cjs` and `.mjs` in the customizations glob so core modules with those extensions can be shadowed. @kunalKumar-13 [#8366](https://github.com/plone/volto/issues/8366)
+
 ## 3.0.1 (2026-05-28)
 
 ### Internal
