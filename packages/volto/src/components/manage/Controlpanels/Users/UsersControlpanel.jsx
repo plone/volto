@@ -558,49 +558,6 @@ const UsersControlpanel = (props) => {
     }
   }
 
-  const csvUploadSchema = {
-    fieldsets: [
-      {
-        behavior: 'plone',
-        fields: ['file'],
-        id: 'default',
-        title: 'Default',
-      },
-    ],
-    properties: {
-      file: {
-        title: 'CSV File',
-        description: '\n          Drag and drop your CSV file in here.\n      ',
-        factory: 'File',
-        properties: {
-          'file.contentType': {
-            default: '',
-            description: 'The content type identifies the type of data.',
-            factory: 'Text line (String)',
-            title: 'Content Type',
-            type: 'string',
-          },
-          'file.data': {
-            default: '',
-            description: 'The actual content of the object.',
-            factory: 'Text line (String)',
-            title: 'Data',
-            type: 'string',
-          },
-          'file.filename': {
-            description: '',
-            factory: 'Text line (String)',
-            title: 'Filename',
-            type: 'string',
-          },
-        },
-        type: 'object',
-        widget: 'file',
-      },
-    },
-    required: [],
-  };
-
   async function downloadUserCsv(filename = 'users.csv') {
     const csvContent = await dispatch(getUsersCsv());
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -694,7 +651,24 @@ const UsersControlpanel = (props) => {
             }}
             title={intl.formatMessage(messages.addMemberImport)}
             loading={createRequest?.loading}
-            schema={csvUploadSchema}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'Default',
+                  fields: ['file'],
+                },
+              ],
+              properties: {
+                file: {
+                  title: intl.formatMessage(messages.CSVFile),
+                  description: intl.formatMessage(messages.dragDropCSVFile),
+                  type: 'object',
+                  widget: 'file',
+                },
+              },
+              required: [],
+            }}
           />
         ) : null}
       </div>
@@ -711,7 +685,7 @@ const UsersControlpanel = (props) => {
               }}
               loading={createRequest?.loading}
             >
-              Upload CSV
+              {intl.formatMessage(messages.uploadCSV)}
               <Icon
                 name={uploadSVG}
                 className="csv_icon"
@@ -726,7 +700,7 @@ const UsersControlpanel = (props) => {
               className="export_members_csv"
               onClick={() => downloadUserCsv()}
             >
-              Download CSV
+              {intl.formatMessage(messages.downloadCSV)}
               <Icon
                 name={downloadSVG}
                 className="csv_icon"

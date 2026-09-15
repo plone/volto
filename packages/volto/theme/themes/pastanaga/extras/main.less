@@ -409,9 +409,11 @@ button {
     justify-content: space-between;
 
     .users_grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      justify-items: end;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      gap: 5px;
 
       .import_members_csv,
       .export_members_csv {
