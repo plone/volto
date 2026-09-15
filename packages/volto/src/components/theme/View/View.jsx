@@ -3,13 +3,12 @@
  * @module components/theme/View/View
  */
 
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, useLocation } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import qs from 'query-string';
 
 import ContentMetadataTags from '@plone/volto/components/theme/ContentMetadataTags/ContentMetadataTags';
@@ -28,166 +27,47 @@ import SlotRenderer from '../SlotRenderer/SlotRenderer';
 
 /**
  * View container class.
- * @class View
- * @extends Component
+ * @function View
+ * @returns {JSX.Element}
  */
-class View extends Component {
-  /**
-   * Property types.
-   * @property {Object} propTypes Property types.
-   * @static
-   */
-  static propTypes = {
-    actions: PropTypes.shape({
-      object: PropTypes.arrayOf(PropTypes.object),
-      object_buttons: PropTypes.arrayOf(PropTypes.object),
-      user: PropTypes.arrayOf(PropTypes.object),
-    }),
-    listActions: PropTypes.func.isRequired,
-    /**
-     * Action to get the content
-     */
-    getContent: PropTypes.func.isRequired,
-    /**
-     * Pathname of the object
-     */
-    pathname: PropTypes.string.isRequired,
-    location: PropTypes.shape({
-      search: PropTypes.string,
-      pathname: PropTypes.string,
-    }).isRequired,
-    /**
-     * Version id of the object
-     */
-    versionId: PropTypes.string,
-    /**
-     * Content of the object
-     */
-    content: PropTypes.shape({
-      /**
-       * Layout of the object
-       */
-      layout: PropTypes.string,
-      /**
-       * Allow discussion of the object
-       */
-      allow_discussion: PropTypes.bool,
-      /**
-       * Title of the object
-       */
-      title: PropTypes.string,
-      /**
-       * Description of the object
-       */
-      description: PropTypes.string,
-      /**
-       * Type of the object
-       */
-      '@type': PropTypes.string,
-      /**
-       * Subjects of the object
-       */
-      subjects: PropTypes.arrayOf(PropTypes.string),
-      is_folderish: PropTypes.bool,
-    }),
-    error: PropTypes.shape({
-      /**
-       * Error type
-       */
-      status: PropTypes.number,
-    }),
-  };
+const View = (props) => {
+  const { history } = props;
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const intl = useIntl();
+  const [isClient, setIsClient] = useState(false);
 
-  /**
-   * Default properties.
-   * @property {Object} defaultProps Default properties.
-   * @static
-   */
-  static defaultProps = {
-    actions: null,
-    content: null,
-    versionId: null,
-    error: null,
-  };
+  const pathname = location.pathname;
+  const search = location.search;
+  const versionId = qs.parse(search)?.version;
 
-  state = {
-    hasObjectButtons: null,
-    isClient: false,
-  };
+  const token = useSelector((state) => state.userSession.token);
+  const content = useSelector((state) => state.content.data);
+  const error = useSelector((state) => state.content.get.error);
+  const connectionRefused = useSelector(
+    (state) => state.apierror.connectionRefused,
+  );
 
-  componentDidMount() {
-    // Do not trigger the actions action if the expander is present
-    if (!hasApiExpander('actions', getBaseUrl(this.props.pathname))) {
-      this.props.listActions(getBaseUrl(this.props.pathname));
+  useEffect(() => {
+    if (!hasApiExpander('actions', getBaseUrl(pathname))) {
+      dispatch(listActions(getBaseUrl(pathname)));
     }
+    dispatch(getContent(getBaseUrl(pathname), versionId));
+  }, [dispatch, pathname, versionId]);
 
-    this.props.getContent(
-      getBaseUrl(this.props.pathname),
-      this.props.versionId,
-    );
-    this.setState({ isClient: true });
-  }
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-  /**
-   * Component will receive props
-   * @method componentWillReceiveProps
-   * @param {Object} nextProps Next properties
-   * @returns {undefined}
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.pathname !== this.props.pathname) {
-      // Do not trigger the actions action if the expander is present
-      if (!hasApiExpander('actions', getBaseUrl(nextProps.pathname))) {
-        this.props.listActions(getBaseUrl(nextProps.pathname));
-      }
+  const getViewDefault = () => config.views.defaultView;
 
-      this.props.getContent(
-        getBaseUrl(nextProps.pathname),
-        this.props.versionId,
-      );
-    }
+  const getViewByType = () =>
+    config.views.contentTypesViews[content?.['@type']] || null;
 
-    if (nextProps.actions.object_buttons) {
-      const objectButtons = nextProps.actions.object_buttons;
-      this.setState({
-        hasObjectButtons: !!objectButtons.length,
-      });
-    }
-  }
+  const getViewByLayout = () =>
+    config.views.layoutViews[content?.[getLayoutFieldname(content)]] || null;
 
-  /**
-   * Default fallback view
-   * @method getViewDefault
-   * @returns {string} Markup for component.
-   */
-  getViewDefault = () => config.views.defaultView;
-
-  /**
-   * Get view by content type
-   * @method getViewByType
-   * @returns {string} Markup for component.
-   */
-  getViewByType = () =>
-    config.views.contentTypesViews[this.props.content['@type']] || null;
-
-  /**
-   * Get view by content layout property
-   * @method getViewByLayout
-   * @returns {string} Markup for component.
-   */
-  getViewByLayout = () =>
-    config.views.layoutViews[
-      this.props.content[getLayoutFieldname(this.props.content)]
-    ] || null;
-
-  /**
-   * Cleans the component displayName (specially for connected components)
-   * which have the Connect(componentDisplayName)
-   * @method cleanViewName
-   * @param  {string} dirtyDisplayName The displayName
-   * @returns {string} Clean displayName (no Connect(...)).
-   */
-  cleanViewName = (dirtyDisplayName) =>
+  const cleanViewName = (dirtyDisplayName) =>
     dirtyDisplayName
       .replace('Connect(', '')
       .replace('injectIntl(', '')
@@ -195,102 +75,79 @@ class View extends Component {
       .replace('connect(', '')
       .toLowerCase();
 
-  /**
-   * Render method.
-   * @method render
-   * @returns {string} Markup for the component.
-   */
-  render() {
-    const { views } = config;
-    if ([301, 302].includes(this.props.error?.code)) {
-      const redirect = flattenToAppURL(this.props.error.url)
-        .split('?')[0]
-        .replace('/++api++', '');
-      return <Redirect to={`${redirect}${this.props.location.search}`} />;
-    } else if (this.props.error && !this.props.connectionRefused) {
-      let FoundView;
-      if (this.props.error.status === undefined) {
-        // For some reason, while development and if CORS is in place and the
-        // requested resource is 404, it returns undefined as status, then the
-        // next statement will fail
-        FoundView = views.errorViews.corsError;
-      } else {
-        FoundView = views.errorViews[this.props.error.status.toString()];
-      }
-      if (!FoundView) {
-        FoundView = views.errorViews['404']; // default to 404
-      }
-      return (
-        <div id="view">
-          <BodyClass
-            className={
-              FoundView.displayName
-                ? `view-${this.cleanViewName(FoundView.displayName)}`
-                : null
-            }
-          />
-          <FoundView {...this.props} />
-        </div>
-      );
-    }
-    if (!this.props.content) {
-      return <span />;
-    }
-    const RenderedView =
-      this.getViewByLayout() || this.getViewByType() || this.getViewDefault();
+  const { views } = config;
 
+  if (error?.code && [301, 302].includes(error.code)) {
+    const redirect = flattenToAppURL(error.url)
+      .split('?')[0]
+      .replace('/++api++', '');
+    return <Redirect to={`${redirect}${search}`} />;
+  }
+
+  if (error && !connectionRefused) {
+    let FoundView;
+    if (error.status === undefined) {
+      FoundView = views.errorViews.corsError;
+    } else {
+      FoundView = views.errorViews[error.status.toString()];
+    }
+    if (!FoundView) {
+      FoundView = views.errorViews['404'];
+    }
     return (
-      <div id="view" tabIndex="-1">
-        <ContentMetadataTags content={this.props.content} />
-        <AlternateHrefLangs content={this.props.content} />
-        {/* Body class if displayName in component is set */}
+      <div id="view">
         <BodyClass
           className={
-            RenderedView.displayName
-              ? `view-${this.cleanViewName(RenderedView.displayName)}`
+            FoundView.displayName
+              ? `view-${cleanViewName(FoundView.displayName)}`
               : null
           }
         />
-        <SlotRenderer name="aboveContent" content={this.props.content} />
-        <RenderedView
-          key={flattenToAppURL(this.props.content['@id'])}
-          content={this.props.content}
-          location={this.props.location}
-          token={this.props.token}
-          history={this.props.history}
-        />
-        <SlotRenderer name="belowContent" content={this.props.content} />
-        {this.props.content.allow_discussion && (
-          <Comments pathname={this.props.pathname} />
-        )}
-        {this.state.isClient &&
-          createPortal(
-            <Toolbar pathname={this.props.pathname} inner={<span />} />,
-            document.getElementById('toolbar'),
-          )}
+        <FoundView {...props} intl={intl} error={error} />
       </div>
     );
   }
-}
 
-export default compose(
-  injectIntl,
-  connect(
-    (state, props) => ({
-      actions: state.actions.actions,
-      token: state.userSession.token,
-      content: state.content.data,
-      error: state.content.get.error,
-      apiError: state.apierror.error,
-      connectionRefused: state.apierror.connectionRefused,
-      pathname: props.location.pathname,
-      versionId:
-        qs.parse(props.location.search) &&
-        qs.parse(props.location.search).version,
-    }),
-    {
-      listActions,
-      getContent,
-    },
-  ),
-)(View);
+  if (!content) {
+    return <span />;
+  }
+
+  const RenderedView = getViewByLayout() || getViewByType() || getViewDefault();
+
+  return (
+    <div id="view" tabIndex="-1">
+      <ContentMetadataTags content={content} />
+      <AlternateHrefLangs content={content} />
+      <BodyClass
+        className={
+          RenderedView.displayName
+            ? `view-${cleanViewName(RenderedView.displayName)}`
+            : null
+        }
+      />
+      <SlotRenderer name="aboveContent" content={content} />
+      <RenderedView
+        key={flattenToAppURL(content['@id'])}
+        content={content}
+        location={location}
+        token={token}
+        history={history}
+        intl={intl}
+      />
+      <SlotRenderer name="belowContent" content={content} />
+      {content.allow_discussion && <Comments pathname={pathname} />}
+      {isClient &&
+        createPortal(
+          <Toolbar pathname={pathname} inner={<span />} />,
+          document.getElementById('toolbar'),
+        )}
+    </div>
+  );
+};
+
+View.propTypes = {
+  history: PropTypes.object,
+  location: PropTypes.object,
+};
+
+export default View;
