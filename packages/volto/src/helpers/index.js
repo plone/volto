@@ -108,6 +108,7 @@ export {
   arrayRange,
   reorderArray,
   isInteractiveElement,
+  isIMEComposing,
   slugify,
   normalizeString,
 } from '@plone/volto/helpers/Utils/Utils';
