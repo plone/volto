@@ -113,6 +113,11 @@ msgstr "உள்ளடக்கத்தைச் சேர்க்கவு�
 msgid "Add Content Rule"
 msgstr "உள்ளடக்க விதியைச் சேர்க்கவும்"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -564,6 +569,11 @@ msgstr "Bulluploadalturls"
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "இயல்பாக, இந்த உருப்படியின் கொள்கலனில் இருந்து அனுமதிகள் மரபுரிமையாக உள்ளன. இதை நீங்கள் முடக்கினால், வெளிப்படையாக வரையறுக்கப்பட்ட பகிர்வு அனுமதிகள் மட்டுமே செல்லுபடியாகும். கண்ணோட்டத்தில், {inherited} அடையாளம் ஒரு பரம்பரை மதிப்பைக் குறிக்கிறது. இதேபோல், {global} அடையாளம் உலகளாவிய பங்கைக் குறிக்கிறது, இது தள நிர்வாகியால் நிர்வகிக்கப்படுகிறது."
+
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -1233,10 +1243,20 @@ msgstr "ஆவணம்"
 msgid "Document view"
 msgstr "ஆவணக் காட்சி"
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "நிகழ்வைப் பதிவிறக்கவும்"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView
@@ -1252,6 +1272,11 @@ msgstr "{filename} பதிவிறக்கம் செய்யவும்
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "உங்கள் கணினியிலிருந்து கோப்புகளை இந்த பகுதியில் இழுத்து விடுங்கள் அல்லது “உலாவு” பொத்தானைக் சொடுக்கு செய்க."
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
+msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
@@ -4369,6 +4394,11 @@ msgstr "படிகளை மேம்படுத்தவும்"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "பதிவேற்றும்"
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
+msgstr ""
 
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent

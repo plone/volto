@@ -113,6 +113,11 @@ msgstr "जोड़े कंटेंट"
 msgid "Add Content Rule"
 msgstr "कंटेंट रूल्स जोड़े"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -564,6 +569,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "डिफ़ॉल्ट रूप से, इस आइटम के कंटेनर से अनुमतियाँ विरासत में मिलती हैं। यदि आप इसे अक्षम करते हैं, तो केवल स्पष्ट रूप से परिभाषित साझा करने की अनुमतियाँ ही मान्य होंगी। अवलोकन में, विरासत में मिले मानों को स्पष्ट रूप से 'विरासत में मिला मान' के रूप में लेबल किया जाता है और उन्हें हरा चेक मार्क {inherited} मिलता है। इसी तरह, साइट प्रशासक द्वारा प्रबंधित भूमिकाओं को 'वैश्विक भूमिका' के रूप में लेबल किया जाता है और उन्हें नीला चेक मार्क {global} मिलता है।."
+
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -1233,10 +1243,20 @@ msgstr "दस्तावेज़"
 msgid "Document view"
 msgstr "दस्तावेज़ दृश्य"
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "आयोजन डाउनलोड करें"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView
@@ -1252,6 +1272,11 @@ msgstr "{filename} डाउनलोड करें"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "अपने कंप्यूटर से फ़ाइलें इस क्षेत्र पर खींचें और छोड़ें या 'ब्राउज़' बटन पर क्लिक करें।"
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
+msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
@@ -4369,6 +4394,11 @@ msgstr "अपग्रेड कदम"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "अपलोड"
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
+msgstr ""
 
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent

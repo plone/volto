@@ -7,10 +7,12 @@ import qs from 'query-string';
 
 import {
   CREATE_USER,
+  UPDATE_USERS_CSV,
   DELETE_USER,
   GET_USER,
   INITIAL_PASSWORD,
   LIST_USERS,
+  GET_USERS_CSV,
   RESET_PASSWORD,
   UPDATE_PASSWORD,
   UPDATE_USER,
@@ -29,6 +31,17 @@ export function createUser(content, sendPasswordReset = null) {
       op: 'post',
       path: '/@users',
       data: sendPasswordReset ? { ...content, sendPasswordReset } : content,
+    },
+  };
+}
+
+export function uploadUsersCsv(file) {
+  return {
+    type: UPDATE_USERS_CSV,
+    request: {
+      op: 'post',
+      path: '/@users',
+      attach: [['file', file]],
     },
   };
 }
@@ -110,6 +123,17 @@ export function listUsers(options = {}) {
     request: {
       op: 'get',
       path: path,
+    },
+  };
+}
+
+export function getUsersCsv() {
+  return {
+    type: GET_USERS_CSV,
+    request: {
+      op: 'get',
+      path: '/@users',
+      headers: { Accept: 'text/csv' },
     },
   };
 }

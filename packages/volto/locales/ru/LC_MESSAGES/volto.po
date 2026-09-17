@@ -113,6 +113,11 @@ msgstr "Добавить контент"
 msgid "Add Content Rule"
 msgstr "Добавить правило контента"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -564,6 +569,11 @@ msgstr "Массовая загрузка CSV"
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "По умолчанию наследуются права доступа из контейнера этого элемента. Если вы отключите это, будут действовать только явно заданные права общего доступа. В обзоре наследуемые значения явно помечаются как 'Наследуемое значение' и получают зелёную галочку {inherited}. Аналогично, роли, управляемые администратором сайта, помечаются как 'Глобальная роль' и получают синюю галочку {global}."
+
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -1233,10 +1243,20 @@ msgstr "Документ"
 msgid "Document view"
 msgstr "Вид документа"
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Скачать событие"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView
@@ -1252,6 +1272,11 @@ msgstr "Скачать {filename}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Перетащите файлы в эту область или нажмите кнопку «Обзор»."
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
+msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
@@ -4369,6 +4394,11 @@ msgstr "Шаги обновления"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Загрузить"
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
+msgstr ""
 
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent
