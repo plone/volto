@@ -2,18 +2,23 @@
  * Field definition helpers for the fieldset-based (non-blocks) view.
  * @module components/theme/FieldsetView/fields
  */
-import { getWidget } from '@plone/volto/helpers/Widget/utils';
+import { applyTaggedValues } from '@plone/volto/helpers/Widget/taggedValues';
 import type { GetTypeResponse, JSONSchema } from '@plone/types';
 
 type SchemaProperty = GetTypeResponse['properties'][string];
 
 /**
  * A schema property, resolved for rendering: the property as the backend sent
- * it, plus the field's own `id` and the name of the widget to render it with.
+ * it, with its tagged values applied and its own `id` attached.
+ *
+ * `widget` is whatever should render the field — the `frontendOptions` hint
+ * when there is one, the schema's own `widget` otherwise — and `_widget` holds
+ * the declared widget that a hint displaced, if any.
  */
-export type FieldDefinition = Partial<SchemaProperty> & {
+export type FieldDefinition = Omit<Partial<SchemaProperty>, 'widget'> & {
   id: string;
-  widget: string;
+  widget?: string;
+  _widget?: string;
 };
 
 /**
@@ -22,14 +27,11 @@ export type FieldDefinition = Partial<SchemaProperty> & {
 export const getFieldDefinition = (
   schema: JSONSchema | undefined,
   fieldName: string,
-): FieldDefinition => {
-  const property = schema?.properties?.[fieldName];
-  return {
-    ...property,
+): FieldDefinition =>
+  applyTaggedValues({
+    ...schema?.properties?.[fieldName],
     id: fieldName,
-    widget: getWidget(fieldName, property),
-  };
-};
+  });
 
 /**
  * Build the definitions of the named fields, in the order given.

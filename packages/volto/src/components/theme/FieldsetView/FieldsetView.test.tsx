@@ -1,7 +1,8 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { render } from '@testing-library/react';
 import type { JSONSchema, JSONSchemaFieldsets } from '@plone/types';
 import config from '@plone/volto/registry';
+import { widgetMapping } from '@plone/volto/config/Widgets';
 import FieldsetView from './FieldsetView';
 
 const ValueWidget = ({ value }: { value: unknown }) => (
@@ -149,5 +150,127 @@ describe('FieldsetView', () => {
         />,
       ),
     ).not.toThrow();
+  });
+});
+
+/**
+ * The case from issue #8428, end to end: a `Person` content type whose
+ * `social_links` field asks for an add-on widget through the schema, rendered
+ * against the real view registry rather than a mocked resolver.
+ */
+describe('a field whose backend schema asks for a widget', () => {
+  const SocialMediaWidget = ({ value }: { value: unknown }) => (
+    <span className="social-media">{JSON.stringify(value)}</span>
+  );
+
+  const personSchema = {
+    title: 'Person',
+    type: 'object',
+    required: ['title'],
+    fieldsets: [],
+    properties: {
+      social_links: {
+        behavior: 'plonegovbr.socialmedia.links',
+        factory: 'JSONField',
+        title: 'Profiles',
+        type: 'dict',
+        widget: 'json',
+        widgetOptions: {
+          frontendOptions: {
+            widget: 'social_media_object_list',
+            widgetProps: { schemaName: 'socialMedia' },
+          },
+        },
+      },
+      // A field whose declared widget *is* registered, so that the fallback
+      // has somewhere to land when the hinted widget is missing.
+      motto: {
+        factory: 'Text',
+        title: 'Motto',
+        type: 'string',
+        widget: 'textarea',
+        widgetOptions: {
+          frontendOptions: { widget: 'not_installed_widget' },
+        },
+      },
+    },
+  } as unknown as JSONSchema;
+
+  const person = {
+    social_links: { bluesky: '@ericof' },
+    motto: 'Live long and prosper',
+  };
+
+  const useRegistry = (addonInstalled: boolean) => {
+    config.widgets.views = {
+      ...widgetMapping.views,
+      widget: {
+        ...widgetMapping.views.widget,
+        ...(addonInstalled
+          ? { social_media_object_list: SocialMediaWidget }
+          : {}),
+      },
+    } as unknown as typeof config.widgets.views;
+  };
+
+  const renderField = (fieldName: string) =>
+    render(
+      <FieldsetView
+        fieldset={fieldset('social_media', [fieldName])}
+        schema={personSchema}
+        data={person}
+      />,
+    );
+
+  it('renders it with the widget the schema asked for', () => {
+    useRegistry(true);
+
+    const { container } = renderField('social_links');
+
+    expect(container.querySelector('.social-media')?.textContent).toBe(
+      '{"bluesky":"@ericof"}',
+    );
+  });
+
+  it('passes the widget props from the schema down to it', () => {
+    useRegistry(true);
+    const seen: Record<string, any>[] = [];
+    config.widgets.views = {
+      ...config.widgets.views,
+      widget: {
+        ...config.widgets.views.widget,
+        social_media_object_list: (props: Record<string, any>) => {
+          seen.push(props);
+          return null;
+        },
+      },
+    } as unknown as typeof config.widgets.views;
+
+    renderField('social_links');
+
+    expect(seen[0]).toMatchObject({ schemaName: 'socialMedia' });
+  });
+
+  it('falls back to the declared widget when the hinted one is missing', () => {
+    useRegistry(false);
+
+    const { container } = renderField('motto');
+
+    expect(container.textContent).toContain('Live long and prosper');
+    expect(container.querySelector('pre.error')).toBeNull();
+  });
+
+  it('degrades to the error boundary when nothing can render the value', () => {
+    const consoleError = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
+    useRegistry(false);
+
+    const { container } = renderField('social_links');
+
+    expect(container.querySelector('pre.error')?.textContent).toBe(
+      '<error: social_links>',
+    );
+    consoleError.mockRestore();
   });
 });
