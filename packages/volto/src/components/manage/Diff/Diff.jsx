@@ -141,6 +141,22 @@ function Diff() {
     [historyEntries],
   );
 
+  const blocksField = data[0] ? getBlocksFieldname(data[0]) : null;
+  const blocksLayoutField = data[0] ? getBlocksLayoutFieldname(data[0]) : null;
+  const blocksOne = (blocksField && data[0]?.[blocksField]) || {};
+  const blocksTwo = (blocksField && data[1]?.[blocksField]) || {};
+  const blockIdsOne =
+    (blocksLayoutField && data[0]?.[blocksLayoutField]?.items) || [];
+  const blockIdsTwo =
+    (blocksLayoutField && data[1]?.[blocksLayoutField]?.items) || [];
+  const orderedBlockIds = [
+    ...blockIdsTwo,
+    ...blockIdsOne.filter((id) => !blockIdsTwo.includes(id)),
+  ];
+  const changedBlockIds = orderedBlockIds.filter(
+    (id) => !isEqual(blocksOne[id], blocksTwo[id]),
+  );
+
   return error?.status === 401 ? (
     <Unauthorized />
   ) : (
@@ -244,23 +260,25 @@ function Diff() {
       {schema &&
         data.length > 0 &&
         hasBlocksData(data[0]) &&
-        (!isEqual(
-          data[0][getBlocksFieldname(data[0])],
-          data[1][getBlocksFieldname(data[1])],
-        ) ||
-          !isEqual(
-            data[0][getBlocksLayoutFieldname(data[0])],
-            data[1][getBlocksLayoutFieldname(data[1])],
-          )) && (
+        map(changedBlockIds, (id) => (
           <DiffField
-            one={data[0][getBlocksFieldname(data[0])]}
-            two={data[1][getBlocksFieldname(data[1])]}
-            contentOne={data[0]}
-            contentTwo={data[1]}
-            schema={schema.properties[getBlocksFieldname(data[0])]}
+            key={id}
+            one={blocksOne[id]}
+            two={blocksTwo[id]}
+            contentOne={{
+              ...data[0],
+              [blocksField]: blocksOne[id] ? { [id]: blocksOne[id] } : {},
+              [blocksLayoutField]: { items: blocksOne[id] ? [id] : [] },
+            }}
+            contentTwo={{
+              ...data[1],
+              [blocksField]: blocksTwo[id] ? { [id]: blocksTwo[id] } : {},
+              [blocksLayoutField]: { items: blocksTwo[id] ? [id] : [] },
+            }}
+            schema={schema.properties[blocksField]}
             view={view}
           />
-        )}
+        ))}
       {isClient &&
         createPortal(
           <Toolbar

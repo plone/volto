@@ -1,0 +1,1 @@
+Fixed the History diff view highlighting a whole paragraph block as changed when only a word or two actually changed, by diffing each block on its own and diffing text line by line before word by word. @iFlameing
