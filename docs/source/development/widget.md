@@ -51,6 +51,54 @@ specialfield = schema.TextLine(title="Field with special frontend widget")
 The props will be injected into the corresponding widget component, configuring it as specified.
 
 
+(view-widgets)=
+
+## Set the widget used to view a field
+
+The `frontendOptions` hint also selects the widget that renders the field in the view of a content type that has no blocks.
+
+Register your view widget in the `views` registry.
+
+```jsx
+import { MySpecialViewWidget } from './components';
+
+const applyConfig = (config) => {
+  config.widgets.views.widget.specialwidget = MySpecialViewWidget;
+  return config;
+};
+```
+
+The edit registry and the view registry are separate.
+Register your widget in both if the field needs a custom widget in both places.
+
+Volto hands the field definition to the view widget as props, so the `widgetProps` you declare in the schema reach the view widget the same way they reach the edit widget.
+Volto applies the field value last, as the `value` prop, so nothing the schema carries can shadow it.
+
+```{note}
+If you name a widget that no add-on registered, Volto falls back to the widget named by the `widget` key in the schema, and then to the default widget.
+This keeps a field readable when the add-on that provides its widget is not installed.
+```
+
+
+### Widget resolution order in views
+
+Volto renders a field with the first widget it resolves from the following list.
+
+| Order | Resolved from | Registry |
+| --- | --- | --- |
+| 1 | The field name | `config.widgets.views.id` |
+| 2 | The widget named by `frontendOptions`, or the `widget` key in the schema when the field carries no hint | `config.widgets.views.widget` |
+| 3 | The `widget` key in the schema, when `frontendOptions` names a widget that no add-on registered | `config.widgets.views.widget` |
+| 4 | The presence of `choices` or `vocabulary` on the field | `config.widgets.views.choices` |
+| 5 | The name of the field's vocabulary | `config.widgets.views.vocabulary` |
+| 6 | The name of the vocabulary declared in `widgetOptions` | `config.widgets.views.vocabulary` |
+| 7 | The field's `factory` | `config.widgets.views.factory` |
+| 8 | The field's `type` | `config.widgets.views.type` |
+| 9 | Nothing else matched | `config.widgets.views.default` |
+
+This is the same order that resolves edit widgets, applied to the `views` registry instead of the edit one.
+
+
 ## Single-choice field with vocabulary
 
 If you have a fixed predefined vocabulary, define your field as follows.
