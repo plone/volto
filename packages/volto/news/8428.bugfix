@@ -1,0 +1,1 @@
+Honored the `frontendOptions` schema hint when choosing the view widget, so a field whose backend schema declares `frontendOptions={"widget": ...}` renders with that widget instead of falling back to the default one. @ericof
