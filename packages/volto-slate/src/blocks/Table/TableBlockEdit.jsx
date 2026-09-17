@@ -204,6 +204,7 @@ class Edit extends Component {
    */
   constructor(props) {
     super(props);
+    this.tableRef = React.createRef();
     this.state = {
       headers: [],
       rows: {},
@@ -211,6 +212,7 @@ class Edit extends Component {
         row: 0,
         cell: 0,
       },
+      toolbarTop: 0,
       isClient: false,
     };
     this.onChange = this.onChange.bind(this);
@@ -223,6 +225,7 @@ class Edit extends Component {
     this.onDeleteCol = this.onDeleteCol.bind(this);
     this.onChangeCell = this.onChangeCell.bind(this);
     this.toggleCellType = this.toggleCellType.bind(this);
+    this.updateToolbarPosition = this.updateToolbarPosition.bind(this);
   }
 
   /**
@@ -237,7 +240,9 @@ class Edit extends Component {
         table: initialTable,
       });
     }
-    this.setState({ isClient: true });
+    this.setState({ isClient: true }, () => {
+      this.updateToolbarPosition();
+    });
   }
 
   /**
@@ -478,9 +483,46 @@ class Edit extends Component {
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.selected && !this.props.selected) {
       this.setState({ selected: null });
+    }
+    if (
+      prevProps.selected !== this.props.selected ||
+      prevState?.selected?.row !== this.state?.selected?.row ||
+      prevProps.data?.table?.hideHeaders !== this.props.data?.table?.hideHeaders
+    ) {
+      this.updateToolbarPosition();
+    }
+  }
+
+  /**
+   * Update floating toolbar position
+   * @method updateToolbarPosition
+   * @returns {undefined}
+   */
+  updateToolbarPosition() {
+    if (
+      !this.props.selected ||
+      !this.state?.selected ||
+      !this.tableRef.current
+    ) {
+      if (this.state?.toolbarTop !== 0) {
+        this.setState({ toolbarTop: 0 });
+      }
+      return;
+    }
+    let rowEl;
+    if (!this.props.data?.table?.hideHeaders && this.state.selected.row === 0) {
+      rowEl = this.tableRef.current.querySelector('thead tr');
+    } else {
+      const bodyRows = this.tableRef.current.querySelectorAll('tbody tr');
+      const rowIndex =
+        this.state.selected.row > 0 ? this.state.selected.row - 1 : 0;
+      rowEl = bodyRows[rowIndex];
+    }
+    if (rowEl && this.state.toolbarTop !== rowEl.offsetTop) {
+      this.setState({ toolbarTop: rowEl.offsetTop });
     }
   }
 
@@ -498,9 +540,17 @@ class Edit extends Component {
     return (
       // TODO: use slate-table instead of table, but first copy the CSS styles
       // to the new name
-      <div className={cx('block table', { selected: this.props.selected })}>
+      <div
+        ref={this.tableRef}
+        className={cx('block table', { selected: this.props.selected })}
+      >
         {this.props.selected && (
-          <div className="toolbar">
+          <div
+            className="toolbar"
+            style={{
+              top: `${this.state.toolbarTop}px`,
+            }}
+          >
             <Button.Group>
               <Button
                 icon
