@@ -47,6 +47,63 @@ specialfield = schema.TextLine(title="Field with special frontend widget")
 
 The props will be injected into the corresponding widget component, configuring it as specified.
 
+
+(view-widgets)=
+
+## Set the widget used to view a field
+
+The `frontendOptions` hint also selects the widget that renders the field in the view of a content type that has no blocks.
+
+Register your view widget in the `views` registry.
+
+```jsx
+import { MySpecialViewWidget } from './components';
+
+const applyConfig = (config) => {
+  config.widgets.views.widget.specialwidget = MySpecialViewWidget;
+  return config;
+};
+```
+
+The edit registry and the view registry are separate.
+Register your widget in both if the field needs a custom widget in both places.
+
+Volto hands the field definition to the view widget as props, so the `widgetProps` you declare in the schema reach the view widget the same way they reach the edit widget.
+Volto applies the field value last, as the `value` prop, so nothing the schema carries can shadow it.
+
+```{note}
+If you name a widget that no add-on registered, Volto falls back to the widget named by the `widget` key in the schema, and then continues down the {ref}`resolution order <view-widgets-resolution-order>`.
+This keeps a field readable when the add-on that provides its widget is not installed.
+```
+
+
+(view-widgets-resolution-order)=
+
+### Widget resolution order in views
+
+Volto renders a field with the first widget it resolves from the following list.
+
+| Order | Resolved from | Registry |
+| --- | --- | --- |
+| 1 | The field name | `config.widgets.views.id` |
+| 2 | The widget named by `frontendOptions`, or the `widget` key in the schema when the field carries no hint | `config.widgets.views.widget` |
+| 3 | The `widget` key in the schema, when `frontendOptions` names a widget that no add-on registered | `config.widgets.views.widget` |
+| 4 | The field's `factory` | `config.widgets.views.factory` |
+| 5 | The presence of `choices` or `vocabulary` on the field | `config.widgets.views.choices` |
+| 6 | The name of the field's vocabulary | `config.widgets.views.vocabulary` |
+| 7 | The name of the vocabulary declared in `widgetOptions` | `config.widgets.views.vocabulary` |
+| 8 | The field's `type` | `config.widgets.views.type` |
+| 9 | Nothing else matched | `config.widgets.views.default` |
+
+Edit widgets resolve through the same steps, with one difference in order: in edit forms, the factory comes after `choices` and vocabularies.
+The difference matters for relation fields.
+A `Relation Choice` or `Relation List` field carries a vocabulary, so the edit form lets you pick the related item with a select.
+In the view, its factory resolves first, so the field renders as a link to the related item rather than as a select.
+
+A widget named by `frontendOptions` or by the `widget` key in the schema still wins over the factory.
+To render a relation field with a different view widget, name that widget in the schema.
+
+
 ## Single-choice field with vocabulary
 
 If you have a fixed predefined vocabulary you can define your field such as:
