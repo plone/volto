@@ -126,10 +126,12 @@ export const widgetMapping = {
     getWidget: getWidgetView,
     default: TextViewWidget,
     id: {
+      description: DescriptionViewWidget,
       file: FileViewWidget,
       image: ImageViewWidget,
       relatedItems: RelationsViewWidget,
       subjects: TokenViewWidget,
+      title: TitleViewWidget,
     },
     widget: {
       array: ArrayViewWidget,
@@ -157,6 +159,13 @@ export const widgetMapping = {
     },
     vocabulary: {},
     choices: SelectViewWidget,
+    factory: {
+      Choice: SelectViewWidget,
+      File: FileViewWidget,
+      Image: ImageViewWidget,
+      'Relation Choice': RelationViewWidget,
+      'Relation List': RelationsViewWidget,
+    },
     type: {
       array: ArrayViewWidget,
       boolean: BooleanViewWidget,
