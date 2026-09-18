@@ -96,12 +96,19 @@ const getWidgetDefault = () => config.widgets.views.default;
 /**
  * Get Widget View
  *
- * Mirrors the resolution order of the edit side (`components/manage/Form/Field`),
- * against the `views` registry instead of the edit one.
+ * Uses the same steps as the edit side (`components/manage/Form/Field`), against
+ * the `views` registry instead of the edit one, with one deliberate difference
+ * in order: the factory is consulted before `choices` and vocabularies.
+ *
+ * A relation field carries a vocabulary, so on the edit side it reaches the
+ * `choices` step and is picked with a select. Viewing it with that same select
+ * widget would lose the link to the related item, so in views its factory
+ * (`Relation Choice`, `Relation List`) wins, and it renders as a relation.
  *
  * `props.widget` may have been set from the backend's `frontendOptions` hint by
  * `applyTaggedValues`, in which case `props._widget` holds the widget the schema
- * declared, and is used when the hinted one is not registered.
+ * declared, and is used when the hinted one is not registered. Both still win
+ * over the factory, so an explicit declaration is always honored.
  *
  * @method getWidgetView
  * @param {dict} props Props
@@ -111,9 +118,9 @@ export const getWidgetView = (props) =>
   getWidgetByFieldId(props.id) ||
   getWidgetByName(props.widget) ||
   getWidgetByName(props._widget) ||
+  getWidgetByFactory(props.factory) ||
   getWidgetByChoices(props) ||
   getWidgetByVocabulary(props.vocabulary) ||
   getWidgetByVocabularyFromHint(props) ||
-  getWidgetByFactory(props.factory) ||
   getWidgetByType(props.type) ||
   getWidgetDefault();

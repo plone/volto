@@ -75,10 +75,12 @@ Volto hands the field definition to the view widget as props, so the `widgetProp
 Volto applies the field value last, as the `value` prop, so nothing the schema carries can shadow it.
 
 ```{note}
-If you name a widget that no add-on registered, Volto falls back to the widget named by the `widget` key in the schema, and then to the default widget.
+If you name a widget that no add-on registered, Volto falls back to the widget named by the `widget` key in the schema, and then continues down the {ref}`resolution order <view-widgets-resolution-order>`.
 This keeps a field readable when the add-on that provides its widget is not installed.
 ```
 
+
+(view-widgets-resolution-order)=
 
 ### Widget resolution order in views
 
@@ -89,14 +91,20 @@ Volto renders a field with the first widget it resolves from the following list.
 | 1 | The field name | `config.widgets.views.id` |
 | 2 | The widget named by `frontendOptions`, or the `widget` key in the schema when the field carries no hint | `config.widgets.views.widget` |
 | 3 | The `widget` key in the schema, when `frontendOptions` names a widget that no add-on registered | `config.widgets.views.widget` |
-| 4 | The presence of `choices` or `vocabulary` on the field | `config.widgets.views.choices` |
-| 5 | The name of the field's vocabulary | `config.widgets.views.vocabulary` |
-| 6 | The name of the vocabulary declared in `widgetOptions` | `config.widgets.views.vocabulary` |
-| 7 | The field's `factory` | `config.widgets.views.factory` |
+| 4 | The field's `factory` | `config.widgets.views.factory` |
+| 5 | The presence of `choices` or `vocabulary` on the field | `config.widgets.views.choices` |
+| 6 | The name of the field's vocabulary | `config.widgets.views.vocabulary` |
+| 7 | The name of the vocabulary declared in `widgetOptions` | `config.widgets.views.vocabulary` |
 | 8 | The field's `type` | `config.widgets.views.type` |
 | 9 | Nothing else matched | `config.widgets.views.default` |
 
-This is the same order that resolves edit widgets, applied to the `views` registry instead of the edit one.
+Edit widgets resolve through the same steps, with one difference in order: in edit forms, the factory comes after `choices` and vocabularies.
+The difference matters for relation fields.
+A `Relation Choice` or `Relation List` field carries a vocabulary, so the edit form lets you pick the related item with a select.
+In the view, its factory resolves first, so the field renders as a link to the related item rather than as a select.
+
+A widget named by `frontendOptions` or by the `widget` key in the schema still wins over the factory.
+To render a relation field with a different view widget, name that widget in the schema.
 
 
 ## Single-choice field with vocabulary
