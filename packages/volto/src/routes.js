@@ -53,6 +53,7 @@ import {
 } from '@plone/volto/components/manage/Controlpanels';
 import BlockTypesControlpanel from './components/manage/Controlpanels/BlockTypes';
 import BlockTypeControlpanel from './components/manage/Controlpanels/BlockType';
+import MailControlpanel from './components/manage/Controlpanels/Mail';
 
 import withClientSideContent from '@plone/volto/helpers/Content/withClientSideContent';
 
@@ -241,6 +242,10 @@ export const defaultRoutes = [
   {
     path: '/controlpanel/block-types',
     component: BlockTypesControlpanel,
+  },
+  {
+    path: '/controlpanel/mail',
+    component: MailControlpanel,
   },
   {
     path: '/controlpanel/:id',

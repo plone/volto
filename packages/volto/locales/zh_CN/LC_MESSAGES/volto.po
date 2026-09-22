@@ -476,6 +476,7 @@ msgstr "可用的内容规则"
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -595,6 +596,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
@@ -660,6 +662,7 @@ msgstr "更改已经保存"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Changes saved."
 msgstr "更改已经保存"
 
@@ -1940,6 +1943,7 @@ msgstr "包括这个事件"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Info"
 msgstr "信息"
 
@@ -2293,6 +2297,11 @@ msgstr "退出"
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr "由{creator}在{date}时创建。这不再是一个工作副本，而是一个主要内容。"
+
+#. Default: "Mail"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Mail"
+msgstr ""
 
 #. Default: "Reduce cell padding"
 #: config/Blocks
@@ -3292,6 +3301,7 @@ msgstr "触发事件发生时执行规则。只有符合规则的所有条件，
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
@@ -5509,6 +5519,7 @@ msgstr "{count}已选择"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "{id}内容类型"
 

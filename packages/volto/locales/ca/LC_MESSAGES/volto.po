@@ -476,6 +476,7 @@ msgstr "Regles de contingut disponibles:"
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -595,6 +596,7 @@ msgstr "No es pot editar la plantilla per al tipus de contingut <strong>{type}</
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
@@ -660,6 +662,7 @@ msgstr "S'han guardat els canvis"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Changes saved."
 msgstr "S'han guardat els canvis."
 
@@ -1940,6 +1943,7 @@ msgstr "Incloeu aquesta ocurrència"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Info"
 msgstr "Informació"
 
@@ -2293,6 +2297,11 @@ msgstr "Tancar sessió"
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr "Fet per {creator} el {date}. Aquesta ja no és una còpia de treball, sinó el contingut principal."
+
+#. Default: "Mail"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Mail"
+msgstr ""
 
 #. Default: "Reduce cell padding"
 #: config/Blocks
@@ -3292,6 +3301,7 @@ msgstr "Les regles s'executen quan es produeix un esdeveniment desencadenant. Le
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
@@ -5509,6 +5519,7 @@ msgstr "{count} seleccionat"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "{id} Tipus de contingut"
 

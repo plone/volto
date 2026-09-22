@@ -475,6 +475,7 @@ msgstr "Regras de contido dispoñibles:"
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -594,6 +595,7 @@ msgstr "Non se pode editar o deseño para o tipo de contido <strong>{type}</stro
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
@@ -659,6 +661,7 @@ msgstr "Cambios gardados"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Changes saved."
 msgstr "Cambios gardados."
 
@@ -1939,6 +1942,7 @@ msgstr "Incluír esta ocorrencia"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Info"
 msgstr "Info"
 
@@ -2292,6 +2296,11 @@ msgstr "Pechar Sesión"
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr "Feito por {creator} o {date}. Isto xa non é unha copia de traballo, senón contido principal."
+
+#. Default: "Mail"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Mail"
+msgstr ""
 
 #. Default: "Reduce cell padding"
 #: config/Blocks
@@ -3291,6 +3300,7 @@ msgstr "As regras execútanse cando se produce un evento desencadeante. As acci�
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
@@ -5508,6 +5518,7 @@ msgstr "{count} seleccionados"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "{id} Tipo de Contido"
 

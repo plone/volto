@@ -476,6 +476,7 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -595,6 +596,7 @@ msgstr "ふるまいの<strong>ブロックが有効</strong>で、かつ<strong
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
@@ -660,6 +662,7 @@ msgstr "変更が保存されました"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Changes saved."
 msgstr "変更が保存されました"
 
@@ -1940,6 +1943,7 @@ msgstr "この繰り返しを含める"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Info"
 msgstr "情報"
 
@@ -2292,6 +2296,11 @@ msgstr ""
 #. Default: "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
+#. Default: "Mail"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Mail"
 msgstr ""
 
 #. Default: "Reduce cell padding"
@@ -3292,6 +3301,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
@@ -5509,6 +5519,7 @@ msgstr "{count} 件選択中"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "{id} コンテンツタイプ"
 

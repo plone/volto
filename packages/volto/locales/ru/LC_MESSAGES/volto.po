@@ -475,6 +475,7 @@ msgstr "Доступные правила контента:"
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -594,6 +595,7 @@ msgstr "Невозможно редактировать макет для тип
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
@@ -659,6 +661,7 @@ msgstr "Изменения сохранены"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Changes saved."
 msgstr "Изменения сохранены."
 
@@ -1939,6 +1942,7 @@ msgstr "Включить это повторение"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Info"
 msgstr "Информация"
 
@@ -2292,6 +2296,11 @@ msgstr "Выйти"
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr "Создано {creator}{date}. Это больше не рабочая копия, а основной контент."
+
+#. Default: "Mail"
+#: components/manage/Controlpanels/Controlpanels
+msgid "Mail"
+msgstr ""
 
 #. Default: "Reduce cell padding"
 #: config/Blocks
@@ -3291,6 +3300,7 @@ msgstr "Правила выполняются при возникновении 
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
@@ -5508,6 +5518,7 @@ msgstr "{count} выбрано"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
+#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "Тип контента {id}"
 
