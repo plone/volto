@@ -2300,6 +2300,7 @@ msgstr "由{creator}在{date}时创建。这不再是一个工作副本，而是
 
 #. Default: "Mail"
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
 msgid "Mail"
 msgstr ""
 
@@ -5519,7 +5520,6 @@ msgstr "{count}已选择"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "{id}内容类型"
 

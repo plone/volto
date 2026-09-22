@@ -2299,6 +2299,7 @@ msgstr "{creator} இல் {படைப்பாளரால் தயார�
 
 #. Default: "Mail"
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
 msgid "Mail"
 msgstr ""
 
@@ -5518,7 +5519,6 @@ msgstr "{count} தேர்ந்தெடுக்கப்பட்டது"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "{id} உள்ளடக்க வகை"
 

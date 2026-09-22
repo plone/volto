@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-09-21T15:58:22.116Z\n"
+"POT-Creation-Date: 2026-09-22T06:38:54.879Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -2295,6 +2295,7 @@ msgstr ""
 
 #. Default: "Mail"
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
 msgid "Mail"
 msgstr ""
 
@@ -5514,7 +5515,6 @@ msgstr ""
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr ""
 

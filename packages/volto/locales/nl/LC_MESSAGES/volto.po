@@ -2299,6 +2299,7 @@ msgstr "Gemaakt door {creator} op {date}. Dit is geen werkkopie meer, maar de in
 
 #. Default: "Mail"
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
 msgid "Mail"
 msgstr ""
 
@@ -5518,7 +5519,6 @@ msgstr "{count} geselecteerd"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "{id} contenttype"
 

@@ -2300,6 +2300,7 @@ msgstr "Fet per {creator} el {date}. Aquesta ja no és una còpia de treball, si
 
 #. Default: "Mail"
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
 msgid "Mail"
 msgstr ""
 
@@ -5519,7 +5520,6 @@ msgstr "{count} seleccionat"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "{id} Tipus de contingut"
 

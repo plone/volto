@@ -2299,6 +2299,7 @@ msgstr "Создано {creator}{date}. Это больше не рабочая 
 
 #. Default: "Mail"
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
 msgid "Mail"
 msgstr ""
 
@@ -5518,7 +5519,6 @@ msgstr "{count} выбрано"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "Тип контента {id}"
 

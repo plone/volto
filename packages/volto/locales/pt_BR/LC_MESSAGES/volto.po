@@ -2299,6 +2299,7 @@ msgstr "Criado por {creator} em {date}. Esta não é mais uma cópia de trabalho
 
 #. Default: "Mail"
 #: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
 msgid "Mail"
 msgstr ""
 
@@ -5518,7 +5519,6 @@ msgstr "{count} selecionados"
 
 #. Default: "{id} Content Type"
 #: components/manage/Controlpanels/ContentType
-#: components/manage/Controlpanels/Mail
 msgid "{id} Content Type"
 msgstr "Tipo de conteúdo {id}"
 

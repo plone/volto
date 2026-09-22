@@ -24,8 +24,8 @@ import { emailNotification } from '@plone/volto/actions/emailNotification/emailN
 
 const messages = defineMessages({
   title: {
-    id: '{id} Content Type',
-    defaultMessage: '{id} Content Type',
+    id: 'Mail',
+    defaultMessage: 'Mail',
   },
   changesSaved: {
     id: 'Changes saved.',
@@ -143,9 +143,7 @@ function MailControlpanel() {
     return (
       <div id="page-controlpanel" className="ui container">
         <Header>
-          {intl.formatMessage(messages.title, {
-            id: localControlpanel.title,
-          })}
+          {intl.formatMessage(messages.title)}
           <Button onClick={saveAndSendTestEmail}>
             Save and send test e-mail
           </Button>
