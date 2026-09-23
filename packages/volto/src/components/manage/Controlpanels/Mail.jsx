@@ -110,8 +110,9 @@ function MailControlpanel() {
 
     dispatch(
       emailNotification(email_from_address, email_message, '', email_subject),
-    );
-    // TODO: error handling
+    )
+      .then(onSubmit(formData))
+      .catch((err) => setError(err));
   };
 
   return (
