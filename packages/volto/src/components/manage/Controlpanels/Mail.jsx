@@ -63,6 +63,7 @@ function MailControlpanel() {
 
   const [visual] = useState(false);
   const [error, setError] = useState(null);
+  const [formData, setFormData] = useState(null);
 
   const form = useRef(null);
 
@@ -94,53 +95,27 @@ function MailControlpanel() {
     return <Error error={error} />;
   }
 
-  if (controlpanel?.data) {
-    const localControlpanel = {
-      ...controlpanel,
-      data: {
-        ...controlpanel.data,
-      },
-    };
+  const saveAndSendTestEmail = () => {
+    const email_from_address =
+      formData.email_from_address || controlpanel?.data.email_from_address;
+    const email_message =
+      'Hi,\n\nThis is a test message sent from the Plone ' +
+      "'Mail settings' control panel. Your receipt of this " +
+      "message (at the address specified in the Site 'From' " +
+      'address field) indicates that your e-mail server is ' +
+      'working!\n\n' +
+      'Have a nice day.\n\n' +
+      'Love,\n\nPlone';
+    const email_subject = 'Test e-mail from Plone';
 
-    if (localControlpanel?.data?.filter_content_types === false) {
-      localControlpanel.data.filter_content_types = {
-        title: 'all',
-        token: 'all',
-      };
-    }
-    if (localControlpanel?.data?.filter_content_types === true) {
-      if ((localControlpanel?.data?.allowed_content_types || []).length) {
-        localControlpanel.data.filter_content_types = {
-          title: 'some',
-          token: 'some',
-        };
-      } else {
-        localControlpanel.data.filter_content_types = {
-          title: 'none',
-          token: 'none',
-        };
-      }
-    }
+    dispatch(
+      emailNotification(email_from_address, email_message, '', email_subject),
+    );
+    // TODO: error handling
+  };
 
-    const saveAndSendTestEmail = () => {
-      const email_from_address = controlpanel?.data.email_from_address;
-      const email_message =
-        'Hi,\n\nThis is a test message sent from the Plone ' +
-        "'Mail settings' control panel. Your receipt of this " +
-        "message (at the address specified in the Site 'From' " +
-        'address field) indicates that your e-mail server is ' +
-        'working!\n\n' +
-        'Have a nice day.\n\n' +
-        'Love,\n\nPlone';
-      const email_subject = 'Test e-mail from Plone';
-
-      dispatch(
-        emailNotification(email_from_address, email_message, '', email_subject),
-      );
-      // TODO: error handling
-    };
-
-    return (
+  return (
+    controlpanel?.data && (
       <div id="page-controlpanel" className="ui container">
         <Header>
           {intl.formatMessage(messages.title)}
@@ -151,8 +126,9 @@ function MailControlpanel() {
         <Form
           isEditForm
           ref={form}
-          schema={localControlpanel.schema}
-          formData={localControlpanel.data}
+          schema={controlpanel.schema}
+          formData={controlpanel.data}
+          onChangeFormData={setFormData}
           onSubmit={onSubmit}
           onCancel={onCancel}
           pathname={pathname}
@@ -200,9 +176,8 @@ function MailControlpanel() {
             document.getElementById('toolbar'),
           )}
       </div>
-    );
-  }
-  return <div />;
+    )
+  );
 }
 
 export default MailControlpanel;
