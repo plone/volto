@@ -1,0 +1,185 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: sw\n"
+"Language-Name: sw\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: DOMAIN\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: sw\n"
+
+#. Default: "Add link"
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr "Ongeza kiungo"
+
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr ""
+
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr ""
+
+#. Default: "Bottom"
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr "Chini"
+
+#. Default: "Center"
+#: blocks/Table/TableBlockEdit
+msgid "Center"
+msgstr "Katikati"
+
+#. Default: "Delete col"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete col"
+msgstr "Futa safu wima"
+
+#. Default: "Delete row"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete row"
+msgstr "Futa safu mlalo"
+
+#. Default: "Delete table"
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr "Futa jedwali"
+
+#. Default: "Divide each row into separate cells"
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr "Gawanya kila safu mlalo katika seli tofauti"
+
+#. Default: "Edit element"
+#: elementEditor/messages
+msgid "Edit element"
+msgstr "Hariri kipengee"
+
+#. Default: "Edit link"
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+msgid "Edit link"
+msgstr "Hariri kiungo"
+
+#. Default: "Fixed width table cells"
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr "Seli za jedwali zenye upana uliowekwa"
+
+#. Default: "Hide headers"
+#: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr "Ficha vichwa"
+
+#. Default: "Insert col after"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col after"
+msgstr "Ingiza safu wima baada"
+
+#. Default: "Insert col before"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col before"
+msgstr "Ingiza safu wima kabla"
+
+#. Default: "Insert row after"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row after"
+msgstr "Ingiza safu mlalo baada"
+
+#. Default: "Insert row before"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row before"
+msgstr "Ingiza safu mlalo kabla"
+
+#. Default: "Left"
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr "Kushoto"
+
+#. Default: "Make the table compact"
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr "Fanya jedwali kuwa dogo"
+
+#. Default: "Make the table sortable"
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr "Fanya jedwali liweze kupangwa"
+
+#. Default: "Middle"
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr "Katikati"
+
+#. Default: "No matching blocks"
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
+msgstr "Hakuna vizuizi vinavyolingana"
+
+#. Default: "Reduce complexity"
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr "Punguza ugumu"
+
+#. Default: "Remove element"
+#: elementEditor/messages
+msgid "Remove element"
+msgstr "Ondoa kipengee"
+
+#. Default: "Remove link"
+#: editor/plugins/AdvancedLink/index
+msgid "Remove link"
+msgstr "Ondoa kiungo"
+
+#. Default: "Right"
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr "Kulia"
+
+#. Default: "Stripe alternate rows with color"
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr "Weka rangi kwa safu mlalo mbadala"
+
+#. Default: "Table"
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr "Jedwali"
+
+#. Default: "Table color inverted"
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr "Rangi ya jedwali imebadilishwa"
+
+#. Default: "Top"
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr "Juu"
+
+#. Default: "Type text…"
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr "Andika maandishi…"
+
+#. Default: "Visible only in view mode"
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr "Inaonekana tu katika modi ya kuona"

@@ -1,0 +1,185 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: ms\n"
+"Language-Name: ms\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: DOMAIN\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: ms\n"
+
+#. Default: "Add link"
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr "Tambah pautan"
+
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr ""
+
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr ""
+
+#. Default: "Bottom"
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr "Bawah"
+
+#. Default: "Center"
+#: blocks/Table/TableBlockEdit
+msgid "Center"
+msgstr "Tengah"
+
+#. Default: "Delete col"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete col"
+msgstr "Padam lajur"
+
+#. Default: "Delete row"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete row"
+msgstr "Padam baris"
+
+#. Default: "Delete table"
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr "Padam jadual"
+
+#. Default: "Divide each row into separate cells"
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr "Bahagikan setiap baris kepada sel berasingan"
+
+#. Default: "Edit element"
+#: elementEditor/messages
+msgid "Edit element"
+msgstr "Edit elemen"
+
+#. Default: "Edit link"
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+msgid "Edit link"
+msgstr "Edit pautan"
+
+#. Default: "Fixed width table cells"
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr "Sel jadual lebar tetap"
+
+#. Default: "Hide headers"
+#: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr "Sembunyikan pengepala"
+
+#. Default: "Insert col after"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col after"
+msgstr "Masukkan lajur selepas"
+
+#. Default: "Insert col before"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col before"
+msgstr "Masukkan lajur sebelum"
+
+#. Default: "Insert row after"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row after"
+msgstr "Masukkan baris selepas"
+
+#. Default: "Insert row before"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row before"
+msgstr "Masukkan baris sebelum"
+
+#. Default: "Left"
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr "Kiri"
+
+#. Default: "Make the table compact"
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr "Jadikan jadual padat"
+
+#. Default: "Make the table sortable"
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr "Jadikan jadual boleh diisih"
+
+#. Default: "Middle"
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr "Tengah"
+
+#. Default: "No matching blocks"
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
+msgstr "Tiada blok sepadan"
+
+#. Default: "Reduce complexity"
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr "Kurangkan kerumitan"
+
+#. Default: "Remove element"
+#: elementEditor/messages
+msgid "Remove element"
+msgstr "Alih keluar elemen"
+
+#. Default: "Remove link"
+#: editor/plugins/AdvancedLink/index
+msgid "Remove link"
+msgstr "Alih keluar pautan"
+
+#. Default: "Right"
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr "Kanan"
+
+#. Default: "Stripe alternate rows with color"
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr "Jalur baris berselang dengan warna"
+
+#. Default: "Table"
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr "Jadual"
+
+#. Default: "Table color inverted"
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr "Warna jadual terbalik"
+
+#. Default: "Top"
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr "Atas"
+
+#. Default: "Type text…"
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr "Taip teks…"
+
+#. Default: "Visible only in view mode"
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr "Kelihatan hanya dalam mod lihat"
