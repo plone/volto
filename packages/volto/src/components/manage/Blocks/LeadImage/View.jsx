@@ -4,7 +4,7 @@ import UniversalLink from '@plone/volto/components/manage/UniversalLink/Universa
 import cx from 'classnames';
 import config from '@plone/volto/registry';
 
-const View = ({ data, properties }) => {
+const View = ({ data, properties, isLCPBlock }) => {
   const Image = config.getComponent({ name: 'Image' }).component;
 
   return (
@@ -27,6 +27,8 @@ const View = ({ data, properties }) => {
                 imageField="image"
                 sizes={config.blocks.blocksConfig.leadimage.getSizes(data)}
                 alt={properties.image_caption || ''}
+                loading={isLCPBlock ? 'eager' : 'lazy'}
+                fetchpriority={isLCPBlock ? 'high' : undefined}
                 responsive={true}
               />
             );
@@ -57,6 +59,7 @@ const View = ({ data, properties }) => {
 View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   properties: PropTypes.objectOf(PropTypes.any).isRequired,
+  isLCPBlock: PropTypes.bool,
 };
 
 export default View;
