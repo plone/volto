@@ -76,6 +76,8 @@ const ObjectListWidget = (props) => {
     onChange,
     schemaExtender,
     schemaName,
+    placeholderItemField,
+    fixedItems = false,
   } = props;
 
   // This allows to use a `schemaName` prop defined as source of the schema
@@ -119,39 +121,41 @@ const ObjectListWidget = (props) => {
   return (
     <div className="objectlist-widget">
       <FormFieldWrapper {...props} noForInFieldLabel className="objectlist">
-        <div className="add-item-button-wrapper">
-          <Button
-            compact
-            icon
-            aria-label={
-              objectSchema.addMessage ||
-              `${intl.formatMessage(messages.add)} ${objectSchema.title}`
-            }
-            onClick={(e) => {
-              e.preventDefault();
-              const data = {
-                '@id': uuid(),
-              };
-              const objSchema = schemaExtender
-                ? schemaExtender(schema, data, intl)
-                : objectSchema;
-              const dataWithDefaults = applySchemaDefaults({
-                data,
-                schema: objSchema,
-                intl,
-              });
+        {!fixedItems && (
+          <div className="add-item-button-wrapper">
+            <Button
+              compact
+              icon
+              aria-label={
+                objectSchema.addMessage ||
+                `${intl.formatMessage(messages.add)} ${objectSchema.title}`
+              }
+              onClick={(e) => {
+                e.preventDefault();
+                const data = {
+                  '@id': uuid(),
+                };
+                const objSchema = schemaExtender
+                  ? schemaExtender(schema, data, intl)
+                  : objectSchema;
+                const dataWithDefaults = applySchemaDefaults({
+                  data,
+                  schema: objSchema,
+                  intl,
+                });
 
-              onChange(id, [...value, dataWithDefaults]);
-              setActiveObject(value.length);
-            }}
-          >
-            <Icon name={addSVG} size="18px" />
-            &nbsp;
-            {/* Custom addMessage in schema, else default to English */}
-            {objectSchema.addMessage ||
-              `${intl.formatMessage(messages.add)} ${objectSchema.title}`}
-          </Button>
-        </div>
+                onChange(id, [...value, dataWithDefaults]);
+                setActiveObject(value.length);
+              }}
+            >
+              <Icon name={addSVG} size="18px" />
+              &nbsp;
+              {/* Custom addMessage in schema, else default to English */}
+              {objectSchema.addMessage ||
+                `${intl.formatMessage(messages.add)} ${objectSchema.title}`}
+            </Button>
+          </div>
+        )}
         {value.length === 0 && (
           <input
             aria-labelledby={`fieldset-${
@@ -212,22 +216,24 @@ const ObjectListWidget = (props) => {
                   </button>
 
                   <div className="accordion-title-wrapper">
-                    {`${objectSchema.title} #${index + 1}`}
+                    {`${child?.[placeholderItemField] || objectSchema.title} #${index + 1}`}
                   </div>
                   <div className="accordion-tools">
-                    <button
-                      aria-label={`${intl.formatMessage(
-                        messages.labelRemoveItem,
-                      )} #${index + 1}`}
-                      onClick={() => {
-                        onChange(
-                          id,
-                          value.filter((v, i) => i !== index),
-                        );
-                      }}
-                    >
-                      <Icon name={deleteSVG} size="20px" color="#e40166" />
-                    </button>
+                    {!fixedItems && (
+                      <button
+                        aria-label={`${intl.formatMessage(
+                          messages.labelRemoveItem,
+                        )} #${index + 1}`}
+                        onClick={() => {
+                          onChange(
+                            id,
+                            value.filter((v, i) => i !== index),
+                          );
+                        }}
+                      >
+                        <Icon name={deleteSVG} size="20px" color="#e40166" />
+                      </button>
+                    )}
                     {activeObject === index ? (
                       <Icon name={upSVG} size="20px" />
                     ) : (
