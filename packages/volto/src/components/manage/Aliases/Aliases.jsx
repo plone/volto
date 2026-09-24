@@ -6,9 +6,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { toast } from 'react-toastify';
+import { updateContent } from '@plone/volto/actions/content/content';
 import {
   Button,
   Checkbox,
@@ -70,6 +71,9 @@ class Aliases extends Component {
     removeAliases: PropTypes.func.isRequired,
     addAliases: PropTypes.func.isRequired,
     getAliases: PropTypes.func.isRequired,
+    updateContent: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    aliases: PropTypes.object.isRequired,
     pathname: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   };
@@ -88,6 +92,8 @@ class Aliases extends Component {
       isAliasCorrect: false,
       isAliasAlready: false,
       aliasesToRemove: [],
+      newCanonicalUrl: '',
+      isCanonicalValid: false,
     };
   }
 
@@ -172,6 +178,24 @@ class Aliases extends Component {
     this.setState({ newAlias: val });
   }
 
+  handleCanonicalChange(val) {
+    this.setState({
+      newCanonicalUrl: val,
+      isCanonicalValid: val.startsWith('/') && val.length > 1,
+    });
+  }
+
+  handleChangeCanonicalUrl() {
+    const baseUrl = getBaseUrl(this.props.pathname);
+    const newId = this.state.newCanonicalUrl.replace(/^\//, '');
+
+    this.props.updateContent(baseUrl, {
+      id: newId,
+    });
+
+    this.props.history.push(this.state.newCanonicalUrl);
+  }
+
   /**
    * New alias submit handler
    * @method handleSubmitAlias
@@ -236,6 +260,54 @@ class Aliases extends Component {
               values={{ title: <q>{this.props.title}</q> }}
             />
           </Segment>
+          <Form>
+            <Segment>
+              <Header size="medium">
+                <FormattedMessage
+                  id="Canonical URL"
+                  defaultMessage="Canonical URL"
+                />
+              </Header>
+
+              <p className="help">
+                <FormattedMessage
+                  id="This is the primary URL of the page. Changing it will update the main address."
+                  defaultMessage="This is the primary URL of the page. Changing it will update the main address."
+                />
+              </p>
+
+              {/* Current canonical URL */}
+              <Form.Field>
+                <Input value={getBaseUrl(this.props.pathname)} readOnly />
+              </Form.Field>
+
+              {/* New canonical URL */}
+              <Form.Field>
+                <Input
+                  placeholder="/new-url"
+                  value={this.state.newCanonicalUrl}
+                  onChange={(e) => this.handleCanonicalChange(e.target.value)}
+                />
+                {!this.state.isCanonicalValid &&
+                  this.state.newCanonicalUrl !== '' && (
+                    <p style={{ color: 'red' }}>
+                      <FormattedMessage
+                        id="URL must start with a slash."
+                        defaultMessage="URL must start with a slash."
+                      />
+                    </p>
+                  )}
+              </Form.Field>
+
+              <Button
+                primary
+                disabled={!this.state.isCanonicalValid}
+                onClick={() => this.handleChangeCanonicalUrl()}
+              >
+                <FormattedMessage id="Change URL" defaultMessage="Change URL" />
+              </Button>
+            </Segment>
+          </Form>
           <Segment secondary>
             <FormattedMessage
               id="Using this form, you can manage alternative urls for an item. This is an easy way to make an item available under two different URLs."
@@ -353,12 +425,13 @@ class Aliases extends Component {
 
 export default compose(
   injectIntl,
+  withRouter,
   connect(
     (state, props) => ({
       aliases: state.aliases,
       pathname: props.location.pathname,
       title: state.content.data?.title || '',
     }),
-    { addAliases, getAliases, removeAliases, getContent },
+    { addAliases, getAliases, removeAliases, getContent, updateContent },
   ),
 )(Aliases);
