@@ -1,0 +1,2 @@
+Document production deployment using Cookieplone's `project` template and note that `sub/frontend_project` is reserved for the official Docker images. @aryan7081
+
