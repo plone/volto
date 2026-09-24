@@ -65,6 +65,8 @@ extensions = [
     "sphinxcontrib.video",
     "sphinxcontrib.youtube",
     "sphinxext.opengraph",
+    "sphinxcontrib.httpdomain",
+    "sphinxcontrib.httpexample",
 ]
 
 
