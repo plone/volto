@@ -114,6 +114,31 @@ const splitWords = (str) => {
   return result;
 };
 
+const groupIntoUnits = (tokens) => {
+  const units = [];
+  let current = [];
+
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    current.push(token);
+
+    if (typeof token === 'string' && /[.!?]$/.test(token)) {
+      if (tokens[i + 1] === ' ') {
+        current.push(tokens[i + 1]);
+        i++;
+      }
+      units.push(current);
+      current = [];
+    }
+  }
+
+  if (current.length) {
+    units.push(current);
+  }
+
+  return units;
+};
+
 const formatDiffPart = (part, value, side) => {
   if (!isHtmlTag(value)) {
     if (part.removed && (side === 'left' || side === 'unified')) {
@@ -160,10 +185,60 @@ const DiffField = ({
     timeStyle: 'short',
   };
   const diffWords = (oneStr, twoStr) => {
-    return diffLib.diffArrays(
-      splitWords(String(oneStr)),
-      splitWords(String(twoStr)),
+    const oneUnits = groupIntoUnits(splitWords(String(oneStr)));
+    const twoUnits = groupIntoUnits(splitWords(String(twoStr)));
+
+    const coarseParts = diffLib.diffArrays(
+      oneUnits.map((unit) => unit.join('')),
+      twoUnits.map((unit) => unit.join('')),
     );
+
+    const parts = [];
+    let oneIndex = 0;
+    let twoIndex = 0;
+
+    for (let i = 0; i < coarseParts.length; i++) {
+      const part = coarseParts[i];
+      const count = part.value.length;
+
+      if (!part.added && !part.removed) {
+        parts.push({ value: [part.value.join('')] });
+        oneIndex += count;
+        twoIndex += count;
+        continue;
+      }
+
+      if (part.removed) {
+        const next = coarseParts[i + 1];
+        if (next?.added) {
+          const removedTokens = oneUnits
+            .slice(oneIndex, oneIndex + count)
+            .flat();
+          const addedTokens = twoUnits
+            .slice(twoIndex, twoIndex + next.value.length)
+            .flat();
+          parts.push(...diffLib.diffArrays(removedTokens, addedTokens));
+          oneIndex += count;
+          twoIndex += next.value.length;
+          i++;
+          continue;
+        }
+        parts.push({
+          removed: true,
+          value: oneUnits.slice(oneIndex, oneIndex + count).flat(),
+        });
+        oneIndex += count;
+        continue;
+      }
+
+      parts.push({
+        added: true,
+        value: twoUnits.slice(twoIndex, twoIndex + count).flat(),
+      });
+      twoIndex += count;
+    }
+
+    return parts;
   };
 
   let parts, oneArray, twoArray;
