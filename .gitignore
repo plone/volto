@@ -75,3 +75,5 @@ docs/_build/
 docs/source/news
 
 tsconfig.tsbuildinfo
+packages/volto/.plone/
+packages/volto/build-*/
