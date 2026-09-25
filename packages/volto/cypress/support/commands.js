@@ -832,8 +832,8 @@ function shouldVerifyContent(type) {
   return !type.includes('{');
 }
 
-Cypress.Commands.add('getSlateEditorAndType', (type) => {
-  cy.getSlate().click().trigger('focus').type(type);
+Cypress.Commands.add('getSlateEditorAndType', (type, options = {}) => {
+  cy.getSlate().click(options).trigger('focus', options).type(type, options);
 
   if (shouldVerifyContent(type)) {
     return cy.getSlate().should('contain', type);
