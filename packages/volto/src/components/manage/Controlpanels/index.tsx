@@ -124,7 +124,9 @@ export const UndoControlpanel = loadable(
 
 export const AddonsControlpanel = loadable(
   () =>
-    import('@plone/volto/components/manage/Controlpanels/AddonsControlpanel'),
+    import(
+      '@plone/volto/components/manage/Controlpanels/Addons/AddonsControlpanel'
+    ),
 );
 
 // CONTENT TYPES CONTROLPANEL

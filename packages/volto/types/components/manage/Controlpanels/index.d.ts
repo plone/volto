@@ -12,7 +12,7 @@ export declare const RenderGroups: import("@loadable/component").LoadableCompone
 export declare const RelationsControlpanel: import("@loadable/component").LoadableComponent<unknown>;
 export declare const AliasesControlpanel: import("@loadable/component").LoadableComponent<any>;
 export declare const UndoControlpanel: import("@loadable/component").LoadableClassComponent<any>;
-export declare const AddonsControlpanel: import("@loadable/component").LoadableComponent<any>;
+export declare const AddonsControlpanel: import("@loadable/component").LoadableComponent<import("@plone/volto/components/manage/Controlpanels/Addons/AddonsControlpanel").Props>;
 export declare const ContentType: import("@loadable/component").LoadableComponent<unknown>;
 export declare const ContentTypeLayout: import("@loadable/component").LoadableClassComponent<any>;
 export declare const ContentTypeSchema: import("@loadable/component").LoadableClassComponent<any>;
