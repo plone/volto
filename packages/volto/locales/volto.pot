@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-07-16T00:40:28.528Z\n"
+"POT-Creation-Date: 2026-09-15T14:10:01.377Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -107,6 +107,11 @@ msgstr ""
 #. Default: "Add Content Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Content Rule"
+msgstr ""
+
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
 msgstr ""
 
 #. Default: "Add Rule"
@@ -559,6 +564,11 @@ msgstr ""
 #. Default: "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, inherited values are explicitly labeled as 'Inherited value' and receive a green check mark {inherited}. Similarly, roles managed by the site administrator are labeled as 'Global role' and receive a blue check mark {global}."
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
+msgstr ""
+
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
 msgstr ""
 
 #. Default: "CSV file"
@@ -1229,9 +1239,19 @@ msgstr ""
 msgid "Document view"
 msgstr ""
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
+msgstr ""
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
 msgstr ""
 
 #. Default: "Download file"
@@ -1247,6 +1267,11 @@ msgstr ""
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
 msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
@@ -4364,6 +4389,11 @@ msgstr ""
 #. Default: "Upload"
 #: components/manage/Contents/Contents
 msgid "Upload"
+msgstr ""
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
 msgstr ""
 
 #. Default: "Upload Files ({count})"

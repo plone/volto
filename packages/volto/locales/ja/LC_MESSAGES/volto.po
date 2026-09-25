@@ -114,6 +114,11 @@ msgstr "新規追加"
 msgid "Add Content Rule"
 msgstr "コンテンツルールを追加"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -565,6 +570,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "デフォルトでは、この項目のコンテナから権限が継承されます。これを無効にすると、明示的に定義された共有権限のみが有効になります。概要では、継承された値は『継承された値』として明示的にラベル付けされ、緑色のチェックマーク {inherited} が付きます。同様に、サイト管理者が管理するロールは『グローバルロール』としてラベル付けされ、青色のチェックマーク {global} が付きます。."
+
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -1234,9 +1244,19 @@ msgstr "文書"
 msgid "Document view"
 msgstr ""
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
+msgstr ""
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
 msgstr ""
 
 #. Default: "Download file"
@@ -1253,6 +1273,11 @@ msgstr "{filename} をダウンロード"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "ここにファイルをドラッグ、または「参照」ボタンをクリック"
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
+msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
@@ -4370,6 +4395,11 @@ msgstr ""
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "アップロード"
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
+msgstr ""
 
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent

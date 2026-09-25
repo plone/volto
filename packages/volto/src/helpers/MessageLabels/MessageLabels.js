@@ -111,6 +111,30 @@ export const messages = defineMessages({
     id: 'Add User',
     defaultMessage: 'Add User',
   },
+  uploadCSV: {
+    id: 'Upload CSV',
+    defaultMessage: 'Upload CSV',
+  },
+  downloadCSV: {
+    id: 'Download CSV',
+    defaultMessage: 'Download CSV',
+  },
+  addMemberImport: {
+    id: 'Add Members via CSV',
+    defaultMessage: 'Add Members via CSV',
+  },
+  membersCSVExport: {
+    id: 'Download Members as CSV',
+    defaultMessage: 'Download Members as CSV',
+  },
+  CSVFile: {
+    id: 'CSV File',
+    defaultMessage: 'CSV File',
+  },
+  dragDropCSVFile: {
+    id: 'Drag and drop your CSV file in here.',
+    defaultMessage: 'Drag and drop your CSV file in here.',
+  },
   addGroupsFormTitle: {
     id: 'Add group',
     defaultMessage: 'Add group',

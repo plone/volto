@@ -8,6 +8,8 @@ import {
   listUsers,
   updateUser,
   getUser,
+  getUsersCsv,
+  uploadUsersCsv,
 } from '@plone/volto/actions/users/users';
 import { listRoles } from '@plone/volto/actions/roles/roles';
 import { listGroups, updateGroup } from '@plone/volto/actions/groups/groups';
@@ -31,6 +33,8 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import addUserSvg from '@plone/volto/icons/add-user.svg';
 import saveSVG from '@plone/volto/icons/save.svg';
 import ploneSVG from '@plone/volto/icons/plone.svg';
+import downloadSVG from '@plone/volto/icons/download.svg';
+import uploadSVG from '@plone/volto/icons/upload.svg';
 import find from 'lodash/find';
 import map from 'lodash/map';
 import pull from 'lodash/pull';
@@ -127,6 +131,7 @@ const UsersControlpanel = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showAddUser, setShowAddUser] = useState(false);
   const [addUserError, setAddUserError] = useState('');
+  const [showAddCSVImport, setShowCSVImport] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [userToDelete, setUserToDelete] = useState(undefined);
   const [entries, setEntries] = useState([]);
@@ -535,6 +540,7 @@ const UsersControlpanel = (props) => {
         .map((group) => [group.id, group.id]),
       noValueOption: false,
     };
+
     // Add custom fields to the first fieldset if they don't already exist
     if (
       adduserschema.fieldsets &&
@@ -551,6 +557,42 @@ const UsersControlpanel = (props) => {
         ]);
     }
   }
+
+  async function downloadUserCsv(filename = 'users.csv') {
+    const csvContent = await dispatch(getUsersCsv());
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  }
+
+  const handleCsvUpload = (formData) => {
+    fetch(`data:${formData.file['content-type']};base64,${formData.file.data}`)
+      .then((res) => res.blob())
+      .then((blob) => {
+        dispatch(uploadUsersCsv(blob))
+          .then(() => {
+            dispatch(listUsers());
+            setAddUserError(null);
+            setShowCSVImport(false);
+            toast.success(
+              <Toast
+                success
+                title={intl.formatMessage(messages.success)}
+                content={intl.formatMessage(messages.successUpload)}
+              />,
+            );
+          })
+          .catch((error) => {
+            setAddUserError(error.response?.body?.message);
+          });
+      });
+  };
 
   return (
     <Container className="users-control-panel">
@@ -597,10 +639,77 @@ const UsersControlpanel = (props) => {
             schema={adduserschema}
           />
         ) : null}
+        {userschema?.loaded && showAddCSVImport ? (
+          <ModalForm
+            open={showAddCSVImport}
+            className="modal"
+            onSubmit={handleCsvUpload}
+            submitError={addUserError}
+            onCancel={() => {
+              setShowCSVImport(false);
+              setAddUserError(undefined);
+            }}
+            title={intl.formatMessage(messages.addMemberImport)}
+            loading={createRequest?.loading}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'Default',
+                  fields: ['file'],
+                },
+              ],
+              properties: {
+                file: {
+                  title: intl.formatMessage(messages.CSVFile),
+                  description: intl.formatMessage(messages.dragDropCSVFile),
+                  type: 'object',
+                  widget: 'file',
+                },
+              },
+              required: [],
+            }}
+          />
+        ) : null}
       </div>
       <Segment.Group raised>
         <Segment className="primary">
           <FormattedMessage id="Users" defaultMessage="Users" />
+          <div className="users_grid">
+            <Button
+              id="member-import"
+              aria-label={intl.formatMessage(messages.addMemberImport)}
+              className="import_members_csv"
+              onClick={() => {
+                setShowCSVImport(true);
+              }}
+              loading={createRequest?.loading}
+            >
+              {intl.formatMessage(messages.uploadCSV)}
+              <Icon
+                name={uploadSVG}
+                className="csv_icon"
+                size="25px"
+                align="right"
+                title={intl.formatMessage(messages.addMemberImport)}
+              />
+            </Button>
+            <Button
+              id="member-export"
+              aria-label={intl.formatMessage(messages.membersCSVExport)}
+              className="export_members_csv"
+              onClick={() => downloadUserCsv()}
+            >
+              {intl.formatMessage(messages.downloadCSV)}
+              <Icon
+                name={downloadSVG}
+                className="csv_icon"
+                size="25px"
+                align="right"
+                title={intl.formatMessage(messages.membersCSVExport)}
+              />
+            </Button>{' '}
+          </div>
         </Segment>
         <Segment secondary>
           <FormattedMessage

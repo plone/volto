@@ -114,6 +114,11 @@ msgstr "Afegeix contingut"
 msgid "Add Content Rule"
 msgstr "Afegir regla de contingut"
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -565,6 +570,11 @@ msgstr "Càrrega massiva de CSV"
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "Per defecte, els permisos del contenidor d'aquest element són heretats. Si desactiveu aquesta opció, només seran vàlids els permisos de compartició definits explícitament. A la vista general, el símbol {inherited} indica un valor heretat. De la mateixa manera, el símbol {global} indica un rol global, que és gestionat per l'administrador del lloc."
+
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -1234,10 +1244,20 @@ msgstr "Document"
 msgid "Document view"
 msgstr "Document"
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
 msgstr "Descarrega l'esdeveniment"
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
+msgstr ""
 
 #. Default: "Download file"
 #: components/theme/View/FileView
@@ -1253,6 +1273,11 @@ msgstr "Descarrega {filename}"
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
+msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
 #: components/manage/Widgets/FileWidget
@@ -4370,6 +4395,11 @@ msgstr "Passos d'actualització"
 #: components/manage/Contents/Contents
 msgid "Upload"
 msgstr "Pujar"
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
+msgstr ""
 
 #. Default: "Upload Files ({count})"
 #: components/manage/Contents/DropZoneContent

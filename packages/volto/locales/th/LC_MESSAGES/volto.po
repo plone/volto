@@ -113,6 +113,11 @@ msgstr ""
 msgid "Add Content Rule"
 msgstr ""
 
+#. Default: "Add Members via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Members via CSV"
+msgstr ""
+
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -564,6 +569,11 @@ msgstr ""
 #: components/manage/Sharing/Sharing
 msgid "By default, permissions from the container of this item are inherited. If you disable this, only the explicitly defined sharing permissions will be valid. In the overview, the symbol {inherited} indicates an inherited value. Similarly, the symbol {global} indicates a global role, which is managed by the site administrator."
 msgstr "โดยค่าเริ่มต้น สิทธิ์จากคอนเทนเนอร์ของรายการนี้จะถูกสืบทอด หากคุณปิดสิ่งนี้ จะมีผลเฉพาะสิทธิ์การแชร์ที่กำหนดไว้อย่างชัดเจนเท่านั้น ในภาพรวม สัญลักษณ์ {inherited} ระบุค่าที่สืบทอดมา เช่นเดียวกัน สัญลักษณ์ {global} ระบุบทบาทระดับโกลบอลซึ่งจัดการโดยผู้ดูแลไซต์"
+
+#. Default: "CSV File"
+#: helpers/MessageLabels/MessageLabels
+msgid "CSV File"
+msgstr ""
 
 #. Default: "CSV file"
 #: components/manage/Controlpanels/Aliases
@@ -1233,9 +1243,19 @@ msgstr ""
 msgid "Document view"
 msgstr ""
 
+#. Default: "Download CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download CSV"
+msgstr ""
+
 #. Default: "Download Event"
 #: components/theme/EventDetails/EventDetails
 msgid "Download Event"
+msgstr ""
+
+#. Default: "Download Members as CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Download Members as CSV"
 msgstr ""
 
 #. Default: "Download file"
@@ -1251,6 +1271,11 @@ msgstr "ดาวน์โหลด {filename}"
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
+msgstr ""
+
+#. Default: "Drag and drop your CSV file in here."
+#: helpers/MessageLabels/MessageLabels
+msgid "Drag and drop your CSV file in here."
 msgstr ""
 
 #. Default: "File upload area. Press Enter or click to replace the existing file."
@@ -4368,6 +4393,11 @@ msgstr ""
 #. Default: "Upload"
 #: components/manage/Contents/Contents
 msgid "Upload"
+msgstr ""
+
+#. Default: "Upload CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Upload CSV"
 msgstr ""
 
 #. Default: "Upload Files ({count})"
