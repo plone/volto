@@ -86,16 +86,20 @@ linkcheck_ignore = [
     r"http://127.0.0.1",
     r"http://localhost",
     # Ignore pages that require authentication or block the client
-    r"https://github.com/plone/volto/issues/new/choose",  # requires auth
+    r"https://codesandbox.io/",
+    r"https://chromewebstore.google.com/",
+    # Blocked
     r"https://javascript.plainenglish.io/you-dont-need-lodash-how-i-gave-up-lodash-693c8b96a07c",
+    r"https://medium.com",
     r"https://stackoverflow.com",
+    r"https://v5.reactrouter.com",
+    r"https://www.npmjs.com",
+    # Bad TLS certificate
+    r"https://pastanaga.io",  # See https://github.com/plone/volto/issues/8399
     # Ignore github.com pages with anchors
     r"https://github.com/.*#.*",
     # Ignore other specific anchors
     r"https://browsersl.ist/#",
-    r"https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue",
-    r"https://docs.cypress.io/guides/references/migration-guide#Migrating-to-Cypress-version-10-0",
-    r"https://medium.com",
 ]
 linkcheck_anchors = True
 linkcheck_timeout = 5
