@@ -1,0 +1,1 @@
+Fixed the links of the `Table of Contents` block breaking when a heading contains inline formatting or a link. The block now uses the anchor reported by the block that owns the heading, instead of slugging its indexed plaintext. @Somilg11
