@@ -307,6 +307,7 @@ export class ObjectBrowserWidgetComponent extends Component {
     this.props.openObjectBrowser({
       mode: this.props.mode,
       currentPath: this.props.initialPath || this.props.location.pathname,
+      initialPath: this.props.initialPath,
       propDataName: 'value',
       onSelectItem: (url, item) => {
         this.onChange(item);

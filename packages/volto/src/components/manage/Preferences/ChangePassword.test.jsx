@@ -4,6 +4,7 @@ import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import jwt from 'jsonwebtoken';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import ChangePassword from './ChangePassword';
 
@@ -40,10 +41,12 @@ describe('ChangePassword', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <ChangePassword location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <ChangePassword location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

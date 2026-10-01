@@ -4,6 +4,7 @@ import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
+import { isIMEComposing } from '@plone/volto/helpers/Utils/Utils';
 import config from '@plone/volto/registry';
 import { P } from '@plone/volto-slate/constants';
 import cx from 'classnames';
@@ -126,6 +127,10 @@ export const TextLineEdit = (props) => {
 
   const handleKeyDown = useCallback(
     (ev) => {
+      // Ignore keys while an IME composition is active (e.g. CJK conversion).
+      if (isIMEComposing(ev)) {
+        return;
+      }
       if (ev.key === 'Return' || ev.key === 'Enter') {
         ev.preventDefault();
         if (!disableNewBlocks) {

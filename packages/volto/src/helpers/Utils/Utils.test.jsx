@@ -3,6 +3,7 @@ import config from '@plone/volto/registry';
 import {
   applyConfig,
   difference,
+  getErrorMessage,
   getColor,
   getInitials,
   hasApiExpander,
@@ -15,6 +16,7 @@ import {
   slugify,
   cloneDeepSchema,
   normalizeString,
+  isIMEComposing,
 } from './Utils';
 import moment from 'moment';
 import deepFreeze from 'deep-freeze';
@@ -246,6 +248,44 @@ describe('Utils tests', () => {
     });
   });
 
+  describe('getErrorMessage', () => {
+    it('returns nested backend error message', () => {
+      const error = {
+        response: {
+          body: {
+            error: {
+              message: 'Backend nested message',
+            },
+          },
+        },
+      };
+
+      expect(getErrorMessage(error)).toEqual('Backend nested message');
+    });
+
+    it('returns body message when present', () => {
+      const error = {
+        response: {
+          body: {
+            message: 'Backend body message',
+          },
+        },
+      };
+
+      expect(getErrorMessage(error)).toEqual('Backend body message');
+    });
+
+    it('returns generic error.message fallback', () => {
+      expect(getErrorMessage(new Error('Generic message'))).toEqual(
+        'Generic message',
+      );
+    });
+
+    it('returns stringified object as final fallback', () => {
+      expect(getErrorMessage({ foo: 'bar' })).toEqual('{"foo":"bar"}');
+    });
+  });
+
   describe('safeWrapper', () => {
     it('calls the function with config', () => {
       expect(
@@ -474,6 +514,24 @@ describe('Utils tests', () => {
         },
         required: [],
       });
+    });
+  });
+
+  describe('isIMEComposing', () => {
+    it('returns true when the native event is composing', () => {
+      expect(isIMEComposing({ nativeEvent: { isComposing: true } })).toBe(true);
+    });
+    it('returns true when the native event keyCode is 229', () => {
+      expect(isIMEComposing({ nativeEvent: { keyCode: 229 } })).toBe(true);
+    });
+    it('returns false for a regular Enter key press', () => {
+      expect(
+        isIMEComposing({ nativeEvent: { isComposing: false, keyCode: 13 } }),
+      ).toBe(false);
+    });
+    it('accepts a native event directly', () => {
+      expect(isIMEComposing({ isComposing: true })).toBe(true);
+      expect(isIMEComposing({ isComposing: false, keyCode: 13 })).toBe(false);
     });
   });
 });

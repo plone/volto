@@ -11,8 +11,8 @@ const chalk = require('chalk');
 const asyncPool = require('tiny-async-pool');
 const loadRazzleConfig = require('../config/loadRazzleConfig');
 const clearConsole = require('react-dev-utils/clearConsole');
-const logger = require('razzle-dev-utils/logger');
-const FileSizeReporter = require('razzle-dev-utils/FileSizeReporter');
+const logger = require('@plone/razzle-dev-utils/logger');
+const FileSizeReporter = require('@plone/razzle-dev-utils/FileSizeReporter');
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
 const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;

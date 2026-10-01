@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const url = require('url');
 const clearConsole = require('react-dev-utils/clearConsole');
-const logger = require('razzle-dev-utils/logger');
+const logger = require('@plone/razzle-dev-utils/logger');
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637

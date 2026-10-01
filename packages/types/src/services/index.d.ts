@@ -1,5 +1,6 @@
 export * from './common';
 export * from './actions';
+export * from './blocktypes';
 export * from './breadcrumbs';
 export * from './navigation';
 export * from './types';

@@ -56,6 +56,7 @@ export interface SettingsConfig {
   actions_raising_api_errors: string[];
   internalApiPath: string | undefined;
   websockets: string | false;
+  apiSuffix: string | undefined;
   legacyTraverse: string | false;
   cookieExpires: number;
   nonContentRoutes: Array<string | RegExp>;

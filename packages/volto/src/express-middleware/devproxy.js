@@ -7,7 +7,6 @@ import {
   responseInterceptor,
 } from 'http-proxy-middleware';
 import querystring from 'querystring';
-import { parse as parseUrl } from 'url';
 
 const filter = function (pathname, req) {
   // Check if pathname is defined, there are some corner cases that pathname is null
@@ -31,8 +30,9 @@ function getEnv() {
     return _env;
   }
 
-  const apiPathURL = parseUrl(config.settings.apiPath);
-  const proxyURL = parseUrl(config.settings.devProxyToApiPath);
+  // Use the WHATWG URL API instead of the deprecated `url.parse()` (DEP0169).
+  const apiPathURL = new URL(config.settings.apiPath);
+  const proxyURL = new URL(config.settings.devProxyToApiPath);
   const serverURL = `${proxyURL.protocol}//${proxyURL.host}`;
   const instancePath = proxyURL.pathname;
 
@@ -88,11 +88,13 @@ export default function devProxyMiddleware() {
             .map((part) => '/_vh_' + part)
             .join('')
         : '';
+      const port =
+        apiPathURL.port || (apiPathURL.protocol === 'https:' ? 443 : 80);
       const target =
         config.settings.proxyRewriteTarget ||
         `/VirtualHostBase/${apiPathURL.protocol.slice(0, -1)}/${
           apiPathURL.hostname
-        }:${apiPathURL.port}${instancePath}/++api++/VirtualHostRoot${vhSubpath}`;
+        }:${port}${instancePath}/++api++/VirtualHostRoot${vhSubpath}`;
 
       return `${target}${path.replace(`${config.settings.subpathPrefix}/++api++`, '')}`;
     },

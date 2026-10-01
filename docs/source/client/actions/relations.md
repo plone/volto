@@ -7,10 +7,10 @@ A single relation is defined by source, target, and relation name.
 You can define relations either with content type schema fields `RelationChoice` or `RelationList`, or with types `isReferencing` or `iterate-working-copy`.
 
 - Relations based on fields of a content type schema are editable by users.
-- The relations `isReferencing` (block text links to a Plone content object) and `iterate-working-copy` (working copy is enabled and the content object is a working copy) are not editable.
-  They are created and deleted with links in text, respectively creating and deleting working copies.
+- The relations `isReferencing` (block text links to a Plone content object) and `iterate-working-copy` (working copy is enabled and the content object is a working copy) aren't editable.
+  They're created and deleted with links in text, respectively creating and deleting working copies.
 
-## Get Relations List
+## Get relations list
 
 ### Query function
 
@@ -20,7 +20,7 @@ Use the `getRelationsListQuery` function to get the query for fetching the list 
 
 Use the `useGetRelationsList` hook to get the list of all existing relations user has access to.
 
-## Get Relations
+## Get relations
 
 ### Query function
 
@@ -40,11 +40,11 @@ Use the `useGetRelations` hook to get the relations for the given parameters.
 
   - **Required**: No
 
-- **onlyBroken**: boolean
+- **`onlyBroken`**: `boolean`
 
   - **Required**: No
 
-## Add Relation
+## Add relation
 
 ### Mutation function
 
@@ -73,7 +73,7 @@ Use the `useCreateRelations` hook to add a relation for the given parameters.
 
     - **Required**: Yes
 
-## Fix Relation
+## Fix relation
 
 ### Mutation function
 
@@ -94,7 +94,7 @@ Use the `useFixRelations` hook to fix broken relations.
 
     - **Required**: No
 
-## Delete Relation
+## Delete relation
 
 ### Mutation function
 

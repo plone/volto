@@ -24,7 +24,7 @@ export const generateRobots = (req) =>
       request.set('Authorization', `Bearer ${authToken}`);
     }
     request.use(addHeadersFactory(req));
-    request.end((error, { text, body }) => {
+    request.end((error, { text, body } = {}) => {
       if (error) {
         resolve(text || error);
       } else {

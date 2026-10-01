@@ -1,6 +1,6 @@
 # Breadcrumbs
 
-## Get Breadcrumbs
+## Get breadcrumbs
 
 ### Query function
 

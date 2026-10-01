@@ -7,6 +7,7 @@ import React, { Component } from 'react'; // , useState
 import { v4 as uuid } from 'uuid';
 
 import config from '@plone/volto/registry';
+import { isIMEComposing } from '@plone/volto/helpers/Utils/Utils';
 
 import { Element, Leaf } from './render';
 
@@ -54,6 +55,7 @@ class SlateEditor extends Component {
     this.createEditor = this.createEditor.bind(this);
     this.multiDecorator = this.multiDecorator.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handlePointerDown = this.handlePointerDown.bind(this);
     this.getSavedSelection = this.getSavedSelection.bind(this);
     this.setSavedSelection = this.setSavedSelection.bind(this);
     this.scheduleFocus = this.scheduleFocus.bind(this);
@@ -73,6 +75,31 @@ class SlateEditor extends Component {
 
     this.editor = null;
     this.selectionTimeout = null;
+    this.pendingPointerSelection = null;
+  }
+
+  handlePointerDown(event) {
+    if (this.props.selected) return;
+
+    const nativeEvent = event.nativeEvent || event;
+    const domPoint = document.caretPositionFromPoint?.(
+      nativeEvent.clientX,
+      nativeEvent.clientY,
+    );
+    if (!domPoint) return;
+
+    try {
+      const point = ReactEditor.toSlatePoint(
+        this.state.editor,
+        [domPoint.offsetNode, domPoint.offset],
+        { exactMatch: false, suppressThrow: true },
+      );
+      if (point) {
+        this.pendingPointerSelection = { anchor: point, focus: point };
+      }
+    } catch {
+      this.pendingPointerSelection = null;
+    }
   }
 
   getSavedSelection() {
@@ -185,7 +212,10 @@ class SlateEditor extends Component {
     if (!prevProps.selected && this.props.selected) {
       // if the SlateEditor becomes selected from unselected
 
-      if (window.getSelection().type === 'None') {
+      if (this.pendingPointerSelection) {
+        Transforms.select(this.state.editor, this.pendingPointerSelection);
+        this.pendingPointerSelection = null;
+      } else if (window.getSelection().type === 'None') {
         // TODO: why is this condition checked?
         Transforms.select(
           this.state.editor,
@@ -326,6 +356,7 @@ class SlateEditor extends Component {
                 return null;
               }}
               onClick={this.props.onClick}
+              onPointerDown={this.handlePointerDown}
               onSelect={(e) => {
                 if (!selected && this.props.onFocus) {
                   // we can't overwrite the onFocus of Editable, as the onFocus
@@ -354,6 +385,9 @@ class SlateEditor extends Component {
                 }, 200);
               }}
               onKeyDown={(event) => {
+                // Ignore keys while an IME composition is active (e.g. CJK
+                // conversion); slate-react handles composition itself.
+                if (isIMEComposing(event)) return;
                 const handled = handleHotKeys(editor, event, slateSettings);
                 if (handled) return;
                 onKeyDown && onKeyDown({ editor, event });

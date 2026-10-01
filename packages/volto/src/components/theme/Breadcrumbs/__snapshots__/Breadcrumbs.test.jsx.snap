@@ -29,7 +29,7 @@ exports[`Breadcrumbs > renders a breadcrumbs component 1`] = `
           style={
             {
               "fill": "currentColor",
-              "height": "18px",
+              "height": "24px",
               "width": "auto",
             }
           }

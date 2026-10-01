@@ -6,6 +6,7 @@ const AlternateHrefLangs = (props) => {
   return (
     <Helmet>
       {content['@components']?.translations?.items &&
+        content.language?.token &&
         [
           ...content['@components']?.translations?.items,
           { '@id': content['@id'], language: content.language.token },

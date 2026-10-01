@@ -2,124 +2,64 @@
 
 A mechanism to redirect old URLs to new ones.
 
-When an object is moved (renamed or cut/pasted into a different location), the redirection storage will remember the old path. It is smart enough to deal with transitive references (if we have a -> b and then add b -> c, it is replaced by a reference a -> c) and circular references (attempting to add a -> a does nothing).
+When an object is moved (renamed or cut-and-pasted into a different location), the redirection storage will remember the old path. 
+It handles transitive references intelligently (for example a -> b, b -> c becomes a -> c), ignoring circular ones (for example attempting a -> a has no effect).
 
-## Get Aliases List
+## Get aliases list
 
-### Query function
+```{js:function} getAliasesListQuery
 
 Use the `getAliasesListQuery` function to get the query for fetching the aliases list.
 
-### Hook
+:hook: `useGetAliasesList`
+```
 
-Use the `useGetAliasesList` hook to get the aliases list.
+## Get aliases
 
-## Get Aliases
-
-### Query function
+```{js:function} getAliasesQuery(path)
 
 Use the `getAliasesQuery` function to get the query for fetching the aliases for a page.
 
-### Hook
+:arg string path: Description of the `path` parameter.
+:hook: `useGetAliases`
+```
 
-Use the `useGetAliases` hook to get the aliases for a page.
+## Add aliases for many pages
 
-### Parameters
+```{js:function} createAliasesMutation(data)
 
-- **path**: string
+Use the `createAliasesMutation` function to get the mutation for adding aliases for many pages.
 
-  - **Required:** Yes
+:arg array data: It can have the following fields:
+  - items: An array of objects with the following fields:
+    - path: string
+    - redirect_to: string
+    - [datetime]: string
+:hook: `useCreateAliases`
+```
 
-## Add Aliases for Multiple Pages
+## Add aliases for a page
 
-### Mutation function
-
-Use the `createAliasesMutation` function to get the mutation for adding aliases for multiple pages.
-
-### Hook
-
-Use the `useCreateAliases` hook to add aliases for multiple pages.
-
-### Parameters
-
-- **data**: object
-
-  - **Required:** Yes
-  - It can have the following fields:
-
-    `items: object[]`:
-
-    - **Required:** Yes
-    - An array of objects with the following fields:
-
-      `path: string`
-
-      - **Required:** Yes
-
-      `datetime: string`
-
-      - **Required:** No
-
-      `redirect_to: string`
-
-      - **Required:** Yes
-
-## Add Aliases for a Page
-
-### Mutation function
+```{js:function} createAliasesMutation(path, data)
 
 Use the `createAliasesMutation` function to get the mutation for adding aliases for a page.
 
-### Hook
+:arg string path: Description of the `path` parameter.
+:arg object data: It can have the following fields:
+  -items: An array of objects with the following fields:
+    -path: string
+:hook: `useCreateAliases`
+```
 
-Use the `useCreateAliases` hook to add aliases for a page.
+## Delete aliases
 
-### Parameters
-
-- **path**: string
-
-  - **Required:** Yes
-
-- **data**: object
-
-  - **Required:** Yes
-  - It can have the following fields:
-
-    `items: object[]`:
-
-    - **Required:** Yes
-    - An array of objects with the following fields:
-
-      `path: string`
-
-      - **Required:** Yes
-
-## Delete Aliases
-
-### Mutation function
+```{js:function} deleteAliasesMutation(path, data)
 
 Use the `deleteAliasesMutation` function to get the mutation for deleting aliases for a page.
 
-### Hook
-
-Use the `useDeleteAliases` hook to delete aliases for a page.
-
-### Parameters
-
-- **path**: string
-
-  - **Required:** Yes
-
-- **data**: object
-
-  - **Required:** Yes
-  - It can have the following fields:
-
-    `items: object[]`:
-
-    - **Required:** Yes
-    - An array of objects with the following fields:
-
-      `path: string`
-
-      - **Required:** Yes
+:arg string path: Description of the `path` parameter.
+:arg object data: It can have the following fields:
+  -items: An array of objects with the following fields:
+    -path: string
+:hook: `useDeleteAliases`
+```

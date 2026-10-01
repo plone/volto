@@ -4,10 +4,9 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl, IntlProvider } from 'react-intl';
 
 import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
@@ -23,6 +22,7 @@ import {
 import config from '@plone/volto/registry';
 
 import { ErrorBoundary } from './ErrorBoundary';
+import { createStaticStore } from './createStaticStore';
 
 import './style.css';
 
@@ -58,10 +58,15 @@ const HtmlSlateWidget = (props) => {
 
   const toHtml = React.useCallback(
     (value) => {
-      const mockStore = configureStore();
       const html = ReactDOMServer.renderToStaticMarkup(
-        <Provider store={mockStore({ userSession: { token } })}>
-          <MemoryRouter>{serializeNodes(value || [])}</MemoryRouter>
+        <Provider store={createStaticStore({ userSession: { token } })}>
+          <IntlProvider
+            locale={intl.locale}
+            messages={intl.messages}
+            defaultLocale={intl.defaultLocale ?? 'en'}
+          >
+            <MemoryRouter>{serializeNodes(value || [])}</MemoryRouter>
+          </IntlProvider>
         </Provider>,
       );
       // console.log('toHtml value', JSON.stringify(value));
@@ -73,7 +78,7 @@ const HtmlSlateWidget = (props) => {
         data: html,
       };
     },
-    [token],
+    [token, intl],
   );
 
   const fromHtml = React.useCallback(

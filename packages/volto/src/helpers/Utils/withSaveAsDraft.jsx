@@ -9,6 +9,7 @@ import checkSVG from '@plone/volto/icons/check.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import { useIntl, defineMessages } from 'react-intl';
 import { useLocation } from 'react-router-dom';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   autoSaveFound: {
@@ -227,15 +228,38 @@ export default function withSaveAsDraft(options) {
       WrappedComponent,
     )})`;
 
-    if (forwardRef) {
-      return hoistNonReactStatics(
-        React.forwardRef((props, ref) => (
-          <WithSaveAsDraft {...props} forwardedRef={ref} />
-        )),
-        WrappedComponent,
-      );
-    }
+    const DraftWrappedComponent = forwardRef
+      ? hoistNonReactStatics(
+          React.forwardRef((props, ref) => (
+            <WithSaveAsDraft {...props} forwardedRef={ref} />
+          )),
+          WrappedComponent,
+        )
+      : hoistNonReactStatics(WithSaveAsDraft, WrappedComponent);
 
-    return hoistNonReactStatics(WithSaveAsDraft, WrappedComponent);
+    const WithExperimentalSaveAsDraft = forwardRef
+      ? hoistNonReactStatics(
+          React.forwardRef((props, ref) => {
+            const ComponentToRender = config.experimental?.saveAsDraft?.enabled
+              ? DraftWrappedComponent
+              : WrappedComponent;
+
+            return <ComponentToRender {...props} ref={ref} />;
+          }),
+          WrappedComponent,
+        )
+      : hoistNonReactStatics((props) => {
+          const ComponentToRender = config.experimental?.saveAsDraft?.enabled
+            ? DraftWrappedComponent
+            : WrappedComponent;
+
+          return <ComponentToRender {...props} />;
+        }, WrappedComponent);
+
+    WithExperimentalSaveAsDraft.displayName = `WithExperimentalSaveAsDraft(${getDisplayName(
+      WrappedComponent,
+    )})`;
+
+    return WithExperimentalSaveAsDraft;
   };
 }

@@ -38,6 +38,23 @@ export const safeWrapper = (func) => (config) => {
 };
 
 /**
+ * Extract a readable error message from several possible error shapes
+ * @param {object} error
+ * @returns {string} message
+ */
+export const getErrorMessage = (error) => {
+  const respBody = error?.response?.body;
+  if (respBody?.error?.message) return respBody.error.message;
+  if (respBody?.message) return respBody.message;
+  if (error?.message) return error.message;
+  try {
+    return JSON.stringify(error);
+  } catch (e) {
+    return String(error);
+  }
+};
+
+/**
  * A helper to pipe a configuration object through configuration loaders
  *
  * @param {Array} configMethods A list of configuration methods
@@ -374,4 +391,15 @@ export function isInteractiveElement(
   }
 
   return false;
+}
+
+/**
+ * Returns whether an IME (Input Method Editor) composition is in progress,
+ * e.g. while confirming a Japanese/Chinese/Korean conversion with Enter.
+ * @param {KeyboardEvent} event The (React synthetic or native) keyboard event
+ * @returns {boolean} True if an IME composition is active
+ */
+export function isIMEComposing(event) {
+  const nativeEvent = event?.nativeEvent ?? event;
+  return Boolean(nativeEvent?.isComposing) || nativeEvent?.keyCode === 229;
 }

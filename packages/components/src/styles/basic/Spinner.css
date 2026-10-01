@@ -1,0 +1,79 @@
+@layer plone-components.base {
+  .react-aria-Spinner {
+    --spinner-size: 1.5rem;
+    --spinner-track-color: color-mix(
+      in srgb,
+      var(--highlight-background) 20%,
+      transparent
+    );
+
+    display: inline-flex;
+    align-items: center;
+    color: var(--highlight-background);
+    gap: 0.5rem;
+    vertical-align: middle;
+
+    &[data-size='xs'] {
+      --spinner-size: 1rem;
+    }
+
+    &[data-size='sm'] {
+      --spinner-size: 1.5rem;
+    }
+
+    &[data-size='lg'] {
+      --spinner-size: 2rem;
+    }
+
+    .spinner-svg {
+      width: var(--spinner-size);
+      height: var(--spinner-size);
+      animation: spinner-rotate 0.8s linear infinite;
+      will-change: transform;
+    }
+
+    .spinner-track {
+      stroke: var(--spinner-track-color);
+      stroke-width: 3;
+    }
+
+    .spinner-indicator {
+      stroke: currentColor;
+      stroke-dasharray: 42 57;
+      stroke-linecap: round;
+      stroke-width: 3;
+    }
+
+    .spinner-label {
+      color: var(--text-color);
+      font-size: 0.875rem;
+      line-height: 1;
+    }
+
+    .sr-only {
+      position: absolute;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      border: 0;
+      margin: -1px;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+  }
+
+  @keyframes spinner-rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .react-aria-Spinner {
+      .spinner-svg {
+        animation: none;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import imagesMiddleware from '@plone/volto/express-middleware/images';
 import filesMiddleware from '@plone/volto/express-middleware/files';
+import portraitsMiddleware from '@plone/volto/express-middleware/portraits';
 import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
 import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 import staticsMiddleware from '@plone/volto/express-middleware/static';
@@ -10,6 +11,7 @@ const settings = {
     devProxyMiddleware(),
     filesMiddleware(),
     imagesMiddleware(),
+    portraitsMiddleware(),
     robotstxtMiddleware(),
     sitemapMiddleware(),
     staticsMiddleware(),

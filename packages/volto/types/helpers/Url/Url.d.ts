@@ -55,6 +55,13 @@ export function flattenHTMLToAppURL(html: string): string;
  */
 export function addAppURL(url: string): string;
 /**
+ * Get the API traversal suffix.
+ *
+ * An explicitly configured apiSuffix takes precedence over legacyTraverse.
+ * @returns {string} API traversal suffix.
+ */
+export function getApiSuffix(): string;
+/**
  * Given a URL expands it to the backend URL
  * Useful when you have to actually call the backend from the
  * frontend code (eg. ICS calendar download)

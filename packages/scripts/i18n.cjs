@@ -20,11 +20,12 @@ const chalk = require('chalk');
 /**
  * Replace appearances of " to convert to \"
  * to keep gettext compatibility in PO files
+ * Avoid double escaping
  * @function escapeDoubleQuotes
  * @return {string}
  */
 function escapeDoubleQuotes(value) {
-  return value.replaceAll('"', '\\"');
+  return value.replace(/\\"/g, '"').replace(/"/g, '\\"');
 }
 
 /**
@@ -257,7 +258,9 @@ ${map(pot.items, (item) => {
     `#. ${item.extractedComments[0]}`,
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
     `msgid "${escapeDoubleQuotes(item.msgid)}"`,
-    `msgstr "${poItem ? poItem.msgstr : ''}"`,
+    `msgstr "${
+      poItem && poItem.msgstr[0] ? escapeDoubleQuotes(poItem.msgstr[0]) : ''
+    }"`,
   ].join('\n');
 }).join('\n\n')}\n`,
     );
@@ -367,4 +370,4 @@ if (require.main === module) {
   main({ addonMode: options.addon });
 }
 
-module.exports = { poToJson };
+module.exports = { poToJson, escapeDoubleQuotes };

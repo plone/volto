@@ -47,6 +47,9 @@ Volto provides a set of validators by default:
 - minItems
 - uniqueItems
 
+### Files
+- size
+
 ### Per widget
 - email
 - url

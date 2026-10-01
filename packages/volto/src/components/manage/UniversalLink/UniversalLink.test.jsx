@@ -89,6 +89,22 @@ describe('UniversalLink', () => {
     );
   });
 
+  it('check UniversalLink append http when user has not entered the protocol', () => {
+    const { getByTitle } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink href="www.github.com" title="Volto GitHub repository">
+            <h1>Title</h1>
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    expect(getByTitle('Volto GitHub repository').getAttribute('href')).toBe(
+      'http://www.github.com',
+    );
+  });
+
   it('check UniversalLink set target attribute for ext links', () => {
     const { getByTitle } = render(
       <Provider store={store}>

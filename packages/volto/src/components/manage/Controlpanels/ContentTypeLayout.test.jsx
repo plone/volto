@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import ContentTypeLayout from './ContentTypeLayout';
 
@@ -41,15 +42,17 @@ describe('ContentTypeLayout', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter
-          initialEntries={['/controlpanel/dexterity-types/Document/layout']}
-        >
-          <Route
-            path={'/controlpanel/dexterity-types/:id/layout'}
-            component={ContentTypeLayout}
-          />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter
+            initialEntries={['/controlpanel/dexterity-types/Document/layout']}
+          >
+            <Route
+              path={'/controlpanel/dexterity-types/:id/layout'}
+              component={ContentTypeLayout}
+            />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

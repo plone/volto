@@ -15,6 +15,7 @@ it('renders an Image Block Sidebar component', () => {
       create: {},
       data: {},
     },
+    site: { data: { 'plone.image_scales': { preview: {}, listing: {} } } },
     intl: {
       locale: 'en',
       messages: {},

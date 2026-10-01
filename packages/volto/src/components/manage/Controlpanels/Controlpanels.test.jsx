@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 
@@ -22,6 +23,11 @@ describe('Controlpanels', () => {
     const store = mockStore({
       controlpanels: {
         controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/discussion',
+            group: 'Content',
+            title: 'Discussion',
+          },
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
             group: 'General',
@@ -47,6 +53,11 @@ describe('Controlpanels', () => {
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/discussion',
+            group: 'Content',
+            title: 'Discussion',
+          },
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
             group: 'General',
@@ -98,10 +109,12 @@ describe('Controlpanels', () => {
     store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Controlpanels location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Controlpanels location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -176,10 +189,12 @@ describe('Controlpanels', () => {
     store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Controlpanels location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Controlpanels location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

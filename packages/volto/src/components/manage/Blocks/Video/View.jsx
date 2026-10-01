@@ -16,6 +16,7 @@ import cx from 'classnames';
  */
 const View = (props) => {
   const { data, className } = props;
+
   return (
     <div
       className={cx(

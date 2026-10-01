@@ -1,3 +1,22 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentsIndexHeader > renders a contents titles component 1`] = `null`;
+exports[`ContentsIndexHeader > renders a contents titles component 1`] = `
+<th
+  aria-describedby=""
+  aria-disabled={false}
+  aria-roledescription="sortable"
+  className="undefined wide"
+  role="button"
+  style={
+    {
+      "cursor": "move",
+      "opacity": 1,
+      "transform": undefined,
+      "transition": undefined,
+    }
+  }
+  tabIndex={0}
+>
+  Review state
+</th>
+`;

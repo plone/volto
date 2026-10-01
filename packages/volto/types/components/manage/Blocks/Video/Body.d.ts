@@ -8,8 +8,10 @@ declare namespace Body {
         let data: any;
     }
 }
-export function getVideoIDAndPlaceholder(url: any): {
+export function getVideoIDAndPlaceholder(url: any, peertubeInstances: any): {
     videoID: any;
-    listID: any;
+    videoUrl: string;
     thumbnailURL: string;
+    videoSource: string;
+    hasMatch: boolean;
 };

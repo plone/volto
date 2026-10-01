@@ -15,6 +15,10 @@ export function VideoBlockSchema(props: any): {
             title: any;
             widget: string;
         };
+        title: {
+            title: any;
+            description: any;
+        };
         align: {
             title: any;
             widget: string;

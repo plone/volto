@@ -1,0 +1,183 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: af\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+
+# defaultMessage: Add link
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr ""
+
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr ""
+
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr ""
+
+# defaultMessage: Bottom
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr ""
+
+# defaultMessage: Center
+#: blocks/Table/TableBlockEdit
+msgid "Center"
+msgstr ""
+
+# defaultMessage: Delete col
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete col"
+msgstr ""
+
+# defaultMessage: Delete row
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete row"
+msgstr ""
+
+# defaultMessage: Delete table
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr ""
+
+# defaultMessage: Divide each row into separate cells
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr ""
+
+# defaultMessage: Edit element
+#: elementEditor/messages
+msgid "Edit element"
+msgstr ""
+
+# defaultMessage: Edit link
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+msgid "Edit link"
+msgstr ""
+
+# defaultMessage: Fixed width table cells
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr ""
+
+# defaultMessage: Hide headers
+#: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr ""
+
+# defaultMessage: Insert col after
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col after"
+msgstr ""
+
+# defaultMessage: Insert col before
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col before"
+msgstr ""
+
+# defaultMessage: Insert row after
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row after"
+msgstr ""
+
+# defaultMessage: Insert row before
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row before"
+msgstr ""
+
+# defaultMessage: Left
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr ""
+
+# defaultMessage: Make the table compact
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr ""
+
+# defaultMessage: Make the table sortable
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr ""
+
+# defaultMessage: Middle
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr ""
+
+# defaultMessage: No matching blocks
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
+msgstr ""
+
+# defaultMessage: Reduce complexity
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr ""
+
+# defaultMessage: Remove element
+#: elementEditor/messages
+msgid "Remove element"
+msgstr ""
+
+# defaultMessage: Remove link
+#: editor/plugins/AdvancedLink/index
+msgid "Remove link"
+msgstr ""
+
+# defaultMessage: Right
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr ""
+
+# defaultMessage: Stripe alternate rows with color
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr ""
+
+# defaultMessage: Table
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr ""
+
+# defaultMessage: Table color inverted
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr ""
+
+# defaultMessage: Top
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr ""
+
+# defaultMessage: Type text…
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr ""
+
+# defaultMessage: Visible only in view mode
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr ""

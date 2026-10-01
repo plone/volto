@@ -35,6 +35,11 @@ exports[`renders a textarea widget component 1`] = `
           rows={3}
           value=""
         />
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          className="visually-hidden"
+        />
       </div>
     </div>
   </div>

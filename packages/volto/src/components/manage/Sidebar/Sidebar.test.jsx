@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 
 import Sidebar from './Sidebar';
 
@@ -22,7 +23,9 @@ test('renders a sidebar component', () => {
   });
   const component = renderer.create(
     <Provider store={store}>
-      <Sidebar />
+      <CookiesProvider>
+        <Sidebar />
+      </CookiesProvider>
     </Provider>,
   );
   const json = component.toJSON();

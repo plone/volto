@@ -13,10 +13,6 @@ export function objectSchema({ intl, isDisabled, value }: {
             title: any;
             widget: string;
         };
-        depth: {
-            title: any;
-            type: string;
-        };
         sort_on: {
             title: any;
             widget: string;
@@ -31,6 +27,12 @@ export function objectSchema({ intl, isDisabled, value }: {
             title: any;
             type: string;
             isDisabled: any;
+        };
+        offset: {
+            title: any;
+            type: string;
+            isDisabled: any;
+            default: number;
         };
         b_size: {
             title: any;

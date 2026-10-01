@@ -24,6 +24,7 @@ import {
 } from './Url';
 
 beforeEach(() => {
+  config.settings.apiSuffix = undefined;
   config.settings.legacyTraverse = false;
 });
 
@@ -370,6 +371,20 @@ describe('Url', () => {
       settings.apiPath = 'https://plone.org/api';
       settings.legacyTraverse = true;
       const href = `https://plone.org/api/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe('https://plone.org/api/ca/my-page');
+    });
+    it('uses apiSuffix in preference to legacyTraverse', () => {
+      settings.apiPath = 'https://plone.org/api';
+      settings.legacyTraverse = true;
+      settings.apiSuffix = '/custom-api';
+      const href = `https://plone.org/api/ca/my-page`;
+      expect(expandToBackendURL(href)).toBe(
+        'https://plone.org/api/custom-api/ca/my-page',
+      );
+    });
+    it('allows apiSuffix to disable the suffix', () => {
+      settings.apiSuffix = '';
+      const href = `/ca/my-page`;
       expect(expandToBackendURL(href)).toBe('https://plone.org/api/ca/my-page');
     });
     it('expandToBackendURL test full URL - deployed seamless', () => {

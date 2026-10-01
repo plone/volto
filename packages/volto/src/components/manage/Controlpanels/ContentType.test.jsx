@@ -2,6 +2,7 @@ import React from 'react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import { render } from '@testing-library/react';
 
 import ContentType from './ContentType';
@@ -58,15 +59,17 @@ describe('ContentType', () => {
     store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter
-          initialEntries={['/controlpanel/dexterity-types/Document']}
-        >
-          <Route
-            path={'/controlpanel/dexterity-types/:id'}
-            component={ContentType}
-          />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter
+            initialEntries={['/controlpanel/dexterity-types/Document']}
+          >
+            <Route
+              path={'/controlpanel/dexterity-types/:id'}
+              component={ContentType}
+            />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

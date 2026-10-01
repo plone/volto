@@ -1,7 +1,4 @@
 {
-  "plugins": {
-    "../scripts/prepublish.js": {}
-  },
   "hooks": {
     "after:bump": [
       "pipx run towncrier build --draft --yes --version ${version} > .changelog.draft",
@@ -18,7 +15,7 @@
     "requireUpstream": false,
     "requireCleanWorkingDir": false,
     "commitMessage": "Release @plone/razzle ${version}",
-    "tagName": "plone-slate-${version}",
+    "tagName": "plone-razzle-${version}",
     "tagAnnotation": "Release @plone/razzle ${version}"
   },
   "github": {

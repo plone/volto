@@ -12,9 +12,10 @@ import { ColorSlider } from '../ColorSlider/ColorSlider';
 import { ColorArea } from '../ColorArea/ColorArea';
 import { ColorField } from '../ColorField/ColorField';
 
-export interface ColorPickerProps extends RACColorPickerProps {
+export interface ColorPickerProps
+  extends Omit<RACColorPickerProps, 'children'> {
   label?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function ColorPicker({ label, children, ...props }: ColorPickerProps) {

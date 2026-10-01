@@ -53,11 +53,14 @@ const PersonalPreferences = (props) => {
     let language = data.language || 'en';
     if (config.settings.supportedLanguages.includes(language)) {
       const langFileName = toGettextLang(language);
-      import(
-        /* @vite-ignore */ '@root/../locales/' + langFileName + '.json'
-      ).then((locale) => {
-        dispatch(changeLanguage(language, locale.default));
-      });
+      import(/* @vite-ignore */ '@root/../locales/' + langFileName + '.json')
+        .then((locale) => {
+          dispatch(changeLanguage(language, locale.default));
+        })
+        .catch(() => {
+          // If locale file doesn't exist, still switch language with empty locale
+          dispatch(changeLanguage(language, {}));
+        });
     }
     toast.success(<Toast success title={intl.formatMessage(messages.saved)} />);
     closeMenu();

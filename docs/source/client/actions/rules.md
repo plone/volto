@@ -1,6 +1,6 @@
 # Rules
 
-## Get Rules
+## Get rules
 
 ### Query function
 
@@ -16,7 +16,7 @@ Use the `useGetRules` hook to get the content-rules for a page.
 
   - **Required:** Yes
 
-## Add Rule
+## Add rule
 
 ### Mutation function
 
@@ -28,11 +28,11 @@ Use the `useCreateRule` hook to add a content-rule to a page.
 
 ### Parameters
 
-- **ruleId**: string
+- **`ruleId`**: string
 
   - **Required:** Yes
 
-## Update Rules
+## Update rules
 
 ### Mutation function
 
@@ -73,7 +73,7 @@ Use the `useUpdateRules` hook to update content-rules for the given rule ids.
 
     - **Required:** No
 
-## Delete Rule
+## Delete rule
 
 ### Mutation function
 

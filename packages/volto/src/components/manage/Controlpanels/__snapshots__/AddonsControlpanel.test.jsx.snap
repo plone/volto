@@ -71,7 +71,7 @@ exports[`AddonsControlpanel > renders an addon control component 1`] = `
                 Something Else
                 <svg
                   class="icon accordionToggle Something Else"
-                  style="height: 23px; width: auto; fill: currentColor;"
+                  style="height: 23px; width: auto; fill: currentcolor;"
                   viewBox="0 0 36 36"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -151,7 +151,7 @@ exports[`AddonsControlpanel > renders an addon control component 1`] = `
                 </div>
                 <svg
                   class="icon accordionToggle Whatever"
-                  style="height: 24px; width: auto; fill: #878f93;"
+                  style="height: 24px; width: auto; fill: rgb(135, 143, 147);"
                   viewBox="0 0 36 36"
                   xmlns="http://www.w3.org/2000/svg"
                 >

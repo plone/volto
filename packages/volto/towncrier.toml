@@ -31,3 +31,8 @@ showcontent = true
 directory = "documentation"
 name = "Documentation"
 showcontent = true
+
+[[tool.towncrier.type]]
+directory = "chore"
+name = "Other tasks"
+showcontent = false
