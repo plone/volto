@@ -1,0 +1,1 @@
+Added the "How to make a Volto release" documentation page, with the release requirements and the `prereleaser` workflow, and pointed `RELEASING.md` to it. @sneridagh
