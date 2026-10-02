@@ -199,6 +199,33 @@ class ContentTypeSchema extends Component {
 
   form = React.createRef();
 
+  /**
+   * List of field factory tokens that are valid for content type schemas.
+   * These correspond to IFieldFactory utilities registered on the backend.
+   * Form-only field types (e.g., static_text, hidden, radio_group) are
+   * excluded since they don't have corresponding Plone field factories.
+   */
+  contentTypeFieldFactories = [
+    'label_textline_field',
+    'label_text_field',
+    'label_integer_field',
+    'label_float_field',
+    'label_boolean_field',
+    'label_password_field',
+    'label_datetime_field',
+    'label_date_field',
+    'label_choice_field',
+    'label_multi_choice_field',
+    'label_email',
+    'Rich Text',
+    'URL',
+    'File Upload',
+    'Image',
+    'Relation List',
+    'Relation Choice',
+    'JSONField',
+  ];
+
   makeSchemaList = (schema) => {
     const result = {
       title: 'Schema',
@@ -217,6 +244,13 @@ class ContentTypeSchema extends Component {
           type: 'schema',
           id: 'schema',
           widget: 'schema',
+          widgetOptions: {
+            frontendOptions: {
+              widgetProps: {
+                filterFactory: this.contentTypeFieldFactories,
+              },
+            },
+          },
         },
       },
       required: [],
