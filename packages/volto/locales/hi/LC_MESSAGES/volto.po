@@ -475,6 +475,7 @@ msgstr "उपलब्ध कंटेंट नियम:"
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -594,6 +595,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
@@ -659,6 +661,7 @@ msgstr "परिवर्तन सहेजे गए"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Changes saved."
 msgstr "परिवर्तन सहेजे गए।"
 
@@ -1939,6 +1942,7 @@ msgstr "इस परिस्थिति को शामिल करें"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Info"
 msgstr "सूचना"
 
@@ -2292,6 +2296,12 @@ msgstr "लॉग आउट"
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr "{date} को {creator} द्वारा बनाया गया। यह अब एक काम की प्रतिलिपि नहीं है, लेकिन मुख्य कंटेंट है।"
+
+#. Default: "Mail"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
+msgid "Mail"
+msgstr ""
 
 #. Default: "Reduce cell padding"
 #: config/Blocks
@@ -3291,6 +3301,7 @@ msgstr "नियम निष्पादित होते हैं जब �
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit

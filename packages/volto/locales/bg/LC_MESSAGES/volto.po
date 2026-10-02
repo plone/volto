@@ -475,6 +475,7 @@ msgstr ""
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -594,6 +595,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
@@ -659,6 +661,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Changes saved."
 msgstr ""
 
@@ -1939,6 +1942,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Info"
 msgstr ""
 
@@ -2291,6 +2295,12 @@ msgstr ""
 #. Default: "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
+msgstr ""
+
+#. Default: "Mail"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
+msgid "Mail"
 msgstr ""
 
 #. Default: "Reduce cell padding"
@@ -3291,6 +3301,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit

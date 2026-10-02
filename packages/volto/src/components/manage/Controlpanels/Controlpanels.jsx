@@ -103,6 +103,10 @@ const messages = defineMessages({
     id: 'Relations',
     defaultMessage: 'Relations',
   },
+  mail: {
+    id: 'Mail',
+    defaultMessage: 'Mail',
+  },
 });
 
 /**
@@ -213,6 +217,11 @@ export default function Controlpanels({ location }) {
         '@id': '/groups',
         group: intl.formatMessage(messages.usersControlPanelCategory),
         title: intl.formatMessage(messages.groups),
+      },
+      {
+        '@id': '/mail',
+        group: intl.formatMessage(messages.general),
+        title: intl.formatMessage(messages.mail),
       },
     ]),
     (controlpanel) => ({
