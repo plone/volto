@@ -85,6 +85,7 @@ const Register = () => {
       createUser({
         fullname: fullname,
         email: email,
+        username: email,
         sendPasswordReset: true,
       }),
     );
