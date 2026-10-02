@@ -17,6 +17,9 @@ import {
 } from '@plone/volto/middleware';
 
 const configureStore = (initialState, history, apiHelper) => {
+  // The persisted reducers are only relevant for authenticated users.
+  const isAuthenticated = !!initialState?.userSession?.token;
+  const persistClientState = __CLIENT__ && isAuthenticated;
   let stack = [
     blacklistRoutes,
     protectLoadStart,
@@ -25,8 +28,14 @@ const configureStore = (initialState, history, apiHelper) => {
     ...(apiHelper ? [api(apiHelper)] : []),
     userSessionReset,
     protectLoadEnd,
-    ...(__CLIENT__
-      ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
+    ...(persistClientState
+      ? [
+          save({
+            states: config.settings.persistentReducers,
+            debounce: 500,
+            disableWarnings: true,
+          }),
+        ]
       : []),
   ];
   stack = config.settings.storeExtenders.reduce(
@@ -43,8 +52,11 @@ const configureStore = (initialState, history, apiHelper) => {
     }),
     {
       ...initialState,
-      ...(__CLIENT__
-        ? load({ states: config.settings.persistentReducers })
+      ...(persistClientState
+        ? load({
+            states: config.settings.persistentReducers,
+            disableWarnings: true,
+          })
         : {}),
     },
     middlewares,
