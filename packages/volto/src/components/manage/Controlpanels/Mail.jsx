@@ -97,7 +97,7 @@ function MailControlpanel() {
 
   const saveAndSendTestEmail = () => {
     const email_from_address =
-      formData.email_from_address || controlpanel?.data.email_from_address;
+      formData?.email_from_address || controlpanel?.data.email_from_address;
     const email_message =
       'Hi,\n\nThis is a test message sent from the Plone ' +
       "'Mail settings' control panel. Your receipt of this " +
@@ -109,7 +109,13 @@ function MailControlpanel() {
     const email_subject = 'Test e-mail from Plone';
 
     dispatch(
-      emailNotification(email_from_address, email_message, '', email_subject),
+      emailNotification(
+        email_from_address,
+        email_message,
+        '',
+        email_subject,
+        null,
+      ),
     )
       .then(onSubmit(formData))
       .catch((err) => setError(err));
