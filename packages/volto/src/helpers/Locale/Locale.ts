@@ -56,28 +56,30 @@ export function negotiateLocale(
 }
 
 /**
- * Decide whether the rendered locale must change to match the content.
+ * Decide whether the response must switch to the content language.
  *
- * The comparison is made against the locale already in the intl store, not
- * against the site default language: the store may hold a locale negotiated
- * from the browser that differs from both.
+ * The switch is needed when the content locale differs from any locale the
+ * request came with. On the server, that is both the locale negotiated from
+ * the request (which the page starts rendering in) and the one of the
+ * `I18N_LANGUAGE` cookie or site default (which the cookie must follow).
+ * The intl store is no reference: loading the content may already have
+ * switched it, without updating the cookie.
  *
  * @param contentLang Language token of the content being rendered.
- * @param currentLocale Locale currently in the intl store.
+ * @param requestLocales Locales the request came with. An empty entry
+ *   always requires the switch.
  * @param supported Matcher built by {@link getSupportedLocales}.
- * @returns The locale to switch to, or `null` when the current one fits.
+ * @returns The locale to switch to, or `null` when every request locale
+ *   already matches the content.
  */
 export function resolveContentLocale(
   contentLang: string | null | undefined,
-  currentLocale: string | null | undefined,
+  requestLocales: Array<string | null | undefined>,
   supported: Locales,
 ): string | null {
   const contentLocale = negotiateLocale(contentLang, supported);
-  if (
-    currentLocale &&
-    toBackendLang(currentLocale) === toBackendLang(contentLocale)
-  ) {
-    return null;
-  }
-  return contentLocale;
+  const matches = (requestLocale: string | null | undefined) =>
+    !!requestLocale &&
+    toBackendLang(requestLocale) === toBackendLang(contentLocale);
+  return requestLocales.every(matches) ? null : contentLocale;
 }

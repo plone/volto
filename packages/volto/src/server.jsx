@@ -281,7 +281,7 @@ server.get('/*', (req, res) => {
 
       const newLang = resolveContentLocale(
         contentLang,
-        state.intl.locale,
+        [lang, negotiateLocale(initialLang, supported)],
         supported,
       );
 

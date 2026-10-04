@@ -197,104 +197,225 @@ describe('negotiateLocale', () => {
 describe('resolveContentLocale', () => {
   const supported = getSupportedLocales(['en', 'de', 'pt-br']);
 
-  it('returns null when the current locale already matches the content', () => {
-    expect(resolveContentLocale('de', 'de', supported)).toBeNull();
-    expect(resolveContentLocale('pt-br', 'pt-BR', supported)).toBeNull();
+  it('returns null when every request locale matches the content', () => {
+    expect(resolveContentLocale('de', ['de'], supported)).toBeNull();
+    expect(resolveContentLocale('de', ['de', 'de'], supported)).toBeNull();
+    expect(
+      resolveContentLocale('pt-br', ['pt-BR', 'pt-br'], supported),
+    ).toBeNull();
   });
 
   it('compares locales regardless of format and case', () => {
-    expect(resolveContentLocale('pt-br', 'pt_BR', supported)).toBeNull();
-    expect(resolveContentLocale('pt_BR', 'pt-br', supported)).toBeNull();
-    expect(resolveContentLocale('DE', 'de', supported)).toBeNull();
+    expect(resolveContentLocale('pt-br', ['pt_BR'], supported)).toBeNull();
+    expect(resolveContentLocale('pt_BR', ['pt-br'], supported)).toBeNull();
+    expect(resolveContentLocale('DE', ['de'], supported)).toBeNull();
   });
 
   it('switches to the content language when the locale differs', () => {
-    expect(resolveContentLocale('de', 'en', supported)).toBe('de');
-    expect(resolveContentLocale('pt-br', 'de', supported)).toBe('pt-BR');
-    expect(resolveContentLocale('en', 'pt-BR', supported)).toBe('en');
+    expect(resolveContentLocale('de', ['en'], supported)).toBe('de');
+    expect(resolveContentLocale('pt-br', ['de'], supported)).toBe('pt-BR');
+    expect(resolveContentLocale('en', ['pt-BR'], supported)).toBe('en');
   });
 
-  it('switches when the current locale is unsupported', () => {
-    expect(resolveContentLocale('de', 'fr', supported)).toBe('de');
+  it('switches when any request locale differs', () => {
+    expect(resolveContentLocale('de', ['de', 'en'], supported)).toBe('de');
+    expect(resolveContentLocale('de', ['en', 'de'], supported)).toBe('de');
   });
 
-  it('switches when there is no current locale', () => {
-    expect(resolveContentLocale('de', undefined, supported)).toBe('de');
-    expect(resolveContentLocale('de', null, supported)).toBe('de');
-    expect(resolveContentLocale('de', '', supported)).toBe('de');
+  it('switches when a request locale is unsupported', () => {
+    expect(resolveContentLocale('de', ['fr'], supported)).toBe('de');
+  });
+
+  it('switches when a request locale is missing', () => {
+    expect(resolveContentLocale('de', [undefined], supported)).toBe('de');
+    expect(resolveContentLocale('de', ['de', null], supported)).toBe('de');
+    expect(resolveContentLocale('de', ['', 'de'], supported)).toBe('de');
+  });
+
+  it('does not switch when there is no request locale to compare', () => {
+    expect(resolveContentLocale('de', [], supported)).toBeNull();
   });
 
   it('maps an unsupported content language to the fallback', () => {
-    expect(resolveContentLocale('fr', 'de', supported)).toBe('en');
-    expect(resolveContentLocale('fr', 'en', supported)).toBeNull();
+    expect(resolveContentLocale('fr', ['de'], supported)).toBe('en');
+    expect(resolveContentLocale('fr', ['en'], supported)).toBeNull();
   });
 
   it('maps a regional content language to its supported language', () => {
-    expect(resolveContentLocale('de-at', 'en', supported)).toBe('de');
-    expect(resolveContentLocale('de-at', 'de', supported)).toBeNull();
+    expect(resolveContentLocale('de-at', ['en'], supported)).toBe('de');
+    expect(resolveContentLocale('de-at', ['de'], supported)).toBeNull();
   });
 
   it('treats missing content language as the fallback', () => {
-    expect(resolveContentLocale(undefined, 'de', supported)).toBe('en');
-    expect(resolveContentLocale('', 'en', supported)).toBeNull();
+    expect(resolveContentLocale(undefined, ['de'], supported)).toBe('en');
+    expect(resolveContentLocale('', ['en'], supported)).toBeNull();
   });
 
   it('accepts a raw Accept-Language value as the content language', () => {
     // server.jsx falls back to the header when nothing else is known.
-    expect(resolveContentLocale('fr-FR,de;q=0.8', 'en', supported)).toBe('de');
-    expect(resolveContentLocale('fr-FR,de;q=0.8', 'de', supported)).toBeNull();
+    expect(resolveContentLocale('fr-FR,de;q=0.8', ['en'], supported)).toBe(
+      'de',
+    );
+    expect(
+      resolveContentLocale('fr-FR,de;q=0.8', ['de'], supported),
+    ).toBeNull();
   });
 
   it('only returns locales whose catalog is loaded', () => {
     const catalogs = ['en', 'de', 'pt-br'].map(toReactIntlLang);
     for (const lang of allLanguages) {
-      const result = resolveContentLocale(lang, 'xx', supported);
+      const result = resolveContentLocale(lang, ['xx'], supported);
       expect(catalogs).toContain(result);
     }
   });
 });
 
 describe('server-side rendering locale', () => {
-  // Mirrors server.jsx: the request locale is negotiated first, then
-  // corrected to the content language once the content is loaded.
-  const render = (
-    supportedLanguages: string[],
-    preference: string | undefined,
-    contentLang: string,
-  ): string => {
+  // Mirrors server.jsx. The request locale comes from the cookie or the
+  // Accept-Language header; once the content is loaded, the response
+  // switches to the content language, which also sets the I18N_LANGUAGE
+  // cookie, when it differs from the request locale or from the cookie
+  // (or the site default when there is no cookie).
+  type Request = {
+    supportedLanguages: string[];
+    siteDefault: string;
+    contentLang: string;
+    header?: string;
+    cookie?: string;
+  };
+
+  const render = ({
+    supportedLanguages,
+    siteDefault,
+    contentLang,
+    header,
+    cookie,
+  }: Request): { locale: string; cookie: string | undefined } => {
     const supported = getSupportedLocales(supportedLanguages);
-    const initial = negotiateLocale(preference, supported);
-    return resolveContentLocale(contentLang, initial, supported) ?? initial;
+    const lang = negotiateLocale(cookie || header, supported);
+    const initialLang = cookie || siteDefault || header;
+    const newLang = resolveContentLocale(
+      contentLang,
+      [lang, negotiateLocale(initialLang, supported)],
+      supported,
+    );
+    return newLang
+      ? { locale: newLang, cookie: newLang }
+      : { locale: lang, cookie };
   };
 
   it.each(['en-US', 'de-DE', 'es', 'fr-FR,fr;q=0.9', undefined])(
     'renders a monolingual pt-br site in pt-BR for %s (#8448)',
     (header) => {
-      expect(render(['pt-br'], header, 'pt-br')).toBe('pt-BR');
+      const result = render({
+        supportedLanguages: ['pt-br'],
+        siteDefault: 'pt-br',
+        contentLang: 'pt-br',
+        header,
+      });
+      expect(result.locale).toBe('pt-BR');
     },
   );
 
   it('renders a German site in German for a French browser when English is also supported', () => {
-    expect(render(['en', 'de'], 'fr-FR,fr;q=0.9', 'de')).toBe('de');
+    const result = render({
+      supportedLanguages: ['en', 'de'],
+      siteDefault: 'de',
+      contentLang: 'de',
+      header: 'fr-FR,fr;q=0.9',
+    });
+    expect(result).toEqual({ locale: 'de', cookie: 'de' });
   });
 
   it('renders a German site in German for an English browser', () => {
-    expect(render(['en', 'de'], 'en-US', 'de')).toBe('de');
+    const result = render({
+      supportedLanguages: ['en', 'de'],
+      siteDefault: 'de',
+      contentLang: 'de',
+      header: 'en-US',
+    });
+    expect(result).toEqual({ locale: 'de', cookie: 'de' });
   });
 
-  it('renders each content item of a multilingual site in its language', () => {
-    expect(render(['en', 'de', 'pt-br'], 'en-US', 'de')).toBe('de');
-    expect(render(['en', 'de', 'pt-br'], 'de', 'pt-br')).toBe('pt-BR');
-    expect(render(['en', 'de', 'pt-br'], 'pt-BR', 'en')).toBe('en');
+  it('sets the cookie when an English browser opens the Italian root folder', () => {
+    // Acceptance test "Language coming from SSR" (basic-multilingual.js).
+    const result = render({
+      supportedLanguages: ['en', 'it'],
+      siteDefault: 'en',
+      contentLang: 'it',
+      header: 'en-US,en;q=0.9',
+    });
+    expect(result).toEqual({ locale: 'it', cookie: 'it' });
+  });
+
+  it('sets the cookie when the browser prefers the content language but the site default differs', () => {
+    const result = render({
+      supportedLanguages: ['en', 'it'],
+      siteDefault: 'en',
+      contentLang: 'it',
+      header: 'it-IT',
+    });
+    expect(result).toEqual({ locale: 'it', cookie: 'it' });
+  });
+
+  it('updates a stale cookie to the content language', () => {
+    const result = render({
+      supportedLanguages: ['en', 'de', 'pt-br'],
+      siteDefault: 'en',
+      contentLang: 'pt-br',
+      cookie: 'de',
+    });
+    expect(result).toEqual({ locale: 'pt-BR', cookie: 'pt-BR' });
+  });
+
+  it('keeps the cookie when it already matches the content', () => {
+    const result = render({
+      supportedLanguages: ['en', 'de'],
+      siteDefault: 'en',
+      contentLang: 'de',
+      cookie: 'de',
+      header: 'en-US',
+    });
+    expect(result).toEqual({ locale: 'de', cookie: 'de' });
+  });
+
+  it('does not switch when the request already matches a site in its default language', () => {
+    const result = render({
+      supportedLanguages: ['en', 'de'],
+      siteDefault: 'en',
+      contentLang: 'en',
+      header: 'en-US',
+    });
+    expect(result).toEqual({ locale: 'en', cookie: undefined });
   });
 
   it('follows the I18N_LANGUAGE cookie when the content has no language', () => {
     // Without a language token, server.jsx uses the cookie as contentLang.
-    expect(render(['en', 'de'], 'de', 'de')).toBe('de');
+    const result = render({
+      supportedLanguages: ['en', 'de'],
+      siteDefault: 'en',
+      contentLang: 'de',
+      cookie: 'de',
+    });
+    expect(result.locale).toBe('de');
   });
 
   it('renders content in an unsupported language with the fallback', () => {
-    expect(render(['en', 'de'], 'de', 'fr')).toBe('en');
-    expect(render(['pt-br'], 'en-US', 'fr')).toBe('pt-BR');
+    expect(
+      render({
+        supportedLanguages: ['en', 'de'],
+        siteDefault: 'en',
+        contentLang: 'fr',
+        cookie: 'de',
+      }).locale,
+    ).toBe('en');
+    expect(
+      render({
+        supportedLanguages: ['pt-br'],
+        siteDefault: 'pt-br',
+        contentLang: 'fr',
+        header: 'en-US',
+      }).locale,
+    ).toBe('pt-BR');
   });
 });
