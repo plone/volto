@@ -119,13 +119,13 @@ export const messages = defineMessages({
     id: 'Download CSV',
     defaultMessage: 'Download CSV',
   },
-  addMemberImport: {
-    id: 'Add Members via CSV',
-    defaultMessage: 'Add Members via CSV',
+  addUserImport: {
+    id: 'Add Users via CSV',
+    defaultMessage: 'Add Users via CSV',
   },
-  membersCSVExport: {
-    id: 'Download Members as CSV',
-    defaultMessage: 'Download Members as CSV',
+  usersCSVExport: {
+    id: 'Download Users as CSV',
+    defaultMessage: 'Download Users as CSV',
   },
   CSVFile: {
     id: 'CSV File',

@@ -649,7 +649,7 @@ const UsersControlpanel = (props) => {
               setShowCSVImport(false);
               setAddUserError(undefined);
             }}
-            title={intl.formatMessage(messages.addMemberImport)}
+            title={intl.formatMessage(messages.addUserImport)}
             loading={createRequest?.loading}
             schema={{
               fieldsets: [
@@ -667,7 +667,7 @@ const UsersControlpanel = (props) => {
                   widget: 'file',
                 },
               },
-              required: [],
+              required: ['file'],
             }}
           />
         ) : null}
@@ -677,9 +677,9 @@ const UsersControlpanel = (props) => {
           <FormattedMessage id="Users" defaultMessage="Users" />
           <div className="users_grid">
             <Button
-              id="member-import"
-              aria-label={intl.formatMessage(messages.addMemberImport)}
-              className="import_members_csv"
+              id="user-import"
+              aria-label={intl.formatMessage(messages.addUserImport)}
+              className="import_users_csv"
               onClick={() => {
                 setShowCSVImport(true);
               }}
@@ -691,13 +691,13 @@ const UsersControlpanel = (props) => {
                 className="csv_icon"
                 size="25px"
                 align="right"
-                title={intl.formatMessage(messages.addMemberImport)}
+                title={intl.formatMessage(messages.addUserImport)}
               />
             </Button>
             <Button
-              id="member-export"
-              aria-label={intl.formatMessage(messages.membersCSVExport)}
-              className="export_members_csv"
+              id="user-export"
+              aria-label={intl.formatMessage(messages.usersCSVExport)}
+              className="export_users_csv"
               onClick={() => downloadUserCsv()}
             >
               {intl.formatMessage(messages.downloadCSV)}
@@ -706,7 +706,7 @@ const UsersControlpanel = (props) => {
                 className="csv_icon"
                 size="25px"
                 align="right"
-                title={intl.formatMessage(messages.membersCSVExport)}
+                title={intl.formatMessage(messages.usersCSVExport)}
               />
             </Button>{' '}
           </div>

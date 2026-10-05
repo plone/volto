@@ -19,9 +19,9 @@ exports[`UsersControlpanel > renders a user control component 1`] = `
           class="users_grid"
         >
           <button
-            aria-label="Add Members via CSV"
-            class="ui button import_members_csv"
-            id="member-import"
+            aria-label="Add Users via CSV"
+            class="ui button import_users_csv"
+            id="user-import"
           >
             Upload CSV
             <svg
@@ -31,7 +31,7 @@ exports[`UsersControlpanel > renders a user control component 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <title>
-                Add Members via CSV
+                Add Users via CSV
               </title>
               <g
                 fill-rule="evenodd"
@@ -46,9 +46,9 @@ exports[`UsersControlpanel > renders a user control component 1`] = `
             </svg>
           </button>
           <button
-            aria-label="Download Members as CSV"
-            class="ui button export_members_csv"
-            id="member-export"
+            aria-label="Download Users as CSV"
+            class="ui button export_users_csv"
+            id="user-export"
           >
             Download CSV
             <svg
@@ -58,7 +58,7 @@ exports[`UsersControlpanel > renders a user control component 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <title>
-                Download Members as CSV
+                Download Users as CSV
               </title>
               <g
                 fill-rule="evenodd"

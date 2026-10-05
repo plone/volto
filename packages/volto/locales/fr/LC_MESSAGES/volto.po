@@ -114,9 +114,9 @@ msgstr "Ajouter du contenu"
 msgid "Add Content Rule"
 msgstr "Ajouter une règle de contenu"
 
-#. Default: "Add Members via CSV"
+#. Default: "Add Users via CSV"
 #: helpers/MessageLabels/MessageLabels
-msgid "Add Members via CSV"
+msgid "Add Users via CSV"
 msgstr ""
 
 #. Default: "Add Rule"
@@ -1254,9 +1254,9 @@ msgstr ""
 msgid "Download Event"
 msgstr "Télécharger l'événement"
 
-#. Default: "Download Members as CSV"
+#. Default: "Download Users as CSV"
 #: helpers/MessageLabels/MessageLabels
-msgid "Download Members as CSV"
+msgid "Download Users as CSV"
 msgstr ""
 
 #. Default: "Download file"

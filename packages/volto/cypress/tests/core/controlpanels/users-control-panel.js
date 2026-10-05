@@ -123,7 +123,7 @@ describe('User Control Panel Test', () => {
   it('Should upload users via csv', () => {
     cy.visit('/controlpanel/users');
 
-    cy.get('Button[id="member-import"]').click();
+    cy.get('Button[id="user-import"]').click();
     cy.intercept('POST', '**/@users').as('saveUsers');
 
     cy.get('div[class="file-widget-dropzone"]').selectFile(
@@ -138,7 +138,7 @@ describe('User Control Panel Test', () => {
   });
   it('Should download users as csv', () => {
     cy.visit('/controlpanel/users');
-    cy.get('Button[id="member-export"]').click();
+    cy.get('Button[id="user-export"]').click();
     const apiUrl =
       Cypress.env('API_PATH') || `${Cypress.config('baseUrl')}/++api++`;
 
