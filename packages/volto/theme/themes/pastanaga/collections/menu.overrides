@@ -193,4 +193,16 @@
     background: none;
     color: @textColor;
   }
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+
+    .item {
+      min-width: 2em;
+      padding-right: 0.5em;
+      padding-left: 0.5em;
+    }
+  }
 }

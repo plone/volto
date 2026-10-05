@@ -1,3 +1,18 @@
+/**
+ * Map a field to the name of the widget that should render it.
+ *
+ * @deprecated Nothing in Volto calls this any more. It papered over two gaps in
+ * the `views` registry — no entries for `title`/`description` by field id, and
+ * no `factory` registry at all — both of which are now filled, so
+ * `getWidgetView` resolves the same fields directly from the raw schema
+ * property. It is kept for add-ons that import it, and will be removed in a
+ * future major release.
+ *
+ * @method getWidget
+ * @param {string} id Field id
+ * @param {Object} field Schema property
+ * @returns {string} Widget name.
+ */
 export const getWidget = (id, field) => {
   if (id === 'title') {
     return 'title';

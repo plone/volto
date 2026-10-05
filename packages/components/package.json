@@ -80,10 +80,10 @@
     "prettier:fix": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
     "stylelint": "stylelint 'src/**/*.{css,scss,less}'",
     "stylelint:fix": "stylelint 'src/**/*.{css,scss,less}' --fix",
-    "dry-release": "release-it --dry-run",
-    "release": "release-it",
-    "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha"
+    "dry-release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --dry-run",
+    "release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it",
+    "release-major-alpha": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it major --preRelease=alpha",
+    "release-alpha": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --preRelease=alpha"
   },
   "publishConfig": {
     "access": "public"
@@ -119,7 +119,7 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "@vitest/coverage-v8": "catalog:",
-    "browserslist": "^4.28.2",
+    "browserslist": "^4.28.7",
     "jest-axe": "^8.0.0",
     "jsdom": "catalog:",
     "lightningcss": "^1.29.0",
