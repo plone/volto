@@ -63,8 +63,12 @@ const splitWords = (str) => {
       // Check if the tagBuffer contains a special tag
       const tagNameMatch = tagBuffer.match(/^<\/?([a-zA-Z]+[0-9]*)\b/);
       if (tagNameMatch && specialTags.includes(tagNameMatch[1])) {
+        // Only container tags (svg) span until their closing tag; void
+        // elements such as <img> are complete with the opening tag.
         insideSpecialTag =
-          tagNameMatch[0].startsWith('<') && !tagNameMatch[0].startsWith('</');
+          tagNameMatch[1] !== 'img' &&
+          !tagNameMatch[0].startsWith('</') &&
+          !tagBuffer.endsWith('/>');
         result.push(tagBuffer); // Push the complete special tag as one unit
         tagBuffer = '';
         continue;
@@ -114,31 +118,6 @@ const splitWords = (str) => {
   return result;
 };
 
-const groupIntoUnits = (tokens) => {
-  const units = [];
-  let current = [];
-
-  for (let i = 0; i < tokens.length; i++) {
-    const token = tokens[i];
-    current.push(token);
-
-    if (typeof token === 'string' && /[.!?]$/.test(token)) {
-      if (tokens[i + 1] === ' ') {
-        current.push(tokens[i + 1]);
-        i++;
-      }
-      units.push(current);
-      current = [];
-    }
-  }
-
-  if (current.length) {
-    units.push(current);
-  }
-
-  return units;
-};
-
 const formatDiffPart = (part, value, side) => {
   if (!isHtmlTag(value)) {
     if (part.removed && (side === 'left' || side === 'unified')) {
@@ -177,6 +156,7 @@ const DiffField = ({
   contentTwo,
   view,
   schema,
+  showTitle = true,
   diffLib,
 }) => {
   const language = useSelector((state) => state.intl.locale);
@@ -185,60 +165,10 @@ const DiffField = ({
     timeStyle: 'short',
   };
   const diffWords = (oneStr, twoStr) => {
-    const oneUnits = groupIntoUnits(splitWords(String(oneStr)));
-    const twoUnits = groupIntoUnits(splitWords(String(twoStr)));
-
-    const coarseParts = diffLib.diffArrays(
-      oneUnits.map((unit) => unit.join('')),
-      twoUnits.map((unit) => unit.join('')),
+    return diffLib.diffArrays(
+      splitWords(String(oneStr)),
+      splitWords(String(twoStr)),
     );
-
-    const parts = [];
-    let oneIndex = 0;
-    let twoIndex = 0;
-
-    for (let i = 0; i < coarseParts.length; i++) {
-      const part = coarseParts[i];
-      const count = part.value.length;
-
-      if (!part.added && !part.removed) {
-        parts.push({ value: [part.value.join('')] });
-        oneIndex += count;
-        twoIndex += count;
-        continue;
-      }
-
-      if (part.removed) {
-        const next = coarseParts[i + 1];
-        if (next?.added) {
-          const removedTokens = oneUnits
-            .slice(oneIndex, oneIndex + count)
-            .flat();
-          const addedTokens = twoUnits
-            .slice(twoIndex, twoIndex + next.value.length)
-            .flat();
-          parts.push(...diffLib.diffArrays(removedTokens, addedTokens));
-          oneIndex += count;
-          twoIndex += next.value.length;
-          i++;
-          continue;
-        }
-        parts.push({
-          removed: true,
-          value: oneUnits.slice(oneIndex, oneIndex + count).flat(),
-        });
-        oneIndex += count;
-        continue;
-      }
-
-      parts.push({
-        added: true,
-        value: twoUnits.slice(twoIndex, twoIndex + count).flat(),
-      });
-      twoIndex += count;
-    }
-
-    return parts;
   };
 
   let parts, oneArray, twoArray;
@@ -341,9 +271,11 @@ const DiffField = ({
 
   return (
     <Grid data-testid="DiffField">
-      <Grid.Row>
-        <Grid.Column width={12}>{schema.title}</Grid.Column>
-      </Grid.Row>
+      {showTitle && (
+        <Grid.Row>
+          <Grid.Column width={12}>{schema.title}</Grid.Column>
+        </Grid.Row>
+      )}
 
       {view === 'split' && (
         <Grid.Row>
@@ -413,6 +345,7 @@ DiffField.propTypes = {
   contentOne: PropTypes.any,
   contentTwo: PropTypes.any,
   view: PropTypes.string.isRequired,
+  showTitle: PropTypes.bool,
   schema: PropTypes.shape({
     widget: PropTypes.string,
     type: PropTypes.string,

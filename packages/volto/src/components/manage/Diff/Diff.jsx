@@ -29,6 +29,7 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
 import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import DiffField from '@plone/volto/components/manage/Diff/DiffField';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useClient } from '@plone/volto/hooks/client/useClient';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -55,9 +56,10 @@ const messages = defineMessages({
 /**
  * Diff component.
  * @function Diff
+ * @param {Object} diffLib Lazy loaded diff library
  * @returns {JSX.Element}
  */
-function Diff() {
+function Diff({ diffLib }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
@@ -149,13 +151,27 @@ function Diff() {
     (blocksLayoutField && data[0]?.[blocksLayoutField]?.items) || [];
   const blockIdsTwo =
     (blocksLayoutField && data[1]?.[blocksLayoutField]?.items) || [];
-  const orderedBlockIds = [
-    ...blockIdsTwo,
-    ...blockIdsOne.filter((id) => !blockIdsTwo.includes(id)),
-  ];
-  const changedBlockIds = orderedBlockIds.filter(
-    (id) => !isEqual(blocksOne[id], blocksTwo[id]),
-  );
+  // Diff the block order first, so that added, removed and moved blocks
+  // show up at their position. A moved block is shown as removed at its old
+  // position and added at its new one. Blocks that stayed in place are only
+  // shown if their data changed.
+  const changedBlocks = diffLib
+    .diffArrays(blockIdsOne, blockIdsTwo)
+    .flatMap((part, partIndex) =>
+      part.value
+        .filter(
+          (id) =>
+            part.added ||
+            part.removed ||
+            !isEqual(blocksOne[id], blocksTwo[id]),
+        )
+        .map((id) => ({
+          key: `${id}-${partIndex}`,
+          id,
+          one: part.added ? undefined : blocksOne[id],
+          two: part.removed ? undefined : blocksTwo[id],
+        })),
+    );
 
   return error?.status === 401 ? (
     <Unauthorized />
@@ -260,23 +276,24 @@ function Diff() {
       {schema &&
         data.length > 0 &&
         hasBlocksData(data[0]) &&
-        map(changedBlockIds, (id) => (
+        map(changedBlocks, ({ key, id, one, two }, index) => (
           <DiffField
-            key={id}
-            one={blocksOne[id]}
-            two={blocksTwo[id]}
+            key={key}
+            one={one}
+            two={two}
             contentOne={{
               ...data[0],
-              [blocksField]: blocksOne[id] ? { [id]: blocksOne[id] } : {},
-              [blocksLayoutField]: { items: blocksOne[id] ? [id] : [] },
+              [blocksField]: one ? { [id]: one } : {},
+              [blocksLayoutField]: { items: one ? [id] : [] },
             }}
             contentTwo={{
               ...data[1],
-              [blocksField]: blocksTwo[id] ? { [id]: blocksTwo[id] } : {},
-              [blocksLayoutField]: { items: blocksTwo[id] ? [id] : [] },
+              [blocksField]: two ? { [id]: two } : {},
+              [blocksLayoutField]: { items: two ? [id] : [] },
             }}
             schema={schema.properties[blocksField]}
             view={view}
+            showTitle={index === 0}
           />
         ))}
       {isClient &&
@@ -301,4 +318,4 @@ function Diff() {
   );
 }
 
-export default Diff;
+export default injectLazyLibs('diffLib')(Diff);
