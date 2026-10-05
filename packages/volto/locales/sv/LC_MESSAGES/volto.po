@@ -113,11 +113,6 @@ msgstr "Lägga till innehåll"
 msgid "Add Content Rule"
 msgstr "Lägg till innehållsregel"
 
-#. Default: "Add Users via CSV"
-#: helpers/MessageLabels/MessageLabels
-msgid "Add Users via CSV"
-msgstr ""
-
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -132,6 +127,11 @@ msgstr "Lägg till översättning…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
 msgstr "Lägg till användare"
+
+#. Default: "Add Users via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Users via CSV"
+msgstr ""
 
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit

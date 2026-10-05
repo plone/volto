@@ -113,11 +113,6 @@ msgstr "जोड़े कंटेंट"
 msgid "Add Content Rule"
 msgstr "कंटेंट रूल्स जोड़े"
 
-#. Default: "Add Users via CSV"
-#: helpers/MessageLabels/MessageLabels
-msgid "Add Users via CSV"
-msgstr ""
-
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -132,6 +127,11 @@ msgstr "अनुवाद… जोड़े"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
 msgstr "उपयोगकर्ता जोड़े"
+
+#. Default: "Add Users via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Users via CSV"
+msgstr ""
 
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit

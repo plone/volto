@@ -114,11 +114,6 @@ msgstr "Gehitu edukia"
 msgid "Add Content Rule"
 msgstr "Gehitu eduki erregela"
 
-#. Default: "Add Users via CSV"
-#: helpers/MessageLabels/MessageLabels
-msgid "Add Users via CSV"
-msgstr ""
-
 #. Default: "Add Rule"
 #: components/manage/Controlpanels/Rules/AddRule
 msgid "Add Rule"
@@ -133,6 +128,11 @@ msgstr "Gehitu itzulpena…"
 #: helpers/MessageLabels/MessageLabels
 msgid "Add User"
 msgstr "Gehitu erabiltzailea"
+
+#. Default: "Add Users via CSV"
+#: helpers/MessageLabels/MessageLabels
+msgid "Add Users via CSV"
+msgstr ""
 
 #. Default: "Add a description…"
 #: components/manage/Blocks/Description/Edit
