@@ -5,6 +5,7 @@ import robotstxtMiddleware from '@plone/volto/express-middleware/robotstxt';
 import sitemapMiddleware from '@plone/volto/express-middleware/sitemap';
 import staticsMiddleware from '@plone/volto/express-middleware/static';
 import devProxyMiddleware from '@plone/volto/express-middleware/devproxy';
+import markdownMiddleware from '@plone/volto/express-middleware/markdown';
 
 const settings = {
   expressMiddleware: [
@@ -15,6 +16,7 @@ const settings = {
     robotstxtMiddleware(),
     sitemapMiddleware(),
     staticsMiddleware(),
+    markdownMiddleware(),
   ],
   criticalCssPath: 'public/critical.css',
   readCriticalCss: null, // so it will be defaultReadCriticalCss
