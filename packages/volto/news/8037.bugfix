@@ -1,0 +1,1 @@
+Fix `Invalid load 'redux_localstorage_simple_blocksClipboard.cut/copy'` console warnings from `redux-localstorage-simple` on first run and for anonymous users. Also align `BlocksToolbar` cross-tab clipboard sync to read the configured `persistentReducers` instead of a stale hardcoded key. @wesleybl
