@@ -17,6 +17,30 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.5.0 (2026-10-07)
+
+### Feature
+
+- Move table row and column insertion and deletion controls to a floating menu above the currently selected row. @r4-rahul123 [#8409](https://github.com/plone/volto/issues/8409)
+
+### Bugfix
+
+- Fixed IME composition Enter key in the Title and Description blocks and in TextLineEdit being misinterpreted as a move to the next block, which broke Japanese/Chinese/Korean input (e.g. confirming a conversion in Safari). @terapyon [#8348](https://github.com/plone/volto/issues/8348)
+- Honored the `frontendOptions` schema hint when rendering a field in the default views, so a field declared with `directives.widget(..., frontendOptions={"widget": ..., "widgetProps": {...}})` is rendered by that widget, with those props, instead of falling back to the default one. The `views` registry gained a `factory` mapping and entries for `title` and `description` by field id, and view widget resolution now uses the same steps as the edit side, except that a field's factory is consulted before its vocabulary, so relation fields still render as links. @ericof [#8428](https://github.com/plone/volto/issues/8428)
+- Fix search results pagination overflow on mobile screens. @r4-rahul123 [#8432](https://github.com/plone/volto/issues/8432)
+- Fixed the History diff view marking all text after an image as changed, and compare blocks one by one, including added, removed and moved blocks. @iFlameing 
+
+### Internal
+
+- Bump svgo from 3.3.3 to 3.3.5. [#8421](https://github.com/plone/volto/issues/8421)
+- The `release` scripts of all the packages now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
+### Documentation
+
+- Added the "How to make a Volto release" documentation page, with the release requirements and the `prereleaser` workflow, and pointed `RELEASING.md` to it. @sneridagh 
+- Fix broken links and require linkcheck to pass. @stevepiercy 
+- Update training links for 2025 archive. @stevepiercy 
+
 ## 19.4.1 (2026-09-10)
 
 ### Bugfix

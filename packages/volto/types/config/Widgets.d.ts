@@ -68,10 +68,12 @@ export namespace widgetMapping {
         export { getWidgetView as getWidget };
         export { TextViewWidget as default };
         export namespace id_1 {
+            export { DescriptionViewWidget as description };
             export { FileViewWidget as file };
             export { ImageViewWidget as image };
             export { RelationsViewWidget as relatedItems };
             export { TokenViewWidget as subjects };
+            export { TitleViewWidget as title };
         }
         export { id_1 as id };
         export namespace widget_1 {
@@ -102,6 +104,33 @@ export namespace widgetMapping {
         let vocabulary_1: {};
         export { vocabulary_1 as vocabulary };
         export { SelectViewWidget as choices };
+        let factory_1: {
+            Choice: ({ value, children, className }: {
+                value: any;
+                children: any;
+                className: any;
+            }) => "" | import("react/jsx-runtime").JSX.Element;
+            File: ({ value, children, className }: {
+                value: any;
+                children: any;
+                className: any;
+            }) => "" | import("react/jsx-runtime").JSX.Element;
+            Image: ({ value, className }: {
+                value: any;
+                className: any;
+            }) => "" | import("react/jsx-runtime").JSX.Element;
+            'Relation Choice': ({ value, children, className }: {
+                value: any;
+                children: any;
+                className: any;
+            }) => "" | import("react/jsx-runtime").JSX.Element;
+            'Relation List': ({ value, children, className }: {
+                value: any;
+                children: any;
+                className: any;
+            }) => "" | import("react/jsx-runtime").JSX.Element;
+        };
+        export { factory_1 as factory };
         export namespace type_1 {
             export { ArrayViewWidget as array };
             export { BooleanViewWidget as boolean };
@@ -151,21 +180,21 @@ import { CheckboxWidget } from '@plone/volto/components/manage/Widgets';
 import { NumberWidget } from '@plone/volto/components/manage/Widgets';
 import { getWidgetView } from '@plone/volto/helpers/Widget/widget';
 import TextViewWidget from '@plone/volto/components/theme/Widgets/TextWidget';
+import DescriptionViewWidget from '@plone/volto/components/theme/Widgets/DescriptionWidget';
 import FileViewWidget from '@plone/volto/components/theme/Widgets/FileWidget';
 import ImageViewWidget from '@plone/volto/components/theme/Widgets/ImageWidget';
 import RelationsViewWidget from '@plone/volto/components/theme/Widgets/RelationsWidget';
 import TokenViewWidget from '@plone/volto/components/theme/Widgets/TokenWidget';
+import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import ArrayViewWidget from '@plone/volto/components/theme/Widgets/ArrayWidget';
 import BooleanViewWidget from '@plone/volto/components/theme/Widgets/BooleanWidget';
 import SelectViewWidget from '@plone/volto/components/theme/Widgets/SelectWidget';
 import DateViewWidget from '@plone/volto/components/theme/Widgets/DateWidget';
 import DatetimeViewWidget from '@plone/volto/components/theme/Widgets/DatetimeWidget';
-import DescriptionViewWidget from '@plone/volto/components/theme/Widgets/DescriptionWidget';
 import EmailViewWidget from '@plone/volto/components/theme/Widgets/EmailWidget';
 import PasswordViewWidget from '@plone/volto/components/theme/Widgets/PasswordWidget';
 import RelationViewWidget from '@plone/volto/components/theme/Widgets/RelationWidget';
 import RichTextViewWidget from '@plone/volto/components/theme/Widgets/RichTextWidget';
-import TitleViewWidget from '@plone/volto/components/theme/Widgets/TitleWidget';
 import UrlViewWidget from '@plone/volto/components/theme/Widgets/UrlWidget';
 import StaticTextViewWidget from '@plone/volto/components/manage/Widgets/StaticTextWidget';
 import HiddenViewWidget from '@plone/volto/components/manage/Widgets/HiddenWidget';
