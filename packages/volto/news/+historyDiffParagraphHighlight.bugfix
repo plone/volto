@@ -1,0 +1,1 @@
+Fixed the History diff view marking all text after an image as changed, and compare blocks one by one, including added, removed and moved blocks. @iFlameing
