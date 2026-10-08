@@ -1,0 +1,1 @@
+Fixed the previous and next buttons of the search results paginator never reflecting the page being browsed. The search results now read the total and the batching information from the store, instead of from the payload the route was resolved with, which was never updated by a later search. @Somilg11
