@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import { List } from 'semantic-ui-react';
 import cx from 'classnames';
 
-import { toBackendLang } from '@plone/volto/helpers/Utils/Utils';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { useSelector } from 'react-redux';
+import { formatDate } from '@plone/volto/helpers/Utils/Date';
 
+/**
+ * @deprecated Use the native Date API directly. Will be removed in Volto 20.
+ */
 export const datesForDisplay = (start, end, moment) => {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'datesForDisplay is deprecated and will be removed in Volto 20. Use the native Date API directly.',
+  );
   const mStart = moment(start);
   const mEnd = moment(end);
   if (!mStart.isValid() || !mEnd.isValid()) {
@@ -25,17 +32,30 @@ export const datesForDisplay = (start, end, moment) => {
   };
 };
 
-const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
-  const lang = useSelector((state) => state.intl.locale);
+const When_ = ({ start, end, whole_day, open_end }) => {
+  const locale = useSelector((state) => state.intl.locale);
 
-  const moment = momentlib.default;
-  moment.locale(toBackendLang(lang));
-
-  const datesInfo = datesForDisplay(start, end, moment);
-  if (!datesInfo) {
-    return;
+  const dStart = new Date(start);
+  const dEnd = end != null ? new Date(end) : new Date();
+  if (isNaN(dStart.getTime()) || isNaN(dEnd.getTime())) {
+    return null;
   }
-  // TODO I18N INTL
+  const sameDay =
+    dStart.getFullYear() === dEnd.getFullYear() &&
+    dStart.getMonth() === dEnd.getMonth() &&
+    dStart.getDate() === dEnd.getDate();
+  const sameTime =
+    sameDay &&
+    dStart.getHours() === dEnd.getHours() &&
+    dStart.getMinutes() === dEnd.getMinutes();
+  const datesInfo = {
+    sameDay,
+    sameTime,
+    startDate: formatDate({ date: dStart, format: 'll', locale }),
+    startTime: formatDate({ date: dStart, format: 'LT', locale }),
+    endDate: formatDate({ date: dEnd, format: 'll', locale }),
+    endTime: formatDate({ date: dEnd, format: 'LT', locale }),
+  };
   return (
     <p
       className={cx('event-when', {
@@ -100,7 +120,7 @@ const When_ = ({ start, end, whole_day, open_end, moment: momentlib }) => {
   );
 };
 
-export const When = injectLazyLibs(['moment'])(When_);
+export const When = When_;
 
 When.propTypes = {
   start: PropTypes.string.isRequired,
@@ -109,13 +129,8 @@ When.propTypes = {
   open_end: PropTypes.bool,
 };
 
-export const Recurrence_ = ({
-  recurrence,
-  start,
-  moment: momentlib,
-  rrule,
-}) => {
-  const moment = momentlib.default;
+export const Recurrence_ = ({ recurrence, start, rrule }) => {
+  const locale = useSelector((state) => state.intl.locale);
   const { RRule, rrulestr } = rrule;
   if (recurrence.indexOf('DTSTART') < 0) {
     var dtstart = RRule.optionsToString({
@@ -129,12 +144,11 @@ export const Recurrence_ = ({
     <List
       items={rule
         .all()
-        .map((date) => datesForDisplay(date, undefined, moment))
-        .map((date) => date.startDate)}
+        .map((date) => formatDate({ date, format: 'll', locale }))}
     />
   );
 };
-export const Recurrence = injectLazyLibs(['moment', 'rrule'])(Recurrence_);
+export const Recurrence = injectLazyLibs(['rrule'])(Recurrence_);
 
 Recurrence.propTypes = {
   recurrence: PropTypes.string.isRequired,
