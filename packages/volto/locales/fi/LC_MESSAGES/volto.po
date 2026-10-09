@@ -63,7 +63,7 @@ msgid "Actions"
 msgstr "Toiminnot"
 
 #. Default: "Activate and deactivate add-ons in the lists below."
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Activate and deactivate"
 msgstr "Ota käyttöön ja poista käytöstä"
 
@@ -93,10 +93,10 @@ msgstr "Lisää"
 msgid "Add (object list)"
 msgstr "Lisää (objektilista)"
 
-#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "To make new add-ons show up here, add them to your configuration, build, and restart the server process. For detailed instructions see {link}."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add Addons"
-msgstr "Lisää laajennoksia"
+msgstr "Jotta uudet lisäosat näkyvät täällä, lisää ne asetuksiin, tee build ja käynnistä palvelinprosessi uudelleen. Katso tarkemmat ohjeet kohdasta {link}."
 
 #. Default: "Add Alternative URL"
 #: components/manage/Controlpanels/Aliases
@@ -244,12 +244,12 @@ msgid "Add-on Configuration"
 msgstr "Laajennosten asetukset"
 
 #. Default: "Add-ons"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons"
 msgstr "Laajennokset"
 
 #. Default: "Add-ons Settings"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Add-ons Settings"
 msgstr "Laajennoksien asetukset"
 
@@ -263,35 +263,35 @@ msgstr "Lisätty"
 msgid "Additional date"
 msgstr "Erillinen päivä"
 
-#. Default: "Addon could not be installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be installed"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be installed"
-msgstr "Laajennosta ei voitu asentaa"
+msgstr ""
 
-#. Default: "Addon could not be uninstalled"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be uninstalled"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be uninstalled"
-msgstr "Laajennosta ei voitu poistaa"
+msgstr ""
 
-#. Default: "Addon could not be upgraded"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Add-on could not be upgraded"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Addon could not be upgraded"
-msgstr "Laajennosta ei voitu päivittää"
+msgstr ""
 
-#. Default: "Addon installed succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon installed succesfuly"
-msgstr "Laajennos asennettu onnistuneesti"
+#. Default: "Add-on installed successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon installed successfully"
+msgstr "Lisäosa asennettu onnistuneesti"
 
-#. Default: "Addon uninstalled succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon uninstalled succesfuly"
-msgstr "Laajennos poistettu onnistuneesti"
+#. Default: "Add-on uninstalled successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon uninstalled successfully"
+msgstr "Lisäosa poistettiin onnistuneesti"
 
-#. Default: "Addon upgraded succesfuly"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Addon upgraded succesfuly"
-msgstr "Laajennos päivitetty onnistuneesti"
+#. Default: "Add-on upgraded successfully"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Addon upgraded successfully"
+msgstr "Lisäosa päivitettiin onnistuneesti"
 
 #. Default: "Advanced facet?"
 #: components/manage/Blocks/Search/schema
@@ -453,9 +453,14 @@ msgid "Autosaved content found"
 msgstr ""
 
 #. Default: "Available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Available"
 msgstr "Saatavilla"
+
+#. Default: "Available add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Available add-ons"
+msgstr "Käytettävissä olevat lisäosat"
 
 #. Default: "Available content rules:"
 #: components/manage/Rules/Rules
@@ -465,7 +470,7 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 #. Default: "Back"
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
@@ -1468,7 +1473,7 @@ msgstr ""
 
 #. Default: "Error"
 #: components/manage/Add/Add
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/UndoControlpanel
@@ -1983,22 +1988,27 @@ msgid "Inspect relations"
 msgstr ""
 
 #. Default: "Install"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Install"
-msgstr "Asenna"
+msgstr ""
 
 #. Default: "Installed"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed"
 msgstr "Asennettu"
 
+#. Default: "Installed add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Installed add-ons"
+msgstr "Asennetut lisäosat"
+
 #. Default: "Installed version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installed version"
 msgstr "Asennettu versio"
 
 #. Default: "Installing a third party add-on"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Installing a third party add-on"
 msgstr "Asennetaan kolmannen osapuolen laajennos"
 
@@ -2138,7 +2148,7 @@ msgid "Latest available configuration"
 msgstr "Viimeisin saatavilla oleva konfiguraatio"
 
 #. Default: "Latest version"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Latest version"
 msgstr "Viimeisin versio"
 
@@ -2541,15 +2551,25 @@ msgstr "Käännöksiä ei valittu"
 msgid "No Transactions Selected To Do Undo"
 msgstr "Käännöksiä ei valittu peruutusta varten"
 
+#. Default: "No upgrades in this corner. You are up to date. High fives."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No Upgrades available"
+msgstr "Täällä ei ole päivityksiä. Olet ajan tasalla. Ylävitoset!"
+
 #. Default: "No Video selected"
 #: components/manage/Blocks/Video/VideoSidebar
 msgid "No Video selected"
 msgstr "Videota ei valittu"
 
-#. Default: "No addons found"
+#. Default: "No add-ons available for installation."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No add-on available"
+msgstr "Ei asennettavia lisäosia saatavilla."
+
+#. Default: "No add-ons found"
 #: components/manage/Controlpanels/VersionOverview
 msgid "No addons found"
-msgstr "Lisäosia ei löytynyt"
+msgstr ""
 
 #. Default: "No broken relations found."
 #: components/manage/Controlpanels/Relations/RelationsMatrix
@@ -2580,6 +2600,11 @@ msgstr "Kuva puuttuu"
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
 msgstr ""
+
+#. Default: "No installed add-ons."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "No installed add-ons available"
+msgstr "Ei asennettuja lisäosia."
 
 #. Default: "No items found in this container."
 #: components/manage/Blocks/Listing/ListingBody
@@ -2638,8 +2663,8 @@ msgstr "Ei tuloksia"
 msgid "No selection"
 msgstr "Ei valintaa"
 
-#. Default: "This addon does not provide an uninstall profile."
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "This add-on does not provide an uninstall profile."
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "No uninstall profile"
 msgstr "Ei sisällä asennuksen poistamista"
 
@@ -2934,6 +2959,21 @@ msgstr "Asetukset"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
 msgstr "Tiedostojen latausalue. Paina Enter tai napsauta avataksesi tiedostoselain"
+
+#. Default: "Press Enter to install this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to install this add-on"
+msgstr "Asenna tämä lisäosa painamalla Enter."
+
+#. Default: "Press Enter to uninstall this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to uninstall this add-on"
+msgstr "Poista tämä lisäosa painamalla Enter."
+
+#. Default: "Press Enter to update this add-on."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Press Enter to update this add-on"
+msgstr "Päivitä tämä lisäosa painamalla Enter."
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3792,7 +3832,7 @@ msgstr ""
 #: components/manage/Actions/Actions
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 #: components/manage/Controlpanels/Aliases
 #: components/manage/Controlpanels/ContentTypes
 #: components/manage/Controlpanels/ContentTypeSchema
@@ -4050,6 +4090,11 @@ msgstr ""
 msgid "Third"
 msgstr "Kolmas"
 
+#. Default: "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "This add-on was updated. Current profile installed version is {installedVersion}. New available profile version is {newVersion}."
+msgstr "Tämä lisäosa päivitettiin. Nykyinen asennettu profiiliversio on {installedVersion}. Uusi saatavilla oleva profiiliversio on {newVersion}."
+
 #. Default: "This field is required."
 #: components/manage/Widgets/FileWidget
 msgid "This field is required."
@@ -4294,7 +4339,7 @@ msgid "Unified"
 msgstr "Yhdistetty"
 
 #. Default: "Uninstall"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Uninstall"
 msgstr "Poista asennus"
 
@@ -4321,7 +4366,7 @@ msgid "Unsorted"
 msgstr "Lajittelu poistettu"
 
 #. Default: "Update"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update"
 msgstr "Päivitä"
 
@@ -4330,20 +4375,20 @@ msgstr "Päivitä"
 msgid "Update User"
 msgstr ""
 
-#. Default: "Update installed addons"
-#: components/manage/Controlpanels/AddonsControlpanel
-msgid "Update installed addons"
-msgstr "Päivitä asennettuja laajennoksia"
-
-#. Default: "Update installed addons:"
-#: components/manage/Controlpanels/AddonsControlpanel
+#. Default: "Update installed add-ons:"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Update installed addons:"
-msgstr "Päivitä asennetut lisäosat:"
+msgstr ""
 
 #. Default: "Updates available"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
 msgid "Updates available"
 msgstr "Päivityksiä saatavilla"
+
+#. Default: "Upgradable add-ons"
+#: components/manage/Controlpanels/Addons/AddonsControlpanel
+msgid "Upgradable add-ons"
+msgstr "Päivitettävät lisäosat"
 
 #. Default: "Upgrade"
 #: components/manage/Controlpanels/UpgradeControlPanel
@@ -4389,6 +4434,11 @@ msgstr "Lähetä palvelimelle tiedostoja"
 #: components/manage/Widgets/ImageWidget
 msgid "Uploading image"
 msgstr "Kuvaa ladataan"
+
+#. Default: "Use the arrows to move between items."
+#: components/manage/Controlpanels/Addons/AddonItem
+msgid "Use the arrows to move between items"
+msgstr "Siirry kohteiden välillä nuolinäppäimillä."
 
 #. Default: "Use the form below to define the new content rule"
 #: components/manage/Controlpanels/Rules/AddRule
@@ -5444,9 +5494,9 @@ msgid "toggleFacet"
 msgstr ""
 
 #. Default: "Update from version {origin} to {destination}"
-#: components/manage/Controlpanels/AddonsControlpanel
+#: components/manage/Controlpanels/Addons/AddonItem
 msgid "upgradeVersions"
-msgstr ""
+msgstr "Päivitä versiosta {origin} versioon {destination}"
 
 #. Default: "Upload an image from your computer"
 #: components/manage/Widgets/ImageWidget

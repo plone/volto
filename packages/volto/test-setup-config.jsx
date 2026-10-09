@@ -151,10 +151,11 @@ config.set('widgets', {
 
 config.set('components', {
   PreviewImage: {
+    // eslint-disable-next-line no-restricted-syntax
     component: (props) => <img alt="PreviewImage component mock" {...props} />,
   },
   Image: {
-    // eslint-disable-next-line jsx-a11y/img-redundant-alt
+    // eslint-disable-next-line jsx-a11y/img-redundant-alt, no-restricted-syntax
     component: (props) => <img alt="Image component mock" {...props} />,
   },
 });
