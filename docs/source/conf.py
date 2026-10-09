@@ -4,19 +4,16 @@
 
 # -- Path setup --------------------------------------------------------------
 
-from datetime import datetime
-
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath("."))
-
-import os
 import json
+import os
+import sys
+from datetime import datetime, timezone
 
+sys.path.insert(0, os.path.abspath("."))
 
 # -- Project information -----------------------------------------------------
 
@@ -24,7 +21,7 @@ project = "Volto Documentation"
 copyright = "Volto Foundation"
 author = "Plone Community"
 trademark_name = "Plone"
-now = datetime.now()
+now = datetime.now(timezone.utc)
 year = str(now.year)
 
 # The version info for the project you're documenting, acts as replacement for
@@ -56,6 +53,7 @@ else:
 # They can be extensions coming with Sphinx (named "sphinx.ext.*")
 # or your custom ones.
 extensions = [
+    "latest_gh_version_substitution",
     "myst_parser",
     "sphinx.ext.ifconfig",
     "sphinx.ext.intersphinx",
@@ -152,8 +150,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css"
-            }
+                "class": "nav-link custom-fancy-css",
+            },
         },
         {
             "name": "Mastodon",
@@ -163,8 +161,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css"
-            }
+                "class": "nav-link custom-fancy-css",
+            },
         },
         {
             "name": "YouTube",
@@ -174,8 +172,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css"
-            }
+                "class": "nav-link custom-fancy-css",
+            },
         },
         {
             "name": "X (formerly Twitter)",
@@ -185,8 +183,8 @@ html_theme_options = {
             "attributes": {
                 "target": "_blank",
                 "rel": "noopener me",
-                "class": "nav-link custom-fancy-css"
-            }
+                "class": "nav-link custom-fancy-css",
+            },
         },
     ],
     "logo": {
@@ -208,7 +206,7 @@ html_use_opensearch = "https://6.docs.plone.org"
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "%(project)s v%(release)s" % {"project": project, "release": release}
+html_title = f"{project} v{release}"
 
 html_css_files = ["custom.css", ("print.css", {"media": "print"})]
 
@@ -229,8 +227,8 @@ html_static_path = [
 # For more information see:
 # https://myst-parser.readthedocs.io/en/latest/syntax/optional.html
 myst_enable_extensions = [
-    "attrs_block", # Support parsing of block attributes.
-    "attrs_inline", # Support parsing of inline attributes.
+    "attrs_block",  # Support parsing of block attributes.
+    "attrs_inline",  # Support parsing of inline attributes.
     "colon_fence",  # You can also use ::: delimiters to denote code fences, instead of ```.
     "deflist",  # Support definition lists. https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#definition-lists
     "html_image",  # For inline images. See https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#html-images
