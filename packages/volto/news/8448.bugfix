@@ -1,0 +1,1 @@
+Fixed server-side rendering picking an interface language that is not in `config.settings.supportedLanguages`, for example English on a monolingual Portuguese site visited with an English browser. The page now always renders in a supported language, and switches to the content language when it differs from the language picked from the browser. @ericof
