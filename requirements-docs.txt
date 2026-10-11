@@ -10,3 +10,4 @@ sphinxcontrib-video
 sphinxcontrib-youtube
 sphinxext-opengraph
 vale
+sphinxcontrib-httpexample
