@@ -1,0 +1,1 @@
+Fixes a bug where `[local]` remained literal in class names generated for `.module.less` files in production builds due to a custom `getLocalIdent`; the token is now replaced before calling `interpolateName`.
