@@ -93,3 +93,24 @@ test('same day, not whole day, not open end', () => {
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });
+
+test('returns null for invalid start date', () => {
+  const component = renderer.create(
+    <Provider store={store}>
+      <When start="not-a-date" end="2019-06-24T15:20:00+00:00" />
+    </Provider>,
+  );
+  expect(component.toJSON()).toBeNull();
+});
+
+test('uses current time when end is undefined', () => {
+  vi.useFakeTimers({ now: new Date('2019-06-23T15:20:00+00:00') });
+  const component = renderer.create(
+    <Provider store={store}>
+      <When start="2019-06-23T11:55:00+00:00" />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+  vi.useRealTimers();
+});

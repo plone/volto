@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { createPortal } from 'react-dom';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { compose } from 'redux';
+
 import { Button, Comment, Container, Icon } from 'semantic-ui-react';
 
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import {
+  formatDate,
+  formatRelativeDate,
+} from '@plone/volto/helpers/Utils/Date';
 import {
   addComment,
   deleteComment,
@@ -200,8 +203,6 @@ const Comments = (props) => {
     return allCommentsWithCildren;
   };
 
-  const moment = props.moment.default;
-
   const allCommentsWithCildren = useMemo(
     () => addRepliesAsChildrenToComments(items),
     [items],
@@ -223,8 +224,17 @@ const Comments = (props) => {
         <Comment.Metadata>
           <span>
             {' '}
-            <span title={moment(comment.creation_date).format('LLLL')}>
-              {moment(comment.creation_date).fromNow()}
+            <span
+              title={formatDate({
+                date: comment.creation_date,
+                format: 'LLLL',
+                locale: intl.locale,
+              })}
+            >
+              {formatRelativeDate({
+                date: comment.creation_date,
+                locale: intl.locale,
+              })}
             </span>
           </span>
         </Comment.Metadata>
@@ -375,4 +385,4 @@ Comments.propTypes = {
   pathname: PropTypes.string.isRequired,
 };
 
-export default compose(injectLazyLibs(['moment']))(Comments);
+export default Comments;

@@ -81,9 +81,9 @@ exports[`Comments > renders a comments component 1`] = `
           <span>
              
             <span
-              title="Sunday, April 23, 2017 3:38 AM"
+              title="Sunday, April 23, 2017 at 3:38 AM"
             >
-              a few seconds ago
+              4 seconds ago
             </span>
           </span>
         </div>
