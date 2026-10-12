@@ -1,0 +1,1 @@
+Fixed an issue in the `ObjectBrowserWidget` where external validation errors (e.g., required field errors) did not trigger visual alerts in the form fields. @alexandreIFB
