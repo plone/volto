@@ -3521,6 +3521,7 @@ msgstr "Specifica la tua password"
 
 #. Default: "Settings"
 #: components/manage/Sidebar/Sidebar
+#: components/theme/Search/Search
 msgid "Settings"
 msgstr "Impostazioni"
 
