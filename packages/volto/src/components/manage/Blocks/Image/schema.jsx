@@ -60,6 +60,8 @@ export function ImageSchema({ formData, intl }) {
     properties: {
       alt: {
         title: intl.formatMessage(messages.AltText),
+        helpUrl:
+          'https://6.docs.plone.org/volto/user-manual/blocks.html#image-block',
         description: (
           <>
             <a
@@ -78,11 +80,15 @@ export function ImageSchema({ formData, intl }) {
         title: intl.formatMessage(messages.Align),
         widget: 'align',
         default: 'center',
+        helpUrl:
+          'https://6.docs.plone.org/volto/user-manual/blocks.html#image-block',
       },
       size: {
         title: intl.formatMessage(messages.size),
         widget: 'image_size',
         default: 'l',
+        helpUrl:
+          'https://6.docs.plone.org/volto/user-manual/blocks.html#image-block',
       },
       href: {
         title: intl.formatMessage(messages.LinkTo),
@@ -90,10 +96,14 @@ export function ImageSchema({ formData, intl }) {
         mode: 'link',
         selectedItemAttrs: ['Title', 'Description', 'hasPreviewImage'],
         allowExternals: true,
+        helpUrl:
+          'https://6.docs.plone.org/volto/user-manual/blocks.html#image-block',
       },
       openLinkInNewTab: {
         title: intl.formatMessage(messages.openLinkInNewTab),
         type: 'boolean',
+        helpUrl:
+          'https://6.docs.plone.org/volto/user-manual/blocks.html#image-block',
       },
     },
     required: [],
