@@ -2,7 +2,7 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { save, load } from 'redux-localstorage-simple';
+import { load } from 'redux-localstorage-simple';
 
 import config from '@plone/volto/registry';
 import reducers from '@root/reducers';
@@ -15,11 +15,9 @@ import {
   loadProtector,
   userSessionReset,
 } from '@plone/volto/middleware';
+import persistOnChange from '@plone/volto/middleware/persistOnChange';
 
 const configureStore = (initialState, history, apiHelper) => {
-  // The persisted reducers are only relevant for authenticated users.
-  const isAuthenticated = !!initialState?.userSession?.token;
-  const persistClientState = __CLIENT__ && isAuthenticated;
   let stack = [
     blacklistRoutes,
     protectLoadStart,
@@ -28,9 +26,9 @@ const configureStore = (initialState, history, apiHelper) => {
     ...(apiHelper ? [api(apiHelper)] : []),
     userSessionReset,
     protectLoadEnd,
-    ...(persistClientState
+    ...(__CLIENT__
       ? [
-          save({
+          persistOnChange({
             states: config.settings.persistentReducers,
             debounce: 500,
             disableWarnings: true,
@@ -52,7 +50,7 @@ const configureStore = (initialState, history, apiHelper) => {
     }),
     {
       ...initialState,
-      ...(persistClientState
+      ...(__CLIENT__
         ? load({
             states: config.settings.persistentReducers,
             disableWarnings: true,
