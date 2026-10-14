@@ -1,0 +1,1 @@
+Fixed adding a field with the default "Text" type in the content type schema editor, which failed on save with "Missing/Invalid parameter factory". @sneridagh
