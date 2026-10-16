@@ -297,6 +297,7 @@ export default function Controlpanels({ location }) {
           <Toolbar
             pathname={pathname}
             hideDefaultViewButtons
+            showPersonalTools
             inner={
               <Link to="/" className="item">
                 <Icon
