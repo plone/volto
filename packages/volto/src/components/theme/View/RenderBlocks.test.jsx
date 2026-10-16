@@ -6,6 +6,16 @@ import { render } from '@testing-library/react';
 
 import config from '@plone/volto/registry';
 
+beforeEach(() => {
+  config.settings.lcpEligibleBlocks = {
+    image: (block) => !!block?.url,
+    listing: (block) => block?.variation === 'imageGallery',
+    leadimage: (block) => !!block.url,
+    video: (block) => !!block.url,
+    teaser: (block) => Array.isArray(block.href) && block.href.length > 0,
+  };
+});
+
 const mockStore = configureStore();
 
 test('Allows override of blocksConfig', () => {

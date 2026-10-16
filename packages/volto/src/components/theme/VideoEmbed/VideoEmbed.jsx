@@ -12,8 +12,10 @@ const VideoEmbed = (props) => {
     brandedUI = false,
     className,
     color = '#444444',
+    fetchpriority,
     hd = true,
     id,
+    loading = 'lazy',
     placeholder,
     source,
     title,
@@ -80,7 +82,13 @@ const VideoEmbed = (props) => {
       ) : (
         <>
           {placeholder ? (
-            <Image className="placeholder" src={placeholder} alt="" />
+            <Image
+              className="placeholder"
+              src={placeholder}
+              alt=""
+              loading={loading}
+              fetchpriority={fetchpriority}
+            />
           ) : (
             <div className="fallback-placeholder"></div>
           )}
