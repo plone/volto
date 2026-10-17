@@ -31,3 +31,17 @@ input:focus-visible {
   border: 2px solid @linkColor;
   outline: 3px solid @linkColor;
 }
+
+// React-select (SelectWidget, ArrayWidget, etc.) focus styles
+// Keyboard focus lands on a 2px-wide hidden input inside
+// `.react-select__control`. Painting the universal ring on that input alone
+// produces a tiny sliver, so move the visible indicator to the control and
+// suppress the input's own ring (the control ring is the indicator).
+.react-select__control:has(input:focus-visible) {
+  .universal-focus-style();
+
+  input:focus-visible {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
