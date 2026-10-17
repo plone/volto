@@ -1,4 +1,4 @@
-import { getAnchor, getAnchorText, serializeNodeToInlineText } from './toc';
+import { getAnchor, getAnchorText, slugAnchor } from './toc';
 
 const plainHeading = {
   type: 'h2',
@@ -36,30 +36,21 @@ const linkHeading = {
   ],
 };
 
-describe('serializeNodeToInlineText', () => {
-  it('returns the text of a node without a type', () => {
-    expect(serializeNodeToInlineText({ text: 'Hello' })).toBe('Hello');
+describe('getAnchorText', () => {
+  it('returns the text of a leaf', () => {
+    expect(getAnchorText({ text: 'Hello' })).toBe('Hello');
   });
 
   it('does not add whitespace between the leafs of a node', () => {
-    expect(serializeNodeToInlineText(partiallyItalicWordHeading)).toBe(
+    expect(getAnchorText(partiallyItalicWordHeading)).toBe(
       'Subtitle 3: not okay',
     );
   });
 
   it('includes the text of inline elements', () => {
-    expect(serializeNodeToInlineText(linkHeading)).toBe(
-      'Subtitle 4: Everything is okay',
-    );
+    expect(getAnchorText(linkHeading)).toBe('Subtitle 4: Everything is okay');
   });
 
-  it('returns an empty string for an empty node', () => {
-    expect(serializeNodeToInlineText(undefined)).toBe('');
-    expect(serializeNodeToInlineText({ type: 'h2' })).toBe('');
-  });
-});
-
-describe('getAnchorText', () => {
   it('collapses the inner whitespace and trims the outer one', () => {
     expect(
       getAnchorText({
@@ -67,6 +58,26 @@ describe('getAnchorText', () => {
         children: [{ text: '  Some  ' }, { text: '' }, { text: 'heading ' }],
       }),
     ).toBe('Some heading');
+  });
+
+  it('returns an empty string when there is no node', () => {
+    expect(getAnchorText(undefined)).toBe('');
+  });
+});
+
+describe('slugAnchor', () => {
+  it('slugs the given text', () => {
+    expect(slugAnchor('Subtitle 1: everything is okay')).toBe(
+      'subtitle-1-everything-is-okay',
+    );
+  });
+
+  it('normalizes the diacritics of the given text', () => {
+    expect(slugAnchor('Título 2: ação')).toBe('titulo-2-acao');
+  });
+
+  it('builds the same anchor as getAnchor does for a node', () => {
+    expect(slugAnchor(getAnchorText(linkHeading))).toBe(getAnchor(linkHeading));
   });
 });
 

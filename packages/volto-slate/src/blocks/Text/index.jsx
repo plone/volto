@@ -20,7 +20,11 @@ import {
   cancelEsc,
 } from './keyboard';
 import { splitAtSeam } from './keyboard/splitAtSeam';
-import { getAnchor, getAnchorText } from '@plone/volto-slate/utils/toc';
+import {
+  getAnchor,
+  getAnchorText,
+  slugAnchor,
+} from '@plone/volto-slate/utils/toc';
 import { withDeleteSelectionOnEnter } from '@plone/volto-slate/editor/extensions';
 import {
   breakList,
@@ -129,19 +133,21 @@ export default function applyConfig(config) {
     },
     tocEntry: (block = {}) => {
       const { value, override_toc, entry_text, level, plaintext } = block;
-      const type = value?.[0]?.type;
+      const node = value?.[0];
+      const type = node?.type;
+
       // The anchor is computed from the current value, and not from the stored
       // plaintext, so that it always matches the `id` rendered by the view.
-      const anchor = getAnchor(value?.[0]);
-      return override_toc && level
-        ? [parseInt(level.slice(1)), entry_text, anchor]
-        : config.settings.slate.topLevelTargetElements.includes(type)
-          ? [
-              parseInt(type.slice(1)),
-              getAnchorText(value?.[0]) || plaintext,
-              anchor,
-            ]
-          : null;
+      // This runs for every block of the page whenever a table of contents is
+      // rendered, so the value is only walked by the branches that need it.
+      if (override_toc && level) {
+        return [parseInt(level.slice(1)), entry_text, getAnchor(node)];
+      }
+      if (config.settings.slate.topLevelTargetElements.includes(type)) {
+        const text = getAnchorText(node);
+        return [parseInt(type.slice(1)), text || plaintext, slugAnchor(text)];
+      }
+      return null;
     },
   };
 
