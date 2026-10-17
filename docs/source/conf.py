@@ -11,7 +11,7 @@
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 sys.path.insert(0, os.path.abspath("."))
 
@@ -21,7 +21,7 @@ project = "Volto Documentation"
 copyright = "Volto Foundation"
 author = "Plone Community"
 trademark_name = "Plone"
-now = datetime.now(timezone.utc)
+now = datetime.now(UTC)
 year = str(now.year)
 
 # The version info for the project you're documenting, acts as replacement for
@@ -53,7 +53,7 @@ else:
 # They can be extensions coming with Sphinx (named "sphinx.ext.*")
 # or your custom ones.
 extensions = [
-    "latest_gh_version_substitution",
+    "collective.sphinxextexternalpackageversion",
     "myst_parser",
     "sphinx.ext.ifconfig",
     "sphinx.ext.intersphinx",
