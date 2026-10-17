@@ -12,27 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # node setup
+      # node and pnpm setup
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v5
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          cache: pnpm
 
       - run: pnpm i
 
@@ -46,27 +34,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # node setup
+      # node and pnpm setup
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v5
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          cache: pnpm
 
       - run: pnpm i
 
@@ -83,27 +59,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # node setup
+      # node and pnpm setup
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v5
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          cache: pnpm
 
       - run: pnpm i
 
@@ -120,27 +84,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # node setup
+      # node and pnpm setup
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-
-      - name: Enable corepack
-        run: npm i -g corepack@latest && corepack enable
-
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v5
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          cache: pnpm
 
       - run: pnpm i
 

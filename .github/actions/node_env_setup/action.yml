@@ -5,27 +5,15 @@ runs:
   steps:
     - uses: actions/checkout@v5
 
+    # pnpm/action-setup runs first so setup-node can resolve the pnpm store
+    - name: Set up pnpm
+      uses: pnpm/action-setup@v6
+
     - name: Use Node.js ${{ inputs.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
-
-    - name: Enable corepack
-      shell: bash
-      run: npm i -g corepack@latest && corepack enable
-
-    - name: Get pnpm store directory
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-    - uses: actions/cache@v5
-      name: Setup pnpm cache
-      with:
-        path: ${{ env.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
+        cache: pnpm
 
     - name: Cache Cypress Binary
       id: cache-cypress-binary
