@@ -41,12 +41,13 @@ jobs:
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 
@@ -68,12 +69,13 @@ jobs:
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 
@@ -92,20 +94,18 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Set up Node.js environment
-        uses: ./.github/actions/node_env_setup
-        with:
-          node-version: ${{ matrix.node-version }}
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
-      - name: Use Node.js ${{ env.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.node-version }}
-          cache: pnpm
+          node-version: ${{ matrix.node-version }}
 
       - run: pnpm i
+
       - name: Run unit tests @plone/razzle
         run: pnpm --filter @plone/razzle test
