@@ -1,0 +1,1 @@
+Raise the `react-aria-components` minimum version to the tested one, and require a minimum release age of 3 days for dependencies in the monorepo. @sneridagh
