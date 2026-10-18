@@ -1,0 +1,4 @@
+id,username,fullname,email,roles,groups,password
+testuserone,testuserone,Test User One,info@example.com,Member,AuthenticatedUsers,12345678
+testuserthree,testuserthree,Test User Three,info@example.com,Member,AuthenticatedUsers,12345678
+testusertwo,testusertwo,Test User Two,info@example.com,Member,AuthenticatedUsers,12345678
