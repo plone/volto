@@ -182,3 +182,9 @@ export const DatabaseInformation = loadable(
   () =>
     import('@plone/volto/components/manage/Controlpanels/DatabaseInformation'),
 );
+
+// MAIL CONTROLPANEL
+
+export const MailControlpanel = loadable(
+  () => import('@plone/volto/components/manage/Controlpanels/Mail'),
+);

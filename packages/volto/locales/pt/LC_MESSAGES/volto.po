@@ -475,6 +475,7 @@ msgstr "Regras de conteúdo disponíveis:"
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/ModerateComments
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/ConfigureRule
@@ -594,6 +595,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Delete/Delete
@@ -659,6 +661,7 @@ msgstr "Alterações guardadas"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Changes saved."
 msgstr "Alterações guardadas."
 
@@ -1939,6 +1942,7 @@ msgstr "Inclua esta ocorrência"
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 msgid "Info"
 msgstr "Informação"
 
@@ -2292,6 +2296,12 @@ msgstr "Sair"
 #: components/manage/Toolbar/More
 msgid "Made by {creator} on {date}. This is not a working copy anymore, but the main content."
 msgstr "Criado por {creator} em {date}. Esta não é mais uma cópia de trabalho, mas sim o conteúdo final."
+
+#. Default: "Mail"
+#: components/manage/Controlpanels/Controlpanels
+#: components/manage/Controlpanels/Mail
+msgid "Mail"
+msgstr ""
 
 #. Default: "Reduce cell padding"
 #: config/Blocks
@@ -3291,6 +3301,7 @@ msgstr "As regras são realizadas quando ocorre um evento de disparo. As ações
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypeSchema
 #: components/manage/Controlpanels/Controlpanel
+#: components/manage/Controlpanels/Mail
 #: components/manage/Controlpanels/Rules/AddRule
 #: components/manage/Controlpanels/Rules/EditRule
 #: components/manage/Edit/Edit
