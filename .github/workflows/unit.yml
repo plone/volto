@@ -41,12 +41,13 @@ jobs:
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 
@@ -65,12 +66,13 @@ jobs:
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 
@@ -83,13 +85,15 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 

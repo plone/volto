@@ -15,12 +15,13 @@ jobs:
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 
@@ -37,12 +38,13 @@ jobs:
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 
@@ -62,12 +64,13 @@ jobs:
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 
@@ -87,12 +90,13 @@ jobs:
       # node and pnpm setup
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
+        with:
+          cache: true
 
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: pnpm
 
       - run: pnpm i
 
