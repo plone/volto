@@ -332,7 +332,6 @@ msgstr "S'han carregat els àlies."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
@@ -1560,11 +1559,6 @@ msgstr "Data de caducitat"
 msgid "Expired"
 msgstr "Caducat"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "URL externa"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1907,7 +1901,6 @@ msgstr "Si esteu segur que teniu l'adreça web correcta però trobeu un error, p
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "imatge"
 
@@ -2202,7 +2195,6 @@ msgstr "Títol de l'enllaç"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
@@ -2576,11 +2568,6 @@ msgstr "No s'ha seleccionat cap imatge"
 msgid "No image set in Lead Image content field"
 msgstr "No s'ha establert cap imatge al camp de contingut de la imatge principal"
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "No s'ha establert cap imatge al camp de contingut de la imatge"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2729,7 +2716,6 @@ msgstr "Obre el navegador d'URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
@@ -2755,11 +2741,6 @@ msgstr "Ordre"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "Ordenat"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "Origen"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
