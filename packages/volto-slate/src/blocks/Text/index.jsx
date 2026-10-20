@@ -2,6 +2,7 @@ import React from 'react';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
+import docs from './docs';
 import cloneDeep from 'lodash/cloneDeep';
 
 import {
@@ -135,6 +136,7 @@ export default function applyConfig(config) {
           ? [parseInt(type.slice(1)), plaintext]
           : null;
     },
+    docs,
   };
 
   config.blocks.blocksConfig.slate = slateBlockConfig;
