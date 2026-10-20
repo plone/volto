@@ -81,17 +81,6 @@ import TeaserViewBlock from '@plone/volto/components/manage/Blocks/Teaser/View';
 import TeaserEditBlock from '@plone/volto/components/manage/Blocks/Teaser/Edit';
 import TeaserBlockDefaultBody from '@plone/volto/components/manage/Blocks/Teaser/DefaultBody';
 import { TeaserSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
-import titleDocs from '@plone/volto/components/manage/Blocks/Title/docs';
-import descriptionDocs from '@plone/volto/components/manage/Blocks/Description/docs';
-import imageDocs from '@plone/volto/components/manage/Blocks/Image/docs';
-import listingDocs from '@plone/volto/components/manage/Blocks/Listing/docs';
-import videoDocs from '@plone/volto/components/manage/Blocks/Video/docs';
-import tocDocs from '@plone/volto/components/manage/Blocks/ToC/docs';
-import mapsDocs from '@plone/volto/components/manage/Blocks/Maps/docs';
-import htmlDocs from '@plone/volto/components/manage/Blocks/HTML/docs';
-import searchDocs from '@plone/volto/components/manage/Blocks/Search/docs';
-import gridDocs from '@plone/volto/components/manage/Blocks/Grid/docs';
-import teaserDocs from '@plone/volto/components/manage/Blocks/Teaser/docs';
 import { TeaserBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Teaser/adapter';
 
 defineMessages({
@@ -276,7 +265,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    docs: titleDocs,
   },
   description: {
     id: 'description',
@@ -290,7 +278,6 @@ const blocksConfig = {
     mostUsed: false,
     blockHasOwnFocusManagement: true,
     sidebarTab: 0,
-    docs: descriptionDocs,
   },
   image: {
     id: 'image',
@@ -304,7 +291,6 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     getSizes: getImageBlockSizes,
-    docs: imageDocs,
   },
   leadimage: {
     id: 'leadimage',
@@ -353,7 +339,6 @@ const blocksConfig = {
       },
     ],
     getAsyncData: getListingBlockAsyncData,
-    docs: listingDocs,
   },
   video: {
     id: 'video',
@@ -368,7 +353,6 @@ const blocksConfig = {
     mostUsed: true,
     sidebarTab: 1,
     allowedPeertubeInstances: [],
-    docs: videoDocs,
   },
   toc: {
     id: 'toc',
@@ -382,7 +366,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    docs: tocDocs,
   },
   maps: {
     id: 'maps',
@@ -395,7 +378,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
-    docs: mapsDocs,
   },
   html: {
     id: 'html',
@@ -408,7 +390,6 @@ const blocksConfig = {
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,
-    docs: htmlDocs,
   },
   search: {
     id: 'search',
@@ -441,7 +422,6 @@ const blocksConfig = {
         isDefault: false,
       },
     ],
-    docs: searchDocs,
     extensions: {
       facetWidgets: {
         rewriteOptions: (name, choices) => {
@@ -515,7 +495,6 @@ const blocksConfig = {
     templates: GridTemplates,
     maxLength: 4,
     allowedBlocks: ['image', 'listing', 'slate', 'teaser'],
-    docs: gridDocs,
   },
   teaser: {
     id: 'teaser',
@@ -538,7 +517,6 @@ const blocksConfig = {
         template: TeaserBlockDefaultBody,
       },
     ],
-    docs: teaserDocs,
   },
 };
 

@@ -26,34 +26,38 @@ Request it from the frontend URL, for example `http://localhost:3000/@blocks-sch
 
 ## Document a block
 
-Add a `docs` key to the block configuration.
-Its value is Markdown, either a string or a function that returns one.
+Write the documentation of a block in a Markdown file next to it, with a name that ends in `.block.md`, such as `docs.block.md`.
+Its frontmatter names the block by its ID.
 
-```js
-config.blocks.blocksConfig.mainslider = {
-  id: 'mainslider',
-  title: 'Main slider',
-  blockSchema: MainSliderSchema,
-  docs: `Shows a slider with the pages chosen by an editor.
+````markdown
+---
+block: mainslider
+---
+
+Shows a slider with the pages chosen by an editor.
 
 Each slide links to a content item and shows its lead image.
 
 ### Fields
 
-- \`slides\`: a list of \`{ "href": [{ "@id": path }] }\` objects.
+- `slides`: a list of `{ "href": [{ "@id": path }] }` objects.
 
 ### Example
 
-\`\`\`json
+```json
 {
   "@type": "mainslider",
   "slides": [{ "href": [{ "@id": "/news/annual-report" }] }]
 }
-\`\`\`
-`,
-  // ...
-};
 ```
+````
+
+There is nothing to register.
+When Volto builds, it collects the `*.block.md` files of core Volto and of every add-on, and only the `@blocks-schema` endpoint uses them.
+They are not part of the block configuration, and they are not included in the code sent to the browser.
+
+If two files document the same block, the one from the add-on that loads later wins.
+This lets an add-on or a project replace the documentation of a core block.
 
 Follow these conventions, so the documentation reads well in every format.
 
@@ -67,23 +71,53 @@ Follow these conventions, so the documentation reads well in every format.
 -   Don't repeat what the schema already says.
     The endpoint returns the schema next to the documentation.
 -   Don't write values that depend on the configuration or on the site into the documentation, such as the available variations or the catalog indexes of a query.
-    Refer to where they come from instead, such as the block's variations or the `@querystring` endpoint of the Plone REST API.
+    Use a placeholder, or refer to where they come from, such as the `@querystring` endpoint of the Plone REST API.
 
-For larger blocks, keep the documentation in a `docs.js` file next to the block, and import it into the configuration.
-The core blocks in Volto follow this pattern.
+### Variations
 
-When the documentation depends on the configuration, use a function.
-It receives the block configuration and an `intl` object.
+To document a variation, add another file with the `variation` in its frontmatter.
 
-```js
-docs: ({ blockConfig }) =>
-  `Places blocks side by side in columns.
+```markdown
+---
+block: listing
+variation: imageGallery
+---
 
-The allowed blocks are ${blockConfig.allowedBlocks.join(', ')}.`,
+Shows the images of the items as a gallery.
 ```
 
-A variation can have its own `docs` too, with the same format.
-The endpoint shows them with the variation.
+The endpoint shows it with the variation.
+
+### Placeholders
+
+`{{key}}` in the documentation is replaced with the value of that key in the block configuration.
+A list becomes a comma-separated list of code spans, and a string or a number is inserted as it is.
+For example, the grid block's documentation says:
+
+```markdown
+It holds up to {{maxLength}} blocks.
+The allowed blocks are {{allowedBlocks}}.
+```
+
+Only top-level keys of the block configuration are available.
+If a key has no such value, the placeholder is removed and the server logs a warning.
+To write `{{` literally, escape it as `\{{`.
+
+### Tailor the documentation
+
+For special cases, a block's configuration can have a `docs` function.
+It receives the block configuration, an `intl` object, and the `markdown` of the block's file with its placeholders filled in.
+It returns the documentation to use.
+
+```js
+config.blocks.blocksConfig.mainslider = {
+  // ...
+  docs: ({ blockConfig, markdown }) =>
+    `${markdown}\n\nThis site shows ${blockConfig.slidesToShow} slides at a time.`,
+};
+```
+
+If it throws or doesn't return a string, the endpoint uses the file's documentation.
 
 ```{note}
 The documentation is in English and is not translated.

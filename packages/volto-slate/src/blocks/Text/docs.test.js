@@ -1,5 +1,5 @@
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
-import docs from './docs';
+import docs from './docs.block.md?raw';
 
 // The editor joins text nodes with spaces, so it adds a space before
 // punctuation that follows a link or formatting. That's not meaningful here.

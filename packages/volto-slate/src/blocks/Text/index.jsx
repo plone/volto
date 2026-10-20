@@ -2,7 +2,6 @@ import React from 'react';
 import TextBlockView from './TextBlockView';
 import TextBlockEdit from './TextBlockEdit';
 import TextBlockSchema from './TextBlockSchema';
-import docs from './docs';
 import cloneDeep from 'lodash/cloneDeep';
 
 import {
@@ -136,7 +135,6 @@ export default function applyConfig(config) {
           ? [parseInt(type.slice(1)), plaintext]
           : null;
     },
-    docs,
   };
 
   config.blocks.blocksConfig.slate = slateBlockConfig;
@@ -146,7 +144,6 @@ export default function applyConfig(config) {
     title: 'Detached Slate',
     edit: (props) => <TextBlockEdit {...props} detached />,
     restricted: true,
-    docs: 'A text block that is not split into new blocks when you press Enter, for use inside other blocks. Its data has the same format as the text block (`slate`).',
   };
 
   if (config.blocks.blocksConfig.gridBlock) {

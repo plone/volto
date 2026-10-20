@@ -174,8 +174,8 @@ Although it's not required, defining the schema enables the block to have its in
 
 ### `docs`
 
-`docs` documents the block in Markdown, as a string or as a function that returns one.
-The `@blocks-schema` endpoint returns it with the block's schema, for agents and for reference documentation.
+A block's documentation is a `*.block.md` file next to it, which the `@blocks-schema` endpoint returns with the block's schema.
+`docs` is an optional function that tailors that documentation for special cases.
 See {ref}`blocks-schema-documenting-a-block`.
 
 ### `disableEnter`

@@ -1,6 +1,9 @@
 import express from 'express';
 import { createIntl, createIntlCache } from 'react-intl';
 import jwtDecode from 'jwt-decode';
+// The *.block.md files of core and the add-ons, collected at build time.
+// eslint-disable-next-line import/no-unresolved
+import blocksDocs from 'load-blocks-docs';
 
 import config from '@plone/volto/registry';
 import Api from '@plone/volto/helpers/Api/Api';
@@ -89,20 +92,54 @@ function withSchema(target, blockConfig, intl, variation) {
   return target;
 }
 
-// `docs` is Markdown, either a string or a function of the block config.
-// Anything else, or a function that throws, counts as no docs.
-function resolveDocs(docs, blockConfig, intl, name = blockConfig.id) {
-  try {
-    const resolved =
-      typeof docs === 'function' ? docs({ blockConfig, intl }) : docs;
-    return typeof resolved === 'string' ? resolved.trim() : '';
-  } catch (e) {
+const FRONTMATTER = /^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/;
+const PLACEHOLDER = /(\\?)\{\{\s*([A-Za-z_$][\w$]*)\s*\}\}/g;
+
+// `{{key}}` in a block's docs is replaced with that key of its configuration,
+// so the docs can say what the configuration allows. `\{{key}}` is literal.
+export function fillPlaceholders(markdown, blockConfig, name = blockConfig.id) {
+  return markdown.replace(PLACEHOLDER, (match, escaped, key) => {
+    if (escaped) return match.slice(1);
+    const value = blockConfig[key];
+    if (Array.isArray(value)) {
+      return value.map((item) => `\`${item}\``).join(', ');
+    }
+    if (['string', 'number', 'boolean'].includes(typeof value)) {
+      return String(value);
+    }
     // eslint-disable-next-line no-console
-    console.error(
-      `[blocks-schema] Could not resolve the docs for '${name}':`,
-      e,
+    console.warn(
+      `[blocks-schema] The docs of '${name}' use {{${key}}}, which the block configuration doesn't have as a value.`,
     );
     return '';
+  });
+}
+
+function getDocsFile(block, variation) {
+  const file = blocksDocs.find(
+    (item) => item.block === block && item.variation === variation,
+  );
+  return file ? file.markdown.replace(FRONTMATTER, '') : '';
+}
+
+// The docs of a block, or of one of its variations, come from its
+// *.block.md file. A block's `docs` function can tailor them.
+function resolveDocs(blockConfig, intl, variation) {
+  const name = variation ? `${blockConfig.id}/${variation}` : blockConfig.id;
+  const markdown = fillPlaceholders(
+    getDocsFile(blockConfig.id, variation),
+    blockConfig,
+    name,
+  ).trim();
+
+  if (variation || typeof blockConfig.docs !== 'function') return markdown;
+  try {
+    const tailored = blockConfig.docs({ blockConfig, intl, markdown });
+    return typeof tailored === 'string' ? tailored.trim() : markdown;
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error(`[blocks-schema] docs() for '${name}' threw:`, e);
+    return markdown;
   }
 }
 
@@ -117,9 +154,7 @@ function buildSummaryItem(blockConfig, intl) {
     id: blockConfig.id,
     title: blockConfig.title,
   };
-  const description = getSummary(
-    resolveDocs(blockConfig.docs, blockConfig, intl),
-  );
+  const description = getSummary(resolveDocs(blockConfig, intl));
   if (description) {
     item.description = description;
   }
@@ -131,7 +166,7 @@ function buildFullDetail(blockConfig, intl) {
     {
       id: blockConfig.id,
       title: blockConfig.title,
-      docs: resolveDocs(blockConfig.docs, blockConfig, intl),
+      docs: resolveDocs(blockConfig, intl),
     },
     blockConfig,
     intl,
@@ -144,12 +179,7 @@ function buildFullDetail(blockConfig, intl) {
         title: variation.title,
         isDefault: Boolean(variation.isDefault),
       };
-      const docs = resolveDocs(
-        variation.docs,
-        blockConfig,
-        intl,
-        `${blockConfig.id}/${variation.id}`,
-      );
+      const docs = resolveDocs(blockConfig, intl, variation.id);
       if (docs) {
         item.docs = docs;
       }

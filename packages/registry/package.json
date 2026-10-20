@@ -52,6 +52,10 @@
       "import": "./dist/addon-registry/create-addons-loader.js",
       "default": "./dist/addon-registry/create-addons-loader.cjs"
     },
+    "./create-blocks-docs-loader": {
+      "import": "./dist/addon-registry/create-blocks-docs-loader.js",
+      "default": "./dist/addon-registry/create-blocks-docs-loader.cjs"
+    },
     "./create-addons-loader-server": {
       "import": "./dist/addon-registry/create-addons-loader-server.js",
       "default": "./dist/addon-registry/create-addons-loader-server.cjs"

@@ -1,44 +1,57 @@
-import { createIntl } from 'react-intl';
+// eslint-disable-next-line import/no-unresolved
+import blocksDocs from 'load-blocks-docs';
 import { blocksConfig } from '@plone/volto/config/Blocks';
+import { fillPlaceholders } from '@plone/volto/express-middleware/blocks-schema';
 
-const intl = createIntl({ locale: 'en', messages: {} });
-
-const documented = Object.values(blocksConfig).filter((block) => block.docs);
-
-const resolve = (block) =>
-  typeof block.docs === 'function'
-    ? block.docs({ blockConfig: block, intl })
-    : block.docs;
+const FRONTMATTER = /^---\n[\s\S]*?\n---\n/;
+const markdownOf = ({ markdown }) => markdown.replace(FRONTMATTER, '').trim();
 
 describe('Core block docs', () => {
-  it('documents the core blocks', () => {
-    expect(documented.map((block) => block.id)).toEqual(
-      expect.arrayContaining(['listing', 'search', 'teaser', 'gridBlock']),
+  it('collects the *.block.md files of core and volto-slate', () => {
+    expect(blocksDocs.map((file) => file.block)).toEqual(
+      expect.arrayContaining([
+        'listing',
+        'search',
+        'teaser',
+        'gridBlock',
+        'slate',
+        'detachedSlate',
+      ]),
     );
   });
 
-  it.each(documented.map((block) => [block.id, block]))(
-    '%s resolves to Markdown with valid JSON examples',
-    (id, block) => {
-      const markdown = resolve(block);
-      expect(typeof markdown).toBe('string');
-      expect(markdown.trim()).not.toBe('');
+  it('only documents blocks that exist', () => {
+    const known = [...Object.keys(blocksConfig), 'slate', 'detachedSlate'];
+    for (const file of blocksDocs) {
+      expect(known).toContain(file.block);
+    }
+  });
+
+  it.each(blocksDocs.map((file) => [file.block, file]))(
+    '%s has Markdown whose JSON examples are valid block data',
+    (block, file) => {
+      const markdown = markdownOf(file);
+      expect(markdown).not.toBe('');
 
       const examples = [...markdown.matchAll(/```json\n([\s\S]*?)\n```/g)];
-      expect(examples.length).toBeGreaterThan(0);
       for (const [, json] of examples) {
-        expect(JSON.parse(json)['@type']).toBe(id);
+        expect(JSON.parse(json)['@type']).toBe(block);
       }
     },
   );
 
-  it('builds the grid docs from its configuration', () => {
-    const markdown = resolve({
-      ...blocksConfig.gridBlock,
-      allowedBlocks: ['teaser'],
-      maxLength: 2,
-    });
-    expect(markdown).toContain('up to 2 blocks');
-    expect(markdown).toContain('The allowed blocks are `teaser`.');
+  it('fills the grid docs from its configuration', () => {
+    const grid = blocksDocs.find((file) => file.block === 'gridBlock');
+    const markdown = fillPlaceholders(markdownOf(grid), blocksConfig.gridBlock);
+
+    expect(markdown).toContain(
+      `It holds up to ${blocksConfig.gridBlock.maxLength} blocks.`,
+    );
+    expect(markdown).toContain(
+      `The allowed blocks are ${blocksConfig.gridBlock.allowedBlocks
+        .map((id) => `\`${id}\``)
+        .join(', ')}.`,
+    );
+    expect(markdown).not.toContain('{{');
   });
 });

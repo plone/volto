@@ -1,16 +1,34 @@
 import config from '@plone/volto/registry';
 
 import blocksSchemaMiddleware, {
+  fillPlaceholders,
   getSummary,
   toJSONSafe,
 } from '@plone/volto/express-middleware/blocks-schema';
 
-const { apiGet } = vi.hoisted(() => ({ apiGet: vi.fn() }));
+const { apiGet, docsFiles } = vi.hoisted(() => ({
+  apiGet: vi.fn(),
+  docsFiles: [],
+}));
+vi.mock('load-blocks-docs', () => ({ default: docsFiles }));
 vi.mock('@plone/volto/helpers/Api/Api', () => ({
   default: class {
     get = apiGet;
   },
 }));
+
+// Replaces the *.block.md files the endpoint sees.
+function setDocsFiles(files) {
+  docsFiles.splice(0, docsFiles.length, ...files);
+}
+
+const docsFile = (block, text, variation) => ({
+  block,
+  ...(variation ? { variation } : {}),
+  markdown: `---\nblock: ${block}\n${
+    variation ? `variation: ${variation}\n` : ''
+  }---\n\n${text}`,
+});
 
 async function invokeMiddleware({
   headers = {},
@@ -83,6 +101,14 @@ describe('/@blocks-schema middleware', () => {
   const originalBlocks = config.blocks;
 
   beforeEach(() => {
+    setDocsFiles([
+      docsFile(
+        'alpha',
+        'The Alpha block,\nfor alpha content.\n\n### Example\n\nUse it.\n',
+      ),
+      docsFile('gamma', 'The Gamma block.'),
+      docsFile('gamma', 'A fancier look.', 'fancy'),
+    ]);
     config.set('blocks', {
       ...originalBlocks,
       blocksConfig: {
@@ -98,7 +124,6 @@ describe('/@blocks-schema middleware', () => {
             properties: {},
             required: [],
           }),
-          docs: 'The Alpha block,\nfor alpha content.\n\n### Example\n\nUse it.\n',
         },
         beta: {
           id: 'beta',
@@ -111,10 +136,10 @@ describe('/@blocks-schema middleware', () => {
           blockSchema: null,
           variations: [
             { id: 'default', title: 'Default' },
-            { id: 'fancy', title: 'Fancy', docs: 'A fancier look.' },
+            { id: 'fancy', title: 'Fancy' },
           ],
-          docs: ({ blockConfig }) =>
-            `The Gamma block, with ${blockConfig.variations.length} variations.`,
+          docs: ({ blockConfig, markdown }) =>
+            `${markdown} It has ${blockConfig.variations.length} variations.`,
         },
       },
     });
@@ -145,7 +170,7 @@ describe('/@blocks-schema middleware', () => {
         {
           id: 'gamma',
           title: 'Gamma',
-          description: 'The Gamma block, with 2 variations.',
+          description: 'The Gamma block. It has 2 variations.',
         },
       ],
       items_total: 3,
@@ -179,7 +204,7 @@ describe('/@blocks-schema middleware', () => {
         {
           id: 'gamma',
           title: 'Gamma',
-          docs: 'The Gamma block, with 2 variations.',
+          docs: 'The Gamma block. It has 2 variations.',
           schema: null,
           variations: [
             { id: 'default', title: 'Default', isDefault: false, schema: null },
@@ -197,11 +222,21 @@ describe('/@blocks-schema middleware', () => {
     });
   });
 
-  it('ignores docs that are not Markdown strings or that throw', async () => {
+  it('reads the docs from the *.block.md files, without frontmatter', async () => {
+    const response = await invokeMiddleware({
+      url: '/@blocks-schema/alpha',
+    });
+
+    expect(response.body.docs).toBe(
+      'The Alpha block,\nfor alpha content.\n\n### Example\n\nUse it.',
+    );
+  });
+
+  it('falls back to the file when docs() throws or returns no string', async () => {
     const consoleError = vi
       .spyOn(console, 'error')
       .mockImplementation(() => {});
-    config.blocks.blocksConfig.alpha.docs = { description: 'Old shape' };
+    config.blocks.blocksConfig.alpha.docs = () => ({ description: 'Object' });
     config.blocks.blocksConfig.gamma.docs = () => {
       throw new Error('Docs failed');
     };
@@ -209,12 +244,46 @@ describe('/@blocks-schema middleware', () => {
     const response = await invokeMiddleware({ query: { full: '1' } });
     const [alpha, , gamma] = response.body.items;
 
-    expect(alpha.docs).toBe('');
-    expect(gamma.docs).toBe('');
-    expect(gamma.schema).toBeNull();
+    expect(alpha.docs).toMatch(/^The Alpha block,/);
+    expect(gamma.docs).toBe('The Gamma block.');
     expect(gamma.error).toBeUndefined();
     expect(consoleError).toHaveBeenCalledTimes(1);
     consoleError.mockRestore();
+  });
+
+  it('fills placeholders from the block configuration', () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const blockConfig = {
+      id: 'grid',
+      allowedBlocks: ['image', 'teaser'],
+      maxLength: 4,
+      title: 'Grid',
+      schema: {},
+    };
+
+    expect(
+      fillPlaceholders(
+        'Up to {{maxLength}} of {{ allowedBlocks }} in {{title}}.',
+        blockConfig,
+      ),
+    ).toBe('Up to 4 of `image`, `teaser` in Grid.');
+    expect(fillPlaceholders('Literal \\{{maxLength}}.', blockConfig)).toBe(
+      'Literal {{maxLength}}.',
+    );
+    expect(fillPlaceholders('[{{missing}}] [{{schema}}]', blockConfig)).toBe(
+      '[] []',
+    );
+    expect(warn).toHaveBeenCalledTimes(2);
+    warn.mockRestore();
+  });
+
+  it('fills placeholders in the docs it returns', async () => {
+    config.blocks.blocksConfig.beta.maxLength = 3;
+    setDocsFiles([docsFile('beta', 'Holds up to {{maxLength}} blocks.')]);
+
+    const response = await invokeMiddleware({ url: '/@blocks-schema/beta' });
+
+    expect(response.body.docs).toBe('Holds up to 3 blocks.');
   });
 
   it('uses the first paragraph of the docs as the summary', () => {
@@ -495,13 +564,11 @@ describe('/@blocks-schema middleware', () => {
             id: 'listing',
             title: 'Listing',
             blockSchema: schema('Listing', ['headline']),
-            docs: 'Lists content.\n\n### Fields\n\n- `headline`: a heading.',
             variations: [
               { id: 'summary', title: 'Summary', isDefault: true },
               {
                 id: 'gallery',
                 title: 'Gallery',
-                docs: 'Shows images.\nIn a grid.',
                 schemaEnhancer: ({ schema }) => ({
                   ...schema,
                   properties: { ...schema.properties, columns: {} },
@@ -519,6 +586,13 @@ describe('/@blocks-schema middleware', () => {
           plain: { id: 'plain', title: 'Plain', blockSchema: null },
         },
       });
+      setDocsFiles([
+        docsFile(
+          'listing',
+          'Lists content.\n\n### Fields\n\n- `headline`: a heading.',
+        ),
+        docsFile('listing', 'Shows images.\nIn a grid.', 'gallery'),
+      ]);
       vi.spyOn(console, 'error').mockImplementation(() => {});
     });
 
