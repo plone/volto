@@ -1,0 +1,1 @@
+Added a public `/@blocks-schema` endpoint to the Volto server that lists the registered blocks with their resolved schemas, variations and documentation, for agents and reference docs. Blocks can document themselves with the new `docs` key in their block configuration. @sneridagh
