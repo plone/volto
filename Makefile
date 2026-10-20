@@ -78,6 +78,24 @@ install: ## Set up development environment
 	pnpm i
 	make build-deps
 
+##### Dependencies
+
+.PHONY: upgrade-versions
+upgrade-versions: ## Upgrade pnpm-lock.yaml within ranges, then bump ^/~ specifiers in catalog.json and package.json files to match
+	node packages/scripts/upgradeversions.js
+
+.PHONY: upgrade-catalog-versions
+upgrade-catalog-versions: ## Upgrade pnpm-lock.yaml within ranges, then bump ^/~ specifiers in catalog.json to match
+	node packages/scripts/upgradeversions.js --catalog
+
+.PHONY: upgrade-package-versions
+upgrade-package-versions: ## Upgrade pnpm-lock.yaml within ranges, then bump ^/~ specifiers in package.json files to match
+	node packages/scripts/upgradeversions.js --packages
+
+.PHONY: upgrade-versions-dry-run
+upgrade-versions-dry-run: ## Show which specifiers would be bumped to the current pnpm-lock.yaml, without writing
+	node packages/scripts/upgradeversions.js --dry-run
+
 ##### Documentation
 
 bin/python: ## Create a Python virtual environment with the latest pip, and install documentation requirements
