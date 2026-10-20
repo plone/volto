@@ -38,8 +38,19 @@ describe('objectSchema', () => {
       'sort_on',
       'sort_order_boolean',
       'limit',
+      'offset',
       'b_size',
     ]);
+  });
+
+  it('offers offset as a number field defaulting to no items skipped', () => {
+    const schema = objectSchema({ intl: mockIntl });
+
+    expect(schema.properties.offset).toMatchObject({
+      title: 'Offset',
+      type: 'number',
+      default: 0,
+    });
   });
 
   it('does not include depth in the schema properties', () => {

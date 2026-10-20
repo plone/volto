@@ -108,6 +108,7 @@ export {
   arrayRange,
   reorderArray,
   isInteractiveElement,
+  isIMEComposing,
   slugify,
   normalizeString,
 } from '@plone/volto/helpers/Utils/Utils';
@@ -138,6 +139,7 @@ export { usePagination } from './Utils/usePagination';
 export { default as useUndoManager } from './UndoManager/useUndoManager';
 export { getCookieOptions } from './Cookies/cookies';
 export { getWidgetView } from './Widget/widget';
+export { applyTaggedValues } from './Widget/taggedValues';
 export {
   getCurrentStateMapping,
   getWorkflowOptions,

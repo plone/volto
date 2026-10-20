@@ -28,6 +28,12 @@ export function objectSchema({ intl, isDisabled, value }: {
             type: string;
             isDisabled: any;
         };
+        offset: {
+            title: any;
+            type: string;
+            isDisabled: any;
+            default: number;
+        };
         b_size: {
             title: any;
             type: string;

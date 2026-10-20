@@ -17,6 +17,103 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.5.0 (2026-10-07)
+
+### Feature
+
+- Move table row and column insertion and deletion controls to a floating menu above the currently selected row. @r4-rahul123 [#8409](https://github.com/plone/volto/issues/8409)
+
+### Bugfix
+
+- Fixed IME composition Enter key in the Title and Description blocks and in TextLineEdit being misinterpreted as a move to the next block, which broke Japanese/Chinese/Korean input (e.g. confirming a conversion in Safari). @terapyon [#8348](https://github.com/plone/volto/issues/8348)
+- Honored the `frontendOptions` schema hint when rendering a field in the default views, so a field declared with `directives.widget(..., frontendOptions={"widget": ..., "widgetProps": {...}})` is rendered by that widget, with those props, instead of falling back to the default one. The `views` registry gained a `factory` mapping and entries for `title` and `description` by field id, and view widget resolution now uses the same steps as the edit side, except that a field's factory is consulted before its vocabulary, so relation fields still render as links. @ericof [#8428](https://github.com/plone/volto/issues/8428)
+- Fix search results pagination overflow on mobile screens. @r4-rahul123 [#8432](https://github.com/plone/volto/issues/8432)
+- Fixed the History diff view marking all text after an image as changed, and compare blocks one by one, including added, removed and moved blocks. @iFlameing 
+
+### Internal
+
+- Bump svgo from 3.3.3 to 3.3.5. [#8421](https://github.com/plone/volto/issues/8421)
+- The `release` scripts of all the packages now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
+### Documentation
+
+- Added the "How to make a Volto release" documentation page, with the release requirements and the `prereleaser` workflow, and pointed `RELEASING.md` to it. @sneridagh 
+- Fix broken links and require linkcheck to pass. @stevepiercy 
+- Update training links for 2025 archive. @stevepiercy 
+
+## 19.4.1 (2026-09-10)
+
+### Bugfix
+
+- Fix `SelectAutoComplete` rendering the raw token instead of its title when the vocabulary subrequest still held a stale token/title pair from a previously edited value (for example after changing a value, saving, and editing again via client-side navigation). The widget now keeps its local token/title cache in sync with the incoming choices instead of seeding it only once. @sneridagh [#8423](https://github.com/plone/volto/issues/8423)
+
+## 19.4.0 (2026-09-03)
+
+### Feature
+
+- Added a `UserAvatar` component, used by the toolbar to render the signed-in user's avatar. Add-ons can now change that avatar by shadowing this one small component, instead of shadowing the whole `Toolbar`. @ericof [#8404](https://github.com/plone/volto/issues/8404)
+- Adding quanta support with semanticUI fallback for seach container. @TimoBroeskamp [#8411](https://github.com/plone/volto/issues/8411)
+
+### Bugfix
+
+- Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl [#8402](https://github.com/plone/volto/issues/8402)
+
+## 19.3.1 (2026-08-26)
+
+### Bugfix
+
+- Fix path used for rendering blocks in the `NewsItemView`. @TimoBroeskamp [#8397](https://github.com/plone/volto/issues/8397)
+
+### Internal
+
+- Added support for the `.chore` extension for a change log entry. This satisfies the requirement of its presence, but doesn't display them in the change log. @stevepiercy [#8401](https://github.com/plone/volto/issues/8401)
+- Remove deprecated and redundant Read the Docs pull request preview workflow. @stevepiercy 
+- Remove redundant and deprecated pull request preview build workflow. @stevepiercy 
+
+## 19.3.0 (2026-07-22)
+
+### Feature
+
+- Add the `apiSuffix` setting and `RAZZLE_API_SUFFIX` environment variable to configure the API traversal suffix. 
+
+### Bugfix
+
+- Silence the Node 24 `DEP0169` (`url.parse()`) and `DEP0060` (`util._extend`) deprecation warnings shown when running/building a Volto project. Volto's own server code (`server.jsx`, `devproxy.js`) now uses the WHATWG `URL` API, and pnpm patches update the archived `react-dev-utils` (build/dev-server) and `http-proxy` (dev proxy `util._extend`) dependencies. @sneridagh 
+
+### Internal
+
+- Remove unused react-medium-image-zoom @Tishasoumya-02 
+
+## 19.2.0 (2026-07-20)
+
+### Feature
+
+- Added an `offset` setting to the Listing block, skipping the first N results of its query and paginating over the remainder. A block limited to the latest N items and a second block offset by N now compose without repeating results. @ericof [#8385](https://github.com/plone/volto/issues/8385)
+
+### Bugfix
+
+- Fix development-mode portrait passthrough for Plone by routing requests through the `++api++` traversal layer. @sneridagh [#8390](https://github.com/plone/volto/issues/8390)
+
+## 19.1.6 (2026-07-16)
+
+### Feature
+
+- Add loading feedback for working copy actions in More toolbar. @wesleybl [#8362](https://github.com/plone/volto/issues/8362)
+
+### Bugfix
+
+- Added consistent visible focus for interactive components to improve accessibility. @Wagner3UB [#7850](https://github.com/plone/volto/issues/7850)
+- Restored original i18n `msgid` keys in `FileWidget` and `RegistryImageWidget` that were inadvertently renamed in #7982, breaking backward compatibility with existing translations. Added missing translations for all 65 supported languages. @Wagner3UB [#8334](https://github.com/plone/volto/issues/8334)
+- Debounce search input in ObjectBrowserBody. @wesleybl [#8365](https://github.com/plone/volto/issues/8365)
+- Renamed the selector in {file}`focus.less` so that skiplinks focus styles apply correctly. @Wagner3UB [#8382](https://github.com/plone/volto/issues/8382)
+- Stopped the Block Types control panel from crashing when an add-on configures a block that was never registered, which leaves behind an entry with no id or no title. Those entries are not blocks, and are no longer listed. @ericof [#8384](https://github.com/plone/volto/issues/8384)
+
+### Internal
+
+- Added Cypress regression tests for slate Backspace behavior near styled/link inline elements. @avoinea [#8347](https://github.com/plone/volto/issues/8347)
+- Use Plone 6.2.1. @wesleybl [#8364](https://github.com/plone/volto/issues/8364)
+- Remove unused dependency `linkify-it`. @davisagli 
+
 ## 19.1.5 (2026-07-01)
 
 ### Bugfix

@@ -13,6 +13,10 @@ const InjectPloneComponentsCSS = loadable(
 
 const onlyCMSUI = ({ location }) => isCmsUi(location?.pathname);
 
+// In the add form, the content in the store is the parent container,
+// so its tags and related items must not be shown there.
+const notInAddView = ({ location }) => !location?.pathname?.endsWith('/add');
+
 const slots = {
   aboveApp: [
     {
@@ -25,10 +29,12 @@ const slots = {
     {
       name: 'tags',
       component: Tags,
+      predicates: [notInAddView],
     },
     {
       name: 'relatedItems',
       component: RelatedItems,
+      predicates: [notInAddView],
     },
   ],
 };

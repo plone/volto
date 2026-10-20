@@ -8,6 +8,32 @@
 
 <!-- towncrier release notes start -->
 
+## 19.1.0 (2026-10-07)
+
+### Feature
+
+- Move table row and column insertion and deletion controls to a floating menu above the currently selected row. @r4-rahul123 [#8409](https://github.com/plone/volto/issues/8409)
+
+### Bugfix
+
+- Ignore keydown events in the Slate editor while an IME composition is active, so confirming a Japanese/Chinese/Korean conversion with Enter (or navigating candidates with arrow keys) is no longer misinterpreted as a keyboard shortcut or block navigation. @terapyon [#8348](https://github.com/plone/volto/issues/8348)
+
+### Internal
+
+- The `release` scripts now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
+## 19.0.5 (2026-09-03)
+
+### Bugfix
+
+- Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl [#8402](https://github.com/plone/volto/issues/8402)
+
+## 19.0.4 (2026-07-16)
+
+### Bugfix
+
+- Fix Backspace behaving erratically near a styled or link text and fix cursor position after merging two same-type slate blocks via Backspace. @avoinea [#8347](https://github.com/plone/volto/issues/8347)
+
 ## 19.0.3 (2026-07-01)
 
 ### Bugfix

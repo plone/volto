@@ -16,6 +16,7 @@ import {
   slugify,
   cloneDeepSchema,
   normalizeString,
+  isIMEComposing,
 } from './Utils';
 import moment from 'moment';
 import deepFreeze from 'deep-freeze';
@@ -513,6 +514,24 @@ describe('Utils tests', () => {
         },
         required: [],
       });
+    });
+  });
+
+  describe('isIMEComposing', () => {
+    it('returns true when the native event is composing', () => {
+      expect(isIMEComposing({ nativeEvent: { isComposing: true } })).toBe(true);
+    });
+    it('returns true when the native event keyCode is 229', () => {
+      expect(isIMEComposing({ nativeEvent: { keyCode: 229 } })).toBe(true);
+    });
+    it('returns false for a regular Enter key press', () => {
+      expect(
+        isIMEComposing({ nativeEvent: { isComposing: false, keyCode: 13 } }),
+      ).toBe(false);
+    });
+    it('accepts a native event directly', () => {
+      expect(isIMEComposing({ isComposing: true })).toBe(true);
+      expect(isIMEComposing({ isComposing: false, keyCode: 13 })).toBe(false);
     });
   });
 });

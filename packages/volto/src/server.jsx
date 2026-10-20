@@ -7,9 +7,6 @@ import { Provider } from 'react-intl-redux';
 import express from 'express';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory } from 'history';
-import { parse as parseUrl } from 'url';
-import keys from 'lodash/keys';
-import locale from 'locale';
 import { detect } from 'detect-browser';
 import path from 'path';
 import { ChunkExtractor, ChunkExtractorManager } from '@loadable/server';
@@ -27,17 +24,19 @@ import Html from '@plone/volto/helpers/Html/Html';
 import Api from '@plone/volto/helpers/Api/Api';
 import { persistAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 import {
-  toBackendLang,
   toGettextLang,
   toReactIntlLang,
 } from '@plone/volto/helpers/Utils/Utils';
+import {
+  getSupportedLocales,
+  negotiateLocale,
+  resolveContentLocale,
+} from '@plone/volto/helpers/Locale/Locale';
 import { changeLanguage } from '@plone/volto/actions/language/language';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
 
 import ErrorPage from '@plone/volto/error';
-
-import languages from '@plone/volto/constants/Languages.cjs';
 
 import configureStore from '@plone/volto/store';
 import {
@@ -65,7 +64,7 @@ function reactIntlErrorHandler(error) {
   debug('i18n')(error);
 }
 
-const supported = new locale.Locales(keys(languages), 'en');
+const supported = getSupportedLocales(config.settings?.supportedLanguages);
 
 const server = express()
   .disable('x-powered-by')
@@ -131,13 +130,9 @@ server.use(function (err, req, res, next) {
 function setupServer(req, res, next) {
   const api = new Api(req);
 
-  const lang = toReactIntlLang(
-    new locale.Locales(
-      req.universalCookies.get('I18N_LANGUAGE') ||
-        req.headers['accept-language'],
-    )
-      .best(supported)
-      .toString(),
+  const lang = negotiateLocale(
+    req.universalCookies.get('I18N_LANGUAGE') || req.headers['accept-language'],
+    supported,
   );
 
   // Minimum initial state for the fake Redux store instance
@@ -209,13 +204,9 @@ server.get('/*', (req, res) => {
 
   const browserdetect = detect(req.headers['user-agent']);
 
-  const lang = toReactIntlLang(
-    new locale.Locales(
-      req.universalCookies.get('I18N_LANGUAGE') ||
-        req.headers['accept-language'],
-    )
-      .best(supported)
-      .toString(),
+  const lang = negotiateLocale(
+    req.universalCookies.get('I18N_LANGUAGE') || req.headers['accept-language'],
+    supported,
   );
 
   const authToken = req.universalCookies.get('auth_token');
@@ -247,7 +238,25 @@ server.get('/*', (req, res) => {
   });
 
   const url = req.originalUrl || req.url;
-  const location = parseUrl(url);
+  // Parse the request URL without the deprecated `url.parse()` (DEP0169).
+  // `req.url` is always an origin-form path here, so a plain string split
+  // reproduces the exact `url.parse()` shape (including raw, non-encoded
+  // query strings) that downstream async-connected components rely on.
+  const hashIndex = url.indexOf('#');
+  const withoutHash = hashIndex === -1 ? url : url.slice(0, hashIndex);
+  const hash = hashIndex === -1 ? null : url.slice(hashIndex);
+  const queryIndex = withoutHash.indexOf('?');
+  const pathname =
+    queryIndex === -1 ? withoutHash : withoutHash.slice(0, queryIndex);
+  const search = queryIndex === -1 ? null : withoutHash.slice(queryIndex);
+  const location = {
+    pathname,
+    search,
+    query: search ? search.slice(1) : null,
+    hash,
+    path: withoutHash,
+    href: url,
+  };
 
   loadOnServer({ store, location, routes, api })
     .then(() => {
@@ -270,14 +279,17 @@ server.get('/*', (req, res) => {
 
       const isMultilingual = state.site.data.features?.multilingual;
 
+      const newLang = resolveContentLocale(
+        contentLang,
+        [lang, negotiateLocale(initialLang, supported)],
+        supported,
+      );
+
       if (
-        toBackendLang(initialLang) !== contentLang &&
+        newLang &&
         !/\/\.well-known\/.*$/.test(location.pathname) &&
         !(isMultilingual && location.pathname === '/')
       ) {
-        const newLang = toReactIntlLang(
-          new locale.Locales(contentLang).best(supported).toString(),
-        );
         store.dispatch(changeLanguage(newLang, locales[newLang], req));
       }
 

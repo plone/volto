@@ -77,6 +77,9 @@ export default function client() {
   if (window.env.RAZZLE_INTERNAL_API_PATH) {
     config.settings.internalApiPath = window.env.RAZZLE_INTERNAL_API_PATH;
   }
+  if (typeof window.env.RAZZLE_API_SUFFIX !== 'undefined') {
+    config.settings.apiSuffix = window.env.RAZZLE_API_SUFFIX;
+  }
   // TODO: To be removed when the use of the legacy traverse is deprecated.
   if (window.env.RAZZLE_LEGACY_TRAVERSE) {
     config.settings.legacyTraverse = true;

@@ -2703,6 +2703,11 @@ msgstr "Apariciones"
 msgid "Occurrences"
 msgstr "Apariciones"
 
+#. Default: "Offset"
+#: components/manage/Widgets/QuerystringWidget
+msgid "Offset"
+msgstr ""
+
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"

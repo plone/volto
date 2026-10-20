@@ -34,6 +34,13 @@ export function normalizeString(str: string): string;
  * @returns {boolean} If it's an interactive element of the list
  */
 export function isInteractiveElement(element: node, interactiveElements?: string[]): boolean;
+/**
+ * Returns whether an IME (Input Method Editor) composition is in progress,
+ * e.g. while confirming a Japanese/Chinese/Korean conversion with Enter.
+ * @param {KeyboardEvent} event The (React synthetic or native) keyboard event
+ * @returns {boolean} True if an IME composition is active
+ */
+export function isIMEComposing(event: KeyboardEvent): boolean;
 export function safeWrapper(func: Function): (config: any) => any;
 export function getErrorMessage(error: object): string;
 export function getInitials(title: any, limit: any): string;
