@@ -31,17 +31,12 @@ function resolveSchema(blockConfig, intl) {
       : blockSchema;
 
   if (schema && typeof schemaEnhancer === 'function') {
-    try {
-      schema =
-        schemaEnhancer({
-          schema: JSON.parse(JSON.stringify(schema)),
-          formData: { '@type': id },
-          intl,
-        }) || schema;
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.error(`[blocks-schema] schemaEnhancer for '${id}' threw:`, e);
-    }
+    schema =
+      schemaEnhancer({
+        schema: JSON.parse(JSON.stringify(schema)),
+        formData: { '@type': id },
+        intl,
+      }) || schema;
   }
 
   return schema;
@@ -75,7 +70,6 @@ function buildSummaryItem(blockConfig, intl) {
 }
 
 function buildFullDetail(blockConfig, intl) {
-  const schema = resolveSchema(blockConfig, intl);
   const variations =
     blockConfig.variations?.length > 0 ? blockConfig.variations : null;
   const docs = resolveDocs(blockConfig, intl);
@@ -84,8 +78,21 @@ function buildFullDetail(blockConfig, intl) {
     id: blockConfig.id,
     title: blockConfig.title,
     docs,
-    schema,
   };
+
+  // A schema that fails to resolve (for example an add-on schema that expects
+  // props only available in the editor) must not break the whole response.
+  try {
+    result.schema = resolveSchema(blockConfig, intl);
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error(
+      `[blocks-schema] Could not resolve the schema for '${blockConfig.id}':`,
+      e,
+    );
+    result.schema = null;
+    result.error = 'The schema for this block could not be resolved.';
+  }
 
   if (variations) {
     result.variations = variations;

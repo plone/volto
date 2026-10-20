@@ -1,14 +1,18 @@
 import config from '@plone/volto/registry';
 import blocksSchemaMiddleware from '@plone/volto/express-middleware/blocks-schema';
 
-async function invokeMiddleware({ headers = {}, query = {} }) {
+async function invokeMiddleware({
+  headers = {},
+  query = {},
+  url = '/@blocks-schema',
+}) {
   const middleware = blocksSchemaMiddleware();
 
   return await new Promise((resolve, reject) => {
     const req = {
       method: 'GET',
-      url: '/@blocks-schema',
-      originalUrl: '/@blocks-schema',
+      url,
+      originalUrl: url,
       headers,
       query,
     };
@@ -210,5 +214,81 @@ describe('/@blocks-schema middleware', () => {
       { id: 'default', title: 'Default' },
       { id: 'fancy', title: 'Fancy' },
     ]);
+  });
+
+  describe('when a block schema cannot be resolved', () => {
+    let consoleError;
+
+    beforeEach(() => {
+      consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+      config.set('blocks', {
+        ...config.blocks,
+        blocksConfig: {
+          ...config.blocks.blocksConfig,
+          broken: {
+            id: 'broken',
+            title: 'Broken',
+            blockSchema: ({ props }) => ({
+              title: props.navRoot.title,
+              fieldsets: [],
+              properties: {},
+              required: [],
+            }),
+          },
+          brokenEnhancer: {
+            id: 'brokenEnhancer',
+            title: 'Broken enhancer',
+            blockSchema: {
+              title: 'Broken enhancer',
+              fieldsets: [],
+              properties: {},
+              required: [],
+            },
+            schemaEnhancer: () => {
+              throw new Error('Enhancer failed');
+            },
+          },
+        },
+      });
+    });
+
+    afterEach(() => {
+      consoleError.mockRestore();
+    });
+
+    it('reports the error on that block and still returns the others', async () => {
+      const response = await invokeMiddleware({ query: { full: '1' } });
+
+      expect(response.status).toBe(200);
+      expect(response.body.items_total).toBe(5);
+
+      const broken = response.body.items.find((item) => item.id === 'broken');
+      expect(broken.schema).toBeNull();
+      expect(broken.error).toBe(
+        'The schema for this block could not be resolved.',
+      );
+
+      const brokenEnhancer = response.body.items.find(
+        (item) => item.id === 'brokenEnhancer',
+      );
+      expect(brokenEnhancer.schema).toBeNull();
+      expect(brokenEnhancer.error).toBeDefined();
+
+      const alpha = response.body.items.find((item) => item.id === 'alpha');
+      expect(alpha.schema.title).toBe('Alpha schema');
+      expect(alpha.error).toBeUndefined();
+
+      expect(consoleError).toHaveBeenCalledTimes(2);
+    });
+
+    it('returns the error in the detail route instead of failing', async () => {
+      const response = await invokeMiddleware({
+        url: '/@blocks-schema/broken',
+      });
+
+      expect(response.status).toBe(200);
+      expect(response.body.schema).toBeNull();
+      expect(response.body.error).toBeDefined();
+    });
   });
 });
