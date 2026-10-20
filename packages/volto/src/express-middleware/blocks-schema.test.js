@@ -48,6 +48,14 @@ async function invokeMiddleware({
         });
         return this;
       },
+      send(text) {
+        resolve({
+          status: this.statusCode,
+          headers: this.headers,
+          text,
+        });
+        return this;
+      },
     };
 
     middleware(req, res, (error) => {
@@ -111,7 +119,7 @@ describe('/@blocks-schema middleware', () => {
 
     expect(response.status).toBe(200);
     expect(response.headers['cache-control']).toBe('public, max-age=300');
-    expect(response.headers['vary']).toBe('Accept-Language');
+    expect(response.headers['vary']).toBe('Accept, Accept-Language');
     expect(response.body).toEqual({
       '@id': '/@blocks-schema',
       items: [
@@ -458,6 +466,120 @@ describe('/@blocks-schema middleware', () => {
       expect(
         toJSONSafe({ s: 'x', n: 0, f: false, z: null, d: date, u: undefined }),
       ).toEqual({ s: 'x', n: 0, f: false, z: null, d: date.toJSON() });
+    });
+  });
+
+  describe('Markdown output', () => {
+    const schema = (title, fields = []) => ({
+      title,
+      fieldsets: [],
+      properties: Object.fromEntries(fields.map((f) => [f, { title: f }])),
+      required: [],
+    });
+
+    beforeEach(() => {
+      config.set('blocks', {
+        ...config.blocks,
+        blocksConfig: {
+          listing: {
+            id: 'listing',
+            title: 'Listing',
+            blockSchema: schema('Listing', ['headline']),
+            docs: 'Lists content.\n\n### Fields\n\n- `headline`: a heading.',
+            variations: [
+              { id: 'summary', title: 'Summary', isDefault: true },
+              {
+                id: 'gallery',
+                title: 'Gallery',
+                docs: 'Shows images.\nIn a grid.',
+                schemaEnhancer: ({ schema }) => ({
+                  ...schema,
+                  properties: { ...schema.properties, columns: {} },
+                }),
+              },
+            ],
+          },
+          broken: {
+            id: 'broken',
+            title: 'Broken',
+            blockSchema: () => {
+              throw new Error('Broken');
+            },
+          },
+          plain: { id: 'plain', title: 'Plain', blockSchema: null },
+        },
+      });
+      vi.spyOn(console, 'error').mockImplementation(() => {});
+    });
+
+    afterEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    it('returns the list as Markdown for ?format=md', async () => {
+      const response = await invokeMiddleware({ query: { format: 'md' } });
+
+      expect(response.status).toBe(200);
+      expect(response.headers['content-type']).toBe(
+        'text/markdown; charset=utf-8',
+      );
+      expect(response.text).toMatch(/^# Blocks\n\n/);
+      expect(response.text).toContain(
+        '## Listing (`listing`)\n\nLists content.\n\n### Fields',
+      );
+      expect(response.text).toContain(
+        '### Variations\n\n- `summary`: Summary (default)\n- `gallery`: Gallery\n\n  Shows images.\n  In a grid.',
+      );
+      expect(response.text).toContain('## Broken (`broken`)');
+      expect(response.text).toContain(
+        '_The schema for this block could not be resolved._',
+      );
+      expect(response.text).toContain('## Plain (`plain`)');
+    });
+
+    it('lists a variation schema only when it differs from the block schema', async () => {
+      const response = await invokeMiddleware({
+        url: '/@blocks-schema/listing',
+        query: { format: 'md' },
+      });
+
+      expect(response.text).toContain('### Schema\n\n```json\n');
+      expect(response.text).not.toContain('### Schema for `summary`');
+      expect(response.text).toContain('### Schema for `gallery`');
+
+      const schemas = [
+        ...response.text.matchAll(/```json\n([\s\S]*?)\n```/g),
+      ].map(([, json]) => JSON.parse(json));
+      expect(Object.keys(schemas[0].properties)).toEqual(['headline']);
+      expect(Object.keys(schemas[1].properties)).toEqual([
+        'headline',
+        'columns',
+      ]);
+    });
+
+    it('negotiates on the Accept header, preferring JSON', async () => {
+      const markdown = await invokeMiddleware({
+        headers: { accept: 'text/markdown' },
+      });
+      expect(markdown.text).toMatch(/^# Blocks/);
+
+      const json = await invokeMiddleware({
+        headers: { accept: 'application/json, text/markdown' },
+      });
+      expect(json.body.items_total).toBe(3);
+
+      const any = await invokeMiddleware({ headers: { accept: '*/*' } });
+      expect(any.body.items_total).toBe(3);
+    });
+
+    it('returns a Markdown 404 for an unknown block', async () => {
+      const response = await invokeMiddleware({
+        url: '/@blocks-schema/missing',
+        query: { format: 'md' },
+      });
+
+      expect(response.status).toBe(404);
+      expect(response.text).toBe("Block 'missing' is not registered.\n");
     });
   });
 });

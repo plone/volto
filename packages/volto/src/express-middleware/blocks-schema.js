@@ -159,17 +159,93 @@ function buildFullDetail(blockConfig, intl) {
 
 // The block configuration is already public (it ships in the client bundle),
 // so the endpoint is public too and can be cached. Schema titles are
-// translated, so the response varies by language.
+// translated, and the format depends on the Accept header.
 function setCacheHeaders(res) {
   res.set('Cache-Control', 'public, max-age=300');
-  res.set('Vary', 'Accept-Language');
+  res.set('Vary', 'Accept, Accept-Language');
+}
+
+// Markdown is returned for `?format=md`, or when the client asks for
+// `text/markdown` and not for JSON. JSON stays the default.
+function wantsMarkdown(req) {
+  if (req.query?.format === 'md') return true;
+  const accept = req.headers?.accept || '';
+  return (
+    accept.includes('text/markdown') && !accept.includes('application/json')
+  );
+}
+
+function sendMarkdown(res, markdown) {
+  res.set('Content-Type', 'text/markdown; charset=utf-8');
+  res.send(markdown);
+}
+
+const jsonBlock = (value) =>
+  ['```json', JSON.stringify(value, null, 2), '```'].join('\n');
+
+const SCHEMA_ERROR = '_The schema for this block could not be resolved._';
+
+// One `##` section per block: its docs (which use `###` headings), its
+// variations, and its schema. A variation's schema is only listed when it
+// differs from the block's schema.
+export function blockToMarkdown(detail) {
+  const parts = [`## ${detail.title} (\`${detail.id}\`)`];
+
+  if (detail.docs) parts.push(detail.docs);
+
+  if (detail.variations?.length) {
+    const items = detail.variations.map((variation) => {
+      const item = `- \`${variation.id}\`: ${variation.title}${
+        variation.isDefault ? ' (default)' : ''
+      }`;
+      return variation.docs
+        ? `${item}\n\n${variation.docs.replace(/^(?=.)/gm, '  ')}`
+        : item;
+    });
+    parts.push('### Variations', items.join('\n'));
+  }
+
+  if (detail.schema || detail.error) {
+    parts.push(
+      '### Schema',
+      detail.error ? SCHEMA_ERROR : jsonBlock(detail.schema),
+    );
+  }
+
+  const blockSchema = JSON.stringify(detail.schema);
+  for (const variation of detail.variations || []) {
+    if (variation.error) {
+      parts.push(`### Schema for \`${variation.id}\``, SCHEMA_ERROR);
+    } else if (
+      variation.schema &&
+      JSON.stringify(variation.schema) !== blockSchema
+    ) {
+      parts.push(
+        `### Schema for \`${variation.id}\``,
+        jsonBlock(variation.schema),
+      );
+    }
+  }
+
+  return parts.join('\n\n');
+}
+
+export function blocksToMarkdown(details) {
+  return (
+    [
+      '# Blocks',
+      'The blocks available on this site, with their documentation and the schema of their settings. Block data is stored in the `blocks` field of a content item, keyed by block ID, with the block type in `@type`, and their order is in `blocks_layout.items`.',
+      ...details.map(blockToMarkdown),
+    ].join('\n\n') + '\n'
+  );
 }
 
 function blocksSchemaList(req, res, next) {
   try {
     const intl = getIntl(res);
     const blocksConfig = config.blocks.blocksConfig || {};
-    const full = req.query?.full === '1';
+    const markdown = wantsMarkdown(req);
+    const full = markdown || req.query?.full === '1';
 
     const items = Object.values(blocksConfig).map((blockConfig) =>
       full
@@ -178,6 +254,10 @@ function blocksSchemaList(req, res, next) {
     );
 
     setCacheHeaders(res);
+    if (markdown) {
+      sendMarkdown(res, blocksToMarkdown(items));
+      return;
+    }
     res.json({
       '@id': req.originalUrl || req.url,
       items,
@@ -194,21 +274,28 @@ function blocksSchemaDetail(req, res, next) {
     const blocksConfig = config.blocks.blocksConfig || {};
     const blockId = req.params.blockId;
     const blockConfig = blocksConfig[blockId];
+    const markdown = wantsMarkdown(req);
 
     if (!blockConfig) {
-      res.status(404).json({
-        error: {
-          type: 'Not Found',
-          message: `Block '${blockId}' is not registered.`,
-        },
-      });
+      const message = `Block '${blockId}' is not registered.`;
+      res.status(404);
+      if (markdown) {
+        sendMarkdown(res, `${message}\n`);
+        return;
+      }
+      res.json({ error: { type: 'Not Found', message } });
       return;
     }
 
+    const detail = buildFullDetail(blockConfig, intl);
     setCacheHeaders(res);
+    if (markdown) {
+      sendMarkdown(res, `${blockToMarkdown(detail)}\n`);
+      return;
+    }
     res.json({
       '@id': req.originalUrl || req.url,
-      ...buildFullDetail(blockConfig, intl),
+      ...detail,
     });
   } catch (error) {
     next(error);
