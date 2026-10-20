@@ -4665,6 +4665,11 @@ msgstr "No"
 msgid "no workflow state"
 msgstr "Nessun stato di workflow"
 
+#. Default: "An error has occurred. Please contact us for further information"
+#: components/theme/PasswordReset/PasswordReset
+msgid "noBodyError"
+msgstr "Si è verificato un errore. Contattateci per maggiori informazioni."
+
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"

@@ -87,6 +87,11 @@ const messages = defineMessages({
     id: 'Password reset',
     defaultMessage: 'Password reset',
   },
+  noBodyError: {
+    id: 'noBodyError',
+    defaultMessage:
+      'An error has occurred. Please contact us for further information',
+  },
 });
 
 /**
@@ -227,7 +232,9 @@ class PasswordReset extends Component {
     }
     if (this.props.token) {
       const errmsg = this.props.error
-        ? this.props.error.response.body.error
+        ? this.props.error?.response?.body?.error ?? {
+            message: this.props.intl.formatMessage(messages.noBodyError),
+          }
         : null;
       return (
         <div id="page-password-reset">

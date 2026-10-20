@@ -4670,6 +4670,11 @@ msgstr "Ei"
 msgid "no workflow state"
 msgstr "ei julkaisutilaa"
 
+#. Default: "An error has occurred. Please contact us for further information"
+#: components/theme/PasswordReset/PasswordReset
+msgid "noBodyError"
+msgstr ""
+
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
