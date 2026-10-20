@@ -55,6 +55,13 @@ export function flattenHTMLToAppURL(html: string): string;
  */
 export function addAppURL(url: string): string;
 /**
+ * Get the API traversal suffix.
+ *
+ * An explicitly configured apiSuffix takes precedence over legacyTraverse.
+ * @returns {string} API traversal suffix.
+ */
+export function getApiSuffix(): string;
+/**
  * Given a URL expands it to the backend URL
  * Useful when you have to actually call the backend from the
  * frontend code (eg. ICS calendar download)
@@ -78,6 +85,20 @@ export function isInternalURL(url: string): boolean;
  * @returns {boolean} True if is a valid url
  */
 export function isUrl(url: string): boolean;
+/**
+ * Add subpath path if set in settings
+ * @method addSubpathPrefix
+ * @param {string} src pathname
+ * @returns {string} prefixed subpath pathname
+ */
+export function addSubpathPrefix(src: string): string;
+/**
+ * strip subpath path particulary from api calls
+ * @method stripSubpathPrefix
+ * @param {string} src pathname
+ * @returns {string} pathname
+ */
+export function stripSubpathPrefix(src: string): string;
 /**
  * Normalize URL, adds protocol (if required eg. user has not entered the protocol)
  * @method normalizeUrl

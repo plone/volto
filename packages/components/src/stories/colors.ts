@@ -77,15 +77,15 @@ export const colors = slate.reduce(
 
 const _quantaSlate = [
   {
-    name: '--quanta-denim',
+    name: 'denim',
     hex: '#021322',
   },
   {
-    name: '--quanta-air',
+    name: 'air',
     hex: '#fff',
   },
   {
-    name: '--quanta-space',
+    name: 'space',
     hex: '#000',
   },
 ];
@@ -100,27 +100,27 @@ export const quantaColors = _quantaSlate.reduce(
 
 const _quantaGreys = [
   {
-    name: '--quanta-snow',
+    name: 'snow',
     hex: '#f3f5f7',
   },
   {
-    name: '--quanta-smoke',
+    name: 'smoke',
     hex: '#e4e8ec',
   },
   {
-    name: '--quanta-silver',
+    name: 'silver',
     hex: '#c3cdd5',
   },
   {
-    name: '--quanta-dolphin',
+    name: 'dolphin',
     hex: '#8296a6',
   },
   {
-    name: '--quanta-pigeon',
+    name: 'pigeon',
     hex: '#617789',
   },
   {
-    name: '--quanta-iron',
+    name: 'iron',
     hex: '#4a5b68',
   },
 ];
@@ -135,27 +135,27 @@ export const quantaGreys = _quantaGreys.reduce(
 
 const _quantaBlues = [
   {
-    name: '--quanta-arctic',
+    name: 'arctic',
     hex: '#e2f1fd',
   },
   {
-    name: '--quanta-sky',
+    name: 'sky',
     hex: '#c5e3fc',
   },
   {
-    name: '--quanta-azure',
+    name: 'azure',
     hex: '#7cc0f8',
   },
   {
-    name: '--quanta-cobalt',
+    name: 'cobalt',
     hex: '#2597f4',
   },
   {
-    name: '--quanta-sapphire',
+    name: 'sapphire',
     hex: '#0b78d0',
   },
   {
-    name: '--quanta-royal',
+    name: 'royal',
     hex: '#085696',
   },
 ];
@@ -170,27 +170,27 @@ export const quantaBlues = _quantaBlues.reduce(
 
 const _quantaReds = [
   {
-    name: '--quanta-ballet',
+    name: 'ballet',
     hex: '#fee9e7',
   },
   {
-    name: '--quanta-flamingo',
+    name: 'flamingo',
     hex: '#fcd0ca',
   },
   {
-    name: '--quanta-poppy',
+    name: 'poppy',
     hex: '#f9a094',
   },
   {
-    name: '--quanta-rose',
+    name: 'rose',
     hex: '#f54e38',
   },
   {
-    name: '--quanta-candy',
+    name: 'candy',
     hex: '#d0220b',
   },
   {
-    name: '--quanta-wine',
+    name: 'wine',
     hex: '#a91c09',
   },
 ];
@@ -205,27 +205,27 @@ export const quantaReds = _quantaReds.reduce(
 
 const _quantaYellows = [
   {
-    name: '--quanta-cream',
+    name: 'cream',
     hex: '#fcf3cf',
   },
   {
-    name: '--quanta-banana',
+    name: 'banana',
     hex: '#faeaad',
   },
   {
-    name: '--quanta-lemmon',
+    name: 'lemmon',
     hex: '#f6d355',
   },
   {
-    name: '--quanta-gold',
+    name: 'gold',
     hex: '#b48f09',
   },
   {
-    name: '--quanta-dijon',
+    name: 'dijon',
     hex: '#917308',
   },
   {
-    name: '--quanta-bronze',
+    name: 'bronze',
     hex: '#6b5506',
   },
 ];
@@ -240,27 +240,27 @@ export const quantaYellows = _quantaYellows.reduce(
 
 const _quantaGreens = [
   {
-    name: '--quanta-daiquiri',
+    name: 'daiquiri',
     hex: '#e2f7de',
   },
   {
-    name: '--quanta-mint',
+    name: 'mint',
     hex: '#c5efbe',
   },
   {
-    name: '--quanta-celery',
+    name: 'celery',
     hex: '#8bde7c',
   },
   {
-    name: '--quanta-neon',
+    name: 'neon',
     hex: '#3da72a',
   },
   {
-    name: '--quanta-emerald',
+    name: 'emerald',
     hex: '#318722',
   },
   {
-    name: '--quanta-turtle',
+    name: 'turtle',
     hex: '#256619',
   },
 ];
@@ -275,27 +275,27 @@ export const quantaGreens = _quantaGreens.reduce(
 
 const _quantaBlueGreens = [
   {
-    name: '--quanta-aqua',
+    name: 'aqua',
     hex: '#d6f5f2',
   },
   {
-    name: '--quanta-spa',
+    name: 'spa',
     hex: '#baeee9',
   },
   {
-    name: '--quanta-tiffany',
+    name: 'tiffany',
     hex: '#74dcd4',
   },
   {
-    name: '--quanta-turquoise',
+    name: 'turquoise',
     hex: '#29a399',
   },
   {
-    name: '--quanta-peacock',
+    name: 'peacock',
     hex: '#207e77',
   },
   {
-    name: '--quanta-puya',
+    name: 'puya',
     hex: '#175e58',
   },
 ];

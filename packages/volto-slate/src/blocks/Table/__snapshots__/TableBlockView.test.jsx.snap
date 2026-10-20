@@ -1,0 +1,38 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a view table component 1`] = `
+<div
+  className="block slate-table"
+>
+  <div
+    className="block-inner-container"
+  >
+    <table
+      className="ui unstackable table slate-table-block"
+    >
+      <thead
+        className=""
+      >
+        <tr
+          className=""
+        >
+          <th
+            aria-sort="none"
+            className="left aligned middle aligned"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+          >
+            <h2>
+              My header
+            </h2>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        className=""
+      />
+    </table>
+  </div>
+</div>
+`;

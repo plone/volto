@@ -1,9 +1,9 @@
-# Control Panels
+# Control panels
 
 Control panels in Plone allow you to configure the global site setup of a Plone site.
 The `@controlpanels` endpoint in `plone.restapi` allows you to list all existing control panels in a Plone site, and to retrieve or edit the settings of a specific control panel.
 
-## Get Control Panels List
+## Get control panels list
 
 ### Query function
 
@@ -13,7 +13,7 @@ Use the `getControlpanelsQuery` function to get the query for fetching the contr
 
 Use the `useGetControlpanels` hook to get the control panels list.
 
-## Get Control Panel
+## Get control panel
 
 ### Query function
 
@@ -29,7 +29,7 @@ Use the `useGetControlpanel` hook to get a control panel at a given path.
 
   - **Required**: Yes
 
-## Add Custom Elements in Control Panel
+## Add custom elements in control panel
 
 ### Mutation function
 
@@ -45,7 +45,7 @@ Use the `useCreateControlpanel` hook to add a custom element in the control pane
 
   - **Required**: Yes
 
-## Update Custom Elements in Control Panel
+## Update custom elements in control panel
 
 ### Mutation function
 
@@ -61,7 +61,7 @@ Use the `useUpdateControlpanel` hook to update a custom element in the control p
 
   - **Required**: Yes
 
-## Delete Custom Elements in Control Panel
+## Delete custom elements in control panel
 
 ### Mutation function
 

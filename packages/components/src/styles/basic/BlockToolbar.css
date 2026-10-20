@@ -1,9 +1,9 @@
+/* depends on:
 @import './Checkbox.css';
 @import './Button.css';
 @import './ToggleButton.css';
 @import './Menu.css';
-@import './theme.css';
-
+*/
 @layer plone-components.base {
   .blocks-toolbar {
     display: flex;

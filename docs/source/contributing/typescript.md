@@ -42,8 +42,7 @@ The internal policy for TypeScript support in Volto core will be as follows.
 
 ## TypeScript in projects and add-ons
 
-You can enable TypeScript support when developing your project in Volto.
-If you use the Volto generator, TypeScript is enabled by default, and you can already start using TypeScript in it.
+TypeScript is enabled by default in both projects and add-ons, and you can already start using TypeScript in it.
 
 ### Enable it in your Volto 17 project
 
@@ -218,7 +217,7 @@ Your editor should be properly reporting errors now, it should also be consisten
 
 If you are using CSS Modules in your code, instead of keeping all the styles in the main ``theme`` folder, you will see the typechecking failing because it does not recognize the modules you are importing with, for example, ``import styles from './styles.module.css'``.
 
-Add a declaration file in your ``src`` folder to teach TypeScript about CSS Modules. As a basic working example, you can add the following file in your code at the path ``src/cssmodules.d.ts`` (inspired by [https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/lib/react-app.d.ts](https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/lib/react-app.d.ts)):
+Add a declaration file in your ``src`` folder to teach TypeScript about CSS Modules. As a basic working example, you can add the following file in your code at the path ``src/cssmodules.d.ts`` (inspired by [react-app.d.ts](https://github.com/react/create-react-app/blob/main/packages/react-scripts/lib/react-app.d.ts)):
 
 ```ts
 declare module '*.module.css' {

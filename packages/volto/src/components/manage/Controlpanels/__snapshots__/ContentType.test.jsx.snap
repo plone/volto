@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ContentType renders dexterity content-type component 1`] = `
+exports[`ContentType > renders dexterity content-type component 1`] = `
 <div>
   <div
     class="ui container"
@@ -18,10 +18,6 @@ exports[`ContentType renders dexterity content-type component 1`] = `
   </div>
   <div
     id="toolbar"
-  >
-    <div
-      id="Portal"
-    />
-  </div>
+  />
 </div>
 `;

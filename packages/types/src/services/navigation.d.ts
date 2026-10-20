@@ -1,7 +1,7 @@
 export interface NavigationItem {
   '@id': string;
   description: string;
-  items: unknown[];
+  items: NavigationItem[];
   review_state: string;
   title: string;
 }

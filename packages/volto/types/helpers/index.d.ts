@@ -7,6 +7,7 @@ export { default as ScrollToTop } from "@plone/volto/helpers/ScrollToTop/ScrollT
 export { default as langmap } from "./LanguageMap/LanguageMap";
 export { default as Helmet } from "./Helmet/Helmet";
 export { messages } from "./MessageLabels/MessageLabels";
+export { formatMessageWithFallback } from "./I18n/I18n";
 export { asyncConnect } from "./AsyncConnect";
 export { useDetectClickOutside } from "./Utils/useDetectClickOutside";
 export { useEvent } from "./Utils/useEvent";
@@ -15,6 +16,7 @@ export { usePagination } from "./Utils/usePagination";
 export { default as useUndoManager } from "./UndoManager/useUndoManager";
 export { getCookieOptions } from "./Cookies/cookies";
 export { getWidgetView } from "./Widget/widget";
+export { applyTaggedValues } from "./Widget/taggedValues";
 export { getSiteAsyncPropExtender } from "./Site";
 export { ContentTypeCondition } from "./Slots";
 export { getAuthToken, persistAuthToken } from "@plone/volto/helpers/AuthToken/AuthToken";
@@ -24,7 +26,7 @@ export { applyBlockInitialValue, addBlock, insertBlock, blockHasValue, changeBlo
 export { getSimpleDefaultBlocks, getDefaultBlocks } from "@plone/volto/helpers/Blocks/defaultBlocks";
 export { getBoolean, getVocabName, getVocabFromHint, getVocabFromField, getVocabFromItems, getFieldsVocabulary } from "@plone/volto/helpers/Vocabularies/Vocabularies";
 export { default as FormValidation, validateFileUploadSize, tryParseJSON, extractInvariantErrors } from "./FormValidation/FormValidation";
-export { difference, getColor, getInitials, safeWrapper, applyConfig, withServerErrorCode, parseDateTime, toGettextLang, normalizeLanguageName, toReactIntlLang, toLangUnderscoreRegion, toBackendLang, hasApiExpander, replaceItemOfArray, cloneDeepSchema, insertInArray, removeFromArray, arrayRange, reorderArray, isInteractiveElement, slugify, normalizeString } from "@plone/volto/helpers/Utils/Utils";
+export { difference, getColor, getInitials, safeWrapper, applyConfig, withServerErrorCode, parseDateTime, toGettextLang, normalizeLanguageName, toReactIntlLang, toLangUnderscoreRegion, toBackendLang, hasApiExpander, replaceItemOfArray, cloneDeepSchema, insertInArray, removeFromArray, arrayRange, reorderArray, isInteractiveElement, isIMEComposing, slugify, normalizeString } from "@plone/volto/helpers/Utils/Utils";
 export { withBlockSchemaEnhancer, withVariationSchemaEnhancer, withBlockExtensions, applySchemaEnhancer, resolveExtension, resolveBlockExtensions, addStyling, composeSchema } from "./Extensions";
 export { userHasRoles, isManager, canAssignGroup, canAssignRole } from "./User/User";
 export { getCurrentStateMapping, getWorkflowOptions } from "./Workflows/Workflows";

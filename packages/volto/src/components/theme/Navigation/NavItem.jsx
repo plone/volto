@@ -15,11 +15,7 @@ const NavItem = ({ item, lang }) => {
         key={item.url}
         className="item"
         activeClassName="active"
-        exact={
-          settings.isMultilingual
-            ? item.url === `/${toBackendLang(lang)}`
-            : item.url === ''
-        }
+        exact={item.url === '' || item.url === `/${toBackendLang(lang)}`}
       >
         {item.title}
       </NavLink>

@@ -43,6 +43,15 @@ describe('Sitemap', () => {
         locale: 'en',
         messages: {},
       },
+      navroot: {
+        data: {
+          navroot: {
+            '@id': `http://localhost:8080/Plone/`,
+            '@type': 'Plone Site',
+            title: 'Plone Site',
+          },
+        },
+      },
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -58,7 +67,6 @@ describe('Sitemap', () => {
 
 describe('Sitemap in a multilingual site', () => {
   beforeEach(() => {
-    config.settings.isMultilingual = true;
     config.settings.supportedLanguages = ['en', 'es'];
   });
   it('renders a sitemap component', () => {
@@ -93,6 +101,15 @@ describe('Sitemap in a multilingual site', () => {
       intl: {
         locale: 'en',
         messages: {},
+      },
+      navroot: {
+        data: {
+          navroot: {
+            '@id': `http://localhost:8080/Plone/en`,
+            '@type': 'LRF',
+            title: 'English',
+          },
+        },
       },
     });
     const component = renderer.create(

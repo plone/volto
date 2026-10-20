@@ -67,7 +67,7 @@ const BreadcrumbsComponent = ({ pathname }) => {
             className="section"
             title={intl.formatMessage(messages.home)}
           >
-            <Icon name={homeSVG} size="18px" />
+            <Icon name={homeSVG} size="24px" />
           </Link>
           {items.map((item, index, items) => [
             <Breadcrumb.Divider key={`divider-${item.url}`} />,

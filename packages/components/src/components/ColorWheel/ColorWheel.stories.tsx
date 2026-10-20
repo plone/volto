@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { ColorWheel } from './ColorWheel';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ColorWheel.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Widgets/ColorWheel',
+  title: 'Basic/Forms/ColorWheel',
   component: ColorWheel,
   parameters: {
     layout: 'centered',

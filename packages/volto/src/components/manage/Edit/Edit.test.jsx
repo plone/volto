@@ -2,15 +2,20 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import jwt from 'jsonwebtoken';
 
 import { __test__ as Edit } from './Edit';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Form');
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
-jest.mock('../Sidebar/Sidebar', () => jest.fn(() => <div id="Sidebar" />));
+vi.mock('@plone/volto/components/manage/Form');
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
+vi.mock('../Sidebar/Sidebar', () => ({
+  default: vi.fn(() => <div id="Sidebar" />),
+}));
 
 describe('Edit', () => {
   it('renders an empty edit component', () => {
@@ -51,9 +56,11 @@ describe('Edit', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <div id="toolbar"></div>
-        <Edit location={{ pathname: '/blog', search: {} }} />
-        <div id="sidebar"></div>
+        <CookiesProvider>
+          <div id="toolbar"></div>
+          <Edit location={{ pathname: '/blog', search: {} }} />
+          <div id="sidebar"></div>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -100,9 +107,11 @@ describe('Edit', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <div id="toolbar"></div>
-        <Edit location={{ pathname: '/blog', search: {} }} />
-        <div id="sidebar"></div>
+        <CookiesProvider>
+          <div id="toolbar"></div>
+          <Edit location={{ pathname: '/blog', search: {} }} />
+          <div id="sidebar"></div>
+        </CookiesProvider>
       </Provider>,
     );
 

@@ -6,7 +6,7 @@
  */
 
 const { find, keys, map, concat, reduce } = require('lodash');
-const glob = require('glob').sync;
+const glob = require('glob').globSync;
 const fs = require('fs');
 const Pofile = require('pofile');
 const babel = require('@babel/core');
@@ -16,6 +16,17 @@ const projectRootPath = path.resolve('.');
 
 const { program } = require('commander');
 const chalk = require('chalk');
+
+/**
+ * Replace appearances of " to convert to \"
+ * to keep gettext compatibility in PO files
+ * Avoid double escaping
+ * @function escapeDoubleQuotes
+ * @return {string}
+ */
+function escapeDoubleQuotes(value) {
+  return value.replace(/\\"/g, '"').replace(/"/g, '\\"');
+}
 
 /**
  * Extract messages into separate JSON files
@@ -62,7 +73,7 @@ function getMessages() {
             'build/messages/src/customizations/**',
             'build/messages/src/addons/**',
           ],
-        }),
+        }).sort((a, b) => a.localeCompare(b, 'en')),
         (filename) =>
           map(JSON.parse(fs.readFileSync(filename, 'utf8')), (message) => ({
             ...message,
@@ -103,9 +114,9 @@ function getMessages() {
 function messagesToPot(messages) {
   return map(keys(messages).sort(), (key) =>
     [
-      `#. Default: "${messages[key].defaultMessage.trim()}"`,
+      `#. Default: "${escapeDoubleQuotes(messages[key].defaultMessage.trim())}"`,
       ...map(messages[key].filenames, (filename) => `#: ${filename}`),
-      `msgid "${key}"`,
+      `msgid "${escapeDoubleQuotes(key)}"`,
       'msgstr ""',
     ].join('\n'),
   ).join('\n\n');
@@ -246,8 +257,10 @@ ${map(pot.items, (item) => {
   return [
     `#. ${item.extractedComments[0]}`,
     `${map(item.references, (ref) => `#: ${ref}`).join('\n')}`,
-    `msgid "${item.msgid}"`,
-    `msgstr "${poItem ? poItem.msgstr : ''}"`,
+    `msgid "${escapeDoubleQuotes(item.msgid)}"`,
+    `msgstr "${
+      poItem && poItem.msgstr[0] ? escapeDoubleQuotes(poItem.msgstr[0]) : ''
+    }"`,
   ].join('\n');
 }).join('\n\n')}\n`,
     );
@@ -357,4 +370,4 @@ if (require.main === module) {
   main({ addonMode: options.addon });
 }
 
-module.exports = { poToJson };
+module.exports = { poToJson, escapeDoubleQuotes };

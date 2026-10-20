@@ -1,8 +1,8 @@
-# Quick Start
+# Quick start
 
-The Javascript Plone client is a library that provides easy access to the Plone REST API from a client written in TypeScript.
+The JavaScript Plone client is a library that provides easy access to the Plone REST API from a client written in TypeScript.
 This client can be used as an alternative to directly interacting with the Plone REST API.
-It is based on the foundations that [@tanstack/query](https://tanstack.com/query/latest) lays off.
+It's based on the foundation of [@tanstack/query](https://tanstack.com/query/latest).
 It should be possible to use it in React/Vue/Solid/Svelte projects.
 It provides the artifacts that TanStack Query requires to work:
 
@@ -11,14 +11,15 @@ It provides the artifacts that TanStack Query requires to work:
 - API request layer
 
 The API request layer allows to build and send arbitrary requests to Plone REST API endpoints.
-It has the potential to also be able to send requests to other APIs (provided the custom Query options factories/functions).
+It has the potential to send requests to other APIs, provided through the custom Query options for factories and functions.
 
-The Javascript Plone client is conceived to work with TanStack Query, the query or mutation functions can be used to call any Plone REST API endpoint without using it.
+The JavaScript Plone client is conceived to work with TanStack Query.
+The query or mutation functions can be used to call any Plone REST API endpoint without using it.
 These functions can be used in other use cases like command line helpers, scripts or programmatic tests.
 
 ## Installation​
 
-To install the Javascript Plone client run the following command:
+To install the JavaScript Plone client run the following command:
 
 ```shell
 pnpm add @plone/client
@@ -45,7 +46,7 @@ const client = ploneClient.initialize({
 
 ## Query (or mutation) options factories
 
-A query (or mutation) options factory is a TanStack Query basic artifact, a function that returns an object, ready to be passed to a React Query hook (in case that we are in a React environment) or to the TanStack Query adapter that we are using in our framework.
+A query (or mutation) options factory in TanStack Query is a function providing an object for React Query hooks or the utilized framework's Query adapter.
 
 ```ts
 import { useQuery } from '@tanstack/react-query';
@@ -55,8 +56,8 @@ const { getContentQuery } = client;
 const { data, isLoading } = useQuery(getContentQuery({ path: pathname }));
 ```
 
-The query (or mutation) factories ara functions that take an object as arguments.
-These arguments can have some common properties (like the path) and other specific depending on the nature of the endpoint that they are correspond with.
+The query (or mutation) factories are functions that take an object as arguments.
+These arguments can have some common properties, such as the path, and other specific depending on the nature of the endpoint that they're correspond with.
 
 This is a complete example of the usage of the client in a React client component:
 
@@ -91,7 +92,7 @@ export default function Title() {
 }
 ```
 
-## Plone Client React Hooks
+## Plone client react hooks
 
 This package also provides custom hooks for actions that can be used directly in functional React components.
 

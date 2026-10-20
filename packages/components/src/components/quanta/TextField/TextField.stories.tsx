@@ -1,13 +1,10 @@
 import React from 'react';
 import { QuantaTextField } from './TextField';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../../styles/basic/TextField.css';
-import '../../../styles/quanta/TextField.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof QuantaTextField> = {
-  title: 'Quanta/TextField',
+  title: 'Basic/Quanta/TextField',
   component: QuantaTextField,
   parameters: {
     layout: 'centered',

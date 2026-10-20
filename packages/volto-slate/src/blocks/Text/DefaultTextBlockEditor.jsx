@@ -29,6 +29,7 @@ import { handleKey } from './keyboard';
 import TextBlockSchema from './schema';
 
 import imageBlockSVG from '@plone/volto/components/manage/Blocks/Image/block-image.svg';
+import Image from '@plone/volto/components/theme/Image/Image';
 
 import './css/editor.css';
 
@@ -142,10 +143,10 @@ export const DefaultTextBlockEditor = (props) => {
       const url = flattenToAppURL(imageId);
       setNewImageId(imageId);
 
-      createImageBlock(url, index, props);
+      createImageBlock(url, index, props, intl);
     }
     prevReq.current = loaded;
-  }, [props, loaded, loading, prevLoaded, imageId, newImageId, index]);
+  }, [props, loaded, loading, prevLoaded, imageId, newImageId, index, intl]);
 
   const handleUpdate = React.useCallback(
     (editor) => {
@@ -217,7 +218,7 @@ export const DefaultTextBlockEditor = (props) => {
                 ) : (
                   <Message>
                     <center>
-                      <img src={imageBlockSVG} alt="" />
+                      <Image src={imageBlockSVG} alt="" />
                     </center>
                   </Message>
                 )}

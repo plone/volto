@@ -11,6 +11,7 @@ import keys from 'lodash/keys';
 import endsWith from 'lodash/endsWith';
 import find from 'lodash/find';
 import config from '@plone/volto/registry';
+import omit from 'lodash/omit';
 
 /**
  * Nest content.
@@ -84,4 +85,26 @@ export function getLanguageIndependentFields(schema) {
       Object.keys(properties[field]).includes('multilingual_options') &&
       properties[field]['multilingual_options']?.['language_independent'],
   );
+}
+
+/**
+ * Flattens static behaviors into the parent object with dot-notation keys.
+ * @function flattenStaticBehaviors
+ * @param {Object} result The result object containing static behaviors.
+ * @returns {Object} Result object with flattened static behaviors.
+ */
+export function flattenStaticBehaviors(result) {
+  if (!result['@static_behaviors']) {
+    return result;
+  }
+
+  let flattened = Object.assign({}, result);
+  map(result['@static_behaviors'], (behavior) => {
+    flattened = {
+      ...omit(flattened, behavior),
+      ...mapKeys(flattened[behavior], (value, key) => `${behavior}.${key}`),
+    };
+  });
+
+  return flattened;
 }

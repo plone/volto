@@ -13,7 +13,7 @@ The server side Volto {term}`SSR` process (based on Razzle) has an internal prox
 enabled by default.
 
 It provides a better developer experience out of the box, so the developer doesn't has to
-deal with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) and can focus on
+deal with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) and can focus on
 develop/test drive/demo Volto.
 
 To understand the need for the internal proxy, there are three processes running in a Volto website:

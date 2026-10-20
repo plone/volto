@@ -3,14 +3,17 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import ContentTypes from './ContentTypes';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('../Form/Form', () => jest.fn(() => <div id="form" />));
+vi.mock('../Form/Form', () => ({ default: vi.fn(() => <div id="form" />) }));
 
 describe('ContentTypes', () => {
   it('renders dexterity content-types controlpanel component', () => {
@@ -58,13 +61,36 @@ describe('ContentTypes', () => {
         locale: 'en',
         messages: {},
       },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
+    store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter initialEntries={['/controlpanel/dexterity-types']}>
-          <Route path={'/controlpanel/:id'} component={ContentTypes} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/controlpanel/dexterity-types']}>
+            <Route path={'/controlpanel/:id'} component={ContentTypes} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

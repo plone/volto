@@ -26,6 +26,7 @@ of an error is present, it overrides a default from SemanticUI grid definitions.
 
   &.required .wrapper {
     > label[for]::after,
+    .ui.checkbox::after,
     .ui.label::after {
       display: inline-block;
       width: 10px;
@@ -35,6 +36,12 @@ of an error is present, it overrides a default from SemanticUI grid definitions.
       background-color: @pink;
       content: '';
     }
+  }
+
+  &.required .wrapper .ui.checkbox::after {
+    position: absolute;
+    top: 2px;
+    right: -14px;
   }
 
   &.text {

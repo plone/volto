@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import find from 'lodash/find';
+import { Dimmer, Loader } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 
 import Toast from '@plone/volto/components/manage/Toast/Toast';
@@ -103,6 +104,10 @@ const messages = defineMessages({
     id: 'workingCopyGenericError',
     defaultMessage: 'An error occurred while performing this operation.',
   },
+  Loading: {
+    id: 'Loading',
+    defaultMessage: 'Loading',
+  },
 });
 
 const More = (props) => {
@@ -114,12 +119,17 @@ const More = (props) => {
 
   const content = useSelector((state) => state.content?.data, shallowEqual);
   const workingCopy = useSelector((state) => state.workingCopy, shallowEqual);
+  const isMultilingual = useSelector(
+    (state) => state.site.data.features?.multilingual,
+  );
 
   const actions = useSelector((state) => state.actions.actions, shallowEqual);
 
   const workingCopyApply = workingCopy?.apply.loading;
   const workingCopyCreate = workingCopy?.create.loading;
   const workingCopyRemove = workingCopy?.remove.loading;
+  const isWorkingCopyLoading =
+    workingCopyApply || workingCopyCreate || workingCopyRemove;
 
   const prevWorkingCopyApplyLoading = usePrevious(workingCopyApply);
   const prevWorkingCopyCreateLoading = usePrevious(workingCopyCreate);
@@ -191,6 +201,13 @@ const More = (props) => {
     id: 'redirection',
   });
 
+  const workingCopyCheckoutAction = find(actions.object_buttons, {
+    id: 'iterate_checkout',
+  });
+  const workingCopyCheckinAction = find(actions.object_buttons, {
+    id: 'iterate_checkin',
+  });
+
   const dateOptions = {
     year: 'numeric',
     month: 'long',
@@ -206,6 +223,9 @@ const More = (props) => {
           : null,
       }}
     >
+      <Dimmer active={isWorkingCopyLoading} inverted>
+        <Loader>{intl.formatMessage(messages.Loading)}</Loader>
+      </Dimmer>
       <header>
         <h2>{content.title}</h2>
         <button
@@ -320,126 +340,118 @@ const More = (props) => {
           </>
         )}
       </Pluggable>
-      {config.settings.hasWorkingCopySupport &&
-        content['@type'] !== 'Plone Site' && (
-          <>
-            {!content.working_copy && (
-              <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
-                <li>
-                  <button
-                    aria-label={intl.formatMessage(messages.CreateWorkingCopy)}
-                    onClick={() => {
-                      dispatch(createWorkingCopy(path)).then((response) => {
-                        history.push(flattenToAppURL(response['@id']));
-                        props.closeMenu();
-                      });
-                    }}
-                  >
-                    {intl.formatMessage(messages.CreateWorkingCopy)}
+      {workingCopyCheckoutAction && (
+        <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
+          <li>
+            <button
+              aria-label={intl.formatMessage(messages.CreateWorkingCopy)}
+              disabled={workingCopyCreate}
+              onClick={() => {
+                dispatch(createWorkingCopy(path)).then((response) => {
+                  history.push(flattenToAppURL(response['@id']));
+                  props.closeMenu();
+                });
+              }}
+            >
+              {intl.formatMessage(messages.CreateWorkingCopy)}
 
-                    <Icon name={rightArrowSVG} size="24px" />
-                  </button>
-                </li>
-              </Plug>
-            )}
-            {content.working_copy && content.working_copy_of && (
-              <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
-                <li>
-                  <button
-                    aria-label={intl.formatMessage(messages.applyWorkingCopy)}
-                    onClick={() => {
-                      dispatch(applyWorkingCopy(path)).then((response) => {
-                        history.push(
-                          flattenToAppURL(content.working_copy_of['@id']),
-                        );
-                        props.closeMenu();
-                        toast.info(
-                          <Toast
-                            info
-                            title={intl.formatMessage(
-                              messages.workingAppliedTitle,
-                            )}
-                            content={intl.formatMessage(
-                              messages.workingCopyAppliedBy,
-                              {
-                                creator: content.working_copy?.creator_name,
-                                date: (
-                                  <FormattedDate
-                                    date={content.working_copy?.created}
-                                    format={dateOptions}
-                                  />
-                                ),
-                              },
-                            )}
-                          />,
-                          {
-                            toastId: 'workingcopyapplyinfo',
-                            autoClose: 10000,
-                          },
-                        );
-                      });
-                    }}
-                  >
-                    {intl.formatMessage(messages.applyWorkingCopy)}
+              <Icon name={rightArrowSVG} size="24px" />
+            </button>
+          </li>
+        </Plug>
+      )}
+      {workingCopyCheckinAction && (
+        <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
+          <li>
+            <button
+              aria-label={intl.formatMessage(messages.applyWorkingCopy)}
+              disabled={workingCopyApply}
+              onClick={() => {
+                dispatch(applyWorkingCopy(path)).then((response) => {
+                  history.push(flattenToAppURL(content.working_copy_of['@id']));
+                  props.closeMenu();
+                  toast.info(
+                    <Toast
+                      info
+                      title={intl.formatMessage(messages.workingAppliedTitle)}
+                      content={intl.formatMessage(
+                        messages.workingCopyAppliedBy,
+                        {
+                          creator: content.working_copy?.creator_name,
+                          date: (
+                            <FormattedDate
+                              date={content.working_copy?.created}
+                              format={dateOptions}
+                            />
+                          ),
+                        },
+                      )}
+                    />,
+                    {
+                      toastId: 'workingcopyapplyinfo',
+                      autoClose: 10000,
+                    },
+                  );
+                });
+              }}
+            >
+              {intl.formatMessage(messages.applyWorkingCopy)}
 
-                    <Icon
-                      name={applySVG}
-                      size="24px"
-                      title={intl.formatMessage(messages.applyWorkingCopy)}
-                    />
-                  </button>
-                </li>
-                <li>
-                  <button
-                    aria-label={intl.formatMessage(messages.removeWorkingCopy)}
-                    onClick={() => {
-                      dispatch(removeWorkingCopy(path)).then((response) => {
-                        history.push(
-                          flattenToAppURL(content.working_copy_of['@id']),
-                        );
-                        props.closeMenu();
-                        toast.info(
-                          <Toast
-                            info
-                            title={intl.formatMessage(
-                              messages.workingCopyRemovedTitle,
-                            )}
-                          />,
-                          {
-                            toastId: 'workingcopyremovednotice',
-                            autoClose: 10000,
-                          },
-                        );
-                      });
-                    }}
-                  >
-                    {intl.formatMessage(messages.removeWorkingCopy)}
-                    <Icon
-                      name={removeSVG}
-                      size="24px"
-                      color="#e40166"
-                      title={intl.formatMessage(messages.removeWorkingCopy)}
-                    />
-                  </button>
-                </li>
-              </Plug>
-            )}
-            {content.working_copy && !content.working_copy_of && (
-              <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
-                <li>
-                  <Link
-                    to={flattenToAppURL(content.working_copy['@id'])}
-                    onClick={() => props.closeMenu()}
-                  >
-                    {intl.formatMessage(messages.viewWorkingCopy)}
-                    <Icon name={rightArrowSVG} size="24px" />
-                  </Link>
-                </li>
-              </Plug>
-            )}
-          </>
-        )}
-      {editAction && config.settings.isMultilingual && (
+              <Icon
+                name={applySVG}
+                size="24px"
+                title={intl.formatMessage(messages.applyWorkingCopy)}
+              />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label={intl.formatMessage(messages.removeWorkingCopy)}
+              disabled={workingCopyRemove}
+              onClick={() => {
+                dispatch(removeWorkingCopy(path)).then((response) => {
+                  history.push(flattenToAppURL(content.working_copy_of['@id']));
+                  props.closeMenu();
+                  toast.info(
+                    <Toast
+                      info
+                      title={intl.formatMessage(
+                        messages.workingCopyRemovedTitle,
+                      )}
+                    />,
+                    {
+                      toastId: 'workingcopyremovednotice',
+                      autoClose: 10000,
+                    },
+                  );
+                });
+              }}
+            >
+              {intl.formatMessage(messages.removeWorkingCopy)}
+              <Icon
+                name={removeSVG}
+                size="24px"
+                color="#e40166"
+                title={intl.formatMessage(messages.removeWorkingCopy)}
+              />
+            </button>
+          </li>
+        </Plug>
+      )}
+      {content.working_copy && !content.working_copy_of && (
+        <Plug pluggable="toolbar-more-manage-content" id="workingcopy">
+          <li>
+            <Link
+              to={flattenToAppURL(content.working_copy['@id'])}
+              onClick={() => props.closeMenu()}
+            >
+              {intl.formatMessage(messages.viewWorkingCopy)}
+              <Icon name={rightArrowSVG} size="24px" />
+            </Link>
+          </li>
+        </Plug>
+      )}
+      {editAction && isMultilingual && (
         <Plug pluggable="toolbar-more-manage-content" id="multilingual">
           <li>
             <Link to={`${path}/manage-translations`}>

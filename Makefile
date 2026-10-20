@@ -60,6 +60,10 @@ start: ## Starts Volto, allowing reloading of the add-on during development
 build: ## Build a production bundle for distribution
 	$(MAKE) -C "./packages/volto/" build
 
+.PHONY: prod-start
+prod-start: build ## Starts Volto in production mode
+	pnpm start:prod
+
 .PHONY: test
 test: ## Run unit tests
 	$(MAKE) -C "./packages/volto/" test
@@ -71,9 +75,7 @@ clean: ## Clean development environment
 
 .PHONY: install
 install: ## Set up development environment
-	# Setup ESlint for VSCode
 	pnpm i
-	node packages/scripts/vscodesettings.js
 	make build-deps
 
 ##### Documentation
@@ -116,7 +118,10 @@ docs-linkcheck: bin/python docs-news  ## Run linkcheck
 
 .PHONY: docs-linkcheckbroken
 docs-linkcheckbroken: bin/python docs-news  ## Run linkcheck and show only broken links
-	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? -eq 0; then exit 1; fi || test $$? -ne 0
+	cd $(DOCS_DIR) && $(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck | GREP_COLORS='0;31' grep -wi "broken\|redirect" --color=always | GREP_COLORS='0;31' grep -vi "https://github.com/plone/volto/issues/" --color=always && if test $$? = 0; then exit 1; fi || test $$? = 1
+	@echo
+	@echo "Link check complete; look for any errors in the above output " \
+		"or in $(BUILDDIR)/linkcheck/ ."
 
 .PHONY: docs-vale
 docs-vale: bin/python docs-news  ## Install (once) and run Vale style, grammar, and spell checks
@@ -146,7 +151,10 @@ packages/components/dist: $(shell find packages/components/src -type f)
 	pnpm build:components
 
 .PHONY: build-deps
-build-deps: packages/registry/dist ## Build dependencies
+build-deps: packages/registry/dist packages/components/dist ## Build dependencies
+
+.PHONY: build-all-deps
+build-all-deps: packages/registry/dist packages/components/dist ## Build all dependencies
 
 .PHONY: i18n
 i18n: ## Converts your po files into json to translate volto frontend
@@ -242,7 +250,11 @@ deployment-acceptance-web-server-start: ## Start the reverse proxy (Traefik) in 
 deployment-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for deployment tests
 	$(MAKE) -C "./packages/volto/" deployment-ci-acceptance-test-run-all
 
-######### Project Acceptance tests
+######### Cookieplone / (deprecated) Project Acceptance tests
+
+.PHONY: cookieplone-acceptance-frontend-prod-start
+cookieplone-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
+	$(MAKE) -C "./packages/volto/" cookieplone-acceptance-frontend-prod-start
 
 .PHONY: project-acceptance-frontend-prod-start
 project-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for project tests
@@ -340,43 +352,47 @@ working-copy-ci-acceptance-test: ## Run Cypress tests in headless mode for CI fo
 working-copy-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for working copy tests
 	$(MAKE) -C "./packages/volto/" working-copy-ci-acceptance-test-run-all
 
-######### Guillotina Acceptance tests
+######### Prefixed Core Acceptance tests
 
-.PHONY: guillotina-acceptance-backend-start
-guillotina-acceptance-backend-start: ## Start backend acceptance server for Guillotina tests
-	docker-compose -f g-api/docker-compose.yml up > /dev/null
+.PHONY: subpath-acceptance-frontend-prod-start
+subpath-acceptance-frontend-prod-start: ## Start the prefixed Core Acceptance Frontend Fixture
+	$(MAKE) -C "./packages/volto/" subpath-acceptance-frontend-prod-start
 
-.PHONY: guillotina-acceptance-frontend-prod-start
-guillotina-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-frontend-prod-start
+.PHONY: subpath-acceptance-frontend-dev-start
+subpath-acceptance-frontend-dev-start: ## Start Prefixed acceptance frontend in development mode
+	$(MAKE) -C "./packages/volto/" subpath-acceptance-frontend-dev-start
 
-.PHONY: guillotina-acceptance-test
-guillotina-acceptance-test: ## Start Cypress in interactive mode for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-acceptance-test
+.PHONY: subpath-ci-acceptance-test-run-all
+subpath-ci-acceptance-test-run-all: ## Runs prefixed Core Full Acceptance Testing in headless mode
+	$(MAKE) -C "./packages/volto/" subpath-ci-acceptance-test-run-all
 
-.PHONY: guillotina-ci-acceptance-test
-guillotina-ci-acceptance-test: ## Run Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test
+.PHONY: subpath-acceptance-test
+subpath-acceptance-test: ## Start Prefixed Cypress Acceptance Tests
+	$(MAKE) -C "./packages/volto/" subpath-acceptance-test
 
-.PHONY: guillotina-ci-acceptance-test-run-all
-guillotina-ci-acceptance-test-run-all: ## With a single command, run the backend, frontend, and the Cypress tests in headless mode for CI for Guillotina tests
-	$(MAKE) -C "./packages/volto/" guillotina-ci-acceptance-test-run-all
+.PHONY: deployment-subpath-acceptance-web-server-start
+deployment-subpath-acceptance-web-server-start: ## Start the prefixed webserver
+	$(MAKE) -C "./packages/volto/" deployment-subpath-acceptance-web-server-start
 
-######### Plone 5 Acceptance tests
+######### Prefixed Multilingual Acceptance tests
 
-.PHONY: plone5-acceptance-backend-start
-plone5-acceptance-backend-start: ## Start backend acceptance server for Plone 5 tests
-	$(MAKE) -C "./packages/volto/" plone5-acceptance-backend-start
+.PHONY: subpath-multilingual-acceptance-frontend-prod-start
+subpath-multilingual-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for prefixed multilingual tests
+	$(MAKE) -C "./packages/volto/" subpath-multilingual-acceptance-frontend-prod-start
 
-######### @plone/client
+.PHONY: subpath-multilingual-acceptance-test
+subpath-multilingual-acceptance-test: ## Start Cypress in interactive mode for prefixed multilingual tests
+	$(MAKE) -C "./packages/volto/" subpath-multilingual-acceptance-test
 
-.PHONY: acceptance-server-detached-start
-acceptance-server-detached-start: ## Starts test acceptance server main fixture in detached mode (daemon)
-	docker run -d --name plone-client-acceptance-server -i --rm -p 55001:55001 $(DOCKER_IMAGE_ACCEPTANCE)
+######### Prefixed Working Copy Acceptance tests
 
-.PHONY: acceptance-server-detached-stop
-acceptance-server-detached-stop: ## Stop test acceptance server main fixture in detached mode (daemon)
-	docker kill plone-client-acceptance-server
+.PHONY: subpath-working-copy-acceptance-frontend-prod-start
+subpath-working-copy-acceptance-frontend-prod-start: ## Start acceptance frontend in production mode for prefixed working copy tests
+	$(MAKE) -C "./packages/volto/" subpath-working-copy-acceptance-frontend-prod-start
+
+.PHONY: subpath-working-copy-acceptance-test
+subpath-working-copy-acceptance-test: ## Start Cypress in interactive mode for prefixed working copy tests
+	$(MAKE) -C "./packages/volto/" subpath-working-copy-acceptance-test
 
 # include local overrides if present
 -include Makefile.local

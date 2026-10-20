@@ -14,13 +14,11 @@
 
 @groupedSegmentDivider: none;
 
-
 /*-------------------
        Coupling
 --------------------*/
 
 /* Page Grid Segment */
-
 
 /*******************************
             States
@@ -29,7 +27,6 @@
 /* Loading Dimmer */
 
 /* Loading Spinner */
-
 
 /*******************************
             Variations
@@ -61,4 +58,4 @@
 
 /* Ordinality */
 @secondaryBackground: @tealBackground;
-@secondaryColor: @teal;
+@secondaryColor: @textColor;

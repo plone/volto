@@ -5,7 +5,7 @@ import { QuantaTextAreaField } from './TextAreaField';
 
 expect.extend(toHaveNoViolations);
 
-it('QuantaTextAreaField basic a11y test', async () => {
+it('Basic/QuantaTextAreaField basic a11y test', async () => {
   const { container } = render(
     <QuantaTextAreaField
       name="field1"

@@ -5,7 +5,7 @@ const path = require('path');
 const projectRootPath = path.resolve('.');
 const lessPlugin = require('../webpack-plugins/webpack-less-plugin');
 
-const createConfig = require('../node_modules/razzle/config/createConfigAsync.js');
+const createConfig = require('../node_modules/@plone/razzle/config/createConfigAsync.js');
 const razzleConfig = require(path.join(projectRootPath, 'razzle.config.js'));
 
 const SVGLOADER = {

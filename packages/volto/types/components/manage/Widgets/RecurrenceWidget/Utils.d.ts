@@ -19,36 +19,30 @@ export namespace FREQUENCES {
 }
 export namespace OPTIONS {
     let frequences: {
-        [x: string]: {
+        [FREQUENCES.DAILY]: {
             rrule: import("rrule").Frequency;
             interval: boolean;
-            byday?: undefined;
-            bymonth?: undefined;
-            byyear?: undefined;
-        } | {
+        };
+        [FREQUENCES.MONDAYFRIDAY]: {
             rrule: import("rrule").Frequency;
-            interval?: undefined;
-            byday?: undefined;
-            bymonth?: undefined;
-            byyear?: undefined;
-        } | {
+        };
+        [FREQUENCES.WEEKDAYS]: {
+            rrule: import("rrule").Frequency;
+        };
+        [FREQUENCES.WEEKLY]: {
             rrule: import("rrule").Frequency;
             interval: boolean;
             byday: boolean;
-            bymonth?: undefined;
-            byyear?: undefined;
-        } | {
+        };
+        [FREQUENCES.MONTHLY]: {
             rrule: import("rrule").Frequency;
             interval: boolean;
             bymonth: boolean;
-            byday?: undefined;
-            byyear?: undefined;
-        } | {
+        };
+        [FREQUENCES.YEARLY]: {
             rrule: import("rrule").Frequency;
             interval: boolean;
             byyear: boolean;
-            byday?: undefined;
-            bymonth?: undefined;
         };
     };
 }

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SearchDetails renders search detail component 1`] = `
+exports[`SearchDetails > renders search detail component 1`] = `
 <h4
   className="search-details"
 >

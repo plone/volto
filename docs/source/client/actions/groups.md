@@ -3,7 +3,7 @@
 Available groups in a Plone site can be created, queried, updated, and deleted by interacting with the `/@groups` endpoint on the portal root.
 This requires an authenticated user.
 
-## Get Groups list
+## Get groups list
 
 ### Query function
 
@@ -13,7 +13,7 @@ Use the `getGroupsQuery` function to get the query for fetching the groups list.
 
 Use the `useGetGroups` hook to get the groups list.
 
-## Get Group
+## Get group
 
 ### Query function
 
@@ -29,7 +29,7 @@ Use the `useGetGroup` hook to get a group at a given path.
 
   - **Required**: Yes
 
-## Add Group
+## Add group
 
 ### Mutation function
 
@@ -78,7 +78,7 @@ Use the `useCreateGroup` hook to add a group at a given path.
 
     - **Required**: No
 
-## Update Group
+## Update group
 
 ### Mutation function
 
@@ -111,7 +111,7 @@ Use the `useUpdateGroup` hook to update an existing group at the given path.
 
     - **Required**: No
 
-## Delete Group
+## Delete group
 
 ### Mutation function
 

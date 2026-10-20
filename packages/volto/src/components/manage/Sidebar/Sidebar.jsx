@@ -113,6 +113,7 @@ const Sidebar = (props) => {
         style={size > 0 ? { width: size } : null}
       >
         <Button
+          type="button"
           aria-label={
             expanded
               ? intl.formatMessage(messages.shrinkSidebar)
@@ -126,6 +127,7 @@ const Sidebar = (props) => {
           onClick={onToggleExpanded}
         />
         <Button
+          type="button"
           className="full-size-sidenav-btn"
           onClick={onToggleFullSize}
           aria-label="full-screen-sidenav"
@@ -153,6 +155,7 @@ const Sidebar = (props) => {
                 key: 'documentTab',
                 as: 'button',
                 className: 'ui button',
+                type: 'button',
                 content: type || intl.formatMessage(messages.document),
               },
               pane: (
@@ -168,6 +171,7 @@ const Sidebar = (props) => {
                 key: 'blockTab',
                 as: 'button',
                 className: 'ui button',
+                type: 'button',
                 content: intl.formatMessage(messages.block),
               },
               pane: (

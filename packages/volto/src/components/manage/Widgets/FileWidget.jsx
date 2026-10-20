@@ -5,17 +5,19 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Image, Dimmer } from 'semantic-ui-react';
+import { Button, Dimmer } from 'semantic-ui-react';
 import { readAsDataURL } from 'promise-file-reader';
 import { injectIntl } from 'react-intl';
 import deleteSVG from '@plone/volto/icons/delete.svg';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
+import Toast from '@plone/volto/components/manage/Toast/Toast';
 import UniversalLink from '@plone/volto/components/manage/UniversalLink/UniversalLink';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
+import Image from '@plone/volto/components/theme/Image/Image';
 import loadable from '@loadable/component';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { validateFileUploadSize } from '@plone/volto/helpers/FormValidation/FormValidation';
 import { defineMessages, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 
 const imageMimetypes = [
   'image/png',
@@ -34,11 +36,13 @@ const messages = defineMessages({
   },
   editFile: {
     id: 'Drop file here to replace the existing file',
-    defaultMessage: 'Drop file here to replace the existing file',
+    defaultMessage:
+      'File upload area. Press Enter or click to replace the existing file.',
   },
   fileDrag: {
     id: 'Drop file here to upload a new file',
-    defaultMessage: 'Drop file here to upload a new file',
+    defaultMessage:
+      'File upload area. Press Enter or click to open the file browser.',
   },
   replaceFile: {
     id: 'Replace existing file',
@@ -47,6 +51,33 @@ const messages = defineMessages({
   addNewFile: {
     id: 'Choose a file',
     defaultMessage: 'Choose a file',
+  },
+  maxSizeError: {
+    id: 'The file you uploaded exceeded the maximum allowed size of {size} bytes',
+    defaultMessage:
+      'The file you uploaded exceeded the maximum allowed size of {size} bytes',
+  },
+  acceptError: {
+    id: 'File is not of the accepted type {accept}',
+    defaultMessage: 'File is not of the accepted type {accept}',
+  },
+  dragAndDropActionA11y: {
+    id: 'Press Enter to browse files from your computer.',
+    defaultMessage:
+      'File upload area. Press Enter or click to open the file browser.',
+  },
+  dragAndDropReplaceA11y: {
+    id: 'File upload area. Press Enter or click to replace the existing file',
+    defaultMessage:
+      'File upload area. Press Enter or click to replace the existing file.',
+  },
+  requiredField: {
+    id: 'This field is required.',
+    defaultMessage: 'This field is required.',
+  },
+  downloadFile: {
+    id: 'Download {filename}',
+    defaultMessage: 'Download {filename}',
   },
 });
 
@@ -74,9 +105,22 @@ const messages = defineMessages({
  *
  */
 const FileWidget = (props) => {
-  const { id, value, onChange, isDisabled } = props;
+  const { id, value, onChange, isDisabled, fieldSet } = props;
   const [fileType, setFileType] = React.useState(false);
   const intl = useIntl();
+
+  const imgAttrs = React.useMemo(() => {
+    const data = {};
+    if (value?.download) {
+      data.item = {
+        '@id': value.download.substring(0, value.download.indexOf('/@@images')),
+        image: value,
+      };
+    } else if (value?.data) {
+      data.src = `data:${value['content-type']};${value.encoding},${value.data}`;
+    }
+    return data;
+  }, [value]);
 
   React.useEffect(() => {
     if (value && imageMimetypes.includes(value['content-type'])) {
@@ -84,19 +128,39 @@ const FileWidget = (props) => {
     }
   }, [value]);
 
-  const imgsrc = value?.download
-    ? `${flattenToAppURL(value?.download)}?id=${Date.now()}`
-    : null || value?.data
-      ? `data:${value['content-type']};${value.encoding},${value.data}`
-      : null;
-
   /**
    * Drop handler
    * @method onDrop
    * @param {array} files File objects
    * @returns {undefined}
    */
-  const onDrop = (files) => {
+  const onDrop = (files, rejectedFiles) => {
+    rejectedFiles.forEach((file) => {
+      file.errors.forEach((err) => {
+        if (err.code === 'file-too-large') {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.maxSizeError, {
+                size: props.size,
+              })}
+            />,
+          );
+        }
+
+        if (err.code === 'file-invalid-type') {
+          toast.error(
+            <Toast
+              error
+              title={intl.formatMessage(messages.acceptError, {
+                accept: props.accept,
+              })}
+            />,
+          );
+        }
+      });
+    });
+    if (files.length < 1) return;
     const file = files[0];
     if (!validateFileUploadSize(file, intl.formatMessage)) return;
     readAsDataURL(file).then((data) => {
@@ -123,18 +187,39 @@ const FileWidget = (props) => {
     reader.readAsDataURL(files[0]);
   };
 
+  const statusTextA11y = [
+    value
+      ? intl.formatMessage(messages.dragAndDropReplaceA11y)
+      : intl.formatMessage(messages.dragAndDropActionA11y),
+    props.required && intl.formatMessage(messages.requiredField),
+    value?.filename,
+  ]
+    .filter(Boolean)
+    .join('. ');
+
+  const errorTextA11y = props.error?.length ? props.error.join('. ') : null;
+
   return (
     <FormFieldWrapper {...props}>
-      <Dropzone onDrop={onDrop}>
+      <Dropzone
+        onDrop={onDrop}
+        {...(props.size ? { maxSize: props.size } : {})}
+        {...(props.accept ? { accept: props.accept } : {})}
+      >
         {({ getRootProps, getInputProps, isDragActive }) => (
-          <div className="file-widget-dropzone" {...getRootProps()}>
+          <div
+            className="file-widget-dropzone"
+            role="button"
+            aria-labelledby={`fieldset-${fieldSet}-field-label-${id}`}
+            aria-describedby={`field-${id}-status`}
+            {...getRootProps()}
+          >
             {isDragActive && <Dimmer active></Dimmer>}
             {fileType ? (
               <Image
-                className="image-preview"
+                className="image-preview small ui image"
                 id={`field-${id}-image`}
-                size="small"
-                src={imgsrc}
+                {...imgAttrs}
               />
             ) : (
               <div className="dropzone-placeholder">
@@ -154,31 +239,52 @@ const FileWidget = (props) => {
               </div>
             )}
 
-            <label className="label-file-widget-input">
+            {/* aria-hidden: keyboard access is handled by the parent div (role="button").
+                The label is a visual affordance only. The stopPropagation prevents the Dropzone
+                from opening the file dialog twice on click. */}
+            <label
+              className="label-file-widget-input"
+              htmlFor={`field-${id}`}
+              aria-hidden="true"
+              onClick={(e) => e.stopPropagation()}
+            >
               {value
                 ? intl.formatMessage(messages.replaceFile)
                 : intl.formatMessage(messages.addNewFile)}
             </label>
+            <span id={`field-${id}-status`} className="visually-hidden">
+              {statusTextA11y}
+            </span>
+            {errorTextA11y && (
+              <span role="alert" className="visually-hidden">
+                {errorTextA11y}
+              </span>
+            )}
             <input
               {...getInputProps({
                 type: 'file',
                 style: { display: 'none' },
               })}
               id={`field-${id}`}
+              {...(props.required && { 'aria-required': true })}
+              {...(props.error?.length > 0 && { 'aria-invalid': true })}
               name={id}
-              type="file"
               disabled={isDisabled}
             />
           </div>
         )}
       </Dropzone>
-      <div className="field-file-name">
-        {value && (
-          <UniversalLink href={value.download} download={true}>
+      {value && (
+        <div className="field-file-name">
+          <UniversalLink
+            href={value.download}
+            aria-label={intl.formatMessage(messages.downloadFile, {
+              filename: value.filename,
+            })}
+            download={true}
+          >
             {value.filename}
           </UniversalLink>
-        )}
-        {value && (
           <Button
             type="button"
             icon
@@ -193,8 +299,8 @@ const FileWidget = (props) => {
           >
             <Icon name={deleteSVG} size="20px" />
           </Button>
-        )}
-      </div>
+        </div>
+      )}
     </FormFieldWrapper>
   );
 };
@@ -209,6 +315,7 @@ FileWidget.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   required: PropTypes.bool,
+  fieldSet: PropTypes.string,
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.shape({
     '@type': PropTypes.string,
@@ -226,6 +333,7 @@ FileWidget.propTypes = {
 FileWidget.defaultProps = {
   description: null,
   required: false,
+  fieldSet: null,
   error: [],
   value: null,
 };

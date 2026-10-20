@@ -1,12 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-intl-redux';
 import { render, waitFor } from '@testing-library/react';
-import configureStore from 'redux-mock-store';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import config from '@plone/volto/registry';
 
 import IdWidget from './IdWidget';
 
-const mockStore = configureStore();
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 describe('IdWidget', () => {
   test('renders an empty id widget component', async () => {

@@ -20,6 +20,12 @@ config.blocks.blocksConfig = {
       addPermission: [],
       view: [],
     },
+    allowedPeertubeInstances: [
+      'freediverse.com', // About: https://freediverse.com/about/instance
+      'fair.tube', // About: https://fair.tube/about/instance
+      'tube.reseau-canope.fr', // About: https://tube.reseau-canope.fr/about/instance
+      'peertube.eus', // About: https://peertube.eus/about/instance
+    ],
   },
 };
 
@@ -29,10 +35,13 @@ test('renders a youtube video component with "list" in its url', () => {
   const url =
     'https://www.youtube.com/watch?v=KwRSRRyuk-Q&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL&index=1';
   const videoDetails = getVideoIDAndPlaceholder(url);
+  const listID = 'PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL&index=1';
   expect(videoDetails).toEqual({
+    hasMatch: true,
     videoID: null,
-    listID: 'PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL&index=1',
+    videoUrl: `https://www.youtube.com/embed/videoseries?list=${listID}`,
     thumbnailURL: 'https://img.youtube.com/vi/KwRSRRyuk-Q/sddefault.jpg',
+    videoSource: null,
   });
 });
 
@@ -40,9 +49,11 @@ test('extracts video details from a youtube video with "/live/" in its url', () 
   const url = 'https://www.youtube.com/live/ISdHvS6Ck3k?si=COeVakmC1lI6jQy3';
   const videoDetails = getVideoIDAndPlaceholder(url);
   expect(videoDetails).toEqual({
+    hasMatch: true,
     videoID: 'ISdHvS6Ck3k?si=COeVakmC1lI6jQy3',
-    listID: null,
+    videoUrl: null,
     thumbnailURL: 'https://img.youtube.com/vi/ISdHvS6Ck3k/sddefault.jpg',
+    videoSource: 'youtube',
   });
 });
 
@@ -50,9 +61,11 @@ test('extracts video details from a youtube video with ".be/" in its url', () =>
   const url = 'https://youtu.be/P9j-xYdWT28?si=zZ2putStJbPBLCdt';
   const videoDetails = getVideoIDAndPlaceholder(url);
   expect(videoDetails).toEqual({
+    hasMatch: true,
     videoID: 'P9j-xYdWT28?si=zZ2putStJbPBLCdt',
-    listID: null,
+    videoUrl: null,
     thumbnailURL: 'https://img.youtube.com/vi/P9j-xYdWT28/sddefault.jpg',
+    videoSource: 'youtube',
   });
 });
 
@@ -60,9 +73,23 @@ test('extracts video details from a youtube video with "?v=" in its url', () => 
   const url = 'https://www.youtube.com/watch?v=KUd6e105u_I';
   const videoDetails = getVideoIDAndPlaceholder(url);
   expect(videoDetails).toEqual({
+    hasMatch: true,
     videoID: 'KUd6e105u_I',
-    listID: null,
+    videoUrl: null,
     thumbnailURL: 'https://img.youtube.com/vi/KUd6e105u_I/sddefault.jpg',
+    videoSource: 'youtube',
+  });
+});
+
+test('extracts video details from a youtube short', () => {
+  const url = 'https://www.youtube.com/shorts/_-DjLZCfGOg';
+  const videoDetails = getVideoIDAndPlaceholder(url);
+  expect(videoDetails).toEqual({
+    hasMatch: true,
+    videoID: '_-DjLZCfGOg',
+    videoUrl: null,
+    thumbnailURL: 'https://img.youtube.com/vi/_-DjLZCfGOg/sddefault.jpg',
+    videoSource: 'youtube',
   });
 });
 
@@ -70,9 +97,11 @@ test('extracts video details from a vimeo video url', () => {
   const url = 'https://vimeo.com/639449679';
   const videoDetails = getVideoIDAndPlaceholder(url);
   expect(videoDetails).toEqual({
+    hasMatch: true,
     videoID: '639449679',
-    listID: null,
+    videoUrl: null,
     thumbnailURL: 'https://vumbnail.com/639449679.jpg',
+    videoSource: 'vimeo',
   });
 });
 
@@ -90,6 +119,94 @@ test('renders a youtube video body component', () => {
         data={{
           '@type': 'video',
           url: 'https://www.youtube.com/watch?v=KwRSRRyuk-Q&list=PLGN9BI-OAQkQmEqf6O8jeyoFY1b2hD1uL&index=1',
+        }}
+      />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
+test('renders a youtu.be video body component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const component = renderer.create(
+    <Provider store={store}>
+      <Body
+        data={{
+          '@type': 'video',
+          url: 'https://youtu.be/KwRSRRyuk-Q',
+        }}
+      />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
+test('renders a youtube short video body component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const component = renderer.create(
+    <Provider store={store}>
+      <Body
+        data={{
+          '@type': 'video',
+          url: 'https://www.youtube.com/shorts/ayyZ_S30Lhc',
+        }}
+      />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
+test('renders a peertube video body component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const component = renderer.create(
+    <Provider store={store}>
+      <Body
+        data={{
+          '@type': 'video',
+          url: 'https://peertube.eus/w/qjubDnZ79UmmjhAUqvX2zu',
+        }}
+      />
+    </Provider>,
+  );
+  const json = component.toJSON();
+  expect(json).toMatchSnapshot();
+});
+
+test('renders a incorrect peertube video body component', () => {
+  const store = mockStore({
+    intl: {
+      locale: 'en',
+      messages: {},
+    },
+  });
+
+  const component = renderer.create(
+    <Provider store={store}>
+      <Body
+        data={{
+          '@type': 'video',
+          url: 'https://other.peertubes.eus/w/qjubDnZ79UmmjhAUqvX2zu',
         }}
       />
     </Provider>,

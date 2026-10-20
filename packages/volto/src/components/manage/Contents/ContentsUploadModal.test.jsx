@@ -1,8 +1,7 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { waitFor } from '@testing-library/react';
 import ContentsUploadModal from './ContentsUploadModal';
 
 const mockStore = configureStore();
@@ -21,19 +20,17 @@ describe('ContentsUploadModal', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { baseElement } = render(
       <Provider store={store}>
         <ContentsUploadModal
           pathname="/blog"
-          open={false}
+          open={true}
           onOk={() => {}}
           onCancel={() => {}}
         />
       </Provider>,
     );
-    const json = component.toJSON();
-    await waitFor(() => {});
-    expect(json).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
   });
 
   it('renders a contents upload modal component that only allows images', async () => {
@@ -49,20 +46,18 @@ describe('ContentsUploadModal', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { baseElement } = render(
       <Provider store={store}>
         <ContentsUploadModal
           pathname="/blog"
-          open={false}
+          open={true}
           onOk={() => {}}
           onCancel={() => {}}
           accept={['image/*']}
         />
       </Provider>,
     );
-    const json = component.toJSON();
-    await waitFor(() => {});
-    expect(json).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
   });
   it('renders a contents upload modal component that only allows 10MB files', async () => {
     const store = mockStore({
@@ -77,20 +72,18 @@ describe('ContentsUploadModal', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { baseElement } = render(
       <Provider store={store}>
         <ContentsUploadModal
           pathname="/blog"
-          open={false}
+          open={true}
           onOk={() => {}}
           onCancel={() => {}}
           maxSize={1000000}
         />
       </Provider>,
     );
-    const json = component.toJSON();
-    await waitFor(() => {});
-    expect(json).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
   });
   it('renders a contents upload modal component that only allows 1 file', async () => {
     const store = mockStore({
@@ -105,19 +98,17 @@ describe('ContentsUploadModal', () => {
         messages: {},
       },
     });
-    const component = renderer.create(
+    const { baseElement } = render(
       <Provider store={store}>
         <ContentsUploadModal
           pathname="/blog"
-          open={false}
+          open={true}
           onOk={() => {}}
           onCancel={() => {}}
           multiple={false}
         />
       </Provider>,
     );
-    const json = component.toJSON();
-    await waitFor(() => {});
-    expect(json).toMatchSnapshot();
+    expect(baseElement).toMatchSnapshot();
   });
 });

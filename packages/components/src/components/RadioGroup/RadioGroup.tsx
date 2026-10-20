@@ -4,6 +4,7 @@ import {
   Label,
   RadioGroup as RACRadioGroup,
   type RadioGroupProps as RACRadioGroupProps,
+  Radio,
   Text,
   type ValidationResult,
 } from 'react-aria-components';
@@ -31,3 +32,5 @@ export function RadioGroup({
     </RACRadioGroup>
   );
 }
+
+export { Radio };

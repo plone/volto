@@ -1,16 +1,19 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import jwt from 'jsonwebtoken';
 
 import GroupsControlpanel from './GroupsControlpanel';
 
 const mockStore = configureStore();
-jest.mock('../../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
 describe('UsersControlpanel', () => {
-  it('renders a user control component', () => {
+  it('renders a user control component', async () => {
     const store = mockStore({
       userSession: {
         token: jwt.sign({ sub: 'john' }, 'secret'),
@@ -36,12 +39,18 @@ describe('UsersControlpanel', () => {
         messages: {},
       },
     });
-    const { container } = render(
-      <Provider store={store}>
-        <GroupsControlpanel location={{ pathname: '/blog' }} />
-        <div id="toolbar"></div>
-      </Provider>,
-    );
+    const { container } = await act(async () => {
+      return render(
+        <Provider store={store}>
+          <CookiesProvider>
+            <>
+              <GroupsControlpanel location={{ pathname: '/blog' }} />
+              <div id="toolbar"></div>
+            </>
+          </CookiesProvider>
+        </Provider>,
+      );
+    });
 
     expect(container).toMatchSnapshot();
   });

@@ -47,6 +47,9 @@ Volto provides a set of validators by default:
 - minItems
 - uniqueItems
 
+### Files
+- size
+
 ### Per widget
 - email
 - url
@@ -95,6 +98,7 @@ In the following example, the `urlValidator` method validator will be applied fo
 config.registerUtility({
   type: 'validator',
   name: 'url',
+  dependencies: { format: 'url' },
   method: urlValidator,
 })
 ```

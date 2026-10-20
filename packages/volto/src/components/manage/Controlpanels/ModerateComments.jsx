@@ -19,6 +19,7 @@ import { searchContent } from '@plone/volto/actions/search/search';
 import FormattedRelativeDate from '@plone/volto/components/theme/FormattedDate/FormattedRelativeDate';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Error from '@plone/volto/components/theme/Error/Error';
 import { CommentEditModal } from '@plone/volto/components/theme/Comments';
 
 import backSVG from '@plone/volto/icons/back.svg';
@@ -65,6 +66,7 @@ class ModerateComments extends Component {
       loaded: PropTypes.bool,
     }).isRequired,
     pathname: PropTypes.string.isRequired,
+    searchError: PropTypes.object,
   };
 
   /**
@@ -186,6 +188,11 @@ class ModerateComments extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    // Error handling for unauthorized access
+    if (this.props.searchError) {
+      return <Error error={this.props.searchError} />;
+    }
+
     return (
       <div id="page-moderate-comments">
         <CommentEditModal
@@ -297,6 +304,7 @@ export default compose(
       items: state.search.items,
       deleteRequest: state.comments.delete,
       pathname: props.location.pathname,
+      searchError: state.search.error,
     }),
     { deleteComment, searchContent },
   ),

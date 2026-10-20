@@ -4,6 +4,7 @@ export function MenuList({ children }: {
 export const SortableMultiValue: any;
 export const SortableMultiValueLabel: any;
 export const MultiValueContainer: any;
+export const MultiValueRemove: any;
 export const Option: any;
 export const DropdownIndicator: any;
 export const ClearIndicator: any;

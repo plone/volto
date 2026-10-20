@@ -10,4 +10,4 @@ If a participant engages in harassing behavior, representatives of the community
 
 If you are being harassed, notice that someone else is being harassed, or have any other concerns, please act to intercede or ask for help from any member of the Plone Foundation, IRC chat admins, website admins, or organizers/representatives of any physical events put on under the auspices of the Plone Foundation.
 
-Source: https://plone.org/foundation/materials/foundation-resolutions/code-of-conduct (2019-09-29)
+Source: https://plone.org/foundation/about/materials/foundation-resolutions/code-of-conduct (2019-09-29)

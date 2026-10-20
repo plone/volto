@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`withBlockExtensions injects extensions as props 1`] = `
+exports[`withBlockExtensions > injects extensions as props 1`] = `
 <div>
   <div>
     {"id":"default","title":"Default","isDefault":true}
@@ -11,7 +11,7 @@ exports[`withBlockExtensions injects extensions as props 1`] = `
 </div>
 `;
 
-exports[`withBlockExtensions resolve extensions according to data 1`] = `
+exports[`withBlockExtensions > resolve extensions according to data 1`] = `
 <div>
   <div>
     {"id":"extra","title":"Extra"}

@@ -35,18 +35,21 @@ An example of this behavior is the blocks view: you are in a public view because
 
 ## Setting up the theme
 
-In your Volto project, customize the file `src/theme.js`:
+Customizing the base theme is a special use case in Volto.
+The original file is in Volto at {file}`volto/src/theme.js`.
+This is the file to be customized.
+In the {file}`customizations` folder, override it as {file}`customizations/@root/theme.js`, using the `@root` alias to avoid writing the full path.
+Edit the imports in this file to align with the following code.
 
-```diff
-- import 'semantic-ui-less/semantic.less';
-+ import '@plone/volto/../theme/themes/pastanaga-cms-ui/extras/cms-ui.semantic.less';
-import '@plone/volto/../theme/themes/pastanaga/extras/extras.less'
-
-+ // Import your site styles, i.e.:
-+ import '../theme/site.scss';
+```js
+import 'semantic-ui-less/semantic.less';
+import '@plone/volto/../theme/themes/pastanaga/extras/extras.less';
+// You can add more entry points for theming
+import '@kitconcept/volto-light-theme/theme/main.scss';
 ```
 
-Then, in your `theme.config` change the following and the needed variables:
+Then, copy the {file}`theme.config` file from core Volto ({file}`core/packages/volto/theme/theme.config`) to your add-on's {file}`src/theme/` folder.
+Change the following variable as shown.
 
 ```diff
 - @container   : 'pastanaga';
@@ -54,6 +57,10 @@ Then, in your `theme.config` change the following and the needed variables:
 ```
 
 ### Use Sass loader
+
+```{versionremoved} Volto 18
+This section is no longer required since Volto 18.
+```
 
 If you have to load Sass, you will need `razzle-plugin-scss` and you will have to customize `razzle.config.js` integrating that plugin into Razzle configuration.
 
@@ -89,7 +96,7 @@ module.exports = Object.assign({}, volto_config, {
 ```
 
 Complete example in an active project:
-https://github.com/RedTurtle/design-volto-theme/blob/master/razzle.config.js
+https://github.com/RedTurtle/design-comuni-plone-theme/blob/main/razzle.extend.js
 
 In that project, there is the Sass loader and the SVG loader, too.
 
@@ -119,4 +126,5 @@ For any other customization, you can put styles in your site theme and override 
 
 ## Example themes using this approach
 
-https://github.com/RedTurtle/design-volto-theme
+https://github.com/RedTurtle/design-comuni-plone-theme
+

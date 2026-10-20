@@ -2,7 +2,7 @@
 
 // @flow
 import findParentDir from 'find-parent-dir';
-import execa from 'execa';
+import { execaSync } from 'execa';
 import { join } from 'path';
 import fs from 'fs';
 
@@ -102,7 +102,7 @@ if (!LOCKHOOK_BYPASS) {
     const lockfilePath = join(currentDir, lockfile);
 
     // run a git diff on the lockfile
-    const { stdout: output } = execa.sync(
+    const { stdout: output } = execaSync(
       'git',
       ['diff', 'HEAD@{1}..HEAD@{0}', '--', lockfilePath],
       { cwd: gitDir },
@@ -123,7 +123,7 @@ if (!LOCKHOOK_BYPASS) {
           `Changes to lockfile found, running \`${command} install\``,
         );
         try {
-          execa.sync(command, commandargs, { stdio: 'inherit' });
+          execaSync(command, commandargs, { stdio: 'inherit' });
         } catch (err) {
           console.warn(`Running ${command} ${commandargs.join(' ')} failed`);
         }

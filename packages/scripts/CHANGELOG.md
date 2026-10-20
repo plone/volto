@@ -8,6 +8,95 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.2 (2026-10-07)
+
+### Internal
+
+- The `release` scripts now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
+## 4.0.1 (2026-05-20)
+
+### Internal
+
+- Force release @plone/babel-preset-razzle to npm, since it's a dependency of @plone/scripts. @sneridagh 
+
+## 4.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
+## 4.0.0-alpha.8 (2026-05-19)
+
+### Bugfix
+
+- Enhance i18n escaping function to avoid double-escaping and use it for msgstrs @erral [#8203](https://github.com/plone/volto/issues/8203)
+
+## 4.0.0-alpha.7 (2026-05-07)
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/scripts` maintainers. 
+
+## 4.0.0-alpha.6 (2026-03-31)
+
+### Internal
+
+- Update dependency: lodash 4.17.23. @davisagli 
+- Update devDependency: wait-on 9.0.4. @davisagli 
+
+## 4.0.0-alpha.5 (2026-02-12)
+
+### Internal
+
+- Fix the {file}`vscodesettings.js` script to properly check if {file}`.vscode/settings.json` exists before reading. @wesleybl [#7834](https://github.com/plone/volto/issues/7834)
+
+## 4.0.0-alpha.4 (2025-11-19)
+
+### Breaking
+
+- Fork `babel-razzle-preset` from Razzle. Update dependencies. @sneridagh [#7619](https://github.com/plone/volto/issues/7619)
+
+## 4.0.0-alpha.3 (2025-10-21)
+
+### Bugfix
+
+- Escape double quotes in POT / PO files @erral [#7476](https://github.com/plone/volto/issues/7476)
+
+### Internal
+
+- upgrade execa to address a security vulnerability @nileshgulia1 [#7435](https://github.com/plone/volto/issues/7435)
+
+## 4.0.0-alpha.2 (2025-09-14)
+
+### Internal
+
+- Upgrade `glob` to a modern version. Adjust scripts. @sneridagh [#7321](https://github.com/plone/volto/issues/7321)
+
+## 4.0.0-alpha.1 (2025-05-16)
+
+### Feature
+
+- Support not publishing a package on NPM if `plonePrePublish.publish` is set to false. @ericof [#7068](https://github.com/plone/volto/issues/7068)
+
+## 4.0.0-alpha.0 (2025-03-27)
+
+### Breaking
+
+- Remove old, deprecated `addon` scripts helpers. @sneridagh [#6848](https://github.com/plone/volto/issues/6848)
+- Remove ancient `changelogupdater` script. @sneridagh [#6848](https://github.com/plone/volto/issues/6848)
+- Remove `volto-update-deps` script. @sneridagh [#6848](https://github.com/plone/volto/issues/6848)
+
+### Feature
+
+- Add `--dry-run` to prepublish script. @sneridagh [#6847](https://github.com/plone/volto/issues/6847)
+
+## 3.8.2 (2025-02-08)
+
+### Internal
+
+- Test with Plone 6.1.0rc1. @sneridagh [#6682](https://github.com/plone/volto/issues/6682)
+
 ## 3.8.1 (2024-11-05)
 
 ### Internal

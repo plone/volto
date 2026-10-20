@@ -10,12 +10,17 @@ import { ReactEditor, Editable, Slate, withReact } from 'slate-react';
 import PropTypes from 'prop-types';
 import { defineMessages, useIntl } from 'react-intl';
 import config from '@plone/volto/registry';
+import { isIMEComposing } from '@plone/volto/helpers/Utils/Utils';
 import { P } from '@plone/volto-slate/constants';
 
 const messages = defineMessages({
   title: {
     id: 'Type the title…',
     defaultMessage: 'Type the title…',
+  },
+  editable_title: {
+    id: 'Content title',
+    defaultMessage: 'Content title',
   },
 });
 
@@ -77,8 +82,14 @@ export const TitleBlockEdit = (props) => {
         ReactEditor.focus(editor);
       } else {
         // nothing is selected, move focus to end
-        ReactEditor.focus(editor);
-        Transforms.select(editor, Editor.end(editor, []));
+        // make sure that the editor is focused
+        setTimeout(() => {
+          const focused = ReactEditor.focus(editor);
+          if (!focused) {
+            ReactEditor.focus(editor);
+            Transforms.select(editor, Editor.end(editor, []));
+          }
+        }, 0);
       }
     }
   }, [prevSelected, selected, editor]);
@@ -102,6 +113,10 @@ export const TitleBlockEdit = (props) => {
 
   const handleKeyDown = useCallback(
     (ev) => {
+      // Ignore keys while an IME composition is active (e.g. CJK conversion).
+      if (isIMEComposing(ev)) {
+        return;
+      }
       if (ev.key === 'Return' || ev.key === 'Enter') {
         ev.preventDefault();
         if (!disableNewBlocks) {
@@ -153,6 +168,7 @@ export const TitleBlockEdit = (props) => {
         renderElement={renderElement}
         onFocus={handleFocus}
         aria-multiline="false"
+        aria-label={intl.formatMessage(messages.editable_title)}
       ></Editable>
     </Slate>
   );

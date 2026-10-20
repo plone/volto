@@ -60,22 +60,26 @@ const BrokenRelations = () => {
                 }).map((el, index) => (
                   <Table.Row key={index}>
                     <Table.Cell>
-                      <ConditionalLink
-                        to={`${el[0]}/edit`}
-                        openLinkInNewTab={true}
-                        condition={el[0].includes('http')}
-                      >
-                        {flattenToAppURL(el[0])}
-                      </ConditionalLink>
+                      {el[0] && (
+                        <ConditionalLink
+                          to={`${el[0]}/edit`}
+                          openLinkInNewTab={true}
+                          condition={el[0].includes('http')}
+                        >
+                          {flattenToAppURL(el[0])}
+                        </ConditionalLink>
+                      )}
                     </Table.Cell>
                     <Table.Cell>
-                      <ConditionalLink
-                        to={`${el[1]}/edit`}
-                        openLinkInNewTab={true}
-                        condition={el[1].includes('http')}
-                      >
-                        {flattenToAppURL(el[1])}
-                      </ConditionalLink>
+                      {el[1] && (
+                        <ConditionalLink
+                          to={`${el[1]}/edit`}
+                          openLinkInNewTab={true}
+                          condition={el[1].includes('http')}
+                        >
+                          {flattenToAppURL(el[1])}
+                        </ConditionalLink>
+                      )}
                     </Table.Cell>
                   </Table.Row>
                 ))}

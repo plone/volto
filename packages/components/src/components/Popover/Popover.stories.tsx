@@ -3,12 +3,12 @@ import { Popover } from './Popover';
 import { Button } from '../Button/Button';
 import { DialogTrigger, Heading } from 'react-aria-components';
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import '../../styles/basic/Popover.css';
-import { InfoIcon } from '../Icons/InfoIcon';
+import { InfoIcon } from '../icons/InfoIcon';
 
 const meta = {
+  title: 'Basic/Popover',
   component: Popover,
   parameters: {
     layout: 'centered',
@@ -23,7 +23,7 @@ export const Default: Story = {
   render: (args: any) => (
     <DialogTrigger>
       <Button aria-label="Help">
-        <InfoIcon size="M" />
+        <InfoIcon size="base" />
       </Button>
       <Popover {...args}>
         <Heading slot="title">Help</Heading>
@@ -31,5 +31,5 @@ export const Default: Story = {
       </Popover>
     </DialogTrigger>
   ),
-  args: {},
+  args: { children: null },
 };

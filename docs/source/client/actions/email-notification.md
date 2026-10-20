@@ -1,12 +1,12 @@
-# Email Notification
+# Email notification
 
-## Contact Site Owner (Contact Form)
+## Contact site owner (contact form)
 
 Plone allows the user to contact the site owner via a form on the website.
-This makes sure the site owner does not have to expose their email addresses publicly.
+This makes sure the site owner doesn't have to expose their email addresses publicly.
 At the same time, it allows the users to reach out to the site owners.
 
-## Send Email Notification
+## Send email notification
 
 ### Mutation function
 

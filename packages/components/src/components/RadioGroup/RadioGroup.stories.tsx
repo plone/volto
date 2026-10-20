@@ -1,13 +1,10 @@
 import React from 'react';
-import { RadioGroup } from './RadioGroup';
-import { Radio } from 'react-aria-components';
+import { Radio, RadioGroup } from './RadioGroup';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/RadioGroup.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Widgets/RadioGroup',
+  title: 'Basic/Forms/RadioGroup',
   component: RadioGroup,
   parameters: {
     layout: 'centered',

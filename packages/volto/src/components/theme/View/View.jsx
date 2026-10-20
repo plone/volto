@@ -21,6 +21,7 @@ import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
 import { getBaseUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { getLayoutFieldname } from '@plone/volto/helpers/Content/Content';
 import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
+import { AlternateHrefLangs } from '@plone/volto/components/theme/AlternateHrefLangs/AlternateHrefLangs';
 
 import config from '@plone/volto/registry';
 import SlotRenderer from '../SlotRenderer/SlotRenderer';
@@ -221,6 +222,13 @@ class View extends Component {
       }
       return (
         <div id="view">
+          <BodyClass
+            className={
+              FoundView.displayName
+                ? `view-${this.cleanViewName(FoundView.displayName)}`
+                : null
+            }
+          />
           <FoundView {...this.props} />
         </div>
       );
@@ -234,6 +242,7 @@ class View extends Component {
     return (
       <div id="view" tabIndex="-1">
         <ContentMetadataTags content={this.props.content} />
+        <AlternateHrefLangs content={this.props.content} />
         {/* Body class if displayName in component is set */}
         <BodyClass
           className={
@@ -244,7 +253,7 @@ class View extends Component {
         />
         <SlotRenderer name="aboveContent" content={this.props.content} />
         <RenderedView
-          key={this.props.content['@id']}
+          key={flattenToAppURL(this.props.content['@id'])}
           content={this.props.content}
           location={this.props.location}
           token={this.props.token}

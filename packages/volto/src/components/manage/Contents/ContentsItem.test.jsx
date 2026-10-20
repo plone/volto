@@ -4,9 +4,18 @@ import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
 
-import { ContentsItemComponent as ContentsItem } from './ContentsItem';
+import ContentsItem from './ContentsItem';
 
 const mockStore = configureStore();
+
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
+
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
 describe('ContentsItem', () => {
   it('renders a contents item component', () => {
@@ -40,12 +49,7 @@ describe('ContentsItem', () => {
             onDelete={() => {}}
             onMoveToTop={() => {}}
             onMoveToBottom={() => {}}
-            onOrderItem={() => {}}
-            connectDragSource={(x) => x}
-            connectDragPreview={(x) => x}
-            connectDropTarget={(x) => x}
             order={1}
-            isDragging={false}
           />
         </MemoryRouter>
       </Provider>,

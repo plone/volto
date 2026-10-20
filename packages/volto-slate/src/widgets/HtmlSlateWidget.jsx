@@ -4,14 +4,14 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import configureStore from 'redux-mock-store';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider, useSelector } from 'react-redux';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages, injectIntl, IntlProvider } from 'react-intl';
 
 import { FormFieldWrapper } from '@plone/volto/components/manage/Widgets';
 import SlateEditor from '@plone/volto-slate/editor/SlateEditor';
 import { serializeNodes } from '@plone/volto-slate/editor/render';
+import { handleKeyDetached } from '@plone/volto-slate/blocks/Text/keyboard';
 import { makeEditor } from '@plone/volto-slate/utils/editor';
 import deserialize from '@plone/volto-slate/editor/deserialize';
 
@@ -19,7 +19,10 @@ import {
   createEmptyParagraph,
   normalizeExternalData,
 } from '@plone/volto-slate/utils';
+import config from '@plone/volto/registry';
+
 import { ErrorBoundary } from './ErrorBoundary';
+import { createStaticStore } from './createStaticStore';
 
 import './style.css';
 
@@ -37,12 +40,15 @@ const HtmlSlateWidget = (props) => {
     onChange,
     value,
     focus,
+    fieldSet,
     className,
     block,
     placeholder,
     properties,
     intl,
   } = props;
+
+  const { slateWidgetExtensions } = config.settings.slate;
 
   const [selected, setSelected] = React.useState(focus);
 
@@ -52,10 +58,15 @@ const HtmlSlateWidget = (props) => {
 
   const toHtml = React.useCallback(
     (value) => {
-      const mockStore = configureStore();
       const html = ReactDOMServer.renderToStaticMarkup(
-        <Provider store={mockStore({ userSession: { token } })}>
-          <MemoryRouter>{serializeNodes(value || [])}</MemoryRouter>
+        <Provider store={createStaticStore({ userSession: { token } })}>
+          <IntlProvider
+            locale={intl.locale}
+            messages={intl.messages}
+            defaultLocale={intl.defaultLocale ?? 'en'}
+          >
+            <MemoryRouter>{serializeNodes(value || [])}</MemoryRouter>
+          </IntlProvider>
         </Provider>,
       );
       // console.log('toHtml value', JSON.stringify(value));
@@ -67,7 +78,7 @@ const HtmlSlateWidget = (props) => {
         data: html,
       };
     },
-    [token],
+    [token, intl],
   );
 
   const fromHtml = React.useCallback(
@@ -112,7 +123,7 @@ const HtmlSlateWidget = (props) => {
       <div
         className="slate_wysiwyg_box"
         role="textbox"
-        tabIndex="-1"
+        tabIndex={-1}
         style={{ boxSizing: 'initial' }}
         onClick={handleClick}
         onKeyDown={() => {}}
@@ -123,11 +134,15 @@ const HtmlSlateWidget = (props) => {
             id={id}
             name={id}
             value={valueFromHtml}
+            fieldSet={fieldSet}
             onChange={handleChange}
             block={block}
             selected={selected}
             properties={properties}
+            extensions={slateWidgetExtensions}
+            onKeyDown={handleKeyDetached}
             placeholder={placeholder}
+            editableProps={{ 'aria-multiline': 'true' }}
           />
         </ErrorBoundary>
       </div>

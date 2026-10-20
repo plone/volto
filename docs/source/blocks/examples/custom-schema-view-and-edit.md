@@ -190,6 +190,7 @@ config.blocks.blocksConfig.block02 = {
     // this is set to 1, which selects the `Block` tab in the sidebar editor
     // when editing this block
     sidebarTab: 1,
+    group: 'common' // to show the block in the block select under the `common` category
   };
 ```
 

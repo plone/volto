@@ -7,9 +7,10 @@ myst:
     "keywords": "Volto, Plone, frontend, React, Custom, Styling, Semantic UI, LESS, Pastanaga"
 ---
 
-# Custom Styling
+# Semantic UI custom styling
 
-## Semantic UI
+```{include} ../_inc/_semantic-ui-deprecation.md
+```
 
 For styling our website in Volto we use Semantic UI. It uses LESS as
 the underlying technology. By default Volto uses the Pastanaga theme but any

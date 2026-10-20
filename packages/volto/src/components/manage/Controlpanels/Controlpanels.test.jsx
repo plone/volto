@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 
@@ -9,10 +10,12 @@ import Controlpanels from './Controlpanels';
 
 const mockStore = configureStore();
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+vi.mock('../../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('@plone/volto/components/manage/Controlpanels', () => ({
-  VersionOverview: jest.fn(() => <div className="VersionOverview" />),
+vi.mock('@plone/volto/components/manage/Controlpanels', () => ({
+  VersionOverview: vi.fn(() => <div className="VersionOverview" />),
 }));
 
 describe('Controlpanels', () => {
@@ -20,6 +23,11 @@ describe('Controlpanels', () => {
     const store = mockStore({
       controlpanels: {
         controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/discussion',
+            group: 'Content',
+            title: 'Discussion',
+          },
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
             group: 'General',
@@ -45,6 +53,11 @@ describe('Controlpanels', () => {
       reduxAsyncConnect: {
         // Mocked in redux async connect as it isn't fetch client-side.
         controlpanels: [
+          {
+            '@id': 'http://localhost:8080/Plone/@controlpanels/discussion',
+            group: 'Content',
+            title: 'Discussion',
+          },
           {
             '@id': 'http://localhost:8080/Plone/@controlpanels/date-and-time',
             group: 'General',
@@ -72,13 +85,36 @@ describe('Controlpanels', () => {
         locale: 'en',
         messages: {},
       },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
+    store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Controlpanels location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Controlpanels location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -111,6 +147,26 @@ describe('Controlpanels', () => {
         locale: 'en',
         messages: {},
       },
+      actions: {
+        actions: {},
+      },
+      userSession: {
+        token: null,
+      },
+      content: {
+        data: {},
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
+      types: {
+        types: [],
+        get: {
+          loading: false,
+          loaded: true,
+        },
+      },
     });
 
     const FooComponent = () => {
@@ -130,12 +186,15 @@ describe('Controlpanels', () => {
         component: FooComponent,
       },
     ];
+    store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Controlpanels location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Controlpanels location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

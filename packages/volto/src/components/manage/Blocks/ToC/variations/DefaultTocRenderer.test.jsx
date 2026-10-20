@@ -8,6 +8,12 @@ const mockStore = configureStore();
 
 const data = { '@type': 'toc', variation: 'default' };
 
+const properties = {
+  title: 'Table of Contents',
+  hide_title: false,
+  ordered: true,
+};
+
 const tocEntries = [
   {
     level: 2,
@@ -35,7 +41,11 @@ test('renders a default toc renderer component', () => {
   const component = renderer.create(
     <Provider store={store}>
       <MemoryRouter>
-        <DefaultTocRenderer data={data} tocEntries={tocEntries} />
+        <DefaultTocRenderer
+          properties={properties}
+          data={data}
+          tocEntries={tocEntries}
+        />
       </MemoryRouter>
     </Provider>,
   );

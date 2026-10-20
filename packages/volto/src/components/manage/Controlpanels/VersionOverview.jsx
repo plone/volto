@@ -30,6 +30,7 @@ const VersionOverview = ({
   plone_restapi_version,
   python_version,
   zope_version,
+  ...rest
 }) => {
   const intl = useIntl();
   const { addonsInfo } = config.settings;
@@ -50,12 +51,24 @@ const VersionOverview = ({
           </li>
         ) : null}
         {voltoVersion && <li>Volto {voltoVersion}</li>}
-        <li>Plone {plone_version}</li>
-        <li>plone.restapi {plone_restapi_version}</li>
-        <li>CMF {cmf_version}</li>
-        <li>Zope {zope_version}</li>
-        <li>Python {python_version}</li>
-        <li>PIL {pil_version}</li>
+        {rest.items ? (
+          <>
+            {rest.items.map((item) => (
+              <li key={item.label}>
+                {item.label} {item.value}
+              </li>
+            ))}
+          </>
+        ) : (
+          <>
+            <li>Plone {plone_version}</li>
+            <li>plone.restapi {plone_restapi_version}</li>
+            <li>CMF {cmf_version}</li>
+            <li>Zope {zope_version}</li>
+            <li>Python {python_version}</li>
+            <li>PIL {pil_version}</li>
+          </>
+        )}
       </ul>
       <h3>Add-ons</h3>
       {isEmpty(addonsInfo) ? (

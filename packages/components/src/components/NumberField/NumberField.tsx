@@ -10,8 +10,8 @@ import {
   type ValidationResult,
 } from 'react-aria-components';
 import { Button } from '../Button/Button';
-import { AddIcon } from '../Icons/AddIcon';
-import { DashIcon } from '../Icons/DashIcon';
+import { AddIcon } from '../icons/AddIcon';
+import { DashIcon } from '../icons/DashIcon';
 
 export interface NumberFieldProps extends RACNumberFieldProps {
   label?: string;
@@ -30,11 +30,11 @@ export function NumberField({
       <Label>{label}</Label>
       <Group>
         <Button slot="decrement">
-          <DashIcon size="XS" />
+          <DashIcon size="sm" />
         </Button>
         <Input />
         <Button slot="increment">
-          <AddIcon size="XS" />
+          <AddIcon size="sm" />
         </Button>
       </Group>
       {description && <Text slot="description">{description}</Text>}

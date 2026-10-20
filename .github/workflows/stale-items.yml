@@ -1,0 +1,52 @@
+# This workflow checks issues and PRs that have had no activity for a
+# specified amount of time. You can adjust the behavior by modifying this file.
+# For more information, see:
+#   https://github.com/actions/stale
+---
+name: 'Stale Items Policy'
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run at 00:00 UTC every day
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: '🧹 Mark stale issues and PRs'
+        id: stale_items
+        uses: actions/stale@v9.1.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 180
+          days-before-close: -1 # never close issues and prs
+          operations-per-run: 50
+          stale-issue-label: '27 status: stale'
+          stale-pr-label: '27 status: stale'
+          stale-issue-message: |
+            Hi There! 👋
+
+            We haven't seen any activity on this issue in a while :sleeping:, and we want to make sure that it's still relevant.
+
+            If updating to the latest version of Volto doesn't help, please let us know by:
+
+            - adding a comment about what needs to be done next 💬
+            - updating its status and other labels 🏷️
+
+            Otherwise close this issue. 🧹
+          stale-pr-message: |
+            Hi There! 👋
+
+            We haven't seen any activity on this pull request in a while :sleeping:, and we want to make sure that it's still relevant. Please let us know by:
+
+            - adding a comment about what needs to be done next 💬
+            - updating its status and other labels 🏷️
+
+            Otherwise close this pull request. 🧹
+          exempt-milestones: 'Plone 7.0'
+          exempt-issue-labels: '03 type: feature (plip),06 type: plip task'

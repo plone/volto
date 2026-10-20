@@ -36,13 +36,13 @@ config.blocks.blocksConfig = {
 
 describe('Image View Component', () => {
   test('renders a view image component with a local image', () => {
-    const { getByRole } = render(<View data={{ url: '/image.jpg' }} />);
-    const img = getByRole('img');
+    const { container } = render(<View data={{ url: '/image.jpg' }} />);
+    const img = container.querySelector('img');
     expect(img).toHaveAttribute('src', '/image.jpg/@@images/image');
     expect(img).toHaveAttribute('loading', 'lazy');
   });
   test('renders a view image component with a local image with a link', () => {
-    const { container, getByRole } = render(
+    const { container } = render(
       <Provider store={store}>
         <MemoryRouter>
           <View
@@ -51,22 +51,22 @@ describe('Image View Component', () => {
         </MemoryRouter>
       </Provider>,
     );
-    const img = getByRole('img');
+    const img = container.querySelector('img');
     const a = container.querySelector('a');
     expect(img).toHaveAttribute('src', '/image.jpg/@@images/image');
     expect(a).toHaveAttribute('href', '/front-page');
   });
   test('renders a view image component with an external image', () => {
-    const { getByRole } = render(
+    const { container } = render(
       <Provider store={store}>
         <View data={{ url: 'https://plone.org/logo.jpg' }} />
       </Provider>,
     );
-    const img = getByRole('img');
+    const img = container.querySelector('img');
     expect(img).toHaveAttribute('src', 'https://plone.org/logo.jpg');
   });
   test('renders a view image component with an external image with a link', () => {
-    const { container, getByRole } = render(
+    const { container } = render(
       <Provider store={store}>
         <View
           data={{
@@ -76,7 +76,7 @@ describe('Image View Component', () => {
         />
       </Provider>,
     );
-    const img = getByRole('img');
+    const img = container.querySelector('img');
     const a = container.querySelector('a');
     expect(img).toHaveAttribute('src', 'https://plone.org/logo.jpg');
     expect(a).toHaveAttribute('href', 'http://front-page');

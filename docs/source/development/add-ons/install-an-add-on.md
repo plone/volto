@@ -16,8 +16,8 @@ You can install an add-on just like any other JavaScript package from the [npm R
 `````{tab-set}
 :sync-group: install-add-on
 
-````{tab-item} Volto 18
-:sync: volto-18
+````{tab-item} Volto 18 and 19
+:sync: volto-18-19
 ```shell
 pnpm --filter <name-of-your-policy-add-on> add <name-of-add-on>
 ```
@@ -31,14 +31,14 @@ yarn add <name-of-add-on>
 ````
 `````
 
-If the add-on is not published on the npm Registry, [you can install it directly from GitHub](https://pnpm.io/cli/add#install-from-git-repository).
+If the add-on is not published on the npm Registry, [you can install it directly from GitHub](https://pnpm.io/package-sources#git-repository).
 
 
 `````{tab-set}
 :sync-group: install-add-on
 
-````{tab-item} Volto 18
-:sync: volto-18
+````{tab-item} Volto 18 and 19
+:sync: volto-18-19
 ```shell
 pnpm add collective/volto-dropdownmenu
 ```

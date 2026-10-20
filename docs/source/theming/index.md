@@ -11,6 +11,8 @@ myst:
 
 This section of the documentation describes theming in Volto.
 
+```{include} ../_inc/_semantic-ui-deprecation.md
+```
 
 ## Conceptual guides
 
@@ -29,11 +31,8 @@ theming-strategy
 ```{toctree}
 :maxdepth: 1
 
+create-theme-add-on
 custom-styling
 using-third-party-themes
 theming-a-base-theme
-```
-
-```{seealso}
-For how to create your theme as an add-on in Volto 18 and later, see {doc}`../development/add-ons/theme`.
 ```

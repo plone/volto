@@ -58,6 +58,8 @@ const withObjectBrowser = (WrappedComponent) =>
       selectableTypes,
       maximumSelectionSize,
       currentPath,
+      initialPath,
+      onlyFolderishSelectable,
     } = {}) =>
       this.setState(() => ({
         isObjectBrowserOpen: true,
@@ -70,6 +72,8 @@ const withObjectBrowser = (WrappedComponent) =>
         selectableTypes,
         maximumSelectionSize,
         currentPath,
+        initialPath,
+        onlyFolderishSelectable,
       }));
 
     closeObjectBrowser = () => this.setState({ isObjectBrowserOpen: false });
@@ -79,6 +83,10 @@ const withObjectBrowser = (WrappedComponent) =>
         this.state?.currentPath ||
         this.props.pathname ||
         this.props.location?.pathname;
+
+      let initialPath = this.state?.initialPath
+        ? getBaseUrl(this.state.initialPath)
+        : null;
 
       return (
         <>
@@ -103,6 +111,7 @@ const withObjectBrowser = (WrappedComponent) =>
                     : this.props.data
                 }
                 contextURL={getBaseUrl(contextURL)}
+                initialPath={initialPath}
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}
                 onSelectItem={this.state.onSelectItem}
@@ -110,6 +119,7 @@ const withObjectBrowser = (WrappedComponent) =>
                 searchableTypes={this.state.searchableTypes}
                 selectableTypes={this.state.selectableTypes}
                 maximumSelectionSize={this.state.maximumSelectionSize}
+                onlyFolderishSelectable={this.state.onlyFolderishSelectable}
               />
             </SidebarPopup>
           </>

@@ -71,70 +71,87 @@ const View = ({ data }) => {
     });
   }, [state, rows]);
 
+  const handleSort = (index) => {
+    if (!data.table.sortable) return;
+    setState({
+      column: index,
+      direction:
+        state.column !== index
+          ? 'ascending'
+          : state.direction === 'ascending'
+            ? 'descending'
+            : 'ascending',
+    });
+  };
+
   return (
-    <>
-      {data && data.table && (
-        <Table
-          fixed={data.table.fixed}
-          compact={data.table.compact}
-          basic={data.table.basic ? 'very' : false}
-          celled={data.table.celled}
-          inverted={data.table.inverted}
-          striped={data.table.striped}
-          sortable={data.table.sortable}
-          className="slate-table-block"
-        >
-          {!data.table.hideHeaders ? (
-            <Table.Header>
-              <Table.Row>
-                {headers.map((cell, index) => (
-                  <Table.HeaderCell
-                    key={cell.key}
-                    textAlign="left"
-                    verticalAlign="middle"
-                    sorted={state.column === index ? state.direction : null}
-                    onClick={() => {
-                      if (!data.table.sortable) return;
-                      setState({
-                        column: index,
-                        direction:
-                          state.column !== index
-                            ? 'ascending'
-                            : state.direction === 'ascending'
-                              ? 'descending'
-                              : 'ascending',
-                      });
-                    }}
-                  >
-                    {cell.value &&
-                    Node.string({ children: cell.value }).length > 0
-                      ? serializeNodes(cell.value)
-                      : '\u00A0'}
-                  </Table.HeaderCell>
-                ))}
-              </Table.Row>
-            </Table.Header>
-          ) : (
-            ''
-          )}
-          <Table.Body>
-            {map(sortedRows, (row) => (
-              <Table.Row key={row}>
-                {map(rows[row], (cell) => (
-                  <Table.Cell
-                    key={cell.key}
-                    textAlign="left"
-                    verticalAlign="middle"
-                  >
-                    {cell.value}
-                  </Table.Cell>
-                ))}
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-      )}
-    </>
+    <div className="block slate-table">
+      <div className="block-inner-container">
+        {data && data.table && (
+          <Table
+            fixed={data.table.fixed}
+            compact={data.table.compact}
+            basic={data.table.basic ? 'very' : false}
+            celled={data.table.celled}
+            inverted={data.table.inverted}
+            striped={data.table.striped}
+            sortable={data.table.sortable}
+            className="slate-table-block"
+            unstackable
+          >
+            {!data.table.hideHeaders ? (
+              <Table.Header>
+                <Table.Row>
+                  {headers.map((cell, index) => (
+                    <Table.HeaderCell
+                      key={cell.key}
+                      textAlign="left"
+                      verticalAlign="middle"
+                      tabIndex={data.table.sortable ? '0' : '-1'}
+                      sorted={state.column === index ? state.direction : null}
+                      onClick={() => {
+                        handleSort(index);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          handleSort(index);
+                        }
+                      }}
+                      aria-sort={
+                        state.column === index ? state.direction : 'none'
+                      }
+                    >
+                      {cell.value &&
+                      Node.string({ children: cell.value }).length > 0
+                        ? serializeNodes(cell.value)
+                        : '\u00A0'}
+                    </Table.HeaderCell>
+                  ))}
+                </Table.Row>
+              </Table.Header>
+            ) : (
+              ''
+            )}
+            <Table.Body>
+              {map(sortedRows, (row) => (
+                <Table.Row key={row}>
+                  {map(rows[row], (cell) => (
+                    <Table.Cell
+                      key={cell.key}
+                      textAlign="left"
+                      verticalAlign="middle"
+                    >
+                      {cell.value}
+                    </Table.Cell>
+                  ))}
+                </Table.Row>
+              ))}
+            </Table.Body>
+          </Table>
+        )}
+      </div>
+    </div>
   );
 };
 

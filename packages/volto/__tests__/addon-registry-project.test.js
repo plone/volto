@@ -6,20 +6,26 @@ import {
 } from '@plone/registry/addon-registry';
 
 describe('AddonRegistry - Project', () => {
-  jest.mock(
-    `${path.join(
-      __dirname,
-      'fixtures',
-      'test-volto-project',
-    )}/node_modules/@plone/volto/package.json`,
-    () => ({
-      // TODO: mock the packages folder inside the mocked @plone/volto to work with resolves
-      coreAddons: {},
-    }),
-    { virtual: true },
-  );
+  beforeEach(async () => {
+    await vi.doMock(
+      path.join(
+        __dirname,
+        'fixtures',
+        'test-volto-project',
+        'node_modules/@plone/volto/package.json',
+      ),
+      () => ({
+        default: {
+          coreAddons: {},
+        },
+      }),
+    );
+  });
 
-  it('works in a mock project directory', () => {
+  afterEach(() => {
+    vi.resetModules();
+  });
+  test('works in a mock project directory', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const { registry } = AddonRegistry.init(base);
 
@@ -49,6 +55,7 @@ describe('AddonRegistry - Project', () => {
       },
       'test-released-addon': {
         basePath: `${base}/node_modules/test-released-addon`,
+        hasServerConfig: false,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-addon`,
         name: 'test-released-addon',
@@ -60,6 +67,7 @@ describe('AddonRegistry - Project', () => {
       },
       'test-released-source-addon': {
         basePath: `${base}/node_modules/test-released-source-addon`,
+        hasServerConfig: false,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-source-addon/src`,
         name: 'test-released-source-addon',
@@ -73,6 +81,7 @@ describe('AddonRegistry - Project', () => {
       'test-released-unmentioned': {
         addons: [],
         basePath: `${base}/node_modules/test-released-unmentioned`,
+        hasServerConfig: false,
         isPublishedPackage: true,
         modulePath: `${base}/node_modules/test-released-unmentioned`,
         name: 'test-released-unmentioned',
@@ -102,7 +111,7 @@ describe('AddonRegistry - Project', () => {
     });
   });
 
-  it('provides aliases for addons', () => {
+  test('provides aliases for addons', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const { registry } = AddonRegistry.init(base);
     expect(registry.getResolveAliases()).toStrictEqual({
@@ -115,13 +124,13 @@ describe('AddonRegistry - Project', () => {
     });
   });
 
-  it('provides addon extenders', () => {
+  test('provides addon extenders', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const { registry } = AddonRegistry.init(base);
     expect(registry.getAddonExtenders().length).toBe(1);
   });
 
-  it('provides a list of addon records ordered by initial package declaration', () => {
+  test('provides a list of addon records ordered by initial package declaration', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const { registry } = AddonRegistry.init(base);
     const addons = registry.getAddons();
@@ -135,7 +144,7 @@ describe('AddonRegistry - Project', () => {
     ]);
   });
 
-  it('provides customization paths declared in a Volto project', () => {
+  test('provides customization paths declared in a Volto project', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const { registry } = AddonRegistry.init(base);
     expect(registry.getProjectCustomizationPaths()).toStrictEqual({
@@ -148,7 +157,7 @@ describe('AddonRegistry - Project', () => {
     });
   });
 
-  it('provides customization paths declared in addons', () => {
+  test('provides customization paths declared in addons', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const { registry } = AddonRegistry.init(base);
     expect(registry.getAddonCustomizationPaths()).toStrictEqual({
@@ -217,10 +226,10 @@ describe('Addon chain loading dependencies', () => {
 });
 
 describe('Addon via env var - Released addon', () => {
-  const originalEnv = process.env;
+  const originalEnv = { ...process.env };
 
   beforeEach(() => {
-    jest.resetModules();
+    vi.resetModules();
     process.env = {
       ...originalEnv,
       ADDONS: 'test-released-via-addons-env-var',
@@ -231,7 +240,7 @@ describe('Addon via env var - Released addon', () => {
     process.env = originalEnv;
   });
 
-  it('addons can be specified on the fly using ADDONS env var - Released addon', () => {
+  test('addons can be specified on the fly using ADDONS env var - Released addon', () => {
     const base = path.join(__dirname, 'fixtures', 'test-volto-project');
     const { registry } = AddonRegistry.init(base);
     expect(

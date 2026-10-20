@@ -3,7 +3,7 @@
 Vocabularies are a set of allowed choices that back a particular field.
 They contain so-called _terms_ which represent those allowed choices.
 
-## Get Vocabularies List
+## Get vocabularies list
 
 ### Query function
 
@@ -13,7 +13,7 @@ Use the `getVocabulariesListQuery` function to get the query for fetching the li
 
 Use the `useGetVocabulariesList` hook to get the list of all available vocabularies.
 
-## Get Vocabularies
+## Get vocabularies
 
 ### Query function
 

@@ -1,15 +1,14 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import { Button } from './Button';
 import { Link } from '../Link/Link';
 import { Text } from 'react-aria-components';
-import { AddIcon } from '../Icons/AddIcon';
+import { AddIcon } from '../icons/AddIcon';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/Button.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
-  title: 'Components/Button',
+  title: 'Basic/Button',
   component: Button,
   parameters: {
     layout: 'centered',

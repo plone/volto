@@ -1,5 +1,3 @@
-@import './theme.css';
-
 @layer plone-components.base {
   .react-aria-ToggleButton {
     padding: 8px 8px;

@@ -34,9 +34,13 @@ This should also help to reduce circular dependencies, and help the overall buil
 
 If you import a component from a lazy loaded index, you can have issues with rendering these in unit tests.
 Mocks are provided for lazy loaded components and are available for you to use.
-This can be done by using the `jest.mock` function to mock the specific component index.
+This can be done by using the `vi.mock` function to mock the specific component index.
 For example, to mock the `Form` component and all other components in the `Form`-specific index, you can use the following code in your test file:
 
 ```javascript
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form', async () => {
+  return await import(
+    '@plone/volto/components/manage/Form/__mocks__/index.vitest.tsx'
+  );
+});
 ```

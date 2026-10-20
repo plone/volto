@@ -1,5 +1,6 @@
 export default VersionOverview;
-declare function VersionOverview({ cmf_version, debug_mode, pil_version, plone_version, plone_restapi_version, python_version, zope_version, }: {
+declare function VersionOverview({ cmf_version, debug_mode, pil_version, plone_version, plone_restapi_version, python_version, zope_version, ...rest }: {
+    [x: string]: any;
     cmf_version: any;
     debug_mode: any;
     pil_version: any;

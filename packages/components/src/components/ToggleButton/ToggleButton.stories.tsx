@@ -1,12 +1,11 @@
 import React from 'react';
 import { ToggleButton } from './ToggleButton';
-import { BoldIcon } from '../Icons/BoldIcon';
+import { BoldIcon } from '../icons';
 
-import type { Meta, StoryObj } from '@storybook/react';
-
-import '../../styles/basic/ToggleButton.css';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta = {
+  title: 'Basic/ToggleButton',
   component: ToggleButton,
   parameters: {
     layout: 'centered',
@@ -39,7 +38,7 @@ export const Disabled: Story = {
 export const Icon: Story = {
   render: (args: any) => (
     <ToggleButton {...args}>
-      <BoldIcon size="S" />
+      <BoldIcon size="sm" />
     </ToggleButton>
   ),
   args: {

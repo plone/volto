@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`renders a textarea widget component 1`] = `
 <div
@@ -34,6 +34,11 @@ exports[`renders a textarea widget component 1`] = `
           onInput={[Function]}
           rows={3}
           value=""
+        />
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          className="visually-hidden"
         />
       </div>
     </div>

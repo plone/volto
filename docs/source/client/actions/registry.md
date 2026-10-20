@@ -5,7 +5,7 @@ To address a specific record, the fully qualified dotted name of the registry re
 
 Reading or writing registry records require the `cmf.ManagePortal` permission.
 
-## Get Registry List
+## Get registry list
 
 ### Query function
 
@@ -15,7 +15,7 @@ Use the `getRegistriesQuery` function to get the query for fetching the list of 
 
 Use the `useGetRegistries` hook to get the list of all available registry records.
 
-## Get Registry
+## Get registry
 
 ### Query function
 
@@ -31,7 +31,7 @@ Use the `useGetRegistry` hook to get a registry record at a given path.
 
   - **Required:** Yes
 
-## Update Registry
+## Update registry
 
 ### Mutation function
 

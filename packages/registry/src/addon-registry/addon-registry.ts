@@ -6,6 +6,7 @@ import _debug from 'debug';
 import { DepGraph } from 'dependency-graph';
 import { createRequire } from 'node:module';
 import { autoConf, jsLoader, getConfigPath } from 'auto-config-loader';
+import merge from 'deepmerge';
 
 const debugShadowing = _debug('shadowing');
 const debugConfig = _debug('config');
@@ -16,10 +17,12 @@ export type Package = {
   isPublishedPackage: boolean;
   isRegisteredAddon: boolean;
   modulePath: string;
+  hasServerConfig?: boolean;
   packageJson: string;
   basePath?: string;
   tsConfigPaths?: [string, any] | null;
   addons: Array<string>;
+  theme: string | undefined;
   razzleExtender?: string;
   eslintExtender?: string;
 };
@@ -167,6 +170,7 @@ class AddonRegistry {
   public customizations: any;
   public theme: any;
   public dependencyGraph: DepGraph<string | []>;
+  public innerTheme: string | undefined;
 
   constructor(projectRootPath: string) {
     const packageJson = (this.packageJson = JSON.parse(
@@ -206,14 +210,19 @@ class AddonRegistry {
     this.packages = {};
     this.customizations = new Map();
 
-    // Theme from an ENV VAR, from volto.config.js or from a package.json key
-    // in this order of preference
-    this.theme =
-      process.env.THEME || this.voltoConfigJS.theme || packageJson.theme;
+    this.innerTheme = undefined;
 
     this.initDevelopmentPackages();
     this.initPublishedPackages();
     this.initAddonsFromEnvVar();
+
+    // Theme from an ENV VAR, from volto.config.js, from any add-on that defines `theme` key, or from a package.json key
+    // in this order of preference
+    this.theme =
+      process.env.THEME ||
+      this.voltoConfigJS.theme ||
+      this.innerTheme ||
+      packageJson.theme;
 
     this.dependencyGraph = buildDependencyGraph(
       [
@@ -364,7 +373,9 @@ class AddonRegistry {
   initDevelopmentPackage(name: string) {
     const [baseUrl, pathsConfig] = this.getTSConfigPaths();
     if (pathsConfig && pathsConfig.hasOwnProperty(name)) {
-      const packagePath = `${this.projectRootPath}/${baseUrl}/${pathsConfig[name]![0]}`;
+      const packagePath = `${this.projectRootPath}/${baseUrl}/${
+        pathsConfig[name]![0]
+      }`;
       const packageJsonPath = `${getPackageBasePath(packagePath)}/package.json`;
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
       const innerAddons: Array<string> = packageJson.addons || [];
@@ -415,6 +426,10 @@ class AddonRegistry {
       const pkg = JSON.parse(fs.readFileSync(packageJson, 'utf-8'));
       const main = pkg.main || 'src/index.js';
       const modulePath = path.dirname(require.resolve(`${basePath}/${main}`));
+      let hasServerConfig = false;
+      if (fs.existsSync(`${basePath}/config/server.ts`)) {
+        hasServerConfig = true;
+      }
       const innerAddons: Array<string> = pkg.addons || [];
       const innerAddonsNormalized = innerAddons.map((s) => s.split(':')[0]);
       if (this.addonNames.includes(name) && innerAddonsNormalized.length > 0) {
@@ -423,6 +438,10 @@ class AddonRegistry {
             this.addonNames.push(name as string);
         });
       }
+      const theme = pkg.theme || undefined;
+      // Set the main theme if not already set, the last one wins
+      this.innerTheme = theme;
+
       const packageTSConfig = this.getTSConfigPaths(basePath);
 
       this.packages[name] = {
@@ -431,10 +450,12 @@ class AddonRegistry {
         isPublishedPackage: true,
         isRegisteredAddon: this.addonNames.includes(name),
         modulePath,
+        hasServerConfig,
         packageJson,
         basePath,
         tsConfigPaths: packageTSConfig[1] ? packageTSConfig : null,
         addons: pkg.addons || [],
+        theme,
       };
     }
   }
@@ -496,6 +517,76 @@ class AddonRegistry {
     return this.getAddons()
       .map((o) => o?.eslintExtender)
       .filter((e) => e);
+  }
+
+  /**
+   * Returns the list of add-on style files (<addon-path>/${styleSheetPath}) that contain styles
+   */
+  getAddonStyles(styleSheetPath: string) {
+    const addonsStylesInfo: Array<string> = [];
+
+    this.getAddonDependencies().forEach((addon) => {
+      const normalizedAddonName = addon.split(':')[0] as string;
+
+      const addonStyleFile = `${this.packages[normalizedAddonName]?.modulePath}/${styleSheetPath}`;
+      if (fs.existsSync(addonStyleFile)) {
+        addonsStylesInfo.push(normalizedAddonName);
+      }
+    });
+
+    return addonsStylesInfo;
+  }
+
+  /**
+   * Returning locales in the format:
+   * {
+   *   "en": {
+   *     "common.json": {
+   *       ...translations
+   *     },
+   *   },
+   *   "it": {
+   *     "common.json": {
+   *       ...translations
+   *     },
+   *   }
+   *   ...other languages
+   * }
+   */
+  getAddonsLocales() {
+    return this.getAddonDependencies().reduce<{
+      [lang: string]: { [namespace: string]: object };
+    }>((acc, addon) => {
+      const normalizedAddonName = addon.split(':')[0] as string;
+
+      const localesFolder = path.resolve(
+        this.packages[normalizedAddonName]?.modulePath,
+        'locales',
+      );
+      // If the add-on has no locales folder, we skip it
+      if (!fs.existsSync(localesFolder)) {
+        return acc;
+      }
+
+      const languages = fs.readdirSync(localesFolder);
+      const addonLocales = languages.reduce<{
+        [lang: string]: { [namespace: string]: object };
+      }>((acc, language) => {
+        const addonLocaleFolder = path.join(localesFolder, language);
+        // Only read the common.json namespace file since we don't support
+        // multiple namespaces at this time
+        const namespace = 'common.json';
+        const filePath = path.join(addonLocaleFolder, namespace);
+        if (fs.existsSync(filePath)) {
+          if (!acc[language]) acc[language] = {};
+          acc[language][namespace] = JSON.parse(
+            fs.readFileSync(filePath, 'utf-8'),
+          );
+        }
+        return acc;
+      }, {});
+      return merge(acc, addonLocales);
+    }, {});
   }
 
   getCustomThemeAddons() {
@@ -652,7 +743,7 @@ class AddonRegistry {
 
       reg.forEach(({ customPath, name, sourcePath }) => {
         glob(
-          `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx)`,
+          `${customPath}/**/*.*(svg|png|jpg|jpeg|gif|ico|less|js|jsx|ts|tsx|cjs|mjs)`,
         ).map((filename) => {
           function changeFileExtension(filePath: string) {
             // Extract the current file extension

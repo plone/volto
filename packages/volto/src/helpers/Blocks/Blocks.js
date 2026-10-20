@@ -81,6 +81,14 @@ export function blockHasValue(data) {
 }
 
 /**
+ * Block id is valid (not undefined/null or the string "undefined" from object[undefined])
+ * @param {*} id Block id
+ * @return {boolean}
+ */
+const isValidBlockId = (id) =>
+  id != null && id !== 'undefined' && (typeof id !== 'string' || id.length > 0);
+
+/**
  * Get block pairs of [id, block] from content properties
  * @function getBlocks
  * @param {Object} properties
@@ -89,12 +97,26 @@ export function blockHasValue(data) {
 export const getBlocks = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  return (
-    properties[blocksLayoutFieldname]?.items?.map((n) => [
-      n,
-      properties[blocksFieldName][n],
-    ]) || []
-  );
+  const blocks = properties?.[blocksFieldName];
+  const items = properties?.[blocksLayoutFieldname]?.items;
+  if (!items) return [];
+  return items
+    .filter((n) => isValidBlockId(n))
+    .map((n) => [n, blocks?.[n]])
+    .filter(([, block]) => block != null);
+};
+
+/**
+ * Get layout item IDs that are valid but have no block data (orphaned refs).
+ * @param {Object} properties Content form properties
+ * @return {string[]} IDs that should be removed from layout
+ */
+export const getInvalidBlockLayoutIds = (properties) => {
+  const blocksFieldName = getBlocksFieldname(properties);
+  const blocksLayoutFieldName = getBlocksLayoutFieldname(properties);
+  const blocks = properties?.[blocksFieldName] ?? {};
+  const layoutItems = properties?.[blocksLayoutFieldName]?.items ?? [];
+  return layoutItems.filter((id) => isValidBlockId(id) && blocks[id] == null);
 };
 
 /**
@@ -120,22 +142,45 @@ export function moveBlock(formData, source, destination) {
  * @function deleteBlock
  * @param {Object} formData Form data
  * @param {string} blockId Block uid
+ * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function deleteBlock(formData, blockId) {
+export function deleteBlock(formData, blockId, intl) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
   let newFormData = {
     ...formData,
-    [blocksLayoutFieldname]: {
-      items: without(formData[blocksLayoutFieldname].items, blockId),
-    },
-    [blocksFieldname]: omit(formData[blocksFieldname], [blockId]),
   };
 
+  let container = findParent(newFormData, {
+    blockId,
+  });
+
+  if (container) {
+    container[blocksLayoutFieldname].items = without(
+      container[blocksLayoutFieldname].items,
+      blockId,
+    );
+    container[blocksFieldname] = omit(container[blocksFieldname], [blockId]);
+  } else {
+    newFormData[blocksLayoutFieldname].items = without(
+      newFormData[blocksLayoutFieldname].items,
+      blockId,
+    );
+    newFormData[blocksFieldname] = omit(newFormData[blocksFieldname], [
+      blockId,
+    ]);
+  }
+
   if (newFormData[blocksLayoutFieldname].items.length === 0) {
-    newFormData = addBlock(newFormData, config.settings.defaultBlockType, 0);
+    newFormData = addBlock(
+      newFormData,
+      config.settings.defaultBlockType,
+      0,
+      null,
+      intl,
+    );
   }
 
   return newFormData;
@@ -147,9 +192,11 @@ export function deleteBlock(formData, blockId) {
  * @param {Object} formData Form data
  * @param {string} type Block type
  * @param {number} index Destination index
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
-export function addBlock(formData, type, index, blocksConfig) {
+export function addBlock(formData, type, index, blocksConfig, intl) {
   const { settings } = config;
   const id = uuid();
   const idTrailingBlock = uuid();
@@ -192,6 +239,7 @@ export function addBlock(formData, type, index, blocksConfig) {
         },
         selected: id,
       },
+      intl,
     }),
   ];
 }
@@ -208,6 +256,7 @@ export const applyBlockInitialValue = ({
   value,
   blocksConfig,
   formData,
+  intl,
 }) => {
   const type = value['@type'];
   blocksConfig = blocksConfig || config.blocks.blocksConfig;
@@ -217,6 +266,7 @@ export const applyBlockInitialValue = ({
       id,
       value,
       formData,
+      intl,
     });
     const blocksFieldname = getBlocksFieldname(formData);
     formData[blocksFieldname][id] = value;
@@ -231,9 +281,11 @@ export const applyBlockInitialValue = ({
  * @param {Object} formData Form data
  * @param {string} id Block uid to mutate
  * @param {number} value Block's new value
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Object} New form data
  */
-export function mutateBlock(formData, id, value, blocksConfig) {
+export function mutateBlock(formData, id, value, blocksConfig, intl) {
   const { settings } = config;
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -260,6 +312,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
           [id]: value || null,
         },
       },
+      intl,
     });
     if (!blockHasValue(block)) {
       return newFormData;
@@ -288,6 +341,7 @@ export function mutateBlock(formData, id, value, blocksConfig) {
         ],
       },
     },
+    intl,
   });
   return newFormData;
 }
@@ -298,6 +352,10 @@ export function mutateBlock(formData, id, value, blocksConfig) {
  * @param {Object} formData Form data
  * @param {string} id Insert new block before the block with this id
  * @param {number} value New block's value
+ * @param {Object} current Current block
+ * @param {number} offset offset position
+ * @param {Object} blocksConfig Blocks configuration.
+ * @param {Object} intl intl object.
  * @return {Array} New block id, New form data
  */
 export function insertBlock(
@@ -307,6 +365,7 @@ export function insertBlock(
   current = {},
   offset = 0,
   blocksConfig,
+  intl,
 ) {
   const blocksFieldname = getBlocksFieldname(formData);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
@@ -340,6 +399,7 @@ export function insertBlock(
         ],
       },
     },
+    intl,
   });
 
   return [newBlockId, newFormData];
@@ -639,7 +699,11 @@ export const styleDataToStyleObject = (key, value, prefix = '') => {
  * @param {string} prefix The prefix (could be dragged from a recursive call, initially empty)
  * @return {Object} The style object ready to be passed as prop
  */
-export const buildStyleObjectFromData = (data = {}, prefix = '') => {
+export const buildStyleObjectFromData = (
+  data = {},
+  prefix = '',
+  container = {},
+) => {
   // style wrapper object has the form:
   // const styles = {
   //   color: 'red',
@@ -698,7 +762,7 @@ export const buildStyleObjectFromData = (data = {}, prefix = '') => {
     enhancers.forEach(({ method }) => {
       stylesFromObjectStyleEnhancers = {
         ...stylesFromObjectStyleEnhancers,
-        ...method(data),
+        ...method({ data, container }),
       };
     });
 
@@ -786,12 +850,14 @@ export function findBlocks(blocks = {}, types, result = []) {
 export const getBlocksHierarchy = (properties) => {
   const blocksFieldName = getBlocksFieldname(properties);
   const blocksLayoutFieldname = getBlocksLayoutFieldname(properties);
-  return properties[blocksLayoutFieldname]?.items?.map((n) => ({
+  return properties?.[blocksLayoutFieldname]?.items?.map((n) => ({
     id: n,
-    title: properties[blocksFieldName][n]?.['@type'],
-    data: properties[blocksFieldName][n],
-    children: isBlockContainer(properties[blocksFieldName][n])
-      ? getBlocksHierarchy(properties[blocksFieldName][n])
+    title: properties?.[blocksFieldName]?.[n]?.['@type'],
+    data: properties?.[blocksFieldName]?.[n],
+    children: isBlockContainer(properties?.[blocksFieldName]?.[n])
+      ? properties?.[blocksFieldName]?.[n]?.data
+        ? getBlocksHierarchy(properties?.[blocksFieldName]?.[n]?.data)
+        : getBlocksHierarchy(properties?.[blocksFieldName]?.[n])
       : [],
   }));
 };
@@ -885,8 +951,13 @@ export function moveBlockEnhanced(formData, { source, destination }) {
       const destinationContainer = findContainer(clonedFormData, {
         containerId: destination.parent,
       });
+      const sourceContainer = findContainer(clonedFormData, {
+        containerId: source.parent,
+      });
+
       destinationContainer[blocksFieldName][source.id] =
-        formData[blocksFieldName][source.parent][blocksFieldName][source.id];
+        sourceContainer[blocksFieldName]?.[source.id] ||
+        sourceContainer.data?.[blocksFieldName][source.id];
 
       destinationContainer[blocksLayoutFieldname].items = insertInArray(
         destinationContainer[blocksLayoutFieldname].items,
@@ -895,9 +966,6 @@ export function moveBlockEnhanced(formData, { source, destination }) {
       );
 
       // Remove the source block from the source parent
-      const sourceContainer = findContainer(clonedFormData, {
-        containerId: source.parent,
-      });
       delete sourceContainer[blocksFieldName][source.id];
       sourceContainer[blocksLayoutFieldname].items = removeFromArray(
         sourceContainer[blocksLayoutFieldname].items,
@@ -931,23 +999,25 @@ export function moveBlockEnhanced(formData, { source, destination }) {
  * @returns {object|undefined} - The container object if found, otherwise undefined.
  */
 export const findContainer = (formData, { containerId }) => {
+  const block =
+    formData.blocks[containerId]?.data || formData.blocks[containerId];
   if (
-    formData.blocks[containerId] &&
-    Object.keys(formData.blocks[containerId]).includes('blocks') &&
-    Object.keys(formData.blocks[containerId]).includes('blocks_layout')
+    block &&
+    Object.keys(block).includes('blocks') &&
+    Object.keys(block).includes('blocks_layout')
   ) {
-    return formData.blocks[containerId];
+    return block;
   }
 
   let container;
   Object.keys(formData.blocks).every((blockId) => {
-    const block = formData.blocks[blockId];
+    const subBlock = formData.blocks[blockId].data || formData.blocks[blockId];
     if (
-      formData.blocks[blockId] &&
-      Object.keys(formData.blocks[blockId]).includes('blocks') &&
-      Object.keys(formData.blocks[blockId]).includes('blocks_layout')
+      subBlock &&
+      Object.keys(subBlock).includes('blocks') &&
+      Object.keys(subBlock).includes('blocks_layout')
     ) {
-      container = findContainer(block, { containerId });
+      container = findContainer(subBlock, { containerId });
     }
     if (container) {
       return false;
@@ -957,6 +1027,47 @@ export const findContainer = (formData, { containerId }) => {
   });
 
   return container;
+};
+
+/**
+ * Finds parent container of the specified blockId in the given formData.
+ *
+ * @param {object} formData - The form data object.
+ * @param {object} options - The options object.
+ * @param {string} options.blockId - The ID of the block to find.
+ * @returns {object|undefined} - The container object if found, otherwise undefined.
+ */
+export const findParent = (formData, { blockId }) => {
+  const block = formData.data || formData;
+
+  if (block && block.blocks && Object.keys(block.blocks).includes(blockId)) {
+    return block;
+  }
+
+  let found = false;
+
+  if (block && block.blocks) {
+    Object.keys(block.blocks).every((subBlockId) => {
+      const subBlock =
+        block.blocks[subBlockId].data || block.blocks[subBlockId];
+      if (subBlock && subBlock.blocks) {
+        if (Object.keys(subBlock.blocks).includes(blockId)) {
+          found = subBlock;
+        }
+        const parent = findParent(subBlock, { blockId });
+        if (parent) {
+          found = parent;
+        }
+      }
+      if (found) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  }
+
+  return found;
 };
 
 const _dummyIntl = {

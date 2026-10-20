@@ -1,7 +1,7 @@
+/* depends on:
 @import './Button.css';
 @import './Form.css';
-@import './theme.css';
-
+*/
 @layer plone-components.base {
   .react-aria-ColorField {
     display: flex;

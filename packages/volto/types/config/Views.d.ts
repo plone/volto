@@ -9,9 +9,7 @@ export namespace layoutViews {
 }
 export const contentTypesViews: {
     'News Item': {
-        ({ content }: {
-            content: any;
-        }): string;
+        (props: any): string;
         propTypes: {
             content: any;
         };
@@ -42,7 +40,7 @@ export const errorViews: {
     403: (props: any) => import("react/jsx-runtime").JSX.Element;
     408: () => string;
     500: (props: any) => import("react/jsx-runtime").JSX.Element;
-    ECONNREFUSED: () => import("react/jsx-runtime").JSX.Element;
+    ECONNREFUSED: (props: any) => import("react/jsx-runtime").JSX.Element;
     corsError: () => string;
 };
 export namespace layoutViewsNamesMapping {

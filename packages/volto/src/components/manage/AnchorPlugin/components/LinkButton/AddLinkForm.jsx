@@ -258,6 +258,7 @@ class AddLinkForm extends Component {
             {value.length > 0 ? (
               <Button.Group>
                 <Button
+                  type="button"
                   basic
                   className="cancel"
                   aria-label={this.props.intl.formatMessage(messages.clear)}
@@ -274,6 +275,7 @@ class AddLinkForm extends Component {
             ) : this.props.objectBrowserPickerType === 'link' ? (
               <Button.Group>
                 <Button
+                  type="button"
                   basic
                   icon
                   aria-label={this.props.intl.formatMessage(

@@ -10,4 +10,5 @@ module.exports = defineConfig({
     excludeSpecPattern: ['*~'],
     specPattern: 'cypress/tests/**/*.{js,jsx,ts,tsx}',
   },
+  experimentalMemoryManagement: true,
 });

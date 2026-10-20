@@ -1,12 +1,30 @@
 import { ConfigType } from './dist';
-import * as vite from 'vite';
 
-declare function PloneRegistryVitePlugin(): vite.Plugin;
+export function PloneRegistryVitePlugin(): {
+  name: string;
+  enforce: 'pre' | 'post' | undefined;
+  config: () => {
+    ssr: {
+      optimizeDeps: {
+        exclude: string[];
+      };
+    };
+    esbuild: {
+      supported: {
+        'top-level-await': boolean;
+      };
+    };
+    optimizeDeps: {
+      exclude: string[];
+    };
+    resolve: {
+      alias: any[];
+    };
+  };
+};
 
 declare module '@plone/registry/addons-loader' {
   export default function applyAddonConfiguration(
     config: ConfigType,
   ): ConfigType;
 }
-
-export { PloneRegistryVitePlugin };

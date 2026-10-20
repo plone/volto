@@ -25,12 +25,6 @@ test('renders an edit table block component', () => {
         onAddBlock={() => {}}
         onChangeBlock={() => {}}
         onSelectBlock={() => {}}
-        onDeleteBlock={() => {}}
-        onInsertBlock={() => {}}
-        onFocusPreviousBlock={() => {}}
-        onFocusNextBlock={() => {}}
-        handleKeyDown={() => {}}
-        onMutateBlock={() => {}}
         index={1}
       />
     </Provider>,

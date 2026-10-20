@@ -3,25 +3,31 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
-import { __test__ as Contents } from './Contents';
+import { ContentsComponent as Contents } from './Contents';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/helpers/Loadable/Loadable');
-beforeAll(
-  async () =>
-    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
-);
+vi.mock('@plone/volto/helpers/Loadable/Loadable');
 
-jest.mock('../Toolbar/Toolbar', () => jest.fn(() => <div id="Portal" />));
+beforeAll(async () => {
+  const { __setLoadables } = await import(
+    '@plone/volto/helpers/Loadable/Loadable'
+  );
+  await __setLoadables();
+});
 
-jest.mock('../../theme/Pagination/Pagination', () =>
-  jest.fn(() => <div className="Pagination" />),
-);
-jest.mock('./ContentsUploadModal', () =>
-  jest.fn(() => <div className="UploadModal" />),
-);
+vi.mock('../Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
+
+vi.mock('../../theme/Pagination/Pagination', () => ({
+  default: vi.fn(() => <div className="Pagination" />),
+}));
+vi.mock('./ContentsUploadModal', () => ({
+  default: vi.fn(() => <div className="UploadModal" />),
+}));
 
 describe('Contents', () => {
   it('renders a folder contents view component', () => {
@@ -87,15 +93,31 @@ describe('Contents', () => {
       },
       intl: {
         locale: 'en',
-        messages: {},
+        messages: {
+          ID: 'ID',
+          Title: 'Title',
+          'Publication date': 'Publication date',
+          'Created on': 'Created on',
+          'Last modified': 'Last modified',
+          Type: 'Type',
+        },
+      },
+      navroot: {
+        data: {
+          navroot: {
+            '@type': 'Plone Site',
+          },
+        },
       },
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Contents location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Contents location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

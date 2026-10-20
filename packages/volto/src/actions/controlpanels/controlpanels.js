@@ -12,6 +12,7 @@ import {
   SYSTEM_INFORMATION,
   DATABASE_INFORMATION,
 } from '@plone/volto/constants/ActionTypes';
+
 /**
  * Get controlpanel function.
  * @function getControlpanel

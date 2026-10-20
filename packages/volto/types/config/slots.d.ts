@@ -1,5 +1,12 @@
 export default slots;
 declare namespace slots {
+    let aboveApp: {
+        name: string;
+        component: import("@loadable/component").LoadableComponent<any>;
+        predicates: (({ location }: {
+            location: any;
+        }) => boolean)[];
+    }[];
     let belowContent: ({
         name: string;
         component: {

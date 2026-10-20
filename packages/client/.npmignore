@@ -1,7 +1,0 @@
-news
-towncrier.toml
-.changelog.draft
-node_modules/
-.vscode
-.github
-coverage

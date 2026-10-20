@@ -8,7 +8,7 @@ import ModalForm from './ModalForm';
 
 const mockStore = configureStore();
 
-jest.mock('@plone/volto/components/manage/Form');
+vi.mock('@plone/volto/components/manage/Form');
 
 describe('ModalForm', () => {
   it('renders a modal form component', () => {
@@ -88,5 +88,31 @@ describe('ModalForm', () => {
 
     const loadingMessage = getByText(/renaming items.../i);
     expect(loadingMessage).toBeInTheDocument();
+  });
+
+  it('renders with empty fieldsets array', () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <ModalForm
+          schema={{
+            fieldsets: [],
+            properties: {},
+            required: [],
+          }}
+          onSubmit={() => {}}
+          onCancel={() => {}}
+          open={false}
+          title="Action without form"
+        />
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
   });
 });

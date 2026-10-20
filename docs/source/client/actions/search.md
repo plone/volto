@@ -3,14 +3,14 @@
 Content in a Plone site can be searched for by invoking the `/@search` endpoint in any context:
 
 A search is _contextual_ by default.
-In other words, it is bound to a specific context—a _collection_ in HTTP REST terms—and searches within that collection and any sub-collections.
+In other words, it's bound to a specific context—a _collection_ in HTTP REST terms—and searches within that collection and any sub-collections.
 
 A Plone site is also a collection.
-We therefore have a global search by invoking the `/@search` endpoint on the site root.
-We also have contextual searches by invoking that endpoint on any other context.
+A global search is accessible by calling the `/@search` endpoint on the site root.
+Contextual searches are available by using the same endpoint on any other context.
 All searches use the same pattern.
 
-## Get Search
+## Get search
 
 ### Query function
 

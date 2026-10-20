@@ -1,4 +1,4 @@
-export interface GetQueryStringResponse {
+export interface GetQuerystringResponse {
   '@id': string;
   indexes: Indexes;
   sortable_indexes: SortableIndexes;

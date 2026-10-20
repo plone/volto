@@ -1,7 +1,7 @@
 # Add-ons
 
 Add-on product records can be addressed through the `@addons` endpoint in a Plone site.
-In order to address a specific record, the profile ID has to be passed as a path segment, such as `/plone/@addons/plone.session`.
+To address a specific record, the profile ID has to be passed as a path segment, such as `/plone/@addons/plone.session`.
 
 Reading or writing add-ons metadata requires the `cmf.ManagePortal` permission.
 
@@ -27,7 +27,7 @@ Use the `useGetAddon` hook to get an add-on at a given path.
 
 ### Parameters
 
-- **addonId**: string
+- **`addonId`**: string
 
   - **Required**: Yes
 
@@ -43,7 +43,7 @@ Use the `useInstallAddon` hook to install an add-on at a given path.
 
 ### Parameters
 
-- **addonId**: string
+- **`addonId`**: string
 
   - **Required**: Yes
 
@@ -59,7 +59,7 @@ Use the `useUninstallAddon` hook to uninstall an add-on at a given path.
 
 ### Parameters
 
-- **addonId**: string
+- **`addonId`**: string
 
   - **Required**: Yes
 
@@ -75,7 +75,7 @@ Use the `useInstallProfileAddon` hook to install an add-on profile at a given pa
 
 ### Parameters
 
-- **addonId**: string
+- **`addonId`**: string
 
   - **Required**: Yes
 
@@ -95,6 +95,6 @@ Use the `useUpgradeAddon` hook to upgrade an add-on at a given path.
 
 ### Parameters
 
-- **addonId**: string
+- **`addonId`**: string
 
   - **Required**: Yes

@@ -1,4 +1,4 @@
-# Copy and Move
+# Copy and move
 
 ## Copying an object
 
@@ -10,7 +10,7 @@ The source object can be specified either by URL, path, UID or `intid`:
 To move a content object, send a `POST` request to the `/@move` endpoint at the destination's URL with the source object specified in the request body.
 The source object can be specified either by URL, path, UID or `intid`:
 
-## Copy Content
+## Copy content
 
 ### Mutation function
 
@@ -33,7 +33,7 @@ Use the `useCopy` hook to copy a content object.
       - **Required:** Yes
       - The source object to copy. It can be specified either by URL, path, UID or `intid`.
 
-## Move Content
+## Move content
 
 ### Mutation function
 

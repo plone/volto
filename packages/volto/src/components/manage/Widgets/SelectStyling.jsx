@@ -1,4 +1,5 @@
 import React from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import { Popup } from 'semantic-ui-react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -10,37 +11,63 @@ import checkSVG from '@plone/volto/icons/check.svg';
 import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 
+const messages = defineMessages({
+  clearSelection: {
+    id: 'Clear selection',
+    defaultMessage: 'Clear selection',
+  },
+});
+
 export const MenuList = ({ children }) => {
   return <DynamicHeightList>{children}</DynamicHeightList>;
 };
 
+// this prevents the menu from being opened/closed when the user clicks
+// on a value to begin dragging it. ideally, detecting a click (instead of
+// a drag) would still focus the control and toggle the menu, but that
+// requires some magic with refs that are out of scope for this example
+const onMouseDown = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+
 export const SortableMultiValue = injectLazyLibs([
   'reactSelect',
-  'reactSortableHOC',
+  'dndKitSortable',
+  'dndKitUtilities',
 ])((props) => {
   const { MultiValue } = props.reactSelect.components;
-  const { SortableElement } = props.reactSortableHOC;
-  // this prevents the menu from being opened/closed when the user clicks
-  // on a value to begin dragging it. ideally, detecting a click (instead of
-  // a drag) would still focus the control and toggle the menu, but that
-  // requires some magic with refs that are out of scope for this example
-  const onMouseDown = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-  const innerProps = { ...props.innerProps, onMouseDown };
-  const SortableComponent = SortableElement(MultiValue);
-  return <SortableComponent {...props} innerProps={innerProps} />;
+  const { useSortable } = props.dndKitSortable;
+  const { CSS } = props.dndKitUtilities;
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: props.data.value,
+    });
+
+  return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      ref={setNodeRef}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+      }}
+      {...attributes}
+      {...listeners}
+    >
+      <MultiValue
+        {...props}
+        innerProps={{ ...props.innerProps, onMouseDown }}
+      />
+    </div>
+  );
 });
 
-export const SortableMultiValueLabel = injectLazyLibs([
-  'reactSelect',
-  'reactSortableHOC',
-])((props) => {
+export const SortableMultiValueLabel = injectLazyLibs(['reactSelect'])((
+  props,
+) => {
   const { MultiValueLabel } = props.reactSelect.components;
-  const { SortableHandle } = props.reactSortableHOC;
-  const SortableComponent = SortableHandle(MultiValueLabel);
-  return <SortableComponent {...props} />;
+  return <MultiValueLabel {...props} />;
 });
 
 export const MultiValueContainer = injectLazyLibs('reactSelect')((props) => {
@@ -53,6 +80,19 @@ export const MultiValueContainer = injectLazyLibs('reactSelect')((props) => {
           <MultiValueContainer {...props} />
         </div>
       }
+    />
+  );
+});
+
+export const MultiValueRemove = injectLazyLibs(['reactSelect'])((props) => {
+  const { MultiValueRemove } = props.reactSelect.components;
+  return (
+    <MultiValueRemove
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        onPointerDown: (e) => e.stopPropagation(),
+      }}
     />
   );
 });
@@ -86,8 +126,32 @@ export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
 
 export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
   const { ClearIndicator } = props.reactSelect.components;
+  const intl = useIntl();
+  const fieldLabelId = props.selectProps?.['aria-labelledby'];
+  const clearLabelId = `${props.selectProps?.inputId}-clear-label`;
   return (
-    <ClearIndicator {...props}>
+    <ClearIndicator
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        'aria-hidden': false,
+        ...(fieldLabelId
+          ? { 'aria-labelledby': `${fieldLabelId} ${clearLabelId}` }
+          : { 'aria-label': intl.formatMessage(messages.clearSelection) }),
+        role: 'button',
+        tabIndex: 0,
+        onKeyDown: (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            e.stopPropagation();
+            props.clearValue();
+          }
+        },
+      }}
+    >
+      <span id={clearLabelId} hidden>
+        {intl.formatMessage(messages.clearSelection)}
+      </span>
       <Icon name={clearSVG} size="18px" color="#e40166" />
     </ClearIndicator>
   );

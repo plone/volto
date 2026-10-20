@@ -72,4 +72,8 @@ location ~ / {
 
 ### Understanding CORS errors
 
-If you're getting [CORS errors](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors#Identifying_the_issue) you need to understand the nature of these errors: the backend server (usually Plone) needs to be configured to "know" the final domain where the content is fetched. This is done for security purposes, to protect the information in the backend server from being loaded by client browsers on unknown domains. So make sure that the backend server is properly configured for your purposes. When using Plone with Docker, check the [CORS](https://github.com/plone/plone.docker#for-basic-usage) documentation section, otherwise the [CORS section of `plone.rest`](https://github.com/plone/plone.rest#cors).
+If you're getting [CORS errors](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS/Errors#identifying_a_cors_issue), you need to understand the nature of these errors.
+The backend server (usually Plone) needs to be configured to "know" the final domain where the content is fetched.
+This is done for security purposes, to protect the information in the backend server from being loaded by client browsers on unknown domains.
+So make sure that the backend server is properly configured for your purposes.
+When using Plone with Docker, check the [CORS](https://github.com/plone/plone.docker#for-basic-usage) documentation section, otherwise the [CORS section of `plone.rest`](https://github.com/plone/plone.rest#cors).

@@ -1,93 +1,93 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`BlockDataForm should add variations to schema 1`] = `
+exports[`BlockDataForm > should add variations to schema 1`] = `
 <div>
   <div
     data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"title\\": \\"Default\\",
-      \\"id\\": \\"default\\",
-      \\"fields\\": [
-        \\"variation\\"
+      "title": "Default",
+      "id": "default",
+      "fields": [
+        "variation"
       ]
     }
   ],
-  \\"properties\\": {
-    \\"variation\\": {
-      \\"title\\": \\"Variation\\",
-      \\"choices\\": [
+  "properties": {
+    "variation": {
+      "title": "Variation",
+      "choices": [
         [
-          \\"default\\",
-          \\"Default\\"
+          "default",
+          "Default"
         ],
         [
-          \\"extra\\",
-          \\"Extra\\"
+          "extra",
+          "Extra"
         ]
       ],
-      \\"noValueOption\\": false,
-      \\"default\\": \\"default\\"
+      "noValueOption": false,
+      "default": "default"
     }
   },
-  \\"required\\": []
+  "required": []
 }"
     id="InlineForm"
   />
 </div>
 `;
 
-exports[`BlockDataForm should not add variations to schema when explicitly disabled 1`] = `
+exports[`BlockDataForm > should not add variations to schema when explicitly disabled 1`] = `
 <div>
   <div
     data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"title\\": \\"Default\\",
-      \\"id\\": \\"default\\",
-      \\"fields\\": []
+      "title": "Default",
+      "id": "default",
+      "fields": []
     }
   ],
-  \\"properties\\": {},
-  \\"required\\": []
+  "properties": {},
+  "required": []
 }"
     id="InlineForm"
   />
 </div>
 `;
 
-exports[`BlockDataForm should not add variations to schema when unneeded 1`] = `
+exports[`BlockDataForm > should not add variations to schema when unneeded 1`] = `
 <div>
   <div
     data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"title\\": \\"Default\\",
-      \\"id\\": \\"default\\",
-      \\"fields\\": []
+      "title": "Default",
+      "id": "default",
+      "fields": []
     }
   ],
-  \\"properties\\": {},
-  \\"required\\": []
+  "properties": {},
+  "required": []
 }"
     id="InlineForm"
   />
 </div>
 `;
 
-exports[`BlockDataForm should not add variations when only one variation 1`] = `
+exports[`BlockDataForm > should not add variations when only one variation 1`] = `
 <div>
   <div
     data-schema="{
-  \\"fieldsets\\": [
+  "fieldsets": [
     {
-      \\"title\\": \\"Default\\",
-      \\"id\\": \\"default\\",
-      \\"fields\\": []
+      "title": "Default",
+      "id": "default",
+      "fields": []
     }
   ],
-  \\"properties\\": {},
-  \\"required\\": []
+  "properties": {},
+  "required": []
 }"
     id="InlineForm"
   />

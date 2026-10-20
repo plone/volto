@@ -3,37 +3,40 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import { __test__ as Search } from './Search';
 
 const mockStore = configureStore();
 
-jest.mock('../../manage/Toolbar/Toolbar', () =>
-  jest.fn(() => <div id="Portal" />),
-);
+vi.mock('../../manage/Toolbar/Toolbar', () => ({
+  default: vi.fn(() => <div id="Portal" />),
+}));
 
-jest.mock('./SearchTags', () => jest.fn(() => <div id="search-tags" />));
+vi.mock('./SearchTags', () => ({
+  default: vi.fn(() => <div id="search-tags" />),
+}));
 
 describe('Search', () => {
   it('renders an empty search component', () => {
     const store = mockStore({
       search: {
         loaded: false,
+        items: [],
       },
       intl: {
         locale: 'en',
         messages: {},
       },
     });
-    const history = {
-      location: { pathname: '/blog', search: '?SearchableText=blog' },
-    };
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Search history={history} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/search?SearchableText=blog']}>
+            <Search />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -58,15 +61,14 @@ describe('Search', () => {
         messages: {},
       },
     });
-    const history = {
-      location: { pathname: '/blog', search: '?SearchableText=blog' },
-    };
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Search history={history} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter initialEntries={['/search?SearchableText=blog']}>
+            <Search />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

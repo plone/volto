@@ -9,17 +9,9 @@ myst:
 
 # Working copy support
 
-Volto provide support for Plone's Working Copy feature. You need to install `plone.app.iterate` add-on in your Plone site that comes available by default. You can do that in Plone's control panel or using the `GenericSetup` facility.
-
-## Volto configuration
-
-You need to enable working copy support in Volto's configuration object:
-
-```js
-import config from '@plone/volto/registry'
-
-config.settings.hasWorkingCopySupport = true;
-```
+Volto supports Plone's working copy feature.
+To enable it, you need to install the add-on `plone.app.iterate` in your Plone site.
+You can do that either in Plone's {guilabel}`Add-ons` control panel or using the `GenericSetup` facility.
 
 ## Features
 
@@ -29,3 +21,17 @@ Volto working copy support features include:
 - Work on the working copy
 - "Check in" the working copy by applying the changes into the original (baseline) object
 - Cancel the working copy if required
+
+## Volto configuration
+
+```{versionremoved} Volto 18.8.0
+This setting is no longer used.
+```
+
+If you have an older version of Volto, you also need to enable working copy support in Volto's configuration object as follows.
+
+```js
+import config from '@plone/volto/registry'
+
+config.settings.hasWorkingCopySupport = true;
+```
