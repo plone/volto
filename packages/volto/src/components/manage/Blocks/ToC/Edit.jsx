@@ -2,6 +2,7 @@ import React from 'react';
 
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import config from '@plone/volto/registry';
 
 import TableOfContentsSchema from './Schema';
 import View from './View';
@@ -14,9 +15,13 @@ const Edit = (props) => {
     selected,
     navRoot,
     contentType,
+    blocksConfig = config.blocks.blocksConfig,
     blocksErrors,
   } = props;
-  const schema = TableOfContentsSchema(props);
+  const blockSchema =
+    blocksConfig?.[data['@type']]?.blockSchema ?? TableOfContentsSchema;
+  const schema =
+    typeof blockSchema === 'function' ? blockSchema(props) : blockSchema;
 
   return (
     <>
