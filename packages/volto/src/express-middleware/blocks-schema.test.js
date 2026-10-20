@@ -1,5 +1,6 @@
 import config from '@plone/volto/registry';
 import blocksSchemaMiddleware, {
+  getSummary,
   toJSONSafe,
 } from '@plone/volto/express-middleware/blocks-schema';
 
@@ -79,11 +80,7 @@ describe('/@blocks-schema middleware', () => {
             properties: {},
             required: [],
           }),
-          docs: {
-            description: 'The Alpha block.',
-            usage_notes: 'Use it for alpha content.',
-            example: { '@type': 'alpha' },
-          },
+          docs: 'The Alpha block,\nfor alpha content.\n\n### Example\n\nUse it.\n',
         },
         beta: {
           id: 'beta',
@@ -96,17 +93,10 @@ describe('/@blocks-schema middleware', () => {
           blockSchema: null,
           variations: [
             { id: 'default', title: 'Default' },
-            { id: 'fancy', title: 'Fancy' },
+            { id: 'fancy', title: 'Fancy', docs: 'A fancier look.' },
           ],
-          docs: () => ({
-            description: 'The Gamma block.',
-            usage_notes: 'Supports variations.',
-            example: { '@type': 'gamma' },
-            field_hints: {
-              variation:
-                "Required. See the 'variations' field for the list of registered variation IDs.",
-            },
-          }),
+          docs: ({ blockConfig }) =>
+            `The Gamma block, with ${blockConfig.variations.length} variations.`,
         },
       },
     });
@@ -128,7 +118,7 @@ describe('/@blocks-schema middleware', () => {
         {
           id: 'alpha',
           title: 'Alpha',
-          description: 'The Alpha block.',
+          description: 'The Alpha block, for alpha content.',
         },
         {
           id: 'beta',
@@ -137,7 +127,7 @@ describe('/@blocks-schema middleware', () => {
         {
           id: 'gamma',
           title: 'Gamma',
-          description: 'The Gamma block.',
+          description: 'The Gamma block, with 2 variations.',
         },
       ],
       items_total: 3,
@@ -154,11 +144,7 @@ describe('/@blocks-schema middleware', () => {
         {
           id: 'alpha',
           title: 'Alpha',
-          docs: {
-            description: 'The Alpha block.',
-            usage_notes: 'Use it for alpha content.',
-            example: { '@type': 'alpha' },
-          },
+          docs: 'The Alpha block,\nfor alpha content.\n\n### Example\n\nUse it.',
           schema: {
             title: 'Alpha schema',
             fieldsets: [],
@@ -169,29 +155,23 @@ describe('/@blocks-schema middleware', () => {
         {
           id: 'beta',
           title: 'Beta',
-          docs: {
-            description: '',
-            usage_notes: '',
-            example: { '@type': 'beta' },
-          },
+          docs: '',
           schema: null,
         },
         {
           id: 'gamma',
           title: 'Gamma',
-          docs: {
-            description: 'The Gamma block.',
-            usage_notes: 'Supports variations.',
-            example: { '@type': 'gamma' },
-            field_hints: {
-              variation:
-                "Required. See the 'variations' field for the list of registered variation IDs.",
-            },
-          },
+          docs: 'The Gamma block, with 2 variations.',
           schema: null,
           variations: [
             { id: 'default', title: 'Default', isDefault: false, schema: null },
-            { id: 'fancy', title: 'Fancy', isDefault: false, schema: null },
+            {
+              id: 'fancy',
+              title: 'Fancy',
+              isDefault: false,
+              docs: 'A fancier look.',
+              schema: null,
+            },
           ],
         },
       ],
@@ -199,23 +179,32 @@ describe('/@blocks-schema middleware', () => {
     });
   });
 
-  it('resolves function-valued docs at request time', async () => {
-    const response = await invokeMiddleware({ query: { full: '1' } });
+  it('ignores docs that are not Markdown strings or that throw', async () => {
+    const consoleError = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
+    config.blocks.blocksConfig.alpha.docs = { description: 'Old shape' };
+    config.blocks.blocksConfig.gamma.docs = () => {
+      throw new Error('Docs failed');
+    };
 
-    const gamma = response.body.items.find((item) => item.id === 'gamma');
-    expect(gamma.docs).toEqual({
-      description: 'The Gamma block.',
-      usage_notes: 'Supports variations.',
-      example: { '@type': 'gamma' },
-      field_hints: {
-        variation:
-          "Required. See the 'variations' field for the list of registered variation IDs.",
-      },
-    });
-    expect(gamma.variations).toEqual([
-      { id: 'default', title: 'Default', isDefault: false, schema: null },
-      { id: 'fancy', title: 'Fancy', isDefault: false, schema: null },
-    ]);
+    const response = await invokeMiddleware({ query: { full: '1' } });
+    const [alpha, , gamma] = response.body.items;
+
+    expect(alpha.docs).toBe('');
+    expect(gamma.docs).toBe('');
+    expect(gamma.schema).toBeNull();
+    expect(gamma.error).toBeUndefined();
+    expect(consoleError).toHaveBeenCalledTimes(1);
+    consoleError.mockRestore();
+  });
+
+  it('uses the first paragraph of the docs as the summary', () => {
+    expect(getSummary('')).toBe('');
+    expect(getSummary('One line.')).toBe('One line.');
+    expect(getSummary('Wrapped\n  first   paragraph.\n \nSecond.')).toBe(
+      'Wrapped first   paragraph.',
+    );
   });
 
   describe('when a block schema cannot be resolved', () => {

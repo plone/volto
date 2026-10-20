@@ -86,19 +86,27 @@ function withSchema(target, blockConfig, intl, variation) {
   return target;
 }
 
-function resolveDocs(blockConfig, intl) {
-  const { docs, id } = blockConfig;
+// `docs` is Markdown, either a string or a function of the block config.
+// Anything else, or a function that throws, counts as no docs.
+function resolveDocs(docs, blockConfig, intl, name = blockConfig.id) {
   try {
     const resolved =
       typeof docs === 'function' ? docs({ blockConfig, intl }) : docs;
-    return (
-      resolved ?? { description: '', usage_notes: '', example: { '@type': id } }
-    );
+    return typeof resolved === 'string' ? resolved.trim() : '';
   } catch (e) {
     // eslint-disable-next-line no-console
-    console.error(`[blocks-schema] docs() for '${id}' threw:`, e);
-    return { description: '', usage_notes: '', example: { '@type': id } };
+    console.error(
+      `[blocks-schema] Could not resolve the docs for '${name}':`,
+      e,
+    );
+    return '';
   }
+}
+
+// The first paragraph of the docs is the block's summary.
+export function getSummary(markdown) {
+  const [first = ''] = markdown.split(/\n\s*\n/);
+  return first.replace(/\s*\n\s*/g, ' ').trim();
 }
 
 function buildSummaryItem(blockConfig, intl) {
@@ -106,9 +114,11 @@ function buildSummaryItem(blockConfig, intl) {
     id: blockConfig.id,
     title: blockConfig.title,
   };
-  const docs = resolveDocs(blockConfig, intl);
-  if (docs.description) {
-    item.description = docs.description;
+  const description = getSummary(
+    resolveDocs(blockConfig.docs, blockConfig, intl),
+  );
+  if (description) {
+    item.description = description;
   }
   return item;
 }
@@ -118,25 +128,30 @@ function buildFullDetail(blockConfig, intl) {
     {
       id: blockConfig.id,
       title: blockConfig.title,
-      docs: resolveDocs(blockConfig, intl),
+      docs: resolveDocs(blockConfig.docs, blockConfig, intl),
     },
     blockConfig,
     intl,
   );
 
   if (blockConfig.variations?.length > 0) {
-    result.variations = blockConfig.variations.map((variation) =>
-      withSchema(
-        {
-          id: variation.id,
-          title: variation.title,
-          isDefault: Boolean(variation.isDefault),
-        },
+    result.variations = blockConfig.variations.map((variation) => {
+      const item = {
+        id: variation.id,
+        title: variation.title,
+        isDefault: Boolean(variation.isDefault),
+      };
+      const docs = resolveDocs(
+        variation.docs,
         blockConfig,
         intl,
-        variation.id,
-      ),
-    );
+        `${blockConfig.id}/${variation.id}`,
+      );
+      if (docs) {
+        item.docs = docs;
+      }
+      return withSchema(item, blockConfig, intl, variation.id);
+    });
   }
 
   return result;

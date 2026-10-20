@@ -142,21 +142,20 @@ export interface BlockConfigBase {
   extensions?: Record<string, BlockExtension>;
   blocksConfig?: Partial<BlocksConfigData>;
   /**
-   * Documentation for the block, useful for reference docs, LLMs, and human readers.
-   * Can be a plain object or a function receiving the block config and intl,
-   * allowing dynamic content such as reading the current variations list.
+   * Documentation for the block in Markdown, for reference docs, agents and
+   * human readers. The first paragraph is used as the block's summary.
+   * Use a function when the text depends on the configuration (for example
+   * the allowed child blocks).
    */
-  docs?:
-    | BlockDocs
-    | ((args: { blockConfig: BlockConfigBase; intl: IntlShape }) => BlockDocs);
+  docs?: BlockDocs;
 }
 
-export interface BlockDocs {
-  description: string;
-  usage_notes?: string;
-  example?: Record<string, unknown>;
-  field_hints?: Record<string, unknown>;
-}
+export type BlockDocsArgs = {
+  blockConfig: BlockConfigBase;
+  intl: IntlShape;
+};
+
+export type BlockDocs = string | ((args: BlockDocsArgs) => string);
 
 export type SchemaEnhancerArgs = {
   schema: JSONSchema;
@@ -174,6 +173,10 @@ export interface BlockExtension {
   render?: React.ComponentType<any>;
   view?: React.ComponentType<any>;
   fullobjects?: boolean;
+  /**
+   * Documentation for the variation in Markdown, see `BlockConfigBase.docs`.
+   */
+  docs?: BlockDocs;
 }
 
 export interface SlateBlock extends BlockConfigBase {
