@@ -188,8 +188,8 @@ describe('/@blocks-schema middleware', () => {
           },
           schema: null,
           variations: [
-            { id: 'default', title: 'Default' },
-            { id: 'fancy', title: 'Fancy' },
+            { id: 'default', title: 'Default', isDefault: false, schema: null },
+            { id: 'fancy', title: 'Fancy', isDefault: false, schema: null },
           ],
         },
       ],
@@ -211,8 +211,8 @@ describe('/@blocks-schema middleware', () => {
       },
     });
     expect(gamma.variations).toEqual([
-      { id: 'default', title: 'Default' },
-      { id: 'fancy', title: 'Fancy' },
+      { id: 'default', title: 'Default', isDefault: false, schema: null },
+      { id: 'fancy', title: 'Fancy', isDefault: false, schema: null },
     ]);
   });
 
@@ -289,6 +289,110 @@ describe('/@blocks-schema middleware', () => {
       expect(response.status).toBe(200);
       expect(response.body.schema).toBeNull();
       expect(response.body.error).toBeDefined();
+    });
+  });
+
+  describe('with variations and schema enhancers', () => {
+    const addField =
+      (name) =>
+      ({ schema }) => ({
+        ...schema,
+        properties: { ...schema.properties, [name]: { title: name } },
+      });
+
+    beforeEach(() => {
+      config.set('blocks', {
+        ...config.blocks,
+        blocksConfig: {
+          listing: {
+            id: 'listing',
+            title: 'Listing',
+            blockSchema: ({ data }) => ({
+              title: `Listing (${data.variation ?? 'none'})`,
+              fieldsets: [],
+              properties: { headline: { title: 'Headline' } },
+              required: [],
+            }),
+            schemaEnhancer: addField('fromBlock'),
+            variations: [
+              {
+                id: 'summary',
+                title: 'Summary',
+                isDefault: true,
+                schemaEnhancer: addField('fromSummary'),
+                template: () => null,
+              },
+              {
+                id: 'imageGallery',
+                title: 'Image gallery',
+                schemaEnhancer: addField('fromGallery'),
+                template: () => null,
+              },
+            ],
+          },
+        },
+      });
+    });
+
+    it('applies the default variation and block enhancers to the top-level schema', async () => {
+      const response = await invokeMiddleware({
+        url: '/@blocks-schema/listing',
+      });
+
+      expect(Object.keys(response.body.schema.properties)).toEqual([
+        'headline',
+        'fromSummary',
+        'fromBlock',
+      ]);
+    });
+
+    it('returns each variation with its own enhanced schema and no config internals', async () => {
+      const response = await invokeMiddleware({
+        url: '/@blocks-schema/listing',
+      });
+      const [summary, gallery] = response.body.variations;
+
+      expect(Object.keys(summary).sort()).toEqual([
+        'id',
+        'isDefault',
+        'schema',
+        'title',
+      ]);
+      expect(summary.isDefault).toBe(true);
+      expect(summary.schema.title).toBe('Listing (summary)');
+      expect(Object.keys(summary.schema.properties)).toEqual([
+        'headline',
+        'fromSummary',
+        'fromBlock',
+      ]);
+
+      expect(gallery.isDefault).toBe(false);
+      expect(gallery.schema.title).toBe('Listing (imageGallery)');
+      expect(Object.keys(gallery.schema.properties)).toEqual([
+        'headline',
+        'fromGallery',
+        'fromBlock',
+      ]);
+    });
+
+    it('reports an error only on the variation whose enhancer throws', async () => {
+      const consoleError = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => {});
+      config.blocks.blocksConfig.listing.variations[1].schemaEnhancer = () => {
+        throw new Error('Variation enhancer failed');
+      };
+
+      const response = await invokeMiddleware({
+        url: '/@blocks-schema/listing',
+      });
+      const [summary, gallery] = response.body.variations;
+
+      expect(response.body.schema).not.toBeNull();
+      expect(summary.schema).not.toBeNull();
+      expect(gallery.schema).toBeNull();
+      expect(gallery.error).toBeDefined();
+      consoleError.mockRestore();
     });
   });
 });

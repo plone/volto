@@ -2,6 +2,7 @@ import express from 'express';
 import { createIntl, createIntlCache } from 'react-intl';
 
 import config from '@plone/volto/registry';
+import { applySchemaEnhancer } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 
 const intlCache = createIntlCache();
 
@@ -17,29 +18,43 @@ function getIntl(res) {
   );
 }
 
-function resolveSchema(blockConfig, intl) {
-  const { blockSchema, schemaEnhancer, id } = blockConfig;
+function resolveSchema(blockConfig, intl, variation) {
+  const { blockSchema, id } = blockConfig;
   if (!blockSchema) return null;
 
-  let schema =
+  const formData = variation ? { '@type': id, variation } : { '@type': id };
+  const schema =
     typeof blockSchema === 'function'
-      ? blockSchema({
-          data: { '@type': id },
-          intl,
-          props: { data: { '@type': id } },
-        })
+      ? blockSchema({ data: formData, intl, props: { data: formData } })
       : blockSchema;
+  if (!schema) return null;
 
-  if (schema && typeof schemaEnhancer === 'function') {
-    schema =
-      schemaEnhancer({
-        schema: JSON.parse(JSON.stringify(schema)),
-        formData: { '@type': id },
-        intl,
-      }) || schema;
+  // Same enhancer chain as the block settings form: the selected (or default)
+  // variation's schemaEnhancer, then the block's own schemaEnhancer.
+  return applySchemaEnhancer({
+    schema,
+    formData,
+    intl,
+    blocksConfig: { [id]: blockConfig },
+  });
+}
+
+// A schema that fails to resolve (for example an add-on schema that expects
+// props only available in the editor) must not break the whole response.
+function withSchema(target, blockConfig, intl, variation) {
+  try {
+    target.schema = resolveSchema(blockConfig, intl, variation);
+  } catch (e) {
+    const name = variation ? `${blockConfig.id}/${variation}` : blockConfig.id;
+    // eslint-disable-next-line no-console
+    console.error(
+      `[blocks-schema] Could not resolve the schema for '${name}':`,
+      e,
+    );
+    target.schema = null;
+    target.error = 'The schema for this block could not be resolved.';
   }
-
-  return schema;
+  return target;
 }
 
 function resolveDocs(blockConfig, intl) {
@@ -70,32 +85,29 @@ function buildSummaryItem(blockConfig, intl) {
 }
 
 function buildFullDetail(blockConfig, intl) {
-  const variations =
-    blockConfig.variations?.length > 0 ? blockConfig.variations : null;
-  const docs = resolveDocs(blockConfig, intl);
+  const result = withSchema(
+    {
+      id: blockConfig.id,
+      title: blockConfig.title,
+      docs: resolveDocs(blockConfig, intl),
+    },
+    blockConfig,
+    intl,
+  );
 
-  const result = {
-    id: blockConfig.id,
-    title: blockConfig.title,
-    docs,
-  };
-
-  // A schema that fails to resolve (for example an add-on schema that expects
-  // props only available in the editor) must not break the whole response.
-  try {
-    result.schema = resolveSchema(blockConfig, intl);
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(
-      `[blocks-schema] Could not resolve the schema for '${blockConfig.id}':`,
-      e,
+  if (blockConfig.variations?.length > 0) {
+    result.variations = blockConfig.variations.map((variation) =>
+      withSchema(
+        {
+          id: variation.id,
+          title: variation.title,
+          isDefault: Boolean(variation.isDefault),
+        },
+        blockConfig,
+        intl,
+        variation.id,
+      ),
     );
-    result.schema = null;
-    result.error = 'The schema for this block could not be resolved.';
-  }
-
-  if (variations) {
-    result.variations = variations;
   }
 
   return result;
