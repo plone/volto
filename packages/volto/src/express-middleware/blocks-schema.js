@@ -18,6 +18,35 @@ function getIntl(res) {
   );
 }
 
+// Schemas may hold values that are not JSON: widget components, React
+// elements, function defaults or validators. Drop them, and cut cycles, so the
+// response only carries the serializable part of the schema.
+export function toJSONSafe(value, ancestors = new WeakSet()) {
+  if (value === null) return null;
+  if (typeof value === 'function' || typeof value === 'symbol')
+    return undefined;
+  if (typeof value !== 'object') return value;
+  if (value.$$typeof) return undefined;
+  if (typeof value.toJSON === 'function') return value.toJSON();
+  if (ancestors.has(value)) return undefined;
+
+  ancestors.add(value);
+  let result;
+  if (Array.isArray(value)) {
+    result = value
+      .map((item) => toJSONSafe(item, ancestors))
+      .filter((item) => item !== undefined);
+  } else {
+    result = {};
+    for (const [key, item] of Object.entries(value)) {
+      const safe = toJSONSafe(item, ancestors);
+      if (safe !== undefined) result[key] = safe;
+    }
+  }
+  ancestors.delete(value);
+  return result;
+}
+
 function resolveSchema(blockConfig, intl, variation) {
   const { blockSchema, id } = blockConfig;
   if (!blockSchema) return null;
@@ -43,7 +72,7 @@ function resolveSchema(blockConfig, intl, variation) {
 // props only available in the editor) must not break the whole response.
 function withSchema(target, blockConfig, intl, variation) {
   try {
-    target.schema = resolveSchema(blockConfig, intl, variation);
+    target.schema = toJSONSafe(resolveSchema(blockConfig, intl, variation));
   } catch (e) {
     const name = variation ? `${blockConfig.id}/${variation}` : blockConfig.id;
     // eslint-disable-next-line no-console

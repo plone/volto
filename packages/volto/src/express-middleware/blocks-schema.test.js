@@ -1,5 +1,7 @@
 import config from '@plone/volto/registry';
-import blocksSchemaMiddleware from '@plone/volto/express-middleware/blocks-schema';
+import blocksSchemaMiddleware, {
+  toJSONSafe,
+} from '@plone/volto/express-middleware/blocks-schema';
 
 async function invokeMiddleware({
   headers = {},
@@ -393,6 +395,80 @@ describe('/@blocks-schema middleware', () => {
       expect(gallery.schema).toBeNull();
       expect(gallery.error).toBeDefined();
       consoleError.mockRestore();
+    });
+  });
+
+  describe('schema serialization', () => {
+    it('drops components, elements, functions and cycles from the schema', async () => {
+      const Widget = () => null;
+      const cyclic = { name: 'cyclic' };
+      cyclic.self = cyclic;
+      const shared = { title: 'Shared' };
+
+      config.set('blocks', {
+        ...config.blocks,
+        blocksConfig: {
+          custom: {
+            id: 'custom',
+            title: 'Custom',
+            blockSchema: {
+              title: 'Custom',
+              fieldsets: [
+                { id: 'default', title: 'Default', fields: ['a', 'b'] },
+              ],
+              properties: {
+                a: {
+                  title: 'A',
+                  widget: Widget,
+                  default: () => 'computed',
+                  description: { $$typeof: Symbol.for('react.element') },
+                  choices: [['x', 'X'], Widget, ['y', 'Y']],
+                },
+                b: {
+                  title: 'B',
+                  widget: 'object_browser',
+                  memoized: {
+                    $$typeof: Symbol.for('react.memo'),
+                    type: Widget,
+                  },
+                  cyclic,
+                },
+                c: shared,
+                d: shared,
+              },
+              required: [],
+            },
+          },
+        },
+      });
+
+      const response = await invokeMiddleware({
+        url: '/@blocks-schema/custom',
+      });
+
+      expect(response.body.schema.properties).toEqual({
+        a: {
+          title: 'A',
+          choices: [
+            ['x', 'X'],
+            ['y', 'Y'],
+          ],
+        },
+        b: {
+          title: 'B',
+          widget: 'object_browser',
+          cyclic: { name: 'cyclic' },
+        },
+        c: { title: 'Shared' },
+        d: { title: 'Shared' },
+      });
+    });
+
+    it('keeps JSON values as they are', () => {
+      const date = new Date('2026-10-20T00:00:00Z');
+      expect(
+        toJSONSafe({ s: 'x', n: 0, f: false, z: null, d: date, u: undefined }),
+      ).toEqual({ s: 'x', n: 0, f: false, z: null, d: date.toJSON() });
     });
   });
 });
