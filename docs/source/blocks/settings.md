@@ -172,6 +172,12 @@ initialValue({id, value, formData, intl}) => newFormData
 A must-have for modern Volto blocks, `blockSchema` is a function, or directly the schema object, that returns the schema for the block data.
 Although it's not required, defining the schema enables the block to have its initial value based on the default values declared in the schema.
 
+### `docs`
+
+`docs` documents the block in Markdown, as a string or as a function that returns one.
+The `@blocks-schema` endpoint returns it with the block's schema, for agents and for reference documentation.
+See {ref}`blocks-schema-documenting-a-block`.
+
 ### `disableEnter`
 
 Normally when a block is selected and you press {kbd}`enter`, a new block is inserted below.

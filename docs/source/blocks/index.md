@@ -19,6 +19,7 @@ editcomponent
 block-style-wrapper
 extensions
 ssr
+blocks-schema
 core/index
 examples/index
 ```
