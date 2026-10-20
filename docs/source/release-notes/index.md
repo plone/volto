@@ -17,6 +17,14 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 17.23.1 (2026-10-20)
+
+### Bugfix
+
+- Fix forms that are crashing in control panel - dexterity contentypes. @tedw87 [#7691](https://github.com/plone/volto/issues/7691)
+- Use Slate Table block when pasting tables snippets (instead of deprecated DraftJS) @cekk [#7864](https://github.com/plone/volto/issues/7864)
+- Fix password reset form. @sabrina-bongiovanni [#8471](https://github.com/plone/volto/issues/8471)
+
 ## 17.23.0 (2025-12-08)
 
 ### Feature
