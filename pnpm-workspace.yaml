@@ -4,3 +4,8 @@ packages:
   # exclude packages that are inside test directories
   - '!**/test/**'
   - '!packages/volto-guillotina'
+
+# Only resolve package versions that have been published for at least 3 days
+# (in minutes), to keep freshly published (possibly compromised) releases out
+# of the lockfile.
+minimumReleaseAge: 4320
