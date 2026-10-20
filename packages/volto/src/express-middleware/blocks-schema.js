@@ -2,17 +2,8 @@ import express from 'express';
 import { createIntl, createIntlCache } from 'react-intl';
 
 import config from '@plone/volto/registry';
-import { getRequestAuthToken } from '@plone/volto/helpers/AuthToken/AuthToken';
 
 const intlCache = createIntlCache();
-
-function createUnauthorizedError() {
-  return {
-    status: 401,
-    title: 'Unauthorized',
-    detail: 'Authentication credentials were not provided or are invalid.',
-  };
-}
 
 function getIntl(res) {
   const intl = res.locals?.store?.getState?.().intl || {};
@@ -103,24 +94,16 @@ function buildFullDetail(blockConfig, intl) {
   return result;
 }
 
-async function ensureAuthenticated(req, res) {
-  void res;
-  const token = getRequestAuthToken(req);
-  if (!token) {
-    throw createUnauthorizedError();
-  }
+// The block configuration is already public (it ships in the client bundle),
+// so the endpoint is public too and can be cached. Schema titles are
+// translated, so the response varies by language.
+function setCacheHeaders(res) {
+  res.set('Cache-Control', 'public, max-age=300');
+  res.set('Vary', 'Accept-Language');
 }
 
-function handleAuthError(res, error) {
-  res.set('WWW-Authenticate', 'Bearer');
-  res.status(401).json({
-    error: { type: error.title, message: error.detail },
-  });
-}
-
-async function blocksSchemaList(req, res, next) {
+function blocksSchemaList(req, res, next) {
   try {
-    await ensureAuthenticated(req, res);
     const intl = getIntl(res);
     const blocksConfig = config.blocks.blocksConfig || {};
     const full = req.query?.full === '1';
@@ -131,24 +114,19 @@ async function blocksSchemaList(req, res, next) {
         : buildSummaryItem(blockConfig, intl),
     );
 
-    res.set('Cache-Control', 'private, max-age=0, must-revalidate');
+    setCacheHeaders(res);
     res.json({
       '@id': req.originalUrl || req.url,
       items,
       items_total: items.length,
     });
   } catch (error) {
-    if (error?.status === 401) {
-      handleAuthError(res, error);
-      return;
-    }
     next(error);
   }
 }
 
-async function blocksSchemaDetail(req, res, next) {
+function blocksSchemaDetail(req, res, next) {
   try {
-    await ensureAuthenticated(req, res);
     const intl = getIntl(res);
     const blocksConfig = config.blocks.blocksConfig || {};
     const blockId = req.params.blockId;
@@ -164,24 +142,20 @@ async function blocksSchemaDetail(req, res, next) {
       return;
     }
 
-    res.set('Cache-Control', 'private, max-age=0, must-revalidate');
+    setCacheHeaders(res);
     res.json({
       '@id': req.originalUrl || req.url,
       ...buildFullDetail(blockConfig, intl),
     });
   } catch (error) {
-    if (error?.status === 401) {
-      handleAuthError(res, error);
-      return;
-    }
     next(error);
   }
 }
 
 export default function blocksSchemaMiddleware() {
   const middleware = express.Router();
-  middleware.all('/@blocks-schema/:blockId', blocksSchemaDetail);
-  middleware.all('/@blocks-schema', blocksSchemaList);
+  middleware.get('/@blocks-schema/:blockId', blocksSchemaDetail);
+  middleware.get('/@blocks-schema', blocksSchemaList);
   middleware.id = 'blocksSchema';
   return middleware;
 }

@@ -1,21 +1,7 @@
 import config from '@plone/volto/registry';
 import blocksSchemaMiddleware from '@plone/volto/express-middleware/blocks-schema';
 
-function parseCookies(cookieHeader = '') {
-  return Object.fromEntries(
-    cookieHeader
-      .split(';')
-      .map((item) => item.trim())
-      .filter(Boolean)
-      .map((item) => {
-        const [key, ...rest] = item.split('=');
-        return [key, rest.join('=')];
-      }),
-  );
-}
-
 async function invokeMiddleware({ headers = {}, query = {} }) {
-  const cookies = parseCookies(headers.Cookie || headers.cookie || '');
   const middleware = blocksSchemaMiddleware();
 
   return await new Promise((resolve, reject) => {
@@ -25,9 +11,6 @@ async function invokeMiddleware({ headers = {}, query = {} }) {
       originalUrl: '/@blocks-schema',
       headers,
       query,
-      universalCookies: {
-        get: (name) => cookies[name],
-      },
     };
     const res = {
       locals: {
@@ -127,27 +110,12 @@ describe('/@blocks-schema middleware', () => {
     config.set('blocks', originalBlocks);
   });
 
-  it('returns 401 when no auth token is provided', async () => {
+  it('is public and returns summary items without credentials', async () => {
     const response = await invokeMiddleware({});
 
-    expect(response.status).toBe(401);
-    expect(response.headers['www-authenticate']).toBe('Bearer');
-    expect(response.body).toEqual({
-      error: {
-        type: 'Unauthorized',
-        message: 'Authentication credentials were not provided or are invalid.',
-      },
-    });
-  });
-
-  it('accepts Authorization bearer tokens and returns summary items', async () => {
-    const response = await invokeMiddleware({
-      headers: {
-        authorization: 'Bearer test-token',
-      },
-    });
-
     expect(response.status).toBe(200);
+    expect(response.headers['cache-control']).toBe('public, max-age=300');
+    expect(response.headers['vary']).toBe('Accept-Language');
     expect(response.body).toEqual({
       '@id': '/@blocks-schema',
       items: [
@@ -171,12 +139,7 @@ describe('/@blocks-schema middleware', () => {
   });
 
   it('returns full details including docs and schema when ?full=1', async () => {
-    const response = await invokeMiddleware({
-      headers: {
-        authorization: 'Bearer test-token',
-      },
-      query: { full: '1' },
-    });
+    const response = await invokeMiddleware({ query: { full: '1' } });
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -231,10 +194,7 @@ describe('/@blocks-schema middleware', () => {
   });
 
   it('resolves function-valued docs at request time', async () => {
-    const response = await invokeMiddleware({
-      headers: { authorization: 'Bearer test-token' },
-      query: { full: '1' },
-    });
+    const response = await invokeMiddleware({ query: { full: '1' } });
 
     const gamma = response.body.items.find((item) => item.id === 'gamma');
     expect(gamma.docs).toEqual({
@@ -250,15 +210,5 @@ describe('/@blocks-schema middleware', () => {
       { id: 'default', title: 'Default' },
       { id: 'fancy', title: 'Fancy' },
     ]);
-  });
-
-  it('accepts auth_token cookies', async () => {
-    const response = await invokeMiddleware({
-      headers: {
-        cookie: 'auth_token=cookie-token',
-      },
-    });
-
-    expect(response.status).toBe(200);
   });
 });
