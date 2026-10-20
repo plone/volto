@@ -45,6 +45,74 @@ describe('Form', () => {
     };
   });
 
+  it('validates blocks with a blockSchema on submit when there is no content', () => {
+    // The content type layout editor renders the form without content
+    const { initialBlocksFocus } = config.blocks;
+    config.blocks.initialBlocksFocus = {};
+    config.blocks.blocksConfig.blockWithSchema = {
+      id: 'blockWithSchema',
+      blockSchema: () => ({
+        fieldsets: [{ id: 'default', title: 'Default', fields: ['url'] }],
+        properties: { url: { title: 'URL' } },
+        required: [],
+      }),
+    };
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      content: {
+        data: null,
+        create: {
+          loading: false,
+          loaded: true,
+        },
+      },
+    });
+    const formData = {
+      blocks: { a: { '@type': 'blockWithSchema', url: '/image' } },
+      blocks_layout: { items: ['a'] },
+    };
+    const onSubmit = vi.fn();
+    const ref = React.createRef();
+
+    renderer.create(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/controlpanel/dexterity-types/book']}>
+          <Form
+            ref={ref}
+            formData={formData}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'Default',
+                  fields: ['blocks', 'blocks_layout'],
+                },
+              ],
+              properties: {
+                blocks: {},
+                blocks_layout: {},
+              },
+              required: [],
+            }}
+            onSubmit={onSubmit}
+            onCancel={() => {}}
+          />
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    try {
+      expect(() => ref.current.onSubmit()).not.toThrow();
+      expect(onSubmit).toHaveBeenCalledWith(formData);
+    } finally {
+      delete config.blocks.blocksConfig.blockWithSchema;
+      config.blocks.initialBlocksFocus = initialBlocksFocus;
+    }
+  });
+
   it('renders a form component', () => {
     const store = mockStore({
       intl: {
