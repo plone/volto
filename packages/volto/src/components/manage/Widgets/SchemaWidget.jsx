@@ -1022,20 +1022,23 @@ class SchemaWidget extends Component {
         ]
       : [...currentFieldsetFields, fieldId];
 
+    // The factory select can hold either the token or the whole
+    // `{ label, value }` option (e.g. the default one when untouched)
+    const factory = values.factory?.value ?? values.factory;
+
     const utility = config.getUtility({
-      name: values.factory,
+      name: factory,
       type: 'fieldFactoryInitialData',
     });
 
     const multiple =
-      values.factory === 'Multiple Choice' ||
-      values.factory === 'label_multi_choice_field';
+      factory === 'Multiple Choice' || factory === 'label_multi_choice_field';
 
     const initialData = utility.method
       ? omit(utility.method(this.props.intl), ['id'])
       : {
           type: 'string',
-          factory: values.factory,
+          factory,
         };
 
     this.onChange({

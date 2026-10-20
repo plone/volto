@@ -185,7 +185,7 @@ Instead, use `import()`.
 
 ### Additional Jest to Vitest migration information
 
-For complete details on migrating from Jest to Vitest, refer to the official [Vitest Migration Guide](https://vitest.dev/guide/migration.html#jest).
+For complete details on migrating from Jest to Vitest, refer to the official [Vitest Migration Guide](https://vitest.dev/guide/migration/jest.html).
 
 
 ## Run tests in Vitest
