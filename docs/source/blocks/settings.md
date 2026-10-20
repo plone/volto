@@ -176,7 +176,7 @@ Although it's not required, defining the schema enables the block to have its in
 
 A block's documentation is a `*.block.md` file next to it, which the `@blocks-schema` endpoint returns with the block's schema.
 `docs` is an optional function that tailors that documentation for special cases.
-See {ref}`blocks-schema-documenting-a-block`.
+See {doc}`documentation`.
 
 ### `disableEnter`
 
