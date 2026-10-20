@@ -1,7 +1,10 @@
 import express from 'express';
 import { createIntl, createIntlCache } from 'react-intl';
+import jwtDecode from 'jwt-decode';
 
 import config from '@plone/volto/registry';
+import Api from '@plone/volto/helpers/Api/Api';
+import { isBlockRestricted } from '@plone/volto/helpers/Blocks/Blocks';
 import { applySchemaEnhancer } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
 
 const intlCache = createIntlCache();
@@ -160,8 +163,12 @@ function buildFullDetail(blockConfig, intl) {
 // The block configuration is already public (it ships in the client bundle),
 // so the endpoint is public too and can be cached. Schema titles are
 // translated, and the format depends on the Accept header.
-function setCacheHeaders(res) {
-  res.set('Cache-Control', 'public, max-age=300');
+// A context response depends on the user and the content, so it is private.
+function setCacheHeaders(res, context) {
+  res.set(
+    'Cache-Control',
+    context ? 'private, max-age=0, must-revalidate' : 'public, max-age=300',
+  );
   res.set('Vary', 'Accept, Accept-Language');
 }
 
@@ -190,6 +197,14 @@ const SCHEMA_ERROR = '_The schema for this block could not be resolved._';
 // differs from the block's schema.
 export function blockToMarkdown(detail) {
   const parts = [`## ${detail.title} (\`${detail.id}\`)`];
+
+  if (detail.restricted === true) {
+    parts.push('_Not offered in the block chooser._');
+  } else if (detail.restricted === 'context') {
+    parts.push(
+      '_Whether it is offered in the block chooser depends on the content. Ask `/<path>/@blocks-schema` for a given content item._',
+    );
+  }
 
   if (detail.docs) parts.push(detail.docs);
 
@@ -240,20 +255,137 @@ export function blocksToMarkdown(details) {
   );
 }
 
-function blocksSchemaList(req, res, next) {
+// The same context the block chooser has when editing the content at `path`,
+// with the backend responses as the editor stores them. The backend calls
+// carry the caller's auth_token cookie.
+async function getContext(req, path) {
+  const api = new Api(req);
+  const content = await api.get(path, { params: { expand: 'navroot' } });
+
+  let user = {};
+  const token = req.universalCookies?.get('auth_token');
+  if (token) {
+    try {
+      user = await api.get(`/@users/${jwtDecode(token).sub}`);
+    } catch (e) {
+      user = {};
+    }
+  }
+
+  return {
+    properties: content,
+    navRoot: content['@components']?.navroot?.navroot,
+    contentType: content['@type'],
+    user,
+  };
+}
+
+// In the root list a block is flagged as restricted when it's never offered,
+// or as 'context' when that depends on the content (see the context path).
+function restrictedFlag(blockConfig) {
+  if (typeof blockConfig.restricted === 'function') return 'context';
+  return blockConfig.restricted ? true : undefined;
+}
+
+function isRestrictedIn(blockConfig, context) {
+  try {
+    return isBlockRestricted(blockConfig, context);
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error(
+      `[blocks-schema] restricted() for '${blockConfig.id}' threw:`,
+      e,
+    );
+    return true;
+  }
+}
+
+function sendError(res, status, type, message, markdown) {
+  res.status(status);
+  if (markdown) {
+    sendMarkdown(res, `${message}\n`);
+    return;
+  }
+  res.json({ error: { type, message } });
+}
+
+const BACKEND_ERRORS = {
+  401: 'Unauthorized',
+  403: 'Forbidden',
+  404: 'Not Found',
+};
+
+async function blocksSchema(req, res, next) {
   try {
     const intl = getIntl(res);
     const blocksConfig = config.blocks.blocksConfig || {};
     const markdown = wantsMarkdown(req);
-    const full = markdown || req.query?.full === '1';
+    const path = req.params[0] || '';
+    const blockId = req.params.blockId;
 
-    const items = Object.values(blocksConfig).map((blockConfig) =>
-      full
+    let context;
+    if (path) {
+      try {
+        context = await getContext(req, path);
+      } catch (error) {
+        const type = BACKEND_ERRORS[error?.status];
+        if (!type) throw error;
+        sendError(
+          res,
+          error.status,
+          type,
+          `Could not get the content at '${path}'.`,
+          markdown,
+        );
+        return;
+      }
+    }
+
+    const describe = (blockConfig, full) => {
+      const item = full
         ? buildFullDetail(blockConfig, intl)
-        : buildSummaryItem(blockConfig, intl),
-    );
+        : buildSummaryItem(blockConfig, intl);
+      const restricted = context
+        ? isRestrictedIn(blockConfig, context)
+        : restrictedFlag(blockConfig);
+      // In a context, the list only has the blocks offered there.
+      if (restricted !== undefined && !(context && !blockId)) {
+        item.restricted = restricted;
+      }
+      return item;
+    };
 
-    setCacheHeaders(res);
+    setCacheHeaders(res, Boolean(context));
+
+    if (blockId) {
+      const blockConfig = blocksConfig[blockId];
+      if (!blockConfig) {
+        res.set('Cache-Control', 'no-store');
+        sendError(
+          res,
+          404,
+          'Not Found',
+          `Block '${blockId}' is not registered.`,
+          markdown,
+        );
+        return;
+      }
+      const detail = describe(blockConfig, true);
+      if (markdown) {
+        sendMarkdown(res, `${blockToMarkdown(detail)}\n`);
+        return;
+      }
+      res.json({ '@id': req.originalUrl || req.url, ...detail });
+      return;
+    }
+
+    const full = markdown || req.query?.full === '1';
+    const items = Object.values(blocksConfig)
+      .filter(
+        (blockConfig) => !context || !isRestrictedIn(blockConfig, context),
+      )
+      .map((blockConfig) => describe(blockConfig, full));
+
     if (markdown) {
       sendMarkdown(res, blocksToMarkdown(items));
       return;
@@ -268,44 +400,13 @@ function blocksSchemaList(req, res, next) {
   }
 }
 
-function blocksSchemaDetail(req, res, next) {
-  try {
-    const intl = getIntl(res);
-    const blocksConfig = config.blocks.blocksConfig || {};
-    const blockId = req.params.blockId;
-    const blockConfig = blocksConfig[blockId];
-    const markdown = wantsMarkdown(req);
-
-    if (!blockConfig) {
-      const message = `Block '${blockId}' is not registered.`;
-      res.status(404);
-      if (markdown) {
-        sendMarkdown(res, `${message}\n`);
-        return;
-      }
-      res.json({ error: { type: 'Not Found', message } });
-      return;
-    }
-
-    const detail = buildFullDetail(blockConfig, intl);
-    setCacheHeaders(res);
-    if (markdown) {
-      sendMarkdown(res, `${blockToMarkdown(detail)}\n`);
-      return;
-    }
-    res.json({
-      '@id': req.originalUrl || req.url,
-      ...detail,
-    });
-  } catch (error) {
-    next(error);
-  }
-}
-
+// `/@blocks-schema` describes every registered block. With a content path in
+// front, `/<path>/@blocks-schema` only lists the blocks the block chooser
+// offers when editing that content.
 export default function blocksSchemaMiddleware() {
   const middleware = express.Router();
-  middleware.get('/@blocks-schema/:blockId', blocksSchemaDetail);
-  middleware.get('/@blocks-schema', blocksSchemaList);
+  middleware.get('*/@blocks-schema/:blockId', blocksSchema);
+  middleware.get('*/@blocks-schema', blocksSchema);
   middleware.id = 'blocksSchema';
   return middleware;
 }

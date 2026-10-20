@@ -65,6 +65,7 @@ export {
   findBlocks,
   getBlocksHierarchy,
   moveBlockEnhanced,
+  isBlockRestricted,
 } from '@plone/volto/helpers/Blocks/Blocks';
 export {
   getSimpleDefaultBlocks,

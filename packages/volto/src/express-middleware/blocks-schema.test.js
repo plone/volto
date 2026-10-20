@@ -1,13 +1,22 @@
 import config from '@plone/volto/registry';
+
 import blocksSchemaMiddleware, {
   getSummary,
   toJSONSafe,
 } from '@plone/volto/express-middleware/blocks-schema';
 
+const { apiGet } = vi.hoisted(() => ({ apiGet: vi.fn() }));
+vi.mock('@plone/volto/helpers/Api/Api', () => ({
+  default: class {
+    get = apiGet;
+  },
+}));
+
 async function invokeMiddleware({
   headers = {},
   query = {},
   url = '/@blocks-schema',
+  cookies = {},
 }) {
   const middleware = blocksSchemaMiddleware();
 
@@ -18,6 +27,7 @@ async function invokeMiddleware({
       originalUrl: url,
       headers,
       query,
+      universalCookies: { get: (name) => cookies[name] },
     };
     const res = {
       locals: {
@@ -580,6 +590,148 @@ describe('/@blocks-schema middleware', () => {
 
       expect(response.status).toBe(404);
       expect(response.text).toBe("Block 'missing' is not registered.\n");
+    });
+  });
+
+  describe('restricted blocks and the context path', () => {
+    const token = `header.${btoa(JSON.stringify({ sub: 'editor' }))}.signature`;
+    const page = {
+      '@id': '/news',
+      '@type': 'Document',
+      title: 'News',
+      '@components': { navroot: { navroot: { '@id': '/', title: 'Site' } } },
+    };
+    let onlyInFolders;
+
+    beforeEach(() => {
+      apiGet.mockReset();
+      apiGet.mockImplementation(async (path) => {
+        if (path === '/news') return page;
+        if (path === '/@users/editor') return { id: 'editor', roles: [] };
+        throw Object.assign(new Error('Not Found'), { status: 404 });
+      });
+      onlyInFolders = vi.fn(({ contentType }) => contentType !== 'Folder');
+      config.set('blocks', {
+        ...config.blocks,
+        blocksConfig: {
+          text: { id: 'text', title: 'Text', blockSchema: null },
+          title: {
+            id: 'title',
+            title: 'Title',
+            blockSchema: null,
+            restricted: true,
+          },
+          folderish: {
+            id: 'folderish',
+            title: 'Folderish',
+            blockSchema: null,
+            restricted: onlyInFolders,
+          },
+        },
+      });
+    });
+
+    it('flags restricted blocks in the root list', async () => {
+      const response = await invokeMiddleware({});
+
+      expect(apiGet).not.toHaveBeenCalled();
+      expect(response.body.items).toEqual([
+        { id: 'text', title: 'Text' },
+        { id: 'title', title: 'Title', restricted: true },
+        { id: 'folderish', title: 'Folderish', restricted: 'context' },
+      ]);
+    });
+
+    it('notes restricted blocks in the root Markdown', async () => {
+      const response = await invokeMiddleware({ query: { format: 'md' } });
+
+      expect(response.text).toContain(
+        '## Title (`title`)\n\n_Not offered in the block chooser._',
+      );
+      expect(response.text).toContain(
+        '## Folderish (`folderish`)\n\n_Whether it is offered',
+      );
+    });
+
+    it('only lists the blocks offered for the content at the path', async () => {
+      const response = await invokeMiddleware({
+        url: '/news/@blocks-schema',
+        cookies: { auth_token: token },
+      });
+
+      expect(apiGet).toHaveBeenCalledWith('/news', {
+        params: { expand: 'navroot' },
+      });
+      expect(response.status).toBe(200);
+      expect(response.headers['cache-control']).toBe(
+        'private, max-age=0, must-revalidate',
+      );
+      expect(response.body['@id']).toBe('/news/@blocks-schema');
+      expect(response.body.items).toEqual([{ id: 'text', title: 'Text' }]);
+    });
+
+    it('gives restricted the same context as the block chooser', async () => {
+      await invokeMiddleware({
+        url: '/news/@blocks-schema',
+        cookies: { auth_token: token },
+      });
+
+      expect(apiGet).toHaveBeenCalledWith('/@users/editor');
+      expect(onlyInFolders).toHaveBeenCalledWith({
+        properties: page,
+        block: config.blocks.blocksConfig.folderish,
+        navRoot: { '@id': '/', title: 'Site' },
+        contentType: 'Document',
+        user: { id: 'editor', roles: [] },
+      });
+    });
+
+    it('passes an empty user for anonymous callers', async () => {
+      await invokeMiddleware({ url: '/news/@blocks-schema' });
+
+      expect(apiGet).toHaveBeenCalledTimes(1);
+      expect(onlyInFolders.mock.calls[0][0].user).toEqual({});
+    });
+
+    it('says whether one block is restricted for the content', async () => {
+      const response = await invokeMiddleware({
+        url: '/news/@blocks-schema/folderish',
+      });
+
+      expect(response.body.id).toBe('folderish');
+      expect(response.body.restricted).toBe(true);
+    });
+
+    it('treats a restricted function that throws as restricted', async () => {
+      const consoleError = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => {});
+      config.blocks.blocksConfig.folderish.restricted = () => {
+        throw new Error('Needs the store');
+      };
+
+      const response = await invokeMiddleware({ url: '/news/@blocks-schema' });
+
+      expect(response.body.items.map((item) => item.id)).toEqual(['text']);
+      expect(consoleError).toHaveBeenCalled();
+      consoleError.mockRestore();
+    });
+
+    it.each([
+      [401, 'Unauthorized'],
+      [403, 'Forbidden'],
+      [404, 'Not Found'],
+    ])('passes a backend %s through', async (status, type) => {
+      apiGet.mockRejectedValue(Object.assign(new Error(type), { status }));
+
+      const response = await invokeMiddleware({
+        url: '/private/@blocks-schema',
+      });
+
+      expect(response.status).toBe(status);
+      expect(response.body).toEqual({
+        error: { type, message: "Could not get the content at '/private'." },
+      });
     });
   });
 });
