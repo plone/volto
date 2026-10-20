@@ -4665,6 +4665,11 @@ msgstr "nu"
 msgid "no workflow state"
 msgstr "nicio stare de flux de lucru"
 
+#. Default: "An error has occurred. Please contact us for further information"
+#: components/theme/PasswordReset/PasswordReset
+msgid "noBodyError"
+msgstr ""
+
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"

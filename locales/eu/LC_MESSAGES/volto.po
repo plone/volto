@@ -4672,6 +4672,11 @@ msgstr "ez"
 msgid "no workflow state"
 msgstr "Ez du workflowrik"
 
+#. Default: "An error has occurred. Please contact us for further information"
+#: components/theme/PasswordReset/PasswordReset
+msgid "noBodyError"
+msgstr ""
+
 #. Default: "Input must be number"
 #: helpers/MessageLabels/MessageLabels
 msgid "number"
