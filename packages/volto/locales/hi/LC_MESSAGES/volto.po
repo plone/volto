@@ -331,7 +331,6 @@ msgstr ""
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
@@ -1559,11 +1558,6 @@ msgstr "समाप्ति तिथि"
 msgid "Expired"
 msgstr "समाप्त हो गया"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "बाह्य URL"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1906,7 +1900,6 @@ msgstr "यदि आपको लगता है कि आपके पास
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "छवि"
 
@@ -2201,7 +2194,6 @@ msgstr "लिंक शीर्षक"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
@@ -2575,11 +2567,6 @@ msgstr "कोई छवि चयनित नहीं है"
 msgid "No image set in Lead Image content field"
 msgstr "लीड छवि कंटेंट क्षेत्र में कोई छवि सेट नहीं है"
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "छवि कंटेंट क्षेत्र में कोई छवि सेट नहीं है"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2728,7 +2715,6 @@ msgstr "URL ब्राउज़र खोलें"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
@@ -2754,11 +2740,6 @@ msgstr ""
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "क्रमबद्ध"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "स्रोत"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem

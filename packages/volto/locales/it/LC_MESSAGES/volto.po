@@ -331,7 +331,6 @@ msgstr "Gli Alias sono stati caricati."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
@@ -1559,11 +1558,6 @@ msgstr "Data di scadenza"
 msgid "Expired"
 msgstr "Scaduto"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "URL esterno"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1906,7 +1900,6 @@ msgstr "Se sei sicuro di aver inserito l'indirizzo corretto ma ottieni comunque 
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Immagine"
 
@@ -2201,7 +2194,6 @@ msgstr "Link al resto"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
@@ -2575,11 +2567,6 @@ msgstr "Nessuna immagine selezionata"
 msgid "No image set in Lead Image content field"
 msgstr "Nessuna immagine impostata come Immagine di testata"
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "Nessuna immagine impostata"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2728,7 +2715,6 @@ msgstr "Apri browser URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 #: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
@@ -2754,11 +2740,6 @@ msgstr "Ordine"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "Ordinato"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "Origine"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
