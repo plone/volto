@@ -19,6 +19,8 @@ const TextWidget = (props) => {
     placeholder,
     isDisabled,
     focus,
+    required,
+    error,
   } = props;
 
   const ref = useRef();
@@ -49,6 +51,8 @@ const TextWidget = (props) => {
         onClick={() => onClick()}
         minLength={minLength || null}
         maxLength={maxLength || null}
+        aria-required={required ? 'true' : undefined}
+        aria-invalid={error?.length > 0 ? 'true' : undefined}
       />
       {icon && iconAction && (
         <button className={`field-${id}-action-button`} onClick={iconAction}>

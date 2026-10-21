@@ -1,11 +1,33 @@
 import castArray from 'lodash/castArray';
 import cloneDeep from 'lodash/cloneDeep';
-import { Editor, Transforms, Range, Node } from 'slate';
+import { Editor, Transforms, Range, Node, Path } from 'slate';
 import { ReactEditor } from 'slate-react';
 import { isCursorInList } from '@plone/volto-slate/utils/lists';
 import { makeEditor } from '@plone/volto-slate/utils/editor';
 import { LI } from '@plone/volto-slate/constants';
 import config from '@plone/volto/registry';
+
+/**
+ * firstLeafPath.
+ *
+ * @param {} editor
+ */
+function firstLeafPath(editor) {
+  if (!editor.children?.length) return null;
+  return Node.first(editor, [])[1];
+}
+
+/**
+ * isAtFirstLeaf.
+ *
+ * @param {} editor
+ * @param {} path
+ */
+function isAtFirstLeaf(editor, path) {
+  const first = firstLeafPath(editor);
+  if (!first) return false;
+  return Path.equals(path, first);
+}
 
 /**
  * Get the nodes with a type included in `types` in the selection (from root to leaf).
@@ -82,8 +104,9 @@ export function isCursorAtBlockStart(editor) {
 
   if (editor.selection && Range.isCollapsed(editor.selection)) {
     const { anchor } = editor.selection;
-    // Check if cursor is at offset 0 of any leaf node (not just the first one)
-    return anchor.offset === 0;
+    if (anchor.offset !== 0) return false;
+    if (!editor.children?.length) return false;
+    return isAtFirstLeaf(editor, anchor.path);
   }
   return false;
 }

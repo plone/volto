@@ -80,7 +80,8 @@
   "resolutions": {
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
     "react-error-overlay": "6.0.9",
-    "react-refresh": "0.14.0"
+    "react-refresh": "0.14.0",
+    "webpack": "5.105.4"
   },
   "packageManager": "yarn@3.2.3"
 }

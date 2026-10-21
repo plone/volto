@@ -13,6 +13,7 @@ import { listRoles } from '@plone/volto/actions/roles/roles';
 import { listGroups, updateGroup } from '@plone/volto/actions/groups/groups';
 import { getControlpanel } from '@plone/volto/actions/controlpanels/controlpanels';
 import { getUserSchema } from '@plone/volto/actions/userschema/userschema';
+import { asyncConnect } from '@plone/volto/helpers/AsyncConnect';
 import jwtDecode from 'jwt-decode';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
@@ -57,7 +58,8 @@ import {
  * UsersControlpanel functional component.
  * @function UsersControlpanel
  */
-const UsersControlpanel = () => {
+const UsersControlpanel = (props) => {
+  const { staticContext } = props;
   const intl = useIntl();
   const dispatch = useDispatch();
 
@@ -143,7 +145,10 @@ const UsersControlpanel = () => {
       await listUsersAction();
       setEntries(users);
     }
-    await getUserSchemaAction();
+    // Only fetch user schema if it hasn't been loaded yet (e.g. by asyncConnect SSR)
+    if (!userschema?.loaded) {
+      await getUserSchemaAction();
+    }
     await getUserAction(userId);
   }, [
     getControlpanelAction,
@@ -152,6 +157,7 @@ const UsersControlpanel = () => {
     listGroupsAction,
     listUsersAction,
     users,
+    userschema,
     getUserSchemaAction,
     getUserAction,
     userId,
@@ -451,6 +457,8 @@ const UsersControlpanel = () => {
 
   useEffect(() => {
     setIsClient(true);
+    // Skip fetching if the store already has an error.
+    if (loadRolesRequest?.error) return;
     fetchData();
     checkLoginUsingEmailStatus();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -471,8 +479,14 @@ const UsersControlpanel = () => {
     }
   }, [loadRolesRequest?.error, loadRolesRequest?.loading]);
 
-  if (error) {
-    return <Error error={error} />;
+  const effectiveError =
+    error ||
+    (loadRolesRequest?.error && !loadRolesRequest?.loading
+      ? loadRolesRequest.error
+      : null);
+
+  if (effectiveError) {
+    return <Error error={effectiveError} staticContext={staticContext} />;
   }
 
   const usernameToDelete = userToDelete ? userToDelete.username : '';
@@ -729,4 +743,43 @@ const UsersControlpanel = () => {
   );
 };
 
-export default UsersControlpanel;
+export default asyncConnect([
+  {
+    key: 'controlpanels',
+    promise: ({ store: { dispatch, getState } }) => {
+      return dispatch(getControlpanel('usergroup')).then(() => {
+        const state = getState();
+        const many_users = state.controlpanels?.controlpanel?.data?.many_users;
+        if (!many_users) {
+          dispatch(listUsers());
+          dispatch(listGroups());
+        }
+      });
+    },
+  },
+  {
+    key: 'roles',
+    promise: ({ store: { dispatch } }) => {
+      return dispatch(listRoles());
+    },
+  },
+  {
+    key: 'userschema',
+    promise: ({ store: { dispatch } }) => {
+      return dispatch(getUserSchema());
+    },
+  },
+  {
+    key: 'user',
+    promise: ({ store: { dispatch, getState } }) => {
+      const state = getState();
+      const token = state.userSession.token;
+      if (token) {
+        const userId = jwtDecode(token).sub;
+        if (userId) {
+          return dispatch(getUser(userId));
+        }
+      }
+    },
+  },
+])(UsersControlpanel);

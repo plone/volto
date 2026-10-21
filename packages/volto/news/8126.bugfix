@@ -1,1 +1,0 @@
-Don't show login link in the `Unauthorized` component if the user is already authenticated. @wesleybl

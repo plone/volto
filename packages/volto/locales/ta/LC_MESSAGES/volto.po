@@ -670,6 +670,11 @@ msgstr "ஒரு கோப்பைத் தேர்வுசெய்க"
 msgid "Clear"
 msgstr "தெளிவான"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "URL அழிக்கவும்"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -684,6 +689,11 @@ msgstr "தெளிவான வடிப்பான்கள்"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
 msgstr "தேடலை அழி"
+
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "தேர்வை அழி"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -1101,11 +1111,6 @@ msgstr "நீக்கப்பட்டது"
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "இந்த உருப்படியை நீக்குதல் {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "ஆழம்"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1203,22 +1208,27 @@ msgstr "நிகழ்வைப் பதிவிறக்கவும்"
 msgid "Download file"
 msgstr "கோப்பைப் பதிவிறக்கவும்"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "{filename} பதிவிறக்கம் செய்யவும்"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "உங்கள் கணினியிலிருந்து கோப்புகளை இந்த பகுதியில் இழுத்து விடுங்கள் அல்லது “உலாவு” பொத்தானைக் சொடுக்கு செய்க."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "இருக்கும் கோப்பை மாற்ற கோப்பை இங்கே விடுங்கள்"
+msgstr "கோப்பை இங்கே இழுத்து விடுங்கள் அல்லது இருக்கும் கோப்பை மாற்ற கிளிக் செய்யுங்கள்"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
-msgstr "புதிய கோப்பைப் பதிவேற்ற இங்கே கோப்பை விடுங்கள்"
+msgstr "இங்கே ஒரு கோப்பை இழுத்து விடுங்கள் அல்லது பதிவேற்ற கிளிக் செய்யுங்கள்"
 
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
@@ -1569,6 +1579,11 @@ msgstr "கோப்பு ஏற்றுக்கொள்ளப்பட்�
 msgid "File size"
 msgstr "கோப்பு அளவு"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "கோப்பு பதிவேற்ற பகுதி. தற்போதுள்ள கோப்பை மாற்ற Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
+
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -1631,6 +1646,11 @@ msgstr "உறவுகளை சரிசெய்யவும்"
 #: config/Blocks
 msgid "Fixed width table cells"
 msgstr "நிலையான அகல அட்டவணை செல்கள்"
+
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr ""
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -2179,6 +2199,7 @@ msgstr "மேலும் ஏற்றவும்"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "ஏற்றுகிறது"
 
@@ -2304,6 +2325,16 @@ msgstr "சராசரி"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "உறுப்பினர் புதுப்பிக்கப்பட்டது"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr ""
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr ""
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
@@ -2627,7 +2658,12 @@ msgstr "சரி"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "7-பிட் பைட்டுகள் எழுத்துக்கள் மட்டுமே அனுமதிக்கப்படுகின்றன. பெரிய எழுத்துக்கள், சிறப்பு எழுத்துக்கள்: <,>, &, #, /,?, அல்லது முகவரி களில் சட்டவிரோதமானது. தொடங்க முடியாது: _, aq_, @@, ++. __ உடன் முடிவடைய முடியாது. இருக்க முடியாது: கோரிக்கை, பங்களிப்பாளர்கள்,., .., "". புதிய வரிகளைக் கொண்டிருக்க முடியாது."
+msgstr "7-பிட் பைட்டுகள் எழுத்துக்கள் மட்டுமே அனுமதிக்கப்படுகின்றன. பெரிய எழுத்துக்கள், சிறப்பு எழுத்துக்கள்: <,>, &, #, /,?, அல்லது முகவரி களில் சட்டவிரோதமானது. தொடங்க முடியாது: _, aq_, @@, ++. __ உடன் முடிவடைய முடியாது. இருக்க முடியாது: கோரிக்கை, பங்களிப்பாளர்கள்,., .., \"\". புதிய வரிகளைக் கொண்டிருக்க முடியாது."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "URL உலாவியைத் திறக்கவும்"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2802,6 +2838,16 @@ msgstr "ப்ளோன் அறக்கட்டளை"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "ப்ளோன் {reg} திறந்த மூல CMS/WCM"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "பாப்-அப் மூடப்பட்டது."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "பாப்-அப் திறக்கப்பட்டது: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
@@ -2822,10 +2868,10 @@ msgstr "ப்ளோன் & பைதான் மூலம் இயக்க�
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr ""
+msgstr "கோப்பு பதிவேற்ற பகுதி. கோப்பு உலாவியைத் திறக்க Enter அழுத்தவும் அல்லது கிளிக் செய்யவும்"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3929,6 +3975,11 @@ msgstr "இந்த உருப்படிகளில் உடைந்த 
 msgid "Third"
 msgstr "மூன்றாவது"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "இந்த புலம் தேவையானது."
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4112,6 +4163,16 @@ msgstr "முகவரி மேலாண்மை"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "{தலைப்பு க்கு க்கான முகவரி மேலாண்மை"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr "URL செல்லாதது"
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL காணவில்லை"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -5257,6 +5318,26 @@ msgstr "உரை"
 #: config/Blocks
 msgid "title"
 msgstr "தலைப்பு"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "பிழை"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "தகவல்"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "வெற்றி"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "எச்சரிக்கை"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

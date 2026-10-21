@@ -6,6 +6,19 @@ exports[`Toolbar More component > renders a Toolbar More component 1`] = `
     class="menu-more pastanaga-menu"
     style="flex: 0 0 320px;"
   >
+    <div
+      class="ui inverted dimmer"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="ui text loader"
+        >
+          Loading
+        </div>
+      </div>
+    </div>
     <header>
       <h2 />
       <button

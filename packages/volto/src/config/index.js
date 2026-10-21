@@ -115,6 +115,7 @@ let config = {
     supportedLanguages: ['en'],
     defaultLanguage: process.env.SITE_DEFAULT_LANGUAGE || 'en',
     navDepth: 1,
+    siteMapDepth: 4,
     expressMiddleware: serverConfig.expressMiddleware, // BBB
     defaultBlockType: 'slate',
     verticalFormTabs: false,

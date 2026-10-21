@@ -1,0 +1,110 @@
+name: Check Production Build (--prod)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/prod-build.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'packages/volto/**'
+      - 'packages/volto-slate/**'
+      - 'packages/registry/**'
+      - 'packages/components/**'
+      - 'packages/scripts/**'
+  pull_request:
+    paths:
+      - '.github/workflows/prod-build.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'packages/volto/**'
+      - 'packages/volto-slate/**'
+      - 'packages/registry/**'
+      - 'packages/components/**'
+      - 'packages/scripts/**'
+
+env:
+  CYPRESS_INSTALL_BINARY: 0
+  node-version: 22.x
+
+jobs:
+  volto-prod-build:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name
+    name: '@plone/volto --prod build'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.node-version }}
+
+      - name: Enable corepack
+        run: npm i -g corepack@latest && corepack enable
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v5
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml', 'package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build production bundle
+        run: pnpm build
+
+      - name: Install production dependencies only
+        run: pnpm install --prod --ignore-scripts
+
+      - name: Start production server
+        shell: bash
+        env:
+          PORT: 4300
+          RAZZLE_BIND_ADDRESS: 127.0.0.1
+        run: |
+          set -euo pipefail
+
+          pnpm --filter @plone/volto start:prod > /tmp/volto-prod.log 2>&1 &
+          VOLTO_PID=$!
+
+          cleanup() {
+            kill "$VOLTO_PID" 2>/dev/null || true
+          }
+          trap cleanup EXIT
+
+          ASSET_PATH="$(
+            find packages/volto/build/public/static/js -name 'runtime~client*.js' \
+              | sed 's#^packages/volto/build/public/static/js/##' \
+              | head -n 1
+          )"
+          if [ -z "$ASSET_PATH" ]; then
+            echo "Unable to find built runtime client asset."
+            exit 1
+          fi
+
+          for _ in {1..30}; do
+            if ! kill -0 "$VOLTO_PID" 2>/dev/null; then
+              tail -n 200 /tmp/volto-prod.log
+              exit 1
+            fi
+
+            if curl --fail --silent --show-error "http://127.0.0.1:${PORT}/static/js/${ASSET_PATH}" > /dev/null; then
+              tail -n 200 /tmp/volto-prod.log
+              exit 0
+            fi
+
+            sleep 2
+          done
+
+          tail -n 200 /tmp/volto-prod.log
+          exit 1

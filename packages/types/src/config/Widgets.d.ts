@@ -57,10 +57,12 @@ export interface WidgetsConfigByType {
 }
 
 export interface WidgetsConfigViewById {
+  description: React.ComponentType;
   file: React.ComponentType;
   image: React.ComponentType;
   relatedItems: React.ComponentType;
   subjects: React.ComponentType;
+  title: React.ComponentType;
 }
 
 export interface WidgetsConfigViewByWidget {
@@ -91,12 +93,15 @@ export interface WidgetsConfigViewByType {
 }
 
 export interface WidgetsConfigViews {
-  getWidget: React.ComponentType;
+  /** Resolves the view widget for a field. Replaceable by add-ons. */
+  getWidget: (field: Record<string, any>) => React.ComponentType<any>;
   default: React.ComponentType;
   id: WidgetsConfigViewById;
   widget: WidgetsConfigViewByWidget;
   vocabulary: {};
   choices: React.ComponentType;
+  /** Optional, mirroring the `factory` step's own optional lookup. */
+  factory?: Partial<Record<string, React.ComponentType<any>>>;
   type: WidgetsConfigViewByType;
 }
 

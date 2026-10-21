@@ -42,6 +42,10 @@ exports[`renders a text widget component 1`] = `
             value=""
           />
         </div>
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+        />
       </div>
     </div>
   </div>

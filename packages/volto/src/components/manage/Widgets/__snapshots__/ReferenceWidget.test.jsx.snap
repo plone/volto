@@ -80,6 +80,10 @@ exports[`renders an array widget component 1`] = `
             </div>
           </div>
         </div>
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+        />
       </div>
     </div>
   </div>

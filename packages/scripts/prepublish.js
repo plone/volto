@@ -10,10 +10,15 @@ class PrePublishReleaseItPlugin extends Plugin {
     this.registerPrompts({
       prePublishPrompt: {
         type: 'confirm',
-        message: (context) =>
-          `Are you sure you want to publish ${context.npm.name}${
-            context.isPreRelease ? `@${context.preReleaseId}` : '@latest'
-          } to npm?`,
+        message: (context) => {
+          const pluginOptions = this.config.options?.plonePrePublish;
+          const tag =
+            pluginOptions?.tag ??
+            (context.isPreRelease ? context.preReleaseId : 'latest');
+          return `Are you sure you want to publish ${context.npm.name}${
+            tag ? `@${tag}` : '@latest'
+          } to npm?`;
+        },
         default: true,
       },
     });
@@ -35,11 +40,14 @@ class PrePublishReleaseItPlugin extends Plugin {
 
   async beforeRelease() {
     const context = this.config.getContext();
-    const tag = context.isPreRelease ? context.preReleaseId : 'latest';
+    const pluginOptions = this.config.options?.plonePrePublish;
+    const tag =
+      pluginOptions?.tag ??
+      (context.isPreRelease ? context.preReleaseId : 'latest');
+    console.log(tag);
     const dryRunArg = this.config.isDryRun ? '--dry-run' : '';
     // This value could be set either on .release-it.json or passed via
     // command line with --no-plonePrePublish.publish
-    const pluginOptions = this.config.options?.plonePrePublish;
     const publish = pluginOptions ? pluginOptions.publish ?? true : true;
     if (publish) {
       await this.step({

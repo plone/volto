@@ -8,6 +8,46 @@
 
 <!-- towncrier release notes start -->
 
+## 18.10.2 (2026-09-02)
+
+### Bugfix
+
+- Fix Backspace behaving erratically near a styled or link text and fix cursor position after merging two same-type slate blocks via Backspace. @avoinea [#8347](https://github.com/plone/volto/issues/8347)
+- Fixed cursor position lost when clicking on a Slate block in edit, causing the cursor to jump to the start of the text. @wesleybl [#8402](https://github.com/plone/volto/issues/8402)
+
+## 18.10.1 (2026-06-25)
+
+### Bugfix
+
+- Fixed unintended form submission triggered by table block buttons. @ilariamassa96 [#8329](https://github.com/plone/volto/issues/8329)
+- Fixed `redux-mock-store` used in production. @sneridagh 
+
+### Internal
+
+- Update devDependency: `@testing-library/react` 16.3.2. @wesleybl [#8294](https://github.com/plone/volto/issues/8294)
+- Update dependency: `uuid` 14.0.0. @davisagli 
+- Update devDependency: `release-it` 20.0.1. @davisagli 
+
+## 18.10.0 (2026-05-19)
+
+### Feature
+
+- Update es, ta, fi, gl, nl translations @macagua @TamilNeram @Ricky-Tigg @xulioxesus @ingovb [#8195](https://github.com/plone/volto/issues/8195)
+
+### Internal
+
+- Update dependency: `lodash` 4.18.1. @davisagli 
+
+## 18.9.2 (2026-05-13)
+
+### Feature
+
+- Complete translations for es @cyphra, @erral @macagua [#8178](https://github.com/plone/volto/issues/8178)
+
+### Bugfix
+
+- fix LinkEditor not opening from SlateEditor @CannedShroud [#4130](https://github.com/plone/volto/issues/4130)
+
 ## 18.9.1 (2026-04-16)
 
 ### Internal

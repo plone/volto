@@ -675,6 +675,11 @@ msgstr "Alegeți un fișier"
 msgid "Clear"
 msgstr "Curațați"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Șterge URL"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -689,6 +694,11 @@ msgstr "Curațați filtrele"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
 msgstr "Ștergeți căutarea"
+
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Șterge selecția"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -1106,11 +1116,6 @@ msgstr "Șters"
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "Ștergerea acestui element întrerupe {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Adâncime"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1208,22 +1213,27 @@ msgstr "Descărcați evenimentul"
 msgid "Download file"
 msgstr ""
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Descarcă {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
 msgstr "Trageți și fixați fișierele de pe computer în această zonă sau faceți clic pe butonul Răsfoiește."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Trageți fișierul aici pentru a înlocui fișierul existent"
+msgstr "Trageți un fișier aici sau faceți clic pentru a înlocui fișierul existent"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
-msgstr "Trageți fișierul aici pentru a încărca un fișier nou"
+msgstr "Glisați un fișier aici sau faceți clic pentru a încărca"
 
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
@@ -1574,6 +1584,11 @@ msgstr ""
 msgid "File size"
 msgstr "Mărimea fișierului"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Zonă de încărcare fișier. Apăsați Enter sau faceți clic pentru a înlocui fișierul existent"
+
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -1636,6 +1651,11 @@ msgstr "Corectează relațiile"
 #: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Celule de tabel cu lățimea fixă"
+
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Concentrează-te pe"
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -2184,6 +2204,7 @@ msgstr "Incarcă mai mult"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Se încarcă"
 
@@ -2309,6 +2330,16 @@ msgstr "Mediu"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Membru actualizat"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Meniu închis"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Meniu deschis"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
@@ -2632,7 +2663,12 @@ msgstr "Ok"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Doar caractere de 7 biți sunt permise. Nu poate conține caractere majuscule, caractere speciale: <, >, &, #, /, ?, sau alte caractere care sunt interzise în URL-uri. Nu poate începe cu: _, aq_, @@, ++. Nu poate să se termine cu __. Nu poate fi: request, contributors, ., .., "". Nu poate conține linii noi."
+msgstr "Doar caractere de 7 biți sunt permise. Nu poate conține caractere majuscule, caractere speciale: <, >, &, #, /, ?, sau alte caractere care sunt interzise în URL-uri. Nu poate începe cu: _, aq_, @@, ++. Nu poate să se termine cu __. Nu poate fi: request, contributors, ., .., \"\". Nu poate conține linii noi."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Deschide browserul URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2807,6 +2843,16 @@ msgstr "Fundația Plone"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM Open Source"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Fereastra pop-up închisă."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Fereastra pop-up deschisă: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
@@ -2827,10 +2873,10 @@ msgstr "Powered by Plone & Python"
 msgid "Preferences"
 msgstr "Preferințe"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr "Apasă Enter pentru a răsfoi fișierele de pe calculatorul tău."
+msgstr "Zonă de încărcare fișiere. Apăsați Enter sau faceți clic pentru a deschide browserul de fișiere"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3934,6 +3980,11 @@ msgstr ""
 msgid "Third"
 msgstr "Al treilea"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Acest câmp este obligatoriu."
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4117,6 +4168,16 @@ msgstr "URL-uri alternative"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "URL-uri alternative pentru {title}"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr "URL-ul este invalid"
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "URL-ul lipsește"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -5262,6 +5323,26 @@ msgstr "Text"
 #: config/Blocks
 msgid "title"
 msgstr "Titlu"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Eroare"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informație"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Succes"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Avertisment"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

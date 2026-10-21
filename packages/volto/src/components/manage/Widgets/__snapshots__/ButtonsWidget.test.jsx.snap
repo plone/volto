@@ -136,6 +136,10 @@ exports[`renders an align widget component > basic 1`] = `
               </button>
             </div>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>
@@ -205,6 +209,10 @@ exports[`renders an align widget component > extended with actions and actionsIn
               </button>
             </div>
           </div>
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+          />
         </div>
       </div>
     </div>

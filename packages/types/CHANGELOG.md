@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.6.3 (2026-06-25)
+
+### Internal
+
+- Update devDependency: `release-it` 20.0.1. @davisagli 
+
+## 1.6.2 (2026-05-13)
+
+### Internal
+
+- Removed tsconfig development dependency. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+
 ## 1.6.1 (2026-03-02)
 
 ### Bugfix

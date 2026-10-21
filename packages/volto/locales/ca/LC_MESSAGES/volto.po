@@ -675,6 +675,11 @@ msgstr "Trieu un fitxer"
 msgid "Clear"
 msgstr "Clar"
 
+#. Default: "Clear URL"
+#: components/manage/Widgets/UrlWidget
+msgid "Clear URL"
+msgstr "Esborra l'URL"
+
 #. Default: "Clear date and time"
 #: components/manage/Widgets/DatetimeWidget
 msgid "Clear date/time"
@@ -689,6 +694,11 @@ msgstr "Esborra filtres"
 #: components/manage/BlockChooser/BlockChooserSearch
 msgid "Clear search"
 msgstr "Neteja la cerca"
+
+#. Default: "Clear selection"
+#: components/manage/Widgets/SelectStyling
+msgid "Clear selection"
+msgstr "Esborra la selecció"
 
 #. Default: "Click to download full sized image"
 #: components/theme/View/ImageView
@@ -1106,11 +1116,6 @@ msgstr "Eliminat"
 msgid "Deleting this item breaks {brokenReferences} {variation}."
 msgstr "Eliminar aquest element trenca {brokenReferences} {variation}."
 
-#. Default: "Depth"
-#: components/manage/Widgets/QuerystringWidget
-msgid "Depth"
-msgstr "Profunditat"
-
 #. Default: "Descending"
 #: components/manage/Blocks/Search/components/SortOn
 #: components/manage/Contents/Contents
@@ -1208,22 +1213,27 @@ msgstr "Descarrega l'esdeveniment"
 msgid "Download file"
 msgstr "Descarrega el fitxer"
 
+#. Default: "Download {filename}"
+#: components/manage/Widgets/FileWidget
+msgid "Download {filename}"
+msgstr "Descarrega {filename}"
+
 #. Default: "Drag and drop files from your computer onto this area or click the “Browse” button."
 #: components/manage/Contents/ContentsUploadModal
 msgid "Drag and drop files from your computer onto this area or click the “Browse” button."
-msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó "Navega"."
+msgstr "Arrossegueu fitxers des del vostre ordinador a aquesta àrea o feu clic al botó \"Navega\"."
 
-#. Default: "Drop file here to replace the existing file"
+#. Default: "File upload area. Press Enter or click to replace the existing file"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to replace the existing file"
-msgstr "Deixeu anar el fitxer aquí per substituir el fitxer existent"
+msgstr "Arrossegueu un fitxer aquí o feu clic per substituir el fitxer existent"
 
-#. Default: "Drop file here to upload a new file"
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 #: components/manage/Widgets/RegistryImageWidget
 msgid "Drop file here to upload a new file"
-msgstr "Deixeu anar el fitxer aquí per pujar un fitxer nou"
+msgstr "Arrossegueu un fitxer aquí o feu clic per pujar-lo"
 
 #. Default: "Drop files here ..."
 #: components/manage/Widgets/FileWidget
@@ -1574,6 +1584,11 @@ msgstr "El fitxer no és del tipus acceptat {accept}"
 msgid "File size"
 msgstr "Mida de l'arxiu"
 
+#. Default: "File upload area. Press Enter or click to replace the existing file"
+#: components/manage/Widgets/FileWidget
+msgid "File upload area. Press Enter or click to replace the existing file"
+msgstr "Àrea de càrrega de fitxers. Premeu Retorn o feu clic per substituir el fitxer existent"
+
 #. Default: "File view"
 #: config/Views
 msgid "File view"
@@ -1636,6 +1651,11 @@ msgstr "Corregeix relacions"
 #: config/Blocks
 msgid "Fixed width table cells"
 msgstr "Columnes d'amplada fixa"
+
+#. Default: "Focus on"
+#: components/manage/Toolbar/Toolbar
+msgid "Focus on"
+msgstr "Concentra't en"
 
 #. Default: "Fold"
 #: components/manage/BlockChooser/BlockChooser
@@ -2184,6 +2204,7 @@ msgstr "Carrega més..."
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Carregant."
 
@@ -2309,6 +2330,16 @@ msgstr "Mitjana"
 #: helpers/MessageLabels/MessageLabels
 msgid "Membership updated"
 msgstr "Membresia actualitzada"
+
+#. Default: "Menu closed"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu closed"
+msgstr "Menú tancat"
+
+#. Default: "Menu opened"
+#: components/manage/Toolbar/Toolbar
+msgid "Menu opened"
+msgstr "Menú obert"
 
 #. Default: "Message"
 #: components/theme/ContactForm/ContactForm
@@ -2632,7 +2663,12 @@ msgstr "D'acord"
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
-msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., "". No pot contenir salts de línia."
+msgstr "Només es permeten caràcters de 7 bits. No pot contenir majúscules, caràcters especials: <, >, &, #, /, ?, o altres que són il·legals en URLs. No pot començar amb: _, aq_, @@, ++. No pot acabar amb __. No pot ser: request,contributors, ., .., \"\". No pot contenir salts de línia."
+
+#. Default: "Open URL browser"
+#: components/manage/Widgets/UrlWidget
+msgid "Open URL browser"
+msgstr "Obre el navegador d'URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
@@ -2807,6 +2843,16 @@ msgstr "Fundació Plone"
 msgid "Plone{reg} Open Source CMS/WCM"
 msgstr "Plone{reg} CMS/WCM de codi obert"
 
+#. Default: "Pop-up closed."
+#: components/manage/Form/ModalForm
+msgid "Pop-up closed."
+msgstr "Finestra emergent tancada."
+
+#. Default: "Pop-up opened: {title}"
+#: components/manage/Form/ModalForm
+msgid "Pop-up opened: {title}"
+msgstr "Finestra emergent oberta: {title}"
+
 #. Default: "Position changed"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "Position changed"
@@ -2827,10 +2873,10 @@ msgstr "Desenvolupat amb Plone i Python"
 msgid "Preferences"
 msgstr "Preferències"
 
-#. Default: "Press Enter to browse files from your computer."
+#. Default: "File upload area. Press Enter or click to open the file browser"
 #: components/manage/Widgets/FileWidget
 msgid "Press Enter to browse files from your computer."
-msgstr "Prem Enter per explorar els fitxers del teu ordinador."
+msgstr "Àrea de càrrega de fitxers. Premeu Enter o feu clic per obrir el navegador de fitxers"
 
 #. Default: "Prettify your code"
 #: components/manage/Blocks/HTML/Edit
@@ -3934,6 +3980,11 @@ msgstr "Aquests elements tindran enllaços trencats"
 msgid "Third"
 msgstr "Tercer"
 
+#. Default: "This field is required."
+#: components/manage/Widgets/FileWidget
+msgid "This field is required."
+msgstr "Aquest camp és obligatori."
+
 #. Default: "This has an ongoing working copy in {title}"
 #: components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory
 msgid "This has an ongoing working copy in {title}"
@@ -4117,6 +4168,16 @@ msgstr "Gestió d'URL"
 #: components/manage/Aliases/Aliases
 msgid "URL Management for {title}"
 msgstr "Gestió d'URL per a {title}"
+
+#. Default: "URL is invalid"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is invalid"
+msgstr "L'URL no és vàlid"
+
+#. Default: "URL is missing"
+#: components/manage/Widgets/UrlWidget
+msgid "URL is missing"
+msgstr "Falta l'URL"
 
 #. Default: "Unassign"
 #: components/manage/Rules/Rules
@@ -5262,6 +5323,26 @@ msgstr "Text"
 #: config/Blocks
 msgid "title"
 msgstr "Títol"
+
+#. Default: "Error"
+#: components/manage/Toast/Toast
+msgid "toast_type_error"
+msgstr "Error"
+
+#. Default: "Information"
+#: components/manage/Toast/Toast
+msgid "toast_type_info"
+msgstr "Informació"
+
+#. Default: "Success"
+#: components/manage/Toast/Toast
+msgid "toast_type_success"
+msgstr "Èxit"
+
+#. Default: "Warning"
+#: components/manage/Toast/Toast
+msgid "toast_type_warning"
+msgstr "Advertiment"
 
 #. Default: "Table of Contents"
 #: components/manage/Blocks/ToC/Schema

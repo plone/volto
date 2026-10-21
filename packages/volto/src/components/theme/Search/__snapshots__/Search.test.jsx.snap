@@ -7,7 +7,11 @@ exports[`Search > renders a search component 1`] = `
     id="page-search"
   >
     <div
+      aria-live="polite"
       class="container"
+      id="search-results"
+      role="region"
+      tabindex="-1"
     >
       <article
         id="content"
@@ -88,7 +92,11 @@ exports[`Search > renders an empty search component 1`] = `
     id="page-search"
   >
     <div
+      aria-live="polite"
       class="container"
+      id="search-results"
+      role="region"
+      tabindex="-1"
     >
       <article
         id="content"

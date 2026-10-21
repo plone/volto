@@ -58,6 +58,7 @@ const withObjectBrowser = (WrappedComponent) =>
       selectableTypes,
       maximumSelectionSize,
       currentPath,
+      initialPath,
       onlyFolderishSelectable,
     } = {}) =>
       this.setState(() => ({
@@ -71,6 +72,7 @@ const withObjectBrowser = (WrappedComponent) =>
         selectableTypes,
         maximumSelectionSize,
         currentPath,
+        initialPath,
         onlyFolderishSelectable,
       }));
 
@@ -81,6 +83,10 @@ const withObjectBrowser = (WrappedComponent) =>
         this.state?.currentPath ||
         this.props.pathname ||
         this.props.location?.pathname;
+
+      let initialPath = this.state?.initialPath
+        ? getBaseUrl(this.state.initialPath)
+        : null;
 
       return (
         <>
@@ -105,6 +111,7 @@ const withObjectBrowser = (WrappedComponent) =>
                     : this.props.data
                 }
                 contextURL={getBaseUrl(contextURL)}
+                initialPath={initialPath}
                 closeObjectBrowser={this.closeObjectBrowser}
                 mode={this.state.mode}
                 onSelectItem={this.state.onSelectItem}
