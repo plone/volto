@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.2.3 (2026-10-21)
+
+### Internal
+
+- Raise the minimum versions of `react-aria-components`, `react-aria`, `react-stately`, `@react-aria/utils`, `@react-spectrum/utils` and `@internationalized/date` to the tested ones. @sneridagh [#8464](https://github.com/plone/volto/issues/8464)
+
 ## 4.2.2 (2026-10-07)
 
 ### Internal
