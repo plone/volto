@@ -1,5 +1,5 @@
 export default Anontools;
-declare function Anontools(): import("react/jsx-runtime").JSX.Element;
+declare function Anontools(): import("react").JSX.Element;
 declare namespace Anontools {
     namespace propTypes {
         let token: any;

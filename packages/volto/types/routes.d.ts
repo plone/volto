@@ -1,5 +1,5 @@
 export function getExternalRoutes(): {
-    component: (props: any) => import("react/jsx-runtime").JSX.Element;
+    component: (props: any) => import("react").JSX.Element;
 }[];
 /**
  * Default routes array.
@@ -12,7 +12,7 @@ export const multilingualRoutes: ({
     exact?: undefined;
 } | {
     path: string;
-    component: () => import("react/jsx-runtime").JSX.Element;
+    component: () => import("react").JSX.Element;
     exact: boolean;
 })[];
 export const defaultRoutes: ({
@@ -20,7 +20,7 @@ export const defaultRoutes: ({
     component: any;
     exact?: undefined;
 } | {
-    component: (props: any) => import("react/jsx-runtime").JSX.Element;
+    component: (props: any) => import("react").JSX.Element;
 } | {
     path: string;
     component: any;
@@ -48,7 +48,7 @@ declare const routes: {
         component: any;
         exact?: undefined;
     } | {
-        component: (props: any) => import("react/jsx-runtime").JSX.Element;
+        component: (props: any) => import("react").JSX.Element;
     } | {
         path: string;
         component: any;

@@ -10,7 +10,7 @@ declare const _default: {
             overlay: string;
         }) => void;
         closeObjectBrowser: () => void;
-        render(): import("react/jsx-runtime").JSX.Element;
+        render(): React.JSX.Element;
         context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;

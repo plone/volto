@@ -1,2 +1,3 @@
 export default ContentMetadataTags;
-declare function ContentMetadataTags(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ContentMetadataTags(props: any): React.JSX.Element;
+import React from 'react';
