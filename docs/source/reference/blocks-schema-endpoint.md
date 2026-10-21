@@ -20,7 +20,31 @@ To learn how to write the documentation that it returns, see {doc}`../blocks/doc
 Request it from the frontend URL, for example `http://localhost:3000/@blocks-schema`.
 ```
 
-The endpoint is public, because everything it returns is already part of the frontend code that every visitor downloads.
+(blocks-schema-endpoint-authentication)=
+
+## Authentication
+
+The endpoint requires an authenticated user, because block documentation only exists on the server and can contain information meant for editors.
+Any valid Plone token works, whatever the user's roles, including users defined in the Zope root, such as `admin`.
+
+Send the token in one of these ways.
+
+-   The `auth_token` cookie, which Volto sets when a user logs in.
+-   An `Authorization: Bearer <token>` header, which suits agents and other API clients.
+    It takes precedence over the cookie.
+    Volto reads this header only for this endpoint, not for server-side rendering.
+
+```http
+GET /@blocks-schema HTTP/1.1
+Authorization: Bearer <token>
+```
+
+Get a token from the `@login` endpoint of the Plone REST API.
+
+Volto can't verify a token by itself, so it asks the Plone REST API for the token's user.
+To avoid asking again for every request, it remembers a valid token for one minute at most, and never past the token's expiry.
+
+Without a valid token, the endpoint returns `401 Unauthorized` with a `WWW-Authenticate: Bearer` header.
 
 ## List the blocks
 
@@ -128,8 +152,7 @@ For this, the endpoint gets the content item with the `navroot` expander and the
 It then evaluates each block's `restricted` setting with the same `properties`, `navRoot`, `contentType`, and `user` as the block chooser.
 If `restricted` throws an error, the block is treated as restricted.
 
-The requests to the Plone REST API use the `auth_token` cookie of the request, the same as for server-side rendering.
-Anonymous requests can only get public content.
+The requests to the Plone REST API use the token of the request, so the user must be able to view the content item.
 If the Plone REST API returns `401 Unauthorized`, `403 Forbidden`, or `404 Not Found`, the endpoint returns the same status.
 
 With a path, the endpoint returns one block with a `restricted` value of `true` or `false` for that content item.
@@ -146,7 +169,8 @@ The documentation of such blocks describes which blocks they accept.
 
 ## Caching
 
-Responses without a path are cached publicly for five minutes.
-They vary on the `Accept` and `Accept-Language` headers.
-Responses for a content item depend on the user, so they are private.
+All responses are private, because they need authentication.
+Responses without a path can be reused by the client for five minutes.
+Responses for a content item depend on the content, so they are not reused.
+Responses vary on the `Accept`, `Accept-Language`, `Authorization`, and `Cookie` headers.
 

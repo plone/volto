@@ -190,16 +190,15 @@ function buildFullDetail(blockConfig, intl) {
   return result;
 }
 
-// The block configuration is already public (it ships in the client bundle),
-// so the endpoint is public too and can be cached. Schema titles are
-// translated, and the format depends on the Accept header.
-// A context response depends on the user and the content, so it is private.
+// Responses need authentication, so they are private. Schema titles are
+// translated, and the format depends on the Accept header. A context response
+// also depends on the content, so it is not reused.
 function setCacheHeaders(res, context) {
   res.set(
     'Cache-Control',
-    context ? 'private, max-age=0, must-revalidate' : 'public, max-age=300',
+    context ? 'private, max-age=0, must-revalidate' : 'private, max-age=300',
   );
-  res.set('Vary', 'Accept, Accept-Language');
+  res.set('Vary', 'Accept, Accept-Language, Authorization, Cookie');
 }
 
 // Markdown is returned for `?format=md`, or when the client asks for
@@ -285,22 +284,81 @@ export function blocksToMarkdown(details) {
   );
 }
 
-// The same context the block chooser has when editing the content at `path`,
-// with the backend responses as the editor stores them. The backend calls
-// carry the caller's auth_token cookie.
-async function getContext(req, path) {
-  const api = new Api(req);
-  const content = await api.get(path, { params: { expand: 'navroot' } });
+// The endpoint returns the blocks' docs, which only exist on the server, so
+// it needs an authenticated user. The token comes from the `auth_token`
+// cookie, as for server-side rendering, or from an `Authorization: Bearer`
+// header, which is read only here, for agents.
+function getRequestToken(req) {
+  const [, bearer] =
+    req.headers?.authorization?.match(/^Bearer\s+(\S+)\s*$/i) || [];
+  return bearer || req.universalCookies?.get('auth_token');
+}
 
-  let user = {};
-  const token = req.universalCookies?.get('auth_token');
-  if (token) {
-    try {
-      user = await api.get(`/@users/${jwtDecode(token).sub}`);
-    } catch (e) {
-      user = {};
-    }
+// Validated tokens, with their user, for a minute at most, so that a client
+// that calls the list and then several blocks doesn't validate each time.
+const TOKEN_CACHE_TTL = 60 * 1000;
+const TOKEN_CACHE_SIZE = 500;
+const validatedTokens = new Map();
+
+export function clearValidatedTokens() {
+  validatedTokens.clear();
+}
+
+class UnauthorizedError extends Error {}
+
+// Volto can't verify the token's signature, only Plone can. So a token is
+// valid when Plone returns its user for it, which also works for users
+// defined in the Zope root, such as `admin`.
+async function authenticate(req) {
+  const token = getRequestToken(req);
+  if (!token) throw new UnauthorizedError('Authentication is required.');
+
+  const now = Date.now();
+  const cached = validatedTokens.get(token);
+  if (cached && cached.expires > now) return { token, user: cached.user };
+  validatedTokens.delete(token);
+
+  let payload;
+  try {
+    payload = jwtDecode(token);
+  } catch (e) {
+    throw new UnauthorizedError('The token is not valid.');
   }
+  const expires = payload.exp ? payload.exp * 1000 : Infinity;
+  if (!payload.sub || expires <= now) {
+    throw new UnauthorizedError('The token is not valid or has expired.');
+  }
+
+  let user;
+  try {
+    user = await new Api(req).get(`/@users/${payload.sub}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  } catch (error) {
+    if ([401, 403, 404].includes(error?.status)) {
+      throw new UnauthorizedError('The token is not valid or has expired.');
+    }
+    throw error;
+  }
+
+  if (validatedTokens.size >= TOKEN_CACHE_SIZE) {
+    validatedTokens.delete(validatedTokens.keys().next().value);
+  }
+  validatedTokens.set(token, {
+    user,
+    expires: Math.min(expires, now + TOKEN_CACHE_TTL),
+  });
+  return { token, user };
+}
+
+// The same context the block chooser has when editing the content at `path`,
+// with the backend responses as the editor stores them. The content is
+// fetched with the caller's token.
+async function getContext(req, path, { token, user }) {
+  const content = await new Api(req).get(path, {
+    params: { expand: 'navroot' },
+    headers: { Authorization: `Bearer ${token}` },
+  });
 
   return {
     properties: content,
@@ -353,10 +411,21 @@ async function blocksSchema(req, res, next) {
     const path = req.params[0] || '';
     const blockId = req.params.blockId;
 
+    let auth;
+    try {
+      auth = await authenticate(req);
+    } catch (error) {
+      if (!(error instanceof UnauthorizedError)) throw error;
+      res.set('WWW-Authenticate', 'Bearer');
+      res.set('Cache-Control', 'no-store');
+      sendError(res, 401, 'Unauthorized', error.message, markdown);
+      return;
+    }
+
     let context;
     if (path) {
       try {
-        context = await getContext(req, path);
+        context = await getContext(req, path, auth);
       } catch (error) {
         const type = BACKEND_ERRORS[error?.status];
         if (!type) throw error;

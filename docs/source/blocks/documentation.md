@@ -58,6 +58,8 @@ Each slide links to a content item and shows its lead image.
 There is nothing to register.
 When Volto builds, it collects the `*.block.md` files of core Volto and of every add-on, and only the {doc}`@blocks-schema endpoint <../reference/blocks-schema-endpoint>` uses them.
 They are not part of the block configuration, and they are not included in the code sent to the browser.
+The endpoint only returns them to authenticated users.
+Still, any user who can log in can read them, so don't put anything in them that only some users should see.
 
 If two files document the same block, the one from the add-on that loads later wins.
 This lets an add-on or a project replace the documentation of a core block.

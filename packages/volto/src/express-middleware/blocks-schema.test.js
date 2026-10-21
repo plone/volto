@@ -1,6 +1,7 @@
 import config from '@plone/volto/registry';
 
 import blocksSchemaMiddleware, {
+  clearValidatedTokens,
   fillPlaceholders,
   getSummary,
   toJSONSafe,
@@ -16,6 +17,20 @@ vi.mock('@plone/volto/helpers/Api/Api', () => ({
     get = apiGet;
   },
 }));
+
+// A JWT as Plone issues it; only its payload matters here.
+const makeToken = (payload) =>
+  `header.${btoa(JSON.stringify(payload))}.signature`;
+const inAnHour = () => Math.floor(Date.now() / 1000) + 3600;
+const editorToken = makeToken({ sub: 'editor', exp: inAnHour() });
+const editor = { id: 'editor', roles: ['Editor'] };
+const bearer = (token) => ({ Authorization: `Bearer ${token}` });
+
+// The backend: it knows the editor, and nothing else.
+async function backend(path) {
+  if (path === '/@users/editor') return editor;
+  throw Object.assign(new Error('Not Found'), { status: 404 });
+}
 
 // Replaces the *.block.md files the endpoint sees.
 function setDocsFiles(files) {
@@ -34,7 +49,7 @@ async function invokeMiddleware({
   headers = {},
   query = {},
   url = '/@blocks-schema',
-  cookies = {},
+  cookies = { auth_token: editorToken },
 }) {
   const middleware = blocksSchemaMiddleware();
 
@@ -101,6 +116,9 @@ describe('/@blocks-schema middleware', () => {
   const originalBlocks = config.blocks;
 
   beforeEach(() => {
+    clearValidatedTokens();
+    apiGet.mockReset();
+    apiGet.mockImplementation(backend);
     setDocsFiles([
       docsFile(
         'alpha',
@@ -149,12 +167,10 @@ describe('/@blocks-schema middleware', () => {
     config.set('blocks', originalBlocks);
   });
 
-  it('is public and returns summary items without credentials', async () => {
+  it('returns summary items', async () => {
     const response = await invokeMiddleware({});
 
     expect(response.status).toBe(200);
-    expect(response.headers['cache-control']).toBe('public, max-age=300');
-    expect(response.headers['vary']).toBe('Accept, Accept-Language');
     expect(response.body).toEqual({
       '@id': '/@blocks-schema',
       items: [
@@ -668,7 +684,6 @@ describe('/@blocks-schema middleware', () => {
   });
 
   describe('restricted blocks and the context path', () => {
-    const token = `header.${btoa(JSON.stringify({ sub: 'editor' }))}.signature`;
     const page = {
       '@id': '/news',
       '@type': 'Document',
@@ -678,12 +693,9 @@ describe('/@blocks-schema middleware', () => {
     let onlyInFolders;
 
     beforeEach(() => {
-      apiGet.mockReset();
-      apiGet.mockImplementation(async (path) => {
-        if (path === '/news') return page;
-        if (path === '/@users/editor') return { id: 'editor', roles: [] };
-        throw Object.assign(new Error('Not Found'), { status: 404 });
-      });
+      apiGet.mockImplementation(async (path) =>
+        path === '/news' ? page : backend(path),
+      );
       onlyInFolders = vi.fn(({ contentType }) => contentType !== 'Folder');
       config.set('blocks', {
         ...config.blocks,
@@ -708,7 +720,7 @@ describe('/@blocks-schema middleware', () => {
     it('flags restricted blocks in the root list', async () => {
       const response = await invokeMiddleware({});
 
-      expect(apiGet).not.toHaveBeenCalled();
+      expect(apiGet).not.toHaveBeenCalledWith('/news', expect.anything());
       expect(response.body.items).toEqual([
         { id: 'text', title: 'Text' },
         { id: 'title', title: 'Title', restricted: true },
@@ -730,11 +742,11 @@ describe('/@blocks-schema middleware', () => {
     it('only lists the blocks offered for the content at the path', async () => {
       const response = await invokeMiddleware({
         url: '/news/@blocks-schema',
-        cookies: { auth_token: token },
       });
 
       expect(apiGet).toHaveBeenCalledWith('/news', {
         params: { expand: 'navroot' },
+        headers: bearer(editorToken),
       });
       expect(response.status).toBe(200);
       expect(response.headers['cache-control']).toBe(
@@ -745,26 +757,18 @@ describe('/@blocks-schema middleware', () => {
     });
 
     it('gives restricted the same context as the block chooser', async () => {
-      await invokeMiddleware({
-        url: '/news/@blocks-schema',
-        cookies: { auth_token: token },
-      });
+      await invokeMiddleware({ url: '/news/@blocks-schema' });
 
-      expect(apiGet).toHaveBeenCalledWith('/@users/editor');
+      expect(apiGet).toHaveBeenCalledWith('/@users/editor', {
+        headers: bearer(editorToken),
+      });
       expect(onlyInFolders).toHaveBeenCalledWith({
         properties: page,
         block: config.blocks.blocksConfig.folderish,
         navRoot: { '@id': '/', title: 'Site' },
         contentType: 'Document',
-        user: { id: 'editor', roles: [] },
+        user: editor,
       });
-    });
-
-    it('passes an empty user for anonymous callers', async () => {
-      await invokeMiddleware({ url: '/news/@blocks-schema' });
-
-      expect(apiGet).toHaveBeenCalledTimes(1);
-      expect(onlyInFolders.mock.calls[0][0].user).toEqual({});
     });
 
     it('says whether one block is restricted for the content', async () => {
@@ -796,7 +800,12 @@ describe('/@blocks-schema middleware', () => {
       [403, 'Forbidden'],
       [404, 'Not Found'],
     ])('passes a backend %s through', async (status, type) => {
-      apiGet.mockRejectedValue(Object.assign(new Error(type), { status }));
+      apiGet.mockImplementation(async (path) => {
+        if (path === '/private') {
+          throw Object.assign(new Error(type), { status });
+        }
+        return backend(path);
+      });
 
       const response = await invokeMiddleware({
         url: '/private/@blocks-schema',
@@ -805,6 +814,144 @@ describe('/@blocks-schema middleware', () => {
       expect(response.status).toBe(status);
       expect(response.body).toEqual({
         error: { type, message: "Could not get the content at '/private'." },
+      });
+    });
+  });
+
+  describe('authentication', () => {
+    it('answers 401 without a token', async () => {
+      const response = await invokeMiddleware({ cookies: {} });
+
+      expect(response.status).toBe(401);
+      expect(response.headers['www-authenticate']).toBe('Bearer');
+      expect(response.headers['cache-control']).toBe('no-store');
+      expect(response.body).toEqual({
+        error: { type: 'Unauthorized', message: 'Authentication is required.' },
+      });
+      expect(apiGet).not.toHaveBeenCalled();
+    });
+
+    it('answers 401 in Markdown when Markdown is asked for', async () => {
+      const response = await invokeMiddleware({
+        cookies: {},
+        query: { format: 'md' },
+      });
+
+      expect(response.status).toBe(401);
+      expect(response.text).toBe('Authentication is required.\n');
+    });
+
+    it('also answers 401 for a block before saying it does not exist', async () => {
+      const response = await invokeMiddleware({
+        cookies: {},
+        url: '/@blocks-schema/missing',
+      });
+
+      expect(response.status).toBe(401);
+    });
+
+    it('accepts a Bearer header, which wins over the cookie', async () => {
+      const agentToken = makeToken({ sub: 'editor', exp: inAnHour() });
+      const response = await invokeMiddleware({
+        headers: { authorization: `Bearer ${agentToken}` },
+      });
+
+      expect(response.status).toBe(200);
+      expect(apiGet).toHaveBeenCalledWith('/@users/editor', {
+        headers: bearer(agentToken),
+      });
+    });
+
+    it.each([
+      ['malformed', 'not-a-jwt'],
+      ['expired', makeToken({ sub: 'editor', exp: 1 })],
+      ['without a user', makeToken({ exp: inAnHour() })],
+    ])('rejects a %s token without asking the backend', async (kind, token) => {
+      const response = await invokeMiddleware({
+        cookies: { auth_token: token },
+      });
+
+      expect(response.status).toBe(401);
+      expect(apiGet).not.toHaveBeenCalled();
+    });
+
+    it.each([401, 403, 404])(
+      'rejects a token when the backend answers %s for its user',
+      async (status) => {
+        apiGet.mockRejectedValue(Object.assign(new Error('No'), { status }));
+
+        const response = await invokeMiddleware({});
+
+        expect(response.status).toBe(401);
+        expect(response.body.error.message).toBe(
+          'The token is not valid or has expired.',
+        );
+      },
+    );
+
+    it('passes other backend errors on', async () => {
+      apiGet.mockRejectedValue(
+        Object.assign(new Error('Down'), { status: 502 }),
+      );
+
+      await expect(invokeMiddleware({})).rejects.toThrow('Down');
+    });
+
+    it('makes the responses private', async () => {
+      const response = await invokeMiddleware({});
+
+      expect(response.headers['cache-control']).toBe('private, max-age=300');
+      expect(response.headers['vary']).toBe(
+        'Accept, Accept-Language, Authorization, Cookie',
+      );
+    });
+
+    describe('validated tokens', () => {
+      afterEach(() => {
+        vi.useRealTimers();
+      });
+
+      it('are remembered, so the backend is asked once', async () => {
+        await invokeMiddleware({});
+        await invokeMiddleware({ url: '/@blocks-schema/alpha' });
+
+        expect(apiGet).toHaveBeenCalledTimes(1);
+      });
+
+      it('are asked again after a minute', async () => {
+        vi.useFakeTimers();
+        await invokeMiddleware({});
+        vi.advanceTimersByTime(61 * 1000);
+        await invokeMiddleware({});
+
+        expect(apiGet).toHaveBeenCalledTimes(2);
+      });
+
+      it('are not remembered past the token expiry', async () => {
+        vi.useFakeTimers();
+        const soon = makeToken({
+          sub: 'editor',
+          exp: Math.floor(Date.now() / 1000) + 10,
+        });
+        await invokeMiddleware({ cookies: { auth_token: soon } });
+        vi.advanceTimersByTime(11 * 1000);
+        const response = await invokeMiddleware({
+          cookies: { auth_token: soon },
+        });
+
+        expect(response.status).toBe(401);
+        expect(apiGet).toHaveBeenCalledTimes(1);
+      });
+
+      it('are not remembered when invalid', async () => {
+        apiGet.mockRejectedValueOnce(
+          Object.assign(new Error('No'), { status: 401 }),
+        );
+        await invokeMiddleware({});
+        const response = await invokeMiddleware({});
+
+        expect(response.status).toBe(200);
+        expect(apiGet).toHaveBeenCalledTimes(2);
       });
     });
   });
