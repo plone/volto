@@ -1,0 +1,1 @@
+Fix flaky `AuthToken` unit test by returning a stable JWT token from the mocked store. @wesleybl
