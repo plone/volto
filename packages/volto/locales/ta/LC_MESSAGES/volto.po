@@ -1324,6 +1324,11 @@ msgstr "மின்னஞ்சல் அனுப்பப்பட்டத�
 msgid "Embed code error, please follow the instructions and try again."
 msgstr "குறியீடு பிழையை உட்பொதிக்கவும், தயவுசெய்து வழிமுறைகளைப் பின்பற்றி மீண்டும் முயற்சிக்கவும்."
 
+#. Default: "Embedded map"
+#: components/manage/Blocks/Maps/Body
+msgid "Embedded map"
+msgstr ""
+
 #. Default: "Empty object list"
 #: components/manage/Widgets/ObjectListWidget
 msgid "Empty object list"
@@ -1713,11 +1718,6 @@ msgstr "பொது"
 #: components/manage/Sharing/Sharing
 msgid "Global role"
 msgstr "உலகளாவிய பங்கு"
-
-#. Default: "Google Maps Embedded Block"
-#: components/manage/Blocks/Maps/Edit
-msgid "Google Maps Embedded Block"
-msgstr "கூகிள் வரைபடங்கள் உட்பொதிக்கப்பட்ட தொகுதி"
 
 #. Default: "Grid"
 #: components/manage/Blocks/Grid/schema
