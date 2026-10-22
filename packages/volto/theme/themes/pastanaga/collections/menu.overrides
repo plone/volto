@@ -195,9 +195,9 @@
   }
 
   @media only screen and (max-width: @largestMobileScreen) {
+    max-width: 100%;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 100%;
 
     .item {
       min-width: 2em;
