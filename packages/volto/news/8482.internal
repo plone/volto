@@ -1,0 +1,1 @@
+Remove unused `@types/node`, `react`, and `react-dom` entries from `catalog.json`, since no package references them through the pnpm catalog protocol. @wesleybl
