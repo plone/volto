@@ -1,4 +1,5 @@
 # requirements.txt
+collective-sphinxextexternalpackageversion
 linkify-it-py
 myst-parser
 plone-sphinx-theme<2
