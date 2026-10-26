@@ -27,8 +27,8 @@ const messages = defineMessages({
  * The Lead Image block data schema. It is registered as the `blockSchema` of
  * the `leadimage` block. The image itself and its alt text come from the
  * content item's `image` and `image_caption` fields, not from the block data.
- * The Lead Image block sidebar is a hand-built form that does not render this
- * schema yet, so keep both in sync.
+ * The Lead Image block sidebar reads this schema from the block configuration
+ * and adds the alt text field, which is stored in the content item.
  */
 export const LeadImageBlockSchema = ({ intl }) => ({
   title: intl.formatMessage(messages.LeadImage),
