@@ -63,6 +63,18 @@ describe('getAnchorText', () => {
   it('returns an empty string when there is no node', () => {
     expect(getAnchorText(undefined)).toBe('');
   });
+
+  it('returns an empty string for an empty node', () => {
+    expect(getAnchorText({})).toBe('');
+  });
+
+  it('returns an empty string for a heading with no children', () => {
+    expect(getAnchorText({ type: 'h2' })).toBe('');
+  });
+
+  it('returns an empty string for a heading with an empty children array', () => {
+    expect(getAnchorText({ type: 'h2', children: [] })).toBe('');
+  });
 });
 
 describe('slugAnchor', () => {

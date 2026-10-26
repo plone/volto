@@ -1,4 +1,4 @@
-import { Node } from 'slate';
+import { Node, Text } from 'slate';
 import Slugger from 'github-slugger';
 import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
 
@@ -18,7 +18,9 @@ import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
  * @returns {string} The anchor text of the node.
  */
 export const getAnchorText = (node) =>
-  node ? Node.string(node).replace(/\s+/g, ' ').trim() : '';
+  node && (Text.isText(node) || Array.isArray(node.children))
+    ? Node.string(node).replace(/\s+/g, ' ').trim()
+    : '';
 
 /**
  * Slug the given text, the way the anchors of a Slate block are slugged.
