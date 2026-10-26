@@ -17,6 +17,27 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.5.1 (2026-10-21)
+
+### Bugfix
+
+- Override the opacity in the CMS toolbar icons' from Semantic UI with custom CSS for accessibility. @Wagner3UB [#7771](https://github.com/plone/volto/issues/7771)
+- Fixed server-side rendering picking an interface language that is not in `config.settings.supportedLanguages`, for example English on a monolingual Portuguese site visited with an English browser. The page now always renders in a supported language, and switches to the content language when it differs from the language picked from the browser. @ericof [#8448](https://github.com/plone/volto/issues/8448)
+- Fixed adding a field with the default "Text" type in the content type schema editor, which failed on save with "Missing/Invalid parameter factory". @sneridagh [#8454](https://github.com/plone/volto/issues/8454)
+- Fixed the keyboard focus indicator on single `react-select` widgets being a tiny sliver on the 2px-wide hidden input instead of a visible ring around the whole field. The universal focus ring is now painted on `.react-select__control` when its input matches `:focus-visible`. @wesleybl [#8456](https://github.com/plone/volto/issues/8456)
+- Don't show the parent's tags and related items below the add form. @iFlameing 
+
+### Internal
+
+- Use pnpm/action-setup and setup-node pnpm cache in CI. @wesleybl [#8459](https://github.com/plone/volto/issues/8459)
+- Update packages in pnpm-lock.yaml. @wesleybl [#8461](https://github.com/plone/volto/issues/8461)
+- Restore the pnpm store cache fallback in CI and run the @plone/volto-razzle unit tests on the matrix Node.js version. @sneridagh [#8463](https://github.com/plone/volto/issues/8463)
+- Raise the `react-aria-components` minimum version to the tested one, and require a minimum release age of 3 days for dependencies in the monorepo. @sneridagh [#8464](https://github.com/plone/volto/issues/8464)
+
+### Documentation
+
+- Fixed link redirects from `thevalleyofcode.com` to `flaviocopes.com`. @stevepiercy 
+
 ## 19.5.0 (2026-10-07)
 
 ### Feature

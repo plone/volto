@@ -25,7 +25,7 @@ declare const HelmetExport: {
         mapArrayTypeChildrenToProps(arrayTypeChildren: any, newProps: any): any;
         warnOnInvalidChildren(child: any, nestedChildren: any): true | void;
         mapChildrenToProps(children: any, newProps: any): any;
-        render(): import("react/jsx-runtime").JSX.Element;
+        render(): React.JSX.Element;
         context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;
@@ -70,7 +70,7 @@ declare const HelmetExport: {
         mapArrayTypeChildrenToProps(arrayTypeChildren: any, newProps: any): any;
         warnOnInvalidChildren(child: any, nestedChildren: any): true | void;
         mapChildrenToProps(children: any, newProps: any): any;
-        render(): import("react/jsx-runtime").JSX.Element;
+        render(): React.JSX.Element;
         context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;

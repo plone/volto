@@ -1,5 +1,5 @@
 export default HiddenWidget;
-declare function HiddenWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function HiddenWidget(props: any): import("react").JSX.Element;
 declare namespace HiddenWidget {
     namespace propTypes {
         let id: any;

@@ -1,3 +1,4 @@
+import React from 'react';
 type Color = {
     name: string;
     label: string;
@@ -18,5 +19,5 @@ export type ColorPickerWidgetProps = {
     onChange: (id: string, value: any) => void;
     colors: Color[];
 };
-declare const ColorPickerWidget: (props: ColorPickerWidgetProps) => import("react/jsx-runtime").JSX.Element;
+declare const ColorPickerWidget: (props: ColorPickerWidgetProps) => React.JSX.Element;
 export default ColorPickerWidget;

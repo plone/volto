@@ -6,7 +6,7 @@ declare function Avatar({ src, title, text, size, color, className }: {
     size: any;
     color: any;
     className: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 declare namespace Avatar {
     namespace propTypes {
         let src: any;
@@ -28,6 +28,7 @@ declare namespace Avatar {
         export { defaultClassName as className };
     }
 }
+import React from 'react';
 declare const defaultSize: 30;
 declare const defaultColor: "Teal";
 declare const defaultClassName: "avatar circular";

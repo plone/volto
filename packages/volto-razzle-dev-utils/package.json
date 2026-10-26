@@ -1,6 +1,6 @@
 {
   "name": "@plone/razzle-dev-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Volto fork of razzle-dev-utils - Utilities and helpers for Razzle",
   "author": "Jared Palmer <jared@palmer.net>",
   "repository": {
@@ -42,6 +42,9 @@
   "peerDependencies": {
     "webpack": "~5",
     "webpack-dev-server": "catalog:"
+  },
+  "devDependencies": {
+    "webpack": "catalog:"
   },
   "scripts": {
     "dry-release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --dry-run",
