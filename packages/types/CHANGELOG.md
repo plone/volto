@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.0 (2026-10-27)
+
+### Feature
+
+- Added the optional `docs` function to the block configuration type, to tailor the documentation that the `@blocks-schema` endpoint returns for a block. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+
 ## 2.1.0 (2026-10-07)
 
 ### Feature
