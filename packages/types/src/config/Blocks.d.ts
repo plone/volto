@@ -141,7 +141,24 @@ export interface BlockConfigBase {
   // TODO: Improve extensions shape
   extensions?: Record<string, BlockExtension>;
   blocksConfig?: Partial<BlocksConfigData>;
+  /**
+   * Tailors the block's documentation returned by the `@blocks-schema`
+   * endpoint. The documentation itself is a `*.block.md` file next to the
+   * block; this function receives its Markdown and returns the text to use.
+   * Only needed for special cases.
+   */
+  docs?: (args: BlockDocsArgs) => string;
 }
+
+export type BlockDocsArgs = {
+  blockConfig: BlockConfigBase;
+  intl: IntlShape;
+  /**
+   * The Markdown of the block's `*.block.md` file, with its placeholders
+   * filled in, or an empty string if there is none.
+   */
+  markdown: string;
+};
 
 export type SchemaEnhancerArgs = {
   schema: JSONSchema;
