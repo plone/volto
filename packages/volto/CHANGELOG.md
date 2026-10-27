@@ -17,6 +17,24 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.6.0 (2026-10-27)
+
+### Feature
+
+- Added an authenticated `/@blocks-schema` endpoint to the Volto server that lists the registered blocks with their resolved schemas, variations and documentation, for agents and reference docs. Blocks are documented in `*.block.md` files next to them, which only the server loads. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+- Added a `blockSchema` to the `image`, `maps`, `toc`, `html` and `leadimage` core blocks, and made the Image and Maps block sidebars and the Table of Contents block edit form read their schema from the block configuration. The `toc` block now uses the generic `BlockSettingsSchema` as its `schema`. @sneridagh [#8472](https://github.com/plone/volto/issues/8472)
+- Ported the Lead Image block sidebar to `BlockDataForm`. It now renders the `leadimage` block `blockSchema` from the block configuration, plus the alt text field stored in the content item. @sneridagh [#8473](https://github.com/plone/volto/issues/8473)
+
+### Bugfix
+
+- Fixed the links of the `Table of Contents` block breaking when a heading contains inline formatting or a link. The block now uses the anchor reported by the block that owns the heading, instead of slugging its indexed plaintext. @Somilg11 [#8340](https://github.com/plone/volto/issues/8340)
+- Fixed saving a content type layout that contains a block with a `blockSchema`, which failed because the layout editor has no content. @sneridagh [#8472](https://github.com/plone/volto/issues/8472)
+
+### Internal
+
+- Fix flaky `AuthToken` unit test by returning a stable JWT token from the mocked store. @wesleybl 
+- Fix the flaky `Document locking` acceptance test by scoping the toast queries to the toast container, since the route announcer also uses the `alert` role. @wesleybl 
+
 ## 19.5.1 (2026-10-21)
 
 ### Bugfix
