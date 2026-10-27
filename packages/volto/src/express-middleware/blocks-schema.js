@@ -149,8 +149,9 @@ export function getSummary(markdown) {
   return first.replace(/\s*\n\s*/g, ' ').trim();
 }
 
-function buildSummaryItem(blockConfig, intl) {
+function buildSummaryItem(blockConfig, intl, url) {
   const item = {
+    '@id': url,
     id: blockConfig.id,
     title: blockConfig.title,
   };
@@ -161,9 +162,10 @@ function buildSummaryItem(blockConfig, intl) {
   return item;
 }
 
-function buildFullDetail(blockConfig, intl) {
+function buildFullDetail(blockConfig, intl, url) {
   const result = withSchema(
     {
+      '@id': url,
       id: blockConfig.id,
       title: blockConfig.title,
       docs: resolveDocs(blockConfig, intl),
@@ -201,10 +203,9 @@ function setCacheHeaders(res, context) {
   res.set('Vary', 'Accept, Accept-Language, Authorization, Cookie');
 }
 
-// Markdown is returned for `?format=md`, or when the client asks for
-// `text/markdown` and not for JSON. JSON stays the default.
+// Markdown is returned when the client asks for `text/markdown` and not for
+// JSON. JSON stays the default.
 function wantsMarkdown(req) {
-  if (req.query?.format === 'md') return true;
   const accept = req.headers?.accept || '';
   return (
     accept.includes('text/markdown') && !accept.includes('application/json')
@@ -274,12 +275,23 @@ export function blockToMarkdown(detail) {
   return parts.join('\n\n');
 }
 
-export function blocksToMarkdown(details) {
+// The list links each block to its own URL, which has its docs and schema.
+export function blocksToMarkdown(items) {
+  const list = items.map((item) => {
+    let line = `- [${item.title}](${item['@id']}) (\`${item.id}\`)`;
+    if (item.description) line += `: ${item.description}`;
+    if (item.restricted === true) {
+      line += ' _Not offered in the block chooser._';
+    } else if (item.restricted === 'context') {
+      line += ' _Offered depending on the content._';
+    }
+    return line;
+  });
   return (
     [
       '# Blocks',
-      'The blocks available on this site, with their documentation and the schema of their settings. Block data is stored in the `blocks` field of a content item, keyed by block ID, with the block type in `@type`, and their order is in `blocks_layout.items`.',
-      ...details.map(blockToMarkdown),
+      "The blocks available on this site. Follow a block's link for its documentation and the schema of its settings. Block data is stored in the `blocks` field of a content item, keyed by block ID, with the block type in `@type`, and their order is in `blocks_layout.items`.",
+      list.join('\n'),
     ].join('\n\n') + '\n'
   );
 }
@@ -397,6 +409,18 @@ function sendError(res, status, type, message, markdown) {
   res.json({ error: { type, message } });
 }
 
+// The URL of the endpoint as the client called it, without the block ID or
+// the query string, so that each block can link to its own URL. It keeps
+// the content path, so a block's link keeps its context.
+function getEndpointURL(req) {
+  const proto =
+    req.headers?.['x-forwarded-proto']?.split(',')[0].trim() || req.protocol;
+  const [pathname] = (req.originalUrl || req.url).split('?');
+  const end =
+    pathname.lastIndexOf('/@blocks-schema') + '/@blocks-schema'.length;
+  return `${proto}://${req.headers?.host}${pathname.slice(0, end)}`;
+}
+
 const BACKEND_ERRORS = {
   401: 'Unauthorized',
   403: 'Forbidden',
@@ -440,10 +464,14 @@ async function blocksSchema(req, res, next) {
       }
     }
 
-    const describe = (blockConfig, full) => {
+    const endpointURL = getEndpointURL(req);
+    const blockURL = (id) => `${endpointURL}/${encodeURIComponent(id)}`;
+    // Links use the registry key, which is what the detail route looks up.
+    const describe = (key, blockConfig, full) => {
+      const url = blockURL(key);
       const item = full
-        ? buildFullDetail(blockConfig, intl)
-        : buildSummaryItem(blockConfig, intl);
+        ? buildFullDetail(blockConfig, intl, url)
+        : buildSummaryItem(blockConfig, intl, url);
       const restricted = context
         ? isRestrictedIn(blockConfig, context)
         : restrictedFlag(blockConfig);
@@ -469,28 +497,27 @@ async function blocksSchema(req, res, next) {
         );
         return;
       }
-      const detail = describe(blockConfig, true);
+      const detail = describe(blockId, blockConfig, true);
       if (markdown) {
         sendMarkdown(res, `${blockToMarkdown(detail)}\n`);
         return;
       }
-      res.json({ '@id': req.originalUrl || req.url, ...detail });
+      res.json(detail);
       return;
     }
 
-    const full = markdown || req.query?.full === '1';
-    const items = Object.values(blocksConfig)
+    const items = Object.entries(blocksConfig)
       .filter(
-        (blockConfig) => !context || !isRestrictedIn(blockConfig, context),
+        ([, blockConfig]) => !context || !isRestrictedIn(blockConfig, context),
       )
-      .map((blockConfig) => describe(blockConfig, full));
+      .map(([key, blockConfig]) => describe(key, blockConfig, false));
 
     if (markdown) {
       sendMarkdown(res, blocksToMarkdown(items));
       return;
     }
     res.json({
-      '@id': req.originalUrl || req.url,
+      '@id': endpointURL,
       items,
       items_total: items.length,
     });

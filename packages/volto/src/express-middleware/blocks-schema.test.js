@@ -37,6 +37,9 @@ function setDocsFiles(files) {
   docsFiles.splice(0, docsFiles.length, ...files);
 }
 
+const BASE = 'http://localhost:3000';
+const markdown = { accept: 'text/markdown' };
+
 const docsFile = (block, text, variation) => ({
   block,
   ...(variation ? { variation } : {}),
@@ -56,9 +59,10 @@ async function invokeMiddleware({
   return await new Promise((resolve, reject) => {
     const req = {
       method: 'GET',
+      protocol: 'http',
       url,
       originalUrl: url,
-      headers,
+      headers: { host: 'localhost:3000', ...headers },
       query,
       universalCookies: { get: (name) => cookies[name] },
     };
@@ -167,23 +171,26 @@ describe('/@blocks-schema middleware', () => {
     config.set('blocks', originalBlocks);
   });
 
-  it('returns summary items', async () => {
+  it('returns summary items that link to each block', async () => {
     const response = await invokeMiddleware({});
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
-      '@id': '/@blocks-schema',
+      '@id': `${BASE}/@blocks-schema`,
       items: [
         {
+          '@id': `${BASE}/@blocks-schema/alpha`,
           id: 'alpha',
           title: 'Alpha',
           description: 'The Alpha block, for alpha content.',
         },
         {
+          '@id': `${BASE}/@blocks-schema/beta`,
           id: 'beta',
           title: 'Beta',
         },
         {
+          '@id': `${BASE}/@blocks-schema/gamma`,
           id: 'gamma',
           title: 'Gamma',
           description: 'The Gamma block. It has 2 variations.',
@@ -193,49 +200,80 @@ describe('/@blocks-schema middleware', () => {
     });
   });
 
-  it('returns full details including docs and schema when ?full=1', async () => {
-    const response = await invokeMiddleware({ query: { full: '1' } });
+  it('returns the docs and schema of a block at its link', async () => {
+    const { body } = await invokeMiddleware({});
+    const details = [];
+    for (const item of body.items) {
+      const response = await invokeMiddleware({
+        url: item['@id'].slice(BASE.length),
+      });
+      expect(response.status).toBe(200);
+      details.push(response.body);
+    }
 
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual({
-      '@id': '/@blocks-schema',
-      items: [
-        {
-          id: 'alpha',
-          title: 'Alpha',
-          docs: 'The Alpha block,\nfor alpha content.\n\n### Example\n\nUse it.',
-          schema: {
-            title: 'Alpha schema',
-            fieldsets: [],
-            properties: {},
-            required: [],
+    expect(details).toEqual([
+      {
+        '@id': `${BASE}/@blocks-schema/alpha`,
+        id: 'alpha',
+        title: 'Alpha',
+        docs: 'The Alpha block,\nfor alpha content.\n\n### Example\n\nUse it.',
+        schema: {
+          title: 'Alpha schema',
+          fieldsets: [],
+          properties: {},
+          required: [],
+        },
+      },
+      {
+        '@id': `${BASE}/@blocks-schema/beta`,
+        id: 'beta',
+        title: 'Beta',
+        docs: '',
+        schema: null,
+      },
+      {
+        '@id': `${BASE}/@blocks-schema/gamma`,
+        id: 'gamma',
+        title: 'Gamma',
+        docs: 'The Gamma block. It has 2 variations.',
+        schema: null,
+        variations: [
+          { id: 'default', title: 'Default', isDefault: false, schema: null },
+          {
+            id: 'fancy',
+            title: 'Fancy',
+            isDefault: false,
+            docs: 'A fancier look.',
+            schema: null,
           },
-        },
-        {
-          id: 'beta',
-          title: 'Beta',
-          docs: '',
-          schema: null,
-        },
-        {
-          id: 'gamma',
-          title: 'Gamma',
-          docs: 'The Gamma block. It has 2 variations.',
-          schema: null,
-          variations: [
-            { id: 'default', title: 'Default', isDefault: false, schema: null },
-            {
-              id: 'fancy',
-              title: 'Fancy',
-              isDefault: false,
-              docs: 'A fancier look.',
-              schema: null,
-            },
-          ],
-        },
-      ],
-      items_total: 3,
+        ],
+      },
+    ]);
+  });
+
+  it('builds the links from the URL the client called', async () => {
+    const response = await invokeMiddleware({
+      url: '/@blocks-schema/alpha?lang=en',
+      headers: {
+        host: 'www.example.com',
+        'x-forwarded-proto': 'https, http',
+      },
     });
+
+    expect(response.body['@id']).toBe(
+      'https://www.example.com/@blocks-schema/alpha',
+    );
+  });
+
+  it('links each block by its key in the blocks configuration', async () => {
+    config.blocks.blocksConfig.renamed = {
+      ...config.blocks.blocksConfig.beta,
+      id: 'other',
+    };
+
+    const { body } = await invokeMiddleware({});
+
+    expect(body.items[3]['@id']).toBe(`${BASE}/@blocks-schema/renamed`);
   });
 
   it('reads the docs from the *.block.md files, without frontmatter', async () => {
@@ -257,8 +295,12 @@ describe('/@blocks-schema middleware', () => {
       throw new Error('Docs failed');
     };
 
-    const response = await invokeMiddleware({ query: { full: '1' } });
-    const [alpha, , gamma] = response.body.items;
+    const { body: alpha } = await invokeMiddleware({
+      url: '/@blocks-schema/alpha',
+    });
+    const { body: gamma } = await invokeMiddleware({
+      url: '/@blocks-schema/gamma',
+    });
 
     expect(alpha.docs).toMatch(/^The Alpha block,/);
     expect(gamma.docs).toBe('The Gamma block.');
@@ -350,25 +392,26 @@ describe('/@blocks-schema middleware', () => {
       consoleError.mockRestore();
     });
 
-    it('reports the error on that block and still returns the others', async () => {
-      const response = await invokeMiddleware({ query: { full: '1' } });
+    it('reports the error on that block and still lists the others', async () => {
+      const response = await invokeMiddleware({});
 
       expect(response.status).toBe(200);
       expect(response.body.items_total).toBe(5);
 
-      const broken = response.body.items.find((item) => item.id === 'broken');
+      const get = async (id) =>
+        (await invokeMiddleware({ url: `/@blocks-schema/${id}` })).body;
+
+      const broken = await get('broken');
       expect(broken.schema).toBeNull();
       expect(broken.error).toBe(
         'The schema for this block could not be resolved.',
       );
 
-      const brokenEnhancer = response.body.items.find(
-        (item) => item.id === 'brokenEnhancer',
-      );
+      const brokenEnhancer = await get('brokenEnhancer');
       expect(brokenEnhancer.schema).toBeNull();
       expect(brokenEnhancer.error).toBeDefined();
 
-      const alpha = response.body.items.find((item) => item.id === 'alpha');
+      const alpha = await get('alpha');
       expect(alpha.schema.title).toBe('Alpha schema');
       expect(alpha.error).toBeUndefined();
 
@@ -616,8 +659,8 @@ describe('/@blocks-schema middleware', () => {
       vi.restoreAllMocks();
     });
 
-    it('returns the list as Markdown for ?format=md', async () => {
-      const response = await invokeMiddleware({ query: { format: 'md' } });
+    it('returns the list as Markdown, with a link to each block', async () => {
+      const response = await invokeMiddleware({ headers: markdown });
 
       expect(response.status).toBe(200);
       expect(response.headers['content-type']).toBe(
@@ -625,22 +668,41 @@ describe('/@blocks-schema middleware', () => {
       );
       expect(response.text).toMatch(/^# Blocks\n\n/);
       expect(response.text).toContain(
-        '## Listing (`listing`)\n\nLists content.\n\n### Fields',
+        `- [Listing](${BASE}/@blocks-schema/listing) (\`listing\`): Lists content.\n- [Broken](${BASE}/@blocks-schema/broken) (\`broken\`)\n- [Plain](${BASE}/@blocks-schema/plain) (\`plain\`)\n`,
+      );
+    });
+
+    it('returns a block as Markdown', async () => {
+      const response = await invokeMiddleware({
+        url: '/@blocks-schema/listing',
+        headers: markdown,
+      });
+
+      expect(response.text).toMatch(
+        /^## Listing \(`listing`\)\n\nLists content.\n\n### Fields/,
       );
       expect(response.text).toContain(
         '### Variations\n\n- `summary`: Summary (default)\n- `gallery`: Gallery\n\n  Shows images.\n  In a grid.',
       );
-      expect(response.text).toContain('## Broken (`broken`)');
-      expect(response.text).toContain(
+
+      const broken = await invokeMiddleware({
+        url: '/@blocks-schema/broken',
+        headers: markdown,
+      });
+      expect(broken.text).toContain(
         '_The schema for this block could not be resolved._',
       );
-      expect(response.text).toContain('## Plain (`plain`)');
+    });
+
+    it('has no format parameter', async () => {
+      const response = await invokeMiddleware({ query: { format: 'md' } });
+      expect(response.body.items_total).toBe(3);
     });
 
     it('lists a variation schema only when it differs from the block schema', async () => {
       const response = await invokeMiddleware({
         url: '/@blocks-schema/listing',
-        query: { format: 'md' },
+        headers: markdown,
       });
 
       expect(response.text).toContain('### Schema\n\n```json\n');
@@ -675,7 +737,7 @@ describe('/@blocks-schema middleware', () => {
     it('returns a Markdown 404 for an unknown block', async () => {
       const response = await invokeMiddleware({
         url: '/@blocks-schema/missing',
-        query: { format: 'md' },
+        headers: markdown,
       });
 
       expect(response.status).toBe(404);
@@ -722,20 +784,38 @@ describe('/@blocks-schema middleware', () => {
 
       expect(apiGet).not.toHaveBeenCalledWith('/news', expect.anything());
       expect(response.body.items).toEqual([
-        { id: 'text', title: 'Text' },
-        { id: 'title', title: 'Title', restricted: true },
-        { id: 'folderish', title: 'Folderish', restricted: 'context' },
+        { '@id': `${BASE}/@blocks-schema/text`, id: 'text', title: 'Text' },
+        {
+          '@id': `${BASE}/@blocks-schema/title`,
+          id: 'title',
+          title: 'Title',
+          restricted: true,
+        },
+        {
+          '@id': `${BASE}/@blocks-schema/folderish`,
+          id: 'folderish',
+          title: 'Folderish',
+          restricted: 'context',
+        },
       ]);
     });
 
     it('notes restricted blocks in the root Markdown', async () => {
-      const response = await invokeMiddleware({ query: { format: 'md' } });
+      const response = await invokeMiddleware({ headers: markdown });
 
       expect(response.text).toContain(
-        '## Title (`title`)\n\n_Not offered in the block chooser._',
+        `- [Title](${BASE}/@blocks-schema/title) (\`title\`) _Not offered in the block chooser._`,
       );
       expect(response.text).toContain(
-        '## Folderish (`folderish`)\n\n_Whether it is offered',
+        `- [Folderish](${BASE}/@blocks-schema/folderish) (\`folderish\`) _Offered depending on the content._`,
+      );
+
+      const title = await invokeMiddleware({
+        url: '/@blocks-schema/title',
+        headers: markdown,
+      });
+      expect(title.text).toContain(
+        '## Title (`title`)\n\n_Not offered in the block chooser._',
       );
     });
 
@@ -752,8 +832,14 @@ describe('/@blocks-schema middleware', () => {
       expect(response.headers['cache-control']).toBe(
         'private, max-age=0, must-revalidate',
       );
-      expect(response.body['@id']).toBe('/news/@blocks-schema');
-      expect(response.body.items).toEqual([{ id: 'text', title: 'Text' }]);
+      expect(response.body['@id']).toBe(`${BASE}/news/@blocks-schema`);
+      expect(response.body.items).toEqual([
+        {
+          '@id': `${BASE}/news/@blocks-schema/text`,
+          id: 'text',
+          title: 'Text',
+        },
+      ]);
     });
 
     it('gives restricted the same context as the block chooser', async () => {
@@ -834,7 +920,7 @@ describe('/@blocks-schema middleware', () => {
     it('answers 401 in Markdown when Markdown is asked for', async () => {
       const response = await invokeMiddleware({
         cookies: {},
-        query: { format: 'md' },
+        headers: markdown,
       });
 
       expect(response.status).toBe(401);

@@ -54,17 +54,20 @@ GET /@blocks-schema HTTP/1.1
 
 This returns the ID, title, and summary of every registered block.
 The summary is the first paragraph of the block's documentation.
+Each block's `@id` is the URL of that block, which returns its documentation and schema, as described in the next section.
 
 ```json
 {
-  "@id": "/@blocks-schema",
+  "@id": "http://localhost:3000/@blocks-schema",
   "items": [
     {
+      "@id": "http://localhost:3000/@blocks-schema/slate",
       "id": "slate",
       "title": "Text",
       "description": "Holds rich text: a paragraph, a heading, a list or a quote, with inline formatting and links."
     },
     {
+      "@id": "http://localhost:3000/@blocks-schema/title",
       "id": "title",
       "title": "Title",
       "description": "Shows the title of the content item.",
@@ -79,7 +82,8 @@ The summary is the first paragraph of the block's documentation.
 It is `true` when the block chooser never offers it, and `"context"` when that depends on the content.
 See {ref}`blocks-schema-context`.
 
-Add `?full=1` to get the full details of every block, as described in the next section.
+The URLs are built from the URL the client called, including the content path, if any.
+Behind a proxy, the `Host` and `X-Forwarded-Proto` headers that reach Volto must be those of the public site.
 
 ## Get one block
 
@@ -92,7 +96,7 @@ This returns the block's documentation, schema, and variations.
 
 ```json
 {
-  "@id": "/@blocks-schema/teaser",
+  "@id": "http://localhost:3000/@blocks-schema/teaser",
   "id": "teaser",
   "title": "Teaser",
   "docs": "Shows a card that links to one content item...",
@@ -126,17 +130,17 @@ An unknown block ID returns a `404 Not Found`.
 
 ## Markdown
 
-The endpoint also returns Markdown, either with `?format=md` or with an `Accept` header that asks for `text/markdown` and not for `application/json`.
+The endpoint also returns Markdown, when the `Accept` header asks for `text/markdown` and not for `application/json`.
 JSON is the default.
 
 ```http
-GET /@blocks-schema?format=md HTTP/1.1
+GET /@blocks-schema HTTP/1.1
+Accept: text/markdown
 ```
 
-The list returns a single document with a section for every block.
-Each section contains the block's documentation, its variations, and its schema in a `json` code block.
+The list is a Markdown list, with a link to each block, its ID, and its summary.
+A block returns a section with its documentation, its variations, and its schema in a `json` code block.
 A variation's schema is only included when it differs from the block's.
-This format suits agents and generated reference documentation.
 
 (blocks-schema-context)=
 
