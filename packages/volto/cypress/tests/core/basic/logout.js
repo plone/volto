@@ -1,6 +1,8 @@
 import { ploneAuth } from '../../../support/constants';
 
 describe('Logout Tests', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
+
   beforeEach(() => {
     cy.visit('/');
     cy.contains('Log in').click();
@@ -44,7 +46,7 @@ describe('Logout Tests', () => {
     cy.wait('@anonymousPrivateContent')
       .its('response.statusCode')
       .should('eq', 401);
-    cy.location('pathname').should('eq', '/private-page/login');
+    cy.location('pathname').should('eq', `${subpathPrefix}/private-page/login`);
     cy.getCookie('auth_token').should('not.exist');
     cy.get('#navigation').should('not.contain', 'Private Page');
     cy.window().should((win) => {
