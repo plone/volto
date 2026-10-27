@@ -331,7 +331,7 @@ msgstr "மாற்றுப்பெயர்கள் பதிவேற்�
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -1558,11 +1558,6 @@ msgstr "காலாவதி தேதி"
 msgid "Expired"
 msgstr "காலாவதியான"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "வெளிப்புற முகவரி"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1905,7 +1900,6 @@ msgstr "உங்களிடம் சரியான வலை முகவர
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "படம்"
 
@@ -2150,6 +2144,7 @@ msgstr "மனையமைவு"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "முன்னணி படம்"
 
@@ -2188,6 +2183,7 @@ msgstr "இணைப்பு திருப்பி பார்வை"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr "இணைப்பு அமைப்புகள்"
 
@@ -2198,7 +2194,7 @@ msgstr "இணைப்பு தலைப்பு"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "இணைப்பு"
@@ -2571,11 +2567,6 @@ msgstr "எந்த படமும் தேர்ந்தெடுக்க�
 msgid "No image set in Lead Image content field"
 msgstr "முன்னணி பட உள்ளடக்க புலத்தில் எந்த படமும் அமைக்கப்படவில்லை"
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "பட உள்ளடக்க புலத்தில் எந்த படமும் அமைக்கப்படவில்லை"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2724,7 +2715,7 @@ msgstr ""
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "புதிய தாவலில் திறக்கவும்"
@@ -2749,11 +2740,6 @@ msgstr "ஒழுங்கு"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "உத்தரவிடப்பட்டது"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "தோற்றம்"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
