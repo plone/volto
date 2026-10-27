@@ -3,7 +3,7 @@ export default RenderUsers;
  * RenderUsers functional component.
  * @function RenderUsers
  */
-declare function RenderUsers(props: any): import("react/jsx-runtime").JSX.Element;
+declare function RenderUsers(props: any): import("react").JSX.Element;
 declare namespace RenderUsers {
     namespace propTypes {
         let user: any;

@@ -5,6 +5,7 @@ import globeSVG from '@plone/volto/icons/globe.svg';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import { Segment } from 'semantic-ui-react';
+import config from '@plone/volto/registry';
 
 const messages = defineMessages({
   Maps: {
@@ -18,10 +19,21 @@ const messages = defineMessages({
 });
 
 const MapsSidebar = (props) => {
-  const { data, block, blocksErrors, onChangeBlock, navRoot, contentType } =
-    props;
+  const {
+    data,
+    block,
+    blocksConfig = config.blocks.blocksConfig,
+    blocksErrors,
+    onChangeBlock,
+    navRoot,
+    contentType,
+  } = props;
   const intl = useIntl();
-  const schema = MapsSchema({ ...props, intl });
+  const blockSchema = blocksConfig?.[data['@type']]?.blockSchema ?? MapsSchema;
+  const schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ ...props, intl })
+      : blockSchema;
 
   return (
     <>

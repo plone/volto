@@ -13,7 +13,7 @@ export class AsyncConnect extends React.Component<any, any, any> {
         [x: string]: any;
         reduxConnectStore: any;
     }): any;
-    render(): import("react/jsx-runtime").JSX.Element;
+    render(): React.JSX.Element;
 }
 export namespace AsyncConnect {
     namespace propTypes {
@@ -39,7 +39,7 @@ export namespace AsyncConnect {
 export function AsyncConnectWithContext({ context, ...otherProps }: {
     [x: string]: any;
     context: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 export namespace AsyncConnectWithContext {
     export namespace propTypes_1 {
         let context: any;

@@ -1,2 +1,3 @@
 export default MultilingualRedirector;
-declare function MultilingualRedirector(props: any): import("react/jsx-runtime").JSX.Element;
+declare function MultilingualRedirector(props: any): React.JSX.Element;
+import React from 'react';

@@ -109,26 +109,26 @@ export namespace widgetMapping {
                 value: any;
                 children: any;
                 className: any;
-            }) => "" | import("react/jsx-runtime").JSX.Element;
+            }) => import("react").JSX.Element | "";
             File: ({ value, children, className }: {
                 value: any;
                 children: any;
                 className: any;
-            }) => "" | import("react/jsx-runtime").JSX.Element;
+            }) => import("react").JSX.Element | "";
             Image: ({ value, className }: {
                 value: any;
                 className: any;
-            }) => "" | import("react/jsx-runtime").JSX.Element;
+            }) => import("react").JSX.Element | "";
             'Relation Choice': ({ value, children, className }: {
                 value: any;
                 children: any;
                 className: any;
-            }) => "" | import("react/jsx-runtime").JSX.Element;
+            }) => import("react").JSX.Element | "";
             'Relation List': ({ value, children, className }: {
                 value: any;
                 children: any;
                 className: any;
-            }) => "" | import("react/jsx-runtime").JSX.Element;
+            }) => import("react").JSX.Element | "";
         };
         export { factory_1 as factory };
         export namespace type_1 {

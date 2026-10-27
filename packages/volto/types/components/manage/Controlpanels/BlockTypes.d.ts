@@ -52,5 +52,5 @@ export declare function sortConfigBlocks(blocksConfig: BlocksConfigData, intl: I
     blocksConfig?: Partial<BlocksConfigData>;
     docs?: (args: import("@plone/types").BlockDocsArgs) => string;
 }[];
-declare const BlockTypesControlpanel: (props: RouteProps) => import("react/jsx-runtime").JSX.Element;
+declare const BlockTypesControlpanel: (props: RouteProps) => import("react").JSX.Element;
 export default BlockTypesControlpanel;

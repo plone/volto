@@ -8,7 +8,7 @@ export const Disabled: any;
 declare namespace _default {
     export let title: string;
     export { TokenWidget as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         namespace value {
             namespace control {
@@ -19,3 +19,4 @@ declare namespace _default {
 }
 export default _default;
 import TokenWidget from './TokenWidget';
+import React from 'react';

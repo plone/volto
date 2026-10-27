@@ -1,2 +1,2 @@
 export default Register;
-declare function Register(): import("react/jsx-runtime").JSX.Element;
+declare function Register(): import("react").JSX.Element;
