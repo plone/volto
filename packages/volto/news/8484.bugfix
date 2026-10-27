@@ -1,0 +1,1 @@
+Fixed the server crashing and logging an error on a request whose path is not valid percent-encoding, such as `/%c0`. It now answers with the error page and status 400, and only server errors are logged. @djay
