@@ -1,6 +1,7 @@
 import {
   GET_CONTENT,
   GET_NAVIGATION,
+  LOGOUT,
 } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 import navigation from './navigation';
@@ -208,4 +209,72 @@ describe('Navigation reducer (NAVIGATION)GET_CONTENT', () => {
       loading: false,
     });
   });
+});
+
+describe('Navigation reducer on logout', () => {
+  let apiExpanders;
+
+  beforeEach(() => {
+    apiExpanders = config.settings.apiExpanders;
+    config.settings.apiExpanders = [{ match: '', GET_CONTENT: ['navigation'] }];
+  });
+
+  afterEach(() => {
+    config.settings.apiExpanders = apiExpanders;
+  });
+
+  const getAuthenticatedState = () =>
+    navigation(undefined, {
+      type: `${GET_CONTENT}_SUCCESS`,
+      result: {
+        '@id': '/private',
+        '@components': {
+          navigation: { items: [{ '@id': '/private', title: 'Private page' }] },
+        },
+      },
+    });
+
+  it.each(['SUCCESS', 'FAIL'])(
+    'should clear authenticated data on LOGOUT_%s even when the landing page returns 401',
+    (status) => {
+      const authenticatedState = getAuthenticatedState();
+      expect(authenticatedState.loaded).toBe(true);
+
+      const loggedOutState = navigation(authenticatedState, {
+        type: `${LOGOUT}_${status}`,
+      });
+      expect(loggedOutState).toEqual(navigation());
+      expect(
+        navigation(loggedOutState, {
+          type: `${GET_CONTENT}_FAIL`,
+          error: { status: 401 },
+        }),
+      ).toEqual(navigation());
+    },
+  );
+
+  it.each(['SUCCESS', 'FAIL'])(
+    'should load anonymous data from content expanders after LOGOUT_%s',
+    (status) => {
+      const loggedOutState = navigation(getAuthenticatedState(), {
+        type: `${LOGOUT}_${status}`,
+      });
+      const publicData = {
+        items: [{ '@id': '/public', title: 'Public page' }],
+      };
+      const result = navigation(loggedOutState, {
+        type: `${GET_CONTENT}_SUCCESS`,
+        result: {
+          '@id': '/public',
+          '@components': { navigation: publicData },
+        },
+      });
+
+      expect(result).toEqual({
+        ...navigation(),
+        items: [{ ...publicData.items[0], url: '/public' }],
+        loaded: true,
+      });
+    },
+  );
 });
