@@ -1,0 +1,1 @@
+Fixed the keyboard focus indicator on single `react-select` widgets being a tiny sliver on the 2px-wide hidden input instead of a visible ring around the whole field. The universal focus ring is now painted on `.react-select__control` when its input matches `:focus-visible`. @wesleybl
