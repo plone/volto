@@ -81,17 +81,20 @@ exports[`renders an Image Block Sidebar component 1`] = `
   ],
   "properties": {
     "alt": {
-      "title": "Alt text"
+      "title": "Alt text",
+      "helpUrl": "https://6.docs.plone.org/volto/user-manual/blocks.html#image-block"
     },
     "align": {
       "title": "Alignment",
       "widget": "align",
-      "default": "center"
+      "default": "center",
+      "helpUrl": "https://6.docs.plone.org/volto/user-manual/blocks.html#image-block"
     },
     "size": {
       "title": "Image size",
       "widget": "image_size",
-      "default": "l"
+      "default": "l",
+      "helpUrl": "https://6.docs.plone.org/volto/user-manual/blocks.html#image-block"
     },
     "href": {
       "title": "Link to",
@@ -102,11 +105,13 @@ exports[`renders an Image Block Sidebar component 1`] = `
         "Description",
         "hasPreviewImage"
       ],
-      "allowExternals": true
+      "allowExternals": true,
+      "helpUrl": "https://6.docs.plone.org/volto/user-manual/blocks.html#image-block"
     },
     "openLinkInNewTab": {
       "title": "Open in a new tab",
-      "type": "boolean"
+      "type": "boolean",
+      "helpUrl": "https://6.docs.plone.org/volto/user-manual/blocks.html#image-block"
     }
   },
   "required": []
