@@ -18,6 +18,10 @@ import debug from 'debug';
 import routes from '@plone/volto/routes';
 import config from '@plone/volto/registry';
 import okMiddleware from '@plone/volto/express-middleware/ok';
+import errorMiddleware, {
+  decodableLocation,
+  sendErrorPage,
+} from '@plone/volto/express-middleware/error';
 
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import Html from '@plone/volto/helpers/Html/Html';
@@ -35,8 +39,6 @@ import {
 import { changeLanguage } from '@plone/volto/actions/language/language';
 
 import userSession from '@plone/volto/reducers/userSession/userSession';
-
-import ErrorPage from '@plone/volto/error';
 
 import configureStore from '@plone/volto/store';
 import {
@@ -99,37 +101,17 @@ if (middleware.length) {
 }
 server.use('/', okMiddleware());
 
-server.use(function (err, req, res, next) {
-  if (err) {
-    const { store } = res.locals;
-    const errorPage = (
-      <Provider store={store} onError={reactIntlErrorHandler}>
-        <StaticRouter context={{}} location={req.url}>
-          <ErrorPage message={err.message} />
-        </StaticRouter>
-      </Provider>
-    );
+server.use(errorMiddleware((req) => createRequestStore(req, new Api(req))));
 
-    res.set({
-      'Cache-Control': 'public, max-age=60, no-transform',
-    });
-
-    /* Displays error in console
-     * TODO:
-     * - get ignored codes from Plone error_log
-     */
-    const ignoredErrors = [301, 302, 401, 404];
-    if (!ignoredErrors.includes(err.status)) console.error(err);
-
-    res
-      .status(err.status || 500) // If error happens in Volto code itself error status is undefined
-      .send(`<!doctype html> ${renderToString(errorPage)}`);
-  }
-});
-
-function setupServer(req, res, next) {
-  const api = new Api(req);
-
+/**
+ * The minimum Redux store for a request: enough for the error page, and for
+ * the middlewares that need one.
+ * @function createRequestStore
+ * @param {Object} req Express request.
+ * @param {Object} api Api instance for the request.
+ * @returns {Object} The store.
+ */
+function createRequestStore(req, api) {
   const lang = negotiateLocale(
     req.universalCookies.get('I18N_LANGUAGE') || req.headers['accept-language'],
     supported,
@@ -145,36 +127,21 @@ function setupServer(req, res, next) {
   };
 
   const history = createMemoryHistory({
-    initialEntries: [req.url],
+    initialEntries: [decodableLocation(req.url)],
   });
+
+  return configureStore(initialState, history, api);
+}
+
+function setupServer(req, res, next) {
+  const api = new Api(req);
 
   // Create a fake Redux store instance for the `errorHandler` to render
   // and for being used by the rest of the middlewares, if required
-  const store = configureStore(initialState, history, api);
+  const store = createRequestStore(req, api);
 
   function errorHandler(error) {
-    const errorPage = (
-      <Provider store={store} onError={reactIntlErrorHandler}>
-        <StaticRouter context={{}} location={req.url}>
-          <ErrorPage message={error.message} />
-        </StaticRouter>
-      </Provider>
-    );
-
-    res.set({
-      'Cache-Control': 'public, max-age=60, no-transform',
-    });
-
-    /* Displays error in console
-     * TODO:
-     * - get ignored codes from Plone error_log
-     */
-    const ignoredErrors = [301, 302, 401, 404];
-    if (!ignoredErrors.includes(error.status)) console.error(error);
-
-    res
-      .status(error.status || 500) // If error happens in Volto code itself error status is undefined
-      .send(`<!doctype html> ${renderToString(errorPage)}`);
+    sendErrorPage(error, store, req, res);
   }
 
   if (!process.env.RAZZLE_API_PATH && req.headers.host) {
