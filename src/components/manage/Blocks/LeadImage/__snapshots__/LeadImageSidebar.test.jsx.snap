@@ -44,7 +44,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
               className="wrapper"
             >
               <label
-                htmlFor="field-alt"
+                htmlFor="fieldset-undefined-field-label-alt"
                 id="fieldset-undefined-field-label-alt"
               >
                 Alt text
@@ -299,7 +299,7 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
                 className="wrapper"
               >
                 <label
-                  htmlFor="field-link"
+                  htmlFor="fieldset-undefined-field-label-link"
                   id="fieldset-undefined-field-label-link"
                 >
                   Link to
