@@ -1,0 +1,1 @@
+Show a 404 instead of a server error when the backend answers a content request with something that is not content, like the HTML or XML of a browser view. @jladage
