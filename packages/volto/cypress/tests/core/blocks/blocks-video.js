@@ -92,6 +92,31 @@ describe('Blocks Tests', () => {
       .and('match', /\/\/vumbnail.com\/85804536.jpg/);
   });
 
+  it('Add Video Block with Peertube.eus Video', () => {
+    // when I create a video block with a Peertube.eus video
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.video').contains('Video').click();
+    cy.get('.toolbar-inner > .ui > input')
+      .click()
+      .type('https://peertube.eus/w/dSK8m4WG8m8esrZRkMdPRg')
+      .type('{enter}');
+    cy.get('#toolbar-save').click();
+
+    cy.wait('@save');
+    cy.wait('@content');
+
+    cy.url().should('eq', Cypress.config().baseUrl + '/my-page');
+
+    // then the page view should contain an embedded Peertube video
+    cy.get('.block.video iframe')
+      .should('have.attr', 'src')
+      .and(
+        'match',
+        /https:\/\/peertube.eus\/videos\/embed\/dSK8m4WG8m8esrZRkMdPRg/,
+      );
+  });
+
   it('Add Video Block with MP4 Video', () => {
     // when I create a video block with an MP4 video
     cy.getSlate().click();
