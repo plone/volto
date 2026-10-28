@@ -1,0 +1,1 @@
+Added the optional showPersonalTools prop to the Toolbar component to allow forcing the Personal Tools button to be displayed even when hideDefaultViewButtons is enabled.
