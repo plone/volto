@@ -1,6 +1,12 @@
 export default TableOfContentsSchema;
-declare function TableOfContentsSchema({ data, intl }: {
+/**
+ * The Table of Contents block data schema. It is registered as the
+ * `blockSchema` of the `toc` block, and the ToC block edit component reads it
+ * from there.
+ */
+declare function TableOfContentsSchema({ data, formData, intl }: {
     data: any;
+    formData: any;
     intl: any;
 }): {
     title: any;

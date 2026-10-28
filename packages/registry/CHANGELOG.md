@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.1.0 (2026-10-27)
+
+### Feature
+
+- Added `createBlocksDocsLoader`, which collects the `*.block.md` docs of the blocks in core and the add-ons into a module that server code can import. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+
 ## 3.0.3 (2026-10-07)
 
 ### Internal
