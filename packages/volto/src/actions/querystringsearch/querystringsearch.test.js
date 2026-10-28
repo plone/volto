@@ -73,4 +73,81 @@ describe('querystringsearch action', () => {
     expect(action.request.path).toEqual('/@querystring-search');
     expect(action.request.data.sort_order).toEqual('descending');
   });
+
+  describe('depth handling', () => {
+    it('appends depth to path value when depth is set and path has no embedded depth', () => {
+      const data = {
+        query: [
+          {
+            i: 'path',
+            o: 'plone.app.querystring.operation.string.path',
+            v: '/folder',
+          },
+        ],
+        depth: 2,
+      };
+      const action = getQueryStringResults('', data);
+
+      const pathQuery = action.request.data.query.find((q) => q.i === 'path');
+      expect(pathQuery.v).toEqual('/folder::2');
+    });
+
+    it('does not double-append depth when path value already contains an embedded depth', () => {
+      const data = {
+        query: [
+          {
+            i: 'path',
+            o: 'plone.app.querystring.operation.string.path',
+            v: '/folder::1',
+          },
+        ],
+        depth: 3,
+      };
+      const action = getQueryStringResults('', data);
+
+      const pathQuery = action.request.data.query.find((q) => q.i === 'path');
+      expect(pathQuery.v).toEqual('/folder::1');
+    });
+
+    it('removes depth from the top-level request data', () => {
+      const data = {
+        query: [
+          {
+            i: 'path',
+            o: 'plone.app.querystring.operation.string.path',
+            v: '/folder',
+          },
+        ],
+        depth: 2,
+      };
+      const action = getQueryStringResults('', data);
+
+      expect(action.request.data.depth).toBeUndefined();
+    });
+
+    it('handles mixed path entries: appends depth only to those without embedded depth', () => {
+      const data = {
+        query: [
+          {
+            i: 'path',
+            o: 'plone.app.querystring.operation.string.path',
+            v: '/folder-a',
+          },
+          {
+            i: 'path',
+            o: 'plone.app.querystring.operation.string.path',
+            v: '/folder-b::5',
+          },
+        ],
+        depth: 2,
+      };
+      const action = getQueryStringResults('', data);
+
+      const [pathA, pathB] = action.request.data.query.filter(
+        (q) => q.i === 'path',
+      );
+      expect(pathA.v).toEqual('/folder-a::2');
+      expect(pathB.v).toEqual('/folder-b::5');
+    });
+  });
 });

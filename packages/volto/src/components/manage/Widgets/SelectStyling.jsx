@@ -1,4 +1,5 @@
 import React from 'react';
+import { defineMessages, useIntl } from 'react-intl';
 import { Popup } from 'semantic-ui-react';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -9,6 +10,13 @@ import upSVG from '@plone/volto/icons/up-key.svg';
 import checkSVG from '@plone/volto/icons/check.svg';
 import checkBlankSVG from '@plone/volto/icons/check-blank.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+
+const messages = defineMessages({
+  clearSelection: {
+    id: 'Clear selection',
+    defaultMessage: 'Clear selection',
+  },
+});
 
 export const MenuList = ({ children }) => {
   return <DynamicHeightList>{children}</DynamicHeightList>;
@@ -86,8 +94,32 @@ export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
 
 export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
   const { ClearIndicator } = props.reactSelect.components;
+  const intl = useIntl();
+  const fieldLabelId = props.selectProps?.['aria-labelledby'];
+  const clearLabelId = `${props.selectProps?.inputId}-clear-label`;
   return (
-    <ClearIndicator {...props}>
+    <ClearIndicator
+      {...props}
+      innerProps={{
+        ...props.innerProps,
+        'aria-hidden': false,
+        ...(fieldLabelId
+          ? { 'aria-labelledby': `${fieldLabelId} ${clearLabelId}` }
+          : { 'aria-label': intl.formatMessage(messages.clearSelection) }),
+        role: 'button',
+        tabIndex: 0,
+        onKeyDown: (e) => {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            e.stopPropagation();
+            props.clearValue();
+          }
+        },
+      }}
+    >
+      <span id={clearLabelId} hidden>
+        {intl.formatMessage(messages.clearSelection)}
+      </span>
       <Icon name={clearSVG} size="18px" color="#e40166" />
     </ClearIndicator>
   );

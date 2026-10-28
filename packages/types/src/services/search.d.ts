@@ -1,7 +1,8 @@
-import { Brain } from './common';
+import { Batching, Brain } from './common';
 
 export interface GetSearchResponse {
   '@id': string;
   items: Brain[];
   items_total: number;
+  batching?: Batching;
 }

@@ -7,10 +7,6 @@ const messages = defineMessages({
     id: 'Criteria',
     defaultMessage: 'Criteria',
   },
-  depth: {
-    id: 'Depth',
-    defaultMessage: 'Depth',
-  },
   SortOn: {
     id: 'Sort on',
     defaultMessage: 'Sort on',
@@ -38,26 +34,13 @@ export const objectSchema = ({ intl, isDisabled, value }) => ({
     {
       id: 'default',
       title: 'Default',
-      fields: [
-        'query',
-        ...(value?.query?.filter((q) => q.i === 'path').length > 0
-          ? ['depth']
-          : []),
-        'sort_on',
-        'sort_order_boolean',
-        'limit',
-        'b_size',
-      ],
+      fields: ['query', 'sort_on', 'sort_order_boolean', 'limit', 'b_size'],
     },
   ],
   properties: {
     query: {
       title: intl.formatMessage(messages.Criteria),
       widget: 'query',
-    },
-    depth: {
-      title: intl.formatMessage(messages.depth),
-      type: 'number',
     },
     sort_on: {
       title: intl.formatMessage(messages.SortOn),
