@@ -1,9 +1,4 @@
-/**
- * SelectWidget component.
- * @module components/manage/Widgets/SelectWidget
- */
-
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -32,6 +27,7 @@ import {
   MenuList,
   MultiValueContainer,
 } from '@plone/volto/components/manage/Widgets/SelectStyling';
+import { SELECT_ARIA_MESSAGES } from '@plone/volto/components/manage/Widgets/SelectAriaMessages';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
@@ -267,6 +263,7 @@ class SelectWidget extends Component {
           key={choices}
           name={id}
           aria-label={this.props.title || undefined}
+          ariaLiveMessages={SELECT_ARIA_MESSAGES}
           menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
