@@ -1,0 +1,1 @@
+Disable ETag generation for HTML responses to prevent unnecessary cache misses due to dynamic SSR content. @Abhishek-17h
