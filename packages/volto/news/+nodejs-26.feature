@@ -1,0 +1,1 @@
+Added support for Node.js 26, and removed support for Node.js 22. Volto now supports and tests the latest two Node.js LTS versions, 24 and 26. Node.js 22 may still work, but it is no longer tested. @sneridagh
