@@ -2,7 +2,7 @@ name: Unit Tests
 on: [push, pull_request]
 
 env:
-  node-version: 24.x
+  node-version: 26.x
 
 jobs:
   volto:
@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [24.x, 26.x]
     steps:
       - uses: actions/checkout@v5
 
@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [24.x, 26.x]
     steps:
       - uses: actions/checkout@v5
 
@@ -89,7 +89,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [24.x, 26.x]
 
     steps:
       - uses: actions/checkout@v5

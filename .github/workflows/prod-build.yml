@@ -30,7 +30,7 @@ on:
 
 env:
   CYPRESS_INSTALL_BINARY: 0
-  node-version: 24.x
+  node-version: 26.x
 
 jobs:
   volto-prod-build:

@@ -75,13 +75,15 @@ Volto runs using [Node.js](https://nodejs.org/en).
 Volto supports only the latest two [LTS versions of Node.js](https://github.com/nodejs/release#release-schedule).
 We recommend using the current LTS version.
 
-| Node.js | Volto       |
-| ------- | ----------- |
-| 22, 24  | Volto 19    |
-| 20, 22  | Volto 18    |
-| 18, 20  | Volto 17    |
-| 16, 18  | Volto 16    |
+| Node.js | Volto                  |
+| ------- | ---------------------- |
+| 24, 26  | Volto 19.7.0 and later |
+| 22, 24  | Volto 19.0.0 - 19.6.x  |
+| 20, 22  | Volto 18               |
+| 18, 20  | Volto 17               |
+| 16, 18  | Volto 16               |
 
+- Node.js 22: No longer supported. It was supported in Volto 18 - 19.6.x. Volto 19 may still work on Node.js 22, but it is no longer tested.
 - Node.js 18: No longer supported. It was supported in Volto 16 - 17.
 - Node.js 16: No longer supported. It was supported in Volto 14 - 16.
 - Node.js 14: No longer supported. It was supported in Volto 8.8.0 - 16.
