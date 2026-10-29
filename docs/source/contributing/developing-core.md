@@ -85,6 +85,8 @@ When developing a project using Plone, Yarn or other package managers may be use
 ```
 
 
+(developing-core-install-nodejs)=
+
 ### Node.js
 
 ```{include} ../_inc/_install-nodejs.md
@@ -101,7 +103,7 @@ corepack prepare pnpm@latest --activate
 
 ```{note}
 Node.js 25 and later, including Node.js 26, no longer include corepack.
-Make sure that you installed it as described in the previous section, or install pnpm with `npm` instead.
+Make sure that you installed it as described in {ref}`developing-core-install-nodejs`, or install pnpm with `npm` instead.
 ```
 
 or using `npm`:
