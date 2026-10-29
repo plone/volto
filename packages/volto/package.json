@@ -114,7 +114,7 @@
     "not dead"
   ],
   "engines": {
-    "node": "^24 || ^26"
+    "node": "^22 || ^24 || ^26"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",
