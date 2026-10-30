@@ -7,10 +7,10 @@ import {
   ContentTypesDriverProvider,
   ControlPanelsProvider,
   ControlPanelsScope,
+  translationFromIntl,
   type BehaviorMetadataMap,
   type ContentTypesDriver,
   type Notify,
-  type Translate,
   type UseBlocker,
 } from '@plone/controlpanels';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
@@ -68,11 +68,9 @@ export default function ContentTypesProviders({
   const history = useHistory();
   const navigate = useCallback((path: string) => history.push(path), [history]);
 
-  // The package's messages use react-intl's placeholders already.
-  const translate = useCallback<Translate>(
-    (message, values) => intl.formatMessage(message, values),
-    [intl],
-  );
+  // The package's messages are in Volto's catalogs, under their own ids
+  // (`controlpanels.…`, see `controlpanelsMessages.ts`).
+  const t = useMemo(() => translationFromIntl(intl), [intl]);
 
   const notify = useCallback<Notify>(({ title, description, variant }) => {
     const show = variant === 'error' ? toast.error : toast.success;
@@ -95,7 +93,7 @@ export default function ContentTypesProviders({
     <ControlPanelsScope>
       <ControlPanelsProvider
         navigate={navigate}
-        translate={translate}
+        t={t}
         notify={notify}
         useBlocker={useHistoryBlocker}
       >
