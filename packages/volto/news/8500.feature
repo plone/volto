@@ -1,0 +1,1 @@
+Added the new content types control panel at `/controlpanel/content-types`, with the same screens as Plone Aurora from `@plone/controlpanels`: the type list, and a page per type with its settings, workflow, fields and behaviors. The old `/controlpanel/dexterity-types` URLs redirect to it, except the layout editor. @sneridagh
