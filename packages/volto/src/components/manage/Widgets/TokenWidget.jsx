@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/TokenWidget
  */
 
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
@@ -127,7 +128,7 @@ const TokenWidget = (props) => {
       label: item.label || item.value,
       value: item.value,
     }));
-  const CreatableSelect = reactSelectCreateable.default;
+  const CreatableSelect = withSelectMenuPortal(reactSelectCreateable.default);
 
   return (
     <FormFieldWrapper {...props}>

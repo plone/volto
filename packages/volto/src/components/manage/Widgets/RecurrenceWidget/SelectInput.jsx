@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/RecurrenceWidget/SelectInput
  */
 
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React from 'react';
 import PropTypes from 'prop-types';
 import find from 'lodash/find';
@@ -27,7 +28,7 @@ const SelectInput = ({
   onChange,
   reactSelect,
 }) => {
-  const Select = reactSelect.default;
+  const Select = withSelectMenuPortal(reactSelect.default);
   const inlineSelectStyles = {
     ...customSelectStyles,
     control: (styles, state) => ({
