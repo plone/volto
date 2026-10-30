@@ -45,7 +45,7 @@ global.jest = {
 };
 
 // Mock IntersectionObserver for Vitest
-const IntersectionObserverMock = vi.fn((callback, options = {}) => {
+const IntersectionObserverMock = vi.fn(function (callback, options = {}) {
   const instance = {
     thresholds: Array.isArray(options.threshold)
       ? options.threshold
