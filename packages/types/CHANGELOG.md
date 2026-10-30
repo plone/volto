@@ -8,6 +8,28 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.1 (2026-10-29)
+
+### Bugfix
+
+- Added `schemaEnhancer` to `BlockExtension`, the type of block variations, which Volto already supports. @sneridagh 
+
+## 2.2.0 (2026-10-27)
+
+### Feature
+
+- Added the optional `docs` function to the block configuration type, to tailor the documentation that the `@blocks-schema` endpoint returns for a block. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+
+## 2.1.0 (2026-10-07)
+
+### Feature
+
+- Typed `widgets.views.getWidget`, which was declared but commented out, and added the optional `widgets.views.factory` registry that the view widget resolution now uses. @ericof [#8428](https://github.com/plone/volto/issues/8428)
+
+### Internal
+
+- The `release` scripts now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
 ## 2.0.1 (2026-07-22)
 
 ### Feature

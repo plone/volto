@@ -1,2 +1,3 @@
 export default SearchInput;
-declare function SearchInput(props: any): import("react/jsx-runtime").JSX.Element;
+declare function SearchInput(props: any): React.JSX.Element;
+import React from 'react';

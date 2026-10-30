@@ -4,7 +4,7 @@ export function ContentsIndexHeaderComponent({ id, width, label, dndKitSortable,
     label: any;
     dndKitSortable: any;
     dndKitUtilities: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 export namespace ContentsIndexHeaderComponent {
     namespace propTypes {
         let id: any;
@@ -14,3 +14,4 @@ export namespace ContentsIndexHeaderComponent {
 }
 declare const _default: any;
 export default _default;
+import React from 'react';

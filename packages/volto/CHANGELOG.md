@@ -17,6 +17,82 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.6.1 (2026-10-29)
+
+### Internal
+
+- Bump serialize-javascript from 7.0.5 to 7.1.3. [#8485](https://github.com/plone/volto/issues/8485)
+- Uses pnpm 10.34.9. @wesleybl [#8488](https://github.com/plone/volto/issues/8488)
+
+## 19.6.0 (2026-10-27)
+
+### Feature
+
+- Added an authenticated `/@blocks-schema` endpoint to the Volto server that lists the registered blocks with their resolved schemas, variations and documentation, for agents and reference docs. Blocks are documented in `*.block.md` files next to them, which only the server loads. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+- Added a `blockSchema` to the `image`, `maps`, `toc`, `html` and `leadimage` core blocks, and made the Image and Maps block sidebars and the Table of Contents block edit form read their schema from the block configuration. The `toc` block now uses the generic `BlockSettingsSchema` as its `schema`. @sneridagh [#8472](https://github.com/plone/volto/issues/8472)
+- Ported the Lead Image block sidebar to `BlockDataForm`. It now renders the `leadimage` block `blockSchema` from the block configuration, plus the alt text field stored in the content item. @sneridagh [#8473](https://github.com/plone/volto/issues/8473)
+
+### Bugfix
+
+- Fixed the links of the `Table of Contents` block breaking when a heading contains inline formatting or a link. The block now uses the anchor reported by the block that owns the heading, instead of slugging its indexed plaintext. @Somilg11 [#8340](https://github.com/plone/volto/issues/8340)
+- Fixed saving a content type layout that contains a block with a `blockSchema`, which failed because the layout editor has no content. @sneridagh [#8472](https://github.com/plone/volto/issues/8472)
+
+### Internal
+
+- Fix flaky `AuthToken` unit test by returning a stable JWT token from the mocked store. @wesleybl 
+- Fix the flaky `Document locking` acceptance test by scoping the toast queries to the toast container, since the route announcer also uses the `alert` role. @wesleybl 
+
+## 19.5.1 (2026-10-21)
+
+### Bugfix
+
+- Override the opacity in the CMS toolbar icons' from Semantic UI with custom CSS for accessibility. @Wagner3UB [#7771](https://github.com/plone/volto/issues/7771)
+- Fixed server-side rendering picking an interface language that is not in `config.settings.supportedLanguages`, for example English on a monolingual Portuguese site visited with an English browser. The page now always renders in a supported language, and switches to the content language when it differs from the language picked from the browser. @ericof [#8448](https://github.com/plone/volto/issues/8448)
+- Fixed adding a field with the default "Text" type in the content type schema editor, which failed on save with "Missing/Invalid parameter factory". @sneridagh [#8454](https://github.com/plone/volto/issues/8454)
+- Fixed the keyboard focus indicator on single `react-select` widgets being a tiny sliver on the 2px-wide hidden input instead of a visible ring around the whole field. The universal focus ring is now painted on `.react-select__control` when its input matches `:focus-visible`. @wesleybl [#8456](https://github.com/plone/volto/issues/8456)
+- Don't show the parent's tags and related items below the add form. @iFlameing 
+
+### Internal
+
+- Use pnpm/action-setup and setup-node pnpm cache in CI. @wesleybl [#8459](https://github.com/plone/volto/issues/8459)
+- Update packages in pnpm-lock.yaml. @wesleybl [#8461](https://github.com/plone/volto/issues/8461)
+- Restore the pnpm store cache fallback in CI and run the @plone/volto-razzle unit tests on the matrix Node.js version. @sneridagh [#8463](https://github.com/plone/volto/issues/8463)
+- Raise the `react-aria-components` minimum version to the tested one, and require a minimum release age of 3 days for dependencies in the monorepo. @sneridagh [#8464](https://github.com/plone/volto/issues/8464)
+
+### Documentation
+
+- Fixed link redirects from `thevalleyofcode.com` to `flaviocopes.com`. @stevepiercy 
+
+## 19.5.0 (2026-10-07)
+
+### Feature
+
+- Move table row and column insertion and deletion controls to a floating menu above the currently selected row. @r4-rahul123 [#8409](https://github.com/plone/volto/issues/8409)
+
+### Bugfix
+
+- Fixed IME composition Enter key in the Title and Description blocks and in TextLineEdit being misinterpreted as a move to the next block, which broke Japanese/Chinese/Korean input (e.g. confirming a conversion in Safari). @terapyon [#8348](https://github.com/plone/volto/issues/8348)
+- Honored the `frontendOptions` schema hint when rendering a field in the default views, so a field declared with `directives.widget(..., frontendOptions={"widget": ..., "widgetProps": {...}})` is rendered by that widget, with those props, instead of falling back to the default one. The `views` registry gained a `factory` mapping and entries for `title` and `description` by field id, and view widget resolution now uses the same steps as the edit side, except that a field's factory is consulted before its vocabulary, so relation fields still render as links. @ericof [#8428](https://github.com/plone/volto/issues/8428)
+- Fix search results pagination overflow on mobile screens. @r4-rahul123 [#8432](https://github.com/plone/volto/issues/8432)
+- Fixed the History diff view marking all text after an image as changed, and compare blocks one by one, including added, removed and moved blocks. @iFlameing 
+
+### Internal
+
+- Bump svgo from 3.3.3 to 3.3.5. [#8421](https://github.com/plone/volto/issues/8421)
+- The `release` scripts of all the packages now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
+### Documentation
+
+- Added the "How to make a Volto release" documentation page, with the release requirements and the `prereleaser` workflow, and pointed `RELEASING.md` to it. @sneridagh 
+- Fix broken links and require linkcheck to pass. @stevepiercy 
+- Update training links for 2025 archive. @stevepiercy 
+
+## 19.4.1 (2026-09-10)
+
+### Bugfix
+
+- Fix `SelectAutoComplete` rendering the raw token instead of its title when the vocabulary subrequest still held a stale token/title pair from a previously edited value (for example after changing a value, saving, and editing again via client-side navigation). The widget now keeps its local token/title cache in sync with the incoming choices instead of seeding it only once. @sneridagh [#8423](https://github.com/plone/volto/issues/8423)
+
 ## 19.4.0 (2026-09-03)
 
 ### Feature

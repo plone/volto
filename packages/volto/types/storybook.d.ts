@@ -1049,7 +1049,7 @@ export default class Wrapper extends React.Component<any, any, any> {
         };
         lazyLibraries: {};
     };
-    render(): import("react/jsx-runtime").JSX.Element;
+    render(): React.JSX.Element;
 }
 export class RealStoreWrapper extends React.Component<any, any, any> {
     /**
@@ -2097,11 +2097,11 @@ export class RealStoreWrapper extends React.Component<any, any, any> {
         };
         lazyLibraries: {};
     };
-    render(): import("react/jsx-runtime").JSX.Element;
+    render(): React.JSX.Element;
 }
 export function FormUndoWrapper({ initialState, children, showControls, }: {
     initialState?: {};
     children: any;
     showControls?: boolean;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 import React from 'react';

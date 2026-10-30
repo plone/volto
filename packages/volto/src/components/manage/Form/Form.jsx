@@ -606,7 +606,7 @@ export class Form extends Component {
             intl: this.props.intl,
             blocksConfig: config.blocks.blocksConfig,
             navRoot: this.props.navRoot,
-            contentType: this.props.content['@type'],
+            contentType: this.props.content?.['@type'],
           });
         }
 

@@ -1,6 +1,6 @@
 {
   "name": "@plone/razzle-dev-utils",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A Volto fork of razzle-dev-utils - Utilities and helpers for Razzle",
   "author": "Jared Palmer <jared@palmer.net>",
   "repository": {
@@ -43,10 +43,13 @@
     "webpack": "~5",
     "webpack-dev-server": "catalog:"
   },
+  "devDependencies": {
+    "webpack": "catalog:"
+  },
   "scripts": {
-    "dry-release": "release-it --dry-run",
-    "release": "release-it",
-    "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha"
+    "dry-release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --dry-run",
+    "release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it",
+    "release-major-alpha": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it major --preRelease=alpha",
+    "release-alpha": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --preRelease=alpha"
   }
 }

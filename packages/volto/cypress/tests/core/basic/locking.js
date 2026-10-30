@@ -68,7 +68,8 @@ describe('Document locking', () => {
     cy.visit('/document');
     cy.wait('@content');
 
-    cy.findByRole('alert')
+    cy.get('.Toastify')
+      .findByRole('alert')
       .get('.toast-inner-content')
       .contains('This item was locked by Editor 1 on');
     cy.findByLabelText('Unlock');
@@ -96,7 +97,8 @@ describe('Document locking', () => {
 
     cy.visit('/logout');
     cy.wait('@logout');
-    cy.findByRole('alert')
+    cy.get('.Toastify')
+      .findByRole('alert')
       .get('.toast-inner-content')
       .should('contain', 'You have been logged out');
     cy.get('.toast-dismiss-action').click();

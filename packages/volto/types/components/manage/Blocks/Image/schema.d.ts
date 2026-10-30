@@ -1,5 +1,10 @@
-export function ImageSchema({ formData, intl }: {
+/**
+ * The Image block data schema. It is registered as the `blockSchema` of the
+ * `image` block, and the Image block sidebar reads it from there.
+ */
+export function ImageSchema({ formData, data, intl }: {
     formData: any;
+    data: any;
     intl: any;
 }): {
     fieldsets: {
@@ -10,7 +15,7 @@ export function ImageSchema({ formData, intl }: {
     properties: {
         alt: {
             title: any;
-            description: import("react/jsx-runtime").JSX.Element;
+            description: import("react").JSX.Element;
         };
         align: {
             title: any;

@@ -9,7 +9,7 @@ export const ManyOptions1000: any;
 declare namespace _default {
     export let title: string;
     export { SelectAutoCompleteComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         namespace value {
             namespace control {
@@ -27,3 +27,4 @@ declare namespace _default {
 }
 export default _default;
 import { SelectAutoCompleteComponent } from './SelectAutoComplete';
+import React from 'react';

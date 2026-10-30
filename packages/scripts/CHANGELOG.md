@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.2 (2026-10-07)
+
+### Internal
+
+- The `release` scripts now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
 ## 4.0.1 (2026-05-20)
 
 ### Internal

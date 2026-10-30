@@ -1,76 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
-import { Accordion, Grid, Segment } from 'semantic-ui-react';
+import omit from 'lodash/omit';
+import pick from 'lodash/pick';
+import { Segment } from 'semantic-ui-react';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Image from '@plone/volto/components/theme/Image/Image';
-import {
-  CheckboxWidget,
-  TextWidget,
-} from '@plone/volto/components/manage/Widgets';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
-import AlignBlock from '@plone/volto/components/manage/Sidebar/AlignBlock';
+import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import config from '@plone/volto/registry';
+import { LeadImageBlockSchema } from './schema';
 
 import imageSVG from '@plone/volto/icons/image.svg';
-import clearSVG from '@plone/volto/icons/clear.svg';
-import upSVG from '@plone/volto/icons/up-key.svg';
-import downSVG from '@plone/volto/icons/down-key.svg';
-import navTreeSVG from '@plone/volto/icons/nav.svg';
 
 const messages = defineMessages({
-  Image: {
-    id: 'Image',
-    defaultMessage: 'Image',
-  },
-  Origin: {
-    id: 'Origin',
-    defaultMessage: 'Origin',
-  },
   AltText: {
     id: 'Alt text',
     defaultMessage: 'Alt text',
   },
-  Align: {
-    id: 'Alignment',
-    defaultMessage: 'Alignment',
-  },
-  LinkTo: {
-    id: 'Link to',
-    defaultMessage: 'Link to',
-  },
-  openLinkInNewTab: {
-    id: 'Open in a new tab',
-    defaultMessage: 'Open in a new tab',
-  },
-  NoImageSelected: {
-    id: 'No image set in image content field',
-    defaultMessage: 'No image set in image content field',
-  },
-  externalURL: {
-    id: 'External URL',
-    defaultMessage: 'External URL',
-  },
 });
 
-const LeadImageSidebar = ({
-  properties,
-  data,
-  block,
-  onChangeBlock,
-  openObjectBrowser,
-  required = false,
-  onChangeField,
-  intl,
-}) => {
-  const [activeAccIndex, setActiveAccIndex] = useState(0);
+// The alt text is stored in the content item's `image_caption` field, not in
+// the block data, so it is added to the block schema only for the sidebar form.
+const CONTENT_FIELDS = ['image_caption'];
 
-  function handleAccClick(e, titleProps) {
-    const { index } = titleProps;
-    const newIndex = activeAccIndex === index ? -1 : index;
+const LeadImageSidebar = (props) => {
+  const {
+    properties,
+    data,
+    block,
+    blocksConfig = config.blocks.blocksConfig,
+    blocksErrors,
+    onChangeBlock,
+    onChangeField,
+    navRoot,
+    contentType,
+    intl,
+  } = props;
 
-    setActiveAccIndex(newIndex);
-  }
+  const blockSchema =
+    blocksConfig?.[data['@type']]?.blockSchema ?? LeadImageBlockSchema;
+  const schema = addContentFields(
+    typeof blockSchema === 'function'
+      ? blockSchema({ ...props, intl })
+      : blockSchema,
+    intl,
+  );
+
+  // Keep the content fields out of the block data, but preserve them if an
+  // older block stored them there.
+  const onChangeBlockData = (id, newData) =>
+    onChangeBlock(id, {
+      ...omit(newData, CONTENT_FIELDS),
+      ...pick(data, CONTENT_FIELDS),
+    });
 
   return (
     <Segment.Group raised>
@@ -118,104 +100,56 @@ const LeadImageSidebar = ({
               />
             )}
           </Segment>
-          <Segment className="form sidebar-image-data">
-            <TextWidget
-              id="alt"
-              title={intl.formatMessage(messages.AltText)}
-              required={false}
-              value={properties.image_caption}
-              icon={properties.image_caption ? clearSVG : null}
-              iconAction={() => onChangeField('image_caption', '')}
-              onChange={(name, value) => {
-                onChangeField('image_caption', value);
-              }}
-            />
-            <Form.Field inline required={required}>
-              <Grid>
-                <Grid.Row>
-                  <Grid.Column width="4">
-                    <div className="wrapper">
-                      <label htmlFor="field-align">
-                        <FormattedMessage
-                          id="Alignment"
-                          defaultMessage="Alignment"
-                        />
-                      </label>
-                    </div>
-                  </Grid.Column>
-                  <Grid.Column width="8" className="align-tools">
-                    <AlignBlock
-                      align={data.align}
-                      onChangeBlock={onChangeBlock}
-                      data={data}
-                      block={block}
-                    />
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </Form.Field>
-          </Segment>
-          <Accordion fluid styled className="form">
-            <Accordion.Title
-              active={activeAccIndex === 0}
-              index={0}
-              onClick={handleAccClick}
-            >
-              Link Settings
-              {activeAccIndex === 0 ? (
-                <Icon name={upSVG} size="20px" />
-              ) : (
-                <Icon name={downSVG} size="20px" />
-              )}
-            </Accordion.Title>
-            <Accordion.Content active={activeAccIndex === 0}>
-              <TextWidget
-                id="link"
-                title={intl.formatMessage(messages.LinkTo)}
-                required={false}
-                value={flattenToAppURL(data.href)}
-                icon={data.href ? clearSVG : navTreeSVG}
-                iconAction={
-                  data.href
-                    ? () => {
-                        onChangeBlock(block, {
-                          ...data,
-                          href: '',
-                        });
-                      }
-                    : () => openObjectBrowser({ mode: 'link' })
-                }
-                onChange={(name, value) => {
-                  onChangeBlock(block, {
-                    ...data,
-                    href: flattenToAppURL(value),
-                  });
-                }}
-              />
-              <CheckboxWidget
-                id="openLinkInNewTab"
-                title={intl.formatMessage(messages.openLinkInNewTab)}
-                value={data.openLinkInNewTab ? data.openLinkInNewTab : false}
-                onChange={(name, value) => {
-                  onChangeBlock(block, {
-                    ...data,
-                    openLinkInNewTab: value,
-                  });
-                }}
-              />
-            </Accordion.Content>
-          </Accordion>
+          <BlockDataForm
+            schema={schema}
+            onChangeField={(id, value) => {
+              if (CONTENT_FIELDS.includes(id)) {
+                onChangeField(id, value);
+              } else {
+                onChangeBlockData(block, {
+                  ...data,
+                  [id]: value,
+                });
+              }
+            }}
+            onChangeBlock={onChangeBlockData}
+            formData={{
+              ...data,
+              image_caption: properties.image_caption,
+            }}
+            block={block}
+            blocksConfig={blocksConfig}
+            navRoot={navRoot}
+            contentType={contentType}
+            errors={blocksErrors}
+          />
         </>
       )}
     </Segment.Group>
   );
 };
 
+function addContentFields(schema, intl) {
+  return {
+    ...schema,
+    fieldsets: schema.fieldsets.map((fieldset, index) =>
+      index === 0
+        ? { ...fieldset, fields: [...CONTENT_FIELDS, ...fieldset.fields] }
+        : fieldset,
+    ),
+    properties: {
+      ...schema.properties,
+      image_caption: {
+        title: intl.formatMessage(messages.AltText),
+      },
+    },
+  };
+}
+
 LeadImageSidebar.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   block: PropTypes.string.isRequired,
   onChangeBlock: PropTypes.func.isRequired,
-  openObjectBrowser: PropTypes.func.isRequired,
   onChangeField: PropTypes.func.isRequired,
 };
 
