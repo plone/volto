@@ -1,3 +1,4 @@
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React from 'react';
 import FormFieldWrapper from '@plone/volto/components/manage/Widgets/FormFieldWrapper';
 import toPairs from 'lodash/toPairs';
@@ -31,7 +32,7 @@ function QueryStringSortOrderWidget(props) {
     (state) => state.querystring.sortable_indexes,
   );
   const intl = useIntl();
-  const Select = reactSelect.default;
+  const Select = withSelectMenuPortal(reactSelect.default);
 
   return (
     <FormFieldWrapper

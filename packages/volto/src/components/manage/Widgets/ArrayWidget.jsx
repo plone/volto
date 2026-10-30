@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/ArrayWidget
  */
 
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -279,8 +280,10 @@ class ArrayWidget extends Component {
     const selectedOption = normalizeArrayValue(choices, this.props.value);
     const selectedIds = selectedOption.map((option) => option.value);
 
-    const CreatableSelect = this.props.reactSelectCreateable.default;
-    const Select = this.props.reactSelect.default;
+    const CreatableSelect = withSelectMenuPortal(
+      this.props.reactSelectCreateable.default,
+    );
+    const Select = withSelectMenuPortal(this.props.reactSelect.default);
     const SelectComponent =
       // It will be only creatable if the named vocabulary is in the widget definition
       // (hint) like:
