@@ -66,6 +66,7 @@ const selectBlock = ({
   ctrlKey = false,
   metaKey = true,
   shiftKey = false,
+  withoutEvent = false,
 }) => {
   const setUIState = vi.fn();
   const form = Object.create(FormComponent.prototype);
@@ -83,11 +84,11 @@ const selectBlock = ({
     onSelectForm: null,
   };
 
-  form.onSelectBlock(id, true, {
-    ctrlKey,
-    metaKey,
-    shiftKey,
-  });
+  form.onSelectBlock(
+    id,
+    true,
+    withoutEvent ? undefined : { ctrlKey, metaKey, shiftKey },
+  );
 
   return setUIState.mock.calls[0][0];
 };
@@ -142,6 +143,18 @@ describe('Form top-level block selection', () => {
         shiftKey: true,
       }).multiSelected,
     ).toEqual(['b', 'c', 'd']);
+
+    getSelection.mockRestore();
+  });
+
+  it('extends the range on Shift+arrow keyboard navigation without an event', () => {
+    const getSelection = vi
+      .spyOn(window, 'getSelection')
+      .mockReturnValue({ empty: vi.fn() });
+
+    expect(
+      selectBlock({ id: 'c', selected: 'b', withoutEvent: true }).multiSelected,
+    ).toEqual(['b', 'c']);
 
     getSelection.mockRestore();
   });
