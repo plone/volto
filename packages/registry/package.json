@@ -106,26 +106,26 @@
     }
   },
   "dependencies": {
-    "auto-config-loader": "^1.7.7",
+    "auto-config-loader": "^1.7.8",
     "crypto-random-string": "3.2.0",
     "debug": "4.3.2",
     "deepmerge": "^4.3.1",
     "dependency-graph": "0.10.0",
-    "glob": "^10.4.5",
+    "glob": "^10.5.0",
     "tmp": "0.2.6"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.16.4",
     "@plone/types": "workspace:*",
-    "@types/debug": "^4.1.12",
+    "@types/debug": "^4.1.13",
     "@types/glob": "^8.1.0",
-    "@types/node": "^24",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/node": "^24.19.2",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "@types/tmp": "^0.2.6",
     "release-it": "catalog:",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
     "vite": "catalog:",
     "vitest": "catalog:"
   }

@@ -169,6 +169,44 @@ Tests may fail both locally and, after you push the commit, in continuous integr
 Additionally, after you pull changes from upstream that touch either dependencies or the lockfile, you should run `make install`.
 
 
+(developing-core-upgrade-versions-label)=
+
+### Upgrade dependency versions
+
+To upgrade dependencies to their latest versions allowed by the current ranges, and to raise the minimum version of those ranges to match, run the following command from the repository root.
+
+```shell
+make upgrade-versions
+```
+
+This command performs the following steps.
+
+1.  It upgrades {file}`pnpm-lock.yaml` to the latest versions that satisfy the current version ranges, including transitive dependencies.
+    It respects the `minimumReleaseAge` setting in {file}`pnpm-workspace.yaml`.
+2.  It bumps the caret (`^`) and tilde (`~`) version ranges in {file}`catalog.json` and in the {file}`package.json` file of the repository root and each workspace to the versions resolved in {file}`pnpm-lock.yaml`.
+    For example, if {file}`pnpm-lock.yaml` resolves `@react-aria/utils` to `3.34.1`, then the range `^3.30.0` becomes `^3.34.1`.
+3.  It runs `pnpm dedupe` to remove older versions of transitive dependencies from {file}`pnpm-lock.yaml` when a newer version can be used, and to refresh {file}`node_modules`.
+
+The command doesn't change exact versions, such as `18.2.0`, compound ranges, such as `>=1.0.0` or `^1.0.0 || ^2.0.0`, or `catalog:`, `workspace:`, `link:`, and `npm:` specifiers.
+It never upgrades to a version outside of the current range, so it never introduces a new major version.
+It only changes `dependencies`, `devDependencies`, and `optionalDependencies`, and never `peerDependencies`.
+It never upgrades `react` or `react-dom`, because all workspaces must share a single React version.
+Otherwise, packages that accept broad ranges, such as `^18.0.0 || ^19.0.0`, would resolve to a different React version than Volto, and break hooks at runtime.
+
+The following related commands are also available.
+
+`make upgrade-catalog-versions`
+:   Upgrades {file}`pnpm-lock.yaml`, but only bumps the ranges in {file}`catalog.json`.
+
+`make upgrade-package-versions`
+:   Upgrades {file}`pnpm-lock.yaml`, but only bumps the ranges in {file}`package.json` files.
+
+`make upgrade-versions-dry-run`
+:   Lists the ranges that would be bumped to match the current {file}`pnpm-lock.yaml`, without upgrading it or writing any files.
+
+After running any of these commands, review the changes, run the tests, and commit the updated {file}`catalog.json`, {file}`package.json` files, and {file}`pnpm-lock.yaml`.
+
+
 (develop-volto-start-plone-label)=
 
 ## Start Plone
