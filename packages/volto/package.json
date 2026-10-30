@@ -54,7 +54,7 @@
     "lint": "eslint --max-warnings=0 '{src,cypress}/**/*.{js,jsx,ts,tsx,json}'",
     "lint:fix": "eslint --fix '{src,cypress}/**/*.{js,jsx,ts,tsx,json}'",
     "lint:husky": "eslint --max-warnings=0 --fix",
-    "i18n": "rm -rf build/messages && NODE_ENV=production i18n",
+    "i18n": "node scripts/controlpanels-i18n.mjs messages && rm -rf build/messages && NODE_ENV=production i18n && node scripts/controlpanels-i18n.mjs po",
     "i18n:ci": "pnpm i18n && git diff -G'^[^\"POT]' --exit-code",
     "check:ts": "tsc --project tsconfig.json --noEmit",
     "dry-release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --dry-run",
