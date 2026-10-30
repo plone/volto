@@ -17,6 +17,13 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.6.1 (2026-10-29)
+
+### Internal
+
+- Bump serialize-javascript from 7.0.5 to 7.1.3. [#8485](https://github.com/plone/volto/issues/8485)
+- Uses pnpm 10.34.9. @wesleybl [#8488](https://github.com/plone/volto/issues/8488)
+
 ## 19.6.0 (2026-10-27)
 
 ### Feature
