@@ -129,6 +129,20 @@ export const AddonsControlpanel = loadable(
 
 // CONTENT TYPES CONTROLPANEL
 
+export const ContentTypesControlpanel = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "ContentTypesControlpanel" */ '@plone/volto/components/manage/Controlpanels/ContentTypesControlpanel/ContentTypesControlpanel'
+    ),
+);
+
+export const DexterityTypesRedirect = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "ContentTypesControlpanel" */ '@plone/volto/components/manage/Controlpanels/ContentTypesControlpanel/DexterityTypesRedirect'
+    ),
+);
+
 export const ContentType = loadable(
   () =>
     import(

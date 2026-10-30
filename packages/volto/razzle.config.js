@@ -16,6 +16,10 @@ const {
   createThemeAddonsLoader,
 } = require('@plone/registry/create-theme-loader');
 const { AddonRegistry } = require('@plone/registry/addon-registry');
+
+// Packages that ship their TypeScript source instead of a build, each a
+// dependency of the one before.
+const SOURCE_PACKAGES = ['@plone/controlpanels', '@plone/helpers'];
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
@@ -355,6 +359,19 @@ const defaultModify = ({
     include.push(fs.realpathSync(`${registry.voltoPath}/src`));
   }
 
+  // Packages that ship their TypeScript source, for Volto to compile:
+  // the content types control panel and what it needs.
+  // Each is resolved from the one before, which depends on it.
+  SOURCE_PACKAGES.reduce((from, name) => {
+    const p = fs.realpathSync(
+      path.dirname(require.resolve(`${name}/package.json`, { paths: [from] })),
+    );
+    if (include.indexOf(p) === -1) {
+      include.push(p);
+    }
+    return p;
+  }, __dirname);
+
   // Add babel support external (ie. node_modules npm published packages)
   const packagesNames = Object.keys(registry.packages);
   if (registry.packages && packagesNames.length > 0) {
@@ -412,6 +429,9 @@ const defaultModify = ({
               /^@plone\/components/,
               /^@plone\/client/,
               /^@plone\/providers/,
+              ...SOURCE_PACKAGES.map(
+                (name) => new RegExp(`^${name.replace('/', '\\/')}`),
+              ),
             ].filter(Boolean),
           }),
         ]
