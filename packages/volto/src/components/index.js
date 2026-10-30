@@ -94,6 +94,8 @@ export {
   ContentTypeLayout,
   ContentTypeSchema,
   ContentTypes,
+  ContentTypesControlpanel,
+  DexterityTypesRedirect,
   VersionOverview,
   UpgradeControlPanel,
   ModerateComments,

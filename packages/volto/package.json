@@ -124,6 +124,7 @@
     "@loadable/component": "5.16.7",
     "@loadable/server": "5.16.7",
     "@plone/components": "workspace:*",
+    "@plone/controlpanels": "^1.0.0-alpha.0",
     "@plone/registry": "workspace:*",
     "@plone/scripts": "workspace:*",
     "@plone/volto-slate": "workspace:*",
