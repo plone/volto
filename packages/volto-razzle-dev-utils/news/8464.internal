@@ -1,1 +1,0 @@
-Resolve webpack from the catalog in the monorepo via a devDependency, so only one webpack version is installed. @sneridagh

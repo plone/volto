@@ -331,7 +331,7 @@ msgstr "Aliassen werden opgeladen."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -1558,11 +1558,6 @@ msgstr "Vervaldatum"
 msgid "Expired"
 msgstr "Vervallen"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "Externe URL"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1905,7 +1900,6 @@ msgstr "Als je zeker bent dat je het webadres goed hebt, maar toch een foutmeldi
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Afbeelding"
 
@@ -2150,6 +2144,7 @@ msgstr "Lay-out"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "Leidende afbeelding"
 
@@ -2188,6 +2183,7 @@ msgstr "Doorverwijsweergave koppelen"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr "Instellingen koppeling"
 
@@ -2198,7 +2194,7 @@ msgstr "Titel koppelen"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "Koppelen naar"
@@ -2571,11 +2567,6 @@ msgstr "Geen afbeelding geselecteerd"
 msgid "No image set in Lead Image content field"
 msgstr "Geen afbeelding ingesteld in het inhoiudsveld Leidende afbeelding"
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "Geen afbeelding ingesteld in het inhoudsveld Afbeelding"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2724,7 +2715,7 @@ msgstr "URL-browser openen"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "In een nieuwe tab openen"
@@ -2749,11 +2740,6 @@ msgstr "Sorteren"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "Gesorteerd"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "Afkomst"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem

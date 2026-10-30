@@ -332,7 +332,7 @@ msgstr "Weiterleitungen wurden hochgeladen."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -1559,11 +1559,6 @@ msgstr "Ablaufdatum"
 msgid "Expired"
 msgstr "Abgelaufen"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "Externe URL"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1906,7 +1901,6 @@ msgstr "Wenn Sie sicher sind, dass Sie die richtige Adresse eingegeben haben, ko
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Bild"
 
@@ -2151,6 +2145,7 @@ msgstr "Layout"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "Lead-Bild"
 
@@ -2189,6 +2184,7 @@ msgstr "Link"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr "Link Einstellungen"
 
@@ -2199,7 +2195,7 @@ msgstr "Linktitel"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "Link auf"
@@ -2572,11 +2568,6 @@ msgstr "Kein Bild ausgewählt"
 msgid "No image set in Lead Image content field"
 msgstr "Im Feld 'Lead-Bild' wurde kein Bild gesetzt."
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "Im Feld 'Bild' wurde kein Bild gesetzt"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2725,7 +2716,7 @@ msgstr "URL-Browser öffnen"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "In neuem Browser-Tab öffnen"
@@ -2750,11 +2741,6 @@ msgstr "Reihenfolge"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "Nummeriert"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "Quelle"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem

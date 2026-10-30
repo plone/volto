@@ -332,7 +332,7 @@ msgstr "Aliasak kargatu dira."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -1559,11 +1559,6 @@ msgstr "Iraungitze-data"
 msgid "Expired"
 msgstr "Iraungita"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "Kanpoko URLa"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1906,7 +1901,6 @@ msgstr "Ziurtatu helbide zuzenean zaudena, hala ere errorea baduzu jarri kontakt
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Irudia"
 
@@ -2151,6 +2145,7 @@ msgstr "Itxura"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "Irudia"
 
@@ -2189,6 +2184,7 @@ msgstr "Loturaren berbideraketa bista"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr "Estekaren ezarpenak"
 
@@ -2199,7 +2195,7 @@ msgstr "Izenburua estekatu"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "Esteka"
@@ -2572,11 +2568,6 @@ msgstr "Ez da irudirik aukeratu"
 msgid "No image set in Lead Image content field"
 msgstr "Ez dago irudirik dagokion eremuan"
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "Ez dago irudirik dagokion eremuan"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2725,7 +2716,7 @@ msgstr "URL arakatzailea ireki"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "Fitxa berrian ireki"
@@ -2750,11 +2741,6 @@ msgstr "Ordena"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "Ordenatuta"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "Jatorria"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem

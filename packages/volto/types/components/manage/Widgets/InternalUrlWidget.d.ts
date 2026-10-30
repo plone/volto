@@ -1,4 +1,4 @@
-export function InternalUrlWidget(props: any): import("react/jsx-runtime").JSX.Element;
+export function InternalUrlWidget(props: any): React.JSX.Element;
 export namespace InternalUrlWidget {
     namespace propTypes {
         let id: any;
@@ -48,7 +48,7 @@ declare const _default: {
             overlay: string;
         }) => void;
         closeObjectBrowser: () => void;
-        render(): import("react/jsx-runtime").JSX.Element;
+        render(): React.JSX.Element;
         context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;

@@ -1,1 +1,0 @@
-Restore the pnpm store cache fallback in CI and run the @plone/volto-razzle unit tests on the matrix Node.js version. @sneridagh

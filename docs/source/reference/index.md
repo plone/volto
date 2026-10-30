@@ -16,4 +16,5 @@ This section of the documentation contains reference guides for various aspects 
 
 widgets
 utilities
+blocks-schema-endpoint
 ```

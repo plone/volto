@@ -13,7 +13,7 @@ declare namespace _default {
             export { control_2 as control };
         }
     }
-    let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    let decorators: ((Story: any) => import("react").JSX.Element)[];
 }
 export default _default;
 export namespace UniversalLink_ {

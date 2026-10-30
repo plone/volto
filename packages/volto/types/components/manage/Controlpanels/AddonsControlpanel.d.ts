@@ -1,2 +1,3 @@
 export default AddonsControlpanel;
-declare function AddonsControlpanel(props: any): import("react/jsx-runtime").JSX.Element;
+declare function AddonsControlpanel(props: any): React.JSX.Element;
+import React from 'react';

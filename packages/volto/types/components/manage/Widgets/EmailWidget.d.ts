@@ -10,7 +10,7 @@ export default EmailWidget;
  * }
  * ```
  */
-declare function EmailWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function EmailWidget(props: any): React.JSX.Element;
 declare namespace EmailWidget {
     namespace propTypes {
         let id: any;
@@ -47,3 +47,4 @@ declare namespace EmailWidget {
         export { maxLength_1 as maxLength };
     }
 }
+import React from 'react';

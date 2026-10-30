@@ -9,6 +9,7 @@ export function Order({ items, onMoveBlock, onDeleteBlock, onSelectBlock, indent
     dndKitSortable: any;
     dndKitUtilities: any;
     errors: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 declare const _default: any;
 export default _default;
+import React from 'react';

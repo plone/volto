@@ -1,2 +1,2 @@
 export default Aliases;
-declare function Aliases(props: any): import("react/jsx-runtime").JSX.Element;
+declare function Aliases(props: any): import("react").JSX.Element;

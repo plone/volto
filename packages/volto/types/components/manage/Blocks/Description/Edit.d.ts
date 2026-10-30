@@ -1,4 +1,4 @@
-export function DescriptionBlockEdit(props: any): import("react/jsx-runtime").JSX.Element;
+export function DescriptionBlockEdit(props: any): React.JSX.Element;
 export namespace DescriptionBlockEdit {
     namespace propTypes {
         let properties: any;
@@ -24,3 +24,4 @@ export namespace DescriptionBlockEdit {
     }
 }
 export default DescriptionBlockEdit;
+import React from 'react';

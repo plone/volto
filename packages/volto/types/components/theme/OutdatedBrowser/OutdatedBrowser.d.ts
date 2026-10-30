@@ -1,2 +1,3 @@
 export default OutdatedBrowser;
-declare function OutdatedBrowser(): import("react/jsx-runtime").JSX.Element;
+declare function OutdatedBrowser(): React.JSX.Element;
+import React from 'react';
