@@ -104,7 +104,7 @@ const ContainerBlockEdit = (props) => {
             selectedBlock && !multiSelected.includes(selectedBlock)
               ? [selectedBlock]
               : [];
-          newMultiSelected = [...active, ...multiSelected, id];
+          newMultiSelected = [...multiSelected, ...active, id];
         }
       }
     }
