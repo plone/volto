@@ -10,6 +10,7 @@ import {
   translationFromIntl,
   type BehaviorMetadataMap,
   type ContentTypesDriver,
+  type StateColor,
   type Notify,
   type UseBlocker,
 } from '@plone/controlpanels';
@@ -88,6 +89,13 @@ export default function ContentTypesProviders({
     () => config.settings.behaviorMetadata as BehaviorMetadataMap | undefined,
     [],
   );
+  const stateColors = useMemo(
+    () =>
+      config.settings.workflowStateColors as
+        | Record<string, StateColor>
+        | undefined,
+    [],
+  );
 
   return (
     <ControlPanelsScope>
@@ -100,6 +108,7 @@ export default function ContentTypesProviders({
         <ContentTypesDriverProvider
           driver={driver}
           behaviorMetadata={behaviorMetadata}
+          stateColors={stateColors}
         >
           {children}
         </ContentTypesDriverProvider>
