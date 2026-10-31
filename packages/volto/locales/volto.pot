@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-10-20T10:58:12.854Z\n"
+"POT-Creation-Date: 2026-10-30T22:01:20.291Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -468,6 +468,7 @@ msgstr ""
 #: components/manage/Controlpanels/ContentType
 #: components/manage/Controlpanels/ContentTypeLayout
 #: components/manage/Controlpanels/ContentTypes
+#: components/manage/Controlpanels/ContentTypesControlpanel/ContentTypesControlpanel
 #: components/manage/Controlpanels/Controlpanel
 #: components/manage/Controlpanels/Controlpanels
 #: components/manage/Controlpanels/DatabaseInformation
@@ -3909,6 +3910,11 @@ msgstr ""
 msgid "The button presence disables the live search, the query is issued when you press ENTER"
 msgstr ""
 
+#. Default: "The content types could not be loaded."
+#: components/manage/Controlpanels/ContentTypesControlpanel/ContentTypesControlpanel
+msgid "The content types could not be loaded."
+msgstr ""
+
 #. Default: "The file you uploaded exceeded the maximum allowed size of {size} bytes"
 #: components/manage/Widgets/FileWidget
 msgid "The file you uploaded exceeded the maximum allowed size of {size} bytes"
@@ -4803,6 +4809,1296 @@ msgstr ""
 msgid "controlpanel_block_type"
 msgstr ""
 
+#. Default: "Actions for {title}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.actionsFor"
+msgstr ""
+
+#. Default: "Add"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.add"
+msgstr ""
+
+#. Default: "Type to add a type"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addAllowedType"
+msgstr ""
+
+#. Default: "Add behaviors"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addBehaviors"
+msgstr ""
+
+#. Default: "Add behaviors to {title}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addBehaviorsTitle"
+msgstr ""
+
+#. Default: "You can add fields and behaviors after creating it."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addDescription"
+msgstr ""
+
+#. Default: "Add field"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addField"
+msgstr ""
+
+#. Default: "The field is added to the edit form when you save the type."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addFieldDescription"
+msgstr ""
+
+#. Default: "Add a field"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addFieldTitle"
+msgstr ""
+
+#. Default: "Add fieldset"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addFieldset"
+msgstr ""
+
+#. Default: "A fieldset groups fields in a tab of the edit form."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addFieldsetDescription"
+msgstr ""
+
+#. Default: "Add a fieldset"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addFieldsetTitle"
+msgstr ""
+
+#. Default: "Add {count}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addSelected"
+msgstr ""
+
+#. Default: "Add content type"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addTitle"
+msgstr ""
+
+#. Default: "Add content type"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addType"
+msgstr ""
+
+#. Default: "{title}: globally addable"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addable"
+msgstr ""
+
+#. Default: "Adds {fields}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addsFieldsList"
+msgstr ""
+
+#. Default: "Its fields show in the form after saving."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addsFieldsUnknown"
+msgstr ""
+
+#. Default: "All types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.allowAll"
+msgstr ""
+
+#. Default: "Allow comments"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.allowDiscussion"
+msgstr ""
+
+#. Default: "Nothing"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.allowNone"
+msgstr ""
+
+#. Default: "Only selected types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.allowSelected"
+msgstr ""
+
+#. Default: "Allowed inside"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.allowedInside"
+msgstr ""
+
+#. Default: "Allowed types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.allowedTypes"
+msgstr ""
+
+#. Default: "Back"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.back"
+msgstr ""
+
+#. Default: "Features"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorFeatures"
+msgstr ""
+
+#. Default: "These change how items behave and add no fields, so their order doesn't matter."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorFeaturesHelp"
+msgstr ""
+
+#. Default: "{title} removed"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorRemoved"
+msgstr ""
+
+#. Default: "Editors no longer see its field. Stored values are kept."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorRemovedField"
+msgstr ""
+
+#. Default: "Editors no longer see its {count} fields. Stored values are kept."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorRemovedFields"
+msgstr ""
+
+#. Default: "Variant of {title}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorVariant"
+msgstr ""
+
+#. Default: "{on} on · {withFields} add fields · {features} features"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorsSummary"
+msgstr ""
+
+#. Default: "Cancel"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.cancel"
+msgstr ""
+
+#. Default: "Change"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeDefault"
+msgstr ""
+
+#. Default: "Currently {workflow} · followed by {types}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeDefaultWorkflowSubtitle"
+msgstr ""
+
+#. Default: "Change the site default workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeDefaultWorkflowTitle"
+msgstr ""
+
+#. Default: "Change workflow…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeWorkflow"
+msgstr ""
+
+#. Default: "Change workflow…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeWorkflowBulk"
+msgstr ""
+
+#. Default: "Change workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeWorkflowConfirm"
+msgstr ""
+
+#. Default: "Change workflow for {items}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeWorkflowFor"
+msgstr ""
+
+#. Default: "{items} · currently {workflow}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeWorkflowSubtitle"
+msgstr ""
+
+#. Default: "Change workflow for {title}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeWorkflowTitle"
+msgstr ""
+
+#. Default: "Changing the workflow needs a newer backend."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changeWorkflowUnavailable"
+msgstr ""
+
+#. Default: "Changing workflow…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changingWorkflow"
+msgstr ""
+
+#. Default: "Updating permissions and reindexing."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.changingWorkflowHelp"
+msgstr ""
+
+#. Default: "Close"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.close"
+msgstr ""
+
+#. Default: "Actions"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.columnActions"
+msgstr ""
+
+#. Default: "Addable"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.columnAddable"
+msgstr ""
+
+#. Default: "Items"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.columnItems"
+msgstr ""
+
+#. Default: "Type"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.columnType"
+msgstr ""
+
+#. Default: "Versioning"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.columnVersioning"
+msgstr ""
+
+#. Default: "Workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.columnWorkflow"
+msgstr ""
+
+#. Default: "This tab is coming soon."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.comingLater"
+msgstr ""
+
+#. Default: "Comments"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.comments"
+msgstr ""
+
+#. Default: "Contains {behaviors}, which the type has. Remove them first."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.containsEnabled"
+msgstr ""
+
+#. Default: "Contents"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.contents"
+msgstr ""
+
+#. Default: "Items of this type can contain other items."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.contentsHelp"
+msgstr ""
+
+#. Default: "Copy…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.copy"
+msgstr ""
+
+#. Default: "Create and add fields"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.create"
+msgstr ""
+
+#. Default: "The type couldn't be created"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.createError"
+msgstr ""
+
+#. Default: "{title} created"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.created"
+msgstr ""
+
+#. Default: "Current"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.current"
+msgstr ""
+
+#. Default: "Current workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.currentWorkflow"
+msgstr ""
+
+#. Default: "Custom"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.custom"
+msgstr ""
+
+#. Default: "Can be used as a folder's default page"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.defaultPage"
+msgstr ""
+
+#. Default: "Lets editors pick an item of this type as the page a folder shows."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.defaultPageHelp"
+msgstr ""
+
+#. Default: "Workflow: {workflow}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.defaultWorkflow"
+msgstr ""
+
+#. Default: "Delete…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.delete"
+msgstr ""
+
+#. Default: "Types that still have items can't be deleted. Delete or move their items first:"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteBlocked"
+msgstr ""
+
+#. Default: "{title}: {count} items"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteBlockedItem"
+msgstr ""
+
+#. Default: "Delete"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteConfirm"
+msgstr ""
+
+#. Default: "Delete {count} types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteConfirmMany"
+msgstr ""
+
+#. Default: "{title} couldn't be deleted"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteError"
+msgstr ""
+
+#. Default: "Their fields, behaviors and layout are deleted with them. This can’t be undone."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteExplanation"
+msgstr ""
+
+#. Default: "Delete field"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteField"
+msgstr ""
+
+#. Default: "Delete fieldset"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteFieldset"
+msgstr ""
+
+#. Default: "Delete {count} types?"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteManyTitle"
+msgstr ""
+
+#. Default: "Delete {title}?"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleteTitle"
+msgstr ""
+
+#. Default: "{title} deleted"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deleted"
+msgstr ""
+
+#. Default: "{count} types deleted"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deletedMany"
+msgstr ""
+
+#. Default: "Visibility then depends on the folder"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.dependsOnFolder"
+msgstr ""
+
+#. Default: "Deprecated."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deprecated"
+msgstr ""
+
+#. Default: "Deprecated: use {title} instead."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.deprecatedUse"
+msgstr ""
+
+#. Default: "Choose what editors can create, how it is published, and which fields it has."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.description"
+msgstr ""
+
+#. Default: "Discard"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.discard"
+msgstr ""
+
+#. Default: "Discard changes"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.discardChanges"
+msgstr ""
+
+#. Default: "Done"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.done"
+msgstr ""
+
+#. Default: "Edit field"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.editField"
+msgstr ""
+
+#. Default: "Help text"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.fieldHelp"
+msgstr ""
+
+#. Default: "Label"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.fieldLabel"
+msgstr ""
+
+#. Default: "Used in code and the content API, and can't be changed later."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.fieldShortNameHelp"
+msgstr ""
+
+#. Default: "Type"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.fieldType"
+msgstr ""
+
+#. Default: "The field types couldn't be loaded."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.fieldTypesError"
+msgstr ""
+
+#. Default: "Fields in {fieldset}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.fieldsIn"
+msgstr ""
+
+#. Default: "Fieldset"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.fieldset"
+msgstr ""
+
+#. Default: "Fieldsets"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.fieldsets"
+msgstr ""
+
+#. Default: "Filter types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.filter"
+msgstr ""
+
+#. Default: "Follow the site default"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.followDefault"
+msgstr ""
+
+#. Default: "Follows the site default"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.followsSiteDefault"
+msgstr ""
+
+#. Default: "Add fields to the form"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.formBehaviors"
+msgstr ""
+
+#. Default: "This site's content API can't change their order yet: new behaviors go to the end."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.formBehaviorsFixedOrder"
+msgstr ""
+
+#. Default: "Their order sets where their fields appear in the edit form: the first one comes first."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.formBehaviorsHelp"
+msgstr ""
+
+#. Default: "Drag to change the order. With the keyboard, focus a row and press Alt with the up or down arrow."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.formBehaviorsReorderHelp"
+msgstr ""
+
+#. Default: "Edit form preview"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.formPreview"
+msgstr ""
+
+#. Default: "An estimate: after saving, the backend's ordering hints may move some fields."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.formPreviewEstimate"
+msgstr ""
+
+#. Default: "Hover or focus a behavior to see its fields here."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.formPreviewHelp"
+msgstr ""
+
+#. Default: "Updating the preview…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.formPreviewUpdating"
+msgstr ""
+
+#. Default: "General"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.general"
+msgstr ""
+
+#. Default: "Shown to editors in the Add menu."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.generalHelp"
+msgstr ""
+
+#. Default: "Globally addable"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.globalAllow"
+msgstr ""
+
+#. Default: "Editors can add it in any folder that doesn't restrict its contents. When off, it can only be added where a folder allows it explicitly."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.globalAllowHelp"
+msgstr ""
+
+#. Default: "globally addable"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.globallyAddable"
+msgstr ""
+
+#. Default: "Content"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.groupContent"
+msgstr ""
+
+#. Default: "Events"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.groupEvent"
+msgstr ""
+
+#. Default: "Features"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.groupFeatures"
+msgstr ""
+
+#. Default: "Layout and images"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.groupLayout"
+msgstr ""
+
+#. Default: "Metadata"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.groupMetadata"
+msgstr ""
+
+#. Default: "Names and URLs"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.groupNaming"
+msgstr ""
+
+#. Default: "Navigation"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.groupNavigation"
+msgstr ""
+
+#. Default: "Other"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.groupOther"
+msgstr ""
+
+#. Default: "Included in {title}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.includedIn"
+msgstr ""
+
+#. Default: "Includes {behaviors}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.includesList"
+msgstr ""
+
+#. Default: "New items start here"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.initialState"
+msgstr ""
+
+#. Default: "Instead of {title}: switch it on its row."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.instead"
+msgstr ""
+
+#. Default: "{count} items"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.items"
+msgstr ""
+
+#. Default: "Keep editing"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.keepEditing"
+msgstr ""
+
+#. Default: "Your changes to {title} will be lost."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.leaveDescription"
+msgstr ""
+
+#. Default: "Leave without saving?"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.leaveTitle"
+msgstr ""
+
+#. Default: "Less visible: {visibility} only"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.lessVisible"
+msgstr ""
+
+#. Default: "Some items will be less visible."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.lessVisibleWarning"
+msgstr ""
+
+#. Default: "Visitors who can see them now will get a login page instead."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.lessVisibleWarningHelp"
+msgstr ""
+
+#. Default: "The content types couldn't be loaded."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.loadError"
+msgstr ""
+
+#. Default: "Loading content types…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.loading"
+msgstr ""
+
+#. Default: "Working out what changes…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.loadingPreview"
+msgstr ""
+
+#. Default: "Loading…"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.loadingType"
+msgstr ""
+
+#. Default: "Locked fields come from behaviors. Their order is set on the behavior, and they disappear when the behavior is turned off on the Behaviors tab."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.lockedFieldsHelp"
+msgstr ""
+
+#. Default: "Types using {workflow}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.mapGroup"
+msgstr ""
+
+#. Default: "{workflow}: {types}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.mapGroupTitle"
+msgstr ""
+
+#. Default: "Choose a state in {workflow} for each current state. Suggestions keep who can see an item."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.mapHint"
+msgstr ""
+
+#. Default: "{workflow} has no states, so there is nothing to map."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.mapNothing"
+msgstr ""
+
+#. Default: "Addability, search, default page, comments and versioning settings need a newer version of the content API."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.moreSettingsLater"
+msgstr ""
+
+#. Default: "More visible: {visibility} can see it"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.moreVisible"
+msgstr ""
+
+#. Default: "Most visible state: {visibility}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.mostVisible"
+msgstr ""
+
+#. Default: "Name"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.name"
+msgstr ""
+
+#. Default: "A field or fieldset with this short name already exists."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.nameTaken"
+msgstr ""
+
+#. Default: "New behaviors go to the end of the list."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.newBehaviorsAtEnd"
+msgstr ""
+
+#. Default: "New behaviors go to the end of the list. You can move them afterwards."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.newBehaviorsAtEndMovable"
+msgstr ""
+
+#. Default: "New state for {state}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.newStateFor"
+msgstr ""
+
+#. Default: "New types start {addable}, with {versioning} versioning"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.newTypesStart"
+msgstr ""
+
+#. Default: "Next: map states"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.nextMap"
+msgstr ""
+
+#. Default: "Next: review"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.nextReview"
+msgstr ""
+
+#. Default: "No features are on."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noFeatures"
+msgstr ""
+
+#. Default: "This fieldset has no fields yet."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noFields"
+msgstr ""
+
+#. Default: "No behaviors add fields to the form."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noFormBehaviors"
+msgstr ""
+
+#. Default: "No items in this state"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noItemsInState"
+msgstr ""
+
+#. Default: "No types match."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noMatches"
+msgstr ""
+
+#. Default: "No behaviors match."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noMatchingBehaviors"
+msgstr ""
+
+#. Default: "no types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noTypes"
+msgstr ""
+
+#. Default: "No workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noWorkflow"
+msgstr ""
+
+#. Default: "Items take their visibility from their folder."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noWorkflowDescription"
+msgstr ""
+
+#. Default: "Items of this type have no state. They take their visibility from their folder."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.noWorkflowHelp"
+msgstr ""
+
+#. Default: "{title} isn't a Dexterity type, so it has no fields, behaviors or layout."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.notADexterityType"
+msgstr ""
+
+#. Default: "Not globally addable"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.notGlobalAllow"
+msgstr ""
+
+#. Default: "not globally addable"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.notGloballyAddable"
+msgstr ""
+
+#. Default: "1 item"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.oneItem"
+msgstr ""
+
+#. Default: "{count} more workflows are only offered for comments."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.otherScopeWorkflows"
+msgstr ""
+
+#. Default: "Fields from {behaviors} show after saving."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.pendingFields"
+msgstr ""
+
+#. Default: "Folder-level workflow policies still override this."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.placefulNote"
+msgstr ""
+
+#. Default: "The change couldn't be previewed."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.previewError"
+msgstr ""
+
+#. Default: "Remove {title}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.removeBehavior"
+msgstr ""
+
+#. Default: "Drag custom fields to reorder them. With the keyboard, focus a field's drag handle, press Enter, move with the arrow keys and press Enter again."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reorderHelp"
+msgstr ""
+
+#. Default: "Required"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.required"
+msgstr ""
+
+#. Default: "Try again"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.retry"
+msgstr ""
+
+#. Default: "{title} will follow the site default, {workflow}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewFollowDefault"
+msgstr ""
+
+#. Default: "New items will start in {state}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewInitial"
+msgstr ""
+
+#. Default: "{title} will use {workflow} instead of {current}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewIntro"
+msgstr ""
+
+#. Default: "These types will use {workflow}: {types}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewIntroMany"
+msgstr ""
+
+#. Default: "Now visible only to {visibility} (was {was})."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewLess"
+msgstr ""
+
+#. Default: "Now visible to {visibility} (was {was})."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewMore"
+msgstr ""
+
+#. Default: "There are no items to move."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewNoItems"
+msgstr ""
+
+#. Default: "Items will take their visibility from their folder."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewNoWorkflow"
+msgstr ""
+
+#. Default: "Permissions are updated and items reindexed. On a large site this can take minutes."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewNote"
+msgstr ""
+
+#. Default: "{items}: {from} → {to}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewRow"
+msgstr ""
+
+#. Default: "Still visible to {visibility}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewSame"
+msgstr ""
+
+#. Default: "The site default becomes {workflow} instead of {current}. The types that follow it change too: {types}. Types with a workflow of their own keep it."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewSiteDefault"
+msgstr ""
+
+#. Default: "{count} items under folders with their own workflow policy won't change."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.reviewUnaffected"
+msgstr ""
+
+#. Default: "Same visibility"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.sameVisibility"
+msgstr ""
+
+#. Default: "Save"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.save"
+msgstr ""
+
+#. Default: "{title} couldn't be saved"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.saveError"
+msgstr ""
+
+#. Default: "The fields couldn't be loaded."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.schemaLoadError"
+msgstr ""
+
+#. Default: "Search behaviors"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.searchBehaviors"
+msgstr ""
+
+#. Default: "Show in search results"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.searchable"
+msgstr ""
+
+#. Default: "Turn off for helper types that should never appear in site search."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.searchableHelp"
+msgstr ""
+
+#. Default: "{count} selected"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.selected"
+msgstr ""
+
+#. Default: "Selected types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.selection"
+msgstr ""
+
+#. Default: "Set for this type"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.setForThisType"
+msgstr ""
+
+#. Default: "Settings only"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.settingsOnly"
+msgstr ""
+
+#. Default: "Short name"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.shortName"
+msgstr ""
+
+#. Default: "Filled in from the name. Used in URLs and code, and can't be changed later."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.shortNameHelp"
+msgstr ""
+
+#. Default: "Use lowercase letters, digits and underscores, starting with a letter."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.shortNameInvalid"
+msgstr ""
+
+#. Default: "A type with this short name already exists."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.shortNameTaken"
+msgstr ""
+
+#. Default: "Show"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.show"
+msgstr ""
+
+#. Default: "All {count}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.showAll"
+msgstr ""
+
+#. Default: "Show deprecated"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.showDeprecated"
+msgstr ""
+
+#. Default: "Not addable {count}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.showNotAddable"
+msgstr ""
+
+#. Default: "site default"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.siteDefault"
+msgstr ""
+
+#. Default: "The site default workflow is now {workflow}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.siteDefaultChanged"
+msgstr ""
+
+#. Default: "The site default workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.siteDefaultWorkflow"
+msgstr ""
+
+#. Default: "Site defaults"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.siteDefaults"
+msgstr ""
+
+#. Default: "Blank type"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.startBlank"
+msgstr ""
+
+#. Default: "Title and description only."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.startBlankHelp"
+msgstr ""
+
+#. Default: "A copy of an existing type"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.startCopy"
+msgstr ""
+
+#. Default: "Copies fields, behaviors, layout and settings."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.startCopyHelp"
+msgstr ""
+
+#. Default: "Start from"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.startFrom"
+msgstr ""
+
+#. Default: "{state} · {visibility}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.stateOption"
+msgstr ""
+
+#. Default: "Choose workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.stepChoose"
+msgstr ""
+
+#. Default: "Map states"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.stepMap"
+msgstr ""
+
+#. Default: "Review and change"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.stepReview"
+msgstr ""
+
+#. Default: "Steps"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.steps"
+msgstr ""
+
+#. Default: "Suggested"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.suggested"
+msgstr ""
+
+#. Default: "Behaviors"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.tabBehaviors"
+msgstr ""
+
+#. Default: "Fields"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.tabFields"
+msgstr ""
+
+#. Default: "Layout"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.tabLayout"
+msgstr ""
+
+#. Default: "Settings"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.tabSettings"
+msgstr ""
+
+#. Default: "Workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.tabWorkflow"
+msgstr ""
+
+#. Default: "Type settings"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.tabs"
+msgstr ""
+
+#. Default: "Content types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.title"
+msgstr ""
+
+#. Default: "{transition} → {state}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.transitionTo"
+msgstr ""
+
+#. Default: "Description"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.typeDescription"
+msgstr ""
+
+#. Default: "This type couldn't be loaded."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.typeLoadError"
+msgstr ""
+
+#. Default: "Type to copy"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.typeToCopy"
+msgstr ""
+
+#. Default: "{count} types"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.typesCount"
+msgstr ""
+
+#. Default: "Unsaved changes"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.unsavedChanges"
+msgstr ""
+
+#. Default: "Unsaved changes in {tabs}"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.unsavedChangesIn"
+msgstr ""
+
+#. Default: "{title} couldn't be saved"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.updateError"
+msgstr ""
+
+#. Default: "{title} saved"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.updated"
+msgstr ""
+
+#. Default: "Versioning"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.versioning"
+msgstr ""
+
+#. Default: "Automatic"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.versioningAutomatic"
+msgstr ""
+
+#. Default: "Every save creates a version."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.versioningAutomaticHelp"
+msgstr ""
+
+#. Default: "Versions let editors compare and revert changes."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.versioningHelp"
+msgstr ""
+
+#. Default: "Manual"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.versioningManual"
+msgstr ""
+
+#. Default: "Editors save a version when they choose to."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.versioningManualHelp"
+msgstr ""
+
+#. Default: "None"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.versioningOff"
+msgstr ""
+
+#. Default: "Only the current state is kept."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.versioningOffHelp"
+msgstr ""
+
+#. Default: "Visibility"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.visibility"
+msgstr ""
+
+#. Default: "Anyone"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.visibilityAnyone"
+msgstr ""
+
+#. Default: "Logged-in members"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.visibilityMembers"
+msgstr ""
+
+#. Default: "People with a role on the item"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.visibilityRestricted"
+msgstr ""
+
+#. Default: "Depends on the folder"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.visibilityUnknown"
+msgstr ""
+
+#. Default: "Where it can be added"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.whereAdded"
+msgstr ""
+
+#. Default: "Without a state"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.withoutState"
+msgstr ""
+
+#. Default: "Workflow"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.workflow"
+msgstr ""
+
+#. Default: "The workflow of {title} couldn't be changed."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.workflowChangeError"
+msgstr ""
+
+#. Default: "{title} now uses {workflow}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.workflowChanged"
+msgstr ""
+
+#. Default: "{items} updated."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.workflowChangedItems"
+msgstr ""
+
+#. Default: "{title} now use {workflow}."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.workflowChangedMany"
+msgstr ""
+
+#. Default: "States"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.workflowStates"
+msgstr ""
+
+#. Default: "This site's backend doesn't tell which workflow a type uses yet."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.workflowsUnavailable"
+msgstr ""
+
 #. Default: "{countofrelation} broken {countofrelation, plural, one {relation} other {relations}} of type {typeofrelation}"
 #: components/manage/Controlpanels/Relations/BrokenRelations
 msgid "countBrokenRelations"
@@ -5023,6 +6319,7 @@ msgstr ""
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/BlockType
 #: components/manage/Controlpanels/BlockTypes
+#: components/manage/Controlpanels/ContentTypesControlpanel/ContentTypesControlpanel
 msgid "loading"
 msgstr ""
 

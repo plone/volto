@@ -39,10 +39,9 @@ import {
   GroupsControlpanel,
   AddonsControlpanel,
   AliasesControlpanel,
-  ContentType,
   ContentTypeLayout,
-  ContentTypeSchema,
-  ContentTypes,
+  ContentTypesControlpanel,
+  DexterityTypesRedirect,
   Controlpanel,
   Controlpanels,
   DatabaseInformation,
@@ -163,20 +162,16 @@ export const defaultRoutes = [
     component: Controlpanels,
   },
   {
+    path: '/controlpanel/content-types/:type?/:tab?',
+    component: ContentTypesControlpanel,
+  },
+  {
     path: '/controlpanel/dexterity-types/:id/layout',
     component: ContentTypeLayout,
   },
   {
-    path: '/controlpanel/dexterity-types/:id/schema',
-    component: ContentTypeSchema,
-  },
-  {
-    path: '/controlpanel/dexterity-types/:id',
-    component: ContentType,
-  },
-  {
-    path: '/controlpanel/dexterity-types',
-    component: ContentTypes,
+    path: '/controlpanel/dexterity-types/:id?/:view?',
+    component: DexterityTypesRedirect,
   },
   {
     path: '/controlpanel/addons',
