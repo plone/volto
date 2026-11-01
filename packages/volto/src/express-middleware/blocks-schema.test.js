@@ -624,9 +624,8 @@ describe('/@blocks-schema middleware', () => {
       id: 'plone.plate',
       version: 2,
       types: () => ['WikiPage'],
-      items: ({ elements, blocks }) => [...elements(), ...blocks(['beta'])],
-      item: (id, { element, block }) =>
-        element(id) || (id === 'beta' ? block(id) : undefined),
+      elements: () => ['p'],
+      blocks: () => ['beta'],
     };
     const wiki = {
       '@id': '/wiki',
@@ -657,8 +656,20 @@ describe('/@blocks-schema middleware', () => {
         {
           element: 'p',
           title: 'Paragraph',
+          document_model: 'plone.plate',
           markdown:
-            '---\nelement: p\ntitle: Paragraph\n---\n\nA paragraph.\n\nMore.\n',
+            '---\nelement: p\ntitle: Paragraph\ndocument_model: plone.plate\n---\n\nA paragraph.\n\nMore.\n',
+        },
+        {
+          element: 'toggle',
+          document_model: 'plone.plate',
+          markdown:
+            '---\nelement: toggle\ndocument_model: plone.plate\n---\n\nA toggle.\n',
+        },
+        {
+          element: 'row',
+          document_model: 'other',
+          markdown: '---\nelement: row\ndocument_model: other\n---\n\nA row.\n',
         },
       ]);
       apiGet.mockImplementation(async (path) =>
@@ -727,6 +738,49 @@ describe('/@blocks-schema middleware', () => {
         ],
         items_total: 2,
       });
+    });
+
+    it('lists the elements that name it and the blocks offered by default', async () => {
+      config.registerUtility({
+        name: 'plone.plate',
+        type: 'documentModel',
+        method: () => ({ id: 'plone.plate', version: 2, types: plate.types }),
+      });
+
+      const { body } = await invokeMiddleware({ query: { type: 'WikiPage' } });
+      const toggle = await invokeMiddleware({
+        url: '/@blocks-schema/toggle?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+      const row = await invokeMiddleware({
+        url: '/@blocks-schema/row?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+
+      expect(body.items.map(({ id, kind }) => [id, kind])).toEqual([
+        ['p', 'element'],
+        ['toggle', 'element'],
+        ['alpha', 'block'],
+        ['beta', 'block'],
+        ['gamma', 'block'],
+      ]);
+      expect(toggle.body.docs).toBe('A toggle.');
+      expect(row.status).toBe(404);
+    });
+
+    it('leaves out the elements and blocks the model does not list', async () => {
+      registerPlate();
+      const toggle = await invokeMiddleware({
+        url: '/@blocks-schema/toggle?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+      const gamma = await invokeMiddleware({
+        url: '/@blocks-schema/gamma?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+
+      expect(toggle.status).toBe(404);
+      expect(gamma.status).toBe(404);
     });
 
     it('ignores a document model whose types() throws', async () => {

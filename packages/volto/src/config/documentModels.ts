@@ -13,8 +13,6 @@ const registerDocumentModels = (config: ConfigType) => {
     method: () => ({
       id: DEFAULT_DOCUMENT_MODEL,
       version: 1,
-      items: ({ blocks }) => blocks(),
-      item: (id, { block }) => block(id),
     }),
   });
 };
