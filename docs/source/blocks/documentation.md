@@ -133,19 +133,24 @@ Use `###` for headings inside it, because the endpoint puts it under a `##` head
 ### Document an element
 
 A document model can have native elements that aren't blocks, such as the paragraphs and headings of a Plate document.
-Document an element in a `*.block.md` file whose frontmatter names it with `element`, and gives it a `title`.
+Document an element in a `*.block.md` file whose frontmatter names it with `element`, gives it a `title`, and names its `document_model`.
 One file can document several elements, separated by commas.
 
 ```markdown
 ---
 element: h2, h3, h4
 title: Heading
+document_model: plone.plate
 ---
 
 A heading of the page.
 ```
 
-The endpoint only returns the elements that the document model lists.
+The elements of a document model are the elements whose docs name it.
+Two document models can each have an element with the same name.
+
+Blocks don't name a document model.
+The data of a block is the same in every document model, and the documentation of the document model describes where it stores that data.
 
 ### Add a document model
 
@@ -160,14 +165,6 @@ config.registerUtility({
     version: 1,
     // The content types that use it, from the add-on's own configuration.
     types: () => config.settings.PlateEditorContentTypes,
-    // The items of the list: the elements, then the blocks.
-    items: ({ elements, blocks }) => [
-      ...elements(['p', 'h2', 'h3']),
-      ...blocks(['plateimage']),
-    ],
-    // One item, or `undefined` for a 404.
-    item: (id, { element, block }) =>
-      element(id) || (id === 'plateimage' ? block(id) : undefined),
   }),
 });
 ```
@@ -179,23 +176,29 @@ Increase it when the data changes in a way that clients of the previous version 
 Read them from the configuration that decides how the frontend edits those types, so that they are only listed in one place.
 Content types that no document model lists use `plone.blocks`.
 
-`items` and `item` receive helpers that build the items as the endpoint does.
+The endpoint lists the elements whose docs name the document model, and then the blocks offered for the content.
+Two optional functions limit them, when the editor of the document model doesn't support all of them.
 
-`blocks(keys)`
-:   The summaries of the blocks offered for the content.
-    With a list of keys, the summaries of those blocks, whether they are offered or not.
+`elements`
+:   Returns the names of the elements to list.
+    For example, the elements that the editor supports, from its configuration.
 
-`block(key)`
-:   The documentation, schema, and variations of one block.
+`blocks`
+:   Returns the keys of the blocks that the content can hold, from the blocks configuration.
+    They are listed whether the block chooser offers them or not, which suits a block that is only added in the document model's own way, such as an image dropped into a Plate document.
 
-`elements(names)`
-:   The summaries of the documented elements, or of the given ones.
+```js
+method: () => ({
+  id: 'plone.plate',
+  version: 1,
+  types: () => config.settings.PlateEditorContentTypes,
+  elements: () => Object.keys(config.blocks.plateBlocksConfig),
+  blocks: () => ['plateimage'],
+}),
+```
 
-`element(name)`
-:   The documentation of one element.
-
-They also receive the `blocksConfig`, the `context` of the content, if any, and an `intl` object.
-Without `items` or `item`, the endpoint returns the blocks, as for `plone.blocks`.
+The endpoint returns an element or a block at its link only when it's in the list of the document model.
+Without `blocks`, it returns any registered block, so that the response says whether it's restricted.
 
 (blocks-documentation-placeholders)=
 

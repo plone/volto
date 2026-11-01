@@ -152,19 +152,14 @@ export function getSummary(markdown) {
 
 // A document model can have native elements, such as the nodes of a Plate
 // document, which aren't blocks. Their docs are `*.block.md` files whose
-// frontmatter names an `element`, and optionally its `title`.
-function getElementFile(element) {
-  return blocksDocs.find((item) => item.element === element);
-}
-
-export function buildElementItem(element, url, full) {
-  const file = getElementFile(element);
-  if (!file) return undefined;
+// frontmatter names an `element`, its `document_model`, and optionally its
+// `title`.
+function buildElementItem(file, url, full) {
   const docs = file.markdown.replace(FRONTMATTER, '').trim();
   const item = {
     '@id': url,
-    id: element,
-    title: file.title || element,
+    id: file.element,
+    title: file.title || file.element,
     kind: 'element',
   };
   if (full) {
@@ -517,20 +512,48 @@ function documentModelRef(documentModel) {
   return { id: documentModel.id, version: documentModel.version };
 }
 
-// The content types that use a document model, from its `types` function.
-function getDocumentModelTypes(documentModel) {
-  if (typeof documentModel.types !== 'function') return [];
+// A list of IDs from one of a document model's functions: its `types`, or
+// the `elements` or `blocks` it is limited to. `undefined` when the model has
+// no such function, and an empty list when it fails.
+function callDocumentModel(documentModel, name) {
+  if (typeof documentModel?.[name] !== 'function') return undefined;
   try {
-    const types = documentModel.types();
-    return Array.isArray(types) ? types : [];
+    const list = documentModel[name]();
+    return Array.isArray(list) ? list : [];
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(
-      `[blocks-schema] types() of the document model '${documentModel.id}' threw:`,
+      `[blocks-schema] ${name}() of the document model '${documentModel.id}' threw:`,
       e,
     );
     return [];
   }
+}
+
+function getDocumentModelTypes(documentModel) {
+  return callDocumentModel(documentModel, 'types') || [];
+}
+
+// The docs files of the elements of a document model, limited to its
+// `elements` when it has them.
+function getElementFiles(documentModel) {
+  if (!documentModel) return [];
+  const files = blocksDocs.filter(
+    (file) => file.element && file.document_model === documentModel.id,
+  );
+  const names = callDocumentModel(documentModel, 'elements');
+  return names ? files.filter((file) => names.includes(file.element)) : files;
+}
+
+// The blocks a document model can hold, as keys of the blocks configuration:
+// its `blocks` when it has them, whether they are offered or not, or else the
+// blocks offered for the content, if any.
+function getBlockKeys(documentModel, blocksConfig, context) {
+  const keys = callDocumentModel(documentModel, 'blocks');
+  if (keys) return keys.filter((key) => blocksConfig[key]);
+  return Object.keys(blocksConfig).filter(
+    (key) => !context || !isRestrictedIn(blocksConfig[key], context),
+  );
 }
 
 function listDocumentModels(documentModels) {
@@ -626,41 +649,26 @@ async function blocksSchema(req, res, next) {
       return item;
     };
 
-    // What a document model builds its items from: the blocks offered here,
-    // or the given ones whether they are offered or not, and the elements
-    // with docs.
-    const helpers = {
-      blocksConfig,
-      context,
-      intl,
-      blocks: (keys) =>
-        (keys
-          ? keys
-              .filter((key) => blocksConfig[key])
-              .map((key) => [key, blocksConfig[key]])
-          : Object.entries(blocksConfig).filter(
-              ([, blockConfig]) =>
-                !context || !isRestrictedIn(blockConfig, context),
-            )
-        ).map(([key, blockConfig]) => describe(key, blockConfig, false)),
-      block: (key) =>
-        blocksConfig[key] ? describe(key, blocksConfig[key], true) : undefined,
-      elements: (names) =>
-        (
-          names ||
-          blocksDocs.filter((file) => file.element).map((file) => file.element)
-        )
-          .map((name) => buildElementItem(name, itemURL(name), false))
-          .filter(Boolean),
-      element: (name) => buildElementItem(name, itemURL(name), true),
-    };
+    const elementFiles = getElementFiles(documentModel);
+    const describeElement = (file, full) =>
+      buildElementItem(file, itemURL(file.element), full);
 
     setCacheHeaders(res, Boolean(context));
 
     if (blockId) {
-      const detail = documentModel?.item
-        ? documentModel.item(blockId, helpers)
-        : helpers.block(blockId);
+      // An element of the document model, or a block. Without its own list
+      // of blocks, a document model has every registered block, so that the
+      // detail says whether it's restricted.
+      const elementFile = elementFiles.find((file) => file.element === blockId);
+      const hasBlock = callDocumentModel(documentModel, 'blocks')
+        ? getBlockKeys(documentModel, blocksConfig, context).includes(blockId)
+        : Boolean(blocksConfig[blockId]);
+      let detail;
+      if (elementFile) {
+        detail = describeElement(elementFile, true);
+      } else if (hasBlock) {
+        detail = describe(blockId, blocksConfig[blockId], true);
+      }
       if (!detail) {
         res.set('Cache-Control', 'no-store');
         sendError(
@@ -680,9 +688,13 @@ async function blocksSchema(req, res, next) {
       return;
     }
 
-    const items = documentModel?.items
-      ? documentModel.items(helpers)
-      : helpers.blocks();
+    // The elements of the document model, then its blocks.
+    const items = [
+      ...elementFiles.map((file) => describeElement(file, false)),
+      ...getBlockKeys(documentModel, blocksConfig, context).map((key) =>
+        describe(key, blocksConfig[key], false),
+      ),
+    ];
     const document = documentModel ? getDocumentDocs(documentModel) : '';
     // Without a content item or type, the client also learns about the
     // other document models of the site.

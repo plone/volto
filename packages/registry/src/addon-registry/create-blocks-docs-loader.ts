@@ -4,10 +4,10 @@ import tmp from 'tmp';
 
 /*
  * A docs file documents a block (`block`, and optionally one of its
- * `variation`s), a native element of a document model (`element`), such as a
- * Plate `callout`, or a document model itself (`document_model`), that is how
- * a content type stores its blocks. `title` names an element, which has no
- * configuration with a title.
+ * `variation`s), a native element of a document model (`element`, with its
+ * `document_model`), such as a Plate `callout`, or a document model itself
+ * (`document_model` alone), that is how a content type stores its blocks.
+ * `title` names an element, which has no configuration with a title.
  */
 export type BlockDocsSource = {
   block?: string;
@@ -64,8 +64,8 @@ function findFiles(dir: string, found: string[] = []): string[] {
 
 /*
  * Finds the block docs (`*.block.md` files whose frontmatter names a `block`,
- * and optionally a `variation`, one or more comma-separated `element`s, or a
- * `document_model`) in the given folders, in order. When two files document
+ * and optionally a `variation`, one or more comma-separated `element`s of a
+ * `document_model`, or a `document_model`) in the given folders, in order. When two files document
  * the same block, variation, element or document model, the last one wins, so
  * add-ons listed after core can replace its docs.
  */
@@ -89,9 +89,10 @@ export function findBlocksDocs(paths: string[]): BlockDocsSource[] {
       } else if (element) {
         for (const name of element.split(',').map((item) => item.trim())) {
           if (!name) continue;
-          add(`element:${name}`, {
+          add(`element:${document_model || ''}:${name}`, {
             element: name,
             ...(title ? { title } : {}),
+            ...(document_model ? { document_model } : {}),
             path: file,
           });
         }

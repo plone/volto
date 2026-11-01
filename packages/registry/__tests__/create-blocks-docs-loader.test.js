@@ -1,4 +1,5 @@
 import fs from 'fs';
+import os from 'os';
 import path from 'path';
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import {
@@ -75,15 +76,51 @@ describe('findBlocksDocs', () => {
     const sources = findBlocksDocs([addon]).filter((source) => source.element);
 
     expect(sources).toEqual([
-      { element: 'h2', title: 'Heading', path: heading },
-      { element: 'h3', title: 'Heading', path: heading },
+      {
+        element: 'h2',
+        title: 'Heading',
+        document_model: 'plone.plate',
+        path: heading,
+      },
+      {
+        element: 'h3',
+        title: 'Heading',
+        document_model: 'plone.plate',
+        path: heading,
+      },
     ]);
+  });
+
+  test('keeps an element of the same name in each document model', () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'blocks-docs-'));
+    try {
+      fs.writeFileSync(
+        path.join(dir, 'a.block.md'),
+        '---\nelement: p\ndocument_model: plone.plate\n---\n',
+      );
+      fs.writeFileSync(
+        path.join(dir, 'b.block.md'),
+        '---\nelement: p\ndocument_model: other\n---\n',
+      );
+
+      expect(
+        findBlocksDocs([dir]).map(({ element, document_model }) => [
+          element,
+          document_model,
+        ]),
+      ).toEqual([
+        ['p', 'plone.plate'],
+        ['p', 'other'],
+      ]);
+    } finally {
+      fs.rmSync(dir, { recursive: true });
+    }
   });
 
   test('finds the docs of document models', () => {
     vi.spyOn(console, 'warn').mockImplementation(() => {});
     const sources = findBlocksDocs([core, addon]).filter(
-      (source) => source.document_model,
+      (source) => source.document_model && !source.element,
     );
 
     expect(sources).toEqual([
