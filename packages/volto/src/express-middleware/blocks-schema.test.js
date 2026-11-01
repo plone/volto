@@ -649,6 +649,12 @@ describe('/@blocks-schema middleware', () => {
             '---\ndocument_model: plone.blocks\n---\n\nBlocks are in `blocks`.\n',
         },
         {
+          element: 'blockquote',
+          document_model: 'plone.plate',
+          markdown:
+            '---\nelement: blockquote\ndocument_model: plone.plate\n---\n\nA quote.\n',
+        },
+        {
           document_model: 'plone.plate',
           markdown:
             '---\ndocument_model: plone.plate\n---\n\nOne Plate document.\n',
@@ -757,7 +763,9 @@ describe('/@blocks-schema middleware', () => {
         query: { type: 'WikiPage' },
       });
 
+      expect(body.document).toBe('One Plate document.');
       expect(body.items.map(({ id, kind }) => [id, kind])).toEqual([
+        ['blockquote', 'element'],
         ['p', 'element'],
         ['toggle', 'element'],
         ['alpha', 'block'],

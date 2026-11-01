@@ -174,10 +174,10 @@ function buildElementItem(file, url, full) {
 }
 
 // How content of a document model stores its blocks, from the `*.block.md`
-// file whose frontmatter names that `document_model`.
+// file whose frontmatter names that `document_model`, and no `element`.
 function getDocumentDocs(documentModel) {
   const file = blocksDocs.find(
-    (item) => item.document_model === documentModel.id,
+    (item) => item.document_model === documentModel.id && !item.element,
   );
   return file ? file.markdown.replace(FRONTMATTER, '').trim() : '';
 }
