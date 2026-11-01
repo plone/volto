@@ -9,6 +9,7 @@ import config from '@plone/volto/registry';
 import Api from '@plone/volto/helpers/Api/Api';
 import { isBlockRestricted } from '@plone/volto/helpers/Blocks/Blocks';
 import { applySchemaEnhancer } from '@plone/volto/helpers/Extensions/withBlockSchemaEnhancer';
+import { DEFAULT_DOCUMENT_MODEL } from '@plone/volto/config/documentModels';
 
 const intlCache = createIntlCache();
 
@@ -149,11 +150,49 @@ export function getSummary(markdown) {
   return first.replace(/\s*\n\s*/g, ' ').trim();
 }
 
+// A document model can have native elements, such as the nodes of a Plate
+// document, which aren't blocks. Their docs are `*.block.md` files whose
+// frontmatter names an `element`, and optionally its `title`.
+function getElementFile(element) {
+  return blocksDocs.find((item) => item.element === element);
+}
+
+export function buildElementItem(element, url, full) {
+  const file = getElementFile(element);
+  if (!file) return undefined;
+  const docs = file.markdown.replace(FRONTMATTER, '').trim();
+  const item = {
+    '@id': url,
+    id: element,
+    title: file.title || element,
+    kind: 'element',
+  };
+  if (full) {
+    item.docs = docs;
+    return item;
+  }
+  const description = getSummary(docs);
+  if (description) {
+    item.description = description;
+  }
+  return item;
+}
+
+// How content of a document model stores its blocks, from the `*.block.md`
+// file whose frontmatter names that `document_model`.
+function getDocumentDocs(documentModel) {
+  const file = blocksDocs.find(
+    (item) => item.document_model === documentModel.id,
+  );
+  return file ? file.markdown.replace(FRONTMATTER, '').trim() : '';
+}
+
 function buildSummaryItem(blockConfig, intl, url) {
   const item = {
     '@id': url,
     id: blockConfig.id,
     title: blockConfig.title,
+    kind: 'block',
   };
   const description = getSummary(resolveDocs(blockConfig, intl));
   if (description) {
@@ -168,6 +207,7 @@ function buildFullDetail(blockConfig, intl, url) {
       '@id': url,
       id: blockConfig.id,
       title: blockConfig.title,
+      kind: 'block',
       docs: resolveDocs(blockConfig, intl),
     },
     blockConfig,
@@ -275,25 +315,63 @@ export function blockToMarkdown(detail) {
   return parts.join('\n\n');
 }
 
-// The list links each block to its own URL, which has its docs and schema.
-export function blocksToMarkdown(items) {
-  const list = items.map((item) => {
-    let line = `- [${item.title}](${item['@id']}) (\`${item.id}\`)`;
-    if (item.description) line += `: ${item.description}`;
-    if (item.restricted === true) {
-      line += ' _Not offered in the block chooser._';
-    } else if (item.restricted === 'context') {
-      line += ' _Offered depending on the content._';
+function itemToMarkdown(item) {
+  let line = `- [${item.title}](${item['@id']}) (\`${item.id}\`)`;
+  if (item.description) line += `: ${item.description}`;
+  if (item.restricted === true) {
+    line += ' _Not offered in the block chooser._';
+  } else if (item.restricted === 'context') {
+    line += ' _Offered depending on the content._';
+  }
+  return line;
+}
+
+// The list starts with the document format: how content stores its blocks,
+// with the docs of its document model. It then links each item to its own
+// URL, which has its docs and schema, with the elements of the document model,
+// if it has any, before the blocks.
+export function blocksToMarkdown(
+  items,
+  { documentModel, document, documentModels = [] } = {},
+) {
+  const parts = [
+    '# Blocks',
+    "The blocks available on this site, and how content stores them. Follow an item's link for its documentation and the schema of its settings.",
+  ];
+
+  if (documentModel) {
+    parts.push(
+      '## Document format',
+      `_Document model \`${documentModel.id}\`, version ${documentModel.version}._`,
+    );
+    if (document) parts.push(document);
+    const others = documentModels.filter(
+      (model) => model.id !== documentModel.id,
+    );
+    if (others.length) {
+      const list = others.map((model) => {
+        const types = model.types?.length
+          ? `, used by ${model.types.map((type) => `\`${type}\``).join(', ')}`
+          : '';
+        return `- \`${model.id}\`, version ${model.version}${types}`;
+      });
+      parts.push(
+        'Some content types store their blocks with another document model. Ask `/<path>/@blocks-schema` for a content item, or `/@blocks-schema?type=<type>` for a content type, to get its document format and blocks.',
+        list.join('\n'),
+      );
     }
-    return line;
-  });
-  return (
-    [
-      '# Blocks',
-      "The blocks available on this site. Follow a block's link for its documentation and the schema of its settings. Block data is stored in the `blocks` field of a content item, keyed by block ID, with the block type in `@type`, and their order is in `blocks_layout.items`.",
-      list.join('\n'),
-    ].join('\n\n') + '\n'
-  );
+  }
+
+  const elements = items.filter((item) => item.kind === 'element');
+  const blocks = items.filter((item) => item.kind !== 'element');
+  if (elements.length) {
+    parts.push('## Elements', elements.map(itemToMarkdown).join('\n'));
+  }
+  if (blocks.length) {
+    parts.push('## Blocks', blocks.map(itemToMarkdown).join('\n'));
+  }
+
+  return parts.join('\n\n') + '\n';
 }
 
 // The endpoint returns the blocks' docs, which only exist on the server, so
@@ -427,6 +505,58 @@ const BACKEND_ERRORS = {
   404: 'Not Found',
 };
 
+// The document models are `documentModel` utilities, named by their ID. Core
+// registers `plone.blocks`, and add-ons register theirs.
+function getDocumentModels() {
+  return config
+    .getUtilities({ type: 'documentModel' })
+    .map(({ method }) => method());
+}
+
+function documentModelRef(documentModel) {
+  return { id: documentModel.id, version: documentModel.version };
+}
+
+// The content types that use a document model, from its `types` function.
+function getDocumentModelTypes(documentModel) {
+  if (typeof documentModel.types !== 'function') return [];
+  try {
+    const types = documentModel.types();
+    return Array.isArray(types) ? types : [];
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error(
+      `[blocks-schema] types() of the document model '${documentModel.id}' threw:`,
+      e,
+    );
+    return [];
+  }
+}
+
+function listDocumentModels(documentModels) {
+  return documentModels.map((documentModel) => {
+    const item = documentModelRef(documentModel);
+    const types = getDocumentModelTypes(documentModel);
+    if (types.length) item.types = types;
+    return item;
+  });
+}
+
+// The document model of a content type: the one whose `types` has it, or else
+// `plone.blocks`. For now only the frontend knows which content types use a
+// document model.
+function resolveDocumentModel(documentModels, type) {
+  const fallback =
+    documentModels.find((model) => model.id === DEFAULT_DOCUMENT_MODEL) ||
+    documentModels[0];
+  if (!type) return fallback;
+  return (
+    documentModels.find((model) =>
+      getDocumentModelTypes(model).includes(type),
+    ) || fallback
+  );
+}
+
 async function blocksSchema(req, res, next) {
   try {
     const intl = getIntl(res);
@@ -434,6 +564,10 @@ async function blocksSchema(req, res, next) {
     const markdown = wantsMarkdown(req);
     const path = req.params[0] || '';
     const blockId = req.params.blockId;
+    const type =
+      typeof req.query?.type === 'string' && req.query.type
+        ? req.query.type
+        : undefined;
 
     let auth;
     try {
@@ -451,24 +585,34 @@ async function blocksSchema(req, res, next) {
       try {
         context = await getContext(req, path, auth);
       } catch (error) {
-        const type = BACKEND_ERRORS[error?.status];
-        if (!type) throw error;
+        const errorType = BACKEND_ERRORS[error?.status];
+        if (!errorType) throw error;
         sendError(
           res,
           error.status,
-          type,
+          errorType,
           `Could not get the content at '${path}'.`,
           markdown,
         );
         return;
       }
+      // For content of a type that doesn't exist yet, in this container.
+      if (type) context.contentType = type;
     }
 
+    const documentModels = getDocumentModels();
+    const documentModel = resolveDocumentModel(
+      documentModels,
+      context?.contentType || type,
+    );
+
+    // The links keep the content type, so they keep its document model.
+    const query = type ? `?type=${encodeURIComponent(type)}` : '';
     const endpointURL = getEndpointURL(req);
-    const blockURL = (id) => `${endpointURL}/${encodeURIComponent(id)}`;
+    const itemURL = (id) => `${endpointURL}/${encodeURIComponent(id)}${query}`;
     // Links use the registry key, which is what the detail route looks up.
     const describe = (key, blockConfig, full) => {
-      const url = blockURL(key);
+      const url = itemURL(key);
       const item = full
         ? buildFullDetail(blockConfig, intl, url)
         : buildSummaryItem(blockConfig, intl, url);
@@ -482,11 +626,42 @@ async function blocksSchema(req, res, next) {
       return item;
     };
 
+    // What a document model builds its items from: the blocks offered here,
+    // or the given ones whether they are offered or not, and the elements
+    // with docs.
+    const helpers = {
+      blocksConfig,
+      context,
+      intl,
+      blocks: (keys) =>
+        (keys
+          ? keys
+              .filter((key) => blocksConfig[key])
+              .map((key) => [key, blocksConfig[key]])
+          : Object.entries(blocksConfig).filter(
+              ([, blockConfig]) =>
+                !context || !isRestrictedIn(blockConfig, context),
+            )
+        ).map(([key, blockConfig]) => describe(key, blockConfig, false)),
+      block: (key) =>
+        blocksConfig[key] ? describe(key, blocksConfig[key], true) : undefined,
+      elements: (names) =>
+        (
+          names ||
+          blocksDocs.filter((file) => file.element).map((file) => file.element)
+        )
+          .map((name) => buildElementItem(name, itemURL(name), false))
+          .filter(Boolean),
+      element: (name) => buildElementItem(name, itemURL(name), true),
+    };
+
     setCacheHeaders(res, Boolean(context));
 
     if (blockId) {
-      const blockConfig = blocksConfig[blockId];
-      if (!blockConfig) {
+      const detail = documentModel?.item
+        ? documentModel.item(blockId, helpers)
+        : helpers.block(blockId);
+      if (!detail) {
         res.set('Cache-Control', 'no-store');
         sendError(
           res,
@@ -497,7 +672,6 @@ async function blocksSchema(req, res, next) {
         );
         return;
       }
-      const detail = describe(blockId, blockConfig, true);
       if (markdown) {
         sendMarkdown(res, `${blockToMarkdown(detail)}\n`);
         return;
@@ -506,21 +680,34 @@ async function blocksSchema(req, res, next) {
       return;
     }
 
-    const items = Object.entries(blocksConfig)
-      .filter(
-        ([, blockConfig]) => !context || !isRestrictedIn(blockConfig, context),
-      )
-      .map(([key, blockConfig]) => describe(key, blockConfig, false));
+    const items = documentModel?.items
+      ? documentModel.items(helpers)
+      : helpers.blocks();
+    const document = documentModel ? getDocumentDocs(documentModel) : '';
+    // Without a content item or type, the client also learns about the
+    // other document models of the site.
+    const others = !context && !type && documentModels.length > 1;
 
     if (markdown) {
-      sendMarkdown(res, blocksToMarkdown(items));
+      sendMarkdown(
+        res,
+        blocksToMarkdown(items, {
+          documentModel,
+          document,
+          documentModels: others ? listDocumentModels(documentModels) : [],
+        }),
+      );
       return;
     }
-    res.json({
-      '@id': endpointURL,
-      items,
-      items_total: items.length,
-    });
+    const body = { '@id': `${endpointURL}${query}` };
+    if (documentModel) {
+      body.document_model = documentModelRef(documentModel);
+      if (document) body.document = document;
+    }
+    if (others) body.document_models = listDocumentModels(documentModels);
+    body.items = items;
+    body.items_total = items.length;
+    res.json(body);
   } catch (error) {
     next(error);
   }

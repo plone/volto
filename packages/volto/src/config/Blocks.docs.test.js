@@ -5,6 +5,7 @@ import { fillPlaceholders } from '@plone/volto/express-middleware/blocks-schema'
 
 const FRONTMATTER = /^---\n[\s\S]*?\n---\n/;
 const markdownOf = ({ markdown }) => markdown.replace(FRONTMATTER, '').trim();
+const blockDocs = blocksDocs.filter((file) => file.block);
 
 describe('Core block docs', () => {
   it('collects the *.block.md files of core and volto-slate', () => {
@@ -22,12 +23,12 @@ describe('Core block docs', () => {
 
   it('only documents blocks that exist', () => {
     const known = [...Object.keys(blocksConfig), 'slate', 'detachedSlate'];
-    for (const file of blocksDocs) {
+    for (const file of blockDocs) {
       expect(known).toContain(file.block);
     }
   });
 
-  it.each(blocksDocs.map((file) => [file.block, file]))(
+  it.each(blockDocs.map((file) => [file.block, file]))(
     '%s has Markdown whose JSON examples are valid block data',
     (block, file) => {
       const markdown = markdownOf(file);
@@ -39,6 +40,19 @@ describe('Core block docs', () => {
       }
     },
   );
+
+  it('documents the plone.blocks document model with a valid example', () => {
+    const file = blocksDocs.find(
+      (item) => item.document_model === 'plone.blocks',
+    );
+    const [, json] = markdownOf(file).match(/```json\n([\s\S]*?)\n```/);
+    const { blocks, blocks_layout } = JSON.parse(json);
+
+    expect(blocks_layout.items).toEqual(Object.keys(blocks));
+    for (const block of Object.values(blocks)) {
+      expect([...Object.keys(blocksConfig), 'slate']).toContain(block['@type']);
+    }
+  });
 
   it('fills the grid docs from its configuration', () => {
     const grid = blocksDocs.find((file) => file.block === 'gridBlock');
