@@ -4077,6 +4077,11 @@ msgstr "Dieser Name wird in der Adressleiste des Browsers angezeigt."
 msgid "This page does not seem to exist…"
 msgstr "Die Seite existiert leider nicht…"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
+msgstr "Diese Seite listet alle Inhalte auf, die auf dieses Objekt verweisen, entweder über einen Hyperlink im Text oder über ein Beziehungsfeld wie z. B. verwandte Inhalte. Prüfen Sie diese Liste, bevor Sie dieses Objekt verschieben, umbenennen oder löschen, damit keine Links ins Leere führen."
+
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "This rule is assigned to the following locations:"

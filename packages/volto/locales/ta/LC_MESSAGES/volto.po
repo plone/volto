@@ -4076,6 +4076,11 @@ msgstr "இந்த பெயர் முகவரி இல் காண்�
 msgid "This page does not seem to exist…"
 msgstr "இந்த பக்கம் இருப்பதாகத் தெரியவில்லை…"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
+msgstr ""
+
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "This rule is assigned to the following locations:"

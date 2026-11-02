@@ -102,6 +102,12 @@ const LinksToItem = (props) => {
             values={{ title: <q>{title}</q> }}
           />
         </Segment>
+        <Segment secondary>
+          <FormattedMessage
+            id="This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
+            defaultMessage="This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
+          />
+        </Segment>
         {relations_found ? (
           <Table selectable compact singleLine attached>
             {

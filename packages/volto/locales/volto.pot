@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-10-20T10:58:12.854Z\n"
+"POT-Creation-Date: 2026-11-02T12:19:54.432Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -4070,6 +4070,11 @@ msgstr ""
 #. Default: "This page does not seem to exist…"
 #: components/theme/NotFound/NotFound
 msgid "This page does not seem to exist…"
+msgstr ""
+
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
 msgstr ""
 
 #. Default: "This rule is assigned to the following locations:"
