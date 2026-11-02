@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2026-10-20T10:58:12.854Z\n"
+"POT-Creation-Date: 2026-11-02T13:42:14.470Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -4547,6 +4547,11 @@ msgstr ""
 #. Default: "We apologize for the inconvenience, but you don't have permissions on this resource."
 #: components/theme/Forbidden/Forbidden
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
+msgstr ""
+
+#. Default: "Website"
+#: components/theme/ContactForm/ContactForm
+msgid "Website"
 msgstr ""
 
 #. Default: "The"

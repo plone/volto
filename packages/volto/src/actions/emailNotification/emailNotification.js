@@ -12,9 +12,10 @@ import { EMAIL_NOTIFICATION } from '@plone/volto/constants/ActionTypes';
  * @param {string} message Old password.
  * @param {string} name New password.
  * @param {string} subject New password.
+ * @param {string} website Honeypot field, which only bots fill in.
  * @returns {Object} Edit password action.
  */
-export function emailNotification(from, message, name, subject) {
+export function emailNotification(from, message, name, subject, website) {
   return {
     type: EMAIL_NOTIFICATION,
     request: {
@@ -25,6 +26,7 @@ export function emailNotification(from, message, name, subject) {
         message,
         name,
         subject,
+        website,
       },
     },
   };

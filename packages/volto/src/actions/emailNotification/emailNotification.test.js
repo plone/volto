@@ -14,7 +14,20 @@ describe('Send email notification', () => {
         message: undefined,
         name: undefined,
         subject: undefined,
+        website: undefined,
       });
+    });
+
+    it('should send the honeypot field', () => {
+      const action = emailNotification(
+        'john@doe.com',
+        'Hi',
+        'John',
+        'Hello',
+        'https://spam.example.org',
+      );
+
+      expect(action.request.data.website).toEqual('https://spam.example.org');
     });
   });
 });

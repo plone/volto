@@ -49,6 +49,13 @@ export const HiddenWidget = loadable(
     ),
 );
 
+export const HoneypotWidget = loadable(
+  () =>
+    import(
+      /* webpackChunkName: "Widgets" */ '@plone/volto/components/manage/Widgets/HoneypotWidget'
+    ),
+);
+
 export const IdWidget = loadable(
   () =>
     import(

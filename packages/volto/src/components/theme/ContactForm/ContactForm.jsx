@@ -39,6 +39,10 @@ const messages = defineMessages({
     id: 'From',
     defaultMessage: 'From',
   },
+  website: {
+    id: 'Website',
+    defaultMessage: 'Website',
+  },
   subject: {
     id: 'Subject',
     defaultMessage: 'Subject',
@@ -97,8 +101,8 @@ const ContactFormComponent = () => {
   }, [intl, loaded, prevloading]);
 
   const onSubmit = (data) => {
-    const { from, message, name, subject } = data;
-    dispatch(emailNotification(from, message, name, subject));
+    const { from, message, name, subject, website } = data;
+    dispatch(emailNotification(from, message, name, subject, website));
   };
 
   const onCancel = useCallback(() => {
@@ -129,7 +133,8 @@ const ContactFormComponent = () => {
           schema={{
             fieldsets: [
               {
-                fields: ['name', 'from', 'subject', 'message'],
+                // website is a honeypot for spam bots, hidden with CSS.
+                fields: ['name', 'from', 'website', 'subject', 'message'],
                 id: 'default',
                 title: intl.formatMessage(messages.default),
               },
@@ -142,6 +147,11 @@ const ContactFormComponent = () => {
               from: {
                 title: intl.formatMessage(messages.from),
                 type: 'email',
+              },
+              website: {
+                title: intl.formatMessage(messages.website),
+                type: 'string',
+                widget: 'honeypot',
               },
               subject: {
                 title: intl.formatMessage(messages.subject),

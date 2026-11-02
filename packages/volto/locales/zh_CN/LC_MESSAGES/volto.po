@@ -4554,6 +4554,11 @@ msgstr ""
 msgid "We apologize for the inconvenience, but you don't have permissions on this resource."
 msgstr "很抱歉，您没有访问该资源的权限。"
 
+#. Default: "Website"
+#: components/theme/ContactForm/ContactForm
+msgid "Website"
+msgstr ""
+
 #. Default: "The"
 #: components/manage/Widgets/RecurrenceWidget/WeekdayOfTheMonthIndexField
 msgid "Weeek day of month"

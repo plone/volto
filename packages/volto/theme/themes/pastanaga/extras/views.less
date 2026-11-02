@@ -3,3 +3,10 @@
     margin: 2.5rem 0;
   }
 }
+
+// The website field of the contact form is a honeypot for spam bots: hide it
+// with CSS, not in the HTML.  display: none also keeps it from screen readers
+// and the tab order.
+#contact-form .field-wrapper-website {
+  display: none;
+}

@@ -33,6 +33,7 @@ exports[`Contact form > renders a contact form 1`] = `
       "fields": [
         "name",
         "from",
+        "website",
         "subject",
         "message"
       ],
@@ -48,6 +49,11 @@ exports[`Contact form > renders a contact form 1`] = `
     "from": {
       "title": "From",
       "type": "email"
+    },
+    "website": {
+      "title": "Website",
+      "type": "string",
+      "widget": "honeypot"
     },
     "subject": {
       "title": "Subject",
@@ -114,6 +120,7 @@ exports[`Contact form > renders a contact form with error message 1`] = `
       "fields": [
         "name",
         "from",
+        "website",
         "subject",
         "message"
       ],
@@ -129,6 +136,11 @@ exports[`Contact form > renders a contact form with error message 1`] = `
     "from": {
       "title": "From",
       "type": "email"
+    },
+    "website": {
+      "title": "Website",
+      "type": "string",
+      "widget": "honeypot"
     },
     "subject": {
       "title": "Subject",

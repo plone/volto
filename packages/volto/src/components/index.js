@@ -170,6 +170,7 @@ export {
   CheckboxWidget,
   FileWidget,
   HiddenWidget,
+  HoneypotWidget,
   IdWidget,
   PasswordWidget,
   QueryWidget,

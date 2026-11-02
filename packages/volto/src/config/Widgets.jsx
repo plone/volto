@@ -6,6 +6,7 @@ import {
   FileWidget,
   IdWidget,
   HiddenWidget,
+  HoneypotWidget,
   PasswordWidget,
   QueryWidget,
   QuerySortOnWidget,
@@ -103,6 +104,7 @@ export const widgetMapping = {
     schema: SchemaWidget,
     static_text: StaticTextWidget,
     hidden: HiddenWidget,
+    honeypot: HoneypotWidget,
     radio_group: RadioGroupWidget,
     checkbox_group: CheckboxGroupWidget,
     // SemanticUI Free widgets

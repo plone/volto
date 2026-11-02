@@ -1,0 +1,1 @@
+Added a `website` honeypot field to the contact form, hidden with CSS, and a `honeypot` widget for it that asks browsers and password managers not to fill it in. plone.restapi does not send the email when the field is filled in. @jladage

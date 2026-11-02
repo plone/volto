@@ -1,0 +1,50 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renders a honeypot widget component 1`] = `
+<div
+  className="inline field text field-wrapper-website"
+>
+  <div
+    className="ui grid"
+  >
+    <div
+      className="stretched row"
+    >
+      <div
+        className="four wide column"
+      >
+        <div
+          className="wrapper"
+        >
+          <label
+            htmlFor="field-website"
+            id="fieldset-default-field-label-website"
+          >
+            Website
+          </label>
+        </div>
+      </div>
+      <div
+        className="eight wide column"
+      >
+        <input
+          autoComplete="off"
+          data-1p-ignore=""
+          data-bwignore=""
+          data-lpignore="true"
+          id="field-website"
+          name="website"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <div
+          aria-atomic="true"
+          aria-live="polite"
+          className="visually-hidden"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
