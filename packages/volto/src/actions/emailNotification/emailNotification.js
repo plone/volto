@@ -12,9 +12,10 @@ import { EMAIL_NOTIFICATION } from '@plone/volto/constants/ActionTypes';
  * @param {string} message Old password.
  * @param {string} name New password.
  * @param {string} subject New password.
+ * @param {string} form_token Token from @form-token, when the backend has form tokens.
  * @returns {Object} Edit password action.
  */
-export function emailNotification(from, message, name, subject) {
+export function emailNotification(from, message, name, subject, form_token) {
   return {
     type: EMAIL_NOTIFICATION,
     request: {
@@ -25,6 +26,7 @@ export function emailNotification(from, message, name, subject) {
         message,
         name,
         subject,
+        ...(form_token && { form_token }),
       },
     },
   };

@@ -16,5 +16,17 @@ describe('Send email notification', () => {
         subject: undefined,
       });
     });
+
+    it('should send the form token along', () => {
+      const action = emailNotification(
+        'john@doe.com',
+        'Hi',
+        'John',
+        'Hello',
+        'token',
+      );
+
+      expect(action.request.data.form_token).toEqual('token');
+    });
   });
 });

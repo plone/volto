@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Container, Message } from 'semantic-ui-react';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
@@ -15,6 +15,7 @@ import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 import { usePrevious } from '@plone/volto/helpers/Utils/usePrevious';
 import { useClient } from '@plone/volto/hooks/client/useClient';
+import useFormToken from '@plone/volto/hooks/formToken/useFormToken';
 
 import backSVG from '@plone/volto/icons/back.svg';
 
@@ -83,6 +84,8 @@ const ContactFormComponent = () => {
   const { loaded, loading, error } = useEmailNotification();
 
   const prevloading = usePrevious(loading);
+  const { wait: waitForFormToken, refresh: refreshFormToken } = useFormToken();
+  const [waiting, setWaiting] = useState(false);
 
   useEffect(() => {
     if (prevloading && loaded) {
@@ -96,9 +99,21 @@ const ContactFormComponent = () => {
     }
   }, [intl, loaded, prevloading]);
 
+  useEffect(() => {
+    // The backend uses up the token with each submission, also a failed one.
+    if (prevloading && !loading) {
+      refreshFormToken();
+    }
+  }, [loading, prevloading, refreshFormToken]);
+
   const onSubmit = (data) => {
     const { from, message, name, subject } = data;
-    dispatch(emailNotification(from, message, name, subject));
+    // The backend only accepts the token once it is old enough.
+    setWaiting(true);
+    waitForFormToken().then((form_token) => {
+      setWaiting(false);
+      dispatch(emailNotification(from, message, name, subject, form_token));
+    });
   };
 
   const onCancel = useCallback(() => {
@@ -125,7 +140,7 @@ const ContactFormComponent = () => {
           submitLabel={intl.formatMessage(messages.send)}
           resetAfterSubmit
           title={intl.formatMessage(messages.contactForm)}
-          loading={loading}
+          loading={loading || waiting}
           schema={{
             fieldsets: [
               {
