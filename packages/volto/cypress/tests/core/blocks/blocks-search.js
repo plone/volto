@@ -143,6 +143,119 @@ describe('Search Block Tests', () => {
     cy.get('.search-details').should('contain', 'Search results: 1');
   });
 
+  it('Search block - test when listing and facet has same query', () => {
+    cy.get('#toolbar-add > .icon').click();
+    cy.get('#toolbar-add-document').click();
+    cy.getSlateTitle().focus().click().type('My Search Page');
+
+    // Add Search listing block
+    cy.addNewBlock('search');
+
+    // Add search query criteria
+    cy.get('#default-query-0-query .react-select__value-container').click();
+    cy.get('#default-query-0-query .react-select__option')
+      .contains('Type')
+      .click();
+
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Page')
+      .click();
+
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Folder')
+      .click();
+
+    cy.get('#default-query-0-query .fields:first-of-type > .field').click();
+    cy.get(
+      '#default-query-0-query .fields:first-of-type > .field .react-select__option',
+    )
+      .contains('Event')
+      .click();
+
+    //  Add checkbox facet with same query which is type.
+    cy.get('.add-item-button-wrapper > button').click();
+    cy.get('#field-field-1-facets-0 .react-select__value-container').click();
+    cy.get('.react-select__option').contains('Type').click();
+    cy.get('#field-title-0-facets-0').type('Type');
+    cy.get('#field-type-2-facets-0').click();
+    cy.get('.react-select__option').contains('Checkbox').click();
+    cy.get('label[for="field-multiple-3-facets-0"]').click();
+
+    // Save the page
+    cy.get('#toolbar-save > .icon').click();
+
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+
+    // test if type facet works
+    cy.get('.block.search .facets > .facet .entries > .entry label')
+      .contains('Event')
+      .click();
+
+    // After removing event url params should not contains event type in query
+    cy.location().should((loc) => {
+      expect(loc.search).to.eq(
+        '?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Document%22%2C%22Folder%22%5D%7D%5D&sort_order=ascending',
+      );
+    });
+
+    cy.get('.searchBlock-facets').findByText('My Event').should('not.exist');
+
+    // re enable the event type.
+    cy.get('.checkbox-facet').findByText('Event').click();
+
+    // then event should present in url params
+    cy.location().should((loc) => {
+      expect(loc.search).to.eq(
+        '?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Document%22%2C%22Folder%22%2C%22Event%22%5D%7D%5D&sort_order=ascending',
+      );
+    });
+
+    // Searching the event type using the search box
+    cy.get('.search-wrapper .search-input input').focus().type('Event');
+
+    // then we should see the event type.
+    cy.get('#page-document .listing-item:first-of-type a').should(
+      'have.attr',
+      'href',
+      '/my-event',
+    );
+
+    // and url params should contains searchable text in query
+    cy.location().should((loc) => {
+      expect(loc.search).to.eq(
+        '?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Document%22%2C%22Folder%22%2C%22Event%22%5D%7D%2C%7B%22i%22%3A%22SearchableText%22%2C%22o%22%3A%22paqo.string.contains%22%2C%22v%22%3A%22Event%22%7D%5D&sort_order=ascending',
+      );
+    });
+
+    // removing the text
+    cy.get(
+      '.search-wrapper .search-input .search-input-actions button.search-input-clear-icon-button',
+    ).click();
+
+    // then query should reset to previous value. which doesn't contains the searchable text and result should be three.
+    cy.location().should((loc) => {
+      expect(loc.search).to.eq(
+        '?query=%5B%7B%22i%22%3A%22portal_type%22%2C%22o%22%3A%22paqo.list.contains%22%2C%22v%22%3A%5B%22Document%22%2C%22Folder%22%2C%22Event%22%5D%7D%5D&sort_order=ascending',
+      );
+    });
+
+    // test search results number
+    cy.get('.search-details').should(
+      'contain',
+      `Search results: ${results_number}`,
+    );
+  });
+
   it('Search block - test date range facet', () => {
     cy.visit('/');
     cy.get('#toolbar-add > .icon').click();
