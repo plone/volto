@@ -4076,11 +4076,6 @@ msgstr "Deze naam wordt getoond in de URL."
 msgid "This page does not seem to exist…"
 msgstr "Deze pagina lijkt niet te bestaan…"
 
-#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
-#: components/manage/LinksToItem/LinksToItem
-msgid "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links."
-msgstr ""
-
 #. Default: "This rule is assigned to the following locations:"
 #: components/manage/Controlpanels/Rules/ConfigureRule
 msgid "This rule is assigned to the following locations:"
@@ -5021,6 +5016,11 @@ msgstr "Controleer referenties..."
 #: components/manage/Widgets/ImageWidget
 msgid "linkAnImage"
 msgstr "Vul een URL naar een afbeelding in"
+
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
 
 #. Default: "Listing"
 #: config/Blocks

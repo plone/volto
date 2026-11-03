@@ -20,7 +20,7 @@ exports[`LinksToItem > renders "links and references" view 1`] = `
       <div
         class="ui secondary segment"
       >
-        This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you move, rename, or delete this item to avoid breaking these links.
+        This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links.
       </div>
       <table
         class="ui selectable single line attached compact table"
