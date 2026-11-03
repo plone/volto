@@ -19,7 +19,13 @@ function getLocalIdent(loaderContext, localIdentName, localName, options) {
   // eslint-disable-next-line no-param-reassign
   options.content = `${options.hashPrefix}${relativeResourcePath}\x00${localName}`;
 
-  return interpolateName(loaderContext, localIdentName, options);
+  // css-loader does not post-process localIdentName when a custom getLocalIdent is defined.
+  // Therefore we must manually replace the [local] token before calling interpolateName.
+  const finalLocalIdentName = localIdentName.includes('[local]')
+    ? localIdentName.replace(/\[local\]/g, localName)
+    : localIdentName;
+
+  return interpolateName(loaderContext, finalLocalIdentName, options);
 }
 
 const hasPostCssConfig = () => {
