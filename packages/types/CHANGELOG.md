@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.2.1 (2026-10-29)
+
+### Bugfix
+
+- Added `schemaEnhancer` to `BlockExtension`, the type of block variations, which Volto already supports. @sneridagh 
+
 ## 2.2.0 (2026-10-27)
 
 ### Feature

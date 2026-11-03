@@ -176,6 +176,11 @@ export interface BlockExtension {
   render?: React.ComponentType<any>;
   view?: React.ComponentType<any>;
   fullobjects?: boolean;
+  /**
+   * Enhances the block's schema while this variation is selected. It's
+   * applied before the block's own `schemaEnhancer`.
+   */
+  schemaEnhancer?: (args: SchemaEnhancerArgs) => JSONSchema;
 }
 
 export interface SlateBlock extends BlockConfigBase {
