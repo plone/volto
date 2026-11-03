@@ -5018,6 +5018,11 @@ msgstr "Comprobación de referencias..."
 msgid "linkAnImage"
 msgstr "Introduzca la URL de una imagen"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
