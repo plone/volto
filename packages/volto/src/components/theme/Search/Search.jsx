@@ -31,17 +31,20 @@ const messages = defineMessages({
   },
 });
 
-const Search = (props) => {
+const Search = () => {
   const intl = useIntl();
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
   const isClient = useClient();
-  const { search } = props;
 
   const defaultPageSize = config.settings.defaultPageSize;
 
+  // Read everything the search results render from the store, so that it is
+  // updated on every search, and not only on the one the route resolved with.
   const items = useSelector((state) => state.search.items);
+  const total = useSelector((state) => state.search.total);
+  const batching = useSelector((state) => state.search.batching);
   const searchableText = qs.parse(location.search).SearchableText;
   const pathname = location.pathname;
 
@@ -89,6 +92,7 @@ const Search = (props) => {
   }, [items]);
 
   const options = qs.parse(location.search);
+  const totalPages = Math.ceil(total / (options.b_size || defaultPageSize));
 
   const Container =
     config.getComponent({ name: 'Container' }).component || SemanticContainer;
@@ -125,9 +129,9 @@ const Search = (props) => {
 
             <SearchTags />
 
-            {search?.items_total > 0 ? (
+            {total > 0 ? (
               <div className="items_total">
-                {search.items_total}{' '}
+                {total}{' '}
                 <FormattedMessage id="results found" defaultMessage="results" />
                 <Header>
                   <Header.Content className="header-content">
@@ -223,27 +227,25 @@ const Search = (props) => {
               </article>
             ))}
 
-            {search?.batching && (
+            {totalPages > 1 && (
               <div className="search-footer">
                 <Pagination
                   activePage={currentPage}
-                  totalPages={Math.ceil(
-                    search.items_total / (options.b_size || defaultPageSize),
-                  )}
+                  totalPages={totalPages}
                   onPageChange={handleQueryPaginationChange}
                   firstItem={null}
                   lastItem={null}
                   prevItem={{
                     content: <Icon name={paginationLeftSVG} size="18px" />,
                     icon: true,
-                    'aria-disabled': !search.batching.prev,
-                    className: !search.batching.prev ? 'disabled' : null,
+                    'aria-disabled': !batching?.prev,
+                    className: !batching?.prev ? 'disabled' : null,
                   }}
                   nextItem={{
                     content: <Icon name={paginationRightSVG} size="18px" />,
                     icon: true,
-                    'aria-disabled': !search.batching.next,
-                    className: !search.batching.next ? 'disabled' : null,
+                    'aria-disabled': !batching?.next,
+                    className: !batching?.next ? 'disabled' : null,
                   }}
                 />
               </div>
