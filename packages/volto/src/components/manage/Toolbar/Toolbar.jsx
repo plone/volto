@@ -685,7 +685,8 @@ class Toolbar extends Component {
                   name="main.toolbar.bottom"
                   params={{ onClickHandler: this.toggleMenu }}
                 />
-                {!this.props.hideDefaultViewButtons && (
+                {(!this.props.hideDefaultViewButtons ||
+                  this.props.showPersonalTools) && (
                   <button
                     className="user"
                     aria-label={this.props.intl.formatMessage(
