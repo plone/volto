@@ -10,7 +10,11 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Image from '@plone/volto/components/theme/Image/Image';
 import { getUser } from '@plone/volto/actions/users/users';
 import { Pluggable } from '@plone/volto/components/manage/Pluggable';
-import { expandToBackendURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
+import {
+  expandToBackendURL,
+  flattenToAppURL,
+  getBaseUrl,
+} from '@plone/volto/helpers/Url/Url';
 import logoutSVG from '@plone/volto/icons/log-out.svg';
 import rightArrowSVG from '@plone/volto/icons/right-key.svg';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -51,6 +55,10 @@ const PersonalTools = (props) => {
     state.actions?.actions?.user?.find(
       (action) => action?.id === 'plone_setup',
     ),
+  );
+  const personalToolsActions = useSelector(
+    (state) => state.actions?.actions?.personal_tools,
+    shallowEqual,
   );
   useEffect(() => {
     dispatch(getUser(userId));
@@ -109,32 +117,51 @@ const PersonalTools = (props) => {
       <div className="pastanaga-menu-list">
         {/* This (probably also) should be a Component by itself*/}
         <ul>
-          <li>
-            <Link
-              id={intl.formatMessage(messages.profile)}
-              to="/personal-information"
-            >
-              <FormattedMessage id="Profile" defaultMessage="Profile" />
-              <Icon name={rightArrowSVG} size="24px" />
-            </Link>
-          </li>
-          <li>
-            <button
-              aria-label={intl.formatMessage(messages.preferences)}
-              onClick={() => push('preferences')}
-            >
-              <FormattedMessage id="Preferences" defaultMessage="Preferences" />
-              <Icon name={rightArrowSVG} size="24px" />
-            </button>
-          </li>
+          {personalToolsActions?.length ? (
+            personalToolsActions.map((action) => (
+              <li key={action.id}>
+                <Link to={flattenToAppURL(action.url)}>
+                  {action.title}
+                  <Icon name={rightArrowSVG} size="24px" />
+                </Link>
+              </li>
+            ))
+          ) : (
+            <>
+              <li>
+                <Link
+                  id={intl.formatMessage(messages.profile)}
+                  to="/personal-information"
+                >
+                  <FormattedMessage id="Profile" defaultMessage="Profile" />
+                  <Icon name={rightArrowSVG} size="24px" />
+                </Link>
+              </li>
+              <li>
+                <button
+                  aria-label={intl.formatMessage(messages.preferences)}
+                  onClick={() => push('preferences')}
+                >
+                  <FormattedMessage
+                    id="Preferences"
+                    defaultMessage="Preferences"
+                  />
+                  <Icon name={rightArrowSVG} size="24px" />
+                </button>
+              </li>
 
-          {siteSetupAction && (
-            <li>
-              <Link to="/controlpanel">
-                <FormattedMessage id="Site Setup" defaultMessage="Site Setup" />
-                <Icon name={rightArrowSVG} size="24px" />
-              </Link>
-            </li>
+              {siteSetupAction && (
+                <li>
+                  <Link to="/controlpanel">
+                    <FormattedMessage
+                      id="Site Setup"
+                      defaultMessage="Site Setup"
+                    />
+                    <Icon name={rightArrowSVG} size="24px" />
+                  </Link>
+                </li>
+              )}
+            </>
           )}
           <Pluggable name="toolbar-user-menu" />
         </ul>
