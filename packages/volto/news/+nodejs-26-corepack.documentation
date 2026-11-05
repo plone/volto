@@ -1,0 +1,1 @@
+Documented that Node.js 25 and later no longer include corepack, so you must install corepack or pnpm manually when using Node.js 26. @sneridagh
