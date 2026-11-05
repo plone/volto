@@ -13,7 +13,33 @@ describe('Aliases action', () => {
       expect(action.type).toEqual(GET_ALIASES);
       expect(action.request.op).toEqual('get');
       expect(action.request.path).toEqual(
-        '/news/@aliases?q=&b_start=0&b_size=99999999999',
+        '/news/@aliases?b_start=0&b_size=99999999999',
+      );
+    });
+
+    it('should skip empty options and apply defaults', () => {
+      const action = getAliases('/news', {
+        query: '',
+        manual: '',
+        datetime: null,
+        start: undefined,
+        batchSize: '',
+        batchStart: null,
+      });
+      expect(action.request.path).toEqual(
+        '/news/@aliases?b_start=0&b_size=99999999999',
+      );
+    });
+
+    it('should keep non-empty options', () => {
+      const action = getAliases('/news', {
+        query: 'foo',
+        manual: false,
+        batchSize: 10,
+        batchStart: 20,
+      });
+      expect(action.request.path).toEqual(
+        '/news/@aliases?q=foo&b_start=20&b_size=10&manual=false',
       );
     });
   });
