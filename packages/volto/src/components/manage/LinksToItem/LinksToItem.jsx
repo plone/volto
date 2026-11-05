@@ -92,7 +92,7 @@ const LinksToItem = (props) => {
     return <Unauthorized />;
   }
   return (
-    <Container id="linkstoitem">
+    <Container id="linkstoitem" className="linkstoitem">
       <Helmet title={intl.formatMessage(messages.linkstoitem)} />
       <Segment.Group raised>
         <Segment className="primary">
