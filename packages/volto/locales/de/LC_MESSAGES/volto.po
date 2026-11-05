@@ -5018,6 +5018,11 @@ msgstr "Link-Integrität: Verweise werden geprüft…"
 msgid "linkAnImage"
 msgstr "Gib eine URL zu einem Bild ein"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr "Diese Seite listet alle Inhalte auf, die auf dieses Objekt verweisen, entweder über einen Hyperlink im Text oder über ein Beziehungsfeld wie z. B. verwandte Inhalte. Prüfen Sie diese Liste, bevor Sie dieses Objekt löschen, damit keine Links ins Leere führen."
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
