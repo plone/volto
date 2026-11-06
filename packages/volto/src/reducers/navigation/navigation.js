@@ -10,6 +10,7 @@ import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 import {
   GET_CONTENT,
   GET_NAVIGATION,
+  LOGOUT,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -44,6 +45,9 @@ function getRecursiveItems(items) {
 export default function navigation(state = initialState, action = {}) {
   let hasExpander;
   switch (action.type) {
+    case `${LOGOUT}_SUCCESS`:
+    case `${LOGOUT}_FAIL`:
+      return initialState;
     case `${GET_NAVIGATION}_PENDING`:
       return {
         ...state,
