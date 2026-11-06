@@ -491,7 +491,7 @@ msgstr "Regras de contido dispoñibles:"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2280,7 +2280,7 @@ msgid "Logo of"
 msgstr "Logo de"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Pechar Sesión"
 
@@ -2912,7 +2912,7 @@ msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -2939,7 +2939,7 @@ msgid "Preview Image URL"
 msgstr "URL da Imaxe de Vista Previa"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Perfil"
 
@@ -3616,7 +3616,7 @@ msgstr "Administración do Sitio"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Configuración do Sitio"
@@ -5450,7 +5450,7 @@ msgid "url"
 msgstr "A entrada debe ser unha URL válida (www.algo.com ou http(s)://www.algo.com)"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "Avatar do usuario"
 

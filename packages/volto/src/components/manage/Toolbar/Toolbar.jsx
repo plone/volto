@@ -43,6 +43,17 @@ import backSVG from '@plone/volto/icons/back.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import UserAvatar from './UserAvatar';
 
+/**
+ * Tell whether a pathname is a site setup (control panel) page, with or
+ * without a language prefix, such as ``/controlpanel`` or ``/en/controlpanel``.
+ * @param {string} pathname Current pathname.
+ * @returns {boolean} True for control panel pages.
+ */
+const isControlPanelPath = (pathname) => {
+  const [first = '', second = ''] = (pathname || '').split('/').filter(Boolean);
+  return first === 'controlpanel' || second === 'controlpanel';
+};
+
 const messages = defineMessages({
   edit: {
     id: 'Edit',
@@ -685,7 +696,8 @@ class Toolbar extends Component {
                   name="main.toolbar.bottom"
                   params={{ onClickHandler: this.toggleMenu }}
                 />
-                {!this.props.hideDefaultViewButtons && (
+                {(!this.props.hideDefaultViewButtons ||
+                  isControlPanelPath(this.props.pathname)) && (
                   <button
                     className="user"
                     aria-label={this.props.intl.formatMessage(
