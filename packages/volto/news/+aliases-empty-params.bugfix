@@ -1,0 +1,1 @@
+Fixed the aliases views sending empty query parameters (for example `b_size=`) to the `@aliases` endpoint, which caused errors with `plone.restapi` 10 and later. The `getAliases` action now also skips empty options and applies the `b_size` default when an empty value is passed. @cekk
