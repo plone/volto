@@ -17,6 +17,23 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.7.0 (2026-11-06)
+
+### Feature
+
+- Added a short description to the "Links and references" (`links-to-item`) view explaining what it lists. @iFlameing [#linkstoitem-description](https://github.com/plone/volto/issues/linkstoitem-description)
+- The Personal tools menu now lists the entries from the site's `personal_tools` actions, so entries added or removed by add-ons and site customizations appear in the toolbar. An entry whose URL is the name of a toolbar panel, such as `preferences`, opens that panel. The built-in links remain when that category is missing or empty. The menu stays available on site setup pages and remains hidden while editing content. @ericof [#8507](https://github.com/plone/volto/issues/8507)
+- Added support for Node.js 26, and removed support for Node.js 22. Volto now supports and tests the latest two Node.js LTS versions, 24 and 26. Node.js 22 may still work, but it is no longer tested. @sneridagh 
+
+### Bugfix
+
+- Fixed shrink/expand sidebar button not having a visible keyboard focus indicator. @Humanaice [#8394](https://github.com/plone/volto/issues/8394)
+- Fixed the aliases views sending empty query parameters (for example `b_size=`) to the `@aliases` endpoint, which caused errors with `plone.restapi` 10 and later. The `getAliases` action now also skips empty options and applies the `b_size` default when an empty value is passed. @cekk 
+
+### Documentation
+
+- Documented that Node.js 25 and later no longer include corepack, so you must install corepack or pnpm manually when using Node.js 26. @sneridagh 
+
 ## 19.6.1 (2026-10-29)
 
 ### Internal
