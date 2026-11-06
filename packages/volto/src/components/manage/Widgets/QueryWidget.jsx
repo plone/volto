@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/QuerystringWidget
  */
 
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
@@ -396,7 +397,7 @@ export class QuerystringWidgetComponent extends Component {
       intl,
     } = this.props;
 
-    const Select = reactSelect.default;
+    const Select = withSelectMenuPortal(reactSelect.default);
 
     return (
       <Form.Field

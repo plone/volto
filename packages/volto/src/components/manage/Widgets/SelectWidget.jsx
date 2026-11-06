@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -208,7 +209,7 @@ class SelectWidget extends Component {
     } = this.props;
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
-    const Select = this.props.reactSelect.default;
+    const Select = withSelectMenuPortal(this.props.reactSelect.default);
 
     let options = this.props.vocabBaseUrl
       ? this.props.choices

@@ -88,3 +88,35 @@ test("No 'No value' option when default value is 0", async () => {
   );
   expect(container).toMatchSnapshot();
 });
+
+test('workflow state choices escape scrolling modal content', async () => {
+  const store = mockStore({ intl: { locale: 'en', messages: {} } });
+  const onChange = vi.fn();
+  const { container } = render(
+    <Provider store={store}>
+      <div className="ui modal">
+        <div className="scrolling content">
+          <SelectWidget
+            id="wf_states"
+            title="Workflow state"
+            choices={[
+              ['private', 'Private'],
+              ['published', 'Published'],
+            ]}
+            onChange={onChange}
+          />
+        </div>
+      </div>
+    </Provider>,
+  );
+  await waitFor(() => screen.getByText('Workflow state'));
+  fireEvent.mouseDown(
+    container.querySelector('.react-select__dropdown-indicator'),
+    { button: 0 },
+  );
+  const option = screen.getByText('Published');
+  expect(option.closest('.scrolling.content')).toBeNull();
+  expect(option.closest('.ui.modal')).toBeTruthy();
+  fireEvent.click(option);
+  expect(onChange).toHaveBeenCalledWith('wf_states', 'published');
+});

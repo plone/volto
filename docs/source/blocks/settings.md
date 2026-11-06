@@ -206,6 +206,26 @@ const groupBlocksOrder = [
 
 You can change it (and add your own group) in your project configuration object.
 
+### BlockChooser variation display and search
+
+By default, when searching in the block chooser, Volto also matches block
+variation titles (for example, searching "Facets on right side" finds the
+Search block) and shows the matching variation below the block title.
+
+To limit the chooser to block titles only:
+
+```js
+const applyConfig = (config) => {
+  config.blocks.showVariationTitlesInChooser = false;
+  config.blocks.searchVariationsInChooser = false;
+
+  return config;
+};
+```
+
+- `showVariationTitlesInChooser` — show matching variation titles in search results
+- `searchVariationsInChooser` — include variation titles in search matching
+
 ### initialBlocks - Initial Blocks per content type
 
 By default, the default blocks for all content types are a title block and a text block. You can override this and provide your own by modifying the configuration object:
