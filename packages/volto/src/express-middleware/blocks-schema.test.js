@@ -1,5 +1,6 @@
 import config from '@plone/volto/registry';
 
+import registerDocumentModels from '@plone/volto/config/documentModels';
 import blocksSchemaMiddleware, {
   clearValidatedTokens,
   fillPlaceholders,
@@ -119,6 +120,10 @@ async function invokeMiddleware({
 describe('/@blocks-schema middleware', () => {
   const originalBlocks = config.blocks;
 
+  beforeAll(() => {
+    registerDocumentModels(config);
+  });
+
   beforeEach(() => {
     clearValidatedTokens();
     apiGet.mockReset();
@@ -177,22 +182,26 @@ describe('/@blocks-schema middleware', () => {
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
       '@id': `${BASE}/@blocks-schema`,
+      document_model: { id: 'plone.blocks', version: 1 },
       items: [
         {
           '@id': `${BASE}/@blocks-schema/alpha`,
           id: 'alpha',
           title: 'Alpha',
+          kind: 'block',
           description: 'The Alpha block, for alpha content.',
         },
         {
           '@id': `${BASE}/@blocks-schema/beta`,
           id: 'beta',
           title: 'Beta',
+          kind: 'block',
         },
         {
           '@id': `${BASE}/@blocks-schema/gamma`,
           id: 'gamma',
           title: 'Gamma',
+          kind: 'block',
           description: 'The Gamma block. It has 2 variations.',
         },
       ],
@@ -216,6 +225,7 @@ describe('/@blocks-schema middleware', () => {
         '@id': `${BASE}/@blocks-schema/alpha`,
         id: 'alpha',
         title: 'Alpha',
+        kind: 'block',
         docs: 'The Alpha block,\nfor alpha content.\n\n### Example\n\nUse it.',
         schema: {
           title: 'Alpha schema',
@@ -228,6 +238,7 @@ describe('/@blocks-schema middleware', () => {
         '@id': `${BASE}/@blocks-schema/beta`,
         id: 'beta',
         title: 'Beta',
+        kind: 'block',
         docs: '',
         schema: null,
       },
@@ -235,6 +246,7 @@ describe('/@blocks-schema middleware', () => {
         '@id': `${BASE}/@blocks-schema/gamma`,
         id: 'gamma',
         title: 'Gamma',
+        kind: 'block',
         docs: 'The Gamma block. It has 2 variations.',
         schema: null,
         variations: [
@@ -607,6 +619,266 @@ describe('/@blocks-schema middleware', () => {
     });
   });
 
+  describe('document models', () => {
+    const plate = {
+      id: 'plone.plate',
+      version: 2,
+      types: () => ['WikiPage'],
+      elements: () => ['p'],
+      blocks: () => ['beta'],
+    };
+    const wiki = {
+      '@id': '/wiki',
+      '@type': 'WikiPage',
+      title: 'Wiki',
+      '@components': { navroot: { navroot: { '@id': '/', title: 'Site' } } },
+    };
+    const registerPlate = () =>
+      config.registerUtility({
+        name: 'plone.plate',
+        type: 'documentModel',
+        method: () => plate,
+      });
+
+    beforeEach(() => {
+      setDocsFiles([
+        ...docsFiles,
+        {
+          document_model: 'plone.blocks',
+          markdown:
+            '---\ndocument_model: plone.blocks\n---\n\nBlocks are in `blocks`.\n',
+        },
+        {
+          element: 'blockquote',
+          document_model: 'plone.plate',
+          markdown:
+            '---\nelement: blockquote\ndocument_model: plone.plate\n---\n\nA quote.\n',
+        },
+        {
+          document_model: 'plone.plate',
+          markdown:
+            '---\ndocument_model: plone.plate\n---\n\nOne Plate document.\n',
+        },
+        {
+          element: 'p',
+          title: 'Paragraph',
+          document_model: 'plone.plate',
+          markdown:
+            '---\nelement: p\ntitle: Paragraph\ndocument_model: plone.plate\n---\n\nA paragraph.\n\nMore.\n',
+        },
+        {
+          element: 'toggle',
+          document_model: 'plone.plate',
+          markdown:
+            '---\nelement: toggle\ndocument_model: plone.plate\n---\n\nA toggle.\n',
+        },
+        {
+          element: 'row',
+          document_model: 'other',
+          markdown: '---\nelement: row\ndocument_model: other\n---\n\nA row.\n',
+        },
+      ]);
+      apiGet.mockImplementation(async (path) =>
+        path === '/wiki' ? wiki : backend(path),
+      );
+    });
+
+    afterEach(() => {
+      delete config.utilities.documentModel['plone.plate'];
+      vi.restoreAllMocks();
+    });
+
+    it('announces plone.blocks and its docs', async () => {
+      const { body } = await invokeMiddleware({});
+
+      expect(body.document_model).toEqual({ id: 'plone.blocks', version: 1 });
+      expect(body.document).toBe('Blocks are in `blocks`.');
+      expect(body.document_models).toBeUndefined();
+    });
+
+    it('lists the document models of the site, with their types', async () => {
+      registerPlate();
+      const { body } = await invokeMiddleware({});
+
+      expect(body.document_model).toEqual({ id: 'plone.blocks', version: 1 });
+      expect(body.document_models).toEqual([
+        { id: 'plone.blocks', version: 1 },
+        { id: 'plone.plate', version: 2, types: ['WikiPage'] },
+      ]);
+      expect(body.items.map((item) => item.id)).toEqual([
+        'alpha',
+        'beta',
+        'gamma',
+      ]);
+    });
+
+    it('uses the document model whose types have the type', async () => {
+      registerPlate();
+      const { body } = await invokeMiddleware({
+        url: '/@blocks-schema?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+
+      expect(apiGet).not.toHaveBeenCalledWith(
+        expect.stringMatching(/^\/@types/),
+        expect.anything(),
+      );
+      expect(body).toEqual({
+        '@id': `${BASE}/@blocks-schema?type=WikiPage`,
+        document_model: { id: 'plone.plate', version: 2 },
+        document: 'One Plate document.',
+        items: [
+          {
+            '@id': `${BASE}/@blocks-schema/p?type=WikiPage`,
+            id: 'p',
+            title: 'Paragraph',
+            kind: 'element',
+            description: 'A paragraph.',
+          },
+          {
+            '@id': `${BASE}/@blocks-schema/beta?type=WikiPage`,
+            id: 'beta',
+            title: 'Beta',
+            kind: 'block',
+          },
+        ],
+        items_total: 2,
+      });
+    });
+
+    it('lists the elements that name it and the blocks offered by default', async () => {
+      config.registerUtility({
+        name: 'plone.plate',
+        type: 'documentModel',
+        method: () => ({ id: 'plone.plate', version: 2, types: plate.types }),
+      });
+
+      const { body } = await invokeMiddleware({ query: { type: 'WikiPage' } });
+      const toggle = await invokeMiddleware({
+        url: '/@blocks-schema/toggle?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+      const row = await invokeMiddleware({
+        url: '/@blocks-schema/row?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+
+      expect(body.document).toBe('One Plate document.');
+      expect(body.items.map(({ id, kind }) => [id, kind])).toEqual([
+        ['blockquote', 'element'],
+        ['p', 'element'],
+        ['toggle', 'element'],
+        ['alpha', 'block'],
+        ['beta', 'block'],
+        ['gamma', 'block'],
+      ]);
+      expect(toggle.body.docs).toBe('A toggle.');
+      expect(row.status).toBe(404);
+    });
+
+    it('leaves out the elements and blocks the model does not list', async () => {
+      registerPlate();
+      const toggle = await invokeMiddleware({
+        url: '/@blocks-schema/toggle?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+      const gamma = await invokeMiddleware({
+        url: '/@blocks-schema/gamma?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+
+      expect(toggle.status).toBe(404);
+      expect(gamma.status).toBe(404);
+    });
+
+    it('ignores a document model whose types() throws', async () => {
+      const consoleError = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => {});
+      config.registerUtility({
+        name: 'plone.plate',
+        type: 'documentModel',
+        method: () => ({
+          ...plate,
+          types: () => {
+            throw new Error('No types');
+          },
+        }),
+      });
+
+      const { body } = await invokeMiddleware({ query: { type: 'WikiPage' } });
+
+      expect(body.document_model.id).toBe('plone.blocks');
+      expect(consoleError).toHaveBeenCalledWith(
+        expect.stringContaining("types() of the document model 'plone.plate'"),
+        expect.any(Error),
+      );
+    });
+
+    it('falls back to plone.blocks when the type is unknown', async () => {
+      registerPlate();
+      const { body } = await invokeMiddleware({ query: { type: 'Unknown' } });
+
+      expect(body.document_model.id).toBe('plone.blocks');
+    });
+
+    it('uses the document model of the content at the path', async () => {
+      registerPlate();
+      const { body } = await invokeMiddleware({ url: '/wiki/@blocks-schema' });
+
+      expect(body.document_model.id).toBe('plone.plate');
+      expect(body.document_models).toBeUndefined();
+      expect(body.items[0]['@id']).toBe(`${BASE}/wiki/@blocks-schema/p`);
+    });
+
+    it('returns an element of the document model at its link', async () => {
+      registerPlate();
+      const element = await invokeMiddleware({
+        url: '/@blocks-schema/p?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+      const notInModel = await invokeMiddleware({
+        url: '/@blocks-schema/alpha?type=WikiPage',
+        query: { type: 'WikiPage' },
+      });
+      const notInBlocks = await invokeMiddleware({
+        url: '/@blocks-schema/p',
+      });
+
+      expect(element.body).toEqual({
+        '@id': `${BASE}/@blocks-schema/p?type=WikiPage`,
+        id: 'p',
+        title: 'Paragraph',
+        kind: 'element',
+        docs: 'A paragraph.\n\nMore.',
+      });
+      expect(notInModel.status).toBe(404);
+      expect(notInBlocks.status).toBe(404);
+    });
+
+    it('starts the Markdown with the document format', async () => {
+      registerPlate();
+      const root = await invokeMiddleware({ headers: markdown });
+      const wikiPage = await invokeMiddleware({
+        url: '/@blocks-schema?type=WikiPage',
+        query: { type: 'WikiPage' },
+        headers: markdown,
+      });
+
+      expect(root.text).toContain(
+        '## Document format\n\n_Document model `plone.blocks`, version 1._\n\nBlocks are in `blocks`.\n\n',
+      );
+      expect(root.text).toContain(
+        '- `plone.plate`, version 2, used by `WikiPage`\n\n## Blocks\n\n- [Alpha]',
+      );
+      expect(wikiPage.text).toContain(
+        '_Document model `plone.plate`, version 2._\n\nOne Plate document.\n\n## Elements\n\n' +
+          `- [Paragraph](${BASE}/@blocks-schema/p?type=WikiPage) (\`p\`): A paragraph.\n\n## Blocks\n\n` +
+          `- [Beta](${BASE}/@blocks-schema/beta?type=WikiPage) (\`beta\`)\n`,
+      );
+    });
+  });
+
   describe('Markdown output', () => {
     const schema = (title, fields = []) => ({
       title,
@@ -784,17 +1056,24 @@ describe('/@blocks-schema middleware', () => {
 
       expect(apiGet).not.toHaveBeenCalledWith('/news', expect.anything());
       expect(response.body.items).toEqual([
-        { '@id': `${BASE}/@blocks-schema/text`, id: 'text', title: 'Text' },
+        {
+          '@id': `${BASE}/@blocks-schema/text`,
+          id: 'text',
+          title: 'Text',
+          kind: 'block',
+        },
         {
           '@id': `${BASE}/@blocks-schema/title`,
           id: 'title',
           title: 'Title',
+          kind: 'block',
           restricted: true,
         },
         {
           '@id': `${BASE}/@blocks-schema/folderish`,
           id: 'folderish',
           title: 'Folderish',
+          kind: 'block',
           restricted: 'context',
         },
       ]);
@@ -838,6 +1117,7 @@ describe('/@blocks-schema middleware', () => {
           '@id': `${BASE}/news/@blocks-schema/text`,
           id: 'text',
           title: 'Text',
+          kind: 'block',
         },
       ]);
     });

@@ -11,7 +11,7 @@ myst:
 
 # The `@blocks-schema` endpoint
 
-The `@blocks-schema` endpoint of the Volto server describes the blocks registered on a site.
+The `@blocks-schema` endpoint of the Volto server describes the blocks registered on a site, and how content stores them.
 For each block, it returns its documentation, the schema of its data, and its variations.
 To learn how to write the documentation that it returns, see {doc}`../blocks/documentation`.
 
@@ -52,24 +52,28 @@ Without a valid token, the endpoint returns `401 Unauthorized` with a `WWW-Authe
 GET /@blocks-schema HTTP/1.1
 ```
 
-This returns the ID, title, and summary of every registered block.
+This returns the document model of the content, with its documentation, and the ID, title, kind, and summary of every registered block.
 The summary is the first paragraph of the block's documentation.
 Each block's `@id` is the URL of that block, which returns its documentation and schema, as described in the next section.
 
 ```json
 {
   "@id": "http://localhost:3000/@blocks-schema",
+  "document_model": { "id": "plone.blocks", "version": 1 },
+  "document": "Content stores its blocks in two fields...",
   "items": [
     {
       "@id": "http://localhost:3000/@blocks-schema/slate",
       "id": "slate",
       "title": "Text",
+      "kind": "block",
       "description": "Holds rich text: a paragraph, a heading, a list or a quote, with inline formatting and links."
     },
     {
       "@id": "http://localhost:3000/@blocks-schema/title",
       "id": "title",
       "title": "Title",
+      "kind": "block",
       "description": "Shows the title of the content item.",
       "restricted": true
     }
@@ -77,6 +81,9 @@ Each block's `@id` is the URL of that block, which returns its documentation and
   "items_total": 2
 }
 ```
+
+`document_model` and `document` are described in {ref}`blocks-schema-document-model`.
+`kind` is `block` for a block, and `element` for a native element of the document model.
 
 `restricted` tells whether editors can add the block.
 It is `true` when the block chooser never offers it, and `"context"` when that depends on the content.
@@ -99,6 +106,7 @@ This returns the block's documentation, schema, and variations.
   "@id": "http://localhost:3000/@blocks-schema/teaser",
   "id": "teaser",
   "title": "Teaser",
+  "kind": "block",
   "docs": "Shows a card that links to one content item...",
   "schema": {
     "title": "Teaser",
@@ -138,7 +146,9 @@ GET /@blocks-schema HTTP/1.1
 Accept: text/markdown
 ```
 
-The list is a Markdown list, with a link to each block, its ID, and its summary.
+The list starts with a "Document format" section, with the document model and its documentation.
+It then has a Markdown list, with a link to each block, its ID, and its summary.
+When the document model has elements, they are listed in an "Elements" section, before the "Blocks" section.
 A block returns a section with its documentation, its variations, and its schema in a `json` code block.
 A variation's schema is only included when it differs from the block's.
 
@@ -170,6 +180,50 @@ The path only affects the `restricted` setting of the blocks.
 Container blocks, such as the grid block, limit the blocks they can contain with `allowedBlocks` in their own configuration.
 The documentation of such blocks describes which blocks they accept.
 ```
+
+(blocks-schema-document-model)=
+
+## Document model
+
+`document_model` tells how content stores its blocks, with an `id` and a `version`.
+`document` is the documentation of that document model, when it has one.
+A client reads both before it writes the blocks of a content item.
+
+`plone.blocks`, version 1
+:   Volto's document model.
+    The blocks are keyed by ID in the `blocks` field, with the block type in `@type`, and their order is in `blocks_layout.items`.
+
+Add-ons can add other document models, and use them for some content types.
+For example, volto-plate stores the content of the types that use the Plone Aurora editor as one Plate document, with the `plone.plate` document model.
+Its list has `element` items, the native nodes of the document, before the blocks that the document can hold.
+To add a document model, see {ref}`blocks-documentation-document-models`.
+
+The document model depends on the content type.
+Without a content item, the endpoint returns `plone.blocks`.
+When the site has other document models, it also lists them in `document_models`, with the content types that use them.
+A content type that no document model lists uses `plone.blocks`.
+
+```json
+{
+  "@id": "http://localhost:3000/@blocks-schema",
+  "document_model": { "id": "plone.blocks", "version": 1 },
+  "document_models": [
+    { "id": "plone.blocks", "version": 1 },
+    { "id": "plone.plate", "version": 1, "types": ["WikiPage"] }
+  ],
+  "items": ["..."],
+  "items_total": 12
+}
+```
+
+To get the document model and the items of a content type, ask for a content item, as described in {ref}`blocks-schema-context`, or add the type in the `type` parameter.
+
+```http
+GET /@blocks-schema?type=WikiPage HTTP/1.1
+```
+
+The `@id` links of the response keep the `type` parameter.
+With a content path, the `type` parameter is for content of that type created in that content item: it replaces the content type that the `restricted` settings of the blocks receive.
 
 ## Caching
 

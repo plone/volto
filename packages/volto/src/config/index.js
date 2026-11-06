@@ -24,6 +24,7 @@ import { installDefaultBlocks } from './Blocks';
 
 import { getSiteAsyncPropExtender } from '@plone/volto/helpers/Site';
 import { registerValidators } from './validation';
+import registerDocumentModels from './documentModels';
 
 import languages from '@plone/volto/constants/Languages.cjs';
 
@@ -247,6 +248,7 @@ Object.entries(slots).forEach(([slotName, components]) => {
 });
 
 registerValidators(ConfigRegistry);
+registerDocumentModels(ConfigRegistry);
 installDefaultComponents(ConfigRegistry);
 installDefaultWidgets(ConfigRegistry);
 installDefaultViews(ConfigRegistry);
