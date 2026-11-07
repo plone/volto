@@ -1,0 +1,1 @@
+Added a CI workflow that runs the Volto Light Theme frontend test suite against the Volto branch from the push, replacing the `core` folder with the pushed Volto branch. @wesleybl
