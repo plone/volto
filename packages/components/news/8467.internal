@@ -1,0 +1,1 @@
+Raise the minimum versions of `react-aria-components`, `@react-aria/utils` and `@react-spectrum/utils` to the tested ones (1.22.1, 3.34.1 and 3.13.1), so projects consuming `@plone/components` can't end up with two copies of the react-aria family. @wesleybl
