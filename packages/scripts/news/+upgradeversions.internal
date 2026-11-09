@@ -1,0 +1,1 @@
+Added `upgradeversions.js` script and `make upgrade-versions` targets to update `pnpm-lock.yaml` within the current ranges and bump `^`/`~` specifiers in `catalog.json` and workspace `package.json` files to the resolved versions. @wesleybl

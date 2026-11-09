@@ -47,9 +47,9 @@
     }
   },
   "devDependencies": {
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "release-it": "catalog:",
-    "typescript": "^5.7.3"
+    "typescript": "^5.9.3"
   }
 }

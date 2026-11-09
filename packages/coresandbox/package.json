@@ -34,9 +34,9 @@
   },
   "devDependencies": {
     "@plone/types": "workspace:*",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
     "@plone/registry": "workspace:*",
-    "@types/react-redux": "^7.1.33"
+    "@types/react-redux": "^7.1.34"
   }
 }
