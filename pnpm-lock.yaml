@@ -1072,8 +1072,8 @@ importers:
         specifier: 0.0.2
         version: 0.0.2
       svgo:
-        specifier: ^3.0.0
-        version: 3.3.3
+        specifier: ^3.3.5
+        version: 3.3.5
       svgo-loader:
         specifier: 3.0.3
         version: 3.0.3
@@ -12298,8 +12298,8 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
-  svgo@3.3.3:
-    resolution: {integrity: sha512-+wn7I4p7YgJhHs38k2TNjy1vCfPIfLIJWR5MnCStsN8WuuTcBnRKcMHQLMM2ijxGZmDoZwNv8ipl5aTTen62ng==}
+  svgo@3.3.5:
+    resolution: {integrity: sha512-8SQMzdrvWaD8deUmrnYB+ASyxBVgWUOilg+A75nE/76WdLpj6LopCwiAVvkzkcqy/9b7t2Mg7faFLjg0ZRcZ3w==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -27235,7 +27235,7 @@ snapshots:
       sax: 1.6.0
       stable: 0.1.8
 
-  svgo@3.3.3:
+  svgo@3.3.5:
     dependencies:
       commander: 7.2.0
       css-select: 5.2.2
