@@ -111,7 +111,7 @@
     "debug": "4.3.2",
     "deepmerge": "^4.3.1",
     "dependency-graph": "0.10.0",
-    "glob": "^10.4.5",
+    "glob": "^14.0.2",
     "tmp": "0.2.6"
   },
   "devDependencies": {
