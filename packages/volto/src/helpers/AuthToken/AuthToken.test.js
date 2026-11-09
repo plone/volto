@@ -12,7 +12,9 @@ vi.mock('universal-cookie', () => {
     set: vi.fn(),
   };
   return {
-    default: vi.fn(() => mCookie),
+    default: vi.fn(function () {
+      return mCookie;
+    }),
   };
 });
 
