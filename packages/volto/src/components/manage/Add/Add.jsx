@@ -7,11 +7,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import find from 'lodash/find';
 import keys from 'lodash/keys';
 import isEmpty from 'lodash/isEmpty';
 import { defineMessages, injectIntl } from 'react-intl';
 import { Button, Grid, Menu } from 'semantic-ui-react';
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import qs from 'query-string';
 import { toast } from 'react-toastify';
@@ -27,6 +29,8 @@ import Sidebar from '@plone/volto/components/manage/Sidebar/Sidebar';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import TranslationObject from '@plone/volto/components/manage/Multilingual/TranslationObject';
 import { Form } from '@plone/volto/components/manage/Form';
+import Forbidden from '@plone/volto/components/theme/Forbidden/Forbidden';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 
 import { getBaseUrl, flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import {
@@ -46,6 +50,7 @@ import {
   extractInvariantErrors,
 } from '@plone/volto/helpers/FormValidation/FormValidation';
 import BodyClass from '@plone/volto/helpers/BodyClass/BodyClass';
+import Api from '@plone/volto/helpers/Api/Api';
 import Helmet from '@plone/volto/helpers/Helmet/Helmet';
 
 import { preloadLazyLibs } from '@plone/volto/helpers/Loadable';
@@ -54,8 +59,13 @@ import config from '@plone/volto/registry';
 
 import saveSVG from '@plone/volto/icons/save.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import backSVG from '@plone/volto/icons/back.svg';
 
 const messages = defineMessages({
+  back: {
+    id: 'Back',
+    defaultMessage: 'Back',
+  },
   add: {
     id: 'Add {type}',
     defaultMessage: 'Add {type}',
@@ -111,6 +121,7 @@ class Add extends Component {
     schemaRequest: PropTypes.shape({
       loading: PropTypes.bool,
       loaded: PropTypes.bool,
+      error: PropTypes.object,
     }).isRequired,
     type: PropTypes.string,
     location: PropTypes.objectOf(PropTypes.any),
@@ -143,6 +154,8 @@ class Add extends Component {
       isClient: false,
       error: null,
       formSelected: 'addForm',
+      addable: null,
+      typesErrorStatus: null,
     };
   }
 
@@ -152,8 +165,49 @@ class Add extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
+    this._isMounted = true;
     this.props.getSchema(this.props.type, getBaseUrl(this.props.pathname));
+    this.checkAddable();
     this.setState({ isClient: true });
+  }
+
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
+  /**
+   * Check whether the type can be added in the add target. The shared
+   * `types` store may belong to the previously visited page, so the add
+   * target's @types are fetched directly.
+   * @method checkAddable
+   * @returns {undefined}
+   */
+  checkAddable() {
+    new Api()
+      .get(`${getBaseUrl(this.props.pathname)}/@types`)
+      .then((types) => {
+        if (this._isMounted) {
+          this.setState({
+            addable: !!find(types, { id: this.props.type })?.addable,
+          });
+        }
+      })
+      .catch((error) => {
+        if (this._isMounted) {
+          const status = error?.status;
+          this.setState({
+            // Do not block the form on unexpected errors; the backend still
+            // rejects the create request if it is not allowed.
+            addable: status !== 401 && status !== 403,
+            typesErrorStatus: status ?? null,
+          });
+        }
+      });
   }
 
   /**
@@ -256,12 +310,81 @@ class Add extends Component {
   form = React.createRef();
 
   /**
+   * Which access error page to show instead of the form, if any.
+   * @method getAccessError
+   * @returns {string|null} 'unauthorized', 'forbidden' or null.
+   */
+  getAccessError() {
+    // Only decide on the client: the server renders an empty view, and the
+    // schema error may be left over from a previous request until getSchema
+    // runs in componentDidMount.
+    if (!this.state.isClient) {
+      return null;
+    }
+
+    const status =
+      this.props.schemaRequest.error?.status ?? this.state.typesErrorStatus;
+
+    if (status === 401) {
+      return 'unauthorized';
+    }
+    if (status === 403 || this.state.addable === false) {
+      return this.props.token ? 'forbidden' : 'unauthorized';
+    }
+    return null;
+  }
+
+  /**
+   * Render the Unauthorized or Forbidden page.
+   * @method renderAccessError
+   * @param {string} accessError 'unauthorized' or 'forbidden'.
+   * @returns {string} Markup for the component.
+   */
+  renderAccessError(accessError) {
+    const { pathname, staticContext, intl } = this.props;
+
+    if (accessError === 'unauthorized') {
+      return <Unauthorized pathname={pathname} staticContext={staticContext} />;
+    }
+
+    const backButton = (
+      <Link to={getBaseUrl(pathname) || '/'} className="item">
+        <Icon
+          name={backSVG}
+          className="contents circled"
+          size="30px"
+          title={intl.formatMessage(messages.back)}
+        />
+      </Link>
+    );
+
+    return (
+      <>
+        <Forbidden pathname={pathname} staticContext={staticContext} />
+        {createPortal(
+          <Toolbar
+            pathname={pathname}
+            hideDefaultViewButtons
+            inner={backButton}
+          />,
+          document.getElementById('toolbar'),
+        )}
+      </>
+    );
+  }
+
+  /**
    * Render method.
    * @method render
    * @returns {string} Markup for the component.
    */
   render() {
-    if (this.props.schemaRequest.loaded) {
+    const accessError = this.getAccessError();
+    if (accessError) {
+      return this.renderAccessError(accessError);
+    }
+
+    if (this.props.schemaRequest.loaded && this.state.addable) {
       const visual = hasBlocksData(this.props.schema.properties);
       const blocksFieldname = getBlocksFieldname(this.props.schema.properties);
       const blocksLayoutFieldname = getBlocksLayoutFieldname(
@@ -512,6 +635,7 @@ export default compose(
       schemaRequest: state.schema,
       content: state.content.data,
       schema: state.schema.schema,
+      token: state.userSession?.token,
       pathname: props.location.pathname,
       returnUrl: qs.parse(props.location.search).return_url,
       type: qs.parse(props.location.search).type,

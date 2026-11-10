@@ -16,7 +16,9 @@ const Unauthorized = () => {
       <Redirect
         to={{
           pathname: `${location.pathname.replace(/\/$/, '')}/login`,
-          search: `?return_url=${encodeURIComponent(location.pathname)}`,
+          search: `?return_url=${encodeURIComponent(
+            location.pathname + location.search,
+          )}`,
           state: {
             // This is needed to cover the use case of being logged in in
             // another backend (eg. in development), having a token for
