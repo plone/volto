@@ -19,53 +19,35 @@ exports[`UndoControlpanel > renders undo controlpanel component 1`] = `
           class="ui segment"
         >
           <div
-            data-schema="{
-  "fieldsets": [
-    {
-      "id": "default",
-      "title": "Default",
-      "fields": [
-        "sortingTypes"
-      ]
-    }
-  ],
-  "properties": {
-    "sortingTypes": {
-      "title": "Sort by",
-      "description": "Sort transactions by User-Name, Path or Date",
-      "type": "string",
-      "choices": [
-        [
-          "User Name",
-          "User Name"
-        ],
-        [
-          "Path",
-          "Path"
-        ],
-        [
-          "Date",
-          "Date"
-        ]
-      ]
-    },
-    "sortByUsername": {
-      "title": "Enter Username",
-      "type": "string"
-    },
-    "sortByPath": {
-      "title": "Enter Path",
-      "type": "string"
-    },
-    "sortByDate": {
-      "title": "Enter Date and Time",
-      "type": "date"
-    }
-  },
-  "required": []
-}"
-            id="Form"
-          />
+            class="ui container"
+          >
+            <form
+              class="ui form"
+              method="post"
+            >
+              <fieldset
+                class="invisible"
+              >
+                <div
+                  class="ui raised segments"
+                >
+                  <div
+                    class="ui segment"
+                  >
+                    <div
+                      class="Field"
+                      id="sortingTypes"
+                    >
+                      Sort by
+                    </div>
+                  </div>
+                  <div
+                    class="ui clearing segment actions"
+                  />
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
         <div
           class="ui raised segments"
