@@ -2,7 +2,7 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { save, load } from 'redux-localstorage-simple';
+import { load } from 'redux-localstorage-simple';
 
 import config from '@plone/volto/registry';
 import reducers from '@root/reducers';
@@ -15,6 +15,7 @@ import {
   loadProtector,
   userSessionReset,
 } from '@plone/volto/middleware';
+import persistOnChange from '@plone/volto/middleware/persistOnChange';
 
 const configureStore = (initialState, history, apiHelper) => {
   let stack = [
@@ -26,7 +27,13 @@ const configureStore = (initialState, history, apiHelper) => {
     userSessionReset,
     protectLoadEnd,
     ...(__CLIENT__
-      ? [save({ states: config.settings.persistentReducers, debounce: 500 })]
+      ? [
+          persistOnChange({
+            states: config.settings.persistentReducers,
+            debounce: 500,
+            disableWarnings: true,
+          }),
+        ]
       : []),
   ];
   stack = config.settings.storeExtenders.reduce(
@@ -44,7 +51,10 @@ const configureStore = (initialState, history, apiHelper) => {
     {
       ...initialState,
       ...(__CLIENT__
-        ? load({ states: config.settings.persistentReducers })
+        ? load({
+            states: config.settings.persistentReducers,
+            disableWarnings: true,
+          })
         : {}),
     },
     middlewares,
