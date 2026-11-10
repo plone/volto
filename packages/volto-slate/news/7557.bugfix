@@ -1,0 +1,1 @@
+Fix HtmlSlateWidget state management to avoid re-render of internal Slate nodes and repositioning of cursor at end of text at each keystroke. @sabrina-bongiovanni
