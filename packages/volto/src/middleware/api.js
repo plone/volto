@@ -276,6 +276,15 @@ const apiMiddlewareFactory =
               type: RESET_APIERROR,
             });
           }
+          if (type === GET_CONTENT && !result?.['@id']) {
+            // The backend answered with something that is not content, like
+            // the HTML or XML of a browser view: show it as not found.
+            return next({
+              ...rest,
+              error: { status: 404, message: 'Not Found' },
+              type: `${type}_FAIL`,
+            });
+          }
           if (type === GET_CONTENT) {
             const lang = result?.language?.token;
             if (
