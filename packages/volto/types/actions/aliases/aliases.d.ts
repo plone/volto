@@ -1,5 +1,6 @@
 /**
  * Get aliases function.
+ * Empty options (undefined, null or empty string) are not sent to the backend.
  * @function getAliases
  * @param {string} url Content url.
  * @param {Object} options Options data.

@@ -491,7 +491,7 @@ msgstr "Beschikbare inhoudsregels"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2280,7 +2280,7 @@ msgid "Logo of"
 msgstr "Logo van"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Afmelden"
 
@@ -2912,7 +2912,7 @@ msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Voorkeuren"
 
@@ -2939,7 +2939,7 @@ msgid "Preview Image URL"
 msgstr "Voorvertoning afbeelding URL"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Profiel"
 
@@ -3616,7 +3616,7 @@ msgstr "Sitebeheer"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Site instellingen"
@@ -5017,6 +5017,11 @@ msgstr "Controleer referenties..."
 msgid "linkAnImage"
 msgstr "Vul een URL naar een afbeelding in"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5445,7 +5450,7 @@ msgid "url"
 msgstr "Invoer moet een geldige URL zijn (www.iets.com of http(s)://www.iets.com)"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "avatar gebruiker"
 

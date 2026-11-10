@@ -279,4 +279,69 @@ describe('Toolbar', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  describe('personal tools button with hideDefaultViewButtons', () => {
+    const renderToolbar = (pathname) => {
+      const store = mockStore({
+        types: { types: [] },
+        actions: {
+          actions: {
+            object: [],
+            user: [],
+          },
+        },
+        userSession: {
+          token: jwt.sign({ sub: 'admin' }, 'secret'),
+        },
+        users: {
+          user: { fullname: 'admin', roles: ['Manager'] },
+        },
+        content: {
+          data: {
+            '@type': 'Folder',
+            is_folderish: true,
+          },
+        },
+        intl: {
+          locale: 'en',
+          messages: {},
+        },
+      });
+      return renderer.create(
+        <Provider store={store}>
+          <CookiesProvider>
+            <PluggablesProvider>
+              <MemoryRouter>
+                <Toolbar
+                  pathname={pathname}
+                  inner={<span />}
+                  hideDefaultViewButtons
+                />
+              </MemoryRouter>
+            </PluggablesProvider>
+          </CookiesProvider>
+        </Provider>,
+      );
+    };
+
+    const hasPersonalToolsButton = (component) =>
+      component.root
+        .findAllByType('button')
+        .some((button) => button.props.id === 'toolbar-personal');
+
+    it('is shown on a site setup page', () => {
+      const component = renderToolbar('/controlpanel/users');
+      expect(hasPersonalToolsButton(component)).toBe(true);
+    });
+
+    it('is shown on a site setup page with a language prefix', () => {
+      const component = renderToolbar('/en/controlpanel/rules');
+      expect(hasPersonalToolsButton(component)).toBe(true);
+    });
+
+    it('is hidden while editing content', () => {
+      const component = renderToolbar('/folder/edit');
+      expect(hasPersonalToolsButton(component)).toBe(false);
+    });
+  });
 });
