@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  node-version: 24.x
+  node-version: 26.x
 
 jobs:
   towncrier:

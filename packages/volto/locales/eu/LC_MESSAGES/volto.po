@@ -492,7 +492,7 @@ msgstr "Erabilgarri dauden eduki-erregelak:"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2281,7 +2281,7 @@ msgid "Logo of"
 msgstr "Logoa"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Irten"
 
@@ -2913,7 +2913,7 @@ msgid "Powered by Plone & Python"
 msgstr "Plone eta Pythonekin eginda"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Hobespenak"
 
@@ -2940,7 +2940,7 @@ msgid "Preview Image URL"
 msgstr "Irudia aurreikusteko helbidea"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Profila"
 
@@ -3617,7 +3617,7 @@ msgstr "Atariaren kudeaketa"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Atariaren konfigurazioa"
@@ -5018,6 +5018,11 @@ msgstr "Erreferentziak egiaztatzen..."
 msgid "linkAnImage"
 msgstr "Idatzi irudi baterako URLa"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5446,7 +5451,7 @@ msgid "url"
 msgstr "URL zuzen bat izan behar da (www.zerbait.eus edo http(s)://www.zerbitzaria.eus)"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "Erabiltzailearen argazkia"
 

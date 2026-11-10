@@ -491,7 +491,7 @@ msgstr "उपलब्ध कंटेंट नियम:"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2280,7 +2280,7 @@ msgid "Logo of"
 msgstr "लोगो का"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "लॉग आउट"
 
@@ -2912,7 +2912,7 @@ msgid "Powered by Plone & Python"
 msgstr "प्लोन और पायथन द्वारा संचालित"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "पसंद"
 
@@ -2939,7 +2939,7 @@ msgid "Preview Image URL"
 msgstr "पूर्वावलोकन इमेज URL"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "प्रोफ़ाइल"
 
@@ -3616,7 +3616,7 @@ msgstr "साइट प्रशासन"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "साइट सेटअप"
@@ -5017,6 +5017,11 @@ msgstr ""
 msgid "linkAnImage"
 msgstr ""
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5445,7 +5450,7 @@ msgid "url"
 msgstr "इनपुट मान्य URL (www.something.com या http(s)://www.something.com) होना चाहिए"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "उपयोगकर्ता अवतार"
 

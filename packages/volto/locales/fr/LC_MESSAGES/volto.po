@@ -492,7 +492,7 @@ msgstr "Règles de contenu disponibles :"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -2281,7 +2281,7 @@ msgid "Logo of"
 msgstr "Logo de"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Se déconnecter"
 
@@ -2913,7 +2913,7 @@ msgid "Powered by Plone & Python"
 msgstr "Alimenté par Plone & Python"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -2940,7 +2940,7 @@ msgid "Preview Image URL"
 msgstr "URL de l'image d'aperçu"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Profile"
 
@@ -3617,7 +3617,7 @@ msgstr "Administration du site"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Configuration du site"
@@ -5018,6 +5018,11 @@ msgstr "Vérification des références..."
 msgid "linkAnImage"
 msgstr "Saisissez l'URL d'une image"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5446,7 +5451,7 @@ msgid "url"
 msgstr "Le champ doit être une URL valide (www.quelquechose.com or http(s)://www.quelquechose.com)"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "Avatar de l'utilisateur"
 
