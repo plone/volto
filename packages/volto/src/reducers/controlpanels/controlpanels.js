@@ -11,6 +11,7 @@ import {
   UPDATE_CONTROLPANEL,
   SYSTEM_INFORMATION,
   DATABASE_INFORMATION,
+  GET_CONTROLPANEL_SCHEMAS,
 } from '@plone/volto/constants/ActionTypes';
 
 const initialState = {
@@ -41,6 +42,7 @@ const initialState = {
   },
   controlpanel: null,
   controlpanels: [],
+  schemas: {},
   systeminformation: null,
   databaseinformation: null,
 };
@@ -99,6 +101,40 @@ export default function controlpanels(state = initialState, action = {}) {
           loading: false,
           loaded: true,
           error: null,
+        },
+      };
+    case `${GET_CONTROLPANEL_SCHEMAS}_PENDING`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: true,
+          loaded: false,
+          error: null,
+        },
+      };
+    case `${GET_CONTROLPANEL_SCHEMAS}_SUCCESS`: {
+      const newSchemas = action.result || {};
+
+      return {
+        ...state,
+        schemas: {
+          ...state.schemas,
+          ...newSchemas,
+        },
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: true,
+          error: null,
+        },
+      };
+    }
+    case `${GET_CONTROLPANEL_SCHEMAS}_FAIL`:
+      return {
+        ...state,
+        [getRequestKey(action.type)]: {
+          loading: false,
+          loaded: false,
+          error: action.error,
         },
       };
     case `${POST_CONTROLPANEL}_SUCCESS`:
