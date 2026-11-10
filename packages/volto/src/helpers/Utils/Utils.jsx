@@ -165,6 +165,12 @@ export const getColor = (name) => {
   return namedColor;
 };
 
+export const getTimeZoneOffset = (date, timeZone) => {
+  const toTimeZone = (z) =>
+    new Date(date.toLocaleString('sv', { timeZone: z }).replace(' ', 'T'));
+  return (toTimeZone(timeZone) - toTimeZone('UTC')) / 60_000;
+};
+
 /**
  * Fixes TimeZones issues on moment date objects
  * Parses a DateTime and sets correct moment locale
@@ -173,7 +179,7 @@ export const getColor = (name) => {
  * @param {string} format Date format of choice
  * @returns {Object|string} Moment object or string if format is set
  */
-export const parseDateTime = (locale, value, format, moment) => {
+export const parseDateTime = (locale, value, format, moment, timezone) => {
   //  Used to set a server timezone or UTC as default
   moment.updateLocale(locale, moment.localeData(locale)._config); // copy locale to moment-timezone
   let datetime = null;
@@ -186,6 +192,9 @@ export const parseDateTime = (locale, value, format, moment) => {
           moment(value)
         : // This might happen in old Plone versions dates
           moment(`${value}Z`);
+    if (timezone) {
+      datetime.utcOffset(getTimeZoneOffset(datetime.toDate(), timezone));
+    }
   }
 
   if (format && datetime) {
