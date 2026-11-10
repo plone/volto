@@ -354,6 +354,35 @@ See {ref}`multilingual configuration in Volto <multilingual-volto-configuration-
 ```
 ````
 
+### `lcpEligibleBlocks`
+
+The `lcpEligibleBlocks` setting configures which block types can be treated as the largest contentful paint (LCP) candidate on a page.
+The first block in the layout that matches an eligible type and passes its predicate is loaded eagerly with `loading="eager"` and `fetchpriority="high"` to improve LCP and core web vitals.
+
+Key
+:   block `@type`, for example, `image`, `listing`, `leadimage`, `video`, or `teaser`.
+Value
+:   a function `(block) => boolean` that returns whether this specific block instance is eligible, for example, has content such as a URL or `href`.
+
+You can extend or override this in your project or add-on to add custom block types or change eligibility rules.
+Only the **first** matching block in the layout is marked as the LCP block; others keep lazy loading.
+
+For example, to add a custom block type or override an existing predicate:
+
+```js
+config.settings.lcpEligibleBlocks = {
+  ...config.settings.lcpEligibleBlocks,
+  myCustomImageBlock: (block) => !!block.imageUrl,
+};
+```
+
+For the current default predicates, see `packages/volto/src/config/index.js`.
+
+```{seealso}
+-   {doc}`../deploying/performance` for other performance optimizations.
+-   [Browser-level image lazy loading](https://web.dev/articles/browser-level-image-lazy-loading).
+```
+
 ### `lazyBundles`
 
 `lazyBundles` is a mapping of bundles to a list of lazy library names.
