@@ -1,0 +1,185 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: mk-MK\n"
+"Language-Name: mk-MK\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: DOMAIN\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: mk-MK\n"
+
+#. Default: "Add link"
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr "Додај врска"
+
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr ""
+
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr ""
+
+#. Default: "Bottom"
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr "Дно"
+
+#. Default: "Center"
+#: blocks/Table/TableBlockEdit
+msgid "Center"
+msgstr "Центар"
+
+#. Default: "Delete col"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete col"
+msgstr "Избриши колона"
+
+#. Default: "Delete row"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete row"
+msgstr "Избриши ред"
+
+#. Default: "Delete table"
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr "Избриши табела"
+
+#. Default: "Divide each row into separate cells"
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr "Подели го секој ред во одделни ќелии"
+
+#. Default: "Edit element"
+#: elementEditor/messages
+msgid "Edit element"
+msgstr "Уреди елемент"
+
+#. Default: "Edit link"
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+msgid "Edit link"
+msgstr "Уреди врска"
+
+#. Default: "Fixed width table cells"
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr "Ќелии на табела со фиксна ширина"
+
+#. Default: "Hide headers"
+#: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr "Скриј заглавија"
+
+#. Default: "Insert col after"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col after"
+msgstr "Вметни колона после"
+
+#. Default: "Insert col before"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col before"
+msgstr "Вметни колона пред"
+
+#. Default: "Insert row after"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row after"
+msgstr "Вметни ред после"
+
+#. Default: "Insert row before"
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row before"
+msgstr "Вметни ред пред"
+
+#. Default: "Left"
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr "Лево"
+
+#. Default: "Make the table compact"
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr "Направи ја табелата компактна"
+
+#. Default: "Make the table sortable"
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr "Направи ја табелата сортирачка"
+
+#. Default: "Middle"
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr "Средина"
+
+#. Default: "No matching blocks"
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
+msgstr "Нема соодветни блокови"
+
+#. Default: "Reduce complexity"
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr "Намали сложеност"
+
+#. Default: "Remove element"
+#: elementEditor/messages
+msgid "Remove element"
+msgstr "Отстрани елемент"
+
+#. Default: "Remove link"
+#: editor/plugins/AdvancedLink/index
+msgid "Remove link"
+msgstr "Отстрани врска"
+
+#. Default: "Right"
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr "Десно"
+
+#. Default: "Stripe alternate rows with color"
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr "Обои наизменични редови со боја"
+
+#. Default: "Table"
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr "Табела"
+
+#. Default: "Table color inverted"
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr "Боја на табела инвертирана"
+
+#. Default: "Top"
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr "Врв"
+
+#. Default: "Type text…"
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr "Внесете текст…"
+
+#. Default: "Visible only in view mode"
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr "Видливо само во режим на преглед"
