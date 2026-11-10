@@ -20,11 +20,13 @@ exports[`renders an Image Block Sidebar component 1`] = `
   "properties": {
     "url": {
       "title": "Video URL",
-      "widget": "url"
+      "widget": "url",
+      "helpUrl": "https://6.docs.plone.org/volto/user-manual/blocks.html#video-block"
     },
     "preview_image": {
       "title": "Preview Image URL",
-      "widget": "url"
+      "widget": "url",
+      "helpUrl": "https://6.docs.plone.org/volto/user-manual/blocks.html#video-block"
     },
     "title": {
       "title": "Title",
@@ -32,7 +34,8 @@ exports[`renders an Image Block Sidebar component 1`] = `
     },
     "align": {
       "title": "Alignment",
-      "widget": "align"
+      "widget": "align",
+      "helpUrl": "https://6.docs.plone.org/volto/user-manual/blocks.html#video-block"
     }
   },
   "required": []
