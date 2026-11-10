@@ -2,6 +2,15 @@
 
 Get the data for a specific content given its path.
 
+```{eval-rst}
+.. http:example:: curl wget httpie python-requests
+
+   GET /Plone/front-page HTTP/1.1
+   Host: localhost:8080
+   Accept: application/json
+   Authorization: Basic YWRtaW46c2VjcmV0
+```
+
 ## Get content
 
 ### Query options function
