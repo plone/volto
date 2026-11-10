@@ -3,7 +3,11 @@
  * @module reducers/actions/actions
  */
 
-import { GET_CONTENT, LIST_ACTIONS } from '@plone/volto/constants/ActionTypes';
+import {
+  GET_CONTENT,
+  LIST_ACTIONS,
+  LOGOUT,
+} from '@plone/volto/constants/ActionTypes';
 import { flattenToAppURL, getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import { hasApiExpander } from '@plone/volto/helpers/Utils/Utils';
 
@@ -31,6 +35,9 @@ const initialState = {
 export default function actions(state = initialState, action = {}) {
   let hasExpander;
   switch (action.type) {
+    case `${LOGOUT}_SUCCESS`:
+    case `${LOGOUT}_FAIL`:
+      return initialState;
     case `${LIST_ACTIONS}_PENDING`:
       return {
         ...state,

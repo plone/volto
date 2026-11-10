@@ -1,0 +1,1 @@
+Reset actions and navigation on logout so authenticated actions and private navigation items do not remain visible when anonymous users cannot access the landing page. @Somilg11
