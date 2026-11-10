@@ -108,9 +108,6 @@ const BlockChooser = ({
     );
   }
   function filterVariations(block) {
-    if (!config.blocks.searchVariationsInChooser) {
-      return [];
-    }
     return block.variations?.filter(
       (variation) =>
         formatMessageWithFallback(intl, variation.title)
@@ -142,13 +139,11 @@ const BlockChooser = ({
         >
           <Icon name={block.icon} size="36px" />
           {formatMessageWithFallback(intl, block.title)}
-          {filterValue &&
-            config.blocks.showVariationTitlesInChooser &&
-            variations?.[0]?.title && (
-              <small>
-                {formatMessageWithFallback(intl, variations[0].title)}
-              </small>
-            )}
+          {filterValue && variations?.[0]?.title && (
+            <small>
+              {formatMessageWithFallback(intl, variations[0].title)}
+            </small>
+          )}
         </Button>
       </Button.Group>
     );

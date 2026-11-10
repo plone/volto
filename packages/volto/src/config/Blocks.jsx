@@ -553,8 +553,6 @@ export function installDefaultBlocks(config) {
   config.blocks.initialBlocks = initialBlocks;
   config.blocks.initialBlocksFocus = initialBlocksFocus;
   config.blocks.showEditBlocksInBabelView = false;
-  config.blocks.showVariationTitlesInChooser = true;
-  config.blocks.searchVariationsInChooser = true;
 }
 
 export {

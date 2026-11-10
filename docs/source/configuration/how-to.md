@@ -101,14 +101,12 @@ to render the content. There are 4 types of views:
 
 ## blocks
 
-The `blocks` registry holds the information of all the registered blocks in Volto. The main configurations available are:
+The `blocks` registry holds the information of all the registered blocks in Volto. There are 4 configurations available:
 
 - blocksConfig
 - requiredBlocks
 - groupBlocksOrder
 - initialBlocks
-- showVariationTitlesInChooser
-- searchVariationsInChooser
 
 See {doc}`../blocks/settings` for more information.
 
