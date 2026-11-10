@@ -26,6 +26,8 @@ import {
   toReactIntlLang,
 } from '@plone/volto/helpers/Utils/Utils';
 import { getCookieOptions } from '@plone/volto/helpers/Cookies/cookies';
+import { addStatusMessages } from '@plone/volto/actions/statusMessages/statusMessages';
+import { takeStatusMessages } from '@plone/volto/helpers/StatusMessages/StatusMessages';
 let socket = null;
 
 /**
@@ -261,6 +263,16 @@ const apiMiddlewareFactory =
               attach: request.attach,
             },
           );
+      if (__CLIENT__) {
+        // The status messages that the backend added with this request.
+        const takeMessages = () => {
+          const messages = takeStatusMessages();
+          if (messages.length) {
+            dispatch(addStatusMessages(messages));
+          }
+        };
+        actionPromise.then(takeMessages, takeMessages);
+      }
       actionPromise.then(
         (result) => {
           isHydrating = false;

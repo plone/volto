@@ -71,6 +71,10 @@ export {
   removeMessage,
   purgeMessages,
 } from '@plone/volto/actions/messages/messages';
+export {
+  addStatusMessages,
+  clearStatusMessages,
+} from '@plone/volto/actions/statusMessages/statusMessages';
 export { getNavigation } from '@plone/volto/actions/navigation/navigation';
 export {
   createRelations,

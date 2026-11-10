@@ -5,8 +5,10 @@
 
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const ADD_STATUS_MESSAGES = 'ADD_STATUS_MESSAGES';
 export const SET_APIERROR = 'SET_APIERROR';
 export const RESET_APIERROR = 'RESET_APIERROR';
+export const CLEAR_STATUS_MESSAGES = 'CLEAR_STATUS_MESSAGES';
 export const COPY = 'COPY';
 export const COPY_CONTENT = 'COPY_CONTENT';
 export const CREATE_CONTENT = 'CREATE_CONTENT';
