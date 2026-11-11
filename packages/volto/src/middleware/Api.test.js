@@ -346,6 +346,10 @@ describe('api middleware - GET_CONTENT payload', () => {
     intl: { locale: 'en' },
   };
 
+  beforeEach(() => {
+    config.settings.actions_raising_api_errors = [];
+  });
+
   const runMiddleware = async (action, result) => {
     const actions = [];
     const record = () => (next) => (action) => {
