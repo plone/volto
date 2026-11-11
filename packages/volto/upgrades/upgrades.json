@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "$schema": "https://raw.githubusercontent.com/plone/repoplone/main/schemas/upgrades/v1.json",
   "steps": [
     {
       "id": "volto/19.8.0/pnpm-12-settings",
