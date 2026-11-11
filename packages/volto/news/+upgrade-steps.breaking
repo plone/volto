@@ -1,0 +1,1 @@
+Projects must move to pnpm 12 and `@plone/pnpm-plugin-volto`, which upcoming security fixes rely on. Added upgrade steps in `upgrades/upgrades.json` that `repoplone upgrade` runs to do it. @sneridagh

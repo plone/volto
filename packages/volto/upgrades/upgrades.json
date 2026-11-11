@@ -2,9 +2,9 @@
   "schema": 1,
   "steps": [
     {
-      "id": "volto/20.0.0/pnpm-12-settings",
+      "id": "volto/19.8.0/pnpm-12-settings",
       "kind": "repo",
-      "version": "20.0.0-alpha.0",
+      "version": "19.8.0",
       "title": "Move pnpm settings from package.json to pnpm-workspace.yaml",
       "docs": "https://6.docs.plone.org/volto/upgrade-guide/index.html#pnpm-12-label",
       "ops": [
@@ -52,12 +52,12 @@
       ]
     },
     {
-      "id": "volto/20.0.0/pnpm-12-pin",
+      "id": "volto/19.8.0/pnpm-12-pin",
       "kind": "repo",
-      "version": "20.0.0-alpha.0",
+      "version": "19.8.0",
       "title": "Pin pnpm 12",
       "docs": "https://6.docs.plone.org/volto/upgrade-guide/index.html#pnpm-12-label",
-      "requires": ["volto/20.0.0/pnpm-12-settings"],
+      "requires": ["volto/19.8.0/pnpm-12-settings"],
       "ops": [
         {
           "op": "set",
@@ -83,18 +83,18 @@
       ]
     },
     {
-      "id": "volto/20.0.0/pnpm-plugin-volto",
+      "id": "volto/19.8.0/pnpm-plugin-volto",
       "kind": "repo",
-      "version": "20.0.0-alpha.0",
+      "version": "19.8.0",
       "title": "Use @plone/pnpm-plugin-volto for the shared pnpm settings",
       "docs": "https://6.docs.plone.org/volto/upgrade-guide/index.html#pnpm-plugin-volto-label",
-      "requires": ["volto/20.0.0/pnpm-12-pin"],
+      "requires": ["volto/19.8.0/pnpm-12-pin"],
       "ops": [
         {
           "op": "set",
           "file": "{frontend}/pnpm-workspace.yaml",
           "key": "configDependencies.@plone/pnpm-plugin-volto",
-          "value": "^20.0.0-alpha.0"
+          "value": "^19.0.0"
         },
         {
           "op": "delete",

@@ -18,12 +18,12 @@ This adds the package to `configDependencies` in your `pnpm-workspace.yaml`:
 
 ```yaml
 configDependencies:
-  '@plone/pnpm-plugin-volto': ^20.0.0
+  '@plone/pnpm-plugin-volto': ^19.0.0
 ```
 
 pnpm loads the package's `pnpmfile.cjs` automatically, because its name matches `@*/pnpm-plugin-*`.
 
-Projects generated with Cookieplone get this setup from the template, or from the `volto/20.0.0/pnpm-plugin-volto` upgrade step run by `repoplone upgrade`.
+Projects generated with Cookieplone get this setup from the template, or from the `volto/19.8.0/pnpm-plugin-volto` upgrade step run by `repoplone upgrade`.
 
 ## What it sets
 
@@ -40,4 +40,4 @@ For `publicHoistPattern`, your patterns are added to the shared ones.
 ## Versioning
 
 The major version of this package matches the major version of Volto.
-Use the range for the Volto major version your project runs, such as `^20.0.0` for Volto 20.
+Use the range for the Volto major version your project runs, such as `^19.0.0` for Volto 19.
