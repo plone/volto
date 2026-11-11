@@ -1,0 +1,48 @@
+{
+  "name": "@plone/pnpm-plugin-volto",
+  "description": "pnpm config dependency that applies the pnpm settings shared by every Volto project and add-on",
+  "maintainers": [
+    {
+      "name": "Plone Foundation",
+      "url": "https://plone.org"
+    }
+  ],
+  "funding": "https://github.com/sponsors/plone",
+  "license": "MIT",
+  "version": "20.0.0-alpha.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plone/volto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plone/volto/issues"
+  },
+  "homepage": "https://plone.org",
+  "keywords": [
+    "volto",
+    "plone",
+    "plone6",
+    "pnpm",
+    "pnpm-plugin"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "pnpmfile.cjs",
+  "files": [
+    "pnpmfile.cjs",
+    "settings.json",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "dry-release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --dry-run",
+    "release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it",
+    "release-major-alpha": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it major --preRelease=alpha",
+    "release-alpha": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --preRelease=alpha"
+  },
+  "devDependencies": {
+    "release-it": "catalog:"
+  }
+}

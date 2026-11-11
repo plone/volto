@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "steps": [
+    {
+      "id": "volto/20.0.0/pnpm-12-settings",
+      "kind": "repo",
+      "version": "20.0.0-alpha.0",
+      "title": "Move pnpm settings from package.json to pnpm-workspace.yaml",
+      "docs": "https://6.docs.plone.org/volto/upgrade-guide/index.html#pnpm-12-label",
+      "ops": [
+        {
+          "op": "move",
+          "from": "{frontend}/package.json#pnpm",
+          "to": "{frontend}/pnpm-workspace.yaml#",
+          "merge": true
+        },
+        {
+          "op": "list-to-map",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "onlyBuiltDependencies",
+          "to": "allowBuilds",
+          "value": true,
+          "merge": true
+        },
+        {
+          "op": "list-to-map",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "ignoredBuiltDependencies",
+          "to": "allowBuilds",
+          "value": false,
+          "merge": true
+        },
+        {
+          "op": "list-to-map",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "neverBuiltDependencies",
+          "to": "allowBuilds",
+          "value": false,
+          "merge": true
+        },
+        {
+          "op": "replace",
+          "files": [
+            "{root}/.github/workflows/*.yml",
+            "{root}/Makefile",
+            "{frontend}/Makefile",
+            "{frontend}/Dockerfile"
+          ],
+          "pattern": "\\bnpm_config_",
+          "with": "pnpm_config_"
+        }
+      ]
+    },
+    {
+      "id": "volto/20.0.0/pnpm-12-pin",
+      "kind": "repo",
+      "version": "20.0.0-alpha.0",
+      "title": "Pin pnpm 12",
+      "docs": "https://6.docs.plone.org/volto/upgrade-guide/index.html#pnpm-12-label",
+      "requires": ["volto/20.0.0/pnpm-12-settings"],
+      "ops": [
+        {
+          "op": "set",
+          "file": "{frontend}/package.json",
+          "key": "packageManager",
+          "value": "pnpm@12.19.0"
+        },
+        {
+          "op": "replace",
+          "files": [
+            "{root}/.github/workflows/*.yml",
+            "{root}/Makefile",
+            "{frontend}/Makefile",
+            "{frontend}/Dockerfile"
+          ],
+          "pattern": "\\bpnpm@(9|10|11)\\.\\d+\\.\\d+\\b",
+          "with": "pnpm@12.19.0"
+        },
+        {
+          "op": "todo",
+          "text": "Install pnpm 12 locally (for example, `corepack use pnpm@12.19.0`), then run `make frontend-install` to update the lockfile."
+        }
+      ]
+    },
+    {
+      "id": "volto/20.0.0/pnpm-plugin-volto",
+      "kind": "repo",
+      "version": "20.0.0-alpha.0",
+      "title": "Use @plone/pnpm-plugin-volto for the shared pnpm settings",
+      "docs": "https://6.docs.plone.org/volto/upgrade-guide/index.html#pnpm-plugin-volto-label",
+      "requires": ["volto/20.0.0/pnpm-12-pin"],
+      "ops": [
+        {
+          "op": "set",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "configDependencies.@plone/pnpm-plugin-volto",
+          "value": "^20.0.0-alpha.0"
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "overrides.@pmmmwh/react-refresh-webpack-plugin",
+          "ifValue": "^0.5.15"
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "overrides.react-refresh",
+          "ifValue": "^0.14.2"
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "overrides.tinypool",
+          "ifValue": "^2.1.2"
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.@parcel/watcher",
+          "ifValue": false
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.@tailwindcss/oxide",
+          "ifValue": true
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.core-js",
+          "ifValue": true
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.core-js-pure",
+          "ifValue": true
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.cypress",
+          "ifValue": true
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.es5-ext",
+          "ifValue": true
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.esbuild",
+          "ifValue": true
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.lightningcss-cli",
+          "ifValue": true
+        },
+        {
+          "op": "delete",
+          "file": "{frontend}/pnpm-workspace.yaml",
+          "key": "allowBuilds.unrs-resolver",
+          "ifValue": true
+        },
+        {
+          "op": "replace",
+          "files": ["{frontend}/.npmrc"],
+          "pattern": "^public-hoist-pattern\\[\\]=(\\*eslint\\*|\\*prettier\\*|\\*stylelint\\*|\\*cypress\\*|babel-plugin-react-intl|\\*babel-preset-razzle)\\n",
+          "flags": "m",
+          "with": ""
+        },
+        {
+          "op": "remove-file",
+          "file": "{frontend}/.npmrc",
+          "ifEmpty": true
+        },
+        {
+          "op": "todo",
+          "ifExists": "{frontend}/.npmrc",
+          "text": "pnpm 11 and later read only auth and registry settings from .npmrc. Move any other setting left in {frontend}/.npmrc to pnpm-workspace.yaml, using its camelCase name."
+        }
+      ]
+    }
+  ]
+}
