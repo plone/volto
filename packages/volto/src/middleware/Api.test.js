@@ -1,4 +1,6 @@
-import { addExpandersToPath } from './api';
+import { createStore, applyMiddleware } from 'redux';
+
+import apiMiddleware, { addExpandersToPath } from './api';
 import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 
@@ -332,5 +334,70 @@ describe('api middleware helpers', () => {
     expect(result).toEqual(
       '/de/mypage?expand=navigation,inherit&expand.inherit.behaviors=voltolighttheme.header,voltolighttheme.theme,voltolighttheme.footer,plonegovbr.socialmedia.settings&expand.navigation.coolness=1&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
     );
+  });
+});
+
+describe('api middleware - GET_CONTENT payload', () => {
+  const initialState = {
+    userSession: { token: null },
+    content: { uploadedFiles: 0, get: { error: null } },
+    site: { data: { features: { multilingual: true } } },
+    apierror: { connectionRefused: false },
+    intl: { locale: 'en' },
+  };
+
+  const runMiddleware = async (action, result) => {
+    const actions = [];
+    const record = () => (next) => (action) => {
+      actions.push(action);
+      return next(action);
+    };
+    const apiHelper = { get: () => Promise.resolve(result) };
+    const store = createStore(
+      (state = initialState) => state,
+      applyMiddleware(apiMiddleware(apiHelper), record),
+    );
+
+    await store.dispatch(action);
+
+    return actions[actions.length - 1];
+  };
+
+  it('dispatches _FAIL with a 404 when the payload is not a content object', async () => {
+    // Plone answers browserviews and feeds with 200 plus HTML/XML, so the API
+    // helper resolves with a string instead of a content object
+    const last = await runMiddleware(
+      { type: GET_CONTENT, request: { op: 'get', path: '/RSS' } },
+      '<?xml version="1.0" encoding="utf-8" ?><rdf:RDF></rdf:RDF>',
+    );
+
+    expect(last.type).toEqual(`${GET_CONTENT}_FAIL`);
+    expect(last.error).toEqual({ status: 404 });
+    expect(last.result).toBeUndefined();
+  });
+
+  it('keeps the subrequest of the failed action', async () => {
+    const last = await runMiddleware(
+      {
+        type: GET_CONTENT,
+        subrequest: 'navigation',
+        request: { op: 'get', path: '/en/@@search' },
+      },
+      '<!doctype html><html></html>',
+    );
+
+    expect(last.type).toEqual(`${GET_CONTENT}_FAIL`);
+    expect(last.subrequest).toEqual('navigation');
+  });
+
+  it('lets a content object through untouched', async () => {
+    const content = { '@id': '/en/about', '@components': { actions: {} } };
+    const last = await runMiddleware(
+      { type: GET_CONTENT, request: { op: 'get', path: '/en/about' } },
+      content,
+    );
+
+    expect(last.type).toEqual(`${GET_CONTENT}_SUCCESS`);
+    expect(last.result).toEqual(content);
   });
 });

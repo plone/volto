@@ -264,6 +264,21 @@ const apiMiddlewareFactory =
       actionPromise.then(
         (result) => {
           isHydrating = false;
+          // A successful GET_CONTENT has to carry a content object. Plone
+          // answers browserviews and feeds with a 200 plus HTML/XML, so the API helper
+          // resolves with a string and every content reducer throws on
+          // `result['@components']`: the page dies on the client and SSR returns 500.
+          // Treat it as what it is - a missing resource.
+          if (
+            type === GET_CONTENT &&
+            (typeof result !== 'object' || result === null)
+          ) {
+            return next({
+              ...rest,
+              error: { status: 404 },
+              type: `${type}_FAIL`,
+            });
+          }
           if (uploadedFiles !== 0) {
             dispatch(updateUploadedFiles(0));
           }
