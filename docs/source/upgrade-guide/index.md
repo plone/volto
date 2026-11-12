@@ -93,17 +93,23 @@ If your `pnpm` field has other settings, move them to {file}`frontend/pnpm-works
 Convert any `onlyBuiltDependencies`, `ignoredBuiltDependencies`, or `neverBuiltDependencies` entries to `allowBuilds`.
 Packages that are allowed to run build scripts get `true`, and packages that aren't get `false`.
 `pnpm` 12 fails if the old settings are still there.
+For example, these settings in {file}`frontend/package.json`:
 
-```diff
---- frontend/package.json
--  "pnpm": {
--    "onlyBuiltDependencies": ["my-native-package"],
--    "ignoredBuiltDependencies": ["my-optional-tool"]
--  },
---- frontend/pnpm-workspace.yaml
-+allowBuilds:
-+  my-native-package: true
-+  my-optional-tool: false
+```json
+{
+  "pnpm": {
+    "onlyBuiltDependencies": ["my-native-package"],
+    "ignoredBuiltDependencies": ["my-optional-tool"]
+  }
+}
+```
+
+become these in {file}`frontend/pnpm-workspace.yaml`:
+
+```yaml
+allowBuilds:
+  my-native-package: true
+  my-optional-tool: false
 ```
 
 You don't need to list the packages that Volto needs, such as `cypress` or `esbuild`.
@@ -123,14 +129,17 @@ In {file}`frontend/.npmrc`, remove the `public-hoist-pattern[]` lines that the p
 ```
 
 Move any other setting, except authentication and registry settings, to {file}`frontend/pnpm-workspace.yaml`, using its camelCase name.
-For example, a hoist pattern of your own:
+For example, this hoist pattern of your own in {file}`frontend/.npmrc`:
 
-```diff
---- frontend/.npmrc
--public-hoist-pattern[]=*my-tool*
---- frontend/pnpm-workspace.yaml
-+publicHoistPattern:
-+  - '*my-tool*'
+```ini
+public-hoist-pattern[]=*my-tool*
+```
+
+becomes this in {file}`frontend/pnpm-workspace.yaml`:
+
+```yaml
+publicHoistPattern:
+  - '*my-tool*'
 ```
 
 The plugin's hoist patterns are added to yours, so you only need to list your own.
