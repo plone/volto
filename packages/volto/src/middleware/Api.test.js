@@ -368,8 +368,6 @@ describe('api middleware - GET_CONTENT payload', () => {
   };
 
   it('dispatches _FAIL with a 404 when the payload is an empty object', async () => {
-    // On the server superagent returns `{}` for a `text/html` response, so the
-    // payload is an object that carries no content.
     const last = await runMiddleware(
       { type: GET_CONTENT, request: { op: 'get', path: '/contact-info' } },
       {},
@@ -381,8 +379,6 @@ describe('api middleware - GET_CONTENT payload', () => {
   });
 
   it('dispatches _FAIL with a 404 when the payload is not a content object', async () => {
-    // Plone answers browserviews and feeds with 200 plus HTML/XML, so the API
-    // helper resolves with a string instead of a content object
     const last = await runMiddleware(
       { type: GET_CONTENT, request: { op: 'get', path: '/RSS' } },
       '<?xml version="1.0" encoding="utf-8" ?><rdf:RDF></rdf:RDF>',
