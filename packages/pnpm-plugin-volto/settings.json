@@ -1,0 +1,26 @@
+{
+  "overrides": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+    "react-refresh": "^0.14.2",
+    "tinypool": "^2.1.2"
+  },
+  "allowBuilds": {
+    "@parcel/watcher": false,
+    "@tailwindcss/oxide": true,
+    "core-js": true,
+    "core-js-pure": true,
+    "cypress": true,
+    "es5-ext": true,
+    "esbuild": true,
+    "lightningcss-cli": true,
+    "unrs-resolver": true
+  },
+  "publicHoistPattern": [
+    "*eslint*",
+    "*prettier*",
+    "*stylelint*",
+    "*cypress*",
+    "babel-plugin-react-intl",
+    "*babel-preset-razzle"
+  ]
+}
