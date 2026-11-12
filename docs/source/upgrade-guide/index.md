@@ -57,14 +57,25 @@ The plugin provides the settings that Cookieplone generates, so for most project
 -      "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
 -      "react-refresh": "^0.14.2"
 -    },
+-    "ignoredBuiltDependencies": [
+-      "@parcel/watcher"
+-    ],
 -    "onlyBuiltDependencies": [
+-      "core-js",
+-      "core-js-pure",
 -      "cypress",
--      "lightningcss-cli"
+-      "es5-ext",
+-      "esbuild",
+-      "lightningcss-cli",
+-      "unrs-resolver"
 -    ]
 -  },
 -  "packageManager": "pnpm@10.20.0"
 +  "packageManager": "pnpm@10.34.9"
 ```
+
+Projects generated with older versions of Cookieplone may have a shorter list.
+The plugin provides all of these.
 
 If your `pnpm` field has other settings, move them to {file}`frontend/pnpm-workspace.yaml` instead of removing them.
 
