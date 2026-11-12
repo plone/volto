@@ -266,12 +266,16 @@ const apiMiddlewareFactory =
           isHydrating = false;
           // A successful GET_CONTENT has to carry a content object. Plone
           // answers browserviews and feeds with a 200 plus HTML/XML, so the API helper
-          // resolves with a string and every content reducer throws on
-          // `result['@components']`: the page dies on the client and SSR returns 500.
-          // Treat it as what it is - a missing resource.
+          // resolves with a string in the browser and with an empty object on
+          // the server (superagent returns `{}` for a `text/html` response).
+          // Every content reducer then throws on `result['@components']`: the
+          // page dies on the client and SSR returns 500. Treat it as what it is
+          // - a missing resource.
           if (
             type === GET_CONTENT &&
-            (typeof result !== 'object' || result === null)
+            (typeof result !== 'object' ||
+              result === null ||
+              !('@id' in result))
           ) {
             return next({
               ...rest,
