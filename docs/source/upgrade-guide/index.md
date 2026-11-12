@@ -95,7 +95,7 @@ The plugin provides the settings that Cookieplone generates, so for most project
 -    ]
 -  },
 -  "packageManager": "pnpm@10.20.0"
-+  "packageManager": "pnpm@12.20.0"
++  "packageManager": "pnpm@12.18.0"
 ```
 
 Projects generated with older versions of Cookieplone may have a shorter list.
@@ -162,7 +162,30 @@ If {file}`.npmrc` is then empty, delete it.
 If your CI workflows, {file}`Makefile`, or {file}`Dockerfile` set `npm_config_*` environment variables, rename them to `pnpm_config_*`.
 If they run `pnpm install --frozen-lockfile false`, use `pnpm install --no-frozen-lockfile` instead.
 
-In {file}`frontend/Dockerfile`, update the `pnpm` version as shown.
+The `plone/frontend-builder` image that {file}`frontend/Dockerfile` builds from has its own {file}`package.json`, which uses `pnpm` 10.
+The `builder` stage copies only your project's `dependencies` into it, so `pnpm install` would run with `pnpm` 10, and fail on the plugin.
+In the `builder` stage of {file}`frontend/Dockerfile`, replace the `python3 -c` line that merges {file}`package.json` with the following, so that the image also uses your project's `packageManager`.
+
+```dockerfile
+    python3 <<'PYTHON'
+import json
+
+with open("package.json.temp") as fh:
+    project = json.load(fh)
+with open("package.json") as fh:
+    data = json.load(fh)
+data["dependencies"].update(project["dependencies"])
+# Use the project's pnpm version and settings, not the image's ones
+data["packageManager"] = project["packageManager"]
+data.pop("pnpm", None)
+if "pnpm" in project:
+    data["pnpm"] = project["pnpm"]
+with open("package.json", "w") as fh:
+    json.dump(data, fh, indent=2)
+PYTHON
+```
+
+In the last stage of {file}`frontend/Dockerfile`, update the `pnpm` version as shown.
 
 ```diff
  RUN <<EOT
@@ -170,8 +193,8 @@ In {file}`frontend/Dockerfile`, update the `pnpm` version as shown.
      CI=1 npm i -g corepack@latest && corepack enable pnpm
 -    CI=1 corepack use pnpm@10.20.0
 -    CI=1 corepack prepare pnpm@10.20.0 --activate
-+    CI=1 corepack use pnpm@12.20.0
-+    CI=1 corepack prepare pnpm@12.20.0 --activate
++    CI=1 corepack use pnpm@12.18.0
++    CI=1 corepack prepare pnpm@12.18.0 --activate
  EOT
 ```
 
