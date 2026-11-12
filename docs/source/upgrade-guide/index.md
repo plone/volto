@@ -32,6 +32,83 @@ It is usually better and quicker to move your items into new locations and copy 
 
 ## Upgrading to Volto 19.x.x
 
+(pnpm-plugin-volto-label)=
+
+### Optional: get the shared `pnpm` settings from `@plone/pnpm-plugin-volto`
+```{versionadded} Volto 19.8.0
+```
+
+Volto now publishes `@plone/pnpm-plugin-volto`, a `pnpm` [config dependency](https://pnpm.io/config-dependencies) with the `pnpm` settings that every Volto project needs: `overrides`, `allowBuilds`, and `publicHoistPattern`.
+When Volto changes one of these settings, for example to add a security override, you get the change by updating the plugin, instead of editing your project by hand.
+Your project's own settings always take precedence over the plugin's.
+
+This change is optional.
+It needs `pnpm` 10.29.3 or later.
+Earlier versions of `pnpm` 10 ignore the plugin's `allowBuilds`, so packages that need their build scripts, such as `cypress`, would not be built.
+The Cookieplone templates will be updated to match, so that new projects get this setup when they're generated.
+
+First, in {file}`frontend/package.json`, update `packageManager`, and remove the `pnpm` field.
+While {file}`package.json` has a `pnpm` field, `pnpm` 10 ignores the plugin's `overrides` and `allowBuilds`.
+The plugin provides the settings that Cookieplone generates, so for most projects they can be removed.
+
+```diff
+-  "pnpm": {
+-    "overrides": {
+-      "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+-      "react-refresh": "^0.14.2"
+-    },
+-    "ignoredBuiltDependencies": [
+-      "@parcel/watcher"
+-    ],
+-    "onlyBuiltDependencies": [
+-      "core-js",
+-      "core-js-pure",
+-      "cypress",
+-      "es5-ext",
+-      "esbuild",
+-      "lightningcss-cli",
+-      "unrs-resolver"
+-    ]
+-  },
+-  "packageManager": "pnpm@10.20.0"
++  "packageManager": "pnpm@10.34.9"
+```
+
+Projects generated with older versions of Cookieplone may have a shorter list.
+The plugin provides all of these.
+
+If your `pnpm` field has other settings, move them to {file}`frontend/pnpm-workspace.yaml` instead of removing them.
+
+Then add the plugin from the {file}`frontend` folder.
+
+```shell
+pnpm add --config @plone/pnpm-plugin-volto
+```
+
+This adds it to {file}`frontend/pnpm-workspace.yaml`.
+With `pnpm` 10, config dependencies are pinned to an exact version and integrity hash.
+To update the plugin later, run the same command again.
+
+```yaml
+configDependencies:
+  '@plone/pnpm-plugin-volto': 19.0.0+sha512-...
+```
+
+Optionally, remove the `public-hoist-pattern[]` lines that the plugin provides from {file}`frontend/.npmrc`.
+
+```diff
+-public-hoist-pattern[]=*eslint*
+-public-hoist-pattern[]=*prettier*
+-public-hoist-pattern[]=*stylelint*
+-public-hoist-pattern[]=*cypress*
+-public-hoist-pattern[]=babel-plugin-react-intl
+-public-hoist-pattern[]=*babel-preset-razzle
+```
+
+Finally, update the `pnpm` version in {file}`frontend/Dockerfile` and in your CI workflows, and run `make frontend-install` to update the lockfile.
+
+See the plugin's {file}`settings.json` for the full list of shared settings.
+
 (nodejs-22-removed-label)=
 
 ### Removed support of Node.js 22
