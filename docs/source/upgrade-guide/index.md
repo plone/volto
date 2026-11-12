@@ -45,6 +45,7 @@ Your project's own settings always take precedence over the plugin's.
 This change is optional.
 Volto 19 projects generated with Cookieplone use `pnpm` 10.
 This section upgrades them to `pnpm` 12 and adds the plugin.
+The Cookieplone templates will be updated to match, so that new projects get this setup when they're generated.
 
 Most of the changes come from `pnpm` 11, which changed where `pnpm` reads its settings, and some of its defaults:
 
