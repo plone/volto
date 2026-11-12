@@ -1,0 +1,1 @@
+Added `document_model`, `document` and `kind` to the `@blocks-schema` endpoint, so clients know how content stores its blocks, with `documentModel` utilities for add-ons and the `type` parameter. @sneridagh
