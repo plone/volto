@@ -264,6 +264,18 @@ const apiMiddlewareFactory =
       actionPromise.then(
         (result) => {
           isHydrating = false;
+          if (
+            type === GET_CONTENT &&
+            (typeof result !== 'object' ||
+              result === null ||
+              !('@id' in result))
+          ) {
+            return next({
+              ...rest,
+              error: { status: 404 },
+              type: `${type}_FAIL`,
+            });
+          }
           if (uploadedFiles !== 0) {
             dispatch(updateUploadedFiles(0));
           }
