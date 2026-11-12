@@ -278,6 +278,12 @@ importers:
 
   packages/eslintconfig: {}
 
+  packages/pnpm-plugin-volto:
+    devDependencies:
+      release-it:
+        specifier: 'catalog:'
+        version: 21.1.2(@types/node@24.19.2)(magicast@0.3.5)
+
   packages/registry:
     dependencies:
       auto-config-loader:
