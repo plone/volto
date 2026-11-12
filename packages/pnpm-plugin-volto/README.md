@@ -8,13 +8,26 @@ With this package, a project lists it once, and gets updated settings by bumping
 
 ## Usage
 
-Requires pnpm 11 or later.
+Requires pnpm 10.29.3 or later.
+Earlier versions of pnpm 10 ignore the plugin's `allowBuilds`.
+
+Your project's `package.json` must not have a `pnpm` field.
+While it has one, pnpm 10 ignores the plugin's `overrides` and `allowBuilds`.
+Move any settings you need from it to `pnpm-workspace.yaml`.
 
 ```shell
 pnpm add --config @plone/pnpm-plugin-volto
 ```
 
-This adds the package to `configDependencies` in your `pnpm-workspace.yaml`:
+This adds the package to `configDependencies` in your `pnpm-workspace.yaml`.
+pnpm 10 pins it to an exact version and integrity hash, so run the same command again to update it.
+
+```yaml
+configDependencies:
+  '@plone/pnpm-plugin-volto': 19.0.0+sha512-...
+```
+
+pnpm 11 and later accept a version range instead, and store the integrity hash in the lockfile.
 
 ```yaml
 configDependencies:
