@@ -23,6 +23,7 @@ import history from '@plone/volto/reducers/history/history';
 import linkIntegrity from '@plone/volto/reducers/linkIntegrity/linkIntegrity';
 import groups from '@plone/volto/reducers/groups/groups';
 import messages from '@plone/volto/reducers/messages/messages';
+import statusMessages from '@plone/volto/reducers/statusMessages/statusMessages';
 import navigation from '@plone/volto/reducers/navigation/navigation';
 import querystring from '@plone/volto/reducers/querystring/querystring';
 import querystringsearch from '@plone/volto/reducers/querystringsearch/querystringsearch';
@@ -83,6 +84,7 @@ const reducers = {
   history,
   linkIntegrity,
   messages,
+  statusMessages,
   navigation,
   querystring,
   querystringsearch,

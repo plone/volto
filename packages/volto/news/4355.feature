@@ -1,0 +1,1 @@
+Show the status messages of the backend, from the `statusmessages` cookie, as toasts, and keep them in `state.statusMessages`. Set `config.settings.showStatusMessages` to `false` to show them yourself. @jladage
