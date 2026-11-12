@@ -45,6 +45,7 @@ Your project's own settings always take precedence over the plugin's.
 This change is optional.
 It needs `pnpm` 10.29.3 or later.
 Earlier versions of `pnpm` 10 ignore the plugin's `allowBuilds`, so packages that need their build scripts, such as `cypress`, would not be built.
+The Cookieplone templates will be updated to match, so that new projects get this setup when they're generated.
 
 First, in {file}`frontend/package.json`, update `packageManager`, and remove the `pnpm` field.
 While {file}`package.json` has a `pnpm` field, `pnpm` 10 ignores the plugin's `overrides` and `allowBuilds`.
