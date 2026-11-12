@@ -81,14 +81,25 @@ The plugin provides the settings that Cookieplone generates, so for most project
 -      "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
 -      "react-refresh": "^0.14.2"
 -    },
+-    "ignoredBuiltDependencies": [
+-      "@parcel/watcher"
+-    ],
 -    "onlyBuiltDependencies": [
+-      "core-js",
+-      "core-js-pure",
 -      "cypress",
--      "lightningcss-cli"
+-      "es5-ext",
+-      "esbuild",
+-      "lightningcss-cli",
+-      "unrs-resolver"
 -    ]
 -  },
 -  "packageManager": "pnpm@10.20.0"
 +  "packageManager": "pnpm@12.20.0"
 ```
+
+Projects generated with older versions of Cookieplone may have a shorter list.
+The plugin provides all of these.
 
 If your `pnpm` field has other settings, move them to {file}`frontend/pnpm-workspace.yaml` instead of removing them.
 Convert any `onlyBuiltDependencies`, `ignoredBuiltDependencies`, or `neverBuiltDependencies` entries to `allowBuilds`.
@@ -168,7 +179,8 @@ Also update any `pnpm` version that your CI workflows install, for example in `p
 
 #### Add the plugin and install
 
-Install `pnpm` 12 locally, for example with `corepack enable`.
+Install `pnpm` 12 locally.
+If you use corepack, run `corepack enable`, and `pnpm` switches to the version in `packageManager` by itself.
 Then add the plugin from the {file}`frontend` folder.
 
 ```shell
@@ -183,11 +195,28 @@ configDependencies:
   '@plone/pnpm-plugin-volto': ^19.0.0
 ```
 
+`pnpm` 12 doesn't install versions published less than a day ago, and this also applies to the plugin.
+If its latest version is newer than that, `pnpm add --config` fails with `ERR_PNPM_BAD_CONFIG_DEP`.
+Either wait a day, or allow the plugin in {file}`frontend/pnpm-workspace.yaml`:
+
+```yaml
+minimumReleaseAgeExclude:
+  - '@plone/pnpm-plugin-volto'
+```
+
+Keeping this entry lets you update the plugin as soon as Volto releases a new version, for example with a security override.
+
 Finally, run the following command from the root of your project, and commit the changes, including the updated {file}`pnpm-lock.yaml`.
+Expect a large change in {file}`pnpm-lock.yaml`, because `pnpm` 12 rewrites it.
 
 ```shell
 make frontend-install
 ```
+
+If the install fails with `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION`, your {file}`pnpm-lock.yaml` has versions published less than a day ago, for example from a recent dependency update.
+`pnpm` adds them to `minimumReleaseAgeExclude` in {file}`frontend/pnpm-workspace.yaml` for you.
+Check the added entries, and run the install again.
+You can remove the entries once those versions are older than a day.
 
 If the install fails with `Ignored build scripts`, one of your project's own dependencies has build scripts that aren't in `allowBuilds`.
 `pnpm` 10 skipped them with a warning, so check whether the package needs them.
