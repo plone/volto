@@ -158,3 +158,32 @@ test('leaves selects outside modals inline', () => {
     container.firstChild,
   );
 });
+
+test('does not add a scroll listener outside modals', () => {
+  const ModalSelect = withSelectMenuPortal(Select);
+  const addListener = vi.spyOn(document, 'addEventListener');
+  try {
+    render(<ModalSelect options={options} />);
+    expect(addListener.mock.calls.map(([type]) => type)).not.toContain(
+      'scroll',
+    );
+  } finally {
+    addListener.mockRestore();
+  }
+});
+
+test('forwards the select instance to callback and object refs', () => {
+  const ModalSelect = withSelectMenuPortal(Select);
+  const objectRef = React.createRef();
+  const callbackRef = vi.fn();
+  const { rerender, unmount } = render(<ModalSelect ref={objectRef} />);
+  const instance = objectRef.current;
+  act(() => instance.focus());
+  expect(document.activeElement).toBe(screen.getByRole('textbox'));
+
+  rerender(<ModalSelect ref={callbackRef} />);
+  expect(objectRef.current).toBeNull();
+  expect(callbackRef).toHaveBeenLastCalledWith(instance);
+  unmount();
+  expect(callbackRef).toHaveBeenLastCalledWith(null);
+});
