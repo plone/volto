@@ -430,7 +430,7 @@ class ContentTypeLayout extends Component {
       this.props.schema?.properties || {},
     );
     return (
-      <div id="page-controlpanel-layout">
+      <div id="page-edit" className="controlpanel-layout">
         <Form
           isAdminForm
           ref={this.form}
