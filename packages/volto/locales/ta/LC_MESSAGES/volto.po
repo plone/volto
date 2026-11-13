@@ -716,6 +716,7 @@ msgstr "தெளிவான வடிப்பான்கள்"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Sidebar/ObjectBrowserBody
 msgid "Clear search"
 msgstr "தேடலை அழி"
 
@@ -738,6 +739,16 @@ msgstr "மூடு"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "பட்டியல் மூடு"
+
+#. Default: "Close object browser"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close object browser"
+msgstr ""
+
+#. Default: "Close search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close search"
+msgstr ""
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
@@ -1414,6 +1425,11 @@ msgstr "தேட மேலே ஒரு பயனர்பெயரை உள�
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "மின்னஞ்சல் முகவரியை உள்ளிடவும். இது உங்கள் உள்நுழைவு பெயராக இருக்கும். உங்கள் தனியுரிமையை நாங்கள் மதிக்கிறோம், முகவரியை எந்த மூன்றாம் தரப்பினருக்கும் கொடுக்க மாட்டோம் அல்லது அதை எங்கும் அம்பலப்படுத்த மாட்டோம்."
+
+#. Default: "Enter at least 3 characters to search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Enter at least 3 characters to search"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -2618,6 +2634,7 @@ msgstr "முடிவுகள் எதுவும் கிடைக்க�
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "முடிவுகள் எதுவும் கிடைக்கவில்லை."

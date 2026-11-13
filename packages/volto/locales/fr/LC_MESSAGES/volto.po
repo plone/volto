@@ -717,6 +717,7 @@ msgstr "Effacer les filtres"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Sidebar/ObjectBrowserBody
 msgid "Clear search"
 msgstr "Réinitialiser la recherche"
 
@@ -739,6 +740,16 @@ msgstr "Fermer"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Fermer le menu"
+
+#. Default: "Close object browser"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close object browser"
+msgstr ""
+
+#. Default: "Close search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close search"
+msgstr ""
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
@@ -1415,6 +1426,11 @@ msgstr "Saisissez un nom d'utilisateur ci-dessus à rechercher ou cliquez sur 'A
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Saisissez votre adresse e-mail. Elle sera votre nom d'utilisateur. Nous respectons votre vie privée, nous ne donnerons pas votre adresse à un tiers et elle ne sera pas exposée."
+
+#. Default: "Enter at least 3 characters to search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Enter at least 3 characters to search"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -2619,6 +2635,7 @@ msgstr "Aucun résultat trouvé"
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Aucun resultat trouvé"

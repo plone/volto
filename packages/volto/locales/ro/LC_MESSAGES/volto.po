@@ -716,6 +716,7 @@ msgstr "Curațați filtrele"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Sidebar/ObjectBrowserBody
 msgid "Clear search"
 msgstr "Ștergeți căutarea"
 
@@ -738,6 +739,16 @@ msgstr "Închideți"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Închidere meniu"
+
+#. Default: "Close object browser"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close object browser"
+msgstr ""
+
+#. Default: "Close search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close search"
+msgstr ""
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
@@ -1414,6 +1425,11 @@ msgstr "Introduceți un nume de utilizator mai sus pentru a căuta sau faceți c
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Introduceți o adresă de e-mail. Acesta va fi numele dvs. de autentificare. Respectăm confidențialitatea dvs. și nu vom oferi adresa niciunui terț și nu o vom expune nicăieri."
+
+#. Default: "Enter at least 3 characters to search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Enter at least 3 characters to search"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -2618,6 +2634,7 @@ msgstr "Nu s-au găsit rezultate"
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Nu s-au găsit rezultate."
