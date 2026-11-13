@@ -63,7 +63,7 @@ import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRendere
  * @class Form
  * @extends Component
  */
-class Form extends Component {
+export class Form extends Component {
   /**
    * Property types.
    * @property {Object} propTypes Property types.
@@ -448,8 +448,12 @@ class Form extends Component {
       const blocksLayoutFieldname = getBlocksLayoutFieldname(formData);
 
       const blocks_layout = formData[blocksLayoutFieldname].items;
+      // Keyboard navigation (shift + arrow keys) passes no event and is
+      // always a range extension
+      const isShift = event ? event.shiftKey : true;
+      const isToggle = event ? event.ctrlKey || event.metaKey : false;
 
-      if (event.shiftKey) {
+      if (isShift) {
         const anchor =
           this.props.uiState.multiSelected.length > 0
             ? blocks_layout.indexOf(this.props.uiState.multiSelected[0])
@@ -466,16 +470,17 @@ class Form extends Component {
         window.getSelection().empty();
       }
 
-      if ((event.ctrlKey || event.metaKey) && !event.shiftKey) {
+      if (isToggle && !isShift) {
+        const activeBlock = this.props.uiState.selected;
         multiSelected = this.props.uiState.multiSelected || [];
-        if (!this.props.uiState.multiSelected.includes(this.state.selected)) {
-          multiSelected = [...multiSelected, this.props.uiState.selected];
-          selected = null;
+
+        if (activeBlock && !multiSelected.includes(activeBlock)) {
+          multiSelected = [...multiSelected, activeBlock];
         }
+
         if (this.props.uiState.multiSelected.includes(id)) {
-          selected = null;
           multiSelected = without(multiSelected, id);
-        } else {
+        } else if (!multiSelected.includes(id)) {
           multiSelected = [...multiSelected, id];
         }
       }
