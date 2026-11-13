@@ -715,6 +715,7 @@ msgstr ""
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Sidebar/ObjectBrowserBody
 msgid "Clear search"
 msgstr ""
 
@@ -736,6 +737,16 @@ msgstr ""
 #. Default: "Close menu"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
+msgstr ""
+
+#. Default: "Close object browser"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close object browser"
+msgstr ""
+
+#. Default: "Close search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close search"
 msgstr ""
 
 #. Default: "Code"
@@ -1412,6 +1423,11 @@ msgstr ""
 #. Default: "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
+msgstr ""
+
+#. Default: "Enter at least 3 characters to search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Enter at least 3 characters to search"
 msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
@@ -2617,6 +2633,7 @@ msgstr ""
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr ""
