@@ -1,0 +1,1 @@
+Split the Maps block into separate View and Body components so wrapper and content customizations can compose. @danalvrz
