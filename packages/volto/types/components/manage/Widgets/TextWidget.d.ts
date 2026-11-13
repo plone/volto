@@ -1,5 +1,5 @@
 export default TextWidget;
-declare function TextWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function TextWidget(props: any): import("react").JSX.Element;
 declare namespace TextWidget {
     namespace propTypes {
         let id: any;

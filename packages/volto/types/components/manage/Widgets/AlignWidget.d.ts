@@ -1,3 +1,4 @@
+import React from 'react';
 import { type ActionInfo, type ButtonsWidgetProps } from './ButtonsWidget';
 import type { IntlShape } from 'react-intl';
 export declare const defaultActionsInfo: ({ intl, }: {
@@ -6,5 +7,5 @@ export declare const defaultActionsInfo: ({ intl, }: {
 type AlignWidgetProps = ButtonsWidgetProps & {
     defaultAction?: string;
 };
-declare const AlignWidget: (props: AlignWidgetProps) => import("react/jsx-runtime").JSX.Element;
+declare const AlignWidget: (props: AlignWidgetProps) => React.JSX.Element;
 export default AlignWidget;

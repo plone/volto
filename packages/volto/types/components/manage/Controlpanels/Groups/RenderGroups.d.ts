@@ -1,5 +1,5 @@
 export default RenderGroups;
-declare function RenderGroups(props: any): import("react/jsx-runtime").JSX.Element;
+declare function RenderGroups(props: any): import("react").JSX.Element;
 declare namespace RenderGroups {
     namespace propTypes {
         let group: any;

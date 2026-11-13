@@ -1,5 +1,5 @@
 export default ContentsTagsModal;
-declare function ContentsTagsModal(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ContentsTagsModal(props: any): React.JSX.Element;
 declare namespace ContentsTagsModal {
     namespace propTypes {
         let items: any;
@@ -8,3 +8,4 @@ declare namespace ContentsTagsModal {
         let onCancel: any;
     }
 }
+import React from 'react';

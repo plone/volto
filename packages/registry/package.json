@@ -9,7 +9,7 @@
   ],
   "funding": "https://github.com/sponsors/plone",
   "license": "MIT",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/plone/volto.git"
@@ -51,6 +51,10 @@
     "./create-addons-loader": {
       "import": "./dist/addon-registry/create-addons-loader.js",
       "default": "./dist/addon-registry/create-addons-loader.cjs"
+    },
+    "./create-blocks-docs-loader": {
+      "import": "./dist/addon-registry/create-blocks-docs-loader.js",
+      "default": "./dist/addon-registry/create-blocks-docs-loader.cjs"
     },
     "./create-addons-loader-server": {
       "import": "./dist/addon-registry/create-addons-loader-server.js",
@@ -107,7 +111,7 @@
     "debug": "4.3.2",
     "deepmerge": "^4.3.1",
     "dependency-graph": "0.10.0",
-    "glob": "^10.4.5",
+    "glob": "^14.0.2",
     "tmp": "0.2.6"
   },
   "devDependencies": {

@@ -175,6 +175,15 @@ export function findBlocks(blocks: {}, types: any, result?: any[]): any[];
  * @return {Object} New form data
  */
 export function moveBlockEnhanced(formData: any, { source, destination }: number): any;
+/**
+ * Whether a block is restricted, that is, not offered in the block chooser.
+ * `restricted` can be a boolean or a function that decides from the context.
+ * @function isBlockRestricted
+ * @param {Object} block The block configuration.
+ * @param {Object} context The context: properties, navRoot, contentType, user.
+ * @return {boolean} True if the block is restricted.
+ */
+export function isBlockRestricted(block: any, { properties, navRoot, contentType, user }?: any): boolean;
 export function getBlocks(properties: any): any[];
 export function getInvalidBlockLayoutIds(properties: any): string[];
 export function applyBlockInitialValue({ id, value, blocksConfig, formData, intl, }: {

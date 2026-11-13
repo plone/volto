@@ -1073,3 +1073,22 @@ export const findParent = (formData, { blockId }) => {
 const _dummyIntl = {
   formatMessage() {},
 };
+
+/**
+ * Whether a block is restricted, that is, not offered in the block chooser.
+ * `restricted` can be a boolean or a function that decides from the context.
+ * @function isBlockRestricted
+ * @param {Object} block The block configuration.
+ * @param {Object} context The context: properties, navRoot, contentType, user.
+ * @return {boolean} True if the block is restricted.
+ */
+export function isBlockRestricted(
+  block,
+  { properties, navRoot, contentType, user } = {},
+) {
+  return typeof block.restricted === 'function'
+    ? Boolean(
+        block.restricted({ properties, block, navRoot, contentType, user }),
+      )
+    : Boolean(block.restricted);
+}

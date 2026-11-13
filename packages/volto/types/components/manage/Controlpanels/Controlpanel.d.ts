@@ -1,2 +1,2 @@
 export default Controlpanel;
-declare function Controlpanel(): import("react/jsx-runtime").JSX.Element;
+declare function Controlpanel(): import("react").JSX.Element;

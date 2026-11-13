@@ -39,15 +39,20 @@ const messages = defineMessages({
   },
 });
 
-export function ImageSchema({ formData, intl }) {
+/**
+ * The Image block data schema. It is registered as the `blockSchema` of the
+ * `image` block, and the Image block sidebar reads it from there.
+ */
+export function ImageSchema({ formData, data, intl }) {
+  const { url } = formData || data || {};
   return {
     fieldsets: [
       {
         id: 'default',
         title: 'Default',
-        fields: [...(formData.url ? ['alt', 'align', 'size'] : [])],
+        fields: [...(url ? ['alt', 'align', 'size'] : [])],
       },
-      ...(formData.url
+      ...(url
         ? [
             {
               id: 'link_settings',

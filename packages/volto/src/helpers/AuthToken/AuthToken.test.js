@@ -72,11 +72,12 @@ describe('AuthToken', () => {
 
   describe('persistAuthToken', () => {
     it('can set a new auth token', () => {
+      const token = jwt.sign({ exp: 2 }, 'secret');
       const store = {
         ...mockStore,
         getState: vi.fn(() => ({
           userSession: {
-            token: jwt.sign({ exp: 2 }, 'secret'),
+            token,
           },
           router: {
             location: {
@@ -85,7 +86,6 @@ describe('AuthToken', () => {
           },
         })),
       };
-      const { token } = store.getState().userSession;
 
       persistAuthToken(store);
       expect(cookies.set).toHaveBeenCalledWith('auth_token', token, {

@@ -332,7 +332,7 @@ msgstr ""
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -492,7 +492,7 @@ msgstr "可用的内容规则"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1559,11 +1559,6 @@ msgstr "失效日期"
 msgid "Expired"
 msgstr "失效"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "失效的URL"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1906,7 +1901,6 @@ msgstr "如果您确定访问的Web地址正确,但是遇到错误，请联系{s
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "图像"
 
@@ -2151,6 +2145,7 @@ msgstr "布局"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "首图"
 
@@ -2189,6 +2184,7 @@ msgstr "链接重定向视图"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr ""
 
@@ -2199,7 +2195,7 @@ msgstr "链接标题"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "链接至"
@@ -2285,7 +2281,7 @@ msgid "Logo of"
 msgstr ""
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "退出"
 
@@ -2572,11 +2568,6 @@ msgstr "未选择图像"
 msgid "No image set in Lead Image content field"
 msgstr ""
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "在图像内容字段中没有设置图像"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2725,7 +2716,7 @@ msgstr "打开 URL 浏览器"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "在新标签中打开"
@@ -2750,11 +2741,6 @@ msgstr ""
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr ""
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "原始"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
@@ -2927,7 +2913,7 @@ msgid "Powered by Plone & Python"
 msgstr ""
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "偏好"
 
@@ -2954,7 +2940,7 @@ msgid "Preview Image URL"
 msgstr "预览图片网址"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "概述"
 
@@ -3631,7 +3617,7 @@ msgstr "网站管理员"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "网站设置"
@@ -5032,6 +5018,11 @@ msgstr ""
 msgid "linkAnImage"
 msgstr ""
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5460,7 +5451,7 @@ msgid "url"
 msgstr ""
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "用户头像"
 

@@ -331,7 +331,7 @@ msgstr "Синонимы загружены."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -491,7 +491,7 @@ msgstr "Доступные правила контента:"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1558,11 +1558,6 @@ msgstr "Срок действия"
 msgid "Expired"
 msgstr "Истекший"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "Внешний URL"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1905,7 +1900,6 @@ msgstr "Если вы уверены, что адрес верный, но ст�
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Изображение"
 
@@ -2150,6 +2144,7 @@ msgstr "Макет"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "Главное изображение"
 
@@ -2188,6 +2183,7 @@ msgstr "Перенаправление"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr "Настройки ссылки"
 
@@ -2198,7 +2194,7 @@ msgstr "Заголовок ссылки"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "Ссылка на"
@@ -2284,7 +2280,7 @@ msgid "Logo of"
 msgstr "Логотип"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Выйти"
 
@@ -2571,11 +2567,6 @@ msgstr "Изображение не выбрано"
 msgid "No image set in Lead Image content field"
 msgstr "Изображение не выбрано в поле Главное изображение"
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "Изображение не выбрано в поле Изображение"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2724,7 +2715,7 @@ msgstr "Открыть браузер URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "Открыть в новой вкладке"
@@ -2749,11 +2740,6 @@ msgstr "Порядок"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "Упорядоченный"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "Источник"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
@@ -2926,7 +2912,7 @@ msgid "Powered by Plone & Python"
 msgstr "Работает на Plone и Python"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Настройки"
 
@@ -2953,7 +2939,7 @@ msgid "Preview Image URL"
 msgstr "URL изображения обложки"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Профиль"
 
@@ -3630,7 +3616,7 @@ msgstr "Администрирование сайта"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Настройка сайта"
@@ -5031,6 +5017,11 @@ msgstr "Проверяю ссылки..."
 msgid "linkAnImage"
 msgstr "Введите URL изображения"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5459,7 +5450,7 @@ msgid "url"
 msgstr "Введите действительный URL (www.something.com или http(s)://www.something.com)"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "аватар пользователя"
 

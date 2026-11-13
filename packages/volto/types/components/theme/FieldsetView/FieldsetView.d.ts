@@ -18,5 +18,5 @@ export type FieldsetViewProps = {
  * The `default` fieldset is rendered without a heading, since its title says
  * nothing the page does not already say.
  */
-declare const FieldsetView: ({ fieldset, schema, data }: FieldsetViewProps) => import("react/jsx-runtime").JSX.Element;
+declare const FieldsetView: ({ fieldset, schema, data }: FieldsetViewProps) => import("react").JSX.Element;
 export default FieldsetView;

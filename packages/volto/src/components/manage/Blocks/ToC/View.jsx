@@ -55,6 +55,7 @@ export const getBlocksTocEntries = (properties, tocData) => {
       const i = `${id}-${index}`;
       const level = entry[0];
       const title = entry[1];
+      const anchor = entry[2];
       const items = [];
       if (!level || !levels.includes(level)) return;
       tocEntriesLayout.push(i);
@@ -63,6 +64,7 @@ export const getBlocksTocEntries = (properties, tocData) => {
         title: title || block.plaintext,
         items,
         id: i,
+        anchor,
       };
       if (level < rootLevel) {
         rootLevel = level;
@@ -119,6 +121,7 @@ const View = (props) => {
       if (entry) {
         const level = entry[0];
         const title = entry[1];
+        const anchor = entry[2];
         const items = [];
         if (!title?.trim() && !block.plaintext?.trim()) return;
         if (!level || !levels.includes(level)) return;
@@ -130,6 +133,7 @@ const View = (props) => {
           id,
           override_toc: block.override_toc,
           plaintext: block.plaintext,
+          anchor,
         };
       }
     });

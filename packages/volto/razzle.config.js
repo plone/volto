@@ -10,6 +10,9 @@ const RelativeResolverPlugin = require('./webpack-plugins/webpack-relative-resol
 const { poToJson } = require('@plone/scripts/i18n.cjs');
 const { createAddonsLoader } = require('@plone/registry/create-addons-loader');
 const {
+  createBlocksDocsLoader,
+} = require('@plone/registry/create-blocks-docs-loader');
+const {
   createThemeAddonsLoader,
 } = require('@plone/registry/create-theme-loader');
 const { AddonRegistry } = require('@plone/registry/addon-registry');
@@ -265,8 +268,21 @@ const defaultModify = ({
   fileLoader.exclude = [
     /\.(config|variables|overrides|cjs)$/,
     /icons\/.*\.svg$/,
+    /\.block\.md$/,
     ...fileLoader.exclude,
   ];
+
+  // Block docs (`*.block.md`) are imported as strings with `?raw`, only by
+  // the server, for the @blocks-schema endpoint.
+  config.module.rules.push({
+    test: /\.block\.md$/,
+    resourceQuery: /raw/,
+    type: 'asset/source',
+  });
+  const blocksDocsLoaderPath = createBlocksDocsLoader([
+    `${registry.voltoPath}/src`,
+    ...registry.getAddons().map((addon) => addon.modulePath),
+  ]);
 
   let addonsFromEnvVar = [];
   if (process.env.ADDONS) {
@@ -293,6 +309,7 @@ const defaultModify = ({
     '../../theme.config$': `${projectRootPath}/theme/theme.config`,
     'volto-themes': `${registry.voltoPath}/theme/themes`,
     'load-volto-addons': addonsLoaderPath,
+    'load-blocks-docs': blocksDocsLoaderPath,
     ...registry.getResolveAliases(),
     '@plone/volto': `${registry.voltoPath}/src`,
     '@plone/volto-slate': `${registry.voltoPath}/../volto-slate/src`,

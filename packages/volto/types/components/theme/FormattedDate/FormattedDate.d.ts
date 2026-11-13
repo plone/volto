@@ -11,4 +11,5 @@ declare function FormattedDate({ date, format, long, includeTime, relative, clas
     className: any;
     locale: any;
     children: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
+import React from 'react';

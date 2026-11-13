@@ -7,7 +7,7 @@ export const SplitParts: any;
 declare namespace _default {
     export let title: string;
     export { FormattedRelativeDate as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         namespace live {
             namespace control {
@@ -56,3 +56,4 @@ declare namespace _default {
 }
 export default _default;
 import FormattedRelativeDate from './FormattedRelativeDate';
+import React from 'react';

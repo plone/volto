@@ -13,7 +13,7 @@ export const CustomOptions: any;
 declare namespace _default {
     export let title: string;
     export { SelectWidgetComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         namespace value {
             namespace control {
@@ -24,3 +24,4 @@ declare namespace _default {
 }
 export default _default;
 import { SelectWidgetComponent } from './SelectWidget';
+import React from 'react';

@@ -2,7 +2,7 @@ export default Body;
 declare function Body({ data, isEditMode }: {
     data: any;
     isEditMode: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 declare namespace Body {
     namespace propTypes {
         let data: any;
@@ -15,3 +15,4 @@ export function getVideoIDAndPlaceholder(url: any, peertubeInstances: any): {
     videoSource: string;
     hasMatch: boolean;
 };
+import React from 'react';

@@ -40,7 +40,7 @@ import imagesSVG from '@plone/volto/icons/images.svg';
 import ImageGalleryListingBlockTemplate from '@plone/volto/components/manage/Blocks/Listing/ImageGallery';
 import BlockSettingsSchema from '@plone/volto/components/manage/Blocks/Block/Schema';
 import ImageSettingsSchema from '@plone/volto/components/manage/Blocks/Image/LayoutSchema';
-import ToCSettingsSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
+import ToCBlockSchema from '@plone/volto/components/manage/Blocks/ToC/Schema';
 
 import GridBlockView from '@plone/volto/components/manage/Blocks/Grid/View';
 import GridBlockEdit from '@plone/volto/components/manage/Blocks/Grid/Edit';
@@ -48,7 +48,13 @@ import { GridBlockDataAdapter } from '@plone/volto/components/manage/Blocks/Grid
 import { GridBlockSchema } from '@plone/volto/components/manage/Blocks/Grid/schema';
 import GridTemplates from '@plone/volto/components/manage/Blocks/Grid/templates';
 import { gridTeaserDisableStylingSchema } from '@plone/volto/components/manage/Blocks/Teaser/schema';
-import { gridImageDisableSizeAndPositionHandlersSchema } from '@plone/volto/components/manage/Blocks/Image/schema';
+import {
+  ImageSchema,
+  gridImageDisableSizeAndPositionHandlersSchema,
+} from '@plone/volto/components/manage/Blocks/Image/schema';
+import { LeadImageBlockSchema } from '@plone/volto/components/manage/Blocks/LeadImage/schema';
+import { MapsSchema } from '@plone/volto/components/manage/Blocks/Maps/schema';
+import { HTMLBlockSchema } from '@plone/volto/components/manage/Blocks/HTML/schema';
 
 import SearchBlockView from '@plone/volto/components/manage/Blocks/Search/SearchBlockView';
 import SearchBlockEdit from '@plone/volto/components/manage/Blocks/Search/SearchBlockEdit';
@@ -287,6 +293,7 @@ const blocksConfig = {
     view: ViewImageBlock,
     edit: EditImageBlock,
     schema: ImageSettingsSchema,
+    blockSchema: ImageSchema,
     restricted: false,
     mostUsed: true,
     sidebarTab: 1,
@@ -300,6 +307,7 @@ const blocksConfig = {
     view: ViewLeadImageBlock,
     edit: EditLeadImageBlock,
     schema: BlockSettingsSchema,
+    blockSchema: LeadImageBlockSchema,
     restricted: ({ properties }) => !properties.hasOwnProperty('image'),
     mostUsed: false,
     sidebarTab: 1,
@@ -361,7 +369,8 @@ const blocksConfig = {
     group: 'common',
     view: ViewToCBlock,
     edit: EditToCBlock,
-    schema: ToCSettingsSchema,
+    schema: BlockSettingsSchema,
+    blockSchema: ToCBlockSchema,
     variations: ToCVariations,
     restricted: false,
     mostUsed: false,
@@ -375,6 +384,7 @@ const blocksConfig = {
     view: ViewMapBlock,
     edit: EditMapBlock,
     schema: BlockSettingsSchema,
+    blockSchema: MapsSchema,
     restricted: false,
     mostUsed: false,
     sidebarTab: 1,
@@ -387,6 +397,7 @@ const blocksConfig = {
     view: ViewHTMLBlock,
     edit: EditHTMLBlock,
     schema: BlockSettingsSchema,
+    blockSchema: HTMLBlockSchema,
     restricted: false,
     mostUsed: false,
     sidebarTab: 0,

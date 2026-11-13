@@ -12,6 +12,15 @@ const __dirname = path.dirname(__filename);
 
 const projectRoot = path.resolve(__dirname);
 
+const {
+  createBlocksDocsLoader,
+} = require('@plone/registry/create-blocks-docs-loader');
+// The block docs of core and volto-slate, as the build collects them.
+const blocksDocsLoaderPath = createBlocksDocsLoader([
+  path.resolve(__dirname, 'src'),
+  path.resolve(__dirname, '../volto-slate/src'),
+]);
+
 const sharedAliases = {
   '@plone/volto': path.resolve(__dirname, 'src'),
   '@plone/volto-slate': path.resolve(__dirname, '../volto-slate/src'),
@@ -21,6 +30,7 @@ const sharedAliases = {
   'react-dropzone': require.resolve('react-dropzone'),
   'prop-types': require.resolve('prop-types'),
   'react-intl-redux': require.resolve('react-intl-redux'),
+  'load-blocks-docs': blocksDocsLoaderPath,
 };
 
 // volto-slate specific aliases 

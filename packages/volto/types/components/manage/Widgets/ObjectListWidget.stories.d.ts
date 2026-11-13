@@ -1,7 +1,7 @@
 export const Default: any;
 export const MultipleFieldsets: any;
 export const DefaultValues: any;
-export function SchemaExtender(args: any): import("react/jsx-runtime").JSX.Element;
+export function SchemaExtender(args: any): React.JSX.Element;
 export namespace SchemaExtender {
     namespace args {
         export { defaultSchema as schema };
@@ -11,12 +11,13 @@ export namespace SchemaExtender {
 declare namespace _default {
     export let title: string;
     export { ObjectListWidgetDefault as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         let schema: {};
     }
 }
 export default _default;
+import React from 'react';
 declare namespace defaultSchema {
     let title_1: string;
     export { title_1 as title };

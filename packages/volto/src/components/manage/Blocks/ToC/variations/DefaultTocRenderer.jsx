@@ -12,10 +12,15 @@ import { normalizeString } from '@plone/volto/helpers/Utils/Utils';
 
 const RenderListItems = ({ items, data }) => {
   return map(items, (item) => {
-    const { id, level, title, override_toc, plaintext } = item;
-    const slug = override_toc
-      ? Slugger.slug(normalizeString(plaintext))
-      : Slugger.slug(normalizeString(title)) || id;
+    const { id, level, title, override_toc, plaintext, anchor } = item;
+    // `anchor` is provided by the block itself, and is the anchor that its view
+    // renders. Fall back to slugging the entry for blocks that do not provide
+    // one.
+    const slug =
+      anchor ||
+      (override_toc
+        ? Slugger.slug(normalizeString(plaintext))
+        : Slugger.slug(normalizeString(title)) || id);
     return (
       item && (
         <List.Item key={id} className={`item headline-${level}`} as="li">

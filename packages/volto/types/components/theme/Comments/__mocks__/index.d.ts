@@ -1,1 +1,1 @@
-export declare const CommentEditModal: () => import("react/jsx-runtime").JSX.Element;
+export declare const CommentEditModal: () => import("react").JSX.Element;

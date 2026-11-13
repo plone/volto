@@ -220,4 +220,94 @@ describe('Toolbar Personal Tools component', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  const renderWithPersonalTools = (personalTools) => {
+    const store = mockStore({
+      users: {
+        user: {
+          fullname: 'admin',
+          email: 'admin@plone.org',
+          roles: ['Manager'],
+        },
+      },
+      userSession: {
+        token: jwt.sign({ sub: 'admin' }, 'secret'),
+      },
+      content: {
+        data: {
+          '@type': 'Folder',
+          is_folderish: true,
+        },
+      },
+      actions: {
+        actions: {
+          user: [
+            {
+              id: 'plone_setup',
+              title: 'Site Setup',
+            },
+          ],
+          ...(personalTools !== undefined && {
+            personal_tools: personalTools,
+          }),
+        },
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    return renderer.create(
+      <Provider store={store}>
+        <PluggablesProvider>
+          <MemoryRouter>
+            <PersonalTools
+              loadComponent={() => {}}
+              theToolbar={{
+                current: { getBoundingClientRect: () => ({ width: '320' }) },
+              }}
+            />
+          </MemoryRouter>
+        </PluggablesProvider>
+      </Provider>,
+    );
+  };
+
+  const menuLinks = (component) =>
+    component.root.findAllByType('a').map((link) => link.props.href);
+
+  it('renders the entries from the personal_tools actions', () => {
+    const component = renderWithPersonalTools([
+      {
+        id: 'preferences',
+        title: 'Preferences',
+        url: 'http://localhost:8080/Plone/@@personal-preferences',
+      },
+      {
+        id: 'dashboard',
+        title: 'Dashboard',
+        url: 'http://localhost:8080/Plone/dashboard',
+      },
+    ]);
+    const hrefs = menuLinks(component);
+    expect(hrefs).toEqual(
+      expect.arrayContaining(['/@@personal-preferences', '/dashboard']),
+    );
+    expect(hrefs).not.toContain('/personal-information');
+    expect(hrefs).not.toContain('/controlpanel');
+  });
+
+  it('falls back to the built-in entries when personal_tools is empty', () => {
+    const component = renderWithPersonalTools([]);
+    const hrefs = menuLinks(component);
+    expect(hrefs).toContain('/personal-information');
+    expect(hrefs).toContain('/controlpanel');
+  });
+
+  it('falls back to the built-in entries when personal_tools is missing', () => {
+    const component = renderWithPersonalTools(undefined);
+    const hrefs = menuLinks(component);
+    expect(hrefs).toContain('/personal-information');
+    expect(hrefs).toContain('/controlpanel');
+  });
 });

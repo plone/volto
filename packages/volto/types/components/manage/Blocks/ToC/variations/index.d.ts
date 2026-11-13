@@ -6,7 +6,7 @@ declare const ToCVariations: ({
         ({ data, tocEntries }: {
             data: any;
             tocEntries: any;
-        }): import("react/jsx-runtime").JSX.Element;
+        }): import("react").JSX.Element;
         propTypes: {
             properties: any;
         };
@@ -19,7 +19,7 @@ declare const ToCVariations: ({
         ({ data, tocEntries }: {
             data: any;
             tocEntries: any;
-        }): import("react/jsx-runtime").JSX.Element;
+        }): import("react").JSX.Element;
         propTypes: {
             properties: any;
         };

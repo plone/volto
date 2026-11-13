@@ -5,6 +5,7 @@
 [Aa]sync
 [Bb]ackend
 CommonJS
+[Ff]rontmatter
 JavaScript
 npm
 nvm

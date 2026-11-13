@@ -13,5 +13,5 @@ export type UserAvatarProps = {
  * Extracted so that add-ons can shadow this component alone — rendering a
  * portrait, initials or a gravatar — instead of shadowing the whole toolbar.
  */
-declare const UserAvatar: ({ title, icon, size }: UserAvatarProps) => import("react/jsx-runtime").JSX.Element;
+declare const UserAvatar: ({ title, icon, size }: UserAvatarProps) => import("react").JSX.Element;
 export default UserAvatar;

@@ -1,2 +1,3 @@
 export default LeftColumnFacets;
-declare function LeftColumnFacets(props: any): import("react/jsx-runtime").JSX.Element;
+declare function LeftColumnFacets(props: any): React.JSX.Element;
+import React from 'react';

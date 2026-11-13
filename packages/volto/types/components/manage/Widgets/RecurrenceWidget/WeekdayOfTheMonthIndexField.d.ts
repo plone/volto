@@ -4,7 +4,7 @@ declare function WeekdayOfTheMonthIndexField({ disabled, value, onChange, ...oth
     disabled: any;
     value: any;
     onChange: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 declare namespace WeekdayOfTheMonthIndexField {
     namespace propTypes {
         let disabled: any;
@@ -20,3 +20,4 @@ declare namespace WeekdayOfTheMonthIndexField {
         export { onChange_1 as onChange };
     }
 }
+import React from 'react';

@@ -32,7 +32,7 @@ export declare const UrlWidget: import("@loadable/component").LoadableClassCompo
             overlay: string;
         }) => void;
         closeObjectBrowser: () => void;
-        render(): import("react/jsx-runtime").JSX.Element;
+        render(): import("react").JSX.Element;
         context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;
@@ -72,7 +72,7 @@ export declare const InternalUrlWidget: import("@loadable/component").LoadableCl
             overlay: string;
         }) => void;
         closeObjectBrowser: () => void;
-        render(): import("react/jsx-runtime").JSX.Element;
+        render(): import("react").JSX.Element;
         context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;

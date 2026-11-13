@@ -1,5 +1,5 @@
 export default Edit;
-declare function Edit(props: any): import("react/jsx-runtime").JSX.Element;
+declare function Edit(props: any): React.JSX.Element;
 declare namespace Edit {
     namespace propTypes {
         let properties: any;
@@ -12,3 +12,4 @@ declare namespace Edit {
         let openObjectBrowser: any;
     }
 }
+import React from 'react';

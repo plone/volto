@@ -43,4 +43,5 @@ export function objectSchema({ intl, isDisabled, value }: {
     required: any[];
 };
 export default QuerystringWidget;
-declare function QuerystringWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function QuerystringWidget(props: any): React.JSX.Element;
+import React from 'react';

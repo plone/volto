@@ -27,4 +27,5 @@ export default ObjectListWidget;
  *  },
  * ```
  */
-declare function ObjectListWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ObjectListWidget(props: any): React.JSX.Element;
+import React from 'react';

@@ -1,5 +1,5 @@
 export default ToggleFacet;
-declare function ToggleFacet(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ToggleFacet(props: any): React.JSX.Element;
 declare namespace ToggleFacet {
     function stateToValue({ facetSettings, index, selectedValue }: {
         facetSettings: any;
@@ -15,3 +15,4 @@ declare namespace ToggleFacet {
         v: string;
     };
 }
+import React from 'react';

@@ -1,6 +1,6 @@
 export function MenuList({ children }: {
     children: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 export const SortableMultiValue: any;
 export const SortableMultiValueLabel: any;
 export const MultiValueContainer: any;
@@ -23,3 +23,4 @@ export namespace customSelectStyles {
     };
     function option(styles: any, state: any): any;
 }
+import React from 'react';

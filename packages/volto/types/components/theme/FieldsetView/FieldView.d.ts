@@ -17,5 +17,5 @@ export type FieldViewProps = {
  * The title is rendered bare, without a label, since it is the heading of the
  * page rather than one field among others.
  */
-declare const FieldView: ({ field, data }: FieldViewProps) => import("react/jsx-runtime").JSX.Element;
+declare const FieldView: ({ field, data }: FieldViewProps) => import("react").JSX.Element;
 export default FieldView;

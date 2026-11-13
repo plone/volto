@@ -26,6 +26,7 @@ import {
   findContainer,
   isBlockContainer,
   findStyleByName,
+  isBlockRestricted,
 } from './Blocks';
 
 import config from '@plone/volto/registry';
@@ -2034,5 +2035,28 @@ describe('findContainer', () => {
       const container = isBlockContainer(formData);
       expect(container).toBeFalsy();
     });
+  });
+});
+
+describe('isBlockRestricted', () => {
+  it('reads a boolean restricted', () => {
+    expect(isBlockRestricted({ id: 'a' })).toBe(false);
+    expect(isBlockRestricted({ id: 'a', restricted: false })).toBe(false);
+    expect(isBlockRestricted({ id: 'a', restricted: true })).toBe(true);
+  });
+
+  it('calls a restricted function with the block and the context', () => {
+    const restricted = vi.fn(({ contentType }) => contentType === 'Folder');
+    const block = { id: 'a', restricted };
+    const context = {
+      properties: { title: 'News' },
+      navRoot: { '@id': '/' },
+      contentType: 'Folder',
+      user: { id: 'editor' },
+    };
+
+    expect(isBlockRestricted(block, context)).toBe(true);
+    expect(restricted).toHaveBeenCalledWith({ ...context, block });
+    expect(isBlockRestricted(block, { contentType: 'Document' })).toBe(false);
   });
 });

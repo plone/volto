@@ -2,7 +2,7 @@ export const Text: any;
 declare namespace _default {
     export let title: string;
     export { TextWidget as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => import("react").JSX.Element)[];
     export namespace argTypes {
         namespace description {
             export let control: string;

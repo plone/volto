@@ -2,7 +2,7 @@ export const Default: any;
 declare namespace _default {
     export let title: string;
     export { NewsItemViewComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         export namespace title_1 {
             let description: string;
@@ -21,3 +21,4 @@ declare namespace _default {
 }
 export default _default;
 import NewsItemViewComponent from './NewsItemView';
+import React from 'react';

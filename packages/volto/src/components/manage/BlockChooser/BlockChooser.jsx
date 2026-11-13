@@ -11,6 +11,7 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import AnimateHeight from 'react-animate-height';
 import config from '@plone/volto/registry';
 import { formatMessageWithFallback } from '@plone/volto/helpers/I18n/I18n';
+import { isBlockRestricted } from '@plone/volto/helpers/Blocks/Blocks';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import BlockChooserSearch from './BlockChooserSearch';
@@ -62,15 +63,12 @@ const BlockChooser = ({
         // Overload restricted as a function, so we can decide the availability of a block
         // depending on this function, given properties (current present blocks) and the
         // block being evaluated
-        return typeof item.restricted === 'function'
-          ? !item.restricted({
-              properties,
-              block: item,
-              navRoot,
-              contentType,
-              user,
-            })
-          : !item.restricted;
+        return !isBlockRestricted(item, {
+          properties,
+          navRoot,
+          contentType,
+          user,
+        });
       }
     }
   });

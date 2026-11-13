@@ -1,5 +1,5 @@
 export function withContentNavigation(WrappedComponent: any): {
-    (props: any): import("react/jsx-runtime").JSX.Element;
+    (props: any): React.JSX.Element;
     propTypes: {
         /**
          * Location, from router
@@ -12,3 +12,4 @@ export function withContentNavigation(WrappedComponent: any): {
     };
     displayName: string;
 };
+import React from 'react';

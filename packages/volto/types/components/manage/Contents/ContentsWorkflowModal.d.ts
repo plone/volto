@@ -1,5 +1,5 @@
 export default ContentsWorkflowModal;
-declare function ContentsWorkflowModal(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ContentsWorkflowModal(props: any): React.JSX.Element;
 declare namespace ContentsWorkflowModal {
     namespace propTypes {
         let items: any;
@@ -8,3 +8,4 @@ declare namespace ContentsWorkflowModal {
         let onCancel: any;
     }
 }
+import React from 'react';

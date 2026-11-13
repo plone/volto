@@ -1,5 +1,5 @@
 export default SidebarPopup;
-declare function SidebarPopup(props: any): import("react/jsx-runtime").JSX.Element;
+declare function SidebarPopup(props: any): React.JSX.Element;
 declare namespace SidebarPopup {
     namespace propTypes {
         let open: any;
@@ -15,3 +15,4 @@ declare namespace SidebarPopup {
         export { overlay_1 as overlay };
     }
 }
+import React from 'react';

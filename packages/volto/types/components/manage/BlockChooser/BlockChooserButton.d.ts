@@ -1,3 +1,4 @@
-export function ButtonComponent(props: any): import("react/jsx-runtime").JSX.Element;
+export function ButtonComponent(props: any): React.JSX.Element;
 export default BlockChooserButton;
-declare function BlockChooserButton(props: any): import("react/jsx-runtime").JSX.Element;
+import React from 'react';
+declare function BlockChooserButton(props: any): React.JSX.Element;

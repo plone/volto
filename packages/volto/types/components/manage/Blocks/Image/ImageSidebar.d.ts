@@ -1,5 +1,5 @@
 export default ImageSidebar;
-declare function ImageSidebar(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ImageSidebar(props: any): React.JSX.Element;
 declare namespace ImageSidebar {
     namespace propTypes {
         let data: any;
@@ -7,3 +7,4 @@ declare namespace ImageSidebar {
         let onChangeBlock: any;
     }
 }
+import React from 'react';

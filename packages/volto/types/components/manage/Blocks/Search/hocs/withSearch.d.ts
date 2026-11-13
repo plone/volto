@@ -1,5 +1,6 @@
 export default withSearch;
 declare function withSearch(options: any): (WrappedComponent: any) => {
-    (props: any): import("react/jsx-runtime").JSX.Element;
+    (props: any): React.JSX.Element;
     displayName: string;
 };
+import React from 'react';

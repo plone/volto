@@ -331,7 +331,7 @@ msgstr ""
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -491,7 +491,7 @@ msgstr "Saatavilla olevat sisältösäännöt:"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -1558,11 +1558,6 @@ msgstr "Erääntymispäivä"
 msgid "Expired"
 msgstr "Erääntynyt"
 
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "Ulkoinen URL"
-
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
 msgid "Facet"
@@ -1905,7 +1900,6 @@ msgstr "Jos olet vakuuttunut, että tämä sivu pitäisi olla olemassa, ota yhte
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Kuva"
 
@@ -2150,6 +2144,7 @@ msgstr "Asettelu"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "Nostokuva"
 
@@ -2188,6 +2183,7 @@ msgstr "Linkin uudelleenohjauksen näkymä"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr ""
 
@@ -2198,7 +2194,7 @@ msgstr "Otsikko"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "Linkin kohde"
@@ -2284,7 +2280,7 @@ msgid "Logo of"
 msgstr ""
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Kirjaudu ulos"
 
@@ -2571,11 +2567,6 @@ msgstr "Kuvaa ei ole määritety"
 msgid "No image set in Lead Image content field"
 msgstr "Sisällöstä puuttuu nostokuva"
 
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "Kuva puuttuu"
-
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
 msgid "No images found."
@@ -2724,7 +2715,7 @@ msgstr "Avaa URL-selain"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "Avaa uudella välilehdellä"
@@ -2749,11 +2740,6 @@ msgstr ""
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr ""
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "Kuva"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
@@ -2926,7 +2912,7 @@ msgid "Powered by Plone & Python"
 msgstr "Voimanlähteenä Plone & Python"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Asetukset"
 
@@ -2953,7 +2939,7 @@ msgid "Preview Image URL"
 msgstr "Esikatselukuva URL-osoite"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Profiili"
 
@@ -3630,7 +3616,7 @@ msgstr "Sivuston ylläpito"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Sivuston asetukset"
@@ -5031,6 +5017,11 @@ msgstr ""
 msgid "linkAnImage"
 msgstr ""
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5459,7 +5450,7 @@ msgid "url"
 msgstr "URL"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "käyttäjäkuva"
 

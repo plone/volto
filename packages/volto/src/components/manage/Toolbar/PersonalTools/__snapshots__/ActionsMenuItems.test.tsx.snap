@@ -1,0 +1,62 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ActionsMenuItems > renders the personal tools actions 1`] = `
+<DocumentFragment>
+  <ul>
+    <li>
+      <a
+        href="/personal-information"
+      >
+        Profile
+        <svg
+          class="icon"
+          style="height: 24px; width: auto; fill: currentcolor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </li>
+    <li>
+      <button
+        aria-label="Preferences"
+      >
+        Preferences
+        <svg
+          class="icon"
+          style="height: 24px; width: auto; fill: currentcolor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </button>
+    </li>
+    <li>
+      <a
+        href="/controlpanel"
+      >
+        Site Setup
+        <svg
+          class="icon"
+          style="height: 24px; width: auto; fill: currentcolor;"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.707 26.707 13.293 25.293 20.586 18 13.293 10.707 14.707 9.293 23.414 18z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </a>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
