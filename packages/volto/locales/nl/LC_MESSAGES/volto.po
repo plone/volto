@@ -716,6 +716,7 @@ msgstr "Filters leegmaken"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Sidebar/ObjectBrowserBody
 msgid "Clear search"
 msgstr "Zoek leegmaken"
 
@@ -738,6 +739,16 @@ msgstr "Sluiten"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Menu sluiten"
+
+#. Default: "Close object browser"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close object browser"
+msgstr ""
+
+#. Default: "Close search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close search"
+msgstr ""
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
@@ -1414,6 +1425,11 @@ msgstr "Vul hierboven een gebruikersnaam in om te zoeken of klik 'Toon alles'"
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Vul een e-mailadres in. Dit zal jouw inlognaam worden. Wij respecteren jouw privacy en zullen het niet delen met eender welke derde partij of het ergens blootstellen."
+
+#. Default: "Enter at least 3 characters to search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Enter at least 3 characters to search"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -2618,6 +2634,7 @@ msgstr "Geen resultaten gevonden"
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Geen resultaten gevonden."

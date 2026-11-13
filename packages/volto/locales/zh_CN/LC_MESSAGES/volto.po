@@ -717,6 +717,7 @@ msgstr "清除过滤器"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Sidebar/ObjectBrowserBody
 msgid "Clear search"
 msgstr ""
 
@@ -739,6 +740,16 @@ msgstr "关闭"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "关闭菜单"
+
+#. Default: "Close object browser"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close object browser"
+msgstr ""
+
+#. Default: "Close search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close search"
+msgstr ""
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
@@ -1415,6 +1426,11 @@ msgstr "输入用户名进行搜索或点击显示全部"
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "输入一个 Email 地址。这会成为您的登录名。我们尊重您的隐私，不会向第三方透漏您的个人信息。"
+
+#. Default: "Enter at least 3 characters to search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Enter at least 3 characters to search"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -2619,6 +2635,7 @@ msgstr "未找到结果"
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "未找到结果。"

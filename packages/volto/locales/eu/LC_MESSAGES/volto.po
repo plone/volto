@@ -717,6 +717,7 @@ msgstr "Garbitu filtroak"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Sidebar/ObjectBrowserBody
 msgid "Clear search"
 msgstr "Garbitu bilaketa"
 
@@ -739,6 +740,16 @@ msgstr "Itxi"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "Itxi menua"
+
+#. Default: "Close object browser"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close object browser"
+msgstr ""
+
+#. Default: "Close search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close search"
+msgstr ""
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
@@ -1415,6 +1426,11 @@ msgstr "Idatzi erabiltzaile-izen bat bilaketa egiteko edo sakatu 'Ikusi guztiak'
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "Idatzi eposta helbidea. Hau zure erabiltzaile-izena izango da. Zure pribatutasuna errespetatzen dugu eta ez dugu helbidea argitaratu edo inori emango."
+
+#. Default: "Enter at least 3 characters to search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Enter at least 3 characters to search"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -2619,6 +2635,7 @@ msgstr "Ez da emaitzarik aurkitu"
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "Ez da emaitzarik aurkitu."
