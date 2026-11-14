@@ -114,5 +114,73 @@ context('Blocks Acceptance Tests', () => {
         .should('have.attr', 'href')
         .and('include', 'https://google.com');
     });
+
+    it('As editor I can copy a block into a Grid', function () {
+      cy.intercept('PATCH', '/**/document').as('edit');
+
+      // GIVEN: a text block outside the grid
+      cy.getSlate().click().type('Copy me into the grid');
+
+      // WHEN: shift+click the text block to multi-select it, then copy
+      cy.get('.block-editor-slate').first().click();
+      cy.get('.block-editor-slate').first().click({ shiftKey: true });
+      cy.get('#toolbar-copy-blocks').should('be.visible');
+      cy.get('#toolbar-copy-blocks').click();
+
+      // AND: add a grid block below and an empty text block inside it
+      cy.getSlate().click().type('{moveToEnd}{enter}');
+      cy.addNewBlock('grid', true);
+      cy.findByText('2 columns').click();
+
+      cy.get('button[aria-label="Add block in position 0"]').click();
+      cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
+      cy.wait(200);
+      cy.get('.blocks-chooser .text .button.slate').click();
+
+      // THEN: the paste button appears and pastes inside the grid
+      cy.get('#toolbar-paste-blocks').should('be.visible');
+      cy.get('#toolbar-paste-blocks').click();
+
+      cy.get('#toolbar-save').click();
+      cy.wait('@edit');
+      cy.wait('@content');
+
+      cy.findAllByText('Copy me into the grid').should('have.length', 2);
+    });
+
+    it('As editor I can cut a block into a Grid', function () {
+      cy.intercept('PATCH', '/**/document').as('edit');
+
+      // GIVEN: a text block outside the grid
+      cy.getSlate().click().type('Copy me into the grid');
+
+      // WHEN: shift+click the text block to multi-select it, then copy
+      cy.get('.block-editor-slate').first().click();
+      cy.get('.block-editor-slate').first().click({ shiftKey: true });
+      cy.get('#toolbar-cut-blocks').should('be.visible');
+      cy.get('#toolbar-cut-blocks').click();
+
+      cy.getSlateTitle().focus().click().type('{enter}');
+      cy.getSlate().click();
+      cy.addNewBlock('grid', true);
+      // AND: add a grid block below and an empty text block inside it
+
+      cy.findByText('2 columns').click();
+
+      cy.get('button[aria-label="Add block in position 0"]').click();
+      cy.get('.blocks-chooser [aria-label="Unfold Text blocks"]').click();
+      cy.wait(200);
+      cy.get('.blocks-chooser .text .button.slate').click();
+
+      // THEN: the paste button appears and pastes inside the grid
+      cy.get('#toolbar-paste-blocks').should('be.visible');
+      cy.get('#toolbar-paste-blocks').click();
+
+      cy.get('#toolbar-save').click();
+      cy.wait('@edit');
+      cy.wait('@content');
+
+      cy.findAllByText('Copy me into the grid').should('have.length', 1);
+    });
   });
 });
