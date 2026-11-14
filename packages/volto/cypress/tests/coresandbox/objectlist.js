@@ -37,7 +37,7 @@ context('ObjectListWidget table layout Acceptance Tests', () => {
       cy.findByLabelText('Add link').click();
     });
     cy.get('.modal').within(() => {
-      cy.get('input[name="title"]').type(title);
+      cy.findByLabelText('Title').type(title);
       cy.findByRole('button', { name: 'Save' }).click();
     });
   };
@@ -60,7 +60,7 @@ context('ObjectListWidget table layout Acceptance Tests', () => {
       cy.findByLabelText('Add link').click();
     });
     cy.get('.modal').within(() => {
-      cy.get('input[name="title"]').type('Discarded');
+      cy.findByLabelText('Title').type('Discarded');
       cy.findByRole('button', { name: 'Cancel' }).click();
     });
 

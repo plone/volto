@@ -307,11 +307,15 @@ class ModalForm extends Component {
     const fields = currentFieldset
       ? map(currentFieldset.fields, (field) => ({
           ...schema.properties[field],
-          id: field,
+          // The DOM id is namespaced, so a label of this dialog cannot resolve
+          // to a field of the page with the same name. The value, the changes,
+          // the blur validation and the errors keep the name of the field.
+          id: `modal-${field}`,
+          fieldName: field,
           value: this.state.formData[field],
           required: schema.required.indexOf(field) !== -1,
-          onChange: this.onChangeField,
-          onBlur: this.onBlurField,
+          onChange: (fieldId, value) => this.onChangeField(field, value),
+          onBlur: (fieldId, value) => this.onBlurField(field, value),
           onClick: this.onClickInput,
         }))
       : [];
@@ -388,9 +392,7 @@ class ModalForm extends Component {
                   <Field
                     {...field}
                     key={field.id}
-                    onBlur={this.onBlurField}
-                    onClick={this.onClickInput}
-                    error={this.state.errors[field.id]}
+                    error={this.state.errors[field.fieldName]}
                   />
                 ))}
               </UiForm>
