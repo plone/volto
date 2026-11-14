@@ -16,7 +16,11 @@ const Types = ({ types, pathname, content, currentLanguage }) => {
   const availableLanguages = useSelector(
     (state) => state.site?.data?.['plone.available_languages'] || [],
   );
-  return types.length > 0 || content?.['@components']?.translations ? (
+  const isMultilingual = useSelector(
+    (state) => state.site?.data?.features?.multilingual,
+  );
+  return types.length > 0 ||
+    (isMultilingual && content?.['@components']?.translations) ? (
     <div className="menu-more pastanaga-menu">
       {types.length > 0 && (
         <>
