@@ -1,0 +1,1 @@
+Documented the Lead Image block (`leadimage`) in a `docs.block.md` file, so that the `/@blocks-schema` endpoint and the reference docs describe it. The docs say that the image comes from the content item's lead image field, and that the block stores only its alignment and optional link. @ericof

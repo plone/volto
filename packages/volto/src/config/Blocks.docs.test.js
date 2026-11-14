@@ -14,14 +14,23 @@ describe('Core block docs', () => {
         'search',
         'teaser',
         'gridBlock',
+        'leadimage',
         'slate',
         'detachedSlate',
+        'slateTable',
       ]),
     );
   });
 
   it('only documents blocks that exist', () => {
-    const known = [...Object.keys(blocksConfig), 'slate', 'detachedSlate'];
+    // slate, detachedSlate and slateTable come from volto-slate, which this
+    // unit test does not install.
+    const known = [
+      ...Object.keys(blocksConfig),
+      'slate',
+      'detachedSlate',
+      'slateTable',
+    ];
     for (const file of blocksDocs) {
       expect(known).toContain(file.block);
     }
