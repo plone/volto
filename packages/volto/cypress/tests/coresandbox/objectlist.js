@@ -131,10 +131,12 @@ context('ObjectListWidget table layout Acceptance Tests', () => {
         blocks_layout: { items: ['tbl'] },
       }),
     });
-    // A full load, so the edit page starts with the saved blocks.
-    cy.visit('/table-document/edit');
+    // Visit the new document first, as the other cases do, then open its edit
+    // view. The intercepts are registered in beforeEach, before any visit.
+    cy.visit('/table-document');
     cy.wait('@content');
-    cy.getSlateTitle();
+    cy.navigate('/table-document/edit');
+    cy.wait('@schema');
     cy.get('.block-editor-testBlockTable', { timeout: 10000 }).click();
 
     cy.get('#toolbar-save').click();
