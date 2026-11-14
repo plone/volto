@@ -219,6 +219,93 @@ SchemaExtender.args = {
   secondarySchema: defaultSecondarySchema,
 };
 
+export const TableLayout = ObjectListWidgetComponent.bind({});
+TableLayout.args = {
+  schema: defaultSchema,
+  layout: 'table',
+  columns: ['href', 'title'],
+  itemTitle: 'title',
+};
+
+export const TableCells = ObjectListWidgetComponent.bind({});
+TableCells.args = {
+  schema: defaultSchema,
+  layout: 'table',
+  columns: ['title', 'href'],
+  cells: {
+    title: (value) => <strong>{value || '(no title)'}</strong>,
+  },
+};
+
+export const TableMaxItems = ObjectListWidgetComponent.bind({});
+TableMaxItems.args = {
+  schema: defaultSchema,
+  layout: 'table',
+  columns: ['title'],
+  maxItems: 2,
+};
+
+const failedSubmit = Object.assign([], {
+  internalErrors: {
+    1: { title: ['Required input is missing.'] },
+  },
+});
+
+export const ValidationErrors = ObjectListWidgetComponent.bind({});
+ValidationErrors.args = {
+  schema: defaultSchema,
+  layout: 'table',
+  columns: ['title', 'href'],
+  error: failedSubmit,
+};
+
+const uniqueTitle = (item, index, items) =>
+  items.some((other, i) => i !== index && other.title === item.title)
+    ? 'Another item already has this title'
+    : undefined;
+
+export const ValidateItem = ObjectListWidgetComponent.bind({});
+ValidateItem.args = {
+  schema: defaultSchema,
+  layout: 'table',
+  columns: ['title', 'href'],
+  validateItem: uniqueTitle,
+};
+
+const emailSchema = {
+  title: 'Email',
+  addMessage: 'Add email',
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['value'],
+    },
+  ],
+  properties: {
+    value: {
+      title: 'Email',
+      type: 'string',
+    },
+  },
+  required: ['value'],
+};
+
+const uniqueEmail = (item, index, items) =>
+  items.some((other, i) => i !== index && other.value === item.value)
+    ? 'This email is already in the list'
+    : undefined;
+
+export const StringList = ObjectListWidgetComponent.bind({});
+StringList.args = {
+  schema: emailSchema,
+  layout: 'table',
+  columns: ['value'],
+  itemTitle: 'value',
+  itemIds: false,
+  validateItem: uniqueEmail,
+};
+
 export default {
   title: 'Edit Widgets/Object List (JSON)',
   component: ObjectListWidgetDefault,

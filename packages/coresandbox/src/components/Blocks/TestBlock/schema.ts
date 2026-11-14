@@ -102,6 +102,7 @@ export const SliderSchema: BlockConfigBase['blockSchema'] = ({ intl }) => ({
       fields: [
         'html',
         'slides',
+        'tableItems',
         'fieldAfterObjectList',
         'href',
         'firstWithDefault',
@@ -114,6 +115,15 @@ export const SliderSchema: BlockConfigBase['blockSchema'] = ({ intl }) => ({
       widget: 'object_list',
       title: intl.formatMessage(messages.items),
       schema: itemSchema,
+    },
+    tableItems: {
+      widget: 'object_list',
+      title: 'Table items',
+      schema: itemSchema,
+      layout: 'table',
+      columns: ['title', 'href'],
+      itemTitle: 'title',
+      maxItems: 3,
     },
     fieldAfterObjectList: {
       title: 'Field after OL',

@@ -572,6 +572,7 @@ class Form extends Component {
           schema: this.props.schema,
           formData,
           formatMessage: this.props.intl.formatMessage,
+          intl: this.props.intl,
         })
       : {};
 

@@ -371,3 +371,95 @@ body.babel-view .field.language-independent-field {
     padding-top: 0;
   }
 }
+
+// ObjectListWidget, table layout
+.objectlist-widget .objectlist-table {
+  container-type: inline-size;
+
+  .objectlist-table-head,
+  .objectlist-table-row {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e8e8e8;
+    gap: 0.5rem;
+  }
+
+  .objectlist-table-head {
+    font-weight: bold;
+  }
+
+  .objectlist-table-heading,
+  .objectlist-table-cell {
+    overflow: hidden;
+    min-width: 0;
+    flex: 1 1 0;
+    text-overflow: ellipsis;
+  }
+
+  .objectlist-table-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .objectlist-table-row.has-error {
+    padding-left: 0.5rem;
+    border-left: 3px solid #e40166;
+  }
+
+  .objectlist-item-menu {
+    position: relative;
+
+    .objectlist-item-menu-list {
+      position: absolute;
+      z-index: 10;
+      right: 0;
+      min-width: 10rem;
+      padding: 0.25rem 0;
+      border-radius: 4px;
+      margin: 0;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      list-style: none;
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 0.4rem 0.75rem;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        text-align: left;
+
+        &:disabled {
+          cursor: default;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  // A list of rows in a narrow container, such as the block settings sidebar
+  &.narrow {
+    .objectlist-table-head {
+      display: none;
+    }
+
+    .objectlist-table-row {
+      flex-wrap: wrap;
+    }
+
+    .objectlist-table-cell {
+      flex: 1 1 100%;
+    }
+  }
+}
+
+@container (max-width: 28rem) {
+  .objectlist-widget .objectlist-table {
+    .objectlist-table-head {
+      display: none;
+    }
+  }
+}
