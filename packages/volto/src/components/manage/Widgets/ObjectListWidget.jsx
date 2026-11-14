@@ -429,43 +429,45 @@ const ObjectListWidget = (props) => {
                 <div
                   ref={draginfo.innerRef}
                   {...draginfo.draggableProps}
-                  className={`objectlist-table-row${rowError ? ' has-error' : ''}`}
+                  className="objectlist-table-item"
                   data-index={index}
                 >
-                  <button
-                    type="button"
-                    style={{
-                      visibility: 'visible',
-                      display: 'inline-block',
-                    }}
-                    {...draginfo.dragHandleProps}
-                    className="drag handle"
+                  <div
+                    className={`objectlist-table-row${rowError ? ' has-error' : ''}`}
                   >
-                    <Icon name={dragSVG} size="18px" />
-                  </button>
-                  {columnNames.map((name) => (
-                    <div
-                      key={name}
-                      className="objectlist-table-cell"
-                      data-column={name}
-                    >
-                      {cellValue(name, child)}
-                    </div>
-                  ))}
-                  <div className="objectlist-table-actions">
-                    <Button
-                      compact
-                      basic
+                    <button
                       type="button"
-                      aria-label={`${intl.formatMessage(messages.edit)} ${itemName(child, index)} #${index + 1}`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        openEdit(index);
+                      style={{
+                        visibility: 'visible',
+                        display: 'inline-block',
                       }}
+                      {...draginfo.dragHandleProps}
+                      className="drag handle"
                     >
-                      {intl.formatMessage(messages.edit)}
-                    </Button>
-                    <div className="objectlist-item-menu">
+                      <Icon name={dragSVG} size="18px" />
+                    </button>
+                    {columnNames.map((name) => (
+                      <div
+                        key={name}
+                        className="objectlist-table-cell"
+                        data-column={name}
+                      >
+                        {cellValue(name, child)}
+                      </div>
+                    ))}
+                    <div className="objectlist-table-actions">
+                      <Button
+                        compact
+                        basic
+                        type="button"
+                        aria-label={`${intl.formatMessage(messages.edit)} ${itemName(child, index)} #${index + 1}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openEdit(index);
+                        }}
+                      >
+                        {intl.formatMessage(messages.edit)}
+                      </Button>
                       <button
                         type="button"
                         aria-haspopup="menu"
@@ -475,54 +477,56 @@ const ObjectListWidget = (props) => {
                       >
                         ⋯
                       </button>
-                      {menuOpen && (
-                        <ul role="menu" className="objectlist-item-menu-list">
-                          <li>
-                            <button
-                              type="button"
-                              role="menuitem"
-                              disabled={index === 0}
-                              onClick={() => moveItem(index, index - 1)}
-                            >
-                              {intl.formatMessage(messages.moveUp)}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              type="button"
-                              role="menuitem"
-                              disabled={index === value.length - 1}
-                              onClick={() => moveItem(index, index + 1)}
-                            >
-                              {intl.formatMessage(messages.moveDown)}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              type="button"
-                              role="menuitem"
-                              disabled={atMax}
-                              onClick={() => duplicateItem(index)}
-                            >
-                              {intl.formatMessage(messages.duplicate)}
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              type="button"
-                              role="menuitem"
-                              onClick={() => {
-                                setMenuIndex(null);
-                                setRemoveIndex(index);
-                              }}
-                            >
-                              {intl.formatMessage(messages.remove)}
-                            </button>
-                          </li>
-                        </ul>
-                      )}
                     </div>
                   </div>
+                  {/* The menu is in the flow below its row, not positioned over
+                      the content, so no stacking context can cover it. */}
+                  {menuOpen && (
+                    <ul role="menu" className="objectlist-item-menu-list">
+                      <li>
+                        <button
+                          type="button"
+                          role="menuitem"
+                          disabled={index === 0}
+                          onClick={() => moveItem(index, index - 1)}
+                        >
+                          {intl.formatMessage(messages.moveUp)}
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          type="button"
+                          role="menuitem"
+                          disabled={index === value.length - 1}
+                          onClick={() => moveItem(index, index + 1)}
+                        >
+                          {intl.formatMessage(messages.moveDown)}
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          type="button"
+                          role="menuitem"
+                          disabled={atMax}
+                          onClick={() => duplicateItem(index)}
+                        >
+                          {intl.formatMessage(messages.duplicate)}
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          type="button"
+                          role="menuitem"
+                          onClick={() => {
+                            setMenuIndex(null);
+                            setRemoveIndex(index);
+                          }}
+                        >
+                          {intl.formatMessage(messages.remove)}
+                        </button>
+                      </li>
+                    </ul>
+                  )}
                 </div>
               );
             }}

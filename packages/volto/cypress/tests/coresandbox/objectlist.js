@@ -131,7 +131,8 @@ context('ObjectListWidget table layout Acceptance Tests', () => {
         blocks_layout: { items: ['tbl'] },
       }),
     });
-    cy.navigate('/table-document/edit');
+    // A full load, so the edit page starts with the saved blocks.
+    cy.visit('/table-document/edit');
     cy.wait('@content');
     cy.getSlateTitle();
     cy.get('.block-editor-testBlockTable', { timeout: 10000 }).click();
