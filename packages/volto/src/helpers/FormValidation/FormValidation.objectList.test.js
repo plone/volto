@@ -144,3 +144,43 @@ describe('FormValidation of object_list items', () => {
     expect(errors.text).toBeUndefined();
   });
 });
+
+describe('FormValidation called as Form.onSubmit calls it for blocks', () => {
+  it('does not crash when an item schema function uses intl and no intl is passed', () => {
+    // The sandbox block defines its item schema as a function of intl, and the
+    // block validation in Form.onSubmit calls validateFieldsPerFieldset without
+    // an intl argument. The nested validation must still resolve the schema.
+    const blockSchema = {
+      fieldsets: [{ id: 'default', title: 'Default', fields: ['tableItems'] }],
+      properties: {
+        tableItems: {
+          title: 'Table items',
+          type: 'array',
+          widget: 'object_list',
+          schema: ({ intl }) => ({
+            title: intl.formatMessage({ id: 'Item', defaultMessage: 'Item' }),
+            fieldsets: [{ id: 'default', title: 'Default', fields: ['title'] }],
+            properties: { title: { title: 'Title', type: 'string' } },
+            required: ['title'],
+          }),
+        },
+      },
+      required: [],
+    };
+    const formData = {
+      tableItems: [{ '@id': 'item-1', title: '' }],
+    };
+
+    let errors;
+    expect(() => {
+      errors = FormValidation.validateFieldsPerFieldset({
+        schema: blockSchema,
+        formData,
+        formatMessage,
+      });
+    }).not.toThrow();
+    expect(errors.tableItems.internalErrors[0].title).toContain(
+      'Required input is missing.',
+    );
+  });
+});

@@ -614,6 +614,7 @@ class Form extends Component {
           schema: blockSchema,
           formData: blocks[block],
           formatMessage: this.props.intl.formatMessage,
+          intl: this.props.intl,
         });
         if (keys(blockErrors).length > 0) {
           blocksErrors = {

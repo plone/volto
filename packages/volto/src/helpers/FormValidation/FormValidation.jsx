@@ -88,11 +88,14 @@ const validateNestedFields = ({ field, fieldData, formatMessage, intl }) => {
     return null;
   }
 
+  // Item schemas may be functions of intl. Callers that only pass
+  // formatMessage still get an intl object with it.
+  const itemIntl = intl ?? { formatMessage };
   const baseSchema = resolveItemSchema({
     schema: field.schema,
     schemaName: field.schemaName,
     props: field,
-    intl,
+    intl: itemIntl,
   });
   const validateItem = (item) =>
     validateFieldsPerFieldset(
@@ -100,12 +103,12 @@ const validateNestedFields = ({ field, fieldData, formatMessage, intl }) => {
         baseSchema,
         item,
         schemaExtender: field.schemaExtender,
-        intl,
+        intl: itemIntl,
       }),
       item,
       formatMessage,
       {},
-      intl,
+      itemIntl,
     );
 
   if (isObject) {
