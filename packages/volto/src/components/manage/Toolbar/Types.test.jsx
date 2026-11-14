@@ -92,4 +92,28 @@ describe('Types', () => {
     const json = component.toJSON();
     expect(json).toMatchSnapshot();
   });
+
+  it('does not render translations if the site is not multilingual', () => {
+    const store = mockStore({
+      types: { types: [] },
+      site: { data: { features: { multilingual: false } } },
+      intl: {
+        locale: 'de',
+        messages: {},
+      },
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <Types
+          pathname="/test"
+          content={{
+            '@components': {
+              translations: { '@id': '/test/@translations' },
+            },
+          }}
+        />
+      </Provider>,
+    );
+    expect(component.toJSON().type).toBe('span');
+  });
 });

@@ -642,7 +642,8 @@ class Toolbar extends Component {
                     {this.props.content &&
                       this.props.content.is_folderish &&
                       (this.props.types.length > 0 ||
-                        this.props.content['@components']?.translations) && (
+                        (this.props.isMultilingual &&
+                          this.props.content['@components']?.translations)) && (
                         <button
                           className="add"
                           aria-label={this.props.intl.formatMessage(
@@ -755,6 +756,7 @@ export default compose(
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
+      isMultilingual: state.site?.data?.features?.multilingual,
       unlockRequest: state.content.unlock,
     }),
     { getTypes, listActions, setExpandedToolbar, unlockContent },
