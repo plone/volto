@@ -79,7 +79,7 @@ describe('User Control Panel Test', () => {
     cy.get('tr:nth-of-type(1) div[role="listbox"]').click();
     cy.get('tr:nth-of-type(1) div[role="option"]#edit-user-button').click();
     cy.get('.ui.page.modals .ui.header').contains('Update User');
-    cy.get('.ui.page.modals form input#field-modal-fullname')
+    cy.get('.ui.page.modals form input#field-fullname')
       .clear()
       .type('Ion Lizarazu');
     cy.get('.ui.page.modals .actions button[title="Save"]').click();

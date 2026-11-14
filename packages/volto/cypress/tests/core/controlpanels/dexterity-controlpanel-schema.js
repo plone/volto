@@ -29,20 +29,18 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     // Add field
     cy.get('button[id=addfield]').click();
     cy.wait(2000);
-    cy.get('.modal div[id="field-modal-factory"]')
-      .click()
-      .type('Choice{enter}');
-    cy.get('.modal input[id="field-modal-title"]')
+    cy.get('.modal div[id="field-factory"]').click().type('Choice{enter}');
+    cy.get('.modal input[id="field-title"]')
       .type('Color')
       .should('have.value', 'Color');
     cy.get('.modal .actions button[aria-label="Save"]').click();
 
     // Add fieldset
     cy.get('.tabular.menu .item-add button').click();
-    cy.get('.modal input[id="field-modal-title"]')
+    cy.get('.modal input[id="field-title"]')
       .type('Specifications')
       .should('have.value', 'Specifications');
-    cy.get('.modal input[id="field-modal-id"]')
+    cy.get('.modal input[id="field-id"]')
       .type('specifications')
       .should('have.value', 'specifications')
       .blur();
@@ -55,10 +53,10 @@ describe('ControlPanel: Dexterity Content-Types Schema', () => {
     cy.get('.modal .react-select-container')
       .click()
       .type('Specifications{enter}');
-    cy.get('.modal textarea[id="field-modal-values"]').type(
+    cy.get('.modal textarea[id="field-values"]').type(
       'Blue{enter}Red{enter}Green',
     );
-    cy.get('.modal label[for="field-modal-required"]').click();
+    cy.get('.modal label[for="field-required"]').click();
     cy.get('.modal .actions button[aria-label="Save"]').click();
     cy.get('[data-rbd-draggable-id="Specifications"]').click();
     cy.get('.react-select-container[id="field-color"]')
