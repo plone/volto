@@ -306,6 +306,15 @@ StringList.args = {
   validateItem: uniqueEmail,
 };
 
+export const FixedItems = ObjectListWidgetComponent.bind({});
+FixedItems.args = {
+  schema: defaultSchema,
+  layout: 'table',
+  columns: ['title', 'href'],
+  itemTitle: 'title',
+  fixedItems: true,
+};
+
 export default {
   title: 'Edit Widgets/Object List (JSON)',
   component: ObjectListWidgetDefault,

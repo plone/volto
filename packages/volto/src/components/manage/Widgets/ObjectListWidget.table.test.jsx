@@ -515,3 +515,56 @@ test('a non-table layout value falls back to the accordion', () => {
   const { container } = renderWidget({ layout: 'unknown' });
   expect(container.querySelector('.objectlist-table')).toBeNull();
 });
+
+describe('ObjectListWidget fixedItems', () => {
+  it('hides Add and the remove button in the accordion, and keeps the items', () => {
+    const { container } = renderWidget({ fixedItems: true });
+    expect(screen.queryByRole('button', { name: 'Add Link' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Remove item #1' })).toBeNull();
+    expect(container.querySelectorAll('.accordion-title-wrapper')).toHaveLength(
+      3,
+    );
+    expect(screen.getByLabelText('Show item #1')).toBeInTheDocument();
+  });
+
+  it('hides Add in the table, and keeps Edit and the drag handles', () => {
+    const { container } = renderWidget({ ...tableProps, fixedItems: true });
+    expect(screen.queryByRole('button', { name: 'Add Link' })).toBeNull();
+    expect(
+      screen.getByRole('button', { name: 'Edit Link #1' }),
+    ).toBeInTheDocument();
+    expect(container.querySelectorAll('.objectlist-table-row')).toHaveLength(3);
+    expect(container.querySelectorAll('.drag.handle')).toHaveLength(3);
+  });
+
+  it('hides Duplicate and Remove in the table item menu, and keeps Move up and Move down', () => {
+    renderWidget({ ...tableProps, fixedItems: true });
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Actions for item #2' }),
+    );
+    expect(
+      screen.getByRole('menuitem', { name: 'Move up' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('menuitem', { name: 'Move down' }),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole('menuitem', { name: 'Duplicate' })).toBeNull();
+    expect(screen.queryByRole('menuitem', { name: 'Remove' })).toBeNull();
+  });
+
+  it('keeps Add, Duplicate and Remove when fixedItems is not set', () => {
+    renderWidget(tableProps);
+    expect(
+      screen.getByRole('button', { name: 'Add Link' }),
+    ).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Actions for item #2' }),
+    );
+    expect(
+      screen.getByRole('menuitem', { name: 'Duplicate' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('menuitem', { name: 'Remove' }),
+    ).toBeInTheDocument();
+  });
+});

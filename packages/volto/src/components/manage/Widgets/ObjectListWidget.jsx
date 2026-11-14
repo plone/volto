@@ -100,6 +100,8 @@ const NARROW_WIDTH = 448;
  * - `maxItems`: at this number of items Add and Duplicate are disabled.
  * - `validateItem`: `(item, index, items) => message`, run by the dialog
  *   before Save; a returned message blocks Save and is shown in the dialog.
+ * - `fixedItems`: `true` makes the list fixed: items cannot be added or removed,
+ *   so Add, Duplicate and Remove are hidden. Items stay editable and reorderable.
  * - `itemIds`: `false` writes no `@id` to the items, and keys the rows by
  *   their content.
  * - `schemaExtender(schema, data, intl)`: mutates the schema of each item.
@@ -143,6 +145,7 @@ const ObjectListWidget = (props) => {
     maxItems,
     validateItem,
     itemIds = true,
+    fixedItems = false,
   } = props;
   const itemTitle = props.itemTitle ?? props.placeholderItemField;
 
@@ -354,30 +357,32 @@ const ObjectListWidget = (props) => {
   return (
     <div className="objectlist-widget">
       <FormFieldWrapper {...props} noForInFieldLabel className="objectlist">
-        <div className="add-item-button-wrapper">
-          <Button
-            compact
-            icon
-            disabled={atMax}
-            aria-label={objectSchema.addMessage || addLabel}
-            onClick={(e) => {
-              e.preventDefault();
-              if (isTable) {
-                openAdd();
-                return;
-              }
-              const dataWithDefaults = buildItem(newItem());
+        {!fixedItems && (
+          <div className="add-item-button-wrapper">
+            <Button
+              compact
+              icon
+              disabled={atMax}
+              aria-label={objectSchema.addMessage || addLabel}
+              onClick={(e) => {
+                e.preventDefault();
+                if (isTable) {
+                  openAdd();
+                  return;
+                }
+                const dataWithDefaults = buildItem(newItem());
 
-              onChange(id, [...value, dataWithDefaults]);
-              setActiveObject(value.length);
-            }}
-          >
-            <Icon name={addSVG} size="18px" />
-            &nbsp;
-            {/* Custom addMessage in schema, else default to English */}
-            {objectSchema.addMessage || addLabel}
-          </Button>
-        </div>
+                onChange(id, [...value, dataWithDefaults]);
+                setActiveObject(value.length);
+              }}
+            >
+              <Icon name={addSVG} size="18px" />
+              &nbsp;
+              {/* Custom addMessage in schema, else default to English */}
+              {objectSchema.addMessage || addLabel}
+            </Button>
+          </div>
+        )}
         {value.length === 0 && (
           <input
             aria-labelledby={`fieldset-${
@@ -503,28 +508,32 @@ const ObjectListWidget = (props) => {
                           {intl.formatMessage(messages.moveDown)}
                         </button>
                       </li>
-                      <li>
-                        <button
-                          type="button"
-                          role="menuitem"
-                          disabled={atMax}
-                          onClick={() => duplicateItem(index)}
-                        >
-                          {intl.formatMessage(messages.duplicate)}
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          role="menuitem"
-                          onClick={() => {
-                            setMenuIndex(null);
-                            setRemoveIndex(index);
-                          }}
-                        >
-                          {intl.formatMessage(messages.remove)}
-                        </button>
-                      </li>
+                      {!fixedItems && (
+                        <li>
+                          <button
+                            type="button"
+                            role="menuitem"
+                            disabled={atMax}
+                            onClick={() => duplicateItem(index)}
+                          >
+                            {intl.formatMessage(messages.duplicate)}
+                          </button>
+                        </li>
+                      )}
+                      {!fixedItems && (
+                        <li>
+                          <button
+                            type="button"
+                            role="menuitem"
+                            onClick={() => {
+                              setMenuIndex(null);
+                              setRemoveIndex(index);
+                            }}
+                          >
+                            {intl.formatMessage(messages.remove)}
+                          </button>
+                        </li>
+                      )}
                     </ul>
                   )}
                 </div>
@@ -625,19 +634,21 @@ const ObjectListWidget = (props) => {
                       {`${itemName(child, index)} #${index + 1}`}
                     </div>
                     <div className="accordion-tools">
-                      <button
-                        aria-label={`${intl.formatMessage(
-                          messages.labelRemoveItem,
-                        )} #${index + 1}`}
-                        onClick={() => {
-                          onChange(
-                            id,
-                            value.filter((v, i) => i !== index),
-                          );
-                        }}
-                      >
-                        <Icon name={deleteSVG} size="20px" color="#e40166" />
-                      </button>
+                      {!fixedItems && (
+                        <button
+                          aria-label={`${intl.formatMessage(
+                            messages.labelRemoveItem,
+                          )} #${index + 1}`}
+                          onClick={() => {
+                            onChange(
+                              id,
+                              value.filter((v, i) => i !== index),
+                            );
+                          }}
+                        >
+                          <Icon name={deleteSVG} size="20px" color="#e40166" />
+                        </button>
+                      )}
                       {activeObject === index ? (
                         <Icon name={upSVG} size="20px" />
                       ) : (

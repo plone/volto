@@ -187,6 +187,12 @@ The options are:
     Use it for a list of plain values, such as a list of strings.
     The default is `true`.
 
+`fixedItems`
+:   Set it to `true` to fix the list: its items cannot be added or removed.
+    Add, Duplicate and Remove are hidden, in both layouts.
+    The items stay editable and reorderable.
+    The default is `false`.
+
 `activeObject` and `setActiveObject`
 :   Control the open item of the `accordion` layout, from the parent of the widget.
     They keep the Volto names, as `schemaExtender` does.
