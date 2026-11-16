@@ -12,6 +12,7 @@ import { Form } from '@plone/volto/components/manage/Form';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
 import Toolbar from '@plone/volto/components/manage/Toolbar/Toolbar';
+import Unauthorized from '@plone/volto/components/theme/Unauthorized/Unauthorized';
 import { updatePassword } from '@plone/volto/actions/users/users';
 import { getBaseUrl } from '@plone/volto/helpers/Url/Url';
 import backSVG from '@plone/volto/icons/back.svg';
@@ -69,6 +70,7 @@ const ChangePassword = () => {
   const dispatch = useDispatch();
   const isClient = useClient();
 
+  const token = useSelector((state) => state.userSession.token);
   const userId = useSelector(
     (state) =>
       state.userSession.token ? jwtDecode(state.userSession.token).sub : '',
@@ -97,6 +99,13 @@ const ChangePassword = () => {
   const onCancel = () => {
     history.goBack();
   };
+
+  // Without a token the form can only ever fail: userId is empty and the
+  // backend rejects updatePassword. Unauthorized redirects to the login route
+  // with a return_url, matching the other manage surfaces.
+  if (!token) {
+    return <Unauthorized />;
+  }
 
   return (
     <Container id="page-change-password">
