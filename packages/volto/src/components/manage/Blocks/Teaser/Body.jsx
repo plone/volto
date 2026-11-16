@@ -24,6 +24,7 @@ const TeaserBody = (props) => {
 TeaserBody.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
   isEditMode: PropTypes.bool,
+  isLCPBlock: PropTypes.bool,
 };
 
 export default TeaserBody;

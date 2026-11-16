@@ -24,6 +24,7 @@ exports[`renders a view image component 1`] = `
         },
       }
     }
+    loading="lazy"
     responsive={true}
   />
 </p>
