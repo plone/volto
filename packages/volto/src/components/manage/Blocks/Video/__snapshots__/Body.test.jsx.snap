@@ -16,6 +16,79 @@ exports[`renders a error message for invalid video URL in edit mode 1`] = `
 </div>
 `;
 
+exports[`renders a incorrect peertube video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="invalidVideoFormat"
+  />
+</div>
+`;
+
+exports[`renders a peertube video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <iframe
+    src="https://peertube.eus/videos/embed/qjubDnZ79UmmjhAUqvX2zu"
+    style={
+      {
+        "aspectRatio": "16/9",
+        "width": "100%",
+      }
+    }
+    title="Peertube video iframe"
+  />
+</div>
+`;
+
+exports[`renders a youtu.be video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="ui 16:9 embed"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    tabIndex={0}
+  >
+    <i
+      aria-hidden="true"
+      className="play icon"
+      onClick={[Function]}
+    />
+    <img
+      className="placeholder"
+      src="https://img.youtube.com/vi/KwRSRRyuk-Q/sddefault.jpg"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders a youtube short video body component 1`] = `
+<div
+  className="video-inner"
+>
+  <div
+    className="ui 16:9 embed"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+    tabIndex={0}
+  >
+    <i
+      aria-hidden="true"
+      className="play icon"
+      onClick={[Function]}
+    />
+    <img
+      className="placeholder"
+      src="https://img.youtube.com/vi/ayyZ_S30Lhc/sddefault.jpg"
+    />
+  </div>
+</div>
+`;
+
 exports[`renders a youtube video body component 1`] = `
 <div
   className="video-inner"
