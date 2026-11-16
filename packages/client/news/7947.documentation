@@ -1,0 +1,1 @@
+Improve @plone/client documentation: remove TanStack terminology and use sphinxcontrib.httpexample for HTTP examples. @Hrittik20 [#7947](https://github.com/plone/volto/issues/7947)
