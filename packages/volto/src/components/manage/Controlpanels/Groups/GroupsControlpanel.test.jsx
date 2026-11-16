@@ -3,6 +3,7 @@ import { render, act } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { CookiesProvider } from 'react-cookie';
+import { MemoryRouter } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 
 import GroupsControlpanel from './GroupsControlpanel';
@@ -30,6 +31,10 @@ describe('UsersControlpanel', () => {
       groups: {
         groups: [],
         create: { loading: false },
+        delete: { loading: false },
+      },
+      controlpanels: {
+        controlpanel: { data: {} },
       },
       authRole: {
         authenticatedRole: [],
@@ -42,12 +47,14 @@ describe('UsersControlpanel', () => {
     const { container } = await act(async () => {
       return render(
         <Provider store={store}>
-          <CookiesProvider>
-            <>
-              <GroupsControlpanel location={{ pathname: '/blog' }} />
-              <div id="toolbar"></div>
-            </>
-          </CookiesProvider>
+          <MemoryRouter initialEntries={['/blog']}>
+            <CookiesProvider>
+              <>
+                <GroupsControlpanel />
+                <div id="toolbar"></div>
+              </>
+            </CookiesProvider>
+          </MemoryRouter>
         </Provider>,
       );
     });
