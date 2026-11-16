@@ -4877,6 +4877,11 @@ msgstr "proiect"
 msgid "drag_block"
 msgstr "glisați blocul {type}"
 
+#. Default: "Edit time zone"
+#: components/manage/Widgets/DatetimeWidget
+msgid "editTimezone"
+msgstr ""
+
 #. Default: "Input must be valid email (something@domain.com)"
 #: helpers/MessageLabels/MessageLabels
 msgid "email"
@@ -5422,6 +5427,11 @@ msgstr "cale destinație"
 #: config/Blocks
 msgid "text"
 msgstr "Text"
+
+#. Default: "Time zone"
+#: components/manage/Widgets/DatetimeWidget
+msgid "timezone"
+msgstr ""
 
 #. Default: "Title"
 #: config/Blocks
