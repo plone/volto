@@ -61,6 +61,11 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+#. Default: "Actions for item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Actions for item"
+msgstr ""
+
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
@@ -599,6 +604,7 @@ msgstr ""
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
@@ -1280,6 +1286,11 @@ msgstr ""
 msgid "Dry run selected, transaction aborted."
 msgstr ""
 
+#. Default: "Duplicate"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Duplicate"
+msgstr ""
+
 #. Default: "E-mail"
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -1299,6 +1310,7 @@ msgstr ""
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr ""
@@ -2439,6 +2451,7 @@ msgstr ""
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move down"
 msgstr ""
 
@@ -2454,6 +2467,7 @@ msgstr ""
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move up"
 msgstr ""
 
@@ -2700,6 +2714,11 @@ msgstr ""
 #. Default: "Ok"
 #: components/manage/Delete/Delete
 msgid "Ok"
+msgstr ""
+
+#. Default: "One or more items have errors."
+#: helpers/FormValidation/FormValidation
+msgid "One or more items have errors."
 msgstr ""
 
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
@@ -3082,6 +3101,7 @@ msgstr ""
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove"
 msgstr ""
 
@@ -3108,6 +3128,11 @@ msgstr ""
 #. Default: "Remove term"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
+msgstr ""
+
+#. Default: "Remove this item?"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove this item?"
 msgstr ""
 
 #. Default: "Remove users from group"

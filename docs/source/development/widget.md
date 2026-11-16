@@ -528,6 +528,58 @@ export default ToggleWidget;
 You can experiment with other widgets included in Volto core under the {file}`/components/manage/Widgets/` directory for more inspiration and possibilities of enhancing your widgets.
 
 
+## Wrap `ObjectListWidget`
+
+An add-on can keep its own widget by wrapping `ObjectListWidget`, so that its value is shaped as the widget expects.
+This example stores a list of strings, with no duplicates.
+The wrapper turns each string into an item with a `value` field, and back.
+It sets `itemIds: false`, so the widget writes no `@id` to the items, and `validateItem`, so the dialog refuses a duplicate:
+
+```jsx
+import ObjectListWidget from '@plone/volto/components/manage/Widgets/ObjectListWidget';
+
+const emailSchema = {
+  title: 'Email',
+  addMessage: 'Add email',
+  fieldsets: [{ id: 'default', title: 'Default', fields: ['value'] }],
+  properties: {
+    value: { title: 'Email', type: 'string' },
+  },
+  required: ['value'],
+};
+
+const uniqueEmail = (item, index, items) =>
+  items.some((other, i) => i !== index && other.value === item.value)
+    ? 'This email is already in the list'
+    : undefined;
+
+const StringListWidget = (props) => {
+  const { value = [], onChange } = props;
+  return (
+    <ObjectListWidget
+      {...props}
+      value={value.map((email) => ({ value: email }))}
+      onChange={(id, items) =>
+        onChange(
+          id,
+          items.map((item) => item.value),
+        )
+      }
+      schema={emailSchema}
+      layout="table"
+      columns={['value']}
+      itemTitle="value"
+      itemIds={false}
+      validateItem={uniqueEmail}
+    />
+  );
+};
+
+export default StringListWidget;
+```
+
+Register the wrapper for a field with `frontendOptions`, as in {doc}`../reference/widgets`.
+
 ## Sidebar
 
 In the edit form, a sidebar is used when the form contains block data.

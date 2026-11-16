@@ -319,6 +319,28 @@ export const isNumber = ({ value, formatMessage }: Validator) => {
 ```
 
 
+## Nested validation of `object` and `object_list` fields
+
+The fields of the items of an `object_list` field, and the fields of an `object` field, are validated on submit with their item schema, by the same rules as the top-level fields: required fields, and the validators of their type, widget and format.
+The item schema is the one the widget uses, so a `schemaExtender` of the field applies: it receives the item and the `intl` object, and returns the schema for that item.
+
+A failed submit opens the first item with errors, and the rows of the items with errors are marked.
+The form shows the message "One or more items have errors." for the field.
+
+To validate an item against the other items, for example to refuse a duplicate, use the `validateItem` option of the widget.
+It is run by the dialog of the `table` layout before Save:
+
+```jsx
+const uniqueEmail = (item, index, items) =>
+  items.some((other, i) => i !== index && other.value === item.value)
+    ? 'This email is already in the list'
+    : undefined;
+```
+
+It receives the item, its index and the items as they would be after Save.
+It returns a message to block Save, or `undefined` to allow it.
+`validateItem` runs only in the dialog, so it does not validate the items of the `accordion` layout on submit.
+
 ## Invariants
 
 Using `formData`, you can perform validation checks using other field data as source.
