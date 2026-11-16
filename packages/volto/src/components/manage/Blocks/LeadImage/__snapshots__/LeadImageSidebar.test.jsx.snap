@@ -18,11 +18,11 @@ exports[`renders a Lead Image block Sidebar component 1`] = `
       alt="alternate text"
       className="responsive"
       fetchpriority="high"
-      height={400}
+      height={920}
       sizes="188px"
       src="/image.png/@@images/image-1200.png"
-      srcSet="/image.png/@@images/image-400.png 400w, /image.png/@@images/image-1200.png 400w"
-      width={400}
+      srcSet="/image.png/@@images/image-400.png 400w, /image.png/@@images/image-1200.png 1080w"
+      width={1080}
     />
   </div>
   <div
