@@ -1,4 +1,4 @@
-import { addExpandersToPath } from './api';
+import apiMiddlewareFactory, { addExpandersToPath } from './api';
 import { GET_CONTENT } from '@plone/volto/constants/ActionTypes';
 import config from '@plone/volto/registry';
 
@@ -332,5 +332,52 @@ describe('api middleware helpers', () => {
     expect(result).toEqual(
       '/de/mypage?expand=navigation,inherit&expand.inherit.behaviors=voltolighttheme.header,voltolighttheme.theme,voltolighttheme.footer,plonegovbr.socialmedia.settings&expand.navigation.coolness=1&expand.navigation.depth=3&someotherquery=1&someotherquery=2',
     );
+  });
+});
+
+describe('api middleware', () => {
+  const getState = () => ({
+    userSession: { token: null },
+    content: { uploadedFiles: 0, get: { error: null } },
+    site: { data: {} },
+    apierror: { connectionRefused: false },
+    intl: { locale: 'en' },
+  });
+
+  const dispatchGetContent = async (result) => {
+    config.settings.apiExpanders = [];
+    config.settings.actions_raising_api_errors = [GET_CONTENT];
+    config.settings.supportedLanguages = ['en'];
+    const api = { get: vi.fn(() => Promise.resolve(result)) };
+    const next = vi.fn();
+    await apiMiddlewareFactory(api)({ dispatch: vi.fn(), getState })(next)({
+      type: GET_CONTENT,
+      request: { op: 'get', path: '/accessibility-info' },
+    });
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    return next.mock.calls.map(([action]) => action);
+  };
+
+  it('GET_CONTENT with content succeeds', async () => {
+    const content = { '@id': 'http://localhost:8080/Plone/page' };
+    const actions = await dispatchGetContent(content);
+    expect(actions[1]).toEqual({
+      type: `${GET_CONTENT}_SUCCESS`,
+      result: content,
+    });
+  });
+
+  it('GET_CONTENT with the HTML of a browser view fails with a 404', async () => {
+    const actions = await dispatchGetContent('<!doctype html><html></html>');
+    expect(actions[1]).toEqual({
+      type: `${GET_CONTENT}_FAIL`,
+      error: { status: 404, message: 'Not Found' },
+    });
+  });
+
+  it('GET_CONTENT with an unparsed body fails with a 404', async () => {
+    const actions = await dispatchGetContent({});
+    expect(actions[1].type).toEqual(`${GET_CONTENT}_FAIL`);
+    expect(actions[1].error.status).toEqual(404);
   });
 });
