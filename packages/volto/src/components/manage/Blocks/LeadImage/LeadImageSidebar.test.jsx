@@ -24,8 +24,8 @@ const properties = {
   '@id': 'http://localhost:3000/image.png',
   image: {
     download: 'http://localhost:3000/image.png/@@images/image-1200.png',
-    width: 400,
-    height: 400,
+    width: 1080,
+    height: 920,
     scales: {
       preview: {
         download: 'http://localhost:3000/image.png/@@images/image-400.png',
