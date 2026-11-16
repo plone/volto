@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/SelectAutoComplete
  */
 
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -246,7 +247,9 @@ class SelectAutoComplete extends Component {
       this.props.value,
       this.props.intl,
     );
-    const SelectAsync = this.props.reactSelectAsync.default;
+    const SelectAsync = withSelectMenuPortal(
+      this.props.reactSelectAsync.default,
+    );
 
     return (
       <FormFieldWrapper {...this.props}>
