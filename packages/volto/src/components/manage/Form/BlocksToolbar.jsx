@@ -40,7 +40,10 @@ export class BlocksToolbarComponent extends React.Component {
   }
 
   loadFromStorage() {
-    const clipboard = load({ states: ['blocksClipboard'] })?.blocksClipboard;
+    const clipboard = load({
+      states: config.settings.persistentReducers,
+      disableWarnings: true,
+    })?.blocksClipboard;
     if (!isEqual(clipboard, this.props.blocksClipboard))
       this.props.setBlocksClipboard(clipboard || {});
   }
