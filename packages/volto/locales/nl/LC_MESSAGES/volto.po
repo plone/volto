@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-09-14 09:51+0000\n"
-"Last-Translator: Maurits van Rees <maurits@vanrees.org>\n"
+"PO-Revision-Date: 2026-11-18 14:51+0000\n"
+"Last-Translator: Ingo Van den Broeck <in.vandenbroeck@vmm.be>\n"
 "Language: nl\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/plone/volto-18/nl/>\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -2000,7 +2000,7 @@ msgstr "Ongeldige bron teaser"
 #. Default: "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
 #: helpers/MessageLabels/MessageLabels
 msgid "It is not allowed to define both the password and to request sending the password reset message by e-mail. You need to select one of them."
-msgstr "Het is niet toegestaan ​​om zowel het wachtwoord in te stellen als het verzoek om het wachtwoordherstelbericht per e-mail te verzenden. Je moet een van beide kiezen."
+msgstr "Het is niet toegestaan om zowel het wachtwoord in te stellen als het verzoek om het wachtwoordherstelbericht per e-mail te verzenden. Je moet een van beide kiezen."
 
 #. Default: "Item batch size"
 #: components/manage/Widgets/QuerystringWidget
@@ -2082,7 +2082,7 @@ msgstr "Laatste"
 #. Default: "Last comment date"
 #: components/manage/Contents/Contents
 msgid "Last comment date"
-msgstr "Laatste commentaardatum"
+msgstr "Datum laatste reactie"
 
 #. Default: "Last modified"
 #: components/manage/Contents/ContentsUploadModal
