@@ -63,6 +63,11 @@ msgstr "Akzioa: "
 msgid "Actions"
 msgstr "Ekintzak"
 
+#. Default: "Actions for item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Actions for item"
+msgstr ""
+
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
@@ -492,7 +497,7 @@ msgstr "Erabilgarri dauden eduki-erregelak:"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -601,6 +606,7 @@ msgstr "Ezin da <strong>{type}</strong> elementu-motaren itxura aldatu, <strong>
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
@@ -1282,6 +1288,11 @@ msgstr "Arrastatu fitxategia hona fitxategi berria kargatzeko"
 msgid "Dry run selected, transaction aborted."
 msgstr "Modu lehorra aukeratu duzunez, transakzioa bertan behera utzi da."
 
+#. Default: "Duplicate"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Duplicate"
+msgstr ""
+
 #. Default: "E-mail"
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -1301,6 +1312,7 @@ msgstr "Eposta helbideak ez datoz bat."
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Editatu"
@@ -2281,7 +2293,7 @@ msgid "Logo of"
 msgstr "Logoa"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Irten"
 
@@ -2441,6 +2453,7 @@ msgstr "Mosaiko bista"
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move down"
 msgstr "Behera mugitu"
 
@@ -2456,6 +2469,7 @@ msgstr "Karpetaren gorengo tokira mugitu"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move up"
 msgstr "Gora mugitu"
 
@@ -2704,6 +2718,11 @@ msgstr ""
 msgid "Ok"
 msgstr "Ados"
 
+#. Default: "One or more items have errors."
+#: helpers/FormValidation/FormValidation
+msgid "One or more items have errors."
+msgstr ""
+
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
@@ -2913,7 +2932,7 @@ msgid "Powered by Plone & Python"
 msgstr "Plone eta Pythonekin eginda"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Hobespenak"
 
@@ -2940,7 +2959,7 @@ msgid "Preview Image URL"
 msgstr "Irudia aurreikusteko helbidea"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Profila"
 
@@ -3084,6 +3103,7 @@ msgstr "Errelebantzia"
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove"
 msgstr "Ezabatu"
 
@@ -3111,6 +3131,11 @@ msgstr "Ezabatu aukeratutakoak"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
 msgstr "Ezabatu terminoa"
+
+#. Default: "Remove this item?"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove this item?"
+msgstr ""
 
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
@@ -3617,7 +3642,7 @@ msgstr "Atariaren kudeaketa"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Atariaren konfigurazioa"
@@ -5018,6 +5043,11 @@ msgstr "Erreferentziak egiaztatzen..."
 msgid "linkAnImage"
 msgstr "Idatzi irudi baterako URLa"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5446,7 +5476,7 @@ msgid "url"
 msgstr "URL zuzen bat izan behar da (www.zerbait.eus edo http(s)://www.zerbitzaria.eus)"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "Erabiltzailearen argazkia"
 

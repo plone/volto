@@ -62,6 +62,11 @@ msgstr "செயல்: "
 msgid "Actions"
 msgstr "செயல்கள்"
 
+#. Default: "Actions for item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Actions for item"
+msgstr ""
+
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
@@ -491,7 +496,7 @@ msgstr "கிடைக்கும் உள்ளடக்க விதிக�
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -600,6 +605,7 @@ msgstr "<strong> {type} </strong> உள்ளடக்க வகைக்கு
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
@@ -1281,6 +1287,11 @@ msgstr ""
 msgid "Dry run selected, transaction aborted."
 msgstr "உலர் ரன் தேர்ந்தெடுக்கப்பட்டது, பரிவர்த்தனை கைவிடப்பட்டது."
 
+#. Default: "Duplicate"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Duplicate"
+msgstr ""
+
 #. Default: "E-mail"
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -1300,6 +1311,7 @@ msgstr "மின்னஞ்சல் முகவரிகள் பொரு�
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "தொகு"
@@ -2280,7 +2292,7 @@ msgid "Logo of"
 msgstr "லோகோ"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "வெளியேற்றம்"
 
@@ -2440,6 +2452,7 @@ msgstr "மொசைக் தளவமைப்பு"
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move down"
 msgstr "கீழே செல்லுங்கள்"
 
@@ -2455,6 +2468,7 @@ msgstr "கோப்புறையின் மேலே செல்லுங�
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move up"
 msgstr "மேலே செல்லுங்கள்"
 
@@ -2703,6 +2717,11 @@ msgstr ""
 msgid "Ok"
 msgstr "சரி"
 
+#. Default: "One or more items have errors."
+#: helpers/FormValidation/FormValidation
+msgid "One or more items have errors."
+msgstr ""
+
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
@@ -2912,7 +2931,7 @@ msgid "Powered by Plone & Python"
 msgstr "ப்ளோன் & பைதான் மூலம் இயக்கப்படுகிறது"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
@@ -2939,7 +2958,7 @@ msgid "Preview Image URL"
 msgstr "பட முகவரி ஐ முன்னோட்டமிடுங்கள்"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "சுயவிவரம்"
 
@@ -3083,6 +3102,7 @@ msgstr "பொருத்தமானது"
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove"
 msgstr "அகற்று"
 
@@ -3110,6 +3130,11 @@ msgstr "தேர்ந்தெடுக்கப்பட்டதை அக�
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
 msgstr "காலத்தை அகற்று"
+
+#. Default: "Remove this item?"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove this item?"
+msgstr ""
 
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
@@ -3616,7 +3641,7 @@ msgstr "தள நிர்வாகம்"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "தள அமைப்பு"
@@ -5017,6 +5042,11 @@ msgstr "இணைப்பு-ஒருங்கிணைப்பு: குற
 msgid "linkAnImage"
 msgstr "இணைப்பு"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5445,7 +5475,7 @@ msgid "url"
 msgstr "முகவரி"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "பயனர் அவதார்"
 

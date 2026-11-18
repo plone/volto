@@ -32,6 +32,26 @@ It is usually better and quicker to move your items into new locations and copy 
 
 ## Upgrading to Volto 19.x.x
 
+(nodejs-22-removed-label)=
+
+### Removed support of Node.js 22
+```{versionremoved} Volto 19.7.0
+```
+
+Node.js 26 is now an LTS version.
+Following the {ref}`version policy <version-policy-node-js>`, Volto supports only the latest two LTS versions of Node.js, Node.js 24 and 26.
+Support and CI testing for Node.js 22 was removed in Volto 19.7.0.
+While the code base should still work on Node.js 22, it is no longer guaranteed or tested.
+
+You should take the following actions for your Volto 19 projects.
+
+-   Upgrade your development and CI environments to a supported Node.js LTS version, such as Node.js 24 or 26.
+-   Update any Docker images, build agents, and project documentation that reference Node.js 22.
+-   If you use Node.js 26, install {term}`corepack` with `npm i -g corepack@latest && corepack enable`, or install {term}`pnpm` directly with `npm install -g pnpm`, because Node.js 25 and later no longer include corepack.
+    This applies to your local development environment, your CI, and your Docker images.
+
+If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 22 at your own risk, but be aware that issues specific to Node.js 22 will not be fixed in the Volto core CI or releases.
+
 (nodejs-20-removed-label)=
 
 ### Removed support of Node.js 20
@@ -43,7 +63,7 @@ While the code base may still work on Node.js 20 in some cases, it is no longer 
 
 You should take the following actions for your Volto 19 projects.
 
--   Upgrade your development and CI environments to a supported Node.js LTS version, such as Node.js 22 or 24.
+-   Upgrade your development and CI environments to a supported Node.js LTS version, such as Node.js 24 or 26.
 -   Update any Docker images, build agents, and project documentation that reference Node.js 20.
 
 If you can't upgrade immediately, you may continue to run Volto 19 on Node.js 20 at your own risk, but be aware that issues specific to Node.js 20 will not be fixed in the Volto core CI or releases.

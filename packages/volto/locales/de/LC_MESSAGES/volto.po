@@ -63,6 +63,11 @@ msgstr "Aktion: "
 msgid "Actions"
 msgstr "Aktionen"
 
+#. Default: "Actions for item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Actions for item"
+msgstr ""
+
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
@@ -492,7 +497,7 @@ msgstr "Verfügbare Inhaltsregeln:"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -601,6 +606,7 @@ msgstr "Layout für <strong>{type}</strong> kann nicht verändert werden, da das
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
@@ -1282,6 +1288,11 @@ msgstr ""
 msgid "Dry run selected, transaction aborted."
 msgstr "Probelauf gewählt, Transaktion abgebrochen."
 
+#. Default: "Duplicate"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Duplicate"
+msgstr ""
+
 #. Default: "E-mail"
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -1301,6 +1312,7 @@ msgstr "E-Mail-Adressen stimmen nicht überein."
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -2281,7 +2293,7 @@ msgid "Logo of"
 msgstr "Logo von"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Ausloggen"
 
@@ -2441,6 +2453,7 @@ msgstr "Mosaic"
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move down"
 msgstr "Nach unten bewegen"
 
@@ -2456,6 +2469,7 @@ msgstr "An den Anfang verschieben"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move up"
 msgstr "Nach oben bewegen"
 
@@ -2704,6 +2718,11 @@ msgstr ""
 msgid "Ok"
 msgstr "OK"
 
+#. Default: "One or more items have errors."
+#: helpers/FormValidation/FormValidation
+msgid "One or more items have errors."
+msgstr ""
+
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
@@ -2913,7 +2932,7 @@ msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -2940,7 +2959,7 @@ msgid "Preview Image URL"
 msgstr "URL Vorschaubild"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Profil"
 
@@ -3084,6 +3103,7 @@ msgstr "Relevanz"
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove"
 msgstr "Entfernen"
 
@@ -3111,6 +3131,11 @@ msgstr "Ausgewählte entfernen"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
 msgstr "Entferne Term"
+
+#. Default: "Remove this item?"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove this item?"
+msgstr ""
 
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
@@ -3617,7 +3642,7 @@ msgstr "Website-Administrator"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Systemeinstellungen"
@@ -5018,6 +5043,11 @@ msgstr "Link-Integrität: Verweise werden geprüft…"
 msgid "linkAnImage"
 msgstr "Gib eine URL zu einem Bild ein"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr "Diese Seite listet alle Inhalte auf, die auf dieses Objekt verweisen, entweder über einen Hyperlink im Text oder über ein Beziehungsfeld wie z. B. verwandte Inhalte. Prüfen Sie diese Liste, bevor Sie dieses Objekt löschen, damit keine Links ins Leere führen."
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5446,7 +5476,7 @@ msgid "url"
 msgstr "URL"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "Nutzer Avatar"
 

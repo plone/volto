@@ -7,7 +7,10 @@ import InputBlockEdit from './components/Blocks/InputBlock/Edit';
 import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
 import { SliderSchema as TestBlockSchema } from './components/Blocks/TestBlock/schema';
 import { inputBlockSchema } from './components/Blocks/InputBlock/schema';
-import { multipleFieldsetsSchema } from './components/Blocks/TestBlock/schema';
+import {
+  multipleFieldsetsSchema,
+  tableSchema,
+} from './components/Blocks/TestBlock/schema';
 import { conditionalVariationsSchemaEnhancer } from './components/Blocks/schemaEnhancers';
 import codeSVG from '@plone/volto/icons/code.svg';
 import type { BlockConfigBase } from '@plone/types';
@@ -79,6 +82,19 @@ const testBlockWithConditionalVariations: BlockConfigBase = {
   id: 'testBlockWithConditionalVariations',
   title: 'Test Block with Conditional Variations',
   schemaEnhancer: conditionalVariationsSchemaEnhancer,
+};
+
+const testBlockTable: BlockConfigBase = {
+  id: 'testBlockTable',
+  title: 'testBlockTable',
+  icon: codeSVG,
+  group: 'common',
+  view: TestBlockView,
+  edit: TestBlockEdit,
+  blockSchema: tableSchema,
+  restricted: false,
+  mostUsed: true,
+  sidebarTab: 1,
 };
 
 const testBlockMultipleFieldsets: BlockConfigBase = {
@@ -187,6 +203,7 @@ declare module '@plone/types' {
     testBlockConditional: BlockConfigBase;
     testBlockWithConditionalVariations: BlockConfigBase;
     testBlockMultipleFieldsets: BlockConfigBase;
+    testBlockTable: BlockConfigBase;
     testBlockDefaultEdit: BlockConfigBase;
     testBlockDefaultView: BlockConfigBase;
     testformBlock: BlockConfigBase;
@@ -215,6 +232,7 @@ const applyConfig = (config: ConfigType) => {
     testBlockWithConditionalVariations;
   config.blocks.blocksConfig.testBlockMultipleFieldsets =
     testBlockMultipleFieldsets;
+  config.blocks.blocksConfig.testBlockTable = testBlockTable;
   config.blocks.blocksConfig.testBlockDefaultEdit = testBlockDefaultEdit;
   config.blocks.blocksConfig.testBlockDefaultView = testBlockDefaultView;
   config.blocks.blocksConfig.testformBlock = testformBlock;
