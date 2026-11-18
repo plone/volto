@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 3.1.1 (2026-11-16)
+
+### Internal
+
+- Update dependency: glob 14.0.2. @davisagli 
+
 ## 3.1.0 (2026-10-27)
 
 ### Feature

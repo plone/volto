@@ -248,3 +248,42 @@ export const multipleFieldsetsSchema: BlockConfigBase['blockSchema'] = ({
   },
   required: ['fieldRequiredInFieldset'],
 });
+
+// A table of links, in its own block so the shared test blocks keep their sidebars.
+export const tableSchema: BlockConfigBase['blockSchema'] = () => ({
+  title: 'Table block',
+  fieldsets: [
+    {
+      id: 'default',
+      title: 'Default',
+      fields: ['tableItems'],
+    },
+  ],
+  properties: {
+    tableItems: {
+      widget: 'object_list',
+      title: 'Table items',
+      layout: 'table',
+      columns: ['title', 'href'],
+      itemTitle: 'title',
+      maxItems: 3,
+      schema: {
+        title: 'Link',
+        addMessage: 'Add link',
+        fieldsets: [
+          {
+            id: 'default',
+            title: 'Default',
+            fields: ['title', 'href'],
+          },
+        ],
+        properties: {
+          title: { title: 'Title', type: 'string' },
+          href: { title: 'Address', type: 'string' },
+        },
+        required: ['title'],
+      },
+    },
+  },
+  required: [],
+});

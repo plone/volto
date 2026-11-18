@@ -8,6 +8,13 @@
 
 <!-- towncrier release notes start -->
 
+## 4.0.3 (2026-11-16)
+
+### Internal
+
+- Update dependency: glob 14.0.2. @davisagli 
+- Update dependency: mrs-developer 2.3.3. @davisagli 
+
 ## 4.0.2 (2026-10-07)
 
 ### Internal
