@@ -62,6 +62,11 @@ msgstr "Acción: "
 msgid "Actions"
 msgstr "Accións"
 
+#. Default: "Actions for item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Actions for item"
+msgstr ""
+
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
@@ -601,6 +606,7 @@ msgstr "Non se pode editar o deseño para o tipo de contido <strong>{type}</stro
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
@@ -1282,6 +1288,11 @@ msgstr "Solta ficheiros aquí para subilos"
 msgid "Dry run selected, transaction aborted."
 msgstr "Execución simulada seleccionada, transacción abortada."
 
+#. Default: "Duplicate"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Duplicate"
+msgstr ""
+
 #. Default: "E-mail"
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -1301,6 +1312,7 @@ msgstr "O correo electrónico non coincide."
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Editar"
@@ -2441,6 +2453,7 @@ msgstr "Disposición de mosaico"
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move down"
 msgstr "Mover abaixo"
 
@@ -2456,6 +2469,7 @@ msgstr "Mover ao inicio do cartafol"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move up"
 msgstr "Mover arriba"
 
@@ -2703,6 +2717,11 @@ msgstr ""
 #: components/manage/Delete/Delete
 msgid "Ok"
 msgstr "Ok"
+
+#. Default: "One or more items have errors."
+#: helpers/FormValidation/FormValidation
+msgid "One or more items have errors."
+msgstr ""
 
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
@@ -3084,6 +3103,7 @@ msgstr "Relevancia"
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -3111,6 +3131,11 @@ msgstr "Eliminar seleccionados"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
 msgstr "Eliminar termo"
+
+#. Default: "Remove this item?"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove this item?"
+msgstr ""
 
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
