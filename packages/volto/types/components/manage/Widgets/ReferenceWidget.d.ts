@@ -1,5 +1,5 @@
 export default ReferenceWidget;
-declare function ReferenceWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ReferenceWidget(props: any): import("react").JSX.Element;
 declare namespace ReferenceWidget {
     namespace propTypes {
         let id: any;

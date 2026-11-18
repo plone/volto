@@ -6,5 +6,5 @@
 type TestProps = {
     text: string;
 };
-declare const TsTest: ({ text }: TestProps) => import("react/jsx-runtime").JSX.Element;
+declare const TsTest: ({ text }: TestProps) => import("react").JSX.Element;
 export default TsTest;

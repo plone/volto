@@ -63,8 +63,12 @@ const splitWords = (str) => {
       // Check if the tagBuffer contains a special tag
       const tagNameMatch = tagBuffer.match(/^<\/?([a-zA-Z]+[0-9]*)\b/);
       if (tagNameMatch && specialTags.includes(tagNameMatch[1])) {
+        // Only container tags (svg) span until their closing tag; void
+        // elements such as <img> are complete with the opening tag.
         insideSpecialTag =
-          tagNameMatch[0].startsWith('<') && !tagNameMatch[0].startsWith('</');
+          tagNameMatch[1] !== 'img' &&
+          !tagNameMatch[0].startsWith('</') &&
+          !tagBuffer.endsWith('/>');
         result.push(tagBuffer); // Push the complete special tag as one unit
         tagBuffer = '';
         continue;
@@ -152,6 +156,7 @@ const DiffField = ({
   contentTwo,
   view,
   schema,
+  showTitle = true,
   diffLib,
 }) => {
   const language = useSelector((state) => state.intl.locale);
@@ -266,9 +271,11 @@ const DiffField = ({
 
   return (
     <Grid data-testid="DiffField">
-      <Grid.Row>
-        <Grid.Column width={12}>{schema.title}</Grid.Column>
-      </Grid.Row>
+      {showTitle && (
+        <Grid.Row>
+          <Grid.Column width={12}>{schema.title}</Grid.Column>
+        </Grid.Row>
+      )}
 
       {view === 'split' && (
         <Grid.Row>
@@ -338,6 +345,7 @@ DiffField.propTypes = {
   contentOne: PropTypes.any,
   contentTwo: PropTypes.any,
   view: PropTypes.string.isRequired,
+  showTitle: PropTypes.bool,
   schema: PropTypes.shape({
     widget: PropTypes.string,
     type: PropTypes.string,

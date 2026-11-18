@@ -30,17 +30,17 @@ exports[`AlignWidget > renders with custom actions 1`] = `
         >
           <div
             aria-label="Alignment"
-            aria-labelledby="react-aria-:r6: react-aria-:r7:"
+            aria-labelledby="react-aria-:ra: react-aria-:rb:"
             aria-orientation="horizontal"
             class="buttons buttons-widget"
             data-orientation="horizontal"
             data-rac=""
-            id="react-aria-:r6:"
+            id="react-aria-:ra:"
             role="radiogroup"
           >
             <span
               class="react-aria-Label"
-              id="react-aria-:r7:"
+              id="react-aria-:rb:"
             />
             <label
               class="buttons-widget-option"
@@ -53,7 +53,7 @@ exports[`AlignWidget > renders with custom actions 1`] = `
                 <input
                   aria-label="Additional action title"
                   data-react-aria-pressable="true"
-                  name="react-aria-:rb:"
+                  name="react-aria-:rf:"
                   tabindex="0"
                   title=""
                   type="radio"

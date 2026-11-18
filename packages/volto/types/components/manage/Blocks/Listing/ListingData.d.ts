@@ -1,5 +1,5 @@
 export default ListingData;
-declare function ListingData(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ListingData(props: any): React.JSX.Element;
 declare namespace ListingData {
     namespace propTypes {
         let data: any;
@@ -7,3 +7,4 @@ declare namespace ListingData {
         let onChangeBlock: any;
     }
 }
+import React from 'react';

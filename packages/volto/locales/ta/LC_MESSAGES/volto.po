@@ -62,6 +62,11 @@ msgstr "செயல்: "
 msgid "Actions"
 msgstr "செயல்கள்"
 
+#. Default: "Actions for item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Actions for item"
+msgstr ""
+
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
@@ -331,7 +336,7 @@ msgstr "மாற்றுப்பெயர்கள் பதிவேற்�
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -491,7 +496,7 @@ msgstr "கிடைக்கும் உள்ளடக்க விதிக�
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -600,6 +605,7 @@ msgstr "<strong> {type} </strong> உள்ளடக்க வகைக்கு
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
@@ -1281,6 +1287,11 @@ msgstr ""
 msgid "Dry run selected, transaction aborted."
 msgstr "உலர் ரன் தேர்ந்தெடுக்கப்பட்டது, பரிவர்த்தனை கைவிடப்பட்டது."
 
+#. Default: "Duplicate"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Duplicate"
+msgstr ""
+
 #. Default: "E-mail"
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -1300,6 +1311,7 @@ msgstr "மின்னஞ்சல் முகவரிகள் பொரு�
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "தொகு"
@@ -1557,11 +1569,6 @@ msgstr "காலாவதி தேதி"
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
 msgstr "காலாவதியான"
-
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "வெளிப்புற முகவரி"
 
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
@@ -1905,7 +1912,6 @@ msgstr "உங்களிடம் சரியான வலை முகவர
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "படம்"
 
@@ -2150,6 +2156,7 @@ msgstr "மனையமைவு"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "முன்னணி படம்"
 
@@ -2188,6 +2195,7 @@ msgstr "இணைப்பு திருப்பி பார்வை"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr "இணைப்பு அமைப்புகள்"
 
@@ -2198,7 +2206,7 @@ msgstr "இணைப்பு தலைப்பு"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "இணைப்பு"
@@ -2284,7 +2292,7 @@ msgid "Logo of"
 msgstr "லோகோ"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "வெளியேற்றம்"
 
@@ -2444,6 +2452,7 @@ msgstr "மொசைக் தளவமைப்பு"
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move down"
 msgstr "கீழே செல்லுங்கள்"
 
@@ -2459,6 +2468,7 @@ msgstr "கோப்புறையின் மேலே செல்லுங�
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move up"
 msgstr "மேலே செல்லுங்கள்"
 
@@ -2570,11 +2580,6 @@ msgstr "எந்த படமும் தேர்ந்தெடுக்க�
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
 msgstr "முன்னணி பட உள்ளடக்க புலத்தில் எந்த படமும் அமைக்கப்படவில்லை"
-
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "பட உள்ளடக்க புலத்தில் எந்த படமும் அமைக்கப்படவில்லை"
 
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
@@ -2712,6 +2717,11 @@ msgstr ""
 msgid "Ok"
 msgstr "சரி"
 
+#. Default: "One or more items have errors."
+#: helpers/FormValidation/FormValidation
+msgid "One or more items have errors."
+msgstr ""
+
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
@@ -2724,7 +2734,7 @@ msgstr ""
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "புதிய தாவலில் திறக்கவும்"
@@ -2749,11 +2759,6 @@ msgstr "ஒழுங்கு"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "உத்தரவிடப்பட்டது"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "தோற்றம்"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
@@ -2926,7 +2931,7 @@ msgid "Powered by Plone & Python"
 msgstr "ப்ளோன் & பைதான் மூலம் இயக்கப்படுகிறது"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
@@ -2953,7 +2958,7 @@ msgid "Preview Image URL"
 msgstr "பட முகவரி ஐ முன்னோட்டமிடுங்கள்"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "சுயவிவரம்"
 
@@ -3097,6 +3102,7 @@ msgstr "பொருத்தமானது"
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove"
 msgstr "அகற்று"
 
@@ -3124,6 +3130,11 @@ msgstr "தேர்ந்தெடுக்கப்பட்டதை அக�
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
 msgstr "காலத்தை அகற்று"
+
+#. Default: "Remove this item?"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove this item?"
+msgstr ""
 
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
@@ -3630,7 +3641,7 @@ msgstr "தள நிர்வாகம்"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "தள அமைப்பு"
@@ -5031,6 +5042,11 @@ msgstr "இணைப்பு-ஒருங்கிணைப்பு: குற
 msgid "linkAnImage"
 msgstr "இணைப்பு"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5459,7 +5475,7 @@ msgid "url"
 msgstr "முகவரி"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "பயனர் அவதார்"
 

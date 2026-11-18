@@ -4,7 +4,7 @@ export const InvalidBlocks: any;
 declare namespace _default {
     export let title: string;
     export { RenderBlocksComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         namespace view {
             let description: string;
@@ -21,3 +21,4 @@ declare namespace _default {
 }
 export default _default;
 import RenderBlocksComponent from './RenderBlocks';
+import React from 'react';

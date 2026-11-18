@@ -19,7 +19,9 @@ import config from '@plone/volto/registry';
 
 import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
-import Types from '@plone/volto/components/manage/Toolbar/Types';
+import Types, {
+  hasAddMenuItems,
+} from '@plone/volto/components/manage/Toolbar/Types';
 import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
@@ -42,6 +44,17 @@ import moreSVG from '@plone/volto/icons/more.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
 import UserAvatar from './UserAvatar';
+
+/**
+ * Tell whether a pathname is a site setup (control panel) page, with or
+ * without a language prefix, such as ``/controlpanel`` or ``/en/controlpanel``.
+ * @param {string} pathname Current pathname.
+ * @returns {boolean} True for control panel pages.
+ */
+const isControlPanelPath = (pathname) => {
+  const [first = '', second = ''] = (pathname || '').split('/').filter(Boolean);
+  return first === 'controlpanel' || second === 'controlpanel';
+};
 
 const messages = defineMessages({
   edit: {
@@ -630,8 +643,13 @@ class Toolbar extends Component {
                       )}
                     {this.props.content &&
                       this.props.content.is_folderish &&
-                      (this.props.types.length > 0 ||
-                        this.props.content['@components']?.translations) && (
+                      hasAddMenuItems({
+                        types: this.props.types,
+                        content: this.props.content,
+                        availableLanguages: this.props.availableLanguages,
+                        currentLanguage: this.props.currentLanguage,
+                        isMultilingual: this.props.isMultilingual,
+                      }) && (
                         <button
                           className="add"
                           aria-label={this.props.intl.formatMessage(
@@ -685,7 +703,8 @@ class Toolbar extends Component {
                   name="main.toolbar.bottom"
                   params={{ onClickHandler: this.toggleMenu }}
                 />
-                {!this.props.hideDefaultViewButtons && (
+                {(!this.props.hideDefaultViewButtons ||
+                  isControlPanelPath(this.props.pathname)) && (
                   <button
                     className="user"
                     aria-label={this.props.intl.formatMessage(
@@ -743,6 +762,9 @@ export default compose(
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
+      isMultilingual: state.site?.data?.features?.multilingual,
+      availableLanguages: state.site?.data?.['plone.available_languages'],
+      currentLanguage: state.intl.locale,
       unlockRequest: state.content.unlock,
     }),
     { getTypes, listActions, setExpandedToolbar, unlockContent },

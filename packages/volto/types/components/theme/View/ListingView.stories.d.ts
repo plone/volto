@@ -2,7 +2,7 @@ export const Default: any;
 declare namespace _default {
     export let title: string;
     export { ListingViewComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         export namespace items {
             let control: string;
@@ -22,3 +22,4 @@ declare namespace _default {
 }
 export default _default;
 import ListingViewComponent from './ListingView';
+import React from 'react';

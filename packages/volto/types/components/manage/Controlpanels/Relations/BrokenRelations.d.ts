@@ -1,2 +1,3 @@
 export default BrokenRelations;
-declare function BrokenRelations(): import("react/jsx-runtime").JSX.Element;
+declare function BrokenRelations(): React.JSX.Element;
+import React from 'react';

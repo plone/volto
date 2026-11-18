@@ -572,6 +572,7 @@ class Form extends Component {
           schema: this.props.schema,
           formData,
           formatMessage: this.props.intl.formatMessage,
+          intl: this.props.intl,
         })
       : {};
 
@@ -605,7 +606,7 @@ class Form extends Component {
             intl: this.props.intl,
             blocksConfig: config.blocks.blocksConfig,
             navRoot: this.props.navRoot,
-            contentType: this.props.content['@type'],
+            contentType: this.props.content?.['@type'],
           });
         }
 
@@ -613,6 +614,7 @@ class Form extends Component {
           schema: blockSchema,
           formData: blocks[block],
           formatMessage: this.props.intl.formatMessage,
+          intl: this.props.intl,
         });
         if (keys(blockErrors).length > 0) {
           blocksErrors = {

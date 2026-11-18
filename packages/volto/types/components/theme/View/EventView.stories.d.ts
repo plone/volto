@@ -4,7 +4,7 @@ export const EventViewWithoutLinkToApiInTheText: any;
 declare namespace _default {
     export let title: string;
     export { EventViewComponent as component };
-    export let decorators: ((Story: any) => import("react/jsx-runtime").JSX.Element)[];
+    export let decorators: ((Story: any) => React.JSX.Element)[];
     export namespace argTypes {
         namespace end {
             let control: string;
@@ -17,3 +17,4 @@ declare namespace _default {
 }
 export default _default;
 import EventViewComponent from './EventView';
+import React from 'react';

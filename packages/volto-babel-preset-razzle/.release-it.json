@@ -18,7 +18,7 @@
     "requireUpstream": false,
     "requireCleanWorkingDir": false,
     "commitMessage": "Release @plone/babel-preset-razzle ${version}",
-    "tagName": "plone-slate-${version}",
+    "tagName": "plone-babel-preset-razzle-${version}",
     "tagAnnotation": "Release @plone/babel-preset-razzle ${version}"
   },
   "github": {

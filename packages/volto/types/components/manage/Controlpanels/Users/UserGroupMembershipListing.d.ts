@@ -6,4 +6,5 @@ declare function ListingTemplate({ query_user, query_group, groups_filter, add_j
     add_joined_groups: any;
     many_users: any;
     many_groups: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
+import React from 'react';

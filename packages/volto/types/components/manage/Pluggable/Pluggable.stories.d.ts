@@ -4,12 +4,12 @@ declare namespace _default {
     export namespace parameters {
         let componentSubtitle: string;
         namespace docs {
-            function page(): import("react/jsx-runtime").JSX.Element;
+            function page(): React.JSX.Element;
         }
     }
 }
 export default _default;
-export function Simple(args: any): import("react/jsx-runtime").JSX.Element;
+export function Simple(args: any): React.JSX.Element;
 export namespace Simple {
     export namespace parameters_1 {
         export namespace docs_1 {
@@ -24,7 +24,7 @@ export namespace Simple {
     }
     export { parameters_1 as parameters };
 }
-export function Override(args: any): import("react/jsx-runtime").JSX.Element;
+export function Override(args: any): React.JSX.Element;
 export namespace Override {
     export namespace parameters_2 {
         export namespace docs_2 {
@@ -43,7 +43,7 @@ export namespace Override {
     }
     export { parameters_2 as parameters };
 }
-export function UsingCreatePluggableAndPlug(args: any): import("react/jsx-runtime").JSX.Element;
+export function UsingCreatePluggableAndPlug(args: any): React.JSX.Element;
 export namespace UsingCreatePluggableAndPlug {
     export let storyName: string;
     export namespace parameters_3 {
@@ -65,4 +65,5 @@ export namespace UsingCreatePluggableAndPlug {
     export { parameters_3 as parameters };
 }
 import { Pluggable } from './index';
+import React from 'react';
 import { createPluggableAndPlug } from './index';

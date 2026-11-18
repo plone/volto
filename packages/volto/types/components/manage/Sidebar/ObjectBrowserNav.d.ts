@@ -8,4 +8,5 @@ declare function ObjectBrowserNav({ currentSearchResults, selected, handleClickO
     view: any;
     navigateTo: any;
     isSelectable: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
+import React from 'react';

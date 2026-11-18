@@ -1,2 +1,2 @@
 export default DatabaseInformation;
-declare function DatabaseInformation(): import("react/jsx-runtime").JSX.Element;
+declare function DatabaseInformation(): import("react").JSX.Element;
