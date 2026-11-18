@@ -47,6 +47,21 @@ const handleHotKeys = (editor, event, config) => {
   return wasHotkey;
 };
 
+const defaultRenderPlaceholder = (placeholderProps) => {
+  const { attributes, children } = placeholderProps;
+  return (
+    <span
+      {...attributes}
+      style={{
+        ...attributes.style,
+        opacity: 0.65,
+      }}
+    >
+      {children}
+    </span>
+  );
+};
+
 // TODO: implement onFocus
 class SlateEditor extends Component {
   constructor(props) {
@@ -264,6 +279,7 @@ class SlateEditor extends Component {
       id,
       selected,
       placeholder,
+      renderPlaceholder,
       onKeyDown,
       testingEditorRef,
       readOnly,
@@ -344,6 +360,7 @@ class SlateEditor extends Component {
               tabIndex={this.props.tabIndex || 0}
               readOnly={readOnly}
               placeholder={placeholder}
+              renderPlaceholder={renderPlaceholder || defaultRenderPlaceholder}
               renderElement={(props) => <Element {...props} />}
               renderLeaf={(props) => <Leaf {...props} />}
               decorate={this.multiDecorator}

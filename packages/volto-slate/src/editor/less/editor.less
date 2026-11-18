@@ -42,6 +42,15 @@
     margin-bottom: 0 !important;
   }
 
+  [data-slate-editor] [data-slate-placeholder='true'] {
+    opacity: 0.65 !important;
+  }
+
+  .slate-editor:not(.selected) [data-slate-editor='true']:focus-visible {
+    outline: 2px solid @blue;
+    outline-offset: 2px;
+  }
+
   .slate-toolbar {
     display: flex;
     min-width: 300px; // needed for image widget slate toolbar
