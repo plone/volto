@@ -53,11 +53,30 @@
       &:hover {
         background-color: #edf1f2 !important;
       }
+
+      &.disabled,
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.75 !important;
+
+        svg {
+          fill: #505558 !important;
+        }
+
+        &:hover {
+          background-color: transparent !important;
+        }
+      }
     }
   }
 
   .ui.menu .menu.top-menu-searchbox {
     border-left: 1px solid #b8c6c8;
+
+    input::placeholder {
+      color: #505558 !important;
+      opacity: 0.75;
+    }
 
     .ui.button.icon.icon-container {
       padding: 0px;
@@ -99,8 +118,14 @@
     .ui.attached.table {
       width: 100%;
       max-width: 100%;
-
       border: none;
+
+      thead th {
+        border-bottom: 2px solid #b8c6c8;
+        background-color: #faf8f8;
+        color: @textColor !important;
+        font-weight: 600;
+      }
     }
 
     .ui.upward.dropdown > .menu {
@@ -138,7 +163,7 @@
 
     svg {
       flex-shrink: 0;
-      color: @lightGrey;
+      color: #505558;
     }
 
     span {
@@ -146,6 +171,16 @@
       overflow: hidden;
       max-width: 100%;
       text-overflow: ellipsis;
+    }
+  }
+
+  .ui.table td {
+    .content.drag.handle {
+      fill: #505558 !important;
+    }
+
+    .icon-margin {
+      fill: #505558 !important;
     }
   }
 
@@ -172,17 +207,46 @@
 
 .contents-pagination {
   .ui.secondary.menu .item {
-    color: #878f93;
+    color: @textColor;
   }
 
-  .ui.secondary.menu a.item,
-  .ui.secondary.menu a.item.active {
-    color: @linkColor;
+  .ui.secondary.menu a.item {
+    color: @blue;
+
+    &:hover {
+      background-color: #edf1f2 !important;
+      color: darken(@blue, 10%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid @outerFocusOutline !important;
+      outline-offset: 2px;
+    }
   }
 
-  .ui.secondary.menu a.item:hover,
-  .ui.secondary.menu a.item.active {
-    background-color: #edf1f2 !important;
+  .ui.secondary.menu a.item.active,
+  .ui.secondary.menu .active.item {
+    border-radius: 3px;
+    background-color: @blue !important;
+    color: #ffffff !important;
+    font-weight: 600;
+
+    &:hover {
+      background-color: darken(@blue, 5%) !important;
+      color: #ffffff !important;
+    }
+  }
+
+  .ui.secondary.menu .item.disabled {
+    color: #60676a !important;
+    opacity: 0.7;
+  }
+
+  .ui.secondary.menu .item.chevron-left-icon,
+  .ui.secondary.menu .item.chevron-right-icon {
+    svg {
+      fill: currentColor;
+    }
   }
 }
 
