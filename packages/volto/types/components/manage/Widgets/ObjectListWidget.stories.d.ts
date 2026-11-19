@@ -8,6 +8,13 @@ export namespace SchemaExtender {
         export { defaultSecondarySchema as secondarySchema };
     }
 }
+export const TableLayout: any;
+export const TableCells: any;
+export const TableMaxItems: any;
+export const ValidationErrors: any;
+export const ValidateItem: any;
+export const StringList: any;
+export const FixedItems: any;
 declare namespace _default {
     export let title: string;
     export { ObjectListWidgetDefault as component };
