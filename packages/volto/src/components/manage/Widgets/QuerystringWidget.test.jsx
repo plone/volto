@@ -21,7 +21,9 @@ test('renders an querystring widget component', async () => {
       <QuerystringWidget id="my-field" title="My field" onChange={() => {}} />
     </Provider>,
   );
-  await waitFor(() => {});
+  await waitFor(() => {
+    expect(component.toJSON()?.children).toHaveLength(6);
+  });
   expect(component.toJSON()).toMatchSnapshot();
 });
 
