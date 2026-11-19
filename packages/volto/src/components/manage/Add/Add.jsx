@@ -195,7 +195,7 @@ class Add extends Component {
           erroMessage = this.props.intl.formatMessage(messages.someErrors);
         }
       } else {
-        erroMessage = errorsList.error?.message || error;
+        erroMessage = errorsList?.error?.message || error;
       }
 
       this.setState({ error: error });

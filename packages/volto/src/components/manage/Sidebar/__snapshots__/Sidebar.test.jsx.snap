@@ -7,6 +7,7 @@ exports[`renders a sidebar component 1`] = `
     style={null}
   >
     <button
+      aria-expanded={true}
       aria-label="Shrink sidebar"
       className="ui button trigger"
       onClick={[Function]}

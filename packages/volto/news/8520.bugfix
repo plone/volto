@@ -1,0 +1,1 @@
+Fixed the add form crashing when creating content fails with an error message that is not JSON, for example an exception that an event handler of the backend raises. Backport of the fix in Volto 19. @jladage
