@@ -195,6 +195,7 @@ class ModalForm extends Component {
       schema: this.props.schema,
       formData: this.state.formData,
       formatMessage: this.props.intl.formatMessage,
+      intl: this.props.intl,
     });
 
     if (keys(errors).length > 0) {

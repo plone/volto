@@ -2,10 +2,22 @@ import map from 'lodash/map';
 import keys from 'lodash/keys';
 import intersection from 'lodash/intersection';
 import isEmpty from 'lodash/isEmpty';
+import { defineMessages } from 'react-intl';
 import { messages } from '@plone/volto/helpers/MessageLabels/MessageLabels';
 import config from '@plone/volto/registry';
 import { toast } from 'react-toastify';
 import Toast from '@plone/volto/components/manage/Toast/Toast';
+import {
+  itemSchemaFor,
+  resolveItemSchema,
+} from '@plone/volto/helpers/FormValidation/objectList';
+
+const nestedMessages = defineMessages({
+  invalidItems: {
+    id: 'One or more items have errors.',
+    defaultMessage: 'One or more items have errors.',
+  },
+});
 
 /**
  * Will return the intl message if invalid
@@ -49,6 +61,77 @@ export const tryParseJSON = (requestItem) => {
     }
   }
   return resultObj;
+};
+
+/**
+ * Validates the fields of the items of an `object_list` field, or of an
+ * `object` field, with their item schema. An item is validated with the
+ * schema its `schemaExtender` returns for it, as the widget renders it.
+ *
+ * Returns `null` when the field is neither, and otherwise the errors per item
+ * index (`internalErrors`, keyed by the position of the item in the list) or
+ * the errors per subfield (for an `object`), with one message per invalid item.
+ *
+ * @returns {Object|null} - `{ messages, internalErrors }`
+ */
+const validateNestedFields = ({ field, fieldData, formatMessage, intl }) => {
+  const widgetName =
+    field.widgetOptions?.frontendOptions?.widget || field.widget || '';
+  const isList = widgetName === 'object_list' && Array.isArray(fieldData);
+  const isObject =
+    !isList &&
+    field.type === 'object' &&
+    fieldData !== null &&
+    typeof fieldData === 'object' &&
+    !Array.isArray(fieldData);
+  if (!isList && !isObject) {
+    return null;
+  }
+
+  // Item schemas may be functions of intl. Callers that only pass
+  // formatMessage still get an intl object with it.
+  const itemIntl = intl ?? { formatMessage };
+  const baseSchema = resolveItemSchema({
+    schema: field.schema,
+    schemaName: field.schemaName,
+    props: field,
+    intl: itemIntl,
+  });
+  const validateItem = (item) =>
+    validateFieldsPerFieldset(
+      itemSchemaFor({
+        baseSchema,
+        item,
+        schemaExtender: field.schemaExtender,
+        intl: itemIntl,
+      }),
+      item,
+      formatMessage,
+      {},
+      itemIntl,
+    );
+
+  if (isObject) {
+    const internalErrors = validateItem(fieldData);
+    return {
+      messages: Object.values(internalErrors).flat(),
+      internalErrors,
+    };
+  }
+
+  const internalErrors = {};
+  fieldData.forEach((item, index) => {
+    if (item === null || typeof item !== 'object') return;
+    const itemErrors = validateItem(item);
+    if (Object.keys(itemErrors).length > 0) {
+      internalErrors[index] = itemErrors;
+    }
+  });
+  const hasErrors = Object.keys(internalErrors).length > 0;
+  return {
+    messages: hasErrors ? [formatMessage(nestedMessages.invalidItems)] : [],
+    internalErrors,
+  };
 };
 
 /**
@@ -106,6 +189,7 @@ const validateFieldsPerFieldset = (
   formData,
   formatMessage,
   touchedField,
+  intl,
 ) => {
   const errors = validateRequiredFields(
     schema,
@@ -234,6 +318,18 @@ const validateFieldsPerFieldset = (
       ];
     }
 
+    // Validation of the fields of the items of object_list and object fields
+    const nested = validateNestedFields({
+      field,
+      fieldData,
+      formatMessage,
+      intl,
+    });
+    if (nested && Object.keys(nested.internalErrors).length > 0) {
+      errors[fieldId] = [...(errors[fieldId] || []), ...nested.messages];
+      errors[fieldId].internalErrors = nested.internalErrors;
+    }
+
     if (errors[fieldId]) {
       errors[fieldId].title = field.title;
     }
@@ -316,12 +412,14 @@ class FormValidation {
     formData = {},
     formatMessage = () => {},
     touchedField = {},
+    intl,
   } = {}) {
     return validateFieldsPerFieldset(
       schema,
       formData,
       formatMessage,
       touchedField,
+      intl,
     );
   }
 }
