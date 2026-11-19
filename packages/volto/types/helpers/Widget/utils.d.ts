@@ -1,1 +1,1 @@
-export function getWidget(id: any, field: any): any;
+export function getWidget(id: string, field: any): string;

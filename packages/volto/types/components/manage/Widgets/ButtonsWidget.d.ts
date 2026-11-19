@@ -45,5 +45,5 @@ export type ButtonsWidgetProps = {
     isDisabled?: boolean;
     [key: string]: any;
 };
-declare const ButtonsWidget: (props: ButtonsWidgetProps) => import("react/jsx-runtime").JSX.Element;
+declare const ButtonsWidget: (props: ButtonsWidgetProps) => React.JSX.Element;
 export default ButtonsWidget;

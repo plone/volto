@@ -1,26 +1,31 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
-"Language: \n"
 "Language-Team: \n"
+"MIME-Version: 1.0\n"
 "Content-Type: \n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: \n"
 
 #: editor/plugins/Link/index
 msgid "Add link"
 msgstr "Koppeling toevoegen"
 
 #: widgets/HtmlSlateWidget
-msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgid "An error has occurred while editing \"{name}\" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
 msgstr "Er is een fout opgetreden bij het bewerken van het "{name}" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Bewaar je werk en probeer opnieuw aub. Indien het probleem blijft, contacteer dan de site beheerder."
 
 #: widgets/RichTextWidgetView
-msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgid "An error has occurred while rendering \"{name}\" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
 msgstr "Er is een fout opgetreden bij het weergeven van het "{name}" veld. We zijn op de hoogte gebracht en gaan dit onderzoeken. Indien het probleem blijft, contacteer dan de site beheerder."
 
 #: blocks/Table/TableBlockEdit
@@ -79,7 +84,7 @@ msgstr "Kolom links invoegen"
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index
 msgid "Insert row after"
-msgstr "Rij onder toevoegen"
+msgstr "Rij onder invoegen"
 
 #: blocks/Table/TableBlockEdit
 #: editor/plugins/Table/index

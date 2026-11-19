@@ -1,6 +1,6 @@
 {
   "name": "@plone/babel-preset-razzle",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.2",
   "description": "Babel presets for Razzle",
   "main": "index.js",
   "author": "jaredpalmer",
@@ -18,11 +18,14 @@
     "babel-plugins/no-anonymous-default-export.js",
     "babel-plugins/optimize-hook-destructuring.js"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "dry-release": "release-it --dry-run",
-    "release": "release-it",
-    "release-major-alpha": "release-it major --preRelease=alpha",
-    "release-alpha": "release-it --preRelease=alpha"
+    "dry-release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --dry-run",
+    "release": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it",
+    "release-major-alpha": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it major --preRelease=alpha",
+    "release-alpha": "GITHUB_TOKEN=${GITHUB_TOKEN:-$(gh auth token)} release-it --preRelease=alpha"
   },
   "dependencies": {
     "@babel/core": "^7.28.5",
@@ -38,6 +41,6 @@
     "chalk": "^5.6.2"
   },
   "devDependencies": {
-    "release-it": "^19.0.5"
+    "release-it": "catalog:"
   }
 }

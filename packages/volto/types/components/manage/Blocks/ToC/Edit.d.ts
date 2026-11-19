@@ -1,2 +1,3 @@
 export default Edit;
-declare function Edit(props: any): import("react/jsx-runtime").JSX.Element;
+declare function Edit(props: any): React.JSX.Element;
+import React from 'react';

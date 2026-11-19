@@ -19,7 +19,9 @@ import config from '@plone/volto/registry';
 
 import More from '@plone/volto/components/manage/Toolbar/More';
 import PersonalTools from '@plone/volto/components/manage/Toolbar/PersonalTools';
-import Types from '@plone/volto/components/manage/Toolbar/Types';
+import Types, {
+  hasAddMenuItems,
+} from '@plone/volto/components/manage/Toolbar/Types';
 import PersonalInformation from '@plone/volto/components/manage/Preferences/PersonalInformation';
 import PersonalPreferences from '@plone/volto/components/manage/Preferences/PersonalPreferences';
 import StandardWrapper from '@plone/volto/components/manage/Toolbar/StandardWrapper';
@@ -39,9 +41,20 @@ import unlockSVG from '@plone/volto/icons/unlock.svg';
 import folderSVG from '@plone/volto/icons/folder.svg';
 import addSVG from '@plone/volto/icons/add-document.svg';
 import moreSVG from '@plone/volto/icons/more.svg';
-import userSVG from '@plone/volto/icons/user.svg';
 import backSVG from '@plone/volto/icons/back.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
+import UserAvatar from './UserAvatar';
+
+/**
+ * Tell whether a pathname is a site setup (control panel) page, with or
+ * without a language prefix, such as ``/controlpanel`` or ``/en/controlpanel``.
+ * @param {string} pathname Current pathname.
+ * @returns {boolean} True for control panel pages.
+ */
+const isControlPanelPath = (pathname) => {
+  const [first = '', second = ''] = (pathname || '').split('/').filter(Boolean);
+  return first === 'controlpanel' || second === 'controlpanel';
+};
 
 const messages = defineMessages({
   edit: {
@@ -107,6 +120,18 @@ const messages = defineMessages({
   unlock: {
     id: 'Unlock',
     defaultMessage: 'Unlock',
+  },
+  menuOpened: {
+    id: 'Menu opened',
+    defaultMessage: 'Menu opened',
+  },
+  menuClosed: {
+    id: 'Menu closed',
+    defaultMessage: 'Menu closed',
+  },
+  focusOn: {
+    id: 'Focus on',
+    defaultMessage: 'Focus on',
   },
 });
 
@@ -185,6 +210,7 @@ class Toolbar extends Component {
   toolbarRef = React.createRef();
   toolbarWindow = React.createRef();
   buttonRef = React.createRef();
+  announceRef = React.createRef();
 
   constructor(props) {
     super(props);
@@ -305,10 +331,40 @@ class Toolbar extends Component {
     }
     // PersonalTools always shows at bottom
     if (selector === 'personalTools') {
-      this.setState((state) => ({
-        showMenu: !state.showMenu,
-        menuStyle: { bottom: 0 },
-      }));
+      this.setState(
+        (state) => ({
+          showMenu: !state.showMenu,
+          menuStyle: { bottom: 0 },
+        }),
+        () => {
+          // Scoped only to personalTools — does not affect other toolbar flows
+          const candidates =
+            this.toolbarWindow.current?.querySelectorAll(
+              'a, button, input, [tabindex]:not([tabindex="-1"])',
+            ) ?? [];
+          const firstVisible = Array.from(candidates).find((el) => {
+            const style = window.getComputedStyle(el);
+            return style.display !== 'none' && style.visibility !== 'hidden';
+          });
+          firstVisible?.focus();
+
+          // Announce to screen readers: menu opened + which element received focus
+          if (this.announceRef.current) {
+            const focusedLabel =
+              firstVisible?.getAttribute('aria-label') ||
+              firstVisible?.textContent?.trim() ||
+              '';
+            this.announceRef.current.textContent = '';
+            setTimeout(() => {
+              if (this.announceRef.current) {
+                this.announceRef.current.textContent = focusedLabel
+                  ? `${this.props.intl.formatMessage(messages.menuOpened)}, ${this.props.intl.formatMessage(messages.focusOn)} ${focusedLabel}`
+                  : this.props.intl.formatMessage(messages.menuOpened);
+              }
+            }, 100);
+          }
+        },
+      );
     } else if (selector === 'more') {
       this.setState((state) => ({
         showMenu: !state.showMenu,
@@ -337,14 +393,28 @@ class Toolbar extends Component {
 
   handleClickOutside = (e) => {
     const target = e.target;
-    if (this.pusher && doesNodeContainClick(this.pusher, e)) return;
 
-    // if the click is on the same button, do not close the menu as it
-    // may be handled by the toggleMenu action
+    if (this.pusher && doesNodeContainClick(this.pusher, e)) {
+      return;
+    }
+
+    if (
+      this.toolbarRef.current &&
+      doesNodeContainClick(this.toolbarRef.current, e)
+    ) {
+      return;
+    }
+
+    if (target.closest('.ui.modal') || target.closest('.ui.dimmer')) {
+      return;
+    }
+
     const button =
       doesNodeContainClick(this.toolbarRef.current, e) &&
       this.findAncestor(target, 'button');
-    if (button && button === this.buttonRef.current) return;
+    if (button && button === this.buttonRef.current) {
+      return;
+    }
 
     this.closeMenu();
   };
@@ -376,12 +446,42 @@ class Toolbar extends Component {
           <BodyClass
             className={expanded ? 'has-toolbar' : 'has-toolbar-collapsed'}
           />
+          <span
+            aria-live="assertive"
+            aria-atomic="true"
+            role="status"
+            className="visually-hidden"
+            ref={this.announceRef}
+          />
           <div
             style={this.state.menuStyle}
             className={
               this.state.showMenu ? 'toolbar-content show' : 'toolbar-content'
             }
             ref={this.toolbarWindow}
+            onBlur={(e) => {
+              if (
+                e.relatedTarget &&
+                !this.toolbarWindow.current?.contains(e.relatedTarget)
+              ) {
+                this.toolbarRef.current
+                  ?.querySelector('button.toolbar-handler-button')
+                  ?.focus();
+
+                this.closeMenu();
+
+                if (this.announceRef.current) {
+                  this.announceRef.current.textContent = '';
+                  // Timeout to allow the screen reader to pick up the change in content after the menu is closed
+                  setTimeout(() => {
+                    if (this.announceRef.current) {
+                      this.announceRef.current.textContent =
+                        this.props.intl.formatMessage(messages.menuClosed);
+                    }
+                  }, 100);
+                }
+              }
+            }}
           >
             {this.state.showMenu && (
               // This sets the scroll locker in the body tag in mobile
@@ -543,8 +643,13 @@ class Toolbar extends Component {
                       )}
                     {this.props.content &&
                       this.props.content.is_folderish &&
-                      (this.props.types.length > 0 ||
-                        this.props.content['@components']?.translations) && (
+                      hasAddMenuItems({
+                        types: this.props.types,
+                        content: this.props.content,
+                        availableLanguages: this.props.availableLanguages,
+                        currentLanguage: this.props.currentLanguage,
+                        isMultilingual: this.props.isMultilingual,
+                      }) && (
                         <button
                           className="add"
                           aria-label={this.props.intl.formatMessage(
@@ -598,7 +703,8 @@ class Toolbar extends Component {
                   name="main.toolbar.bottom"
                   params={{ onClickHandler: this.toggleMenu }}
                 />
-                {!this.props.hideDefaultViewButtons && (
+                {(!this.props.hideDefaultViewButtons ||
+                  isControlPanelPath(this.props.pathname)) && (
                   <button
                     className="user"
                     aria-label={this.props.intl.formatMessage(
@@ -608,8 +714,7 @@ class Toolbar extends Component {
                     tabIndex={0}
                     id="toolbar-personal"
                   >
-                    <Icon
-                      name={userSVG}
+                    <UserAvatar
                       size="30px"
                       title={this.props.intl.formatMessage(
                         messages.personalTools,
@@ -657,6 +762,9 @@ export default compose(
       content: state.content.data,
       pathname: props.pathname,
       types: filter(state.types.types, 'addable'),
+      isMultilingual: state.site?.data?.features?.multilingual,
+      availableLanguages: state.site?.data?.['plone.available_languages'],
+      currentLanguage: state.intl.locale,
       unlockRequest: state.content.unlock,
     }),
     { getTypes, listActions, setExpandedToolbar, unlockContent },

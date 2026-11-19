@@ -23,7 +23,7 @@ export type Option = {
 export interface TokenSelectProps<T extends Option = Option>
   extends Omit<AriaSelectProps<T>, 'children'> {
   items: Iterable<T>;
-  children: React.ReactNode | ((item: T) => React.ReactNode);
+  children?: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
 export function TokenSelect<T extends Option>(props: TokenSelectProps<T>) {
@@ -73,7 +73,8 @@ export function TokenSelect<T extends Option>(props: TokenSelectProps<T>) {
         <Autocomplete filter={contains}>
           <SearchField autoFocus className="mb-2" />
           <ListBox items={items}>
-            {(state) => <DropdownItem>{state.name}</DropdownItem>}
+            {props.children ||
+              ((item: T) => <DropdownItem>{item.name}</DropdownItem>)}
           </ListBox>
         </Autocomplete>
       </Popover>

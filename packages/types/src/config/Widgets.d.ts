@@ -156,12 +156,15 @@ export type WidgetsConfigViewByType<
 }>;
 
 export interface WidgetsConfigViews<P = any> {
-  // getWidget: React.ComponentType<P>;
+  /** Resolves the view widget for a field. Replaceable by add-ons. */
+  getWidget: (field: Record<string, any>) => React.ComponentType<P>;
   default: React.ComponentType<P>;
   id: WidgetsConfigViewById;
   widget: WidgetsConfigViewByWidget;
   vocabulary: {};
   choices: React.ComponentType<P>;
+  /** Optional, mirroring the `factory` step's own optional lookup. */
+  factory?: Partial<Record<string, React.ComponentType<P>>>;
   type: WidgetsConfigViewByType;
 }
 

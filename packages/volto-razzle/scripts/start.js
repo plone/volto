@@ -14,7 +14,6 @@ const logger = require('@plone/razzle-dev-utils/logger');
 const setPorts = require('@plone/razzle-dev-utils/setPorts');
 const chalk = require('chalk');
 const terminate = require('terminate');
-const devServerMajorVersion = require('@plone/razzle-dev-utils/devServerMajor');
 
 let verbose = false;
 
@@ -182,24 +181,13 @@ function main() {
                 clientCompiler,
                 Object.assign(clientConfig.devServer, { verbose, port }),
               );
-              if (devServerMajorVersion > 3) {
-                // listen was deprecated in v4 and causes issues when used, switch to its replacement
-                clientDevServer.startCallback(errorLogger);
-              } else {
-                // Start Webpack-dev-server
-                clientDevServer.listen(port, errorLogger);
-              }
+              clientDevServer.startCallback(errorLogger);
             }
 
             ['SIGINT', 'SIGTERM'].forEach((sig) => {
               process.on(sig, () => {
                 if (clientDevServer) {
-                  if (devServerMajorVersion > 3) {
-                    // close was deprecated in v4, switch to its replacement
-                    clientDevServer.stopCallback(errorLogger);
-                  } else {
-                    clientDevServer.close(errorLogger);
-                  }
+                  clientDevServer.stopCallback(errorLogger);
                 }
                 if (watching) {
                   watching.close();

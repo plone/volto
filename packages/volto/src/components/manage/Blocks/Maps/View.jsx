@@ -4,10 +4,9 @@
  */
 
 import React from 'react';
-import { injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { compose } from 'redux';
+import Body from '@plone/volto/components/manage/Blocks/Maps/Body';
 import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
 
 /**
@@ -15,32 +14,24 @@ import { withBlockExtensions } from '@plone/volto/helpers/Extensions';
  * @class View
  * @extends Component
  */
+const View = (props) => {
+  const { data, className } = props;
 
-const View = ({ data, intl }) => (
-  <div
-    className={cx(
-      'block maps align',
-      {
-        center: !Boolean(data.align),
-      },
-      data.align,
-    )}
-  >
+  return (
     <div
-      className={cx('maps-inner', {
-        'full-width': data.align === 'full',
-      })}
+      className={cx(
+        'block maps align',
+        {
+          center: !Boolean(data.align),
+        },
+        data.align,
+        className,
+      )}
     >
-      <iframe
-        title={data.title}
-        src={data.url}
-        className="google-map"
-        frameBorder="0"
-        allowFullScreen
-      />
+      <Body data={data} />
     </div>
-  </div>
-);
+  );
+};
 
 /**
  * Property types.
@@ -51,4 +42,4 @@ View.propTypes = {
   data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default compose(injectIntl, withBlockExtensions)(View);
+export default withBlockExtensions(View);

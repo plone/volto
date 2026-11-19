@@ -8,7 +8,7 @@ import {
   getBlocksFieldname,
   getBlocksLayoutFieldname,
 } from '@plone/volto/helpers/Blocks/Blocks';
-import { Transforms, Editor, Node } from 'slate';
+import { Transforms, Editor, Node, Text } from 'slate';
 import { serializeNodesToText } from '@plone/volto-slate/editor/render';
 import omit from 'lodash/omit';
 import config from '@plone/volto/registry';
@@ -48,16 +48,30 @@ export function mergeSlateWithBlockBackward(editor, prevBlock, event) {
       ...currentValue.slice(1),
     ];
 
-    cursor = {
-      anchor: {
-        path: [prevValue.length - 1, lastNode.children.length],
-        offset: 0,
-      },
-      focus: {
-        path: [prevValue.length - 1, lastNode.children.length],
-        offset: 0,
-      },
-    };
+    const lastChild = lastNode.children[lastNode.children.length - 1];
+    if (Text.isText(lastChild)) {
+      cursor = {
+        anchor: {
+          path: [prevValue.length - 1, lastNode.children.length - 1],
+          offset: lastChild.text.length,
+        },
+        focus: {
+          path: [prevValue.length - 1, lastNode.children.length - 1],
+          offset: lastChild.text.length,
+        },
+      };
+    } else {
+      cursor = {
+        anchor: {
+          path: [prevValue.length - 1, lastNode.children.length],
+          offset: 0,
+        },
+        focus: {
+          path: [prevValue.length - 1, lastNode.children.length],
+          offset: 0,
+        },
+      };
+    }
   } else {
     // Otherwise, just append the current block content to the previous block
     merged = [...prevValue, ...currentValue];

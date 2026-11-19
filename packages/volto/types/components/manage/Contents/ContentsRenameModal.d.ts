@@ -1,5 +1,5 @@
 export default ContentsRenameModal;
-declare function ContentsRenameModal(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ContentsRenameModal(props: any): React.JSX.Element;
 declare namespace ContentsRenameModal {
     namespace propTypes {
         let items: any;
@@ -8,3 +8,4 @@ declare namespace ContentsRenameModal {
         let onCancel: any;
     }
 }
+import React from 'react';

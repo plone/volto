@@ -4,4 +4,5 @@ declare function DateWidget({ value, children, className, format }: {
     children: any;
     className: any;
     format?: string;
-}): "" | import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element | "";
+import React from 'react';

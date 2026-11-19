@@ -15,6 +15,7 @@ export interface BlocksConfig {
 }
 
 export interface BlocksConfigData {
+  [key: string]: BlockConfigBase;
   title: BlockConfigBase;
   description: BlockConfigBase;
   slate: SlateBlock;
@@ -32,7 +33,14 @@ export interface BlocksConfigData {
   teaser: BlockConfigBase;
 }
 
-export type AvailableBlocks = keyof BlocksConfigData;
+export type AvailableBlocks = Extract<keyof BlocksConfigData, string>;
+
+export type BlockSchemaArgs = {
+  formData?: BlocksFormData;
+  intl?: IntlShape;
+  props?: BlockEditProps;
+  data?: BlocksFormData;
+};
 
 export interface BlockConfigBase {
   /**
@@ -74,9 +82,7 @@ export interface BlockConfigBase {
   /**
    * The group of the block
    */
-  blockSchema:
-    | JSONSchema
-    | ((args: { props: unknown; intl: IntlShape }) => JSONSchema);
+  blockSchema: JSONSchema | ((args?: BlockSchemaArgs) => JSONSchema);
   dataAdapter?: ({
     block,
     data,
@@ -135,7 +141,24 @@ export interface BlockConfigBase {
   // TODO: Improve extensions shape
   extensions?: Record<string, BlockExtension>;
   blocksConfig?: Partial<BlocksConfigData>;
+  /**
+   * Tailors the block's documentation returned by the `@blocks-schema`
+   * endpoint. The documentation itself is a `*.block.md` file next to the
+   * block; this function receives its Markdown and returns the text to use.
+   * Only needed for special cases.
+   */
+  docs?: (args: BlockDocsArgs) => string;
 }
+
+export type BlockDocsArgs = {
+  blockConfig: BlockConfigBase;
+  intl: IntlShape;
+  /**
+   * The Markdown of the block's `*.block.md` file, with its placeholders
+   * filled in, or an empty string if there is none.
+   */
+  markdown: string;
+};
 
 export type SchemaEnhancerArgs = {
   schema: JSONSchema;
@@ -153,6 +176,11 @@ export interface BlockExtension {
   render?: React.ComponentType<any>;
   view?: React.ComponentType<any>;
   fullobjects?: boolean;
+  /**
+   * Enhances the block's schema while this variation is selected. It's
+   * applied before the block's own `schemaEnhancer`.
+   */
+  schemaEnhancer?: (args: SchemaEnhancerArgs) => JSONSchema;
 }
 
 export interface SlateBlock extends BlockConfigBase {

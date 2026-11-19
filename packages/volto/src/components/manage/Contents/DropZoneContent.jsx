@@ -113,6 +113,7 @@ const DropZoneContent = (props) => {
   };
 
   const onDrop = async (e) => {
+    e.preventDefault();
     if (!hasFiles(e)) {
       return;
     }

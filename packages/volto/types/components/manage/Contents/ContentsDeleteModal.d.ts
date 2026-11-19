@@ -1,5 +1,5 @@
 export default ContentsDeleteModal;
-declare function ContentsDeleteModal(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ContentsDeleteModal(props: any): React.JSX.Element;
 declare namespace ContentsDeleteModal {
     namespace propTypes {
         let itemsToDelete: any;
@@ -8,3 +8,4 @@ declare namespace ContentsDeleteModal {
         let onCancel: any;
     }
 }
+import React from 'react';

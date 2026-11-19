@@ -2,15 +2,44 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, StaticRouter } from 'react-router-dom';
 
 import Unauthorized from './Unauthorized';
 
 const mockStore = configureStore();
 
 describe('Unauthorized', () => {
-  it('renders a not found component', () => {
+  it('redirects to login', () => {
     const store = mockStore({
+      userSession: {
+        token: null,
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      apierror: {
+        message: 'You are not authorized to access this resource',
+      },
+    });
+    const context = {};
+    const component = renderer.create(
+      <Provider store={store}>
+        <StaticRouter context={context} location="/private">
+          <Unauthorized />
+        </StaticRouter>
+      </Provider>,
+    );
+    const json = component.toJSON();
+    expect(json).toMatchSnapshot();
+    expect(context.url).toEqual('/private/login?return_url=%2Fprivate');
+  });
+
+  it('renders an unauthorized component for authenticated user', () => {
+    const store = mockStore({
+      userSession: {
+        token: '1234',
+      },
       intl: {
         locale: 'en',
         messages: {},

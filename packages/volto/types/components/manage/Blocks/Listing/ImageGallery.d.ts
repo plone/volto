@@ -1,7 +1,7 @@
 export default ImageGalleryTemplate;
 declare function ImageGalleryTemplate({ items }: {
     items: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): import("react").JSX.Element;
 declare namespace ImageGalleryTemplate {
     namespace propTypes {
         let items: any;

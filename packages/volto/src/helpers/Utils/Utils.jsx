@@ -392,3 +392,14 @@ export function isInteractiveElement(
 
   return false;
 }
+
+/**
+ * Returns whether an IME (Input Method Editor) composition is in progress,
+ * e.g. while confirming a Japanese/Chinese/Korean conversion with Enter.
+ * @param {KeyboardEvent} event The (React synthetic or native) keyboard event
+ * @returns {boolean} True if an IME composition is active
+ */
+export function isIMEComposing(event) {
+  const nativeEvent = event?.nativeEvent ?? event;
+  return Boolean(nativeEvent?.isComposing) || nativeEvent?.keyCode === 229;
+}

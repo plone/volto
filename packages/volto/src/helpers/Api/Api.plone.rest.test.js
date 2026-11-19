@@ -15,6 +15,7 @@ vi.mock('superagent', () => ({
 }));
 
 beforeAll(() => {
+  config.settings.apiSuffix = undefined;
   config.settings.legacyTraverse = false;
 });
 
@@ -40,5 +41,11 @@ describe('Api', () => {
   it('does not change https URL provided as path', () => {
     const promise = api.get('https://example.com');
     expect(promise.request.url).toBe('https://example.com');
+  });
+  it('uses the configured API suffix', () => {
+    config.settings.apiSuffix = '/custom-api';
+    const promise = api.get('/test');
+    expect(promise.request.url).toBe(`${settings.apiPath}/custom-api/test`);
+    config.settings.apiSuffix = undefined;
   });
 });

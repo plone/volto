@@ -7,7 +7,7 @@ class razzleDevServer extends devServer {
   constructor(compiler, options = {}, _log) {
     const verbose = options.verbose || false;
     delete options['verbose'];
-    super(compiler, options, _log);
+    super(options, compiler, _log);
     this.verbose = verbose;
   }
 

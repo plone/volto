@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import UserGroupMembershipControlPanel from './UserGroupMembershipControlPanel';
 
@@ -14,6 +15,9 @@ vi.mock('../../Toolbar/Toolbar', () => ({
 describe('UserGroupMembershipControlPanel', () => {
   it('renders a user group membership control component', () => {
     const store = mockStore({
+      userSession: {
+        token: '1234',
+      },
       controlpanels: {
         controlpanel: {
           data: {
@@ -52,10 +56,12 @@ describe('UserGroupMembershipControlPanel', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <UserGroupMembershipControlPanel />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <UserGroupMembershipControlPanel />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

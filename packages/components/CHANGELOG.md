@@ -1,4 +1,4 @@
-# @plone/client Release Notes
+# @plone/components Release Notes
 
 <!-- You should *NOT* be adding new change log entries to this file.
      You should create a file in the news directory instead.
@@ -7,6 +7,49 @@
 -->
 
 <!-- towncrier release notes start -->
+
+## 4.2.3 (2026-10-21)
+
+### Internal
+
+- Raise the minimum versions of `react-aria-components`, `react-aria`, `react-stately`, `@react-aria/utils`, `@react-spectrum/utils` and `@internationalized/date` to the tested ones. @sneridagh [#8464](https://github.com/plone/volto/issues/8464)
+
+## 4.2.2 (2026-10-07)
+
+### Internal
+
+- Bump browserslist from 4.28.2 to 4.28.7. [#8419](https://github.com/plone/volto/issues/8419)
+- The `release` scripts now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
+## 4.2.1 (2026-07-01)
+
+### Bugfix
+
+- Fixed popover placement in modals for @plone/components Select @sneridagh @jnptk [#8359](https://github.com/plone/volto/issues/8359)
+
+## 4.2.0 (2026-06-08)
+
+### Feature
+
+- Add `renderEmptyState` to `Table` component. It provides content to display when there are no rows in the table. @jnptk 
+
+## 4.1.0 (2026-05-28)
+
+### Feature
+
+- Add DialogTrigger component. @jnptk 
+
+## 4.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
+## 4.0.0-alpha.8 (2026-05-07)
+
+### Documentation
+
+- Added package-specific `AGENTS.md` contributor guidance for `@plone/components` maintainers. 
 
 ## 4.0.0-alpha.6 (2026-02-20)
 

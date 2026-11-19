@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/SelectWidget
  */
 
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -208,7 +209,7 @@ class SelectWidget extends Component {
     } = this.props;
     // Make sure that both disabled and isDisabled (from the DX layout feat work)
     const disabled = this.props.disabled || this.props.isDisabled;
-    const Select = this.props.reactSelect.default;
+    const Select = withSelectMenuPortal(this.props.reactSelect.default);
 
     let options = this.props.vocabBaseUrl
       ? this.props.choices
@@ -263,9 +264,10 @@ class SelectWidget extends Component {
       <FormFieldWrapper {...this.props}>
         <Select
           id={`field-${id}`}
+          fieldTitle={this.props.title}
           key={choices}
           name={id}
-          aria-labelledby={`fieldset-${this.props.fieldSet}-field-label-${id}`}
+          aria-label={this.props.title || undefined}
           menuShouldScrollIntoView={false}
           isDisabled={disabled}
           isSearchable={true}
@@ -304,7 +306,7 @@ class SelectWidget extends Component {
                 : undefined,
             );
           }}
-          isClearable={this.props.isClearable}
+          isClearable={!this.props.required && this.props.isClearable}
         />
       </FormFieldWrapper>
     );

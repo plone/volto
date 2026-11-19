@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 import Delete from './Delete';
 
 const mockStore = configureStore();
@@ -48,10 +49,12 @@ describe('Delete', () => {
 
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Delete location={{ pathname: '/blog', search: '' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Delete location={{ pathname: '/blog', search: '' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -96,10 +99,12 @@ describe('Delete', () => {
 
     const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Delete location={{ pathname: '/blog', search: '' }} />
-          <div id="toolbar"></div>
-        </MemoryRouter>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Delete location={{ pathname: '/blog', search: '' }} />
+            <div id="toolbar"></div>
+          </MemoryRouter>
+        </CookiesProvider>
       </Provider>,
     );
 

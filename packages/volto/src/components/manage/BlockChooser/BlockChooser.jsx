@@ -10,6 +10,8 @@ import { useIntl, defineMessages } from 'react-intl';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import AnimateHeight from 'react-animate-height';
 import config from '@plone/volto/registry';
+import { formatMessageWithFallback } from '@plone/volto/helpers/I18n/I18n';
+import { isBlockRestricted } from '@plone/volto/helpers/Blocks/Blocks';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import downSVG from '@plone/volto/icons/down-key.svg';
 import BlockChooserSearch from './BlockChooserSearch';
@@ -61,15 +63,12 @@ const BlockChooser = ({
         // Overload restricted as a function, so we can decide the availability of a block
         // depending on this function, given properties (current present blocks) and the
         // block being evaluated
-        return typeof item.restricted === 'function'
-          ? !item.restricted({
-              properties,
-              block: item,
-              navRoot,
-              contentType,
-              user,
-            })
-          : !item.restricted;
+        return !isBlockRestricted(item, {
+          properties,
+          navRoot,
+          contentType,
+          user,
+        });
       }
     }
   });
@@ -98,16 +97,10 @@ const BlockChooser = ({
   }
   const [filterValue, setFilterValue] = React.useState('');
 
-  const getFormatMessage = (message) =>
-    intl.formatMessage({
-      id: message,
-      defaultMessage: message,
-    });
-
   function blocksAvailableFilter(blocks) {
     return blocks.filter(
       (block) =>
-        getFormatMessage(block.title)
+        formatMessageWithFallback(intl, block.title)
           .toLowerCase()
           .includes(filterValue.toLowerCase()) ||
         block.title.toLowerCase().includes(filterValue.toLowerCase()) ||
@@ -117,7 +110,7 @@ const BlockChooser = ({
   function filterVariations(block) {
     return block.variations?.filter(
       (variation) =>
-        getFormatMessage(variation.title)
+        formatMessageWithFallback(intl, variation.title)
           .toLowerCase()
           .includes(filterValue.toLowerCase()) &&
         !variation.title.toLowerCase().includes('default'),
@@ -145,9 +138,11 @@ const BlockChooser = ({
           }}
         >
           <Icon name={block.icon} size="36px" />
-          {getFormatMessage(block.title)}
+          {formatMessageWithFallback(intl, block.title)}
           {filterValue && variations?.[0]?.title && (
-            <small>{getFormatMessage(variations[0].title)}</small>
+            <small>
+              {formatMessageWithFallback(intl, variations[0].title)}
+            </small>
           )}
         </Button>
       </Button.Group>

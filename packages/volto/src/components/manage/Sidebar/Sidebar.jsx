@@ -114,6 +114,7 @@ const Sidebar = (props) => {
       >
         <Button
           type="button"
+          aria-expanded={expanded}
           aria-label={
             expanded
               ? intl.formatMessage(messages.shrinkSidebar)
@@ -155,6 +156,7 @@ const Sidebar = (props) => {
                 key: 'documentTab',
                 as: 'button',
                 className: 'ui button',
+                type: 'button',
                 content: type || intl.formatMessage(messages.document),
               },
               pane: (
@@ -170,6 +172,7 @@ const Sidebar = (props) => {
                 key: 'blockTab',
                 as: 'button',
                 className: 'ui button',
+                type: 'button',
                 content: intl.formatMessage(messages.block),
               },
               pane: (

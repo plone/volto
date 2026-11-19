@@ -105,5 +105,14 @@
     &[data-disabled] {
       color: var(--text-color-disabled);
     }
+
+    &[data-has-submenu]::after {
+      position: absolute;
+      right: 0.571rem;
+      content: '›';
+      content: '›' / '';
+      font-size: 1rem;
+      line-height: 1;
+    }
   }
 }

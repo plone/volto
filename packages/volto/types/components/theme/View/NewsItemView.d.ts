@@ -5,9 +5,7 @@ export default NewsItemView;
  * @params {object} content Content object.
  * @returns {string} Markup of the component.
  */
-declare function NewsItemView({ content }: {
-    content: any;
-}): string;
+declare function NewsItemView(props: any): string;
 declare namespace NewsItemView {
     namespace propTypes {
         let content: any;

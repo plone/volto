@@ -49,6 +49,7 @@ declare namespace reducers {
     export { userschema };
     export { site };
     export { navroot };
+    export { blockTypes };
 }
 import { intlReducer } from 'react-intl-redux';
 import reduxAsyncConnect from './asyncConnect/asyncConnect';
@@ -99,3 +100,4 @@ import transactions from './transactions/transactions';
 import userschema from './userschema/userschema';
 import site from './site/site';
 import navroot from './navroot/navroot';
+import blockTypes from './blockTypes/blockTypes';

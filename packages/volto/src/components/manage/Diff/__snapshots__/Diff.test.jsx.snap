@@ -278,3 +278,158 @@ exports[`Diff > renders a diff component 1`] = `
   </div>
 </div>
 `;
+
+exports[`Diff > renders a reordered block and a changed block 1`] = `
+<div>
+  <div
+    class="ui container"
+    id="page-diff"
+  >
+    <h1>
+      Difference between revision 0 and 1 of Page
+    </h1>
+    <div
+      class="ui grid"
+    >
+      <div
+        class="nine wide column"
+      >
+        <p
+          class="description"
+        >
+          You can view the difference of the revisions below.
+        </p>
+      </div>
+      <div
+        class="right aligned three wide column"
+      >
+        <div
+          class="ui buttons"
+        >
+          <button
+            class="ui active button"
+            type="button"
+            value="split"
+          >
+            Split
+          </button>
+          <button
+            class="ui button"
+            type="button"
+            value="unified"
+          >
+            Unified
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ui grid"
+      data-testid="DiffField"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="twelve wide column"
+        >
+          Blocks
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="top aligned six wide column"
+        >
+          <span />
+        </div>
+        <div
+          class="top aligned six wide column"
+        >
+          <span>
+            <p>
+              <span
+                class="addition"
+              >
+                Bravo
+              </span>
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="ui grid"
+      data-testid="DiffField"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="top aligned six wide column"
+        >
+          <span>
+            <p>
+              <span
+                class="deletion"
+              >
+                Bravo
+              </span>
+            </p>
+          </span>
+        </div>
+        <div
+          class="top aligned six wide column"
+        >
+          <span />
+        </div>
+      </div>
+    </div>
+    <div
+      class="ui grid"
+      data-testid="DiffField"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="top aligned six wide column"
+        >
+          <span>
+            <p>
+              Charlie 
+              <span
+                class="deletion"
+              >
+                old
+              </span>
+            </p>
+          </span>
+        </div>
+        <div
+          class="top aligned six wide column"
+        >
+          <span>
+            <p>
+              Charlie 
+              <span
+                class="addition"
+              >
+                new
+              </span>
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    id="toolbar"
+  >
+    <div
+      id="Portal"
+    />
+  </div>
+</div>
+`;

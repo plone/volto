@@ -1,5 +1,5 @@
 export default ContentsUploadModal;
-declare function ContentsUploadModal(props: any): import("react/jsx-runtime").JSX.Element;
+declare function ContentsUploadModal(props: any): import("react").JSX.Element;
 declare namespace ContentsUploadModal {
     namespace propTypes {
         let pathname: any;

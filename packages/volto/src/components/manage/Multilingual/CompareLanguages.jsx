@@ -28,19 +28,9 @@ const CompareLanguagesMenu = ({
 }) => {
   const intl = useIntl();
 
-  const ClickOutsideListener = () => {
-    closeMenu();
-  };
-
-  const ref = useDetectClickOutside({
-    onTriggered: ClickOutsideListener,
-    triggerKeys: ['Escape'],
-  });
-
   return (
     <div
       className="toolbar-content show compare-languages"
-      ref={ref}
       style={{
         flex: theToolbar.current
           ? `0 0 ${theToolbar.current.getBoundingClientRect().width}px`
@@ -106,6 +96,10 @@ const CompareLanguages = React.forwardRef((props, ref) => {
   const intl = useIntl();
   const [viewMenu, setViewMenu] = useState(false);
   const translations = content?.['@components']?.translations?.items || [];
+  const compareLanguagesRef = useDetectClickOutside({
+    onTriggered: () => setViewMenu(false),
+    triggerKeys: ['Escape'],
+  });
 
   const translationsObject = {};
   translations.forEach((t) => {
@@ -114,19 +108,27 @@ const CompareLanguages = React.forwardRef((props, ref) => {
 
   if (translations.length > 0) {
     return (
-      <div className="toolbar-compare-translations-wrapper">
+      <div
+        className="toolbar-compare-translations-wrapper"
+        ref={compareLanguagesRef}
+      >
         <div className="toolbar-button-spacer" />
 
         <Button
+          type="button"
           aria-label={intl.formatMessage(messages.compare_to)}
           title={intl.formatMessage(messages.compare_to)}
           onClick={() => {
-            setViewMenu(!viewMenu);
+            setViewMenu((viewMenu) => !viewMenu);
           }}
           id="toolbar-compare-translations"
           className="toolbar-button-compare-translations"
         >
-          <Icon className="mobile hidden" name={translateSVG} size="30px" />
+          <Icon
+            className="mobile hidden"
+            name={viewMenu ? clearSVG : translateSVG}
+            size="30px"
+          />
           {viewMenu ? (
             <Icon className="mobile only" name={clearSVG} size="30px" />
           ) : (

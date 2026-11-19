@@ -67,6 +67,6 @@ Thus the Node.js Express server takes care of proxying and enhancing them at the
 
 Volto can also be used with other backend systems if they provide an API that is compatible with `plone.restapi`.
 
-[Nick](https://nickcms.org/) is a headless CMS built with Node.js that supports Volto as a frontend.
+[Nick](https://nick.docs.plone.org/) is a headless CMS built with Node.js that supports Volto as a frontend.
 
 There is also a [Volto Node.js-based backend reference](https://github.com/plone/volto-reference-backend) API implementation that demonstrates how other systems could also use Volto to display and create content through it.

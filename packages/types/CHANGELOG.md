@@ -8,6 +8,88 @@
 
 <!-- towncrier release notes start -->
 
+## 2.3.0 (2026-11-18)
+
+### Feature
+
+- Added the `DocumentModel` type and the `documentModel` utility type. @sneridagh 
+
+## 2.2.1 (2026-10-29)
+
+### Bugfix
+
+- Added `schemaEnhancer` to `BlockExtension`, the type of block variations, which Volto already supports. @sneridagh 
+
+## 2.2.0 (2026-10-27)
+
+### Feature
+
+- Added the optional `docs` function to the block configuration type, to tailor the documentation that the `@blocks-schema` endpoint returns for a block. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+
+## 2.1.0 (2026-10-07)
+
+### Feature
+
+- Typed `widgets.views.getWidget`, which was declared but commented out, and added the optional `widgets.views.factory` registry that the view widget resolution now uses. @ericof [#8428](https://github.com/plone/volto/issues/8428)
+
+### Internal
+
+- The `release` scripts now take the GitHub token from `gh auth token` when `GITHUB_TOKEN` is not set, and run `towncrier` with `uvx` instead of `pipx`. @sneridagh 
+
+## 2.0.1 (2026-07-22)
+
+### Feature
+
+- Add the `apiSuffix` setting type for configuring Volto API traversal. 
+
+## 2.0.0 (2026-05-19)
+
+### Internal
+
+- Release Volto 19.0.0 final. @sneridagh 
+
+## 2.0.0-alpha.21 (2026-05-19)
+
+### Bugfix
+
+- Added `Batching` interface to `common.d.ts` and optional `batching` property to `QuerystringSearchResponse` and `SearchResponse` for batched API responses. @pratyush07-hub [#6267](https://github.com/plone/volto/issues/6267)
+
+## 2.0.0-alpha.20 (2026-05-19)
+
+### Bugfix
+
+- Corrected the typings for `contentIcons` and `controlPanelsIcons` in `SettingsConfig` to use strings instead of React components, matching actual SVG usage. @vigneshshiv28 [#7339](https://github.com/plone/volto/issues/7339)
+
+## 2.0.0-alpha.19 (2026-05-08)
+
+### Bugfix
+
+- Backport fixes for blockSchema args. @sneridagh 
+
+## 2.0.0-alpha.18 (2026-05-04)
+
+### Internal
+
+- Standardized the TypeScript validation script name to `check:ts` and added package-specific `AGENTS.md` contributor guidance for `@plone/types`. 
+
+## 2.0.0-alpha.17 (2026-04-27)
+
+### Internal
+
+- Removed tsconfig development dependency. @wesleybl [#7966](https://github.com/plone/volto/issues/7966)
+
+## 2.0.0-alpha.16 (2026-04-05)
+
+### Feature
+
+- Added blocktypes service typings. @sneridagh 
+
+## 2.0.0-alpha.15 (2026-04-05)
+
+### Feature
+
+- Added blocktypes service typings. @sneridagh 
+
 ## 2.0.0-alpha.14 (2026-02-03)
 
 ### Bugfix

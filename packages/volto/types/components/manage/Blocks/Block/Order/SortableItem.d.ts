@@ -4,6 +4,7 @@ export function SortableItem({ id, depth, dndKitSortable, dndKitUtilities, ...pr
     depth: any;
     dndKitSortable: any;
     dndKitUtilities: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 declare const _default: any;
 export default _default;
+import React from 'react';

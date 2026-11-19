@@ -2,6 +2,7 @@ import React from 'react';
 import { render, act } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import jwt from 'jsonwebtoken';
 
 import GroupsControlpanel from './GroupsControlpanel';
@@ -41,10 +42,12 @@ describe('UsersControlpanel', () => {
     const { container } = await act(async () => {
       return render(
         <Provider store={store}>
-          <>
-            <GroupsControlpanel location={{ pathname: '/blog' }} />
-            <div id="toolbar"></div>
-          </>
+          <CookiesProvider>
+            <>
+              <GroupsControlpanel location={{ pathname: '/blog' }} />
+              <div id="toolbar"></div>
+            </>
+          </CookiesProvider>
         </Provider>,
       );
     });

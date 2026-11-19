@@ -24,6 +24,9 @@ declare namespace slots {
                 };
             };
         };
+        predicates: (({ location }: {
+            location: any;
+        }) => boolean)[];
     } | {
         name: string;
         component: {
@@ -32,5 +35,8 @@ declare namespace slots {
                 content: any;
             };
         };
+        predicates: (({ location }: {
+            location: any;
+        }) => boolean)[];
     })[];
 }

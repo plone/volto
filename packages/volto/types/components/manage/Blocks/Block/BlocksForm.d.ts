@@ -1,2 +1,3 @@
 export default BlocksForm;
-declare function BlocksForm(props: any): import("react/jsx-runtime").JSX.Element;
+declare function BlocksForm(props: any): React.JSX.Element;
+import React from 'react';
