@@ -183,22 +183,29 @@ class Add extends Component {
   /**
    * Check whether the type can be added in the add target. The shared
    * `types` store may belong to the previously visited page, so the add
-   * target's @types are fetched directly.
+   * target's @types are fetched directly. The route does not remount Add
+   * when the URL changes, so a response for an outdated pathname or type is
+   * ignored.
    * @method checkAddable
    * @returns {undefined}
    */
   checkAddable() {
+    const { pathname, type } = this.props;
+    const isCurrent = () =>
+      this._isMounted &&
+      this.props.pathname === pathname &&
+      this.props.type === type;
     new Api()
-      .get(`${getBaseUrl(this.props.pathname)}/@types`)
+      .get(`${getBaseUrl(pathname)}/@types`)
       .then((types) => {
-        if (this._isMounted) {
+        if (isCurrent()) {
           this.setState({
-            addable: !!find(types, { id: this.props.type })?.addable,
+            addable: !!find(types, { id: type })?.addable,
           });
         }
       })
       .catch((error) => {
-        if (this._isMounted) {
+        if (isCurrent()) {
           const status = error?.status;
           this.setState({
             // Do not block the form on unexpected errors; the backend still

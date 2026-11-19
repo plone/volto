@@ -119,6 +119,34 @@ describe('Add', () => {
     expect(container.querySelector('.Forbidden')).toBeNull();
   });
 
+  it('ignores a late @types response for a previous type', async () => {
+    let resolveTypes;
+    mockApiGet.mockReturnValue(
+      new Promise((resolve) => {
+        resolveTypes = resolve;
+      }),
+    );
+    const store = makeStore();
+    const renderWithType = (type) => (
+      <Provider store={store}>
+        <CookiesProvider>
+          <MemoryRouter>
+            <Add location={{ pathname: '/add', search: `?type=${type}` }} />
+          </MemoryRouter>
+        </CookiesProvider>
+      </Provider>
+    );
+    const { container, rerender } = render(renderWithType('Document'));
+    rerender(renderWithType('Event'));
+    resolveTypes([
+      { id: 'Document', addable: false },
+      { id: 'Event', addable: true },
+    ]);
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(container.querySelector('.Form')).toBeNull();
+    expect(container.querySelector('.Forbidden')).toBeNull();
+  });
+
   it('renders Unauthorized for anonymous users when the schema fetch fails', async () => {
     mockApiGet.mockRejectedValue({ status: 401 });
     const { container } = renderAdd(
@@ -147,6 +175,17 @@ describe('Add', () => {
       }),
     );
     expect(container.querySelector('.Forbidden')).not.toBeNull();
+  });
+
+  it('renders Unauthorized for anonymous users on a 403', () => {
+    const { container } = renderAdd(
+      makeStore({
+        token: null,
+        schemaState: { loaded: false, schema: null, error: { status: 403 } },
+      }),
+    );
+    expect(container.querySelector('.Unauthorized')).not.toBeNull();
+    expect(container.querySelector('.Forbidden')).toBeNull();
   });
 
   it('still renders the form if the @types check fails unexpectedly', async () => {
