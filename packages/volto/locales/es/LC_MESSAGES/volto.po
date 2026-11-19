@@ -2256,6 +2256,7 @@ msgstr "Cargar más"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "Cargando"

@@ -45,15 +45,15 @@
 .object-browser {
   .ui.input.search {
     min-width: 0;
+    margin-right: 10px;
 
     input {
       padding-right: 44px;
-      border: 2px solid #000;
+      border: 2px solid @borderColor;
       border-radius: 8px;
-      margin-right: 10px;
 
       &:focus {
-        border-color: #000 !important;
+        border-color: @linkColor !important;
         box-shadow: none !important;
         outline: none !important;
       }
@@ -62,7 +62,7 @@
     button.search-clear {
       position: absolute;
       top: 50%;
-      right: 5px;
+      right: 8px;
       display: flex;
       align-items: center;
       padding: 0;

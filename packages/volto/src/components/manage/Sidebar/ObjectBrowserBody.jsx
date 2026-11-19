@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
-import { Input, Segment, Breadcrumb } from 'semantic-ui-react';
+import { Input, Segment, Breadcrumb, Loader } from 'semantic-ui-react';
 
 import debounce from 'lodash/debounce';
 import join from 'lodash/join';
@@ -12,7 +12,10 @@ import uniqueId from 'lodash/uniqueId';
 // These absolute imports (without using the corresponding centralized index.js) are required
 // to cut circular import problems, this file should never use them. This is because of
 // the very nature of the functionality of the component and its relationship with others
-import { searchContent } from '@plone/volto/actions/search/search';
+import {
+  resetSearchContent,
+  searchContent,
+} from '@plone/volto/actions/search/search';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import config from '@plone/volto/registry';
@@ -44,6 +47,10 @@ const messages = defineMessages({
   closeObjectBrowser: {
     id: 'Close object browser',
     defaultMessage: 'Close object browser',
+  },
+  loading: {
+    id: 'Loading',
+    defaultMessage: 'Loading',
   },
   noResults: {
     id: 'No results found.',
@@ -101,6 +108,7 @@ class ObjectBrowserBody extends Component {
     data: PropTypes.any.isRequired,
     searchSubrequests: PropTypes.objectOf(PropTypes.any).isRequired,
     searchContent: PropTypes.func.isRequired,
+    resetSearchContent: PropTypes.func.isRequired,
     closeObjectBrowser: PropTypes.func.isRequired,
     onChangeBlock: PropTypes.func.isRequired,
     onSelectItem: PropTypes.func,
@@ -170,6 +178,7 @@ class ObjectBrowserBody extends Component {
       showSearchInput: false,
       searchRequest: null,
       searchText: '',
+      searchQuery: '',
       // In image mode, the searchable types default to the image types which
       // can be overridden with the property if specified.
       // If selectableTypes are passed, the searchableTypes are the selectableTypes
@@ -198,6 +207,7 @@ class ObjectBrowserBody extends Component {
    */
   componentWillUnmount() {
     this.debouncedSearch.cancel();
+    this.resetSearchResults();
   }
 
   /**
@@ -209,49 +219,7 @@ class ObjectBrowserBody extends Component {
     this.initialSearch(this.props.mode);
   }
 
-  initialSearch = (mode) => {
-    const currentSelected =
-      mode === 'multiple'
-        ? ''
-        : mode === 'image'
-          ? this.state.selectedImage
-          : this.state.selectedHref;
-    if (currentSelected && isInternalURL(currentSelected)) {
-      this.setState({
-        currentFolder: getParentURL(currentSelected),
-        parentFolder: getParentURL(getParentURL(currentSelected)),
-      });
-      this.props.searchContent(
-        getParentURL(currentSelected),
-        {
-          'path.depth': 1,
-          sort_on: 'getObjPositionInParent',
-          metadata_fields: '_all',
-          b_size: 1000,
-        },
-        `${this.props.block}-${mode}`,
-      );
-    } else {
-      this.props.searchContent(
-        this.state.currentFolder,
-        {
-          'path.depth': 1,
-          sort_on: 'getObjPositionInParent',
-          metadata_fields: '_all',
-          b_size: 1000,
-        },
-        `${this.props.block}-${mode}`,
-      );
-    }
-  };
-
-  navigateTo = (id) => {
-    this.debouncedSearch.cancel();
-    this.setState({
-      showSearchInput: false,
-      searchRequest: null,
-      searchText: '',
-    });
+  loadFolder = (id, mode = this.props.mode) =>
     this.props.searchContent(
       id,
       {
@@ -260,8 +228,33 @@ class ObjectBrowserBody extends Component {
         metadata_fields: '_all',
         b_size: 1000,
       },
-      `${this.props.block}-${this.props.mode}`,
+      `${this.props.block}-${mode}`,
     );
+
+  initialSearch = (mode) => {
+    const selected =
+      mode === 'image' ? this.state.selectedImage : this.state.selectedHref;
+    const folder =
+      selected && isInternalURL(selected)
+        ? getParentURL(selected)
+        : this.state.currentFolder;
+    this.setState({
+      currentFolder: folder,
+      parentFolder: getParentURL(folder),
+    });
+    this.loadFolder(folder, mode);
+  };
+
+  navigateTo = (id) => {
+    this.debouncedSearch.cancel();
+    this.resetSearchResults();
+    this.setState({
+      showSearchInput: false,
+      searchRequest: null,
+      searchText: '',
+      searchQuery: '',
+    });
+    this.loadFolder(id);
     const parent = `${join(id.split('/').slice(0, -1), '/')}` || '/';
     this.setState(() => ({
       parentFolder: parent,
@@ -271,24 +264,36 @@ class ObjectBrowserBody extends Component {
 
   exitSearch = () => {
     this.debouncedSearch.cancel();
+    this.resetSearchResults();
+    this.loadFolder(this.state.currentFolder);
     this.setState(
-      { showSearchInput: false, searchRequest: null, searchText: '' },
+      {
+        showSearchInput: false,
+        searchRequest: null,
+        searchText: '',
+        searchQuery: '',
+      },
       () => {
         this.searchToggleRef.current?.focus();
       },
     );
   };
 
-  toggleSearchInput = () => {
-    if (this.state.showSearchInput && !this.state.searchText) {
-      this.exitSearch();
-    } else if (this.state.showSearchInput) {
-      this.updateSearchText('');
+  openSearch = () => {
+    this.setState({ showSearchInput: true }, () => {
       this.searchInputRef.current?.focus();
-    } else {
-      this.setState({ showSearchInput: true }, () => {
-        this.searchInputRef.current?.focus();
-      });
+    });
+  };
+
+  clearSearch = () => {
+    this.updateSearchText('');
+    this.searchInputRef.current?.focus();
+  };
+
+  resetSearchResults = () => {
+    if (this.activeSearchRequest) {
+      this.props.resetSearchContent(this.activeSearchRequest);
+      this.activeSearchRequest = null;
     }
   };
 
@@ -298,13 +303,18 @@ class ObjectBrowserBody extends Component {
     }));
 
   doSearch = (text) => {
+    this.resetSearchResults();
+    if (text.startsWith('/')) {
+      this.setState({ currentFolder: text, parentFolder: getParentURL(text) });
+    }
     // Keep search responses separate from the folder listing, including requests
     // already in flight when the user exits search or starts another search.
     const searchRequest = uniqueId(
       `${this.props.block}-${this.props.mode}-search-`,
     );
+    this.activeSearchRequest = searchRequest;
     this.setState({ searchRequest });
-    this.props.searchContent(
+    const request = this.props.searchContent(
       text.startsWith('/') ? text : '/',
       {
         ...(text.startsWith('/')
@@ -315,14 +325,25 @@ class ObjectBrowserBody extends Component {
       },
       searchRequest,
     );
+
+    const resetIfDiscarded = () => {
+      if (this.activeSearchRequest !== searchRequest) {
+        this.props.resetSearchContent(searchRequest);
+      }
+    };
+    Promise.resolve(request).then(resetIfDiscarded, resetIfDiscarded);
   };
 
   onSearch = (e) => this.updateSearchText(e.target.value);
 
   updateSearchText = (searchText) => {
-    const text = flattenToAppURL(searchText.trim());
+    const text = flattenToAppURL(searchText.trim()) || '';
     this.debouncedSearch.cancel();
-    this.setState({ searchText, searchRequest: null });
+    this.resetSearchResults();
+    if (!text && this.state.searchQuery) {
+      this.loadFolder(this.state.currentFolder);
+    }
+    this.setState({ searchText, searchQuery: text, searchRequest: null });
     if (!text.startsWith('/') && text.length < 3) {
       return;
     }
@@ -481,13 +502,13 @@ class ObjectBrowserBody extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
+    const query = this.state.searchQuery;
     const searchButtonLabel = this.props.intl.formatMessage(
-      this.state.searchText ? messages.clearSearch : messages.closeSearch,
+      query ? messages.clearSearch : messages.closeSearch,
     );
     const closeBrowserLabel = this.props.intl.formatMessage(
       messages.closeObjectBrowser,
     );
-    const query = this.state.searchText.trim();
     const isSearching = this.state.showSearchInput && !!query;
     const isShortQuery =
       isSearching && !query.startsWith('/') && query.length < 3;
@@ -520,9 +541,15 @@ class ObjectBrowserBody extends Component {
                   if (event.key === 'Escape') {
                     event.preventDefault();
                     event.stopPropagation();
-                    this.exitSearch();
                   }
                   if (event.key === 'Enter') event.preventDefault();
+                }}
+                onKeyUp={(event) => {
+                  if (event.key === 'Escape') {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    this.exitSearch();
+                  }
                 }}
                 ref={this.searchInputRef}
                 onChange={this.onSearch}
@@ -536,7 +563,7 @@ class ObjectBrowserBody extends Component {
                   className="search-clear"
                   aria-label={searchButtonLabel}
                   title={searchButtonLabel}
-                  onClick={this.toggleSearchInput}
+                  onClick={query ? this.clearSearch : this.exitSearch}
                 >
                   <Icon name={clearSVG} size="24px" />
                 </button>
@@ -583,7 +610,7 @@ class ObjectBrowserBody extends Component {
               type="button"
               ref={this.searchToggleRef}
               aria-label={this.props.intl.formatMessage(messages.search)}
-              onClick={this.toggleSearchInput}
+              onClick={this.openSearch}
             >
               <Icon name={searchSVG} size="24px" />
             </button>
@@ -706,6 +733,14 @@ class ObjectBrowserBody extends Component {
             {this.props.intl.formatMessage(messages.minimumSearchLength)}
           </Segment>
         )}
+        {isSearching && !isShortQuery && (!results || results.loading) && (
+          <Segment
+            role="status"
+            aria-label={this.props.intl.formatMessage(messages.loading)}
+          >
+            <Loader active inline="centered" />
+          </Segment>
+        )}
         {isSearching &&
           !isShortQuery &&
           results?.loaded &&
@@ -747,6 +782,6 @@ export default compose(
       searchSubrequests: state.search.subrequests,
       lang: state.intl.locale,
     }),
-    { searchContent },
+    { resetSearchContent, searchContent },
   ),
 )(ObjectBrowserBody);
