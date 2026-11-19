@@ -1,5 +1,5 @@
 export default IdWidget;
-declare function IdWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function IdWidget(props: any): import("react").JSX.Element;
 declare namespace IdWidget {
     namespace propTypes {
         let id: any;

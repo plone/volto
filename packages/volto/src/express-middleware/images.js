@@ -4,6 +4,7 @@ import { getAPIResourceWithAuth } from '@plone/volto/helpers/Api/APIResourceWith
 const HEADERS = [
   'content-type',
   'content-disposition',
+  'cache-status',
   'cache-control',
   'x-sendfile',
   'x-accel-redirect',
@@ -28,7 +29,6 @@ export default function imagesMiddleware() {
   const middleware = express.Router();
 
   middleware.all(['**/@@images/*'], imageMiddlewareFn);
-  middleware.all(['/@portrait/*'], imageMiddlewareFn);
   middleware.all(['/@@site-logo/*'], imageMiddlewareFn);
   middleware.id = 'imageResourcesProcessor';
   return middleware;

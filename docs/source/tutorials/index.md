@@ -19,8 +19,8 @@ On {doc}`training:index`, you'll find Volto-dedicated training materials, plus o
 -   {doc}`training:mastering-plone/index`
     The comprehensive training on Plone 6 with best practice tips for developers and integrators.
 -   {doc}`training:customizing-volto-light-theme/index`
--   {doc}`training:volto-customization/index`
 -   {doc}`training:plone-deployment/index`
+-   {doc}`training-2025:volto-customization/index`
 -   {doc}`training-2024:voltohandson/index` (archived)
 -   {doc}`training-2024:voltoaddons/index` (archived)
 -   {doc}`training-2024:effective-volto/index` (archived)

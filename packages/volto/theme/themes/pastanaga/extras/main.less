@@ -363,6 +363,7 @@ button {
     margin-left: 8px;
 
     h4 {
+      display: inline;
       margin-bottom: 0;
       font-weight: @bold;
     }
@@ -484,6 +485,7 @@ fieldset.invisible {
 }
 
 .file-widget-dropzone {
+  padding-bottom: 1rem;
   outline: none;
 }
 
@@ -711,5 +713,7 @@ img.responsive {
 @import 'views';
 @import 'toc';
 @import 'grid.less';
+@import 'focus.less';
+@import 'block-types.less';
 @import 'videoembed.less';
 .loadUIOverrides();

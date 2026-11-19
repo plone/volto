@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 
 import UndoControlpanel from './UndoControlpanel';
 
@@ -107,10 +108,12 @@ describe('UndoControlpanel', () => {
     store.dispatch = vi.fn(() => Promise.resolve());
     const { container } = render(
       <Provider store={store}>
-        <div>
-          <UndoControlpanel location={{ pathname: '/blog' }} />
-          <div id="toolbar"></div>
-        </div>
+        <CookiesProvider>
+          <div>
+            <UndoControlpanel location={{ pathname: '/blog' }} />
+            <div id="toolbar"></div>
+          </div>
+        </CookiesProvider>
       </Provider>,
     );
 

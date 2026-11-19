@@ -13,10 +13,6 @@ export function objectSchema({ intl, isDisabled, value }: {
             title: any;
             widget: string;
         };
-        depth: {
-            title: any;
-            type: string;
-        };
         sort_on: {
             title: any;
             widget: string;
@@ -32,6 +28,12 @@ export function objectSchema({ intl, isDisabled, value }: {
             type: string;
             isDisabled: any;
         };
+        offset: {
+            title: any;
+            type: string;
+            isDisabled: any;
+            default: number;
+        };
         b_size: {
             title: any;
             type: string;
@@ -41,4 +43,5 @@ export function objectSchema({ intl, isDisabled, value }: {
     required: any[];
 };
 export default QuerystringWidget;
-declare function QuerystringWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function QuerystringWidget(props: any): React.JSX.Element;
+import React from 'react';

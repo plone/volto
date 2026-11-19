@@ -66,6 +66,12 @@ You can also generate builds on your continuous integration, then deploy them an
 
 ```{glossary}
 :sorted:
+`RAZZLE_API_SUFFIX`
+    Overrides the API traversal suffix that Volto appends to API URLs.
+    The default suffix is `/++api++`.
+    Set this variable to use a different suffix, or set `config.settings.apiSuffix` directly in your Volto configuration.
+    This setting takes precedence over `RAZZLE_LEGACY_TRAVERSE`.
+
 `RAZZLE_LEGACY_TRAVERSE`
     If `true`, Volto will construct API URLs without the `/++api++` prefix.
 

@@ -18,6 +18,10 @@ const messages = defineMessages({
     defaultMessage: 'Alignment',
   },
 });
+/**
+ * The Maps block data schema. It is registered as the `blockSchema` of the
+ * `maps` block, and the Maps block sidebar reads it from there.
+ */
 export const MapsSchema = (props) => ({
   title: props.intl.formatMessage(messages.Maps),
   block: 'Maps',

@@ -6,13 +6,14 @@ import { flattenToAppURL, isInternalURL } from '@plone/volto/helpers/Url/Url';
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import Image from '@plone/volto/components/theme/Image/Image';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
+import config from '@plone/volto/registry';
 import { ImageSchema } from './schema';
 import imageSVG from '@plone/volto/icons/image.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
 
 const ImageSidebar = (props) => {
   const {
-    blocksConfig,
+    blocksConfig = config.blocks.blocksConfig,
     blocksErrors,
     data,
     block,
@@ -21,7 +22,11 @@ const ImageSidebar = (props) => {
     contentType,
   } = props;
   const intl = useIntl();
-  const schema = ImageSchema({ formData: data, intl });
+  const blockSchema = blocksConfig?.[data['@type']]?.blockSchema ?? ImageSchema;
+  const schema =
+    typeof blockSchema === 'function'
+      ? blockSchema({ ...props, formData: data, intl })
+      : blockSchema;
   return (
     <>
       <header className="header pulled">

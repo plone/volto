@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { defineMessages, FormattedMessage, injectIntl } from 'react-intl';
 import { Input, Segment, Breadcrumb } from 'semantic-ui-react';
 
+import debounce from 'lodash/debounce';
 import join from 'lodash/join';
 
 // These absolute imports (without using the corresponding centralized index.js) are required
@@ -84,6 +85,7 @@ class ObjectBrowserBody extends Component {
     onSelectItem: PropTypes.func,
     dataName: PropTypes.string,
     maximumSelectionSize: PropTypes.number,
+    initialPath: PropTypes.string,
     contextURL: PropTypes.string,
     searchableTypes: PropTypes.arrayOf(PropTypes.string),
     onlyFolderishSelectable: PropTypes.bool,
@@ -113,18 +115,21 @@ class ObjectBrowserBody extends Component {
    */
   constructor(props) {
     super(props);
+    const defaultMultiplePath = props.initialPath || '/';
     this.state = {
       currentFolder:
-        this.props.mode === 'multiple' ? '/' : this.props.contextURL || '/',
+        this.props.mode === 'multiple'
+          ? defaultMultiplePath
+          : this.props.contextURL || '/',
       currentImageFolder:
         this.props.mode === 'multiple'
-          ? '/'
+          ? defaultMultiplePath
           : this.props.mode === 'image' && this.props.data?.url
             ? getParentURL(this.props.data.url)
             : '/',
       currentLinkFolder:
         this.props.mode === 'multiple'
-          ? '/'
+          ? defaultMultiplePath
           : this.props.mode === 'link' && this.props.data?.href
             ? getParentURL(this.props.data.href)
             : '/',
@@ -155,6 +160,22 @@ class ObjectBrowserBody extends Component {
       view: this.props.mode === 'image' ? 'icons' : 'list',
     };
     this.searchInputRef = React.createRef();
+    // Debounce the live-search dispatch so rapid keystrokes do not produce a
+    // burst of overlapping requests whose responses may resolve out of order
+    // (an older, less-filtered response arriving after the latest one would
+    // visually "reset" the list to look unfiltered).
+    this.debouncedSearch = debounce(this.doSearch, 300);
+  }
+
+  /**
+   * Component will unmount
+   * @method componentWillUnmount
+   * @returns {undefined}
+   */
+  componentWillUnmount() {
+    if (this.debouncedSearch) {
+      this.debouncedSearch.cancel();
+    }
   }
 
   /**
@@ -244,8 +265,7 @@ class ObjectBrowserBody extends Component {
       view: prevState.view === 'icons' ? 'list' : 'icons',
     }));
 
-  onSearch = (e) => {
-    const text = flattenToAppURL(e.target.value);
+  doSearch = (text) => {
     if (text.startsWith('/')) {
       this.setState({ currentFolder: text });
       this.props.searchContent(
@@ -280,6 +300,11 @@ class ObjectBrowserBody extends Component {
             `${this.props.block}-${this.props.mode}`,
           );
     }
+  };
+
+  onSearch = (e) => {
+    const text = flattenToAppURL(e.target.value);
+    this.debouncedSearch(text);
   };
 
   onSelectItem = (item) => {

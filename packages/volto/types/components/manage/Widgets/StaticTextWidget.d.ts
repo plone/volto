@@ -1,5 +1,5 @@
 export default StaticTextWidget;
-declare function StaticTextWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function StaticTextWidget(props: any): import("react").JSX.Element;
 declare namespace StaticTextWidget {
     namespace propTypes {
         let id: any;

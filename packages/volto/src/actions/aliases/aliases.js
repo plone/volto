@@ -10,8 +10,12 @@ import {
   UPLOAD_ALIASES,
 } from '@plone/volto/constants/ActionTypes';
 
+const isEmpty = (value) =>
+  value === undefined || value === null || value === '';
+
 /**
  * Get aliases function.
+ * Empty options (undefined, null or empty string) are not sent to the backend.
  * @function getAliases
  * @param {string} url Content url.
  * @param {Object} options Options data.
@@ -19,11 +23,16 @@ import {
  */
 export function getAliases(url, options = {}) {
   const { query, batchSize, batchStart, ...rest } = options;
-  const params = new URLSearchParams({
-    q: query ?? '',
-    b_start: batchStart ?? 0,
-    b_size: batchSize ?? 99999999999,
+  const params = new URLSearchParams();
+  Object.entries({
+    q: query,
+    b_start: isEmpty(batchStart) ? 0 : batchStart,
+    b_size: isEmpty(batchSize) ? 99999999999 : batchSize,
     ...rest,
+  }).forEach(([key, value]) => {
+    if (!isEmpty(value)) {
+      params.append(key, value);
+    }
   });
   return {
     type: GET_ALIASES,

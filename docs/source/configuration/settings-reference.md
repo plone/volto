@@ -383,6 +383,11 @@ For example, to set 500Mb, write `5000000000`.
 Increasing this is useful for implementing fat navigation menus.
 Defaults to `1`.
 
+### `siteMapDepth`
+
+`siteMapDepth` is the navigation levels depth used in the sitemap.
+Defaults to `4`.
+
 ### `okRoute`
 
 The `okRoute` setting in Volto provides an `/ok` URL where it responds with a `text/plain ok` response, with an `HTTP 200` status code, to signal third party health check services that the Volto process is running correctly.

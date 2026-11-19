@@ -15,6 +15,15 @@ This chapter describes how maintainers manage the releases of Volto.
 Read the [Plone Release Schedule](https://plone.org/download/release-schedule) for details of how Volto's release management works in Plone.
 ```
 
+To make a release, read {doc}`how-to-make-a-release`.
+
+```{toctree}
+:maxdepth: 1
+:hidden:
+
+how-to-make-a-release
+```
+
 
 ## Definition of breaking
 

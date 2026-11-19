@@ -1,4 +1,4 @@
-export function TitleBlockEdit(props: any): import("react/jsx-runtime").JSX.Element;
+export function TitleBlockEdit(props: any): React.JSX.Element;
 export namespace TitleBlockEdit {
     namespace propTypes {
         let properties: any;
@@ -24,3 +24,4 @@ export namespace TitleBlockEdit {
     }
 }
 export default TitleBlockEdit;
+import React from 'react';

@@ -1,2 +1,3 @@
 export default GalleryNoResultsComponent;
-declare function GalleryNoResultsComponent(props: any): import("react/jsx-runtime").JSX.Element;
+declare function GalleryNoResultsComponent(props: any): React.JSX.Element;
+import React from 'react';

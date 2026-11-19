@@ -4,6 +4,12 @@ exports[`ContentsItem > renders a contents item component 1`] = `
 <tr
   aria-label="/blog"
   className=""
+  style={
+    {
+      "transform": undefined,
+      "transition": undefined,
+    }
+  }
 >
   <td
     className=""
@@ -16,8 +22,13 @@ exports[`ContentsItem > renders a contents item component 1`] = `
       }
     >
       <button
+        aria-describedby=""
+        aria-disabled={false}
+        aria-roledescription="sortable"
         className="ui basic icon button"
         onClick={[Function]}
+        role="button"
+        tabIndex={0}
       >
         <svg
           className="icon content drag handle"

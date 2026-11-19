@@ -1,0 +1,191 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2022-07-20T12:45:09.681Z\n"
+"PO-Revision-Date: 2025-03-31 10:32+0000\n"
+"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/plone/"
+"volto-slate-18/fi/>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11-dev\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: volto\n"
+
+# defaultMessage: Add link
+#: editor/plugins/Link/index
+msgid "Add link"
+msgstr "Lisää linkki"
+
+# defaultMessage: An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator.
+#: widgets/HtmlSlateWidget
+msgid "An error has occurred while editing "{name}" field. We have been notified and we are looking into it. Please save your work and retry. If the issue persists please contact the site administrator."
+msgstr ""
+"Virhe muokatessa kenttää \"{name}\". Meille on ilmoitettu ja tutkimme asiaa. "
+"Tallenna työsi ja yritä uudelleen. Jos ongelma jatkuu, ota yhteyttä sivuston "
+"järjestelmänvalvojaan."
+
+# defaultMessage: An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator.
+#: widgets/RichTextWidgetView
+msgid "An error has occurred while rendering "{name}" field. We have been notified and we are looking into it. If the issue persists please contact the site administrator."
+msgstr ""
+"Virhe hahmonnettaessa kenttää \"{name}\". Meille on ilmoitettu ja tutkimme "
+"asiaa. Jos ongelma jatkuu, ota yhteyttä sivuston järjestelmänvalvojaan."
+
+# defaultMessage: Bottom
+#: blocks/Table/TableBlockEdit
+msgid "Bottom"
+msgstr "Pohja"
+
+# defaultMessage: Center
+#: blocks/Table/TableBlockEdit
+msgid "Center"
+msgstr "Keskellä"
+
+# defaultMessage: Delete col
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete col"
+msgstr "Poista sarake"
+
+# defaultMessage: Delete row
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Delete row"
+msgstr "Poista rivi"
+
+# defaultMessage: Delete table
+#: editor/plugins/Table/index
+msgid "Delete table"
+msgstr "Poista taulukko"
+
+# defaultMessage: Divide each row into separate cells
+#: blocks/Table/TableBlockEdit
+msgid "Divide each row into separate cells"
+msgstr "Jaa jokainen rivi erillisiin soluihin"
+
+# defaultMessage: Edit element
+#: elementEditor/messages
+msgid "Edit element"
+msgstr "Muokkaa elementtiä"
+
+# defaultMessage: Edit link
+#: editor/plugins/AdvancedLink/index
+#: editor/plugins/Link/index
+msgid "Edit link"
+msgstr "Muokkaa linkkiä"
+
+# defaultMessage: Fixed width table cells
+#: blocks/Table/TableBlockEdit
+msgid "Fixed width table cells"
+msgstr ""
+
+# defaultMessage: Hide headers
+#: blocks/Table/TableBlockEdit
+msgid "Hide headers"
+msgstr "Piilota otsikot"
+
+# defaultMessage: Insert col after
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col after"
+msgstr "Sisällytä sarake jälkeen"
+
+# defaultMessage: Insert col before
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert col before"
+msgstr "Sisällytä sarake ennen"
+
+# defaultMessage: Insert row after
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row after"
+msgstr "Sisällytä rivi jälkeen"
+
+# defaultMessage: Insert row before
+#: blocks/Table/TableBlockEdit
+#: editor/plugins/Table/index
+msgid "Insert row before"
+msgstr "Sisällytä rivi ennen"
+
+# defaultMessage: Left
+#: blocks/Table/TableBlockEdit
+msgid "Left"
+msgstr "Vasen"
+
+# defaultMessage: Make the table compact
+#: blocks/Table/TableBlockEdit
+msgid "Make the table compact"
+msgstr "Tee pöydästä kiinteä"
+
+# defaultMessage: Make the table sortable
+#: blocks/Table/TableBlockEdit
+msgid "Make the table sortable"
+msgstr "Tee pöydästä lajiteltava"
+
+# defaultMessage: Middle
+#: blocks/Table/TableBlockEdit
+msgid "Middle"
+msgstr "Keskellä"
+
+# defaultMessage: No matching blocks
+#: blocks/Text/SlashMenu
+msgid "No matching blocks"
+msgstr "Ei vastaavia lohkoja"
+
+# defaultMessage: Reduce complexity
+#: blocks/Table/TableBlockEdit
+msgid "Reduce complexity"
+msgstr "Vähennä monimutkaisuutta"
+
+# defaultMessage: Remove element
+#: elementEditor/messages
+msgid "Remove element"
+msgstr "Poista elementti"
+
+# defaultMessage: Remove link
+#: editor/plugins/AdvancedLink/index
+msgid "Remove link"
+msgstr "Poista linkki"
+
+# defaultMessage: Right
+#: blocks/Table/TableBlockEdit
+msgid "Right"
+msgstr "Oikea"
+
+# defaultMessage: Stripe alternate rows with color
+#: blocks/Table/TableBlockEdit
+msgid "Stripe alternate rows with color"
+msgstr "Tuo esiin vuorottelevien rivien raidat värillä"
+
+# defaultMessage: Table
+#: blocks/Table/TableBlockEdit
+msgid "Table"
+msgstr "Taulukkoa"
+
+# defaultMessage: Table color inverted
+#: blocks/Table/TableBlockEdit
+msgid "Table color inverted"
+msgstr "Taulukon väri käännettynä"
+
+# defaultMessage: Top
+#: blocks/Table/TableBlockEdit
+msgid "Top"
+msgstr "Ylhäällä"
+
+# defaultMessage: Type text…
+#: blocks/Text/DefaultTextBlockEditor
+#: blocks/Text/DetachedTextBlockEditor
+msgid "Type text…"
+msgstr "Syötä teksti…"
+
+# defaultMessage: Visible only in view mode
+#: blocks/Table/TableBlockEdit
+msgid "Visible only in view mode"
+msgstr "Näkyy vain katselutilassa"

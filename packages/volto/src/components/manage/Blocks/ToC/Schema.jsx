@@ -27,8 +27,13 @@ const messages = defineMessages({
   },
 });
 
-const TableOfContentsSchema = ({ data, intl }) => {
-  const { variation = 'default' } = data;
+/**
+ * The Table of Contents block data schema. It is registered as the
+ * `blockSchema` of the `toc` block, and the ToC block edit component reads it
+ * from there.
+ */
+const TableOfContentsSchema = ({ data, formData, intl }) => {
+  const { variation = 'default' } = data || formData || {};
 
   return {
     title: intl.formatMessage(messages.toc),

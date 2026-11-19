@@ -81,6 +81,72 @@ describe('DiffField', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('only highlights the changed word in a multi-line paragraph', async () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const oneText =
+      'This is the first sentence of the paragraph. This is the second sentence with old text in it. This is the third sentence of the paragraph.';
+    const twoText =
+      'This is the first sentence of the paragraph. This is the second sentence with new text in it. This is the third sentence of the paragraph.';
+    const { container } = render(
+      <Provider store={store}>
+        <DiffField
+          pathname="/blog"
+          schema={{ widget: 'richtext', title: 'Text', type: 'string' }}
+          one={{ data: oneText }}
+          two={{ data: twoText }}
+          view="unified"
+        />
+      </Provider>,
+    );
+    await waitFor(() => screen.getByTestId('DiffField'));
+    const deletions = Array.from(container.querySelectorAll('.deletion')).map(
+      (el) => el.textContent,
+    );
+    const additions = Array.from(container.querySelectorAll('.addition')).map(
+      (el) => el.textContent,
+    );
+    expect(deletions).toEqual(['old']);
+    expect(additions).toEqual(['new']);
+  });
+
+  it('only highlights the changed word in text that follows an image', async () => {
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+    });
+    const oneText =
+      '<img src="/avatar.png" alt="Admin"> Nisl natoque vehicula condimentum conubia. Porttitor nisl netus bibendum.';
+    const twoText =
+      '<img src="/avatar.png" alt="Admin"> Nisl natoque vehicula condimentum conubia. Lorem ipsum nisl netus bibendum.';
+    const { container } = render(
+      <Provider store={store}>
+        <DiffField
+          pathname="/blog"
+          schema={{ widget: 'richtext', title: 'Text', type: 'string' }}
+          one={{ data: oneText }}
+          two={{ data: twoText }}
+          view="unified"
+        />
+      </Provider>,
+    );
+    await waitFor(() => screen.getByTestId('DiffField'));
+    const deletions = Array.from(container.querySelectorAll('.deletion')).map(
+      (el) => el.textContent,
+    );
+    const additions = Array.from(container.querySelectorAll('.addition'))
+      .map((el) => el.textContent)
+      .filter((text) => text.trim());
+    expect(deletions).toEqual(['Porttitor']);
+    expect(additions).toEqual(['Lorem', 'ipsum']);
+  });
+
   it('renders a datetime field', async () => {
     const store = mockStore({
       intl: {

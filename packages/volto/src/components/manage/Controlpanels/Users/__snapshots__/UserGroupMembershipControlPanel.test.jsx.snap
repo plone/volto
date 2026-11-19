@@ -12,13 +12,7 @@ exports[`UserGroupMembershipControlPanel > renders a user group membership contr
     <p
       class="description"
     >
-      You are trying to access a protected resource, please 
-      <a
-        href="/login"
-      >
-        log in
-      </a>
-       first.
+      You are trying to access a protected resource.
     </p>
     <p>
       If you are certain you have the correct web address but are encountering an error, please contact the 

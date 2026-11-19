@@ -3,5 +3,5 @@ import type { IntlShape } from 'react-intl';
 export declare const defaultActionsInfo: ({ intl, }: {
     intl: IntlShape;
 }) => Record<string, ActionInfo>;
-declare const SizeWidget: (props: ButtonsWidgetProps) => import("react/jsx-runtime").JSX.Element;
+declare const SizeWidget: (props: ButtonsWidgetProps) => import("react").JSX.Element;
 export default SizeWidget;

@@ -84,7 +84,6 @@ export const ItemsCollection: Story = {
 
 export const RemovableTags: Story = {
   args: {
-    allowsRemoving: true,
     renderEmptyState: () => (
       <span className="text-sm text-quanta-pigeon">No flavors left</span>
     ),

@@ -5,4 +5,5 @@ declare function RelationsListing({ relationtype, query_source, query_target, po
     query_target: any;
     potential_sources_path: any;
     potential_targets_path: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
+import React from 'react';

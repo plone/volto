@@ -12,5 +12,6 @@ export function Recurrence_({ recurrence, start, moment: momentlib, rrule, }: {
     start: any;
     moment: any;
     rrule: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): React.JSX.Element;
 export const Recurrence: any;
+import React from 'react';

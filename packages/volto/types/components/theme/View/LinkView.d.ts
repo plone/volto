@@ -1,7 +1,7 @@
 export default LinkView;
 declare function LinkView({ content }: {
     content: any;
-}): import("react/jsx-runtime").JSX.Element;
+}): import("react").JSX.Element;
 declare namespace LinkView {
     namespace propTypes {
         let content: any;

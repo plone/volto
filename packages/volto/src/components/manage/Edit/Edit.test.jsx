@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
+import { CookiesProvider } from 'react-cookie';
 import jwt from 'jsonwebtoken';
 
 import { __test__ as Edit } from './Edit';
@@ -55,9 +56,11 @@ describe('Edit', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <div id="toolbar"></div>
-        <Edit location={{ pathname: '/blog', search: {} }} />
-        <div id="sidebar"></div>
+        <CookiesProvider>
+          <div id="toolbar"></div>
+          <Edit location={{ pathname: '/blog', search: {} }} />
+          <div id="sidebar"></div>
+        </CookiesProvider>
       </Provider>,
     );
 
@@ -104,9 +107,11 @@ describe('Edit', () => {
     });
     const { container } = render(
       <Provider store={store}>
-        <div id="toolbar"></div>
-        <Edit location={{ pathname: '/blog', search: {} }} />
-        <div id="sidebar"></div>
+        <CookiesProvider>
+          <div id="toolbar"></div>
+          <Edit location={{ pathname: '/blog', search: {} }} />
+          <div id="sidebar"></div>
+        </CookiesProvider>
       </Provider>,
     );
 

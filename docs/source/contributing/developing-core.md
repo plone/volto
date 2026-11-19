@@ -47,7 +47,6 @@ The package `volto` is the core code of Volto.
 ```text
 /
 ├─ packages/
-│  ├─ client
 │  ├─ components
 │  ├─ coresandbox
 │  ├─ registry
@@ -68,7 +67,7 @@ To set up a Volto core development environment, your system must satisfy the fol
 ```
 
 -   {term}`nvm`
--   {term}`Node.js` LTS 22.x
+-   {term}`Node.js` LTS 24.x or 26.x
 -   {term}`pnpm`
 -   {term}`GNU make`
 -   {term}`Docker`
@@ -86,6 +85,8 @@ When developing a project using Plone, Yarn or other package managers may be use
 ```
 
 
+(developing-core-install-nodejs)=
+
 ### Node.js
 
 ```{include} ../_inc/_install-nodejs.md
@@ -98,6 +99,11 @@ Using corepack:
 
 ```shell
 corepack prepare pnpm@latest --activate
+```
+
+```{note}
+Node.js 25 and later, including Node.js 26, no longer include corepack.
+Make sure that you installed it as described in {ref}`developing-core-install-nodejs`, or install pnpm with `npm` instead.
 ```
 
 or using `npm`:
@@ -155,6 +161,21 @@ make install
 ```
 
 
+(developing-core-dependency-updates-label)=
+
+### Dependency updates
+
+Whenever you add, remove, or update a dependency in {file}`package.json`, either in the repository root or in any workspace under {file}`packages/`, you must:
+
+1.  Run `make install` from the repository root.
+2.  Commit the updated {file}`pnpm-lock.yaml` lockfile.
+
+If you skip these steps, the lockfile will be out of sync.
+Tests may fail both locally and, after you push the commit, in continuous integration.
+
+Additionally, after you pull changes from upstream that touch either dependencies or the lockfile, you should run `make install`.
+
+
 (develop-volto-start-plone-label)=
 
 ## Start Plone
@@ -208,7 +229,7 @@ Then run `make backend-docker-start` again to start the backend with a clean dat
 
 #### Configure backend language
 
-If you use the Docker image [`plone-backend`](https://github.com/plone/plone-backend), you can set its `SITE_DEFAULT_LANGUAGE` environment variable, overriding the default of `en`, when you start it.
+If you use the Docker image [`plone-backend`](https://github.com/plone/container-backend), you can set its `SITE_DEFAULT_LANGUAGE` environment variable, overriding the default of `en`, when you start it.
 
 This variable is applied only when the Plone site is created.
 If you persist data through restarts, you only need to do this once.

@@ -20,7 +20,7 @@ export function addExtensionFieldToSchema({ schema, name, items, intl, title, de
 }): any;
 export function withBlockSchemaEnhancer(FormComponent: any, extensionName?: string, insertFieldToOrder?: typeof _addField): ({ ...props }: {
     [x: string]: any;
-}) => import("react/jsx-runtime").JSX.Element;
+}) => React.JSX.Element;
 export function applySchemaEnhancer({ schema: originalSchema, formData, intl, blocksConfig, navRoot, contentType, }: {
     schema: any;
     formData: any;
@@ -29,7 +29,7 @@ export function applySchemaEnhancer({ schema: originalSchema, formData, intl, bl
     navRoot: any;
     contentType: any;
 }): any;
-export function withVariationSchemaEnhancer(FormComponent: any): (props: any) => import("react/jsx-runtime").JSX.Element;
+export function withVariationSchemaEnhancer(FormComponent: any): (props: any) => React.JSX.Element;
 export namespace EMPTY_STYLES_SCHEMA {
     let fieldsets: {
         id: string;
@@ -47,4 +47,5 @@ export function addStyling({ schema, intl }: {
  * Sets the field name as first field in schema
  */
 declare function _addField(schema: any, name: any): void;
+import React from 'react';
 export {};

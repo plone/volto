@@ -31,14 +31,14 @@ declare function withObjectBrowser(WrappedComponent: any): {
          *     }),
          *   });
          */
-        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, onlyFolderishSelectable, }?: {
+        openObjectBrowser: ({ mode, onSelectItem, dataName, overlay, propDataName, searchableTypes, selectableTypes, maximumSelectionSize, currentPath, initialPath, onlyFolderishSelectable, }?: {
             mode: string;
             dataName: string;
             onSelectItem: string;
             overlay: string;
         }) => void;
         closeObjectBrowser: () => void;
-        render(): import("react/jsx-runtime").JSX.Element;
+        render(): React.JSX.Element;
         context: unknown;
         setState<K extends string | number | symbol>(state: any, callback?: () => void): void;
         forceUpdate(callback?: () => void): void;

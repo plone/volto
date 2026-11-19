@@ -1,2 +1,3 @@
 export default VocabularyTermsWidget;
-declare function VocabularyTermsWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function VocabularyTermsWidget(props: any): React.JSX.Element;
+import React from 'react';

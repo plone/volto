@@ -3,6 +3,7 @@
  * @module components/manage/Widgets/SelectAutoComplete
  */
 
+import withSelectMenuPortal from '@plone/volto/components/manage/Widgets/withSelectMenuPortal';
 import React, { Component } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
@@ -148,14 +149,33 @@ class SelectAutoComplete extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { value, choices } = this.props;
-    if (
-      this.state.termsPairsCache.length === 0 &&
-      value?.length > 0 &&
-      choices?.length > 0
-    ) {
-      this.setState((state) => ({
-        termsPairsCache: [...state.termsPairsCache, ...choices],
-      }));
+    // Keep the local token/title cache in sync with the incoming vocabulary
+    // choices. Seeding the cache only once (when it was still empty) locked it
+    // to whatever choices happened to be present first. When the vocabulary
+    // subrequest still held a stale token/title pair from a previously edited
+    // value (its cache persists across client-side navigation), the widget kept
+    // rendering the raw token instead of its title after the value was changed
+    // and saved. Merging fresh choices as they arrive (de-duplicated, and
+    // preserving options the user picked) resolves the current value's label as
+    // soon as it is fetched.
+    const choicesChanged = choices !== prevProps.choices;
+    const cacheEmptyWithValue =
+      this.state.termsPairsCache.length === 0 && value?.length > 0;
+    if (choices?.length > 0 && (choicesChanged || cacheEmptyWithValue)) {
+      this.setState((state) => {
+        const normalizedIncoming = normalizeChoices(choices, this.props.intl);
+        const knownValues = new Set(
+          normalizeChoices(state.termsPairsCache, this.props.intl).map(
+            (pair) => pair.value,
+          ),
+        );
+        const additions = choices.filter(
+          (choice, index) => !knownValues.has(normalizedIncoming[index].value),
+        );
+        return additions.length > 0
+          ? { termsPairsCache: [...state.termsPairsCache, ...additions] }
+          : null;
+      });
     }
   }
 
@@ -227,7 +247,9 @@ class SelectAutoComplete extends Component {
       this.props.value,
       this.props.intl,
     );
-    const SelectAsync = this.props.reactSelectAsync.default;
+    const SelectAsync = withSelectMenuPortal(
+      this.props.reactSelectAsync.default,
+    );
 
     return (
       <FormFieldWrapper {...this.props}>
