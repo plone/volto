@@ -173,6 +173,42 @@ describe('Container block nested multi-selection', () => {
     expect(root.querySelectorAll('.block.multiSelected')).toHaveLength(1);
   });
 
+  it('selects a backward Shift-click range of inner blocks', () => {
+    const { root, innerBlockElements } = renderContainer();
+
+    fireEvent.click(innerBlockElements[2]);
+    fireEvent.click(innerBlockElements[0], { shiftKey: true });
+
+    expect(root.querySelectorAll('.block.multiSelected')).toHaveLength(3);
+  });
+
+  it('removes one inner block from a Shift-click range with Meta-click', () => {
+    const { innerBlockElements, store } = renderContainer();
+
+    fireEvent.click(innerBlockElements[0]);
+    fireEvent.click(innerBlockElements[2], { shiftKey: true });
+    fireEvent.click(innerBlockElements[1], { metaKey: true });
+    fireEvent.click(screen.getByLabelText('Copy blocks'));
+
+    const action = store
+      .getActions()
+      .find((a) => a.type === 'SET_BLOCKS_CLIPBOARD' && a.copy);
+
+    expect(action.copy.map(([id]) => id)).toEqual(['a', 'c']);
+  });
+
+  it('extends the multi-selection with Shift+ArrowDown', () => {
+    const { root, innerBlockElements } = renderContainer();
+
+    fireEvent.click(innerBlockElements[0]);
+    fireEvent.keyDown(innerBlockElements[0].closest('.block'), {
+      key: 'ArrowDown',
+      shiftKey: true,
+    });
+
+    expect(root.querySelectorAll('.block.multiSelected')).toHaveLength(2);
+  });
+
   it('extends the multi-selection from the cell wrapper (cell padding)', () => {
     const { root, innerBlockElements, cellWrappers } = renderContainer();
 

@@ -147,6 +147,23 @@ describe('Form top-level block selection', () => {
     getSelection.mockRestore();
   });
 
+  it('selects a backward Shift-click range from the active block', () => {
+    const getSelection = vi
+      .spyOn(window, 'getSelection')
+      .mockReturnValue({ empty: vi.fn() });
+
+    expect(
+      selectBlock({
+        id: 'a',
+        selected: 'c',
+        metaKey: false,
+        shiftKey: true,
+      }).multiSelected,
+    ).toEqual(['a', 'b', 'c']);
+
+    getSelection.mockRestore();
+  });
+
   it('extends the range on Shift+arrow keyboard navigation without an event', () => {
     const getSelection = vi
       .spyOn(window, 'getSelection')
