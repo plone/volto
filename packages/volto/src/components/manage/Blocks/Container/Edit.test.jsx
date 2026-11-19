@@ -232,6 +232,26 @@ describe('Container block clipboard toolbar', () => {
     ]);
   });
 
+  it.each([
+    ['Control', { ctrlKey: true }],
+    ['Meta', { metaKey: true }],
+  ])(
+    'copies the active inner block once after %s-clicking it',
+    (_modifier, modifiers) => {
+      const { innerBlockElements, store } = renderContainer();
+
+      fireEvent.click(innerBlockElements[0]);
+      fireEvent.click(innerBlockElements[0], modifiers);
+      fireEvent.click(screen.getByLabelText('Copy blocks'));
+
+      const action = store
+        .getActions()
+        .find((a) => a.type === 'SET_BLOCKS_CLIPBOARD' && a.copy);
+
+      expect(action.copy).toEqual([['a', { '@type': 'dummy' }]]);
+    },
+  );
+
   it('pastes clipboard blocks after the selected inner block', () => {
     const { innerBlockElements, onChangeBlock, store } = renderContainer({
       clipboard: {

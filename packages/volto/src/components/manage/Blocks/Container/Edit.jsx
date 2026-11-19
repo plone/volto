@@ -99,9 +99,12 @@ const ContainerBlockEdit = (props) => {
         if (multiSelected.includes(id)) {
           newMultiSelected = without(multiSelected, id);
         } else {
-          // Promote the active block when starting a multi-selection
+          // Promote the active block when starting a multi-selection, unless
+          // it is the clicked block, which is added below
           const active =
-            selectedBlock && !multiSelected.includes(selectedBlock)
+            selectedBlock &&
+            selectedBlock !== id &&
+            !multiSelected.includes(selectedBlock)
               ? [selectedBlock]
               : [];
           newMultiSelected = [...multiSelected, ...active, id];
