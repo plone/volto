@@ -8,6 +8,18 @@
 
 <!-- towncrier release notes start -->
 
+## 3.2.0 (2026-11-18)
+
+### Feature
+
+- The block docs loader also collects the docs of document model elements (`element` and `title` in the frontmatter) and of document models (`document_model`). @sneridagh 
+
+## 3.1.1 (2026-11-16)
+
+### Internal
+
+- Update dependency: glob 14.0.2. @davisagli 
+
 ## 3.1.0 (2026-10-27)
 
 ### Feature

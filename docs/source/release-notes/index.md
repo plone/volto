@@ -17,6 +17,33 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.8.0 (2026-11-18)
+
+### Feature
+
+- Added a `table` layout to `ObjectListWidget`, with `columns`, `cells`, `itemTitle` and `maxItems`, where each item is edited in a dialog that writes back only on Save and has a menu with Move up, Move down, Duplicate and a confirmed Remove. Added `fixedItems`, which hides Add, Duplicate and Remove so that the items of a list cannot be added or removed. Nested validation of `object` and `object_list` fields now runs on submit and opens the first item with errors (fixes #7077). Added `validateItem` and `itemIds: false`, and schema functions now receive `intl`. Based on the work in #7078 and #7169. @alexandreIFB [#8538](https://github.com/plone/volto/issues/8538)
+- Added `document_model`, `document` and `kind` to the `@blocks-schema` endpoint, so clients know how content stores its blocks, with `documentModel` utilities for add-ons and the `type` parameter. @sneridagh 
+
+### Bugfix
+
+- Fix select dropdown options being clipped inside modals. @iRohitSingh 
+
+## 19.7.1 (2026-11-16)
+
+### Feature
+
+- Documented the Lead Image block (`leadimage`) in a `docs.block.md` file, so that the `/@blocks-schema` endpoint and the reference docs describe it. The docs say that the image comes from the content item's lead image field, and that the block stores only its alignment and optional link. @ericof [#8531](https://github.com/plone/volto/issues/8531)
+
+### Bugfix
+
+- Fixed the toolbar Add button showing on non-multilingual sites for users who cannot add content. @iFlameing [#8537](https://github.com/plone/volto/issues/8537)
+
+### Internal
+
+- Added a CI workflow that runs the Volto Light Theme frontend test suite against the Volto branch from the push, replacing the `core` folder with the pushed Volto branch. @wesleybl 
+- Update devDependency: release-it 21.1.2. @davisagli 
+- Update to Plone 6.2.3 @sneridagh 
+
 ## 19.7.0 (2026-11-06)
 
 ### Feature

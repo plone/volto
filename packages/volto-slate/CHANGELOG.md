@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 19.2.1 (2026-11-16)
+
+### Feature
+
+- Documented the table block (`slateTable`) in a `docs.block.md` file, with the structure of its `table` object, its rows and cells, the Slate value of each cell and its settings, plus a complete example. The `/@blocks-schema` endpoint and the reference docs now describe it. @ericof [#8531](https://github.com/plone/volto/issues/8531)
+
 ## 19.2.0 (2026-10-27)
 
 ### Feature

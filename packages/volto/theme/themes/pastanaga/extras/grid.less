@@ -365,7 +365,7 @@ body.has-toolbar.has-sidebar .drag.gridBlock.handle.wrapper {
 
 // Remove completely the default inner selection marker, so we are using our own
 .block.gridBlock {
-  [class^='block-editor-'] .block.selected::before {
+  [class^='block-editor-'] .block.selected:not(.multiSelected)::before {
     content: unset;
   }
 }
