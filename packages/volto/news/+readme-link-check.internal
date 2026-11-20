@@ -1,0 +1,1 @@
+Split the README link check: pull requests now only check links inside the repository, and external URLs are checked weekly and reported in an issue instead of failing unrelated builds. @sneridagh

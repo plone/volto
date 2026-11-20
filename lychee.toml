@@ -1,0 +1,25 @@
+# Configuration for the README link check (lychee).
+# See .github/workflows/readme-link-check.yml and https://lychee.cli.rs/
+
+timeout = 10
+max_retries = 2
+retry_wait_time = 10
+
+# Treat rate limiting as "the link exists".
+accept = ["200..=299", "429"]
+
+exclude_path = ["node_modules"]
+
+# Placeholders, local URLs, and sites that block automated requests.
+exclude = [
+  "^http://localhost",
+  "https://my-server-DNS-name.tld/api",
+  "https://github.com/kitconcept/volto-blocks-grid.git",
+  "2021.ploneconf.org",
+  "https://www.npmjs.com/",
+  "https://www.lanku.eus/",
+  "https://medium.com/",
+  "https://www.linkedin.com/",
+  "https://tanstack.com/",
+  "https://github.com/.*/actions/workflows/.*badge.svg",
+]
