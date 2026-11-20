@@ -32,6 +32,243 @@ It is usually better and quicker to move your items into new locations and copy 
 
 ## Upgrading to Volto 19.x.x
 
+(pnpm-plugin-volto-label)=
+
+### Optional: upgrade to `pnpm` 12 and get the shared `pnpm` settings from `@plone/pnpm-plugin-volto`
+```{versionadded} Volto 19.8.0
+```
+
+Volto now publishes `@plone/pnpm-plugin-volto`, a `pnpm` [config dependency](https://pnpm.io/config-dependencies) with the `pnpm` settings that every Volto project needs: `overrides`, `allowBuilds`, and `publicHoistPattern`.
+When Volto changes one of these settings, for example to add a security override, you get the change by updating the plugin, instead of editing your project by hand.
+Your project's own settings always take precedence over the plugin's.
+
+This change is optional.
+Volto 19 projects generated with Cookieplone use `pnpm` 10.
+This section upgrades them to `pnpm` 12 and adds the plugin.
+The Cookieplone templates will be updated to match, so that new projects get this setup when they're generated.
+
+Most of the changes come from `pnpm` 11, which changed where `pnpm` reads its settings, and some of its defaults:
+
+-   It no longer reads settings from the `pnpm` field of {file}`package.json`.
+-   `onlyBuiltDependencies`, `ignoredBuiltDependencies`, and `neverBuiltDependencies` were replaced by `allowBuilds`, a map from package name to `true` (run its build scripts) or `false` (don't).
+-   It reads only authentication and registry settings from {file}`.npmrc`.
+-   It ignores `npm_config_*` environment variables.
+    It reads `pnpm_config_*` instead.
+-   An install fails if a dependency has build scripts and isn't listed in `allowBuilds`.
+    `pnpm` 10 only printed a warning.
+-   It doesn't install versions published less than one day ago.
+-   It blocks dependencies of your dependencies that come from Git repositories or tarball URLs.
+-   It requires Node.js 22 or later.
+    Volto 19 already requires Node.js 24 or later.
+
+`pnpm` 12 adds a few more changes:
+
+-   It fails when {file}`pnpm-workspace.yaml` has a setting it doesn't know, including the settings that `pnpm` 11 removed, if your project pins a `pnpm` version.
+-   It no longer accepts `--frozen-lockfile false`.
+    Use `--no-frozen-lockfile` instead.
+-   It no longer writes SSH URLs of Git dependencies hosted on GitHub, GitLab, or Bitbucket to {file}`pnpm-lock.yaml`.
+
+For all the changes, see the release notes of [`pnpm` 11.0.0](https://github.com/pnpm/pnpm/releases/tag/v11.0.0) and [`pnpm` 12.0.0](https://github.com/pnpm/pnpm/releases/tag/v12.0.0).
+
+#### Update {file}`package.json`
+
+In {file}`frontend/package.json`, remove the `pnpm` field, and update `packageManager` as shown.
+The plugin provides the settings that Cookieplone generates, so for most projects they can be removed.
+
+```diff
+-  "pnpm": {
+-    "overrides": {
+-      "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+-      "react-refresh": "^0.14.2"
+-    },
+-    "ignoredBuiltDependencies": [
+-      "@parcel/watcher"
+-    ],
+-    "onlyBuiltDependencies": [
+-      "core-js",
+-      "core-js-pure",
+-      "cypress",
+-      "es5-ext",
+-      "esbuild",
+-      "lightningcss-cli",
+-      "unrs-resolver"
+-    ]
+-  },
+-  "packageManager": "pnpm@10.20.0"
++  "packageManager": "pnpm@12.18.0"
+```
+
+Projects generated with older versions of Cookieplone may have a shorter list.
+The plugin provides all of these.
+
+If your `pnpm` field has other settings, move them to {file}`frontend/pnpm-workspace.yaml` instead of removing them.
+Convert any `onlyBuiltDependencies`, `ignoredBuiltDependencies`, or `neverBuiltDependencies` entries to `allowBuilds`.
+Packages that are allowed to run build scripts get `true`, and packages that aren't get `false`.
+`pnpm` 12 fails if the old settings are still there.
+For example, these settings in {file}`frontend/package.json`:
+
+```json
+{
+  "pnpm": {
+    "onlyBuiltDependencies": ["my-native-package"],
+    "ignoredBuiltDependencies": ["my-optional-tool"]
+  }
+}
+```
+
+become these in {file}`frontend/pnpm-workspace.yaml`:
+
+```yaml
+allowBuilds:
+  my-native-package: true
+  my-optional-tool: false
+```
+
+You don't need to list the packages that Volto needs, such as `cypress` or `esbuild`.
+The plugin provides them.
+
+#### Move settings out of {file}`.npmrc`
+
+In {file}`frontend/.npmrc`, remove the `public-hoist-pattern[]` lines that the plugin provides.
+
+```diff
+-public-hoist-pattern[]=*eslint*
+-public-hoist-pattern[]=*prettier*
+-public-hoist-pattern[]=*stylelint*
+-public-hoist-pattern[]=*cypress*
+-public-hoist-pattern[]=babel-plugin-react-intl
+-public-hoist-pattern[]=*babel-preset-razzle
+```
+
+Move any other setting, except authentication and registry settings, to {file}`frontend/pnpm-workspace.yaml`, using its camelCase name.
+For example, this hoist pattern of your own in {file}`frontend/.npmrc`:
+
+```ini
+public-hoist-pattern[]=*my-tool*
+```
+
+becomes this in {file}`frontend/pnpm-workspace.yaml`:
+
+```yaml
+publicHoistPattern:
+  - '*my-tool*'
+```
+
+The plugin's hoist patterns are added to yours, so you only need to list your own.
+If {file}`.npmrc` is then empty, delete it.
+
+#### Update scripts, Docker, and CI
+
+If your CI workflows, {file}`Makefile`, or {file}`Dockerfile` set `npm_config_*` environment variables, rename them to `pnpm_config_*`.
+If they run `pnpm install --frozen-lockfile false`, use `pnpm install --no-frozen-lockfile` instead.
+
+The `plone/frontend-builder` image that {file}`frontend/Dockerfile` builds from has its own {file}`package.json`, which uses `pnpm` 10.
+The `builder` stage copies only your project's `dependencies` into it, so `pnpm install` would run with `pnpm` 10, and fail on the plugin.
+In the `builder` stage of {file}`frontend/Dockerfile`, replace the `python3 -c` line that merges {file}`package.json` with the following, so that the image also uses your project's `packageManager`.
+
+```dockerfile
+    python3 <<'PYTHON'
+import json
+
+with open("package.json.temp") as fh:
+    project = json.load(fh)
+with open("package.json") as fh:
+    data = json.load(fh)
+data["dependencies"].update(project["dependencies"])
+# Use the project's pnpm version and settings, not the image's ones
+data["packageManager"] = project["packageManager"]
+data.pop("pnpm", None)
+if "pnpm" in project:
+    data["pnpm"] = project["pnpm"]
+with open("package.json", "w") as fh:
+    json.dump(data, fh, indent=2)
+PYTHON
+```
+
+In the last stage of {file}`frontend/Dockerfile`, update the `pnpm` version as shown.
+
+```diff
+ RUN <<EOT
+     set -e
+     CI=1 npm i -g corepack@latest && corepack enable pnpm
+-    CI=1 corepack use pnpm@10.20.0
+-    CI=1 corepack prepare pnpm@10.20.0 --activate
++    CI=1 corepack use pnpm@12.18.0
++    CI=1 corepack prepare pnpm@12.18.0 --activate
+ EOT
+```
+
+Also update any `pnpm` version that your CI workflows install, for example in `pnpm/action-setup`.
+
+#### Add the plugin and install
+
+Install `pnpm` 12 locally.
+If you use corepack, run `corepack enable`, and `pnpm` switches to the version in `packageManager` by itself.
+Then add the plugin from the {file}`frontend` folder.
+
+```shell
+pnpm add --config @plone/pnpm-plugin-volto
+```
+
+This adds it to {file}`frontend/pnpm-workspace.yaml`.
+`pnpm` stores its integrity hash in {file}`pnpm-lock.yaml`, and `pnpm update` updates it like any other dependency.
+
+```yaml
+configDependencies:
+  '@plone/pnpm-plugin-volto': ^19.0.0
+```
+
+`pnpm` 12 doesn't install versions published less than a day ago, and this also applies to the plugin.
+If its latest version is newer than that, `pnpm add --config` fails with `ERR_PNPM_BAD_CONFIG_DEP`.
+Either wait a day, or allow the plugin in {file}`frontend/pnpm-workspace.yaml`:
+
+```yaml
+minimumReleaseAgeExclude:
+  - '@plone/pnpm-plugin-volto'
+```
+
+Keeping this entry lets you update the plugin as soon as Volto releases a new version, for example with a security override.
+
+Finally, run the following command from the root of your project, and commit the changes, including the updated {file}`pnpm-lock.yaml`.
+Expect a large change in {file}`pnpm-lock.yaml`, because `pnpm` 12 rewrites it.
+
+```shell
+make frontend-install
+```
+
+If the install fails with `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION`, your {file}`pnpm-lock.yaml` has versions published less than a day ago, for example from a recent dependency update.
+`pnpm` adds them to `minimumReleaseAgeExclude` in {file}`frontend/pnpm-workspace.yaml` for you.
+Check the added entries, and run the install again.
+You can remove the entries once those versions are older than a day.
+
+If the install fails with `Ignored build scripts`, one of your project's own dependencies has build scripts that aren't in `allowBuilds`.
+`pnpm` 10 skipped them with a warning, so check whether the package needs them.
+Then either run `pnpm approve-builds` from the {file}`frontend` folder, or add the package to `allowBuilds` in {file}`frontend/pnpm-workspace.yaml`, with `true` or `false`.
+
+See the plugin's {file}`settings.json` for the full list of shared settings.
+
+#### New defaults to know about
+
+-   **Recently published versions.**
+    `pnpm` 12 doesn't install a version published less than a day ago (`minimumReleaseAge`).
+    This protects you from compromised releases, which are often found and removed soon after they're published.
+    If you need a fix the day it's released, such as a security fix, allow that package only in {file}`frontend/pnpm-workspace.yaml`.
+    Remove the entry once the release is older than a day.
+
+    ```yaml
+    minimumReleaseAgeExclude:
+      - the-fixed-package
+    ```
+
+-   **Git and tarball dependencies.**
+    `pnpm` 12 blocks dependencies of your dependencies that come from Git repositories or tarball URLs (`blockExoticSubdeps`).
+    Your own direct dependencies and workspace packages, such as the Volto core checked out by `mrs-developer`, aren't affected.
+    If an add-on depends on a Git repository, ask its maintainers to publish that dependency to npm.
+    Until then, you can set `blockExoticSubdeps: false` in {file}`frontend/pnpm-workspace.yaml`.
+-   **Git dependencies over SSH.**
+    {file}`pnpm-lock.yaml` now records Git dependencies hosted on GitHub, GitLab, or Bitbucket with HTTPS URLs.
+    If a private repository needs SSH, configure Git to rewrite the URL on each machine that installs, for example with `git config --global url."git@github.com:".insteadOf "https://github.com/"`.
+
 (nodejs-22-removed-label)=
 
 ### Removed support of Node.js 22
