@@ -68,6 +68,9 @@ const TeaserData = (props) => {
       '@type': resp?.['@type'],
       Description: resp?.description,
       Title: resp.title,
+      description: resp.description,
+      effective: resp.effective,
+      end: resp.end,
       hasPreviewImage: getImageField(resp) ? true : false,
       head_title: resp.head_title ?? null,
       image_field: getImageField(resp),
@@ -83,6 +86,7 @@ const TeaserData = (props) => {
             ]
           : [],
       },
+      start: resp.start,
       title: resp.title,
     };
     let blockData = {
