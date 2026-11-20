@@ -3,20 +3,20 @@ msgstr ""
 "Project-Id-Version: volto-fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"PO-Revision-Date: 2020-06-16 11:44+0100\n"
-"Last-Translator: Benoît Suttor <benoit.suttor@imio.be>\n"
+"PO-Revision-Date: 2026-11-19 15:51+0000\n"
+"Last-Translator: Robert Herzog <herzog@users.noreply.hosted.weblate.org>\n"
 "Language: fr\n"
-"Language-Team: French <plone-fr@lists.plone.org>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/plone/volto-18/fr/>\n"
 "Content-Type: text/plain; charset=UTF-8;\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Language-Code: fr\n"
 "Language-Name: French\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 #. Default: "<p>Add some HTML here</p>"
 #: components/manage/Blocks/HTML/Edit
@@ -26,7 +26,7 @@ msgstr "<p>Ajoutez du HTML ici</p>"
 #. Default: "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
 #: helpers/MessageLabels/MessageLabels
 msgid "A unique identifier for the group. Cannot be changed after creation. No spaces allowed."
-msgstr ""
+msgstr "Un identifiant unique pour le groupe. Ne peut être modifié après sa création. Aucun espace n'est permis."
 
 #. Default: "Account Registration Completed"
 #: components/theme/Register/Register
@@ -3177,7 +3177,7 @@ msgstr "Revenir à cette révision"
 #: components/manage/Contents/Contents
 #: components/manage/LinksToItem/LinksToItem
 msgid "Review state"
-msgstr "Etat de révision"
+msgstr "État de la révision"
 
 #. Default: "Richtext"
 #: components/manage/Widgets/SchemaWidget
@@ -4699,7 +4699,7 @@ msgstr ""
 #: components/theme/Login/Login
 #: components/theme/PasswordReset/RequestPasswordReset
 msgid "box_forgot_password_option"
-msgstr "Mot de passe oublié"
+msgstr "Mot de passe oublié ?"
 
 #. Default: "Add many alternative URLs at once by uploading a CSV file. The first column should be the path to redirect from; the second, the path to redirect to. Both paths must be Plone-site-relative, starting with a slash (/). An optional third column can contain a date and time. An optional fourth column can contain a boolean to mark as a manual redirect (default true)."
 #: components/manage/Controlpanels/Aliases
