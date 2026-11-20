@@ -3,6 +3,10 @@
   border-bottom: 1px solid #c7d5d8;
 }
 
+.slate_wysiwyg_box:focus-within {
+  border-bottom-color: #007eb1;
+}
+
 .metadata.mention.slate.widget {
   display: inline;
 }
