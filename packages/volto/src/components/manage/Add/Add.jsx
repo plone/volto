@@ -172,6 +172,25 @@ class Add extends Component {
   }
 
   /**
+   * Component did update. The route does not remount Add when the URL
+   * changes, so the schema and the add permission are checked again for the
+   * new pathname or type.
+   * @method componentDidUpdate
+   * @param {Object} prevProps Previous properties
+   * @returns {undefined}
+   */
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.pathname !== this.props.pathname ||
+      prevProps.type !== this.props.type
+    ) {
+      this.setState({ addable: null, typesErrorStatus: null });
+      this.props.getSchema(this.props.type, getBaseUrl(this.props.pathname));
+      this.checkAddable();
+    }
+  }
+
+  /**
    * Component will unmount
    * @method componentWillUnmount
    * @returns {undefined}
@@ -183,9 +202,8 @@ class Add extends Component {
   /**
    * Check whether the type can be added in the add target. The shared
    * `types` store may belong to the previously visited page, so the add
-   * target's @types are fetched directly. The route does not remount Add
-   * when the URL changes, so a response for an outdated pathname or type is
-   * ignored.
+   * target's @types are fetched directly. A late response for an outdated
+   * pathname or type is ignored.
    * @method checkAddable
    * @returns {undefined}
    */

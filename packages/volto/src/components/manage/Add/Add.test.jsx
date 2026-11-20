@@ -119,7 +119,7 @@ describe('Add', () => {
     expect(container.querySelector('.Forbidden')).toBeNull();
   });
 
-  it('ignores a late @types response for a previous type', async () => {
+  it('checks the new type again and ignores a late response for the previous one', async () => {
     let resolveTypes;
     mockApiGet.mockReturnValue(
       new Promise((resolve) => {
@@ -138,12 +138,16 @@ describe('Add', () => {
     );
     const { container, rerender } = render(renderWithType('Document'));
     rerender(renderWithType('Event'));
+    expect(mockApiGet).toHaveBeenCalledTimes(2);
     resolveTypes([
       { id: 'Document', addable: false },
       { id: 'Event', addable: true },
     ]);
-    await new Promise((resolve) => setTimeout(resolve, 0));
-    expect(container.querySelector('.Form')).toBeNull();
+    // The response for Document (not addable) is ignored; the one for Event
+    // (addable) shows the form.
+    await waitFor(() =>
+      expect(container.querySelector('.Form')).not.toBeNull(),
+    );
     expect(container.querySelector('.Forbidden')).toBeNull();
   });
 
