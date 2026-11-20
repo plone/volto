@@ -35,6 +35,30 @@ describe('Unauthorized', () => {
     expect(context.url).toEqual('/private/login?return_url=%2Fprivate');
   });
 
+  it('keeps the query string in the return_url', () => {
+    const store = mockStore({
+      userSession: {
+        token: null,
+      },
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      apierror: {},
+    });
+    const context = {};
+    renderer.create(
+      <Provider store={store}>
+        <StaticRouter context={context} location="/folder/add?type=Document">
+          <Unauthorized />
+        </StaticRouter>
+      </Provider>,
+    );
+    expect(context.url).toEqual(
+      '/folder/add/login?return_url=%2Ffolder%2Fadd%3Ftype%3DDocument',
+    );
+  });
+
   it('renders an unauthorized component for authenticated user', () => {
     const store = mockStore({
       userSession: {
