@@ -43,6 +43,34 @@
 }
 
 .object-browser {
+  .ui.input.search {
+    min-width: 0;
+    margin-right: 10px;
+
+    input {
+      padding-right: 44px;
+      border: 2px solid @borderColor;
+      border-radius: 8px;
+
+      &:focus {
+        border-color: @linkColor !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+    }
+
+    button.search-clear {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      transform: translateY(-50%);
+    }
+  }
+
   .mode-switch {
     margin-right: 8px;
     cursor: pointer;

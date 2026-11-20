@@ -722,6 +722,7 @@ msgstr "फ़िल्टर साफ़ करें"
 
 #. Default: "Clear search"
 #: components/manage/BlockChooser/BlockChooserSearch
+#: components/manage/Sidebar/ObjectBrowserBody
 msgid "Clear search"
 msgstr "खोज साफ़ करें"
 
@@ -744,6 +745,16 @@ msgstr "बंद करें"
 #: components/theme/Navigation/Navigation
 msgid "Close menu"
 msgstr "मेनू बंद करें"
+
+#. Default: "Close object browser"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close object browser"
+msgstr ""
+
+#. Default: "Close search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Close search"
+msgstr ""
 
 #. Default: "Code"
 #: components/manage/Blocks/HTML/Edit
@@ -1426,6 +1437,11 @@ msgstr "खोज करने के लिए ऊपर एक उपयोग
 #: components/theme/Register/Register
 msgid "Enter an email address. This will be your login name. We respect your privacy, and will not give the address away to any third parties or expose it anywhere."
 msgstr "एक ईमेल पता दर्ज करें। यह आपका लॉगिन नाम होगा। हम आपकी गोपनीयता का सम्मान करते हैं, और हम इस पते को किसी तीसरे पक्ष को नहीं देंगे या इसे कहीं भी प्रकट नहीं करेंगे।"
+
+#. Default: "Enter at least 3 characters to search"
+#: components/manage/Sidebar/ObjectBrowserBody
+msgid "Enter at least 3 characters to search"
+msgstr ""
 
 #. Default: "Enter full name, e.g. John Smith."
 #: components/theme/Register/Register
@@ -2251,6 +2267,7 @@ msgstr "अधिक लोड करें"
 #: components/manage/Controlpanels/Groups/GroupsControlpanel
 #: components/manage/Controlpanels/Users/UsersControlpanel
 #: components/manage/Form/ModalForm
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Toolbar/More
 msgid "Loading"
 msgstr "लोड हो रहा है"
@@ -2632,6 +2649,7 @@ msgstr "कोई परिणाम नहीं मिले"
 
 #. Default: "No results found."
 #: components/manage/Blocks/Listing/DefaultNoResultsComponent
+#: components/manage/Sidebar/ObjectBrowserBody
 #: components/manage/Widgets/ReferenceWidget
 msgid "No results found."
 msgstr "कोई परिणाम नहीं मिले।"
