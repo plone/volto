@@ -77,6 +77,10 @@ export default defineMessages({
     id: 'controlpanels.contentTypes.addsFieldsUnknown',
     defaultMessage: 'Its fields show in the form after saving.',
   },
+  'controlpanels.contentTypes.addsNoFields': {
+    id: 'controlpanels.contentTypes.addsNoFields',
+    defaultMessage: 'Adds no fields.',
+  },
   'controlpanels.contentTypes.allowAll': {
     id: 'controlpanels.contentTypes.allowAll',
     defaultMessage: 'All types',
@@ -134,6 +138,10 @@ export default defineMessages({
   'controlpanels.contentTypes.behaviorsSummary': {
     id: 'controlpanels.contentTypes.behaviorsSummary',
     defaultMessage: '{on} on · {withFields} add fields · {features} features',
+  },
+  'controlpanels.contentTypes.behaviorsToAdd': {
+    id: 'controlpanels.contentTypes.behaviorsToAdd',
+    defaultMessage: 'Adding',
   },
   'controlpanels.contentTypes.cancel': {
     id: 'controlpanels.contentTypes.cancel',
@@ -263,15 +271,6 @@ export default defineMessages({
   'controlpanels.contentTypes.custom': {
     id: 'controlpanels.contentTypes.custom',
     defaultMessage: 'Custom',
-  },
-  'controlpanels.contentTypes.defaultPage': {
-    id: 'controlpanels.contentTypes.defaultPage',
-    defaultMessage: "Can be used as a folder's default page",
-  },
-  'controlpanels.contentTypes.defaultPageHelp': {
-    id: 'controlpanels.contentTypes.defaultPageHelp',
-    defaultMessage:
-      'Lets editors pick an item of this type as the page a folder shows.',
   },
   'controlpanels.contentTypes.defaultWorkflow': {
     id: 'controlpanels.contentTypes.defaultWorkflow',
@@ -498,6 +497,14 @@ export default defineMessages({
     id: 'controlpanels.contentTypes.groupOther',
     defaultMessage: 'Other',
   },
+  'controlpanels.contentTypes.inNavigation': {
+    id: 'controlpanels.contentTypes.inNavigation',
+    defaultMessage: 'Show in navigation',
+  },
+  'controlpanels.contentTypes.inNavigationHelp': {
+    id: 'controlpanels.contentTypes.inNavigationHelp',
+    defaultMessage: "Lists items of this type in the site's navigation.",
+  },
   'controlpanels.contentTypes.includedIn': {
     id: 'controlpanels.contentTypes.includedIn',
     defaultMessage: 'Included in {title}',
@@ -689,6 +696,11 @@ export default defineMessages({
     id: 'controlpanels.contentTypes.otherScopeWorkflows',
     defaultMessage: '{count} more workflows are only offered for comments.',
   },
+  'controlpanels.contentTypes.otherWorkflows': {
+    id: 'controlpanels.contentTypes.otherWorkflows',
+    defaultMessage:
+      'Its chain also has {workflows}. Changing the workflow replaces the whole chain.',
+  },
   'controlpanels.contentTypes.pendingFields': {
     id: 'controlpanels.contentTypes.pendingFields',
     defaultMessage: 'Fields from {behaviors} show after saving.',
@@ -792,6 +804,10 @@ export default defineMessages({
   'controlpanels.contentTypes.searchBehaviors': {
     id: 'controlpanels.contentTypes.searchBehaviors',
     defaultMessage: 'Search behaviors',
+  },
+  'controlpanels.contentTypes.searchBehaviorsHint': {
+    id: 'controlpanels.contentTypes.searchBehaviorsHint',
+    defaultMessage: 'Search by name or id',
   },
   'controlpanels.contentTypes.searchable': {
     id: 'controlpanels.contentTypes.searchable',

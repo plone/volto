@@ -4928,6 +4928,11 @@ msgstr ""
 msgid "controlpanels.contentTypes.addsFieldsUnknown"
 msgstr ""
 
+#. Default: "Adds no fields."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addsNoFields"
+msgstr ""
+
 #. Default: "All types"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.allowAll"
@@ -4996,6 +5001,11 @@ msgstr ""
 #. Default: "{on} on · {withFields} add fields · {features} features"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.behaviorsSummary"
+msgstr ""
+
+#. Default: "Adding"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorsToAdd"
 msgstr ""
 
 #. Default: "Cancel"
@@ -5156,16 +5166,6 @@ msgstr ""
 #. Default: "Custom"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.custom"
-msgstr ""
-
-#. Default: "Can be used as a folder's default page"
-#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
-msgid "controlpanels.contentTypes.defaultPage"
-msgstr ""
-
-#. Default: "Lets editors pick an item of this type as the page a folder shows."
-#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
-msgid "controlpanels.contentTypes.defaultPageHelp"
 msgstr ""
 
 #. Default: "Workflow: {workflow}"
@@ -5438,6 +5438,16 @@ msgstr ""
 msgid "controlpanels.contentTypes.groupOther"
 msgstr ""
 
+#. Default: "Show in navigation"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.inNavigation"
+msgstr ""
+
+#. Default: "Lists items of this type in the site's navigation."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.inNavigationHelp"
+msgstr ""
+
 #. Default: "Included in {title}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.includedIn"
@@ -5668,6 +5678,11 @@ msgstr ""
 msgid "controlpanels.contentTypes.otherScopeWorkflows"
 msgstr ""
 
+#. Default: "Its chain also has {workflows}. Changing the workflow replaces the whole chain."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.otherWorkflows"
+msgstr ""
+
 #. Default: "Fields from {behaviors} show after saving."
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.pendingFields"
@@ -5791,6 +5806,11 @@ msgstr ""
 #. Default: "Search behaviors"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.searchBehaviors"
+msgstr ""
+
+#. Default: "Search by name or id"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.searchBehaviorsHint"
 msgstr ""
 
 #. Default: "Show in search results"

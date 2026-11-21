@@ -4930,6 +4930,11 @@ msgstr "Añade {fields}"
 msgid "controlpanels.contentTypes.addsFieldsUnknown"
 msgstr "Sus campos aparecen en el formulario después de guardar."
 
+#. Default: "Adds no fields."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addsNoFields"
+msgstr "No añade campos."
+
 #. Default: "All types"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.allowAll"
@@ -4999,6 +5004,11 @@ msgstr "Variante de {title}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.behaviorsSummary"
 msgstr "{on} activados · {withFields} añaden campos · {features} funcionalidades"
+
+#. Default: "Adding"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorsToAdd"
+msgstr "A añadir"
 
 #. Default: "Cancel"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
@@ -5159,16 +5169,6 @@ msgstr "Flujo de trabajo actual"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.custom"
 msgstr "Personalizado"
-
-#. Default: "Can be used as a folder's default page"
-#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
-msgid "controlpanels.contentTypes.defaultPage"
-msgstr "Puede usarse como página por defecto de una carpeta"
-
-#. Default: "Lets editors pick an item of this type as the page a folder shows."
-#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
-msgid "controlpanels.contentTypes.defaultPageHelp"
-msgstr "Permite a los editores elegir un elemento de este tipo como la página que muestra una carpeta."
 
 #. Default: "Workflow: {workflow}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
@@ -5440,6 +5440,16 @@ msgstr "Navegación"
 msgid "controlpanels.contentTypes.groupOther"
 msgstr "Otros"
 
+#. Default: "Show in navigation"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.inNavigation"
+msgstr "Mostrar en la navegación"
+
+#. Default: "Lists items of this type in the site's navigation."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.inNavigationHelp"
+msgstr "Muestra los elementos de este tipo en la navegación del sitio."
+
 #. Default: "Included in {title}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.includedIn"
@@ -5670,6 +5680,11 @@ msgstr "1 elemento"
 msgid "controlpanels.contentTypes.otherScopeWorkflows"
 msgstr "{count} flujos de trabajo más solo se ofrecen para comentarios."
 
+#. Default: "Its chain also has {workflows}. Changing the workflow replaces the whole chain."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.otherWorkflows"
+msgstr "Su cadena también tiene {workflows}. Cambiar el flujo de trabajo reemplaza toda la cadena."
+
 #. Default: "Fields from {behaviors} show after saving."
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.pendingFields"
@@ -5794,6 +5809,11 @@ msgstr "No se pudieron cargar los campos."
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.searchBehaviors"
 msgstr "Buscar comportamientos"
+
+#. Default: "Search by name or id"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.searchBehaviorsHint"
+msgstr "Buscar por nombre o id"
 
 #. Default: "Show in search results"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages

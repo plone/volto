@@ -4930,6 +4930,11 @@ msgstr "Afegeix {fields}"
 msgid "controlpanels.contentTypes.addsFieldsUnknown"
 msgstr "Els seus camps es mostren al formulari després de desar."
 
+#. Default: "Adds no fields."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addsNoFields"
+msgstr "No afegeix camps."
+
 #. Default: "All types"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.allowAll"
@@ -4999,6 +5004,11 @@ msgstr "Variant de {title}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.behaviorsSummary"
 msgstr "{on} actius · {withFields} afegeixen camps · {features} funcionalitats"
+
+#. Default: "Adding"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorsToAdd"
+msgstr "Per afegir"
 
 #. Default: "Cancel"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
@@ -5159,16 +5169,6 @@ msgstr "Flux de treball actual"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.custom"
 msgstr "Personalitzat"
-
-#. Default: "Can be used as a folder's default page"
-#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
-msgid "controlpanels.contentTypes.defaultPage"
-msgstr "Es pot fer servir com a pàgina per defecte d'una carpeta"
-
-#. Default: "Lets editors pick an item of this type as the page a folder shows."
-#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
-msgid "controlpanels.contentTypes.defaultPageHelp"
-msgstr "Permet als editors triar un element d'aquest tipus com a pàgina que mostra una carpeta."
 
 #. Default: "Workflow: {workflow}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
@@ -5440,6 +5440,16 @@ msgstr "Navegació"
 msgid "controlpanels.contentTypes.groupOther"
 msgstr "Altres"
 
+#. Default: "Show in navigation"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.inNavigation"
+msgstr "Mostra a la navegació"
+
+#. Default: "Lists items of this type in the site's navigation."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.inNavigationHelp"
+msgstr "Mostra els elements d'aquest tipus a la navegació del lloc."
+
 #. Default: "Included in {title}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.includedIn"
@@ -5670,6 +5680,11 @@ msgstr "1 element"
 msgid "controlpanels.contentTypes.otherScopeWorkflows"
 msgstr "{count} fluxos de treball més només s'ofereixen per als comentaris."
 
+#. Default: "Its chain also has {workflows}. Changing the workflow replaces the whole chain."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.otherWorkflows"
+msgstr "La seva cadena també té {workflows}. Canviar el flux de treball substitueix tota la cadena."
+
 #. Default: "Fields from {behaviors} show after saving."
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.pendingFields"
@@ -5794,6 +5809,11 @@ msgstr "No s'han pogut carregar els camps."
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.searchBehaviors"
 msgstr "Cerca comportaments"
+
+#. Default: "Search by name or id"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.searchBehaviorsHint"
+msgstr "Cerca per nom o id"
 
 #. Default: "Show in search results"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages

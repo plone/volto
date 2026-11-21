@@ -4930,6 +4930,11 @@ msgstr "Fügt {fields} hinzu"
 msgid "controlpanels.contentTypes.addsFieldsUnknown"
 msgstr "Seine Felder erscheinen nach dem Speichern im Formular."
 
+#. Default: "Adds no fields."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.addsNoFields"
+msgstr "Fügt keine Felder hinzu."
+
 #. Default: "All types"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.allowAll"
@@ -4999,6 +5004,11 @@ msgstr "Variante von {title}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.behaviorsSummary"
 msgstr "{on} aktiv · {withFields} fügen Felder hinzu · {features} Funktionen"
+
+#. Default: "Adding"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.behaviorsToAdd"
+msgstr "Hinzuzufügen"
 
 #. Default: "Cancel"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
@@ -5159,16 +5169,6 @@ msgstr "Aktueller Arbeitsablauf"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.custom"
 msgstr "Benutzerdefiniert"
-
-#. Default: "Can be used as a folder's default page"
-#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
-msgid "controlpanels.contentTypes.defaultPage"
-msgstr "Kann als Standardseite eines Ordners verwendet werden"
-
-#. Default: "Lets editors pick an item of this type as the page a folder shows."
-#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
-msgid "controlpanels.contentTypes.defaultPageHelp"
-msgstr "Redakteure können einen Inhalt dieses Typs als die Seite wählen, die ein Ordner anzeigt."
 
 #. Default: "Workflow: {workflow}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
@@ -5440,6 +5440,16 @@ msgstr "Navigation"
 msgid "controlpanels.contentTypes.groupOther"
 msgstr "Sonstiges"
 
+#. Default: "Show in navigation"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.inNavigation"
+msgstr "In der Navigation anzeigen"
+
+#. Default: "Lists items of this type in the site's navigation."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.inNavigationHelp"
+msgstr "Listet Inhalte dieses Typs in der Navigation der Website auf."
+
 #. Default: "Included in {title}"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.includedIn"
@@ -5670,6 +5680,11 @@ msgstr "1 Inhalt"
 msgid "controlpanels.contentTypes.otherScopeWorkflows"
 msgstr "{count} weitere Arbeitsabläufe werden nur für Kommentare angeboten."
 
+#. Default: "Its chain also has {workflows}. Changing the workflow replaces the whole chain."
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.otherWorkflows"
+msgstr "Seine Kette enthält auch {workflows}. Wenn Sie den Workflow ändern, wird die ganze Kette ersetzt."
+
 #. Default: "Fields from {behaviors} show after saving."
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.pendingFields"
@@ -5794,6 +5809,11 @@ msgstr "Die Felder konnten nicht geladen werden."
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
 msgid "controlpanels.contentTypes.searchBehaviors"
 msgstr "Behaviors durchsuchen"
+
+#. Default: "Search by name or id"
+#: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages
+msgid "controlpanels.contentTypes.searchBehaviorsHint"
+msgstr "Nach Name oder ID suchen"
 
 #. Default: "Show in search results"
 #: components/manage/Controlpanels/ContentTypesControlpanel/controlpanelsMessages

@@ -445,6 +445,9 @@ importers:
       '@plone/components':
         specifier: workspace:*
         version: link:../components
+      '@plone/controlpanels':
+        specifier: 1.0.0-alpha.1
+        version: 1.0.0-alpha.1(@babel/core@7.29.7)(@babel/template@7.29.7)(@plone/registry@packages+registry)(@svgr/core@8.1.0(typescript@5.9.3))(@types/react@18.3.31)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-merge@3.7.0)(tailwindcss@4.3.3)(typescript@5.9.3)(vite@6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1))
       '@plone/registry':
         specifier: workspace:*
         version: link:../registry
@@ -3207,6 +3210,43 @@ packages:
   '@pkgr/core@0.3.6':
     resolution: {integrity: sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA==}
     engines: {node: ^14.18.0 || >=16.0.0}
+
+  '@plone/controlpanels@1.0.0-alpha.1':
+    resolution: {integrity: sha512-Y5dvpchnsPvlmRzhrrPvnpi2r+FmgP0u9QhAXmDFX7GY1qLh4ZkWo74HzK1s9oJKslBX+i60ubdpc3ITFxqpBA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+
+  '@plone/helpers@2.0.0-alpha.12':
+    resolution: {integrity: sha512-UJLh8bPE0ejUaodqkc2k3HI94VrEgbXYtgoBQBA/eJe3GyPR6CxkfhZ+UKeom7GPN92/qu0MsLxphDl9V0v8dA==}
+    peerDependencies:
+      '@plone/registry': ^3.0.0 || ^4.0.0-alpha.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+
+  '@plone/icons@1.0.0-alpha.3':
+    resolution: {integrity: sha512-2hQf5m8wi7DBuYhAxZb4MIU0GtqLTiCA5T3g51foHvPUnYA+pwKgXG0GS7h9aR1ZdovaMh8NoXSEAaJgpLIGQQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+
+  '@plone/quanta@1.0.0-alpha.5':
+    resolution: {integrity: sha512-kvzPuSGjfBj3bZwrqhUvANO5i/pyzDtGfOcUo2Y5/kyLsgQ0fLTxb5oFSjMzJecvBNYoFLS/CVs4Q7YXUDOrPg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
 
   '@pmmmwh/react-refresh-webpack-plugin@0.6.2':
     resolution: {integrity: sha512-IhIAD5n4XvGHuL9nAgWfsBR0TdxtjrUWETYKCBHxauYXEv+b+ctEbs9neEgPC7Ecgzv4bpZTBwesAoGDeFymzA==}
@@ -7282,6 +7322,12 @@ packages:
     resolution: {integrity: sha512-/RwAK4BAfzcdbdFg073tzq4/xhY6Q7lMd5AmjqTL6pu0QFJdEmtswgm8BvgwXvOKuPNYQ8XrdQrrW/gF65LiNw==}
     engines: {node: '>= 20'}
 
+  jotai-optics@0.4.0:
+    resolution: {integrity: sha512-osbEt9AgS55hC4YTZDew2urXKZkaiLmLqkTS/wfW5/l0ib8bmmQ7kBXSFaosV6jDDWSp00IipITcJARFHdp42g==}
+    peerDependencies:
+      jotai: '>=2.0.0'
+      optics-ts: '>=2.0.0'
+
   jotai@2.11.3:
     resolution: {integrity: sha512-B/PsewAQ0UOS5e2+TTWegUPQ3SCLPCjPY24LYUjfn2EorGlluTA2dFjVLgF1+xHLjK9Jit3y5mKHyMG3Xq/GZg==}
     engines: {node: '>=12.20.0'}
@@ -7289,6 +7335,24 @@ packages:
       '@types/react': '>=17.0.0'
       react: '>=17.0.0'
     peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+
+  jotai@2.20.3:
+    resolution: {integrity: sha512-N8L9FUbeGDP+0qNJw1FebOxt+5hk+jTOwUA2LlRE4C081jUcY6F1T/FSETp4DT2/INMtiSRZyNm2D+yZdzrSgA==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@babel/core': '>=7.0.0'
+      '@babel/template': '>=7.0.0'
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@babel/core':
+        optional: true
+      '@babel/template':
+        optional: true
       '@types/react':
         optional: true
       react:
@@ -8217,6 +8281,9 @@ packages:
   opener@1.5.2:
     resolution: {integrity: sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==}
     hasBin: true
+
+  optics-ts@2.4.1:
+    resolution: {integrity: sha512-HaYzMHvC80r7U/LqAd4hQyopDezC60PO2qF5GuIwALut2cl5rK1VWHsqTp0oqoJJWjiv6uXKqsO+Q2OO0C3MmQ==}
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -10451,6 +10518,12 @@ packages:
 
   use-trace-update@1.3.2:
     resolution: {integrity: sha512-iQ5/z1IgFNTM/gYGineNa/i+Tq/efDY5m7cvema//YoWT5C0tP5rY0ttwiJKbLiAgfdIPptMI3mCc18iVfEu6Q==}
+
+  usehooks-ts@3.1.1:
+    resolution: {integrity: sha512-I4diPp9Cq6ieSUH2wu+fDAVQO43xwtulo+fKEidHUwZPnYImbtkTjzIJYcDcJqxgmX31GVqNFURodvcgHcW0pA==}
+    engines: {node: '>=16.15.0'}
+    peerDependencies:
+      react: ^16.8.0  || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -12857,6 +12930,86 @@ snapshots:
 
   '@pkgr/core@0.3.6': {}
 
+  '@plone/controlpanels@1.0.0-alpha.1(@babel/core@7.29.7)(@babel/template@7.29.7)(@plone/registry@packages+registry)(@svgr/core@8.1.0(typescript@5.9.3))(@types/react@18.3.31)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-merge@3.7.0)(tailwindcss@4.3.3)(typescript@5.9.3)(vite@6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1))':
+    dependencies:
+      '@plone/helpers': 2.0.0-alpha.12(@babel/core@7.29.7)(@babel/template@7.29.7)(@plone/registry@packages+registry)(@types/react@18.3.31)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@plone/icons': 1.0.0-alpha.3(@svgr/core@8.1.0(typescript@5.9.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-merge@3.7.0)(tailwindcss@4.3.3)(typescript@5.9.3)(vite@6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1))
+      '@plone/quanta': 1.0.0-alpha.5(@svgr/core@8.1.0(typescript@5.9.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.9.3)(vite@6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1))
+      jotai: 2.20.3(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@18.3.31)(react@18.2.0)
+      react: 18.2.0
+      react-aria: 3.53.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      react-aria-components: 1.22.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+    optionalDependencies:
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/template'
+      - '@plone/registry'
+      - '@svgr/core'
+      - '@types/react'
+      - rollup
+      - supports-color
+      - tailwind-merge
+      - tailwindcss
+      - typescript
+      - vite
+
+  '@plone/helpers@2.0.0-alpha.12(@babel/core@7.29.7)(@babel/template@7.29.7)(@plone/registry@packages+registry)(@types/react@18.3.31)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@plone/registry': link:packages/registry
+      jotai: 2.20.3(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@18.3.31)(react@18.2.0)
+      jotai-optics: 0.4.0(jotai@2.20.3(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@18.3.31)(react@18.2.0))(optics-ts@2.4.1)
+      optics-ts: 2.4.1
+      react: 18.2.0
+    optionalDependencies:
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@babel/template'
+      - '@types/react'
+
+  '@plone/icons@1.0.0-alpha.3(@svgr/core@8.1.0(typescript@5.9.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-merge@3.7.0)(tailwindcss@4.3.3)(typescript@5.9.3)(vite@6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1))':
+    dependencies:
+      '@react-aria/utils': 3.34.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@react-spectrum/utils': 3.13.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.9.3))
+      '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0(typescript@5.9.3))(typescript@5.9.3)
+      clsx: 2.1.1
+      react: 18.2.0
+      tailwind-variants: 3.3.1(tailwind-merge@3.7.0)(tailwindcss@4.3.3)
+      vite-plugin-svgr: 4.5.0(rollup@4.64.7)(typescript@5.9.3)(vite@6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1))
+    optionalDependencies:
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - '@svgr/core'
+      - rollup
+      - supports-color
+      - tailwind-merge
+      - tailwindcss
+      - typescript
+      - vite
+
+  '@plone/quanta@1.0.0-alpha.5(@svgr/core@8.1.0(typescript@5.9.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.9.3)(vite@6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1))':
+    dependencies:
+      '@internationalized/date': 3.12.4
+      '@plone/icons': 1.0.0-alpha.3(@svgr/core@8.1.0(typescript@5.9.3))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(tailwind-merge@3.7.0)(tailwindcss@4.3.3)(typescript@5.9.3)(vite@6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1))
+      clsx: 2.1.1
+      react: 18.2.0
+      react-aria-components: 1.22.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      tailwind-merge: 3.7.0
+      tailwind-variants: 3.3.1(tailwind-merge@3.7.0)(tailwindcss@4.3.3)
+      tailwindcss: 4.3.3
+      tailwindcss-animate: 1.0.7(tailwindcss@4.3.3)
+      usehooks-ts: 3.1.1(react@18.2.0)
+    optionalDependencies:
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - '@svgr/core'
+      - rollup
+      - supports-color
+      - typescript
+      - vite
+
   '@pmmmwh/react-refresh-webpack-plugin@0.6.2(react-refresh@0.14.0)(type-fest@2.19.0)(webpack-dev-server@5.2.6(webpack@5.105.4(esbuild@0.25.12)))(webpack-hot-middleware@2.26.1)(webpack@5.105.4(esbuild@0.25.12))':
     dependencies:
       anser: 2.3.5
@@ -14626,16 +14779,6 @@ snapshots:
   axe-core@4.4.2: {}
 
   axe-core@4.7.2: {}
-
-  axios@1.20.0:
-    dependencies:
-      follow-redirects: 1.16.1(debug@4.4.3)
-      form-data: 4.0.6
-      https-proxy-agent: 5.0.1
-      proxy-from-env: 2.1.0
-    transitivePeerDependencies:
-      - debug
-      - supports-color
 
   axios@1.20.0(debug@4.3.4):
     dependencies:
@@ -17592,8 +17735,20 @@ snapshots:
       '@hapi/topo': 6.0.2
       '@standard-schema/spec': 1.1.0
 
+  jotai-optics@0.4.0(jotai@2.20.3(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@18.3.31)(react@18.2.0))(optics-ts@2.4.1):
+    dependencies:
+      jotai: 2.20.3(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@18.3.31)(react@18.2.0)
+      optics-ts: 2.4.1
+
   jotai@2.11.3(@types/react@18.3.31)(react@18.2.0):
     optionalDependencies:
+      '@types/react': 18.3.31
+      react: 18.2.0
+
+  jotai@2.20.3(@babel/core@7.29.7)(@babel/template@7.29.7)(@types/react@18.3.31)(react@18.2.0):
+    optionalDependencies:
+      '@babel/core': 7.29.7
+      '@babel/template': 7.29.7
       '@types/react': 18.3.31
       react: 18.2.0
 
@@ -18444,6 +18599,8 @@ snapshots:
       is-wsl: 2.2.0
 
   opener@1.5.2: {}
+
+  optics-ts@2.4.1: {}
 
   optionator@0.9.4:
     dependencies:
@@ -21069,6 +21226,11 @@ snapshots:
 
   use-trace-update@1.3.2: {}
 
+  usehooks-ts@3.1.1(react@18.2.0):
+    dependencies:
+      lodash.debounce: 4.0.8
+      react: 18.2.0
+
   util-deprecate@1.0.2: {}
 
   util@0.12.5:
@@ -21297,7 +21459,7 @@ snapshots:
 
   wait-on@9.5.1:
     dependencies:
-      axios: 1.20.0
+      axios: 1.20.0(debug@4.4.3)
       joi: 18.3.0
       lodash: 4.18.1
       rxjs: 7.8.2
