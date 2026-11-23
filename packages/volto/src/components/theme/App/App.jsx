@@ -44,6 +44,7 @@ import clearSVG from '@plone/volto/icons/clear.svg';
 import MultilingualRedirector from '@plone/volto/components/theme/MultilingualRedirector/MultilingualRedirector';
 import WorkingCopyToastsFactory from '@plone/volto/components/manage/WorkingCopyToastsFactory/WorkingCopyToastsFactory';
 import LockingToastsFactory from '@plone/volto/components/manage/LockingToastsFactory/LockingToastsFactory';
+import BlocksClipboardSync from '@plone/volto/components/manage/BlocksClipboardSync/BlocksClipboardSync';
 import RouteAnnouncer from '@plone/volto/components/theme/RouteAnnouncer/RouteAnnouncer';
 import SlotRenderer from '@plone/volto/components/theme/SlotRenderer/SlotRenderer';
 
@@ -199,6 +200,7 @@ export class App extends Component {
           user={this.props.userId}
         />
         <WorkingCopyToastsFactory content={this.props.content} />
+        <BlocksClipboardSync />
         <ToastContainer
           position={toast.POSITION.BOTTOM_CENTER}
           hideProgressBar
