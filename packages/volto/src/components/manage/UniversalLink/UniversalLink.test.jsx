@@ -247,6 +247,56 @@ describe('UniversalLink', () => {
     expect(json).toMatchSnapshot();
   });
 
+  it('adds the subpath prefix to download links', () => {
+    const subpathPrefix = config.settings.subpathPrefix;
+    const externalRoutes = config.settings.externalRoutes;
+    config.settings.subpathPrefix = '/my-subpath';
+    config.settings.externalRoutes = [];
+
+    const { getByText } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink item={{ '@id': '/folder/my-file', '@type': 'File' }}>
+            file
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    expect(getByText('file').closest('a')).toHaveAttribute(
+      'href',
+      '/my-subpath/folder/my-file/@@download/file',
+    );
+
+    config.settings.subpathPrefix = subpathPrefix;
+    config.settings.externalRoutes = externalRoutes;
+  });
+
+  it('adds the subpath prefix to display-file links', () => {
+    const subpathPrefix = config.settings.subpathPrefix;
+    const externalRoutes = config.settings.externalRoutes;
+    config.settings.subpathPrefix = '/my-subpath';
+    config.settings.externalRoutes = [];
+
+    const { getByText } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <UniversalLink href="/folder/my-file/@@display-file/file">
+            file
+          </UniversalLink>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    expect(getByText('file').closest('a')).toHaveAttribute(
+      'href',
+      '/my-subpath/folder/my-file/@@display-file/file',
+    );
+
+    config.settings.subpathPrefix = subpathPrefix;
+    config.settings.externalRoutes = externalRoutes;
+  });
+
   test('only one UniversalLink re-renders when prop changes (stable references)', () => {
     const renderCounter = vi.fn();
     __test.renderCounter = renderCounter;

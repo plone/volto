@@ -2,6 +2,7 @@ import React from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import { useSelector } from 'react-redux';
 import {
+  addSubpathPrefix,
   flattenToAppURL,
   isInternalURL,
   URLUtils,
@@ -183,7 +184,7 @@ const UniversalLink = React.memo(
       } else if (isDownload) {
         tag = (
           <a
-            href={flattenToAppURL(url)}
+            href={addSubpathPrefix(flattenToAppURL(url))}
             download
             title={title}
             {...rest}
@@ -200,7 +201,7 @@ const UniversalLink = React.memo(
             target="_blank"
             rel="noopener noreferrer"
             {...rest}
-            href={flattenToAppURL(url)}
+            href={addSubpathPrefix(flattenToAppURL(url))}
             className={className}
             ref={ref as React.Ref<HTMLAnchorElement>}
           >

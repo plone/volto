@@ -1,4 +1,36 @@
 describe('createContent Tests', () => {
+  const subpathPrefix = Cypress.env('subpathPrefix') || '';
+  const simpleSlateLink = (target) => {
+    return {
+      '@type': 'slate',
+      plaintext: ' My Link ',
+      value: [
+        {
+          children: [
+            {
+              text: '',
+            },
+            {
+              children: [
+                {
+                  text: 'My Link',
+                },
+              ],
+              data: {
+                url: target,
+              },
+              type: 'link',
+            },
+            {
+              text: '',
+            },
+          ],
+          type: 'p',
+        },
+      ],
+    };
+  };
+
   beforeEach(() => {
     cy.autologin();
   });
@@ -61,9 +93,38 @@ describe('createContent Tests', () => {
     cy.get('.view-wrapper a').should(
       'have.attr',
       'href',
-      '/my-file/@@download/file',
+      `${subpathPrefix}/my-file/@@download/file`,
     );
     // cy.get('.view-wrapper a').click();
+  });
+
+  it('Create a document with a link to a File download', function () {
+    cy.createContent({
+      contentType: 'File',
+      contentId: 'my-file',
+      contentTitle: 'My File',
+      transition: 'publish',
+    });
+    cy.createContent({
+      contentType: 'Document',
+      contentId: 'my-document',
+      contentTitle: 'My Document',
+      transition: 'publish',
+      bodyModifier(body) {
+        body.blocks['abc'] = simpleSlateLink('/my-file/@@download/file');
+        body.blocks_layout.items.push('abc');
+        return body;
+      },
+    });
+
+    // Anonymous users get the direct download link
+    cy.clearCookies();
+    cy.visit('/my-document');
+    cy.get('#page-document a').should(
+      'have.attr',
+      'href',
+      `${subpathPrefix}/my-file/@@download/file`,
+    );
   });
 
   it('Create Image', function () {
@@ -79,6 +140,9 @@ describe('createContent Tests', () => {
       .should('have.attr', 'src')
       .and('include', '/my-image/@@images/');
     cy.get('.view-wrapper img').should('have.attr', 'alt', 'My Image');
+    cy.get('.view-wrapper a')
+      .should('have.attr', 'href')
+      .and('include', `${subpathPrefix}/my-image/@@images/`);
     // cy.get('.view-wrapper a').click();
   });
 });
