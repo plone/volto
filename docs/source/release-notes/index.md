@@ -17,6 +17,16 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.8.2 (2026-11-24)
+
+### Bugfix
+
+- Fixed the content type layout editor so it uses the `page-edit` id, like the regular edit form. @iFlameing 
+
+### Internal
+
+- Fixed the flaky `QuerystringWidget` snapshot test. @iFlameing 
+
 ## 19.8.1 (2026-11-20)
 
 ### Bugfix
