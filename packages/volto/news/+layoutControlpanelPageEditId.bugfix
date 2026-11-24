@@ -1,0 +1,1 @@
+Fixed the content type layout editor so it uses the `page-edit` id, like the regular edit form. @iFlameing
