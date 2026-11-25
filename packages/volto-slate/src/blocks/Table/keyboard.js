@@ -61,3 +61,19 @@ export function selectCellContent(editor) {
     focus: Editor.end(editor, []),
   });
 }
+
+/**
+ * Collapses the selection of a Slate editor to a caret. Used when the Tab
+ * key is pressed in a table edge cell and the focus leaves the table: the
+ * content must not remain visually highlighted while the focus moves to
+ * another element, which would make it hard to tell where the focus
+ * actually is.
+ *
+ * @param {Editor} editor The Slate editor of the cell being left.
+ * @param {boolean} backwards Whether the focus moves backwards (Shift+Tab).
+ */
+export function collapseCellSelection(editor, backwards = false) {
+  if (!editor?.selection) return;
+
+  Transforms.collapse(editor, { edge: backwards ? 'start' : 'end' });
+}

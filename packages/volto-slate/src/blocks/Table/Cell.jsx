@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { EditorReference, SlateEditor } from '@plone/volto-slate/editor';
 import { ReactEditor } from 'slate-react';
 import config from '@plone/volto/registry';
-import { selectCellContent } from './keyboard';
+import { selectCellContent, collapseCellSelection } from './keyboard';
 
 class Cell extends Component {
   static propTypes = {
@@ -81,11 +81,26 @@ class Cell extends Component {
 
   /**
    * Lets the parent component handle the Tab key navigation between cells.
-   * Other keys are ignored. `onTabKey` is responsible for calling
-   * `event.preventDefault()` when it navigates.
+   * Other keys are ignored. `onTabKey` calls `event.preventDefault()` when it
+   * navigates, so the browser default (moving the focus out of the table) is
+   * kept only when the focus is leaving through a table edge.
    */
   handleTabKey({ event }) {
     if (event.key !== 'Tab') return;
+
+    if (event.ctrlKey || event.metaKey || event.altKey) {
+      // Leave other Tab key combinations to the browser (accessibility).
+      return;
+    }
+
+    if (this.state.editor?.selection) {
+      // Collapse this cell's selection before the focus moves, so its content
+      // does not stay visually highlighted while another cell is focused.
+      // This matters especially when Tab wraps to the next row: the last
+      // cell of the previous row would otherwise keep its whole content
+      // selected.
+      collapseCellSelection(this.state.editor, event.shiftKey);
+    }
 
     this.props.onTabKey &&
       this.props.onTabKey({

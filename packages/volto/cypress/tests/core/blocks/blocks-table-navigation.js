@@ -9,7 +9,10 @@ const BODY_ROW_1_CELL_2 =
 
 /**
  * Presses the Tab key in the given cell. Cypress does not support `{tab}`
- * in `cy.type()`, so the keydown is triggered manually.
+ * in `cy.type()`, so the keydown is triggered manually. The cell navigation
+ * handlers call `event.preventDefault()` when they handle the key, keeping
+ * the focus inside the table; otherwise the browser default (moving the
+ * focus out of the table) would happen in a real browser.
  */
 const pressTab = (cell, shift = false) => {
   cy.get(cell).click().trigger('keydown', {
@@ -103,12 +106,67 @@ describe('Table Block Tab Navigation Tests', () => {
 
     cy.focused().should('have.attr', 'contenteditable', 'true');
     expectWindowSelection('column 1 / row 2');
+  });
 
-    // Tab in the last cell of the table stays in place (no cell to go to)
-    pressTab(BODY_ROW_1_CELL_2);
-    cy.get(BODY_ROW_1_CELL_2).should('be.focused');
+  it('clears the selection when Tab leaves the table through its edge', () => {
+    cy.get(HEADER_CELL_1).click().type('column 1 / row 1');
+    cy.get(HEADER_CELL_2).click().type('column 2 / row 1');
+    cy.get(BODY_ROW_1_CELL_1).click().type('column 1 / row 2');
+    cy.get(BODY_ROW_1_CELL_2).click().type('column 2 / row 2');
+
+    // Record whether the Tab keydown keeps the browser default behavior
+    // (moving the focus out of the table), as observed by a listener that
+    // runs after the React handlers.
+    cy.window().then((win) => {
+      win.__tabKeptBrowserDefault = null;
+      win.document.addEventListener('keydown', (event) => {
+        if (event.key === 'Tab') {
+          win.__tabKeptBrowserDefault = !event.defaultPrevented;
+        }
+      });
+    });
+
+    // Place the caret in the first cell
+    cy.get(HEADER_CELL_1).click();
+
+    /**
+     * Presses Tab in the currently focused cell. Unlike `pressTab`, this
+     * does not click the cell, so it matches the way a user tabbing through
+     * the table works: the focus moves with the Tab key alone and the
+     * selection keeps its state between presses.
+     */
+    const pressTabOnFocused = () => {
+      cy.focused().trigger('keydown', {
+        key: 'Tab',
+        keyCode: 9,
+        which: 9,
+        bubbles: true,
+      });
+    };
+
+    // Tab through all the cells: each one gets the focus and its content
+    // is selected
+    pressTabOnFocused();
+    expectWindowSelection('column 2 / row 1');
+    pressTabOnFocused();
+    expectWindowSelection('column 1 / row 2');
+    pressTabOnFocused();
+    expectWindowSelection('column 2 / row 2');
+
+    // Pressing Tab in the last cell of the table leaves the table: the
+    // keydown is not prevented, so the browser moves the focus out of the
+    // table (to the block toolbar), and the content of the last cell is no
+    // longer highlighted, so the focus location is evident
+    pressTabOnFocused();
     cy.window().should((win) => {
-      expect(win.getSelection().isCollapsed).to.equal(true);
+      expect(
+        win.__tabKeptBrowserDefault,
+        'the browser default behavior is kept, moving the focus out of the table',
+      ).to.equal(true);
+      expect(
+        win.getSelection().isCollapsed,
+        'the cell content is not selected anymore',
+      ).to.equal(true);
     });
   });
 });

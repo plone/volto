@@ -1,5 +1,9 @@
 import { createEditor } from 'slate';
-import { getCellFocusTarget, selectCellContent } from './keyboard';
+import {
+  getCellFocusTarget,
+  selectCellContent,
+  collapseCellSelection,
+} from './keyboard';
 
 /**
  * Creates a table block data structure with `rowCount` rows of `colCount`
@@ -134,5 +138,53 @@ describe('selectCellContent', () => {
       anchor: { path: [0, 0], offset: 0 },
       focus: { path: [0, 0], offset: 0 },
     });
+  });
+});
+
+describe('collapseCellSelection', () => {
+  it('collapses the selection to the end when moving forwards', () => {
+    const editor = createEditor();
+    editor.children = [
+      { type: 'p', children: [{ text: 'first line' }] },
+      { type: 'p', children: [{ text: 'second line' }] },
+    ];
+    selectCellContent(editor);
+    expect(editor.selection.anchor).not.toEqual(editor.selection.focus);
+
+    collapseCellSelection(editor);
+
+    expect(editor.selection).toEqual({
+      anchor: { path: [1, 0], offset: 'second line'.length },
+      focus: { path: [1, 0], offset: 'second line'.length },
+    });
+  });
+
+  it('collapses the selection to the start when moving backwards', () => {
+    const editor = createEditor();
+    editor.children = [
+      { type: 'p', children: [{ text: 'first line' }] },
+      { type: 'p', children: [{ text: 'second line' }] },
+    ];
+    selectCellContent(editor);
+
+    collapseCellSelection(editor, true);
+
+    expect(editor.selection).toEqual({
+      anchor: { path: [0, 0], offset: 0 },
+      focus: { path: [0, 0], offset: 0 },
+    });
+  });
+
+  it('does nothing when there is no selection', () => {
+    const editor = createEditor();
+    editor.children = [{ type: 'p', children: [{ text: 'some text' }] }];
+
+    collapseCellSelection(editor);
+
+    expect(editor.selection).toEqual(null);
+  });
+
+  it('does nothing without an editor', () => {
+    expect(() => collapseCellSelection(null)).not.toThrow();
   });
 });
