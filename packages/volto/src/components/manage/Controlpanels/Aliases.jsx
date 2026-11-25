@@ -162,17 +162,28 @@ const Aliases = (props) => {
   const isClient = useClient();
 
   const updateResults = useCallback(() => {
-    const options = {
-      query: filterQuery,
-      manual: filterType.value,
-      batchStart: (activePage - 1) * itemsPerPage,
-      batchSize: itemsPerPage === 'All' ? 999999999999 : itemsPerPage,
-    };
+    const options =
+      itemsPerPage === 'All'
+        ? {}
+        : {
+            batchStart: (activePage - 1) * itemsPerPage,
+            batchSize: itemsPerPage,
+          };
+    if (filterQuery) {
+      options.query = filterQuery;
+    }
+    if (filterType.value) {
+      options.manual = filterType.value;
+    }
     if (hasAdvancedFiltering) {
-      options.start = createdAfter || '';
-      options.end = createdBefore || '';
-    } else {
-      options.datetime = createdBefore || '';
+      if (createdAfter) {
+        options.start = createdAfter;
+      }
+      if (createdBefore) {
+        options.end = createdBefore;
+      }
+    } else if (createdBefore) {
+      options.datetime = createdBefore;
     }
     dispatch(getAliases(getBaseUrl(pathname), options));
   }, [

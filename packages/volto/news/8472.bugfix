@@ -1,1 +1,0 @@
-Fixed saving a content type layout that contains a block with a `blockSchema`, which failed because the layout editor has no content. @sneridagh

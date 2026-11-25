@@ -1,1 +1,0 @@
-Added a `blockSchema` to the `image`, `maps`, `toc`, `html` and `leadimage` core blocks, and made the Image and Maps block sidebars and the Table of Contents block edit form read their schema from the block configuration. The `toc` block now uses the generic `BlockSettingsSchema` as its `schema`. @sneridagh

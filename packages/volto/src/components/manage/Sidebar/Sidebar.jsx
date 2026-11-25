@@ -114,6 +114,7 @@ const Sidebar = (props) => {
       >
         <Button
           type="button"
+          aria-expanded={expanded}
           aria-label={
             expanded
               ? intl.formatMessage(messages.shrinkSidebar)

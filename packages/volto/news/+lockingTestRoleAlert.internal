@@ -1,1 +1,0 @@
-Fix the flaky `Document locking` acceptance test by scoping the toast queries to the toast container, since the route announcer also uses the `alert` role. @wesleybl
