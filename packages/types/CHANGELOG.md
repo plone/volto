@@ -8,6 +8,12 @@
 
 <!-- towncrier release notes start -->
 
+## 2.3.0 (2026-11-18)
+
+### Feature
+
+- Added the `DocumentModel` type and the `documentModel` utility type. @sneridagh 
+
 ## 2.2.1 (2026-10-29)
 
 ### Bugfix

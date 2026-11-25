@@ -17,6 +17,35 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.8.2 (2026-11-24)
+
+### Bugfix
+
+- Fixed the content type layout editor so it uses the `page-edit` id, like the regular edit form. @iFlameing 
+
+### Internal
+
+- Fixed the flaky `QuerystringWidget` snapshot test. @iFlameing 
+
+## 19.8.1 (2026-11-20)
+
+### Bugfix
+
+- Fixed multi-selection of blocks within container blocks (grid, group, columns) and ensured the copy/paste toolbar works reliably across nested forms. @nileshgulia1 [#8417](https://github.com/plone/volto/issues/8417)
+- Fixed the Add page showing a blank view or the add form to users who can't add that content type. @iFlameing 
+- Fixed the login redirect from the Unauthorized page so it returns to the page's full URL, including its query string. @iFlameing 
+
+## 19.8.0 (2026-11-18)
+
+### Feature
+
+- Added a `table` layout to `ObjectListWidget`, with `columns`, `cells`, `itemTitle` and `maxItems`, where each item is edited in a dialog that writes back only on Save and has a menu with Move up, Move down, Duplicate and a confirmed Remove. Added `fixedItems`, which hides Add, Duplicate and Remove so that the items of a list cannot be added or removed. Nested validation of `object` and `object_list` fields now runs on submit and opens the first item with errors (fixes #7077). Added `validateItem` and `itemIds: false`, and schema functions now receive `intl`. Based on the work in #7078 and #7169. @alexandreIFB [#8538](https://github.com/plone/volto/issues/8538)
+- Added `document_model`, `document` and `kind` to the `@blocks-schema` endpoint, so clients know how content stores its blocks, with `documentModel` utilities for add-ons and the `type` parameter. @sneridagh 
+
+### Bugfix
+
+- Fix select dropdown options being clipped inside modals. @iRohitSingh 
+
 ## 19.7.1 (2026-11-16)
 
 ### Feature
