@@ -128,7 +128,6 @@ To ensure your website gets the greatest exposure, add it both to [Awesome Volto
 - [Comune di Cantagallo](https://www.comune.cantagallo.po.it/) (Website of the Municipality of Cantagallo. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Medolla](https://www.comune.medolla.mo.it/) (Website of the Municipality of Medolla. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Mirandola](https://www.comune.mirandola.mo.it/) (Website of the Municipality of Mirandola. Developed by [RedTurtle](https://www.redturtle.it), 2021)
-- [Comune di Modena](https://www.comune.modena.it/) (Website of the Municipality of Modena. Developed by [RedTurtle](https://www.redturtle.it), 2020)
 - [Comune di San Possidonio](https://www.comune.sanpossidonio.mo.it/) (Website of the Municipality of San Possidonio. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Vaiano](https://www.comune.vaiano.po.it/) (Website of the Municipality of Vaiano. Developed by [RedTurtle](https://www.redturtle.it), 2021)
 - [Comune di Vernio](https://www.comune.vernio.po.it/) (Website of the Municipality of Vernio. Developed by [RedTurtle](https://www.redturtle.it), 2021)

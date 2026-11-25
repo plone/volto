@@ -17,6 +17,24 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.8.2 (2026-11-24)
+
+### Bugfix
+
+- Fixed the content type layout editor so it uses the `page-edit` id, like the regular edit form. @iFlameing 
+
+### Internal
+
+- Fixed the flaky `QuerystringWidget` snapshot test. @iFlameing 
+
+## 19.8.1 (2026-11-20)
+
+### Bugfix
+
+- Fixed multi-selection of blocks within container blocks (grid, group, columns) and ensured the copy/paste toolbar works reliably across nested forms. @nileshgulia1 [#8417](https://github.com/plone/volto/issues/8417)
+- Fixed the Add page showing a blank view or the add form to users who can't add that content type. @iFlameing 
+- Fixed the login redirect from the Unauthorized page so it returns to the page's full URL, including its query string. @iFlameing 
+
 ## 19.8.0 (2026-11-18)
 
 ### Feature
