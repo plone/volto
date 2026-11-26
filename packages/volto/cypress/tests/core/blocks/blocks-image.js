@@ -22,6 +22,7 @@ describe('Blocks Tests', () => {
   });
 
   it('Add image block', () => {
+    cy.interceptExternalImage();
     // when I add an image block
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();

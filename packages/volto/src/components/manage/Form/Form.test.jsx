@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
 import { MemoryRouter } from 'react-router-dom';
-import Form from './Form';
+import Form, { Form as FormComponent } from './Form';
 import config from '@plone/volto/registry';
 
 const mockStore = configureStore();
@@ -43,6 +43,74 @@ describe('Form', () => {
         enabled: false,
       },
     };
+  });
+
+  it('validates blocks with a blockSchema on submit when there is no content', () => {
+    // The content type layout editor renders the form without content
+    const { initialBlocksFocus } = config.blocks;
+    config.blocks.initialBlocksFocus = {};
+    config.blocks.blocksConfig.blockWithSchema = {
+      id: 'blockWithSchema',
+      blockSchema: () => ({
+        fieldsets: [{ id: 'default', title: 'Default', fields: ['url'] }],
+        properties: { url: { title: 'URL' } },
+        required: [],
+      }),
+    };
+    const store = mockStore({
+      intl: {
+        locale: 'en',
+        messages: {},
+      },
+      content: {
+        data: null,
+        create: {
+          loading: false,
+          loaded: true,
+        },
+      },
+    });
+    const formData = {
+      blocks: { a: { '@type': 'blockWithSchema', url: '/image' } },
+      blocks_layout: { items: ['a'] },
+    };
+    const onSubmit = vi.fn();
+    const ref = React.createRef();
+
+    renderer.create(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/controlpanel/dexterity-types/book']}>
+          <Form
+            ref={ref}
+            formData={formData}
+            schema={{
+              fieldsets: [
+                {
+                  id: 'default',
+                  title: 'Default',
+                  fields: ['blocks', 'blocks_layout'],
+                },
+              ],
+              properties: {
+                blocks: {},
+                blocks_layout: {},
+              },
+              required: [],
+            }}
+            onSubmit={onSubmit}
+            onCancel={() => {}}
+          />
+        </MemoryRouter>
+      </Provider>,
+    );
+
+    try {
+      expect(() => ref.current.onSubmit()).not.toThrow();
+      expect(onSubmit).toHaveBeenCalledWith(formData);
+    } finally {
+      delete config.blocks.blocksConfig.blockWithSchema;
+      config.blocks.initialBlocksFocus = initialBlocksFocus;
+    }
   });
 
   it('renders a form component', () => {
@@ -183,5 +251,124 @@ describe('Form', () => {
     expect(
       component.root.findAllByProps({ 'data-autosave-wrapper': 'true' }),
     ).toHaveLength(1);
+  });
+});
+const layout = ['a', 'b', 'c', 'd'];
+
+const selectBlock = ({
+  id,
+  selected = null,
+  multiSelected = [],
+  ctrlKey = false,
+  metaKey = true,
+  shiftKey = false,
+  withoutEvent = false,
+}) => {
+  const setUIState = vi.fn();
+  const form = Object.create(FormComponent.prototype);
+  form.state = {
+    formData: {
+      blocks: Object.fromEntries(
+        layout.map((blockId) => [blockId, { '@type': 'slate' }]),
+      ),
+      blocks_layout: { items: layout },
+    },
+  };
+  form.props = {
+    uiState: { selected, multiSelected },
+    setUIState,
+    onSelectForm: null,
+  };
+
+  form.onSelectBlock(
+    id,
+    true,
+    withoutEvent ? undefined : { ctrlKey, metaKey, shiftKey },
+  );
+
+  return setUIState.mock.calls[0][0];
+};
+
+describe('Form top-level block selection', () => {
+  it.each([
+    ['Meta', { metaKey: true }],
+    ['Control', { ctrlKey: true, metaKey: false }],
+  ])('promotes the active block with %s-click', (_modifier, eventModifiers) => {
+    expect(selectBlock({ id: 'a', selected: 'a', ...eventModifiers })).toEqual({
+      selected: null,
+      multiSelected: ['a'],
+      gridSelected: null,
+    });
+  });
+
+  it('includes the active block when adding another block', () => {
+    expect(selectBlock({ id: 'b', selected: 'a' }).multiSelected).toEqual([
+      'a',
+      'b',
+    ]);
+  });
+
+  it('adds blocks without inserting null ghost selections', () => {
+    expect(
+      selectBlock({ id: 'c', multiSelected: ['a', 'b'] }).multiSelected,
+    ).toEqual(['a', 'b', 'c']);
+  });
+
+  it('removes only the clicked multi-selection member', () => {
+    expect(
+      selectBlock({ id: 'b', multiSelected: ['a', 'b', 'c'] }).multiSelected,
+    ).toEqual(['a', 'c']);
+  });
+
+  it('returns an empty selection after removing the final member', () => {
+    expect(
+      selectBlock({ id: 'a', multiSelected: ['a'] }).multiSelected,
+    ).toEqual([]);
+  });
+
+  it('selects a contiguous Shift-click range from the active block', () => {
+    const getSelection = vi
+      .spyOn(window, 'getSelection')
+      .mockReturnValue({ empty: vi.fn() });
+
+    expect(
+      selectBlock({
+        id: 'd',
+        selected: 'b',
+        metaKey: false,
+        shiftKey: true,
+      }).multiSelected,
+    ).toEqual(['b', 'c', 'd']);
+
+    getSelection.mockRestore();
+  });
+
+  it('selects a backward Shift-click range from the active block', () => {
+    const getSelection = vi
+      .spyOn(window, 'getSelection')
+      .mockReturnValue({ empty: vi.fn() });
+
+    expect(
+      selectBlock({
+        id: 'a',
+        selected: 'c',
+        metaKey: false,
+        shiftKey: true,
+      }).multiSelected,
+    ).toEqual(['a', 'b', 'c']);
+
+    getSelection.mockRestore();
+  });
+
+  it('extends the range on Shift+arrow keyboard navigation without an event', () => {
+    const getSelection = vi
+      .spyOn(window, 'getSelection')
+      .mockReturnValue({ empty: vi.fn() });
+
+    expect(
+      selectBlock({ id: 'c', selected: 'b', withoutEvent: true }).multiSelected,
+    ).toEqual(['b', 'c']);
+
+    getSelection.mockRestore();
   });
 });

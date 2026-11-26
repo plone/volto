@@ -17,6 +17,93 @@ myst:
 
 <!-- towncrier release notes start -->
 
+## 19.8.2 (2026-11-24)
+
+### Bugfix
+
+- Fixed the content type layout editor so it uses the `page-edit` id, like the regular edit form. @iFlameing 
+
+### Internal
+
+- Fixed the flaky `QuerystringWidget` snapshot test. @iFlameing 
+
+## 19.8.1 (2026-11-20)
+
+### Bugfix
+
+- Fixed multi-selection of blocks within container blocks (grid, group, columns) and ensured the copy/paste toolbar works reliably across nested forms. @nileshgulia1 [#8417](https://github.com/plone/volto/issues/8417)
+- Fixed the Add page showing a blank view or the add form to users who can't add that content type. @iFlameing 
+- Fixed the login redirect from the Unauthorized page so it returns to the page's full URL, including its query string. @iFlameing 
+
+## 19.8.0 (2026-11-18)
+
+### Feature
+
+- Added a `table` layout to `ObjectListWidget`, with `columns`, `cells`, `itemTitle` and `maxItems`, where each item is edited in a dialog that writes back only on Save and has a menu with Move up, Move down, Duplicate and a confirmed Remove. Added `fixedItems`, which hides Add, Duplicate and Remove so that the items of a list cannot be added or removed. Nested validation of `object` and `object_list` fields now runs on submit and opens the first item with errors (fixes #7077). Added `validateItem` and `itemIds: false`, and schema functions now receive `intl`. Based on the work in #7078 and #7169. @alexandreIFB [#8538](https://github.com/plone/volto/issues/8538)
+- Added `document_model`, `document` and `kind` to the `@blocks-schema` endpoint, so clients know how content stores its blocks, with `documentModel` utilities for add-ons and the `type` parameter. @sneridagh 
+
+### Bugfix
+
+- Fix select dropdown options being clipped inside modals. @iRohitSingh 
+
+## 19.7.1 (2026-11-16)
+
+### Feature
+
+- Documented the Lead Image block (`leadimage`) in a `docs.block.md` file, so that the `/@blocks-schema` endpoint and the reference docs describe it. The docs say that the image comes from the content item's lead image field, and that the block stores only its alignment and optional link. @ericof [#8531](https://github.com/plone/volto/issues/8531)
+
+### Bugfix
+
+- Fixed the toolbar Add button showing on non-multilingual sites for users who cannot add content. @iFlameing [#8537](https://github.com/plone/volto/issues/8537)
+
+### Internal
+
+- Added a CI workflow that runs the Volto Light Theme frontend test suite against the Volto branch from the push, replacing the `core` folder with the pushed Volto branch. @wesleybl 
+- Update devDependency: release-it 21.1.2. @davisagli 
+- Update to Plone 6.2.3 @sneridagh 
+
+## 19.7.0 (2026-11-06)
+
+### Feature
+
+- Added a short description to the "Links and references" (`links-to-item`) view explaining what it lists. @iFlameing [#linkstoitem-description](https://github.com/plone/volto/issues/linkstoitem-description)
+- The Personal tools menu now lists the entries from the site's `personal_tools` actions, so entries added or removed by add-ons and site customizations appear in the toolbar. An entry whose URL is the name of a toolbar panel, such as `preferences`, opens that panel. The built-in links remain when that category is missing or empty. The menu stays available on site setup pages and remains hidden while editing content. @ericof [#8507](https://github.com/plone/volto/issues/8507)
+- Added support for Node.js 26, and removed support for Node.js 22. Volto now supports and tests the latest two Node.js LTS versions, 24 and 26. Node.js 22 may still work, but it is no longer tested. @sneridagh 
+
+### Bugfix
+
+- Fixed shrink/expand sidebar button not having a visible keyboard focus indicator. @Humanaice [#8394](https://github.com/plone/volto/issues/8394)
+- Fixed the aliases views sending empty query parameters (for example `b_size=`) to the `@aliases` endpoint, which caused errors with `plone.restapi` 10 and later. The `getAliases` action now also skips empty options and applies the `b_size` default when an empty value is passed. @cekk 
+
+### Documentation
+
+- Documented that Node.js 25 and later no longer include corepack, so you must install corepack or pnpm manually when using Node.js 26. @sneridagh 
+
+## 19.6.1 (2026-10-29)
+
+### Internal
+
+- Bump serialize-javascript from 7.0.5 to 7.1.3. [#8485](https://github.com/plone/volto/issues/8485)
+- Uses pnpm 10.34.9. @wesleybl [#8488](https://github.com/plone/volto/issues/8488)
+
+## 19.6.0 (2026-10-27)
+
+### Feature
+
+- Added an authenticated `/@blocks-schema` endpoint to the Volto server that lists the registered blocks with their resolved schemas, variations and documentation, for agents and reference docs. Blocks are documented in `*.block.md` files next to them, which only the server loads. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+- Added a `blockSchema` to the `image`, `maps`, `toc`, `html` and `leadimage` core blocks, and made the Image and Maps block sidebars and the Table of Contents block edit form read their schema from the block configuration. The `toc` block now uses the generic `BlockSettingsSchema` as its `schema`. @sneridagh [#8472](https://github.com/plone/volto/issues/8472)
+- Ported the Lead Image block sidebar to `BlockDataForm`. It now renders the `leadimage` block `blockSchema` from the block configuration, plus the alt text field stored in the content item. @sneridagh [#8473](https://github.com/plone/volto/issues/8473)
+
+### Bugfix
+
+- Fixed the links of the `Table of Contents` block breaking when a heading contains inline formatting or a link. The block now uses the anchor reported by the block that owns the heading, instead of slugging its indexed plaintext. @Somilg11 [#8340](https://github.com/plone/volto/issues/8340)
+- Fixed saving a content type layout that contains a block with a `blockSchema`, which failed because the layout editor has no content. @sneridagh [#8472](https://github.com/plone/volto/issues/8472)
+
+### Internal
+
+- Fix flaky `AuthToken` unit test by returning a stable JWT token from the mocked store. @wesleybl 
+- Fix the flaky `Document locking` acceptance test by scoping the toast queries to the toast container, since the route announcer also uses the `alert` role. @wesleybl 
+
 ## 19.5.1 (2026-10-21)
 
 ### Bugfix

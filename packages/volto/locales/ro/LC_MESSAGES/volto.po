@@ -62,6 +62,11 @@ msgstr "Acțiune: "
 msgid "Actions"
 msgstr "Acțiuni"
 
+#. Default: "Actions for item"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Actions for item"
+msgstr ""
+
 #. Default: "Activate and deactivate add-ons in the lists below."
 #: components/manage/Controlpanels/AddonsControlpanel
 msgid "Activate and deactivate"
@@ -331,7 +336,7 @@ msgstr "Aliasul a fost încărcat."
 
 #. Default: "Alignment"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Maps/schema
 #: components/manage/Blocks/Teaser/schema
 #: components/manage/Blocks/Video/schema
@@ -463,6 +468,7 @@ msgid "Available content rules:"
 msgstr "Reguli de conținut disponibile:"
 
 #. Default: "Back"
+#: components/manage/Add/Add
 #: components/manage/Aliases/Aliases
 #: components/manage/Contents/Contents
 #: components/manage/Controlpanels/AddonsControlpanel
@@ -491,7 +497,7 @@ msgstr "Reguli de conținut disponibile:"
 #: components/manage/Rules/Rules
 #: components/manage/Sharing/Sharing
 #: components/manage/Sidebar/ObjectBrowserBody
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 #: components/manage/Toolbar/Toolbar
 #: components/theme/ContactForm/ContactForm
 #: helpers/MessageLabels/MessageLabels
@@ -600,6 +606,7 @@ msgstr "Nu se poate edita aspectul pentru tipul de conținut <strong>{type}</str
 #: components/manage/Edit/Edit
 #: components/manage/Form/ModalForm
 #: components/manage/Sharing/Sharing
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Login/Login
 #: helpers/MessageLabels/MessageLabels
 msgid "Cancel"
@@ -1281,6 +1288,11 @@ msgstr "Trageți fișierele aici pentru a le încărca"
 msgid "Dry run selected, transaction aborted."
 msgstr "Testare selectată, tranzacție anulată."
 
+#. Default: "Duplicate"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Duplicate"
+msgstr ""
+
 #. Default: "E-mail"
 #: components/theme/Register/Register
 msgid "E-mail"
@@ -1300,6 +1312,7 @@ msgstr "Adresele de e-mail nu se potrivesc."
 #: components/manage/Toolbar/Toolbar
 #: components/manage/Widgets/FormFieldWrapper
 #: components/manage/Widgets/ObjectBrowserWidget
+#: components/manage/Widgets/ObjectListWidget
 #: components/theme/Comments/Comments
 msgid "Edit"
 msgstr "Editează"
@@ -1557,11 +1570,6 @@ msgstr "Data de expirare"
 #: components/manage/Contents/ContentsItem
 msgid "Expired"
 msgstr "Expirat"
-
-#. Default: "External URL"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "External URL"
-msgstr "URL extern"
 
 #. Default: "Facet"
 #: components/manage/Blocks/Search/schema
@@ -1905,7 +1913,6 @@ msgstr "Dacă sunteți sigur că aveți adresa web corectă, dar întâmpinați 
 #. Default: "Image"
 #: components/manage/Blocks/Image/ImageSidebar
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "Image"
 msgstr "Imagine"
 
@@ -2150,6 +2157,7 @@ msgstr "Aspect"
 
 #. Default: "Lead Image"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 msgid "Lead Image"
 msgstr "Imaginea de start"
 
@@ -2188,6 +2196,7 @@ msgstr "Redirecționare legătură"
 
 #. Default: "Link settings"
 #: components/manage/Blocks/Image/schema
+#: components/manage/Blocks/LeadImage/schema
 msgid "Link settings"
 msgstr "Configurații legătură"
 
@@ -2198,7 +2207,7 @@ msgstr "Legătură la titlu"
 
 #. Default: "Link to"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Listing/schema
 msgid "Link to"
 msgstr "Legătură către"
@@ -2284,7 +2293,7 @@ msgid "Logo of"
 msgstr "Logo"
 
 #. Default: "Logout"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "Logout"
 msgstr "Deconectare"
 
@@ -2444,6 +2453,7 @@ msgstr "Aranjare Mosaic"
 
 #. Default: "Move down"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move down"
 msgstr "Mutați în jos"
 
@@ -2459,6 +2469,7 @@ msgstr "Mutați în partea de sus a folderului"
 
 #. Default: "Move up"
 #: components/manage/Controlpanels/Rules/ConfigureRule
+#: components/manage/Widgets/ObjectListWidget
 msgid "Move up"
 msgstr "Mutați în sus"
 
@@ -2570,11 +2581,6 @@ msgstr "Nu s-a selectat nicio imagine"
 #: components/manage/Blocks/LeadImage/LeadImageSidebar
 msgid "No image set in Lead Image content field"
 msgstr "Nicio imagine setată în câmpul de conținut imagine de start"
-
-#. Default: "No image set in image content field"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "No image set in image content field"
-msgstr "Nicio imagine setată în câmpul imagine de continut"
 
 #. Default: "No images found."
 #: components/manage/Blocks/Listing/GalleryNoResultsComponent
@@ -2712,6 +2718,11 @@ msgstr ""
 msgid "Ok"
 msgstr "Ok"
 
+#. Default: "One or more items have errors."
+#: helpers/FormValidation/FormValidation
+msgid "One or more items have errors."
+msgstr ""
+
 #. Default: "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
 #: components/manage/Widgets/IdWidget
 msgid "Only 7-bit bytes characters are allowed. Cannot contain uppercase letters, special characters: <, >, &, #, /, ?, or others that are illegal in URLs. Cannot start with: _, aq_, @@, ++. Cannot end with __. Cannot be: request,contributors, ., .., \"\". Cannot contain new lines."
@@ -2724,7 +2735,7 @@ msgstr "Deschide browserul URL"
 
 #. Default: "Open in a new tab"
 #: components/manage/Blocks/Image/schema
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
+#: components/manage/Blocks/LeadImage/schema
 #: components/manage/Blocks/Teaser/schema
 msgid "Open in a new tab"
 msgstr "Deschideți într-o fereastra nouă"
@@ -2749,11 +2760,6 @@ msgstr "Ordonați"
 #: components/manage/Blocks/ToC/Schema
 msgid "Ordered"
 msgstr "Ordonate"
-
-#. Default: "Origin"
-#: components/manage/Blocks/LeadImage/LeadImageSidebar
-msgid "Origin"
-msgstr "Origine"
 
 #. Default: "Overview of relations of all content items"
 #: components/manage/LinksToItem/LinksToItem
@@ -2926,7 +2932,7 @@ msgid "Powered by Plone & Python"
 msgstr "Powered by Plone & Python"
 
 #. Default: "Preferences"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Preferences"
 msgstr "Preferințe"
 
@@ -2953,7 +2959,7 @@ msgid "Preview Image URL"
 msgstr "Adresa URL a imaginii de previzualizare"
 
 #. Default: "Profile"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 msgid "Profile"
 msgstr "Profil"
 
@@ -3097,6 +3103,7 @@ msgstr "Relevanţă"
 
 #. Default: "Remove"
 #: components/manage/Aliases/Aliases
+#: components/manage/Widgets/ObjectListWidget
 msgid "Remove"
 msgstr "Șterge"
 
@@ -3124,6 +3131,11 @@ msgstr "Ștergeți elementele selectate"
 #: components/manage/Widgets/VocabularyTermsWidget
 msgid "Remove term"
 msgstr "Eliminați termenul"
+
+#. Default: "Remove this item?"
+#: components/manage/Widgets/ObjectListWidget
+msgid "Remove this item?"
+msgstr ""
 
 #. Default: "Remove users from group"
 #: helpers/MessageLabels/MessageLabels
@@ -3630,7 +3642,7 @@ msgstr "Administrare site"
 
 #. Default: "Site Setup"
 #: components/manage/Controlpanels/Controlpanels
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/DefaultMenuItems
 #: components/theme/Breadcrumbs/Breadcrumbs
 msgid "Site Setup"
 msgstr "Configurare site"
@@ -5031,6 +5043,11 @@ msgstr "Se verifică referințele..."
 msgid "linkAnImage"
 msgstr "Introduceți un URL către o imagine"
 
+#. Default: "This page lists all content that links to this item, either with a hyperlink in its text or through a relation field such as related items. Check it before you delete this item to avoid breaking these links."
+#: components/manage/LinksToItem/LinksToItem
+msgid "linkstoitem.description"
+msgstr ""
+
 #. Default: "Listing"
 #: config/Blocks
 msgid "listing"
@@ -5459,7 +5476,7 @@ msgid "url"
 msgstr "url"
 
 #. Default: "user avatar"
-#: components/manage/Toolbar/PersonalTools
+#: components/manage/Toolbar/PersonalTools/PersonalTools
 msgid "user avatar"
 msgstr "avatarul utilizatorului"
 

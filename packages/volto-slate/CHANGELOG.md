@@ -8,6 +8,22 @@
 
 <!-- towncrier release notes start -->
 
+## 19.2.1 (2026-11-16)
+
+### Feature
+
+- Documented the table block (`slateTable`) in a `docs.block.md` file, with the structure of its `table` object, its rows and cells, the Slate value of each cell and its settings, plus a complete example. The `/@blocks-schema` endpoint and the reference docs now describe it. @ericof [#8531](https://github.com/plone/volto/issues/8531)
+
+## 19.2.0 (2026-10-27)
+
+### Feature
+
+- Documented the text block and the format of its `value` in a `docs.block.md` file, for the `/@blocks-schema` endpoint and reference docs. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+
+### Bugfix
+
+- Fixed the anchor of a heading being built from its indexed plaintext, which broke it when the heading contained inline formatting or a link. The anchor is now built from the text of the heading as it is rendered, and is also reported as the third element of the block's `tocEntry`. @Somilg11 [#8340](https://github.com/plone/volto/issues/8340)
+
 ## 19.1.0 (2026-10-07)
 
 ### Feature

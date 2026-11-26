@@ -3,7 +3,7 @@ export class BlocksToolbarComponent extends React.Component<any, any, any> {
     copyBlocksToClipboard(): void;
     cutBlocksToClipboard(): void;
     deleteBlocks(): void;
-    loadFromStorage(): void;
+    loadFromStorage(event: any): void;
     pasteBlocks(e: any): void;
     setBlocksClipboard(actionType: any): void;
     componentDidMount(): void;

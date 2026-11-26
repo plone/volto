@@ -25,5 +25,5 @@ declare class FormValidation {
      * @param {function} formatMessage
      * @returns {Object} errors
      */
-    static validateFieldsPerFieldset({ schema, formData, formatMessage, touchedField, }?: any): any;
+    static validateFieldsPerFieldset({ schema, formData, formatMessage, touchedField, intl, }?: any): any;
 }

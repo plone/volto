@@ -8,6 +8,24 @@
 
 <!-- towncrier release notes start -->
 
+## 3.2.0 (2026-11-18)
+
+### Feature
+
+- The block docs loader also collects the docs of document model elements (`element` and `title` in the frontmatter) and of document models (`document_model`). @sneridagh 
+
+## 3.1.1 (2026-11-16)
+
+### Internal
+
+- Update dependency: glob 14.0.2. @davisagli 
+
+## 3.1.0 (2026-10-27)
+
+### Feature
+
+- Added `createBlocksDocsLoader`, which collects the `*.block.md` docs of the blocks in core and the add-ons into a module that server code can import. @sneridagh [#8023](https://github.com/plone/volto/issues/8023)
+
 ## 3.0.3 (2026-10-07)
 
 ### Internal

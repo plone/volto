@@ -97,12 +97,7 @@ class Aliases extends Component {
    * @returns {undefined}
    */
   componentDidMount() {
-    this.props.getAliases(getBaseUrl(this.props.pathname), {
-      query: '',
-      manual: '',
-      datetime: '',
-      batchSize: '',
-    });
+    this.props.getAliases(getBaseUrl(this.props.pathname));
     this.props.getContent(getBaseUrl(this.props.pathname));
     this.setState({ isClient: true });
   }
@@ -146,20 +141,10 @@ class Aliases extends Component {
           />,
         );
       }
-      this.props.getAliases(getBaseUrl(this.props.pathname), {
-        query: '',
-        manual: '',
-        datetime: '',
-        batchSize: '',
-      });
+      this.props.getAliases(getBaseUrl(this.props.pathname));
     }
     if (this.props.aliases.remove.loading && nextProps.aliases.remove.loaded) {
-      this.props.getAliases(getBaseUrl(this.props.pathname), {
-        query: '',
-        manual: '',
-        datetime: '',
-        batchSize: '',
-      });
+      this.props.getAliases(getBaseUrl(this.props.pathname));
     }
   }
 

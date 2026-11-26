@@ -122,3 +122,120 @@ It's based on the `ButtonsWidget`, so the actions and the styles to be applied a
 +++
 _`size`_
 ````
+
+## `object_list`
+
+`object_list` edits a list of objects, each described by a schema, such as the social links of a site or the columns of a block.
+It has two layouts, set with the `layout` option:
+
+-   `accordion` (the default): each item is edited in place, in an accordion panel.
+    Existing forms keep this layout and its behavior.
+-   `table`: each item is a row with the chosen `columns`.
+    Edit opens the item in a dialog that validates a draft and writes it back only on Save.
+    Each row has a menu with Move up, Move down, Duplicate and Remove, and Remove asks for confirmation.
+    In a narrow container, such as the block settings sidebar, the rows show as a list.
+
+The value is a list of objects.
+Each item has an `@id` unless `itemIds` is `false`.
+
+The options are:
+
+`schema`
+:   The schema of an item, or a function called as `schema({ ...props, props, intl })` that returns it.
+    The `title` of the schema names one item, and `addMessage` sets the label of the Add button.
+    If `schemaName` names no registered utility, the item schema is empty and the rows still render.
+
+`schemaName`
+:   The name of a registered `schema` utility.
+    It takes precedence over `schema`.
+
+`schemaExtender`
+:   A function `schemaExtender(schema, data, intl)` that returns the schema of one item, for example to add a field to it.
+    It is set in code, and is not available in the backend `widgetProps`.
+
+`layout`
+:   `accordion` (default) or `table`.
+
+`columns`
+:   The names of the item fields shown in the `table` layout.
+    The default is every field of the item schema.
+
+`cells`
+:   An object of functions, `{ [field]: (value, item) => node }`, that render a table cell in place of its text.
+    It is set in code, and is not available in the backend `widgetProps`.
+
+`itemTitle`
+:   The name of the item field that names an item, or a function `(item, index) => string`.
+    The name shows in the accordion title and in the dialog.
+    If the item has no value for it, the schema title is used.
+    `placeholderItemField` is accepted as an alias.
+
+`maxItems`
+:   The maximum number of items.
+    At this number, Add and Duplicate are disabled.
+
+`validateItem`
+:   A function `validateItem(item, index, items)` that the dialog runs before Save.
+    When it returns a message, Save is blocked and the message is shown in the dialog.
+    The `items` are the list as it would be after Save.
+    It is set in code, and is not available in the backend `widgetProps`.
+    See {doc}`../configuration/validation`.
+
+`itemIds`
+:   Set it to `false` to write no `@id` to the items.
+    The rows are then keyed by their content.
+    Use it for a list of plain values, such as a list of strings.
+    The default is `true`.
+
+`fixedItems`
+:   Set it to `true` to fix the list: its items cannot be added or removed.
+    Add, Duplicate and Remove are hidden, in both layouts.
+    The items stay editable and reorderable.
+    The default is `false`.
+
+`activeObject` and `setActiveObject`
+:   Control the open item of the `accordion` layout, from the parent of the widget.
+    They keep the Volto names, as `schemaExtender` does.
+
+A backend schema sets the options in `frontendOptions`, with the item schema in `widgetProps`:
+
+```python
+from plone.autoform import directives
+from plone.supermodel import model
+from zope import schema
+
+
+class ILink(model.Schema):
+    directives.widget(
+        "links",
+        frontendOptions={
+            "widget": "object_list",
+            "widgetProps": {
+                "layout": "table",
+                "columns": ["title", "href"],
+                "itemTitle": "title",
+                "maxItems": 10,
+                "schema": {
+                    "title": "Link",
+                    "addMessage": "Add link",
+                    "fieldsets": [
+                        {"id": "default", "title": "Default", "fields": ["title", "href"]}
+                    ],
+                    "properties": {
+                        "title": {"title": "Title", "type": "string"},
+                        "href": {"title": "Address", "type": "string"},
+                    },
+                    "required": ["title"],
+                },
+            },
+        },
+    )
+    links = schema.List(
+        title="Links",
+        value_type=schema.Dict(),
+        required=False,
+    )
+```
+
+The `schema` in `widgetProps` is a JSON schema.
+Use `schemaName` instead to name a schema registered in the frontend.

@@ -1,0 +1,1 @@
+Fixed the flaky acceptance tests that use the external `volto-colorful.png` image from GitHub (image block, teaser, video, and image widget tests) by adding the `cy.interceptExternalImage` command, which serves it from a local fixture and removes their dependency on network availability. @wesleybl
