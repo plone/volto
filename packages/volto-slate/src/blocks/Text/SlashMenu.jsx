@@ -175,13 +175,21 @@ const PersistentSlashMenu = ({ editor }) => {
   const slashMenuSize = availableBlocks.length;
   const show = selected && slashCommand && !disableNewBlocks;
 
+  // The stored index can be out of the current list: the list shrinks and
+  // grows while typing, down to no matching blocks at all. Always read it
+  // within the list.
+  const selectedIndex = Math.min(
+    Math.max(slashMenuSelected, 0),
+    Math.max(slashMenuSize - 1, 0),
+  );
+
   const isMounted = useIsMounted();
 
   React.useEffect(() => {
-    if (isMounted && show && slashMenuSelected > slashMenuSize - 1) {
-      setSlashMenuSelected(slashMenuSize - 1);
+    if (isMounted && show && slashMenuSelected !== selectedIndex) {
+      setSlashMenuSelected(selectedIndex);
     }
-  }, [show, slashMenuSelected, isMounted, slashMenuSize]);
+  }, [show, slashMenuSelected, isMounted, selectedIndex]);
 
   editor.showSlashMenu = show;
 
@@ -190,19 +198,19 @@ const PersistentSlashMenu = ({ editor }) => {
     onMutateBlock(
       block,
       {
-        '@type': availableBlocks[slashMenuSelected].id,
+        '@type': availableBlocks[selectedIndex].id,
       },
       emptySlateBlock(),
     );
 
   editor.slashArrowUp = () =>
     setSlashMenuSelected(
-      slashMenuSelected === 0 ? slashMenuSize - 1 : slashMenuSelected - 1,
+      selectedIndex === 0 ? slashMenuSize - 1 : selectedIndex - 1,
     );
 
   editor.slashArrowDown = () =>
     setSlashMenuSelected(
-      slashMenuSelected >= slashMenuSize - 1 ? 0 : slashMenuSelected + 1,
+      selectedIndex >= slashMenuSize - 1 ? 0 : selectedIndex + 1,
     );
 
   return show ? (
@@ -210,7 +218,7 @@ const PersistentSlashMenu = ({ editor }) => {
       currentBlock={block}
       onMutateBlock={onMutateBlock}
       availableBlocks={availableBlocks}
-      selected={slashMenuSelected}
+      selected={selectedIndex}
     />
   ) : (
     ''
