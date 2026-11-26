@@ -123,7 +123,7 @@ describe('Basic multilingual Tests', () => {
 
     // Link it again
     cy.findByLabelText('Link translation for italiano').click();
-    cy.findByLabelText('Back').click();
+    cy.get('.object-browser .breadcrumbs').findByLabelText('Home').click();
     cy.findByLabelText('Browse Italiano').click();
     cy.findByLabelText('Select My IT page').dblclick();
     cy.findByText('/it/my-it-page');

@@ -113,4 +113,53 @@ describe('Object Browser Tests', () => {
       .should('have.attr', 'src')
       .and('contains', '/my-searchable-image/@@images/image');
   });
+
+  it('keeps the typed path as the browsed folder after selecting an image and exiting search', () => {
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.blocks-chooser .button.teaser').contains('Teaser').click();
+    cy.get('input[name="field-overwrite"]').check({ force: true });
+    cy.get(
+      '.objectbrowser-field[aria-labelledby="fieldset-default-field-label-preview_image"] button[aria-label="Open object browser"]',
+    ).click();
+    cy.findByLabelText('Search SVG').click();
+    cy.get('.ui.input.search input').type('/my-page-1');
+    cy.findByLabelText('Select My Image').click();
+    cy.findByLabelText('Close object browser').should('be.visible');
+    cy.get('.object-browser header').findByLabelText('Back').click();
+
+    cy.get('.object-browser .ui.input.search').should('not.exist');
+    cy.get('.object-browser .breadcrumbs').should('contain', 'my-page-1');
+    cy.get('.object-browser .object-listing').should('contain', 'My Image');
+    cy.get('.object-browser .object-listing').should(
+      'not.contain',
+      'My Searchable Image',
+    );
+    cy.findByLabelText('Close object browser').should('be.visible');
+  });
+
+  it('exits search on Escape without closing the Object Browser', () => {
+    cy.createContent({
+      contentType: 'Image',
+      contentId: 'local-image',
+      contentTitle: 'Local Image',
+      path: '/my-page',
+    });
+    cy.getSlate().click();
+    cy.get('.ui.basic.icon.button.block-add-button').click();
+    cy.get('.ui.basic.icon.button.image').contains('Image').click();
+    cy.get('.toolbar-inner button.ui.basic.icon.button').first().click();
+    cy.findByLabelText('Search SVG').click();
+    cy.get('.ui.input.search input').type('Searchable');
+    cy.findByLabelText('Select My Searchable Image').should('be.visible');
+    cy.get('.ui.input.search input').type('{esc}');
+
+    cy.get('.object-browser .ui.input.search').should('not.exist');
+    cy.findByLabelText('Close object browser').should('be.visible');
+    cy.findByLabelText('Search SVG').should('be.focused');
+    cy.get('.object-browser .breadcrumbs').should('contain', 'my-page');
+    cy.get('.object-browser .object-listing')
+      .should('contain', 'Local Image')
+      .and('not.contain', 'My Searchable Image');
+  });
 });
