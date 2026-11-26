@@ -21,6 +21,7 @@ const Settings = ({
           [id]: value,
         });
       }}
+      block={block}
       onChangeBlock={onChangeBlock}
       formData={data}
       applySchemaEnhancers={false}
