@@ -150,7 +150,7 @@
     "locale": "0.1.0",
     "lodash": "catalog:",
     "lodash-move": "1.1.1",
-    "moment": "2.29.4",
+    "moment": "2.31.0",
     "object-assign": "4.1.1",
     "prepend-http": "2",
     "prettier": "3.2.5",
