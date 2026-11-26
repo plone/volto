@@ -18,6 +18,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -29,7 +36,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make ci-acceptance-backend-start
@@ -66,6 +73,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -77,7 +91,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/core/content/**/*.js
           start: |
             make ci-acceptance-backend-start
@@ -114,6 +128,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -125,7 +146,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/core/controlpanels/**/*.js
           start: |
             make ci-acceptance-backend-start
@@ -162,6 +183,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -173,7 +201,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/core/blocks/*.js
           start: |
             make ci-acceptance-backend-start
@@ -210,6 +238,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -221,7 +256,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/core/blocks/listing/*.js
           start: |
             make ci-acceptance-backend-start
@@ -258,6 +293,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -269,7 +311,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/core/volto-slate/**/*.js
           start: |
             make ci-acceptance-backend-start
@@ -305,6 +347,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -316,7 +365,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/core/basic/**/*.js
           start: |
             make plone5-acceptance-backend-start
@@ -353,6 +402,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress Coresandbox Acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -364,7 +420,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/coresandbox/**/*.js
           start: |
             make coresandbox-acceptance-backend-start
@@ -401,6 +457,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -412,7 +475,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/multilingual/**/*.js
           start: |
             make multilingual-acceptance-backend-start
@@ -450,6 +513,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -461,7 +531,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/workingCopy/**/*.js
           start: |
             make working-copy-acceptance-backend-start
@@ -555,6 +625,13 @@ jobs:
         run: yarn build-storybook
         working-directory: ${{env.project-directory}}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -566,7 +643,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/minimal/**/*.js
           start: |
             make ci-acceptance-backend-start
@@ -609,6 +686,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -620,7 +704,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/core/basic/**/*.js
           config: baseUrl=http://localhost
           start: |
@@ -659,6 +743,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -670,7 +761,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/multilingual/**/*.js
           config: baseUrl=http://localhost
           start: |
