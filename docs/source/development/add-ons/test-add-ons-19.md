@@ -13,3 +13,20 @@ In Volto 19, Jest has been completely removed, and add-ons that rely on Jest-bas
 You must migrate your add-on tests to Vitest.
 
 See the guide {doc}`test-add-ons-18` for how to migrate your add-on tests from Jest to Vitest.
+
+
+## Vitest version
+
+Volto 19 uses Vitest 4.
+Your add-on should use the same Vitest version as Volto, because it runs its tests with Volto's shared Vitest configuration and setup files.
+
+Add-ons generated with {term}`Cookieplone` take Vitest from Volto's centralized pnpm catalog.
+In the {file}`package.json` of your add-on package, declare Vitest as follows.
+
+```json
+"devDependencies": {
+  "vitest": "catalog:"
+}
+```
+
+If your add-on declares a fixed Vitest version, such as `"vitest": "^3.1.2"`, see {ref}`upgrade-guide-vitest-4-label` for how and why to upgrade it.
