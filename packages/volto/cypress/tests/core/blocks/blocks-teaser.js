@@ -129,6 +129,7 @@ context('Blocks Acceptance Tests', () => {
   });
 
   it('As editor I can add a Teaser block and override the data with an external image ', () => {
+    cy.interceptExternalImage();
     cy.navigate('/document/edit');
     // WHEN I create a Teaser block and change the data of the referenced object
     cy.get('.block .slate-editor [contenteditable=true]').click();

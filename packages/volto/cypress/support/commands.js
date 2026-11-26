@@ -610,6 +610,16 @@ Cypress.Commands.add('waitForResourceToLoad', (fileName, type) => {
   });
 });
 
+// Some acceptance tests use this external image as content. Serving it from a
+// local fixture prevents them from failing when GitHub is slow or unreachable.
+Cypress.Commands.add('interceptExternalImage', () => {
+  cy.intercept(
+    'GET',
+    'https://github.com/plone/volto/raw/main/logos/volto-colorful.png',
+    { fixture: 'image.png' },
+  ).as('externalImage');
+});
+
 // --- CREATE CONTENT --------------------------------------------------------
 Cypress.Commands.add('setRegistry', (record, value) => {
   let api_url, auth;

@@ -49,6 +49,7 @@ context('Widgets Acceptance Tests', () => {
     });
 
     it('As an editor I can add an external image using the image widget', () => {
+      cy.interceptExternalImage();
       cy.intercept('PATCH', '/**/document').as('save');
       cy.intercept('GET', '/**/@types/Document').as('schema');
       cy.getSlate().click();
