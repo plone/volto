@@ -149,10 +149,8 @@ const Body = ({ data, isEditMode }) => {
                   src={
                     isInternalURL(data.url)
                       ? data.url.includes('@@download')
-                        ? data.url
-                        : `${addSubpathPrefix(
-                            flattenToAppURL(data.url),
-                          )}/@@download/file`
+                        ? addSubpathPrefix(flattenToAppURL(data.url))
+                        : `${addSubpathPrefix(flattenToAppURL(data.url))}/@@download/file`
                       : data.url
                   }
                   controls
