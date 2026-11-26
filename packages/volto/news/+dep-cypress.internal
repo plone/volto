@@ -1,0 +1,1 @@
+Update devDependency: `cypress` 15.21.2, which fixes `cypress run` aborting with `* is not a valid URL` when opening the second spec in Chrome 158 and later. @nileshgulia1

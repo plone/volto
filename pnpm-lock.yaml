@@ -40,8 +40,8 @@ catalogs:
       specifier: ^3.2.4
       version: 3.2.7
     cypress:
-      specifier: 15.16.0
-      version: 15.16.0
+      specifier: 15.21.2
+      version: 15.21.2
     jsdom:
       specifier: ^28.1.0
       version: 28.1.0
@@ -778,7 +778,7 @@ importers:
         version: 8.6.14(storybook@8.6.19(prettier@3.2.5))
       '@testing-library/cypress':
         specifier: 10.1.0
-        version: 10.1.0(cypress@15.16.0)
+        version: 10.1.0(cypress@15.21.2)
       '@testing-library/jest-dom':
         specifier: 'catalog:'
         version: 6.9.1
@@ -856,13 +856,13 @@ importers:
         version: 5.2.7(webpack@5.105.4(esbuild@0.25.12))
       cypress:
         specifier: 'catalog:'
-        version: 15.16.0
+        version: 15.21.2
       cypress-axe:
         specifier: 1.7.0
-        version: 1.7.0(axe-core@4.4.2)(cypress@15.16.0)
+        version: 1.7.0(axe-core@4.4.2)(cypress@15.21.2)
       cypress-file-upload:
         specifier: 5.0.8
-        version: 5.0.8(cypress@15.16.0)
+        version: 5.0.8(cypress@15.21.2)
       deep-freeze:
         specifier: 0.0.1
         version: 0.0.1
@@ -4658,8 +4658,8 @@ packages:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
 
-  arch@2.2.0:
-    resolution: {integrity: sha512-Of/R0wqp83cgHozfIYLbBMnej79U/SVGOOyuB3VVFv1NRM/PSFMK12x9KVtiYzJqmnU5WR2qp0Z5rHb7sWGnFQ==}
+  arch@3.0.0:
+    resolution: {integrity: sha512-AmIAC+Wtm2AU8lGfTtHsw0Y9Qtftx2YXEEtiBP10xFUtMOA+sHHx6OAddyL52mUKh1vsXQ6/w1mVDptZCyUt4Q==}
 
   arg@5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
@@ -5114,6 +5114,10 @@ packages:
     resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
     engines: {node: '>= 20.19.0'}
 
+  chrome-remote-interface@0.33.3:
+    resolution: {integrity: sha512-zNnn0prUL86Teru6UCAZ1yU1XeXljHl3gj7OrfPcarEfU62OUU4IujDPdTDW3dAWwRqN3ZMG/Chhkh2gPL/wiw==}
+    hasBin: true
+
   chrome-trace-event@1.0.4:
     resolution: {integrity: sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==}
     engines: {node: '>=6.0'}
@@ -5227,6 +5231,9 @@ packages:
   commander@13.1.0:
     resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
     engines: {node: '>=18'}
+
+  commander@2.11.0:
+    resolution: {integrity: sha512-b0553uYA5YAEGgyYIGYROzKQ7X5RAqedkfjiZxwi0kL1g3bOaBNNZfYkzt/CL0umgD5wc9Jec2FbB98CjkMRvQ==}
 
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -5568,8 +5575,8 @@ packages:
     peerDependencies:
       cypress: '>3.0.0'
 
-  cypress@15.16.0:
-    resolution: {integrity: sha512-fy0M0c9xDLEp4v9y7LLKFeAQhIdDsobxDSKpD3JcZpqQefjy9TSzEyVV3HA0zu7hUi0bGHlSYlI7ASub8wgR9A==}
+  cypress@15.21.2:
+    resolution: {integrity: sha512-LcO9+YBGT0zlLd9+mD6/O30S1GcvJqBFTOCQ+uTd3nwFi+fTvogSskE3W/BWgDd/iHFkJzuIun5fcDl1aVLKRQ==}
     engines: {node: ^20.1.0 || ^22.0.0 || >=24.0.0}
     hasBin: true
 
@@ -13539,11 +13546,11 @@ snapshots:
       tailwindcss: 4.3.3
       vite: 6.4.4(@types/node@24.19.2)(jiti@2.7.0)(less@3.13.1)(lightningcss@1.33.0)(sass@1.58.0)(terser@5.51.2)(yaml@2.9.1)
 
-  '@testing-library/cypress@10.1.0(cypress@15.16.0)':
+  '@testing-library/cypress@10.1.0(cypress@15.21.2)':
     dependencies:
       '@babel/runtime': 7.29.10
       '@testing-library/dom': 10.4.2
-      cypress: 15.16.0
+      cypress: 15.21.2
 
   '@testing-library/dom@10.4.0':
     dependencies:
@@ -14446,7 +14453,7 @@ snapshots:
       normalize-path: 3.0.0
       picomatch: 2.3.2
 
-  arch@2.2.0: {}
+  arch@3.0.0: {}
 
   arg@5.0.2: {}
 
@@ -15018,6 +15025,14 @@ snapshots:
     dependencies:
       readdirp: 5.1.1
 
+  chrome-remote-interface@0.33.3:
+    dependencies:
+      commander: 2.11.0
+      ws: 7.5.13
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
   chrome-trace-event@1.0.4: {}
 
   ci-info@4.4.0: {}
@@ -15119,6 +15134,8 @@ snapshots:
   commander@11.1.0: {}
 
   commander@13.1.0: {}
+
+  commander@2.11.0: {}
 
   commander@2.20.3: {}
 
@@ -15469,28 +15486,29 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  cypress-axe@1.7.0(axe-core@4.4.2)(cypress@15.16.0):
+  cypress-axe@1.7.0(axe-core@4.4.2)(cypress@15.21.2):
     dependencies:
       axe-core: 4.4.2
-      cypress: 15.16.0
+      cypress: 15.21.2
 
-  cypress-file-upload@5.0.8(cypress@15.16.0):
+  cypress-file-upload@5.0.8(cypress@15.21.2):
     dependencies:
-      cypress: 15.16.0
+      cypress: 15.21.2
 
-  cypress@15.16.0:
+  cypress@15.21.2:
     dependencies:
       '@cypress/request': 4.0.1
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
       '@types/sinonjs__fake-timers': 8.1.1
       '@types/sizzle': 2.3.10
       '@types/tmp': 0.2.6
-      arch: 2.2.0
+      arch: 3.0.0
       blob-util: 2.0.2
       bluebird: 3.7.2
       buffer: 5.7.1
       cachedir: 2.4.0
       chalk: 4.1.2
+      chrome-remote-interface: 0.33.3
       ci-info: 4.4.0
       cli-table3: 0.6.1
       commander: 6.2.1
@@ -15516,9 +15534,11 @@ snapshots:
       systeminformation: 5.33.15
       tmp: 0.2.6
       tree-kill: 1.2.2
-      tslib: 1.14.1
       untildify: 4.0.0
       yauzl: 3.4.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   damerau-levenshtein@1.0.8: {}
 
