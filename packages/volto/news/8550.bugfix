@@ -1,0 +1,2 @@
+Fix download and display-file links not keeping the subpath prefix when Volto is deployed under a subpath. @wesleybl
+

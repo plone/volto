@@ -6,7 +6,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container as SemanticContainer } from 'semantic-ui-react';
-import { flattenToAppURL } from '@plone/volto/helpers/Url/Url';
+import {
+  addSubpathPrefix,
+  flattenToAppURL,
+} from '@plone/volto/helpers/Url/Url';
 import { FormattedMessage } from 'react-intl';
 import config from '@plone/volto/registry';
 
@@ -30,7 +33,7 @@ const FileView = ({ content }) => {
         <p className="documentDescription">{content.description}</p>
       )}
       {content.file?.download && (
-        <a href={flattenToAppURL(content.file.download)}>
+        <a href={addSubpathPrefix(flattenToAppURL(content.file.download))}>
           {content.file.filename ? (
             content.file.filename
           ) : (

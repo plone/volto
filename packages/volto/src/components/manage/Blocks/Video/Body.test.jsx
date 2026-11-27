@@ -282,3 +282,54 @@ test('renders a error message for invalid video URL in edit mode', () => {
   const json = component.toJSON();
   expect(json).toMatchSnapshot();
 });
+
+describe('Video block internal mp4 urls under a subpath', () => {
+  const subpathPrefix = config.settings.subpathPrefix;
+  const externalRoutes = config.settings.externalRoutes;
+  const apiPath = config.settings.apiPath;
+
+  beforeEach(() => {
+    config.settings.subpathPrefix = '/my-subpath';
+    config.settings.externalRoutes = [];
+    config.settings.apiPath = 'http://localhost:8080/Plone';
+  });
+
+  afterEach(() => {
+    config.settings.subpathPrefix = subpathPrefix;
+    config.settings.externalRoutes = externalRoutes;
+    config.settings.apiPath = apiPath;
+  });
+
+  const renderBody = (url) => {
+    const store = mockStore({ intl: { locale: 'en', messages: {} } });
+    return renderer
+      .create(
+        <Provider store={store}>
+          <Body data={{ '@type': 'video', url }} />
+        </Provider>,
+      )
+      .root.findByType('video');
+  };
+
+  it('adds the subpath prefix to internal mp4 urls', () => {
+    const video = renderBody('/my-video.mp4');
+    expect(video.props.src).toBe('/my-subpath/my-video.mp4/@@download/file');
+  });
+
+  it('adds the subpath prefix when the url already contains @@download', () => {
+    const video = renderBody('/my-video.mp4/@@download/file');
+    expect(video.props.src).toBe('/my-subpath/my-video.mp4/@@download/file');
+  });
+
+  it('flattens and adds the subpath prefix to urls stored with the api path', () => {
+    const video = renderBody(
+      'http://localhost:8080/Plone/my-video.mp4/@@download/file',
+    );
+    expect(video.props.src).toBe('/my-subpath/my-video.mp4/@@download/file');
+  });
+
+  it('does not double the prefix if the url already starts with it', () => {
+    const video = renderBody('/my-subpath/my-video.mp4/@@download/file');
+    expect(video.props.src).toBe('/my-subpath/my-video.mp4/@@download/file');
+  });
+});
