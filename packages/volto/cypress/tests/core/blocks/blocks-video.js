@@ -42,6 +42,7 @@ describe('Blocks Tests', () => {
   });
 
   it('Add Video Block with YouTube Video and Placeholder', () => {
+    cy.interceptExternalImage();
     // when I create a video block with a YouTube video
     cy.getSlate().click();
     cy.get('.ui.basic.icon.button.block-add-button').click();
