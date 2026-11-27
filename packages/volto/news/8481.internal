@@ -1,1 +1,1 @@
-Upgraded Vitest to version 4.1.12, which fixes several security advisories that affect Vitest 3. See {ref}`upgrade-guide-vitest-4-label` for how and why to upgrade your projects and add-ons. @davisagli
+Upgraded Vitest to version 4, which fixes several security advisories that affect Vitest 3. See {ref}`upgrade-guide-vitest-4-label` for how and why to upgrade your projects and add-ons. @davisagli

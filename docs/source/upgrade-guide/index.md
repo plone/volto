@@ -35,11 +35,11 @@ It is usually better and quicker to move your items into new locations and copy 
 (upgrade-guide-vitest-4-label)=
 
 ### Vitest has been upgraded to version 4
-```{versionchanged} Volto 19.9.0
+```{versionchanged} Volto 19.8.3
 ```
 
-Volto now uses {term}`Vitest` 4.1.12 for its unit tests, instead of Vitest 3.
-The Vitest packages in Volto's {ref}`centralized pnpm catalog <centralized-pnpm-catalog-label>`, `vitest`, `@vitest/ui`, and `@vitest/coverage-v8`, were updated to the same version.
+Volto now uses {term}`Vitest` 4 for its unit tests, instead of Vitest 3.
+The Vitest packages in Volto's {ref}`centralized pnpm catalog <centralized-pnpm-catalog-label>`, `vitest`, `@vitest/ui`, and `@vitest/coverage-v8`, were updated to Vitest 4.
 Vitest is a development dependency, so this change doesn't affect the code of the site that you build and deploy.
 
 #### Why you should upgrade
