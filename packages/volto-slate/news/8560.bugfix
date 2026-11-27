@@ -1,0 +1,1 @@
+Fixed a crash of the slash menu of the text block when pressing Enter after typing a filter that matched no blocks. @sneridagh
