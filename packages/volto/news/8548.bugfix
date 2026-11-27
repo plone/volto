@@ -1,0 +1,1 @@
+Fixed the Paste button disappearing when other tabs of the same site were open: the blocks clipboard is now kept in sync in every tab of an authenticated user. @giulio-red-turtle

@@ -10,7 +10,6 @@ import {
 import Icon from '@plone/volto/components/theme/Icon/Icon';
 import { Plug } from '@plone/volto/components/manage/Pluggable';
 import { v4 as uuid } from 'uuid';
-import isEqual from 'lodash/isEqual';
 import omit from 'lodash/omit';
 import without from 'lodash/without';
 
@@ -24,10 +23,7 @@ import copySVG from '@plone/volto/icons/copy.svg';
 import cutSVG from '@plone/volto/icons/cut.svg';
 import pasteSVG from '@plone/volto/icons/paste.svg';
 import trashSVG from '@plone/volto/icons/delete.svg';
-import {
-  cloneBlocks,
-  loadBlocksClipboardFromStorage,
-} from '@plone/volto/helpers/Blocks/cloneBlocks';
+import { cloneBlocks } from '@plone/volto/helpers/Blocks/cloneBlocks';
 
 export class BlocksToolbarComponent extends React.Component {
   constructor(props) {
@@ -36,37 +32,8 @@ export class BlocksToolbarComponent extends React.Component {
     this.copyBlocksToClipboard = this.copyBlocksToClipboard.bind(this);
     this.cutBlocksToClipboard = this.cutBlocksToClipboard.bind(this);
     this.deleteBlocks = this.deleteBlocks.bind(this);
-    this.loadFromStorage = this.loadFromStorage.bind(this);
     this.pasteBlocks = this.pasteBlocks.bind(this);
     this.setBlocksClipboard = this.setBlocksClipboard.bind(this);
-  }
-
-  loadFromStorage(event) {
-    if (event?.key && !event.key.includes('blocksClipboard')) {
-      return;
-    }
-
-    const clipboard = loadBlocksClipboardFromStorage();
-    const currentClipboard = this.props.blocksClipboard || {};
-    const currentClipboardHasBlocks =
-      currentClipboard?.cut || currentClipboard?.copy;
-
-    if (!event && !clipboard && currentClipboardHasBlocks) {
-      return;
-    }
-
-    if (!isEqual(clipboard || {}, currentClipboard)) {
-      this.props.setBlocksClipboard(clipboard || {});
-    }
-  }
-
-  componentDidMount() {
-    this.loadFromStorage();
-    window.addEventListener('storage', this.loadFromStorage, true);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('storage', this.loadFromStorage, true);
   }
 
   deleteBlocks() {
