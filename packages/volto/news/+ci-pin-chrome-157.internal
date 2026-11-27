@@ -1,0 +1,1 @@
+Pin Chrome 157 in the acceptance tests, because Chrome 158 aborts Cypress 13 runs with `* is not a valid URL` when opening the second spec. @nileshgulia1

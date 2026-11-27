@@ -65,6 +65,13 @@ jobs:
         working-directory: ${{env.project-directory}}
         run: make ci-test
 
+      # Chrome 158 breaks Cypress 13 (cypress-io/cypress#35195), so pin Chrome 157
+      - name: Set up Chrome 157
+        id: setup-chrome
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: 157
+
       - name: Cypress acceptance tests
         uses: cypress-io/github-action@v6
         env:
@@ -76,7 +83,7 @@ jobs:
         with:
           install: false
           working-directory: packages/volto
-          browser: chrome
+          browser: ${{ steps.setup-chrome.outputs.chrome-path }}
           spec: cypress/tests/minimal/**/*.js
           start: |
             make ci-acceptance-backend-start
