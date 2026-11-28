@@ -42,10 +42,14 @@ export const VideoBlockSchema = (props) => ({
     url: {
       title: props.intl.formatMessage(messages.VideoURL),
       widget: 'url',
+      helpUrl:
+        'https://6.docs.plone.org/volto/user-manual/blocks.html#video-block',
     },
     preview_image: {
       title: props.intl.formatMessage(messages.Preview_image),
       widget: 'url',
+      helpUrl:
+        'https://6.docs.plone.org/volto/user-manual/blocks.html#video-block',
     },
     title: {
       title: props.intl.formatMessage(messages.Title),
@@ -54,6 +58,8 @@ export const VideoBlockSchema = (props) => ({
     align: {
       title: props.intl.formatMessage(messages.Alignment),
       widget: 'align',
+      helpUrl:
+        'https://6.docs.plone.org/volto/user-manual/blocks.html#video-block',
     },
   },
   required: [],
