@@ -12,6 +12,7 @@ import {
   isInternalURL,
   flattenToAppURL,
   URLUtils,
+  hasTemplateVariables,
 } from '@plone/volto/helpers/Url/Url';
 import { defineMessages, useIntl } from 'react-intl';
 import withObjectBrowser from '@plone/volto/components/manage/Sidebar/ObjectBrowser';
@@ -61,7 +62,14 @@ export const UrlWidget = (props) => {
   } = props;
   const inputId = `field-${id}`;
   const intl = useIntl();
-  const [value, setValue] = useState(flattenToAppURL(props.value));
+
+  // Preserve template variables when initializing value
+  const initialValue = props.value
+    ? hasTemplateVariables(props.value)
+      ? props.value
+      : flattenToAppURL(props.value)
+    : '';
+  const [value, setValue] = useState(initialValue);
   const [isInvalid, setIsInvalid] = useState(false);
   /**
    * Clear handler
@@ -76,7 +84,11 @@ export const UrlWidget = (props) => {
   };
   const onChangeValue = (_value) => {
     let newValue = _value;
-    if (newValue?.length > 0) {
+
+    // Preserve template variables. Skip all processing if present
+    const hasTemplateVars = hasTemplateVariables(newValue);
+
+    if (newValue?.length > 0 && !hasTemplateVars) {
       if (isInvalid && URLUtils.isUrl(URLUtils.normalizeUrl(newValue))) {
         setIsInvalid(false);
       }
@@ -85,13 +97,20 @@ export const UrlWidget = (props) => {
       }
     }
     setValue(newValue);
-    newValue = isInternalURL(newValue) ? addAppURL(newValue) : newValue;
-    if (!isInternalURL(newValue) && newValue.length > 0) {
-      const checkedURL = URLUtils.checkAndNormalizeUrl(newValue);
-      newValue = checkedURL.url;
-      if (!checkedURL.isValid) {
-        setIsInvalid(true);
+
+    if (!hasTemplateVars) {
+      newValue = isInternalURL(newValue) ? addAppURL(newValue) : newValue;
+
+      if (!isInternalURL(newValue) && newValue.length > 0) {
+        const checkedURL = URLUtils.checkAndNormalizeUrl(newValue);
+        newValue = checkedURL.url;
+        if (!checkedURL.isValid) {
+          setIsInvalid(true);
+        }
       }
+    } else {
+      // For template variables, mark as valid since they're preserved as it is
+      setIsInvalid(false);
     }
     onChange(id, newValue === '' ? undefined : newValue);
   };
