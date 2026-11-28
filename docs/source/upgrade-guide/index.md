@@ -39,7 +39,7 @@ It is usually better and quicker to move your items into new locations and copy 
 ```
 
 Volto now uses {term}`Vitest` 4 for its unit tests, instead of Vitest 3.
-The Vitest packages in Volto's {ref}`centralized pnpm catalog <centralized-pnpm-catalog-label>`, `vitest`, `@vitest/ui`, and `@vitest/coverage-v8`, were updated to Vitest 4.
+The Vitest packages in Volto's {ref}`centralized pnpm catalog <centralized-pnpm-catalog-label>`, {program}`vitest`, {program}`@vitest/ui`, and {program}`@vitest/coverage-v8`, were updated to Vitest 4.
 Vitest is a development dependency, so this change doesn't affect the code of the site that you build and deploy.
 
 #### Why you should upgrade
@@ -47,14 +47,14 @@ Vitest is a development dependency, so this change doesn't affect the code of th
 Vitest 3 is affected by several security advisories, and no Vitest 3 release fixes them.
 They're fixed only in Vitest 4.1.12 and later.
 
--   [GHSA-5gmw-xhrv-c9v3](https://github.com/advisories/GHSA-5gmw-xhrv-c9v3) and [GHSA-85c8-ppgw-ccpr](https://github.com/advisories/GHSA-85c8-ppgw-ccpr), both rated critical: prototype pollution in `tinypool` that can lead to remote code execution.
-    Every Vitest 3 release depends on `tinypool` 1.x, and the fixes are only in `tinypool` 2.1.2 and later.
-    Vitest 4 no longer depends on `tinypool`.
--   [GHSA-82fw-gwwq-j7x9](https://github.com/advisories/GHSA-82fw-gwwq-j7x9) and [GHSA-qxg6-89mg-rqv8](https://github.com/advisories/GHSA-qxg6-89mg-rqv8), both rated moderate: path traversal and code injection in `@vitest/mocker`.
--   [GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4), rated moderate: a `glob` issue that `@vitest/coverage-v8` 3 pulls in.
+-   [GHSA-5gmw-xhrv-c9v3](https://github.com/advisories/GHSA-5gmw-xhrv-c9v3) and [GHSA-85c8-ppgw-ccpr](https://github.com/advisories/GHSA-85c8-ppgw-ccpr), both rated critical: prototype pollution in {program}`tinypool` that can lead to remote code execution.
+    Every Vitest 3 release depends on {program}`tinypool` 1.x, and the fixes are only in {program}`tinypool` 2.1.2 and later.
+    Vitest 4 no longer depends on {program}`tinypool`.
+-   [GHSA-82fw-gwwq-j7x9](https://github.com/advisories/GHSA-82fw-gwwq-j7x9) and [GHSA-qxg6-89mg-rqv8](https://github.com/advisories/GHSA-qxg6-89mg-rqv8), both rated moderate: path traversal and code injection in {program}`@vitest/mocker`.
+-   [GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4), rated moderate: a `glob` issue that {program}`@vitest/coverage-v8` Vitest 3 pulls in.
 
 These advisories affect the machines that run your tests, such as your development computer and your CI runners.
-`pnpm audit` reports them for as long as your project installs Vitest 3.
+{code}`pnpm audit` reports them for as long as your project installs Vitest 3.
 For these reasons, you should upgrade your project to Vitest 4.
 
 #### What happens if you don't upgrade
@@ -82,7 +82,7 @@ In an add-on generated with Cookieplone, this file is {file}`packages/<your-add-
    }
 ```
 
-Do the same for `@vitest/ui` and `@vitest/coverage-v8`, if your add-on declares them.
+Do the same for {program}`@vitest/ui` and {program}`@vitest/coverage-v8`, if your add-on declares them.
 With `catalog:`, your add-on always uses the same Vitest version as the Volto version that your project uses, so you don't need to update it by hand again.
 This requires the {file}`.pnpmfile.cjs` file described in {ref}`centralized-pnpm-catalog-label`.
 
@@ -106,7 +106,7 @@ pnpm --filter <your-add-on> exec vitest --version
 ```
 
 ```{warning}
-Don't use `pnpm update vitest` to upgrade Vitest in a project or add-on generated with Cookieplone.
+Don't use {code}`pnpm update vitest` to upgrade Vitest in a project or add-on generated with Cookieplone.
 It adds a `catalog` section to {file}`pnpm-workspace.yaml`, which replaces Volto's catalog, so that the other `catalog:` dependencies no longer install.
 If it already happened, remove the `catalog` section from {file}`pnpm-workspace.yaml`, and reinstall the dependencies.
 ```

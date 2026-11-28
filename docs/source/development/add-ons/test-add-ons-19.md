@@ -17,6 +17,7 @@ See the guide {doc}`test-add-ons-18` for how to migrate your add-on tests from J
 
 ## Vitest version
 
+
 Starting with Volto 19.8.3, Volto uses Vitest 4.
 Your add-on should use the same Vitest version as Volto, because it runs its tests with Volto's shared Vitest configuration and setup files.
 
