@@ -1,0 +1,1 @@
+Treat a `GET_CONTENT` payload without `@id` as a 404 instead of crashing the content reducers. @avoinea
