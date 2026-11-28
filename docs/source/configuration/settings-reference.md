@@ -436,6 +436,16 @@ Default: `true`.
 In Volto 19, the default was changed to `true`.
 ```
 
+### `showStatusMessages`
+
+If `showStatusMessages` is true, then Volto shows the status messages of the backend as toasts, as Plone Classic shows them on the next page.
+Add-ons of the backend add them with `IStatusMessage` or `plone.api.portal.show_message`, which puts them in the `statusmessages` cookie.
+Volto takes them from that cookie after each request to the API and when a page is loaded, and removes the cookie.
+Its default value is `true`.
+
+If you set it to `false`, Volto still takes the messages from the cookie, and keeps them in `state.statusMessages.items`, as a list of `{ message, type }`, for your own component.
+Dispatch `clearStatusMessages()` once you have shown them.
+
 ### `showTags`
 
 If `showTags` is true, then the `Tags` component will show tags from the `subjects` field.

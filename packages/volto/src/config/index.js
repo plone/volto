@@ -175,6 +175,7 @@ let config = {
     errorHandlers: [], // callables for unhandled errors
     styleClassNameConverters,
     hashLinkSmoothScroll: false,
+    showStatusMessages: true,
     styleClassNameExtenders,
     querystringSearchGet: false,
     blockSettingsTabFieldsetsInitialStateOpen: true,

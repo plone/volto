@@ -126,6 +126,7 @@ export { default as Aliases } from '@plone/volto/components/manage/Aliases/Alias
 export { default as LinksToItem } from '@plone/volto/components/manage/LinksToItem/LinksToItem';
 export { default as Workflow } from '@plone/volto/components/manage/Workflow/Workflow';
 export { default as Messages } from '@plone/volto/components/manage/Messages/Messages';
+export { default as StatusMessages } from '@plone/volto/components/theme/StatusMessages/StatusMessages';
 export { default as BlockChooser } from '@plone/volto/components/manage/BlockChooser/BlockChooser';
 export { default as BlockChooserButton } from '@plone/volto/components/manage/BlockChooser/BlockChooserButton';
 export { default as Toolbar } from '@plone/volto/components/manage/Toolbar/Toolbar';
