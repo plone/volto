@@ -13,6 +13,7 @@ import Icon from '@plone/volto/components/theme/Icon/Icon';
 import SidebarPortal from '@plone/volto/components/manage/Sidebar/SidebarPortal';
 import { BlockDataForm } from '@plone/volto/components/manage/Form';
 import TableSchema from './schema';
+import { getCellFocusTarget } from './keyboard';
 
 import rowBeforeSVG from '@plone/volto/icons/row-before.svg';
 import rowAfterSVG from '@plone/volto/icons/row-after.svg';
@@ -232,9 +233,44 @@ const Edit = (props) => {
 
   const schema = useMemo(() => TableSchema({ ...props, intl }), [props, intl]);
 
-  const onSelectCell = useCallback((row, cell) => {
-    setSelectedCell({ row, cell });
+  const onSelectCell = useCallback((row, cell, options = {}) => {
+    // `selectContent` marks the cell as the target of the Tab navigation, so
+    // that it selects its whole content when it receives the focus.
+    const selectContent = options.selectContent || false;
+    setSelectedCell({ row, cell, selectContent });
   }, []);
+
+  /**
+   * Moves the focus between cells when the Tab key is pressed in a cell,
+   * like table and spreadsheet editors do (Tab goes to the next cell and
+   * Shift+Tab to the previous one). The target cell's whole content gets
+   * selected, so that it can be replaced by typing.
+   */
+  const onTabKey = useCallback(
+    ({ event, row, cell }) => {
+      if (event.ctrlKey || event.metaKey || event.altKey) {
+        // Leave other Tab key combinations to the browser (accessibility).
+        return;
+      }
+
+      const target = getCellFocusTarget({
+        table: data.table,
+        row,
+        cell,
+        backwards: event.shiftKey,
+      });
+
+      if (!target) {
+        // There is no cell to navigate to (table edge): keep the browser
+        // default behavior, which moves the focus out of the table.
+        return;
+      }
+
+      event.preventDefault();
+      onSelectCell(target.row, target.cell, { selectContent: true });
+    },
+    [data.table, onSelectCell],
+  );
 
   const onChangeCell = useCallback(
     (row, cell, slateValue) => {
@@ -491,6 +527,13 @@ const Edit = (props) => {
                       onSelectBlock={onSelectBlock}
                       onChange={onChangeCell}
                       index={index}
+                      onTabKey={onTabKey}
+                      selectCellContent={
+                        selectedCell &&
+                        selectedCell.row === 0 &&
+                        selectedCell.cell === cellIndex &&
+                        selectedCell.selectContent === true
+                      }
                     />
                   </Table.HeaderCell>
                 ))}
@@ -534,6 +577,13 @@ const Edit = (props) => {
                       onSelectBlock={onSelectBlock}
                       onChange={onChangeCell}
                       index={index}
+                      onTabKey={onTabKey}
+                      selectCellContent={
+                        selectedCell &&
+                        selectedCell.row === rowIndex + 1 &&
+                        selectedCell.cell === cellIndex &&
+                        selectedCell.selectContent === true
+                      }
                     />
                   </Table.Cell>
                 ))}

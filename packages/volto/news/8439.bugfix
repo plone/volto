@@ -1,0 +1,1 @@
+In edit mode of the table block, pressing the Tab key now moves the focus to the next cell (Shift+Tab to the previous one) and selects its whole content. This makes it possible to overwrite a cell that already has content by simply typing. @wesleybl
