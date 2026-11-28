@@ -34,8 +34,8 @@ const catalogBrain = {
     image: [
       {
         download: '@@images/image.png',
-        width: 400,
-        height: 400,
+        width: 1080,
+        height: 920,
         scales: {
           preview: {
             download: '@@images/image-400.png',
@@ -56,8 +56,8 @@ const previewImageLink = {
       {
         base_path: '/image.png',
         download: '@@images/image.png',
-        width: 400,
-        height: 400,
+        width: 1080,
+        height: 920,
         scales: {
           preview: {
             download: '@@images/image-400.png',
@@ -142,7 +142,7 @@ describe('Image', () => {
     expect(img).toHaveAttribute('src', '/image/@@images/image.png');
     expect(img).toHaveAttribute(
       'srcset',
-      '/image/@@images/image-400.png 400w, /image/@@images/image.png 400w',
+      '/image/@@images/image-400.png 400w, /image/@@images/image.png 1080w',
     );
   });
 
@@ -158,7 +158,7 @@ describe('Image', () => {
     expect(img).toHaveAttribute('src', '/image.png/@@images/image.png');
     expect(img).toHaveAttribute(
       'srcset',
-      '/image.png/@@images/image-400.png 400w, /image.png/@@images/image.png 400w',
+      '/image.png/@@images/image-400.png 400w, /image.png/@@images/image.png 1080w',
     );
   });
 
@@ -176,7 +176,7 @@ describe('Image', () => {
 
     expect(img).toHaveAttribute(
       'srcset',
-      '/image.png/@@images/image-400.png 400w, /image.png/@@images/image.png 400w',
+      '/image.png/@@images/image-400.png 400w, /image.png/@@images/image.png 1080w',
     );
   });
 
@@ -195,6 +195,52 @@ describe('Image', () => {
     expect(img).toHaveAttribute(
       'srcset',
       '/image.png/@@images/image-400.png 400w',
+    );
+  });
+
+  it('uses a scale with the size of the original instead of the original', () => {
+    renderImage(
+      {
+        item: {
+          '@id': 'http://localhost:3000/image',
+          image_field: 'image',
+          image_scales: {
+            image: [
+              {
+                download: '@@images/image.jpeg',
+                width: 1080,
+                height: 920,
+                scales: {
+                  preview: {
+                    download: '@@images/image-400.jpeg',
+                    width: 400,
+                    height: 341,
+                  },
+                  huge: {
+                    download: '@@images/image-1080.jpeg',
+                    width: 1080,
+                    height: 920,
+                  },
+                },
+              },
+            ],
+          },
+        },
+        alt: 'alt text',
+      },
+      {
+        siteData: {
+          'plone.image_scales': { preview: {}, huge: {}, qhd: {} },
+        },
+      },
+    );
+
+    const img = screen.getByAltText('alt text');
+
+    expect(img).toHaveAttribute('src', '/image/@@images/image-1080.jpeg');
+    expect(img).toHaveAttribute(
+      'srcset',
+      '/image/@@images/image-400.jpeg 400w, /image/@@images/image-1080.jpeg 1080w',
     );
   });
 

@@ -57,7 +57,15 @@ export default function Image({
     const basePath = addSubpathPrefix(
       flattenToAppURL(image.base_path || item['@id']),
     );
-    attrs.src = `${basePath}/${image.download}`;
+    // A scale with the size of the original, encoded like the other scales
+    // (Plone offers one when a scale is wider than the original): it is
+    // usually a much smaller file than the original, so use it instead.
+    const fullSizeScale = Object.values(image.scales || {}).find(
+      (scale) => scale.width >= image.width,
+    );
+    attrs.src = `${basePath}/${
+      !isSvg && fullSizeScale ? fullSizeScale.download : image.download
+    }`;
 
     attrs.width = image.width;
     attrs.height = image.height;
@@ -65,8 +73,8 @@ export default function Image({
     if (!isSvg && image.scales && Object.keys(image.scales).length > 0) {
       const sortedScales = Object.values({
         ...image.scales,
-        ...(Object.keys(siteImageScales).length >
-        Object.keys(image.scales).length
+        ...(!fullSizeScale &&
+        Object.keys(siteImageScales).length > Object.keys(image.scales).length
           ? {
               original: {
                 download: `${image.download}`,
