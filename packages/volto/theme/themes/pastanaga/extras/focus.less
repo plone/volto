@@ -5,8 +5,9 @@
 }
 
 // Global focus styles for all elements that support :focus-visible
-// Exclude contenteditable elements (slate editors, rich text inputs) — focus is
-// already implied by the text cursor; an outline ring is noisy and confusing.
+// Exclude contenteditable elements (slate editors, rich text inputs) from the generic
+// element ring — in block editing, visible focus is provided by the block's selection
+// border (.block.selected::before), and in form widgets by .slate_wysiwyg_box.
 :focus-visible:not([contenteditable]):not([data-slate-editor]) {
   .universal-focus-style();
 }
@@ -44,4 +45,10 @@ input:focus-visible {
     box-shadow: none !important;
     outline: none !important;
   }
+}
+
+// Slate rich text widget (RichTextWidget, HtmlSlateWidget) focus styles
+// For form widgets, keyboard focus on the editor should highlight the wrapper box.
+.slate_wysiwyg_box:has([data-slate-editor]:focus-visible) {
+  .universal-focus-style();
 }
