@@ -32,6 +32,108 @@ It is usually better and quicker to move your items into new locations and copy 
 
 ## Upgrading to Volto 19.x.x
 
+(upgrade-guide-vitest-4-label)=
+
+### Vitest has been upgraded to version 4
+```{versionchanged} Volto 19.8.3
+```
+
+Volto now uses {term}`Vitest` 4 for its unit tests, instead of Vitest 3.
+The Vitest packages in Volto's {ref}`centralized pnpm catalog <centralized-pnpm-catalog-label>`, {program}`vitest`, {program}`@vitest/ui`, and {program}`@vitest/coverage-v8`, were updated to Vitest 4.
+Vitest is a development dependency, so this change doesn't affect the code of the site that you build and deploy.
+
+#### Why you should upgrade
+
+Vitest 3 is affected by several security advisories, and no Vitest 3 release fixes them.
+They're fixed only in Vitest 4.1.12 and later.
+
+-   [GHSA-5gmw-xhrv-c9v3](https://github.com/advisories/GHSA-5gmw-xhrv-c9v3) and [GHSA-85c8-ppgw-ccpr](https://github.com/advisories/GHSA-85c8-ppgw-ccpr), both rated critical: prototype pollution in {program}`tinypool` that can lead to remote code execution.
+    Every Vitest 3 release depends on {program}`tinypool` 1.x, and the fixes are only in {program}`tinypool` 2.1.2 and later.
+    Vitest 4 no longer depends on {program}`tinypool`.
+-   [GHSA-82fw-gwwq-j7x9](https://github.com/advisories/GHSA-82fw-gwwq-j7x9) and [GHSA-qxg6-89mg-rqv8](https://github.com/advisories/GHSA-qxg6-89mg-rqv8), both rated moderate: path traversal and code injection in {program}`@vitest/mocker`.
+-   [GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4), rated moderate: a `glob` issue that {program}`@vitest/coverage-v8` Vitest 3 pulls in.
+
+These advisories affect the machines that run your tests, such as your development computer and your CI runners.
+{code}`pnpm audit` reports them for as long as your project installs Vitest 3.
+For these reasons, you should upgrade your project to Vitest 4.
+
+#### What happens if you don't upgrade
+
+Projects and add-ons generated with {term}`Cookieplone` don't get their Vitest version from Volto.
+Each add-on package declares its own version in its {file}`package.json`, for example `"vitest": "^3.1.2"`.
+When you upgrade such a project to this version of Volto, it keeps Vitest 3.
+
+Your tests continue to run as before.
+Volto's shared Vitest configuration, {file}`vitest.config.mjs`, and its setup files work with both Vitest 3 and Vitest 4.
+Your add-on runs its tests with its own Vitest 3, even though Volto, checked out in {file}`core`, now installs Vitest 4.
+
+However, your project keeps the vulnerable packages described in the previous section in its {file}`pnpm-lock.yaml`.
+
+#### Upgrade your project to Vitest 4
+
+In the {file}`package.json` of each add-on package that runs tests with Vitest, take the Vitest version from Volto's catalog, instead of declaring your own.
+In a project generated with Cookieplone, this file is {file}`frontend/packages/<your-add-on>/package.json`.
+In an add-on generated with Cookieplone, this file is {file}`packages/<your-add-on>/package.json`.
+
+```diff
+   "devDependencies": {
+-    "vitest": "^3.1.2"
++    "vitest": "catalog:"
+   }
+```
+
+Do the same for {program}`@vitest/ui` and {program}`@vitest/coverage-v8`, if your add-on declares them.
+With `catalog:`, your add-on always uses the same Vitest version as the Volto version that your project uses, so you don't need to update it by hand again.
+This requires the {file}`.pnpmfile.cjs` file described in {ref}`centralized-pnpm-catalog-label`.
+
+Then reinstall the dependencies.
+In a project, run the following command from its root.
+
+```shell
+make frontend-install
+```
+
+In an add-on, run the following command from its root.
+
+```shell
+make install
+```
+
+Check that your add-on uses Vitest 4.
+
+```shell
+pnpm --filter <your-add-on> exec vitest --version
+```
+
+```{warning}
+Don't use {code}`pnpm update vitest` to upgrade Vitest in a project or add-on generated with Cookieplone.
+It adds a `catalog` section to {file}`pnpm-workspace.yaml`, which replaces Volto's catalog, so that the other `catalog:` dependencies no longer install.
+If it already happened, remove the `catalog` section from {file}`pnpm-workspace.yaml`, and reinstall the dependencies.
+```
+
+Finally, run your tests, and fix the ones that fail.
+The most common change in Vitest 4 is that a mock created with `vi.fn()` and an arrow function can no longer be called with `new`.
+Such a test fails with an error such as `TypeError: ... is not a constructor`.
+Use a regular function instead, as shown in the following example.
+
+```diff
+ vi.mock('universal-cookie', () => {
+   const mCookie = {
+     get: vi.fn(),
+     remove: vi.fn(),
+     set: vi.fn(),
+   };
+   return {
+-    default: vi.fn(() => mCookie),
++    default: vi.fn(function () {
++      return mCookie;
++    }),
+   };
+ });
+```
+
+For the other changes, see the [Vitest 4 migration guide](https://github.com/vitest-dev/vitest/blob/v4.1.12/docs/guide/migration.md#vitest-4).
+
 (nodejs-22-removed-label)=
 
 ### Removed support of Node.js 22
@@ -475,6 +577,8 @@ To support horizontal scrolling of tables on small viewports, the table block is
 
 In the past, the table block was a direct child of the content area.
 If you had custom styles for the table block that assumed it was a direct child of the content area, then adjust your CSS styles accordingly.
+
+(centralized-pnpm-catalog-label)=
 
 ### Centralized pnpm catalog
 ```{versionadded} Volto 19.0.0-alpha.28
