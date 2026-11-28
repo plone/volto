@@ -3,7 +3,7 @@
 exports[`LinksToItem > renders "links and references" view 1`] = `
 <div>
   <div
-    class="ui container"
+    class="ui container linkstoitem"
     id="linkstoitem"
   >
     <div
