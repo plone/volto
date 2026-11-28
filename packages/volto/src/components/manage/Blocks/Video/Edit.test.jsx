@@ -20,6 +20,12 @@ config.blocks.blocksConfig = {
       addPermission: [],
       view: [],
     },
+    allowedPeertubeInstances: [
+      'freediverse.com', // About: https://freediverse.com/about/instance
+      'fair.tube', // About: https://fair.tube/about/instance
+      'tube.reseau-canope.fr', // About: https://tube.reseau-canope.fr/about/instance
+      'peertube.eus', // About: https://peertube.eus/about/instance
+    ],
   },
 };
 
